@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: b36eb2615e98ee8ea7751c836fd43e81a5a0f4e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81f072822226e4a573cf0086cac7e64ca1cfe45f
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414747"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628159"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Přesunout soubory pomocí Azure Data Factory
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tento článek popisuje šablonu řešení, kterou můžete použít k přesunutí souborů z jedné složky do jiné mezi úložišti na základě souborů. Jeden ze běžných scénářů použití této šablony: soubory se v úložišti zdrojového úložiště trvale přecházejí do cílové složky. Když vytvoříte aktivační událost plánovače, kanál ADF může pravidelně přesouvat soubory ze zdroje do cílového úložiště.  Způsob, jakým kanál ADF dosáhne "přesunutí souborů", získává soubory z cílové složky, kopíruje každou z nich do jiné složky v cílovém úložišti a pak odstraní stejné soubory z cílové složky ve zdrojovém úložišti.
 

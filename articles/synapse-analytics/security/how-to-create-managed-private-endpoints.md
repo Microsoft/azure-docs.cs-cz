@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 363dc4d469d912c14f5f89ef6ff433a2243587e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428898"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983223"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Vytvoření spravovaného privátního koncového bodu ke zdroji dat (Preview)
 
@@ -35,12 +35,12 @@ Vyberte typ zdroje dat. V tomto případě je cílovým zdrojem dat účet ADLS 
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>Krok 4: zadání informací o zdroji dat
 
-V dalším okně zadejte informace o zdroji dat. V tomto příkladu vytvoříme spravovaný privátní koncový bod pro účet ADLS Gen2. Zadejte **název** spravovaného privátního koncového bodu. Zadejte **předplatné Azure** a **název účtu úložiště**. Vyberte **Vytvořit**.
+V dalším okně zadejte informace o zdroji dat. V tomto příkladu vytváříme spravovaný privátní koncový bod na účet ADLS Gen2. Zadejte **název** spravovaného privátního koncového bodu. Zadejte **předplatné Azure** a **název účtu úložiště**. Vyberte **Vytvořit**.
 ![Zadejte podrobnosti o cílovém zdroji dat.](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>Krok 5: ověření úspěšného vytvoření spravovaného privátního koncového bodu
 
-Po odeslání žádosti se zobrazí její stav. Chcete-li ověřit úspěšné vytvoření spravovaného privátního koncového bodu, zkontrolujte jeho *stav zřizování*. Možná budete muset počkat 1 minutu a kliknutím na **aktualizovat** aktualizovat stav zřizování. Vidíte, že se spravovaný privátní koncový bod pro účet ADLS Gen2 úspěšně vytvořil.
+Po odeslání žádosti se zobrazí její stav. Chcete-li ověřit úspěšné vytvoření spravovaného privátního koncového bodu, zkontrolujte jeho *stav zřizování*. Možná budete muset počkat 1 minutu a kliknutím na **aktualizovat** aktualizovat stav zřizování. Můžete vidět, že spravovaný privátní koncový bod pro účet ADLS Gen2 byl úspěšně vytvořen.
 
 Můžete také zjistit, že *stav schválení* čeká na *vyřízení*. Vlastník cílového prostředku může schválit nebo zamítnout požadavek na připojení privátního koncového bodu. Pokud vlastník schválí požadavek na připojení privátního koncového bodu, naváže se privátní odkaz. Pokud je odepřený, privátní odkaz se nevytvoří.
 ![Stav žádosti o vytvoření spravovaného privátního koncového bodu](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)

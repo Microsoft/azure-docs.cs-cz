@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: e03616bf0d02f7ce063c027912cba4ab4e8f8d3f
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594182"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611462"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
 > [!div class="op_single_selector"]
 > * [Node.js](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
-> 
-> 
+>
+>
 
 Pomocí [knihovny Azure CDN pro .NET](/dotnet/api/overview/azure/cdn) můžete automatizovat vytváření a správu profilů a koncových bodů CDN.  Tento kurz vás provede vytvořením jednoduché konzolové aplikace .NET, která ukazuje několik dostupných operací.  Tento kurz není určený k podrobnému popisu všech aspektů knihovny Azure CDN pro .NET.
 
@@ -34,35 +35,35 @@ K dokončení tohoto kurzu budete potřebovat Visual Studio 2015.  [Visual Studi
 
 > [!TIP]
 > [Dokončený projekt z tohoto kurzu](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) je k dispozici ke stažení na webu MSDN.
-> 
-> 
+>
+>
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
 ## <a name="create-your-project-and-add-nuget-packages"></a>Vytvoření projektu a přidání balíčků NuGet
 Teď, když jsme vytvořili skupinu prostředků pro profily CDN a udělili jí oprávnění aplikace Azure AD ke správě profilů a koncových bodů CDN v této skupině, můžeme začít vytvářet aplikace.
 
-V sadě Visual Studio 2015 klikněte na **soubor**, **Nový**, **projekt...** a otevřete dialogové okno Nový projekt.  Rozbalte položku **Visual C#** a potom vyberte možnost **Windows** v levém podokně.  V prostředním podokně klikněte na **Konzolová aplikace** .  Pojmenujte projekt a klikněte na tlačítko **OK**.  
+V sadě Visual Studio 2015 klikněte na **soubor**, **Nový**, **projekt...** a otevřete dialogové okno Nový projekt.  Rozbalte položku **Visual C#** a potom vyberte možnost **Windows** v levém podokně.  V prostředním podokně klikněte na **Konzolová aplikace** .  Pojmenujte projekt a klikněte na tlačítko **OK**.
 
 ![Nový projekt](./media/cdn-app-dev-net/cdn-new-project.png)
 
 Náš projekt bude používat některé knihovny Azure obsažené v balíčcích NuGet.  Pojďme je přidat do projektu.
 
 1. Klikněte na nabídku **nástroje** , **Správce balíčků NuGet**a pak na **Konzola správce balíčků**.
-   
+
     ![Spravovat balíčky NuGet](./media/cdn-app-dev-net/cdn-manage-nuget.png)
 2. V konzole správce balíčků spusťte následující příkaz pro instalaci **Active Directory Authentication Library (ADAL)**:
-   
+
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 3. Spusťte následující příkaz pro instalaci **knihovny pro správu Azure CDN**:
-   
+
     `Install-Package Microsoft.Azure.Management.Cdn`
 
 ## <a name="directives-constants-main-method-and-helper-methods"></a>Direktivy, konstanty, metoda Main a pomocné metody
 Pojďme získat základní strukturu našeho programu napsaného.
 
 1. Zpátky na kartě Program.cs nahraďte `using` direktivy v horní části následujícím způsobem:
-   
+
     ```csharp
     using System;
     using System.Collections.Generic;
@@ -74,13 +75,13 @@ Pojďme získat základní strukturu našeho programu napsaného.
     using Microsoft.Rest;
     ```
 2. Musíme definovat některé konstanty, které budou používat naše metody.  Ve `Program` třídě, ale před `Main` metodou, přidejte následující.  Zástupné symboly, včetně ** &lt;lomených závorek&gt;**, nahraďte požadovanými hodnotami.
-   
+
     ```csharp
     //Tenant app constants
     private const string clientID = "<YOUR CLIENT ID>";
     private const string clientSecret = "<YOUR CLIENT AUTHENTICATION KEY>"; //Only for service principals
     private const string authority = "https://login.microsoftonline.com/<YOUR TENANT ID>/<YOUR TENANT DOMAIN NAME>";
-   
+
     //Application constants
     private const string subscriptionId = "<YOUR SUBSCRIPTION ID>";
     private const string profileName = "CdnConsoleApp";
@@ -89,48 +90,48 @@ Pojďme získat základní strukturu našeho programu napsaného.
     private const string resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
 3. Také na úrovni třídy definujte tyto dvě proměnné.  Později je použijeme k určení, jestli už náš profil a koncový bod existují.
-   
+
     ```csharp
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
 4. `Main` Metodu nahraďte následujícím způsobem:
-   
+
    ```csharp
    static void Main(string[] args)
    {
        //Get a token
        AuthenticationResult authResult = GetAccessToken();
-   
+
        // Create CDN client
        CdnManagementClient cdn = new CdnManagementClient(new TokenCredentials(authResult.AccessToken))
            { SubscriptionId = subscriptionId };
-   
+
        ListProfilesAndEndpoints(cdn);
-   
+
        // Create CDN Profile
        CreateCdnProfile(cdn);
-   
+
        // Create CDN Endpoint
        CreateCdnEndpoint(cdn);
-   
+
        Console.WriteLine();
-   
+
        // Purge CDN Endpoint
        PromptPurgeCdnEndpoint(cdn);
-   
+
        // Delete CDN Endpoint
        PromptDeleteCdnEndpoint(cdn);
-   
+
        // Delete CDN Profile
        PromptDeleteCdnProfile(cdn);
-   
+
        Console.WriteLine("Press Enter to end program.");
        Console.ReadLine();
    }
    ```
 5. Některé z našich dalších metod se zobrazí uživateli s dotazem "Ano/ne".  Přidejte následující metodu, aby bylo poněkud jednodušší:
-   
+
     ```csharp
     private static bool PromptUser(string Question)
     {
@@ -161,9 +162,9 @@ Než budeme moct použít knihovnu pro správu Azure CDN, musíme ověřit náš
 ```csharp
 private static AuthenticationResult GetAccessToken()
 {
-    AuthenticationContext authContext = new AuthenticationContext(authority); 
+    AuthenticationContext authContext = new AuthenticationContext(authority);
     ClientCredential credential = new ClientCredential(clientID, clientSecret);
-    AuthenticationResult authResult = 
+    AuthenticationResult authResult =
         authContext.AcquireTokenAsync("https://management.core.windows.net/", credential).Result;
 
     return authResult;
@@ -174,8 +175,8 @@ Pokud používáte ověření individuálního uživatele, bude `GetAccessToken`
 
 > [!IMPORTANT]
 > Tuto ukázku kódu použijte pouze v případě, že se rozhodnete použít individuální ověřování uživatele namísto instančního objektu.
-> 
-> 
+>
+>
 
 ```csharp
 private static AuthenticationResult GetAccessToken()
@@ -271,8 +272,8 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 
 > [!NOTE]
 > Výše uvedený příklad přiřadí koncovému bodu zdroj s názvem *Contoso* s `www.contoso.com`názvem hostitele.  Tuto změnu byste měli změnit tak, aby odkazovala na název hostitele vlastního zdroje.
-> 
-> 
+>
+>
 
 ## <a name="purge-an-endpoint"></a>Vyprázdnit koncový bod
 Za předpokladu, že byl koncový bod vytvořen, je možné v našem programu vymezit obsah v našem koncovém bodu jedním běžným úkolem, který bychom mohli provést.
@@ -292,8 +293,8 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 
 > [!NOTE]
 > V předchozím příkladu řetězec `/*` označuje, že chci vymazat vše v kořenu cesty koncového bodu.  To je ekvivalentní k kontrole **Vyprázdnění všech** v dialogovém okně "vyčištění" Azure Portal. V `CreateCdnProfile` metodě jsem vytvořili náš profil jako **Azure CDN z profilu Verizon** pomocí kódu `Sku = new Sku(SkuName.StandardVerizon)`, takže to bude úspěšné.  **Azure CDN z profilů Akamai** ale nepodporují **Vyprázdnit vše**, takže pokud jsem pro tento kurz používal profil Akamai, je nutné zahrnout konkrétní cesty, které se mají vyprázdnit.
-> 
-> 
+>
+>
 
 ## <a name="delete-cdn-profiles-and-endpoints"></a>Odstranění profilů a koncových bodů CDN
 Poslední metoda odstraní náš koncový bod a profil.
@@ -341,4 +342,3 @@ Pokud si chcete zobrazit dokončený projekt z tohoto návodu, [Stáhněte si uk
 Další dokumentaci k knihovně pro správu Azure CDN pro .NET najdete v [odkazu na webu MSDN](/dotnet/api/overview/azure/cdn).
 
 Spravujte své prostředky CDN pomocí [PowerShellu](cdn-manage-powershell.md).
-

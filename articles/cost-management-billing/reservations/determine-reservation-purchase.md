@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 1b639da3494c0527141347ca61e77980d29a59ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: feee7475dcadc6d06693d9e60020097f8dc9149c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135551"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628601"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>Určení rezervace k zakoupení
 
 Všechny rezervace s výjimkou Azure Databricks se využívají na hodinovém základu. Rezervace byste měli koupit na základě konzistentního základního využití. Existuje několik způsobů určení, co koupit, a tento článek vám pomůže určit, kterou rezervaci byste měli koupit.
 
-Nákup větší kapacity, než odpovídá vašemu historickému využití, vede k nedostatečně využité rezervaci. Pokud je to možné, měli byste se nedostatečnému využití vyhýbat. Nevyužitá rezervovaná kapacita se nepřenáší z jedné hodiny do druhé.  Využití přesahující rezervované množství se účtuje s využitím dražších tarifů průběžných plateb.
+Nákup větší kapacity, než odpovídá vašemu historickému využití, vede k nedostatečně využité rezervaci. Pokud je to možné, měli byste se nedostatečnému využití vyhýbat. Nevyužitá rezervovaná kapacita se nepřenáší z jedné hodiny do druhé. Využití přesahující rezervované množství se účtuje s využitím dražších tarifů průběžných plateb.
 
 ## <a name="analyze-usage-data"></a>Analýz dat o využití
 
@@ -40,11 +40,11 @@ Ignorujte prostředky, které mají méně než 24 hodin využití za den.
 
 Pokud chcete provést analýzu na úrovni skupiny velikostí instance, můžete získat hodnoty flexibilní velikosti instance tady: [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv). Zkombinujte tyto hodnoty s vašimi daty a proveďte analýzu. Další informace o flexibilitě velikosti instance najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
-### <a name="analyze-usage-for-a-sql-database-reserved-instance-purchase"></a>Analýza využití pro nákup rezervované instance SQL Database
+### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Analýza využití pro nákup rezervované instance služby Azure Synapse Analytics
 
-Rezervovaná kapacita se vztahuje na ceny výpočetních funkcí virtuálních jader SQL Database. Nevztahuje se na ceny založené na DTU, náklady na licence SQL a na jiné náklady než výpočetní funkce.
+Rezervovaná kapacita se vztahuje na ceny DWU služby Azure Synapse Analytics. Nevztahuje se na náklady na licence Azure Synapse Analytics ani na jiné náklady než výpočetní funkce.
 
-Pokud chcete upřesnit odpovídající využití SQL, na údaje o využití použijte následující filtry:
+Pokud chcete upřesnit odpovídající využití, na údaje o využití použijte následující filtry:
 
 
 - Jako **MeterCategory** nastavte **SQL Database**.
@@ -60,22 +60,22 @@ Tato data informují o konzistentním využití pro:
 - Generace. Například Gen 5.
 - Umístění prostředku
 
-### <a name="analysis-for-sql-data-warehouse"></a>Analýza pro SQL Data Warehouse
+### <a name="analysis-for-azure-synapse-analytics"></a>Analýza pro Azure Synapse Analytics
 
-Rezervovaná kapacita se vztahuje na využití DWu služby SQL Data Warehouse a dá se koupit v přírůstcích po 100 DWU. Pokud chcete upřesnit odpovídající využití SQL, na údaje o využití použijte následující filtry:
+Rezervovaná kapacita se vztahuje na využití DWU služby Azure Synapse Analytics a dá se koupit v přírůstcích po 100 DWU. Pokud chcete upřesnit odpovídající využití, na údaje o využití použijte následující filtry:
 
 - Jako **MeterName** nastavte **100 DWU**.
 - Jako **podkategorii měřiče** nastavte **Optimalizováno pro výpočty Gen2**.
 
-K určení využití pro SQL DW v oblasti použijte pole **Umístění prostředku**.
+K určení využití pro Azure Synapse Analytics v oblasti použijte pole **Umístění prostředku**.
 
-Využití služby SQL Data Warehouse se může během dne vertikálně navyšovat a snižovat. Promluvte si s týmem, který instanci SQL Data Warehouse spravuje, abyste se dozvěděli víc o základním využití.
+Využití služby Azure Synapse Analytics se může během dne vertikálně navyšovat a snižovat. Promluvte si s týmem, který instanci Azure Synapse Analytics spravuje, abyste se dozvěděli víc o základním využití.
 
-Přejděte k rezervacím na webu Azure a kupte si rezervovanou kapacitu služby SQL Data Warehouse (v násobcích po 100 DWU).
+Přejděte k rezervacím na webu Azure a kupte si rezervovanou kapacitu služby Azure Synapse Analytics (v násobcích po 100 DWU).
 
 ## <a name="reservation-purchase-recommendations"></a>Doporučení k nákupu rezervací
 
-Doporučení k nákupu rezervací se vypočítávají analýzou hodinových dat využití za posledních 7, 30 a 60 dnů. Azure vypočte, jaké náklady byste měli, pokud byste měli rezervaci, a porovná je s vašimi skutečnými náklady na průběžné platby, které se za příslušnou dobu naúčtovaly. Výpočet se provádí pro každé množství, které jste během daného časového rámce použili. Doporučí se množství, které zajišťuje maximální úspory. 
+Doporučení k nákupu rezervací se vypočítávají analýzou hodinových dat využití za posledních 7, 30 a 60 dnů. Azure vypočte, jaké náklady byste měli, pokud byste měli rezervaci, a porovná je s vašimi skutečnými náklady na průběžné platby, které se za příslušnou dobu naúčtovaly. Výpočet se provádí pro každé množství, které jste během daného časového rámce použili. Doporučí se množství, které zajišťuje maximální úspory.
 
 Představte si například, že ve většině případů využíváte 500 virtuálních počítačů, ale v některých případech využití naroste až na 700 virtuálních počítačů. V tomto příkladu Azure vypočítá úspory pro 500 i 700 virtuálních počítačů. Vzhledem k tomu, že využití 700 virtuálních počítačů je jenom občasné, při výpočtu doporučení se určí, že se úspory maximalizují při nákupu rezervace 500 virtuálních počítačů, a poskytne se doporučení pro množství rovné 500.
 

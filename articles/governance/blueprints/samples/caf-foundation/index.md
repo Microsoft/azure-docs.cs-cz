@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu Základy CAF – přehled
 description: Přehled a architektura přechodu na cloud pro Azure (CAF) pro ukázkový podrobný plán Základy CAF.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 1f14b4d4811b9bdcb64f3860b2cf25b82825d5c4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3291fdc299652d2b22bff89f5b1dadbdc064e561
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458467"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901306"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Přehled architektury přechodu na cloud pro Azure od Microsoftu pro ukázkový podrobný plán Základy
 
@@ -31,7 +31,7 @@ Tato implementace je tvořená několika službami Azure, které se využívají
   - Pro povolení oblasti Azure pro prostředky a skupiny prostředků
   - Pro povolení skladových položek účtu úložiště (volí se během nasazování)
   - Pro povolení skladových položek virtuálních počítačů Azure (volí se během nasazování)
-  - Pro vyžadování nasazení síťového kukátka 
+  - Vyžadování nasazení Network Watcheru 
   - Pro vyžadování šifrování zabezpečeného přenosu pro účet Azure Storage
   - Pro zamítnutí typů prostředků (volí se během nasazování)  
 - Iniciativy

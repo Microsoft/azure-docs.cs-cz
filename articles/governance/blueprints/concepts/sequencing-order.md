@@ -1,14 +1,14 @@
 ---
 title: Pochopení pořadí sekvence nasazení
 description: Přečtěte si o výchozím pořadí, během kterého jsou v průběhu přiřazení podrobného plánu nasazeny artefakty podrobného plánu a jak přizpůsobit pořadí nasazení.
-ms.date: 08/22/2019
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677565"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864517"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Porozumění sekvenci nasazení v Azure modrotisky
 
@@ -47,8 +47,7 @@ Při sestavování velkých podrobných definic podrobného plánu může být p
 Řazení je provedeno definováním `dependsOn` vlastnosti ve formátu JSON. Tato vlastnost podporuje definici podrobného plánu, pro skupiny prostředků a objekty artefaktů. `dependsOn`je pole řetězců názvů artefaktů, které musí být před vytvořením vytvořen konkrétní artefakt.
 
 > [!NOTE]
-> Při vytváření objektů podrobného plánu získá každý prostředek artefaktu svůj název z názvu souboru, pokud používáte [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact), nebo koncový bod adresy URL, pokud se používá [REST API](/rest/api/blueprints/artifacts/createorupdate).
-> odkazy na _zdroj_ v artefaktech se musí shodovat s odkazy definovanými v definici podrobného plánu.
+> Při vytváření objektů podrobného plánu získá každý prostředek artefaktu svůj název z názvu souboru, pokud používáte [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact), nebo koncový bod adresy URL, pokud se používá [REST API](/rest/api/blueprints/artifacts/createorupdate). odkazy na _zdroj_ v artefaktech se musí shodovat s odkazy definovanými v definici podrobného plánu.
 
 ### <a name="example---ordered-resource-group"></a>Příklad – seřazená skupina prostředků
 
@@ -137,7 +136,8 @@ Artefakt šablony na úrovni předplatného v závislosti na skupině prostředk
 
 Během procesu vytváření se k vytvoření grafu závislostí artefaktů modrotisky používá topologické řazení. Tato kontrolu zajišťuje, aby se podporovaly jednotlivé úrovně závislostí mezi skupinami prostředků a artefakty.
 
-Pokud je deklarována závislost artefaktu, která by nezměnila výchozí pořadí, nebude provedena žádná změna. Příkladem je skupina prostředků, která závisí na zásadě na úrovni předplatného. Dalším příkladem je přiřazení podřízené zásady skupiny prostředků ' standard-RG ', které závisí na přiřazení podřízené role skupiny prostředků ' standard-RG '. V obou případech `dependsOn` se nezměnila výchozí pořadí sekvencování a neudělaly se žádné změny.
+Pokud je deklarována závislost artefaktu, která by nezměnila výchozí pořadí, nebude provedena žádná změna.
+Příkladem je skupina prostředků, která závisí na zásadě na úrovni předplatného. Dalším příkladem je přiřazení podřízené zásady skupiny prostředků ' standard-RG ', které závisí na přiřazení podřízené role skupiny prostředků ' standard-RG '. V obou případech `dependsOn` se nezměnila výchozí pořadí sekvencování a neudělaly se žádné změny.
 
 ## <a name="next-steps"></a>Další kroky
 

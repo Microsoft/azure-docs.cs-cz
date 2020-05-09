@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží při připojování řešení pro správu Azure Automation
-description: Naučte se řešit chyby při připojování řešení.
+description: Naučte se řešit chyby při připojování Azure Automation řešení.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: da5152b459f54cbaae5ec168f103f23a237edebd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679237"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836525"
 ---
 # <a name="troubleshoot-solution-onboarding"></a>Řešení potíží s připojováním k řešení
 
-Při připojování řešení Update Management nebo řešení Change Tracking a inventáře může docházet k chybám. Tento článek popisuje různé chyby, ke kterým může dojít, a způsob jejich řešení.
+Při připojování řešení Azure Automation Update Management nebo řešení Change Tracking a inventáře může docházet k chybovým zprávám. Tento článek popisuje různé chyby, ke kterým může dojít, a způsob jejich řešení.
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -33,13 +33,13 @@ Přejmenování registrovaných uzlů neaktualizuje název uzlu v Azure Automati
 
 #### <a name="resolution"></a>Řešení
 
-Zrušte registraci uzlu v konfiguraci stavu Azure Automation a pak ho znovu zaregistrujte. Sestavy publikované do služby již nebudou k dispozici.
+Zrušte registraci uzlu v konfiguraci stavu Azure Automation a poté jej znovu zaregistrujte. Sestavy publikované do služby již nebudou k dispozici.
 
-### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>Scénář: Opětovné podepisování certifikátů prostřednictvím proxy serveru HTTPS se nepodporuje.
+### <a name="scenario-re-signing-certificates-via-https-proxy-isnt-supported"></a><a name="resigning-cert"></a>Scénář: Opětovné podepisování certifikátů prostřednictvím proxy HTTPS se nepodporuje.
 
 #### <a name="issue"></a>Problém
 
-Při připojení prostřednictvím řešení proxy, které ukončí provoz HTTPS a pak znovu zašifruje provoz pomocí nového certifikátu, služba nepovoluje připojení.
+Když se připojíte prostřednictvím řešení proxy, které ukončí provoz HTTPS a pak ho znovu zašifruje pomocí nového certifikátu, služba nepovoluje připojení.
 
 #### <a name="cause"></a>Příčina
 
@@ -51,7 +51,7 @@ Pro tento problém není aktuálně k dispozici žádné alternativní řešení
 
 ## <a name="general-errors"></a>Obecné chyby
 
-### <a name="scenario-onboarding-fails-with-the-message---the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Scénář: připojení se nezdařilo se zprávou – řešení nelze povolit.
+### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Scénář: připojování se nepovede se zprávou, že řešení se nedá povolit.
 
 #### <a name="issue"></a>Problém
 
@@ -71,9 +71,9 @@ K této chybě dochází v důsledku nesprávných nebo chybějících oprávně
 
 #### <a name="resolution"></a>Řešení
 
-Ujistěte se, že máte správná [oprávnění potřebná k připojování počítačů](../automation-role-based-access-control.md#onboarding-permissions) a pak zkuste řešení připojit znovu. Pokud se zobrazí chyba `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, ujistěte se, že máte `Microsoft.OperationalInsights/workspaces/read` oprávnění, abyste mohli zjistit, jestli je virtuální počítač připojen k pracovnímu prostoru.
+Ujistěte se, že máte správná [oprávnění potřebná k připojování počítačů](../automation-role-based-access-control.md#onboarding-permissions)a pak zkuste řešení připojit znovu. Pokud se zobrazí chybová zpráva `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, ujistěte se, že máte `Microsoft.OperationalInsights/workspaces/read` oprávnění, abyste mohli zjistit, jestli je virtuální počítač připojen k pracovnímu prostoru.
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scénář: připojování se nepovede s touto zprávou: Nepodařilo se nakonfigurovat účet Automation pro protokolování diagnostiky.
+### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scénář: připojování se nepovede se zprávou "selhalo konfigurace účtu Automation pro diagnostické protokolování"
 
 #### <a name="issue"></a>Problém
 
@@ -85,17 +85,17 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Příčina
 
-Tato chyba může být způsobena tím, že cenová úroveň neodpovídá modelu fakturace předplatného. Viz téma [monitorování využití a odhadované náklady v Azure monitor](https://aka.ms/PricingTierWarning).
+Tato chyba může být způsobena tím, že cenová úroveň neodpovídá modelu fakturace předplatného. Další informace najdete v tématu [monitorování využití a odhadované náklady v Azure monitor](https://aka.ms/PricingTierWarning).
 
 #### <a name="resolution"></a>Řešení
 
-Vytvořte pracovní prostor Log Analytics ručně a zopakováním procesu připojování vyberte pracovní prostor, který jste vytvořili.
+Vytvořte pracovní prostor Log Analytics ručně a opakujte proces zprovoznění a vyberte vytvořený pracovní prostor.
 
 ### <a name="scenario-computergroupqueryformaterror"></a><a name="computer-group-query-format-error"></a>Scénář: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Problém
 
-Tento kód chyby znamená, že dotaz na skupinu uloženého hledání, který se používá k cílení na řešení, není správně naformátován. 
+Tento kód chyby znamená, že dotaz na skupinu uložených hledání, který se používá k cílení na řešení, není správně naformátován. 
 
 #### <a name="cause"></a>Příčina
 
@@ -117,20 +117,20 @@ Zásada blokuje dokončení operace.
 
 #### <a name="resolution"></a>Řešení
 
-Aby bylo možné řešení úspěšně nasadit, je nutné zvážit změnu označených zásad. V případě, že existuje mnoho různých typů zásad, které je možné definovat, závisí požadované změny na zásadách, které jsou porušené. Pokud je například zásada definovaná ve skupině prostředků, která Odepře oprávnění ke změně obsahu některých obsažených prostředků, můžete zvolit jednu z těchto oprav:
+K úspěšnému nasazení řešení musíte zvážit změnu uvedené zásady. Vzhledem k tomu, že existuje celá řada různých typů zásad, které je možné definovat, závisí požadované změny na zásadách, u kterých došlo k porušení. Pokud je například zásada definovaná ve skupině prostředků, která Odepře oprávnění ke změně obsahu některých obsažených prostředků, můžete zvolit jednu z těchto oprav:
 
 * Zásadu odeberte úplně.
 * Zkuste řešení připojit do jiné skupiny prostředků.
-* Znovu Zaměřte zásadu na konkrétní prostředek, například účet Automation.
+* Změnit cílení zásad na konkrétní prostředek, například účet Automation.
 * Revidujte sadu prostředků, pro které je zásada nakonfigurovaná na odepřít.
 
-Zkontrolujte oznámení v pravém horním rohu Azure Portal nebo přejděte do skupiny prostředků, která obsahuje váš účet Automation, a v části **Nastavení** vyberte **nasazení** . zobrazí se neúspěšné nasazení. Další informace o Azure Policy najdete v tématu [přehled Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+Zkontrolujte oznámení v pravém horním rohu Azure Portal, nebo přejít do skupiny prostředků, která obsahuje váš účet Automation, a v části **Nastavení** vyberte **nasazení** . zobrazí se neúspěšné nasazení. Další informace o Azure Policy najdete v tématu [přehled Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>Scénář: Chyby při pokusu o odpojení pracovního prostoru
 
 #### <a name="issue"></a>Problém
 
-Při pokusu o odpojení pracovního prostoru se zobrazí následující chyba:
+Při pokusu o odpojení pracovního prostoru se zobrazí následující chybová zpráva:
 
 ```error
 The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
@@ -148,10 +148,10 @@ Pokud je používáte, odeberte z pracovního prostoru následující řešení:
 * Change Tracking a Inventory
 * Spuštění/zastavení virtuálních počítačů mimo špičku
 
-Po odebrání řešení můžete zrušit propojení pracovního prostoru. Z těchto řešení je důležité vyčistit všechny existující artefakty z vašeho pracovního prostoru a účtu Automation. 
+Po odebrání řešení můžete zrušit propojení pracovního prostoru. Z těchto řešení je důležité vyčistit všechny existující artefakty z vašeho pracovního prostoru a účtu Automation:
 
-* V případě Update Management z účtu Automation odeberte nasazení aktualizací (plány).
-* V případě Start/Stop VMS during off-hours odeberte všechny zámky na součástech řešení v účtu Automation v části **Nastavení** > **zámků**. Viz [Odebrání řešení Start/Stop VMS during off-hours](../automation-solution-vm-management.md#remove-the-solution).
+* V případě Update Management z účtu Automation odeberte **nasazení aktualizací (plány)** .
+* V případě Start/Stop VMS during off-hours odeberte všechny zámky na součástech řešení v účtu Automation v části **Nastavení** > **zámků**. Další informace najdete v tématu [Odebrání řešení Start/Stop VMS during off-hours](../automation-solution-vm-management.md#remove-the-solution).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Log Analytics pro chyby rozšíření Windows
 
@@ -180,7 +180,7 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 #### <a name="cause"></a>Příčina
 
-Mezi možné příčiny této chyby patří:
+Některé možné příčiny této chyby:
 
 * Proxy server nakonfigurovaný na virtuálním počítači povoluje pouze konkrétní porty.
 * Nastavení brány firewall zablokovalo přístup k požadovaným portům a adresám.
@@ -189,13 +189,13 @@ Mezi možné příčiny této chyby patří:
 
 Ujistěte se, že máte správné porty a adresy otevřené pro komunikaci. Seznam portů a adres najdete v tématu [Plánování sítě](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>Scénář: instalace se nezdařila kvůli problémům s přechodným prostředím
+### <a name="scenario-install-failed-because-of-transient-environment-issues"></a><a name="transient-environment-issue"></a>Scénář: instalace se nezdařila kvůli problémům s přechodným prostředím
 
 Instalace rozšíření Log Analytics pro Windows selhala během nasazení z důvodu jiné instalace nebo akce blokující instalaci.
 
 #### <a name="issue"></a>Problém
 
-Níže jsou uvedeny příklady chybových zpráv:
+Následují příklady chybových zpráv, které mohou být vráceny:
 
 ```error
 The Microsoft Monitoring Agent failed to install on this machine. Please try to uninstall and reinstall the extension. If the issue persists, please contact support.
@@ -211,7 +211,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 
 #### <a name="cause"></a>Příčina
 
-Mezi možné příčiny této chyby patří:
+Některé možné příčiny této chyby:
 
 * Probíhá jiná instalace.
 * Systém se aktivuje při nasazování šablony do restartování.
@@ -242,8 +242,8 @@ Zkuste nainstalovat rozšíření Log Analytics agenta pro Windows, když je vir
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud nevidíte výše uvedený problém nebo nemůžete problém vyřešit, zkuste pro další podporu použít jeden z následujících kanálů:
+Pokud tady nevidíte svůj problém nebo nemůžete problém vyřešit, zkuste další podporu vyzkoušet u některého z následujících kanálů:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport)k, oficiální Microsoft Azure účet pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
-* Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport)pomocí oficiálního Microsoft Azure účtu pro zlepšení prostředí pro zákazníky. Podpora Azure spojuje komunitu Azure s odpověďmi, podporou a odborníky.
+* Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**.

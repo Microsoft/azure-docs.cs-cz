@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 11c1fd05055922b07801c20d525d852d5360b069
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4f230cd0965d58f690d333cd62f2c7c1d499e8d1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679353"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582150"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Řešení problémů s Change Tracking a inventářem
 
-Tento článek popisuje, jak řešit problémy s Change Tracking a inventářem.
+Tento článek popisuje, jak řešit problémy s Azure Automation Change Tracking a inventáře.
 
 >[!NOTE]
 >Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](../automation-update-azure-modules.md).
@@ -35,14 +35,14 @@ Pro počítače s Windows, které jsou připojené, se nezobrazuje žádné výs
 
 Tato chyba může mít následující příčiny:
 
-* Agent Log Analytics pro Windows není spuštěný.
+* Agent Azure Log Analytics pro Windows není spuštěný.
 * Komunikace zpět s účtem Automation je zablokovaná.
 * Sady Management Pack pro Change Tracking a inventář se nestáhnou.
 * Virtuální počítač, který se připojuje, může pocházet z klonovaného počítače, který se nástroje Sysprep s nainstalovaným agentem Log Analytics pro Windows.
 
 #### <a name="resolution"></a>Řešení
 
-Na počítači Log Analytics agenta přejděte do složky **C:\Program Files\Microsoft monitoring Agent\Agent\Tools** a spusťte následující příkazy:
+Na počítači Log Analytics agenta, otevřete umístění **C:\Program Files\Microsoft monitoring Agent\Agent\Tools** a spusťte následující příkazy:
 
 ```cmd
 net stop healthservice
@@ -51,10 +51,10 @@ StartTracing.cmd VER
 net start healthservice
 ```
 
-Pokud stále potřebujete pomoc, můžete shromáždit diagnostické informace a kontaktovat podporu. 
+Pokud stále potřebujete pomoc, můžete shromáždit diagnostické informace a kontaktovat podporu.
 
 > [!NOTE]
-> Agent Log Analytics umožňuje ve výchozím nastavení trasování chyb. Chcete-li povolit podrobné chybové zprávy jako v předchozím příkladu, použijte `VER` parametr. Pro trasování informací použijte `INF` při vyvolání. `StartTracing.cmd`
+> Agent Log Analytics ve výchozím nastavení umožňuje trasování chyb. Chcete-li povolit podrobné chybové zprávy jako v předchozím příkladu, použijte `VER` parametr. Pro trasování informací použijte `INF` při vyvolání. `StartTracing.cmd`
 
 ##### <a name="log-analytics-agent-for-windows-not-running"></a>Agent Log Analytics pro Windows není spuštěný.
 
@@ -64,7 +64,7 @@ Ověřte, zda je na tomto počítači spuštěný agent Log Analytics pro systé
 
 Zkontrolujte Prohlížeč událostí na počítači a vyhledejte všechny události, které obsahují slovo `changetracking` .
 
-Informace o adresách a portech, které je potřeba pro práci s Change Tracking a inventářem, najdete v tématu [Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md#network-planning) .
+Další informace o adresách a portech, které musí být povolené pro Change Tracking a inventarizaci, najdete v tématu [Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md#network-planning).
 
 ##### <a name="management-packs-not-downloaded"></a>Sady Management Pack nebyly staženy
 
@@ -84,7 +84,7 @@ Pokud používáte Klonovaný obrázek, napřed nejprve nástroj Sysprep a poté
 
 #### <a name="issue"></a>Problém
 
-Nevidíte žádné inventáře a výsledky Change Tracking pro počítače se systémem Linux, které jsou zaregistrované pro řešení. 
+Nevidíte žádné Change Tracking a výsledky inventáře pro počítače se systémem Linux, které jsou pro řešení připojené. 
 
 #### <a name="cause"></a>Příčina
 Tady jsou možné příčiny specifické pro tento problém:
@@ -103,7 +103,7 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Pokud se Váš počítač nezobrazuje ve výsledcích dotazu, nedošlo v poslední době k vrácení se změnami. Pravděpodobně došlo k potížím s místní konfigurací a je třeba agenta přeinstalovat. Informace o instalaci a konfiguraci najdete v tématu [shromáždění dat protokolu pomocí agenta Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
+Pokud se Váš počítač nezobrazuje ve výsledcích dotazu, nedošlo v poslední době k vrácení se změnami. Pravděpodobně došlo k potížím s místní konfigurací a je třeba agenta přeinstalovat. Informace o instalaci a konfiguraci najdete v tématu [shromáždění dat protokolu pomocí agenta Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
 
 Pokud se Váš počítač zobrazí ve výsledcích dotazu, ověřte konfiguraci oboru. Informace najdete [v tématu cílení řešení monitorování v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting).
 
@@ -111,7 +111,7 @@ Další řešení potíží s tímto problémem najdete v tématu [problém: nev
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Agent Log Analytics pro Linux není správně nakonfigurovaný.
 
-Agent Log Analytics pro Linux se nemusí správně nakonfigurovat pro výstupní kolekci protokolů a příkazového řádku pomocí nástroje kolektor protokolů OMS. Podívejte se [na téma sledování změn ve vašem prostředí pomocí řešení Change Tracking a inventáře](../change-tracking.md).
+Agent Log Analytics pro Linux nemusí být správně nakonfigurovaný pro protokoly a výstupní kolekce příkazového řádku pomocí nástroje kolektor protokolů OMS. Podívejte se [na téma sledování změn ve vašem prostředí pomocí řešení Change Tracking a inventáře](../change-tracking.md).
 
 ##### <a name="fim-conflicts"></a>Konflikty FIM
 
@@ -119,8 +119,8 @@ Funkce FIM Azure Security Center možná nesprávně ověřuje integritu soubor�
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud nevidíte výše uvedený problém nebo nemůžete problém vyřešit, zkuste pro další podporu použít jeden z následujících kanálů:
+Pokud tady nevidíte svůj problém nebo nemůžete problém vyřešit, zkuste další podporu vyzkoušet u některého z následujících kanálů:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport)k, oficiální Microsoft Azure účet pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
-* Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport)pomocí oficiálního Microsoft Azure účtu pro zlepšení prostředí pro zákazníky. Podpora Azure spojuje komunitu Azure s odpověďmi, podporou a odborníky.
+* Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**.

@@ -1,22 +1,22 @@
 ---
-title: Konfigurace správy potenciálních zákazníků ve Marketě | Azure Marketplace
-description: Nakonfigurujte správu zájemců pro služby Marketo pro Azure Marketplace zákazníky.
+title: Správa zájemců ve Marketě – komerční tržiště Microsoftu
+description: Naučte se používat systém CRM Marketo ke správě potenciálních zákazníků z Microsoft AppSource a Azure Marketplace.
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: b142e0ab1aaa242157e207ceecf958be51bb1721
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133658"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789874"
 ---
-# <a name="configure-lead-management-in-marketo"></a>Konfigurace správy potenciálních zákazníků ve Marketě
+# <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Použití Marketo ke správě potenciálních zákazníků z obchodu na webu Marketplace
 
-Tento článek popisuje, jak nastavit systém Marketo pro CRM pro zpracování zájemců z komerční nabídky na webu Marketplace.
+Tento článek popisuje, jak nastavit systém Marketo pro CRM na zpracování potenciálních zákazníků z nabídek v Microsoft AppSource a Azure Marketplace.
 
 ## <a name="set-up-your-marketo-crm-system"></a>Nastavení systému Marketo CRM
 
@@ -67,9 +67,11 @@ Tento článek popisuje, jak nastavit systém Marketo pro CRM pro zpracování z
 
 Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši nabídku na portálu pro publikování, postupujte podle těchto kroků. 
 
-1. Pro vaši nabídku přejdete na stránku **nastavení nabídek** .
+1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
 
-1. V části **Správa zájemců** vyberte **připojit** . 
+1. Vyberte svou nabídku a pak navštivte kartu **nastavení nabídky** .
+
+1. V části **Správa zájemců** vyberte **připojit**. 
 
     ![Tlačítko připojit k části Správa zájemců](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
 
@@ -86,6 +88,6 @@ Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši 
 
 1. Vyberte **OK**.
 
-   Chcete-li se ujistit, že jste úspěšně připojeni k cíli zájemce, klikněte na tlačítko **ověřit** . V případě úspěchu budete mít vedoucího testu v cíli realizace.
+   Abyste se ujistili, že jste se úspěšně připojili k cíli zájemce, vyberte **ověřit**. V případě úspěchu budete mít vedoucího testu v cíli realizace.
 
    ![Místní okno s podrobnostmi připojení](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9091d3bd6b57f14bd12083319595cb855a0d42ee
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755041"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858708"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
 
@@ -23,7 +23,7 @@ Série StorSimple 8000 se [dokončí do konce životnosti](https://support.micro
 ## <a name="azure-file-sync"></a>Synchronizace souborů Azure
 
 > [!IMPORTANT]
-> Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. E-mail AzureFilesMigration@microsoft . com pro vlastní plán migrace a pomoc při migraci.
+> Společnost Microsoft se zavazuje pomáhat zákazníkům při jejich migraci. E-mail AzureFiles@microsoft.com pro vlastní plán migrace a také pomoc při migraci.
 
 Azure File Sync je cloudová služba Microsoftu založená na dvou hlavních součástech:
 
