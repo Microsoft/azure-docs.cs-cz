@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 05/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127568"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692208"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -82,6 +82,16 @@ Při použití s virtuálním počítačem s Windows poskytuje ControlUp další
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Přejít na web partnera](https://www.controlup.com/solutions/ms_wvd/).
 
+## <a name="dell"></a>Firm
+
+![Logo společnosti Dell](./media/partners/dell.png)
+
+Tenké klienty technologie Dell jsou optimalizované pro přístup k Microsoft Azure a službě Windows Virtual Desktop. Aby bylo možné plnit potřeby ze spolupracujících pracovníků v oblasti znalostní báze až po uživatele s náročnou grafikou, Wyse tenké klienty poskytují vysoce kvalitní výpočetní prostředí, které plně využívá rostoucí počet aplikací a obsahu. V případě prostorově omezeného prostředí se Wyse tenké klienty přizpůsobí způsobu, jakým uživatelé pracují s univerzálními faktory a různými možnostmi volby připojení.
+
+Wyse tenké klienty jsou navržené s ohledem na úroveň zabezpečení na omezeném prostoru pro útoky, podporu standardů dodržování předpisů zabezpečení a pokročilých řešeních Multi-Factor Authentication. K nasazení vysoce zabezpečených tenkých klientů pomocí Dell Wyse ThinOS můžete využívat zabezpečený přístup ke cloudovým aplikacím a virtuálním pracovním prostorům z posílené Wyse ThinLinux s komerčním osvědčeným návrhem a s Windows 10 IoT Enterprise a funkcemi zabezpečení, které nabízí společnost Dell. Díky zabezpečené komunikaci založené na protokolu HTTPS a ověřování Active Directory pro správu na základě rolí udržuje Wyse Management Suite vždycky aktuální stav koncových bodů Wyse a mobilní aplikace pro službu WMS umožňuje zobrazovat kritické výstrahy a v reálném čase odesílat příkazy v reálném čase jediným klepnutím.
+
+- [Přejít na web partnera](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf).
+
 ## <a name="devicetrust"></a>deviceTRUST
 
 ![Logo deviceTRUST](./media/partners/devicetrust.png)
@@ -110,6 +120,7 @@ IGEL je schválený a ověřený partner služby Microsoft Azure a Windows Virtu
  
 IGEL OS podporuje všechny oblíbené virtuální aplikace, stolní počítače a klientské protokoly v cloudovém pracovním prostoru od Citrix, Microsoftu a VMware. Zahrnuje integrované technologie od partnerů periferních zařízení, rozhraní a protokolů 85, které organizacím umožňují rychle přijímat služby Windows Virtual Desktop Services do vlastních jedinečných uživatelských prostředí. IGEL OS je modulární koncový bod, který je jen pro čtení, který pomáhá chránit před manipulací. Teď také obsahuje úplný "řetězec důvěryhodnosti", který ověřuje integritu všech klíčových hlavních procesů spuštěných v koncovém bodu, od hardwaru koncového bodu (některé vybrané modely) nebo procesu UEFI až po služby Azure Cloud a Windows Virtual Desktop. S operačním systémem IGEL se podniky můžou přihlásit k odběru virtuálního klienta Windows z cloudu Azure s plnou jistotou v rámci integrity, zabezpečení a spravovatelnosti svých zařízení koncových bodů uživatelů.
 
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO).
 - [Přejít na web partnera](https://www.igel.com/igel-os-universal-desktop-operating-system/).
 
 ## <a name="ivanti"></a>Ivanti
@@ -191,6 +202,7 @@ PolicyPak software je partner s virtuálními počítači s Windows, který prov
 
 Hlavní případy použití pro PolicyPak jsou odebrání oprávnění místního správce a překonání výzev pro řízení uživatelských účtů, blokování ransomwarem, Správa více prohlížečů, Správa režimů podnikových a kompatibilních s Internet Explorerem, snížení počtu objektů zásad skupiny, Správa přidružení souborů Windows 10, Správa Windows 10 a hlavní panel a Správa funkcí Windows 10 a volitelných funkcí.  
 
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN).
 - [Přejít na web partnera](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
 
 ## <a name="printerlogic"></a>PrinterLogic
@@ -211,8 +223,8 @@ Printix je poskytovatel služeb s hodnotou přidaný do virtuálního počítač
 
 Tisk je základní úlohou v rámci každého kancelářského a malého podnikového prostředí. Abyste mohli plně využít výhod virtuálních klientů Windows a zajistit skvělou činnost koncového uživatele, je nutné zajistit, aby se uživatelé mohli připojit k tiskárnám s minimálním úsilím a maximální spolehlivostí. Pomocí Printix můžete využít virtuální plochu Windows na maximum prostřednictvím jednotného přihlašování (SSO), bezobslužné konfigurace, pravidelných aktualizací a nepřetržitého monitorování tiskového prostředí.
 
-- [Stručně si přečtěte společné řešení.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [Přejít na web partnera](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2).
+- [Přejít na web partnera](https://www.printix.net/printix-for-windows-virtual-desktop).
 
 ## <a name="rdpsoft"></a>RDPSoft
 
@@ -222,7 +234,7 @@ RDPSoft je partner s virtuálními počítači s Windows, který poskytuje výko
  
 Řešení pro RDPSoft Remote Desktop Commander zlepšují správu virtuálních ploch Windows. Funkce Premium Management zjednodušují delegování úloh správy virtuálních klientů Windows na pracovníky podpory, protože zajišťuje vzdálenou pomoc, relaci uživatelů a správu procesů. V současné době sada funkcí pro vzdálenou plochu shromažďuje bohatou metriku týkající se výkonu a zatížení jednotlivých uživatelů, aktivity a auditování uživatelů, kvality připojení k virtuálním plochám Windows (latence a šířka pásma), licencování a zabezpečení do centrální instance Azure SQL Database pro kontrolu. Díky RDPSoft máte k dispozici bohatě historické sestavy a komplexní řídicí panely hned po kliknutí.
 
-- [Přejít na web partnera](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [Přejít na web partnera](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
 
 ## <a name="sepago"></a>sepago
 
@@ -232,7 +244,8 @@ sepago byl založen v 2002 čtyřmi přáteli v Cologne. Dnes sepago je konzulta
 
 sepago a vývojové laboratoře pro vývoj vytváří inteligentní řešení s využitím technologií Big data a AI. Tato řešení se zaměřují na vylepšení obchodních a uživatelských zkušeností a správ partnerských produktů, jako je například virtuální klient Windows.
 
-- [Přejít na web partnera](https://www.sepago.de/wvd-value-add-tools/)
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
+- [Přejít na web partnera](https://www.sepago.de/wvd-value-add-tools/).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -263,7 +276,18 @@ nepřeberné omezení uberAgent společnosti poskytuje přehled o nasazeních vi
 
 uberAgent je produkt pro monitorování a analýzu, který je navržený pro výpočetní uživatele, který nejenom shromažďuje data – poskytuje zákazníkům informace, na kterých záleží. uberAgent má své vlastní metriky, které pokrývají klíčové aspekty uživatelského prostředí, výkonu aplikací a zabezpečení koncového bodu, a oznamuje vám všechno, co potřebujete znát o virtuálních počítačích s virtuálními počítači s Windows, aniž by to ovlivnilo hustotu uživatelů vašich systémů. uberAgent zjednodušuje řešení potíží, pomáhá při změně velikosti a poskytuje bohatě důležité informace pro zabezpečení informací.
 
-- [Přejít na web partnera](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
+- [Přejít na web partnera](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop).
+
+## <a name="workspace-365"></a>Pracovní prostor 365
+
+![Logo pracovního prostoru 365](./media/partners/workspace-365.png)
+
+Pracovní prostor 365 jednotkám všech vašich informací (obchodních dat, dokumentů, komunikačních a mikroaplikací) a poskytuje přístup k libovolné místní, webové nebo hostované aplikaci v jednom pracovním prostoru. Automaticky se přizpůsobí vaší roli, umístění, zařízení, prohlížeči a dalším, aby poskytoval přizpůsobený pracovní prostor. Uživatelé získají zjednodušené a konzistentní prostředí bez ohledu na to, jaká technologie leží pod povrchem. Můžete integrovat aktuální řešení, jako jsou RDP, Citrix a starší aplikace, a přesunout je na virtuální plochu Windows a přitom zachovat stejné uživatelské prostředí. Kromě toho můžete integrovat všechna umístění souborů, jako jsou SharePoint, OneDrive, týmy a souborové servery, v jedné aplikaci pro správu dokumentů.
+
+Díky pracovnímu prostoru 365 můžou správci IT zpřístupnit aplikace s podporou virtuálních počítačů Windows pro uživatele, kteří jsou na základě oprávnění. Správce pak může tyto aplikace přidat do sdílené skupiny aplikací. Když je aplikace virtuální plochy Windows v pracovním prostoru 365 viditelná, můžou si ji uživatelé otevřít z pracovního prostoru, aniž by se museli znovu přihlašovat. 
+
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh).
+- [Přejít na web partnera](https://workspace365.net/product-tour/hybrid-workspace-365/).
 
 ## <a name="workspot"></a>Workspot
 
@@ -279,4 +303,4 @@ Workspot rozšiřuje hodnotu virtuálního klienta Windows tím, že zjednodušu
 ## <a name="next-steps"></a>Další kroky
 
 - [Přečtěte si další informace o virtuálním počítači s Windows](overview.md).
-- [Vytvořte tenanta na virtuálním počítači s Windows](tenant-setup-azure-active-directory.md).
+- [Vytvořte tenanta na virtuálním počítači s Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).

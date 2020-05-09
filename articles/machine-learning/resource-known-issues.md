@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93015da810f163a48529704e69e1747ac1aec401
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231964"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889398"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -39,7 +39,7 @@ V některých případech může být užitečné, pokud při dotazování na n�
 Přečtěte si o [kvótách prostředků](how-to-manage-quotas.md) , se kterými se můžete setkat při práci s Azure Machine Learning.
 
 ## <a name="installation-and-import"></a>Instalace a import
-
+                           
 * **Instalace PIP: u závislostí není zaručeno konzistence při instalaci s jedním řádkem**: 
 
    Toto je známé omezení PIP, protože při instalaci jako jediného řádku nemá funkční překladač závislostí. První jedinečná závislost je pouze ta, na kterou se odkazuje. 
@@ -56,7 +56,29 @@ Přečtěte si o [kvótách prostředků](how-to-manage-quotas.md) , se kterými
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-
+     
+* **Balíček s vysvětlením, který se guarateed, aby se nainstaloval při instalaci nástroje AzureML-vlak-automl-Client:** 
+   
+   Při spuštění vzdáleného spuštění automl s vysvětlením modelu se zobrazí chybová zpráva s oznámením, že je potřeba nainstalovat balíček AzureML-vysvětlit-model pro vysvětlení modelů. Jedná se o známý problém a jako alternativní řešení proveďte jeden z následujících kroků:
+  
+  1. Nainstalujte si příkaz AzureML-vysvětlit-model místně.
+   ```
+      pip install azureml-explain-model
+   ```
+  2. Zakažte funkci vysvětlení zcela předáním model_explainability = false v konfiguraci automl.
+   ```
+      automl_config = AutoMLConfig(task = 'classification',
+                             path = '.',
+                             debug_log = 'automated_ml_errors.log',
+                             compute_target = compute_target,
+                             run_configuration = aml_run_config,
+                             featurization = 'auto',
+                             model_explainability=False,
+                             training_data = prepped_data,
+                             label_column_name = 'Survived',
+                             **automl_settings)
+    ``` 
+    
 * **Chyby Panda: obvykle se zobrazují během experimentu AutoML:**
    
    Když ručně nakonfigurujete environmnet pomocí PIP, všimnete si chyb atributů (obzvláště z PANDAS), protože se instalují nepodporované verze balíčku. Abyste předešli takovým chybám, [nainstalujte prosím sadu AutoML SDK pomocí příkazu automl_setup. cmd](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md):

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: ace701a6c19f4fe3af1c9ae6f5e63097dd59d405
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 1a9a503fd566c9b50f1503e0955bf12f69ac9960
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871688"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927917"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spouštění runbooků ve službě Azure Automation
 
@@ -86,7 +86,7 @@ Azure Automation využívá [Azure monitor](https://docs.microsoft.com/azure/azu
 
 ### <a name="log-analytics-agent-for-windows"></a>Agent Log Analytics pro Windows
 
-[Agent Log Analytics pro systém Windows](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windowsmonitor) spolupracuje s Azure monitor ke správě virtuálních počítačů a fyzických počítačů s Windows. Počítače můžou běžet v Azure nebo v prostředí mimo Azure, například v místním datovém centru. Je nutné nakonfigurovat agenta tak, aby se nahlásil do jednoho nebo více Log Analytics pracovních prostorů. 
+[Agent Log Analytics pro systém Windows](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows) spolupracuje s Azure monitor ke správě virtuálních počítačů a fyzických počítačů s Windows. Počítače můžou běžet v Azure nebo v prostředí mimo Azure, například v místním datovém centru. Je nutné nakonfigurovat agenta tak, aby se nahlásil do jednoho nebo více Log Analytics pracovních prostorů. 
 
 >[!NOTE]
 >Agent Log Analytics pro systém Windows byl dříve označován jako Microsoft Monitoring Agent (MMA).
