@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: 3618e6d3fe919bc06496d5b41d162bd211c3d404
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 03/25/2020
+ms.openlocfilehash: 47bb4e4cc4902168631fa67f186d0b3259c94328
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231930"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004663"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Vytváření, plánování a spouštění opakujících se úloh a pracovních postupů s triggerem opakování v Azure Logic Apps
 
@@ -54,8 +54,8 @@ Rozdíly mezi touto triggerem a aktivační událostí posuvných oken nebo dal�
 
    | Vlastnost | Název JSON | Požaduje se | Typ | Popis |
    |----------|-----------|----------|------|-------------|
-   | **Doba** | `interval` | Ano | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců </br>Denní: 1-500 dní </br>-Hodina: 1 – 12000 hodin </br>-Minute: 1 – 72000 minut </br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
-   | **Frekvence** | `frequency` | Ano | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
+   | **Doba** | `interval` | Ano | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců <br>-Week: 1-71 týdnů <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund<p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
+   | **Frekvence** | `frequency` | Ano | String | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
    ||||||
 
    > [!IMPORTANT]
@@ -74,18 +74,18 @@ Rozdíly mezi touto triggerem a aktivační událostí posuvných oken nebo dal�
 
    | Vlastnost | Název JSON | Požaduje se | Typ | Popis |
    |----------|-----------|----------|------|-------------|
-   | **Časové pásmo** | `timeZone` | Ne | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
-   | **Čas spuštění** | `startTime` | Ne | Řetězec | Zadejte počáteční datum a čas v tomto formátu: <p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
-   | **V tyto dny** | `weekDays` | Ne | Řetězec nebo pole řetězců | Pokud vyberete týden, můžete vybrat jeden nebo více dní, kdy chcete pracovní postup spustit: **pondělí**, **úterý**, **Středa**, **čtvrtek**, **pátek**, **sobota**a **neděle** . |
-   | **V těchto hodinách** | `hours` | Ne | Celočíselné nebo celočíselné pole | Pokud vyberete "Day" nebo "Week", můžete vybrat jedno nebo více celých čísel od 0 do 23 jako hodiny dne, kdy chcete pracovní postup spustit. <p><p>Pokud například zadáte "10", "12" a "14", dostanete v hodinách dne 10 DOP., 12 hodin a 2 ODP. v závislosti na dni se ale vypočítají minuty dne v závislosti na spuštění opakování. Chcete-li nastavit konkrétní minuty dne, například 10:00 dop. 12:00 odp. a 2:00 PM, zadejte tyto hodnoty pomocí vlastnosti **v těchto minutách** . |
-   | **V těchto minutách** | `minutes` | Ne | Celočíselné nebo celočíselné pole | Pokud vyberete "Day" nebo "Week", můžete vybrat jedno nebo více celých čísel od 0 do 59 jako minuty hodiny, kdy chcete pracovní postup spustit. <p>Například můžete zadat "30" jako znak minuty a použít předchozí příklad pro hodiny dne, získáte 10:30 dop. 12:30 ODP. a 2:30 PM. |
+   | **Časové pásmo** | `timeZone` | No | String | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
+   | **Čas spuštění** | `startTime` | No | String | Zadejte počáteční datum a čas v tomto formátu: <p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2020 na 2:00 odp., zadejte "2020-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2020-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **V tyto dny** | `weekDays` | No | Řetězec nebo pole řetězců | Pokud vyberete týden, můžete vybrat jeden nebo více dní, kdy chcete pracovní postup spustit: **pondělí**, **úterý**, **Středa**, **čtvrtek**, **pátek**, **sobota**a **neděle** . |
+   | **V těchto hodinách** | `hours` | No | Celočíselné nebo celočíselné pole | Pokud vyberete "Day" nebo "Week", můžete vybrat jedno nebo více celých čísel od 0 do 23 jako hodiny dne, kdy chcete pracovní postup spustit. <p><p>Pokud například zadáte "10", "12" a "14", dostanete v hodinách dne 10 DOP., 12 hodin a 2 ODP. v závislosti na dni se ale vypočítají minuty dne v závislosti na spuštění opakování. Chcete-li nastavit konkrétní minuty dne, například 10:00 dop. 12:00 odp. a 2:00 PM, zadejte tyto hodnoty pomocí vlastnosti **v těchto minutách** . |
+   | **V těchto minutách** | `minutes` | No | Celočíselné nebo celočíselné pole | Pokud vyberete "Day" nebo "Week", můžete vybrat jedno nebo více celých čísel od 0 do 59 jako minuty hodiny, kdy chcete pracovní postup spustit. <p>Například můžete zadat "30" jako znak minuty a použít předchozí příklad pro hodiny dne, získáte 10:30 dop. 12:30 ODP. a 2:30 PM. |
    |||||
 
-   Předpokládejme například, že dnešní den je pondělí, 4. září 2017. Následující Trigger opakování se neaktivuje *dříve* než počáteční datum a čas, což je pondělí, 18. září 2017 na 8:00 AM PST. Plán opakování se ale nastaví na 10:30 dop. 12:30 ODP. a 2:30 PM jenom v pondělí. Takže když se Trigger spustí poprvé a vytvoří instanci pracovního postupu aplikace logiky, je k dispozici 10:30. Další informace o tom, jak časy spuštění fungují, najdete v těchto [příkladech počátečního času](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time).
+   Předpokládejme například, že dnes je pátek, 4. září 2020. Následující Trigger opakování se neaktivuje *dříve* než počáteční datum a čas, který je pátek, 18. září 2020 na 8:00 AM PST. Plán opakování se ale nastaví na 10:30 dop. 12:30 ODP. a 2:30 PM jenom v pondělí. Takže když se Trigger poprvé spustí a vytvoří instanci pracovního postupu aplikace logiky, bude v pondělí v 10:30. Další informace o tom, jak časy spuštění fungují, najdete v těchto [příkladech počátečního času](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time).
 
    K budoucím běhům dochází v 12:30 PM a 2:30 odpoledne na stejný den. Každé opakování vytvoří svou vlastní instanci pracovního postupu. Potom se celý plán opakuje znovu v příštím pondělí. [*Jaké jsou některé další příklady výskytů?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#example-recurrences)
 
-   ![Příklad pokročilého plánování](./media/connectors-native-recurrence/recurrence-trigger-more-options-advanced-schedule.png)
+   ![Příklad pokročilého plánování](./media/connectors-native-recurrence/recurrence-trigger-advanced-schedule-options.png)
 
    > [!NOTE]
    > Aktivační událost zobrazí náhled pro zadané opakování pouze v případě, že jako frekvenci vyberete "Day" nebo "Week".
@@ -118,7 +118,7 @@ Tento příklad ukazuje, jak může definice triggeru opakování vypadat v zák
                "Monday"
             ]
          },
-         "startTime": "2017-09-07T14:00:00Z",
+         "startTime": "2020-09-07T14:00:00Z",
          "timeZone": "Pacific Standard Time"
       }
    }

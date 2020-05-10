@@ -7,19 +7,19 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 3648bb102d539156067cdc259c1cf9b6e73d6a49
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 3be8ce241817b3b2fa03976eebe3147c1dc9c877
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884485"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005157"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 ## <a name="what-types-of-load-balancer-exist"></a>Jaké typy Load Balancer existují?
-Interní nástroje pro vyrovnávání zatížení, které vyrovnávají provoz v rámci virtuální sítě a externích nástrojů pro vyrovnávání zatížení, které vyrovnávají provoz z koncového bodu připojeného k Další informace naleznete v tématu [Load Balancer Types]https://docs.microsoft.com/azure/load-balancer/concepts-limitations#load-balancer-types)(. 
+Interní nástroje pro vyrovnávání zatížení, které vyrovnávají provoz v rámci virtuální sítě a externích nástrojů pro vyrovnávání zatížení, které vyrovnávají provoz z koncového bodu připojeného k Další informace najdete v tématu [typy Load Balancer](components.md#frontend-ip-configurations). 
 
-Pro oba tyto typy nabízí Azure základní SKU a standardní SKU, které mají různé funkce pro funkční, výkon, zabezpečení a sledování stavu. Tyto rozdíly jsou vysvětleny v našem [porovnání SKU]https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus) (článek.
+Pro oba tyto typy nabízí Azure základní SKU a standardní SKU, které mají různé funkce pro funkční, výkon, zabezpečení a sledování stavu. Tyto rozdíly jsou vysvětleny v tomto článku o [porovnání SKU](skus.md) .
 
  ## <a name="how-can-i-upgrade-from-a-basic-to-a-standard-load-balancer"></a>Jak můžu upgradovat z úrovně Basic na Standard Load Balancer?
 Další informace o automatizovaném skriptu a pokynech k upgradu Load Balancer SKU najdete v článku věnovaném [upgradu ze základního na standardní](upgrade-basic-standard.md) .

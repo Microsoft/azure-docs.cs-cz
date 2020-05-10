@@ -8,20 +8,24 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a24da8d76f401f534eccf33312fbf0c2bee9f5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1877934cb604d140d7700c2e537d6dc187b63cc4
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74270524"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005530"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Vytvoření efektivního prostředí pro kotvu pomocí prostorových kotev Azure
 
-Tento článek poskytuje pokyny a požadavky, které vám pomůžou efektivně vytvářet a vyhledávat kotvy pomocí prostorových ukotvení.
+Tento článek poskytuje pokyny a požadavky, které vám pomůžou efektivně vytvářet a vyhledávat kotvy pomocí prostorových kotev Azure.
+
+## <a name="anchor-improvement-over-time"></a>Vylepšení ukotvení v průběhu času
+
+Pomocí prostorových kotev Azure se snažíme vylepšit kvalitu budoucích operací hledání. Provedeme to pomocí shromážděných dat prostředí k rozšíření vizuálních informací o kotvách, které hledáte. Tento proces běží pod digestoří a je offline optimalizace spuštěná službou prostorových kotev Azure pro optimalizaci pro vaše prostředí. Další data shromážděná během každé operace vytváří silnější porozumění prostředí. To zlepšuje kvalitu a umožňuje lépe vyhledávat kotvy prostřednictvím změny prostředí, předávání času a uživatelů, kteří hledají kotvy z různých úhlů a perspektiv.
 
 ## <a name="good-anchors"></a>Dobré kotvy
 
-Prostorové kotvy pomáhají vytvořit dobré kotvy. Je důležité investovat čas při vytváření dobrých kotev buď při pedagogování, nebo při vytváření identifikátorů uživatelů v uživatelském prostředí (UX). Díky investicím do předplatného vytváření dobrých kotev umožníte koncovým uživatelům spolehlivě najít kotvy:
+I když se prostorové kotvy Azure snaží vylepšit kvalitu kotev v čase, je také důležité investovat čas při vytváření dobrých kotev buď při pedagogování, nebo při vytváření identifikátorů uživatelů v uživatelském prostředí (UX). Díky investicím do předplatného vytváření dobrých kotev umožníte koncovým uživatelům spolehlivě najít kotvy:
 
 - V různých zařízeních.
 - V různou dobu.
@@ -100,7 +104,7 @@ Systémy vizuálního sledování spoléhají na vizuální funkce v prostředí
 
 Při vytváření uživatelského rozhraní, které podporuje užitečnou kontrolu prostředí, postupujte podle obecných pokynů v této části.
 
-Za prvé, pokud uživatel nenalezne kotvu během několika sekund, aplikace by měla uživatelům povzbudit, aby si zařízení přesunuli, aby se zaznamenalo více perspektiv. Aplikace může také uživatelům povzbudit, aby se přesunuli kolem prostředí a kontrolovali kotvu z dalších perspektiv. Další funkce, které zařízení vidí, je lepší.
+Za prvé, pokud uživatel nenalezne kotvu během několika sekund, aplikace by měla uživatelům povzbudit, aby si zařízení přesunuli, aby se zaznamenalo více perspektiv. Aplikace může také uživatelům povzbudit, aby se přesunuli kolem prostředí a kontrolovali kotvu z dalších perspektiv. Větší perspektiva funkcí, kterou zařízení vidí, je lepší, protože se tím zvyšuje pravděpodobnost, že se kotva nachází, a také shromáždí více dat prostředí, která budou použita ke zlepšení kvality kotvy.
 
 V případě cílových scénářů požádejte uživatele, aby se přesunul kolem cíle, aby ho mohli zobrazit z různých perspektiv. Jinými slovy, požádejte uživatele, aby zachytával cíl z nových perspektiv, dokud se kotva neumístí.
 

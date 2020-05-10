@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: 20f27ebc7b9712d440dc1c67c46cb0385a3f874a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 03/25/2020
+ms.openlocfilehash: 6d00c7d7cc88427a3500b28891ec70bb8a4bbb43
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234090"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005206"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Plánování a spouštění opakujících se automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps
 
@@ -48,13 +48,13 @@ Tento článek popisuje možnosti pro předdefinované aktivační události a a
 
 ## <a name="schedule-triggers"></a>Aktivační události plánu
 
-Pracovní postup aplikace logiky můžete spustit pomocí triggeru opakování nebo aktivační události posuvných oken, které nejsou přidruženy k žádné konkrétní službě nebo systému, například Office 365 Outlook nebo SQL Server. Tyto aktivační události spustí a spustí pracovní postup na základě zadaného opakování, kde můžete vybrat interval a frekvenci, například počet sekund, minut a hodin pro obě aktivační události nebo počet dnů, týdnů nebo měsíců pro aktivační událost opakování. Můžete také nastavit datum a čas zahájení i časové pásmo. Pokaždé, když se Trigger aktivuje, Logic Apps vytvoří a spustí novou instanci pracovního postupu pro vaši aplikaci logiky.
+Pracovní postup aplikace logiky můžete spustit pomocí triggeru opakování nebo aktivační procedury posuvných oken, která není přidružena k žádné konkrétní službě ani systému. Tyto aktivační události spustí a spustí pracovní postup na základě zadaného opakování, kde můžete vybrat interval a frekvenci, například počet sekund, minut, hodin, dnů, týdnů nebo měsíců. Můžete také nastavit datum a čas zahájení i časové pásmo. Pokaždé, když se Trigger aktivuje, Logic Apps vytvoří a spustí novou instanci pracovního postupu pro vaši aplikaci logiky.
 
 Tady jsou rozdíly mezi těmito triggery:
 
 * **Opakování**: pracovní postup se spouští v pravidelných časových intervalech na základě zadaného plánu. Pokud nedojde k opakování, Trigger opakování nezpracovává zmeškané opakování, ale restartuje opakování s dalším naplánovaným intervalem. Můžete zadat datum a čas zahájení i časové pásmo. Pokud vyberete "Day", můžete zadat hodiny dne a minuty hodiny, například každý den v 2:30. Pokud vyberete "Week", můžete také vybrat dny v týdnu, například středa a sobotu. Další informace najdete v tématu [vytváření, plánování a spouštění opakovaných úloh a pracovních postupů s triggerem opakování](../connectors/connectors-native-recurrence.md).
 
-* **Posuvné okno**: spouští pracovní postup v pravidelných časových intervalech, které zpracovávají data v souvislých blocích. V případě nevracení se aktivační událost posuvných oken vrátí zpět a zpracuje zmeškané opakování. Můžete zadat počáteční datum a čas, časové pásmo a dobu trvání pro zpoždění každého opakování ve vašem pracovním postupu. Tato aktivační událost neobsahuje možnosti pro zadání dnů, týdnů a měsíců, hodin dne, minuty hodiny a dnů v týdnu. Další informace najdete v tématu [vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí posuvných triggerů okna](../connectors/connectors-native-sliding-window.md).
+* **Posuvné okno**: spouští pracovní postup v pravidelných časových intervalech, které zpracovávají data v souvislých blocích. V případě nevracení se aktivační událost posuvných oken vrátí zpět a zpracuje zmeškané opakování. Můžete zadat počáteční datum a čas, časové pásmo a dobu trvání pro zpoždění každého opakování ve vašem pracovním postupu. Tato aktivační událost nepodporuje Pokročilá plánování, například konkrétní hodiny dne, minuty hodiny a dny v týdnu. Další informace najdete v tématu [vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí posuvných triggerů okna](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 

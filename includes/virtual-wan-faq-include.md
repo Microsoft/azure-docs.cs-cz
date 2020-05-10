@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cde644b821b8c9233c9a79c2c5e9fe8478850a65
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82997684"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006476"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Musí mít uživatel k používání Azure Virtual WAN rozbočovač a paprsek se zařízeními SD-WAN/VPN?
 
@@ -190,8 +190,8 @@ Celková propustnost sítě VPN rozbočovače je až 20 GB/s na základě zvolen
 Přejděte k bráně VPN uvnitř centra na portálu a kliknutím na jednotku škálování ji změňte na příslušné nastavení.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Umožňuje virtuální síti WAN, aby místní zařízení využilo více poskytovatelů internetových služeb paralelně, nebo je vždy jedním tunelem sítě VPN?
+Řešení místních zařízení můžou použít zásady provozu pro řízení provozu napříč několika tunely do Azure.
 
-Připojení přicházející do virtuální sítě WAN VPN je vždy aktivní aktivní tunelové propojení (kvůli odolnosti v rámci stejného rozbočovače nebo oblasti) pomocí odkazu, který je k dispozici ve větvi. Tento odkaz může být odkazem poskytovatele internetových služeb na místní větvi. Virtual WAN ' VPNSite ' poskytuje možnost přidávat informace o propojení do webu. Pokud máte ve větvi více poskytovatelů internetových služeb a každý z poskytovatelů internetových služeb poskytl odkaz, můžete tyto informace nastavit v informacích o lokalitě VPN v Azure. Správa převzetí služeb při selhání mezi poskytovateli internetových služeb ve větvi je ale úplně operace směrování zaměřené na větve.
 
 ### <a name="what-is-global-transit-architecture"></a>Co je architektura globálního přenosu?
 

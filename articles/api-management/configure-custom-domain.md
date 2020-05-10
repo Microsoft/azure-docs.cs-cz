@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 4587909ad6fca6cdf21d54d11d89f797bbb29833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335836"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004748"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
@@ -71,12 +71,12 @@ K provedení kroků popsaných v tomto článku musíte mít:
     > Názvy domén se zástupnými `*.contoso.com` znaky, např., jsou podporovány ve všech úrovních s výjimkou úrovně spotřeby.
 
     > [!TIP]
-    > Doporučujeme použít Azure Key Vault pro správu certifikátů a jejich nastavení na automatické střídání.
+    > Doporučujeme použít [Azure Key Vault pro správu certifikátů](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) a jejich nastavení na autorenew.
     > Pokud používáte Azure Key Vault ke správě vlastního certifikátu TLS/SSL, ujistěte se, že je certifikát vložen do Key Vault [jako _certifikát_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nikoli jako _tajný kód_.
     >
     > Pokud chcete načíst certifikát TLS/SSL, API Management musí mít v Azure Key Vault obsahujícím certifikát oprávnění list a Get tajných klíčů. Při použití Azure Portal všechny nezbytné kroky konfigurace se automaticky dokončí. Při použití nástrojů příkazového řádku nebo rozhraní API pro správu musí být tato oprávnění udělena ručně. To se provádí ve dvou krocích. Nejprve pomocí stránky spravované identity na vaší instanci API Management zajistěte, aby byla povolena spravovaná identita, a poznamenejte si ID objektu zabezpečení zobrazené na této stránce. Druhý, udělte seznam oprávnění a získejte přístup k tomuto ID objektu zabezpečení pro Azure Key Vault obsahující certifikát.
     >
-    > Pokud je certifikát nastavený na automatické střídání, API Management se automaticky vybere nejnovější verze bez jakéhokoli výpadku služby (Pokud vaše API Management vrstva má smlouvu SLA – i. e. ve všech vrstvách kromě úrovně pro vývojáře).
+    > Pokud je certifikát nastavený na automatické obnovení, API Management bude automaticky vybírat nejnovější verzi bez jakéhokoli výpadku služby (Pokud vaše API Management vrstva má smlouvu SLA – i. e. ve všech úrovních kromě úrovně pro vývojáře).
 
 1. Klikněte na použít.
 

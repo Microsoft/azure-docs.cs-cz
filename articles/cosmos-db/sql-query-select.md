@@ -1,38 +1,37 @@
 ---
 title: Klauzule SELECT v Azure Cosmos DB
 description: Seznamte se s klauzulí SELECT jazyka SQL pro Azure Cosmos DB. Použijte SQL jako dotazovací jazyk Azure Cosmos DB JSON.
-author: ginarobinson
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: girobins
-ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.author: tisande
+ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77469931"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005953"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Klauzule SELECT v Azure Cosmos DB
 
-Každý dotaz se skládá z klauzule SELECT a volitelné klauzule [from](sql-query-from.md) a [WHERE](sql-query-where.md) podle standardů ANSI SQL. Obvykle je uveden výčet zdroje v klauzuli FROM a klauzule WHERE aplikuje filtr na zdroj, aby získal podmnožinu položek JSON. Klauzule SELECT potom v seznamu Select vyžádá projekty požadované hodnoty JSON.
+Každý dotaz se skládá z `SELECT` klauzule a volitelných klauzulí [from](sql-query-from.md) a [WHERE](sql-query-where.md) podle standardů ANSI SQL. Obvykle je zdroj v `FROM` klauzuli vyhodnocen a `WHERE` klauzule používá filtr na zdroj pro načtení podmnožiny položek JSON. `SELECT` Klauzule potom v seznamu Select vypíše požadované hodnoty JSON.
 
 ## <a name="syntax"></a>Syntaxe
 
 ```sql
 SELECT <select_specification>  
 
-<select_specification> ::=   
-      '*'   
-      | [DISTINCT] <object_property_list>   
+<select_specification> ::=
+      '*'
+      | [DISTINCT] <object_property_list>
       | [DISTINCT] VALUE <scalar_expression> [[ AS ] value_alias]  
   
-<object_property_list> ::=   
+<object_property_list> ::=
 { <scalar_expression> [ [ AS ] property_alias ] } [ ,...n ]  
-  
 ```  
   
-## <a name="arguments"></a>Argumenty
+## <a name="arguments"></a>Arguments
   
 - `<select_specification>`  
 
@@ -49,7 +48,7 @@ SELECT <select_specification>
 - `VALUE`  
 
   Určuje, že se má místo úplného objektu JSON načíst hodnota JSON. To, na rozdíl `<property_list>` od, nezalomí předpokládané hodnoty v objektu.  
- 
+
 - `DISTINCT`
   
   Určuje, že se mají odebrat duplicity vlastností projektu.  
@@ -96,122 +95,6 @@ Výsledky jsou následující:
         "city": "Seattle"
       }
     }]
-```
-
-### <a name="quoted-property-accessor"></a>Přístup k vlastnostem v uvozovkách
-K vlastnostem můžete přistupovat pomocí operátoru vlastnosti v uvozovkách []. Například `SELECT c.grade` a `SELECT c["grade"]` jsou ekvivalentní. Tato syntaxe je užitečná pro řídicí znak, který obsahuje mezery, speciální znaky nebo má stejný název jako klíčové slovo SQL nebo vyhrazené slovo.
-
-```sql
-    SELECT f["lastName"]
-    FROM Families f
-    WHERE f["id"] = "AndersenFamily"
-```
-
-### <a name="nested-properties"></a>Vnořené vlastnosti
-
-Následující příklad projekty jsou dvě vnořené vlastnosti `f.address.state` a. `f.address.city`
-
-```sql
-    SELECT f.address.state, f.address.city
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-Výsledky jsou následující:
-
-```json
-    [{
-      "state": "WA",
-      "city": "Seattle"
-    }]
-```
-### <a name="json-expressions"></a>Výrazy JSON
-
-Projekce také podporuje výrazy JSON, jak je znázorněno v následujícím příkladu:
-
-```sql
-    SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-Výsledky jsou následující:
-
-```json
-    [{
-      "$1": {
-        "state": "WA",
-        "city": "Seattle",
-        "name": "AndersenFamily"
-      }
-    }]
-```
-
-V předchozím příkladu musí klauzule SELECT vytvořit objekt JSON a protože ukázka neposkytuje žádný klíč, klauzule používá název `$1`proměnné implicitního argumentu. Následující dotaz vrátí dvě proměnné implicitního argumentu `$1` : `$2`a.
-
-```sql
-    SELECT { "state": f.address.state, "city": f.address.city },
-           { "name": f.id }
-    FROM Families f
-    WHERE f.id = "AndersenFamily"
-```
-
-Výsledky jsou následující:
-
-```json
-    [{
-      "$1": {
-        "state": "WA",
-        "city": "Seattle"
-      }, 
-      "$2": {
-        "name": "AndersenFamily"
-      }
-    }]
-```
-## <a name="reserved-keywords-and-special-characters"></a>Vyhrazená klíčová slova a speciální znaky
-
-Pokud vaše data obsahují vlastnosti se stejnými názvy jako vyhrazená klíčová slova, jako je "objednávka" nebo "skupina", dotazy na tyto dokumenty budou mít za následek chyby syntaxe. K úspěšnému spuštění dotazu byste měli `[]` explicitně zahrnout vlastnost ve znaku.
-
-Například zde je dokument s vlastností s názvem `order` a vlastností `price($)` , která obsahuje speciální znaky:
-
-```json
-{
-  "id": "AndersenFamily",
-  "order": [
-     {
-         "orderId": "12345",
-         "productId": "A17849",
-         "price($)": 59.33
-     }
-  ],
-  "creationDate": 1431620472,
-  "isRegistered": true
-}
-```
-
-Pokud spustíte dotazy, které obsahují `order` vlastnost nebo `price($)` vlastnost, dojde k chybě syntaxe.
-
-```sql
-SELECT * FROM c where c.order.orderid = "12345"
-```
-```sql
-SELECT * FROM c where c.order.price($) > 50
-```
-Výsledek je následující:
-
-`
-Syntax error, incorrect syntax near 'order'
-`
-
-Stejné dotazy byste měli přepsat následujícím způsobem:
-
-```sql
-SELECT * FROM c WHERE c["order"].orderId = "12345"
-```
-
-```sql
-SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```
 
 ## <a name="next-steps"></a>Další kroky

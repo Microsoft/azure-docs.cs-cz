@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88e58fbf6acc15b71fd135184cf8806a793140f3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 7ce011a34aed39429884dc03285a0848776ac008
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983206"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006065"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview)
 
@@ -89,7 +89,7 @@ Pracovní prostor synapse potřebuje přístup k STG1 a CNT1, aby mohl spouště
 - Otevřete Azure Portal
 - Najít STG1
 - Přejít na CNT1
-- Zajistěte, aby se služba MSI (Identita spravované služby) pro WS1 přiřadila k roli **Přispěvatel dat objektů blob Azure** na CNT1.
+- Zajistěte, aby se služba MSI (Identita spravované služby) pro WS1 přiřadila k roli **Přispěvatel dat objektů BLOB úložiště** v CNT1.
   - Pokud se vám přiřazení nezobrazuje, přiřaďte ho.
   - Soubor MSI má stejný název jako pracovní prostor. V takovém případě by se &quot;WS1.&quot;
 

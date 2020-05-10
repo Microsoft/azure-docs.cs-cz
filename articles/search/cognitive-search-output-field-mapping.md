@@ -8,18 +8,21 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc1f1b5f7015efc604d461a5e292184398cba44f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74280966"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005487"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>Jak mapovat pole obohacená AI na index s možností prohledávání
 
 V tomto článku se dozvíte, jak namapovat obohacená vstupní pole na výstupní pole v indexu s možností prohledávání. Po [Definování dovednosti](cognitive-search-defining-skillset.md)je nutné namapovat výstupní pole libovolné dovednosti, která přímo přispívá k danému poli v indexu vyhledávání. 
 
 Pro přesun obsahu z obohacených dokumentů do indexu jsou vyžadovány mapování polí výstupu.  Obohacený dokument je ve skutečnosti stromovou strukturou informací, a to i v případě, že existuje podpora složitých typů v indexu, někdy můžete chtít transformovat informace z obohaceného stromu na jednoduchý typ (např. pole řetězců). Mapování polí výstupu vám umožní provádět transformace datových tvarů sloučením informací.
+
+> [!NOTE]
+> Nedávno jsme povolili funkci mapování funkcí pro mapování polí výstupu. Další podrobnosti o funkcích mapování najdete v tématu [funkce mapování polí](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions) .
 
 ## <a name="use-outputfieldmappings"></a>Použití outputFieldMappings
 Pro mapování polí přidejte `outputFieldMappings` do definice indexeru, jak je znázorněno níže:
@@ -50,7 +53,10 @@ Tělo žádosti je strukturováno takto:
     "outputFieldMappings": [
         {
             "sourceFieldName": "/document/content/organizations/*/description",
-            "targetFieldName": "descriptions"
+            "targetFieldName": "descriptions",
+            "mappingFunction": {
+                "name": "base64Decode"
+            }
         },
         {
             "sourceFieldName": "/document/content/organizations",

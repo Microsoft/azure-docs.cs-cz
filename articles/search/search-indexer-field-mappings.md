@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a5820856f7d4c51e41162f01a9687304cb223088
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791914"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005804"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapování polí a transformace pomocí indexerů Azure Kognitivní hledání
 
@@ -36,7 +36,7 @@ Mapování polí se skládá ze tří částí:
 
 1. A `sourceFieldName`, který představuje pole ve zdroji dat. Tato vlastnost je povinná.
 2. Volitelné `targetFieldName`, které představuje pole v indexu vyhledávání. Je-li tento parametr vynechán, je použit stejný název jako ve zdroji dat.
-3. Volitelná `mappingFunction`, která může transformovat data pomocí jedné z několika předdefinovaných funkcí. Úplný seznam funkcí je [uvedený níže](#mappingFunctions).
+3. Volitelná `mappingFunction`, která může transformovat data pomocí jedné z několika předdefinovaných funkcí. To lze použít pro mapování vstupních i výstupních polí. Úplný seznam funkcí je [uvedený níže](#mappingFunctions).
 
 Mapování polí jsou přidána do `fieldMappings` pole definice indexeru.
 

@@ -3,15 +3,15 @@ title: Vytváření webových rozhraní API & rozhraní REST API pro Azure Logic
 description: Vytváření webových rozhraní API & rozhraní REST API pro volání rozhraní API, služeb nebo systémů pro integraci systému v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, jehollan, logicappspm
-ms.topic: article
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d892dc75d4e745912ceaf444b56494a2e0ed2a19
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270534"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005253"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytváření vlastních rozhraní API, která můžete volat z Azure Logic Apps
 
@@ -136,11 +136,13 @@ Pro tento model nastavte na řadiči dva koncové body: `subscribe` a`unsubscrib
 
 ![Vzor akce Webhooku](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-> [!NOTE]
-> Návrhář aplikace logiky v současné době nepodporuje zjišťování koncových bodů webhooků prostřednictvím Swagger. Pro tento model tedy musíte přidat [akci **Webhooku** ](../connectors/connectors-native-webhook.md) a zadat adresu URL, záhlaví a text pro vaši žádost. Viz také [akce a triggery pracovního postupu](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Chcete-li předat adresu URL zpětného volání, můžete `@listCallbackUrl()` v případě potřeby použít funkci pracovního postupu v libovolném z předchozích polí.
+Návrhář aplikace logiky v současné době nepodporuje zjišťování koncových bodů webhooků prostřednictvím Swagger. Pro tento model tedy musíte přidat [akci **Webhooku** ](../connectors/connectors-native-webhook.md) a zadat adresu URL, záhlaví a text pro vaši žádost. Viz také [akce a triggery pracovního postupu](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Příklad vzoru Webhooku najdete v tomto příkladu [triggeru Webhooku na GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-> [!TIP]
-> Příklad vzoru Webhooku najdete v tomto příkladu [triggeru Webhooku na GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Tady jsou některé další tipy a poznámky:
+
+* Chcete-li předat adresu URL zpětného volání, můžete `@listCallbackUrl()` v případě potřeby použít funkci pracovního postupu v libovolném z předchozích polí.
+
+* Pokud vlastníte aplikaci logiky i předplacenou službu, nemusíte volat `unsubscribe` koncový bod po volání adresy URL zpětného volání. V opačném případě musí modul runtime Logic Apps volat `unsubscribe` koncový bod k signalizaci, že nejsou očekávána žádná další volání a aby bylo možné vyčistit prostředky na straně serveru.
 
 <a name="triggers"></a>
 
@@ -171,7 +173,7 @@ Pokud třeba chcete pravidelně kontrolovat službu pro nové soubory, můžete 
 
 | Obsahuje `triggerState`požadavek? | Odpověď rozhraní API | 
 | -------------------------------- | -------------| 
-| Ne | Vrátí stav HTTP `202 ACCEPTED` a `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
+| No | Vrátí stav HTTP `202 ACCEPTED` a `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
 | Ano | Ověřte službu pro soubory přidané po `DateTime` pro. `triggerState` | 
 ||| 
 
@@ -198,13 +200,15 @@ Triggery Webhooku fungují podobně jako [Akce Webhooku](#webhook-actions) dří
 
 ![Vzor triggeru Webhooku](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-> [!NOTE]
-> Návrhář aplikace logiky v současné době nepodporuje zjišťování koncových bodů webhooků prostřednictvím Swagger. Pro tento model proto musíte přidat [Trigger **Webhooku** ](../connectors/connectors-native-webhook.md) a zadat adresu URL, záhlaví a text vaší žádosti. Viz také [Trigger HTTPWebhook](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Chcete-li předat adresu URL zpětného volání, můžete `@listCallbackUrl()` v případě potřeby použít funkci pracovního postupu v libovolném z předchozích polí.
->
-> Aby se zabránilo tomu, že se stejná data zpracovávají víckrát, měla by aktivační událost vyčistit data, která již byla přečtena a předána do aplikace logiky.
+Návrhář aplikace logiky v současné době nepodporuje zjišťování koncových bodů webhooků prostřednictvím Swagger. Pro tento model proto musíte přidat [Trigger **Webhooku** ](../connectors/connectors-native-webhook.md) a zadat adresu URL, záhlaví a text vaší žádosti. Viz také [Trigger HTTPWebhook](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Příklad vzoru Webhooku najdete [v ukázce tohoto kontroleru triggeru triggeru Webhooku na GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-> [!TIP]
-> Příklad vzoru Webhooku najdete [v ukázce tohoto kontroleru triggeru triggeru Webhooku na GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Tady jsou některé další tipy a poznámky:
+
+* Chcete-li předat adresu URL zpětného volání, můžete `@listCallbackUrl()` v případě potřeby použít funkci pracovního postupu v libovolném z předchozích polí.
+
+* Aby se zabránilo tomu, že se stejná data zpracovávají víckrát, měla by aktivační událost vyčistit data, která již byla přečtena a předána do aplikace logiky.
+
+* Pokud vlastníte aplikaci logiky i předplacenou službu, nemusíte volat `unsubscribe` koncový bod po volání adresy URL zpětného volání. V opačném případě musí modul runtime Logic Apps volat `unsubscribe` koncový bod k signalizaci, že nejsou očekávána žádná další volání a aby bylo možné vyčistit prostředky na straně serveru.
 
 ## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Vylepšení zabezpečení volání rozhraní API z Logic Apps
 

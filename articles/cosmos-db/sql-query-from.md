@@ -4,22 +4,22 @@ description: Přečtěte si o syntaxi SQL a příklad pro klauzuli FROM pro Azur
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587681"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005858"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Klauzule FROM v Azure Cosmos DB
 
 Klauzule FROM (`FROM <from_specification>`) je volitelná, pokud se zdroj nefiltruje nebo se v dotazu později nepoužívá. Dotaz, jako `SELECT * FROM Families` je například výčet v rámci `Families` celého kontejneru. Místo použití názvu kontejneru můžete použít také kořenový kořenový identifikátor pro kontejner.
 
-Klauzule FROM vynutila následující pravidla na dotaz:
+`FROM` Klauzule vynutila následující pravidla na dotaz:
 
-* Kontejner může mít alias, například `SELECT f.id FROM Families AS f` nebo jednoduše. `SELECT f.id FROM Families f` Tady `f` je alias pro `Families`. Stejně jako volitelné klíčové slovo pro [alias](sql-query-aliasing.md) identifikátoru.  
+* Kontejner může mít alias, například `SELECT f.id FROM Families AS f` nebo jednoduše. `SELECT f.id FROM Families f` Tady `f` je alias pro `Families`. Stejně jako volitelné klíčové slovo pro [alias](sql-query-working-with-json.md#aliasing) identifikátoru.  
 
 * Po aliasu nelze původní název zdroje svázat. Například je syntakticky neplatný, `SELECT Families.id FROM Families f` protože identifikátor `Families` byl alias a již jej nelze přeložit.  
 
@@ -30,30 +30,30 @@ Klauzule FROM vynutila následující pravidla na dotaz:
 ```sql  
 FROM <from_specification>  
   
-<from_specification> ::=   
+<from_specification> ::=
         <from_source> {[ JOIN <from_source>][,...n]}  
   
-<from_source> ::=   
+<from_source> ::=
           <container_expression> [[AS] input_alias]  
         | input_alias IN <container_expression>  
   
-<container_expression> ::=   
-        ROOT   
+<container_expression> ::=
+        ROOT
      | container_name  
      | input_alias  
      | <container_expression> '.' property_name  
      | <container_expression> '[' "property_name" | array_index ']'  
 ```  
   
-## <a name="arguments"></a>Argumenty
+## <a name="arguments"></a>Arguments
   
 - `<from_source>`  
   
   Určuje zdroj dat s aliasem nebo bez něj. Pokud alias není zadán, bude odvozen z `<container_expression>` pomocí následujících pravidel:  
   
-  -  Pokud je výraz container_name, container_name bude použit jako alias.  
+-  Pokud je výraz container_name, container_name bude použit jako alias.  
   
-  -  Pokud je `<container_expression>`výraz, pak property_name a property_name bude použit jako alias. Pokud je výraz container_name, container_name bude použit jako alias.  
+-  Pokud je `<container_expression>`výraz, pak property_name a property_name bude použit jako alias. Pokud je výraz container_name, container_name bude použit jako alias.  
   
 - FORMÁTU`input_alias`  
   
@@ -99,9 +99,9 @@ Pokud výraz kontejneru přistupuje k vlastnostem nebo prvkům pole a tato hodno
   
 Kontejnerový výraz může být v oboru kontejneru nebo v oboru dokumentu:  
   
--   Výraz je obor kontejneru, pokud je podkladový zdroj výrazu kontejneru buď ROOT, nebo `container_name`. Takový výraz představuje sadu dokumentů načtených z kontejneru přímo a není závislý na zpracování jiných výrazů kontejneru.  
+- Výraz je obor kontejneru, pokud je podkladový zdroj výrazu kontejneru buď ROOT, nebo `container_name`. Takový výraz představuje sadu dokumentů načtených z kontejneru přímo a není závislý na zpracování jiných výrazů kontejneru.  
   
--   Výraz je v oboru dokumentu, pokud je `input_alias` základní zdroj výrazu kontejneru představen dříve v dotazu. Takový výraz představuje sadu dokumentů získanou vyhodnocením výrazu kontejneru v oboru každého dokumentu, který patří do sady přidružené k kontejneru s aliasem.  Výsledná sada bude sjednocením sad získanou vyhodnocením výrazu kontejneru pro každý dokument v podkladové sadě. 
+- Výraz je v oboru dokumentu, pokud je `input_alias` základní zdroj výrazu kontejneru představen dříve v dotazu. Takový výraz představuje sadu dokumentů získanou vyhodnocením výrazu kontejneru v oboru každého dokumentu, který patří do sady přidružené k kontejneru s aliasem. Výsledná sada bude sjednocením sad získanou vyhodnocením výrazu kontejneru pro každý dokument v podkladové sadě.
 
 ## <a name="examples"></a>Příklady
 
