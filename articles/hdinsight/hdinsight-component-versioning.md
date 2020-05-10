@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 04/09/2020
-ms.openlocfilehash: 87c3e2439d1b4bef4a58663e3ea06d8bb7cb9b19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 98bb643e1a780754fcb3b9f4eb91d8f04dc4e90b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192531"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996384"
 ---
-# <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jaké jsou součásti Apache Hadoop a verze, které jsou k dispozici v HDInsight?
+# <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Součásti a verze Apache dostupné pro Azure HDInsight
 
 Přečtěte si informace o komponentách a verzích prostředí [Apache Hadoop](https://hadoop.apache.org/) v Microsoft Azure HDInsight a balíček zabezpečení podniku. Přečtěte si také, jak kontrolovat verze komponent Hadoop ve službě HDInsight.
 
-## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>Apache Hadoop komponenty k dispozici v různých verzích HDInsight
+## <a name="apache-components-available-with-different-hdinsight-versions"></a>Dostupné součásti Apache s různými verzemi HDInsight
 
 Azure HDInsight podporuje víc verzí clusterů Hadoop, které se dají kdykoli nasadit. 4. dubna 2017 je výchozí verze clusteru používaná službou Azure HDInsight 3,6.
 
@@ -53,7 +53,7 @@ Verze komponent přidružených ke clusterům HDInsight jsou uvedené v následu
 > [!NOTE]
 > Kvůli důležitým informacím o výkonu systému skončila podpora pro Kafka verze 0,10 v březnu 2019.
 
-## <a name="check-for-current-hadoop-component-version-information"></a>Vyhledat aktuální informace o verzi komponenty Hadoop
+## <a name="check-for-current-apache-component-version-information"></a>Vyhledat aktuální informace o verzi součásti Apache
 
 Verze komponent prostředí Hadoop spojené s verzemi clusterů HDInsight se můžou měnit s aktualizacemi služby HDInsight. Chcete-li zkontrolovat komponenty Hadoop a ověřit, které verze jsou používány pro cluster, použijte REST API Ambari. Příkaz **GetComponentInformation** načte informace o součástech služby. Podrobnosti najdete v dokumentaci k [Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
@@ -91,62 +91,18 @@ V následující tabulce jsou uvedeny verze HDInsight, které **nejsou** k dispo
 
 | Verze HDInsight | Verze HDP | Operační systém virtuálního počítače | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  Dostupnost na Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30. září 2016 |5. září 2017 |28. června 2018 |Ano |Ne |
-| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29. března 2016 |29. prosince 2016 |9. ledna 2018 |Ano |Ne |
-| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2. prosince 2015 |Červen 27, 2016 |31. července 2018 |Ano |Ne |
-| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2. prosince 2015 |Červen 27, 2016 |31. července 2017 |Ano |Ne |
-| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS nebo Windows Server 2012 R2 |18. února 2015 |1. března 2016 |1. dubna 2017 |Ano |Ne |
-| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Ano |Ne |
-| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11. února 2014 |17. září 2014 |30. června 2015 |Ano |Ne |
-| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28. října 2013 |12. května 2014 |31. května 2015 |Ano |Ne |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30. září 2016 |5. září 2017 |28. června 2018 |Ano |No |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29. března 2016 |29. prosince 2016 |9. ledna 2018 |Ano |No |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2. prosince 2015 |Červen 27, 2016 |31. července 2018 |Ano |No |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2. prosince 2015 |Červen 27, 2016 |31. července 2017 |Ano |No |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS nebo Windows Server 2012 R2 |18. února 2015 |1. března 2016 |1. dubna 2017 |Ano |No |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Ano |No |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11. února 2014 |17. září 2014 |30. června 2015 |Ano |No |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28. října 2013 |12. května 2014 |31. května 2015 |Ano |No |
 | HDInsight 1,6 |HDP 1,1 | |28. října 2013 |26. dubna 2014 |31. května 2015 |Ne |Ne |
 
 > [!NOTE]  
 > Clustery s vysokou dostupností se dvěma hlavními uzly se ve výchozím nastavení nasazují pro HDInsight verze 2,1 a novější. Pro clustery HDInsight verze 1,6 nejsou k dispozici.
-
-## <a name="enterprise-security-package-for-hdinsight"></a>Balíček zabezpečení podniku pro HDInsight
-
-Enterprise Security je volitelný balíček, který můžete přidat do clusteru HDInsight jako součást pracovního postupu vytvoření clusteru. Balíček zabezpečení podniku podporuje:
-
-- Integrace se službou Active Directory pro ověřování.
-
-    V minulosti jste vytvořili clustery HDInsight s místními uživateli a místními uživateli SSH. Místní uživatel správce má přístup ke všem souborům, složkám, tabulkám a sloupcům.  Pomocí Balíček zabezpečení podniku můžete povolit řízení přístupu na základě role integrací služby HDInsight se službou Active Directory. Který zahrnuje místní službu Active Directory Azure Active Directory Domain Services. Nebo Active Directory na virtuálním počítači s IaaS. Správce domény v clusteru může uživatelům udělit vlastní uživatelské jméno a heslo v podnikovém (doméně).
-
-    Další informace naleznete v tématu:
-
-    - [Úvod do zabezpečení Apache Hadoop s využitím clusterů HDInsight připojených k doméně](./domain-joined/hdinsight-security-overview.md)
-    - [Plánování clusterů Apache Hadoop připojených k doméně Azure v HDInsight](./domain-joined/apache-domain-joined-architecture.md)
-    - [Konfigurace prostředí sandboxu připojeného k doméně](./domain-joined/apache-domain-joined-configure.md)
-    - [Konfigurace clusterů HDInsight připojených k doméně pomocí Azure Active Directory Domain Services](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
-
-- Autorizace pro data
-
-  - Integrace s Apache Ranger pro autorizaci pro podregistry, Spark SQL a přízové fronty.
-  - Můžete nastavit řízení přístupu k souborům a složkám.
-
-    Další informace naleznete v tématu:
-
-  - [Konfigurace zásad Apache Hive v HDInsight připojené k doméně](./domain-joined/apache-domain-joined-run-hive.md)
-
-- Prohlédněte si protokoly auditu a sledujte přístup a nakonfigurované zásady.
-
-### <a name="supported-cluster-types"></a>Podporované typy clusterů
-
-V současné době jsou Balíček zabezpečení podniku podporovány pouze následující typy clusterů:
-
-- Hadoop (pouze HDInsight 3,6)
-- Spark
-- Kafka
-- HBase
-- Interaktivní dotaz
-
-### <a name="support-for-azure-data-lake-storage"></a>Podpora Azure Data Lake Storage
-
-Balíček zabezpečení podniku podporuje použití Azure Data Lake Storage jako primárního úložiště i úložiště doplňku.
-
-### <a name="pricing-and-service-level-agreement-sla"></a>Ceny a smlouvy o úrovni služeb (SLA)
-
-Informace o cenách a smlouvě SLA pro Balíček zabezpečení podniku najdete v tématu [ceny služby HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Smlouva o úrovni služeb pro verze clusteru HDInsight
 
@@ -166,3 +122,4 @@ Další informace o tom, které SKU virtuálních počítačů vybrat pro váš 
 - [Nastavení clusteru pro Apache Hadoop, Spark a další funkce v HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 - [Práce v Apache Hadoop ve službě HDInsight z počítače s Windows](hdinsight-hadoop-windows-tools.md)
 - [Poznámky k verzi Hortonworks přidružené k verzím Azure HDInsight](./hortonworks-release-notes.md)
+- [Balíček zabezpečení podniku](./enterprise-security-package.md)

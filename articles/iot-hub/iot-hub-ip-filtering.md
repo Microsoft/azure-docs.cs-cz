@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/22/2017
 ms.author: robinsh
-ms.openlocfilehash: a6bd8a766f3205358a65ef2fd0816643e4261cab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1550254e969e96fbc83c4c344189d414a8fa8d3
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68414265"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995511"
 ---
 # <a name="use-ip-filters"></a>Použití filtrů IP adres
 
@@ -66,7 +66,7 @@ Pokud chcete upravit stávající pravidlo, vyberte data, která chcete změnit,
 > Odmítání IP adres může zabránit jiným službám Azure (například Azure Stream Analytics, Azure Virtual Machines nebo Device Explorer na portálu) v interakci se službou IoT Hub.
 
 > [!WARNING]
-> Pokud používáte Azure Stream Analytics (ASA) ke čtení zpráv ze služby IoT Hub s povoleným filtrováním IP adres, použijte v připojovacím řetězci ASA název kompatibilní s centrem událostí a koncový bod vašeho IoT Hub.
+> Pokud používáte Azure Stream Analytics (ASA) ke čtení zpráv ze služby IoT Hub s povoleným filtrováním IP adres, použijte název a koncový bod služby IoT Hub, který je kompatibilní s centrem událostí, a ručně přidejte [vstup datového proudu Event Hubs](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs#stream-data-from-event-hubs) do ASA.
 
 ## <a name="delete-an-ip-filter-rule"></a>Odstraní pravidlo filtru IP.
 

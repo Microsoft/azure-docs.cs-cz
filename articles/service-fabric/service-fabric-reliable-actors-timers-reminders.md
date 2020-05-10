@@ -1,16 +1,14 @@
 ---
 title: Reliable Actors časovače a připomenutí
 description: Úvod do časovačů a připomenutí Service Fabric Reliable Actors, včetně pokynů k použití jednotlivých.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67dc5d9706c2176b2fe70d2540be00d0af79fd80
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75639611"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996355"
 ---
 # <a name="actor-timers-and-reminders"></a>Časovače a připomenutí objektu actor
 Objekty actor mohou naplánovat pravidelnou práci sami registrací časovačů nebo připomenutí. Tento článek ukazuje, jak používat časovače a připomenutí a vysvětluje rozdíly mezi nimi.
@@ -122,12 +120,17 @@ Další období časovače se spustí poté, co zpětné volání dokončí prov
 
 Modul runtime Actors ukládá změny provedené ve Správci stavu objektu actor po dokončení zpětného volání. Pokud při ukládání stavu dojde k chybě, bude objekt actor deaktivován a bude aktivována nová instance.
 
+Na rozdíl od [připomenutí](#actor-reminders)nejde časovače aktualizovat. Pokud `RegisterTimer` je volána znovu, bude registrován nový časovač.
+
 Všechny časovače jsou zastaveny, když je objekt actor deaktivován v rámci uvolňování paměti. Žádná zpětná volání časovače nejsou vyvolána za tímto. Modul runtime Actors také neuchovává žádné informace o časovačích, které byly spuštěny před deaktivací. Je až do objektu actor k registraci všech časovačů, které potřebuje, když se znovu aktivuje v budoucnu. Další informace najdete v části o [uvolňování paměti objektu actor](service-fabric-reliable-actors-lifecycle.md).
 
 ## <a name="actor-reminders"></a>Připomenutí objektu actor
-Připomenutí jsou mechanismem, jak aktivovat trvalá zpětná volání v objektu actor v zadaných časech. Jejich funkce se podobá časovačům. Ale na rozdíl od časovačů se připomenutí spouštějí za všech okolností, dokud objekt actor explicitně zruší jejich registraci, nebo je objekt actor explicitně odstraněn. Konkrétně se v rámci deaktivace a převzetí služeb při selhání spouštějí připomenutí, protože modul runtime Actors uchovává informace o připomenutích objektů actor pomocí zprostředkovatele stavu objektu actor. Počítejte s tím, že spolehlivost upomínek je svázána se zárukami spolehlivosti stavu poskytovanými poskytovatelem stavu objektu actor. To znamená, že u aktérů, jejichž trvalost stavu je nastavená na None, se připomenutí po převzetí služeb při selhání neaktivují. 
+Připomenutí jsou mechanismem, jak aktivovat trvalá zpětná volání v objektu actor v zadaných časech. Jejich funkce se podobá časovačům. Ale na rozdíl od časovačů se připomenutí spouštějí za všech okolností, dokud objekt actor explicitně zruší jejich registraci, nebo je objekt actor explicitně odstraněn. Konkrétně se v rámci deaktivace a převzetí služeb při selhání spouštějí připomenutí, protože modul runtime Actors uchovává informace o připomenutích objektů actor pomocí zprostředkovatele stavu objektu actor. I na rozdíl od časovačů lze existující připomenutí aktualizovat voláním metody registrace (`RegisterReminderAsync`) znovu pomocí stejného *připomenutí*.
 
-Pro registraci připomenutí volá objekt actor `RegisterReminderAsync` metodu poskytnutou pro základní třídu, jak je znázorněno v následujícím příkladu:
+> [!NOTE]
+> Spolehlivost upomínek je vázána na záruky spolehlivosti stavu poskytované poskytovatelem stavu objektu actor. To znamená, že u aktérů, jejichž trvalost stavu je nastavená na *none*, se připomenutí po převzetí služeb při selhání neaktivují.
+
+Pro registraci připomenutí volá objekt actor [`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) metodu poskytnutou pro základní třídu, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 protected override async Task OnActivateAsync()

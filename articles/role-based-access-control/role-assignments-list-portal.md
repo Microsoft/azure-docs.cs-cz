@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ed7f2b57df97a99a73ad191e45fb900a04f8021f
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 04a13b2b3b8cd6e696f0ac6601b5f23b9d6cb24d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983019"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996646"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Vypsání přiřazení rolí Azure pomocí Azure Portal
 
@@ -130,7 +130,7 @@ Pokud chcete vypsat přístup pro uživatele, skupinu, instanční objekt nebo s
 
 ## <a name="list-number-of-role-assignments"></a>Výpis počtu přiřazení rolí
 
-V každém předplatném můžete mít až **2000** přiřazení rolí. Aby bylo možné tento limit sledovat, karta **přiřazení rolí** obsahuje graf, který uvádí počet přiřazení rolí pro aktuální předplatné.
+V každém předplatném můžete mít až **2000** přiřazení rolí. Toto omezení zahrnuje přiřazení rolí v rámci předplatného, skupiny prostředků a oborů prostředků. Aby bylo možné tento limit sledovat, karta **přiřazení rolí** obsahuje graf, který uvádí počet přiřazení rolí pro aktuální předplatné.
 
 ![Řízení přístupu – počet grafů přiřazení rolí](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 

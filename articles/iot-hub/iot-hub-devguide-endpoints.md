@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 53660ad93ab2218d546ae6f363873c4d66872e2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9554713e50e7a2ead2e25f274428ad0ecba4934d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730308"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996956"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odkazy-IoT Hub koncové body
 
@@ -54,9 +54,9 @@ Následující seznam popisuje koncové body:
 
   * *Přijmout požadavky přímých metod*. Zařízení používá tento koncový bod k naslouchání požadavkům [přímých metod](iot-hub-devguide-direct-methods.md).
 
-    Tyto koncové body jsou vystaveny pomocí protokolů [MQTT v 3.1.1](https://mqtt.org/), https 1,1 a [AMQP 1,0](https://www.amqp.org/) . AMQP je k dispozici i přes [objekty WebSockets](https://tools.ietf.org/html/rfc6455) na portu 443.
+    Tyto koncové body jsou vystaveny pomocí protokolů [MQTT v 3.1.1](https://mqtt.org/), https 1,1 a [AMQP 1,0](https://www.amqp.org/) . AMQP a MQTT jsou dostupné i přes [objekty WebSockets](https://tools.ietf.org/html/rfc6455) na portu 443.
 
-* **Koncové body služby**. Každé centrum IoT Hub zpřístupňuje sadu koncových bodů pro back-end řešení ke komunikaci s vašimi zařízeními. S jednou výjimkou se tyto koncové body zveřejňují jenom pomocí protokolu [AMQP](https://www.amqp.org/) . Koncový bod volání metody se zveřejňuje prostřednictvím protokolu HTTPS.
+* **Koncové body služby**. Každé centrum IoT Hub zpřístupňuje sadu koncových bodů pro back-end řešení ke komunikaci s vašimi zařízeními. S jednou výjimkou se tyto koncové body zveřejňují jenom pomocí protokolů WebSockets [AMQP](https://www.amqp.org/) a AMQP. Koncový bod volání přímé metody se zveřejňuje prostřednictvím protokolu HTTPS.
   
   * *Příjem zpráv ze zařízení do cloudu*. Tento koncový bod je kompatibilní s [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Back-endové služba ho může používat ke čtení [zpráv typu zařízení-Cloud](iot-hub-devguide-messages-d2c.md) odesílaných vašimi zařízeními. Kromě tohoto integrovaného koncového bodu můžete vytvořit vlastní koncové body ve službě IoT Hub.
   

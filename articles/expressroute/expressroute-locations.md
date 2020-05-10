@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63226089a0a87660f0796cdfef2b729070ca01e3
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: d7af6bd0f36f5a1fc11acbd7906088d7d5c17d32
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837851"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996804"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -92,7 +92,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Podporuje se |Podporuje se |Amsterdam2, Chicago, Frankfurt, Hongkong, Las Vegas, London2, New York, Paříž, San Antonio, Silicon sedl, Tokio, Toronto, Washington DC, Washington DC2 |
 | **[Hlavní telekomunikační systémy](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Podporuje se |Podporuje se |Hongkong, Taipei |
 | **Čína – mobilní mezinárodní** |Podporuje se |Podporuje se | Singapur |
-| **China Telecom Global** |Podporuje se |Podporuje se |Hongkong |
+| **China Telecom Global** |Podporuje se |Podporuje se |Hongkong, Hongkong Kong2 |
 | **Čína UNICOM Global** |Podporuje se |Podporuje se | Singapur2 |
 | **[Chunghwa Telecom](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |Podporuje se |Podporuje se |WAN |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Podporuje se |Podporuje se |Chicago, Praha, Montreal, Toronto, Vancouver, Washington DC |

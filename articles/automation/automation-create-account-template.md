@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 19aee9d5fdf3f4a3d74484bb7cb2e609bc2807b4
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 949b07a16b2c2b08891d721e46948481cfe572b2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927854"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996101"
 ---
 # <a name="create-an-automation-account-by-using-an-azure-resource-manager-template"></a>Vytvoření účtu Automation pomocí šablony Azure Resource Manager
 
@@ -22,7 +22,7 @@ Pomocí [Azure Resource Manager šablon](../azure-resource-manager/templates/tem
 * Automatizuje vytváření Azure Automation účtu.
 * Propojí účet Automation s pracovním prostorem Log Analytics.
 
-Šablona neautomatizuje připojování virtuálních počítačů nebo řešení Azure bez Azure. 
+Šablona neautomatizuje povolování virtuálních počítačů Azure nebo mimo Azure. 
 
 >[!NOTE]
 >Vytvoření účtu Automation spustit jako není podporované, když používáte šablonu Azure Resource Manager. Pokud chcete vytvořit účet Spustit jako ručně z portálu nebo pomocí PowerShellu, přečtěte si téma [Správa účtů spustit jako](manage-runas-account.md).

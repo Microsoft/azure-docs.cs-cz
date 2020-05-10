@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 05/01/2020
+ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: b88f4aad650d77fea12677e61d3f249a77367e6f
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 791f2e9bf825bb0a1d1ce555c9fbd879106213df
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690691"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995830"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Správa uživatelů pomocí mých zaměstnanců (Preview)
 
@@ -118,7 +118,7 @@ Chcete-li spravovat telefonní číslo uživatele, je nutné přiřadit jednu z 
 - [Správce privilegovaného ověřování](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globální správce](directory-assign-admin-roles.md#global-administrator--company-administrator)
 
-## <a name="search"></a>Vyhledávání
+## <a name="search"></a>Search
 
 V organizaci můžete hledat oddělení Austrálie a uživatele ve vaší organizaci pomocí panelu hledání v části Moji zaměstnanci. Můžete vyhledávat ve všech centrech a uživatelích ve vaší organizaci, ale můžete provádět změny jenom pro uživatele, kteří jsou ve AU, přes který jste měli oprávnění správce.
 

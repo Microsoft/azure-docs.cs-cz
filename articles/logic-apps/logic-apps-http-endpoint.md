@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 734ddcacf46804db8d9aac091b0a9ac0ca512e18
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: aa3733b1231b92f30f5fd36dab64794129e62b07
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983713"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995340"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Volání, triggery nebo vnořování aplikací logiky pomocí koncových bodů HTTPS v Azure Logic Apps
 
@@ -140,17 +140,19 @@ Ve výchozím nastavení očekává aktivační událost požadavek POST. Může
 
    ![Vyberte metodu žádosti očekávanou triggerem.](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
-## <a name="accept-parameters-in-endpoint-url"></a>Přijmout parametry v adrese URL koncového bodu
+<a name="endpoint-url-parameters"></a>
 
-Pokud chcete, aby adresa URL koncového bodu přijímala hodnoty parametrů prostřednictvím adresy URL koncového bodu, máte tyto možnosti:
+## <a name="pass-parameters-through-endpoint-url"></a>Předání parametrů prostřednictvím adresy URL koncového bodu
+
+Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncového bodu, máte tyto možnosti:
 
 * [Přijímá hodnoty prostřednictvím parametrů GET](#get-parameters) nebo parametrů adresy URL.
 
-  Tyto hodnoty se při odesílání požadavku na adresu URL koncového bodu předávají jako páry název-hodnota. Pro tuto možnost musíte použít metodu GET v triggeru žádosti. V následné akci můžete získat hodnoty parametrů jako aktivační výstupy pomocí `triggerOutputs()` funkce ve výrazu.
+  Tyto hodnoty se předávají jako páry název-hodnota v adrese URL koncového bodu. Pro tuto možnost musíte použít metodu GET v triggeru žádosti. V následné akci můžete získat hodnoty parametrů jako aktivační výstupy pomocí `triggerOutputs()` funkce ve výrazu.
 
 * [Přijměte hodnoty pomocí relativní cesty](#relative-path) pro parametry v triggeru žádosti.
 
-  Tyto hodnoty jsou předány při odeslání požadavku na adresu URL koncového bodu. Musíte také explicitně [Vybrat metodu](#select-method) , kterou aktivační procedura očekává. V následné akci můžete získat hodnoty parametrů jako aktivační výstupy odkazem přímo na tyto výstupy.
+  Tyto hodnoty se předávají pomocí relativní cesty v adrese URL koncového bodu. Musíte také explicitně [Vybrat metodu](#select-method) , kterou aktivační procedura očekává. V následné akci můžete získat hodnoty parametrů jako aktivační výstupy odkazem přímo na tyto výstupy.
 
 <a name="get-parameters"></a>
 

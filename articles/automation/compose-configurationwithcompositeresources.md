@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e7625ae95d5355ae1122a16ea4828eed5f78c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1840f4049f8450295e179a89b472d7710c5f61a0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682927"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993779"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>Vytváření konfigurací DSC v konfiguraci stavu Azure Automation pomocí složených prostředků
 
@@ -34,9 +34,9 @@ Než budete moct přiřadit konfiguraci provedenou ze složených prostředků v
 1. V kroku **Parameters** je k dispozici parametr pro každý složený prostředek, aby bylo možné zadat hodnoty. Pokud má parametr popis, zobrazí se vedle pole parametru. Pokud je parametr `PSCredential` typu, zobrazuje rozevírací seznam objekty **přihlašovacích údajů** v aktuálním účtu Automation. K dispozici je také možnost **+ Přidat pověření** . Po zadání všech požadovaných parametrů klikněte na **Uložit a zkompilovat**.
    ![Snímek obrazovky s krokem parametrů na stránce konfigurace pro psaní](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-Po uložení nové konfigurace je odeslána pro kompilaci. Stav úlohy kompilace můžete zobrazit stejně jako všechny importované konfigurace. Další informace naleznete v tématu [zobrazení úlohy kompilace](automation-dsc-getting-started.md#viewing-a-compilation-job).
+Po uložení nové konfigurace je odeslána pro kompilaci. Stav úlohy kompilace můžete zobrazit stejně jako všechny importované konfigurace. Další informace naleznete v tématu [zobrazení úlohy kompilace](automation-dsc-getting-started.md#view-a-compilation-job).
 
-Po úspěšném dokončení kompilace se nová konfigurace zobrazí na kartě **zkompilované konfigurace** . Pak můžete konfiguraci přiřadit ke spravovanému uzlu pomocí kroků v části [Změna přiřazení uzlu k jiné konfiguraci uzlu](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration).
+Po úspěšném dokončení kompilace se nová konfigurace zobrazí na kartě **zkompilované konfigurace** . Pak můžete konfiguraci přiřadit ke spravovanému uzlu pomocí kroků v části [Změna přiřazení uzlu k jiné konfiguraci uzlu](automation-dsc-getting-started.md#reassign-a-node-to-a-different-node-configuration).
 
 ## <a name="next-steps"></a>Další kroky
 

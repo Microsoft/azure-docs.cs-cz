@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a4082ddfd8c092a6f9223a0894f21bc734b6efb6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927968"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997017"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Řešení potíží s agentem aktualizace pro Linux
 
@@ -82,14 +82,14 @@ Tato kontrolu určuje, zda agent hlásí do více pracovních prostorů. Update 
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-Tato kontrolu ověří, zda má Log Analytics Agent pro Linux balíček Hybrid Runbook Worker. Tento balíček je nutný, aby Update Management fungoval.
+Tato kontrolu ověří, zda má Log Analytics Agent pro Linux balíček Hybrid Runbook Worker. Tento balíček je nutný, aby Update Management fungoval. Další informace najdete v tématu [agent Log Analytics pro Linux není spuštěný](hybrid-runbook-worker.md#oms-agent-not-running).
+
+Update Management stáhne Hybrid Runbook Worker balíčky z koncového bodu operací. Proto pokud Hybrid Runbook Worker neběží a [koncový bod operací](#operations-endpoint) selže, může aktualizace selhat.
 
 ### <a name="hybrid-runbook-worker-status"></a>Stav Hybrid Runbook Worker
 
-Tato kontrolu zajišťuje, že Hybrid Runbook Worker v počítači běží. V případě, že Hybrid Runbook Worker pracuje správně, by měly být k dispozici následující procesy. Další informace najdete v tématu [Poradce při potížích s agentem Log Analytics pro Linux](hybrid-runbook-worker.md#oms-agent-not-running).
+Tato kontrolu zajišťuje, že Hybrid Runbook Worker v počítači běží. Procesy v příkladu níže by měly být k dispozici, pokud Hybrid Runbook Worker pracuje správně.
 
-> [!NOTE]
-> Pokud Hybrid Runbook Worker neběží a koncový bod operací se nezdařil, aktualizace může selhat. Update Management stáhne balíčky hybridního pracovního procesu z koncového bodu operací.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -107,13 +107,13 @@ Tato kontrolu zajistí, že počítač má přístup k Internetu.
 
 Tato kontrolu určuje, zda Hybrid Runbook Worker může správně komunikovat s Azure Automation v pracovním prostoru Log Analytics.
 
-Konfigurace proxy serveru a brány firewall musí umožňovat, aby agent Hybrid Runbook Worker komunikoval s koncovým bodem registrace. Seznam adres a portů, které se mají otevřít, najdete v tématu [Plánování sítě pro hybridní pracovní procesy](../automation-hybrid-runbook-worker.md#network-planning).
+Konfigurace proxy serveru a brány firewall musí umožňovat, aby agent Hybrid Runbook Worker komunikoval s koncovým bodem registrace. Seznam adres a portů, které se mají otevřít, najdete v tématu [Plánování sítě](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="operations-endpoint"></a>Koncový bod operací
 
-Tato kontrolu určuje, zda může agent správně komunikovat se službou data runtime úlohy.
+Tato kontrolu určuje, zda agent Log Analytics může správně komunikovat se službou data runtime úlohy.
 
-Konfigurace proxy serveru a brány firewall musí umožňovat, aby agent Hybrid Runbook Worker komunikoval se službou data runtime úlohy. Seznam adres a portů, které se mají otevřít, najdete v tématu [Plánování sítě pro hybridní pracovní procesy](../automation-hybrid-runbook-worker.md#network-planning).
+Konfigurace proxy serveru a brány firewall musí umožňovat, aby agent Hybrid Runbook Worker komunikoval se službou data runtime úlohy. Seznam adres a portů, které se mají otevřít, najdete v tématu [Plánování sítě](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="log-analytics-endpoint-1"></a>Log Analytics koncový bod 1
 

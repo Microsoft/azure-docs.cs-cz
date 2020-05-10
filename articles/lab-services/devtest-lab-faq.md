@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8697c7a82e271919f8d5aaa48160aa93c833809b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270781"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996903"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé z nejběžnějších otázek o Azure DevTest Labs.
@@ -209,6 +209,9 @@ Zkopírování stávajících virtuálních počítačů do DevTest Labs:
 ### <a name="can-i-attach-multiple-disks-to-my-vms"></a>Můžu k virtuálním počítačům připojit více disků?
 
 Ano, k virtuálním počítačům můžete připojit několik disků.
+
+### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Jsou pro DevTest Labs podporované image Gen 2?
+Ne. Služba DevTest Labs nepodporuje [Image Gen 2](../virtual-machines/windows/generation-2.md). Pokud je pro Image k dispozici jak 1, tak i Gen 2, při vytváření virtuálního počítače se v DevTest Labs zobrazí jenom verze 1. generace. Obrázek se nezobrazí, pokud je k dispozici pouze obecná verze 2. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Pokud chci pro svoje testování použít bitovou kopii operačního systému Windows, musím si koupit předplatné MSDN?
 Pokud chcete pro vývoj nebo testování v Azure použít image operačního systému Windows Client (Windows 7 nebo novější), proveďte jeden z následujících kroků:
