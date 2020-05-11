@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b5fec8bbc0db78454b080a411702014bd96f7db9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4df49b4e68769a907423c4edef9f8820df4d20b7
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76887651"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006488"
 ---
 ## <a name="locate-a-cloud-spatial-anchor"></a>Vyhledání prostorového kotvícího kotvy
 
@@ -12,6 +12,9 @@ Vyhledávání dříve uloženého cloudového kotvy je jedním z hlavních dův
 - Vyhledejte kotvy podle identifikátoru.
 - Vyhledá kotvy připojené k dříve umístěnému ukotvení. [Tady](/azure/spatial-anchors/concepts/anchor-relationships-way-finding/)najdete informace o souvislostech kotvy.
 - Najděte kotvu s využitím [hrubého prostředí](/azure/spatial-anchors/concepts/coarse-reloc/).
+
+> [!NOTE]
+> Pokaždé, když vyhledáte kotvu, se prostorové kotvy Azure pokusí použít shromážděná data prostředí k rozšíření vizuálních informací o kotvě. Pokud máte potíže s umístěním kotvy, může být užitečné vytvořit kotvu a pak ji najít několikrát z různých úhlů a světelných podmínek.
 
 Pokud vyhledáváte cloudové kotvy podle identifikátoru, budete chtít uložit identifikátor prostorové kotvy cloudu do back-endové služby vaší aplikace a zpřístupnit ho pro všechna zařízení, která se k němu můžou správně ověřit. Příklad najdete v tématu [kurz: sdílení prostorových ukotvení napříč zařízeními](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/).
 

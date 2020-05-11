@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76844883"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004477"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy týkající se prostorových kotev Azure
 
@@ -49,6 +49,10 @@ Další informace najdete v tématu [Přehled prostorových kotev Azure](overvie
 
 **A:** Kotvy jsou izolované pomocí účtu Azure. Jenom aplikace, kterým udělíte přístup k vašemu účtu, budou mít přístup k kotvám v rámci účtu.
 
+**Otázka: jak Azure prostorové kotvy ukládají data?**
+
+**A:** Všechna data jsou ukládána šifrovanou pomocí šifrovacího klíče spravovaných Microsoftem.
+
 **Otázka: Jaké informace o prostředí se přenáší a ukládají do služby při použití prostorových kotev Azure? Jsou obrázky prostředí přenášeny a uloženy?**
 
 Odpověď **: při**vytváření nebo hledání kotev jsou obrázky prostředí zpracovávány v zařízení do odvozeného formátu. Tento odvozený formát je přenášen do služby a uložen ve službě.
@@ -59,7 +63,6 @@ Prostorové kotvy Azure vyhovují [podmínkám smlouvy o poskytování služeb A
 
 ![Prostředí a jeho odvozený cloudový](./media/sparse-point-cloud.png)
 bod *– Obrázek 1: prostředí a jeho odvozený Cloud s zhuštěným bodem*
-
 
 **Otázka: existuje způsob, jak mohu odeslat diagnostické informace společnosti Microsoft?**
 

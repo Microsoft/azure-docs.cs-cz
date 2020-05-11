@@ -1,14 +1,14 @@
 ---
 title: Ukázkové ovládací prvky NHS podrobného plánu pro Spojené království – oficiální &
 description: Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-ms.date: 12/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88f9606df5c3dcbca6ade05be918e3500a6ba64c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74851362"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005613"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království
 
@@ -27,9 +27,6 @@ Podrobný plán vám pomůže zajistit, aby přenos informací se službami Azur
 - Měl by se povolit zabezpečený přenos do účtů úložiště
 - Zobrazit výsledky auditu z webových serverů Windows, které nepoužívají protokoly zabezpečené komunikace
 - Nasazení požadavků pro audit webových serverů Windows, které nepoužívají zabezpečené komunikační protokoly
-- V aplikaci API by se měla použít nejnovější verze TLS.
-- Ve vaší webové aplikaci by se měla použít nejnovější verze TLS.
-- V Function App by se měla použít nejnovější verze TLS.
 
 ## <a name="23-data-at-rest-protection"></a>2,3 dat při ochraně proti REST
 
@@ -129,8 +126,8 @@ Tento podrobný plán vám také pomůže řídit přístup k prostředkům Azur
 
 - \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
 - \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
-- \[Verze\]Preview: Auditovat virtuální počítače se systémem Linux, které mají účty bez hesla
-- \[Preview\]: Auditovat virtuální počítače Linux, které umožňují vzdálená připojení z účtů bez hesel
+- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které mají účty bez hesla
+- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
 - Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.
 - Virtuální počítače by se měly migrovat na nové prostředky Azure Resource Manager.
 - Auditovat virtuální počítače, které nepoužívají spravované disky
@@ -141,12 +138,10 @@ Kromě používání více než 25 zásad pro příslušnou zabezpečenou správ
 
 - Auditování neomezeného síťového přístupu k účtům úložiště
 - Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.
-- Pravidla skupin zabezpečení sítě pro webové aplikace v IaaS by se měla posílit.
 - Přístup přes internetový koncový bod by měl být omezený.
-- Pravidla skupiny zabezpečení sítě pro virtuální počítače s přístupem k Internetu by měla být zesílená.
+- Doporučení adaptivního posílení zabezpečení sítě by se měla použít na internetových virtuálních počítačích.
 - Řešení ochrany koncových bodů by se mělo nainstalovat na Virtual Machine Scale Sets.
 - Na virtuálních počítačích by se mělo používat řízení přístupu k síti podle potřeby
-- Auditování neomezeného síťového přístupu k účtům úložiště
 - Vzdálené ladění by mělo být pro Function App vypnuté.
 - Vzdálené ladění by mělo být pro webovou aplikaci vypnuté.
 - Pro aplikaci API by mělo být vypnuto vzdálené ladění.
@@ -179,13 +174,13 @@ Tento podrobný plán také přiřadí Azure Policy definice pro audit účtů, 
 
 Tento podrobný plán také přiřadí definici Azure Policy, která Audituje oprávnění souboru s heslem pro virtuální počítače Linux, pokud jsou nesprávně nastavena. Tento návrh vám umožní podniknout nápravná opatření, aby nedošlo k ohrožení ověřovatelů.
 
-- \[Verze\]Preview: oprávnění k souboru auditu pro virtuální počítače Linux/etc/passwd jsou nastavená na 0644.
+- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, u kterých není oprávnění k souboru passwd nastaveno na 0644
 
 ## <a name="13-audit-information-for-users"></a>13 informací o auditu pro uživatele
 
 Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaznamenávány přiřazením [Azure Policy](../../../policy/overview.md) definicí, které auditují nastavení protokolů v prostředcích Azure. Přiřazená zásada taky Audituje, pokud virtuální počítače neodesílají protokoly do zadaného pracovního prostoru Log Analytics.
 
-- Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
+- Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Auditování nastavení diagnostiky
 - \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
 - \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače s Windows

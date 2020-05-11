@@ -1,14 +1,14 @@
 ---
 title: Ukázkové ovládací prvky PBMM podrobného plánu pro Kanadu
 description: Mapování ovládacích prvků pro ukázky federální PBMM podrobného plánu pro Kanadu Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-ms.date: 09/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8fc5b2f369dbe174fb4d5ea8160d592e9aaef3af
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74545256"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005715"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Mapování ovládacích prvků pro ukázku federálního PBMM podrobného plánu pro Kanadu
 
@@ -57,8 +57,8 @@ Jenom jeden vlastník předplatného Azure nepovoluje redundanci správy. I kdy�
 
 - Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.
 - K vašemu předplatnému by měl být přiřazený víc než jeden vlastník.
-- Auditovat virtuální počítače s Windows, ve kterých skupina Administrators obsahuje některé ze zadaných členů
-- Auditovat virtuální počítače s Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy
+- Zobrazit výsledky auditu z virtuálních počítačů s Windows, ve kterých skupina Administrators obsahuje některé ze zadaných členů
+- Zobrazit výsledky auditu z virtuálních počítačů s Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy
 - Nasaďte požadavky na auditování virtuálních počítačů s Windows, ve kterých skupina Administrators obsahuje některé ze zadaných členů.
 - Nasaďte požadavky na auditování virtuálních počítačů s Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy.
 
@@ -68,8 +68,8 @@ Azure implementuje [řízení přístupu na základě role](../../../../role-bas
 
 - Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.
 - K vašemu předplatnému by měl být přiřazený víc než jeden vlastník.
-- Auditovat virtuální počítače s Windows, ve kterých skupina Administrators obsahuje některé ze zadaných členů
-- Auditovat virtuální počítače s Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy
+- Zobrazit výsledky auditu z virtuálních počítačů s Windows, ve kterých skupina Administrators obsahuje některé ze zadaných členů
+- Zobrazit výsledky auditu z virtuálních počítačů s Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy
 - Nasaďte požadavky na auditování virtuálních počítačů s Windows, ve kterých skupina Administrators obsahuje některé ze zadaných členů.
 - Nasaďte požadavky na auditování virtuálních počítačů s Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy.
 
@@ -85,7 +85,7 @@ Funkce zjišťování a klasifikace dat pro rozšířené zabezpečení dat pro 
 
 Tento podrobný plán vám pomůže s monitorováním a řízením vzdáleného přístupu přiřazením [Azure Policy](../../../policy/overview.md) definic pro monitorování, že vzdálené ladění pro Azure App Service aplikace je vypnuté. Podrobný plán také přiřazuje definice zásad, které auditují virtuální počítače se systémem Linux, které umožňují vzdálená připojení z účtů bez hesel. Plán navíc přiřadí definici Azure Policy, která vám pomůže monitorovat neomezený přístup k účtům úložiště. Monitorování těchto indikátorů vám umožní zajistit, aby metody vzdáleného přístupu dodržovaly vaše zásady zabezpečení.
 
-- \[Preview\]: Auditovat virtuální počítače Linux, které umožňují vzdálená připojení z účtů bez hesel
+- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
 - \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
 - Auditování neomezeného síťového přístupu k účtům úložiště
 - Pro aplikaci API by mělo být vypnuto vzdálené ladění.
@@ -107,7 +107,7 @@ Data protokolu shromážděná pomocí Azure Monitor jsou uložená v pracovním
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které monitorují konfigurace auditu a protokolování událostí. Monitorování těchto konfigurací může poskytnout indikátor selhání systému nebo chybnou konfiguraci a pomáhat s provedením nápravných akcí.
 
 - Auditování nastavení diagnostiky
-- Auditovat nastavení auditování na úrovni SQL serveru
+- Auditování na SQL serveru by mělo být povolené.
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 
@@ -131,7 +131,7 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 - \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
 - \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače s Windows
 - Auditování nastavení diagnostiky
-- Auditovat nastavení auditování na úrovni SQL serveru
+- Auditování na SQL serveru by mělo být povolené.
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
@@ -167,8 +167,8 @@ Tento podrobný plán vám pomůže omezit a řídit privilegovaný přístup t�
 
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které auditují virtuální počítače se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla nebo mají nastavená nesprávná oprávnění pro soubor passwd. Tento podrobný plán také přiřazuje definice zásad, které auditují konfiguraci typu šifrování hesla pro virtuální počítače s Windows. Monitorování těchto ukazatelů vám pomůže zajistit, aby ověřovatelé systému dodržovali zásady pro identifikaci a ověřování vaší organizace.
 
-- \[Preview\]: Auditovat virtuální počítače Linux, které nemají oprávnění k souboru passwd nastavené na 0644
-- \[Verze\]Preview: Auditovat virtuální počítače se systémem Linux, které mají účty bez hesla
+- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, u kterých není oprávnění k souboru passwd nastaveno na 0644
+- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které mají účty bez hesla
 - \[Verze\]Preview: nasaďte požadavky na auditování virtuálních počítačů se systémem Linux, které nemají oprávnění k souboru passwd nastavené na 0644.
 - \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
 
@@ -176,11 +176,11 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 
 Tento podrobný plán vám pomůže vynutilit silná hesla tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které auditují virtuální počítače s Windows, které nevyžadují minimální sílu a jiné požadavky na heslo. Povědomí o problémech s virtuálními počítači, které jsou v rozporu s zásadami složitosti hesla, vám pomůžou provést nápravné akce, které zajistí, aby hesla všech uživatelských účtů virtuálních počítačů byla v pořádku se zásadami hesel vaší organizace.
 
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které umožňují opakované použití předchozích 24 hesel
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dní
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které nemají minimální stáří hesla 1 den
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, u kterých není povolené nastavení složitosti hesla
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků
+- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel
+- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů s Windows, které nemají maximální stáří hesla 70 dní
+- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů s Windows, které nemají minimální stáří hesla 1 den
+- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů s Windows, u kterých není povolené nastavení složitosti hesla
+- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů s Windows, které neomezují minimální délku hesla na 14 znaků
 - \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel
 - \[Verze\]Preview: nasaďte požadavky na auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dní.
 - \[Verze\]Preview: nasaďte požadavky na auditovat virtuální počítače s Windows, které nemají minimální stáří hesla 1 den.
@@ -217,10 +217,9 @@ Tento podrobný plán vám pomůže spravovat chyby zabezpečení systému pomoc
 Tento podrobný plán vám pomůže spravovat a řídit hranici systému tím, že přiřadí definici [Azure Policy](../../../policy/overview.md) , která monitoruje doporučení pro posílení zabezpečení skupiny zabezpečení sítě v Azure Security Center. Azure Security Center analyzuje modely provozu virtuálních počítačů s internetem a poskytuje doporučení pro pravidlo skupiny zabezpečení sítě, aby se snížila potenciální plocha pro útok.
 Kromě toho tento podrobný plán také přiřazuje definice zásad, které sledují nechráněné koncové body, aplikace a účty úložiště. Koncové body a aplikace, které nejsou chráněné bránou firewall a účty úložiště s neomezeným přístupem, můžou dovolit neúmyslný přístup k informacím obsaženým v informačním systému.
 
-- Pravidla skupiny zabezpečení sítě pro virtuální počítače s přístupem k Internetu by měla být zesílená.
+- Doporučení adaptivního posílení zabezpečení sítě by se měla použít na internetových virtuálních počítačích.
 - Přístup přes internetový koncový bod by měl být omezený.
 - Auditování neomezeného síťového přístupu k účtům úložiště
-- Pravidla skupin zabezpečení sítě pro webové aplikace v IaaS by se měla posílit.
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>Ochrana hranice SC-7 (3) | Přístupové body
 
@@ -239,7 +238,7 @@ Přístup k virtuálnímu počítači za běhu zamkne příchozí provoz do virt
 Tento podrobný plán vám pomůže chránit důvěrnou a integritu odesílaných informací tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které vám pomůžou monitorovat kryptografické mechanismy implementované pro komunikační protokoly. Zajištění správné šifry komunikace vám může přispět k splnění požadavků vaší organizace nebo ochraně informací před neoprávněným zveřejněním a úpravou.
 
 - Aplikace API by měla být přístupná jen přes protokol HTTPS
-- Auditovat webové servery systému Windows, které nepoužívají protokoly zabezpečených komunikací
+- Zobrazit výsledky auditu z webových serverů Windows, které nepoužívají protokoly zabezpečené komunikace
 - Nasaďte požadavky na auditovat webové servery Windows, které nepoužívají protokoly zabezpečené komunikace.
 - Function App by měl být přístupný jenom přes HTTPS
 - Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.

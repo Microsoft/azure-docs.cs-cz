@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 361a75c2e5951dc540830efd6be057753402daf1
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77657303"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006097"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Přehled prostorových kotev Azure
 
@@ -26,7 +26,7 @@ Tyto přesné body zájmu se označují jako prostorové kotvy.
 
 Příklady případů použití povolené prostorovými kotvami zahrnují:
 
-- [Prostředí pro více uživatelů](tutorials/tutorial-share-anchors-across-devices.md). Prostorové kotvy usnadňují lidem na stejném místě účast v aplikacích hybridní reality více uživatelů. Například dvě osoby můžou začít hru šachy ve hybridní realitě tím, že na tabulku umístí virtuální šachovnici. Díky tomu, že umístíte zařízení v tabulce, může zobrazit a pracovat s virtuální šachovnicí společně.
+- [Prostředí pro více uživatelů](tutorials/tutorial-share-anchors-across-devices.md). Prostorové kotvy Azure usnadňují lidem na stejném místě účast v aplikacích hybridní reality pro více uživatelů. Například dvě osoby můžou začít hru šachy ve hybridní realitě tím, že na tabulku umístí virtuální šachovnici. Díky tomu, že umístíte zařízení v tabulce, může zobrazit a pracovat s virtuální šachovnicí společně.
 
 - [Způsob – hledání](concepts/anchor-relationships-way-finding.md). Vývojáři mohou také prostorové kotvy propojit vytvářením vztahů mezi nimi. Aplikace může například zahrnovat prostředí, které má dva nebo více bodů zájmu, se kterými musí uživatel pracovat, aby dokončil úkol. Tyto body zájmu je možné vytvořit připojeným způsobem. Když později uživatel dokončuje úlohu s více kroky, může požádat o kotvy, které jsou poblíž aktuální, a nasměrovat uživatele k dalšímu kroku v úloze.
 
@@ -36,7 +36,7 @@ Azure Spatial Anchors se skládá ze spravované služby a klientských sad SDK 
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořte svou první aplikaci s prostorovými kotvami.
+Vytvořte svou první aplikaci pomocí prostorových kotev Azure.
 
 > [!div class="nextstepaction"]
 > [Unity (HoloLens)](quickstarts/get-started-unity-hololens.md)

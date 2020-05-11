@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 3e72a2f6754ad8e9c5bcfabe7eeee299468fa8f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a4ba4d69b560307e52c277f5c695bbba718cd1d3
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73691638"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005830"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>Použití PowerShellu k vytvoření spravované instance Azure SQL Database
 
@@ -43,7 +43,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá některé z následujících příkazů. Další informace o použitých a dalších příkazech v následující tabulce získáte kliknutím na odkazy na konkrétní příkaz v dokumentaci.
 
 | Příkaz | Poznámky |
 |---|---|

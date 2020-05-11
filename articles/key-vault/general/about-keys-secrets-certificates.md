@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 241efab246dc903981da570a4191f93cc744bca7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 627dfee81cb10e4e442b3cefb10d786d87d5c81d
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726442"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005877"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódech a certifikátech
 
@@ -46,7 +46,7 @@ V tématu Specifikace JOSE najdete relevantní datové typy pro klíče, šifrov
 
 Objekty uložené v Key Vault jsou tvořeny verzí pokaždé, když je vytvořena nová instance objektu. Každé verzi je přiřazen jedinečný identifikátor a adresa URL. Při prvním vytvoření objektu se mu přidaný jedinečný identifikátor verze a označen jako aktuální verze objektu. Vytvoření nové instance se stejným názvem objektu udělí novému objektu jedinečný identifikátor verze, což způsobí, že se stane aktuální verzí.  
 
-Objekty v Key Vault lze řešit pomocí aktuálního identifikátoru nebo identifikátoru specifického pro verzi. Například při zadání klíče s názvem `MasterKey`, provádění operací s aktuálním identifikátorem způsobí, že systém použije nejnovější dostupnou verzi. Provádění operací s identifikátorem specifickým pro verzi způsobí, že systém použije určitou konkrétní verzi objektu.  
+Objekty v Key Vault lze řešit pomocí určující verze nebo vynechání verze pro operace s aktuální verzí objektu. Například při zadání klíče s názvem `MasterKey`, provedení operací bez určující verze způsobí, že systém použije nejnovější dostupnou verzi. Provádění operací s identifikátorem specifickým pro verzi způsobí, že systém použije určitou konkrétní verzi objektu.  
 
 Objekty se jednoznačně identifikují v rámci Key Vault pomocí adresy URL. Žádné dva objekty v systému nemají stejnou adresu URL, bez ohledu na geografickou polohu. Úplná adresa URL objektu se nazývá identifikátor objektu. Adresa URL se skládá z předpony, která identifikuje Key Vault, typ objektu, uživatelem poskytnutý název objektu a verzi objektu. Název objektu rozlišuje velká a malá písmena. Identifikátory, které neobsahují verzi objektu, jsou označovány jako základní identifikátory.  
 
@@ -62,7 +62,7 @@ Kde:
 |-|-|  
 |`keyvault-name`|Název trezoru klíčů ve službě Microsoft Azure Key Vault.<br /><br /> Key Vault jména vybere uživatel a jsou globálně jedinečné.<br /><br /> Key Vault název musí být řetězec znaků 3-24, který obsahuje pouze 0-9, a-z, a-Z a-.|  
 |`object-type`|Typ objektu, "Keys", "tajné" nebo "certifikáty".|  
-|`object-name`|`object-name` Je název zadaný uživatelem pro a musí být jedinečný v rámci Key Vault. Název musí být řetězec znaků 1-127, který obsahuje pouze 0-9, a-z, a-Z a-.|  
+|`object-name`|`object-name` Je název zadaný uživatelem pro a musí být jedinečný v rámci Key Vault. Název musí být řetězec znaků 1-127, který začíná písmenem a obsahuje pouze 0-9, a-z, A-Z a-.|  
 |`object-version`|`object-version` Je systémem generovaný identifikátor řetězce znaků 32, který lze volitelně použít k adresování jedinečné verze objektu.|  
 
 ## <a name="next-steps"></a>Další kroky

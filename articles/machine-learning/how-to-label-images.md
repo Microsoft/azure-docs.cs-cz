@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 2c21a8770209871be4d871a08e6355e4ca7ed169
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a928726665a743cb874a2f8a51ee63fcf64d9ad
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204317"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007523"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem
 
@@ -65,11 +65,13 @@ Po odeslání značek pro data v Azure aktualizuje stránku pomocí nové sady i
 
 ### <a name="assisted-machine-learning"></a>Strojové učení s asistencí 
 
-Algoritmy strojového učení se můžou aktivovat v rámci úlohy klasifikace s více třídami nebo s více štítky. Pokud jsou tyto algoritmy v projektu povolené, může se zobrazit následující:
+Můžou se aktivovat algoritmy strojového učení. Pokud jsou tyto algoritmy v projektu povolené, může se zobrazit následující:
 
 * Po označení některých imagí se mohou v horní části obrazovky vedle názvu projektu zobrazit **úkoly v clusteru** .  To znamená, že se obrázky seskupí tak, aby obsahovaly podobné obrázky na stejné stránce.  Pokud ano, přepněte na jedno z zobrazení více obrázků, abyste mohli využít výhod seskupení.  
 
 * Později se můžete podívat na úkoly, které jsou **označené** vedle názvu projektu.  Obrázky se pak zobrazí s navrhovaným popiskem, který pochází z modelu klasifikace Machine Learning. Žádný model strojového učení nemá 100% přesnost. I když používáme jenom image, pro které je model jistý, můžou být tyto image pořád nesprávně označené.  Když vidíte tyto popisky, před odesláním stránky opravte případné nesprávné popisky.  
+
+* Pro modely detekce objektů můžete vidět ohraničená pole a popisky, které už existují.  Opravte všechny, které jsou nesprávné před odesláním stránky.
 
 Model strojového učení, který je zvláště zpočátku v rámci označování projektu, může být dostatečně přesný, aby bylo možné předoznačit malou podmnožinu imagí. Po označení těchto imagí se projekt označování vrátí k ručnímu označování, aby se získalo více dat pro další kolo školení o modelu. V průběhu času se model bude spolehlivější o větší část imagí, což vede k pozdějšímu předznačení úkolů v projektu.
 

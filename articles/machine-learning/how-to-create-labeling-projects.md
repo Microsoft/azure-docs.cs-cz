@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6c553580bc3f2c9cb1aac321bea3c86b04b2ba56
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231216"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007535"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -138,8 +138,6 @@ V případě ohraničujících polí patří mezi důležité otázky:
 
 Stránka s **popisem s asistencí ml** vám umožní aktivovat automatické modely strojového učení a urychlit tak úlohu označování. Na začátku projektu označování se obrázky přecházejí do náhodného pořadí, aby se snížil případný posun. Nicméně všechny posuny, které jsou k dispozici v datové sadě, se projeví v trained model. Například pokud je 80% imagí z jedné třídy, pak přibližně 80% dat použitých ke výukě modelu bude tato třída. Toto školení nezahrnuje aktivní učení.
 
-Tato funkce je dostupná pro klasifikaci imagí (více tříd nebo multi-Label) úloh.  
-
 Vyberte možnost *Povolit popisky na základě ml s asistencí* a určete GPU, která umožňuje poučení s asistencí, které se skládá ze dvou fází:
 * Clustering
 * Předznačení
@@ -150,13 +148,15 @@ Vzhledem k tomu, že závěrečné popisky stále spoléhají na vstup od štít
 
 ### <a name="clustering"></a>Clustering
 
-Po odeslání určitého počtu popisků začne model strojového učení seskupovat podobné obrázky dohromady.  Tyto podobné obrázky jsou prezentovány popiskům na stejné obrazovce, aby se urychlilo ruční označování. Clustering je zvláště užitečný v případě, že popisek zobrazuje mřížku 4, 6 nebo 9 imagí. 
+Po odeslání určitého počtu popisků se model strojového učení pro klasifikaci obrázků začne seskupovat podobně jako v sobě podobné obrázky.  Tyto podobné obrázky jsou prezentovány popiskům na stejné obrazovce, aby se urychlilo ruční označování. Clustering je zvláště užitečný v případě, že popisek zobrazuje mřížku 4, 6 nebo 9 imagí. 
 
 Jakmile se model strojového učení vyškole na vaše ručně označené údaje, model se zkrátí na jeho poslední plně připojenou vrstvu. Neoznačené obrázky se pak předávají pomocí zkráceného modelu v procesu, který se běžně označuje jako "vložení" nebo "featurization". Tím se vloží každý obrázek v prostoru s vysokým rozměrem definovaným touto vrstvou modelu. Obrázky, které jsou nejbližší sousední prostory v prostoru, se používají pro úlohy clusteringu. 
 
+Pro modely detekce objektu se nezobrazuje fáze clusteringu.
+
 ### <a name="prelabeling"></a>Předznačení
 
-Po odeslání dalších popisků obrázků se pro předpověď značek obrázku používá klasifikační model.  Štítek teď uvidí stránky, které obsahují předpovězené popisky, které už jsou na každém obrázku přítomné.  Úkol pak před odesláním stránky tyto štítky zkontroluje a opraví všechny image s nesprávnými popisky.  
+Po odeslání dostatečného popisku obrázku se pro předpověď značek obrázku používá klasifikační model. Nebo model detekce objektu se používá k předpovědi ohraničujících polí. Štítek teď uvidí stránky, které obsahují předpovězené popisky, které už jsou na každém obrázku přítomné. V případě detekce objektu se zobrazí také předpokládaná pole. Úkol pak před odesláním stránky zkontrolujte tyto předpovědi a opravte všechny image s nesprávnými popisky.  
 
 Jakmile se model strojového učení vyškole na vaše ručně označené údaje, model se vyhodnotí na základě sady testů ručně označených imagí, aby se zjistila její přesnost na nejrůznějších různých práh spolehlivosti. Tento proces hodnocení se používá k určení prahové hodnoty spolehlivosti, nad kterou je model dostatečně přesný, aby se zobrazily předdefinované popisky. Model se pak vyhodnotí proti neoznačeným datům. Obrázky s předpovědiější, než je tato prahová hodnota, se používají pro předběžné označování.
 

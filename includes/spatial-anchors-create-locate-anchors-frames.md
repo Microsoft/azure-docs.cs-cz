@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: 505670e719e86086dbf7721b4298ec913220f928
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 849777ac3ec11915c602861fea0c42a49fb08bcb
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76694213"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006436"
 ---
 ## <a name="provide-frames-to-the-session"></a>Poskytnout rámce pro relaci
 
-Relace prostorového ukotvení funguje tak, že mapuje prostor kolem uživatele. Díky tomu je možné určit, kde se kotvy nacházejí. Mobilní platformy (iOS & Android) vyžadují nativní volání kanálu kamery, aby se získaly snímky z knihovny AR vaší platformy. Na rozdíl od toho HoloLens neustále kontroluje prostředí, takže není nutné konkrétní volání na mobilním zařízení.
+Relace prostorového ukotvení funguje tak, že mapuje prostor kolem uživatele. Díky tomu je možné určit, kde se kotvy nacházejí. Mobilní platformy (iOS & Android) vyžadují nativní volání kanálu kamery, aby se získaly snímky z knihovny AR vaší platformy. Naproti tomu HoloLens neustále kontroluje prostředí, takže není potřeba konkrétní volání, jako na mobilních platformách.
