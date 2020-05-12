@@ -15,7 +15,7 @@
           href: quick-setup-auto-provision-cli.md
         - name: Šablona Azure RM
           href: quick-setup-auto-provision-rm.md
-    - name: Zřízení jednoho simulovaného zařízení
+    - name: Zřízení jednoho zařízení
       items:
         - name: Osvědčení symetrického klíče
           items:
