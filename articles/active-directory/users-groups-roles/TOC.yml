@@ -68,7 +68,7 @@
           href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Správa adresáře
       items:
-        - name: Správa adresáře
+        - name: Organizace Azure AD
           href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Správa názvů domén
           href: domains-manage.md
@@ -84,7 +84,7 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Správa skupin
       items:
-        - name: Správa přístupu s využitím skupin Azure AD
+        - name: Správa přístupu s využitím skupin
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Vytvoření skupiny (Azure Portal)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -134,6 +134,8 @@
           href: groups-assign-sensitivity-labels.md
     - name: Přiřazení licencí
       items:
+        - name: Přiřazení licencí k uživatelům
+          href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Přiřazení licencí ke skupině
           href: licensing-groups-assign.md
         - name: Řešení problémů se skupinovými licencemi
