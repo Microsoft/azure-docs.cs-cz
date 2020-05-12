@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 03/30/2020
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7f3eaa54ecb39922a155e2ea65e15d38f2b138e4
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: eeccf0031e28bdcb719c0d534874d2c240ba46d3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615302"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117423"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
@@ -84,7 +84,7 @@ Doporučený způsob, jak zřídit virtuální počítače, je pomocí Azure Res
 
 Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány a zda chcete zkontrolovat chybové zprávy.
 
-1. Zkontrolujte, zda jsou tyto dvě součásti nainstalovány, pomocí kontroly v **Ovládacích panelech** > **Programs** > programy programy**a funkce**. Pokud není nainstalovaný **Agent virtuálního počítače Windows** a **spouštěcí zavaděč agenta virtuálního počítače s Windows** , nejsou nainstalované na virtuálním počítači.
+1. Zkontrolujte, zda jsou tyto dvě součásti nainstalovány, pomocí kontroly v **Ovládacích panelech**programy programy  >  **Programs**  >  **a funkce**. Pokud není nainstalovaný **Agent virtuálního počítače Windows** a **spouštěcí zavaděč agenta virtuálního počítače s Windows** , nejsou nainstalované na virtuálním počítači.
 2. Otevřete **Průzkumníka souborů** a přejděte na **C:\Windows\Temp\ScriptLog.log**. Pokud soubor chybí, znamená to, že v zadaném kontextu zabezpečení nebylo možné spustit prostředí PowerShell DSC, které nainstalovalo tyto dvě součásti.
 3. Pokud je soubor **C:\Windows\Temp\ScriptLog.log** k dispozici, otevřete jej a vyhledejte chybové zprávy.
 
@@ -237,7 +237,7 @@ Virtuální počítač, který se používá ke spuštění nápravy, musí být
 Pokud chcete spustit nápravu ze stejné podsítě a domény, postupujte podle těchto pokynů:
 
 1. Připojte se pomocí protokolu RDP (Standard protokol RDP (Remote Desktop Protocol)) k virtuálnímu počítači, ze kterého se má oprava použít.
-2. Stáhněte si PsExec https://docs.microsoft.com/sysinternals/downloads/psexecz.
+2. Stáhněte si PsExec z https://docs.microsoft.com/sysinternals/downloads/psexec .
 3. Extrahování staženého souboru.
 4. Spusťte příkazový řádek jako místní správce.
 5. Přejděte do složky, kde byla PsExec extrahována.
@@ -313,7 +313,7 @@ Pokud se zobrazí některá z těchto zpráv, znamená to, že bitová kopie nem
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Zakázat nastavení zásad skupiny pro režim licencování vzdálené plochy
 
-Podívejte se na nastavení zásad skupiny tak, že ve virtuálním počítači otevřete Editor Zásady skupiny a přejdete na **šablony pro správu** > **součásti** > Windows**Vzdálená plocha** > **hostitel relace vzdálené plochy** > **licencování** > **nastavit režim licencování vzdálené plochy**. Pokud je nastavení zásad skupiny **povolené**, změňte ho na **disabled (zakázáno**). Pokud je už zakázaná, nechte ji tak, jak je.
+Podívejte se na nastavení zásad skupiny tak, že ve virtuálním počítači otevřete Editor Zásady skupiny a přejdete na **šablony pro správu**  >  **součásti Windows**  >  **Vzdálená plocha**  >  **hostitel relace vzdálené plochy**  >  **licencování**  >  **nastavit režim licencování vzdálené plochy**. Pokud je nastavení zásad skupiny **povolené**, změňte ho na **disabled (zakázáno**). Pokud je už zakázaná, nechte ji tak, jak je.
 
 >[!NOTE]
 >Pokud jste v doméně nastavili zásady skupiny, zakažte toto nastavení u zásad, které cílí na tyto virtuální počítače s Windows 10 Enterprise s více relacemi.
@@ -338,6 +338,12 @@ Pokud číslo verze říká 1809, nainstalujte [aktualizaci KB4516077](https://s
 ### <a name="version-1903"></a>Verze 1903
 
 Znovu nasaďte hostitelský operační systém pomocí nejnovější verze image Windows 10 verze 1903 z Galerie Azure.
+
+## <a name="we-couldnt-connect-to-the-remote-pc-because-of-a-security-error"></a>Nepovedlo se nám připojit ke vzdálenému počítači kvůli chybě zabezpečení.
+
+Pokud se uživatelům zobrazí chyba oznamující, že se nám nepovedlo připojit ke vzdálenému počítači kvůli chybě zabezpečení. Pokud to bude pokračovat, požádejte o pomoc správce nebo technickou podporu. "Ověřte všechny existující zásady, které mění výchozí oprávnění RDP. Jedna zásada, která by mohla způsobit zobrazení této chyby, je "povolení přihlášení prostřednictvím zásad zabezpečení služby Vzdálená plocha".
+
+Další informace o těchto zásadách najdete v tématu [Povolení přihlášení prostřednictvím služby Vzdálená plocha](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services).
 
 ## <a name="next-steps"></a>Další kroky
 

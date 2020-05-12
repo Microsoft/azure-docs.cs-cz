@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe3ee79318ab9fdc9f2c0e9585051439b76b5cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f3b37a6336c578ed25d8ab9553bc1ea9c79872f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617142"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117203"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Postup převzetí služeb při selhání pro zotavení po havárii
 
@@ -34,7 +34,7 @@ Při převzetí služeb při selhání na lokalitu DR je třeba vzít v úvahu d
 >[!NOTE]
 >Následující kroky je nutné provést na jednotce velké instance HANA, která představuje jednotku DR. 
  
-Pokud chcete provést obnovení na nejnovější replikované snímky úložiště, postupujte podle kroků v tématu "úplné převzetí služeb při selhání v programu DR – azure_hana_dr_failover" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf). 
+Pokud chcete provést obnovení na nejnovější replikované snímky úložiště, postupujte podle kroků v tématu "úplné převzetí služeb při selhání v programu DR – azure_hana_dr_failover" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf). 
 
 Pokud chcete více instancí SAP HANA převzít při selhání, spusťte příkaz azure_hana_dr_failover několikrát. V případě vyžádání zadejte identifikátor SID SAP HANA, který chcete převzít a obnovit. 
 
@@ -115,7 +115,7 @@ Postupujte následovně:
 
 ## <a name="monitor-disaster-recovery-replication"></a>Monitorování replikace zotavení po havárii
 
-Pokud chcete monitorovat stav procesu replikace úložiště, spusťte skript `azure_hana_replication_status`. Tento příkaz musí být spuštěn z jednotky, která je spuštěna v umístění zotavení po havárii, aby fungovala podle očekávání. Příkaz nefunguje bez ohledu na to, jestli je replikace aktivní. Příkaz se dá spustit pro každou jednotku velkých instancí v tenantovi v umístění pro zotavení po havárii. Nedá se použít k získání podrobných informací o spouštěcím svazku. 
+Pokud chcete monitorovat stav procesu replikace úložiště, spusťte skript `azure_hana_replication_status` . Tento příkaz musí být spuštěn z jednotky, která je spuštěna v umístění zotavení po havárii, aby fungovala podle očekávání. Příkaz nefunguje bez ohledu na to, jestli je replikace aktivní. Příkaz se dá spustit pro každou jednotku velkých instancí v tenantovi v umístění pro zotavení po havárii. Nedá se použít k získání podrobných informací o spouštěcím svazku. 
 
 Další informace o příkazu a jeho výstupu najdete v tématu "získání stavu replikace DR-azure_hana_replication_status" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf).
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 56975cebbfe4f6dd6452c850c338d431faea27bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7c26780cdba37a2bddc201928dbcbd5f86e0170
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050497"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115893"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Osvědčené postupy a doporučení pro Microsoft Identity Platform
 
@@ -26,6 +26,9 @@ Tento článek popisuje osvědčené postupy, doporučení a běžné přehledy 
 Pokud teprve začínáte, podívejte se na dokumentaci k [platformě Microsoft Identity](index.yml) , kde najdete informace o základech ověřování, scénářích aplikací v platformě Microsoft identity a dalších.
 
 Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikace efektivně integrovaná s [platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/).
+
+> [!TIP]
+> *Pomocník pro integraci* v Azure Portal vám může pomáhat při použití řady osvědčených postupů a doporučení. V Azure Portal vyberte libovolnou [registraci vaší aplikace](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a pak vyberte položku nabídky **Průvodce integrací (Preview)** , abyste mohli začít používat pomocníka.
 
 ## <a name="basics"></a>Základy
 
@@ -56,7 +59,7 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 
 |   |   |
 |---|---|
-| ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Spravujte identifikátory URI pro přesměrování: <ul><li>Udržujte vlastnictví všech identifikátorů URI pro přesměrování a Udržujte záznamy DNS v aktuálním stavu.</li><li>V identifikátorech URI nepoužívejte zástupné znaky (*).</li><li>U webových aplikací zajistěte, aby všechny identifikátory URI byly zabezpečené a šifrované (například pomocí schémat protokolu HTTPS).</li><li>U veřejných klientů použijte identifikátory URI pro přesměrování specifické pro platformu, pokud je to možné (hlavně pro iOS a Android). V opačném případě použijte identifikátory URI přesměrování s vysokou mírou náhodnosti, abyste zabránili kolizím při volání zpět do aplikace.</li><li>Pokud se vaše aplikace používá z izolovaného webového agenta, můžete použít `https://login.microsoftonline.com/common/oauth2/nativeclient`.</li><li>Pravidelně kontrolujte a ořízněte všechny nepoužívané nebo zbytečné identifikátory URI pro přesměrování.</li></ul> |
+| ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Spravujte identifikátory URI pro přesměrování: <ul><li>Udržujte vlastnictví všech identifikátorů URI pro přesměrování a Udržujte záznamy DNS v aktuálním stavu.</li><li>V identifikátorech URI nepoužívejte zástupné znaky (*).</li><li>U webových aplikací zajistěte, aby všechny identifikátory URI byly zabezpečené a šifrované (například pomocí schémat protokolu HTTPS).</li><li>U veřejných klientů použijte identifikátory URI pro přesměrování specifické pro platformu, pokud je to možné (hlavně pro iOS a Android). V opačném případě použijte identifikátory URI přesměrování s vysokou mírou náhodnosti, abyste zabránili kolizím při volání zpět do aplikace.</li><li>Pokud se vaše aplikace používá z izolovaného webového agenta, můžete použít `https://login.microsoftonline.com/common/oauth2/nativeclient` .</li><li>Pravidelně kontrolujte a ořízněte všechny nepoužívané nebo zbytečné identifikátory URI pro přesměrování.</li></ul> |
 | ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Pokud je vaše aplikace zaregistrovaná v adresáři, minimalizujte a ručně Sledujte seznam vlastníků registrace aplikací. |
 | ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Nepovolujte podporu pro [tok implicitního udělení OAuth2](v2-oauth2-implicit-grant-flow.md) , pokud je explicitně nepožadujete. [Tady](v2-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)najdete informace o platném scénáři. |
 | ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Přesunutí za uživatelské jméno a heslo. Nepoužívejte [tok přihlašovacích údajů k heslům vlastníka prostředků (ROPC)](v2-oauth-ropc.md), který přímo zpracovává hesla uživatelů. Tento tok vyžaduje vysoký stupeň důvěry a ohrožení uživatele a měl by se používat jenom v případě, že se nedají použít jiné, bezpečnější toky. Tento tok je stále potřeba v některých scénářích (například DevOps), ale Upozorňujeme, že jeho použití způsobí omezení pro vaši aplikaci.  Pro moderní přístupy si můžete přečíst [toky ověřování a scénáře použití aplikací](authentication-flows-app-scenarios.md).|
@@ -94,7 +97,7 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 | ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Otestujte [zásady podmíněného přístupu](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut) , které mohou mít vliv na schopnost uživatelů používat vaši aplikaci. |
 | ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) | Otestujte svoji aplikaci se všemi možnými účty, které hodláte podporovat (například pracovní nebo školní účty, osobní účty Microsoft, podřízené účty a účty z svrchovaného účtu). |
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 Prostudujte si podrobné informace týkající se v2.0:
 

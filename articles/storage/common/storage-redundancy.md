@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 05/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: d37e790b8a77a48cb5ef53292712164dcdcf459b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 65d898112396755bb2518cade0ac94c21bc52685
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872009"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117712"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -102,7 +102,7 @@ Geograficky redundantní úložiště (GZRS) kombinuje vysokou dostupnost poskyt
 
 S účtem úložiště GZRS můžete dál číst a zapisovat data, pokud se zóna dostupnosti stane nedostupnou nebo nejde obnovit. Kromě toho jsou vaše data také odolná v případě kompletního oblasti výpadku nebo havárie, ve které není primární oblast obnovitelné. GZRS je navržený tak, aby poskytoval alespoň 99.99999999999999% (16 9) odolnosti objektů v průběhu daného roku.
 
-GZRS a RA-GZRS podporují jenom účty úložiště pro obecné účely verze 2. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md). GZRS a RA-GZRS podporují objekty blob bloku, objekty blob stránky (s výjimkou disků VHD), soubory, tabulky a fronty. GZRS a RA-GZRS jsou dostupné ve všech oblastech Azure.
+GZRS a RA-GZRS podporují jenom účty úložiště pro obecné účely verze 2. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md). GZRS a RA-GZRS podporují objekty blob bloku, objekty blob stránky (s výjimkou disků VHD), soubory, tabulky a fronty.
 
 GZRS a RA-GZRS jsou podporovány v následujících oblastech:
 
@@ -126,7 +126,7 @@ Geograficky redundantní úložiště (s GRS nebo GZRS) replikuje vaše data do 
 
 Pokud je váš účet úložiště nakonfigurovaný pro přístup pro čtení do sekundární oblasti, můžete navrhovat aplikace pro bezproblémové přesunutí na čtení dat ze sekundární oblasti, pokud z nějakého důvodu dojde k nedostupnosti primární oblasti. Sekundární oblast je vždy k dispozici pro přístup pro čtení, takže můžete otestovat aplikaci, abyste se ujistili, že se bude číst ze sekundárního v případě výpadku. Další informace o tom, jak navrhovat aplikace pro zajištění vysoké dostupnosti, najdete v tématu [použití geografické redundance k návrhu vysoce dostupných aplikací](geo-redundant-design.md).
 
-Když je povolený přístup pro čtení k sekundárnímu účtu, můžou se vaše data číst ze sekundárního koncového bodu i z primárního koncového bodu pro váš účet úložiště. Sekundární koncový bod připojí příponu *– sekundární* k názvu účtu. Pokud je `myaccount.blob.core.windows.net`například primárním koncovým bodem pro úložiště objektů blob, pak je `myaccount-secondary.blob.core.windows.net`sekundární koncový bod. Přístupové klíče účtu pro váš účet úložiště jsou u primárních i sekundárních koncových bodů stejné.
+Když je povolený přístup pro čtení k sekundárnímu účtu, můžou se vaše data číst ze sekundárního koncového bodu i z primárního koncového bodu pro váš účet úložiště. Sekundární koncový bod připojí příponu *– sekundární* k názvu účtu. Pokud je například primárním koncovým bodem pro úložiště objektů BLOB `myaccount.blob.core.windows.net` , pak je sekundární koncový bod `myaccount-secondary.blob.core.windows.net` . Přístupové klíče účtu pro váš účet úložiště jsou u primárních i sekundárních koncových bodů stejné.
 
 ### <a name="check-the-last-sync-time-property"></a>Kontrola vlastnosti Čas poslední synchronizace
 
@@ -143,7 +143,7 @@ Následující tabulka ukazuje, jak jsou data odolná a k dispozici v daném sc�
 | Scénář                                                                                                 | LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Uzel v datovém centru nebude dostupný.                                                                 | Ano                             | Ano                              | Ano                                  | Ano                                  |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | No                              | Ano                              | Ano                                  | Ano                                  |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | Ne                              | Ano                              | Ano                                  | Ano                                  |
 | Dojde k výpadku v rámci oblasti                                                                                     | Ne                              | Ne                               | Ano                                  | Ano                                  |
 | Přístup pro čtení dat v sekundární oblasti, pokud primární oblast nebude k dispozici | Ne                              | Ne                               | Ano (s RA-GRS)                                   | Ano (s RA-GZRS)                                 |
 | Procentuální hodnota odolnosti objektů v průběhu daného roku<sup>1</sup>                                          | alespoň 99,999999999% (11 9 's) | minimálně 99,9999999999% (12 9 's) | minimálně 99.99999999999999% (16 9) | minimálně 99.99999999999999% (16 9) |

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: 2c34a9e1463c49ab1822d1de6bf33e81f19cf003
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 7c363fd4e55fdd6fe04a099ac833a256bbfd2eb2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629588"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116964"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 
@@ -30,9 +30,9 @@ Budete potřebovat aplikaci Function App s funkcí aktivovanou protokolem HTTP.
 
 Pokud vyvíjíte v rozhraní .NET, [přidejte závislost](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) na funkci pro `Microsoft.Azure.EventGrid` [balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Příklady v tomto článku vyžadují verzi 1.4.0 nebo novější.
 
-Sady SDK pro jiné jazyky jsou k dispozici prostřednictvím odkazu [publikovat sady SDK](./sdk-overview.md#data-plane-sdks) . Tyto balíčky mají modely pro nativní typy událostí `EventGridEvent`, jako jsou, `StorageBlobCreatedEventData`a. `EventHubCaptureFileCreatedEventData`
+Sady SDK pro jiné jazyky jsou k dispozici prostřednictvím odkazu [publikovat sady SDK](./sdk-overview.md#data-plane-sdks) . Tyto balíčky mají modely pro nativní typy událostí, jako jsou `EventGridEvent` , `StorageBlobCreatedEventData` a `EventHubCaptureFileCreatedEventData` .
 
-Klikněte na odkaz Zobrazit soubory v Azure Function (napravo od pravého podokna na portálu Azure Functions) a vytvořte soubor s názvem Project. JSON. Do `project.json` souboru přidejte následující obsah a uložte ho:
+Klikněte na odkaz Zobrazit soubory v Azure Function (napravo od pravého podokna na portálu Azure Functions) a vytvořte soubor s názvem Project. JSON. Do souboru přidejte následující obsah `project.json` a uložte ho:
 
  ```json
 {
@@ -50,7 +50,7 @@ Klikněte na odkaz Zobrazit soubory v Azure Function (napravo od pravého podokn
 
 ## <a name="endpoint-validation"></a>Ověření koncového bodu
 
-První věc, kterou chcete udělat, je zpracování `Microsoft.EventGrid.SubscriptionValidationEvent` událostí. Pokaždé, když se někdo přihlašuje k události, Event Grid pošle událost ověření koncovému bodu `validationCode` s datovou částí. Koncový bod je nutný k tomu, aby vrátil zpátky v těle odpovědi, aby [prokázal, že koncový bod je platný a vlastní](webhook-event-delivery.md). Pokud používáte [trigger Event Grid](../azure-functions/functions-bindings-event-grid.md) místo funkce aktivované webhookem, bude se vám za vás zajišťovat ověření koncového bodu. Pokud používáte službu rozhraní API třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), možná nebudete moci programově zobrazovat kód pro ověření. Pro tyto služby můžete odběr ověřit ručně pomocí adresy URL pro ověření, která je odeslána v události ověření předplatného. Zkopírujte tuto adresu URL do `validationUrl` vlastnosti a odešlete požadavek GET buď pomocí klienta REST nebo webového prohlížeče.
+První věc, kterou chcete udělat, je zpracování `Microsoft.EventGrid.SubscriptionValidationEvent` událostí. Pokaždé, když se někdo přihlašuje k události, Event Grid pošle událost ověření koncovému bodu s datovou `validationCode` částí. Koncový bod je nutný k tomu, aby vrátil zpátky v těle odpovědi, aby [prokázal, že koncový bod je platný a vlastní](webhook-event-delivery.md). Pokud používáte [trigger Event Grid](../azure-functions/functions-bindings-event-grid.md) místo funkce aktivované webhookem, bude se vám za vás zajišťovat ověření koncového bodu. Pokud používáte službu rozhraní API třetí strany (například [Zapier](https://zapier.com/home) nebo [IFTTT](https://ifttt.com/)), možná nebudete moci programově zobrazovat kód pro ověření. Pro tyto služby můžete odběr ověřit ručně pomocí adresy URL pro ověření, která je odeslána v události ověření předplatného. Zkopírujte tuto adresu URL do `validationUrl` vlastnosti a odešlete požadavek GET buď pomocí klienta REST nebo webového prohlížeče.
 
 V jazyce C# `DeserializeEventGridEvents()` funkce deserializace události Event Grid. Deserializace data události do příslušného typu, například StorageBlobCreatedEventData. Použijte `Microsoft.Azure.EventGrid.EventTypes` třídu pro získání podporovaných typů a názvů událostí.
 
@@ -140,7 +140,7 @@ Po kliknutí na tlačítko spustit by měl být výstup 200 OK a `{"ValidationRe
 
 ## <a name="handle-blob-storage-events"></a>Zpracování událostí služby Blob Storage
 
-Teď rozšíříme funkci na zpracování `Microsoft.Storage.BlobCreated`:
+Teď rozšíříme funkci na zpracování `Microsoft.Storage.BlobCreated` :
 
 ```cs
 using System.Net;
@@ -257,7 +257,7 @@ Nakonec umožňuje funkci širšího rozšiřování funkce, aby mohla také zpr
 
 V jazyce C# sada SDK podporuje mapování názvu typu události na datový typ události. Pomocí `AddOrUpdateCustomEventMapping()` funkce namapujte vlastní událost.
 
-Přidejte kontrolu události `Contoso.Items.ItemReceived`. Výsledný kód by měl vypadat takto:
+Přidejte kontrolu události `Contoso.Items.ItemReceived` . Výsledný kód by měl vypadat takto:
 
 ```cs
 using System.Net;

@@ -1,17 +1,20 @@
 ---
 title: Sekvence rozšíření pro Azure Disk Encryption a Azure Virtual Machine Scale Sets
 description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifrování disku pro virtuální počítače s IaaS Linux.
-author: msmbaldwin
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.author: mbaldwin
+ms.subservice: disks
 ms.date: 10/10/2019
-ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279030"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117253"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Použití Azure Disk Encryption s pořadím rozšíření pro škálování sady virtuálních počítačů
 
@@ -157,7 +160,7 @@ Podrobnější šablonu najdete v těchto tématech:
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o sekvencování rozšíření: [zřizování rozšíření sekvence ve službě Virtual Machine Scale Sets](virtual-machine-scale-sets-extension-sequencing.md).
-- Přečtěte si další `provisionAfterExtensions` informace o vlastnosti: [Microsoft. COMPUTE virtualMachineScaleSets/Extension reference Template](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
+- Přečtěte si další informace o `provisionAfterExtensions` vlastnosti: [Microsoft. COMPUTE virtualMachineScaleSets/Extension reference Template](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
 - [Azure Disk Encryption pro Virtual Machine Scale Sets](disk-encryption-overview.md)
 - [Šifrování sady škálování virtuálních počítačů pomocí Azure CLI](disk-encryption-cli.md)
 - [Šifrování virtuálních počítačů pomocí Azure PowerShell](disk-encryption-powershell.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: cb645b5adfcd937758a950eaf596bc60e4d55f3f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983903"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115145"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Laboratoře učebny v Azure Lab Services – nejčastější dotazy (FAQ)
 Získejte odpovědi na některé nejčastější dotazy týkající se učebn Labs v Azure Lab Services. 
@@ -77,6 +77,6 @@ Přihlaste se k odběru [aktualizací testovacích služeb](https://azure.micros
 Pokud tady uvedený dotaz není, sdělte nám, abychom vám pomohli najít odpověď.
 
 - Na konci těchto nejčastějších dotazů si vystavte otázku. 
-- Pokud chcete oslovit širší cílovou skupinu, odešlete dotaz na [Azure Lab Services – Stack Overflow Fórum](https://stackoverflow.com/questions/tagged/azure-lab-services). 
+- Pokud chcete oslovit širší cílovou skupinu, odešlete dotaz na [Azure Lab Services – fórum pro pracovníky odborné komunity](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices). 
 - V případě žádostí o funkce odešlete žádosti a nápady do [Azure Lab Services – uživatelský hlas](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).
 

@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aea252772bfd911899ebdc00c902996b32475a90
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461798"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115128"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
 
@@ -33,7 +33,7 @@ Vezměte v úvahu následující požadavky:
 
 ### <a name="create-failover-group"></a>Vytvořit skupinu převzetí služeb při selhání
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal.
 
 
@@ -107,7 +107,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
 
 Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal. 
 
@@ -200,7 +200,7 @@ Vezměte v úvahu následující požadavky:
 
 Vytvořte skupinu převzetí služeb při selhání pro elastický fond pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí Azure Portal.
 
 1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
@@ -271,7 +271,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastick�
 
 Otestujte převzetí služeb při selhání elastického fondu pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Převzetí služeb při selhání pro skupinu převezmete do sekundárního serveru a pak navrácení služeb po obnovení pomocí Azure Portal. 
 
@@ -353,7 +353,7 @@ Vezměte v úvahu následující požadavky:
 
 Pokud jste nenakonfigurovali [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md), můžete vytvořit primární bránu virtuální sítě pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vytvořte primární bránu virtuální sítě pomocí Azure Portal. 
 
@@ -362,7 +362,7 @@ Vytvořte primární bránu virtuální sítě pomocí Azure Portal.
 
    ![Přidat bránu pro primární spravovanou instanci](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Po vytvoření brány podsítě v levém navigačním podokně vyberte **vytvořit prostředek** a potom do vyhledávacího pole zadejte `Virtual network gateway` . Vyberte prostředek **brány virtuální sítě** publikovaný **Microsoftem**. 
+1. Po vytvoření brány podsítě v levém navigačním podokně vyberte **vytvořit prostředek** a potom `Virtual network gateway` do vyhledávacího pole zadejte. Vyberte prostředek **brány virtuální sítě** publikovaný **Microsoftem**. 
 
    ![Vytvořit novou bránu virtuální sítě](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
@@ -374,10 +374,10 @@ Vytvořte primární bránu virtuální sítě pomocí Azure Portal.
     | --- | --- |
     | **Předplatné** |  Předplatné, ve kterém je vaše primární spravovaná instance. |
     | **Název** | Název brány virtuální sítě. | 
-    | **Oblast** | Oblast, ve které je vaše sekundární spravovaná instance. |
+    | **Věřitel** | Oblast, ve které je vaše sekundární spravovaná instance. |
     | **Typ brány** | Vyberte **VPN**. |
     | **Typ sítě VPN** | Vybrat **na základě trasy** |
-    | **SKLADOVÉ**| Ponechte výchozí `VpnGw1`hodnotu. |
+    | **SKLADOVÉ**| Ponechte výchozí hodnotu `VpnGw1` . |
     | **Umístění**| Umístění, kde je sekundární spravovaná instance a sekundární virtuální síť.   |
     | **Virtuální síť**| Vyberte virtuální síť pro sekundární spravovanou instanci. |
     | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
@@ -426,7 +426,7 @@ Vytvořte primární bránu virtuální sítě pomocí prostředí PowerShell.
 
 Vytvořte sekundární bránu virtuální sítě pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Zopakováním kroků v předchozí části vytvořte podsíť virtuální sítě a bránu pro sekundární spravovanou instanci. Vyplňte požadovaná pole a nakonfigurujte bránu pro sekundární spravovanou instanci. 
 
    V následující tabulce jsou uvedeny hodnoty nutné pro bránu sekundární spravované instance:
@@ -434,15 +434,15 @@ Zopakováním kroků v předchozí části vytvořte podsíť virtuální sítě
    | **Pole** | Hodnota |
    | --- | --- |
    | **Předplatné** |  Předplatné, ve kterém je vaše sekundární spravovaná instance. |
-   | **Název** | Název brány virtuální sítě, například `secondary-mi-gateway`. | 
-   | **Oblast** | Oblast, ve které je vaše sekundární spravovaná instance. |
+   | **Název** | Název brány virtuální sítě, například `secondary-mi-gateway` . | 
+   | **Věřitel** | Oblast, ve které je vaše sekundární spravovaná instance. |
    | **Typ brány** | Vyberte **VPN**. |
    | **Typ sítě VPN** | Vybrat **na základě trasy** |
-   | **SKLADOVÉ**| Ponechte výchozí `VpnGw1`hodnotu. |
+   | **SKLADOVÉ**| Ponechte výchozí hodnotu `VpnGw1` . |
    | **Umístění**| Umístění, kde je sekundární spravovaná instance a sekundární virtuální síť.   |
-   | **Virtuální síť**| Vyberte virtuální síť, která byla vytvořena v části 2, například `vnet-sql-mi-secondary`. |
+   | **Virtuální síť**| Vyberte virtuální síť, která byla vytvořena v části 2, například `vnet-sql-mi-secondary` . |
    | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
-   | **Název veřejné IP adresy**| Zadejte název vaší IP adresy, například `secondary-gateway-IP`. |
+   | **Název veřejné IP adresy**| Zadejte název vaší IP adresy, například `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
 
    ![Nastavení sekundární brány](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
@@ -488,7 +488,7 @@ Je potřeba vytvořit dvě připojení – připojení z primární brány k sek
 
 Sdílený klíč použitý pro obě připojení by měl být pro každé připojení stejný. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Vytvořte připojení mezi dvěma branami pomocí Azure Portal. 
 
 1. Vyberte **vytvořit prostředek** z [Azure Portal](https://portal.azure.com).
@@ -500,11 +500,11 @@ Vytvořte připojení mezi dvěma branami pomocí Azure Portal.
     1. V rozevíracím seznamu vyberte skupinu prostředků pro spravovanou instanci. 
     1. Z rozevíracího seznamu vyberte umístění vaší primární spravované instance. 
 1. Na kartě **Nastavení** vyberte nebo zadejte následující hodnoty a pak vyberte **OK**:
-    1. Vyberte bránu primárního síťového rozhraní pro **první bránu virtuální sítě**, například `Primary-Gateway`.  
-    1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě**, například `Secondary-Gateway`. 
+    1. Vyberte bránu primárního síťového rozhraní pro **první bránu virtuální sítě**, například `Primary-Gateway` .  
+    1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě**, například `Secondary-Gateway` . 
     1. Zaškrtněte políčko vedle možnosti **navázat obousměrné připojení**. 
     1. Buď ponechte výchozí název primárního připojení, nebo ho přejmenujte na hodnotu podle vašeho výběru. 
-    1. Zadejte **sdílený klíč (PSK)** pro připojení, například `mi1m2psk`. 
+    1. Zadejte **sdílený klíč (PSK)** pro připojení, například `mi1m2psk` . 
 
    ![Vytvořit připojení brány](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
@@ -546,7 +546,7 @@ Vytvořte připojení mezi dvěma branami pomocí PowerShellu.
 ### <a name="create-the-failover-group"></a>Vytvoření skupiny převzetí služeb při selhání 
 Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instance pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instance pomocí Azure Portal. 
 
@@ -588,7 +588,7 @@ Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instan
 
 Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal. 
 
@@ -644,17 +644,30 @@ Testovací převzetí služeb při selhání ve skupině převzetí služeb při
 
 ---
 
+## <a name="use-private-link"></a>Použití Private Linku
+
+Pomocí privátního odkazu můžete přidružit logický Server ke konkrétní privátní IP adrese v rámci virtuální sítě a podsítě. 
+
+Pokud chcete pro skupinu převzetí služeb při selhání použít privátní odkaz, udělejte toto:
+
+1. Ujistěte se, že primární a sekundární servery jsou v [spárované oblasti](/azure/best-practices-availability-paired-regions). 
+1. Vytvořte virtuální síť a podsíť v každé oblasti pro hostování privátních koncových bodů primárních a sekundárních serverů tak, aby nepřesahoval adresní prostory IP adres. Například překrývají se rozsah adres primárního virtuálního síťového rozsahu 10.0.0.0/16 a rozsah adres sekundární virtuální sítě s adresou 10.0.0.1/16. Další informace o rozsahu adres virtuální sítě najdete v blogu [navrhování virtuálních sítí Azure](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/).
+1. Vytvoření [privátního koncového bodu a zóny Azure privátní DNS pro primární server](../private-link/create-private-endpoint-portal.md#create-a-private-endpoint). 
+1. Vytvořte také privátní koncový bod pro sekundární server, ale tentokrát se rozhodnete znovu použít stejnou zónu Privátní DNS vytvořenou pro primární server. 
+1. Po vytvoření privátního propojení můžete skupinu převzetí služeb při selhání vytvořit podle kroků uvedených dříve v tomto článku. 
+
+
 ## <a name="locate-listener-endpoint"></a>Najít koncový bod naslouchacího procesu
 
 Po nakonfigurování skupiny převzetí služeb při selhání aktualizujte připojovací řetězec pro vaši aplikaci na koncový bod naslouchacího procesu. Tím zůstane aplikace připojená k naslouchacího procesu skupiny převzetí služeb při selhání místo primární databáze, elastického fondu nebo spravované instance. Tímto způsobem nemusíte ručně aktualizovat připojovací řetězec pokaždé, když dojde k převzetí služeb Azure SQL Database, a provoz se směruje do jakékoli entity, která je aktuálně primární. 
 
-Koncový bod naslouchacího procesu je ve formě `fog-name.database.windows.net`a při zobrazení skupiny převzetí služeb při selhání je zobrazený v Azure Portal:
+Koncový bod naslouchacího procesu je ve formě `fog-name.database.windows.net` a při zobrazení skupiny převzetí služeb při selhání je zobrazený v Azure Portal:
 
 ![Připojovací řetězec skupiny převzetí služeb při selhání](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
 
 ## <a name="remarks"></a>Poznámky
 
-- Odebrání skupiny převzetí služeb při selhání pro jednu nebo sdruženou databázi neukončí replikaci a replikovaná databáze neodstraní. Pokud chcete přidat jednu nebo sdruženou databázi zpátky do skupiny převzetí služeb při selhání po jejím odebrání, budete muset ručně zastavit geografickou replikaci a odstranit databázi ze sekundárního serveru. Při neúspěšném pokusu o přidání databáze do skupiny převzetí `The operation cannot be performed due to multiple errors` služeb při selhání může dojít k chybě, která by mohla být podobná. 
+- Odebrání skupiny převzetí služeb při selhání pro jednu nebo sdruženou databázi neukončí replikaci a replikovaná databáze neodstraní. Pokud chcete přidat jednu nebo sdruženou databázi zpátky do skupiny převzetí služeb při selhání po jejím odebrání, budete muset ručně zastavit geografickou replikaci a odstranit databázi ze sekundárního serveru. Při neúspěšném pokusu o `The operation cannot be performed due to multiple errors` Přidání databáze do skupiny převzetí služeb při selhání může dojít k chybě, která by mohla být podobná. 
 
 
 ## <a name="next-steps"></a>Další kroky

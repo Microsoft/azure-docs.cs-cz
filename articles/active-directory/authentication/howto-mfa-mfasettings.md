@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9002447df44a1f0c87ec9de03e316d7d12d8a626
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfde52db9cbe5bc14be7b30c1063215472bff699
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105654"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116284"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurace nastavení služby Azure Multi-Factor Authentication
 
 Tento článek vám pomůže se správou nastavení Multi-Factor Authentication v Azure Portal. Zahrnuje různá témata, která vám pomohou získat z Azure Multi-Factor Authentication na maximum. Ne všechny funkce jsou dostupné v každé verzi Azure Multi-Factor Authentication.
 
-K nastavení souvisejícím s Azure Multi-Factor Authentication můžete přistupovat z Azure Portal tak, že přejdete na **Azure Active Directory** > **zabezpečení** > **MFA**.
+K nastavení souvisejícím s Azure Multi-Factor Authentication můžete přistupovat z Azure Portal tak, že přejdete na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**.
 
 ![Azure Portal – nastavení Multi-Factor Authentication Azure AD](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -36,7 +36,7 @@ Některá z těchto nastavení se vztahují na MFA Server, Azure MFA nebo obojí
 | [Blokovat/odblokovat uživatele](#block-and-unblock-users) | Slouží k blokování, aby konkrétní uživatelé mohli přijímat žádosti Multi-Factor Authentication. Všechny pokusy o ověření zablokovaných uživatelů se automaticky zamítnou. Uživatelé zůstanou zablokovaní po dobu 90 dnů od data zablokování. |
 | [Výstraha podvodů](#fraud-alert) | Konfigurace nastavení souvisejících s možností uživatelů hlásit podvodné žádosti o ověření |
 | [Oznámení](#notifications) | Povolí oznámení událostí z MFA serveru. |
-| [Tokeny OATH](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Používá se v cloudových prostředích Azure MFA ke správě tokenů OATH pro uživatele. |
+| [Tokeny OATH](concept-authentication-methods.md#oath-hardware-tokens) | Používá se v cloudových prostředích Azure MFA ke správě tokenů OATH pro uživatele. |
 | [Nastavení telefonního hovoru](#phone-call-settings) | Nakonfigurujte nastavení související s telefonními hovory a pozdravy pro cloudová a místní prostředí. |
 | Zprostředkovatelé | Tím se zobrazí všechna existující zprostředkovatelé ověřování, které jste mohli k vašemu účtu přidružit. Od 1. září 2018 se nevytvoří Noví zprostředkovatelé ověřování. |
 
@@ -62,15 +62,15 @@ Pomocí funkce _Blokovat a odblokovat uživatele_ zabráníte uživatelům přij
 ### <a name="block-a-user"></a>Blokování uživatele
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejděte na **Azure Active Directory** > **zabezpečení** > **MFA** > **blokovat/odblokovat uživatele**.
+2. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **blokovat/odblokovat uživatele**.
 3. Vyberte možnost **Přidat** a zablokovat uživatele.
-4. Vyberte **replikační skupinu**. Zadejte uživatelské jméno blokovaného uživatele jako **uživatelské jméno\@Domain.com**. Zadejte komentář do pole **důvod** .
+4. Vyberte **replikační skupinu**. Zadejte uživatelské jméno blokovaného uživatele jako **uživatelské jméno \@ Domain.com**. Zadejte komentář do pole **důvod** .
 5. Kliknutím na tlačítko **Přidat** dokončete blokování uživatele.
 
 ### <a name="unblock-a-user"></a>Odblokování uživatele
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejděte na **Azure Active Directory** > **zabezpečení** > **MFA** > **blokovat/odblokovat uživatele**.
+2. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **blokovat/odblokovat uživatele**.
 3. U sloupce **Akce** vedle uživatele, který chcete odblokovat, vyberte možnost **odblokovat** .
 4. Zadejte komentář do pole **důvod odblokování** .
 5. Výběrem **odblokování** dokončete odblokování uživatele.
@@ -82,14 +82,14 @@ Nakonfigurujte funkci _Upozornění na podvod_ , aby vaši uživatelé mohli nah
 ### <a name="turn-on-fraud-alerts"></a>Zapnout výstrahy podvodů
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejděte na **Azure Active Directory** > **Výstraha o podvodech**v**zabezpečení** > **MFA** > .
+2. Přejděte na **Azure Active Directory**  >  **Security**  >  **MFA**  >  **Výstraha o podvodech**v zabezpečení MFA.
 3. Nastavte nastavení **povoleno uživatelům odeslat výstrahy na podvod** do **zapnuto**.
 4. Vyberte **Uložit**.
 
 ### <a name="configuration-options"></a>Možnosti konfigurace
 
 * **Zablokovat uživatele při nahlášení podvodu**: Pokud uživatel nahlásí podvod, je jejich účet zablokován po dobu 90 dnů nebo dokud správce neblokuje svůj účet. Správce může kontrolovat přihlášení pomocí sestavy přihlášení a provést vhodná opatření, aby se předešlo budoucímu podvodování. Správce pak může [odblokovat](#unblock-a-user) účet uživatele.
-* **Kód pro nahlášení podvodu při úvodním pozdravu**: když uživatelé obdrží telefonní hovor, který provede dvoustupňové ověřování, normálně se **#** porovná s potvrzením přihlášení. Chcete-li nahlásit podvod, uživatel zadá kód před **#** stisknutím klávesy. Tento kód je ve výchozím nastavení **0** , ale můžete ho přizpůsobit.
+* **Kód pro nahlášení podvodu při úvodním pozdravu**: když uživatelé obdrží telefonní hovor, který provede dvoustupňové ověřování, normálně se **#** porovná s potvrzením přihlášení. Chcete-li nahlásit podvod, uživatel zadá kód před stisknutím klávesy **#** . Tento kód je ve výchozím nastavení **0** , ale můžete ho přizpůsobit.
 
    >[!NOTE]
    >Výchozí Hlasové pozdravy od Microsoftu přidávají uživatelům pokyn k odeslání výstrahy na podvod po stisku **0 #** . Pokud chcete použít jiný kód než **0**, zaznamenejte a nahrajte vlastní hlasové pozdravy s vhodnými pokyny pro uživatele.
@@ -98,11 +98,11 @@ Nakonfigurujte funkci _Upozornění na podvod_ , aby vaši uživatelé mohli nah
 ### <a name="view-fraud-reports"></a>Zobrazení sestav podvodů
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **Azure Active Directory** > **přihlašovací údaje pro** > **ověřování**. Sestava podvodů je teď součástí standardní sestavy přihlášení ke službě Azure AD a zobrazí se v **části Podrobnosti o výsledku** jako MFA zamítnuté. zadalo se podvodový kód.
+2. Vyberte **Azure Active Directory**  >  **přihlašovací**  >  **údaje pro ověřování**. Sestava podvodů je teď součástí standardní sestavy přihlášení ke službě Azure AD a zobrazí se v **části Podrobnosti o výsledku** jako MFA zamítnuté. zadalo se podvodový kód.
  
 ## <a name="notifications"></a>Oznámení
 
-Nakonfigurujte e-mailové adresy pro uživatele, kteří budou dostávat e-maily s upozorněním na podvod v **Azure Active Directory** > **Security** > **Multi-Factor Authentication** > zabezpečení**oznámení**.
+Nakonfigurujte e-mailové adresy pro uživatele, kteří budou dostávat e-maily s upozorněním na podvod v **Azure Active Directory**  >  **Security**  >  **Multi-Factor Authentication**zabezpečení  >  **oznámení**.
 
 ![Ukázka e-mailu s upozorněním na podvod oznámení](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
@@ -145,7 +145,7 @@ Pokud je například jenom jedna vlastní zpráva, má jazyk němčina:
 ### <a name="set-up-a-custom-message"></a>Nastavení vlastní zprávy
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-1. Přejděte na **Azure Active Directory** > **nastavení zabezpečení** > **MFA** > –**telefonní hovor**.
+1. Přejděte na **Azure Active Directory**  >  nastavení**zabezpečení**  >  **MFA**–  >  **telefonní hovor**.
 1. Vyberte **Přidat pozdrav**.
 1. Vyberte typ pozdravu.
 1. Vyberte jazyk.
@@ -184,16 +184,16 @@ Funkce _jednorázového_ přihlášení umožňuje uživateli ověřování jedn
 ### <a name="create-a-one-time-bypass"></a>Vytvoření jednorázového přihlášení
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejděte na **Azure Active Directory** > **zabezpečení** > **MFA** > **jednorázového přihlášení**.
+2. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **jednorázového přihlášení**.
 3. Vyberte **Přidat**.
 4. V případě potřeby vyberte replikační skupinu pro vynechání.
-5. Zadejte uživatelské jméno jako **uživatelské\@jméno Domain.com**. Zadejte počet sekund, po které má být vynechání naposledy. Zadejte důvod pro obejití.
+5. Zadejte uživatelské jméno jako **uživatelské jméno \@ Domain.com**. Zadejte počet sekund, po které má být vynechání naposledy. Zadejte důvod pro obejití.
 6. Vyberte **Přidat**. Časový limit se projeví okamžitě. Uživatel se musí přihlásit předtím, než vyprší doba přihlášení k jednorázovému přihlášení.
 
 ### <a name="view-the-one-time-bypass-report"></a>Zobrazit sestavu jednorázového přihlášení
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Přejděte na **Azure Active Directory** > **zabezpečení** > **MFA** > **jednorázového přihlášení**.
+2. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **jednorázového přihlášení**.
 
 ## <a name="caching-rules"></a>Pravidla ukládání do mezipaměti
 
@@ -205,7 +205,7 @@ Můžete nastavit časové období, které umožní pokusy o ověření po ově�
 ### <a name="set-up-caching"></a>Nastavení ukládání do mezipaměti
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejděte na **Azure Active Directory** > **zabezpečení** > **MFA** > **pravidel ukládání do mezipaměti**MFA.
+2. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **pravidel ukládání do mezipaměti**MFA.
 3. Vyberte **Přidat**.
 4. Z rozevíracího seznamu vyberte **typ mezipaměti** . Zadejte maximální počet **sekund mezipaměti**.
 5. V případě potřeby vyberte typ ověřování a zadejte aplikaci.
@@ -213,7 +213,7 @@ Můžete nastavit časové období, které umožní pokusy o ověření po ově�
 
 ## <a name="mfa-service-settings"></a>Nastavení služby MFA
 
-Nastavení pro hesla aplikací, důvěryhodné IP adresy, možnosti ověřování a zapamatování služby Multi-Factor Authentication pro Azure Multi-Factor Authentication najdete v nastavení služby. K nastavení služby se dá získat pøístup z Azure Portal tak, že přejdete na **Azure Active Directory** > **zabezpečení** > **MFA** > **Začínáme** > **Konfigurovat** > **Další cloudová nastavení MFA**.
+Nastavení pro hesla aplikací, důvěryhodné IP adresy, možnosti ověřování a zapamatování služby Multi-Factor Authentication pro Azure Multi-Factor Authentication najdete v nastavení služby. K nastavení služby se dá získat pøístup z Azure Portal tak, že přejdete na **Azure Active Directory**  >  **zabezpečení**  >  **MFA**  >  **Začínáme**  >  **Konfigurovat**  >  **Další cloudová nastavení MFA**.
 
 ![Nastavení služby Azure Multi-Factor Authentication](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
 
@@ -278,7 +278,7 @@ Azure AD podporuje federaci nebo jednotné přihlašování (SSO) s místním Wi
 Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Musí být povolená funkce hesla aplikací. Chcete-li uživatelům umožnit vytváření hesel aplikací, použijte následující postup:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé**.
+2. Na levé straně vyberte **Azure Active Directory**  >  **Uživatelé**.
 3. Vyberte **Multi-Factor Authentication**.
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.
 5. Na stránce **nastavení služby** zaškrtněte políčko **dovolit uživatelům vytvářet hesla aplikací pro přihlášení k neprohlížečovým aplikacím** .
@@ -318,7 +318,7 @@ Bez ohledu na to, jestli je povolená funkce důvěryhodných IP adres, se pro t
 ### <a name="enable-named-locations-by-using-conditional-access"></a>Povolit pojmenovaná umístění pomocí podmíněného přístupu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **zabezpečení** > **podmíněný přístup** > **pojmenované umístění**.
+2. Na levé straně vyberte **Azure Active Directory**  >  **zabezpečení**  >  **podmíněný přístup**  >  **pojmenované umístění**.
 3. Vyberte **nové umístění**.
 4. Zadejte název umístění.
 5. Vyberte **Označit jako důvěryhodné umístění**.
@@ -328,7 +328,7 @@ Bez ohledu na to, jestli je povolená funkce důvěryhodných IP adres, se pro t
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Povolení funkce důvěryhodných IP adres pomocí podmíněného přístupu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **zabezpečení** >  **podmíněný přístup** > **pojmenované umístění**.
+2. Na levé straně vyberte **Azure Active Directory**  >  **zabezpečení**  >   **podmíněný přístup**  >  **pojmenované umístění**.
 3. Vyberte **Konfigurovat důvěryhodné IP adresy MFA**.
 4. Na stránce **nastavení služby** v části **důvěryhodné IP adresy**vyberte některou z následujících dvou možností:
 
@@ -346,7 +346,7 @@ Bez ohledu na to, jestli je povolená funkce důvěryhodných IP adres, se pro t
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Povolení funkce důvěryhodných IP adres pomocí nastavení služby
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé**.
+2. Na levé straně vyberte **Azure Active Directory**  >  **Uživatelé**.
 3. Vyberte **Multi-Factor Authentication**.
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.
 5. Na stránce **nastavení služby** v části **důvěryhodné IP adresy**vyberte jednu (nebo obě) z následujících dvou možností:
@@ -378,7 +378,7 @@ Když uživatelé zaregistrují své účty pro Azure Multi-Factor Authenticatio
 ### <a name="enable-and-disable-verification-methods"></a>Povolit a zakázat metody ověřování
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé**.
+2. Na levé straně vyberte **Azure Active Directory**  >  **Uživatelé**.
 3. Vyberte **Multi-Factor Authentication**.
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.
 5. Na stránce **nastavení služby** v části **Možnosti ověřování**vyberte nebo zrušte výběr metod, které chcete uživatelům poskytnout.
@@ -414,7 +414,7 @@ Tato funkce snižuje počet ověřování ve webových aplikacích, které se ob
 ### <a name="enable-remember-multi-factor-authentication"></a>Povolit zapamatovat Multi-Factor Authentication
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé**.
+2. Na levé straně vyberte **Azure Active Directory**  >  **Uživatelé**.
 3. Vyberte **Multi-Factor Authentication**.
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.
 5. Na stránce **nastavení služby** **Spravovat zapamatování vícefaktorového ověřování**vyberte možnost **dovolit uživatelům pamatovat si vícefaktorové ověřování na zařízeních, která důvěřují** .

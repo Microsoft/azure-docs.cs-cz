@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca59305b22fcf1e81ef518612910731cb6edea5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617099"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117117"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak nainstalovat a nakonfigurovat SAP HANA (velké instance) v Azure
 
@@ -90,7 +90,7 @@ V tématu [Knihovna prostředků/dokumenty White Paper](https://www.suse.com/pro
 Níže jsou uvedené další a užitečné SAP na odkazech souvisejících s SUSE:
 
 - [SAP HANA na webu SUSE Linux](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [Osvědčené postupy pro SAP: replikace zařazení do fronty – SAP NetWeaver v systému SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
+- [Osvědčené postupy pro SAP: replikace zařazení do fronty – SAP NetWeaver v systému SUSE Linux Enterprise 12](https://www.suse.com/media/guide/SLES4SAP-NetWeaver-ha-guide-EnqRepl-12_color_en.pdf)
 - [ClamSAP – SLES antivirová ochrana pro SAP](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (včetně SLES 12 pro aplikace SAP)
 
 Níže jsou uvedené poznámky k podpoře SAP, které se vztahují k implementaci SAP HANA v SLES 12:
@@ -117,7 +117,7 @@ Níže jsou uvedené poznámky k podpoře SAP, které se vztahují k implementac
 
 ### <a name="time-synchronization"></a>Čas synchronizace
 
-Aplikace SAP, které jsou postavené na architektuře SAP NetWeaver, jsou citlivé na časové rozdíly mezi různými součástmi, které tvoří systém SAP. Krátké výpisy SAP ABAP s názvem chyby ZDATE\_ve velkém\_časovém\_rozdílu jsou pravděpodobně známé. Důvodem je, že tyto krátké výpisy se zobrazí, když je systémový čas různých serverů nebo virtuálních počítačů příliš daleko od sebe.
+Aplikace SAP, které jsou postavené na architektuře SAP NetWeaver, jsou citlivé na časové rozdíly mezi různými součástmi, které tvoří systém SAP. Krátké výpisy SAP ABAP s názvem chyby ZDATE ve \_ velkém \_ časovém \_ rozdílu jsou pravděpodobně známé. Důvodem je, že tyto krátké výpisy se zobrazí, když je systémový čas různých serverů nebo virtuálních počítačů příliš daleko od sebe.
 
 V případě SAP HANA v Azure (velké instance) se synchronizace času prováděná v Azure nevztahuje na výpočetní jednotky ve velkých objemech instancí. Tuto synchronizaci nejde použít ke spouštění aplikací SAP v nativních virtuálních počítačích Azure, protože Azure zajišťuje správnou synchronizaci času systému. 
 
@@ -144,8 +144,8 @@ Zásady vytváření názvů svazků úložiště jsou uvedené v následující
 
 | Využití úložiště | Název připojení | Název svazku | 
 | --- | --- | ---|
-| Data HANA | /hana/data/SID/mnt0000\<m> | IP adresa úložiště:/hana_data_SID_mnt00001_tenant_vol |
-| Protokol HANA | /hana/log/SID/mnt0000\<m> | IP adresa úložiště:/hana_log_SID_mnt00001_tenant_vol |
+| Data HANA | /hana/data/SID/mnt0000 \< m> | IP adresa úložiště:/hana_data_SID_mnt00001_tenant_vol |
+| Protokol HANA | /hana/log/SID/mnt0000 \< m> | IP adresa úložiště:/hana_log_SID_mnt00001_tenant_vol |
 | Zálohování protokolu HANA | /hana/log/backups | IP adresa úložiště:/hana_log_backups_SID_mnt00001_tenant_vol |
 | Sdílená HANA | /hana/shared/SID | IP adresa úložiště:/hana_shared_SID_mnt00001_tenant_vol/Shared |
 | usr/SAP | /usr/sap/SID | IP adresa úložiště:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -164,7 +164,7 @@ Svazek HANA/log/Backup by neměl být svazkem pro zálohy databáze. Má velikos
 
 Kromě úložiště, které je k dispozici, můžete zakoupit další kapacitu úložiště v přírůstcích po 1 TB. Toto dodatečné úložiště je možné přidat jako nové svazky do velké instance HANA.
 
-Během připojování pomocí SAP HANA v Azure `service management`určí zákazník ID uživatele (UID) a ID skupiny (GID) pro uživatele sidadm a skupinu sapsys (například: 1 000 500). Během instalace SAP HANA systému je nutné použít stejné hodnoty. Vzhledem k tomu, že chcete nasadit více instancí HANA na jednotku, získáte více sad svazků (jedna sada pro každou instanci). V důsledku toho je potřeba v době nasazení definovat:
+Během připojování pomocí SAP HANA v Azure `service management` určí zákazník ID uživatele (UID) a ID skupiny (GID) pro uživatele sidadm a skupinu sapsys (například: 1 000 500). Během instalace SAP HANA systému je nutné použít stejné hodnoty. Vzhledem k tomu, že chcete nasadit více instancí HANA na jednotku, získáte více sad svazků (jedna sada pro každou instanci). V důsledku toho je potřeba v době nasazení definovat:
 
 - Identifikátor SID různých instancí HANA (sidadm je z něj odvozený).
 - Velikosti paměti různých instancí HANA. Velikost paměti na instanci definuje velikost svazků v jednotlivých svazcích sady.

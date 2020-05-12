@@ -1,64 +1,201 @@
 ---
-title: Metody ověřování – Azure Active Directory
-description: Metody ověřování dostupné ve službě Azure AD pro MFA a SSPR
+title: Metody a funkce ověřování – Azure Active Directory
+description: Přečtěte si o různých metodách ověřování a funkcích, které jsou k dispozici v Azure Active Directory, které vám pomůžou zlepšit a zabezpečit události přihlášení.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 05/08/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 3947bf0dcad598bf52a742c790a2f99538d6facb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968777"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116371"
 ---
-# <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
+# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování a ověřování jsou k dispozici v Azure Active Directory?
 
-Jako správce vyberte metody ověřování pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR). doporučuje se, abyste uživatelům vyžadovali registraci více metod ověřování. Pokud není metoda ověřování pro uživatele k dispozici, může se rozhodnout ověřit jinou metodu.
+V rámci přihlašovacího prostředí pro účty v Azure Active Directory (Azure AD) existují různé způsoby, jak se může uživatel sami ověřit. Uživatelské jméno a heslo představují nejběžnější způsob, jak by uživatel historicky poskytoval přihlašovací údaje. Díky modernímu ověřování a funkcím zabezpečení v Azure AD může být základní heslo doplněno nebo nahrazeno dalšími metodami ověřování.
 
-Správci můžou v zásadách definovat, které metody ověřování jsou dostupné pro uživatele SSPR a MFA. Některé metody ověřování nemusí být k dispozici pro všechny funkce. Další informace o konfiguraci zásad najdete v článcích [postup úspěšného zavedení samoobslužného resetování hesla](howto-sspr-deployment.md) a [plánování cloudového Multi-Factor Authentication Azure](howto-mfa-getstarted.md) .
+Uživatel ve službě Azure AD se může rozhodnout ověřit pomocí jedné z následujících metod ověřování:
 
-Microsoft důrazně doporučuje správcům, aby uživatelům umožnil vybrat více než minimální požadovaný počet metod ověřování v případě, že k tomu nemají přístup.
+* Tradiční uživatelské jméno a heslo
+* Microsoft Authenticator přihlašování se nejenom heslem aplikace
+* Hardwarový token OATH nebo klíč zabezpečení FIDO2
+* Přihlášení k neheslům založené na SMS
 
-|Metoda ověřování|Využití|
-| --- | --- |
-| Heslo | MFA a SSPR |
-| Bezpečnostní otázky | Jenom SSPR |
-| E-mailová adresa | Jenom SSPR |
-| Aplikace Microsoft Authenticator | MFA a SSPR |
-| Hardwarový token OATH | Verze Public Preview pro MFA a SSPR |
-| SMS | MFA a SSPR |
-| Hlasový hovor | MFA a SSPR |
-| Hesla aplikací | Vícefaktorové ověřování pouze v určitých případech |
+Řada účtů ve službě Azure AD je povolená pro Samoobslužné resetování hesla (SSPR) nebo Azure Multi-Factor Authentication. Mezi tyto funkce patří další metody ověřování, například telefonní hovor nebo bezpečnostní otázky. Doporučuje se, abyste uživatelům vyžadovali registraci více metod ověřování. Když pro uživatele není k dispozici jedna metoda, můžou se rozhodnout ověřit jinou metodu.
+
+Následující tabulka popisuje, jaké metody ověřování a ověřování jsou k dispozici pro různé scénáře:
+
+| Metoda | Použít při přihlášení | Použít při ověřování |
+| --- | --- | --- |
+| [Heslo](#password) | Ano | MFA a SSPR |
+| [Aplikace Microsoft Authenticator](#microsoft-authenticator-app) | Ano (Preview) | MFA a SSPR |
+| [FIDO2 klíče zabezpečení (Preview)](#fido2-security-keys) | Ano | Jenom MFA |
+| [Hardwarové tokeny OATH (Preview)](#oath-hardware-tokens) | Ano | SSPR a MFA |
+| [SMS](#phone-options) | Ano (Preview) | MFA a SSPR |
+| [Hlasový hovor](#phone-options) | Ne | MFA a SSPR |
+| [Bezpečnostní otázky](#security-questions) | Ne | Jenom SSPR |
+| [E-mailová adresa](#email-address) | Ne | Jenom SSPR |
+| [Hesla aplikací](#app-passwords) | Ne | Vícefaktorové ověřování pouze v určitých případech |
+
+Tento článek popisuje tyto různé metody ověřování a ověření dostupné ve službě Azure AD a veškerá konkrétní omezení nebo omezení.
 
 ![Metody ověřování používané na přihlašovací obrazovce](media/concept-authentication-methods/overview-login.png)
 
-|     |
-| --- |
-| Hardwarové tokeny OATH pro MFA a SSPR jsou funkce verze Public Preview Azure Active Directory. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.|
-|     |
-
 ## <a name="password"></a>Heslo
 
-Heslo Azure AD se považuje za metodu ověřování. Jedná se o jednu metodu, kterou **nelze zakázat**.
+Heslo k Azure AD často představuje jednu z primárních metod ověřování. Nemůžete zakázat metodu ověřování hesla.
+
+I když použijete metodu ověřování, jako je například [přihlášení založené na SMS](howto-authentication-sms-signin.md) , když uživatel nepoužije heslo k podepsání, heslo zůstane jako dostupná metoda ověřování.
+
+## <a name="microsoft-authenticator-app"></a>Aplikace Microsoft Authenticator
+
+Ověřovací aplikace poskytuje další úroveň zabezpečení pro pracovní nebo školní účet služby Azure AD nebo účet Microsoft a je dostupná pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594)a [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). S aplikací Microsoft Authenticator se uživatelé můžou během přihlašování ověřovat heslem bez hesla nebo jako další možnost ověření během samoobslužného resetování hesla (SSPR) nebo událostí Azure Multi-Factor Authentication.
+
+Uživatelé mohou obdržet oznámení prostřednictvím mobilní aplikace, aby je schválili nebo zakázali, nebo pomocí aplikace ověřovatele vygenerovat ověřovací kód OATH, který lze zadat v přihlašovacím rozhraní. Pokud povolíte jak oznámení, tak ověřovací kód, můžou uživatelé, kteří si zaregistrují ověřovací aplikaci, použít kteroukoli z metod k ověření jejich identity.
+
+Pokud chcete použít aplikaci ověřovatele na příkazovém řádku, nikoli na kombinaci uživatelského jména a hesla, přečtěte si téma [Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)](howto-authentication-passwordless-phone.md).
+
+> [!NOTE]
+> Uživatelé nemají možnost registraci své mobilní aplikace, když povolují SSPR. Místo toho mohou uživatelé zaregistrovat svou mobilní aplikaci na [https://aka.ms/mfasetup](https://aka.ms/mfasetup) nebo jako součást registrace v rámci kombinovaného zabezpečení údajů na adrese [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
+
+### <a name="notification-through-mobile-app"></a>Oznámení prostřednictvím mobilní aplikace
+
+Ověřovací aplikace může pomáhat zabránit neoprávněnému přístupu k účtům a zastavovat podvodné transakce tím, že do telefonu Smartphone nebo tabletu zadají oznámení. Uživatelé zobrazí oznámení a pokud je to legitimní, vyberte **ověřit**. V opačném případě mohou vybrat **Odepřít**.
+
+![Snímek obrazovky s ukázkovým dotazem na přihlašovací aplikaci webového prohlížeče pro dokončení procesu přihlašování](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
+
+> [!NOTE]
+> Pokud má vaše organizace zaměstnanci pracující v nebo na cestách na Čínu, *oznámení prostřednictvím metody mobilní aplikace* na zařízeních s Androidem nefungují v této zemi. Pro tyto uživatele by měly být k dispozici alternativní metody ověřování.
+
+### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
+
+Ověřovací kód OATH lze vytvořit pomocí aplikace ověřovatele jako softwarový token. Po zadání uživatelského jména a hesla zadáte kód poskytnutý ověřovací aplikací do přihlašovacího rozhraní. Ověřovací kód poskytuje druhý způsob ověřování.
+
+Uživatelé můžou mít kombinaci až pěti hardwarových tokenů OATH nebo ověřovacích aplikací, jako je například aplikace Microsoft Authenticator, nakonfigurovaná pro použití kdykoli.
+
+> [!WARNING]
+> Aby se zajistila nejvyšší úroveň zabezpečení pro Samoobslužné resetování hesla, když se pro resetování vyžaduje jenom jedna metoda, je ověřovací kód jedinou možností, kterou uživatelé mají k dispozici.
+>
+> Pokud jsou vyžadovány dvě metody, mohou uživatelé kromě jakékoli jiné povolené metody resetovat pomocí oznámení nebo ověřovacího kódu.
+
+## <a name="fido2-security-keys"></a>FIDO2 klíče zabezpečení
+
+FIDO (Fast IDentity online) Alliance pomáhá zvýšit úroveň otevřených standardů ověřování a snížit uživatele hesel jako formy ověřování. FIDO2 je nejnovější standard, který zahrnuje standard webového ověřování (WebAuthn).
+
+Pokud chcete použít klíče zabezpečení FIDO2 při přihlašování, a ne kombinaci uživatelského jména a hesla, přečtěte si téma [Povolení přihlášení k bezpečnostnímu klíči bez hesla FIDO2 (Preview)](howto-authentication-passwordless-security-key.md).
+
+Uživatelé můžou zaregistrovat a pak vybrat FIDO2 klíč zabezpečení v přihlašovacím rozhraní jako hlavní způsob ověřování. Tyto klíče zabezpečení FIDO2 jsou obvykle zařízeními USB, ale mohou také používat Bluetooth nebo NFC. V případě hardwarového zařízení, které zpracovává ověřování, se zabezpečení účtu zvyšuje, protože není k dispozici žádné heslo, které by mohlo být zveřejněné nebo odhadované.
+
+Klíče zabezpečení FIDO2 ve službě Azure AD jsou momentálně ve verzi Preview. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+
+## <a name="oath-hardware-tokens"></a>Hardwarové tokeny OATH
+
+OATH je otevřený standard, který určuje, jak jsou generovány kódy jednorázového hesla (jednorázového hesla). Azure AD podporuje použití tokenů SHA-1 typu OATH-TOTP s odrůdou 30 sekund nebo 60. Zákazníci si můžou tyto tokeny koupit od dodavatele dle svého výběru.
+
+Tajné klíče jsou omezené na 128 znaků, které nemusí být kompatibilní se všemi tokeny. Tajný klíč může obsahovat pouze znaky *a-z* nebo *a-z* a číslice *1-7*a musí být kódovány v *Base32*.
+
+Hardwarové tokeny OATH ve službě Azure AD jsou momentálně ve verzi Preview. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+
+![Nahrávají se tokeny OATH do okna tokeny OATH MFA.](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+
+Po získání tokenů musí být nahrané ve formátu textového souboru s oddělovači (CSV), včetně hlavního názvu uživatele, sériového čísla, tajného klíče, časového intervalu, výrobce a modelu, jak je znázorněno v následujícím příkladu:
+
+```csv
+upn,serial number,secret key,time interval,manufacturer,model
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
+```
+
+> [!NOTE]
+> Ujistěte se, že jste do souboru CSV zahrnuli řádek záhlaví.
+
+Po správném formátování jako souboru CSV se správce může přihlásit k Azure Portal, přejít na **Azure Active Directory**  >  **Security**  >  **MFA**  >  **tokeny Oath**Azure Active Directory zabezpečení MFA a nahrát výsledný soubor CSV.
+
+V závislosti na velikosti souboru CSV může zpracování trvat několik minut. Kliknutím na tlačítko **aktualizovat** zobrazíte aktuální stav. Pokud v souboru dojde k chybám, můžete si stáhnout soubor CSV se seznamem případných chyb, které můžete vyřešit. Názvy polí ve staženém souboru CSV se liší od nahrané verze.
+
+Až budou všechny chyby vyřešené, může správce aktivovat každý klíč tak, že vybere možnost **aktivovat** pro token a vstoupí do jednorázového hesla zobrazeného na tokenu.
+
+Uživatelé můžou mít kombinaci až pěti hardwarových tokenů OATH nebo ověřovacích aplikací, jako je například aplikace Microsoft Authenticator, nakonfigurovaná pro použití kdykoli.
+
+## <a name="phone-options"></a>Možnosti telefonu
+
+Pro přímé ověřování pomocí textové zprávy můžete [nakonfigurovat a povolit uživatele ověřování pomocí serveru SMS (Preview)](howto-authentication-sms-signin.md). Přihlášení pomocí SMS je skvělé pro klientské pracovníky. Při přihlášení pomocí SMS nemusí uživatelé znát uživatelské jméno a heslo pro přístup k aplikacím a službám. Uživatel místo toho zadá své registrované mobilní telefonní číslo, obdrží textovou zprávu s ověřovacím kódem a zadá ho do přihlašovacího rozhraní.
+
+Uživatelé se také můžou sami ověřit pomocí mobilního telefonu nebo telefonu v kanceláři jako sekundární formulář ověřování, který se používá během Multi-Factor Authentication Azure nebo Samoobslužné resetování hesla (SSPR).
+
+Aby telefonní čísla fungovala správně, musí být ve formátu *+ CountryCode PhoneNumber*, například *+ 1 4251234567*.
+
+> [!NOTE]
+> Musí existovat mezera mezi kódem země a telefonním číslem.
+>
+> Resetování hesla nepodporuje telefonní linky. I ve formátu *+ 1 4251234567X12345* jsou rozšíření odebrána před tím, než je volání umístěno.
+
+### <a name="mobile-phone-verification"></a>Ověření mobilního telefonu
+
+V případě Azure Multi-Factor Authentication nebo SSPR se uživatelé mohou rozhodnout, že obdrží textovou zprávu s ověřovacím kódem, který se má zadat do přihlašovacího rozhraní, nebo přijmout telefonní hovor s výzvou k zadání kódu PIN.
+
+Pokud uživatelé nechtějí, aby se jejich mobilní telefonní číslo zobrazoval v adresáři, ale chtějí je použít pro resetování hesla, Správci by neměli v adresáři naplnit telefonní číslo. Místo toho by měli uživatelé naplnit svůj ověřovací atribut pro **ověřování** prostřednictvím kombinovaného zápisu bezpečnostních údajů na adrese [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) . Správci můžou tyto informace zobrazit v profilu uživatele, ale nepublikují se jinde.
+
+![Snímek obrazovky Azure Portal, který zobrazuje metody ověřování s vyplněným telefonním číslem](media/concept-authentication-methods/user-authentication-methods.png)
+
+Společnost Microsoft nezaručuje konzistentní doručování zpráv SMS Multi-Factor Authentication v rámci služby Azure nebo hlasové hovory stejným číslem. V zájmu našich uživatelů můžeme kdykoli přidat nebo odebrat krátké kódy, protože provádíme úpravy postupů pro zlepšení poskytování služby SMS. Microsoft nepodporuje krátké kódy pro země a oblasti kromě USA a Kanady.
+
+#### <a name="text-message-verification"></a>Ověření textové zprávy
+
+Při ověřování pomocí textové zprávy během SSPR nebo Azure Multi-Factor Authentication se zpráva SMS pošle na číslo mobilního telefonu obsahující ověřovací kód. Pro dokončení procesu přihlašování se zadaný ověřovací kód zadá do přihlašovacího rozhraní.
+
+#### <a name="phone-call-verification"></a>Ověření telefonního hovoru
+
+Při ověřování pomocí telefonního hovoru během SSPR nebo Azure Multi-Factor Authentication se na telefonním čísle zaregistrovaného uživatelem přivede automatizované hlasové volání. K dokončení procesu přihlašování se uživateli zobrazí výzva k zadání čísla PIN kódu, na kterém následuje znak # na své klávesnici.
+
+### <a name="office-phone-verification"></a>Ověřování pro telefon do kanceláře
+
+Atribut Office Phone spravuje správce Azure AD a nemůže být zaregistrovaný uživatelem.
+
+Při ověřování pomocí telefonního hovoru během SSPR nebo Azure Multi-Factor Authentication se na telefonním čísle zaregistrovaného uživatelem přivede automatizované hlasové volání. K dokončení procesu přihlašování se uživateli zobrazí výzva k zadání čísla PIN kódu, na kterém následuje znak # na své klávesnici.
+
+### <a name="troubleshooting-phone-options"></a>Řešení potíží s možnostmi telefonu
+
+Pokud máte problémy s ověřováním pomocí telefonu pro Azure AD, přečtěte si následující postup řešení potíží:
+
+* Blokované ID volajícího na jednom zařízení.
+   * Zkontrolujte všechna blokovaná čísla nakonfigurovaná na zařízení.
+* Chybné telefonní číslo nebo nesprávný kód země nebo nejasnost mezi osobním telefonním číslem a pracovním telefonním číslem.
+   * Řešení potíží s uživatelským objektem a nakonfigurovanými metodami ověřování. Ujistěte se, že jsou registrována správná telefonní čísla.
+* Byl zadán nesprávný kód PIN.
+   * Potvrďte, že uživatel použil pro svůj účet správný PIN kód.
+* Volání předané do hlasové pošty.
+   * Ujistěte se, že má uživatel zapnutý telefon a že je tato služba k dispozici ve své oblasti, nebo použijte alternativní metodu.
+* Uživatel je blokovaný
+   * Správce Azure AD odblokuje uživatele v Azure Portal.
+* Server SMS není přihlášen k odběru zařízení.
+   * Proveďte metody změny uživatele nebo na zařízení aktivujte SMS.
+* Chybné poskytovatele telekomunikačních služeb, jako je například nenalezen žádný telefonní vstup, chybějící problémy tónů DTMF, blokované ID volajícího na více zařízeních nebo blokované SMS přes více zařízení.
+   * Společnost Microsoft používá více poskytovatelů telekomunikačních služeb ke směrování telefonních hovorů a SMS zpráv pro ověřování. Pokud se zobrazí některý z výše uvedených problémů, uživatel se pokusí použít metodu alespoň pětkrát během 5 minut a nechat informace o tomto uživateli k dispozici při kontaktování podpory Microsoftu.
 
 ## <a name="security-questions"></a>Bezpečnostní otázky
 
-Bezpečnostní otázky jsou k dispozici **pouze v případě samoobslužného resetování hesla služby Azure AD** na účty bez oprávnění správce.
+Bezpečnostní otázky se během přihlašovací události nepoužívají jako metoda ověřování. Místo toho se bezpečnostní otázky dají použít během procesu samoobslužného resetování hesla (SSPR), abyste se ujistili, kdo jste. Účty správců nemůžou použít bezpečnostní otázky jako metodu ověřování pomocí SSPR.
 
-Pokud používáte bezpečnostní otázky, doporučujeme je používat ve spojení s jinou metodou. Bezpečnostní otázky můžou být méně bezpečné než jiné metody, protože někteří lidé můžou znát odpovědi na otázky jiného uživatele.
+Když se uživatelé registrují pro SSPR, zobrazí se jim výzva k výběru metod ověřování, které se mají použít. Pokud se rozhodnete použít bezpečnostní otázky, vyberou ze sady otázek výzvu a pak poskytnou vlastní odpovědi.
+
+![Snímek obrazovky Azure Portal, který zobrazuje metody a možnosti ověřování pro bezpečnostní otázky](media/concept-authentication-methods/security-questions-authentication-method.png)
 
 > [!NOTE]
-> Bezpečnostní otázky se ukládají soukromě a bezpečně na objekt uživatele v adresáři a můžou na ně odpovědět jenom uživatelé během registrace. Neexistuje žádný způsob, jak správce číst ani upravovat otázky a odpovědi uživatele.
->
+> Bezpečnostní otázky se ukládají soukromě a bezpečně na objekt uživatele v adresáři a můžou na ně odpovědět jenom uživatelé během registrace. Neexistuje žádný způsob, jak může správce číst ani upravovat otázky a odpovědi uživatele.
+
+Bezpečnostní otázky můžou být méně bezpečné než jiné metody, protože někteří lidé můžou znát odpovědi na otázky jiného uživatele. Pokud používáte bezpečnostní otázky v SSPR, doporučujeme je používat ve spojení s jinou metodou. Uživatel může být vyzván, aby k ověření své identity během procesu SSPR použili aplikaci Microsoft Authenticator nebo telefon, a zvolit bezpečnostní otázky pouze v případě, že k nim nemají telefon nebo registrované zařízení.
 
 ### <a name="predefined-questions"></a>Předdefinované otázky
+
+Následující předdefinované bezpečnostní otázky jsou k dispozici pro použití jako metoda ověřování pomocí SSPR. Všechny tyto bezpečnostní otázky jsou přeloženy a lokalizovány do úplné sady jazyků Office 365 na základě národního prostředí prohlížeče uživatele:
 
 * V jakém městě jste se vyplnili jako první manželka/partner?
 * V jakém městě se vaše rodiče naplnily?
@@ -74,7 +211,7 @@ Pokud používáte bezpečnostní otázky, doporučujeme je používat ve spojen
 * Co je vaše oblíbená jídla?
 * Co je jméno a příjmení babičkye jméno?
 * Jaké je prostřední jméno matky?
-* Kolik je měsíc a rok narození na stejné úrovni? (např. listopadu 1985)
+* Kolik je měsíc a rok narození na stejné úrovni? (například listopad 1985)
 * Jaké je druhé křestní jméno vašeho nejstaršího sourozence?
 * Co je jméno a příjmení dědečkae dědečka?
 * Jaké je prostřední jméno na stejné úrovni nejmladšího sourozence?
@@ -96,15 +233,15 @@ Pokud používáte bezpečnostní otázky, doporučujeme je používat ve spojen
 * Když jste byli mladí, co byste chtěli mít v době, kdy jste ho rozrostli?
 * Kdo je to nejvíc slavnýchá osoba, kterou jste dřív splnili?
 
-Všechny předdefinované bezpečnostní otázky jsou přeloženy a lokalizovány do úplné sady jazyků Office 365 na základě národního prostředí prohlížeče uživatele.
-
 ### <a name="custom-security-questions"></a>Vlastní bezpečnostní otázky
 
-Vlastní bezpečnostní otázky nejsou lokalizovány. Všechny vlastní otázky se zobrazí ve stejném jazyce jako v uživatelském rozhraní pro správu, a to i v případě, že se národní prostředí prohlížeče uživatele liší. Pokud potřebujete lokalizované otázky, měli byste použít předdefinované otázky.
+Pro větší flexibilitu můžete definovat vlastní bezpečnostní otázky. Maximální délka vlastní bezpečnostní otázky je 200 znaků.
 
-Maximální délka vlastní bezpečnostní otázky je 200 znaků.
+Vlastní bezpečnostní otázky nejsou automaticky lokalizovány jako výchozí bezpečnostní otázky. Všechny vlastní otázky se zobrazí ve stejném jazyce jako v uživatelském rozhraní pro správu, a to i v případě, že se národní prostředí prohlížeče uživatele liší. Pokud potřebujete lokalizované otázky, měli byste použít předdefinované otázky.
 
 ### <a name="security-question-requirements"></a>Požadavky na bezpečnostní otázku
+
+Pro výchozí i vlastní bezpečnostní otázky platí následující požadavky a omezení:
 
 * Minimální povolený počet znaků odpovědi je tři znaky.
 * Maximální povolený počet znaků odpovědi je 40 znaků.
@@ -115,154 +252,39 @@ Maximální délka vlastní bezpečnostní otázky je 200 znaků.
 
 ## <a name="email-address"></a>E-mailová adresa
 
-E-mailová adresa je k dispozici **pouze v samoobslužném resetování hesla služby Azure AD**.
+E-mailovou adresu nelze použít jako metodu přímého ověřování. E-mailová adresa je k dispozici pouze jako možnost ověření pro Samoobslužné resetování hesla (SSPR). Když se během SSPR vybere e-mailová adresa, pošle se uživateli e-mail, aby dokončil proces ověřování/ověřování.
 
-Microsoft doporučuje používat e-mailový účet, který nepotřebuje k přístupu heslo uživatele Azure AD.
-
-## <a name="microsoft-authenticator-app"></a>Aplikace Microsoft Authenticator
-
-Microsoft Authenticator aplikace poskytuje další úroveň zabezpečení pro pracovní nebo školní účet služby Azure AD nebo účet Microsoft.
-
-Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
-
-> [!NOTE]
-> Uživatelé nebudou mít možnost registrovat svou mobilní aplikaci při registraci pro Samoobslužné resetování hesla. Místo toho mohou uživatelé zaregistrovat svou mobilní aplikaci v [https://aka.ms/mfasetup](https://aka.ms/mfasetup) nebo ve verzi Preview registrace bezpečnostních údajů na [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)adrese.
->
-
-### <a name="notification-through-mobile-app"></a>Oznámení prostřednictvím mobilní aplikace
-
-Aplikace Microsoft Authenticator může přispět k zabránění neoprávněnému přístupu k účtům a zastavovat podvodné transakce vložením oznámení do telefonu Smartphone nebo tabletu. Uživatelé zobrazí oznámení a pokud je to legitimní, vyberte ověřit. V opačném případě mohou vybrat odepřít.
-
-> [!WARNING]
-> Pro Samoobslužné resetování hesla, když se pro resetování vyžaduje jenom jedna metoda, je ověřovací kód jedinou možností dostupnou uživatelům, **aby se zajistila nejvyšší úroveň zabezpečení**.
->
-> Pokud jsou vyžadovány dvě metody, budou moci uživatelé obnovit pomocí oznámení **nebo** ověřovacího kódu **spolu s jinými** povolenými metodami.
->
-
-Pokud povolíte použití oznámení prostřednictvím mobilní aplikace a ověřovacího kódu z mobilní aplikace, uživatelé, kteří zaregistrují Microsoft Authenticator aplikaci pomocí oznámení, můžou pomocí oznámení a kódu ověřit jejich identitu.
-
-> [!NOTE]
-> Pokud má vaše organizace zaměstnanci pracující v nebo na cestách na Čínu, **oznámení prostřednictvím metody mobilní aplikace** v **zařízeních s Androidem** v dané zemi nefunguje. Pro tyto uživatele by měly být k dispozici alternativní metody.
-
-### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
-
-Aplikaci Microsoft Authenticator nebo jiné aplikace třetích stran lze použít jako softwarový token k vytvoření ověřovacího kódu OATH. Po zadání uživatelského jména a hesla zadáte kód poskytnutý aplikací do přihlašovací obrazovky. Ověřovací kód poskytuje druhý způsob ověřování.
-
-> [!WARNING]
-> Pro Samoobslužné resetování hesla, je-li pro ověřovací kód obnovení k dispozici pouze jedna metoda, je k dispozici pouze možnost pro uživatele, aby se **zajistila nejvyšší úroveň zabezpečení**.
->
-
-Uživatelé můžou mít kombinaci až pěti hardwarových tokenů OATH nebo ověřovacích aplikací, jako je například aplikace Microsoft Authenticator nakonfigurovaná pro použití kdykoli.
-
-## <a name="oath-hardware-tokens-public-preview"></a>Hardwarové tokeny OATH (Public Preview)
-
-OATH je otevřený standard, který určuje, jak jsou generovány kódy jednorázového hesla (jednorázového hesla). Azure AD bude podporovat použití tokenů SHA-1 typu OATH-TOTP pro celou řadu 30 sekund nebo 60 sekund. Zákazníci si tyto tokeny můžou vyřídit od dodavatele dle svého výběru. Tajné klíče jsou omezené na 128 znaků, které nemusí být kompatibilní se všemi tokeny. Tajný klíč může obsahovat pouze znaky *a-z* nebo *a-z* a číslice *1-7*a musí být kódovány v Base32.
-
-![Nahrávají se tokeny OATH do okna tokeny OATH MFA.](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
-
-Hardwarové tokeny OATH jsou podporovány v rámci verze Public Preview. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.
-
-Po získání tokenů musí být nahrané ve formátu textového souboru s oddělovači (CSV), včetně hlavního názvu uživatele, sériového čísla, tajného klíče, časového intervalu, výrobce a modelu, jak je znázorněno v následujícím příkladu:
-
-```csv
-upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
-```
-
-> [!NOTE]
-> Ujistěte se, že jste do souboru CSV zahrnuli řádek záhlaví.
-
-Po správném formátování jako souboru CSV se správce může přihlásit k Azure Portal, přejít na**tokeny Oath** **Azure Active Directory** > **zabezpečení** > **MFA** > a nahrát výsledný soubor CSV.
-
-V závislosti na velikosti souboru CSV může zpracování trvat několik minut. Kliknutím na tlačítko **aktualizovat** zobrazíte aktuální stav. Pokud v souboru dojde k nějakým chybám, budete mít možnost stáhnout si soubor CSV se seznamem všech chyb, které můžete vyřešit. Názvy polí ve staženém souboru CSV se liší od nahrané verze.
-
-Až budou všechny chyby vyřešené, může správce aktivovat každý klíč tak, že klikne na **aktivovat** , aby se token aktivoval a vstoupil do něj heslo zobrazené na tokenu.
-
-Uživatelé můžou mít kombinaci až pěti hardwarových tokenů OATH nebo ověřovacích aplikací, jako je například aplikace Microsoft Authenticator nakonfigurovaná pro použití kdykoli.
-
-## <a name="phone-options"></a>Možnosti telefonu
-
-### <a name="mobile-phone"></a>Mobilní telefon
-
-Pro uživatele s mobilními telefony jsou k dispozici dvě možnosti.
-
-Pokud uživatelé nechtějí, aby se jejich mobilní telefonní číslo zobrazoval v adresáři, ale přesto se chtějí použít pro resetování hesla, Správci by ho neměli naplnit v adresáři. Uživatelé by měli naplnit svůj ověřovací atribut pro **ověřování** pomocí [registračního portálu pro resetování hesla](https://aka.ms/ssprsetup). Správci můžou tyto informace zobrazit v profilu uživatele, ale nepublikují se jinde.
-
-Aby telefonní čísla fungovala správně, musí být ve formátu *+ CountryCode PhoneNumber*, například + 1 4255551234.
-
-> [!NOTE]
-> Musí existovat mezera mezi kódem země a telefonním číslem.
->
-> Resetování hesla nepodporuje telefonní linky. I ve formátu + 1 4255551234X12345 jsou rozšíření odebrána před tím, než je volání umístěno.
-
-Společnost Microsoft nezaručuje konzistentní doručování zpráv SMS nebo hlasové Multi-Factor Authentication s využitím stejného čísla. V zájmu našich uživatelů může společnost Microsoft kdykoli přidat nebo odebrat krátké kódy, protože provádíme úpravy postupů pro zlepšení poskytování služby SMS. Společnost Microsoft nepodporuje krátké kódy pro země a oblasti kromě USA a Kanady.
-
-#### <a name="text-message"></a>Textová zpráva
-
-SMS se pošle na číslo mobilního telefonu obsahující ověřovací kód. Pokračujte zadáním ověřovacího kódu, který je k dispozici v přihlašovacím rozhraní.
-
-#### <a name="phone-call"></a>Telefonní hovor
-
-Na telefonní číslo, které zadáte, se přivede automatizované hlasové volání. Přihlaste se ke volání a stisknutím klávesy # na klávesnici telefonu proveďte ověření.
-
-> [!IMPORTANT]
-> Od března 2019 nebudou možnosti telefonního hovoru k dispozici pro MFA a SSPR uživatele v bezplatných nebo zkušebních klientech Azure AD. Tato změna nemá vliv na zprávy SMS. Telefonní hovor bude dál k dispozici uživatelům v placených klientech Azure AD. Tato změna má vliv jenom na bezplatné nebo zkušební klienty Azure AD.
-
-### <a name="office-phone"></a>Telefon do kanceláře
-
-Na telefonní číslo, které zadáte, se přivede automatizované hlasové volání. Přihlaste se ke volání a stisknutím klávesy # na klávesnici telefonu proveďte ověření.
-
-Aby telefonní čísla fungovala správně, musí být ve formátu *+ CountryCode PhoneNumber*, například + 1 4255551234.
-
-Atribut Office Phone spravuje správce.
-
-> [!IMPORTANT]
-> Od března 2019 nebudou možnosti telefonního hovoru k dispozici pro MFA a SSPR uživatele v bezplatných nebo zkušebních klientech Azure AD. Tato změna nemá vliv na zprávy SMS. Telefonní hovor bude dál k dispozici uživatelům v placených klientech Azure AD. Tato změna má vliv jenom na bezplatné nebo zkušební klienty Azure AD.
-
-> [!NOTE]
-> Musí existovat mezera mezi kódem země a telefonním číslem.
->
-> Resetování hesla nepodporuje telefonní linky. I ve formátu + 1 4255551234X12345 jsou rozšíření odebrána před tím, než je volání umístěno.
-
-### <a name="troubleshooting-phone-options"></a>Řešení potíží s možnostmi telefonu
-
-Běžné problémy související s metodami ověřování pomocí telefonního čísla:
-
-* Blokované ID volajícího na jednom zařízení
-   * Řešení potíží s zařízením
-* Špatné telefonní číslo, nesprávný kód země, telefonní číslo domů vs. telefonní číslo pracovníka
-   * Řešení potíží s uživatelským objektem a nakonfigurovanými metodami ověřování. Zajistěte, aby byla zaregistrována správná telefonní čísla.
-* Byl zadán nesprávný kód PIN.
-   * Potvrzení, že uživatel použil správný PIN zaregistrovaný v Azure MFA serveru
-* Volání předané do hlasové pošty
-   * Ujistěte se, že má uživatel zapnutý telefon a že je tato služba dostupná ve své oblasti, nebo použijte jinou metodu.
-* Uživatel je blokovaný
-   * Správce odblokuje uživatele v Azure Portal.
-* Server SMS není přihlášen k odběru zařízení.
-   * Proveďte metody změny uživatele nebo na zařízení aktivujte SMS.
-* Vadná poskytovatelé telekomunikační služby (nezjistil se žádný vstup na telefonu, chybějící problémy tónů DTMF, blokované ID volajícího na více zařízeních nebo blokované SMS přes více zařízení)
-   * Společnost Microsoft používá více poskytovatelů telekomunikačních služeb ke směrování telefonních hovorů a SMS zpráv pro ověřování. Pokud se zobrazí některá z výše uvedených problémů, uživatel se pokusí použít tuto metodu alespoň pětkrát během 5 minut a bude mít k dispozici informace o tomto uživateli při kontaktování podpory Microsoftu.
+Během registrace pro SSPR uživatel poskytne e-mailovou adresu, která se má použít. Doporučuje se použít jiný e-mailový účet než jejich podnikový účet, abyste se ujistili, že k nim budou mít přístup během SSPR.
 
 ## <a name="app-passwords"></a>Hesla aplikací
 
-Některé neprohlížečové aplikace nepodporují službu Multi-Factor Authentication, pokud byl uživatel povolen pro vícefaktorové ověřování a pokusí se použít neprohlížečové aplikace, nejde ověřit. Heslo aplikace umožňuje uživatelům pokračovat v ověřování.
+Některé starší neprohlížečové aplikace nerozumí pozastavení nebo přerušení v procesu ověřování. Pokud je pro službu Multi-Factor Authentication povolený uživatel a pokusí se použít některou z těchto starších aplikací, které nepoužívají prohlížeč, obvykle se nemůžou úspěšně ověřit. Heslo aplikace umožňuje uživatelům pokračovat v úspěšném ověřování pomocí starších neprohlížečových aplikací bez přerušení.
 
-Pokud vynutilte Multi-Factor Authentication prostřednictvím zásad podmíněného přístupu, ne přes MFA pro jednotlivé uživatele, nemůžete vytvářet hesla aplikací. Aplikace, které používají zásady podmíněného přístupu k řízení přístupu, nepotřebují hesla aplikací.
+Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Pokud potřebujete, aby uživatelé mohli vytvářet hesla aplikací, vyberte možnost **dovolit uživatelům vytvářet hesla aplikací pro přihlášení k neprohlížečovým aplikacím** v části *nastavení služby* pro vlastnosti Azure Multi-Factor Authentication pro uživatele.
 
-Pokud je vaše organizace federované pro jednotné přihlašování pomocí Azure AD a budete používat Azure MFA, pamatujte na tyto podrobnosti:
+![Snímek obrazovky Azure Portal, který zobrazuje nastavení služby pro službu Multi-Factor Authentication, aby uživatel mohl použít hesla aplikací](media/concept-authentication-methods/app-password-authentication-method.png)
 
-* Heslo aplikace ověřuje služba Azure AD, takže se federace vynechá. Federace se používá jenom při nastavování hesel aplikací. Pro uživatele federovaného (SSO) se hesla ukládají do ID organizace. Pokud uživatel odejde ze společnosti, musí tyto informace nasměrovat do ID organizace pomocí DirSync. Vypnutí nebo odstranění účtu může trvat až tři hodiny, než se synchronizuje, což zpozdí zakázání a odstranění hesel aplikací v Azure AD.
-* Místní nastavení služby Access Control klienta není dodrženo heslem aplikace.
-* Pro hesla aplikací nejsou k dispozici žádné místní možnosti protokolování a auditování ověřování.
-* Některé pokročilé návrhy architektury mohou vyžadovat použití kombinace uživatelského jména a hesla organizace a hesla aplikací při použití dvoustupňového ověřování u klientů v závislosti na tom, kde jsou ověřovány. U klientů, kteří se ověřují s místní infrastrukturou, byste měli použít uživatelské jméno a heslo organizace. Pro klienty, kteří se ověřují v Azure AD, byste použili heslo aplikace.
-* Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Pokud potřebujete uživatelům dovolit vytvářet hesla aplikací, vyberte v části nastavení služby **možnost dovolit uživatelům vytvářet hesla aplikací pro přihlášení k neprohlížečovým aplikacím** .
+Pokud vynutili Azure Multi-Factor Authentication používáním zásad podmíněného přístupu, nikoli prostřednictvím MFA pro jednotlivé uživatele, nemůžete vytvářet hesla aplikací. Moderní aplikace, které používají zásady podmíněného přístupu k řízení přístupu, nepotřebují hesla aplikací.
+
+Pokud je vaše organizace federované pro jednotné přihlašování (SSO) s Azure AD a používáte Azure Multi-Factor Authentication, platí následující požadavky:
+
+* Heslo aplikace ověřuje služba Azure AD, takže se federace vynechá. Federace se používá jenom při nastavování hesel aplikací. Pro uživatele federovaného (SSO) se hesla ukládají do ID organizace. Pokud uživatel odejde ze společnosti, musí tyto informace nasměrovat do ID organizace pomocí DirSync. Synchronizace nebo události při zakázaném účtu můžou trvat až tři hodiny, což zpozdí vypnutí nebo odstranění hesel aplikací v Azure AD.
+* Nastavení místního klienta Access Control nedodržují hesla aplikací.
+* Pro hesla aplikací nejsou k dispozici žádné místní možnosti protokolování ověřování nebo auditování.
+* Některé pokročilé návrhy architektury můžou vyžadovat použití kombinace uživatelského jména a hesla organizace a hesla aplikací při použití vícefaktorového ověřování v závislosti na tom, kde se ověřují.
+    * U klientů, kteří se ověřují s místní infrastrukturou, byste měli použít uživatelské jméno a heslo organizace.
+    * Pro klienty, kteří se ověřují v Azure AD, byste použili heslo aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Povolení samoobslužného resetování hesla pro vaši organizaci](quickstart-sspr.md)
+Informace o tom, jak začít, najdete v [kurzu samoobslužného resetování hesla (SSPR)][tutorial-sspr] a [Azure Multi-Factor Authentication][tutorial-azure-mfa].
 
-[Povolení služby Azure Multi-Factor Authentication pro vaši organizaci](howto-mfa-getstarted.md)
+Další informace o konceptech SSPR najdete v tématu [Jak funguje Samoobslužné resetování hesla služby Azure AD][concept-sspr].
 
-[Povolit kombinovanou registraci ve vašem tenantovi](howto-registration-mfa-sspr-combined.md)
+Další informace o principech vícefaktorového ověřování najdete v tématu [Jak funguje Azure Multi-Factor Authentication][concept-mfa].
 
-[Dokumentace ke konfiguraci metody ověřování koncového uživatele](https://aka.ms/securityinfoguide)
+<!-- INTERNAL LINKS -->
+[tutorial-sspr]: tutorial-enable-sspr.md
+[tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
+[concept-sspr]: concept-sspr-howitworks.md
+[concept-mfa]: concept-mfa-howitworks.md

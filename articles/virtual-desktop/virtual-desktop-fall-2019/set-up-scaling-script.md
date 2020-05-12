@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 28e76a93e309112d965c49f25be232ced789ad66
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 012cdc53099bf156e50fe766b04c3176d415db1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983189"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117389"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Škálování hostitelů relací pomocí Azure Automation
 
@@ -23,6 +23,10 @@ ms.locfileid: "82983189"
 Celkové náklady na nasazení virtuálních klientů s Windows můžete snížit tak, že změníte velikost virtuálních počítačů (VM). To znamená vypnutí a zrušení přidělení virtuálních počítačů hostitele relace v době mimo špičku a jejich opětovné zapnutí a přerozdělení během špičky.
 
 V tomto článku se dozvíte o nástroji pro škálování vytvořeném pomocí Azure Automation a Azure Logic Apps, které budou automaticky škálovat virtuální počítače hostitele relací ve vašem prostředí virtuálních počítačů s Windows. Pokud se chcete dozvědět, jak používat nástroj pro škálování, přeskočte dopředu s [požadavky](#prerequisites).
+
+## <a name="report-issues"></a>Nahlášení potíží
+
+Sestavy problémů pro nástroj pro škálování se momentálně zpracovávají na GitHubu místo podpora Microsoftu. Pokud narazíte na nějaké problémy s nástrojem pro škálování, můžete je nahlásit po otevření problému GitHubu označeného "4a-WVD-škálovat-logicapps" na [stránce GitHubu VP](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps).
 
 ## <a name="how-the-scaling-tool-works"></a>Jak nástroj pro škálování funguje
 
@@ -43,7 +47,7 @@ Během špičky využívání úlohy zkontroluje aktuální počet relací a kap
 
 V době mimo špičku bude úloha určovat, které virtuální počítače hostitele relace by se měly vypnout na základě parametru *MinimumNumberOfRDSH* . Úloha nastaví virtuální počítače hostitele relace na režim vyprázdnění, aby se zabránilo novým relacím, které se připojují k hostitelům. Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na nenulovou kladnou hodnotu, úloha upozorní všechny aktuálně přihlášené uživatele, aby ušetřili svou práci, čekali nakonfigurovanou dobu a pak vynutila odhlášení uživatelů. Po odhlášení všech uživatelských relací na virtuálním počítači hostitele relace dojde k vypnutí tohoto virtuálního počítače.
 
-Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na hodnotu nula, úloha umožní nastavení konfigurace relace v zadaných zásadách skupiny zpracovávat odhlašování uživatelských relací. Tyto zásady skupiny zobrazíte tak, že přejdete na**zásady** >  **Konfigurace** > počítače**šablony pro správu** > **části Windows součásti** > **Terminálové služby** > **časový limit relace****terminálového serveru** > . Pokud na virtuálním počítači hostitele relace existují aktivní relace, úloha ponechá virtuální počítač hostitele relace spuštěný. Pokud neexistují žádné aktivní relace, úloha vypne virtuální počítač hostitele relace.
+Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na hodnotu nula, úloha umožní nastavení konfigurace relace v zadaných zásadách skupiny zpracovávat odhlašování uživatelských relací. Tyto zásady skupiny zobrazíte tak, že přejdete na zásady **Konfigurace počítače**  >  **Policies**  >  **šablony pro správu**  >  **části Windows součásti**  >  **Terminálové služby**  >  **Terminal Server**  >  **časový limit relace**terminálového serveru. Pokud na virtuálním počítači hostitele relace existují aktivní relace, úloha ponechá virtuální počítač hostitele relace spuštěný. Pokud neexistují žádné aktivní relace, úloha vypne virtuální počítač hostitele relace.
 
 Úloha se pravidelně spouští na základě nastaveného intervalu opakování. Tento interval můžete změnit na základě velikosti prostředí pro virtuální počítače s Windows, ale mějte na paměti, že spouštění a vypínání virtuálních počítačů může nějakou dobu trvat, takže si nezapomeňte vzít v úvahu zpoždění. Doporučujeme nastavit interval opakování na každých 15 minut.
 
@@ -258,6 +262,3 @@ V rámci skupiny prostředků hostující účet Azure Automation přejděte na 
 
 ![Obrázek okna výstup pro nástroj pro škálování](../media/tool-output.png)
 
-## <a name="report-issues"></a>Nahlášení potíží
-
-Pokud narazíte na nějaké problémy s nástrojem pro škálování, můžete je nahlásit na [stránce GitHub VP](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps).

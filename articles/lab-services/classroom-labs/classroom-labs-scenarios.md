@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54fd8caef51a17148714d9cf90328572433c59db
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76717982"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115111"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Používání Učebn Labs pro školení
-Můžete nastavit testovací prostředí pro školení. Laboratoře z učebny Azure Lab Services vám umožní vytvořit testovací prostředí pro vaše školení, kde každý z praktikantů používá pro školení stejné a izolované prostředí. Můžete použít zásady, abyste zajistili, že jsou školicí prostředí k dispozici pro každého účastníka pouze v případě, že je potřebují a obsahují dostatek prostředků – například virtuální počítače – vyžadované pro školení. 
+Služby Azure Labs umožňují profesory, školitelům nebo výukovým asistentům rychle a snadno vytvořit online prostředí pro zřizování předem nakonfigurovaných výukových prostředí pro praktikanty. Každý praktikant by mohl pro školení použít stejné a izolované prostředí. Zásady je možné použít, aby se zajistilo, že školicí prostředí jsou k dispozici pro každého účastníka pouze v případě, že je potřebují a obsahují dostatek prostředků, jako jsou třeba virtuální počítače – vyžadované pro školení. 
 
 ![Testovací prostředí pro učebnu](../media/classroom-labs-scenarios/classroom.png)
 
