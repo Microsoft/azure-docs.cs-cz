@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21caec50bf9c20ec60194976b1bfbf16e4815914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1874a2f2cf96aaa905616bddcc6cb83c60c1d279
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261036"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115604"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Centralizovaná správa aplikací pomocí Azure AD
 
@@ -53,7 +53,7 @@ Většina aplikací vyžaduje, aby se uživatel před přístupem k potřebným 
 
 |Funkce  |Popis|Doporučení |
 |---------|---------|---------|
-|Zřizování SCIM|[SCIM](https://aka.ms/SICMOverview) je osvědčeným postupem automatizace zřizování uživatelů. Do Azure AD se dá integrovat jakákoli aplikace kompatibilní s SCIM. Automatické vytváření, aktualizace a odstraňování uživatelských účtů bez nutnosti uchovávat soubory CSV, vlastní skripty nebo Prem řešení.|Podívejte se na rostoucí seznam [předem integrovaných](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) aplikací v galerii aplikací Azure AD.|
+|Zřizování SCIM|[SCIM](https://aka.ms/SCIMOverview) je osvědčeným postupem automatizace zřizování uživatelů. Do Azure AD se dá integrovat jakákoli aplikace kompatibilní s SCIM. Automatické vytváření, aktualizace a odstraňování uživatelských účtů bez nutnosti uchovávat soubory CSV, vlastní skripty nebo Prem řešení.|Podívejte se na rostoucí seznam [předem integrovaných](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) aplikací v galerii aplikací Azure AD.|
 |Microsoft Graph|Využijte Breath a hloubku dat, která Azure AD potřebuje k rozšíření vaší aplikace s daty, která potřebují.|Využijte [Microsoft Graph](https://developer.microsoft.com/graph/) k získávání dat z celého ekosystému Microsoftu. |
 
 
@@ -89,6 +89,6 @@ Identita může být pouze vaší řídicí rovinou, pokud může propojit vše 
 - [Správa aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
 - [Zřizování aplikací](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
 - [Hybridní zabezpečený přístup](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
-- [Zásady správného řízení identit](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
+- [Zásady správného řízení identity](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
 - [Microsoft identity platform](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 - [Zabezpečení identity](https://docs.microsoft.com/azure/active-directory/conditional-access/index)
