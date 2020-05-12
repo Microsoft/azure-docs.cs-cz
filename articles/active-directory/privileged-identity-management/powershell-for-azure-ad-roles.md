@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a6c0153105627e272d05af5514a030577431f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c42c0dd3848ec913f991e4b07612669c5a25c9f1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233988"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197267"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell pro role Azure AD v Privileged Identity Management
 
@@ -45,12 +45,12 @@ Tento článek obsahuje pokyny k používání rutin prostředí PowerShell pro 
         $AzureAdCred = Get-Credential  
         Connect-AzureAD -Credential $AzureAdCred
 
-1. Vyhledejte ID tenanta pro vaši organizaci Azure AD tak, že na **Azure Active Directory** > **vlastnosti** > **ID adresáře**. V části rutiny použijte toto ID vždy, když potřebujete zadat resourceId.
+1. Vyhledejte ID tenanta pro vaši organizaci Azure AD tak, že na **Azure Active Directory**  >  **vlastnosti**  >  **ID adresáře**. V části rutiny použijte toto ID vždy, když potřebujete zadat resourceId.
 
     ![Vyhledání ID organizace ve vlastnostech organizace Azure AD](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> V následujících částech najdete jednoduché příklady, které vám pomůžou začít pracovat. Podrobnější dokumentaci týkající se následujících rutin najdete na adrese https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management. V parametru providerID ale budete muset nahradit "azureResources" pomocí "aadRoles". Bude také nutné pamatovat na použití ID organizace pro vaši organizaci Azure AD jako parametr resourceId.
+> V následujících částech najdete jednoduché příklady, které vám pomůžou začít pracovat. Podrobnější dokumentaci týkající se následujících rutin najdete na adrese https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management . V parametru providerID ale budete muset nahradit "azureResources" pomocí "aadRoles". Bude také nutné pamatovat na použití ID organizace pro vaši organizaci Azure AD jako parametr resourceId.
 
 ## <a name="retrieving-role-definitions"></a>Načítání definic rolí
 
@@ -122,11 +122,10 @@ Nastavení obsahuje čtyři hlavní objekty. PIM používá jenom tři z těchto
 
 [![](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png "Get and update role settings")](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
 
-Chcete-li aktualizovat nastavení role, bude nutné nejprve definovat objekt nastavení následujícím způsobem:
+Chcete-li aktualizovat nastavení role, je nutné získat existující objekt nastavení pro určitou roli a provést změny v něm:
 
-    $setting = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting 
-    $setting.RuleIdentifier = "JustificationRule"
-    $setting.Setting = "{'required':false}"
+    $setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
+    $setting.UserMemberSetting.justificationRule = '{"required":false}'
 
 Pak můžete použít nastavení na jeden z objektů pro určitou roli, jak je znázorněno níže. ID tady je ID nastavení role, které se dá načíst z výsledku rutiny nastavení role seznamu.
 

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 9ac6927df63d51830a58773e32ad0968920c0867
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cbe0015eeb9b46cd72496a220ce7f7d094cb61d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061765"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198556"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -61,6 +61,8 @@ Některé z těchto operací můžete vyzkoušet pomocí následujících přík
 SQL Database podporuje samoobslužné obnovení (PITR) pomocí automatického vytváření úplných záloh, rozdílových záloh a záloh protokolů transakcí. Úplné zálohy databáze jsou vytvářeny týdně a rozdílové zálohy databáze se většinou vytvářejí každých 12 hodin. Zálohy protokolu transakcí se většinou vytvářejí každých 5 až 10 minut. Frekvence zálohování protokolu transakcí je založena na výpočetní velikosti a množství aktivity databáze. 
 
 První úplné zálohování je naplánováno ihned po vytvoření databáze. Tato záloha se obvykle dokončí do 30 minut, ale pokud je databáze velká, může trvat déle. Například počáteční záloha může trvat déle na obnovenou databázi nebo kopii databáze. Po první úplné záloze se všechny další zálohy naplánují automaticky a budou se bezobslužně spravovat na pozadí. Přesné načasování všech záloh databáze určuje služba SQL Database, protože musí vyrovnat celkové zatížení systému. Úlohy zálohování nemůžete změnit ani zakázat.
+
+### <a name="default-backup-retention-period"></a>Výchozí doba uchovávání záloh
 
 Zálohy PITR jsou chráněné pomocí geograficky redundantního úložiště. Další informace najdete v článku [Možnosti redundance Azure Storage](../storage/common/storage-redundancy.md).
 
@@ -156,7 +158,7 @@ Pokud je databáze zašifrovaná pomocí TDE, zálohy se automaticky zašifrují
 
 V nepřetržitém případě Azure SQL Database technický tým automaticky testuje obnovení automatizovaných záloh databáze databází umístěných na logických serverech a ve fondech elastické databáze. (Toto testování není k dispozici ve spravované instanci.) Při obnovení k bodu v čase získají databáze také kontroly integrity DBCC CHECKDB.
 
-Spravovaná instance po dokončení migrace provede automatické `CHECKSUM` počáteční zálohování s databázemi obnovenými pomocí nativního `RESTORE` příkazu nebo se službou Azure Data Migration Service.
+Spravovaná instance po dokončení migrace provede automatické počáteční zálohování s `CHECKSUM` databázemi obnovenými pomocí nativního `RESTORE` příkazu nebo se službou Azure Data Migration Service.
 
 Všechny problémy zjištěné během kontroly integrity budou mít za následek upozornění technickému týmu. Další informace najdete v tématu [Integrita dat v Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 

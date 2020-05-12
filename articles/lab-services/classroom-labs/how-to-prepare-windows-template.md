@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ed2a506fc4446f78685c6cd6ae9dec2b65e1743
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521186"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119293"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Průvodce nastavením počítače se šablonou Windows v Azure Lab Services
 
@@ -32,7 +32,7 @@ Aby bylo možné chránit data studentů při obnovení virtuálního počítač
 
 Pokud chcete ručně stáhnout a nainstalovat OneDrive, přečtěte si stránky pro stažení na [OneDrivu](https://onedrive.live.com/about/download/) nebo [OneDrivu pro firmy](https://onedrive.live.com/about/business/) .
 
-Můžete také použít následující skript prostředí PowerShell.  Bude automaticky stahovat a instalovat nejnovější verzi OneDrivu.  Po instalaci klienta OneDrive spusťte instalační program.  V našem příkladu používáme `/allUsers` přepínač k instalaci OneDrivu pro všechny uživatele na počítači. K tiché instalaci `/silent` OneDrivu používáme také přepínač.
+Můžete také použít následující skript prostředí PowerShell.  Bude automaticky stahovat a instalovat nejnovější verzi OneDrivu.  Po instalaci klienta OneDrive spusťte instalační program.  V našem příkladu používáme `/allUsers` přepínač k instalaci OneDrivu pro všechny uživatele na počítači. `/silent`K tiché instalaci OneDrivu používáme také přepínač.
 
 ```powershell
 Write-Host "Downloading OneDrive Client..."
@@ -136,7 +136,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 Pokud Váš počítač šablony potřebuje sadu Office, doporučujeme nainstalovat Office prostřednictvím nástroje pro [nasazení Office (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 ). Budete muset vytvořit opakovaně použitelný konfigurační soubor pomocí [služby konfigurace klienta Office 365](https://config.office.com/) , abyste si zvolili, jakou architekturu budete potřebovat v Office, a jak často se aktualizuje.
 
 1. Spusťte [službu konfigurace klienta Office 365](https://config.office.com/) a Stáhněte si vlastní konfigurační soubor.
-2. Stáhněte si [Nástroj pro nasazení Office](https://www.microsoft.com/download/details.aspx?id=49117).  Stažený soubor bude `setup.exe`.
+2. Stáhněte si [Nástroj pro nasazení Office](https://www.microsoft.com/download/details.aspx?id=49117).  Stažený soubor bude `setup.exe` .
 3. Spusťte `setup.exe /download configuration.xml` a stáhněte součásti Office.
 4. Spusťte `setup.exe /configure configuration.xml` pro instalaci součástí systému Office.
 
@@ -211,11 +211,11 @@ Pokud na virtuálním počítači potřebujete nainstalované další jazyky, m�
 2. Vyhledejte "jazykovou sadu"
 3. Vyberte jazyk, který chcete nainstalovat.
 
-Pokud jste už přihlášení k virtuálnímu počítači šablony, použijte [zástupce nainstalovat jazykovou sadu](ms-settings:regionlanguage?activationSource=SMC-IA-4027670) pro přechod přímo na stránku příslušná nastavení.
+Pokud jste už přihlášení k virtuálnímu počítači šablony, použijte klávesovou zkratku "nainstalovat jazykovou sadu" ( `ms-settings:regionlanguage?activationSource=SMC-IA-4027670` ) k přechodu přímo na stránku příslušné nastavení.
 
 ## <a name="remove-unneeded-built-in-apps"></a>Odebrání nepotřebných integrovaných aplikací
 
-Windows 10 obsahuje mnoho integrovaných aplikací, které nemusí být potřeba pro konkrétní třídu. Chcete-li zjednodušit image počítače pro studenty, můžete chtít odinstalovat některé aplikace z počítače šablony.  Pokud chcete zobrazit seznam nainstalovaných aplikací, použijte rutinu `Get-AppxPackage` PowerShellu.  Následující příklad zobrazuje všechny nainstalované aplikace, které je možné odebrat.
+Windows 10 obsahuje mnoho integrovaných aplikací, které nemusí být potřeba pro konkrétní třídu. Chcete-li zjednodušit image počítače pro studenty, můžete chtít odinstalovat některé aplikace z počítače šablony.  Pokud chcete zobrazit seznam nainstalovaných aplikací, použijte `Get-AppxPackage` rutinu PowerShellu.  Následující příklad zobrazuje všechny nainstalované aplikace, které je možné odebrat.
 
 ```powershell
 Get-AppxPackage | Where {$_.NonRemovable -eq $false} | select Name

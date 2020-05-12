@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1ca4ff3ed35371fe7454c242da8c9107badc659
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79126648"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199530"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat Google jako zprostředkovatele identity pro uživatele typu Host B2B
 
@@ -37,20 +37,20 @@ Pokud uživatel typu Host uvidí chybu "záhlaví je příliš dlouhá", může 
 
 ## <a name="limitations"></a>Omezení
 
-Týmy plně podporují uživatele typu Host Google na všech zařízeních. Uživatelé Google se můžou přihlásit ke týmům ze společného koncového bodu `https://teams.microsoft.com`, jako je.
+Týmy plně podporují uživatele typu Host Google na všech zařízeních. Uživatelé Google se můžou přihlásit ke týmům ze společného koncového bodu `https://teams.microsoft.com` , jako je.
 
 Společné koncové body jiných aplikací možná nepodporují uživatele Google. Uživatelé typu Host Google se musí přihlásit pomocí odkazu, který obsahuje informace o vašem tenantovi. Tady jsou příklady:
   * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
   * `https://portal.azure.com/<your tenant id>`
   * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
 
-   Pokud se uživatelé Google Guest pokusí použít odkaz, například `https://myapps.microsoft.com` nebo `https://portal.azure.com`, zobrazí se chyba.
+   Pokud se uživatelé Google Guest pokusí použít odkaz `https://myapps.microsoft.com` , například nebo, zobrazí se `https://portal.azure.com` Chyba.
 
-Uživatelům Google hosta můžete také poskytnout přímý odkaz na aplikaci nebo prostředek, pokud tento odkaz obsahuje vaše informace o tenantovi, například `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
+Uživatelům Google hosta můžete také poskytnout přímý odkaz na aplikaci nebo prostředek, pokud tento odkaz obsahuje vaše informace o tenantovi, například `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` . 
 
 ## <a name="step-1-configure-a-google-developer-project"></a>Krok 1: konfigurace projektu pro vývojáře Google
 Nejdřív vytvořte nový projekt v konzole pro vývojáře Google, abyste získali ID klienta a tajný klíč klienta, které můžete později přidat do Azure AD. 
-1. Přejít na rozhraní Google API na https://console.developers.google.comadrese a přihlaste se pomocí svého účtu Google. Doporučujeme použít sdílený týmový účet Google.
+1. Přejít na rozhraní Google API na adrese https://console.developers.google.com a přihlaste se pomocí svého účtu Google. Doporučujeme použít sdílený týmový účet Google.
 2. Vytvořit nový projekt: na řídicím panelu vyberte **vytvořit projekt**a pak vyberte **vytvořit**. Na stránce Nový projekt zadejte **název projektu**a pak vyberte **vytvořit**.
    
    ![Snímek obrazovky s novou stránkou projektu pro Google](media/google-federation/google-new-project.png)
@@ -77,7 +77,7 @@ Nejdřív vytvořte nový projekt v konzole pro vývojáře Google, abyste získ
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(kde `<directory id>` je ID vašeho adresáře)
    
      > [!NOTE]
-     > ID adresáře zjistíte tak, že přejdete https://portal.azure.comna adresu a v části **Azure Active Directory**zvolíte **vlastnosti** a zkopírujete **ID adresáře**.
+     > ID adresáře zjistíte tak, že přejdete na adresu https://portal.azure.com a v části **Azure Active Directory**zvolíte **vlastnosti** a zkopírujete **ID adresáře**.
 
    ![Snímek obrazovky s povoleným oddílem identifikátorů URI pro přesměrování](media/google-federation/google-create-oauth-client-id.png)
 
@@ -90,15 +90,15 @@ Teď nastavíte ID klienta Google a tajný kód klienta, a to tak, že ho zadát
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>Konfigurace Google Federation na portálu Azure AD 
 1. Přejít na [Azure Portal](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
-2. Vyberte **vztahy organizace**.
-3. Vyberte **Zprostředkovatelé identity**a pak klikněte na tlačítko **Google** .
+2. Vyberte **organizační vztahy** (nebo **externí identity**).
+3. Vyberte **všichni zprostředkovatelé identity**a pak klikněte na tlačítko **Google** .
 4. Zadejte název. Pak zadejte ID klienta a tajný klíč klienta, které jste získali dříve. Vyberte **Uložit**. 
 
    ![Snímek obrazovky se stránkou přidat poskytovatele identity Google](media/google-federation/google-identity-provider.png)
 
 #### <a name="to-configure-google-federation-by-using-powershell"></a>Konfigurace Google federace pomocí prostředí PowerShell
 1. Nainstalujte nejnovější verzi Azure AD PowerShellu pro modul Graph ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).
-2. Spusťte následující příkaz: `Connect-AzureAD`.
+2. Spusťte následující příkaz: `Connect-AzureAD` .
 3. V příkazovém řádku pro přihlášení se přihlaste pomocí účtu spravovaného globálního správce.  
 4. Spusťte následující příkaz: 
    
@@ -112,8 +112,8 @@ Můžete odstranit nastavení Google Federation. Pokud to uděláte, uživatelé
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Pokud chcete odstranit Google Federation na portálu Azure AD: 
 1. Přejít na [Azure Portal](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
-2. Vyberte **vztahy organizace**.
-3. Vyberte **Zprostředkovatelé identity**.
+2. Vyberte **organizační vztahy** (nebo **externí identity**).
+3. Vyberte **všechny zprostředkovatele identity**.
 4. Na řádku **Google** vyberte kontextovou nabídku (**...**) a pak vyberte **Odstranit**. 
    
    ![Snímek obrazovky znázorňující možnost odstranění pro poskytovatele sociální identity](media/google-federation/google-social-identity-providers.png)

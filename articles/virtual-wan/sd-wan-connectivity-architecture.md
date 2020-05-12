@@ -8,16 +8,16 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 15e44b9c048f167935fe8660228581e5bac0f43d
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 34b2282421b9c95ad99ad040cb11847a30d3b52c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006258"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199999"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Architektura připojení SD-WAN s Azure Virtual WAN
 
-Azure Virtual WAN je síťová služba, která spojuje celou cloudovou konektivitu a služby zabezpečení s jedním provozním rozhraním. Tyto služby zahrnují větvení (přes síť Site-to-Site VPN), vzdáleného uživatele (připojení typu Point-to-Site VPN), privátní (ExpressRoute) připojení a také přenos v rámci cloudu pro připojení virtuální sítě, VPN a ExpressRoute vzájemné propojení, směrování, Azure Firewall a šifrování pro privátní připojení.
+Azure Virtual WAN je síťová služba, která spojuje celou cloudovou konektivitu a služby zabezpečení s jedním provozním rozhraním. Mezi tyto služby patří větev (prostřednictvím sítě Site-to-Site VPN), vzdálený uživatel (připojení VPN typu Point-to-site), privátní připojení (ExpressRoute), přenosné připojení mezi cloudem pro virtuální sítě, VPN a ExpressRoute vzájemné propojení, směrování, Azure Firewall a šifrování pro privátní připojení.
 
 I když je samotný Azure Virtual WAN sám o softwaru definovaná síť WAN (SD-WAN), je také navržena tak, aby umožňovala bezproblémové propojení s místními technologiemi a službami SD-WAN. Mnohé takové služby nabízí náš virtuální ekosystém sítě [WAN](virtual-wan-locations-partners.md) a partneři Azure Networking Managed Services [(účastníci programu MSP)](../networking/networking-partners-msp.md). Podniky, které transformují privátní síť WAN na SD-WAN, mají možnosti při vzájemném propojení privátního SD-WAN s Azure Virtual WAN. Podniky si můžou vybrat z těchto možností:
 
@@ -39,7 +39,7 @@ SD-WAN CPE pokračuje v místě, kde se implementuje a vynutila optimalizace pro
 
 V tomto modelu nemusí být některé z optimalizace provozu spravovaného dodavatelem na základě charakteristik provozu v reálném čase podporované, protože připojení k virtuální síti WAN je nad protokolem IPsec a síť VPN s protokolem IPsec je ve virtuální síti VPN Gateway ukončena. Například volba dynamické cesty ve větvi CPE je proveditelná v důsledku toho, že zařízení vyměňuje různé informace o síťovém paketu s jiným uzlem SD-WAN, a proto identifikuje nejlepší odkaz na použití pro různé prioritní přenosy dynamicky ve větvi. Tato funkce může být užitečná v oblastech, kde je potřeba optimalizace poslední kilometry (větev k nejbližšímu programu Microsoft POP).
 
-Pomocí virtuální sítě WAN můžou uživatelé získat výběr cest Azure, což je výběr cesty založený na zásadách mezi více odkazy poskytovatele internetových služeb od větve CPE ke branám VPN od společnosti WAN. Virtuální síť WAN umožňuje nastavení více propojení (cest) ke stejné větvi SD-WAN, přičemž každý odkaz se ukončí na jiném veřejném IP rozhraní SD-WAN CPE. Pomocí této funkce můžou dodavatelé SD-WAN využít k výběru optimální cesty k Azure na základě zásad provozu, které jsou specifické pro tyto cesty.
+Pomocí virtuální sítě WAN můžou uživatelé získat výběr cest Azure, což je výběr cesty založený na zásadách mezi více odkazy poskytovatele internetových služeb od větve CPE ke branám VPN od společnosti WAN. Virtuální síť WAN umožňuje nastavení více odkazů (cest) ze stejné větve SD-WAN CPE; každé propojení představuje připojení s duálním tunelem z jedinečné veřejné IP adresy SD-WAN CPE do dvou různých instancí služby Azure Virtual WAN VPN Gateway. Dodavatelé SD-WAN můžou implementovat optimální cestu k Azure, a to na základě zásad provozu stanovených jejich modulem zásad na odkazech CPE.
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Model nepřímých propojení
 

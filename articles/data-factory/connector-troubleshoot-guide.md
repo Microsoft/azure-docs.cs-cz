@@ -8,12 +8,13 @@ ms.topic: troubleshooting
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 62ad337646cf3fc0bbe4305dccad5adb56f8ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 50f76d9b4f3061e6e9a1e4a0b510146dbded422a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410232"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199013"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Řešení potíží s konektory služby Azure Data Factory
 
@@ -30,7 +31,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: došlo k potížím s voláním operace BLOB Storage.
 
-- **Doporučení**: Podrobnosti najdete v podrobnostech o chybě. Podívejte se na dokument s nápovědě https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codesk objektu BLOB:. Pokud potřebujete, obraťte se na tým úložiště.
+- **Doporučení**: Podrobnosti najdete v podrobnostech o chybě. Podívejte se na dokument s nápovědě k objektu BLOB: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes . Pokud potřebujete, obraťte se na tým úložiště.
 
 
 ### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>Kód chyby: AzureBlobServiceNotReturnExpectedDataLength
@@ -134,7 +135,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: Pokud chybová zpráva obsahuje zakázané, instanční objekt nebo spravovaná identita nemusí mít k dispozici dostatečná oprávnění pro přístup k adls Gen2.
 
-- **Doporučení**: informace naleznete v dokumentu Help: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication.
+- **Doporučení**: informace naleznete v dokumentu Help: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication .
 
 - **Příčina**: Pokud chybová zpráva obsahuje hodnotu ' Nenalezeno ', je vrácena chyba adls Gen2.
 
@@ -198,11 +199,11 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: Pokud chybová zpráva obsahuje "SqlException", SQL Database vyvolá chybu oznamující, že některá konkrétní operace selhala.
 
-- **Doporučení**: Další podrobnosti najdete v kódu chyby SQL v tomto referenčním dokumentu: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors. Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
+- **Doporučení**: Další podrobnosti najdete v kódu chyby SQL v tomto referenčním dokumentu: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
 
 - **Příčina**: Pokud chybová zpráva obsahuje "klient s IP adresou"... nemá povolený přístup k serveru a pokoušíte se připojit k Azure SQL Database, obvykle to způsobuje Azure SQL Database potížích s bránou firewall.
 
-- **Doporučení**: v konfiguraci brány firewall Azure SQL Server povolte možnost Povolit službám a prostředkům Azure přístup k tomuto serveru. Referenční doc: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure.
+- **Doporučení**: v konfiguraci brány firewall Azure SQL Server povolte možnost Povolit službám a prostředkům Azure přístup k tomuto serveru. Referenční doc: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
 
 
 ### <a name="error-code--sqloperationfailed"></a>Kód chyby: SqlOperationFailed
@@ -211,8 +212,8 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: Pokud chybová zpráva obsahuje "SqlException", SQL Database vyvolá chybu oznamující, že některá konkrétní operace selhala.
 
-- **Doporučení**: Pokud chyba SQL není jasná, zkuste prosím změnit databázi na nejnovější úroveň kompatibility 150. Může vyvolat nejnovější verzi chyb SQL. Přečtěte si dokument s podrobnostmi: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat.
-        Pokud chcete řešit potíže s SQL serverem, vyhledejte v tomto referenčním dokumentu kód chyby SQL, kde https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorsnajdete další podrobnosti:. Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
+- **Doporučení**: Pokud chyba SQL není jasná, zkuste prosím změnit databázi na nejnovější úroveň kompatibility 150. Může vyvolat nejnovější verzi chyb SQL. Přečtěte si dokument s podrobnostmi: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat .
+        Pokud chcete řešit potíže s SQL serverem, vyhledejte v tomto referenčním dokumentu kód chyby SQL, kde najdete další podrobnosti: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Pokud potřebujete další pomoc, obraťte se na podporu Azure SQL.
 
 - **Příčina**: Pokud chybová zpráva obsahuje "PdwManagedToNativeInteropException", obvykle se jedná o neshodu mezi zdrojem a velikostmi sloupců jímky.
 
@@ -220,7 +221,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: Pokud chybová zpráva obsahuje "InvalidOperationException", obvykle je způsobena neplatnými vstupními daty.
 
-- **Doporučení**: Chcete-li zjistit, který řádek narazí na problém, povolte funkci odolnost proti chybám u aktivity kopírování, která může přesměrovat problematické řádky do úložiště pro další šetření. Referenční doc: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+- **Doporučení**: Chcete-li zjistit, který řádek narazí na problém, povolte funkci odolnost proti chybám u aktivity kopírování, která může přesměrovat problematické řádky do úložiště pro další šetření. Referenční doc: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance .
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>Kód chyby: SqlUnauthorizedAccess
@@ -323,7 +324,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: hromadné kopírování SQL se nezdařilo, protože od klienta BCP byla přijata neplatná délka sloupce.
 
-- **Doporučení**: Chcete-li zjistit, který řádek narazí na problém, povolte funkci odolnost proti chybám u aktivity kopírování, která může přesměrovat problematické řádky do úložiště pro další šetření. Referenční doc: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+- **Doporučení**: Chcete-li zjistit, který řádek narazí na problém, povolte funkci odolnost proti chybám u aktivity kopírování, která může přesměrovat problematické řádky do úložiště pro další šetření. Referenční doc: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance .
 
 
 ### <a name="error-code--sqlconnectionisclosed"></a>Kód chyby: SqlConnectionIsClosed
@@ -545,7 +546,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: formát Parquet není v Azure Data Factory podporován.
 
-- **Doporučení**: poklikejte na zdrojová data. Podívejte se na dokument: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
+- **Doporučení**: poklikejte na zdrojová data. Podívejte se na dokument: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs .
 
 
 ### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Kód chyby: ParquetMissedDecimalPrecisionScale
@@ -581,7 +582,7 @@ Tento článek popisuje běžné metody řešení potíží pro konektory v Azur
 
 - **Příčina**: data nejde převést na typ zadaný v mapování. Source.
 
-- **Doporučení**: poklikejte na zdrojová data nebo zadejte správný datový typ pro tento sloupec v mapování sloupců aktivity kopírování. Podívejte se na dokument: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs.
+- **Doporučení**: poklikejte na zdrojová data nebo zadejte správný datový typ pro tento sloupec v mapování sloupců aktivity kopírování. Podívejte se na dokument: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs .
 
 
 ### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>Kód chyby: ParquetDataCountNotMatchColumnCount

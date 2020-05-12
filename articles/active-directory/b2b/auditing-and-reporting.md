@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74d2473d37dcf0d435ab61763e72a64111845956
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67b543bd46b195a0944959f3f462a2bdc7d150ba
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74273301"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199459"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Auditování a vytváření sestav uživatele spolupráce B2B
 U uživatelů typu host máte k dispozici možnosti auditování podobně jako u členských uživatelů. 
 
 ## <a name="access-reviews"></a>Kontroly přístupu
-Pomocí kontrol přístupu můžete pravidelně ověřovat, jestli uživatelé typu Host stále potřebují přístup k vašim prostředkům. Funkce kontroly **přístupu** je dostupná v **Azure Active Directory** v části **Správa** > **vztahů organizace**. (Můžete také vyhledat "kontroly přístupu" ze **všech služeb** v Azure Portal.) Pokud chcete zjistit, jak používat kontroly přístupu, přečtěte si téma [Správa přístupu hostů pomocí kontrol přístupu Azure AD](../governance/manage-guest-access-with-access-reviews.md).
+Pomocí kontrol přístupu můžete pravidelně ověřovat, jestli uživatelé typu Host stále potřebují přístup k vašim prostředkům. Funkce kontroly **přístupu** je dostupná v **Azure Active Directory** v části kontroly přístupu u **vztahů organizace**  >  **Access reviews** (nebo kontroly přístupu **externích identit**  >  **Access reviews** ). Můžete také vyhledat "kontroly přístupu" ze **všech služeb** v Azure Portal. Pokud chcete zjistit, jak používat kontroly přístupu, přečtěte si téma [Správa přístupu hostů pomocí kontrol přístupu Azure AD](../governance/manage-guest-access-with-access-reviews.md).
 
 ## <a name="audit-logs"></a>Protokoly auditu
 

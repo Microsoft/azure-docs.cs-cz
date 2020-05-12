@@ -3,7 +3,7 @@ title: Řešení potíží s chybami alokace virtuálních počítačů Azure | 
 description: Řešení potíží s přidělením při vytváření, restartování nebo změně velikosti virtuálního počítače v Azure
 services: virtual-machines
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: felixwu
 editor: ''
 tags: top-support-issue,azure-resource-manager,azure-service-management
@@ -11,13 +11,13 @@ ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
-ms.author: cjiang
-ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: daberry
+ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484396"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124784"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Řešení potíží s chybami přidělení při vytváření, restartování nebo změně velikosti virtuálních počítačů v Azure
 
@@ -25,11 +25,11 @@ Když vytvoříte virtuální počítač (VM), restartujete zastavené (navráce
 
 **Kód chyby**: AllocationFailed nebo ZonalAllocationFailed
 
-**Chybová zpráva**: alokace se nezdařila. Pro požadovanou velikost virtuálního počítače v této oblasti nepotřebujeme dostatečnou kapacitu. Přečtěte si další informace o vylepšení pravděpodobnosti úspěchu přidělení\/na https:/aka.MS/Allocation-Guidance.
+**Chybová zpráva**: alokace se nezdařila. Pro požadovanou velikost virtuálního počítače v této oblasti nepotřebujeme dostatečnou kapacitu. Přečtěte si další informace o vylepšení pravděpodobnosti úspěchu přidělení na https: \/ /aka.MS/Allocation-Guidance.
 
 Tento článek vysvětluje příčiny některých běžných chyb přidělení a navrhuje možné nápravy.
 
-Pokud váš problém s Azure není v tomto článku řešen, navštivte [fóra Azure na webu MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Svůj problém můžete vystavit na těchto fórech nebo @AzureSupport na Twitteru. Žádost o podporu Azure si také můžete vyžádat výběrem možnosti získat podporu na webu [podpory Azure](https://azure.microsoft.com/support/options/) .
+Pokud váš problém s Azure není v tomto článku řešen, navštivte [fóra Azure na webu MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Svůj problém můžete vystavit na těchto fórech nebo na @AzureSupport Twitteru. Žádost o podporu Azure si také můžete vyžádat výběrem možnosti získat podporu na webu [podpory Azure](https://azure.microsoft.com/support/options/) .
 
 Dokud nebude upřednostňovaný typ virtuálního počítače dostupný v upřednostňované oblasti, doporučujeme zákazníkům, kteří narazí na problémy s nasazením, vzít v úvahu pokyny v následující tabulce jako dočasné alternativní řešení. 
 

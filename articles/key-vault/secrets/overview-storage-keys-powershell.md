@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: f8c526148e37ba1b716aafd32dcc3f242358f1eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 454420d9b2f4e3cf834490da79f3571691f25bc1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427780"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121112"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure PowerShell
 
@@ -75,7 +75,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>Nastavení proměnných
 
-Nejdřív nastavte proměnné, které budou používat rutiny prostředí PowerShell v následujících krocích. Nezapomeňte <YourKeyVaultName> aktualizovat zástupné <YourResourceGroupName>symboly <YourStorageAccountName>, a a nastavit $keyVaultSpAppId na `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (jak je uvedeno v [ID aplikace instančního objektu](#service-principal-application-id)výše).
+Nejdřív nastavte proměnné, které budou používat rutiny prostředí PowerShell v následujících krocích. Nezapomeňte aktualizovat <YourResourceGroupName> <YourStorageAccountName> <YourKeyVaultName> zástupné symboly, a a nastavit $keyVaultSpAppId na `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (jak je uvedeno v [ID aplikace instančního objektu](#service-principal-application-id)výše).
 
 Pomocí rutin Azure PowerShell [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) a Get-AzStorageAccount budeme k získání ID uživatele a kontextu vašeho účtu služby Azure Storage používat také rutiny Get-a [Get-](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) .
 
@@ -84,14 +84,18 @@ $resourceGroupName = <YourResourceGroupName>
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 $keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093"
-$storageAccountKey = "key1"
+$storageAccountKey = "key1" #(key1 or key2 are allowed)
 
 # Get your User Id
 $userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+
 ```
+>[!Note]
+> Pro klasický účet úložiště pro $storageAccountKey použít "primární" a "sekundární". <br>
+> Pro klasický účet úložiště použijte příkaz Get-AzResource-Name "ClassicStorageAccountName"-ResourceGroupName $resourceGroupName ', ale of'Get-AzStorageAccount '.
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Zadejte Key Vault přístup k vašemu účtu úložiště.
 
@@ -134,7 +138,7 @@ Všimněte si, že oprávnění k účtům úložiště nejsou k dispozici na st
 
 ### <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Přidání spravovaného účtu úložiště do instance Key Vault
 
-Pomocí rutiny Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) vytvořte v instanci Key Vault spravovaný účet úložiště. `-DisableAutoRegenerateKey` Přepínač určuje, že se klíče účtu úložiště znovu negenerují.
+Pomocí rutiny Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) vytvořte v instanci Key Vault spravovaný účet úložiště. Přepínač určuje, že se `-DisableAutoRegenerateKey` klíče účtu úložiště znovu negenerují.
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
@@ -160,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Povolit opakované generování klíče
 
-Pokud chcete, Key Vault pravidelně znovu vygenerovat klíče účtu úložiště, můžete použít rutinu Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) a nastavit dobu obnovení. V tomto příkladu nastavíme dobu obnovení tři dny. Po třech dnech Key Vault znovu vygeneruje "key2" a prohodí aktivní klíč z "key2" na "klíč1".
+Pokud chcete, Key Vault pravidelně znovu vygenerovat klíče účtu úložiště, můžete použít rutinu Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) a nastavit dobu obnovení. V tomto příkladu nastavíme dobu obnovení tři dny. Po třech dnech Key Vault znovu vygeneruje "key2" a přepínat aktivní klíč z "key2" na "klíč1" (nahraďte ' primary ' a ' Secondary ' pro účty klasického úložiště).
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
@@ -192,12 +196,12 @@ Příkazy v této části dokončí následující akce:
 
 - Nastavte definici sdíleného přístupového podpisu účtu. 
 - Vytvořte token sdíleného přístupového podpisu účtu pro služby blob, File, Table a Queue. Token se vytvoří pro službu typů prostředků, kontejner a objekt. Token se vytvoří se všemi oprávněními přes HTTPS a zadaným počátečním a koncovým datem.
-- V trezoru nastavte Key Vault definici sdíleného přístupového podpisu spravovaného úložiště. Definice obsahuje identifikátor URI šablony tokenu sdíleného přístupového podpisu, který byl vytvořen. Definice má typ `account` sdíleného přístupového podpisu a je platná po dobu N dní.
+- V trezoru nastavte Key Vault definici sdíleného přístupového podpisu spravovaného úložiště. Definice obsahuje identifikátor URI šablony tokenu sdíleného přístupového podpisu, který byl vytvořen. Definice má typ sdíleného přístupového podpisu `account` a je platná po dobu N dní.
 - Ověřte, že se sdílený přístupový podpis uložil do trezoru klíčů jako tajný kód.
 - 
 ### <a name="set-variables"></a>Nastavení proměnných
 
-Nejdřív nastavte proměnné, které budou používat rutiny prostředí PowerShell v následujících krocích. Nezapomeňte aktualizovat zástupné <YourStorageAccountName> symboly <YourKeyVaultName> a.
+Nejdřív nastavte proměnné, které budou používat rutiny prostředí PowerShell v následujících krocích. Nezapomeňte aktualizovat <YourStorageAccountName> <YourKeyVaultName> zástupné symboly a.
 
 K získání kontextu vašeho účtu úložiště Azure použijeme také rutiny Azure PowerShell [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) .
 
@@ -205,7 +209,7 @@ K získání kontextu vašeho účtu úložiště Azure použijeme také rutiny 
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 
-$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
+$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1 #(or "Primary" for Classic Storage Account)
 ```
 
 ### <a name="create-a-shared-access-signature-token"></a>Vytvoření tokenu sdíleného přístupového podpisu

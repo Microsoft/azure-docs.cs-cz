@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10b3a6bb9592c955d16b070ae412374b8a1f4444
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008622"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196938"
 ---
 Disky Azure Ultra nabízejí vysokou propustnost, vysoké IOPS a konzistentní diskové úložiště s nízkou latencí pro virtuální počítače Azure s IaaS. Tato nová nabídka poskytuje horní část výkonu linky na stejné úrovni dostupnosti jako naše nabídky stávajících disků. Jednou z hlavních výhod Ultra disks je schopnost dynamicky měnit výkon jednotky SSD společně s vašimi úlohami, aniž by bylo nutné restartovat virtuální počítače. Disky Ultra jsou vhodné pro úlohy náročné na data, jako jsou úlohy SAP HANA, databáze nejvyšší úrovně a úlohy s velkým počtem transakcí.
 
@@ -51,7 +51,7 @@ Odpověď bude podobná následujícímu formuláři, kde X je zóna, která se 
 
 Zachovat hodnotu **zón** , představuje vaši zónu dostupnosti a Vy ji budete potřebovat k nasazení Ultra disku.
 
-|ResourceType  |Název  |Umístění  |Zóny  |Omezení  |Schopnost  |Hodnota  |
+|ResourceType  |Name  |Umístění  |Zóny  |Omezení  |Schopnost  |Hodnota  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disků     |UltraSSD_LRS         |eastus2         |×         |         |         |         |
 
@@ -62,7 +62,7 @@ Teď, když víte, kterou zónu nasadit do, postupujte podle kroků nasazení v 
 
 ### <a name="vms-with-no-redundancy-options"></a>Virtuální počítače bez možností redundance
 
-Disky Ultra nasazené v Západní USA musí být nasazené bez možností redundance. V této oblasti ale nemusí být všechny velikosti disků podporující Ultra disks. Chcete-li zjistit, které z Západní USA podporují disky Ultra, můžete použít některý z následujících fragmentů kódu. Nejdřív nahraďte hodnoty `vmSize` a `subscription` :
+Disky Ultra nasazené v Západní USA musí být nasazené bez možností redundance. V této oblasti ale nemusí být všechny velikosti disků podporující Ultra disks. Chcete-li zjistit, které z Západní USA podporují disky Ultra, můžete použít některý z následujících fragmentů kódu. Nejdřív nahraďte `vmSize` `subscription` hodnoty a:
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -79,7 +79,7 @@ $vmSize = "Standard_E64s_v3"
 (Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) })[0].Capabilities
 ```
 
-Odpověď bude podobná následujícímu formuláři, který označuje `UltraSSDAvailable   True` , jestli velikost virtuálního počítače podporuje Ultra disků v této oblasti.
+Odpověď bude podobná následujícímu formuláři, který `UltraSSDAvailable   True` označuje, jestli velikost virtuálního počítače podporuje Ultra disků v této oblasti.
 
 ```
 Name                                         Value
@@ -115,7 +115,7 @@ Nejprve určete velikost virtuálního počítače k nasazení. Seznam podporova
 
 Pokud chcete vytvořit virtuální počítač s více disky Ultra, přečtěte si v ukázce [Vytvoření virtuálního počítače s několika disky Ultra](https://aka.ms/ultradiskArmTemplate).
 
-Pokud máte v úmyslu použít vlastní šablonu, ujistěte se, **apiVersion** že apiVersion `Microsoft.Compute/virtualMachines` pro `Microsoft.Compute/Disks` a je nastavená jako `2018-06-01` (nebo novější).
+Pokud máte v úmyslu použít vlastní šablonu, ujistěte se, že **apiVersion** pro `Microsoft.Compute/virtualMachines` a `Microsoft.Compute/Disks` je nastavená jako `2018-06-01` (nebo novější).
 
 Nastavte SKU disku na **UltraSSD_LRS**a pak nastavte kapacitu disku, IOPS, zónu dostupnosti a propustnost v MB/s, aby se vytvořil Ultra disk.
 

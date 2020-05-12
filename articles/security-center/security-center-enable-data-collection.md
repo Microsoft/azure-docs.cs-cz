@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 056b9bdd46520790f3ffbd9aca56ad8555e23a3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1edb0791e80a8503e5ecba3154d7b421206272c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189816"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198618"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat v Azure Security Center
 Security Center shromažďuje data z vašich virtuálních počítačů Azure, virtuálních počítačů a kontejnerů IaaS a jiných než Azure (včetně místních) počítačů, které monitorují chyby zabezpečení a hrozby. Data se shromažďují pomocí Log Analytics agenta, který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do pracovního prostoru pro účely analýzy. Příklady takových dat: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy a přihlášený uživatel. Agent Log Analytics také kopíruje soubory s výpisem stavu systému do vašeho pracovního prostoru.
@@ -72,7 +72,7 @@ Výběr pracovního prostoru vytvořeného nástrojem Security Center:
 
 1. Klikněte na **Uložit**.<br>
     Security Center vytvoří novou skupinu prostředků a výchozí pracovní prostor v tomto geografickém umístění a připojí agenta k tomuto pracovnímu prostoru. Konvence pojmenování pro pracovní prostor a skupinu prostředků:<br>
-   **Pracovní prostor: DefaultWorkspace-[ID předplatného]-[<br> Geo] Skupina prostředků: DefaultResourceGroup-[geografické]**
+   **Pracovní prostor: DefaultWorkspace-[ID předplatného]-[Geo] <br> Skupina prostředků: DefaultResourceGroup-[geografické]**
 
    Pokud předplatné obsahuje virtuální počítače z několika geografických umístění, Security Center vytvoří několik pracovních prostorů. Pro zachování pravidel ochrany osobních údajů se vytvořilo několik pracovních prostorů.
 1. Security Center automaticky povolí Security Center řešení v pracovním prostoru podle cenové úrovně nastavené pro předplatné. 
@@ -126,7 +126,7 @@ Vyberte existující pracovní prostor Log Analytics:
     a.  V hlavní nabídce Security Center vyberte **cenové & nastavení**.
      
     b.  Vyberte požadovaný pracovní prostor, ve kterém chcete agenta připojit.
-        ![Vyberte pracovní][7] prostor c. Nastavte cenovou úroveň.
+        ![Vyberte pracovní prostor ][7] c. Nastavte cenovou úroveň.
         ![Vybrat cenovou úroveň][9]
    
    >[!NOTE]
@@ -223,9 +223,8 @@ Automatické zřizování z prostředků můžete kdykoli vypnout vypnutím toho
 
 Pokud je Automatické zřizování zakázané (vypnuté), výchozí oddíl konfigurace pracovního prostoru se nezobrazí.
 
-Pokud vypnete automatické zřizování po jeho předchozí instalaci:
--   Agenti nebudou zřízeni na nových virtuálních počítačích.
--   Security Center zastaví shromažďování dat z výchozího pracovního prostoru.
+Pokud vypnete automatické zřizování poté, co už dřív na agentech nebude zřízené na nových virtuálních počítačích.
+
  
 > [!NOTE]
 >  Při vypnutí automatického zřizování se agent Log Analytics neodebere z virtuálních počítačů Azure, ve kterých se agent zřídil. Informace o odebrání rozšíření OMS najdete v tématu [návody odebrání rozšíření OMS nainstalovaných pomocí Security Center](faq-data-collection-agents.md#remove-oms).
@@ -294,7 +293,7 @@ Můžete ručně nainstalovat agenta Log Analytics, aby Security Center mohl shr
 > [!NOTE]
 > Pokyny, jak připojit Security Center pomocí prostředí PowerShell, najdete v tématu [Automatizace připojování Azure Security Center pomocí prostředí PowerShell](security-center-powershell-onboarding.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 -   Informace o tom, jak identifikovat Automatické zřizování problémů, najdete v tématu [monitorování problémů se stavem agenta](security-center-troubleshooting-guide.md#mon-agent).
 

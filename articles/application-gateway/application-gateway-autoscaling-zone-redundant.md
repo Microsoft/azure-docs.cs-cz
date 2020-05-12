@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 28a909c3b4011b55fb3fb67d9d64ab57a310cb86
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 74af3d14512018abc216b288a27dc54ed806d8c9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207256"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125226"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a zónově redundantní služby Application Gateway v2 
 
@@ -132,8 +133,16 @@ Total Price = $267,84 + $85,71 = $353,55
 
 Application Gateway a WAF se dají nakonfigurovat tak, aby se škálují ve dvou režimech:
 
-- Automatické **škálování** – s povoleným automatickým škálováním jsou SKU Application Gateway a WAF v2 vertikálně navyšovat nebo snížit zatížení na základě požadavků na provoz aplikací. Tento režim nabízí lepší pružnost vaší aplikace a eliminuje nutnost odhadnout velikost nebo počet instancí aplikační brány. Tento režim také umožňuje ušetřit náklady tím, že nevyžaduje, aby brána běžela ve špičce zřízené kapacity pro očekávané maximální zatížení provozu. Je nutné zadat minimální a volitelně maximální počet instancí. Minimální kapacita zajišťuje, že Application Gateway a WAF v2 nedosahují pod stanoveným minimálním počtem instancí, a to i v případě absence provozu. Každá instance se počítá jako 10 dalších rezervovaných jednotek kapacity. Nula znamená žádnou rezervovanou kapacitu a je čistě automatické škálování v podstatě. Počítejte s tím, že nula dalších minimálních instancí stále zajišťuje vysokou dostupnost služby, která je vždycky zahrnutá do pevné ceny. Volitelně můžete zadat také maximální počet instancí, který zajistí, že Application Gateway nepřekračuje zadaný počet instancí. Bude se vám dál účtovat množství provozu obsluhované bránou. Počty instancí můžou být v rozsahu od 0 do 125. Výchozí hodnota pro maximální počet instancí je 20, pokud není zadána.
+- Automatické **škálování** – s povoleným automatickým škálováním jsou SKU Application Gateway a WAF v2 vertikálně navyšovat nebo snížit zatížení na základě požadavků na provoz aplikací. Tento režim nabízí lepší pružnost vaší aplikace a eliminuje nutnost odhadnout velikost nebo počet instancí aplikační brány. Tento režim také umožňuje ušetřit náklady tím, že nevyžaduje, aby brána běžela ve špičce zřízené kapacity pro očekávané maximální zatížení provozu. Je nutné zadat minimální a volitelně maximální počet instancí. Minimální kapacita zajišťuje, že Application Gateway a WAF v2 nedosahují pod stanoveným minimálním počtem instancí, a to i v případě absence provozu. Každá instance je zhruba ekvivalentní 10 dalších rezervovaných jednotek kapacity. Nula znamená žádnou rezervovanou kapacitu a je čistě automatické škálování v podstatě. Volitelně můžete zadat také maximální počet instancí, který zajistí, že Application Gateway nepřekračuje zadaný počet instancí. Bude se vám účtovat jenom objem provozu obsluhované bránou. Počty instancí můžou být v rozsahu od 0 do 125. Výchozí hodnota pro maximální počet instancí je 20, pokud není zadána.
 - **Ručně** – můžete také zvolit ruční režim, ve kterém brána neprovede automatické škálování. Pokud je v tomto režimu více provozu, než jaké Application Gateway nebo WAF může zvládnout, mohlo by dojít ke ztrátě provozu. V případě ručního režimu je zadání počtu instancí povinné. Počet instancí se může v rozmezí od 1 do 125 instancí lišit.
+
+## <a name="autoscaling-and-high-availability"></a>Automatické škálování a vysoká dostupnost
+
+Aplikační brány Azure se vždycky nasazují vysoce dostupným způsobem. Služba je tvořena několika instancemi, které jsou vytvořeny jako nakonfigurované (Pokud automatické škálování je zakázané) nebo vyžadované zatížením aplikace (Pokud je povolené automatické škálování). Všimněte si, že z perspektivy uživatele nebudete nutně mít přehled o jednotlivých instancích, ale jenom do služby Application Gateway jako celek. Pokud dojde k potížím s určitou instancí a přestane fungovat, Azure Application Gateway transparentně vytvoří novou instanci.
+
+Pamatujte na to, že i když konfigurujete automatické škálování s nulovými minimálními instancemi, bude služba stále dostupná, což je vždycky zahrnuté do pevné ceny.
+
+Vytvoření nové instance může ale nějakou dobu trvat (přibližně po šesti nebo sedmi minutách). Proto pokud se nechcete vypořádat s tímto výpadkem, můžete nakonfigurovat minimální počet instancí 2, v ideálním případě s podporou zóny dostupnosti. Tímto způsobem budete mít v Azure Application Gateway za normálních okolností aspoň dvě instance, takže pokud jedna z nich nastala nějaký problém, při vytváření nové instance se v případě jednoho z nich pokusí s přenosy vypořádat. Všimněte si, že instance služby Azure Application Gateway může podporovat zhruba 10 kapacitních jednotek, takže v závislosti na tom, kolik přenosů obvykle máte, možná budete chtít nakonfigurovat nastavení automatického škálování minimální instance na hodnotu vyšší než 2.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porovnání funkcí mezi SKU V1 a SKU v2
 

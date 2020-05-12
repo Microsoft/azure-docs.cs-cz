@@ -3,19 +3,19 @@ title: Faktory návrhu pro Azure Virtual Machine Scale Sets
 description: Přečtěte si o požadavcích na návrh pro Azure Virtual Machine Scale Sets. Porovnejte funkce sady škálování s funkcemi virtuálních počítačů.
 keywords: virtuální počítač Linux, sada škálování virtuálních počítačů
 author: mimckitt
-tags: azure-resource-manager
-ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
-ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: vm-linux
-ms.topic: conceptual
-ms.date: 06/01/2017
 ms.author: mimckitt
-ms.openlocfilehash: 20f6cb08781c7c6aca7a4022e75a7be8640ef18a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 06/01/2017
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 0676a7d31d141e0c264119a54b77ec29a527374b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273762"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200198"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Požadavky na návrh pro sady škálování
 Tento článek popisuje požadavky návrhu pro Virtual Machine Scale Sets. Informace o tom, co Virtual Machine Scale Sets, najdete v tématu [Virtual Machine Scale Sets Overview](virtual-machine-scale-sets-overview.md).
@@ -56,7 +56,7 @@ Sada škálování, která není definovaná s Azure Managed Disks, spoléhá na
 ## <a name="overprovisioning"></a>Předimenzování
 Služba Scale Sets je aktuálně ve výchozím nastavení nastavena na "nadměrné zřízení" virtuálních počítačů. Když je přebytečná zřizování zapnuté, sada škálování ve skutečnosti připíná více virtuálních počítačů, než jste požadovali, a potom po úspěšném zřízení požadovaného počtu virtuálních počítačů odstraní nadbytečné virtuální počítače. Přezřizování zlepšuje míry úspěšnosti zřizování a zkracuje dobu nasazení. Za další virtuální počítače se vám neúčtují žádné poplatky, které se nepočítají na vaše limity kvót.
 
-I když přebytečná zřizování vylepší míry úspěšnosti zřizování, může způsobit matoucí chování aplikace, která není navržená tak, aby se zobrazovaly další virtuální počítače a pak zmizí. Pokud chcete zapnout převýšení, ujistěte se, že máte v šabloně následující řetězec: `"overprovision": "false"`. Další podrobnosti najdete v [dokumentaci k sadě škálování REST API](/rest/api/virtualmachinescalesets/create-or-update-a-set).
+I když přebytečná zřizování vylepší míry úspěšnosti zřizování, může způsobit matoucí chování aplikace, která není navržená tak, aby se zobrazovaly další virtuální počítače a pak zmizí. Pokud chcete zapnout převýšení, ujistěte se, že máte v šabloně následující řetězec: `"overprovision": "false"` . Další podrobnosti najdete v [dokumentaci k sadě škálování REST API](/rest/api/virtualmachinescalesets/create-or-update-a-set).
 
 Pokud vaše sada škálování používá uživatelsky spravované úložiště a vypnete přebírání, můžete mít více než 20 virtuálních počítačů na jeden účet úložiště, ale nedoporučujeme jít nad rámec 40 z hlediska výkonu v/v. 
 

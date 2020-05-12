@@ -5,21 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: 858cfc9a8c15f1e33e688bb5086a58f194e7173f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28252b42264dc6c1be403e99689f845d7143b1f7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501497"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200473"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Konfigurace Azure Firewall pravidel aplikací s plně kvalifikovanými názvy domén SQL
-
-> [!IMPORTANT]
-> Azure Firewall pravidla aplikací s plně kvalifikovanými názvy domén SQL je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Teď můžete nakonfigurovat Azure Firewall pravidla aplikací s plně kvalifikovanými názvy domén SQL. To umožňuje omezit přístup z virtuálních sítí pouze na zadané instance systému SQL Server.
 
@@ -29,7 +24,7 @@ Pomocí plně kvalifikovaných názvů domén SQL můžete filtrovat provoz:
 - Z místního prostředí do Azure SQL Managed Instances nebo SQL IaaS spuštěné v virtuální sítě.
 - Od paprsku po paprsky až po Azure SQL Managed Instances nebo SQL IaaS spuštěné v virtuální sítě.
 
-V rámci verze Public Preview se filtrování plně kvalifikovaného názvu domény SQL podporuje jenom v [režimu proxy serveru](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) (port 1433). Pokud používáte SQL ve výchozím režimu přesměrování, můžete přístup filtrovat pomocí značky služby SQL jako součást [pravidel sítě](overview.md#network-traffic-filtering-rules).
+Filtrování plně kvalifikovaného názvu domény SQL je podporováno pouze v [režimu proxy serveru](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) (port 1433). Pokud používáte SQL ve výchozím režimu přesměrování, můžete přístup filtrovat pomocí značky služby SQL jako součást [pravidel sítě](overview.md#network-traffic-filtering-rules).
 Pokud používáte jiné než výchozí porty pro přenos SQL IaaS, můžete tyto porty nakonfigurovat v pravidlech aplikací brány firewall.
 
 Pravidla aplikací s plně kvalifikovanými názvy domén SQL jsou v tuto chvíli k dispozici ve všech oblastech prostřednictvím Azure Portal, Azure CLI, REST a šablon.

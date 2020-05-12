@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474d2e0c31eed852ba96780ca996eca632bd5842
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 12d87c12b84130d404eaf203fd6013f6924020f5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926982"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199440"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 |     |
@@ -28,7 +28,7 @@ ms.locfileid: "82926982"
 Tento článek popisuje, jak nastavit přímou federaci s jinou organizací pro spolupráci B2B. Můžete nastavit přímou federaci s jakoukoli organizací, jejíž poskytovatel identity (IdP) podporuje protokol SAML 2,0 nebo WS-dodávání.
 Když nastavíte přímou federaci s IdPem partnera, můžou noví uživatelé typu host z této domény používat vlastní účet organizace spravovaný IdP pro přihlášení k vašemu tenantovi Azure AD a začít spolupracovat s vámi. Není potřeba, aby uživatel typu Host vytvořil samostatný účet služby Azure AD.
 > [!NOTE]
-> Uživatelé typu host s přímým přístupem se musí přihlásit pomocí odkazu, který obsahuje kontext tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo `https://portal.azure.com/<tenant id>`nebo v případě ověřené domény `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com`). Přímé odkazy na aplikace a prostředky fungují i tak dlouho, dokud budou zahrnovat kontext tenanta. Uživatelé s přímými federace se momentálně nemůžou přihlásit pomocí běžných koncových bodů, které nemají kontext tenanta. Například použití `https://myapps.microsoft.com`, `https://portal.azure.com`, nebo `https://teams.microsoft.com` způsobí chybu.
+> Uživatelé typu host s přímým přístupem se musí přihlásit pomocí odkazu, který obsahuje kontext tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo nebo `https://portal.azure.com/<tenant id>` v případě ověřené domény `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Přímé odkazy na aplikace a prostředky fungují i tak dlouho, dokud budou zahrnovat kontext tenanta. Uživatelé s přímými federace se momentálně nemůžou přihlásit pomocí běžných koncových bodů, které nemají kontext tenanta. Například použití `https://myapps.microsoft.com` , `https://portal.azure.com` , nebo `https://teams.microsoft.com` způsobí chybu.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Kdy je uživatel typu Host ověřený pomocí přímé federace?
 Po nastavení přímé federace s organizací budou všichni noví uživatelé typu Host, kteří pozvánku nastavili, ověřeni pomocí přímé federace. Je důležité si uvědomit, že nastavení přímé federace nemění metodu ověřování pro uživatele typu Host, kteří už od vás požádali o pozvání. Zde je několik příkladů:
@@ -61,7 +61,7 @@ Přímá federace je povolená jenom pro zásady, ve kterých se doména URL ov�
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Například při nastavování přímé federace pro **fabrikam.com**se ověřování předá ověřovací `https://fabrikam.com/adfs` adresou URL. Například `https://sts.fabrikam.com/adfs`hostitel ve stejné doméně bude také předávat. Adresa URL `https://fabrikamconglomerate.com/adfs` pro ověření nebo `https://fabrikam.com.uk/adfs` stejná doména ale nebude úspěšné.
+Například při nastavování přímé federace pro **fabrikam.com**se ověřování předá ověřovací adresou URL `https://fabrikam.com/adfs` . Například hostitel ve stejné doméně bude také předávat `https://sts.fabrikam.com/adfs` . Adresa URL `https://fabrikamconglomerate.com/adfs` pro ověření nebo `https://fabrikam.com.uk/adfs` stejná doména ale nebude úspěšné.
 
 ### <a name="signing-certificate-renewal"></a>Podpisové obnovení certifikátu
 Pokud v nastavení zprostředkovatele identity zadáte adresu URL metadat, služba Azure AD automaticky obnoví podpisový certifikát, jakmile vyprší jeho platnost. Pokud se ale certifikát z jakéhokoli důvodu před časem vypršení platnosti neposkytne, nebo pokud nezadáte adresu URL metadat, Azure AD ho nebude moct obnovit. V takovém případě budete muset podpisový certifikát aktualizovat ručně.
@@ -146,8 +146,8 @@ Dále nakonfigurujete federaci s poskytovatelem identity nakonfigurovaným v kro
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Konfigurace přímé federace na portálu Azure AD
 
 1. Přejít na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
-2. Vyberte **vztahy organizace**.
-3. Vyberte **Zprostředkovatelé identity**a potom vyberte **Nový SAML/WS-IDP**.
+2. Vyberte **organizační vztahy**  >  **všichni zprostředkovatelé identity** (nebo **externí identity**  >  **všichni zprostředkovatelé identity**).
+3. Vyberte a pak vyberte **Nový SAML/WS-IDP**.
 
     ![Snímek obrazovky zobrazující tlačítko pro přidání nového typu SAML nebo WS-IdP](media/direct-federation/new-saml-wsfed-idp.png)
 
@@ -174,7 +174,7 @@ Dále nakonfigurujete federaci s poskytovatelem identity nakonfigurovaným v kro
    Connect-AzureAD
    ```
 1. V příkazovém řádku pro přihlášení se přihlaste pomocí účtu spravovaného globálního správce. 
-2. Spusťte následující příkazy a nahraďte hodnoty ze souboru federačních metadat. Pro AD FS Server a okta je soubor federace federationmetadata. XML, například: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml`. 
+2. Spusťte následující příkazy a nahraďte hodnoty ze souboru federačních metadat. Pro AD FS Server a okta je soubor federace federationmetadata. XML, například: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -194,8 +194,8 @@ Nyní otestujte nastavení přímé federace pozváním nového uživatele typu 
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Návody upravit přímý vztah federace?
 
 1. Přejít na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
-2. Vyberte **vztahy organizace**.
-3. Vybrat **zprostředkovatele identity**
+2. Vyberte **organizační vztahy** (nebo **externí identity**).
+3. Vybrat **všechny zprostředkovatele identity**
 4. V části **Zprostředkovatelé identit SAML/WS**vyberte poskytovatele.
 5. V podokně podrobností zprostředkovatele identity aktualizujte hodnoty.
 6. Vyberte **Uložit**.
@@ -205,8 +205,8 @@ Nyní otestujte nastavení přímé federace pozváním nového uživatele typu 
 Můžete odebrat nastavení přímé federace. Pokud tak učiníte, přesměrujete uživatele typu Host, kteří už provedli své pozvánky, se nebudou moct přihlásit. Můžete jim ale udělit přístup k prostředkům tím, že je odstraníte z adresáře a znovu je dodáte. Postup odebrání přímé federace se zprostředkovatelem identity na portálu Azure AD:
 
 1. Přejít na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
-2. Vyberte **vztahy organizace**.
-3. Vyberte **Zprostředkovatelé identity**.
+2. Vyberte **organizační vztahy** (nebo **externí identity**).
+3. Vyberte **všechny zprostředkovatele identity**.
 4. Vyberte poskytovatele identity a pak vyberte **Odstranit**. 
 5. Kliknutím na **Ano** potvrďte odstranění. 
 

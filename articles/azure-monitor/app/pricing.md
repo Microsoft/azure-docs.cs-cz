@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6c597ea559e7337c9c84914d168f1055e0631886
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b99c1c9348f8442233eeee8fd4442736c78ee4e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995543"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199045"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro službu Application Insights
 
@@ -29,6 +29,10 @@ Ceny za [Azure Application Insights][start] jsou Model průběžných **plateb**
 U [více kroků webové testy](../../azure-monitor/app/availability-multistep.md) se účtují další poplatky. Webové testy s více kroky jsou webové testy, které provádějí posloupnost akcí. Pro *testy pomocí příkazů testování* jedné stránky se neúčtují žádné samostatné poplatky. Telemetrie z testů příkazového testu a testů pro více kroků se účtují stejně jako jiné telemetrie z vaší aplikace.
 
 Možnost Application Insights [Povolit upozorňování na vlastní dimenze metriky](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) může také generovat další náklady, protože to může způsobit vytvoření dalších metrik před agregací. [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics) o cenách založených na protokolu a předem agregovaných metrikách v Application Insights a o [cenách](https://azure.microsoft.com/pricing/details/monitor/) pro Azure monitor vlastních metrik.
+
+### <a name="workspace-based-application-insights"></a>Application Insights na základě pracovního prostoru
+
+U Application Insights prostředků, které odesílají svá data do pracovního prostoru Log Analytics nazývaného [prostředky Application Insights založené na pracovním prostoru](create-workspace-resource.md), se fakturace za příjem a uchování dat provádí v pracovním prostoru, kde se nacházejí Application Insights data. To zákazníkům umožňuje využít všechny možnosti Log Analytics [cenového modelu](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#pricing-model) , který zahrnuje rezervace kapacity kromě průběžných plateb. Log Analytics také obsahuje další možnosti uchovávání dat, včetně [uchovávání informací podle datového typu](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#retention-by-data-type). Application Insights datové typy v pracovním prostoru obdrží 90 dnů uchování bez poplatků. Použití webových testů a povolení upozorňování na vlastní dimenze metriky je stále hlášeno prostřednictvím Application Insights. Přečtěte si, jak sledovat příjem dat a dobu uchovávání v Log Analytics pomocí [odhadu využití a odhadované náklady](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs), [Azure cost management + fakturace](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#viewing-log-analytics-usage-on-your-azure-bill) a [Log Analytics dotazy](#data-volume-for-workspace-based-application-insights-resources). 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Odhad nákladů na správu aplikace
 
@@ -75,11 +79,11 @@ Pokud chcete získat další informace o vašich datových svazcích, vyberte **
 
 ### <a name="queries-to-understand-data-volume-details"></a>Dotazy pro pochopení podrobností o objemu dat
 
-Existují dva způsoby, jak prozkoumat datové svazky pro Application Insights. První používá agregované informace v `systemEvents` tabulce a druhá používá `_BilledSize` vlastnost, která je k dispozici na všech přijatých událostech.
+Existují dva způsoby, jak prozkoumat datové svazky pro Application Insights. První používá agregované informace v `systemEvents` tabulce a druhá používá `_BilledSize` vlastnost, která je k dispozici na všech přijatých událostech. `systemEvents`nebude mít informace o velikosti dat pro [Application-Insights založené na pracovních prostorech](#data-volume-for-workspace-based-application-insights-resources).
 
 #### <a name="using-aggregated-data-volume-information"></a>Použití informací agregovaného objemu dat
 
-V `systemEvents` tabulce můžete například pomocí dotazu zobrazit datový svazek, který se v posledních 24 hodinách podrží:
+V tabulce můžete například pomocí `systemEvents` dotazu zobrazit datový svazek, který se v posledních 24 hodinách podrží:
 
 ```kusto
 systemEvents
@@ -118,13 +122,54 @@ systemEvents
 
 Pokud chcete získat další informace o zdroji vašich datových svazků, můžete použít `_BilledSize` vlastnost, která se nachází na každé přijaté události.
 
-Například pro zjištění, které operace generují nejvíc objemů dat za posledních 30 dní, můžeme pro všechny události závislosti přičíst `_BilledSize` :
+Například pro zjištění, které operace generují nejvíc objemů dat za posledních 30 dní, můžeme `_BilledSize` pro všechny události závislosti přičíst:
 
 ```kusto
 dependencies
 | where timestamp >= startofday(ago(30d))
 | summarize sum(_BilledSize) by operation_Name
 | render barchart  
+```
+
+#### <a name="data-volume-for-workspace-based-application-insights-resources"></a>Objem dat pro prostředky Application Insights na základě pracovního prostoru
+
+Chcete-li se podívat na trendy datových svazků pro všechny [prostředky Application Insights založené na pracovním prostoru](create-workspace-resource.md) v pracovním prostoru za poslední týden, přejít do pracovního prostoru Log Analytics a spustit dotaz:
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
+| render areachart
+```
+
+Pokud chcete zadat dotaz na trendy datových svazků podle typu pro konkrétní prostředek Application Insights na základě pracovního prostoru, v pracovním prostoru Log Analytics použijte:
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where _ResourceId contains "<myAppInsightsResourceName>"
+| summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
+| render areachart
 ```
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Zobrazení využití Application Insights na faktuře Azure
@@ -174,11 +219,11 @@ Pokud chcete změnit denní limit, v části **Konfigurace** prostředku Applica
 
 ![Upravit denní limit telemetrie](./media/pricing/pricing-003.png)
 
-Chcete-li [změnit denní limit pomocí Azure Resource Manager](../../azure-monitor/app/powershell.md), vlastnost, která se má `dailyQuota`změnit, je.  Prostřednictvím Azure Resource Manager můžete také nastavit `dailyQuotaResetTime` a denní limit. `warningThreshold`
+Chcete-li [změnit denní limit pomocí Azure Resource Manager](../../azure-monitor/app/powershell.md), vlastnost, která se má změnit, je `dailyQuota` .  Prostřednictvím Azure Resource Manager můžete také nastavit `dailyQuotaResetTime` a denní limit `warningThreshold` .
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Vytváření výstrah pro denní limit
 
-Application Insights denní limit vytvoří událost v protokolu aktivit Azure, když přijímané datové svazky narazí na úroveň upozornění nebo na úroveň denního limitu.  Můžete [vytvořit výstrahu na základě těchto událostí protokolu aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). Názvy signálů pro tyto události jsou:
+Application Insights denní limit vytvoří událost v protokolu aktivit Azure, když přijímané datové svazky dosáhnou úrovně upozornění nebo úrovně denního limitu.  Můžete [vytvořit výstrahu na základě těchto událostí protokolu aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal). Názvy signálů pro tyto události jsou:
 
 * Dosažena prahová hodnota pro upozornění na denní limit součásti Application Insights
 
@@ -220,7 +265,7 @@ Pokud chcete změnit dobu uchovávání, z prostředku Application Insights pře
 
 Když je doba uchování nižší, před odebráním nejstarší dat se zobrazí několik dní po dobu odkladu.
 
-Uchování je také možné `retentionInDays` [nastavit pomocí parametru programově pomocí prostředí PowerShell](powershell.md#set-the-data-retention) . Pokud nastavíte uchovávání dat na 30 dní, můžete spustit okamžitou mazání starších dat pomocí `immediatePurgeDataOn30Days` parametru, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce vyprázdnění se zveřejňuje jenom přes Azure Resource Manager a měla by se používat s mimořádnou péčí. Denní čas obnovení limitu objemu dat se dá nakonfigurovat pomocí Azure Resource Manager pro nastavení `dailyQuotaResetTime` parametru.
+Uchování je také možné [nastavit pomocí parametru programově pomocí prostředí PowerShell](powershell.md#set-the-data-retention) `retentionInDays` . Pokud nastavíte uchovávání dat na 30 dní, můžete spustit okamžitou mazání starších dat pomocí `immediatePurgeDataOn30Days` parametru, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce vyprázdnění se zveřejňuje jenom přes Azure Resource Manager a měla by se používat s mimořádnou péčí. Denní čas obnovení limitu objemu dat se dá nakonfigurovat pomocí Azure Resource Manager pro nastavení `dailyQuotaResetTime` parametru.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Poplatky za přenos dat pomocí Application Insights
 

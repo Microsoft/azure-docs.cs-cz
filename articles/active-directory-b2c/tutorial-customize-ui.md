@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e023e9c8c4c6f0021eabccad8783c27eba98d0d5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186246"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116522"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Kurz: přizpůsobení rozhraní uživatelského prostředí v Azure Active Directory B2C
 
@@ -63,8 +63,8 @@ I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto 
  Azure AD B2C kód v prohlížeči používá moderní a standardní přístup k načtení vlastního obsahu z adresy URL, kterou zadáte v toku uživatele. Sdílení prostředků mezi zdroji (CORS) umožňuje omezit prostředky na webové stránce, které se mají požadovat z jiných domén.
 
 1. V nabídce vyberte **CORS**.
-2. V případě **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
-3. U **povolených metod**vyberte `GET`,`PUT`a `OPTIONS`.
+2. V případě **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com` . Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
+3. U **povolených metod**vyberte `GET` , `PUT` a `OPTIONS` .
 4. U **povolených hlaviček**zadejte hvězdičku (*).
 5. U **zveřejněných hlaviček**zadejte hvězdičku (*).
 6. Do **maximálního stáří**zadejte 200.
@@ -75,7 +75,7 @@ I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto 
 
 ### <a name="create-the-customization-files"></a>Vytvoření souborů vlastního nastavení
 
-Chcete-li přizpůsobit uživatelské rozhraní prostředí pro registraci, začněte tím, že vytvoříte jednoduchý soubor HTML a CSS. HTML můžete nakonfigurovat způsobem, který chcete, ale musí mít element **div** s identifikátorem `api`. Například, `<div id="api"></div>`. Azure AD B2C vloží prvky do `api` kontejneru při zobrazení stránky.
+Chcete-li přizpůsobit uživatelské rozhraní prostředí pro registraci, začněte tím, že vytvoříte jednoduchý soubor HTML a CSS. HTML můžete nakonfigurovat způsobem, který chcete, ale musí mít element **div** s identifikátorem `api` . Například, `<div id="api"></div>`. Azure AD B2C vloží prvky do `api` kontejneru při zobrazení stránky.
 
 1. V místní složce vytvořte následující soubor a ujistěte se, že jste změnili `your-storage-account` název účtu úložiště a `your-container` název kontejneru, který jste vytvořili. Například, `https://store1.blob.core.windows.net/b2c/style.css`.
 
@@ -166,4 +166,4 @@ V tomto článku jste zjistili, jak:
 > * Testování přizpůsobeného uživatelského rozhraní
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení jazyka v Azure Active Directory B2C](user-flow-language-customization.md)
+> [Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C](customize-ui-overview.md)

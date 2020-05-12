@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 41893c2460ecb2d17e3893f867bc460105d57bbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e65bf39db00f1277635d600da87346f19a881a6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887210"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197176"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Online streamování FairPlay pro iOS s Media Services V3
 
@@ -59,7 +59,7 @@ Před implementací offline DRM pro FairPlay na zařízení s iOS 10 +:
 
     - Sada SDK serveru pro FPS, která obsahuje modul zabezpečení klíčů (KSM), ukázky klienta, specifikace a sadu testovacích vektorů.
     - Balíček nasazení FPS, který obsahuje specifikaci funkce D, spolu s pokyny, jak vygenerovat certifikát snímků pro sbalení, soukromý klíč specifický pro zákazníka a tajný klíč aplikace. Apple vydá balíček nasazení FPS jenom pro licencované poskytovatele obsahu.
-* Klonovat https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git. 
+* Klonovat https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git . 
 
     Pokud chcete přidat konfigurace FairPlay, budete muset změnit kód v části [šifrování pomocí DRM pomocí technologie .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) .  
 
@@ -87,7 +87,7 @@ options.Add(
 
 ## <a name="enable-offline-mode"></a>Povolit offline režim
 
-Pokud chcete povolit offline režim, vytvořte si vlastní StreamingPolicy a při vytváření StreamingLocator v [CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563)použijte jeho název.
+Pokud chcete povolit offline režim, vytvořte si vlastní StreamingPolicy a při vytváření StreamingLocator v [CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L561)použijte jeho název.
  
 ```csharp
 CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
@@ -96,23 +96,24 @@ CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
     {
         FairPlay = new StreamingPolicyFairPlayConfiguration()
         {
-            AllowPersistentLicense = true  //this enables offline mode
+            AllowPersistentLicense = true // This enables offline mode
         }
     },
     EnabledProtocols = new EnabledProtocols()
     {
         Hls = true,
-        Dash = true //Even though DASH under CBCS is not supported for either CSF or CMAF, HLS-CMAF-CBCS uses DASH-CBCS fragments in its HLS playlist
+        Dash = true // Even though DASH under CBCS is not supported for either CSF or CMAF, HLS-CMAF-CBCS uses DASH-CBCS fragments in its HLS playlist
     },
 
     ContentKeys = new StreamingPolicyContentKeys()
     {
-        //Default key must be specified if keyToTrackMappings is present
+        // Default key must be specified if keyToTrackMappings is present
         DefaultKey = new DefaultKey()
         {
             Label = "CBCS_DefaultKeyLabel"
         }
     }
+}
 
 ```
 
@@ -166,7 +167,7 @@ V HLSCatalog\Shared\Managers\ContentKeyDelegate.swift Implementujte metodu `requ
     return ckcData
 ```
 
-V HLSCatalog\Shared\Managers\ContentKeyDelegate.swift Implementujte metodu `requestApplicationCertificate()`. Tato implementace závisí na tom, jestli jste do zařízení vložili certifikát (jenom veřejný klíč), nebo hostovat certifikát na webu. Následující implementace používá certifikát hostované aplikace, který je použit v ukázkách testu. Nechte "certUrl" proměnnou, která obsahuje adresu URL certifikátu aplikace.
+V HLSCatalog\Shared\Managers\ContentKeyDelegate.swift Implementujte metodu `requestApplicationCertificate()` . Tato implementace závisí na tom, jestli jste do zařízení vložili certifikát (jenom veřejný klíč), nebo hostovat certifikát na webu. Následující implementace používá certifikát hostované aplikace, který je použit v ukázkách testu. Nechte "certUrl" proměnnou, která obsahuje adresu URL certifikátu aplikace.
 
 ```swift
 func requestApplicationCertificate() throws -> Data {

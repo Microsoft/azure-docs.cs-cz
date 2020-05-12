@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 752df34c263563cdb970cadb59f92f2811af378e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263501"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199512"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal
 
@@ -42,9 +42,6 @@ Pokud chcete do adresáře přidat uživatele spolupráce B2B, postupujte takto:
 
    ![Zobrazuje, kde je nový uživatel typu Host v uživatelském rozhraní.](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
-   > [!NOTE]
-   > **Nová možnost uživatele typu Host** je k dispozici také na stránce **vztahy organizace** . V **Azure Active Directory**v části **Spravovat**vyberte **vztahy organizace**.
-
 5. Na stránce **Nový uživatel** vyberte **pozvat uživatele** a pak přidejte informace o uživateli typu Host. 
 
     > [!NOTE]
@@ -85,7 +82,7 @@ Pokud chcete do aplikace přidat uživatele spolupráce B2B, postupujte takto:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. Vyhledejte a vyberte **Azure Active Directory** z libovolné stránky.
-3. V části **Spravovat**vyberte **podnikové aplikace** > **všechny aplikace**.
+3. V části **Spravovat**vyberte **podnikové aplikace**  >  **všechny aplikace**.
 4. Vyberte aplikaci, do které chcete přidat uživatele typu Host.
 5. Na řídicím panelu aplikace vyberte **celkem uživatelů** a otevřete podokno **Uživatelé a skupiny** .
 

@@ -5,19 +5,18 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 56a0cb66f5b54c817067970ab369d7ca471a1696
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3b2b4e8868b73e22706c684d94371fe37885b9a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132349"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119247"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Nulová monitorování aplikací instrumentace pro hostované aplikace Kubernetes
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Nula monitorování aplikace instrumentace pro aplikace hostované v Kubernetes s Istio – zastaralé
 
 > [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tato funkce je aktuálně zastaralá a již nebude podporována po 1. srpnu 2020.
+> Aktuálně doporučená verze funguje jenom pro [Java prostřednictvím samostatného agenta](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
 
 Azure Monitor teď využívá síť pro pracovní plochu v clusteru Kubernetes k tomu, aby poskytovala monitorování aplikací pro všechny hostované aplikace Kubernetes. Pomocí výchozích funkcí Application Insights, jako je [Mapa aplikací](../../azure-monitor/app/app-map.md) , můžete modelovat závislosti [Live Metrics Stream](../../azure-monitor/app/live-stream.md) pro monitorování v reálném čase, výkonné vizualizace s [výchozím řídicím panelem](../../azure-monitor/app/overview-dashboard.md), [průzkumníkem](../../azure-monitor/platform/metrics-getting-started.md)a [sešity](../../azure-monitor/app/usage-workbooks.md). Tato funkce pomůže uživatelům, aby na všech svých Kubernetes úlohách v rámci vybraného oboru názvů Kubernetes zavedli slabá místa ve výkonu a hotspoty selhání. Díky tomu, že vaše stávající investice do sítě na síti s technologiemi, jako je Istio Azure Monitor, umožňují monitorování automaticky instrumentované aplikace bez jakýchkoli úprav kódu vaší aplikace.
 
@@ -96,7 +95,7 @@ Aplikace spuštěné mimo síť nejsou ovlivněny.
 - Vygenerujte vzorový požadavek na vaši aplikaci a potvrďte tak, že monitorování funguje správně.
 - Během 3-5 minut byste měli začít zobrazovat telemetrii v Azure Portal. Ujistěte se, že se v portálu Application Insights prostředku na portálu nachází část s *mapou aplikace* .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Níže je uvedený postup řešení potíží, který se použije v případě, že se telemetrie neobjeví v Azure Portal podle očekávání.
 

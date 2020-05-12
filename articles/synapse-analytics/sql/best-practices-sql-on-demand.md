@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a1a33404982b16e458e97aaf9959ff5dd52d1cce
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692150"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198882"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Osvědčené postupy pro SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -44,7 +44,7 @@ Po zjištění omezení má na vyžádání SQL na vyžádání vestavěnou mani
 
 Pokud je to možné, můžete připravit soubory pro lepší výkon:
 
-- Převede CSV na Parquet-Parquet je sloupcový formát. Vzhledem k tomu, že jsou komprimované, jsou velikosti souborů menší než soubory CSV se stejnými daty. SQL na vyžádání bude potřebovat kratší dobu a požadavky na úložiště pro jeho čtení.
+- Převod CSV a JSON na Parquet-Parquet je sloupcový formát. Vzhledem k tomu, že je komprimovaná, jsou velikosti souborů menší než CSV nebo soubory JSON se stejnými daty. SQL na vyžádání bude potřebovat kratší dobu a požadavky na úložiště pro jeho čtení.
 - Pokud se dotaz zaměřuje na jeden velký soubor, budete ho moci rozdělit do několika menších souborů.
 - Zkuste zachovat velikost souboru CSV pod 10 GB.
 - Je lepší mít soubory stejné velikosti pro jednu cestu OPENROWSET nebo externí umístění tabulky.
@@ -118,7 +118,14 @@ Další informace najdete v tématu funkce [filename](develop-storage-files-over
 > [!TIP]
 > Vždy přetypujte výsledek FilePath a funkce FileInfo na příslušné datové typy. Pokud používáte znakové datové typy, ujistěte se, že je použita odpovídající délka.
 
+> [!NOTE]
+> Funkce používané pro vyloučení oddílu, FilePath a FileInfo nejsou aktuálně podporovány pro jiné externí tabulky, než které byly automaticky vytvořeny pro každou tabulku vytvořenou v synapse Spark.
+
 Pokud vaše uložená data nejsou rozdělená na oddíly, zvažte jejich dělení, aby bylo možné použít tyto funkce k optimalizaci dotazů, které cílí na tyto soubory. Při [dotazování na dělené tabulky Spark](develop-storage-files-spark-tables.md) z SQL na vyžádání bude dotaz automaticky cílit jenom na potřebné soubory.
+
+## <a name="use-parser_version-20-for-querying-csv-files"></a>Použití PARSER_VERSION 2,0 pro dotazování na soubory CSV
+
+Při dotazování na soubory CSV můžete použít analyzátor optimalizované pro výkon. Podrobnosti najdete [PARSER_VERSION](develop-openrowset.md) .
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Použití CETAS ke zvýšení výkonu a spojení dotazů
 
@@ -127,6 +134,12 @@ Pokud vaše uložená data nejsou rozdělená na oddíly, zvažte jejich dělen�
 Pomocí CETAS můžete ukládat často používané části dotazů, jako jsou připojené referenční tabulky, do nové sady souborů. V dalším kroku se můžete k této jedné externí tabulce připojit místo opakujících se běžných spojení ve více dotazech.
 
 Když CETAS generuje soubory Parquet, Statistika se automaticky vytvoří, když první dotaz cílí na tuto externí tabulku, což vede k lepšímu výkonu.
+
+## <a name="aad-pass-through-performance"></a>Předávací výkon AAD
+
+SQL na vyžádání umožňuje přístup k souborům v úložišti pomocí pověření AAD Pass-through nebo SAS. Pomocí předávacího průchodu AAD, který se porovnává s SAS, může docházet k nižšímu výkonu. 
+
+Pokud potřebujete lepší výkon, vyzkoušejte přihlašovací údaje SAS pro přístup do úložiště, dokud se nezlepší výkon předávacího průchodu AAD.
 
 ## <a name="next-steps"></a>Další kroky
 

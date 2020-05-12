@@ -2,20 +2,20 @@
 title: Exportování rozhraní API hostovaného v Azure do PowerApps a Microsoft Flow
 description: Přehled postupu vystavení rozhraní API hostovaného v App Service PowerApps a Microsoft Flow
 ms.topic: conceptual
-ms.date: 12/15/2017
+ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 632818bf82e41e6be0a96d30cc1c4fa631718a3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74233078"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115812"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportování rozhraní API hostovaného v Azure do PowerApps a Microsoft Flow
 
 [PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) je služba pro sestavování a používání vlastních obchodních aplikací, které se připojují k vašim datům a pracují na různých platformách. [Microsoft Flow](/learn/modules/get-started-with-flow/index) usnadňuje automatizaci pracovních postupů a obchodních procesů mezi vašimi oblíbenými aplikacemi a službami. PowerApps i Microsoft Flow přináší řadu integrovaných konektorů do zdrojů dat, jako jsou například Office 365, Dynamics 365, Salesforce a další. V některých případech se tvůrci aplikací a toků chtějí připojit ke zdrojům dat a rozhraním API vytvořeným jejich organizací.
 
-Podobně vývojáři, kteří chtějí své rozhraní API lépe vystavit v rámci organizace, mohou zpřístupnit svá rozhraní API pro sestavování aplikací a toků. V tomto tématu se dozvíte, jak exportovat rozhraní API vytvořené pomocí [Azure Functions](../azure-functions/functions-overview.md) nebo [Azure App Service](../app-service/overview.md). Exportované rozhraní API se stal *vlastním konektorem*, který se používá v PowerApps a Microsoft Flow stejně jako vestavěný konektor.
+Podobně vývojáři, kteří chtějí své rozhraní API lépe vystavit v rámci organizace, mohou zpřístupnit svá rozhraní API pro sestavování aplikací a toků. V tomto článku se dozvíte, jak exportovat rozhraní API vytvořené pomocí [Azure Functions](../azure-functions/functions-overview.md) nebo [Azure App Service](../app-service/overview.md). Exportované rozhraní API se stal *vlastním konektorem*, který se používá v PowerApps a Microsoft Flow stejně jako vestavěný konektor.
 
 > [!IMPORTANT]
 > Funkce definice rozhraní API uvedená v tomto článku je podporovaná jenom pro [verzi 1. x Azure Functions runtime](functions-versions.md#creating-1x-apps) a App Servicesch aplikací. Verze 2. x funkcí se integruje s API Management k vytváření a údržbě definic OpenAPI. Další informace najdete v tématu [Vytvoření definice openapi pro funkci pomocí Azure API Management](functions-openapi-definition.md). 
@@ -28,15 +28,11 @@ Před exportem rozhraní API musíte popsat rozhraní API pomocí definice OpenA
 
 Pokud chcete exportovat definici rozhraní API, postupujte podle těchto kroků:
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do Azure Functions nebo jiné App Service aplikace.
+1. V [Azure Portal](https://portal.azure.com)přejděte do aplikace Function app nebo App Service aplikace.
 
-    Pokud používáte Azure Functions, vyberte svoji aplikaci Function App, zvolte **funkce platformy**a pak **definici rozhraní API**.
+    V nabídce vlevo v části **rozhraní API**vyberte **definice rozhraní API**.
 
-    ![Azure Functions definice rozhraní API](media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png)
-
-    Pokud používáte Azure App Service, vyberte v seznamu nastavení možnost **definice rozhraní API** .
-
-    ![App Service definice rozhraní API](media/app-service-export-api-to-powerapps-and-flow/api-definition-app.png)
+    :::image type="content" source="media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png" alt-text="Azure Functions definice rozhraní API":::
 
 2. Tlačítko **exportovat do PowerApps + Microsoft Flow** by mělo být dostupné (Pokud ne, musíte nejdřív vytvořit definici openapi). Kliknutím na toto tlačítko zahájíte proces exportu.
 
@@ -44,9 +40,9 @@ Pokud chcete exportovat definici rozhraní API, postupujte podle těchto kroků:
 
 3. Vyberte **režim exportu**:
 
-    **Express** umožňuje vytvořit vlastní konektor v rámci Azure Portal. Vyžaduje, abyste byli přihlášeni k PowerApps nebo Microsoft Flow a máte oprávnění k vytváření konektorů v cílovém prostředí. Toto je doporučený postup, pokud je možné splnit tyto dva požadavky. Pokud používáte tento režim, postupujte podle pokynů k [Použití expresního exportu](#express) níže.
+    **Express** umožňuje vytvořit vlastní konektor v rámci Azure Portal. Vyžaduje, abyste byli přihlášeni k PowerApps nebo Microsoft Flow a máte oprávnění k vytváření konektorů v cílovém prostředí. Tento přístup se doporučuje, pokud tyto dva požadavky můžou být splněné. Pokud používáte tento režim, postupujte podle pokynů k [Použití expresního exportu](#express) níže.
 
-    **Ruční** umožňuje exportovat definici rozhraní API, kterou pak importujete pomocí portálů PowerApps nebo Microsoft Flow. Toto je doporučený postup, pokud uživatel Azure a uživatel s oprávněním k vytváření konektorů jsou různí lidé nebo pokud je potřeba konektor vytvořit v jiném tenantovi Azure. Pokud používáte tento režim, postupujte podle pokynů k [ručnímu exportu](#manual) níže.
+    **Ruční** umožňuje exportovat definici rozhraní API, kterou pak importujete pomocí portálů PowerApps nebo Microsoft Flow. Tento přístup se doporučuje, pokud uživatel Azure a uživatel s oprávněním k vytváření konektorů jsou různí lidé nebo pokud je potřeba konektor vytvořit v jiném tenantovi Azure. Pokud používáte tento režim, postupujte podle pokynů k [ručnímu exportu](#manual) níže.
 
     ![Režim exportu](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
 
@@ -81,7 +77,7 @@ Pokud chcete export dokončit v **ručním** režimu, postupujte podle těchto k
  
     ![Ruční export do PowerApps a Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-manual.png)
  
-2. Pokud vaše definice rozhraní API obsahuje nějaké definice zabezpečení, tyto jsou volány v kroku #2. Během importu se tyto informace PowerApps a Microsoft Flow zjistí a zobrazí výzvu k zadání informací o zabezpečení. Shromážděte přihlašovací údaje týkající se každé definice pro použití v další části. Další informace najdete v tématu [určení typu ověřování](#auth) níže.
+2. Pokud definice rozhraní API obsahuje nějaké definice zabezpečení, tyto definice se zavolají v kroku #2. Během importu PowerApps a Microsoft Flow detekuje tyto definice a vyzývá informace o zabezpečení. Shromážděte přihlašovací údaje týkající se každé definice pro použití v další části. Další informace najdete v tématu [určení typu ověřování](#auth) níže.
 
     ![Zabezpečení ručního exportu](media/app-service-export-api-to-powerapps-and-flow/export-manual-security.png)
 
@@ -117,7 +113,7 @@ Pokud chcete naimportovat definici rozhraní API do PowerApps a Microsoft Flow, 
 
     ![Karta definice](media/app-service-export-api-to-powerapps-and-flow/tab-definitions.png)
 
-    Tento příklad obsahuje jednu operaci s názvem `CalculateCosts`. Metadata, jako je **Popis**, pocházejí ze souboru openapi.
+    Tento příklad obsahuje jednu operaci s názvem `CalculateCosts` . Metadata, jako je **Popis**, pocházejí ze souboru openapi.
 
 7. V horní části stránky klikněte na **vytvořit konektor** .
 
@@ -143,29 +139,29 @@ Během exportu zadáte konfigurační hodnoty, které umožní PowerApps a Micro
 Tato část se zabývá typy ověřování, které jsou podporované v **expresním** režimu: klíč rozhraní API, Azure Active Directory a obecné OAuth 2,0. PowerApps a Microsoft Flow také podporují základní ověřování a OAuth 2,0 pro konkrétní služby, jako jsou Dropbox, Facebook nebo SalesForce.
 
 ### <a name="api-key"></a>Klíč rozhraní API
-Při použití klíče rozhraní API se uživatelům konektoru zobrazí výzva k zadání klíče při vytváření připojení. Zadejte název klíče rozhraní API, který jim pomůže pochopit, který klíč je potřeba. V předchozím příkladu používáme název `API Key (contact meganb@contoso.com)` , aby lidé věděli, kde získat informace o klíči rozhraní API. Pro Azure Functions je klíč obvykle jedním z klíčů hostitele, který pokryje několik funkcí v rámci aplikace Function App.
+Při použití klíče rozhraní API se uživatelům konektoru zobrazí výzva k zadání klíče při vytváření připojení. Zadejte název klíče rozhraní API, který jim pomůže pochopit, který klíč je potřeba. V předchozím příkladu používáme název, `API Key (contact meganb@contoso.com)` aby lidé věděli, kde získat informace o klíči rozhraní API. Pro Azure Functions je klíč obvykle jedním z klíčů hostitele, který pokryje několik funkcí v rámci aplikace Function App.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 Při použití Azure AD potřebujete dva registrace aplikací Azure AD: jedno pro samotné rozhraní API a jeden pro vlastní konektor:
 
 - Ke konfiguraci registrace pro rozhraní API použijte funkci [App Service ověřování/autorizace](../app-service/configure-authentication-provider-aad.md) .
 
-- Pokud chcete nakonfigurovat registraci konektoru, postupujte podle kroků v části [Přidání aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Registrace musí mít delegovaný přístup k vašemu rozhraní API a adresu URL odpovědi `https://msmanaged-na.consent.azure-apim.net/redirect`. 
+- Pokud chcete nakonfigurovat registraci konektoru, postupujte podle kroků v části [Přidání aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Registrace musí mít delegovaný přístup k vašemu rozhraní API a adresu URL odpovědi `https://msmanaged-na.consent.azure-apim.net/redirect` . 
 
 Další informace najdete v tématu Příklady registrace Azure AD pro [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) a [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). Tyto příklady používají jako rozhraní API Azure Resource Manager; Pokud budete postupovat podle pokynů, nahraďte své rozhraní API.
 
 Jsou vyžadovány následující hodnoty konfigurace:
 - **ID klienta** – ID klienta vašeho konektoru registrace Azure AD
 - **Tajný klíč klienta** – tajný klíč klienta registrace Azure AD vašeho konektoru
-- **Adresa URL pro přihlášení** – základní adresa URL služby Azure AD. V Azure to obvykle `https://login.windows.net`bývá.
-- **ID tenanta** – ID tenanta, který se má použít pro přihlášení. Mělo by se jednat o "Common" nebo ID tenanta, ve kterém se konektor vytvoří.
+- **Adresa URL pro přihlášení** – základní adresa URL služby Azure AD. V Azure obvykle `https://login.windows.net` .
+- **ID tenanta** – ID tenanta, který se má použít pro přihlášení. Toto ID by mělo být "Common" nebo ID tenanta, ve kterém je konektor vytvořen.
 - **Adresa URL prostředku** – adresa URL prostředku registrace Azure AD pro vaše rozhraní API
 
 > [!IMPORTANT]
 > Pokud někdo jiný naimportuje definici rozhraní API do PowerApps a Microsoft Flow jako součást ručního toku, musíte jim poskytnout ID klienta a tajný klíč klienta *registrace konektoru*a také adresu URL prostředku vašeho rozhraní API. Ujistěte se, že jsou tyto tajné klíče spravované bezpečně. **Nesdílejte bezpečnostní pověření samotného rozhraní API.**
 
 ### <a name="generic-oauth-20"></a>Obecné OAuth 2.0
-Při použití obecného OAuth 2,0 můžete integrovat s jakýmkoli poskytovatelem OAuth 2,0. To vám umožní pracovat s vlastními poskytovateli, kteří nejsou nativně podporováni.
+Při použití obecného OAuth 2,0 můžete integrovat s jakýmkoli poskytovatelem OAuth 2,0. Díky tomu můžete pracovat s vlastními poskytovateli, kteří nejsou nativně podporováni.
 
 Jsou vyžadovány následující hodnoty konfigurace:
 - **ID klienta** – ID klienta OAuth 2,0

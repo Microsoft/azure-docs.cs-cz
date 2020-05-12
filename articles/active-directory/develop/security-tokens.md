@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/06/2020
+ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: def198a15710d0aff4a943300eedc338a7772e46
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926574"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115791"
 ---
 # <a name="security-tokens"></a>Tokeny zabezpečení
 
@@ -31,7 +31,7 @@ Přístupové tokeny jsou platné jenom po krátkou dobu, takže autorizační s
 **Tokeny ID** se odesílají do klientské aplikace jako součást toku [OpenID Connect](v2-protocols-oidc.md) . Je možné je odeslat podél sebe nebo místo přístupového tokenu a klient je používá k ověření uživatele. Další informace o tom, jak Microsoft Identity Platform vydává tokeny ID, najdete v tématu [tokeny ID](id-tokens.md).
 
 > [!NOTE]
-> Tento článek popisuje tokeny zabezpečení pro protokoly OAuth2 a OpenID Connect. Mnoho podnikových aplikací používá SAML k ověřování uživatelů. Informace o kontrolních výrazech SAML najdete v referenčních informacích k [tokenům SAML Azure AD](reference-saml-tokens.md) .
+> Tento článek popisuje tokeny zabezpečení používané protokoly OAuth2 a OpenID Connect. Mnoho podnikových aplikací používá SAML k ověřování uživatelů. Informace o kontrolních výrazech SAML najdete v referenčních informacích k [tokenům SAML Azure AD](reference-saml-tokens.md) .
 
 ## <a name="validating-security-tokens"></a>Ověřování tokenů zabezpečení
 
@@ -46,7 +46,7 @@ Přístupové tokeny se předávají webovému rozhraní API jako nosný token v
 
 ## <a name="json-web-tokens-jwts-and-claims"></a>Webové tokeny JSON (JWTs) a deklarace identity
 
-Microsoft Identity Platform implementuje tokeny zabezpečení jako **webové tokeny JSON (JWTs)** , které obsahují **deklarace identity**.
+Microsoft Identity Platform implementuje tokeny zabezpečení jako **webové tokeny JSON (JWTs)** , které obsahují **deklarace identity**. Vzhledem k tomu, že JWTs se používají jako tokeny zabezpečení, tato forma ověřování se někdy nazývá **ověřování pomocí JWT**.
 
 [Deklarace identity](developer-glossary.md#claim) poskytuje kontrolní výrazy týkající se jedné entity, jako je například klientská aplikace nebo [vlastník prostředku](developer-glossary.md#resource-owner), k jiné entitě, jako je například server prostředků. Deklarace identity může být také označována jako deklarace JWT nebo deklarace JSON Web Token.
 
@@ -82,7 +82,7 @@ V závislosti na tom, jak je váš klient sestavený, může použít jeden (neb
 |[Tok On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) | přístupový token| x| x| x| |
 |[Přihlašovací údaje klienta](v2-oauth2-client-creds-grant-flow.md) | | | x (jenom aplikace)| | |
 
-Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment`).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nejsou `groups` ani `wids` deklarace identity.
+Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment` ).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nejsou `groups` ani `wids` deklarace identity.
 
 ## <a name="next-steps"></a>Další kroky
 

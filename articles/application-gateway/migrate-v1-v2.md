@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a49f9e1473f33eceba14591815415338aeecf4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312035"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198800"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi 2
 
@@ -53,15 +53,15 @@ V závislosti na nastaveních a preferencích místního prostředí PowerShellu
 * Pokud nemáte nainstalované moduly AZ pro Azure nebo si nejste připustili odinstalaci modulů AZ pro Azure, nejlepší možností je použít `Install-Script` možnost ke spuštění skriptu.
 * Pokud potřebujete zachovat moduly Azure AZ, nejlepším řešením je stáhnout skript a spustit ho přímo.
 
-Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az`. Pokud nevidíte žádné nainstalované moduly AZ, můžete použít `Install-Script` metodu.
+Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az` . Pokud nevidíte žádné nainstalované moduly AZ, můžete použít `Install-Script` metodu.
 
 ### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody install-Script
 
 Pokud chcete použít tuto možnost, musíte mít v počítači nainstalované moduly AZ pro Azure. Pokud jsou nainstalovány, následující příkaz zobrazí chybu. Můžete buď odinstalovat moduly AZ pro Azure, nebo použít jinou možnost ke stažení skriptu ručně a jeho spuštění.
   
-Spusťte skript s následujícím příkazem:
+Pokud chcete získat nejnovější verzi, spusťte skript s následujícím příkazem:
 
-`Install-Script -Name AzureAppGWMigration`
+`Install-Script -Name AzureAppGWMigration -Force`
 
 Tento příkaz nainstaluje také požadované moduly AZ Modules.  
 
@@ -73,9 +73,9 @@ Spuštění skriptu:
 
 1. Slouží `Connect-AzAccount` k připojení k Azure.
 
-1. Pomocí `Import-Module Az` nástroje importujte moduly AZ.
+1. Pomocí nástroje `Import-Module Az` importujte moduly AZ.
 
-1. Pro `Get-Help AzureAppGWMigration.ps1` prohlédnutí požadovaných parametrů spusťte příkaz:
+1. `Get-Help AzureAppGWMigration.ps1`Pro prohlédnutí požadovaných parametrů spusťte příkaz:
 
    ```
    AzureAppGwMigration.ps1
@@ -101,7 +101,7 @@ Spuštění skriptu:
 
    * **subnetAddressRange: [String]: Required** – jedná se o adresní prostor IP adres, který jste přiřadili (nebo chcete přidělit) pro novou podsíť, která obsahuje novou bránu v2. Toto musí být zadáno v zápisu CIDR. Například: 10.0.0.0/24. Tuto podsíť nemusíte vytvářet předem. Skript ji vytvoří za vás, pokud neexistuje.
    * **appgwName: [řetězec]: volitelné**. Toto je řetězec, který zadáte pro použití jako název nové Standard_v2 nebo WAF_v2 bránu. Pokud tento parametr není zadaný, použije se název vaší stávající brány V1 s příponou *_V2* připojena.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: volitelné**.  Seznam oddělený čárkami PSApplicationGatewaySslCertificate objektů, které vytvoříte pro reprezentaci certifikátů TLS/SSL z vaší brány V1, se musí nahrát do nové brány v2. Pro každý z vašich certifikátů TLS/SSL nakonfigurovaných pro bránu Standard v1 nebo WAF v1 můžete vytvořit nový objekt PSApplicationGatewaySslCertificate pomocí příkazu, který `New-AzApplicationGatewaySslCertificate` je tady zobrazený. Budete potřebovat cestu k souboru certifikátu TLS/SSL a k heslu.
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: volitelné**.  Seznam oddělený čárkami PSApplicationGatewaySslCertificate objektů, které vytvoříte pro reprezentaci certifikátů TLS/SSL z vaší brány V1, se musí nahrát do nové brány v2. Pro každý z vašich certifikátů TLS/SSL nakonfigurovaných pro bránu Standard v1 nebo WAF v1 můžete vytvořit nový objekt PSApplicationGatewaySslCertificate pomocí příkazu, který je `New-AzApplicationGatewaySslCertificate` tady zobrazený. Budete potřebovat cestu k souboru certifikátu TLS/SSL a k heslu.
 
      Tento parametr je volitelný jenom v případě, že nemáte naslouchací procesy protokolu HTTPS nakonfigurované pro bránu v1 nebo WAF. Pokud máte aspoň jedno nastavení naslouchacího procesu HTTPS, musíte zadat tento parametr.
 
@@ -115,7 +115,7 @@ Spuštění skriptu:
         -Password $password
       ```
 
-     V předchozím příkladu můžete `$mySslCert1, $mySslCert2` předat (oddělené čárkami) jako hodnoty pro tento parametr ve skriptu.
+     V `$mySslCert1, $mySslCert2` předchozím příkladu můžete předat (oddělené čárkami) jako hodnoty pro tento parametr ve skriptu.
    * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: volitelné**. Čárkami oddělený seznam objektů PSApplicationGatewayTrustedRootCertificate, které vytvoříte pro reprezentaci [důvěryhodných kořenových certifikátů](ssl-overview.md) pro ověřování instancí back-endu z vaší brány v2.
    
       ```azurepowershell
@@ -131,7 +131,7 @@ Spuštění skriptu:
 
 1. Spusťte skript s použitím příslušných parametrů. Dokončení může trvat pět až 7 minut.
 
-    **Případě**
+    **Příklad**
 
    ```azurepowershell
    AzureAppGWMigration.ps1 `
@@ -162,7 +162,7 @@ Tady je několik scénářů, kdy vaše aktuální Aplikační brána (Standard)
 
   * Pokud ve své aplikační bráně používáte veřejné IP adresy, můžete provést řízenou a podrobnou migraci pomocí Traffic Manager profilu pro přírůstkové směrování provozu (metoda váženého směrování provozu) do nové brány v2.
 
-    Můžete to udělat tak, že přidáte popisky DNS aplikačních bran V1 a v2 do [profilu Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)a CNAME svůj vlastní záznam DNS (například `www.contoso.com`) do domény Traffic Manager (například contoso.trafficmanager.NET).
+    Můžete to udělat tak, že přidáte popisky DNS aplikačních bran V1 a v2 do [profilu Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)a CNAME svůj vlastní záznam DNS (například `www.contoso.com` ) do domény Traffic Manager (například contoso.trafficmanager.NET).
   * Nebo můžete aktualizovat záznam DNS pro vlastní doménu tak, aby odkazoval na popisek DNS nové aplikační brány v2. V závislosti na hodnotě TTL nakonfigurované na záznamu DNS může chvíli trvat, než se veškerý provoz klienta migruje na novou bránu v2.
 * **Vaši klienti se připojují k IP adrese front-endu vaší aplikační brány**.
 
@@ -196,7 +196,7 @@ Ne. V současné době skript nepodporuje certifikáty v trezoru klíčů. To se
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Narazili jsme na některé problémy s použitím tohoto skriptu. Jak získám pomoc?
   
-Můžete odeslat e-mail appgwmigrationsup@microsoft.com, otevřít případ podpory s podporou Azure nebo obojí.
+Podporu Azure můžete kontaktovat v tématu "konfigurace a nastavení/migrace na verzi v2 SKU". Další informace o [podpoře Azure najdete tady](https://azure.microsoft.com/support/options/).
 
 ## <a name="next-steps"></a>Další kroky
 

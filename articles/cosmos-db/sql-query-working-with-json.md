@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: a8f32ad69d32844305c1cc785afc9f1df3c102b8
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: d0b11cdb0cf2719b576b7a4c4f3fa534ae09dfa8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006349"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117015"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Práce s JSON v Azure Cosmos DB
 
@@ -45,9 +45,9 @@ Zde je dokument s vnořeným kódem JSON:
 }
 ```
 
-V tomto případě jsou vlastnosti `state`, `country`a `city` všechny vnořené v rámci `address` vlastnosti.
+V tomto případě `state` `country` `city` jsou vlastnosti, a všechny vnořené v rámci `address` Vlastnosti.
 
-Následující příklad projekty jsou dvě vnořené vlastnosti: `f.address.state` a `f.address.city`.
+Následující příklad projekty jsou dvě vnořené vlastnosti: `f.address.state` a `f.address.city` .
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -141,7 +141,7 @@ WHERE EXISTS(
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>Vyhrazená klíčová slova a speciální znaky ve formátu JSON
 
-K vlastnostem můžete přistupovat pomocí operátoru `[]`vlastnosti v uvozovkách. Například `SELECT c.grade` a `SELECT c["grade"]` jsou ekvivalentní. Tato syntaxe je užitečná pro řídicí znak, který obsahuje mezery, speciální znaky nebo má stejný název jako klíčové slovo SQL nebo vyhrazené slovo.
+K vlastnostem můžete přistupovat pomocí operátoru vlastnosti v uvozovkách `[]` . Například `SELECT c.grade` a `SELECT c["grade"]` jsou ekvivalentní. Tato syntaxe je užitečná pro řídicí znak, který obsahuje mezery, speciální znaky nebo má stejný název jako klíčové slovo SQL nebo vyhrazené slovo.
 
 Například zde je dokument s vlastností s názvem `order` a vlastností `price($)` , která obsahuje speciální znaky:
 
@@ -208,7 +208,7 @@ Výsledky jsou následující:
     }]
 ```
 
-V předchozím příkladu musí `SELECT` klauzule vytvořit objekt JSON a protože ukázka neposkytuje žádný klíč, klauzule používá název `$1`proměnné implicitního argumentu. Následující dotaz vrátí dvě proměnné implicitního argumentu `$1` : `$2`a.
+V předchozím příkladu `SELECT` musí klauzule vytvořit objekt JSON a protože ukázka neposkytuje žádný klíč, klauzule používá název proměnné implicitního argumentu `$1` . Následující dotaz vrátí dvě proměnné implicitního argumentu: `$1` a `$2` .
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -237,7 +237,7 @@ V dotazech můžete explicitně aliasovat hodnoty. Pokud má dotaz dvě vlastnos
 
 ### <a name="examples"></a>Příklady
 
-`AS` Klíčové slovo použité pro aliasing je volitelné, jak je znázorněno v následujícím příkladu při projekci druhé hodnoty jako `NameInfo`:
+`AS`Klíčové slovo použité pro aliasing je volitelné, jak je znázorněno v následujícím příkladu při projekci druhé hodnoty jako `NameInfo` :
 
 ```sql
     SELECT
@@ -270,7 +270,7 @@ Tady je příklad:
 ```sql
     SELECT
            {"JSON expression with a space": { "state": f.address.state, "city": f.address.city }},
-           { "JSON expression with a special character": { "name": f.id }}
+           {"JSON expression with a special character!": { "name": f.id }}
     FROM Families f
     WHERE f.id = "AndersenFamily"
 ```

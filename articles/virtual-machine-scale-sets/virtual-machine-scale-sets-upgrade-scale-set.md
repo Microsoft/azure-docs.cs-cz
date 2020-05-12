@@ -1,19 +1,20 @@
 ---
 title: Úprava sady škálování virtuálních počítačů Azure
 description: Naučte se, jak upravit a aktualizovat sadu škálování virtuálního počítače Azure pomocí rozhraní REST API, Azure PowerShell a Azure CLI.
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: management
 ms.date: 03/10/2020
-ms.author: mimckitt
-ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 9498babd9605c46d752c5fe1eb1b077f6d911351
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476820"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121010"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 
@@ -272,11 +273,11 @@ Chcete-li aktualizovat vlastnost globální sady škálování, je nutné aktual
         az vmss update --remove {propertyPath} {indexToRemove}
         ```
 
-    - Pokud jste dříve nasadili sadu škálování pomocí `az vmss create` příkazu, můžete znovu spustit `az vmss create` příkaz a aktualizovat sadu škálování. Zajistěte, aby všechny vlastnosti `az vmss create` v příkazu byly stejné jako předtím, s výjimkou vlastností, které chcete upravit.
+    - Pokud jste dříve nasadili sadu škálování pomocí `az vmss create` příkazu, můžete `az vmss create` znovu spustit příkaz a aktualizovat sadu škálování. Zajistěte, aby všechny vlastnosti v `az vmss create` příkazu byly stejné jako předtím, s výjimkou vlastností, které chcete upravit.
 
 - Můžete také použít [Resources.Azure.com](https://resources.azure.com) nebo sady [SDK Azure](https://azure.microsoft.com/downloads/).
 
-Po aktualizaci modelu sady škálování se nová konfigurace použije pro všechny nové virtuální počítače vytvořené v sadě škálování. Modely pro existující virtuální počítače v sadě škálování ale musí být pořád aktuální s nejnovějším modelem celkových sad škálování. V modelu každého virtuálního počítače je logická vlastnost s názvem `latestModelApplied` , která označuje, jestli je virtuální počítač aktuální s nejnovějším modelem celkových sad škálování (`true` to znamená, že virtuální počítač je aktuální s nejnovějším modelem).
+Po aktualizaci modelu sady škálování se nová konfigurace použije pro všechny nové virtuální počítače vytvořené v sadě škálování. Modely pro existující virtuální počítače v sadě škálování ale musí být pořád aktuální s nejnovějším modelem celkových sad škálování. V modelu každého virtuálního počítače je logická vlastnost `latestModelApplied` s názvem, která označuje, jestli je virtuální počítač aktuální s nejnovějším modelem celkových sad škálování ( `true` to znamená, že virtuální počítač je aktuální s nejnovějším modelem).
 
 
 ## <a name="how-to-bring-vms-up-to-date-with-the-latest-scale-set-model"></a>Jak zajistit aktuálnost virtuálních počítačů pomocí nejnovějšího modelu sady škálování

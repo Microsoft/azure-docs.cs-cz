@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 6637627d48df8f9b6126debc215aac9bceb76f6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce1a214d39f958af36931192aad4561459ca0573
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80419554"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121337"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -50,7 +50,7 @@ Další informace najdete v tématu [omezení statického přístupu Azure App S
 Přístup k soukromému webu znamená, že vaše aplikace bude přístupná jenom z privátní sítě, jako je třeba virtuální síť Azure.
 
 * Přístup k privátní lokalitě je k dispozici v plánech [Premium](./functions-premium-plan.md), [Spotřeba](functions-scale.md#consumption-plan)a [App Service](functions-scale.md#app-service-plan) , když jsou nakonfigurované koncové body služby.
-    * Koncové body služby je možné konfigurovat pro jednotlivé aplikace v části **funkce** > platformy**sítě** > **Konfigurace omezení** > přístupu**Přidat pravidlo**. Virtuální sítě se teď dají vybrat jako typ pravidla.
+    * Koncové body služby je možné konfigurovat pro jednotlivé aplikace v části **funkce platformy**  >  **sítě**  >  **Konfigurace omezení přístupu**  >  **Přidat pravidlo**. Virtuální sítě se teď dají vybrat jako typ pravidla.
     * Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
     * Mějte na paměti, že u koncových bodů služby má vaše funkce stále plný odchozí přístup k Internetu, a to i s nakonfigurovanou integrací virtuální sítě.
 * Přístup k privátní lokalitě je také k dispozici v rámci App Service Environment, který je nakonfigurován s interním nástrojem pro vyrovnávání zatížení (interního nástroje). Další informace najdete v tématu [Vytvoření a použití interního nástroje pro vyrovnávání zatížení s App Service Environment](../app-service/environment/create-ilb-ase.md).
@@ -102,9 +102,9 @@ V současné době můžete v rámci virtuální sítě použít funkce triggeru
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Plán Premium s triggery virtuální sítě
 
-Když spustíte plán Premium, můžete připojit funkce triggeru jiného typu než HTTP ke službám, které běží ve virtuální síti. K tomu musíte povolit podporu triggeru virtuální sítě pro vaši aplikaci Function App. Nastavení **Podpora triggeru virtuální sítě** najdete v [Azure Portal](https://portal.azure.com) v části **nastavení aplikace Function App**.
+Když spustíte plán Premium, můžete připojit funkce triggeru jiného typu než HTTP ke službám, které běží ve virtuální síti. K tomu musíte povolit podporu triggeru virtuální sítě pro vaši aplikaci Function App. Nastavení **Podpora triggeru virtuální sítě** najdete v [Azure Portal](https://portal.azure.com) v části **Configuration**  >  **nastavení modulu runtime konfigurační funkce**.
 
-![Přepínač virtuální sítě](media/functions-networking-options/virtual-network-trigger-toggle.png)
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
 Aktivační události virtuální sítě taky můžete povolit pomocí následujícího příkazu Azure CLI:
 
@@ -146,9 +146,9 @@ Další informace najdete v dokumentaci k [App Service pro Hybrid Connections](.
 
 Omezení odchozích IP adres jsou k dispozici v plánu Premium, App Service plánu nebo App Service Environment. Můžete nakonfigurovat odchozí omezení pro virtuální síť, ve které je nasazený App Service Environment.
 
-Když integrujete aplikaci funkcí v plánu Premium nebo App Service plánu s virtuální sítí, může aplikace ve výchozím nastavení dál provádět odchozí volání do Internetu. Přidáním nastavení `WEBSITE_VNET_ROUTE_ALL=1`aplikace vynutíte odeslání veškerého odchozího provozu do vaší virtuální sítě, kde je možné použít pravidla skupiny zabezpečení sítě k omezení provozu.
+Když integrujete aplikaci funkcí v plánu Premium nebo App Service plánu s virtuální sítí, může aplikace ve výchozím nastavení dál provádět odchozí volání do Internetu. Přidáním nastavení aplikace `WEBSITE_VNET_ROUTE_ALL=1` vynutíte odeslání veškerého odchozího provozu do vaší virtuální sítě, kde je možné použít pravidla skupiny zabezpečení sítě k omezení provozu.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 

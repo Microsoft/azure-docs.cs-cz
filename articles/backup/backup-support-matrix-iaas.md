@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování virtuálních počítačů Azure
 description: Poskytuje souhrn nastavení podpory a omezení při zálohování virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 86141532e0db80f75c6e79277b36060ecb939a53
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: b7201972811c5b9cc8187b671c9e688236667860
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801429"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199869"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -103,7 +103,7 @@ Body obnovení na disku DPM/MABS | 64 pro souborové servery a 448 pro aplikačn
 
 ## <a name="supported-restore-methods"></a>Podporované metody obnovení
 
-**Možnost obnovení** | **Zobrazí**
+**Možnost obnovení** | **Podrobnosti**
 --- | ---
 **Vytvořte nový virtuální počítač.** | Rychle vytvoří a načte základní virtuální počítač v bodu obnovení a spustí ho.<br/><br/> Můžete zadat název virtuálního počítače, vybrat skupinu prostředků a virtuální síť (VNet), do které se bude umístit, a zadat účet úložiště pro obnovený virtuální počítač. Nový virtuální počítač musí být vytvořený ve stejné oblasti jako zdrojový virtuální počítač.
 **Obnovit disk** | Obnoví disk virtuálního počítače, který se pak dá použít k vytvoření nového virtuálního počítače.<br/><br/> Azure Backup poskytuje šablonu, která vám umožní přizpůsobit a vytvořit virtuální počítač. <br/><br> Úloha obnovení vygeneruje šablonu, kterou si můžete stáhnout a použít k určení vlastního nastavení virtuálního počítače, a vytvořit virtuální počítač.<br/><br/> Disky se zkopírují do skupiny prostředků, kterou zadáte.<br/><br/> Případně můžete disk připojit k existujícímu virtuálnímu počítači nebo vytvořit nový virtuální počítač pomocí prostředí PowerShell.<br/><br/> Tato možnost je užitečná, pokud chcete virtuální počítač přizpůsobit, přidat nastavení konfigurace, která se v době zálohování nevyskytla, nebo přidat nastavení, která se musí nakonfigurovat pomocí šablony nebo PowerShellu.
@@ -112,7 +112,7 @@ Body obnovení na disku DPM/MABS | 64 pro souborové servery a 448 pro aplikačn
 
 ## <a name="support-for-file-level-restore"></a>Podpora pro obnovení na úrovni souborů
 
-**Obnovení** | **Doložen**
+**Obnovení** | **Podporuje se**
 --- | ---
 Obnovení souborů mezi operačními systémy | Můžete obnovit soubory na jakémkoli počítači, který má stejný (nebo kompatibilní) operační systém jako zálohovaný virtuální počítač. Podívejte se na [tabulku kompatibilní operační systém](backup-azure-restore-files-from-vm.md#system-requirements).
 Obnovování souborů z šifrovaných virtuálních počítačů | Není podporováno.
@@ -125,7 +125,7 @@ Obnovení souborů se speciálním nastavením sítě | Obnovení není podporov
 
 Následující tabulka shrnuje podporu zálohování během úloh správy virtuálních počítačů, jako je například přidání nebo nahrazení disků virtuálního počítače.
 
-**Obnovení** | **Doložen**
+**Obnovení** | **Podporuje se**
 --- | ---
 Obnova v rámci předplatného/oblasti nebo zóny. | Není podporováno.
 Obnovit na existující virtuální počítač | Použijte možnost nahradit disk.
@@ -158,7 +158,7 @@ Virtuální počítače s Gen2 | Podporuje se <br> Azure Backup podporuje záloh
 
 **Komponenta** | **Podpora**
 --- | ---
-Datové disky virtuálních počítačů Azure | Zálohujte virtuální počítač s 16 nebo méně datovými disky.<BR> Pokud se chcete zaregistrovat do omezené verze Preview virtuálních počítačů s 16 disky (až 32 disků), napište nám naAskAzureBackupTeam@microsoft.com
+Datové disky virtuálních počítačů Azure | Podpora pro zálohování virtuálních počítačů Azure s až 32 disky je ve verzi Public Preview v [těchto oblastech](#backup-of-azure-virtual-machines-with-up-to-32-disks).<br><br> Podpora zálohování virtuálních počítačů Azure s nespravovanými disky nebo klasickými virtuálními počítači je jenom na 16 disků.
 Velikost datového disku | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
 Typ úložiště | HDD úrovně Standard, SSD úrovně Standard SSD úrovně Premium.
 Spravované disky | Podporuje se.
@@ -169,6 +169,13 @@ Přidat disk k chráněnému virtuálnímu počítači | Podporuje se.
 Změna velikosti disku na chráněném virtuálním počítači | Podporuje se.
 Sdílené úložiště| Zálohování virtuálních počítačů pomocí sdílený svazek clusteru (CSV) nebo Souborový server se škálováním na více systémů se nepodporuje. Při zálohování pravděpodobně dojde k chybě zapisovačů sdílených svazků clusteru. Při obnovení se nemusí nacházet disky obsahující svazky sdíleného svazku clusteru.
 [Sdílené disky](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | Není podporováno.
+
+### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>Zálohování virtuálních počítačů Azure s až 32 disky
+
+Azure Backup teď podporuje zálohování virtuálních počítačů Azure s až 32 připojenými disky.  Tato funkce je ve verzi Public Preview v Středozápadní USA.  Pokud vás zajímá Tato funkce v jiných oblastech, zaregistrujte se do verze s omezeným náhledem zapsáním do nás na adrese AskAzureBackupTeam@microsoft.com .  
+
+>[!NOTE]
+>Azure Backup podporuje až 16 disků pro virtuální počítače Azure s nespravovanými disky nebo klasickými virtuálními počítači.
 
 ## <a name="vm-network-support"></a>Podpora sítě virtuálních počítačů
 

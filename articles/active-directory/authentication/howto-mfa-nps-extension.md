@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9dce9e2f63afc50e367d650f93f293b974d912e9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617661"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199550"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS se službou Multi-Factor Authentication
 
@@ -76,15 +77,15 @@ Když nainstalujete rozšíření, budete potřebovat ID adresáře a přihlašo
 
 Server NPS musí být schopný komunikovat s následujícími adresami URL přes porty 80 a 443.
 
-- https:\//adnotifications.windowsazure.com
+- https: \/ /adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
-- https:\//Credentials.Azure.com
+- https: \/ /Credentials.Azure.com
 
 Kromě toho je potřeba připojení k následujícím adresám URL, aby se dokončilo [nastavení adaptéru pomocí zadaného skriptu PowerShellu](#run-the-powershell-script) .
 
 - https:\//login.microsoftonline.com
-- https:\//provisioningapi.microsoftonline.com
-- https:\//aadcdn.msauth.NET
+- https: \/ /provisioningapi.microsoftonline.com
+- https: \/ /aadcdn.msauth.NET
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
@@ -110,7 +111,7 @@ V závislosti na použitém řešení sítě VPN se liší postup konfigurace z�
 Tento krok již může být dokončen ve vašem tenantovi, ale je vhodné považovat kontrolu, že Azure AD Connect nedávno synchronizoval vaše databáze.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-2. Vybrat **Azure Active Directory** > **Azure AD Connect**
+2. Vybrat **Azure Active Directory**  >  **Azure AD Connect**
 3. Ověřte, že je **povolený** stav synchronizace a že poslední synchronizace proběhla před méně než hodinou.
 
 Pokud potřebujete zahájit novou část synchronizace, postupujte podle pokynů v tématu [Azure AD Connect Sync: Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
@@ -139,7 +140,7 @@ Než nasadíte a použijete rozšíření serveru NPS, je potřeba, aby se uživ
 
 Pomocí těchto kroků si můžete spustit testovací účet:
 
-1. Přihlaste [https://aka.ms/mfasetup](https://aka.ms/mfasetup) se k pomocí testovacího účtu.
+1. Přihlaste se k [https://aka.ms/mfasetup](https://aka.ms/mfasetup) pomocí testovacího účtu.
 2. Podle pokynů nastavte metodu ověřování.
 3. [Vytvořte zásady podmíněného přístupu](howto-mfa-getstarted.md#create-conditional-access-policy) , které budou vyžadovat službu Multi-Factor Authentication pro testovací účet.
 
@@ -200,7 +201,7 @@ Opakujte tyto kroky na všech dalších serverech NPS, které chcete nastavit pr
 Pokud uplynula platnost předchozího certifikátu počítače a vygeneroval se nový certifikát, měli byste odstranit všechny certifikáty s vypršenou platností. Máte-li certifikáty s vypršenou platností, můžete způsobit problémy s počátkem rozšíření serveru NPS
 
 > [!NOTE]
-> Pokud místo generování certifikátů pomocí skriptu PowerShell použijete vlastní certifikáty, ujistěte se, že jsou zarovnané na konvence vytváření názvů NPS. Název subjektu musí být **\<CN = TenantID\>, OU = rozšíření Microsoft NPS**. 
+> Pokud místo generování certifikátů pomocí skriptu PowerShell použijete vlastní certifikáty, ujistěte se, že jsou zarovnané na konvence vytváření názvů NPS. Název subjektu musí být **CN = \< TenantID \> , OU = rozšíření Microsoft NPS**. 
 
 ### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government dalších kroků
 
@@ -225,7 +226,7 @@ S verzí 1.0.1.32 rozšíření serveru NPS se teď podporuje čtení více cert
 
 Certifikáty vytvořené `AzureMfaNpsExtnConfigSetup.ps1` skriptem jsou platné 2 roky. IT organizace by měli monitorovat certifikáty pro vypršení platnosti. Certifikáty pro rozšíření serveru NPS se nacházejí v úložišti certifikátů místního počítače v části osobní a jsou vydávány pro ID tenanta poskytnuté ke skriptu.
 
-Když se certifikát blíží k datu vypršení platnosti, měl by se vytvořit nový certifikát, který ho nahradí.  Tento proces se provádí tak, že `AzureMfaNpsExtnConfigSetup.ps1` se znovu spustí a po zobrazení výzvy zůstane stejné ID tenanta. Tento postup by se měl opakovat na každém serveru NPS ve vašem prostředí.
+Když se certifikát blíží k datu vypršení platnosti, měl by se vytvořit nový certifikát, který ho nahradí.  Tento proces se provádí tak, že se `AzureMfaNpsExtnConfigSetup.ps1` znovu spustí a po zobrazení výzvy zůstane stejné ID tenanta. Tento postup by se měl opakovat na každém serveru NPS ve vašem prostředí.
 
 ## <a name="configure-your-nps-extension"></a>Konfigurace rozšíření serveru NPS
 
@@ -255,7 +256,7 @@ Pokud máte uživatele, kteří nejsou zaregistrovaní pro MFA, můžete určit,
 
 Můžete zvolit vytvoření tohoto klíče a jeho nastavení na hodnotu NEPRAVDA, pokud se vaši uživatelé chtějí zaregistrovat a nemusí se ještě registrovat pro Azure MFA. Vzhledem k tomu, že nastavení klíče umožňuje uživatelům, kteří nejsou zaregistrovaní pro MFA, přihlásit se, měli byste tento klíč před zahájením provozu odebrat.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="nps-extension-health-check-script"></a>Skript kontroly stavu rozšíření serveru NPS
 
@@ -267,7 +268,7 @@ Následující skript je k dispozici k provedení základních kroků kontroly s
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Návody ověřte, zda je certifikát klienta nainstalován podle očekávání?
 
-Vyhledejte certifikát podepsaný svým držitelem vytvořeného instalačním programem v úložišti certifikátů a zkontrolujte, zda má privátní klíč oprávnění udělená **síťové službě**uživatele. Certifikát má název subjektu ** \<CN tenantid\>, OU = rozšíření Microsoft NPS** .
+Vyhledejte certifikát podepsaný svým držitelem vytvořeného instalačním programem v úložišti certifikátů a zkontrolujte, zda má privátní klíč oprávnění udělená **síťové službě**uživatele. Certifikát má název subjektu **CN \< tenantid \> , OU = rozšíření Microsoft NPS** .
 
 Certifikáty podepsané svým držitelem generované skriptem *AzureMfaNpsExtnConfigSetup. ps1* mají také životnost po dobu dvou let. Při ověřování, zda je certifikát nainstalován, byste měli také ověřit, zda nevypršela platnost certifikátu.
 

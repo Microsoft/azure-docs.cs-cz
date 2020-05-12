@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/26/2020
-ms.openlocfilehash: 728c8605dca183d8eb733b5e674868592d920d03
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 05/11/2020
+ms.openlocfilehash: 471ccddd31fd6c9f332bdaa8ea76b7bda25ac191
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732032"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117780"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -196,11 +196,15 @@ Návrhář zobrazení je k dispozici pouze pro uživatele, kteří jsou přiřaz
 * [Diagnostika Azure](platform/diagnostics-extension-to-application-insights.md)
 * [Webová aplikace Java](app/java-troubleshoot.md)
 
-*Z mého serveru nezískám žádná data*
+*Nedaří se mi získat žádná data ze serveru:*
 
 * [Nastavení výjimek brány firewall](app/ip-addresses.md)
 * [Nastavení serveru ASP.NET](app/monitor-performance-live-website-now.md)
 * [Nastavení serveru Java](app/java-agent.md)
+
+*Kolik Application Insights mám nasadit?:*
+
+* [Jak navrhnout nasazení Application Insights: jeden versus mnoho prostředků Application Insights?](app/separate-resources.md)
 
 ### <a name="can-i-use-application-insights-with-"></a>Můžu použít Application Insights s...?
 
@@ -247,15 +251,15 @@ Podrobnosti závisí na typu projektu. Pro webovou aplikaci:
 * Vloží položky do:
   * Soubor web.config
   * packages.config
-* (Jenom nové projekty – Pokud [přidáte Application Insights do existujícího projektu][start], musíte to provést ručně.) Vloží fragmenty kódu do klienta a kód serveru pro inicializaci s ID prostředku Application Insights. Například v aplikaci MVC je kód vložen do zobrazení stránky předloha/Shared/\_layout. cshtml
+* (Jenom nové projekty – Pokud [přidáte Application Insights do existujícího projektu][start], musíte to provést ručně.) Vloží fragmenty kódu do klienta a kód serveru pro inicializaci s ID prostředku Application Insights. Například v aplikaci MVC je kód vložen do zobrazení stránky předloha/Shared/ \_ layout. cshtml
 
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Návody upgradovat ze starších verzí sady SDK?
 Přečtěte si [poznámky k verzi](app/release-notes.md) pro sadu SDK odpovídající vašemu typu aplikace.
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Jak můžu změnit, na který prostředek Azure můj projekt odesílá data?
-V Průzkumník řešení klikněte pravým tlačítkem `ApplicationInsights.config` myši a vyberte možnost **aktualizovat Application Insights**. Data můžete odeslat do existujícího nebo nového prostředku v Azure. Průvodce aktualizací změní klíč instrumentace v souboru ApplicationInsights. config, který určuje, kde sada SDK serveru odesílá vaše data. Pokud nevyberete možnost Aktualizovat vše, změní se také klíč, ve kterém se zobrazí na webových stránkách.
+V Průzkumník řešení klikněte pravým tlačítkem myši `ApplicationInsights.config` a vyberte možnost **aktualizovat Application Insights**. Data můžete odeslat do existujícího nebo nového prostředku v Azure. Průvodce aktualizací změní klíč instrumentace v souboru ApplicationInsights. config, který určuje, kde sada SDK serveru odesílá vaše data. Pokud nevyberete možnost Aktualizovat vše, změní se také klíč, ve kterém se zobrazí na webových stránkách.
 
-### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Můžu v nasazeních Azure Resource Manager použít `providers('Microsoft.Insights', 'components').apiVersions[0]` ?
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Můžu `providers('Microsoft.Insights', 'components').apiVersions[0]` v nasazeních Azure Resource Manager použít?
 
 Tuto metodu nedoporučujeme používat pro naplnění verze rozhraní API. Nejnovější verze může představovat verze Preview, které mohou obsahovat zásadní změny. I s novějšími verzemi bez verze Preview nejsou verze rozhraní API vždycky zpětně kompatibilní se stávajícími šablonami, nebo v některých případech nemusí být verze rozhraní API k dispozici pro všechny odběry.
 
@@ -309,7 +313,7 @@ IP adresu (IPv4 nebo IPv6) webového klienta vyhledáme pomocí [GeoLite2](https
 * Další informace o tom, jak se shromažďují údaje o IP adrese a geografickém umístění v Application Insights najdete v tomto [článku](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
-Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP`. [Další informace](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Další informace](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 [Pomocí Power BI](app/export-power-bi.md ) můžete zobrazit telemetrii žádostí na mapě.
 
@@ -436,7 +440,7 @@ Umožněte webovému serveru odesílat telemetrii do našich koncových bodů.
 
 Přesměrujte provoz z vašeho serveru do brány v intranetu přepsáním koncových bodů ve vaší konfiguraci. Pokud tyto vlastnosti Endpoint nejsou v konfiguraci k dispozici, budou tyto třídy používat výchozí hodnoty uvedené níže v příkladu ApplicationInsights. config. 
 
-Brána by měla směrovat provoz na základní adresu našeho koncového bodu. V konfiguraci nahraďte výchozí hodnoty hodnotou `http://<your.gateway.address>/<relative path>`.
+Brána by měla směrovat provoz na základní adresu našeho koncového bodu. V konfiguraci nahraďte výchozí hodnoty hodnotou `http://<your.gateway.address>/<relative path>` .
 
 
 ##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Příklad ApplicationInsights. config s výchozími koncovými body:
@@ -515,7 +519,7 @@ Jedná se o nekontejnerové procesy, které běží na vašem uzlu.
 
 Jak to Vypočítejte?
 
-**Jiné procesy** = *celkově využití z CAdvisor* - *využití z kontejneru procesu*
+**Jiné procesy**  =  *Celkové využití z CAdvisor*  -  *Využití z kontejneru procesu*
 
 Mezi **Další procesy** patří:
 
@@ -537,7 +541,7 @@ U agenta verze ciprod12042019 a novějších se ve výchozím nastavení tyto dv
 
 Připojte další tabulky, abyste tyto hodnoty vlastností zahrnuli do výsledků.
 
-Upravte dotazy tak, aby zahrnovaly vlastnosti Image a ImageTag ```ContainerInventory``` z tabulky připojením k vlastnosti ContainerID. Můžete zahrnout vlastnost Name (jak se dřív zobrazila v ```ContainerLog``` tabulce) z pole ContaineName tabulky KubepodInventory spojením s vlastností ContainerID. Toto je doporučená možnost.
+Upravte dotazy tak, aby zahrnovaly vlastnosti Image a ImageTag z ```ContainerInventory``` tabulky připojením k vlastnosti ContainerID. Můžete zahrnout vlastnost Name (jak se dřív zobrazila v ```ContainerLog``` tabulce) z pole ContaineName tabulky KubepodInventory spojením s vlastností ContainerID. Toto je doporučená možnost.
 
 Následující příklad je ukázkový podrobný dotaz, který vysvětluje, jak tyto hodnoty polí získat pomocí spojení.
 
@@ -628,7 +632,7 @@ Podrobný přehled tohoto problému najdete v následujícím [odkazu na GitHub]
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Návody vyřešit chyby Azure AD, když povolíte živé protokoly? 
 
-Může se zobrazit následující chyba: **Adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: ' <ID\>aplikace '**. Řešení, které se má vyřešit, najdete v článku [jak zobrazit data kontejneru v reálném čase s Azure monitor pro kontejnery](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
+Může se zobrazit následující chyba: **Adresa URL odpovědi zadaná v požadavku neodpovídá adresám URL odpovědí nakonfigurovaným pro aplikaci: ' <ID aplikace \> '**. Řešení, které se má vyřešit, najdete v článku [jak zobrazit data kontejneru v reálném čase s Azure monitor pro kontejnery](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Proč není možné upgradovat cluster po registraci?
 

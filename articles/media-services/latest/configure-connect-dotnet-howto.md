@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269806"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201120"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k Media Services V3 API – .NET
 
@@ -35,15 +36,15 @@ V tomto článku se dozvíte, jak se připojit k sadě Azure Media Services V3 .
 ## <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
 1. Spusťte Visual Studio. 
-1. V nabídce **soubor** klikněte na příkaz **Nový** > **projekt**. 
+1. V nabídce **soubor** klikněte na příkaz **Nový**  >  **projekt**. 
 1. Vytvořte konzolovou aplikaci **.NET Core** .
 
-Ukázková aplikace v tomto tématu cílí na `netcoreapp2.0`cíle. Kód používá Async Main, který je k dispozici počínaje jazykem C# 7,1. Další podrobnosti najdete v tomto [blogu](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) .
+Ukázková aplikace v tomto tématu cílí na cíle `netcoreapp2.0` . Kód používá Async Main, který je k dispozici počínaje jazykem C# 7,1. Další podrobnosti najdete v tomto [blogu](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) .
 
 ## <a name="add-required-nuget-packages"></a>Přidat požadované balíčky NuGet
 
-1. V > aplikaci Visual Studio vyberte **nástroje** > **Správce balíčků NuGet****Konzola správce NuGet**.
-2. V okně **konzoly Správce balíčků** přidejte následující balíčky `Install-Package` NuGet pomocí příkazu. Například, `Install-Package Microsoft.Azure.Management.Media`.
+1. V aplikaci Visual Studio vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce NuGet**.
+2. V okně **konzoly Správce balíčků** `Install-Package` přidejte následující balíčky NuGet pomocí příkazu. Například, `Install-Package Microsoft.Azure.Management.Media`.
 
 |Balíček|Popis|
 |---|---|
@@ -57,20 +58,20 @@ Ukázková aplikace v tomto tématu cílí na `netcoreapp2.0`cíle. Kód použí
 
 ### <a name="create-appsettingsjson"></a>Vytvořit appSettings. JSON
 
-1. Přejít na **obecný** > **textový soubor**
+1. Přejít na **obecný**  >  **textový soubor**
 1. Pojmenujte ho "appSettings. JSON".
 1. Nastavte vlastnost kopírovat do výstupního adresáře souboru. JSON na kopírovat, pokud je novější (takže aplikace bude mít k nim přístup, když je publikovaná).
 
 ### <a name="set-values-in-appsettingsjson"></a>Nastavení hodnot v souboru appSettings. JSON
 
-Spusťte příkaz `az ams account sp create` , jak je popsáno v tématu [přístupová rozhraní API](access-api-cli-how-to.md). Příkaz vrátí JSON, který byste měli zkopírovat do souboru appSettings. JSON.
+Spusťte `az ams account sp create` příkaz, jak je popsáno v tématu [přístupová rozhraní API](access-api-cli-how-to.md). Příkaz vrátí JSON, který byste měli zkopírovat do souboru appSettings. JSON.
  
 ## <a name="add-configuration-file"></a>Přidání konfiguračního souboru
 
 Pro usnadnění práce přidejte konfigurační soubor, který je zodpovědný za čtení hodnot z "appSettings. JSON".
 
 1. Přidejte do projektu novou třídu. cs. Pojmenujte ji `ConfigWrapper`. 
-1. Do tohoto souboru vložte následující kód (Tento příklad předpokládá, že máte obor názvů `ConsoleApp1`).
+1. Do tohoto souboru vložte následující kód (Tento příklad předpokládá, že máte obor názvů `ConsoleApp1` ).
 
 ```csharp
 using System;

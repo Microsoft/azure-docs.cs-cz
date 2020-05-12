@@ -3,12 +3,12 @@ title: Vytvořit nový prostředek služby Azure Application Insights | Microsof
 description: Ručně nastavte Application Insights monitorování pro novou živou aplikaci.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 0c8b9ccaa70a2fd1bf46c6f4537f54d702ecc48f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537572"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200672"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
@@ -26,9 +26,10 @@ Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek 
 
    | Nastavení        |  Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
-   | **Název**      | Jedinečná hodnota | Název, který identifikuje monitorovanou aplikaci. |
-   | **Skupina prostředků**     | myResourceGroup      | Název nové nebo existující skupiny prostředků pro hostování dat App Insights |
-   | **Umístění** | USA – východ | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
+   | **Název**      | `Unique value` | Název, který identifikuje monitorovanou aplikaci. |
+   | **Skupina prostředků**     | `myResourceGroup`      | Název nové nebo existující skupiny prostředků pro hostování dat App Insights |
+   | **Věřitel** | `East US` | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
+   | **Režim prostředků** | `Classic` nebo `Workspace-based` | Prostředky založené na pracovních prostorech jsou momentálně ve verzi Public Preview a umožňují vám odeslat Application Insights telemetrii do společného pracovního prostoru Log Analytics. Další informace najdete v [článku o prostředcích založených na pracovních prostorech](create-workspace-resource.md).
 
 > [!NOTE]
 > I když můžete použít stejný název prostředku v různých skupinách prostředků, může být výhodné použít globálně jedinečný název. To může být užitečné v případě, že plánujete [provádění dotazů mezi prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) , protože je zjednodušená požadovaná syntaxe.
@@ -96,13 +97,13 @@ TenantId           : {subid}
 
 ### <a name="azure-cli-preview"></a>Rozhraní příkazového řádku Azure (Preview)
 
-Pro přístup k verzi Preview Application Insights příkazy rozhraní příkazového řádku Azure CLI, které nejdřív musíte spustit:
+Abyste měli přístup k verzi Preview Application Insights příkazy rozhraní příkazového řádku Azure CLI, musíte nejdřív spustit:
 
 ```azurecli
  az extension add -n application-insights
 ```
 
-Pokud tento `az extension add` příkaz nespustíte, zobrazí se chybová zpráva s oznámením:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Pokud tento příkaz nespustíte `az extension add` , zobrazí se chybová zpráva s oznámením:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Nyní můžete spustit následující a vytvořit prostředek Application Insights:
 

@@ -1,18 +1,20 @@
 ---
 title: Další informace o režimech orchestrace pro Virtual Machine Scale Sets v Azure
 description: Přečtěte si další informace o režimech orchestrace pro Virtual Machine Scale Sets v Azure.
-author: shandilvarun
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 10/23/2019
-ms.author: vashan
-ms.openlocfilehash: 4a0be30f181921461ad0bacea6f18ce439d22353
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279066"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198386"
 ---
 # <a name="orchestration-mode-preview"></a>Režim orchestrace (Preview)
 
@@ -39,7 +41,7 @@ Sada škálování virtuálních počítačů bude podporovat 2 odlišné režim
 
 |                             | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| Model konfigurace virtuálních počítačů      | Žádná                                       | Požaduje se |
+| Model konfigurace virtuálních počítačů      | Žádné                                       | Požaduje se |
 | Přidání nového virtuálního počítače do sady škálování  | Virtuální počítače se při vytvoření virtuálního počítače explicitně přidávají do sady škálování. | Virtuální počítače se implicitně vytvoří a přidají do sady škálování na základě modelu konfigurace virtuálního počítače, počtu instancí a pravidel automatického škálování. | |
 | Odstranění virtuálního počítače                   | Virtuální počítače se musí odstranit jednotlivě, sada škálování se neodstraní, pokud obsahuje nějaké virtuální počítače. | Virtuální počítače se dají odstranit jednotlivě a odstraněním sady škálování se odstraní všechny instance virtuálních počítačů.  |
 | Připojení a odpojení virtuálních počítačů           | Nepodporuje se                              | Nepodporuje se |

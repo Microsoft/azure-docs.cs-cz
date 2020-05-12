@@ -4,17 +4,17 @@ description: Připojení soukromě k webové aplikaci pomocí privátního konco
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 05/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a95c021153a458a4e3f804e64724b73ea1f1937
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756273"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198818"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Používání privátních koncových bodů pro webovou aplikaci Azure (Preview)
 
@@ -28,7 +28,7 @@ Použití privátního koncového bodu pro vaši webovou aplikaci vám umožní:
 - Zabezpečte svou webovou aplikaci konfigurací privátního koncového bodu, čímž Eliminujte veřejnou expozici.
 - Připojte se bezpečně k webové aplikaci z místních sítí, které se připojují k virtuální síti pomocí privátního partnerského vztahu VPN nebo ExpressRoute.
 
-Pokud potřebujete zabezpečené připojení mezi vaší virtuální sítí a vaší webovou aplikací, je koncový bod služby nejjednodušší řešení. Pokud budete také potřebovat připojit se k webové aplikaci z místního prostředí prostřednictvím brány Azure, místní sítě s partnerským vztahem nebo globálně připojenou virtuální sítí, jedná se o řešení privátního koncového bodu.  
+Pokud potřebujete zabezpečené připojení mezi vaší virtuální sítí a vaší webovou aplikací, je koncový bod služby nejjednodušší řešení. Pokud budete také potřebovat připojit se k webové aplikaci z místního prostředí prostřednictvím brány Azure, místní sítě s partnerským vztahem nebo globálně připojenou sítí, soukromý koncový bod je řešením.  
 
 Další informace najdete v tématu [koncové body služby][serviceendpoint].
 
@@ -63,13 +63,21 @@ V protokolech HTTP webové aplikace se nachází zdrojová IP adresa klienta. To
 ## <a name="dns"></a>DNS
 
 Vzhledem k tomu, že tato funkce je ve verzi Preview, nezměníme položku DNS během verze Preview. Je potřeba spravovat položku DNS na privátním serveru DNS nebo Azure DNS privátní zóny sami.
-Pokud potřebujete použít vlastní název DNS, musíte do své webové aplikace přidat vlastní název. Ve verzi Preview se vlastní název musí ověřit jako libovolný vlastní název, a to pomocí veřejného překladu názvů DNS. Další informace najdete v tématu [vlastní ověření DNS][dnsvalidation] .
+Pokud potřebujete použít vlastní název DNS, musíte do své webové aplikace přidat vlastní název. Ve verzi Preview se vlastní název musí ověřit jako libovolný vlastní název, a to pomocí veřejného překladu názvů DNS. Další informace najdete v tématu [vlastní ověření DNS][dnsvalidation].
+
+Pokud potřebujete použít konzolu Kudu nebo Kudu REST API (například nasazení s agenty pro samoobslužné hostování Azure DevOps), musíte vytvořit dva záznamy v privátní zóně Azure DNS nebo ve vlastním serveru DNS. 
+- PrivateEndpointIP yourwebappname.azurewebsites.net 
+- PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
 
 ## <a name="pricing"></a>Ceny
 
 Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure][pricing].
 
 ## <a name="limitations"></a>Omezení
+
+Když použijete funkci Azure v plánu elastické Premium s privátním koncovým bodem, spustíte nebo spustíte funkci na webovém portálu Azure, musíte mít přímý přístup k síti nebo se zobrazí chyba HTTP 403. Jinými slovy, váš prohlížeč musí být schopný spojit se s privátním koncovým bodem a spustit funkci z webového portálu Azure. 
+
+V rámci verze Preview je přístup k podnikovému slotu vystavený za soukromým koncovým bodem. další sloty jsou dosažitelné jenom pomocí veřejného koncového bodu.
 
 Pravidelně vylepšujeme funkci privátního propojení a soukromý koncový bod. Další informace o omezeních najdete v [tomto článku][pllimitations] .
 

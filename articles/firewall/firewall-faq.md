@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb065f10664f46578f84e59501d75d510ccb3c6a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383072"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201583"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -129,7 +129,7 @@ Azure Firewall nesnat, pokud je cílová IP adresa rozsahem privátních IP adre
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Je podporováno vynucené tunelové propojení/řetězení k síťovému virtuálnímu zařízení?
 
-Je podporováno vynucené tunelové propojení. Další informace najdete v tématu [Azure firewall vynucené tunelování (Preview)](forced-tunneling.md). 
+Je podporováno vynucené tunelové propojení. Další informace najdete v tématu [Azure firewall vynucené tunelování](forced-tunneling.md). 
 
 Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu.
 

@@ -4,19 +4,19 @@ description: Příklad kódu C# s vysvětlením pro připojení k Azure SQL Data
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: active directory
+ms.custom: active directory, has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi, vanto
 ms.date: 10/11/2019
-ms.openlocfilehash: 5e7d58e5e0fc79e407e77ae9d73314a1d5d22666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc597881d15dbd534b36109fc653ffbc671f1f4d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73692300"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197086"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Připojení k Azure SQL Database s využitím Azure Multi-Factor Authentication
 
@@ -26,7 +26,7 @@ Další informace o podpoře Multi-Factor Authentication nástrojů SQL najdete 
 
 ## <a name="multi-factor-authentication-for-azure-sql-database"></a>Multi-Factor Authentication pro Azure SQL Database
 
-Počínaje .NET Framework verze 4.7.2 má výčet [`SqlAuthenticationMethod`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) novou hodnotu:. `ActiveDirectoryInteractive` V klientském programu v jazyce C# hodnota výčtu přesměruje systém na použití interaktivního režimu Azure Active Directory (Azure AD), který podporuje Multi-Factor Authentication pro připojení ke službě Azure SQL Database. Uživatel, který spouští program, uvidí následující dialogová okna:
+Počínaje .NET Framework verze 4.7.2 [`SqlAuthenticationMethod`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) má výčet novou hodnotu: `ActiveDirectoryInteractive` . V klientském programu v jazyce C# hodnota výčtu přesměruje systém na použití interaktivního režimu Azure Active Directory (Azure AD), který podporuje Multi-Factor Authentication pro připojení ke službě Azure SQL Database. Uživatel, který spouští program, uvidí následující dialogová okna:
 
 * Dialogové okno, ve kterém se zobrazuje uživatelské jméno Azure AD a požádá o zadání hesla uživatele.
 
@@ -45,7 +45,7 @@ Snímky obrazovky těchto dialogových oken najdete v tématu [Konfigurace služ
 > [!TIP]
 > .NET Framework rozhraní API můžete vyhledat pomocí [stránky nástroje prohlížeče rozhraní .NET API](https://docs.microsoft.com/dotnet/api/).
 >
-> Můžete také hledat přímo s [parametrem volitelného termínu&lt;= hodnota&gt; vyhledávání](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod).
+> Můžete také hledat přímo s [ &lt; &gt; parametrem volitelného termínu = hodnota vyhledávání](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod).
 
 ## <a name="configure-your-c-application-in-the-azure-portal"></a>Konfigurace aplikace v jazyce C# v Azure Portal
 
@@ -59,7 +59,7 @@ Dokončení registrace aplikace vygeneruje a zobrazí **ID aplikace**. Váš pro
 
 Registrace a nastavení potřebných oprávnění pro vaši aplikaci:
 
-1. V Azure Portal vyberte **Azure Active Directory** > **Registrace aplikací** > **nové registrace**.
+1. V Azure Portal vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **nové registrace**.
 
     ![Registrace aplikací](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
@@ -67,7 +67,7 @@ Registrace a nastavení potřebných oprávnění pro vaši aplikaci:
 
     ![ID aplikace zobrazené](media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
-2.  > Vyberte **oprávnění rozhraní API****Přidat oprávnění**.
+2. Vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**.
 
     ![Nastavení oprávnění pro registrovanou aplikaci](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
@@ -75,7 +75,7 @@ Registrace a nastavení potřebných oprávnění pro vaši aplikaci:
 
     ![Přidání přístupu k rozhraní API pro Azure SQL Database](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-4. Vyberte **delegovaná oprávnění** > **user_impersonation** > **Přidat oprávnění**.
+4. Vyberte **delegovaná oprávnění**  >  **user_impersonation**  >  **Přidat oprávnění**.
 
     ![Delegovat oprávnění k rozhraní API pro Azure SQL Database](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
@@ -83,7 +83,7 @@ Registrace a nastavení potřebných oprávnění pro vaši aplikaci:
 
 Pro spuštění programu v jazyce C# potřebuje správce Azure SQL serveru, aby pro váš SQL Database Server přiřadil správce Azure AD. 
 
-Na stránce **SQL Server** vyberte >  **Správce služby Active Directory****nastavit správce**.
+Na stránce **SQL Server** vyberte **Správce služby Active Directory**  >  **nastavit správce**.
 
 Další informace o správcích a uživatelích Azure AD pro Azure SQL Database najdete v tématu snímky obrazovky v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL Database](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
 
@@ -91,13 +91,13 @@ Další informace o správcích a uživatelích Azure AD pro Azure SQL Database 
 
 Správce Azure AD pro SQL Database Server může spustit ukázkový program v jazyce C#. Uživatel Azure AD může program spustit, pokud se nachází v databázi. Správce Azure AD SQL nebo uživatel Azure AD, který již v databázi existuje a má `ALTER ANY USER` oprávnění k databázi může přidat uživatele.
 
-Do databáze nástroje můžete přidat uživatele pomocí příkazu SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) . Příklad: `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
+Do databáze nástroje můžete přidat uživatele pomocí [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) příkazu SQL. Příklad: `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
 
 Další informace najdete v tématu [použití Azure Active Directory ověřování pro ověřování pomocí SQL Database, spravované instance nebo SQL Data Warehouse](sql-database-aad-authentication.md).
 
 ## <a name="new-authentication-enum-value"></a>Nová hodnota výčtu ověřování
 
-Příklad jazyka C# spoléhá na [`System.Data.SqlClient`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) obor názvů. Zvláštní zájem pro Multi-Factor Authentication je výčet `SqlAuthenticationMethod`, který má následující hodnoty:
+Příklad jazyka C# spoléhá na [`System.Data.SqlClient`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) obor názvů. Zvláštní zájem pro Multi-Factor Authentication je výčet `SqlAuthenticationMethod` , který má následující hodnoty:
 
 - `SqlAuthenticationMethod.ActiveDirectoryInteractive`
 
@@ -117,11 +117,11 @@ Aby bylo možné program v jazyce C# úspěšně spustit, je třeba přiřadit k
 
 | Statický název pole | Příklad hodnoty | Místo v Azure Portal |
 | :---------------- | :------------ | :-------------------- |
-| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **SQL Server** > **Filter podle názvu** |
-| AzureAD_UserID | "auser\@ABC.onmicrosoft.com" | **Uživatel Azure Active Directory** > **nového uživatele typu Host** **User** >  |
-| Initial_DatabaseName | "myDatabase" | **SQL Server** > –**databáze SQL** |
-| ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Azure Active Directory** > **App registrations**registrace aplikací > **Hledat podle názvu** > **ID aplikace** |
-| RedirectUri | nový identifikátor URI (https://mywebserver.com/"") | **Azure Active Directory** > **Registrace aplikací** > **RedirectURIs**  > **Settings****Search by name** > *[Your-App-registration]* Hledat podle názvu [Nastavení registrace vaší aplikace] RedirectURIs > <br /><br />Pro tento článek je libovolná platná hodnota pro RedirectUri, protože se tady nepoužívá. |
+| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **SQL servery**  >  **Filtrovat podle názvu** |
+| AzureAD_UserID | "auser \@ ABC.onmicrosoft.com" | **Azure Active Directory**  >  **Uživatel**  >  **Nový uživatel typu Host** |
+| Initial_DatabaseName | "myDatabase" | **SQL servery**  >  **Databáze SQL** |
+| ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Azure Active Directory**  >  **Registrace aplikací**  >  **Hledat podle názvu**  >  **ID aplikace** |
+| RedirectUri | nový identifikátor URI (" https://mywebserver.com/ ") | **Azure Active Directory**  >  **Registrace aplikací**  >  **Hledat podle názvu**  >  *[Registrace vaší aplikace]*  >  **Nastavení**  >  **RedirectURIs**<br /><br />Pro tento článek je libovolná platná hodnota pro RedirectUri, protože se tady nepoužívá. |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="verify-with-sql-server-management-studio"></a>Ověřit pomocí SQL Server Management Studio
@@ -139,13 +139,13 @@ Spusťte znovu SSMS, tentokrát s **ověřováním** nastaveným na **Active Dir
 Další informace najdete v tématu [konfigurace Multi-Factor Authentication pro SSMS a Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 
 > [!NOTE]
-> Pokud jste uživatelem typu Host v databázi, musíte zadat také název domény služby Azure AD pro databázi: vyberte **Možnosti** > **název domény služby AD nebo ID tenanta**. Chcete-li najít název domény v Azure Portal, vyberte možnost **Azure Active Directory** > **názvy vlastních domén**. V ukázkovém programu v jazyce C# není nutné zadat název domény.
+> Pokud jste uživatelem typu Host v databázi, musíte zadat také název domény služby Azure AD pro databázi: vyberte **Možnosti**  >  **název domény služby AD nebo ID tenanta**. Chcete-li najít název domény v Azure Portal, vyberte možnost **Azure Active Directory**  >  **názvy vlastních domén**. V ukázkovém programu v jazyce C# není nutné zadat název domény.
 
 ## <a name="c-code-example"></a>Příklad kódu C#
 
 Vzorový program v jazyce C# spoléhá na sestavení knihovny DLL [*Microsoft. IdentityModel. clients. Active Directory*](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory) .
 
-Chcete-li nainstalovat tento balíček, v aplikaci Visual Studio vyberte možnost **projekt** > **Spravovat balíčky NuGet**. Vyhledejte a nainstalujte **Microsoft. IdentityModel. clients. Active**.
+Chcete-li nainstalovat tento balíček, v aplikaci Visual Studio vyberte možnost **projekt**  >  **Spravovat balíčky NuGet**. Vyhledejte a nainstalujte **Microsoft. IdentityModel. clients. Active**.
 
 Toto je příklad zdrojového kódu jazyka C#.
 

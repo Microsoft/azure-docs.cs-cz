@@ -11,17 +11,17 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 444cb2c8378ad873beb61116c5c4387ad3c59761
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416036"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200341"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Připojení ke službě Azure synapse Analytics pomocí sady Visual Studio a SSDT
 > [!div class="op_single_selector"]
+> * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
@@ -39,7 +39,7 @@ Chcete-li použít tento kurz, potřebujete:
 
 ## <a name="1-connect-to-your-sql-pool"></a>1. připojení k vašemu fondu SQL
 1. Otevřete Visual Studio 2019.
-2. Otevřete Průzkumník objektů systému SQL Server výběrem možnosti **Zobrazit** > **Průzkumník objektů systému SQL Server**.
+2. Otevřete Průzkumník objektů systému SQL Server výběrem možnosti **Zobrazit**  >  **Průzkumník objektů systému SQL Server**.
    
     ![Průzkumník objektů systému SQL Server](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. Klikněte na ikonu **Přidat SQL Server**.
@@ -69,7 +69,7 @@ Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Spusťte dotaz kliknutím na zelenou šipku nebo použijte následující klávesovou zkratku `CTRL` + `SHIFT` + `E`:.
+4. Spusťte dotaz kliknutím na zelenou šipku nebo použijte následující klávesovou zkratku: `CTRL` + `SHIFT` + `E` .
    
     ![Spuštění dotazu](./media/sql-data-warehouse-query-visual-studio/run-query.png)
 5. Podívejte se na výsledky dotazu. V tomto příkladě má tabulka FactInternetSales 60 398 řádků.

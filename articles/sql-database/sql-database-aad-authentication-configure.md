@@ -4,19 +4,19 @@ description: Přečtěte si, jak se připojit k SQL Database, spravované instan
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: azure-synapse
+ms.custom: azure-synapse, has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: 0e244ea185011bbb7d9f0facad399bb9b577bbc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60a1b0deda75c1fc30a9e3b8255106d2809856ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80419846"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198599"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa ověřování Azure Active Directory pomocí SQL
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak vytvořit a naplnit Azure AD a potom použít 
 > Tento článek se týká Azure SQL serveru a SQL Database i Azure synapse. Pro zjednodušení se SQL Database používá při odkazování na SQL Database a Azure synapse.
 
 > [!IMPORTANT]  
-> Připojení k SQL Server běžícímu na virtuálním počítači Azure se pomocí účtu Azure Active Directory nepodporuje. Místo toho použijte účet domény služby Active Directory.
+> Připojení k SQL Server běžícímu na virtuálním počítači Azure se pomocí účtu Azure Active Directory nepodporuje. Použijte místo toho doménový účet Active Directory.
 
 ## <a name="azure-ad-authentication-methods"></a>Metody ověřování Azure AD
 
@@ -187,8 +187,8 @@ Jako osvědčený postup pro stávající správce Azure AD pro MI vytvořil př
 
 ### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>Známé problémy s přihlašováním Azure AD GA pro MI
 
-- Pokud v hlavní databázi pro MI existuje přihlášení Azure AD, které se vytvořilo pomocí příkazu `CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER`T-SQL, nejde ho nastavit jako správce Azure AD pro mi. Při nastavování přihlašovacích údajů jako správce Azure AD dojde k chybě pomocí příkazů Azure Portal, PowerShellu nebo rozhraní příkazového řádku pro vytvoření přihlášení k Azure AD.
-  - Přihlášení musí být v hlavní databázi vyřazeno pomocí příkazu `DROP LOGIN [myaadaccount]`, aby bylo možné účet vytvořit jako správce Azure AD.
+- Pokud v hlavní databázi pro MI existuje přihlášení Azure AD, které se vytvořilo pomocí příkazu T-SQL `CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER` , nejde ho nastavit jako správce Azure AD pro mi. Při nastavování přihlašovacích údajů jako správce Azure AD dojde k chybě pomocí příkazů Azure Portal, PowerShellu nebo rozhraní příkazového řádku pro vytvoření přihlášení k Azure AD.
+  - Přihlášení musí být v hlavní databázi vyřazeno pomocí příkazu `DROP LOGIN [myaadaccount]` , aby bylo možné účet vytvořit jako správce Azure AD.
   - Nastavte účet správce Azure AD v Azure Portal po `DROP LOGIN` úspěšném dokončení. 
   - Pokud nemůžete nastavit účet správce Azure AD, vraťte se do hlavní databáze spravované instance pro přihlášení. Použijte následující příkaz:`SELECT * FROM sys.server_principals`
   - Nastavením správce Azure AD pro MI bude pro tento účet automaticky vytvářet přihlašovací údaje v hlavní databázi. Odebrání správce Azure AD automaticky vynechá přihlašovací údaje z hlavní databáze.
@@ -198,7 +198,7 @@ Jako osvědčený postup pro stávající správce Azure AD pro MI vytvořil př
 
 ### <a name="powershell-for-sql-managed-instance"></a>PowerShell pro spravovanou instanci SQL
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Pokud chcete spustit rutiny PowerShellu, musíte mít Azure PowerShell nainstalovanou a spuštěnou. Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
@@ -294,7 +294,7 @@ Chcete-li později odebrat správce, v horní části stránky **Správce služb
 
 ### <a name="powershell-for-azure-sql-database-and-azure-synapse"></a>PowerShell pro Azure SQL Database a Azure synapse
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Pokud chcete spustit rutiny PowerShellu, musíte mít Azure PowerShell nainstalovanou a spuštěnou. Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). Pokud chcete zřídit správce Azure AD, spusťte následující příkazy Azure PowerShell:
 
@@ -311,16 +311,16 @@ Rutiny používané ke zřízení a správě správce Azure AD pro Azure SQL Dat
 
 K zobrazení dalších informací pro každý z těchto příkazů použijte příkaz PowerShellu Get-Help. Například, `get-help Set-AzSqlServerActiveDirectoryAdministrator`.
 
-Následující skript zřídí skupinu správců Azure AD s názvem **DBA_Group** (ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`objektu) pro server **demo_server** ve skupině prostředků s názvem **Skupina-23**:
+Následující skript zřídí skupinu správců Azure AD s názvem **DBA_Group** (ID objektu `40b79501-b343-44ed-9ce7-da4c8cc7353f` ) pro server **demo_server** ve skupině prostředků s názvem **Skupina-23**:
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
-Vstupní parametr **DisplayName** přijímá buď zobrazované jméno Azure AD, nebo hlavní název uživatele. Například ``DisplayName="John Smith"`` a ``DisplayName="johns@contoso.com"``. Pro skupiny Azure AD se podporuje jenom zobrazované jméno Azure AD.
+Vstupní parametr **DisplayName** přijímá buď zobrazované jméno Azure AD, nebo hlavní název uživatele. Například ``DisplayName="John Smith"`` a ``DisplayName="johns@contoso.com"`` . Pro skupiny Azure AD se podporuje jenom zobrazované jméno Azure AD.
 
 > [!NOTE]
-> Příkaz ```Set-AzSqlServerActiveDirectoryAdministrator``` Azure PowerShell nebrání zřizování správců Azure AD pro nepodporované uživatele. Můžete zřídit nepodporovaného uživatele, ale nemůžete se připojit k databázi.
+> Příkaz Azure PowerShell ```Set-AzSqlServerActiveDirectoryAdministrator``` nebrání zřizování správců Azure AD pro nepodporované uživatele. Můžete zřídit nepodporovaného uživatele, ale nemůžete se připojit k databázi.
 
 Následující příklad používá volitelné **objectID**:
 
@@ -366,7 +366,7 @@ Další informace o příkazech rozhraní příkazového řádku najdete v téma
 
 Na všech klientských počítačích, ze kterých se vaše aplikace nebo uživatelé připojují k Azure SQL Database nebo Azure synapse pomocí identit Azure AD, musíte nainstalovat následující software:
 
-- .NET Framework 4,6 nebo novější z [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).
+- .NET Framework 4,6 nebo novější z [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) .
 - Knihovna ověřování Azure Active Directory pro SQL Server (*ADAL. DLL*). Níže jsou uvedené odkazy ke stažení pro instalaci nejnovějšího ovladače SSMS, ODBC a OLE DB, který obsahuje *ADAL. Knihovna DLL* .
     1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
     1. [ODBC Driver 17 pro SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
@@ -390,7 +390,7 @@ Ověřování Azure Active Directory vyžaduje, aby uživatelé databáze byli v
 > Uživatele databáze (s výjimkou správců) nelze vytvořit pomocí Azure Portal. Role RBAC se nešíří do SQL Server, SQL Database nebo synapse Azure. Role Azure RBAC se používají ke správě prostředků Azure a nevztahují se na oprávnění databáze. Například role **přispěvatel SQL Server** neuděluje přístup pro připojení k SQL Database nebo Azure synapse. Přístupové oprávnění musí být uděleno přímo v databázi pomocí příkazů jazyka Transact-SQL.
 
 > [!WARNING]
-> Speciální znaky jako dvojtečka `:` nebo `&` ampersand, pokud jsou zahrnuty jako uživatelská jména v PŘÍKAZECH T-SQL CREATE LOGIN a Create User nejsou podporovány.
+> Speciální znaky jako dvojtečka `:` nebo ampersand, `&` Pokud jsou zahrnuty jako uživatelská jména v příkazech T-SQL CREATE LOGIN a Create User nejsou podporovány.
 
 Pokud chcete vytvořit uživatele databáze s omezením založené na službě Azure AD (jiný než správce serveru, který je vlastníkem databáze), připojte se k databázi pomocí identity Azure AD jako uživatel, který má aspoň oprávnění ke **změně libovolného uživatele** . Pak použijte následující syntaxi jazyka Transact-SQL:
 
@@ -471,7 +471,7 @@ Tuto metodu použijte k ověření pro SQL DB nebo MI s uživateli identity jeno
 
 1. Spusťte Management Studio nebo datové nástroje a v dialogovém okně **připojit k serveru** (nebo **se připojte k databázovému stroji**) v poli **ověřování** vyberte možnost **Azure Active Directory-heslo**.
 
-2. Do pole **uživatelské jméno** zadejte Azure Active Directory uživatelské jméno ve formátu **uživatelské\@jméno Domain.com**. Uživatelské jméno musí být účet z Azure Active Directory nebo účet ze spravované nebo federované domény s Azure Active Directory.
+2. Do pole **uživatelské jméno** zadejte Azure Active Directory uživatelské jméno ve formátu **uživatelské jméno \@ Domain.com**. Uživatelské jméno musí být účet z Azure Active Directory nebo účet ze spravované nebo federované domény s Azure Active Directory.
 
 3. Do pole **heslo** zadejte heslo uživatele pro účet Azure Active Directory nebo účet spravovaného nebo federovaného doménového účtu.
 
@@ -498,7 +498,7 @@ Pokud chcete použít integrované ověřování systému Windows, musí být sl
 
 Klientská aplikace (nebo služba), která se připojuje k databázi, musí být spuštěná na počítači připojeném k doméně v rámci pověření domény uživatele.
 
-Pokud se chcete připojit k databázi pomocí integrovaného ověřování a identity Azure AD, musí být klíčové slovo ověřování v připojovacím řetězci databáze nastavené na `Active Directory Integrated`. Následující ukázka kódu jazyka C# používá rozhraní ADO .NET.
+Pokud se chcete připojit k databázi pomocí integrovaného ověřování a identity Azure AD, musí být klíčové slovo ověřování v připojovacím řetězci databáze nastavené na `Active Directory Integrated` . Následující ukázka kódu jazyka C# používá rozhraní ADO .NET.
 
 ```csharp
 string ConnectionString = @"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Integrated; Initial Catalog=testdb;";
@@ -506,11 +506,11 @@ SqlConnection conn = new SqlConnection(ConnectionString);
 conn.Open();
 ```
 
-Klíčové slovo `Integrated Security=True` připojovacího řetězce není podporováno pro připojení k Azure SQL Database. Při vytváření připojení rozhraní ODBC budete muset odebrat mezery a nastavit ověřování na ' ActiveDirectoryIntegrated '.
+Klíčové slovo připojovacího řetězce `Integrated Security=True` není podporováno pro připojení k Azure SQL Database. Při vytváření připojení rozhraní ODBC budete muset odebrat mezery a nastavit ověřování na ' ActiveDirectoryIntegrated '.
 
 ### <a name="active-directory-password-authentication"></a>Ověřování hesla služby Active Directory
 
-Pokud se chcete připojit k databázi pomocí uživatelských účtů identit jenom cloudu Azure AD nebo těch, kteří používají hybridní identity Azure AD, musí být klíčové slovo ověřování nastavené na `Active Directory Password`. Připojovací řetězec musí obsahovat klíčová slova ID uživatele/UID a heslo/heslo a hodnoty. Následující ukázka kódu jazyka C# používá rozhraní ADO .NET.
+Pokud se chcete připojit k databázi pomocí uživatelských účtů identit jenom cloudu Azure AD nebo těch, kteří používají hybridní identity Azure AD, musí být klíčové slovo ověřování nastavené na `Active Directory Password` . Připojovací řetězec musí obsahovat klíčová slova ID uživatele/UID a heslo/heslo a hodnoty. Následující ukázka kódu jazyka C# používá rozhraní ADO .NET.
 
 ```csharp
 string ConnectionString =

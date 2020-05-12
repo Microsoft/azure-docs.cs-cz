@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/27/2020
+ms.date: 05/11/2020
 ms.author: apimpm
-ms.openlocfilehash: cf65cd757655b496ceb87fa1ff8121ac6209d869
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 93f66f3c030b9845b58083a992e1e1f11aa37f9c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203195"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196985"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Použití služby Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -108,7 +108,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
 <a name="required-ports"> </a> Když je instance služby API Management hostovaná ve virtuální síti, použijí se porty v následující tabulce.
 
-| Zdrojový nebo cílový port (y) | Směr          | Transportní protokol |   [Značky služeb](../virtual-network/security-overview.md#service-tags) <br> Zdroj/cíl   | Účel (\*)                                                 | Typ Virtual Network |
+| Zdrojový nebo cílový port (y) | Směr          | Transportní protokol |   [Značky služeb](../virtual-network/security-overview.md#service-tags) <br> Zdroj/cíl   | Účel ( \* )                                                 | Typ Virtual Network |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | */[80], 443                  | Příchozí            | TCP                | INTERNET/VIRTUAL_NETWORK            | Komunikace klienta s API Management                      | Externí             |
 | */3443                     | Příchozí            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Koncový bod správy pro Azure Portal a PowerShell         | Externí & interní  |
@@ -136,22 +136,22 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 
     | Prostředí Azure | Koncové body                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Veřejný partnerský vztah Azure      | <ul><li>gcs.prod.monitoring.core.windows.net (**nové**)</li><li>prod.warmpath.msftcloudes.com (**bude zastaralé**)</li><li>shoebox2.metrics.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3-black.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-red.prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3-red.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com kde `East US 2` je eastus2.Warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Veřejný partnerský vztah Azure      | <ul><li>gcs.prod.monitoring.core.windows.net (**nové**)</li><li>prod.warmpath.msftcloudes.com (**bude zastaralé**)</li><li>shoebox2.metrics.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.metrics.microsoftmetrics.com (**nové**)</li><li>prod3-black.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-red.prod.metrics.microsoftmetrics.com (**nové**)</li><li>prod3-red.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3.metrics.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > Změna clusterů výše se zónou DNS **. nsatc.NET** na **. Microsoftmetrics.com** je většinou změnou DNS. IP adresa clusteru se nezmění.
 
 + **Značky regionální služby**: NSG pravidla umožňující odchozí připojení k úložištím, SQL a klíčovým službám Event Hubs můžou používat regionální verze těchto značek odpovídající oblasti, která obsahuje instanci API Management (například Storage. WestUS pro instanci API Management v západní USA oblasti). V nasazeních ve více oblastech by NSG v každé oblasti měl umožňovat provoz do značek služeb pro tuto oblast a primární oblast.
 
-+ **Předávání SMTP**: odchozí připojení k síti pro přenos SMTP, které se řeší v rámci `smtpi-co1.msn.com`hostitele `smtpi-ch1.msn.com`, `smtpi-db3.msn.com`, `smtpi-sin.msn.com` a`ies.global.microsoft.com`
++ **Předávání SMTP**: odchozí připojení k síti pro přenos SMTP, které se řeší v rámci hostitele `smtpi-co1.msn.com` ,, `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` a`ies.global.microsoft.com`
 
-+ **Portál pro vývojáře CAPTCHA**: odchozí připojení k síti pro CAPTCHA portálu pro vývojáře, které se řeší v `client.hip.live.com` rámci `partner.hip.live.com`hostitelů a.
++ **Portál pro vývojáře CAPTCHA**: odchozí připojení k síti pro CAPTCHA portálu pro vývojáře, které se řeší v rámci hostitelů `client.hip.live.com` a `partner.hip.live.com` .
 
-+ **Diagnostika Azure Portal**: Chcete-li povolit tok diagnostických protokolů z Azure Portal při použití rozšíření API Management v rámci Virtual Network, je vyžadován odchozí přístup `dc.services.visualstudio.com` k portu 443. To pomáhá při řešení problémů, se kterými se můžete setkat při používání rozšíření.
++ **Diagnostika Azure Portal**: Chcete-li povolit tok diagnostických protokolů z Azure Portal při použití rozšíření API Management v rámci Virtual Network, je vyžadován odchozí přístup k `dc.services.visualstudio.com` portu 443. To pomáhá při řešení problémů, se kterými se můžete setkat při používání rozšíření.
 
-+ **Azure Load Balancer**: povolení příchozího požadavku ze značky `AZURE_LOAD_BALANCER` služby není požadavkem na `Developer` skladovou položku, protože pro ni nasazujeme jenom jednu jednotku Compute. Příchozí z [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) se ale bude velmi důležitý při škálování na větší `Premium`skladovou položku, jako v případě selhání sondy stavu od Load Balancer, selže nasazení.
++ **Azure Load Balancer**: povolení příchozího požadavku ze značky služby není `AZURE_LOAD_BALANCER` požadavkem na `Developer` skladovou položku, protože pro ni nasazujeme jenom jednu jednotku Compute. Příchozí z [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) se ale bude velmi důležitý při škálování na větší skladovou položku `Premium` , jako v případě selhání sondy stavu od Load Balancer, selže nasazení.
 
 + **Vynucení tunelového přenosu do místní brány firewall pomocí expresního nebo síťového virtuálního zařízení**: běžným zákaznickým nastavením je definování vlastní výchozí trasy (0.0.0.0/0), která vynucuje veškerý provoz z API Management delegované podsítě pro přenos prostřednictvím místní brány firewall nebo síťového virtuálního zařízení. Tento tok přenosů invariably přerušení připojení k Azure API Management, protože odchozí přenosy jsou buď blokované místně, nebo překlad adres (NAT) na nerozpoznatelnou sadu adres, které už nefungují s různými koncovými body Azure. Řešení vyžaduje, abyste provedete několik věcí:
 
@@ -203,7 +203,7 @@ Každá další jednotka API Management škálování vyžaduje dvě další IP 
 
 IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa příchozích požadavků označená s **globálním** umístěním, musí být na seznamu povolená i IP adresa specifická pro **oblast** .
 
-| **Prostředí Azure**|   **Oblast**|  **IP adresa**|
+| **Prostředí Azure**|   **Věřitel**|  **IP adresa**|
 |-----------------|-------------------------|---------------|
 | Veřejný partnerský vztah Azure| Střed USA – jih (globální)| 104.214.19.224|
 | Veřejný partnerský vztah Azure| Střed USA – sever (globální)| 52.162.110.80|

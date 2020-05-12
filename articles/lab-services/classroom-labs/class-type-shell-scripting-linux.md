@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1199bca9e2ab7c85ccf5c90879fe5141a55a7bb5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443546"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115060"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Nastavení testovacího prostředí pro učení skriptování prostředí v systému Linux
 V tomto článku se dozvíte, jak nastavit testovací prostředí pro učení skriptování prostředí v systému Linux. Skriptování je užitečnou součástí správy systému, která správcům umožňuje vyhnout se opakovaným úlohám. V tomto ukázkovém scénáři třída pokrývá tradiční skripty bash a rozšířené skripty. Rozšířené skripty jsou skripty, které kombinují příkazy bash a Ruby. Tento přístup umožňuje Ruby předávat data kolem a bash příkazů pro interakci s prostředím. 
@@ -32,22 +32,22 @@ Po vytvoření účtu testovacího prostředí povolte v účtu testovacího pro
 
 | Nastavení účtu testovacího prostředí | Pokyny |
 | ----------- | ------------ |  
-| Image Marketplace | Povolte image [Ubuntu serveru 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) pro použití v rámci vašeho účtu testovacího prostředí. Další informace najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](specify-marketplace-images.md). | 
+| Image Marketplace | Povolte image Ubuntu serveru 18,04 LTS pro použití v rámci vašeho účtu testovacího prostředí. Další informace najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](specify-marketplace-images.md). | 
 
 Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací prostředí a použijte následující nastavení:
 
 | Nastavení testovacího prostředí | Hodnota/pokyny | 
 | ------------ | ------------------ |
 | Velikost virtuálního počítače (VM) | Krátkodobé používání  |
-| Image virtuálního počítače | [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
+| Image virtuálního počítače | Ubuntu Server 18,04 LTS |
 | Povolit připojení ke vzdálené ploše | Aby. <p>Povolením tohoto nastavení umožníte učitelům a studentům připojit se ke svým virtuálním počítačům pomocí vzdálené plochy (RDP). Další informace najdete v tématu [Povolení služby Vzdálená plocha pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>Instalace desktopu a xrdp
-V imagi [LTS serveru Ubuntu server 18,04](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) není ve výchozím nastavení nainstalován server vzdálené plochy. Postupujte podle pokynů v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](../../virtual-machines/linux/use-remote-desktop.md) a nainstalujte balíčky, které jsou potřeba na počítači šablony pro připojení přes protokol vzdálené plochy.
+V imagi LTS serveru Ubuntu Server 18,04 není ve výchozím nastavení nainstalován server vzdálené plochy. Postupujte podle pokynů v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](../../virtual-machines/linux/use-remote-desktop.md) a nainstalujte balíčky, které jsou potřeba na počítači šablony pro připojení přes protokol vzdálené plochy.
 
 ## <a name="install-ruby"></a>Instalace Ruby
-Ruby je open source dynamický jazyk, který se dá kombinovat s bash skripty. V této části se dozvíte `apt-get` , jak použít k instalaci nejnovější verze [Ruby](https://www.ruby-lang.org/).
+Ruby je open source dynamický jazyk, který se dá kombinovat s bash skripty. V této části se dozvíte, jak použít `apt-get` k instalaci nejnovější verze [Ruby](https://www.ruby-lang.org/).
 
 1. Nainstalujte aktualizace spuštěním následujících příkazů:
 

@@ -5,15 +5,18 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/05/2019
-ms.openlocfilehash: 4740034bd970f42833125fa43bfdf72f710ac147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 83c33e6935de7c9ed9f1b2c9f97aa18dd6b10f01
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249604"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199906"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Provádění dotazů protokolu pro více prostředků v Azure Monitor  
+
+> [!IMPORTANT]
+> Pokud používáte telemetrii [prostředků Application Insights na základě pracovního prostoru](../app/create-workspace-resource.md) , je uložena v pracovním prostoru Log Analytics se všemi ostatními daty protokolů. Použijte výraz log () k zápisu dotazu, který obsahuje aplikaci ve více pracovních prostorech. Pro více aplikací ve stejném pracovním prostoru nepotřebujete dotaz mezi jednotlivými pracovními prostory.
 
 Dřív s Azure Monitor mohli analyzovat data jenom z aktuálního pracovního prostoru a omezili jsme možnost dotazování napříč několika pracovními prostory definovanými v rámci vašeho předplatného.  Kromě toho můžete hledat pouze položky telemetrie shromážděné z vaší webové aplikace pomocí Application Insights přímo v Application Insights nebo ze sady Visual Studio. Tím se také provedla výzva k nativně analýze provozu a dat aplikací dohromady.
 
@@ -103,7 +106,7 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Použití dotazu mezi prostředky pro více prostředků
 Při použití dotazů mezi prostředky ke korelaci dat z více Log Analyticsch pracovních prostorů a Application Insights prostředků může být dotaz složitý a obtížný. [Funkce v Azure Monitorch dotazech protokolu](functions.md) byste měli využít k oddělení logiky dotazů z oboru prostředků dotazů, což zjednodušuje strukturu dotazu. Následující příklad ukazuje, jak můžete monitorovat více prostředků Application Insights a vizualizovat počet neúspěšných žádostí podle názvu aplikace. 
 
-Vytvořte dotaz podobný následujícímu, který odkazuje na rozsah Application Insightsch prostředků. `withsource= SourceApp` Příkaz přidá sloupec, který určuje název aplikace, která protokol odeslala. [Uložte dotaz jako funkci](functions.md#create-a-function) s aliasem _applicationsScoping_.
+Vytvořte dotaz podobný následujícímu, který odkazuje na rozsah Application Insightsch prostředků. `withsource= SourceApp`Příkaz přidá sloupec, který určuje název aplikace, která protokol odeslala. [Uložte dotaz jako funkci](functions.md#create-a-function) s aliasem _applicationsScoping_.
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
