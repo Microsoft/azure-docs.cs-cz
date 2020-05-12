@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e80d1a05765d224dc4682c6f64faccc8c81f8ebd
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767976"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007480"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ Tato část popisuje problémy a omezení s použitím rozhraní API objektů BL
 
 * Rozhraní API objektů BLOB a rozhraní Data Lake Storage API nelze použít k zápisu do stejné instance souboru. Pokud zapisujete do souboru pomocí Data Lake Storage Gen2 rozhraní API, pak bloky tohoto souboru nebudou viditelné pro volání rozhraní API objektů BLOB [Get Block](https://docs.microsoft.com/rest/api/storageservices/get-block-list) . Soubor můžete přepsat buď pomocí rozhraní API Data Lake Storage Gen2 nebo rozhraní API objektů BLOB. To nebude mít vliv na vlastnosti souboru.
 
-* Když použijete operaci [listovat BLOBs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) bez zadání oddělovače, výsledky budou zahrnovat adresáře a objekty blob. Pokud se rozhodnete použít oddělovač, použijte pouze lomítko (`/`). Toto je jediný podporovaný oddělovač.
+* Když použijete operaci [listovat BLOBs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) bez zadání oddělovače, výsledky budou zahrnovat adresáře a objekty blob. Pokud se rozhodnete použít oddělovač, použijte pouze lomítko ( `/` ). Toto je jediný podporovaný oddělovač.
 
 * Použijete-li k odstranění adresáře rozhraní API pro [odstranění objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/delete-blob) , bude tento adresář odstraněn pouze v případě, že je prázdný. To znamená, že nemůžete rekurzivně odstraňovat adresáře pomocí rozhraní BLOB API.
 
@@ -70,12 +70,11 @@ Nespravované disky virtuálních počítačů nejsou podporované v účtech, k
 
 ## <a name="lifecycle-management-policies"></a>Zásady správy životního cyklu
 
-* Odstranění snímků objektů BLOB ještě není podporováno.  
+Odstranění snímků objektů BLOB ještě není podporováno. 
 
 ## <a name="archive-tier"></a>Úroveň archivu
 
 V tuto chvíli existuje chyba, která má vliv na úroveň přístupu archivu.
-
 
 ## <a name="blobfuse"></a>Blobfuse
 
@@ -91,7 +90,7 @@ Použijte pouze nejnovější verzi AzCopy ([AzCopy v10 za účelem](https://doc
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
-Používejte pouze verze `1.6.0` nebo vyšší.
+Používejte pouze verze  `1.6.0`   nebo vyšší.
 
 <a id="explorer-in-portal" />
 
@@ -108,6 +107,39 @@ Aplikace třetích stran, které používají rozhraní REST API k práci, budou
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Seznamy řízení přístupu (ACL) a anonymní přístup pro čtení
 
 Pokud byl kontejneru udělen [přístup anonymního přístupu pro čtení](storage-manage-access-to-resources.md) , nebudou mít seznamy ACL žádný vliv na tento kontejner nebo soubory v tomto kontejneru.
+
+## <a name="premium-performance-block-blob-storage-accounts"></a>Premium – účty úložiště objektů blob bloku
+
+### <a name="diagnostic-logs"></a>Diagnostické protokoly
+
+Diagnostické protokoly nelze zatím povolit pomocí Azure Portal. Můžete je povolit pomocí prostředí PowerShell. Příklad:
+
+```powershell
+#To login
+Connect-AzAccount
+
+#Set default block blob storage account.
+Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
+
+#Enable logging
+Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
+```
+
+### <a name="lifecycle-management-policies"></a>Zásady správy životního cyklu
+
+- Zásady správy životního cyklu zatím nejsou podporované v účtech úložiště blob bloku úrovně Premium. 
+
+- Data nejde přesunout z úrovně Premium do nižších úrovní. 
+
+- Akce **odstranění objektu BLOB** se v tuto chvíli nepodporuje. 
+
+### <a name="hdinsight-support"></a>Podpora HDInsight
+
+Když vytvoříte cluster HDInsight n, nemůžete ještě vybrat účet úložiště objektů blob bloku, který má povolenou funkci hierarchického oboru názvů. Po vytvoření však můžete účet připojit ke clusteru.
+
+### <a name="dremio-support"></a>Podpora Dremio
+
+Dremio se ještě nepřipojí k účtu úložiště objektů blob bloku, který má povolenou funkci hierarchického oboru názvů. 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Ovladač Windows Azure Storage Blob (WASB) (není podporován s Data Lake Storage Gen2)
 
