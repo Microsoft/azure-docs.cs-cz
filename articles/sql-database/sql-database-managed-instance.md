@@ -11,16 +11,16 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 65bce50665b6dd99662e99ca57569f906f3af208
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: cce871d2f38d7871bd1ba9c5cb7b086e514a6913
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598534"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120789"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je Azure SQL Database spravovaná instance?
 
-Managed instance je nová možnost nasazení Azure SQL Database, která poskytuje téměř 100% kompatibilitu s nejnovějším databázovým strojem SQL Server on-premises (Enterprise Edition), zajišťuje implementaci nativní [virtuální sítě (VNET)](../virtual-network/virtual-networks-overview.md) , která řeší běžné bezpečnostní obavy a [obchodní model](https://azure.microsoft.com/pricing/details/sql-database/) , který je pro místní SQL Server zákazníky příznivý. Model nasazení spravované instance umožňuje stávajícím zákazníkům SQL Server překládat a přesouvat místní aplikace do cloudu s minimálními změnami aplikace a databáze. Zároveň možnost nasazení spravované instance zachovává všechny možnosti PaaS (automatické opravy a aktualizace verzí, [automatizované zálohování](sql-database-automated-backups.md)a [vysokou dostupnost](sql-database-high-availability.md) ), což významně snižuje režijní náklady na správu a celkové náklady na vlastnictví.
+Managed instance je nová možnost nasazení Azure SQL Database, která poskytuje téměř 100% kompatibilitu s nejnovějším databázovým strojem SQL Server on-premises (Enterprise Edition), zajišťuje implementaci nativní [virtuální sítě (VNET)](../virtual-network/virtual-networks-overview.md) , která řeší běžné bezpečnostní obavy a [obchodní model](https://azure.microsoft.com/pricing/details/sql-database/) , který je pro místní SQL Server zákazníky příznivý. Model nasazení spravované instance umožňuje stávajícím zákazníkům SQL Server překládat a přesouvat místní aplikace do cloudu s minimálními změnami aplikace a databáze. Zároveň možnost nasazení spravované instance zachovává všechny provozní možnosti PaaS s ohledem na automatické opravy a aktualizace verzí, [automatizované zálohování](sql-database-automated-backups.md)a [vysokou dostupnost](sql-database-high-availability.md), což významně snižuje režijní náklady na správu a celkové náklady na vlastnictví.
 
 > [!IMPORTANT]
 > Seznam oblastí, ve kterých je možnost nasazení spravované instance aktuálně k dispozici, najdete v tématu [podporované oblasti](sql-database-managed-instance-resource-limits.md#supported-regions).
@@ -46,7 +46,7 @@ Spravovaná instance kombinuje nejlepší funkce, které jsou k dispozici v Azur
 | --- | --- |
 |Bez nákupu a správy hardwaru <br>Žádná režie správy pro správu základní infrastruktury <br>Rychlé zřizování a škálování služby <br>Automatizované opravy a upgrade verze <br>Integrace s jinými datovými službami PaaS |Smlouva SLA o 99,99% provozu  <br>Integrovaná [Vysoká dostupnost](sql-database-high-availability.md) <br>Data chráněná pomocí [automatizovaných záloh](sql-database-automated-backups.md) <br>Uživatelsky konfigurovatelné období uchovávání záloh pro zákazníky <br>[Zálohy](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) iniciované uživatelem <br>Možnost [obnovení databáze bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) |
 |**Zabezpečení a dodržování předpisů** | **správy**|
-|Izolované prostředí ([Integrace virtuální](sql-database-managed-instance-connectivity-architecture.md)sítě, samostatná služba tenanta, vyhrazený výpočetní výkon a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), podpora jednotného přihlašování <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Objekty zabezpečení serveru Azure AD (přihlášení)</a>  <br>Dodržuje standardy dodržování předpisů stejné jako Azure SQL Database. <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Rozšířená ochrana před internetovými útoky](sql-database-managed-instance-threat-detection.md) |Rozhraní Azure Resource Manager API pro automatizaci zřizování a škálování služby <br>Azure Portal funkce ručního zřizování a škálování služeb <br>Database Migration Service
+|Izolované prostředí ([Integrace virtuální](sql-database-managed-instance-connectivity-architecture.md)sítě, samostatná služba tenanta, vyhrazený výpočetní výkon a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), podpora jednotného přihlašování <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Objekty zabezpečení serveru Azure AD (přihlášení)</a>  <br>Dodržuje standardy dodržování předpisů stejné jako Azure SQL Database. <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Rozhraní Azure Resource Manager API pro automatizaci zřizování a škálování služby <br>Azure Portal funkce ručního zřizování a škálování služeb <br>Database Migration Service
 
 > [!IMPORTANT]
 > Azure SQL Database (všechny možnosti nasazení) byly certifikovány na základě řady standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.
@@ -63,7 +63,7 @@ Klíčové funkce spravovaných instancí jsou uvedené v následující tabulce
 | Počet datových souborů (řádků) na databázi | Několik |
 | Počet souborů protokolu (protokol) na databázi | 1 |
 | Nasazení VNet-Azure Resource Manager | Ano |
-| Model nasazení sítě VNet – klasický | No |
+| Model nasazení sítě VNet – klasický | Ne |
 | Podpora portálu | Ano|
 | Integrovaná integrační služba (SSIS) | No-SSIS je součástí [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrovaná služba Analysis Service (SSAS) | No-SSAS je samostatný [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
@@ -199,14 +199,14 @@ Následující tabulka shrnuje možnosti zrušení konkrétních operací správ
 
 Kategorie  |Operace  |Zrušitelný  |Odhadovaná doba trvání zrušení  |
 |---------|---------|---------|---------|
-|Nasazení |Vytvoření instance |No |  |
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |No |  |
+|Nasazení |Vytvoření instance |Ne |  |
+|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |Ne |  |
 |Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut |
 |Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely) |Ano |90% dokončených operací za 5 minut |
 |Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut |
 |Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak) |Ano |90% dokončených operací za 5 minut |
-|Odstranit |Odstranění instance |No |  |
-|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |No |  |
+|Odstranit |Odstranění instance |Ne |  |
+|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |Ne |  |
 
 Chcete-li zrušit operaci správy, přejděte do okna Přehled a klikněte na oznamovací políčko probíhající operace. Na pravé straně se zobrazí obrazovka s probíhající operací a zobrazí se tlačítko pro zrušení operace. Po prvním kliknutí se zobrazí výzva, abyste znovu klikněte na tlačítko a potvrďte, že chcete operaci zrušit.
 
@@ -337,7 +337,7 @@ V následující tabulce je uvedeno několik vlastností, které jsou přístupn
 |`@@VERSION`|Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejná jako v SQL Database. To neznamená, **že** modul SQL verze 12 (SQL Server 2014). Spravovaná instance vždy spouští nejnovější stabilní verzi modulu SQL, která je stejná nebo vyšší než nejnovější dostupná verze RTM SQL Server.  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejná jako v SQL Database.|
 |`SERVERPROPERTY('EngineEdition')`|8|Tato hodnota jednoznačně identifikuje spravovanou instanci.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Úplný název DNS instance v následujícím formátu:`<instanceName>`. `<dnsPrefix>`. Database.Windows.NET, kde `<instanceName>` je název poskytnutý zákazníkem, zatímco `<dnsPrefix>` se automaticky vygenerovala část názvu, která zaručuje jedinečnost globálních názvů DNS (například "wcus17662feb9ce98").|Příklad: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Úplný název DNS instance v následujícím formátu: `<instanceName>` . `<dnsPrefix>` . database.windows.net, kde `<instanceName>` je název poskytovaný zákazníkem, zatímco `<dnsPrefix>` se automaticky vygenerovala část názvu, která zaručuje jedinečnost globálních názvů DNS (například "wcus17662feb9ce98").|Příklad: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e53b6bdb041bfac5a82ed607b75b25ab0513f57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d8f2c747a4bc0ab2119c92e61188e3c57f2b212
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188000"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118358"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Připojte síť testovacího prostředí k partnerské virtuální síti v Azure Lab Services
 
@@ -48,7 +48,7 @@ Během vytváření nového [účtu testovacího prostředí](tutorial-setup-lab
 
 K dispozici je také možnost zadat **Rozsah adres** pro virtuální počítače pro cvičení.  Vlastnost **Rozsah adres** se vztahuje jenom na to, jestli je pro testovací prostředí povolená **Partnerská virtuální síť** .  Pokud je zadaný rozsah adres, vytvoří se v tomto rozsahu adres všechny virtuální počítače v testovacím prostředí pod účtem testovacího prostředí. Rozsah adres by měl být v zápisu CIDR (např. 10.20.0.0/20) a nesmí se překrývat s žádnými existujícími rozsahy adres.  Když zadáváte rozsah adres, je důležité uvažovat o počtu *laboratoří* , které budou vytvořeny, a poskytnout rozsah adres, který se má přizpůsobit. Testovací služby předpokládají maximálně 512 virtuálních počítačů na testovací prostředí.  Například rozsah IP adres s '/23 ' může vytvořit pouze jedno testovací prostředí.  Rozsah s '/21 ' umožní vytvořit čtyři laboratoře.
 
-Pokud není zadaný **Rozsah adres** , služba testovacího prostředí použije výchozí rozsah adres, který mu předává Azure při vytváření virtuální sítě pro partnerský vztah s vaší virtuální sítí.  Rozsah je často podobný 10. x. 0,0/16.  To může vést k překrytí rozsahu IP adres, proto nezapomeňte zadat a v nastavení testovacího prostředí zadat rozsah adres nebo zkontrolovat rozsah adres vaší virtuální sítě, která je v partnerském vztahu.
+Pokud není zadaný **Rozsah adres** , služba testovacího prostředí použije výchozí rozsah adres, který mu předává Azure při vytváření virtuální sítě pro partnerský vztah s vaší virtuální sítí.  Rozsah je často podobný 10. x. 0,0/16.  To může vést k překrytí rozsahu IP adres, proto nezapomeňte buď zadat rozsah adres v nastavení testovacího prostředí, nebo zkontrolovat rozsah adres vaší virtuální sítě, na kterou se navázat partnerský vztah.
 
 ## <a name="configure-after-the-lab-is-created"></a>Konfigurace po vytvoření testovacího prostředí
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
-ms.openlocfilehash: ba268e623a2858c2863ffc86eacfe25284a1e37a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 7ba66441a87e3e02483ae27400f9900d2d052af4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722957"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118154"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Referenční informace o monitorování Azure Storage dat
 
@@ -44,7 +44,7 @@ Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
 | ContainerCount    | Počet kontejnerů v účtu úložiště. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
 | IndexCapacity     | Velikost úložiště, kterou používá ADLS Gen2 hierarchický index <br/><br/> Jednotka: bajtů <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
 
-#### <a name="table-storage"></a>Úložiště Table
+#### <a name="table-storage"></a>Table Storage
 
 | Metrika | Popis |
 | ------------------- | ----------------- |
@@ -131,18 +131,18 @@ V následující tabulce jsou uvedeny vlastnosti Azure Storagech protokolů pros
 |:--- |:---|
 |**interval** | Světový čas koordinovaný (UTC), kdy se požadavek přijal úložištěm. Například: `2018/11/08 21:09:36.6900118`.|
 |**Prostředku** | ID prostředku účtu úložiště. Příklad: `/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
-|**kategorií** | Kategorie požadované operace. Například: `StorageRead`, `StorageWrite`, nebo. `StorageDelete`|
+|**kategorií** | Kategorie požadované operace. Například: `StorageRead` , `StorageWrite` , nebo `StorageDelete` .|
 |**operationName** | Typ operace REST, která byla provedena. <br> Úplný seznam operací najdete v tématu [Analýza úložiště protokolovaných operací a zpráv o stavu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
 |**operationVersion** | Verze služby úložiště, která byla určena při podání žádosti. To je ekvivalentní hodnotě v hlavičce **x-MS-Version** . Například: `2017-04-17`.|
 |**schemaVersion** | Verze schématu protokolu Například: `1.0`.|
-|**statusCode** | Stavový kód protokolu HTTP pro požadavek. Pokud je požadavek přerušený, může být tato hodnota nastavena na `Unknown`. <br> Příklad: `206` |
+|**statusCode** | Stavový kód protokolu HTTP pro požadavek. Pokud je požadavek přerušený, může být tato hodnota nastavena na `Unknown` . <br> Příklad: `206` |
 |**statusText** | Stav požadované operace.  Úplný seznam stavových zpráv najdete v tématu [Analýza úložiště protokolovaných operací a zpráv o stavu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). Ve verzi 2017-04-17 a novější se stavová zpráva `ClientOtherError` nepoužívá. Místo toho obsahuje toto pole kód chyby. Příklad: `SASSuccess`  |
 |**durationMs** | Celková doba, vyjádřená v milisekundách k provedení požadované operace. To zahrnuje čas ke čtení příchozího požadavku a k odeslání odpovědi žadateli. Například: `12`.|
 |**callerIpAddress** | IP adresa žadatele včetně čísla portu. Například: `192.100.0.102:4362`. |
 |**correlationId** | ID, které se používá ke korelaci protokolů napříč prostředky. Například: `b99ba45e-a01e-0042-4ea6-772bbb000000`. |
 |**oblasti** | Umístění účtu úložiště. Například: `North Europe`. |
-|**protokol**|Protokol, který se používá v operaci. Například: `HTTP`, `HTTPS`, nebo `SMB``NFS`|
-| **identifikátor URI** | Požadovaný identifikátor Uniform Resource. Například: http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10. |
+|**protokol**|Protokol, který se používá v operaci. Například: `HTTP` , `HTTPS` , `SMB` nebo`NFS`|
+| **identifikátor URI** | Požadovaný identifikátor Uniform Resource. Například: `http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`. |
 
 ### <a name="fields-that-describe-how-the-operation-was-authenticated"></a>Pole, která popisují, jak byla operace ověřena
 
@@ -177,7 +177,7 @@ V následující tabulce jsou uvedeny vlastnosti Azure Storagech protokolů pros
 
 | Vlastnost | Popis |
 |:--- |:---|
-|**Identita/typ** | Typ ověřování, které se použilo k vytvoření žádosti. Například: `OAuth`, `SAS Key`, nebo `Account Key``Anonymous` |
+|**Identita/typ** | Typ ověřování, které se použilo k vytvoření žádosti. Například: `OAuth` , `SAS Key` , `Account Key` nebo`Anonymous` |
 |**Identita/tokenHash**|Toto pole je rezervováno pouze pro interní použití. |
 |**autorizace/akce** | Akce, která je přiřazena k žádosti. Příklad: `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
 |**autorizace/roleAssignmentId** | ID přiřazení role Například: `4e2521b7-13be-4363-aeda-111111111111`.|
@@ -239,8 +239,8 @@ V následující tabulce jsou uvedeny vlastnosti Azure Storagech protokolů pros
 |**ID žádosti klienta** | Hodnota hlavičky **x-MS-Client-Request-ID** žádosti. Například: `360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6`. |
 |**značk** | Identifikátor ETag vráceného objektu v uvozovkách Například: `0x8D101F7E4B662C4`.  |
 |**serverLatencyMs** | Celkový čas vyjádřený v milisekundách k provedení požadované operace. Tato hodnota nezahrnuje latenci sítě (čas pro čtení příchozího požadavku a odeslání odpovědi žadateli). Například: `22`. |
-|**serviceType** | Služba přidružená k této žádosti Například: `blob`, `table`, `files`nebo. `queue` |
-|**operationCount** | Počet všech protokolovaných operací, které jsou součástí žádosti. Tento počet začíná indexem `0`. Některé požadavky vyžadují více než jednu operaci, například požadavek na zkopírování objektu BLOB. Většina požadavků provádí pouze jednu operaci. Například: `1`. |
+|**serviceType** | Služba přidružená k této žádosti Například: `blob` , `table` , `files` nebo `queue` . |
+|**operationCount** | Počet všech protokolovaných operací, které jsou součástí žádosti. Tento počet začíná indexem `0` . Některé požadavky vyžadují více než jednu operaci, například požadavek na zkopírování objektu BLOB. Většina požadavků provádí pouze jednu operaci. Například: `1`. |
 |**requestHeaderSize** | Velikost hlavičky požadavku vyjádřená v bajtech Například: `578`. <br>Pokud je žádost neúspěšná, tato hodnota může být prázdná. |
 |**requestBodySize** | Velikost paketů požadavků vyjádřených v bajtech, které jsou čteny službou úložiště. <br> Například: `0`. <br>Pokud je žádost neúspěšná, tato hodnota může být prázdná.  |
 |**responseHeaderSize** | Velikost hlavičky odpovědi vyjádřená v bajtech Například: `216`. <br>Pokud je žádost neúspěšná, tato hodnota může být prázdná.  |

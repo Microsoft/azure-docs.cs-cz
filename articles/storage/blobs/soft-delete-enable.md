@@ -1,26 +1,32 @@
 ---
-title: Povolit obnovitelné odstranění pro objekty blob
+title: Povolení a Správa obnovitelného odstranění pro objekty blob
 titleSuffix: Azure Storage
 description: Povolit obnovitelné odstranění objektů BLOB pro snazší obnovení dat, když se omylem upraví nebo odstraní.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 05/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 26a16d0eeb81c12faede1c00bdf5a0d724f7a6c6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: bbefa2a5d40d047d8885e4a0db8239d79a24feae
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884680"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120092"
 ---
-# <a name="enable-soft-delete-for-blobs"></a>Povolit obnovitelné odstranění pro objekty blob
+# <a name="enable-and-manage-soft-delete-for-blobs"></a>Povolení a Správa obnovitelného odstranění pro objekty blob
 
-Následující kroky ukazují, jak začít s obnovitelné odstraněním.
+Obnovitelné odstranění: Ochrana dat objektů BLOB je náhodná nebo nesprávně upravená nebo Odstraněná. Když je pro účet úložiště povolené obnovitelné odstranění, objekty blob, verze objektů BLOB (Preview) a snímky v tomto účtu úložiště se po jejich odstranění můžou obnovit v době uchování, kterou zadáte.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+Pokud existuje možnost, že by vaše data mohla být omylem upravována nebo odstraněna aplikací nebo jiným uživatelem účtu úložiště, společnost Microsoft doporučuje zapnout obnovitelné odstranění.
+
+V tomto článku se dozvíte, jak začít s obnovitelné odstraněním.
+
+## <a name="enable-soft-delete"></a>Povolení obnovitelného odstranění
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Povolit obnovitelné odstranění pro objekty BLOB v účtu úložiště pomocí Azure Portal:
 
@@ -71,6 +77,7 @@ Set-AzContext -Subscription "<subscription-name>"
 $MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
 $MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
+
 Pomocí následujícího příkazu můžete ověřit, zda bylo toto obnovitelné odstranění zapnuté:
 
 ```powershell
@@ -98,7 +105,7 @@ Chcete-li najít aktuální zásady uchovávání informací o tichém odstraně
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-CLI)
+# <a name="cli"></a>[CLI](#tab/azure-CLI)
 
 Pokud chcete povolit obnovitelné odstranění, aktualizujte vlastnosti služby klienta objektů BLOB:
 
@@ -174,3 +181,7 @@ blockBlob.StartCopy(copySource);
 
 ---
 
+## <a name="next-steps"></a>Další kroky
+
+- [Obnovitelné odstranění pro úložiště objektů BLOB](soft-delete-overview.md)
+- [Správa verzí objektů BLOB (Preview)](versioning-overview.md)

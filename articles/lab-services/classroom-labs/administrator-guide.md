@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2019
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 307ca08e733417efc9496415a09a0898fe10393e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af69b9105d55749267e6c54a6584566b499b4097
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183462"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118460"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – příručka pro správce
 Správcům informačních technologií (IT), kteří spravují cloudové prostředky vysoké školy, se obvykle zodpovídá za nastavení účtu testovacího prostředí pro svou školu. Po nastavení účtu testovacího prostředí můžou správci nebo pedagogy vytvářet učebny, které jsou obsaženy v rámci účtu testovacího prostředí. Tento článek poskytuje podrobný přehled o prostředcích Azure a pokyny pro jejich vytváření.
@@ -124,16 +124,16 @@ Po zahájení práce s Azure Lab Services doporučujeme zřídit zásady vytvá�
 
 | Typ prostředku | Role | Navrhovaný vzor | Příklady |
 | ------------- | ---- | ----------------- | -------- | 
-| Skupina prostředků | Obsahuje jeden nebo víc účtů testovacího prostředí a jednu nebo víc galerií sdílených imagí. | \<\>-\<prostředí\>s krátkým názvem organizace – RG<ul><li>**Zkrácený název organizace** Určuje název organizace, kterou skupina prostředků podporuje.</li><li>**Prostředí** identifikuje prostředí pro daný prostředek, jako je pilotní nebo produkční.</li><li>**RG** představuje typ prostředku: Skupina prostředků.</li></ul> | contosouniversitylabs – RG<br/>contosouniversitylabs-pilot – RG<br/>contosouniversitylabs-prod-RG |
-| Účet testovacího prostředí | Obsahuje jednu nebo více cvičení | \<\>-\<prostředí\>s krátkým názvem organizace – La<ul><li>**Zkrácený název organizace** Určuje název organizace, kterou skupina prostředků podporuje.</li><li>**Prostředí** identifikuje prostředí pro daný prostředek, jako je pilotní nebo produkční.</li><li>**La** představuje typ prostředku: účet testovacího prostředí.</li></ul> | contosouniversitylabs – La<br/>mathdeptlabs – La<br/>sciencedeptlabs-pilot – La<br/>sciencedeptlabs-prod-La |
-| Testovací prostředí pro učebnu | Obsahuje jeden nebo víc virtuálních počítačů. |\<Educator identifikátor\>-\<časového\>-rámce\<názvu třídy\><ul><li>**Název třídy** identifikuje název třídy, kterou testovací prostředí podporuje.</li><li>**Časový rámec** identifikuje časový rámec, ve kterém je třída nabízena.</li>**Identifikátor vzdělávání** identifikuje Educator, který vlastní testovací prostředí.</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe |
-| Galerie sdílených imagí | Obsahuje jednu nebo více verzí imagí virtuálních počítačů. | \<Galerie krátkého\>názvu organizace | contosouniversitylabsgallery |
+| Skupina prostředků | Obsahuje jeden nebo víc účtů testovacího prostředí a jednu nebo víc galerií sdílených imagí. | \<prostředí s krátkým názvem organizace \> - \< \> – RG<ul><li>**Zkrácený název organizace** Určuje název organizace, kterou skupina prostředků podporuje.</li><li>**Prostředí** identifikuje prostředí pro daný prostředek, jako je pilotní nebo produkční.</li><li>**RG** představuje typ prostředku: Skupina prostředků.</li></ul> | contosouniversitylabs – RG<br/>contosouniversitylabs-pilot – RG<br/>contosouniversitylabs-prod-RG |
+| Účet testovacího prostředí | Obsahuje jednu nebo více cvičení | \<prostředí s krátkým názvem organizace \> - \< \> – La<ul><li>**Zkrácený název organizace** Určuje název organizace, kterou skupina prostředků podporuje.</li><li>**Prostředí** identifikuje prostředí pro daný prostředek, jako je pilotní nebo produkční.</li><li>**La** představuje typ prostředku: účet testovacího prostředí.</li></ul> | contosouniversitylabs – La<br/>mathdeptlabs – La<br/>sciencedeptlabs-pilot – La<br/>sciencedeptlabs-prod-La |
+| Testovací prostředí pro učebnu | Obsahuje jeden nebo víc virtuálních počítačů. |\<\> - \< \> - \< Educator identifikátor časového rámce názvu třídy\><ul><li>**Název třídy** identifikuje název třídy, kterou testovací prostředí podporuje.</li><li>**Časový rámec** identifikuje časový rámec, ve kterém je třída nabízena.</li>**Identifikátor vzdělávání** identifikuje Educator, který vlastní testovací prostředí.</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe |
+| Galerie sdílených imagí | Obsahuje jednu nebo více verzí imagí virtuálních počítačů. | \<Galerie krátkého názvu organizace \> | contosouniversitylabsgallery |
 
 Další informace o pojmenování dalších prostředků Azure najdete v tématu zásady [vytváření názvů pro prostředky Azure](/azure/architecture/best-practices/naming-conventions).
 
 ## <a name="regionslocations"></a>Regions\locations
 
-Při nastavování prostředků Azure Lab Services budete muset zadat oblast (nebo umístění) datového centra, které bude hostovat prostředek. Tady jsou další podrobnosti o tom, jak region ovlivňuje jednotlivé zdroje, které se týkají nastavení testovacího prostředí.
+Při nastavování prostředků Azure Lab Services budete muset zadat oblast (nebo umístění) datového centra, které bude hostovat prostředek. Tady jsou další podrobnosti o tom, jak region ovlivňuje jednotlivé prostředky, které jsou součástí nastavení testovacího prostředí.
 
 ### <a name="resource-group"></a>Skupina prostředků
 

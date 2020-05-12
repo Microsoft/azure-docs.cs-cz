@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/10/2020
+ms.date: 05/11/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 50c1d7e35b1c4e92664d810836fe1213183fbf83
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5099cc2ce2228bcdbf49d3484e488e7373883ec0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927339"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119043"
 ---
 # <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>Zabezpečení životního cyklu služby Machine Learning pomocí privátních virtuálních sítí
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,9 @@ V tomto článku se dozvíte, jak izolovat úlohy experimentování/školení a 
 > - Uživatelské rozhraní pro automatizované strojové učení
 > - Uživatelské rozhraní pro popisky dat
 > - Uživatelské rozhraní pro datové sady
+> - Notebooks
 > 
->  Pokud se pokusíte, zobrazí se chyba při vizualizaci dat z účtu úložiště v rámci virtuální sítě, která je podobná:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
+> Pokud se pokusíte, zobrazí se zpráva podobná následující chybě:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
 
 ## <a name="what-is-a-vnet"></a>Co je virtuální síť?
 
@@ -176,7 +177,7 @@ Pokud používáte vynucené tunelování s Výpočetní prostředky služby Mac
 
 * Vytvořte UDR pro každou IP adresu, kterou používá služba Azure Batch, v oblasti, kde existují vaše prostředky. Tyto udr umožňují, aby služba Batch komunikovala s výpočetními uzly pro plánování úloh. Přidejte také IP adresu pro službu Azure Machine Learning, kde existují prostředky, jak je to nutné pro přístup k výpočetním instancím. Chcete-li získat seznam IP adres služby Batch a služby Azure Machine Learning, použijte jednu z následujících metod:
 
-    * Stáhněte si [rozsahy IP adres Azure a značky služby](https://www.microsoft.com/download/details.aspx?id=56519) a vyhledejte v `BatchNodeManagement.<region>` něm `AzureMachineLearning.<region>`soubor a `<region>` , kde je vaše oblast Azure.
+    * Stáhněte si [rozsahy IP adres Azure a značky služby](https://www.microsoft.com/download/details.aspx?id=56519) a vyhledejte v něm soubor `BatchNodeManagement.<region>` a `AzureMachineLearning.<region>` , kde `<region>` je vaše oblast Azure.
 
     * Informace si můžete stáhnout pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) . Následující příklad stáhne informace o IP adrese a odfiltruje informace o Východní USA 2 oblasti:
 
@@ -185,7 +186,7 @@ Pokud používáte vynucené tunelování s Výpočetní prostředky služby Mac
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
 
-* Odchozí provoz do Azure Storage se nesmí blokovat v místním síťovém zařízení. Konkrétně adresy URL jsou ve formátu `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`a. `<account>.blob.core.windows.net`
+* Odchozí provoz do Azure Storage se nesmí blokovat v místním síťovém zařízení. Konkrétně adresy URL jsou ve formátu `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` a `<account>.blob.core.windows.net` .
 
 Když přidáte udr, definujte trasu pro každou související předponu IP adresy dávky a nastavte __typ dalšího segmentu směrování__ na __Internet__. Následující obrázek ukazuje příklad tohoto UDR v Azure Portal:
 
@@ -201,7 +202,7 @@ Chcete-li vytvořit cluster Výpočetní prostředky služby Machine Learning, p
 
 1. Na levé straně vyberte __COMPUTE__ .
 
-1. V centru vyberte __školicí clustery__ a pak vyberte __+__.
+1. V centru vyberte __školicí clustery__ a pak vyberte __+__ .
 
 1. V dialogovém okně __Nový školicí cluster__ rozbalte oddíl __Upřesnit nastavení__ .
 
@@ -213,7 +214,7 @@ Chcete-li vytvořit cluster Výpočetní prostředky služby Machine Learning, p
 
    ![Nastavení virtuální sítě pro Výpočetní prostředky služby Machine Learning](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
-Cluster Výpočetní prostředky služby Machine Learning můžete vytvořit také pomocí sady Azure Machine Learning SDK. Následující kód vytvoří nový cluster Výpočetní prostředky služby Machine Learning v `default` podsíti virtuální sítě s názvem: `mynetwork`
+Cluster Výpočetní prostředky služby Machine Learning můžete vytvořit také pomocí sady Azure Machine Learning SDK. Následující kód vytvoří nový cluster Výpočetní prostředky služby Machine Learning v `default` podsíti virtuální sítě s názvem `mynetwork` :
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -288,7 +289,7 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
 >
 > Výchozí účet úložiště se automaticky zřídí při vytváření pracovního prostoru.
 >
-> U jiných než výchozích účtů úložiště vám `storage_account` parametr ve [ `Workspace.create()` funkci](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) umožní zadat vlastní účet úložiště podle ID prostředku Azure.
+> U jiných než výchozích účtů úložiště `storage_account` vám parametr ve [ `Workspace.create()` funkci](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) umožní zadat vlastní účet úložiště podle ID prostředku Azure.
 
 
 <a id="aksvnet"></a>
@@ -309,7 +310,7 @@ Pokud chcete do svého pracovního prostoru přidat službu Azure Kubernetes Ser
 
 1. Na levé straně vyberte __COMPUTE__ .
 
-1. Vyberte __odvozené clustery__ z centra a pak vyberte __+__.
+1. Vyberte __odvozené clustery__ z centra a pak vyberte __+__ .
 
 1. V dialogu __nový cluster pro odvození__ vyberte v části __Konfigurace sítě__možnost __Upřesnit__ .
 
@@ -330,7 +331,7 @@ Pokud chcete do svého pracovního prostoru přidat službu Azure Kubernetes Ser
 
    [![Příchozí pravidlo zabezpečení](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
 
-Pomocí sady Azure Machine Learning SDK můžete také přidat službu Azure Kubernetes ve virtuální síti. Pokud už máte cluster AKS ve virtuální síti, připojte ho k pracovnímu prostoru, jak je popsáno v tématu [Jak nasadit do AKS](how-to-deploy-and-where.md). Následující kód vytvoří novou instanci AKS v `default` podsíti virtuální sítě s názvem: `mynetwork`
+Pomocí sady Azure Machine Learning SDK můžete také přidat službu Azure Kubernetes ve virtuální síti. Pokud už máte cluster AKS ve virtuální síti, připojte ho k pracovnímu prostoru, jak je popsáno v tématu [Jak nasadit do AKS](how-to-deploy-and-where.md). Následující kód vytvoří novou instanci AKS v `default` podsíti virtuální sítě s názvem `mynetwork` :
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute
@@ -406,7 +407,7 @@ __Azure CLI__
 az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
 ```
 
-Obsah souboru, `body.json` na který se odkazuje pomocí příkazu, je podobný následujícímu dokumentu JSON:
+Obsah souboru, na `body.json` který se odkazuje pomocí příkazu, je podobný následujícímu dokumentu JSON:
 
 ```json
 { 
@@ -441,7 +442,7 @@ Pokud chcete použít ACI ve virtuální síti k vašemu pracovnímu prostoru, p
     > [!IMPORTANT]
     > Při povolování delegování použijte `Microsoft.ContainerInstance/containerGroups` jako hodnotu __pro podsíť delegáta na službu__ .
 
-2. Nasaďte model pomocí [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-), použijte parametry `vnet_name` a `subnet_name` . Nastavte tyto parametry na název virtuální sítě a podsíť, ve které jste povolili delegování.
+2. Nasaďte model pomocí [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-), použijte `vnet_name` parametry a `subnet_name` . Nastavte tyto parametry na název virtuální sítě a podsíť, ve které jste povolili delegování.
 
 ## <a name="azure-firewall"></a>Brána Azure Firewall
 
@@ -461,7 +462,7 @@ Informace o použití Azure Machine Learning s Azure Firewall najdete v tématu 
 
 1. Chcete-li najít název Azure Container Registry pro váš pracovní prostor, použijte jednu z následujících metod:
 
-    __portál Azure__
+    __Azure Portal__
 
     V části Přehled pracovního prostoru se hodnota __registru__ odkazuje na Azure Container Registry.
 
@@ -475,7 +476,7 @@ Informace o použití Azure Machine Learning s Azure Firewall najdete v tématu 
     az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
     ```
 
-    Tento příkaz vrátí hodnotu podobnou `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"`. Poslední část řetězce je název Azure Container Registry pracovního prostoru.
+    Tento příkaz vrátí hodnotu podobnou `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"` . Poslední část řetězce je název Azure Container Registry pracovního prostoru.
 
 1. Pokud chcete omezit přístup k virtuální síti, použijte postup v části [Konfigurace přístupu k síti pro registr](../container-registry/container-registry-vnet.md#configure-network-access-for-registry). Při přidávání virtuální sítě vyberte virtuální síť a podsíť pro prostředky Azure Machine Learning.
 
@@ -618,7 +619,7 @@ Pokud chcete použít virtuální počítač nebo cluster Azure HDInsight ve vir
 
     * V rozevíracím seznamu __značka zdrojové služby__ vyberte možnost __AzureMachineLearning__.
 
-    * V rozevíracím seznamu __rozsahy zdrojových portů__ vyberte __*__.
+    * V rozevíracím seznamu __rozsahy zdrojových portů__ vyberte __*__ .
 
     * V rozevíracím seznamu __cíl__ vyberte možnost __libovolný__.
 

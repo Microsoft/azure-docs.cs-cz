@@ -8,24 +8,18 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/10/2020
 ms.custom: include file
-ms.openlocfilehash: 4c6e45eaa816499c7e5969e302a036368bea0937
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2559b7d81a6f60b633d023a35081b54e1204268a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422182"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120180"
 ---
-1. Azure Cosmos DB účet vytvoříte tak, že přejdete na [Azure Portal](https://portal.azure.com/) . Na domovské stránce vyberte **vytvořit prostředek** na panelu **služby Azure** .
+1. V nabídce Azure Portal nebo na **domovské stránce**vyberte **vytvořit prostředek**.
 
-   ![Vytvoření prostředku](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-resource-1.png)
+1. Na **nové** stránce vyhledejte a vyberte **Azure Cosmos DB**.
 
-1. Vyhledejte a vyberte **Azure Cosmos DB**.
-
-   ![Rozevírací seznam prostředků Azure Portal](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-updated-1.png)
-
-1. Vyberte **Vytvořit**.
-
-   ![Vytvořit prostředek Azure Cosmos DB](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-account-1.png)
+1. Na stránce **Azure Cosmos DB** vyberte **vytvořit**.
 
 1. Na stránce **vytvořit Azure Cosmos DB účet** zadejte základní nastavení pro nový účet Azure Cosmos. 
 

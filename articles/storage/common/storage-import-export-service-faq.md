@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8af4cafb2c7ab4d39a591f5972803161c2aa0f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519488"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120381"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Služba import/export v Azure: nejčastější dotazy
 
@@ -109,7 +109,7 @@ Po dokončení nahrávání může proces vrácení jednotek na mezinárodní ad
 
 Požadavky závisí na konkrétním omezení datacentra Azure.
 
-- K dispozici je několik lokalit, jako je Austrálie, Německo a Velká Británie – jih, které vyžadují, aby se na parcele zapsalo číslo příchozího ID pro Microsoft datacenter z bezpečnostních důvodů. Před odesláním jednotek nebo disků do datového centra kontaktujte Azure DataBox Operations (adbops@microsoft.com) a získejte toto číslo. Bez tohoto čísla se balíček odmítne.
+- K dispozici je několik lokalit, jako je Austrálie, Německo a Velká Británie – jih, které vyžadují, aby se na parcele zapsalo číslo příchozího ID pro Microsoft datacenter z bezpečnostních důvodů. Před odesláním jednotek nebo disků do datového centra kontaktujte Azure DataBox Operations ( adbops@microsoft.com ) a získejte toto číslo. Bez tohoto čísla se balíček odmítne.
 - Datová centra v Indii vyžadují osobní údaje ovladače, jako je například karta státní správy nebo č. ověření. (například PAN, AADHAR, DL), jméno, kontakt a číslo desky auta pro získání průchodu položky brány. Aby nedošlo k prodlevám při doručování, informujte svého dopravce o těchto požadavcích.
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Při vytváření úlohy je doručovací adresa umístění, které se liší od umístění svého účtu úložiště. Co bych měl/a dělat?
@@ -153,7 +153,7 @@ Ne. Nástroj WAImportExport je kompatibilní jenom s 64 operačními systémy Wi
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Podporuje Azure import/export šifrování AES-256?
 
-Ne. Služba import/export v Azure používá šifrování AES-128 BitLockeru.
+Ano. Služba import/export v Azure používá šifrování AES-256 BitLockeru.
 
 ## <a name="next-steps"></a>Další kroky
 
