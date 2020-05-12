@@ -37,8 +37,10 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Koncepty
       items:
-        - name: Součásti systému Apache Hadoop ve službě HDInsight
+        - name: Komponenty Apache ve službě HDInsight
           href: ./hdinsight-component-versioning.md
+        - name: Balíček zabezpečení podniku
+          href: ./enterprise-security-package.md
         - name: Poznámky k verzi Hortonworks
           href: ./hortonworks-release-notes.md
         - name: Komponenty s vysokou dostupností

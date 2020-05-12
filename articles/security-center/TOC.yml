@@ -74,6 +74,8 @@
           href: alerts-schemas.md
         - name: Správa výstrah zabezpečení
           href: security-center-managing-and-responding-alerts.md
+        - name: Pravidla potlačení pro výstrahy zabezpečení
+          href: alerts-suppression-rules.md
         - name: Správa incidentů zabezpečení
           href: security-center-incident.md
         - name: Korelace inteligentních výstrah v cloudu (incidenty)

@@ -127,6 +127,8 @@
               items:
                 - name: Posouzení ohrožení zabezpečení
                   href: sql-vulnerability-assessment.md
+                - name: Pravidla posouzení ohrožení zabezpečení
+                  href: sql-database-vulnerability-assessment-rules.md
                 - name: Ukládání kontrol ohrožení zabezpečení za branami firewall a virtuálními sítěmi
                   href: sql-database-vulnerability-assessment-storage.md
             - name: Rozšířená ochrana před internetovými útoky
