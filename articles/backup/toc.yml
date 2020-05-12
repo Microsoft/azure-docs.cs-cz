@@ -357,6 +357,8 @@
               href: soft-delete-sql-saphana-in-azure-vm.md
         - name: Zabezpečení pro hybridní zálohy
           href: backup-azure-security-feature.md
+        - name: Privátní koncové body
+          href: private-endpoints.md
         - name: Šifrování
           href: backup-encryption.md
         - name: Integrované ovládací prvky zabezpečení

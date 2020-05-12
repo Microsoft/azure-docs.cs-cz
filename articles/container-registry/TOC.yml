@@ -44,7 +44,7 @@
           items:
             - name: Standardní hodnoty zabezpečení
               href: security-baseline.md
-        - name: Omezení a skladové položky služby Container Registry
+        - name: Omezení a úrovně služby Container Registry
           href: container-registry-skus.md
         - name: 'Registry, úložiště a image'
           href: container-registry-concepts.md
@@ -73,6 +73,8 @@
               href: container-registry-repositories.md
             - name: Import imagí kontejnerů
               href: container-registry-import-images.md
+            - name: Přenos artefaktů (Preview)
+              href: container-registry-transfer-images.md
             - name: Zamknutí imagí kontejneru
               href: container-registry-image-lock.md
             - name: Odstranění imagí kontejneru
@@ -87,9 +89,11 @@
               href: container-registry-webhook.md
         - name: Zabezpečení a ověřování
           items:
-            - name: Integrace s Azure Private Linkem (Preview)
+            - name: Omezení přístupu s využitím privátního koncového bodu
               href: container-registry-private-link.md
-            - name: Omezení přístupu s využitím virtuální sítě (Preview)
+            - name: Konfigurace pravidel brány firewall pro služby
+              href: container-registry-access-selected-networks.md
+            - name: Omezení přístupu s využitím koncového bodu služby (Preview)
               href: container-registry-vnet.md
             - name: Šifrování s využitím klíče spravovaného zákazníkem
               href: container-registry-customer-managed-keys.md
@@ -109,10 +113,10 @@
                   href: container-registry-auth-kubernetes.md
                 - name: Ověřování ze služby Azure Kubernetes Service (AKS)
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+                - name: Ověřování pomocí tokenu vymezeného úložištěm (Preview)
+                  href: container-registry-repository-scoped-permissions.md
             - name: Řízení přístupu na základě role
               href: container-registry-roles.md
-            - name: Oprávnění vymezená úložištěm (Preview)
-              href: container-registry-repository-scoped-permissions.md
             - name: Důvěryhodnost obsahu
               href: container-registry-content-trust.md
             - name: Kontrola imagí s využitím služby Security Center

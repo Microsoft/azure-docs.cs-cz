@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 04/30/2020
-  ms.openlocfilehash: b1df2d4420e25027a545b8a708cda31cf0ff152f
-  ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+  ms.openlocfilehash: d1e93ac4efb366f09b425be74be6eb8aeda9a713
+  ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/01/2020
-  ms.locfileid: "82690947"
+  ms.lasthandoff: 05/10/2020
+  ms.locfileid: "83005962"
 landingContent:
 - title: Začínáme se strojovým učením
   linkLists:
@@ -67,6 +67,8 @@ landingContent:
     links:
     - text: Nastavení prostředí
       url: how-to-configure-environment.md
+    - text: Interpretace a vysvětlení modelů
+      url: how-to-machine-learning-interpretability.md
     - text: Hluboké učení vs. ML
       url: concept-deep-learning-vs-machine-learning.md
     - text: Trénování s využitím Scikit-learn
@@ -79,7 +81,7 @@ landingContent:
       url: how-to-train-keras.md
     - text: Co jsou kanály ML?
       url: concept-ml-pipelines.md
-- title: Nasazení a správa modelů
+- title: Nasazení a správa modelů (MLOps)
   linkLists:
   - linkListType: how-to-guide
     links:
