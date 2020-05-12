@@ -1,19 +1,20 @@
 ---
 title: Odkazování na existující virtuální síť v šabloně Azure Scale set
 description: Přečtěte si, jak přidat virtuální síť do existující šablony Azure Virtual Machine Scale set.
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: networking
 ms.date: 04/26/2019
-ms.author: mimckitt
-ms.openlocfilehash: 83328a31dad8009c28e146c81b24d6d9244f88a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: fab6e6742fa43e1e38ee661b67896ae4aa11b3ed
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273660"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124818"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Přidání odkazu do existující virtuální sítě v šabloně Azure Scale set
 
@@ -25,7 +26,7 @@ V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvoř
 
 Nejdřív přidejte `subnetId` parametr. Tento řetězec se předává do konfigurace sady škálování, což umožňuje, aby sada škálování identifikovala předem vytvořenou podsíť pro nasazení virtuálních počítačů. Tento řetězec musí být ve tvaru:`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
 
-Pokud `myvnet`například chcete nasadit sadu škálování do existující virtuální sítě s názvem, podsítí `mysubnet`, skupinou `myrg`prostředků a předplatným `00000000-0000-0000-0000-000000000000`, bude subnetId:. `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`
+Pokud například chcete nasadit sadu škálování do existující virtuální sítě s názvem `myvnet` , podsítí `mysubnet` , skupinou prostředků `myrg` a předplatným, bude `00000000-0000-0000-0000-000000000000` subnetId: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet` .
 
 ```diff
      },
@@ -82,7 +83,7 @@ Virtuální síť již existuje před nasazením šablony, takže není nutné z
          "capacity": 2
 ```
 
-Nakonec předejte `subnetId` parametr nastavený uživatelem (místo použití `resourceId` k získání ID virtuální sítě ve stejném nasazení, což je to, co je to šablona Základní životaschopné sady škálování).
+Nakonec předejte `subnetId` Parametr nastavený uživatelem (místo použití `resourceId` k získání ID virtuální sítě ve stejném nasazení, což je to, co je to šablona Základní životaschopné sady škálování).
 
 ```diff
                        "name": "myIpConfig",

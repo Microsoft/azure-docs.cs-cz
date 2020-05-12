@@ -1,18 +1,20 @@
 ---
 title: Použití automatického škálování Azure s metrikami hosta v šabloně sady na platformě Linux
 description: Informace o automatickém škálování pomocí metrik hosta v šabloně sady škálování virtuálních počítačů se systémem Linux
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 04/26/2019
-ms.author: mimckitt
-ms.openlocfilehash: 8021b7b8feb6dc06fb2e48bc4e825200a1baad33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: aa004cc3ad6c02937ae3c3c8bdb1d5ebd225f434
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273643"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124801"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Automatické škálování pomocí metrik hosta v šabloně sady pro systém Linux
 
@@ -24,7 +26,7 @@ Metriky hostitele nevyžadují další nastavení, protože jsou shromažďován
 
 V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvořili základní šablonu sady škálování. Nyní použijeme tuto předchozí šablonu a upravíte ji k vytvoření šablony, která nasadí sadu škálování pro Linux pomocí automatického škálování na základě metriky hosta.
 
-Nejprve přidejte parametry pro `storageAccountName` a. `storageAccountSasToken` Agent diagnostiky ukládá data metrik v [tabulce](../cosmos-db/table-storage-how-to-use-dotnet.md) v tomto účtu úložiště. Od agenta diagnostiky Linux verze 3,0 už použití přístupového klíče k úložišti není podporované. Místo toho použijte [token SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Nejprve přidejte parametry pro `storageAccountName` a `storageAccountSasToken` . Agent diagnostiky ukládá data metrik v [tabulce](../cosmos-db/table-storage-how-to-use-dotnet.md) v tomto účtu úložiště. Od agenta diagnostiky Linux verze 3,0 už použití přístupového klíče k úložišti není podporované. Místo toho použijte [token SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 ```diff
      },
@@ -40,7 +42,7 @@ Nejprve přidejte parametry pro `storageAccountName` a. `storageAccountSasToken`
    },
 ```
 
-Dále upravte sadu `extensionProfile` škálování tak, aby zahrnovala diagnostické rozšíření. V této konfiguraci zadejte ID prostředku pro sadu škálování, ze kterého se mají shromažďovat metriky, a také účet úložiště a token SAS, který se použije k uložení metrik. Určete, jak často se metriky agregují (v tomto případě každou minutu) a které metriky se mají sledovat (v tomto případě procento využité paměti). Podrobnější informace o této konfiguraci a metrikách jiných než procento využité paměti najdete v [této dokumentaci](../virtual-machines/linux/diagnostic-extension.md).
+Dále upravte sadu škálování tak, `extensionProfile` aby zahrnovala diagnostické rozšíření. V této konfiguraci zadejte ID prostředku pro sadu škálování, ze kterého se mají shromažďovat metriky, a také účet úložiště a token SAS, který se použije k uložení metrik. Určete, jak často se metriky agregují (v tomto případě každou minutu) a které metriky se mají sledovat (v tomto případě procento využité paměti). Podrobnější informace o této konfiguraci a metrikách jiných než procento využité paměti najdete v [této dokumentaci](../virtual-machines/linux/diagnostic-extension.md).
 
 ```diff
                  }

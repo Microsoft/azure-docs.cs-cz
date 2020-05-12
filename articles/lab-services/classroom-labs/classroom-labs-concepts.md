@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a34af2ef779a41c19d4bfb831360948af1a66724
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77526225"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115043"
 ---
 # <a name="classroom-labs-concepts"></a>Koncepce testovacích prostředí v učebnách
 
@@ -50,7 +50,7 @@ Tento článek popisuje různé uživatelské profily v Azure Lab Services.
 
 ### <a name="lab-account-owner"></a>Vlastník účtu testovacího prostředí
 
-Správce cloudových prostředků organizace, který je vlastníkem předplatného Azure, obvykle plní roli vlastníka účtu testovacího prostředí a má následující úkoly:
+Správcem IT cloudových prostředků organizace, který vlastní předplatné Azure, funguje jako vlastníkem účtu testovacího prostředí a provádí následující úlohy:
 
 - Nastavit účet testovacího prostředí pro organizaci
 - Spravovat a konfigurovat zásady pro všechna testovací prostředí

@@ -1,20 +1,20 @@
 ---
 title: Ukázky Azure CLI – sada škálování s jednou zónou
 description: Tento skript vytvoří sadu škálování virtuálního počítače Azure s Ubuntu v jedné zóně dostupnosti.
-author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.devlang: azurecli
+author: mimckitt
+ms.author: mimckitt
 ms.topic: sample
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 03/27/2018
-ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: cd41f21c5390ca0d2c62c1989d46f3d4c0ec36f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: dc98085ca017f7249e225e8c1c009b3d255f1719
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011000"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195790"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Vytvoření sady škálování virtuálních počítačů s jednou zónou pomocí Azure CLI
 Tento skript vytvoří škálovací sadu virtuálních počítačů s Ubuntu v jedné zóně dostupnosti. Po spuštění skriptu můžete k virtuálnímu počítači přistupovat přes protokol RDP.

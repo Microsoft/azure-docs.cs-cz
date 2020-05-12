@@ -2,17 +2,19 @@
 title: Vytvoření sady škálování, která používá virtuální počítače Azure
 description: Naučte se vytvářet služby Azure Virtual Machine Scale Sets, které k úsporám šetří náklady pomocí virtuálních počítačů na místě.
 author: cynthn
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: article
-ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: spot
+ms.date: 03/25/2020
+ms.reviewer: jagaveer
+ms.custom: jagaveer
+ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545933"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125022"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Virtuální počítače Azure na místě pro Virtual Machine Scale Sets 
 
@@ -26,7 +28,7 @@ Množství dostupné kapacity se může lišit v závislosti na velikosti, oblas
 Ceny pro instance přímých instancí jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/). 
 
 
-S proměnnými cenami máte možnost nastavit maximální cenu v USD (USD), která používá až 5 desetinných míst. Hodnota `0.98765`by měla být například maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu `-1`, instance se nevyřadí na základě ceny. Cena za instanci bude aktuální cena za cenu nebo cena standardní instance, která je stále menší, pokud je k dispozici kapacita a kvóta.
+S proměnnými cenami máte možnost nastavit maximální cenu v USD (USD), která používá až 5 desetinných míst. Hodnota by měla být například `0.98765` maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu, instance se nevyřadí na `-1` základě ceny. Cena za instanci bude aktuální cena za cenu nebo cena standardní instance, která je stále menší, pokud je k dispozici kapacita a kvóta.
 
 ## <a name="eviction-policy"></a>Zásada vyřazení
 
@@ -42,19 +44,19 @@ Uživatelé se můžou přihlásit k přijímání oznámení v rámci virtuáln
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Nasazení virtuálních počítačů na místě v sadách škálování
 
 Pokud chcete nasadit virtuální počítače na místě v sadě škálování, můžete nastavit příznak nové *priority* tak, aby byl *bodový*. Všechny virtuální počítače ve vaší sadě škálování budou nastavené na bodové. Pokud chcete vytvořit sadu škálování s virtuálními počítači, použijte jednu z následujících metod:
-- [portál Azure](#portal)
+- [Azure Portal](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Šablony Azure Resource Manageru](#resource-manager-templates)
 
 ## <a name="portal"></a>Portál
 
-Proces vytvoření sady škálování, která používá virtuální počítače na místě, je stejný, jak je popsáno v [článku Začínáme](quick-create-portal.md). Když nasazujete sadu škálování, můžete nastavit příznak bodu a zásadu vyřazení: vytvoření sady škálování s virtuálními počítači ![s přímým použitím virtuálních počítačů.](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
+Proces vytvoření sady škálování, která používá virtuální počítače na místě, je stejný, jak je popsáno v [článku Začínáme](quick-create-portal.md). Když nasazujete sadu škálování, můžete nastavit příznak bodu a zásadu vyřazení: ![ Vytvoření sady škálování s virtuálními počítači s přímým použitím virtuálních počítačů.](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Proces vytvoření sady škálování se stejnými virtuálními počítači je stejný, jak je popsáno v [článku Začínáme](quick-create-cli.md). Stačí přidat klíčové slovo--priority a přidat `--max-price`. V tomto příkladu používáme `-1` pro `--max-price` , takže instance nebude vyřazení na základě ceny.
+Proces vytvoření sady škálování se stejnými virtuálními počítači je stejný, jak je popsáno v [článku Začínáme](quick-create-cli.md). Stačí přidat klíčové slovo--priority a přidat `--max-price` . V tomto příkladu používáme `-1` pro, `--max-price` takže instance nebude vyřazení na základě ceny.
 
 ```azurecli
 az vmss create \
@@ -87,7 +89,7 @@ $vmssConfig = New-AzVmssConfig `
 
 Proces vytvoření sady škálování, která používá bodové virtuální počítače, je stejný, jak je popsáno v článku Začínáme pro [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). 
 
-Pro nasazení šablon přímých verzí použijte`"apiVersion": "2019-03-01"` nebo novější. Přidejte do `"virtualMachineProfile":` části `evictionPolicy` šablony `billingProfile` a vlastnosti: `priority` 
+Pro nasazení šablon přímých `"apiVersion": "2019-03-01"` verzí použijte nebo novější. Přidejte do `priority` `evictionPolicy` `billingProfile` `"virtualMachineProfile":` části šablony a vlastnosti: 
 
 ```json
                 "priority": "Spot",
@@ -97,7 +99,7 @@ Pro nasazení šablon přímých verzí použijte`"apiVersion": "2019-03-01"` ne
                 }
 ```
 
-Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy` parametr na `Delete`.
+Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy` parametr na `Delete` .
 
 ## <a name="faq"></a>Nejčastější dotazy
 
@@ -126,9 +128,9 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy`
 **A:** Ne, nastavení `Spot` příznaku se podporuje jenom při vytvoření.
 
 
-**Otázka:** `low` Pokud používám sadu škálování s nízkou prioritou, musím místo toho začít používat `Spot` ?
+**Otázka:** Pokud používám `low` sadu škálování s nízkou prioritou, musím `Spot` místo toho začít používat?
 
-**A:** Prozatím `low` `Spot` bude fungovat i, ale měli byste začít s přechodem na použití `Spot`.
+**A:** Prozatím `low` `Spot` bude fungovat i, ale měli byste začít s přechodem na použití `Spot` .
 
 
 **Otázka:** Můžu vytvořit sadu škálování s pravidelnými virtuálními počítači i s virtuálními počítači?

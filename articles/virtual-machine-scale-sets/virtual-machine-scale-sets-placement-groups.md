@@ -1,19 +1,20 @@
 ---
 title: Práce s velkými Virtual Machine Scale Setsmi Azure
 description: Co potřebujete znát o velkých sadách virtuálních počítačů Azure, aby je bylo možné použít ve své aplikaci.
-author: cynthn
-ms.author: cynthn
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
-ms.service: virtual-machine-scale-sets
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 11/9/2017
-ms.openlocfilehash: 6a872e749bae6bd29dbf73d4946e631af1660a39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: c2490d8dc1d828992d309f07de1f75fa61ecb3be
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79531035"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200949"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Práce s velkými škálovacími sadami virtuálních počítačů
 Nyní můžete vytvořit [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure s kapacitou až 1 000 virtuálních počítačů. V tomto dokumentu je _velká škálovací sada virtuálních počítačů_ definována jako škálovací sada umožňující škálování na více než 100 virtuálních počítačů. Tato funkce se nastavuje pomocí vlastnosti škálovací sady (_singlePlacementGroup=False_). 
@@ -75,7 +76,7 @@ Pokud vytváříte velkou škálovací sadu s využitím šablony Azure Resource
     }
 ```
 
-Úplný příklad šablony velké sady škálování najdete v tématu [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json).
+Úplný příklad šablony velké sady škálování najdete v tématu [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json) .
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>Převod existující škálovací sady do více skupin umístění
 Pokud chcete stávající škálovací sadu virtuálních počítačů rozšířit na více než 100 virtuálních počítačů, musíte v modelu škálovací sady změnit hodnotu vlastnosti _singlePlacementGroup_ na _false_. Změnu této vlastnosti můžete otestovat pomocí [Průzkumníka prostředků Azure](https://resources.azure.com/). Vyhledejte existující škálovací sadu, vyberte _Upravit_ a změňte vlastnost _singlePlacementGroup_. Pokud tuto vlastnost nevidíte, možná používáte k zobrazení škálovací sady starší verzi rozhraní Microsoft.Compute API.

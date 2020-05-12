@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5e725df5c875f23d82da1fda19bcdf28db548fc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a8839609856bda5304712405ec57accb4afb095
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428560"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201680"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Připojení k synapse SQL pomocí sady Visual Studio a SSDT
 > [!div class="op_single_selector"]
@@ -28,9 +28,8 @@ ms.locfileid: "81428560"
 
 Pomocí sady Visual Studio se můžete dotazovat na fond SQL pomocí Azure synapse Analytics. Tato metoda používá rozšíření SQL Server Data Tools (SSDT) v aplikaci Visual Studio 2019. 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>Podporované nástroje pro SQL na vyžádání (Preview)
-
-Visual Studio se v současné době nepodporuje pro SQL na vyžádání (Preview). Azure Data Studi (Preview) o je ale plně podporovaný nástroj. SQL Server Management Studio je částečně podporován od verze 18,4 a má omezené funkce, jako je připojení a dotazování.
+> [!NOTE]
+> SSDT nepodporuje SQL na vyžádání (Preview).
 
 ## <a name="prerequisites"></a>Požadavky
 Chcete-li použít tento kurz, musíte mít následující komponenty:
@@ -41,7 +40,7 @@ Chcete-li použít tento kurz, musíte mít následující komponenty:
 
 ## <a name="1-connect-to-sql-pool"></a>1. připojení k fondu SQL
 1. Otevřete Visual Studio 2019.
-2. Otevřete Průzkumník objektů systému SQL Server. Provedete to tak, že vyberete **Zobrazit** > **Průzkumník objektů systému SQL Server**.
+2. Otevřete Průzkumník objektů systému SQL Server. Provedete to tak, že vyberete **Zobrazit**  >  **Průzkumník objektů systému SQL Server**.
    
     ![Průzkumník objektů systému SQL Server](./media/get-started-visual-studio/open-ssdt.png)
 3. Klikněte na ikonu **Přidat SQL Server**.

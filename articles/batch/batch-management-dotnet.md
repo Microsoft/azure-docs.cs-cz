@@ -3,18 +3,18 @@ title: Správa prostředků účtů pomocí knihovny Batch Management .NET
 description: Vytvářejte, odstraňujte a upravujte prostředky účtu Azure Batch pomocí knihovny Batch Management .NET.
 ms.topic: article
 ms.date: 04/24/2017
-ms.custom: seodec18
-ms.openlocfilehash: 69e3eb04352feff11ee50acab11328adb7900539
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: 3cb44b89cacd9e597766ca8df3e4826dfabdb2bd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115988"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201639"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Správa účtů a kvót služby Batch pomocí klientské knihovny pro správu služby Batch pro .NET
 
 > [!div class="op_single_selector"]
-> * [portál Azure](batch-account-create-portal.md)
+> * [Azure Portal](batch-account-create-portal.md)
 > * [Knihovna Batch Management .NET](batch-management-dotnet.md)
 > 
 > 
@@ -34,7 +34,7 @@ Režijní náklady na údržbu v aplikacích Azure Batch můžete snížit pomoc
 ## <a name="create-and-delete-batch-accounts"></a>Vytváření a odstraňování účtů Batch
 Jak už bylo zmíněno, jedna z primárních funkcí rozhraní API pro správu služby Batch je vytvořit a odstranit účty Batch v oblasti Azure. Provedete to tak, že použijete [BatchManagementClient. Account. CreateAsync][net_create] a [DeleteAsync][net_delete]nebo jejich synchronní protějšky.
 
-Následující fragment kódu vytvoří účet, získá nově vytvořený účet ze služby Batch a pak ho odstraní. V tomto fragmentu kódu a dalších dalších v tomto `batchManagementClient` článku je plně inicializovaná instance [BatchManagementClient][net_mgmt_client].
+Následující fragment kódu vytvoří účet, získá nově vytvořený účet ze služby Batch a pak ho odstraní. V tomto fragmentu kódu a dalších dalších v tomto článku `batchManagementClient` je plně inicializovaná instance [BatchManagementClient][net_mgmt_client].
 
 ```csharp
 // Create a new Batch account
@@ -116,7 +116,7 @@ Console.WriteLine("You can create {0} accounts in the {1} region.", quotaRespons
 Ve fragmentu kódu výše `creds` je instance [TokenCloudCredentials][azure_tokencreds]. Příklad vytvoření tohoto objektu naleznete v ukázce kódu [službu AccountManagement][acct_mgmt_sample] na GitHubu.
 
 ### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Zkontroluje účet Batch pro kvóty výpočetních prostředků.
-Před zvýšením výpočetních prostředků ve vašem řešení služby Batch můžete zkontrolovat, že prostředky, které chcete přidělit, nepřekročí kvóty účtu. Ve fragmentu kódu níže vytiskněte informace o kvótě pro účet Batch s názvem `mybatchaccount`. Ve vaší vlastní aplikaci můžete tyto informace použít k určení, jestli účet může zpracovávat další prostředky, které se mají vytvořit.
+Před zvýšením výpočetních prostředků ve vašem řešení služby Batch můžete zkontrolovat, že prostředky, které chcete přidělit, nepřekročí kvóty účtu. Ve fragmentu kódu níže vytiskněte informace o kvótě pro účet Batch s názvem `mybatchaccount` . Ve vaší vlastní aplikaci můžete tyto informace použít k určení, jestli účet může zpracovávat další prostředky, které se mají vytvořit.
 
 ```csharp
 // First obtain the Batch account

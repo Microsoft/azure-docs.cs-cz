@@ -1,19 +1,20 @@
 ---
 title: Odkazování na vlastní image v šabloně sady Azure Scale
 description: Přečtěte si, jak přidat vlastní image do existující šablony sady škálování virtuálních počítačů Azure.
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: cynthn
+ms.author: cynthn
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: imaging
 ms.date: 04/26/2018
-ms.author: mimckitt
-ms.openlocfilehash: 3965090239949b5e1116ceebe427728e49ffafe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: akjosh
+ms.custom: akjosh
+ms.openlocfilehash: 5ed9ee79dde73e738417031b928a675ea913179c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273689"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124903"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Přidání vlastní image do šablony škálovací sady Azure
 
@@ -24,9 +25,9 @@ V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvoř
 
 ### <a name="creating-a-managed-disk-image"></a>Vytvoření image spravovaného disku
 
-Pokud již máte vlastní image spravovaného disku (prostředek typu `Microsoft.Compute/images`), můžete tuto část přeskočit.
+Pokud již máte vlastní image spravovaného disku (prostředek typu `Microsoft.Compute/images` ), můžete tuto část přeskočit.
 
-Nejdřív přidejte `sourceImageVhdUri` parametr, což je identifikátor URI pro zobecněný objekt blob v Azure Storage, který obsahuje vlastní image, ze které se má nasadit.
+Nejdřív přidejte `sourceImageVhdUri` parametr, což je identifikátor URI pro zobecněný objekt BLOB v Azure Storage, který obsahuje vlastní image, ze které se má nasadit.
 
 
 ```diff
@@ -44,7 +45,7 @@ Nejdřív přidejte `sourceImageVhdUri` parametr, což je identifikátor URI pro
    "variables": {},
 ```
 
-Dále přidejte prostředek typu `Microsoft.Compute/images`, což je bitová kopie spravovaného disku založená na zobecněném objektu BLOB umístěném v identifikátoru URI. `sourceImageVhdUri` Tento obrázek musí být ve stejné oblasti jako sada škálování, která ho používá. Ve vlastnostech image zadejte typ operačního systému, umístění objektu BLOB (z `sourceImageVhdUri` parametru) a typ účtu úložiště:
+Dále přidejte prostředek typu `Microsoft.Compute/images` , což je bitová kopie spravovaného disku založená na zobecněném objektu BLOB umístěném v identifikátoru URI `sourceImageVhdUri` . Tento obrázek musí být ve stejné oblasti jako sada škálování, která ho používá. Ve vlastnostech image zadejte typ operačního systému, umístění objektu BLOB (z `sourceImageVhdUri` parametru) a typ účtu úložiště:
 
 ```diff
    "resources": [
@@ -88,7 +89,7 @@ V prostředku sady škálování přidejte `dependsOn` klauzuli odkazující na 
 
 ### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Změna vlastností sady škálování na použití image spravovaného disku
 
-`imageReference` V části sady `storageProfile`škálování místo určení vydavatele, nabídky, SKU a verze image platformy zadejte `id` `Microsoft.Compute/images` zdroj:
+V části `imageReference` sady škálování `storageProfile` místo určení vydavatele, nabídky, SKU a verze image platformy zadejte `id` `Microsoft.Compute/images` Zdroj:
 
 ```json
          "virtualMachineProfile": {
@@ -100,7 +101,7 @@ V prostředku sady škálování přidejte `dependsOn` klauzuli odkazující na 
            "osProfile": {
 ```
 
-V tomto příkladu použijte `resourceId` funkci k získání ID prostředku obrázku vytvořeného ve stejné šabloně. Pokud jste vytvořili image spravovaného disku předem, měli byste místo toho zadat ID tohoto obrázku. Toto ID musí být ve tvaru: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
+V tomto příkladu použijte `resourceId` funkci k získání ID prostředku obrázku vytvořeného ve stejné šabloně. Pokud jste vytvořili image spravovaného disku předem, měli byste místo toho zadat ID tohoto obrázku. Toto ID musí být ve tvaru: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>` .
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -12,12 +12,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250007"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201344"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Chyby spuštění nástroje BitLocker na virtuálním počítači Azure
 
@@ -273,13 +274,13 @@ V případě scénáře použití klíčového šifrovacího klíče postupujte 
 
 **Chyba: nepovedlo se načíst soubor nebo sestavení.**
 
-K této chybě dochází, protože cesty k sestavení ADAL jsou chybné. Pokud je modul AZ Module nainstalován pouze pro aktuálního uživatele, budou sestavení ADAL umístěna v `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`.
+K této chybě dochází, protože cesty k sestavení ADAL jsou chybné. Pokud je modul AZ Module nainstalován pouze pro aktuálního uživatele, budou sestavení ADAL umístěna v `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` .
 
 Můžete také vyhledat `Az.Accounts` složku a vyhledat správnou cestu.
 
 **Chyba: Get-AzKeyVaultSecret nebo Get-AzKeyVaultSecret není rozpoznán jako název rutiny.**
 
-Pokud používáte starý modul AZ PowerShell, musíte změnit dva příkazy na `Get-AzureKeyVaultSecret` a. `Get-AzureKeyVaultSecret`
+Pokud používáte starý modul AZ PowerShell, musíte změnit dva příkazy na `Get-AzureKeyVaultSecret` a `Get-AzureKeyVaultSecret` .
 
 **Ukázky parametrů**
 
