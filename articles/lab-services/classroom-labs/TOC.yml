@@ -22,6 +22,8 @@
   items:
     - name: Koncepce testovacích prostředí v učebnách
       href: classroom-labs-concepts.md
+    - name: Základy architektury testovacích prostředí v učebnách
+      href: classroom-labs-fundamentals.md
     - name: Scénáře
       items:
         - name: Využití testovacích prostředí při výuce
@@ -136,7 +138,7 @@
       href: 'https://azure.microsoft.com/updates/?product=lab-services'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/lab-services/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
+    - name: Fórum technické komunity
+      href: 'https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices'
     - name: Nejčastější dotazy
       href: classroom-labs-faq.md

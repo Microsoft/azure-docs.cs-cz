@@ -557,6 +557,20 @@
       items:
         - name: Poznámky k verzi sady Speech Devices SDK
           href: devices-sdk-release-notes.md
+- name: nástroje
+  items:
+    - name: SPX
+      items:
+        - name: Co je SPX?
+          href: spx-overview.md
+        - name: Základy SPX
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Co je Speech Studio?
+          href: 'https://speech.microsoft.com'
+        - name: Vytvoření aplikace Vlastní příkazy s využitím sady Speech Studio
+          href: quickstart-custom-speech-commands-create-new.md
 - name: Migrace
   items:
     - name: Z rozhraní API pro zpracování řeči Bingu

@@ -2,18 +2,19 @@
 title: Kurz – vytvoření a Správa sady škálování virtuálních počítačů Azure
 description: Zjistěte, jak pomocí Azure PowerShellu vytvořit škálovací sadu virtuálních počítačů a provádět několik běžných úloh správy, jako je spuštění a zastavení instance nebo změna kapacity škálovací sady.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 05/18/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 938b4e64dd5b67488ae5d061f2ceb29ae4bb7f6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/18/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 2e9c027a927d4aba9c174db8dfc5a72f0cc4f214
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81011228"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195178"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a správa škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
@@ -132,7 +133,7 @@ IpAddress
 52.168.121.216
 ```
 
-Vytvořte vzdálené připojení k první instanci virtuálního počítače. Zadejte vlastní veřejnou IP adresu a číslo portu požadované instance virtuálního počítače uvedené ve výstupech předchozích příkazů. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření sady škálování (ve výchozím nastavení ve vzorových příkazech, *azureuser* a *\@P ssw0rd!*). Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Následující příklad se připojí k instanci virtuálního počítače *1*:
+Vytvořte vzdálené připojení k první instanci virtuálního počítače. Zadejte vlastní veřejnou IP adresu a číslo portu požadované instance virtuálního počítače uvedené ve výstupech předchozích příkazů. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření sady škálování (ve výchozím nastavení ve vzorových příkazech, *azureuser* a *P \@ ssw0rd!*). Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Následující příklad se připojí k instanci virtuálního počítače *1*:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -251,7 +252,7 @@ New-AzVmss `
 ## <a name="change-the-capacity-of-a-scale-set"></a>Změna kapacity škálovací sady
 Při vytváření škálovací sady jste vyžádali dvě instance virtuálních počítačů. Pokud chcete zvýšit nebo snížit počet instancí virtuálních počítačů ve škálovací sadě, můžete ručně změnit kapacitu. Škálovací sada vytvoří nebo odebere požadovaný počet instancí virtuálních počítačů a pak nakonfiguruje nástroj pro vyrovnávání zatížení pro distribuci provozu.
 
-Nejprve vytvořte objekt sady škálování pomocí [Get-AzVmss](/powershell/module/az.compute/get-azvmss)a pak zadejte novou hodnotu pro `sku.capacity`. Pokud chcete použít změnu kapacity, použijte [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Následující příklad nastaví počet instancí virtuálních počítačů ve vaší škálovací sadě na *3*:
+Nejprve vytvořte objekt sady škálování pomocí [Get-AzVmss](/powershell/module/az.compute/get-azvmss)a pak zadejte novou hodnotu pro `sku.capacity` . Pokud chcete použít změnu kapacity, použijte [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Následující příklad nastaví počet instancí virtuálních počítačů ve vaší škálovací sadě na *3*:
 
 ```azurepowershell-interactive
 # Get current scale set

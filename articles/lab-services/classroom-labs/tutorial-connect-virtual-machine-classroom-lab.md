@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 27d79e28a986e929fb71dd77fc50b3c2cd32618f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 936cd9d7a7adb4a99f8437a70e9c6de4d1331d67
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77134041"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116632"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Kurz: Přístup k testovacímu prostředí v učebně v Azure Lab Services
 V tomto kurzu se vy, jako student, připojíte k virtuálnímu počítači v testovacím prostředí v učebně. 
@@ -33,12 +33,16 @@ V tomto kurzu provedete následující akce:
 
 ## <a name="register-to-the-lab"></a>Registrovat do testovacího prostředí
 
-1. Přejděte na **adresu URL registrace** , kterou jste dostali z profesor/Educator. Po dokončení registrace nemusíte používat registrační adresu URL. Místo toho použijte adresu URL: [https://labs.azure.com](https://labs.azure.com). Aplikace Internet Explorer 11 není zatím podporována. 
+1. Přejděte na **adresu URL registrace** , kterou jste dostali z profesor/Educator. Po dokončení registrace nemusíte používat registrační adresu URL. Místo toho použijte adresu URL: [https://labs.azure.com](https://labs.azure.com) . Aplikace Internet Explorer 11 není zatím podporována. 
+
+    ![Registrovat do testovacího prostředí](../media/tutorial-connect-vm-in-classroom-lab/register-lab.png)
 1. Přihlaste se ke službě pomocí školního účtu, abyste dokončili registraci. 
 
     > [!NOTE]
     > Pro použití Azure Lab Services je vyžadován účet Microsoft. Pokud se pokoušíte použít účet Microsoft, jako jsou například účty Yahoo nebo Google, abyste se přihlásili k portálu, postupujte podle pokynů pro vytvoření účet Microsoft, která bude propojena s neúčet Microsoft. Pak postupujte podle pokynů k dokončení procesu registrace. 
 1. Po dokončení registrace zkontrolujte, že vidíte virtuální počítač pro testovací prostředí, ke kterému máte přístup. 
+
+    ![Dostupné virtuální počítače](../media/tutorial-connect-vm-in-classroom-lab/accessible-vms.png)
 1. Počkejte, až bude virtuální počítač připravený. Na dlaždici VM si všimněte následujících polí:
     1. V horní části dlaždice se zobrazí **název testovacího prostředí**.
     1. Napravo se zobrazí ikona představující **operační systém** virtuálního počítače. V tomto příkladu se jedná o operační systém Windows. 

@@ -1,19 +1,19 @@
 ---
-title: 'Kurz: kurz vývoje aplikací Java pomocí Azure Cosmos DB'
+title: 'Kurz: Vytvoření webové aplikace v jazyce Java pomocí Azure Cosmos DB a rozhraní SQL API'
 description: 'Kurz: Tento kurz webové aplikace v jazyce Java vám ukáže, jak používat Azure Cosmos DB a rozhraní SQL API k ukládání a přístupu k datům z aplikace Java hostované na Azure websites.'
-author: tknandu
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/05/2019
-ms.author: ramkris
-ms.openlocfilehash: 2e38aeba198f875961024f8c25c7fb0123479f87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: anfeldma
+ms.openlocfilehash: fc8fb0e3c9ad35957291376691d5ed2c0484192a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80985265"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120181"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Kurz: Vytvoření webové aplikace v jazyce Java pomocí Azure Cosmos DB a rozhraní SQL API
 
@@ -50,7 +50,7 @@ Než zahájíte tento kurz vývoje aplikace, musíte mít následující:
 * [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Web Azure se zapnutou platformou Java Runtime Environment (např. Tomcat nebo Jetty)](../app-service/app-service-web-get-started-java.md)
 
-Pokud tyto nástroje instalujete poprvé, coreservlets.com poskytuje k procesu instalace návod v části Quick Start článku [Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Kurz: Instalace TomCat7 a jeho použití s Eclipse).
+Při prvním instalaci těchto nástrojů coreservlets.com poskytuje návod k procesu instalace v části rychlý Start v [kurzu: instalace TomCat7 a jeho použití v článku s](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) poznámkou.
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a><a id="CreateDB"></a>Krok 1: Vytvoření účtu služby Azure Cosmos DB
 Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již účet máte nebo pokud používáte pro účely tohoto kurzu emulátor služby Azure Cosmos DB, můžete přeskočit na [Krok 2: Vytvoření aplikace Java JSP](#CreateJSP).
@@ -98,7 +98,7 @@ K tomu bude nutné převést projekt na projekt Maven. K tomu slouží následuj
      
    ![Instalace sady SQL Java Application SDK](./media/sql-api-java-application/image13.png)
      
-   * Nebo přidejte XML závislosti pro GroupId a ArtifactId přímo do souboru pom.xml pomocí textového editoru:
+   * Nebo přidejte XML závislosti pro ID skupiny a ID artefaktu přímo do souboru pom. XML přes textový editor:
         ```xml
         <dependency>
             <groupId>com.microsoft.azure</groupId>
@@ -250,7 +250,7 @@ K tomu bude nutné převést projekt na projekt Maven. K tomu slouží následuj
    
             return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
         }
-5. Podobně jako databáze a kolekce Azure Cosmos se také odkazy na dokumenty odkazují pomocí odkazů na sebe. Následující pomocná funkce nám umožní získat dokumenty podle jiného atributu (např. id) namísto odkazu na sebe sama:
+5. Podobně jako databáze a kolekce Azure Cosmos se také odkazy na dokumenty odkazují pomocí odkazů na sebe. Následující pomocná funkce nám umožňuje načíst dokumenty pomocí jiného atributu (např. "ID") místo odkazu na sebe:
    
         private Document getDocumentById(String id) {
             // Retrieve the document using the DocumentClient.
@@ -265,7 +265,7 @@ K tomu bude nutné převést projekt na projekt Maven. K tomu slouží následuj
                 return null;
             }
         }
-6. Pomocnou metodu z kroku 5 můžete využít k získání dokumentu JSON objektu TodoItem podle id a jeho následné deserializaci na objekt POJO:
+6. V kroku 5 můžeme použít pomocnou metodu k načtení dokumentu JSON TodoItem podle ID a jeho deserializaci na POJO:
    
         @Override
         public TodoItem readTodoItem(String id) {

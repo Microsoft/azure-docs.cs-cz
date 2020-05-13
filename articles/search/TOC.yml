@@ -315,6 +315,8 @@
           href: search-security-overview.md
         - name: Vytvoření privátního koncového bodu
           href: service-create-private-endpoint.md
+        - name: Konfigurace brány firewall protokolu P
+          href: service-configure-firewall.md
         - name: Správa klíčů služeb
           href: search-security-api-keys.md
         - name: Přístup správce na základě role

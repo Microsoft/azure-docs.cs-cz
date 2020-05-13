@@ -234,6 +234,11 @@
                       href: instance-generalized-image-version-cli.md
                 - name: Aktualizace prostředků imagí
                   href: ../virtual-machines/update-image-resources-cli.md
+            - name: Řešení potíží se sdílenými imagemi
+              href: ../virtual-machines/troubleshooting-shared-images.md
+            - name: Použití klíčů spravovaných zákazníkem
+              displayName: 'SSE, CMK, encrypt'
+              href: ../virtual-machines/image-version-encryption.md
     - name: Vytvoření šablony
       items:
         - name: Další informace o šablonách škálovacích sad

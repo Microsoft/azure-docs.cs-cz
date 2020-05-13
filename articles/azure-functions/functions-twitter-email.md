@@ -4,21 +4,21 @@ description: Vytvořte funkci, která se integruje se službami Azure Logic Apps
 author: craigshoemaker
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.topic: tutorial
-ms.date: 11/06/2018
+ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f6698bcc8125cd00dcb1cd6c86a8d69153242b35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aa4087f3eafcd217eedc707697d093155b13b9e6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190295"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116316"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Vytvoření funkce, která se integruje s Azure Logic Apps
 
 Azure Functions se integruje s Azure Logic Apps v Návrháři pro Logic Apps. Tato integrace umožňuje využít výpočetní výkon služby Functions v orchestracích s dalšími službami Azure a třetích stran. 
 
-V tomto kurzu se dozvíte, jak pomocí služeb Functions, Logic Apps a Cognitive Services v Azure provést analýzu mínění v příspěvcích na Twitteru. Funkce aktivovaná protokolem HTTP na základě skóre mínění kategorizuje tweety na zelené, žluté nebo červené. V případě rozpoznání špatného mínění se odešle e-mail. 
+V tomto kurzu se dozvíte, jak používat Azure Functions s Logic Apps a Cognitive Services na Azure ke spouštění analýzy mínění ze příspěvků na Twitteru. Funkce triggeru HTTP kategorizuje tweety jako zelenou, žlutou nebo červenou na základě skóre mínění. V případě rozpoznání špatného mínění se odešle e-mail. 
 
 ![obrázek s prvními dvěma korky aplikace v Návrháři pro Logic Apps](media/functions-twitter-email/00-logic-app-overview.png)
 
@@ -51,7 +51,7 @@ Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatn
 
 2. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
-3. Klikněte na **AI + Machine Learning** > **Analýza textu**. Potom vytvořte prostředek s použitím nastavení uvedených v tabulce.
+3. Klikněte na **AI + Machine Learning**  >  **Analýza textu**. Potom vytvořte prostředek s použitím nastavení uvedených v tabulce.
 
     ![Vytvoření stránky prostředku Cognitive](media/functions-twitter-email/01-create-text-analytics.png)
 
@@ -64,7 +64,7 @@ Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatn
 
 4. Kliknutím na **Vytvořit** vytvořte prostředek. 
 
-5. Klikněte na **Přehled** a zkopírujte hodnotu **Koncový bod** do textového editoru. Tato hodnota se používá při vytváření připojení k rozhraní API služeb Cognitive Services.
+5. Klikněte na **Přehled** a zkopírujte hodnotu **koncového bodu** do textového editoru. Tato hodnota se používá při vytváření připojení k rozhraní API služeb Cognitive Services.
 
     ![Nastavení služeb Cognitive Services](media/functions-twitter-email/02-cognitive-services.png)
 
@@ -74,21 +74,21 @@ Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatn
 
 ## <a name="create-the-function-app"></a>Vytvoření aplikace funkcí
 
-Funkce poskytují skvělý způsob snižování zátěže úloh zpracování v pracovním postupu aplikací logiky. Tento kurz ke zpracování skóre mínění v tweetech ze služeb Cognitive Services a k vracení hodnoty kategorie používá funkci aktivovanou protokolem HTTP.  
+Azure Functions poskytuje skvělý způsob, jak přesměrovat úlohy zpracování v pracovním postupu Logic Apps. V tomto kurzu se používá funkce triggeru HTTP ke zpracování mínění skóre z Cognitive Services a vrácení hodnoty kategorie.  
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-## <a name="create-an-http-triggered-function"></a>Vytvoření funkce aktivované protokolem HTTP  
+## <a name="create-an-http-trigger-function"></a>Vytvoření funkce triggeru HTTP  
 
-1. Rozbalte aplikaci Function App a klikněte na **+** tlačítko vedle položky **funkce**. Pokud jde o první funkci ve vaší aplikaci funkcí, vyberte **Na portálu**.
+1. V levé nabídce okna **Functions (funkce** ) vyberte **funkce**a pak v horní nabídce vyberte **Přidat** .
 
-    ![Stručný úvod do služby Functions na webu Azure Portal](media/functions-twitter-email/05-function-app-create-portal.png)
+2. V **novém okně funkce** vyberte **Trigger http**.
 
-2. Dále vyberte **Webhook + API** a klikněte na **Vytvořit**. 
+    ![Zvolit funkci triggeru HTTP](./media/functions-twitter-email/06-function-http-trigger.png)
 
-    ![Volba triggeru HTTP](./media/functions-twitter-email/06-function-webhook.png)
+3. Na stránce **Nová funkce** vyberte možnost **vytvořit funkci**.
 
-3. Nahraďte obsah souboru `run.csx` následujícím kódem a klikněte na **Uložit**:
+4. V nové funkci triggeru HTTP v nabídce vlevo vyberte **Code + test** , nahraďte obsah `run.csx` souboru následujícím kódem a pak vyberte **Uložit**:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -123,11 +123,12 @@ Funkce poskytují skvělý způsob snižování zátěže úloh zpracování v p
             : new BadRequestObjectResult("Please pass a value on the query string or in the request body");
     }
     ```
+
     Tento kód funkce vrátí barevnou kategorii na základě skóre mínění přijatého v požadavku. 
 
-4. Pokud chcete funkci otestovat, kliknutím na **test** úplně vpravo rozbalte kartu test. Zadejte hodnotu `0.2` pro **Text žádosti**a pak klikněte na **Spustit**. V textu odpovědi se vrátí hodnota **RED** (Červená). 
+5. Pokud chcete funkci otestovat, v horní nabídce vyberte **test** . Na kartě **vstup** zadejte hodnotu `0.2` v **těle**a pak vyberte **Spustit**. V **obsahu odpovědi HTTP** na kartě **výstup** se vrátí hodnota **Red** . 
 
-    ![Test funkce na webu Azure Portal](./media/functions-twitter-email/07-function-test.png)
+    :::image type="content" source="./media/functions-twitter-email/07-function-test.png" alt-text="Definování nastavení proxy serveru":::
 
 Teď máte funkci, která kategorizuje skóre mínění. Dále vytvoříte aplikaci logiky, která vaši funkci integruje s vaším účtem na Twitteru a rozhraním API služeb Cognitive Services. 
 
@@ -135,7 +136,7 @@ Teď máte funkci, která kategorizuje skóre mínění. Dále vytvoříte aplik
 
 1. V Azure Portal klikněte na tlačítko **vytvořit prostředek** , které najdete v levém horním rohu Azure Portal.
 
-2. Klikněte na aplikace **webové** > **logiky**.
+2. Klikněte na aplikace **webové**  >  **logiky**.
  
 3. Potom zadejte hodnotu **Název**, například `TweetSentiment`, a použijte nastavení uvedená v tabulce.
 
@@ -187,7 +188,7 @@ Vaše aplikace je teď připojená k Twitteru. Dále se připojíte k rozhraní 
 
     ![Nový krok a pak Přidat akci](media/functions-twitter-email/12-connection-settings.png)
 
-4. Dále do textového pole zadejte **Text tweetu** a klikněte na **Nový krok**.
+4. Potom do textového pole zadejte **text s přítextem** a pak klikněte na **Nový krok**.
 
     ![Definice textu, který se má analyzovat](media/functions-twitter-email/13-analyze-tweet-text.png)
 
@@ -195,7 +196,7 @@ Když je teď nakonfigurované rozpoznávání mínění, můžete do své funkc
 
 ## <a name="connect-sentiment-output-to-your-function"></a>Připojení výstupu mínění k funkci
 
-1. V Návrháři Logic Apps klikněte na **Nový krok** > **přidat akci**, vyfiltrujte **Azure Functions** a klikněte na **zvolit funkci Azure**.
+1. V Návrháři Logic Apps klikněte na **Nový krok**  >  **přidat akci**, vyfiltrujte **Azure Functions** a klikněte na **zvolit funkci Azure**.
 
     ![Rozpoznávání mínění](media/functions-twitter-email/14-azure-functions.png)
   
@@ -215,9 +216,9 @@ Vaše funkce se teď aktivuje při odeslání skóre mínění z aplikace logiky
 
 ## <a name="add-email-notifications"></a>Přidání e-mailového oznámení
 
-Poslední částí pracovního postupu je aktivace e-mailu, když má skóre mínění hodnotu _RED_ (Červená). V tomto tématu se používá konektor Outlook.com. Podobný postup však můžete použít i pro konektor Gmail nebo Office 365 Outlook.   
+Poslední částí pracovního postupu je aktivace e-mailu, když má skóre mínění hodnotu _RED_ (Červená). Tento článek používá konektor Outlook.com. Podobný postup však můžete použít i pro konektor Gmail nebo Office 365 Outlook.   
 
-1. V Návrháři Logic Apps klikněte na **Nový krok** > **Přidat podmínku**. 
+1. V Návrháři Logic Apps klikněte na **Nový krok**  >  **Přidat podmínku**. 
 
     ![Přidání podmínky do aplikace logiky](media/functions-twitter-email/18-add-condition.png)
 
@@ -277,7 +278,7 @@ Když je teď pracovní postup dokončený, můžete aplikaci logiky povolit a p
     > [!IMPORTANT]
     > Po dokončení tohoto kurzu byste měli aplikaci logiky zakázat. Zakázáním aplikace se vyhnete poplatkům za spouštění a vyčerpání transakcí ve vašem rozhraní API služeb Cognitive Services.
 
-Právě jste viděli, jak snadné je integrovat funkce do pracovního postupu aplikací logiky.
+Teď jste viděli, jak snadné je integrovat funkce do pracovního postupu Logic Apps.
 
 ## <a name="disable-the-logic-app"></a>Zákaz aplikace logiky
 

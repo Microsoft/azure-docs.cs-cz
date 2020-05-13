@@ -12,6 +12,8 @@
           href: security-center-services.md
         - name: Pokrytí funkcí pro prostředky Azure PaaS
           href: features-paas.md
+    - name: Co je nového ve službě Security Center?
+      href: release-notes.md
     - name: Doporučení zabezpečení
       href: recommendations-reference.md
     - name: Výstrahy zabezpečení a model Kill Chain
@@ -188,7 +190,9 @@
           href: faq-vms.md
         - name: Stávající uživatelé Azure Log Analytics
           href: faq-azure-monitor-logs.md
-    - name: "Poznámky k\_verzi"
+    - name: Archiv novinek ve službě Security Center
+      href: release-notes-archive.md
+    - name: Blog s plány nasazení produktů Azure
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Vyřazení funkcí a rozhraní API (červenec 2019)
       href: security-center-features-retirement-july2019.md

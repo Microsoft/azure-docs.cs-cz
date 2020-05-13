@@ -129,6 +129,8 @@
           href: scale-cluster.md
         - name: Upgrade clusteru AKS
           href: upgrade-cluster.md
+        - name: Použití smlouvy SLA pro dobu provozu
+          href: uptime-sla.md
         - name: Aktualizace operačního systému procesních uzlů
           href: node-updates-kured.md
         - name: Konfigurace clusteru AKS
@@ -231,7 +233,7 @@
         - name: Povolení integrace Azure Active Directory
           items:
             - name: Integrace Azure AD (Preview)
-              href: azure-ad-v2.md
+              href: managed-aad.md
             - name: Použití Azure CLI
               href: azure-ad-integration-cli.md
             - name: Použití webu Azure Portal

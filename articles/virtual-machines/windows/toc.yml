@@ -392,6 +392,101 @@
           href: migration-classic-resource-manager-community-tools.md
         - name: Nejčastější dotazy
           href: migration-classic-resource-manager-faq.md
+    - name: Použití imagí
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Vytváření a sdílení imagí
+          items:
+            - name: PowerShell
+              items:
+                - name: Vytvoření galerie
+                  href: ../shared-images-powershell.md
+                - name: Vytvoření image
+                  items:
+                    - name: Z virtuálního počítače
+                      href: ../image-version-vm-powershell.md
+                    - name: Migrace ze spravované image
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Kopírování z jiné galerie
+                      href: ../image-version-another-gallery-powershell.md
+                - name: Vytvoření virtuálního počítače
+                  items:
+                    - name: Generalizovaná
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Specializovaná
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Aktualizace prostředků imagí
+                  href: ../update-image-resources-powershell.md
+            - name: Rozhraní příkazového řádku
+              items:
+                - name: Vytvoření galerie
+                  href: ../linux/shared-images.md
+                - name: Vytvoření image
+                  items:
+                    - name: Z virtuálního počítače
+                      href: ../image-version-vm-cli.md
+                    - name: Migrace ze spravované image
+                      href: ../image-version-managed-image-cli.md
+                    - name: Kopírování z jiné galerie
+                      href: ../image-version-another-gallery-cli.md
+                    - name: Kopírování z jiné galerie
+                      href: ../image-version-another-gallery-cli.md
+                - name: Vytvoření virtuálního počítače
+                  items:
+                    - name: Generalizovaná
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Aktualizace prostředků imagí
+                  href: ../update-image-resources-cli.md
+            - name: Portál
+              items:
+                - name: 'Vytvoření galerie, image a virtuálního počítače'
+                  href: shared-images-portal.md
+            - name: Šablony Resource Manageru
+              items:
+                - name: Vytvoření služby Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Vytvoření definici image v Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Vytvoření verze image v Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Vytvoření virtuálního počítače z verze image
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+            - name: Řešení potíží se sdílenými imagemi
+              href: troubleshooting-shared-images.md
+            - name: Použití klíčů spravovaných zákazníkem
+              displayName: 'SSE, CMK, encrypt'
+              href: ../image-version-encryption.md
+        - name: Image Builder (Preview)
+          items:
+            - name: Přehled
+              href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Použití Azure CLI
+              href: image-builder.md
+            - name: Sestavení pro galerie imagí
+              href: image-builder-gallery.md
+            - name: Aktualizace existující image
+              href: image-builder-gallery-update-image-version.md
+            - name: Ukládání skriptů
+              href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Referenční informace k šablonám ARM
+              displayName: Azure Resource Manager
+              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Řešení potíží
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+        - name: Vyhledání a použití imagí
+          href: cli-ps-findimage.md
+        - name: Příprava virtuálního počítače pro nahrání
+          href: prepare-for-upload-vhd-image.md
+        - name: Zachycení virtuálního počítače v imagi
+          href: capture-image-resource.md
+        - name: Použití generalizované image
+          href: create-vm-generalized-managed.md
+        - name: Sestavení image pomocí Packeru
+          href: build-image-with-packer.md
+        - name: Použití imagí klienta Windows
+          href: client-images.md
+        - name: Stažení existujícího disku
+          href: download-vhd.md
     - name: Zabezpečení virtuálních počítačů
       items:
         - name: Doporučení
@@ -528,98 +623,6 @@
           href: ../../azure-monitor/platform/alerts-log.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Získat metriky využití s rozhraním REST
           href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-    - name: Použití imagí
-      displayName: 'SIG, AMI, image'
-      items:
-        - name: Vytváření a sdílení imagí
-          items:
-            - name: PowerShell
-              items:
-                - name: Vytvoření galerie
-                  href: ../shared-images-powershell.md
-                - name: Vytvoření image
-                  items:
-                    - name: Z virtuálního počítače
-                      href: ../image-version-vm-powershell.md
-                    - name: Migrace ze spravované image
-                      href: ../image-version-managed-image-powershell.md
-                    - name: Kopírování z jiné galerie
-                      href: ../image-version-another-gallery-powershell.md
-                - name: Vytvoření virtuálního počítače
-                  items:
-                    - name: Generalizovaná
-                      href: ../vm-generalized-image-version-powershell.md
-                    - name: Specializovaná
-                      href: ../vm-specialized-image-version-powershell.md
-                - name: Aktualizace prostředků imagí
-                  href: ../update-image-resources-powershell.md
-            - name: Rozhraní příkazového řádku
-              items:
-                - name: Vytvoření galerie
-                  href: ../linux/shared-images.md
-                - name: Vytvoření image
-                  items:
-                    - name: Z virtuálního počítače
-                      href: ../image-version-vm-cli.md
-                    - name: Migrace ze spravované image
-                      href: ../image-version-managed-image-cli.md
-                    - name: Kopírování z jiné galerie
-                      href: ../image-version-another-gallery-cli.md
-                    - name: Kopírování z jiné galerie
-                      href: ../image-version-another-gallery-cli.md
-                - name: Vytvoření virtuálního počítače
-                  items:
-                    - name: Generalizovaná
-                      href: ../vm-generalized-image-version-cli.md
-                - name: Aktualizace prostředků imagí
-                  href: ../update-image-resources-cli.md
-            - name: Portál
-              items:
-                - name: 'Vytvoření galerie, image a virtuálního počítače'
-                  href: shared-images-portal.md
-            - name: Šablony Resource Manageru
-              items:
-                - name: Vytvoření služby Shared Image Gallery
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
-                - name: Vytvoření definici image v Shared Image Gallery
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
-                - name: Vytvoření verze image v Shared Image Gallery
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
-                - name: Vytvoření virtuálního počítače z verze image
-                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
-            - name: Řešení potíží se sdílenými imagemi
-              href: troubleshooting-shared-images.md
-        - name: Image Builder (Preview)
-          items:
-            - name: Přehled
-              href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Použití Azure CLI
-              href: image-builder.md
-            - name: Sestavení pro galerie imagí
-              href: image-builder-gallery.md
-            - name: Aktualizace existující image
-              href: image-builder-gallery-update-image-version.md
-            - name: Ukládání skriptů
-              href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Referenční informace k šablonám ARM
-              displayName: Azure Resource Manager
-              href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Řešení potíží
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
-        - name: Vyhledání a použití imagí
-          href: cli-ps-findimage.md
-        - name: Příprava virtuálního počítače pro nahrání
-          href: prepare-for-upload-vhd-image.md
-        - name: Zachycení virtuálního počítače v imagi
-          href: capture-image-resource.md
-        - name: Použití generalizované image
-          href: create-vm-generalized-managed.md
-        - name: Sestavení image pomocí Packeru
-          href: build-image-with-packer.md
-        - name: Použití imagí klienta Windows
-          href: client-images.md
-        - name: Stažení existujícího disku
-          href: download-vhd.md
     - name: Dostupnost a škálování
       items:
         - name: Virtual Machine Scale Sets

@@ -200,6 +200,8 @@
           href: web-sites-monitor.md
         - name: Povolení protokolů
           href: troubleshoot-diagnostic-logs.md
+        - name: Získání událostí prostředků
+          href: get-resource-events.md
     - name: Správa aplikace
       items:
         - name: Správa plánu hostování

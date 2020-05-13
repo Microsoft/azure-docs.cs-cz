@@ -7,18 +7,26 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Aplikace v ASP.NET
-      href: cache-web-app-howto.md
-    - name: Aplikace v .NET Core
-      href: cache-dotnet-core-quickstart.md
-    - name: Aplikace v .NET
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: Aplikace v Javě
-      href: cache-java-get-started.md
-    - name: Aplikace v Node.js
-      href: cache-nodejs-get-started.md
-    - name: Aplikace v Pythonu
-      href: cache-python-get-started.md
+    - name: Vytvoření mezipaměti
+      items:
+        - name: 'Úrovně Basic, Standard a Premium'
+          href: quickstart-create-redis.md
+        - name: Podnikové úrovně
+          href: quickstart-create-redis-enterprise.md
+    - name: Použití mezipaměti
+      items:
+        - name: Aplikace v ASP.NET
+          href: cache-web-app-howto.md
+        - name: Aplikace v .NET Core
+          href: cache-dotnet-core-quickstart.md
+        - name: Aplikace v .NET
+          href: cache-dotnet-how-to-use-azure-redis-cache.md
+        - name: Aplikace v Javě
+          href: cache-java-get-started.md
+        - name: Aplikace v Node.js
+          href: cache-nodejs-get-started.md
+        - name: Aplikace v Pythonu
+          href: cache-python-get-started.md
 - name: Kurzy
   items:
     - name: Použití ukládání do mezipaměti s tabulkami výsledků

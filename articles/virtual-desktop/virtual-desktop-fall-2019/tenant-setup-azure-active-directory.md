@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94128c69f227ceff51968354048ec6610e3d7c4c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8b08e8e4d6623277d1935fc85e302e8ce3c88eea
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614400"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124393"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Kurz: vytvoření tenanta ve virtuální ploše Windows
 
@@ -57,7 +57,7 @@ Udělení oprávnění ke službě:
    >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
    >```
 
-2. Přihlaste se na stránku pro vyjádření souhlasu s virtuálním počítačem s Windows pomocí účtu globálního správce. Pokud jste například používali organizaci Contoso, váš účet může být admin@contoso.com nebo. admin@contoso.onmicrosoft.com
+2. Přihlaste se na stránku pro vyjádření souhlasu s virtuálním počítačem s Windows pomocí účtu globálního správce. Pokud jste například používali organizaci Contoso, váš účet může být admin@contoso.com nebo admin@contoso.onmicrosoft.com .
 3. Vyberte **Přijmout**.
 4. Počkejte jednu minutu, aby služba Azure AD mohla nahrávat souhlas.
 5. Otevřete prohlížeč a zahajte postup souhlasu správce s [klientskou aplikací pro virtuální počítače s Windows](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback).
@@ -87,7 +87,7 @@ Přiřazení role aplikace TenantCreator:
    ![Snímek obrazovky uživatelů a skupin přiřazený ke správě podnikové aplikace "virtuální plocha Windows" Snímek obrazovky zobrazuje pouze jedno přiřazení, které je pro "výchozí přístup".](../media/tenant-default-access.png)
 4. Vyberte **Přidat uživatele**a pak na kartě **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 5. Vyhledejte uživatelský účet, který vytvoří tenanta pro virtuální počítače s Windows. Pro jednoduchost může to být účet globálního správce.
-   - Pokud používáte poskytovatele identity Microsoftu, jako contosoadmin@live.com je nebo contosoadmin@outlook.com, možná se nebudete moct přihlásit k virtuálnímu počítači s Windows. Doporučujeme použít účet specifický pro doménu, jako admin@contoso.com je nebo admin@contoso.onmicrosoft.com místo.
+   - Pokud používáte poskytovatele identity Microsoftu, jako je contosoadmin@live.com nebo contosoadmin@outlook.com , možná se nebudete moct přihlásit k virtuálnímu počítači s Windows. Doporučujeme použít účet specifický pro doménu, jako je admin@contoso.com nebo admin@contoso.onmicrosoft.com místo.
 
    ![Snímek obrazovky s výběrem uživatele, který chcete přidat jako "TenantCreator".](../media/tenant-assign-user.png)
    > [!NOTE]
@@ -145,13 +145,15 @@ Hodnoty v závorkách nahraďte hodnotami, které jsou relevantní pro vaši org
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
 ```
 
-K druhému uživateli je vhodné přiřadit přístup pro správu v případě, že jste se k vašemu účtu někdy odhlásili nebo jste na dovolenou a potřebujete někoho, aby ve vaší absenci pracoval jako správce tenanta. Chcete-li přiřadit přístup správce k druhému uživateli, spusťte následující `<TenantName>` rutinu `<Upn>` s názvem vašeho tenanta a hlavním jménem druhého uživatele.
+K druhému uživateli je vhodné přiřadit přístup pro správu v případě, že jste se k vašemu účtu někdy odhlásili nebo jste na dovolenou a potřebujete někoho, aby ve vaší absenci pracoval jako správce tenanta. Chcete-li přiřadit přístup správce k druhému uživateli, spusťte následující rutinu s `<TenantName>` `<Upn>` názvem vašeho tenanta a hlavním jménem druhého uživatele.
 
 ```powershell
 New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinitionName "RDS Owner"
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
+Podrobnější návod najdete v naší [výukové cestě k virtuálnímu počítači s Windows](https://docs.microsoft.com/learn/paths/m365-wvd/).
 
 Po vytvoření tenanta budete muset vytvořit instanční objekt v Azure Active Directory a přiřadit mu roli v rámci virtuálního klienta Windows. Instanční objekt vám umožní úspěšně nasadit virtuální plochu Windows Azure Marketplace nabídku a vytvořit fond hostitelů. Další informace o fondech hostitelů najdete v kurzu vytváření fondu hostitelů na virtuálním počítači s Windows.
 

@@ -2,26 +2,26 @@
 title: Kurz – použití vlastní image virtuálního počítače v sadě škálování s Azure PowerShell
 description: Zjistěte, jak pomocí Azure PowerShellu vytvořit vlastní image virtuálního počítače, kterou můžete použít k nasazení škálovací sady virtuálních počítačů.
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 4b072991a86922fe2b4ba5be93b4c96841dc24af
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.custom: akjosh
+ms.openlocfilehash: 3f99b68de4bce37e7ba9ce6656cf401209e73105
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792764"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200924"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Kurz: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
 Při vytváření škálovací sady zadáte image, která se použije při nasazení instancí virtuálních počítačů. Pokud chcete snížit počet úloh po nasazení instancí virtuálních počítačů, můžete použít vlastní image virtuálního počítače. Tato vlastní image virtuálního počítače obsahuje instalace a konfigurace všech požadovaných aplikací. Všechny instance virtuálních počítačů vytvořené ve škálovací sadě používají vlastní image virtuálního počítače a jsou připravené k obsluze provozu aplikace. Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření galerie sdílených imagí
+> * Vytvoření služby Shared Image Gallery
 > * Vytvoření definice obrázku
 > * Vytvoření verze image
 > * Vytvoření sady škálování z obrázku 
@@ -39,12 +39,12 @@ K dokončení příkladu v tomto kurzu potřebujete existující virtuální po�
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/powershell](https://shell.azure.com/powershell)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 
 ## <a name="get-the-vm"></a>Získání virtuálního počítače
 
-Seznam virtuálních počítačů, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). Jakmile znáte název virtuálního počítače a skupinu prostředků, můžete znovu použít `Get-AzVM` k získání objektu virtuálního počítače a jeho uložení do proměnné pro pozdější použití. Tento příklad načte virtuální počítač s názvem *sourceVM* ze skupiny prostředků "myResourceGroup" a přiřadí ho k proměnné *$VM*. 
+Seznam virtuálních počítačů, které jsou k dispozici ve skupině prostředků, můžete zobrazit pomocí [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). Jakmile znáte název virtuálního počítače a skupinu prostředků, můžete `Get-AzVM` znovu použít k získání objektu virtuálního počítače a jeho uložení do proměnné pro pozdější použití. Tento příklad načte virtuální počítač s názvem *sourceVM* ze skupiny prostředků "myResourceGroup" a přiřadí ho k proměnné *$VM*. 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -106,7 +106,7 @@ Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v r
 
 V tomto příkladu je verze image *1.0.0* a replikuje se do datových center *východní USA* i *střed USA – jih* . Při výběru cílových oblastí pro replikaci musíte zahrnout *zdrojovou* oblast jako cíl pro replikaci.
 
-Pokud chcete vytvořit verzi image z virtuálního počítače, použijte `$vm.Id.ToString()` pro `-Source`.
+Pokud chcete vytvořit verzi image z virtuálního počítače, použijte `$vm.Id.ToString()` pro `-Source` .
 
 ```azurepowershell-interactive
 $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -228,7 +228,7 @@ Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních 
 
 ## <a name="share-the-gallery"></a>Sdílení galerie
 
-Doporučujeme sdílet přístup na úrovni Galerie imagí. Pomocí e-mailové adresy a rutiny [Get-AzADUser](/powershell/module/az.resources/get-azaduser) Získejte ID objektu pro uživatele a pak pomocí [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) udělte přístup k galerii. alinne_montes@contoso.com V tomto příkladu nahraďte příklad e-mailu vlastními informacemi.
+Doporučujeme sdílet přístup na úrovni Galerie imagí. Pomocí e-mailové adresy a rutiny [Get-AzADUser](/powershell/module/az.resources/get-azaduser) Získejte ID objektu pro uživatele a pak pomocí [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) udělte přístup k galerii. V tomto příkladu nahraďte příklad e-mailu alinne_montes@contoso.com vlastními informacemi.
 
 ```azurepowershell-interactive
 # Get the object ID for the user
@@ -262,7 +262,7 @@ Azure také nabízí službu, která je založená na balíčku, [tvůrci imagí
 V tomto kurzu jste zjistili, jak vytvořit a použít vlastní image virtuálního počítače pro škálovací sady pomocí Azure PowerShellu:
 
 > [!div class="checklist"]
-> * Vytvoření galerie sdílených imagí
+> * Vytvoření služby Shared Image Gallery
 > * Vytvoření definice obrázku
 > * Vytvoření verze image
 > * Vytvoření sady škálování z obrázku 

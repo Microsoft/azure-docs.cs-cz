@@ -15,7 +15,7 @@
       href: tutorial-enable-sspr-writeback.md
     - name: Konfigurace vlastních seznamů zakázaných hesel
       href: tutorial-configure-custom-password-protection.md
-    - name: Integrace ochrany identit Azure
+    - name: Povolení ochrany přihlášení na základě rizik
       href: tutorial-risk-based-sspr-mfa.md
 - name: Koncepty
   expanded: true

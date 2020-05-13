@@ -2,18 +2,19 @@
 title: Kurz – automatické škálování sady škálování pomocí Azure PowerShell
 description: Zjistěte, jak pomocí Azure PowerShellu automaticky škálovat škálovací sadu virtuálních počítačů s ohledem na zvyšující a snižující se požadavky na CPU.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 03/27/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: b2451779119ab8fb6c1446631797ce32fd376146
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: autoscale
+ms.date: 03/27/2018
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 3c8488fa794e2bfa4de7833cb4cd4756b5394263
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81008994"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201358"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
@@ -180,7 +181,7 @@ IpAddress
 52.168.121.216
 ```
 
-Vytvořte vzdálené připojení k první instanci virtuálního počítače. Zadejte vlastní veřejnou IP adresu a číslo portu požadované instance virtuálního počítače uvedené ve výstupech předchozích příkazů. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření sady škálování (ve výchozím nastavení v vzorových příkazech jsou *azureuser* a *\@P ssw0rd!*). Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Následující příklad se připojí k instanci virtuálního počítače *0*:
+Vytvořte vzdálené připojení k první instanci virtuálního počítače. Zadejte vlastní veřejnou IP adresu a číslo portu požadované instance virtuálního počítače uvedené ve výstupech předchozích příkazů. Po zobrazení výzvy zadejte přihlašovací údaje, které jste použili při vytváření sady škálování (ve výchozím nastavení v vzorových příkazech jsou *azureuser* a *P \@ ssw0rd!*). Pokud používáte Azure Cloud Shell, proveďte tento krok z příkazového řádku místního PowerShellu nebo klienta Vzdálené plochy. Následující příklad se připojí k instanci virtuálního počítače *0*:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -189,7 +190,7 @@ mstsc /v 52.168.121.216:50001
 Po přihlášení z hlavního panelu otevřete aplikaci Internet Explorer.
 
 - Výběrem **OK** povolte příkazovému řádku *Použít doporučená nastavení zabezpečení, ochrany osobních údajů a kompatibility*.
-- Do *http://download.sysinternals.com/files/CPUSTRES.zip* adresního řádku zadejte.
+- *http://download.sysinternals.com/files/CPUSTRES.zip*Do adresního řádku zadejte.
 - Vzhledem k tomu, že je zapnutá konfigurace rozšířeného zabezpečení aplikace Internet Explorer, zvolte **Přidat** doménu *http://download.sysinternals.com* na seznam důvěryhodných webů.
 - Po zobrazení výzvy ke stažení souboru vyberte **Otevřít** a pak výběrem **Spustit** spusťte nástroj *CPUSTRES.EXE*.
 

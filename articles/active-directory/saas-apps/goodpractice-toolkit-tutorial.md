@@ -15,151 +15,148 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b12bd8ba7998b924035a0946f9e32b88ce206e4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c0c1cab94a6b83ca429fd640759bed8af0ae881
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79476497"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Kurz: Azure Active Directory integrace s nástroji pro sady nástrojů
 
 V tomto kurzu se naučíte integrovat sadu nástrojů s nástrojem Azure Active Directory (Azure AD).
-Integration Tools Toolkit se službou Azure AD poskytuje následující výhody:
 
-* Můžete řídit v Azure AD, který má přístup k nástrojům Toolkit Tools.
-* Můžete uživatelům povolit, aby se automaticky přihlásili k nástrojům Toolkit (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+Pomocí této integrace můžete:
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Řízení ve službě Azure AD, která má přístup k nástrojům Toolkit Tools
+* Umožněte uživatelům, aby se automaticky přihlásili k nástrojům Toolkit (jednotné přihlašování) s účty Azure AD.
+* Spravujte své účty v jednom centrálním umístění: Azure Portal.
+
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD pomocí nástrojů pro nástroje pro vydanou sadu nástrojů potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Nástroj pro vyznačení jednotného přihlašování s povoleným odběrem sady nástrojů
+* Předplatné nástrojů pro sady nástrojů pro myšlenky s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Nástroj pro vyžádané nahlašování prostřednictvím jednotného přihlašování s podporou **SP**
-* Nástroj pro vyhlašování uživatelů podporuje sadu nástrojů **s podporou času při** zřizování
-* Jakmile nakonfigurujete sadu nástrojů pro přehledy, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Sada nástrojů pro vyžádané čtení podporuje jednotné přihlašování iniciované SP.
+* Sada nástrojů pro vyhlašování uživatelů podporuje zřizování uživatelů za běhu.
+* Po nakonfigurování sady nástrojů pro správu myšlenek můžete vyhovět řízení relace. Tento ovládací prvek chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-mind-tools-toolkit-from-the-gallery"></a>Přidání nástrojů k nástrojům pro zadávání názorů z Galerie
+## <a name="add-mind-tools-toolkit-from-the-gallery"></a>Přidání nástrojů k nástrojům pro přidávání názorů z Galerie
 
 Pokud chcete nakonfigurovat integraci nástrojů pro sadu nástrojů do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat sadu nástrojů pro přehledy z galerie.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** zadejte Texts **Tools Toolkit** do vyhledávacího pole.
-1. Na panelu výsledků vyberte panel **nástrojů možnosti** a přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte text sady **nástrojů** .
+1. Ve výsledcích hledání vyberte možnost **Nástroje pro Tools Toolkit** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí nástrojů pro instrumentaci sady nástrojů na základě testovacího uživatele s názvem **B. Simon**.
-Aby jednotné přihlašování fungovalo, musí být navázán odkaz na odkaz mezi uživatelem služby Azure AD a souvisejícím uživatelem nástrojů pro sadu nástrojů.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí nástrojů pro instrumentaci nástrojů pomocí nástroje Test User s názvem **B. Simon**. Aby se jednotné přihlašování fungovalo, musíte vytvořit propojený vztah mezi uživatelem služby Azure AD a souvisejícím uživatelem v sadě nástrojů pro sadu nástrojů.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí nástrojů pro nástroje pro instrumentaci, je potřeba, abyste dokončili tyto stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí nástrojů pro instrumentaci nástrojů, dokončete následující stavební bloky:
 
-1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Nakonfigurovat možnosti nástroje](#configure-mind-tools-toolkit-sso)** pro nastavení nástrojů pro jednotné přihlašování – ke konfiguraci jednotného přihlašování na straně aplikace
-    * **[Vytvořit nástroj pro testování](#create-mind-tools-toolkit-test-user)** sady nástrojů – testovací uživatel – Pokud chcete mít protějšek B. Simon, promyslete sadu nástrojů, která je propojená s reprezentací uživatele v Azure AD.
-1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, **[přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** .
+1. **[Nakonfigurujte nástroj](#configure-mind-tools-toolkit-sso)** pro nastavení nástrojů pro jednotné přihlašování na straně aplikace.
+    1. **[Vytvořte si testovacího uživatele sady nástrojů pro instrumentaci](#create-a-mind-tools-toolkit-test-user)** , aby měl protějšek B. Simon v sadě nástrojů sady nástrojů pro myšlenky. Tato strana je propojená se zastoupením uživatele v Azure AD.
+1. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
-
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástrojů pro nástroje pro vykonání, proveďte následující kroky:
+V této části nakonfigurujete jednotné přihlašování služby Azure AD pomocí sady nástrojů pro nástroje pro vymyšlenost pomocí následujících kroků:
 
 1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikací **nástrojů pro nástroje pro nástroj** pro čtení vyberte **jednotné přihlašování**.
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
+    ![Oddíl Manage s vybraným jednotným přihlašováním](common/select-sso.png)
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+1. V dialogovém okně **Vybrat metodu jednotného přihlašování** vyberte **SAML/WS-** dopředné povolení jednotného přihlašování.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+    ![Dialogové okno vybrat metodu jednotného přihlašování s zvýrazněním SAML](common/select-saml-option.png)
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu tužky pro **základní konfiguraci SAML** a upravte nastavení.
 
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+    ![Stránka nastavit jednotné přihlašování pomocí SAML s ikonou tužky pro základní konfiguraci SAML zvýrazněnou](common/edit-urls.png)
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+1. V části **základní konfigurace SAML** v poli **přihlašovací adresa URL** zadejte adresu URL, která má vzor `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>` .
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>`.
+    > [!NOTE]
+    > Hodnota **přihlašovací adresy URL** není skutečná. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Chcete-li získat hodnotu, obraťte se na [tým podpory nástrojů](mailto:support@goodpractice.com) pro přístup k nástrojům.
 
-    > [!Note]
-    > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Chcete-li získat hodnotu, obraťte se na [tým podpory nástrojů](mailto:support@goodpractice.com) pro kontaktování klientů.
+1. Na stránce **nastavit jednotné přihlašování se službou SAML** přejdete do části **podpisový certifikát SAML** . Napravo od **XML federačních metadat**vyberte **Stáhnout** a stáhněte text XML a uložte ho do svého počítače. Obsah XML závisí na možnostech, které vyberete.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+    ![Část podpisový certifikát SAML se zvýrazněnou možností stáhnout vedle metadat federačního kódu XML](common/metadataxml.png)
 
-    ![Odkaz na stažení certifikátu](common/metadataxml.png)
+1. V části **nastavení nástrojů pro nástroje pro Rozmyšlenost** zkopírujte podle potřeby následující adresy URL.
 
-6. V části **nastavení nástrojů pro nástroje pro Rozmyšlenost** zkopírujte příslušné adresy URL podle vašich požadavků.
+    * **Přihlašovací adresa URL**
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    * **Identifikátor Azure AD**
 
-    a. Přihlašovací adresa URL
+    * **Odhlašovací adresa URL**
 
-    b. Identifikátor Azure AD
-
-    c. Odhlašovací adresa URL
+    ![Oddíl nastavení nástrojů pro sady nástrojů se zvýrazněnými adresami URL konfigurace zvýrazněné](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+V této části vytvoříte testovacího uživatele s názvem B. Simon v Azure Portal:
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Na levé straně Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel**.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Do pole **název** zadejte **B. Simon**.  
+   1. Do pole **uživatelské jméno** zadejte **B. Simon@**_doménaspolečnosti_**.** _přípona_. Například, B.Simon@contoso.com.
+   1. Zaškrtněte políčko **Zobrazit heslo** a potom zapište hodnotu zobrazenou v poli **heslo** .
+   1. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k nástrojům Toolkit Tools.
+V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k nástrojům sady nástrojů pro myšlenky.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **nástroje sada nástrojů**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Na stránce Přehled aplikace otevřete část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+   ![Oddíl Manage se zvýrazněnými uživateli a skupinami](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele**. V dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+   ![Okno Uživatelé a skupiny se zvýrazněnou možností přidat uživatele](common/add-assign-user.png)
 
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** . Pak zvolte tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele. Pak zvolte tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
 
 ## <a name="configure-mind-tools-toolkit-sso"></a>Konfigurace nástroje pro nastavení nástrojů pro jednotné přihlašování
 
-Chcete-li konfigurovat jednotné přihlašování na straně sady **nástrojů** , je třeba odeslat stažený **kód XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal na [sadu nástrojů pro podporu nástrojů sady nástrojů](mailto:support@goodpractice.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Chcete-li konfigurovat jednotné přihlašování na straně sady **nástrojů** pro dodávání dat, odešlete stažený text **XML federačních metadat** a dříve zkopírované adresy URL do sady nástrojů pro [podporu nástrojů pro nástroje](mailto:support@goodpractice.com)pro dodávání. Nakonfigurují toto nastavení tak, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
-### <a name="create-mind-tools-toolkit-test-user"></a>Vytvořit nástroj pro vytváření názorů sada nástrojů – testovací uživatel
+### <a name="create-a-mind-tools-toolkit-test-user"></a>Vytvoření sady nástrojů pro testování názorů
 
-V této části se vytvoří uživatel s názvem B. Simon v sadě nástrojů pro sadu nástrojů. Nástroj pro **vyhlašování do sady**nástrojů podporuje zřizování za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v sadě nástrojů pro přístup k sadě nástrojů neexistuje, vytvoří se nový, když se pokusíte o přístup k sadě nástrojů Tools Toolkit.
+V této části vytvoříte uživatele s názvem B. Simon v nástroji sada nástrojů pro sady nástrojů.
+
+Nástroj pro vyhlašování do sady nástrojů podporuje zřizování za běhu, což je ve výchozím nastavení povolené. V této části nemusíte nic dělat. Pokud uživatel ještě v sadě nástrojů pro přístup k sadě nástrojů neexistuje, vytvoří se nový, když se pokusíte o přístup k sadě nástrojů Tools Toolkit.
 
 ### <a name="test-sso"></a>Test SSO
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí portálu moje aplikace.
 
-Po kliknutí na dlaždici sady nástrojů pro přístup na panelu přístupu byste měli být automaticky přihlášeni k sadě nástrojů pro panel nástrojů, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na portálu moje aplikace vyberete dlaždici sady nástrojů pro dodávání, budete automaticky přihlášeni k sadě nástrojů pro panel nástrojů, pro kterou jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu [Úvod do portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 

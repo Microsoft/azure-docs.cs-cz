@@ -1,0 +1,103 @@
+- name: Dokumentace ke službě Azure Relay
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Relay?
+      href: relay-what-is-it.md
+- name: Kurzy
+  items:
+    - name: Hybridní připojení
+      items:
+        - name: Odesílání a příjem zpráv – .NET WebSockets
+          href: relay-hybrid-connections-dotnet-get-started.md
+        - name: Odesílání a příjem zpráv – .NET HTTP
+          href: relay-hybrid-connections-http-requests-dotnet-get-started.md
+        - name: Odesílání a příjem zpráv – Node WebSockets
+          href: relay-hybrid-connections-node-get-started.md
+        - name: Odesílání a příjem zpráv – Node HTTP
+          href: relay-hybrid-connections-http-requests-node-get-started.md
+    - name: Windows Communication Foundation (WCF)
+      items:
+        - name: Zveřejnění místní služby WCF pro webovou aplikaci v cloudu
+          href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+        - name: Zveřejnění místní služby WCF pro klienta WCF mimo vaši síť
+          href: service-bus-relay-tutorial.md
+        - name: Zveřejnění místní služby WCF REST pro klienta mimo vaši síť
+          href: service-bus-relay-rest-tutorial.md
+- name: ukázky
+  items:
+    - name: Hybridní připojení
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
+    - name: WCF Relay
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
+- name: Koncepty
+  items:
+    - name: Zabezpečení
+      items:
+        - name: Ověřování a autorizace
+          href: relay-authentication-and-authorization.md
+        - name: Integrované ovládací prvky zabezpečení
+          href: service-bus-relay-security-controls.md
+        - name: Zabezpečení sítě
+          href: network-security.md
+    - name: Protokol pro hybridní připojení
+      href: relay-hybrid-connections-protocol.md
+- name: Postup
+  items:
+    - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
+    - name: Plánování a návrh
+      items:
+        - name: Migrace z ACS do SAS
+          href: relay-migrate-acs-sas.md
+    - name: Vývoj
+      items:
+        - name: Vytvoření oboru názvů
+          href: relay-create-namespace-portal.md
+        - name: Dostupná rozhraní API
+          href: relay-api-overview.md
+          items:
+            - name: .NET
+              href: relay-hybrid-connections-dotnet-api-overview.md
+            - name: Node
+              href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: Zabezpečení
+      items:
+        - name: Konfigurace brány firewall protokolu IP (Preview)
+          href: ip-firewall-virtual-networks.md
+        - name: Konfigurace privátních koncových bodů (Preview)
+          href: private-link-service.md
+    - name: Správa a monitorování
+      items:
+        - name: Monitorování služby Azure Relay s využitím služby Azure Monitor
+          href: relay-metrics-azure-monitor.md
+        - name: Nastavení diagnostických protokolů
+          href: diagnostic-logs.md
+- name: Referenční informace
+  items:
+    - name: .NET
+      items:
+        - name: Microsoft.Azure.Relay
+          href: /dotnet/api/microsoft.azure.relay
+        - name: Microsoft.ServiceBus
+          href: /dotnet/api/Microsoft.ServiceBus
+    - name: Výjimky
+      href: relay-exceptions.md
+    - name: Nastavení portu
+      href: relay-port-settings.md
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
+    - name: Nejčastější dotazy
+      href: relay-faq.md
+    - name: Blog
+      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/service-bus/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: ukázky
+      href: 'https://github.com/azure/azure-relay/tree/master/samples'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

@@ -18,6 +18,8 @@
       href: quickstart-create-workspace.md
     - name: Používání funkce Azure Synapse Studio
       href: quickstart-synapse-studio.md
+    - name: Propojení pracovního prostoru Power BI
+      href: quickstart-power-bi.md
     - name: Vytváření fondů
       items:
         - name: Vytvoření poznámkového bloku Apache Sparku pomocí webových nástrojů
@@ -30,6 +32,8 @@
       items:
         - name: Příkaz COPY
           href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Synapse Studio
+          href: quickstart-load-studio-sql-pool.md
     - name: Používání SQL na vyžádání
       href: quickstart-sql-on-demand.md
 - name: Kurzy
@@ -188,6 +192,8 @@
               href: ./spark/apache-spark-what-is-delta-lake.md
             - name: Výkon Apache Sparku
               href: ./spark/apache-spark-performance.md
+            - name: Chování automatického škálování Apache Sparku
+              href: ./spark/apache-spark-autoscale.md
         - name: Vývoj
           items:
             - name: Poznámkové bloky Azure Synapse Studio

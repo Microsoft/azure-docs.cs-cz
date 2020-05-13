@@ -212,6 +212,8 @@
     - name: Řešení potíží
       items:
         - name: Průvodce odstraňováním potíží
+          href: troubleshooting-guide.md
+        - name: Výjimky .NET
           href: event-hubs-messaging-exceptions.md
         - name: Výjimky Resource Manageru
           href: resource-manager-exceptions.md

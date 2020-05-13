@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181592"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201333"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z úhlové aplikace s jednou stránkou
 
@@ -81,7 +81,7 @@ Zaregistrujte hodnotu **identifikátoru URI přesměrování** jako **http://loc
 
 ## <a name="configure-the-application"></a>Konfigurace aplikace
 
-1. Ve složce *Src/App* upravte *App. Module. TS* a přidejte `MSALModule` do `imports` něj `isIE` i konstantu:
+1. Ve složce *Src/App* upravte *App. Module. TS* a přidejte `MSALModule` do `imports` něj i `isIE` konstantu:
 
     ```javascript
     const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -126,9 +126,9 @@ Zaregistrujte hodnotu **identifikátoru URI přesměrování** jako **http://loc
     |Název hodnoty|Informace|
     |---------|---------|
     |Enter_the_Application_Id_Here|Na stránce **Přehled** registrace vaší aplikace se jedná o hodnotu ID vaší **aplikace (klienta)** . |
-    |Enter_the_Cloud_Instance_Id_Here|Toto je instance cloudu Azure. V případě hlavního nebo globálního cloudu Azure zadejte **https://login.microsoftonline.com**. Pro národní cloudy (například Čína) si přečtěte téma [národní cloudy](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
+    |Enter_the_Cloud_Instance_Id_Here|Toto je instance cloudu Azure. V případě hlavního nebo globálního cloudu Azure zadejte **https://login.microsoftonline.com** . Pro národní cloudy (například Čína) si přečtěte téma [národní cloudy](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
     |Enter_the_Tenant_Info_Here| Nastavte na jednu z následujících možností: Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu ID adresáře (tenant) nebo názvem tenanta (například **contoso.Microsoft.com**). Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu **organizacemi**. Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu **běžnými**. Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu **příjemci**. |
-    |Enter_the_Redirect_Uri_Here|Nahraďte **http://localhost:4200**parametrem.|
+    |Enter_the_Redirect_Uri_Here|Nahraďte parametrem **http://localhost:4200** .|
 
     Další informace o dostupných konfigurovatelných možnostech najdete v tématu [inicializace klientských aplikací](msal-js-initializing-client-applications.md).
 
@@ -138,7 +138,7 @@ Zaregistrujte hodnotu **identifikátoru URI přesměrování** jako **http://loc
     import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
     ```
 
-3. Přidejte následující příkazy pro import do horní části `src/app/app.component.ts`:
+3. Přidejte následující příkazy pro import do horní části `src/app/app.component.ts` :
 
     ```javascript
     import { MsalService } from '@azure/msal-angular';
@@ -146,7 +146,7 @@ Zaregistrujte hodnotu **identifikátoru URI přesměrování** jako **http://loc
     ```
 ## <a name="sign-in-a-user"></a>Přihlášení uživatele
 
-Přidejte následující kód `AppComponent` pro přihlášení uživatele:
+Přidejte následující kód pro `AppComponent` přihlášení uživatele:
 
 ```javascript
 export class AppComponent implements OnInit {
@@ -175,7 +175,7 @@ export class AppComponent implements OnInit {
 
 ### <a name="angular-interceptor"></a>Úhlové zachycování
 
-MSAL úhlová `Interceptor` Třída poskytuje třídu, která automaticky získá tokeny pro odchozí požadavky, které `http` používají úhlového klienta ke známým chráněným prostředkům.
+MSAL úhlová `Interceptor` Třída poskytuje třídu, která automaticky získá tokeny pro odchozí požadavky, které používají úhlového `http` klienta ke známým chráněným prostředkům.
 
 Nejprve zahrňte `Interceptor` třídu jako poskytovatele do vaší aplikace:
 
@@ -195,7 +195,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-Dále zadejte mapu chráněných prostředků `MsalModule.forRoot()` jako `protectedResourceMap` a přidejte tyto obory do: `consentScopes`
+Dále zadejte mapu chráněných prostředků `MsalModule.forRoot()` jako `protectedResourceMap` a přidejte tyto obory do `consentScopes` :
 
 ```javascript
 @NgModule({
@@ -244,11 +244,11 @@ getProfile() {
 ```
 
 ### <a name="acquiretokensilent-acquiretokenpopup-acquiretokenredirect"></a>acquireTokenSilent, acquireTokenPopup, acquireTokenRedirect
-MSAL používá tři metody pro získání tokenů `acquireTokenRedirect`: `acquireTokenPopup`, a `acquireTokenSilent`. Doporučujeme však místo toho použít `MsalInterceptor` třídu pro úhlové aplikace, jak je znázorněno v předchozí části.
+MSAL používá tři metody pro získání tokenů: `acquireTokenRedirect` , `acquireTokenPopup` a `acquireTokenSilent` . Doporučujeme však `MsalInterceptor` místo toho použít třídu pro úhlové aplikace, jak je znázorněno v předchozí části.
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-`acquireTokenSilent` Metoda zpracovává získání a obnovení tokenu bez zásahu uživatele. Po prvním `loginRedirect` `acquireTokenSilent` spuštění `loginPopup` metody nebo se běžně používá k získání tokenů používaných pro přístup k chráněným prostředkům v pozdějších voláních. Volání požadavků na požadavky nebo obnovení tokenů se provádí tiše.
+`acquireTokenSilent`Metoda zpracovává získání a obnovení tokenu bez zásahu uživatele. Po `loginRedirect` `loginPopup` prvním spuštění metody nebo se `acquireTokenSilent` běžně používá k získání tokenů používaných pro přístup k chráněným prostředkům v pozdějších voláních. Volání požadavků na požadavky nebo obnovení tokenů se provádí tiše.
 
 ```javascript
 const requestObj = {
@@ -263,12 +263,12 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 });
 ```
 
-V tomto kódu obsahuje `scopes` obory, které jsou požadovány k vrácení do přístupového tokenu pro rozhraní API.
+V tomto kódu `scopes` obsahuje obory, které jsou požadovány k vrácení do přístupového tokenu pro rozhraní API.
 
 Příklad:
 
 * `["user.read"]`pro Microsoft Graph
-* `["<Application ID URL>/scope"]`pro vlastní webová rozhraní API (tj. `api://<Application ID>/access_as_user`)
+* `["<Application ID URL>/scope"]`pro vlastní webová rozhraní API (tj. `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
@@ -278,9 +278,9 @@ Někdy potřebujete, aby uživatel spolupracoval s koncovým bodem Microsoft Ide
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, ke kterým uživatel musí vyjádřit souhlas.
 * Je vyžadováno dvojúrovňové ověřování.
 
-Doporučený vzor pro většinu aplikací je zavolat `acquireTokenSilent` jako první a pak zachytit výjimku a pak voláním `acquireTokenPopup` (nebo `acquireTokenRedirect`) spustit interaktivní požadavek.
+Doporučený vzor pro většinu aplikací je zavolat jako `acquireTokenSilent` první a pak zachytit výjimku a pak voláním `acquireTokenPopup` (nebo `acquireTokenRedirect` ) spustit interaktivní požadavek.
 
-Výsledkem `acquireTokenPopup` volání je automaticky otevírané okno pro přihlášení. `acquireTokenRedirect` Případně přesměruje uživatele na koncový bod Microsoft Identity Platform. V tomto okně si uživatelé musí potvrdit své přihlašovací údaje, udělit souhlas požadovanému prostředku nebo dokončit dvojúrovňové ověřování.
+`acquireTokenPopup`Výsledkem volání je automaticky otevírané okno pro přihlášení. Případně `acquireTokenRedirect` přesměruje uživatele na koncový bod Microsoft Identity Platform. V tomto okně si uživatelé musí potvrdit své přihlašovací údaje, udělit souhlas požadovanému prostředku nebo dokončit dvojúrovňové ověřování.
 
 ```javascript
   const requestObj = {
@@ -296,7 +296,7 @@ Výsledkem `acquireTokenPopup` volání je automaticky otevírané okno pro při
 ```
 
 > [!NOTE]
-> Tento rychlý Start používá `loginRedirect` metody `acquireTokenRedirect` a v aplikaci Microsoft Internet Explorer kvůli [známému problému](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) souvisejícímu se zpracováním automaticky otevíraných oken v aplikaci Internet Explorer.
+> Tento rychlý Start používá `loginRedirect` metody a v `acquireTokenRedirect` aplikaci Microsoft Internet Explorer kvůli [známému problému](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) souvisejícímu se zpracováním automaticky otevíraných oken v aplikaci Internet Explorer.
 
 ## <a name="log-out"></a>Odhlásit se
 
@@ -319,7 +319,7 @@ Příklad, jak přidat uživatelské rozhraní pomocí knihovny komponent na zá
     npm install
     npm start
     ```
-1. V prohlížeči zadejte **http://localhost:4200** nebo **http://localhost:{port}**, kde *port* je port, na kterém naslouchá webový server.
+1. V prohlížeči zadejte **http://localhost:4200** nebo **http://localhost:{port}** , kde *port* je port, na kterém naslouchá webový server.
 
 
 ### <a name="provide-consent-for-application-access"></a>Poskytnutí souhlasu pro přístup k aplikaci
@@ -343,7 +343,6 @@ Pokud rozhraní API back-endu nevyžaduje obor (nedoporučuje se), můžete pou�
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším kroku se dozvíte, jak se přihlašovat uživateli a získat tokeny v úhlovém kurzu:
+Pokud se správou identit a přístupů ještě nepoužíváte, máme několik článků, které vám pomůžou naučit se moderní koncepty ověřování, počínaje [ověřováním vs. Authorization](authentication-vs-authorization.md).
 
-> [!div class="nextstepaction"]
-> [Úhlový kurz](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
+Pokud byste chtěli podrobně hlubší vývoj aplikací na platformě Microsoft Identity Platform, scénář s více částmi: řada článků s [jednou stránkou](scenario-spa-overview.md) vám může pomáhat začít.

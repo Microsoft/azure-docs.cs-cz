@@ -1018,7 +1018,7 @@
           href: how-to-use-change-feed-estimator.md
         - name: Migrace z knihovny Change Feed Processor
           href: how-to-migrate-from-change-feed-library.md
-        - name: Vytvoření aplikace SQL v Javě s využitím kanálu změn
+        - name: Kanál změn – ukázka Async Javy
           href: create-sql-api-java-changefeed.md
     - name: Integrované analýzy s využitím Apache Sparku
       items:
@@ -1080,6 +1080,8 @@
               href: monitor-server-side-latency.md
             - name: Monitorování využití jednotek žádostí
               href: monitor-request-unit-usage.md
+            - name: Monitorování využití normalizovaných jednotek žádostí
+              href: monitor-normalized-request-units.md
         - name: Použití protokolů Azure Monitoru
           items:
             - name: Monitorování s diagnostickými protokoly

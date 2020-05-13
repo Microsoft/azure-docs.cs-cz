@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Vytvoření datové továrny – šablona Resource Manageru
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: Zabezpečení – povolení šifrování klíčů spravovaných zákazníkem
+      href: quickstart-enable-customer-managed-key.md
     - name: Vytvoření toku dat
       href: data-flow-create.md
 - name: Kurzy

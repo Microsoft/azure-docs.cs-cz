@@ -1,19 +1,20 @@
 ---
 title: Ukázky Azure PowerShell – použití vlastní image virtuálního počítače
 description: Tento skript vytvoří škálovací sadu virtuálních počítačů, která jako zdroj pro instance virtuálních počítačů používá vlastní image virtuálního počítače.
-author: cynthn
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
+author: axayjo
+ms.author: akjosh
 ms.topic: sample
+ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 2a272cf534ef8ac9cbc45c05f1b9d3f0fecfa1f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: cynthn
+ms.custom: akjosh
+ms.openlocfilehash: b99077223581c4960c838b54b6b8885309f7d999
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76276666"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125124"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>Vytvoření škálovací sady virtuálních počítačů z vlastní image virtuálního počítače pomocí PowerShellu
 Tento skript vytvoří škálovací sadu virtuálních počítačů, která jako zdroj pro instance virtuálních počítačů používá vlastní image virtuálního počítače.
