@@ -4,12 +4,12 @@ description: K publikování vašich funkcí použijte funkce průběžného nas
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277021"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123657"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Průběžné nasazování se službou Azure Functions
 
@@ -36,46 +36,30 @@ Aby průběžné nasazování bylo úspěšné, musí být vaše adresářová s
 
 Pokud chcete nakonfigurovat průběžné nasazování pro existující aplikaci Function App, proveďte tyto kroky. Kroky ukazují integraci s úložištěm GitHub, ale podobný postup platí pro Azure Repos nebo jiné úložiště zdrojového kódu.
 
-1. V aplikaci Function App v [Azure Portal](https://portal.azure.com)vyberte možnost**centrum nasazení** **funkcí** > platformy.
+1. Ve vaší aplikaci Function App v [Azure Portal](https://portal.azure.com)vyberte **centrum nasazení**, vyberte **GitHub**a potom vyberte **autorizovat**. Pokud jste už máte autorizovaný GitHub, vyberte **pokračovat** a přejděte k dalšímu kroku. 
 
-    ![Otevřít centrum nasazení](./media/functions-continuous-deployment/platform-features.png)
+    :::image type="content" source="./media/functions-continuous-deployment/github.png" alt-text="Centrum nasazení Azure App Service":::
 
-2. V **centru nasazení**vyberte **GitHub**a potom vyberte **autorizovat**. Pokud jste už máte autorizovaný GitHub, vyberte **pokračovat**. 
+3. V GitHubu vyberte **autorizovat AzureAppService**.
 
-    ![Centrum nasazení Azure App Service](./media/functions-continuous-deployment/github.png)
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Autorizovat Azure App Service":::
 
-3. V GitHubu vyberte tlačítko **autorizovat AzureAppService** . 
-
-    ![Autorizovat Azure App Service](./media/functions-continuous-deployment/authorize.png)
-    
-    V části **centrum nasazení** v Azure Portal vyberte **pokračovat**.
+    Zadejte své heslo GitHubu a pak vyberte **pokračovat**.
 
 4. Vyberte jednoho z následujících poskytovatelů sestavení:
 
     * **Služba sestavení App Service**: nejlepší, pokud nepotřebujete sestavení, nebo pokud potřebujete obecné sestavení.
     * **Azure Pipelines (Preview)**: nejlepší, pokud potřebujete větší kontrolu nad sestavením. Tento zprostředkovatel je aktuálně ve verzi Preview.
 
-    ![Vybrat poskytovatele sestavení](./media/functions-continuous-deployment/build.png)
+    Vyberte **Pokračovat**.
 
 5. Nakonfigurujte informace specifické pro zadanou možnost správy zdrojového kódu. V případě GitHubu je nutné zadat nebo vybrat hodnoty pro **organizaci**, **úložiště**a **větev**. Hodnoty jsou založené na umístění vašeho kódu. Pak vyberte **pokračovat**.
 
-    ![Konfigurace GitHubu](./media/functions-continuous-deployment/github-specifics.png)
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Konfigurace GitHubu":::
 
 6. Zkontrolujte všechny podrobnosti a pak vyberte **Dokončit** a dokončete konfiguraci nasazení.
 
-    ![Souhrn](./media/functions-continuous-deployment/summary.png)
-
 Po dokončení procesu se do vaší aplikace nasadí veškerý kód ze zadaného zdroje. V tomto okamžiku změny ve zdroji nasazení aktivují nasazení těchto změn do aplikace Function App v Azure.
-
-## <a name="deployment-scenarios"></a>Scénáře nasazení
-
-<a name="existing"></a>
-
-### <a name="move-existing-functions-to-continuous-deployment"></a>Přesunout existující funkce do průběžného nasazování
-
-Pokud jste už napsali funkce v [Azure Portal](https://portal.azure.com) a chcete před přechodem na průběžné nasazování stáhnout obsah vaší aplikace, přejděte na kartu **Přehled** aplikace Function App. Vyberte tlačítko **Stáhnout obsah aplikace** .
-
-![Stažení obsahu aplikace](./media/functions-continuous-deployment/download.png)
 
 > [!NOTE]
 > Po konfiguraci průběžné integrace už nebudete moct zdrojové soubory upravovat na portálu Functions.

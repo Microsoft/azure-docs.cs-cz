@@ -3,58 +3,50 @@ title: Přidání zpráv do fronty Azure Storage pomocí funkcí
 description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, kterou vyvolá požadavek HTTP a která vytvoří zprávu ve frontě služby Azure Storage.
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
-ms.date: 09/19/2017
+ms.date: 04/24/2020
 ms.custom: mvc
-ms.openlocfilehash: a060cd35bbb42d2c31e98bed4855b2d27bfcbada
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ae282750580ed5b4e53e78c52ca285e40365fd3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756639"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121982"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
 
-Vstupní a výstupní vazby ve službě Azure Functions poskytují deklarativní způsob zpřístupnění k dat z externích služeb. V tomto rychlém startu použijete výstupní vazbu k vytvoření zprávy ve frontě, když požadavek HTTP aktivuje funkci. K zobrazení zpráv fronty, které vaše funkce vytvoří, použijete Průzkumníka služby Microsoft Azure Storage:
-
-![Zpráva fronty zobrazená v Průzkumníku služby Storage](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
+Vstupní a výstupní vazby ve službě Azure Functions poskytují deklarativní způsob zpřístupnění k dat z externích služeb. V tomto rychlém startu použijete výstupní vazbu k vytvoření zprávy ve frontě, když požadavek HTTP aktivuje funkci. Pomocí kontejneru Azure Storage zobrazíte zprávy fronty, které funkce vytvoří.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-* Postupujte podle pokynů v části [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md) a neprovádějte krok **Vyčištění prostředků**. Tento rychlý start vytvoří aplikaci funkcí a funkci, kterou tady použijete.
+- Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Nainstalujte [Průzkumníka služby Microsoft Azure Storage](https://storageexplorer.com/). Tento nástroj použijete k prozkoumání zpráv fronty, které vytvoří vaše výstupní vazba.
+- Postupujte podle pokynů v části [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md) a neprovádějte krok **Vyčištění prostředků**. Tento rychlý start vytvoří aplikaci funkcí a funkci, kterou tady použijete.
 
 ## <a name="add-an-output-binding"></a><a name="add-binding"></a>Přidání výstupní vazby
 
-V této části použijete uživatelské rozhraní portálu pro přidání výstupní vazby úložiště front do funkce, kterou jste vytvořili dříve. Tato vazba umožní k vytvoření zprávy ve frontě napsat jen minimum kódu. Nemusíte psát kód pro úlohy, jako je otevření připojení úložiště, vytvoření fronty nebo získání odkazu na frontu. O tyto věci se z vás postarají modul runtime Azure Functions a výstupní vazba fronty.
+V této části použijete uživatelské rozhraní portálu pro přidání výstupní vazby úložiště front do funkce, kterou jste vytvořili dříve. Tato vazba umožňuje napsat minimální kód pro vytvoření zprávy ve frontě. Nemusíte psát kód pro úlohy, jako je otevření připojení úložiště, vytvoření fronty nebo získání odkazu na frontu. O tyto věci se z vás postarají modul runtime Azure Functions a výstupní vazba fronty.
 
-1. Na webu Azure Portal otevřete stránku pro aplikaci funkcí, kterou jste vytvořili v tématu [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md). Stačí vybrat **Všechny služby > Aplikace funkcí** a pak vybrat vaši aplikaci funkcí.
+1. Na webu Azure Portal otevřete stránku pro aplikaci funkcí, kterou jste vytvořili v tématu [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md). Stránku otevřete tak, že vyhledáte a vyberete **Function App**. Pak vyberte svou aplikaci Function App.
 
-1. Vyberte funkci, kterou jste vytvořili v tomto dřívějším rychlém startu.
+1. Vyberte aplikaci Function App a potom vyberte funkci, kterou jste vytvořili v předchozím rychlém startu.
 
-1. Vyberte **integration > New Output > Azure Queue Storage**.
+1. Vyberte **integrace**a pak vyberte **+ Přidat výstup**.
 
-1. Klikněte na **Vybrat**.
+   :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding.png" alt-text="Vytvořte pro svou funkci výstupní vazbu." border="true":::
 
-    ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
+1. Vyberte typ vazby **Azure Queue Storage** a přidejte nastavení, jak je uvedeno v tabulce, která následuje po tomto snímku obrazovky: 
 
-1. Pokud se zobrazí zpráva **Rozšíření nejsou nainstalovaná**, výběrem možnosti **Instalovat** nainstalujte do aplikace funkcí rozšíření vazby služby Storage. Tento proces může trvat jednu či dvě minuty.
-
-    ![Instalace rozšíření vazby služby Storage](./media/functions-integrate-storage-queue-output-binding/functions-integrate-install-binding-extension.png)
-
-1. V části **výstupu Azure Queue Storage** použijte nastavení uvedená v tabulce za tímto snímkem obrazovky: 
-
-    ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
-
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal." border="true":::
+    
     | Nastavení      |  Navrhovaná hodnota   | Popis                              |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Název parametru zprávy** | outputQueueItem | Název výstupního parametru vazby. | 
+    | **Název fronty**   | outqueue  | Název fronty, ke které se připojíte ve svém účtu úložiště. |
     | **Připojení k účtu úložiště** | AzureWebJobsStorage | Můžete použít připojení k účtu úložiště, které už používá vaše aplikace Function App, nebo můžete vytvořit nové.  |
-    | **Název fronty**   | outqueue    | Název fronty, ke které se připojíte ve svém účtu úložiště. |
 
-1. Kliknutím na **Uložit** přidejte vazbu.
+1. Vyberte **OK** a přidejte vazbu.
 
 Teď máte definovanou výstupní vazbu a je potřeba aktualizovat kód tak, aby tuto vazbu využíval k přidávání zpráv do fronty.  
 
@@ -62,11 +54,11 @@ Teď máte definovanou výstupní vazbu a je potřeba aktualizovat kód tak, aby
 
 V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zpráva obsahuje hodnotu, která se předala triggeru HTTP v řetězci dotazu. Pokud například řetězec dotazu obsahuje `name=Azure`, zpráva fronty bude *Name passed to the function: Azure*.
 
-1. Vybráním určité funkce zobrazíte kód této funkce v editoru.
+1. Ve své funkci vyberte **Code + test** pro zobrazení kódu funkce v editoru.
 
 1. Aktualizujte kód funkce v závislosti na jazyku funkce:
 
-    # <a name="c"></a>[R\#](#tab/csharp)
+    # <a name="c"></a>[C\#](#tab/csharp)
 
     Přidejte parametr **outputQueueItem** do podpisu metody, jak ukazuje následující obrázek.
 
@@ -99,53 +91,39 @@ V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zp
 
 ## <a name="test-the-function"></a>Testování funkce
 
-1. Po uložení změn kódu vyberte **Spustit**. 
+1. Po uložení změn kódu vyberte **test**.
+1. Potvrďte, že test odpovídá imagi níže, a pak vyberte **Spustit**. 
 
-    ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Otestujte vazbu úložiště fronty v Azure Portal." border="true":::
 
     Všimněte si, že **text žádosti** jako `name` obsahuje hodnotu *Azure*. Tato hodnota se zobrazí ve zprávě fronty, která se vytvoří při vyvolání této funkce.
     
     Jako alternativu k volbě **Spustit** můžete tuto funkci volat také tak, že zadáte adresu URL do prohlížeče a v řetězci dotazu uvedete hodnotu `name`. Metodu s použitím prohlížeče najdete v [předchozím rychlém startu](functions-create-first-azure-function.md#test-the-function).
 
-2. Zkontrolujte protokoly a zkontrolujte, jestli se spuštění funkce zdařilo. 
+1. Zkontrolujte protokoly a zkontrolujte, jestli se spuštění funkce zdařilo. 
 
-Při prvním použití výstupní vazby vytvoří modul runtime Functions v účtu úložiště novou frontu s názvem **outqueue**. K ověření, že se vytvořila fronta a zpráva v ní, použijete Průzkumníka služby Storage.
+Při prvním použití výstupní vazby vytvoří modul runtime Functions v účtu úložiště novou frontu s názvem **outqueue**. Pomocí účtu úložiště ověříte, že se vytvořila fronta a zpráva v ní.
 
-### <a name="connect-storage-explorer-to-your-account"></a>Propojení Průzkumníka služby Storage s vaším účtem
+### <a name="find-the-storage-account-connected-to-azurewebjobsstorage"></a>Vyhledání účtu úložiště připojeného k AzureWebJobsStorage
 
-Pokud jste si už nainstalovali Průzkumníka služby Storage a propojili jste ho k účtu úložiště, který v tomto rychlém startu používáte, přeskočte tuto část.
 
-1. Spusťte [Microsoft Azure Storage Explorer](https://storageexplorer.com/), vlevo vyberte ikonu připojení, zvolte **Použít název a klíč účtu úložiště** a vyberte **Další**.
+1. Přejít do aplikace Function App a vybrat položku **Konfigurace**.
 
-    ![Spusťte nástroj Průzkumník účtu úložiště.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
+1. V části **nastavení aplikace**vyberte **AzureWebJobsStorage**.
 
-1. Na stránce aplikace funkcí na webu Azure Portal vyberte vaši funkci a potom vyberte **Integrovat**.
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Vyhledejte účet úložiště připojený k AzureWebJobsStorage." border="true":::
 
-1. Vyberte výstupní vazbu **Azure Queue Storage**, kterou jste přidali v předchozím kroku.
+1. Vyhledejte a poznamenejte si název účtu.
 
-1. Rozbalte oddíl **Dokumentace** v dolní části stránky. 
-
-   Na portálu se zobrazí přihlašovací údaje, které můžete v Průzkumníku služby Storage použít pro připojení k účtu úložiště.
-
-   ![Získejte přihlašovací údaje účtu úložiště.](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
-
-1. Zkopírujte z portálu hodnotu **Název účtu** a vložte ji do pole **Název účtu** v Průzkumníku služby Storage.
- 
-1. Kliknutím na ikonu zobrazení/skrytí vedle pole **Klíč účtu** zobrazte tuto hodnotu a potom zkopírujte hodnotu z pole **Klíč účtu** a vložte ji do pole **Klíč účtu** v Průzkumníku služby Storage.
-  
-1. Vyberte **Další > Připojit**.
-
-   ![Vložte přihlašovací údaje úložiště a připojte se.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Vyhledejte účet úložiště připojený k AzureWebJobsStorage." border="true":::
 
 ### <a name="examine-the-output-queue"></a>Prozkoumání výstupní fronty
 
-1. V Průzkumníku služby Storage vyberte účet úložiště, který používáte pro tento rychlý start.
+1. Ve skupině prostředků aplikace Function App vyberte účet úložiště, který používáte pro tento rychlý Start.
 
-1. Rozbalte uzel **Fronty** a potom vyberte frontu s názvem **outqueue**. 
+1. V části **Služba front**vyberte **fronty** a vyberte frontu s názvem **proqueue**. 
 
    Tato fronta obsahuje zprávu, kterou vytvořila výstupní vazba fronty při spuštění funkce aktivované protokolem HTTP. Pokud jste tuto funkci volali s výchozí hodnotou `name` (*Azure*), zpráva fronty je *Name passed to the function: Azure*.
-
-    ![Zpráva fronty zobrazená v Průzkumníku služby Storage](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
 1. Spusťte tuto funkci znovu. Ve frontě se zobrazí nová zpráva.  
 

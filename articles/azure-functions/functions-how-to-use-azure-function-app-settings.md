@@ -3,14 +3,14 @@ title: Konfigurace nastavení aplikace Function App v Azure
 description: Přečtěte si, jak nakonfigurovat nastavení Azure Function App.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276943"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122289"
 ---
 # <a name="manage-your-function-app"></a>Správa aplikace Function App 
 
@@ -27,9 +27,11 @@ Tento článek popisuje, jak nakonfigurovat a spravovat aplikace Function App.
 
 ## <a name="get-started-in-the-azure-portal"></a>Začínáme na webu Azure Portal
 
-Začněte tím, že přejdete na [Azure Portal] a přihlásíte se k účtu Azure. Na panelu hledání v horní části portálu zadejte název vaší aplikace Function App a vyberte ji ze seznamu. Po výběru aplikace Function App se zobrazí následující stránka:
+1. Začněte tím, že přejdete na [Azure Portal] a přihlásíte se k účtu Azure. Na panelu hledání v horní části portálu zadejte název aplikace Function App a vyberte ji ze seznamu. 
 
-![Přehled aplikace Function App v Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+2. V části **Nastavení** v levém podokně vyberte **Konfigurace**.
+
+    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Přehled aplikace Function App v Azure Portal":::
 
 Na stránce Přehled můžete přejít na všechno, co potřebujete ke správě aplikace Function App, zejména **[nastavení aplikace](#settings)** a **[funkce platformy](#platform-features)**.
 
@@ -45,14 +47,14 @@ Chcete-li přidat nastavení na portálu, vyberte možnost **nové nastavení ap
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) Příkaz vrátí existující nastavení aplikace, jako v následujícím příkladu:
+[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list)Příkaz vrátí existující nastavení aplikace, jako v následujícím příkladu:
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) Příkaz přidá nebo aktualizuje nastavení aplikace. Následující příklad vytvoří nastavení s klíčem s názvem `CUSTOM_FUNCTION_APP_SETTING` a hodnotou: `12345`
+[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)Příkaz přidá nebo aktualizuje nastavení aplikace. Následující příklad vytvoří nastavení s klíčem s názvem `CUSTOM_FUNCTION_APP_SETTING` a hodnotou `12345` :
 
 
 ```azurecli-interactive
@@ -69,9 +71,7 @@ Když vyvíjíte aplikaci funkcí lokálně, musíte zachovat místní kopie tě
 
 ## <a name="platform-features"></a>Funkce platformy
 
-![Karta funkce Function App Platform](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
-
-Aplikace Function App běží na a jsou udržované Azure App Service platformou. Aplikace Function App mají proto přístup k většině funkcí základní webové hostující platformy Azure. Karta **funkce platformy** je místo, kde máte přístup k mnoha funkcím App Service platformy, kterou můžete použít ve svých aplikacích Function App. 
+Aplikace Function App běží v a jsou udržovány nástrojem Azure App Service platformou. Aplikace Function App mají proto přístup k většině funkcí základní webové hostující platformy Azure. V levém podokně získáte přístup k mnoha funkcím App Service platformy, které můžete použít ve svých aplikacích Function App. 
 
 > [!NOTE]
 > Ne všechny funkce App Service jsou dostupné, když aplikace Function App běží na plánu hostování spotřeby.
@@ -87,7 +87,7 @@ Zbývající část tohoto článku se zaměřuje na následující funkce App S
 
 Další informace o tom, jak pracovat s nastaveními App Service, najdete v tématu [Konfigurace nastavení Azure App Service](../app-service/configure-common.md).
 
-### <a name="app-service-editor"></a><a name="editor"></a>Editor služby App Service
+### <a name="app-service-editor"></a><a name="editor"></a>Editor App Service
 
 ![Editor App Service](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
@@ -120,11 +120,11 @@ Aby se zabránilo spouštění škodlivého kódu v klientovi, moderní prohlí�
 
 #### <a name="portal"></a>Portál
 
-Když nakonfigurujete seznam **povolených zdrojů** pro aplikaci Function App, automaticky `Access-Control-Allow-Origin` se do všech odpovědí z koncových bodů HTTP ve vaší aplikaci Function App přidá hlavička. 
+Když nakonfigurujete seznam **povolených zdrojů** pro aplikaci Function App, `Access-Control-Allow-Origin` automaticky se do všech odpovědí z koncových bodů HTTP ve vaší aplikaci Function App přidá hlavička. 
 
 ![Konfigurovat seznam CORS aplikace Function App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-Při použití zástupného znaku`*`() jsou všechny ostatní domény ignorovány. 
+Při použití zástupného znaku ( `*` ) jsou všechny ostatní domény ignorovány. 
 
 Pomocí [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) příkazu přidejte doménu do seznamu povolených zdrojů. Následující příklad přidá doménu contoso.com:
 
@@ -149,4 +149,4 @@ Pokud funkce používají aktivační událost HTTP, můžete vyžadovat první 
 + [Průběžné nasazování se službou Azure Functions](functions-continuous-deployment.md)
 
 [Azure CLI]: /cli/azure/
-[portál Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

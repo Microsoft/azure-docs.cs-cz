@@ -1,20 +1,20 @@
 ---
 title: Zobrazit informace o souřadnicích na mapě | Mapy Microsoft Azure
 description: Naučte se, jak zobrazit informace o adrese na mapě, když uživatel vybere souřadnici.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 174bdc496e52a6ac8f2a2d631db92e0f21a819be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 274d1102649dade1b3295bd02feba03f64a26ad5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371425"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123985"
 ---
 # <a name="get-information-from-a-coordinate"></a>Získání informací ze souřadnice
 
@@ -24,12 +24,12 @@ Existují dva způsoby, jak provést zpětné vyhledávání v rámci adresy. Je
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>Vytvoření požadavku zpětného vyhledávání přes modul služby
 
-<iframe height='500' scrolling='no' title='Získání informací ze souřadnice (modul služby)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>jak pero získá informace ze souřadnice (modulu služby)</a> pomocí Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Získání informací ze souřadnice (modul služby)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se, <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>jak pero získá informace ze souřadnice (modulu služby)</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Ve výše uvedeném kódu vytvoří první blok objekt mapy a nastaví mechanismus ověřování pro použití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
 
-Druhý blok kódu vytvoří `TokenCredential` pro ověření požadavků protokolu HTTP, které se mají Azure Maps pomocí přístupového tokenu. Pak předá `TokenCredential` `atlas.service.MapsURL.newPipeline()` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . `searchURL` Představuje adresu URL pro Azure Maps [vyhledávacích](https://docs.microsoft.com/rest/api/maps/search) operací.
+Druhý blok kódu vytvoří `TokenCredential` pro ověření požadavků protokolu HTTP, které se mají Azure Maps pomocí přístupového tokenu. Pak předá `TokenCredential` `atlas.service.MapsURL.newPipeline()` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . `searchURL`Představuje adresu URL pro Azure Maps [vyhledávacích](https://docs.microsoft.com/rest/api/maps/search) operací.
 
 Třetí blok kódu aktualizuje styl ukazatele myši na ukazatel a vytvoří [místní](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objekt. Pokyny najdete [v tématu Přidání místní nabídky na mapě](./map-add-popup.md) .
 
@@ -43,7 +43,7 @@ Změna kurzoru, překryvný objekt a událost Click jsou vytvořeny v [nasloucha
 
 Klikněte na mapu a pomocí načíst převratte žádost o změnu geografického kódu pro toto umístění.
 
-<iframe height='500' scrolling='no' title='Získání informací ze souřadnice' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero a <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>Získejte informace od souřadnice</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Získání informací ze souřadnice' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero a <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>Získejte informace od souřadnice</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy a nastaví mechanismus ověřování pro použití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .

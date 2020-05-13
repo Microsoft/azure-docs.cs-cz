@@ -4,12 +4,12 @@ description: Naučte se vytvářet a spravovat fondy systémových uzlů ve slu�
 services: container-service
 ms.topic: article
 ms.date: 04/28/2020
-ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790554"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125243"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Správa fondů systémových uzlů ve službě Azure Kubernetes Service (AKS)
 
@@ -50,6 +50,7 @@ S fondy uzlů můžete provádět následující operace:
 * Odstraňte fondy uživatelských uzlů.
 * Můžete odstranit fondy systémových uzlů, pokud máte jiný fond uzlů systému, aby bylo možné provést místo v clusteru AKS.
 * Cluster AKS může mít několik fondů systémových uzlů a vyžaduje alespoň jeden fond uzlů systému.
+* Pokud chcete změnit různá neproměnlivá nastavení u existujících fondů uzlů, můžete vytvořit nové fondy uzlů, které je nahradí. Jedním z příkladů je přidat nový fond uzlů s novým nastavením maxPods a odstranit starý fond uzlů.
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Vytvoření nového clusteru AKS s fondem uzlů systému
 

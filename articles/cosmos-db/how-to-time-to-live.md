@@ -1,17 +1,17 @@
 ---
 title: Konfigurace a Správa času do provozu v Azure Cosmos DB
 description: Naučte se, jak nakonfigurovat a spravovat dobu provozu na kontejneru a položku v Azure Cosmos DB
-author: markjbrown
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 3019e9f78a51a991d5c6e96655f5dbae1f224620
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 11f5615d44cef4b6717dc9fe2004a64cf2f800ba
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869885"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124121"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurace času na živé v Azure Cosmos DB
 
@@ -195,13 +195,13 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 Kromě nastavení výchozí hodnoty TTL (Time to Live) na kontejneru můžete nastavit hodnotu TTL (Time to Live) pro položku. Nastavením hodnoty doba na živý na úrovni položky se přepíše výchozí hodnota TTL položky v tomto kontejneru.
 
-* Chcete-li pro položku nastavit hodnotu TTL, je nutné zadat nenulové kladné číslo, které určuje dobu, po kterou má být položka po posledním změněném časovém razítku položky `_ts`vypršet.
+* Chcete-li pro položku nastavit hodnotu TTL, je nutné zadat nenulové kladné číslo, které určuje dobu, po kterou má být položka po posledním změněném časovém razítku položky vypršet `_ts` .
 
 * Pokud položka nemá pole TTL, bude ve výchozím nastavení pro položku platit hodnota TTL nastavená na kontejner.
 
 * Pokud je hodnota TTL na úrovni kontejneru zakázaná, bude pole TTL u této položky ignorováno, dokud nebude hodnota TTL znovu povolena v kontejneru.
 
-### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>portál Azure
+### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure Portal
 
 Chcete-li povolit dobu provozu na položce, použijte následující postup:
 
@@ -218,7 +218,7 @@ Chcete-li povolit dobu provozu na položce, použijte následující postup:
    * Vyberte **zapnuto (žádné výchozí)** nebo **Vyberte a nastavte** hodnotu TTL. 
    * Kliknutím na **Uložit** uložte změny.
 
-5. V dalším kroku přejděte na položku, pro kterou chcete nastavit hodnotu TTL (Time to Live `ttl` ), přidejte vlastnost a vyberte **aktualizovat**. 
+5. V dalším kroku přejděte na položku, pro kterou chcete nastavit hodnotu TTL (Time to Live), přidejte `ttl` vlastnost a vyberte **aktualizovat**. 
 
    ```json
    {
@@ -347,7 +347,7 @@ SalesOrder salesOrder = new SalesOrder(
 
 ## <a name="reset-time-to-live"></a>Resetovat čas na Live
 
-Čas do živého nastavení můžete nastavit tak, že na položku provedete operaci zápisu nebo aktualizace. Operace zápisu nebo aktualizace nastaví `_ts` na aktuální čas a hodnota TTL pro položku, jejíž platnost vyprší, bude zahájena znovu. Pokud chcete změnit hodnotu TTL položky, můžete pole aktualizovat stejně, jako byste aktualizovali jiné pole.
+Čas do živého nastavení můžete nastavit tak, že na položku provedete operaci zápisu nebo aktualizace. Operace zápisu nebo aktualizace nastaví na `_ts` aktuální čas a hodnota TTL pro položku, jejíž platnost vyprší, bude zahájena znovu. Pokud chcete změnit hodnotu TTL položky, můžete pole aktualizovat stejně, jako byste aktualizovali jiné pole.
 
 ### <a name="net-sdk"></a><a id="dotnet-extend-ttl-item"></a>SADA .NET SDK
 
@@ -496,7 +496,7 @@ container.getItem("SO05", new PartitionKey("CO18009186470")).read()
 
 ## <a name="disable-time-to-live"></a>Zakázat dobu do provozu
 
-Chcete-li zakázat dobu provozu na kontejneru a zastavit proces na pozadí, aby kontroloval položky, jejichž platnost `DefaultTimeToLive` vypršela, měla by být vlastnost kontejneru odstraněna. Odstranění této vlastnosti se liší od nastavení na hodnotu-1. Když nastavíte hodnotu-1, nové položky přidané do kontejneru budou trvale živé, ale tuto hodnotu můžete přepsat pro konkrétní položky v kontejneru. Po odebrání vlastnosti TTL z kontejneru nebudou položky nikdy vypršet, a to ani v případě, že jste explicitně přepsali předchozí výchozí hodnotu TTL.
+Chcete-li zakázat dobu provozu na kontejneru a zastavit proces na pozadí, aby kontroloval položky, jejichž platnost vypršela, `DefaultTimeToLive` měla by být vlastnost kontejneru odstraněna. Odstranění této vlastnosti se liší od nastavení na hodnotu-1. Když nastavíte hodnotu-1, nové položky přidané do kontejneru budou trvale živé, ale tuto hodnotu můžete přepsat pro konkrétní položky v kontejneru. Po odebrání vlastnosti TTL z kontejneru nebudou položky nikdy vypršet, a to ani v případě, že jste explicitně přepsali předchozí výchozí hodnotu TTL.
 
 ### <a name="net-sdk"></a><a id="dotnet-disable-ttl"></a>SADA .NET SDK
 

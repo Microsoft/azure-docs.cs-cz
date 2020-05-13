@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dsindona
-ms.openlocfilehash: cee28c65b97d4ac163f78b746dc7be9ee210843c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e65f2041cdb2e25341bfd63783c70ec09c1216b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80280350"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124699"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>Pokyny pro správu úložiště tabulek pro vedoucí služby
 
@@ -98,7 +98,7 @@ V další sadě kroků se připojíte k tabulce úložiště a nastavíte logiku
 
    - **Dotaz filtru**: Když vyberete toto pole, zobrazí se v automaticky otevíraném okně ikona **získat čas v minulosti** . Vyberte **čas v čase** , kdy se má tato hodnota použít jako časové razítko pro filtrování dotazu. Nebo můžete do pole vložit následující funkci:
    
-      `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
+      `CreatedTime Timestamp gt '@{body('Get_past_time')}'` 
 
      ![Nastavení funkce dotazu filtru](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 

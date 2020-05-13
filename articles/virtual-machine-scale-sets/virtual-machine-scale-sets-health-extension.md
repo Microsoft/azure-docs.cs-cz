@@ -1,18 +1,20 @@
 ---
 title: Použití rozšíření pro stav aplikací se službou Azure Virtual Machine Scale Sets
 description: Naučte se používat rozšíření pro stav aplikací ke sledování stavu aplikací nasazených ve službě Virtual Machine Scale Sets.
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: extensions
 ms.date: 05/06/2020
-ms.author: mimckitt
-ms.openlocfilehash: 30f68d22a228e6de596e6999490ea7789ab21547
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 4710d03c4d5b2f2679a0d6b65f38ec584f9a056c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864364"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124104"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Použití rozšíření Stav aplikace se škálovacími sadami virtuálních počítačů
 Monitorování stavu vaší aplikace je důležitým signálem pro správu a upgrade nasazení. Azure Virtual Machine Scale Sets poskytují podporu pro průběžné [upgrady](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) včetně [automatických upgradů BITOVÝCH kopií operačního systému](virtual-machine-scale-sets-automatic-upgrade.md), které jsou závislé na monitorování stavu jednotlivých instancí při upgradu vašeho nasazení. Pomocí rozšíření Health můžete také monitorovat stav aplikací každé instance v sadě škálování a provádět opravy instancí pomocí [automatických oprav instancí](virtual-machine-scale-sets-automatic-instance-repairs.md).
@@ -67,8 +69,8 @@ Následující JSON zobrazuje schéma pro rozšíření pro stav aplikace. Pří
 | Name | Hodnota/příklad | Typ dat
 | ---- | ---- | ----
 | protokol | `http`nebo `https` nebo`tcp` | řetězec |
-| port | Volitelné, pokud je `http` protokol `https`nebo, povinné, pokud je protokol`tcp` | int |
-| requestPath | Povinné, pokud je `http` protokol `https`nebo, není povoleno, pokud je protokol`tcp` | řetězec |
+| port | Volitelné, pokud je protokol `http` nebo `https` , povinné, pokud je protokol`tcp` | int |
+| requestPath | Povinné, pokud je protokol `http` nebo `https` , není povoleno, pokud je protokol`tcp` | řetězec |
 
 ## <a name="deploy-the-application-health-extension"></a>Nasazení rozšíření stavu aplikace
 Rozšíření pro stav aplikace můžete nasadit do sady škálování, jak je popsáno níže v následujících příkladech.
@@ -103,7 +105,7 @@ Slouží `PATCH` k úpravě již nasazeného rozšíření.
 
 Pomocí rutiny [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) přidejte rozšíření pro stav aplikace do definice modelu sady škálování.
 
-Následující příklad přidá rozšíření stavu aplikace do `extensionProfile` v modelu sady škálování nastaveného na základě systému Windows. V příkladu se používá nový modul AZ PowerShell.
+Následující příklad přidá rozšíření stavu aplikace do v modelu sady škálování nastaveného na `extensionProfile` základě systému Windows. V příkladu se používá nový modul AZ PowerShell.
 
 ```azurepowershell-interactive
 # Define the scale set variables

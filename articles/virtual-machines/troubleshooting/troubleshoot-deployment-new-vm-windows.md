@@ -3,7 +3,7 @@ title: Řešení potíží s nasazením virtuálního počítače s Windows v Az
 description: Řešení potíží s Správce prostředků nasazení při vytváření nového virtuálního počítače s Windows v Azure
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/15/2018
-ms.author: cjiang
+ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981391"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120959"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Řešení potíží s nasazením při vytváření nového virtuálního počítače s Windows v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -75,7 +75,7 @@ K této chybě dochází v situacích, kdy je nový požadavek na virtuální po
 * Opakujte požadavek s menší velikostí virtuálního počítače.
 * Pokud velikost požadovaného virtuálního počítače nejde změnit:
   * Zastavte všechny virtuální počítače ve skupině dostupnosti.
-    Klikněte **na skupiny** > *prostředků vaše skupina* > prostředků**prostředky** > *vaše sada* > dostupnosti**Virtual Machines** > **zastavíte***virtuální počítač* > .
+    Klikněte na **skupiny**prostředků  >  *vaše skupina prostředků*  >  **prostředky**  >  *vaše sada dostupnosti*  >  **Virtual Machines**  >  *your virtual machine*  >  **zastavíte**virtuální počítač.
   * Po zastavení všech virtuálních počítačů Vytvořte nový virtuální počítač v požadované velikosti.
   * Nejprve spusťte nový virtuální počítač a potom vyberte všechny zastavené virtuální počítače a klikněte na tlačítko **Spustit**.
 

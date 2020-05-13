@@ -3,12 +3,12 @@ title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 112060e72f36bfe5d11a997fc4161e26c36259ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5ba776424462b3a8b586b1f90e83f409770e5597
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854237"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123815"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -127,6 +127,8 @@ Podpora Windows serveru pro fond uzlů obsahuje některá omezení, která jsou 
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Nabízí AKS smlouvu o úrovni služeb?
 
+AKS poskytuje možnost dosáhnout 99,95% dostupnosti pro Server rozhraní API s [doba SLA] [doba provozu-sla.md].
+
 V rámci smlouvy o úrovni služeb (SLA) poskytovatel souhlasí s tím, že zákazníkovi vrátí náklady na službu, pokud není splněna publikovaná úroveň služby. Vzhledem k tomu, že je AKS zdarma, nejsou k dispozici žádné náklady, takže AKS nemá žádnou oficiální smlouvu SLA. AKS se ale snaží zachovat dostupnost minimálně 99,5% pro server Kubernetes API.
 
 Je důležité rozpoznat rozdíl mezi dostupností služby AKS, která odkazuje na dobu provozu Kubernetes řídicí roviny a dostupnost konkrétního zatížení, které běží na Azure Virtual Machines. I když rovina ovládacího prvku nemusí být k dispozici, pokud řídicí plocha není připravená, úlohy clusteru běžící na virtuálních počítačích Azure stále můžou fungovat. Vzhledem k tomu, že virtuální počítače Azure jsou placené prostředky, se účtují pomocí finanční smlouvy SLA. [Další podrobnosti](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) o smlouvě SLA pro virtuální počítače Azure a o tom, jak tuto dostupnost zvýšit, najdete tady: [zóny dostupnosti][availability-zones].
@@ -137,7 +139,7 @@ Uzly agenta AKS se účtují jako standardní virtuální počítače Azure, tak
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Můžu svůj cluster přesunout nebo migrovat mezi klienty Azure?
 
-`az aks update-credentials` Příkaz se dá použít k přesunutí clusteru AKS mezi klienty Azure. Postupujte podle pokynů v části [Zvolte možnost aktualizovat nebo vytvořit instanční objekt](https://docs.microsoft.com/azure/aks/update-credentials) a pak [aktualizujte cluster AKS pomocí nových přihlašovacích údajů](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials).
+`az aks update-credentials`Příkaz se dá použít k přesunutí clusteru AKS mezi klienty Azure. Postupujte podle pokynů v části [Zvolte možnost aktualizovat nebo vytvořit instanční objekt](https://docs.microsoft.com/azure/aks/update-credentials) a pak [aktualizujte cluster AKS pomocí nových přihlašovacích údajů](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Můžu cluster přesunout/migrovat mezi předplatnými?
 
@@ -173,7 +175,7 @@ Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instančn
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Můžu použít rozhraní API sady škálování pro virtuální počítače k ručnímu škálování?
 
-Ne, operace škálování s použitím rozhraní API sady škálování virtuálních počítačů se nepodporují. Použijte rozhraní API AKS (`az aks scale`).
+Ne, operace škálování s použitím rozhraní API sady škálování virtuálních počítačů se nepodporují. Použijte rozhraní API AKS ( `az aks scale` ).
 
 ## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Můžu pomocí sady škálování virtuálních počítačů ručně škálovat na 0 uzlů?
 
@@ -209,6 +211,7 @@ I když AKS má mechanismy odolnosti k vyvýšení těchto konfigurací a obnove
 [bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
 [availability-zones]: ./availability-zones.md
 [az-regions]: ../availability-zones/az-region.md
+[doba provozu – SLA]./uptime-sla.mdd
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

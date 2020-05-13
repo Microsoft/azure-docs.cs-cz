@@ -3,14 +3,14 @@ title: Monitorování Azure Functions pomocí protokolů Azure Monitor
 description: Naučte se používat protokoly Azure Monitor s Azure Functions k monitorování provádění funkcí.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b21912de95ccba1d97d187922bfada4d9dc2c56
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649870"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121617"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitorování Azure Functions pomocí protokolů Azure Monitor
 
@@ -25,20 +25,26 @@ Azure Monitor používá verzi [dotazovacího jazyka Kusto](/azure/kusto/query/)
 
 ## <a name="setting-up"></a>Nastavení
 
-V části **monitorování** vyberte **nastavení diagnostiky** a pak klikněte na **Přidat nastavení diagnostiky**.
+1. V části **monitorování** aplikace Function app v [Azure Portal](https://portal.azure.com)vyberte **nastavení diagnostiky**a pak vyberte **Přidat nastavení diagnostiky**.
 
-![Přidat nastavení diagnostiky](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+   :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="Vybrat nastavení diagnostiky":::
 
-Na stránce **nastavení diagnostiky** zvolte **Odeslat do Log Analytics**a potom vyberte pracovní prostor Log Analytics. V části **protokol** zvolit **FunctionAppLogs**, tato tabulka obsahuje požadované protokoly.
+1. Na stránce **nastavení diagnostiky** v části **Podrobnosti** a **protokol**kategorie vyberte možnost **FunctionAppLogs**.
 
-![Přidat nastavení diagnostiky](media/functions-monitor-log-analytics/choose-table.png)
+   Tabulka **FunctionAppLogs** obsahuje požadované protokoly.
+
+1. V části **Podrobnosti o cíli**zvolte **Odeslat do Log Analytics**a pak vyberte **pracovní prostor Log Analytics**. 
+
+1. Zadejte **název nastavení diagnostiky**a pak vyberte **Uložit**.
+
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Přidat nastavení diagnostiky":::
 
 ## <a name="user-generated-logs"></a>Uživatelem vygenerované protokoly
 
-Chcete-li generovat vlastní protokoly, můžete použít konkrétní příkaz protokolování v závislosti na jazyku, zde jsou ukázkové fragmenty kódu:
+K vygenerování vlastních protokolů použijte příkaz protokolování, který je specifický pro váš jazyk. Tady jsou ukázkové fragmenty kódu:
 
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 ```csharp
 log.LogInformation("My app logs here.");
@@ -56,7 +62,7 @@ context.getLogger().info("My app logs here.");
 context.log('My app logs here.');
 ```
 
-# <a name="powershell"></a>[Prostředí](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Write-Host "My app logs here."
@@ -72,11 +78,19 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>Dotazování protokolů
 
-Pokud chcete zadat dotaz na vygenerované protokoly, přejděte do pracovního prostoru Log Analytics, který jste nakonfigurovali pro odeslání protokolů funkce, a klikněte na **protokoly**.
+Dotaz na vygenerované protokoly:
+ 
+1. Z aplikace Function App vyberte **nastavení diagnostiky**. 
 
-![Okno dotazu v pracovním prostoru LA](media/functions-monitor-log-analytics/querying.png)
+1. V seznamu **nastavení diagnostiky** vyberte pracovní prostor Log Analytics, který jste nakonfigurovali pro odeslání protokolů funkce. 
 
-Azure Functions zapisuje všechny protokoly do tabulky **FunctionAppLogs** . tady je několik ukázkových dotazů.
+1. Na stránce **Log Analytics pracovní prostor** vyberte **protokoly**.
+
+   Azure Functions zapisuje všechny protokoly do tabulky **FunctionAppLogs** pod **LogManagement**. 
+
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Okno dotazu v pracovním prostoru Log Analytics":::
+
+Tady je několik ukázkových dotazů:
 
 ### <a name="all-logs"></a>Všechny protokoly
 
@@ -87,7 +101,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>Konkrétní protokoly funkcí
+### <a name="specific-function-logs"></a>Konkrétní protokoly funkcí
 
 ```
 
@@ -108,6 +122,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [přehled Azure Functions](functions-overview.md)
-- Další informace o [protokolech Azure monitor](../azure-monitor/platform/data-platform-logs.md)
+- Přečtěte si [přehled Azure Functions](functions-overview.md).
+- Přečtěte si další informace o [Azure Monitorch protokolech](../azure-monitor/platform/data-platform-logs.md).
 - Přečtěte si další informace o [dotazovacím jazyce](../azure-monitor/log-query/get-started-queries.md).

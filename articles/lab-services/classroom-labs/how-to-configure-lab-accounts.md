@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: fa9dba62b3b58687ec6a2bfc29e8722f7016b679
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14f66701d3a375807829493f866dcb91b131f2e5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284301"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121078"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurace účtů testovacího prostředí v Azure Lab Services 
 V Azure Lab Services účet testovacího prostředí je kontejner pro spravované typy testovacích prostředí, jako je například učeben Labs. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytne přístup k vlastníkům testovacího prostředí, kteří můžou v účtu vytvářet Labs. 
@@ -38,6 +38,9 @@ Tady jsou některá omezení, která určují rozsah adres, které byste měli m
 
 1. Na stránce **účet testovacího prostředí** vyberte v nabídce vlevo možnost **Nastavení Labs** .
 2. V poli **Rozsah adres** zadejte rozsah adres pro virtuální počítače, které budou vytvořeny v testovacím prostředí. Rozsah adres by měl být v notaci směrování mezi doménami (například: 10.20.0.0/23). Virtuální počítače v testovacím prostředí se vytvoří v tomto rozsahu adres.
+
+    > [!NOTE]
+    > Vlastnost rozsah adres se vztahuje jenom na to, jestli je pro testovací prostředí povolená Partnerská virtuální síť. 
 3. Na panelu nástrojů vyberte **Uložit**. 
 
     ![Konfigurace rozsahu adres](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)

@@ -2,17 +2,19 @@
 title: Správa Virtual Machine Scale Sets pomocí Azure CLI
 description: Běžné příkazy rozhraní příkazového řádku Azure pro správu Virtual Machine Scale Sets, jako je například spuštění a zastavení instance nebo změna kapacity sady škálování.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/29/2018
 ms.author: jushiman
-ms.openlocfilehash: ad07a237dd40d836705b332c6c10356720901481
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/29/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 2742b0b73d4143159fd1ed1338988b01a2171041
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011578"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124325"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Správa sady škálování virtuálních počítačů pomocí Azure CLI
 V průběhu životního cyklu škálovací sady virtuálních počítačů možná budete potřebovat spustit jednu nebo více úloh správy. Kromě toho možná budete chtít vytvořit skripty pro automatizaci různých úloh souvisejících s životním cyklem. Tento článek podrobně popisuje některé běžné příkazy rozhraní příkazového řádku Azure CLI, které umožňují provádět tyto úlohy.
@@ -38,7 +40,7 @@ az vmss list-instances \
     --output table
 ```
 
-Chcete-li zobrazit další informace o konkrétní instanci virtuálního počítače, `--instance-id` přidejte parametr pro [AZ VMSS Get-instance-View](/cli/azure/vmss) a určete instanci, která se má zobrazit. Následující příklad zobrazí informace o instanci virtuálního počítače *0* v sadě škálování s názvem *myScaleSet* a skupině prostředků *myResourceGroup* . Zadejte vlastní názvy následujícím způsobem:
+Chcete-li zobrazit další informace o konkrétní instanci virtuálního počítače, přidejte `--instance-id` parametr pro [AZ VMSS Get-instance-View](/cli/azure/vmss) a určete instanci, která se má zobrazit. Následující příklad zobrazí informace o instanci virtuálního počítače *0* v sadě škálování s názvem *myScaleSet* a skupině prostředků *myResourceGroup* . Zadejte vlastní názvy následujícím způsobem:
 
 ```azurecli
 az vmss get-instance-view \
@@ -120,7 +122,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 
 
 ## <a name="remove-vms-from-a-scale-set"></a>Odebrání virtuálních počítačů ze sady škálování
-Pokud chcete odebrat jeden nebo víc virtuálních počítačů v sadě škálování, použijte příkaz [AZ VMSS Delete-Instances](/cli/azure/vmss). `--instance-ids` Parametr umožňuje zadat jeden nebo více virtuálních počítačů, které mají být odebrány. Pokud zadáte * pro ID instance, odeberou se všechny virtuální počítače v sadě škálování. Chcete-li odebrat více virtuálních počítačů, oddělte každé ID instance mezerou.
+Pokud chcete odebrat jeden nebo víc virtuálních počítačů v sadě škálování, použijte příkaz [AZ VMSS Delete-Instances](/cli/azure/vmss). `--instance-ids`Parametr umožňuje zadat jeden nebo více virtuálních počítačů, které mají být odebrány. Pokud zadáte * pro ID instance, odeberou se všechny virtuální počítače v sadě škálování. Chcete-li odebrat více virtuálních počítačů, oddělte každé ID instance mezerou.
 
 Následující příklad odebere instanci *0* v sadě škálování s názvem *myScaleSet* a skupině prostředků *myResourceGroup* . Zadejte vlastní hodnoty následujícím způsobem:
 

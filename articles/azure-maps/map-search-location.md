@@ -1,20 +1,20 @@
 ---
 title: Zobrazit výsledky hledání na mapě | Mapy Microsoft Azure
 description: V tomto článku se dozvíte, jak provést požadavek hledání pomocí nástroje Microsoft Azure Maps Web SDK a zobrazit výsledky na mapě.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: e82a1daee381c7bad19c83fa735d0028bef2010e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da67c27f590e60c7ae4eecbe8e139c5519e39e31
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371401"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123951"
 ---
 # <a name="show-search-results-on-the-map"></a>Zobrazit výsledky hledání na mapě
 
@@ -24,12 +24,12 @@ Existují dva způsoby, jak vyhledat umístění zájmu. Jedním ze způsobů, j
 
 ## <a name="make-a-search-request-via-service-module"></a>Vytvoření žádosti o vyhledávání přes modul služby
 
-<iframe height='500' scrolling='no' title='Zobrazení výsledků hledání na mapě (modul služby)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na téma <a href='https://codepen.io/azuremaps/pen/zLdYEB/'>zobrazení výsledků hledání na mapě (modulu služby)</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Zobrazení výsledků hledání na mapě (modul služby)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na téma <a href='https://codepen.io/azuremaps/pen/zLdYEB/'>zobrazení výsledků hledání na mapě (modulu služby)</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Ve výše uvedeném kódu vytvoří první blok objekt mapy a nastaví mechanismus ověřování pro použití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .
 
-Druhý blok kódu vytvoří `TokenCredential` pro ověření požadavků HTTP pro Azure Maps pomocí přístupového tokenu. Pak předá `TokenCredential` `atlas.service.MapsURL.newPipeline()` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . `searchURL` Představuje adresu URL pro Azure Maps [vyhledávacích](https://docs.microsoft.com/rest/api/maps/search) operací.
+Druhý blok kódu vytvoří `TokenCredential` pro ověření požadavků HTTP pro Azure Maps pomocí přístupového tokenu. Pak předá `TokenCredential` `atlas.service.MapsURL.newPipeline()` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) . `searchURL`Představuje adresu URL pro Azure Maps [vyhledávacích](https://docs.microsoft.com/rest/api/maps/search) operací.
 
 Třetí blok kódu vytvoří objekt zdroje dat pomocí třídy [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) a přidá do něj výsledky hledání. [Symbolová vrstva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá text nebo ikony pro vykreslení dat na základě bodu zabalených ve [zdroji dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě.  Pak se vytvoří vrstva symbolů. Zdroj dat se přidá do vrstvy symbolů, která se pak přidá do mapy.
 
@@ -42,7 +42,7 @@ Požadavek hledání, zdroj dat, vrstva symbolů a hranice kamery jsou uvnitř [
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Vytvoření žádosti o vyhledávání prostřednictvím rozhraní API pro načtení
 
-<iframe height='500' scrolling='no' title='Zobrazení výsledků hledání na mapě' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>zobrazení výsledků hledání na mapě</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Zobrazení výsledků hledání na mapě' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>zobrazení výsledků hledání na mapě</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy. Nastaví mechanismus ověřování pro použití přístupového tokenu. Pokyny najdete v tématu [vytvoření mapy](./map-create.md) .

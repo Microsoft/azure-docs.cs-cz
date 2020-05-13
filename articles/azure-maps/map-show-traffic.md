@@ -1,20 +1,20 @@
 ---
 title: Zobrazit provoz na mapě | Mapy Microsoft Azure
 description: V tomto článku se dozvíte, jak zobrazit data o přenosech na mapě pomocí webové sady SDK Microsoft Azure Maps.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9bd5ae462013924a46a3da8400719e83abae3424
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c17c3cc22d478d81ed3c2b2ae9f61c173aad6cd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79534810"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123917"
 ---
 # <a name="show-traffic-on-the-map"></a>Zobrazit provoz na mapě
 
@@ -40,7 +40,7 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Zobrazení provozu na mapě' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Zobrazit provoz na mapě</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Zobrazení provozu na mapě' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Zobrazit provoz na mapě</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="traffic-overlay-options"></a>Možnosti překrytí provozu
@@ -50,7 +50,7 @@ Následující nástroj umožňuje přepínat mezi různými nastaveními překr
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="Možnosti překrytí provozu" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Projděte si <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>Možnosti překrytí provozu</a> perem<a href='https://codepen.io/azuremaps'>@azuremaps</a>podle Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+Projděte si <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>Možnosti překrytí provozu</a> perem podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Další kroky

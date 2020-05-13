@@ -2,18 +2,19 @@
 title: Správa Virtual Machine Scale Sets s využitím Azure PowerShell
 description: Běžné rutiny Azure PowerShell pro správu Virtual Machine Scale Sets, jako je například spuštění a zastavení instance nebo změna kapacity sady škálování.
 author: ju-shim
-tags: azure-resource-manager
-ms.assetid: d35fa77a-de96-4ccd-a332-eb181d1f4273
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/29/2018
 ms.author: jushiman
-ms.openlocfilehash: 5794fb40b49a575c12f6855292c41014fabf3b8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/29/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 68b5aa21f861009dd78f48428fa0ffdc5b5ae3a3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011595"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124864"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Správa sady škálování virtuálních počítačů pomocí Azure PowerShell
 
@@ -48,7 +49,7 @@ Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 ## <a name="change-the-capacity-of-a-scale-set"></a>Změna kapacity škálovací sady
 Předchozí příkazy ukázaly informace o vaší sadě škálování a instancích virtuálních počítačů. Pokud chcete zvýšit nebo snížit počet instancí v sadě škálování, můžete kapacitu změnit. Sada škálování automaticky vytvoří nebo odebere požadovaný počet virtuálních počítačů a potom nakonfiguruje virtuální počítače pro příjem přenosů aplikací.
 
-Nejprve vytvořte objekt sady škálování pomocí [Get-AzVmss](/powershell/module/az.compute/get-azvmss)a pak zadejte novou hodnotu pro `sku.capacity`. Pokud chcete použít změnu kapacity, použijte [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Následující příklad aktualizuje *myScaleSet* ve skupině prostředků *myResourceGroup* na kapacitu *5* instancí. Zadejte vlastní hodnoty následujícím způsobem:
+Nejprve vytvořte objekt sady škálování pomocí [Get-AzVmss](/powershell/module/az.compute/get-azvmss)a pak zadejte novou hodnotu pro `sku.capacity` . Pokud chcete použít změnu kapacity, použijte [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Následující příklad aktualizuje *myScaleSet* ve skupině prostředků *myResourceGroup* na kapacitu *5* instancí. Zadejte vlastní hodnoty následujícím způsobem:
 
 ```powershell
 # Get current scale set
@@ -95,7 +96,7 @@ Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 
 
 ## <a name="remove-vms-from-a-scale-set"></a>Odebrání virtuálních počítačů ze sady škálování
-Pokud chcete odebrat jeden nebo víc virtuálních počítačů v sadě škálování, použijte [Remove-AzVmss](/powershell/module/az.compute/remove-azvmss). `-InstanceId` Parametr umožňuje zadat jeden nebo více virtuálních počítačů, které mají být odebrány. Pokud nezadáte ID instance, odeberou se všechny virtuální počítače v sadě škálování. Pokud chcete odebrat víc virtuálních počítačů, oddělte jednotlivá ID každé instance čárkou.
+Pokud chcete odebrat jeden nebo víc virtuálních počítačů v sadě škálování, použijte [Remove-AzVmss](/powershell/module/az.compute/remove-azvmss). `-InstanceId`Parametr umožňuje zadat jeden nebo více virtuálních počítačů, které mají být odebrány. Pokud nezadáte ID instance, odeberou se všechny virtuální počítače v sadě škálování. Pokud chcete odebrat víc virtuálních počítačů, oddělte jednotlivá ID každé instance čárkou.
 
 Následující příklad odebere instanci *0* v sadě škálování s názvem *myScaleSet* a skupině prostředků *myResourceGroup* . Zadejte vlastní hodnoty následujícím způsobem:
 

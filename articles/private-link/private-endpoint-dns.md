@@ -7,30 +7,30 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 3ec7021e63257a3c9f8cf84c6ddc0c3707fbf3bc
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 7db02546b562f1b542080efdbda8968940655e95
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928593"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121273"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Konfigurace DNS privátního koncového bodu Azure
 
 
-Při připojování k prostředku privátního propojení pomocí plně kvalifikovaného názvu domény (FQDN) jako součásti připojovacího řetězce je důležité správně nakonfigurovat nastavení DNS tak, aby se přeložilo na přidělenou privátní IP adresu. Existující služby Azure už můžou mít konfiguraci DNS, která se má použít při připojování přes Veřejný koncový bod. To je nutné přepsat pro připojení pomocí privátního koncového bodu. 
+Při připojování k prostředku privátního propojení pomocí plně kvalifikovaného názvu domény (FQDN) jako součásti připojovacího řetězce je důležité správně nakonfigurovat nastavení DNS tak, aby se přeložilo na přidělenou privátní IP adresu. Existující služby Azure už můžou mít konfiguraci DNS, která se má použít při připojování přes Veřejný koncový bod. Tato konfigurace se musí přepsat, aby se mohla připojit pomocí privátního koncového bodu. 
  
 Síťové rozhraní přidružené k privátnímu koncovému bodu obsahuje úplnou sadu informací potřebných ke konfiguraci DNS, včetně plně kvalifikovaného názvu domény a privátních IP adres přidělených pro daný prostředek privátního propojení. 
  
 Pomocí následujících možností můžete nakonfigurovat nastavení DNS privátních koncových bodů: 
 - **Použijte soubor hostitele (doporučeno pouze pro testování)**. K přepsání DNS můžete použít soubor hostitele na virtuálním počítači.  
 - **Použijte privátní ZÓNU DNS**. K přepsání překladu DNS pro daný privátní koncový bod můžete použít [soukromé zóny DNS](../dns/private-dns-privatednszone.md) . Privátní zóna DNS se dá propojit s vaší virtuální sítí a vyřešit konkrétní domény.
-- **Použijte vlastní server DNS**. Pomocí vlastního serveru DNS můžete přepsat překlad DNS pro daný prostředek privátního propojení. Pokud je váš [Server DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) hostovaný ve virtuální síti, můžete vytvořit předávací pravidlo DNS pro použití privátní zóny DNS a zjednodušit tak konfiguraci všech prostředků privátního propojení.
+- **Použijte službu DNS pro přeposílání (volitelné)**. K přepsání překladu DNS pro daný prostředek privátního propojení můžete použít server DNS pro přeposílání. Pokud je váš [Server DNS](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) hostovaný ve virtuální síti, můžete vytvořit předávací pravidlo DNS pro použití privátní zóny DNS a zjednodušit tak konfiguraci všech prostředků privátního propojení.
  
 > [!IMPORTANT]
 > Nedoporučujeme potlačit zónu, která je aktivně používána k řešení veřejných koncových bodů. Připojení k prostředkům nebude možné správně přeložit bez předávání DNS do veřejného serveru DNS. Pokud se chcete vyhnout problémům, vytvořte jiný název domény nebo použijte navrhovaný název pro každou službu níže. 
 
 ## <a name="azure-services-dns-zone-configuration"></a>Konfigurace zóny DNS služeb Azure
-Služba Azure vytvoří záznam DNS (CNAME) kanonického názvu (CNAME) na veřejném serveru DNS pro přesměrování řešení na navržené názvy privátních domén. Řešení bude možné přepsat privátní IP adresou vašich privátních koncových bodů. 
+Služba Azure vytvoří záznam DNS (CNAME) kanonického názvu (CNAME) na veřejném serveru DNS pro přesměrování řešení na navrhovaný název privátní domény. Řešení můžete přepsat privátní IP adresou vašich privátních koncových bodů. 
  
 Vaše aplikace nemusí měnit adresu URL připojení. Při pokusu o překlad pomocí veřejné služby DNS se server DNS teď přeloží na vaše soukromé koncové body. Proces nemá vliv na vaše stávající aplikace. 
 
@@ -80,7 +80,7 @@ Služba DNS je důležitou součástí, která aplikaci správně funguje, a to 
 V závislosti na vašich preferencích jsou k dispozici následující scénáře pro integraci překladu DNS:
 
 - [Úlohy virtuální sítě bez vlastního serveru DNS](#virtual-network-workloads-without-custom-dns-server)
-- [Místní úlohy pomocí služby DNS pro přeposílání](#on-premises-workloads-using-a-dns-forwarder)
+- [Místní úlohy využívající službu DNS pro přeposílání](#on-premises-workloads-using-a-dns-forwarder)
 
 ## <a name="virtual-network-workloads-without-custom-dns-server"></a>Úlohy virtuální sítě bez vlastního serveru DNS
 
@@ -90,7 +90,7 @@ Tato konfigurace je vhodná pro úlohy virtuální sítě bez vlastního serveru
 > [!NOTE]
 > Tento scénář používá doporučenou zónu Privátní DNS služby Azure SQL Database. Pro ostatní služby můžete model upravit pomocí následujícího odkazu na [konfiguraci zóny DNS služeb Azure](#azure-services-dns-zone-configuration).
 
-Ke správné konfiguraci byste potřebovali tyto prostředky:
+Aby bylo možné správně nakonfigurovat, budete potřebovat následující prostředky:
 
 - Klientská virtuální síť
 
@@ -107,53 +107,53 @@ Tento model se dá rozšířit na několik partnerských virtuálních sítí, k
 > [!IMPORTANT]
 >  Pro tuto konfiguraci se vyžaduje jedna privátní zóna DNS. vytvořením několika zón se stejným názvem pro různé virtuální sítě by bylo potřeba ruční operace sloučení záznamů DNS.
 
-V tomto scénáři je síť [centra & paprsků se sítěmi rozbočovače](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) , které sdílí společný privátní koncový bod a všechny virtuální sítě paprsků jsou propojené se stejnou privátní zónou DNS. 
+V tomto scénáři je propojená topologie sítě [rozbočovače &](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) s paprsky se sítěmi, které sdílí společný privátní koncový bod a všechny virtuální sítě paprsků jsou propojené se stejnou privátní zónou DNS. 
 
 :::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Centrum a Paprskový s DNS poskytovanou službou Azure":::
 
-## <a name="on-premises-workloads-using-a-dns-forwarder"></a>Místní úlohy pomocí služby DNS pro přeposílání
+## <a name="on-premises-workloads-using-a-dns-forwarder"></a>Místní úlohy využívající službu DNS pro přeposílání
  
-Aby bylo možné v místních úlohách přeložit plně kvalifikovaný název domény privátního koncového bodu na soukromou IP adresu, je nutné použít službu DNS pro překládání, aby se vyřešila adresa [veřejné zóny DNS](#azure-services-dns-zone-configuration) služby Azure nasazená v Azure.
+Aby bylo možné v místních úlohách přeložit plně kvalifikovaný název domény privátního koncového bodu na privátní IP adresu, je nutné použít službu DNS pro překládání, aby se zajistilo řešení [veřejné zóny DNS](#azure-services-dns-zone-configuration) služby Azure nasazené v Azure.
 
 
-Následující scénář je vhodný pro místní síť, která má službu DNS pro přeposílání v Azure, což je zodpovědný za řešení všech dotazů DNS prostřednictvím služby pro překládání na úrovni serveru poskytované službou Azure [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) . 
+Následující scénář je vhodný pro místní síť, která má službu DNS pro přeposílání v Azure, která je pak odpovědná za řešení všech dotazů DNS prostřednictvím služby pro překládání na úrovni serveru Azure poskytnuté DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 
 
 > [!NOTE]
 > Tento scénář používá doporučenou zónu Privátní DNS služby Azure SQL Database.Pro ostatní služby můžete model upravit pomocí následujícího odkazu na [konfiguraci zóny DNS služeb Azure](#azure-services-dns-zone-configuration).
 
-Ke správné konfiguraci byste potřebovali tyto prostředky:
+Aby bylo možné správně nakonfigurovat, budete potřebovat následující prostředky:
 
 - Místní síť
-- Virtuální síť [připojená k místní](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) síti
+- Virtuální síť [připojená k místnímu](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) prostředí
 - Služba přeposílání DNS nasazená v Azure 
-- Zóny privátní DNS [privatelink.Database.Windows.NET](../dns/private-dns-privatednszone.md) s [typem záznamu](../dns/dns-zones-records.md#record-types)
+- Zóny Privátní DNS [privatelink.Database.Windows.NET](../dns/private-dns-privatednszone.md)   s [typem záznamu](../dns/dns-zones-records.md#record-types)
 - Informace o privátním koncovém bodu (název záznamu a privátní IP adresa)
 
-Následující obrázek znázorňuje sekvenci překladu názvů DNS z místní sítě, která používá službu pro přeposílání DNS nasazenou v Azure, kde se řešení provádí v privátní zóně DNS propojené s virtuální sítí.
+Následující diagram znázorňuje sekvenci překladu DNS z místní sítě, která používá službu DNS pro přeposílání v Azure, kde se řešení provádí pomocí privátní zóny DNS propojené s virtuální sítí.
 
-:::image type="content" source="media/private-endpoint-dns/on-premise-using-azure-dns.png" alt-text="Místně pomocí Azure DNS":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="Místně pomocí Azure DNS":::
 
-Tato konfigurace se dá prodloužit na místní síť, která už je na svém místě řešení DNS. 
+Tato konfigurace se dá prodloužit pro místní síť, která už je na svém místě řešení DNS. 
 Místní řešení DNS je potřeba nakonfigurovat tak, aby přesměrovalo provoz DNS do Azure DNS prostřednictvím [podmíněného](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) dosazování, které se odkazuje na službu DNS pro přeposílání v Azure.
 
 > [!NOTE]
 > Tento scénář používá doporučenou zónu Privátní DNS služby Azure SQL Database.Pro ostatní služby můžete model upravit pomocí následujícího odkazu na [konfiguraci zóny DNS služeb Azure](#azure-services-dns-zone-configuration).
 
-Ke správné konfiguraci byste potřebovali tyto prostředky:
+Aby bylo možné správně nakonfigurovat, budete potřebovat následující prostředky:
 
 
-- V místní síti s vlastním řešením DNS 
-- Virtuální síť [připojená k místní](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) síti
+- Místní síť s vlastním řešením DNS 
+- Virtuální síť [připojená k místnímu](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) prostředí
 - Služba přeposílání DNS nasazená v Azure
-- Zóny privátní DNS [privatelink.Database.Windows.NET](../dns/private-dns-privatednszone.md)  s [typem záznamu](../dns/dns-zones-records.md#record-types)
+- Zóny Privátní DNS [privatelink.Database.Windows.NET](../dns/private-dns-privatednszone.md)    s [typem záznamu](../dns/dns-zones-records.md#record-types)
 - Informace o privátním koncovém bodu (název záznamu a privátní IP adresa)
 
 Následující diagram znázorňuje sekvenci překladu názvů DNS z místní sítě, která podmíněně přechází do Azure provoz DNS, kde se řešení provádí v privátní zóně DNS propojené s virtuální sítí.
 
 > [!IMPORTANT]
-> Podmíněné přesměrování je nutné provést v rámci [veřejné zóny](#azure-services-dns-zone-configuration) DNS ex: `database.windows.net` místo **privatelink**. Database.Windows.NET.
+> Podmíněné přesměrování je nutné provést v rámci [veřejné zóny DNS](#azure-services-dns-zone-configuration)   ex:  `database.windows.net`   místo **privatelink**. Database.Windows.NET.
 
-:::image type="content" source="media/private-endpoint-dns/on-premise-forwarding-to-azure.png" alt-text="Místní přesměrování na Azure DNS":::
+:::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Místní přesměrování na Azure DNS":::
 
 
 ## <a name="next-steps"></a>Další kroky

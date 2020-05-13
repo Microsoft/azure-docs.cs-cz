@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 94ec85ae658ca6012cd1f1594b431d12bb73013d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612465"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121061"
 ---
 # <a name="set-up-msix-app-attach"></a>Nastavení připojení aplikace MSIX
 
@@ -41,7 +41,7 @@ Nejdřív musíte získat image operačního systému, kterou budete používat 
      >[!NOTE]
      >Abyste mohli získat přístup k portálu Windows Insider, musíte být členem programu Windows Insider. Další informace o programu Windows Insider najdete v [dokumentaci k Windows Insider](/windows-insider/at-home/).
 
-2. Přejděte dolů k části **Vybrat edici** a vyberte **Windows 10 Insider Preview Enterprise (Fast) – Build 19035** nebo novější.
+2. Přejděte dolů k části **Vybrat edici** a vyberte **Windows 10 Insider Preview Enterprise (Fast) – Build 19041** nebo novější.
 
 3. Vyberte **Potvrdit**, pak vyberte jazyk, který chcete použít, a pak vyberte **Potvrdit** znovu.
     
@@ -73,6 +73,14 @@ rem Disable Windows Update:
 
 sc config wuauserv start=disabled
 ```
+
+Po zakázání automatických aktualizací musíte povolit technologii Hyper-V, protože pro přípravu a odpojení VHD k odinstalaci použijete příkaz mety-VHD. 
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
+>[!NOTE]
+>Tato změna bude vyžadovat, abyste virtuální počítač restartovali.
 
 Dále Připravte virtuální pevný disk virtuálního počítače pro Azure a nahrajte výsledný disk VHD do Azure. Další informace najdete v tématu [Příprava a přizpůsobení hlavního image VHD](set-up-customize-master-image.md).
 
@@ -211,7 +219,7 @@ Než začnete aktualizovat skripty PowerShellu, ujistěte se, že máte identifi
 
 5.  Otevřete příkazový řádek a zadejte příkaz **mountvol**. Tento příkaz zobrazí seznam svazků a jejich identifikátorů GUID. Zkopírujte identifikátor GUID svazku, ve kterém písmeno jednotky odpovídá jednotce, ke které jste připojili VHD v kroku 2.
 
-    Například v tomto příkladu výstupu příkazu mountvol jste připojili virtuální pevný disk k jednotce C, budete chtít zkopírovat výše uvedenou `C:\`hodnotu:
+    Například v tomto příkladu výstupu příkazu mountvol jste připojili virtuální pevný disk k jednotce C, budete chtít zkopírovat výše uvedenou hodnotu `C:\` :
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -257,7 +265,7 @@ Než začnete aktualizovat skripty PowerShellu, ujistěte se, že máte identifi
 
     {
 
-    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
 
     Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 87cb7c57aab048e1b7acf211d58c850a41afa5a2
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 54ff58735b6831bb45a9477360ffca3439d2f6b4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628213"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124716"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -88,7 +88,7 @@ Následuje návod pro nastavení Azure Pipelines vydání, které automatizuje n
 
 1.  Do pole **název fáze** zadejte název vašeho prostředí.
 
-1.  Vyberte **Přidat artefakt**a pak vyberte úložiště Git nakonfigurované pro vaši vývojovou datovou továrnu. Vyberte [větev publikování](source-control.md#configure-publishing-settings) úložiště pro **výchozí větev**. Ve výchozím nastavení je `adf_publish`tato větev publikování. U **výchozí verze**vyberte možnost **nejnovější z výchozí větve**.
+1.  Vyberte **Přidat artefakt**a pak vyberte úložiště Git nakonfigurované pro vaši vývojovou datovou továrnu. Vyberte [větev publikování](source-control.md#configure-publishing-settings) úložiště pro **výchozí větev**. Ve výchozím nastavení je tato větev publikování `adf_publish` . U **výchozí verze**vyberte možnost **nejnovější z výchozí větve**.
 
     ![Přidání artefaktu](media/continuous-integration-deployment/continuous-integration-image7.png)
 
@@ -228,14 +228,14 @@ Při exportu šablony Správce prostředků Data Factory přečte tento soubor z
 Níže jsou uvedeny některé pokyny, které je třeba provést při vytváření souboru vlastních parametrů – **ARM-Template-Parameters-definition. JSON**. Soubor se skládá z oddílu pro každý typ entity: Trigger, kanál, propojená služba, datová sada, prostředí Integration runtime a tok dat.
 
 * Zadejte cestu k vlastnosti pod odpovídajícím typem entity.
-* Nastavením názvu vlastnosti `*` určíte, že chcete parametrizovat všechny vlastnosti (pouze na první úrovni, ne rekurzivně). V této konfiguraci můžete také zadat výjimky.
-* Nastavení hodnoty vlastnosti jako řetězce označuje, že chcete vlastnost parametrizovat. Použijte formát `<action>:<name>:<stype>`.
+* Nastavením názvu vlastnosti  `*` určíte, že chcete parametrizovat všechny vlastnosti (pouze na první úrovni, ne rekurzivně). V této konfiguraci můžete také zadat výjimky.
+* Nastavení hodnoty vlastnosti jako řetězce označuje, že chcete vlastnost parametrizovat. Použijte formát  `<action>:<name>:<stype>` .
    *  `<action>` může to být jeden z těchto znaků:
       * `=` znamená, že aktuální hodnota je nastavená jako výchozí hodnota pro parametr.
       * `-` znamená, že neuchovává výchozí hodnotu parametru.
       * `|` je speciální případ pro tajné klíče z Azure Key Vault pro připojovací řetězce nebo klíče.
-   * `<name>` je název parametru. Pokud je prázdný, převezme název vlastnosti. Pokud hodnota začíná `-` znakem, název se zkrátí. Například `AzureStorage1_properties_typeProperties_connectionString` by byl zkrácen na `AzureStorage1_connectionString`.
-   * `<stype>` je typ parametru. Pokud `<stype>` je prázdné, výchozí typ je `string`. Podporované hodnoty: `string`, `bool`, `number`, `object`a `securestring`.
+   * `<name>` je název parametru. Pokud je prázdný, převezme název vlastnosti. Pokud hodnota začíná `-` znakem, název se zkrátí. Například `AzureStorage1_properties_typeProperties_connectionString` by byl zkrácen na `AzureStorage1_connectionString` .
+   * `<stype>` je typ parametru. Pokud  `<stype>`   je prázdné, výchozí typ je `string` . Podporované hodnoty: `string` , `bool` , `number` , `object` a `securestring` .
 * Zadání pole v definičním souboru znamená, že vlastnost Matching v šabloně je pole. Data Factory projde všemi objekty v poli pomocí definice, která je zadána v objektu Integration runtime daného pole. Druhý objekt, řetězec, se zobrazí jako název vlastnosti, která se používá jako název parametru pro každou iteraci.
 * Definice nemůže být specifická pro instanci prostředku. Každá definice se vztahuje na všechny prostředky daného typu.
 * Ve výchozím nastavení jsou všechny zabezpečené řetězce, jako jsou Key Vault tajné klíče a zabezpečené řetězce, jako jsou připojovací řetězce, klíče a tokeny, parametrizované.
@@ -312,22 +312,22 @@ Zde je vysvětlení, jak je předchozí šablona vytvořena, rozdělená podle t
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* Všechny vlastnosti v cestě `typeProperties` jsou parametrizované s příslušnými výchozími hodnotami. Například existují dvě vlastnosti v části `IntegrationRuntimes` vlastnosti typu: `computeProperties` a. `ssisProperties` Oba typy vlastností jsou vytvořeny s příslušnými výchozími hodnotami a typy (Object).
+* Všechny vlastnosti v cestě `typeProperties` jsou parametrizované s příslušnými výchozími hodnotami. Například existují dvě vlastnosti v části `IntegrationRuntimes` vlastnosti typu: `computeProperties` a `ssisProperties` . Oba typy vlastností jsou vytvořeny s příslušnými výchozími hodnotami a typy (Object).
 
 #### <a name="triggers"></a>Aktivační události
 
-* V `typeProperties`rámci jsou parametrizované dvě vlastnosti. První z nich je `maxConcurrency`, který má mít výchozí hodnotu a je typu`string`. Má výchozí název `<entityName>_properties_typeProperties_maxConcurrency`parametru.
-* `recurrence` Vlastnost také je parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimka je `interval` vlastnost, která je parametrizovaná jako typ `number`. Název parametru je s `<entityName>_properties_typeProperties_recurrence_triggerSuffix`příponou. Podobně tato `freq` vlastnost je řetězec a je parametrizovaná jako řetězec. `freq` Vlastnost je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. Například, `<entityName>_freq`.
+* V rámci `typeProperties` jsou parametrizované dvě vlastnosti. První z nich je `maxConcurrency` , který má mít výchozí hodnotu a je typu `string` . Má výchozí název parametru `<entityName>_properties_typeProperties_maxConcurrency` .
+* `recurrence`Vlastnost také je parametrizovaná. V takovém případě jsou všechny vlastnosti na dané úrovni parametrizované jako řetězce s výchozími hodnotami a názvy parametrů. Výjimka je `interval` vlastnost, která je parametrizovaná jako typ `number` . Název parametru je s příponou `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Podobně tato `freq` vlastnost je řetězec a je parametrizovaná jako řetězec. `freq`Vlastnost je však Parametrizovaná bez výchozí hodnoty. Název je zkrácen a přípona. Například, `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
-* Propojené služby jsou jedinečné. Vzhledem k tomu, že propojené služby a datové sady mají široké rozsahy typů, můžete zadat vlastní nastavení pro konkrétní typ. V tomto příkladu se použije konkrétní šablona pro všechny propojené `AzureDataLakeStore`služby typu. Pro všechny ostatní (přes `*`) se použije jiná šablona.
-* `connectionString` Vlastnost bude parametrizovaná jako `securestring` hodnota. Nebude mít výchozí hodnotu. Bude mít zkrácený název parametru, který je s `connectionString`příponou.
-* Tato vlastnost `secretAccessKey` se stane `AzureKeyVaultSecret` (například v propojené službě Amazon S3). Je automaticky Parametrizovaná jako Azure Key Vault tajný klíč a načítá se z nakonfigurovaného trezoru klíčů. Můžete také parametrizovat samotný Trezor klíčů.
+* Propojené služby jsou jedinečné. Vzhledem k tomu, že propojené služby a datové sady mají široké rozsahy typů, můžete zadat vlastní nastavení pro konkrétní typ. V tomto příkladu se použije konkrétní šablona pro všechny propojené služby typu `AzureDataLakeStore` . Pro všechny ostatní (přes `*` ) se použije jiná šablona.
+* `connectionString`Vlastnost bude parametrizovaná jako `securestring` hodnota. Nebude mít výchozí hodnotu. Bude mít zkrácený název parametru, který je s příponou `connectionString` .
+* Tato vlastnost se `secretAccessKey` stane `AzureKeyVaultSecret` (například v propojené službě Amazon S3). Je automaticky Parametrizovaná jako Azure Key Vault tajný klíč a načítá se z nakonfigurovaného trezoru klíčů. Můžete také parametrizovat samotný Trezor klíčů.
 
 #### <a name="datasets"></a>Datové sady
 
-* I když je pro datové sady k dispozici přizpůsobení specifické pro typ, můžete zadat konfiguraci bez explicitní \*konfigurace na úrovni. V předchozím příkladu jsou parametrizované všechny vlastnosti datové `typeProperties` sady v části.
+* I když je pro datové sady k dispozici přizpůsobení specifické pro typ, můžete zadat konfiguraci bez explicitní \* Konfigurace na úrovni. V předchozím příkladu jsou parametrizované všechny vlastnosti datové sady v části `typeProperties` .
 
 ### <a name="default-parameterization-template"></a>Výchozí šablona Parametrizace
 
@@ -443,7 +443,7 @@ Níže je uvedená aktuální výchozí šablona Parametrizace. Pokud potřebuje
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>Příklad: Parametrizace existující Azure Databricks interaktivní ID clusteru
 
-Následující příklad ukazuje, jak přidat jednu hodnotu do výchozí šablony Parametrizace. Pro propojenou službu datacihly se souborem parametrů chceme přidat jenom existující Azure Databricks interaktivní ID clusteru. Všimněte si, že tento soubor je stejný jako předchozí soubor s výjimkou sčítání `existingClusterId` v poli Properties (vlastnosti) `Microsoft.DataFactory/factories/linkedServices`.
+Následující příklad ukazuje, jak přidat jednu hodnotu do výchozí šablony Parametrizace. Pro propojenou službu datacihly se souborem parametrů chceme přidat jenom existující Azure Databricks interaktivní ID clusteru. Všimněte si, že tento soubor je stejný jako předchozí soubor s výjimkou sčítání `existingClusterId` v poli Properties (vlastnosti) `Microsoft.DataFactory/factories/linkedServices` .
 
 ```json
 {
@@ -569,6 +569,26 @@ Pokud chcete místo úplné Správce prostředků šablony použít propojené �
 Nezapomeňte přidat skripty Data Factory do kanálu CI/CD před a po úloze nasazení.
 
 Pokud nemáte nakonfigurovaný Git, můžete k propojeným šablonám přistupovat pomocí **šablony pro export ARM** v seznamu **šablon ARM** .
+
+## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>Vyloučení prostředí Azure-SSIS Integration runtime z CI/CD
+
+Pokud má vaše továrna pro vývoj prostředí Azure-SSIS Integration runtime, můžete vyloučit všechny prostředí Azure-SSIS Integration runtime z procesu CI/CD v následujícím scénáři:
+
+- Infrastruktura Azure-SSIS IR je složitá a v každém prostředí se liší.  
+- Azure-SSIS IR se nastaví ručně pro každé prostředí se stejným názvem. V opačném případě se publikování nezdaří, pokud se v závislosti na Azure-SSIS IR nachází aktivita.
+
+Vyloučení prostředí Azure-SSIS Integration Runtime:
+
+1. Pokud neexistuje, přidejte soubor publish_config. JSON do kořenové složky ve větvi pro spolupráci.
+1. Do publish_config. JSON přidejte následující nastavení: 
+
+```json
+{
+    " excludeIRs": "true"
+}
+```
+
+Při publikování z větve pro spolupráci budou prostředí Azure-SSIS Integration runtime vyloučena z vygenerované šablony Správce prostředků.
 
 ## <a name="hotfix-production-branch"></a>Produkční větev s opravou hotfix
 

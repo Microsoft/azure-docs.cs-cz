@@ -12,16 +12,16 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131212"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124580"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
->Přečtěte si informace o tom, kdy se má tato stránka na aktualizace znovu navštívit kopírováním `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` a vložením této adresy URL: do čtečky kanálů RSS.
+>Přečtěte si informace o tom, kdy se má tato stránka na aktualizace znovu navštívit kopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` do čtečky kanálů RSS.
 
 V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vývojem.
 
@@ -34,9 +34,9 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 
 ### <a name="new-widget-parameters-capabilities"></a>Nové možnosti parametrů widgetu
 
-Widget **Insights** obsahuje nové parametry: `language` a. `control`
+Widget **Insights** obsahuje nové parametry: `language` a `control` .
 
-Widget **přehrávače** má nový `locale` parametr. Oba `locale` parametry `language` a ovládají jazyk přehrávače.
+Widget **přehrávače** má nový `locale` parametr. Oba `locale` `language` parametry a ovládají jazyk přehrávače.
 
 Další informace najdete v části [typy widgetů](video-indexer-embed-widgets.md#widget-types) . 
 
@@ -58,14 +58,14 @@ U placených účtů `Url` pole aktuálně odkazuje na interní adresu URL míst
 V nadcházejících týdnech ji změníme a vrátíme adresu URL [video indexer webu](https://www.videoindexer.ai/) pro všechny účty (zkušební a placená).
 
     Nepoužívejte interní adresy URL, měli byste používat [video indexer veřejná rozhraní API](https://api-portal.videoindexer.ai/).
-* Pokud vkládáte Video Indexer adresy URL do svých aplikací a adresy URL neodkazují na [web video indexer](https://www.videoindexer.ai/) nebo na [koncový bod rozhraní API video indexer](https://api.videoindexer.ai) , ale místo na místní koncový bod (například `https://wus2.videoindexer.ai`), znovu vygenerujte adresy URL.
+* Pokud vkládáte Video Indexer adresy URL do svých aplikací a adresy URL neodkazují na [web video indexer](https://www.videoindexer.ai/) nebo na koncový bod rozhraní API video indexer ( `https://api.videoindexer.ai` ), ale místo na místní koncový bod (například `https://wus2.videoindexer.ai` ), znovu vygenerujte adresy URL.
 
    Můžete to udělat buď pomocí:
 
     * Nahrazení adresy URL adresou URL odkazující na rozhraní API widgetů Video Indexer (například [pomůcka Insights](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * Pomocí webu Video Indexer Vygenerujte novou vloženou adresu URL:
          
-         Stisknutím tlačítka **Přehrát** přejděte na stránku videa – > klikněte na ** &lt; / &gt; ** tlačítko pro vložení – > zkopírujte adresu URL do vaší aplikace:
+         Stisknutím tlačítka **Přehrát** přejděte na stránku videa – > klikněte na tlačítko pro ** &lt; / &gt; vložení** – > zkopírujte adresu URL do vaší aplikace:
    
     Regionální adresy URL nejsou podporované a v nadcházejících týdnech se zablokují.
 
@@ -73,7 +73,7 @@ V nadcházejících týdnech ji změníme a vrátíme adresu URL [video indexer 
  
 ### <a name="custom-language-support-for-additional-languages"></a>Podpora vlastního jazyka pro další jazyky
 
-Video indexer teď podporuje vlastní jazykové modely pro `ar-SY` , `en-UK`a `en-AU` (jenom rozhraní API).
+Video Indexer teď podporuje vlastní jazykové modely pro `ar-SY` , `en-UK` a `en-AU` (jenom rozhraní API).
  
 ### <a name="delete-account-timeframe-action-update"></a>Odstranit aktualizaci akce časového rámce účtu
 
@@ -127,7 +127,7 @@ Stavový kód 409 se teď vrátí z [přeindexování videa](https://api-portal.
  
 * Podpora jazykových modelů v korejštině
 
-    Video indexer teď podporuje vlastní jazykové modely v korejštině (`ko-KR`) jak v rozhraní API, tak i na portálu. 
+    Video indexer teď podporuje vlastní jazykové modely v korejštině ( `ko-KR` ) jak v rozhraní API, tak i na portálu. 
 * Nové jazyky podporované pro převod řeči na text (STT)
 
     Rozhraní API pro Video Indexer teď podporují STT v arabštině Levantine (ar-SY), dialekt anglické Británie (en-GB) a dialektu Austrálie (EN-AU).

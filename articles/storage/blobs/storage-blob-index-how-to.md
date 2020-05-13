@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f4c9fab3caf1089b97265d93db7d945604a59fd3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9ba151aa1ddc7f4b14d5f4ec7f1990e2fd760602
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82723009"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121231"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Použití značek indexu objektů BLOB (Preview) ke správě a hledání dat v úložišti objektů BLOB v Azure
 
@@ -25,7 +25,7 @@ Další informace o indexu objektů BLOB najdete v tématu [Správa a hledání 
 > Index objektu BLOB je ve verzi Public Preview a je dostupný v oblastech **Francie – střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
 ## <a name="prerequisites"></a>Požadavky
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 - Předplatné je zaregistrované a schválené pro přístup k náhledu indexu objektů BLOB.
 - Přístup k [Azure Portal](https://portal.azure.com/)
 
@@ -53,7 +53,7 @@ using System.Threading.Tasks;
 ---
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>Nahrát nový objekt BLOB se značkami indexu
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště. 
 
@@ -106,7 +106,7 @@ static async Task BlobIndexTagsOnCreate()
 ---
 
 ## <a name="get-set-and-update-blob-index-tags"></a>Získání, nastavení a aktualizace značek indexu objektů BLOB
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště. 
 
@@ -180,7 +180,7 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>Filtrování a hledání dat pomocí značek indexu objektů BLOB
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 V rámci Azure Portal filtr značek indexu objektů BLOB automaticky použije `@container` parametr k určení oboru vybraného kontejneru. Pokud chcete vyfiltrovat a vyhledávat data označená v celém účtu úložiště, použijte prosím naše REST API, sady SDK nebo nástroje.
 
@@ -204,6 +204,7 @@ static async Task FindBlobsByTagsExample()
       BlobContainerClient container1 = serviceClient.GetBlobContainerClient("mycontainer");
       BlobContainerClient container2 = serviceClient.GetBlobContainerClient("mycontainer2");
 
+      // Blob Index queries and selection
       String singleEqualityQuery = @"""Archive"" = 'false'";
       String andQuery = @"""Archive"" = 'false' AND ""Priority"" = '01'";
       String rangeQuery = @"""Date"" >= '2020-04-20' AND ""Date"" <= '2020-04-30'";
@@ -254,9 +255,9 @@ static async Task FindBlobsByTagsExample()
           Console.WriteLine("Find Blob by Tags query: " + queryToUse + Environment.NewLine);
 
           List<FilterBlobItem> blobs = new List<FilterBlobItem>();
-          foreach (Page<FilterBlobItem> page in serviceClient.FindBlobsByTags(queryToUse).AsPages())
+          await foreach (FilterBlobItem filterBlobItem in serviceClient.FindBlobsByTagsAsync(queryToUse))
           {
-              blobs.AddRange(page.Values);
+              blobs.Add(filterBlobItem);
           }
 
           foreach (var filteredBlob in blobs)
@@ -276,7 +277,7 @@ static async Task FindBlobsByTagsExample()
 
 ## <a name="lifecycle-management-with-blob-index-tag-filters"></a>Správa životního cyklu s filtry značek indexu objektů BLOB
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště. 
 
@@ -284,9 +285,9 @@ static async Task FindBlobsByTagsExample()
 
 3. Vyberte *Přidat pravidlo* a potom vyplňte pole formuláře sady akcí.
 
-4. Vyberte možnost sada filtrů pro přidání volitelného filtru pro porovnávání předpon a index ![objektů BLOB přidat filtry značek indexu objektů BLOB pro správu životního cyklu.](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
+4. Vyberte možnost sada filtrů pro přidání volitelného filtru pro porovnávání předpon a index objektů BLOB ![ Přidat filtry značek indexu objektů BLOB pro správu životního cyklu.](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
 
-5. Vyberte **zkontrolovat + přidat** a zkontrolujte pravidlo správy životního cyklu nastavení ![pravidla s příkladem filtru značek indexu objektů BLOB.](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
+5. Vyberte **zkontrolovat + přidat** a zkontrolujte ![ pravidlo správy životního cyklu nastavení pravidla s příkladem filtru značek indexu objektů BLOB.](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
 
 6. Vyberte **Přidat** a použijte nové pravidlo pro zásady správy životního cyklu.
 

@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
-ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2759644c68d65e76de222a0ac74f1d4900caddc0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78192910"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121248"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Maskování dynamických dat pro Azure SQL Database a Azure synapse Analytics
 
@@ -44,9 +44,9 @@ Dynamické maskování dat lze konfigurovat pomocí rolí správce Azure SQL Dat
 
 | Funkce maskování | Logika maskování |
 | --- | --- |
-| **Výchozí** |**Úplná maskování podle datových typů určených polí**<br/><br/>• Použijte XXXX nebo míň XS, pokud je velikost pole menší než 4 znaky pro řetězcové datové typy (nchar, ntext, nvarchar).<br/>• Použijte nulovou hodnotu pro číselné datové typy (bigint, bit, Decimal, int, Money, Numeric, smallint, smallmoney, tinyint, float, reálné).<br/>• Použijte 01-01-1900 pro datové typy datum/čas (datum, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• Pro variantu SQL se používá výchozí hodnota aktuálního typu.<br/>• Pro XML se používá \<dokument s maskou/>.<br/>• Použijte prázdnou hodnotu pro speciální datové typy (tabulka časového razítka, hierarchyid, GUID, binární, image, varbinary prostorového typu). |
+| **Výchozí** |**Úplná maskování podle datových typů určených polí**<br/><br/>• Použijte XXXX nebo míň XS, pokud je velikost pole menší než 4 znaky pro řetězcové datové typy (nchar, ntext, nvarchar).<br/>• Použijte nulovou hodnotu pro číselné datové typy (bigint, bit, Decimal, int, Money, Numeric, smallint, smallmoney, tinyint, float, reálné).<br/>• Použijte 01-01-1900 pro datové typy datum/čas (datum, datetime2, DateTime, DateTimeOffset, smalldatetime, Time).<br/>• Pro variantu SQL se používá výchozí hodnota aktuálního typu.<br/>• Pro XML se používá dokument s \< maskou/>.<br/>• Použijte prázdnou hodnotu pro speciální datové typy (tabulka časového razítka, hierarchyid, GUID, binární, image, varbinary prostorového typu). |
 | **Platební karta** |**Metoda maskování, která zpřístupňuje poslední čtyři číslice určených polí** a přidá konstantní řetězec jako předponu ve formě platební karty.<br/><br/>XXXX-XXXX-XXXX-1234 |
-| **E-mailu** |**Metoda maskování, která zpřístupňuje první písmeno a nahradí doménu řetězcem xxx.com** pomocí předpony konstantního řetězce ve formě e-mailové adresy.<br/><br/>aXX@XXXX.com |
+| **E-mail** |**Metoda maskování, která zpřístupňuje první písmeno a nahradí doménu řetězcem xxx.com** pomocí předpony konstantního řetězce ve formě e-mailové adresy.<br/><br/>aXX@XXXX.com |
 | **Náhodné číslo** |**Metoda maskování, která generuje náhodné číslo** podle vybraných hranic a skutečných datových typů. Pokud jsou určené hranice stejné, pak funkce maskování je konstantní číslo.<br/><br/>![Navigační podokno](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
 | **Vlastní text** |**Metoda maskování, která zpřístupňuje první a poslední znak** a přidá vlastní řetězec odsazení uprostřed. Je-li původní řetězec kratší než nezveřejněná předpona a přípona, je použit pouze řetězec odsazení. <br/>Přípona předpony [odsazení]<br/><br/>![Navigační podokno](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 
@@ -58,8 +58,28 @@ Modul doporučení DDM označuje některá pole z vaší databáze jako potenci�
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Nastavení dynamického maskování dat pro vaši databázi pomocí rutin prostředí PowerShell
 
-Viz [rutiny Azure SQL Database](https://docs.microsoft.com/powershell/module/az.sql).
+### <a name="data-masking-policy"></a>Zásady maskování dat
+
+- [Get-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingPolicy)
+- [Set-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingPolicy)
+
+### <a name="data-masking-rules"></a>Pravidla maskování dat
+
+- [Get-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingRule)
+- [New-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/New-AzSqlDatabaseDataMaskingRule)
+- [Remove-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Remove-AzSqlDatabaseDataMaskingRule)
+- [Set-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingRule)
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Nastavení dynamického maskování dat pro vaši databázi pomocí REST API
 
-Viz [operace pro Azure SQL Database](https://docs.microsoft.com/rest/api/sql/).
+Pomocí REST API můžete programově spravovat zásady a pravidla maskování dat. Publikovaný REST API podporuje následující operace:
+
+### <a name="data-masking-policies"></a>Zásady maskování dat
+
+- [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): vytvoří nebo aktualizuje popisek citlivosti pro zadaný sloupec.
+- [Get](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get): Získá zásadu maskování dat databáze. 
+
+### <a name="data-masking-rules"></a>Pravidla maskování dat
+
+- [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/datamaskingrules/createorupdate): vytvoří nebo aktualizuje pravidlo maskování dat databáze.
+- [Seznam podle databáze](https://docs.microsoft.com/rest/api/sql/datamaskingrules/listbydatabase): načte seznam pravidel pro maskování dat databáze.

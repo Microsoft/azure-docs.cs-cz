@@ -2,18 +2,19 @@
 title: Automatické škálování virtuálních počítačů ve službě Virtual Machine Scale Sets v Azure Portal
 description: Vytvoření pravidel automatického škálování pro sady škálování virtuálních počítačů v Azure Portal
 author: ju-shim
-tags: azure-resource-manager
-ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/29/2018
 ms.author: jushiman
-ms.openlocfilehash: 1915b144aec5a5447504c70d18dbf420d255a08e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms:service: virtual-machine-scale-sets
+ms.subservice: autoscale
+ms.date: 05/29/2018
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: ea9d243e46aace9030c25222217ac3ad09a31c38
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010286"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124937"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatické škálování sady škálování virtuálních počítačů v Azure Portal
 Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu.
@@ -45,7 +46,7 @@ Pokud se požadavky na vaši aplikaci zvýší, zvýší se i zatížení instan
     | *Časová agregace*     | Definuje způsob agregace shromážděných metrik pro účely analýzy.                                                | Průměr        |
     | *Název metriky*          | Metrika výkonu, která se má monitorovat a na kterou se mají použít akce škálovací sady.                                                   | Procento CPU |
     | *Statistika agregačního intervalu* | Definuje, jak by měly být shromážděné metriky v jednotlivých intervalech agregovány pro účely analýzy.                             | Průměr        |
-    | *Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než   |
+    | *Podnikatel*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než   |
     | *Mezí*            | Procentuální hodnota, která způsobí, že pravidlo automatického škálování aktivuje akci.                                                 | 70             |
     | *Doba trvání*             | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 10 minut     |
     | *Operace*            | Definuje, jestli se má při použití pravidla a o tom, jaký přírůstek má změnit horizontální navýšení nebo snížení kapacity sady škálování.                        | Zvýšit procento o |
@@ -69,7 +70,7 @@ Večer nebo o víkendu se požadavky na vaši aplikaci můžou snížit. Pokud j
     
     | Parametr              | Vysvětlení                                                                                                          | Hodnota          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                      | Menší než   |
+    | *Podnikatel*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                      | Menší než   |
     | *Mezí*            | Procentuální hodnota, která způsobí, že pravidlo automatického škálování aktivuje akci.                                                 | 30             |
     | *Operace*            | Definuje, jestli se má při použití pravidla a o tom, jaký přírůstek má změnit horizontální navýšení nebo snížení kapacity sady škálování.                         | Snížit procento o |
     | *Počet instancí*       | Procento instancí virtuálních počítačů, které se mají po aktivaci pravidla změnit.                                             | 20             |

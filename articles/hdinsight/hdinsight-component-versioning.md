@@ -8,25 +8,25 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 05/08/2020
-ms.openlocfilehash: 98bb643e1a780754fcb3b9f4eb91d8f04dc4e90b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 9ce6df8491bf4ce7cbb0e12a08816e198f665beb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996384"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124648"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Součásti a verze Apache dostupné pro Azure HDInsight
 
-Přečtěte si informace o komponentách a verzích prostředí [Apache Hadoop](https://hadoop.apache.org/) v Microsoft Azure HDInsight a balíček zabezpečení podniku. Přečtěte si také, jak kontrolovat verze komponent Hadoop ve službě HDInsight.
+V tomto článku se dozvíte o komponentách a verzích prostředí [Apache Hadoop](https://hadoop.apache.org/) v Azure HDInsight a balíček zabezpečení podniku. Naučíte se také, jak kontrolovat verze komponent Hadoop v HDInsight.
 
 ## <a name="apache-components-available-with-different-hdinsight-versions"></a>Dostupné součásti Apache s různými verzemi HDInsight
 
-Azure HDInsight podporuje víc verzí clusterů Hadoop, které se dají kdykoli nasadit. 4. dubna 2017 je výchozí verze clusteru používaná službou Azure HDInsight 3,6.
+Azure HDInsight podporuje víc verzí clusterů Hadoop, které se dají kdykoli nasadit. 4. dubna 2017 byla výchozí verze clusteru používaná službou Azure HDInsight 3,6.
 
-Verze komponent přidružených ke clusterům HDInsight jsou uvedené v následující tabulce:
+Verze komponent spojené s verzemi clusterů HDInsight jsou uvedené v následující tabulce.
 
-> [!NOTE]  
-> Výchozí verze služby HDInsight se může změnit bez předchozího upozornění. Pokud máte závislost verze, určete verzi HDInsight při vytváření clusterů pomocí sady .NET SDK s Azure PowerShell a Azure Classic CLI.
+> [!NOTE]
+> Výchozí verze služby HDInsight se může změnit bez předchozího upozornění. Pokud máte závislost verze, určete verzi HDInsight při vytváření clusterů pomocí sady .NET SDK pomocí Azure PowerShell a rozhraní příkazového řádku Azure Classic.
 
 | Součást              | HDInsight 4.0 | HDInsight 3,6 (výchozí)     |
 |------------------------|---------------|-----------------------------|
@@ -45,71 +45,71 @@ Verze komponent přidružených ke clusterům HDInsight jsou uvedené v následu
 | Apache Phoenix         | 5             | 4.7.0                       |
 | Apache Spark           | 2.3.1, 2,4    | 2.3.0, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
-| Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (viz poznámka níže) |
+| Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (viz poznámka.)   |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
-> Kvůli důležitým informacím o výkonu systému skončila podpora pro Kafka verze 0,10 v březnu 2019.
+> Podpora pro Kafka verze 0,10 skončila v březnu 2019 z důvodu problémů s výkonem systému.
 
 ## <a name="check-for-current-apache-component-version-information"></a>Vyhledat aktuální informace o verzi součásti Apache
 
-Verze komponent prostředí Hadoop spojené s verzemi clusterů HDInsight se můžou měnit s aktualizacemi služby HDInsight. Chcete-li zkontrolovat komponenty Hadoop a ověřit, které verze jsou používány pro cluster, použijte REST API Ambari. Příkaz **GetComponentInformation** načte informace o součástech služby. Podrobnosti najdete v dokumentaci k [Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+Verze komponent prostředí Hadoop spojené s verzemi clusterů HDInsight se můžou měnit s aktualizacemi služby HDInsight. Chcete-li zkontrolovat komponenty Hadoop a ověřit, které verze jsou používány pro cluster, použijte REST API Ambari. Příkaz **GetComponentInformation** načte informace o součástech služby. Další informace najdete v [dokumentaci k Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 ### <a name="release-notes"></a>Zpráva k vydání verze
 
-Další poznámky k verzi pro nejnovější verze služby HDInsight najdete v tématu [poznámky k verzi HDInsight](hdinsight-release-notes.md) .
+Další poznámky k verzi nástroje HDInsight najdete v [poznámkách k verzi HDInsight](hdinsight-release-notes.md).
 
 ## <a name="supported-hdinsight-versions"></a>Podporované verze HDInsight
 
 ### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>Podpora vypršení platnosti a vyřazení verzí HDInsight
 
-**Vypršení platnosti podpory** znamená, že společnost Microsoft už nebude poskytovat podporu pro zadanou verzi HDInsight. A nebude už k dispozici prostřednictvím Azure Portal pro vytváření clusteru. Tyto verze ale pořád můžou být vytvořené pomocí Azure CLI nebo různých sad SDK.
+**Vypršení platnosti podpory** znamená, že Microsoft už neposkytuje podporu pro konkrétní verzi HDInsight. A už není k dispozici prostřednictvím Azure Portal pro vytváření clusteru. Tyto verze se pořád dají vytvořit pomocí rozhraní příkazového řádku Azure nebo různých sad SDK.
 
-**Vyřazení** verze HDInsight znamená, že existující clustery budou i nadále běžet tak, jak jsou. Nové clustery této verze ale nejdou vytvářet jakýmkoli způsobem (včetně CLI a sad SDK). Další funkce roviny ovládacího prvku (například ruční škálování a automatické škálování) nemusí po vyřazení verze fungovat ani po vyřazení verzí. Podpora není k dispozici pro vyřazené verze.
+**Vyřazení** znamená, že existující clustery verze HDInsight i nadále fungují tak, jak jsou. Nové clustery této verze se nedají vytvořit prostřednictvím žádného prostředku, který zahrnuje rozhraní příkazového řádku a sady SDK. Jiné funkce roviny ovládacího prvku, jako je ruční škálování a automatické škálování, nemusí po vyřazení verze fungovat. Podpora není k dispozici pro vyřazené verze.
 
-V následujících tabulkách jsou uvedeny verze HDInsight. K dispozici jsou také data vypršení platnosti podpory a datum vyřazení, pokud jsou známy.
+V následujících tabulkách jsou uvedeny verze HDInsight. Data vypršení platnosti podpory a datum vyřazení jsou také k dispozici, když jsou známy.
 
 ### <a name="available-versions"></a>Dostupné verze
 
-V následující tabulce jsou uvedeny verze HDInsight, které jsou k dispozici v Azure Portal a dalších metodách nasazení, jako jsou PowerShell a .NET SDK.
+Tato tabulka obsahuje seznam verzí HDInsight, které jsou k dispozici v Azure Portal a prostřednictvím jiných metod nasazení, jako je PowerShell a .NET SDK.
 
 | Verze HDInsight | Operační systém virtuálního počítače | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  Dostupnost v Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |Září 24, 2018 | | |Ano |Ano |
 | HDInsight 3,6 |Ubuntu 16.0.4 LTS |4. dubna 2017 | 31. prosince 2020 |31. prosince 2020 |Ano |Ano |
 
-Spark 2,1, 2,2 & Kafka 1,0 Podpora skončí 30. června 2020.
+Podpora Spark 2,1, 2,2 a Kafka 1,0 vyprší 30. června 2020.
 
-> [!NOTE]  
-> Po vypršení platnosti podpory pro verzi nemusí být k dispozici prostřednictvím portál Microsoft Azure. Verze clusteru budou ale dál dostupné pomocí `Version` parametru v příkazu Windows PowerShellu [New-AZHDINSIGHTCLUSTER](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) a .NET SDK až do data vyřazení verze.
+> [!NOTE]
+> Po vypršení platnosti podpory pro verzi nemusí být k dispozici prostřednictvím Azure Portal. Verze clusteru budou dál k dispozici pomocí parametru **Version** v příkazu Windows PowerShell [New-AZHDINSIGHTCLUSTER](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) a .NET SDK až do data vyřazení verze.
 
 ### <a name="retired-versions"></a>Vyřazené verze
 
-V následující tabulce jsou uvedeny verze HDInsight, které **nejsou** k dispozici v Azure Portal.
+Tato tabulka obsahuje seznam verzí HDInsight, které nejsou k dispozici v Azure Portal.
 
-| Verze HDInsight | Verze HDP | Operační systém virtuálního počítače | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  Dostupnost na Azure Portal |
+| Verze HDInsight | Verze HDP | Operační systém virtuálního počítače | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  Dostupnost v Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30. září 2016 |5. září 2017 |28. června 2018 |Ano |No |
-| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29. března 2016 |29. prosince 2016 |9. ledna 2018 |Ano |No |
-| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2. prosince 2015 |Červen 27, 2016 |31. července 2018 |Ano |No |
-| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2. prosince 2015 |Červen 27, 2016 |31. července 2017 |Ano |No |
-| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS nebo Windows Server 2012 R2 |18. února 2015 |1. března 2016 |1. dubna 2017 |Ano |No |
-| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Ano |No |
-| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11. února 2014 |17. září 2014 |30. června 2015 |Ano |No |
-| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28. října 2013 |12. května 2014 |31. května 2015 |Ano |No |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30. září 2016 |5. září 2017 |28. června 2018 |Ano |Ne |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29. března 2016 |29. prosince 2016 |9. ledna 2018 |Ano |Ne |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2. prosince 2015 |Červen 27, 2016 |31. července 2018 |Ano |Ne |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2. prosince 2015 |Červen 27, 2016 |31. července 2017 |Ano |Ne |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS nebo Windows Server 2012 R2 |18. února 2015 |1. března 2016 |1. dubna 2017 |Ano |Ne |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Ano |Ne |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11. února 2014 |17. září 2014 |30. června 2015 |Ano |Ne |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28. října 2013 |12. května 2014 |31. května 2015 |Ano |Ne |
 | HDInsight 1,6 |HDP 1,1 | |28. října 2013 |26. dubna 2014 |31. května 2015 |Ne |Ne |
 
-> [!NOTE]  
-> Clustery s vysokou dostupností se dvěma hlavními uzly se ve výchozím nastavení nasazují pro HDInsight verze 2,1 a novější. Pro clustery HDInsight verze 1,6 nejsou k dispozici.
+> [!NOTE]
+> Clustery s vysokou dostupností se dvěma hlavními uzly se ve výchozím nastavení nasazují pro HDInsight verze 2,1 a novější. Nejsou k dispozici pro clustery HDInsight verze 1,6.
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Smlouva o úrovni služeb pro verze clusteru HDInsight
 
-Smlouva o úrovni služeb (SLA) je definovaná jako _okno podpory_. Okno podpory je časové období, ve `Microsoft Customer Service and Support`kterém je verze HDInsight podporovaná. Pokud má verze prošlé _Datum vypršení platnosti podpory_, cluster HDInsight je mimo okno podpory. Podpora vypršení platnosti pro HDInsight verze X (po dostupnosti novější verze X + 1) je pozdější:  
+Smlouva o úrovni služeb je definovaná jako _okno podpory_. Okno podpory je časový interval, po který podporuje zákaznická služba a podpora Microsoftu verzi HDInsight. Pokud verze prošla _datem vypršení platnosti podpory_, cluster HDInsight je mimo okno podpory. Podpora vypršení platnosti pro HDInsight verze X (po dostupnosti novější verze X + 1) je novější z těchto verzí:
 
-- Vzorec 1: přidejte 180 dní do data, kdy byl vydán cluster HDInsight verze X.
-- Vzorec 2: přidejte 90 dní do data, kdy je ve Azure Portal k dispozici cluster HDInsight verze X + 1.
+- **Vzorec 1:** Přidejte 180 dní do data, kdy byl vydán cluster HDInsight verze X.
+- **Vzorec 2:** Do data přidejte 90 dní, kdy je ve Azure Portal k dispozici cluster HDInsight verze X + 1.
 
 _Datum vyřazení_ je datum, po jehož uplynutí nelze ve službě HDInsight vytvořit verzi clusteru. Od 31. července 2017 nemůžete změnit velikost clusteru HDInsight po jeho datu vyřazení.
 

@@ -3,14 +3,14 @@ title: Ruční spuštění neaktivovaného Azure Functions bez protokolu HTTP
 description: Použití požadavku HTTP ke spuštění Azure Functions triggeru bez protokolu HTTP
 author: craigshoemaker
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: 6571482d738549d2708fd8ab23eaf8c9f6fb1f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892355"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121731"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Ruční spuštění funkce neaktivované protokolem HTTP
 
@@ -37,11 +37,17 @@ Toto umístění požadavku použijete v poli post společně s hlavním klíče
 
 ## <a name="get-the-functions-master-key"></a>Získat hlavní klíč funkce
 
-V Azure Portal přejděte na svou funkci a klikněte na **Správa** a vyhledejte část **klíče hostitele** . Kliknutím na tlačítko **Kopírovat** na řádku *_Master* zkopírujete hlavní klíč do schránky.
+1. V Azure Portal přejděte na svou funkci a vyberte **funkce klíče**. Pak vyberte klíč funkce, který chcete zkopírovat. 
 
-![Kopírovat hlavní klíč z obrazovky správy funkcí](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="Vyhledejte hlavní klíč ke zkopírování." border="true":::
 
-Po zkopírování hlavního klíče klikněte na název funkce a vraťte se do okna soubor kódu. Potom klikněte na kartu **protokoly** . Po ručním spuštění funkce z post se zobrazí zprávy z funkce, kterou jste si zaznamenali.
+1. V části **upravit klíč** Zkopírujte hodnotu klíče do schránky a pak vyberte **OK**.
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Zkopírujte hlavní klíč do schránky." border="true":::
+
+1. Po zkopírování *_Master* klíče vyberte **kód + test**a pak vyberte **protokoly**. Po ručním spuštění funkce z post se zobrazí zprávy z funkce, kterou jste si zaznamenali.
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Zobrazte protokoly a zobrazte výsledky testu hlavního klíče." border="true":::
 
 > [!CAUTION]  
 > Vzhledem ke zvýšeným oprávněním v aplikaci Function App udělené hlavním klíčem byste tento klíč neměli sdílet s třetími stranami nebo ho distribuovat do aplikace.
@@ -51,27 +57,27 @@ Po zkopírování hlavního klíče klikněte na název funkce a vraťte se do o
 Otevřete post a postupujte takto:
 
 1. **Do textového pole Adresa URL zadejte umístění žádosti**.
-2. Zajistěte, aby byla metoda HTTP nastavena na **post**.
-3. **Klikněte** na kartu **hlavičky** .
-4. Jako první **klíč** zadejte **x-Functions-Key** a vložte hlavní klíč (ze schránky) do pole Value ( **hodnota** ).
-5. Jako druhý **klíč** zadejte **typ Content** a jako **hodnotu**zadejte **Application/JSON** .
+1. Zajistěte, aby byla metoda HTTP nastavena na **post**.
+1. Vyberte kartu **hlavičky** .
+1. Jako první klíč zadejte **x-Functions-Key** a vložte hlavní klíč (ze schránky) jako hodnotu.
+1. Jako druhý klíč zadejte typ **Content-Type** a jako hodnotu zadejte **Application/JSON** .
 
-    ![Nastavení hlaviček pro publikování](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Nastavení hlaviček pro publikování." border="true":::
 
-6. **Klikněte** na kartu **tělo** .
-7. Jako tělo žádosti zadejte **{"Input": "test"}** .
+1. Vyberte kartu **tělo** .
+1. Zadejte **{"Input": "test"}** jako text pro požadavek.
 
-    ![Nastavení těla příspěvku](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Nastavení těla příspěvku" border="true":::
 
-8. Klikněte na **Odeslat**.
+1. Vyberte **Poslat**.
+        
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Odešlete žádost pomocí metody post." border="true":::
 
-    ![Odeslání žádosti pomocí metody post](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    Po vygenerování zprávy se zobrazí stav **202 přijato**.
 
-Po vygenerování zprávy se zobrazí stav **202 přijato**.
+1. Potom se vraťte k funkci v Azure Portal. Zkontrolujte protokoly a zobrazí se zprávy přicházející z ručního volání do funkce.
 
-Potom se vraťte k funkci v Azure Portal. Vyhledejte okno *protokoly* a zobrazí se zprávy přicházející z ručního volání do funkce.
-
-![Výsledky protokolu funkce z ručního volání](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Zobrazte protokoly a zobrazte výsledky testu hlavního klíče." border="true":::
 
 ## <a name="next-steps"></a>Další kroky
 

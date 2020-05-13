@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
-ms.date: 04/20/2020
-ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692260"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124631"
 ---
 # <a name="known-issues"></a>Známé problémy #
 
@@ -41,6 +41,7 @@ Aktuální verze má následující známé problémy:
 
 - Reklamy můžou mít vložené problémy (na vyžádání nebo živé), když se v prohlížeči nainstaluje blokování reklam.
 - Mobilní zařízení můžou mít problémy s přehráváním reklam.
+- Azure Media Player v současné době nepodporuje reklamu MP4 Midroll.
 
 ## <a name="azurehtml5js"></a>AzureHtml5JS ##
 
@@ -62,7 +63,7 @@ Aktuální verze má následující známé problémy:
 
 - Chybějící funkce
 - Chyby Tech a http (například 404 vypršení časových limitů sítě), přehrávač bude trvat déle než jiné technické pracovníky.
-- Prohlížeč Safari a Firefox při přehrávání Mac pomocí programu Silverlight vyžaduje `"http://` explicitní `https://` definování nebo pro zdroj.
+- Prohlížeč Safari a Firefox při přehrávání Mac pomocí programu Silverlight vyžaduje explicitní definování `"http://` nebo `https://` pro zdroj.
 - Pokud pro tento technologický technologický objekt chybí rozhraní API, bude obecně vracet hodnotu null.
 - Pokud má uživatel nainstalovaný Flash, ale nemá oprávnění ho načíst na webu, může dojít k nekonečnému odstřeďování. Je to proto, že hráč považuje modul plug-in za nainstalovaný a dostupný a předpokládá, že modul plug-in spouští obsah. Kód jazyka JavaScript byl odeslán, ale nastavení prohlížeče zablokovalo spuštění modulu plug-in, dokud uživatel nepřijme výzvu, aby povolil modul plug-in. Tato situace může nastat ve všech prohlížečích.  
 

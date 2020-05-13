@@ -3,14 +3,14 @@ title: Použití akcí GitHubu ke zpřístupnění aktualizací kódu v Azure Fu
 description: Naučte se používat akce GitHubu k definování pracovního postupu pro sestavování a nasazování projektů Azure Functions v GitHubu.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878200"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122323"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -46,17 +46,19 @@ V tomto příkladu Nahraďte zástupné symboly v prostředku ID vašeho předpl
 
 ## <a name="download-the-publishing-profile"></a>Stáhnout profil publikování
 
-Profil publikování aplikace Function App si můžete stáhnout tak, že přejdete na stránku **Přehled** vaší aplikace a kliknete na **získat profil publikování**.
+Chcete-li stáhnout profil publikování aplikace Function App:
 
-   ![Stáhnout profil publikování](media/functions-how-to-github-actions/get-publish-profile.png)
+1. Vyberte stránku **Přehled** aplikace Function App a pak vyberte **získat profil publikování**.
 
-Zkopírujte obsah souboru.
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Stáhnout profil publikování":::
+
+1. Uložte a zkopírujte obsah souboru nastavení publikování.
 
 ## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
 
-1. V [GitHubu](https://github.com)přejděte do úložiště, vyberte **Nastavení** > **tajné klíče** > **Přidat nový tajný kód**.
+1. V [GitHubu](https://github.com)přejděte do úložiště, vyberte **Nastavení**  >  **tajné klíče**  >  **Přidat nový tajný kód**.
 
-   ![Přidat tajný kód](media/functions-how-to-github-actions/add-secret.png)
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Přidat tajný kód":::
 
 1. Přidejte nový tajný kód.
 
@@ -99,7 +101,7 @@ Následující příklad ukazuje část pracovního postupu, který používá `
         python-version: 3.6
 ```
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 Následující příklad ukazuje část pracovního postupu, který používá `actions/setup-dotnet` akci pro nastavení prostředí:
 
@@ -167,7 +169,7 @@ Následující příklad ukazuje část pracovního postupu, který vytváří a
         popd
 ```
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -205,7 +207,7 @@ K nasazení kódu do aplikace Function App budete muset použít `Azure/function
 |_**název slotu**_ | Volitelné Název [slotu nasazení](functions-deployment-slots.md) , na který chcete nasadit. Slot už musí být definovaný ve vaší aplikaci Function App. |
 
 
-V následujícím příkladu je použita verze 1 z `functions-action`:
+V následujícím příkladu je použita verze 1 z `functions-action` :
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -217,7 +219,7 @@ V následujícím příkladu je použita verze 1 z `functions-action`:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zobrazit úplný pracovní postup. yaml, podívejte se na jeden ze souborů na webu [Azure Actions Workflow Samples úložiště](https://aka.ms/functions-actions-samples) , které mají `functionapp` název. Tyto ukázky můžete použít jako výchozí bod pro pracovní postup.
+Pokud chcete zobrazit úplný soubor Workflow. yaml, přečtěte si jeden ze souborů na webu [pracovní postup akcí Azure GitHubu](https://aka.ms/functions-actions-samples) , který má `functionapp` název. Tyto ukázky můžete použít jako výchozí bod pro pracovní postup.
 
 > [!div class="nextstepaction"]
 > [Další informace o akcích GitHubu](https://help.github.com/en/articles/about-github-actions)

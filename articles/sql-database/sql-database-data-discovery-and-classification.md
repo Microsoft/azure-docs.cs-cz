@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/21/2020
 tags: azure-synapse
-ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27989687934719be5f1d18b85d3ead92f28b3f60
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81766971"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123849"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Klasifikace dat & klasifikace pro Azure SQL Database a Azure synapse Analytics
 
@@ -113,7 +113,7 @@ Po definování zásad v rámci organizace můžete dál klasifikovat jednotliv�
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Auditování přístupu k citlivým datům
 
-Důležitým aspektem paradigmata ochrany informací je schopnost sledovat přístup k citlivým datům. [Auditování Azure SQL Database](sql-database-auditing.md) bylo rozšířeno tak, aby zahrnovalo nové pole v protokolu auditu `data_sensitivity_information`s názvem. Toto pole zapisuje klasifikace citlivosti (popisky) dat vrácených dotazem. Tady je příklad:
+Důležitým aspektem paradigmata ochrany informací je schopnost sledovat přístup k citlivým datům. [Auditování Azure SQL Database](sql-database-auditing.md) bylo rozšířeno tak, aby zahrnovalo nové pole v protokolu auditu s názvem `data_sensitivity_information` . Toto pole zapisuje klasifikace citlivosti (popisky) dat vrácených dotazem. Tady je příklad:
 
 ![Protokol auditu](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
@@ -152,18 +152,6 @@ Informace o použití T-SQL pro klasifikace naleznete v následujících odkazec
 - Odebrání klasifikace z jednoho nebo více sloupců: [klasifikace citlivosti přetažení](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Zobrazení všech klasifikací v databázi: [Sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="use-the-rest-api"></a>Použití rozhraní REST API
-
-Pomocí REST API můžete programově spravovat klasifikace a doporučení. Publikovaný REST API podporuje následující operace:
-
-- [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): vytvoří nebo aktualizuje popisek citlivosti pro zadaný sloupec.
-- [Odstranit](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): odstraní popisek citlivosti pro zadaný sloupec.
-- [Zakázat doporučení](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): zakáže doporučení citlivosti na zadaném sloupci.
-- [Povolit doporučení](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): povoluje u zadaného sloupce doporučení citlivosti. (Doporučení jsou ve výchozím nastavení povolená pro všechny sloupce.)
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): Získá popisek citlivosti určeného sloupce.
-- [Vypsat aktuální podle databáze](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): Získá aktuální popisky citlivosti zadané databáze.
-- [Seznam doporučený databází](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): Získá doporučené citlivosti citlivosti zadané databáze.
-
 ### <a name="use-powershell-cmdlets"></a>Použití rutin PowerShell
 Pomocí prostředí PowerShell můžete spravovat klasifikace a doporučení pro Azure SQL Database a spravované instance.
 
@@ -185,6 +173,17 @@ Pomocí prostředí PowerShell můžete spravovat klasifikace a doporučení pro
 - [Enable – AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
+### <a name="use-the-rest-api"></a>Použití rozhraní REST API
+
+Pomocí REST API můžete programově spravovat klasifikace a doporučení. Publikovaný REST API podporuje následující operace:
+
+- [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): vytvoří nebo aktualizuje popisek citlivosti pro zadaný sloupec.
+- [Odstranit](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): odstraní popisek citlivosti pro zadaný sloupec.
+- [Zakázat doporučení](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): zakáže doporučení citlivosti na zadaném sloupci.
+- [Povolit doporučení](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): povoluje u zadaného sloupce doporučení citlivosti. (Doporučení jsou ve výchozím nastavení povolená pro všechny sloupce.)
+- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): Získá popisek citlivosti určeného sloupce.
+- [Vypsat aktuální podle databáze](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): Získá aktuální popisky citlivosti zadané databáze.
+- [Seznam doporučený databází](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): Získá doporučené citlivosti citlivosti zadané databáze.
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Další kroky
 

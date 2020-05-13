@@ -1,17 +1,17 @@
 ---
 title: Postup změny velikosti virtuálního počítače se systémem Linux pomocí Azure CLI
 description: Postup horizontálního navýšení nebo snížení kapacity virtuálního počítače se systémem Linux změnou velikosti virtuálního počítače.
-author: mikewasson
+author: DavidCBerry13
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 02/10/2017
-ms.author: mwasson
-ms.openlocfilehash: 20e7db80b55347c4a4a76b7c95d4d8bec368abda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: daberry
+ms.openlocfilehash: cf2716ce5d24aa86e32f6f521134590c671d5011
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969266"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120976"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Změna velikosti virtuálního počítače s Linuxem pomocí Azure CLI 
 
@@ -20,13 +20,13 @@ Po zřízení virtuálního počítače můžete virtuální počítač škálov
 ## <a name="resize-a-vm"></a>Změna velikosti virtuálního počítače
 Pokud chcete změnit velikost virtuálního počítače, potřebujete nainstalovat nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásit se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
 
-1. Prohlédněte si seznam dostupných velikostí virtuálních počítačů v hardwarovém clusteru, na kterém je virtuální počítač hostovaný, pomocí [AZ VM list-VM-Resize-Options](/cli/azure/vm). Následující příklad vypíše velikosti virtuálních počítačů pro virtuální počítač `myVM` s názvem v oblasti `myResourceGroup` skupiny prostředků:
+1. Prohlédněte si seznam dostupných velikostí virtuálních počítačů v hardwarovém clusteru, na kterém je virtuální počítač hostovaný, pomocí [AZ VM list-VM-Resize-Options](/cli/azure/vm). Následující příklad vypíše velikosti virtuálních počítačů pro virtuální počítač s názvem `myVM` v oblasti skupiny prostředků `myResourceGroup` :
    
     ```azurecli
     az vm list-vm-resize-options --resource-group myResourceGroup --name myVM --output table
     ```
 
-2. Pokud je požadovaná velikost virtuálního počítače uvedená, změňte velikost virtuálního počítače pomocí [AZ VM Resize](/cli/azure/vm). Následující příklad změní velikost virtuálního počítače s názvem `myVM` na `Standard_DS3_v2` velikost:
+2. Pokud je požadovaná velikost virtuálního počítače uvedená, změňte velikost virtuálního počítače pomocí [AZ VM Resize](/cli/azure/vm). Následující příklad změní velikost virtuálního počítače s názvem `myVM` na `Standard_DS3_v2` Velikost:
    
     ```azurecli
     az vm resize --resource-group myResourceGroup --name myVM --size Standard_DS3_v2
@@ -34,7 +34,7 @@ Pokud chcete změnit velikost virtuálního počítače, potřebujete nainstalov
    
     Během tohoto procesu se virtuální počítač restartuje. Po restartování se existující operační systém a datové disky přemapují. Cokoli na dočasném disku ztratí.
 
-3. Pokud požadovaná velikost virtuálního počítače není v seznamu uvedená, musíte nejdřív zrušit přidělení virtuálního počítače pomocí [AZ VM unallocate](/cli/azure/vm). Tento proces umožňuje změnit velikost virtuálního počítače na jakoukoli dostupnou velikost, kterou oblast podporuje a pak začala. Následující kroky zruší přidělení, změní velikost a potom spustí virtuální počítač `myVM` ve skupině prostředků s názvem: `myResourceGroup`
+3. Pokud požadovaná velikost virtuálního počítače není v seznamu uvedená, musíte nejdřív zrušit přidělení virtuálního počítače pomocí [AZ VM unallocate](/cli/azure/vm). Tento proces umožňuje změnit velikost virtuálního počítače na jakoukoli dostupnou velikost, kterou oblast podporuje a pak začala. Následující kroky zruší přidělení, změní velikost a potom spustí virtuální počítač `myVM` ve skupině prostředků s názvem `myResourceGroup` :
    
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM

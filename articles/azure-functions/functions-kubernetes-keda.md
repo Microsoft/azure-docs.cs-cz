@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c050eb38e47ce2ab9d11e5c92eb7bdd3ac8e572
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301671"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121690"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions v Kubernetes s KEDA
 
@@ -28,11 +28,11 @@ Pokud chcete spouštět funkce v clusteru Kubernetes, musíte nainstalovat kompo
 
 ### <a name="installing-with-helm"></a>Instalace pomocí Helm
 
-Existují různé způsoby, jak nainstalovat KEDA do libovolného clusteru Kubernetes, včetně Helm.  Možnosti nasazení jsou zdokumentovány na [webu keda](https://keda.sh/deploy/).
+Existují různé způsoby, jak nainstalovat KEDA do libovolného clusteru Kubernetes, včetně Helm.  Možnosti nasazení jsou zdokumentovány na [webu keda](https://keda.sh/docs/deploy/).
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Nasazení aplikace Function App do Kubernetes
 
-Do clusteru Kubernetes se systémem KEDA můžete nasadit jakoukoli aplikaci Function App.  Vzhledem k tomu, že se vaše funkce spouštějí v kontejneru Docker, `Dockerfile`projekt potřebuje.  Pokud ještě žádný nemáte, můžete přidat souboru Dockerfile spuštěním následujícího příkazu v kořenu projektu Functions:
+Do clusteru Kubernetes se systémem KEDA můžete nasadit jakoukoli aplikaci Function App.  Vzhledem k tomu, že se vaše funkce spouštějí v kontejneru Docker, projekt potřebuje `Dockerfile` .  Pokud ještě žádný nemáte, můžete přidat souboru Dockerfile spuštěním následujícího příkazu v kořenu projektu Functions:
 
 ```cli
 func init --docker-only
@@ -41,7 +41,7 @@ func init --docker-only
 Pokud chcete vytvořit image a nasadit své funkce do Kubernetes, spusťte následující příkaz:
 
 > [!NOTE]
-> Základní nástroje budou k sestavení a publikování image využívat rozhraní Docker CLI. Ujistěte se, že je Docker nainstalovaný a připojený k vašemu účtu pomocí `docker login`.
+> Základní nástroje budou k sestavení a publikování image využívat rozhraní Docker CLI. Ujistěte se, že je Docker nainstalovaný a připojený k vašemu účtu pomocí `docker login` .
 
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
@@ -49,15 +49,15 @@ func kubernetes deploy --name <name-of-function-deployment> --registry <containe
 
 > Nahraďte `<name-of-function-deployment>` názvem vaší aplikace Function App.
 
-Tím se vytvoří prostředek `Deployment` Kubernetes, `ScaledObject` prostředek a `Secrets`, což zahrnuje proměnné prostředí importované ze `local.settings.json` souboru.
+Tím se vytvoří `Deployment` prostředek Kubernetes, `ScaledObject` prostředek a `Secrets` , což zahrnuje proměnné prostředí importované ze `local.settings.json` souboru.
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>Nasazení aplikace Function App z privátního registru
 
-Výše uvedený tok funguje i u privátních registrů.  Pokud nasazujete image kontejneru z privátního registru, zahrňte `--pull-secret` příznak, který odkazuje na tajný kód Kubernetes s přihlašovacími údaji soukromého registru `func kubernetes deploy`, když je spuštěný.
+Výše uvedený tok funguje i u privátních registrů.  Pokud nasazujete image kontejneru z privátního registru, zahrňte `--pull-secret` příznak, který odkazuje na tajný kód Kubernetes s přihlašovacími údaji soukromého registru, když je spuštěný `func kubernetes deploy` .
 
 ## <a name="removing-a-function-app-from-kubernetes"></a>Odebrání aplikace Function App z Kubernetes
 
-Po nasazení můžete odebrat funkci odebráním přidruženého `Deployment`, `ScaledObject` `Secrets` vytvořeného.
+Po nasazení můžete odebrat funkci odebráním přidruženého `Deployment` , `ScaledObject` `Secrets` vytvořeného.
 
 ```cli
 kubectl delete deploy <name-of-function-deployment>

@@ -3,20 +3,20 @@ title: Vytvoření funkce aktivované službou Azure Cosmos DB
 description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, která se vyvolá při přidání dat do databáze ve službě Azure Cosmos DB.
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
-ms.date: 10/02/2018
+ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 6045c61dc9837667bfaf01c685f687fcf5816e4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c16bd728fe81796d671762615ec8dc4ad6e1d87d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80754213"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123729"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
 
 Zjistěte, jak vytvořit funkci aktivovanou při přidání nebo změně dat ve službě Azure Cosmos DB. Další informace o službě Azure Cosmos DB najdete v tématu [Azure Cosmos DB: Databázové výpočetní prostředí bez serveru využívající Azure Functions](../cosmos-db/serverless-computing-database.md).
 
-![Zobrazte si zprávy v protokolech.](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
+:::image type="content" source="./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png" alt-text="Kód Azure Cosmos DB":::
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -26,6 +26,9 @@ Pro absolvování tohoto kurzu potřebujete:
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
+
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Azure.
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
@@ -43,35 +46,33 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 ## <a name="create-azure-cosmos-db-trigger"></a>Vytvoření triggeru služby Azure Cosmos DB
 
-1. Rozbalte aplikaci Function App a klikněte na **+** tlačítko vedle položky **funkce**. Pokud jde o první funkci ve vaší aplikaci Function App, vyberte **Na portálu** a potom **Pokračovat**. V opačném případě přejděte ke třetímu kroku.
+1. Ve vaší aplikaci Function App vyberte v nabídce vlevo možnost **funkce** a v horní nabídce vyberte **Přidat** . 
 
-   ![Stručný úvod do služby Functions na webu Azure Portal](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
+1. Na stránce **Nová funkce** zadejte `cosmos` do vyhledávacího pole a pak zvolte šablonu **triggeru Azure Cosmos DB** .
 
-1. Zvolte **Další šablony** a potom **Dokončit a zobrazit šablony**.
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Stránka funkce v Azure Portal":::
 
-    ![Rychlý start služby Functions – výběr dalších šablon](./media/functions-create-cosmos-db-triggered-function/add-first-function.png)
 
-1. Do vyhledávacího pole zadejte `cosmos` a zvolte šablonu **Trigger Azure Cosmos DB**.
-
-1. Pokud se zobrazí výzva, vyberte **instalovat** a nainstalujte Azure Cosmos DB rozšíření do aplikace Function App. Po úspěšném dokončení instalace vyberte **Pokračovat**.
-
-    ![Instalace rozšíření vazby](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
-
-1. Nakonfigurujte novou aktivační událost s nastaveními uvedenými v tabulce pod obrázkem.
-
-    ![Vytvoření funkce aktivované službou Azure Cosmos DB](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png)
+1. Nakonfigurujte novou aktivační událost s nastavením, jak je uvedeno v následující tabulce:
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **Název** | Výchozí | Použijte výchozí název funkce navrhovaný šablonou.|
-    | **Připojení účtu Azure Cosmos DB** | Nové nastavení | Vyberte **Nové**, vyberte **Předplatné** a **Databázový účet**, které jste předtím vytvořili, a zvolte **Vybrat**. Vytvoří se nastavení aplikace pro připojení k vašemu účtu. Toto nastavení vazba použije k připojení k databázi. |
-    | **Název kontejneru** | Items | Název kontejneru, který se má monitorovat |
-    | **Vytvořit kontejner zapůjčení, pokud neexistuje** | Zaškrtnuté | Kontejner ještě neexistuje, proto ho vytvořte. |
-    | **Název databáze** | Úlohy | Název databáze s kontejnerem, který se má monitorovat |
+    | **Nová funkce** | Přijměte výchozí název. | Název funkce |
+    | **Připojení účtu databáze Cosmos DB** | Přijměte výchozí nový název. | Vyberte **Nový**, **databázový účet** , který jste vytvořili dříve, a pak klikněte na **OK**. Tato akce vytvoří nastavení aplikace pro připojení k účtu. Toto nastavení vazba použije k připojení k databázi. |
+    | **Název databáze** | Úlohy | Název databáze, která obsahuje kolekci, která se má monitorovat |
+    | **Název kolekce** | Items | Název kolekce, která se má monitorovat |
+    | **Název kolekce pro zapůjčení** | leases | Název kolekce, do které se mají ukládat zapůjčení |
+    | **Vytvořit kolekci zapůjčení, pokud neexistuje** | Ano | Kontroluje existenci kolekce zapůjčení a automaticky ji vytvoří. |
 
-1. Kliknutím na **Vytvořit** vytvořte funkci aktivovanou službou Azure Cosmos DB. Po vytvoření funkce se zobrazí kód funkce založené na šabloně.  
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Vytvoření funkce aktivované službou Azure Cosmos DB":::
 
-    ![Šablona funkce Cosmos DB v jazyce C#](./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png)
+1. Vyberte **vytvořit funkci**. 
+
+    Azure vytvoří funkci triggeru Cosmos DB.
+
+1. Chcete-li zobrazit kód funkce založené na šablonách, vyberte **kód + test**.
+
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Šablona funkce Cosmos DB v jazyce C#":::
 
     Tato šablona funkce zapíše do protokolů počet dokumentů a ID prvního dokumentu.
 
@@ -110,7 +111,7 @@ Po tom, co kontejner zadaný ve vazbě funkce existuje, můžete funkci otestova
 
 1. Rozbalte kontejner nové **položky** v Průzkumník dat, zvolte položku **položky**a vyberte možnost **Nová položka**.
 
-    ![Vytvoření položky v kontejneru položek](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Vytvoření položky v kontejneru položek":::
 
 1. Nahraďte obsah nové položky následujícím obsahem a pak zvolte **Uložit**.
 

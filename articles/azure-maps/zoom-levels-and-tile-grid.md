@@ -1,19 +1,19 @@
 ---
 title: Úrovně přiblížení a mřížka dlaždic | Mapy Microsoft Azure
 description: V tomto článku se dozvíte o úrovních přiblížení a mřížce dlaždic v mapách Microsoft Azure.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: d58c9f6940dceefdc25211f4540b34522aec935d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530287"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123900"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Úrovně přiblížení a mřížka dlaždic
 
@@ -140,12 +140,12 @@ Tady je mřížka lupy pro úroveň přiblížení 1:
 
 ## <a name="quadkey-indices"></a>Quadkey indexy
 
-Některé platformy pro mapování používají `quadkey` konvenci vytváření názvů pro indexování, které KOMBINUJÍ dlaždice ZY do řetězce s jedním dimenzí `quadtree` s názvem `quadkeys` Keys nebo pro krátké. Každá `quadkey` jednoznačně identifikuje jednu dlaždici na určité úrovni podrobností a je možné ji použít jako klíč v běžných rejstřících stromu databáze B. Sady SDK pro Azure Maps podporují překrytí vrstev dlaždic, které `quadkey` používají konvence pojmenování kromě dalších konvencí pojmenování, jak je popsáno v dokumentu [Přidat vrstvu dlaždice](map-add-tile-layer.md) .
+Některé platformy pro mapování používají `quadkey` konvenci vytváření názvů pro indexování, které kombinují dlaždice ZY do řetězce s jedním dimenzí s názvem `quadtree` Keys nebo `quadkeys` pro krátké. Každá `quadkey` jednoznačně identifikuje jednu dlaždici na určité úrovni podrobností a je možné ji použít jako klíč v běžných rejstřících stromu databáze B. Sady SDK pro Azure Maps podporují překrytí vrstev dlaždic, které používají `quadkey` konvence pojmenování kromě dalších konvencí pojmenování, jak je popsáno v dokumentu [Přidat vrstvu dlaždice](map-add-tile-layer.md) .
 
 > [!NOTE]
-> Konvence `quadkeys` pojmenování funguje pouze pro úrovně přiblížení jednoho nebo více. Sada SDK pro Azure Maps podporuje úroveň přiblížení 0, což je jedna dlaždice mapy pro celý svět. 
+> `quadkeys`Konvence pojmenování funguje pouze pro úrovně přiblížení jednoho nebo více. Sada SDK pro Azure Maps podporuje úroveň přiblížení 0, což je jedna dlaždice mapy pro celý svět. 
 
-Chcete-li převést souřadnice dlaždice `quadkey`na, jsou zachovány bity Y a X a výsledek je interpretován jako číslo základní-4 (s počátečními nulami) a převedeno na řetězec. Například vzhledem k souřadnicím grafu dlaždice (3, 5) na úrovni 3 `quadkey` je určena takto:
+Chcete-li převést souřadnice dlaždice na `quadkey` , jsou zachovány bity Y a X a výsledek je interpretován jako číslo základní-4 (s počátečními nulami) a převedeno na řetězec. Například vzhledem k souřadnicím grafu dlaždice (3, 5) na úrovni 3 `quadkey` je určena takto:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -161,13 +161,13 @@ quadkey = 100111 (base 2) = 213 (base 4) = "213"
 
 ![Jehlan dlaždice Quadkey](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-Nakonec `quadkeys` zadejte jednorozměrný klíč indexu, který obvykle zachovává blízkost dlaždic v prostoru XY. Jinými slovy, dvě dlaždice, které mají okolní souřadnice XY `quadkeys` , jsou obvykle relativně blízko dohromady. To je důležité pro optimalizaci výkonu databáze, protože sousední dlaždice se ve skupinách často požadují a je žádoucí, aby tyto dlaždice zůstaly na stejných blocích na disku, aby se minimalizoval počet čtení z disku.
+Nakonec `quadkeys` Zadejte jednorozměrný klíč indexu, který obvykle zachovává blízkost dlaždic v prostoru XY. Jinými slovy, dvě dlaždice, které mají okolní souřadnice XY `quadkeys` , jsou obvykle relativně blízko dohromady. To je důležité pro optimalizaci výkonu databáze, protože sousední dlaždice se ve skupinách často požadují a je žádoucí, aby tyto dlaždice zůstaly na stejných blocích na disku, aby se minimalizoval počet čtení z disku.
 
 ## <a name="tile-math-source-code"></a>Plovoucí zdrojový kód pro matematiku
 
 Následující vzorový kód ukazuje, jak implementovat funkce popsané v tomto dokumentu. Tyto funkce mohou být v případě potřeby snadno přeloženy do jiných programovacích jazyků.
 
-#### <a name="c"></a>[C#](#tab/csharp)
+#### <a name="c"></a>[R #](#tab/csharp)
 
 ```csharp
 using System;

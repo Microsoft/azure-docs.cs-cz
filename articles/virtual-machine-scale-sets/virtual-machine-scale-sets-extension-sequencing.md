@@ -1,18 +1,20 @@
 ---
 title: Použití pořadí rozšíření s Azure Virtual Machine Scale Sets
 description: Naučte se, jak sekvencovat zřizování rozšíření při nasazování více rozšíření na Virtual Machine Scale Sets.
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: extensions
 ms.date: 01/30/2019
-ms.author: mimckitt
-ms.openlocfilehash: 737040699dd62d722b9a9ad4d8915ccb270c2d06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273745"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121027"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Zřizování rozšíření sekvence ve virtuálních počítačích Virtual Machine Scale Sets
 Rozšíření virtuálních počítačů Azure poskytují možnosti, jako je například konfigurace po nasazení a správa, monitorování, zabezpečení a další. Produkční nasazení obvykle používají kombinaci více rozšíření nakonfigurovaných pro instance virtuálních počítačů, aby dosáhla požadovaných výsledků.
@@ -166,7 +168,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 }
 ```
 
-Pokud jste dříve definovali ExtensionC v modelu sady škálování a teď chcete přidat její závislosti, můžete spustit a `PATCH` upravit vlastnosti již nasazeného rozšíření.
+Pokud jste dříve definovali ExtensionC v modelu sady škálování a teď chcete přidat její závislosti, můžete spustit a `PATCH` Upravit vlastnosti již nasazeného rozšíření.
 
 ```
 PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`

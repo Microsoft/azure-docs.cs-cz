@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fa28e07c28c36c03ab9e85d8436e3f1a2b36ad1c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993968"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123832"
 ---
 # <a name="blob-versioning-preview"></a>Správa verzí objektů BLOB (Preview)
 
@@ -167,7 +167,7 @@ Následující diagram ukazuje, co se stane při pořizování snímku objektu B
 Přístup k verzím objektů blob můžete autorizovat pomocí jednoho z následujících přístupů:
 
 - Pomocí řízení přístupu na základě role (RBAC) udělíte oprávnění objektu zabezpečení služby Azure Active Directory (Azure AD). Microsoft doporučuje používat Azure AD pro zajištění vysokého zabezpečení a snadného použití. Další informace o používání služby Azure AD s operacemi objektů BLOB najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](../common/storage-auth-aad.md).
-- Pomocí sdíleného přístupového podpisu (SAS) můžete delegovat přístup k verzím objektů BLOB. Zadejte ID verze pro typ `bv`podepsaného prostředku, který představuje verzi objektu BLOB pro vytvoření tokenu SAS pro operace v konkrétní verzi. Další informace o sdílených přístupových podpisech najdete v článku [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md).
+- Pomocí sdíleného přístupového podpisu (SAS) můžete delegovat přístup k verzím objektů BLOB. Zadejte ID verze pro typ podepsaného prostředku `bv` , který představuje verzi objektu BLOB pro vytvoření tokenu SAS pro operace v konkrétní verzi. Další informace o sdílených přístupových podpisech najdete v článku [udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md).
 - Použitím přístupových klíčů účtu k autorizaci operací s verzemi objektů BLOB se sdíleným klíčem. Další informace najdete v tématu [autorizace pomocí sdíleného klíče](/rest/api/storageservices/authorize-with-shared-key).
 
 Správa verzí objektů BLOB je navržená tak, aby chránila vaše data před náhodným nebo škodlivým odstraněním. Kvůli vylepšení ochrany vyžaduje odstranění verze objektu BLOB zvláštní oprávnění. Následující části popisují oprávnění potřebná k odstranění verze objektu BLOB.
@@ -183,7 +183,7 @@ Následující tabulka uvádí, které akce RBAC podporují odstranění objektu
 
 ### <a name="shared-access-signature-sas-parameters"></a>Parametry sdíleného přístupového podpisu (SAS)
 
-Podepsaný prostředek pro verzi objektu BLOB je `bv`. Další informace najdete v tématech [Vytvoření SAS služby](/rest/api/storageservices/create-service-sas) nebo [Vytvoření SAS pro delegování uživatelů](/rest/api/storageservices/create-user-delegation-sas).
+Podepsaný prostředek pro verzi objektu BLOB je `bv` . Další informace najdete v tématech [Vytvoření SAS služby](/rest/api/storageservices/create-service-sas) nebo [Vytvoření SAS pro delegování uživatelů](/rest/api/storageservices/create-user-delegation-sas).
 
 Následující tabulka uvádí oprávnění požadovaná na SAS k odstranění verze objektu BLOB.
 
@@ -224,9 +224,10 @@ Pokud se chcete zaregistrovat ve verzi Preview, použijte PowerShell nebo Azure 
 Pokud se chcete zaregistrovat v prostředí PowerShell, zavolejte příkaz [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
 
 ```powershell
+# Register for blob versioning (preview)
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
-    
+
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
