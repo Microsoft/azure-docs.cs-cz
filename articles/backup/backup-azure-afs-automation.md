@@ -1,16 +1,16 @@
 ---
-title: Zálohování souborů Azure pomocí PowerShellu
-description: V tomto článku se dozvíte, jak zálohovat soubory Azure pomocí služby Azure Backup a PowerShellu.
+title: Zálohování sdílené složky Azure pomocí PowerShellu
+description: V tomto článku se dozvíte, jak zálohovat sdílenou složku souborů Azure pomocí služby Azure Backup a PowerShellu.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 865cfc6daa7568236b0306ba591b42a9f7704dd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53187152802908e94ee4a8a231d3b7874cf42422
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101174"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199341"
 ---
-# <a name="back-up-azure-files-with-powershell"></a>Zálohování souborů Azure pomocí PowerShellu
+# <a name="back-up-an-azure-file-share-by-using-powershell"></a>Zálohování sdílené složky Azure pomocí PowerShellu
 
 Tento článek popisuje, jak použít Azure PowerShell k zálohování sdílené složky souborů Azure pomocí trezoru služby [Azure Backup](backup-overview.md) Recovery Services.
 
@@ -18,7 +18,7 @@ V tomto článku se dozvíte, jak:
 
 > [!div class="checklist"]
 >
-> * Nastavte PowerShell a zaregistrujte poskytovatele služby Azure Recovery Services.
+> * Nastavte PowerShell a zaregistrujte poskytovatele Recovery Services.
 > * Vytvořte trezor služby Recovery Services.
 > * Nakonfigurujte zálohování sdílené složky Azure.
 > * Spusťte úlohu zálohování.
@@ -26,54 +26,50 @@ V tomto článku se dozvíte, jak:
 ## <a name="before-you-start"></a>Než začnete
 
 * [Přečtěte si další informace](backup-azure-recovery-services-vault-overview.md) o úložištích Recovery Services.
-* Zkontrolujte hierarchii objektů PowerShell pro Recovery Services.
+* Přečtěte si referenční informace k [rutině](/powershell/module/az.recoveryservices) AZ. RecoveryServices v knihovně Azure.
+* Zkontrolujte následující hierarchii objektů PowerShellu pro Recovery Services:
 
-## <a name="recovery-services-object-hierarchy"></a>Recovery Services hierarchie objektů
+  ![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Hierarchie objektů je shrnuta v následujícím diagramu.
-
-![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
-
-Přečtěte si referenční informace k [rutině](/powershell/module/az.recoveryservices) **AZ. RecoveryServices** v knihovně Azure.
-
-## <a name="set-up-and-install"></a>Nastavení a instalace
+## <a name="set-up-powershell"></a>Nastavení PowerShellu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Nastavte PowerShell následujícím způsobem:
 
-1. [Stáhněte si nejnovější verzi programu AZ PowerShell](/powershell/azure/install-az-ps). Minimální požadovaná verze je 1.0.0.
+1. [Stáhněte si nejnovější verzi Azure PowerShell](/powershell/azure/install-az-ps).
 
-    > [!WARNING]
-    > Minimální verze PS požadovaná pro zálohování sdílené složky Azure je **AZ. RecoveryServices 2.6.0**. Abyste se vyhnuli problémům s existujícími skripty, upgradujte prosím svoji verzi. Minimální verzi nainstalujte pomocí následujícího příkazu PS:
+    > [!NOTE]
+    > Minimální verze prostředí PowerShell požadovaná pro zálohování sdílených složek Azure je AZ. RecoveryServices 2.6.0. Pomocí nejnovější verze nebo alespoň minimální verze vám pomůže vyhnout se problémům se stávajícími skripty. Minimální verzi nainstalujete pomocí následujícího příkazu PowerShellu:
+    >
+    > ```powershell
+    > Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+    > ```
 
-    ```powershell
-    Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
-    ```
-
-2. Pomocí tohoto příkazu Najděte rutiny Azure Backup PowerShellu:
+2. Pomocí tohoto příkazu Najděte rutiny PowerShellu pro Azure Backup:
 
     ```powershell
     Get-Command *azrecoveryservices*
     ```
 
-3. Zkontrolujte aliasy a rutiny pro Azure Backup, Azure Site Recovery a Recovery Services trezor. Tady je příklad toho, co se vám může zobrazit. Nejedná se o úplný seznam rutin.
+3. Zkontrolujte aliasy a rutiny pro Azure Backup, Azure Site Recovery a trezoru Recovery Services. Tady je příklad toho, co se vám může zobrazit. Nejedná se o úplný seznam rutin.
 
     ![Seznam rutin Recovery Services](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
 4. Přihlaste se ke svému účtu Azure pomocí **Connect-AzAccount**.
-5. Na zobrazené webové stránce budete vyzváni k zadání přihlašovacích údajů k účtu.
+5. Na webové stránce, která se zobrazí, budete vyzváni k zadání přihlašovacích údajů k účtu.
 
-    * Alternativně můžete zahrnout přihlašovací údaje účtu jako parametr v rutině **Connect-AzAccount** s parametrem **-Credential**.
-    * Pokud jste partner CSP jménem tenanta, zadejte zákazníka jako tenanta pomocí názvu primární domény tenantID nebo tenanta. Příkladem je **Connect-AzAccount-Tenant** Fabrikam.com.
+    Alternativně můžete do rutiny **Connect-AzAccount** zahrnout přihlašovací údaje účtu pomocí parametr **-Credential**.
+   
+    Pokud jste partnerem CSP při práci jménem tenanta, zadejte zákazníka jako tenanta. Použijte své ID klienta nebo název primární domény tenanta. Příkladem je **Connect-AzAccount-tenant "fabrikam.com"**.
 
-6. Přidružte předplatné, které chcete používat s účtem, protože účet může mít několik předplatných.
+6. Přidružte předplatné, které chcete používat s účtem, protože účet může mít několik předplatných:
 
     ```powershell
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-7. Pokud používáte Azure Backup poprvé, zaregistrujte poskytovatele služby Azure Recovery Services s vaším předplatným pomocí rutiny **Register-AzResourceProvider** .
+7. Pokud používáte Azure Backup poprvé, zaregistrujte poskytovatele služby Azure Recovery Services s vaším předplatným pomocí rutiny **Register-AzResourceProvider** :
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -89,41 +85,40 @@ Nastavte PowerShell následujícím způsobem:
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
-Recovery Services trezor je prostředek Správce prostředků, takže ho musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků, nebo můžete vytvořit skupinu prostředků pomocí rutiny **New-AzResourceGroup** . Při vytváření skupiny prostředků zadejte název a umístění skupiny prostředků.
+Recovery Services trezor je prostředek Správce prostředků, takže ho musíte umístit do skupiny prostředků. Můžete použít existující skupinu prostředků, nebo můžete vytvořit skupinu prostředků pomocí rutiny **New-AzResourceGroup** . Když vytváříte skupinu prostředků, zadejte její název a umístění.
 
-Pomocí těchto kroků můžete vytvořit trezor Recovery Services.
+Pomocí těchto kroků vytvořte Recovery Services trezor:
 
-1. Trezor se umístí do skupiny prostředků. Pokud nemáte existující skupinu prostředků, vytvořte novou pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0). V tomto příkladu vytvoříme novou skupinu prostředků v Západní USA oblasti.
+1. Pokud nemáte existující skupinu prostředků, vytvořte novou pomocí rutiny [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) . V tomto příkladu vytvoříme skupinu prostředků v Západní USA oblasti:
 
    ```powershell
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-2. K vytvoření trezoru použijte rutinu [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) . Zadejte stejné umístění pro trezor, které bylo použito pro skupinu prostředků.
+2. K vytvoření trezoru použijte rutinu [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) . Zadejte stejné umístění pro trezor, který jste použili pro skupinu prostředků.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Zadejte typ redundance, který se použije pro úložiště trezoru.
+3. Zadejte typ redundance, který se použije pro úložiště trezoru. Můžete použít [místně redundantní úložiště](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště](../storage/common/storage-redundancy-grs.md).
+   
+   Následující příklad nastaví možnost **-BackupStorageRedundancy** pro rutinu [set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) pro **testvault** nastavenou na geograficky **redundantní**:
 
-   * Můžete použít [místně redundantní úložiště](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště](../storage/common/storage-redundancy-grs.md).
-   * Následující příklad nastaví možnost **-BackupStorageRedundancy** pro příkaz[set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd pro **testvault** nastavenou na geograficky **redundantní**.
-
-     ```powershell
-     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
-     Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
-     ```
+   ```powershell
+   $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
+   Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
+   ```
 
 ### <a name="view-the-vaults-in-a-subscription"></a>Zobrazení trezorů v předplatném
 
-Pokud chcete zobrazit všechny trezory v rámci předplatného, použijte [příkaz Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0).
+Pokud chcete zobrazit všechny trezory v rámci předplatného, použijte [příkaz Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0):
 
 ```powershell
 Get-AzRecoveryServicesVault
 ```
 
-Výstup je podobný následujícímu. Všimněte si, že je k dispozici přidružená skupina prostředků a umístění.
+Výstup je podobný následujícímu. Všimněte si, že výstup poskytuje přidruženou skupinu prostředků a umístění.
 
 ```powershell
 Name              : Contoso-vault
@@ -139,10 +134,11 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 Uložte objekt trezoru do proměnné a nastavte kontext trezoru.
 
-* Mnoho rutin Azure Backup vyžaduje jako vstup objekt Recovery Services trezoru, takže je vhodné uložit objekt trezoru do proměnné.
-* Kontext trezoru představuje typ chráněných dat v trezoru. Nastavte ji pomocí [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). Po nastavení je kontext použit pro všechny následné rutiny.
+Mnoho rutin Azure Backup vyžaduje jako vstup objekt Recovery Services trezoru, takže je vhodné uložit objekt trezoru do proměnné.
 
-Následující příklad nastaví kontext trezoru pro **testvault**.
+Kontext trezoru představuje typ chráněných dat v trezoru. Nastavte ji pomocí [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). Po nastavení je kontext použit pro všechny následné rutiny.
+
+Následující příklad nastaví kontext trezoru pro **testvault**:
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
@@ -150,7 +146,7 @@ Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultConte
 
 ### <a name="fetch-the-vault-id"></a>Načtení ID trezoru
 
-V souladu s pokyny pro Azure PowerShell plánujeme vyřadit nastavení kontextu trezoru. Místo toho můžete uložit nebo načíst ID trezoru a předat ho relevantním příkazům. Takže pokud jste nastavili kontext trezoru nebo chcete zadat příkaz, který se má spustit pro určitý trezor, předejte ID trezoru jako "-vaultID" do všech relevantních příkazů následujícím způsobem:
+Plánujeme vyřadit nastavení kontextu trezoru v souladu s pokyny pro Azure PowerShell. Místo toho můžete uložit nebo načíst ID trezoru a předat ho relevantním příkazům. Pokud jste nenastavili kontext trezoru nebo chcete zadat příkaz, který se má spustit pro určitý trezor, předejte ID trezoru pro `-vaultID` všechny relevantní příkazy následujícím způsobem:
 
 ```powershell
 $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -159,14 +155,17 @@ New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType 
 
 ## <a name="configure-a-backup-policy"></a>Konfigurace zásady zálohování
 
-Zásady zálohování určují plán zálohování a dobu, po kterou mají být udržovány body obnovení zálohy:
+Zásady zálohování určují plán zálohování a dobu, po kterou mají být udržovány body obnovení zálohy.
 
-* Zásada zálohování je přidružená minimálně k jedné zásadě uchovávání informací. Zásady uchovávání informací definují, jak dlouho je bod obnovení udržován před jeho odstraněním.
-* Podívejte se na výchozí uchování zásad zálohování pomocí [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0).
-* Seznamte se s výchozím plánem zásad zálohování pomocí [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0).
-* Pomocí rutiny [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) vytvoříte nové zásady zálohování. Zadáváte objekty zásad plánování a uchovávání dat.
+Zásada zálohování je přidružená minimálně k jedné zásadě uchovávání informací. Zásady uchovávání informací definují, jak dlouho je bod obnovení udržován před jeho odstraněním. Zálohy můžete nakonfigurovat na denní, týdenní, měsíční nebo roční uchování.
 
-Ve výchozím nastavení je v objektu zásad plánování definován počáteční čas. Pomocí následujícího příkladu změňte čas spuštění na požadovaný čas zahájení. Požadovaný čas spuštění by měl být také ve formátu UTC. Následující příklad předpokládá, že požadovaný počáteční čas je 01:00 UTC pro denní zálohy.
+Tady jsou některé rutiny pro zásady zálohování:
+
+* Prohlédněte si výchozí uchovávání zásad zálohování pomocí [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0).
+* Pomocí [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0)si prohlédněte výchozí plán zásad zálohování.
+* Vytvořte nové zásady zálohování pomocí [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0). Jako vstup zadáte objekty zásad plánování a uchovávání.
+
+Ve výchozím nastavení je v objektu zásad plánování definován počáteční čas. Pomocí následujícího příkladu změňte čas spuštění na požadovaný čas zahájení. Požadovaný čas spuštění by měl být v univerzálním koordinovaném čase (UTC). V příkladu se předpokládá, že požadovaný počáteční čas je 01:00 UTC pro denní zálohy.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureFiles"
@@ -176,7 +175,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 ```
 
 > [!IMPORTANT]
-> Je nutné zadat čas spuštění pouze v 30 minutách pouze násobcích. V tomto příkladu může být pouze "01:00:00" nebo "02:30:00". Počáteční čas nemůže být "01:15:00"
+> Je nutné zadat počáteční čas pouze do 30 minut. V předchozím příkladu může být pouze "01:00:00" nebo "02:30:00". Počáteční čas nemůže být "01:15:00".
 
 V následujícím příkladu jsou uloženy zásady plánu a zásady uchovávání informací v proměnných. Pak tyto proměnné používá jako parametry pro nové zásady (**NewAFSPolicy**). **NewAFSPolicy** provádí každodenní zálohování a uchovává ho po dobu 30 dnů.
 
@@ -186,7 +185,7 @@ $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "Azure
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType "AzureFiles" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```
 
-Výstup je podobný následujícímu.
+Výstup je podobný tomuto:
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
@@ -200,17 +199,17 @@ Po definování zásad zálohování můžete povolit ochranu sdílené složky 
 
 ### <a name="retrieve-a-backup-policy"></a>Načtení zásady zálohování
 
-Příslušný objekt zásad načtete pomocí [Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0). Pomocí této rutiny můžete získat konkrétní zásady nebo zobrazit zásady spojené s typem úlohy.
+Příslušný objekt zásad načtete pomocí [Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0). Pomocí této rutiny můžete zobrazit zásady spojené s typem úlohy nebo získat konkrétní zásadu.
 
 #### <a name="retrieve-a-policy-for-a-workload-type"></a>Načtěte zásadu pro typ úlohy.
 
-Následující příklad načte zásady pro typ úlohy **AzureFiles**.
+Následující příklad načte zásady pro typ úlohy **AzureFiles**:
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureFiles"
 ```
 
-Výstup je podobný následujícímu.
+Výstup je podobný tomuto:
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
@@ -219,27 +218,27 @@ dailyafs             AzureFiles         AzureStorage         1/10/2018 12:30:00 
 ```
 
 > [!NOTE]
-> Časové pásmo pole **BackupTime** v PowerShellu je univerzální koordinovaný čas (UTC). Když se v Azure Portal zobrazí čas zálohování, upraví se čas na vaše místní časové pásmo.
+> Časové pásmo pole **BackupTime** v PowerShellu je v čase UTC. Když se v Azure Portal zobrazí čas zálohování, upraví se čas na vaše místní časové pásmo.
 
-### <a name="retrieve-a-specific-policy"></a>Načíst konkrétní zásadu
+#### <a name="retrieve-a-specific-policy"></a>Načíst konkrétní zásadu
 
-Následující zásada načte zásady zálohování s názvem **dailyafs**.
+Následující zásada načte zásady zálohování s názvem **dailyafs**:
 
 ```powershell
 $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 ```
 
-### <a name="enable-backup-and-apply-policy"></a>Povolit zálohování a použít zásady
+### <a name="enable-protection-and-apply-the-policy"></a>Povolit ochranu a použít zásady
 
-Povolte ochranu pomocí [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0). Po přidružení zásady k trezoru se spustí zálohování v souladu s plánem zásad.
+Ochranu zapněte pomocí [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0). Po přidružení zásady k trezoru se spustí zálohování v souladu s plánem zásad.
 
-Následující příklad povolí ochranu sdílené složky Azure **testAzureFileShare** v účtu úložiště **testStorageAcct**s použitím zásad **dailyafs**.
+Následující příklad povolí ochranu sdílené složky Azure **testAzureFileShare** v účtu úložiště **testStorageAcct**s **dailyafs**zásad:
 
 ```powershell
 Enable-AzRecoveryServicesBackupProtection -StorageAccountName "testStorageAcct" -Name "testAzureFS" -Policy $afsPol
 ```
 
-Příkaz čeká na dokončení úlohy konfigurace ochrany a poskytne podobný výstup, jak je znázorněno na obrázku.
+Příkaz čeká na dokončení úlohy konfigurace ochrany a poskytne výstup podobný následujícímu příkladu:
 
 ```cmd
 WorkloadName       Operation            Status                 StartTime                                                                                                         EndTime                   JobID
@@ -247,26 +246,34 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
-## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Důležité upozornění – identifikace zálohových položek pro zálohy AFS
+## <a name="important-notice-backup-item-identification"></a>Důležité upozornění: identifikace zálohované položky
 
-Tato část popisuje důležitou změnu v zálohování AFS v článku Příprava pro GA.
+Tato část popisuje důležitou změnu v zálohování sdílených složek Azure v přípravě na obecnou dostupnost.
 
-Když zapnete zálohování pro AFS, zadá uživatel popisný název sdílené složky zákazníka jako název entity a vytvoří se zálohovaná položka. Název zálohované položky je jedinečný identifikátor vytvořený službou Azure Backup. Identifikátor obvykle zahrnuje popisný název uživatele. Pokud ale chcete zpracovat důležitý scénář obnovitelného odstranění, kde se dá odstranit sdílená složka, a můžete vytvořit jinou sdílenou složku se stejným názvem, jedinečná identita sdílené složky Azure teď bude ID místo popisného názvu zákazníka. Aby bylo možné znát jedinečnou identitu a název každé položky, stačí spustit ```Get-AzRecoveryServicesBackupItem``` příkaz s příslušnými filtry pro BackupManagementType a WorkloadType pro získání všech relevantních položek a pak sledovat pole název v vráceném objektu nebo odpovědi PS. Vždycky se doporučuje vypisovat položky a potom v odpovědi načíst jejich jedinečný název z pole název. Tuto hodnotu použijte k filtrování položek s parametrem Name. Jinak pomocí parametru FriendlyName Načtěte položku s popisným názvem nebo identifikátorem zákazníka.
+Když zapnete zálohování sdílených složek Azure, uživatel udělí zákazníkovi název sdílení souboru jako název entity a vytvoří se zálohovaná položka. Název zálohované položky je jedinečný identifikátor, který služba Azure Backup vytvoří. Identifikátor je obvykle uživatelsky přívětivý název. Pokud ale chcete zpracovat scénář obnovitelného odstranění, kde se dá odstranit sdílená složka, a může se vytvořit jiná sdílená složka se stejným názvem, jedinečná identita sdílené složky Azure je teď ID. 
 
-> [!WARNING]
-> Ujistěte se, že je verze PS upgradována na minimální verzi příkazu AZ. RecoveryServices 2.6.0 pro zálohy na AFS. V této verzi je pro ```Get-AzRecoveryServicesBackupItem``` příkaz k dispozici filtr FriendlyName. Předejte název sdílené složky Azure do parametru friendlyName. Pokud předáte název sdílené složky Azure do parametru název, tato verze vyvolá upozornění, aby tento popisný název předával do parametru popisného názvu. Pokud nenainstalujete tuto minimální verzi, může dojít k selhání existujících skriptů. Nainstalujte minimální verzi PS pomocí následujícího příkazu.
+Chcete-li zjistit jedinečné ID každé položky, spusťte příkaz **Get-AzRecoveryServicesBackupItem** s příslušnými filtry pro **backupManagementType** a **WorkloadType** pro získání všech relevantních položek. Pak Sledujte pole název v vráceném objektu nebo odpovědi prostředí PowerShell. 
 
-```powershell
-Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
-```
+Doporučujeme, abyste v odpovědi vypisovat položky a pak z pole název načetli jejich jedinečný název. Tuto hodnotu použijte k filtrování položek s parametrem *Name* . V opačném případě pomocí parametru *FriendlyName* Načtěte položku s jejím ID.
+
+> [!IMPORTANT]
+> Ujistěte se, že je PowerShell upgradovaný na minimální verzi (AZ. RecoveryServices 2.6.0) pro zálohování sdílených složek Azure. V této verzi je k dispozici filtr *FriendlyName* pro příkaz **Get-AzRecoveryServicesBackupItem** . 
+>
+> Předejte název sdílené složky Azure do parametru *FriendlyName* . Pokud předáte název sdílené složky do parametru *Name* , tato verze vyvolá upozornění k předání názvu parametru *FriendlyName* . 
+>
+> Pokud nenainstalujete minimální verzi, může dojít k selhání existujících skriptů. Nainstalujte minimální verzi PowerShellu pomocí následujícího příkazu:
+>
+>```powershell
+>Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+>```
 
 ## <a name="trigger-an-on-demand-backup"></a>Aktivace zálohování na vyžádání
 
-Pomocí rutiny [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) spustíte zálohování na vyžádání pro chráněnou sdílenou složku Azure.
+Pomocí rutiny [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) spusťte zálohování na vyžádání pro chráněnou sdílenou složku Azure:
 
 1. Načtěte účet úložiště z kontejneru v trezoru, který obsahuje data záloh pomocí [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
-2. Pokud chcete spustit úlohu zálohování, získáte informace o sdílené složce Azure pomocí [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
-3. Spusťte zálohování na vyžádání pomocí rutiny[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
+2. Pokud chcete spustit úlohu zálohování, Získejte informace o sdílené složce Azure pomocí [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
+3. Spusťte zálohování na vyžádání pomocí rutiny [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
 
 Zálohování na vyžádání spusťte následujícím způsobem:
 
@@ -276,7 +283,7 @@ $afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -Workloa
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
-Příkaz vrátí úlohu s ID, které se má sledovat, jak je znázorněno v následujícím příkladu.
+Příkaz vrátí úlohu s ID, které se má sledovat, jak je znázorněno v následujícím příkladu:
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -284,15 +291,9 @@ WorkloadName     Operation            Status               StartTime            
 testAzureFS       Backup               Completed            11/12/2018 2:42:07 PM     11/12/2018 2:42:11 PM     8bdfe3ab-9bf7-4be6-83d6-37ff1ca13ab6
 ```
 
-Snímky sdílené složky Azure se používají v době, kdy se provádí zálohování, takže úloha se obvykle dokončí v čase, kdy příkaz vrátí tento výstup.
-
-### <a name="using-a-runbook-to-schedule-backups"></a>Použití Runbooku k naplánování záloh
-
-Pokud hledáte ukázkové skripty, můžete se podívat na [ukázkový skript na GitHubu](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) pomocí Azure Automation sady Runbook.
-
->[!NOTE]
-> Zásady zálohování sdílené složky Azure teď podporují konfiguraci zálohování s denním/týdenním/měsíčním uchováváním.
+Snímky sdílené složky Azure se používají v době, kdy se provádí zálohování. Úloha je obvykle dokončena podle času, kdy příkaz vrátí tento výstup.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přečtěte si o](backup-afs.md) zálohování souborů Azure v Azure Portal.
+- Přečtěte si o [zálohování souborů Azure v Azure Portal](backup-afs.md).
+- Pokud chcete naplánovat zálohování pomocí sady Runbook Azure Automation, přečtěte si [ukázkový skript na GitHubu](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) .

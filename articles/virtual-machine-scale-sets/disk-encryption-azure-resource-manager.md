@@ -1,17 +1,20 @@
 ---
 title: Vytvoření a šifrování sady škálování virtuálních počítačů pomocí Azure Resource Manager šablon
 description: V tomto rychlém startu se dozvíte, jak pomocí šablon Azure Resource Manager vytvořit a zašifrovat sadu škálování virtuálního počítače.
-author: msmbaldwin
-ms.author: mbaldwin
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: quickstart
+ms.subservice: disks
 ms.date: 10/10/2019
-ms.openlocfilehash: aeba9aee8dd10b1245fb0a1e1cc98a1951382c72
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: c2b49a7e7e14bfbefcca64133ff23fdfabe53e7b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72529997"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198427"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Zašifrujte Virtual Machine Scale Sets pomocí Azure Resource Manager
 

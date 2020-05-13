@@ -2,18 +2,19 @@
 title: Nejčastější dotazy ke škálovacím sadám virtuálních počítačů Azure
 description: Získejte odpovědi na nejčastější dotazy týkající se služby Virtual Machine Scale Sets v Azure.
 author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: faq
+ms.date: 05/24/2019
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: a3074fdd10ef960a1c0b58b973d57da14d888af4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611394"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200167"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy ke škálovacím sadám virtuálních počítačů Azure
 
@@ -225,17 +226,17 @@ Veřejné klíče SSH můžete zadat jako prostý text při vytváření virtuá
 
 název elementu linuxConfiguration | Požaduje se | Typ | Popis
 --- | --- | --- | ---
-protokoly | No | Kolekce | Určuje konfiguraci klíče SSH pro operační systém Linux.
-cesta | Ano | Řetězec | Určuje cestu k souboru pro Linux, kde se mají najít klíče SSH nebo certifikát.
-keyData | Ano | Řetězec | Určuje veřejný klíč SSH kódovaný ve formátu base64.
+protokoly | Ne | Kolekce | Určuje konfiguraci klíče SSH pro operační systém Linux.
+cesta | Ano | String | Určuje cestu k souboru pro Linux, kde se mají najít klíče SSH nebo certifikát.
+keyData | Ano | String | Určuje veřejný klíč SSH kódovaný ve formátu base64.
 
 Příklad najdete v tématu [Šablona pro rychlý Start pro 101-VM-sshkey GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Při spuštění `Update-AzVmss` po přidání více než jednoho certifikátu ze stejného trezoru klíčů se zobrazí následující zpráva:
 
->Update-AzVmss: list tajného kódu obsahuje opakované instance\</Subscriptions/u můj odběr-ID>/ResourceGroups/Internal-RG-dev/Providers/Microsoft.keyvault/Vaults/Internal-keyvault-dev, což není povoleno.
+>Update-AzVmss: list tajného kódu obsahuje opakované instance/Subscriptions/u \< můj odběr-id>/ResourceGroups/Internal-RG-dev/Providers/Microsoft.keyvault/Vaults/Internal-keyvault-dev, což není povoleno.
 
-K tomu může dojít, pokud se pokusíte znovu přidat stejný trezor namísto použití nového certifikátu trezoru pro existující zdrojový trezor. Pokud `Add-AzVmssSecret` přidáváte další tajné kódy, příkaz nefunguje správně.
+K tomu může dojít, pokud se pokusíte znovu přidat stejný trezor namísto použití nového certifikátu trezoru pro existující zdrojový trezor. `Add-AzVmssSecret`Pokud přidáváte další tajné kódy, příkaz nefunguje správně.
 
 Chcete-li přidat další tajné kódy ze stejného trezoru klíčů, aktualizujte $vmss. Properties. osProfile. tajných kódů [0]. vaultCertificates list.
 
@@ -251,7 +252,7 @@ Nové virtuální počítače nebudou mít starý certifikát. Virtuální poč�
 
 ### <a name="can-i-push-certificates-to-the-virtual-machine-scale-set-without-providing-the-password-when-the-certificate-is-in-the-secret-store"></a>Je možné nabízet certifikáty do sady škálování virtuálních počítačů bez zadání hesla, pokud je certifikát v úložišti tajných dat?
 
-Ve skriptech nemusíte vytvářet hesla s pevným kódem. Hesla můžete dynamicky načítat pomocí oprávnění, která používáte ke spuštění skriptu nasazení. Pokud máte skript, který přesouvá certifikát z trezoru klíčů úložiště tajného kódu, pak příkaz tajné `get certificate` úložiště obsahuje také výstup hesla souboru. pfx.
+Ve skriptech nemusíte vytvářet hesla s pevným kódem. Hesla můžete dynamicky načítat pomocí oprávnění, která používáte ke spuštění skriptu nasazení. Pokud máte skript, který přesouvá certifikát z trezoru klíčů úložiště tajného kódu, pak příkaz tajné úložiště obsahuje `get certificate` také výstup hesla souboru. pfx.
 
 ### <a name="how-does-the-secrets-property-of-virtualmachineprofileosprofile-for-a-virtual-machine-scale-set-work-why-do-i-need-the-sourcevault-value-when-i-have-to-specify-the-absolute-uri-for-a-certificate-by-using-the-certificateurl-property"></a>Jak funguje vlastnost tajných kódů virtualMachineProfile. osProfile pro sadu škálování virtuálního počítače? Proč potřebuji hodnotu sourceVault, když je nutné zadat absolutní identifikátor URI pro certifikát pomocí vlastnosti certificateUrl?
 
@@ -301,7 +302,7 @@ Pokud vytvoříte virtuální počítač a potom aktualizujete tajný klíč v t
 
 ### <a name="my-team-works-with-several-certificates-that-are-distributed-to-us-as-cer-public-keys-what-is-the-recommended-approach-for-deploying-these-certificates-to-a-virtual-machine-scale-set"></a>Můj tým spolupracuje s několika certifikáty, které jsou distribuovány jako veřejné klíče. cer. Jaký je doporučený postup nasazení těchto certifikátů do sady škálování virtuálního počítače?
 
-Pokud chcete nasadit veřejné klíče. cer do sady škálování virtuálních počítačů, můžete vygenerovat soubor. pfx, který obsahuje jenom soubory. cer. K tomu použijte `X509ContentType = Pfx`. Například načtěte soubor. CER jako objekt x509Certificate2 v jazyce C# nebo PowerShell a potom zavolejte metodu.
+Pokud chcete nasadit veřejné klíče. cer do sady škálování virtuálních počítačů, můžete vygenerovat soubor. pfx, který obsahuje jenom soubory. cer. K tomu použijte `X509ContentType = Pfx` . Například načtěte soubor. CER jako objekt x509Certificate2 v jazyce C# nebo PowerShell a potom zavolejte metodu.
 
 Další informace naleznete v tématu [Metoda certifikátu x509. Export (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx)).
 
@@ -359,7 +360,7 @@ $vmss=Remove-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "extensionName"
 Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName" -VirtualMacineScaleSet $vmss
 ```
 
-Hodnotu rozšíření můžete najít v `$vmss`.
+Hodnotu rozšíření můžete najít v `$vmss` .
 
 ### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Je zde příklad šablony sady škálování virtuálních počítačů, který se integruje s protokoly Azure Monitor?
 
@@ -638,7 +639,7 @@ Pokud chcete aktualizovat sadu škálování virtuálního počítače na novou 
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Můžu použít operaci obnovení obrazu k resetování virtuálního počítače bez změny image? (To znamená, že chci resetovat virtuální počítač na tovární nastavení, nikoli na nový obrázek.)
 
-Ano, pomocí operace obnovení bitové kopie můžete virtuální počítač resetovat beze změny. Pokud ale vaše sada škálování virtuálního počítače odkazuje na Image platformy s `version = latest`, může se váš virtuální počítač při volání `reimage`aktualizovat na novější bitovou kopii operačního systému.
+Ano, pomocí operace obnovení bitové kopie můžete virtuální počítač resetovat beze změny. Pokud ale vaše sada škálování virtuálního počítače odkazuje na Image platformy s `version = latest` , může se váš virtuální počítač při volání aktualizovat na novější bitovou kopii operačního systému `reimage` .
 
 ### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Je možné integrovat sady škálování s protokoly Azure Monitor?
 
@@ -655,7 +656,7 @@ Požadované ID pracovního prostoru a workspaceKey najdete v pracovním prostor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>Návody zapnout diagnostiku spouštění?
 
@@ -683,13 +684,13 @@ Když se vytvoří nový virtuální počítač, zobrazí vlastnost InstanceView
 
 ### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>Návody získat informace o vlastnostech pro každý virtuální počítač bez provedení více volání? Například jak získám doménu selhání pro každý virtuální počítač 100 v rámci sady škálování virtuálních počítačů?
 
-Chcete-li získat informace o vlastnostech pro každý virtuální počítač bez provedení více volání `ListVMInstanceViews` , můžete volat pomocí `GET` REST API v následujícím identifikátoru URI prostředku:
+Chcete-li získat informace o vlastnostech pro každý virtuální počítač bez provedení více volání, můžete volat `ListVMInstanceViews` pomocí REST API `GET` v následujícím identifikátoru URI prostředku:
 
 /Subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scaleset_name>/virtualMachines? $expand = instanceView&$select = instanceView
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>Můžu předávat různé argumenty rozšíření různým virtuálním počítačům v sadě škálování virtuálního počítače?
 
-Ne, nemůžete předat různé argumenty rozšíření různým virtuálním počítačům v sadě škálování virtuálního počítače. Rozšíření ale můžou fungovat na základě jedinečných vlastností virtuálního počítače, na kterém běží, jako je třeba název počítače. Rozšíření také mohou dotazovat metadata instance http://169.254.169.254 na a získat tak další informace o virtuálním počítači.
+Ne, nemůžete předat různé argumenty rozšíření různým virtuálním počítačům v sadě škálování virtuálního počítače. Rozšíření ale můžou fungovat na základě jedinečných vlastností virtuálního počítače, na kterém běží, jako je třeba název počítače. Rozšíření také mohou dotazovat metadata instance na http://169.254.169.254 a získat tak další informace o virtuálním počítači.
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Proč mezi virtuálními počítači virtuálních počítačů a identifikátory virtuálních počítačů existují mezery? Například: 0, 1, 3...
 
@@ -699,12 +700,12 @@ Tuto vlastnost můžete nastavit na **hodnotu NEPRAVDA**. U malých sad Virtual 
 
 ### <a name="what-is-the-difference-between-deleting-a-vm-in-a-virtual-machine-scale-set-and-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>Jaký je rozdíl mezi odstraněním virtuálního počítače v sadě škálování virtuálního počítače a zrušením přidělení virtuálního počítače? Kdy je vhodné zvolit jednu z nich po druhé?
 
-Hlavním rozdílem mezi odstraněním virtuálního počítače v sadě škálování virtuálního počítače a zrušením přidělení virtuálního počítače je `deallocate` to, že neodstraňují virtuální pevné disky (VHD). Existují náklady na úložiště spojené se spuštěným systémem `stop deallocate`. Můžete použít jeden z těchto důvodů:
+Hlavním rozdílem mezi odstraněním virtuálního počítače v sadě škálování virtuálního počítače a zrušením přidělení virtuálního počítače je to, že `deallocate` neodstraňují virtuální pevné disky (VHD). Existují náklady na úložiště spojené se spuštěným systémem `stop deallocate` . Můžete použít jeden z těchto důvodů:
 
 - Chcete přestat zaplatit výpočetní náklady, ale chcete zachovat stav disku virtuálních počítačů.
 - Chcete spustit sadu virtuálních počítačů rychleji, než byste mohli škálovat sadu škálování virtuálního počítače.
   - V souvislosti s tímto scénářem jste mohli vytvořit vlastní modul automatického škálování a chtít rychlejší ucelený rozsah.
-- Máte sadu škálování virtuálního počítače, která je rovnoměrně distribuovaná napříč doménami selhání nebo aktualizačními doménami. Důvodem může být to, že jste selektivně odstraněné virtuální počítače nebo virtuální počítače po přezřizování odstranili. Spuštění `stop deallocate` , po `start` kterém následuje sada škálování virtuálního počítače, rovnoměrně distribuuje virtuální počítače napříč doménami selhání nebo aktualizačními doménami.
+- Máte sadu škálování virtuálního počítače, která je rovnoměrně distribuovaná napříč doménami selhání nebo aktualizačními doménami. Důvodem může být to, že jste selektivně odstraněné virtuální počítače nebo virtuální počítače po přezřizování odstranili. Spuštění, `stop deallocate` po kterém následuje `start` sada škálování virtuálního počítače, rovnoměrně distribuuje virtuální počítače napříč doménami selhání nebo aktualizačními doménami.
 
 ### <a name="how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance"></a>Návody pořídit snímek instance sady škálování virtuálního počítače?
 Vytvoří snímek z instance sady škálování virtuálního počítače.

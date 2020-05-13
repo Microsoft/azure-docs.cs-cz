@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34f1c96d8336447b6ca2a4f55fefa9a061c38fa2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459028"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198491"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Přesunutí účtu Azure Storage do jiné oblasti
 
@@ -47,7 +47,7 @@ Začněte tím, že vyexportujete a pak upravíte šablonu Správce prostředků
 
 Tato šablona obsahuje nastavení, která popisují váš účet úložiště. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Export šablony pomocí Azure Portal:
 
@@ -55,7 +55,7 @@ Export šablony pomocí Azure Portal:
 
 2. Vyberte **všechny prostředky** a pak vyberte svůj účet úložiště.
 
-3. Vyberte > **Nastavení** > **Exportovat šablonu**.
+3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 
 4. V okně **Exportovat šablonu** vyberte **Stáhnout** .
 
@@ -63,7 +63,7 @@ Export šablony pomocí Azure Portal:
 
    Tento soubor zip obsahuje soubory. JSON, které tvoří šablonu a skripty pro nasazení šablony.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Export šablony pomocí prostředí PowerShell:
 
@@ -97,7 +97,7 @@ Export šablony pomocí prostředí PowerShell:
 
 Upravte šablonu tak, že změníte název a oblast účtu úložiště.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Nasazení šablony pomocí Azure Portal:
 
@@ -115,7 +115,7 @@ Nasazení šablony pomocí Azure Portal:
 
 6. Vyberte **načíst soubor**a pak podle pokynů načtěte soubor **template. JSON** , který jste stáhli v poslední části.
 
-7. V souboru **template. JSON** pojmenujte cílový účet úložiště nastavením výchozí hodnoty názvu účtu úložiště. V tomto příkladu se nastaví výchozí hodnota názvu účtu úložiště na `mytargetaccount`.
+7. V souboru **template. JSON** pojmenujte cílový účet úložiště nastavením výchozí hodnoty názvu účtu úložiště. V tomto příkladu se nastaví výchozí hodnota názvu účtu úložiště na `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -137,13 +137,13 @@ Nasazení šablony pomocí Azure Portal:
          "location": "centralus"
          }]          
     ```
-    Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA** = **centralus**.
+    Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA**  =  **centralus**.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Nasazení šablony pomocí prostředí PowerShell:
 
-1. V souboru **template. JSON** pojmenujte cílový účet úložiště nastavením výchozí hodnoty názvu účtu úložiště. V tomto příkladu se nastaví výchozí hodnota názvu účtu úložiště na `mytargetaccount`.
+1. V souboru **template. JSON** pojmenujte cílový účet úložiště nastavením výchozí hodnoty názvu účtu úložiště. V tomto příkladu se nastaví výchozí hodnota názvu účtu úložiště na `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +156,7 @@ Nasazení šablony pomocí prostředí PowerShell:
     },
     ``` 
 
-2. Upravte vlastnost **umístění** v souboru **template. JSON** do cílové oblasti. Tento příklad nastaví cílovou oblast na `eastus`.
+2. Upravte vlastnost **umístění** v souboru **template. JSON** do cílové oblasti. Tento příklad nastaví cílovou oblast na `eastus` .
 
     ```json
     "resources": [{
@@ -180,7 +180,7 @@ Nasazení šablony pomocí prostředí PowerShell:
 
 Nasaďte šablonu pro vytvoření nového účtu úložiště v cílové oblasti. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Uložte soubor **template. JSON** .
 
@@ -194,7 +194,7 @@ Nasaďte šablonu pro vytvoření nového účtu úložiště v cílové oblasti
 
 3. Klikněte na **Souhlasím s výše uvedenými podmínkami a ujednáními** a pak klikněte na tlačítko **Vybrat nákup** .
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Získejte ID předplatného, do kterého chcete nasadit cílovou veřejnou IP adresu pomocí [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0):
 
@@ -232,25 +232,10 @@ Následující tabulka uvádí tyto funkce spolu s pokyny pro jejich přidání 
 
 ### <a name="move-data-to-the-new-storage-account"></a>Přesunout data do nového účtu úložiště
 
-Tady je několik způsobů, jak přesouvat data.
+AzCopy je preferovaný nástroj pro přesun vašich dat. Je optimalizovaná pro výkon.  Jedním ze způsobů, jak je to rychlejší, je to, že se data zkopírují přímo mezi servery úložiště, takže AzCopy nepoužívá šířku pásma sítě vašeho počítače. Použijte AzCopy na příkazovém řádku nebo jako součást vlastního skriptu. Viz Začínáme [s AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-: heavy_check_mark: **Průzkumník služby Azure Storage**
+K přesunu dat můžete použít také Azure Data Factory. Poskytuje intuitivní uživatelské rozhraní. Pokud chcete použít Azure Data Factory, přečtěte si některý z těchto odkazů:. 
 
-  Je to snadno použitelné a vhodné pro malé datové sady. Kontejnery a sdílené složky můžete kopírovat a pak je vložit do cílového účtu.
-
-  Viz [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/);
-
-: heavy_check_mark: **AzCopy**
-
-  Toto je preferovaný přístup. Je optimalizovaná pro výkon.  Jedním ze způsobů, jak je to rychlejší, je to, že se data zkopírují přímo mezi servery úložiště, takže AzCopy nepoužívá šířku pásma sítě vašeho počítače. Použijte AzCopy na příkazovém řádku nebo jako součást vlastního skriptu.
-
-  Viz Začínáme [s AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-
-: heavy_check_mark: **Azure Data Factory** 
-
-  Tento nástroj použijte pouze v případě, že potřebujete funkcionalitu, která není v aktuální verzi AzCopy podporována. Například v aktuální verzi AzCopy nemůžete kopírovat objekty blob mezi účty, které mají hierarchický obor názvů. AzCopy také nezachová seznam řízení přístupu k souborům ani časová razítka souborů (například: vytvořit a upravit časová razítka). 
-
-  Podívejte se na tyto odkazy:
   - [Kopírování dat do nebo z úložiště objektů BLOB v Azure pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
   - [Kopírování dat do nebo z Azure Data Lake Storage Gen2 pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
   - [Kopírování dat z nebo do Azure File Storage pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
@@ -264,7 +249,7 @@ Pokud po nasazení chcete začít znovu, můžete cílový účet úložiště o
 
 Pokud chcete potvrdit změny a dokončit přesun účtu úložiště, odstraňte zdrojový účet úložiště.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Postup odebrání účtu úložiště pomocí Azure Portal:
 
@@ -274,7 +259,7 @@ Postup odebrání účtu úložiště pomocí Azure Portal:
 
 3. Vyberte **Odstranit**a potvrďte.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte příkaz [Remove-AzStorageAccount](/powershell/module/az.storage/remove-azstorageaccount) :
 

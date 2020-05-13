@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: f41a15fb52698eaa17d6f76b991cbd31a56ba14f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 8354be28203f1d466df6a22159fef87c9ae6f803
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731969"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199742"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
@@ -22,6 +22,11 @@ Bezplatná funkce automatického škálování služby Azure HDInsight může au
 ## <a name="how-it-works"></a>Jak to funguje
 
 Funkce automatického škálování používá ke spuštění událostí škálování dva typy podmínek: prahové hodnoty pro různé metriky výkonu clusteru (nazývané *škálování na základě zatížení*) a aktivační události založené na čase (nazývané *škálování na základě plánu*). Škálování na základě zatížení mění počet uzlů v clusteru v rozsahu, který jste nastavili, k zajištění optimálního využití procesoru a minimalizaci průběžných nákladů. Škálování na základě plánu mění počet uzlů v clusteru na základě operací, ke kterým přiřadíte konkrétní data a časy.
+
+Následující video poskytuje přehled výzev, které automatické škálování řeší a jak vám může pomáhat s řízením nákladů pomocí služby HDInsight.
+
+
+> [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
 ### <a name="choosing-load-based-or-schedule-based-scaling"></a>Výběr škálování na základě zatížení nebo podle plánu
 
@@ -128,7 +133,7 @@ Další informace o vytváření clusteru HDInsight pomocí Azure Portal najdete
 
 #### <a name="load-based-autoscaling"></a>Automatické škálování na základě zatížení
 
-Cluster HDInsight s automatickým škálováním na základě zatížení `autoscale` můžete vytvořit pomocí šablony Azure Resource Manager přidáním uzlu do `computeProfile`  >  `workernode` oddílu s vlastnostmi `minInstanceCount` , `maxInstanceCount` jak je znázorněno v následujícím fragmentu kódu JSON.
+Cluster HDInsight s automatickým škálováním na základě zatížení můžete vytvořit pomocí šablony Azure Resource Manager přidáním `autoscale` uzlu do `computeProfile`  >  `workernode` oddílu s vlastnostmi, `minInstanceCount` `maxInstanceCount` jak je znázorněno v následujícím fragmentu kódu JSON.
 
 ```json
 {
@@ -156,7 +161,7 @@ Cluster HDInsight s automatickým škálováním na základě zatížení `autos
 
 #### <a name="schedule-based-autoscaling"></a>Automatické škálování na základě plánu
 
-`autoscale` Cluster HDInsight s automatickým škálováním na základě plánu můžete vytvořit pomocí šablony Azure Resource Manager přidáním uzlu do `computeProfile`  >  `workernode` oddílu. `autoscale` Uzel `recurrence` obsahuje `timezone` a `schedule` , který popisuje, kdy bude provedeno provedení změny.
+Cluster HDInsight s automatickým škálováním na základě plánu můžete vytvořit pomocí šablony Azure Resource Manager přidáním `autoscale` uzlu do `computeProfile`  >  `workernode` oddílu. `autoscale`Uzel obsahuje a `recurrence` , který `timezone` `schedule` popisuje, kdy bude provedeno provedení změny.
 
 ```json
 {
@@ -202,7 +207,7 @@ Pokud chcete povolit nebo zakázat automatické škálování na běžícím clu
 https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{resourceGroup Name}/providers/Microsoft.HDInsight/clusters/{CLUSTERNAME}/roles/workernode/autoscale?api-version=2018-06-01-preview
 ```
 
-Použijte příslušné parametry v datové části požadavku. K povolení automatického škálování můžete použít datovou část JSON níže. K zakázání automatického `{autoscale: null}` škálování použijte datovou část.
+Použijte příslušné parametry v datové části požadavku. K povolení automatického škálování můžete použít datovou část JSON níže. `{autoscale: null}`K zakázání automatického škálování použijte datovou část.
 
 ```json
 { autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }

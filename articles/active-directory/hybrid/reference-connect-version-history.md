@@ -12,12 +12,13 @@ ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f142a270cae525571ae414602a89b2538c17d0
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: has-adal-ref
+ms.openlocfilehash: bc3c572aeb72328bc4708d27052756623ccd7701
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981982"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200978"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -87,9 +88,9 @@ Toto sestavení opravy hotfix řeší problém se 1.5.18.0 Build, pokud máte po
 > Pokud jste naklonováni v nástroji z pravidla synchronizace **spojení se službou AD-Group** a Neklonujte ho z pravidla synchronizace **AD-Group Common** Sync a plánu, který chcete upgradovat, proveďte v rámci upgradu následující kroky:
 > 1. Během upgradu zrušte zaškrtnuté políčko **po dokončení konfigurace spustit proces synchronizace**.
 > 2. Upravte pravidlo synchronizace klonovaného připojení a přidejte následující dvě transformace:
->     - Nastavte přímý tok `objectGUID` na `sourceAnchorBinary`.
->     - Nastavte tok `ConvertToBase64([objectGUID])` výrazů na `sourceAnchor`.     
-> 3. Povolit Plánovač pomocí `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+>     - Nastavte přímý tok `objectGUID` na `sourceAnchorBinary` .
+>     - Nastavte tok výrazů `ConvertToBase64([objectGUID])` na `sourceAnchor` .     
+> 3. Povolit Plánovač pomocí `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 
 
@@ -209,7 +210,7 @@ Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpraco
 >[!IMPORTANT]
 >Došlo k známému problému s upgradem Azure AD Connect ze starší verze na 1.3.21.0, kde portál O365 neodráží aktualizovanou verzi, i když Azure AD Connect úspěšně upgradována.
 >
-> Pokud to chcete vyřešit, musíte importovat modul **AdSync** a pak na serveru Azure AD Connect`Set-ADSyncDirSyncConfiguration` spustit rutinu PowerShellu.  Můžete použít následující postup:
+> Pokud to chcete vyřešit, musíte importovat modul **AdSync** a pak na `Set-ADSyncDirSyncConfiguration` serveru Azure AD Connect spustit rutinu PowerShellu.  Můžete použít následující postup:
 >
 >1. Otevřete PowerShell v režimu správce.
 >2. Spusťte `Import-Module "ADSync"`.
@@ -772,7 +773,7 @@ Stav: Červenec 23 2017
   * Povolili jste funkci zpětného zápisu uživatelů.
   
   >[!NOTE]
-  >Rozšiřování oboru funkce automatického upgradu má vliv na zákazníky s Azure AD Connect Build 1.1.105.0 a After. Pokud nechcete, aby se server Azure AD Connect automaticky Upgradoval, musíte na serveru Azure AD Connect spustit následující rutinu: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Další informace o povolení nebo zakázání automatického upgradu najdete v článku [Azure AD Connect: automatický upgrade](how-to-connect-install-automatic-upgrade.md).
+  >Rozšiřování oboru funkce automatického upgradu má vliv na zákazníky s Azure AD Connect Build 1.1.105.0 a After. Pokud nechcete, aby se server Azure AD Connect automaticky Upgradoval, musíte na serveru Azure AD Connect spustit následující rutinu: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` . Další informace o povolení nebo zakázání automatického upgradu najdete v článku [Azure AD Connect: automatický upgrade](how-to-connect-install-automatic-upgrade.md).
 
 ## <a name="115580"></a>1.1.558.0
 Stav: nebude uvolněn. Změny v tomto sestavení jsou součástí verze 1.1.561.0.
@@ -800,7 +801,7 @@ Stav: nebude uvolněn. Změny v tomto sestavení jsou součástí verze 1.1.561.
   * Povolili jste funkci zpětného zápisu uživatelů.
   
   >[!NOTE]
-  >Rozšiřování oboru funkce automatického upgradu má vliv na zákazníky s Azure AD Connect Build 1.1.105.0 a After. Pokud nechcete, aby se server Azure AD Connect automaticky Upgradoval, musíte na serveru Azure AD Connect spustit následující rutinu: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Další informace o povolení nebo zakázání automatického upgradu najdete v článku [Azure AD Connect: automatický upgrade](how-to-connect-install-automatic-upgrade.md).
+  >Rozšiřování oboru funkce automatického upgradu má vliv na zákazníky s Azure AD Connect Build 1.1.105.0 a After. Pokud nechcete, aby se server Azure AD Connect automaticky Upgradoval, musíte na serveru Azure AD Connect spustit následující rutinu: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` . Další informace o povolení nebo zakázání automatického upgradu najdete v článku [Azure AD Connect: automatický upgrade](how-to-connect-install-automatic-upgrade.md).
 
 ## <a name="115570"></a>1.1.557.0
 Stav: červenec 2017
@@ -940,12 +941,12 @@ CBool(
 #### <a name="issues-fixed"></a>Opravené problémy
 
 * Následující adresy URL jsou nové koncové body WS-Federation zavedené službou Azure AD za účelem zlepšení odolnosti proti výpadku ověřování a přidají se do místní AD FS konfigurace vztahu důvěryhodnosti předávající strany:
-  * https:\//ESTS.Login.microsoftonline.com/login.SRF
-  * https:\//stamp2.Login.microsoftonline.com/login.SRF
+  * https: \/ /ESTS.Login.microsoftonline.com/login.SRF
+  * https: \/ /stamp2.Login.microsoftonline.com/login.SRF
   * https://ccs.login.microsoftonline.com/login.srf
   * https://ccs-sdf.login.microsoftonline.com/login.srf
   
-* Opravili jsme problém, který způsobil, že AD FS generovala nesprávnou hodnotu deklarace pro IssuerID. K tomuto problému dochází, pokud je v tenantovi Azure AD více ověřených domén a přípona domény atributu userPrincipalName používaného k vygenerování deklarace IssuerID je alespoň 3 úrovně (například johndoe@us.contoso.com). Problém je vyřešen aktualizací regulárního výrazu používaného pravidly deklarace identity.
+* Opravili jsme problém, který způsobil, že AD FS generovala nesprávnou hodnotu deklarace pro IssuerID. K tomuto problému dochází, pokud je v tenantovi Azure AD více ověřených domén a přípona domény atributu userPrincipalName používaného k vygenerování deklarace IssuerID je alespoň 3 úrovně (například johndoe@us.contoso.com ). Problém je vyřešen aktualizací regulárního výrazu používaného pravidly deklarace identity.
 
 #### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 * Dříve se funkce správy certifikátů ADFS, kterou poskytuje Azure AD Connect, dá použít jenom s farmami ADFS spravovanými přes Azure AD Connect. Teď můžete tuto funkci použít se farmami ADFS, které nejsou spravované pomocí Azure AD Connect.
@@ -1155,7 +1156,7 @@ Vydáno: srpen 2016
 **Opravené problémy:**
 
 * Změny intervalu synchronizace se neprojeví, dokud se nedokončí další cyklus synchronizace.
-* Průvodce Azure AD Connect nepřijímá účet služby Azure AD, jehož uživatelské jméno začíná podtržítkem (\_).
+* Průvodce Azure AD Connect nepřijímá účet služby Azure AD, jehož uživatelské jméno začíná podtržítkem ( \_ ).
 * V průvodci Azure AD Connect se nepovedlo ověřit účet Azure AD, pokud heslo účtu obsahuje příliš mnoho speciálních znaků. Chybová zpráva: Nepodařilo se ověřit přihlašovací údaje. Došlo k neočekávané chybě. " je vrácen.
 * Odinstalace přípravného serveru zakáže synchronizaci hesel v tenantovi Azure AD a způsobí selhání synchronizace hesel s aktivním serverem.
 * Synchronizace hesla se v neobvyklých případech nezdařila, pokud se na uživatele neuloží hodnota hash hesla.
@@ -1220,7 +1221,7 @@ Vydáno: únor 2016
 
 * Upgrade z dřívějších verzí nefunguje, pokud instalace není ve výchozí složce C:\Program Files.
 * Pokud nainstalujete a zaškrtnete políčko **spustit proces synchronizace** na konci Průvodce instalací, spuštění Průvodce instalací podruhé neumožní plánovači.
-* Plánovač nefunguje podle očekávání na serverech, na kterých se nepoužívá formát data a času US-EN. Také se zablokuje `Get-ADSyncScheduler` , aby vracely správné časy.
+* Plánovač nefunguje podle očekávání na serverech, na kterých se nepoužívá formát data a času US-EN. Také se zablokuje, `Get-ADSyncScheduler` aby vracely správné časy.
 * Pokud jste nainstalovali dřívější verzi Azure AD Connect s AD FS jako možnost přihlášení a upgrade, nemůžete znovu spustit Průvodce instalací nástroje.
 
 ## <a name="111050"></a>1.1.105.0
@@ -1230,8 +1231,8 @@ Vydáno: únor 2016
 
 * Funkce [automatického upgradu](how-to-connect-install-automatic-upgrade.md) pro zákazníky expresního nastavení
 * Podpora globálního správce pomocí Azure Multi-Factor Authentication a Privileged Identity Management v Průvodci instalací.
-  * https://secure.aadcdn.microsoftonline-p.com Pokud používáte Multi-Factor Authentication, musíte proxy serveru dovolit, aby taky povolili provoz.
-  * Pro správné fungování Multi-Factor Authentication https://secure.aadcdn.microsoftonline-p.com musíte přidat do seznamu důvěryhodných webů.
+  * Pokud používáte Multi-Factor Authentication, musíte proxy serveru dovolit, aby taky povolili provoz https://secure.aadcdn.microsoftonline-p.com .
+  * Pro https://secure.aadcdn.microsoftonline-p.com správné fungování Multi-Factor Authentication musíte přidat do seznamu důvěryhodných webů.
 * Povolí změnu způsobu přihlášení uživatele po počáteční instalaci.
 * Povolí [filtrování domén a organizačních jednotek](how-to-connect-install-custom.md#domain-and-ou-filtering) v Průvodci instalací nástroje. To také umožňuje připojení k doménovým strukturám, kde nejsou k dispozici všechny domény.
 * [Plánovač](how-to-connect-sync-feature-scheduler.md) je integrovaný do synchronizačního modulu.

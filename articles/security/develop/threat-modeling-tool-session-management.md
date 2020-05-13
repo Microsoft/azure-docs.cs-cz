@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b5ff9ab8e2fcc1bb3b72f56348a1c86dc173bafc
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ddc8c3016487ce56bc1a54d74aa94064cef24e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203858"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198866"
 ---
 # <a name="security-frame-session-management"></a>Rámec zabezpečení: Správa relací
 | Produkt/služba | Článek |
@@ -272,7 +273,7 @@ Následující konfigurace zobrazuje správnou konfiguraci:
 | **Použitelné technologie** | MVC5, MVC6 |
 | **Atributy**              | –  |
 | **Odkazy**              | [Prevence XSRF/CSRF v ASP.NET MVC a na webových stránkách](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
-| **Uvedené** | Anti-CSRF a ASP.NET MVC Forms – použijte `AntiForgeryToken` pomocnou metodu pro zobrazení; Vložte `Html.AntiForgeryToken()` do formuláře, například|
+| **Uvedené** | CSRF a ASP.NET MVC Forms – použijte `AntiForgeryToken` pomocnou metodu pro zobrazení; vložte `Html.AntiForgeryToken()` do formuláře, například|
 
 ### <a name="example"></a>Příklad
 ```csharp
@@ -302,7 +303,7 @@ public ViewResult SubmitUpdate()
 Filtr autorizace, který kontroluje:
 * Příchozí požadavek má soubor cookie s názvem __RequestVerificationToken
 * Příchozí požadavek obsahuje položku s `Request.Form` názvem __RequestVerificationToken
-* Tyto soubory cookie `Request.Form` a hodnoty odpovídají za předpokladu, že požadavek prochází běžným způsobem. Ale v takovém případě nedošlo k chybě autorizace se zprávou "vyžadovaný token proti padělání se nezadal nebo byl neplatný". 
+* Tyto soubory cookie a `Request.Form` hodnoty odpovídají za předpokladu, že požadavek prochází běžným způsobem. Ale v takovém případě nedošlo k chybě autorizace se zprávou "vyžadovaný token proti padělání se nezadal nebo byl neplatný". 
 
 ### <a name="example"></a>Příklad
 Anti-CSRF a AJAX: token formuláře může být problémem pro požadavky AJAX, protože požadavek AJAX může odesílat data JSON, nikoli data formuláře HTML. Jedním z řešení je odeslat tokeny ve vlastní hlavičce protokolu HTTP. Následující kód používá syntaxe Razor k vygenerování tokenů a následně přidá tokeny do požadavku AJAX. 
@@ -546,7 +547,7 @@ public ViewResult SubmitUpdate()
 Filtr autorizace, který kontroluje:
 * Příchozí požadavek má soubor cookie s názvem __RequestVerificationToken
 * Příchozí požadavek obsahuje položku s `Request.Form` názvem __RequestVerificationToken
-* Tyto soubory cookie `Request.Form` a hodnoty odpovídají za předpokladu, že požadavek prochází běžným způsobem. Ale v takovém případě nedošlo k chybě autorizace se zprávou "vyžadovaný token proti padělání se nezadal nebo byl neplatný".
+* Tyto soubory cookie a `Request.Form` hodnoty odpovídají za předpokladu, že požadavek prochází běžným způsobem. Ale v takovém případě nedošlo k chybě autorizace se zprávou "vyžadovaný token proti padělání se nezadal nebo byl neplatný".
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |

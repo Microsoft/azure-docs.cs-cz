@@ -1,25 +1,25 @@
 ---
-title: Monitorování Azure Storage služeb pomocí Azure Monitor pro úložiště (Preview) | Microsoft Docs
+title: Monitorování Azure Storage služeb pomocí Azure Monitor pro úložiště | Microsoft Docs
 description: Tento článek popisuje Azure Monitor funkce úložiště, která správcům úložiště poskytuje rychlý přehled o problémech s výkonem a využitím jejich Azure Storagech účtů.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/15/2019
-ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: b0fd0343e7a072c0da0a5af0fa2d39eb2284cb06
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691117"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199961"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště (Preview)
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště
 
-Azure Monitor pro Storage (Preview) poskytuje ucelený přehled o vašich Azure Storagech účtech tím, že přináší jednotný přehled o výkonu, kapacitě a dostupnosti služby Azure Storage Services. Kapacitu úložiště a výkon můžete sledovat dvěma způsoby, zobrazit přímo z účtu úložiště nebo zobrazit z Azure Monitor k zobrazení napříč skupinami účtů úložiště. 
+Azure Monitor pro úložiště poskytuje ucelený přehled o vašich Azure Storagech účtech tím, že přináší jednotný přehled o výkonu, kapacitě a dostupnosti služeb Azure Storage Services. Kapacitu úložiště a výkon můžete sledovat dvěma způsoby, zobrazit přímo z účtu úložiště nebo zobrazit z Azure Monitor k zobrazení napříč skupinami účtů úložiště. 
 
-Tento článek vám pomůže pochopit Azure Monitor prostředí pro úložiště (verze Preview), která vám pomůžou odvoditelné znalosti o stavu a výkonu účtů úložiště ve velkém měřítku s možností soustředit se na aktivní hotspoty a diagnostikovat latenci, omezení a problémy s dostupností.
+Tento článek vám pomůže pochopit Azure Monitor prostředí pro úložiště, která vám pomůžou odvodit užitečné poznatky o stavu a výkonu účtů úložiště ve velkém měřítku s možností soustředit se na aktivní hotspoty a diagnostikovat problémy, omezit latenci a dostupnost.
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>Úvod do Azure Monitor pro úložiště (Preview)
+## <a name="introduction-to-azure-monitor-for-storage"></a>Úvod do Azure Monitor pro úložiště
 
 Předtím, než se začnete do prostředí, byste měli pochopit, jak prezentuje a vizualizují informace. Bez ohledu na to, jestli vyberete funkci úložiště přímo z účtu úložiště nebo z Azure Monitor, nabízí Azure Monitor úložiště konzistentní prostředí. 
 
@@ -48,7 +48,7 @@ Pokud chcete zobrazit využití a dostupnost účtů úložiště ve všech pře
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. V Azure Portal v levém podokně vyberte **monitor** a v části **přehledy** vyberte **účty úložiště (Preview)**.
+2. V Azure Portal v levém podokně vyberte **monitor** a v části **přehledy** vyberte **účty úložiště**.
 
     ![Zobrazení více účtů úložiště](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
@@ -92,7 +92,7 @@ Přístup k Azure Monitor pro virtuální počítače přímo z účtu úložiš
 
 1. V Azure Portal vyberte účty úložiště.
 
-2. V seznamu vyberte účet úložiště. V části monitorování vyberte přehledy (Preview).
+2. V seznamu vyberte účet úložiště. V části monitorování vyberte přehledy.
 
     ![Stránka s přehledem vybraného účtu úložiště](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
@@ -138,7 +138,7 @@ Libovolný oddíl metriky můžete připnout na řídicí panel Azure tak, že v
 
 ![Příklad exportu výsledků mřížky sešitu](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>Přizpůsobení Azure Monitor pro úložiště (Preview)
+## <a name="customize-azure-monitor-for-storage"></a>Přizpůsobení Azure Monitor pro úložiště
 
 Tato část popisuje běžné scénáře úprav sešitu pro přizpůsobení v rámci podpory vašich potřeb analýzy dat:
 
@@ -155,7 +155,7 @@ Vlastní nastavení se uloží do vlastního sešitu, aby se zabránilo přepsá
 
 Můžete nakonfigurovat předplatné pro více předplatných a účet úložiště **– Přehled** nebo **pracovní** sešity, které mají být při každém spuštění vymezeny na konkrétní předplatné nebo účty úložiště, a to provedením následujících kroků.
 
-1. Na portálu vyberte **monitor** a pak v levém podokně vyberte **účty úložiště (Preview)** .
+1. Na portálu vyberte **monitor** a pak v levém podokně vyberte **účty úložiště** .
 
 2. V sešitu **přehledu** na panelu příkazů vyberte **Upravit**.
 
@@ -176,7 +176,7 @@ V našem příkladu budeme pracovat se sešitem kapacity pro více předplatnýc
 
 Stejné změny můžete provádět u všech předdefinovaných sešitů **selhání**, **výkonu**, **dostupnosti**a **kapacity** .
 
-1. Na portálu vyberte **monitor** a pak v levém podokně vyberte **účty úložiště (Preview)** .
+1. Na portálu vyberte **monitor** a pak v levém podokně vyberte **účty úložiště** .
 
 2. Vyberte možnost **kapacita** pro přepnutí do sešitu kapacity a z panelu příkazů na panelu příkazů vyberte možnost **Upravit** .
 
@@ -210,7 +210,7 @@ V tomto příkladu pracujeme se sešitem kapacity účtu úložiště a demonstr
 
 1. Na portálu vyberte **účty úložiště** a v seznamu vyberte účet úložiště.
 
-2. V levém podokně vyberte **přehledy (Preview)** .
+2. V levém podokně vyberte **přehledy** .
 
 3. V sešitu vyberte možnost **dostupnost** , kterou chcete přepnout do sešitu dostupnosti, a pak na panelu příkazů vyberte **Upravit** . 
 
@@ -228,11 +228,11 @@ V tomto příkladu pracujeme se sešitem kapacity účtu úložiště a demonstr
 
 ## <a name="troubleshooting"></a>Odstraňování potíží
 
-Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při používání Azure Monitor pro úložiště (Preview). K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
+Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při používání Azure Monitor pro úložiště. K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Řešení problémů s výkonem, kapacitou nebo dostupností
 
-Chcete-li pomoct řešit problémy související s úložištěm, které identifikujete pomocí Azure Monitor pro úložiště (Preview), přečtěte si téma [pokyny k řešení potíží](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)s Azure Storage.  
+Chcete-li pomoct řešit problémy související s úložištěm, které identifikujete pomocí Azure Monitor pro úložiště, přečtěte si téma [pokyny k řešení potíží](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)s Azure Storage.  
 
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>Proč mohu zobrazit jenom 200 účtů úložiště?
 
@@ -311,8 +311,8 @@ Název kroku sešitu nebo sešitu, který je připnuté na řídicí panel, si z
 
 Pokud chcete změnit název kroku v uloženém sešitu, vyberte Upravit v kroku a pak vyberte ozubené kolečko v nastavení.
 
-![Výběrem možnosti upravit v dolní části kroku sešitu otevřete nastavení](./media/storage-insights-overview/fqa-edit.png)
-![v části nastavení vyberte ozubené kolečko, abyste mohli změnit název kroku.](./media/storage-insights-overview/fqa-change-name.png)
+![Výběrem možnosti upravit v dolní části kroku sešitu otevřete nastavení ](./media/storage-insights-overview/fqa-edit.png)
+ ![ v části nastavení vyberte ozubené kolečko, abyste mohli změnit název kroku.](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>Další kroky
 

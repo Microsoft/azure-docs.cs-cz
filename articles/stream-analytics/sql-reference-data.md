@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6feca8cc87eadb2be5f43cafaa82195a18c3c75
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426504"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200384"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Použití referenčních dat z SQL Database pro úlohu Azure Stream Analytics
 
@@ -101,7 +101,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 2. Dvakrát klikněte na **input. JSON** v **Průzkumník řešení**.
 
-3. Vyplňte **konfiguraci Stream Analyticsho vstupu**. Vyberte název databáze, název serveru, typ aktualizace a obnovovací frekvenci. Zadejte obnovovací frekvenci ve formátu `DD:HH:MM`.
+3. Vyplňte **konfiguraci Stream Analyticsho vstupu**. Vyberte název databáze, název serveru, typ aktualizace a obnovovací frekvenci. Zadejte obnovovací frekvenci ve formátu `DD:HH:MM` .
 
    ![Konfigurace vstupu Stream Analytics v aplikaci Visual Studio](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
@@ -147,7 +147,7 @@ Při použití rozdílového dotazu jsou doporučeny [dočasné tabulky v Azure 
    ```
 2. Vytvořte snímek dotazu. 
 
-   Pomocí parametru ** \@snapshotTime** instruujte modul runtime Stream Analytics, aby získal referenční datovou sadu z dočasné tabulky SQL Database platné v systémovém čase. Pokud tento parametr nezadáte, riskujete získat nepřesnou datovou sadu základních referenčních dat z důvodu zešikmení hodin. Příklad úplného dotazu na snímek je uveden níže:
+   Pomocí parametru ** \@ snapshotTime** instruujte modul runtime Stream Analytics, aby získal referenční datovou sadu z dočasné tabulky SQL Database platné v systémovém čase. Pokud tento parametr nezadáte, riskujete získat nepřesnou datovou sadu základních referenčních dat z důvodu zešikmení hodin. Příklad úplného dotazu na snímek je uveden níže:
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,16 +156,16 @@ Při použití rozdílového dotazu jsou doporučeny [dočasné tabulky v Azure 
  
 2. Vytvořte rozdílový dotaz. 
    
-   Tento dotaz načte všechny řádky ve vaší databázi SQL, které byly vložené nebo odstraněné v čase zahájení, ** \@deltaStartTime**a čase ** \@ukončení deltaEndTime**. Rozdílový dotaz musí vracet stejné sloupce jako dotaz snímku a také **_operaci_** sloupce. Tento sloupec definuje, jestli se řádek vloží nebo odstraní mezi ** \@deltaStartTime** a ** \@deltaEndTime**. Výsledné řádky jsou označeny jako **1** , pokud byly záznamy vloženy, nebo **2** , pokud byly odstraněny. 
+   Tento dotaz načte všechny řádky ve vaší databázi SQL, které byly vložené nebo odstraněné v čase zahájení, ** \@ deltaStartTime**a čase ukončení ** \@ deltaEndTime**. Rozdílový dotaz musí vracet stejné sloupce jako dotaz snímku a také **_operaci_** sloupce. Tento sloupec definuje, jestli se řádek vloží nebo odstraní mezi ** \@ deltaStartTime** a ** \@ deltaEndTime**. Výsledné řádky jsou označeny jako **1** , pokud byly záznamy vloženy, nebo **2** , pokud byly odstraněny. Dotaz musí také přidat **vodoznak** ze strany SQL Server, aby bylo zajištěno, že všechny aktualizace v období rozdílů jsou správně zachyceny. Použití rozdílového dotazu bez **meze** může mít za následek nesprávnou datovou sadu reference.  
 
    U záznamů, které byly aktualizovány, dočasná tabulka provádí účetnictví zachycením operace vložení a odstranění. Modul runtime Stream Analytics pak použije výsledky rozdílového dotazu na předchozí snímek, aby byla referenční data v aktuálním stavu. Příkladem rozdílového dotazu je znázorněno níže:
 
    ```SQL
-      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidFrom as watermark 1 as _operation_
       FROM dbo.DeviceTemporal
       WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
       UNION
-      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidTo as watermark 2 as _operation_
       FROM dbo.DeviceHistory   -- table we created in step 1
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```

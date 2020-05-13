@@ -13,20 +13,18 @@ ms.workload: identity
 ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1be7ceb9b0560b87d0917fdb57b2c21e0b050db9
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3d8851004c5d976961d96ca7d9f315780765fcde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839092"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199563"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager operace poskytovatele prostředků
 
-V tomto článku jsou uvedené dostupné operace pro všechny poskytovatele prostředků Azure Resource Manageru. Tyto operace se dají použít ve [vlastních rolích Azure](custom-roles.md) k zajištění podrobného řízení přístupu k prostředkům v Azure. Řetězce operací mají následující formát: `{Company}.{ProviderName}/{resourceType}/{action}`. Seznam způsobů mapování oborů názvů poskytovatelů prostředků na služby Azure najdete v tématu [přiřazení poskytovatele prostředků ke službě](../azure-resource-manager/management/azure-services-resource-providers.md).
+V tomto článku jsou uvedené dostupné operace pro všechny poskytovatele prostředků Azure Resource Manageru. Tyto operace se dají použít ve [vlastních rolích Azure](custom-roles.md) k zajištění podrobného řízení přístupu k prostředkům v Azure. Řetězce operací mají následující formát: `{Company}.{ProviderName}/{resourceType}/{action}` . Seznam způsobů mapování oborů názvů poskytovatelů prostředků na služby Azure najdete v tématu [přiřazení poskytovatele prostředků ke službě](../azure-resource-manager/management/azure-services-resource-providers.md).
 
 Operace poskytovatele prostředků se vždycky víjejí. Pokud chcete získat nejnovější operace, použijte seznam operací [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) nebo [AZ Provider](/cli/azure/provider/operation#az-provider-operation-list).
-
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="microsoftaad"></a>Microsoft. AAD
 
@@ -147,7 +145,7 @@ Služba Azure: [Azure Active Directory](../active-directory/index.yml)
 > | Akce | Microsoft. ADHybridHealthService/addsservices/Servicemembers/DELETE | Odstraní server pro danou službu a tenanta. |
 > |  | **addsservices/Servicemembers/přihlašovací údaje** |  |
 > | Akce | Microsoft. ADHybridHealthService/addsservices/Servicemembers/přihlašovací údaje/číst | Během registrace serveru ADDomainService se toto rozhraní API volá, aby se získaly přihlašovací údaje pro nové servery. |
-> |  | **rozšířeného** |  |
+> |  | **konfigurace** |  |
 > | Akce | Microsoft. ADHybridHealthService/Configuration/Write | Vytvoří konfiguraci tenanta. |
 > | Akce | Microsoft. ADHybridHealthService/Configuration/Read | Přečte konfiguraci tenanta. |
 > |  | **protokolování** |  |
@@ -2137,7 +2135,7 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Akce dataaction | Microsoft. Cognitiveservices Account/Accounts/kontrolu pravopisu/kontrola pravopisu/akce | Vrátí výsledek dotazu kontroly pravopisu prostřednictvím GET nebo POST. |
 > |  | **účty/TextAnalytics** |  |
 > | Akce dataaction | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/jazyky/akce | Rozhraní API vrátí zjištěný jazyk a číselné skóre mezi 0 a 1. Skóre blížící se 1 značí 100% jistotu, že identifikovaný jazyk je pravdivý. Podporuje se celkem 120 jazyků. |
-> | Akce dataaction | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/entity/Action | Rozhraní API vrátí seznam známých entit a obecně pojmenovaných entit (\"osoba\", \"umístění\", \"organizace\" atd.) v daném dokumentu. |
+> | Akce dataaction | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/entity/Action | Rozhraní API vrátí seznam známých entit a obecně pojmenovaných entit ( \" osoba \" , \" umístění \" , \" organizace \" atd.) v daném dokumentu. |
 > | Akce dataaction | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/klíčová fráze/akce | Rozhraní API vrátí seznam řetězců, ve kterých se ve vstupním textu zaznamená klíčové body. |
 > | Akce dataaction | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/mínění/Action | Rozhraní API vrací číselné skóre v rozsahu 0 až 1.<br>Scores close to 1 indicate positive sentiment, while scores close to 0 indicate negative sentiment.<br>Skóre 0,5 označuje nedostatek mínění (např.<br>příkaz factoid). |
 > |  | **účty/VideoSearch** |  |

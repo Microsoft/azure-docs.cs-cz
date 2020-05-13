@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mimart
 ms.reviewer: dhanyahk
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8dbaa169bbe85a06694bde9719924f2006623cc
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: b117309a3ccc9893890d82c2d0b0d2cb0c6e7bca
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890329"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197876"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -50,7 +50,7 @@ Další informace o novém rozhraní riskDetection API najdete v [referenční d
 
 **Zadejte:** Plánování **Kategorie služby Change Service:** **schopnost produktu** proxy aplikace: Access Control
 
-Několik týdnů před vydáním prohlížeče Chrome 80, plánujeme aktualizovat způsob, jakým soubory cookie proxy aplikace zacházejí s atributem **SameSite** . S vydáním Chrome 80 se všechny soubory cookie, které nespecifikují atribut **SameSite** , zpracují, jako kdyby byla nastavena na `SameSite=Lax`.
+Několik týdnů před vydáním prohlížeče Chrome 80, plánujeme aktualizovat způsob, jakým soubory cookie proxy aplikace zacházejí s atributem **SameSite** . S vydáním Chrome 80 se všechny soubory cookie, které nespecifikují atribut **SameSite** , zpracují, jako kdyby byla nastavena na `SameSite=Lax` .
 
 Abychom se vyhnuli potenciálně negativním dopadům z důvodu této změny, aktualizujeme přístup k proxy aplikací a soubory cookie relace pomocí:
 
@@ -105,7 +105,7 @@ Podrobné informace o těchto nových funkcích, včetně způsobu jejich použi
 
 **Zadejte:** Nová **Kategorie služby funkcí:** ověřování (přihlášení) **schopnost produktu:** monitorování &ch sestav
 
-Přidali jsme novou stránku **Moje přihlášení** (https://mysignins.microsoft.com) aby si uživatelé vaší organizace mohli zobrazit historii jejich nedávného přihlášení, aby zkontrolovali, že neobvyklá aktivita. Tato nová stránka umožňuje uživatelům zobrazit:
+Přidali jsme novou stránku **Moje přihlášení** ( https://mysignins.microsoft.com) aby si uživatelé vaší organizace mohli zobrazit historii jejich nedávného přihlášení, aby zkontrolovali, že neobvyklá aktivita. Tato nová stránka umožňuje uživatelům zobrazit:
 
 - Pokud se někdo pokusí uhodnout svoje heslo.
 
@@ -268,7 +268,7 @@ Další informace o použití tohoto nového koncového bodu najdete v tématu [
 
 Do září 2019 jsme do Galerie aplikací přidali tyto 29 nových aplikací s podporou federace:
 
-[ScheduleLook](https://schedulelook.bbsonlineservices.net/), Microsoft [Azure SSO Access pro dodržování předpisů Ethidex&trade; – jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial), [iServer Portal](https://docs.microsoft.com/azure/active-directory/saas-apps/iserver-portal-tutorial), [SKYSITE](https://docs.microsoft.com/azure/active-directory/saas-apps/skysite-tutorial), [Concur cestovné a výdaje](https://docs.microsoft.com/azure/active-directory/saas-apps/concur-travel-and-expense-tutorial), [WorkBoard](https://docs.microsoft.com/azure/active-directory/saas-apps/workboard-tutorial), `https://apps.yeeflow.com/`, [zařízení ARC](https://docs.microsoft.com/azure/active-directory/saas-apps/arc-facilities-tutorial), [Luware Stratus tým](https://stratus.emea.luware.cloud/login), [nejrůznějších nápadů](https://wideideas.online/wideideas/), [Prisma Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial), [JDLT klienta](https://clients.jdlt.co.uk/login), [RENRAKU,](https://docs.microsoft.com/azure/active-directory/saas-apps/renraku-tutorial) [SealPath zabezpečený prohlížeč](https://protection.sealpath.com/SealPathInterceptorWopiSaas/Open/InstallSealPathEditorOneDrive), [Prisma Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial) `https://app.penneo.com/`, `https://app.testhtm.com/settings/email-integration`, [Cintoo](https://aec.cintoo.com/login), Whitesource, [CakeHR,](https://app.amelio.co/) [COO,](https://docs.microsoft.com/azure/active-directory/saas-apps/bis-tutorial) [týmu](https://ms-contacts.coo-kai.jp/) [, Kai](https://docs.microsoft.com/azure/active-directory/saas-apps/whitesource-tutorial) [,](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-heritage-online-sso-tutorial) [Adobe Identity Management](https://docs.microsoft.com/azure/active-directory/saas-apps/adobe-identity-management-tutorial) [, možnosti](https://docs.microsoft.com/azure/active-directory/saas-apps/sonarqube-tutorial)zjišťování pro [SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/discovery-benefits-sso-tutorial) [, SonarQube](https://docs.microsoft.com/azure/active-directory/saas-apps/idc-tutorial) [,](https://docs.microsoft.com/azure/active-directory/saas-apps/cakehr-tutorial)`https://itask.yipinapp.com/`
+[ScheduleLook](https://schedulelook.bbsonlineservices.net/), Microsoft [Azure SSO Access pro dodržování předpisů Ethidex &trade; – jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial), [iServer Portal](https://docs.microsoft.com/azure/active-directory/saas-apps/iserver-portal-tutorial), [SKYSITE](https://docs.microsoft.com/azure/active-directory/saas-apps/skysite-tutorial), [Concur cestovné a výdaje](https://docs.microsoft.com/azure/active-directory/saas-apps/concur-travel-and-expense-tutorial), [WorkBoard](https://docs.microsoft.com/azure/active-directory/saas-apps/workboard-tutorial), `https://apps.yeeflow.com/` , [zařízení ARC](https://docs.microsoft.com/azure/active-directory/saas-apps/arc-facilities-tutorial), [Luware Stratus tým](https://stratus.emea.luware.cloud/login), [nejrůznějších nápadů](https://wideideas.online/wideideas/), [Prisma Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial), [JDLT klienta](https://clients.jdlt.co.uk/login), [RENRAKU](https://docs.microsoft.com/azure/active-directory/saas-apps/renraku-tutorial), [SealPath zabezpečený prohlížeč](https://protection.sealpath.com/SealPathInterceptorWopiSaas/Open/InstallSealPathEditorOneDrive), [Prisma Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial),, Cintoo, Whitesource, CakeHR, COO, týmu, Kai, `https://app.penneo.com/` `https://app.testhtm.com/settings/email-integration` [Sonarqube](https://docs.microsoft.com/azure/active-directory/saas-apps/sonarqube-tutorial) [Adobe Identity Management](https://docs.microsoft.com/azure/active-directory/saas-apps/adobe-identity-management-tutorial), možnosti zjišťování pro [Whitesource](https://docs.microsoft.com/azure/active-directory/saas-apps/whitesource-tutorial) [SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/discovery-benefits-sso-tutorial) [BIS](https://docs.microsoft.com/azure/active-directory/saas-apps/bis-tutorial) [Coo Kai Team Build](https://ms-contacts.coo-kai.jp/) [Amelio](https://app.amelio.co/) [CakeHR](https://docs.microsoft.com/azure/active-directory/saas-apps/cakehr-tutorial) [Cintoo Cloud](https://aec.cintoo.com/login) [Hosted Heritage Online SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-heritage-online-sso-tutorial) [IDC](https://docs.microsoft.com/azure/active-directory/saas-apps/idc-tutorial), SonarQube,`https://itask.yipinapp.com/`
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](https://aka.ms/appstutorial). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
 
@@ -427,7 +427,7 @@ Další informace najdete v tématu [jak to funguje: Samoobslužné resetování
 
 **Zadejte:** **Kategorie pevné služby:** ověřování (přihlášení) **schopnost produktu:** ověřování uživatelů
 
-Počínaje službou Azure AD Authentication Library (ADAL.NET) verze 5.0.0-Preview musí vývojáři aplikací [serializovat jednu mezipaměť na účet pro webové aplikace a webová rozhraní API](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api). V opačném případě může dojít ke zvýšení oprávnění v některých scénářích využívajících [tok](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow), a to spolu `UserAssertion`s některými konkrétními případy použití. Aby se zabránilo této chybě, ADAL.NET nyní ignoruje sdílenou mezipaměť Microsoft Authentication Library for dotnet (MSAL.NET) pro scénáře v zastoupení.
+Počínaje službou Azure AD Authentication Library (ADAL.NET) verze 5.0.0-Preview musí vývojáři aplikací [serializovat jednu mezipaměť na účet pro webové aplikace a webová rozhraní API](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api). V opačném případě může dojít ke zvýšení oprávnění v některých scénářích využívajících [tok](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow), a to spolu s některými konkrétními případy použití `UserAssertion` . Aby se zabránilo této chybě, ADAL.NET nyní ignoruje sdílenou mezipaměť Microsoft Authentication Library for dotnet (MSAL.NET) pro scénáře v zastoupení.
 
 Další informace o tomto problému naleznete v tématu [Azure Active Directory zvýšení úrovně zabezpečení oprávnění v knihovně ověřování](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258).
 
@@ -439,7 +439,7 @@ Další informace o tomto problému naleznete v tématu [Azure Active Directory 
 
 V srpnu 2019 jsme do Galerie aplikací přidali tyto 26 nových aplikací s podporou federace:
 
-[Civic Platform](https://docs.microsoft.com/azure/active-directory/saas-apps/civic-platform-tutorial), [Amazon Business](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-business-tutorial), [ProNovos](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-ops-manager-tutorial)Operations Manager, Cognidox, [Viareport – portál Inativ (Evropa)](https://docs.microsoft.com/azure/active-directory/saas-apps/viareports-inativ-portal-europe-tutorial), [Azure Databricks](https://azure.microsoft.com/services/databricks), [Robin](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial), [Cognidox](https://docs.microsoft.com/azure/active-directory/saas-apps/cognidox-tutorial) [,](https://docs.microsoft.com/azure/active-directory/saas-apps/academy-attendance-tutorial) [prioritní matrice](https://sync.appfluence.com/pmwebng/), [Academy Cousto](https://cousto.platformers.be/account/login), [MySpace](https://uploadcare.com/accounts/signup/), [Uploadcare Backup Endpoint](https://docs.microsoft.com/azure/active-directory/saas-apps/carbonite-endpoint-backup-tutorial), [Carbonite](https://docs.microsoft.com/azure/active-directory/saas-apps/cpqsync-by-cincom-tutorial)CPQSync, [Cincom](https://docs.microsoft.com/azure/active-directory/saas-apps/chargebee-tutorial), [doručovat. Media&trade; Portal](https://portal.deliver.media), Chargebee [vzdělávání](https://docs.microsoft.com/azure/active-directory/saas-apps/frontline-education-tutorial), [F5](https://www.f5.com/products/security/access-policy-manager), [prvotní AD Connect](https://www.stashcat.com), Blink, [stashcat](https://docs.microsoft.com/azure/active-directory/saas-apps/vocoli-tutorial), [Vocoli Analytics](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-analytics-tutorial), [ProNovos](https://docs.microsoft.com/azure/active-directory/saas-apps/sigstr-tutorial), [Sigstr](https://docs.microsoft.com/azure/active-directory/saas-apps/darwinbox-tutorial), [Sledujte barvy](https://docs.microsoft.com/azure/active-directory/saas-apps/watch-by-colors-tutorial), [rozsvítit](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial), [EAB Navigate Strategic Care](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-strategic-care-tutorial) Darwinbox [Harness](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)
+[Civic Platform](https://docs.microsoft.com/azure/active-directory/saas-apps/civic-platform-tutorial), [Amazon Business](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-business-tutorial), [ProNovos](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-ops-manager-tutorial)Operations Manager, Cognidox, [Viareport – portál Inativ (Evropa)](https://docs.microsoft.com/azure/active-directory/saas-apps/viareports-inativ-portal-europe-tutorial), [Azure Databricks](https://azure.microsoft.com/services/databricks), [Robin](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial), [Cognidox](https://docs.microsoft.com/azure/active-directory/saas-apps/cognidox-tutorial) [,](https://docs.microsoft.com/azure/active-directory/saas-apps/academy-attendance-tutorial) [prioritní matrice](https://sync.appfluence.com/pmwebng/), [Academy Cousto](https://cousto.platformers.be/account/login), [MySpace](https://uploadcare.com/accounts/signup/), [Uploadcare Backup Endpoint](https://docs.microsoft.com/azure/active-directory/saas-apps/carbonite-endpoint-backup-tutorial), [Carbonite](https://docs.microsoft.com/azure/active-directory/saas-apps/cpqsync-by-cincom-tutorial)CPQSync, [Cincom](https://docs.microsoft.com/azure/active-directory/saas-apps/chargebee-tutorial), [doručovat. Media &trade; Portal](https://portal.deliver.media), Chargebee [vzdělávání](https://docs.microsoft.com/azure/active-directory/saas-apps/frontline-education-tutorial), [F5](https://www.f5.com/products/security/access-policy-manager), [prvotní AD Connect](https://www.stashcat.com), Blink, [stashcat](https://docs.microsoft.com/azure/active-directory/saas-apps/vocoli-tutorial), [Vocoli Analytics](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-analytics-tutorial), [ProNovos](https://docs.microsoft.com/azure/active-directory/saas-apps/sigstr-tutorial), [Sigstr](https://docs.microsoft.com/azure/active-directory/saas-apps/darwinbox-tutorial), [Sledujte barvy](https://docs.microsoft.com/azure/active-directory/saas-apps/watch-by-colors-tutorial), [rozsvítit](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial), [EAB Navigate Strategic Care](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-strategic-care-tutorial) [Darwinbox](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](https://aka.ms/appstutorial). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
 
@@ -451,7 +451,7 @@ Další informace o aplikacích naleznete v tématu [SaaS Application Integratio
 
 K dispozici jsou nové aktualizace modulů PowerShellu pro AzureAD a AzureAD ve verzi Preview:
 
-- Do `Get-AzureADDirectoryRole` parametru `-Filter` v modulu AzureAD byl přidán nový parametr. Tento parametr vám pomůže filtrovat role adresáře vrácené rutinou.
+- `-Filter`Do `Get-AzureADDirectoryRole` parametru v modulu AzureAD byl přidán nový parametr. Tento parametr vám pomůže filtrovat role adresáře vrácené rutinou.
 - Do modulu AzureADPreview byly přidány nové rutiny, které vám pomůžou definovat a přiřazovat vlastní role v Azure AD, včetně těchto:
 
     - `Get-AzureADMSRoleAssignment`
@@ -478,7 +478,7 @@ Další informace najdete v tématu [Správa pravidel dynamického členství](h
 
 **Zadejte:** Kategorie změněné **služby funkcí:** kontroly přístupu **Možnosti produktu:** zásady správného řízení identity
 
-Zavedli jsme nové oprávnění `AccessReview.ReadWrite.Membership`aplikace Microsoft Graph, které umožňuje aplikacím automaticky vytvářet a načítat kontroly přístupu pro členství ve skupinách a přiřazení aplikací. Toto oprávnění můžou použít naplánované úlohy nebo v rámci automatizace, aniž by bylo nutné přihlášený kontext uživatele.
+Zavedli jsme nové oprávnění aplikace Microsoft Graph, `AccessReview.ReadWrite.Membership` které umožňuje aplikacím automaticky vytvářet a načítat kontroly přístupu pro členství ve skupinách a přiřazení aplikací. Toto oprávnění můžou použít naplánované úlohy nebo v rámci automatizace, aniž by bylo nutné přihlášený kontext uživatele.
 
 Další informace najdete v [příkladu vytváření kontrol přístupu Azure AD pomocí Microsoft Graph oprávnění aplikace s blogem PowerShellu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-how-to-create-Azure-AD-access-reviews-using-Microsoft/m-p/807241).
 
@@ -517,7 +517,7 @@ Další informace o prostředí rozšířené informace o zabezpečení najdete 
     Po uložení nastavení už nebudete mít přístup k původnímu prostředí bezpečnostní informace.
 
 >[!Important]
->Pokud tento postup nedokončíte před 25. září 2019, bude se váš tenant Azure Active Directory automaticky povolit pro vylepšené prostředí. Pokud máte nějaké otázky, kontaktujte nás na adrese registrationpreview@microsoft.com.
+>Pokud tento postup nedokončíte před 25. září 2019, bude se váš tenant Azure Active Directory automaticky povolit pro vylepšené prostředí. Pokud máte nějaké otázky, kontaktujte nás na adrese registrationpreview@microsoft.com .
 
 ---
 
@@ -567,7 +567,7 @@ Odebíráme IP adresu MFA serveru z [webové služby IP adresa a adresa URL sady
 
 26. července 2019 jsme změnili, jak poskytujeme tokeny jenom pro aplikace prostřednictvím [udělení přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow). Dříve mohli aplikace získat tokeny pro volání jiných aplikací bez ohledu na to, jestli klientská aplikace byla v tenantovi. Toto chování jsme aktualizovali tak, aby se prostředky jednoho tenanta, někdy označované jako webové rozhraní API, mohly volat jenom pro klientské aplikace, které existují v tenantovi prostředků.
 
-Pokud se vaše aplikace nenachází v tenantovi prostředků, zobrazí se chybová zpráva s informacemi o tom, `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` jak tento problém vyřešit, musíte vytvořit instanční objekt klientské aplikace v tenantovi pomocí [koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) nebo [prostřednictvím PowerShellu](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell), který klientovi udělí oprávnění k provozu v rámci tenanta.
+Pokud se vaše aplikace nenachází v tenantovi prostředků, zobrazí se chybová zpráva s informacemi `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` o tom, jak tento problém vyřešit, musíte vytvořit instanční objekt klientské aplikace v tenantovi pomocí [koncového bodu souhlasu správce](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) nebo [prostřednictvím PowerShellu](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell), který klientovi udělí oprávnění k provozu v rámci tenanta.
 
 Další informace najdete v tématu [co je nového pro ověřování?](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant).
 
@@ -592,7 +592,7 @@ Další informace najdete v tématu [Povolení přihlášení bez hesla pro Azur
 
 V červenci 2019 jsme do Galerie aplikací přidali tyto 18 nových aplikací s podporou federace:
 
-[Ungerboeck software](https://docs.microsoft.com/azure/active-directory/saas-apps/ungerboeck-software-tutorial), [jasný vzor Omnichannel kontakt Center](https://docs.microsoft.com/azure/active-directory/saas-apps/bright-pattern-omnichannel-contact-center-tutorial), [chytřejší Nelly](https://docs.microsoft.com/azure/active-directory/saas-apps/clever-nelly-tutorial), [AcquireIO](https://docs.microsoft.com/azure/active-directory/saas-apps/acquireio-tutorial), [Looop](https://www.looop.co/schedule-a-demo/), [productboard](https://docs.microsoft.com/azure/active-directory/saas-apps/productboard-tutorial), [přístup k aplikaci MS Azure SSO pro Ethidex&trade;dodržování předpisů pro Hype](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on#password-based-sso), [Flipsnack](https://docs.microsoft.com/azure/active-directory/saas-apps/hype-tutorial), [Abstrakt](https://docs.microsoft.com/azure/active-directory/saas-apps/abstract-tutorial), [prostoupání](https://docs.microsoft.com/azure/active-directory/saas-apps/ascentis-tutorial), [Wandera](https://www.flipsnack.com/accounts/sign-in-sso.html), [TwineSocial](https://docs.microsoft.com/azure/active-directory/saas-apps/wandera-tutorial), [Kallidus](https://twinesocial.com/), [HyperAnna](https://docs.microsoft.com/azure/active-directory/saas-apps/kallidus-tutorial), [PharmID](https://docs.microsoft.com/azure/active-directory/saas-apps/hyperanna-tutorial), [WasteWitness i2B](https://pharmid.com/), [JFrog připojit](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/), [Artifactory](https://docs.microsoft.com/azure/active-directory/saas-apps/jfrog-artifactory-tutorial)
+[Ungerboeck software](https://docs.microsoft.com/azure/active-directory/saas-apps/ungerboeck-software-tutorial), [jasný vzor Omnichannel kontakt Center](https://docs.microsoft.com/azure/active-directory/saas-apps/bright-pattern-omnichannel-contact-center-tutorial), [chytřejší Nelly](https://docs.microsoft.com/azure/active-directory/saas-apps/clever-nelly-tutorial), [AcquireIO](https://docs.microsoft.com/azure/active-directory/saas-apps/acquireio-tutorial), [Looop](https://www.looop.co/schedule-a-demo/), [productboard](https://docs.microsoft.com/azure/active-directory/saas-apps/productboard-tutorial) [Abstract](https://docs.microsoft.com/azure/active-directory/saas-apps/abstract-tutorial) [TwineSocial](https://twinesocial.com/) [HyperAnna](https://docs.microsoft.com/azure/active-directory/saas-apps/hyperanna-tutorial) [Wandera](https://docs.microsoft.com/azure/active-directory/saas-apps/wandera-tutorial) [JFrog Artifactory](https://docs.microsoft.com/azure/active-directory/saas-apps/jfrog-artifactory-tutorial) [Hype](https://docs.microsoft.com/azure/active-directory/saas-apps/hype-tutorial) [Flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html) [Kallidus](https://docs.microsoft.com/azure/active-directory/saas-apps/kallidus-tutorial) [ &trade; productboard, přístup k aplikaci MS Azure SSO pro Ethidex dodržování předpisů pro Hype](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on#password-based-sso), Flipsnack, abstrakt, [prostoupání](https://docs.microsoft.com/azure/active-directory/saas-apps/ascentis-tutorial), Wandera, TwineSocial, Kallidus, HyperAnna, PharmID, [WasteWitness i2B](https://pharmid.com/), [JFrog připojit](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/), Artifactory
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](https://aka.ms/appstutorial). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](https://aka.ms/azureadapprequest).
 
@@ -724,7 +724,7 @@ Další informace najdete v tématu [Správa skupin na portálu Azure AD](https:
 
 **Zadejte:** Nová **Kategorie služby funkcí:** ověřování (přihlášení) **schopnost produktu:** ověřování uživatelů
 
-Aplikace Azure AD teď můžou registrovat a používat identifikátory URI odpovědi (přesměrování) s parametry statického dotazu (například `https://contoso.com/oauth2?idp=microsoft`) pro žádosti OAuth 2,0. Parametr statického dotazu podléhá shodě řetězců pro identifikátory URI odpovědi, stejně jako všechny ostatní části identifikátoru URI odpovědi. Pokud neexistuje žádný registrovaný řetězec, který by odpovídal identifikátoru URI přesměrování adresy URL s dekódováním, požadavek se odmítne. Pokud se najde identifikátor URI odpovědi, použije se celý řetězec pro přesměrování uživatele, včetně parametru statického dotazu.
+Aplikace Azure AD teď můžou registrovat a používat identifikátory URI odpovědi (přesměrování) s parametry statického dotazu (například `https://contoso.com/oauth2?idp=microsoft` ) pro žádosti OAuth 2,0. Parametr statického dotazu podléhá shodě řetězců pro identifikátory URI odpovědi, stejně jako všechny ostatní části identifikátoru URI odpovědi. Pokud neexistuje žádný registrovaný řetězec, který by odpovídal identifikátoru URI přesměrování adresy URL s dekódováním, požadavek se odmítne. Pokud se najde identifikátor URI odpovědi, použije se celý řetězec pro přesměrování uživatele, včetně parametru statického dotazu.
 
 Dynamické identifikátory URI odpovědi jsou stále zakázané, protože představují bezpečnostní riziko a nelze je použít k uchování informací o stavu v rámci žádosti o ověření. Pro účely tohoto účelu použijte `state` parametr.
 
@@ -1507,7 +1507,7 @@ Správci Azure AD teď můžou resetovat svoje vlastní heslo pomocí oznámení
 
 - Jiná aplikace Mobile Authenticator/kód hardwarového tokenu
 
-- E-mailu
+- E-mail
 
 - Telefonní hovor
 
@@ -1688,7 +1688,7 @@ Uvědomujeme si, že nastavení jednotného přihlašování (SSO) pro aplikace 
 
 - Jamf Pro
 
-Pokud chcete začít používat toto prostředí jedním kliknutím, přejděte na stránku konfigurace **Azure Portal** > **jednotného přihlašování** pro danou aplikaci. Další informace najdete v tématu [Integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) .
+Pokud chcete začít používat toto prostředí jedním kliknutím, přejděte na stránku **Azure portal**  >  **konfigurace Azure Portal jednotného přihlašování** pro danou aplikaci. Další informace najdete v tématu [Integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) .
 
 ---
 
@@ -1706,7 +1706,7 @@ Pro přístup k této funkci a další informace najdete v tématu [Azure Active
 
 **Zadejte:** Nová **Kategorie služby funkcí:** **funkce produktu** moje aplikace: jednotné přihlašování
 
-Podívejte se na nový plán nasazení, který je k dispozici pro přístupový panel Mojehttps://aka.ms/deploymentplans)aplikace (.
+Podívejte se na nový plán nasazení, který je k dispozici pro přístupový panel Moje aplikace ( https://aka.ms/deploymentplans) .
 Přístupový panel Moje aplikace poskytuje uživatelům jediné místo pro vyhledání a přístup ke svým aplikacím. Tento portál také poskytuje uživatelům možnosti samoobslužných služeb, jako je třeba vyžadování přístupu k aplikacím a skupinám nebo Správa přístupu k těmto prostředkům jménem jiné.
 
 Další informace najdete v tématu [co je to portál moje aplikace?](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)
@@ -2133,7 +2133,7 @@ Neaktuální prohlížeče nemusí podporovat novější verze TLS, jako je nap�
 
 - **Microsoft Edge a Internet Explorer (obě se nastavují pomocí Internet Exploreru)**
 
-    1. Otevřete Internet Explorer, vyberte **nástroje** > **Možnosti** > Internetu**Upřesnit**.
+    1. Otevřete Internet Explorer, vyberte **nástroje**  >  **Možnosti Internetu**  >  **Upřesnit**.
     2. V oblasti **zabezpečení** vyberte **použít TLS 1,2**a pak vyberte **OK**.
     3. Zavřete všechna okna prohlížeče a restartujte aplikaci Internet Explorer.
 
@@ -2301,7 +2301,7 @@ Azure AD umožňuje automatizovat vytváření, údržbu a odebírání identit 
 
 - [Zendesk](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zendesk-provisioning-tutorial)
 
-Seznam všech aplikací, které podporují zřizování uživatelů v galerii Azure AD, najdete v tématu [https://aka.ms/appstutorial](https://aka.ms/appstutorial).
+Seznam všech aplikací, které podporují zřizování uživatelů v galerii Azure AD, najdete v tématu [https://aka.ms/appstutorial](https://aka.ms/appstutorial) .
 
 ---
 
@@ -2605,7 +2605,7 @@ Další informace najdete v tématu [jak se přihlašuje na nativním klientovi 
 
 **Zadejte:** Nová **Kategorie služby funkcí:** ověřování (přihlášení) **schopnost produktu:** ověřování uživatelů
 
-Uživatelé získají tiché přihlašování s bezproblémové jednotné přihlašování, pokud `https://contoso.sharepoint.com`aplikace (například) odesílá žádosti o přihlášení koncovým bodům klienta služby Azure AD – to znamená, `https://login.microsoftonline.com/contoso.com/<..>` `https://login.microsoftonline.com/<tenant_ID>/<..>` že je místo společného koncového bodu služby Azure AD (`https://login.microsoftonline.com/common/<...>`).
+Uživatelé získají tiché přihlašování s bezproblémové jednotné přihlašování, pokud aplikace (například `https://contoso.sharepoint.com` ) odesílá žádosti o přihlášení koncovým bodům klienta služby Azure AD – to znamená, že je `https://login.microsoftonline.com/contoso.com/<..>` `https://login.microsoftonline.com/<tenant_ID>/<..>` místo společného koncového bodu služby Azure AD ( `https://login.microsoftonline.com/common/<...>` ).
 
 Další informace najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso).
 
@@ -2615,7 +2615,7 @@ Další informace najdete v tématu [Azure Active Directory bezproblémové jedn
 
 **Zadejte:** Nová **Kategorie služby funkcí:** ověřování (přihlášení) **schopnost produktu:** ověřování uživatelů
 
-K zavedení bezproblémového jednotného přihlašování pro uživatele musíte do nastavení zóny intranetu uživatele přidat jenom jednu adresu URL služby Azure AD pomocí zásad skupiny ve službě Active Directory: `https://autologon.microsoftazuread-sso.com`. Dřív museli zákazníci přidat dvě adresy URL.
+K zavedení bezproblémového jednotného přihlašování pro uživatele musíte do nastavení zóny intranetu uživatele přidat jenom jednu adresu URL služby Azure AD pomocí zásad skupiny ve službě Active Directory: `https://autologon.microsoftazuread-sso.com` . Dřív museli zákazníci přidat dvě adresy URL.
 
 Další informace najdete v tématu [Azure Active Directory bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso).
 
@@ -2972,7 +2972,7 @@ Od 8. ledna 2018 bylo prostředí pro správu Azure AD na portálu Azure Classic
 
 Od 8. ledna 2018 byl webový portál PhoneFactor vyřazený. Tento portál byl použit pro správu MFA serveru, ale tyto funkce byly přesunuty do Azure Portal na adrese portal.azure.com.
 
-Konfigurace MFA se nachází v: ** \> Azure Active Directory MFA Server**
+Konfigurace MFA se nachází v: **Azure Active Directory \> MFA Server**
 
 ---
 

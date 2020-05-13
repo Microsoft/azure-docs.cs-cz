@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7917b63b86e4d103061a902f74c368dfd6c123b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 2bbfd0027f9de93ee939815853f5141044404c53
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160732"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199495"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory uplatnění pozvánky B2B pro spolupráci
 
@@ -41,10 +41,10 @@ Když do svého adresáře přidáte uživatele typu host [pomocí Azure Portal]
 Jako alternativu k e-mailu s pozvánkou můžete hostům poskytnout přímý odkaz na vaši aplikaci nebo portál. Nejdřív je potřeba přidat uživatele typu Host do adresáře prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) nebo [PowerShellu](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell). Pak můžete použít kterýkoli z [přizpůsobitelných způsobů, jak nasadit aplikace pro uživatele](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences), včetně odkazů přímo přihlašování. Když host použije přímý odkaz namísto e-mailu s pozvánkou, bude se dál nacházet pomocí prostředí pro vyjádření souhlasu po prvním čase.
 
 > [!IMPORTANT]
-> Přímý odkaz musí být specifický pro tenanta. Jinými slovy, musí obsahovat ID tenanta nebo ověřenou doménu, aby bylo možné hosta ověřit ve vašem tenantovi, kde se nachází sdílená aplikace. Společná adresa URL, https://myapps.microsoft.com jako by se u hosta nefunguje, protože se přesměruje na svého domovského tenanta pro ověřování. Tady je několik příkladů přímých odkazů s kontextem tenanta:
- > - Přístupový panel aplikací: https://myapps.microsoft.com/?tenantid=&lt; ID tenanta&gt; 
- > - Přístupový panel aplikací pro ověřenou doménu: https://myapps.microsoft.com/&lt; ověřená doména&gt;
- > - Azure Portal: https://portal.azure.com/&lt; ID tenanta&gt;
+> Přímý odkaz musí být specifický pro tenanta. Jinými slovy, musí obsahovat ID tenanta nebo ověřenou doménu, aby bylo možné hosta ověřit ve vašem tenantovi, kde se nachází sdílená aplikace. Společná adresa URL, jako https://myapps.microsoft.com by se u hosta nefunguje, protože se přesměruje na svého domovského tenanta pro ověřování. Tady je několik příkladů přímých odkazů s kontextem tenanta:
+ > - Přístupový panel aplikací: https://myapps.microsoft.com/?tenantid=&lt ; ID tenanta&gt; 
+ > - Přístupový panel aplikací pro ověřenou doménu: https://myapps.microsoft.com/&lt ; ověřená doména&gt;
+ > - Azure Portal: https://portal.azure.com/&lt ; ID tenanta&gt;
  > - Individuální aplikace: viz jak použít [přímý odkaz na přihlášení](../manage-apps/end-user-experiences.md#direct-sign-on-links) .
 
 V některých případech se doporučuje e-mailem pozvánky používat přímý odkaz. Pokud jsou tyto zvláštní případy pro vaši organizaci důležité, doporučujeme, abyste uživatele pozvali pomocí metod, které pořád odesílají e-mail s pozvánkami:
@@ -99,7 +99,7 @@ Když se host přihlásí k přístupu k prostředkům v partnerské organizaci 
 
    ![Snímek obrazovky s novými podmínkami použití](media/redemption-experience/terms-of-use-accept.png) 
 
-   V části **Správa** > **vztahů** > organizace**podmínky použití**můžete nakonfigurovat zobrazení [podmínek použití](../governance/active-directory-tou.md) .
+   Můžete nakonfigurovat [používání podmínek použití](../governance/active-directory-tou.md) v **organizačních vztazích** (nebo **externích identitách**) > **podmínky použití**.
 
 3. Pokud není uvedeno jinak, Host se přesměruje na přístupový panel aplikace, který obsahuje seznam aplikací, ke kterým má host přístup.
 

@@ -12,12 +12,13 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92496fa572c5c1cae4588f82ac61c18de3024045
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 4b5836ffe721aa3e329651c3709ce64344363728
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76512823"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197870"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
 
@@ -236,11 +237,11 @@ Vždy používejte roli s nejmenším oprávněním, která jsou k dispozici k p
 
 | Nežádoucí| Role | Role Azure AD (v případě potřeby) |
 |--------|-------|-----------------------------|
-| Správce helpdesku | Podpora vrstvy 1 | Žádná |
+| Správce helpdesku | Podpora vrstvy 1 | Žádné |
 | Správce identit | Konfigurace a ladění v případě problémů ovlivňujících službu Azure AD | Globální správce |
-| Správce aplikace | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádná |
+| Správce aplikace | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádné |
 | Správci infrastruktury | Vlastník změna certifikátu | Globální správce |
-| Vlastník/účastník společnosti | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádná |
+| Vlastník/účastník společnosti | Ověření identity uživatele v aplikaci, konfigurace u uživatelů s oprávněním | Žádné |
 
 Pro správu rolí doporučujeme použít [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) a zajistit tak další auditování, řízení a kontrolu přístupu pro uživatele s oprávněními k adresáři.
 
@@ -272,7 +273,7 @@ Při správě přístupu k prostředkům doporučujeme zvolit přístup s větš
 
 Doporučujeme nastavit regulární tempo, ve kterém si prohlédnete různé aspekty zabezpečení aplikací SaaS a provádíte jakékoli případné nápravné akce.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Odstraňování potíží
 
 Následující odkazy představují scénáře řešení potíží. Možná budete chtít vytvořit konkrétní vodítko pro pracovníky podpory, kteří budou tyto scénáře v podniku, a postup, jak je opravit.
 
@@ -306,7 +307,7 @@ Následující odkazy představují scénáře řešení potíží. Možná bude
 
 ## <a name="next-steps"></a>Další kroky
 
-[Ladění SSO založeného na SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+[Ladění jednotného přihlašování založeného na SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 
 [Mapování deklarací pro aplikace přes PowerShell](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
 

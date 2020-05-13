@@ -4,19 +4,19 @@ description: Naučte se používat ověřování Multi-Factor Authentication s S
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 38d8eba5dd451c8e8709ce4d43aba107e5346bfc
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: e551ac54414cb3114a7d0905b1b2e59b0d16580a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627360"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198553"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurace služby Multi-Factor Authentication pro SQL Server Management Studio a Azure AD
 
@@ -38,7 +38,7 @@ Následující kroky ukazují, jak se připojit k SQL Database nebo SAzure synap
 
 1. Pokud se chcete připojit pomocí univerzálního ověřování, vyberte v dialogovém okně **připojit k serveru** možnost **Active Directory – univerzální s podporou vícefaktorového**ověřování. (Pokud se zobrazí **univerzální ověřování služby Active Directory** , nejste na nejnovější verzi SSMS.)  
    ![1mfa – Universal-Connect][1]  
-2. Do pole **uživatelské jméno** zadejte přihlašovací údaje Azure Active Directory ve formátu `user_name@domain.com`.  
+2. Do pole **uživatelské jméno** zadejte přihlašovací údaje Azure Active Directory ve formátu `user_name@domain.com` .  
    ![1mfa – Universal-Connect – uživatel](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
 3. Pokud se připojujete jako uživatel typu Host, už nemusíte pro uživatele typu Host doplňovat pole název domény služby AD nebo ID tenanta, protože SSMS 18. x nebo novější ho automaticky rozpoznává. Další informace najdete v tématu [univerzální ověřování pomocí SQL Database a Azure synapse (podpora SSMS pro MFA)](sql-database-ssms-mfa-authentication.md).
    ![MFA – No – tenant – SSMS](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
@@ -46,7 +46,7 @@ Následující kroky ukazují, jak se připojit k SQL Database nebo SAzure synap
    Pokud se však připojujete jako uživatel typu Host pomocí SSMS 17. x nebo staršího, musíte kliknout na možnost **Možnosti**a v dialogovém okně **Vlastnosti připojení** vyplnit pole **název domény služby AD nebo ID tenanta** .
    ![MFA – tenant – SSMS](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)
 
-4. Obvyklým způsobem pro SQL Database a Azure synapse musíte kliknout na **Možnosti možnosti** a zadat databázi v dialogovém okně **Možnosti** . (Pokud je připojený uživatel uživatel typu Host (tj. joe@outlook.com), musíte zaškrtnout políčko a jako součást možností přidat aktuální název domény služby AD nebo ID tenanta. Podívejte [se na téma Univerzální ověřování pomocí SQL Database a Azure synapse (podpora SSMS pro MFA)](sql-database-ssms-mfa-authentication.md). Pak klikněte na **Connect** (Připojit).  
+4. Obvyklým způsobem pro SQL Database a Azure synapse musíte kliknout na **Možnosti možnosti** a zadat databázi v dialogovém okně **Možnosti** . (Pokud je připojený uživatel uživatel typu Host (tj. joe@outlook.com ), musíte zaškrtnout políčko a jako součást možností přidat aktuální název domény služby AD nebo ID tenanta. Podívejte [se na téma Univerzální ověřování pomocí SQL Database a Azure synapse (podpora SSMS pro MFA)](sql-database-ssms-mfa-authentication.md). Pak klikněte na **Connect** (Připojit).  
 5. Po zobrazení dialogového okna **Přihlásit se k účtu** zadejte účet a heslo vaší Azure Active Directory identity. Pokud je uživatel součástí domény federované se službou Azure AD, není nutné žádné heslo.  
    ![2mfa – přihlášení][2]  
 

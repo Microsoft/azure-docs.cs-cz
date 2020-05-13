@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: efb9e8b8abdcb442e2c5c4d8bfd1b2e1e60865ce
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261226"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197853"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Odeberte TLS 1,0 a 1,1 pro použití s Azure cache pro Redis.
 
@@ -19,7 +19,7 @@ K exkluzivnímu používání protokolu TLS (Transport Layer Security) verze 1,2
 
 V rámci tohoto úsilí budeme provádět následující změny v mezipaměti Azure pro Redis:
 
-* **Fáze 1:** Nastavíme výchozí minimální verzi TLS na 1,2 pro nově vytvořené instance mezipaměti. (Používá se k TLS 1,0.) Existující instance mezipaměti se v tomto okamžiku neaktualizují. V případě potřeby budete moct [změnit minimální verzi TLS](cache-configure.md#access-ports) zpátky na 1,0 nebo 1,1 na zpětnou kompatibilitu. Tato změna se dá udělat prostřednictvím Azure Portal nebo jiných rozhraní API pro správu.
+* **Fáze 1:** Nastavíme výchozí minimální verzi TLS na 1,2 pro nově vytvořené instance mezipaměti (dříve TLS 1,0).  Existující instance mezipaměti se v tomto okamžiku neaktualizují. V případě potřeby budete moct [změnit minimální verzi TLS](cache-configure.md#access-ports) zpátky na 1,0 nebo 1,1 na zpětnou kompatibilitu. Tato změna se dá udělat prostřednictvím Azure Portal nebo jiných rozhraní API pro správu.
 * **Fáze 2:** Přestanou podporovat verze TLS 1,0 a 1,1. Po této změně bude vaše aplikace vyžadovat použití TLS 1,2 nebo novější ke komunikaci s mezipamětí.
 
 Kromě toho se v rámci této změny odstraní podpora pro starší, nezabezpečené sady šifrováním.  Naše podporované sady šifrováním budou omezeny na následující, pokud je mezipaměť konfigurována s minimální verzí TLS 1,2.
@@ -33,7 +33,7 @@ Datum, kdy se tyto změny projeví:
 
 | Cloud               | Počáteční datum fáze 1 | Počáteční datum fáze 2      |
 |---------------------|--------------------|-------------------------|
-| Azure (Global)      |  13. ledna 2020  | 11. května 2020 (rozšířené) |
+| Azure (Global)      |  13. ledna 2020  | 11. května 2020            |
 | Azure Government    |  13. března 2020    | 11. května 2020            |
 | Azure Germany       |  13. března 2020    | 11. května 2020            |
 | Azure (Čína)         |  13. března 2020    | 11. května 2020            |

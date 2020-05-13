@@ -5,32 +5,33 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/25/2019
-ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/09/2019
+ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670250"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201107"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>výraz App () v Azure Monitor dotazu
 
-`app` Výraz se používá v Azure monitor dotazech k načtení dat z konkrétní Application Insights aplikace ve stejné skupině prostředků, v jiné skupině prostředků nebo jiném předplatném. To je užitečné, pokud chcete zahrnout data aplikace do dotazu protokolu Azure Monitor a dotazovat data napříč více aplikacemi v dotazu Application Insights.
+`app`Výraz se používá v Azure monitor dotazech k načtení dat z konkrétní Application Insights aplikace ve stejné skupině prostředků, v jiné skupině prostředků nebo jiném předplatném. To je užitečné, pokud chcete zahrnout data aplikace do dotazu protokolu Azure Monitor a dotazovat data napříč více aplikacemi v dotazu Application Insights.
 
-
+> [!IMPORTANT]
+> Výraz App () se nepoužívá, pokud používáte [prostředek Application Insights založený na pracovních prostorech](../app/create-workspace-resource.md) , protože data protokolu se ukládají v pracovním prostoru Log Analytics. Použijte výraz log () k zápisu dotazu, který obsahuje aplikaci ve více pracovních prostorech. Pro více aplikací ve stejném pracovním prostoru nepotřebujete dotaz mezi jednotlivými pracovními prostory.
 
 ## <a name="syntax"></a>Syntaxe
 
 `app(`*RID*`)`
 
 
-## <a name="arguments"></a>Argumenty
+## <a name="arguments"></a>Arguments
 
 - *Identifikátor*: aplikace identifikuje jednu z formátů v následující tabulce.
 
 | Identifikátor | Popis | Příklad
 |:---|:---|:---|
-| Název prostředku | Lidský čitelný název aplikace (neboli "název komponenty") | aplikace ("fabrikamapp") |
+| Název prostředku | Lidský čitelný název aplikace (označuje se také jako "název součásti") | aplikace ("fabrikamapp") |
 | Kvalifikovaný název | Úplný název aplikace ve formátu: "Subscription/resourceName/resourceName/název součásti" | aplikace (' AI-prototyp/Fabrikam/fabrikamapp ') |
 | ID | Identifikátor GUID aplikace | aplikace ("988ba129-363e-4415-8fe7-8cbab5447518") |
 | ID prostředku Azure | Identifikátor prostředku Azure |aplikace ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |

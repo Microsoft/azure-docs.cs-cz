@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f69069b0c62f1e96c16441e99fbadac45728743
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272899"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199438"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Povolit externí spolupráci B2B a spravovat, kdo může pozvat hosty
 
@@ -36,11 +36,9 @@ Ve výchozím nastavení mohou všichni uživatelé, včetně hostů, pozvat už
 ### <a name="to-configure-external-collaboration-settings"></a>Konfigurace nastavení externí spolupráce:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce tenanta.
-2. Vyberte **Azure Active Directory** > **Users** > **uživatelská nastavení**uživatelů.
-3. V části **externí uživatelé**vyberte **Spravovat nastavení externí spolupráce**.
-   > [!NOTE]
-   > K dispozici jsou také **externí nastavení spolupráce** ze stránky **organizačních vztahů** . V Azure Active Directory v části **Spravovat**použijte > **Nastavení** **vztahů organizace**.
-4. Na stránce **externí nastavení spolupráce** vyberte zásady, které chcete povolit.
+2. Vyberte **Azure Active Directory**.
+3. Vyberte **Nastavení organizačních vztahů**  >  **Settings** (nebo vyberte externí **identity**externí  >  **nastavení spolupráce**).
+6. Na stránce **externí nastavení spolupráce** vyberte zásady, které chcete povolit.
 
    ![Nastavení externí spolupráce](./media/delegate-invitations/control-who-to-invite.png)
 

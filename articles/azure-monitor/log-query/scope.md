@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2019
-ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 2840e5b8ff16d44f76aaafcf68264c65e4401ff7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249591"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199031"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Rozsah dotazu protokolu a časový rozsah ve Azure Monitor Log Analytics
 Když spustíte [dotaz protokolu](log-query-overview.md) v [Log Analytics Azure Portal](get-started-portal.md), sada dat vyhodnocených dotazem závisí na rozsahu a časovém rozsahu, který jste vybrali. Tento článek popisuje rozsah a časový rozsah a způsob, jakým můžete nastavit jednotlivé požadavky v závislosti na vašich požadavcích. Popisuje také chování různých typů oborů.
@@ -25,6 +25,9 @@ Obor je vždy zobrazen v levém horním rohu okna Log Analytics. Ikona označuje
 ![Rozsah](media/scope/scope.png)
 
 Rozsah je určen metodou, kterou použijete ke spuštění Log Analytics, a v některých případech můžete obor změnit kliknutím na něj. V následující tabulce jsou uvedeny různé typy použitého oboru a různé podrobnosti pro každou z nich.
+
+> [!IMPORTANT]
+> Pokud používáte APM 2,1, jsou aplikace Application Insights uloženy v pracovním prostoru Log Analytics se všemi ostatními daty protokolu a obor Application Insights není k dispozici. Pokud vyberete možnost **protokoly** z nabídky Application Insights, bude fungovat stejně jako ostatní obory **prostředků Azure** a k dispozici jsou jenom data, která tato aplikace v Application Insightsch tabulkách k dispozici.
 
 | Rozsah dotazu | Záznamy v oboru | Jak vybrat | Změna oboru |
 |:---|:---|:---|:---|

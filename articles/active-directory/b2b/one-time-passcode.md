@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac743a82405524efc16e16be015b61b9390bd05d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263371"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199484"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mailové ověřování heslem jednorázového hesla (Preview)
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak povolit jednorázové ověřování e-mailových he
 Tato funkce je aktuálně dostupná pro verzi Preview (viz možnost přihlašování [k verzi Preview](#opting-in-to-the-preview) níže). Po zobrazení verze Preview bude tato funkce ve výchozím nastavení zapnutá pro všechny klienty.
 
 > [!NOTE]
-> Jednorázovým uživatelům se musí přihlásit pomocí odkazu, který obsahuje kontext tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo `https://portal.azure.com/<tenant id>`nebo v případě ověřené domény `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Přímé odkazy na aplikace a prostředky fungují i tak dlouho, dokud budou zahrnovat kontext tenanta. Uživatelé typu Host se aktuálně nemohou přihlašovat pomocí koncových bodů, které nemají kontext tenanta. Například použití `https://myapps.microsoft.com`, `https://portal.azure.com`nebo společný koncový bod týmů bude mít za následek chybu. 
+> Jednorázovým uživatelům se musí přihlásit pomocí odkazu, který obsahuje kontext tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo nebo `https://portal.azure.com/<tenant id>` v případě ověřené domény `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` ). Přímé odkazy na aplikace a prostředky fungují i tak dlouho, dokud budou zahrnovat kontext tenanta. Uživatelé typu Host se aktuálně nemohou přihlašovat pomocí koncových bodů, které nemají kontext tenanta. Například použití `https://myapps.microsoft.com` , `https://portal.azure.com` nebo společný koncový bod týmů bude mít za následek chybu. 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Uživatelské prostředí pro uživatele typu Host pro jednorázové heslo
 Při jednorázovém ověřování pomocí hesla může uživatel typu Host uplatnit pozvánku kliknutím na přímý odkaz nebo pomocí e-mailu s pozvánkou. V obou případech zpráva v prohlížeči indikuje, že se kód pošle na e-mailovou adresu uživatele typu Host. Uživatel typu host vybere **Odeslat kód**:
@@ -52,11 +52,11 @@ Uživatel typu Host je teď ověřený a může zobrazit sdílený prostředek n
 Když uživatel typu Host uplatní pozvánku nebo použije odkaz na prostředek, který s nimi sdílí, obdrží jednorázové heslo, pokud:
 - Nemají účet Azure AD. 
 - Nemají účet Microsoft 
-- Tenant pro pozvání nevytvořil pro @gmail.com @googlemail.com uživatele Google Federation. 
+- Tenant pro pozvání nevytvořil pro uživatele Google Federation. @gmail.com @googlemail.com 
 
 V době pozvání není k dispozici žádný náznak, že uživatel, kterého Zvete, bude používat jednorázové ověřování pomocí hesla. Pokud se ale uživatel typu Host přihlásí, bude metoda jednorázového ověřování hesla záložní metodou, pokud nebude možné použít žádné jiné metody ověřování. 
 
-Můžete zobrazit uživatele typu Host, kteří se v Azure Portal ověřují pomocí jednorázových hesel, a to tak, že **Azure Active Directory** > **organizační vztahy** > **uživatele z jiných organizací**.
+Uživatele typu Host, kteří se v Azure Portal ověřují pomocí jednorázových hesel, můžete zobrazit tak, že **Azure Active Directory**  >  **uživatele**.
 
 ![Snímek obrazovky, který zobrazuje jednorázového uživatele se zdrojovou hodnotou JEDNORÁZOVého hesla](media/one-time-passcode/otp-users.png)
 
@@ -64,7 +64,7 @@ Můžete zobrazit uživatele typu Host, kteří se v Azure Portal ověřují pom
 > Když uživatel uplatňuje jednorázové heslo a později získá MSA, účet Azure AD nebo jiný federovaný účet, budou se i nadále ověřovat pomocí jednorázového hesla. Pokud chcete aktualizovat metodu ověřování, můžete odstranit svůj uživatelský účet hosta a znovu ho pozvat.
 
 ### <a name="example"></a>Příklad
-Uživatel alexdoe@gmail.com typu Host je pozván společnosti Fabrikam, která nemá nastavenu Google Federation. Alex nemá účet Microsoft. Obdrží pro ověřování jednorázové heslo.
+Uživatel typu host alexdoe@gmail.com je pozván společnosti Fabrikam, která nemá nastavenu Google Federation. Alex nemá účet Microsoft. Obdrží pro ověřování jednorázové heslo.
 
 ## <a name="opting-in-to-the-preview"></a>Přihlaste se k verzi Preview 
 Může to trvat několik minut, než se akce přihlášení projeví. Pak budou používat jenom nově pozvaní uživatelé, kteří splňují podmínky uvedené výše, k ověřování pomocí jednorázového hesla. Uživatelé typu Host, kteří dřív použili pozvánku, budou i nadále používat stejnou metodu ověřování.
@@ -72,8 +72,7 @@ Může to trvat několik minut, než se akce přihlášení projeví. Pak budou 
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>Výslovný souhlas s používáním portálu Azure AD
 1.  Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce Azure AD.
 2.  V navigačním podokně vyberte **Azure Active Directory**.
-3.  V části **Spravovat**vyberte **vztahy organizace**.
-4.  Vyberte **Nastavení**.
+3.  Vyberte **Nastavení organizačních vztahů**  >  **Settings** (nebo vyberte externí **identity**externí  >  **nastavení spolupráce**).
 5.  V části **Povolit jednorázové e-mailové heslo pro hosty (Preview)** vyberte **Ano**.
  
 ### <a name="to-opt-in-using-powershell"></a>Výslovný souhlas s používáním PowerShellu
@@ -139,8 +138,7 @@ Může to trvat několik minut, než se akce odsouhlasení projeví. Pokud vypne
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Vypnutí verze Preview pomocí portálu Azure AD
 1.  Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce Azure AD.
 2.  V navigačním podokně vyberte **Azure Active Directory**.
-3.  V části **Spravovat**vyberte **vztahy organizace**.
-4.  Vyberte **Nastavení**.
+3.  Vyberte **Nastavení organizačních vztahů**  >  **Settings** (nebo vyberte externí **identity**externí  >  **nastavení spolupráce**).
 5.  V části **Povolit jednorázové e-mailové heslo pro hosty (Preview)** vyberte **ne**.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Vypnutí verze Preview pomocí PowerShellu
