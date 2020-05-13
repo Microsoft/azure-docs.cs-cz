@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e1cf3905a34fdced878526cfcc55e6dd0a1a369f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: e87b6ee4739818e25ee069986e299f8205d44a2a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595245"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343299"
 ---
 Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Managed Disks a Azure SSD úrovně Premium disků.
 
@@ -257,32 +257,6 @@ Všechny oblasti Azure teď podporují SSD úrovně Standard disky.
 **Je Azure Backup k dispozici při použití standardního SSD?**
 Ano, Azure Backup je teď k dispozici.
 
-**Návody vytvořit SSD úrovně Standard disky?**
-SSD úrovně Standard disky můžete vytvořit pomocí šablon Azure Resource Manager, sady SDK, PowerShellu nebo rozhraní příkazového řádku. Níže jsou uvedeny parametry, které jsou potřeba v šabloně Správce prostředků k vytvoření SSD úrovně Standard disků:
-
-* *apiVersion* pro Microsoft. COMPUTE musí být nastavené jako `2018-04-01` (nebo novější).
-* Zadejte *managedDisk. storageAccountType* jako`StandardSSD_LRS`
-
-Následující příklad ukazuje oddíl *Properties. storageProfile. osDisk* pro virtuální počítač, který používá SSD úrovně Standard disky:
-
-```json
-"osDisk": {
-    "osType": "Windows",
-    "name": "myOsDisk",
-    "caching": "ReadWrite",
-    "createOption": "FromImage",
-    "managedDisk": {
-        "storageAccountType": "StandardSSD_LRS"
-    }
-}
-```
-
-Kompletní příklad vytvoření SSD úrovně Standard disku pomocí šablony najdete v tématu [Vytvoření virtuálního počítače z image Windows s datovými disky SSD úrovně Standard](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
-
-**Můžu převést existující disky na SSD úrovně Standard?**
-Ano, můžete. Přečtěte si téma [Převod úložiště Azure Managed disks z úrovně Standard na Premium a naopak](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) pro obecné pokyny k převodu Managed disks. Pomocí následující hodnoty můžete aktualizovat typ disku na SSD úrovně Standard.
-– AccountType StandardSSD_LRS
-
 **Jaká je výhoda použití SSD úrovně Standard disků místo HDD?**
 SSD úrovně Standard disky dodávají lepší latenci, konzistenci, dostupnost a spolehlivost v porovnání s disky HDD. Úlohy aplikací běží na SSD úrovně Standard mnohem plynule. Upozorňujeme, že SSD úrovně Premium disky jsou doporučeným řešením pro většinu produkčních úloh náročných na vstupně-výstupní operace.
 
@@ -332,9 +306,9 @@ Ano
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks a Šifrování služby Storage
 
-**Je šifrování služby Azure Storage ve výchozím nastavení povolené při vytváření spravovaného disku?**
+**Je šifrování na straně serveru ve výchozím nastavení povolené při vytváření spravovaného disku?**
 
-Ano.
+Ano. Managed Disks se šifrují pomocí šifrování na straně serveru s použitím klíčů spravovaných platformou. 
 
 **Je spouštěcí svazek ve výchozím nastavení zašifrovaný na spravovaném disku?**
 
@@ -342,30 +316,27 @@ Ano. Ve výchozím nastavení jsou všechny spravované disky zašifrované, vč
 
 **Kdo spravuje šifrovací klíče?**
 
-Microsoft spravuje šifrovací klíče.
+Spravované klíče platformy jsou spravované Microsoftem. Můžete také použít a spravovat vlastní klíče uložené v Azure Key Vault. 
 
-**Můžu zakázat Šifrování služby Storage pro moje spravované disky?**
+**Můžu zakázat šifrování na straně serveru pro moje spravované disky?**
 
 Ne.
 
-**Je Šifrování služby Storage k dispozici pouze v konkrétních oblastech?**
+**Je šifrování na straně serveru dostupné jenom v konkrétních oblastech?**
 
-Ne. Je k dispozici ve všech oblastech, kde jsou Managed Disks k dispozici. Managed Disks je k dispozici ve všech veřejných oblastech a Německu. Je dostupná i v Číně, ale jenom pro spravované klíče Microsoftu, ne pro spravované klíče zákazníka.
+Ne. Šifrování na straně serveru s klíči spravovanými platformou a zákazníkem jsou k dispozici ve všech oblastech, kde je Managed Disks k dispozici. 
 
-**Jak zjistím, jestli je můj spravovaný disk zašifrovaný?**
+**Podporuje Azure Site Recovery šifrování na straně serveru s klíčem spravovaným zákazníkem pro místní prostředí do Azure a pro scénáře zotavení po havárii z Azure do Azure?**
 
-Čas vytvoření spravovaného disku můžete zjistit z Azure Portal, Azure CLI a PowerShellu. Pokud je čas po 9. června 2017, je disk zašifrovaný.
+Ano. 
 
-**Jak můžu šifrovat stávající disky vytvořené před 10. června 2017?**
+**Je možné zálohovat Managed Disks šifrované pomocí šifrování na straně serveru s klíčem spravovaným zákazníkem pomocí služby Azure Backup?**
 
-Od 10. června 2017 se nová data zapsaná na existující spravované disky automaticky šifrují. Také plánujeme zašifrovat stávající data a na pozadí proběhne asynchronní šifrování. Pokud teď musíte šifrovat existující data, vytvořte kopii disku. Nové disky budou zašifrovány.
-
-* [Kopírování spravovaných disků pomocí Azure CLI](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
-* [Kopírování spravovaných disků pomocí prostředí PowerShell](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+Ano.
 
 **Jsou spravované snímky a obrázky zašifrované?**
 
-Ano. Všechny spravované snímky a image vytvořené po 9. června 2017 se automaticky šifrují. 
+Ano. Všechny spravované snímky a obrázky se zašifrují automaticky. 
 
 **Můžu převést virtuální počítače s nespravovanými disky, které se nacházejí v účtech úložiště, které jsou nebo byly předtím zašifrované na spravované disky?**
 
