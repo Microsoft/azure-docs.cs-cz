@@ -11,12 +11,13 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309200"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196394"
 ---
 # <a name="blocking-legacy-authentication"></a>Blokování starších verzí ověřování
  
@@ -31,10 +32,10 @@ V současné době většina všech neúspěšných pokusů o přihlášení poc
 
 Než budete moct v adresáři zablokovat starší verze ověřování, musíte nejdřív pochopit, jestli mají vaši uživatelé aplikace, které používají starší verze ověřování a jak ovlivňují celkový adresář. Protokoly přihlášení k Azure AD se dají použít k pochopení, jestli používáte starší verze ověřování.
 
-1. Přejděte do **Azure Portal** > **Azure Active Directory** Azure Active Directory> **přihlášení**.
-1. Pokud není zobrazený, klikněte na **sloupce** > **klientská aplikace**a přidejte sloupec **aplikace klienta** .
+1. Přejděte do **Azure Portal**   >  **Azure Active Directory**   >  **přihlášení**.
+1. Pokud není zobrazený, klikněte na **sloupce** **Client App**   >  **klientská aplikace**a přidejte sloupec aplikace klienta.
 1. Filtrovat podle **klientské aplikace**  > zajděte si uvedené možnosti pro **starší verze klientů ověřování** .
-1. Filtrovat podle **stavu** > **úspěch**. 
+1. Filtrovat podle **stavu**  >  **úspěch**. 
 1. V případě potřeby rozbalíte rozsah dat pomocí filtru **data** .
 
 Filtrování zobrazí jenom úspěšné pokusy o přihlášení, které udělaly vybrané starší protokoly ověřování. Kliknutím na každý jednotlivý pokus o přihlášení zobrazíte další podrobnosti. Sloupec klientské aplikace nebo pole klientské aplikace na kartě Základní informace po výběru jednotlivého řádku dat určuje, který starší verze ověřovacího protokolu se použil. Tyto protokoly určují, kteří uživatelé pořád závisejí na starší verzi ověřování a které aplikace používají starší protokoly k provádění požadavků na ověření. Pro uživatele, kteří se v těchto protokolech nezobrazují a které se potvrzují, že nepoužívají starší verze ověřování, implementujte zásady podmíněného přístupu nebo zapněte zásady standardních hodnot: zablokuje starší ověřování jenom pro tyto uživatele.
@@ -49,8 +50,8 @@ Tato část obsahuje podrobný přehled o tom, jak aktualizovat prostředí na m
 
 Prvním krokem při povolování moderního ověřování je zajištění, že váš adresář podporuje moderní ověřování. Moderní ověřování je ve výchozím nastavení povolené pro adresáře vytvořené od 1. srpna 2017. Pokud byl adresář vytvořen před tímto datem, budete muset ručně povolit moderní ověřování pro svůj adresář pomocí následujících kroků:
 
-1. Zkontrolujte, jestli váš adresář už podporuje moderní ověřování, a to `Get-CsOAuthConfiguration` spuštěním z [online modulu PowerShellu pro Skype pro firmy](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
-1. Pokud váš příkaz vrátí prázdnou `OAuthServers` vlastnost, je moderní ověřování zakázané. Aktualizujte nastavení tak, aby umožňovalo `Set-CsOAuthConfiguration`moderní ověřování pomocí. Pokud vaše `OAuthServers` vlastnost obsahuje položku, můžete začít.
+1. Zkontrolujte, jestli váš adresář už podporuje moderní ověřování, a to spuštěním  `Get-CsOAuthConfiguration`   z [online modulu PowerShellu pro Skype pro firmy](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
+1. Pokud váš příkaz vrátí prázdnou  `OAuthServers`   vlastnost, je moderní ověřování zakázané. Aktualizujte nastavení tak, aby umožňovalo moderní ověřování pomocí  `Set-CsOAuthConfiguration` . Pokud vaše  `OAuthServers`   vlastnost obsahuje položku, můžete začít.
 
 Než budete pokračovat, nezapomeňte tento krok dokončit. Je důležité, abyste nejdřív změnili konfigurace adresáře, protože určují, který protokol budou používat všichni klienti Office. I když používáte klienty Office, kteří podporují moderní ověřování, budou ve výchozím nastavení používat starší protokoly, pokud je ve vašem adresáři zakázané moderní ověřování.
 
@@ -58,7 +59,7 @@ Než budete pokračovat, nezapomeňte tento krok dokončit. Je důležité, abys
 
 Jakmile povolíte moderní ověřování v adresáři, můžete začít aktualizovat aplikace tím, že povolíte moderní ověřování pro klienty Office. Klienti Office 2016 nebo novější podporují moderní ověřování ve výchozím nastavení. Nejsou nutné žádné další kroky.
 
-Pokud používáte klienty se systémem Office 2013 nebo starší verze, doporučujeme upgradovat na sadu Office 2016 nebo novější. I po dokončení předchozího kroku povolení moderního ověřování ve vašem adresáři budou starší aplikace Office dál používat starší protokoly ověřování. Pokud používáte klienty Office 2013 a nemůžete hned upgradovat na Office 2016 nebo novější, postupujte podle kroků v následujícím článku a [Povolte moderní ověřování pro Office 2013 na zařízeních s Windows](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication). Aby bylo možné chránit váš účet i v případě, že používáte starší verzi ověřování, doporučujeme v adresáři používat silná hesla. Podívejte se na  [ochranu heslem Azure AD](../authentication/concept-password-ban-bad.md), abyste v adresáři zakazují slabá hesla.
+Pokud používáte klienty se systémem Office 2013 nebo starší verze, doporučujeme upgradovat na sadu Office 2016 nebo novější. I po dokončení předchozího kroku povolení moderního ověřování ve vašem adresáři budou starší aplikace Office dál používat starší protokoly ověřování. Pokud používáte klienty Office 2013 a nemůžete hned upgradovat na Office 2016 nebo novější, postupujte podle kroků v následujícím článku a [Povolte moderní ověřování pro Office 2013 na zařízeních s Windows](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication). Aby bylo možné chránit váš účet i v případě, že používáte starší verzi ověřování, doporučujeme v adresáři používat silná hesla. Podívejte se na [ochranu heslem Azure AD](../authentication/concept-password-ban-bad.md)   , abyste v adresáři zakazují slabá hesla.
 
 Office 2010 nepodporuje moderní ověřování. Budete muset upgradovat všechny uživatele pomocí Office 2010 na novější verzi Office. Doporučujeme upgradovat na Office 2016 nebo novější, protože ve výchozím nastavení blokuje starší verze ověřování.
 

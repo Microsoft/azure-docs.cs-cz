@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 555ba9a55a135bd38dcc46e1ff7a3d751083d47e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81271688"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196414"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Běžné problémy se dvěma faktory ověřováním a vaším pracovním nebo školním účtem
 
@@ -32,7 +32,7 @@ Existují některé běžné problémy se dvěma faktory ověřování, které s
 >[!Important]
 >Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat prostředí služby Azure AD v [dokumentaci k Azure AD](https://docs.microsoft.com/azure/active-directory).
 >
->Tento obsah je taky určený jenom pro použití s vaším pracovním nebo školním účtem, což je účet, který vám poskytla vaše organizace (například alain@contoso.com). Pokud máte problémy se dvojúrovňovém ověřováním a osobními účet Microsoft, což je účet, který jste si sami nastavili (například danielle@outlook.com), přečtěte si téma [Zapnutí nebo vypnutí dvojúrovňové ověřování pro vaši účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Tento obsah je taky určený jenom pro použití s vaším pracovním nebo školním účtem, což je účet, který vám poskytla vaše organizace (například alain@contoso.com ). Pokud máte problémy se dvojúrovňovém ověřováním a osobními účet Microsoft, což je účet, který jste si sami nastavili (například danielle@outlook.com ), přečtěte si téma [Zapnutí nebo vypnutí dvojúrovňové ověřování pro vaši účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>Nemám mi své mobilní zařízení
 
@@ -99,9 +99,9 @@ Hesla aplikací nahrazují normální heslo pro starší aplikace klasické prac
 
 ## <a name="i-cant-turn-two-factor-verification-off"></a>Nejde mi zapnout dvojúrovňové ověřování po dvou faktorech
 
-Pokud používáte dvojúrovňové ověřování se svým pracovním nebo školním účtem (například alain@contoso.com), pravděpodobně to znamená, že vaše organizace se rozhodla použít tuto přidanou funkci zabezpečení. Vzhledem k tomu, že vaše organizace rozhodla použít tuto funkci, neexistuje způsob, jak ji individuálně vypnout. Pokud ale používáte dvojúrovňové ověřování pomocí osobního účtu, například alain@outlook.com, máte možnost zapnout nebo vypnout funkci. Pokyny k řízení dvojúrovňové ověřování pro osobní účty najdete v tématu [Zapnutí nebo vypnutí dvojúrovňového ověřování pro vaše účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+Pokud používáte dvojúrovňové ověřování se svým pracovním nebo školním účtem (například alain@contoso.com ), pravděpodobně to znamená, že vaše organizace se rozhodla použít tuto přidanou funkci zabezpečení. Vzhledem k tomu, že vaše organizace rozhodla použít tuto funkci, neexistuje způsob, jak ji individuálně vypnout. Pokud ale používáte dvojúrovňové ověřování pomocí osobního účtu, například alain@outlook.com , máte možnost zapnout nebo vypnout funkci. Pokyny k řízení dvojúrovňové ověřování pro osobní účty najdete v tématu [Zapnutí nebo vypnutí dvojúrovňového ověřování pro vaše účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
-Pokud nemůžete zapnout dvojúrovňové ověřování, může to být také kvůli výchozím hodnotám zabezpečení, které byly použity na úrovni organizace. Další informace o výchozím nastavení zabezpečení najdete v tématu [co jsou Security defulta?](../fundamentals/concept-fundamentals-security-defaults.md)
+Pokud nemůžete zapnout dvojúrovňové ověřování, může to být také kvůli výchozím hodnotám zabezpečení, které byly použity na úrovni organizace. Další informace o výchozím nastavení zabezpečení najdete v tématu [co jsou výchozí nastavení zabezpečení?](../fundamentals/concept-fundamentals-security-defaults.md)
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Nenašli jsme odpověď na můj problém
 

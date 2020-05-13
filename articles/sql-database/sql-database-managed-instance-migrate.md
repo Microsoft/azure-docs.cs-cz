@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 1af0161edb0f833cdd14d8157e6edd9644e21467
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeee7558aeeb0c1a3de291abc66578d7d955d842
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100273"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196183"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL Server do Azure SQL Database spravované instance
 
@@ -43,9 +43,7 @@ V případě vysoké úrovně proces migrace databáze vypadá takto:
 
 Nejdřív Zjistěte, jestli je spravovaná instance kompatibilní s požadavky na databázi vaší aplikace. Možnost nasazení spravované instance je navržená tak, aby poskytovala snadnou migraci pomocí funkce zvednutí a posunutí pro většinu stávajících aplikací, které používají SQL Server místně nebo na virtuálních počítačích. Někdy ale můžete vyžadovat funkce nebo možnosti, které ještě nejsou podporované, a náklady na implementaci alternativního řešení jsou moc vysoké.
 
-Použijte [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) k detekci potenciálních problémů s kompatibilitou, které mají vliv na funkčnost databáze v Azure SQL Database. DMA zatím nepodporuje spravovanou instanci jako cíl migrace, ale doporučuje se spustit posouzení proti Azure SQL Database a pečlivě zkontrolovat seznam hlášených problémů s kompatibilitou funkcí a problémy s kompatibilitou v dokumentaci k produktu. Podívejte se na téma [Azure SQL Database funkce](sql-database-features.md) ke kontrole. byly zjištěny blokující problémy, které nejsou blokovány ve spravované instanci, protože většina potíží blokujících brání migraci Azure SQL Database byla odebrána se spravovanou instancí. Například funkce, jako jsou databázové dotazy, mezidatabázové transakce v rámci stejné instance, odkazovaný server na jiné zdroje SQL, CLR, globální dočasné tabulky, zobrazení na úrovni instance, Service Broker a podobně, jsou k dispozici ve spravovaných instancích.
-
-Pokud se u možnosti nasazení Managed instance neodstraní některé hlášené problémy, možná budete muset vzít v úvahu alternativní možnost, například [SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Zde je několik příkladů:
+Použijte [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) k detekci potenciálních problémů s kompatibilitou, které mají vliv na funkčnost databáze v Azure SQL Database. Pokud dojde k nějakým chybám blokujícím blokování, možná budete muset vzít v úvahu jinou možnost, například [SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Zde je několik příkladů:
 
 - Pokud vyžadujete přímý přístup k operačnímu systému nebo systému souborů, například k instalaci jiných agentů nebo vlastních agentů na stejný virtuální počítač s SQL Server.
 - Pokud máte striktní závislost na funkcích, které stále nejsou podporované, jako jsou FileStream/soubor, základ a transakce mezi instancemi.
@@ -53,6 +51,7 @@ Pokud se u možnosti nasazení Managed instance neodstraní některé hlášené
 - Pokud jsou vaše požadavky na výpočetní výkon mnohem nižší, než jsou možnosti spravované instance (jedna vCore, instance) a konsolidace databází přijatelné.
 
 Pokud jste vyřešili všechny identifikované bloky migrace a budete pokračovat v migraci do spravované instance, pamatujte na to, že některé změny mohou ovlivnit výkon úlohy:
+
 - Povinný model úplného obnovení a pravidelný plán automatického zálohování může mít vliv na výkon úloh nebo údržby/ETL, pokud jste pravidelně používali jednoduchý nebo hromadně protokolovaný model nebo zastavili zálohování na vyžádání.
 - Různé konfigurace na úrovni serveru nebo databáze, jako jsou příznaky trasování nebo úrovně kompatibility
 - Nové funkce, které používáte jako transparentní šifrování databáze (TDE) nebo skupiny automatického převzetí služeb při selhání, můžou mít vliv na využití CPU a vstupně-výstupních operací.

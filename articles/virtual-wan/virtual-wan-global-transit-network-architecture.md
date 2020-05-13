@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 19eaaa1ac442a04799bfa8d8d495b9c7dd393e5a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 72a96e04d308dbb2774d5b8f8aa909ab81bebee3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928274"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195667"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 
@@ -145,10 +145,10 @@ Zabezpečený průjezd typu VNet-to-VNet umožňuje, aby se virtuální sítě v
 
 ### <a name="vnet-to-internet-or-third-party-security-service-i"></a>Síť VNet-to-Internet nebo služba zabezpečení třetích stran (i)
 
-Zabezpečený přenos typu VNet-to-Internet nebo třetí strany umožňuje virtuální sítě připojit se k Internetu nebo k podporovaným bezpečnostním službám třetích stran prostřednictvím Azure Firewall ve virtuálním centru WAN.
+Připojení typu VNet-to-Internet umožňuje virtuální sítě připojit se k Internetu prostřednictvím Azure Firewall ve virtuálním centru WAN. Provoz do Internetu prostřednictvím podporovaných služeb zabezpečení třetích stran neprovádí tok prostřednictvím Azure Firewall. Pomocí správce Azure Firewall můžete nakonfigurovat cestu VNet-to-Internet prostřednictvím podporované služby zabezpečení třetí strany.  
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Služba zabezpečení z více stran na Internet nebo pro službu zabezpečení třetí strany (j)
-Zabezpečený přenos z pobočky na Internet nebo z jiného dodavatele umožňuje větvím připojit se k Internetu nebo k podporovaným bezpečnostním službám třetích stran prostřednictvím Azure Firewall ve virtuálním centru WAN.
+Síť s připojením k Internetu umožňuje větví připojit se k Internetu prostřednictvím Azure Firewall ve virtuálním centru WAN. Provoz do Internetu prostřednictvím podporovaných služeb zabezpečení třetích stran neprovádí tok prostřednictvím Azure Firewall. Pomocí správce Azure Firewall můžete nakonfigurovat cestu k síti Internet prostřednictvím podporované služby zabezpečení třetí strany. 
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Návody povolit výchozí trasu (0.0.0.0/0) v zabezpečeném virtuálním centru
 

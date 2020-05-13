@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617876"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196543"
 ---
 # <a name="network-requirements"></a>Síťové požadavky
 
@@ -20,7 +20,7 @@ Stabilní a nízká latence síťového připojení k datovému centru Azure je 
 
 Přesné požadavky sítě závisí na konkrétním případu použití, například na počtu a četnosti úprav v grafu vzdálené scény a na složitosti zobrazeného zobrazení, ale existuje několik pokynů, jak zajistit, aby vaše prostředí bylo co nejužitečnější:
 
-* Připojení k Internetu vyžaduje, aby pro jednu relaci uživatele vzdáleného vykreslování Azure byla konzistentní aspoň **50 MB/s** a až **10 MB/s** . to znamená, že v síti nedochází k žádnému konkurenčnímu provozu. Pro lepší prostředí doporučujeme vyšší sazby. U více uživatelů ve stejné síti se tyto požadavky budou škálovat odpovídajícím způsobem.
+* Připojení k Internetu musí podporovat aspoň **40 MB/s** a **5 MB/s** pro jednu relaci uživatele vzdáleného vykreslování Azure za předpokladu, že v síti nedochází k žádnému konkurenčnímu provozu. Pro lepší prostředí doporučujeme vyšší sazby. U více uživatelů ve stejné síti se tyto požadavky budou škálovat odpovídajícím způsobem.
 * Použití **pásma Wi-Fi v 5 GHz** obvykle vytvoří lepší výsledky než pásmo Wi-Fi 2,4 GHz, ale obě by měly fungovat.
 * Pokud jsou poblíž jiné sítě Wi-Fi, vyhněte se použití kanálů Wi-Fi používaných v těchto dalších sítích. Pomocí skenovacích nástrojů sítě, jako je [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) , můžete ověřit, zda kanály, které vaše síť Wi-Fi používá, jsou z konkurenčního provozu zdarma.
 * **Používejte výhradně opakované předávání Wi-Fi** ani přesměrování sítě LAN přes elektrickou síť.

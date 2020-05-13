@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 71426d131cdd46b176c387a31e3dc2ca66ae3761
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871157"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195251"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Použití klíčů spravovaných zákazníkem v Azure Key Vault pro službu import/export
 
@@ -99,9 +99,10 @@ Pokud obdržíte nějaké chyby týkající se vašeho spravovaného klíče zá
 
 | Kód chyby     |Podrobnosti     | Obnovitelné?    |
 |----------------|------------|-----------------|
-| CmkErrorAccessRevoked | Použili jste zákazníkem spravovaný klíč, ale přístup k klíči je momentálně odvolaný. Další informace najdete v tématu Jak [Povolit přístup k klíčům](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).                                                      | Ano, zjistit, zda: <ol><li>Trezor klíčů má stále instalační soubor MSI v zásadách přístupu.</li><li>Zásady přístupu poskytují oprávnění k získání, zabalení a rozbalení.</li><li>Pokud je Trezor klíčů ve virtuální síti za bránou firewall, ověřte, jestli je povolená možnost **Povolit důvěryhodné služby společnosti Microsoft** .</li></ol>                                                                                            |
-| CmkErrorKeyDisabled      | Byl použit klíč spravovaný zákazníkem, ale klíč je zakázán. Další informace najdete v tématu Jak [klíč povolit](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate).                                                                             | Ano, povolením verze klíče     |
-| CmkErrorKeyNotFound      | Použili jste zákazníkem spravovaný klíč, ale nemůžete najít Trezor klíčů přidružený ke klíči.<br>Pokud jste odstranili Trezor klíčů, nemůžete obnovit spravovaný klíč zákazníka.  Pokud jste tento trezor klíčů migrovali do jiného tenanta, přečtěte si téma [Změna ID tenanta trezoru klíčů po přesunu předplatného](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix). |   Pokud jste odstranili Trezor klíčů:<ol><li>Ano, pokud je v době trvání ochrany vyprázdnění, postupujte podle kroků v části [obnovení trezoru klíčů](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault).</li><li>Ne, pokud je mimo dobu trvání ochrany vyprázdnění.</li></ol><br>V opačném případě, pokud Trezor klíčů prošl při migraci tenanta, můžete ho obnovit pomocí jednoho z následujících kroků: <ol><li>Obnovte Trezor klíčů zpátky na starého tenanta.</li><li>Nastavte `Identity = None` a pak nastavte hodnotu zpět na `Identity = SystemAssigned`. Tím se po vytvoření nové identity odstraní a znovu vytvoří identita. Povolte `Get`, `Wrap`a `Unwrap` oprávnění k nové identitě v zásadách přístupu trezoru klíčů.</li></ol>|
+| CmkErrorAccessRevoked | Přístup ke spravovanému klíči zákazníka je odvolán.                                                       | Ano, zjistit, zda: <ol><li>Trezor klíčů má stále instalační soubor MSI v zásadách přístupu.</li><li>Zásady přístupu mají povolené oprávnění získat, zalamovat a zrušit zalomení.</li><li>Pokud je Trezor klíčů ve virtuální síti za bránou firewall, ověřte, jestli je povolená možnost **Povolit důvěryhodné služby společnosti Microsoft** .</li><li>Ověřte, zda byl soubor MSI prostředku úlohy obnoven na `None` používání rozhraní API.<br>Pokud ano, pak nastavte hodnotu zpět na `Identity = SystemAssigned` . Tím se znovu vytvoří identita prostředku úlohy.<br>Po vytvoření nové identity, povolení `Get` , `Wrap` a `Unwrap` oprávnění k nové identitě v zásadách přístupu trezoru klíčů</li></ol>                                                                                            |
+| CmkErrorKeyDisabled      | Spravovaný klíč zákazníka je zakázán.                                         | Ano, povolením verze klíče     |
+| CmkErrorKeyNotFound      | Nepovedlo se najít spravovaný klíč zákazníka. | Ano, pokud byl klíč odstraněn, ale je stále v rámci doby trvání vyprázdnění, pomocí [odebrání klíče v trezoru klíčů](https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval).<br>Ostatních <ol><li>Ano, pokud má zákazník klíč zálohovaný a obnoví ho.</li><li>Ne, jinak.</li></ol>
+| CmkErrorVaultNotFound |Nejde najít Trezor klíčů spravovaného klíče zákazníka. |   Pokud byl Trezor klíčů odstraněn:<ol><li>Ano, pokud je v době trvání ochrany vyprázdnění, postupujte podle kroků v části [obnovení trezoru klíčů](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault).</li><li>Ne, pokud je mimo dobu trvání ochrany vyprázdnění.</li></ol><br>V opačném případě, pokud byl Trezor klíčů migrován do jiného tenanta, je možné ho obnovit pomocí jednoho z následujících kroků:<ol><li>Obnovte Trezor klíčů zpátky na starého tenanta.</li><li>Nastavte `Identity = None` a pak nastavte hodnotu zpět na `Identity = SystemAssigned` . Tím se po vytvoření nové identity odstraní a znovu vytvoří identita. Povolte `Get` , `Wrap` a `Unwrap` oprávnění k nové identitě v zásadách přístupu trezoru klíčů.</li></ol>|
 
 ## <a name="next-steps"></a>Další kroky
 

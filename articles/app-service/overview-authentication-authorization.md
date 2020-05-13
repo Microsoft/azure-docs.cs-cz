@@ -5,15 +5,13 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 04/15/2020
 ms.reviewer: mahender
-ms.custom:
-- seodec18
-- fasttrack-edit
-ms.openlocfilehash: a4ceed0d897f069a7895a3eb6b10c327566afbe5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, fasttrack-edit, has-adal-ref
+ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457854"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196436"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Ověřování a autorizace v Azure App Service a Azure Functions
 
@@ -52,7 +50,7 @@ Modul se spouští odděleně od kódu aplikace a je nakonfigurovaný pomocí na
 
 Pro všechny jazykové architektury App Service vytvoří deklarace v příchozím tokenu (ať už jsou z ověřeného koncového uživatele nebo klientské aplikace), a to tak, že je vloží do hlaviček požadavku. Pro App Service aplikace ASP.NET 4,6 naplní [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) deklarací identity ověřeného uživatele, takže můžete postupovat podle standardního vzoru kódu .NET, včetně `[Authorize]` atributu. Podobně pro aplikace PHP App Service naplní `_SERVER['REMOTE_USER']` proměnnou. Pro aplikace Java jsou deklarace identity [dostupné z servlet Tomcat](containers/configure-language-java.md#authenticate-users-easy-auth).
 
-Pro [Azure Functions](../azure-functions/functions-overview.md) `ClaimsPrincipal.Current` není vyplněno pro kód .NET, ale stále můžete najít deklarace identity uživatelů v hlavičce požadavku nebo získat `ClaimsPrincipal` objekt z kontextu požadavku nebo dokonce prostřednictvím parametru vazby. Další informace najdete v tématu [Working with identity klientů](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
+Pro [Azure Functions](../azure-functions/functions-overview.md)není `ClaimsPrincipal.Current` vyplněno pro kód .NET, ale stále můžete najít deklarace identity uživatelů v hlavičce požadavku nebo získat `ClaimsPrincipal` objekt z kontextu požadavku nebo dokonce prostřednictvím parametru vazby. Další informace najdete v tématu [Working with identity klientů](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
 
 Další informace najdete v tématu [přístup k deklaracím uživatelů](app-service-authentication-how-to.md#access-user-claims).
 
@@ -71,7 +69,7 @@ Pokud nepotřebujete v aplikaci pracovat s tokeny, můžete úložiště tokenů
 
 ### <a name="logging-and-tracing"></a>Protokolování a trasování
 
-Pokud [povolíte protokolování aplikací](troubleshoot-diagnostic-logs.md), zobrazí se přímo v souborech protokolu trasování pro ověřování a autorizaci. Pokud se zobrazí chyba ověřování, kterou jste neočekávali, můžete pohodlně vyhledat všechny podrobnosti, a to tak, že budete hledat v existujících protokolech aplikací. Pokud povolíte [trasování chybných požadavků](troubleshoot-diagnostic-logs.md), vidíte přesně to, jakou roli se modul ověřování a autorizace mohl přehrát v neúspěšném požadavku. V protokolech trasování vyhledejte odkazy na modul s názvem `EasyAuthModule_32/64`. 
+Pokud [povolíte protokolování aplikací](troubleshoot-diagnostic-logs.md), zobrazí se přímo v souborech protokolu trasování pro ověřování a autorizaci. Pokud se zobrazí chyba ověřování, kterou jste neočekávali, můžete pohodlně vyhledat všechny podrobnosti, a to tak, že budete hledat v existujících protokolech aplikací. Pokud povolíte [trasování chybných požadavků](troubleshoot-diagnostic-logs.md), vidíte přesně to, jakou roli se modul ověřování a autorizace mohl přehrát v neúspěšném požadavku. V protokolech trasování vyhledejte odkazy na modul s názvem `EasyAuthModule_32/64` . 
 
 ## <a name="identity-providers"></a>Zprostředkovatelé identit
 
@@ -102,12 +100,12 @@ V následující tabulce jsou uvedené kroky toku ověřování.
 
 | Krok | Bez sady Provider SDK | Se sadou SDK pro poskytovatele |
 | - | - | - |
-| 1. podepsat uživatele | Přesměrovává klienta na `/.auth/login/<provider>`. | Kód klienta podepisuje uživatele přímo se sadou SDK pro poskytovatele a přijímá ověřovací token. Informace najdete v dokumentaci k poskytovateli. |
-| 2. po ověření | Zprostředkovatel přesměrovává klienta na `/.auth/login/<provider>/callback`. | [Token příspěvků klientských kódů od poskytovatele](app-service-authentication-how-to.md#validate-tokens-from-providers) k `/.auth/login/<provider>` ověření. |
+| 1. podepsat uživatele | Přesměrovává klienta na `/.auth/login/<provider>` . | Kód klienta podepisuje uživatele přímo se sadou SDK pro poskytovatele a přijímá ověřovací token. Informace najdete v dokumentaci k poskytovateli. |
+| 2. po ověření | Zprostředkovatel přesměrovává klienta na `/.auth/login/<provider>/callback` . | [Token příspěvků klientských kódů od poskytovatele](app-service-authentication-how-to.md#validate-tokens-from-providers) k `/.auth/login/<provider>` ověření. |
 | 3. vytvoření ověřené relace | App Service přidá ověřený soubor cookie pro odpověď. | App Service vrátí do klientského kódu svůj vlastní ověřovací token. |
-| 4. zajišťovat ověřený obsah | Klient zahrnuje ověřovací soubor cookie v následných požadavcích (automaticky zpracovávaných prohlížečem). | Klientský kód prezentuje ověřovací token `X-ZUMO-AUTH` v hlavičce (automaticky se zpracovává Mobile Apps klientské sady SDK). |
+| 4. zajišťovat ověřený obsah | Klient zahrnuje ověřovací soubor cookie v následných požadavcích (automaticky zpracovávaných prohlížečem). | Klientský kód prezentuje ověřovací token v `X-ZUMO-AUTH` hlavičce (automaticky se zpracovává Mobile Apps klientské sady SDK). |
 
-Pro klientské prohlížeče App Service může automaticky směrovat všechny neověřené uživatele na `/.auth/login/<provider>`. Můžete taky prezentovat uživatele s jedním nebo více `/.auth/login/<provider>` odkazy pro přihlášení k aplikaci pomocí poskytovatele podle vlastního výběru.
+Pro klientské prohlížeče App Service může automaticky směrovat všechny neověřené uživatele na `/.auth/login/<provider>` . Můžete taky prezentovat uživatele s jedním nebo více `/.auth/login/<provider>` odkazy pro přihlášení k aplikaci pomocí poskytovatele podle vlastního výběru.
 
 <a name="authorization"></a>
 
@@ -127,7 +125,7 @@ Tato možnost nabízí větší flexibilitu při zpracování anonymních požad
 
 ### <a name="allow-only-authenticated-requests"></a>Povolení pouze ověřených požadavků
 
-Tato možnost se **přihlásí pomocí \<>zprostředkovatele **. App Service přesměruje všechny anonymní požadavky na `/.auth/login/<provider>` poskytovatele, kterého zvolíte. Pokud anonymní požadavek pochází z nativní mobilní aplikace, vrácená odpověď je `HTTP 401 Unauthorized`.
+Tato možnost se **přihlásí pomocí \<>zprostředkovatele **. App Service přesměruje všechny anonymní požadavky na `/.auth/login/<provider>` poskytovatele, kterého zvolíte. Pokud anonymní požadavek pochází z nativní mobilní aplikace, vrácená odpověď je `HTTP 401 Unauthorized` .
 
 Pomocí této možnosti nemusíte v aplikaci psát žádný ověřovací kód. Přesnější autorizaci, například autorizaci specifickou pro role, je možné zpracovat kontrolou deklarací identity uživatele (viz [přístup k deklaracím uživatelů](app-service-authentication-how-to.md#access-user-claims)).
 
@@ -142,9 +140,9 @@ Pomocí této možnosti nemusíte v aplikaci psát žádný ověřovací kód. P
 
 [Kurz: ověřování a autorizace uživatelů na konci Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
 [Kurz: ověřování a autorizace uživatelů na konci Azure App Service pro Linux](containers/tutorial-auth-aad.md)  
-[Přizpůsobení ověřování a autorizace v App Service](app-service-authentication-how-to.md)
-[integrace .NET Core pro Azure AppService EasyAuth (třetí strana)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
-[získávání Azure App Service ověřování v práci s .NET Core (třetí strana)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+[Přizpůsobení ověřování a autorizace v App Service](app-service-authentication-how-to.md) 
+ [Integrace .NET Core pro Azure AppService EasyAuth (třetí strana)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
+ [Získání Azure App Service ověřování v práci s .NET Core (třetí strana)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 Návody pro konkrétního poskytovatele:
 

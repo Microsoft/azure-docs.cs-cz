@@ -3,18 +3,18 @@ title: Úložiště centrálních tajných kódů Azure Service Fabric
 description: Tento článek popisuje, jak používat úložiště centrálních tajných kódů v Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770410"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197770"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Úložiště centrálních tajných kódů v Azure Service Fabric 
 Tento článek popisuje, jak v Azure Service Fabric použít centrální úložiště tajných kódů (CSS) k vytváření tajných kódů v Service Fabricch aplikacích. CSS je místní mezipaměť úložiště tajných klíčů, která uchovává citlivá data, například heslo, tokeny a klíče, zašifrované v paměti.
 
 ## <a name="enable-central-secrets-store"></a>Povolit úložiště centrálních tajných kódů
-Přidejte následující skript do konfigurace clusteru v části `fabricSettings` pro povolení šablon stylů CSS. Pro šablony stylů CSS doporučujeme použít jiný certifikát než certifikát clusteru. Ujistěte se, že je šifrovací certifikát nainstalovaný na všech uzlech `NetworkService` a má oprávnění ke čtení pro privátní klíč certifikátu.
+Přidejte následující skript do konfigurace clusteru v části `fabricSettings` pro povolení šablon stylů CSS. Pro šablony stylů CSS doporučujeme použít jiný certifikát než certifikát clusteru. Ujistěte se, že je šifrovací certifikát nainstalovaný na všech uzlech a `NetworkService` má oprávnění ke čtení pro privátní klíč certifikátu.
   ```json
     "fabricSettings": 
     [
@@ -28,7 +28,7 @@ Přidejte následující skript do konfigurace clusteru v části `fabricSetting
                 },
                 {
                     "name":  "MinReplicaSetSize",
-                    "value":  "3"
+                    "value":  "1"
                 },
                 {
                     "name":  "TargetReplicaSetSize",
@@ -51,7 +51,7 @@ Tajný prostředek můžete vytvořit pomocí REST API.
   > [!NOTE] 
   > Pokud cluster používá ověřování systému Windows, je žádost REST odeslána přes nezabezpečený kanál HTTP. Doporučujeme použít cluster se systémem x509 se zabezpečenými koncovými body.
 
-Pokud chcete vytvořit `supersecret` prostředek tajného kódu pomocí REST API, udělejte požadavek PUT na `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`. K vytvoření tajného prostředku potřebujete certifikát clusteru nebo klientský certifikát správce.
+Pokud chcete vytvořit `supersecret` prostředek tajného kódu pomocí REST API, udělejte požadavek PUT na `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview` . K vytvoření tajného prostředku potřebujete certifikát clusteru nebo klientský certifikát správce.
 
 ```powershell
 $json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
@@ -73,7 +73,7 @@ Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -U
 
 Při použití tajného klíče ve vaší aplikaci Service Fabric postupujte podle těchto kroků.
 
-1. Přidejte do souboru **Settings. XML** část s následujícím fragmentem kódu. Všimněte si, že hodnota je ve formátu {`secretname:version`}.
+1. Přidejte do souboru **Settings. XML** část s následujícím fragmentem kódu. Všimněte si, že hodnota je ve formátu { `secretname:version` }.
 
    ```xml
      <Section Name="testsecrets">
@@ -94,11 +94,11 @@ Při použití tajného klíče ve vaší aplikaci Service Fabric postupujte pod
      </ServiceManifestImport>
    ```
 
-   Proměnná `SecretPath` prostředí bude ukazovat na adresář, ve kterém jsou uloženy všechny tajné kódy. Každý parametr uvedený v `testsecrets` oddílu je uložen v samostatném souboru. Aplikace teď může tajný klíč použít následujícím způsobem:
+   Proměnná prostředí `SecretPath` bude ukazovat na adresář, ve kterém jsou uloženy všechny tajné kódy. Každý parametr uvedený v `testsecrets` oddílu je uložen v samostatném souboru. Aplikace teď může tajný klíč použít následujícím způsobem:
    ```C#
    secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
    ```
-1. Připojte tajné klíče ke kontejneru. Jediná změna nutná k zpřístupnění tajných kódů uvnitř kontejneru je `specify` bod připojení v. `<ConfigPackage>`
+1. Připojte tajné klíče ke kontejneru. Jediná změna nutná k zpřístupnění tajných kódů uvnitř kontejneru je `specify` bod připojení v `<ConfigPackage>` .
 Následující fragment kódu je upravený **souboru ApplicationManifest. XML**.  
 
    ```xml
@@ -117,7 +117,7 @@ Následující fragment kódu je upravený **souboru ApplicationManifest. XML**.
    ```
    Tajné kódy jsou k dispozici pod přípojným bodem v kontejneru.
 
-1. Můžete vytvořit vazby tajného kódu k proměnné prostředí procesu zadáním `Type='SecretsStoreRef`. Následující fragment kódu je příkladem vytvoření `supersecret` vazby verze `ver1` k proměnné `MySuperSecret` prostředí v **souboru ServiceManifest. XML**.
+1. Můžete vytvořit vazby tajného kódu k proměnné prostředí procesu zadáním `Type='SecretsStoreRef` . Následující fragment kódu je příkladem vytvoření vazby `supersecret` verze `ver1` k proměnné prostředí `MySuperSecret` v **souboru ServiceManifest. XML**.
 
    ```xml
    <EnvironmentVariables>

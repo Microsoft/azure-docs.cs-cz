@@ -1,21 +1,21 @@
 ---
-title: Monitorovat Azure Cosmos DB pomocí Azure Monitor pro Cosmos DB (Preview) | Microsoft Docs
+title: Monitorovat Azure Cosmos DB s Azure Monitor pro Cosmos DB | Microsoft Docs
 description: Tento článek popisuje Azure Monitor pro funkci Cosmos DB, která poskytuje Cosmos DBm vlastníkům rychlé porozumění problémům s výkonem a využitím jejich účtů CosmosDB.
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/27/2019
-ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 68b1b8c92b5119da400b0ada0fe792c855dd1f33
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78250683"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195399"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Prozkoumat Azure Monitor pro Azure Cosmos DB (Preview)
+# <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Prozkoumejte Azure Monitor pro Azure Cosmos DB
 
-Azure Monitor for Azure Cosmos DB (Preview) poskytuje přehled o celkovém výkonu, selháních, kapacitě a provozním stavu všech vašich Azure Cosmos DBch prostředků v jednotném interaktivním prostředí. Tento článek vám pomůže pochopit výhody tohoto nového prostředí pro monitorování a jak můžete upravit a přizpůsobit prostředí tak, aby vyhovovalo jedinečným potřebám vaší organizace.   
+Azure Monitor pro Azure Cosmos DB poskytuje přehled o celkovém výkonu, selháních, kapacitě a provozním stavu všech vašich Azure Cosmos DBch prostředků v jednotném interaktivním prostředí. Tento článek vám pomůže pochopit výhody tohoto nového prostředí pro monitorování a jak můžete upravit a přizpůsobit prostředí tak, aby vyhovovalo jedinečným potřebám vaší organizace.   
 
 ## <a name="introduction"></a>Úvod
 
@@ -44,7 +44,7 @@ Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi v
 
     ![Vyhledávací pole se slovem "monitor" a rozevírací seznam, který říká službám "monitor" s obrázkem stylu rychloměru](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. Vyberte **Cosmos dB (Preview)**.
+3. Vyberte **Cosmos DB**.
 
     ![Snímek obrazovky s přehledem Cosmos DBového sešitu](./media/cosmosdb-insights-overview/cosmos-db.png)
 
@@ -92,7 +92,7 @@ Stejně jako u sešitu s přehledem se po výběru rozevíracího seznamu vedle 
 
 V horní části stránky vyberte **operace** a otevře se část **operace** v šabloně sešitu. Dává vám možnost Zobrazit vaše požadavky rozdělené podle typu vámi provedených požadavků. 
 
-Takže v příkladu níže vidíte, že `eastus-billingint` se v rámci toho dostávají požadavky na čtení, ale s malým počtem Upsert a požadavky na vytvoření. Vzhledem `westeurope-billingint` k tomu, že je k dispozici jen pro čtení z perspektivy žádosti, alespoň během posledních čtyř hodin, po které je sešit aktuálně vymezený prostřednictvím parametru časového rozsahu.
+Takže v příkladu níže vidíte, že se v rámci `eastus-billingint` toho dostávají požadavky na čtení, ale s malým počtem Upsert a požadavky na vytvoření. Vzhledem k tomu `westeurope-billingint` , že je k dispozici jen pro čtení z perspektivy žádosti, alespoň během posledních čtyř hodin, po které je sešit aktuálně vymezený prostřednictvím parametru časového rozsahu.
 
 ![Sešit operací](./media/cosmosdb-insights-overview/operation.png) 
 
@@ -110,9 +110,9 @@ Chcete-li rozbalit nebo sbalit všechna rozevírací zobrazení v sešitu, vyber
 
 ![Ikona rozbalení sešitu](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Přizpůsobení Azure Monitor pro Azure Cosmos DB (Preview)
+## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>Přizpůsobení Azure Monitor pro Azure Cosmos DB
 
-Vzhledem k tomu, že toto prostředí je postavené na šablonách sešitu Azure monitor, máte možnost **přizpůsobit** > **Úpravy** a **Uložit** kopii změněné verze do vlastního sešitu. 
+Vzhledem k tomu, že toto prostředí je postavené na šablonách sešitu Azure monitor, máte možnost **přizpůsobit**  >  **Úpravy** a **Uložit** kopii změněné verze do vlastního sešitu. 
 
 ![Přizpůsobit pruh](./media/cosmosdb-insights-overview/customize.png)
 

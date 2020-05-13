@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40d6768b528d132b3d238227098d4340fce37cca
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985877"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125787"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
@@ -105,11 +105,11 @@ Pokud spustíte v plánu App Service, měli byste povolit nastavení **vždycky 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-I když je funkce Always On zapnutá, časový limit spuštění pro jednotlivé funkce se `functionTimeout` řídí nastavením v souboru projektu [Host. JSON](functions-host-json.md#functiontimeout) .
+I když je funkce Always On zapnutá, časový limit spuštění pro jednotlivé funkce se řídí `functionTimeout` nastavením v souboru projektu [Host. JSON](functions-host-json.md#functiontimeout) .
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Určení plánu hostování existující aplikace
 
-Chcete-li určit plán hostování používaný vaší aplikací Function App, přečtěte si část **App Service plán/cenová úroveň** na kartě **Přehled** pro aplikaci Function App v [Azure Portal](https://portal.azure.com). V případě plánů App Service je cenová úroveň také uvedena.
+Chcete-li určit plán hostování používaný vaší aplikací Function App, přečtěte si téma **App Service plán** na kartě **Přehled** aplikace Function App v [Azure Portal](https://portal.azure.com). Pokud chcete zobrazit cenovou úroveň, vyberte název **plánu App Service**a v levém podokně vyberte **vlastnosti** .
 
 ![Zobrazit plán škálování na portálu](./media/functions-scale/function-app-overview-portal.png)
 
@@ -120,11 +120,11 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Když je `dynamic`výstup z tohoto příkazu, vaše aplikace Function App je v plánu spotřeby. Když je `ElasticPremium`výstup z tohoto příkazu, vaše aplikace Function App je v plánu Premium. Všechny ostatní hodnoty označují různé úrovně plánu App Service.
+Když je výstup z tohoto příkazu `dynamic` , vaše aplikace Function App je v plánu spotřeby. Když je výstup z tohoto příkazu `ElasticPremium` , vaše aplikace Function App je v plánu Premium. Všechny ostatní hodnoty označují různé úrovně plánu App Service.
 
 ## <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 
-V jakémkoli plánu aplikace Function App vyžaduje účet obecné Azure Storage, který podporuje Azure Blob, Queue, soubory a Table Storage. Důvodem je to, že funkce spoléhají na Azure Storage pro operace, jako je Správa triggerů a spouštění funkcí protokolování, ale některé účty úložiště nepodporují fronty a tabulky. Tyto účty, které zahrnují účty úložiště jen pro objekty BLOB (včetně služby Premium Storage) a účty úložiště pro obecné účely s replikací zóny redundantního úložiště, se při vytváření aplikace Function Filter odfiltrují ze stávajících výběrů **účtu úložiště** .
+V jakémkoli plánu aplikace Function App vyžaduje účet obecné Azure Storage, který podporuje Azure Blob, Queue, soubory a Table Storage. Důvodem je to, že Azure Functions spoléhá na Azure Storage pro operace, jako je Správa triggerů a spouštění funkcí protokolování, ale některé účty úložiště nepodporují fronty a tabulky. Tyto účty, které zahrnují účty úložiště jen pro objekty BLOB (včetně služby Premium Storage) a účty úložiště pro obecné účely s replikací zóny redundantního úložiště, se při vytváření aplikace Function Filter odfiltrují ze stávajících výběrů **účtu úložiště** .
 
 Stejný účet úložiště, který používá vaše aplikace Function App, můžete použít taky triggery a vazbami k uložení dat aplikace. U operací náročných na úložiště byste ale měli použít samostatný účet úložiště.  
 

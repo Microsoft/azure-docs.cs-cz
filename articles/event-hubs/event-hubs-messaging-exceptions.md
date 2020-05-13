@@ -1,5 +1,5 @@
 ---
-title: Průvodce odstraňováním potíží – Azure Event Hubs | Microsoft Docs
+title: Event Hubs Azure – výjimky
 description: Tento článek poskytuje seznam výjimek zasílání zpráv Azure Event Hubs a navrhovaných akcí.
 services: event-hubs
 documentationcenter: na
@@ -13,29 +13,56 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: de5b95bd10bf72f60ba5d63c4b3a799556fcce33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7f420b353361bdd4185958a1f66bfb68fd5decc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76309774"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125634"
 ---
-# <a name="troubleshooting-guide-for-azure-event-hubs"></a>Průvodce odstraňováním potíží pro Azure Event Hubs
-Tento článek poskytuje některé výjimky .NET vygenerované Event Hubs rozhraní API .NET Framework a také další tipy pro řešení problémů. 
-
-## <a name="event-hubs-messaging-exceptions---net"></a>Výjimky zasílání zpráv Event Hubs – .NET
+# <a name="event-hubs-messaging-exceptions---net"></a>Výjimky zasílání zpráv Event Hubs – .NET
 V této části jsou uvedeny výjimky rozhraní .NET generované rozhraním API .NET Framework. 
 
-### <a name="exception-categories"></a>Kategorie výjimek
+## <a name="exception-categories"></a>Kategorie výjimek
 
-Rozhraní API Event Hubs .NET generují výjimky, které mohou být v následujících kategoriích, spolu s přidruženou akcí, kterou můžete provést, abyste je mohli zkusit opravit.
+Rozhraní API Event Hubs .NET generují výjimky, které mohou být v následujících kategoriích, spolu s přidruženou akcí, kterou můžete provést při pokusu o jejich opravu:
 
-1. Chyba kódování uživatele: [System. ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System. InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System. OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System. Runtime. Serialization. SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Obecná akce: Zkuste opravit kód, než budete pokračovat.
-2. Chyba nastavení/konfigurace: [Microsoft. ServiceBus. Messaging. MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception), [Microsoft. Azure. EventHubs. MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception), [System. UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Obecná akce: Zkontrolujte konfiguraci a v případě potřeby proveďte změny.
-3. Přechodné výjimky: [Microsoft. ServiceBus. Messaging. MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft. ServiceBus. Messaging. výjimka serverbusyexception](#serverbusyexception), [Microsoft. Azure. EventHubs. výjimka serverbusyexception](#serverbusyexception), [Microsoft. ServiceBus. Messaging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). Obecná akce: zkuste operaci zopakovat nebo upozorněte uživatele.
-4. Další výjimky: [System. Transactions. TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System. TimeoutException](#timeoutexception), [Microsoft. ServiceBus. Messaging. MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception), [Microsoft. ServiceBus. Messaging. SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception). Obecná akce: specifická pro typ výjimky; informace najdete v tabulce v následující části. 
+ - Chyba kódování uživatele: 
+ 
+   - [System. ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)
+   - [System. InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)
+   - [System. OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)
+   - [System. Runtime. Serialization. SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)
+   
+   Obecná akce: Zkuste opravit kód, než budete pokračovat.
+ 
+ - Chyba nastavení/konfigurace: 
+ 
+   - [Microsoft. ServiceBus. Messaging. MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception)
+   - [Microsoft. Azure. EventHubs. MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception)
+   - [System. UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)
+   
+   Obecná akce: Zkontrolujte konfiguraci a v případě potřeby proveďte změny.
+   
+ - Přechodné výjimky: 
+ 
+   - [Microsoft. ServiceBus. Messaging. MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception)
+   - [Microsoft. ServiceBus. Messaging. výjimka serverbusyexception](#serverbusyexception)
+   - [Microsoft. Azure. EventHubs. výjimka serverbusyexception](#serverbusyexception)
+   - [Microsoft. ServiceBus. Messaging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)
+   
+   Obecná akce: zkuste operaci zopakovat nebo upozorněte uživatele.
+ 
+ - Další výjimky: 
+ 
+   - [System. Transactions. TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)
+   - [System. TimeoutException](#timeoutexception)
+   - [Microsoft. ServiceBus. Messaging. MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception)
+   - [Microsoft. ServiceBus. Messaging. SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception)
+   
+   Obecná akce: specifická pro typ výjimky; informace najdete v tabulce v následující části. 
 
-### <a name="exception-types"></a>Typy výjimek
+## <a name="exception-types"></a>Typy výjimek
 V následující tabulce jsou uvedeny typy výjimek zasílání zpráv a jejich příčiny a poznámky navrhovaná akce, které můžete provést.
 
 | Typ výjimky | Popis/příčiny/příklady | Navrhovaná akce | Poznámka k automatickému/okamžitému opakování |
@@ -54,91 +81,50 @@ V následující tabulce jsou uvedeny typy výjimek zasílání zpráv a jejich 
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | Požadavek na běhovou operaci u zakázané entity |Aktivujte entitu. | Zkuste to znovu, pokud se entita aktivovala průběžně. |
 | [Microsoft. ServiceBus. Messaging MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) <br /><br/> [Microsoft. Azure. EventHubs MessageSizeExceededException](/dotnet/api/microsoft.azure.eventhubs.messagesizeexceededexception) | Datová část zprávy překračuje limit 1 MB. Tento limit 1 MB slouží jako celková zpráva, která může zahrnovat systémové vlastnosti a jakékoli režie .NET. | Snižte velikost datové části zprávy a potom operaci opakujte. |Nemůžete to zkusit znovu. |
 
-### <a name="quotaexceededexception"></a>QuotaExceededException
+## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) indikuje, že došlo k překročení kvóty pro některou z entit.
 
 K této výjimce může dojít, pokud je maximální počet přijímačů (5) již otevřen na úrovni skupiny pro jednotlivé uživatele.
 
-#### <a name="event-hubs"></a>Event Hubs
+### <a name="event-hubs"></a>Event Hubs
 Event Hubs má limit 20 skupin uživatelů na centrum událostí. Když se pokusíte vytvořit další, dostanete [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception). 
 
-### <a name="timeoutexception"></a>TimeoutException
+## <a name="timeoutexception"></a>TimeoutException
 [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) označuje, že operace iniciovaná uživatelem trvá déle, než je časový limit operace. 
 
 Pro Event Hubs je časový limit zadán buď jako součást připojovacího řetězce, nebo prostřednictvím [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.servicebus.servicebusconnectionstringbuilder). Chybová zpráva se může lišit, ale vždy obsahuje hodnotu časového limitu zadanou pro aktuální operaci. 
 
-#### <a name="common-causes"></a>Běžné příčiny
+### <a name="common-causes"></a>Běžné příčiny
 Existují dva běžné příčiny této chyby: nesprávná konfigurace nebo přechodný Chyba služby.
 
-1. **Nesprávná konfigurace** Časový limit operace může být pro provozní podmínky příliš malý. Výchozí hodnota pro časový limit operace v sadě SDK klienta je 60 sekund. Zkontrolujte, jestli má váš kód nastavenou hodnotu příliš malý. Stav sítě a využití procesoru může ovlivnit dobu potřebnou k dokončení konkrétní operace, takže časový limit operace by neměl být nastaven na malou hodnotu.
-2. **Přechodný chybový služba** V některých případech může služba Event Hubs zaznamenat prodlevy při zpracování požadavků; například během období vysokého provozu. V takových případech můžete po zpoždění operaci opakovat, dokud nebude operace úspěšná. Pokud se stejná operace stále po několika pokusech nezdařila, přejděte na [stavovou lokalitu služby Azure](https://azure.microsoft.com/status/) , kde zjistíte, jestli nejsou nějaké nějaké známé výpadky služeb.
+- **Nesprávná konfigurace** Časový limit operace může být pro provozní podmínky příliš malý. Výchozí hodnota pro časový limit operace v sadě SDK klienta je 60 sekund. Zkontrolujte, jestli má váš kód nastavenou hodnotu příliš malý. Stav sítě a využití procesoru může ovlivnit dobu potřebnou k dokončení konkrétní operace, takže časový limit operace by neměl být nastaven na malou hodnotu.
+- **Přechodný chybový služba** V některých případech může služba Event Hubs zaznamenat prodlevy při zpracování požadavků; například během období vysokého provozu. V takových případech můžete po zpoždění operaci opakovat, dokud nebude operace úspěšná. Pokud se stejná operace stále po několika pokusech nezdařila, přejděte na [stavovou lokalitu služby Azure](https://azure.microsoft.com/status/) , kde zjistíte, jestli nejsou nějaké nějaké známé výpadky služeb.
 
-### <a name="serverbusyexception"></a>Výjimka serverbusyexception
+## <a name="serverbusyexception"></a>Výjimka serverbusyexception
 
 [Microsoft. ServiceBus. Messaging. výjimka serverbusyexception](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) nebo [Microsoft. Azure. EventHubs. výjimka serverbusyexception](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) označuje, že server je přetížený. Pro tuto výjimku existují dva relevantní kódy chyb.
 
-#### <a name="error-code-50002"></a>Kód chyby 50002
-
+### <a name="error-code-50002"></a>Kód chyby 50002
 K této chybě může dojít z jednoho ze dvou důvodů:
 
-1. Zatížení se rovnoměrně nedistribuuje napříč všemi oddíly v centru událostí a jeden oddíl má omezení místní jednotky propustnosti.
+- Zatížení se rovnoměrně nedistribuuje napříč všemi oddíly v centru událostí a jeden oddíl má omezení místní jednotky propustnosti.
     
-    Řešení: při revizi strategie distribuce oddílů nebo při pokusu o [EventHubClient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) může pomáhat.
+    **Řešení**: při revizi strategie distribuce oddílů nebo při pokusu o [EventHubClient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) může pomáhat.
 
-2. Obor názvů Event Hubs nemá dostatečný počet jednotek propustnosti (můžete zaškrtnout obrazovku **metriky** v okně Event Hubs oboru názvů v [Azure Portal](https://portal.azure.com) pro potvrzení). Portál zobrazuje agregované informace (1 minuty), ale měříme propustnost v reálném čase, takže se jedná o pouze odhad.
+- Obor názvů Event Hubs nemá dostatečný počet jednotek propustnosti (můžete zaškrtnout obrazovku **metriky** v okně Event Hubs oboru názvů v [Azure Portal](https://portal.azure.com) pro potvrzení). Portál zobrazuje agregované informace (1 minuty), ale měříme propustnost v reálném čase, takže se jedná o pouze odhad.
 
-    Řešení: zvýšení jednotek propustnosti v oboru názvů vám může pomáhat. Tuto operaci můžete provést na portálu v okně **škála** obrazovky Event Hubs oboru názvů. Nebo můžete použít [Automatické rozplochelné](event-hubs-auto-inflate.md).
+    **Řešení**: zvýšení jednotek propustnosti v oboru názvů vám může pomáhat. Tuto operaci můžete provést na portálu v okně **škála** obrazovky Event Hubs oboru názvů. Nebo můžete použít [Automatické rozplochelné](event-hubs-auto-inflate.md).
 
-#### <a name="error-code-50001"></a>Kód chyby 50001
+### <a name="error-code-50001"></a>Kód chyby 50001
 
 Tato chyba by se měla vyskytovat zřídka. K tomu dojde, pokud je v kontejneru, který spouští kód pro váš obor názvů, nedostatek procesoru – ne více než několik sekund, než začne Nástroj pro vyrovnávání zatížení Event Hubs začínat.
 
-#### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>Omezení volání metody Getruntimeinformation –
-Azure Event Hubs podporuje až 50 volání za sekundu do GetRuntimeInfo za sekundu. Po dosažení limitu se může zobrazit výjimka podobná té následující:
+**Řešení**: omezení volání metody getruntimeinformation –. Azure Event Hubs podporuje až 50 volání za sekundu do GetRuntimeInfo za sekundu. Po dosažení limitu se může zobrazit výjimka podobná té následující:
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
 ```
 
-## <a name="connectivity-certificate-or-timeout-issues"></a>Problémy s připojením, certifikátem nebo časovým limitem
-Následující postup vám může pomáhat s odstraňováním potíží s připojením/vypršením časového limitu pro všechny služby v rámci *. servicebus.windows.net. 
-
-- Přejděte na nebo [wget](https://www.gnu.org/software/wget/) `https://<yournamespacename>.servicebus.windows.net/`. Pomáhá s kontrolou, jestli máte problémy s filtrováním IP adres nebo virtuální sítí nebo s řetězem certifikátů (nejběžnější při použití sady Java SDK).
-
-    Příklad úspěšné zprávy:
-    
-    ```xml
-    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
-    ```
-    
-    Příklad chybové zprávy o selhání:
-
-    ```json
-    <Error>
-        <Code>400</Code>
-        <Detail>
-            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
-        </Detail>
-    </Error>
-    ```
-- Spusťte následující příkaz, který zkontroluje, jestli je v bráně firewall blokovaný port. Použité porty jsou 443 (HTTPS), 5671 (AMQP) a 9093 (Kafka). V závislosti na knihovně, kterou používáte, se používají také jiné porty. Tady je ukázkový příkaz, který zkontroluje, jestli je port 5671 blokovaný.
-
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
-    ```
-
-    V systému Linux:
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
-    ```
-- Pokud dochází k problémům s přerušovaným připojením, spusťte následující příkaz, který zkontroluje, jestli nedošlo k vyřazeným paketům. Tento příkaz se pokusí vytvořit 25 různých připojení TCP každé 1 sekundy ke službě. Pak můžete zjistit, kolik z nich bylo úspěšné/neúspěšné, a také zobrazit latenci připojení TCP. `psping` Nástroj si můžete stáhnout [tady](/sysinternals/downloads/psping).
-
-    ```shell
-    .\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.windows.net:5671 -nobanner     
-    ```
-    Ekvivalentní příkazy můžete použít `tnc`, pokud používáte jiné nástroje, například, `ping`a tak dále. 
-- Získejte trasování sítě, pokud předchozí kroky neumožňují a neanalyzují ho pomocí nástrojů, jako je třeba [Wireshark](https://www.wireshark.org/). V případě potřeby kontaktujte [Podpora Microsoftu](https://support.microsoft.com/) . 
 
 ## <a name="next-steps"></a>Další kroky
 

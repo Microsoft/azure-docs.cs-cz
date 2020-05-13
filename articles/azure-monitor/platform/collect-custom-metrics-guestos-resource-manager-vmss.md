@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fe550bb4f5e63761bb645c9904816048584b1bca
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733241"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125770"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro sadu škálování virtuálního počítače s Windows
 
@@ -238,8 +238,8 @@ Oba soubory uložte a zavřete.
 Pokud chcete nasadit šablonu Správce prostředků, použijte Azure PowerShell:  
 
 1. Spusťte PowerShell. 
-1. Přihlaste se k `Login-AzAccount`Azure pomocí.
-1. Seznam předplatných získáte pomocí `Get-AzSubscription`.
+1. Přihlaste se k Azure pomocí `Login-AzAccount` .
+1. Seznam předplatných získáte pomocí `Get-AzSubscription` .
 1. Nastavte odběr, který vytvoříte, nebo aktualizujte virtuální počítač: 
 
    ```powershell
@@ -252,7 +252,7 @@ Pokud chcete nasadit šablonu Správce prostředků, použijte Azure PowerShell:
    ```
 
    > [!NOTE]  
-   > Nezapomeňte použít oblast Azure, která je povolená pro vlastní metriky. Nezapomeňte použít [oblast Azure, která je povolená pro vlastní metriky](https://github.com/MicrosoftDocs/azure-docs-pr/blob/master/articles/azure-monitor/platform/metrics-custom-overview.md#supported-regions).
+   > Nezapomeňte použít oblast Azure, která je povolená pro vlastní metriky. Nezapomeňte použít [oblast Azure, která je povolená pro vlastní metriky](./metrics-custom-overview.md#supported-regions).
  
 1. Spuštěním následujících příkazů nasaďte virtuální počítač:  
 
@@ -285,7 +285,7 @@ Pokud chcete nasadit šablonu Správce prostředků, použijte Azure PowerShell:
 
 1. V rozevírací nabídce obory názvů vyberte **Azure. VM. Windows. Host**. 
 
-1. V rozevírací nabídce metriky vyberte **paměť\%, která se používá při použití svěřených bajtů**.  
+1. V rozevírací nabídce metriky vyberte paměť, která ** \% se používá při použití svěřených bajtů**.  
 
 Pak můžete zvolit, aby se dimenze v této metrikě použily k vytvoření grafu pro konkrétní virtuální počítač, nebo aby se každý virtuální počítač vynesl v sadě škálování. 
 

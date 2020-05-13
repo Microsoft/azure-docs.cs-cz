@@ -5,16 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/18/2019
-ms.openlocfilehash: 252ddeb372744986df0b8ba9b742d0462a4e8202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: b0ec666f2cfadc3a1571f3ed1d26c92bcbbca3a2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274473"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196238"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardní vlastnosti v protokolech Azure Monitor
 Data v Azure Monitor protokoly se [ukládají jako sada záznamů v pracovním prostoru Log Analytics nebo v Application Insights aplikaci](../log-query/logs-structure.md), z nichž každý má konkrétní datový typ, který má jedinečnou sadu vlastností. Mnoho datových typů bude mít standardní vlastnosti, které jsou společné napříč různými typy. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je můžete používat v dotazech.
+
+> [!IMPORTANT]
+> Pokud používáte APM 2,1, Application Insights aplikace se ukládají v pracovním prostoru Log Analytics se všemi ostatními daty protokolů. Tabulky byly přejmenovány a znovu strukturované, ale mají stejné informace jako tabulky v aplikaci Application Insights. Tyto nové tabulky mají stejné standardní vlastnosti jako jiné tabulky v pracovním prostoru Log Analytics.
 
 > [!NOTE]
 > Některé ze standardních vlastností se v zobrazení schématu nebo IntelliSense v Log Analytics nezobrazí a nebudou se zobrazovat ve výsledcích dotazu, pokud explicitně neurčíte vlastnost ve výstupu.
@@ -46,9 +49,9 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_TimeReceived
-Vlastnost ** \_TimeReceived** obsahuje datum a čas, kdy byl záznam přijat bodem příjmu Azure monitor v cloudu Azure. To může být užitečné k identifikaci potíží s latencí mezi zdrojem dat a cloudem. Příkladem může být problém se sítí, který způsobuje zpoždění přenášená daty z agenta. Další podrobnosti najdete [v tématu čas příjmu dat protokolu v Azure monitor](data-ingestion-time.md) .
+Vlastnost ** \_ TimeReceived** obsahuje datum a čas, kdy byl záznam přijat bodem příjmu Azure monitor v cloudu Azure. To může být užitečné k identifikaci potíží s latencí mezi zdrojem dat a cloudem. Příkladem může být problém se sítí, který způsobuje zpoždění přenášená daty z agenta. Další podrobnosti najdete [v tématu čas příjmu dat protokolu v Azure monitor](data-ingestion-time.md) .
 
-Následující dotaz poskytuje průměrnou latenci za hodinu u záznamů událostí od agenta. Patří sem čas od agenta do cloudu a celková doba, po kterou bude záznam pro dotazy protokolu dostupný.
+Následující dotaz poskytuje průměrnou latenci za hodinu u záznamů událostí od agenta. To zahrnuje dobu od agenta do cloudu a celkovou dobu, po kterou bude záznam pro dotazy protokolu dostupný.
 
 ```Kusto
 Event
@@ -60,7 +63,7 @@ Event
 ``` 
 
 ## <a name="type-and-itemtype"></a>Typ a itemType
-Vlastnosti **typ** (Log Analytics pracovní prostor) a **ItemType** (Application Insights aplikace) obsahují název tabulky, ze které byl záznam načten, a lze jej také představit jako typ záznamu. Tato vlastnost je užitečná v dotazech, které kombinují záznamy z více tabulek, například těch, které `search` používají operátor, k odlišení záznamů různých typů. **$Table** lze použít místo **typu** na některých místech.
+Vlastnosti **typ** (Log Analytics pracovní prostor) a **ItemType** (Application Insights aplikace) obsahují název tabulky, ze které byl záznam načten, a lze jej také představit jako typ záznamu. Tato vlastnost je užitečná v dotazech, které kombinují záznamy z více tabulek, například těch, které používají `search` operátor, k odlišení záznamů různých typů. **$Table** lze použít místo **typu** na některých místech.
 
 ### <a name="examples"></a>Příklady
 Následující dotaz vrátí počet záznamů podle typu shromážděných za poslední hodinu.
@@ -72,11 +75,11 @@ search *
 
 ```
 ## <a name="_itemid"></a>\_ItemId
-Vlastnost ** \_ItemId** obsahuje jedinečný identifikátor záznamu.
+Vlastnost ** \_ itemid** obsahuje jedinečný identifikátor záznamu.
 
 
 ## <a name="_resourceid"></a>\_ResourceId
-Vlastnost ** \_ResourceID** obsahuje jedinečný identifikátor prostředku, ke kterému je přiřazen záznam. Získáte tak standardní vlastnost, která se má použít k určení oboru dotazu jenom na záznamy z konkrétního prostředku, nebo pro spojování souvisejících dat napříč více tabulkami.
+Vlastnost ** \_ ResourceID** obsahuje jedinečný identifikátor prostředku, ke kterému je přiřazen záznam. Získáte tak standardní vlastnost, která se má použít k určení oboru dotazu jenom na záznamy z konkrétního prostředku, nebo pro spojování souvisejících dat napříč více tabulkami.
 
 U prostředků Azure je hodnotou **_ResourceId** [Adresa URL ID prostředku Azure](../../azure-resource-manager/templates/template-functions-resource.md). Tato vlastnost je aktuálně omezená na prostředky Azure, ale bude rozšířena na prostředky mimo Azure, jako jsou například místní počítače.
 
@@ -119,10 +122,10 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
 ```
 
-Tyto `union withsource = tt *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou náročné na spouštění.
+Tyto dotazy můžete použít `union withsource = tt *` zřídka, protože kontroly napříč datovými typy jsou náročné na spouštění.
 
 ## <a name="_isbillable"></a>\_Fakturovatelnost
-Vlastnost disfakturovatelné určuje, zda jsou příjemovaná data fakturovatelná. ** \_** Data, která ** \_se rovnají hodnotě** _false_ , se shromažďují zdarma a neúčtují se za váš účet Azure.
+Vlastnost ** \_ disfakturovatelné** určuje, zda jsou příjemovaná data fakturovatelná. Data s **hodnotou, která \_ ** se rovná, `false` se shromažďují zdarma a neúčtují se za váš účet Azure.
 
 ### <a name="examples"></a>Příklady
 Chcete-li získat seznam počítačů, které odesílají Fakturovatelné datové typy, použijte následující dotaz:
@@ -149,11 +152,11 @@ union withsource = tt *
 ```
 
 ## <a name="_billedsize"></a>\_BilledSize
-Vlastnost ** \_BilledSize** určuje velikost (v bajtech) dat, která se budou fakturovat vašemu účtu Azure, pokud ** \_je hodnota Fakturovatelné** .
+Vlastnost ** \_ BilledSize** určuje velikost (v bajtech) dat, která se budou fakturovat vašemu účtu Azure, pokud je hodnota ** \_ Fakturovatelné** .
 
 
 ### <a name="examples"></a>Příklady
-Chcete-li zobrazit velikost fakturovaných událostí, které jsou v jednotlivých počítačích `_BilledSize` k dispozici, použijte vlastnost, která poskytuje velikost v bajtech:
+Chcete-li zobrazit velikost fakturovaných událostí, které jsou v jednotlivých počítačích k `_BilledSize` dispozici, použijte vlastnost, která poskytuje velikost v bajtech:
 
 ```Kusto
 union withsource = tt * 

@@ -1,20 +1,20 @@
 ---
 title: Vytvoření sady škálování Azure, která používá Zóny dostupnosti
 description: Naučte se vytvářet služby Azure Virtual Machine Scale Sets, které využívají Zóny dostupnosti ke zvýšení redundance před výpadky.
-author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 08/08/2018
-ms.author: jushiman
-ms.openlocfilehash: a23164215376bee291c07d49c88bd9e916d710bf
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207832"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197357"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření sady škálování virtuálních počítačů, která používá Zóny dostupnosti
 
@@ -39,7 +39,7 @@ Když nasadíte sadu škálování, máte také možnost nasazení s jedinou [sk
 
 ### <a name="zone-balancing"></a>Vyrovnávání zóny
 
-Pro škálované sady nasazené napříč několika zónami máte také možnost zvolit "nejlepší bilance zóny" nebo "striktní bilance zóny". Sada škálování se považuje za vyváženou, pokud každá zóna má stejný počet virtuálních počítačů nebo\\virtuálních počítačů +-1 ve všech ostatních zónách pro sadu škálování. Příklad:
+Pro škálované sady nasazené napříč několika zónami máte také možnost zvolit "nejlepší bilance zóny" nebo "striktní bilance zóny". Sada škálování se považuje za vyváženou, pokud každá zóna má stejný počet virtuálních počítačů nebo \\ virtuálních počítačů +-1 ve všech ostatních zónách pro sadu škálování. Příklad:
 
 - Sada škálování se dvěma virtuálními počítači v zóně 1, 3 virtuálními počítači v zóně 2 a 3 virtuálními počítači v zóně 3 je považována za vyváženou. Existuje pouze jedna zóna s jiným počtem virtuálních počítačů a je pouze 1 méně než ostatní zóny. 
 - Sada škálování s 1 virtuálním počítačem v zóně 1, 3 virtuálními počítači v zóně 2 a 3 virtuálními počítači v zóně 3 se považují za nevyvážené. Zóna 1 má 2 méně virtuálních počítačů než zóny 2 a 3.
@@ -58,7 +58,7 @@ Když vytvoříte sadu škálování v jedné zóně, řídíte, na které zón�
 
 Pokud chcete použít Zóny dostupnosti, musí být vaše sada škálování vytvořená v [podporované oblasti Azure](../availability-zones/az-region.md). Můžete vytvořit sadu škálování, která používá Zóny dostupnosti, s jednou z následujících metod:
 
-- [portál Azure](#use-the-azure-portal)
+- [Azure Portal](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Šablony Azure Resource Manageru](#use-azure-resource-manager-templates)

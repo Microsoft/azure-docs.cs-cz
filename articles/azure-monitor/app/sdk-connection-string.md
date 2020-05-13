@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410616"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125702"
 ---
 # <a name="connection-strings"></a>Připojovací řetězce
 
@@ -64,10 +64,10 @@ Připojovací řetězec se skládá ze seznamu nastavení reprezentovaného jako
 - `EndpointSuffix`(např.: applicationinsights.azure.cn) Nastavením přípony koncového bodu budete dát pokyn k sadě SDK, ke které se cloud Azure připojuje. Sada SDK bude sestavovat zbytek koncového bodu pro jednotlivé služby.
 - Explicitní koncové body.
   Jakoukoli službu lze explicitně přepsat v připojovacím řetězci.
-   - `IngestionEndpoint`dodatečnéhttps://dc.applicationinsights.azure.com)
-   - `LiveEndpoint`dodatečnéhttps://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint`dodatečnéhttps://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint`dodatečnéhttps://snapshot.applicationinsights.azure.com)
+   - `IngestionEndpoint`(např. `https://dc.applicationinsights.azure.com` )
+   - `LiveEndpoint`(např. `https://live.applicationinsights.azure.com` )
+   - `ProfilerEndpoint`(např. `https://profiler.applicationinsights.azure.com` )
+   - `SnapshotEndpoint`(např. `https://snapshot.applicationinsights.azure.com` )
 
 #### <a name="endpoint-schema"></a>Schéma koncového bodu
 
@@ -106,10 +106,10 @@ V tomto příkladu se nastavil jenom klíč instrumentace.
 - Ve výchozím nastavení se schéma autorizace používá jako "ikey". 
 - Klíč instrumentace: 00000000-0000-0000-0000-000000000000
 - Identifikátory URI regionálních služeb jsou založené na [výchozích hodnotách sady SDK](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) a připojovat se k veřejnému globálnímu Azure:
-   - Ingestováníhttps://dc.services.visualstudio.com/
-   - Živé metriky:https://rt.services.visualstudio.com/
-   - Moduluhttps://agent.azureserviceprofiler.net/
-   - Laděníhttps://agent.azureserviceprofiler.net/  
+   - Ingestování`https://dc.services.visualstudio.com/`
+   - Živé metriky:`https://rt.services.visualstudio.com/`
+   - Modulu`https://agent.azureserviceprofiler.net/`
+   - Ladění`https://agent.azureserviceprofiler.net/`
 
 
 
@@ -122,10 +122,10 @@ V tomto příkladu tento připojovací řetězec Určuje příponu koncového bo
 - Ve výchozím nastavení se schéma autorizace používá jako "ikey". 
 - Klíč instrumentace: 00000000-0000-0000-0000-000000000000
 - Identifikátory URI regionálních služeb jsou založené na zadané příponě koncového bodu: 
-   - Ingestováníhttps://dc.ai.contoso.com
-   - Živé metriky:https://live.ai.contoso.com
-   - Moduluhttps://profiler.ai.contoso.com 
-   - Laděníhttps://snapshot.ai.contoso.com   
+   - Ingestování`https://dc.ai.contoso.com`
+   - Živé metriky:`https://live.ai.contoso.com`
+   - Modulu`https://profiler.ai.contoso.com`
+   - Ladění`https://snapshot.ai.contoso.com`  
 
 
 
@@ -138,10 +138,10 @@ V tomto příkladu tento připojovací řetězec Určuje Explicitní přepsání
 - Ve výchozím nastavení se schéma autorizace používá jako "ikey". 
 - Klíč instrumentace: 00000000-0000-0000-0000-000000000000
 - Identifikátory URI regionálních služeb jsou založené na explicitních hodnotách přepsání: 
-   - Ingestování: https\/:/Custom.com:111/
-   - Živá metrika: https:\//Custom.com:222/
-   - Profiler: https:\//Custom.com:333/ 
-   - Ladicí program: https\/:/Custom.com:444/   
+   - Ingestování`https://custom.com:111/`
+   - Živé metriky:`https://custom.com:222/`
+   - Modulu`https://custom.com:333/`
+   - Ladění`https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>Nastavení připojovacího řetězce
@@ -239,7 +239,7 @@ appInsights.loadAppInsights();
 appInsights.trackPageView();
 ```
 
-# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node. js](#tab/nodejs)
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -275,5 +275,5 @@ Začínáme při vývoji:
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
+* [Node. js](../../azure-monitor/app/nodejs.md)
 * [Python](../../azure-monitor/app/opencensus-python.md)

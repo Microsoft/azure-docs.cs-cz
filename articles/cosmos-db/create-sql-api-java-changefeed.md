@@ -1,19 +1,19 @@
 ---
 title: Vytvoření komplexního Azure Cosmos DB ukázkové aplikace sady Java SDK v4 pomocí kanálu změn
-description: Tato příručka vás provede jednoduchou aplikací Java SQL API, která vloží dokumenty do kontejneru Azure Cosmos DB a zároveň zachová materializované zobrazení kontejneru pomocí změny kanálu.
-author: anfeldma
+description: Tato příručka vás provede jednoduchou aplikací Java SQL API, která vloží dokumenty do kontejneru Azure Cosmos DB a přitom zachová materializované zobrazení kontejneru pomocí změny kanálu.
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: 9e28eb4f766677ebbd5cfcc5f61fe54e53a45523
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 5e8656e891d250547174aa3deb27a94eebaa0ba3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996508"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125668"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Postup vytvoření aplikace Java, která používá Azure Cosmos DB SQL API a změna procesoru kanálu
 
@@ -73,7 +73,7 @@ mvn clean package
 
     pak se vraťte do Průzkumník dat Azure Portal v prohlížeči. Uvidíte, že se do databáze **GroceryStoreDatabase** přidalo tři prázdné kontejnery: 
 
-    * **InventoryContainer** – záznam inventáře pro náš příklad PRODEJNOSTI, rozdělený na položku ```id``` , která je identifikátorem UUID.
+    * **InventoryContainer** – záznam inventáře pro náš příklad PRODEJNOSTI, rozdělený na položku, ```id``` která je identifikátorem UUID.
     * **InventoryContainer-pktype** – materializované zobrazení záznamu inventáře optimalizovaného pro dotazy nad položkou```type```
     * **InventoryContainer – zapůjčení** – kontejner zapůjčení je vždycky potřebný pro kanál změn; zapůjčení sleduje pokrok aplikace při čtení kanálu změn.
 
@@ -100,7 +100,7 @@ mvn clean package
         })
         .subscribe();
 
-    while (!isProcessorRunning.get()); //Wait for Change Feed processor start
+    while (!isProcessorRunning.get()); //Wait for change feed processor start
     ```
 
     ```"SampleHost_1"```je název pracovníka procesoru změny kanálu. ```changeFeedProcessorInstance.start()```je to, co se ve skutečnosti spustí procesor Change feed.
@@ -138,19 +138,19 @@ mvn clean package
     }
     ```
 
-1. Povolí spuštění kódu 5 – 10sec. Pak se vraťte do Azure Portal Průzkumník dat a přejděte na **položky InventoryContainer >**. Měli byste vidět, že se položky vkládají do kontejneru inventáře; Poznamenejte si klíč oddílu```id```().
+1. Povolí spuštění kódu 5 – 10sec. Pak se vraťte do Azure Portal Průzkumník dat a přejděte na **položky InventoryContainer >**. Měli byste vidět, že se položky vkládají do kontejneru inventáře; Poznamenejte si klíč oddílu ( ```id``` ).
 
     ![Kontejner informačního kanálu](media/create-sql-api-java-changefeed/cosmos_items.JPG)
 
-1. Nyní v Průzkumník dat přejděte na **položku > položky InventoryContainer-pktype**. Toto je materializované zobrazení – položky v tomto kontejneru zrcadlení **InventoryContainer** , protože byly vloženy programově pomocí změny kanálu. Poznamenejte si klíč oddílu```type```(). Toto materializované zobrazení je optimalizováno pro filtrování dotazů ```type```, které by bylo pro **InventoryContainer** neefektivní, protože je rozdělené na ```id```oddíly.
+1. Nyní v Průzkumník dat přejděte na **položku > položky InventoryContainer-pktype**. Toto je materializované zobrazení – položky v tomto kontejneru zrcadlení **InventoryContainer** , protože byly vloženy programově pomocí změny kanálu. Poznamenejte si klíč oddílu ( ```type``` ). Toto materializované zobrazení je optimalizováno pro filtrování dotazů ```type``` , které by bylo pro **InventoryContainer** neefektivní, protože je rozdělené na oddíly ```id``` .
 
     ![Materializované zobrazení](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
 
-1. K odstranění dokumentu z obou **InventoryContainer** a **InventoryContainer-pktype** se používá pouze jedno ```upsertItem()``` volání. Nejprve se podíváme na Azure Portal Průzkumník dat. Odstraníme dokument, pro který ```/type == "plums"```; je encircled červeně pod
+1. K odstranění dokumentu z obou **InventoryContainer** a **InventoryContainer-pktype** se používá pouze jedno ```upsertItem()``` volání. Nejprve se podíváme na Azure Portal Průzkumník dat. Odstraníme dokument, pro který ```/type == "plums"``` se encircled červeně.
 
     ![Materializované zobrazení](media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG)
 
-    Stiskněte znovu Enter pro volání funkce ```deleteDocument()``` v ukázkovém kódu. Tato funkce, která je zobrazena níže, upsertuje novou verzi dokumentu s ```/ttl == 5```hodnotou, která nastaví hodnotu TTL (Time to Live) do 5sec. 
+    Stiskněte znovu Enter pro volání funkce ```deleteDocument()``` v ukázkovém kódu. Tato funkce, která je zobrazena níže, upsertuje novou verzi dokumentu s hodnotou ```/ttl == 5``` , která nastaví hodnotu TTL (Time to Live) do 5sec. 
     
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Async API
 
@@ -181,7 +181,7 @@ mvn clean package
     }    
     ```
 
-    Kanál ```feedPollDelay``` změn je nastaven na 100 MS; Proto kanál změn reaguje na tuto aktualizaci skoro okamžitě a volání ```updateInventoryTypeMaterializedView()``` uvedená výše. Toto poslední volání funkce bude Upsert nový dokument s hodnotou TTL 5sec do **InventoryContainer-pktype**.
+    Kanál změn ```feedPollDelay``` je nastavený na 100 ms. proto kanál změn reaguje na tuto aktualizaci skoro okamžitě a na ```updateInventoryTypeMaterializedView()``` výše uvedené volání. Toto poslední volání funkce bude Upsert nový dokument s hodnotou TTL 5sec do **InventoryContainer-pktype**.
 
     To platí, že po asi 5 sekundách vyprší platnost dokumentu a odstraní se z obou kontejnerů.
 

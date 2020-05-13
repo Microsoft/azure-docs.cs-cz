@@ -5,19 +5,22 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/22/2019
-ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.date: 05/09/2020
+ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738078"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196293"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktura protokolů Azure Monitor
 Možnost rychle získat přehled o datech pomocí [dotazu protokolu](log-query-overview.md) je výkonná funkce Azure monitor. Chcete-li vytvořit efektivní a užitečné dotazy, měli byste pochopit některé základní koncepty, jako je například umístění dat, která potřebujete, a způsob jejího strukturování. Tento článek poskytuje základní koncepty, které potřebujete, abyste mohli začít.
 
 ## <a name="overview"></a>Přehled
 Data v Azure Monitor protokoly se ukládají buď v pracovním prostoru Log Analytics, nebo v aplikaci Application Insights. Obě služby jsou napájené z [Azure Průzkumník dat](/azure/data-explorer/) to znamená, že využívají výkonný datový stroj a dotazovací jazyk.
+
+> [!IMPORTANT]
+> Pokud používáte [prostředek Application Insights na základě pracovního prostoru](../app/create-workspace-resource.md), telemetrie je uložená v Log Analytics pracovním prostoru se všemi ostatními daty protokolů. Tabulky byly přejmenovány a znovu strukturované, ale mají stejné informace jako tabulky v aplikaci Application Insights.
 
 Data v pracovních prostorech a aplikacích jsou uspořádána do tabulek, z nichž každý ukládá různé druhy dat a má svou vlastní jedinečnou sadu vlastností. Většina [zdrojů dat](../platform/data-sources.md) bude zapisovat do vlastních tabulek v Log Analytics pracovním prostoru, zatímco Application Insights zapisuje do předdefinované sady tabulek v Application Insights aplikaci. Dotazy protokolu jsou velmi flexibilní a umožňují snadno kombinovat data z více tabulek a dokonce použít dotaz na více prostředků ke kombinování dat z tabulek ve více pracovních prostorech nebo k zápisu dotazů, které kombinují data z pracovního prostoru a aplikace.
 
@@ -48,23 +51,26 @@ Podrobnosti o tabulkách, které vytvoří, najdete v dokumentaci k jednotlivým
 Informace o strategii řízení přístupu a doporučeních k tomu, jak poskytnout přístup k datům v pracovním prostoru, najdete v tématu [navrhování Azure monitor protokolů nasazení](../platform/design-logs-deployment.md) . Kromě udělení přístupu k samotnému pracovnímu prostoru můžete omezit přístup k jednotlivým tabulkám pomocí [RBAC na úrovni tabulky](../platform/manage-access.md#table-level-rbac).
 
 ## <a name="application-insights-application"></a>Application Insights aplikace
+
+> [!IMPORTANT]
+> Pokud používáte telemetrii [prostředků Application Insights na základě pracovního prostoru](../app/create-workspace-resource.md) , je uložena v pracovním prostoru Log Analytics se všemi ostatními daty protokolů. Tabulky byly přejmenovány a znovu strukturované, ale mají stejné informace jako tabulky v klasickém Application Insights prostředku.
+
 Když vytvoříte aplikaci v Application Insights, automaticky se vytvoří odpovídající aplikace v protokolech Azure Monitor. Ke shromažďování dat není nutná žádná konfigurace a aplikace bude automaticky zapisovat data monitorování, například zobrazení stránky, požadavky a výjimky.
 
 Na rozdíl od Log Analytics pracovního prostoru má Application Insights aplikace pevnou sadu tabulek. Nelze nakonfigurovat jiné zdroje dat pro zápis do aplikace, takže nelze vytvořit žádné další tabulky. 
 
 | Table | Popis | 
 |:---|:---|
-| availabilityResults   | Souhrnná data z testů dostupnosti.
-| browserTimings      |     Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat.
-| customEvents        | Vlastní události vytvořené vaší aplikací
-| customMetrics       | Vlastní metriky vytvořené vaší aplikací
-| závislosti        | Volání z aplikace do jiných komponent (včetně externích komponent) zaznamenaných prostřednictvím TrackDependency () – například volání REST API, databáze nebo systému souborů. 
-| výjimek            | Výjimky vyvolané modulem runtime aplikace zachycují výjimky na straně serveru i na straně klienta (prohlížeče).
-| pageViews           | Data o jednotlivých zobrazeních webu s informacemi v prohlížeči
-| Čítače výkonu   | Měření výkonu z výpočetních prostředků, které podporují aplikaci, například čítače výkonu systému Windows.
-| požádal            | Žádosti přijaté vaší aplikací Například záznam samostatné žádosti se zaznamená do protokolu pro každý požadavek HTTP, který vaše webová aplikace přijme. 
-| trasování                | Podrobné protokoly (trasování) emitované prostřednictvím rozhraní Code/protokolovacích rozhraní zaznamenaných prostřednictvím TrackTrace ().
-
+| availabilityResults | Souhrnná data z testů dostupnosti. |
+| browserTimings      | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat. |
+| customEvents        | Vlastní události vytvořené vaší aplikací |
+| customMetrics       | Vlastní metriky vytvořené vaší aplikací |
+| závislosti        | Volání z aplikace do jiných komponent (včetně externích komponent) zaznamenaných prostřednictvím TrackDependency () – například volání REST API, databáze nebo systému souborů. |
+| výjimek          | Výjimky vyvolané modulem runtime aplikace zachycují výjimky na straně serveru i na straně klienta (prohlížeče).|
+| pageViews           | Data o jednotlivých zobrazeních webu s informacemi v prohlížeči |
+| Čítače výkonu | Měření výkonu z výpočetních prostředků, které podporují aplikaci, například čítače výkonu systému Windows. |
+| požádal            | Žádosti přijaté vaší aplikací Například záznam samostatné žádosti se zaznamená do protokolu pro každý požadavek HTTP, který vaše webová aplikace přijme.  |
+| trasování              | Podrobné protokoly (trasování) emitované prostřednictvím rozhraní Code/protokolovacích rozhraní zaznamenaných prostřednictvím TrackTrace (). |
 
 Schéma pro každou tabulku můžete zobrazit na kartě **schématu** v Log Analytics pro aplikaci.
 

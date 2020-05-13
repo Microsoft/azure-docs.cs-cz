@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/12/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2df89bc18ea5d0098ac5ebb0bc06b9df6728705
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ea289dbdf22f76c8ea716acf87b0b1a2da6ef0f9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993764"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196595"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor
 
@@ -40,15 +40,15 @@ Výchozí ceny pro Log Analytics jsou Model průběžných **plateb** na základ
   
 Kromě modelu průběžných plateb Log Analytics má vrstvy **rezervace kapacity** , které vám umožní ve srovnání s průběžnými platbami ušetřit až 25%. Cena za rezervaci kapacity vám umožní koupit rezervaci od 100 GB za den. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Úrovně rezervace kapacity mají 31 dnů v období závazku. Během období závazku můžete přejít na úroveň rezervace kapacity vyšší úrovně (která bude restartovala 31. období závazku), ale nemůžete přejít zpět na průběžné platby nebo na nižší úroveň rezervace kapacity až po dokončení období závazku. Faktura za úrovně rezervace kapacity se provádí každý den. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách Log Analytics s průběžnými platbami a rezervací kapacity. 
 
-Ve všech cenových úrovních se objem dat počítá z řetězcové reprezentace dat, která je připravená k uložení. Některé [vlastnosti společné pro všechny datové typy](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) nejsou zahrnuté do výpočtu velikosti události, `_ResourceId`včetně, `_ItemId` `_IsBillable` a. `_BilledSize`
+Ve všech cenových úrovních se objem dat počítá z řetězcové reprezentace dat, která je připravená k uložení. Některé [vlastnosti společné pro všechny datové typy](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) nejsou zahrnuté do výpočtu velikosti události, včetně `_ResourceId` , `_ItemId` `_IsBillable` a `_BilledSize` .
 
 Všimněte si také, že některá řešení, jako je [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), [Správa konfigurace a konfigurace](https://azure.microsoft.com/pricing/details/automation/) [Azure](https://azure.microsoft.com/pricing/details/azure-sentinel/) , mají své vlastní cenové modely. 
 
-### <a name="log-analytics-clusters"></a>Clustery Log Analytics
+### <a name="log-analytics-dedicated-clusters"></a>Log Analytics vyhrazené clustery
 
-Clustery Log Analytics jsou kolekce pracovních prostorů do jednoho spravovaného clusteru Azure Průzkumník dat pro podporu pokročilých scénářů, jako jsou [klíče spravované zákazníky](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).  Clustery Log Analytics podporují jenom cenový model rezervace kapacity od 1000 GB za den s 25% slevou ve srovnání s cenami za průběžné platby. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Rezervace kapacity clusteru má po zvýšení úrovně rezervace 31 dní období závazku. Během období závazku nelze úroveň rezervace kapacity snížit, ale je možné ji kdykoli zvýšit. Přečtěte si další informace o [vytváření clusterů Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) a [jejich přiřazování k pracovním prostorům](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource).  
+Log Analytics vyhrazené clustery jsou kolekce pracovních prostorů do jednoho spravovaného clusteru Azure Průzkumník dat, který podporuje pokročilé scénáře, jako jsou [klíče spravované zákazníky](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).  Log Analytics vyhrazené clustery podporují jenom cenový model rezervace kapacity od 1000 GB za den s 25% slevou ve srovnání s cenami za průběžné platby. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Rezervace kapacity clusteru má po zvýšení úrovně rezervace 31 dní období závazku. Během období závazku nelze úroveň rezervace kapacity snížit, ale je možné ji kdykoli zvýšit. Přečtěte si další informace o [vytváření clusterů Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) a [jejich přiřazování k pracovním prostorům](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource).  
 
-Úroveň rezervace kapacity clusteru je nakonfigurována prostřednictvím programově Azure Resource Manager s použitím `Capacity` parametru v. `Sku` `Capacity` Hodnota je určena v jednotkách GB a může mít hodnoty 1000 GB/den nebo více v přírůstcích po 100 GB za den. [Zde](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)je podrobně popsán. Pokud váš cluster potřebuje rezervaci nad 2000 GB za den, kontaktujte nás na [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)adrese.
+Úroveň rezervace kapacity clusteru je nakonfigurována prostřednictvím programově Azure Resource Manager s použitím `Capacity` parametru v `Sku` . `Capacity`Hodnota je určena v jednotkách GB a může mít hodnoty 1000 GB/den nebo více v přírůstcích po 100 GB za den. [Zde](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)je podrobně popsán. Pokud váš cluster potřebuje rezervaci nad 2000 GB za den, kontaktujte nás na adrese [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
 Vzhledem k tomu, že faktura pro ingestovaná data probíhá na úrovni clusteru, pracovní prostory přidružené k tomuto clusteru už nemají cenovou úroveň. Množství zpracovaných dat z každého pracovního prostoru přidruženého ke clusteru se agreguje za účelem výpočtu denního vyúčtování clusteru. Všimněte si, že přidělení na základě uzlů z [Azure Security Center](https://docs.microsoft.com/azure/security-center/) se aplikují na úrovni pracovního prostoru před touto agregací agregovaných dat napříč všemi pracovními prostory v clusteru. Uchovávání dat se pořád účtuje na úrovni pracovního prostoru. Všimněte si, že při vytváření clusteru začíná fakturace clusteru bez ohledu na to, jestli byly pracovní prostory přidružené ke clusteru. 
 
@@ -88,7 +88,7 @@ Pokud chcete změnit Log Analytics cenové úrovně vašeho pracovního prostoru
 
 3. Po kontrole odhadovaných nákladů na základě posledních 31 dnů využití se rozhodnete změnit cenovou úroveň kliknutím na **Vybrat**.  
 
-[Cenovou úroveň můžete také nastavit prostřednictvím Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) pomocí `sku` parametru (`pricingTier` v Azure Resource Manager šabloně). 
+[Cenovou úroveň můžete také nastavit prostřednictvím Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) pomocí `sku` parametru ( `pricingTier` v Azure Resource Manager šabloně). 
 
 ## <a name="legacy-pricing-tiers"></a>Starší cenové úrovně
 
@@ -124,8 +124,10 @@ Když je doba uchování nižší, před odebráním nejstarší dat se zobrazí
     
 Uchovávání lze také [nastavit prostřednictvím Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) pomocí `retentionInDays` parametru. Pokud navíc nastavíte uchovávání dat na 30 dní, můžete spustit okamžitou mazání starších dat pomocí `immediatePurgeDataOn30Days` parametru, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce se zveřejňuje jenom prostřednictvím Azure Resource Manager. 
 
+
 Dva datové typy-- `Usage` a `AzureActivity` --se ve výchozím nastavení uchovávají po dobu 90 dnů a za tento 90 dne se neúčtují žádné poplatky. Tyto datové typy jsou také zdarma z poplatků za příjem dat. 
 
+Datové typy z prostředků Application Insights založených na pracovních prostorech ( `AppAvailabilityResults` , `AppBrowserTimings` ,, `AppDependencies` `AppExceptions` , `AppEvents` , `AppMetrics` , `AppPageViews` , `AppPerformanceCounters` , `AppRequests` `AppSystemEvents` a `AppTraces` ) se ve výchozím nastavení uchovávají i po dobu 90 dnů a za toto 90 dne se neúčtují žádné poplatky. Jejich uchování je možné upravit pomocí funkce uchování podle datového typu. 
 
 
 ### <a name="retention-by-data-type"></a>Uchovávání dat podle datového typu
@@ -162,7 +164,7 @@ Chcete-li nastavit uchovávání konkrétního datového typu (v tomto příklad
 
 Platné hodnoty pro `retentionInDays` jsou od 30 do 730.
 
-Datové `Usage` typy `AzureActivity` a nelze nastavit s vlastním uchováváním. Budou platit až do maximálního počtu výchozích uchovávání pracovních prostorů nebo 90 dnů. 
+`Usage` `AzureActivity` Datové typy a nelze nastavit s vlastním uchováváním. Budou platit až do maximálního počtu výchozích uchovávání pracovních prostorů nebo 90 dnů. 
 
 Skvělý nástroj pro připojení přímo k Azure Resource Manager k nastavení možnosti uchovávání informací podle datového typu je [ARMclient](https://github.com/projectkudu/ARMClient)nástroje OSS.  Další informace o ARMclient od článků získáte v článku [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) a [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).  Tady je příklad použití ARMClient a nastavení dat SecurityEvent na 730 dne:
 
@@ -253,7 +255,7 @@ union withsource = tt *
 ```
 
 > [!TIP]
-> Tyto `union *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , zadejte dotaz na datový typ použití (viz níže).
+> Tyto dotazy můžete použít `union *` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , zadejte dotaz na datový typ použití (viz níže).
 
 ## <a name="understanding-ingested-data-volume"></a>Principy ingestných objemů dat
 
@@ -261,7 +263,7 @@ Na stránce **využití a odhadované náklady** zobrazuje ingestování *dat na
 
 ### <a name="data-volume-for-specific-events"></a>Objem dat pro konkrétní události
 
-Chcete-li se podívat na velikost přijatých dat pro určitou sadu událostí, můžete zadat dotaz na konkrétní tabulku (v tomto příkladu `Event`) a pak dotaz omezit na události, které vás zajímají (v tomto příkladě ID události 5145 nebo 5156):
+Chcete-li se podívat na velikost přijatých dat pro určitou sadu událostí, můžete zadat dotaz na konkrétní tabulku (v tomto příkladu `Event` ) a pak dotaz omezit na události, které vás zajímají (v tomto příkladě ID události 5145 nebo 5156):
 
 ```kusto
 Event
@@ -271,7 +273,7 @@ Event
 | summarize count(), Bytes=sum(_BilledSize) by EventID, bin(TimeGenerated, 1d)
 ``` 
 
-Všimněte si, že `where IsBillable = true` klauzule filtruje datové typy z určitých řešení, pro které se neúčtují žádné poplatky za ingestování. 
+Všimněte si, že klauzule `where IsBillable = true` filtruje datové typy z určitých řešení, pro které se neúčtují žádné poplatky za ingestování. 
 
 ### <a name="data-volume-by-solution"></a>Objem dat podle řešení
 
@@ -285,7 +287,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-Klauzule WITH `TimeGenerated` je určena pouze k zajištění toho, aby se možnosti dotazování v Azure Portal vypadaly až za výchozí 24 hodin. Při použití datového typu použití a `StartTime` `EndTime` představují časové intervaly, pro které jsou zobrazeny výsledky. 
+Klauzule WITH `TimeGenerated` je určena pouze k zajištění toho, aby se možnosti dotazování v Azure Portal vypadaly až za výchozí 24 hodin. Při použití datového typu použití `StartTime` a `EndTime` představují časové intervaly, pro které jsou zobrazeny výsledky. 
 
 ### <a name="data-volume-by-type"></a>Objem dat podle typu
 
@@ -312,7 +314,7 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>Objem dat podle počítače
 
-`Usage` Datový typ neobsahuje informace na úrovni počítače. Chcete-li zobrazit **Velikost** zpracovaných dat na jeden počítač, použijte `_BilledSize` [vlastnost](log-standard-properties.md#_billedsize), která poskytuje velikost v bajtech:
+`Usage`Datový typ neobsahuje informace na úrovni počítače. Chcete-li zobrazit **Velikost** zpracovaných dat na jeden počítač, použijte `_BilledSize` [vlastnost](log-standard-properties.md#_billedsize), která poskytuje velikost v bajtech:
 
 ```kusto
 union withsource = tt * 
@@ -335,8 +337,7 @@ union withsource = tt *
 ```
 
 > [!TIP]
-> Tyto `union  *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , pak na něj zadejte dotaz na datový typ použití.
-
+> Tyto dotazy můžete použít `union  *` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , pak na něj zadejte dotaz na datový typ použití.
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Objem dat podle prostředku Azure, skupiny prostředků nebo předplatného
 
@@ -360,18 +361,21 @@ union withsource = tt *
 | summarize BillableDataBytes = sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
-Změnou `subscriptionId` na `resourceGroup` se zobrazí fakturovatelný příjmový objem dat skupinou prostředků Azure. 
+Změnou `subscriptionId` na se `resourceGroup` zobrazí fakturovatelný příjmový objem dat skupinou prostředků Azure. 
 
 > [!TIP]
-> Tyto `union  *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky v rámci předplatného, skupiny prostředků nebo názvu prostředku, pak dotaz na datový typ použití.
+> Tyto dotazy můžete použít `union  *` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky v rámci předplatného, skupiny prostředků nebo názvu prostředku, pak dotaz na datový typ použití.
 
 > [!WARNING]
 > Některá pole datového typu použití, ale stále ve schématu, jsou zastaralá a jejich hodnoty se už neplní. Jedná se o **počítač** a pole související s ingestování (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** a **AverageProcessingTimeMs**).
+
 
 ### <a name="querying-for-common-data-types"></a>Dotazování na Common data types
 
 Pokud chcete dig hlouběji ke zdroji dat pro určitý datový typ, tady jsou některé užitečné příklady dotazů:
 
++ Prostředky **Application Insights založené na pracovním prostoru**
+  - [Další informace](https://docs.microsoft.com/azure/azure-monitor/app/pricing#data-volume-for-workspace-based-application-insights-resources)
 + Řešení **zabezpečení**
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
 + Řešení **pro správu protokolů**
@@ -463,9 +467,9 @@ Rozhodnutí o tom, jestli jsou pracovní prostory s přístupem k starší verzi
 
 K usnadnění tohoto posouzení se dá použít následující dotaz k vytvoření doporučení pro optimální cenovou úroveň na základě vzorů používání pracovního prostoru.  Tento dotaz prohlíží monitorované uzly a data ingestovaná do pracovního prostoru za posledních 7 dnů. každý den vyhodnocuje, která cenová úroveň byla optimální. Chcete-li použít dotaz, je nutné zadat
 
-1. zda pracovní prostor používá Azure Security Center nastavením `workspaceHasSecurityCenter` na `true` nebo, `false` 
+1. zda pracovní prostor používá Azure Security Center nastavením `workspaceHasSecurityCenter` na `true` nebo `false` , 
 2. Aktualizujte ceny, pokud máte specifické slevy a
-3. Zadejte počet dní, po který se má vyhledat a analyzovat `daysToEvaluate`. To je užitečné v případě, že dotaz trvá příliš dlouho, než se podíváme na 7 dní dat. 
+3. Zadejte počet dní, po který se má vyhledat a analyzovat `daysToEvaluate` . To je užitečné v případě, že dotaz trvá příliš dlouho, než se podíváme na 7 dní dat. 
 
 Tady je dotaz doporučení cenové úrovně:
 

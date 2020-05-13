@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 54501e7e00ba8a28dd7cb421232b9a9587604338
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653135"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195135"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Nastavení modulu PowerShell pro virtuální plochu Windows
 
@@ -46,7 +46,7 @@ Dále spusťte následující rutinu pro připojení k Azure:
 Connect-AzAccount
 ```
 
-Přihlášení k účtu Azure vyžaduje kód, který se vygeneruje při spuštění rutiny Connect. Pokud se chcete přihlásit, přejděte <https://microsoft.com/devicelogin>na adresu, zadejte kód a pak se přihlaste pomocí svých přihlašovacích údajů správce Azure.
+Přihlášení k účtu Azure vyžaduje kód, který se vygeneruje při spuštění rutiny Connect. Pokud se chcete přihlásit, přejděte na adresu <https://microsoft.com/devicelogin> , zadejte kód a pak se přihlaste pomocí svých přihlašovacích údajů správce Azure.
 
 ```powershell
 Account SubscriptionName TenantId Environment
@@ -63,7 +63,7 @@ Tím se vás pošle přímo do předplatného, které je ve výchozím nastaven�
 Pokud chcete po přihlášení změnit výchozí předplatné, spusťte tuto rutinu:
 
 ```powershell
-Select-AzureSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
 ```
 
 Když vyberete nové předplatné, které se má použít, nemusíte v rutinách, které spustíte později, zadávat ID tohoto předplatného. Například následující rutina načte konkrétního hostitele relace bez nutnosti ID předplatného:

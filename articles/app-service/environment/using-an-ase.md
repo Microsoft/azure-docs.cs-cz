@@ -4,15 +4,15 @@ description: Naučte se vytvářet, publikovat a škálovat aplikace v App Servi
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 3/26/2020
+ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80586121"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125804"
 ---
 # <a name="use-an-app-service-environment"></a>Použití prostředí App Service Environment
 
@@ -36,7 +36,7 @@ Pokud nemáte pomocného mechanismu řízení, můžete ho vytvořit podle pokyn
 
 Vytvoření aplikace v pomocném mechanismu řízení:
 
-1. Vyberte **vytvořit prostředek** > **web a mobilní zařízení** > **webovou aplikaci**.
+1. Vyberte **vytvořit prostředek**  >  **web a mobilní zařízení**  >  **webovou aplikaci**.
 
 1. Zadejte název aplikace. Pokud jste už v pomocném mechanismu řízení vybrali plán App Service, bude název domény pro aplikaci odpovídat názvu domény pomocného mechanismu řízení:
 
@@ -104,14 +104,14 @@ Prostředky front-endu jsou koncovým bodem HTTP/HTTPS pro pomocného bodu služ
 
 ## <a name="app-access"></a>Přístup k aplikacím
 
-V externím pomocném mechanismu pro vytváření aplikací je přípona domény používaná k vytvoření aplikace *.&lt; asename&gt;. p.azurewebsites.NET*. Pokud má váš pomocný přístup s názvem _External-_ pojmenování a Vy hostte aplikaci s názvem _Contoso_ v tomto pomocném mechanismu, dostanete se na tyto adresy URL:
+V externím pomocném mechanismu pro vytváření aplikací je přípona domény používaná k vytvoření aplikace *. &lt; asename &gt; . p.azurewebsites.NET*. Pokud má váš pomocný přístup s názvem _External-_ pojmenování a Vy hostte aplikaci s názvem _Contoso_ v tomto pomocném mechanismu, dostanete se na tyto adresy URL:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
 Informace o tom, jak vytvořit externí pomocného mechanismu řízení, najdete v tématu [vytvoření App Service Environment][MakeExternalASE].
 
-V interního nástroje pomocném mechanismu pro vytváření aplikací je přípona domény používaná k vytvoření aplikace *.&lt; asename&gt;. appserviceenvironment.NET*. Pokud je váš správce _přihlášený jako interního nástroje-pomocného_ mechanismu a v tomto pomocném mechanismu je hostitelem aplikace s názvem _Contoso_ , dostanete se na tyto adresy URL:
+V interního nástroje pomocném mechanismu pro vytváření aplikací je přípona domény používaná k vytvoření aplikace *. &lt; asename &gt; . appserviceenvironment.NET*. Pokud je váš správce _přihlášený jako interního nástroje-pomocného_ mechanismu a v tomto pomocném mechanismu je hostitelem aplikace s názvem _Contoso_ , dostanete se na tyto adresy URL:
 
 - contoso.ilb-ase.appserviceenvironment.net
 - contoso.scm.ilb-ase.appserviceenvironment.net
@@ -122,19 +122,26 @@ Adresa URL SCM se používá pro přístup ke konzole Kudu nebo k publikování 
 
 ### <a name="dns-configuration"></a>Konfigurace DNS 
 
-Když použijete externí pomocného Správce služby, aplikace vytvořené ve vašem pomocném mechanismu se zaregistrují s Azure DNS. Pomocí pomocného mechanismu interního nástroje musíte spravovat vlastní DNS. 
+Když použijete externí pomocného Správce služby, aplikace vytvořené ve vašem pomocném mechanismu se zaregistrují s Azure DNS. V externím pomocném mechanismu pro vaše aplikace neexistují žádné další kroky, které by měly být veřejně dostupné. Pomocí pomocného mechanismu interního nástroje musíte spravovat vlastní DNS. Můžete to udělat na svém vlastním serveru DNS nebo Azure DNS privátních zónách.
 
-Konfigurace DNS pomocí pomocného programu interního nástroje:
+Postup konfigurace DNS na vlastním serveru DNS pomocí pomocného mechanismu pro interního nástroje:
 
-    create a zone for <ASE name>.appserviceenvironment.net
-    create an A record in that zone that points * to the ILB IP address
-    create an A record in that zone that points @ to the ILB IP address
-    create a zone in <ASE name>.appserviceenvironment.net named scm
-    create an A record in the scm zone that points * to the ILB IP address
+1. vytvořit zónu pro <ASE name> . appserviceenvironment.NET
+1. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+1. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+1. vytvoření zóny v <ASE name> . appserviceenvironment.NET s názvem SCM
+1. Vytvořte v zóně SCM záznam A, který odkazuje na IP adresu interního nástroje.
 
-Nastavení DNS pro výchozí příponu vaší domény pro přístup k uživateli neomezuje vaše aplikace tak, aby byly dostupné jenom pro tyto názvy. V pomocném mechanismu interního nástroje můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem *contoso.NET*, můžete to udělat a nasměrovat ji na interního nástroje IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze na adrese * &lt;AppName&gt;.&lt; SCM. asename&gt;. appserviceenvironment.NET*. 
+Postup při konfiguraci DNS v privátních zónách Azure DNS:
 
-Zóna s názvem *.&lt; asename&gt;. appserviceenvironment.NET* je globálně jedinečný. Od května 2019 mohou zákazníci zadat příponu interního nástroje pomocného programu pro přístup k doméně. Pokud jste chtěli použít *. contoso.com* pro příponu domény, mohli byste tak učinit a zahrnovat web SCM. S tímto modelem byly problémy, včetně; Správa výchozího certifikátu SSL, nedostatečného jednotného přihlašování s webem SCM a požadavek na použití certifikátu se zástupnými znaky. Proces upgradu výchozího certifikátu interního nástroje pomocného programu pro pořízení byl také narušen a způsobil, že aplikace bude restartována. Aby bylo možné tyto problémy vyřešit, bylo chování pomocného programu interního nástroje změněno tak, aby používalo příponu domény na základě názvu pomocného programu a s příponou vlastněné společností Microsoft. Změna chování pomocného mechanismu interního nástroje má vliv pouze na interního nástroje služby ASE, které byly provedeny po 2019. května. Stávající interního nástroje služby ASE musí stále spravovat výchozí certifikát pro přihlašovací seznam a jejich konfiguraci DNS.
+1. vytvořit privátní zónu Azure DNS s názvem <ASE name> . appserviceenvironment.NET
+1. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+1. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
+1. Vytvořte v této zóně záznam A, který odkazuje *. SCM na IP adresu interního nástroje.
+
+Nastavení DNS pro výchozí příponu vaší domény pro přístup k uživateli neomezuje vaše aplikace tak, aby byly dostupné jenom pro tyto názvy. V pomocném mechanismu interního nástroje můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem *contoso.NET*, můžete to udělat a nasměrovat ji na interního nástroje IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze na adrese * &lt; AppName &gt; . SCM. &lt; asename &gt; . appserviceenvironment.NET*. 
+
+Zóna s názvem *. &lt; asename &gt; . appserviceenvironment.NET* je globálně jedinečný. Od května 2019 mohou zákazníci zadat příponu interního nástroje pomocného programu pro přístup k doméně. Pokud jste chtěli použít *. contoso.com* pro příponu domény, mohli byste tak učinit a zahrnovat web SCM. S tímto modelem byly problémy, včetně; Správa výchozího certifikátu SSL, nedostatečného jednotného přihlašování s webem SCM a požadavek na použití certifikátu se zástupnými znaky. Proces upgradu výchozího certifikátu interního nástroje pomocného programu pro pořízení byl také narušen a způsobil, že aplikace bude restartována. Aby bylo možné tyto problémy vyřešit, bylo chování pomocného programu interního nástroje změněno tak, aby používalo příponu domény na základě názvu pomocného programu a s příponou vlastněné společností Microsoft. Změna chování pomocného mechanismu interního nástroje má vliv pouze na interního nástroje služby ASE, které byly provedeny po 2019. května. Stávající interního nástroje služby ASE musí stále spravovat výchozí certifikát pro přihlašovací seznam a jejich konfiguraci DNS.
 
 ## <a name="publishing"></a>Publikování
 
@@ -152,11 +159,11 @@ Pomocí pomocného mechanismu pro interního nástroje jsou koncové body publik
 
 Bez dalších změn nebudou internetové systémy CI, jako je GitHub a Azure DevOps, fungovat s pomocným mechanismem interního nástroje, protože koncový bod publikování není přístupný na internetu. Publikování na interního nástroje pomocného mechanismu pro Azure můžete povolit z Azure DevOps tím, že ve virtuální síti nainstalujete samoobslužného agenta pro vydanou verzi, který obsahuje ovládací prvek interního nástroje. Alternativně můžete také použít systém CI, který využívá model Pull, jako je třeba Dropbox.
 
-Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Můžete ji zobrazit v publikačním profilu aplikace a v podokně portálu aplikace (v části **Přehled** > **Essentials** a také ve **vlastnostech**).
+Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Můžete ji zobrazit v publikačním profilu aplikace a v podokně portálu aplikace (v části **Přehled**  >  **Essentials** a také ve **vlastnostech**).
 
 ## <a name="storage"></a>Storage
 
-Pomocného programu má 1 TB úložiště pro všechny aplikace v pomocném formuláři. Plán App Service v izolovaném cenovém SKLADě s izolací má ve výchozím nastavení limit 250 GB. Pokud máte pět nebo víc App Service plánů, dejte pozor, abyste nepřekročili limit 1 TB pomocného mechanismu pro čtení. Pokud v jednom App Service plánu potřebujete vyšší limit 250 GB, obraťte se na podporu, aby se limit App Service plánu upravil na maximálně 1 TB. V případě, že se limit plánu upraví, ve všech plánech App Service v pomocném mechanismu řízení se stále omezuje 1 TB.
+Pomocného programu má 1 TB úložiště pro všechny aplikace v pomocném formuláři. Plán App Service v izolované cenové SKU má limit 250 GB. V rámci pomocného mechanismu se 250 GB úložiště přidají za App Service plánu až do velikosti 1 TB. Můžete mít více App Service plánů než jenom čtyři, ale za omezení 1 TB se nepřidalo žádné další úložiště.
 
 ## <a name="logging"></a>protokolování
 
@@ -164,16 +171,16 @@ Pomocí Azure Monitor můžete integrovat své pomocného mechanismu pro odesíl
 
 | Status | Zpráva |
 |---------|----------|
-| Pomocného mechanismu není v pořádku. | Zadaný pomocného mechanismu není v pořádku kvůli neplatné konfiguraci virtuální sítě. Pozastavený pomocného mechanismu bude pozastaven, pokud stav není v pořádku. Ujistěte se, že jsou uvedené pokyny, https://docs.microsoft.com/azure/app-service/environment/network-infokteré jsou tady definované:. |
+| Pomocného mechanismu není v pořádku. | Zadaný pomocného mechanismu není v pořádku kvůli neplatné konfiguraci virtuální sítě. Pozastavený pomocného mechanismu bude pozastaven, pokud stav není v pořádku. Ujistěte se, že jsou uvedené pokyny, které jsou tady definované: https://docs.microsoft.com/azure/app-service/environment/network-info . |
 | Podsíť pomocného mechanismu je skoro mimo prostor. | Zadaný přihlášený se nachází v podsíti, která nemá skoro dostatek místa. Existují {0} zbývající adresy. Po vyčerpání těchto adres se pomocného mechanismu nebude moct škálovat.  |
-| Pomocného mechanismu se blíží celkovému limitu instancí. | Zadaný pomocného mechanismu se blíží celkovému limitu instancí pomocného mechanismu. V současné době {0} obsahuje App Service instance plánů s maximálním počtem 201 instancí. |
-| Pomocného mechanismu se nemůže spojit se závislostí. | Zadaný přidaný přístup k tomuto mechanismu se {0}nemůže spojit.  Ujistěte se, že jsou uvedené pokyny, https://docs.microsoft.com/azure/app-service/environment/network-infokteré jsou tady definované:. |
+| Pomocného mechanismu se blíží celkovému limitu instancí. | Zadaný pomocného mechanismu se blíží celkovému limitu instancí pomocného mechanismu. V současné době obsahuje {0} App Service instance plánů s maximálním počtem 201 instancí. |
+| Pomocného mechanismu se nemůže spojit se závislostí. | Zadaný přidaný přístup k tomuto mechanismu se nemůže spojit {0} .  Ujistěte se, že jsou uvedené pokyny, které jsou tady definované: https://docs.microsoft.com/azure/app-service/environment/network-info . |
 | Pozastavený pomocný | Zadaný pomocného mechanismu je pozastaven. Pozastavení pomocného mechanismu může být způsobené nedostatkem účtu nebo konfigurací neplatné virtuální sítě. Vyřešte hlavní příčinu a obnovte pomocného mechanismu řízení a pokračujte v obsluze provozu. |
 | Byl spuštěn upgrade pomocného mechanismu. | Začaly se upgradovat na zadanou pomocného objektem. Očekává zpoždění operací škálování. |
 | Upgrade pomocného mechanismu se dokončil. | Upgrade platformy na zadaný pomocného objektu se dokončil. |
-| Operace škálování se zahájily. | App Service plán ({0}) zahájil škálování. Požadovaný stav: {1} mám{2} pracovní procesy.
-| Operace škálování se dokončily. | Škálování plánu ({0}) App Service bylo dokončeno. Aktuální stav: {1} jsem{2} zaměstnanci. |
-| Operace škálování se nezdařily. | Škálování schématu App Service ({0}) se nezdařilo. Aktuální stav: {1} jsem{2} zaměstnanci. |
+| Operace škálování se zahájily. | App Service plán ( {0} ) zahájil škálování. Požadovaný stav: {1} mám {2} pracovní procesy.
+| Operace škálování se dokončily. | Škálování plánu ( {0} ) App Service bylo dokončeno. Aktuální stav: {1} jsem {2} zaměstnanci. |
+| Operace škálování se nezdařily. | Škálování schématu App Service ( {0} ) se nezdařilo. Aktuální stav: {1} jsem {2} zaměstnanci. |
 
 Postup povolení protokolování v přihlašovacím MECHANISMech:
 
@@ -200,16 +207,16 @@ Pokud chcete vytvořit výstrahu proti svým protokolům, postupujte podle pokyn
 
 ## <a name="upgrade-preference"></a>Předvolba upgradu
 
-Pokud máte více služby ASE, možná budete chtít, aby některé služby ASE byly upgradovány ještě před ostatními. V rámci objektu pomocného **třída hostingenvironment správce prostředků** objekt můžete nastavit hodnotu **upgradePreference**. Nastavení **upgradePreference** se dá nakonfigurovat pomocí šablony, ARMClient nebo https://resources.azure.com. Tři možné hodnoty jsou:
+Pokud máte více služby ASE, možná budete chtít, aby některé služby ASE byly upgradovány ještě před ostatními. V rámci objektu pomocného **třída hostingenvironment správce prostředků** objekt můžete nastavit hodnotu **upgradePreference**. Nastavení **upgradePreference** se dá nakonfigurovat pomocí šablony, ARMClient nebo https://resources.azure.com . Tři možné hodnoty jsou:
 
 - **Žádné**: Azure provede upgrade pomocného mechanismu v žádné konkrétní dávce. Tato hodnota je výchozí.
 - **Brzy**: vaše pomocného programu bude upgradován v první polovině App Service upgradu.
 - **Pozdě**: vaše pomocného programu bude upgradován v druhé polovině App Service upgradu.
 
-Pokud používáte https://resources.azure.com, nastavte hodnotu **upgradePreferences** pomocí těchto kroků:
+Pokud používáte https://resources.azure.com , nastavte hodnotu **upgradePreferences** pomocí těchto kroků:
 
 1. Přejít na resources.azure.com a přihlaste se pomocí svého účtu Azure.
-1. Projděte\/\[si materiály k předplatným\]\/název\/\[předplatné resourceGroups název\]\/skupiny\/prostředků poskytovatelé\/název\/\[Microsoft.\]web hostingEnvironments pomocné jméno.
+1. Projděte si materiály k předplatným \/ \[ název předplatné \] \/ resourceGroups název \/ \[ skupiny prostředků \] \/ poskytovatelé název \/ Microsoft. Web \/ hostingEnvironments \/ \[ pomocné jméno \] .
 1. V horní části vyberte **čtení i zápis** .
 1. Vyberte **Upravit**.
 1. Nastavte **upgradePreference** na jednu ze tří hodnot, které chcete.

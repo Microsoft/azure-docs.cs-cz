@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: a6ea53e098a002e902d6ee6632f08dd7f2b63ca5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e5cb997bee271a1bf1c795598d0ddfda3373264
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811656"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197155"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Doporučení zabezpečení – referenční příručka
 
@@ -40,7 +40,7 @@ Vaše zabezpečené skóre vychází z počtu Security Center doporučení, kter
 |**Function App by měl být přístupný jenom přes HTTPS**|Povolte přístup pouze HTTPS pro aplikace Function App. Použití protokolu HTTPS zajišťuje ověřování serveru nebo služby a chrání data při přenosu z útoků s odposloucháváním síťové vrstvy.<br>(Související zásady: Function App by měly být přístupné jenom přes HTTPS)|Střednědobé používání|**Ano**|Function App|
 |**Virtuální počítače s přístupem k Internetu by měly být chráněné pomocí skupin zabezpečení sítě**|Povolte skupinám zabezpečení sítě řízení přístupu k síti virtuálních počítačů.<br>(Související zásady: virtuální počítače s přístupem k Internetu by měly být chráněné pomocí skupin zabezpečení sítě.)|Vysoká/střední|Ne|Virtuální počítač|
 |**Předávání IP na virtuálním počítači by mělo být zakázané.**|Zakažte předávání IP. Když je na síťové kartě virtuálního počítače povolené předávání IP, může tento počítač přijímat přenosy adresované do jiných cílů. Předávání IP adres se nevyžaduje zřídka (například při použití virtuálního počítače jako síťového virtuálního zařízení), a proto by mělo být přezkoumáno týmem zabezpečení sítě.<br>(Související zásady: [Preview]: předávání IP na virtuálním počítači by mělo být zakázané.)|Střednědobé používání|Ne|Virtuální počítač|
-|**Na virtuálních počítačích by se mělo použít řízení přístupu k síti za běhu**|Použijte řízení přístupu k virtuálnímu počítači JIT (just-in-time) k trvalému uzamčení přístupu k vybraným portům a povolte oprávněným uživatelům, aby je mohli otevřít přes JIT, jenom po omezené množství času.<br>(Související zásady: řízení přístupu k síti za běhu by mělo být na virtuálních počítačích použito.)|Vysoká|Ne|Virtuální počítač|
+|**Porty pro správu virtuálních počítačů by měly být chráněné pomocí řízení přístupu k síti za běhu**|Použijte řízení přístupu k virtuálnímu počítači JIT (just-in-time) k trvalému uzamčení přístupu k vybraným portům a povolte oprávněným uživatelům, aby je mohli otevřít přes JIT, jenom po omezené množství času.<br>(Související zásady: porty pro správu virtuálních počítačů by měly být chráněné pomocí řízení přístupu k síti za běhu)|Vysoká|Ne|Virtuální počítač|
 |**Porty pro správu by měly být uzavřeny na virtuálních počítačích**|Posílení skupiny zabezpečení sítě virtuálních počítačů pro omezení přístupu k portům pro správu.<br>(Související zásady: porty pro správu by měly být uzavřeny na virtuálních počítačích)|Vysoká|Ne|Virtuální počítač|
 |**Měl by se povolit zabezpečený přenos do účtů úložiště**|Povolte zabezpečený přenos do účtů úložiště. Zabezpečený přenos je možnost, která vynutí, aby váš účet úložiště přijímal požadavky jenom od zabezpečených připojení (HTTPS). Použití protokolu HTTPS zajišťuje ověřování mezi serverem a službou a chrání přenášená data z útoků síťové vrstvy, jako jsou například útoky prostředníkem, odposlouchávání a napadení relace.<br>(Související zásady: zabezpečený přenos do účtů úložiště by měl být povolený.)|Vysoká|**Ano**|Účet úložiště|
 |**Podsítě by měly být přidružené ke skupině zabezpečení sítě.**|Povolte skupinám zabezpečení sítě řídit síťový přístup k prostředkům nasazeným v podsítích.<br>(Související zásady: podsítě by měly být přidružené ke skupině zabezpečení sítě.<br>Tato zásada je ve výchozím nastavení zakázaná.|Vysoká/střední|Ne|Podsíť|

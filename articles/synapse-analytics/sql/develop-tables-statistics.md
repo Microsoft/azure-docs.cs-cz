@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89baa069543c0571d42807f8034e6008eaddbc8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676940"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197598"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistika v synapse SQL
 
@@ -34,7 +34,7 @@ Například pokud Optimalizátor odhadne, že datum, na kterém dotaz vyfiltruje
 
 ### <a name="automatic-creation-of-statistics"></a>Automatické vytváření statistik
 
-Pokud je možnost databáze AUTO_CREATE_STATISTICS nastavena na `ON`hodnotu, bude fond SQL analyzovat příchozí dotazy uživatelů pro chybějící statistiky.  Pokud Statistika chybí, vytvoří Optimalizátor dotazů statistiku pro jednotlivé sloupce v predikátu dotazu nebo v podmínce připojení. Tato funkce slouží ke zlepšení odhadů mohutnosti pro plán dotazu.
+Pokud je možnost databáze AUTO_CREATE_STATISTICS nastavena na hodnotu, bude fond SQL analyzovat příchozí dotazy uživatelů pro chybějící statistiky `ON` .  Pokud Statistika chybí, vytvoří Optimalizátor dotazů statistiku pro jednotlivé sloupce v predikátu dotazu nebo v podmínce připojení. Tato funkce slouží ke zlepšení odhadů mohutnosti pro plán dotazu.
 
 > [!IMPORTANT]
 > Automatické vytváření statistik je teď ve výchozím nastavení zapnuté.
@@ -149,7 +149,7 @@ Následující principy GUID jsou k dispozici pro aktualizaci statistik během p
 - Zaměřte se na sloupce účastnící se klauzulí JOIN, GROUP BY, ORDER BY a DISTINCT.
 - Zvažte možnost aktualizovat sloupce vzestupného klíče, jako je například datum transakce častěji, protože tyto hodnoty nebudou zahrnuty do statistického histogramu.
 - Zvažte možnost aktualizace statických distribučních sloupců méně často.
-- Nezapomeňte, že každý objekt statistiky se aktualizuje v sekvenci. Pouhá `UPDATE STATISTICS <TABLE_NAME>` implementace není vždy ideální, zejména pro nejrůznější tabulky s velkým množstvím objektů statistiky.
+- Nezapomeňte, že každý objekt statistiky se aktualizuje v sekvenci. Pouhá implementace `UPDATE STATISTICS <TABLE_NAME>` není vždy ideální, zejména pro nejrůznější tabulky s velkým množstvím objektů statistiky.
 
 Další informace najdete v tématu [odhad mohutnosti](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
@@ -239,7 +239,7 @@ Chcete-li vytvořit objekt statistiky s více sloupci, použijte předchozí př
 > [!NOTE]
 > Histogram, který se používá k odhadu počtu řádků ve výsledku dotazu, je k dispozici pouze pro první sloupec uvedený v definici objektu statistice.
 
-V tomto příkladu je histogram v *kategorii produktu\_*. Statistiky mezi sloupci se počítají podle *kategorií produktů\_* a *sub_category produktů\_*:
+V tomto příkladu je histogram v * \_ kategorii produktu*. Statistiky mezi sloupci se počítají podle * \_ kategorií produktů* a * \_ sub_category produktů*:
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -248,7 +248,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-Vzhledem k tomu, že existuje korelace mezi *kategorií produktů\_* a *\_\_podkategoriím produktu*, může být objekt statistiky s více sloupci užitečný, pokud jsou k těmto sloupcům přistupovaly ve stejnou dobu.
+Vzhledem k tomu, že existuje korelace mezi * \_ kategorií produktů* a * \_ \_ podkategoriím produktu*, může být objekt statistiky s více sloupci užitečný, pokud jsou k těmto sloupcům přistupovaly ve stejnou dobu.
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>Vytvořit statistiku pro všechny sloupce v tabulce
 
@@ -611,6 +611,8 @@ Následující příklady vám ukážou, jak používat různé možnosti vytvá
 
 > [!NOTE]
 > V tuto chvíli můžete vytvořit statistiky s jedním sloupcem.
+>
+> Procedura sp_create_file_statistics bude přejmenována na sp_create_openrowset_statistics. Role veřejného serveru má udělené oprávnění Správa HROMADných operací, zatímco role veřejné databáze má oprávnění ke spouštění pro sp_create_file_statistics a sp_drop_file_statistics. To může být v budoucnu změněno.
 
 K vytvoření statistiky se používá následující uložená procedura:
 
@@ -695,6 +697,9 @@ Chcete-li aktualizovat statistiku, je třeba vyřadit a vytvořit statistiku. K 
 ```sql
 sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
 ```
+
+> [!NOTE]
+> Procedura sp_drop_file_statistics bude přejmenována na sp_drop_openrowset_statistics. Role veřejného serveru má udělené oprávnění Správa HROMADných operací, zatímco role veřejné databáze má oprávnění ke spouštění pro sp_create_file_statistics a sp_drop_file_statistics. To může být v budoucnu změněno.
 
 Argumenty: [ @stmt =] N ' statement_text ' – určuje stejný příkaz jazyka Transact-SQL, který se používá při vytváření statistik.
 

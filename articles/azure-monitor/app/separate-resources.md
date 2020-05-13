@@ -1,18 +1,18 @@
 ---
-title: Oddělení telemetrie v Azure Application Insights
+title: Jak navrhnout nasazení Application Insights – jeden vs mnoho prostředků?
 description: Přímá telemetrie na různé prostředky pro vývoj, testování a produkční razítka.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 05/11/2020
+ms.openlocfilehash: 6df6622cbba251c221533c3307dc194f08e871fb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562147"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125685"
 ---
-# <a name="separating-telemetry-from-development-test-and-production"></a>Oddělení telemetrie od vývoje, testování a produkce
+# <a name="how-many-application-insights-resources-should-i-deploy"></a>Kolik prostředků Application Insights mám nasadit
 
-Při vývoji další verze webové aplikace nechcete kombinovat [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetrii od nové verze a již vydané verze. Chcete-li předejít nejasnostem, zasílejte telemetrii z různých fází vývoje a oddělte Application Insights prostředky se samostatnými klíči instrumentace (instrumentační klíče). Aby bylo snazší změnit klíč instrumentace, protože verze se přesouvá z jedné fáze na jinou, může být užitečné nastavit ikey v kódu místo v konfiguračním souboru. 
+Při vývoji další verze webové aplikace nechcete kombinovat [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetrii od nové verze a již vydané verze. Chcete-li předejít nejasnostem, zasílejte telemetrii z různých fází vývoje a oddělte Application Insights prostředky se samostatnými klíči instrumentace (instrumentační klíče). Aby bylo snazší změnit klíč instrumentace, protože verze se přesouvá z jedné fáze na jinou, může být užitečné nastavit ikey v kódu místo v konfiguračním souboru.
 
 (Pokud je váš systém cloudová služba Azure, existuje [Další metoda nastavení samostatné instrumentační klíče](../../azure-monitor/app/cloudservices.md).)
 
@@ -22,7 +22,7 @@ Když nastavíte Application Insights Monitoring pro webovou aplikaci, vytvoří
 
 Každý Application Insights prostředek obsahuje metriky, které jsou k dispozici předem. Pokud se zcela samostatné komponenty hlásí ke stejnému Application Insights prostředku, tyto metriky nemusí mít smysl na řídicí panel nebo výstrahy.
 
-### <a name="use-a-single-application-insights-resource"></a>Použít jeden prostředek Application Insights
+### <a name="when-to-use-a-single-application-insights-resource"></a>Kdy použít jeden prostředek Application Insights
 
 -   Pro součásti aplikace, které jsou nasazeny dohromady. Obvykle vyvinutá jediným týmem, který je spravovaný stejnou sadou uživatelů DevOps/ITOps.
 -   Pokud má smysl agregovat klíčové ukazatele výkonu (KPI), jako jsou například doby trvání odezvy, míry selhání v řídicím panelu atd., ve výchozím nastavení je můžete rozdělit na všechny z nich (v prostředí Průzkumník metrik můžete segmentovat podle názvu role).
@@ -93,7 +93,7 @@ Vlastnost verze aplikace se nastavuje několika různými způsoby.
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
 * Zabalte tento řádek do [inicializátoru telemetrie](../../azure-monitor/app/api-custom-events-metrics.md#defaults) , aby se zajistilo, že všechny instance TelemetryClient jsou nastavené konzistentně.
-* [ASP.NET] Nastavte verzi v `BuildInfo.config`. Webový modul vybere z uzlu BuildLabel verzi. Zahrňte tento soubor do projektu a nezapomeňte nastavit vlastnost kopírovat vždy v Průzkumník řešení.
+* [ASP.NET] Nastavte verzi v `BuildInfo.config` . Webový modul vybere z uzlu BuildLabel verzi. Zahrňte tento soubor do projektu a nezapomeňte nastavit vlastnost kopírovat vždy v Průzkumník řešení.
 
     ```XML
 
@@ -108,7 +108,7 @@ Vlastnost verze aplikace se nastavuje několika různými způsoby.
     </DeploymentEvent>
 
     ```
-* [ASP.NET] Vygenerujte BuildInfo. config automaticky v MSBuild. Uděláte to tak, že do `.csproj` souboru přidáte několik řádků:
+* [ASP.NET] Vygenerujte BuildInfo. config automaticky v MSBuild. Uděláte to tak, že do souboru přidáte několik řádků `.csproj` :
 
     ```XML
 
@@ -121,7 +121,7 @@ Vlastnost verze aplikace se nastavuje několika různými způsoby.
 
     Popisek sestavení obsahuje zástupný symbol (AutoGen_...) při sestavování pomocí sady Visual Studio. Ale při sestavení pomocí nástroje MSBuild se naplní správným číslem verze.
 
-    Pokud chcete, aby nástroj MSBuild vygeneroval čísla verzí, nastavte `1.0.*` verzi jako v AssemblyReference.cs.
+    Pokud chcete, aby nástroj MSBuild vygeneroval čísla verzí, nastavte verzi jako `1.0.*` v AssemblyReference.cs.
 
 ## <a name="version-and-release-tracking"></a>Sledování verzí a vydání
 Pokud chcete sledovat verzi aplikace, ujistěte se, že proces Microsoft Build Engine vygeneroval soubor `buildinfo.config`. Do `.csproj` souboru přidejte:  

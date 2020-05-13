@@ -7,12 +7,12 @@ ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: e20271e381f2e7023dca3c3382c9f329a5149a62
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: f4e0bbd546b770b9e81bb9142cdd97e3927db7bd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872564"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195947"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Použití emulátoru Azurite pro místní Azure Storage vývoj a testování (Preview)
 
@@ -88,7 +88,7 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 
 **Spusťte image Docker Azurite**:
 
-Následující příkaz spustí image Docker Azurite. `-p 10000:10000` Parametr přesměrovává požadavky z portu hostitelského počítače 10000 na instanci Docker.
+Následující příkaz spustí image Docker Azurite. `-p 10000:10000`Parametr přesměrovává požadavky z portu hostitelského počítače 10000 na instanci Docker.
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 \
@@ -142,7 +142,7 @@ Pokud chcete začít hned s příkazovým řádkem, vytvořte adresář s názve
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 ```
 
-Tento příkaz oznamuje Azurite, aby ukládal všechna data do konkrétního adresáře *c:\azurite*. Pokud je `--location` Tato možnost vynechána, použije se aktuální pracovní adresář.
+Tento příkaz oznamuje Azurite, aby ukládal všechna data do konkrétního adresáře *c:\azurite*. Pokud `--location` je tato možnost vynechána, použije se aktuální pracovní adresář.
 
 ## <a name="command-line-options"></a>Možnosti příkazového řádku
 
@@ -150,7 +150,7 @@ Tato část podrobně popisuje přepínače příkazového řádku, které jsou 
 
 ### <a name="help"></a>Nápověda
 
-**Volitelné** – získat nápovědu příkazového řádku pomocí přepínače `-h` nebo. `--help`
+**Volitelné** – získat nápovědu příkazového řádku pomocí `-h` `--help` přepínače nebo.
 
 ```console
 azurite -h
@@ -239,7 +239,7 @@ Používaný port se zobrazí při spuštění Azurite.
 
 ### <a name="workspace-path"></a>Cesta k pracovnímu prostoru
 
-**Volitelné** – Azurite ukládá data na místní disk během provádění. Pomocí přepínače `-l` nebo `--location` zadejte cestu k umístění pracovního prostoru. Ve výchozím nastavení se použije aktuální pracovní adresář procesu. Poznamenejte si malé písmeno l.
+**Volitelné** – Azurite ukládá data na místní disk během provádění. Pomocí `-l` přepínače nebo `--location` Zadejte cestu k umístění pracovního prostoru. Ve výchozím nastavení se použije aktuální pracovní adresář procesu. Poznamenejte si malé písmeno l.
 
 ```console
 azurite -l c:\azurite
@@ -248,7 +248,7 @@ azurite --location c:\azurite
 
 ### <a name="access-log"></a>Přístup k protokolu
 
-**Volitelné** – ve výchozím nastavení se protokol přístupu zobrazí v okně konzoly. Zakažte zobrazování protokolu přístupu pomocí přepínače `-s` nebo. `--silent`
+**Volitelné** – ve výchozím nastavení se protokol přístupu zobrazí v okně konzoly. Zakažte zobrazování protokolu přístupu pomocí `-s` `--silent` přepínače nebo.
 
 ```console
 azurite -s
@@ -265,7 +265,7 @@ azurite --debug path/debug.log
 
 ### <a name="loose-mode"></a>Volný režim
 
-**Volitelné** – ve výchozím nastavení Azurite použije striktní režim pro blokování nepodporovaných hlaviček a parametrů požadavků. Zakažte striktní režim pomocí přepínače `-L` nebo `--loose` . Všimněte si, že se jedná o velké písmeno L.
+**Volitelné** – ve výchozím nastavení Azurite použije striktní režim pro blokování nepodporovaných hlaviček a parametrů požadavků. Zakažte striktní režim pomocí `-L` přepínače nebo `--loose` . Všimněte si, že se jedná o velké písmeno L.
 
 ```console
 azurite -L
@@ -273,7 +273,7 @@ azurite --loose
 ```
 ### <a name="version"></a>Verze
 
-**Volitelné** – zobrazí se číslo nainstalované verze Azurite pomocí přepínače `-v` nebo. `--version`
+**Volitelné** – zobrazí se číslo nainstalované verze Azurite pomocí `-v` `--version` přepínače nebo.
 
 ```console
 azurite -v
@@ -307,7 +307,7 @@ azurite --oauth basic --cert path/server.pem --key path/key.pem
 ```
 
 > [!NOTE]
-> OAuth vyžaduje koncový bod HTTPS. Zajistěte, aby byl protokol `--cert` https povolený přepínačem spolu s `--oauth` přepínačem.
+> OAuth vyžaduje koncový bod HTTPS. Zajistěte, aby byl protokol HTTPS povolený `--cert` přepínačem spolu s `--oauth` přepínačem.
 
 Azurite podporuje základní ověřování zadáním `basic` parametru pro `--oauth` přepínač. Azurite provede základní ověřování, jako je ověřování příchozího tokenu nosiče, kontrola vystavitele, cílové skupiny a vypršení platnosti. Azurite nekontroluje podpis nebo oprávnění tokenu.
 
@@ -326,7 +326,7 @@ Azurite přijímá stejný dobře známý účet a klíč, který používá sta
 
 ### <a name="custom-storage-accounts-and-keys"></a>Vlastní účty úložiště a klíče
 
-Azurite podporuje vlastní názvy a klíče účtu úložiště nastavením proměnné `AZURITE_ACCOUNTS` prostředí v následujícím formátu:. `account1:key1[:key2];account2:key1[:key2];...`
+Azurite podporuje vlastní názvy a klíče účtu úložiště nastavením `AZURITE_ACCOUNTS` proměnné prostředí v následujícím formátu: `account1:key1[:key2];account2:key1[:key2];...` .
 
 Použijte například vlastní účet úložiště, který má jeden klíč:
 
@@ -461,20 +461,22 @@ K zobrazení dat uložených v Azurite můžete použít Průzkumník služby St
 
 V Průzkumník služby Storage se připojte k Azurite pomocí následujících kroků:
 
- 1. Vyberte ikonu **Přidat účet** .
+ 1. Vyberte ikonu **Spravovat účty** .
+ 1. Vyberte **Přidat účet** .
  1. Vybrat **připojit k místnímu emulátoru**
  1. Vybrat **Další**
+ 1. Upravte pole **zobrazované jméno** na název dle vašeho výběru.
  1. Znovu vybrat **Další**
  1. Vyberte **připojit**
 
 #### <a name="connect-to-azurite-using-https"></a>Připojení k Azurite pomocí protokolu HTTPS
 
-Ve výchozím nastavení Průzkumník služby Storage neotevře koncový bod HTTPS, který používá certifikát podepsaný svým držitelem. Pokud používáte Azurite s protokolem HTTPS, pravděpodobně budete používat certifikát podepsaný svým držitelem. V Průzkumník služby Storage importujte certifikáty SSL přes dialogové okno **Upravit** -> certifikáty**SSL** -> **importovat certifikáty** .
+Ve výchozím nastavení Průzkumník služby Storage neotevře koncový bod HTTPS, který používá certifikát podepsaný svým držitelem. Pokud používáte Azurite s protokolem HTTPS, pravděpodobně budete používat certifikát podepsaný svým držitelem. V Průzkumník služby Storage importujte certifikáty SSL přes dialogové okno **Upravit**certifikáty  ->  **SSL**  ->  **importovat certifikáty** .
 
 ##### <a name="import-certificate-to-storage-explorer"></a>Importovat certifikát do Průzkumník služby Storage
 
 1. Najděte certifikát na místním počítači.
-1. V Průzkumník služby Storage pokračujte v **úpravách** -> **certifikátů** -> SSL**Import certifikátů** a import certifikátu.
+1. V Průzkumník služby Storage pokračujte v **úpravách**  ->  **certifikátů SSL**  ->  **Import certifikátů** a import certifikátu.
 
 Pokud certifikát neimportujete, zobrazí se chyba:
 

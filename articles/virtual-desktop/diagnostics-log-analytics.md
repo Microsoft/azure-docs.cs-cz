@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99a9e68a2e0c39364cc5105f230b00ffb90d867d
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 76a5e12eee7a325a73b3c17dba6c775b6984b89a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888800"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195909"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Použití Log Analytics pro diagnostickou funkci
 
@@ -124,9 +124,9 @@ Události diagnostiky se odesílají do Log Analytics, když se dokončí.
 
 Pro aktivity připojení Log Analytics jenom sestavy v těchto zprostředkujících stavech:
 
-- Bylo zahájeno
-- Připojeno
-- Dokončeno
+- Zahájeno: když uživatel vybere a připojí se k aplikaci nebo počítači v klientovi vzdálené plochy.
+- Připojeno: když se uživatel úspěšně připojí k virtuálnímu počítači, na kterém je aplikace nebo plocha hostovaná.
+- Dokončeno: když uživatel nebo server odpojí relaci, na kterou se aktivita uskutečnila.
 
 ## <a name="example-queries"></a>Příklady dotazů
 
