@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78675319"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201531"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
 
@@ -141,7 +141,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>Otevřete webovou stránku, kde se zobrazí data ze služby IoT Hub.
 
-Otevřete prohlížeč `http://localhost:3000`.
+Otevřete prohlížeč `http://localhost:3000` .
 
 V seznamu **Vybrat zařízení** vyberte zařízení, aby se zobrazilo běžící vykreslení poslední teploty 50 a datových bodů vlhkosti odesílané zařízením do služby IoT Hub.
 
@@ -165,7 +165,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Teď v plánu App Service zřídit webovou aplikaci. `--deployment-local-git` Parametr umožňuje nahrát a nasadit kód webové aplikace z úložiště Git na místním počítači. Název vaší webové aplikace musí být globálně jedinečný a může obsahovat velká a malá písmena, číslice a spojovníky. Nezapomeňte zadat uzel verze 10,6 nebo novější pro `--runtime` parametr v závislosti na verzi modulu runtime Node. js, který používáte. Pomocí `az webapp list-runtimes` příkazu můžete získat seznam podporovaných modulů runtime.
+2. Teď v plánu App Service zřídit webovou aplikaci. `--deployment-local-git`Parametr umožňuje nahrát a nasadit kód webové aplikace z úložiště Git na místním počítači. Název vaší webové aplikace musí být globálně jedinečný a může obsahovat velká a malá písmena, číslice a spojovníky. Nezapomeňte zadat uzel verze 10,6 nebo novější pro `--runtime` parametr v závislosti na verzi modulu runtime Node. js, který používáte. Pomocí `az webapp list-runtimes` příkazu můžete získat seznam podporovaných modulů runtime.
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
@@ -174,7 +174,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
 3. Teď přidejte nastavení aplikace pro proměnné prostředí, které určují připojovací řetězec služby IoT Hub a skupinu uživatelů centra událostí. Jednotlivá nastavení jsou oddělená mezerami v `-settings` parametru. Použijte připojovací řetězec služby pro Centrum IoT a skupinu uživatelů, kterou jste vytvořili dříve v tomto kurzu. Hodnoty nemusíte citovat.
 
    ```azurecli-interactive
-   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString=<your IoT hub connection string>
+   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString="<your IoT hub connection string>"
    ```
 
 4. Povolte pro webovou aplikaci protokol Web Sockets a nastavte webovou aplikaci tak, aby přijímala pouze požadavky HTTPS (požadavky HTTP se přesměrují na HTTPS).
@@ -198,7 +198,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. Přidejte vzdálené úložiště k klonu, který odkazuje na úložiště Git webové aplikace v App Service. V \<případě adresy URL\>KLONU Git použijte adresu URL vrácenou v předchozím kroku. Spusťte následující příkaz v příkazovém okně.
+7. Přidejte vzdálené úložiště k klonu, který odkazuje na úložiště Git webové aplikace v App Service. V případě \< adresy URL klonu Git \> použijte adresu URL vrácenou v předchozím kroku. Spusťte následující příkaz v příkazovém okně.
 
    ```cmd
    git remote add webapp <Git clone URL>
@@ -229,7 +229,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
 
 11. V prohlížeči přejděte na `https://<your web app name>.azurewebsites.net`. Webová stránka podobná té, kterou jste viděli při zobrazení webové aplikace v místním prostředí. Za předpokladu, že vaše zařízení běží a odesílá data, měl by se zobrazit běžící vykreslení 50 nejnovější teploty a čtení vlhkosti odesílané zařízením.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud v této ukázce provedete všechny problémy, zkuste postup v následujících částech. Pokud stále máte problémy, pošlete nám svůj názor na konci tohoto tématu.
 
@@ -251,9 +251,9 @@ Pokud v této ukázce provedete všechny problémy, zkuste postup v následujíc
 
 * V Azure Portal přejdete do vaší webové aplikace. V části **monitorování** v levém podokně vyberte **protokoly App Service**. Zapněte **protokolování aplikace (systém souborů)** na zapnuto, nastavte **úroveň** na hodnotu chyba a pak vyberte **Uložit**. Pak otevřete **datový proud protokolu** (pod položkou **monitorování**).
 
-* Z vaší webové aplikace v Azure Portal v části **vývojové nástroje** vyberte **konzolu** a ověřte verze node a npm `node -v` pomocí `npm -v`a.
+* Z vaší webové aplikace v Azure Portal v části **vývojové nástroje** vyberte **konzolu** a ověřte verze node a npm pomocí `node -v` a `npm -v` .
 
-* Pokud se zobrazí chyba týkající se nenalezení balíčku, možná jste spustili kroky mimo pořadí. Při nasazení lokality (s `git push`) je spuštěna `npm install`služba App Service, která běží na základě aktuální verze uzlu, který je nakonfigurován. Pokud se později v konfiguraci změní, budete muset provést nesmyslnou změnu kódu a znovu ho vložit.
+* Pokud se zobrazí chyba týkající se nenalezení balíčku, možná jste spustili kroky mimo pořadí. Při nasazení lokality (s) je `git push` spuštěna služba App Service `npm install` , která běží na základě aktuální verze uzlu, který je nakonfigurován. Pokud se později v konfiguraci změní, budete muset provést nesmyslnou změnu kódu a znovu ho vložit.
 
 ## <a name="next-steps"></a>Další kroky
 
