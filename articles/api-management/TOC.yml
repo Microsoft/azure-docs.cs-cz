@@ -227,8 +227,6 @@
           href: how-to-configure-cloud-metrics-logs.md
         - name: Konfigurace místních metrik a protokolů pro bránu v místním prostředí
           href: how-to-configure-local-metrics-logs.md
-        - name: Protokolování žádostí s Azure Application Insights
-          href: api-management-howto-app-insights.md
         - name: Nastavení zotavení po havárii pomocí zálohování a obnovení
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: Správa uživatelských účtů

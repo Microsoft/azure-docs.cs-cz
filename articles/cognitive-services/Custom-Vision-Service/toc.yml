@@ -89,5 +89,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Šifrování
+      href: custom-vision-encryption-of-data-at-rest.md
     - name: Poznámky k verzi
       href: release-notes.md

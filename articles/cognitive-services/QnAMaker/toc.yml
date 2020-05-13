@@ -227,6 +227,8 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Dodržování předpisů
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Šifrování
+      href: qna-maker-encryption-of-data-at-rest.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Ceny a omezení
