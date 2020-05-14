@@ -5,17 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: a924f51fac6d43ae4a4530ac4f61f2e8b1f4e8c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/12/2020
+ms.openlocfilehash: 51b478e5184c79e11d95ff004a652b2e5298558f
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537053"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402618"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Query Performance Insight ve službě Azure Database for MySQL
 
-**Platí pro:** Azure Database for MySQL 5,7
+**Platí pro:** Azure Database for MySQL 5,7, 8,0
 
 Query Performance Insight vám pomůže rychle zjistit, co nejdéle běží dotazy, jak se v průběhu času mění a co se na ně budou jejich vlivovat.
 

@@ -3,16 +3,16 @@ title: Připojení k SQL Server nebo Azure SQL Database
 description: Automatizace úloh pro databáze SQL místně nebo v cloudu pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam; logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789187"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402600"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro SQL Server nebo Azure SQL Database pomocí Azure Logic Apps
 
@@ -86,7 +86,7 @@ V Azure Logic Apps [Akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Přidání nového kroku do aplikace logiky](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
-   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. V části **zvolit akci**zadejte do vyhledávacího pole "SQL Server" jako filtr. V seznamu akce vyberte akci SQL, kterou chcete.
 
@@ -129,6 +129,20 @@ V některých případech je nutné pracovat se sadami výsledků, takže konekt
   * [Stránkování SQL pro přenos hromadných dat pomocí Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
   * [Klauzule SELECT-ORDER BY](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+
+### <a name="handle-dynamic-bulk-data"></a>Zpracovat dynamická Hromadná data
+
+Když v konektoru SQL Server zavoláte uloženou proceduru, vrácený výstup bude dynamický. V takovém případě postupujte podle následujících kroků:
+
+1. Otevřete **návrháře Logic Apps**.
+1. Proveďte testovací běh aplikace logiky, abyste viděli výstupní formát. Zkopírujte ukázkový výstup.
+1. V návrháři v rámci akce, kde zavoláte uloženou proceduru, vyberte **Nový krok**.
+1. V části **Vybrat akci**vyhledejte a vyberte akci [**analyzovat JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) .
+1. V akci **analyzovat JSON** vyberte **použít ukázkovou datovou část k vygenerování schématu**.
+1. V okně **Zadejte nebo vložte ukázkovou datovou část JSON** vložte vzorový výstup a potom vyberte **Hotovo**.
+1. Pokud se zobrazí chyba, že Logic Apps nemůže vygenerovat schéma, ověřte, že je správně naformátována syntaxe ve výstupu ukázky. Pokud schéma stále nemůžete generovat, zadejte ho ručně do pole **schématu** .
+1. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Chcete-li získat přístup k vlastnostem obsahu JSON, použijte datové tokeny, které se zobrazí v seznamu dynamického obsahu v rámci [Akce **analyzovat JSON** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action).
 
 ## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 

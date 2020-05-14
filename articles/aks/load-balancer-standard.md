@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3be60888d3d12d37650ad2cffc1911fb3b5e6682
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 14e80f6348772af77c5a53b1d5e9111c4ae8ba9b
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790673"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402074"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití nástroje pro vyrovnávání zatížení Standard SKU ve službě Azure Kubernetes (AKS)
 
@@ -38,7 +38,7 @@ Instanční objekt služby AKS potřebuje také oprávnění ke správě síťov
 
 Pokud máte existující cluster se základní Load Balancer SKU, při migraci na používání clusteru se standardní SKU Load Balancer je důležité rozdíly v chování.
 
-Například provedení modrých a zelených nasazení pro migraci clusterů je běžným postupem, `load-balancer-sku` který je určen pro typ clusteru, lze definovat pouze v době vytváření clusteru. Základní nástroje pro vyrovnávání zatížení *SKU* ale používají *základní* IP adresy SKU, které nejsou kompatibilní se *standardními* nástroji pro vyrovnávání zatížení SKU, protože vyžadují standardní IP adresy *SKU* . Při migraci clusterů na upgrade Load Balancer SKU se vyžaduje nová IP adresa s kompatibilní SKLADOVOU adresou IP.
+Například provedení modrých a zelených nasazení pro migraci clusterů je běžným postupem, který je určen pro `load-balancer-sku` typ clusteru, lze definovat pouze v době vytváření clusteru. Základní nástroje pro vyrovnávání zatížení *SKU* ale používají *základní* IP adresy SKU, které nejsou kompatibilní se *standardními* nástroji pro vyrovnávání zatížení SKU, protože vyžadují standardní IP adresy *SKU* . Při migraci clusterů na upgrade Load Balancer SKU se vyžaduje nová IP adresa s kompatibilní SKLADOVOU adresou IP.
 
 Další informace o tom, jak migrovat clustery, najdete [v naší dokumentaci týkající se migrace](aks-migration.md) , kde najdete seznam důležitých témat, která je potřeba vzít v úvahu při migraci. Při použití standardních nástrojů pro vyrovnávání zatížení SKU v AKS jsou také důležité rozdíly v chování.
 
@@ -64,7 +64,7 @@ Když vytvoříte cluster AKS, použije se ve výchozím nastavení nástroj pro
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Konfigurace nástroje pro vyrovnávání zatížení jako interního
 
-Nástroj pro vyrovnávání zatížení můžete také nakonfigurovat tak, aby byl interní a nezveřejňuje veřejnou IP adresu. Pokud chcete nástroj pro vyrovnávání zatížení nakonfigurovat jako `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` interní, přidejte jako anotaci do služby *Vyrovnávání* zatížení. [Tady][internal-lb-yaml]vidíte ukázkový manifest YAML a další podrobnosti o interním nástroji pro vyrovnávání zatížení.
+Nástroj pro vyrovnávání zatížení můžete také nakonfigurovat tak, aby byl interní a nezveřejňuje veřejnou IP adresu. Pokud chcete nástroj pro vyrovnávání zatížení nakonfigurovat jako interní, přidejte `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` jako anotaci do služby *Vyrovnávání* zatížení. [Tady][internal-lb-yaml]vidíte ukázkový manifest YAML a další podrobnosti o interním nástroji pro vyrovnávání zatížení.
 
 ## <a name="scale-the-number-of-managed-public-ips"></a>Škálování počtu spravovaných veřejných IP adres
 
@@ -81,7 +81,7 @@ az aks update \
 
 Výše uvedený příklad nastaví počet spravovaných odchozích veřejných IP adres na *2* pro cluster *myAKSCluster* v *myResourceGroup*. 
 
-K nastavení počátečního počtu spravovaných odchozích veřejných IP adres při vytváření clusteru `--load-balancer-managed-outbound-ip-count` a jeho nastavení na požadovanou hodnotu můžete použít taky parametr Managed- *IP-Count nástroje pro vyrovnávání zatížení* . Výchozí počet spravovaných odchozích veřejných IP adres je 1.
+K nastavení počátečního počtu spravovaných odchozích veřejných IP adres při vytváření clusteru a jeho nastavení na požadovanou hodnotu můžete použít taky parametr *Managed-IP-Count nástroje pro vyrovnávání zatížení* `--load-balancer-managed-outbound-ip-count` . Výchozí počet spravovaných odchozích veřejných IP adres je 1.
 
 ## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>Poskytněte vlastní veřejné IP adresy nebo předpony pro odchozí přenosy
 
@@ -89,12 +89,17 @@ Při použití *standardního* nástroje pro vyrovnávání zatížení SKU clus
 
 Když nasazujete víc IP adres nebo předpon, můžete při definování IP adresy za jediným objektem nástroje pro vyrovnávání zatížení definovat více služeb. Koncový bod odchozího přenosu konkrétních uzlů bude záviset na službě, ke které jsou přidruženy.
 
-> [!IMPORTANT]
-> Pro odchozí přenosy s vaší *standardní* SKU nástroje pro vyrovnávání zatížení musíte použít veřejné IP adresy *Standard* SKU. SKU svých veřejných IP adres můžete ověřit pomocí příkazu [AZ Network Public-IP show][az-network-public-ip-show] :
->
-> ```azurecli-interactive
-> az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
-> ```
+### <a name="pre-requisites-to-bring-your-own-ip-addresses-or-ip-prefixes"></a>Požadavky, které přinášejí vlastní IP adresy nebo předpony IP
+1. Pro odchozí přenosy s vaší *standardní* SKU nástroje pro vyrovnávání zatížení musíte použít veřejné IP adresy *Standard* SKU. SKU svých veřejných IP adres můžete ověřit pomocí příkazu [AZ Network Public-IP show][az-network-public-ip-show] :
+
+   ```azurecli-interactive
+   az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
+   ```
+ 1. Veřejné IP adresy a předpony IP adres musí být ve stejné oblasti a v rámci stejného předplatného jako cluster AKS.
+ 1. Předpony veřejných IP adres a IP adres nemůžou být vytvořené pomocí AKS jako spravovaná IP adresa. Ujistěte se, že všechny IP adresy, které jsou zadané jako vlastní IP adresy, se vytvořily ručně a nemusejí být AKS
+ 1. Veřejné IP adresy a předpony IP adres nemůžou používat jiný prostředek ani služba.
+
+ ### <a name="define-your-own-public-ip-or-prefixes-on-an-existing-cluster"></a>Definování vlastní veřejné IP adresy nebo předpon v existujícím clusteru
 
 Pomocí příkazu [AZ Network Public-IP show zobrazíte][az-network-public-ip-show] seznam ID veřejných IP adres.
 
@@ -131,9 +136,6 @@ az aks update \
     --name myAKSCluster \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
-
-> [!IMPORTANT]
-> Veřejné IP adresy a předpony IP adres musí být ve stejné oblasti a v rámci stejného předplatného jako cluster AKS. 
 
 ### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>Definování vlastní veřejné IP adresy nebo předpon v době vytvoření clusteru
 
@@ -222,7 +224,7 @@ Při změně nastavení nástroje pro vyrovnávání *zatížení – Odchozí p
 ### <a name="required-quota-for-customizing-allocatedoutboundports"></a>Požadovaná kvóta pro přizpůsobení allocatedOutboundPorts
 Na základě počtu virtuálních počítačů uzlů a požadovaných odchozích portů musíte mít dostatek odchozích IP adres. Pokud chcete ověřit, že máte dostatek odchozích IP adres, použijte tento vzorec: 
  
-*outboundIPs* \* 64 000 \> *nodeVMs* nodeVMs \* *desiredAllocatedOutboundPorts*.
+*outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
 Pokud máte například 3 *nodeVMs*a 50 000 *desiredAllocatedOutboundPorts*, musíte mít aspoň 3 *outboundIPs*. Doporučuje se, abyste zahrnuli Další odchozí IP kapacitu nad rámec toho, co potřebujete. Kromě toho musíte při výpočtu kapacity odchozí IP adresy účtu pro automatické škálování clusteru a možnost upgradů fondu uzlů. Pro automatické škálování clusteru Zkontrolujte aktuální počet uzlů a maximální počet uzlů a použijte vyšší hodnotu. Pro upgrade můžete pro každý fond uzlů, který umožňuje upgradování, přihlédnout k virtuálnímu počítači pro další uzly.
  

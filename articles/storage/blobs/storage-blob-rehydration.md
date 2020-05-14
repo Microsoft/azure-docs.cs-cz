@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1265d018997f9540e14e83ab15a44e78f4f86fb1
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684061"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402666"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Dehydratované data objektů BLOB z archivní úrovně
 
@@ -34,6 +34,9 @@ Když je objekt BLOB v archivní úrovni, považuje se za offline a nedá se č�
 Pokud nechcete znovu vyměnit svůj archivní objekt blob, můžete zvolit operaci [kopírování objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/copy-blob) . Původní objekt BLOB zůstane v archivu beze změny, zatímco nový objekt BLOB se vytvoří v online horké nebo studené vrstvě, kde můžete pracovat. V operaci kopírování objektu blob můžete také nastavit volitelnou vlastnost *x-MS-rehydratované priority* na hodnotu Standard nebo high a zadat prioritu, na které chcete vytvořit kopii objektu BLOB.
 
 Kopírování objektu BLOB z archivu může trvat hodiny na dokončení v závislosti na vybrané prioritě rehydratovaného. Na pozadí operace **kopírování objektu BLOB** přečte váš zdrojový objekt BLOB archivu a vytvoří nový objekt BLOB online ve vybrané cílové vrstvě. Nový objekt BLOB může být viditelný při výpisu objektů blob, ale data nejsou dostupná, dokud se nedokončí čtení ze zdrojového objektu BLOB archivu a data se zapisují do nového online cílového objektu BLOB. Nový objekt BLOB je jako nezávislá kopie a jakákoli změna nebo odstranění do něj nemá vliv na zdrojový objekt BLOB archivu.
+
+> [!IMPORTANT]
+> Neodstraňujte zdrojový objekt blob, dokud není kopie úspěšně dokončena v cílovém umístění. Pokud se zdrojový objekt BLOB odstraní, cílový objekt BLOB nemusí dokončit kopírování a bude prázdný. Můžete zjistit stav operace kopírování v *x-MS-Copy-status* .
 
 Archivní objekty BLOB se dají zkopírovat jenom do online cílových vrstev v rámci stejného účtu úložiště. Kopírování objektu BLOB archivu do jiného archivní objektu BLOB se nepodporuje. Následující tabulka uvádí možnosti CopyBlob.
 
@@ -57,7 +60,7 @@ Objekty BLOB v archivní úrovni by měly být uložené minimálně 180 dnů. O
 ## <a name="quickstart-scenarios"></a>Scénáře Rychlý start
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Dehydratované objekt BLOB archivu do online úrovně
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
@@ -74,11 +77,11 @@ Objekty BLOB v archivní úrovni by měly být uložené minimálně 180 dnů. O
 
 1. V dolní části vyberte **Uložit** .
 
-![Změnit stav dehydratované](media/storage-tiers/blob-access-tier.png)
-![kontroly úrovně účtu úložiště](media/storage-tiers/rehydrate-status.png)
+![Změnit ](media/storage-tiers/blob-access-tier.png)
+ ![ stav dehydratované kontroly úrovně účtu úložiště](media/storage-tiers/rehydrate-status.png)
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
-Pomocí následujícího skriptu PowerShellu můžete změnit úroveň objektu BLOB archivu. `$rgName` Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName` Proměnná musí být inicializována s názvem vašeho účtu úložiště. `$containerName` Proměnná musí být inicializována s názvem kontejneru. `$blobName` Proměnná musí být inicializována s vaším názvem objektu BLOB. 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Pomocí následujícího skriptu PowerShellu můžete změnit úroveň objektu BLOB archivu. `$rgName`Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName`Proměnná musí být inicializována s názvem vašeho účtu úložiště. `$containerName`Proměnná musí být inicializována s názvem kontejneru. `$blobName`Proměnná musí být inicializována s vaším názvem objektu BLOB. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -99,7 +102,7 @@ $blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
 ---
 
 ### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Kopírování objektu BLOB archivu do nového objektu BLOB s online vrstvou
-K zkopírování objektu BLOB archivu do nového objektu BLOB v rámci stejného účtu úložiště můžete použít následující skript PowerShellu. `$rgName` Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName` Proměnná musí být inicializována s názvem vašeho účtu úložiště. Proměnné `$srcContainerName` a `$destContainerName` musí být inicializovány s názvy kontejnerů. Proměnné `$srcBlobName` a `$destBlobName` musí být inicializovány s názvy objektů BLOB. 
+K zkopírování objektu BLOB archivu do nového objektu BLOB v rámci stejného účtu úložiště můžete použít následující skript PowerShellu. `$rgName`Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName`Proměnná musí být inicializována s názvem vašeho účtu úložiště. `$srcContainerName`Proměnné a `$destContainerName` musí být inicializovány s názvy kontejnerů. `$srcBlobName`Proměnné a `$destBlobName` musí být inicializovány s názvy objektů BLOB. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""

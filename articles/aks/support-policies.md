@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: a5d90106a85a61cbf499c4c08130392b922a45f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77593576"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402457"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes
 
@@ -38,11 +38,6 @@ Společnost Microsoft spravuje a sleduje následující komponenty prostřednict
 AKS není zcela spravované řešení clusteru. Některé součásti, například pracovní uzly, mají *sdílenou zodpovědnost*, kde uživatelé musí pomáhat s údržbou clusteru AKS. Uživatelský vstup je vyžadován, například pro použití opravy zabezpečení operačního systému pracovního uzlu (OS).
 
 Služby jsou *spravované* v tom smyslu, že se tým Microsoftu a AKS nasazuje, provozuje a zodpovídá za dostupnost a funkčnost služby. Zákazníci nemůžou tyto spravované součásti měnit. Microsoft omezuje přizpůsobení tak, aby se zajistilo jednotné a škálovatelné uživatelské prostředí. Plně přizpůsobitelné řešení najdete v tématu [AKS Engine](https://github.com/Azure/aks-engine).
-
-> [!NOTE]
-> Pracovní uzly AKS se zobrazují v Azure Portal jako běžné prostředky Azure IaaS. Tyto virtuální počítače se ale nasadí do vlastní skupiny prostředků Azure (s předponou MC\\*). Je možné změnit AKS pracovní uzly. Například můžete pomocí Secure Shell (SSH) změnit AKS pracovní uzly tak, že změníte normální virtuální počítače (nemůžete ale změnit základní image operačního systému a změny se nemůžou zachovat prostřednictvím aktualizace nebo restartování). další prostředky Azure můžete připojit k pracovním uzlům AKS. Ale když provedete změny *vzdálené správy a přizpůsobení,* cluster AKS může být nepodporováný. Vyhněte se měnícím se uzlům pracovních procesů, pokud podpora Microsoftu vás neprovede změny.
-
-Vydávají se nepodporované operace, jak je definováno výše, jako je například vzdálené zrušení přidělení všech uzlů agentů, vykreslí cluster nepodporovaný. AKS si vyhrazuje právo na archivaci řídicích rovin, které byly nakonfigurovány podle pokynů k podpoře pro rozšířené tečky, které se rovnají nebo přesahují 30 dnů. AKS udržuje zálohy metadat clusterových etcd a můžou snadno znovu přidělit cluster. Toto přerozdělení můžete iniciovat jakoukoli operací PUT, která cluster přenese zpátky do podpory, jako je například upgrade nebo škálování na aktivní uzly agentů.
 
 ## <a name="shared-responsibility"></a>Společná odpovědnost
 
@@ -104,8 +99,22 @@ Společnost Microsoft neprovede automatické restartování pracovních uzlů, a
 
 Zákazníci zodpovídají za provádění upgradů Kubernetes. Upgrady můžou provádět upgrady přes ovládací panel Azure nebo Azure CLI. To platí pro aktualizace, které obsahují vylepšení zabezpečení nebo funkcí Kubernetes.
 
+#### <a name="user-customization-of-worker-nodes"></a>Uživatelské přizpůsobení pracovních uzlů
 > [!NOTE]
-> Vzhledem k tomu, že AKS je *spravovaná služba*, její koncové cíle zahrnují odebrání zodpovědnosti za opravy, aktualizace a shromažďování protokolů, aby byla správa služeb úplnější a byla vypnuta. Vzhledem k tomu, že se zvyšuje kapacita služby pro komplexní správu, můžou budoucí verze vynechat některé funkce (například restartování uzlu a automatické opravy).
+> Pracovní uzly AKS se zobrazují v Azure Portal jako běžné prostředky Azure IaaS. Tyto virtuální počítače se ale nasadí do vlastní skupiny prostředků Azure (s předponou MC \\ *). Je možné rozšířit AKS pracovní uzly ze svých základních konfigurací. Například můžete pomocí Secure Shell (SSH) změnit pracovní uzly AKS způsobem, jakým měníte normální virtuální počítače. Základní image operačního systému ale nemůžete změnit. Jakékoli vlastní změny se nemusí uchovávat při upgradu, škálování, aktualizaci nebo restartování. Změny *mimo pásmo a mimo rozsah rozhraní AKS API* **způsobí, že**se cluster AKS stane nepodporovaným. Vyhněte se měnícím se uzlům pracovních procesů, pokud podpora Microsoftu vás neprovede změny.
+
+Vydávají se nepodporované operace, jak je definováno výše, jako je například vzdálené zrušení přidělení všech uzlů agentů, vykreslí cluster nepodporovaný. AKS si vyhrazuje právo na archivaci řídicích rovin, které byly nakonfigurovány podle pokynů k podpoře pro rozšířené tečky, které se rovnají nebo přesahují 30 dnů. AKS udržuje zálohy metadat clusterových etcd a můžou snadno znovu přidělit cluster. Toto přerozdělení můžete iniciovat jakoukoli operací PUT, která cluster přenese zpátky do podpory, jako je například upgrade nebo škálování na aktivní uzly agentů.
+
+AKS spravuje životní cyklus a operace pracovních uzlů jménem zákazníků – Změna prostředků IaaS přidružených k pracovním uzlům **se nepodporuje.** Příkladem nepodporované operace je přizpůsobení sady škálování virtuálního počítače fondu uzlů ručním změnou konfigurací v VMSS prostřednictvím portálu VMSS nebo rozhraní VMSS API.
+ 
+V případě konfigurací specifických pro úlohy nebo balíčků doporučuje AKS používat [Kubernetes daemonsets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
+
+Použití Kubernetes privilegovaných daemonsets a inicializačních kontejnerů umožňuje zákazníkům ladit/upravovat nebo instalovat software třetích stran na uzlech pracovních procesů clusteru. Příklady takových úprav zahrnují přidání vlastního softwaru pro kontrolu zabezpečení nebo aktualizace nastavení sysctl.
+
+I když se jedná o doporučený postup, pokud se výše uvedené požadavky uplatní, AKS Engineering and Support nemůže pomoct při řešení potíží nebo diagnostikování přerušených/nefunkčních úprav nebo těch, které vykreslí uzel nedostupným z důvodu daemonset nasazeného zákazníka.
+
+> [!NOTE]
+> AKS jako *spravovaná služba* má koncové cíle, jako je například odebrání zodpovědnosti za opravy, aktualizace a shromažďování protokolů, aby byla správa služeb úplnější a byla vypnuta. Vzhledem k tomu, že se zvyšuje kapacita služby pro komplexní správu, můžou budoucí verze vynechat některé funkce (například restartování uzlu a automatické opravy).
 
 ### <a name="security-issues-and-patching"></a>Problémy se zabezpečením a opravy
 

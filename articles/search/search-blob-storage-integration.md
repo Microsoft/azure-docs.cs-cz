@@ -1,19 +1,19 @@
 ---
 title: Přidání fulltextového vyhledávání do Azure Blob Storage
 titleSuffix: Azure Cognitive Search
-description: Extrakce obsahu a přidání struktury do objektů blob Azure při sestavování fulltextového vyhledávání v Azure rozpoznávání Hledat
+description: Extrakce obsahu a přidání struktury do objektů blob Azure při vytváření fulltextového indexu vyhledávání v Azure rozpoznávání vyhledávání.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: af7d04bd74ada296b9f0e0f7c149c2a781cec579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83308f42fb1f2ea3408b5c1a63d88d21a8e7830a
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73496489"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402085"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Přidání fulltextového vyhledávání do dat objektů BLOB v Azure pomocí Azure Kognitivní hledání
 
@@ -58,6 +58,11 @@ Spuštěním indexeru objektů BLOB v kontejneru můžete extrahovat text a meta
 ### <a name="indexing-blob-metadata"></a>Indexování metadat objektů BLOB
 
 Běžný scénář, který usnadňuje řazení pomocí objektů BLOB libovolného typu obsahu, je vytvoření indexu vlastních metadat i systémových vlastností pro každý objekt BLOB. Tímto způsobem jsou informace o všech objektech blob indexovány bez ohledu na typ dokumentu uložený v indexu vyhledávací služby. Pomocí nového indexu pak můžete pokračovat v řazení, filtrování a omezující podmínky v celém obsahu služby Blob Storage.
+
+> [!NOTE]
+> Značky indexu objektu BLOB jsou nativně indexované službou BLOB Storage a jsou vystavené pro dotazování. Pokud atributy objektů BLOB (klíč/hodnota) vyžadují funkce indexování a filtrování, měly by se místo metadat používat značky indexu objektů BLOB.
+>
+> Další informace o indexu objektů BLOB najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB](../storage/blobs/storage-manage-find-blobs.md).
 
 ### <a name="indexing-json-blobs"></a>Indexování objektů BLOB JSON
 Indexery je možné nakonfigurovat pro extrakci strukturovaného obsahu nalezeného v objektech blob, které obsahují JSON. Indexer může číst objekty blob JSON a analyzovat strukturovaný obsah do příslušných polí vyhledávacího dokumentu. Indexery mohou také přebírat objekty blob, které obsahují pole objektů JSON a mapovat jednotlivé prvky do samostatného dokumentu hledání. Můžete nastavit režim analýzy tak, aby ovlivnil typ objektu JSON vytvořený indexerem.

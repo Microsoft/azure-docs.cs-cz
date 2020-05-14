@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/19/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 6345d210e26747f921595039a2a3c8e11be11fda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f26fa00f78b8564e08b6352d4da31640b13f47f
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80387625"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402681"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Zápis auditu do účtu úložiště za virtuální sítí a branou firewall
 
@@ -38,7 +38,7 @@ Aby mohl audit zapisovat do účtu úložiště za virtuální sítí nebo brán
 > [!div class="checklist"]
 > * Účet úložiště pro obecné účely v2. Pokud máte účet úložiště pro obecné účely v1 nebo blob, [upgradujte na účet úložiště pro obecné účely v2](../storage/common/storage-account-upgrade.md). Další informace najdete v tématu [typy účtů úložiště](../storage/common/storage-account-overview.md#types-of-storage-accounts).
 > * Účet úložiště musí být ve stejném předplatném a ve stejném umístění jako server Azure SQL Database. 
-> * Účet Azure Storage vyžaduje `Allow trusted Microsoft services to access this storage account`. Nastavte tuto hodnotu na **brány firewall a virtuální sítě**v účtu úložiště.
+> * Účet Azure Storage vyžaduje `Allow trusted Microsoft services to access this storage account` . Nastavte tuto hodnotu na **brány firewall a virtuální sítě**v účtu úložiště.
 > * Musíte mít `Microsoft.Authorization/roleAssignments/write` oprávnění pro vybraný účet úložiště. Další informace najdete v tématu [předdefinované role Azure](../role-based-access-control/built-in-roles.md).
 
 ## <a name="configure-in-azure-portal"></a>Konfigurace na webu Azure Portal
@@ -54,7 +54,7 @@ Připojte se k [Azure Portal](https://portal.azure.com) k vašemu předplatnému
   > [!NOTE]
   > Pokud je vybraný účet úložiště za virtuální sítí, zobrazí se tato zpráva:
   >
-  >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage: requires an Active Directory admin on the server; enables 'Allow trusted Microsoft services to access this storage account' on the storage account; and creates a server managed identity with 'storage blob data contributor' RBAC.`
+  >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage requires to enable 'Allow trusted Microsoft services to access this storage account' on the storage account and creates a server managed identity with 'storage blob data contributor' RBAC.`
   >
   >Pokud se tato zpráva nezobrazuje, účet úložiště není za virtuální sítí.
 

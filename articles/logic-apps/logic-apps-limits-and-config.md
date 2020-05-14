@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 807949d7ed0c68edd44fba95109f118e97c59b5a
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 1dfb1b43eadebbfc7128c5a2451668be8a99329f
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901246"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402541"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -143,7 +143,7 @@ Některé operace konektoru provádějí asynchronní volání nebo naslouchán�
 
 | Name | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
 |------|--------------------|---------------------------------------|-------|
-| Odchozí požadavek | 120 sekund <br>(2 minuty) | 240 sekund <br>(4 minuty) | Příklady odchozích požadavků zahrnují volání vydaná triggery HTTP. <p><p>**Tip**: pro delší běžící operace použijte [asynchronní vzorek cyklického dotazování](../logic-apps/logic-apps-create-api-app.md#async-pattern) nebo [do smyčky do](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
+| Odchozí požadavek | 120 sekund <br>(2 minuty) | 240 sekund <br>(4 minuty) | Příklady odchozích požadavků zahrnují volání vydaná triggery HTTP. <p><p>**Tip**: pro delší běžící operace použijte [asynchronní vzorek cyklického dotazování](../logic-apps/logic-apps-create-api-app.md#async-pattern) nebo [do smyčky do](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). Pokud chcete při volání jiné aplikace logiky, která má k disvolanému [koncovému bodu](logic-apps-http-endpoint.md), obejít časový limit, můžete místo toho použít integrovanou Azure Logic Apps akci, kterou můžete najít ve výběru konektoru v části **integrovaná**. |
 | Příchozí žádost | 120 sekund <br>(2 minuty) | 240 sekund <br>(4 minuty) | Mezi příklady příchozích požadavků patří volání přijatá aktivačními událostmi žádosti a triggery Webhooku. <p><p>**Poznámka**: původnímu volajícímu získá odpověď, všechny kroky v odpovědi musí být dokončeny v rámci limitu, pokud nebudete volat jinou aplikaci logiky jako vnořený pracovní postup. Další informace najdete v tématu [volání, Trigger nebo vnořování Logic Apps](../logic-apps/logic-apps-http-endpoint.md). |
 |||||
 
@@ -161,7 +161,7 @@ Některé operace konektoru provádějí asynchronní volání nebo naslouchán�
 
 | Name | Poznámky |
 |------|-------|
-| Omezení pro vyhodnocení výrazu | 131 072 znaků | Výrazy `@concat()`, `@base64()`a `@string()` nemohou být delší než tento limit. |
+| Omezení pro vyhodnocení výrazu | 131 072 znaků | `@concat()`Výrazy, `@base64()` a `@string()` nemohou být delší než tento limit. |
 | Omezení počtu znaků adresy URL žádosti | 16 384 znaků |
 |||
 
@@ -244,7 +244,7 @@ Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pr
 |----------|------|-------|----------|
 | Obchodní smlouvy EDI | 10 | 1 | 1 000 |
 | Obchodní partneři EDI | 25 | 2 | 1 000 |
-| Maps | 25 | 500 | 1 000 |
+| Mapy | 25 | 500 | 1 000 |
 | Schémata | 25 | 500 | 1 000 |
 | Sestavení | 10 | 25 | 1 000 |
 | Certifikáty | 25 | 2 | 1 000 |
