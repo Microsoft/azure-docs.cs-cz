@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9cb90ba81f6399d7b0e238d673c2d956911bd004
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692173"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201031"
 ---
 # <a name="quickstart-using-sql-on-demand"></a>Rychlý Start: používání SQL na vyžádání
 
-Synapse SQL na vyžádání (Preview) je služba pro dotazování bez serveru, která umožňuje spouštět dotazy SQL na souborech umístěných v Azure Storage. V tomto rychlém startu se dozvíte, jak zadávat dotazy na různé typy souborů pomocí SQL na vyžádání.
+Synapse SQL na vyžádání (Preview) je služba pro dotazování bez serveru, která umožňuje spouštět dotazy SQL na souborech umístěných v Azure Storage. V tomto rychlém startu se dozvíte, jak zadávat dotazy na různé typy souborů pomocí SQL na vyžádání. Podporované formáty jsou uvedeny ve funkci [OpenRowset](sql/develop-openrowset.md).
 
-Podporovány jsou následující typy souborů: JSON, CSV, Apache Parquet
+V tomto rychlém startu se zobrazují dotazy: CSV, Apache Parquet a soubory JSON.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -54,7 +54,7 @@ Vytvořte si vlastní databázi pro demonstrační účely. Tuto databázi použ
 > Databáze se používají jenom pro metadata zobrazení, ne pro skutečná data.
 >Poznamenejte si název databáze, který použijete pro pozdější použití v rychlém startu.
 
-Použijte následující dotaz, který se `mydbname` změní na libovolný název:
+Použijte následující dotaz, který se změní `mydbname` na libovolný název:
 
 ```sql
 CREATE DATABASE mydbname
@@ -123,7 +123,7 @@ Další příklady najdete v tématu Postup [dotazování souboru CSV](sql/query
 Následující příklad ukazuje schopnosti automatického odvození schématu pro dotazování souborů Parquet. Vrátí počet řádků v září 2017 bez zadání schématu.
 
 > [!NOTE]
-> Při čtení souborů Parquet není nutné zadávat sloupce `OPENROWSET WITH` v klauzuli. V takovém případě SQL na vyžádání využívá metadata v souboru Parquet a váže sloupce podle názvu.
+> Při čtení souborů Parquet není nutné zadávat sloupce v `OPENROWSET WITH` klauzuli. V takovém případě SQL na vyžádání využívá metadata v souboru Parquet a váže sloupce podle názvu.
 
 ```sql
 SELECT COUNT_BIG(*)

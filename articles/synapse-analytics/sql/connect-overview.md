@@ -9,21 +9,24 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9748b0354ce09752296fb7d736e09af716f19351
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f09f9a503348efc51fb50c283e7fe856869e0dd5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424605"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198520"
 ---
 # <a name="connect-to-synapse-sql"></a>Připojení k synapse SQL
 Připojte se k funkci synapse SQL ve službě Azure synapse Analytics.
 
 ## <a name="supported-tools-for-sql-on-demand-preview"></a>Podporované nástroje pro SQL na vyžádání (Preview)
 
-Plně podporovaný nástroj je Azure Data Studio (Preview).
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) se plně podporuje od verze 1.18.0. SSMS je částečně podporovaná od verze 18,5, můžete ji použít jenom pro připojení a dotazování.
 
-SQL Server Management Studio se částečně podporuje od verze 18,4. K dispozici jsou omezené funkce, jako je připojení a dotazování.
+> [!NOTE]
+> Pokud má přihlášení AAD otevřené připojení po dobu delší než 1 hodinu, dotaz, který se spoléhá na AAD, selže. To zahrnuje dotazování na úložiště pomocí předávacího a příkazového příkazu AAD, které komunikují s AAD (třeba vytvoření externího poskytovatele). To má vliv na všechny nástroje, které udržují připojení otevřené, jako v editoru dotazů v SSMS a REKLAMách. Nástroje, které otevírají nová připojení k provedení dotazu, jako je synapse Studio, to neovlivní.
+
+> Pokud chcete tento problém zmírnit, můžete restartovat SSMS nebo připojení a odpojení v REKLAMách. 
 
 ## <a name="find-your-server-name"></a>Vyhledání názvu serveru
 

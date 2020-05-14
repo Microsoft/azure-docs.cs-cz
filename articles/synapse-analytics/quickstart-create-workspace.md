@@ -2,19 +2,19 @@
 title: Rychlý Start – vytvoření pracovního prostoru
 description: Pomocí kroků v této příručce vytvořte pracovní prostor Azure synapse Analytics.
 services: synapse-analytics
-author: malvenko
+author: pimorano
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: josels
+ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 49bd251b7f76a844a0d3fd1b1a09f7e15c5e7ddb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0bf58348d91c23db9bcc016ff6d71ce2b3804ced
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792203"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201061"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse Analytics (Preview)
 
@@ -33,9 +33,9 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/)
 ## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Vytvoření pracovního prostoru Azure synapse pomocí Azure Portal
 
 1. V podokně hledání Microsoft Azure zadejte **synapse Workspace** a pak vyberte tuto službu.
-![Azure Portal panel hledání s pracovními prostory Azure synapse zadanými](media/quickstart-create-synapse-workspace/workspace-search.png)v...
+![Azure Portal panel hledání pomocí pracovních prostorů Azure synapse, které jsou zadané v.](media/quickstart-create-synapse-workspace/workspace-search.png)
 2. Na stránce **pracovní prostory synapse** klikněte na **+ Přidat**.
-![Příkaz pro vytvoření nového pracovního prostoru Azure synapse je zvýrazněný. ](media/quickstart-create-synapse-workspace/create-workspace-02.png).
+![Příkaz pro vytvoření nového pracovního prostoru Azure synapse je zvýrazněný.](media/quickstart-create-synapse-workspace/create-workspace-02.png)
 3. Do formuláře **pracovního prostoru Azure synapse** zadejte následující informace:
 
     | Nastavení | Navrhovaná hodnota | Popis |
@@ -47,7 +47,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/)
     | **Data Lake Storage Gen2** | Zohledňují`storage account name` </br> Systém souborů:`root file system to use` | Určuje název ADLS Gen2 účtu úložiště, který se má použít jako primární úložiště, a systém souborů, který se má použít.|
     ||||
 
-    ![Karta základy zřizování pracovního prostoru](media/quickstart-create-synapse-workspace/create-workspace-03.png).
+    ![Karta základy zřizování pracovního prostoru](media/quickstart-create-synapse-workspace/create-workspace-03.png)
 
     Účet úložiště se dá vybrat z těchto:
     - Seznam ADLS Gen2 účtů dostupných v předplatném
@@ -60,8 +60,8 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/)
 
 4. Volitelné Změňte kteroukoli kartu **Předvolby zabezpečení a sítě** :
 5. Volitelné Přidejte libovolné značky na kartě **značky** .
-6. Na kartě **Souhrn** se spustí potřebná ověření, aby se zajistilo, že pracovní prostor bude možné úspěšně vytvořit. Po úspěšném ověření stiskněte tlačítko **vytvořit** ![tok zřizování pracovního prostoru – karta potvrzení.](media/quickstart-create-synapse-workspace/create-workspace-05.png)
-7. Po úspěšném dokončení procesu zřizování prostředků se v seznamu pracovních prostorů synapse zobrazí položka vytvořeného pracovního prostoru. ![Seznam pracovních prostorů synapse zobrazující nově zřízený pracovní prostor.](media/quickstart-create-synapse-workspace/create-workspace-07.png).
+6. Na kartě **Souhrn** se spustí potřebná ověření, aby se zajistilo, že pracovní prostor bude možné úspěšně vytvořit. Po úspěšném ověření stiskněte tlačítko **vytvořit** ![ tok zřizování pracovního prostoru – karta potvrzení.](media/quickstart-create-synapse-workspace/create-workspace-05.png)
+7. Po úspěšném dokončení procesu zřizování prostředků se v seznamu pracovních prostorů synapse zobrazí položka vytvořeného pracovního prostoru. ![Seznam pracovních prostorů synapse zobrazující nově zřízený pracovní prostor.](media/quickstart-create-synapse-workspace/create-workspace-07.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

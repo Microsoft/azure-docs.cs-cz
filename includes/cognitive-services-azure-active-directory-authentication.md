@@ -3,13 +3,13 @@ author: erhopf
 ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/23/2019
-ms.openlocfilehash: 8754504655cdd08c9bf9f89311cb6c5d1057f0e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/11/2020
+ms.openlocfilehash: ddc61a0d0cb5a630282a9ba0589cef6fda29c4b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78262446"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343459"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
 
@@ -101,3 +101,19 @@ V této ukázce se k ověření instančního objektu používá heslo. Poskytnu
    ```
 
 Případně můžete instanční objekt ověřit pomocí certifikátu. Kromě instančního objektu se taky podporuje i objekt zabezpečení, protože má oprávnění delegovaná přes jinou aplikaci AAD. V tomto případě by se uživatelům při získávání tokenu zobrazila výzva k zadání dvojúrovňového ověřování.
+
+## <a name="authorize-access-to-managed-identities"></a>Autorizovat přístup ke spravovaným identitám
+ 
+Cognitive Services podporuje ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Spravované identity pro prostředky Azure můžou autorizovat přístup k prostředkům Cognitive Services pomocí přihlašovacích údajů Azure AD z aplikací běžících na virtuálních počítačích Azure, aplikacích funkcí, škálování virtuálních počítačů a dalších služeb. Pomocí spravovaných identit pro prostředky Azure spolu s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů k vašim aplikacím, které běží v cloudu.  
+
+### <a name="enable-managed-identities-on-a-vm"></a>Povolení spravovaných identit na virtuálním počítači
+
+Než budete moct použít spravované identity pro prostředky Azure k autorizaci přístupu k prostředkům Cognitive Services z virtuálního počítače, musíte na VIRTUÁLNÍm počítači povolit spravované identity pro prostředky Azure. Informace o tom, jak povolit spravované identity pro prostředky Azure, najdete v těchto tématech:
+
+- [portál Azure](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
+- [Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
+- [Šablona Azure Resource Manager](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
+- [Klientské knihovny Azure Resource Manager](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+
+Další informace o spravovaných identitách najdete v tématu [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).

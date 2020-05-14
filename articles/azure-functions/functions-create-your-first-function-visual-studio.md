@@ -1,22 +1,22 @@
 ---
 title: 'Rychlý Start: Vytvoření první funkce v Azure pomocí sady Visual Studio'
-description: V tomto rychlém startu se dozvíte, jak vytvořit a publikovat funkci Azure aktivovanou protokolem HTTP pomocí sady Visual Studio.
+description: V tomto rychlém startu se dozvíte, jak pomocí sady Visual Studio vytvořit a publikovat funkci Azure Functions triggeru HTTP.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: e58414fa94a4ef54eb2f288b2cd636c10611460d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a4549bd2947332d7140f4f440a5344f417430554
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81308937"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122744"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rychlý Start: Vytvoření první funkce v Azure pomocí sady Visual Studio
 
 Azure Functions umožňuje spuštění kódu v prostředí bez serveru, aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci.
 
-V tomto rychlém startu se dozvíte, jak pomocí sady Visual Studio 2019 místně vytvořit a otestovat aplikaci funkcí jazyka C#, která je typu "Hello World", kterou pak publikujete do Azure. 
+V tomto rychlém startu se naučíte, jak pomocí sady Visual Studio 2019 místně vytvořit a otestovat aktivační událost "Hello World" s funkcí jazyka C#, kterou pak publikujete do Azure. 
 
 ![Odezva místního hostitele funkce v prohlížeči](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -34,11 +34,11 @@ Pokud ještě nemáte [předplatné Azure](../guides/developer/azure-developer-g
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio vytvoří projekt a třídu, která obsahuje často používaný kód pro typ funkce triggeru protokolu HTTP. Atribut `FunctionName` Method nastaví název funkce, která je ve výchozím nastavení nastavena `Function1`na. `HttpTrigger` Atribut určuje, že funkce je aktivována požadavkem http. Často používaný kód odešle odpověď HTTP obsahující hodnotu z textu žádosti nebo řetězce dotazu.
+Visual Studio vytvoří projekt a třídu, která obsahuje často používaný kód pro typ funkce triggeru protokolu HTTP. `FunctionName`Atribut Method nastaví název funkce, která je ve výchozím nastavení nastavena na `Function1` . `HttpTrigger`Atribut určuje, že funkce je aktivována požadavkem http. Často používaný kód odešle odpověď HTTP obsahující hodnotu z textu žádosti nebo řetězce dotazu.
 
 Rozšiřte možnosti vaší funkce se vstupními a výstupními vazbami, a to použitím příslušných atributů pro metodu. Další informace najdete v části [Triggery a vazby](functions-dotnet-class-library.md#triggers-and-bindings) v [referenčních informacích pro vývojáře v jazyce C# v Azure Functions](functions-dotnet-class-library.md).
 
-Teď máte vytvořený projekt funkcí a funkci aktivovanou protokolem HTTP, takže ji můžete otestovat na místním počítači.
+Teď, když jste vytvořili projekt funkcí a funkci triggeru HTTP, ji můžete otestovat na místním počítači.
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
@@ -56,9 +56,9 @@ Než budete moct projekt publikovat, musíte mít ve svém předplatném Azure a
 
 ## <a name="test-your-function-in-azure"></a>Testování funkce v Azure
 
-1. Zkopírujte základní adresu URL aplikace Function App ze stránky profil **publikování** . Nahraďte `localhost:port` část adresy URL, kterou jste použili k místnímu otestování funkce, novou základní adresou URL. Připojí řetězec `?name=<YOUR_NAME>` dotazu k této adrese URL a spustí žádost.
+1. Zkopírujte základní adresu URL aplikace Function App ze stránky profil **publikování** . Nahraďte `localhost:port` část adresy URL, kterou jste použili k místnímu otestování funkce, novou základní adresou URL. Připojí řetězec dotazu `?name=<YOUR_NAME>` k této adrese URL a spustí žádost.
 
-    Adresa URL, která volá funkci aktivovanou protokolem HTTP, je v následujícím formátu:
+    Adresa URL, která volá funkci triggeru HTTP, je v následujícím formátu:
 
     `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
 
@@ -72,7 +72,7 @@ Než budete moct projekt publikovat, musíte mít ve svém předplatném Azure a
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili aplikaci Visual Studio k vytvoření a publikování aplikace funkcí v jazyce C# v Azure pomocí jednoduché funkce aktivované protokolem HTTP. 
+V tomto rychlém startu jste použili aplikaci Visual Studio k vytvoření a publikování aplikace funkcí jazyka C# v Azure pomocí jednoduché funkce triggeru HTTP. 
 
 V dalším článku se dozvíte, jak do funkce Přidat vazbu Azure Storage fronty:
 > [!div class="nextstepaction"]

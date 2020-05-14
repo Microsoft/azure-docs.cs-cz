@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79371218"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202072"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí Azure Cognitive Services
 
@@ -55,7 +55,7 @@ Podpora virtuální sítě pro Cognitive Services uvedená níže je omezená na
 
 Podpora virtuální sítě pro Cognitive Services uvedená níže je omezená na oblasti Azure *střed USA EUAP*, *střed USA – jih*, *východní USA*, *západní USA 2*, *globální*a *US gov – Virginie* .
 > [!div class="checklist"]
-> * [Translator Text](./translator/index.yml)
+> * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>Značky služeb
 Kromě podpory koncových bodů služby virtuální sítě pro výše uvedené služby Cognitive Services také podporuje označení služby pro konfiguraci odchozích síťových pravidel. Ve značce služby CognitiveServicesManagement jsou zahrnuté následující služby.
@@ -339,12 +339,12 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
 
 Cognitive Services prostředků můžete nakonfigurovat tak, aby povolovaly přístup z určitých rozsahů veřejných internetových IP adres. Tato konfigurace uděluje přístup ke konkrétním službám a místním sítím a efektivně tak blokuje obecný internetový provoz.
 
-Zadejte povolené rozsahy internetových adres pomocí [zápisu CIDR](https://tools.ietf.org/html/rfc4632) ve formuláři `16.17.18.0/24` nebo jako jednotlivé IP adresy jako `16.17.18.19`.
+Zadejte povolené rozsahy internetových adres pomocí [zápisu CIDR](https://tools.ietf.org/html/rfc4632) ve formuláři `16.17.18.0/24` nebo jako jednotlivé IP adresy jako `16.17.18.19` .
 
    > [!Tip]
    > Malé rozsahy adres používající velikosti předpony "/31" nebo "/32" se nepodporují. Tyto rozsahy by měly být nakonfigurované pomocí jednotlivých pravidel IP adres.
 
-Pravidla sítě IP jsou povolená jenom pro **veřejné internetové** IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nejsou povolené v pravidlech protokolu IP. Soukromé sítě obsahují adresy, které začínají `10.*`na `172.16.*`  -  `172.31.*`, a `192.168.*`.
+Pravidla sítě IP jsou povolená jenom pro **veřejné internetové** IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nejsou povolené v pravidlech protokolu IP. Soukromé sítě obsahují adresy, které začínají `10.*` na, `172.16.*`  -  `172.31.*` a `192.168.*` .
 
    > [!NOTE]
    > Pravidla sítě IP neovlivňují požadavky pocházející ze stejné oblasti Azure jako prostředek Cognitive Services. Použijte [pravidla virtuální sítě](#grant-access-from-a-virtual-network) a povolte tak požadavky stejné oblasti.
@@ -369,11 +369,11 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
 
 1. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
 
-1. Pokud chcete udělit přístup k rozsahu IP adres Internetu, zadejte v části**Rozsah adres** **firewallu** > IP adresu nebo rozsah adres (ve [formátu CIDR](https://tools.ietf.org/html/rfc4632)). Jsou přijímány pouze platné veřejné IP adresy (nerezervované).
+1. Pokud chcete udělit přístup k rozsahu IP adres Internetu, zadejte v části rozsah adres **firewallu**IP adresu nebo rozsah adres (ve [formátu CIDR](https://tools.ietf.org/html/rfc4632))  >  **Address Range**. Jsou přijímány pouze platné veřejné IP adresy (nerezervované).
 
    ![Přidat rozsah IP adres](media/vnet/virtual-network-add-ip-range.png)
 
-1. Chcete-li odebrat pravidlo sítě protokolu IP, vyberte <span class="docon docon-delete x-hidden-focus"></span> ikonu odpadkového koše vedle rozsahu adres.
+1. Chcete-li odebrat pravidlo sítě protokolu IP, vyberte ikonu odpadkového koše <span class="docon docon-delete x-hidden-focus"></span> vedle rozsahu adres.
 
    ![Odstranit rozsah IP adres](media/vnet/virtual-network-delete-ip-range.png)
 

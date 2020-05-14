@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: dd5748cf8afe19a49e5ea406aea9b558432eeaf3
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 0a6df626f9567b51a8371c17004b454f9c5b4597
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82802178"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202037"
 ---
 # <a name="what-is-a-keyword"></a>Co je klíčové slovo?
 
@@ -31,26 +31,15 @@ Díky funkcím pro přizpůsobení, výkon a integraci vlastního klíčového s
 | Ověření klíčového slova | Když je klíčové slovo, které se detekuje místně, velmi důvěrné, pošle se do cloudu pro další ověření, že uživatel uvedli klíčové slovo. Ověřování pomocí klíčového slova poskytuje další úroveň zabezpečení tím, že snižuje dopad nesprávného místního zjišťování a ochranu osobních údajů uživatelů.
 | Hlasový asistent & integrace sady Speech SDK | Klíčová slova generovaná z klíčového slova Custom v sadě Speech Studio je možné snadno integrovat do svého zařízení nebo aplikace prostřednictvím sady Speech SDK. Jednoduše nasměrujte sadu SDK na klíč klíčového slova poskytnutý programem Speech Studio a váš produkt bude hlas aktivovaný na základě ověření pomocí klíčového slova. Hlasové prostředí vašeho produktu můžete dokončit vytvořením vlastního [hlasového asistenta](voice-assistants.md).
 
-## <a name="sample-code"></a>Ukázka kódu
+## <a name="get-started-with-custom-keywords"></a>Začínáme s vlastními klíčovými slovy
 
-Vzorový kód pro integraci modelu klíčového slova je k dispozici na GitHubu. Tyto ukázky zahrnují klientskou aplikaci pro integraci vašeho klíčového slova do několika oblíbených programovacích jazyků.
-
-* [Kurz: hlas – aktivace produktu pomocí sady Speech SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [Ukázky hlasového asistenta (SDK)](https://aka.ms/csspeech/samples)
-
-## <a name="tutorial"></a>Kurz
-
-* [Vytvoření vlastního klíčového slova pomocí rozpoznávání řeči Studio](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws).
-* Způsob, jakým [hlas aktivujete, pomocí sady Speech SDK](tutorial-voice-enable-your-bot-speech-sdk.md).
-
-## <a name="reference-docs"></a>Referenční dokumenty
-
-* [Vlastní pokyny pro pojmenovávání klíčových slov](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-kws-guidelines)
-* [Speech SDK](speech-sdk-reference.md)
+* Kurz: [Vytvoření vlastního klíčového slova pomocí řeči Studio](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)
+* Kurz: jak [hlasově aktivovat svůj produkt pomocí sady Speech SDK, pomocí jazyka C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+* Rychlý Start: [rozpoznání klíčových slov pomocí sady Speech SDK na Univerzální platforma Windows pomocí jazyka C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
+* Rychlý Start: [rozpoznání klíčových slov pomocí sady Speech SDK na Androidu pomocí Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Získejte zdarma klíč předplatného služby Speech](get-started.md)
-* [Vytvoření vlastního klíčového slova](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)
 * [Získat sadu Speech SDK](speech-sdk.md)
 * [Další informace o hlasových asistentech](voice-assistants.md)

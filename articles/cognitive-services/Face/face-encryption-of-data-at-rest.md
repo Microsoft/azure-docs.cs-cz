@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 793c21bb2341033aa51ff8c639846e57ada4bae3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1e0275c91b2243132650be7af256071589091c4b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372213"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201932"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>Šifrování neaktivních dat ve službě Face
 
@@ -25,7 +25,14 @@ Služba obličeje automaticky šifruje vaše data při trvalém ukládání do c
 > [!IMPORTANT]
 > Klíče spravované zákazníkem jsou dostupné jenom v cenové úrovni E0. Chcete-li požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete [formulář žádosti o klíč spravovaný zákazníkem služby Face](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro používání CMK se službou obličeje budete muset vytvořit nový prostředek pro vytváření obličeje a vybrat E0 jako cenovou úroveň. Jakmile se vytvoří prostředek obličeje s cenovou úrovní E0, můžete k nastavení spravované identity použít Azure Key Vault.
 
-[!INCLUDE [cognitive-services-cmk](../../../includes/cognitive-services-cmk-regions.md)]
+### <a name="regional-availability"></a>Regionální dostupnost
+
+Klíče spravované zákazníkem jsou v tuto chvíli dostupné v těchto oblastech:
+
+* USA (střed) – jih
+* USA – západ 2
+* USA – východ
+* USA (Gov) – Virginia
 
 [!INCLUDE [cognitive-services-cmk](../../../includes/cognitive-services-cmk.md)]
 

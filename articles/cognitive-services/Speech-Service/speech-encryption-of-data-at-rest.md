@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 05/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 3ccc9820f38a8c32d0b390663eb6b4430b42e8f0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2e52fbab8d984f7442d8a336e90e9f22c0bf061
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372356"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198673"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Šifrování neaktivních dat ve službě Speech Service
 
@@ -42,13 +42,10 @@ Pokud chcete požádat o přístup k získání vlastního úložiště, vyplňt
 > [!IMPORTANT]
 > Pokud zakážete spravované identity přiřazené systémem, odebere se přístup k účtu úložiště. Tím dojde k tomu, že části služby pro rozpoznávání řeči, které budou vyžadovat přístup k účtu úložiště, přestanou fungovat.  
 
-## <a name="regional-availability"></a>Regionální dostupnost
+Služba Speech v současné době nepodporuje Customer Lockbox. Zákaznická data ale můžete ukládat pomocí BYOS, což vám umožní dosáhnout podobných ovládacích prvků pro data [Customer Lockbox](../../security/fundamentals/customer-lockbox-overview.md). Pamatujte, že data služby Speech Service zůstanou a jsou zpracována v oblasti, ve které byl prostředek řeči vytvořen. To platí pro veškerá data v klidovém režimu a data při přenosu. Pokud používáte funkce vlastního nastavení, jako je Custom Speech a vlastní hlas, všechna zákaznická data se přenesou, ukládají a zpracovávají ve stejné oblasti, ve které se nachází BYOS (Pokud se používá) a prostředek služby Speech.
 
-BYOS je v tuto chvíli k dispozici v těchto oblastech:
-
-* USA (střed) – jih
-* USA – západ 2
-* USA – východ
+> [!IMPORTANT]
+> Společnost **Microsoft nepoužívá** zákaznická data ke zlepšení svých modelů řeči. Pokud je navíc protokolování koncových bodů zakázané a nepoužívá se žádné vlastní nastavení, neukládají se žádná zákaznická data. 
 
 ## <a name="next-steps"></a>Další kroky
 

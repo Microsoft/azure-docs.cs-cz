@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: f92c05476c9e85690fdeacade5463a43d0a4af42
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f562c195e90f2356568530b9b618ae9e6610fa56
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424290"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201467"
 ---
 # <a name="introduction"></a>Úvod
 
@@ -24,7 +24,7 @@ Konektor Spark SQL Analytics je navržený tak, aby efektivně přenesl data mez
 
 Přenos dat mezi fondy Spark a fondy SQL se dá provést pomocí JDBC. Nicméně u dvou distribuovaných systémů, jako jsou Spark a SQL, je JDBC kritickým bodem pro přenos dat pomocí sériového přenosu dat.
 
-Fondy Sparku na SQL Analytics Connector je implementace zdroje dat pro Apache Spark. Používá Azure Data Lake Storage Gen 2 a základnu v rámci fondů SQL k efektivnímu přenosu dat mezi clusterem Spark a instancí SQL Analytics.
+Fondy Sparku na SQL Analytics Connector jsou implementace zdroje dat pro Apache Spark. Používá Azure Data Lake Storage Gen 2 a základnu v rámci fondů SQL k efektivnímu přenosu dat mezi clusterem Spark a instancí SQL Analytics.
 
 ![Architektura konektoru](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -55,7 +55,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 ## <a name="usage"></a>Využití
 
-Příkazy import není nutné poskytnout, jsou předem importovány pro prostředí poznámkového bloku.
+Příkazy import nejsou vyžadovány, jsou předem importovány pro prostředí poznámkového bloku.
 
 ### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Přenos dat do nebo z fondu SQL na logickém serveru (instance DW) připojené k pracovnímu prostoru
 
@@ -161,9 +161,36 @@ val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
 pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
+
 Podobně ve scénáři čtení si přečtěte data pomocí Scala a zapište je do dočasné tabulky a pomocí Spark SQL v PySpark se Dotazujte dočasnou tabulku do datového rámce.
+
+## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>Povolení použití konektoru DW v pracovním prostoru jiným uživatelům
+
+Pokud chcete pro ostatní měnit chybějící oprávnění, musíte být vlastníkem dat objektu BLOB úložiště v účtu úložiště ADLS Gen2 připojeném k pracovnímu prostoru. Ujistěte se, že uživatel má přístup k pracovnímu prostoru a oprávnění ke spouštění poznámkových bloků.
+
+### <a name="option-1"></a>Možnost 1
+
+- Nastavit uživatele jako přispěvatele nebo vlastníka dat objektu BLOB úložiště
+
+### <a name="option-2"></a>2. možnost
+
+- Zadejte následující seznamy ACL pro strukturu složek:
+
+| Složka | / | synapse | pracovní prostory  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
+|--|--|--|--|--|--|--|--|
+| Přístupová oprávnění |--X |--X |--X |--X |--X |--X |– WX |
+| Výchozí oprávnění |---|---|---|---|---|---|---|
+
+- Měli byste být schopni se připojit k seznamu všech složek z "synapse" a dolů od Azure Portal. V případě, že chcete kořenovou složku "/" seznamu ACL, postupujte podle následujících pokynů.
+
+- Připojení k účtu úložiště připojenému k pracovnímu prostoru z Průzkumník služby Storage pomocí AAD
+- Vyberte svůj účet a zadejte adresu URL ADLS Gen2 a výchozí systém souborů pro pracovní prostor.
+- Jakmile uvidíte účet úložiště, který je uvedený v seznamu, klikněte pravým tlačítkem na pracovní prostor výpisu a vyberte spravovat přístup.
+- Přidejte uživatele do složky/a s oprávněním "spustit" přístup. Vyberte OK.
+
+**Pokud nechcete, ujistěte se, že nevyberete možnost výchozí.**
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření fondu SQL]([Create a new Apache Spark pool for an Azure Synapse Analytics workspace](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
+- [Vytvoření fondu SQL](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
 - [Vytvoření nového fondu Apache Spark pro pracovní prostor Azure synapse Analytics](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 
