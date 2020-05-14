@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/24/2020
-ms.openlocfilehash: 475f89fc5b33948864fd83c39ee8058ab6908cad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0aea6a42269712e5c1e505c270f9d88635de83e5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80247193"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195292"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -26,6 +26,10 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 Azure Search se teď přejmenuje na **Azure kognitivní hledání** , aby odráželo rozšířené (zatím volitelné) používání vnímání a zpracování AI v základních operacích. Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Nová a stávající řešení hledání nejsou ovlivněna změnou názvu služby.
 
 ## <a name="feature-announcements"></a>Oznámení funkcí
+
+### <a name="may-2020"></a>Květen 2020
+
++ Funkce relace ladění je teď ve verzi Preview. [Zaregistrujte se, abyste mohli požádat o přístup](https://aka.ms/DebugSessions).
 
 ### <a name="march-2020"></a>Březen 2020
 
@@ -41,11 +45,11 @@ Azure Search se teď přejmenuje na **Azure kognitivní hledání** , aby odrá�
 
 ### <a name="january-2020"></a>Leden 2020
 
-+ [Šifrovací klíče spravované zákazníkem](search-security-manage-encryption-keys.md) jsou teď všeobecně dostupné. Pokud používáte REST, můžete k této funkci přistupovat pomocí `api-version=2019-05-06`. Pro spravovaný kód je správný balíček stále [.NET SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , i když funkce není ve verzi Preview. 
++ [Šifrovací klíče spravované zákazníkem](search-security-manage-encryption-keys.md) jsou teď všeobecně dostupné. Pokud používáte REST, můžete k této funkci přistupovat pomocí `api-version=2019-05-06` . Pro spravovaný kód je správný balíček stále [.NET SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , i když funkce není ve verzi Preview. 
 
 + Privátní přístup k vyhledávací službě je k dispozici prostřednictvím dvou mechanismů v současnosti ve verzi Preview:
 
-  + Přístup ke konkrétním IP adresám můžete omezit pomocí REST API `api-version=2019-10-01-Preview` pro správu a vytvořit službu. Rozhraní API ve verzi Preview má nové vlastnosti **IpRule** a **NetworkRuleSet** v [rozhraní CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Tato funkce ve verzi Preview je dostupná ve vybraných oblastech. Další informace najdete v tématu [Jak používat REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+  + Přístup ke konkrétním IP adresám můžete omezit pomocí REST API pro správu `api-version=2019-10-01-Preview` a vytvořit službu. Rozhraní API ve verzi Preview má nové vlastnosti **IpRule** a **NetworkRuleSet** v [rozhraní CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Tato funkce ve verzi Preview je dostupná ve vybraných oblastech. Další informace najdete v tématu [Jak používat REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
   + Aktuálně dostupné prostřednictvím omezeného přístupu ve verzi Preview můžete zřídit Azure Search službu, která podporuje privátní koncový bod Azure pro připojení od klientů ve stejné virtuální síti. Další informace najdete v tématu [Vytvoření privátního koncového bodu pro zabezpečené připojení](service-create-private-endpoint.md).
 

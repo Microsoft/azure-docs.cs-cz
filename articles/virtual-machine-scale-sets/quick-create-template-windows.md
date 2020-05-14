@@ -2,18 +2,19 @@
 title: Rychlý Start – vytvoření sady škálování virtuálních počítačů s Windows pomocí šablony Azure
 description: Zjistěte, jak rychle vytvořit škálovací sadu virtuálních počítačů s Windows pomocí šablony Azure Resource Manageru, která nasadí ukázkovou aplikaci a nakonfiguruje pravidla automatického škálování.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: quickstart
-ms.custom: mvc,subject-armqs
-ms.date: 03/27/2020
 ms.author: jushiman
-ms.openlocfilehash: 030479a02b33a92c3917ba112d99c9bcef4f7f32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: windows
+ms.date: 03/27/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 8bf75dc08a033c254152cb6e5b6f3af6389d8380
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010439"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198203"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů s Windows pomocí šablony Azure
 
@@ -25,7 +26,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné.
+Žádné
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
@@ -52,7 +53,7 @@ Zvýrazněná část je definice prostředku sady škálování. Pokud chcete vy
 | Vlastnost                     | Popis vlastnosti                                  | Příklad hodnoty v šabloně                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | Typ prostředku Azure, který se má vytvořit                            | Microsoft.Compute/virtualMachineScaleSets |
-| jméno                         | Název škálovací sady                                       | myScaleSet                                |
+| name                         | Název škálovací sady                                       | myScaleSet                                |
 | location                     | Umístění, ve kterém se škálovací sada vytvoří                     | USA – východ                                   |
 | sku.name                     | Velikost virtuálního počítače pro všechny instance škálovací sady                  | Standard_A1                               |
 | sku.capacity                 | Počet instancí virtuálních počítačů, které se mají zpočátku vytvořit           | 2                                         |
@@ -112,7 +113,7 @@ Pokud chcete vidět svou škálovací sadu v akci, přejděte ve webovém prohl�
 Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-Zadejte veřejnou IP adresu nástroje pro vyrovnávání zatížení do webového prohlížeče ve formátu *http:\//publicIpAddress/MyApp*. Nástroj pro vyrovnávání zatížení distribuuje provoz do jedné z vašich instancí virtuálních počítačů, jak je znázorněno v následujícím příkladu:
+Zadejte veřejnou IP adresu nástroje pro vyrovnávání zatížení do webového prohlížeče ve formátu *http: \/ /publicIpAddress/MyApp*. Nástroj pro vyrovnávání zatížení distribuuje provoz do jedné z vašich instancí virtuálních počítačů, jak je znázorněno v následujícím příkladu:
 
 ![Spuštění webu služby IIS](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 

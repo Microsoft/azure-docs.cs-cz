@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 6ab1f7c97173021cc112a5f117469abd74ac954d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea6f78d0d0856bb6a758a3168b6b86a1c962962b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062570"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201007"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Nastavení ověřovací aplikace jako metody ověřování dvou faktorů
 
@@ -29,7 +29,7 @@ Můžete nastavit ověřovací aplikaci, která odešle oznámení na mobilní z
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>Nastavení aplikace Microsoft Authenticator k odesílání oznámení
 
-1. Na stránce **Další ověření zabezpečení** vyberte **mobilní aplikace** z **kroku 1: jak vás máme kontaktovat vaši** oblastí.
+1. Na [stránce další ověření zabezpečení](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)vyberte **mobilní aplikace** z **kroku 1: jak vás máme kontaktovat vaši** oblastí.
 
 2. Vyberte možnost **přijímat oznámení pro ověření** z části **jak chcete použít oblast mobilní aplikace** a pak vyberte možnost **nastavit**.
 

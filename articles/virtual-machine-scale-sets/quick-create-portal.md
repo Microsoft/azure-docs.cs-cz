@@ -2,20 +2,19 @@
 title: Rychlý Start – vytvoření sady škálování virtuálního počítače v Azure Portal
 description: Začněte s nasazeními a Naučte se, jak rychle vytvořit virtuální počítač škáluje Azure Portal.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
-ms.topic: quickstart
-ms.custom: mvc, H1Hack27Feb2017
-ms.date: 10/23/2019
 ms.author: jushiman
-ms.openlocfilehash: 5855c53a73ac94985f34f229fbe5ab77067ef17d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: ''
+ms.date: 10/23/2019
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 582bf5c6424b9dc13b354a92e75b3a7ee2cdca6f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81680419"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197649"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů na webu Azure Portal
 
@@ -40,7 +39,7 @@ Nejdřív vytvořte pomocí portálu veřejné Standard Load Balancer. Název a 
     | ---| ---|
     | Předplatné  | Vyberte své předplatné.    |    
     | Skupina prostředků | Vyberte **vytvořit nový** a do textového pole zadejte *myVMSSResourceGroup* .|
-    | Název           | *myLoadBalancer*         |
+    | Name           | *myLoadBalancer*         |
     | Oblast         | Vyberte **USA – východ**.       |
     | Typ          | Vyberte možnost **veřejné**.       |
     | Skladová jednotka (SKU)           | Vyberte **Standard**.       |

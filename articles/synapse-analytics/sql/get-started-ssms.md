@@ -9,14 +9,15 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 704da86fd1d816dbf5d6cd9cf67dfee53fce2622
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a25049aee620a1cf14eeb51adfb75f6577defc2a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423737"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197074"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Připojení k synapse SQL pomocí SQL Server Management Studio (SSMS)
+
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
@@ -30,8 +31,11 @@ ms.locfileid: "81423737"
 
 ### <a name="supported-tools-for-sql-on-demand-preview"></a>Podporované nástroje pro SQL na vyžádání (Preview)
 
-SSMS se částečně podporuje od verze 18,5 s omezenými funkcemi, jako je připojení a dotazování. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) je plně podporovaný.
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) se plně podporuje od verze 1.18.0. SSMS je částečně podporovaná od verze 18,5, můžete ji použít jenom pro připojení a dotazování.
 
+> [!NOTE]
+> Pokud má přihlášení AAD otevřené připojení po dobu delší než 1 hodinu, dotaz, který se spoléhá na AAD, selže. To zahrnuje dotazování na úložiště pomocí předávacího a příkazového příkazu AAD, které komunikují s AAD (třeba vytvoření externího poskytovatele). To má vliv na všechny nástroje, které udržují připojení otevřené, jako v editoru dotazů v SSMS a REKLAMách. Nástroje, které otevřou nové připojení k provedení dotazu, nejsou ovlivněné, například synapse Studio.
+> Pokud chcete tento problém zmírnit, můžete restartovat SSMS nebo připojení a odpojení v REKLAMách. .
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující požadavky:  
@@ -94,7 +98,7 @@ Teď, když je navázáno připojení k databázi, můžete zadávat dotazy na d
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Spusťte dotaz. Pokud to chcete provést, `Execute` klikněte nebo použijte následující klávesovou `F5`zkratku:.
+4. Spusťte dotaz. Pokud to chcete provést, klikněte `Execute` nebo použijte následující klávesovou zkratku: `F5` .
    
     ![Spuštění dotazu](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
 5. Podívejte se na výsledky dotazu. V tomto příkladě má tabulka FactInternetSales 60 398 řádků.
@@ -114,7 +118,7 @@ Teď, když jste navázali připojení k databázi, můžete zadávat dotazy na 
     ```sql
     SELECT COUNT(*) FROM demo.dbo.usPopulationView
     ```
-4. Spusťte dotaz. Pokud to chcete provést, `Execute` klikněte nebo použijte následující klávesovou `F5`zkratku:.
+4. Spusťte dotaz. Pokud to chcete provést, klikněte `Execute` nebo použijte následující klávesovou zkratku: `F5` .
    
     ![Spuštění dotazu](./media/get-started-ssms/execute-query.png)
 5. Podívejte se na výsledky dotazu. V tomto příkladu má zobrazení usPopulationView řádky 3664512.

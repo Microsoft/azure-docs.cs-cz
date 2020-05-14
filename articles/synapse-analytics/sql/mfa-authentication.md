@@ -8,12 +8,13 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e8f17f54f52aef6f552b7c211aa8f0e498b94df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: has-adal-ref
+ms.openlocfilehash: a1f6548a83736cfb0e519559fd22e16d4527ae0b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424920"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197663"
 ---
 # <a name="using-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Použití vícefaktorového ověřování AAD s synapse SQL (podpora SSMS pro MFA)
 
@@ -56,7 +57,7 @@ Uživatelé typu Host zahrnují uživatele pozvaní z jiných reklam Azure, úč
 
 Všichni uživatelé, kteří chtějí být ověřeni pomocí univerzálního ověřování, musí zadat svůj název domény nebo ID tenanta služby Azure AD. Tento parametr představuje aktuální název domény nebo ID tenanta Azure AD, se kterým je server Azure propojený. 
 
-Pokud je například Azure server `contosotest.onmicrosoft.com` přidružený k doméně Azure AD, kde je uživatel `joe@contosodev.onmicrosoft.com` hostovaný jako importovaný uživatel z domény `contosodev.onmicrosoft.com`služby Azure AD, název domény, který je potřeba k ověření tohoto uživatele `contosotest.onmicrosoft.com`, je. 
+Pokud je například Azure Server přidružený k doméně Azure AD `contosotest.onmicrosoft.com` , kde je uživatel `joe@contosodev.onmicrosoft.com` hostovaný jako importovaný uživatel z domény služby Azure AD `contosodev.onmicrosoft.com` , název domény, který je potřeba k ověření tohoto uživatele, je `contosotest.onmicrosoft.com` . 
 
 Když je uživatel nativním uživatelem služby Azure AD připojeným k serveru Azure a nejedná se o účet MSA, není nutné mít žádný název domény ani ID tenanta. 
 
@@ -71,15 +72,15 @@ Pokud používáte SSMS 18. x nebo novější, název domény služby AD nebo ID
    ![MFA – tenant – SSMS](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Podpora Azure AD pro firmy   
-Uživatelé Azure AD podporovaní ve scénářích Azure AD B2B jako uživatelé typu Host (viz téma [co je spolupráce Azure B2B se](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) může připojit k synapse SQL pouze v rámci členů skupiny vytvořené v aktuální službě Azure AD a ručně namapovat pomocí `CREATE USER` příkazu Transact-SQL v dané databázi). 
+Uživatelé Azure AD podporovaní ve scénářích Azure AD B2B jako uživatelé typu Host (viz téma [co je spolupráce Azure B2B se](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) může připojit k synapse SQL pouze v rámci členů skupiny vytvořené v aktuální službě Azure AD a ručně namapovat pomocí příkazu Transact-SQL `CREATE USER` v dané databázi). 
 
-`steve@gmail.com` Pokud je například Pozvánka do `contosotest` Azure AD (s doménou `contosotest.onmicrosoft.com`Azure AD), `usergroup` musí být ve službě Azure AD, která obsahuje `steve@gmail.com` člena, vytvořená skupina Azure AD. Pak je potřeba tuto skupinu vytvořit pro konkrétní databázi (tj. MyDatabase) pomocí služby Azure AD SQL admin nebo Azure AD DBO spuštěním příkazu jazyka Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` . 
+Pokud `steve@gmail.com` je například Pozvánka do Azure AD `contosotest` (s doménou Azure AD `contosotest.onmicrosoft.com` ), `usergroup` musí být ve službě Azure AD, která obsahuje člena, vytvořená skupina Azure AD `steve@gmail.com` . Pak je potřeba tuto skupinu vytvořit pro konkrétní databázi (tj. MyDatabase) pomocí služby Azure AD SQL admin nebo Azure AD DBO spuštěním příkazu jazyka Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` . 
 
-Po vytvoření uživatele databáze se uživatel `steve@gmail.com` může přihlásit k `MyDatabase` používání možnosti `Active Directory – Universal with MFA support`ověřování SSMS. 
+Po vytvoření uživatele databáze se uživatel `steve@gmail.com` může přihlásit k `MyDatabase` používání možnosti ověřování SSMS `Active Directory – Universal with MFA support` . 
 
 Ve výchozím nastavení má uživatel ve výchozím nastavení pouze oprávnění připojit a jakýkoliv další přístup k datům, který bude potřeba udělit běžným způsobem. 
 
-Všimněte si, `steve@gmail.com` že uživatel jako uživatel typu Host musí zaškrtnout políčko a přidat název `contosotest.onmicrosoft.com` domény služby AD do dialogového okna **Vlastnosti připojení** SSMS. Možnost **název domény AD nebo ID tenanta** je podporovaná jenom pro možnosti připojení univerzální s MFA, jinak je šedá.
+Všimněte si, že uživatel `steve@gmail.com` jako uživatel typu Host musí zaškrtnout políčko a přidat název domény služby AD `contosotest.onmicrosoft.com` do dialogového okna **Vlastnosti připojení** SSMS. Možnost **název domény AD nebo ID tenanta** je podporovaná jenom pro možnosti připojení univerzální s MFA, jinak je šedá.
 
 ## <a name="universal-authentication-limitations-for-synapse-sql"></a>Omezení univerzálního ověřování pro synapse SQL
 

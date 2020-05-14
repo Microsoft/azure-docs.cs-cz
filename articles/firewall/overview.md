@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/06/2020
+ms.date: 05/11/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 9d5fc95c5845b9a75666860ce8900676972a16bc
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 928e0cec1cad5d6fe8b70b728cd86a41577ce797
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864092"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195343"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -93,6 +93,10 @@ To umožňuje následující scénáře:
 ## <a name="azure-monitor-logging"></a>Protokolování Azure Monitor
 
 Všechny události jsou integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor.
+
+## <a name="forced-tunneling"></a>Vynucené tunelování
+
+Azure Firewall můžete nakonfigurovat tak, aby směroval veškerý provoz vázaný na Internet na určený další segment směrování a nemuseli jít přímo na Internet. Můžete mít například místní hraniční bránu firewall nebo jiné síťové virtuální zařízení (síťové virtuální zařízení) pro zpracování síťového provozu před předáním na Internet. Další informace najdete v tématu [Azure firewall vynucené tunelování](forced-tunneling.md).
 
 ## <a name="certifications"></a>Certifikace
 

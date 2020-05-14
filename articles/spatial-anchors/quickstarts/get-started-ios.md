@@ -8,12 +8,13 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6304077a26f5c0ecb91e1ec4936bd79b3d839d95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: has-adal-ref
+ms.openlocfilehash: 1da5bd7020304c67bd9f9058612f47d528611a9e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79471213"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195332"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Rychlý Start: Vytvoření aplikace pro iOS pomocí prostorových kotev Azure v SWIFT nebo objektivní-C
 
@@ -34,7 +35,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 - Vývojář s povoleným macOS počítačem s nainstalovanou nejnovější verzí <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> .
 - Git nainstalovaný přes HomeBrew:
-  1. Jako jeden řádek v terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. 
+  1. Jako jeden řádek v terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . 
   1. Spusťte příkazy `brew install git` a `brew install git-lfs`.
   1. Aktualizujte konfiguraci Gitu pomocí `git lfs install` (pro aktuálního uživatele) nebo `git lfs install --system` (pro celý systém).
 - Vývojářem podporujícím zařízení s iOS <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">kompatibilní s ARKit</a> .
@@ -96,17 +97,17 @@ Dalším krokem je konfigurace aplikace tak, aby používala identifikátor úč
 
 Otevřete `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
-Vyhledejte `spatialAnchorsAccountKey` pole a nahraďte `Set me` ho klíčem účtu.
+Vyhledejte `spatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem účtu.
 
-Vyhledejte `spatialAnchorsAccountId` pole a nahraďte `Set me` ho identifikátorem účtu.
+Vyhledejte `spatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
 
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
 Otevřete `iOS/Objective-C/SampleObjC/BaseViewController.m`.
 
-Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` ho klíčem účtu.
+Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem účtu.
 
-Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` ho identifikátorem účtu.
+Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
 
 ---
 
@@ -121,7 +122,7 @@ Vyberte **Sestavit a potom spusťte aktuální schéma**.
 ![Nasazení a spuštění](./media/get-started-ios/deploy-run.png)
 
 > [!NOTE]
-> Pokud se zobrazí `library not found for -lPods-SampleObjC` chyba, pravděpodobně jste `.xcodeproj` soubor otevřeli místo. `.xcworkspace` Otevřete `.xcworkspace` a zkuste to znovu.
+> Pokud se zobrazí `library not found for -lPods-SampleObjC` Chyba, pravděpodobně jste soubor otevřeli `.xcodeproj` místo `.xcworkspace` . Otevřete `.xcworkspace` a zkuste to znovu.
 
 V Xcode zastavte aplikaci stisknutím klávesy **stop**.
 
@@ -139,7 +140,7 @@ brew link --overwrite cocoapods
 
 ### <a name="app-crashes-when-deploying-to-ios-1031-from-a-personal-provisioning-profiledeveloper-account"></a>Chyba aplikace při nasazování do iOS 10.3.1 z osobního zřizovacího profilu/účtu vývojáře 
 
-Pokud nasadíte aplikaci pro iOS v iOS 10.3.1 z osobního zřizovacího profilu/vývojářského účtu, může se zobrazit tato chyba `Library not loaded: @rpath/ADAL...`:. 
+Pokud nasadíte aplikaci pro iOS v iOS 10.3.1 z osobního zřizovacího profilu/vývojářského účtu, může se zobrazit tato chyba: `Library not loaded: @rpath/ADAL...` . 
 
 Problém vyřešíte takto:
 

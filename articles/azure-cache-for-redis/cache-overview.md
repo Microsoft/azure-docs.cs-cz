@@ -5,21 +5,21 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.date: 03/11/2020
-ms.openlocfilehash: cd4e7c8e2693c25f3fc092fb53874a97cfd62434
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/12/2020
+ms.openlocfilehash: 09a7a28716e437bab71c7386bd332712a4d192dd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113200"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196378"
 ---
-# <a name="azure-cache-for-redis-description"></a>Popis služby Azure Cache for Redis
+# <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 
-Azure cache pro Redis poskytuje úložiště dat v paměti založené na open source softwaru [Redis](https://redis.io/). Redis při použití jako mezipaměť vylepšuje výkon a škálovatelnost systémů, které spoléhají na úložiště dat back-endu. Zvýšení výkonu se zlepšuje zkopírováním často používaných dat do rychlého úložiště, které se nachází blízko aplikace. V případě služby Azure cache pro Redis je toto rychlé úložiště v paměti místo načítání z disku databází.
+Azure cache pro Redis poskytuje úložiště dat v paměti založené na open source softwaru [Redis](https://redis.io/). Redis při použití jako mezipaměť vylepšuje výkon a škálovatelnost systémů, které spoléhají na back-endové úložiště dat. Zvýšení výkonu se zlepšuje zkopírováním často používaných dat do rychlého úložiště, které se nachází blízko aplikace. V případě služby Azure cache pro Redis je toto rychlé úložiště v paměti místo načítání z disku databází.
 
-Mezipaměť Azure pro Redis se dá použít jako úložiště datové struktury v paměti, distribuované nerelační databáze a zprostředkovatele zpráv. Lepšího výkonu aplikací se dosahuje díky nízké latenci a vysoké propustnosti modulu Redis.
+Mezipaměť Azure pro Redis se dá použít jako mezipaměť distribuovaných dat, úložiště relací a zprostředkovatele zpráv. Lepšího výkonu aplikací se dosahuje díky nízké latenci a vysoké propustnosti modulu Redis.
 
-Azure cache pro Redis poskytuje přístup k zabezpečené vyhrazené mezipaměti Redis. Služba Azure cache pro Redis je spravovaná Microsoftem, která je hostovaná v Azure, a dostupná pro libovolnou aplikaci v rámci Azure i mimo ni. Kromě toho Azure Redis for Cache používá strategii replikace bez disků, což zlepšuje kompatibilitu s využitím odvětví platební karty.
+Azure cache for Redis nabízí přístup k zabezpečené vyhrazené mezipaměti Redis. Spravuje je Microsoft, která je hostovaná v Azure a je dostupná pro libovolnou aplikaci v rámci Azure i mimo ni.
 
 ## <a name="using-azure-cache-for-redis"></a>Použití mezipaměti Azure pro Redis
 

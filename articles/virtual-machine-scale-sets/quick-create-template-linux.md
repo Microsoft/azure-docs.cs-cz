@@ -2,18 +2,19 @@
 title: Rychlý Start – vytvoření sady škálování virtuálního počítače se systémem Linux pomocí šablony Azure Resource Manager
 description: Zjistěte, jak rychle vytvořit škálovací sadu virtuálních počítačů s Linuxem pomocí šablony Azure Resource Manageru, která nasadí ukázkovou aplikaci a nakonfiguruje pravidla automatického škálování.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: quickstart
-ms.custom: mvc,subject-armqs
-ms.date: 03/27/2020
 ms.author: jushiman
-ms.openlocfilehash: 4c0bac943be996c02436824334bd79a270f9a2e2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: linux
+ms.date: 03/27/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: f51bfa012c62e7acdd0aa2cd16279ec68702a72c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010456"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117322"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření sady škálování virtuálních počítačů se systémem Linux pomocí šablony Azure Resource Manager
 
@@ -25,7 +26,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné.
+Žádné
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
 
@@ -52,7 +53,7 @@ Zvýrazněná část je definice prostředku sady škálování. Pokud chcete vy
 | Vlastnost                     | Popis vlastnosti                                  | Příklad hodnoty v šabloně                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | Typ prostředku Azure, který se má vytvořit                            | Microsoft.Compute/virtualMachineScaleSets |
-| jméno                         | Název škálovací sady                                       | myScaleSet                                |
+| name                         | Název škálovací sady                                       | myScaleSet                                |
 | location                     | Umístění, ve kterém se škálovací sada vytvoří                     | USA – východ                                   |
 | sku.name                     | Velikost virtuálního počítače pro všechny instance škálovací sady                  | Standard_A1                               |
 | sku.capacity                 | Počet instancí virtuálních počítačů, které se mají zpočátku vytvořit           | 2                                         |
@@ -76,7 +77,7 @@ Pokud chcete svou škálovací sadu otestovat, nainstalujte základní webovou a
 
 Šablona používá rozšíření vlastních skriptů k instalaci [lahvičky](https://bottlepy.org/docs/dev/), webové architektury Pythonu a jednoduchého serveru http.
 
-V **identifikátorech URI** - *installserver.sh*a *workserver.py*jsou definovány dva skripty. Tyto soubory se stáhnou z GitHubu, *commandToExecute* potom commandToExecute `bash installserver.sh` spustí instalaci a konfiguraci aplikace.
+V **identifikátorech URI**  -  *installserver.sh*a *workserver.py*jsou definovány dva skripty. Tyto soubory se stáhnou z GitHubu, potom *commandToExecute* spustí `bash installserver.sh` instalaci a konfiguraci aplikace.
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -108,7 +109,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-Zadejte veřejnou IP adresu nástroje pro vyrovnávání zatížení do webového prohlížeče ve formátu *http:\//publicIpAddress: 9000/do_work*. Nástroj pro vyrovnávání zatížení distribuuje provoz do jedné z vašich instancí virtuálních počítačů, jak je znázorněno v následujícím příkladu:
+Zadejte veřejnou IP adresu nástroje pro vyrovnávání zatížení do webového prohlížeče ve formátu *http: \/ /publicIpAddress: 9000/do_work*. Nástroj pro vyrovnávání zatížení distribuuje provoz do jedné z vašich instancí virtuálních počítačů, jak je znázorněno v následujícím příkladu:
 
 ![Výchozí webová stránka na serveru NGINX](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0f5323193706fdd00739be6c71a4fe12cfedf21b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4c6a151bdd3b437c6a01a949096604b3963489bd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424535"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195150"
 ---
 # <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Vytváření a používání zobrazení v SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
 
@@ -22,17 +22,14 @@ V této části se dozvíte, jak vytvářet a používat zobrazení k zabalení 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Prvním krokem je kontrola níže uvedených článků a ujistěte se, že jste splnili předpoklady pro vytváření a používání zobrazení SQL na vyžádání:
-
-- [Nastavení při prvním spuštění](query-data-storage.md#first-time-setup)
-- [Požadavky](query-data-storage.md#prerequisites)
+Prvním krokem je vytvoření databáze, ve které se zobrazení vytvoří, a inicializace objektů potřebných k ověření v Azure Storage spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Všechny dotazy v tomto článku se spustí v ukázkové databázi.
 
 ## <a name="create-a-view"></a>Vytvoření zobrazení
 
 Zobrazení můžete vytvořit stejným způsobem jako běžné SQL Server zobrazení. Následující dotaz vytvoří zobrazení, které čte soubor *naplnění. csv* .
 
 > [!NOTE]
-> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili. Pokud jste databázi nevytvořili, přečtěte si prosím [nastavení při prvním spuštění](query-data-storage.md#first-time-setup).
+> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili.
 
 ```sql
 USE [mydbname];
@@ -57,6 +54,19 @@ WITH (
 ) AS [r];
 ```
 
+Zobrazení v tomto příkladu používá `OPENROWSET` funkci, která používá absolutní cestu k podkladovým souborům. Pokud máte `EXTERNAL DATA SOURCE` s kořenovou adresou URL vašeho úložiště, můžete použít `OPENROWSET` s `DATA_SOURCE` a relativní cestou k souboru:
+
+```
+CREATE VIEW TaxiView
+AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
+FROM
+    OPENROWSET(
+        BULK 'parquet/taxi/year=*/month=*/*.parquet',
+        DATA_SOURCE = 'sqlondemandstorage',
+        FORMAT='PARQUET'
+    ) AS nyc
+```
+
 ## <a name="use-a-view"></a>Použití zobrazení
 
 Zobrazení v dotazech můžete použít stejným způsobem jako zobrazení v SQL Serverch dotazech.
@@ -64,7 +74,7 @@ Zobrazení v dotazech můžete použít stejným způsobem jako zobrazení v SQL
 Následující dotaz znázorňuje použití zobrazení *population_csv* , které jsme vytvořili v části [Vytvoření zobrazení](#create-a-view). V sestupném pořadí vrátí názvy zemí se svými populacemi v 2019.
 
 > [!NOTE]
-> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili. Pokud jste databázi nevytvořili, přečtěte si prosím [nastavení při prvním spuštění](query-data-storage.md#first-time-setup).
+> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili.
 
 ```sql
 USE [mydbname];

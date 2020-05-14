@@ -2,18 +2,19 @@
 title: Rychlý Start – vytvoření sady škálování virtuálních počítačů pomocí Azure PowerShell
 description: Začněte s nasazeními a Naučte se, jak rychle vytvořit škálování virtuálního počítače pomocí Azure PowerShell.
 author: ju-shim
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: quickstart
-ms.custom: mvc
-ms.date: 11/08/2018
 ms.author: jushiman
-ms.openlocfilehash: ab5efc84ed88ef5ef245bfead2cc709405dc79ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: powershell
+ms.date: 11/08/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 6d23a8c06048eec50f947b16b61fe818907720dc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81008603"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201438"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Rychlý start: Vytvoření škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 

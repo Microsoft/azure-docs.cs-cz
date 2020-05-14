@@ -3,19 +3,19 @@ title: Migrace dat na obličej napříč předplatnými – tvář
 titleSuffix: Azure Cognitive Services
 description: V této příručce se dozvíte, jak migrovat uložená data z jednoho předplatného na jiný.
 services: cognitive-services
-author: lewlu
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.author: lewlu
-ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: nitinme
+ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76169816"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120806"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrace vašich obličejových dat na jiný obličejový odběr
 
@@ -62,7 +62,7 @@ Zadejte hodnoty klíče předplatného a adresy URL koncového bodu pro vaše zd
 
 ## <a name="prepare-a-persongroup-for-migration"></a>Příprava osoby na migraci
 
-Abyste mohli migrovat do cílového předplatného, potřebujete ID oddělení person ve zdrojovém předplatném. Pomocí metody [PersonGroupOperationsExtensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) načtěte seznam objektů objektu Person. Pak Získejte vlastnost [Person. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) . Tento proces se liší v závislosti na tom, jaké objekty objektu person máte. V této příručce je zdrojové ID prodejce Uloženo v `personGroupId`.
+Abyste mohli migrovat do cílového předplatného, potřebujete ID oddělení person ve zdrojovém předplatném. Pomocí metody [PersonGroupOperationsExtensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) načtěte seznam objektů objektu Person. Pak Získejte vlastnost [Person. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) . Tento proces se liší v závislosti na tom, jaké objekty objektu person máte. V této příručce je zdrojové ID prodejce Uloženo v `personGroupId` .
 
 > [!NOTE]
 > [Vzorový kód](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) vytvoří a navlakuje novou samostatnou osobu k migraci. Ve většině případů byste už měli mít k dispozici osobu, kterou by používala.
@@ -85,7 +85,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 
 ## <a name="retrieve-the-snapshot-id"></a>Načtení ID snímku
 
-Metoda použitá pro pořizování snímků je asynchronní, takže musíte počkat na její dokončení. Operace snímku nelze zrušit. V tomto kódu `WaitForOperation` metoda monitoruje asynchronní volání. Kontroluje stav každých 100 ms. Po dokončení operace načtěte ID operace, která analyzuje `OperationLocation` pole. 
+Metoda použitá pro pořizování snímků je asynchronní, takže musíte počkat na její dokončení. Operace snímku nelze zrušit. V tomto kódu `WaitForOperation` Metoda monitoruje asynchronní volání. Kontroluje stav každých 100 ms. Po dokončení operace načtěte ID operace, která analyzuje `OperationLocation` pole. 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);
@@ -98,7 +98,7 @@ Typická `OperationLocation` hodnota vypadá takto:
 "/operations/a63a3bdd-a1db-4d05-87b8-dbad6850062a"
 ```
 
-`WaitForOperation` Pomocná metoda je tady:
+`WaitForOperation`Pomocná metoda je tady:
 
 ```csharp
 /// <summary>
@@ -127,7 +127,7 @@ private static async Task<OperationStatus> WaitForOperation(IFaceClient client, 
 }
 ```
 
-Po zobrazení `Succeeded`stavu operace Získejte ID snímku analýzou `ResourceLocation` pole vrácené instance stav operationstatus.
+Po zobrazení stavu operace `Succeeded` Získejte ID snímku analýzou `ResourceLocation` pole vrácené instance stav operationstatus.
 
 ```csharp
 var snapshotId = Guid.Parse(operationStatus.ResourceLocation.Split('/')[2]);
@@ -152,7 +152,7 @@ var applySnapshotResult = await FaceClientWestUS.Snapshot.ApplyAsync(snapshotId,
 > [!NOTE]
 > Objekt snímku je platný pouze 48 hodin. Snímek si pořídit jenom v případě, že ho chcete použít k migraci dat hned po.
 
-Požadavek na použití snímku vrátí další ID operace. Chcete-li získat toto ID, `OperationLocation` Analyzujte pole vrácené instance applySnapshotResult. 
+Požadavek na použití snímku vrátí další ID operace. Chcete-li získat toto ID, analyzujte `OperationLocation` pole vrácené instance applySnapshotResult. 
 
 ```csharp
 var applyOperationId = Guid.Parse(applySnapshotResult.OperationLocation.Split('/')[2]);
