@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: abb61afab3391f9a53ada4881cb186aa9fae3187
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 49c1a29547195ad8557550ba1bc0cb80fae40ad8
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005916"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402632"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Zajištění Key Vault ověřování pomocí zásad řízení přístupu
 
@@ -60,13 +60,13 @@ Identifikátor objectId pro aplikace odpovídá přidruženému objektu služby.
 
 Existují dva způsoby, jak získat identifikátor objectId pro aplikaci.  Prvním je registrace aplikace pomocí Azure Active Directory. Pokud to chcete provést, postupujte podle kroků v rychlém startu [Registrace aplikace s platformou Microsoft Identity](../../active-directory/develop/quickstart-register-app.md). Po dokončení registrace bude identifikátor objectID uveden jako "aplikace (klienta)".
 
-Druhým je Vytvoření instančního objektu v okně terminálu. Pomocí Azure CLI pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) zadejte jedinečný název služby pro příznak-n ve formátu http://&lt;my-Unique-Service-State-Name.&gt;
+Druhým je Vytvoření instančního objektu v okně terminálu. Pomocí Azure CLI pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) zadejte jedinečný název služby pro příznak-n ve formátu http:// &lt; My-Unique-Service-State-name &gt; .
 
 ```azurecli-interactive
 az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
 ```
 
-Identifikátor objectId bude uveden ve výstupu jako `clientID`.
+Identifikátor objectId bude uveden ve výstupu jako `clientID` .
 
 Pomocí Azure PowerShell použijte rutinu [New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal?view=azps-2.7.0) .
 
@@ -75,7 +75,7 @@ Pomocí Azure PowerShell použijte rutinu [New-AzADServicePrincipal](/powershell
 New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
 ```
 
-Identifikátor objectId bude uveden ve výstupu jako `Id` (ne `ApplicationId`).
+Identifikátor objectId bude uveden ve výstupu jako `Id` (ne `ApplicationId` ).
 
 #### <a name="azure-ad-groups"></a>Skupiny Azure AD
 
@@ -94,13 +94,13 @@ Identifikátor objectId bude vrácen ve formátu JSON:
     "odata.type": "Microsoft.DirectoryServices.Group",
 ```
 
-K vyhledání ID objektu skupiny Azure AD pomocí Azure PowerShell použijte rutinu [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) . Vzhledem k velkému počtu skupin, které mohou být ve vaší organizaci, pravděpodobně budete chtít do `-SearchString` parametru zadat také vyhledávací řetězec.
+K vyhledání ID objektu skupiny Azure AD pomocí Azure PowerShell použijte rutinu [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) . Vzhledem k velkému počtu skupin, které mohou být ve vaší organizaci, pravděpodobně budete chtít do parametru zadat také vyhledávací řetězec `-SearchString` .
 
 ```azurepowershell-interactive
 Get-AzADGroup -SearchString <search-string>
 ```
 
-Ve výstupu je identifikátor objectId uveden jako `Id`:
+Ve výstupu je identifikátor objectId uveden jako `Id` :
 
 ```console
 ...
@@ -109,7 +109,7 @@ Id                    : 1cef38c4-388c-45a9-b5ae-3d88375e166a
 ```
 
 > [!WARNING]
-> Skupiny Azure AD nepodporují spravované identity. Podporovány jsou pouze služby a uživatelské objekty zabezpečení.
+> Skupiny Azure AD se spravovanými identitami vyžadují až 8hr k aktualizaci tokenu a začnou platit.
 
 #### <a name="users"></a>Uživatelé
 
@@ -131,13 +131,13 @@ Identifikátor objectId uživatele bude vrácen ve výstupu:
   ...
 ```
 
-Pokud chcete najít uživatele s Azure PowerShell, použijte rutinu [Get-AzADUser](/powershell/module/az.resources/get-azaduser?view=azps-2.7.0) , která předá e-mailovou `-UserPrincipalName` adresu uživatelů k parametru.
+Pokud chcete najít uživatele s Azure PowerShell, použijte rutinu [Get-AzADUser](/powershell/module/az.resources/get-azaduser?view=azps-2.7.0) , která předá e-mailovou adresu uživatelů k `-UserPrincipalName` parametru.
 
 ```azurepowershell-interactive
  Get-AzAdUser -UserPrincipalName <email-address-of-user>
 ```
 
-Identifikátor objectId uživatele bude vrácen ve výstupu jako `Id`.
+Identifikátor objectId uživatele bude vrácen ve výstupu jako `Id` .
 
 ```console
 ...
@@ -195,7 +195,7 @@ Můžete najít objectId vašich aplikací pomocí rozhraní příkazového řá
 az ad sp list --show-mine
 ```
 
-Vyhledejte objectId vašich aplikací pomocí Azure PowerShell pomocí rutiny [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal?view=azps-2.7.0) a předejte do `-SearchString` parametru hledaný řetězec.
+Vyhledejte objectId vašich aplikací pomocí Azure PowerShell pomocí rutiny [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal?view=azps-2.7.0) a předejte do parametru hledaný řetězec `-SearchString` .
 
 ```azurepowershell-interactive
 Get-AzADServicePrincipal -SearchString <search-string>
