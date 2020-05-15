@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 15140ef392d8108b59bf50c396e529dc15951232
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9d007f4fa8721214a7c97595fa297ef44199119f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410909"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199128"
 ---
 ::: zone target = "docs"
 
@@ -73,7 +73,7 @@ Po vytvoření objednávky je zařízení připravené k odeslání.
 
 ::: zone target = "chromeless"
 
-# <a name="cable-and-connect-to-your-device"></a>Zapojení kabeláže a připojení k zařízení
+## <a name="cable-and-connect-to-your-device"></a>Zapojení kabeláže a připojení k zařízení
 
 Jakmile zkontrolujete požadavky, zapojíte kabeláž zařízení a připojíte se k němu.
 
