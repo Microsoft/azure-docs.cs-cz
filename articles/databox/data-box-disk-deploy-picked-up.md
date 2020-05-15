@@ -6,22 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 03/03/2020
+ms.date: 05/08/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1003b862d7fbe19545cf705570866479132c1f03
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6b165df42da35077c7ef252291d8e1514bb3b1b0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78273175"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996001"
 ---
-::: zone target="chromeless"
-
-## <a name="return-azure-data-box-disk"></a>Vrácení Azure Data Box Disku 
-
-::: zone-end
-
 ::: zone target="docs"
 
 # <a name="tutorial-return-azure-data-box-disk"></a>Kurz: Vrácení Azure Data Box Disku 
@@ -40,6 +34,12 @@ Než začnete, ujistěte se, že jste dokončili [Kurz: Kopírování dat na Azu
 
 
 ## <a name="ship-data-box-disk-back"></a>Odeslání Data Box Disku zpátky
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="return-azure-data-box-disk"></a>Vrácení Azure Data Box Disku 
 
 ::: zone-end
 
