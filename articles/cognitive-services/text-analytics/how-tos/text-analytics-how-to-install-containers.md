@@ -9,20 +9,24 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 2d44df1bb828140e662b06ffbe5fb14f207f68e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d22dcf221bef40edb8bb2bd346dd5964000a4a68
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876983"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588372"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýzy textu
 
-Kontejnery umožňují spouštět text analytická rozhraní API ve vašem vlastním prostředí a jsou skvělé pro konkrétní požadavky na zabezpečení a zabezpečení dat. Kontejnery Analýza textu poskytují pokročilé zpracování přirozeného jazyka v nezpracovaném textu a zahrnují tři hlavní funkce: analýzu mínění, extrakci klíčových frází a detekci jazyka. Odkaz na entitu se v kontejneru aktuálně nepodporuje.
+> [!NOTE]
+> * Kontejner pro Analýza mínění v3 je teď všeobecně dostupný. Extrakce klíčových frází a kontejnery pro detekci jazyka jsou k dispozici jako [nebraná verze Public Preview](../../cognitive-services-gating-process.md).
+> * Entity Linking a NER nejsou aktuálně k dispozici jako kontejner.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Kontejnery umožňují spouštět text analytická rozhraní API ve vašem vlastním prostředí a jsou skvělé pro konkrétní požadavky na zabezpečení a zabezpečení dat. Kontejnery Analýza textu poskytují pokročilé zpracování přirozeného jazyka v nezpracovaném textu a zahrnují tři hlavní funkce: analýzu mínění, extrakci klíčových frází a detekci jazyka. 
+
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 > [!IMPORTANT]
 > Bezplatný účet je omezený na 5 000 transakcí za měsíc a pro kontejnery jsou platné jenom **Standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">cenové úrovně <span class="docon docon-navigate-external x-hidden-focus"></span> </a> **Free** a Standard. Další informace o sazbách požadavků na transakce najdete v tématu [omezení pro data](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits).
@@ -35,7 +39,7 @@ Chcete-li spustit některý z Analýza textu kontejnerů, je nutné mít prostř
 
 Před použitím Analýza textu kontejnerů musíte splnit následující předpoklady:
 
-|Požaduje se|Účel|
+|Vyžadováno|Účel|
 |--|--|
 |Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
@@ -49,60 +53,32 @@ Před použitím Analýza textu kontejnerů musíte splnit následující předp
 
 ### <a name="container-requirements-and-recommendations"></a>Požadavky na kontejner a doporučení
 
-V následující tabulce jsou popsány minimální a doporučené PROCESORové jádra, minimálně 2,6 GHz nebo rychlejší a paměť v gigabajtech (GB), které se mají přidělit pro každý kontejner Analýza textu.
+V následující tabulce jsou popsány minimální a doporučené specifikace pro kontejnery Analýza textu. Vyžaduje se minimálně 2 gigabajty (GB) paměti a každý jádro procesoru musí být minimálně 2,6 GHz nebo rychlejší. Jsou uvedeny také povolené transakce na oddíl (TPS).
 
-# <a name="key-phrase-extraction"></a>[Extrakce klíčových frází](#tab/keyphrase)
+|  | Minimální specifikace hostitele | Doporučené specifikace hostitele | Minimální TPS | Maximální TPS|
+|---|---------|-------------|--|--|
+| **Detekce jazyka, extrakce klíčových frází**   | 1 jádro, 2 GB paměti | 1 jádro, 4GB paměti |15 | 30|
+| **Analýza mínění V3**   | 1 jádro, 2 GB paměti | 4 jádra, 8 GB paměti |15 | 30|
 
-[!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
-
-# <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/language)
-
-[!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
-
-# <a name="sentiment-analysis"></a>[Analýza mínění](#tab/sentiment)
-
-[!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
-
-***
-
-* Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
-* TPS-transakcí za sekundu
-
-Základní a paměť odpovídají nastavení `--cpus` a `--memory` , která se používají jako součást `docker run` příkazu.
+Jádro procesoru a paměť odpovídají `--cpus` `--memory` nastavení a, která se používají jako součást `docker run` příkazu.
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí`docker pull`
 
-Image kontejneru pro Analýza textu jsou k dispozici na Container Registry Microsoft.
-
-# <a name="key-phrase-extraction"></a>[Extrakce klíčových frází](#tab/keyphrase)
-
-[!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
-
-# <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/language)
-
-[!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
-
-# <a name="sentiment-analysis"></a>[Analýza mínění](#tab/sentiment)
-
-[!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
-
-***
-
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-text-analytics-containers"></a>Vyžádané čtení Docker pro kontejnery Analýza textu
+Image kontejneru pro Analýza textu jsou k dispozici na Container Registry Microsoft.
 
-# <a name="key-phrase-extraction"></a>[Extrakce klíčových frází](#tab/keyphrase)
+# <a name="sentiment-analysis-v3"></a>[Analýza mínění V3](#tab/sentiment)
+
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
+
+# <a name="key-phrase-extraction-preview"></a>[Extrakce klíčových frází (Preview)](#tab/keyphrase)
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/language)
+# <a name="language-detection-preview"></a>[Rozpoznávání jazyka (Preview)](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
-
-# <a name="sentiment-analysis"></a>[Analýza mínění](#tab/sentiment)
-
-[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
 ***
 
@@ -110,31 +86,38 @@ Image kontejneru pro Analýza textu jsou k dispozici na Container Registry Micro
 
 Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K [examples](../text-analytics-resource-container-config.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu.
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
 
-Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) spusťte kterýkoli ze tří kontejnerů. Podrobnosti o tom, jak získat hodnoty `{ENDPOINT_URI}` a `{API_KEY}` , najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) .
+Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) spusťte kontejnery. Kontejner bude nadále běžet, dokud jej nezastavíte.
 
-[Examples](../text-analytics-resource-container-config.md#example-docker-run-commands) K dispozici `docker run` jsou příklady příkazů.
+Nahraďte níže uvedené zástupné symboly vlastními hodnotami:
 
-# <a name="key-phrase-extraction"></a>[Extrakce klíčových frází](#tab/keyphrase)
+| Zástupný symbol | Hodnota | Formát nebo příklad |
+|-------------|-------|---|
+| **{API_KEY}** | Klíč pro prostředek Analýza textu. Můžete ji najít na stránce **klíč a koncový bod** prostředku na Azure Portal. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | Koncový bod pro přístup k rozhraní API pro analýzu textu. Můžete ji najít na stránce **klíč a koncový bod** prostředku na Azure Portal. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 
-[!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
+> [!IMPORTANT]
+> * Příkazy Docker v následujících částech používají zpětné lomítko, `\` jako znak pro pokračování řádku. Tuto položku nahraďte nebo odeberte na základě požadavků vašich hostitelských operačních systémů. 
+> * `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
+> * Kontejner mínění Analysis v3 je teď všeobecně dostupný, což vrátí [popisky mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) v odpovědi. Extrakce klíčových frází a kontejnery pro detekci jazyka používají v2 rozhraní API a jsou ve verzi Preview.
 
-# <a name="language-detection"></a>[Rozpoznávání jazyka](#tab/language)
-
-[!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
-
-# <a name="sentiment-analysis"></a>[Analýza mínění](#tab/sentiment)
+# <a name="sentiment-analysis-v3"></a>[Analýza mínění V3](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
-***
+# <a name="key-phrase-extraction-preview"></a>[Extrakce klíčových frází (Preview)](#tab/keyphrase)
 
-> [!IMPORTANT]
-> Pro `Eula`spuštění `Billing`kontejneru musí `ApiKey` být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
+[!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
+
+# <a name="language-detection-preview"></a>[Rozpoznávání jazyka (Preview)](#tab/language)
+
+[!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
+
+***
 
 [!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -142,7 +125,7 @@ Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandl
 
 Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST.
 
-Pro rozhraní API kontejneru `http://localhost:5000`použijte hostitele.
+`http://localhost:5000`Pro rozhraní API kontejneru použijte hostitele.
 
 <!--  ## Validate container is running -->
 
@@ -175,16 +158,17 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů Analýza textu. Souhrn:
 
 * Analýza textu poskytuje pro Docker tři kontejnery pro Linux, které zapouzdřují různé možnosti:
-   * *Extrakce klíčových frází*
-   * *Rozpoznávání jazyka*
    * *Analýza mínění*
+   * *Extrakce klíčových frází (Preview)* 
+   * *Rozpoznávání jazyka (Preview)*
+   
 * Image kontejneru se stáhnou z Microsoft Container Registry (MCR) v Azure.
 * Image kontejneru se spouštějí v Docker.
 * Můžete použít REST API nebo SDK pro volání operací v kontejnerech Analýza textu zadáním identifikátoru URI hostitele kontejneru.
 * Při vytváření instance kontejneru je nutné zadat informace o fakturaci.
 
 > [!IMPORTANT]
-> Nemusíte spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům, aby ve všech časech komunikovaly informace o fakturaci. Kontejnery Cognitive Services neodesílají zákaznická data (např. obrázek nebo analyzovaný text) do Microsoftu.
+> Nemusíte spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům, aby ve všech časech komunikovaly informace o fakturaci. Kontejnery Cognitive Services neodesílají zákaznická data (např. analyzovaný text) do Microsoftu.
 
 ## <a name="next-steps"></a>Další kroky
 

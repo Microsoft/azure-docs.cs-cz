@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7d73b3a1a7c3b2ab290d85d88aa24108d9e7a605
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 2d5d508afe81975cbeda448b497a098e8a3bbcf3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83401984"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589274"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Řízení přístupu účtu úložiště pro SQL na vyžádání (Preview)
 
@@ -28,8 +28,8 @@ Tento článek popisuje typy přihlašovacích údajů, které můžete použít
 
 Uživatel, který byl přihlášen k prostředku na vyžádání SQL, musí mít autorizaci pro přístup k souborům v Azure Storage, pokud nejsou soubory veřejně dostupné. Podporují se tři typy autorizace:
 
-- [Identita uživatele](?tabs=user-identity)
 - [Sdílený přístupový podpis](?tabs=shared-access-signature)
+- [Identita uživatele](?tabs=user-identity)
 - [Spravovaná identita](?tabs=managed-identity)
 
 > [!NOTE]
@@ -48,7 +48,7 @@ Token SAS můžete získat tak, že přejdete na **účet úložiště > Azure P
 
 Aby bylo možné povolit přístup pomocí tokenu SAS, je nutné vytvořit pověření v oboru databáze nebo na serveru.
 
-### <a name="user-identity"></a>Identita uživatele
+### <a name="user-identity"></a>[Identita uživatele](#tab/user-identity)
 
 **Identita uživatele**, označovaná také jako "průchozí", je autorizační typ, ve kterém se k autorizaci přístupu k datům používá identita uživatele služby Azure AD, který se přihlásil k SQL na vyžádání. Před přístupem k datům musí správce Azure Storage udělit oprávnění k uživateli Azure AD. Jak je uvedeno v tabulce výše, není podporováno pro typ uživatele SQL.
 
@@ -91,13 +91,13 @@ DROP CREDENTIAL [UserIdentity];
 
 Pokud ho chcete znovu povolit, přečtěte si část [vynucení předávacího rozhraní Azure AD](#force-azure-ad-pass-through) .
 
-### <a name="managed-identity"></a>Spravovaná identita
+### <a name="managed-identity"></a>[Spravovaná identita](#tab/managed-identity)
 
 **Spravovaná identita** se také označuje jako MSI. Je to funkce Azure Active Directory (Azure AD), která poskytuje služby Azure pro SQL na vyžádání. Také nasadí automaticky spravovanou identitu ve službě Azure AD. Tato identita se dá použít k autorizaci žádosti o přístup k datům v Azure Storage.
 
 Před přístupem k datům musí správce Azure Storage udělit oprávnění ke spravované identitě pro přístup k datům. Udělení oprávnění pro spravovanou identitu se provádí stejným způsobem jako udělení oprávnění jinému uživateli Azure AD.
 
-### <a name="anonymous-access"></a>Anonymní přístup
+### <a name="anonymous-access"></a>[Anonymní přístup](#tab/public-access)
 
 Můžete přistupovat k veřejně dostupným souborům umístěným na účtech Azure Storage, které [povolují anonymní přístup](/azure/storage/blobs/storage-manage-access-to-resources.md).
 
@@ -171,7 +171,7 @@ PŘIHLAŠOVACÍ jméno na úrovni serveru musí odpovídat celé cestě k účtu
 
 Přihlašovací údaje v oboru serveru umožňují přístup k úložišti Azure pomocí následujících typů ověřování:
 
-### <a name="shared-access-signature"></a>Sdílený přístupový podpis
+### <a name="shared-access-signature"></a>[Sdílený přístupový podpis](#tab/shared-access-signature)
 
 Následující skript vytvoří přihlašovací údaje na úrovni serveru, které můžou používat `OPENROWSET` funkce pro přístup k jakémukoli souboru v úložišti Azure pomocí tokenu SAS. Vytvořte toto přihlašovací údaje, aby se povolil objekt zabezpečení SQL, který spustí `OPENROWSET` funkci pro čtení souborů chráněných pomocí klíče SAS v úložišti Azure, které odpovídají adrese URL v názvu přihlašovacích údajů.
 
@@ -184,7 +184,7 @@ WITH IDENTITY='SHARED ACCESS SIGNATURE'
 GO
 ```
 
-### <a name="user-identity"></a>Identita uživatele
+### <a name="user-identity"></a>[Identita uživatele](#tab/user-identity)
 
 Následující skript vytvoří přihlašovací údaje na úrovni serveru, které uživateli umožňují zosobnit pomocí identity Azure AD.
 
@@ -193,7 +193,7 @@ CREATE CREDENTIAL [UserIdentity]
 WITH IDENTITY = 'User Identity';
 ```
 
-### <a name="managed-identity"></a>Spravovaná identita
+### <a name="managed-identity"></a>[Spravovaná identita](#tab/managed-identity)
 
 Následující skript vytvoří přihlašovací údaje na úrovni serveru, které můžou používat `OPENROWSET` funkce pro přístup k jakémukoli souboru v úložišti Azure pomocí spravované identity pracovního prostoru.
 
@@ -202,7 +202,7 @@ CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystora
 WITH IDENTITY='Managed Identity'
 ```
 
-### <a name="public-access"></a>Veřejný přístup
+### <a name="public-access"></a>[Veřejný přístup](#tab/public-access)
 
 Následující skript vytvoří přihlašovací údaje na úrovni serveru, které můžou používat `OPENROWSET` funkce pro přístup k jakémukoli souboru na veřejně dostupném úložišti Azure. Vytvořte toto přihlašovací údaje, aby se povolil objekt zabezpečení SQL, který spustí `OPENROWSET` funkci pro čtení veřejně dostupných souborů v Azure Storage, které odpovídají adrese URL v názvu přihlašovacích údajů.
 
@@ -222,7 +222,7 @@ Přihlašovací údaje v oboru databáze se používají, když jakákoli instan
 
 Přihlašovací údaje v rámci databáze umožňují přístup k úložišti Azure pomocí následujících typů ověřování:
 
-### <a name="shared-access-signature"></a>Sdílený přístupový podpis
+### <a name="shared-access-signature"></a>[Sdílený přístupový podpis](#tab/shared-access-signature)
 
 Následující skript vytvoří přihlašovací údaje, které se používají pro přístup k souborům v úložišti pomocí tokenu SAS zadaného v přihlašovacích údajích.
 
@@ -232,7 +232,7 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2018-03-28&ss=bfqt&srt=s
 GO
 ```
 
-### <a name="azure-ad-identity"></a>Identita Azure AD
+### <a name="azure-ad-identity"></a>[Identita Azure AD](#tab/user-identity)
 
 Následující skript vytvoří přihlašovací údaje v rámci databáze používané [externí tabulkou](develop-tables-external-tables.md) a `OPENROWSET` funkcemi, které používají zdroj dat s přihlašovacími údaji pro přístup k souborům úložiště pomocí vlastní identity Azure AD.
 
@@ -242,7 +242,7 @@ WITH IDENTITY = 'User Identity';
 GO
 ```
 
-### <a name="managed-identity"></a>Spravovaná identita
+### <a name="managed-identity"></a>[Spravovaná identita](#tab/managed-identity)
 
 Následující skript vytvoří přihlašovací údaje v rámci databáze, které je možné použít k zosobnění aktuálního uživatele Azure AD jako spravované identity služby. 
 

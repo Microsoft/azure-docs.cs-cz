@@ -1,6 +1,6 @@
 ---
 title: Přístup k testovacímu prostředí v učebně v Azure Lab Services | Microsoft Docs
-description: V tomto kurzu budete přistupovat k virtuálním počítačům v testovacím prostředí v učebně, které nastavil vyučující.
+description: V tomto kurzu získáte přístup k virtuálním počítačům v prostředí učebny, které je nastavené pomocí Educator.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 936cd9d7a7adb4a99f8437a70e9c6de4d1331d67
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d2d40c007a06bad09748b14394da46c50c80dc19
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116632"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589444"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Kurz: Přístup k testovacímu prostředí v učebně v Azure Lab Services
 V tomto kurzu se vy, jako student, připojíte k virtuálnímu počítači v testovacím prostředí v učebně. 
@@ -33,7 +33,7 @@ V tomto kurzu provedete následující akce:
 
 ## <a name="register-to-the-lab"></a>Registrovat do testovacího prostředí
 
-1. Přejděte na **adresu URL registrace** , kterou jste dostali z profesor/Educator. Po dokončení registrace nemusíte používat registrační adresu URL. Místo toho použijte adresu URL: [https://labs.azure.com](https://labs.azure.com) . Aplikace Internet Explorer 11 není zatím podporována. 
+1. Přejděte na **adresu URL registrace** , kterou jste dostali z Educator. Po dokončení registrace nemusíte používat registrační adresu URL. Místo toho použijte adresu URL: [https://labs.azure.com](https://labs.azure.com) . Aplikace Internet Explorer 11 není zatím podporována. 
 
     ![Registrovat do testovacího prostředí](../media/tutorial-connect-vm-in-classroom-lab/register-lab.png)
 1. Přihlaste se ke službě pomocí školního účtu, abyste dokončili registraci. 
@@ -68,11 +68,11 @@ V tomto kurzu provedete následující akce:
 
     ![Připojení k virtuálnímu počítači](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Proveďte jeden z následujících kroků: 
-    1. U virtuálních počítačů s **Windows** uložte soubor **RDP** na pevný disk. Otevřete soubor RDP pro připojení k virtuálnímu počítači. Přihlaste se k počítači pomocí **uživatelského jména** a **hesla** , které jste získali z Educator/profesor. 
+    1. U virtuálních počítačů s **Windows** uložte soubor **RDP** na pevný disk. Otevřete soubor RDP pro připojení k virtuálnímu počítači. K přihlášení k počítači použijte **uživatelské jméno** a **heslo** , které jste získali ze svého Educator. 
     3. Pro virtuální počítače se **systémem Linux** můžete k připojení použít **SSH** nebo **RDP** (Pokud je povolený). Další informace najdete v tématu [Povolení připojení ke vzdálené ploše pro počítače se systémem Linux](how-to-enable-remote-desktop-linux.md). 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste přistupovali k testovacímu prostředí v učebně pomocí odkazu pro registraci, který jste získali od vyučujícího.
+V tomto kurzu jste získali přístup k prostředí učebny pomocí registračního odkazu, který získáte z Educator.
 
 Jako vlastník testovacího prostředí chcete zobrazit, kdo se zaregistroval s vaším testovacím prostředím a sledovat využití virtuálních počítačů. Přejděte k dalšímu kurzu, kde se dozvíte, jak sledovat využití testovacího prostředí:
 

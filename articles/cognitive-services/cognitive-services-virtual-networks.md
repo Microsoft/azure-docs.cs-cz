@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202072"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588332"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí Azure Cognitive Services
 
@@ -43,10 +43,10 @@ Podpora virtuální sítě pro Cognitive Services uvedená níže je omezená na
 
 > [!div class="checklist"]
 > * [Detektor anomálií](./anomaly-detector/index.yml)
-> * [Computer Vision](./computer-vision/index.yml)
+> * [Počítačové zpracování obrazu](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
-> * [Tvář](./face/index.yml)
+> * [Rozpoznávání tváře](./face/index.yml)
 > * [Rozpoznávání formulářů](./form-recognizer/index.yml)
 > * [LUIS](./luis/index.yml)
 > * [Personalizace](./personalizer/index.yml)
@@ -61,16 +61,16 @@ Podpora virtuální sítě pro Cognitive Services uvedená níže je omezená na
 Kromě podpory koncových bodů služby virtuální sítě pro výše uvedené služby Cognitive Services také podporuje označení služby pro konfiguraci odchozích síťových pravidel. Ve značce služby CognitiveServicesManagement jsou zahrnuté následující služby.
 > [!div class="checklist"]
 > * [Detektor anomálií](./anomaly-detector/index.yml)
-> * [Computer Vision](./computer-vision/index.yml)
+> * [Počítačové zpracování obrazu](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
-> * [Tvář](./face/index.yml)
+> * [Rozpoznávání tváře](./face/index.yml)
 > * [Rozpoznávání formulářů](./form-recognizer/index.yml)
 > * [LUIS](./luis/index.yml)
 > * [Personalizace](./personalizer/index.yml)
 > * [Analýza textu](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
-> * [Translator Text](./translator/index.yml)
+> * [Translator](./translator/index.yml)
 > * [Speech Service](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Změna výchozího pravidla přístupu k síti
@@ -84,7 +84,7 @@ Ve výchozím nastavení Cognitive Services prostředky přijímají připojení
 
 Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete spravovat výchozí pravidla přístupu k síti pro Cognitive Services prostředky.
 
-# <a name="azure-portal"></a>[portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 
@@ -186,7 +186,7 @@ Cognitive Services prostředku a povolený přístup k virtuálním sítím mů�
 
 Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete spravovat pravidla virtuální sítě pro prostředky Cognitive Services.
 
-# <a name="azure-portal"></a>[portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 
@@ -335,7 +335,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
 > [!IMPORTANT]
 > Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
 
-## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z internetového rozsahu IP adres
+## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z rozsahu internetových IP adres
 
 Cognitive Services prostředků můžete nakonfigurovat tak, aby povolovaly přístup z určitých rozsahů veřejných internetových IP adres. Tato konfigurace uděluje přístup ke konkrétním službám a místním sítím a efektivně tak blokuje obecný internetový provoz.
 
@@ -361,7 +361,7 @@ Pokud používáte místní [ExpressRoute](../expressroute/expressroute-introduc
 
 Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 
-# <a name="azure-portal"></a>[portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 

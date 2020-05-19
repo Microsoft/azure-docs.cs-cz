@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 04/01/2020
+ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: 7a38ec47d416027e8ea3fa772ae01e4f6264197a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f751aa947988544977f9baf2746191921c1aa9d4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876813"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590654"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů v Azure Cognitive Services
 
@@ -23,8 +23,8 @@ Podpora kontejnerů v Azure Cognitive Services umožňuje vývojářům použív
 
 > [!div class="checklist"]
 > * [Detektor anomálií][ad-containers]
-> * [Computer Vision][cv-containers]
-> * [Tvář][fa-containers]
+> * [Počítačové zpracování obrazu][cv-containers]
+> * [Rozpoznávání tváře][fa-containers]
 > * [Rozpoznávání formulářů][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
 > * [Rozhraní API služby Speech][sp-containers]
@@ -50,19 +50,19 @@ Cognitive Services prostředky jsou k dispozici v [Microsoft Azure](https://azur
 Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů Docker, z nichž každá obsahuje podmnožinu funkcí ze služeb v Azure Cognitive Services:
 
 | Služba | Podporovaná cenová úroveň | Kontejner | Popis |
-|---------|----------|----------|-------------|
-|[Detektor anomálií][ad-containers] |F0, S0|**Anomálie – detektor** |Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení.<br>[Vyžádání přístup](https://aka.ms/adcontainer)|
-|[Computer Vision][cv-containers] |F0, S1|**Čtení** |Extrahuje vytištěný text z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kontejner pro čtení také detekuje *ručně psaný text* v obrázcích a poskytuje podporu PDF/TIFF/vícestránkového textu.<br/><br/>**Důležité informace:** Kontejner pro čtení aktuálně funguje pouze v angličtině.|
-|[Tvář][fa-containers] |F0, S0|**Tvář** |Detekuje lidské obličeje na obrázcích a identifikuje atributy, včetně orientačních bodů (jako jsou nos a oči), pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli se dvě plošky ve stejné imagi nebo různých obrázcích shodují s použitím skóre spolehlivosti, nebo porovnávat plošky s databází, abyste viděli, jestli už existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností.<br>[Vyžádání přístup](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
-|[Nástroj pro rozpoznávání formulářů][fr-containers] |F0, S0|**Rozpoznávání formulářů** |Porozumění formuláře používá technologii strojového učení k identifikaci a extrakci párů klíč-hodnota a tabulek z formulářů.<br>[Vyžádání přístup](https://aka.ms/FormRecognizerContainerRequestAccess)|
-|[LUIS][lu-containers] |F0, S0|**Luis** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Načte vyškolený nebo publikovaný Language Understanding model, označovaný také jako aplikace LUIS, do kontejneru Docker a poskytuje přístup k předpovědi dotazů z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrajte je zpátky na [portál Luis](https://www.luis.ai) , aby se zlepšila přesnost předpovědi aplikace.|
-|[Rozhraní API služby Speech][sp-containers-stt] |F0, S0|**Převod řeči na text** |Přepisuje plynulou řeč v reálném čase do textové podoby.|
-|[Rozhraní API služby Speech][sp-containers-cstt] |F0, S0|**Custom Speech na text** |Transcribes průběžné rozpoznávání řeči v reálném čase na text pomocí vlastního modelu.|
-|[Rozhraní API služby Speech][sp-containers-tts] |F0, S0|**Převod textu na řeč** |Převádí text do přirozeně znějící řeči.|
-|[Rozhraní API služby Speech][sp-containers-ctts] |F0, S0|**Vlastní převod textu na řeč** |Převede text na přirozený zvuk řeči pomocí vlastního modelu.|
-|[Analýza textu][ta-containers-keyphrase] |F0, S|**Extrakce klíčových frází** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Extrahuje klíčové fráze k identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). |
-|[Analýza textu][ta-containers-language]|F0, S|**Rozpoznávání jazyka** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |Pro až 120 jazyků rozpozná, který jazyk je vstupní text napsán, a nahlaste jeden kód jazyka pro každý dokument odeslaný na žádost. Kód jazyka spárovaný se skóre označuje sílu skóre. |
-|[Analýza textu][ta-containers-sentiment]|F0, S|**Analýza mínění** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |Analyzuje nezpracovaný text pro potvrzení o kladné nebo záporné mínění. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení. Modely analýzy jsou předem vyškoleny pomocí rozsáhlého textu a technologií přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](./text-analytics/language-support.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. |
+|--|--|--|--|
+| [Detektor anomálií][ad-containers] | F0, S0 | **Anomálie – detektor** | Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení.<br>[Vyžádání přístup][request-access] |
+| [Počítačové zpracování obrazu][cv-containers] | F0, S1 | **Oprávnění** | Extrahuje vytištěný text z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kontejner pro čtení také detekuje *ručně psaný text* v obrázcích a poskytuje podporu PDF/TIFF/vícestránkového textu.<br/><br/>**Důležité informace:** Kontejner pro čtení aktuálně funguje pouze v angličtině. |
+| [Rozpoznávání tváře][fa-containers] | F0, S0 | **Rozpoznávání tváře** | Detekuje lidské obličeje na obrázcích a identifikuje atributy, včetně orientačních bodů (jako jsou nos a oči), pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli se dvě plošky ve stejné imagi nebo různých obrázcích shodují s použitím skóre spolehlivosti, nebo porovnávat plošky s databází, abyste viděli, jestli už existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností.<br>[Vyžádání přístup][request-access] |
+| [Nástroj pro rozpoznávání formulářů][fr-containers] | F0, S0 | **Rozpoznávání formulářů** | Porozumění formuláře používá technologii strojového učení k identifikaci a extrakci párů klíč-hodnota a tabulek z formulářů.<br>[Vyžádání přístup][request-access] |
+| [LUIS][lu-containers] | F0, S0 | **Luis** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Načte vyškolený nebo publikovaný Language Understanding model, označovaný také jako aplikace LUIS, do kontejneru Docker a poskytuje přístup k předpovědi dotazů z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrajte je zpátky na [portál Luis](https://www.luis.ai) , aby se zlepšila přesnost předpovědi aplikace. |
+| [Rozhraní API služby Speech][sp-containers-stt] | F0, S0 | **Převod řeči na text** | Přepisuje plynulou řeč v reálném čase do textové podoby. |
+| [Rozhraní API služby Speech][sp-containers-cstt] | F0, S0 | **Custom Speech na text** | Transcribes průběžné rozpoznávání řeči v reálném čase na text pomocí vlastního modelu. |
+| [Rozhraní API služby Speech][sp-containers-tts] | F0, S0 | **Převod textu na řeč** | Převádí text do přirozeně znějící řeči. |
+| [Rozhraní API služby Speech][sp-containers-ctts] | F0, S0 | **Vlastní převod textu na řeč** | Převede text na přirozený zvuk řeči pomocí vlastního modelu. |
+| [Analýza textu][ta-containers-keyphrase] | F0, S | **Extrakce klíčových frází** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extrahuje klíčové fráze k identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). |
+| [Analýza textu][ta-containers-language] | F0, S | **Rozpoznávání jazyka** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Pro až 120 jazyků rozpozná, který jazyk je vstupní text napsán, a nahlaste jeden kód jazyka pro každý dokument odeslaný na žádost. Kód jazyka spárovaný se skóre označuje sílu skóre. |
+| [Analýza textu][ta-containers-sentiment] | F0, S | **Analýza mínění V3** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyzuje nezpracovaný text pro potvrzení o kladné nebo záporné mínění. Tato verze analýzy mínění vrací popisky mínění (například *kladné* nebo *záporné*) pro každý dokument a větu v něm. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -70,22 +70,14 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 
 Kromě toho jsou některé kontejnery podporovány v Cognitive Services klíče prostředků [**nabídky vše v jednom**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) . Můžete vytvořit jeden Cognitive Services prostředek All-in-One a použít stejný fakturační klíč v rámci podporovaných služeb pro následující služby:
 
-* Computer Vision
-* Tvář
+* Počítačové zpracování obrazu
+* Rozpoznávání tváře
 * LUIS
 * Analýza textu
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Dostupnost kontejneru v Azure Cognitive Services
 
 Kontejnery Azure Cognitive Services jsou veřejně dostupné prostřednictvím vašeho předplatného Azure a image kontejnerů Docker se dají získat buď z Microsoft Container Registry nebo z Docker Hub. Pomocí příkazu [Docker Pull](https://docs.docker.com/engine/reference/commandline/pull/) můžete stáhnout image kontejneru z příslušného registru.
-
-> [!IMPORTANT]
-> V současné době je nutné dokončit proces registrace pro přístup k následujícím kontejnerům, ve kterých vyplníte a odešlete dotazník s dotazy ohledně vás, vaší společnosti a případu použití, pro který chcete kontejnery implementovat. Po udělení přístupu a zadání přihlašovacích údajů pak můžete načíst image kontejneru z privátního registru kontejneru hostovaného Azure Container Registry.
-> * [Detektor anomálií](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
-> * [Tvář](Face/face-how-to-install-containers.md)
-> * [Rozpoznávání formulářů](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
-> * [Čtení](computer-vision/computer-vision-how-to-install-containers.md)
-> * [Převod řeči na text a převod textu na řeč](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
@@ -138,3 +130,4 @@ Instalace a zkoumání funkcí poskytovaných kontejnery v Azure Cognitive Servi
 [ta-containers-keyphrase]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
 [ta-containers-language]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
 [ta-containers-sentiment]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+[request-access]: https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyQZ7B8Cg2FEjpibPziwPcZUNlQ4SEVORFVLTjlBSzNLRlo0UzRRVVNPVy4u

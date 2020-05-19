@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647690"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590634"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Názvy vlastních subdomén pro Cognitive Services
 
@@ -34,7 +34,7 @@ Pokud chcete migrovat existující prostředek, abyste mohli využívat názvy v
 
 ## <a name="do-i-need-to-update-my-existing-resources"></a>Potřebuji aktualizovat moje stávající prostředky?
 
-Ne. Místní koncový bod bude fungovat i nadále pro nové a stávající Cognitive Services a název vlastní subdomény je nepovinný. I když se přidá název vlastní subdomény, místní koncový bod bude i nadále pracovat s prostředkem.
+No. Místní koncový bod bude fungovat i nadále pro nové a stávající Cognitive Services a název vlastní subdomény je nepovinný. I když se přidá název vlastní subdomény, místní koncový bod bude i nadále pracovat s prostředkem.
 
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Co když SDK požádá o oblast pro určitý prostředek?
 
@@ -47,15 +47,15 @@ Informace o oblasti jsou k dispozici v okně **Přehled** pro váš prostředek 
 
 ## <a name="are-custom-subdomain-names-regional"></a>Jsou názvy vlastních subdomén regionální?
 
-Ano. Použití vlastního názvu subdomény nemění žádné místní aspekty vašeho prostředku Cognitive Services.
+Yes. Použití vlastního názvu subdomény nemění žádné místní aspekty vašeho prostředku Cognitive Services.
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Jaké jsou požadavky na název vlastní subdomény?
 
-Název vlastní subdomény je pro váš prostředek jedinečný. Název může obsahovat jenom alfanumerické znaky a `-` znak; musí mít délku 2 až 64 znaků a nemůže končit `-`.
+Název vlastní subdomény je pro váš prostředek jedinečný. Název může obsahovat jenom alfanumerické znaky a `-` znak. musí mít délku 2 až 64 znaků a nemůže končit znakem `-` .
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Můžu změnit vlastní název domény?
 
-Ne. Po vytvoření vlastního názvu subdomény a jeho přidružení k prostředku ho nelze změnit.
+No. Po vytvoření vlastního názvu subdomény a jeho přidružení k prostředku ho nelze změnit.
 
 ## <a name="can-i-reuse-a-custom-domain-name"></a>Můžu znovu použít vlastní název domény?
 
@@ -63,14 +63,14 @@ Každý název vlastní subdomény je jedinečný, takže pokud chcete znovu pou
 
 ## <a name="is-there-a-list-of-regional-endpoints"></a>Existuje seznam regionálních koncových bodů?
 
-Ano. Toto je seznam regionálních koncových bodů, které můžete použít s prostředky Azure Cognitive Services.
+Yes. Toto je seznam regionálních koncových bodů, které můžete použít s prostředky Azure Cognitive Services.
 
 > [!NOTE]
-> Translator Text API a rozhraní API pro vyhledávání Bingu používají globální koncové body.
+> Služba Translator a rozhraní API pro vyhledávání Bingu používat globální koncové body.
 
 | Typ koncového bodu | Oblast | Koncový bod |
 |---------------|--------|----------|
-| Public | Globální (Translator Text & Bing) | `https://api.cognitive.microsoft.com` |
+| Public | Globální (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Austrálie – východ | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brazílie – jih | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Střední Kanada | `https://canadacentral.api.cognitive.microsoft.com` |

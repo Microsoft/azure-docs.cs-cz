@@ -6,42 +6,68 @@ manager: nitinme
 description: Dvě tabulky reprezentující Registry kontejnerů, úložiště a názvy imagí pro všechny nabídky služby pro rozpoznávání.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: a854a090af908da691e9b26f5b0714c6560fc0ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876814"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590655"
 ---
 ### <a name="container-repositories-and-images"></a>Úložiště kontejnerů a obrázky
 
-Následující tabulky obsahují seznam dostupných imagí kontejneru nabízených službou Azure Cognitive Services. Úplný seznam všech dostupných názvů imagí kontejneru a jejich dostupných značek najdete v tématu [Cognitive Services značek imagí kontejneru](../container-image-tags.md). V současné době nejsou k dispozici žádné Cognitive Services kontejnery, které jsou všeobecně dostupné (GA). V době, kdy je to možné, dokud nebudou vytvořeny další oznámení – kontejnery jsou k dispozici buď jako *veřejné* , nebo jako *veřejně ověřované verze Preview*.
+Následující tabulky obsahují seznam dostupných imagí kontejneru nabízených službou Azure Cognitive Services. Úplný seznam všech dostupných názvů imagí kontejneru a jejich dostupných značek najdete v tématu [Cognitive Services značek imagí kontejneru](../container-image-tags.md). 
 
- - *Veřejný nebraný*: kontejnery jsou veřejně dostupné bez mechanismu uzavírání.
- - *Public gated Preview*: kontejnery jsou veřejně dostupné, ale nejdřív vyžadují formální požadavek na přístup k registru kontejneru.
+#### <a name="generally-available"></a>Obecná dostupnost 
 
-#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Public "inhradloed" (registr kontejneru `mcr.microsoft.com`:)
+Microsoft Container Registry (MCR) zpřístupňuje všechny všeobecně dostupné kontejnery pro Cognitive Services. Kontejnery jsou k dispozici také přímo z [dokovacího centra](https://hub.docker.com/_/microsoft-azure-cognitive-services).
 
-Microsoft Container Registry (MCR) zpřístupňuje všechny veřejně dostupné "nebránované" kontejnery pro Cognitive Services. Kontejnery jsou k dispozici také přímo z [dokovacího centra](https://hub.docker.com/_/microsoft-azure-cognitive-services).
+#### <a name="luis"></a>[LUIS](#tab/luis)
+
+| Kontejner LUIS | Název Container Registry/úložiště/image |
+|--|--|
+| LUIS | `mcr.microsoft.com/azure-cognitive-services/luis` |
+
+Další informace najdete v tématu [spuštění a instalace kontejnerů Luis](../../LUIS/luis-container-howto.md) .
+
+#### <a name="text-analytics"></a>[Analýza textu](#tab/text-analytics)
+
+| Analýza textu kontejner | Název Container Registry/úložiště/image |
+|--|--|
+| Analýza mínění V3 (angličtina) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-en` |
+| Analýza mínění V3 (španělština) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-es` |
+| Analýza mínění V3 (francouzština) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-fr` |
+| Analýza mínění V3 (italština) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-it` |
+| Analýza mínění V3 (němčina) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-de` |
+| Analýza mínění V3 (zjednodušená čínština) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zh` |
+| Analýza mínění V3 (tradiční čínština) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zht` |
+| Analýza mínění V3 (japonština) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-ja` |
+| Analýza mínění V3 (portugalština) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-pt` |
+| Analýza mínění V3 (holandština) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-nl` |
+
+Další informace najdete v tématu [Jak spustit a nainstalovat kontejnery analýza textu](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) .
+
+---
+
+#### <a name="public-ungated-preview-container-registry-mcrmicrosoftcom"></a>Public "inhradloed" Preview (registr kontejneru: `mcr.microsoft.com` )
+
+Následující kontejnery Preview jsou veřejně dostupné. Microsoft Container Registry (MCR) zpřístupňuje všechny veřejně dostupné nebrané kontejnery pro Cognitive Services. Kontejnery jsou k dispozici také přímo z [dokovacího centra](https://hub.docker.com/_/microsoft-azure-cognitive-services).
 
 | Služba | Kontejner | Název Container Registry/úložiště/image |
 |--|--|--|
-| [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `mcr.microsoft.com/azure-cogni'ive-services/luis` |
 | [Analýza textu](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Extrakce klíčových frází | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 | [Analýza textu](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Rozpoznávání jazyka | `mcr.microsoft.com/azure-cognitive-services/language` |
-| [Analýza textu](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Analýza mínění | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+| [Detektor anomálií](../../anomaly-detector/anomaly-detector-container-howto.md) | Detektor anomálií | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` |
 
-#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Public "gated" Preview (registr kontejneru: `containerpreview.azurecr.io`)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Public "gated" Preview (registr kontejneru: `containerpreview.azurecr.io` )
 
-Registry Preview kontejneru hostují všechny veřejně dostupné kontejnery "gated" pro Cognitive Services. Tyto kontejnery vyžadují formální žádost o přístup k nim prostřednictvím jejich registru kontejnerů.
+Následující chráněné kontejnery Preview jsou hostovány v registru Preview kontejneru a vyžadují aplikaci pro přístup. Další informace najdete v tématu o [procesu uzavírání Cognitive Services](../../cognitive-services-gating-process.md) .
 
 | Služba | Kontejner | Název Container Registry/úložiště/image |
 |--|--|--|
-| [Detektor anomálií](../../anomaly-detector/anomaly-detector-container-howto.md) | Detektor anomálií | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
-| [Computer Vision](../../Computer-vision/computer-vision-how-to-install-containers.md) | Čtení | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
-| [Tvář](../../face/face-how-to-install-containers.md) | Tvář | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
+| [Počítačové zpracování obrazu](../../Computer-vision/computer-vision-how-to-install-containers.md) | Čtení | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
+| [Rozpoznávání tváře](../../face/face-how-to-install-containers.md) | Rozpoznávání tváře | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Nástroj pro rozpoznávání formulářů](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Rozpoznávání formulářů | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=stt) | Převod řeči na text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=cstt) | Custom Speech na text | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |

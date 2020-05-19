@@ -2,13 +2,13 @@
 title: Seznam typů entit – LUIS
 description: Seznam entit představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. LUIS nezjistí další hodnoty pro entity seznamu. Pomocí funkce doporučit můžete zobrazit návrhy nových slov na základě aktuálního seznamu.
 ms.topic: reference
-ms.date: 03/12/2020
-ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097570"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588883"
 ---
 # <a name="list-entity"></a>Entita seznamu
 
@@ -52,7 +52,7 @@ Entita seznamu není zjištěna počítačem. Je to přesně shoda textu. LUIS o
 
 ## <a name="example-json-response"></a>Příklad odpovědi JSON
 
-Předpokládejme, že aplikace obsahuje seznam s názvem `Cities`, který umožňuje variace názvů měst, včetně města letiště (mořských TAC), kódu letiště (moře), poštovního směrovacího čísla (98101) a kódu telefonní oblasti (206).
+Předpokládejme, že aplikace obsahuje seznam s názvem `Cities` , který umožňuje variace názvů měst, včetně města letiště (mořských TAC), kódu letiště (moře), poštovního směrovacího čísla (98101) a kódu telefonní oblasti (206).
 
 |Položka seznamu|Synonyma položky|
 |---|---|
@@ -61,7 +61,7 @@ Předpokládejme, že aplikace obsahuje seznam s názvem `Cities`, který umož�
 
 `book 2 tickets to paris`
 
-V předchozím utterance je slovo `paris` v rámci entity `Cities` seznamu namapováno na Paříž Item. Entita seznamu odpovídá normalizovanému názvu položky i synonymům položky.
+V předchozím utterance je slovo v `paris` rámci entity seznamu namapováno na Paříž Item `Cities` . Entita seznamu odpovídá normalizovanému názvu položky i synonymům položky.
 
 #### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
@@ -84,7 +84,7 @@ V předchozím utterance je slovo `paris` v rámci entity `Cities` seznamu namap
 #### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 
-Toto je kód JSON, `verbose=false` Pokud je nastaven v řetězci dotazu:
+Toto je kód JSON, pokud `verbose=false` je nastaven v řetězci dotazu:
 
 ```json
 "entities": {
@@ -96,7 +96,7 @@ Toto je kód JSON, `verbose=false` Pokud je nastaven v řetězci dotazu:
 }
 ```
 
-Toto je kód JSON, `verbose=true` Pokud je nastaven v řetězci dotazu:
+Toto je kód JSON, pokud `verbose=true` je nastaven v řetězci dotazu:
 
 ```json
 "entities": {
@@ -132,4 +132,7 @@ Toto je kód JSON, `verbose=true` Pokud je nastaven v řetězci dotazu:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto [kurzu](tutorial-list-entity.md)se naučíte používat **entitu seznam** k extrakci přesných shod textu ze seznamu známých položek.
+Další informace o entitách:
+
+* [Koncepty](luis-concept-entity-types.md)
+* [Postup vytvoření](luis-how-to-add-entities.md)

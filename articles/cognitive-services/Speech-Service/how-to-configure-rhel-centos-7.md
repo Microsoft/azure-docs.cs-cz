@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: pankopon
-ms.openlocfilehash: dc09d517d95b5a3f2a88504a14f1451d1de5ffc9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba531164e024f96d3bdd23912f3f6e90275edda4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80639160"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589733"
 ---
 # <a name="configure-rhelcentos-7-for-speech-sdk"></a>Konfigurace RHEL/CentOS 7 pro sadu Speech SDK
 
@@ -45,7 +45,7 @@ ldconfig -p | grep libstdc++
 
 Výstup na Vanilla RHEL/CentOS 7 (x64) je:
 
-```
+```bash
 libstdc++.so.6 (libc6,x86-64) => /lib64/libstdc++.so.6
 ```
 
@@ -57,7 +57,7 @@ strings /lib64/libstdc++.so.6 | egrep "GLIBCXX_|CXXABI_"
 
 Výstup by měl být:
 
-```
+```bash
 ...
 GLIBCXX_3.4.19
 ...
@@ -72,7 +72,11 @@ Sada Speech SDK vyžaduje **CXXABI_1.3.9** a **GLIBCXX_3.4.21**. Tyto informace 
 
 ## <a name="example"></a>Příklad
 
-Toto je ukázkový příkaz, který ukazuje, jak nakonfigurovat RHEL/CentOS 7 x64 pro vývoj (C++, C#, Java, Python) pomocí sady Speech SDK 1.10.0 nebo novější:
+Toto je ukázková sada příkazů, která ukazuje, jak nakonfigurovat RHEL/CentOS 7 x64 pro vývoj (C++, C#, Java, Python) pomocí sady Speech SDK 1.10.0 nebo novější:
+
+### <a name="1-general-setup"></a>1. Obecné nastavení
+
+Nejdřív nainstalujte všechny obecné závislosti:
 
 ```bash
 # Only run ONE of the following two commands
@@ -86,16 +90,53 @@ sudo yum update -y
 sudo yum groupinstall -y "Development tools"
 sudo yum install -y alsa-lib dotnet-sdk-2.1 java-1.8.0-openjdk-devel openssl python3
 sudo yum install -y gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
+```
 
-# Build GCC 5.4.0 and runtimes and install them under /usr/local
+### <a name="2-cc-compiler-and-runtime-libraries"></a>2. kompilátor C/C++ a běhové knihovny
+
+Nainstalujte požadované balíčky pomocí tohoto příkazu:
+
+```bash
 sudo yum install -y gmp-devel mpfr-devel libmpc-devel
+```
+
+> [!NOTE]
+> Balíček libmpc-devel se v aktualizaci RHEL 7,8 už nepoužívá. Pokud výstup předchozího příkazu obsahuje zprávu
+>
+> ```bash
+> No package libmpc-devel available.
+> ```
+>
+> potřebné soubory musí být nainstalovány z původních zdrojů. Spusťte následující příkazy:
+>
+> ```bash
+> curl https://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz -O
+> tar zxf mpc-1.1.0.tar.gz
+> mkdir mpc-1.1.0-build && cd mpc-1.1.0-build
+> ../mpc-1.1.0/configure --prefix=/usr/local --libdir=/usr/local/lib64
+> make -j$(nproc)
+> sudo make install-strip
+> ```
+
+Další aktualizace knihoven kompilátorů a modulů runtime:
+
+```bash
+# Build GCC 5.4.0 and runtimes and install them under /usr/local
 curl https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2 -O
 tar jxf gcc-5.4.0.tar.bz2
 mkdir gcc-5.4.0-build && cd gcc-5.4.0-build
 ../gcc-5.4.0/configure --enable-languages=c,c++ --disable-bootstrap --disable-multilib --prefix=/usr/local
 make -j$(nproc)
 sudo make install-strip
+```
 
+Pokud je potřeba, aby byl aktualizovaný kompilátor a knihovny nasazeny na několika počítačích, můžete je jednoduše kopírovat z části `/usr/local` do jiných počítačů. Pokud potřebujete pouze knihovny modulu runtime, soubory v nástroji `/usr/local/lib64` budou dostatečné.
+
+### <a name="3-environment-settings"></a>3. nastavení prostředí
+
+Pro dokončení konfigurace spusťte následující příkazy:
+
+```bash
 # Set SSL cert file location
 # (this is required for any development/testing with Speech SDK)
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt

@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 8ed42d5b0461b6273c2f8d84a267b65461d160ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c7344b7cc9253ef761061b769644a363492d4bd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876986"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588370"
 ---
 Chcete-li spustit kontejner *extrakce klíčových frází* , spusťte následující `docker run` příkaz.
 

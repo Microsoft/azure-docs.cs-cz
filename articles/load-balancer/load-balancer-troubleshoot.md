@@ -13,15 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3959dd115e340a3407c4f30a22ff4b6b51dab4e7
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 26a4ae7d1a2ef253c0cb62f6bb53f83152676595
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005778"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590260"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Začněte</a></span><span class="has-padding-small">rychle řešit potíže pomocí našeho virtuálního agenta a spusťte <b>automatizovanou diagnostiku.</b> </span> Prohlášení o <sub>zásadách ochrany osobních údajů</sub> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <div align="right"></div></a></span></p>
 
 Tato stránka poskytuje informace pro řešení běžných otázek Azure Load Balancer Basic a Standard. Další informace o Standard Load Balancer najdete v tématu [Standard Load Balancer Overview](load-balancer-standard-diagnostics.md).
 
@@ -98,7 +97,7 @@ Pokud virtuální počítač nereaguje na přenos dat, může to být způsobeno
 **Ověření a rozlišení**
 
 1. Přihlaste se k virtuálnímu počítači back-end. 
-2. Otevřete příkazový řádek a spuštěním následujícího příkazu ověřte, že aplikace naslouchá na datovém portu:  netstat-a 
+2. Otevřete příkazový řádek a spuštěním následujícího příkazu ověřte, že aplikace naslouchá na datovém portu:   netstat-a 
 3. Pokud port není uveden se stavem "NASLOUCHÁní", nakonfigurujte správný port naslouchacího procesu. 
 4. Pokud je port označený jako naslouchání, zkontrolujte u cílové aplikace na tomto portu případné problémy.
 

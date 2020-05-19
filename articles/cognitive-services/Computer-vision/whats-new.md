@@ -10,16 +10,24 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 02/28/2020
 ms.author: pafarley
-ms.openlocfilehash: 82e9c9a6dd8dc18f186a21e72a1a3d205094b707
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bed9424fd7e7dfcb03610fb9d7796cefc5b016be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155184"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589087"
 ---
 # <a name="whats-new-in-computer-vision"></a>Co je nového v Počítačové zpracování obrazu
 
 Zjistěte, co je nového ve službě. Tyto položky můžou vydávat poznámky, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
+
+## <a name="may-2020"></a>Květen 2020
+Rozhraní API pro počítačové zpracování obrazu v 3.0 vstoupila všeobecná dostupnost s aktualizacemi [rozhraní API pro čtení](concept-recognizing-text.md):
+
+* Podpora pro angličtina, holandština, francouzština, němčina, italština, portugalština a španělštinu
+* Vylepšená přesnost
+* Hodnocení spolehlivosti pro každé extrahované slovo
+* Nový výstupní formát
 
 ## <a name="march-2020"></a>Březen 2020
 
@@ -32,7 +40,7 @@ Zjistěte, co je nového ve službě. Tyto položky můžou vydávat poznámky, 
 Nyní máte možnost použít rozhraní API pro čtení verze 3,0 k extrakci vytištěného nebo rukopisného textu z obrázků. V porovnání s předchozími verzemi 3,0 poskytuje:
 * Vylepšená přesnost
 * Nový výstupní formát
-* hodnocení spolehlivosti pro každé extrahované slovo
+* Hodnocení spolehlivosti pro každé extrahované slovo
 * Podpora pro španělštinu i anglické jazyky s parametrem dalšího jazyka
 
 Pokud chcete začít používat rozhraní 3,0 API, postupujte podle pokynů k [rychlému zprovoznění pro extrakci textu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3) .

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 528c3613549ee49009f99d45e5bd9c2cf1745d78
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 71d47c83586f7e5e31b148714e2804686422326a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779990"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588254"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Ověřování přístupu k prostředkům Azure Event Grid
 Tento článek poskytuje informace o následujících scénářích:  
@@ -28,19 +28,25 @@ Do hlavičky HTTP zadáte hodnotu ověřování. Pro SAS použijte **AEG-SAS-tok
 
 ### <a name="key-authentication"></a>Ověřování klíčů
 
-Ověřování klíčem je nejjednodušší forma ověřování. Použijte formát:`aeg-sas-key: <your key>`
+Ověřování klíčem je nejjednodušší forma ověřování. Použijte formát: `aeg-sas-key: <your key>` v záhlaví zprávy.
 
 Například můžete předat klíč pomocí:
 
 ```
-aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
+aeg-sas-key: XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
+```
+
+Můžete také zadat `aeg-sas-key` jako parametr dotazu. 
+
+```
+https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01&&aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
 ```
 
 ### <a name="sas-tokens"></a>Tokeny SAS
 
-Tokeny SAS pro Event Grid zahrnují prostředek, čas vypršení platnosti a podpis. Formát tokenu SAS je: `r={resource}&e={expiration}&s={signature}`.
+Tokeny SAS pro Event Grid zahrnují prostředek, čas vypršení platnosti a podpis. Formát tokenu SAS je: `r={resource}&e={expiration}&s={signature}` .
 
-Prostředek je cesta k tématu Event gridu, do kterého odesíláte události. Například platná cesta prostředku je: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01`. Pokud chcete zobrazit všechny podporované verze rozhraní API, přečtěte si téma [typy prostředků Microsoft. EventGrid](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions). 
+Prostředek je cesta k tématu Event gridu, do kterého odesíláte události. Například platná cesta prostředku je: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01` . Pokud chcete zobrazit všechny podporované verze rozhraní API, přečtěte si téma [typy prostředků Microsoft. EventGrid](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions). 
 
 Vygenerujete podpis z klíče.
 

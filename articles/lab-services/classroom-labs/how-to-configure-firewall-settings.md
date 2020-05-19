@@ -3,15 +3,15 @@ title: Nastavení brány firewall pro Azure Lab Services
 description: Přečtěte si, jak zjistit veřejnou IP adresu a rozsah čísel portů virtuálních počítačů v testovacím prostředí, aby bylo možné přidat informace do pravidel brány firewall.
 author: emaher
 ms.author: enewman
-ms.date: 02/14/2020
+ms.date: 05/15/2020
 ms.topic: article
 ms.service: lab-services
-ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dcb8c0d5304f052dbe7f14386425ce67ae3b79a6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443447"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589529"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Nastavení brány firewall pro Azure Lab Services
 
@@ -24,7 +24,7 @@ Každé testovací prostředí používá jednu veřejnou IP adresu a několik p
 
 ## <a name="find-public-ip-for-a-lab"></a>Vyhledání veřejné IP adresy pro testovací prostředí
 
-Veřejné IP adresy pro každé testovací prostředí jsou uvedené na stránce **všechny laboratoře** účtu testovacího prostředí služby Lab Services.  Pokyny, jak najít stránku **všechny laboratoře** , najdete v tématu [Správa cvičení v účtu testovacího prostředí](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account).  
+Veřejné IP adresy pro každé testovací prostředí jsou uvedené na stránce **všechny laboratoře** účtu testovacího prostředí služby Lab Services.  Pokyny, jak najít stránku **všechny laboratoře** , najdete v tématu [zobrazení cvičení v účtu testovacího prostředí](manage-labs.md#view-labs-in-a-lab-account).  
 
 > [!div class="mx-imgBorder"]
 > ![Stránka všech cvičení](../media/how-to-configure-firewall-settings/all-labs-properties.png)

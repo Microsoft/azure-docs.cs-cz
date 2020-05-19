@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0bf4750d5db5961ff8c572c3aa52cc06faf697c1
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81258420"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590532"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Podpora a možnosti zpětné vazby pro Azure Cognitive Services
 
 Právě začínáte zkoumat funkčnost služby Azure Cognitive Services? Možná implementujete novou funkci ve vaší aplikaci. Nebo po používání služby máte návrhy na jejich vylepšení? Tady jsou možnosti, kde můžete získat podporu, udržet si přehled o chybách a nahlásit chyby pro Cognitive Services.
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
 ### <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
 
@@ -30,16 +30,16 @@ Právě začínáte zkoumat funkčnost služby Azure Cognitive Services? Možná
 
 Prozkoumejte celou řadu [možností podpory Azure a vyberte plán](https://azure.microsoft.com/support/plans) , který nejlépe vyhovuje, ať už jste vývojář, který spouštíte jako cestu v cloudu, nebo velkou organizaci, která nasazuje strategické aplikace, které jsou důležité pro podnikání. Zákazníci Azure můžou vytvářet a spravovat žádosti o podporu v Azure Portal.
 
-* [portál Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure Portal pro vládu USA](https://portal.azure.us)
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledat
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
 </div>
 
-Pro rychlejší výsledky proveďte hledání relevantních webů, jako jsou například [Stack Overflow](https://stackoverflow.com/), [dokumentace Microsoftu](https://docs.microsoft.com/azure/cognitive-services/)nebo [ukázky kódu GitHubu](https://github.com/azure-samples). Použijte zápis `site:` dotazů v [oblíbeném vyhledávacím modulu](https://bing.com), například:
+Pro rychlejší výsledky proveďte hledání relevantních webů, jako jsou například [Stack Overflow](https://stackoverflow.com/), [dokumentace Microsoftu](https://docs.microsoft.com/azure/cognitive-services/)nebo [ukázky kódu GitHubu](https://github.com/azure-samples). Použijte `site:` zápis dotazů v [oblíbeném vyhledávacím modulu](https://bing.com), například:
 
 ```
 {search keywords} site:stackoverflow.com
@@ -70,7 +70,7 @@ Pokud nemůžete najít odpověď na váš problém pomocí vyhledávacího pole
 
 Zaznamenání informací o funkcích v nové verzi nebo novinkách na blogu Azure vám může pomáhat najít rozdíl mezi chybou programování, chybou služby nebo funkcí, která ještě není k dispozici v Cognitive Services.
 
-### <a name="release-notes"></a>Poznámky k verzi
+### <a name="release-notes"></a>Zpráva k vydání verze
 
 <div class='icon is-large'>
     <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
@@ -79,7 +79,7 @@ Zaznamenání informací o funkcích v nové verzi nebo novinkách na blogu Azur
 Poznámky k verzi Cognitive Services jsou aktualizovány, protože jsou k dispozici nové verze. Poznámky obsahují informace o nových funkcích, vylepšeních a opravách chyb.
 
  - [Custom Vision](custom-vision-service/release-notes.md)
- - [Tvář](face/releasenotes.md)
+ - [Rozpoznávání tváře](face/releasenotes.md)
  - [Language Understanding (LUIS)](LUIS/whats-new.md)
  - [Hlasové služby](speech-service/releasenotes.md)
  - [Sada Speech Services SDK](speech-service/devices-sdk-release-notes.md)
@@ -102,7 +102,7 @@ Novinky o Cognitive Services se sdílí na [blogu Azure](https://azure.microsoft
 
 Reddit je diskuzní web založený na komunitě, který nabízí nejnovější informace o [Azure Cognitive Services](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) novinky, nápovědu, informace, tipy a triky. Zaregistrované členy můžou odesílat obsah a ostatní můžou na něm hlasovat, což organicky zvyšuje nejrelevantnější obsah na nejvyšší úrovni svých informačních kanálů.
 
-## <a name="give-feedback"></a>Váš názor
+## <a name="give-feedback"></a>Poskytnout zpětnou vazbu
 
 ### <a name="uservoice-forum"></a>Fórum UserVoice
 
@@ -120,7 +120,7 @@ Pokud chcete požádat o nové funkce, publikujte je na UserVoice. Sdílejte sv�
 |-------------------------------|---------------|
 | Detektor anomálií              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
 | Služby Bing                 | https://cognitive.uservoice.com/forums/555907-bing-search |
-| Computer Vision               | https://cognitive.uservoice.com/forums/430309-computer-vision |
+| Počítačové zpracování obrazu               | https://cognitive.uservoice.com/forums/430309-computer-vision |
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Tvář                          | https://cognitive.uservoice.com/forums/430315-face |
@@ -129,10 +129,10 @@ Pokud chcete požádat o nové funkce, publikujte je na UserVoice. Sdílejte sv�
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizace                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
-| Hlasové služby               | https://cognitive.uservoice.com/forums/912208-speech-service |
+| Služby Speech               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Custom Speech                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
 | Analýza textu                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Translator Text               | https://cognitive.uservoice.com/forums/558796-translator |
+| Translator               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="report-bugs"></a>Hlášení chyb

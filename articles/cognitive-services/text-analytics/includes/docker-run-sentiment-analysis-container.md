@@ -7,19 +7,19 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: e67f65d252be0ea638d3b5fa241d9413e76f1a98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 253c391b222c757a367bd5cd39939052cc697b00
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876980"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588371"
 ---
-Chcete-li spustit kontejner *Analýza mínění* , spusťte následující `docker run` příkaz.
+Pokud chcete spustit kontejner *Analýza mínění V3* , spusťte následující `docker run` příkaz.
 
 ```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+docker run --rm -it -p 5000:5000 --memory 8g --cpus 1 \
 mcr.microsoft.com/azure-cognitive-services/sentiment \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -29,6 +29,6 @@ ApiKey={API_KEY}
 Tento příkaz:
 
 * Spustí kontejner *Analýza mínění* z image kontejneru.
-* Přiděluje jedno PROCESORové jádro a 4 gigabajty (GB) paměti.
+* Přiděluje jedno PROCESORové jádro a 8 gigabajtů (GB) paměti.
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.

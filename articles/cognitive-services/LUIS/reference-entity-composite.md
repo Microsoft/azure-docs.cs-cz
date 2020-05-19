@@ -8,22 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71695154"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588900"
 ---
-# <a name="composite-entity"></a>Složená entita 
+# <a name="composite-entity"></a>Složená entita
 
-Složená entita je tvořena dalšími entitami, jako jsou předem připravené entity, jednoduché, regulární výrazy a seznam entit. Samostatné entity tvoří celou entitu. 
+Složená entita je tvořena dalšími entitami, jako jsou předem připravené entity, jednoduché, regulární výrazy a seznam entit. Samostatné entity tvoří celou entitu.
+
+> [!CAUTION]
+> Tato entita je **zastaralá**. Migrujte prosím na [počítačově získanou entitu](reference-entity-machine-learned-entity.md).
 
 **Tato entita je vhodná, když jsou data:**
 
-* Jsou vzájemně propojené. 
+* Jsou vzájemně propojené.
 * Se k sobě v kontextu promluvy navzájem vztahují.
 * Použijte nejrůznější typy entit.
 * Musí být seskupena a zpracována klientskou aplikací jako jednotka informací.
@@ -33,17 +36,17 @@ Složená entita je tvořena dalšími entitami, jako jsou předem připravené 
 
 ## <a name="example-json"></a>Ukázkový kód JSON
 
-Vezměte v úvahu složenou entitu `number` předem `Location::ToLocation` sestavenou a s následujícím utterance:
+Vezměte v úvahu složenou entitu předem sestavenou `number` a `Location::ToLocation` s následujícím utterance:
 
 `book 2 tickets to cairo`
 
-Všimněte si `2`, že číslo a `cairo`ToLocation obsahují slova mezi nimi, která nejsou součástí žádné entity. Zelené podtržení, které se používá v utterance na webu [Luis](luis-reference-regions.md) , označuje složenou entitu.
+Všimněte si, že `2` číslo a `cairo` ToLocation obsahují slova mezi nimi, která nejsou součástí žádné entity. Zelené podtržení, které se používá v utterance na webu [Luis](luis-reference-regions.md) , označuje složenou entitu.
 
 ![Složená entita](./media/luis-concept-data-extraction/composite-entity.png)
 
 #### <a name="v2-prediction-endpoint-response"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
-Složené entity jsou vráceny v poli `compositeEntities` a všechny entity v rámci složeného typu jsou vráceny také v `entities` poli:
+Složené entity jsou vráceny v `compositeEntities` poli a všechny entity v rámci složeného typu jsou vráceny také v poli `entities` :
 
 ```JSON
   "entities": [
@@ -87,11 +90,11 @@ Složené entity jsou vráceny v poli `compositeEntities` a všechny entity v r�
       ]
     }
   ]
-```    
+```
 
 #### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Toto je kód JSON, `verbose=false` Pokud je nastaven v řetězci dotazu:
+Toto je kód JSON, pokud `verbose=false` je nastaven v řetězci dotazu:
 
 ```json
 "entities": {
@@ -108,7 +111,7 @@ Toto je kód JSON, `verbose=false` Pokud je nastaven v řetězci dotazu:
 }
 ```
 
-Toto je kód JSON, `verbose=true` Pokud je nastaven v řetězci dotazu:
+Toto je kód JSON, pokud `verbose=true` je nastaven v řetězci dotazu:
 
 ```json
 "entities": {
@@ -169,7 +172,7 @@ Toto je kód JSON, `verbose=true` Pokud je nastaven v řetězci dotazu:
 }
 ```
 
-* * * 
+* * *
 
 
 |Datový objekt|Název entity|Hodnota|
@@ -179,4 +182,7 @@ Toto je kód JSON, `verbose=true` Pokud je nastaven v řetězci dotazu:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto [kurzu](luis-tutorial-composite-entity.md)přidejte **složenou entitu** , která bude seskupit extrahovaná data různých typů do jedné obsahující entity. Díky sdružování dat může klientská aplikace snadno extrahovat související data v různých datových typech.
+Další informace o entitách:
+
+* [Koncepty](luis-concept-entity-types.md)
+* [Postup vytvoření](luis-how-to-add-entities.md)

@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: Vytvoření aplikace – LUIS'
-description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci LUIS, která `HomeAutomation` používá předem vytvořenou doménu pro zapnutí a vypnutí světla a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
+description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci LUIS, která používá předem vytvořenou doménu `HomeAutomation` pro zapnutí a vypnutí světla a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.openlocfilehash: de6cf5e95ee63fc9500cf1b5edab78597bdb18af
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/05/2020
+ms.openlocfilehash: 186a60a7fd8315d68718ceedd3b5cadb4d3645e8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287794"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589120"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
 
@@ -21,11 +21,15 @@ V tomto rychlém startu vytvoříte aplikaci LUIS, která používá předem př
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace).
 
-1. V seznamu Moje aplikace vyberte **+ Nová aplikace pro konverzaci**.
+1. V seznamu Moje aplikace vyberte **+ Nová aplikace pro konverzaci**a potom v seznamu možností vyberte **+ Nová aplikace pro konverzaci** znovu.
 
-1. Do dialogového okna zadejte název aplikace `Home Automation`. Jako jazykovou verzi vyberte **angličtinu** . Popis je volitelný a není používán k vytváření nebo předpovědi. Při vytváření aplikace v LUIS je prostředek předpovědi také nepovinný. Vyberte **Done** (Hotovo).
+1. Do dialogového okna zadejte název aplikace `Home Automation` .
+1. Jako jazykovou verzi vyberte **angličtinu** .
+1. Zadejte volitelný popis.
+1. Nevybírejte prostředek předpovědi, pokud jste ještě nevytvořili prostředek. Chcete-li použít koncový bod předpovědi vaší aplikace (pracovní nebo produkční), je nutné přiřadit prostředek předpovědi.
+1. Vyberte **Done** (Hotovo).
 
-    LUIS vytvoří aplikaci. Když publikujete aplikaci do produkčního prostředí, měli byste přiřadit prostředek předpovědi, aby vaše aplikace mohla zvládnout mnoho požadavků.
+    LUIS vytvoří aplikaci.
 
     ![V dialogovém okně pojmenujte svou aplikaci jako domovskou automatizaci.](./media/create-new-app-details.png)
 
@@ -34,24 +38,27 @@ Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace)
 
 ## <a name="add-prebuilt-domain"></a>Přidání předem připravené domény
 
-Vyberte **předem připravené domény** a pak vyhledejte **HomeAutomation**. Na kartě HomeAutomation vyberte **Přidat doménu** .
+1. V levém navigačním panelu vyberte předem **sestavené domény**.
+1. Vyhledejte **HomeAutomation**.
+1. Na kartě HomeAutomation vyberte **Přidat doménu** .
 
-![Vyberte předem sestavené domény a vyhledejte "HomeAutomation". Na kartě HomeAutomation vyberte Přidat doménu.](media/luis-quickstart-new-app/home-automation.png)
+    ![Vyberte předem sestavené domény a vyhledejte "HomeAutomation". Na kartě HomeAutomation vyberte Přidat doménu.](media/luis-quickstart-new-app/home-automation.png)
 
-Po úspěšném přidání domény pak pole předem připravené domény zobrazuje tlačítko **Remove domain** (Odebrat doménu).
+    Po úspěšném přidání domény pak pole předem připravené domény zobrazuje tlačítko **Remove domain** (Odebrat doménu).
 
 ## <a name="intents-and-entities"></a>Záměry a entity
 
-Pokud chcete zkontrolovat záměry domény HomeAutomation, vyberte **záměry** . Předem sestavené záměry domény mají ukázkovou projevy.
+1. Pokud chcete zkontrolovat záměry domény HomeAutomation, vyberte **záměry** . Předem sestavené záměry domény mají například projevy.
 
-![Snímek obrazovky seznamu HomeAutomation záměrů](media/luis-quickstart-new-app/home-automation-intents.png "Snímek obrazovky seznamu HomeAutomation záměrů")
+    ![Snímek obrazovky seznamu HomeAutomation záměrů](media/luis-quickstart-new-app/home-automation-intents.png "Snímek obrazovky seznamu HomeAutomation záměrů")
 
-> [!NOTE]
-> **None** (Žádný) je záměr, který poskytují všechny aplikace LUIS. Používá se ke zpracování promluv, které neodpovídají funkci poskytované vaší aplikací.
+    > [!NOTE]
+    > **None** (Žádný) je záměr, který poskytují všechny aplikace LUIS. Používá se ke zpracování promluv, které neodpovídají funkci poskytované vaší aplikací.
 
-Vyberte záměr **HomeAutomation.TurnOff**. Vidíte, že záměr obsahuje seznam promluv, které jsou označené entitami.
+1. Vyberte záměr **HomeAutomation.TurnOff**. Záměr obsahuje seznam příkladů projevyů, které jsou označeny entitami.
 
-[![Snímek obrazovky záměru HomeAutomation.TurnOff](media/luis-quickstart-new-app/home-automation-turnoff.png "Snímek obrazovky záměru HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+    > [!div class="mx-imgBorder"]
+    > [![Snímek obrazovky záměru HomeAutomation.TurnOff](media/luis-quickstart-new-app/home-automation-turnoff.png "Snímek obrazovky záměru HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
@@ -60,21 +67,22 @@ Vyberte záměr **HomeAutomation.TurnOff**. Vidíte, že záměr obsahuje seznam
 ## <a name="test-your-app"></a>Testování aplikace
 Jakmile aplikaci vytrénujete, můžete ji otestovat.
 
-1. Vyberte **test** z pravé horní navigační části. 1. Zadejte utterance testu jako `Turn off the lights` do interaktivního testovacího podokna a stiskněte klávesu ENTER.
+1. Vyberte **test** z pravé horní navigační části.
+
+1. Zadejte utterance testu jako `Turn off the lights` do interaktivního testovacího podokna a stiskněte klávesu ENTER.
 
     ```
     Turn off the lights
     ```
 
-    Zkontrolujte, že záměr s nejvyšším bodováním odpovídá záměru, který jste pro jednotlivé testovací promluvy očekávali.
-
     V tomto příkladu `Turn off the lights` je správně identifikován jako nejlepší vyhodnocovací záměr **HomeAutomation. TurnOff**.
 
     ![Snímek obrazovky testovacího panelu se zvýrazněnou promluvou](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
-1. Pokud si chcete prohlédnout Další informace o předpovědi, vyberte **zkontrolovat** .
+1. Pokud chcete zobrazit další informace o předpovědi, vyberte **zkontrolovat** .
 
-    ![Snímek obrazovky testovacího panelu s informacemi o kontrole](media/luis-quickstart-new-app/test.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky testovacího panelu s informacemi o kontrole](media/luis-quickstart-new-app/test.png)
 
 1. Zavřete podokno test.
 

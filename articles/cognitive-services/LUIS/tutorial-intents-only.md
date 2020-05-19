@@ -1,27 +1,27 @@
 ---
 title: 'Kurz: předpověď záměrů – LUIS'
-description: V tomto kurzu vytvoříte vlastní aplikaci, která předpovídá záměr uživatele. Tato aplikace představuje nejjednodušší typ aplikace LUIS, protože neextrahuje různé datové prvky z textu promluvy, jako jsou e-mailové adresy nebo kalendářní data.
+description: Vytvořte vlastní aplikaci, která předpovídá záměr uživatele na základě utterance (text) v tomto kurzu.
 ms.topic: tutorial
-ms.date: 03/24/2020
-ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/05/2020
+ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80286740"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588928"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Kurz: Vytvoření aplikace v LUIS pro určení záměrů uživatele
 
 V tomto kurzu vytvoříte vlastní aplikaci, která předpovídá záměr uživatele na základě utterance (text).
 
-**V tomto kurzu se naučíte:**
+**V tomto kurzu:**
 
 > [!div class="checklist"]
 > * Vytvoření nové aplikace
 > * Vytvořit záměry
 > * Přidat ukázkové promluvy
 > * Trénovat aplikaci
-> * Publikování aplikace
+> * Publikovat aplikaci
 > * Získat předpověď záměru z koncového bodu
 
 ## <a name="user-intentions-as-intents"></a>Záměry uživatelů jako záměrů
@@ -37,7 +37,7 @@ Tyto záměry jsou zařazené do kategorie **Intents** (Záměry).
 |`ModifyOrder`|Určuje pořadí Pizza uživatele.|
 |`Greeting`|Začněte s konverzací robot.|
 |`ConfirmOrder`|Potvrďte pořadí Pizza.|
-|`None`|Určete, jestli uživatel žádá o něco, co aplikace nemá odpovídat. Tento záměr, pokud je k dispozici jako součást vytváření aplikace a nelze jej odstranit. |
+|`None`|Zjistit, jestli uživatel žádá o něco, aplikace LUIS není navržená tak, aby odpovídala. Tento záměr se poskytuje jako součást vytváření aplikací a nedá se odstranit. |
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 
@@ -49,9 +49,9 @@ Záměr slouží ke klasifikaci projevy uživatelů na základě záměru uživa
 
 Aby bylo možné klasifikovat utterance, záměr potřebuje příklady uživatelských projevy, které by měly být klasifikovány pomocí tohoto záměru.
 
-1. V části **sestavení** na stránce **záměry** vyberte **+ vytvořit** pro vytvoření nového záměru. Zadejte název `OrderPizza`nového záměru a potom vyberte **Hotovo**.
+1. V části **sestavení** na stránce **záměry** vyberte **+ vytvořit** pro vytvoření nového záměru. Zadejte název nového záměru a `OrderPizza` potom vyberte **Hotovo**.
 
-    `OrderPizza` Záměr je předpovězený, když chce uživatel objednat Pizza.
+    `OrderPizza`Záměr je předpovězený, když chce uživatel objednat Pizza.
 
 1. Do tohoto záměru přidejte několik příkladů projevy, u kterých očekáváte, že se uživatel zeptá:
 
@@ -64,9 +64,10 @@ Aby bylo možné klasifikovat utterance, záměr potřebuje příklady uživatel
     |`i need 2 large cheese pizzas 6 large pepperoni pizzas and 1 large supreme pizza`|
     |`Order a pizza for me`|
 
-    ![Přidat ukázkové promluvy](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s přidáním ukázkového projevyu na stránce záměru LUIS na portálu](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Poskytnutím _ukázkového projevyu_Luis informace o tom, jaké druhy projevyy by se měly pro tento záměr odhadnout.
+    Poskytnutím _ukázkového projevyu_Luis informace o tom, jaké druhy projevyy by se měly pro tento záměr odhadnout. Tyto příklady jsou pozitivní. Projevy ve všech ostatních záměrech se pro tento záměr považují za negativní příklady.
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
@@ -178,6 +179,8 @@ Aby bylo možné klasifikovat utterance, záměr potřebuje příklady uživatel
 
 ## <a name="client-application-next-steps"></a>Klient-aplikace – další kroky
 
+V tomto kurzu jste vytvořili aplikaci LUIS, vytvořené záměry, Přidali jste vzorový projevy ke každému záměru a Přidali jste příklad projevy k záměru None, trained, Published a test na koncovém bodu. Toto jsou základní kroky vytvoření modelu LUIS.
+
 Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila. Služba LUIS neposkytuje odpovědi na promluvy uživatelů, pouze identifikuje, na jaký typ informací směřuje dotaz v přirozeném jazyce. Následná následné konverzace poskytuje klientská aplikace, jako je třeba robot Azure.
 
 
@@ -193,8 +196,6 @@ Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila
 
 
 ## <a name="next-steps"></a>Další kroky
-
-V tomto kurzu jste vytvořili aplikaci LUIS, vytvořené záměry, Přidali jste vzorový projevy ke každému záměru a Přidali jste příklad projevy k záměru None, trained, Published a test na koncovém bodu. Toto jsou základní kroky vytvoření modelu LUIS.
 
 > [!div class="nextstepaction"]
 > [Přidat do této aplikace entitu s možností destavitele](tutorial-machine-learned-entity.md)

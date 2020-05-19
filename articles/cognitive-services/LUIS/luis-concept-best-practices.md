@@ -2,14 +2,14 @@
 title: Osvědčené postupy pro sestavení aplikace v LUIS
 description: Seznamte se s osvědčenými postupy pro dosažení nejlepších výsledků z modelu vaší aplikace v LUIS.
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 525d450084723a53ae090319d9ebf3f68d63beee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382390"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589801"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Osvědčené postupy pro sestavování aplikace pro porozumění jazyku (LUIS)
 Pomocí procesu vytváření aplikací sestavte aplikaci LUIS:
@@ -31,11 +31,11 @@ Následující seznam obsahuje osvědčené postupy pro aplikace LUIS:
 
 |Správný postup|Chybný postup|
 |--|--|
-|[Definovat jedinečné záměry](#do-define-distinct-intents)<br>[Přidat popisovače do záměrů](#do-add-descriptors-to-intents) |[Přidejte spoustu příkladů projevy k záměrům](#dont-add-many-example-utterances-to-intents)<br>[Použití několika nebo jednoduchých entit](#dont-use-few-or-simple-entities) |
+|[Definovat jedinečné záměry](#do-define-distinct-intents)<br>[Přidání funkcí do záměrů](#do-add-features-to-intents) |[Přidejte spoustu příkladů projevy k záměrům](#dont-add-many-example-utterances-to-intents)<br>[Použití několika nebo jednoduchých entit](#dont-use-few-or-simple-entities) |
 |[Najděte sladkou skvrnu mezi příliš obecným a příliš specifickou pro každý záměr.](#do-find-sweet-spot-for-intents)|[Použití LUIS jako školicí platformy](#dont-use-luis-as-a-training-platform)|
 |[Opakované sestavení aplikace s použitím verzí](#do-build-your-app-iteratively-with-versions)<br>[Sestavení entit pro rozložení modelu](#do-build-for-model-decomposition)|[Přidejte spoustu příkladů projevy stejného formátu a ignorujte jiné formáty.](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Přidat vzory v pozdějších iteracích](#do-add-patterns-in-later-iterations)|[Kombinace definice záměrů a entit](#dont-mix-the-definition-of-intents-and-entities)|
-|[Vyvážení projevy napříč všemi záměry](#balance-your-utterances-across-all-intents) s výjimkou záměru None.<br>[Přidat příklad projevy k žádnému záměru](#do-add-example-utterances-to-none-intent)|[Vytvoření popisovačů se všemi možnými hodnotami](#dont-create-descriptors-with-all-the-possible-values)|
+|[Vyvážení projevy napříč všemi záměry](#balance-your-utterances-across-all-intents) s výjimkou záměru None.<br>[Přidat příklad projevy k žádnému záměru](#do-add-example-utterances-to-none-intent)|[Vytvoření seznamů frází se všemi možnými hodnotami](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[Využijte funkci navrhnout pro aktivní učení.](#do-leverage-the-suggest-feature-for-active-learning)|[Přidat příliš mnoho vzorů](#dont-add-many-patterns)|
 |[Sledování výkonu aplikace pomocí dávkového testování](#do-monitor-the-performance-of-your-app)|[Školení a publikování s každým jedním příkladem utterance přidání](#dont-train-and-publish-with-every-single-example-utterance)|
 
@@ -51,11 +51,11 @@ Vezměte v úvahu následující příklad projevy:
 |Kniha a letu|
 |Kniha a Hotel|
 
-`Book a flight`a `Book a hotel` používejte stejný slovník pro `book a `. Tento formát je stejný, takže by měl být stejný záměr s různými slovy `flight` a `hotel` jako extrahované entity.
+`Book a flight`a `Book a hotel` Používejte stejný slovník pro `book a ` . Tento formát je stejný, takže by měl být stejný záměr s různými slovy `flight` a `hotel` jako extrahované entity.
 
-## <a name="do-add-descriptors-to-intents"></a>Přidat popisovače do záměrů
+## <a name="do-add-features-to-intents"></a>Přidání funkcí do záměrů
 
-Popisovače jsou popsány funkcemi pro záměr. Popisovačem může být seznam slov, která jsou významné pro daný záměr nebo na entitu, která je pro tento záměr významná.
+Funkce popisují koncepty pro záměr. Může se jednat o Frázový seznam slov, která jsou významné pro daný záměr nebo na entitu, která je pro tento záměr významná.
 
 ## <a name="do-find-sweet-spot-for-intents"></a>Najděte si pro záměry sladkou skvrnu
 Data předpovědi z LUIS můžete použít k určení, jestli se jejich záměry překrývají. Překrývající se záměry Zaměňujte LUIS. Výsledkem je, že nejvyšší záměr bodování je příliš blízko k jinému záměru. Vzhledem k tomu, že LUIS nepoužívá přesnou cestu přes data pro školení pokaždé, překrývající se záměr je pravděpodobné, že je první nebo druhý v rámci školení. Chcete, aby se utterance skóre každého záměru více rozdělilo, aby tato funkce překlopení nedocházelo. Dobrý rozdíl pro záměry by měl vést k očekávanému nejvyššímu záměru pokaždé.
@@ -73,17 +73,22 @@ Dekompozice modelu má typický proces:
 * vytvoření **záměru** založeného na záměrech uživatelů klientské aplikace
 * Přidat vzorový projevy 15-30 založený na vstupu uživatele Real-World
 * označení konceptu dat na nejvyšší úrovni v příkladu utterance
-* přerušit koncept dat na dílčí součásti
-* Přidání popisovačů (funkcí) k dílčím součástem
-* Přidání popisovačů (funkcí) k záměru
+* přerušit koncept dat do subentit
+* Přidat funkce k subentitám
+* Přidání funkcí do záměrů
 
 Jakmile vytvoříte záměr a přidáte příklad projevy, následující příklad popisuje dekompozici entit.
 
-Začněte tím, že identifikujete kompletní koncepty dat, které chcete extrahovat v utterance. Toto je vaše entita získaná počítačem. Pak rozložíte frázi na její části. To zahrnuje identifikaci dílčích součástí (jako entit) společně s popisovači a omezeními.
+Začněte tím, že identifikujete kompletní koncepty dat, které chcete extrahovat v utterance. Toto je vaše entita získaná počítačem. Pak rozložíte frázi na její části. To zahrnuje identifikaci subentit a funkcí.
 
-Pokud například chcete extrahovat adresu, mohla by být volána `Address`nejdůležitější entita zjištěná počítačem. Při vytváření adresy Identifikujte některé z jejích dílčích součástí, jako je adresa ulice, město, stát a poštovní směrovací číslo.
+Pokud například chcete extrahovat adresu, mohla by být volána nejdůležitější entita zjištěná počítačem `Address` . Při vytváření adresy Identifikujte některé z jejích podřízených entit, jako je adresa ulice, město, stát a poštovní směrovací číslo.
 
-Pokračujte v nastavování těchto prvků **omezením** poštovního kódu na regulární výraz. Rozloží adresu ulice na části čísla ulice (pomocí předem vytvořeného čísla), názvu ulice a typu ulice. Typ ulice lze popsat pomocí seznamu **popisovačů** , jako je způsob, Circle, Road a Lane.
+Pokračovat v deskládání těchto elementů:
+* Přidání požadované funkce poštovního kódu jako entity regulárního výrazu.
+* Deskládání adresy ulice do částí:
+    * **Číslo ulice** s požadovanou funkcí předem připravené entity čísla.
+    * **Název ulice**
+    * **Typ ulice** s požadovanou funkcí entity seznamu, jako je například způsob, Circle, Road a Lane.
 
 Rozhraní API pro vytváření obsahu pro sestavení V3 umožňuje dekompozici modelu.
 
@@ -145,9 +150,9 @@ Vytvořte záměr pro všechny akce, které vaše bot bude trvat. Použijte enti
 
 V případě robota, který bude v leteckém letu, vytvořte **BookFlight** záměr. Nevytvářejte záměr pro všechny letecké společnosti nebo všechny cíle. Tyto části dat používejte jako [entity](luis-concept-entity-types.md) a označte je v příkladech projevy.
 
-## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Nevytvářejte popisovače se všemi možnými hodnotami.
+## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>Nevytvářejte seznamy frází se všemi možnými hodnotami.
 
-V [seznamech frází](luis-concept-feature.md) popisovače zadejte několik příkladů, ale ne všechna slova. LUIS generalizace a bere kontext na účet.
+Zadejte několik příkladů v [seznamech frází](luis-concept-feature.md) , ale ne všechna slova nebo fráze. LUIS generalizace a bere kontext na účet.
 
 ## <a name="dont-add-many-patterns"></a>Nepřidávat mnoho vzorů
 
