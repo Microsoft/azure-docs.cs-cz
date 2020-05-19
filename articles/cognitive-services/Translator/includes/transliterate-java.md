@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: ad5c51b3d373947e8a09762b0cb27afff990e6da
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 82766e969f62f35f39f6545eb4c2c6bdda29c11b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906600"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586493"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -24,7 +24,7 @@ mkdir transliterate-sample
 cd transliterate-sample
 ```
 
-Teď budete chtít inicializovat projekt Gradle. Tento příkaz vytvoří základní soubory sestavení pro Gradle, co je nejdůležitější, `build.gradle.kts`a který se používá za běhu k vytvoření a konfiguraci vaší aplikace. Spusťte tento příkaz z pracovního adresáře:
+Teď budete chtít inicializovat projekt Gradle. Tento příkaz vytvoří základní soubory sestavení pro Gradle, co je nejdůležitější, a `build.gradle.kts` který se používá za běhu k vytvoření a konfiguraci vaší aplikace. Spusťte tento příkaz z pracovního adresáře:
 
 ```console
 gradle init --type basic
@@ -63,7 +63,7 @@ Pojďme vytvořit složku pro ukázkovou aplikaci. V pracovním adresáři spus�
 mkdir -p src\main\java
 ```
 
-Potom v této složce vytvořte soubor s názvem `Transliterate.java`.
+Potom v této složce vytvořte soubor s názvem `Transliterate.java` .
 
 ## <a name="import-required-libraries"></a>Importovat požadované knihovny
 
@@ -88,7 +88,7 @@ public class Transliterate {
 }
 ```
 
-Přidejte tyto řádky do `Transliterate` třídy. Nejdřív se klíč předplatného a koncový bod čtou z proměnných prostředí. Pak si všimněte, že spolu s `api-version`, byly do nástroje připojeny dva další parametry. `url` Tyto parametry slouží k nastavení vstupního jazyka a ke skriptům pro předávání. V této ukázce je nastavená na japonštinu (`jpan`) a latinku`latn`(). 
+Přidejte tyto řádky do `Transliterate` třídy. Nejdřív se klíč předplatného a koncový bod čtou z proměnných prostředí. Pak si všimněte, že spolu s, byly `api-version` do nástroje připojeny dva další parametry `url` . Tyto parametry slouží k nastavení vstupního jazyka a ke skriptům pro předávání. V této ukázce je nastavená na japonštinu ( `jpan` ) a latinku ( `latn` ). 
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -99,7 +99,7 @@ Pokud používáte Cognitive Services předplatné s více službami, musíte ta
 
 ## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a sestavení žádosti
 
-Přidejte tento řádek do `Transliterate` třídy pro vytvoření instance: `OkHttpClient`
+Přidejte tento řádek do `Transliterate` třídy pro vytvoření instance `OkHttpClient` :
 
 ```java
 // Instantiates the OkHttpClient.
@@ -125,7 +125,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Vytvoření funkce pro analýzu odpovědi
 
-Tato jednoduchá funkce analyzuje a prettifies odpověď JSON od služby Translator Text.
+Tato jednoduchá funkce analyzuje a prettifies odpověď JSON ze služby Translator.
 
 ```java
 // This function prettifies the json response.
@@ -180,7 +180,7 @@ gradle run
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

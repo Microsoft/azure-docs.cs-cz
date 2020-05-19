@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 05355ad37183d4c14cb8f6598141292ded0386d9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: edde734409d064f1bff0212a1cbaecf136206772
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906993"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586843"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -17,7 +17,7 @@ ms.locfileid: "69906993"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Vytvořte nový projekt přejít pomocí oblíbeného integrovaného vývojového prostředí (IDE) nebo editoru nebo nové složky na ploše. Potom tento fragment kódu zkopírujte do svého projektu nebo složky v souboru s názvem `get-languages.go`.
+Vytvořte nový projekt přejít pomocí oblíbeného integrovaného vývojového prostředí (IDE) nebo editoru nebo nové složky na ploše. Potom tento fragment kódu zkopírujte do svého projektu nebo složky v souboru s názvem `get-languages.go` .
 
 ```go
 package main
@@ -34,9 +34,9 @@ import (
 
 ## <a name="create-the-main-function"></a>Vytvoření funkce main
 
-Pojďme vytvořit hlavní funkci pro naši aplikaci. Všimněte si, že se jedná o jediný řádek kódu. To je proto, že vytváříme jednu funkci pro získání a tisk seznamu podporovaných jazyků pro Translator Text.
+Pojďme vytvořit hlavní funkci pro naši aplikaci. Všimněte si, že se jedná o jediný řádek kódu. To je proto, že vytváříme jednu funkci pro získání a tisk seznamu podporovaných jazyků pro překladatele.
 
-Tato ukázka se pokusí přečíst koncový bod Translator Text z proměnné prostředí: `TRANSLATOR_TEXT_ENDPOINT`. Pokud proměnné prostředí neznáte, můžete hodnotu `endpoint` nastavit jako řetězec a okomentovat podmíněný příkaz.
+Tato ukázka se pokusí přečíst koncový bod překladatele z proměnné prostředí: `TRANSLATOR_TEXT_ENDPOINT` . Pokud proměnné prostředí neznáte, můžete hodnotu `endpoint` nastavit jako řetězec a okomentovat podmíněný příkaz.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -64,7 +64,7 @@ func getLanguages(uri string) {
 }
 ```
 
-Nyní vytvoříme adresu URL. Adresa URL je sestavena pomocí `Parse()` metod `Query()` a.
+Nyní vytvoříme adresu URL. Adresa URL je sestavena pomocí `Parse()` `Query()` metod a.
 
 Zkopírujte tento kód do `getLanguages` funkce.
 
@@ -76,11 +76,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Další informace o koncových bodech, trasách a parametrech požadavků naleznete v tématu [Translator 3,0: languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ## <a name="build-the-request"></a>Sestavení požadavku
 
-Teď, když jste zakódovi tělo požadavku jako JSON, můžete sestavit požadavek POST a zavolat Translator Text API.
+Teď, když jste zakódovi tělo požadavku jako JSON, můžete sestavit požadavek POST a volat překladatele.
 
 ```go
 // Build the HTTP GET request
@@ -91,7 +91,7 @@ if err != nil {
 // Add required headers
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -117,7 +117,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-To je vše, sestavili jste jednoduchý program, který zavolá službu Translator Text API a vrátí odpověď JSON. Teď je čas program spustit:
+To je to, že jste připravili jednoduchý program, který bude volat překladatele a vrátil odpověď JSON. Teď je čas program spustit:
 
 ```console
 go run get-languages.go
@@ -217,7 +217,7 @@ V tomto [seznamu jazyků](https://docs.microsoft.com/azure/cognitive-services/tr
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

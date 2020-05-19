@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bbfd0027f9de93ee939815853f5141044404c53
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199495"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585891"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory uplatnění pozvánky B2B pro spolupráci
 
@@ -99,7 +99,7 @@ Když se host přihlásí k přístupu k prostředkům v partnerské organizaci 
 
    ![Snímek obrazovky s novými podmínkami použití](media/redemption-experience/terms-of-use-accept.png) 
 
-   Můžete nakonfigurovat [používání podmínek použití](../governance/active-directory-tou.md) v **organizačních vztazích** (nebo **externích identitách**) > **podmínky použití**.
+   Můžete nakonfigurovat podmínky použití [podmínek použití](../governance/active-directory-tou.md) v **externích identitách**  >  **Terms of use**.
 
 3. Pokud není uvedeno jinak, Host se přesměruje na přístupový panel aplikace, který obsahuje seznam aplikací, ke kterým má host přístup.
 

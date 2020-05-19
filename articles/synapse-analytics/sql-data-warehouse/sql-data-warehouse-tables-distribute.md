@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 04255fb6fdf83e7249fad01c75425943b580393c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 599514f6e7b97208194fc4c1660712f4d5e0c4cb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742864"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585347"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Pokyny pro návrh distribuovaných tabulek ve fondu SQL synapse
 
@@ -92,11 +92,11 @@ WITH
 ;
 ```
 
-Výběr distribučního sloupce je důležité rozhodnutí o návrhu, protože hodnoty v tomto sloupci určují, jak jsou řádky distribuovány. Nejlepší volba závisí na několika faktorech a obvykle zahrnuje kompromisy. Pokud ale nejlepší sloupec nevyberete poprvé, můžete pomocí [Create Table jako Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) znovu vytvořit tabulku s jiným distribučním sloupcem.
+Data uložená v distribučním sloupci lze aktualizovat. Aktualizace dat ve sloupci distribuce by mohla vést k náhodnému fungování dat.
 
-### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Vyberte distribuční sloupec, který nevyžaduje aktualizace.
+Výběr distribučního sloupce je důležité rozhodnutí o návrhu, protože hodnoty v tomto sloupci určují, jak jsou řádky distribuovány. Nejlepší volba závisí na několika faktorech a obvykle zahrnuje kompromisy. Po výběru distribučního sloupce jej nelze změnit.  
 
-Distribuční sloupec nelze aktualizovat, pokud řádek neodstraníte a vložíte nový řádek s aktualizovanými hodnotami. Proto vyberte sloupec se statickými hodnotami.
+Pokud jste nevybrali nejlepší sloupec poprvé, můžete pomocí [Create Table jako Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) znovu vytvořit tabulku s jiným distribučním sloupcem.
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Volba distribučního sloupce s daty, která se rovnoměrně distribuuje
 
@@ -117,7 +117,7 @@ Chcete-li získat správné dotazy na výsledky dotazu, může přesunout data z
 
 Chcete-li snížit pohyb dat, vyberte distribuční sloupec:
 
-- Se používá v `JOIN` `GROUP BY` `HAVING` klauzulích `DISTINCT`, `OVER`,, a. Pokud mají dvě velké tabulky faktů časté spojení, výkon dotazů se vylepšuje při distribuci obou tabulek v jednom ze sloupců spojení.  V případě, že se tabulka v joins nepoužívá, zvažte možnost distribuovat tabulku do sloupce, který je `GROUP BY` v klauzuli často.
+- Se používá v `JOIN` `GROUP BY` `DISTINCT` klauzulích,,, a `OVER` `HAVING` . Pokud mají dvě velké tabulky faktů časté spojení, výkon dotazů se vylepšuje při distribuci obou tabulek v jednom ze sloupců spojení.  V případě, že se tabulka v joins nepoužívá, zvažte možnost distribuovat tabulku do sloupce, který je v `GROUP BY` klauzuli často.
 - Se *nepoužívá* v `WHERE` klauzulích. To může zúžit dotaz tak, aby se nespouštěl ve všech distribucích.
 - Není *sloupec* data. Klauzule WHERE často filtrují podle data.  V takovém případě může být veškeré zpracování spuštěno pouze v několika distribucích.
 
@@ -169,7 +169,7 @@ Zamezení přesunu dat během spojování:
 - Tabulky spojené s připojením musí být rozloženy na **jeden** ze sloupců účastnících se spojení.
 - Datové typy sloupců spojení se musí shodovat mezi oběma tabulkami.
 - Sloupce musí být spojeny s operátorem rovnosti.
-- Typ spojení nesmí být `CROSS JOIN`.
+- Typ spojení nesmí být `CROSS JOIN` .
 
 Pokud chcete zjistit, jestli dotazy nastávají pohyb dat, můžete se podívat na plán dotazu.  
 

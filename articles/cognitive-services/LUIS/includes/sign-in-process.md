@@ -7,21 +7,21 @@ manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/05/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 155c88ec4766391f70701b17038b915c399d8b0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5e2a74f69f575f4b9b332b98d7e19089418b29ed
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77372300"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585183"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Přihlášení k portálu LUIS
 
 Nový uživatel, který má LUIS, musí provést tento postup:
 
-1. Přihlaste se k [portálu Luis (Preview)](https://preview.luis.ai), vyberte svou zemi a vyjádřete souhlas s podmínkami použití. Pokud se místo toho zobrazí **Moje aplikace** , prostředek Luis už existuje a před vytvořením aplikace byste ho měli přeskočit.
+1. Přihlaste se k [portálu Luis](https://www.luis.ai), vyberte svou zemi a vyjádřete souhlas s podmínkami použití. Pokud se místo toho zobrazí **Moje aplikace** , prostředek Luis už existuje a před vytvořením aplikace byste ho měli přeskočit.
 
 1. Vyberte **vytvořit prostředek Azure** a pak vyberte **vytvořit prostředek pro vytváření obsahu, do kterého chcete své aplikace migrovat.**
 

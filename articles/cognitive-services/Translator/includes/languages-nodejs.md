@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fd8b4ae06018de1d03ca60e836534a535c8f5df8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 649af0d3b1503a5607717c4ccbadd8f1d822be32
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906944"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586845"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -31,7 +31,7 @@ Tyto moduly jsou potřeba k vytvoření požadavku HTTP a jedinečného identifi
 
 ## <a name="set-the-endpoint"></a>Nastavení koncového bodu
 
-Tato ukázka se pokusí přečíst koncový bod Translator Text z proměnné prostředí: `TRANSLATOR_TEXT_ENDPOINT`. Pokud proměnné prostředí neznáte, můžete hodnotu `endpoint` nastavit jako řetězec a okomentovat podmíněný příkaz.
+Tato ukázka se pokusí přečíst koncový bod překladatele z proměnné prostředí: `TRANSLATOR_TEXT_ENDPOINT` . Pokud proměnné prostředí neznáte, můžete hodnotu `endpoint` nastavit jako řetězec a okomentovat podmíněný příkaz.
 
 ```javascript
 lorum ipsum
@@ -42,7 +42,7 @@ lorum ipsum
 Metoda `request()` zpřístupněná prostřednictvím modulu požadavků nám umožňuje předat metodu HTTP, adresu URL, parametry požadavku, hlavičky a text JSON jako objekt `options`. V tomto fragmentu kódu nakonfigurujeme požadavek:
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Další informace o koncových bodech, trasách a parametrech požadavků naleznete v tématu [Translator 3,0: languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ```javascript
 let options = {
@@ -77,7 +77,7 @@ request(options, function(err, res, body){
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-To je vše, sestavili jste jednoduchý program, který zavolá službu Translator Text API a vrátí odpověď JSON. Teď je čas program spustit:
+To je to, že jste připravili jednoduchý program, který bude volat překladatele a vrátil odpověď JSON. Teď je čas program spustit:
 
 ```console
 node get-languages.js
@@ -181,7 +181,7 @@ Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapome
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: získání seznamu podporovaných jazyků – Translator Text API'
+title: 'Rychlý Start: získání seznamu podporovaných jazyků – Překladatel'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu získáte seznam jazyků, které jsou podporované pro překlad, prokládání a vyhledávání slovníku pomocí Translator Text API.
+description: V tomto rychlém startu získáte seznam jazyků, které jsou podporované pro překlad, prokládání a vyhledávání slovníku pomocí překladatele.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: d992fcec6071ea9883f2db61d6c54f41a9615867
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bfb8b9d81496d10601bf6e6cfeb26d18b57e3eca
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525137"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586846"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Rychlý Start: pomocí Translator Text API získat seznam podporovaných jazyků
+# <a name="quickstart-use-the-translator-to-get-a-list-of-supported-languages"></a>Rychlý Start: použití překladatele k získání seznamu podporovaných jazyků
 
-V tomto rychlém startu získáte seznam jazyků, které jsou podporované pro překlad, prokládání a vyhledávání slovníku pomocí Translator Text API.
+V tomto rychlém startu získáte seznam jazyků, které jsou podporované pro překlad, prokládání a vyhledávání slovníku pomocí překladatele.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/languages-csharp.md)]

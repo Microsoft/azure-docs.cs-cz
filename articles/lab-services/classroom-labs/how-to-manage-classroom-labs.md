@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 126a6f2f26d8eaaf6ea1a85f029e56bc8f4432f3
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7a60f761e4ee575e3196bb1ccd3baa42f27221f8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996768"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588169"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa učebných cvičení v Azure Lab Services 
 Tento článek popisuje, jak vytvořit a odstranit testovací prostředí pro učebnu. Také se dozvíte, jak zobrazit všechny vývojové laboratoře v účtu testovacího prostředí. 
@@ -54,14 +54,14 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
         > Uživatelské jméno a heslo si poznamenejte. Znovu se už nezobrazí.
     3. Pokud chcete, aby studenti nastavili vlastní hesla, zakažte možnost **použít stejné heslo pro všechny virtuální počítače** . Tento krok je **nepovinný**. 
 
-        Učitel se může rozhodnout použít stejné heslo pro všechny virtuální počítače v testovacím prostředí, nebo umožní studentům nastavit hesla pro svoje virtuální počítače. Ve výchozím nastavení je toto nastavení povolené pro všechny image Windows a Linux s výjimkou Ubuntu. Když vyberete virtuální počítač **Ubuntu** , toto nastavení se zakáže, takže studenti budou vyzváni, aby při prvním přihlášení nastavili heslo.  
+        Educator se může rozhodnout použít stejné heslo pro všechny virtuální počítače v testovacím prostředí, nebo umožní studentům nastavit hesla pro svoje virtuální počítače. Ve výchozím nastavení je toto nastavení povolené pro všechny image Windows a Linux s výjimkou Ubuntu. Když vyberete virtuální počítač **Ubuntu** , toto nastavení se zakáže, takže studenti budou vyzváni, aby při prvním přihlášení nastavili heslo.  
 
         ![Nové okno testovacího prostředí](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
     4. Pak na stránce **pověření k virtuálnímu počítači** vyberte **Další** . 
 5. Na stránce **zásady testovacího prostředí** proveďte následující kroky:
     1. Zadejte počet hodin přidělený každému uživateli (**kvóta pro každého uživatele**) mimo plánovaný čas testovacího prostředí. 
     2. U možnosti **Automatické vypnutí virtuálních počítačů** určete, jestli se má virtuální počítač automaticky vypnout, když se uživatel odpojí. Můžete také určit, jak dlouho by měl virtuální počítač čekat, než se uživatel znovu připojí, než se automaticky vypíná... Další informace najdete v tématu [Povolení automatického vypnutí virtuálních počítačů při odpojení](how-to-enable-shutdown-disconnect.md).
-    3. Pak vyberte **Dokončit**. 
+    3. Pak vyberte **Finish** (Dokončit). 
 
         ![Kvóta pro každého uživatele](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
     
@@ -101,12 +101,12 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
 | Velikost | Cores | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
-| Krátkodobé používání | 2 | 3,5 GB | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
-| Střednědobé používání | 4 | 7 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. | 
-| Střední (vnořená virtualizace) | 4 | 16 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. Tato velikost také podporuje vnořenou virtualizaci. <p>Tato velikost se dá použít ve scénářích, kdy každý student potřebuje víc virtuálních počítačů. Učitelé můžou pomocí vnořené virtualizace nastavit v rámci virtuálního počítače několik vnořených virtuálních počítačů s malou velikostí. </p> |
+| Malá | 2 | 3,5 GB | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
+| Střední | 4 | 7 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. | 
+| Střední (vnořená virtualizace) | 4 | 16 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. Tato velikost také podporuje vnořenou virtualizaci. <p>Tato velikost se dá použít ve scénářích, kdy každý student potřebuje víc virtuálních počítačů. Pedagogy můžou použít vnořenou virtualizaci k nastavení několika vnořených virtuálních počítačů v rámci virtuálního počítače na malou velikost. </p> |
 | Malý grafický procesor (COMPUTE) | 6 | 56 GB | <p>Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon a sítě, jako jsou umělá studia a aplikace s hloubkovým učením.</p><p>Při vytváření testovacího prostředí s imagemi GPU Azure Lab Services automaticky nainstaluje a nakonfiguruje potřebné ovladače GPU. </p> | 
 | Malý grafický procesor (vizualizace) | 6 | 56 GB | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. | 
-| Dlouhodobé používání | 8 | 16 GB | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. |
+| Velká | 8 | 16 GB | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. |
 | Velký (vnořená virtualizace) | 8 | 32 GB | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. Tato velikost také podporuje vnořenou virtualizaci. |  
 | Střední GPU (vizualizace) | 12 | 112 GB | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. | 
 

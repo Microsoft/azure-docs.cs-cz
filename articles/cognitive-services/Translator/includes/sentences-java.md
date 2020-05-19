@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 8a567dbbd8c5e752b8d9294623a5f4d3f37e5a05
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 93a37f6ab7d9b916368d469d660ac8ac38399b52
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906821"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586708"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -24,7 +24,7 @@ mkdir length-sentence-sample
 cd length-sentence-sample
 ```
 
-Teď budete chtít inicializovat projekt Gradle. Tento příkaz vytvoří základní soubory sestavení pro Gradle, co je nejdůležitější, `build.gradle.kts`a který se používá za běhu k vytvoření a konfiguraci vaší aplikace. Spusťte tento příkaz z pracovního adresáře:
+Teď budete chtít inicializovat projekt Gradle. Tento příkaz vytvoří základní soubory sestavení pro Gradle, co je nejdůležitější, a `build.gradle.kts` který se používá za běhu k vytvoření a konfiguraci vaší aplikace. Spusťte tento příkaz z pracovního adresáře:
 
 ```console
 gradle init --type basic
@@ -63,7 +63,7 @@ Pojďme vytvořit složku pro ukázkovou aplikaci. V pracovním adresáři spus�
 mkdir -p src/main/java
 ```
 
-Potom v této složce vytvořte soubor s názvem `BreakSentence.java`.
+Potom v této složce vytvořte soubor s názvem `BreakSentence.java` .
 
 ## <a name="import-required-libraries"></a>Importovat požadované knihovny
 
@@ -88,7 +88,7 @@ public class BreakSentence {
 }
 ```
 
-Přidejte tyto řádky do `BreakSentence` třídy. Nejdřív se klíč předplatného a koncový bod čtou z proměnných prostředí. Pak si všimnete, že spolu s nástrojem `api-version`můžete definovat vstupní jazyk. V této ukázce je to anglické.
+Přidejte tyto řádky do `BreakSentence` třídy. Nejdřív se klíč předplatného a koncový bod čtou z proměnných prostředí. Pak si všimnete, že spolu s nástrojem `api-version` můžete definovat vstupní jazyk. V této ukázce je to anglické.
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
@@ -99,7 +99,7 @@ Pokud používáte Cognitive Services předplatné s více službami, musíte ta
 
 ## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a sestavení žádosti
 
-Přidejte tento řádek do `BreakSentence` třídy pro vytvoření instance: `OkHttpClient`
+Přidejte tento řádek do `BreakSentence` třídy pro vytvoření instance `OkHttpClient` :
 
 ```java
 // Instantiates the OkHttpClient.
@@ -125,7 +125,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Vytvoření funkce pro analýzu odpovědi
 
-Tato jednoduchá funkce analyzuje a prettifies odpověď JSON od služby Translator Text.
+Tato jednoduchá funkce analyzuje a prettifies odpověď JSON ze služby Translator.
 
 ```java
 // This function prettifies the json response.
@@ -189,7 +189,7 @@ gradle run
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

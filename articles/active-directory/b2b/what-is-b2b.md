@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 02/12/2020
+ms.date: 05/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 167c7f7aa3dbf967575c0ee8905821fb9d3f77ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0effb6bb6e3d3f80775a3cee1ad8a63013a78805
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80050726"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585812"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co je přístup uživatelů typu host při spolupráci B2B v Azure Active Directory?
 
@@ -88,6 +88,19 @@ Připojte externí partnery tak, jak to vyhovuje potřebám vaší organizace.
 
 - Využijte [správu nároků Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) ke konfiguraci zásad, které [spravují přístup pro externí uživatele](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users).
 - Použijte [rozhraní API pro pozvánky B2B pro spolupráci](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) k přizpůsobení prostředí připojování.
+
+## <a name="integrate-with-identity-providers"></a>Integrace s poskytovateli identity
+
+Azure AD podporuje externí zprostředkovatele identity, jako je Facebook, účty Microsoft, Google nebo poskytovatelé podnikových identit. Můžete nastavit federaci s poskytovateli identity, aby se externí uživatelé mohli přihlašovat pomocí svých stávajících sociálních nebo podnikových účtů, a nemusíte vytvářet nový účet jenom pro vaši aplikaci. Přečtěte si další informace o zprostředkovatelích identity pro externí identity.
+
+![Snímek obrazovky zobrazující stránku zprostředkovatelé identit](media/what-is-b2b/identity-providers.png)
+
+
+## <a name="create-a-self-service-sign-up-user-flow-preview"></a>Vytvoření samoobslužného uživatelského toku pro registraci (Preview)
+
+Pomocí samoobslužného uživatelského toku registrace můžete vytvořit prostředí pro registraci externích uživatelů, kteří chtějí přistupovat k aplikacím. V rámci toku registrace můžete poskytnout možnosti pro různé poskytovatele identity v sociálních sítích nebo podnikových organizacích a shromažďovat informace o uživateli. Přečtěte si o samoobslužném přihlášení a způsobu jeho nastavení.
+
+![Snímek obrazovky zobrazující stránku toků uživatelů](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
 
 ## <a name="next-steps"></a>Další kroky
 

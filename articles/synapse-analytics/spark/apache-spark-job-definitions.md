@@ -1,6 +1,6 @@
 ---
-title: 'Kurz – Azure synapse Analytics: definice úlohy Spark pro synapse'
-description: Kurz – použití analýzy Azure Synapse k vytvoření definic úloh Spark a jejich odeslání do fondu synapse Spark.
+title: 'Kurz – Apache Spark pro Azure synapse Analytics: definice úlohy Apache Spark pro synapse'
+description: Kurz – použití analýzy Azure Synapse k vytvoření definic úloh Spark a jejich odeslání do Apache Spark pro fond Azure synapse Analytics.
 author: hrasheed-msft
 ms.author: jejiang
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: d5443a2db6f4fecbd84ef51166f44c3a6e920aee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5fc9dffaa73d195c842381b6682a00e9834c0fe7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422967"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587931"
 ---
 # <a name="tutorial-use-azure-synapse-analytics-to-create-apache-spark-job-definitions-for-synapse-spark-pools"></a>Kurz: použití analýzy Azure Synapse k vytváření definicí úloh Apache Spark pro fondy synapse Spark
 
@@ -22,7 +22,7 @@ Tento kurz ukazuje, jak pomocí analýzy Azure synapse vytvořit definice úloh 
 * Vývoj a odeslání definice úlohy Sparku ve fondu synapse Spark.
 * Zobrazit podrobnosti o úloze po odeslání.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 >
@@ -47,7 +47,7 @@ Před odesláním definice úlohy Sparku musíte být vlastníkem dat objektu BL
 
     ![Dialogové okno pro odeslání Sparku](./media/apache-spark-job-definitions/create-new-filesystem.png)
 
-3. Otevřete `sparkjob`, klikněte na **Access Control (IAM)** a pak klikněte na **Přidat** a vyberte **Přidat přiřazení role**.
+3. Otevřete `sparkjob` , klikněte na **Access Control (IAM)** a pak klikněte na **Přidat** a vyberte **Přidat přiřazení role**.
 
     ![Kliknutím na tlačítko Odeslat odešlete definici úlohy Spark.](./media/apache-spark-job-definitions/add-role-assignment-01.png)
 
@@ -173,5 +173,5 @@ Po vytvoření definice úlohy Spark ji můžete odeslat do fondu synapse Spark.
 
 Tento kurz ukazuje, jak pomocí služby Azure synapse Analytics vytvořit definice úloh Spark a pak je odeslat do fondu synapse Spark. Dále můžete pomocí služby Azure synapse Analytics vytvářet Power BI datové sady a spravovat Power BI data. 
 
-- [Připojení k datům v Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-connect-to-data)
+- [Připojení k datům v Power BI Desktopu](https://docs.microsoft.com/power-bi/desktop-quickstart-connect-to-data)
 - [Vizualizace pomocí Power BI](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

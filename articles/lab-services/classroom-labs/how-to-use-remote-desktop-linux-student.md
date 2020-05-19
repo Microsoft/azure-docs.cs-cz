@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 0f45af2730b05998fc82212c63778c89bb16b6ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ccad0698ea6560dd183cacc71f5f3a644e8220c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73585084"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588101"
 ---
 # <a name="use-remote-desktop-for-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Použití vzdálené plochy pro virtuální počítače se systémem Linux v laboratoři učebny Azure Lab Services
 V tomto článku se dozvíte, jak se můžou studenti připojit k virtuálnímu počítači se systémem Linux v testovacím prostředí pomocí protokolu RDP/SSH. 
@@ -29,9 +29,9 @@ Instruktor musí povolit funkci připojení ke vzdálené ploše, aby se student
 > Povolení **připojení ke vzdálené ploše** otevírá jenom port **RDP** na počítačích se systémem Linux. Instruktor se může připojit k počítači se systémem Linux pomocí protokolu SSH poprvé a nainstalovat balíčky RDP a GUI, abyste se mohli připojit k počítači se systémem Linux pomocí protokolu RDP později. 
 
 ## <a name="connect-to-the-student-vm"></a>Připojení k virtuálnímu počítači studenta
-Studenti se můžou ke svým virtuálním počítačům se systémem Linux připojit až poté, co vlastník testovacího prostředí (učitel/profesor) **publikuje** virtuální počítač šablony s balíčky RDP a GUI nainstalovanými v počítači. Postup je následující: 
+Studenti se můžou ke svým virtuálním počítačům se systémem Linux připojit až poté, co vlastník testovacího prostředí (Educator) **publikuje** virtuální počítač šablony s balíčky RDP a GUI nainstalovanými v počítači. Postupujte takto: 
 
-1. Když se student přihlašuje přímo k portálu Labs (`https://labs.azure.com`) nebo pomocí odkazu na registraci (`https://labs.azure.com/register/<registrationCode>`), zobrazí se dlaždice pro každé testovací prostředí, ke kterému má student přístup. 
+1. Když se student přihlašuje přímo k portálu Labs ( `https://labs.azure.com` ) nebo pomocí odkazu na registraci ( `https://labs.azure.com/register/<registrationCode>` ), zobrazí se dlaždice pro každé testovací prostředí, ke kterému má student přístup. 
 2. Na dlaždici přepněte tlačítko tak, aby se virtuální počítač spustil, pokud je v zastaveném stavu. 
 3. Vyberte **Connect** (Připojit). Zobrazí se dvě možnosti, jak se připojit k virtuálnímu počítači: **SSH** a **Vzdálená plocha**.
 

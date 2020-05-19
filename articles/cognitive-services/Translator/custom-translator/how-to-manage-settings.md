@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219508"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587224"
 ---
 # <a name="how-to-manage-settings"></a>Správa nastavení
 
@@ -29,11 +29,11 @@ Přístup k stránce nastavení:
 
 ## <a name="associating-microsoft-translator-subscription"></a>Přidružuje se předplatné Microsoft translatoru.
 
-Musíte mít k vašemu pracovnímu prostoru přiřazený klíč předplatného Microsoft Translator Text API, který můžete použít ke školení nebo nasazení modelů.
+Ke školení nebo nasazení modelů potřebujete ke svému pracovnímu prostoru přidružit klíč předplatného překladatele.
 
 Pokud předplatné nemáte, postupujte podle následujících kroků:
 
-1. Přihlaste se k odběru Microsoft Translator Text API. V tomto článku se dozvíte, jak se přihlásit k odběru Translator Text API Microsoftu.
+1. Přihlaste se k odběru překladatele. Tento článek ukazuje, jak se přihlásit k odběru překladatele.
 2. Poznamenejte si klíč k vašemu předplatnému překladatele. Obě Klíč1 nebo key2 jsou přijatelné.
 3. Přejděte zpátky na vlastní portál překladatelů.
 

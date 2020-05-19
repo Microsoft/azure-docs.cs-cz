@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: d7126acebae02a60e5c485b74716aaa84b99f781
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5a48e8d95d24e8385432f606445b3c2acafe8c85
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906828"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586709"
 ---
 [!INCLUDE [Prerequisites](prerequisites-nodejs.md)]
 
@@ -31,7 +31,7 @@ Tyto moduly jsou potřeba k vytvoření požadavku HTTP a jedinečného identifi
 
 ## <a name="set-the-subscription-key-and-endpoint"></a>Nastavení klíče předplatného a koncového bodu
 
-Tato ukázka se pokusí přečíst klíč předplatného Translator Text a koncový bod z těchto proměnných prostředí `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` : `TRANSLATOR_TEXT_ENDPOINT`a. Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscriptionKey` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
+Tato ukázka se pokusí přečíst klíč předplatného vašeho převaděče a koncový bod z těchto proměnných prostředí: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` a `TRANSLATOR_TEXT_ENDPOINT` . Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscriptionKey` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -53,7 +53,7 @@ var endpoint = process.env[endpoint_var];
 Metoda `request()` zpřístupněná prostřednictvím modulu požadavků nám umožňuje předat metodu HTTP, adresu URL, parametry požadavku, hlavičky a text JSON jako objekt `options`. V tomto fragmentu kódu nakonfigurujeme požadavek:
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků naleznete v tématu [Translator Text API 3,0: break – věta](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+> Další informace o koncových bodech, trasách a parametrech požadavků naleznete v tématu [Translator 3,0: break – věta](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
 ```javascript
 let options = {
@@ -77,7 +77,7 @@ let options = {
 
 Nejjednodušším způsobem, jak ověřit požadavek, je předat klíč předplatného jako hlavičku `Ocp-Apim-Subscription-Key`, což děláme i v této ukázce. Alternativně můžete klíč předplatného vyměnit za přístupový token a k ověření požadavku předat přístupový token jako hlavičku `Authorization`.
 
-Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout `Ocp-Apim-Subscription-Region` do hlaviček vaší žádosti.
+Pokud používáte Cognitive Services předplatné s více službami, musíte taky zahrnout do `Ocp-Apim-Subscription-Region` hlaviček vaší žádosti.
 
 Další informace najdete v tématu [Ověřování](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
@@ -96,7 +96,7 @@ request(options, function(err, res, body){
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-To je vše, sestavili jste jednoduchý program, který zavolá službu Translator Text API a vrátí odpověď JSON. Teď je čas program spustit:
+To je to, že jste připravili jednoduchý program, který bude volat překladatele a vrátil odpověď JSON. Teď je čas program spustit:
 
 ```console
 node sentence-length.js
@@ -124,7 +124,7 @@ Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapome
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

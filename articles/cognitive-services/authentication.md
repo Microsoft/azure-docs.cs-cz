@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74423942"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587676"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověřování požadavků do Azure Cognitive Services
 
@@ -35,17 +35,17 @@ Klíč předplatného můžete získat z [Azure Portal](cognitive-services-apis-
 
 Pojďme rychle zkontrolovat hlavičky ověřování, které jsou k dispozici pro použití s Azure Cognitive Services.
 
-| Hlavička | Popis |
+| Záhlaví | Popis |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | Tuto hlavičku použijte k ověření pomocí klíče předplatného pro konkrétní službu nebo klíč předplatného s více službami. |
-| OCP – APIM – předplatné – oblast | Tato hlavička se vyžaduje jenom v případě, že se používá klíč předplatného s více službami s [Translator text API](./Translator/reference/v3-0-reference.md). Pomocí této hlavičky můžete zadat oblast předplatného. |
-| Autorizace | Tuto hlavičku použijte v případě, že používáte ověřovací token. Postup pro výměnu tokenu je podrobně popsán v následujících částech. Zadaná hodnota je následující: `Bearer <TOKEN>`. |
+| OCP – APIM – předplatné – oblast | Tato hlavička se vyžaduje jenom v případě, že se ke [službě Translator](./Translator/reference/v3-0-reference.md)používá klíč předplatného s více službami. Pomocí této hlavičky můžete zadat oblast předplatného. |
+| Autorizace | Tuto hlavičku použijte v případě, že používáte ověřovací token. Postup pro výměnu tokenu je podrobně popsán v následujících částech. Zadaná hodnota je následující: `Bearer <TOKEN>` . |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>Ověřování pomocí klíče předplatného s jednou službou
 
-První možností je ověřit požadavek pomocí klíče předplatného pro konkrétní službu, například Translator Text. Klíče jsou k dispozici v Azure Portal pro každý prostředek, který jste vytvořili. Chcete-li k ověření požadavku použít klíč předplatného, musí být předán společně s `Ocp-Apim-Subscription-Key` hlavičkou.
+První možností je ověřit požadavek pomocí klíče předplatného pro konkrétní službu, jako je například Translator. Klíče jsou k dispozici v Azure Portal pro každý prostředek, který jste vytvořili. Chcete-li k ověření požadavku použít klíč předplatného, musí být předán společně s `Ocp-Apim-Subscription-Key` hlavičkou.
 
-Tyto ukázkové požadavky demonstrují, jak `Ocp-Apim-Subscription-Key` používat hlavičku. Mějte na paměti, že při použití této ukázky budete muset zahrnout platný klíč předplatného.
+Tyto ukázkové požadavky demonstrují, jak používat `Ocp-Apim-Subscription-Key` hlavičku. Mějte na paměti, že při použití této ukázky budete muset zahrnout platný klíč předplatného.
 
 Toto je ukázkové volání rozhraní API Bingu pro vyhledávání na webu:
 ```cURL
@@ -53,7 +53,7 @@ curl -X GET 'https://api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pem
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Toto je ukázkové volání Translator Text API:
+Toto je ukázkové volání služby Translator:
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' \
@@ -70,15 +70,15 @@ Následující video demonstruje použití Cognitive Servicesho klíče.
 
 Tato možnost také používá k ověření požadavků klíč předplatného. Hlavní rozdíl spočívá v tom, že klíč předplatného není vázaný na konkrétní službu, ale jeden klíč lze použít k ověření požadavků na více Cognitive Services. Informace o místní dostupnosti, podporovaných funkcích a cenách najdete v tématu [Cognitive Services ceny](https://azure.microsoft.com/pricing/details/cognitive-services/) .
 
-Klíč předplatného je k dispozici v každé `Ocp-Apim-Subscription-Key` žádosti jako záhlaví.
+Klíč předplatného je k dispozici v každé žádosti jako `Ocp-Apim-Subscription-Key` záhlaví.
 
 [![Ukázka klíče předplatného pro více služeb pro Cognitive Services](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>Podporované oblasti
 
-Při použití klíče předplatného s více službami k vytvoření požadavku na `api.cognitive.microsoft.com`, musíte zahrnout oblast do adresy URL. Například: `westus.api.cognitive.microsoft.com`.
+Při použití klíče předplatného s více službami k vytvoření požadavku na `api.cognitive.microsoft.com` , musíte zahrnout oblast do adresy URL. Příklad: `westus.api.cognitive.microsoft.com`.
 
-Při použití klíče předplatného s více službami s Translator Text API musíte zadat oblast předplatného s `Ocp-Apim-Subscription-Region` hlavičkou.
+Při použití klíče předplatného s více službami se službou Translator musíte zadat oblast předplatného s `Ocp-Apim-Subscription-Region` hlavičkou.
 
 Ověřování více službami je podporované v těchto oblastech:
 
@@ -100,7 +100,7 @@ curl -X GET 'https://YOUR-REGION.api.cognitive.microsoft.com/bing/v7.0/search?q=
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Toto je ukázkové volání Translator Text API:
+Toto je ukázkové volání služby Translator:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -126,11 +126,11 @@ Některé služby Azure Cognitive Services akceptují a v některých případec
 
 U ověřovacích tokenů se dá vyměňovat jedna služba i klíč předplatného s více službami. Ověřovací tokeny jsou platné po dobu 10 minut.
 
-Tokeny ověřování jsou součástí žádosti jako `Authorization` záhlaví. Zadaná hodnota tokenu musí předcházet `Bearer`, například:. `Bearer YOUR_AUTH_TOKEN`
+Tokeny ověřování jsou součástí žádosti jako `Authorization` záhlaví. Zadaná hodnota tokenu musí předcházet, například `Bearer` : `Bearer YOUR_AUTH_TOKEN` .
 
 ### <a name="sample-requests"></a>Ukázkové požadavky
 
-Pomocí této adresy URL můžete vyměňovat klíč předplatného pro ověřovací `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`token:.
+Pomocí této adresy URL můžete vyměňovat klíč předplatného pro ověřovací token: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken` .
 
 ```cURL
 curl -v -X POST \
@@ -150,7 +150,7 @@ Tyto oblasti s více službami podporují výměnu tokenů:
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
 
-Po získání ověřovacího tokenu ho budete muset předat do každého požadavku jako `Authorization` hlavičku. Toto je ukázkové volání Translator Text API:
+Po získání ověřovacího tokenu ho budete muset předat do každého požadavku jako `Authorization` hlavičku. Toto je ukázkové volání služby Translator:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \

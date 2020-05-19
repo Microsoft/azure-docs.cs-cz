@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: b7cca314ec59e46cf17751b1aec28b5c3ea029ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401058"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587336"
 ---
 # <a name="long-audio-api-preview"></a>Dlouhé zvukové rozhraní API (Preview)
 
-Rozhraní API pro dlouhé zvukové služby je navržené pro asynchronní syntézu dlouhého textu na řeč (například: zvukové knihy). Toto rozhraní API nevrátí syntetizované zvuky v reálném čase, místo toho, abyste se mohli dotazovat na odpovědi a využívat výstupy, když jsou zpřístupněné ze služby. Na rozdíl od rozhraní API pro rozpoznávání řeči používaného sadou Speech SDK může dlouhé zvukové rozhraní API vytvářet syntetizované zvuky delší než 10 minut, což je ideální pro vydavatele a platformy zvukového obsahu.
+Rozhraní API pro dlouhé zvukové soubory je navržené pro asynchronní syntézu dlouhého textu na řeč (například zvukové knihy, články s novinkami a dokumenty). Toto rozhraní API nevrátí syntetizované zvuky v reálném čase, místo toho, abyste se mohli dotazovat na odpovědi a využívat výstupy, když jsou zpřístupněné ze služby. Na rozdíl od rozhraní API pro rozpoznávání řeči používaného sadou Speech SDK může dlouhé zvukové rozhraní API vytvářet syntetizované zvuky delší než 10 minut, což je ideální pro vydavatele a platformy zvukového obsahu.
 
 Další výhody pro dlouhé zvukové rozhraní API:
 
-* Syntetizované rozpoznávání řeči vrácené službou používá hlasy neuronové, které zajišťují zvukové výstupy s vysokou přesností.
-* Vzhledem k tomu, že se odpovědi v reálném čase nepodporují, není nutné nasazovat hlasový koncový bod.
+* Syntetizované rozpoznávání řeči vrácené službou používá nejlepší hlasy neuronové.
+* Není potřeba nasazovat hlasový koncový bod, protože v něm nejsou žádné hlasy v režimu dávek v reálném čase.
 
 > [!NOTE]
-> Rozhraní API pro dlouhé zvukové rozhraní teď podporuje jenom [vlastní neuronové hlas](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices).
+> Rozhraní API pro dlouhé zvukové rozhraní teď podporuje [neuronové hlasy](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) a [vlastní neuronové hlasy](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices).
 
 ## <a name="workflow"></a>Pracovní postup
 
@@ -52,14 +52,47 @@ Při přípravě textového souboru se ujistěte, že:
 
 ## <a name="submit-synthesis-requests"></a>Odeslání žádostí o Shrnutí
 
-Po přípravě vstupního obsahu postupujte podle pokynů k [rychlému startu pro přenos zvukové syntézy](https://aka.ms/long-audio-python) a odešlete žádost. Pokud máte více než jeden vstupní soubor, budete muset odeslat více požadavků. Je třeba mít na paměti některá omezení: 
-* Klient může pro každý účet předplatného Azure odeslat až 5 požadavků na server za sekundu. Pokud překročí omezení, klient obdrží kód chyby 429 (příliš mnoho požadavků). Snižte prosím částku žádosti za sekundu.
-* Server může spouštět a zařadit do fronty až 120 požadavků pro každý účet předplatného Azure. Pokud se překročí omezení, server vrátí kód chyby 429 (příliš mnoho požadavků). Počkejte prosím a zabraňte odeslání nové žádosti, dokud nebudou dokončeny některé žádosti.
-* Server bude pro každý účet předplatného Azure uchovávat až 20 000 požadavků. Pokud překročí omezení, před odesláním nových požadavků prosím odstraňte nějaké žádosti.
+Po přípravě vstupního obsahu postupujte podle pokynů k [rychlému startu pro přenos zvukové syntézy](https://aka.ms/long-audio-python) a odešlete žádost. Pokud máte více než jeden vstupní soubor, budete muset odeslat více požadavků. 
+
+**Stavové kódy http** označují běžné chyby.
+
+| Rozhraní API | Stavový kód HTTP | Popis | Proposal |
+|-----|------------------|-------------|----------|
+| Vytvořit | 400 | Funkce Voice syntézy není v této oblasti povolena. | Změňte klíč předplatného řeči s podporovanou oblastí. |
+|        | 400 | Platný je jenom **standardní** odběr řeči pro tuto oblast. | Změňte klíč předplatného řeči na cenovou úroveň Standard. |
+|        | 400 | Překročil limit počtu požadavků 20 000 pro účet Azure. Před odesláním nových žádostí prosím odeberte nějaké žádosti. | Server bude pro každý účet Azure uchovávat až 20 000 požadavků. Před odesláním nových požadavků odstraňte nějaké žádosti. |
+|        | 400 | Tento model se nedá použít ve shrnutí hlasu: {modelID}. | Ujistěte se, že stav {modelID} je správný. |
+|        | 400 | Oblast pro požadavek se neshoduje s oblastí pro model: {modelID}. | Ujistěte se, že se oblast {modelID} shoduje s oblastí žádosti. |
+|        | 400 | Funkce Voice syntézy podporuje pouze textový soubor v kódování UTF-8 se značkou pořadí bajtů. | Ujistěte se, že vstupní soubory jsou v kódování UTF-8 se značkou pořadí bajtů. |
+|        | 400 | V požadavku na Shrnutí hlasu jsou povolené jenom platné vstupy SSML. | Ujistěte se, že vstupní výrazy SSML jsou správné. |
+|        | 400 | Hlasový název {Voice} nebyl ve vstupním souboru nalezen. | Vstupní název vstupu SSML není zarovnán s identifikátorem ID modelu. |
+|        | 400 | Velikost odstavce ve vstupním souboru by měla být menší než 10 000. | Ujistěte se, že je odstavec v souboru menší než 10 000. |
+|        | 400 | Vstupní soubor by měl být delší než 400 znaků. | Ujistěte se, že vstupní soubor překračuje 400 znaků. |
+|        | 404 | Model deklarovaný v definici hlasové syntézy nejde najít: {modelID}. | Ujistěte se, že je {modelID} správné. |
+|        | 429 | Překročil aktivní limit pro syntézu hlasu. Počkejte prosím, než se dokončí některé požadavky. | Server může spouštět a zařadit do fronty až 120 požadavků pro každý účet Azure. Počkejte prosím a vyhněte se odesílání nových požadavků do doby, než se dokončí některé žádosti. |
+| Vše       | 429 | Existuje příliš mnoho požadavků. | Klient může pro každý účet Azure odeslat až 5 požadavků na server za sekundu. Snižte prosím částku žádosti za sekundu. |
+| Odstranit    | 400 | Úkol syntézy hlasu se pořád používá. | Je možné odstranit pouze **dokončené** nebo **neúspěšné**požadavky. |
+| GetByID   | 404 | Zadanou entitu nelze nalézt. | Ujistěte se, že je ID syntézy správné. |
+
+## <a name="regions-and-endpoints"></a>Oblasti a koncové body
+
+Rozhraní API pro dlouhé zvukové rozhraní je k dispozici ve více oblastech s jedinečnými koncovými body.
+
+| Oblast | Koncový bod |
+|--------|----------|
+| Austrálie – východ | `https://australiaeast.customvoice.api.speech.microsoft.com` |
+| Střední Kanada | `https://canadacentral.customvoice.api.speech.microsoft.com` |
+| USA – východ | `https://eastus.customvoice.api.speech.microsoft.com` |
+| Indie – střed | `https://centralindia.customvoice.api.speech.microsoft.com` |
+| USA – středojih | `https://southcentralus.customvoice.api.speech.microsoft.com` |
+| Jihovýchodní Asie | `https://southeastasia.customvoice.api.speech.microsoft.com` |
+| Spojené království – jih | `https://uksouth.customvoice.api.speech.microsoft.com` |
+| Západní Evropa | `https://westeurope.customvoice.api.speech.microsoft.com` |
+| USA – západ 2 | `https://westus2.customvoice.api.speech.microsoft.com` |
 
 ## <a name="audio-output-formats"></a>Formáty zvukového výstupu
 
-Podporujeme flexibilní formáty zvukového výstupu. Můžete generovat zvukové výstupy na jeden odstavec nebo zřetězit zvuky do jednoho výstupu nastavením parametru ' concatenateResult '. Rozhraní API pro dlouhé zvukové rozhraní podporuje následující formáty zvukového výstupu:
+Podporujeme flexibilní formáty zvukového výstupu. Nastavením parametru ' concatenateResult ' můžete vygenerovat zvukové výstupy na jeden odstavec nebo zřetězit výstup zvuku do jednoho výstupu. Rozhraní API pro dlouhé zvukové rozhraní podporuje následující formáty zvukového výstupu:
 
 > [!NOTE]
 > Výchozí formát zvuku je RIFF-16khz-16bitový-mono-PCM.

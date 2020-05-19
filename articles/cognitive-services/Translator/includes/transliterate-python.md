@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 86ef8f3730fe7ae3ab3428956aaafb86331c5cf5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1e9c3ccac9205e38c8df341a6f7ca286811d759b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906542"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586492"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
 
@@ -17,7 +17,7 @@ ms.locfileid: "69906542"
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Vytvořte nový projekt pomocí oblíbeného integrovaného vývojového prostředí (IDE) nebo nové složky se souborem `transliterate-text.py` s názvem na vašem počítači. Potom tento fragment kódu zkopírujte do svého projektu nebo souboru:
+Vytvořte nový projekt pomocí oblíbeného integrovaného vývojového prostředí (IDE) nebo nové složky se souborem s názvem `transliterate-text.py` na vašem počítači. Potom tento fragment kódu zkopírujte do svého projektu nebo souboru:
 
 ```python
 # -*- coding: utf-8 -*-
@@ -27,11 +27,11 @@ import os, requests, uuid, json
 > [!NOTE]
 > Pokud jste tyto moduly ještě nikdy nepoužili, budete je muset před spuštěním programu nainstalovat. Tyto balíčky nainstalujete spuštěním příkazu `pip install requests uuid`.
 
-První komentář říká interpretu Pythonu, že má použít kódování UTF-8. Pak se importují požadované moduly pro čtení klíče předplatného z proměnné prostředí, vytvoření požadavku HTTP, vytvoření jedinečného identifikátoru a zpracování odpovědi JSON vrácené službou Translator Text API.
+První komentář říká interpretu Pythonu, že má použít kódování UTF-8. Pak se naimportují požadované moduly, abyste si přečetli klíč předplatného z proměnné prostředí, sestavíte požadavek HTTP, vytvoříte jedinečný identifikátor a zpracujete odpověď JSON vrácenou překladatelem.
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>Nastavení klíče předplatného, koncového bodu a cesty
 
-Tato ukázka se pokusí přečíst klíč předplatného Translator Text a koncový bod z proměnných prostředí: `TRANSLATOR_TEXT_KEY` a `TRANSLATOR_TEXT_ENDPOINT`. Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscription_key` a `endpoint` jako řetězce a přidat komentář k podmíněným příkazům.
+Tato ukázka se pokusí přečíst klíč a koncový bod předplatného překladatele z proměnných prostředí: `TRANSLATOR_TEXT_KEY` a `TRANSLATOR_TEXT_ENDPOINT` . Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscription_key` a `endpoint` jako řetězce a přidat komentář k podmíněným příkazům.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -47,12 +47,12 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Translator Text globální koncový bod je nastaven jako `endpoint`. `path` nastaví trasu `transliterate` a určuje, že chceme cílit na rozhraní API verze 3.
+Globální koncový bod překladatele je nastaven jako `endpoint` . `path` nastaví trasu `transliterate` a určuje, že chceme cílit na rozhraní API verze 3.
 
 `params` slouží k nastavení jazyka vstupu a vstupního a výstupního skriptu. V této ukázce provádíme transkripci z japonštiny do latinky.
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Transkripce](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
+> Další informace o koncových bodech, trasách a parametrech požadavků naleznete v tématu [Translator 3,0: repřepised](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
 
 ```python
 path = '/transliterate?api-version=3.0'
@@ -106,7 +106,7 @@ print(json.dumps(response, sort_keys=True, indent=4,
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-To je vše, sestavili jste jednoduchý program, který zavolá službu Translator Text API a vrátí odpověď JSON. Teď je čas program spustit:
+To je to, že jste připravili jednoduchý program, který bude volat překladatele a vrátil odpověď JSON. Teď je čas program spustit:
 
 ```console
 python transliterate-text.py
@@ -131,7 +131,7 @@ Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapome
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

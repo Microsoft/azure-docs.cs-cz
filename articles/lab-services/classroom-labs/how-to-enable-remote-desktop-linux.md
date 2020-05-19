@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: spelluru
-ms.openlocfilehash: dfd16d0977504e598492225238d29c83fcb7a028
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: a40575340fc5b1c202be6b001807085954439f03
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598058"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588152"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Povolení vzdálené plochy pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services
 V tomto článku se dozvíte, jak provádět následující úlohy:
 
 - Povolit virtuální počítač vzdálené plochy pro Linux
-- Jak se učitel může připojit k virtuálnímu počítači šablony prostřednictvím Připojení ke vzdálené ploše (RDP)
+- Jak se může Educator připojit k virtuálnímu počítači šablony prostřednictvím Připojení ke vzdálené ploše (RDP).
 
 ## <a name="enable-remote-desktop-for-linux-vm"></a>Povolit virtuální počítač vzdálené plochy pro Linux
-Při vytváření testovacího prostředí můžou učitelé povolit **připojení ke vzdálené ploše** pro Image **Linux** . Možnost **povolit připojení ke vzdálené ploše** se zobrazí, když je pro šablonu vybraná image pro Linux. Když je tato možnost povolená, učitelé se můžou připojit k virtuálnímu počítači šablony a virtuálním počítačům studenta přes RDP (Vzdálená plocha). 
+Při vytváření testovacího prostředí můžou pedagogové povolit **připojení ke vzdálené ploše** pro Image **Linux** . Možnost **povolit připojení ke vzdálené ploše** se zobrazí, když je pro šablonu vybraná image pro Linux. Když je tato možnost povolená, pedagogy se můžou připojit k virtuálnímu počítači šablony a virtuálním počítačům studenta přes RDP (Vzdálená plocha). 
 
 ![Povolení připojení ke vzdálené ploše pro bitovou kopii operačního systému Linux](../media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
@@ -49,7 +49,7 @@ V současné době se připojení ke vzdálené ploše podporuje pro následují
 - Ubuntu Server 16,04 LTS
 
 ## <a name="connect-to-the-template-vm"></a>Připojení k šabloně virtuálního počítače 
-Učitelé se musí nejdřív připojit k virtuálnímu počítači šablony pomocí SSH a nainstalovat na něm balíčky RDP a GUI. Učitelé pak můžou pomocí protokolu RDP připojit se k virtuálnímu počítači šablony: 
+Přípedagogi se musí nejdřív připojit k virtuálnímu počítači šablony pomocí SSH a nainstalovat na něm balíčky RDP a GUI. Pedagogy pak můžou pomocí protokolu RDP připojit se k virtuálnímu počítači šablony: 
 
 1. Pokud se na panelu nástrojů zobrazí možnost **přizpůsobit šablonu** , vyberte ji. Pak v dialogovém okně **přizpůsobit šablonu** vyberte **pokračovat** . Tato akce spustí virtuální počítač šablony.  
 

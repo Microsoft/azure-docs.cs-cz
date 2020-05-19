@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c86a387e66cce914f9d0b92793893b0cba08e7bc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80370159"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587085"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Rychlý Start: sestavení, nasazení a použití vlastního modelu pro překlad
 
@@ -24,23 +24,23 @@ Tento článek poskytuje podrobné pokyny k sestavení překladu systému pomoc�
 
 1. Pokud chcete použít [vlastní portál překladatelů](https://portal.customtranslator.azure.ai) , budete pro přihlášení potřebovat účet [účet Microsoft](https://signup.live.com) nebo [Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (hostující účet organizace v Azure).
 
-2. Předplatné Translator Text API přes Azure Portal. Pro přidružení k pracovnímu prostoru ve vlastním překladateli budete potřebovat Translator Text API klíč předplatného. Podívejte se, [jak se zaregistrovat k Translator text API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
+2. Odběr překladatele prostřednictvím Azure Portal. K přidružení k pracovnímu prostoru ve vlastním překladateli budete potřebovat klíč předplatného překladatele. Podívejte [se, jak se zaregistrovat k překladateli](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
 3. Když máte obě výše uvedené, přihlaste se k portálu [vlastního překladatele](https://portal.customtranslator.azure.ai) , abyste mohli vytvářet pracovní prostory, projekty, nahrávat soubory a vytvářet a nasazovat modely.
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-Pokud jste uživatelem poprvé, budete vyzváni k vyjádření souhlasu s podmínkami služby, k vytvoření pracovního prostoru a k přidružení pracovního prostoru k předplatnému Microsoft Translator Text API.
+Pokud jste uživatelem poprvé, budete vyzváni k vyjádření souhlasu s podmínkami služby, k vytvoření pracovního prostoru a k přidružení pracovního prostoru k předplatnému překladatele.
 
-![](media/quickstart/terms-of-service.png)
-![](media/quickstart/create-workspace-1.png)
-![](media/quickstart/create-workspace-2.png)
-![Vytvoření pracovního](media/quickstart/create-workspace-3.png)
-prostoru vytvořit pracovní prostor vytvořit pracovní prostor vytvořit pracovní prostor vytvořit pracovní prostor vytvořit pracovní prostor vytvořit pracovní prostor![](media/quickstart/create-workspace-4.png)
-![](media/quickstart/create-workspace-5.png)
-![](media/quickstart/create-workspace-6.png)
+![Vytvoření pracovního prostoru vytvořit pracovní prostor vytvořit pracovní prostor vytvořit pracovní prostor vytvořit pracovní prostor vytvořit pracovní ](media/quickstart/terms-of-service.png)
+ prostor vytvořit pracovní prostor ![ ](media/quickstart/create-workspace-1.png)
+ ![ ](media/quickstart/create-workspace-2.png)
+ ![ ](media/quickstart/create-workspace-3.png)
+ ![ ](media/quickstart/create-workspace-4.png)
+ ![ ](media/quickstart/create-workspace-5.png)
+ ![](media/quickstart/create-workspace-6.png)
 
-Při následné návštěvě vlastního portálu překladatelů přejděte na stránku nastavení, kde můžete spravovat pracovní prostor, vytvořit další pracovní prostory, přidružit k vašemu pracovnímu prostoru klíč předplatného Microsoft Translator Text API, přidat spoluvlastníky a změnit klíč předplatného.
+Při dalších návštěvách na portálu vlastního překladatele přejděte na stránku nastavení, kde můžete spravovat pracovní prostor, vytvořit další pracovní prostory, přidružit svůj klíč předplatného překladatele k vašim pracovním prostorům, přidat spoluvlastníky a změnit klíč předplatného.
 
 ## <a name="create-a-project"></a>Vytvoření projektu
 
@@ -83,7 +83,7 @@ Až budete připraveni nasadit svůj vyškolený model, klikněte na tlačítko 
 
 ## <a name="use-a-deployed-model"></a>Použití nasazeného modelu
 
-K nasazeným modelům se dá dostat prostřednictvím [rozhraní Microsoft Translator text API V3 zadáním KódKategorie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). Další informace o Translator Text API najdete na webové stránce [referenčního rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
+K nasazeným modelům se dá dostat prostřednictvím [rozhraní Microsoft Translator text API V3 zadáním KódKategorie](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). Další informace o překladateli najdete na webové stránce [referenčního rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
 
 ## <a name="next-steps"></a>Další kroky
 

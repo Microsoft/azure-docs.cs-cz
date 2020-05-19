@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 6591fd6eb232bf5fb242c9e08830324f864dac2f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b6359f8c9a678973a2298def50c7ca0efdc6a977
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71837498"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587133"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
 
@@ -27,11 +27,11 @@ import os, requests, uuid, json
 > [!NOTE]
 > Pokud jste tyto moduly ještě nikdy nepoužili, budete je muset před spuštěním programu nainstalovat. Tyto balíčky nainstalujete spuštěním příkazu `pip install requests uuid`.
 
-První komentář říká interpretu Pythonu, že má použít kódování UTF-8. Pak se importují požadované moduly pro čtení klíče předplatného z proměnné prostředí, vytvoření požadavku HTTP, vytvoření jedinečného identifikátoru a zpracování odpovědi JSON vrácené službou Translator Text API.
+První komentář říká interpretu Pythonu, že má použít kódování UTF-8. Pak se naimportují požadované moduly, abyste si přečetli klíč předplatného z proměnné prostředí, sestavíte požadavek HTTP, vytvoříte jedinečný identifikátor a zpracujete odpověď JSON vrácenou překladatelem.
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>Nastavení klíče předplatného, koncového bodu a cesty
 
-Tato ukázka se pokusí přečíst klíč předplatného Translator Text a koncový bod z proměnných prostředí: `TRANSLATOR_TEXT_KEY` a `TRANSLATOR_TEXT_ENDPOINT`. Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscription_key` a `endpoint` jako řetězce a přidat komentář k podmíněným příkazům.
+Tato ukázka se pokusí přečíst klíč a koncový bod předplatného překladatele z proměnných prostředí: `TRANSLATOR_TEXT_KEY` a `TRANSLATOR_TEXT_ENDPOINT` . Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscription_key` a `endpoint` jako řetězce a přidat komentář k podmíněným příkazům.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -47,10 +47,10 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-Translator Text globální koncový bod je nastaven jako `endpoint`. `path` nastaví trasu `detect` a určuje, že chceme cílit na rozhraní API verze 3.
+Globální koncový bod překladatele je nastaven jako `endpoint` . `path` nastaví trasu `detect` a určuje, že chceme cílit na rozhraní API verze 3.
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Rozpoznávání](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+> Další informace o koncových bodech, trasách a parametrech požadavků naleznete v tématu [Translator 3,0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
 
 ```python
 path = '/detect?api-version=3.0'
@@ -102,7 +102,7 @@ print(json.dumps(response, sort_keys=True, indent=4,
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-To je vše, sestavili jste jednoduchý program, který zavolá službu Translator Text API a vrátí odpověď JSON. Teď je čas program spustit:
+To je to, že jste připravili jednoduchý program, který bude volat překladatele a vrátil odpověď JSON. Teď je čas program spustit:
 
 ```console
 python detect.py
@@ -148,7 +148,7 @@ Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapome
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

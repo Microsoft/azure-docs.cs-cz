@@ -10,19 +10,18 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 27e6c7beb8c88a29b90b30e0c77e35e493f2480a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5c6580d4fe7431c942ec4886b9dafc6148635b18
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690906"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585364"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co je Azure synapse Analytics (dřív SQL DW)?
 
 > [!NOTE] 
-> Vyzkoušejte si nejnovější funkce Azure synapse, jako jsou pracovní prostory, Spark, SQL na vyžádání a integrované prostředí synapse Studio, a vyžádejte si [přístup k Azure synapse (ve verzi Preview pracovních prostorů)](https://aka.ms/synapsepreview). 
->
 >Prozkoumejte [dokumentaci ke službě Azure synapse (pracovní prostory Preview)](../overview-what-is.md).
+>
 
 Azure synapse je analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení.
 
@@ -30,12 +29,10 @@ Azure synapse má čtyři součásti:
 
 - Synapse SQL: kompletní analýzy založené na T-SQL – všeobecně dostupná
   - Fond SQL (placený za DWU zřízený)
-  - SQL na vyžádání (platba za TB zpracovaná) – (Preview)
+  - SQL na vyžádání (platba za TB zpracovaná) (Preview)
 - Spark: hluboce integrované Apache Spark (Preview)
 - Kanály synapse: integrace hybridních dat (Preview)
-- Studio: jednotné uživatelské prostředí.  (Preview)
-
-
+- Studio: jednotné uživatelské prostředí. (Preview)
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Synapse fond SQL v Azure synapse
 

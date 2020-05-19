@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac743a82405524efc16e16be015b61b9390bd05d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 520f42956a1e096893935b6b7844d67060958829
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199484"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585911"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mailové ověřování heslem jednorázového hesla (Preview)
 
@@ -72,7 +72,7 @@ Může to trvat několik minut, než se akce přihlášení projeví. Pak budou 
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>Výslovný souhlas s používáním portálu Azure AD
 1.  Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce Azure AD.
 2.  V navigačním podokně vyberte **Azure Active Directory**.
-3.  Vyberte **Nastavení organizačních vztahů**  >  **Settings** (nebo vyberte externí **identity**externí  >  **nastavení spolupráce**).
+3.  Vyberte externí **identity**externí  >  **nastavení spolupráce**.
 5.  V části **Povolit jednorázové e-mailové heslo pro hosty (Preview)** vyberte **Ano**.
  
 ### <a name="to-opt-in-using-powershell"></a>Výslovný souhlas s používáním PowerShellu
@@ -138,7 +138,7 @@ Může to trvat několik minut, než se akce odsouhlasení projeví. Pokud vypne
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Vypnutí verze Preview pomocí portálu Azure AD
 1.  Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce Azure AD.
 2.  V navigačním podokně vyberte **Azure Active Directory**.
-3.  Vyberte **Nastavení organizačních vztahů**  >  **Settings** (nebo vyberte externí **identity**externí  >  **nastavení spolupráce**).
+3.  Vyberte externí **identity**externí  >  **nastavení spolupráce**.
 5.  V části **Povolit jednorázové e-mailové heslo pro hosty (Preview)** vyberte **ne**.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Vypnutí verze Preview pomocí PowerShellu

@@ -12,18 +12,18 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67b543bd46b195a0944959f3f462a2bdc7d150ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b2f1478391eccaabcc4dbcd150b54376494d3f56
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199459"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587523"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Auditování a vytváření sestav uživatele spolupráce B2B
 U uživatelů typu host máte k dispozici možnosti auditování podobně jako u členských uživatelů. 
 
 ## <a name="access-reviews"></a>Kontroly přístupu
-Pomocí kontrol přístupu můžete pravidelně ověřovat, jestli uživatelé typu Host stále potřebují přístup k vašim prostředkům. Funkce kontroly **přístupu** je dostupná v **Azure Active Directory** v části kontroly přístupu u **vztahů organizace**  >  **Access reviews** (nebo kontroly přístupu **externích identit**  >  **Access reviews** ). Můžete také vyhledat "kontroly přístupu" ze **všech služeb** v Azure Portal. Pokud chcete zjistit, jak používat kontroly přístupu, přečtěte si téma [Správa přístupu hostů pomocí kontrol přístupu Azure AD](../governance/manage-guest-access-with-access-reviews.md).
+Pomocí kontrol přístupu můžete pravidelně ověřovat, jestli uživatelé typu Host stále potřebují přístup k vašim prostředkům. Funkce kontroly **přístupu** je dostupná v **Azure Active Directory** v části kontroly přístupu **externích identit**  >  **Access reviews**. Můžete také vyhledat "kontroly přístupu" ze **všech služeb** v Azure Portal. Pokud chcete zjistit, jak používat kontroly přístupu, přečtěte si téma [Správa přístupu hostů pomocí kontrol přístupu Azure AD](../governance/manage-guest-access-with-access-reviews.md).
 
 ## <a name="audit-logs"></a>Protokoly auditu
 

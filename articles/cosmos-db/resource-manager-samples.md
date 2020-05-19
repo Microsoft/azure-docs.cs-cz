@@ -4,14 +4,14 @@ description: K vytvoření a konfiguraci Azure Cosmos DB použijte šablony Azur
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/08/2020
 ms.author: mjbrown
-ms.openlocfilehash: 501065875cafc035d491e606c016f3ad4dbfc5d4
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: a98aee61c3a330344b5b7fa0a5f7f53a65e5ecdb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791625"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586146"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Šablony Azure Resource Manageru pro službu Azure Cosmos DB
 
@@ -22,6 +22,7 @@ Následující tabulky obsahují odkazy na šablony Azure Resource Manager pro A
 |**Šablona**|**Popis**|
 |---|---|
 |[Vytvoření účtu Azure Cosmos, databáze, kontejneru s propustností automatického škálování](manage-sql-with-resource-manager.md#create-autoscale) | Tato šablona vytvoří účet rozhraní API Core (SQL) ve dvou oblastech, databázi a kontejner s propustností automatického škálování. |
+|[Vytvoření účtu Azure Cosmos, databáze, kontejneru s analytickým úložištěm](manage-sql-with-resource-manager.md#create-analytical-store) | Tato šablona vytvoří účet základního (SQL) rozhraní API v jedné oblasti s kontejnerem nakonfigurovaným s povoleným analytickým standardem TTL a možností ručního škálování nebo propustnosti. |
 |[Vytvoření účtu Azure Cosmos, databáze, kontejneru se standardní (ruční) propustností](manage-sql-with-resource-manager.md#create-manual) | Tato šablona vytvoří účet rozhraní API Core (SQL) ve dvou oblastech, databázi a kontejner se standardní propustností. |
 |[Vytvoření účtu Azure Cosmos, databáze a kontejneru s uloženou procedurou, triggerem a systémem souborů UDF](manage-sql-with-resource-manager.md#create-sproc) | Tato šablona vytvoří účet základního (SQL) rozhraní API ve dvou oblastech s uloženou procedurou, triggerem a systémem souborů UDF pro kontejner. |
 |[Vytvoření privátního koncového bodu pro existující účet Azure Cosmos](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  Tato šablona vytvoří privátní koncový bod pro existující účet rozhraní API Azure Cosmos Core (SQL) v existující virtuální síti. |

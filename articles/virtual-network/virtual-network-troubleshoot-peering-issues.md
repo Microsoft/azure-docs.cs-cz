@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 20580edb84a8c983c2342e6a5904c75a0986a3d7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801565"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587727"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Řešení potíží s partnerskými vztahy virtuálních sítí
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=457b3ba7-7ac5-93be-981c-677553ad39dd" target='_blank'>Začněte</a></span><span class="has-padding-small">rychle řešit potíže pomocí našeho virtuálního agenta a spusťte <b>automatizovanou diagnostiku.</b> </span> Prohlášení o <sub>zásadách ochrany osobních údajů</sub> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <div align="right"></div></a></span></p>
 
 Tato příručka pro řešení potíží poskytuje kroky, které vám pomohou vyřešit většinu problémů s [partnerskými vztahy virtuálních sítí](virtual-network-peering-overview.md) .
 
@@ -96,14 +95,14 @@ Pomoc při řešení potíží s nastavením a směrováním zařízení síťov
 
 Přenos přes globální partnerský vztah virtuálních sítí se teď podporuje. Připojení nefunguje u globálních partnerských vztahů virtuálních sítí pro následující prostředky:
 
-* Virtuální počítače za základní SKU interního nástroje
+* Virtuální počítače za interním nástrojem pro vyrovnávání zatížení se skladovou položkou Basic
 * Redis Cache (používá interního nástroje SKU úrovně Basic)
 * Application Gateway (používá základní interního nástroje SKU)
 * Sady škálování (používá základní interního nástroje SKU)
-* Clustery Service Fabric (používá základní SKLADOVOU položku interního nástroje)
+* Clustery Service Fabric (využívají interní nástroj pro vyrovnávání zatížení se skladovou položkou Basic)
 * SQL Server Always On (používá základní SKLADOVOU položku interního nástroje)
 * App Service Environment (používá základní SKLADOVOU položku interního nástroje)
-* API Management (používá základní SKLADOVOU položku interního nástroje)
+* API Management (využívá interní nástroj pro vyrovnávání zatížení se skladovou položkou Basic)
 * Azure služba AD DS (používá základní SKLADOVOU položku interního nástroje)
 
 Další informace o požadavcích na globální partnerské vztahy a omezeních najdete v tématu věnovaném [partnerským vztahům virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints).
@@ -136,14 +135,14 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu, který
    > [!Note]
    > Nemůžete se připojit k následujícím typům prostředků přes globální partnerský vztah virtuální sítě (virtuální sítě v různých oblastech):
    >
-   > * Virtuální počítače za základní SKU interního nástroje
+   > * Virtuální počítače za interním nástrojem pro vyrovnávání zatížení se skladovou položkou Basic
    > * Redis Cache (používá interního nástroje SKU úrovně Basic)
    > * Application Gateway (používá základní interního nástroje SKU)
    > * Sady škálování (používá základní interního nástroje SKU)
-   > * Clustery Service Fabric (používá základní SKLADOVOU položku interního nástroje)
+   > * Clustery Service Fabric (využívají interní nástroj pro vyrovnávání zatížení se skladovou položkou Basic)
    > * SQL Server Always On (používá základní SKLADOVOU položku interního nástroje)
    > * App Service Environment (používá základní SKLADOVOU položku interního nástroje)
-   > * API Management (používá základní SKLADOVOU položku interního nástroje)
+   > * API Management (využívá interní nástroj pro vyrovnávání zatížení se skladovou položkou Basic)
    > * Azure služba AD DS (používá základní SKLADOVOU položku interního nástroje)
 
 Další informace najdete v [požadavcích a omezeních](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) globálního partnerského vztahu.
@@ -197,14 +196,14 @@ Další informace najdete v tématu [řetězení služeb](https://docs.microsoft
 
 Přenos přes globální partnerský vztah virtuálních sítí se teď podporuje. Připojení nefunguje u globálních partnerských vztahů virtuálních sítí pro následující prostředky:
 
-* Virtuální počítače za základní SKU interního nástroje
+* Virtuální počítače za interním nástrojem pro vyrovnávání zatížení se skladovou položkou Basic
 * Redis Cache (používá interního nástroje SKU úrovně Basic)
 * Application Gateway (používá základní interního nástroje SKU)
 * Sady škálování (používá základní interního nástroje SKU)
-* Clustery Service Fabric (používá základní SKLADOVOU položku interního nástroje)
+* Clustery Service Fabric (využívají interní nástroj pro vyrovnávání zatížení se skladovou položkou Basic)
 * SQL Server Always On (používá základní SKLADOVOU položku interního nástroje)
 * App Service Environment (používá základní SKLADOVOU položku interního nástroje)
-* API Management (používá základní SKLADOVOU položku interního nástroje)
+* API Management (využívá interní nástroj pro vyrovnávání zatížení se skladovou položkou Basic)
 * Azure služba AD DS (používá základní SKLADOVOU položku interního nástroje)
 
 Další informace najdete v [požadavcích a omezeních](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) globálních partnerských vztahů a [různých topologií sítě VPN](https://blogs.msdn.microsoft.com/igorpag/2016/02/11/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2/).
@@ -217,7 +216,7 @@ Další informace najdete v [požadavcích a omezeních](https://docs.microsoft.
 1. Ve webové aplikaci vyberte síť a potom vyberte **Integrace virtuální** **sítě**.
 1. Zkontrolujte, jestli se vám zobrazí vzdálená virtuální síť. Zadejte ručně adresní prostor vzdálené virtuální sítě (**synchronizovat síť** a **Přidat trasy**).
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 * [Integrace aplikace do služby Azure Virtual Network](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 * [Směrování VPN typu Point-to-Site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
@@ -238,12 +237,12 @@ Chcete-li tento problém vyřešit, nakonfigurujte partnerský vztah virtuální
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Ve vzdálené virtuální síti chybí brána.
 
-K tomuto problému dochází, když máte partnerské virtuální sítě od různých tenantů a později chcete nakonfigurovat `Use Remote Gateways`. Omezení Azure Portal znamená, že nemůže ověřit přítomnost brány virtuální sítě ve virtuální síti jiného tenanta.
+K tomuto problému dochází, když máte partnerské virtuální sítě od různých tenantů a později chcete nakonfigurovat `Use Remote Gateways` . Omezení Azure Portal znamená, že nemůže ověřit přítomnost brány virtuální sítě ve virtuální síti jiného tenanta.
 
 Existují dva způsoby, jak tento problém vyřešit:
 
  * Odstraňte partnerské vztahy a aktivujte `Use Remote Gateways` možnost při vytváření nového partnerského vztahu.
- * K povolení `Use Remote Gateways`použijte POWERSHELL nebo CLI místo Azure Portal.
+ * K povolení použijte PowerShell nebo CLI místo Azure Portal `Use Remote Gateways` .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3dc58b68270707eb5e92214def85ec8cf9cb3f5b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69907050"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586946"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -24,7 +24,7 @@ dotnet new console -o alternate-sample
 cd alternate-sample
 ```
 
-První příkaz provede dvě věci. Vytvoří novou konzolovou aplikaci .NET a vytvoří adresář s názvem `alternate-sample`. Druhý příkaz změní adresář pro váš projekt.
+První příkaz provede dvě věci. Vytvoří novou konzolovou aplikaci .NET a vytvoří adresář s názvem `alternate-sample` . Druhý příkaz změní adresář pro váš projekt.
 
 V dalším kroku budete muset nainstalovat Json.Net. Z adresáře projektu spusťte:
 
@@ -34,7 +34,7 @@ dotnet add package Newtonsoft.Json --version 11.0.2
 
 ## <a name="add-required-namespaces-to-your-project"></a>Přidání požadovaných oborů názvů do projektu
 
-`dotnet new console` Příkaz, který jste spustili dříve, vytvořil projekt, včetně `Program.cs`. Do tohoto souboru umístíte kód aplikace. Otevřete `Program.cs`a nahraďte existující příkazy using. Tyto příkazy zajistí, že máte přístup ke všem typům vyžadovaným pro sestavení a spuštění ukázkové aplikace.
+`dotnet new console`Příkaz, který jste spustili dříve, vytvořil projekt, včetně `Program.cs` . Do tohoto souboru umístíte kód aplikace. Otevřete `Program.cs` a nahraďte existující příkazy using. Tyto příkazy zajistí, že máte přístup ke všem typům vyžadovaným pro sestavení a spuštění ukázkové aplikace.
 
 ```csharp
 using System;
@@ -45,7 +45,7 @@ using Newtonsoft.Json;
 
 ## <a name="get-subscription-information-from-environment-variables"></a>Získání informací o předplatném z proměnných prostředí
 
-Do `Program` třídy přidejte následující řádky. Tyto řádky čtou klíč předplatného a koncový bod z proměnných prostředí a vyvolá chybu, pokud narazíte na nějaké problémy.
+Do třídy přidejte následující řádky `Program` . Tyto řádky čtou klíč předplatného a koncový bod z proměnných prostředí a vyvolá chybu, pokud narazíte na nějaké problémy.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -70,7 +70,7 @@ static Program()
 
 ## <a name="create-a-function-to-get-alternate-translations"></a>Vytvoření funkce pro získání alternativních překladů
 
-V rámci `Program` třídy vytvořte funkci s názvem `AltTranslation`. Tato třída zapouzdřuje kód používaný k volání zdroje slovníku a vytiskne výsledek do konzoly.
+V rámci `Program` třídy vytvořte funkci s názvem `AltTranslation` . Tato třída zapouzdřuje kód používaný k volání zdroje slovníku a vytiskne výsledek do konzoly.
 
 ```csharp
 static void AltTranslation()
@@ -84,7 +84,7 @@ static void AltTranslation()
 
 ## <a name="construct-the-uri"></a>Sestavit identifikátor URI
 
-Přidejte tyto řádky do `AltTranslation` funkce. Všimněte si, že spolu s `api-version`, byly deklarovány dva další parametry. Tyto parametry slouží k nastavení vstupu a výstupu překladu. V této ukázce se jedná o angličtinu (`en`) a španělštinu`es`().
+Přidejte tyto řádky do `AltTranslation` funkce. Všimněte si, že spolu s `api-version` , byly deklarovány dva další parametry. Tyto parametry slouží k nastavení vstupu a výstupu překladu. V této ukázce se jedná o angličtinu ( `en` ) a španělštinu ( `es` ).
 
 ```csharp
 string route = "/dictionary/lookup?api-version=3.0";
@@ -92,7 +92,7 @@ static string params_ = "from=en&to=es";
 static string uri = endpoint + path + params_;
 ```
 
-Dále je potřeba vytvořit a serializovat objekt JSON, který obsahuje text, který chcete přeložit. Mějte na paměti, že v `body` poli můžete předat více než jeden objekt.
+Dále je potřeba vytvořit a serializovat objekt JSON, který obsahuje text, který chcete přeložit. Mějte na paměti, že v poli můžete předat více než jeden objekt `body` .
 
 ```csharp
 System.Object[] body = new System.Object[] { new { Text = @"Elephants" } };
@@ -101,7 +101,7 @@ var requestBody = JsonConvert.SerializeObject(body);
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>Vytvoření instance klienta a vytvoření žádosti
 
-Tyto řádky vytváří instanci `HttpClient` a: `HttpRequestMessage`
+Tyto řádky vytváří instanci `HttpClient` a `HttpRequestMessage` :
 
 ```csharp
 using (var client = new HttpClient())
@@ -122,7 +122,7 @@ V rámci `HttpRequestMessage` budete:
 * Vytvořit asynchronní požadavek
 * Tisk odpovědi
 
-Přidejte tento kód do `HttpRequestMessage`:
+Přidejte tento kód do `HttpRequestMessage` :
 
 ```csharp
 // Set the method to POST
@@ -208,7 +208,7 @@ Nezapomeňte ze zdrojového kódu ukázkové aplikace odebrat všechny důvěrn�
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

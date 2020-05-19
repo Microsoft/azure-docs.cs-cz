@@ -9,19 +9,19 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5705e5f29bc851d615f91d902fd505a69b5cfd12
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75446783"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586979"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace pracovního prostoru centra a projektů do vlastního překladatele
 
 Pracovní prostor a projekty [centra Microsoft Translator](https://hub.microsofttranslator.com/) můžete snadno migrovat do vlastního překladatele. Migrace se spouští z centra Microsoftu tak, že se vybere pracovní prostor nebo projekt, pak se vybere pracovní prostor ve vlastním překladateli a pak se vybere školení, která chcete přenést. Po zahájení migrace se vybraná nastavení školení přenesou se všemi relevantními dokumenty. Nasazené modely jsou učené a po dokončení se dají nasadit.
 
 Tyto akce se provádějí během migrace:
-* Všechny definice dokumentů a projektů budou mít přenesené názvy s předponou "hub_" s názvem. Automaticky generovaný test a data optimalizace budou pojmenovány hub_systemtune_\<ModelID> nebo hub_systemtest_\<ModelID>.
+* Všechny definice dokumentů a projektů budou mít přenesené názvy s předponou "hub_" s názvem. Automaticky generovaný test a data optimalizace budou pojmenovány hub_systemtune_ \< modelid> nebo hub_systemtest_ \< ModelID>.
 * Všechna školení, která byla v nasazeném stavu, když migrace proběhne, budou automaticky vyškolena pomocí dokumentů školení centra. Toto školení se nebude účtovat vašemu předplatnému. Pokud jste pro migraci vybrali možnost automatické nasazení, bude se po dokončení nasadit model trained. Použijí se pravidelné poplatky za hostování.
 * Všechny migrované kurzy, které nebyly v nasazeném stavu, budou vloženy do migrovaného konceptu. V tomto stavu budete mít možnost školení modelu s migrovaných definicí, ale budou platit pravidelné poplatky za školení.
 * Skóre BLEU migrováno z školení centra můžete kdykoli najít na stránce TrainingDetails modelu v záhlaví "Bleu skóre v MT hub".
@@ -134,9 +134,9 @@ Tato tabulka porovnává funkce mezi centrem Microsoft Translator a vlastním p�
 |:-----|:----:|:----:|
 |Stav funkce přizpůsobení   | Obecná dostupnost  | Obecná dostupnost |
 | Verze textového rozhraní API  | V2    | Technologie  |
-| Přizpůsobení SMT | Ano   | Ne |
-| Přizpůsobení NMT | Ne    | Ano |
-| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči | Ne    | Ano |
+| Přizpůsobení SMT | Yes   | Ne |
+| Přizpůsobení NMT | Ne    | Yes |
+| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči | Ne    | Yes |
 | Žádné trasování | Ano | Ano |
 
 ## <a name="new-languages"></a>Nové jazyky
@@ -146,4 +146,4 @@ Pokud jste komunitou nebo organizací, která pracuje na vytváření nového ja
 ## <a name="next-steps"></a>Další kroky
 
 - [Výuka modelu](how-to-train-model.md).
-- Začněte používat nasazený vlastní model překladu přes [Microsoft Translator text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Začněte používat nasazený vlastní model překladu prostřednictvím [překladatele V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 65f6c6627093358f8cbc66055bb9b16561f7c610
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5c458b1c04a7f3be1a43d725591426e619286b7d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424661"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587867"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Co je Azure synapse Analytics (pracovní prostory verze Preview)?
 
@@ -24,11 +24,11 @@ Současná podniková analýza vyžaduje provoz v obrovském měřítku na jaké
 
 Toto řešení je obtížné sestavovat, konfigurovat, zabezpečovat a udržovat, což zpozdí extrakci inteligentního přehledu.
 
-**Azure synapse** je integrovaná analytická služba, která urychluje přehled ze všech dat v jakémkoli měřítku napříč datovými sklady a systémy pro analýzu velkých objemů dat. Přináší dohromady nejlepší technologie **SQL** , které se používají v datových skladech v podniku, technologie **Sparku** používané při analýze velkých objemů dat, a **kanály** k orchestraci aktivit a přesunu dat. 
+**Azure synapse** je integrovaná analytická služba, která urychluje přehled ze všech dat v jakémkoli měřítku napříč datovými sklady a systémy pro analýzu velkých objemů dat. Přináší dohromady nejlepší technologie **SQL** , které se používají v datových skladech v podniku, technologie **Sparku** používané při analýze velkých objemů dat, a **kanály** k orchestraci aktivit a přesunu dat.
 
 Azure synapse se dodává s uživatelským prostředím pro web Native **Studio** , které poskytuje jednotné prostředí a model pro správu, monitorování, kódování a zabezpečení.
 
-Azure synapse poskytuje nejjednodušší a nejrychlejší způsob, jak může společnost shromažďovat přehledy o všech datech v libovolné velikosti, a to pomocí analýz, které jsou pro vás nejdůležitější. Integruje se hluboko s **Power BI** , která umožňuje datovým technikům vytvářet Analytická řešení, která fungují pro účely Business Intelligence. 
+Azure synapse poskytuje nejjednodušší a nejrychlejší způsob, jak může společnost shromažďovat přehledy o všech datech v libovolné velikosti, a to pomocí analýz, které jsou pro vás nejdůležitější. Integruje se hluboko s **Power BI** , která umožňuje datovým technikům vytvářet Analytická řešení, která fungují pro účely Business Intelligence.
 
 Kromě toho Azure synapse usnadňuje vytváření prediktivních modelů a pokročilou analýzu pomocí strojového učení prostřednictvím integrované podpory pro **AzureML**.
 
@@ -44,14 +44,14 @@ Kromě toho Azure synapse usnadňuje vytváření prediktivních modelů a pokro
 
 ### <a name="industry-standard-apache-spark"></a>Oborová standardní Apache Spark
 
-**Synapse Spark** hluboko a hladce integruje Apache Spark – nejoblíbenější Open Source velký modul pro velké objemy dat, který se používá pro přípravu dat, inženýry dat, ETL a strojové učení.
+**Apache Spark pro Azure synapse** hluboko a hladce integruje Apache Spark – nejoblíbenější Open Source velký stroj dat, který se používá pro přípravu dat, inženýry dat, ETL a strojové učení.
 
 * Modely ML s SparkML algoritmy a integrací AzureML pro Apache Spark 2,4 s integrovanou podporou pro systém Linux Foundation Delta Lake.
 * Zjednodušený model prostředků, který vám zadarmo nemusíte dělat starosti se správou clusterů.
 * Rychlé spuštění Sparku a agresivní automatické škálování.
 * Integrovaná podpora rozhraní .NET pro Spark umožňuje znovu použít vaše odbornosti v jazyce C# a stávající kód .NET v rámci aplikace Spark.
 
-### <a name="interop-of-sql-and-spark-on-your-data-lake"></a>Spolupráce s SQL a Sparkem ve vašem Data Lake
+### <a name="interop-of-sql-and-apache-spark-on-your-data-lake"></a>Spolupráce SQL a Apache Spark v Data Lake
 
 Azure synapse odstraňuje tradiční technologické bariéry mezi použitím SQL a Spark společně. V závislosti na vašich potřebách a odborných znalostech můžete bezproblémově kombinovat a rozlišovat.
 

@@ -11,12 +11,12 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bb512e737a344b8f6746736caf154cb8cc6ab137
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 7c5a8327f53ef5b45418b4f51302d46b568cfb31
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930705"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585942"
 ---
 # <a name="system-views-supported-in-synapse-sql-pool"></a>Systémová zobrazení podporovaná ve fondu synapse SQL
 
@@ -67,7 +67,7 @@ Obsahuje odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve fondu 
 * [sys. dm_pdw_sys_info](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sys-info-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys. dm_pdw_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-wait-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [Sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Preview)
+* [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="sql-server-dmvs-applicable-to-synapse-sql-pool"></a>SQL Server zobrazení dynamické správy vztahující se na synapse fond SQL
 

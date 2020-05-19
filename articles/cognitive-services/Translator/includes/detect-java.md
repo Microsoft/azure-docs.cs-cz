@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 9ce4b25d26c0294cf7618b5851c0956af7687ee7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4c10cbec8e22a383ed303b169551999a805f4db6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71837548"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587132"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -24,7 +24,7 @@ mkdir detect-sample
 cd detect-sample
 ```
 
-Teď budete chtít inicializovat projekt Gradle. Tento příkaz vytvoří základní soubory sestavení pro Gradle, co je nejdůležitější, `build.gradle.kts`a který se používá za běhu k vytvoření a konfiguraci vaší aplikace. Spusťte tento příkaz z pracovního adresáře:
+Teď budete chtít inicializovat projekt Gradle. Tento příkaz vytvoří základní soubory sestavení pro Gradle, co je nejdůležitější, a `build.gradle.kts` který se používá za běhu k vytvoření a konfiguraci vaší aplikace. Spusťte tento příkaz z pracovního adresáře:
 
 ```console
 gradle init --type basic
@@ -63,7 +63,7 @@ Pojďme vytvořit složku pro ukázkovou aplikaci. V pracovním adresáři spus�
 mkdir -p src/main/java
 ```
 
-Potom v této složce vytvořte soubor s názvem `Detect.java`.
+Potom v této složce vytvořte soubor s názvem `Detect.java` .
 
 ## <a name="import-required-libraries"></a>Importovat požadované knihovny
 
@@ -100,7 +100,7 @@ Pokud používáte Cognitive Services předplatné s více službami, musíte ta
 
 ## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a sestavení žádosti
 
-Přidejte tento řádek do `Detect` třídy pro vytvoření instance: `OkHttpClient`
+Přidejte tento řádek do `Detect` třídy pro vytvoření instance `OkHttpClient` :
 
 ```java
 // Instantiates the OkHttpClient.
@@ -126,7 +126,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Vytvoření funkce pro analýzu odpovědi
 
-Tato jednoduchá funkce analyzuje a prettifies odpověď JSON od služby Translator Text.
+Tato jednoduchá funkce analyzuje a prettifies odpověď JSON ze služby Translator.
 
 ```java
 // This function prettifies the json response.
@@ -202,7 +202,7 @@ Po spuštění ukázky by se měla zobrazit následující tištěná do termin�
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c263ed1f18ceaa2db976632ea31b9fe1eb47a93
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 513de6d990884f9abf2378ea208ec1dbe556d397
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69907194"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587130"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -24,7 +24,7 @@ dotnet new console -o detect-sample
 cd detect-sample
 ```
 
-První příkaz provede dvě věci. Vytvoří novou konzolovou aplikaci .NET a vytvoří adresář s názvem `detect-sample`. Druhý příkaz změní adresář pro váš projekt.
+První příkaz provede dvě věci. Vytvoří novou konzolovou aplikaci .NET a vytvoří adresář s názvem `detect-sample` . Druhý příkaz změní adresář pro váš projekt.
 
 V dalším kroku budete muset nainstalovat Json.Net. Z adresáře projektu spusťte:
 
@@ -36,7 +36,7 @@ dotnet add package Newtonsoft.Json --version 11.0.2
 
 Tento rychlý Start vyžaduje C# 7,1 nebo novější. Existuje několik způsobů, jak změnit verzi v jazyce C# pro váš projekt. V této příručce vám ukážeme, jak `detect-sample.csproj` soubor upravit. Všechny dostupné možnosti, jako je například změna jazyka v aplikaci Visual Studio, najdete v tématu [Výběr jazykové verze jazyka C#](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
 
-Otevřete projekt a pak otevřete `detect-sample.csproj`. Ujistěte se, `LangVersion` že je nastavená na 7,1 nebo novější. Pokud pro danou jazykovou verzi není skupina vlastností, přidejte tyto řádky:
+Otevřete projekt a pak otevřete `detect-sample.csproj` . Ujistěte se, že `LangVersion` je nastavená na 7,1 nebo novější. Pokud pro danou jazykovou verzi není skupina vlastností, přidejte tyto řádky:
 
 ```xml
 <PropertyGroup>
@@ -46,7 +46,7 @@ Otevřete projekt a pak otevřete `detect-sample.csproj`. Ujistěte se, `LangVer
 
 ## <a name="add-required-namespaces-to-your-project"></a>Přidání požadovaných oborů názvů do projektu
 
-`dotnet new console` Příkaz, který jste spustili dříve, vytvořil projekt, včetně `Program.cs`. Do tohoto souboru umístíte kód aplikace. Otevřete `Program.cs`a nahraďte existující příkazy using. Tyto příkazy zajistí, že máte přístup ke všem typům vyžadovaným pro sestavení a spuštění ukázkové aplikace.
+`dotnet new console`Příkaz, který jste spustili dříve, vytvořil projekt, včetně `Program.cs` . Do tohoto souboru umístíte kód aplikace. Otevřete `Program.cs` a nahraďte existující příkazy using. Tyto příkazy zajistí, že máte přístup ke všem typům vyžadovaným pro sestavení a spuštění ukázkové aplikace.
 
 ```csharp
 using System;
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>Vytvoření tříd pro odpověď JSON
 
-Nyní vytvoříme třídu, která se používá při deserializaci odpovědi JSON vrácené Translator Text API.
+Nyní vytvoříme třídu, která se používá při deserializaci odpovědi JSON vrácené překladatelem.
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class DetectResult
 {
@@ -84,7 +84,7 @@ public class AltTranslations
 
 ## <a name="get-subscription-information-from-environment-variables"></a>Získání informací o předplatném z proměnných prostředí
 
-Do `Program` třídy přidejte následující řádky. Tyto řádky čtou klíč předplatného a koncový bod z proměnných prostředí a vyvolá chybu, pokud narazíte na nějaké problémy.
+Do třídy přidejte následující řádky `Program` . Tyto řádky čtou klíč předplatného a koncový bod z proměnných prostředí a vyvolá chybu, pokud narazíte na nějaké problémy.
 
 ```csharp
 private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
@@ -109,7 +109,7 @@ static Program()
 
 ## <a name="create-a-function-to-detect-the-source-texts-language"></a>Vytvoření funkce pro detekci jazyka zdrojového textu
 
-Ve `Program` třídě vytvořte funkci s názvem `DetectTextRequest()`. Tato třída zapouzdřuje kód používaný k volání prostředku Detect a vytiskne výsledek do konzoly.
+Ve `Program` třídě vytvořte funkci s názvem `DetectTextRequest()` . Tato třída zapouzdřuje kód používaný k volání prostředku Detect a vytiskne výsledek do konzoly.
 
 ```csharp
 static public async Task DetectTextRequest(string subscriptionKey, string endpoint, string route, string inputText)
@@ -132,7 +132,7 @@ var requestBody = JsonConvert.SerializeObject(body);
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>Vytvoření instance klienta a vytvoření žádosti
 
-Tyto řádky vytváří instanci `HttpClient` a: `HttpRequestMessage`
+Tyto řádky vytváří instanci `HttpClient` a `HttpRequestMessage` :
 
 ```csharp
 using (var client = new HttpClient())
@@ -153,7 +153,7 @@ V rámci `HttpRequestMessage` budete:
 * Vytvořit asynchronní požadavek
 * Tisk odpovědi
 
-Přidejte tento kód do `HttpRequestMessage`:
+Přidejte tento kód do `HttpRequestMessage` :
 
 ```csharp
 // Build the request.
@@ -270,7 +270,7 @@ Nezapomeňte ze zdrojového kódu ukázkové aplikace odebrat všechny důvěrn�
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

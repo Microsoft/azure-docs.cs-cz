@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a7715577936b0e95392f2d561e4b492b20c9dbf5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4dbf9dddd46e38ae9b8cec3288bdacccb1ef1c78
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906925"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586844"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -24,7 +24,7 @@ dotnet new console -o languages-sample
 cd languages-sample
 ```
 
-První příkaz provede dvě věci. Vytvoří novou konzolovou aplikaci .NET a vytvoří adresář s názvem `languages-sample`. Druhý příkaz změní adresář pro váš projekt.
+První příkaz provede dvě věci. Vytvoří novou konzolovou aplikaci .NET a vytvoří adresář s názvem `languages-sample` . Druhý příkaz změní adresář pro váš projekt.
 
 V dalším kroku budete muset nainstalovat Json.Net. Z adresáře projektu spusťte:
 
@@ -34,7 +34,7 @@ dotnet add package Newtonsoft.Json --version 11.0.2
 
 ## <a name="add-required-namespaces-to-your-project"></a>Přidání požadovaných oborů názvů do projektu
 
-`dotnet new console` Příkaz, který jste spustili dříve, vytvořil projekt, včetně `Program.cs`. Do tohoto souboru umístíte kód aplikace. Otevřete `Program.cs`a nahraďte existující příkazy using. Tyto příkazy zajistí, že máte přístup ke všem typům vyžadovaným pro sestavení a spuštění ukázkové aplikace.
+`dotnet new console`Příkaz, který jste spustili dříve, vytvořil projekt, včetně `Program.cs` . Do tohoto souboru umístíte kód aplikace. Otevřete `Program.cs` a nahraďte existující příkazy using. Tyto příkazy zajistí, že máte přístup ke všem typům vyžadovaným pro sestavení a spuštění ukázkové aplikace.
 
 ```csharp
 using System;
@@ -45,7 +45,7 @@ using Newtonsoft.Json;
 
 ## <a name="get-endpoint-information-from-an-environment-variable"></a>Získat informace o koncovém bodu z proměnné prostředí
 
-Do `Program` třídy přidejte následující řádky. Tyto řádky čtou klíč předplatného a koncový bod z proměnných prostředí a vyvolá chybu, pokud narazíte na nějaké problémy.
+Do třídy přidejte následující řádky `Program` . Tyto řádky čtou klíč předplatného a koncový bod z proměnných prostředí a vyvolá chybu, pokud narazíte na nějaké problémy.
 
 ```csharp
 private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
@@ -62,7 +62,7 @@ static Program()
 
 ## <a name="create-a-function-to-get-a-list-of-languages"></a>Vytvoření funkce pro získání seznamu jazyků
 
-Ve `Program` třídě vytvořte funkci s názvem `GetLanguages`. Tato třída zapouzdřuje kód, který se používá k volání prostředku jazyků, a vytiskne výsledek do konzoly.
+Ve `Program` třídě vytvořte funkci s názvem `GetLanguages` . Tato třída zapouzdřuje kód, který se používá k volání prostředku jazyků, a vytiskne výsledek do konzoly.
 
 ```csharp
 static void GetLanguages()
@@ -84,7 +84,7 @@ string route = "/languages?api-version=3.0";
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>Vytvoření instance klienta a vytvoření žádosti
 
-Tyto řádky vytváří instanci `HttpClient` a: `HttpRequestMessage`
+Tyto řádky vytváří instanci `HttpClient` a `HttpRequestMessage` :
 
 ```csharp
 using (var client = new HttpClient())
@@ -104,7 +104,7 @@ V rámci `HttpRequestMessage` budete:
 * Vytvořit asynchronní požadavek
 * Tisk odpovědi
 
-Přidejte tento kód do `HttpRequestMessage`:
+Přidejte tento kód do `HttpRequestMessage` :
 
 ```csharp
 // Set the method to GET
@@ -241,7 +241,7 @@ Nezapomeňte ze zdrojového kódu ukázkové aplikace odebrat všechny důvěrn�
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

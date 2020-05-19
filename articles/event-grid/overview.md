@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: b6f987eb283edea7f2d8e6b207b5b4e5b14f9120
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a323bd9b9c605363963d5a25d1746727e379553
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81393191"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587591"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 
@@ -35,7 +35,7 @@ Tento obrázek ukazuje, jak Event Grid propojuje zdroje a obslužné rutiny a ne
 V současné době podporují odesílání událostí do Event Gridu následující služby Azure:
 
 - [Azure App Configuration](event-schema-app-configuration.md)
-- [Blob Storage Azure](event-schema-blob-storage.md)
+- [Azure Blob Storage](event-schema-blob-storage.md)
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)
@@ -52,15 +52,15 @@ V současné době podporují odesílání událostí do Event Gridu následují
 
 Úplné podrobnosti o možnostech jednotlivých obslužných rutin a související články najdete v tématu věnovaném [obslužným rutinám událostí](event-handlers.md). V současné době podporují zpracování událostí z Event Gridu následující služby Azure: 
 
-* [Azure Automation](event-handlers.md#azure-automation)
-* [Azure Functions](event-handlers.md#azure-functions)
-* [Event Hubs](event-handlers.md#event-hubs)
-* [Hybrid Connections](event-handlers.md#hybrid-connections)
-* [Logic Apps](event-handlers.md#logic-apps)
+* [Azure Automation](handler-webhooks.md#azure-automation)
+* [Azure Functions](handler-functions.md)
+* [Event Hubs](handler-event-hubs.md)
+* [Hybrid Connections přenosu](handler-relay-hybrid-connections.md)
+* [Logic Apps](handler-webhooks.md#logic-apps)
 * [Automatizace (dříve označované jako Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [Service Bus](event-handlers.md#service-bus)
-* [Queue Storage](event-handlers.md#queue-storage)
-* [Webhooky](event-handlers.md#webhooks)
+* [Service Bus](handler-service-bus.md)
+* [Queue Storage](handler-storage-queues.md)
+* [Webhooky](handler-webhooks.md)
 
 ## <a name="concepts"></a>Koncepty
 

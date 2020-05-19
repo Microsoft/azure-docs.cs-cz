@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: d75c925ef55163ce06b2ceff585e230d95b38c77
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7f3824ba4683c5ade4ac5bb84b853caf72e1073b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71837500"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587131"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>Vytvoření funkce main
 
-Tato ukázka se pokusí přečíst klíč předplatného Translator Text a koncový bod z těchto proměnných prostředí `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` : `TRANSLATOR_TEXT_ENDPOINT`a. Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscriptionKey` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
+Tato ukázka se pokusí přečíst klíč předplatného vašeho převaděče a koncový bod z těchto proměnných prostředí: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` a `TRANSLATOR_TEXT_ENDPOINT` . Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscriptionKey` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -67,7 +67,7 @@ func main() {
 
 ## <a name="create-a-function-to-detect-the-text-language"></a>Vytvoření funkce pro detekci jazyka textu
 
-Pojďme vytvořit funkci pro detekci jazyka textu. Tato funkce bude mít jeden argument, Translator Text klíč předplatného.
+Pojďme vytvořit funkci pro detekci jazyka textu. Tato funkce bude mít jeden argument, váš klíč předplatného překladatele.
 
 ```go
 func detect(subscriptionKey string, uri string) {
@@ -78,7 +78,7 @@ func detect(subscriptionKey string, uri string) {
 }
 ```
 
-Nyní vytvoříme adresu URL. Adresa URL je sestavena pomocí `Parse()` metod `Query()` a.
+Nyní vytvoříme adresu URL. Adresa URL je sestavena pomocí `Parse()` `Query()` metod a.
 
 Zkopírujte tento kód do `detect` funkce.
 
@@ -90,11 +90,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Rozpoznávání](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
+> Další informace o koncových bodech, trasách a parametrech požadavků naleznete v tématu [Translator 3,0: Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect).
 
 ## <a name="create-a-struct-for-your-request-body"></a>Vytvoření struktury pro tělo žádosti
 
-Dále vytvořte anonymní strukturu pro text žádosti a zakódovat ji jako JSON pomocí `json.Marshal()`. Přidejte tento kód do `detect` funkce.
+Dále vytvořte anonymní strukturu pro text žádosti a zakódovat ji jako JSON pomocí `json.Marshal()` . Přidejte tento kód do `detect` funkce.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -108,7 +108,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>Sestavení požadavku
 
-Teď, když jste zakódovi tělo požadavku jako JSON, můžete sestavit požadavek POST a zavolat Translator Text API.
+Teď, když jste zakódovi tělo požadavku jako JSON, můžete sestavit požadavek POST a volat překladatele.
 
 ```go
 // Build the HTTP POST request
@@ -120,7 +120,7 @@ if err != nil {
 req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -146,7 +146,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-To je vše, sestavili jste jednoduchý program, který zavolá službu Translator Text API a vrátí odpověď JSON. Teď je čas program spustit:
+To je to, že jste připravili jednoduchý program, který bude volat překladatele a vrátil odpověď JSON. Teď je čas program spustit:
 
 ```console
 go run detect-language.go
@@ -189,7 +189,7 @@ Po spuštění ukázky by se měla zobrazit následující tištěná do termin�
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

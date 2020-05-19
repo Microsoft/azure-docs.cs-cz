@@ -1,7 +1,7 @@
 ---
-title: Filtrování vulgárních výrazů – Translator Text API
+title: Filtrování vulgárních výrazů – Translator
 titleSuffix: Azure Cognitive Services
-description: Pomocí filtrování vulgárních výrazů můžete určit úroveň vulgárních výrazů v textu ve službě Azure Cognitive Services Translator Text API.
+description: Pomocí filtrování vulgárních výrazů můžete určit úroveň vulgárních výrazů v textu ve službě Azure Cognitive Services Translator.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e7e2097e0d3daf360f1fa0f30bf3fd2c62c07163
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 864f6a6d92306c40713f66b526c8a8df1683d3c4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73836230"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586792"
 ---
-# <a name="add-profanity-filtering-with-the-translator-text-api"></a>Přidání filtrování vulgárních výrazů pomocí Translator Text API
+# <a name="add-profanity-filtering-with-the-translator"></a>Přidání filtrování vulgárních výrazů pomocí překladatele
 
 Služba Translator obvykle uchovává vulgární výrazy, které se nacházejí ve zdroji v překladu. Stupeň vulgárních výrazů a kontext, který dává slova neslušně odlišně mezi kulturami. V důsledku toho může být stupeň vulgárních výrazů v cílovém jazyce zesílený nebo omezený.
 
@@ -29,9 +29,9 @@ Metoda přeložit () přebírá parametr options, který obsahuje nový prvek "P
 |Hodnota ProfanityAction | Akce | Příklad: zdroj – japonština | Příklad: cíl – angličtina|
 | :---|:---|:---|:---|
 | Akce | Default (Výchozí). Stejné jako nastavení možnosti. Vulgární výrazy se předává ze zdroje do cíle. | 彼は変態です Marketplace. | Je Jerk. |
-| Vyznačen | Slova v vulgárních výrazech jsou obklopená \<vulgárními značkami XML>... \</Profanity>. | 彼は変態です Marketplace. | Je to \<vulgární>jerk\</Profanity>. |
-| Odstranění | Slova v vulgárních textech se z výstupu odeberou bez náhrady. | 彼は Marketplace. | Je. |
+| Vyznačen | Slova v vulgárních výrazech jsou obklopená \< vulgárními značkami XML>... \< /Profanity>. | 彼は変態です Marketplace. | Je to \< vulgární>Jerk \< /Profanity>. |
+| Odstraněné | Slova v vulgárních textech se z výstupu odeberou bez náhrady. | 彼は Marketplace. | Je. |
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Použití filtrování vulgárních výrazů s voláním rozhraní API pro překladatele](reference/v3-0-translate.md)
+> [Použití filtrování vulgárních výrazů u volání překladatele](reference/v3-0-translate.md)

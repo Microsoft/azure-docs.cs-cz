@@ -2,13 +2,13 @@
 title: Přizpůsobení terminologie
 description: Přizpůsobování používá terminologii při výuce. Tyto výrazy se používají v Azure Portal a rozhraní API.
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: f75437c5afd5d3fd7f7570079be410d3db1ca8db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/23/2020
+ms.openlocfilehash: 3f819ff3305a7c7302eb56c83b98340946613a92
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624272"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586299"
 ---
 # <a name="terminology"></a>Terminologie
 
@@ -19,6 +19,15 @@ Přizpůsobování používá terminologii při výuce. Tyto výrazy se použív
 * **Výuková smyčka**: pro každou část aplikace můžete vytvořit prostředek přizpůsobeného, označovaný jako _výuková smyčka_, pro každou část vaší aplikace, která může být výhodou přizpůsobení. Pokud máte více než jedno prostředí pro přizpůsobení, vytvořte smyčku pro každý z nich.
 
 * **Model**: model pro přizpůsobení zachycuje všechna data zjištěná v souvislosti s uživatelským chováním a získá školicí data z kombinace argumentů, které odesíláte do volání funkce Rank a disměna, a s chováním školení stanoveným pomocí zásad učení.
+
+* **Online režim**: výchozí [chování při učení](#learning-behavior) pro přizpůsobování, ve kterém vaše výuková smyčka, používá strojové učení k sestavení modelu, který předpovídá **hlavní akci** pro váš obsah.
+
+* **Režim učni**: [vzdělávací chování](#learning-behavior) , které pomáhá zajišťovat spuštění modelu přizpůsobeného pro vlastní analýzu, aniž by to mělo vliv na výsledky a akce aplikace.
+
+## <a name="learning-behavior"></a>Chování učení:
+
+* **Online režim**: vrátí nejlepší akci. Váš model bude reagovat na volání Rank s nejlepší akcí a použije volání odstraněné k učení a vylepšení jejich výběru v průběhu času.
+* **[Režim učni](concept-apprentice-mode.md)**: Naučte se jako učni. Váš model se učí tím, že bude pozorovat chování stávajícího systému. Volání Rank budou vždycky vracet **výchozí akci** (směrný plán) aplikace.
 
 ## <a name="personalizer-configuration"></a>Konfigurace přizpůsobení
 
@@ -63,8 +72,21 @@ Přizpůsobování je nakonfigurované z [Azure Portal](https://portal.azure.com
 
 * **Odměňování**: míra, kterou uživatel odpověděl na rozhraní API pro řazení, vrátilo ID akce odměňování jako skóre mezi 0 a 1. Hodnota 0 až 1 je nastavená vaší obchodní logikou na základě toho, jak volba pomáhá dosáhnout vašich obchodních cílů přizpůsobení. Výuková smyčka neukládá tuto odměnu jako historii jednotlivých uživatelů.
 
-## <a name="offline-evaluations"></a>Offline vyhodnocení
+## <a name="evaluations"></a>Vyhodnocení
 
-* **Vyhodnocení**: offline vyhodnocení Určuje doporučené zásady učení pro vaši smyčku na základě dat vaší smyčky.
+### <a name="offline-evaluations"></a>Offline vyhodnocení
+
+* **Vyhodnocení**: offline vyhodnocení Určuje doporučené zásady učení pro vaši smyčku na základě dat vaší aplikace.
 
 * **Zásady učení**: jak přizpůsobovat vlaky na každou událost se určí pomocí některých parametrů, které mají vliv na to, jak algoritmus strojového učení funguje. Nová výuková smyčka začíná výchozími **zásadami učení**, což může přinést střední výkon. Při spuštění [hodnocení](concepts-offline-evaluation.md)vytvoří přizpůsobené nové zásady učení speciálně optimalizované pro případy použití smyčky. Přizpůsobený přizpůsobování bude výrazně lepší díky zásadám optimalizovaným pro každou specifickou smyčku vygenerovanou během hodnocení. Zásady učení se nazývají _Nastavení učení_ v **Nastavení modelu a učení** pro prostředek přizpůsobeného v Azure Portal.
+
+### <a name="apprentice-mode-evaluations"></a>Vyhodnocení režimu učni
+
+V režimu učni jsou k dispozici následující **metriky vyhodnocení**:
+* **Směrný plán – Průměrná odměna**: Průměrná doba využívání výchozích hodnot (standardní hodnoty) aplikace
+* **Přizpůsobování – Průměrná doba odměna**: průměr z celkového počtu nedokončených akcí by byl potenciálně dosažen.
+* **Průměrná**doba úhrady: poměr nestandardních hodnot na úrovni směrného plánu a přizpůsobování – normalizované nad nejnovějšími událostmi 1000.
+
+## <a name="next-steps"></a>Další kroky
+
+* Informace o [etické a zodpovědném použití](ethics-responsible-use.md)

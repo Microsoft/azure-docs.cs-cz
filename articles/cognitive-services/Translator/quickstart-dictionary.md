@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Vyhledání slov pomocí dvojjazyčného slovníku – Translator Text API'
+title: 'Rychlý Start: Vyhledání slov pomocí dvojjazyčného slovníku – Překladatel'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak získat alternativní překlady pro termín a také příklady použití těchto alternativních překladů pomocí Translator Text API.
+description: V tomto rychlém startu se dozvíte, jak získat alternativní překlady pro termín a také příklady použití těchto alternativních překladů pomocí překladatele.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 07fd984f72628ac4f6d6736bf0ab903619e96c72
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fe2f4f2bea52650c2baa2ac3380b5b92f01c15eb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525154"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586943"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Rychlý Start: Vyhledání slov pomocí dvojjazyčného slovníku
 
-V tomto rychlém startu se dozvíte, jak získat alternativní překlady pro termín a také příklady použití těchto alternativních překladů pomocí Translator Text API.
+V tomto rychlém startu se dozvíte, jak získat alternativní překlady pro termín a také příklady použití těchto alternativních překladů pomocí překladatele.
 
-K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
+Tento rychlý Start vyžaduje [účet Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem překladatele. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/dictionary-csharp.md)]

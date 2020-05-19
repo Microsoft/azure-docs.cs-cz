@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75551994"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585585"
 ---
 # <a name="machine-learned-entity"></a>Strojově naučená entita
 
@@ -38,13 +38,13 @@ Mezi ukázkové promluvy patří:
 
 #### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Vzhledem k tomu, že entita získaná počítačem může mít mnoho dílčích komponent s omezeními a popisovači, je to pouze příklad. Měl by se považovat za vodítko, co vaše entita vrátí.
+Vzhledem k tomu, že entita získaná počítačem může mít mnoho podentit s požadovanými funkcemi, jedná se pouze o příklad. Měl by se považovat za vodítko, co vaše entita vrátí.
 
 Vezměte v úvahu dotaz:
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
-Toto je kód JSON, `verbose=false` Pokud je nastaven v řetězci dotazu:
+Toto je kód JSON, pokud `verbose=false` je nastaven v řetězci dotazu:
 
 ```json
 "entities": {
@@ -102,7 +102,7 @@ Toto je kód JSON, `verbose=false` Pokud je nastaven v řetězci dotazu:
 
 ```
 
-Toto je kód JSON, `verbose=true` Pokud je nastaven v řetězci dotazu:
+Toto je kód JSON, pokud `verbose=true` je nastaven v řetězci dotazu:
 
 ```json
 "entities": {

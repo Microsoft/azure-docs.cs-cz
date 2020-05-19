@@ -4,21 +4,21 @@ description: Vytvořte entity pro extrakci klíčových dat z uživatelských pr
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1665f1ef8a868b011e9e4de8562aeda9edef5ce2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382145"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585568"
 ---
 # <a name="pattern-syntax"></a>Syntaxe vzoru
 
 Syntaxe vzoru je šablona pro utterance. Šablona by měla obsahovat slova a entity, které chcete porovnat, a také slova a [interpunkční znaménka](luis-reference-application-settings.md#punctuation-normalization) , která chcete ignorovat. Nejedná **se o regulární** výraz.
 
 > [!CAUTION]
-> Vzory zahrnují pouze nadřazené entity, které se strojově naučily, ne subsoučásti.
+> Vzory zahrnují jenom nadřazené entity, které se naučily počítač, ne subentity.
 
-Entity v vzorcích jsou obklopené složenými závorkami `{}`. Vzory mohou zahrnovat entity a entity s rolemi. [Vzor. any](luis-concept-entity-types.md#patternany-entity) je entita, která se používá pouze ve vzorcích.
+Entity v vzorcích jsou obklopené složenými závorkami `{}` . Vzory mohou zahrnovat entity a entity s rolemi. [Vzor. any](luis-concept-entity-types.md#patternany-entity) je entita, která se používá pouze ve vzorcích.
 
 Syntaxe vzoru podporuje následující syntaxi:
 
@@ -27,12 +27,12 @@ Syntaxe vzoru podporuje následující syntaxi:
 |entita| {}– složené závorky|2|Kde je tvar {entity-Name}?|
 |optional|[] – hranaté závorky<BR><BR>Existuje limit 3 pro vnořování úrovní jakékoli kombinace Optional and Grouping. |2|Otazník je nepovinný [?].|
 |grouping|() – závorky|2|je (a \| b)|
-|– nebo –| \|– svislá čára (svislá čára)<br><br>U svislých pruhů (nebo) v jedné skupině je povolený limit 2. |-|Kde je Form ({Form-Name-short} &#x7c; {Form-Name-Long} &#x7c; {Form-Number})|
+|nebo| \|– svislá čára (svislá čára)<br><br>U svislých pruhů (nebo) v jedné skupině je povolený limit 2. |-|Kde je Form ({Form-Name-short} &#x7c; {Form-Name-Long} &#x7c; {Form-Number})|
 |začátek a/nebo konec utterance|^ – blikající kurzor|-|^ začátek utterance<br>utterance je hotové ^<br>^ striktní shoda literálu celého utterance s {Number} entitou ^|
 
 ## <a name="nesting-syntax-in-patterns"></a>Syntaxe vnořování ve vzorcích
 
-**Volitelná** syntaxe s hranatými závorkami může být vnořená na dvě úrovně. Například: `[[this]is] a new form`. Tento příklad umožňuje následující projevy:
+**Volitelná** syntaxe s hranatými závorkami může být vnořená na dvě úrovně. Příklad: `[[this]is] a new form`. Tento příklad umožňuje následující projevy:
 
 |Příklad vnořeného volitelného utteranceu|Vysvětlení|
 |--|--|
@@ -40,7 +40,7 @@ Syntaxe vzoru podporuje následující syntaxi:
 |je nový formulář|odpovídá vnějšímu volitelnému slovu a jiným nevolitelným slovům ve vzoru|
 |nový formulář|odpovídá pouze povinným slovům|
 
-Syntaxe **seskupení** s kulatými závorkami může být vnořená dvě úrovně. Například: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Tato funkce umožňuje, aby se všechny tři entity shodovaly.
+Syntaxe **seskupení** s kulatými závorkami může být vnořená dvě úrovně. Příklad: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Tato funkce umožňuje, aby se všechny tři entity shodovaly.
 
 Pokud je Entity1 umístění s rolemi, jako je počátek (Seattle) a cíl (Cairo) a entita 2 je známý název budovy ze seznamu entit (RedWest-C), následující projevy by se namapovaly na tento vzor:
 
@@ -56,8 +56,8 @@ Kombinace **seskupení** s **volitelnou** syntaxí má limit 3 úrovní vnořen�
 
 |Povoleno|Příklad|
 |--|--|
-|Ano|([(Test1 &#x7c; test2)] &#x7c; test3)|
-|Ne|([([test1] &#x7c; test2)] &#x7c; test3)|
+|Yes|([(Test1 &#x7c; test2)] &#x7c; test3)|
+|No|([([test1] &#x7c; test2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Omezení vnořování pro skupiny s syntaxí or-Lo
 
@@ -65,18 +65,18 @@ Kombinace **seskupení** se syntaxí **or-Lo** má omezení 2 svislé pruhy.
 
 |Povoleno|Příklad|
 |--|--|
-|Ano|(Test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
-|Ne|(Test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+|Yes|(Test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
+|No|(Test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxe pro přidání entity do šablony vzoru
-Chcete-li přidat entitu do šablony vzoru, uzavřete název entity do složených závorek, například `Who does {Employee} manage?`.
+Chcete-li přidat entitu do šablony vzoru, uzavřete název entity do složených závorek, například `Who does {Employee} manage?` .
 
 |Vzor s entitou|
 |--|
 |`Who does {Employee} manage?`|
 
 ## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Syntaxe pro přidání entity a role do šablony vzoru
-Role entity se označuje jako `{entity:role}` název entity následovaný dvojtečkou a názvem role. Chcete-li přidat entitu s rolí do šablony vzoru, uzavřete název entity a název role se složenými závorkami, například `Book a ticket from {Location:Origin} to {Location:Destination}`.
+Role entity se označuje jako `{entity:role}` název entity následovaný dvojtečkou a názvem role. Chcete-li přidat entitu s rolí do šablony vzoru, uzavřete název entity a název role se složenými závorkami, například `Book a ticket from {Location:Origin} to {Location:Destination}` .
 
 |Vzor s rolemi entit|
 |--|
@@ -85,7 +85,7 @@ Role entity se označuje jako `{entity:role}` název entity následovaný dvojte
 ## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Syntaxe pro přidání vzoru. jakékoli do šablony vzoru
 Vzor. kterákoli entita umožňuje přidat do vzoru entitu s různou délkou. Dokud je šablona vzoru následována, vzor. kterákoli z nich může být libovolná délka.
 
-Chcete-li přidat **vzor. libovolnou** entitu do šablony vzoru, uzavřete vzorek. libovolnou entitu se složenými závorkami, například `How much does {Booktitle} cost and what format is it available in?`.
+Chcete-li přidat **vzor. libovolnou** entitu do šablony vzoru, uzavřete vzorek. libovolnou entitu se složenými závorkami, například `How much does {Booktitle} cost and what format is it available in?` .
 
 |Vzor se vzorem. libovolná entita|
 |--|
@@ -106,7 +106,7 @@ Vytvořte [explicitní seznam](https://westus.dev.cognitive.microsoft.com/docs/s
 * Váš vzor obsahuje [vzorek. any](luis-concept-entity-types.md#patternany-entity)
 * A tato syntaxe vzoru umožňuje možnost nesprávného extrakce entit založeného na utterance.
 
-Předpokládejme například, že máte vzor obsahující jak volitelnou syntaxi, `[]`tak i syntaxi entit, `{}`a v kombinaci způsobem pro nekorektně extrahování dat.
+Předpokládejme například, že máte vzor obsahující jak volitelnou syntaxi, `[]` tak i syntaxi entit, a `{}` v kombinaci způsobem pro nekorektně extrahování dat.
 
 Vezměte v úvahu vzor e-mailu [najít] o {Subject} [z {Person}].
 
@@ -117,19 +117,19 @@ V následujícím projevy jsou subjekt a **osoba** správně extrahovány **a ne
 |e-mail o psy z Chrisho|Předmět = psi<br>person = Novák|✔|
 |e-mail o člověku z La Mancha|Předmět = muž<br>person = La Mancha|×|
 
-V předchozí tabulce by měl předmět obsahovat `the man from La Mancha` (název knihy), ale vzhledem k tomu, že předmět obsahuje volitelné slovo `from`, název je nesprávně předpovězený.
+V předchozí tabulce by měl předmět obsahovat `the man from La Mancha` (název knihy), ale vzhledem k tomu, že předmět obsahuje volitelné slovo `from` , název je nesprávně předpovězený.
 
-Chcete-li tuto výjimku opravit na vzor, `the man from la mancha` přidejte jako explicitní shodu seznamu pro entitu {Subject} pomocí [rozhraní API pro vytváření obsahu pro explicitní seznam](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
+Chcete-li tuto výjimku opravit na vzor, přidejte `the man from la mancha` jako explicitní shodu seznamu pro entitu {Subject} pomocí [rozhraní API pro vytváření obsahu pro explicitní seznam](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Syntaxe k označení volitelného textu v šabloně utterance
-Označte Nepovinný text v utterance pomocí syntaxe hranaté závorky regulárního výrazu `[]`. Volitelný text může vnořovat hranaté závorky až do dvou závorek.
+Označte Nepovinný text v utterance pomocí syntaxe hranaté závorky regulárního výrazu `[]` . Volitelný text může vnořovat hranaté závorky až do dvou závorek.
 
 |Vzor s volitelným textem|Význam|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find`a `from {person}` jsou volitelné|
 |' Vám může pomáhat: [?]|Interpunkční znaménko je volitelné.|
 
-Interpunkční znaménka`?`( `!`, `.`,) by měla být ignorována a je třeba je ignorovat pomocí syntaxe hranaté závorky ve vzorcích.
+Interpunkční znaménka ( `?` , `!` , `.` ) by měla být ignorována a je třeba je ignorovat pomocí syntaxe hranaté závorky ve vzorcích.
 
 ## <a name="next-steps"></a>Další kroky
 

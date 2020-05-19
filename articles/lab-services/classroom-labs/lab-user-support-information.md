@@ -1,23 +1,23 @@
 ---
 title: Azure Lab Services – zobrazení informací o podpoře (uživatel testovacího prostředí)
-description: Tento článek vysvětluje, jak může uživatel nebo instruktor testovacího prostředí zobrazit informace o podpoře, které může použít k získání pomoci.
+description: Tento článek vysvětluje, jak může uživatel testovacího prostředí nebo Educator zobrazit informace o podpoře, které může použít k získání pomoci.
 author: spelluru
 ms.author: spelluru
 ms.date: 02/14/2020
 ms.topic: how-to
 ms.service: lab-services
-ms.openlocfilehash: bd92d53e09774183edadff0f949820f8feec6180
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45cfc327f8534336ba2d9fb404a50e9bd530dccb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80109248"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585551"
 ---
 # <a name="view-support-information-lab-user-in-azure-lab-services"></a>Zobrazit informace o podpoře (uživatel testovacího prostředí v Azure Lab Services)
 Tento článek vysvětluje, jak vás (jako uživatel testovacího prostředí) může zobrazit následující informace o podpoře:
 
-- zprostředkovatele identity
-- E-mailu
+- URL
+- E-mail
 - Telefon
 - Další pokyny
 

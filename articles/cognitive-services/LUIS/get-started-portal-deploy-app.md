@@ -2,13 +2,13 @@
 title: 'Rychlý Start: nasazení aplikace pomocí portálu LUIS'
 description: V tomto rychlém startu se dozvíte, jak nasadit aplikaci vytvořením prostředku koncového bodu předpovědi, přiřazení prostředku, školení a publikování aplikace.
 ms.topic: quickstart
-ms.date: 04/06/2020
-ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/06/2020
+ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756303"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585054"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý Start: nasazení aplikace na portálu LUIS
 
@@ -30,7 +30,7 @@ V tomto rychlém startu se naučíte nasadit aplikaci. Vytvoříte prostředek k
 
 Pokaždé, když vytvoříte nový prostředek pro vytváření obsahu nebo předpovědi pro LUIS, je potřeba přiřadit prostředek k aplikaci LUIS. Po přiřazení Tento krok nebudete muset provádět znovu, dokud nevytvoříte nový prostředek. Můžete vytvořit nový prostředek pro rozšíření oblastí vaší aplikace nebo pro podporu většího počtu předpovědních dotazů.
 
-1. Přihlaste se k [portálu Luis verze Preview](https://preview.luis.ai) a v seznamu aplikací vyberte aplikaci **myEnglishApp** .
+1. Přihlaste se k [portálu Luis](https://www.luis.ai) a v seznamu aplikací vyberte aplikaci **myEnglishApp** .
 
 1. V pravé horní nabídce vyberte **Spravovat** a pak vyberte **prostředky Azure**.
 
@@ -44,10 +44,10 @@ Pokaždé, když vytvoříte nový prostředek pro vytváření obsahu nebo pře
 
 1. Při přidávání klíčového obsahu do aplikace proveďte stejný postup.
 
-1. Vyhledejte nový řádek v tabulce pro nový prostředek předpovědi a zkopírujte adresu URL koncového bodu. Je správně sestavena tak, aby `HTTP GET` vytvořila požadavek na koncový bod rozhraní API Luis pro předpověď.
+1. Vyhledejte nový řádek v tabulce pro nový prostředek předpovědi a zkopírujte adresu URL koncového bodu. Je správně sestavena tak, aby vytvořila `HTTP GET` požadavek na koncový bod rozhraní API Luis pro předpověď.
 
 > [!TIP]
-> Pokud máte v úmyslu k vylepšení aplikace LUIS používat aktivní výuku, vyberte možnost **změnit parametry dotazu** a vyberte **Uložit protokoly**. Tato akce změní ukázkovou adresu URL přidáním parametru `log=true` QueryString. Kopírování a použití změněné ukázkové adresy URL dotazu při provádění prediktivních dotazů na koncový bod modulu runtime.
+> Pokud máte v úmyslu k vylepšení aplikace LUIS používat aktivní výuku, vyberte možnost **změnit parametry dotazu** a vyberte **Uložit protokoly**. Tato akce změní ukázkovou adresu URL přidáním `log=true` parametru QueryString. Kopírování a použití změněné ukázkové adresy URL dotazu při provádění prediktivních dotazů na koncový bod modulu runtime.
 
 ## <a name="train-the-app"></a>Trénování aplikace
 
@@ -59,7 +59,7 @@ Pokaždé, když vytvoříte nový prostředek pro vytváření obsahu nebo pře
 
 ## <a name="prediction-endpoint-request"></a>Požadavek koncového bodu předpovědi
 
-Na konci adresy URL na `query=` portálu Preview je místo, kde se uživatel utterance připojí k žádosti o získání. Po zadání `query=`zadejte stejný utterance uživatele, který jste použili na konci předchozího rychlého startu:
+Na portálu na `query=` konci adresy URL je místo, kde se utterance uživatele připojí k žádosti o získání. Po `query=` zadání zadejte stejný utterance uživatele, který jste použili na konci předchozího rychlého startu:
 
 ```Is there a form named hrf-234098```
 

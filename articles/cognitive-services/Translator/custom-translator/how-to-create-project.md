@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5b3a6f2e903d8178554b7a076ae1277633569353
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e01f3ddde96903716cf1fcff0426791ff3a90e07
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73836569"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587659"
 ---
 # <a name="create-a-project"></a>Vytvoření projektu
 
@@ -52,7 +52,7 @@ Vytvoření projektu je prvním krokem k vytvoření modelu.
 
 Po výběru projektu se na stránce projektu zobrazí následující:
 
-- CategoryID: pole CategoryID je vytvořeno pomocí zřetězení ID pracovního prostoru, popisku projektu a kódu kategorie. K získání vlastních překladů použijete KódKategorie s rozhraním API pro překladatele textu.
+- CategoryID: pole CategoryID je vytvořeno pomocí zřetězení ID pracovního prostoru, popisku projektu a kódu kategorie. K získání vlastních překladů použijete KódKategorie pomocí textového překladatele.
 
 - Tlačítko Výuka: pomocí tohoto tlačítka můžete spustit [výuku modelu](how-to-train-model.md).
 

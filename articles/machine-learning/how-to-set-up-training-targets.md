@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: fc5d2b8f7673488169ee3ae393efcb74ef0a27a2
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: fd49d11061a345b396d300c2356645a2acd5b4c0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996451"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588118"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +56,7 @@ Přečtěte si další informace o [odesílání experimentů](#submit) na konci
 
 Pro usnadnění školení modelů pomocí oblíbených rozhraní Azure Machine Learning Python SDK nabízí alternativní abstrakci vyšší úrovně, třídu Estimator.  Tato třída umožňuje snadno vytvořit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odesílání školicích skriptů, které používají všechny vámi zvolené vzdělávací architektury (například scikit-učení). Doporučujeme používat Estimator pro školení, protože automaticky sestaví vložené objekty, jako je prostředí nebo RunConfiguration objekty. Pokud chcete mít větší kontrolu nad tím, jak jsou tyto objekty vytvořeny, a určete, jaké balíčky chcete nainstalovat pro váš experiment, postupujte podle [těchto kroků](#amlcompute) a odešlete své školicí experimenty pomocí objektu RunConfiguration ve výpočetním prostředí Azure Machine Learning.
 
-Pro úlohy PyTorch, TensorFlow a řetězení Azure Machine Learning poskytuje také příslušné [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)a [Chain](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) odhady pro zjednodušení používání těchto rozhraní.
+Azure Machine Learning poskytuje konkrétní odhady pro [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), [chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)a [Ray RLlib](how-to-use-reinforcement-learning.md).
 
 Další informace najdete v tématu o [modelech vlak ml pomocí odhady](how-to-train-ml-models.md).
 
@@ -182,7 +182,7 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
 
     Při vytváření clusteru je nutné zadat uživatelské jméno a heslo SSH. Tyto hodnoty si poznamenejte, protože je budete potřebovat k použití HDInsight jako cíle výpočtů.
     
-    Po vytvoření clusteru se k němu připojte pomocí názvu hostitele \<název_clusteru>-SSH.azurehdinsight.NET, kde \<název_clusteru> je název, který jste zadali pro cluster. 
+    Po vytvoření clusteru se k němu připojte pomocí \< názvu hostitele název_clusteru>-SSH.azurehdinsight.NET, kde \< název_clusteru> je název, který jste zadali pro cluster. 
 
 1. **Připojit**: Pokud chcete připojit cluster HDInsight jako cíl výpočetní služby, musíte zadat ID prostředku, uživatelské jméno a heslo pro cluster HDInsight. ID prostředku clusteru HDInsight se dá vytvořit pomocí ID předplatného, názvu skupiny prostředků a názvu clusteru HDInsight pomocí následujícího formátu řetězce:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
@@ -393,7 +393,7 @@ Přepněte stejný experiment ke spuštění v jiném výpočetním cíli pomoc�
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
 > [!TIP]
-> Tento příklad standardně používá jenom jeden uzel výpočetního cíle pro školení. Chcete-li použít více než jeden uzel, `node_count` nastavte konfiguraci spuštění na požadovaný počet uzlů. Například následující kód nastaví počet uzlů používaných pro školení na čtyři:
+> Tento příklad standardně používá jenom jeden uzel výpočetního cíle pro školení. Chcete-li použít více než jeden uzel, nastavte `node_count` konfiguraci spuštění na požadovaný počet uzlů. Například následující kód nastaví počet uzlů používaných pro školení na čtyři:
 >
 > ```python
 > src.run_config.node_count = 4
@@ -409,7 +409,7 @@ Další informace najdete v dokumentaci k [ScriptRunConfig](https://docs.microso
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Vytvoření konfigurace spuštění a odeslání běhu pomocí Azure Machine Learning CLI
 
-Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a [rozšíření CLI Machine Learning](reference-azure-machine-learning-cli.md) můžete vytvářet konfigurace spouštění a odesílat běhy na různých výpočetních cílech. V následujících příkladech se předpokládá, že máte existující pracovní prostor Azure Machine Learning a jste se přihlásili k `az login` Azure pomocí příkazu CLI. 
+Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a [rozšíření CLI Machine Learning](reference-azure-machine-learning-cli.md) můžete vytvářet konfigurace spouštění a odesílat běhy na různých výpočetních cílech. V následujících příkladech se předpokládá, že máte existující pracovní prostor Azure Machine Learning a jste se přihlásili k Azure pomocí `az login` příkazu CLI. 
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
@@ -484,7 +484,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 Všimněte si oddílu *argumenty* v RunConfig a *prostoru parametrů* v souboru Hyperdrive config. Obsahují argumenty příkazového řádku, které se mají předat skriptu pro školení. Hodnota v RunConfig zůstává pro každou iteraci stejná, zatímco rozsah v HyperDrive config se prochází. Nezadávejte v obou souborech stejný argument.
 
-Další podrobnosti o těchto ```az ml``` příkazech rozhraní příkazového řádku najdete v [referenční dokumentaci](reference-azure-machine-learning-cli.md).
+Další podrobnosti o těchto příkazech rozhraní příkazového ```az ml``` řádku najdete v [referenční dokumentaci](reference-azure-machine-learning-cli.md).
 
 <a id="gitintegration"></a>
 

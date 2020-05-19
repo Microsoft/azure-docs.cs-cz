@@ -1,21 +1,14 @@
 ---
 title: Typ entity regulárního výrazu – LUIS
-titleSuffix: Azure Cognitive Services
 description: Regulární výraz je nejvhodnější pro nezpracovaný utterance text. Ignoruje velikost písmen a ignoruje kulturní variantu.  Pro porovnání regulárních výrazů se použije po změnách kontroly pravopisu na úrovni znaků, nikoli na úrovni tokenu.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 90260fca10fc087225f6b1286e9fa2dd6d17c836
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74841213"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585602"
 ---
 # <a name="regular-expression-entity"></a>Entiay regulárního výrazu
 
@@ -32,13 +25,13 @@ Regulární výraz je nejvhodnější pro nezpracovaný utterance text. Ignoruje
 
 ## <a name="usage-considerations"></a>Požadavky na využití
 
-Regulární výrazy mohou odpovídat více, než očekáváte shodu. Příkladem je číselné porovnání slov, například `one` a. `two` Příkladem je následující regulární výraz, který odpovídá číslu `one` spolu s jinými čísly:
+Regulární výrazy mohou odpovídat více, než očekáváte shodu. Příkladem je číselné porovnání slov, například `one` a `two` . Příkladem je následující regulární výraz, který odpovídá číslu `one` spolu s jinými čísly:
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
 ```
 
-Tento výraz regulárního výrazu také odpovídá všem slovům, která končí těmito čísly, například `phone`. Aby bylo možné tyto problémy vyřešit, ujistěte se, že regulární výraz odpovídá hranicím slova v účtu. Regulární výraz pro použití hranice slov pro tento příklad se používá v následujícím regulárním výrazu:
+Tento výraz regulárního výrazu také odpovídá všem slovům, která končí těmito čísly, například `phone` . Aby bylo možné tyto problémy vyřešit, ujistěte se, že regulární výraz odpovídá hranicím slova v účtu. Regulární výraz pro použití hranice slov pro tento příklad se používá v následujícím regulárním výrazu:
 
 ```javascript
 \b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
@@ -46,7 +39,7 @@ Tento výraz regulárního výrazu také odpovídá všem slovům, která konč�
 
 ### <a name="example-json"></a>Ukázkový kód JSON
 
-Při použití `kb[0-9]{6}`jako definice entity regulárního výrazu je následující odpověď JSON příkladem utterance s vrácenými entitami regulárních výrazů pro dotaz:
+Při použití `kb[0-9]{6}` jako definice entity regulárního výrazu je následující odpověď JSON příkladem utterance s vrácenými entitami regulárních výrazů pro dotaz:
 
 `When was kb123456 published?`:
 
@@ -67,7 +60,7 @@ Při použití `kb[0-9]{6}`jako definice entity regulárního výrazu je násled
 #### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 
-Toto je kód JSON, `verbose=false` Pokud je nastaven v řetězci dotazu:
+Toto je kód JSON, pokud `verbose=false` je nastaven v řetězci dotazu:
 
 ```json
 "entities": {
@@ -77,7 +70,7 @@ Toto je kód JSON, `verbose=false` Pokud je nastaven v řetězci dotazu:
 }
 ```
 
-Toto je kód JSON, `verbose=true` Pokud je nastaven v řetězci dotazu:
+Toto je kód JSON, pokud `verbose=true` je nastaven v řetězci dotazu:
 
 ```json
 "entities": {
@@ -106,4 +99,7 @@ Toto je kód JSON, `verbose=true` Pokud je nastaven v řetězci dotazu:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto [kurzu](tutorial-regex-entity.md)vytvoříte aplikaci, která extrahuje konzistentně formátovaná data z utterance pomocí entity **regulárního výrazu** .
+Další informace o entitách:
+
+* [Koncepty](luis-concept-entity-types.md)
+* [Postup vytvoření](luis-how-to-add-entities.md)

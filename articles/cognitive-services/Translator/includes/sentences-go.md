@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 9aecaa6195509ec4c1f0d6b4b14b9bb30817da34
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 758bd9b424146d62ab64f9721c67af4910e006e1
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906866"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586707"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>Vytvoření funkce main
 
-Tato ukázka se pokusí přečíst klíč předplatného Translator Text a koncový bod z těchto proměnných prostředí `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` : `TRANSLATOR_TEXT_ENDPOINT`a. Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscriptionKey` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
+Tato ukázka se pokusí přečíst klíč předplatného vašeho převaděče a koncový bod z těchto proměnných prostředí: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` a `TRANSLATOR_TEXT_ENDPOINT` . Pokud nejste obeznámeni s proměnnými prostředí, můžete nastavit `subscriptionKey` a `endpoint` jako řetězce a komentovat podmíněné příkazy.
 
 Zkopírujte do svého projektu tento kód:
 
@@ -67,7 +67,7 @@ func main() {
 
 ## <a name="create-a-function-to-determine-sentence-length"></a>Vytvoření funkce pro určení délky věty
 
-Pojďme vytvořit funkci, která určí délku věty. Tato funkce bude mít jeden argument, Translator Text klíč předplatného.
+Pojďme vytvořit funkci, která určí délku věty. Tato funkce bude mít jeden argument, váš klíč předplatného překladatele.
 
 ```go
 func breakSentence(subscriptionKey string, uri string)
@@ -78,7 +78,7 @@ func breakSentence(subscriptionKey string, uri string)
 }
 ```
 
-Nyní vytvoříme adresu URL. Adresa URL je sestavena pomocí `Parse()` metod `Query()` a. Všimněte si, že parametry jsou přidány s `Add()` metodou.
+Nyní vytvoříme adresu URL. Adresa URL je sestavena pomocí `Parse()` `Query()` metod a. Všimněte si, že parametry jsou přidány s `Add()` metodou.
 
 Zkopírujte tento kód do `breakSentence` funkce.
 
@@ -91,11 +91,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Další informace o koncových bodech, trasách a parametrech požadavků najdete v článku [Translator Text API 3,0: BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+> Další informace o koncových bodech, trasách a parametrech požadavků naleznete v tématu [Translator 3,0: BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
 ## <a name="create-a-struct-for-your-request-body"></a>Vytvoření struktury pro tělo žádosti
 
-Dále vytvořte anonymní strukturu pro text žádosti a zakódovat ji jako JSON pomocí `json.Marshal()`. Přidejte tento kód do `breakSentence` funkce.
+Dále vytvořte anonymní strukturu pro text žádosti a zakódovat ji jako JSON pomocí `json.Marshal()` . Přidejte tento kód do `breakSentence` funkce.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -109,7 +109,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>Sestavení požadavku
 
-Teď, když jste zakódovi tělo požadavku jako JSON, můžete sestavit požadavek POST a zavolat Translator Text API.
+Teď, když jste zakódovi tělo požadavku jako JSON, můžete sestavit požadavek POST a volat překladatele.
 
 ```go
 // Build the HTTP POST request
@@ -121,7 +121,7 @@ if err != nil {
 req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -147,7 +147,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-To je vše, sestavili jste jednoduchý program, který zavolá službu Translator Text API a vrátí odpověď JSON. Teď je čas program spustit:
+To je to, že jste připravili jednoduchý program, který bude volat překladatele a vrátil odpověď JSON. Teď je čas program spustit:
 
 ```console
 go run sentence-length.go
@@ -175,7 +175,7 @@ Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s Translator Text API dělat.
+Podívejte se na reference k rozhraní API, abyste porozuměli všem, co můžete s překladatelem dělat.
 
 > [!div class="nextstepaction"]
 > [referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
