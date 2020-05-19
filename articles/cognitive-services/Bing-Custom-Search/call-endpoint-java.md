@@ -8,32 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 02c86e5a4c1a04b98ebba73653980e8e5e00f645
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7c9f713d50e31557999c9127cd219bfe9b3a8c82
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238878"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199862"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí jazyka Java
 
-Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu. I když je tato aplikace napsaná v jazyce Java, rozhraní API pro vlastní vyhledávání Bingu je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
+V tomto rychlém startu se dozvíte, jak vyžádat výsledky hledání z vaší instance Vlastní vyhledávání Bingu. I když je tato aplikace napsaná v jazyce Java, rozhraní API pro vlastní vyhledávání Bingu je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](quick-start.md) .
+- Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](quick-start.md).
 
-- Nejnovější [sada Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+- Nejnovější [sada Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-- [Knihovna Gson](https://github.com/google/gson)
+- [Knihovna gson](https://github.com/google/gson)
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java a naimportujte následující knihovny.
+1. V oblíbených IDE nebo editoru vytvořte nový projekt Java a importujte následující knihovny:
 
     ```java
     import java.io.InputStream;
@@ -50,7 +50,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
     import com.google.gson.JsonParser;
     ```
 
-2. Vytvořte třídu s názvem `CustomSrchJava`a vytvořte proměnné pro klíč předplatného, vlastní koncový bod vyhledávání a ID vlastní konfigurace vaší instance hledání. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte třídu s názvem `CustomSrchJava` a pak vytvořte proměnné pro klíč předplatného, vlastní koncový bod hledání a ID vlastní konfigurace instance hledání. Můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -61,7 +61,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
     ...
     ```
 
-3. Vytvořte další třídu s `SearchResults` názvem, aby obsahovala odpověď z vaší instance vlastní vyhledávání Bingu.
+3. Vytvořte další třídu s názvem `SearchResults` , aby obsahovala odpověď z vaší instance vlastní vyhledávání Bingu.
 
     ```csharp
     class SearchResults{
@@ -88,7 +88,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
 
 ## <a name="send-and-receive-a-search-request"></a>Odeslání a přijetí žádosti o vyhledávání 
 
-1. Vytvořte funkci s názvem `SearchWeb()` , která odešle požadavek a vrátí `SearchResults` objekt. Vytvořte adresu URL požadavku kombinováním vlastního ID konfigurace, dotazu a informací o koncovém bodu. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného.
+1. Vytvořte funkci s názvem `SearchWeb()` , která odešle požadavek a vrátí `SearchResults` objekt. Vytvořte adresu URL požadavku kombinováním vlastního ID konfigurace, dotazu a informací o koncovém bodu. Přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` .
 
     ```java
     public class CustomSrchJava {
@@ -120,7 +120,7 @@ Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání 
         }
     ```
 
-3. V metodě Main vaší aplikace zavolejte `SearchWeb()` hledaný výraz, 
+3. Vytiskněte odpověď JSON.
 
     ```java
     System.out.println("\nJSON Response:\n");

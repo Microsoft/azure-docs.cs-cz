@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 6d9ceac5a63a7a644989430b0349a16369c7133a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8018fa3935e780f8c4002483c5eebdade82b5f1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478621"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119028"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API a C #
 
-V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání rozhraní API Bingu pro vyhledávání obrázků. Tato aplikace v jazyce C# odešle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu se dozvíte, jak odesílat rozhraní API Bingu pro vyhledávání obrázků žádosti o vyhledávání. Tato aplikace v jazyce C# odešle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) s dalšími zpracováním chyb a poznámkami.
 
@@ -32,7 +32,7 @@ Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/A
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nové konzolové řešení s názvem `BingSearchApisQuickStart` v sadě Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
+1. Vytvořte nové řešení konzoly s názvem `BingSearchApisQuickStart` v aplikaci Visual Studio. Pak přidejte následující obory názvů do hlavního souboru kódu:
 
     ```csharp
     using System;
@@ -42,7 +42,7 @@ Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/A
     using Newtonsoft.Json.Linq;
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a hledaný výraz. `uriBase`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a hledaný výraz. V případě `uriBase` můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```csharp
     //...
@@ -59,7 +59,7 @@ Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/A
 
 ## <a name="create-a-struct-to-format-the-bing-image-search-response"></a>Vytvoření struktury pro formátování odpovědi vyhledávání obrázků Bingu
 
-Definujte strukturu `SearchResult` tak, aby obsahovala výsledky hledání obrázků, a informace v hlavičce JSON.
+Definujte `SearchResult` strukturu, která bude obsahovat informace o výsledcích hledání obrázků a záhlaví JSON.
 
 ```csharp
     namespace BingSearchApisQuickstart
@@ -77,7 +77,7 @@ Definujte strukturu `SearchResult` tak, aby obsahovala výsledky hledání obrá
 
 ## <a name="create-a-method-to-send-search-requests"></a>Vytvoření metody k odesílání žádostí o vyhledávání
 
-Vytvořte metodu s názvem `BingImageSearch`, která provede volání rozhraní API a nastaví typ vrácení na strukturu `SearchResult` vytvořenou dříve.
+Vytvořte metodu nazvanou `BingImageSearch` k provedení volání rozhraní API a nastavte návratový typ na `SearchResult` strukturu vytvořenou dříve.
 
 ```csharp
 //...
@@ -95,9 +95,9 @@ namespace BingSearchApisQuickstart
 
 ## <a name="create-and-handle-an-image-search-request"></a>Vytvoření a zpracování žádostí o vyhledávání obrázků
 
-V metodě `BingImageSearch` proveďte následující kroky.
+V `BingImageSearch` metodě proveďte následující kroky:
 
-1. Sestavte URI pro žádost o vyhledávání. Hledaný termín `SearchTerm` musí být před připojením k řetězci zformátován.
+1. Sestavte URI pro žádost o vyhledávání. Formátování `SearchTerm` hledaného termínu před jeho připojením k řetězci.
 
     ```csharp
     static SearchResult BingImageSearch(string SearchTerm){
@@ -115,7 +115,7 @@ V metodě `BingImageSearch` proveďte následující kroky.
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
     ```
 
-3. Vytvořte objekt výsledků hledání a extrahujte hlavičky HTTP Bingu. Pak vraťte `searchResult`.
+3. Vytvořte objekt výsledků hledání a rozbalte záhlaví HTTP Bingu. Pak vraťte `searchResult` .
 
     ```csharp
     // Create the result object for return
@@ -136,7 +136,7 @@ V metodě `BingImageSearch` proveďte následující kroky.
 
 ## <a name="process-and-view-the-response"></a>Zpracování a zobrazení odpovědi
 
-1. V hlavní metodě volejte `BingImageSearch()` a uložte vrácenou odpověď. Potom deserializujte JSON na objekt.
+1. V hlavní metodě volejte `BingImageSearch()` a uložte vrácenou odpověď. Poté deserializovat JSON na objekt.
 
     ```csharp
     SearchResult result = BingImageSearch(searchTerm);
@@ -208,9 +208,9 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JS
 
 ## <a name="see-also"></a>Viz také
 
-* [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) pro rozhraní API pro vyhledávání Bingu. 
-* [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Dokumentace k Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
-* [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Co je rozhraní API Bingu pro vyhledávání obrázků?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Vyzkoušejte online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/).
+* [Podrobnosti o cenách pro rozhraní API pro vyhledávání Bingu](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
+* [Získejte bezplatný Cognitive Services přístupový klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).
+* [Dokumentace k Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services).
+* [Odkaz na rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

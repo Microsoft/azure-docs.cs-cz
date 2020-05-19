@@ -155,7 +155,7 @@ function tradePlayers(playerId1, playerId2) {
 
 ### <a name="bounded-execution-within-stored-procedures"></a><a id="bounded-execution"></a>Vázané spuštění v uložených procedurách
 
-Následuje příklad uložené procedury, která hromadně importuje položky do kontejneru Azure Cosmos. Uložená procedura zpracovává ohraničené spouštění kontrolou návratové hodnoty Boolean z `createDocument`a poté používá počet položek vložených do každého vyvolání uložené procedury ke sledování a obnovení průběhu napříč dávkami.
+Následuje příklad uložené procedury, která hromadně importuje položky do kontejneru Azure Cosmos. Uložená procedura zpracovává ohraničené spouštění kontrolou návratové hodnoty Boolean z `createDocument` a poté používá počet položek vložených do každého vyvolání uložené procedury ke sledování a obnovení průběhu napříč dávkami.
 
 ```javascript
 function bulkImport(items) {
@@ -287,7 +287,7 @@ function validateToDoItemTimestamp() {
 
 Triggery před akcí nesmí mít žádné vstupní parametry. Objekt Request v triggeru slouží k manipulaci s požadavkem na zprávu s žádostí přidruženou k operaci. V předchozím příkladu se předběžná Trigger spouští při vytváření položky Azure Cosmos a tělo zprávy požadavku obsahuje položku, která se má vytvořit ve formátu JSON.
 
-Pokud jsou triggery registrovány, můžete zadat operace, se kterými může běžet. Tato aktivační událost by měla být vytvořena `TriggerOperation` s hodnotou `TriggerOperation.Create`, což znamená, že pomocí triggeru v operaci nahrazení, jak je znázorněno v následujícím kódu, není povoleno.
+Pokud jsou triggery registrovány, můžete zadat operace, se kterými může běžet. Tato aktivační událost by měla být vytvořena s `TriggerOperation` hodnotou `TriggerOperation.Create` , což znamená, že pomocí triggeru v operaci nahrazení, jak je znázorněno v následujícím kódu, není povoleno.
 
 Příklady, jak registrovat a volat předběžnou aktivační událost, najdete v článcích [před triggerem](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) a [po triggerech](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) . 
 
@@ -364,9 +364,9 @@ function tax(income) {
 
 Příklady, jak registrovat a používat uživatelsky definovanou funkci, najdete [v tématu použití uživatelsky definovaných funkcí v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs) článku.
 
-## <a name="logging"></a>protokolování 
+## <a name="logging"></a>Protokolování 
 
-Při použití uložené procedury, triggerů nebo uživatelsky definovaných funkcí můžete pomocí `console.log()` příkazu zaprotokolovat kroky. Tento příkaz zachová řetězec pro ladění, pokud `EnableScriptLogging` je nastaven na hodnotu true, jak je znázorněno v následujícím příkladu:
+Při použití uložené procedury, triggerů nebo uživatelsky definovaných funkcí můžete pomocí příkazu zaprotokolovat kroky `console.log()` . Tento příkaz zachová řetězec pro ladění, pokud `EnableScriptLogging` je nastaven na hodnotu true, jak je znázorněno v následujícím příkladu:
 
 ```javascript
 var response = await client.ExecuteStoredProcedureAsync(

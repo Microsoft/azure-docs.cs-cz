@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: 69ff58d6cdabe49000b00afecfc6b4ad1a3f2daa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a7e0cb41f32a60e4f00cb60cc3c86e40ab926785
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76841842"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735126"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Kurz: Vytvoření aplikace pro iOS, která spustí moderní čtečku s obsahem z fotky (SWIFT)
 
@@ -22,9 +22,9 @@ ms.locfileid: "76841842"
 
 [Rozhraní API pro čtení Počítačové zpracování obrazu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) detekuje textový obsah v imagi pomocí nejnovějších modelů rozpoznávání od Microsoftu a převede identifikovaný text na datový proud znaků, který je strojově čitelný.
 
-V tomto kurzu vytvoříte aplikaci pro iOS od začátku a integrujete rozhraní API pro čtení a moderní čtečku s využitím sady moderní čtečky. Kompletní pracovní ukázka tohoto kurzu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/picture-to-immersive-reader-swift).
+V tomto kurzu vytvoříte aplikaci pro iOS od začátku a integrujete rozhraní API pro čtení a moderní čtečku s využitím sady moderní čtečky. Kompletní pracovní ukázka tohoto kurzu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,14 +46,14 @@ Vyberte **aplikaci s jedním zobrazením**.
 Nejjednodušší způsob, jak použít sadu moderního čtecího zařízení sady SDK, je prostřednictvím CocoaPods. Instalace prostřednictvím Cocoapods:
 1. [Instalace CocoaPods](http://guides.cocoapods.org/using/getting-started.html) – postupujte podle příručky Začínáme a nainstalujte CocoaPods.
 2. Vytvořte souboru podfile spuštěním `pod init` v kořenovém adresáři vašeho projektu Xcode.
-3.  Přidejte CocoaPod do svého souboru podfile přidáním `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'`. Váš souboru podfile by měl vypadat jako na následujícím obrázku s názvem vašeho cíle, který nahrazuje obrázkový a rychlý čtenář – SWIFT:
+3.  Přidejte CocoaPod do svého souboru podfile přidáním `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'` . Váš souboru podfile by měl vypadat jako na následujícím obrázku s názvem vašeho cíle, který nahrazuje obrázkový a rychlý čtenář – SWIFT:
  ```ruby
   platform :ios, '9.0'
 
   target 'picture-to-immersive-reader-swift' do
   use_frameworks!
   # Pods for picture-to-immersive-reader-swift
-  pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'
+  pod 'immersive-reader-sdk', :git => 'https://github.com/microsoft/immersive-reader-sdk.git'
   end
 ```
 4. V terminálu v adresáři projektu Xcode spusťte příkaz `pod install` pro instalaci sady moderní čtečka SDK pod.

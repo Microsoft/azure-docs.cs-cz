@@ -8,19 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: b3f279ea50e9923e63f7d6090f4dbaca939eb16c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d1c2da10270747aa09ecbcfdc537df567b4cdfc9
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238968"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929651"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Rychlý Start: návrh vyhledávacích dotazů pomocí Automatické návrhy Bingu REST API a Java
 
-
-Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automatické návrhy Bingu a získat odpověď JSON. Tato jednoduchá aplikace Java pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java) .
+V tomto rychlém startu se dozvíte, jak volat rozhraní API pro automatické návrhy Bingu a číst odpověď JSON. Tato jednoduchá aplikace Java pošle do rozhraní API částečný vyhledávací dotaz a vrátí návrhy pro hledání. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,7 +43,7 @@ Pomocí tohoto rychlého startu můžete začít volat rozhraní API pro automat
     import com.google.gson.JsonParser;
     ```
 
-2. Vytvořte proměnné pro svůj klíč předplatného, hostitele rozhraní API a cestu, [kód na trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a vyhledávací dotaz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro svůj klíč předplatného, hostitele rozhraní API a cestu, [kód na trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a vyhledávací dotaz. Použijte globální koncový bod nebo použijte vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -84,7 +83,7 @@ public static String prettify(String json_text) {
       }
       ```
     
-   2. Vytvořte novou adresu URL pro požadavek s hostitelem rozhraní API, cestou a parametry vytvořenými výše. 
+   2. Vytvořte novou adresu URL pro požadavek s hostitelem rozhraní API, cestou a parametry, které jste vytvořili v předchozím kroku. 
     
        ```java
        //...
@@ -92,7 +91,7 @@ public static String prettify(String json_text) {
        //...
        ```
     
-   3. Vytvořte `HttpsURLConnection` objekt a použijte `openConnection()` k vytvoření připojení. Nastavte metodu Request na `GET`a přidejte do `Ocp-Apim-Subscription-Key` hlavičky klíč předplatného.
+   3. Vytvořte `HttpsURLConnection` objekt a použijte `openConnection()` k vytvoření připojení. Nastavte metodu Request na `GET` a přidejte do hlavičky klíč předplatného `Ocp-Apim-Subscription-Key` .
 
       ```java
        //...
@@ -103,7 +102,7 @@ public static String prettify(String json_text) {
        //...
       ```
 
-   4. Přečtěte si v odpovědi rozhraní API `StringBuilder`na. Po zachycení odpovědi zavřete `InputStreamReader` datový proud a vraťte odpověď.
+   4. Uložte odpověď rozhraní API do `StringBuilder` . Po zachycení odpovědi zavřete `InputStreamReader` datový proud a vraťte odpověď.
 
        ```java
        //...
@@ -119,7 +118,7 @@ public static String prettify(String json_text) {
        return response.toString();
        ```
 
-2. V hlavní funkci aplikace zavolejte `get_suggestions()`a vytiskněte odpověď pomocí. `prettify()`
+2. V hlavní funkci aplikace zavolejte `get_suggestions()` a vytiskněte odpověď pomocí `prettify()` .
     
     ```java
     public static void main(String[] args) {

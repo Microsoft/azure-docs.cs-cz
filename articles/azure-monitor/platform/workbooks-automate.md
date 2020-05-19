@@ -39,7 +39,7 @@ Existují dva typy prostředků sešitu, které lze spravovat prostřednictvím 
 
     ![Karta šablony galerie](./media/workbooks-automate/gallery-template.png)
 1. Zkopírujte kód JSON v šabloně galerie do schránky.
-2. Níže je příklad šablony Azure Resource Manager, která nasadí šablonu sešitu do Azure Monitor Galerie sešitů. Vložte JSON, který jste zkopírovali místo `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`. Odkaz na Azure Resource Manager šablonu, která vytvoří šablonu sešitu, najdete [tady](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template).
+2. Níže je příklad šablony Azure Resource Manager, která nasadí šablonu sešitu do Azure Monitor Galerie sešitů. Vložte JSON, který jste zkopírovali místo `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>` . Odkaz na Azure Resource Manager šablonu, která vytvoří šablonu sešitu, najdete [tady](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template).
 
     ```json
     {
@@ -77,7 +77,7 @@ Existují dva typy prostředků sešitu, které lze spravovat prostřednictvím 
         ]
     }
     ```
-1. V `galleries` objektu vyplňte pomocí vašich hodnot `name` klíče `category` a. Další informace o [parametrech](#parameters) najdete v další části.
+1. V `galleries` objektu vyplňte `name` `category` pomocí vašich hodnot klíče a. Další informace o [parametrech](#parameters) najdete v další části.
 2. Tuto šablonu Azure Resource Manager nasaďte buď pomocí [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), [rozhraní příkazového řádku](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)atd.
 3. Otevřete Azure Portal a přejděte do galerie sešitů zvolené v šabloně Azure Resource Manager. V ukázkové šabloně přejděte do galerie Azure Monitorového sešitu:
     1. Otevřete Azure Portal a přejděte do Azure Monitor
@@ -193,7 +193,7 @@ V této šabloně se dozvíte, jak nasadit jednoduchý sešit, který zobrazuje 
 | Parametr | Vysvětlení |
 | :------------- |:-------------|
 | `workbookDisplayName` | Popisný název sešitu, který se používá v galerii nebo v seznamu uložených souborů. Musí být jedinečný v rozsahu skupiny prostředků a zdroje. |
-| `workbookType` | Galerie, pod kterou se sešit zobrazí Mezi podporované hodnoty patří sešit `tsg`,, Azure monitor atd. |
+| `workbookType` | Galerie, pod kterou se sešit zobrazí Mezi podporované hodnoty patří sešit, `tsg` , Azure monitor atd. |
 | `workbookSourceId` | ID instance prostředku, ke které bude sešit přidružen Nový sešit se zobrazí v souvislosti s touto instancí prostředků, například v tabulce obsahu prostředku v části _sešit_. Pokud chcete, aby se váš sešit zobrazoval v galerii sešitů v Azure Monitor, použijte místo ID prostředku _Azure monitor_ řetězce. |
 | `workbookId` | Jedinečný identifikátor GUID pro tuto instanci sešitu K automatickému vytvoření nového identifikátoru GUID použijte _[newGuid ()]_ . |
 | `kind` | Slouží k určení, jestli je vytvořený sešit sdílený nebo soukromý. Použijte hodnotu _sdílenou_ pro sdílené sešity a _uživatele_ pro soukromé objekty. |
@@ -210,7 +210,7 @@ Typy sešitu: Určete, v jakém typu Galerie sešitů se bude nová instance se�
 | `usage` | _Další_ galerie v části _použití_ v Application Insights |
 
 ### <a name="limitations"></a>Omezení
-Z technického důvodu Tento mechanismus nelze použít k vytvoření instancí sešitu v galerii _sešitů_ Application Insights. Pracujeme na řešení tohoto omezení. Mezitím doporučujeme, abyste použili galerii Průvodce odstraňováním potíží (workbookType: `tsg`) k nasazení Application Insights souvisejících sešitů.
+Z technického důvodu Tento mechanismus nelze použít k vytvoření instancí sešitu v galerii _sešitů_ Application Insights. Pracujeme na řešení tohoto omezení. Mezitím doporučujeme, abyste použili galerii Průvodce odstraňováním potíží (workbookType: `tsg` ) k nasazení Application Insights souvisejících sešitů.
 
 ## <a name="next-steps"></a>Další kroky
 

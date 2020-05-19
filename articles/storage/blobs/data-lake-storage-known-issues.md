@@ -111,7 +111,7 @@ Pokud byl kontejneru udělen [přístup anonymního přístupu pro čtení](stor
 
 ### <a name="diagnostic-logs"></a>Diagnostické protokoly
 
-Diagnostické protokoly nelze zatím povolit pomocí Azure Portal. Můžete je povolit pomocí prostředí PowerShell. Příklad:
+Diagnostické protokoly nelze zatím povolit pomocí Azure Portal. Můžete je povolit pomocí prostředí PowerShell. Například:
 
 ```powershell
 #To login

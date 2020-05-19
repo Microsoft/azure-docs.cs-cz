@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: c16bd728fe81796d671762615ec8dc4ad6e1d87d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 05/19/2020
 ms.locfileid: "83123729"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
@@ -22,7 +22,7 @@ Zjistěte, jak vytvořit funkci aktivovanou při přidání nebo změně dat ve 
 
 Pro absolvování tohoto kurzu potřebujete:
 
-+ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
++ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
@@ -60,9 +60,9 @@ Dál vytvoříte v nové aplikaci Function App funkci.
     | **Nová funkce** | Přijměte výchozí název. | Název funkce |
     | **Připojení účtu databáze Cosmos DB** | Přijměte výchozí nový název. | Vyberte **Nový**, **databázový účet** , který jste vytvořili dříve, a pak klikněte na **OK**. Tato akce vytvoří nastavení aplikace pro připojení k účtu. Toto nastavení vazba použije k připojení k databázi. |
     | **Název databáze** | Úlohy | Název databáze, která obsahuje kolekci, která se má monitorovat |
-    | **Název kolekce** | Items | Název kolekce, která se má monitorovat |
+    | **Název kolekce** | Items (Položky) | Název kolekce, která se má monitorovat |
     | **Název kolekce pro zapůjčení** | leases | Název kolekce, do které se mají ukládat zapůjčení |
-    | **Vytvořit kolekci zapůjčení, pokud neexistuje** | Ano | Kontroluje existenci kolekce zapůjčení a automaticky ji vytvoří. |
+    | **Vytvořit kolekci zapůjčení, pokud neexistuje** | Yes | Kontroluje existenci kolekce zapůjčení a automaticky ji vytvoří. |
 
     :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Vytvoření funkce aktivované službou Azure Cosmos DB":::
 
@@ -99,7 +99,7 @@ V dalším kroku se připojíte k účtu Azure Cosmos DB a vytvoříte `Items` k
     | Nastavení|Navrhovaná hodnota|Popis |
     | ---|---|--- |
     | **ID databáze** | Úlohy |Název nové databáze. Musí se shodovat s názvem definovaným ve vazbě vaší funkce. |
-    | **ID kontejneru** | Items | Název nového kontejneru. Musí se shodovat s názvem definovaným ve vazbě vaší funkce.  |
+    | **ID kontejneru** | Items (Položky) | Název nového kontejneru. Musí se shodovat s názvem definovaným ve vazbě vaší funkce.  |
     | **[Klíč oddílu](../cosmos-db/partition-data.md)** | /kategorie|Klíč oddílu, který rovnoměrně distribuuje data do jednotlivých oddílů. Výběr správného klíče oddílu je důležitý při vytváření výkonného kontejneru. | 
     | **Propustnost** |400 RU| Použijte výchozí hodnotu. Pokud budete chtít snížit latenci, můžete propustnost později navýšit. |    
 

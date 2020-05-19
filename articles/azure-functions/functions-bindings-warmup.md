@@ -38,7 +38,7 @@ Všimněte si, že Trigger zahřívání je volán pouze během operací škálo
 
 ## <a name="trigger---example"></a>Aktivační procedura – příklad
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která se spustí na každé nové instanci při přidání do aplikace. Atribut návratové hodnoty není povinný.
 
@@ -96,7 +96,7 @@ Tady je soubor *Function. JSON* :
 
 Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#trigger---configuration) .
 
-Tady je kód skriptu C#, ke kterému se `HttpRequest`váže:
+Tady je kód skriptu C#, ke kterému se váže `HttpRequest` :
 
 ```cs
 public static void Run(ILogger log)
@@ -185,13 +185,13 @@ public void run( ExecutionContext context) {
 
 ## <a name="trigger---attributes"></a>Aktivační atributy
 
-V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)je `WarmupTrigger` atribut k dispozici pro konfiguraci funkce.
+V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md) `WarmupTrigger` je atribut k dispozici pro konfiguraci funkce.
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Tento příklad ukazuje, jak použít atribut [zahřívání](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) .
 
-Všimněte si, že funkce musí být ```Warmup``` volána a může být pouze jedna zahřívání funkce na aplikaci.
+Všimněte si, že funkce musí být volána ```Warmup``` a může být pouze jedna zahřívání funkce na aplikaci.
 
 ```csharp
  [FunctionName("Warmup")]
@@ -228,9 +228,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-| **textový** | neuvedeno| Požadováno – musí být nastavené `warmupTrigger`na. |
-| **direction** | neuvedeno| Požadováno – musí být nastavené `in`na. |
-| **Jméno** | neuvedeno| Požadováno – název proměnné použitý v kódu funkce.|
+| **textový** | Není k dispozici| Požadováno – musí být nastavené na `warmupTrigger` . |
+| **direction** | Není k dispozici| Požadováno – musí být nastavené na `in` . |
+| **Jméno** | Není k dispozici| Požadováno – název proměnné použitý v kódu funkce.|
 
 ## <a name="trigger---usage"></a>Aktivační událost – využití
 

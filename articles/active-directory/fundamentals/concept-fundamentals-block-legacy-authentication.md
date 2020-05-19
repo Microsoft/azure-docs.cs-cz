@@ -100,4 +100,4 @@ Postup povolení moderního ověřování najdete v následujících článcích
 
 - [Jak nakonfigurovat místní Exchange Server tak, aby používal hybridní moderní ověřování](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [Jak používat moderní ověřování (ADAL) se Skypem pro firmy](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
-- [Blokování starší verze ověřování](../conditional-access/block-legacy-authentication.md)
+- [Blokovat starší verze ověřování](../conditional-access/block-legacy-authentication.md)

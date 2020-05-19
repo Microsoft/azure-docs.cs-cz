@@ -2,13 +2,13 @@
 title: Konfigurace služby Personalizace
 description: Konfigurace služby zahrnuje způsob, jakým služba zpracovává ceny, jak často se služba zkoumá, jak často se model překládá a kolik dat se ukládá.
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/29/2020
+ms.openlocfilehash: 8df851c70650f3d59efc4c7507ce4b1c8a00fbe3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219354"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584650"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Konfigurovat smyčku učení pro přizpůsobení
 
@@ -18,6 +18,23 @@ Nakonfigurujte smyčku učení na stránce **Konfigurace** v Azure Portal pro da
 
 <a name="configure-service-settings-in-the-azure-portal"></a>
 <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
+
+## <a name="planning-configuration-changes"></a>Plánování změn konfigurace
+
+Vzhledem k tomu, že některé změny konfigurace [obnovily váš model](#settings-that-include-resetting-the-model), měli byste naplánovat změny konfigurace.
+
+Pokud máte v úmyslu použít [režim učni](concept-apprentice-mode.md), nezapomeňte před přepnutím do režimu učni zkontrolovat konfiguraci vlastního nastavení.
+
+<a name="clear-data-for-your-learning-loop"></a>
+
+## <a name="settings-that-include-resetting-the-model"></a>Nastavení, která zahrnují Resetování modelu
+
+Následující akce aktivují rekurzi modelu pomocí dostupných dat až poslední 2 dny.
+
+* Oceňujte
+* Průzkum
+
+Pokud chcete [Vymazat](how-to-manage-model.md) všechna vaše data, použijte stránku **Nastavení modelu a učení** .
 
 ## <a name="configure-rewards-for-the-feedback-loop"></a>Konfigurace neprospěchu pro smyčku zpětné vazby
 
@@ -52,7 +69,7 @@ Po změně této hodnoty nezapomeňte vybrat **Save (Uložit**).
 
 |Nastavení četnosti|Účel|
 |--|--|
-|1 minuta|Jednorázová frekvence aktualizace je užitečná při **ladění** kódu aplikace pomocí přizpůsobeného, provádění demo ukázek nebo interaktivního testování aspektů strojového učení.|
+|1 min.|Jednorázová frekvence aktualizace je užitečná při **ladění** kódu aplikace pomocí přizpůsobeného, provádění demo ukázek nebo interaktivního testování aspektů strojového učení.|
 |15 minut|Vysoké frekvence aktualizací modelu jsou užitečné v situacích, kdy chcete **pozorně sledovat změny** chování uživatelů. Mezi příklady patří weby, které běží na aktivních novinkách, Virovém obsahu nebo živých nabídkách produktů. V těchto scénářích můžete použít frekvenci na 15 minut. |
 |1 hodina|Pro většinu případů použití je nižší frekvence aktualizace platná.|
 
@@ -66,16 +83,7 @@ Po změně této hodnoty nezapomeňte vybrat **Save (Uložit**).
 
 Po změně této hodnoty nezapomeňte vybrat **Save (Uložit**).
 
-<a name="clear-data-for-your-learning-loop"></a>
 
-## <a name="settings-that-include-resetting-the-model"></a>Nastavení, která zahrnují Resetování modelu
-
-Následující akce zahrnují okamžité přeškolení modelu za poslední 2 dny dat.
-
-* Oceňujte
-* Průzkum
-
-Pokud chcete [Vymazat](how-to-manage-model.md) všechna vaše data, použijte stránku * * nastavení modelu a učení * *.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: 5ff25155529b9a763bcf5af6cfb15593e9da9853
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b38857cd5ea12767f872690dfcdcb84dcbbb3f7d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422310"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585010"
 ---
 Zpracování komprimovaného zvuku je implementováno pomocí [GStreamer](https://gstreamer.freedesktop.org). Z důvodů licencování nejsou binární soubory GStreamer kompilovány a propojeny se sadou Speech SDK. Vývojáři potřebují nainstalovat několik závislostí a modulů plug-in.
 
@@ -23,7 +23,7 @@ gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-ugly
 ```
 
-# <a name="rehl--centos"></a>[REHL/CentOS](#tab/centos)
+# <a name="rhelcentos-78"></a>[RHEL/CentOS 7/8](#tab/centos)
 
 ```sh
 sudo yum install gstreamer1 \
@@ -34,6 +34,10 @@ gstreamer1-plugins-ugly-free
 ```
 
 > [!NOTE]
-> V RHEL/CentOS postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](../../../../how-to-configure-openssl-linux.md).
+> - V RHEL/CentOS 7 postupujte podle pokynů, [jak nakonfigurovat RHEL/CentOS 7 pro sadu Speech SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md).
+> - V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+
+> [!IMPORTANT]
+> Sada Speech SDK na RHEL/CentOS 7 nepodporuje formát kódování zvuku Opus.
 
 ---

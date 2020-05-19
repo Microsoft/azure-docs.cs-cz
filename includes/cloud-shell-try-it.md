@@ -29,6 +29,6 @@ Chcete-li spustit kód v tomto článku v Azure Cloud Shell:
 
 1. Vyberte tlačítko **Kopírovat** na bloku kódu ke zkopírování kódu.
 
-1. Vložte kód do relace Cloud Shell výběrem **kombinace kláves CTRL**+**SHIFT**+**v** v systému Windows a Linux nebo výběrem možnosti **cmd**+**SHIFT**+**v** v MacOS.
+1. Vložte kód do relace Cloud Shell výběrem **kombinace kláves CTRL** + **SHIFT** + **v** v systému Windows a Linux nebo výběrem možnosti **cmd** + **SHIFT** + **v** v MacOS.
 
 1. Vyberte **ENTER** a spusťte kód.

@@ -71,9 +71,9 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 | Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. HpcCompute | řetězec |
-| type | AmdGpuDriverWindows | řetězec |
+| typ | AmdGpuDriverWindows | řetězec |
 | typeHandlerVersion | 1.0 | int |
 
 

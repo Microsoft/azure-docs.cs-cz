@@ -29,12 +29,12 @@ Příkaz ALTER Row transformes bude pracovat jenom s databázemi nebo CosmosDB j
 
 ## <a name="specify-a-default-row-policy"></a>Zadání výchozích zásad řádků
 
-Vytvořte transformaci ALTER Row a určete zásady řádků s podmínkou `true()`. Každý řádek, který neodpovídá žádnému z dříve definovaných výrazů, bude označen pro zadané zásady řádků. Ve výchozím nastavení budou všechny řádky, které neodpovídají žádnému podmíněnému výrazu `Insert`, označeny pro.
+Vytvořte transformaci ALTER Row a určete zásady řádků s podmínkou `true()` . Každý řádek, který neodpovídá žádnému z dříve definovaných výrazů, bude označen pro zadané zásady řádků. Ve výchozím nastavení budou všechny řádky, které neodpovídají žádnému podmíněnému výrazu, označeny pro `Insert` .
 
 ![Změnit zásady řádků](media/data-flow/alter-row4.png "Změnit zásady řádků")
 
 > [!NOTE]
-> Pokud chcete označit všechny řádky jednou zásadou, můžete pro tuto zásadu vytvořit podmínku a zadat podmínku jako `true()`.
+> Pokud chcete označit všechny řádky jednou zásadou, můžete pro tuto zásadu vytvořit podmínku a zadat podmínku jako `true()` .
 
 ## <a name="view-policies-in-data-preview"></a>Zobrazit zásady v náhledu dat
 
@@ -67,7 +67,7 @@ Zde jsou způsoby, jak tuto situaci opravit:
 
 1. Přejděte do nastavení transformace jímky a nastavte "Přeskočit zápis klíčových sloupců". Tato akce poskytne ADF bez zápisu sloupce, který jste vybrali jako hodnotu klíče pro vaše mapování.
 
-2. Pokud tento klíčový sloupec není sloupec, který je příčinou problému pro sloupce identity, můžete použít možnost SQL pro transformaci jímky před zpracováním: ```SET IDENTITY_INSERT tbl_content ON```. Pak ho vypněte pomocí vlastnosti SQL po zpracování: ```SET IDENTITY_INSERT tbl_content OFF```.
+2. Pokud tento klíčový sloupec není sloupec, který je příčinou problému pro sloupce identity, můžete použít možnost SQL pro transformaci jímky před zpracováním: ```SET IDENTITY_INSERT tbl_content ON``` . Pak ho vypněte pomocí vlastnosti SQL po zpracování: ```SET IDENTITY_INSERT tbl_content OFF``` .
 
 3. Pro případ identity i pro distribuční sloupec můžete logiku z Upsert přepnout na použití samostatné podmínky aktualizace a samostatné podmínky vložení pomocí podmíněné transformace rozdělení. Tímto způsobem můžete nastavit mapování pro cestu aktualizace tak, aby bylo ignorováno mapování klíčových sloupců.
 
@@ -87,7 +87,7 @@ Zde jsou způsoby, jak tuto situaci opravit:
 
 ### <a name="example"></a>Příklad
 
-Níže uvedený příklad je změna transformace řádku s názvem `CleanData` , která přijímá příchozí datový `SpecifyUpsertConditions` proud a vytvoří tři podmínky ALTER Row. V předchozí transformaci je vypočítán sloupec `alterRowCondition` s názvem, který určuje, zda je řádek vložen, aktualizován nebo odstraněn v databázi. Pokud má hodnota sloupce hodnotu řetězce, která odpovídá pravidlu ALTER Row, přiřadí se tato zásada.
+Níže uvedený příklad je změna transformace řádku s názvem `CleanData` , která přijímá příchozí datový proud `SpecifyUpsertConditions` a vytvoří tři podmínky ALTER Row. V předchozí transformaci `alterRowCondition` je vypočítán sloupec s názvem, který určuje, zda je řádek vložen, aktualizován nebo odstraněn v databázi. Pokud má hodnota sloupce hodnotu řetězce, která odpovídá pravidlu ALTER Row, přiřadí se tato zásada.
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

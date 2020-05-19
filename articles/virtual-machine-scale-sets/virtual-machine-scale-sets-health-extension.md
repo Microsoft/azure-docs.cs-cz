@@ -59,9 +59,9 @@ Následující JSON zobrazuje schéma pro rozšíření pro stav aplikace. Pří
 
 | Name | Hodnota/příklad | Typ dat
 | ---- | ---- | ---- 
-| apiVersion | `2018-10-01` | datum |
+| apiVersion | `2018-10-01` | date |
 | vydavatel | `Microsoft.ManagedServices` | řetězec |
-| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | řetězec |
+| typ | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | řetězec |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Nastavení
@@ -75,7 +75,7 @@ Následující JSON zobrazuje schéma pro rozšíření pro stav aplikace. Pří
 ## <a name="deploy-the-application-health-extension"></a>Nasazení rozšíření stavu aplikace
 Rozšíření pro stav aplikace můžete nasadit do sady škálování, jak je popsáno níže v následujících příkladech.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Následující příklad přidá rozšíření stavu aplikace (s názvem myHealthExtension) do extensionProfile v modelu sady škálování sady Windows se škálováním na více systémů.
 

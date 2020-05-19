@@ -60,7 +60,7 @@ Podrobnou dokumentaci k nastavení Application Insights SDK pro monitorování z
 - [Klasické konzolové aplikace (.NET)](https://docs.microsoft.com/azure/azure-monitor/app/console) 
 - [Kompilátor](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started?tabs=maven)
 - [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
-- [Node. js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)
+- [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)
 - [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)
 
 ### <a name="codeless-monitoring-and-visual-studio-resource-creation"></a>Monitorování nekódování a vytváření prostředků sady Visual Studio

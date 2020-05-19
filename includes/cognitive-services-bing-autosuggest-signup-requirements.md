@@ -3,27 +3,27 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/11/2019
-ms.openlocfilehash: a678603d19b8da9ace8b519e19fc8ef2673621fe
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 05/06/2020
+ms.openlocfilehash: 01dabff80f0c7e46e183a05a000251797d490e32
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75384710"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929518"
 ---
 ## <a name="create-an-azure-resource"></a>Vytvoření prostředku Azure
 
-Začněte používat rozhraní API automatického návrhu Bingu vytvořením jednoho z prostředků Azure níže.
+Začněte používat rozhraní API pro automatické návrhy Bingu tím, že vytvoříte jeden z následujících prostředků Azure.
 
-* [Vytvoření zkušebního prostředku](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
-    * Není potřeba žádné předplatné Azure.
-    * Platí sedm dní, zdarma. Po registraci bude zkušební klíč a koncový bod k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+### <a name="trial-resource"></a>[Prostředek zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
+   * Není potřeba žádné předplatné Azure.
+   * Platí po dobu sedmi dnů zdarma. Po registraci se na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/)zpřístupní zkušební klíč a koncový bod.
 
-* [Vytvoření prostředku automatického návrhu bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7):
-    * K dispozici prostřednictvím portálu Azure, dokud neodstraníte prostředek.
-    * Využijte bezplatnou cenovou úroveň k vyzkoušení služby a upgradujte později na placenou úroveň pro produkční prostředí.
-    * Automatické návrhy Bingu jsou nabízeny také v placených úrovních [prostředku Bing Search v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7).
+### <a name="bing-autosuggest-resource"></a>[Prostředek Automatické návrhy Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)
+   * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.
+   * Pomocí cenové úrovně Free můžete službu vyzkoušet a upgradovat ji později na placenou úroveň pro produkční prostředí.
+   * Automatické návrhy Bingu se také nabízí v placených úrovních [prostředku vyhledávání Bingu v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7).
 
-* [Vytvoření prostředku s více službami](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
-    * K dispozici prostřednictvím portálu Azure, dokud neodstraníte prostředek.  
-    * Použijte stejný klíč a koncový bod pro vaše aplikace, napříč několika službami Cognitive Services.
+### <a name="multi-service-resource"></a>[Prostředek s více službami](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
+   * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.  
+   * Používejte stejný klíč a koncový bod pro vaše aplikace, a to napříč více Cognitive Services.

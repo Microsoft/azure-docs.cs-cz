@@ -95,7 +95,7 @@ Aplikace spuštěné mimo síť nejsou ovlivněny.
 - Vygenerujte vzorový požadavek na vaši aplikaci a potvrďte tak, že monitorování funguje správně.
 - Během 3-5 minut byste měli začít zobrazovat telemetrii v Azure Portal. Ujistěte se, že se v portálu Application Insights prostředku na portálu nachází část s *mapou aplikace* .
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 Níže je uvedený postup řešení potíží, který se použije v případě, že se telemetrie neobjeví v Azure Portal podle očekávání.
 
@@ -126,7 +126,7 @@ Níže je uvedený postup řešení potíží, který se použije v případě, 
    ```
    Vyhledejte případné chyby, zejména související s komunikací s *applicationinsightsadapter* adaptérem.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 Nejnovější informace o průběhu tohoto projektu najdete na [githubu Application Insights Adapter pro projekt mixer Istio](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 

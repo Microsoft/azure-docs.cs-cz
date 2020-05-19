@@ -145,7 +145,7 @@ Vzhledem k tomu, že vlastnost "provisionAfterExtensions" přijímá pole názv�
 }
 ```
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 Následující příklad přidá nové rozšíření s názvem ExtensionC do modelu sady škálování. ExtensionC má závislosti na příponách a ExtensionB, které už jsou definované v modelu sady škálování.
 
 ```

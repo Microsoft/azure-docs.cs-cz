@@ -33,7 +33,7 @@ Pokud je nepřetržitá špička z 100% normalizované spotřeby RU/s nebo blíz
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>Zobrazení normalizované metriky spotřeby jednotek požadavků
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 

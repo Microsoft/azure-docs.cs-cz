@@ -1,5 +1,5 @@
 ---
-title: Vytváření sestav architektury CTF (spolupráce s překlady) – Translator Text API
+title: Vytváření sestav architektury CTF (spolupráce s překlady) – překladatel
 titleSuffix: Azure Cognitive Services
 description: Jak používat vytváření sestav architektury CTF (spolupráce s překlady).
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 0c099584642de1939df5e1e7d9785006e8d25235
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732338"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584667"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak použít vytváření sestav CTF (Collaborative Translation Framework)
 
 > [!NOTE]
-> Tato metoda je zastaralá. Není k dispozici v v 3.0 Translator Text API.
+> Tato metoda je zastaralá. Není k dispozici v v 3.0 překladatele.
 > 
-> Rozhraní CTF (Týmová překlady), dříve dostupné v verzi 2.0 Translator Text API, bylo Zastaralé od 1. února 2018. Funkce AddTranslation a AddTranslationArray umožňují uživatelům povolit opravy prostřednictvím architektury pro překlady pro spolupráci. Po 31. ledna 2018 tyto dvě funkce nepřijaly nové zprávy o větě a uživatelé obdrží chybovou zprávu. Tyto funkce byly vyřazeny a nebudou nahrazeny.
+> Rozhraní CTF (Týmová překlady), dříve dostupné v 2.0 translatoru, bylo Zastaralé od 1. února 2018. Funkce AddTranslation a AddTranslationArray umožňují uživatelům povolit opravy prostřednictvím architektury pro překlady pro spolupráci. Po 31. ledna 2018 tyto dvě funkce nepřijaly nové zprávy o větě a uživatelé obdrží chybovou zprávu. Tyto funkce byly vyřazeny a nebudou nahrazeny.
 
 Rozhraní API pro vytváření sestav (CTF) pro vytváření sestav vrátí statistické údaje a skutečný obsah v úložišti CTF. Toto rozhraní API se liší od metody gettranslations (), protože:
 * Vrátí přeložený obsah a celkový počet z vašeho účtu (appId nebo Azure Marketplace účet).
@@ -30,11 +30,10 @@ Rozhraní API pro vytváření sestav (CTF) pro vytváření sestav vrátí stat
 * Nevrátí automatický překlad (strojový překlad).
 
 ## <a name="endpoint"></a>Koncový bod
-Koncový bod rozhraní API pro vytváření sestav CTF jehttps://api.microsofttranslator.com/v2/beta/ctfreporting.svc
-
+Koncový bod rozhraní API pro vytváření sestav CTF je https://api.microsofttranslator.com/v2/beta/ctfreporting.svc .
 
 ## <a name="methods"></a>Metody
-| Název |    Popis|
+| Name | Popis|
 |:---|:---|
 | Metoda GetUserTranslationCounts | Získejte počty překladů, které jsou vytvořené uživatelem. |
 | Metoda GetUserTranslations | Načte překlady, které jsou vytvořeny uživatelem. |
@@ -51,7 +50,7 @@ Tyto metody umožňují:
 
 Tato metoda získá počet překladů, které jsou vytvořeny uživatelem. Poskytuje seznam počtů překladů seskupených podle parametrů uriPrefix, from, to, User, minRating a maxRating.
 
-**Syntaktick**
+**Syntaxe**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs
@@ -108,21 +107,21 @@ Sada výsledků obsahuje pole **UserTranslationCount**. Každý UserTranslationC
 | Výjimka | Zpráva | Podmínky |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | Parametr**maxDateUtc**musí být větší nebo roven hodnotě "**minDateUtc**".| Hodnota parametru **maxDateUtc** je menší než hodnota parametru **minDateUtc**.|
-| TranslateApiException | IP adresa překračuje kvótu.| <ul><li>Dosáhlo se limitu počtu požadavků za minutu.</li><li>Velikost žádosti zůstane omezená na 10000 znaků.</li><li>Hodinová a denní kvóta omezuje počet znaků, které bude rozhraní API služby Microsoft Translator akceptovat.</li></ul>|
+| TranslateApiException | IP adresa překračuje kvótu.| <ul><li>Dosáhlo se limitu počtu požadavků za minutu.</li><li>Velikost žádosti zůstane omezená na 10000 znaků.</li><li>Hodinová a denní kvóta omezuje počet znaků, které bude Překladatel akceptovat.</li></ul>|
 | TranslateApiException | AppId je nad kvótou.| ID aplikace překročilo hodinovou nebo denní kvótu.|
 
 > [!NOTE]
 > Kvóta se upraví, aby se zajistilo spravedlivé mezi všemi uživateli služby.
 
 **Zobrazit příklady kódu na GitHib**
-* [R #](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)
 
 ## <a name="getusertranslations-method"></a>Metoda GetUserTranslations
 
 Tato metoda načte překlady, které jsou vytvořeny uživatelem. Poskytuje překlady seskupené podle parametrů uriPrefix, from, to, User a minRating a maxRating.
 
-**Syntaktick**
+**Syntaxe**
 
 > [!div class="tabbedCodeSnippets"]
 > ```cs
@@ -181,12 +180,12 @@ Sada výsledků obsahuje pole **UserTranslation**. Každý UserTranslation má n
 | Výjimka | Zpráva | Podmínky |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | Parametr**maxDateUtc**musí být větší nebo roven hodnotě "**minDateUtc**".| Hodnota parametru **maxDateUtc** je menší než hodnota parametru **minDateUtc**.|
-| TranslateApiException | IP adresa překračuje kvótu.| <ul><li>Dosáhlo se limitu počtu požadavků za minutu.</li><li>Velikost žádosti zůstane omezená na 10000 znaků.</li><li>Hodinová a denní kvóta omezuje počet znaků, které bude rozhraní API služby Microsoft Translator akceptovat.</li></ul>|
+| TranslateApiException | IP adresa překračuje kvótu.| <ul><li>Dosáhlo se limitu počtu požadavků za minutu.</li><li>Velikost žádosti zůstane omezená na 10000 znaků.</li><li>Hodinová a denní kvóta omezuje počet znaků, které bude Překladatel akceptovat.</li></ul>|
 | TranslateApiException | AppId je nad kvótou.| ID aplikace překročilo hodinovou nebo denní kvótu.|
 
 > [!NOTE]
 > Kvóta se upraví, aby se zajistilo spravedlivé mezi všemi uživateli služby.
 
 **Zobrazit příklady kódu na GitHib**
-* [R #](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)

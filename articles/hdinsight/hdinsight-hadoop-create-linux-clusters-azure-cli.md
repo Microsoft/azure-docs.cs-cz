@@ -23,7 +23,7 @@ Kroky v tomto dokumentu vás provedou vytvořením clusteru HDInsight 3,6 pomoc�
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,12 +46,12 @@ Rozhraní příkazového řádku Azure Pokud jste nenainstalovali Azure CLI, př
 
     |Parametr | Popis |
     |---|---|
-    |`--workernode-count`| Počet uzlů pracovního procesu v clusteru. V tomto článku se používá `clusterSizeInNodes` proměnná jako hodnota předaná `--workernode-count`. |
-    |`--version`| Verze clusteru HDInsight. V tomto článku se používá `clusterVersion` proměnná jako hodnota předaná `--version`. Viz také: [podporované verze HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| Zadejte cluster HDInsight, například: Hadoop, interactivehive, HBA, Kafka,, Spark, Rserver, mlservices.  V tomto článku se používá `clusterType` proměnná jako hodnota předaná `--type`. Viz také: [typy clusterů a konfigurace](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
-    |`--component-version`|Verze různých komponent systému Hadoop ve formátu "Component = Version" ve verzích oddělených mezerami. V tomto článku se používá `componentVersion` proměnná jako hodnota předaná `--component-version`. Viz také: [komponenty Hadoop](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
+    |`--workernode-count`| Počet uzlů pracovního procesu v clusteru. V tomto článku se používá proměnná `clusterSizeInNodes` jako hodnota předaná `--workernode-count` . |
+    |`--version`| Verze clusteru HDInsight. V tomto článku se používá proměnná `clusterVersion` jako hodnota předaná `--version` . Viz také: [podporované verze HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
+    |`--type`| Zadejte cluster HDInsight, například: Hadoop, interactivehive, HBA, Kafka,, Spark, Rserver, mlservices.  V tomto článku se používá proměnná `clusterType` jako hodnota předaná `--type` . Viz také: [typy clusterů a konfigurace](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
+    |`--component-version`|Verze různých komponent systému Hadoop ve formátu "Component = Version" ve verzích oddělených mezerami. V tomto článku se používá proměnná `componentVersion` jako hodnota předaná `--component-version` . Viz také: [komponenty Hadoop](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
 
-    `RESOURCEGROUPNAME`Nahraďte `LOCATION`, `CLUSTERNAME`, `STORAGEACCOUNTNAME`, a `PASSWORD` požadovanými hodnotami. Změňte hodnoty pro ostatní proměnné podle potřeby. Pak zadejte příkazy rozhraní příkazového řádku.
+    Nahraďte `RESOURCEGROUPNAME` ,, `LOCATION` `CLUSTERNAME` , `STORAGEACCOUNTNAME` a `PASSWORD` požadovanými hodnotami. Změňte hodnoty pro ostatní proměnné podle potřeby. Pak zadejte příkazy rozhraní příkazového řádku.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME

@@ -8,29 +8,28 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 05/07/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 66a3350dee60772ce706af8995179dcd8c485b64
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b2cb7494ae3d26fa14bef906b8f5222b9dbc70e1
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73904318"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584961"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení záměru uživatele projevy
 
-Přidejte do aplikace LUIS [záměry](luis-concept-intent.md) k identifikaci skupin dotazů nebo příkazů, které mají stejný záměr. 
+Přidejte do aplikace LUIS [záměry](luis-concept-intent.md) k identifikaci skupin dotazů nebo příkazů, které mají stejný záměr.
 
-Záměry jsou spravovány v části **sestavení** v horním navigačním panelu a pak z **záměrů**v levém panelu. 
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
+Záměry jsou spravovány v části **sestavení** v horním navigačním panelu a pak z **záměrů**v levém panelu.
 
 ## <a name="add-intent"></a>Přidat záměr
 
-1. Na [portálu Luis Preview](https://preview.luis.ai)vyberte **sestavení** a zobrazte záměry. 
+1. Přihlaste se k [portálu Luis](https://www.luis.ai)a vyberte své **předplatné** a **prostředek pro vytváření obsahu** , abyste viděli aplikace přiřazené k tomuto zdrojovému prostředku.
+1. Otevřete svou aplikaci tak, že na stránce **Moje aplikace** vyberete její název.
 1. Na stránce **záměry** vyberte **+ vytvořit**.
-1. V dialogovém okně **vytvořit nový záměr** zadejte název záměru, například `ModifyOrder`a potom vyberte **Hotovo**.
+1. V dialogovém okně **vytvořit nový záměr** zadejte název záměru, například `ModifyOrder` a potom vyberte **Hotovo**.
 
     > [!div class="mx-imgBorder"]
     > ![Přidat záměr](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
@@ -39,22 +38,22 @@ Záměry jsou spravovány v části **sestavení** v horním navigačním panelu
 
 ## <a name="add-an-example-utterance"></a>Přidat příklad utterance
 
-Příkladem projevy jsou textové příklady dotazů a příkazů uživatele. Pokud chcete naučit Language Understanding (LUIS), kdy se má záměr odhadnout, musíte do záměru přidat příklad projevy. LUIS potřebuje pro začátek porozumění záměru v rozsahu od 15 do 30 example projevy. Nepřidávejte do hromadného projevy příklad. Každá utterance by měla pečlivě vycházet z toho, jak se liší od příkladů již v záměru. 
+Příkladem projevy jsou textové příklady dotazů a příkazů uživatele. Pokud chcete naučit Language Understanding (LUIS), kdy se má záměr odhadnout, musíte do záměru přidat příklad projevy. LUIS potřebuje pro začátek porozumění záměru v rozsahu od 15 do 30 example projevy. Nepřidávejte do hromadného projevy příklad. Každá utterance by měla pečlivě vycházet z toho, jak se liší od příkladů již v záměru.
 
 1. Na stránce Podrobnosti záměru zadejte relevantní utterance od uživatelů, například `Deliver a large cheese pizza` do textového pole pod názvem záměr, a potom stiskněte klávesu ENTER.
- 
+
     > [!div class="mx-imgBorder"]
-    > ![Stránka s podrobnostmi o záměrech se zvýrazněným utterance](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    > ![Stránka s podrobnostmi o záměrech se zvýrazněným utterance](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png)
 
     LUIS převede všechny projevy na malá písmena a přidá mezery kolem [tokenů](luis-language-support.md#tokenization) , jako jsou spojovníky.
 
 <a name="#intent-prediction-discrepancy-errors"></a>
 
-## <a name="intent-prediction-errors"></a>Chyby předpovědi záměru 
+## <a name="intent-prediction-errors"></a>Chyby předpovědi záměru
 
-Příklad utterance v záměru může mít chybu předpovědi záměru mezi záměrem, který je v současnosti v rámci, a záměrem určeným během školení. 
+Příklad utterance v záměru může mít chybu předpovědi záměru mezi záměrem, který je v současnosti v rámci, a záměrem určeným během školení.
 
-Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnosti **filtru** nesprávné a nejasné v kombinaci s možností **zobrazení** **podrobného zobrazení**. 
+Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnosti **filtru** nesprávné a nejasné v kombinaci s možností **zobrazení** **podrobného zobrazení**.
 
 ![Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnost filtr.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
@@ -63,11 +62,11 @@ Pokud jsou filtry a zobrazení aplikovány a existují příklady projevy s chyb
 > [!div class="mx-imgBorder"]
 > ![! [Při použití filtrů a zobrazení se zobrazí příklad projevy s chybami. v seznamu příkladů utterance se zobrazí projevy a problémy.] (./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
 
-V každém řádku se zobrazuje skóre předpovědi aktuálního školení pro příklad utterance, nejbližšího skóre rival, což je rozdíl v těchto dvou skórech. 
+V každém řádku se zobrazuje skóre předpovědi aktuálního školení pro příklad utterance, nejbližšího skóre rival, což je rozdíl v těchto dvou skórech.
 
 ### <a name="fixing-intents"></a>Opravení záměrů
 
-Pokud se chcete dozvědět, jak opravit chyby předpovědi, použijte [řídicí panel souhrnu](luis-how-to-use-dashboard.md). Souhrnný řídicí panel poskytuje analýzu pro poslední školení aktivní verze a nabízí hlavní návrhy na opravu modelu.  
+Pokud se chcete dozvědět, jak opravit chyby předpovědi, použijte [řídicí panel souhrnu](luis-how-to-use-dashboard.md). Souhrnný řídicí panel poskytuje analýzu pro poslední školení aktivní verze a nabízí hlavní návrhy na opravu modelu.
 
 ## <a name="using-the-contextual-toolbar"></a>Použití kontextového panelu nástrojů
 
@@ -80,8 +79,8 @@ Panel nástrojů kontextu poskytuje další akce:
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>Výuka aplikace po změně modelu s záměry
 
-Po přidání, úpravě nebo odebrání záměrů, [školení](luis-how-to-train.md) a [publikování](luis-how-to-publish-app.md) aplikace, aby byly změny aplikovány na dotazy koncového bodu. Nevytvářejte vlaky po každé jedné změně. Naučit se po skupině změn. 
+Po přidání, úpravě nebo odebrání záměrů, [školení](luis-how-to-train.md) a [publikování](luis-how-to-publish-app.md) aplikace, aby byly změny aplikovány na dotazy koncového bodu. Nevytvářejte vlaky po každé jedné změně. Naučit se po skupině změn.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o přidání [ukázkového projevyu](luis-how-to-add-example-utterances.md) s entitami. 
+Přečtěte si další informace o přidání [ukázkového projevyu](luis-how-to-add-example-utterances.md) s entitami.

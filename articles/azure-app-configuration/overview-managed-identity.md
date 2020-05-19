@@ -89,7 +89,7 @@ Následující kroky vás provedou vytvořením identity přiřazené uživatele
     az identity create -resource-group myResourceGroup --name myUserAssignedIdentity
     ```
 
-    Ve výstupu tohoto příkazu si všimněte hodnoty `id` vlastnosti.
+    Ve výstupu tohoto příkazu si všimněte hodnoty `id` Vlastnosti.
 
 1. Spuštěním příkazu [AZ appconfig identity Assign] přiřaďte novou identitu přiřazenou uživateli do tohoto úložiště konfigurace. Použijte hodnotu `id` vlastnosti, kterou jste si poznamenali v předchozím kroku.
 

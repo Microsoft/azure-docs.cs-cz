@@ -35,7 +35,7 @@ Když nakonfigurujete odkaz na image virtuálního počítače, zadáte vlastnos
 
 | **Vlastnosti odkazu na obrázek** | **Příklad** |
 | --- | --- |
-| Vydavatel |Canonical |
+| Publisher |Canonical |
 | Nabídka |UbuntuServer |
 | Skladová jednotka (SKU) |18,04 – LTS |
 | Verze |nejnovější |

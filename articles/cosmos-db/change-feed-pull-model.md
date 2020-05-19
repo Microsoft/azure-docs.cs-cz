@@ -168,7 +168,7 @@ Tady jsou některé klíčové rozdíly mezi procesorem Change feed a modelem Pu
 | Možnost Přehrát minulé změny | Ano, s modelem push | Ano, s modelem pull|
 | Cyklické dotazování pro budoucí změny | Automaticky kontroluje změny na základě zadaného uživatele.`WithPollInterval` | Ruční |
 | Zpracovat změny z celého kontejneru | Ano a automaticky paralelně napříč několika vlákny nebo počítači, které jsou náročné ze stejného kontejneru| Ano a ručně paralelně s využitím FeedTokens |
-| Zpracovat změny jenom z jednoho klíče oddílu | Nepodporuje se | Ano|
+| Zpracovat změny jenom z jednoho klíče oddílu | Nepodporuje se | Yes|
 | Úroveň podpory | Obecná dostupnost | Preview |
 
 ## <a name="next-steps"></a>Další kroky

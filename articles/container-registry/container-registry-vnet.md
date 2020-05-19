@@ -32,9 +32,9 @@ Konfigurace koncového bodu služby registru je dostupná na úrovni služby **P
 
 * K používání kroků Azure CLI v tomto článku se vyžaduje Azure CLI verze 2.0.58 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-* Pokud ještě nemáte registr kontejneru, vytvořte si ho (vyžaduje se Premium SKU) a nahrajte do něj ukázkovou image `hello-world` , jako je například Docker Hub. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] . 
+* Pokud ještě nemáte registr kontejneru, vytvořte si ho (vyžaduje se Premium SKU) a nahrajte do něj ukázkovou image, jako je například `hello-world` Docker Hub. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] . 
 
-* Pokud chcete omezit přístup k registru pomocí koncového bodu služby v jiném předplatném Azure, zaregistrujte poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Příklad:
+* Pokud chcete omezit přístup k registru pomocí koncového bodu služby v jiném předplatném Azure, zaregistrujte poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Například:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -124,7 +124,7 @@ Až několik minut počkejte, než se konfigurace aktualizuje, ověřte, že vir
 az acr login --name mycontainerregistry
 ```
 
-Můžete provést operace v registru, jako je `docker pull` třeba spustit, a načíst z registru ukázkový obraz. Nahraďte image a hodnotu značky, která je vhodná pro váš registr, s předponou názvu přihlašovacího serveru registru (všechna malá písmena):
+Můžete provést operace v registru, jako je třeba spustit `docker pull` , a načíst z registru ukázkový obraz. Nahraďte image a hodnotu značky, která je vhodná pro váš registr, s předponou názvu přihlašovacího serveru registru (všechna malá písmena):
 
 ```bash
 docker pull mycontainerregistry.azurecr.io/hello-world:v1
@@ -152,7 +152,7 @@ Chcete-li zobrazit seznam síťových pravidel nakonfigurovaných pro váš regi
 az acr network-rule list --name mycontainerregistry 
 ```
 
-Pro každé konfigurované pravidlo spusťte příkaz [AZ ACR Network-Rule Remove][az-acr-network-rule-remove] a odeberte ho. Příklad:
+Pro každé konfigurované pravidlo spusťte příkaz [AZ ACR Network-Rule Remove][az-acr-network-rule-remove] a odeberte ho. Například:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.

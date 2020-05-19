@@ -24,7 +24,7 @@ ms.locfileid: "82996956"
 
 ## <a name="iot-hub-names"></a>Názvy IoT Hub
 
-Název hostitele služby IoT Hub, který je hostitelem vašich koncových bodů, najdete na stránce s **přehledem** vašeho rozbočovače. Ve výchozím nastavení vypadá název DNS služby IoT Hub takto: `{your iot hub name}.azure-devices.net`.
+Název hostitele služby IoT Hub, který je hostitelem vašich koncových bodů, najdete na stránce s **přehledem** vašeho rozbočovače. Ve výchozím nastavení vypadá název DNS služby IoT Hub takto: `{your iot hub name}.azure-devices.net` .
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Seznam předdefinovaných koncových bodů IoT Hub
 

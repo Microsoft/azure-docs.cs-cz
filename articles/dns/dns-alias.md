@@ -60,13 +60,13 @@ Toto omezení představuje problém pro vlastníky aplikace, kteří mají aplik
 
 Tento problém je vyřešen pomocí záznamů aliasů. Na rozdíl od záznamů CNAME se záznamy aliasů vytvoří ve vrcholu zóny a vlastníci aplikace je můžou použít k ukázání záznamu vrcholu zóny na Traffic Manager profil, který má externí koncové body. Vlastníci aplikace odkazují na stejný profil Traffic Manager, který se používá pro jakoukoliv jinou doménu v rámci zóny DNS.
 
-Například contoso.com a webová\.contoso.com mohou odkazovat na stejný profil Traffic Manager. Další informace o použití záznamů aliasů v profilech Azure Traffic Manager najdete v části Další kroky.
+Například contoso.com a webová \. contoso.com mohou odkazovat na stejný profil Traffic Manager. Další informace o použití záznamů aliasů v profilech Azure Traffic Manager najdete v části Další kroky.
 
 ### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Vrchol zóny bodu Azure CDN koncových bodů
 
 Stejně jako profil Traffic Manager můžete také záznamy aliasů použít k ukázání vrcholu zóny DNS na koncové body Azure CDN. To je užitečné při vytváření statických webů s využitím služby Azure Storage a Azure CDN. Pak můžete k webu přejít bez předplatného "www" na název DNS.
 
-Pokud se například váš statický web jmenuje `www.contoso.com`, můžou vaši uživatelé přistupovat k webu pomocí `contoso.com` bez nutnosti předřadit službu WWW do názvu DNS.
+Pokud se například váš statický web jmenuje `www.contoso.com` , můžou vaši uživatelé přistupovat k webu pomocí bez nutnosti předřadit `contoso.com` službu WWW do názvu DNS.
 
 Jak bylo popsáno dříve, záznamy CNAME nejsou podporovány ve vrcholu zóny. Proto nemůžete použít záznam CNAME k nasměrování contoso.com na koncový bod CDN. Místo toho můžete použít záznam aliasu k ukázání vrcholu zóny na koncový bod CDN přímo.
 

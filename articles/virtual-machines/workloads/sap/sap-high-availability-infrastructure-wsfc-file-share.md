@@ -222,8 +222,8 @@ Než začnete s instalací, přečtěte si následující článek:
 | --- | --- | --- | --- |
 | Cluster ASCS/SCS prvního uzlu clusteru | ASCS-1 | 10.0.6.4 | ASCS jako |
 | Druhý cluster node ASCS/SCS | ASCS – 2 | 10.0.6.5 | ASCS jako |
-| Název sítě s clustery |ASCS – CL | 10.0.6.6 | neuvedeno |
-| Název sítě clusteru SAP PR1 ASCS |PR1 – ASCS | 10.0.6.7 | neuvedeno |
+| Název sítě s clustery |ASCS – CL | 10.0.6.6 | Není k dispozici |
+| Název sítě clusteru SAP PR1 ASCS |PR1 – ASCS | 10.0.6.7 | Není k dispozici |
 
 
 **Tabulka 1**: cluster ASCS/SCS
@@ -240,8 +240,8 @@ Než začnete s instalací, přečtěte si následující článek:
 | První uzel clusteru | SOFS-1 | 10.0.6.10 | SOFS jako |
 | Druhý uzel clusteru | SOFS – 2 | 10.0.6.11 | SOFS jako |
 | Třetí uzel clusteru | SOFS-3 | 10.0.6.12 | SOFS jako |
-| Název sítě s clustery | SOFS – CL | 10.0.6.13 | neuvedeno |
-| Název globálního hostitele SAP | sapglobal | Použít IP adresy všech uzlů clusteru | neuvedeno |
+| Název sítě s clustery | SOFS – CL | 10.0.6.13 | Není k dispozici |
+| Název globálního hostitele SAP | sapglobal | Použít IP adresy všech uzlů clusteru | Není k dispozici |
 
 **Tabulka 3**: souborový server se škálováním na více systémů cluster
 

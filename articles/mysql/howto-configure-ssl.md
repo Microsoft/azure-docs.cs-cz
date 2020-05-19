@@ -45,7 +45,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 ```
 
 > [!NOTE]
-> Při použití rozhraní příkazového řádku MySQL v systému Windows se může zobrazit chyba `SSL connection error: Certificate signature check failed`. Pokud k tomu dojde, nahraďte `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametry `--ssl`parametrem.
+> Při použití rozhraní příkazového řádku MySQL v systému Windows se může zobrazit chyba `SSL connection error: Certificate signature check failed` . Pokud k tomu dojde, nahraďte `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametry parametrem `--ssl` .
 
 ## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Krok 3: vynucování připojení SSL v Azure 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal

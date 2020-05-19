@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: a09b79992f669c296fe0a674179fde5f38e8fc8a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82149379"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82587890"
 ---
 Začínáme s klientskou knihovnou pro práci na cestách. Pomocí těchto kroků nainstalujte knihovnu a vyzkoušejte si naše příklady pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -26,14 +26,14 @@ Použijte klientskou knihovnu služby FACET k přechodu na:
 * [Identifikace obličeje](#identify-a-face)
 * [Pořídit snímek migrace dat](#take-a-snapshot-for-data-migration)
 
-[Stažení Referenční dokumentace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [sady SDK](https://github.com/Azure/azure-sdk-for-go) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | 
+[Referenční dokumentace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face)  |  [Stažení sady SDK](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/) .
 * Nejnovější verze nástroje [Přejít](https://golang.org/dl/)
 
-## <a name="set-up"></a>Nastavit
+## <a name="set-up"></a>Nastavení
 
 ### <a name="create-a-face-azure-resource"></a>Vytvoření prostředku Azure FACET 
 
@@ -81,7 +81,7 @@ Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~
 
 #### <a name="macos"></a>[macOS](#tab/unix)
 
-`.bash_profile`Upravte a přidejte proměnnou prostředí:
+Upravte `.bash_profile` a přidejte proměnnou prostředí:
 
 ```bash
 export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
@@ -93,7 +93,7 @@ Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .
 
 ### <a name="create-a-go-project-directory"></a>Vytvořit adresář projektu přejít
 
-V okně konzoly (cmd, PowerShell, terminál, bash) vytvořte nový pracovní prostor pro projekt na cestách s názvem `my-app`a přejděte na něj.
+V okně konzoly (cmd, PowerShell, terminál, bash) vytvořte nový pracovní prostor pro projekt na cestách s názvem `my-app` a přejděte na něj.
 
 ```
 mkdir -p my-app/{src, bin, pkg}  
@@ -104,17 +104,17 @@ Váš pracovní prostor bude obsahovat tři složky:
 
 * **Src** – tento adresář bude obsahovat zdrojový kód a balíčky. Všechny balíčky nainstalované s `go get` příkazem budou v této složce.
 * **pkg** – tento adresář bude obsahovat kompilované objekty balíčku pro přechod. Všechny tyto soubory mají `.a` rozšíření.
-* **bin** – tento adresář bude obsahovat binární spustitelné soubory, které se vytvoří při spuštění `go install`.
+* **bin** – tento adresář bude obsahovat binární spustitelné soubory, které se vytvoří při spuštění `go install` .
 
 > [!TIP]
-> Další informace o struktuře pracovního prostoru přejděte v [dokumentaci jazyka přejděte](https://golang.org/doc/code.html#Workspaces). Tato příručka obsahuje informace o nastavení `$GOPATH` a `$GOROOT`.
+> Další informace o struktuře pracovního prostoru přejděte v [dokumentaci jazyka přejděte](https://golang.org/doc/code.html#Workspaces). Tato příručka obsahuje informace o nastavení `$GOPATH` a `$GOROOT` .
 
 ### <a name="install-the-client-library-for-go"></a>Instalace klientské knihovny pro přejít
 
 Dále nainstalujte klientskou knihovnu pro přejít:
 
 ```bash
-go get -u https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face
+go get -u github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face
 ```
 
 nebo pokud používáte DEP, v rámci vašeho úložiště úložišť:
@@ -125,7 +125,7 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>Vytvoření aplikace v cestách
 
-Dále vytvořte soubor v adresáři **Src** s názvem `sample-app.go`:
+Dále vytvořte soubor v adresáři **Src** s názvem `sample-app.go` :
 
 ```bash
 cd src
@@ -142,10 +142,10 @@ V dalším kroku začnete přidávat kód pro provádění různých operací sl
 
 Následující třídy a rozhraní zpracovávají některé z hlavních funkcí služby Face Service přejít do klientské knihovny.
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
 |[BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#BaseClient) | Tato třída reprezentuje vaši autorizaci používat službu obličeje a potřebujete ji pro všechny funkce obličeje. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd. |
-|[Služba](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|Tato třída zpracovává základní úlohy zjišťování a rozpoznávání, které můžete provádět s lidskými obličejemi. |
+|[Klient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|Tato třída zpracovává základní úlohy zjišťování a rozpoznávání, které můžete provádět s lidskými obličejemi. |
 |[DetectedFace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#DetectedFace)|Tato třída reprezentuje všechna data, která byla zjištěna z jedné plošky v obrázku. Můžete ji použít k získání podrobných informací o tváři.|
 |[ListClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#ListClient)|Tato třída spravuje **FaceList** konstrukce uložené v cloudu, které ukládají roztříděné sady ploch. |
 |[PersonGroupPersonClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupPersonClient)| Tato třída spravuje konstrukce cloudových uložených **osob** , které ukládají sadu plošek, které patří jedné osobě.|
@@ -166,7 +166,7 @@ Tyto ukázky kódu ukazují, jak dokončit základní úlohy pomocí klientské 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 > [!NOTE] 
-> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro svůj klíč `FACE_SUBSCRIPTION_KEY` a `FACE_ENDPOINT` koncový bod s názvem a v uvedeném pořadí.
+> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro svůj klíč a koncový bod s názvem `FACE_SUBSCRIPTION_KEY` a `FACE_ENDPOINT` v uvedeném pořadí.
 
 Vytvořte funkci **Main** a přidejte do ní následující kód, který vytvoří instanci klienta s vaším koncovým bodem a klíčem. Vytvoříte objekt **[CognitiveServicesAuthorizer](https://godoc.org/github.com/Azure/go-autorest/autorest#CognitiveServicesAuthorizer)** s klíčem a použijete ho u svého koncového bodu k vytvoření objektu **[klienta](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)** . Tento kód také vytvoří instanci objektu kontextu, který je potřeba pro vytváření objektů klienta. Definuje také vzdálené umístění, kde se nachází některé z ukázkových imagí v tomto rychlém startu.
 
@@ -214,9 +214,9 @@ Následující kód vytiskne podrobnosti o shodě do konzoly.
 
 ## <a name="create-and-train-a-person-group"></a>Vytvoření a výuka skupiny osob
 
-Pro krokování v tomto scénáři je nutné uložit následující image do kořenového adresáře projektu: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Pro krokování v tomto scénáři je nutné uložit následující image do kořenového adresáře projektu: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
-Tato skupina imagí obsahuje tři sady imagí s jedním obličejem, které odpovídají třem různým lidem. Kód bude definovat tři objekty **osob** Person a přidružit je k souborům obrázků, které začínají `woman`na, `man`a. `child`
+Tato skupina imagí obsahuje tři sady imagí s jedním obličejem, které odpovídají třem různým lidem. Kód bude definovat tři objekty **osob** Person a přidružit je k souborům obrázků, které začínají `woman` na, `man` a `child` .
 
 ### <a name="create-persongroup"></a>Vytvořit osobu
 
@@ -251,7 +251,7 @@ Následující kód přebírá obrázek s více ploškami a hledá identitu kaž
 
 ### <a name="get-a-test-image"></a>Získat image testu
 
-Následující kód vypadá v kořenu projektu image _test-image-person-Group. jpg_ a načítá ho do paměti programu. Tento obrázek najdete ve stejném úložišti jako obrázky používané v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group): https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Následující kód vypadá v kořenu projektu image _test-image-person-Group. jpg_ a načítá ho do paměti programu. Tento obrázek najdete ve stejném úložišti jako obrázky používané v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group): https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
@@ -347,7 +347,7 @@ Po dokončení těchto kroků máte k vašim novým (cílovým) předplatnému p
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci v `go run [arguments]` příkazu přejít pomocí příkazu z adresáře aplikace.
+Spusťte aplikaci v příkazu přejít pomocí `go run [arguments]` příkazu z adresáře aplikace.
 
 ```bash
 go run sample-app.go
@@ -357,7 +357,7 @@ go run sample-app.go
 
 Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
 
-* [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 Pokud jste v tomto rychlém startu vytvořili pole **Person** a chcete ho odstranit, zavolejte metodu **[Delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** . Pokud jste migrovali data pomocí funkce snímku v tomto rychlém startu, budete také muset odstranit **pracovní** buňku uloženou do cílového předplatného.

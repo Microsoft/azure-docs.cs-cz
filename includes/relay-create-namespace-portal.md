@@ -11,8 +11,8 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "76020840"
 ---
-1. Přihlaste se k webu [Azure Portal][Azure portal].
-1. Vyberte **Vytvořit prostředek**. Pak vyberte možnost **integrační** > **přenos**. Pokud se v seznamu **Přenos** nezobrazuje, vyberte v pravém horním rohu **Zobrazit vše**.
+1. Přihlaste se k [portálu Azure Portal][Azure portal].
+1. Vyberte **Vytvořit prostředek**. Pak vyberte možnost **integrační**  >  **přenos**. Pokud se v seznamu **Přenos** nezobrazuje, vyberte v pravém horním rohu **Zobrazit vše**.
 1. Vyberte **vytvořit**a do pole **název** zadejte název oboru názvů. Azure Portal zkontroluje, jestli je název k dispozici.
 1. Vyberte předplatné Azure, ve kterém chcete vytvořit obor názvů.
 1. V poli [Skupina prostředků](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)vyberte existující skupinu prostředků, do které se má obor názvů umístit, nebo vytvořte novou.  

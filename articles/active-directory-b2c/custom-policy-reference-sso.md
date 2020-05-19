@@ -22,7 +22,7 @@ ms.locfileid: "82926115"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Správa [relací jednotného přihlašování (SSO)](session-overview.md) používá stejnou sémantiku jako jakýkoliv jiný technický profil v rámci vlastních zásad. Při spuštění kroku orchestrace se pro `UseTechnicalProfileForSessionManagement` referenci zobrazí dotaz na technický profil přidružený k tomuto kroku. Pokud existuje, pak se v odkazovaném poskytovateli relace jednotného přihlašování kontroluje, jestli je uživatel účastníkem relace. V takovém případě se k naplnění relace použije poskytovatel relace jednotného přihlašování. Podobně platí, že po dokončení kroku orchestrace se poskytovatel používá k ukládání informací v relaci, pokud byl zadán zprostředkovatel relace jednotného přihlašování.
+Správa [relací jednotného přihlašování (SSO)](session-overview.md) používá stejnou sémantiku jako jakýkoliv jiný technický profil v rámci vlastních zásad. Při spuštění kroku orchestrace se pro referenci zobrazí dotaz na technický profil přidružený k tomuto kroku `UseTechnicalProfileForSessionManagement` . Pokud existuje, pak se v odkazovaném poskytovateli relace jednotného přihlašování kontroluje, jestli je uživatel účastníkem relace. V takovém případě se k naplnění relace použije poskytovatel relace jednotného přihlašování. Podobně platí, že po dokončení kroku orchestrace se poskytovatel používá k ukládání informací v relaci, pokud byl zadán zprostředkovatel relace jednotného přihlašování.
 
 Azure AD B2C definovali počet zprostředkovatelů relací jednotného přihlašování, které se dají použít:
 
@@ -37,11 +37,11 @@ Azure AD B2C definovali počet zprostředkovatelů relací jednotného přihlaš
 
 
 
-Třídy správy jednotného přihlašování jsou určené `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` pomocí elementu technického profilu.
+Třídy správy jednotného přihlašování jsou určené pomocí `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` elementu technického profilu.
 
 ## <a name="input-claims"></a>Vstupní deklarace identity
 
-`InputClaims` Element je prázdný nebo chybí.
+`InputClaims`Element je prázdný nebo chybí.
 
 ## <a name="persisted-claims"></a>Trvalé deklarace identity
 
@@ -49,7 +49,7 @@ Deklarace identity, které je potřeba vrátit do aplikace nebo použít v rámc
 
 ## <a name="output-claims"></a>Deklarace výstupů
 
-`<OutputClaims>` Slouží k načítání deklarací identity z relace.
+`<OutputClaims>`Slouží k načítání deklarací identity z relace.
 
 ## <a name="session-providers"></a>Zprostředkovatelé relací
 
@@ -87,7 +87,7 @@ Tento zprostředkovatel se dá použít k ukládání deklarací identity v rela
 ```
 
 
-Do `SM-MFA` [Úvodní sady Custom Policy Pack](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`je zahrnutý následující technický profil. Tento technický profil spravuje relaci Multi-Factor Authentication.
+Do `SM-MFA` [Úvodní sady Custom Policy Pack](custom-policy-get-started.md#custom-policy-starter-pack) je zahrnutý následující technický profil `SocialAndLocalAccountsWithMfa` . Tento technický profil spravuje relaci Multi-Factor Authentication.
 
 ```XML
 <TechnicalProfile Id="SM-MFA">
@@ -121,7 +121,7 @@ Tento zprostředkovatel se používá k potlačení obrazovky "zvolit zprostřed
 
 #### <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis|
+| Atribut | Povinné | Popis|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | No | Aktuálně se nepoužívá, může být ignorováno. |
 
@@ -138,7 +138,7 @@ Tento zprostředkovatel se používá ke správě Azure AD B2Cch relací mezi OA
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi aplikací předávající strany nebo poskytovatelem federované identity SAML. Při použití poskytovatele jednotného přihlašování pro uložení relace zprostředkovatele identity SAML `RegisterServiceProviders` musí být nastavená na. `false` `SM-Saml-idp` [Technický profil zprostředkovatele identity SAML](saml-identity-provider-technical-profile.md)používá následující technický profil.
+Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi aplikací předávající strany nebo poskytovatelem federované identity SAML. Při použití poskytovatele jednotného přihlašování pro uložení relace zprostředkovatele identity SAML `RegisterServiceProviders` musí být nastavená na `false` . `SM-Saml-idp` [Technický profil zprostředkovatele identity SAML](saml-identity-provider-technical-profile.md)používá následující technický profil.
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
@@ -150,7 +150,7 @@ Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi
 </TechnicalProfile>
 ```
 
-Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServiceProviders` musí být nastavená na. `true` Odhlášení relace SAML vyžaduje `SessionIndex` a `NameID` k dokončení.
+Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServiceProviders` musí být nastavená na `true` . Odhlášení relace SAML vyžaduje `SessionIndex` a `NameID` k dokončení.
 
 `SM-Saml-issuer` [Technický profil vystavitele SAML](saml-issuer-technical-profile.md) používá následující technický profil
 
@@ -163,10 +163,10 @@ Při použití poskytovatele pro ukládání relace SAML B2C `RegisterServicePro
 
 #### <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis|
+| Atribut | Povinné | Popis|
 | --- | --- | --- |
 | IncludeSessionIndex | No | Aktuálně se nepoužívá, může být ignorováno.|
-| RegisterServiceProviders | No | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí), nebo `false`.|
+| RegisterServiceProviders | No | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí), nebo `false` .|
 
 
 ## <a name="next-steps"></a>Další kroky

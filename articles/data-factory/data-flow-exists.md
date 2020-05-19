@@ -19,7 +19,7 @@ ms.locfileid: "82982628"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Transformace EXISTS je transformace při filtrování řádků, která kontroluje, jestli data existují v jiném zdroji nebo streamu. Výstupní datový proud obsahuje všechny řádky v levém proudu, které buď existují, nebo neexistují ve správném datovém proudu. Transformace EXISTS je podobná ```SQL WHERE EXISTS``` a. ```SQL WHERE NOT EXISTS```
+Transformace EXISTS je transformace při filtrování řádků, která kontroluje, jestli data existují v jiném zdroji nebo streamu. Výstupní datový proud obsahuje všechny řádky v levém proudu, které buď existují, nebo neexistují ve správném datovém proudu. Transformace EXISTS je podobná ```SQL WHERE EXISTS``` a ```SQL WHERE NOT EXISTS``` .
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vZKz]
 
@@ -67,7 +67,7 @@ Nedoporučuje se zakázat všesměrové vysílání přes možnost **off** , pok
 
 ### <a name="example"></a>Příklad
 
-Níže uvedený příklad je transformace s názvem `checkForChanges` , která přebírá levý `NameNorm2` Stream a pravý `TypeConversions`Stream.  Podmínka EXISTS je výraz `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` , který vrací hodnotu true, pokud se `EMPID` shodují `Region` sloupce a v každém datovém proudu. Při kontrole existence `negate` je NEPRAVDA. Na kartě optimalizace nepovolujeme žádné vysílání, takže `broadcast` má hodnotu `'none'`.
+Níže uvedený příklad je transformace s názvem `checkForChanges` , která přebírá levý Stream `NameNorm2` a pravý Stream `TypeConversions` .  Podmínka EXISTS je výraz `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` , který vrací hodnotu true, pokud se `EMPID` `Region` shodují sloupce a v každém datovém proudu. Při kontrole existence `negate` je NEPRAVDA. Na kartě optimalizace nepovolujeme žádné vysílání, takže `broadcast` má hodnotu `'none'` .
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

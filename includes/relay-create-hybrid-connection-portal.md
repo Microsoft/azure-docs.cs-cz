@@ -13,7 +13,7 @@ ms.locfileid: "67175239"
 ---
 Ujistěte se, že jste již [vytvořili obor názvů služby Relay][namespace-how-to].
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **Všechny prostředky**.
 3. Vyberte obor názvů, ve kterém chcete vytvořit hybridní připojení. V tomto případě se jedná o **mynewns**.  
 4. V části **Obor názvů Relay** vyberte **Hybridní připojení**.

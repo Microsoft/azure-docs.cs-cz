@@ -34,7 +34,7 @@ Pokud si všimnete, že některé dotazy pobírají více jednotek žádostí, m
 
 ## <a name="view-the-total-request-unit-usage-metric"></a>Zobrazení celkové metriky využití jednotky žádosti
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
 

@@ -53,11 +53,11 @@ Akcelerace dotazů (Preview) je nová funkce pro Azure Data Lake Storage, která
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. Stáhněte si balíčky pro zrychlení dotazů. Komprimovaný soubor zip, který obsahuje tyto balíčky, můžete získat pomocí tohoto odkazu: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net). 
+1. Stáhněte si balíčky pro zrychlení dotazů. Komprimovaný soubor zip, který obsahuje tyto balíčky, můžete získat pomocí tohoto odkazu: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net) . 
 
 2. Extrahujte obsah tohoto souboru do adresáře projektu.
 
-3. V textovém editoru otevřete soubor projektu (*. csproj*) a přidejte tyto odkazy na balíčky uvnitř elementu \<projektu.\>
+3. V textovém editoru otevřete soubor projektu (*. csproj*) a přidejte tyto odkazy na balíčky uvnitř \< \> elementu projektu.
 
    ```xml
    <ItemGroup>
@@ -86,7 +86,7 @@ Akcelerace dotazů (Preview) je nová funkce pro Azure Data Lake Storage, která
    > [!NOTE]
    > V příkladech v tomto článku se předpokládá, že název adresáře je **lib**.
 
-2. Stáhněte si balíčky pro zrychlení dotazů. Komprimovaný soubor zip, který obsahuje tyto balíčky, můžete získat pomocí tohoto odkazu: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java). 
+2. Stáhněte si balíčky pro zrychlení dotazů. Komprimovaný soubor zip, který obsahuje tyto balíčky, můžete získat pomocí tohoto odkazu: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java) . 
 
 3. Extrahujte soubory v tomto souboru zip do adresáře, který jste vytvořili. V našem příkladu má tento adresář název **lib**. 
 
@@ -162,7 +162,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-Chcete-li zkompilovat příklady uvedené v tomto článku, budete také muset přidat i `using` tyto příkazy.
+Chcete-li zkompilovat příklady uvedené v tomto článku, budete také muset přidat `using` i tyto příkazy.
 
 ```csharp
 using System.Threading.Tasks;
@@ -190,11 +190,11 @@ import org.apache.commons.csv.*;
 
 ## <a name="retrieve-data-by-using-a-filter"></a>Načtení dat pomocí filtru
 
-Pomocí jazyka SQL můžete zadat predikáty filtru řádků a projekce sloupců v požadavku na zrychlení dotazu. Následující kód odešle dotaz do souboru CSV v úložišti a vrátí všechny řádky dat, kde třetí sloupec odpovídá hodnotě `Hemingway, Ernest`. 
+Pomocí jazyka SQL můžete zadat predikáty filtru řádků a projekce sloupců v požadavku na zrychlení dotazu. Následující kód odešle dotaz do souboru CSV v úložišti a vrátí všechny řádky dat, kde třetí sloupec odpovídá hodnotě `Hemingway, Ernest` . 
 
 - V dotazu SQL se klíčové slovo `BlobStorage` používá k označení souboru, na který se dotazuje.
 
-- Odkazy na sloupce jsou zadány jako `_N` v případě prvního `_1`sloupce. Pokud zdrojový soubor obsahuje řádek záhlaví, můžete odkazovat na sloupce podle názvu, který je uveden v řádku záhlaví. 
+- Odkazy na sloupce jsou zadány jako `_N` v případě prvního sloupce `_1` . Pokud zdrojový soubor obsahuje řádek záhlaví, můžete odkazovat na sloupce podle názvu, který je uveden v řádku záhlaví. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -260,7 +260,7 @@ class ProgressHandler : IProgress<long>
 
 ### <a name="java"></a>[Java](#tab/java)
 
-Metoda `BlobQuickQueryClient.openInputStream()` pošle dotaz do rozhraní API pro zrychlení dotazování a poté streamuje výsledky zpátky do aplikace jako `InputStream` objekt, který lze číst stejně jako jakýkoli jiný objekt InputStream.
+Metoda `BlobQuickQueryClient.openInputStream()` pošle dotaz do rozhraní API pro zrychlení dotazování a poté streamuje výsledky zpátky do aplikace jako objekt, `InputStream` který lze číst stejně jako jakýkoli jiný objekt InputStream.
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {

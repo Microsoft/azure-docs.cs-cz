@@ -21,7 +21,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83211928"
 ---
-# <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Začínáme s přenosovým Hybrid Connections WebSockets v .NET
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Začínáme s objekty WebSocket Relay Hybrid Connections v .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
 V tomto rychlém startu vytvoříte aplikace pro odesílatele a přijímače v rozhraní .NET, které odesílají a přijímají zprávy pomocí Hybrid Connections WebSockets v Azure Relay. Další informace o Azure Relay obecně najdete v tématu [Azure Relay](relay-what-is-it.md). 

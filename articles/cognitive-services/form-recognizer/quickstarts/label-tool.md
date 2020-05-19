@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6330a77f5971348c3f63fdaa7602ebba9ddf45ec
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186335"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691344"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
 V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů REST API s ukázkovým nástrojem pro označování, pomocí kterého můžete vytvořit vlastní model s ručně označenými daty. Další informace o této funkci najdete v části [výuka s visačkami](../overview.md#train-with-labels) v přehledu.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,7 +37,7 @@ K dokončení tohoto rychlého startu musíte mít:
 Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. Pro nastavení kontejneru Docker použijte následující postup. Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).
 
 > [!TIP]
-> Nástroj pro označování ve formě rozpoznávání znaků je také k dispozici jako open source projekt na GitHubu. Nástroj je webová aplikace sestavená pomocí reakce + Redux a je napsaná v TypeScript. Další informace nebo přispívání naleznete v tématu [Nástroj pro označování ve formě rozpoznávání OCR](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application).
+> Nástroj pro označování ve formě rozpoznávání znaků je také k dispozici jako open source projekt na GitHubu. Nástroj je webová aplikace TypeScript vytvořená pomocí reakce + Redux. Další informace nebo informace o tom, jak se přispívat, najdete v tématu o úložišti [nástrojů pro označování v rozpoznávání](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application) Pokud si chcete nástroj vyzkoušet online, přečtěte si [Web FOTT](https://fott.azurewebsites.net/).   
 
 1. Nejdřív nainstalujte Docker na hostitelském počítači. V této příručce se dozvíte, jak používat místní počítač jako hostitele. Pokud chcete použít hostující službu Docker v Azure, přečtěte si průvodce [nasazením ukázkového popisu nástroje pro označování](../deploy-label-tool.md) . 
 
@@ -56,7 +56,7 @@ Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. P
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
-1. Teď jste připraveni spustit kontejner pomocí `docker run`.
+1. Teď jste připraveni spustit kontejner pomocí `docker run` .
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
@@ -75,7 +75,7 @@ Nejprve se ujistěte, že všechny školicí dokumenty mají stejný formát. Po
 Povolte CORS v účtu úložiště. V Azure Portal vyberte svůj účet úložiště a v levém podokně klikněte na kartu **CORS** . Na dolním řádku vyplňte následující hodnoty. Pak v horní části klikněte na **Uložit** .
 
 * Povolené zdroje = * 
-* Povolené metody = \[vybrat vše\]
+* Povolené metody = \[ Vybrat vše\]
 * Povolené hlavičky = *
 * Zveřejněné hlavičky = * 
 * Maximální stáří = 200
@@ -95,7 +95,7 @@ Vyplňte pole následujícími hodnotami:
 
 * **Zobrazovaný název** – zobrazovaný název připojení.
 * **Popis** – Popis projektu.
-* **Adresa URL SAS** – adresa URL sdíleného přístupového podpisu (SAS) vašeho kontejneru Azure Blob Storage. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Nastavte čas vypršení platnosti na nějakou dobu, kdy jste službu použili. Ujistěte se, že jsou zaškrtnutá oprávnění **číst**, **zapisovat**, **Odstranit**a **seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **Adresa URL SAS** – adresa URL sdíleného přístupového podpisu (SAS) vašeho kontejneru Azure Blob Storage. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Nastavte čas vypršení platnosti na nějakou dobu, kdy jste službu použili. Ujistěte se, že jsou zaškrtnutá oprávnění **číst**, **zapisovat**, **Odstranit**a **seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 
 ![Nastavení připojení nástroje Sample labeling Tool](../media/label-tool/connections.png)
 
@@ -141,7 +141,7 @@ V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky
     > * Každou značku lze na stránce použít pouze jednou. Pokud se hodnota ve stejném formuláři objeví víckrát, vytvořte pro každou instanci různé značky. Například: "Faktura č. 1", "Faktura č. 2" atd.
     > * Značky nemohou být rozloženy mezi stránkami.
     > * Hodnoty popisků tak, jak se zobrazí ve formuláři; Nepokoušejte se rozdělit hodnotu do dvou částí se dvěma různými značkami. Například pole adresa musí být označeno s jednou značkou, i když pokrývá více řádků.
-    > * Nezahrnujte klíče do polí&mdash;s příznakem pouze hodnoty.
+    > * Nezahrnujte klíče do polí s příznakem &mdash; pouze hodnoty.
     > * Data tabulky by měla být zjištěna automaticky a budou k dispozici v konečném výstupním souboru JSON. Pokud však model nerozpozná všechna data tabulky, můžete tato pole také označit ručně. Označte každou buňku v tabulce jiným popiskem. Pokud mají vaše formuláře tabulky s různými počty řádků, ujistěte se, že jste si vystavili alespoň jednu formu s největší možnou tabulkou.
 
 ![Okno hlavního editoru nástroje pro ukázkové označování](../media/label-tool/main-editor.png)
@@ -157,11 +157,11 @@ Volitelně můžete pro každou značku nastavit očekávaný datový typ. Otev�
 
 V současné době jsou podporovány následující typy hodnot a variace:
 * `string`
-    * výchozí, `no-whitespaces`,`alphanumeric`
+    * výchozí, `no-whitespaces` ,`alphanumeric`
 * `number`
     * výchozí`currency`
 * `date` 
-    * výchozí, `dmy`, `mdy`,`ymd`
+    * výchozí, `dmy` , `mdy` ,`ymd`
 * `time`
 * `integer`
 

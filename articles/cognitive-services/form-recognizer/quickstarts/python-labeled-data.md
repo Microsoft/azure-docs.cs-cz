@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531096"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594164"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Výukový model pro rozpoznávání formulářů s popisky pomocí REST API a Pythonu
 
 V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s Pythonem k učení vlastního modelu s ručně označenými daty. Další informace o této funkci najdete v části [výuka s visačkami](../overview.md#train-with-labels) v přehledu.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -63,7 +63,7 @@ Chcete-li, aby služba mohla zvážit odpovídající vstupní soubory pro škol
 
 1. Zavolejte rozhraní API **[analyzovat rozložení](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** v kontejneru čtení rozložení se vstupním souborem jako součást textu žádosti. Uloží ID nalezené v hlavičce **operace – umístění** odpovědi.
 1. Pomocí ID operace z předchozího kroku zavolejte rozhraní API **[výsledků získat analýzu rozložení](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** .
-1. Získejte odpověď a zapište obsah do souboru. Pro každý zdrojový formulář by měl mít odpovídající soubor optického rozpoznávání znaků připojený původní název souboru `.ocr.json`. Výstup ve formátu JSON OCR by měl mít následující formát. Úplný příklad najdete v [ukázkovém souboru OCR](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) . 
+1. Získejte odpověď a zapište obsah do souboru. Pro každý zdrojový formulář by měl mít odpovídající soubor optického rozpoznávání znaků připojený původní název souboru `.ocr.json` . Výstup ve formátu JSON OCR by měl mít následující formát. Úplný příklad najdete v [ukázkovém souboru OCR](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) . 
 
     ```json
     {
@@ -118,9 +118,9 @@ Chcete-li, aby služba mohla zvážit odpovídající vstupní soubory pro škol
 
 Soubory popisků obsahují přidružení klíč-hodnota, která uživatel zadal ručně. Jsou nutné pro školení s popisky dat, ale ne každý zdrojový soubor musí mít odpovídající soubor popisku. Zdrojové soubory bez popisků se budou považovat za běžné školicí dokumenty. Pro spolehlivé školení doporučujeme pět nebo více označených souborů.
 
-Při vytváření souboru popisků můžete volitelně zadat oblasti&mdash;s přesným umístěním hodnot v dokumentu. Tím zajistíte i vyšší přesnost školení. Oblasti jsou formátovány jako sada osmi hodnot, které odpovídají čtyřm souřadnicím X, Y: vlevo nahoře, vpravo nahoře, dole vpravo a vlevo dole. Hodnoty souřadnic jsou mezi nulou a jednou škálované na rozměry stránky.
+Při vytváření souboru popisků můžete volitelně zadat oblasti s &mdash; přesným umístěním hodnot v dokumentu. Tím zajistíte i vyšší přesnost školení. Oblasti jsou formátovány jako sada osmi hodnot, které odpovídají čtyřm souřadnicím X, Y: vlevo nahoře, vpravo nahoře, dole vpravo a vlevo dole. Hodnoty souřadnic jsou mezi nulou a jednou škálované na rozměry stránky.
 
-Pro každý zdrojový formulář by měl mít odpovídající soubor popisku příponu původního souboru s `.labels.json`příponou. Soubor popisku by měl mít následující formát. Úplný příklad najdete v [souboru se vzorovým popiskem](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) .
+Pro každý zdrojový formulář by měl mít odpovídající soubor popisku příponu původního souboru s `.labels.json` příponou. Soubor popisku by měl mít následující formát. Úplný příklad najdete v [souboru se vzorovým popiskem](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) .
 
 ```json
 {
@@ -196,8 +196,8 @@ Pro každý zdrojový formulář by měl mít odpovídající soubor popisku př
 Chcete-li vytvořit model s označením dat, zavolejte rozhraní API **[vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** spuštěním následujícího kódu Pythonu. Před spuštěním kódu proveďte tyto změny:
 
 1. Nahraďte `<Endpoint>` adresou URL koncového bodu pro prostředek pro rozpoznávání formulářů.
-1. Nahraďte `<SAS URL>` adresou URL sdíleného přístupového podpisu (SAS) kontejneru úložiště objektů BLOB v Azure. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
-1. Nahraďte `<Blob folder name>` názvem složky ve vašem kontejneru objektů blob, kde se nacházejí vstupní data. Nebo, pokud jsou vaše data v kořenovém adresáři, nechejte toto `"prefix"` pole prázdné a odeberte pole z těla požadavku HTTP.
+1. Nahraďte `<SAS URL>` adresou URL sdíleného přístupového podpisu (SAS) kontejneru úložiště objektů BLOB v Azure. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+1. Nahraďte `<Blob folder name>` názvem složky ve vašem kontejneru objektů blob, kde se nacházejí vstupní data. Nebo, pokud jsou vaše data v kořenovém adresáři, nechejte toto pole prázdné a odeberte `"prefix"` pole z těla požadavku HTTP.
 
 ```python
 ########### Python Form Recognizer Labeled Async Train #############
@@ -486,11 +486,8 @@ Po dokončení procesu obdržíte `202 (Success)` odpověď s obsahem JSON v ná
               "page":1,
               "confidence":1,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/15/words/0"
-                }
-              ],
-              "fieldName":"total"
+                "#/analyzeResult/readResults/0/lines/15/words/0"
+              ]
             },
             "invoice #":{ 
               "type":"string",
@@ -509,11 +506,8 @@ Po dokončení procesu obdržíte `202 (Success)` odpověď s obsahem JSON v ná
               "page":1,
               "confidence":1,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/12/words/0"
-                }
-              ],
-              "fieldName":"invoice #"
+                "#/analyzeResult/readResults/0/lines/12/words/0"
+              ]
             },
             "vat":{ 
               "type":"string",
@@ -532,11 +526,8 @@ Po dokončení procesu obdržíte `202 (Success)` odpověď s obsahem JSON v ná
               "page":1,
               "confidence":0.9839357733726502,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/16/words/0"
-                }
-              ],
-              "fieldName":"vat"
+                "#/analyzeResult/readResults/0/lines/16/words/0"
+              ]
             },
             ...
           }

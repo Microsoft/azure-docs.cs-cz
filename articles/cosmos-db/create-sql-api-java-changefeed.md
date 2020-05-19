@@ -53,7 +53,7 @@ Otevřete terminál v adresáři úložiště. Sestavte aplikaci spuštěním
 mvn clean package
 ```
 
-## <a name="walkthrough"></a>Názorný postup
+## <a name="walkthrough"></a>Návod
 
 1. Při první kontrole byste měli mít účet Azure Cosmos DB. Otevřete **Azure Portal** v prohlížeči, přejděte na účet Azure Cosmos DB a v levém podokně přejděte na **Průzkumník dat**.
 

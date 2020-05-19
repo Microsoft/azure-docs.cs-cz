@@ -21,7 +21,7 @@ V příkladu v tomto článku se používají [moduly prostředí PowerShell SQL
 
 Ukázková sada Runbook PowerShellu, která demonstruje aktualizaci modelu, je k dispozici dále v tomto článku.  
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  V příkladu v tomto článku se k ověření Azure Analysis Services použije instanční objekt (SPN).
 
@@ -101,7 +101,7 @@ Dá se nakonfigurovat takto:
  
     ![Vytvořit plán](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. Klikněte na **naplánovat** > **vytvořit nový plán**a pak vyplňte podrobnosti.
+2. Klikněte na **naplánovat**  >  **vytvořit nový plán**a pak vyplňte podrobnosti.
 
     ![Konfigurovat plán](./media/analysis-services-refresh-azure-automation/15.png)
 
@@ -147,7 +147,7 @@ Pokud chcete sadu Runbook využívat pomocí Azure Data Factory, vytvořte nejpr
 |Vlastnost  |Hodnota  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Název databáze Azure Analysis Services <br/> Příklad: AdventureWorksDB         |
-|**AnalysisServicesServer**     |Název serveru Azure Analysis Services. <br/> Příklad: https:\//westus.asazure.Windows.NET/Servers/MyServer/Models/AdventureWorks/         |
+|**AnalysisServicesServer**     |Název serveru Azure Analysis Services. <br/> Příklad: https: \/ /westus.asazure.Windows.NET/Servers/MyServer/Models/AdventureWorks/         |
 |**DatabaseRefreshType**     |Typ aktualizace, která má být provedena. <br/> Příklad: Full         |
 
 Příklad těla JSON:
@@ -175,7 +175,7 @@ Virtuální počítač Azure se statickou veřejnou IP adresou se dá použít j
 >
 >Další informace o konfiguraci Azure Automation hybridních pracovních procesů najdete v tématu [instalace Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation).
 
-Po nakonfigurování Hybrid Worker vytvořte Webhook, jak je popsáno v části věnované [použití s Data Factory](#consume-with-data-factory).  Jediným rozdílem je, že při konfiguraci Webhooku vyberte možnost **Spustit při** > **Hybrid Worker** .
+Po nakonfigurování Hybrid Worker vytvořte Webhook, jak je popsáno v části věnované [použití s Data Factory](#consume-with-data-factory).  Jediným rozdílem je, že **Run on**  >  při konfiguraci Webhooku vyberte možnost spustit při**Hybrid Worker** .
 
 Příklad Webhooku s použitím Hybrid Worker:
 
@@ -226,5 +226,5 @@ else
 
 ## <a name="next-steps"></a>Další kroky
 
-[Ukázky](analysis-services-samples.md)  
+[ukázky](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

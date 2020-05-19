@@ -37,7 +37,7 @@ Východní USA (EUS), Východní USA 2 (EUS2), Severní Evropa (NE), Střed USA 
 | Typ sdílené složky                                   | Podpora   |
 | -------------------------------------------------- | --------- |
 | Standard                                           | Podporuje se |
-| Dlouhodobé používání                                              | Podporuje se |
+| Velká                                              | Podporuje se |
 | Premium                                            | Podporuje se |
 | Sdílené složky připojené ke službě Azure File Sync | Podporuje se |
 

@@ -6,4 +6,4 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81398825"
 ---
-<Token>**Platí pro:** ![Ano](../media/applies-to/yes.png)Azure Data Factory ![žádné](../media/applies-to/no.png)analýzy Azure synapse (Preview)</Token>
+<Token>**platí pro:** ![ Ano ](../media/applies-to/yes.png) Azure Data Factory ![ žádné ](../media/applies-to/no.png) analýzy Azure synapse (Preview)</Token>
