@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 3/9/2020
-ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 7391fbccaf7983a070d80da64a2908333280420b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878302"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83608997"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce ve verzi Preview pro Azure Stream Analytics
 
@@ -21,6 +21,15 @@ Tento článek shrnuje všechny funkce, které jsou v současnosti ve verzi Prev
 ## <a name="public-previews"></a>Public Preview
 
 Následující funkce jsou ve verzi Public Preview. Tyto funkce můžete využívat ještě dnes, ale nepoužívejte je v produkčním prostředí.
+
+### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Ověřování pro SQL Database výstup se spravovanými identitami
+
+Azure Stream Analytics podporuje [spravované ověřování identity](../active-directory/managed-identities-azure-resources/overview.md) pro Azure SQL Database výstupní jímky. Spravované identity odstraňují omezení metod ověřování založených na uživatelích, například nutnost opětovného ověření z důvodu změny hesla nebo vypršení platnosti tokenu uživatele, ke kterému dochází každých 90 dní. Když odeberete nutnost ručního ověřování, vaše nasazení Stream Analytics můžou být plně automatizovaná.
+
+### <a name="output-to-azure-synapse-analytics"></a>Výstup do služby Azure synapse Analytics
+
+Úlohy Azure Stream Analytics můžou ve [službě Azure synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) nastavovat výstup do tabulky fondů SQL a můžou zpracovat míry propustnosti až do 200 MB/s. Tato funkce podporuje nejvíce náročné analýzy v reálném čase a zpracování dat za provozu pro úlohy, jako je vytváření sestav a řídicí panel.  
+
 
 ### <a name="online-scaling"></a>Škálování online
 
