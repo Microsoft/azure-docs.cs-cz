@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 5f36c429041a8182551d1f077f0a1229f520e8c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 838b759f6b175b478dcd9b0559784975b5d24f70
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879339"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593324"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Instalace a spuštění kontejnerů pro čtení (Preview)
 
@@ -24,13 +24,13 @@ Kontejnery umožňují spouštět rozhraní API Počítačové zpracování obra
 
 Pro Počítačové zpracování obrazu je k dispozici jeden kontejner Docker, který je *určen*. Kontejner *pro čtení* umožňuje detekovat a extrahovat *vytištěný text* z obrázků různých objektů s různými povrchy a pozadími, jako jsou například příjmy, plakáty a vizitky. Kromě toho kontejner *pro čtení* detekuje *rukou psaný text* v obrázcích a poskytuje podporu PDF, TIFF a vícestránkového souboru. Další informace najdete v dokumentaci k rozhraní API [pro čtení](concept-recognizing-text.md#read-api) .
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Před použitím kontejnerů musíte splnit následující předpoklady:
 
-|Požaduje se|Účel|
+|Vyžadováno|Účel|
 |--|--|
 |Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.| 
@@ -82,14 +82,14 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 
 Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K [examples](computer-vision-resource-container-config.md) dispozici jsou `docker run` další příklady příkazu. 
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. [examples](computer-vision-resource-container-config.md) `docker run` K dispozici jsou další příklady příkazu. 
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint) 
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
 
-Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty `{ENDPOINT_URI}` a `{API_KEY}` , najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) .
+Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty a, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` .
 
-[Examples](computer-vision-resource-container-config.md#example-docker-run-commands) K dispozici `docker run` jsou příklady příkazů.
+[Examples](computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou příklady příkazů.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -106,10 +106,10 @@ Tento příkaz:
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
-K [examples](./computer-vision-resource-container-config.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu. 
+[examples](./computer-vision-resource-container-config.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu. 
 
 > [!IMPORTANT]
-> Pro `Eula`spuštění `Billing`kontejneru musí `ApiKey` být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
+> `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -121,13 +121,13 @@ K [examples](./computer-vision-resource-container-config.md#example-docker-run-c
 
 Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST. 
 
-Pro rozhraní API kontejneru `http://localhost:5000`použijte hostitele.
+`http://localhost:5000`Pro rozhraní API kontejneru použijte hostitele.
 
 ### <a name="asynchronous-read"></a>Asynchronní čtení
 
-Můžete použít operace `POST /vision/v2.0/read/core/asyncBatchAnalyze` a `GET /vision/v2.0/read/operations/{operationId}` společně k asynchronnímu čtení obrázku, podobně jako služba počítačové zpracování obrazu používá tyto odpovídající operace REST. Asynchronní metoda POST vrátí hodnotu `operationId` , která se používá jako identifikátorem požadavku HTTP GET.
+Můžete použít `POST /vision/v2.0/read/core/asyncBatchAnalyze` `GET /vision/v2.0/read/operations/{operationId}` operace a společně k asynchronnímu čtení obrázku, podobně jako služba počítačové zpracování obrazu používá tyto odpovídající operace REST. Asynchronní metoda POST vrátí `operationId` hodnotu, která se používá jako identifikátorem požadavku HTTP GET.
 
-V uživatelském rozhraní Swagger vyberte `asyncBatchAnalyze` a rozbalte ho v prohlížeči. Pak vyberte **vyzkoušet** > pro výběr**souboru**. V tomto příkladu použijeme následující obrázek:
+V uživatelském rozhraní Swagger vyberte `asyncBatchAnalyze` a rozbalte ho v prohlížeči. Pak vyberte **vyzkoušet**pro výběr  >  **souboru**. V tomto příkladu použijeme následující obrázek:
 
 ![tabulátory vs – mezery](media/tabs-vs-spaces.png)
 
@@ -140,7 +140,7 @@ Po úspěšném spuštění asynchronního příspěvku vrátí stavový kód **
  server: Kestrel
 ```
 
-Je `operation-location` plně kvalifikovaná adresa URL, ke které se dostanete prostřednictvím HTTP GET. Tady je odpověď JSON z vykonání `operation-location` adresy URL z předchozího obrázku:
+`operation-location`Je plně kvalifikovaná adresa URL, ke které se dostanete prostřednictvím HTTP GET. Tady je odpověď JSON z vykonání `operation-location` adresy URL z předchozího obrázku:
 
 ```json
 {
@@ -186,7 +186,7 @@ Je `operation-location` plně kvalifikovaná adresa URL, ke které se dostanete 
 
 ### <a name="synchronous-read"></a>Synchronní čtení
 
-`POST /vision/v2.0/read/core/Analyze` Operaci můžete použít k synchronnímu čtení obrázku. Když se image načte v celém rozsahu, pak rozhraní API pak vrátí odpověď JSON. Jedinou výjimkou je situace, kdy dojde k chybě. Pokud dojde k chybě, vrátí se následující JSON:
+Operaci můžete použít `POST /vision/v2.0/read/core/Analyze` k synchronnímu čtení obrázku. Když se image načte v celém rozsahu, pak rozhraní API pak vrátí odpověď JSON. Jedinou výjimkou je situace, kdy dojde k chybě. Pokud dojde k chybě, vrátí se následující JSON:
 
 ```json
 {

@@ -1,0 +1,39 @@
+---
+title: Řešení potíží s kódy chyb Azure Stream Analytics
+description: Řešení potíží s Azure Stream Analytics problémy s kódy interních chyb.
+ms.author: mamccrea
+author: mamccrea
+ms.topic: conceptual
+ms.date: 05/07/2020
+ms.service: stream-analytics
+ms.openlocfilehash: c8c792d548fc953cb5d059f322ad1f3139c91562
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83597734"
+---
+# <a name="azure-stream-analytics-internal-error-codes"></a>Azure Stream Analytics kódy interních chyb
+
+Protokoly aktivit a protokoly prostředků můžete použít k ladění neočekávaného chování z vaší Azure Stream Analytics úlohy. V tomto článku je uveden popis každého interního kódu chyby. Vnitřní chyby jsou obecné chyby, které jsou vyvolány v rámci Stream Analyticsé platformy, pokud Stream Analytics nedokáže rozlišovat, pokud je chyba vnitřní dostupnost nebo chyba v systému.
+
+## <a name="kafkainvalidrequest"></a>KafkaInvalidRequest
+
+* **Příčina**: požadavek odeslaný na server Kafka je neplatný.
+
+## <a name="kafkainputerror"></a>KafkaInputError
+
+* **Příčina**: u vstupu Kafka došlo k problému.
+
+## <a name="cosmosdboutputbatchsizetoolarge"></a>CosmosDBOutputBatchSizeTooLarge
+
+* **Příčina**: velikost dávky použitá k zápisu do Cosmos DB je příliš velká. 
+* **Doporučení**: zkuste zopakovat s menší velikostí dávky.
+
+## <a name="next-steps"></a>Další kroky
+
+* [Řešení potíží se vstupními připojeními](stream-analytics-troubleshoot-input.md)
+* [Řešení potíží s výstupy Azure Stream Analytics](stream-analytics-troubleshoot-output.md)
+* [Řešení potíží s Azure Stream Analytics dotazy](stream-analytics-troubleshoot-query.md)
+* [Řešení potíží s Azure Stream Analytics pomocí protokolů prostředků](stream-analytics-job-diagnostic-logs.md)
+* [Chyby Azure Stream Analytics dat](data-errors.md)
