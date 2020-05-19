@@ -26,10 +26,10 @@ ms.locfileid: "83116317"
     | **Předplatné** | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. |
     | **[Skupina prostředků](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |
     | **Název Function App** | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a-z` (bez rozlišení velkých a malých písmen), `0-9` a `-` .  |
-    |**Publikování**| kód | Možnost publikování souborů kódu nebo kontejneru Docker |
+    |**Publikování**| Kód | Možnost publikování souborů kódu nebo kontejneru Docker |
     | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Vyberte **.NET Core** pro funkce jazyka C# a F #. |
     |**Verze**| Číslo verze | Vyberte verzi nainstalovaného modulu runtime.  |
-    |**Věřitel**| Upřednostňovaná oblast | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. |
+    |**Oblast**| Upřednostňovaná oblast | Vyberte [oblast](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají. |
 
     ![Základy](./media/functions-create-function-app-portal/function-app-create-basics.png)
 
