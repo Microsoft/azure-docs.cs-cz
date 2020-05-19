@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d103b22338672f031fa4f91349a8376f86b703c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50c6d3ff6e1e8b979b3544c423a15ae8e1e42f6f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81530963"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592147"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Podpora přirozeného jazyka pro Azure Cognitive Services
 
@@ -25,12 +25,12 @@ Tyto Cognitive Services jsou nezávislá jazyka a nemají omezení na základě 
 
 * [Detektor anomálií (Preview)](./anomaly-detector/index.yml)
 * [Custom Vision](./Custom-Vision-Service/index.yml)
-* [Tvář](./face/index.yml)
+* [Rozpoznávání tváře](./face/index.yml)
 * [Personalizace](./personalizer/index.yml)
 
-## <a name="vision"></a>Obraz
+## <a name="vision"></a>Vision
 
-* [Computer Vision](./computer-vision/language-support.md)
+* [Počítačové zpracování obrazu](./computer-vision/language-support.md)
 * [Rozpoznávání formulářů (Preview)](./form-recognizer/language-support.md)
 * [Rozpoznávání rukopisu (Preview)](./ink-recognizer/language-support.md)
 * [Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/language-identification-model#guidelines-and-limitations)
@@ -41,7 +41,7 @@ Tyto Cognitive Services jsou nezávislá jazyka a nemají omezení na základě 
 * [Language Understanding (LUIS)](./luis/luis-supported-languages.md)
 * [QnA Maker](./qnamaker/overview/languages-supported.md)
 * [Analýza textu](./text-analytics/text-analytics-supported-languages.md)
-* [Translator Text](./translator/languages.md)
+* [Translator](./translator/languages.md)
 
 ## <a name="speech"></a>Řeč
 
@@ -49,7 +49,7 @@ Tyto Cognitive Services jsou nezávislá jazyka a nemají omezení na základě 
 * [Služba Speech: převod textu na řeč](./speech-service/supported-languages.md#text-to-speech)
 * [Služba Speech: překlad řeči](./speech-service/supported-languages.md#speech-translation)
 
-## <a name="search"></a>Search
+## <a name="search"></a>Hledat
 
 * [Vlastní vyhledávání Bingu](./bing-custom-search/supported-countries-markets.md)
 * [Vyhledávání obrázků Bingu](./bing-image-search/supported-countries-markets.md)

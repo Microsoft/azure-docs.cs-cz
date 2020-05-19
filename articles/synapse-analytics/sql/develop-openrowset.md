@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4b0c5277fb826780ff0c103f011c26049282672
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ec6e18aa4fa741ba784e68ccf9b5f87ad654eba
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201486"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591416"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Jak používat OPENROWSET s SQL na vyžádání (Preview)
 
@@ -48,7 +48,7 @@ Toto je rychlý a snadný způsob, jak číst obsah souborů bez předchozí kon
     Tato možnost umožňuje nakonfigurovat umístění účtu úložiště ve zdroji dat a zadat metodu ověřování, která se má použít pro přístup k úložišti. 
     
     > [!IMPORTANT]
-    > `OPENROWSET`bez `DATA_SOURCE` poskytuje rychlý a snadný způsob, jak získat přístup k souborům úložiště, ale nabízí omezené možnosti ověřování. Například objekt zabezpečení Azure AD může přistupovat k souborům jenom pomocí své [identity Azure AD](develop-storage-files-storage-access-control.md#user-identity) a nemůže získat přístup k veřejně dostupným souborům. Pokud potřebujete výkonnější možnosti ověřování, použijte `DATA_SOURCE` možnost a definujte přihlašovací údaje, které chcete použít pro přístup k úložišti.
+    > `OPENROWSET`bez `DATA_SOURCE` poskytuje rychlý a snadný způsob, jak získat přístup k souborům úložiště, ale nabízí omezené možnosti ověřování. Například objekt zabezpečení Azure AD může přistupovat k souborům jenom pomocí své [identity Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) a nemůže získat přístup k veřejně dostupným souborům. Pokud potřebujete výkonnější možnosti ověřování, použijte `DATA_SOURCE` možnost a definujte přihlašovací údaje, které chcete použít pro přístup k úložišti.
 
 ## <a name="security"></a>Zabezpečení
 
@@ -58,9 +58,9 @@ Správce úložiště musí taky povolit uživateli přístup k souborům poskyt
 
 `OPENROWSET`k určení, jak ověřit úložiště, použijte následující pravidla:
 - V `OPENROWSET` rámci s `DATA_SOURCE` mechanismem ověřování závisí na typu volajícího.
-  - Přihlášení AAD mají přístup k souborům jenom pomocí vlastní [identity Azure AD](develop-storage-files-storage-access-control.md#user-identity) , pokud Azure Storage umožňuje uživatelům Azure AD přístup k základním souborům (například pokud má volající oprávnění čtenářů úložiště) a pokud [povolíte ověřování Azure AD](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) pro službu synapse SQL.
+  - Přihlášení AAD mají přístup k souborům jenom pomocí vlastní [identity Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) , pokud Azure Storage umožňuje uživatelům Azure AD přístup k základním souborům (například pokud má volající oprávnění čtenářů úložiště) a pokud [povolíte ověřování Azure AD](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) pro službu synapse SQL.
   - Přihlášení SQL můžete také použít `OPENROWSET` bez `DATA_SOURCE` přístupu k veřejně dostupným souborům, souborům chráněným pomocí tokenu SAS nebo spravované identitě synapse pracovního prostoru. Pro povolení přístupu k souborům úložiště by bylo potřeba [vytvořit přihlašovací údaje v oboru serveru](develop-storage-files-storage-access-control.md#examples) . 
-- V `OPENROWSET` rámci `DATA_SOURCE` mechanismu ověřování je definována v přihlašovacích údajích, které jsou přiřazené k odkazovanému zdroji dat v rámci databáze. Tato možnost umožňuje přístup k veřejně dostupnému úložišti nebo přístup k úložišti pomocí tokenu SAS, spravované identity pracovního prostoru nebo [identity volajícího služby Azure AD](develop-storage-files-storage-access-control.md#user-identity) (Pokud je volající objekt zabezpečení Azure AD). Pokud `DATA_SOURCE` odkazujete na úložiště Azure, které není veřejné, budete muset [vytvořit přihlašovací údaje v oboru databáze](develop-storage-files-storage-access-control.md#examples) a odkazovat na ně v `DATA SOURCE` , aby se povolil přístup k souborům úložiště.
+- V `OPENROWSET` nástroji pomocí `DATA_SOURCE` ověřovacího mechanismu je definovaný v databázi s rozsahem pověření přiřazeným k odkazovanému zdroji dat. Tato možnost umožňuje přístup k veřejně dostupnému úložišti nebo přístup k úložišti pomocí tokenu SAS, spravované identity pracovního prostoru nebo [identity volajícího služby Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity#) (Pokud je volající objekt zabezpečení Azure AD). Pokud `DATA_SOURCE` odkazujete na úložiště Azure, které není veřejné, budete muset [vytvořit přihlašovací údaje v oboru databáze](develop-storage-files-storage-access-control.md#examples) a odkazovat na ně v `DATA SOURCE` , aby se povolil přístup k souborům úložiště.
 
 Volající musí mít `REFERENCES` oprávnění k pověření, aby ho mohl použít k ověření úložiště.
 

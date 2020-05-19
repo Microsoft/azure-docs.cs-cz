@@ -1,7 +1,7 @@
 ---
-title: Translator Text API metoda přepisu
+title: Metoda přepisu překladatelů
 titleSuffix: Azure Cognitive Services
-description: Převod textu v jednom jazyce z jednoho skriptu na jiný skript s metodou Translator Text API přepisu.
+description: Převod textu v jednom jazyce z jednoho skriptu na jiný skript s metodou překladatelů pro přepis.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: e6bb1541b2b668796b352bebc68d59b4ade143e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b811c57eb163931c39a311418ac9f1513e9393a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73837284"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592249"
 ---
-# <a name="translator-text-api-30-transliterate"></a>Translator Text API 3,0: přepis
+# <a name="translator-30-transliterate"></a>Překladatel 3,0: přepis
 
 Převede text v jednom jazyce z jednoho skriptu na jiný skript.
 
@@ -38,11 +38,11 @@ Parametry žádosti předané řetězci dotazu jsou:
   <th>Popis</th>
   <tr>
     <td>verze-api</td>
-    <td>*Povinný parametr*.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`.</td>
+    <td>*Povinný parametr*.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0` .</td>
   </tr>
   <tr>
     <td>language</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk textu, který má být převeden z jednoho skriptu na jiný. Možné jazyky jsou uvedené v oboru `transliteration` , který je získaný dotazem na službu pro [podporované jazyky](./v3-0-languages.md).</td>
+    <td>*Povinný parametr*.<br/>Určuje jazyk textu, který má být převeden z jednoho skriptu na jiný. Možné jazyky jsou uvedené v oboru, který je `transliteration` získaný dotazem na službu pro [podporované jazyky](./v3-0-languages.md).</td>
   </tr>
   <tr>
     <td>fromScript</td>
@@ -65,7 +65,7 @@ Hlavičky požadavku zahrnují:
   </tr>
   <tr>
     <td>Typ obsahu</td>
-    <td>*Požadovaná hlavička žádosti*<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json`.</td>
+    <td>*Požadovaná hlavička žádosti*<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json` .</td>
   </tr>
   <tr>
     <td>Délka obsahu</td>
@@ -73,13 +73,13 @@ Hlavičky požadavku zahrnují:
   </tr>
   <tr>
     <td>X – ClientTraceId</td>
-    <td>*Volitelné*.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Všimněte si, že tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
+    <td>*Volitelné*.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Všimněte si, že tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId` .</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Text požadavku
 
-Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text`, který představuje řetězec, který má být převeden.
+Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text` , který představuje řetězec, který má být převeden.
 
 ```json
 [
@@ -131,7 +131,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   <th>Popis</th>
   <tr>
     <td>200</td>
-    <td>Úspěch</td>
+    <td>Úspěch.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -151,15 +151,15 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
   <tr>
     <td>500</td>
-    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky `X-RequestId`odpovědi a identifikátor klienta z hlavičky `X-ClientTraceId`požadavku.</td>
+    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky odpovědi `X-RequestId` a identifikátor klienta z hlavičky požadavku `X-ClientTraceId` .</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky `X-RequestId`odpovědi a identifikátor klienta z hlavičky `X-ClientTraceId`požadavku.</td>
+    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky odpovědi `X-RequestId` a identifikátor klienta z hlavičky požadavku `X-ClientTraceId` .</td>
   </tr>
 </table> 
 
-Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [stránce s referenčními Translator text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [referenční stránce překladatele V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Příklady
 
@@ -171,7 +171,7 @@ Datová část JSON pro požadavek v tomto příkladu:
 [{"text":"こんにちは","script":"jpan"},{"text":"さようなら","script":"jpan"}]
 ```
 
-Pokud používáte kudrlinkou v okně příkazového řádku, které nepodporuje znaky Unicode, použijte následující datovou část JSON a uložte ji do souboru s názvem `request.txt`. Nezapomeňte soubor uložit s `UTF-8` kódováním.
+Pokud používáte kudrlinkou v okně příkazového řádku, které nepodporuje znaky Unicode, použijte následující datovou část JSON a uložte ji do souboru s názvem `request.txt` . Nezapomeňte soubor uložit s `UTF-8` kódováním.
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=Jpan&toScript=Latn" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d @request.txt

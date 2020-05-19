@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 3c954c4689281838ea8c61c932cdcc3b74bac442
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7831e554fcca20134d5cf8608481ff0c82eb8a0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184669"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591994"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services
 
-V současné době vám Azure Lab Services umožňuje nastavit jeden virtuální počítač šablony v testovacím prostředí a vytvořit pro každého uživatele jednu kopii. Pokud jste profesor výukové sítě, zabezpečení nebo třídy IT, možná budete muset každému studentovi poskytnout prostředí, ve kterém může vzájemně komunikovat více virtuálních počítačů přes síť.
+V současné době vám Azure Lab Services umožňuje nastavit jeden virtuální počítač šablony v testovacím prostředí a vytvořit pro každého uživatele jednu kopii. Pokud jste Educator výukové sítě, zabezpečení nebo třídy IT, možná budete muset každému studentovi poskytnout prostředí, ve kterém může vzájemně komunikovat více virtuálních počítačů přes síť.
 
 Vnořená virtualizace umožňuje vytvořit prostředí s několika virtuálními počítači v rámci virtuálních počítačů šablon testovacího prostředí. Publikování šablony poskytne každého uživatele v testovacím prostředí s virtuálním počítačem nastaveným s několika virtuálními počítači v rámci něj.  Tento článek popisuje, jak nastavit vnořenou virtualizaci na počítači šablony v Azure Lab Services.
 

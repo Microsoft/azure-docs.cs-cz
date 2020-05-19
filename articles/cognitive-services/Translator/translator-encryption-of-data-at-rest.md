@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 44bb223dbc944be1b8769aa2572f1b88b916528b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82b294cbda6e9d4b4cfa5ec560d802c8e5c6c51c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372235"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590889"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Šifrování dat v klidovém umístění
 
@@ -41,7 +41,7 @@ K dispozici je také možnost Spravovat předplatné s vlastními klíči. Klí�
 
 Pomocí těchto kroků povolíte klíčům spravovaným zákazníkem pro překladatele:
 
-1. Vytvořte nový místní Translator Text nebo regionální prostředek Cognitive Services. Tato akce nebude fungovat s globálním prostředkem.
+1. Vytvořte svůj nový místní Překladatel nebo místní Cognitive Services prostředek. Tato akce nebude fungovat s globálním prostředkem.
 2. V Azure Portal povolenou spravovanou identitu a přidejte informace o klíčích spravované zákazníkem.
 3. Vytvořte nový pracovní prostor ve vlastním překladateli a přidružte informace k tomuto předplatnému.
 

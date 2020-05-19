@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e859ac18276d10960a5a8488a6051252d90e0fcd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80744149"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591042"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyků a oblastí pro LUIS
 
@@ -24,7 +24,7 @@ LUIS má v rámci služby nejrůznější funkce. Ne všechny funkce jsou ve ste
 
 ## <a name="multi-language-luis-apps"></a>Aplikace LUIS pro více jazyků
 
-Pokud potřebujete klientskou aplikaci LUIS s více jazyky, jako je chatovací robot, máte několik možností. Pokud LUIS podporuje všechny jazyky, vyvíjíte aplikaci LUIS pro každý jazyk. Každá aplikace LUIS má jedinečné ID aplikace a protokol koncového bodu. Pokud potřebujete zadat jazykovou porozumění pro jazyk LUIS, můžete použít [rozhraní Microsoft Translator API](../Translator/translator-info-overview.md) k překladu utterance do podporovaného jazyka, odeslání utteranceu do koncového bodu Luis a získání výsledných výsledků.
+Pokud potřebujete klientskou aplikaci LUIS s více jazyky, jako je chatovací robot, máte několik možností. Pokud LUIS podporuje všechny jazyky, vyvíjíte aplikaci LUIS pro každý jazyk. Každá aplikace LUIS má jedinečné ID aplikace a protokol koncového bodu. Pokud potřebujete zadat jazykovou porozumění pro jazyk LUIS, můžete použít [službu Translator](../Translator/translator-info-overview.md) k překladu utterance do podporovaného jazyka, odeslat utterance do koncového bodu Luis a získat výsledné výsledky.
 
 ## <a name="languages-supported"></a>Podporované jazyky
 
@@ -74,7 +74,7 @@ Jazyky režimů diktování řeči najdete v tématu [podporované jazyky](../sp
 Seznam podporovaných jazyků a stavu naleznete v tématu Kontrola pravopisu Bingu [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) .
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Vzácná nebo cizí slova v aplikaci
-V `en-us` jazykové verzi se Luis učí, jak rozlišovat anglická slova, včetně slangem. V `zh-cn` jazykové verzi se Luis učí, aby lišily většinu čínských znaků. Pokud v nástroji použijete zřídka používané `en-us` slovo nebo znak `zh-cn`a vidíte, že Luis se zdá, že toto slovo nebo znak není možné odlišit, můžete toto slovo nebo znak přidat do [funkce seznamu frází](luis-how-to-add-features.md). Například slova mimo jazykovou verzi aplikace – to znamená, že cizí slova--by měla být přidána do funkce seznamu frází.
+V `en-us` jazykové verzi se Luis učí, jak rozlišovat anglická slova, včetně slangem. V `zh-cn` jazykové verzi se Luis učí, aby lišily většinu čínských znaků. Pokud v nástroji použijete zřídka používané slovo `en-us` nebo znak `zh-cn` a vidíte, že Luis se zdá, že toto slovo nebo znak není možné odlišit, můžete toto slovo nebo znak přidat do [funkce seznamu frází](luis-how-to-add-features.md). Například slova mimo jazykovou verzi aplikace – to znamená, že cizí slova--by měla být přidána do funkce seznamu frází.
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
@@ -87,7 +87,7 @@ K provedení strojového učení LUIS rozdělí utterance na [tokeny](luis-gloss
 |Jazyk|  každé místo nebo speciální znak | úroveň znaku|složená slova
 |--|:--:|:--:|:--:|
 |Arabština|✔|||
-|Chinese||✔||
+|Čínština||✔||
 |Nizozemština|✔||✔|
 |Angličtina (en-us)|✔ |||
 |Francouzština (fr-FR)|✔|||
@@ -111,11 +111,11 @@ K provedení strojového učení LUIS rozdělí utterance na [tokeny](luis-gloss
 
 Následující jazykové verze mají vlastní verze provádějících tokenizaci:
 
-|Kultura|Version|Účel|
+|Kultura|Verze|Účel|
 |--|--|--|
-|Němčina<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí provádějících tokenizaci založeného na strojovém učení, které se pokusí rozdělit složené slova do jejich jediné součásti.<br>Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, je zapnutý `Ich fahre einen kranken wagen`. Povolení označení `kranken` a `wagen` nezávislého označování jako různých entit.|
+|Němčina<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí provádějících tokenizaci založeného na strojovém učení, které se pokusí rozdělit složené slova do jejich jediné součásti.<br>Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, je zapnutý `Ich fahre einen kranken wagen` . Povolení označení `kranken` a `wagen` nezávislého označování jako různých entit.|
 |Němčina<br>`de-de`|1.0.2|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ich fahre einen krankenwagen` jako utterance, zůstane jeden token. Proto `krankenwagen` je označen jako jediná entita. |
-|Nizozemština<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí provádějících tokenizaci založeného na strojovém učení, které se pokusí rozdělit složené slova do jejich jediné součásti.<br>Pokud uživatel zadá `Ik ga naar de kleuterschool` jako utterance, je zapnutý `Ik ga naar de kleuter school`. Povolení označení `kleuter` a `school` nezávislého označování jako různých entit.|
+|Nizozemština<br>`de-de`|1.0.0|Tokenizes slova rozdělením pomocí provádějících tokenizaci založeného na strojovém učení, které se pokusí rozdělit složené slova do jejich jediné součásti.<br>Pokud uživatel zadá `Ik ga naar de kleuterschool` jako utterance, je zapnutý `Ik ga naar de kleuter school` . Povolení označení `kleuter` a `school` nezávislého označování jako různých entit.|
 |Nizozemština<br>`de-de`|1.0.1|Tokenizes slova rozdělením na mezery.<br> Pokud uživatel zadá `Ik ga naar de kleuterschool` jako utterance, zůstane jeden token. Proto `kleuterschool` je označen jako jediná entita. |
 
 

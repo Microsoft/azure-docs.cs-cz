@@ -3,12 +3,12 @@ title: Publikování oblastí & koncových bodů – LUIS
 description: Oblast zadaná v Azure Portal je stejná, kde budete publikovat aplikaci LUIS a adresa URL koncového bodu se vygeneruje pro tuto oblast.
 ms.topic: reference
 ms.date: 11/19/2019
-ms.openlocfilehash: a7709d15a51637772d7a4775cd71c307dc21c52b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 680887ecda0843bf770c62a4b9a4d88305ea9e73
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292090"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590906"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Vytváření a publikování oblastí a přidružených klíčů
 
@@ -21,9 +21,9 @@ Existují tři portály pro vytváření LUIS na základě oblasti. Vytvářet a
 
 |LUIS|Oblast vytváření|Název oblasti Azure|
 |--|--|--|
-|[www.luis.ai][www.luis.ai] <br>[preview.luis.ai](https://preview.luis.ai)|USA:<br>neevropa<br>neaustrálie| `westus`|
-|[au.luis.ai][au.luis.ai] <br>[preview.au.luis.ai](https://preview.au.luis.ai)|Austrálie| `australiaeast`|
-|[eu.luis.ai][eu.luis.ai] <br>[preview.eu.luis.ai](https://preview.eu.luis.ai)|Evropa|`westeurope`|
+|[www.luis.ai][www.luis.ai] <br>[previous.luis.ai](https://previous.luis.ai)|USA:<br>neevropa<br>neaustrálie| `westus`|
+|[au.luis.ai][au.luis.ai] <br>[previous.au.luis.ai](https://previous.au.luis.ai)|Austrálie| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai] <br>[previous.eu.luis.ai](https://previous.eu.luis.ai)|Evropa|`westeurope`|
 
 Oblasti vytváření obsahu mají [spárované oblasti převzetí služeb při selhání](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
@@ -45,7 +45,7 @@ Aplikace LUIS vytvořené na https://www.luis.ai je možné publikovat do všech
 
 ## <a name="publishing-to-europe"></a>Publikování do Evropy
 
-K publikování v rámci evropských oblastí vytvoříte https://eu.luis.ai jenom aplikace Luis. Pokud se pokusíte o publikování odkudkoli jinde pomocí klíče v oblasti Evropa, LUIS zobrazí zprávu s upozorněním. Místo toho použijte https://eu.luis.ai. Aplikace LUIS vytvořené v [https://eu.luis.ai][eu.luis.ai] tuto době nemigrují automaticky do jiných oblastí. Exportujte a pak importujte aplikaci LUIS, aby ji bylo možné migrovat.
+K publikování v rámci evropských oblastí vytvoříte jenom aplikace LUIS https://eu.luis.ai . Pokud se pokusíte o publikování odkudkoli jinde pomocí klíče v oblasti Evropa, LUIS zobrazí zprávu s upozorněním. Místo toho použijte https://eu.luis.ai . Aplikace LUIS vytvořené v tuto době [https://eu.luis.ai][eu.luis.ai] nemigrují automaticky do jiných oblastí. Exportujte a pak importujte aplikaci LUIS, aby ji bylo možné migrovat.
 
 ## <a name="europe-publishing-regions"></a>Oblasti publikování v Evropě
 
@@ -58,7 +58,7 @@ K publikování v rámci evropských oblastí vytvoříte https://eu.luis.ai jen
 
 ## <a name="publishing-to-australia"></a>Publikování do Austrálie
 
-K publikování do australských oblastí vytvoříte https://au.luis.ai jenom aplikace Luis. Pokud se pokusíte publikovat odkudkoli jinde pomocí klíče v australské oblasti Austrálie, LUIS zobrazí zprávu s upozorněním. Místo toho použijte https://au.luis.ai. Aplikace LUIS vytvořené v [https://au.luis.ai][au.luis.ai] tuto době nemigrují automaticky do jiných oblastí. Exportujte a pak importujte aplikaci LUIS, aby ji bylo možné migrovat.
+K publikování do australských oblastí vytvoříte jenom aplikace LUIS https://au.luis.ai . Pokud se pokusíte publikovat odkudkoli jinde pomocí klíče v australské oblasti Austrálie, LUIS zobrazí zprávu s upozorněním. Místo toho použijte https://au.luis.ai . Aplikace LUIS vytvořené v tuto době [https://au.luis.ai][au.luis.ai] nemigrují automaticky do jiných oblastí. Exportujte a pak importujte aplikaci LUIS, aby ji bylo možné migrovat.
 
 ## <a name="australia-publishing-regions"></a>Oblasti publikování v Austrálii
 
@@ -68,7 +68,7 @@ K publikování do australských oblastí vytvoříte https://au.luis.ai jenom a
 
 ## <a name="publishing-to-other-regions"></a>Publikování do jiných oblastí
 
-K publikování v ostatních oblastech vytvoříte aplikace LUIS jenom na [https://www.luis.ai](https://www.luis.ai) .
+K publikování v ostatních oblastech vytvoříte aplikace LUIS [https://www.luis.ai](https://www.luis.ai) jenom na.
 
 ## <a name="other-publishing-regions"></a>Jiné oblasti publikování
 

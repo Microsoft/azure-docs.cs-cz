@@ -2,20 +2,20 @@
 title: Nejčastější dotazy (FAQ) – LUIS
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3c7e191ab64d30ddb64f1c3ff4e31b9c20c87b5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101106"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592844"
 ---
-# <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy Language Understanding
+# <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Language Understanding
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Novinky
 
 [Přečtěte si další](whats-new.md) informace o novinkách v Language UNDERSTANDING (Luis).
 
@@ -66,7 +66,7 @@ Pokud chcete přenést aplikaci LUIS do jiného předplatného Azure, exportujte
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Předem vytvořená entita je označena jako utterance jako místo vlastní entity. Návody opravit?
 
-Na portálu LUIS můžete označit text pro přesně entitu, které vás zajímá při extrakci. Pokud LUIS Portal nezobrazuje správnou předpověď entit, možná budete muset přidat další projevy a označit entitu v rámci textu nebo Přidat popisovač (například funkci).
+Na portálu LUIS můžete označit text pro přesně entitu, které vás zajímá při extrakci. Pokud na portálu LUIS není zobrazená správná předpověď entity, možná budete muset přidat další projevy a označit entitu v rámci textu nebo přidat funkci.
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Pokusili jste se importovat soubor aplikace nebo verze, ale zobrazila se chyba, co se stalo?
 
@@ -189,7 +189,7 @@ Podívejte [se na téma výuka se všemi daty](luis-how-to-train.md#train-with-a
 ## <a name="app-publishing"></a>Publikování aplikace
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Jaké je ID tenanta v okně Přidat klíč do aplikace?
-V Azure tenant představuje klienta nebo organizaci, která je přidružená ke službě. V Azure Portal v poli **ID adresáře** Najděte ID tenanta, a to tak, že vyberete **Azure Active Directory** > **Spravovat** > **vlastnosti**.
+V Azure tenant představuje klienta nebo organizaci, která je přidružená ke službě. V Azure Portal v poli **ID adresáře** Najděte ID tenanta, a to tak, že vyberete **Azure Active Directory**  >  **Spravovat**  >  **vlastnosti**.
 
 ![ID tenanta v Azure Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -271,7 +271,7 @@ Předejte stejný utterance do LUIS z [koncového bodu Luis](luis-get-started-cr
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Řešení potíží v Azure Bot Service
 
-Pokud používáte Azure Bot Service a problém je, že se **test ve webovém chatu** vrátí `Sorry, my bot code is having an issue`, zkontrolujte protokoly:
+Pokud používáte Azure Bot Service a problém je, že se **test ve webovém chatu** vrátí `Sorry, my bot code is having an issue` , zkontrolujte protokoly:
 
 1. V Azure Portal pro robota v části **Správa robota** vyberte **Build (sestavit**).
 1. Otevřete Editor kódu online.

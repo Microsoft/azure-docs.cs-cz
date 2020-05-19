@@ -2,13 +2,13 @@
 title: Dobrý příklad projevy-LUIS
 description: Výrok představuje zadání od uživatele, které má aplikace interpretovat. Shromážděte fráze, které budou uživatelé zadávat. Zahrňte projevy, který je stejný jako stejný objekt, ale je vytvořen jinak v délce slova a v umístění slova.
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: d851082a4ec4a003619826eeffd4f4b856a67824
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/04/2020
+ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382293"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592861"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Vysvětlení, co je pro vaši aplikaci LUIS dobré projevy
 
@@ -68,11 +68,27 @@ Je lepší začít s několika projevy a pak [zkontrolovat projevy Endpoint](lui
 
 ## <a name="utterance-normalization"></a>Normalizace utterance
 
-Normalizace utterance je proces ignorování efektů interpunkce a diakritiky během školení a předpovědi. Pomocí [nastavení aplikace](luis-reference-application-settings.md) můžete řídit, jak utterance normalizace ovlivňuje utterance předpovědi.
+Normalizace utterance je proces ignorování efektů typů textu, jako jsou interpunkční znaménka a diakritická znaménka během školení a předpovědi.
 
-## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Normalizace utterance pro diakritická znaménka a interpunkční znaménka
+Nastavení normalizace utterance jsou ve výchozím nastavení vypnutá. Mezi tato nastavení patří:
 
-Normalizace utterance se definuje při vytváření nebo importu aplikace, protože se jedná o nastavení v souboru JSON aplikace. Nastavení normalizace utterance jsou ve výchozím nastavení vypnutá.
+* Formuláře aplikace Word
+* Diakritiku
+* Interpunkční znaménka
+
+Pokud zapnete nastavení normalizace, skóre v **testovacím** podokně, dávkových testech a dotazech koncového bodu se změní pro všechna projevyá nastavení normalizace.
+
+Když naklonete verzi na portálu LUIS, nastavení verze bude pokračovat v nové klonované verzi.
+
+Nastavení verze nastavte prostřednictvím portálu LUIS, v části **Správa** na stránce **nastavení aplikace** nebo v [rozhraní API pro aktualizaci nastavení verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings). Přečtěte si další informace o těchto normalizačních změnách v [odkazu](luis-reference-application-settings.md).
+
+### <a name="word-forms"></a>Formuláře aplikace Word
+
+Normalizace **tvarů slov** ignoruje rozdíly v slovech, které přesahují kořen. Například slova `run` , `running` a se `runs` mění v závislosti na příkazu vhodné.
+
+<a name="utterance-normalization-for-diacritics-and-punctuation"></a>
+
+### <a name="diacritics"></a>Diakritiku
 
 Diakritická znaménka jsou značky nebo znaménka v rámci textu, jako například:
 
@@ -80,24 +96,8 @@ Diakritická znaménka jsou značky nebo znaménka v rámci textu, jako napřík
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-Pokud vaše aplikace zapne normalizaci, skóre v **testovacím** podokně, dávkových testech a dotazech koncového bodu se změní pro všechny projevy pomocí diakritických znamének nebo interpunkce.
-
-Zapněte normalizaci utterance pro diakritická znaménka nebo interpunkční znaménka do souboru aplikace LUIS JSON `settings` v parametru.
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"},
-    {"name": "NormalizeDiacritics", "value": "true"}
-]
-```
-
-Normalizace **interpunkce** znamená, že před tím, než se vaše modely vyškole a ještě před dokončením dotazů na koncové body, se z projevy odeberou interpunkční znaménka.
-
-Normalizace **diakritických znamének** nahradí znaky diakritikou v projevy pomocí regulárních znaků. Například: `Je parle français` se bude `Je parle francais`jednat o.
-
-Normalizace neznamená, že se v příkladech projevy nebo prediktivních odpovědí nezobrazí interpunkce a diakritická znaménka, a to jenom tak, že se během školení a předpovědi budou ignorovat.
-
 ### <a name="punctuation-marks"></a>Interpunkční značky
+Normalizace **interpunkce** znamená, že před tím, než se vaše modely vyškole a ještě před dokončením dotazů na koncové body, se z projevy odeberou interpunkční znaménka.
 
 Interpunkce je samostatný token v LUIS. Utterance, která obsahuje tečku na konci oproti utterance, která neobsahuje tečku na konci, je dvě samostatné projevy a může získat dvě různé předpovědi.
 
@@ -109,12 +109,14 @@ Pokud interpunkční znaménko nemá v klientské aplikaci žádný zvláštní 
 
 ### <a name="ignoring-words-and-punctuation"></a>Ignorují se slova a interpunkční znaménka.
 
-Chcete-li v vzorcích ignorovat určitá slova nebo interpunkční znaménka, použijte [vzor](luis-concept-patterns.md#pattern-syntax) s syntaxí _Ignore_ hranatých závorek, `[]`.
+Chcete-li v vzorcích ignorovat určitá slova nebo interpunkční znaménka, použijte [vzor](luis-concept-patterns.md#pattern-syntax) s syntaxí _Ignore_ hranatých závorek, `[]` .
 
-## <a name="training-utterances"></a>Projevy školení
+<a name="training-utterances"></a>
+
+## <a name="training-with-all-utterances"></a>Školení se všemi projevy
 
 Školení je všeobecně nedeterministické: předpověď utterance se může mírně lišit napříč verzemi nebo aplikacemi.
-Nedeterministické školení můžete odebrat tak, že aktualizujete rozhraní API pro [Nastavení verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) s použitím dvojice `UseAllTrainingData` název/hodnota, aby se použila všechna školicí data.
+Nedeterministické školení můžete odebrat tak, že aktualizujete rozhraní API pro [Nastavení verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) s `UseAllTrainingData` použitím dvojice název/hodnota, aby se použila všechna školicí data.
 
 ## <a name="testing-utterances"></a>Testování projevy
 
@@ -132,14 +134,14 @@ Projděte si [osvědčené postupy](luis-concept-best-practices.md) a použijte 
 
 Pokud je volba slova nebo uspořádání slov stejná, ale neznamená to stejné, nepište je entitou.
 
-Následující projevy je slovo `fair` homograf. Je pravopisné, ale má jiný význam:
+Následující projevy `fair` je slovo homograf. Je pravopisné, ale má jiný význam:
 
 |Promluva|
 |--|
 |Jaký druh veletrhů se děje v oblasti Praha této léto?|
 |Je aktuální hodnocení pro Seattle na veletrzích?|
 
-Pokud jste chtěli, aby entita události vyhledala všechna data události, označte `fair` slovo v prvním utterance, ale ne za sekundu.
+Pokud jste chtěli, aby entita události vyhledala všechna data události, označte slovo `fair` v prvním utterance, ale ne za sekundu.
 
 
 ## <a name="next-steps"></a>Další kroky

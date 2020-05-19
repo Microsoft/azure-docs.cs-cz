@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8479c00ed2129d5726421f576e1fffdb4506fb4b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78933803"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592470"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Nastavení a správa fondu virtuálních počítačů 
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak provádět následující úlohy:
 ## <a name="update-the-lab-capacity"></a>Aktualizace kapacity testovacího prostředí
 Chcete-li zvýšit nebo snížit kapacitu testovacího prostředí (počet virtuálních počítačů v testovacím prostředí), proveďte následující kroky:
 
-1. Na stránce **fond virtuálních počítačů** vyberte možnost **kapacita testovacího prostředí &lt;:&gt; počet počítačů**.
+1. Na stránce **fond virtuálních počítačů** vyberte možnost **kapacita testovacího prostředí: &lt; počet &gt; počítačů**.
 2. Zadejte nový **počet virtuálních počítačů** , které chcete v testovacím prostředí. Tento počet musí být větší nebo roven počtu uživatelů registrovaných v testovacím prostředí. 
 3. Pak vyberte **Uložit**. 
 
@@ -74,14 +74,14 @@ V dialogovém okně **resetovat virtuální počítače** vyberte **resetovat**.
 
 
 ## <a name="set-password-for-vms"></a>Nastavení hesla pro virtuální počítače
-Vlastník testovacího prostředí (učitel) může nastavit nebo resetovat heslo pro virtuální počítače v době vytvoření testovacího prostředí (Průvodce vytvořením testovacího prostředí) nebo po vytvoření testovacího prostředí na stránce **šablony** . 
+Vlastník testovacího prostředí (Educator) může nastavit nebo resetovat heslo pro virtuální počítače v době vytvoření testovacího prostředí (Průvodce vytvořením testovacího prostředí) nebo po vytvoření testovacího prostředí na stránce **šablony** . 
 
 ### <a name="set-password-at-the-time-of-lab-creation"></a>Nastavení hesla v době vytváření testovacího prostředí
-Vlastník testovacího prostředí (učitel) může nastavit heslo pro virtuální počítače v testovacím prostředí na stránce **přihlašovací údaje virtuálního počítače** v Průvodci vytvořením testovacího prostředí.
+Vlastník testovacího prostředí (Educator) může nastavit heslo pro virtuální počítače v testovacím prostředí na stránce **přihlašovací údaje virtuálního počítače** v Průvodci vytvořením testovacího prostředí.
 
 ![Nové okno testovacího prostředí](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
-Když povolíte nebo zakážete možnost **použít stejné heslo pro všechny virtuální počítače** na této stránce, učitel se může rozhodnout použít stejné heslo pro všechny virtuální počítače v testovacím prostředí nebo umožnit studentům nastavit hesla pro své virtuální počítače. Ve výchozím nastavení je toto nastavení povolené pro všechny image operačních systémů Windows a Linux s výjimkou Ubuntu. Když je toto nastavení zakázané, Student se při prvním pokusu o připojení k virtuálnímu počítači vyzve k nastavení hesla. 
+Když povolíte nebo zakážete u této stránky možnost **použít stejné heslo pro všechny virtuální počítače** , Educator se může rozhodnout použít stejné heslo pro všechny virtuální počítače v testovacím prostředí nebo umožnit studentům nastavovat hesla pro své virtuální počítače. Ve výchozím nastavení je toto nastavení povolené pro všechny image operačních systémů Windows a Linux s výjimkou Ubuntu. Když je toto nastavení zakázané, Student se při prvním pokusu o připojení k virtuálnímu počítači vyzve k nastavení hesla. 
 
 ### <a name="reset-password-later"></a>Resetování hesla později
 
@@ -91,7 +91,7 @@ Když povolíte nebo zakážete možnost **použít stejné heslo pro všechny v
     ![Dialogové okno nastavit heslo](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
 ## <a name="connect-to-student-vms"></a>Připojení k virtuálním počítačům studenta
-Tvůrce testovacího prostředí (instruktor/profesor) se může připojit k virtuálnímu počítači studenta, pokud jsou splněné následující podmínky: 
+Tvůrce testovacího prostředí (Educator) se může připojit k virtuálnímu počítači studenta, pokud jsou splněné následující podmínky: 
 
 - Při vytváření testovacího prostředí se vybrala možnost **použít stejné heslo pro všechny virtuální počítače** .
 - Virtuální počítač je spuštěný. 
@@ -101,7 +101,7 @@ Tvůrce testovacího prostředí (instruktor/profesor) se může připojit k vir
 ![Tlačítko připojit k virtuálnímu počítači studenta](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 > [!NOTE]
-> Když profesor spustí virtuální počítač a připojí se k němu, neovlivní se kvóta studenta. 
+> Když Educator spustí virtuální počítač a připojí se k němu, neovlivní se kvóta studenta. 
 
 ## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Exportovat seznam virtuálních počítačů do souboru CSV
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 305242e13dab23b6a003c5d864073372a052601a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77560894"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593167"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrace z Translator Speech API do služby pro rozpoznávání řeči
 
@@ -26,7 +26,7 @@ Pomocí tohoto článku migrujete své aplikace z Microsoft Translator Speech AP
 
 ## <a name="comparison-of-features"></a>Porovnání funkcí
 
-| Funkce                                           | Translator Speech API                                  | Služba Speech | Podrobnosti                                                                                                                                                                                                                                                                            |
+| Příznak                                           | Translator Speech API                                  | Služba Speech | Podrobnosti                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Převod na text                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Převod na řeč                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -37,7 +37,7 @@ Pomocí tohoto článku migrujete své aplikace z Microsoft Translator Speech AP
 | Více jazyků, které jsou přeloženy v jednom požadavku | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Dostupné sady SDK                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Dostupné sady SDK najdete v [dokumentaci ke službě Speech](index.yml) .                                                                                                                                                    |
 | Připojení k objektům WebSocket                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Rozhraní API jazyků                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Služba rozpoznávání řeči podporuje stejný rozsah jazyků popsaných v článku [referenční informace o jazycích rozhraní Translator API](../translator-speech/languages-reference.md) . |
+| Rozhraní API jazyků                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Služba rozpoznávání řeči podporuje stejný rozsah jazyků popsaných v článku [informace o jazycích překladatele](../translator-speech/languages-reference.md) . |
 | Filtr a značka vulgárních výrazů                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | . WAV/PCM jako vstup                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Jiné typy souborů jako vstup                         | : heavy_minus_sign:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
@@ -55,7 +55,7 @@ Pokud vy nebo vaše organizace máte aplikace ve vývojovém nebo produkčním p
 
 * Pokud vaše aplikace používá dlouhodobá připojení a nemůže využívat dostupné sady SDK, můžete použít připojení pomocí protokolu WebSockets. Nastavte časový limit 10 minut tím, že se znovu připojíte k odpovídajícím časem.
 
-* Pokud vaše aplikace používá Translator Text API a Translator Speech API k povolení vlastních modelů překladu, můžete přidat ID kategorií přímo pomocí služby Speech.
+* Pokud vaše aplikace používá službu Translator a Translator Speech API k povolení vlastních modelů překladu, můžete přidat ID kategorií přímo pomocí služby Speech.
 
 * Na rozdíl od Translator Speech API může služba Speech doplňovat překlady do několika jazyků v jednom požadavku.
 

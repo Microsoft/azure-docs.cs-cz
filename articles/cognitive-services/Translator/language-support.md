@@ -1,7 +1,7 @@
 ---
-title: Jazyková podpora – Translator Text API
+title: Jazyková podpora – Překladatel
 titleSuffix: Azure Cognitive Services
-description: Translator Text API podporuje následující jazyky pro překlad textu na text pomocí NMT (neuronové Machine Translation).
+description: Cognitive Services Translator podporuje následující jazyky pro překlad textu na text pomocí NMT (neuronové Machine Translation).
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81684831"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592725"
 ---
-# <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyků a oblastí pro Translator Text API
+# <a name="language-and-region-support-for-translator"></a>Podpora jazyků a oblastí pro překladatele
 
-Translator Text API podporuje překlady textu na text v následujících jazycích. Neuronové Machine Translation (NMT) je nový standard pro vysoce kvalitní překlady počítačů s podporou AI a je k dispozici jako výchozí hodnota V3 Translator Text API, pokud je k dispozici systém neuronové.
+Překladatel podporuje následující jazyky pro převod textu na text. Neuronové Machine Translation (NMT) je nový standard pro vysoce kvalitní překlady počítačů s podporou AI a je k dispozici jako výchozí v případě, že je k dispozici systém neuronové.
 
 [Další informace o tom, jak strojový překlad funguje](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="translation"></a>Překlad
 
-**Rozhraní API pro překladatele v2**
+**Překladač v2**
 
 > [!NOTE]
 > Verze V2 byla zastaralá od 30. dubna 2018. Pokud chcete využívat nové funkce, které jsou k dispozici výhradně v v3, migrujte prosím své aplikace na v3.
 
 * Pouze statistická: pro tento jazyk není k dispozici žádný neuronové systém.
-* Neuronové k dispozici: systém neuronové je k dispozici. Pro přístup k `category=generalnn` systému neuronové použijte parametr.
+* Neuronové k dispozici: systém neuronové je k dispozici. `category=generalnn`Pro přístup k systému neuronové použijte parametr.
 * Neuronové výchozí: výchozí překladový systém je neuronové. Použijte parametr `category=smt` pro přístup ke statistickému systému pro použití se službou Microsoft Translator hub.
 * Pouze neuronové: je k dispozici pouze překlad neuronové.
 
-**Rozhraní API pro překladatele V3** Rozhraní API pro překladatele v3 je ve výchozím nastavení neuronové a statistické systémy jsou k dispozici pouze v případě, že neexistuje žádný systém neuronové.
+**Překladatel V3** Překladatel v3 je ve výchozím nastavení neuronové a statistické systémy jsou k dispozici pouze v případě, že neexistuje žádný systém neuronové.
 
 > [!NOTE]
 > V současné době je k dispozici podmnožina jazyků neuronové ve vlastním překladateli a postupně přidáváme další. [Zobrazit jazyky, které jsou aktuálně k dispozici ve vlastním překladateli](#customization).
@@ -116,7 +116,7 @@ Translator Text API podporuje překlady textu na text v následujících jazycí
 |Yucatec Maya|  `yua`   |   Ložený|
 
 > [!NOTE]
-> Kód `pt` jazyka bude výchozí `pt-br`, portugalština (Brazílie).
+> Kód jazyka `pt` bude výchozí `pt-br` , portugalština (Brazílie).
 
 ## <a name="transliteration"></a>Transkripci
 
@@ -204,12 +204,12 @@ Slovník podporuje následující jazyky pro nebo z angličtiny pomocí vyhledá
 
 ## <a name="detect"></a>Zjišťování
 
-Translator Text API detekuje všechny jazyky, které jsou k dispozici pro překlad a převod.
+Translator detekuje všechny jazyky, které jsou k dispozici pro překlad a převod.
 
 
-## <a name="access-the-translator-text-api-language-list-programmatically"></a>Přístup k seznamu jazyků Translator Text API programově
+## <a name="access-the-translator-language-list-programmatically"></a>Přístup k seznamu jazyků překladatele prostřednictvím kódu programu
 
-Seznam podporovaných jazyků pro Translator Text API v 3.0 můžete načíst pomocí metody languages. Můžete zobrazit seznam podle funkcí, kód jazyka a také název jazyka v angličtině nebo v jakémkoli jiném podporovaném jazyce. Služba Microsoft Translator automaticky aktualizuje tento seznam, protože jsou k dispozici nové jazyky.
+Můžete načíst seznam podporovaných jazyků pro překladatele v 3.0 pomocí metody languages. Můžete zobrazit seznam podle funkcí, kód jazyka a také název jazyka v angličtině nebo v jakémkoli jiném podporovaném jazyce. Služba Microsoft Translator automaticky aktualizuje tento seznam, protože jsou k dispozici nové jazyky.
 
 [Referenční dokumentace operací zobrazení jazyků](reference/v3-0-languages.md)
 
@@ -269,6 +269,6 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Přístup k seznamu na webu Microsoft Translator
 
-Chcete-li se rychle podívat na jazyky, na webu Microsoft Translator se zobrazí všechny jazyky podporované rozhraním API Translator Text a Speech. Tento seznam neobsahuje informace specifické pro vývojáře, jako jsou kódy jazyků.
+Pokud chcete rychle zobrazit jazyky, na webu Microsoft Translator se zobrazí všechny jazyky podporované překladatelem a rozhraními API pro rozpoznávání řeči. Tento seznam neobsahuje informace specifické pro vývojáře, jako jsou kódy jazyků.
 
 [Zobrazit seznam jazyků](https://www.microsoft.com/translator/languages.aspx)

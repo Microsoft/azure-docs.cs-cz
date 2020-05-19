@@ -2,19 +2,17 @@
 title: Testovací aplikace na portálu LUIS
 description: Pomocí Language Understanding (LUIS) můžete průběžně pracovat na vaší aplikaci a zdokonalit tak její porozumění jazyku.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: ba7e23a72cd308dd4393bf9a581571e2bc9f5fa0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/07/2020
+ms.openlocfilehash: cb4559e6d3582a337cbc32ef986bec5db5940ef9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219816"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591858"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testování aplikace LUIS na portálu LUIS
 
 [Testování](luis-concept-test.md) aplikace je iterativní proces. Po školení aplikace LUIS otestujte ji pomocí Sample projevy a zjistěte, jestli jsou záměry a entity správně rozpoznané. Pokud nejsou, proveďte aktualizace aplikace LUIS, školení a testování znovu.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 <!-- anchors for H2 name changes -->
 <a name="train-your-app"></a>
@@ -24,13 +22,16 @@ ms.locfileid: "79219816"
 
 ## <a name="train-before-testing"></a>Výuka před testováním
 
-Chcete-li provést test na nejnovější verzi aktivní aplikace, vyberte před testováním z horní nabídky možnost **výuka** .
+1. Přihlaste se k [portálu Luis](https://www.luis.ai)a vyberte své **předplatné** a **prostředek pro vytváření obsahu** , abyste viděli aplikace přiřazené k tomuto zdrojovému prostředku.
+1. Otevřete svou aplikaci tak, že na stránce **Moje aplikace** vyberete její název.
+1. Chcete-li provést test na nejnovější verzi aktivní aplikace, vyberte před testováním z horní nabídky možnost **výuka** .
 
 ## <a name="test-an-utterance"></a>Testování utterance
 
 Utterance testu by neměl být přesně stejný jako jakýkoli příklad projevy v aplikaci. Testovací utterance by měl obsahovat volbu Word, délku fráze a využití entity, které očekáváte pro uživatele.
 
-1. Přístup k aplikaci získáte tak, že na stránce **Moje aplikace** vyberete její název.
+1. Přihlaste se k [portálu Luis](https://www.luis.ai)a vyberte své **předplatné** a **prostředek pro vytváření obsahu** , abyste viděli aplikace přiřazené k tomuto zdrojovému prostředku.
+1. Otevřete svou aplikaci tak, že na stránce **Moje aplikace** vyberete její název.
 
 1. Pro přístup k panelu **testovacího** snímku vyberte v horním panelu aplikace **test** .
 

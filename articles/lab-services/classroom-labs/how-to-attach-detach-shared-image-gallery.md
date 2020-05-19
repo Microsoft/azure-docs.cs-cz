@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: ce79674462f82e05cc07e9e470cb82ff8e47f672
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: aef5cd13742c0265851f5ba2918d557b4e1026d0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118477"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592640"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Připojení nebo odpojení Galerie sdílených imagí v Azure Lab Services
 V tomto článku se dozvíte, jak připojit nebo odpojit galerii sdílených imagí k účtu testovacího prostředí. 
@@ -48,7 +48,7 @@ Po vytvoření účtu testovacího prostředí můžete provádět následujíc�
 - Odpojení Galerie sdílených imagí od účtu testovacího prostředí
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>Vytvoření a připojení Galerie sdílených imagí
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby** . V části **DEVOPS** vyberte **testovací služby** . Vyberete-li možnost hvězdička ( `*` ) vedle položky **testovací služby**, přidá se do části **Oblíbené** v nabídce vlevo. Od dalšího okamžiku vyberte v části **Oblíbené položky** **testovací služby** .
 
     ![Všechny služby – > laboratorní služby](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)

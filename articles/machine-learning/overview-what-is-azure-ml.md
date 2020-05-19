@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b97bae252b25c9ae2891506f08fc4955f84c1eb6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241609"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593014"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -23,7 +23,7 @@ Azure Machine Learning můžete použít pro libovolný druh strojového učení
 
 Spusťte školení na místním počítači a pak nahorizontální navýšení kapacity do cloudu. 
 
-Služba také spolupracuje s oblíbenými open source nástroji, jako jsou PyTorch, TensorFlow a scikit – Naučte se.
+Služba také spolupracuje s oblíbenými nástroji pro hloubkové učení a posílením open source nástrojů, jako jsou PyTorch, TensorFlow, scikit-Learning a Ray RLlib. 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
@@ -48,9 +48,11 @@ Azure Machine Learning poskytuje vývojářům a odborníkům přes data, kteř�
 
 + [Rozšíření editoru Visual Studio Code](tutorial-setup-vscode-extension.md)
 
-+ [Rozhraní příkazového řádku pro Machine Learning](reference-azure-machine-learning-cli.md)
++ [Machine Learning CLI](reference-azure-machine-learning-cli.md)
 
 + Open Source architektury, jako jsou PyTorch, TensorFlow a scikit – Naučte se a mnoho dalšího
+
++ [Posílení učení](how-to-use-reinforcement-learning.md) s využitím Ray RLlib
 
 Můžete dokonce použít [MLflow ke sledování metrik a nasazení modelů](how-to-use-mlflow.md) nebo Kubeflow k [sestavení koncových kanálů pracovního postupu](https://www.kubeflow.org/docs/azure/).
 

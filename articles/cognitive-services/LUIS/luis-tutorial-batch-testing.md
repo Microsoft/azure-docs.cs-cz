@@ -2,13 +2,13 @@
 title: 'Kurz: dávkové testování pro vyhledání problémů – LUIS'
 description: Tento kurz ukazuje, jak pomocí dávkového testování ověřit kvalitu vaší aplikace Language Understanding (LUIS).
 ms.topic: tutorial
-ms.date: 03/02/2020
-ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/07/2020
+ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78250449"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592589"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Kurz: dávkové test sady dat
 
@@ -24,7 +24,7 @@ Požadavky na dávkové testování:
 
 Pokud používáte jinou aplikaci než tento kurz, *nepoužívejte ukázkový* projevy již přidaný do vaší aplikace.
 
-**V tomto kurzu se naučíte:**
+**V tomto kurzu:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -37,11 +37,13 @@ Pokud používáte jinou aplikaci než tento kurz, *nepoužívejte ukázkový* p
 
 ## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
 
-Importujte aplikaci, která používá Pizza pořadí, například `1 pepperoni pizza on thin crust`.
+Importujte aplikaci, která používá Pizza pořadí, například `1 pepperoni pizza on thin crust` .
 
 1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true) a uložte si ho.
 
-1. Pomocí [portálu Luis ve verzi Preview](https://preview.luis.ai/)importujte JSON do nové aplikace a pojmenujte aplikaci `Pizza app`.
+1. Přihlaste se k [portálu Luis](https://www.luis.ai)a vyberte své **předplatné** a **prostředek pro vytváření obsahu** , abyste viděli aplikace přiřazené k tomuto zdrojovému prostředku.
+1. Importujte JSON do nové aplikace a pojmenujte aplikaci `Pizza app` .
+
 
 1. Vyberte **vlak** v pravém horním rohu navigace a prohlaste aplikaci.
 
@@ -72,9 +74,9 @@ Příklad JSON obsahuje jeden utterance s označenou entitou pro ilustraci toho,
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky aplikace LUIS s zvýrazněnou importovanou datovou sadou](./media/luis-tutorial-batch-testing/import-dataset-button.png)
 
-4. Vyberte umístění `pizza-with-machine-learned-entity-test.json` souboru.
+4. Vyberte umístění souboru `pizza-with-machine-learned-entity-test.json` .
 
-5. Pojmenujte `pizza test` datovou sadu a vyberte **Hotovo**.
+5. Pojmenujte datovou sadu `pizza test` a vyberte **Hotovo**.
 
     > [!div class="mx-imgBorder"]
     > ![Vybrat soubor](./media/luis-tutorial-batch-testing/import-dataset-modal.png)

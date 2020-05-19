@@ -1,21 +1,14 @@
 ---
 title: Migrace na počítač se zjištěnou entitou V3
-titleSuffix: Azure Cognitive Services
 description: Vytváření obsahu V3 poskytuje jeden nový typ entity, počítačově získanou entitu a možnost přidávat relace do uživatelsky získané entity a dalších entit nebo funkcí aplikace.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 12/30/2019
-ms.author: diberry
-ms.openlocfilehash: b5dbcd9033d9a41e43ea907d043e0c0486b236db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.date: 05/08/2020
+ms.openlocfilehash: 79fbe261f597f55ca6caff468d4d5c154a273c42
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75563831"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593218"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migrace na entitu pro vytváření obsahu V3
 
@@ -23,14 +16,14 @@ Vytváření obsahu V3 poskytuje jeden nový typ entity, počítačově získano
 
 ## <a name="entities-are-decomposable-in-v3"></a>Entity jsou v v3.
 
-Entity vytvořené pomocí rozhraní API pro vytváření obsahu v3, a to buď pomocí [rozhraní API](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) nebo na [portálu Preview](https://preview.luis.ai/), umožňují sestavit model vrstvené entity s nadřazenými a podřízenými objekty. Nadřazený objekt je známý jako **entita získaná počítačem** a podřízené položky se označují jako **dílčí součásti** entity získané počítačem.
+Entity vytvořené pomocí rozhraní API pro vytváření obsahu v3, a to buď pomocí [rozhraní API](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) nebo s portálem, umožňují sestavit model vrstvené entity s nadřazenými a podřízenými objekty. Nadřazený objekt je známý jako **entita získaná počítačem** a podřízené položky jsou označovány jako **subentity** dané entity počítač, který se naučil.
 
-Každá podsoučást je také entitou získanou počítačem, ale s přidanými možnostmi konfigurace omezení a popisovačů.
+Každá podentita je také entitou získanou počítačem, ale s přidanými možnostmi konfigurace funkcí.
 
-* **Omezení** jsou přesná pravidla pro párování textu, která zajišťují, že se entita extrahuje, když odpovídá pravidlu. Pravidlo je definováno přesnou shodnou textovou entitou, aktuálně: [předem vytvořenou entitou](luis-reference-prebuilt-entities.md), [entitou regulárního výrazu](reference-entity-regular-expression.md)nebo [entitou seznamu](reference-entity-list.md).
-* **Popisovače** jsou [funkce](luis-concept-feature.md), jako jsou například seznamy frází nebo entity, které se používají ke silným označení entity.
-
-Vytváření obsahu V3 poskytuje jeden nový typ entity, počítačově získanou entitu a možnost přidávat relace do uživatelsky získané entity a dalších entit nebo funkcí aplikace.
+* **Požadované funkce** jsou pravidla, která zaručují, že entita je extrahována, když odpovídá funkci. Pravidlo je definováno podle požadované funkce pro model:
+    * [Předem vytvořená entita](luis-reference-prebuilt-entities.md)
+    * [Entiay regulárního výrazu](reference-entity-regular-expression.md)
+    * [Seznam entit](reference-entity-list.md)
 
 ## <a name="how-do-these-new-relationships-compare-to-v2-authoring"></a>Postup při porovnání těchto nových vztahů s vytvářením v2
 
@@ -61,7 +54,7 @@ Při migraci zvažte následující skutečnosti v plánu migrace:
     * Entity
         * Hierarchická entita
         * Složená entita
-    * Role – role se dají použít jenom u entity, které se naučila počítačová (nadřazená). Role nelze použít pro dílčí součásti
+    * Role – role se dají použít jenom u entity, které se naučila počítačová (nadřazená). Role se nedají použít u subentit.
     * Dávkové testy a vzory, které používají hierarchické a složené entity
 
 Při návrhu plánu migrace ponechte čas na kontrolu finálních entit zjištěných počítačem, až budou všechny hierarchické a složené entity migrovány. I když bude přímá migrace fungovat, po provedení změny a kontrole výsledků testu dávky a kódu JSON předpovědi může více Unified JSON vést k provádění změn, takže konečné informace doručené do aplikace na straně klienta jsou uspořádány jinak. To se podobá refaktorování kódu a měla by být zpracována stejným procesem revize, jakou vaše organizace používá.
@@ -70,7 +63,7 @@ Pokud pro model v2 nepoužijete testy pro dávku a v rámci migrace migrujete te
 
 ## <a name="migrating-from-v2-entities"></a>Migrace z entit v2
 
-Jak se chystáte přejít k modelu vytváření obsahu v3, měli byste zvážit, jak přejít na počítač se naučilou entitou a její dílčí komponenty, včetně omezení a popisovačů.
+Jak se chystáte přejít k modelu vytváření obsahu v3, měli byste zvážit, jak přejít na počítačově získanou entitu a její subentity a funkce.
 
 V následující tabulce jsou poznámy entity, které je třeba migrovat z verze V2 na návrh entity v3.
 
@@ -81,20 +74,20 @@ V následující tabulce jsou poznámy entity, které je třeba migrovat z verze
 
 ## <a name="migrate-v2-composite-entity"></a>Migrace složené entity v2
 
-Každý podřízený objekt v2 složený z nich by měl být reprezentován podkomponentou této entity, která se naučila počítač. Pokud je složený podřízený předem sestavený, regulární výraz nebo entitu seznamu, měl by být použit jako **omezení** u dílčí komponenty představující podřízenou položku.
+Každý podřízený objekt v2 složený z nich by měl být reprezentován podentitou entity, která se naučila počítač. Pokud je složená podřízená položka předem sestavený, regulární výraz nebo entita seznamu, měla by být použita jako požadovaná funkce v subentitě.
 
 Co je potřeba zvážit při plánování migrace složené entity na konkrétní počítačově učenou entitu:
 * Podřízené entity se nedají používat ve vzorcích.
 * Podřízené entity už nejsou sdílené.
 * Podřízené entity musí být označeny, pokud se používají pro nestrojové učení.
 
-### <a name="existing-descriptors"></a>Existující popisovače
+### <a name="existing-features"></a>Existující funkce
 
-Libovolný seznam frází, který se používá ke zvýšení množství slov v složené entitě, by měl být použit jako popisovač pro entitu (nadřazenou) (nadřazenou), entitu (podřízenou) nebo záměr (Pokud se seznam frází vztahuje pouze na jeden záměr). Naplánujte Přidání popisovače k entitě, kterou by se mělo zvýšit. Nepřiřazujte popisovač obecně na počítačově získanou (nadřazenou) entitu, pokud bude mnohem významně zvyšovat předpověď dílčí komponenty (podřízená součást).
+Libovolný seznam frází, který se používá ke zvýšení množství slov v složené entitě, by měl být použit jako funkce pro entitu (nadřazenou) (nadřazenou), entitu (podřízenou) nebo záměr (Pokud se seznam frází vztahuje pouze na jeden záměr). Naplánujte přidání funkce do entity, kde by se měla výrazně zvýšit. Nepřiřazujte funkci obecně na počítačově získanou (nadřazenou) entitu, pokud bude mnohem významně zvyšovat předpověď dílčí entity (podřízená).
 
-### <a name="new-descriptors"></a>Nové popisovače
+### <a name="new-features"></a>Nové funkce
 
-V části vytváření obsahu V3 přidejte krok plánování pro vyhodnocení entit jako možných popisovačů pro všechny entity a záměry.
+V části vytváření obsahu V3 přidejte krok plánování pro vyhodnocení entit jako možných funkcí pro všechny entity a záměry.
 
 ### <a name="example-entity"></a>Příklad entity
 
@@ -114,8 +107,8 @@ Následující tabulka ukazuje migraci:
 |Modely v2|Modely V3|
 |--|--|
 |Nadřazená entita součásti s názvem`Order`|Entita získaná nadřazeným počítačem s názvem`Order`|
-|DatetimeV2 sestavené jako podřízené|* Migruje předem vytvořenou entitu na novou aplikaci.<br>* Do nadřazeného objektu přidejte omezení pro předem sestavené datetimeV2.|
-|Entita podřízeného seznamu pro toppings|* Migrujte entitu seznamu do nové aplikace.<br>* Pak přidejte omezení pro nadřazenou entitu seznamu.|
+|DatetimeV2 sestavené jako podřízené|* Migruje předem vytvořenou entitu na novou aplikaci.<br>* Do nadřazeného objektu přidejte požadovanou funkci pro předem sestavené datetimeV2.|
+|Entita podřízeného seznamu pro toppings|* Migrujte entitu seznamu do nové aplikace.<br>* Potom pro entitu seznam přidejte požadovanou funkci pro nadřazenou položku.|
 
 
 ## <a name="migrate-v2-hierarchical-entity"></a>Migrovat hierarchickou entitu v2
@@ -124,11 +117,11 @@ V rámci vytváření obsahu V2 se hierarchická entita poskytla před rolemi ex
 
 Při vytváření obsahu V3:
 * Roli lze použít u entity, kterou se naučila počítačová (nadřazená).
-* Roli nelze použít pro žádné dílčí součásti.
+* Roli nelze použít pro žádné subentity.
 
 Tato entita je pouze příkladem. Vaše vlastní migrace entit může vyžadovat další okolnosti.
 
-Zvažte hierarchickou entitu v2 pro úpravu Pizza `order`:
+Zvažte hierarchickou entitu v2 pro úpravu Pizza `order` :
 * kde každá podřízená položka určuje buď původní Topping, nebo konečný Topping
 
 Příklad utterance pro tuto entitu:
@@ -141,6 +134,56 @@ Následující tabulka ukazuje migraci:
 |--|--|
 |Nadřazená entita součásti s názvem`Order`|Entita získaná nadřazeným počítačem s názvem`Order`|
 |Podřízená entita s původní a konečnou pizzaou Topping|* Do `Order` každého Topping přidejte roli.|
+
+## <a name="api-change-constraint-replaced-with-required-feature"></a>Omezení změn rozhraní API nahrazené požadovanou funkcí
+
+Tato změna byla provedena v květnu 2020 na konferenci Build a vztahuje se pouze na rozhraní API pro vytváření obsahu v3, kde aplikace používá omezené funkce. Pokud migrujete z vytváření obsahu V2 na verzi V3 nebo jste nepoužívali omezené funkce v3, přeskočte tuto část.
+
+**Funkčnost** – schopnost vyžadovat existující entitu jako funkci pro jiný model a extrahovat tento model pouze v případě, že je entita zjištěna. Funkčnost se nezměnila, ale rozhraní API a terminologie se změnily.
+
+|Předchozí terminologie|Nová terminologie|
+|--|--|
+|`constrained feature`<br>`constraint`<br>`instanceOf`|`required feature`<br>`isRequired`|
+
+#### <a name="automatic-migration"></a>Automatická migrace
+
+Od **června 19 2020**nebudete moci vytvářet omezení programově pomocí předchozího rozhraní API pro vytváření obsahu, které tuto funkci vystavilo.
+
+Všechny existující funkce omezení budou automaticky migrovány na příznak požadované funkce. Pro rozhraní API předpovědi nejsou nutné žádné programové změny a žádné výsledné změny kvality předpovědi.
+
+#### <a name="luis-portal-changes"></a>Změny portálu LUIS
+
+Portál LUIS Preview odkazoval na tuto funkci jako **omezení**. Aktuální LUIS portál určuje tuto funkci jako **požadovanou funkci**.
+
+#### <a name="previous-authoring-api"></a>Předchozí rozhraní API pro vytváření
+
+Tato funkce se použila ve verzi Preview vytváření **[podřízeného rozhraní API entity](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5d86cf3c6a25a45529767d77)** jako součást definice entity pomocí `instanceOf` vlastnosti podřízené entity:
+
+```json
+{
+    "name" : "dayOfWeek",
+    "instanceOf": "datetimeV2",
+    "children": [
+        {
+           "name": "dayNumber",
+           "instanceOf": "number",
+           "children": []
+        }
+    ]
+}
+```
+
+#### <a name="new-authoring-api"></a>Nové rozhraní API pro vytváření obsahu
+
+Tato funkce se teď používá s **[rozhraním API pro přidání entity funkcí](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5d9dc1781e38aaec1c375f26)** s `featureName` použitím `isRequired` vlastností a. Hodnota `featureName` vlastnosti je název modelu.
+
+```json
+{
+    "featureName": "YOUR-MODEL-NAME-HERE",
+    "isRequired" : true
+}
+```
+
 
 ## <a name="next-steps"></a>Další kroky
 

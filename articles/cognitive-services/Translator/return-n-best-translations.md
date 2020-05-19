@@ -1,7 +1,7 @@
 ---
-title: Vrácení N-nejlepšího překladu – Translator Text
+title: Vrátit N – nejlepší překlady – Translator
 titleSuffix: Azure Cognitive Services
-description: Vrátí N – nejlepší překlady pomocí Translator Text API.
+description: Vrátí N – nejlepší překlady pomocí překladatele.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
-ms.openlocfilehash: eff25877165ac365e0af77651147fcdd1eebe294
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1fe370070aa97befb418d27def32725bf0a148b3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73837247"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592674"
 ---
 # <a name="how-to-return-n-best-translations"></a>Jak vracet N-nejlepší překlady
 
 > [!NOTE]
-> Tato metoda je zastaralá. Není k dispozici v v 3.0 Translator Text API.
+> Tato metoda je zastaralá. Není k dispozici v v 3.0 překladatele.
 
-Metody gettranslations () a GetTranslationsArray () rozhraní API služby Microsoft Translator obsahují volitelný logický příznak "IncludeMultipleMTAlternatives".
+Metody gettranslations () a GetTranslationsArray () překladatele obsahují volitelný logický příznak "IncludeMultipleMTAlternatives".
 Metoda vrátí až maxTranslations alternativy, kde je rozdíl dodáván z N-nejlepšího seznamu modulu Translator.
 
 Podpis je:
 
-**Syntaktick**
+**Syntaxe**
 
 | C# |
 |:---|

@@ -1,7 +1,7 @@
 ---
-title: Migrace na V3-Translator Text API
+title: Migrace na V3 – Translator
 titleSuffix: Azure Cognitive Services
-description: Tento článek popisuje kroky, které vám pomůžou s migrací z verze V2 na verzi 3 služby Azure Cognitive Services Translator Text API.
+description: Tento článek popisuje kroky, které vám pomůžou při migraci z verze V2 na v3 pro Azure Cognitive Services Translator.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47136ee9c2f0dee29571f310eb3b07d7c11888c0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73837311"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592708"
 ---
-# <a name="translator-text-api-v2-to-v3-migration"></a>Migrace Translator Text API v2 na V3
+# <a name="translator-v2-to-v3-migration"></a>Migrace překladatelů v2 na V3
 
 > [!NOTE]
 > Verze V2 byla zastaralá od 30. dubna 2018. Pokud chcete využívat nové funkce, které jsou k dispozici výhradně v v3, migrujte prosím své aplikace na v3.
 > 
 > Centrum Microsoft Translator bude vyřazení z 17. května 2019. [Zobrazení důležitých informací a dat migrace](https://www.microsoft.com/translator/business/hub/).  
 
-Tým Microsoft Translator vydala verzi 3 (V3) Translator Text API. Tato verze zahrnuje nové funkce, zastaralé metody a nový formát pro odesílání a příjem dat ze služby Microsoft Translator. Tento dokument poskytuje informace pro změnu aplikace na použití v3. 
+Tým Microsoft Translator vydala verzi 3 (V3) překladatele. Tato verze zahrnuje nové funkce, zastaralé metody a nový formát pro odesílání a příjem dat ze služby Microsoft Translator. Tento dokument poskytuje informace pro změnu aplikace na použití v3. 
 
 Konec tohoto dokumentu obsahuje užitečné odkazy, které vám pomůžou získat další informace.
 
@@ -37,7 +37,7 @@ Konec tohoto dokumentu obsahuje užitečné odkazy, které vám pomůžou získa
 * Přepis – do rozhraní API se přidala metoda přepisu. Tato metoda převede slova a věty v jednom skriptu (např. Arabština) do jiného skriptu (např. Latinka).
 * Jazyky – nová metoda "jazyky" poskytuje jazykové informace ve formátu JSON pro použití s metodami "přeložit", "Dictionary" a "přepsanými".
 * Novinka k překladu – k metodě ' přeložit ' byly přidány nové funkce, které podporují některé funkce, které byly v rozhraní v2 API, jako samostatné metody. Příkladem je TranslateArray.
-* Metoda speaking – text na řeč funkce se už v rozhraní API služby Microsoft Translator nepodporuje. Funkce převod textu na řeč je k dispozici ve [službě Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech).
+* Metoda speaking – text na řeč funkce se už v Microsoft translatoru nepodporuje. Funkce převod textu na řeč je k dispozici ve [službě Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech).
 
 Následující seznam metod v2 a V3 identifikuje metody v3 a rozhraní API, které poskytují funkce dodávané s v2.
 
@@ -59,7 +59,7 @@ Následující seznam metod v2 a V3 identifikuje metody v3 a rozhraní API, kter
 
 ## <a name="move-to-json-format"></a>Přesunout do formátu JSON
 
-Microsoft Translator Text překlad v2 přijal a vrátil data ve formátu XML. Ve verzi V3 všechna data odesílaná a přijímaná pomocí rozhraní API jsou ve formátu JSON. Soubor XML již nebude přijat ani vrácen v v3.
+Microsoft Translator Translation v2 přijal a vrátil data ve formátu XML. Ve verzi V3 všechna data odesílaná a přijímaná pomocí rozhraní API jsou ve formátu JSON. Soubor XML již nebude přijat ani vrácen v v3.
 
 Tato změna bude mít vliv na několik aspektů aplikace napsané pro rozhraní API pro překlad textu v2. Příklad: rozhraní API jazyků vrací jazykové informace pro překlad textu, pro převod na více jazyků a dvě Slovníkové metody. Můžete požadovat všechny informace o jazycích pro všechny metody v jednom volání nebo si je vyžádat jednotlivě.
 
@@ -118,24 +118,24 @@ Neuronové překladu s rozhraním textového API V3 nepodporuje použití standa
 
 | |Koncový bod|    Dodržování předpisů pro procesory GDPR|  Použít centrum překladatelů| Použít vlastní překladatele (Preview)|
 |:-----|:-----|:-----|:-----|:-----|
-|Translator Text API verze 2| api.microsofttranslator.com|    Ne  |Ano    |Ne|
-|Translator Text API verze 3| api.cognitive.microsofttranslator.com|  Ano|    Ne| Ano|
+|Překladatel verze 2|  api.microsofttranslator.com|    Ne  |Ano    |Ne|
+|Překladatel verze 3|  api.cognitive.microsofttranslator.com|  Ano|    Ne| Ano|
 
-**Translator Text API verze 3**
+**Překladatel verze 3**
 * Je všeobecně dostupná a plně podporovaná.
 * Je GDPR kompatibilní jako procesor a splňuje všechna ISO 20001 a 20018 a také požadavky na certifikaci SOC 3. 
 * Umožňuje vyvolat systémy překladu neuronové sítě, které jste přizpůsobili pomocí vlastního překladatele (Preview), nové funkce NMT pro přizpůsobení překladatelů. 
 * Neposkytuje přístup k vlastním systémům překladu vytvořeným pomocí centra Microsoft Translator.
 
-Pokud používáte koncový bod api.cognitive.microsofttranslator.com, používáte verzi 3 Translator Text API.
+Pokud používáte koncový bod api.cognitive.microsofttranslator.com, používáte verzi 3 tohoto překladatele.
 
-**Translator Text API verze 2**
+**Překladatel verze 2**
 * Nesplňuje požadavky na certifikaci ISO 20 001, 20018 a SOC 3. 
 * Neumožňuje vyvolat systémy překladu neuronové sítě, které jste přizpůsobili pomocí funkce pro přizpůsobení překladatele.
 * Poskytuje přístup k vlastním systémům překladu vytvořeným pomocí centra Microsoft Translator.
-* Pokud používáte koncový bod api.microsofttranslator.com, používáte verzi 2 Translator Text API.
+* Používáte verzi 2 překladatele, pokud používáte koncový bod api.microsofttranslator.com.
 
-Žádná verze rozhraní API pro překladatele nevytvoří záznam vašich překladů. Vaše překlady se nikdy nesdílí s kýmkoli. Další informace o webové stránce [překladatele bez trasování](https://www.aka.ms/NoTrace)
+Žádná verze převaděče nevytvoří záznam vašich překladů. Vaše překlady se nikdy nesdílí s kýmkoli. Další informace o webové stránce [překladatele bez trasování](https://www.aka.ms/NoTrace)
 
 ## <a name="links"></a>Odkazy
 

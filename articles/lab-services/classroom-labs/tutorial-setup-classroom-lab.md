@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 166ec4db2a2891d25a1e80526f8c1bd9770f9eef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3a9c95233c2016dc35f4fcade3e2634e121d252
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77592216"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591773"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -37,9 +37,9 @@ V tomto kurzu nastavíte testovací prostředí s virtuálními počítači pro 
 
 Toto je typický pracovní postup při použití Azure Lab Services:
 
-1. Tvůrce účtu testovacího prostředí přidá další uživatele do role **testovacího prostředí** . Například tvůrce nebo správce účtu testovacího prostředí přidá profesory do role **testovacího prostředí** , aby mohli vytvářet Labs pro své třídy. 
-2. Pak profesory vytvořit Labs s virtuálními počítači pro své třídy a odeslat registrační odkazy studentům ve třídě. 
-3. Studenti používají registrační odkaz, který obdrží z profesory k registraci do testovacího prostředí. Jakmile jsou zaregistrované, můžou pomocí virtuálních počítačů v laboratoři provádět pracovní a domácí práci. 
+1. Tvůrce účtu testovacího prostředí přidá další uživatele do role **testovacího prostředí** . Například autor nebo správce účtu testovacího prostředí přidává pedagogy do role **Tvůrce testovacího prostředí** , aby mohli vytvářet Labs pro své třídy. 
+2. Pak pedagogy vytvoří Labs s virtuálními počítači pro své třídy a odesílají odkazy na registraci studentům ve třídě. 
+3. Studenti používají registrační odkaz, který obdrží od pedagogů k registraci do testovacího prostředí. Jakmile jsou zaregistrované, můžou pomocí virtuálních počítačů v laboratoři provádět pracovní a domácí práci. 
 
 ## <a name="create-a-classroom-lab"></a>Vytvoření testovacího prostředí v učebně
 V tomto kroku vytvoříte testovací prostředí pro třídu v Azure. 
@@ -151,7 +151,7 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
 1. Na stránce **Odeslat pozvánku podle e-mailu** zadejte volitelnou zprávu a pak vyberte **Odeslat**. E-mail automaticky obsahuje odkaz na registraci. Tuto registrační odkaz můžete získat tak, že vyberete **... (tři tečky)** na panelu nástrojů a na **odkaz pro registraci**. 
 
     ![Poslat odkaz na registraci e-mailem](../media/tutorial-setup-classroom-lab/send-email.png)
-4. V seznamu **uživatelů** se zobrazí stav **Pozvánka** . Stav by se měl změnit na **odesílání** a pak na ** &lt;datum&gt;odeslání**. 
+4. V seznamu **uživatelů** se zobrazí stav **Pozvánka** . Stav by se měl změnit na **odesílání** a pak na ** &lt; datum &gt; odeslání**. 
 
     Další informace o tom, jak přidat studenty do třídy a jak spravovat jejich použití v testovacím prostředí, najdete v tématu [jak nakonfigurovat využití studenta](how-to-configure-student-usage.md).
 

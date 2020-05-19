@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7ce011a34aed39429884dc03285a0848776ac008
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: d02cd12552b3664dd7acaae0142fc939ee57f5f6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006065"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591977"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview)
 
@@ -28,7 +28,7 @@ Pokud chcete zabezpečit pracovní prostor synapse (Preview), postupujte podle v
 - Role synapse – tyto role jsou jedinečné pro synapse a nejsou založené na rolích Azure. Existují tři z těchto rolí:
   - Správce pracovního prostoru synapse
   - Správce synapse SQL
-  - Správce synapse Spark
+  - Apache Spark pro správce Azure synapse Analytics
 - Řízení přístupu pro data v Azure Data Lake Storage Gen 2 (ADLSGEN2).
 - Řízení přístupu pro databáze SQL synapse a Spark
 
@@ -48,11 +48,11 @@ Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďt
 
 Vytvořte a naplňte tři skupiny zabezpečení pro váš pracovní prostor:
 
-- **WS1\_WSAdmins** – pro uživatele, kteří potřebují úplnou kontrolu nad pracovním prostorem
-- **WS1\_SparkAdmins** – pro uživatele, kteří potřebují úplnou kontrolu nad aspekty Sparku pracovního prostoru
-- **WS1\_SQLAdmins** – pro uživatele, kteří potřebují úplnou kontrolu nad aspekty SQL pracovního prostoru
-- Přidat **WSAdmins\_WS1** do **WS1\_SQLAdmins**
-- Přidat **WSAdmins\_WS1** do **WS1\_SparkAdmins**
+- **WS1 \_ WSAdmins** – pro uživatele, kteří potřebují plnou kontrolu nad pracovním prostorem
+- **WS1 \_ SparkAdmins** – pro uživatele, kteří potřebují úplnou kontrolu nad aspekty Sparku pracovního prostoru
+- **WS1 \_ SQLAdmins** – pro uživatele, kteří potřebují úplnou kontrolu nad aspekty SQL pracovního prostoru
+- Přidat ** \_ WSAdmins WS1** do **WS1 \_ SQLAdmins**
+- Přidat ** \_ WSAdmins WS1** do **WS1 \_ SparkAdmins**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>Krok 2: Příprava účtu Data Lake Storage Gen2
 
@@ -65,9 +65,9 @@ Identifikujte tyto informace o úložišti:
 
 - Pomocí Azure Portal přiřaďte skupiny zabezpečení následující role na CNT1
 
-  - Přiřazení **WS1\_WSAdmins** k roli **Přispěvatel dat objektů BLOB úložiště**
-  - Přiřazení **WS1\_SparkAdmins** k roli **Přispěvatel dat objektů BLOB úložiště**
-  - Přiřazení **WS1\_SQLAdmins** k roli **Přispěvatel dat objektů BLOB úložiště**
+  - Přiřazení **WS1 \_ WSAdmins** k roli **Přispěvatel dat objektů BLOB úložiště**
+  - Přiřazení **WS1 \_ SparkAdmins** k roli **Přispěvatel dat objektů BLOB úložiště**
+  - Přiřazení **WS1 \_ SQLAdmins** k roli **Přispěvatel dat objektů BLOB úložiště**
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>Krok 3: vytvoření a konfigurace pracovního prostoru synapse
 
@@ -77,10 +77,10 @@ V Azure Portal vytvořte pracovní prostor synapse:
 - Vyberte STG1 pro účet úložiště.
 - Pro kontejner, který se používá jako systém souborů, vyberte CNT1.
 - Otevřít WS1 v synapse studiu
-- Vyberte **Spravovat** > **Access Control** přiřaďte skupiny zabezpečení následujícím rolím synapse.
-  - Přiřazení **WS1\_WSAdmins** správcům pracovních prostorů synapse
-  - Přiřazení **WS1\_SparkAdmins** správcům synapse Spark
-  - Přiřazení **WS1\_SQLAdmins** správcům synapse SQL
+- Vyberte **Spravovat**  >  **Access Control** přiřaďte skupiny zabezpečení následujícím rolím synapse.
+  - Přiřazení **WS1 \_ WSAdmins** správcům pracovních prostorů synapse
+  - Přiřazení **WS1 \_ SparkAdmins** správcům synapse Spark
+  - Přiřazení **WS1 \_ SQLAdmins** SPRÁVCům synapse SQL
 
 ## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>Krok 4: Konfigurace Data Lake Storage Gen2 pro použití v pracovním prostoru synapse
 
@@ -91,14 +91,14 @@ Pracovní prostor synapse potřebuje přístup k STG1 a CNT1, aby mohl spouště
 - Přejít na CNT1
 - Zajistěte, aby se služba MSI (Identita spravované služby) pro WS1 přiřadila k roli **Přispěvatel dat objektů BLOB úložiště** v CNT1.
   - Pokud se vám přiřazení nezobrazuje, přiřaďte ho.
-  - Soubor MSI má stejný název jako pracovní prostor. V takovém případě by se &quot;WS1.&quot;
+  - Soubor MSI má stejný název jako pracovní prostor. V takovém případě by se &quot; WS1 &quot; .
 
 ## <a name="step-5-configure-admin-access-for-sql-pools"></a>Krok 5: Konfigurace přístupu správce pro fondy SQL
 
 - Otevřete Azure Portal
 - Přejít na WS1
 - V části **Nastavení**klikněte na **Správce služby SQL Active Directory** .
-- Klikněte na **nastavit správce** a vyberte\_WS1 SQLAdmins.
+- Klikněte na **nastavit správce** a vyberte WS1 \_ SQLAdmins.
 
 ## <a name="step-6-maintaining-access-control"></a>Krok 6: udržování řízení přístupu
 
@@ -119,7 +119,7 @@ Uživatelé v každé roli musí provést následující kroky:
 | 3 | Vytvoření fondu Spark | ANO [1] | ANO [1] | NO  |
 | 4 | Přečte soubor Parquet pomocí poznámkového bloku. | ANO | ANO | NO |
 | 5 | Vytvoření kanálu z poznámkového bloku a aktivace kanálu, který se má spustit hned | ANO | NO | NO |
-| 6 | Vytvořte fond SQL a spusťte skript SQL, jako je například &quot;vyberte 1.&quot; | ANO [1] | NO | ANO [1] |
+| 6 | Vytvořte fond SQL a spusťte skript SQL, jako je například &quot; Vyberte 1.&quot; | ANO [1] | NO | ANO [1] |
 
 > [!NOTE]
 > [1] Chcete-li vytvořit fondy SQL nebo Spark, musí mít uživatel alespoň roli Přispěvatel v pracovním prostoru synapse.

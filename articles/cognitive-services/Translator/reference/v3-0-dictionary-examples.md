@@ -1,7 +1,7 @@
 ---
-title: Příklady Translator Text API slovníku
+title: Příklady slovníku překladatelů
 titleSuffix: Azure Cognitive Services
-description: Příklady Translator Text API slovníku obsahují příklady, které ukazují, jak se výrazy ve slovníku používají v kontextu.
+description: Příklady slovníku překladatelů poskytují příklady, které ukazují, jak se ve slovníku používají výrazy v kontextu.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: b3551a8df19e47178c7bacd9218cfa60b66d81f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a1d86ac354524cb4d7bf9f9776b8605f244d92f7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76548063"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592504"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3,0: příklady slovníku
+# <a name="translator-30-dictionary-examples"></a>Translator 3,0: příklady slovníku
 
 Obsahuje příklady, které ukazují, jak jsou výrazy ve slovníku použity v kontextu. Tato operace se používá společně s [vyhledáváním slovníku](./v3-0-dictionary-lookup.md).
 
@@ -35,7 +35,7 @@ Parametry žádosti předané řetězci dotazu jsou:
 
 | Parametr dotazu | Popis |
 | --------- | ----------- |
-| verze-api <img width=200/> | **Povinný parametr**.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`. |
+| verze-api <img width=200/> | **Povinný parametr**.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0` . |
 | Výsledkem | **Povinný parametr**.<br/>Určuje jazyk vstupního textu. Zdrojový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) zahrnutých v `dictionary` oboru. |
 | na | **Povinný parametr**.<br/>Určuje jazyk výstupního textu. Cílový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) zahrnutých v `dictionary` oboru.  | 
 
@@ -44,9 +44,9 @@ Hlavičky požadavku zahrnují:
 | Hlavičky  | Popis |
 | ------ | ----------- |
 | Ověřovací hlavičky (y) <img width=200/>  | **Požadovaná hlavička žádosti**<br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>. |
-| Typ obsahu | **Požadovaná hlavička žádosti**<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json`. |
+| Typ obsahu | **Požadovaná hlavička žádosti**<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: `application/json` . |
 | Délka obsahu   | **Požadovaná hlavička žádosti**<br/>Délka textu žádosti |
-| X – ClientTraceId   | **Volitelné**.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`. |
+| X – ClientTraceId   | **Volitelné**.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId` . |
 
 ## <a name="request-body"></a>Text požadavku
 
@@ -96,7 +96,7 @@ Platí následující omezení:
 
 ## <a name="examples"></a>Příklady
 
-Tento příklad ukazuje, jak vyhledat příklady pro pár, který se skládá z anglického termínu `fly` a jeho španělského překladu. `volar`
+Tento příklad ukazuje, jak vyhledat příklady pro pár, který se skládá z anglického termínu `fly` a jeho španělského překladu `volar` .
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"

@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 294a270107033590e340db49b85e8a67acbbb701
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8253b784a427ceb3842b6b4d585c52a2c30e0c4d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116862"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592419"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Použití Galerie sdílených imagí v Azure Lab Services
-V tomto článku se dozvíte, jakým způsobem může správce učitelů/testovacího prostředí uložit image virtuálního počítače šablony do [Galerie sdílených imagí](../../virtual-machines/windows/shared-image-galleries.md) , aby ji mohli používat ostatní k vytváření Labs. 
+V tomto článku se dozvíte, jak můžou pedagogi/správci testovacího prostředí ukládat image virtuálního počítače šablony do [sdílené Image Galerie](../../virtual-machines/windows/shared-image-galleries.md) , aby ji mohli používat ostatní k vytváření Labs. 
 
 ## <a name="scenarios"></a>Scénáře
 Tady je několik scénářů, které tato funkce podporuje: 
@@ -41,7 +41,7 @@ Tady je několik scénářů, které tato funkce podporuje:
 
 
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>Uložení obrázku do galerie sdílených imagí
-Po připojení Galerie sdílených imagí může správce účtu testovacího prostředí nebo učitel Uložit image do galerie sdílených imagí, aby ji mohli používat i ostatní učitelé. 
+Po připojení Galerie sdílených imagí může správce účtu testovacího prostředí nebo Educator Uložit image do galerie sdílených imagí, aby ji mohli použít jiní pedagogy. 
 
 1. Na stránce **Šablona** testovacího prostředí vyberte **exportovat do galerie sdílených imagí** na panelu nástrojů.
 
@@ -64,7 +64,7 @@ Po připojení Galerie sdílených imagí může správce účtu testovacího pr
     
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Použití obrázku z Galerie sdílených imagí
-Učitel/profesor může vybrat vlastní image, která je k dispozici v galerii sdílených imagí pro šablonu během nového vytváření testovacího prostředí.
+Educator může vybrat vlastní image, která je k dispozici v galerii sdílených imagí pro šablonu během nového vytváření testovacího prostředí.
 
 ![Použití image virtuálního počítače z Galerie](../media/how-to-use-shared-image-gallery/use-shared-image.png)
 

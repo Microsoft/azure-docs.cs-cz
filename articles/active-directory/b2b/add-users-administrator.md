@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 752df34c263563cdb970cadb59f92f2811af378e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ee246180beb7e8eab9cf12b4df05d7a2dab4d752
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199512"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591297"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal
 
@@ -68,7 +68,7 @@ Pokud potřebujete ručně přidat uživatele spolupráce B2B do skupiny, postup
 3. V části **Spravovat**vyberte **skupiny**.
 4. Vyberte skupinu (nebo kliknutím na **Nová skupina** vytvořte novou). Je vhodné zahrnout do popisu skupiny, že skupina obsahuje uživatele typu Host B2B.
 5. Vyberte možnost **Členové**. 
-6. Proveďte jednu z těchto akcí:
+6. Proveďte některou z následujících akcí:
    - Pokud uživatel typu host již v adresáři existuje, vyhledejte uživatele B2B. Vyberte uživatele a kliknutím na tlačítko **Vybrat** přidejte uživatele do skupiny.
    - Pokud uživatel typu Host ještě v adresáři neexistuje, Pozvěte ho do skupiny zadáním jejich e-mailové adresy do vyhledávacího pole, zadáním volitelné osobní zprávy a kliknutím na **Vybrat**. Pozvánka se automaticky přehraje pozvánému uživateli.
      
@@ -90,7 +90,7 @@ Pokud chcete do aplikace přidat uživatele spolupráce B2B, postupujte takto:
 
 6. Vyberte **Přidat uživatele**.
 7. V části **Přidat přiřazení**vyberte **uživatele a skupiny**.
-8. Proveďte jednu z těchto akcí:
+8. Proveďte některou z následujících akcí:
    - Pokud uživatel typu host již v adresáři existuje, vyhledejte uživatele B2B. Vyberte uživatele, klikněte na **Vybrat**a pak kliknutím na **přiřadit** přidejte uživatele do aplikace.
    - Pokud uživatel typu Host ještě v adresáři neexistuje, zadejte e-mailovou adresu uživatele v části **Vybrat člena nebo Pozvěte externího uživatele**. Do pole zpráva zadejte volitelnou osobní zprávu. V okně se zprávou klikněte na **pozvat**.
            

@@ -1,7 +1,7 @@
 ---
-title: Referenční dokumentace k Translator Text API V 3.0
+title: Reference k překladateli V 3.0
 titleSuffix: Azure Cognitive Services
-description: Referenční dokumentace pro Translator Text API V 3.0 Verze 3 Translator Text API poskytuje moderní webové rozhraní API založené na formátu JSON.
+description: Referenční dokumentace pro překladatele V 3.0 Verze 3 překladatele nabízí moderní webové rozhraní API založené na formátu JSON.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 4/17/2020
 ms.author: swmachan
-ms.openlocfilehash: bf7701055c8c325f02c0daca1755806f3ca17b76
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 2ddc3921c77f8861761ea37b8783e220c1242b97
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857312"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592266"
 ---
-# <a name="translator-text-api-v30"></a>Translator Text API v 3.0
+# <a name="translator-v30"></a>Překladatel v 3.0
 
-## <a name="whats-new"></a>Co je nového?
+## <a name="whats-new"></a>Co je nového
 
-Verze 3 Translator Text API poskytuje moderní webové rozhraní API založené na formátu JSON. Zlepšuje použitelnost a výkon tím, že konsoliduje stávající funkce do menšího počtu operací a poskytuje nové funkce.
+Verze 3 překladatele nabízí moderní webové rozhraní API založené na formátu JSON. Zlepšuje použitelnost a výkon tím, že konsoliduje stávající funkce do menšího počtu operací a poskytuje nové funkce.
 
  * Převádění pro převod textu v jednom jazyce z jednoho skriptu na jiný skript.
  * Překlad do několika jazyků v jednom požadavku.
@@ -37,27 +37,27 @@ Microsoft Translator se obsluhuje z více umístění datových center. V souča
 * **Asie a Tichomoří:** Korea – jih, Japonsko – východ, jihovýchodní Asie a Austrálie – východ
 * **Evropa:** Severní Evropa a Západní Evropa
 
-Požadavky na Microsoft Translator Text API jsou ve většině případů zpracovávány v datacentru, které je nejblíže místu, kde požadavek vznikl. V případě selhání datacentra se může žádost směrovat mimo zeměpisnou oblast Azure.
+Žádosti překladače Microsoftu jsou ve většině případů zpracovávány v datacentru, které je nejblíže místu, kde požadavek vznikl. V případě selhání datacentra se může žádost směrovat mimo zeměpisnou oblast Azure.
 
 Pokud chcete vynutit zpracování žádosti konkrétními geografickými oblastmi Azure, změňte globální koncový bod v požadavku rozhraní API na požadovaný oblastní koncový bod:
 
 |Popis|Geografické Azure|Základní adresa URL|
 |:--|:--|:--|
 |Azure|Globální (mimo oblast)|   api.cognitive.microsofttranslator.com|
-|Azure|Spojené státy|   api-nam.cognitive.microsofttranslator.com|
+|Azure|USA|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Evropa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asie a Tichomoří|    api-apc.cognitive.microsofttranslator.com|
 
 ## <a name="authentication"></a>Authentication
 
-Přihlaste se k odběru služby Translator Text API nebo [Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) ve službě Azure Cognitive Services a použijte svůj klíč předplatného (k dispozici v Azure Portal) k ověření. 
+Přihlaste se k odběru překladatele nebo [Cognitive Services více službami](https://azure.microsoft.com/pricing/details/cognitive-services/) ve službě Azure Cognitive Services a použijte svůj klíč předplatného (dostupný v Azure Portal) k ověření. 
 
 K ověření předplatného můžete použít tři hlavičky. Tato tabulka popisuje, jak se používají jednotlivé tyto funkce:
 
 |Hlavičky|Popis|
 |:----|:----|
-|Ocp-Apim-Subscription-Key|Pokud předáváte *tajný klíč, použijte u předplatného Cognitive Services*.<br/>Hodnota je tajný klíč Azure pro vaše předplatné Translator Text API.|
-|Autorizace|*Pokud předáváte ověřovací token, použijte u předplatného Cognitive Services.*<br/>Hodnota je nosným tokenem: `Bearer <token>`.|
+|Ocp-Apim-Subscription-Key|Pokud předáváte *tajný klíč, použijte u předplatného Cognitive Services*.<br/>Hodnota je tajný klíč Azure pro váš odběr překladatele.|
+|Autorizace|*Pokud předáváte ověřovací token, použijte u předplatného Cognitive Services.*<br/>Hodnota je nosným tokenem: `Bearer <token>` .|
 |OCP – APIM – předplatné – oblast|*Použijte s Cognitive Services prostředkem více služeb a regionálního překladatele.*<br/>Hodnota je oblast prostředku služby Multi-Service nebo oblastního překladatele. Tato hodnota je při použití globálního prostředku překladatele volitelná.|
 
 ###  <a name="secret-key"></a>Tajný klíč
@@ -65,13 +65,13 @@ První možností je ověřit pomocí `Ocp-Apim-Subscription-Key` hlavičky. Př
 
 #### <a name="authenticating-with-a-global-resource"></a>Ověřování pomocí globálního prostředku
 
-Při použití [globálního prostředku překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)je nutné zahrnout jedno záhlaví pro volání rozhraní API pro překladatele.
+Když použijete [globální prostředek překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation), je nutné zahrnout jedno záhlaví pro volání překladatele.
 
 |Hlavičky|Popis|
 |:-----|:----|
-|Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro vaše předplatné Translator Text API.|
+|Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro váš odběr překladatele.|
 
-Tady je příklad žádosti o volání rozhraní API pro překladatele pomocí globálního prostředku překladatele.
+Tady je příklad žádosti o volání překladatele pomocí globálního prostředku překladatele.
 
 ```curl
 // Pass secret key using headers
@@ -84,14 +84,14 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 #### <a name="authenticating-with-a-regional-resource"></a>Ověřování pomocí regionálního prostředku
 
 Když použijete [prostředek místní překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation).
-Existují dvě hlavičky, které potřebujete k volání rozhraní Translator API.
+Existují dvě hlavičky, které potřebujete k volání překladatele.
 
 |Hlavičky|Popis|
 |:-----|:----|
-|Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro vaše předplatné Translator Text API.|
+|Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro váš odběr překladatele.|
 |OCP – APIM – předplatné – oblast| Hodnota je oblast prostředku překladatele. |
 
-Tady je příklad žádosti o volání rozhraní API pro překladatele pomocí místního prostředku překladatele.
+Tady je příklad žádosti o volání překladatele pomocí prostředku místního překladatele.
 
 ```curl
 // Pass secret key and region using headers
@@ -106,7 +106,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 Když použijete prostředek více služeb pro rozpoznávání služby. Díky tomu můžete k ověřování žádostí o více služeb použít jediný tajný klíč. 
 
-Když použijete tajný klíč s více službami, musíte do své žádosti zahrnout dvě ověřovací hlavičky. Existují dvě hlavičky, které potřebujete k volání rozhraní Translator API.
+Když použijete tajný klíč s více službami, musíte do své žádosti zahrnout dvě ověřovací hlavičky. Existují dvě hlavičky, které potřebujete k volání překladatele.
 
 |Hlavičky|Popis|
 |:-----|:----|
@@ -115,9 +115,9 @@ Když použijete tajný klíč s více službami, musíte do své žádosti zahr
 
 Pro předplatné rozhraní API pro více služeb text je vyžadována oblast. Oblast, kterou jste vybrali, je jediná oblast, kterou můžete použít pro překlad textu při použití klíče předplatného s více službami a musí se jednat o stejnou oblast, jakou jste zvolili při registraci k předplatnému více služeb prostřednictvím Azure Portal.
 
-Dostupné oblasti jsou `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral` `northcentralus`,, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope` `westus` `westus2`,, a `southafricanorth`.
+Dostupné oblasti jsou `australiaeast` , `brazilsouth` , `canadacentral` , `centralindia` , `centralus` , `centraluseuap` , `eastasia` , `eastus` , `eastus2` , `francecentral` , `japaneast` , `japanwest` ,,, `koreacentral` `northcentralus` `northeurope` , `southcentralus` , `southeastasia` , `uksouth` , `westcentralus` ,,, `westeurope` `westus` `westus2` a `southafricanorth` .
 
-Pokud předáte tajný klíč v řetězci dotazu s parametrem `Subscription-Key`, je nutné zadat oblast s parametrem `Subscription-Region`dotazu.
+Pokud předáte tajný klíč v řetězci dotazu s parametrem, je `Subscription-Key` nutné zadat oblast s parametrem dotazu `Subscription-Region` .
 
 ### <a name="authenticating-with-an-access-token"></a>Ověřování pomocí přístupového tokenu
 Alternativně můžete pro přístupový token vyměňovat svůj tajný klíč. Tento token je součástí každé žádosti jako `Authorization` záhlaví. Chcete-li získat autorizační token, proveďte `POST` požadavek na následující adresu URL:
@@ -143,22 +143,22 @@ curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscrip
 Authorization: Bearer <Base64-access_token>
 ```
 
-Ověřovací token je platný po dobu 10 minut. Token by se měl znovu použít při provádění více volání rozhraní API pro překladatele. Pokud však váš program provede v delší době požadavky na rozhraní API pro překladatele, musí váš program požádat o nový přístupový token v pravidelných intervalech (například každých 8 minut).
+Ověřovací token je platný po dobu 10 minut. Při provádění více volání překladatele by měl být token znovu použit. Pokud však váš program provede v delší době požadavky na překladatele, musí váš program požádat o nový přístupový token v pravidelných intervalech (například každých 8 minut).
 
 ## <a name="virtual-network-support"></a>Podpora virtuální sítě
 
-Služba Translator je teď dostupná s funkcemi Virtual Network v omezených oblastech`WestUS2`( `EastUS`, `SouthCentralUS`, `WestUS`, `CentralUSEUAP`, `global`,). Pokud chcete povolit Virtual Network, přečtěte si téma [Konfigurace virtuálních sítí Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
+Služba Translator je teď dostupná s funkcemi Virtual Network v omezených oblastech ( `WestUS2` , `EastUS` , `SouthCentralUS` , `WestUS` , `CentralUSEUAP` , `global` ). Pokud chcete povolit Virtual Network, přečtěte si téma [Konfigurace virtuálních sítí Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
-Po zapnutí této možnosti je nutné použít vlastní koncový bod pro volání rozhraní API pro překladatele. Nemůžete použít globální koncový bod překladatele (api.cognitive.microsofttranslator.com) a nemůžete ho ověřit pomocí přístupového tokenu.
+Když tuto funkci zapnete, musíte pro volání překladatele použít vlastní koncový bod. Nemůžete použít globální koncový bod překladatele (api.cognitive.microsofttranslator.com) a nemůžete ho ověřit pomocí přístupového tokenu.
 
 Po vytvoření [prostředku překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)můžete najít vlastní koncový bod.
 
 |Hlavičky|Popis|
 |:-----|:----|
-|Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro vaše předplatné Translator Text API.|
+|Ocp-Apim-Subscription-Key| Hodnota je tajný klíč Azure pro váš odběr překladatele.|
 |OCP – APIM – předplatné – oblast| Hodnota je oblast prostředku překladatele. Tato hodnota je volitelná, pokud je prostředek`global`|
 
-Tady je příklad žádosti o volání rozhraní API pro překladatele pomocí vlastního koncového bodu.
+Tady je příklad žádosti o volání překladatele pomocí vlastního koncového bodu.
 
 ```curl
 // Pass secret key and region using headers
@@ -171,7 +171,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 
 ## <a name="errors"></a>chyby
 
-Standardní chybová odpověď je objekt JSON s dvojicí název/hodnota s názvem `error`. Hodnota je také objekt JSON s vlastnostmi:
+Standardní chybová odpověď je objekt JSON s dvojicí název/hodnota s názvem `error` . Hodnota je také objekt JSON s vlastnostmi:
 
   * `code`: Kód chyby definovaný serverem.
   * `message`: Řetězec, který poskytuje reprezentaci chyby v čitelném člověkě.
@@ -188,7 +188,7 @@ Například zákazník s bezplatným zkušebním předplatným může po vyčerp
 ```
 Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb:
 
-| kód | Popis |
+| Kód | Popis |
 |:----|:-----|
 | 400000| Jeden ze vstupů požadavku není platný.|
 | 400001| Parametr scope je neplatný.|
@@ -218,7 +218,7 @@ Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP
 | 400079| Vlastní systém požadovaný pro překlad mezi jazyky a a neexistuje.|
 | 400080| Pro jazyk nebo skript není podporováno překódování.|
 | 401000| Požadavek není autorizovaný, protože přihlašovací údaje chybí nebo jsou neplatné.|
-| 401015| "Poskytnuté přihlašovací údaje jsou určené pro rozhraní API pro rozpoznávání řeči. Tato žádost vyžaduje přihlašovací údaje pro rozhraní text API. K Translator Text API použijte předplatné. "|
+| 401015| "Poskytnuté přihlašovací údaje jsou určené pro rozhraní API pro rozpoznávání řeči. Tato žádost vyžaduje přihlašovací údaje pro rozhraní text API. Použít odběr pro překladatele. "|
 | 403000| Tato operace není povolena.|
 | 403001| Operace není povolená, protože předplatné překročilo svoji kvótu Free.|
 | 405000| Metoda Request není pro požadovaný prostředek podporována.|

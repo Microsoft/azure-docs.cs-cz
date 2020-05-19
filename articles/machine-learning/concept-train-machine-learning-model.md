@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c75c41012928b7bffb61a00a73f314e4c372b154
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792339"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592385"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -25,8 +25,8 @@ Azure Machine Learning poskytuje několik způsobů, jak proškolit vaše modely
     | Způsob školení | Popis |
     | ----- | ----- |
     | [Konfigurace spuštění](#run-configuration) | **Obecným způsobem, jak naučit modely** , je použít školicí skript a spustit konfiguraci. Konfigurace spuštění poskytuje informace potřebné ke konfiguraci školicího prostředí používaného pro výuku modelu. Můžete provést konfiguraci spuštění, školicí skript a cíl služby COMPUTE (školicí prostředí) a spustit školicí úlohu. |
-    | [Automatizované strojové učení](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování**. Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
-    | [Odhady](#estimators) | Třídy Estimator usnadňují **výukové modely založené na oblíbených architekturách strojového učení**. K dispozici jsou třídy Estimator pro **Scikit-učit**, **PyTorch**, **TensorFlow**a **chainer**. K dispozici je také obecná Estimator, která může být použita s architekturami, které ještě nemají vyhrazenou třídu Estimator. Při použití odhady se nemusíte starat o definování konfigurace spuštění. |
+    | [Automatizované Machine Learning](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování**. Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
+    | [Odhady](#estimators) | Třídy Estimator usnadňují **výukové modely založené na oblíbených architekturách strojového učení**. Existují třídy Estimator pro **Scikit-učit**, **PyTorch**, **TensorFlow**, **chainer**a **Ray RLlib**. K dispozici je také obecná Estimator, která může být použita s architekturami, které ještě nemají vyhrazenou třídu Estimator. Při použití odhady se nemusíte starat o definování konfigurace spuštění. |
     | [Kanál strojového učení](#machine-learning-pipeline) | Kanály nejsou jinou výukovou metodou, ale **způsob definování pracovního postupu pomocí modulárních a opakovaně použitelných kroků**, které můžou zahrnovat školení jako součást pracovního postupu. Kanály strojového učení podporují pomocí automatizovaného strojového učení, odhady a konfigurace spouštění pro výukové modely. Vzhledem k tomu, že se kanály nezaměřují konkrétně na školení, jsou důvody pro použití kanálu různorodější než jiné metody školení. Obecně platí, že můžete použít kanál v těchto případech:<br>* Chcete **naplánovat bezobslužné procesy** , jako je například dlouho běžící školicí úlohy nebo Příprava dat.<br>* Použijte **více kroků** , které jsou koordinovány napříč heterogenními výpočetními prostředky a umístěními úložiště.<br>* Kanál použijte jako **opakovaně použitelnou šablonu** pro konkrétní scénáře, jako je například přeškolení nebo dávkové vyhodnocování.<br>* **Sledování a verze zdrojů dat, vstupů a výstupů** pro váš pracovní postup.<br>* Pracovní postup je **implementován různými týmy, které pracují podle konkrétních kroků nezávisle**. Kroky je pak možné spojit společně v kanálu pro implementaci pracovního postupu. |
 
 + [Azure Machine Learning SDK pro Python](#r-sdk): sada SDK používá balíček reticulate k vytvoření vazby na sadu SDK Azure Machine Learning Pythonu. To umožňuje přístup k základním objektům a metodám implementovaným v sadě Python SDK z jakéhokoli prostředí jazyka R.
@@ -73,7 +73,7 @@ Definujte iterace, nastavení parametrů, featurization a další nastavení. B�
 
 ### <a name="estimators"></a>Odhady
 
-Odhady usnadňuje výukové modely pomocí oblíbených ML architektur. Pokud používáte **Scikit-učení**, **PyTorch**, **TensorFlow**nebo **chainer**, měli byste zvážit použití Estimator pro školení. K dispozici je také obecná Estimator, která může být použita s architekturami, které ještě nemají vyhrazenou třídu Estimator. Při použití odhady se nemusíte starat o definování konfigurace spuštění.
+Odhady usnadňuje výukové modely pomocí oblíbených ML architektur. Pokud používáte **Scikit-učení**, **PyTorch**, **TensorFlow**, **chainer**nebo **Ray RLlib** , měli byste zvážit použití Estimator pro školení. K dispozici je také obecná Estimator, která může být použita s architekturami, které ještě nemají vyhrazenou třídu Estimator. Při použití odhady se nemusíte starat o definování konfigurace spuštění.
 
 * [Co jsou odhady?](concept-azure-machine-learning-architecture.md#estimators)
 * [Kurz: analýza modelů klasifikace imagí pomocí MNIST ručně zapsaných dat a scikit – Naučte se pomocí Azure Machine Learning](tutorial-train-models-with-aml.md)
@@ -95,7 +95,7 @@ Kanály strojového učení můžou používat dřív zmíněné metody školen�
 
 Sada R SDK umožňuje používat jazyk R s Azure Machine Learning. Sada SDK používá balíček reticulate k navázání Azure Machine Learning Python SDK. To umožňuje přístup k základním objektům a metodám implementovaným v sadě Python SDK z jakéhokoli prostředí jazyka R.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 * [Kurz: vytvoření modelu logistické regrese](tutorial-1st-r-experiment.md)
 * [Referenční informace o Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/index.html)
@@ -112,7 +112,7 @@ Návrhář vám umožní naučit modely pomocí rozhraní přetažení ve webov�
 + [Klasifikace s vlastním skriptem R: předpověď zpoždění letů](how-to-designer-sample-classification-flight-delay.md)
 + [Klasifikace textu: Wikipedii sada dat SP 500](how-to-designer-sample-text-classification.md)
 
-## <a name="cli"></a>Rozhraní příkazového řádku
+## <a name="cli"></a>CLI
 
 Machine Learning CLI je rozšířením rozhraní příkazového řádku Azure CLI. Poskytuje příkazy rozhraní příkazového řádku pro různé platformy pro práci s Azure Machine Learning. Typicky k automatizaci úloh, jako je například školení modelu strojového učení, použijete rozhraní příkazového řádku.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření poznámkového bloku Apache Spark'
+title: 'Rychlý Start: vytvoření Apache Spark pro notebook Azure synapse Analytics'
 description: V tomto rychlém startu se dozvíte, jak pomocí webových nástrojů vytvořit fond Apache Spark (ve verzi Preview) ve službě Azure synapse Analytics a spustit dotaz Spark SQL.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 47235ca0e420e0de9f6c4beb070e0b75b72e7549
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786664"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592946"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) ve službě Azure synapse Analytics pomocí nástrojů pro web
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -49,7 +49,7 @@ Poznámkový blok je interaktivní prostředí, které podporuje různé program
 4. V okně **vlastnosti** zadejte název poznámkového bloku.
 5. Na panelu nástrojů klikněte na **publikovat**.
 6. Pokud je ve vašem pracovním prostoru jenom jeden Apache Spark fond, pak je vybraný ve výchozím nastavení. Pomocí rozevíracího seznamu vyberte správný fond Apache Spark, pokud není vybraný žádný.
-7. Klikněte na **přidat kód**. Výchozí jazyk je `Pyspark`. Budete používat kombinaci Pyspark a Spark SQL, takže je výchozí volba velmi jemná.
+7. Klikněte na **přidat kód**. Výchozí jazyk je `Pyspark` . Budete používat kombinaci Pyspark a Spark SQL, takže je výchozí volba velmi jemná.
 8. Dále vytvoříte jednoduchý objekt Spark dataframe pro manipulaci. V tomto případě jej vytvoříte z kódu. Existují tři řádky a tři sloupce:
 
    ```python
@@ -79,7 +79,7 @@ Poznámkový blok je interaktivní prostředí, které podporuje různé program
      demo_df.write.parquet('abfss://<<TheNameOfAStorageAccountFileSystem>>@<<TheNameOfAStorageAccount>>.dfs.core.windows.net/demodata/demo_df', mode='overwrite')
     ```
 
-    Pokud používáte Průzkumníka služby Storage, je možné zobrazit dopad dvou různých způsobů psaní souboru použitého výše. Pokud není zadaný žádný systém souborů, použije se v tomto případě `default>user>trusted-service-user>demo_df`výchozí hodnota. Data jsou uložena do umístění zadaného systému souborů.
+    Pokud používáte Průzkumníka služby Storage, je možné zobrazit dopad dvou různých způsobů psaní souboru použitého výše. Pokud není zadaný žádný systém souborů, použije se v tomto případě výchozí hodnota `default>user>trusted-service-user>demo_df` . Data jsou uložena do umístění zadaného systému souborů.
 
     Všimněte si, že ve formátech "CSV" i "Parquet" se operace zápisu vytvoří adresář s mnoha soubory dělenými oddíly.
 
@@ -98,7 +98,7 @@ Jazyk SQL (Structured Query Language) (SQL) je nejběžnějším a široce použ
    SHOW TABLES
    ```
 
-   Pokud používáte Poznámkový blok s Apache Spark fondem Azure synapse, získáte předvolbu `sqlContext` , kterou můžete použít ke spouštění dotazů pomocí Spark SQL. `%%sql`instruuje Poznámkový blok, `sqlContext` aby použil předvolby ke spuštění dotazu. Dotaz načte prvních 10 řádků ze systémové tabulky, které jsou ve výchozím nastavení součástí všech fondů služby Azure synapse Apache Spark.
+   Pokud používáte Poznámkový blok s Apache Spark fondem Azure synapse, získáte předvolbu `sqlContext` , kterou můžete použít ke spouštění dotazů pomocí Spark SQL. `%%sql`instruuje Poznámkový blok, aby použil předvolby `sqlContext` ke spuštění dotazu. Dotaz načte prvních 10 řádků ze systémové tabulky, které jsou ve výchozím nastavení součástí všech fondů služby Azure synapse Apache Spark.
 
 2. Spuštěním dalšího dotazu zobrazíte data v tabulce `demo_df`.
 
@@ -119,7 +119,7 @@ Jazyk SQL (Structured Query Language) (SQL) je nejběžnějším a široce použ
 6. V poli sloupce osy X vyberte "State" (stav).
 7. V poli sloupce osy Y vyberte "mzda".
 8. V poli **agregace** vyberte "AVG".
-9. Vyberte **Použít**.
+9. Vyberte **Apply** (Použít).
 
    ![Výstup grafu ve službě Azure synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Výstup grafu ve službě Azure synapse Spark")
 

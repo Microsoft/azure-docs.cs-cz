@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 5d81dc1f4da6e952061496fa348d0f8e87b00b81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c30429653c024c669d273c45d12236afa8cdbb83
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742969"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591501"
 ---
-# <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Izolace skupiny úloh Azure synapse Analytics (Preview)
+# <a name="azure-synapse-analytics-workload-group-isolation"></a>Izolace skupiny úloh Azure synapse Analytics
 
 Tento článek vysvětluje, jak lze pomocí skupin úloh nakonfigurovat izolaci úloh, obsahovat prostředky a použít pravidla modulu runtime pro provádění dotazů.
 
 ## <a name="workload-groups"></a>Skupiny úloh
 
-Skupiny úloh jsou kontejnery pro sadu požadavků a jsou základem pro způsob, jakým je Správa úloh, včetně izolace úloh, nakonfigurovaná v systému.  Skupiny úloh se vytvářejí pomocí syntaxe [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Jednoduchá konfigurace správy úloh může spravovat načítání dat a uživatelské dotazy.  Například skupina úloh s názvem `wgDataLoads` bude určovat aspekty úloh pro data načítaná do systému. Skupina úloh s názvem `wgUserQueries` bude také definovat aspekty úloh pro uživatele, kteří spouštějí dotazy pro čtení dat ze systému.
+Skupiny úloh jsou kontejnery pro sadu požadavků a jsou základem pro způsob, jakým je Správa úloh, včetně izolace úloh, nakonfigurovaná v systému.  Skupiny úloh se vytvářejí pomocí syntaxe [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Jednoduchá konfigurace správy úloh může spravovat načítání dat a uživatelské dotazy.  Například skupina úloh s názvem `wgDataLoads` bude určovat aspekty úloh pro data načítaná do systému. Skupina úloh s názvem bude také `wgUserQueries` definovat aspekty úloh pro uživatele, kteří spouštějí dotazy pro čtení dat ze systému.
 
 V následujících částech se dozvíte, jak skupiny úloh poskytují možnost definovat izolaci, omezení, definici prostředků žádosti a dodržovat pravidla spouštění.
 
@@ -32,9 +32,9 @@ V následujících částech se dozvíte, jak skupiny úloh poskytují možnost 
 
 Izolace úloh znamená, že prostředky jsou rezervované, výhradně pro skupinu úloh.  Izolaci úloh se dosahuje tak, že v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) nakonfigurujete parametr MIN_PERCENTAGE_RESOURCE na hodnotu větší než nula.  Pro úlohy průběžného spouštění, které musí dodržovat těsné SLA, izolace zajišťuje, aby prostředky byly vždy dostupné pro skupinu úloh.
 
-Konfigurace izolace úloh implicitně definuje zaručenou úroveň souběžnosti. Například skupina úloh s `MIN_PERCENTAGE_RESOURCE` nastavenou na 30% a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` nastavená na 2% se garantuje 15 souběžnosti.  Úroveň souběžnosti je zaručená, protože 15-2% slotů prostředků jsou v rámci skupiny úloh vždy rezervované (bez ohledu na to, jak `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` je nakonfigurované).  Pokud `REQUEST_MAX_RESOURCE_GRANT_PERCENT` je větší než `REQUEST_MIN_RESOURCE_GRANT_PERCENT` a `CAP_PERCENTAGE_RESOURCE` větší než `MIN_PERCENTAGE_RESOURCE` další prostředky, přidají se za požadavek.  Pokud `REQUEST_MAX_RESOURCE_GRANT_PERCENT` jsou `REQUEST_MIN_RESOURCE_GRANT_PERCENT` a jsou stejné `CAP_PERCENTAGE_RESOURCE` a jsou větší `MIN_PERCENTAGE_RESOURCE`než, je možné další souběžnost.  Pro určení garantované souběžnosti zvažte následující metodu:
+Konfigurace izolace úloh implicitně definuje zaručenou úroveň souběžnosti. Například skupina úloh s `MIN_PERCENTAGE_RESOURCE` nastavenou na 30% a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` nastavená na 2% se garantuje 15 souběžnosti.  Úroveň souběžnosti je zaručená, protože 15-2% slotů prostředků jsou v rámci skupiny úloh vždy rezervované (bez ohledu na to, jak `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` je nakonfigurované).  Pokud `REQUEST_MAX_RESOURCE_GRANT_PERCENT` je větší než `REQUEST_MIN_RESOURCE_GRANT_PERCENT` a `CAP_PERCENTAGE_RESOURCE` větší než `MIN_PERCENTAGE_RESOURCE` Další prostředky, přidají se za požadavek.  Pokud `REQUEST_MAX_RESOURCE_GRANT_PERCENT` `REQUEST_MIN_RESOURCE_GRANT_PERCENT` jsou a jsou stejné a jsou `CAP_PERCENTAGE_RESOURCE` větší než `MIN_PERCENTAGE_RESOURCE` , je možné další souběžnost.  Pro určení garantované souběžnosti zvažte následující metodu:
 
-[Garantovaná souběžnost] =`MIN_PERCENTAGE_RESOURCE`[]/`REQUEST_MIN_RESOURCE_GRANT_PERCENT`[]
+[Garantovaná souběžnost] = [ `MIN_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
 > Pro min_percentage_resource existuje určitá minimální hodnota životaschopnosti úrovně služby.  Další informace najdete v tématu [efektivní hodnoty](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values) pro další podrobnosti.
@@ -54,7 +54,7 @@ Zahrnutí úloh znamená omezení množství prostředků, které může skupina
 
 Konfigurace omezení úloh implicitně definuje maximální úroveň souběžnosti.  S CAP_PERCENTAGE_RESOURCE nastavenou na 60% a REQUEST_MIN_RESOURCE_GRANT_PERCENT nastavenou na 1% se pro skupinu úloh povoluje až 60 úroveň souběžnosti.  Zvažte, jak níže uvedená metoda určuje maximální souběžnost:
 
-[Max. Concurrency] = [`CAP_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
+[Max. Concurrency] = [ `CAP_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
 > Pokud se vytvoří skupiny úloh s MIN_PERCENTAGE_RESOURCE na úrovni větší než nula, bude efektivní CAP_PERCENTAGE_RESOURCE skupiny úloh nedosahovat 100%.  Platné hodnoty modulu runtime najdete v tématu [Sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
@@ -75,7 +75,7 @@ Konfigurace REQUEST_MAX_RESOURCE_GRANT_PERCENT na hodnotu větší než REQUEST_
 
 ## <a name="execution-rules"></a>Pravidla spuštění
 
-V systémech generování sestav ad-hoc můžou zákazníci omylem provádět navýšení dotazů, které mají vážně vliv na produktivitu ostatních.  Správci systému jsou nuceni věnovat se dotazům na usmrcování času, aby uvolnili systémové prostředky.  Skupiny úloh nabízejí možnost konfigurovat pravidlo časového limitu spuštění dotazu pro zrušení dotazů, které překračují zadanou hodnotu.  Pravidlo se konfiguruje nastavením `QUERY_EXECUTION_TIMEOUT_SEC` parametru v SYNTAXI [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
+V systémech generování sestav ad-hoc můžou zákazníci omylem provádět navýšení dotazů, které mají vážně vliv na produktivitu ostatních.  Správci systému jsou nuceni věnovat se dotazům na usmrcování času, aby uvolnili systémové prostředky.  Skupiny úloh nabízejí možnost konfigurovat pravidlo časového limitu spuštění dotazu pro zrušení dotazů, které překračují zadanou hodnotu.  Pravidlo se konfiguruje nastavením `QUERY_EXECUTION_TIMEOUT_SEC` parametru v syntaxi [vytvořit skupinu úloh](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
 ## <a name="shared-pool-resources"></a>Prostředky sdíleného fondu
 

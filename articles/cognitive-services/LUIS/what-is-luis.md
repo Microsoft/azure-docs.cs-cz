@@ -2,13 +2,13 @@
 title: Co je Language Understanding (LUIS)?
 description: Language Understanding (LUIS) je cloudová služba API, která prostřednictvím vlastních inteligentních funkcí strojového učení, které používá na konverzační text uživatele v přirozeném jazyce, předvídá celkový význam a vytahuje z něj relevantní podrobné informace.
 ms.topic: overview
-ms.date: 02/23/2020
-ms.openlocfilehash: 98fb936422f8e23e728efea19fa2cd75d90fac57
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/05/2020
+ms.openlocfilehash: d09aaabeec1d22132843ba98472e1cd89ba95815
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053349"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592810"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -32,7 +32,7 @@ Po publikování aplikace LUIS může klientská aplikace odesílat promluvy (te
 |Krok|Akce|
 |:--|:--|
 |1|Klientská aplikace odešle _promluvu_ uživatele (text napsaný vlastními slovy): „I want to call my HR rep“ (Chci zavolat zástupci z oddělení lidských zdrojů). do koncového bodu služby LUIS jako požadavek HTTP.|
-|2|LUIS vám umožňuje vytvořit vlastní jazykové modely a přidat do své aplikace informace. Jazykové modely, které se naučily pro počítače, přijímají nestrukturovaný vstupní text uživatele a vrátí odpověď ve formátu JSON s nejvyšším záměrem `HRContact`. Odpověď koncového bodu JSON obsahuje minimálně promluvu dotazu a záměr s nejvyšším skóre. Může také extrahovat data, jako je například entita _typu kontakt_ .|
+|2|LUIS vám umožňuje vytvořit vlastní jazykové modely a přidat do své aplikace informace. Jazykové modely, které se naučily pro počítače, přijímají nestrukturovaný vstupní text uživatele a vrátí odpověď ve formátu JSON s nejvyšším záměrem `HRContact` . Odpověď koncového bodu JSON obsahuje minimálně promluvu dotazu a záměr s nejvyšším skóre. Může také extrahovat data, jako je například entita _typu kontakt_ .|
 |3|Klientská aplikace se na základě odpovědi ve formátu JSON rozhoduje, jak splnit požadavky uživatele. Tato rozhodnutí mohou zahrnovat rozhodovací strom v kódu rozhraní bot Framework a volání dalších služeb. |
 
 Aplikace LUIS poskytuje klientské aplikaci informace, které jí umožní chytře rozhodovat. Služba LUIS toto rozhodování nezajišťuje.
@@ -55,9 +55,9 @@ Model LUIS začíná kategoriemi záměrů uživatele, které se označují jako
 
 |Příklad promluvy uživatele|Záměr|Extrahovaná data|
 |-----------|-----------|-----------|
-|`Book a flight to __Seattle__?`|BookFlight (Rezervovat let)|Seattle|
-|`When does your store __open__?`|StoreHoursAndLocation (Poloha a otevírací doba obchodu)|open (otevírá)|
-|`Schedule a meeting at __1pm__ with __Bob__ in Distribution`|ScheduleMeeting (Naplánovat schůzku)|1pm, Bob (13:00, Bob)|
+|`Book a flight to Seattle?`|BookFlight (Rezervovat let)|Seattle|
+|`When does your store open?`|StoreHoursAndLocation (Poloha a otevírací doba obchodu)|open|
+|`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting (Naplánovat schůzku)|1pm, Bob (13:00, Bob)|
 
 ## <a name="query-prediction-endpoint"></a>Koncový bod předpovědi dotazů
 

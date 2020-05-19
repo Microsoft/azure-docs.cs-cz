@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 54fd8caef51a17148714d9cf90328572433c59db
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 26caebafc7c147452decbb28e313513072d7511b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115111"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592028"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Používání Učebn Labs pro školení
-Služby Azure Labs umožňují profesory, školitelům nebo výukovým asistentům rychle a snadno vytvořit online prostředí pro zřizování předem nakonfigurovaných výukových prostředí pro praktikanty. Každý praktikant by mohl pro školení použít stejné a izolované prostředí. Zásady je možné použít, aby se zajistilo, že školicí prostředí jsou k dispozici pro každého účastníka pouze v případě, že je potřebují a obsahují dostatek prostředků, jako jsou třeba virtuální počítače – vyžadované pro školení. 
+Služby Azure Labs umožňují pedagogům (učitelům, profesoryům, instruktorům a pomocníkům pro vzdělávání atd.) rychle a snadno vytvořit online prostředí pro zřizování předem nakonfigurovaných výukových prostředí pro praktikanty. Každý praktikant by mohl pro školení použít stejné a izolované prostředí. Zásady je možné použít, aby se zajistilo, že školicí prostředí jsou k dispozici pro každého účastníka pouze v případě, že je potřebují a obsahují dostatek prostředků, jako jsou třeba virtuální počítače – vyžadované pro školení. 
 
 ![Testovací prostředí pro učebnu](../media/classroom-labs-scenarios/classroom.png)
 
@@ -37,10 +37,10 @@ Laboratoře v učebně splňují následující požadavky, které jsou nutné k
 V tomto článku se dozvíte o různých funkcích Azure Lab Services, které se dají použít ke splnění předchozích popsaných požadavků na školení a podrobných kroků, které můžete provést při nastavení testovacího prostředí pro školení.  
 
 ## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>Vytvoření účtu testovacího prostředí jako správce účtu testovacího prostředí
-Prvním krokem při použití Azure Lab Services je vytvoření účtu testovacího prostředí v Azure Portal. Po vytvoření účtu testovacího prostředí správcem účtu testovacího prostředí přidá správce uživatele, kteří chtějí vytvořit cvičení, do role **testovacího prostředí** . Školitel vytvoří Labs s virtuálními počítači pro studenty, aby mohli provádět cvičení za kurz, který jsou výukou. Podrobnosti najdete v tématu [Vytvoření a Správa účtu testovacího prostředí](how-to-manage-lab-accounts.md).
+Prvním krokem při použití Azure Lab Services je vytvoření účtu testovacího prostředí v Azure Portal. Po vytvoření účtu testovacího prostředí správcem účtu testovacího prostředí přidá správce uživatele, kteří chtějí vytvořit cvičení, do role **testovacího prostředí** . Pedagogy vytvářejí laboratoře s virtuálními počítači, které studentům povedou cvičení pro kurz, který jsou výukou. Podrobnosti najdete v tématu [Vytvoření a Správa účtu testovacího prostředí](how-to-manage-lab-accounts.md).
 
 ## <a name="create-and-manage-classroom-labs"></a>Vytváření a správa testovacích prostředí v učebnách
-Trainer, který je členem role tvůrce testovacího prostředí v účtu testovacího prostředí, může vytvořit jednu nebo více cvičení v účtu testovacího prostředí. Vytvoříte a nakonfigurujete virtuální počítač šablony s veškerým požadovaným softwarem pro provádění cvičení ve vašem kurzu. Předem vytvořenou image můžete vybrat z dostupných imagí pro vytvoření testovacího prostředí pro učebnu a pak ho přizpůsobit instalací softwaru potřebného pro testovací prostředí. Podrobnosti najdete v tématu [vytváření a Správa učebných cvičení](how-to-manage-classroom-labs.md).
+Educator, který je členem role tvůrce testovacího prostředí v účtu testovacího prostředí, může vytvořit jednu nebo více cvičení v účtu testovacího prostředí. Vytvoříte a nakonfigurujete virtuální počítač šablony s veškerým požadovaným softwarem pro provádění cvičení ve vašem kurzu. Předem vytvořenou image můžete vybrat z dostupných imagí pro vytvoření testovacího prostředí pro učebnu a pak ho přizpůsobit instalací softwaru potřebného pro testovací prostředí. Podrobnosti najdete v tématu [vytváření a Správa učebných cvičení](how-to-manage-classroom-labs.md).
 
 ## <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení a zásad použití
 Tvůrce testovacího prostředí může přidat nebo odebrat uživatele do testovacího prostředí, získat odkaz na registraci pro odesílání na uživatele testovacího prostředí, nastavit zásady, jako je například nastavení jednotlivých kvót na uživatele, aktualizovat počet virtuálních počítačů dostupných v testovacím prostředí a další. Podrobnosti najdete v tématu [Konfigurace nastavení a zásad použití](how-to-configure-student-usage.md).

@@ -2,34 +2,29 @@
 title: Nastavení aplikace – LUIS
 description: Nastavení aplikací pro porozumění aplikacím v Azure Cognitive Services se ukládají do aplikace a portálu.
 ms.topic: reference
-ms.date: 04/14/2020
-ms.openlocfilehash: 9e17736cd6ff5074a6eab76a6cf5bdb8acedc185
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/04/2020
+ms.openlocfilehash: 7b545e0959a43520b7d643ef8c0658a1e1a3b295
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382207"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590977"
 ---
-# <a name="application-settings"></a>Nastavení aplikace
+# <a name="app-and-version-settings"></a>Nastavení aplikace a verze
 
-Tato nastavení aplikace jsou uložená v [exportované](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) aplikaci a [aktualizovaná](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) pomocí rozhraní REST API. Změna nastavení verze aplikace obnoví stav školení aplikace na neučení.
+Tato nastavení se ukládají do [exportované](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) aplikace a aktualizují se pomocí rozhraní REST API nebo portálu Luis.
 
-Seznamte se s [Koncepty](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) diakritických znamének a interpunkce.
+Změna nastavení verze aplikace obnoví stav školení aplikace na neučení.
 
-|Nastavení|Výchozí hodnota|Poznámky|
-|--|--|--|
-|NormalizePunctuation|True|Odebere interpunkci.|
-|NormalizeDiacritics|True|Odebere diakritická znaménka.|
+[!INCLUDE [App and version settings](includes/app-version-settings.md)]
+
+
+Mezi odkazy a příklady textu patří:
+
+* [Interpunkční znaménka](#punctuation-normalization)
+* [Diakritiku](#diacritics-normalization)
 
 ## <a name="diacritics-normalization"></a>Normalizace diakritiky
-
-V `settings` parametru zapněte normalizaci utterance pro diakritická znaménka na váš soubor aplikace Luis JSON.
-
-```JSON
-"settings": [
-    {"name": "NormalizeDiacritics", "value": "true"}
-]
-```
 
 Následující projevy ukazuje, jakým způsobem normalizace diakritiky ovlivňuje projevy:
 
@@ -133,16 +128,7 @@ To zahrnuje jak španělštinu, tak i kanadskou mexický.
 |`ü`|`u`|
 |`ñ`|`u`|
 
-
 ## <a name="punctuation-normalization"></a>Normalizace interpunkce
-
-Zapněte normalizaci utterance pro interpunkci do souboru aplikace LUIS JSON v `settings` parametru.
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"}
-]
-```
 
 Následující projevy ukazuje, jak interpunkce má vliv na projevy:
 

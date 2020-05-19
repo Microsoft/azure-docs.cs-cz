@@ -10,19 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: dcdc942999e45eb779e54cd5f92432c54d65fc6a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 62236b472aa5c4812cd62af44a15b805b5326271
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561977"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592555"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Rychlý Start: asynchronní Shrnutí pro dlouhý formát zvuku v Pythonu (Preview)
 
 V tomto rychlém startu použijete dlouhé zvukové rozhraní API k asynchronnímu převodu textu na řeč a načtete zvukový výstup z identifikátoru URI, který poskytuje služba. Tato REST API je ideální pro poskytovatele obsahu, kteří potřebují syntetizovat zvuk z textu delšího než 5 000 znaků (nebo delší než 10 minut). Další informace najdete v tématu [dlouhé zvukové rozhraní API](../../long-audio-api.md).
 
-> [!NOTE]
-> Asynchronní Shrnutí pro dlouhý formát zvuku se dá použít jenom s [vlastními hlasy neuronové](../../how-to-custom-voice.md#custom-neural-voices).
+Asynchronní syntéza pro dlouhý formát zvuku se dá použít s [veřejnými neuronové hlasy](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) a [vlastními hlasy neuronové](../../how-to-custom-voice.md#custom-neural-voices), z nichž každý podporuje konkrétní jazyk a dialekt. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,7 +33,7 @@ K tomuto rychlému startu potřebujete:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru. Potom tento fragment kódu zkopírujte do souboru s názvem `voice_synthesis_client.py`.
+Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru. Potom tento fragment kódu zkopírujte do souboru s názvem `voice_synthesis_client.py` .
 
 ```python
 import argparse
@@ -56,7 +55,7 @@ Tyto moduly se používají k analýze argumentů, sestavení požadavku HTTP a 
 
 ## <a name="get-a-list-of-supported-voices"></a>Získat seznam podporovaných hlasů
 
-Tento kód získá seznam dostupných hlasů, pomocí kterých můžete převést převod textu na řeč. Přidejte kód do `voice_synthesis_client.py`:
+Tento kód vám umožní získat úplný seznam hlasů pro konkrétní oblast nebo koncový bod, které můžete použít. Zkontrolujte prosím [podporovanou oblast nebo koncový bod](../../long-audio-api.md). Přidejte kód do `voice_synthesis_client.py` :
 
 ```python
 parser = argparse.ArgumentParser(description='Text-to-speech client tool to submit voice synthesis requests.')
@@ -83,7 +82,7 @@ if args.voices:
 Pojďme vyzkoušet, co jste doposud provedli. V níže uvedené žádosti musíte aktualizovat několik věcí:
 
 * Nahraďte `<your_key>` klíčovým předplatným služby Speech. Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
-* Nahraďte `<region>` oblastí, ve které se vytvořil prostředek řeči (například `eastus` nebo `westus`). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+* Nahraďte `<region>` oblastí, ve které se vytvořil prostředek řeči (například `eastus` nebo `westus` ). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
 
 Spusťte tento příkaz:
 
@@ -100,13 +99,15 @@ Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xx
 Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
 ```
 
+Pokud **PublicVoice** má parametr PublicVoice **hodnotu true**, hlas je Public neuronové Voice. V opačném případě se jedná o vlastní neuronové hlas. 
+
 ## <a name="prepare-input-files"></a>Příprava vstupních souborů
 
 Připravte vstupní textový soubor. Může to být prostý text nebo SSML text. Požadavky na vstupní soubor najdete v tématu [Příprava obsahu pro syntézu](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#prepare-content-for-synthesis).
 
 ## <a name="convert-text-to-speech"></a>Převod textu na řeč
 
-Po přípravě vstupního textového souboru přidejte tento kód pro syntézu řeči do `voice_synthesis_client.py`:
+Po přípravě vstupního textového souboru přidejte tento kód pro syntézu řeči do `voice_synthesis_client.py` :
 
 > [!NOTE]
 > ' concatenateResult ' je volitelný parametr. Pokud tento parametr není nastaven, budou zvukové výstupy vygenerovány podle odstavce. Můžete také zřetězit zvuky do 1 výstupu nastavením parametru. Ve výchozím nastavení je zvukový výstup nastavený na RIFF-16khz-16bitový-mono-PCM. Další informace o podporovaných výstupech zvuku naleznete v tématu [formáty zvukového výstupu](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats).
@@ -175,7 +176,7 @@ if args.submit:
 Pojďme vytvořit žádost o syntetizování textu pomocí vstupního souboru jako zdroje. V níže uvedené žádosti musíte aktualizovat několik věcí:
 
 * Nahraďte `<your_key>` klíčovým předplatným služby Speech. Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
-* Nahraďte `<region>` oblastí, ve které se vytvořil prostředek řeči (například `eastus` nebo `westus`). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+* Nahraďte `<region>` oblastí, ve které se vytvořil prostředek řeči (například `eastus` nebo `westus` ). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
 * Nahraďte `<input>` cestou k textovému souboru, který jste připravili pro převod textu na řeč.
 * Nahraďte `<locale>` požadovaným národním prostředím výstupu. Další informace najdete v tématu [Podpora jazyků](../../language-support.md#neural-voices).
 * Nahraďte `<voice_guid>` požadovaným výstupním hlasem. Použijte jeden z hlasů vrácených funkcí [získat seznam podporovaných hlasů](#get-a-list-of-supported-voices).
@@ -215,7 +216,7 @@ Výsledek obsahuje vstupní text a zvukové výstupní soubory, které jsou vyge
 
 Server bude pro každý účet předplatného Azure uchovávat až **20 000** požadavků. Pokud vaše žádost překračuje toto omezení, odeberte prosím předchozí požadavky, než začnete vytvářet nové. Pokud neodeberete stávající žádosti, obdržíte oznámení o chybě.
 
-Přidejte kód do `voice_synthesis_client.py`:
+Přidejte kód do `voice_synthesis_client.py` :
 
 ```python
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
@@ -251,7 +252,7 @@ if args.delete:
 Teď zkontrolujeme, jaké požadavky jste předtím odeslali. Než budete pokračovat, budete muset v této žádosti aktualizovat několik věcí:
 
 * Nahraďte `<your_key>` klíčovým předplatným služby Speech. Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
-* Nahraďte `<region>` oblastí, ve které se vytvořil prostředek řeči (například `eastus` nebo `westus`). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+* Nahraďte `<region>` oblastí, ve které se vytvořil prostředek řeči (například `eastus` nebo `westus` ). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
 
 Spusťte tento příkaz:
 
@@ -271,7 +272,7 @@ ID : xxx , Name : xxx : Succeeded
 Teď pojďme odebrat dřív odeslaný požadavek. V následujícím kódu budete muset aktualizovat několik věcí:
 
 * Nahraďte `<your_key>` klíčovým předplatným služby Speech. Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
-* Nahraďte `<region>` oblastí, ve které se vytvořil prostředek řeči (například `eastus` nebo `westus`). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+* Nahraďte `<region>` oblastí, ve které se vytvořil prostředek řeči (například `eastus` nebo `westus` ). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
 * Nahraďte `<synthesis_id>` hodnotou vrácenou v předchozí žádosti.
 
 > [!NOTE]

@@ -1,20 +1,33 @@
 ---
 title: Co je nového – Language Understanding (LUIS)
 description: Tento článek se pravidelně aktualizuje o novinky o Language Understanding API Azure Cognitive Services.
-ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: overview
+ms.date: 05/08/2020
+ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097723"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592793"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 
 Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Zpráva k vydání verze
+
+### <a name="may-2020---build"></a>Květen 2020 – Build
+
+* Vydáno **všeobecně k dispozici** (GA):
+    * [Language Understanding kontejner](luis-container-howto.md)
+    * Portál Preview povýšen na [aktuální portál](https://www.luis.ai), [předchozí](https://previous.luis.ai) portál je stále k dispozici
+    * Vytváření a označování entit, které se naučily pro nový počítač
+    * [Proces upgradu](migrate-from-composite-entity.md) ze složených a jednoduchých entit na počítače se naučily
+    * [Nastavení](how-to-application-settings-portal.md) podpory normalizace variant Wordu
+* Náhled změn rozhraní API pro vytváření verzí
+    * Schéma aplikace 7. x pro vnořené entity rozpoznané počítačem
+    * [Migrace na požadovanou funkci](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+
 
 ### <a name="march-2020"></a>Březen 2020
 
@@ -26,7 +39,7 @@ Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k ver
 
 * Zlepšení produktivity vývojářů
     * Obecná dostupnost našeho [koncového bodu předpovědi V3](luis-migration-api-v3.md).
-    * Možnost importovat a exportovat aplikace pomocí formátu. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Tím se PAVES způsob efektivního procesu CI/CD.
+    * Možnost importovat a exportovat aplikace ve `.lu` formátu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Tím se PAVES způsob efektivního procesu CI/CD.
 * Jazykové rozšíření
     * [Arabština a Hindština](luis-language-support.md) ve verzi Public Preview.
 * Předem připravené modely

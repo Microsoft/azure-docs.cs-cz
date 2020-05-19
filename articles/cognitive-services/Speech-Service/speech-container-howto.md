@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: efca7eceae74416945c568268edfe0b13a21861a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: dc11d9d7dfa7ededa19e11c9e1bc38e1eaaec93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856426"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591012"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby Speech (verze Preview)
 
@@ -33,13 +33,13 @@ Kontejnery řeči umožňují zákazníkům vytvořit architekturu aplikace pro 
 | Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.3.0 |
 | Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.3.0 |
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
 
-| Požaduje se | Účel |
+| Vyžadováno | Účel |
 |--|--|
 | Docker Engine | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
 | Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů. |
@@ -47,7 +47,7 @@ Před použitím kontejnerů řeči je nutné splnit následující předpoklady
 
 ## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
 
-Pokud chcete požádat o přístup ke kontejneru, vyplňte a odešlete [formulář žádosti o Cognitive Services kontejnerech řeči](https://aka.ms/speechcontainerspreview/) . 
+Vyplňte a odešlete [formulář žádosti o Cognitive Services kontejnery](https://aka.ms/cognitivegate) , který bude požadovat přístup ke kontejneru.
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -101,7 +101,7 @@ Následující tabulka popisuje minimální a doporučené přidělení prostře
 
 * Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 
-Základní a paměť odpovídají nastavení `--cpus` a `--memory` , která se používají jako součást `docker run` příkazu.
+Základní a paměť odpovídají `--cpus` `--memory` nastavení a, která se používají jako součást `docker run` příkazu.
 
 > [!NOTE]
 > Minimum a doporučené jsou založeny na omezeních Docker, *nikoli* na prostředky hostitelského počítače. Například kontejnery Speech-to-text namapují část velkých jazykových modelů a *doporučuje* se, aby se celý soubor vešel do paměti, což je dalších 4-6 GB. První spuštění obou kontejnerů může trvat delší dobu, protože modely jsou stránkované v paměti.
@@ -151,7 +151,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 ```
 
 > [!IMPORTANT]
-> `latest` Značka vyžádá `en-US` národní prostředí. Pro další národní prostředí viz [národní prostředí pro převod řeči na text](#speech-to-text-locales).
+> `latest`Značka vyžádá `en-US` národní prostředí. Pro další národní prostředí viz [národní prostředí pro převod řeči na text](#speech-to-text-locales).
 
 #### <a name="speech-to-text-locales"></a>Národní prostředí pro převod textu na text
 
@@ -180,7 +180,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 ```
 
 > [!NOTE]
-> Vlastní `locale` kontejnery `voice` řeči a jsou určeny vlastním modelem ingestované kontejnerem.
+> `locale` `voice` Vlastní kontejnery řeči a jsou určeny vlastním modelem ingestované kontejnerem.
 
 # <a name="text-to-speech"></a>[Převod textu na řeč](#tab/tts)
 
@@ -193,7 +193,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 ```
 
 > [!IMPORTANT]
-> `latest` Značka vyžádá `en-US` národní prostředí a `jessarus` hlas. Pro další národní prostředí viz [národní prostředí pro převod textu na mluvené slovo](#text-to-speech-locales).
+> `latest`Značka vyžádá `en-US` národní prostředí a `jessarus` hlas. Pro další národní prostředí viz [národní prostředí pro převod textu na mluvené slovo](#text-to-speech-locales).
 
 #### <a name="text-to-speech-locales"></a>Národní prostředí pro převod textu na řeč
 
@@ -212,7 +212,7 @@ Následující značka je příkladem formátu:
 U všech podporovaných národních prostředí a odpovídajících hlasů kontejneru **textu na řeč** se podívejte na [značky obrázku pro převod textu na mluvené slovo](../containers/container-image-tags.md#text-to-speech).
 
 > [!IMPORTANT]
-> Při vytváření standardního příspěvku http *pro převod textu na řeč* vyžaduje zpráva [SSML (Speech promarkup Language)](speech-synthesis-markup.md) `voice` prvek s `name` atributem. Hodnota je odpovídající národní prostředí a hlas kontejneru, označovaný také jako ["krátký název"](language-support.md#standard-voices). Například `latest` značka by měla název hlasu `en-US-JessaRUS`.
+> Při vytváření standardního příspěvku http *pro převod textu na řeč* vyžaduje zpráva [SSML (Speech promarkup Language)](speech-synthesis-markup.md) `voice` prvek s `name` atributem. Hodnota je odpovídající národní prostředí a hlas kontejneru, označovaný také jako ["krátký název"](language-support.md#standard-voices). Například `latest` značka by měla název hlasu `en-US-JessaRUS` .
 
 # <a name="custom-text-to-speech"></a>[Vlastní převod textu na řeč](#tab/ctts)
 
@@ -225,7 +225,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 ```
 
 > [!NOTE]
-> Vlastní `locale` kontejnery `voice` řeči a jsou určeny vlastním modelem ingestované kontejnerem.
+> `locale` `voice` Vlastní kontejnery řeči a jsou určeny vlastním modelem ingestované kontejnerem.
 
 ***
 
@@ -233,12 +233,12 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K [examples](speech-container-configuration.md#example-docker-run-commands) dispozici jsou `docker run` další příklady příkazu.
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
 
-Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty `{Endpoint_URI}` a `{API_Key}` , najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) . K [examples](speech-container-configuration.md#example-docker-run-commands) dispozici jsou `docker run` také další příklady příkazu.
+Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty a, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) `{Endpoint_URI}` `{API_Key}` . [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou také další příklady příkazu.
 
 # <a name="speech-to-text"></a>[Převod řeči na text](#tab/stt)
 
@@ -262,7 +262,7 @@ Tento příkaz:
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Analýza mínění na výstup řeči na text 
 
-Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Příklad: 
+Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Například: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -403,14 +403,14 @@ Tento příkaz:
 ***
 
 > [!IMPORTANT]
-> Pro `Eula`spuštění `Billing`kontejneru musí `ApiKey` být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
+> `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
 
 > [!NOTE]
 > Pokud spouštíte více kontejnerů, použijte jedinečné číslo portu.
 
-| Containers | Adresa URL hostitele sady SDK | Protocol (Protokol) |
+| Kontejnery | Adresa URL hostitele sady SDK | Protocol (Protokol) |
 |--|--|--|
 | Převod řeči na text a Custom Speech textu na text | `ws://localhost:5000` | WS |
 | Převod textu na řeč a vlastní převod textu na řeč | `http://localhost:5000` | HTTP |
@@ -425,7 +425,7 @@ Pokud jste zadali přihlašovací údaje rozhraní API pro analýzu textu [do ko
 
 # <a name="simple-format"></a>[Jednoduchý formát](#tab/simple-format)
 
-Chcete-li nakonfigurovat klienta řeči tak, aby používal jednoduchý formát `"Sentiment"` , přidejte jako hodnotu `Simple.Extensions`pro. Pokud chcete zvolit konkrétní verzi modelu Analýza textu, nahraďte `'latest'` ji `speechcontext-phraseDetection.sentimentAnalysis.modelversion` v konfiguraci vlastností.
+Chcete-li nakonfigurovat klienta řeči tak, aby používal jednoduchý formát, přidejte `"Sentiment"` jako hodnotu pro `Simple.Extensions` . Pokud chcete zvolit konkrétní verzi modelu Analýza textu, nahraďte `'latest'` ji v `speechcontext-phraseDetection.sentimentAnalysis.modelversion` konfiguraci vlastností.
 
 ```python
 speech_config.set_service_property(
@@ -459,7 +459,7 @@ speech_config.set_service_property(
 
 # <a name="detailed-format"></a>[Podrobný formát](#tab/detailed-format)
 
-Chcete-li nakonfigurovat klienta řeči tak, aby používal podrobný formát `"Sentiment"` , přidejte jako hodnotu `Detailed.Extensions`pro `Detailed.Options`, nebo obojí. Pokud chcete zvolit konkrétní verzi modelu Analýza textu, nahraďte `'latest'` ji `speechcontext-phraseDetection.sentimentAnalysis.modelversion` v konfiguraci vlastností.
+Chcete-li nakonfigurovat klienta řeči tak, aby používal podrobný formát, přidejte `"Sentiment"` jako hodnotu pro `Detailed.Extensions` , `Detailed.Options` nebo obojí. Pokud chcete zvolit konkrétní verzi modelu Analýza textu, nahraďte `'latest'` ji v `speechcontext-phraseDetection.sentimentAnalysis.modelversion` konfiguraci vlastností.
 
 ```python
 speech_config.set_service_property(
@@ -524,7 +524,7 @@ speech_config.set_service_property(
 
 ---
 
-Pokud chcete zcela zakázat analýzu mínění, přidejte `false` hodnotu do. `sentimentanalysis.enabled`
+Pokud chcete zcela zakázat analýzu mínění, přidejte `false` hodnotu do `sentimentanalysis.enabled` .
 
 ```python
 speech_config.set_service_property(

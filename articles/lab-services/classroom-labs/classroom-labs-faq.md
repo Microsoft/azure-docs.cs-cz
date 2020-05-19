@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: cb645b5adfcd937758a950eaf596bc60e4d55f3f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 11cb0d995537b8979c3727bf508045c6e31fc208
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115145"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592606"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Laboratoře učebny v Azure Lab Services – nejčastější dotazy (FAQ)
 Získejte odpovědi na některé nejčastější dotazy týkající se učebn Labs v Azure Lab Services. 
@@ -28,13 +28,13 @@ Získejte odpovědi na některé nejčastější dotazy týkající se učebn La
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Je kvóta na uživatele nebo za týden nebo na celou dobu trvání testovacího prostředí? 
 Kvóta, kterou nastavíte pro testovací prostředí, je určena pro každého studenta po celou dobu trvání testovacího prostředí. A [plánovaná doba spuštění virtuálních počítačů](how-to-create-schedules.md) se nepočítá s kvótou přidělenou uživateli. Kvóta je určena pro dobu mimo plánované hodiny, kterou student stráví na virtuálních počítačích.  Další informace o kvótách najdete v tématu [nastavení kvót pro uživatele](how-to-configure-student-usage.md#set-quotas-for-users).
 
-### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Pokud profesor zapne virtuální počítač studenta, má vliv na kvótu studenta? 
-Ne. Nejedná se o. Když se profesor zapne na virtuálním počítači studenta, neovlivní to kvótu, která je přidělena studentovi. 
+### <a name="if-educator-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Pokud Educator zapne virtuální počítač studenta, má vliv na kvótu studenta? 
+No. Nejedná se o. Když se Educator zapne na virtuálním počítači studenta, neovlivní to kvótu, která je přidělena studentovi. 
 
 ## <a name="schedules"></a>Plány
 
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>Spustí se všechny virtuální počítače v testovacím prostředí automaticky při nastavení plánu? 
-Ne. Ne všechny virtuální počítače. Pouze virtuální počítače, které jsou přiřazeny uživatelům podle plánu. Virtuální počítače, které nejsou přiřazeny uživateli, se automaticky nespustí. Je to záměrné. 
+No. Ne všechny virtuální počítače. Pouze virtuální počítače, které jsou přiřazeny uživatelům podle plánu. Virtuální počítače, které nejsou přiřazeny uživateli, se automaticky nespustí. Je to záměrné. 
 
 ## <a name="lab-accounts"></a>Účty testovacího prostředí
 
@@ -59,7 +59,7 @@ Přečtěte si téma [rozsahy IP adres Azure a značky služeb – veřejný clo
 Když vám správce přidá jako tvůrce testovacího prostředí do účtu testovacího prostředí, budete mít oprávnění k vytváření cvičení. Nemáte ale oprávnění upravovat žádná nastavení v rámci účtu testovacího prostředí, včetně seznamu povolených imagí virtuálních počítačů. Pokud chcete povolit další image, požádejte správce účtu testovacího prostředí, aby to prohlédl za vás, nebo požádejte správce, aby vás přidal jako roli přispěvatele k účtu testovacího prostředí. Role Přispěvatel vám poskytne oprávnění k úpravám seznamu imagí virtuálního počítače v účtu testovacího prostředí.
 
 ### <a name="can-i-attach-additional-disks-to-a-virtual-machine"></a>Můžu k virtuálnímu počítači připojit další disky?
-Ne. k virtuálnímu počítači v testovacím prostředí učebny není možné připojit další disky. 
+No. k virtuálnímu počítači v testovacím prostředí učebny není možné připojit další disky. 
 
 ## <a name="users"></a>Uživatelé
 

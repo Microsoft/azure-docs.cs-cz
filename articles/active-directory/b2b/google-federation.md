@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ca4ff3ed35371fe7454c242da8c9107badc659
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6a1a743f313ca4159ce4ef03413a94ec25bb8fae
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199530"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591229"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat Google jako zprostředkovatele identity pro uživatele typu Host B2B
 
@@ -90,7 +90,7 @@ Teď nastavíte ID klienta Google a tajný kód klienta, a to tak, že ho zadát
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>Konfigurace Google Federation na portálu Azure AD 
 1. Přejít na [Azure Portal](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
-2. Vyberte **organizační vztahy** (nebo **externí identity**).
+2. Vyberte **externí identity**.
 3. Vyberte **všichni zprostředkovatelé identity**a pak klikněte na tlačítko **Google** .
 4. Zadejte název. Pak zadejte ID klienta a tajný klíč klienta, které jste získali dříve. Vyberte **Uložit**. 
 
@@ -112,7 +112,7 @@ Můžete odstranit nastavení Google Federation. Pokud to uděláte, uživatelé
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Pokud chcete odstranit Google Federation na portálu Azure AD: 
 1. Přejít na [Azure Portal](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
-2. Vyberte **organizační vztahy** (nebo **externí identity**).
+2. Vyberte **externí identity**.
 3. Vyberte **všechny zprostředkovatele identity**.
 4. Na řádku **Google** vyberte kontextovou nabídku (**...**) a pak vyberte **Odstranit**. 
    

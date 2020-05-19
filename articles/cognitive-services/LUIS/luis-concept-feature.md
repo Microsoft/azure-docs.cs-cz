@@ -1,90 +1,147 @@
 ---
 title: Funkce – LUIS
-titleSuffix: Azure Cognitive Services
 description: Přidáním funkcí do jazykového modelu poskytněte nápovědu týkající se rozpoznávání vstupu, který chcete označit nebo klasifikovat.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.author: diberry
-ms.openlocfilehash: 5b8257e24cf52d01be8065d97db17fd685aa316d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/23/2020
+ms.openlocfilehash: 906876e39eb7ff31c2e6b954d1514d8afc50bf3a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81531894"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591892"
 ---
-# <a name="machine-learned-features"></a>Funkce učené počítačem
+# <a name="machine-learning-ml-features"></a>Funkce strojového učení (ML)
 
-Ve službě Machine Learning je _funkce_ odlišující se vlastností a atributů dat, které systém sleduje & se naučí. V Language Understanding (LUIS) funkce popisuje a vysvětluje, co je důležité o vašich záměrech a entitách.
+Ve službě Machine Learning je **funkce**   odlišující se vlastností a atributů dat, která systém sleduje.
 
-Na [portálu Luis ve verzi Preview](https://preview.luis.ai)jsou funkce _popisovače_ , protože se používají k _popisu_ záměru nebo entity.
+Funkce strojového učení poskytují LUIS důležité pomůcky pro hledání věcí, které budou rozlišovat koncept. Jsou to doporučení, která LUIS můžou používat, ale ne pevná pravidla.  Tyto pomocné parametry se používají ve spojení s popisky pro hledání dat.
 
-## <a name="features-_descriptors_-in-language-understanding"></a>Funkce (_popisovače_) v Language Understanding
+ LUIS podporuje seznamy frází a jako funkce používají jiné entity:
+* Funkce seznamu frází
+* Model (záměr nebo entita) jako funkce
 
-Funkce, které jsou známé také jako popisovače, popisují popsaných prvků, které vám pomůžou Language Understanding identifikovat příklad projevy. K funkcím patří:
+Funkce by měly být považovány za nezbytnou součást návrhu schématu.
 
-* Seznam frází jako funkce pro záměry nebo entit
-* Entity jako funkce pro záměry nebo entity
+## <a name="a-phrase-list-for-a-particular-concept"></a>Seznam frází pro konkrétní koncept
 
-Funkce by měly být považovány za nezbytnou součást schématu pro rozložení modelu.
+Seznam frází je seznam slov nebo frází, které zapouzdřují konkrétní koncept.
 
-## <a name="what-is-a-phrase-list"></a>Co je seznam frází
+Když přidáváte seznam frází, můžete tuto funkci nastavit jako:
+* **[Globální](#global-features)**. Globální funkce se vztahuje na celou aplikaci.
 
-Seznam frází je seznam slov, frází, číslic nebo jiných znaků, které vám pomohou identifikovat koncept, který se pokoušíte identifikovat. V seznamu se nerozlišují malá a velká písmena.
+### <a name="when-to-use-a-phrase-list"></a>Kdy použít seznam frází
 
-## <a name="when-to-use-a-phrase-list"></a>Kdy použít seznam frází
-
-Seznam frází LUIS považuje za kontext a generalizy k identifikaci položek, které jsou podobné, ale nikoli přesného textu. Pokud potřebujete, aby vaše aplikace LUIS dokázala zobecnit a identifikovat nové položky, použijte seznam frází.
-
-Pokud chcete být schopni rozpoznat nové instance, jako je třeba Plánovač schůzky, který by měl rozpoznávat názvy nových kontaktů, nebo aplikaci inventáře, která by měla rozpoznávat nové produkty, začněte s entitou učenou počítačem. Pak vytvořte seznam frází, který pomůže LUIS hledání slov s podobným významem. Tento seznam frází LUIS k rozpoznávání příkladů přidáním dalšího významu k hodnotě těchto slov.
-
-Seznamy frází jsou podobně jako slovníky specifické pro doménu, které vám pomůžou se zvýšením kvality porozumění jejich záměrům a entitám.
-
-## <a name="considerations-when-using-a-phrase-list"></a>Předpoklady při použití seznamu frází
-
-Seznam frází se ve výchozím nastavení aplikuje na všechny modely v aplikaci. To bude fungovat pro seznamy frází, které mohou být více záměry a entitami. V případě deformulace byste měli použít seznam frází jenom na modely, ke kterým je relevantní.
-
-Pokud vytvoříte seznam frází (ve výchozím nastavení vytvořen globálně), pak ho později použijete jako popisovač (funkce) na konkrétní model, odebere se z ostatních modelů. Toto odebrání přispěje k seznamu frází pro model, pro který je použit, což pomáhá zlepšit přesnost, kterou poskytuje model.
-
-`enabledForAllModels` Příznak řídí tento rozsah modelu v rozhraní API.
-
-<a name="how-to-use-phrase-lists"></a>
+Pokud potřebujete, aby vaše aplikace LUIS dokázala zobecnit a identifikovat nové položky pro daný koncept, použijte seznam frází. Seznamy frází jsou podobně jako slovníky specifické pro doménu, které vám pomůžou se zvýšením kvality porozumění jejich záměrům a entitám.
 
 ### <a name="how-to-use-a-phrase-list"></a>Jak používat seznam frází
 
-[Vytvořte seznam frází](luis-how-to-add-features.md) , pokud má váš záměr nebo entita slova nebo fráze, které jsou důležité, například:
+Seznam frází LUIS považuje za kontext a generalizy k identifikaci položek, které jsou podobné, ale nikoli přesného textu.
 
-* oborové výrazy
-* slangem
-* zkratky
-* jazyk specifický pro společnost
-* jazyk, který pochází z jiného jazyka, ale často se používá ve vaší aplikaci
-* Klíčová slova a fráze v příkladu projevy
+Postup použití seznamu frází:
+* Začínáme s entitou učenou počítačem
+    * Přidat ukázkové promluvy
+    * Popisek s entitou učenou počítačem
+* Přidat seznam frází
+    * Přidat slova s podobným významem – **Nepřidávat všechna** možná slova nebo fráze. Místo toho přidejte několik slov nebo frází najednou a pak je přehlaste a publikujte.
+    * Kontrola a přidání navrhovaných slov
 
-Nepřidávat **všechna** možná slova ani fráze. Místo toho přidejte několik slov nebo frází najednou a pak je přehlaste a publikujte. Jakmile se seznam rozroste v průběhu času, může se stát, že některé výrazy mají mnoho forem (synonym). Rozdělte je do jiného seznamu.
+### <a name="a-typical-scenario-for-a-phrase-list"></a>Typický scénář pro seznam frází
 
+Typický scénář pro seznam frází vám umožní zvýšit slova související s konkrétním nápadem.
+
+Příkladem slov, která můžou potřebovat seznam frází, jsou lékařské výrazy. Tyto výrazy mohou mít konkrétní fyzický, chemický, léčebný nebo abstraktní význam. LUIS neví, že tyto výrazy jsou důležité pro vaši doménu subjektu bez seznamu frází.
+
+Pokud chcete extrahovat lékařské výrazy:
+* Nejprve v rámci těchto projevy vytvořte příklad lékařského lékařství projevy a návěští.
+* Pak vytvořte seznam frází s příklady podmínek v doméně předmětu. Seznam frází by měl zahrnovat skutečný termín, který jste popsali, a další podmínky, které popisují stejný pojem.
+* Přidejte seznam frází k entitě nebo podentitě, která extrahuje koncept použitý v seznamu frází. Nejběžnějším scénářem je součást (podřízená) entita učená počítačem. Pokud má být seznam frází použit ve všech záměrech nebo entitách, označte seznam frází jako globální seznam frází. `enabledForAllModels`Příznak řídí tento rozsah modelu v rozhraní API.
+
+<a name="how-to-use-phrase-lists"></a>
+<a name="how-to-use-a-phrase-lists"></a>
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="when-to-use-an-entity-as-a-feature"></a>Kdy použít entitu jako funkci
+## <a name="a-model-as-a-feature-helps-another-model"></a>Model jako funkce pomáhá jinému modelu.
 
-Entitu lze přidat jako funkci na úrovni záměru nebo entitu.
+Model (záměr nebo entitu) můžete přidat jako funkci jinému modelu (záměr nebo entitu). Přidáním existujícího záměru nebo entity jako funkce přidejte dobře definovaný koncept s příklady s popisky.
 
-### <a name="entity-as-a-feature-to-an-intent"></a>Entita jako součást záměru
+Při přidávání modelu jako funkce můžete tuto funkci nastavit jako:
+* **[Požadováno](#required-features)**. Aby byl model vrácen z koncového bodu předpovědi, je nutné najít požadovanou funkci.
+* **[Globální](#global-features)**. Globální funkce se vztahuje na celou aplikaci.
 
-Přidejte entitu jako popisovač (funkce) k záměru, když je zjišťování dané entity pro záměr významné.
+### <a name="when-to-use-an-entity-as-a-feature-to-an-intent"></a>Kdy použít entitu jako funkci k záměru
 
-Například pokud je záměrem rezervovat určitý let a entita má informace o lístkech (například počet míst, původ a cíl), pak hledání entity s informacemi o lístkech by mělo přidat váhu k předpovědi záměru letu.
+Přidejte entitu jako funkci k záměru, když je zjišťování této entity pro záměr významné.
 
-### <a name="entity-as-a-feature-to-another-entity"></a>Entita jako funkce pro jinou entitu
+Například pokud je záměrem rezervace letu, `BookFlight` a entita je informace o lístkech (například počet míst, počátek a cíl), pak by se měla entita s informacemi o lístkech zvýšit důležitou váhou pro předpověď `BookFlight` záměru.
+
+### <a name="when-to-use-an-entity-as-a-feature-to-another-entity"></a>Kdy použít entitu jako funkci pro jinou entitu
 
 Entita (A) by měla být přidána jako funkce jiné entitě (B), pokud je zjišťování této entity (A) významné pro předpověď entity (B).
 
-Například pokud je zjištěna entita adresy (A), pak hledání ulice (A) přidá váhu předpovědi pro entitu dodací adresy (B).
+Pokud například entita adresa pro expedici obsahovala subentitu ulice, pak hledání podentity ulice přidá důležitou váhu předpovědi pro entitu dodací adresy.
+
+* Adresa příjemce (entita počítač se naučila)
+    * Číslo ulice (subentity)
+    * Ulice (subentity)
+    * Město (subentity)
+    * Okres (subentity)
+    * Země (subentity)
+    * Poštovní směrovací číslo (subentity)
+
+## <a name="required-features"></a>Požadované funkce
+
+Aby byl model vrácen z koncového bodu předpovědi, je nutné najít požadovanou funkci. Požadovanou funkci použijte, když víte, že příchozí data se musí shodovat s funkcí.
+
+**Požadovaná funkce používá nepočítačovou entitu, která se nejedná o počítač**:
+* Entiay regulárního výrazu
+* Entita seznamu
+* Předem vytvořená entita
+
+Jaké jsou dobré funkce k označení jako povinné? Pokud jste si jistí, že se model nachází v datech, nastavte funkci podle potřeby. Požadovaná funkce nevrátí žádnou hodnotu, pokud nebyla nalezena.
+
+Pokračuje se v příkladu adresy pro expedici:
+* Adresa příjemce (entita počítač se naučila)
+    * Číslo ulice (subentity)
+    * Ulice (subentity)
+    * Název ulice (subentity)
+    * Město (subentity)
+    * Okres (subentity)
+    * Země (subentity)
+    * Poštovní směrovací číslo (subentity)
+
+### <a name="required-feature-using-prebuilt-entities"></a>Požadovaná funkce s využitím předem připravených entit
+
+Město, stát a země jsou obecně uzavřenou sadou seznamů, což znamená, že se v průběhu času nemění. Tyto entity mohou mít relevantní doporučené funkce a tyto funkce mohou být označeny jako povinné. To znamená, že se nevrátí celá dodací adresa, protože se nenašly entity s požadovanými funkcemi.
+
+Co když se město, stát nebo země nacházejí v utterance, ale buď v umístění, nebo slangem, které LUIS neočekává? Pokud chcete poskytnout nějakému následnému zpracování, aby bylo možné entitu vyřešit, z důvodu nízkého skóre spolehlivosti z LUIS, neoznačujte funkci jako povinnou.
+
+Dalším příkladem požadované funkce pro doručovací adresu je vytvoření [předem připraveného](luis-reference-prebuilt-entities.md) čísla. Uživatel tak může zadat "1 Microsoft Way" nebo "One Microsoft". Obě budou přeloženy na číslo "1" pro subentity čísla ulice.
+
+### <a name="required-feature-using-list-entities"></a>Požadovaná funkce využívající seznam entit
+
+[Entita seznamu](reference-entity-list.md) se používá jako seznam kanonických názvů spolu s jejich synonymy. Pokud utterance neobsahuje kanonický název nebo synonymum, jako požadovaná funkce se entita nevrátí jako součást koncového bodu předpovědi.
+
+S příkladem dodací adresy uvažujte o tom, že vaše společnost je dodávána pouze do omezené skupiny zemí. Můžete vytvořit entitu seznamu, která zahrnuje několik způsobů, kterými se zákazník může na zemi odkázat. Pokud LUIS nenajde přesnou shodu v textu utterance, pak se v předpovědi nevrátí entita (která má požadovanou funkci entity seznam).
+
+|Kanonický název|Synonyma|
+|--|--|
+|USA|USA:<br>U. S. A<br>USA<br>USA<br>0|
+
+Klientská aplikace, jako je například robot, může požádat o následnou otázku, takže zákazník chápe, že výběr země je omezený a je _povinný_.
+
+### <a name="required-feature-using-regular-expression-entities"></a>Požadovaná funkce využívající entity regulárních výrazů
+
+[Entita regulárního výrazu](reference-entity-regular-expression.md) použitá jako požadovaná funkce poskytuje funkce pro přizpůsobení textu.
+
+V případě pokračování v dodací adrese můžete vytvořit regulární výraz, který zachycuje pravidla syntaxe poštovních kódů země.
+
+## <a name="global-features"></a>Globální funkce
+
+Obecně platí, že pokud chcete použít funkci pro konkrétní model, můžete tuto funkci nakonfigurovat jako **globální funkci** a použít ji pro celou aplikaci.
+
+Nejběžnějším použitím globální funkce je přidání dalšího slovníku, jako je například slova z jiného jazyka, do aplikace. Pokud vaši zákazníci používají primární jazyk, ale očekává se, že bude moci používat jiný jazyk v rámci stejného utterance, můžete přidat funkci, která obsahuje slova ze sekundárního jazyka.
+
+Vzhledem k tomu, že uživatel očekával použití druhého jazyka napříč jakýmkoli záměrem nebo entitou, měla by být přidána do seznamu frází se seznamem frází nakonfigurovaným jako globální funkce.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 Seznamte se s [osvědčenými postupy](luis-concept-best-practices.md).

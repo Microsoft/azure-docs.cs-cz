@@ -8,20 +8,26 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 04/23/2020
 ms.author: diberry
-ms.openlocfilehash: 21e1be094716ac1d43e1f4458b41e855315d1779
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 21669a214ff1646a8f331cbe2871b7d8c756f22f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82192982"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591756"
 ---
 # <a name="whats-new-in-personalizer"></a>Co je nového v přizpůsobování
 
 Zjistěte, co je nového ve službě. Tyto položky můžou zahrnovat poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Zpráva k vydání verze
+
+### <a name="may-2020---build-conference"></a>Květen 2020 – konference Build
+
+V **Public Preview**jsou k dispozici následující:
+
+ * [Režim učně](concept-apprentice-mode.md) jako vzdělávací chování.
 
 ### <a name="march-2020"></a>Březen 2020
 

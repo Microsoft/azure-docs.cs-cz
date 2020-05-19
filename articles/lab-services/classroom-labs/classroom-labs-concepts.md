@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: a34af2ef779a41c19d4bfb831360948af1a66724
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 548cacfb76aba9093a59a5c87525d038558bf353
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115043"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592623"
 ---
 # <a name="classroom-labs-concepts"></a>Koncepce testovacích prostředí v učebnách
 
@@ -26,13 +26,13 @@ Následující seznam obsahuje klíčové pojmy a definice služby testovacího 
 
 ## <a name="quota"></a>Kvóta
 
-Kvóta je časový limit (v hodinách), který může učitel nastavit pro studenta k použití testovacího virtuálního počítače. Může být nastavené na 0 nebo na určitý počet hodin. Pokud je kvóta nastavená na 0, student může virtuální počítač použít jenom v případě, že je plán spuštěný, nebo když ho pro studenty ručně zapnete na virtuálním počítači.  
+Kvóta je časový limit (v hodinách), který může Educator nastavit pro studenta k použití testovacího virtuálního počítače. Může být nastavené na 0 nebo na určitý počet hodin. Pokud je kvóta nastavená na 0, student může virtuální počítač použít jenom v případě, že je plán spuštěný, nebo když se Educator ručně aktivuje virtuální počítač pro studenta.  
 
-Doba kvóty se počítá, když Student spustí virtuální počítač testovacího prostředí sami.  Pokud učitel ručně spustí virtuální počítač testovacího prostředí pro studenta, nepoužijí se pro tohoto studenta kvóta.
+Doba kvóty se počítá, když Student spustí virtuální počítač testovacího prostředí sami.  Pokud Educator spustí virtuální počítač testovacího prostředí pro studenta ručně, nepoužijí se pro tohoto studenta kvóta.
 
 ## <a name="schedules"></a>Plány
 
-Plány jsou časové sloty, které může učitel vytvořit pro třídu, takže virtuální počítače studenta jsou k dispozici pro čas třídy.  Plány můžou být jednorázové nebo opakované.  V případě, že je plán spuštěný, nepoužívají se hodiny kvóty.
+Plány jsou časové sloty, které může Educator vytvořit pro třídu, takže virtuální počítače studenta jsou k dispozici pro čas třídy.  Plány můžou být jednorázové nebo opakované.  V případě, že je plán spuštěný, nepoužívají se hodiny kvóty.
 
 Existují tři typy plánů: standardní, pouze spustit a zastavit.
 
@@ -56,7 +56,7 @@ Správcem IT cloudových prostředků organizace, který vlastní předplatné A
 - Spravovat a konfigurovat zásady pro všechna testovací prostředí
 - Udělovat uživatelům v organizaci oprávnění vytvářet v příslušném účtu testovací prostředí
 
-### <a name="professor"></a>Profesor
+### <a name="educator"></a>Pedagog
 
 Uživatelé jako například učitel nebo online instruktor si většinou vytváří testovací prostředí v učebnách na účtu testovacího prostředí. Pedagog má následující úkoly:
 

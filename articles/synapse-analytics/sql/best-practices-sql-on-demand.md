@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1a33404982b16e458e97aaf9959ff5dd52d1cce
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 86678365d1510199247e8a1aaa48ec844d07de32
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198882"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592929"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Osvědčené postupy pro SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -86,7 +86,7 @@ EXEC sp_describe_first_result_set N'
 
 Zde je sada výsledků.
 
-|is_hidden|column_ordinal|jméno|system_type_name|max_length|
+|is_hidden|column_ordinal|name|system_type_name|max_length|
 |----------------|---------------------|----------|--------------------|-------------------||
 |0|1|vendor_id|varchar (8000)|8000|
 |0|2|pickup_datetime|datetime2 (7)|8|
@@ -119,7 +119,7 @@ Další informace najdete v tématu funkce [filename](develop-storage-files-over
 > Vždy přetypujte výsledek FilePath a funkce FileInfo na příslušné datové typy. Pokud používáte znakové datové typy, ujistěte se, že je použita odpovídající délka.
 
 > [!NOTE]
-> Funkce používané pro vyloučení oddílu, FilePath a FileInfo nejsou aktuálně podporovány pro jiné externí tabulky, než které byly automaticky vytvořeny pro každou tabulku vytvořenou v synapse Spark.
+> Funkce používané pro vyloučení oddílu, FilePath a FileInfo nejsou v současné době podporovány u externích tabulek, které nejsou vytvořeny automaticky pro každou tabulku vytvořenou v Apache Spark pro Azure synapse Analytics.
 
 Pokud vaše uložená data nejsou rozdělená na oddíly, zvažte jejich dělení, aby bylo možné použít tyto funkce k optimalizaci dotazů, které cílí na tyto soubory. Při [dotazování na dělené tabulky Spark](develop-storage-files-spark-tables.md) z SQL na vyžádání bude dotaz automaticky cílit jenom na potřebné soubory.
 

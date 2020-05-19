@@ -4,12 +4,12 @@ description: V tomto kurzu Vylepšete předpovědi aplikace tím, že ověříte
 services: cognitive-services
 ms.topic: tutorial
 ms.date: 04/01/2020
-ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548724"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592572"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte si nejistotu, že předpovědi zkontroluje projevy koncového bodu.
 V tomto kurzu Vylepšete předpovědi aplikací tím, že ověříte nebo opravíte projevy, přijmete prostřednictvím koncového bodu LUIS HTTPS, který LUIS NEsI nedrží. Měli byste zkontrolovat projevy koncového bodu jako běžnou součást plánované údržby LUIS.
@@ -22,7 +22,7 @@ Tento proces revize umožňuje LUIS zjistit vaši doménu aplikace. LUIS vybere 
 
 Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný záměr promluvy.
 
-**V tomto kurzu se naučíte:**
+**V tomto kurzu:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -33,11 +33,11 @@ Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný 
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Importovat ukázkovou aplikaci
+## <a name="download-json-file-for-app"></a>Stáhnout soubor JSON pro aplikaci
 
-K importu aplikace použijte následující postup.
+Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) a uložte si ho.
 
-1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true) a uložte si ho.
+## <a name="import-json-file-for-app"></a>Importovat soubor JSON pro aplikaci
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -80,9 +80,9 @@ Prohlédněte si projevy koncového bodu pro správné zarovnání záměru. I k
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s tlačítkem pro kontrolu promluv koncového bodu na levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
 
-    Tento utterance, `I'm looking for a job with Natural Language Processing`není ve správném záměru.
+    Tento utterance, není `I'm looking for a job with Natural Language Processing` ve správném záměru.
 
-1.  Chcete-li tuto utterance zarovnat, vyberte na řádku utterance správný **záměr zarovnání** `GetJobInformation`. Přidejte změněné utterance do aplikace tak, že vyberete značku zaškrtnutí.
+1.  Chcete-li tuto utterance zarovnat, vyberte na řádku utterance správný **záměr zarovnání** `GetJobInformation` . Přidejte změněné utterance do aplikace tak, že vyberete značku zaškrtnutí.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s tlačítkem pro kontrolu promluv koncového bodu na levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
@@ -101,7 +101,7 @@ Pokud chcete ověřit, že se správně zarovnaný příklad projevy vylepšuje 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. V adresním řádku pokračujte na konec adresy URL a nahraďte _YOUR_QUERY_HERE_ `Are there any natural language processing jobs in my department right now?`.
+1. V adresním řádku pokračujte na konec adresy URL a nahraďte _YOUR_QUERY_HERE_ `Are there any natural language processing jobs in my department right now?` .
 
    ```json
     {
