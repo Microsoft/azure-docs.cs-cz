@@ -9,7 +9,7 @@
     - name: Co je nového
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: S využitím sady SDK
       href: sdk-learning-loop.md
@@ -39,6 +39,8 @@
         - name: Zásady učení
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: Začátečnický režim
+          href: concept-apprentice-mode.md
         - name: Aktivní a neaktivní události
           href: concept-active-inactive-events.md
         - name: Odměny
@@ -62,16 +64,18 @@
   items:
     - name: Vytvoření prostředku Personalizace
       href: how-to-create-resource.md
-    - name: Konfigurace výukové smyčky
+    - name: Konfigurace služby Personalizace
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: Použití začátečnického režimu
+      href: how-to-learning-behavior.md
     - name: Správa nastavení modelu a učení
       href: how-to-manage-model.md
     - name: Analýza s využitím offline vyhodnocení
       href: how-to-offline-evaluation.md
 - name: Referenční informace
   items:
-    - name: Ukázky
+    - name: ukázky
       href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
     - name: Reference k rozhraní REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'

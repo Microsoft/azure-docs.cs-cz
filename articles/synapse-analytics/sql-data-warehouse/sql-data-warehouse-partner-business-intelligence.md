@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7600eae27daf11c4fd02718abc25cef9006179e1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 23e3ccff11dc33858249565d3ad8396b19dd87c6
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683627"
+ms.locfileid: "83698889"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure synapse Analytics business intelligence partneři
 
@@ -27,7 +27,7 @@ K vytvoření kompletního řešení datového skladu pomocí synapse fondu SQL 
 | ------- | ----------- | -------------------- |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>Birst připojuje celou organizaci prostřednictvím sítě nedostanou virtualizovaných instancí BI na nejvyšší úrovni sdílených běžných analytických prostředků.|[Stránka produktu](https://www.birst.com/)<br> |
 | ![ClearStory data](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**Data ClearStory (průběžné obchodní přehledy)**<br>ClearStory data umožňují rychlou analýzu napříč různými daty uloženými ve fondu synapse SQL. Integrovaná platforma založená na Sparku a analytické aplikace v ClearStory, přístup k datům a jejich sladění pro různorodé datové sady. Umožňují rychlý průzkum v rámci spolupráce, který podporuje firemní uživatele při získávání rychlých přehledů. |[Stránka produktu](https://www.clearstorydata.com/product/continuous-insights/)<br> |
-| ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>Dundas data vizualizace je přední globální poskytovatel softwaru Business Intelligence a vizualizace dat.  Dundas řídicí panely, generování sestav a vizuální analýzy dat poskytují bezproblémovou integraci do obchodních aplikací a umožňují lepší rozhodování a rychlejší přehledy.|[Stránka produktu](https://www.dundas.com/dundas-bi)<br>[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/)<br> |
+| ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>Dundas data vizualizace je přední globální poskytovatel softwaru Business Intelligence a vizualizace dat.  Dundas řídicí panely, generování sestav a vizuální analýzy dat poskytují bezproblémovou integraci do obchodních aplikací a umožňují lepší rozhodování a rychlejší přehledy.|[Stránka produktu](https://www.dundas.com/dundas-bi)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dundas.dundas-bi)<br> |
 | ![IBM Cognos](./media/sql-data-warehouse-partner-business-intelligence/cognos_analytics_logo.png) |**Analýza IBM Cognos**<br>Cognos Analytics zahrnuje inteligentní funkce samoobslužných služeb, které usnadňují, nejasní a snadno používají, ať už jste zkušený obchodní analytik, který prověří Kinks v rozsáhlém dodavatelském řetězci nebo na trhu, který optimalizuje jednu kampaň. Cognos Analytics používá AI a další inteligentní funkce k provádění těžkého zvedání dat a usnadňuje uživatelům získat odpovědi, které potřebují.|[Stránka produktu](https://www.ibm.com/products/cognos-analytics)<br>|
 | ![Tvůrci informací](./media/sql-data-warehouse-partner-business-intelligence/informationbuilders_logo.png) |**Tvůrci informací (WebFOCUS)**<br>WebFOCUS business intelligence pomáhá společnostem efektivněji používat data napříč i mimo podnik. Umožňuje uživatelům a správcům rychle vytvářet řídicí panely, které kombinují obsah z různých zdrojů a formátů dat. Poskytuje taky robustní zabezpečení a komplexní zásady správného řízení, které umožňují bezproblémové a zabezpečené sdílení libovolného obsahu BI a analýzy.|[Stránka produktu](https://www.informationbuilders.com/products/bi-and-analytics-platform)<br> |
 ![Společnosti](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_logo.png) |**JReport Jinfonet**<br>JReport je vložené řešení BI pro podniky. Řešení nabízí řadu funkcí, jako je vytváření sestav, řídicí panely a analýza dat v cloudu, velkých objemech dat a transakčních zdrojích dat. Vizualizací dat vám umožní provádět vlastní generování sestav a zjišťování dat pro agilní a průběžné rozhodování. |[Stránka produktu](https://www.jinfonet.com/product/jreport-designer)<br> |

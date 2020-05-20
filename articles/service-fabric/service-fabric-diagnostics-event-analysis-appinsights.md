@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 5c80dc9f350fec30469a9bce2ed836c276ef3a7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75464750"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701898"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Analýza a vizualizace událostí pomocí Application Insights
 
@@ -42,7 +42,7 @@ Chcete-li dále prozkoumat možnosti portálu Application Insights, přečtěte 
 
 ### <a name="configuring-application-insights-with-eventflow"></a>Konfigurace Application Insights pomocí využitím eventflow
 
-Pokud k agregaci událostí používáte využitím eventflow, nezapomeňte importovat balíček `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`NuGet. Následující kód je vyžadován v části *výstupy* v *eventFlowConfig. JSON*:
+Pokud k agregaci událostí používáte využitím eventflow, nezapomeňte importovat `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` balíček NuGet. Následující kód je vyžadován v části *výstupy* v *eventFlowConfig. JSON*:
 
 ```json
 "outputs": [
@@ -73,5 +73,5 @@ Kliknutím na **Analýza** přejdete na portál Application Insights Analytics, 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [V AI nastavte výstrahy](../azure-monitor/app/alerts.md) na změny výkonu nebo využití.
+* [V AI nastavte výstrahy](/azure/azure-monitor/platform/alerts-log) na změny výkonu nebo využití.
 * [Inteligentní zjišťování v Application Insights](../azure-monitor/app/proactive-diagnostics.md) provádí proaktivní analýzu telemetrie, která se posílá do Application Insights upozorňující na potenciální problémy s výkonem.

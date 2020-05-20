@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 0f1611e6d3524cc78fc20fed9d1aac6f3fd453fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 751c85559330272e84e628d22756d47c24b08711
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106436"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701660"
 ---
 # <a name="authorizing-database-access-to-authenticated-users-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>Ověření přístupu k databázi ověřeným uživatelům, aby SQL Database a Azure synapse Analytics pomocí přihlašovacích údajů a uživatelských účtů
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte o:
 
 - Možnosti konfigurace Azure SQL Database a analýzy Azure synapse (dříve Azure SQL Data Warehouse), aby uživatelé mohli provádět úlohy správy a přístup k datům uloženým v těchto databázích.
 - Konfigurace přístupu a autorizace po počátečním vytvoření nového Azure SQL Database
-- Přidání přihlašovacích údajů a uživatelských účtů do hlavní databáze a uživatelských účtů a udělení těchto účtů oprávnění správce
+- Postup přidání přihlašovacích jmen a uživatelských účtů do hlavní databáze a udělení těchto účtů oprávnění správce
 - Postup přidání uživatelských účtů v uživatelských databázích, a to buď přidružených k přihlašovacím jménům, nebo jako obsažené uživatelské účty
 - Konfigurace uživatelských účtů s oprávněními v uživatelských databázích pomocí databázových rolí a explicitních oprávnění
 
@@ -57,7 +57,7 @@ Když vytváříte první nasazení Azure SQL, zadáváte přihlašovací jméno
 
 - Přihlašovací jméno SQL s oprávněními správce se vytvoří pomocí zadaného přihlašovacího jména. [Přihlášení](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) je individuální uživatelské účty pro přihlášení k SQL Database.
 - Tomuto přihlášení je uděleno úplné oprávnění správce pro všechny databáze jako [objekt zabezpečení na úrovni serveru](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine). Toto přihlášení má všechna dostupná oprávnění v rámci SQL Database a nelze je omezit. Ve spravované instanci se toto přihlášení přidá do [pevné role serveru sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) (Tato role pro databáze s jednou nebo ve fondu neexistuje).
-- Pro toto přihlášení se `dbo` vytvoří [uživatelský účet](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) s názvem v každé uživatelské databázi. Uživatel [dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) má všechna oprávnění databáze v databázi a je namapován na pevně danou `db_owner` databázovou roli. Další pevné databázové role jsou popsány dále v tomto článku.
+- [user account](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` Pro toto přihlášení se vytvoří uživatelský účet s názvem v každé uživatelské databázi. Uživatel [dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) má všechna oprávnění databáze v databázi a je namapován na `db_owner` pevně danou databázovou roli. Další pevné databázové role jsou popsány dále v tomto článku.
 
 Chcete-li identifikovat účty správců pro databázi, otevřete Azure Portal a přejděte na kartu **vlastnosti** serveru nebo spravované instance.
 
@@ -89,12 +89,12 @@ V tuto chvíli je vaše instance SQL Azure nakonfigurovaná jenom pro přístup 
 
   - Vytvoření dalšího přihlášení SQL v hlavní databázi pro jedno nebo sdružené nasazení databáze nebo nasazení spravované instance
   - Vytvoření uživatelského účtu v hlavní databázi přidružené k tomuto novému přihlášení
-  - Přidejte uživatelský účet do `dbmanager` `loginmanager` role, do role nebo do obou v `master` databázi pomocí příkazu [ALTER Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) (pro Azure synapse Analytics použijte příkaz [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
+  - Přidejte uživatelský účet do role, do `dbmanager` `loginmanager` role nebo do obou v `master` databázi pomocí příkazu [ALTER Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) (pro Azure synapse Analytics použijte příkaz [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
 
   > [!NOTE]
-  > `dbmanager`role `loginmanager` **a se nevztahují** k nasazením spravovaných instancí.
+  > `dbmanager``loginmanager`role **a se** nevztahují k nasazením spravovaných instancí.
 
-  Členové těchto [speciálních rolí hlavní databáze](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) pro databáze s jednou nebo ve fondu můžou uživatelům mít oprávnění k vytváření a správě databází nebo k vytváření a správě přihlašovacích údajů. V databázích vytvořených uživatelem, který je členem `dbmanager` role, je člen namapován na `db_owner` pevnou databázovou roli a může se přihlásit k databázi a spravovat ji `dbo` pomocí uživatelského účtu. Tyto role nemají žádná explicitní oprávnění mimo hlavní databázi.
+  Členové těchto [speciálních rolí hlavní databáze](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) pro databáze s jednou nebo ve fondu můžou uživatelům mít oprávnění k vytváření a správě databází nebo k vytváření a správě přihlašovacích údajů. V databázích vytvořených uživatelem, který je členem `dbmanager` role, je člen namapován na `db_owner` pevnou databázovou roli a může se přihlásit k databázi a spravovat ji pomocí `dbo` uživatelského účtu. Tyto role nemají žádná explicitní oprávnění mimo hlavní databázi.
 
   > [!IMPORTANT]
   > V jedné nebo sdružené databázi nelze vytvořit další přihlašovací údaje SQL s úplnými oprávněními pro správu.
@@ -116,7 +116,7 @@ V tuto chvíli je vaše instance SQL Azure nakonfigurovaná jenom pro přístup 
   V případě tohoto přístupu jsou informace o ověřování uživatele uloženy v každé databázi a automaticky replikovány do geograficky replikovaných databází. Pokud však stejný účet existuje ve více databázích a používáte ověřování SQL, je nutné uchovat hesla ručně. Navíc platí, že pokud má uživatel účet v různých databázích s různými hesly, může se stát, že tato hesla budou mít potíže.
 
 > [!IMPORTANT]
-> Pokud chcete vytvořit obsažené uživatele namapované na identity Azure AD, musíte se přihlásit pomocí účtu Azure AD, který je správcem v SQL Database. V rámci spravované instance může přihlášení k SQL `sysadmin` pomocí oprávnění vytvořit také přihlášení nebo uživatele služby Azure AD.
+> Pokud chcete vytvořit obsažené uživatele namapované na identity Azure AD, musíte se přihlásit pomocí účtu Azure AD, který je správcem v SQL Database. V rámci spravované instance může přihlášení k SQL pomocí `sysadmin` oprávnění vytvořit také přihlášení nebo uživatele služby Azure AD.
 
 Příklady, jak vytvořit přihlašovací jména a uživatele, najdete v tématech:
 

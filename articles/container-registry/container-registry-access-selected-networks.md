@@ -1,14 +1,14 @@
 ---
-title: Konfigurace pravidel brány firewall pro služby
+title: Konfigurace přístupu ke veřejnému registru
 description: Nakonfigurujte pravidla protokolu IP pro povolení přístupu ke službě Azure Container Registry z vybraných veřejných IP adres nebo rozsahů adres.
 ms.topic: article
-ms.date: 05/04/2020
-ms.openlocfilehash: f6459061ca486b4bf229409e6ec1ed1bd808a474
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 05/19/2020
+ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984613"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702082"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurace pravidel sítě veřejných IP adres
 
@@ -59,24 +59,46 @@ az acr network-rule add \
 
 ## <a name="disable-public-network-access"></a>Zakázat přístup k veřejné síti
 
-Chcete-li omezit provoz na virtuální sítě pomocí [privátního propojení](container-registry-private-link.md), zakažte v registru veřejný koncový bod. Zakázání veřejného koncového bodu přepíše všechny konfigurace brány firewall.
+Volitelně zakažte veřejný koncový bod v registru. Zakázání veřejného koncového bodu přepíše všechny konfigurace brány firewall. Můžete například chtít zakázat veřejný přístup k registru zabezpečenému ve virtuální síti pomocí [privátního odkazu](container-registry-private-link.md).
+
+### <a name="disable-public-access---cli"></a>Zakázat veřejný přístup – CLI
+
+Pokud chcete zakázat veřejný přístup pomocí rozhraní příkazového řádku Azure, spusťte příkaz [AZ ACR Update][az-acr-update] a nastavte `--public-network-enabled` na `false` . 
+
+> [!NOTE]
+> Argument vyžaduje rozhraní příkazového `public-network-enabled` řádku Azure CLI 2.6.0 nebo novější. 
+
+```azurecli
+az acr update --name myContainerRegistry --public-network-enabled false
+```
 
 ### <a name="disable-public-access---portal"></a>Zakázat veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. Na kartě **veřejný přístup** vyberte v části **povolený veřejný přístup**možnost **zakázáno**. Potom vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Potom vyberte **Uložit**.
 
 ![Zakázat veřejný přístup][acr-access-disabled]
 
-## <a name="restore-default-registry-access"></a>Obnovit výchozí přístup k registru
 
-Pokud chcete obnovit registr tak, aby byl ve výchozím nastavení povolený přístup, aktualizujte výchozí akci. 
+## <a name="restore-public-network-access"></a>Obnovit přístup k veřejné síti
 
-### <a name="restore-default-registry-access---portal"></a>Obnovit výchozí přístup k registru – portál
+Pokud chcete znovu povolit veřejný koncový bod, aktualizujte nastavení sítě tak, aby umožňovalo veřejný přístup. Povolení veřejného koncového bodu přepíše všechny konfigurace brány firewall. 
+
+### <a name="restore-public-access---cli"></a>Obnovení veřejného přístupu – CLI
+
+Spusťte příkaz [AZ ACR Update][az-acr-update] a `--public-network-enabled` nastavte `true` na. 
+
+> [!NOTE]
+> Argument vyžaduje rozhraní příkazového `public-network-enabled` řádku Azure CLI 2.6.0 nebo novější. 
+
+```azurecli
+az acr update --name myContainerRegistry --public-network-enabled true
+```
+
+### <a name="restore-public-access---portal"></a>Obnovit veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. V části **Brána firewall**vyberte rozsah adres a pak vyberte ikonu Odstranit.
-1. Na kartě **veřejný přístup** vyberte v části **povolený veřejný přístup**možnost **všechny sítě**. Potom vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **všechny sítě**. Potom vyberte **Uložit**.
 
 ![Veřejný přístup ze všech sítí][acr-access-all-networks]
 

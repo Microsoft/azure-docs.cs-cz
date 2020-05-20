@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Dokumentace k Azure SQL Edge (Preview)
+summary: Azure SQL Edge je optimalizovaný relační databázový stroj pro nasazování do IoT a na hraniční zařízení.
+metadata:
+  title: Dokumentace k Azure SQL Edge (Preview)
+  meta.description: Learn how to use Azure SQL Edge (Preview).
+  services: sql-database-edge
+  ms.service: sql-database-edge
+  ms.topic: landing-page
+  author: stevestein
+  ms.author: sstein
+  ms.date: 05/19/2020
+  ms.openlocfilehash: a2e26d4bfbec3a139987e2a7a0fe21c429c740a5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593133"
+landingContent:
+- title: SQL Edge
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je SQL Edge?
+      url: overview.md
+  - linkListType: deploy
+    links:
+    - text: Nasazení SQL Edge
+      url: deploy-portal.md
+- title: Synchronizace dat
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Synchronizace dat SQL Edge s Azure Data Factory
+      url: tutorial-sync-data-factory.md
+    - text: Synchronizace dat SQL Edge s SQL Database
+      url: tutorial-sync-data-sync.md
+- title: Streamování dat
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Streamování dat
+      url: stream-data.md
+    - text: Zobrazení katalogu pro streamování
+      url: streaming-catalog-views.md
+- title: Strojové učení
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Strojové učení a umělá inteligence
+      url: onnx-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Nasazení ONNX v SQL Edge
+      url: deploy-onnx.md

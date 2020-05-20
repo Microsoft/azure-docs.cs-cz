@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07ceb8eebed5657f87417dc24281008dd0863851
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0792dd98bb554b7b430676472c27274f3312d381
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650390"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701365"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Osvědčené postupy pro SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -121,7 +121,7 @@ Další informace najdete v tématu funkce [filename](develop-storage-files-over
 > [!NOTE]
 > Funkce používané pro vyloučení oddílu, FilePath a FileInfo nejsou v současné době podporovány u externích tabulek, které nejsou vytvořeny automaticky pro každou tabulku vytvořenou v Apache Spark pro Azure synapse Analytics.
 
-Pokud vaše uložená data nejsou rozdělená na oddíly, zvažte jejich dělení, aby bylo možné použít tyto funkce k optimalizaci dotazů, které cílí na tyto soubory. Při [dotazování na dělené tabulky Spark](develop-storage-files-spark-tables.md) z SQL na vyžádání bude dotaz automaticky cílit jenom na potřebné soubory.
+Pokud vaše uložená data nejsou rozdělená na oddíly, zvažte jejich dělení, aby bylo možné použít tyto funkce k optimalizaci dotazů, které cílí na tyto soubory. Při [dotazování na dělené Apache Spark tabulek Azure synapse](develop-storage-files-spark-tables.md) z SQL na vyžádání bude dotaz automaticky cílit jenom na potřebné soubory.
 
 ## <a name="use-parser_version-20-for-querying-csv-files"></a>Použití PARSER_VERSION 2,0 pro dotazování na soubory CSV
 

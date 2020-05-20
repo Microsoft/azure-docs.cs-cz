@@ -9,6 +9,8 @@
       href: cognitive-services-and-machine-learning.md
     - name: Vlastní podřízené domény pro Cognitive Services
       href: cognitive-services-custom-subdomains.md
+    - name: Proces omezování Cognitive Services
+      href: cognitive-services-gating-process.md
     - name: Podpora jazyků
       href: language-support.md
 - name: Rychlé starty

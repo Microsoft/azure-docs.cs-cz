@@ -28,6 +28,24 @@
       items:
         - name: Využití testovacích prostředí při výuce
           href: classroom-labs-scenarios.md
+        - name: Testovací prostředí v učebnách – typy tříd
+          items:
+            - name: Přehled typů tříd
+              href: class-types.md
+            - name: Hluboké učení ve zpracování přirozeného jazyka
+              href: class-type-deep-learning-natural-language-processing.md
+            - name: Skriptování Shellu v Linuxu
+              href: class-type-shell-scripting-linux.md
+            - name: Etický hacking
+              href: class-type-ethical-hacking.md
+            - name: Správa databází
+              href: class-type-database-management.md
+            - name: Poznámkové bloky Jupyter a Python
+              href: class-type-jupyter-notebook.md
+            - name: Vývoj mobilních aplikací s využitím sady Android Studio
+              href: class-type-mobile-dev-android-studio.md
+            - name: Analýzy velkých objemů dat
+              href: class-type-big-data-analytics.md
 - name: Návody
   items:
     - name: Příručka správce
@@ -36,29 +54,13 @@
       href: account-setup-guide.md
     - name: Průvodce zrychleným nastavením testovacího prostředí
       href: setup-guide.md
-    - name: Testovací prostředí v učebnách – typy tříd
-      items:
-        - name: Přehled typů tříd
-          href: class-types.md
-        - name: Hluboké učení ve zpracování přirozeného jazyka
-          href: class-type-deep-learning-natural-language-processing.md
-        - name: Skriptování Shellu v Linuxu
-          href: class-type-shell-scripting-linux.md
-        - name: Etický hacking
-          href: class-type-ethical-hacking.md
-        - name: Správa databází
-          href: class-type-database-management.md
-        - name: Poznámkové bloky Jupyter a Python
-          href: class-type-jupyter-notebook.md
-        - name: Vývoj mobilních aplikací s využitím sady Android Studio
-          href: class-type-mobile-dev-android-studio.md
-        - name: Analýzy velkých objemů dat
-          href: class-type-big-data-analytics.md
     - name: Vytvoření a konfigurace účtů testovacího prostředí (vlastník testovacího prostředí)
       items:
         - name: Vytvoření a správa účtů testovacího prostředí
           href: how-to-manage-lab-accounts.md
-        - name: Konfigurace účtů testovacího prostředí
+        - name: Správa testovacích prostředí v účtu testovacího prostředí
+          href: manage-labs.md
+        - name: Konfigurace automatického vypnutí virtuálních počítačů
           href: how-to-configure-lab-accounts.md
         - name: Přidání autora testovacího prostředí
           href: add-lab-creator.md
@@ -76,7 +78,7 @@
           href: specify-marketplace-images.md
         - name: Zadání informací o podpoře (vlastník účtu testovacího prostředí).
           href: lab-account-owner-support-information.md
-    - name: Vytvoření a konfigurace testovacích prostředí v učebnách (instruktor)
+    - name: Vytvoření a konfigurace testovacích prostředí v učebnách (vyučující)
       items:
         - name: Vytváření a správa testovacích prostředí v učebnách
           href: how-to-manage-classroom-labs.md
@@ -108,9 +110,9 @@
           href: how-to-prepare-windows-template.md
         - name: Řízení chování při vypínání Windows
           href: how-to-windows-shutdown.md
-        - name: Zobrazení informací o podpoře (instruktor)
+        - name: Zobrazení informací o podpoře (vyučující)
           href: lab-creator-support-information.md
-        - name: Přístup k virtuálním počítačům studentů ze zobrazení instruktora
+        - name: Přístup k virtuálním počítačům studentů ze zobrazení vyučujícího
           href: instructor-access-virtual-machines.md
     - name: Připojení k virtuálním počítačům v testovacích prostředích v učebnách (student)
       items:

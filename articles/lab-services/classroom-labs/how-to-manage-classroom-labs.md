@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a60f761e4ee575e3196bb1ccd3baa42f27221f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4c2c02e47059d73e29da705fc9075721e080e636
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588169"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701793"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa učebných cvičení v Azure Lab Services 
 Tento článek popisuje, jak vytvořit a odstranit testovací prostředí pro učebnu. Také se dozvíte, jak zobrazit všechny vývojové laboratoře v účtu testovacího prostředí. 
@@ -29,18 +29,18 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 ## <a name="create-a-classroom-lab"></a>Vytvoření testovacího prostředí v učebně
 
 1. Přejděte na [web Azure Lab Services](https://labs.azure.com). Aplikace Internet Explorer 11 není zatím podporována. 
-2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Vyberte nebo zadejte **ID uživatele** , který je členem role **testovacího prostředí** v účtu testovacího prostředí, a zadejte heslo. Azure Lab Services podporuje účty organizací a účty Microsoft. 
-3. Vyberte **nové testovací prostředí**. 
+1. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Vyberte nebo zadejte **ID uživatele** , který je členem role **testovacího prostředí** v účtu testovacího prostředí, a zadejte heslo. Azure Lab Services podporuje účty organizací a účty Microsoft. 
+1. Vyberte **nové testovací prostředí**. 
     
     ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-button.png)
-3. V okně **New Lab** (Nové testovací prostředí) proveďte následující akce: 
+1. V okně **New Lab** (Nové testovací prostředí) proveďte následující akce: 
     1. Zadejte **název** testovacího prostředí. 
-    2. Vyberte **velikost virtuálních počítačů** , které pro třídu potřebujete. Seznam dostupných velikostí najdete v části [velikosti virtuálních počítačů](#vm-sizes) . 
-    3. Vyberte **bitovou kopii virtuálního počítače** , kterou chcete použít pro prostředí učebny. Pokud vyberete image pro Linux, zobrazí se vám možnost Povolit pro ni připojení ke vzdálené ploše. Podrobnosti najdete v tématu [Povolení připojení ke vzdálené ploše pro Linux](how-to-enable-remote-desktop-linux.md).
+    1. Vyberte **velikost virtuálních počítačů** , které pro třídu potřebujete. Seznam dostupných velikostí najdete v části [velikosti virtuálních počítačů](#vm-sizes) . 
+    1. Vyberte **bitovou kopii virtuálního počítače** , kterou chcete použít pro prostředí učebny. Pokud vyberete image pro Linux, zobrazí se možnost **Povolit připojení ke vzdálené ploše**. Podrobnosti najdete v tématu [Povolení připojení ke vzdálené ploše pro Linux](how-to-enable-remote-desktop-linux.md).
 
         Pokud jste se přihlásili pomocí přihlašovacích údajů vlastníka účtu testovacího prostředí, zobrazí se vám možnost Povolit pro testovací prostředí více imagí. Další informace najdete v tématu [Povolení imagí v době vytváření testovacího prostředí](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation).
-    4. Zkontrolujte **celkovou cenu za hodinu** zobrazenou na stránce. 
-    6. Vyberte **Uložit**.
+    1. Zkontrolujte **celkovou cenu za hodinu** zobrazenou na stránce. 
+    1. Vyberte **Uložit**.
 
         ![Nové okno testovacího prostředí](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 
@@ -70,24 +70,24 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
     ![Stav vytvoření virtuálního počítače šablony](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
 8. Na stránce **Šablona** proveďte následující kroky: tyto kroky jsou pro kurz **volitelné** .
 
-    2. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. Pokud se jedná o virtuální počítač šablony pro Linux, můžete zvolit, jestli se chcete připojit pomocí protokolu SSH nebo RDP (Pokud je povolený protokol RDP).
+    1. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. Pokud se jedná o virtuální počítač šablony pro Linux, můžete zvolit, jestli se chcete připojit pomocí SSH nebo vzdálené plochy s grafickým uživatelským rozhraním.  K použití vzdálené plochy grafického uživatelského rozhraní je potřeba další nastavení. Další informace najdete v tématu [Povolení grafické vzdálené plochy pro virtuální počítače se systémem Linux](how-to-use-remote-desktop-linux-student.md) .
     1. Pokud chcete resetovat heslo pro tento virtuální počítač, vyberte **resetovat heslo** . 
     1. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software. 
     1. **Zastavte** virtuální počítač.  
     1. Zadejte **popis** šablony.
-10. Na stránce **Šablona** vyberte **publikovat** na panelu nástrojů. 
+9.  Na stránce **Šablona** vyberte **publikovat** na panelu nástrojů. 
 
     ![Tlačítko publikovat šablonu](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
     > [!WARNING]
     > Publikování nejde vrátit zpět. 
-8. Na stránce **publikovat šablonu** zadejte počet virtuálních počítačů, které chcete v testovacím prostředí vytvořit, a pak vyberte **publikovat**. 
+10. Na stránce **publikovat šablonu** zadejte počet virtuálních počítačů, které chcete v testovacím prostředí vytvořit, a pak vyberte **publikovat**. 
 
     ![Šablona publikování – počet virtuálních počítačů](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
 11. Na stránce se zobrazí **stav publikování** šablony. Tento proces může trvat až hodinu. 
 
     ![Publikování šablony – průběh](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-4. Přepněte na stránku **fondu virtuálních počítačů** výběrem možnosti virtuální počítače v nabídce vlevo nebo výběrem dlaždice virtuální počítače. Ověřte, že se zobrazují virtuální počítače, které jsou v **nepřiřazeném** stavu. Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Virtuální počítače můžete spustit na této stránce nebo jejich spuštění můžete nechat na studentech. 
+12. Přepněte na stránku **fondu virtuálních počítačů** výběrem možnosti virtuální počítače v nabídce vlevo nebo výběrem dlaždice virtuální počítače. Ověřte, že se zobrazují virtuální počítače, které jsou v **nepřiřazeném** stavu. Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Virtuální počítače můžete spustit na této stránce nebo jejich spuštění můžete nechat na studentech. 
 
     ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 

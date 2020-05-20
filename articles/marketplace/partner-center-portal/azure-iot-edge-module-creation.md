@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/19/2020
+ms.openlocfilehash: 21fc51aef664b2ea9360c4d8ca8e722bb7bbb349
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857669"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701151"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Vytvoření, konfigurace a publikování nabídky modulu IoT Edge v Azure Marketplace
 
@@ -21,8 +21,8 @@ Tento článek popisuje, jak vytvořit a publikovat nabídku modulu Internet vě
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
-3. Na stránce Přehled vyberte **+ Nová nabídka** > **IoT Edge modul**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **IoT Edge modul**.
 
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-iot-edge.png)
 
@@ -34,7 +34,7 @@ Tento článek popisuje, jak vytvořit a publikovat nabídku modulu Internet vě
 Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
-- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
 Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
@@ -48,7 +48,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
+Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) .
@@ -91,7 +91,7 @@ Tato stránka umožňuje definovat kategorie používané k seskupení vaší na
 
 #### <a name="category"></a>Kategorie
 
-Vyberte minimálně jednu a maximálně pět kategorií. Tyto kategorie slouží k umístění vaší nabídky do příslušných oblastí hledání na webu Marketplace a zobrazují se na stránce s podrobnostmi o vaší nabídce. V popisu nabídky vysvětlete, jak vaše nabídka tyto kategorie podporuje. Na stránkách procházet jsou všechny IoT Edge moduly zobrazeny v kategorii  **modulu IoT Edge Internet věcí >**.
+Vyberte minimálně jednu a maximálně pět kategorií. Tyto kategorie slouží k umístění vaší nabídky do příslušných oblastí hledání na webu Marketplace a zobrazují se na stránce s podrobnostmi o vaší nabídce. V popisu nabídky vysvětlete, jak vaše nabídka tyto kategorie podporuje. Na stránkách procházet jsou všechny IoT Edge moduly zobrazeny v kategorii **modulu IoT Edge Internet věcí >**   .
 
 #### <a name="legal"></a>Právní informace
 
@@ -146,44 +146,15 @@ Poskytněte podrobnější popis vaší nabídky. Může to být až 256 znaků 
 
 ### <a name="description"></a>Popis
 
-Zadejte delší popis nabídky, maximálně 3 000 znaků. Zobrazí se zákazníkům v přehledu výpisu na webu Marketplace.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Do popisu zahrňte jednu nebo více z následujících možností:
+Nabídky modulu IoT Edge musí zahrnovat minimální odstavec požadavků na hardware ve spodní části popisu, například:
 
-- Hodnota a klíčové výhody, které vaše nabídka nabízí
-- Přidružení kategorie nebo oboru nebo obojí
-- Možnosti nákupu v aplikaci
-- Jakékoli požadované zpřístupnění
+- Minimální požadavky na hardware: Linux x64 a arm32 OS, 1 GB paměti RAM, 500 MB úložiště
 
-Nabídky modulu IoT Edge musí do dolní části popisu zahrnovat minimální odstavec požadavky na hardware. Příklad:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-*Minimální požadavky na hardware: Linux x64 a arm32 OS, 1 GB paměti RAM, 500 MB úložiště*
-
-Zde jsou některé tipy pro psaní popisu:
-
-- Jasně popište hodnotu vaší nabídky v prvních několika větách popisu. Zadejte následující položky:
-    - Popis nabídky
-    - Typ uživatele, který je z nabídky výhodou
-    - Zákazník potřebuje nebo vydá adresy nabídky.
-- Pamatujte, že ve výsledcích hledání se může zobrazit několik prvních vět.
-- Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou nabízí vaše nabídka.
-- Zkuste použít slovníky specifické pro konkrétní obor nebo na základě výhod.
-
-Chcete-li podrobnější **Popis** nabídky, použijte Editor formátovaného textu k formátování popisu. Editor formátovaného textu umožňuje přidat čísla, odrážky, tučné písmo, kurzívu a odsazení, aby bylo možné tento popis čitelnější.
-
-:::image type="content" source="media/text-editor2.png" alt-text="Znázorňuje Editor formátovaného textu." border="false":::
-
-- Chcete-li změnit formát obsahu, zvýrazněte text, který chcete formátovat, a vyberte styl textu, jak je znázorněno na tomto snímku obrazovky:
-
-     :::image type="content" source="media/text-editor3.png" alt-text="Znázorňuje ovládací prvek stylu textu v editoru formátovaného textu." border="false":::
-
-- Chcete-li do textu přidat seznam s odrážkami nebo číslovaného seznamu, použijte možnosti zobrazené na tomto snímku obrazovky:
-  
-    :::image type="content" source="media/text-editor4.png" alt-text="Ukazuje ovládací prvky seznamu s odrážkami a čísly v editoru formátovaného textu." border="false":::
-
-- Chcete-li přidat nebo odebrat odsazení textu, použijte možnosti zobrazené na tomto snímku obrazovky:
-
-    :::image type="content" source="media/text-editor5.png" alt-text="Znázorňuje ovládací prvky odsazení v editoru formátovaného textu." border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-url"></a>Adresa URL zásad ochrany osobních údajů
 
@@ -397,11 +368,11 @@ Na kartě **Podrobnosti o úložišti imagí** zadáte následující informace.
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="Ukazuje dialogové okno aktualizace registru kontejneru.":::
 
-**Heslo pro Azure Container Registry**: zadejte heslo pro uživatelské jméno správce, které je přidružené k Azure Container registry a má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Heslo z Azure Portal můžete získat tak, že v **Container Registry** > **přístupové klávesy** nebo pomocí Azure CLI použijete [příkaz show.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
+**Heslo pro Azure Container Registry**: zadejte heslo pro uživatelské jméno správce, které je přidružené k Azure Container registry a má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Heslo z Azure Portal můžete získat tak, že v **Container Registry**  >  **přístupové klávesy** nebo pomocí Azure CLI použijete [příkaz show.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Ukazuje obrazovku přístupového klíče v Azure Portal.":::
 
-**Název úložiště v rámci Azure Container Registry**. Zadejte název úložiště Azure Container Registry, které obsahuje váš obrázek. Při odesílání obrázku do registru zadáte název úložiště. Název úložiště můžete najít tak, že kliknete na stránku [Container Registry](https://azure.microsoft.com/services/container-registry/) > **úložišť**. Další informace najdete v tématu [zobrazení úložišť registru kontejnerů v Azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories). Všimněte si, že po nastavení je název nelze změnit. Pro každou nabídku ve vašem účtu použijte jedinečný název.
+**Název úložiště v rámci Azure Container Registry**. Zadejte název úložiště Azure Container Registry, které obsahuje váš obrázek. Při odesílání obrázku do registru zadáte název úložiště. Název úložiště můžete najít tak, že kliknete na stránku [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **úložišť**. Další informace najdete v tématu [zobrazení úložišť registru kontejnerů v Azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories). Všimněte si, že po nastavení je název nelze změnit. Pro každou nabídku ve vašem účtu použijte jedinečný název.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Značky obrázků pro nové verze vaší nabídky
 

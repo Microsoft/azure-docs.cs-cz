@@ -5,19 +5,21 @@ author: mamccrea
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3882352c7e1d484818a58d7bd4410cbd66bd6637
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fcac7e47570cf10388891f2e9b81da896acc5c02
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587795"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699332"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Použití .NET pro Apache Spark s Azure synapse Analytics
 
-[Rozhraní .NET pro Apache Spark](https://dot.net/spark) je zdarma, open source a podpora .NET pro různé platformy pro Spark. .NET for Apache Spark poskytuje vazby rozhraní .NET pro Spark, které umožňují přístup k rozhraním API Spark přes jazyky C# a F #. Díky rozhraní .NET pro Apache Spark máte možnost psát a spouštět uživatelsky definované funkce pro Spark pomocí .NET. Rozhraní .NET API pro Spark vám umožní přístup ke všem aspektům Sparku, které vám pomůžou analyzovat vaše data, včetně Spark SQL a strukturovaného streamování.
+[.NET for Apache Spark](https://dot.net/spark) poskytuje bezplatnou, open-source a podporu rozhraní .NET pro více platforem pro Spark. 
+
+Poskytuje vazby rozhraní .NET pro Spark, které umožňují přístup k rozhraním API Spark přes jazyky C# a F #. Díky rozhraní .NET pro Apache Spark máte také možnost napsat a spustit uživatelsky definované funkce pro Spark napsané v rozhraní .NET. Rozhraní .NET API pro Spark vám umožní přístup ke všem aspektům Spark dataframes, které vám pomůžou analyzovat vaše data, včetně Spark SQL, rozdílových Lake a strukturovaného streamování.
 
 Data můžete analyzovat pomocí technologie .NET pro Apache Spark prostřednictvím definic úloh Spark Batch nebo pomocí interaktivních poznámkových bloků služby Azure synapse Analytics. V tomto článku se dozvíte, jak používat rozhraní .NET pro Apache Spark s využitím obou postupů v rámci služby Azure synapse.
 
@@ -31,16 +33,10 @@ V tomto kurzu se dozvíte, jak pomocí služby Azure synapse Analytics [vytvoři
 
    ```dotnetcli
    cd mySparkApp
-   dotnet publish -c Release -f netcoreapp3.0 -r ubuntu.16.04-x64
+   dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.16.04-x64
    ```
 
    **V systému Linux:**
-
-### <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>.NET pro Apache Spark ve službě Azure synapse Analytics – notebooky
-
-Při vytváření nového poznámkového bloku si zvolíte jádro jazyka, u kterého chcete vyjádřit obchodní logiku. Existuje podpora jádra pro několik jazyků, včetně C#.
-
-Pokud chcete použít .NET pro Apache Spark ve vašem notebooku Azure synapse Analytics, vyberte jako jádro **.NET Spark (C#)** a připojte notebook k existujícímu fondu Spark.
 
    ```bash
    zip -r publish.zip
@@ -50,7 +46,7 @@ Pokud chcete použít .NET pro Apache Spark ve vašem notebooku Azure synapse An
 
 Poznámkové bloky jsou skvělou možností pro vytváření prototypů rozhraní .NET pro Apache Spark kanálů a scénářů. Můžete začít pracovat s, porozumění, filtrováním, zobrazením a vizualizací dat rychle a efektivně. Specialisté na data, odborníci na data, obchodní analytiké a technici strojového učení můžou spolupracovat přes sdílený interaktivní dokument. Zobrazí se okamžité výsledky z průzkumu dat a mohou vizualizovat data ve stejném poznámkovém bloku.
 
-### <a name="how-to-use-notebooks"></a>Použití poznámkových bloků
+### <a name="how-to-use-net-for-apache-spark-notebooks"></a>Jak používat rozhraní .NET pro Apache Spark poznámkové bloky
 
 Při vytváření nového poznámkového bloku si zvolíte jádro jazyka, u kterého chcete vyjádřit svoji obchodní logiku. Existuje podpora jádra pro několik jazyků, včetně C#.
 
@@ -58,7 +54,7 @@ Pokud chcete použít .NET pro Apache Spark ve vašem notebooku Azure synapse An
 
 Poznámkový blok .NET Spark je založený na interaktivním prostředí .NET a poskytuje interaktivní prostředí v C# s možností používat rozhraní .NET pro Spark mimo box, který je `spark` už předdefinovaný.
 
-### <a name="sparknet-c-kernel-features"></a>Spark.NET funkce jádra C#
+### <a name="net-for-apache-spark-c-kernel-features"></a>Rozhraní .NET pro Apache Spark funkce jádra C#
 
 Při použití rozhraní .NET pro Apache Spark v notebooku Azure synapse Analytics jsou k dispozici následující funkce:
 

@@ -36,6 +36,8 @@
           href: quickstart-load-studio-sql-pool.md
     - name: Používání SQL na vyžádání
       href: quickstart-sql-on-demand.md
+    - name: Připojení k Synapse Linku pro Cosmos DB
+      href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Kurzy
   items:
     - name: Spouštění aplikací Apache Spark pro fondy úloh Sparku
@@ -324,6 +326,10 @@
               href: ./sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Třídy prostředků
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Synapse Link
+      items:
+        - name: Podporované funkce Synapse Linku
+          href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
     - name: 'Integrace nástrojů (AI, ETL, BI)'
       items:
         - name: Řešení potíží s nástrojem Synapse Analytics Studio
@@ -406,6 +412,12 @@
               href: data-integration/data-integration-data-lake.md
     - name: Transformace a analýza dat
       items:
+        - name: Synapse Link
+          items:
+            - name: Připojení k Azure Synapse Linku pro Cosmos DB
+              href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
+            - name: Dotazování analytického úložiště Azure Cosmos DB s využitím Apache Sparku pro Azure Synapse Analytics
+              href: ./synapse-link/how-to-query-analytical-store-spark.md
         - name: Synapse SQL
           items:
             - name: Dotazování dat v úložišti

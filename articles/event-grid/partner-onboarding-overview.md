@@ -153,7 +153,7 @@ Po odeslání do koncového bodu partnerNamespace obdržíte odpověď. Odpově�
 | Nesprávný koncový bod                 | 404 Nenalezeno         |
 | Pole nebo událost překračuje omezení velikosti. | datová část 413 je moc velká. |
 
-## <a name="reference"></a>Odkaz
+## <a name="reference"></a>Reference
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [Šablona ARM](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)

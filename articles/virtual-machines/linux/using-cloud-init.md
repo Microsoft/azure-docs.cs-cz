@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 05/18/2019
+ms.date: 05/19/2019
 ms.author: danis
-ms.openlocfilehash: 8c591efeedc87926a0ed7b42de6c3267721cebab
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 989e265c83cb2a71d93453b0c3bcbc3e41079447
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657437"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701597"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora Cloud-init pro virtuální počítače v Azure
 V tomto článku se dozvíte, jak podpora pro [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat virtuální počítač (VM) nebo službu Virtual Machine Scale Sets v době zřizování v Azure. Tyto konfigurace Cloud-init se po prvním spuštění spustí, jakmile se prostředky zřídí v Azure.  
@@ -44,6 +44,7 @@ K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v 
 ### <a name="canonical"></a>Canonical
 | Vydavatel/verze| Nabídka | Skladová jednotka (SKU) | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
+|Kanonický 20,04 |UbuntuServer |18,04 – LTS |nejnovější |ano | ano |
 |Kanonický 18,04 |UbuntuServer |18,04 – LTS |nejnovější |ano | ano |
 |Kanonický 16,04|UbuntuServer |16.04-LTS |nejnovější |ano | ano |
 |Kanonický 14,04|UbuntuServer |14.04.5-LTS |nejnovější |ano | ano |
@@ -55,9 +56,10 @@ K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v 
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Poznámka: Toto je náhled image a jakmile všechny image RHEL 7,7 podporují Cloud-init, odstraní se 1. září 2020). | Ano – podpora z verze balíčku: *18.5 -3. el7*|
 |RedHat 7,7 |RHEL |7 – LVM | Není k dispozici| žádné aktualizace obrazu k dokončení konce května| Ano – podpora z verze balíčku: *18.5 -3. el7*|
 |RedHat 7,7 |RHEL |7.7 | Není k dispozici| žádné aktualizace obrazu k dokončení konce května | Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 (Gen1) |RHEL – BYOS | RHEL – lvm77 | Není k dispozici|nedokončené aktualizace imagí na konci dubna  | Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 8,1 (Gen1) |RHEL |8,1 – CI |7.7.2019081601 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020|
-|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |7.7.2019081601 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020 |
+|RedHat 7,7 (Gen1) |RHEL – BYOS | RHEL – lvm77 | 7.7.2020051912 | žádné aktualizace obrazu v letu, k dokončení konce května  | Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 7,7 (Gen2) |RHEL – BYOS | RHEL – lvm77 | 7.7.2020051913 |žádné aktualizace obrazu v letu, k dokončení konce května  | Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 8,1 (Gen1) |RHEL |8,1 – CI |8.1.2020042511 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020|
+|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020 |
 
 RedHat: image RHEL 7,8 a 8,2 (Gen1 a Gen2) se zřídí pomocí Cloud-init.
 
@@ -68,6 +70,8 @@ RedHat: image RHEL 7,8 a 8,2 (Gen1 a Gen2) se zřídí pomocí Cloud-init.
 |OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Ano (Poznámka: Toto je náhled image a jakmile všechny image CentOS 7,7 podporují Cloud-init, odstraní se 1. září 2020). | Ano – podpora z verze balíčku: *18.5 -3. el7. CentOS*|
 
 * Image CentOS 7,7, které budou povolené pro cloudovou inicializaci, se aktualizují tady v červnu 2020. 
+* Image CentOS 7,8 se zřídí pomocí Cloud-init.
+
 
 ### <a name="oracle"></a>Oracle
 

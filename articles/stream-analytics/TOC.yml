@@ -58,6 +58,7 @@
       items:
         - name: Přehled výstupů
           href: stream-analytics-define-outputs.md
+          displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
         - name: Výstup do Cosmos DB
           href: stream-analytics-documentdb-output.md
         - name: Výstup do Azure SQL DB
@@ -127,14 +128,22 @@
           href: copy-job.md
         - name: Párování úloh z důvodů spolehlivosti
           href: stream-analytics-job-reliability.md
-        - name: Ověřování pomocí spravované identity – výstup ADLS Gen 1
-          href: stream-analytics-managed-identities-adls.md
         - name: Použití referenčních dat SQL
           href: sql-reference-data.md
-        - name: Ověřování pomocí spravované identity – výstup objektů blob
-          href: blob-output-managed-identity.md
-        - name: Ověřování pomocí spravované identity – Power BI
-          href: powerbi-output-managed-identity.md
+        - name: Ověřování pomocí spravované identity
+          items:
+            - name: ADLS Gen 1
+              href: stream-analytics-managed-identities-adls.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Blob Storage
+              href: blob-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Power BI
+              href: powerbi-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Azure SQL DB
+              href: sql-database-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
         - name: Šifrování dat
           href: data-protection.md
     - name: Vytváření řešení
@@ -226,6 +235,18 @@
           href: stream-analytics-job-diagnostic-logs.md
         - name: Chyby dat
           href: data-errors.md
+        - name: Kódy chyb
+          items:
+            - name: Chyby konfigurace
+              href: configuration-error-codes.md
+            - name: Chyby dat
+              href: data-error-codes.md
+            - name: Chyby externí dostupnosti
+              href: external-availability-error-codes.md
+            - name: Externí chyby
+              href: external-error-codes.md
+            - name: Vnitřní chyby
+              href: internal-error-codes.md
     - name: Integrace se strojovým učením
       items:
         - name: Analýza subjektivního hodnocení s využitím modelů ML

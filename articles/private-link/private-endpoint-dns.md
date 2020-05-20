@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 14cb5a06e9f51269d05468d36ecb6cd2bf19e40c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: af7d47c98e4716df3a6cbd222c7d3c8def48e5fc
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643610"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701635"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Konfigurace DNS privátního koncového bodu Azure
 
@@ -36,7 +36,7 @@ Vaše aplikace nemusí měnit adresu URL připojení. Při pokusu o překlad pom
 
 Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následující tabulce:
 
-| Typ prostředku/podprostředek privátního propojení |Název Privátní DNS zóny | Název veřejné zóny DNS |
+| Typ prostředku/podprostředek privátního propojení |Název Privátní DNS zóny | Veřejné servery DNS pro přeposílání zóny |
 |---|---|---|---|
 | SQL DB (Microsoft. SQL/servery)/SQL Server | privatelink.database.windows.net | database.windows.net |
 | Azure synapse Analytics (Microsoft. SQL/servery)/SQL Server  | privatelink.database.windows.net | database.windows.net |
@@ -54,7 +54,7 @@ Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následu
 | Azure Database for PostgreSQL – jeden server (Microsoft. DBforPostgreSQL/servery)/postgresqlServer | privatelink.postgres.database.azure.com | postgres.database.azure.com |
 | Azure Database for MySQL (Microsoft. DBforMySQL/servery)/mysqlServer | privatelink.mysql.database.azure.com | mysql.database.azure.com |
 | Azure Database for MariaDB (Microsoft. DBforMariaDB/servery)/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
-| Azure Key Vault (Microsoft. webrecovery/trezory)/trezor | privatelink.vaultcore.azure.net | vault.azure.net |
+| Azure Key Vault (Microsoft. webrecovery/trezory)/trezor | privatelink.vaultcore.azure.net | vault.azure.net <br> vaultcore.azure.net |
 | Azure Kubernetes Service – rozhraní Kubernetes API (Microsoft. ContainerService/managedClusters)/managedCluster | privatelink. {region}. azmk8s. IO | {region}. azmk8s. IO |
 | Azure Search (Microsoft. Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
 | Azure Container Registry (Microsoft. ContainerRegistry/registrys)/registr | privatelink.azurecr.io | azurecr.io |
@@ -150,7 +150,7 @@ Aby bylo možné správně nakonfigurovat, budete potřebovat následující pro
 Následující diagram znázorňuje sekvenci překladu názvů DNS z místní sítě, která podmíněně přechází do Azure provoz DNS, kde se řešení provádí v privátní zóně DNS [propojené s virtuální sítí.](../dns/private-dns-virtual-network-links.md)
 
 > [!IMPORTANT]
-> Podmíněné přesměrování je nutné provést v rámci [veřejné zóny DNS](#azure-services-dns-zone-configuration)   ex:  `database.windows.net`   místo **privatelink**. Database.Windows.NET.
+> Podmíněné přesměrování je nutné provést na doporučenou [**službu pro předávání veřejné zóny DNS**](#azure-services-dns-zone-configuration)   ex:  `database.windows.net`   místo **privatelink**. Database.Windows.NET.
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Místní přesměrování na Azure DNS":::
 

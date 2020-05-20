@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: b85846419ce5f6cd4093e198d83240817c95754a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 81b36532d09985d1e50fb3d0394d054d9a5e8250
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983053"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701171"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Vytvoření nové nabídky SaaS na komerčním webu Marketplace
 
@@ -21,8 +21,8 @@ Pokud chcete začít vytvářet nabídky software jako služba (SaaS) na komerč
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
-3. Na stránce Přehled vyberte **+ Nový** > **software nabídky jako službu**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
+3. Na stránce Přehled vyberte **+ Nový**  >  **software nabídky jako službu**.
 
    ![Znázorňuje levou navigační nabídku.](./media/new-offer-saas.png)
 
@@ -34,7 +34,7 @@ Pokud chcete začít vytvářet nabídky software jako služba (SaaS) na komerč
 Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
-- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
 Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
@@ -173,7 +173,7 @@ Společnost Microsoft poskytuje standardní šablonu smlouvy.
 
 - **Pro komerční tržiště Microsoftu použijte standardní smlouvu?**
 
-Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní smlouvu pro komerční tržiště Microsoftu, která usnadňuje transakce na webu Marketplace. Místo toho, aby si mohli vlastní podmínky a ujednání, můžou si komerční vydavatelé na webu Marketplace vybrat svůj software v rámci standardní smlouvy, kteří zákazníci potřebují Vet a přijmout jenom jednou. Standardní kontrakt najdete na adrese https://go.microsoft.com/fwlink/?linkid=2041178.
+Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní smlouvu pro komerční tržiště Microsoftu, která usnadňuje transakce na webu Marketplace. Místo toho, aby si mohli vlastní podmínky a ujednání, můžou si komerční vydavatelé na webu Marketplace vybrat svůj software v rámci standardní smlouvy, kteří zákazníci potřebují Vet a přijmout jenom jednou. Standardní kontrakt najdete na adrese https://go.microsoft.com/fwlink/?linkid=2041178 .
 
 Výběrem možnosti použít standardní smlouvu pro komerční web Marketplace můžete vybrat, že se má používat standardní smlouva místo poskytování vlastních podmínek a ujednání.
 
@@ -227,28 +227,13 @@ Zadejte podrobnosti, které se mají zobrazit na webu Marketplace, včetně popi
 - **Hledaná klíčová slova** – zadejte až tři klíčová slova pro hledání, která můžou zákazníci použít k vyhledání vaší nabídky na webu Marketplace.
 - Úvodní **pokyny** (povinné) – Vysvětlete, jak nakonfigurovat a začít používat vaši aplikaci pro potenciální zákazníky.  Tento rychlý Start může obsahovat odkazy na podrobnější online dokumentaci. Do tohoto pole lze zadat až 3 000 znaků textu.
 
-#### <a name="description"></a>**Popis**
+#### <a name="description"></a>Popis
 
-Toto pole je povinné. Položky, které se mají zahrnout do **popisu**:
+Toto pole je vyžadováno.
 
-* Jasně popište, jak se má v prvních několika větách popisu v této nabídce vyhodnotit.  
-* Mějte na paměti, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět.  
-* Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou doručujete.  
-* Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami.
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-Základní komponenty pro vaši polohu hodnoty by měly zahrnovat:
-
-* Popis produktu
-* Typ uživatele, který přináší výhody produktu
-* Potřeby zákazníků nebo bolesti, že adresy produktů
-
-Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k použití formátování.
-
-![Použití editoru textu ve formátu RTF](./media/rich-text-editor.png)
-
-| <center>Změnit formát textu | <center>Přidat odrážky nebo číslování | <center>Přidat nebo odebrat odsazení textu |
-| --- | --- | --- |
-| <center>![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png) |  <center>![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png) |  <center>![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png) |
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 #### <a name="links"></a>Odkazy
 
@@ -309,7 +294,7 @@ Tato stránka definuje technické podrobnosti (cestu URL, Webhook, ID tenanta a 
 
 - **Adresa URL cílové stránky** (požadováno) – zadejte adresu URL webu, na kterou budou zákazníci zakládat vaši nabídku z webu Marketplace. Tato adresa URL bude koncovým bodem, který obdrží token při směrování zákazníka na stránku. Tento token se dá vyměňovat pro podrobnosti zřizování pomocí řešení v rozhraních API pro plnění. Tyto podrobnosti a všechny ostatní, které shromažďujete, se dají použít jako součást interaktivní webové stránky zákazníka integrované v rámci vašeho prostředí k dokončení registrace a aktivaci jejich nákupu.
 
-- **Webhook připojení** (povinné) – pro všechny asynchronní události, které Microsoft potřebuje poslat jménem zákazníka (například předplatné SaaS neplatně) vyžadujeme, abyste poskytli Webhook připojení. Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které jsou do ní odesílány, a jejich správné zpracování (například https:\//prod-1westus.Logic.Azure.com:443/Work). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Webhook připojení** (povinné) – pro všechny asynchronní události, které Microsoft potřebuje poslat jménem zákazníka (například předplatné SaaS neplatně) vyžadujeme, abyste poskytli Webhook připojení. Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které jsou do ní odesílány, a jejich správné zpracování (například https: \/ /prod-1westus.Logic.Azure.com:443/Work). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **ID tenanta Azure AD** (povinné) – uvnitř Azure Portal vyžadujeme [Vytvoření aplikace Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , abyste mohli ověřit, že připojení mezi našimi dvěma službami bude za ověřenou komunikací. [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti**a pak vyhledáte uvedené číslo **ID adresáře** (například 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -402,7 +387,7 @@ Můžete nakonfigurovat bezplatnou zkušební verzi pro každý plán v nabídce
 >[!NOTE]
 >Jakmile je vaše nabídka s podporou transakcí publikovaná s bezplatnou zkušební verzí, nejde ji pro tento plán zakázat. Ujistěte se, že toto nastavení je pro první publikování správné, aby se nemuselo znovu vytvářet plán.
 
-Pokud chcete získat informace o zákaznických předplatných, která se aktuálně účastní bezplatné zkušební verze `isFreeTrial`, použijte novou vlastnost rozhraní API, která bude označená jako true nebo false. Další informace najdete v tématu [rozhraní API pro SaaS získat předplatné](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
+Pokud chcete získat informace o zákaznických předplatných, která se aktuálně účastní bezplatné zkušební verze, použijte novou vlastnost rozhraní API `isFreeTrial` , která bude označená jako true nebo false. Další informace najdete v tématu [rozhraní API pro SaaS získat předplatné](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
 
 >[!NOTE]
 >Bezplatné zkušební verze se nepodporují pro plány, které využívají službu měření na webu Marketplace.
@@ -419,7 +404,7 @@ Vyberte **Toto je soukromý plán** , aby byl váš plán soukromý a viditelný
 
 Přiřaďte cílovou skupinu, která bude mít přístup k tomuto privátnímu plánu. Přístup se přiřazuje pomocí ID klientů s možností zahrnutí popisu každého přiřazeného ID tenanta. Pokud importujete soubor tabulky. csv, můžete přidat maximálně 10 ID klientů nebo 20 000 ID klientů.
 
-Tenant je reprezentace organizace s ID reprezentovanou jako identifikátor GUID (globálně jedinečný identifikátor, 128 celé číslo, které se používá k identifikaci prostředků). Jedná se o vyhrazenou instanci služby Azure AD, kterou vývojář organizace nebo aplikace obdrží, když organizace nebo vývojář aplikace vytvoří relaci s Microsoftem, například při registraci k Azure, Microsoft Intune nebo Microsoft 365. Každý klient Azure AD se odlišuje a je oddělený od ostatních klientů Azure AD. Pokud chcete zkontrolovat, jestli máte tenanta, přihlaste se k webu Azure Portal pomocí účtu, který chcete použít ke správě vaší aplikace. Pokud tenanta máte, budete k němu automaticky přihlášeni a název tenanta se zobrazí přímo pod názvem vašeho účtu. Najeďte myší na název vašeho účtu v pravém horním rohu webu Azure Portal, zobrazí se vaše jméno, e-mail, ID adresáře nebo tenanta (GUID) a vaše doména. Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta. ID tenanta vaší organizace můžete také vyhledat pomocí adresy URL názvu domény na adrese [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+Tenant je reprezentace organizace s ID reprezentovanou jako identifikátor GUID (globálně jedinečný identifikátor, 128 celé číslo, které se používá k identifikaci prostředků). Jedná se o vyhrazenou instanci služby Azure AD, kterou vývojář organizace nebo aplikace obdrží, když organizace nebo vývojář aplikace vytvoří relaci s Microsoftem, například při registraci k Azure, Microsoft Intune nebo Microsoft 365. Každý klient Azure AD se odlišuje a je oddělený od ostatních klientů Azure AD. Pokud chcete zkontrolovat, jestli máte tenanta, přihlaste se k webu Azure Portal pomocí účtu, který chcete použít ke správě vaší aplikace. Pokud tenanta máte, budete k němu automaticky přihlášeni a název tenanta se zobrazí přímo pod názvem vašeho účtu. Najeďte myší na název vašeho účtu v pravém horním rohu webu Azure Portal, zobrazí se vaše jméno, e-mail, ID adresáře nebo tenanta (GUID) a vaše doména. Pokud je k vašemu účtu přidruženo více tenantů, můžete výběrem názvu vašeho účtu otevřít nabídku, ve které můžete mezi jednotlivými tenanty přepínat. Každý tenant má vlastní ID tenanta. ID tenanta vaší organizace můžete také vyhledat pomocí adresy URL názvu domény na adrese [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 
 I když SaaS nabízí použití ID tenanta k definování soukromé cílové skupiny, můžou používat i jiné typy nabídek ID předplatných Azure (které jsou také reprezentované jako identifikátory GUID).
 

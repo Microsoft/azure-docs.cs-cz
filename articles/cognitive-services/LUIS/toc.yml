@@ -41,21 +41,9 @@
           href: tutorial-intents-only.md
         - name: 2. Extrakce dat uživatelů
           href: tutorial-machine-learned-entity.md
-          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
         - name: 3. Zjištění mínění z projevů uživatele
           href: tutorial-publish-settings.md
-    - name: Vytvoření a použití entit
-      items:
-        - name: Entity regulárního výrazu
-          href: tutorial-regex-entity.md
-        - name: Entity seznamu
-          href: tutorial-list-entity.md
-        - name: Role entit
-          href: tutorial-entity-roles.md
-          displayName: 'roles, geographyV2, context'
-        - name: Seskupení a extrakce souvisejících dat s využitím složených entit
-          href: luis-tutorial-composite-entity.md
-          displayName: roles
     - name: Vylepšení aplikace
       items:
         - name: Oprava nejistých předpovědí
@@ -79,17 +67,19 @@
     - name: Plánování aplikace
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
+    - name: Shromažďování dat
+      href: data-collection.md
     - name: Modely aplikací
       items:
         - name: Typy
           href: luis-concept-model.md
-        - name: Záměry
+        - name: Záměry klasifikující výroky
           href: luis-concept-intent.md
-        - name: Projevy
-          href: luis-concept-utterance.md
-        - name: Entity
+        - name: Entity extrahující data
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: Ukázkové promluvy
+          href: luis-concept-utterance.md
         - name: Předem připravené modely
           href: luis-concept-prebuilt-model.md
         - name: Vzory
@@ -97,7 +87,7 @@
           displayName: roles
         - name: Funkce
           href: luis-concept-feature.md
-          displayName: 'descriptor, phrase list'
+          displayName: 'descriptor, phrase list, feature'
         - name: Rozšiřování aplikace za běhu
           href: schema-change-prediction-runtime.md
     - name: Skóre předpovědi
@@ -153,15 +143,13 @@
           href: howto-add-prebuilt-models.md
         - name: Označení entity ve výroku
           href: label-entity-example-utterance.md
-        - name: Přidání popisovače
-          displayName: 'synonym, interchange, phrase list, descriptor'
+        - name: Přidání funkce
+          displayName: 'synonym, interchange, phrase list, descriptor, feature'
           href: luis-how-to-add-features.md
         - name: S využitím REST API
           items:
             - name: Programové sestavení aplikace s využitím Node.js
               href: luis-tutorial-node-import-utterances-csv.md
-            - name: Použití entity seznamu k hledání přesné shody textu s využitím Node.js
-              href: luis-tutorial-list-entity.md
     - name: Integrace
       items:
         - name: S využitím Kontroly pravopisu Bingu v7
@@ -193,11 +181,25 @@
       href: luis-how-to-publish-app.md
     - name: Modul runtime předpovědi dotazů
       href: luis-get-started-get-intent-from-browser.md
+    - name: Migrace
+      items:
+        - name: Migrace ze složené entity
+          href: migrate-from-composite-entity.md
+        - name: Migrace na prostředek vytváření
+          items:
+            - name: Přehled
+              href: luis-migration-authoring.md
+            - name: Jak migrovat
+              href: luis-migration-authoring-steps.md
+        - name: Migrace na API V3
+          href: luis-migration-api-v3.md
     - name: Správa aplikace
       items:
         - name: Prostředky Azure
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
+        - name: Nastavení aplikací a verzí
+          href: how-to-application-settings-portal.md
         - name: Migrace na prostředek vytváření
           items:
             - name: Přehled
@@ -216,6 +218,8 @@
       items:
         - name: Pro vývojáře
           href: developer-reference-resource.md
+        - name: Aplikační schéma
+          href: app-schema-definition.md
         - name: Migrace na rozhraní API pro vytváření V3
           href: luis-migration-authoring-entities.md
         - name: Migrace na rozhraní API pro předpověď V3
@@ -259,6 +263,8 @@
         - name: Přehled
           href: developer-reference-resource.md
           displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
+        - name: Aplikační schéma
+          href: app-schema-definition.md
         - name: Azure CLI
           href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
         - name: Azure RM PowerShell
@@ -329,7 +335,7 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: Omezení
       href: luis-limits.md
-    - name: Nastavení aplikace
+    - name: Nastavení aplikací a verzí
       href: luis-reference-application-settings.md
     - name: Referenční informace k předem připraveným entitám
       items:
@@ -387,7 +393,7 @@
           href: reference-entity-simple.md
     - name: Syntaxe vzoru
       href: reference-pattern-syntax.md
-    - name: Mínění
+    - name: Odkaz na zabarvení
       href: luis-reference-prebuilt-sentiment.md
 - name: Zdroje a prostředky
   items:

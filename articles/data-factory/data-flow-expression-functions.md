@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 52f389e00d63f3659dfe79487b31ec9c3fab1ced
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 82fbc144b9b2dffdddc09900bf6ed9424b445100
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580690"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701461"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Výrazy transformace dat v toku mapování dat
 
@@ -59,6 +59,13 @@ ___
 Logický operátor AND Stejné jako && * ``and(true, false) -> false``  
 * ``true && false -> false``  
 ___
+### <code>array</code>
+<code><b>array([<i>&lt;value1&gt;</i> : any], ...) => array</b></code><br/><br/>
+Vytvoří pole položek. Všechny položky by měly být stejného typu. Nejsou-li zadány žádné položky, je výchozím polem pole prázdné řetězec. Stejné jako operátor vytvoření []* ``array('Seattle', 'Washington')``
+* ``['Seattle', 'Washington']``
+* ``['Seattle', 'Washington'][1]``
+* ``'Washington'``
+___
 ### <code>asin</code>
 <code><b>asin(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Vypočítá hodnotu inverzní sinus.* ``asin(0) -> 0.0``  
@@ -79,6 +86,27 @@ Vybere hodnotu sloupce podle názvu v datovém proudu. Jako druhý argument mů�
 * ``toLong(byName($debtCol))``  
 * ``toString(byName('Bogus Column'))``  
 * ``toString(byName('Bogus Column', 'DeriveStream'))``  
+___
+### <code>byNames</code>
+<code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Vyberte pole sloupců podle názvu v datovém proudu. Jako druhý argument můžete předat volitelný název datového proudu. Pokud existuje více shod, je vrácena první shoda. Pokud pro sloupec neexistují žádné shody, celý výstup je hodnota NULL. Vrácená hodnota vyžaduje funkce pro převod typu (do: do, toString,...).  Názvy sloupců, které jsou známy v době návrhu, by měly být řešeny stejným názvem. Počítané vstupy se nepodporují, ale můžete použít substituce parametrů.
+* ``toString(byNames(['parent', 'child']))``
+* ````
+* ``byNames(['parent']) ? string``
+* ````
+* ``toLong(byNames(['income']))``
+* ````
+* ``byNames(['income']) ? long``
+* ````
+* ``toBoolean(byNames(['foster']))``
+* ````
+* ``toLong(byNames($debtCols))``
+* ````
+* ``toString(byNames(['a Column']))``
+* ````
+* ``toString(byNames(['a Column'], 'DeriveStream'))``
+* ````
+* ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
@@ -119,6 +147,15 @@ ___
 Načte všechny výstupní sloupce pro datový proud. Jako druhý argument můžete předat volitelný název datového proudu.  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
+
+___
+### <code>columns</code>
+<code><b>columns([<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
+Načte všechny výstupní sloupce pro datový proud. Jako druhý argument můžete předat volitelný název datového proudu.   
+* ``columns()``
+* ````
+* ``columns('DeriveStream')``
+* ````
 ___
 ### <code>compare</code>
 <code><b>compare(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => integer</b></code><br/><br/>
@@ -402,7 +439,7 @@ Vlevo vyplní řetězec doplněním zadaného odsazení, dokud nemá určitou d�
 * ``lpad('dumbo', 4, '-') -> 'dumb'``  
 *' ' Lpad (' Dumbo ', 8, ' <> ')-> ' <><dumbo'``  
 ___
-### <code>LTrim</code>
+### <code> LTrim</code>
 <code><b>ltrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
 Levá ořízne řetězec úvodních znaků. Pokud není zadán druhý parametr, ořízne prázdné znaky. Jinak ořízne libovolný znak zadaný ve druhém parametru.* ``ltrim('  dumbo  ') -> 'dumbo  '``  
 * ``ltrim('!--!du!mbo!', '-!') -> 'du!mbo!'``  
@@ -523,17 +560,17 @@ Shromáždí prvky v poli. Omezení očekává odkaz na akumulátor a jeden elem
 ___
 ### <code>regexExtract</code>
 <code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
-Extrahuje shodný dílčí řetězec pro daný vzor regulárního výrazu. Poslední parametr identifikuje skupinu shod a je-li vynechán, je nastaven na hodnotu 1. Použijte (<regex>back-quot), aby odpovídala řetězci bez uvozovacího příkazu.* ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``  
+Extrahuje shodný dílčí řetězec pro daný vzor regulárního výrazu. Poslední parametr identifikuje skupinu shod a je-li vynechán, je nastaven na hodnotu 1. Použijte <regex> (back-quot), aby odpovídala řetězci bez uvozovacího příkazu.* ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``  
 * ``regexExtract('Cost is between 600 and 800 dollars', `(\d+) and (\d+)`, 2) -> '800'``  
 ___
 ### <code>regexMatch</code>
 <code><b>regexMatch(<i>&lt;string&gt;</i> : string, <i>&lt;regex to match&gt;</i> : string) => boolean</b></code><br/><br/>
-Zkontroluje, zda řetězec odpovídá danému vzoru regulárního výrazu. Použijte (<regex>back-quot), aby odpovídala řetězci bez uvozovacího příkazu.* ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``  
+Zkontroluje, zda řetězec odpovídá danému vzoru regulárního výrazu. Použijte <regex> (back-quot), aby odpovídala řetězci bez uvozovacího příkazu.* ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``  
 * ``regexMatch('200.50', `(\d+).(\d+)`) -> true``  
 ___
 ### <code>regexReplace</code>
 <code><b>regexReplace(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, <i>&lt;substring to replace&gt;</i> : string) => string</b></code><br/><br/>
-Nahradí všechny výskyty vzorového regulárního výrazu jiným podřetězcem v daném řetězci. Pokud<regex>chcete porovnat řetězec bez uvozovacích znaků, použijte uvozovky (zpátky).* ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``  
+Nahradí všechny výskyty vzorového regulárního výrazu jiným podřetězcem v daném řetězci. Pokud <regex> chcete porovnat řetězec bez uvozovacích znaků, použijte uvozovky (zpátky).* ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``  
 * ``regexReplace('100 and 200', `(\d+)`, 'gunchus') -> 'gunchus and gunchus'``  
 ___
 ### <code>regexSplit</code>
@@ -965,7 +1002,7 @@ Získá hodnotu prvního parametru vyhodnoceného n řádků za aktuálním řá
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-Funkce NTile rozdělí řádky pro každý oddíl okna do `n` intervalů v rozsahu od 1 do nejvýše. `n` Hodnoty plechovky se budou lišit o nejvýše 1. Pokud počet řádků v oddílu není rovnoměrně rozdělen do počtu intervalů, pak jsou zbývající hodnoty distribuovány po jednotlivých kontejnerech počínaje prvním intervalem. Funkce NTile je užitečná pro výpočet tertiles, Kvartily, deciles a dalších běžných souhrnných statistik. Funkce vypočítá dvě proměnné během inicializace: velikost regulárního intervalu bude mít přidán jeden řádek navíc. Obě proměnné jsou založené na velikosti aktuálního oddílu. Během procesu výpočtu funkce udržuje sledovat aktuální číslo řádku, aktuální číslo sady a číslo řádku, na kterém se bude interval měnit (bucketThreshold). Když číslo aktuálního řádku dosáhne prahové hodnoty intervalu, hodnota intervalu se zvýší o jednu a prahová hodnota se zvýší o velikost intervalu (plus jeden další, pokud je aktuální kontejner doplněn).  
+Funkce NTile rozdělí řádky pro každý oddíl okna do `n` intervalů v rozsahu od 1 do nejvýše `n` . Hodnoty plechovky se budou lišit o nejvýše 1. Pokud počet řádků v oddílu není rovnoměrně rozdělen do počtu intervalů, pak jsou zbývající hodnoty distribuovány po jednotlivých kontejnerech počínaje prvním intervalem. Funkce NTile je užitečná pro výpočet tertiles, Kvartily, deciles a dalších běžných souhrnných statistik. Funkce vypočítá dvě proměnné během inicializace: velikost regulárního intervalu bude mít přidán jeden řádek navíc. Obě proměnné jsou založené na velikosti aktuálního oddílu. Během procesu výpočtu funkce udržuje sledovat aktuální číslo řádku, aktuální číslo sady a číslo řádku, na kterém se bude interval měnit (bucketThreshold). Když číslo aktuálního řádku dosáhne prahové hodnoty intervalu, hodnota intervalu se zvýší o jednu a prahová hodnota se zvýší o velikost intervalu (plus jeden další, pokud je aktuální kontejner doplněn).  
 * ``nTile()``  
 * ``nTile(numOfBuckets)``  
 ___

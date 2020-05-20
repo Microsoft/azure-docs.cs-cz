@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 4d9dc0315a5c87ed67390e8edb23d44ee55f242b
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 37569eba0d351fdedcd68042af2e33b0e3947faa
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732763"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701498"
 ---
-# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel zákazníka v komerčních obchodech Marketplace
+# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Zákazníci v analýzách komerčního marketplace
 
 Tento článek poskytuje informace o **řídicím panelu zákazníka** v partnerském centru. Tento řídicí panel zobrazuje informace o vašich zákaznících, včetně trendů růstu, prezentovaných ve formátu grafického a ke stažení.
 
@@ -98,6 +98,7 @@ Tabulka **Podrobnosti o zákazníkovi** zobrazuje číslovaný seznam prvních 1
 - Data je možné extrahovat do souboru TSV, pokud je počet záznamů menší než 1000.
 - Pokud je počet záznamů větší než 1000, exportovaná data se asynchronně nasadí na stránku ke stažení na následujících 30 dnů.
 - Filtry lze v tabulce použít k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle názvu společnosti, ID zákazníka, ID předplatného Marketplace, typu licence Azure, data získání, data ztráty, e-mailu zákazníka, země zákazníka/státu/města/PSČ, zákaznického jazyka atd.
+- Když je nabídka koupena chráněným zákazníkem, informace v **podrobnostech o zákazníkovi** budou maskovány (* * * * * * * * * * * *).
 
 ### <a name="customer-page-filters"></a>Filtry stránek zákazníka
 

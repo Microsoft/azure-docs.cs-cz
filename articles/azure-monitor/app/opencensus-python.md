@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6ef0675e3ae3f7a5da38138177f3033051723411
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbc9fe8d53f231f590dba7e2bd493633c39a1383
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79537104"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701521"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
@@ -19,18 +19,18 @@ Azure Monitor podporuje distribuované trasování, shromažďování metrik a p
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 - Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/), i když starší verze budou nejspíš fungovat s menšími změnami.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Vytvoření prostředku Application Insights v Azure Monitor
 
 Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor, který vygeneruje klíč instrumentace (ikey). Ikey se pak použije ke konfiguraci sady OpenCensus SDK, aby odesílala data telemetrie Azure Monitor.
 
-1. Vyberte **vytvořit prostředek** > **pro vývojáře** > **Application Insights**.
+1. Vyberte **vytvořit prostředek pro**  >  **vývojáře**  >  **Application Insights**.
 
    ![Přidání prostředku Application Insights](./media/opencensus-python/0001-create-resource.png)
 
@@ -55,7 +55,7 @@ python -m pip install opencensus-ext-azure
 Úplný seznam balíčků a integrací najdete v tématu [OpenCensus Packages](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus).
 
 > [!NOTE]
-> `python -m pip install opencensus-ext-azure` Příkaz předpokládá, že máte nastavenou `PATH` proměnnou prostředí pro instalaci Pythonu. Pokud jste tuto proměnnou nenakonfigurovali, musíte zadat úplnou cestu k adresáři, kde se nachází spustitelný soubor Pythonu. Výsledkem je příkaz podobný tomuto: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`.
+> `python -m pip install opencensus-ext-azure`Příkaz předpokládá, že máte `PATH` nastavenou proměnnou prostředí pro instalaci Pythonu. Pokud jste tuto proměnnou nenakonfigurovali, musíte zadat úplnou cestu k adresáři, kde se nachází spustitelný soubor Pythonu. Výsledkem je příkaz podobný tomuto: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
 
 Sada SDK používá tři Azure Monitor vývozců k posílání různých typů telemetrie do Azure Monitor: trasování, metriky a protokoly. Další informace o těchto typech telemetrie najdete v tématu [Přehled datové platformy](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Pomocí následujících pokynů můžete odeslat tyto typy telemetrie prostřednictvím tří vývozců.
 
@@ -68,7 +68,7 @@ Tady jsou vývozci, kteří OpenCensus poskytují mapování na typy telemetrie,
 ### <a name="trace"></a>Trasování
 
 > [!NOTE]
-> `Trace`v OpenCensus odkazuje na [distribuované trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing). `AzureExporter` Odeslání `requests` a `dependency` telemetrie Azure monitor.
+> `Trace`v OpenCensus odkazuje na [distribuované trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing). `AzureExporter`Odeslání `requests` a `dependency` telemetrie Azure monitor.
 
 1. Nejdřív vygenerujte data trasování místně. V Pythonu nečinné nebo v editoru podle vlastního výběru zadejte následující kód.
 
@@ -91,7 +91,7 @@ Tady jsou vývozci, kteří OpenCensus poskytují mapování na typy telemetrie,
         main()
     ```
 
-2. Spuštění kódu opakovaně zobrazí výzvu k zadání hodnoty. U každé položky se hodnota vypíše do prostředí a modul OpenCensus Python vygeneruje odpovídající část `SpanData`. Projekt OpenCensus definuje [trasování jako strom rozpětí](https://opencensus.io/core-concepts/tracing/).
+2. Spuštění kódu opakovaně zobrazí výzvu k zadání hodnoty. U každé položky se hodnota vypíše do prostředí a modul OpenCensus Python vygeneruje odpovídající část `SpanData` . Projekt OpenCensus definuje [trasování jako strom rozpětí](https://opencensus.io/core-concepts/tracing/).
     
     ```
     Enter a value: 4
@@ -105,7 +105,7 @@ Tady jsou vývozci, kteří OpenCensus poskytují mapování na typy telemetrie,
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat `SpanData` Azure monitor. Předání připojovacího řetězce přímo do exportéra nebo ho můžete zadat v proměnné `APPLICATIONINSIGHTS_CONNECTION_STRING`prostředí. Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
+3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat `SpanData` Azure monitor. Předání připojovacího řetězce přímo do exportéra nebo ho můžete zadat v proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING` . Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -132,7 +132,7 @@ Tady jsou vývozci, kteří OpenCensus poskytují mapování na typy telemetrie,
         main()
     ```
 
-4. Když teď spouštíte skript Pythonu, měli byste být pořád vyzváni k zadání hodnot, ale v prostředí se tiskne jenom hodnota. Vytvořená `SpanData` bude odeslána na Azure monitor. Data emitovaného rozsahu najdete v části `dependencies`. Další podrobnosti o odchozích žádostech najdete v tématu [závislosti](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency)OpenCensus Pythonu.
+4. Když teď spouštíte skript Pythonu, měli byste být pořád vyzváni k zadání hodnot, ale v prostředí se tiskne jenom hodnota. Vytvořená `SpanData` bude odeslána na Azure monitor. Data emitovaného rozsahu najdete v části `dependencies` . Další podrobnosti o odchozích žádostech najdete v tématu [závislosti](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency)OpenCensus Pythonu.
 Další podrobnosti o příchozích požadavcích naleznete v tématu OpenCensus Python [requests](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request).
 
 #### <a name="sampling"></a>Vzorkování
@@ -200,7 +200,7 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat data metriky pro Azure Monitor. Předání připojovacího řetězce přímo do exportéra nebo ho můžete zadat v proměnné `APPLICATIONINSIGHTS_CONNECTION_STRING`prostředí. Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
+3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat data metriky pro Azure Monitor. Předání připojovacího řetězce přímo do exportéra nebo ho můžete zadat v proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING` . Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
 
     ```python
     from datetime import datetime
@@ -248,7 +248,7 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
         main()
     ```
 
-4. Exportér pošle data metriky Azure Monitor v pevném intervalu. Výchozí hodnota je každých 15 sekund. Sledujeme jednu metriku, takže tato data metriky s libovolným hodnotou a časovým razítkem, které obsahuje, se budou posílat každý interval. Data můžete najít v části `customMetrics`.
+4. Exportér pošle data metriky Azure Monitor v pevném intervalu. Výchozí hodnota je každých 15 sekund. Sledujeme jednu metriku, takže tato data metriky s libovolným hodnotou a časovým razítkem, které obsahuje, se budou posílat každý interval. Data můžete najít v části `customMetrics` .
 
 #### <a name="standard-metrics"></a>Standardní metriky
 
@@ -271,7 +271,7 @@ Níže je uveden seznam standardních metrik, které jsou aktuálně odesílány
 - Využití procesoru procesem (procento)
 - Zpracovat soukromé bajty (bajty)
 
-Tyto metriky byste měli být schopní zobrazit v `performanceCounters`. Počet příchozích požadavků by byl v `customMetrics`rámci. Další informace najdete v tématu [čítače výkonu](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
+Tyto metriky byste měli být schopní zobrazit v `performanceCounters` . Počet příchozích požadavků by byl v rámci `customMetrics` . Další informace najdete v tématu [čítače výkonu](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
 
 #### <a name="modify-telemetry"></a>Úprava telemetrie
 
@@ -311,7 +311,7 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
     90
     ```
 
-3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat data protokolu pro Azure Monitor. Předání připojovacího řetězce přímo do exportéra nebo ho můžete zadat v proměnné `APPLICATIONINSIGHTS_CONNECTION_STRING`prostředí. Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
+3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat data protokolu pro Azure Monitor. Předání připojovacího řetězce přímo do exportéra nebo ho můžete zadat v proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING` . Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
 
     ```python
     import logging
@@ -336,12 +336,12 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
         main()
     ```
 
-4. Exportér odešle data protokolu do Azure Monitor. Data můžete najít v části `traces`. 
+4. Exportér odešle data protokolu do Azure Monitor. Data můžete najít v části `traces` . 
 
 > [!NOTE]
-> `traces`v tomto kontextu není stejný jako `Tracing`. `traces`odkazuje na typ telemetrie, který se zobrazí v Azure Monitor při použití `AzureLogHandler`. `Tracing`odkazuje na koncept v OpenCensus a má vztah k [distribuovanému trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
+> `traces`v tomto kontextu není stejný jako `Tracing` . `traces`odkazuje na typ telemetrie, který se zobrazí v Azure Monitor při použití `AzureLogHandler` . `Tracing`odkazuje na koncept v OpenCensus a má vztah k [distribuovanému trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
 
-5. Pokud chcete naformátovat zprávy protokolu, můžete `formatters` použít v integrovaném [rozhraní API protokolování](https://docs.python.org/3/library/logging.html#formatter-objects)Pythonu.
+5. Pokud chcete naformátovat zprávy protokolu, můžete použít `formatters` v integrovaném [rozhraní API protokolování](https://docs.python.org/3/library/logging.html#formatter-objects)Pythonu.
 
     ```python
     import logging
@@ -370,7 +370,7 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
         main()
     ```
 
-6. Pomocí pole custom_dimensions můžete do zpráv protokolu přidat také vlastní vlastnosti v argumentu klíčového slova *extra* . Ty se zobrazí v `customDimensions` v Azure monitor jako páry klíč-hodnota.
+6. Pomocí pole custom_dimensions můžete do zpráv protokolu přidat také vlastní vlastnosti v argumentu klíčového slova *extra* . Ty se zobrazí v v Azure Monitor jako páry klíč-hodnota `customDimensions` .
 > [!NOTE]
 > Aby tato funkce fungovala, musíte do pole custom_dimensions předat slovník. Pokud předáte argumenty jiného typu, protokolovací nástroj je bude ignorovat.
 
@@ -393,7 +393,7 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
 
 #### <a name="sending-exceptions"></a>Odesílání výjimek
 
-OpenCensus Python nesleduje a neodesílá `exception` automaticky telemetrii. Jsou odesílány prostřednictvím `AzureLogHandler` pomocí výjimek prostřednictvím knihovny protokolování Python. Vlastní vlastnosti můžete přidat stejně jako u normálního protokolování.
+OpenCensus Python nesleduje a neodesílá automaticky `exception` telemetrii. Jsou odesílány prostřednictvím pomocí `AzureLogHandler` výjimek prostřednictvím knihovny protokolování Python. Vlastní vlastnosti můžete přidat stejně jako u normálního protokolování.
 
     ```python
     import logging
@@ -436,9 +436,9 @@ Data telemetrie, která byla odeslána z vaší aplikace, můžete zobrazit pros
 
 V seznamu pod položkou **aktivní**:
 
-- U telemetrie odeslaných pomocí Azure Monitorho vývozce trasování se příchozí požadavky zobrazí `requests`v části. Odchozí nebo vnitroprocesové požadavky se zobrazí v části `dependencies`.
-- U telemetrie odesílaných pomocí Azure Monitorch metriky se v části `customMetrics`zobrazuje metrika.
-- U telemetrie odesílaných pomocí nástroje Azure Monitorch protokolů se zobrazí protokoly `traces`v části. Výjimky se zobrazí `exceptions`v části.
+- U telemetrie odeslaných pomocí Azure Monitorho vývozce trasování se příchozí požadavky zobrazí v části `requests` . Odchozí nebo vnitroprocesové požadavky se zobrazí v části `dependencies` .
+- U telemetrie odesílaných pomocí Azure Monitorch metriky se v části zobrazuje metrika `customMetrics` .
+- U telemetrie odesílaných pomocí nástroje Azure Monitorch protokolů se zobrazí protokoly v části `traces` . Výjimky se zobrazí v části `exceptions` .
 
 Podrobnější informace o používání dotazů a protokolů najdete [v tématu protokoly v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs).
 
@@ -457,8 +457,8 @@ Podrobnější informace o používání dotazů a protokolů najdete [v tématu
 * [Mapa aplikace](./../../azure-monitor/app/app-map.md)
 * [Monitorování výkonu na konci](./../../azure-monitor/learn/tutorial-performance.md)
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 * [Testy dostupnosti:](../../azure-monitor/app/monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
 * [Inteligentní diagnostika:](../../azure-monitor/app/proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
-* [Výstrahy metriky](../../azure-monitor/app/alerts.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
+* [Výstrahy metriky](../../azure-monitor/platform/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.

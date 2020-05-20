@@ -4,22 +4,18 @@ description: Seznamte se s klauzulí GROUP BY pro Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b602b56d37cec0e23d31318f6675d031bdd6bcdb
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261597"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701004"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Klauzule GROUP BY v Azure Cosmos DB
 
 Klauzule GROUP BY rozděluje výsledky dotazu podle hodnot jedné nebo více zadaných vlastností.
-
-> [!NOTE]
-> Azure Cosmos DB aktuálně podporuje GROUP BY v sadě .NET SDK 3,3 a vyšší a také v sadě JavaScript SDK 3,4 a vyšší.
-> Podpora pro jinou jazykovou sadu SDK není aktuálně k dispozici, ale je plánována.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -31,7 +27,7 @@ Klauzule GROUP BY rozděluje výsledky dotazu podle hodnot jedné nebo více zad
         | <scalar_expression_list>, <scalar_expression>
 ```  
 
-## <a name="arguments"></a>Argumenty
+## <a name="arguments"></a>Arguments
 
 - `<scalar_expression_list>`
 
@@ -53,10 +49,15 @@ Klauzule GROUP BY rozděluje výsledky dotazu podle hodnot jedné nebo více zad
 - Poddotazy
 - Agregační systémové funkce (jsou povolené jenom v klauzuli SELECT)
 
-Dotazy s agregovanou systémovou funkcí a poddotazem `GROUP BY` s nejsou podporovány. Například následující dotaz není podporován:
+Dotazy s agregovanou systémovou funkcí a poddotazem s `GROUP BY` nejsou podporovány. Například následující dotaz není podporován:
 
 ```sql
-SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
+SELECT COUNT(UniqueLastNames)
+FROM (
+SELECT AVG(f.age)
+FROM f
+GROUP BY f.lastName
+) AS UniqueLastNames
 ```
 
 ## <a name="examples"></a>Příklady
@@ -74,22 +75,24 @@ GROUP BY f.foodGroup
 Některé výsledky jsou (klíčové slovo TOP slouží k omezení výsledků):
 
 ```json
-[{
-  "foodGroup": "Fast Foods",
-  "foodGroupCount": 371
-},
-{
-  "foodGroup": "Finfish and Shellfish Products",
-  "foodGroupCount": 267
-},
-{
-  "foodGroup": "Meals, Entrees, and Side Dishes",
-  "foodGroupCount": 113
-},
-{
-  "foodGroup": "Sausages and Luncheon Meats",
-  "foodGroupCount": 244
-}]
+[
+    {
+        "foodGroupCount": 183,
+        "foodGroup": "Cereal Grains and Pasta"
+    },
+    {
+        "foodGroupCount": 133,
+        "foodGroup": "Nut and Seed Products"
+    },
+    {
+        "foodGroupCount": 113,
+        "foodGroup": "Meals, Entrees, and Side Dishes"
+    },
+    {
+        "foodGroupCount": 64,
+        "foodGroup": "Spices and Herbs"
+    }
+]
 ```
 
 Tento dotaz má dva výrazy, které slouží k rozdělení výsledků:
@@ -103,26 +106,28 @@ GROUP BY f.foodGroup, f.version
 Mezi výsledky patří:
 
 ```json
-[{
-  "version": 1,
-  "foodGroup": "Nut and Seed Products",
-  "foodGroupCount": 133
-},
-{
-  "version": 1,
-  "foodGroup": "Finfish and Shellfish Products",
-  "foodGroupCount": 267
-},
-{
-  "version": 1,
-  "foodGroup": "Fast Foods",
-  "foodGroupCount": 371
-},
-{
-  "version": 1,
-  "foodGroup": "Sausages and Luncheon Meats",
-  "foodGroupCount": 244
-}]
+[
+    {
+        "foodGroupCount": 183,
+        "foodGroup": "Cereal Grains and Pasta",
+        "version": 1
+    },
+    {
+        "foodGroupCount": 133,
+        "foodGroup": "Nut and Seed Products",
+        "version": 1
+    },
+    {
+        "foodGroupCount": 113,
+        "foodGroup": "Meals, Entrees, and Side Dishes",
+        "version": 1
+    },
+    {
+        "foodGroupCount": 64,
+        "foodGroup": "Spices and Herbs",
+        "version": 1
+    }
+]
 ```
 
 Tento dotaz obsahuje systémovou funkci v klauzuli GROUP BY:
@@ -136,22 +141,24 @@ GROUP BY UPPER(f.foodGroup)
 Mezi výsledky patří:
 
 ```json
-[{
-  "foodGroupCount": 371,
-  "upperFoodGroup": "FAST FOODS"
-},
-{
-  "foodGroupCount": 267,
-  "upperFoodGroup": "FINFISH AND SHELLFISH PRODUCTS"
-},
-{
-  "foodGroupCount": 389,
-  "upperFoodGroup": "LEGUMES AND LEGUME PRODUCTS"
-},
-{
-  "foodGroupCount": 113,
-  "upperFoodGroup": "MEALS, ENTREES, AND SIDE DISHES"
-}]
+[
+    {
+        "foodGroupCount": 183,
+        "upperFoodGroup": "CEREAL GRAINS AND PASTA"
+    },
+    {
+        "foodGroupCount": 133,
+        "upperFoodGroup": "NUT AND SEED PRODUCTS"
+    },
+    {
+        "foodGroupCount": 113,
+        "upperFoodGroup": "MEALS, ENTREES, AND SIDE DISHES"
+    },
+    {
+        "foodGroupCount": 64,
+        "upperFoodGroup": "SPICES AND HERBS"
+    }
+]
 ```
 
 Tento dotaz ve výrazu vlastnosti Item používá jak klíčová slova, tak systémové funkce:
@@ -165,16 +172,18 @@ GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 Výsledky jsou následující:
 
 ```json
-[{
-  "correctVersion": true,
-  "containsOrangeTag": false,
-  "foodGroupCount": 8608
-},
-{
-  "correctVersion": true,
-  "containsOrangeTag": true,
-  "foodGroupCount": 10
-}]
+[
+    {
+        "foodGroupCount": 10,
+        "containsOrangeTag": true,
+        "correctVersion": true
+    },
+    {
+        "foodGroupCount": 8608,
+        "containsOrangeTag": false,
+        "correctVersion": true
+    }
+]
 ```
 
 ## <a name="next-steps"></a>Další kroky

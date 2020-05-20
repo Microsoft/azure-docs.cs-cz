@@ -1,10 +1,10 @@
-- name: Dokumentace ke službě Translator Text
+- name: Dokumentace ke službě Translator
   href: index.yml
-- name: Translator Text API
+- name: Překladač
   items:
     - name: Přehled
       items:
-        - name: Co je Translator Text API?
+        - name: Co je Translator?
           href: translator-info-overview.md
     - name: Rychlé starty
       items:
@@ -22,7 +22,7 @@
           href: quickstart-sentences.md
     - name: Kurzy
       items:
-        - name: 'Vytvoření aplikace WPF pro Translator Text, C#'
+        - name: 'Vytvoření aplikace WPF pro Translator, C#'
           href: tutorial-wpf-translation-csharp.md
         - name: 'Vytvoření aplikace pro překlad Flask, Python'
           href: tutorial-build-flask-app-translation-synthesis.md
@@ -34,7 +34,7 @@
           href: character-counts.md
     - name: Návody
       items:
-        - name: Registrace k rozhraní Translator Text API
+        - name: Registrace ke službě Translator
           href: translator-text-how-to-signup.md
         - name: Migrace na Text API v3
           href: migrate-to-v3.md
@@ -66,7 +66,7 @@
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Ruby'
     - name: Referenční informace
       items:
-        - name: Referenční informace k rozhraní Translator Text API v3
+        - name: Referenční informace ke službě Translator v3
           href: reference/v3-0-reference.md
           items:
             - name: Jazyky
@@ -83,7 +83,7 @@
               href: reference/v3-0-dictionary-lookup.md
             - name: Příklady slovníku
               href: reference/v3-0-dictionary-examples.md
-        - name: Referenční informace k rozhraní Translator Text API v2 (zastaralé)
+        - name: Referenční informace ke službě Translator v2 (zastaralé)
           href: reference/v2-0-reference.md
           items:
             - name: Transformace textu

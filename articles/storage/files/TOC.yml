@@ -48,6 +48,8 @@
       items:
         - name: Klíče spravované zákazníkem s využitím Azure Key Vaultu
           href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Konfigurace předvolby směrování sítě
+      href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Nabídky pro dodržování předpisů
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Vývoj

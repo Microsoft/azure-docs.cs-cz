@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 626dc5a7d1cd52182e68eb0d217b2ac4c653330e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 05/19/2020
+ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994350"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700945"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
@@ -32,8 +32,8 @@ Výhody publikování na komerčním webu Marketplace:
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
-3. Na stránce Přehled vyberte **+ Nová nabídka** > **konzultační služba**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **konzultační služba**.
 
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-consulting-service.png)
 
@@ -45,7 +45,7 @@ Výhody publikování na komerčním webu Marketplace:
 Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese nabídky Marketplace.
-- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
 Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
@@ -108,7 +108,7 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 Tady definujete podrobnosti nabídky, které se zobrazí na webu Marketplace. To zahrnuje název nabídky, popis, obrázky a tak dále. Při konfiguraci této nabídky nezapomeňte postupovat podle zásad, které jsou podrobné na [stránce Zásady certifikace komerčního tržiště](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) .
 
 > [!NOTE]
-> Podrobnosti nabídky nejsou v angličtině, pokud popis nabídky začíná frází, &quot;Tato aplikace je k dispozici pouze v [jazyk bez angličtiny]. &quot; Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
+> Podrobnosti nabídky nejsou v angličtině, pokud popis nabídky začíná frází, &quot; Tato aplikace je k dispozici pouze v [jazyk bez angličtiny]. &quot; Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
 ### <a name="name"></a>Name
 
@@ -126,32 +126,11 @@ Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a 
 
 ### <a name="description"></a>Popis
 
-Zadejte delší popis nabídky, maximálně 3 000 znaků. Zobrazí se zákazníkům v přehledu výpisu na webu Marketplace.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Do popisu zahrňte jednu nebo více z následujících možností:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Hodnota a klíčové výhody, které vaše nabídka nabízí
-- Přidružení kategorie nebo oboru nebo obojí
-- Možnosti nákupu v aplikaci
-- Jakékoli požadované zpřístupnění
-
-Zde jsou některé tipy pro psaní popisu:
-
-- Jasně popište hodnotu vaší nabídky v prvních několika větách popisu. Zadejte následující položky:
-  - Popis nabídky
-  - Typ uživatele, který je z nabídky výhodou
-  - Zákazník potřebuje nebo vydá adresy nabídky.
-- Pamatujte, že ve výsledcích hledání se může zobrazit několik prvních vět.
-- Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou nabízí vaše nabídka.
-- Zkuste použít slovníky specifické pro konkrétní obor nebo na základě výhod.
-
-Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k použití formátování.
-
-![Použití editoru textu ve formátu RTF](./media/rich-text-editor.png)
-
-| <center>Změnit formát textu | <center>Přidat odrážky nebo číslování | <center>Přidat nebo odebrat odsazení textu |
-| --- | --- | --- |
-| <center>![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png) |  <center>![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png) |  <center>![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="keywords"></a>Klíčová slova
 

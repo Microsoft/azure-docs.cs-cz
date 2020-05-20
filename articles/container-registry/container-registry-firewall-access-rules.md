@@ -2,13 +2,13 @@
 title: Pravidla přístupu brány firewall
 description: Nakonfigurujte pravidla pro přístup ke službě Azure Container Registry za bránou firewall tím, že povolíte přístup k REST APIům a názvům domén koncového bodu dat nebo rozsahům IP adres závislým na službě.
 ms.topic: article
-ms.date: 05/07/2020
-ms.openlocfilehash: b3560fe769a97c8d3a4e5a3580d42d7c0b3a3f08
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 05/18/2020
+ms.openlocfilehash: 109764a5697920547230530de41a3e5acfe0117d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978344"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701907"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall
 
@@ -18,7 +18,7 @@ Pokud místo toho chcete nakonfigurovat příchozí přístup k síti do registr
 
 ## <a name="about-registry-endpoints"></a>O koncových bodech registru
 
-Aby mohl klient, jako je démon Docker, načítat nebo předávat obrázky nebo jiné artefakty do služby Azure Container Registry, musí komunikovat přes protokol HTTPS se dvěma odlišnými koncovými body. Pro klienty, kteří přistupují k registru z za bránou firewall, je potřeba nakonfigurovat pravidla přístupu pro oba koncové body.
+Aby mohl klient, jako je démon Docker, načítat nebo předávat obrázky nebo jiné artefakty do služby Azure Container Registry, musí komunikovat přes protokol HTTPS se dvěma odlišnými koncovými body. Pro klienty, kteří přistupují k registru z za bránou firewall, je potřeba nakonfigurovat pravidla přístupu pro oba koncové body. Oba koncové body jsou dosaženy přes port 443.
 
 * **Registry REST API koncového bodu** – ověřování a správa registru se zpracovávají prostřednictvím koncového bodu veřejné REST API registru. Tento koncový bod je název přihlašovacího serveru registru. Příklad: `myregistry.azurecr.io`
 
@@ -28,10 +28,10 @@ Pokud je registr [geograficky replikovaný](container-registry-geo-replication.m
 
 ## <a name="allow-access-to-rest-and-data-endpoints"></a>Povolení přístupu k koncovým bodům REST a data
 
-* **Koncový bod REST** – povolí přístup k plně kvalifikovanému názvu přihlašovacího serveru `<registry-name>.azurecr.io`registru, nebo k přidruženému rozsahu IP adres.
-* **Koncový bod úložiště (data)** – povolí přístup ke všem účtům služby Azure Blob Storage pomocí `*.blob.core.windows.net`zástupného znaku nebo přidruženého rozsahu IP adres.
+* **Koncový bod REST** – povolí přístup k plně kvalifikovanému názvu přihlašovacího serveru registru, `<registry-name>.azurecr.io` nebo k přidruženému rozsahu IP adres.
+* **Koncový bod úložiště (data)** – povolí přístup ke všem účtům služby Azure Blob Storage pomocí zástupného znaku `*.blob.core.windows.net` nebo přidruženého rozsahu IP adres.
 > [!NOTE]
-> Azure Container Registry zavádí [vyhrazené koncové body dat](#enable-dedicated-data-endpoints-preview) (Preview), což vám umožní úzce nastavit obor pravidel brány firewall klienta pro úložiště registru. Volitelně můžete povolit koncové body dat ve všech oblastech, kde je registr umístěný nebo replikovaný, `<registry-name>.<region>.data.azurecr.io`pomocí formuláře.
+> Azure Container Registry zavádí [vyhrazené koncové body dat](#enable-dedicated-data-endpoints), což vám umožní přesně určit pravidla brány firewall klienta pro úložiště registru. Volitelně můžete povolit koncové body dat ve všech oblastech, kde je registr umístěný nebo replikovaný, pomocí formuláře `<registry-name>.<region>.data.azurecr.io` .
 
 ## <a name="allow-access-by-ip-address-range"></a>Povolení přístupu podle rozsahu IP adres
 
@@ -117,26 +117,45 @@ Ve službě Azure Virtual Network použijte pravidla zabezpečení sítě k filt
 
 Můžete například vytvořit pravidlo skupiny zabezpečení odchozí sítě s cílovým **AzureContainerRegistry** , které umožní provoz do služby Azure Container Registry. Pokud chcete přístup ke značce služby udělit jenom v konkrétní oblasti, zadejte oblast v následujícím formátu: **AzureContainerRegistry**. [*název oblasti*].
 
-## <a name="enable-dedicated-data-endpoints-preview"></a>Povolit vyhrazené koncové body dat (Preview)
+## <a name="enable-dedicated-data-endpoints"></a>Povolit vyhrazené koncové body dat 
 
 > [!WARNING]
-> Pokud jste dříve nakonfigurovali přístup klienta brány firewall ke `*.blob.core.windows.net` stávajícím koncovým bodům, přechody na vyhrazené koncové body budou mít vliv na připojení klienta, což způsobí selhání operace Pull. Chcete-li zajistit, aby klienti měli konzistentní přístup, přidejte nová pravidla datových koncových bodů do pravidel brány firewall klienta. Po dokončení povolte pro vaše registry vyhrazené koncové body dat pomocí rozhraní příkazového řádku Azure CLI nebo jiných nástrojů.
+> Pokud jste dříve nakonfigurovali přístup klienta brány firewall ke stávajícím `*.blob.core.windows.net` koncovým bodům, přechody na vyhrazené koncové body budou mít vliv na připojení klienta, což způsobí selhání operace Pull. Chcete-li zajistit, aby klienti měli konzistentní přístup, přidejte nová pravidla datových koncových bodů do pravidel brány firewall klienta. Po dokončení povolte pro vaše registry vyhrazené koncové body dat pomocí rozhraní příkazového řádku Azure CLI nebo jiných nástrojů.
 
-Vyhrazená koncová data jsou volitelnou funkcí úrovně služby kontejneru **Premium** Registry. Informace o úrovních a omezeních služby registru najdete v tématu [Azure Container Registry úrovně](container-registry-skus.md). Pokud chcete povolit koncové body dat pomocí rozhraní příkazového řádku Azure CLI, použijte Azure CLI verze 2.4.0 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Vyhrazená koncová data jsou volitelnou funkcí úrovně služby kontejneru **Premium** Registry. Informace o úrovních a omezeních služby registru najdete v tématu [Azure Container Registry úrovně služeb](container-registry-skus.md). 
 
-Následující příkaz [AZ ACR Update][az-acr-update] povolí v registru *myregistry*vyhrazené koncové body dat. Pro demonstrační účely Předpokládejme, že se registr replikuje ve dvou oblastech:
+Můžete povolit vyhrazené koncové body dat pomocí Azure Portal nebo Azure CLI. Koncové body dat následují podle regionálního vzoru, `<registry-name>.<region>.data.azurecr.io` . V geograficky replikovaném registru povoluje koncovým bodům dat koncové body ve všech oblastech repliky.
+
+### <a name="portal"></a>Portál
+
+Postup povolení koncových bodů dat pomocí portálu:
+
+1. Přejděte do registru kontejneru.
+1. Vyberte **síť**  >  **veřejný přístup**.
+1. Zaškrtněte políčko **zapnout koncový bod vyhrazených dat** .
+1. Vyberte **Uložit**.
+
+Koncový bod dat nebo koncové body se zobrazí na portálu.
+
+![Vyhrazené koncové body dat na portálu](./media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png)
+
+### <a name="azure-cli"></a>Azure CLI
+
+Pokud chcete povolit koncové body dat pomocí rozhraní příkazového řádku Azure CLI, použijte Azure CLI verze 2.4.0 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+
+Následující příkaz [AZ ACR Update][az-acr-update] povolí v registru *myregistry*vyhrazené koncové body dat. 
 
 ```azurecli
 az acr update --name myregistry --data-endpoint-enabled
 ```
 
-Koncové body dat používají regionální vzor, `<registry-name>.<region>.data.azurecr.io`. Chcete-li zobrazit koncové body dat, použijte příkaz [AZ ACR show-Endpoints][az-acr-show-endpoints] :
+Chcete-li zobrazit koncové body dat, použijte příkaz [AZ ACR show-Endpoints][az-acr-show-endpoints] :
 
 ```azurecli
 az acr show-endpoints --name myregistry
 ```
 
-Výstup:
+Výstup pro demonstrační účely ukazuje dva regionální koncové body.
 
 ```
 {
@@ -165,6 +184,8 @@ Pokud potřebujete přístup k Microsoft Container Registry (MCR) z za bránou f
 * Další informace o [osvědčených postupech Azure pro zabezpečení sítě](../security/fundamentals/network-best-practices.md)
 
 * Další informace o [skupinách zabezpečení](/azure/virtual-network/security-overview) ve službě Azure Virtual Network
+
+* Další informace o nastavení [privátního odkazu](container-registry-private-link.md) pro registr kontejneru
 
 * Další informace o [vyhrazených datových koncových bodech](https://azure.microsoft.com/blog/azure-container-registry-mitigating-data-exfiltration-with-dedicated-data-endpoints/) pro Azure Container Registry
 

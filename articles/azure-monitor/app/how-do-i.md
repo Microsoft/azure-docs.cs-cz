@@ -3,12 +3,12 @@ title: Návody... v Azure Application Insights | Microsoft Docs
 description: Nejčastější dotazy v Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536858"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701953"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
 ## <a name="get-an-email-when-"></a>Získat e-mail, když...
@@ -16,7 +16,7 @@ ms.locfileid: "81536858"
 Nastavte [webový test dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
 
 ### <a name="email-if-my-site-is-overloaded"></a>E-mail, pokud je můj web přetížený
-Nastavte [Upozornění](../../azure-monitor/app/alerts.md) na **dobu odezvy serveru**. Musí fungovat prahová hodnota mezi 1 a 2 sekundami.
+Nastavte [Upozornění](../../azure-monitor/platform/alerts-log.md) na **dobu odezvy serveru**. Musí fungovat prahová hodnota mezi 1 a 2 sekundami.
 
 ![](./media/how-do-i/030-server.png)
 
@@ -26,10 +26,10 @@ Pokud chcete nastavit výstrahu pro **serverové výjimky**, možná budete muse
 
 ### <a name="email-on-exceptions"></a>E-mail na výjimkách
 1. [Nastavení sledování výjimek](../../azure-monitor/app/asp-net-exceptions.md)
-2. [Nastavení upozornění](../../azure-monitor/app/alerts.md) na metriku počtu výjimek
+2. [Nastavení upozornění](../../azure-monitor/platform/alerts-log.md) na metriku počtu výjimek
 
 ### <a name="email-on-an-event-in-my-app"></a>E-mail na události v aplikaci
-Řekněme, že byste chtěli při výskytu určité události získat e-mail. Application Insights neposkytuje toto zařízení přímo, ale může [Odeslat výstrahu, pokud metrika přetrvá prahovou hodnotu](../../azure-monitor/app/alerts.md).
+Řekněme, že byste chtěli při výskytu určité události získat e-mail. Application Insights neposkytuje toto zařízení přímo, ale může [Odeslat výstrahu, pokud metrika přetrvá prahovou hodnotu](../../azure-monitor/platform/alerts-log.md).
 
 Výstrahy je možné nastavit na [vlastní metriky](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), ale ne na vlastní události. Napsání kódu pro zvýšení metriky, když dojde k události:
 
@@ -65,11 +65,11 @@ Některé body ke zvážení:
 * Vzhledem k tomu, že e-maily jsou odesílány na "Alert" a "v pořádku", možná budete chtít vzít v úvahu, že se událost jednoho snímku považuje za podmínku dvou stavů. Například namísto události "dokončená úloha" se zobrazí podmínka "probíhá úloha", kde získáte e-maily na začátku a na konci úlohy.
 
 ### <a name="set-up-alerts-automatically"></a>Nastavit výstrahy automaticky
-[Použití PowerShellu k vytváření nových výstrah](../../azure-monitor/app/alerts.md#automation)
+[Použití PowerShellu k vytváření nových výstrah](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Použití PowerShellu ke správě Application Insights
 * [Vytvoření nových prostředků](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
-* [Vytvořit nové výstrahy](../../azure-monitor/app/alerts.md#automation)
+* [Vytvořit nové výstrahy](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Samostatná telemetrie z různých verzí
 
@@ -137,10 +137,10 @@ Chcete-li **dynamicky zastavit a spustit** shromažďování a přenos telemetri
 ```
 
 ### <a name="other-applications"></a>Další aplikace
-Pro konzolové nebo ASP.NET Core aplikace `TelemetryConfiguration.Active` se nedoporučuje používat singleton.
-Pokud jste instanci `TelemetryConfiguration` vytvořili sami – nastavte `DisableTelemetry` na `true`.
+Pro `TelemetryConfiguration.Active` konzolové nebo ASP.NET Core aplikace se nedoporučuje používat singleton.
+Pokud jste `TelemetryConfiguration` instanci vytvořili sami – nastavte `DisableTelemetry` na `true` .
 
-Pro aplikace ASP.NET Core můžete k instanci `TelemetryConfiguration` přistupovat pomocí [vkládání závislostí ASP.NET Core](/aspnet/core/fundamentals/dependency-injection/). Další podrobnosti najdete v článku [ApplicationInsights for ASP.NET Core Applications](../../azure-monitor/app/asp-net-core.md) .
+Pro aplikace ASP.NET Core můžete k `TelemetryConfiguration` instanci přistupovat pomocí [vkládání závislostí ASP.NET Core](/aspnet/core/fundamentals/dependency-injection/). Další podrobnosti najdete v článku [ApplicationInsights for ASP.NET Core Applications](../../azure-monitor/app/asp-net-core.md) .
 
 ## <a name="disable-selected-standard-collectors"></a>Zakázat vybrané standardní sběrače
 Můžete zakázat standardní sběrače (například čítače výkonu, požadavky HTTP nebo závislosti).
@@ -156,7 +156,7 @@ Mezi metrikami, které můžete zobrazit v Průzkumníkovi metrik, patří sada 
 ### <a name="if-you-see-no-performance-counter-data"></a>Pokud se nezobrazí žádná data čítače výkonu
 * **Server IIS** na vašem počítači nebo na virtuálním počítači. [Nainstalujte monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md).
 * **Web Azure** – zatím nepodporujeme čítače výkonu. K dispozici je několik metrik, které můžete získat jako standardní součást ovládacího panelu webu Azure.
-* **Unix server** - [Instalace](../../azure-monitor/app/java-collectd.md) serveru pro UNIX se shromáždí.
+* Server se systémem **UNIX**  -  [Nainstalovat shromážděné](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Zobrazení dalších čítačů výkonu
 * Nejdřív [přidejte nový graf](../../azure-monitor/platform/metrics-charts.md) a podívejte se, jestli je čítač v základní sadě, kterou nabízíme.

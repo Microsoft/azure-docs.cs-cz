@@ -1,10 +1,10 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Translator Text
-summary: Translator Text je cloudová služba strojového překladu, kterou můžete využít k překladu textu téměř v reálném čase pomocí jednoduchého volání rozhraní REST API. Rozhraní API využívá moderní technologie neurálního strojového překladu a nabízí technologie statistického strojového překladu. Custom Translator je rozšíření rozhraní Translator Text API, které umožňuje vytvářet neurální překladové systémy. Přizpůsobené překladové systémy se dají využít k překladu textu s využitím rozhraní Translator Text API nebo hlasových služeb Microsoftu.
+title: Dokumentace ke službě Translator
+summary: Translator je cloudová služba strojového překladu, kterou můžete využít k překladu textu téměř v reálném čase pomocí jednoduchého volání rozhraní REST API. Tato služba využívá moderní technologie neurálního strojového překladu a nabízí technologie statistického strojového překladu. Custom Translator je rozšíření služby Translator, které umožňuje vytvářet neurální překladové systémy. Přizpůsobené překladové systémy se dají využít k překladu textu s využitím služby Translator nebo služeb Microsoft Speech.
 metadata:
-  title: Dokumentace k rozhraní Translator Text API – rychlá zprovoznění, kurzy, reference k rozhraní API
+  title: Dokumentace ke službě Translator – rychlá zprovoznění, kurzy, reference k rozhraní API
   titleSuffix: Azure Cognitive Services
-  description: Translator Text je cloudová služba strojového překladu, kterou můžete využít k překladu textu téměř v reálném čase pomocí jednoduchého volání rozhraní REST API. Rozhraní API využívá moderní technologie neurálního strojového překladu a nabízí technologie statistického strojového překladu. Custom Translator je rozšíření rozhraní Translator Text API, které umožňuje vytvářet neurální překladové systémy. Přizpůsobené překladové systémy se dají využít k překladu textu s využitím rozhraní Translator Text API nebo hlasových služeb Microsoftu.
+  description: Translator je cloudová služba strojového překladu, kterou můžete využít k překladu textu téměř v reálném čase pomocí jednoduchého volání rozhraní REST API. Tato služba využívá moderní technologie neurálního strojového překladu a nabízí technologie statistického strojového překladu. Custom Translator je rozšíření služby Translator, které umožňuje vytvářet neurální překladové systémy. Přizpůsobené překladové systémy se dají využít k překladu textu s využitím služby Translator nebo služeb Microsoft Speech.
   services: cognitive-services
   author: erhopf
   manager: nitinme
@@ -13,18 +13,18 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 47944b573cdc2a8121c525c7750aa868d4a4e696
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.openlocfilehash: 26fc174ef0993339487a2edcc32cbb4fd864f96e
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81529788"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83592742"
 landingContent:
 - title: Překladač
   linkLists:
   - linkListType: overview
     links:
-    - text: Translator Text API
+    - text: Překladač
       url: translator-info-overview.md
     - text: Custom Translator
       url: translator-info-overview.md
@@ -36,7 +36,7 @@ landingContent:
       url: translator-text-how-to-signup.md
     - text: Nejčastější dotazy
       url: https://www.microsoft.com/translator/faq.aspx
-- title: Translator Text API
+- title: Začínáme
   linkLists:
   - linkListType: quickstart
     links:
@@ -60,7 +60,7 @@ landingContent:
       url: tutorial-build-flask-app-translation-synthesis.md
   - linkListType: reference
     links:
-    - text: Referenční informace k rozhraní Translator Text API (v3)
+    - text: Referenční informace ke službě Translator (v3)
       url: reference/v3-0-reference.md
     - text: Omezení počtu požadavků
       url: request-limits.md

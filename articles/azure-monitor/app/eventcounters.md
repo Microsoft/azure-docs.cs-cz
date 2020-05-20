@@ -3,22 +3,22 @@ title: Čítače událostí v Application Insights | Microsoft Docs
 description: Monitorujte systém a vlastní .NET/.NET Core EventCounters v Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: e1037766587f58a30c20f614726e1241c16e5a16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187091"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700434"
 ---
 # <a name="eventcounters-introduction"></a>Úvod do EventCounters
 
 `EventCounter`je základní mechanismus .NET/.NET pro publikování a používání čítačů nebo statistik. [Tento](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) dokument obsahuje přehled `EventCounters` a příklady, jak je publikovat a využívat. EventCounters jsou podporované na všech platformách OS – Windows, Linux a macOS. Můžeme si představit jako ekvivalent pro [čítače výkonu](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) pro různé platformy, který je podporován pouze v systémech Windows.
 
-I když uživatelé mohou publikovat jakékoli `EventCounters` vlastní, aby splnili požadavky, modul runtime .net Core 3,0 ve výchozím nastavení publikuje sadu těchto čítačů. Dokument vás provede kroky potřebnými ke shromáždění a zobrazení `EventCounters` (definované systémem nebo uživatelem) v Azure Application Insights.
+I když uživatelé mohou publikovat jakékoli vlastní `EventCounters` , aby splnili požadavky, modul runtime .NET Core 3,0 ve výchozím nastavení publikuje sadu těchto čítačů. Dokument vás provede kroky potřebnými ke shromáždění a zobrazení `EventCounters` (definované systémem nebo uživatelem) v Azure Application Insights.
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>Shromažďování EventCounters pomocí Application Insights
 
-Application Insights podporuje shromažďování `EventCounters` s jeho `EventCounterCollectionModule`součástí nově vydaných balíčků NuGet [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule`se automaticky povolí při použití [AspNetCore](asp-net-core.md) nebo [WorkerService](worker-service.md). `EventCounterCollectionModule`shromažďuje čítače s nekonfigurovatelnou frekvencí kolekce 60 sekund. Ke shromáždění EventCounters nejsou nutná žádná zvláštní oprávnění.
+Application Insights podporuje shromažďování `EventCounters` s jeho `EventCounterCollectionModule` součástí nově vydaných balíčků NuGet [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule`se automaticky povolí při použití [AspNetCore](asp-net-core.md) nebo [WorkerService](worker-service.md). `EventCounterCollectionModule`shromažďuje čítače s nekonfigurovatelnou frekvencí kolekce 60 sekund. Ke shromáždění EventCounters nejsou nutná žádná zvláštní oprávnění.
 
 ## <a name="default-counters-collected"></a>Shromážděny výchozí čítače
 
@@ -55,7 +55,7 @@ Pro aplikace běžící v .NET Core 3,0 se sada SDK automaticky shromáždí ná
 
 ## <a name="customizing-counters-to-be-collected"></a>Přizpůsobení čítačů, které se mají shromažďovat
 
-Následující příklad ukazuje, jak přidat nebo odebrat čítače. Toto přizpůsobení se provede v `ConfigureServices` metodě vaší aplikace po povolení Application Insights kolekce telemetrie pomocí `AddApplicationInsightsTelemetry()` nebo. `AddApplicationInsightsWorkerService()` Následuje příklad kódu z aplikace ASP.NET Core. Pro jiný typ aplikace, přečtěte si [Tento](worker-service.md#configuring-or-removing-default-telemetrymodules) dokument.
+Následující příklad ukazuje, jak přidat nebo odebrat čítače. Toto přizpůsobení se provede v `ConfigureServices` metodě vaší aplikace po povolení Application Insights kolekce telemetrie pomocí `AddApplicationInsightsTelemetry()` nebo `AddApplicationInsightsWorkerService()` . Následuje příklad kódu z aplikace ASP.NET Core. Pro jiný typ aplikace, přečtěte si [Tento](worker-service.md#configuring-or-removing-default-telemetrymodules) dokument.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
@@ -109,7 +109,7 @@ customMetrics | summarize avg(value) by name
 > [!div class="mx-imgBorder"]
 > ![Čítače událostí hlášené v Application Insights](./media/event-counters/analytics-event-counters.png)
 
-Chcete-li získat graf určitého čítače (například: `ThreadPool Completed Work Item Count`) za poslední období, spusťte následující dotaz.
+Chcete-li získat graf určitého čítače (například: `ThreadPool Completed Work Item Count` ) za poslední období, spusťte následující dotaz.
 
 ```Kusto
 customMetrics 
@@ -123,8 +123,8 @@ customMetrics
 
 Podobně jako u jiné telemetrie má **customMetrics** také sloupec `cloud_RoleInstance` , který označuje identitu instance hostitelského serveru, na které je vaše aplikace spuštěná. Výše uvedený dotaz ukazuje hodnotu čítače na instanci a lze ji použít k porovnání výkonu různých instancí serveru.
 
-## <a name="alerts"></a>Výstrahy
-Podobně jako u jiných metrik můžete [nastavit výstrahu](../../azure-monitor/app/alerts.md) , která vás upozorní, pokud počítadlo události překročí zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
+## <a name="alerts"></a>Upozornění
+Podobně jako u jiných metrik můžete [nastavit výstrahu](../../azure-monitor/platform/alerts-log.md) , která vás upozorní, pokud počítadlo události překročí zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

@@ -1,0 +1,61 @@
+- name: Dokumentace ke službě Azure Static Web Apps
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě Static Web Apps
+      href: overview.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Sestavení první statické webové aplikace
+      href: getting-started.md
+- name: Koncepty
+  items:
+    - name: Podpora rozhraní API s využitím Azure Functions
+      href: apis.md
+    - name: Trasy
+      href: routes.md
+    - name: Ověřování a autorizace
+      href: authentication-authorization.md
+    - name: Přístup k informacím o uživateli
+      href: user-information.md
+    - name: Kontrola žádostí o přijetí změn v předprodukčních prostředích
+      href: review-publish-pull-requests.md
+    - name: Vlastní doména
+      href: custom-domain.md
+    - name: Sestavení a konfigurace pracovního postupu
+      href: github-actions-workflow.md
+- name: Návody
+  items:
+    - name: Nastavení místního vývoje
+      href: local-development.md
+    - name: Přidání rozhraní API
+      href: add-api.md
+    - name: Konfigurace nastavení aplikace
+      href: application-settings.md
+- name: Kurzy
+  items:
+    - name: Publikování z generátoru statických webů
+      items:
+        - name: Gatsby
+          href: publish-gatsby.md
+        - name: Hugo
+          href: publish-hugo.md
+        - name: VuePress
+          href: publish-vuepress.md
+    - name: Nasazení z architektury
+      items:
+        - name: Next.js
+          href: deploy-nextjs.md
+        - name: Nuxt.js
+          href: deploy-nuxtjs.md
+- name: Zdroje a prostředky
+  items:
+    - name: Získávání dovedností pomocí Microsoft Learn
+      items:
+        - name: 'Publikování rozhraní API a javascriptové aplikace v Angularu, Reactu, Svelte nebo Vue'
+          href: /learn/modules/publish-app-service-static-web-app-api
+        - name: Vytvoření a publikování statické webové aplikace s využitím Gatsby
+          href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - name: Kvóty
+      href: quotas.md

@@ -3,12 +3,12 @@ title: Správa zálohovaných SAP HANA databází na virtuálních počítačíc
 description: V tomto článku se seznámíte s běžnými úlohami při správě a monitorování SAP HANAch databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c810a049fafcbce6d4c840557b101e5226343ab7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e3705750e32b8b34ed397b8f68f22b0728129266
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660149"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701120"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Správa a monitorování zálohovaných databází SAP HANA
 
@@ -208,13 +208,13 @@ Obnovení ochrany databáze SAP HANA:
 
 * V nabídce **zásady zálohování** vyberte zásadu a pak vyberte **Uložit**.
 
-### <a name="upgrading-from-sap-hana-10-to-20"></a>Upgrade z SAP HANA 1,0 na 2,0
+### <a name="upgrading-from-sdc-to-mdc"></a>Upgrade z SDC na MDC
 
-Naučte se, jak pokračovat v zálohování databáze SAP HANA [po upgradu z SAP HANA 1,0 na 2,0](backup-azure-sap-hana-database-troubleshoot.md#upgrading-from-sap-hana-10-to-20).
+Naučte se, jak pokračovat v zálohování databáze SAP HANA [po upgradu z SDC na MDC](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid).
 
-### <a name="upgrading-without-a-sid-change"></a>Upgrade bez změny SID
+### <a name="upgrading-from-sdc-to-mdc-without-a-sid-change"></a>Upgrade z SDC na MDC bez změny SID
 
-Naučte se, jak pokračovat v zálohování databáze SAP HANA, jejíž [SID se po upgradu nezměnilo](backup-azure-sap-hana-database-troubleshoot.md#upgrading-without-an-sid-change).
+Naučte se, jak pokračovat v zálohování databáze SAP HANA, jejíž [SID se po upgradu z SDC na MDC nezměnilo](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid).
 
 ### <a name="unregister-an-sap-hana-instance"></a>Zrušení registrace instance SAP HANA
 

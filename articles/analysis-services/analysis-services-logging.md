@@ -4,15 +4,15 @@ description: Popisuje, jak nastavit protokolování pro monitorování Azure Ana
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 71a81c4a3a57c206540e20f7c7e58949c552e582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128936"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701491"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
@@ -90,7 +90,7 @@ Kategorie metriky zapisuje stejné [metriky serveru](analysis-services-monitor.m
 
 3. Klikněte na **Uložit**.
 
-    Pokud se zobrazí chyba oznamující, že se nepovedlo aktualizovat diagnostiku pro \<název pracovního prostoru>. ID \<předplatného předplatného> není zaregistrované pro použití Microsoft. Insights. " pomocí pokynů [Azure Diagnostics Poradce při potížích](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) zaregistrujte účet a potom tento postup opakujte.
+    Pokud se zobrazí chyba oznamující, že se nepovedlo aktualizovat diagnostiku pro \< název pracovního prostoru>. \<ID předplatného předplatného> není zaregistrované pro použití Microsoft. Insights. " pomocí pokynů [Azure Diagnostics Poradce při potížích](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) zaregistrujte účet a potom tento postup opakujte.
 
     Pokud chcete změnit způsob, jakým se protokoly prostředků ukládají do libovolného bodu v budoucnu, můžete se na tuto stránku vrátit a změnit nastavení.
 
@@ -158,7 +158,7 @@ Pokud chcete zobrazit diagnostická data, v Log Analytics pracovním prostoru ot
 
 ![Možnosti prohledávání protokolu v Azure Portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-V Tvůrci dotazů rozbalte položku **LogManagement** > **AzureDiagnostics**. AzureDiagnostics zahrnuje události modulu a služby. Všimněte si, že je dotaz vytvořen průběžně. Pole EventClass\_s obsahuje názvy xEvent, které mohou vypadat dobře, pokud jste použili xEvents pro místní protokolování. Klikněte **na\_EventClass s** nebo na jeden z názvů událostí a Log Analytics pracovní prostor stále sestavuje dotaz. Nezapomeňte si své dotazy uložit pro pozdější použití.
+V Tvůrci dotazů rozbalte položku **LogManagement**  >  **AzureDiagnostics**. AzureDiagnostics zahrnuje události modulu a služby. Všimněte si, že je dotaz vytvořen průběžně. Pole EventClass \_ s obsahuje názvy xEvent, které mohou vypadat dobře, pokud jste použili xEvents pro místní protokolování. Klikněte na **EventClass \_ s** nebo na jeden z názvů událostí a Log Analytics pracovní prostor stále sestavuje dotaz. Nezapomeňte si své dotazy uložit pro pozdější použití.
 
 ### <a name="example-queries"></a>Příklady dotazů
 
@@ -251,7 +251,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 Pro svoje protokoly můžete použít existující účet úložiště, pokud je ve stejném předplatném jako váš server. V tomto kurzu vytvoříte nový účet úložiště vyhrazený pro Analysis Services protokoly. Pokud chcete usnadnit ukládání podrobností účtu úložiště do proměnné s názvem **SA**.
 
-Použijete také stejnou skupinu prostředků jako ta, která obsahuje váš server Analysis Services. Nahraďte hodnoty `awsales_resgroup`pro `awsaleslogs`, a `West Central US` vlastními hodnotami:
+Použijete také stejnou skupinu prostředků jako ta, která obsahuje váš server Analysis Services. Nahraďte hodnoty pro `awsales_resgroup` , `awsaleslogs` a `West Central US` vlastními hodnotami:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `

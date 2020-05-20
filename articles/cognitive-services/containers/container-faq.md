@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592181"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701809"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Cognitive Services Containers (FAQ)
 
@@ -22,7 +22,7 @@ ms.locfileid: "83592181"
 
 **Otázka: co je k dispozici?**
 
-**A:** Kontejnery Azure Cognitive Services umožňují vývojářům používat stejné inteligentní rozhraní API, která jsou k dispozici v Azure, ale s [výhodami](../cognitive-services-container-support.md#features-and-benefits) kontejneru. Některé kontejnery jsou k dispozici jako [gated Preview](../cognitive-services-gating-process.md), což může vyžadovat aplikaci k přístupu. Další kontejnery jsou veřejně dostupné jako nebrané verze Preview nebo jsou všeobecně dostupné. Úplný seznam kontejnerů a jejich dostupnosti najdete v článku [Podpora kontejnerů v Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) . 
+**A:** Kontejnery Azure Cognitive Services umožňují vývojářům používat stejné inteligentní rozhraní API, která jsou k dispozici v Azure, ale s [výhodami](../cognitive-services-container-support.md#features-and-benefits) kontejneru. Některé kontejnery jsou k dispozici jako ověřovaná verze Preview, které mohou vyžadovat přístup k aplikaci. Další kontejnery jsou veřejně dostupné jako nebrané verze Preview nebo jsou všeobecně dostupné. Úplný seznam kontejnerů a jejich dostupnosti najdete v článku [Podpora kontejnerů v Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) . 
 
 **Otázka: existuje nějaký rozdíl mezi Cognitive Services cloudem a kontejnery?**
 
@@ -103,8 +103,8 @@ Seznamte se s případnými otázkami a odpověďmi, které odpovídají vašim 
 **A:** Zákazníkům se účtují na základě spotřeby, podobně jako u Cognitive Servicesho cloudu. Kontejnery je potřeba nakonfigurovat tak, aby odesílaly data měření do Azure, a odpovídajícím způsobem se účtují transakce. Prostředky používané v rámci hostovaných a místních služeb se budou přidávat k jedné kvótě s vrstvenými cenami a počítají se v obou použitích. Další podrobnosti najdete na stránce s cenami odpovídající nabídky.
 
 * [Detektor anomálií][ad-containers-billing]
-* [Počítačové zpracování obrazu][cv-containers-billing]
-* [Rozpoznávání tváře][fa-containers-billing]
+* [Computer Vision][cv-containers-billing]
+* [Tvář][fa-containers-billing]
 * [Rozpoznávání formulářů][fr-containers-billing]
 * [Language Understanding (LUIS)][lu-containers-billing]
 * [Rozhraní API služby Speech][sp-containers-billing]
@@ -130,8 +130,8 @@ Seznamte se s případnými otázkami a odpověďmi, které odpovídají vašim 
 **A:** Kontejnery Cognitive Services jsou kontejnery založené na platformě x64, které můžou spouštět libovolný kompatibilní uzel Linux, virtuální počítač a hraniční zařízení, které podporují kontejnery Docker platformy x64 Linux. Všechny vyžadují procesorové procesory. Minimální a doporučené konfigurace pro jednotlivé nabídky kontejnerů jsou k dispozici níže:
 
 * [Detektor anomálií][ad-containers-recommendations]
-* [Počítačové zpracování obrazu][cv-containers-recommendations]
-* [Rozpoznávání tváře][fa-containers-recommendations]
+* [Computer Vision][cv-containers-recommendations]
+* [Tvář][fa-containers-recommendations]
 * [Rozpoznávání formulářů][fr-containers-recommendations]
 * [Language Understanding (LUIS)][lu-containers-recommendations]
 * [Rozhraní API služby Speech][sp-containers-recommendations]

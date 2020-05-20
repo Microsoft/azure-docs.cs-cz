@@ -67,6 +67,8 @@
           href: cdn-restrict-access-by-country.md
         - name: Vylepšení výkonu prostřednictvím komprimace souborů
           href: cdn-improve-performance.md
+        - name: Více zdrojů koncových bodů
+          href: endpoint-multiorigin.md
         - name: Řízení chování při ukládání do mezipaměti
           items:
             - name: Řízení chování při ukládání do mezipaměti pomocí pravidel ukládání do mezipaměti

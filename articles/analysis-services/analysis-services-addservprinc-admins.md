@@ -4,16 +4,16 @@ description: Naučte se přidat instanční objekt služby Automation do role sp
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 925fbbb51ac240b96486a2c0aa09c850a8d164bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80408647"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697527"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání instančního objektu k roli správce serveru 
 
@@ -30,7 +30,7 @@ Před dokončením této úlohy musíte mít v Azure Active Directory zaregistro
 Správce serveru můžete nakonfigurovat pomocí SQL Server Management Studio (SSMS). K dokončení této úlohy musíte mít oprávnění [Správce serveru](analysis-services-server-admins.md) na serveru Azure as. 
 
 1. V SSMS se připojte k Azure AS serveru.
-2. V nabídce > **zabezpečení** **vlastností serveru**klikněte na **Přidat**.
+2. V nabídce zabezpečení **vlastností serveru**  >  **Security**klikněte na **Přidat**.
 3. V nabídce **Vyberte uživatele nebo skupinu**vyhledejte registrovanou aplikaci podle názvu, vyberte a pak klikněte na **Přidat**.
 
     ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
@@ -44,7 +44,7 @@ Správce serveru můžete nakonfigurovat pomocí SQL Server Management Studio (S
 Správce serveru můžete také nakonfigurovat tak, že nasadíte Analysis Services Server pomocí šablony Azure Resource Manager. Identita, která spouští nasazení, musí patřit do role **přispěvatele** pro prostředek v [Access Control na základě rolí Azure (RBAC)](../role-based-access-control/overview.md).
 
 > [!IMPORTANT]
-> Instanční objekt se musí přidat pomocí formátu `app:{service-principal-client-id}@{azure-ad-tenant-id}`.
+> Instanční objekt se musí přidat pomocí formátu `app:{service-principal-client-id}@{azure-ad-tenant-id}` .
 
 Následující Správce prostředků šablona nasadí Server Analysis Services se zadaným objektem služby přidaným do role správce Analysis Services:
 

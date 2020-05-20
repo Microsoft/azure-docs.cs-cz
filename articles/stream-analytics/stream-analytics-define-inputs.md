@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52f333a8e39dfd8f68666e6438a7d40414b6f958
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254466"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701417"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamování dat jako vstup do Stream Analytics
 
@@ -20,7 +20,7 @@ Stream Analytics má prvotřídní integraci s datovými proudy Azure jako vstup
 
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
-- [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
+- [Úložiště objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) 
 
 Tyto vstupní prostředky můžou být živé ve stejném předplatném Azure jako vaše úloha Stream Analytics nebo jiné předplatné.
 
@@ -57,7 +57,7 @@ Následující tabulka vysvětluje jednotlivé vlastnosti na **nové vstupní** 
 | **Skupina uživatelů centra událostí** (doporučeno) | Důrazně doporučujeme použít pro každou úlohu Stream Analytics odlišnou skupinu uživatelů. Tento řetězec identifikuje skupinu uživatelů, která se má použít k ingestování dat z centra událostí. Pokud není zadána žádná skupina příjemců, úloha Stream Analytics používá skupinu uživatelů $Default.  |
 | **Klíč oddílu** | Pokud je vstup rozdělený pomocí vlastnosti, můžete přidat název této vlastnosti. Klíče oddílů jsou volitelné a slouží ke zlepšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Ujistěte se, že formát JSON se zarovnává se specifikací a neobsahuje úvodní číslo 0 pro desetinná čísla. |
-| **Kódování** | Kódování UTF-8 je aktuálně jediným podporovaným formátem kódování. |
+| **Encoding** | Kódování UTF-8 je aktuálně jediným podporovaným formátem kódování. |
 | **Typ komprese události** | Typ komprese používaný ke čtení příchozího datového proudu, jako je například None (výchozí), GZip nebo deflate. |
 
 Když data pocházejí z datového proudu centra událostí, máte v Stream Analytics dotazu přístup k následujícím polím metadat:
@@ -86,7 +86,7 @@ FROM Input
 
 Azure IoT Hub je vysoce škálovatelný ingestování událostí publikování a odběru optimalizované pro scénáře IoT.
 
-Výchozím časovým razítkem událostí přicházejících z IoT Hub v Stream Analytics je časové razítko, které událost dorazila do IoT Hub `EventEnqueuedUtcTime`, což je. Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) .
+Výchozím časovým razítkem událostí přicházejících z IoT Hub v Stream Analytics je časové razítko, které událost dorazila do IoT Hub, což je `EventEnqueuedUtcTime` . Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) .
 
 ### <a name="iot-hub-consumer-groups"></a>Skupiny uživatelů centra IoT Hub
 
@@ -107,7 +107,7 @@ V následující tabulce jsou popsány jednotlivé vlastnosti na **nové vstupn�
 | **Skupina uživatelů** | Důrazně doporučujeme pro každou úlohu Stream Analytics použít jinou skupinu uživatelů. Skupina příjemců slouží k ingestování dat z IoT Hub. Stream Analytics používá skupinu příjemců $Default, pokud neurčíte jinak.  |
 | **Klíč oddílu** | Pokud je vstup rozdělený pomocí vlastnosti, můžete přidat název této vlastnosti. Klíče oddílů jsou volitelné a slouží ke zlepšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Ujistěte se, že formát JSON se zarovnává se specifikací a neobsahuje úvodní číslo 0 pro desetinná čísla. |
-| **Kódování** | Kódování UTF-8 je aktuálně jediným podporovaným formátem kódování. |
+| **Encoding** | Kódování UTF-8 je aktuálně jediným podporovaným formátem kódování. |
 | **Typ komprese události** | Typ komprese používaný ke čtení příchozího datového proudu, jako je například None (výchozí), GZip nebo deflate. |
 
 
@@ -130,11 +130,11 @@ Pro scénáře s velkým množstvím nestrukturovaných dat, která se mají ukl
 
 Zpracování protokolu je běžně používaný scénář pro použití vstupů služby Blob Storage s Stream Analytics. V tomto scénáři byly datové soubory telemetrie zachyceny ze systému a musí být analyzovány a zpracovány pro extrakci smysluplných dat.
 
-Výchozím časovým razítkem událostí služby Blob Storage v Stream Analytics je časové razítko, které bylo naposledy změněno v `BlobLastModifiedUtcTime`objektu BLOB. Pokud se objekt BLOB nahraje do účtu úložiště v 13:00 a úloha Azure Stream Analytics se spustí pomocí možnosti *Now* (13:01), objekt BLOB se nevybere, protože čas změny spadá mimo dobu běhu úlohy.
+Výchozím časovým razítkem událostí služby Blob Storage v Stream Analytics je časové razítko, které bylo naposledy změněno v objektu BLOB `BlobLastModifiedUtcTime` . Pokud se objekt BLOB nahraje do účtu úložiště v 13:00 a úloha Azure Stream Analytics se spustí pomocí možnosti *Now* (13:01), objekt BLOB se nevybere, protože čas změny spadá mimo dobu běhu úlohy.
 
 Pokud se objekt BLOB nahraje do kontejneru účtu úložiště v 13:00 a úloha Azure Stream Analytics se spustí s využitím *vlastního času* v 13:00 nebo dřívějším, bude se tento objekt BLOB vyzvednout, protože čas změny spadá do doby běhu úlohy.
 
-Pokud se úloha Azure Stream Analytics začala používat *hned* v 13:00 a do kontejneru účtu úložiště se nahraje objekt blob na 13:01, Azure Stream Analytics si tento objekt BLOB zachová.
+Pokud se úloha Azure Stream Analytics začala používat *hned* v 13:00 a do kontejneru účtu úložiště se nahraje objekt blob na 13:01, Azure Stream Analytics si tento objekt BLOB zachová. Časové razítko přiřazené ke každému objektu BLOB je založeno pouze na `BlobLastModifiedTime` . Složka, ve které je objekt blob, nemá žádnou relaci s přiřazeným časovým razítkem. Pokud je například objekt BLOB *2019/10-01/00/B1. txt* s `BlobLastModifiedTime` 2019-11-11, bude časové razítko přiřazené tomuto objektu BLOB 2019-11-11.
 
 Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) . Stream Analytics úloha vyžádá data ze vstupu Azure Blob Storage každou sekundu, pokud je k dispozici soubor BLOB. Pokud soubor BLOB není k dispozici, existuje exponenciální omezení rychlosti s maximálním časovým intervalem 90 sekund.
 
@@ -143,7 +143,7 @@ Vstupy ve formátu CSV vyžadují pro definování polí pro datovou sadu řáde
 > [!NOTE]
 > Stream Analytics nepodporuje přidávání obsahu do existujícího souboru objektů BLOB. Stream Analytics bude každý soubor zobrazovat pouze jednou a všechny změny, ke kterým došlo v souboru poté, co úloha data přečte, nejsou zpracovány. Osvědčeným postupem je nahrát všechna data pro soubor objektu BLOB najednou a pak přidat další novější události do jiného, nového souboru BLOB.
 
-Nahrávání velmi velkého počtu objektů BLOB najednou může způsobit Stream Analytics Přeskočit čtení několika objektů BLOB ve výjimečných případech. Doporučujeme nahrávat objekty blob alespoň 2 sekundy od úložiště objektů BLOB. Pokud tato možnost není proveditelná, můžete použít Event Hubs ke streamování velkých objemů událostí. 
+Ve scénářích, kdy jsou průběžně přidané a Stream Analytics zpracovává objekty BLOB při jejich přidání, je možné, že některé objekty blob budou ve výjimečných případech přeskočeny kvůli členitosti `BlobLastModifiedTime` . To můžete zmírnit tím, že nahrajete objekty blob alespoň dvě sekundy od sebe. Pokud tato možnost není proveditelná, můžete použít Event Hubs ke streamování velkých objemů událostí.
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>Konfigurace úložiště objektů BLOB jako vstupu datového proudu 
 
@@ -156,12 +156,12 @@ V následující tabulce jsou popsány jednotlivé vlastnosti na **nové vstupn�
 | **Účet úložiště** | Název účtu úložiště, ve kterém se nacházejí soubory objektů BLOB. |
 | **Klíč účtu úložiště** | Tajný klíč přidružený k účtu úložiště Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení úložiště objektů BLOB ručně. |
 | **Kontejner** | Kontejner pro vstup objektu BLOB Kontejnery poskytují logické seskupení pro objekty blob uložené v Blob service Microsoft Azure. Když nahrajete objekt blob do služby Azure Blob Storage, musíte pro tento objekt BLOB zadat kontejner. Můžete zvolit možnost **použít existující** kontejner nebo **vytvořit nový** , chcete-li vytvořit nový kontejner.|
-| **Vzor cesty** (volitelné) | Cesta k souboru, který se používá k vyhledání objektů BLOB v zadaném kontejneru. Pokud chcete číst objekty BLOB z kořenového adresáře kontejneru, nenastavujte vzor cesty. V cestě můžete zadat jednu nebo více instancí následujících tří proměnných:, `{date}` `{time}`nebo.`{partition}`<br/><br/>Příklad 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2:`cluster1/logs/{date}`<br/><br/>`*` Znak není povolená hodnota pro předponu cesty. Jsou povoleny pouze platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">znaky objektu BLOB v Azure</a> . Nezahrnujte názvy kontejnerů nebo názvy souborů. |
-| **Formát data** (volitelné) | Použijete-li proměnnou data v cestě, formát data, ve kterém jsou soubory uspořádány. Příklad: `YYYY/MM/DD` |
-| **Formát času** (volitelné) |  Použijete-li časovou proměnnou v cestě, formát času, ve kterém jsou soubory uspořádány. V současné době je `HH` jediná podporovaná hodnota pro hodiny. |
+| **Vzor cesty** (volitelné) | Cesta k souboru, který se používá k vyhledání objektů BLOB v zadaném kontejneru. Pokud chcete číst objekty BLOB z kořenového adresáře kontejneru, nenastavujte vzor cesty. V cestě můžete zadat jednu nebo více instancí následujících tří proměnných: `{date}` , `{time}` nebo.`{partition}`<br/><br/>Příklad 1:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2:`cluster1/logs/{date}`<br/><br/>`*`Znak není povolená hodnota pro předponu cesty. Jsou povoleny pouze platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">znaky objektu BLOB v Azure</a> . Nezahrnujte názvy kontejnerů nebo názvy souborů. |
+| **Formát data** (volitelné) | Použijete-li proměnnou data v cestě, formát data, ve kterém jsou soubory uspořádány. Příklad: `YYYY/MM/DD` <br/><br/> Pokud má vstup objektu BLOB `{date}` nebo `{time}` v jeho cestě, složky se procházejí ve vzestupném časovém pořadí.|
+| **Formát času** (volitelné) |  Použijete-li časovou proměnnou v cestě, formát času, ve kterém jsou soubory uspořádány. V současné době je jediná podporovaná hodnota `HH` pro hodiny. |
 | **Klíč oddílu** | Pokud je vstup rozdělený pomocí vlastnosti, můžete přidat název této vlastnosti. Klíče oddílů jsou volitelné a slouží ke zlepšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Ujistěte se, že formát JSON se zarovnává se specifikací a neobsahuje úvodní číslo 0 pro desetinná čísla. |
-| **Kódování** | V případě sdílených svazků clusteru a JSON je kódování UTF-8 aktuálně jediným podporovaným formátem kódování. |
+| **Encoding** | V případě sdílených svazků clusteru a JSON je kódování UTF-8 aktuálně jediným podporovaným formátem kódování. |
 | **Komprese** | Typ komprese používaný ke čtení příchozího datového proudu, jako je například None (výchozí), GZip nebo deflate. |
 
 Když data pocházejí ze zdroje úložiště objektů blob, máte v Stream Analytics dotazu přístup k následujícím polím metadat:

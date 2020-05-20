@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: ba21dfc900145ceeacab6c363e5de84b830282b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f65912d0e2ab322d73315828a98cc48274850fc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82109540"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696398"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které mohou vést k ovlivnění virtuálního počítače v Azure: neplánovaná údržba hardwaru, neočekávané výpadky a plánovaná údržba.
@@ -33,7 +33,7 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 * [Konfigurace více virtuálních počítačů ve skupině dostupnosti pro zajištění redundance]
 * [Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti]
 * [Použití naplánovaných událostí k proaktivní reakci na události s vlivem na virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
-* [Konfigurace jednotlivých vrstev aplikace v samostatných skupinách dostupnosti]
+* [Konfigurace jednotlivých vrstev aplikace na samostatné skupiny dostupnosti]
 * [Kombinování Load Balancer se skupinami dostupnosti]
 * [Použití zón dostupnosti k ochraně před chybami na úrovni datacentra]
 
@@ -91,19 +91,12 @@ Pokud máte v úmyslu používat virtuální počítače s nespravovanými disky
 
 1. **Uchovávejte všechny disky (s operačním systémem i s daty) přidružené k virtuálnímu počítači ve stejném účtu úložiště.**
 2. Před přidáním dalších virtuálních pevných disků do účtu úložiště **Zkontrolujte [omezení](../articles/storage/blobs/scalability-targets-premium-page-blobs.md) počtu nespravovaných disků v Azure Storageovém účtu** .
-3. **Pro každý virtuální počítač ve skupině dostupnosti použijte samostatný účet úložiště.** Nesdílejte účty služby Storage mezi více virtuálními počítači ve stejné skupině dostupnosti. Je přijatelné pro virtuální počítače v různých skupinách dostupnosti ke sdílení účtů úložiště, pokud jsou výše osvědčené ![postupy následovány nespravovanými disky doménami selhání](./media/virtual-machines-common-manage-availability/umd-updated.png)
+3. **Pro každý virtuální počítač ve skupině dostupnosti použijte samostatný účet úložiště.** Nesdílejte účty služby Storage mezi více virtuálními počítači ve stejné skupině dostupnosti. Je přijatelné pro virtuální počítače v různých skupinách dostupnosti ke sdílení účtů úložiště, pokud jsou výše osvědčené postupy následovány ![ nespravovanými disky doménami selhání](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Použití naplánovaných událostí k proaktivní reakci na události s vlivem na virtuální počítače
 
 Když se přihlásíte k odběru [plánovaných událostí](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events), váš virtuální počítač se upozorní na nadcházející události údržby, které můžou mít vliv na váš virtuální počítač. Po povolení naplánovaných událostí se vašemu virtuálnímu počítači přidává minimální doba před provedením aktivity údržby. Například aktualizace operačního systému hostitele, které by mohly mít vliv na váš virtuální počítač, se zařadí do fronty jako události, které určují dopad, a také čas, kdy se údržba provede, když se neprovede žádná akce. Pokud Azure zjistí bezprostřední selhání hardwaru, které by mohlo mít vliv na váš virtuální počítač, můžete také zařadit do fronty plánované události. to vám umožní určit, kdy se má opravit. Zákazníci mohou tuto událost použít k provádění úkolů před údržbou, jako je například ukládání stavu, selhání při selhání do sekundárního a tak dále. Po dokončení logiky pro řádné zpracování události údržby můžete schválit nedokončené plánované události a povolit, aby platforma pokračovala s údržbou.
 
-## <a name="configure-each-application-tier-into-separate-availability-zones-or-availability-sets"></a>Konfigurace jednotlivých vrstev aplikace na samostatné zóny dostupnosti nebo skupiny dostupnosti
-Pokud jsou vaše virtuální počítače téměř totožné a slouží pro vaši aplikaci stejný účel, doporučujeme pro každou vrstvu aplikace nakonfigurovat zónu dostupnosti nebo skupinu dostupnosti.  Pokud ve stejné zóně dostupnosti nebo sadě umístíte dvě různé úrovně, můžou se všechny virtuální počítače ve stejné aplikační vrstvě restartovat najednou. Konfigurací aspoň dvou virtuálních počítačů v zóně dostupnosti nebo nastavením pro každou úroveň zajistíte, aby byl k dispozici alespoň jeden virtuální počítač v každé vrstvě.
-
-Můžete například umístit všechny virtuální počítače na front-end aplikace, na které běží IIS, Apache a Nginx, v jedné zóně dostupnosti nebo sadě. Ujistěte se, že se ve stejné zóně dostupnosti nebo sadě nacházejí pouze front-end virtuální počítače. Podobně zajistěte, aby byly pouze virtuální počítače datové vrstvy umístěny do vlastní zóny dostupnosti nebo sady, jako jsou například replikované SQL Server virtuální počítače nebo vaše virtuální počítače MySQL.
-
-<!--Image reference-->
-   ![Úrovně aplikace](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Kombinování nástroje pro vyrovnávání zatížení se zónami nebo sadami dostupnosti
 Zkombinujte [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) se zónou dostupnosti nebo nastavte, aby se získala nejvyšší odolnost aplikace. Azure Load Balancer rozděluje provoz mezi víc virtuálních počítačů. Azure Load Balancer je součástí virtuálních počítačů úrovně Standard. Ne všechny úrovně virtuálních počítačů zahrnují nástroj Azure Load Balancer. Další informace o vyrovnávání zatížení virtuálních počítačů najdete v článku [Vyrovnávání zatížení virtuálních počítačů](../articles/virtual-machines/virtual-machines-linux-load-balance.md).
@@ -115,7 +108,6 @@ Kurz o tom, jak vyrovnávat zatížení napříč zónami dostupnosti, najdete v
 
 <!-- Link references -->
 [Konfigurace více virtuálních počítačů ve skupině dostupnosti pro zajištění redundance]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[Konfigurace jednotlivých vrstev aplikace v samostatných skupinách dostupnosti]: #configure-each-application-tier-into-separate-availability-zones-or-availability-sets
 [Kombinování Load Balancer se skupinami dostupnosti]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti]: #use-managed-disks-for-vms-in-an-availability-set

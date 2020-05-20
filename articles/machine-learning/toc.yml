@@ -138,9 +138,6 @@
       href: concept-model-management-and-deployment.md
     - name: Přenositelnost modelů (ONNX)
       href: concept-onnx.md
-    - name: Interpretovatelnost modelů
-      displayName: explainability
-      href: how-to-machine-learning-interpretability.md
     - name: Kanály ML
       href: concept-ml-pipelines.md
     - name: Zabezpečení a připravenost na úrovni podniku
@@ -172,6 +169,20 @@
           href: how-to-setup-authentication.md
         - name: Monitorování Azure Machine Learningu
           href: monitor-azure-machine-learning.md
+    - name: Zodpovědné strojové učení
+      items:
+        - name: Přehled zodpovědného strojového učení
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: Interpretovatelnost modelů
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: Spravedlivý přístup v Machine Learningu
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: Rozdílová ochrana soukromí
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
 - name: Návody
   items:
     - name: Vytváření a správa pracovních prostorů
@@ -273,6 +284,8 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: Zpětnovazební učení
+          href: how-to-use-reinforcement-learning.md
     - name: Interpretace a vysvětlení modelů
       displayName: interpretability
       items:

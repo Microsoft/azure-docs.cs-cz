@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 31b8960f5617566a72545510cf03771f7a3bfcbd
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.date: 05/19/2020
+ms.openlocfilehash: 25b7a619f6d3e308de966ead5925133f6094d9c8
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82745009"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701078"
 ---
 # <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>Vytvoření nabídky virtuálního počítače Azure v Azure Marketplace
 
@@ -37,9 +37,9 @@ Publikování do Azure Marketplace má následující výhody:
 Pokud jste to ještě neudělali, Projděte si [příručku pro publikování nabídek virtuálních počítačů](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) a materiál tohoto virtuálního počítače Azure:
 
 - Průvodci rychlým startem
-  - [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
+  - [Šablony Azure pro rychlé zprovoznění](https://azure.microsoft.com/resources/templates/)
   - [Šablony Azure pro rychlý Start pro GitHub](https://github.com/azure/azure-quickstart-templates)
-- Kurzy
+- Výukové kurzy
   - [Virtuální počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
   - [Virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - ukázky
@@ -61,8 +61,8 @@ Váš technický tým by měl pochopit tyto technologie Microsoftu:
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
-3. Na stránce Přehled vyberte **+ Nová nabídka** > **virtuální počítač Azure**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **virtuální počítač Azure**.
 
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-azure-vm.png)
 
@@ -74,7 +74,7 @@ Váš technický tým by měl pochopit tyto technologie Microsoftu:
 Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku Marketplace a v Azure PowerShell a Azure CLI, pokud jsou k dispozici.
-- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
 Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
@@ -197,32 +197,11 @@ Zadejte delší popis vaší nabídky. Může to být až 256 znaků dlouhé a p
 
 #### <a name="description"></a>Popis
 
-Zadejte podrobný popis vaší nabídky, maximálně 3 000 znaků. Zobrazí se zákazníkům v přehledu výpisu komerčního tržiště.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Do popisu zahrňte jednu nebo více z následujících možností:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Hodnota a klíčové výhody vaší nabídky
-- Přidružení kategorie nebo oboru nebo obojí
-- Možnosti nákupu v aplikaci
-- Jakékoli požadované zpřístupnění
-
-Zde jsou některé tipy pro psaní popisu:
-
-- Jasně popište hodnotu umístění vaší nabídky v prvních několika větách popisu. Zadejte následující položky:
-  - Popis vaší nabídky
-  - Typ uživatele, který je z vaší nabídky přínosný
-  - Potřeby zákazníků nebo problémy, které adresa nabídky řeší.
-- Pamatujte, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět.
-- Nespoléhá se na funkce a funkce k prodeji vaší nabídky. Místo toho se zaměřte na hodnotu, kterou nabízí vaše nabídka.
-- Použijte slova specifická pro konkrétní odvětví nebo na základě výhod.
-
-Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k použití formátování.
-
-![Použití editoru textu ve formátu RTF](./media/rich-text-editor.png)
-
-| <center>Změnit formát textu | <center>Přidat odrážky nebo číslování | <center>Přidat nebo odebrat odsazení textu |
-| --- | --- | --- |
-| <center>![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png) |  <center>![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png) |  <center>![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-link"></a>Odkaz zásady ochrany osobních údajů
 
@@ -247,7 +226,7 @@ Poskytněte web podpory, kde se zákazníci můžou připojit k vašemu týmu po
 Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístek podpory. Tato akce nebude uvedena na webu Marketplace.
 
 - Name
-- E-mailu
+- E-mail
 - Telefon
 
 ### <a name="engineering-contact"></a>Technický kontakt
@@ -255,7 +234,7 @@ Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, kd
 Poskytněte kontaktní informace Microsoftu pro použití v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tato akce nebude uvedena na webu Marketplace.
 
 - Name
-- E-mailu
+- E-mail
 - Telefon
 
 ### <a name="marketplace-media"></a>Média Marketplace
@@ -276,7 +255,7 @@ Zadejte soubory PNG pro logo vaší nabídky v následujících čtyřech veliko
 
 Všechny čtyři loga jsou povinná a používají se na různých místech v seznamu Marketplace.
 
-#### <a name="screenshots"></a>Snímky obrazovek
+#### <a name="screenshots"></a>Screenshoty
 
 Přidejte až pět snímků obrazovky, které ukazují, jak vaše nabídka funguje. Velikost každého snímku obrazovky musí být 1280 × 720 pixelů a ve formátu PNG. Každý snímek obrazovky musí obsahovat titulek.
 
@@ -527,7 +506,7 @@ Krok **ručního ověření** v procesu publikování představuje rozsáhlou ko
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i probíhající) a jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
+Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) .

@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 17a6b7e46341ee0231ac88b849495cfc7e46ad88
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.date: 05/19/2020
+ms.openlocfilehash: 9c31c6ca4ccb5ff328faa5db1803134aa6b0c873
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839143"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701132"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Vytvoření aplikace Power BI pro Microsoft AppSource
 
@@ -23,8 +23,8 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
-3. Na stránce Přehled vyberte **+ Nová nabídka** > **Power BI aplikace služby**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Power BI aplikace služby**.
 
    ![Znázorňuje levou navigační nabídku.](./media/new-offer-pbi-app.png)
 
@@ -39,7 +39,7 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
-- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
 Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
@@ -53,7 +53,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Tato stránka zobrazuje vizuální znázornění kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
+Obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) .
@@ -96,7 +96,7 @@ Tato stránka vám umožní definovat kategorie a odvětví používané k sesku
 
 Vyberte minimálně jednu a maximálně tři kategorie. Tyto kategorie slouží k umístění vaší nabídky do příslušných oblastí hledání na webu Marketplace a zobrazují se na stránce s podrobnostmi o vaší nabídce. V popisu nabídky vysvětlete, jak vaše nabídka tyto kategorie podporuje.
 
-### <a name="industry"></a>Odvětví
+### <a name="industry"></a>Obor
 
 Volitelně můžete v rámci každého odvětví vybrat až dva obory a dvě svislá. Kategorie se používají k zobrazení vaší nabídky, a proto se ve vyhledávacích filtrech používá obor a svislá a používají se v prezentace. Pokud vaše nabídka cílí na konkrétní odvětví a/nebo vertikálně, použijte popis nabídky a vysvětlete, jak vaše nabídka podporuje vybrané obory nebo svislé hodnoty. Pokud vaše nabídka není specifická pro konkrétní obor, ponechte tuto část prázdnou.
 
@@ -104,22 +104,22 @@ Volitelně můžete v rámci každého odvětví vybrat až dva obory a dvě svi
 > Vzhledem k tomu, že pracujeme na zavedení nových odvětví a vertikálních vylepšení prostředí pro vyhledávání nabídek, nemusí být některé obory nebo svislé prvky na prezentace ještě viditelné. Obory a svislé označení označené symbolem (*) budou k dispozici v budoucím datu. Všechny publikované nabídky jsou zjistitelné přes hledání klíčových slov.
 <p>&nbsp;
 
-| **Odvětví** | **Subobory** |
+| **Obor** | **Subobory** |
 | --- | --- |
 | * Automobilový | * Automobilový |
 | Zemědělství | * Jiné – nesegmentované |
 | Distribuce | * Velkoobchod<br>Zásilka a odeslání balíčku |
-| Education | *Vyšší vzdělávání<br> * Primární a sekundární vzdělávání/K-12<br>* Knihovny a muzeí |
-| Finanční služby | *Bankovní a kapitálové<br> trhy* Pojišťovací |
-| Státní správa | *Obrana a inteligentní informace (používá se pro volání vnitrostátního a veřejného<br> zabezpečení)* Veřejné zabezpečení a spravedlnosti<br>* Civilní samospráva |
-| Zdravotní péče (používá se pro volání stavu) | *Plátce<br> stavu* Poskytovatel stavu<br>* Farmaceutické výrobky |
-| Výroba a prostředky (používané pro volání výroby) | *Chemické a Agrochemical<br> * Diskrétní výroba<br>* Energie |
-| Maloobchodní a spotřební zboží (používá se pro volání maloobchodního prodeje) | *Spotřební zboží<br> * Maloobchodní |
-| * Média a komunikace (používá se pro volání médií a zábavy) | *Média a zábava<br> * Telekomunikace |
-| Professional Services | *Právní<br> * informace Profesionální služby partnerů |
+| Vzdělávání | *Vyšší vzdělávání <br> * Primární a sekundární vzdělávání/K-12<br>* Knihovny a muzeí |
+| Finanční služby | *Bankovní a kapitálové <br> trhy* Pojišťovací |
+| Státní správa | *Obrana a inteligentní informace (používá se pro volání vnitrostátního a veřejného <br> zabezpečení)* Veřejné zabezpečení a spravedlnosti<br>* Civilní samospráva |
+| Zdravotní péče (používá se pro volání stavu) | *Plátce <br> stavu* Poskytovatel stavu<br>* Farmaceutické výrobky |
+| Výroba a prostředky (používané pro volání výroby) | *Chemické a Agrochemical <br> * Diskrétní výroba<br>* Energie |
+| Maloobchodní a spotřební zboží (používá se pro volání maloobchodního prodeje) | *Spotřební zboží <br> * Maloobchodní |
+| * Média a komunikace (používá se pro volání médií a zábavy) | *Média a zábava <br> * Telekomunikace |
+| Professional Services | *Právní <br> * informace Profesionální služby partnerů |
 | * Architektura a konstrukce (používá se pro volání technologie pro vytváření architektury) | * Jiné – nesegmentované |
-| * Pohostinství a cestování | *Hotely a volný<br> čas* Cestovné a přeprava<br>* Restaurace a potravinové služby |
-| * Ostatní odvětví veřejného sektoru | *Lesnictví a rybolov<br> * Neziskové organizace |
+| * Pohostinství a cestování | *Hotely a volný <br> čas* Cestovné a přeprava<br>* Restaurace a potravinové služby |
+| * Ostatní odvětví veřejného sektoru | *Lesnictví a rybolov <br> * Neziskové organizace |
 | * Nemovitosti | * Jiné – nesegmentované |
 
 ### <a name="legal"></a>Právní informace
@@ -161,32 +161,11 @@ Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a 
 
 ### <a name="description"></a>Popis
 
-Zadejte delší popis nabídky, maximálně 3 000 znaků. Zobrazí se zákazníkům v přehledu výpisu na webu Marketplace.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Do popisu zahrňte jednu nebo více z následujících možností:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Hodnota a klíčové výhody, které vaše nabídka nabízí.
-- Přidružení kategorie nebo oboru nebo obojí.
-- Možnosti nákupu v aplikaci
-- Všechna požadovaná zveřejnění.
-
-Zde jsou některé tipy pro psaní popisu:
-
-- Jasně popište hodnotu vaší nabídky v prvních několika větách popisu. Zadejte následující položky:
-  - Popis nabídky
-  - Typ uživatele, který je z nabídky výhodou
-  - Zákazník potřebuje nebo vydá adresy nabídky.
-- Pamatujte, že ve výsledcích hledání se může zobrazit několik prvních vět.
-- Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou nabízí vaše nabídka.
-- Zkuste použít slovníky specifické pro konkrétní obor nebo na základě výhod.
-
-Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k použití formátování.
-
-![Použití editoru textu ve formátu RTF](./media/rich-text-editor.png)
-
-| <center>Změnit formát textu | <center>Přidat odrážky nebo číslování | <center>Přidat nebo odebrat odsazení textu |
-| --- | --- | --- |
-| <center>![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png) |  <center>![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png) |  <center>![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="search-keywords"></a>Hledaná klíčová slova
 
@@ -233,7 +212,7 @@ Zadejte soubory. png pro logo vaší nabídky ve dvou velikostech v pixelech:
 
 Obě loga jsou povinná a používají se na různých místech v seznamu Marketplace.
 
-#### <a name="screenshots"></a>Snímky obrazovek
+#### <a name="screenshots"></a>Screenshoty
 
 Přidejte alespoň jeden a až pět snímků obrazovky, které ukazují, jak vaše nabídka funguje. Každá velikost musí být 1280 × 720 pixelů a ve formátu. png.
 

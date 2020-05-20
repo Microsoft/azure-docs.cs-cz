@@ -7,13 +7,13 @@ manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 41b2e12a94f5751e31f482c913c71b4731b1cf6c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.date: 05/19/2020
+ms.openlocfilehash: 3d8806e34afe45e6cced3de4554b7dd365f4ddf9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871905"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701784"
 ---
 # <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
@@ -24,8 +24,8 @@ Abyste mohli publikovat nabídku spravované služby, musíte mít [úroveň kom
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
-3. Na stránce Přehled vyberte **+ Nová nabídka** > **spravovaná služba**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **spravovaná služba**.
 
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-managed-service.png)
 
@@ -37,7 +37,7 @@ Abyste mohli publikovat nabídku spravované služby, musíte mít [úroveň kom
 Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 * Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
-* Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+* Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 * ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
 Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
@@ -94,25 +94,11 @@ Zadejte delší popis vaší nabídky (až 256 znaků). Toto dlouhé Shrnutí se
 
 ### <a name="description"></a>Popis
 
-Zadejte delší popis vaší nabídky (až 3 000 znaků). Tento popis se zobrazí zákazníkům v přehledu výpisu na webu Marketplace. Zahrňte do své nabídky svou polohu, klíčové výhody, kategorii nebo přidružení oboru, možnosti nákupu v aplikaci a veškeré požadované informace.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Pár tipů pro psaní popisu:  
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Jasně popište, jak se má v prvních několika větách popisu v této nabídce vyhodnotit. Zahrňte do svého umístění hodnoty tyto položky:
-  - Popis nabídky
-  - Typ uživatele, který je výhodou nabídky
-  - Potřeby zákazníků nebo bolesti, že adresa nabídky
-- Mějte na paměti, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět.  
-- Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou doručujete.  
-- Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami.
-
-Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k použití formátování.
-
-![Použití editoru textu ve formátu RTF](./media/rich-text-editor.png)
-
-| <center>Změnit formát textu | <center>Přidat odrážky nebo číslování | <center>Přidat nebo odebrat odsazení textu |
-| --- | --- | --- |
-| <center>![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png) |  <center>![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png) |  <center>![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="privacy-policy-link"></a>Odkaz zásady ochrany osobních údajů
 
@@ -155,7 +141,7 @@ Postupujte podle těchto pokynů pro vaše loga:
 - Na logo neumisťujte žádný text, a to ani název vaší společnosti nebo název značky.
 - Zajistěte, aby logo nebylo roztažené.
 
-#### <a name="screenshots"></a>Snímky obrazovek
+#### <a name="screenshots"></a>Screenshoty
 
 Přidejte až pět snímků obrazovky, které ukazují, jak vaše nabídka funguje. Všechny snímky obrazovky musí být 1280 × 720 pixelů.
 

@@ -53,7 +53,7 @@ Další informace o specifikacích jednotlivých typů virtuálních počítač�
 > [!Note]
 > Pokud chcete získat identifikátor SKU pro použití v PowerShellu a dalších skriptech, přidejte `Standard_` na začátek všech SKU virtuálních počítačů v následujících tabulkách. Například `D12_v2` by se stala `Standard_D12_v2` .
 
-| Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Bouře | Spark | ML Server | Kafka |
+| Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Storm | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
 | Head: výchozí velikost virtuálního počítače | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Head: Minimální doporučené velikosti virtuálních počítačů | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
@@ -68,7 +68,7 @@ Další informace o specifikacích jednotlivých typů virtuálních počítač�
 
 ### <a name="brazil-south-and-japan-west-only"></a>Brazílie – pouze jih a Japonsko – západ
 
-| Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Bouře | Spark | Služby ML |
+| Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Storm | Spark | Služby ML |
 |---|---|---|---|---|---|---|
 | Head: výchozí velikost virtuálního počítače | D12 | D12 | D13 | A4_v2 | D12 | D12 |
 | Head: Minimální doporučené velikosti virtuálních počítačů | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |

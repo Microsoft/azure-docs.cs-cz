@@ -4,12 +4,12 @@ description: Application Insights provádí inteligentní analýzu telemetrie ap
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687695"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697173"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
@@ -57,7 +57,7 @@ Oznámení inteligentní detekce jsou ve výchozím nastavení povolená a odes�
 
 U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Application Insights prostředku omezí na jeden e-mail za den. E-mail se pošle jenom v případě, že se v daném dni našel aspoň jeden nový problém. Žádná zpráva se neopakuje. 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 * *Proto si zaměstnanci Microsoftu prohledají moje údaje?*
   * Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](../../azure-monitor/app/data-retention-privacy.md).
@@ -70,12 +70,12 @@ U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Applica
 * *Můžu vytvořit vlastní pravidla detekce anomálií nebo přizpůsobit stávající pravidla?*
 
   * Ještě ne, ale můžete:
-    * [Nastavte výstrahy](../../azure-monitor/app/alerts.md) , které vás upozorní, když metrika přechází do prahové hodnoty.
+    * [Nastavte výstrahy](/azure/azure-monitor/platform/alerts-log) , které vás upozorní, když metrika přechází do prahové hodnoty.
     * [Exportujte telemetrii](../../azure-monitor/app/export-telemetry.md) do [databáze](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) nebo [Power BI](../../azure-monitor/app/export-power-bi.md ), kde ji můžete analyzovat sami.
 * *Jak často se provádí analýza?*
 
   * Analýzy provedeme denně na telemetrie z předchozího dne (celý den v časovém pásmu UTC).
-* *To znamená, že tyto [výstrahy metriky](../../azure-monitor/app/alerts.md)nahrazují?*
+* *To znamená, že tyto [výstrahy metriky](/azure/azure-monitor/platform/alerts-log)nahrazují?*
   * Ne.  Nepotvrzuji jsme zjišťování všech chování, která by se vám mohla považovat za neobvyklou.
 
 
@@ -180,5 +180,5 @@ Tyto diagnostické nástroje vám pomůžou zkontrolovat telemetrii z vaší apl
 
 Inteligentní detekce jsou zcela automatické. Možná byste ale chtěli nastavit ještě nějaké další výstrahy?
 
-* [Ručně nakonfigurované výstrahy metriky](../../azure-monitor/app/alerts.md)
+* [Ručně nakonfigurované výstrahy metriky](/azure/azure-monitor/platform/alerts-log)
 * [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md)
