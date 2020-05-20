@@ -4,15 +4,15 @@ description: Naučte se, jak vytvořit instanční objekt pro automatizaci Azure
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ea9b978cce22ae6d99cbce5b4b85558f2a47b59
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266140"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699076"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO a ADOMD 
 
-Při připojování k klientským aplikacím a webovým aplikacím můžou [klientské knihovny AMO a ADOMD](analysis-services-data-providers.md) verze 15.0.2 a novější instalovat balíčky z NuGet podporovat instanční objekty v připojovacích řetězcích pomocí následující syntaxe `app:AppID` : a hesla `cert:thumbprint`nebo. 
+Při připojování k klientským aplikacím a webovým aplikacím můžou [klientské knihovny AMO a ADOMD](analysis-services-data-providers.md) verze 15.0.2 a novější instalovat balíčky z NuGet podporovat instanční objekty v připojovacích řetězcích pomocí následující syntaxe: `app:AppID` a hesla nebo `cert:thumbprint` . 
 
 V následujícím příkladu `appID` a a `password` slouží k provedení operace aktualizace databáze modelu:
 
@@ -110,4 +110,5 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>Další kroky
 [Přihlaste se pomocí Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md)   
+[Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md)  
+[Automatizace úloh Power BI Premium pracovního prostoru a datové sady s instančními objekty](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 

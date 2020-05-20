@@ -6,15 +6,15 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 506339cefa90fb17bedfc946f70cb4d7d8047cf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430224"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702096"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Vytváření, vývoj a údržba notebooků Azure synapse Studio (Preview)
 
@@ -55,12 +55,12 @@ Existuje několik způsobů, jak přidat novou buňku do poznámkového bloku.
 
 ### <a name="set-a-primary-language"></a>Nastavení primárního jazyka
 
-Poznámkové bloky Azure synapse Studio podporují čtyři jazyky Spark:
+Poznámkové bloky Azure synapse Studio podporují čtyři jazyky Apache Spark:
 
-* pyspark (Python)
+* pySpark (Python)
 * Spark (Scala)
-* sparkSQL
-* Spark.NET (C#)
+* SparkSQL
+* .NET pro Apache Spark (C#)
 
 V rozevíracím seznamu na horním panelu příkazů můžete nastavit primární jazyk pro nové přidané buňky.
 
@@ -75,9 +75,9 @@ V jednom poznámkovém bloku můžete použít více jazyků zadáním správné
 |%% pyspark| Python | Spustí dotaz **Pythonu** v kontextu Sparku.  |
 |%% Spark| Scala | Spustí dotaz **Scala** proti kontextu Spark.  |  
 |%% SQL| SparkSQL | Spustí dotaz **SparkSQL** proti kontextu Spark.  |
-|%% CSharp | Spark.NET C # | Spusťte dotaz **Spark.NET C#** proti kontextu Spark. |
+|%% CSharp | .NET pro Spark C # | Spustí dotaz **.NET pro Spark C#** proti kontextu Spark. |
 
-Následující obrázek je příkladem, jak můžete napsat dotaz PySpark pomocí příkazu **%% PySpark** Magic nebo dotazu SparkSQL s příkazem **%% SQL** Magic v poznámkovém bloku **Spark (Scala)** . Všimněte si, že primární jazyk pro Poznámkový blok je nastavený na Scala.
+Následující obrázek je příkladem, jak můžete napsat dotaz PySpark pomocí příkazu **%% PySpark** Magic nebo dotazu SparkSQL s příkazem **%% SQL** Magic v poznámkovém bloku **Spark (Scala)** . Všimněte si, že primární jazyk pro Poznámkový blok je nastavený na pySpark.
 
    ![synapse-Spark-Magic](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
@@ -118,7 +118,7 @@ Funkce IntelliSense mají různé úrovně splatnosti pro různé jazyky. Pomoc�
 |PySpark (Python)|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Spark (Scala)|Ano|Ano|Ano|Ano|-|-|-|Ano|
 |SparkSQL|Ano|Ano|-|-|-|-|-|-|
-|Spark.NET (C#)|Ano|-|-|-|-|-|-|-|
+|.NET for Spark (C#)|Ano|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Formátování textové buňky pomocí tlačítek panelu nástrojů
 
@@ -267,7 +267,7 @@ K datům v primárním účtu úložiště můžete přistupovat přímo. Není 
 
 Zobrazení tabelárních výsledků je k dispozici s možností vytvoření pruhového grafu, spojnicového grafu, výsečového grafu, bodového grafu a plošného grafu. Data můžete vizualizovat bez nutnosti psát kód. Grafy je možné přizpůsobit v **možnostech grafu**. 
 
-V zobrazení vykreslené tabulky je ve výchozím nastavení zobrazen výstup příkazů **%%** Magic. Zobrazení vykreslené tabulky můžete vyvolat voláním funkce **Display (`<DataFrame name>`)** pro datové rámce Spark nebo odolné distribuované datové sady (RDD).
+V zobrazení vykreslené tabulky je ve výchozím nastavení zobrazen výstup příkazů **%%** Magic. Zobrazení vykreslené tabulky můžete vyvolat voláním funkce **Display ( `<DataFrame name>` )** pro datové rámce Spark nebo odolné distribuované datové sady (RDD).
 
    ![předdefinované – grafy](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
 
@@ -390,5 +390,8 @@ Pomocí následujících klávesových zkratek můžete v režimu úprav snadně
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) ve službě Azure synapse Analytics pomocí nástrojů pro web](../quickstart-apache-spark-notebook.md)
+- [Co je Apache Spark ve službě Azure synapse Analytics](apache-spark-overview.md)
+- [Použití .NET pro Apache Spark s Azure synapse Analytics](spark-dotnet.md)
 - [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

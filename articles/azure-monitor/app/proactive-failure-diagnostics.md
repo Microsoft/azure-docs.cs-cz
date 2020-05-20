@@ -4,12 +4,12 @@ description: Upozorňuje na neobvyklé změny v rychlosti neúspěšných požad
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: a1bce3ab86748d8247a72da3bd70e0f2e8155dbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4a629b4c33c22bf5663d6f8e8b9d0ba11ac24dc
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536807"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700770"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) vás automaticky upozorní téměř v reálném čase, pokud vaše webová aplikace působí abnormální nárůst frekvence neúspěšných žádostí. Detekuje neobvyklé zvýšení rychlosti požadavků HTTP nebo volání závislostí, která jsou hlášena jako neúspěšná. V případě požadavků mají neúspěšné požadavky obvykle kódy odpovědí 400 nebo vyšší. V podrobnostech výstrahy jsou k dispozici analýzy vlastností selhání a souvisejících dat aplikací, které vám pomůžou při třídění a diagnostikování problému. K dispozici jsou také odkazy na portál Application Insights pro další diagnostiku. Tato funkce nevyžaduje žádné nastavení ani konfiguraci, protože používá algoritmy strojového učení pro předpověď běžné míry selhání.
@@ -31,7 +31,7 @@ Podrobnosti výstrahy vám sdělí:
 * Odkazuje přímo na relevantní hledání dat v Application Insights.
 
 ## <a name="benefits-of-smart-detection"></a>Výhody inteligentní detekce
-Běžné [výstrahy metriky s upozorněním](../../azure-monitor/app/alerts.md) , že se může jednat o problém. Inteligentní detekce ale spustí diagnostickou práci za vás a provede mnoho analýz, které byste jinak museli dělat sami. Výsledky získáte v hotovém balení, což vám pomůže rychle se dostat k hlavnímu adresáři problému.
+Běžné [výstrahy metriky s upozorněním](../../azure-monitor/platform/alerts-log.md) , že se může jednat o problém. Inteligentní detekce ale spustí diagnostickou práci za vás a provede mnoho analýz, které byste jinak museli dělat sami. Výsledky získáte v hotovém balení, což vám pomůže rychle se dostat k hlavnímu adresáři problému.
 
 ## <a name="how-it-works"></a>Jak to funguje
 Inteligentní detekce monitoruje data přijatá z vaší aplikace a zejména míry selhání. Toto pravidlo spočítá počet požadavků, pro které má `Successful request` vlastnost hodnotu false, a počet volání závislostí, pro které má `Successful call` vlastnost hodnotu false. Pro požadavky, ve výchozím nastavení `Successful request == (resultCode < 400)` (Pokud jste nenapsali vlastní kód pro [filtrování](../../azure-monitor/app/api-filtering-sampling.md#filtering) nebo generování vlastních volání [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) ). 
@@ -48,7 +48,7 @@ Když je vaše služba instrumentovaná pomocí těchto volání, analyzátor vy
 
 Výsledná analýza se vám pošle jako výstraha, pokud jste ji nenakonfigurovali na.
 
-Podobně jako u [výstrah, které jste nastavili ručně](../../azure-monitor/app/alerts.md), můžete zkontrolovat stav aktivované výstrahy, která může být vyřešena, pokud je problém vyřešen. Nakonfigurujte pravidla výstrahy na stránce výstrahy v prostředku Application Insights. Ale na rozdíl od jiných výstrah nemusíte nastavovat nebo konfigurovat inteligentní zjišťování. Pokud chcete, můžete ho zakázat nebo změnit jeho cílové e-mailové adresy.
+Podobně jako u [výstrah, které jste nastavili ručně](../../azure-monitor/platform/alerts-log.md), můžete zkontrolovat stav aktivované výstrahy, která může být vyřešena, pokud je problém vyřešen. Nakonfigurujte pravidla výstrahy na stránce výstrahy v prostředku Application Insights. Ale na rozdíl od jiných výstrah nemusíte nastavovat nebo konfigurovat inteligentní zjišťování. Pokud chcete, můžete ho zakázat nebo změnit jeho cílové e-mailové adresy.
 
 ### <a name="alert-logic-details"></a>Podrobnosti logiky výstrahy
 
@@ -317,7 +317,7 @@ Kliknutím na **výstrahy** na stránce Application Insights prostředku se dost
 ## <a name="whats-the-difference-"></a>Jaký je rozdíl...
 Inteligentní zjišťování anomálií selhání doplňuje jiné podobné, ale odlišné funkce Application Insights.
 
-* [Výstrahy metriky](../../azure-monitor/app/alerts.md) jsou nastavené vámi a můžou monitorovat široké spektrum metrik, jako je obsazení procesoru, počet požadavků, doba načítání stránek a tak dále. Můžete je použít k upozornění, například pokud potřebujete přidat další prostředky. Naproti tomu inteligentní detekce anomálií selhání pokrývá malý rozsah kritických metrik (aktuálně jenom četnost neúspěšných požadavků), která je navržená k upozorňování téměř v reálném čase, jakmile se v porovnání s normálním chováním webové aplikace zvýší míra neúspěšných požadavků vaší webové aplikace. Inteligentní detekce na rozdíl od výstrah metrik automaticky nastavuje a aktualizuje prahové hodnoty v reakci na změny v chování. Inteligentní zjišťování také spouští diagnostickou práci za vás a šetří vám čas při řešení problémů.
+* [Výstrahy metriky](../../azure-monitor/platform/alerts-log.md) jsou nastavené vámi a můžou monitorovat široké spektrum metrik, jako je obsazení procesoru, počet požadavků, doba načítání stránek a tak dále. Můžete je použít k upozornění, například pokud potřebujete přidat další prostředky. Naproti tomu inteligentní detekce anomálií selhání pokrývá malý rozsah kritických metrik (aktuálně jenom četnost neúspěšných požadavků), která je navržená k upozorňování téměř v reálném čase, jakmile se v porovnání s normálním chováním webové aplikace zvýší míra neúspěšných požadavků vaší webové aplikace. Inteligentní detekce na rozdíl od výstrah metrik automaticky nastavuje a aktualizuje prahové hodnoty v reakci na změny v chování. Inteligentní zjišťování také spouští diagnostickou práci za vás a šetří vám čas při řešení problémů.
 
 * [Inteligentní detekce anomálií s výkonem](proactive-performance-diagnostics.md) taky využívá Machine Intelligence ke zjišťování neobvyklých vzorů ve vašich metrikách a nevyžaduje žádnou konfiguraci. Ale na rozdíl od inteligentní detekce anomálií při selhání je účel inteligentní detekce anomálií ve výkonu najít segmenty vašeho sběrného segmentu, které by mohly být chybně obsluhovány – například konkrétní stránky na konkrétního typu prohlížeče. Analýza se provádí denně a v případě, že se najde nějaký výsledek, bude pravděpodobně mnohem méně naléhavější než výstraha. Naproti tomu je analýza anomálií selhání prováděna průběžně na příchozích datech aplikací a během několika minut budete upozorněni na to, jestli jsou míry selhání serveru větší, než se očekávalo.
 
@@ -359,5 +359,5 @@ Tyto diagnostické nástroje vám pomůžou zkontrolovat data z vaší aplikace:
 
 Inteligentní detekce jsou automatické. Možná byste ale chtěli nastavit ještě nějaké další výstrahy?
 
-* [Ručně nakonfigurované výstrahy metriky](../../azure-monitor/app/alerts.md)
+* [Ručně nakonfigurované výstrahy metriky](../../azure-monitor/platform/alerts-log.md)
 * [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md)

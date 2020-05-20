@@ -119,8 +119,6 @@
           href: global-dist-under-the-hood.md
         - name: Přítomnost v konkrétních oblastech
           href: regional-presence.md
-        - name: Transakční a analytické úložiště
-          href: globally-distributed-transactional-analytical-storage.md
     - name: Dělení
       items:
         - name: Přehled dělení
@@ -494,14 +492,16 @@
           href: change-feed-functions.md
         - name: Model vyžádání kanálu změn
           href: change-feed-pull-model.md
-    - name: Globálně distribuované analýzy a AI
+    - name: Analýzy s využitím Synapse Linku
       items:
-        - name: Případy použití analýz
-          href: analytics-usecases.md
-        - name: Analýzy – architektury řešení
-          href: analytics-solution-architectures.md
-        - name: Architektura lambda
-          href: lambda-architecture.md
+        - name: Synapse Link pro Azure Cosmos DB
+          href: synapse-link.md
+        - name: Analytické úložiště – přehled
+          href: analytical-store-introduction.md
+        - name: Nejčastější dotazy k Synapse Linku
+          href: synapse-link-frequently-asked-questions.md
+        - name: Případy použití Synapse Linku
+          href: synapse-link-use-cases.md
     - name: Integrované poznámkové bloky Jupyter
       items:
         - name: Přehled poznámkových bloků Jupyter
@@ -1020,6 +1020,10 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: Kanál změn – ukázka Async Javy
           href: create-sql-api-java-changefeed.md
+    - name: Analýzy s využitím Synapse Linku
+      items:
+        - name: Konfigurace Synapse Linku
+          href: configure-synapse-link.md
     - name: Integrované analýzy s využitím Apache Sparku
       items:
         - name: Konektor Spark pro Azure Databricks

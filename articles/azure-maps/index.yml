@@ -9,12 +9,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 1/15/2020
-  ms.openlocfilehash: 852a01416b52c6a7b98c3b4883210749bf3cc509
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: b3e986c67c55af467ea6534dd7484a307ec08227
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80132450"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83589257"
 landingContent:
 - title: Informace o službě Azure Maps
   linkLists:
@@ -56,6 +56,36 @@ landingContent:
       url: how-to-manage-pricing-tier.md
     - text: Zobrazení metrik využití rozhraní API služby Azure Maps
       url: how-to-view-api-usage.md
+- title: Vývoj s využitím Creatoru
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Koncepce interiérových map
+      url: creator-indoor-maps.md
+  - linkListType: tutorial
+    links:
+    - text: Použití Creatoru k vytvoření dat interiérových map
+      url: tutorial-creator-indoor-maps.md
+  - linkListType: how-to-guide
+    links:
+    - text: Správa interiérových map Creatoru
+      url: how-to-manage-creator.md
+    - text: Implementace dynamických stylů pro interiérové mapy
+      url: indoor-map-dynamic-styling.md
+    - text: Použití vizualizéru chyb kreslení Azure Maps
+      url: drawing-error-visualizer.md
+    - text: Použití modulu interiérových map
+      url: how-to-use-indoor-module.md
+  - linkListType: reference
+    links:
+    - text: Převodní služba
+      url: https://docs.microsoft.com/rest/api/maps/conversion
+    - text: Služba datových sad
+      url: https://docs.microsoft.com/rest/api/maps/dataset
+    - text: Služba sad dlaždic
+      url: https://docs.microsoft.com/rest/api/maps/tileset
+    - text: Služba stavu funkcí
+      url: https://docs.microsoft.com/rest/api/maps/featurestate
 - title: Vývoj s využitím sady Web SDK
   linkLists:
   - linkListType: concept

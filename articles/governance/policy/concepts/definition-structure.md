@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3852644e888fd4a7cef1d84cc4008d106a8c7910
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 509d4424e26873d8e8da8fac96eb7e380b0fa262
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684333"
+ms.locfileid: "83700611"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -80,7 +80,7 @@ Například prostředek `Microsoft.Network/routeTables` podporuje značky a umí
 
 Ve většině případů doporučujeme nastavit **režim** na `all` . Všechny definice zásad vytvořené prostřednictvím portálu používají `all` režim. Pokud používáte PowerShell nebo Azure CLI, můžete zadat parametr **Mode** ručně. Pokud definice zásady neobsahuje hodnotu **režimu** , použije se výchozí hodnota `all` v Azure PowerShell a v rozhraní příkazového `null` řádku Azure CLI. `null`Režim je stejný jako při použití `indexed` k podpoře zpětné kompatibility.
 
-`indexed`by měla být použita při vytváření zásad, které vysazují značky nebo umístění. I když to není nutné, zabrání prostředkům, které nepodporují značky a umístění, z hlediska výsledků dodržování předpisů v nedodržení předpisů. Výjimkou jsou **skupiny prostředků** a **předplatná**. Zásady, které vynutily umístění nebo značky v rámci skupiny prostředků nebo předplatného, by měly nastavit **režim** na `all` a konkrétně cílit na `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` typ nebo. Příklad najdete v tématu [vymáhání značek skupin prostředků](../samples/enforce-tag-rg.md). Seznam prostředků, které podporují značky, najdete v tématu [Podpora značek pro prostředky Azure](../../../azure-resource-manager/management/tag-support.md).
+`indexed`by měla být použita při vytváření zásad, které vysazují značky nebo umístění. I když to není nutné, zabrání prostředkům, které nepodporují značky a umístění, z hlediska výsledků dodržování předpisů v nedodržení předpisů. Výjimkou jsou **skupiny prostředků** a **předplatná**. Definice zásad, které vynutily umístění nebo značky v rámci skupiny prostředků nebo předplatného, by měly nastavit **režim** na `all` a konkrétně cílit na `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` typ nebo. Příklad naleznete v tématu [Pattern: Tags-Sample #1](../samples/pattern-tags.md). Seznam prostředků, které podporují značky, najdete v tématu [Podpora značek pro prostředky Azure](../../../azure-resource-manager/management/tag-support.md).
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />Režimy poskytovatele prostředků (Preview)
 

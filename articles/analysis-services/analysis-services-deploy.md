@@ -4,15 +4,15 @@ description: Naučte se, jak nasadit tabulkový model na Azure Analysis Services
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 71b3b7815d2a4b0b4de3afdca9db93156f505445
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: d6b737985bc19aa09b26bb0d4a65696a364a903a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572884"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697593"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Nasazení modelu ze sady Visual Studio
 
@@ -27,7 +27,7 @@ Na začátek budete potřebovat:
 * **Místní brána** – Pokud máte jeden nebo více místních zdrojů dat v síti organizace, budete si muset nainstalovat [místní bránu dat](analysis-services-gateway.md). Brána je nezbytná pro server v cloudu, aby se mohl připojit k místním zdrojům dat a mohl tak zpracovat a aktualizovat data v modelu.
 
 > [!TIP]
-> Než začnete provádět nasazení, ujistěte se, že zvládnete zpracovat data v tabulkách. V aplikaci Visual Studio klikněte na **model** > **zpracovat** > proces**vše**. Pokud se zpracování nepodaří, nebudete moct provést úspěšné nasazení.
+> Než začnete provádět nasazení, ujistěte se, že zvládnete zpracovat data v tabulkách. V aplikaci Visual Studio klikněte na **model**  >  **zpracovat**proces  >  **vše**. Pokud se zpracování nepodaří, nebudete moct provést úspěšné nasazení.
 > 
 > 
 
@@ -39,7 +39,7 @@ Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopí
 
 ## <a name="to-deploy-from-visual-studio"></a>Nasazení ze sady Visual Studio
 
-1. V aplikaci Visual Studio > **Průzkumník řešení**klikněte pravým tlačítkem myši na **vlastnosti**projektu >. Pak v **nasazení** > **serveru** vložte název serveru.   
+1. V aplikaci Visual Studio > **Průzkumník řešení**klikněte pravým tlačítkem myši na **vlastnosti**projektu >. Pak v **nasazení**  >  **serveru** vložte název serveru.   
    
     ![Vložení názvu serveru do vlastnosti nasazení serveru](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
 2. V **Průzkumníku řešení** klikněte pravým tlačítkem na **Vlastnosti** a pak klikněte na **Nasadit**. Může se zobrazit výzva k přihlášení do Azure.
@@ -55,11 +55,15 @@ A je to!
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud nasazení selhalo při nasazování metadat, je pravděpodobně proto, že se Visual Studio nemůže připojit k vašemu serveru. Ujistěte se, že se k serveru můžete připojit pomocí aplikace SSMS. Potom zkontrolujte, jestli je vlastnost Server nasazení projektu správná.
+Pokud nasazení selhalo při nasazování metadat, je pravděpodobně proto, že se Visual Studio nemůže připojit k vašemu serveru. Ujistěte se, že se můžete připojit k serveru pomocí SQL Server Management Studio (SSMS). Potom zkontrolujte, jestli je vlastnost Server nasazení projektu správná.
 
 Pokud nasazení selže u tabulky, bude to pravděpodobně tím, že se server nemohl připojit ke zdroji dat. Pokud je váš zdroj dat místní v síti organizace, nezapomeňte nainstalovat [místní bránu dat](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď když jste tabulkový model nasadili na váš server, můžete se k němu připojit. Můžete se [k němu připojit pomocí SQL Server Management Studio (SSMS)](analysis-services-manage.md) , abyste ho mohli spravovat. Můžete [se k němu připojit také pomocí klientského nástroje](analysis-services-connect.md), jako je například Power BI, Power BI Desktop nebo Excel, a začít vytvářet sestavy.
+Teď když jste tabulkový model nasadili na váš server, můžete se k němu připojit. Můžete se [k němu připojit pomocí SQL Server Management Studio (SSMS)](analysis-services-manage.md) , abyste ho mohli spravovat. Můžete [se k němu připojit také pomocí klientského nástroje](analysis-services-connect.md), jako je například Power BI, Power BI Desktop nebo Excel, a začít vytvářet sestavy.   
+
+Další informace o pokročilých metodách nasazení najdete v tématu věnovaném [nasazení řešení pro tabelární model](https://docs.microsoft.com/analysis-services/deployment/tabular-model-solution-deployment?view=azure-analysis-services-current).
+
+
 

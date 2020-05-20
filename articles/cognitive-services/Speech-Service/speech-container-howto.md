@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: dc11d9d7dfa7ededa19e11c9e1bc38e1eaaec93f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 84000016af4b16bd0716c15e7c27b4ab56614532
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591012"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702170"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby Speech (verze Preview)
 
@@ -47,7 +47,8 @@ Před použitím kontejnerů řeči je nutné splnit následující předpoklady
 
 ## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
 
-Vyplňte a odešlete [formulář žádosti o Cognitive Services kontejnery](https://aka.ms/cognitivegate) , který bude požadovat přístup ke kontejneru.
+Vyplňte a odešlete [formulář žádosti](https://aka.ms/speechcontainerspreview/) pro vyžádání přístupu ke kontejneru. 
+
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -410,7 +411,7 @@ Tento příkaz:
 > [!NOTE]
 > Pokud spouštíte více kontejnerů, použijte jedinečné číslo portu.
 
-| Kontejnery | Adresa URL hostitele sady SDK | Protocol (Protokol) |
+| Containers | Adresa URL hostitele sady SDK | Protocol (Protokol) |
 |--|--|--|
 | Převod řeči na text a Custom Speech textu na text | `ws://localhost:5000` | WS |
 | Převod textu na řeč a vlastní převod textu na řeč | `http://localhost:5000` | HTTP |

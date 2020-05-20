@@ -3,12 +3,12 @@ title: Nejčastější dotazy – zálohování databází SAP HANA na virtuáln
 description: V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování SAP HANA databází pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: f9e0d96439a79c2c3d2cb2caa00ff09be3ff790d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 56f98dddb00eb3ffc87eb27da73066de807a1ee1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660110"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701009"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Nejčastější dotazy – zálohování SAP HANA databází na virtuálních počítačích Azure
 
@@ -49,9 +49,9 @@ Přečtěte si o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a
 
 Spuštění předregistračního skriptu nastaví požadovaná oprávnění, která umožní službě Azure zálohovat SAP HANA databáze. Další informace o tom, co skript před registrací dělá, najdete [tady](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
 
-### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>Budou zálohy fungovat po migraci SAP HANA od 1,0 do 2,0?
+### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>Budou zálohy fungovat po migraci SAP HANA z SDC do MDC?
 
-Informace najdete v [této části](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) Průvodce odstraňováním potíží.
+Informace najdete v [této části](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) Průvodce odstraňováním potíží.
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Je možné vytvořit zálohu v Azure HANA proti virtuální IP adrese (Nástroj pro vyrovnávání zatížení) a ne virtuálnímu počítači?
 

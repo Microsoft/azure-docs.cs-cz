@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 449ff8aafd6dec1e9c0ff16dc407155949fd1313
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4b4e6bf7b69f1b4c7664a104a0af70d9e486f08a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586163"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699957"
 ---
 # <a name="access-virtual-machines-as-a-student-from-the-educator-view"></a>Přístup k virtuálním počítačům jako student ze zobrazení Educator
 Tento článek ukazuje, jak pedagogy mají přístup ke svým virtuálním počítačům pro třídy, které se účastní jako studenti. 
@@ -36,5 +36,6 @@ Tady je scénář, kde vám tato funkce pomůže. Výukového pomocníka je Educ
 Viz následující články:
 
 - [Připojení k virtuálnímu počítači](how-to-use-classroom-lab.md#connect-to-the-vm)
-- [Připojení k virtuálnímu počítači pomocí protokolu RDP na Macu](connect-virtual-machine-mac-rdp.md)
+- [Připojení k virtuálnímu počítači pomocí protokolu RDP na Macu](connect-virtual-machine-mac-remote-desktop.md)
+- [Připojení k virtuálnímu počítači pomocí protokolu RDP na Chromebook](connect-virtual-machine-chromebook-remote-desktop.md)
 - [Použití vzdálené plochy pro virtuální počítače se systémem Linux](how-to-use-remote-desktop-linux-student.md)

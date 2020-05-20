@@ -1,28 +1,30 @@
 ### YamlMime:Landing
-title: Dokumentace k Azure Active Directory B2B
-summary: Naučte se, jak využívat spolupráci B2B (business-to-business) v Azure AD k zabezpečenému sdílení vašich firemních aplikací a služeb s uživateli typu host a externími partnery z libovolné organizace a zachovat si přitom kontrolu nad vlastními podnikovými daty.
+title: Dokumentace k externím identitám
+summary: Externí identity jsou sada funkcí, které organizacím umožňují zabezpečit a spravovat všechny externí uživatele, včetně zákazníků a partnerů. Externí identity jsou založené na spolupráci B2B a nabízejí další možnosti pro interakci a propojování s uživateli mimo vaši organizaci.
 metadata:
-  title: Dokumentace ke správě aplikací
-  description: Naučte se, jak využívat spolupráci B2B (business-to-business) v Azure AD k zabezpečenému sdílení vašich firemních aplikací a služeb s uživateli typu host a externími partnery z libovolné organizace a zachovat si přitom kontrolu nad vlastními podnikovými daty.
+  title: Dokumentace k externím identitám
+  description: Externí identity jsou sada funkcí, které organizacím umožňují zabezpečit a spravovat všechny externí uživatele, včetně zákazníků a partnerů. Externí identity jsou založené na spolupráci B2B a nabízejí další možnosti pro interakci a propojování s uživateli mimo vaši organizaci.
   ms.service: active-directory
   ms.subservice: B2B
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 08/27/2019
+  ms.date: 05/19/2020
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 2c0f418249d470c1454474012fb25e6670630108
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 3a26561b7789446aff70c9fb9e08d523d05d8d64
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74272700"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83587472"
 landingContent:
-- title: Informace o spolupráci B2B
+- title: Informace o externích identitách
   linkLists:
   - linkListType: overview
     links:
+    - text: Porovnání řešení externích identit
+      url: compare-with-b2c.md
     - text: Co je přístup uživatele typu host B2B?
       url: what-is-b2b.md
 - title: Pozvání uživatelů typu host B2B

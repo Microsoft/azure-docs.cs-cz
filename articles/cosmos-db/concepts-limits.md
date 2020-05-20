@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 0e45e832def4073f22a160b95447afb1b10ef77a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ef7a55c81441077d2217ccfc41a2a9c9578eefe
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657387"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697563"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -188,7 +188,7 @@ V následující tabulce jsou uvedeny limity pro [testovací Azure Cosmos DB pro
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Doba trvání zkušební verze | 30 dní (může být několikrát obnoveno) |
+| Doba trvání zkušební verze | 30 dní (novou zkušební verzi si můžete vyžádat po vypršení platnosti) <br> Po vypršení platnosti se uložené informace odstraní. |
 | Maximální počet kontejnerů na předplatné (SQL, Gremlin, rozhraní API pro tabulky) | 1 |
 | Maximální počet kontejnerů na předplatné (rozhraní API MongoDB) | 3 |
 | Maximální propustnost na kontejner | 5000 |

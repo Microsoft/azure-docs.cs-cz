@@ -23,6 +23,8 @@
           href: tutorial-create-store-locator.md
     - name: Kurzy k REST API
       items:
+        - name: Vytváření interiérových map
+          href: tutorial-creator-indoor-maps.md
         - name: Nastavení geografické zóny
           href: tutorial-geofence.md
         - name: Prostorová analýza
@@ -49,6 +51,12 @@
       href: azure-maps-event-grid-integration.md
     - name: Volva vhodné cenové úrovně
       href: choose-pricing-tier.md
+    - name: Tvůrce pro interiérové mapy
+      items:
+        - name: Koncepce interiérových map
+          href: creator-indoor-maps.md
+        - name: Upozornění a chyby převodu kreslení
+          href: drawing-conversion-error-codes.md
     - name: Pokrytí
       items:
         - name: Zajištění geokódování
@@ -83,6 +91,8 @@
           href: how-to-manage-authentication.md
         - name: Správa cenové úrovně
           href: how-to-manage-pricing-tier.md
+        - name: Správa Creatoru
+          href: how-to-manage-creator.md
         - name: Zobrazení metrik využití
           href: how-to-view-api-usage.md
     - name: Získání dat map z rozhraní REST API
@@ -201,12 +211,22 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Zobrazení provozních dat
           href: how-to-show-traffic-android.md
+    - name: Vývoj s využitím interiérových map Creatoru
+      items:
+        - name: Modul interiérových map
+          href: how-to-use-indoor-module.md
+        - name: Dynamické styly pro interiérové mapy
+          href: indoor-map-dynamic-styling.md
+        - name: Vizualizér chyb kreslení
+          href: drawing-error-visualizer.md
     - name: Poskytnutí zpětné vazby k datům
       href: how-to-use-feedback-tool.md
 - name: Referenční informace
   items:
     - name: Rozšíření rozhraní API a parametrů
       items:
+        - name: Požadavky balíčku pro kreslení
+          href: drawing-requirements.md
         - name: Model spotřeby vozidel
           href: consumption-model.md
         - name: Rozšířený formát geoJSON
@@ -251,6 +271,8 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
         - name: Prostorový modul V/V
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
+        - name: Interiérový modul
+          href: 'https://aka.ms/am-indoor-module-websdk/'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.maps/accounts
 - name: Zdroje a prostředky

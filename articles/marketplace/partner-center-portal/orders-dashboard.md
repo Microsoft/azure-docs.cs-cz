@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c5bfb6632a22a890ac2387f06464c18be7dd714
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261257"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699054"
 ---
-# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel objednávky v komerčních obchodech Marketplace
+# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Objednávky v analýzách komerčního marketplace
 
 Tento článek poskytuje informace o **řídicím panelu objednávky** v partnerském centru. Tento řídicí panel zobrazuje informace o vašich objednávkách v grafickém formátu a ve formátu ke stažení.
 
@@ -104,6 +104,7 @@ Tabulka Podrobnosti objednávky zobrazuje číslovaný seznam 1000 hlavních obj
 - Data je možné extrahovat do souboru TSV, pokud je počet záznamů menší než 1000.
 - Pokud zaznamenává číslo přes 1000, vyexportovaná data se asynchronně nasadí na stránku ke stažení po dobu příštích 30 dnů.
 - Filtry lze použít v **tabulce podrobností objednávky** k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle země, typu licence Azure, typu licence Marketplace, typu nabídky, stavu objednávky, volných stop, ID předplatného Marketplace, ID zákazníka a názvu společnosti.
+- Vzhledem k tomu, že SaaS nabídky zakoupené prostřednictvím Azure Marketplace nebo AppSource nevyžadují předplatné Azure, ID předplatného na webu Marketplace se v části **podrobné údaje o objednávkách** zobrazí jako 00000000-0000-0000-0000-000000000000.
 
 #### <a name="orders-page-filters"></a>Filtry stránek objednávky
 

@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d68c36e7d6603cb8cdc906ad2a0280094e6e0e5
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484583"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698251"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analyzovat data JSON a Avro v Azure Stream Analytics
 
@@ -19,7 +19,8 @@ Azure Stream Analytics podporovat zpracování událostí v datových formátech
 
 >[!NOTE]
 >Soubory AVRO vytvořené pomocí centra událostí zachycení používají konkrétní formát, který vyžaduje použití *vlastní funkce deserializace* . Další informace najdete v tématu [čtení vstupu v jakémkoli formátu pomocí vlastních deserializátorů .NET](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples).
-
+>
+>Deserializace Stream Analytics AVRO nepodporuje typ mapy. Stream Analytics nemůže číst objekty blob pro zachycení EventHub, protože zachycení EventHub používá mapu.
 
 
 ## <a name="record-data-types"></a>Záznam typů dat
@@ -63,7 +64,7 @@ FROM input
 
 Výsledek je následující:
 
-|DeviceID|Připojí|Dlouhou|Teplota|Version|
+|DeviceID|Připojí|Dlouhou|Teplota|Verze|
 |-|-|-|-|-|
 |12345|47|122|80|1.2.45|
 
@@ -205,7 +206,7 @@ Pak můžete vytvořit krok v dotazu Stream Analytics, jak je znázorněno níž
 
 Datové typy pole jsou seřazené kolekce hodnot. Některé typické operace s hodnotami polí jsou popsány níže. V těchto příkladech se používají funkce [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)a operátor [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) .
 
-Tady je příklad jedné události. `CustomSensor03` A `SensorMetadata` jsou typu **Array**:
+Tady je příklad jedné události. `CustomSensor03`A `SensorMetadata` jsou typu **Array**:
 
 ```json
 {
@@ -297,7 +298,7 @@ Výsledek je následující:
 |DeviceId|smKey|smValue|
 |-|-|-|
 |12345|Výrobce|ABC|
-|12345|Version|1.2.45|
+|12345|Verze|1.2.45|
 
 Pokud se extrahovaná pole musí zobrazit ve sloupcích, je možné datovou sadu pivotovat pomocí syntaxe [with](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) kromě operace [Join](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) . Toto spojení bude vyžadovat podmínku [časové hranice](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) , která zabrání duplikaci:
 

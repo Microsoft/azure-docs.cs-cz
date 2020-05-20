@@ -8,88 +8,210 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 05/19/2020
 ms.author: mimart
-ms.reviewer: arvindh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvindh, luleon, phsignor
+ms.openlocfilehash: 2064ac929063fcdcf15c1e7495769c7d84aeef33
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519612"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698017"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu souhlasu koncových uživatelů s aplikacemi
 
-Aplikace se můžou integrovat s platformou Microsoft identity, aby se uživatelé mohli přihlašovat pomocí svého pracovního nebo školního účtu v Azure Active Directory (Azure AD) a přistupovat k datům vaší organizace, aby mohli poskytovat rozsáhlá prostředí založená na datech. Různá oprávnění umožňují aplikaci různé úrovně přístupu k datům vašich uživatelů a vaší organizace.
+Své aplikace můžete integrovat s platformou Microsoft identity, aby se uživatelé mohli přihlašovat pomocí svého pracovního nebo školního účtu a přistupovat k datům vaší organizace, aby mohli poskytovat rozsáhlá prostředí založená na datech.
 
-Ve výchozím nastavení můžou uživatelé vyjádřit souhlas s aplikacemi, které přistupují k datům vaší organizace, i když jenom pro některá oprávnění. Ve výchozím nastavení může uživatel například udělit souhlas s tím, že aplikaci umožní přístup ke své vlastní poštovní schránce nebo týmu, kteří vlastní, ale nemůžou vyjádřit souhlas s tím, že umožňuje přístup ke čtení a zápisu na všechny weby SharePoint ve vaší organizaci pomocí bezobslužného přístupu. I když uživatelům, kteří si můžou udělit souhlas sami, umožní uživatelům snadno získat užitečné aplikace, které se integrují s Microsoft 365, Azure a dalšími službami, může představovat riziko, pokud se nepoužije a pečlivě monitoruje.
+Předtím, než aplikace získá přístup k datům vaší organizace, musí uživateli udělit oprávnění aplikace. Různá oprávnění umožňují různé úrovně přístupu. Ve výchozím nastavení mohou všichni uživatelé udělit souhlas s aplikacemi oprávnění, které nevyžadují souhlas správce. Ve výchozím nastavení může uživatel například udělit souhlas s tím, že aplikaci má přístup ke své poštovní schránce, ale nemůže udělit souhlas, aby aplikace neomezený přístup ke čtení a zápisu do všech souborů ve vaší organizaci.
 
-Společnost Microsoft doporučuje zakázat budoucí operace souhlasu s uživatelem, aby se snížila plocha a zmírnila toto riziko. Pokud je souhlas uživatele zakázaný, bude se i nadále akceptovat předchozí granty souhlasu, ale všechny budoucí operace souhlasu musí udělat správce. Souhlas správce na úrovni tenanta můžou vyžádat uživatelé prostřednictvím [pracovního postupu integrovaných žádostí o souhlas správce](configure-admin-consent-workflow.md) nebo prostřednictvím vlastních procesů podpory. Další podrobnosti najdete v [pěti krocích k zabezpečení infrastruktury identity](../../security/fundamentals/steps-secure-identity.md) .
+Díky tomu, že uživatelé můžou aplikacím udělit přístup k datům, můžou snadno získat užitečné aplikace a být produktivní. V některých případech však tato konfigurace může představovat riziko, pokud není sledována a kontrolována pečlivě.
 
-## <a name="configure-user-consent-to-applications"></a>Konfigurace souhlasu uživatele s aplikacemi
-### <a name="disable-or-enable-user-consent-from-the-azure-portal"></a>Zakázání nebo povolení souhlasu uživatele z Azure Portal
+## <a name="user-consent-settings"></a>Nastavení souhlasu uživatele
 
-Pomocí Azure Portal můžete zakázat nebo povolit uživatelům souhlas s aplikacemi, které přistupují k datům vaší organizace:
+Chcete-li určit, které případy můžou uživatelé udělit souhlas s aplikacemi, vyberte zásadu souhlasu, která bude platit pro všechny uživatele. Tady jsou tři možnosti zásad souhlasu:
+
+* **Zakázat souhlas uživatele** – uživatelé nemůžou udělovat oprávnění aplikacím. Uživatelé se mohou nadále přihlašovat k aplikacím, které dříve poslaly nebo které jim byly odsouhlaseny jménem správců, ale nebudou jim dovoleni souhlasit s novými oprávněními ani s novými aplikacemi. Pouze uživatelé, kterým byla udělena role adresáře, která zahrnuje oprávnění udělit souhlas, budou moci vyjádřit souhlas s novými oprávněními nebo novými aplikacemi.
+
+* **Uživatelé můžou udělit souhlas s aplikacemi od ověřených vydavatelů, ale jenom pro oprávnění, která jste vybrali (Preview)** – všichni uživatelé můžou souhlasit jenom s aplikacemi, které publikoval [ověřený vydavatel](../develop/publisher-verification-overview.md) a aplikace, které jsou zaregistrované ve vašem tenantovi. Uživatelé můžou odsouhlasit jenom oprávnění, která jste klasifikováni jako "malý dopad".
+
+  Nezapomeňte [klasifikovat oprávnění](#configure-permission-classifications-preview) a vybrat, která oprávnění uživatelé můžou udělit souhlas.
+
+* **Uživatelé můžou udělit souhlas se všemi aplikacemi** – Tato možnost umožňuje všem uživatelům udělit souhlas s libovolným oprávněním, které pro žádnou aplikaci nevyžadují souhlas správce. 
+
+   Chcete-li snížit riziko, že se škodlivé aplikace pokoušejí uživatelům získat přístup k datům vaší organizace, doporučujeme udělit souhlas uživateli pouze pro aplikace, které byly publikovány [ověřeným vydavatelem](../develop/publisher-verification-overview.md).
+
+### <a name="configure-user-consent-settings-from-the-azure-portal"></a>Konfigurace nastavení souhlasu uživatele z Azure Portal
+
+Konfigurace nastavení souhlasu uživatele prostřednictvím Azure Portal:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator).
-2. Vyberte **Azure Active Directory**, pak **podnikové aplikace**a pak **uživatelské nastavení**.
-3. Povolení nebo zakázání souhlasu uživatele s ovládacím prvkem označený **Uživatelé můžou udělit souhlas aplikacím, které přistupují k firemním datům**jménem.
-4. Volitelné Nakonfigurujte [pracovní postup žádosti o souhlas správce](configure-admin-consent-workflow.md) , abyste zajistili, že uživatelé, kteří nejsou oprávněni souhlasit s aplikací, můžou požádat o schválení.
+1. Vyberte **Azure Active Directory**  >  souhlasu**podnikových aplikací**  >  **a**  >  **nastavení souhlasu uživatele**.
+1. V části **souhlas uživatele u aplikací**vyberte, které nastavení souhlasu se má nakonfigurovat pro všechny uživatele.
+1. Vyberte **Uložit** a uložte nastavení.
+
+![Nastavení souhlasu uživatele](./media/configure-user-consent/configure-consent-setting-for-all-users.png)
 
 > [!TIP]
-> Pokud chcete uživatelům povolit, aby si vyžádali kontrolu aplikace, na kterou uživatel nemá povoleno vyjádřit souhlas (například kvůli tomu, že uživatel zakázal souhlas s uživatelem nebo protože aplikace požaduje oprávnění, která uživatel nemá povoleno udělit), zvažte možnost [Konfigurace pracovního postupu souhlasu správce](configure-admin-consent-workflow.md).
+> Zvažte možnost povolit [pracovní postup souhlasu](configure-admin-consent-workflow.md) správce, aby uživatelé mohli požádat o revizi správce a schválení aplikace, které uživatel nemá oprávněně vyjádřit souhlas – například když je souhlas uživatele zakázán nebo když aplikace požaduje oprávnění, která uživatel nemá povoleno udělit.
 
-### <a name="disable-or-enable-user-consent-using-powershell"></a>Zakázání nebo povolení souhlasu uživatele pomocí PowerShellu
+### <a name="configure-user-consent-settings-using-powershell"></a>Konfigurace nastavení souhlasu uživatele pomocí prostředí PowerShell
 
-Můžete použít modul Azure AD PowerShell V1 ([MSOnline](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0)), chcete-li povolit nebo zakázat uživatelům souhlas s aplikacemi, které přistupují k datům vaší organizace.
+Můžete použít nejnovější modul Azure AD PowerShell Preview [AzureADPreview](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)a vybrat, které zásady souhlasu určují souhlas uživatele pro aplikace.
 
-1. Přihlaste se ke svojí organizaci spuštěním této rutiny:
+* **Zakázat souhlas s uživatelem** – Chcete-li zakázat souhlas s uživatelem, nastavte zásady souhlasu, které budou řídit souhlas uživatele jako prázdný:
 
-    ```powershell
-    Connect-MsolService
-    ```
+  ```powershell
+  Set-AzureADMSAuthorizationPolicy `
+     -Id "authorizationPolicy" `
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @()
+  ```
 
-2. Spuštěním této rutiny ověřte, jestli je povolený souhlas uživatele:
+* **Povolení souhlasu uživatele pro aplikace od ověřených vydavatelů pro vybraná oprávnění (Preview)** – Pokud chcete omezenému souhlasu uživatele udělit jenom pro aplikace od ověřených vydavatelů a aplikací registrovaných ve vašem tenantovi a jenom pro oprávnění, která jste klasifikují jako "nízký dopad", nakonfigurujte předdefinované zásady souhlasu s názvem `microsoft-user-default-low` :
 
-    ```powershell
-    Get-MsolCompanyInformation | Format-List UsersPermissionToUserConsentToAppEnabled
-    ```
+  ```powershell
+  Set-AzureADMSAuthorizationPolicy `
+     -Id "authorizationPolicy" `
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-low")
+  ```
 
-3. Povolí nebo zakáže souhlas uživatele. Pokud například chcete zakázat souhlas s uživatelem, spusťte tuto rutinu:
+   Nezapomeňte [klasifikovat oprávnění](#configure-permission-classifications-preview) a vybrat, která oprávnění uživatelé můžou udělit souhlas.
 
-    ```powershell
-    Set-MsolCompanySettings -UsersPermissionToUserConsentToAppEnabled $false
-    ```
+* **Povolení souhlasu uživatele pro všechny aplikace** – povolení souhlasu uživatele pro všechny aplikace:
+
+  ```powershell
+  Set-AzureADMSAuthorizationPolicy `
+     -Id "authorizationPolicy" `
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-legacy")
+  ```
+
+   Tato možnost umožňuje všem uživatelům udělit souhlas s jakýmkoli oprávněním, které nevyžaduje souhlas správce, pro žádnou aplikaci. Doporučujeme uživateli udělit souhlas jenom pro aplikace od ověřených vydavatelů.
+
+## <a name="configure-permission-classifications-preview"></a>Konfigurace klasifikací oprávnění (Preview)
+
+Klasifikace oprávnění umožňují určit dopad, který mají různá oprávnění podle zásad a hodnocení rizik vaší organizace. Klasifikace oprávnění můžete například použít v zásadách pro vyjádření souhlasu k identifikaci sady oprávnění, ke kterým můžou uživatelé udělit souhlas.
+
+> [!NOTE]
+> V současné době je podporována pouze klasifikace oprávnění "nízká dopad". Pouze delegovaná oprávnění, která nevyžadují souhlas správce, je možné klasifikovat jako "nízký dopad".
+
+### <a name="classify-permissions-using-the-azure-portal"></a>Klasifikovat oprávnění pomocí Azure Portal
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator).
+1. Vyberte **Azure Active Directory**  >  souhlasu**podnikových aplikací**  >  **a**  >  **klasifikace oprávnění**.
+1. Zvolením možnosti **Přidat oprávnění** Klasifikujte jiné oprávnění jako "nízký dopad". 
+1. Vyberte rozhraní API a pak vyberte delegovaná oprávnění.
+
+V tomto příkladu jsme klasifikováni s minimální sadou oprávnění vyžadovaných pro jednotné přihlašování:
+
+![Klasifikace oprávnění](./media/configure-user-consent/configure-permission-classifications.png)
+
+> [!TIP]
+> Pro rozhraní Microsoft Graph API jsou minimální oprávnění potřebná k tomu, aby základní jednotné přihlašování `openid` , `profile` `User.Read` a `offline_access` . Pomocí těchto oprávnění může aplikace číst podrobnosti profilu přihlášeného uživatele a může tento přístup zachovat, i když uživatel už tuto aplikaci nepoužívá.
+
+### <a name="classify-permissions-using-powershell"></a>Klasifikace oprávnění pomocí PowerShellu
+
+K klasifikaci oprávnění můžete použít nejnovější modul Azure AD PowerShell Preview, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview). Klasifikace oprávnění jsou nakonfigurovány na objektu **ServicePrincipal** rozhraní API, který publikuje oprávnění.
+
+#### <a name="to-read-the-current-permission-classifications-for-an-api"></a>Čtení aktuálních klasifikací oprávnění pro rozhraní API:
+
+1. Načte objekt **ServicePrincipal** pro rozhraní API. Tady načteme objekt ServicePrincipal pro rozhraní API pro Microsoft Graph:
+
+   ```powershell
+   $api = Get-AzureADServicePrincipal `
+       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
+   ```
+
+1. Přečtěte si klasifikace delegovaných oprávnění pro rozhraní API:
+
+   ```powershell
+   Get-AzureADMSServicePrincipalDelegatedPermissionClassification `
+       -ServicePrincipalId $api.ObjectId | Format-Table Id, PermissionName, Classification
+   ```
+
+#### <a name="to-classify-a-permission-as-low-impact"></a>Klasifikace oprávnění jako "nízký dopad":
+
+1. Načte objekt **ServicePrincipal** pro rozhraní API. Tady načteme objekt ServicePrincipal pro rozhraní API pro Microsoft Graph:
+
+   ```powershell
+   $api = Get-AzureADServicePrincipal `
+       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
+   ```
+
+1. Vyhledejte delegované oprávnění, které byste chtěli klasifikovat:
+
+   ```powershell
+   $delegatedPermission = $api.OAuth2Permissions | Where-Object { $_.Value -eq "User.ReadBasic.All" }
+   ```
+
+1. Nastavte klasifikaci oprávnění pomocí názvu a ID oprávnění:
+
+   ```powershell
+   Add-AzureADMSServicePrincipalDelegatedPermissionClassification `
+      -ServicePrincipalId $api.ObjectId `
+      -PermissionId $delegatedPermission.Id `
+      -PermissionName $delegatedPermission.Value `
+      -Classification "low"
+   ```
+
+#### <a name="to-remove-a-delegated-permission-classification"></a>Odebrání klasifikace delegovaného oprávnění:
+
+1. Načte objekt **ServicePrincipal** pro rozhraní API. Tady načteme objekt ServicePrincipal pro rozhraní API pro Microsoft Graph:
+
+   ```powershell
+   $api = Get-AzureADServicePrincipal `
+       -Filter "servicePrincipalNames/any(n:n eq 'https://graph.microsoft.com')"
+   ```
+
+1. Vyhledejte klasifikaci delegovaného oprávnění, kterou chcete odebrat:
+
+   ```powershell
+   $classifications = Get-AzureADMSServicePrincipalDelegatedPermissionClassification `
+       -ServicePrincipalId $api.ObjectId
+   $classificationToRemove = $classifications | Where-Object {$_.PermissionName -eq "User.ReadBasic.All"}
+   ```
+
+1. Odstraňte klasifikaci oprávnění:
+
+   ```powershell
+   Remove-AzureADMSServicePrincipalDelegatedPermissionClassification `
+       -ServicePrincipalId $api.ObjectId `
+       -Id $classificationToRemove.Id
+   ```
 
 ## <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurace souhlasu vlastníka skupiny u aplikací, které přistupují k datům skupiny
 
-> [!IMPORTANT]
-> Následující informace jsou pro nadcházející funkci, která vlastníkům skupiny umožní udělit aplikacím přístup k datům jejich skupin. Když se tato funkce uvolní, bude ve výchozím nastavení povolená. I když tato funkce ještě není široce vydaná, můžete tyto pokyny použít k tomu, abyste funkci před vydáním vypnuli.
+Vlastníci skupiny můžou autorizovat aplikace, jako jsou například aplikace publikované dodavateli třetích stran, pro přístup k datům vaší organizace, které jsou přidružené ke skupině. Vlastník týmu v Microsoft Teams může například dovolit aplikaci číst všechny týmy v týmu nebo zobrazit základní profil členů skupiny.
 
-Vlastníci skupiny můžou autorizovat aplikace (například aplikace publikované dodavateli třetích stran), aby měli přístup k datům vaší organizace, které jsou přidružené ke skupině. Například vlastník týmu (, který je vlastníkem skupiny Office 365 pro tým), může aplikaci dovolit číst všechny týmy v týmu nebo zobrazit základní profil členů skupiny.
+Můžete nakonfigurovat, kteří uživatelé můžou udělit souhlas aplikacím, které přistupují k datům jejich skupin, nebo můžete tuto funkci zakázat.
 
-> [!NOTE]
-> Nezávisle na tomto nastavení je vlastník skupiny vždycky povolený přidávat další uživatele nebo aplikace přímo jako vlastníci skupiny.
+### <a name="configure-group-owner-consent-using-the-azure-portal"></a>Konfigurace souhlasu vlastníka skupiny pomocí Azure Portal
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator).
+2. Vyberte **Azure Active Directory**  >  souhlasu**podnikových aplikací**  >  **a**  >  **nastavení souhlasu uživatele**.
+3. V části **souhlas vlastníka skupiny pro přístup k datům** vyberte možnost, kterou chcete povolit.
+4. Vyberte **Uložit** a uložte nastavení.
+
+V tomto příkladu můžou všichni vlastníci skupiny udělit souhlas s aplikacemi, které přistupují k datům jejich skupin:
+
+![Klasifikace oprávnění](./media/configure-user-consent/configure-group-owner-consent.png)
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>Konfigurace souhlasu vlastníka skupiny pomocí PowerShellu
 
-Můžete použít modul Azure AD PowerShell Preview ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)), chcete-li povolit nebo zakázat vlastníkům skupin souhlas s aplikacemi, které přistupují k datům vaší organizace pro skupiny, které vlastní.
+Pomocí modulu Azure AD PowerShell Preview, [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)můžete povolit nebo zakázat vlastníkům skupin souhlas s aplikacemi, které přistupují k datům vaší organizace pro skupiny, které vlastní.
 
-1. Ujistěte se, že používáte modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) (Tento krok je důležitý, pokud jste nainstalovali modul [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) i modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) ).
+1. Ujistěte se, že používáte modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) . Tento krok je důležitý, pokud jste nainstalovali modul [AzureAD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0) i modul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview) ).
 
     ```powershell
     Remove-Module AzureAD
     Import-Module AzureADPreview
     ```
 
-2. Připojte se k Azure AD PowerShellu.
+1. Připojte se k Azure AD PowerShellu.
 
    ```powershell
    Connect-AzureAD
    ```
 
-3. Načte aktuální hodnotu nastavení adresáře pro *nastavení zásad souhlasu* ve vašem tenantovi. K tomu je potřeba zkontrolovat, jestli se nastavení adresáře pro tuto funkci vytvořilo, a pokud ne, použijte hodnoty z odpovídajících šablon nastavení adresáře.
+1. Načte aktuální hodnotu nastavení adresáře pro **nastavení zásad souhlasu** ve vašem tenantovi. K tomu je potřeba zkontrolovat, jestli se nastavení adresáře pro tuto funkci vytvořilo, a pokud ne, použijte hodnoty z odpovídajících šablon nastavení adresáře.
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings
@@ -104,14 +226,14 @@ Můžete použít modul Azure AD PowerShell Preview ([AzureADPreview](https://do
     $limitedToValue = $settings.Values | ? { $_.Name -eq "ConstrainGroupSpecificConsentToMembersOfGroupId" }
     ```
 
-4. Pochopení hodnot nastavení. K dispozici jsou dvě hodnoty nastavení, které definují, kteří uživatelé budou moci aplikaci umožnit přístup k datům svých skupin:
+1. Pochopení hodnot nastavení. K dispozici jsou dvě hodnoty nastavení, které definují, kteří uživatelé budou moci aplikaci umožnit přístup k datům svých skupin:
 
     | Nastavení       | Typ         | Popis  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Logická hodnota |  Příznak označující, zda mohou vlastníci skupiny udělit oprávnění pro konkrétní skupinu. |
-    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Identifikátor GUID | Pokud je _EnableGroupSpecificConsent_ nastavené na hodnotu "true" a tato hodnota je nastavená na ID objektu skupiny, budou se členové skupiny, kterým se identifikovali, autorizovat, aby pro skupiny, které vlastní, udělila oprávnění pro konkrétní skupiny. |
+    | _EnableGroupSpecificConsent_   | Logická hodnota | Příznak označující, zda mohou vlastníci skupiny udělit oprávnění pro konkrétní skupinu. |
+    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Identifikátor GUID | Pokud je _EnableGroupSpecificConsent_ nastavené na hodnotu "true" a tato hodnota je nastavená na ID objektu skupiny, budou se členové identifikované skupiny oprávněni udělit skupinám, které vlastní, oprávnění pro skupiny, které vlastní. |
 
-5. Aktualizovat hodnoty nastavení pro požadovanou konfiguraci:
+1. Aktualizovat hodnoty nastavení pro požadovanou konfiguraci:
 
     ```powershell
     # Disable group-specific consent entirely
@@ -131,7 +253,7 @@ Můžete použít modul Azure AD PowerShell Preview ([AzureADPreview](https://do
     $limitedToValue.Value = "{group-object-id}"
     ```
 
-6. Uložit nastavení.
+1. Uložte nastavení.
 
     ```powershell
     if ($settings.Id) {
@@ -145,22 +267,22 @@ Můžete použít modul Azure AD PowerShell Preview ([AzureADPreview](https://do
 
 ## <a name="configure-risk-based-step-up-consent"></a>Konfigurace souhlasu pro krokování na základě rizika
 
-Souhlasu krokování na základě rizika pomáhá omezit vystavení uživatelů škodlivým aplikacím, které provádějí [nedovolené žádosti o souhlas](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants). Pokud společnost Microsoft zjistí rizikové žádosti o souhlas koncového uživatele, bude místo toho vyžadovat "krokování" na základě souhlasu správce. Tato funkce je ve výchozím nastavení povolená, ale při povolení souhlasu koncového uživatele bude mít za následek změnu chování.
+Souhlasu krokování na základě rizika pomáhá omezit vystavení uživatelů škodlivým aplikacím, které by vedly k neoprávněným [žádostem o souhlas](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants). Pokud společnost Microsoft zjistí rizikové žádosti o souhlas koncového uživatele, bude místo toho vyžadovat "krokování" na základě souhlasu správce. Tato funkce je ve výchozím nastavení povolená, ale při povolení souhlasu koncového uživatele bude mít za následek změnu chování.
 
-Při zjištění rizikové žádosti o souhlas se zobrazí výzva k zadání souhlasu s oznámením, že je požadováno schválení správcem. Pokud je povolen [pracovní postup žádosti o souhlas správce](configure-admin-consent-workflow.md) , může uživatel odeslat požadavek správci pro další kontrolu přímo z výzvy k zadání souhlasu. Pokud tato možnost není povolená, zobrazí se následující zpráva:
+Při zjištění rizikové žádosti o souhlas se zobrazí výzva k zadání souhlasu s oznámením, že je požadováno schválení správcem. Pokud je povolen [pracovní postup žádosti o souhlas správce](configure-admin-consent-workflow.md) , může uživatel odeslat požadavek správci pro další kontrolu přímo z výzvy k zadání souhlasu. Pokud není povolený, zobrazí se následující zpráva:
 
-* **AADSTS90094:** &lt;clientAppDisplayName&gt; potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit jenom správce. Please ask an admin to grant permission to this app before you can use it. (Test udělení souhlasu vyžaduje ve vaší organizaci pro přístup k prostředkům oprávnění, které může udělit pouze správce. Než budete moct tuto aplikaci použít, požádejte správce o udělení oprávnění.)
+* **AADSTS90094:** &lt; clientAppDisplayName &gt; potřebuje oprávnění pro přístup k prostředkům ve vaší organizaci, které může udělit jenom správce. Please ask an admin to grant permission to this app before you can use it. (Test udělení souhlasu vyžaduje ve vaší organizaci pro přístup k prostředkům oprávnění, které může udělit pouze správce. Než budete moct tuto aplikaci použít, požádejte správce o udělení oprávnění.)
 
 V takovém případě se událost auditu bude protokolovat jako kategorie "ApplicationManagement", typ aktivity "souhlas s aplikací" a důvod stavu "riziková aplikace zjištěná".
 
 > [!IMPORTANT]
-> Správci by měli před schválením pečlivě [vyhodnotit všechny žádosti o souhlas](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) , zejména když společnost Microsoft zjistila riziko.
+> Správci by měli před schválením žádosti pečlivě [vyhodnotit všechny žádosti o souhlas](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) , zejména když společnost Microsoft zjistila riziko.
 
 ### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Zakázání nebo opětovné povolení souhlasu na základě rizik pomocí PowerShellu
 
-Můžete použít modul Azure AD PowerShell Preview ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)), chcete-li zakázat krok k souhlasu správce, který je vyžadován v případech, kdy Microsoft zjistí riziko nebo ho znovu povolí, pokud byl dříve zakázán.
+Můžete použít modul Azure AD PowerShell Preview [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)a zakázat krok do souhlasu správce, který je vyžadován v případech, kdy Microsoft zjistí riziko nebo ho znovu povolit, pokud byl dříve zakázán.
 
-To lze provést pomocí stejných kroků, jak je uvedeno výše pro [konfiguraci souhlasu vlastníka skupiny pomocí prostředí PowerShell](#configure-group-owner-consent-using-powershell), ale nahrazením jiné hodnoty nastavení. Existují tři rozdíly v krocích: 
+To můžete provést pomocí stejných kroků, jak je uvedeno výše pro [konfiguraci souhlasu vlastníka skupiny pomocí prostředí PowerShell](#configure-group-owner-consent-using-powershell), ale nahrazování jiné hodnoty nastavení. Existují tři rozdíly v krocích: 
 
 1. Seznamte se s hodnotami nastavení pro udělení souhlasu na základě rizik:
 
@@ -168,12 +290,13 @@ To lze provést pomocí stejných kroků, jak je uvedeno výše pro [konfiguraci
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Logická hodnota |  Příznak označující, zda bude při zjištění rizikové žádosti zablokován souhlas uživatele |
 
-2. V kroku 3 nahraďte následující hodnotu:
+1. V kroku 3 nahraďte následující hodnotu:
 
     ```powershell
     $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
     ```
-3. V kroku 5 nahraďte jednu z následujících akcí:
+    
+1. V kroku 5 nahraďte jednu z následujících akcí:
 
     ```powershell
     # Disable risk-based step-up consent entirely
@@ -187,12 +310,12 @@ To lze provést pomocí stejných kroků, jak je uvedeno výše pro [konfiguraci
 
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
+Další informace najdete v tématech:
 
-[Naučte se spravovat souhlas s aplikacemi a hodnotit žádosti o souhlas.](manage-consent-requests.md)
+* [Konfigurace pracovního postupu pro vyjádření souhlasu správce](configure-admin-consent-workflow.md)
+* [Naučte se spravovat souhlas s aplikacemi a hodnotit žádosti o souhlas.](manage-consent-requests.md)
+* [Udělení souhlasu správce v rámci celého tenanta aplikaci](grant-admin-consent.md)
+* [Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)
 
-[Udělení souhlasu správce na úrovni tenanta pro aplikaci](grant-admin-consent.md)
-
-[Oprávnění a souhlas na platformě Microsoft identity](../develop/active-directory-v2-scopes.md)
-
-[Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+Pokud chcete získat nápovědu nebo najít odpovědi na své otázky:
+* [Azure AD v StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

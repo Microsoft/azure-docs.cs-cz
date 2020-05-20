@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0a890139f9d7a955a5c96262d6e5b8f275e61d0d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: a5dbdc4baea0973797427672c9171b4bf841086f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675931"
+ms.locfileid: "83701385"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy k různým rozhraním API ve službě Azure Cosmos DB
 
@@ -93,7 +93,7 @@ Následující podmínky se vztahují na zkoušení Azure Cosmos DB předplatný
 * Globální replikace je dostupná v následujících [oblastech Azure](https://azure.microsoft.com/regions/): Střed USA, Severní Evropa a jihovýchodní Asie.
 * Maximální propustnost 5 000 RU/s v případě zřízení na úrovni kontejneru.
 * Maximální propustnost 20 000 RU/s, pokud je zajištěna na úrovni databáze.
-* Platnost předplatných vyprší po 30 dnech a dají se prodloužit na maximum 31 dní.
+* Platnost předplatných vyprší po 30 dnech a dají se prodloužit na maximum 31 dní. Po vypršení platnosti se obsažené informace odstraní.
 * Pro účty try Azure Cosmos DB se nedají vytvořit lístky podpory Azure; Nicméně podpora je poskytována pro předplatitele se stávajícími plány podpory.
 
 ## <a name="set-up-azure-cosmos-db"></a>Nastavit Azure Cosmos DB

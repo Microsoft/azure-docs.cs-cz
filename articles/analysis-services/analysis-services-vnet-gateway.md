@@ -4,15 +4,15 @@ description: Naučte se, jak nakonfigurovat server Azure Analysis Services, aby 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 384f4c2ee3021678c530aa5c98eaf4dbfd661e95
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 7622b6b5855850a0150f43863fa117828e23d4bd
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572263"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698867"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Použití brány pro zdroje dat v Azure Virtual Network (VNet)
 
@@ -29,7 +29,7 @@ Azure SQL Database zdroje dat spravované instance se spouštějí v rámci virt
 
 ## <a name="configure-alwaysusegateway-property"></a>Konfigurace vlastnosti AlwaysUseGateway
 
-1. V SSMS > **vlastnosti** > > serveru**Obecné**vyberte možnost **Zobrazit rozšířené (všechny) vlastnosti**.
+1. V SSMS > **vlastnosti**> serveru  >  **Obecné**vyberte možnost **Zobrazit rozšířené (všechny) vlastnosti**.
 2. V **ASPaaS\AlwaysUseGateway**vyberte true ( **pravda**).
 
     ![Vždy používat vlastnost brány](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)

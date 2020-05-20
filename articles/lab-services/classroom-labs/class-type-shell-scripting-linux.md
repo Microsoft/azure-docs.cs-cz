@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 66b325eb1d268fdd5b1052a0da84c603186edf65
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbe0a0b7f22df20c8ce3d734738132b5056a36e4
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589495"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697092"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Nastavení testovacího prostředí pro učení skriptování prostředí v systému Linux
 V tomto článku se dozvíte, jak nastavit testovací prostředí pro učení skriptování prostředí v systému Linux. Skriptování je užitečnou součástí správy systému, která správcům umožňuje vyhnout se opakovaným úlohám. V tomto ukázkovém scénáři třída pokrývá tradiční skripty bash a rozšířené skripty. Rozšířené skripty jsou skripty, které kombinují příkazy bash a Ruby. Tento přístup umožňuje Ruby předávat data kolem a bash příkazů pro interakci s prostředím. 
@@ -39,12 +39,11 @@ Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací
 | Nastavení testovacího prostředí | Hodnota/pokyny | 
 | ------------ | ------------------ |
 | Velikost virtuálního počítače (VM) | Malá  |
-| Image virtuálního počítače | Ubuntu Server 18,04 LTS |
-| Povolit připojení ke vzdálené ploše | Aby. <p>Povolení tohoto nastavení umožní učitelům a studentům připojit se ke svým virtuálním počítačům pomocí vzdálené plochy (RDP). Další informace najdete v tématu [Povolení služby Vzdálená plocha pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
+| Image virtuálního počítače | Ubuntu Server 18,04 LTS|
+| Povolit připojení ke vzdálené ploše | Aby. <p>Povolením tohoto nastavení umožníte učitelům a studentům připojit se ke svým virtuálním počítačům pomocí vzdálené plochy (RDP). Další informace najdete v tématu [Povolení služby Vzdálená plocha pro virtuální počítače se systémem Linux v testovacím prostředí v Azure Lab Services](how-to-enable-remote-desktop-linux.md). </p>|
 
-
-## <a name="install-desktop-and-xrdp"></a>Instalace desktopu a xrdp
-V imagi LTS serveru Ubuntu Server 18,04 není ve výchozím nastavení nainstalován server vzdálené plochy. Postupujte podle pokynů v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](../../virtual-machines/linux/use-remote-desktop.md) a nainstalujte balíčky, které jsou potřeba na počítači šablony pro připojení přes protokol vzdálené plochy.
+## <a name="install-desktop-and-rdp"></a>Instalace desktopu a protokolu RDP
+Image Ubuntu serveru 18,04 LTS nemá ve výchozím nastavení nainstalovaný server vzdálené plochy RDP. Postupujte podle pokynů v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](../../virtual-machines/linux/use-remote-desktop.md) a nainstalujte balíčky, které jsou potřeba na počítači šablony pro připojení přes protokol RDP (Remote Desktop Protocol).
 
 ## <a name="install-ruby"></a>Instalace Ruby
 Ruby je open source dynamický jazyk, který se dá kombinovat s bash skripty. V této části se dozvíte, jak použít `apt-get` k instalaci nejnovější verze [Ruby](https://www.ruby-lang.org/).

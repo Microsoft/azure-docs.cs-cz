@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: thweiss
-ms.openlocfilehash: 6ba85961ac4ec9b1b439de18a1d6da0cec4ead4f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652570"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697879"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos
 
@@ -646,11 +646,9 @@ Pokud používáte privátní propojení s účtem Azure Cosmos, platí následu
 
 * Pokud používáte rozhraní API Azure Cosmos DB pro účet MongoDB, který má privátní propojení, nemusí některé nástroje nebo knihovny fungovat, protože automaticky vyřadí `appName` parametr z připojovacího řetězce. Tento parametr se vyžaduje pro připojení k účtu přes soukromý koncový bod. Některé nástroje, například Visual Studio Code, neodstraňují tento parametr z připojovacího řetězce a jsou proto kompatibilní.
 
-* Virtuální síť se nedá přesunout ani odstranit, pokud obsahuje privátní odkaz.
-
-* Nemůžete převzít služby při selhání účtu Azure Cosmos do oblasti, která není namapovaná na všechny privátní koncové body připojené k účtu.
-
 * Správce sítě by měl mít alespoň `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` oprávnění v oboru účtu Azure Cosmos k vytváření automaticky schválených privátních koncových bodů.
+
+* Přímý režim není v současnosti podporován v oblastech Azure založených na Číně.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Omezení integrace privátní zóny DNS
 

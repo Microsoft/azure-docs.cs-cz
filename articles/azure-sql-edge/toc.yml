@@ -1,0 +1,75 @@
+- name: Dokumentace k SQL Edge
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je SQL Edge?
+      href: overview.md
+    - name: Podporované edice a funkce
+      href: features.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Nasazení SQL Edge
+      href: deploy-portal.md
+    - name: Nasazení modelů ONNX v SQL Edge
+      href: deploy-onnx.md
+- name: Kurzy
+  items:
+    - name: Synchronizace dat s využitím Azure Data Factory
+      href: tutorial-sync-data-factory.md
+    - name: Synchronizace dat s využitím Synchronizace dat SQL
+      href: tutorial-sync-data-sync.md
+    - name: Sestavení komplexního řešení IoT s využitím SQL Edge
+      items:
+        - name: Nastavení prostředků Azure
+          href: tutorial-deploy-azure-resources.md
+        - name: Nastavení modulů IoT Edge
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: Nasazení modelu do SQL Edge
+          href: tutorial-run-ml-model-on-sql-edge.md
+- name: Postup
+  items:
+    - name: Balíčky aplikace DAC a úlohy Stream Analytics
+      href: stream-analytics.md
+    - name: Konfigurace replikace
+      href: configure-replication.md
+    - name: Sledování změn dat
+      href: track-data-changes.md
+    - name: Správa úloh streamování T-SQL
+      href: create-stream-analytics-job.md
+    - name: Připojení k SQL Edge
+      href: connect.md
+    - name: Konfigurace SQL Edge
+      href: configure.md
+    - name: Nasazení balíčku aplikace DAC
+      href: deploy-dacpac.md
+- name: Koncepty
+  items:
+    - name: Strojové učení a AI s využitím ONNX
+      href: onnx-overview.md
+    - name: Zálohování a obnovení
+      href: backup-restore.md
+    - name: Streamování dat v SQL Edge
+      items:
+        - name: Streamování dat
+          href: stream-data.md
+        - name: Vytvoření externího streamu (Transact-SQL)
+          href: create-external-stream-transact-sql.md
+        - name: Úprava externího streamu (Transact-SQL)
+          href: alter-external-stream-transact-sql.md
+        - name: Vynechání externího streamu (Transact-SQL)
+          href: drop-external-stream-transact-sql.md
+        - name: Zobrazení streamování a DMV
+          items:
+            - name: Zobrazení streamování a DMV
+              href: streaming-catalog-views.md
+            - name: sys.external_job_streams (Transact-SQL)
+              href: sys-external-job-streams.md
+            - name: sys.external-streaming_jobs (Transact-SQL)
+              href: sys-external-streaming-jobs.md
+            - name: sys.external_streams (Transact-SQL)
+              href: sys-external-streams.md
+    - name: Zpracování dat časových řad
+      items:
+        - name: Date_Bucket (Transact-SQL)
+          href: date-bucket-tsql.md

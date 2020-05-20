@@ -433,6 +433,8 @@
           href: supported-accounts-validation.md
         - name: Aplikace s jedním a více tenanty
           href: single-and-multi-tenant-apps.md
+        - name: Ověření vydavatele (Preview)
+          href: publisher-verification-overview.md
     - name: Oprávnění a souhlas
       displayName: Scopes
       items:
@@ -503,6 +505,12 @@
           href: howto-configure-publisher-domain.md
         - name: Konfigurace podmínek služby a prohlášení o ochraně osobních údajů
           href: howto-add-terms-of-service-privacy-statement.md
+        - name: Konfigurace ověření vydavatele pro vaši aplikaci
+          items:
+            - name: Označení aplikace jako ověřené uživatelem (Preview)
+              href: mark-app-as-publisher-verified.md
+            - name: Řešení potíží s ověřováním vydavatele (Preview)
+              href: troubleshoot-publisher-verification.md
     - name: Práce s knihovnou Microsoft Authentication Library
       displayName: MSAL
       items:

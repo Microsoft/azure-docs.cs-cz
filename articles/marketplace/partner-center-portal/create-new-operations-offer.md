@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: df618e508590f047fb015a8be6c4934d05c04fa9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 4eb80f08db2fc8ceba434f1a4a31794d7b1d6d0d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692555"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698433"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Vytvoření nabídky Dynamics 365 for Operations
 
@@ -26,8 +26,8 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
-3. Na stránce Přehled vyberte **+ Nová nabídka** > **Dynamics 365 pro operace**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Dynamics 365 pro operace**.
 
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-dynamics-365-ops.png)
 
@@ -39,7 +39,7 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
-- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
 Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
@@ -110,7 +110,7 @@ Tato stránka umožňuje definovat kategorie a odvětví používané k seskupen
 
 Vyberte minimálně jednu a maximálně tři kategorie. Tyto kategorie se použijí k umístění vaší nabídky do příslušných oblastí hledání na webu Marketplace. Nezapomeňte si vyžádat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky.
 
-### <a name="industry"></a>Odvětví
+### <a name="industry"></a>Obor
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
@@ -139,29 +139,15 @@ Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabíd
 
 ### <a name="short-description"></a>Krátký popis
 
-Zadejte krátký popis vaší nabídky (až 100 znaků). Tento popis se dá použít ve výsledcích hledání na webu Marketplace.
+Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se dá použít ve výsledcích hledání na webu Marketplace.
 
 ### <a name="description"></a>Popis
 
-Zadejte delší popis vaší nabídky (až 3 000 znaků). Tento popis se zobrazí zákazníkům v přehledu výpisu na webu Marketplace. Zahrňte do své nabídky svou polohu, klíčové výhody, kategorii nebo přidružení oboru, možnosti nákupu v aplikaci a veškeré požadované informace.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Pár tipů pro psaní popisu:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Jasně popište, jak se má v prvních několika větách popisu v této nabídce vyhodnotit. Zahrňte do svého umístění hodnoty tyto informace:
-  - Popis produktu
-  - Typ uživatele, který přináší výhody produktu
-  - Potřeby zákazníků nebo bolesti, že adresy produktů
-- Mějte na paměti, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět.  
-- Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou doručujete.  
-- Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami.
-
-Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k použití formátování.
-
-![Použití editoru textu ve formátu RTF](./media/rich-text-editor.png)
-
-| <center>Změnit formát textu | <center>Přidat odrážky nebo číslování | <center>Přidat nebo odebrat odsazení textu |
-| --- | --- | --- |
-| <center>![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png) |  <center>![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png) |  <center>![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png) |
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 ### <a name="search-keywords"></a>Hledaná klíčová slova
 
@@ -211,7 +197,7 @@ Poskytněte logo vaší nabídky ve dvou velikostech v pixelech:
 
 Obrázek Hero je nepovinný. Pokud zadáte jednu, musí změřit 815 x 290 pixelů.
 
-#### <a name="screenshots"></a>Snímky obrazovek
+#### <a name="screenshots"></a>Screenshoty
 
 Přidejte snímky obrazovky, které ukazují, jak vaše nabídka funguje. Vyžaduje se aspoň jeden snímek obrazovky a můžete přidat až pět. Všechny snímky obrazovky musí být 1280 × 720 pixelů.
 
@@ -305,9 +291,9 @@ Společnost Microsoft může odebrat složitost nastavení testovacích jednotek
 
 - **Doba trvání testovacího disku** (požadováno) – zadejte dobu, po kterou bude testovací jednotka aktivní, definováním počtu hodin. Po uplynutí této doby bude relace končit a už nebude využívat jednu z vašich licencí. V závislosti na složitosti vaší nabídky doporučujeme hodnotu 2-24 hodin. Tato doba může být nastavena pouze na celé číslo hodiny (například "2" hodiny; "1,5" není platný).  Uživatel může požádat o novou relaci, pokud dojde k nedostatku času a chcete znovu získat přístup k testovací jednotce.
 
-- **Adresa URL instance** (požadováno) – adresa URL, na které zákazník zahájí svoji zkušební verzi. Obvykle adresa URL vaší instance Dynamics 365 spouští vaši aplikaci s nainstalovanou ukázkovou daty (například `https://testdrive.crm.dynamics.com`).
+- **Adresa URL instance** (požadováno) – adresa URL, na které zákazník zahájí svoji zkušební verzi. Obvykle adresa URL vaší instance Dynamics 365 spouští vaši aplikaci s nainstalovanou ukázkovou daty (například `https://testdrive.crm.dynamics.com` ).
 
-- **Instance URL webového rozhraní API** (požadováno) – načte adresu URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení** \&gt;. **Přizpůsobení** \&gt; **Prostředky** \&pro vývojáře gt; **Instance webového rozhraní API (adresa URL kořenového adresáře služby)** zkopírujte zde NALEZENOU adresu URL `https://testdrive.crm.dynamics.com/api/data/v9.0`(například).
+- **Instance URL webového rozhraní API** (požadováno) – NAČTE adresu URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení** \& gt;. **Vlastní nastavení** \& gt **Materiály** \& pro vývojáře gt **Instance webového rozhraní API (adresa URL kořenového adresáře služby)** zkopírujte zde NALEZENOU adresu URL (například `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
 
 - **Název role** (povinné) – zadejte název role zabezpečení, kterou jste definovali ve vlastní testovací jednotce Dynamics 365. Tato funkce se uživateli přiřadí během zkušební jednotky (například Test-Drive-role).
 
@@ -337,7 +323,7 @@ Pro nasazení testovacích jednotek vaším jménem vytvořte a poskytněte samo
 
 - **ID předplatného Azure** (vyžadované pro Azure Resource Manager a Logic Apps) – zadejte ID předplatného, které vám umožní udělit přístup ke službám účtů Azure za účelem vytváření sestav a fakturace využívání prostředků. Doporučujeme zvážit [vytvoření samostatného předplatného Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription) , které se použije pro testovací jednotky, pokud ho ještě nemáte. ID vašeho předplatného Azure můžete najít tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/) a přejdete na kartu **předplatná** v nabídce na levé straně. Výběrem karty se zobrazí vaše ID předplatného (například "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **ID tenanta Azure AD** (povinné) – zadejte [ID TENANTA](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **vlastnosti**a vyhledejte číslo **ID adresáře** v seznamu (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta vaší organizace můžete také vyhledat pomocí adresy vašeho názvu domény na [https://www.whatismytenantid.com](https://www.whatismytenantid.com)adrese.
+- **ID tenanta Azure AD** (povinné) – zadejte [ID TENANTA](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **vlastnosti**a vyhledejte číslo **ID adresáře** v seznamu (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta vaší organizace můžete také vyhledat pomocí adresy vašeho názvu domény na adrese [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 
 - **Název tenanta Azure AD** (vyžadováno pro dynamickou 365) – zadejte název Azure Active Directory (AD). Pokud chcete najít tento název, přihlaste se k [Azure Portal](https://portal.azure.com/)v pravém horním rohu bude název vašeho tenanta uvedený pod názvem vašeho účtu.
 

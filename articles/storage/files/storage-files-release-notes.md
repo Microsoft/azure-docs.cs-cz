@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 97599d8113d20511882ec38928b221706e7f37b9
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0b8110e70ab681c0d9a4ad720f76c3f5a295fff9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682420"
+ms.locfileid: "83701196"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Synchronizace souborů Azure
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -47,6 +47,9 @@ Následující poznámky k verzi jsou pro 10.0.2.0 verze agenta Azure File Sync 
 
 Problém opravený v této verzi:  
 - Agent synchronizace úložiště (FileSyncSvc) se často zhroutí po instalaci agenta Azure File Sync v10 za účelem.
+
+> [!Note]  
+>Tato verze se nepoužila na servery, které jsou nakonfigurované tak, aby se automaticky aktualizovaly, když bude dostupná nová verze. K instalaci této aktualizace použijte Microsoft Update nebo katalog služby Microsoft Update (pokyny k instalaci najdete v tématu [KB4522412](https://support.microsoft.com/help/4522412) ).
 
 ## <a name="agent-version-10000"></a>Verze agenta 10.0.0.0
 Následující poznámky k verzi jsou pro verzi 10.0.0.0 agenta Azure File Sync (vydané 9. dubna 2020).

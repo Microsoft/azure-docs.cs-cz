@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ed2638cfe4ab7e849e428729ccd17ffdeb6314af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 858dfa8282a06feab877bcea65de47b8455133dc
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086347"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697301"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Osvědčené postupy vývoje pro synapse SQL
 Tento článek popisuje doprovodné materiály a osvědčené postupy při vývoji řešení datového skladu. 
@@ -154,7 +154,7 @@ V důsledku toho dosáhnete lepšího výkonu. Další informace najdete v téma
 
 Pokud vaše data v úložišti nejsou rozdělená na oddíly, zvažte jejich dělení, aby bylo možné použít tyto funkce k optimalizaci dotazů, které cílí na tyto soubory.
 
-Při [dotazování na dělené tabulky Spark](develop-storage-files-spark-tables.md) z SQL na vyžádání bude dotaz automaticky cílit jenom na soubory, které potřebujete.
+Při [dotazování na oddíly Apache Spark externích tabulek Azure synapse](develop-storage-files-spark-tables.md) z SQL na vyžádání bude dotaz automaticky cílit jenom na soubory, které potřebujete.
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Použití CETAS ke zvýšení výkonu a spojení dotazů
 

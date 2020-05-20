@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 543320adb490ff51b0394fb26137ebc977d2c04b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ff5d8ecaaeff67e1a97c4afd4ca8119f8ac7c1e1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679549"
+ms.locfileid: "83696955"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -369,7 +369,6 @@ Následující scénáře předávající strany SAML (RP) jsou podporovány pro
 * Několik adres URL pro odhlášení nebo příspěvek pro odhlašovací adresu URL v objektu Application nebo instančního objektu.
 * Zadejte podpisový klíč pro ověření požadavků RP v objektu Application nebo instančního objektu.
 * Zadejte šifrovací klíč tokenu v objektu aplikace nebo instančního objektu.
-* Přihlášení iniciovaná zprostředkovatelem identity se v této verzi Preview aktuálně nepodporují.
 
 ## <a name="next-steps"></a>Další kroky
 

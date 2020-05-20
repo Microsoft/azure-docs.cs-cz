@@ -3,12 +3,12 @@ title: Nastavení analýzy webových aplikací pro ASP.NET pomocí Azure Applica
 description: Nakonfigurujte nástroje pro analýzu výkonu, dostupnosti a chování uživatelů pro váš web ASP.NET, který je hostovaný místně nebo v Azure.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: d3181c3d43f07c7cb920b9fe265a8420c1417a56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa4449a0229ba156dbeed37c10ed21f8b1b5f201
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145282"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698495"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 > [!IMPORTANT]
 > Snímky obrazovky v tomto příkladu vycházejí ze sady Visual Studio 2017 verze 15.9.9 a novější. Prostředí pro přidání Application Insights se liší ve verzích sady Visual Studio i typu šablony ASP.NET. Starší verze můžou mít alternativní text, například "konfigurace Application Insights".
 
-V Průzkumník řešení klikněte pravým tlačítkem myši na název vaší webové aplikace a vyberte **Přidat** > **telemetrie Application Insights**
+V Průzkumník řešení klikněte pravým tlačítkem myši na název vaší webové aplikace a vyberte **Přidat**  >  **telemetrie Application Insights**
 
 ![Snímek obrazovky Průzkumníka řešení se zvýrazněnou možností Konfigurovat Application Insights](./media/asp-net/add-telemetry-new.png)
 
@@ -50,7 +50,7 @@ Pokud chcete nastavit skupinu prostředků nebo umístění, kde jsou vaše data
 
 ![Snímek obrazovky stránky registrace vaší aplikace v Application Insights](./media/asp-net/00005-register-ed.png)
 
- Vyberte **projekt** > **Spravovat balíčky balíčků** > NuGet**Zdroj: NuGet.org** > ověřte, že máte nejnovější stabilní verzi sady Application Insights SDK.
+ Vyberte **projekt**  >  **Spravovat balíčky balíčků NuGet**  >  **Zdroj: NuGet.org** > ověřte, že máte nejnovější stabilní verzi sady Application Insights SDK.
 
  Telemetrie se bude posílat na web [Azure Portal](https://portal.azure.com), jak během ladění aplikace, tak po jejím publikování.
 > [!NOTE]
@@ -68,7 +68,7 @@ Telemetrii můžete zobrazit v sadě Visual Studio nebo na webovém portálu App
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>Zobrazení telemetrických dat v sadě Visual Studio
 
-Pokud chcete v sadě Visual Studio zobrazit data Application Insights:  Vyberte **Průzkumník řešení** > **připojené služby** > klikněte pravým tlačítkem na **Application Insights**a pak klikněte na **Hledat živou telemetrii**.
+Pokud chcete v sadě Visual Studio zobrazit data Application Insights:  Vyberte **Průzkumník řešení**  >  **připojené služby** > klikněte pravým tlačítkem na **Application Insights**a pak klikněte na **Hledat živou telemetrii**.
 
 V okně Visual Studio Application Insights Search se zobrazí telemetrie vygenerovaná na straně serveru vaší aplikace. Experimentujte s filtry a klikněte na události, které chcete zobrazit podrobněji.
 
@@ -106,7 +106,7 @@ Můžete také dále analyzovat telemetrii v sadě [Visual Studio](../../azure-m
 
 ## <a name="youre-all-set"></a><a name="land"></a>Všechno je nastavené.
 
-Blahopřejeme! Nainstalovali jste do aplikace balíček Application Insights a nakonfigurovali jste pro ni odesílání telemetrických dat do služby Application Insights v Azure.
+Gratulujeme! Nainstalovali jste do aplikace balíček Application Insights a nakonfigurovali jste pro ni odesílání telemetrických dat do služby Application Insights v Azure.
 
 Prostředek Azure, který přijímá telemetrická data aplikace, je určen *instrumentačním klíčem*. Tento klíč najdete v souboru ApplicationInsights.config.
 
@@ -135,11 +135,11 @@ K dispozici jsou i alternativní témata, na která se v případě zájmu můž
 * **[Práce s Application Insights v sadě Visual Studio](../../azure-monitor/app/visual-studio.md)**<br/>Zahrnuje informace o ladění pomocí telemetrie, diagnostických hledáních a podrobném procházení kódem.
 * **[Analytics](../../azure-monitor/log-query/get-started-portal.md)** – Výkonný dotazovací jazyk.
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 
 * [Testy dostupnosti:](../../azure-monitor/app/monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
 * [Inteligentní diagnostika:](../../azure-monitor/app/proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
-* [Výstrahy metriky](../../azure-monitor/app/alerts.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
+* [Výstrahy metriky](../../azure-monitor/platform/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
 
 ### <a name="automation"></a>Automation
 

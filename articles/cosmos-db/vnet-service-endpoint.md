@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c1c5bdd1d210a1933699cad52dbf123b50048e01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d264ead87e7fa638830bf25fdb07983b164334b7
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80421328"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698664"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Přístup ke službě Azure Cosmos DB z virtuálních sítí
 
@@ -23,6 +23,10 @@ Ve výchozím nastavení je účet Azure Cosmos přístupný z libovolného zdro
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 Tady jsou některé nejčastější dotazy týkající se konfigurace přístupu z virtuálních sítí:
+
+### <a name="are-notebooks-and-mongo-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Jsou poznámkové bloky a prostředí Mongo aktuálně kompatibilní s účty s povoleným Virtual Network?
+
+V současné době není [Mongo integrace prostředí PowerShellu v Průzkumník dat Cosmos DB](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) a [Služba Jupyter poznámkových bloků](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks) podporována s přístupem VNET. Toto je aktuálně aktivní vývoj.
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Můžu v účtu Azure Cosmos zadat jak koncový bod služby virtuální sítě, tak i zásady řízení přístupu IP? 
 
@@ -44,7 +48,7 @@ Jakmile je koncový bod služby pro Azure Cosmos DB v podsíti povolený, zdroj 
 
 Po přidání koncových bodů služby virtuální sítě do účtu Azure Cosmos budete potřebovat přístup k `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` akci pro všechny virtuální sítě nakonfigurované na vašem účtu Azure Cosmos. Toto oprávnění je povinné, protože proces autorizace ověřuje přístup k prostředkům (například k prostředkům databáze a virtuální sítě) před vyhodnocením jakýchkoli vlastností.
  
-Autorizace ověřuje oprávnění prostředku virtuální sítě i v případě, že uživatel nezadá seznamy ACL virtuální sítě pomocí rozhraní příkazového řádku Azure CLI. V současné době řídicí plocha účtu Azure Cosmos podporuje nastavení kompletního stavu účtu Azure Cosmos. Jeden z parametrů pro volání řídicí roviny je `virtualNetworkRules`. Pokud tento parametr nezadáte, Azure CLI vytvoří volání metody Get Database, které načte `virtualNetworkRules` a použije tuto hodnotu v volání aktualizace.
+Autorizace ověřuje oprávnění prostředku virtuální sítě i v případě, že uživatel nezadá seznamy ACL virtuální sítě pomocí rozhraní příkazového řádku Azure CLI. V současné době řídicí plocha účtu Azure Cosmos podporuje nastavení kompletního stavu účtu Azure Cosmos. Jeden z parametrů pro volání řídicí roviny je `virtualNetworkRules` . Pokud tento parametr nezadáte, Azure CLI vytvoří volání metody Get Database, které načte `virtualNetworkRules` a použije tuto hodnotu v volání aktualizace.
 
 ### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>Mají partnerské virtuální sítě taky přístup k účtu Azure Cosmos? 
 Jenom virtuální síť a jejich podsítě přidávané k účtu Azure Cosmos mají přístup. Jejich partnerský virtuální sítě nemá přístup k účtu, dokud nebudou do účtu přidány podsítě v rámci partnerských virtuálních sítí.

@@ -11,17 +11,17 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: d22dcf221bef40edb8bb2bd346dd5964000a4a68
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: efe76323b4159af01f1eaf470d9c1833edd0a186
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588372"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702133"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýzy textu
 
 > [!NOTE]
-> * Kontejner pro Analýza mínění v3 je teď všeobecně dostupný. Extrakce klíčových frází a kontejnery pro detekci jazyka jsou k dispozici jako [nebraná verze Public Preview](../../cognitive-services-gating-process.md).
+> * Kontejner pro Analýza mínění v3 je teď všeobecně dostupný. Extrakce klíčových frází a kontejnery pro detekci jazyka jsou k dispozici jako nebraná verze Public Preview.
 > * Entity Linking a NER nejsou aktuálně k dispozici jako kontejner.
 
 Kontejnery umožňují spouštět text analytická rozhraní API ve vašem vlastním prostředí a jsou skvělé pro konkrétní požadavky na zabezpečení a zabezpečení dat. Kontejnery Analýza textu poskytují pokročilé zpracování přirozeného jazyka v nezpracovaném textu a zahrnují tři hlavní funkce: analýzu mínění, extrakci klíčových frází a detekci jazyka. 

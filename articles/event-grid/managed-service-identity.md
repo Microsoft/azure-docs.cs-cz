@@ -1,5 +1,5 @@
 ---
-title: Použití identity spravované služby k přeposílání událostí Azure Event Grid předplatných
+title: Doručování událostí s identitou spravované služby
 description: Tento článek popisuje, jak povolit identitu spravované služby pro téma Azure Event Grid. Použijte ji k přeposílání událostí do podporovaných cílů.
 services: event-grid
 author: spelluru
@@ -7,14 +7,14 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 0e1f46c0bd7ce22cae77db1a524336445fd3f795
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4d96f28b98cccada2ac5c77589acc6df1430bb02
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691023"
+ms.locfileid: "83700653"
 ---
-# <a name="enable-and-use-managed-service-identity-for-an-event-grid-topic-or-domain"></a>Povolení a použití identity spravované služby v tématu nebo doméně Event gridu 
+# <a name="event-delivery-with-managed-identity"></a>Doručování událostí se spravovanou identitou
 Tento článek popisuje, jak povolit [identitu spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro téma nebo doménu služby Event Grid. Slouží k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
 
 Tady je postup, který je podrobně popsaný v tomto článku:

@@ -4,6 +4,14 @@
   items:
     - name: Informace o službě Peering Service
       href: about.md
+- name: Kurzy
+  items:
+    - name: Registrace připojení služby Peering Service
+      href: azure-portal.md
+    - name: Vytvoření připojení služby Peering Service
+      href: create-connection.md
+    - name: Měření telemetrie připojení služby Peering Service
+      href: measure-connection-telemetry.md
 - name: Koncepty
   items:
     - name: Umístění a partneři
@@ -18,17 +26,13 @@
   items:
     - name: Registrace služby Peering Service
       items:
-        - name: Azure Portal
-          href: azure-portal.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: powershell.md
         - name: Azure CLI
           href: cli.md
-    - name: Měření telemetrie připojení
-      href: measure-connection-telemetry.md
 - name: Odkazy
   items:
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/az.peering
     - name: Azure CLI
       href: /cli/azure/ext/peering/peering

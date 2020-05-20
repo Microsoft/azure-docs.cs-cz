@@ -3,18 +3,18 @@ title: Automatizace Azure Application Insights s využitím PowerShellu | Micros
 description: Automatizujte vytváření a správu prostředků, upozornění a testů dostupnosti v PowerShellu pomocí šablony Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a6653582a990b97775976b757198f11b2a46c46b
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780483"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697918"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-V tomto článku se dozvíte, jak automaticky automatizovat vytváření a aktualizaci [Application Insightsch](../../azure-monitor/app/app-insights-overview.md) prostředků pomocí správy prostředků Azure. Můžete to například udělat jako součást procesu sestavení. Spolu se základním prostředkem Application Insights můžete vytvářet [webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md), nastavit [výstrahy](../../azure-monitor/app/alerts.md), nastavit [cenové schéma](pricing.md)a vytvářet další prostředky Azure.
+V tomto článku se dozvíte, jak automaticky automatizovat vytváření a aktualizaci [Application Insightsch](../../azure-monitor/app/app-insights-overview.md) prostředků pomocí správy prostředků Azure. Můžete to například udělat jako součást procesu sestavení. Spolu se základním prostředkem Application Insights můžete vytvářet [webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md), nastavit [výstrahy](../../azure-monitor/platform/alerts-log.md), nastavit [cenové schéma](pricing.md)a vytvářet další prostředky Azure.
 
 Klíčem k vytváření těchto prostředků jsou šablony JSON pro [Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md). Základní postup: Stáhněte si definice JSON existujících prostředků; parametrizovat určité hodnoty, jako jsou názvy; a pak šablonu spusťte vždy, když chcete vytvořit nový prostředek. Můžete zabalit několik prostředků dohromady a vytvořit je vše v jednom z nich – například monitorování aplikací s testy dostupnosti, výstrahy a úložiště pro průběžný export. Existují některé odlišností k některým z parameterizations, které tady vysvětlíme.
 
@@ -50,7 +50,7 @@ Tady je postup vytvoření nového prostředku Application Insights pomocí šab
 
 ### <a name="create-the-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manager
 
-Vytvoření nového souboru. JSON – Pojďme ho `template1.json` zavolat v tomto příkladu. Kopírovat tento obsah do tohoto obsahu:
+Vytvoření nového souboru. JSON – Pojďme ho zavolat `template1.json` v tomto příkladu. Kopírovat tento obsah do tohoto obsahu:
 
 ```JSON
     {
@@ -245,7 +245,7 @@ $Resource | Set-AzResource -Force
 
 ### <a name="setting-data-retention-using-rest"></a>Nastavení uchovávání dat pomocí REST
 
-Pokud chcete získat aktuální uchovávání dat pro váš Application Insights prostředek, můžete použít nástroj OSS [ARMClient](https://github.com/projectkudu/ARMClient).  (Další informace o ARMClient od článků [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) a [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Tady je příklad použití `ARMClient`pro získání aktuálního uchování:
+Pokud chcete získat aktuální uchovávání dat pro váš Application Insights prostředek, můžete použít nástroj OSS [ARMClient](https://github.com/projectkudu/ARMClient).  (Další informace o ARMClient od článků [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) a [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Tady je příklad použití `ARMClient` pro získání aktuálního uchování:
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
@@ -268,7 +268,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
 
 ### <a name="setting-data-retention-using-a-powershell-script"></a>Nastavení uchovávání dat pomocí skriptu PowerShellu
 
-Pro změnu uchovávání lze také použít následující skript. Zkopírujte tento skript a uložte ho `Set-ApplicationInsightsRetention.ps1`jako.
+Pro změnu uchovávání lze také použít následující skript. Zkopírujte tento skript a uložte ho jako `Set-ApplicationInsightsRetention.ps1` .
 
 ```PS
 Param(
@@ -350,7 +350,7 @@ armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="set-the-daily-cap-reset-time"></a>Nastavení času pro obnovení denního limitu
 
-Chcete-li nastavit denní čas obnovení, můžete použít [ARMClient](https://github.com/projectkudu/ARMClient). Tady je příklad použití `ARMClient`, chcete-li nastavit čas obnovení na novou hodinu (v tomto příkladu 12:00 UTC):
+Chcete-li nastavit denní čas obnovení, můžete použít [ARMClient](https://github.com/projectkudu/ARMClient). Tady je příklad použití `ARMClient` , chcete-li nastavit čas obnovení na novou hodinu (v tomto příkladu 12:00 UTC):
 
 ```PS
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
@@ -380,7 +380,7 @@ Cenové tarify pro existující Application Insights prostředek můžete také 
                -appName myApp
 ```
 
-`priceCode` Je definován jako:
+`priceCode`Je definován jako:
 
 |priceCode|rozhraní|
 |---|---|
@@ -415,19 +415,19 @@ Pokud chcete automatizovat testy dostupnosti, Projděte si [článek šablona v�
 
 Chcete-li automatizovat vytváření jakýchkoli dalších prostředků jakéhokoliv druhu, vytvořte příklad ručně a potom zkopírujte a parametrizovat svůj kód z [Azure Resource Manager](https://resources.azure.com/). 
 
-1. Otevřete [Azure Resource Manager](https://resources.azure.com/). Přejděte k prostředku `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`aplikace směrem dolů. 
+1. Otevřete [Azure Resource Manager](https://resources.azure.com/). Přejděte `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components` k prostředku aplikace směrem dolů. 
    
     ![Navigace v Azure Resource Explorer](./media/powershell/01.png)
    
     *Komponenty* jsou základní Application Insights prostředky pro zobrazování aplikací. Pro přidružená pravidla výstrah a webové testy dostupnosti jsou k dispozici samostatné prostředky.
-2. Zkopírujte kód JSON součásti na příslušné místo v `template1.json`.
+2. Zkopírujte kód JSON součásti na příslušné místo v `template1.json` .
 3. Odstranit tyto vlastnosti:
    
    * `id`
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. Otevřete oddíly `webtests` a `alertrules` a zkopírujte kód JSON pro jednotlivé položky do šablony. (Nekopírovat z uzlů `webtests` nebo `alertrules` : přejít do položek pod nimi.)
+4. Otevřete `webtests` oddíly a `alertrules` a zkopírujte kód JSON pro jednotlivé položky do šablony. (Nekopírovat z `webtests` uzlů nebo `alertrules` : přejít do položek pod nimi.)
    
     Každý webový test má přidružené pravidlo výstrahy, takže je nutné oba zkopírovat.
    

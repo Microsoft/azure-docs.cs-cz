@@ -4,14 +4,14 @@ description: Další informace o dotazování a přístupu k vnořeným vlastnos
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: d0b11cdb0cf2719b576b7a4c4f3fa534ae09dfa8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117015"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699120"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Práce s JSON v Azure Cosmos DB
 
@@ -148,13 +148,11 @@ Například zde je dokument s vlastností s názvem `order` a vlastností `price
 ```json
 {
   "id": "AndersenFamily",
-  "order": [
-     {
+  "order": {
          "orderId": "12345",
          "productId": "A17849",
          "price($)": 59.33
-     }
-  ],
+   },
   "creationDate": 1431620472,
   "isRegistered": true
 }

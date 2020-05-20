@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ea7fb97b6c97a797ce99878762333833965549d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255532"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698649"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2
 
@@ -23,11 +23,11 @@ DistCp poskytuje nejrůznější parametry příkazového řádku a důrazně do
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Existující účet Azure Storage bez povolených možností Data Lake Storage Gen2 (hierarchický obor názvů)**.
-* **Azure Storage účet s povolenou funkcí data Lake Storage Gen2**. Pokyny, jak ho vytvořit, najdete v tématu [Vytvoření účtu úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md) .
-* **Systém souborů** , který byl vytvořen v účtu úložiště s povoleným hierarchickým oborem názvů.
-* **Cluster Azure HDInsight** s přístupem k účtu úložiště s povoleným Data Lake Storage Gen2. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
+* Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Existující účet Azure Storage bez povolených možností Data Lake Storage Gen2 (hierarchický obor názvů).
+* Azure Storage účet s povolenými možnostmi Data Lake Storage Gen2 (hierarchický obor názvů). Pokyny, jak ho vytvořit, najdete v tématu [Vytvoření účtu Azure Storage](../common/storage-account-create.md) .
+* Kontejner, který byl vytvořen v účtu úložiště s povoleným hierarchickým oborem názvů.
+* Cluster Azure HDInsight s přístupem k účtu úložiště s povolenou funkcí hierarchického oboru názvů. Viz [použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Použití DistCp z clusteru HDInsight Linux
 
@@ -37,25 +37,25 @@ Cluster An HDInsight se dodává s nástrojem DistCp, který se dá použít ke 
 
 2. Ověřte, jestli máte přístup k vašemu stávajícímu účtu pro obecné účely v2 (bez povoleného hierarchického oboru názvů).
 
-        hdfs dfs –ls wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/
+        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
 
-    Výstup by měl poskytnout seznam obsahu v kontejneru.
+   Výstup by měl poskytnout seznam obsahu v kontejneru.
 
 3. Podobně ověřte, zda máte přístup k účtu úložiště s povoleným hierarchickým oborem názvů z clusteru. Spusťte následující příkaz:
 
-        hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
+        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
-    Výstup by měl poskytnout seznam souborů nebo složek v účtu Data Lake Storage.
+    Výstup by měl poskytnout seznam souborů nebo složek v účtu úložiště Data Lake.
 
 4. Pomocí DistCp můžete kopírovat data z WASB na účet Data Lake Storage.
 
-        hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
     Příkaz zkopíruje obsah složky **/example/data/Gutenberg/** v úložišti objektů blob do **/myFolder** účtu Data Lake Storage.
 
 5. Podobně použijte DistCp ke zkopírování dat z Data Lake Storage účtu do Blob Storage (WASB).
 
-        hadoop distcp abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg
+        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
 
     Příkaz zkopíruje obsah **/myFolder** v účtu Data Lake Store do složky **/example/data/Gutenberg/** v WASB.
 
@@ -63,9 +63,9 @@ Cluster An HDInsight se dodává s nástrojem DistCp, který se dá použít ke 
 
 Vzhledem k tomu, že je nejnižší členitost DistCp jediným souborem, je nastavení maximálního počtu souběžných kopií nejdůležitějším parametrem pro jejich optimalizaci proti Data Lake Storage. Počet souběžných kopií se rovná parametru počet mapovačů (**m**) na příkazovém řádku. Tento parametr určuje maximální počet mapovačů, které se použijí ke kopírování dat. Výchozí hodnota je 20.
 
-**Případě**
+**Příklad**
 
-    hadoop distcp -m 100 wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Návody určit počet mapovačů, které se mají použít?
 
@@ -77,7 +77,7 @@ Tady je několik rad, kterými se můžete řídit.
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
-**Případě**
+**Příklad**
 
 Předpokládejme, že máte cluster s 4x D14v2s a snažíte se přenést 10 TB dat z 10 různých složek. Každá složka obsahuje různé objemy dat a velikosti souborů v jednotlivých složkách se liší.
 

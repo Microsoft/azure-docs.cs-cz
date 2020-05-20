@@ -1,31 +1,28 @@
 ---
 title: Vytvoření nabídky kontejneru Azure – Azure Marketplace
-description: Tento článek vysvětluje, jak vytvořit a publikovat nabídku kontejneru pro Azure Marketplace.
+description: Naučte se, jak vytvořit a publikovat nabídku kontejneru pro Azure Marketplace.
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/07/2020
-ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/19/2020
+ms.openlocfilehash: 75baddbefc2babf73fee18cafe07177a3f0fb6f2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791931"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701025"
 ---
 # <a name="create-an-azure-container-offer"></a>Vytvoření nabídky kontejneru Azure
-
-> [!IMPORTANT]
-> Přesouváme správu nabídek vašich kontejnerů Azure z portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, postupujte podle pokynů v části [kontejnery](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) , které vám portál partnerů cloudu spravovat vaše nabídky.
 
 Tento článek popisuje, jak vytvořit a publikovat nabídku kontejneru pro Azure Marketplace. Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
-3. Na stránce Přehled vyberte **+ Nový nabídka** > **Azure Container**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
+3. Na stránce Přehled vyberte **+ Nový nabídka**  >  **Azure Container**.
 
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-azure-container.png)
 
@@ -37,7 +34,7 @@ Tento článek popisuje, jak vytvořit a publikovat nabídku kontejneru pro Azur
 Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
-- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
 Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
@@ -51,7 +48,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Příklad:
+Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Například:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) .
@@ -68,12 +65,12 @@ Při publikování vaší nabídky na komerční tržišti s partnerským centre
 
 1. **Vyberte cíl zájemce, u kterého chceme poslat zákaznickou zájem**. Partnerské centrum podporuje následující systémy CRM:
 
-- [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) pro zákaznickou zapojení
-- [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+   - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) pro zákaznickou zapojení
+   - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
+   - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
-> [!NOTE]
-> Pokud váš systém CRM není uvedený výše, použijte [koncový bod](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) nebo HTTPS k uložení zákaznických dat a pak EXPORTUJTE data do systému CRM.
+   > [!NOTE]
+   > Pokud váš systém CRM není uvedený výše, použijte [koncový bod](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) nebo HTTPS k uložení zákaznických dat a pak EXPORTUJTE data do systému CRM.
 
 2. Připojte svoji nabídku k cíli realizace při publikování v partnerském centru.
 3. Potvrďte, že připojení k cíli realizace je správně nakonfigurované. Po publikování v partnerském centru ověříme připojení a pošleme vám testovacího vedoucího. I když náhled nabídky před tím, než začne fungovat, můžete také otestovat své zájemce tím, že se pokusíte nabídku koupit v prostředí verze Preview.
@@ -149,40 +146,11 @@ Podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a po
 
 ### <a name="description"></a>Popis
 
-Zadejte delší popis nabídky, maximálně 3 000 znaků. Zobrazí se zákazníkům v přehledu výpisu na webu Marketplace.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Do popisu zahrňte jednu nebo více z následujících možností:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Hodnota a klíčové výhody, které vaše nabídka nabízí
-- Přidružení kategorie nebo oboru nebo obojí
-- Možnosti nákupu v aplikaci
-- Jakékoli požadované zpřístupnění
-
-Zde jsou některé tipy pro psaní popisu:
-
-- Jasně popište hodnotu vaší nabídky v prvních několika větách popisu. Zadejte následující položky:
-  - Popis nabídky
-  - Typ uživatele, který je výhodou nabídky
-  - Zákazník potřebuje nebo vydá adresy nabídky.
-- Pamatujte, že ve výsledcích hledání se může zobrazit několik prvních vět.
-- Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou nabízí vaše nabídka.
-- Zkuste použít slovníky specifické pro konkrétní obor nebo na základě výhod.
-
-Aby bylo možné podrobnější **Popis** nabídky, použijte Editor formátovaného textu k formátování popisu. pomocí číslování, odrážek, tučného písma, kurzívy a odsazení, aby bylo možné čitelnější popis.
-
-:::image type="content" source="media/text-editor2.png" alt-text="Znázorňuje Editor formátovaného textu." border="false" :::
-
-- Pomocí tohoto rozevíracího seznamu můžete použít odstavcový styl na text.
-
-    :::image type="content" source="media/text-editor3.png" alt-text="Znázorňuje ovládací prvek stylu textu v editoru formátovaného textu." border="false":::
-
-- Pomocí těchto ikon můžete použít číslování nebo odrážky na text.
-
-     :::image type="content" source="media/text-editor4.png" alt-text="Ukazuje ovládací prvky seznamu s odrážkami a čísly v editoru formátovaného textu." border="false":::
-
-- Pomocí těchto ikon můžete přidat nebo odebrat odsazení textu nebo z něj.
-
-    :::image type="content" source="media/text-editor5.png" alt-text="Znázorňuje ovládací prvky odsazení v editoru formátovaného textu." border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-link"></a>Odkaz zásady ochrany osobních údajů
 
@@ -390,11 +358,11 @@ Na kartě **Podrobnosti o úložišti imagí** zadejte následující informace.
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Ukazuje dialogové okno aktualizace registru kontejneru.":::
 
-**Heslo pro Azure Container Registry** – zadejte heslo pro uživatelské jméno správce, které je přidružené k Azure Container registry a má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Heslo z Azure Portal můžete získat tak, že v **Container Registry** > **přístupové klávesy** nebo pomocí Azure CLI použijete [příkaz show](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
+**Heslo pro Azure Container Registry** – zadejte heslo pro uživatelské jméno správce, které je přidružené k Azure Container registry a má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Heslo z Azure Portal můžete získat tak, že v **Container Registry**  >  **přístupové klávesy** nebo pomocí Azure CLI použijete [příkaz show](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Ukazuje nabídku přístupová klávesa.":::
 
-**Název úložiště v rámci Azure Container Registry**. Zadejte název úložiště Azure Container Registry, které obsahuje váš obrázek. Při odesílání image do registru zahrňte název úložiště. Název úložiště můžete najít tak, že kliknete na stránku [Container Registry](https://azure.microsoft.com/services/container-registry/) > **úložišť** . Další informace najdete v tématu [zobrazení úložišť registru kontejnerů v Azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories).
+**Název úložiště v rámci Azure Container Registry**. Zadejte název úložiště Azure Container Registry, které obsahuje váš obrázek. Při odesílání image do registru zahrňte název úložiště. Název úložiště můžete najít tak, že kliknete na stránku [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **úložišť** . Další informace najdete v tématu [zobrazení úložišť registru kontejnerů v Azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories).
 
 > [!NOTE]
 > Po nastavení je název nelze změnit. Pro každou nabídku ve vašem účtu použijte jedinečný název.
@@ -407,7 +375,7 @@ Zákazníci musí být schopni při publikování aktualizace automaticky získ�
 
 V tomto poli musí být **nejnovější** značka, která odkazuje na nejnovější verzi image na všech podporovaných platformách. Musí také obsahovat značku verze (například počínaje xx. xx. xx, kde XX je číslo). Zákazníci by měli používat [značky manifestu](https://github.com/estesp/manifest-tool) k cílení na více platforem. Všechny značky, na které se odkazuje značka manifestu, musí být také přidané, aby je bylo možné nahrát.
 
-Všechny značky manifestu (s výjimkou nejnovější značky) musí začínat znakem **-** x. y nebo X. y. z-, kde x, y a Z jsou celá čísla. Pokud například **nejnovější** značka odkazuje na 1.0.1-Linux-x64, 1.0.1-Linux-arm32 a 1.0.1-Windows-arm32, je nutné do tohoto pole přidat tyto šest značek. Podrobnosti najdete v tématu [Příprava prostředků Azure Container Technical assets](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
+Všechny značky manifestu (s výjimkou nejnovější značky) musí začínat znakem X. Y **-** nebo X. y. z-, kde x, y a Z jsou celá čísla. Pokud například **nejnovější** značka odkazuje na 1.0.1-Linux-x64, 1.0.1-Linux-arm32 a 1.0.1-Windows-arm32, je nutné do tohoto pole přidat tyto šest značek. Podrobnosti najdete v tématu [Příprava prostředků Azure Container Technical assets](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets).
 
 > [!NOTE]
 > Nezapomeňte přidat značku testu do obrázku, abyste mohli identifikovat obrázek během testování.

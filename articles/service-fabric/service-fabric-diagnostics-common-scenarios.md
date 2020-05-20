@@ -3,12 +3,12 @@ title: Azure Service Fabric – diagnostikování běžných scénářů
 description: Přečtěte si o řešení běžných scénářů monitorování a diagnostiky v rámci aplikací Azure Service Fabric.
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76906944"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697680"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostika běžných scénářů pomocí Service Fabric
 
@@ -45,7 +45,7 @@ Tento článek popisuje běžné scénáře, se kterými se uživatelé setkali 
 1. Ve stejném Application Insights prostředku můžete místo výjimek a zobrazení všech požadavků vytvořit filtrování požadavků.
 2. Pokud používáte sadu SDK Service Fabric Application Insights, uvidíte vizuální znázornění vašich služeb, které jsou připojené k druhému, a počet úspěšných a neúspěšných žádostí. Na levé straně klikněte na mapa aplikace.
 
-    ![Mapa aplikace AI okno](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![mapa aplikace AI](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png)Mapa aplikace AI okno Mapa aplikace AI ![](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     Další informace o mapě aplikace najdete v [dokumentaci k mapě aplikací](../azure-monitor/app/app-map.md) .
 
@@ -133,7 +133,7 @@ V těchto odkazech najdete úplný seznam čítačů výkonu pro spolehlivé [sl
 ## <a name="next-steps"></a>Další kroky
 
 * [Vyhledat společné chyby při aktivaci balíčku kódu](./service-fabric-diagnostics-code-package-errors.md)
-* [V AI nastavte výstrahy](../azure-monitor/app/alerts.md) na změny výkonu nebo využití.
+* [V AI nastavte výstrahy](/azure/azure-monitor/platform/alerts-log) na změny výkonu nebo využití.
 * [Inteligentní zjišťování v Application Insights](../azure-monitor/app/proactive-diagnostics.md) provádí proaktivní analýzu telemetrie, která se POSÍLÁ do AI a upozorňuje na potenciální problémy s výkonem.
 * Přečtěte si další informace o tom, Azure Monitor protokoly [upozorňují](../log-analytics/log-analytics-alerts.md) na pomoc při detekci a diagnostice.
 * U místních clusterů nabízí Azure Monitor protokoly bránu (proxy server HTTP, která se dá použít k odesílání dat do protokolů Azure Monitor. Přečtěte si další informace o tom, jak v [počítačích připojit počítače bez přístupu k internetu Azure monitor protokoly pomocí Log Analytics brány](../azure-monitor/platform/gateway.md) .

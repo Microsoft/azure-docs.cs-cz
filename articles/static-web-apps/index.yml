@@ -1,0 +1,70 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure Static Web Apps
+summary: Služba Azure Static Web Apps umožňuje vytvářet webové aplikace v JavaScriptu, které se automaticky publikují ze změn provedených na GitHubu.
+metadata:
+  title: Dokumentace ke službě Azure Static Web Apps
+  description: Služba Azure Static Web Apps umožňuje vytvářet webové aplikace v JavaScriptu, které se automaticky publikují ze změn provedených na GitHubu.
+  ms.topic: landing-page
+  ms.service: static-web-apps
+  author: craigshoemaker
+  ms.author: cshoe
+  ms.date: 04/09/2020
+  ms.openlocfilehash: 8dd4f7420c4b58d621312f361beede1e48bc17b5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593065"
+landingContent:
+- title: Informace o službě Static Web Apps
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je služba Azure Static Web Apps?
+      url: overview.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření první aplikace v Angularu
+      url: /azure/static-web-apps/getting-started?tabs=angular
+    - text: Vytvoření první aplikace v Reactu
+      url: /azure/static-web-apps/getting-started?tabs=react
+    - text: Vytvoření první aplikace ve Vue
+      url: /azure/static-web-apps/getting-started?tabs=vue
+    - text: Vytvoření první aplikace (bez architektury)
+      url: /azure/static-web-apps/getting-started?tabs=vanilla-javascript
+  - linkListType: learn
+    links:
+    - text: Publikování rozhraní API a javascriptové aplikace v Angularu, Reactu, Svelte nebo Vue
+      url: /learn/modules/publish-app-service-static-web-app-api
+- title: Klíčové koncepty
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Trasy
+      url: routes.md
+    - text: Veřejná rozhraní API
+      url: apis.md
+    - text: Příprava
+      url: review-publish-pull-requests.md
+    - text: Omezení přístupu
+      url: authentication-authorization.md
+- title: Scénáře publikování
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Publikování z Gatsby
+      url: publish-gatsby.md
+    - text: Publikování z Hugo
+      url: publish-hugo.md
+    - text: Publikování z VuePress
+      url: publish-vuepress.md
+    - text: Nasazení z Next.js
+      url: deploy-nextjs.md
+    - text: Nasazení z Nuxt.js
+      url: deploy-nuxtjs.md
+  - linkListType: learn
+    links:
+    - text: Publikování statické webové aplikace s využitím Gatsby
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service

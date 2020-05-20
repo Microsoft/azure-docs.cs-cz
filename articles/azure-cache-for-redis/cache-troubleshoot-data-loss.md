@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: d54506b94f076f0a3d967f88bd4e2960a1ca6396
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef7824640dcd2b9dbae1d27f385e5334ba9875ff
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75530897"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699222"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Řešení potíží se ztrátou dat ve službě Azure Cache for Redis
 
@@ -36,7 +36,7 @@ Pokud zjistíte, že klíče z mezipaměti zmizely, podívejte se na tyto možn�
 
 ### <a name="key-expiration"></a>Vypršení platnosti klíče
 
-Azure cache pro Redis odebere klíč automaticky, pokud je klíč přiřazen časový limit a období uplynulo. Další informace o vypršení platnosti klíče Redis najdete v dokumentaci k příkazům vypršení [platnosti](https://redis.io/commands/expire) . Hodnoty časového limitu lze také nastavit pomocí příkazů [set](https://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [Poznámka GetSet](https://redis.io/commands/getset)a dalších ** \*úložišť** .
+Azure cache pro Redis odebere klíč automaticky, pokud je klíč přiřazen časový limit a období uplynulo. Další informace o vypršení platnosti klíče Redis najdete v dokumentaci k příkazům vypršení [platnosti](https://redis.io/commands/expire) . Hodnoty časového limitu lze také nastavit pomocí příkazů [set](https://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [Poznámka GetSet](https://redis.io/commands/getset)a dalších ** \* úložišť** .
 
 Chcete-li získat statistiku o tom, kolik klíčů vypršelo, použijte příkaz [info](https://redis.io/commands/info) . V `Stats` části se zobrazuje celkový počet klíčů s vypršenou platností. V `Keyspace` části najdete další informace o počtu klíčů s časovým limitem a s průměrnou hodnotou časového limitu.
 
@@ -80,7 +80,7 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Asynchronní replikace
 
-Jakákoli instance Azure cache for Redis v úrovni Standard nebo Premium je nakonfigurovaná s hlavním uzlem a aspoň jednou replikou. Data jsou zkopírována z hlavního serveru do repliky asynchronně pomocí procesu na pozadí. Web [Redis.IO](https://redis.io/topics/replication) popisuje, jak obecně funguje replikace dat Redis. Pro scénáře, kdy klienti zapisují do Redis často, může dojít k částečné ztrátě dat, protože je zaručená okamžitá replikace. Pokud se například hlavní uzel *po* zapsání klíče do něj zapíše, ale *před tím, než* bude moci proces na pozadí odeslat tento klíč do repliky, dojde ke ztrátě klíče, když replika převezme novou hlavní databázi.
+Jakákoli instance Azure cache for Redis v úrovni Standard nebo Premium je nakonfigurovaná s hlavním uzlem a aspoň jednou replikou. Data jsou zkopírována z hlavního serveru do repliky asynchronně pomocí procesu na pozadí. Web [Redis.IO](https://redis.io/topics/replication) popisuje, jak obecně funguje replikace dat Redis. Pro scénáře, kdy klienti zapisují do Redis často, může dojít k částečné ztrátě dat, protože tato replikace není zaručená okamžitá. Pokud se například hlavní uzel *po* zapsání klíče do něj zapíše, ale *před tím, než* bude moci proces na pozadí odeslat tento klíč do repliky, dojde ke ztrátě klíče, když replika převezme novou hlavní databázi.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Hlavní nebo úplná ztráta klíčů
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b7580843bc5ad90ebc394c41e81f4d16f51ccb1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80891454"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701760"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Konfigurace protokolů toku NSG ze šablony Azure Resource Manager
 
 > [!div class="op_single_selector"]
 > - [portál Azure](network-watcher-nsg-flow-logging-portal.md)
-> - [Prostředí](network-watcher-nsg-flow-logging-powershell.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
@@ -110,7 +110,7 @@ Níže jsou uvedeny dva příklady kompletních šablon pro nastavení protokol�
 ```
 
 > [!NOTE]
-> * Název prostředku má formát "nadřazený prostředek> prostředek/Child". Tady je nadřazený prostředek místní instance Network Watcher (formát: NetworkWatcher_<RegionName>. Příklad: NetworkWatcher_centraluseuap)
+> * Název prostředku má formát "nadřazený Resource_Child prostředek". Tady je nadřazený prostředek místní instance Network Watcher (formát: NetworkWatcher_RegionName. Příklad: NetworkWatcher_centraluseuap)
 > * Parametrem targetresourceid je ID prostředku cílového NSG.
 > * storageId je ID prostředku cílového účtu úložiště.
 
@@ -156,13 +156,18 @@ Níže jsou uvedeny dva příklady kompletních šablon pro nastavení protokol�
 ## <a name="deploying-your-azure-resource-manager-template"></a>Nasazení šablony Azure Resource Manager
 
 V tomto kurzu se předpokládá, že máte existující skupinu prostředků a NSG, na které můžete povolit protokolování toku.
-Kteroukoli z výše uvedených příkladů šablon můžete uložit lokálně jako `azuredeploy.json`. Aktualizujte hodnoty vlastností tak, aby odkazovaly na platné prostředky v rámci vašeho předplatného.
+Kteroukoli z výše uvedených příkladů šablon můžete uložit lokálně jako `azuredeploy.json` . Aktualizujte hodnoty vlastností tak, aby odkazovaly na platné prostředky v rámci vašeho předplatného.
 
 Pokud chcete nasadit šablonu, spusťte v PowerShellu následující příkaz.
 ```azurepowershell
+$context = Get-AzSubscription -SubscriptionId 56acfbd6-vc72-43e9-831f-bcdb6f2c5505
+Set-AzContext $context
 New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatcherRG `
     -TemplateFile "C:\MyTemplates\azuredeploy.json"
 ```
+
+> [!NOTE]
+> Výše uvedené příkazy nasazují prostředek do skupiny prostředků NetworkWatcherRG a ne jako skupinu prostředků obsahující NSG.
 
 
 ## <a name="verifying-your-deployment"></a>Ověření nasazení

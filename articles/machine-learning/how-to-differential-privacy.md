@@ -148,7 +148,7 @@ Knihovnu můžete použít k vytvoření složitějších analytických grafů s
 | Počet         | Gaussovské   | Změna typu       |
 | Histogram     | 2D  | Upnutí   |
 | Mean          | Laplace    | Digitalizaci   |
-| Quantiles     |            | Filtrovat     |
+| Quantiles     |            | Filtr     |
 | Součet           |            | Imputace |
 | Variance/kovariance |      | Transformace  |
 

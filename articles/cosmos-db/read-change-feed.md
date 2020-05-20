@@ -5,14 +5,14 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 06e5a1a7b107f949dbb4945ef4d3116b9fa6d076
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d7408f3b3e955d397ba4a54d07323f80dd72c3d3
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656597"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697347"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Čtení z kanálu změn služby Azure Cosmos DB
 
@@ -20,7 +20,7 @@ S kanálem pro změnu Azure Cosmos DB můžete pracovat pomocí modelu push nebo
 
 V případě modelu vyžádání obsahu vyžádá Server, který je často žádající z centrální pracovní fronty. Klient, v tomto případě obsahuje nejen obchodní logiku pro zpracování změn, ale také ukládá stav pro poslední zpracovanou změnu, zpracovávání vyrovnávání zatížení napříč více klienty zpracovávající změny paralelně a zpracovává chyby.
 
-Při čtení z kanálu změn Azure Cosmos DB se obvykle doporučuje použít model nabízených oznámení, protože nebudete si muset dělat starosti:
+Při čtení z kanálu změn Azure Cosmos DB obvykle doporučujeme použít model nabízených oznámení, protože nebudete si muset dělat starosti:
 
 - Dotazování kanálu změn pro budoucí změny.
 - Ukládání stavu pro poslední zpracovanou změnu. Při čtení z kanálu změn se tento údaj automaticky uloží do [kontejneru zapůjčení](change-feed-processor.md#components-of-the-change-feed-processor).
@@ -41,7 +41,7 @@ Použití modelu nabízeného oznámení je nejjednodušší způsob, jak číst
 
 Azure Functions je nejjednodušší volbou v případě, že právě začínáte používat kanál změn. Vzhledem k jednoduchosti je to také doporučená možnost pro většinu případů použití kanálu změn. Když vytvoříte aktivační událost Azure Functions pro Azure Cosmos DB, vyberete kontejner, který se má připojit, a funkce Azure se aktivuje, kdykoli dojde ke změně v kontejneru. Vzhledem k tomu, že Azure Functions používá procesor změn v kanálu na pozadí, automaticky parallelizes změnu zpracování v [oddílech](partition-data.md)kontejneru.
 
-Vývoj v prostředí Azure Functions je jednoduchý a může být rychlejší než nasazení procesoru Change feed. Aktivační události se dají vytvořit pomocí Azure Functionsového portálu nebo programově se sadami SDK. Visual Studio a VS Code poskytují podporu pro psaní Azure Functions a můžete dokonce používat rozhraní příkazového řádku Azure Functions pro vývoj pro různé platformy. Můžete napsat a ladit kód na ploše a pak nasadit funkci jediným kliknutím. Další informace najdete v tématu [výpočetní databáze bez serveru s využitím Azure Functions](serverless-computing-database.md) a [používáním informačního kanálu se Azure Functionsmi](change-feed-functions.md) články.
+Vývoj v prostředí Azure Functions je jednoduchý a může být rychlejší než nasazení procesoru Change feed. Aktivační události se dají vytvořit pomocí Azure Functionsového portálu nebo programově pomocí sad SDK. Visual Studio a VS Code poskytují podporu pro psaní Azure Functions a můžete dokonce používat rozhraní příkazového řádku Azure Functions pro vývoj pro různé platformy. Můžete napsat a ladit kód na ploše a pak nasadit funkci jediným kliknutím. Další informace najdete v tématu [výpočetní databáze bez serveru s využitím Azure Functions](serverless-computing-database.md) a [používáním informačního kanálu se Azure Functionsmi](change-feed-functions.md) články.
 
 ### <a name="change-feed-processor-library"></a>Změna knihovny procesoru kanálu
 
