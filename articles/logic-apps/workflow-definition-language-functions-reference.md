@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: 56bf1898eb00d74fe92934ca8cd7d9d2848c2f1f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: fea444f2e864683d6350e1c08872ec574a36852c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005898"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646008"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci
 
@@ -42,10 +42,10 @@ Tady je několik dalších obecných způsobů, jak můžete ve výrazech použ�
 
 | Úkol | Syntaxe funkce ve výrazu |
 | ---- | -------------------------------- |
-| Chcete-li provést práci s položkou, předejte tuto položku funkci. | "\@<*Function*> (<*položka*>)" |
-| 1. k získání hodnoty *ParameterName*použijte vnořenou `parameters()` funkci. </br>2. Chcete-li provést práci s výsledkem, předejte tuto hodnotu do hodnoty *Function*. | "\@<*Function*> (Parameters (' <*ParameterName*> '))" |
-| 1. Získejte výsledek z vnořené *vnitřní funkce Function.* </br>2. předejte výsledek *functionName2*vnější funkce. | "\@<*functionName2*> (<*funkce*> (<*položka*>))" |
-| 1. Získejte výsledek z *funkce Function*. </br>2. vzhledem k tomu, že výsledkem je objekt s vlastností *PropertyName*, získá hodnotu této vlastnosti. | "\@<*Function*> (<*položka*>). <*PropertyName*>" |
+| Chcete-li provést práci s položkou, předejte tuto položku funkci. | " \@ < *Function*> (<*položka*>)" |
+| 1. k získání hodnoty *ParameterName*použijte vnořenou `parameters()` funkci. </br>2. Chcete-li provést práci s výsledkem, předejte tuto hodnotu do hodnoty *Function*. | " \@ < *Function*> (Parameters (' <*ParameterName*> '))" |
+| 1. Získejte výsledek z vnořené *vnitřní funkce Function.* </br>2. předejte výsledek *functionName2*vnější funkce. | " \@ < *functionName2*> (<*funkce*> (<*položka*>))" |
+| 1. Získejte výsledek z *funkce Function*. </br>2. vzhledem k tomu, že výsledkem je objekt s vlastností *PropertyName*, získá hodnotu této vlastnosti. | " \@ < *Function*> (<*položka*>). <*PropertyName*>" |
 |||
 
 Například `concat()` funkce může jako parametry převzít dvě nebo více řetězcových hodnot. Tato funkce kombinuje tyto řetězce do jednoho řetězce. Můžete buď předat řetězcové literály, například "Sophia" a "Owen", abyste získali kombinovaný řetězec "SophiaOwen":
@@ -54,13 +54,13 @@ Například `concat()` funkce může jako parametry převzít dvě nebo více ř
 "customerName": "@concat('Sophia', 'Owen')"
 ```
 
-Nebo můžete z parametrů získat řetězcové hodnoty. V tomto příkladu se `parameters()` používá funkce v `concat()` jednotlivých parametrech `firstName` a `lastName` parametrech a. Pak předáte výsledné řetězce do `concat()` funkce, abyste získali kombinovaný řetězec, například "SophiaOwen":
+Nebo můžete z parametrů získat řetězcové hodnoty. V tomto příkladu se používá `parameters()` funkce v jednotlivých `concat()` parametrech a parametrech `firstName` a `lastName` . Pak předáte výsledné řetězce do funkce, `concat()` abyste získali kombinovaný řetězec, například "SophiaOwen":
 
 ```json
 "customerName": "@concat(parameters('firstName'), parameters('lastName'))"
 ```
 
-V obou příkladech oba příklady přiřadí výsledek `customerName` vlastnosti.
+V obou příkladech oba příklady přiřadí výsledek `customerName` Vlastnosti.
 
 Zde jsou některé další poznámky týkající se funkcí ve výrazech:
 
@@ -123,15 +123,15 @@ Chcete-li pracovat s podmínkami, porovnat hodnoty a výsledky výrazů nebo vyh
 
 | Funkce logického porovnání | Úkol |
 | --------------------------- | ---- |
-| [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ověřte, zda jsou všechny výrazy pravdivé. |
+| [a](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ověřte, zda jsou všechny výrazy pravdivé. |
 | [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Zkontroluje, jestli jsou obě hodnoty ekvivalentní. |
 | [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Ověřte, zda je první hodnota větší než druhá hodnota. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Ověřte, zda je první hodnota větší než nebo rovna druhé hodnotě. |
-| [Přestože](../logic-apps/workflow-definition-language-functions-reference.md#if) | Zkontroluje, jestli je výraz pravdivý, nebo nepravdivý. Na základě výsledku vrátí zadanou hodnotu. |
+| [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Zkontroluje, jestli je výraz pravdivý, nebo nepravdivý. Na základě výsledku vrátí zadanou hodnotu. |
 | [less](../logic-apps/workflow-definition-language-functions-reference.md#less) | Ověřte, zda je první hodnota menší než druhá hodnota. |
 | [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Ověřte, zda je první hodnota menší nebo rovna druhé hodnotě. |
 | [mění](../logic-apps/workflow-definition-language-functions-reference.md#not) | Zkontroluje, jestli je výraz nepravdivý. |
-| [or](../logic-apps/workflow-definition-language-functions-reference.md#or) | Ověřte, zda je alespoň jeden výraz pravdivý. |
+| [nebo](../logic-apps/workflow-definition-language-functions-reference.md#or) | Ověřte, zda je alespoň jeden výraz pravdivý. |
 |||
 
 <a name="conversion-functions"></a>
@@ -179,7 +179,7 @@ Předpokládejme například, že Trigger vrátí číselnou hodnotu jako výstu
 
 `triggerBody()?['123']`
 
-Použijete-li tento číselný výstup, kde je očekáván vstup řetězce, například adresa URL, Logic Apps automaticky převede hodnotu na řetězec pomocí notace složených závorek (`{}`):
+Použijete-li tento číselný výstup, kde je očekáván vstup řetězce, například adresa URL, Logic Apps automaticky převede hodnotu na řetězec pomocí notace složených závorek ( `{}` ):
 
 `@{triggerBody()?['123']}`
 
@@ -245,7 +245,7 @@ Chcete-li pracovat s daty a časy, můžete použít tyto funkce data a času.
 | [startOfHour](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | Vrátí začátek hodiny pro časové razítko. |
 | [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | Vrátí začátek měsíce pro časové razítko. |
 | [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | Odečte počet časových jednotek od časového razítka. Viz také [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime). |
-| [Ticks](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Vrátí hodnotu `ticks` vlastnosti pro zadané časové razítko. |
+| [Ticks](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Vrátí `ticks` hodnotu vlastnosti pro zadané časové razítko. |
 | [utcNow](../logic-apps/workflow-definition-language-functions-reference.md#utcNow) | Vrátí aktuální časové razítko jako řetězec. |
 |||
 
@@ -264,7 +264,7 @@ Například můžete odkazovat na výstupy z jedné akce a používat tato data 
 
 | Funkce pracovních postupů | Úkol |
 | ----------------- | ---- |
-| [action](../logic-apps/workflow-definition-language-functions-reference.md#action) | Vrátí výstup aktuální akce za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON. Viz také [Akce](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
+| [kroky](../logic-apps/workflow-definition-language-functions-reference.md#action) | Vrátí výstup aktuální akce za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON. Viz také [Akce](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Vrátí `body` výstup akce za běhu. Viz také [tělo](../logic-apps/workflow-definition-language-functions-reference.md#body). |
 | [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Vrátí výstup akce za běhu. Zobrazit [výstupy](../logic-apps/workflow-definition-language-functions-reference.md#outputs) a [Akce](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [činností](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Vrátí výstup akce za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON. Viz také [Akce](../logic-apps/workflow-definition-language-functions-reference.md#action).  |
@@ -278,9 +278,9 @@ Například můžete odkazovat na výstupy z jedné akce a používat tato data 
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Vrátí text pro určitou část výstupu akce, která má více částí. |
 | [činnosti](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Vrátí výstup akce za běhu. |
 | [ukazatelů](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Vrátí hodnotu parametru, který je popsán v definici pracovního postupu. |
-| [vyústit](../logic-apps/workflow-definition-language-functions-reference.md#result) | Vrátí vstupy a výstupy ze všech akcí uvnitř zadané akce s vymezeným oborem, jako `For_each`například `Until`, a `Scope`. |
+| [vyústit](../logic-apps/workflow-definition-language-functions-reference.md#result) | Vrátí vstupy a výstupy ze všech akcí uvnitř zadané akce s vymezeným oborem, jako například `For_each` , `Until` a `Scope` . |
 | [signálu](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Vrátí výstup triggeru za běhu nebo jiné páry název-hodnota JSON. Viz také [triggerOutputs](#triggerOutputs) a [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
-| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Vrátí `body` výstup triggeru za běhu. Viz [Trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
+| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Vrátí výstup triggeru `body` za běhu. Viz [Trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Vrátí jednu hodnotu odpovídající názvu klíče v výstupech triggerů *form-data* nebo *Form-Encoded* . |
 | [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Vrátí tělo pro určitou část výstupu triggeru. |
 | [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Vytvoří pole, jehož hodnoty se shodují s názvem klíče v výstupech triggerů *form-data* nebo *Form-Encoded* . |
@@ -300,7 +300,7 @@ Pro práci s identifikátory URI (Uniform Resource Identifier) a získání růz
 | -------------------- | ---- |
 | [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Vrátí `host` hodnotu identifikátoru URI (Uniform Resource Identifier). |
 | [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Vrátí `path` hodnotu identifikátoru URI (Uniform Resource Identifier). |
-| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Vrátí hodnoty `path` a `query` pro identifikátor URI (Uniform Resource Identifier). |
+| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Vrátí `path` hodnoty a `query` pro identifikátor URI (Uniform Resource Identifier). |
 | [uriPort](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Vrátí `port` hodnotu identifikátoru URI (Uniform Resource Identifier). |
 | [uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Vrátí `query` hodnotu identifikátoru URI (Uniform Resource Identifier). |
 | [uriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Vrátí `scheme` hodnotu identifikátoru URI (Uniform Resource Identifier). |
@@ -336,11 +336,11 @@ Vrátí výstup *aktuální* akce za běhu nebo hodnoty z jiných párů názvu 
 Ve výchozím nastavení tato funkce odkazuje na celý objekt akce, ale můžete volitelně zadat vlastnost, jejíž hodnota chcete.
 Viz také [Actions ()](../logic-apps/workflow-definition-language-functions-reference.md#actions).
 
-`action()` Funkci lze použít pouze v těchto místech:
+Funkci lze použít `action()` pouze v těchto místech:
 
-* `unsubscribe` Vlastnost pro akci Webhooku, abyste mohli získat přístup k výsledku z původní `subscribe` žádosti
-* `trackedProperties` Vlastnost pro akci
-* Podmínka `do-until` smyčky pro akci
+* `unsubscribe`Vlastnost pro akci Webhooku, abyste mohli získat přístup k výsledku z původní `subscribe` žádosti
+* `trackedProperties`Vlastnost pro akci
+* `do-until`Podmínka smyčky pro akci
 
 ```
 action()
@@ -349,7 +349,7 @@ action().outputs.body.<property>
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*majetek*> | No | String | Název vlastnosti objektu akce, jejíž hodnota má být: **název**, **čas_spuštění**, **čas_ukončení**, **vstupy**, **výstupy**, **stav**, **kód**, **trackingId**a **clientTrackingId**. V Azure Portal můžete tyto vlastnosti najít tak, že zkontrolujete podrobnosti o konkrétní historii spuštění. Další informace najdete v tématu [REST API – akce běhu pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*majetek*> | Ne | String | Název vlastnosti objektu akce, jejíž hodnota má být: **název**, **čas_spuštění**, **čas_ukončení**, **vstupy**, **výstupy**, **stav**, **kód**, **trackingId**a **clientTrackingId**. V Azure Portal můžete tyto vlastnosti najít tak, že zkontrolujete podrobnosti o konkrétní historii spuštění. Další informace najdete v tématu [REST API – akce běhu pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -362,7 +362,7 @@ action().outputs.body.<property>
 ### <a name="actionbody"></a>actionBody
 
 Vrátí `body` výstup akce za běhu.
-Zkrácený pro `actions('<actionName>').outputs.body`.
+Zkrácený pro `actions('<actionName>').outputs.body` .
 Viz [body ()](#body) a [Actions ()](#actions).
 
 ```
@@ -376,12 +376,12 @@ actionBody('<actionName>')
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | -----| ----------- |
-| <*Text akce – výstup*> | String | `body` Výstup ze zadané akce |
+| <*Text akce – výstup*> | String | `body`Výstup ze zadané akce |
 ||||
 
 *Příklad*
 
-Tento příklad načte `body` výstup z akce `Get user`Twitteru:
+Tento příklad načte `body` výstup z akce Twitteru `Get user` :
 
 ```
 actionBody('Get_user')
@@ -408,7 +408,7 @@ A vrátí tento výsledek:
 
 ### <a name="actionoutputs"></a>actionOutputs
 
-Vrátí výstup akce za běhu.  a je zkrácený pro `actions('<actionName>').outputs`. Viz [Actions ()](#actions). `actionOutputs()` Funkce překládá na `outputs()` v návrháři aplikace logiky, proto zvažte použití [výstupů ()](#outputs)místo `actionOutputs()`. I když obě funkce fungují stejným způsobem, `outputs()` jsou upřednostňovány.
+Vrátí výstup akce za běhu.  a je zkrácený pro `actions('<actionName>').outputs` . Viz [Actions ()](#actions). `actionOutputs()`Funkce překládá na `outputs()` v návrháři aplikace logiky, proto zvažte použití [výstupů ()](#outputs)místo `actionOutputs()` . I když obě funkce fungují stejným způsobem, `outputs()` jsou upřednostňovány.
 
 ```
 actionOutputs('<actionName>')
@@ -426,7 +426,7 @@ actionOutputs('<actionName>')
 
 *Příklad*
 
-Tento příklad načte výstup z akce `Get user`Twitteru:
+Tento příklad načte výstup z akce Twitteru `Get user` :
 
 ```
 actionOutputs('Get_user')
@@ -476,7 +476,7 @@ Pro zkrácených verzí viz [actionBody ()](#actionBody), [actionOutputs ()](#ac
 Aktuální akci naleznete v tématu [Action ()](#action).
 
 > [!NOTE]
-> Dřív jste mohli použít `actions()` funkci nebo `conditions` prvek při určení, že akce běžela na základě výstupu z jiné akce. Chcete-li však deklarovat explicitně závislosti mezi akcemi, je nyní nutné použít `runAfter` vlastnost závislé akce.
+> Dřív jste mohli použít `actions()` funkci nebo `conditions` prvek při určení, že akce běžela na základě výstupu z jiné akce. Chcete-li však deklarovat explicitně závislosti mezi akcemi, je nyní nutné použít vlastnost závislé akce `runAfter` .
 > Další informace o této `runAfter` vlastnosti naleznete v tématu [zachycení a zpracování selhání pomocí vlastnosti runafter šablonové](../logic-apps/logic-apps-workflow-definition-language.md).
 
 ```
@@ -487,7 +487,7 @@ actions('<actionName>').outputs.body.<property>
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | Ano | String | Název objektu akce, jehož výstup chcete  |
-| <*majetek*> | No | String | Název vlastnosti objektu akce, jejíž hodnota má být: **název**, **čas_spuštění**, **čas_ukončení**, **vstupy**, **výstupy**, **stav**, **kód**, **trackingId**a **clientTrackingId**. V Azure Portal můžete tyto vlastnosti najít tak, že zkontrolujete podrobnosti o konkrétní historii spuštění. Další informace najdete v tématu [REST API – akce běhu pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*majetek*> | Ne | String | Název vlastnosti objektu akce, jejíž hodnota má být: **název**, **čas_spuštění**, **čas_ukončení**, **vstupy**, **výstupy**, **stav**, **kód**, **trackingId**a **clientTrackingId**. V Azure Portal můžete tyto vlastnosti najít tak, že zkontrolujete podrobnosti o konkrétní historii spuštění. Další informace najdete v tématu [REST API – akce běhu pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -497,7 +497,7 @@ actions('<actionName>').outputs.body.<property>
 
 *Příklad*
 
-Tento příklad získá hodnotu `status` vlastnosti z akce `Get user` Twitteru za běhu:
+Tento příklad získá `status` hodnotu vlastnosti z akce Twitteru `Get user` za běhu:
 
 ```
 actions('Get_user').outputs.body.status
@@ -549,7 +549,7 @@ addDays('<timestamp>', <days>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
 | <*denní*> | Ano | Integer | Kladný nebo záporný počet dní, které se mají přidat |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -591,7 +591,7 @@ addHours('<timestamp>', <hours>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
 | <*hodin*> | Ano | Integer | Kladný nebo záporný počet hodin, které se mají přidat |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -633,7 +633,7 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
 | <*minuty*> | Ano | Integer | Kladný nebo záporný počet minut, který se má přidat |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -704,7 +704,7 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 
 *Příklad 1*
 
-Tento příklad přidá `middleName` vlastnost do objektu JSON, který je převeden z řetězce na JSON pomocí funkce [JSON ()](#json) . Objekt již obsahuje vlastnosti `firstName` a. `surName` Funkce přiřadí zadanou hodnotu k nové vlastnosti a vrátí aktualizovaný objekt:
+Tento příklad přidá `middleName` vlastnost do objektu JSON, který je převeden z řetězce na JSON pomocí funkce [JSON ()](#json) . Objekt již obsahuje `firstName` `surName` vlastnosti a. Funkce přiřadí zadanou hodnotu k nové vlastnosti a vrátí aktualizovaný objekt:
 
 ```
 addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName', 'Anne')
@@ -774,7 +774,7 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
 | <*Second*> | Ano | Integer | Kladný nebo záporný počet sekund, které se mají přidat |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -818,7 +818,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
 | <*doba*> | Ano | Integer | Počet zadaných časových jednotek, které se mají přidat |
 | <*timeUnit*> | Ano | String | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -848,7 +848,7 @@ A vrátí výsledek pomocí volitelného formátu "D":`"Tuesday, January 2, 2018
 
 <a name="and"></a>
 
-### <a name="and"></a>and
+### <a name="and"></a>a
 
 Ověřte, zda jsou všechny výrazy pravdivé.
 Vrátí hodnotu true, pokud mají všechny výrazy hodnotu true, nebo vrátí hodnotu false, pokud je alespoň jeden výraz nepravdivý.
@@ -879,9 +879,9 @@ and(false, false)
 
 A vrátí tyto výsledky:
 
-* První příklad: oba výrazy mají hodnotu true, takže `true`se vrátí.
-* Druhý příklad: jeden výraz má hodnotu NEPRAVDA, `false`takže se vrátí.
-* Třetí příklad: oba výrazy mají hodnotu false, takže `false`se vrátí.
+* První příklad: oba výrazy mají hodnotu true, takže se vrátí `true` .
+* Druhý příklad: jeden výraz má hodnotu NEPRAVDA, takže se vrátí `false` .
+* Třetí příklad: oba výrazy mají hodnotu false, takže se vrátí `false` .
 
 *Příklad 2*
 
@@ -895,9 +895,9 @@ and(equals(1, 2), equals(1, 3))
 
 A vrátí tyto výsledky:
 
-* První příklad: oba výrazy mají hodnotu true, takže `true`se vrátí.
-* Druhý příklad: jeden výraz má hodnotu NEPRAVDA, `false`takže se vrátí.
-* Třetí příklad: oba výrazy mají hodnotu false, takže `false`se vrátí.
+* První příklad: oba výrazy mají hodnotu true, takže se vrátí `true` .
+* Druhý příklad: jeden výraz má hodnotu NEPRAVDA, takže se vrátí `false` .
+* Třetí příklad: oba výrazy mají hodnotu false, takže se vrátí `false` .
 
 <a name="array"></a>
 
@@ -1068,7 +1068,7 @@ A vrátí tento výsledek:
 ### <a name="body"></a>text
 
 Vrátí `body` výstup akce za běhu.
-Zkrácený pro `actions('<actionName>').outputs.body`.
+Zkrácený pro `actions('<actionName>').outputs.body` .
 Viz [actionBody ()](#actionBody) a [Actions ()](#actions).
 
 ```
@@ -1082,12 +1082,12 @@ body('<actionName>')
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | -----| ----------- |
-| <*Text akce – výstup*> | String | `body` Výstup ze zadané akce |
+| <*Text akce – výstup*> | String | `body`Výstup ze zadané akce |
 ||||
 
 *Příklad*
 
-Tento příklad načte `body` výstup z akce `Get user` Twitteru:
+Tento příklad načte `body` výstup z `Get user` Akce Twitteru:
 
 ```
 body('Get_user')
@@ -1271,7 +1271,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
 | <*destinationTimeZone*> | Ano | String | Název cílového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -1314,7 +1314,7 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
 | <*sourceTimeZone*> | Ano | String | Název zdrojového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
 | <*destinationTimeZone*> | Ano | String | Název cílového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -1356,7 +1356,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
 | <*sourceTimeZone*> | Ano | String | Název zdrojového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -1612,7 +1612,7 @@ Tato funkce je zastaralá, proto použijte místo toho [base64ToString ()](#base
 
 ### <a name="decodedatauri"></a>decodeDataUri
 
-Vrátí binární verzi pro datový identifikátor URI (Uniform Resource Identifier). Zvažte použití [dataUriToBinary ()](#dataUriToBinary)místo `decodeDataUri()`. I když obě funkce fungují stejným způsobem, `dataUriToBinary()` jsou upřednostňovány.
+Vrátí binární verzi pro datový identifikátor URI (Uniform Resource Identifier). Zvažte použití [dataUriToBinary ()](#dataUriToBinary)místo `decodeDataUri()` . I když obě funkce fungují stejným způsobem, `dataUriToBinary()` jsou upřednostňovány.
 
 > [!NOTE]
 > Azure Logic Apps automaticky provádí kódování a dekódování Base64, což znamená, že není nutné provádět tyto převody ručně. Pokud to uděláte, může dojít k neočekávanému chování zobrazení, které nemá vliv na skutečné převody, a to jenom na to, jak se zobrazují. Další informace naleznete v tématu [implicitní převody datových typů](#implicit-data-conversions).
@@ -1713,7 +1713,7 @@ A vrátí tento výsledek:`2`
 
 ### <a name="encodeuricomponent"></a>encodeURIComponent –
 
-Nahrazením znaků, které nejsou v adrese URL, pomocí řídicích znaků vrátíte verzi kódovanou podle identifikátoru URI (Uniform Resource Identifier) pro řetězec. Zvažte použití [uriComponent ()](#uriComponent)místo `encodeUriComponent()`. I když obě funkce fungují stejným způsobem, `uriComponent()` jsou upřednostňovány.
+Nahrazením znaků, které nejsou v adrese URL, pomocí řídicích znaků vrátíte verzi kódovanou podle identifikátoru URI (Uniform Resource Identifier) pro řetězec. Zvažte použití [uriComponent ()](#uriComponent)místo `encodeUriComponent()` . I když obě funkce fungují stejným způsobem, `uriComponent()` jsou upřednostňovány.
 
 > [!NOTE]
 > Azure Logic Apps automaticky provádí kódování a dekódování Base64, což znamená, že není nutné provádět tyto převody ručně. Pokud to uděláte, může dojít k neočekávanému chování zobrazení, které nemá vliv na skutečné převody, a to jenom na to, jak se zobrazují. Další informace naleznete v tématu [implicitní převody datových typů](#implicit-data-conversions).
@@ -1775,8 +1775,8 @@ empty('abc')
 
 A vrátí tyto výsledky:
 
-* První příklad: předává prázdný řetězec, takže funkce vrátí hodnotu `true`.
-* Druhý příklad: předá řetězec "ABC", takže funkce vrátí `false`.
+* První příklad: předává prázdný řetězec, takže funkce vrátí hodnotu `true` .
+* Druhý příklad: předá řetězec "ABC", takže funkce vrátí `false` .
 
 <a name="endswith"></a>
 
@@ -1853,8 +1853,8 @@ equals('abc', 'abcd')
 
 A vrátí tyto výsledky:
 
-* První příklad: obě hodnoty jsou ekvivalentní, takže funkce vrátí `true`.
-* Druhý příklad: obě hodnoty nejsou ekvivalentní, takže funkce vrátí `false`.
+* První příklad: obě hodnoty jsou ekvivalentní, takže funkce vrátí `true` .
+* Druhý příklad: obě hodnoty nejsou ekvivalentní, takže funkce vrátí `false` .
 
 <a name="first"></a>
 
@@ -1935,7 +1935,7 @@ formatDateTime('<timestamp>', '<format>'?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -2029,18 +2029,18 @@ formatNumber(<number>, <format>, <locale>?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*Automatické*> | Ano | Integer nebo Double | Hodnota, kterou chcete formátovat. |
-| <*formátovat*> | Ano | String | Složený formátovací řetězec, který určuje formát, který chcete použít. Podporované řetězce číselného formátu naleznete v tématu [Standardní číselné formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings), které jsou podporovány nástrojem `number.ToString(<format>, <locale>)`. |
-| <*jazyka*> | No | String | Národní prostředí, které se má použít `number.ToString(<format>, <locale>)`jako podporované. Pokud není zadaný, použije se výchozí hodnota `en-us`. |
+| <*formátovat*> | Ano | String | Složený formátovací řetězec, který určuje formát, který chcete použít. Podporované řetězce číselného formátu naleznete v tématu [Standardní číselné formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings), které jsou podporovány nástrojem `number.ToString(<format>, <locale>)` . |
+| <*jazyka*> | Ne | String | Národní prostředí, které se má použít jako podporované `number.ToString(<format>, <locale>)` . Pokud není zadaný, použije se výchozí hodnota `en-us` . |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*formátované číslo*> | String | Zadané číslo jako řetězec ve formátu, který jste zadali. Tuto vrácenou hodnotu můžete přetypovat na `int` nebo. `float` |
+| <*formátované číslo*> | String | Zadané číslo jako řetězec ve formátu, který jste zadali. Tuto vrácenou hodnotu můžete přetypovat na `int` nebo `float` . |
 ||||
 
 *Příklad 1*
 
-Předpokládejme, že chcete číslo `1234567890`naformátovat. Tento příklad formátuje číslo jako řetězec "1 234 567 890,00".
+Předpokládejme, že chcete číslo naformátovat `1234567890` . Tento příklad formátuje číslo jako řetězec "1 234 567 890,00".
 
 ```
 formatNumber(1234567890, '{0:0,0.00}', 'en-us')
@@ -2048,7 +2048,7 @@ formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 
 * Příklad 2 "
 
-Předpokládejme, že chcete číslo `1234567890`naformátovat. V tomto příkladu se zformátuje číslo do řetězce "1.234.567.890, 00".
+Předpokládejme, že chcete číslo naformátovat `1234567890` . V tomto příkladu se zformátuje číslo do řetězce "1.234.567.890, 00".
 
 ```
 formatNumber(1234567890, '{0:0,0.00}', 'is-is')
@@ -2056,7 +2056,7 @@ formatNumber(1234567890, '{0:0,0.00}', 'is-is')
 
 *Příklad 3*
 
-Předpokládejme, že chcete číslo `17.35`naformátovat. V tomto příkladu se zformátuje číslo do řetězce "$17,35".
+Předpokládejme, že chcete číslo naformátovat `17.35` . V tomto příkladu se zformátuje číslo do řetězce "$17,35".
 
 ```
 formatNumber(17.36, 'C2')
@@ -2064,7 +2064,7 @@ formatNumber(17.36, 'C2')
 
 *Příklad 4*
 
-Předpokládejme, že chcete číslo `17.35`naformátovat. V tomto příkladu se zformátuje číslo do řetězce "17, 35 kr".
+Předpokládejme, že chcete číslo naformátovat `17.35` . V tomto příkladu se zformátuje číslo do řetězce "17, 35 kr".
 
 ```
 formatNumber(17.36, 'C2', 'is-is')
@@ -2084,7 +2084,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | --------- | -------- | ---- | ----------- |
 | <*doba*> | Ano | Integer | Počet zadaných časových jednotek, které se mají přidat |
 | <*timeUnit*> | Ano | String | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -2128,7 +2128,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | --------- | -------- | ---- | ----------- |
 | <*doba*> | Ano | Integer | Počet zadaných časových jednotek k odečtení |
 | <*timeUnit*> | Ano | String | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -2250,7 +2250,7 @@ guid('<format>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*formátovat*> | No | String | Jeden [specifikátor formátu](https://msdn.microsoft.com/library/97af8hh4) pro vrácený identifikátor GUID. Ve výchozím nastavení je formát "D", ale můžete použít "N", "D", "B", "P" nebo "X". |
+| <*formátovat*> | Ne | String | Jeden [specifikátor formátu](https://msdn.microsoft.com/library/97af8hh4) pro vrácený identifikátor GUID. Ve výchozím nastavení je formát "D", ale můžete použít "N", "D", "B", "P" nebo "X". |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -2292,8 +2292,8 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 *Příklad*
 
-Tento příklad vrátí `"yes"` , protože zadaný výraz vrátí hodnotu true.
-V opačném případě vrátí `"no"`příklad:
+Tento příklad vrátí, `"yes"` protože zadaný výraz vrátí hodnotu true.
+V opačném případě vrátí příklad `"no"` :
 
 ```
 if(equals(1, 1), 'yes', 'no')
@@ -2635,7 +2635,7 @@ join([<collection>], '<delimiter>')
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*oddělovač CHAR1*><*oddělovače*><*CHAR2*><*delimiter*>... | String | Výsledný řetězec vytvořený ze všech položek v zadaném poli |
+| <*CHAR1* >< *oddělovač* >< *CHAR2* >< *oddělovač*>... | String | Výsledný řetězec vytvořený ze všech položek v zadaném poli |
 ||||
 
 *Příklad*
@@ -3029,8 +3029,8 @@ not(true)
 
 A vrátí tyto výsledky:
 
-* První příklad: výraz má hodnotu false, takže funkce vrátí `true`hodnotu.
-* Druhý příklad: výraz má hodnotu true, takže funkce vrátí `false`hodnotu.
+* První příklad: výraz má hodnotu false, takže funkce vrátí hodnotu `true` .
+* Druhý příklad: výraz má hodnotu true, takže funkce vrátí hodnotu `false` .
 
 *Příklad 2*
 
@@ -3043,12 +3043,12 @@ not(equals(1, 1))
 
 A vrátí tyto výsledky:
 
-* První příklad: výraz má hodnotu false, takže funkce vrátí `true`hodnotu.
-* Druhý příklad: výraz má hodnotu true, takže funkce vrátí `false`hodnotu.
+* První příklad: výraz má hodnotu false, takže funkce vrátí hodnotu `true` .
+* Druhý příklad: výraz má hodnotu true, takže funkce vrátí hodnotu `false` .
 
 <a name="or"></a>
 
-### <a name="or"></a>or
+### <a name="or"></a>nebo
 
 Ověřte, zda je alespoň jeden výraz pravdivý.
 Vrátí hodnotu true, pokud má alespoň jeden výraz hodnotu true, nebo vrátí hodnotu false, pokud všechny mají hodnotu false.
@@ -3078,8 +3078,8 @@ or(false, false)
 
 A vrátí tyto výsledky:
 
-* První příklad: nejméně jeden výraz má hodnotu true, takže funkce vrátí hodnotu `true`.
-* Druhý příklad: oba výrazy mají hodnotu false, takže funkce vrátí `false`hodnotu.
+* První příklad: nejméně jeden výraz má hodnotu true, takže funkce vrátí hodnotu `true` .
+* Druhý příklad: oba výrazy mají hodnotu false, takže funkce vrátí hodnotu `false` .
 
 *Příklad 2*
 
@@ -3092,14 +3092,14 @@ or(equals(1, 2), equals(1, 3))
 
 A vrátí tyto výsledky:
 
-* První příklad: nejméně jeden výraz má hodnotu true, takže funkce vrátí hodnotu `true`.
-* Druhý příklad: oba výrazy mají hodnotu false, takže funkce vrátí `false`hodnotu.
+* První příklad: nejméně jeden výraz má hodnotu true, takže funkce vrátí hodnotu `true` .
+* Druhý příklad: oba výrazy mají hodnotu false, takže funkce vrátí hodnotu `false` .
 
 <a name="outputs"></a>
 
 ### <a name="outputs"></a>činnosti
 
-Vrátí výstupy akce za běhu. Použijte tuto funkci, nikoli `actionOutputs()`, která se přeloží `outputs()` na v návrháři aplikace logiky. I když obě funkce fungují stejným způsobem, `outputs()` jsou upřednostňovány.
+Vrátí výstupy akce za běhu. Použijte tuto funkci, nikoli `actionOutputs()` , která se přeloží na `outputs()` v návrháři aplikace logiky. I když obě funkce fungují stejným způsobem, `outputs()` jsou upřednostňovány.
 
 ```
 outputs('<actionName>')
@@ -3117,7 +3117,7 @@ outputs('<actionName>')
 
 *Příklad*
 
-Tento příklad načte výstup z akce `Get user`Twitteru:
+Tento příklad načte výstup z akce Twitteru `Get user` :
 
 ```
 outputs('Get_user')
@@ -3225,7 +3225,7 @@ Tento příklad získá náhodné celé číslo ze zadaného rozsahu s výjimkou
 rand(1, 5)
 ```
 
-A vrátí jeden z těchto čísel jako výsledek: `1`, `2`, nebo `3``4`
+A vrátí jeden z těchto čísel jako výsledek: `1` , `2` , `3` nebo`4`
 
 <a name="range"></a>
 
@@ -3391,7 +3391,7 @@ Tady je aktualizovaný objekt JSON:
 
 ### <a name="result"></a>result
 
-Vrátí vstupy a výstupy ze všech akcí, které jsou uvnitř zadané akce s vymezeným oborem, jako `For_each`je `Until`například, `Scope` nebo akce. Tato funkce je užitečná pro vrácení výsledků z neúspěšné akce, abyste mohli diagnostikovat a zpracovávat výjimky. Další informace najdete v tématu [získání kontextu a výsledků pro selhání](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+Vrátí vstupy a výstupy ze všech akcí, které jsou uvnitř zadané akce s vymezeným oborem, jako je například `For_each` , `Until` nebo `Scope` akce. Tato funkce je užitečná pro vrácení výsledků z neúspěšné akce, abyste mohli diagnostikovat a zpracovávat výjimky. Další informace najdete v tématu [získání kontextu a výsledků pro selhání](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
 
 ```
 result('<scopedActionName>')
@@ -3442,7 +3442,7 @@ Tento příklad vrátí vstupy a výstupy z každé iterace akce HTTP uvnitř `F
 }
 ```
 
-Zde je uvedeno, jak vrácený příklad pole může vypadat tam, `outputs` kde vnější objekt obsahuje vstupy a výstupy z každé iterace akcí uvnitř `For_each` akce.
+Zde je uvedeno, jak vrácený příklad pole může vypadat tam, kde vnější `outputs` objekt obsahuje vstupy a výstupy z každé iterace akcí uvnitř `For_each` akce.
 
 ```json
 [
@@ -3675,7 +3675,7 @@ startOfDay('<timestamp>', '<format>'?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3706,7 +3706,7 @@ startOfHour('<timestamp>', '<format>'?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3737,7 +3737,7 @@ startOfMonth('<timestamp>', '<format>'?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3745,7 +3745,7 @@ startOfMonth('<timestamp>', '<format>'?)
 | <*Aktualizováno – časové razítko*> | String | Zadané časové razítko, ale počínaje prvním dnem v měsíci s označením nulové hodiny |
 ||||
 
-*Příklad*
+*Příklad 1*
 
 Tento příklad vrátí začátek měsíce pro toto časové razítko:
 
@@ -3754,6 +3754,16 @@ startOfMonth('2018-03-15T13:30:30Z')
 ```
 
 A vrátí tento výsledek:`"2018-03-01T00:00:00.0000000Z"`
+
+*Příklad 2*
+
+Tento příklad vrátí začátek měsíce v zadaném formátu pro toto časové razítko:
+
+```
+startOfMonth('2018-03-15T13:30:30Z', 'yyyy-MM-dd')
+```
+
+A vrátí tento výsledek:`"2018-03-01"`
 
 <a name="startswith"></a>
 
@@ -3830,7 +3840,7 @@ A vrátí tento výsledek:`"10"`
 
 *Příklad 2*
 
-Tento příklad vytvoří řetězec pro zadaný objekt JSON a používá znak zpětného lomítka (\\) jako řídicí znak pro dvojité uvozovky (").
+Tento příklad vytvoří řetězec pro zadaný objekt JSON a používá znak zpětného lomítka ( \\ ) jako řídicí znak pro dvojité uvozovky (").
 
 ```
 string( { "name": "Sophie Owen" } )
@@ -3918,7 +3928,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
 | <*doba*> | Ano | Integer | Počet zadaných časových jednotek k odečtení |
 | <*timeUnit*> | Ano | String | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3986,8 +3996,7 @@ A vrátí tyto výsledky:
 
 ### <a name="ticks"></a>Ticks
 
-Vrátí hodnotu `ticks` vlastnosti pro zadané časové razítko.
-*Takt* je interval 100 – nanosekund.
+Vrátí počet impulsů, které jsou 100, od 1. ledna 0001 12:00:00 půlnoci (nebo DateTime. Ticks v jazyce C#) až po zadané časové razítko. Další informace najdete v tomto tématu ve [vlastnosti DateTime. Ticks (System)](https://docs.microsoft.com/dotnet/api/system.datetime.ticks?view=netframework-4.7.2#remarks).
 
 ```
 ticks('<timestamp>')
@@ -4089,8 +4098,8 @@ trigger()
 
 ### <a name="triggerbody"></a>triggerBody
 
-Vrátí `body` výstup triggeru za běhu.
-Zkrácený pro `trigger().outputs.body`.
+Vrátí výstup triggeru `body` za běhu.
+Zkrácený pro `trigger().outputs.body` .
 Viz [Trigger ()](#trigger).
 
 ```
@@ -4099,7 +4108,7 @@ triggerBody()
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*aktivační text – výstup*> | String | `body` Výstup triggeru |
+| <*aktivační text – výstup*> | String | `body`Výstup triggeru |
 ||||
 
 <a name="triggerFormDataMultiValues"></a>
@@ -4188,7 +4197,7 @@ triggerMultipartBody(<index>)
 ### <a name="triggeroutputs"></a>triggerOutputs
 
 Vrátí výstup triggeru za běhu nebo hodnoty z jiných párů názvu a hodnoty JSON.
-Zkrácený pro `trigger().outputs`.
+Zkrácený pro `trigger().outputs` .
 Viz [Trigger ()](#trigger).
 
 ```
@@ -4311,7 +4320,7 @@ uriComponentToBinary('<value>')
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*binární-pro kódovaný identifikátor URI*> | String | Binární verze řetězce zakódovaného identifikátorem URI. Binární obsah je kódovaný v `$content`kódování Base64 a reprezentován. |
+| <*binární-pro kódovaný identifikátor URI*> | String | Binární verze řetězce zakódovaného identifikátorem URI. Binární obsah je kódovaný v kódování Base64 a reprezentován `$content` . |
 ||||
 
 *Příklad*
@@ -4371,12 +4380,12 @@ uriHost('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI, `host` jehož hodnota má být |
+| <*identifikátor URI*> | Ano | String | Identifikátor URI, jehož `host` hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*hodnota hosta*> | String | `host` Hodnota pro zadaný identifikátor URI |
+| <*hodnota hosta*> | String | `host`Hodnota pro zadaný identifikátor URI |
 ||||
 
 *Příklad*
@@ -4401,12 +4410,12 @@ uriPath('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI, `path` jehož hodnota má být |
+| <*identifikátor URI*> | Ano | String | Identifikátor URI, jehož `path` hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*hodnota Path*> | String | `path` Hodnota pro zadaný identifikátor URI. Pokud `path` hodnota nemá, vrátí znak "/". |
+| <*hodnota Path*> | String | `path`Hodnota pro zadaný identifikátor URI. Pokud `path` hodnota nemá, vrátí znak "/". |
 ||||
 
 *Příklad*
@@ -4423,7 +4432,7 @@ A vrátí tento výsledek:`"/catalog/shownew.htm"`
 
 ### <a name="uripathandquery"></a>uriPathAndQuery
 
-Vrátí hodnoty `path` a `query` pro identifikátor URI (Uniform Resource Identifier).
+Vrátí `path` hodnoty a `query` pro identifikátor URI (Uniform Resource Identifier).
 
 ```
 uriPathAndQuery('<uri>')
@@ -4431,17 +4440,17 @@ uriPathAndQuery('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI, `path` `query` jehož hodnoty chcete |
+| <*identifikátor URI*> | Ano | String | Identifikátor URI `path` , jehož `query` hodnoty chcete |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*cesta-dotaz-hodnota*> | String | Hodnoty `path` a `query` pro zadaný identifikátor URI. Pokud `path` nezadáte hodnotu, vrátí znak "/". |
+| <*cesta-dotaz-hodnota*> | String | `path`Hodnoty a `query` pro zadaný identifikátor URI. Pokud `path` nezadáte hodnotu, vrátí znak "/". |
 ||||
 
 *Příklad*
 
-Tento příklad najde hodnoty `path` a `query` pro tento identifikátor URI:
+Tento příklad najde `path` hodnoty a `query` pro tento identifikátor URI:
 
 ```
 uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
@@ -4461,12 +4470,12 @@ uriPort('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI, `port` jehož hodnota má být |
+| <*identifikátor URI*> | Ano | String | Identifikátor URI, jehož `port` hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Hodnota portu*> | Integer | `port` Hodnota pro zadaný identifikátor URI. Pokud `port` nezadáte hodnotu, vraťte výchozí port pro protokol. |
+| <*Hodnota portu*> | Integer | `port`Hodnota pro zadaný identifikátor URI. Pokud `port` nezadáte hodnotu, vraťte výchozí port pro protokol. |
 ||||
 
 *Příklad*
@@ -4491,12 +4500,12 @@ uriQuery('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI, `query` jehož hodnota má být |
+| <*identifikátor URI*> | Ano | String | Identifikátor URI, jehož `query` hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*dotaz – hodnota*> | String | `query` Hodnota pro zadaný identifikátor URI |
+| <*dotaz – hodnota*> | String | `query`Hodnota pro zadaný identifikátor URI |
 ||||
 
 *Příklad*
@@ -4521,12 +4530,12 @@ uriScheme('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI, `scheme` jehož hodnota má být |
+| <*identifikátor URI*> | Ano | String | Identifikátor URI, jehož `scheme` hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*hodnota schématu*> | String | `scheme` Hodnota pro zadaný identifikátor URI |
+| <*hodnota schématu*> | String | `scheme`Hodnota pro zadaný identifikátor URI |
 ||||
 
 *Příklad*
@@ -4554,7 +4563,7 @@ Volitelně můžete zadat jiný formát s parametrem <*formát*>.
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*formátovat*> | No | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -4627,7 +4636,7 @@ workflow().<property>
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*majetek*> | No | String | Název vlastnosti pracovního postupu, jejíž hodnota má být <p>Objekt pracovního postupu má tyto vlastnosti: **název**, **typ**, **ID**, **umístění**a **spuštění**. Hodnota vlastnosti **spuštění** je také objekt, který má tyto vlastnosti: **název**, **typ**a **ID**. |
+| <*majetek*> | Ne | String | Název vlastnosti pracovního postupu, jejíž hodnota má být <p>Objekt pracovního postupu má tyto vlastnosti: **název**, **typ**, **ID**, **umístění**a **spuštění**. Hodnota vlastnosti **spuštění** je také objekt, který má tyto vlastnosti: **název**, **typ**a **ID**. |
 |||||
 
 *Příklad*
@@ -4650,7 +4659,7 @@ xml('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec s objektem JSON, který se má převést <p>Objekt JSON musí mít pouze jednu kořenovou vlastnost, která nemůže být polem. <br>Jako řídicí znak dvojité uvozovky\\(") použijte znak zpětného lomítka (). |
+| <*osa*> | Ano | String | Řetězec s objektem JSON, který se má převést <p>Objekt JSON musí mít pouze jednu kořenovou vlastnost, která nemůže být polem. <br>\\Jako řídicí znak dvojité uvozovky (") použijte znak zpětného lomítka (). |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -4721,7 +4730,7 @@ xpath('<xml>', '<xpath>')
 
 *Příklad 1*
 
-Tento příklad najde uzly, které se `<name></name>` shodují s uzlem v zadaných argumentech, a vrátí pole s těmito hodnotami uzlu:
+Tento příklad najde uzly, které se shodují s `<name></name>` uzlem v zadaných argumentech, a vrátí pole s těmito hodnotami uzlu:
 
 `xpath(xml(parameters('items')), '/produce/item/name')`
 
@@ -4737,13 +4746,13 @@ Tady jsou argumenty:
 
   `"/produce/item/name"`
 
-Toto je pole výsledku s uzly, které se shodují `<name></name`:
+Toto je pole výsledku s uzly, které se shodují `<name></name` :
 
 `[ <name>Gala</name>, <name>Honeycrisp</name> ]`
 
 *Příklad 2*
 
-V příkladu 1 Tento příklad najde uzly, které odpovídají `<count></count>` uzlu, a přidá tyto hodnoty uzlů s `sum()` funkcí:
+V příkladu 1 Tento příklad najde uzly, které odpovídají uzlu, `<count></count>` a přidá tyto hodnoty uzlů s `sum()` funkcí:
 
 `xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
 
@@ -4755,7 +4764,7 @@ V tomto příkladu oba výrazy vyhledají uzly, které odpovídají `<location><
 
 > [!NOTE]
 >
-> Pokud pracujete v zobrazení kódu, vydejte dvojité uvozovky (") pomocí znaku zpětného lomítka (\\). 
+> Pokud pracujete v zobrazení kódu, vydejte dvojité uvozovky (") pomocí znaku zpětného lomítka ( \\ ). 
 > Například je třeba použít řídicí znaky při serializaci výrazu jako řetězce JSON. 
 > Pokud však pracujete v návrháři aplikace logiky nebo editoru výrazů, nemusíte klikat na uvozovky, protože znak zpětného lomítka je automaticky přidán do podkladové definice, například:
 > 
@@ -4775,7 +4784,7 @@ V tomto příkladu oba výrazy vyhledají uzly, které odpovídají `<location><
 
 Tady jsou argumenty:
 
-* Tento kód XML, který zahrnuje obor názvů dokumentu XML `xmlns="http://contoso.com"`,:
+* Tento kód XML, který zahrnuje obor názvů dokumentu XML, `xmlns="http://contoso.com"` :
 
   ```xml
   <?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>

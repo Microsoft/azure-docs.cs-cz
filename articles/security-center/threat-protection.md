@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: bdd8104200bf21507e978abacf600c4780bb3808
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82606887"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636673"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
@@ -29,7 +29,10 @@ Ochrana před hrozbami Azure Security Center poskytuje komplexní ochranu vašeh
 
 * **Ochrana před hrozbami pro vrstvy služeb Azure**: síťová vrstva Azure, vrstva správy azure (Azure Resource Manager) (Preview) a Azure Key Vault (Preview)
 
-Bez ohledu na to, jestli je výstraha vygenerovaná Security Center nebo přijatá Security Center z jiného bezpečnostního produktu, můžete ji exportovat. Pokud chcete exportovat výstrahy do Azure Sentinel (nebo SIEM třetí strany) nebo jakýkoli jiný externí nástroj, postupujte podle pokynů v tématu [Export výstrah do Siem](continuous-export.md). 
+Bez ohledu na to, jestli je výstraha vygenerovaná Security Center nebo přijatá Security Center z jiného bezpečnostního produktu, můžete ji exportovat. Pokud chcete exportovat výstrahy do Azure Sentinel, všech SIEM třetích stran nebo jakýchkoli jiných externích nástrojů, postupujte podle pokynů v tématu [Export výstrah do Siem](continuous-export.md). 
+
+> [!NOTE]
+> Zobrazení výstrah z různých zdrojů může trvat různě dlouho. Například výstrahy, které vyžadují analýzu síťového provozu, mohou trvat déle než výstrahy související s podezřelými procesy běžícími na virtuálních počítačích.
 
 > [!TIP]
 > Pokud chcete povolit možnosti ochrany před hrozbami Security Center, musíte použít cenovou úroveň Standard u předplatného, které obsahuje příslušné úlohy.
@@ -44,14 +47,14 @@ Bez ohledu na to, jestli je výstraha vygenerovaná Security Center nebo přijat
 
 Azure Security Center se integruje se službami Azure za účelem monitorování a ochrany počítačů se systémem Windows. Security Center prezentuje výstrahy a návrhy oprav ze všech těchto služeb ve snadno použitelném formátu.
 
-* **ATP** <a name="windows-atp"></a> v programu Microsoft Defender – Security Center rozšiřuje své cloudové platformy na ochranu díky integraci s rozšířenou ochranou před internetovými útoky v programu Microsoft Defender (ATP). Společně poskytují komplexní možnosti detekce a odezvy koncových bodů (EDR).
+* **Microsoft Defender Advanced Threat Protection (ATP)** <a name="windows-atp"></a> – Security Center rozšiřuje své cloudové platformy na ochranu díky integraci s pokročilou ochranou před internetovými útoky v programu Microsoft Defender (ATP). Společně poskytují komplexní možnosti detekce a odezvy koncových bodů (EDR).
 
     > [!IMPORTANT]
     > Senzor ATP v programu Microsoft Defender je automaticky povolen na serverech se systémem Windows, které používají Security Center.
 
     Když ATP v programu Microsoft Defender zjistí hrozbu, aktivuje výstrahu. Výstraha se zobrazí na řídicím panelu Security Center. Z řídicího panelu se můžete překlopit do konzoly ATP v programu Microsoft Defender a provést podrobné šetření, které odhalí rozsah útoku. Další informace o ochraně ATP v programu Microsoft Defender najdete v tématu připojení [serverů ke službě Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-* <a name="windows-dump"></a> **Analýza výpisu stavu systému** – Pokud dojde k chybě softwaru, výpis stavu systému zaznamená část paměti v době selhání.
+* Analýza výpisu **stavu systému** <a name="windows-dump"></a> – Když dojde k chybě softwaru, výpis stavu systému zaznamená část paměti v době selhání.
 
     Selhání mohlo být způsobeno malwarem nebo obsahem malwaru. Aby nedocházelo k detekci v produktech zabezpečení, různé formy malwaru používají útok bez souborů, což zabraňuje psaní na disk nebo šifrování softwarových součástí zapsaných na disk. Tento typ útoku se obtížně detekuje pomocí tradičních přístupů založených na disku.
 
@@ -59,7 +62,7 @@ Azure Security Center se integruje se službami Azure za účelem monitorování
 
     Podrobnosti o výstrahách analýzy výpisu stavu systému najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-windows).
 
-* **Detekce** <a name="windows-fileless"></a> útoků typu soubor – společné útoky pomocí souborů, které cílí na vaše koncové body, jsou běžné. Aby nedocházelo k detekci, útoky bez souborů vkládají do paměti škodlivá datová data. V paměti napadených procesů a provádění široké škály škodlivých aktivit může dojít k trvalému uložení datových částí.
+* Detekce útoků typu **soubor** <a name="windows-fileless"></a> – Jsou běžné útoky zaměřené na vaše koncové body. Aby nedocházelo k detekci, útoky bez souborů vkládají do paměti škodlivá datová data. V paměti napadených procesů a provádění široké škály škodlivých aktivit může dojít k trvalému uložení datových částí.
 
     Díky detekci útoků bez souborů můžou automatizované techniky forenzní paměti identifikovat sady nástrojů, techniky a chování pro útoky bez souborů. Toto řešení pravidelně kontroluje počítač za běhu a extrahuje přehledy přímo z paměti důležitých procesů, které jsou kritické pro zabezpečení.
 
@@ -79,7 +82,7 @@ Azure Security Center se integruje se službami Azure za účelem monitorování
 
 Security Center shromažďuje záznamy auditu z počítačů se systémem Linux pomocí **auditu**, jeden z nejběžnějších rozhraní pro auditování Linux. auditované života v jádru hlavní. 
 
-* **Auditované výstrahy systému Linux a integrace** <a name="linux-auditd"></a> agenta Log Analytics – auditované systémy se skládají z podsystému na úrovni jádra, který zodpovídá za monitorování volání systému. Filtruje je podle zadané sady pravidel a zapisuje zprávy pro ně do soketu. Security Center integruje funkce z auditovaného balíčku v rámci agenta Log Analytics. Tato integrace umožňuje shromažďování auditovaných událostí ve všech podporovaných distribucích systému Linux bez jakýchkoli požadavků.
+* **Auditované výstrahy systému Linux a integrace** <a name="linux-auditd"></a> agenta Log Analytics – Auditované systémy se skládají z podsystému na úrovni jádra, který je zodpovědný za monitorování systémových volání. Filtruje je podle zadané sady pravidel a zapisuje zprávy pro ně do soketu. Security Center integruje funkce z auditovaného balíčku v rámci agenta Log Analytics. Tato integrace umožňuje shromažďování auditovaných událostí ve všech podporovaných distribucích systému Linux bez jakýchkoli požadavků.
 
     auditované záznamy jsou shromažďovány, obohaceny a agregovány do událostí pomocí agenta Log Analytics pro Linux. Security Center průběžně přidává nové analýzy, které používají signály Linux k detekci škodlivého chování na cloudových a místních počítačích se systémem Linux. Podobně jako funkce Windows tyto analýzy přesahují podezřelé procesy, pokusy o přihlášení k podezřelých, načítání modulů jádra a další činnosti. Tyto aktivity mohou znamenat, že počítač je buď napadený, nebo byl napadený.  
 
@@ -171,9 +174,9 @@ Rozšířená ochrana před internetovými útoky pro úložiště detekuje neob
 
 Rozšířená ochrana před internetovými útoky pro Azure Storage je aktuálně dostupná jenom pro [BLOB Storage](https://azure.microsoft.com/services/storage/blobs/). 
 
-Tato služba je dostupná ve všech veřejných cloudech a cloudech USA, ale žádné jiné oblasti cloudových služeb Azure ani jiné.
+Tato služba je dostupná ve všech veřejných cloudech a v cloudech USA, ale ne v oblastech cloudových nebo Azure Governmentch cloudových oblastí.
 
-Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na [stránce s cenami Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na stránce s [cenami Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 Další informace naleznete v tématu:
 

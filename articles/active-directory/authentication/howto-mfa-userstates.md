@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8ceaf13324864c7ec3df731c3e710815b0eba9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309786"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639626"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Povolení služby Azure Multi-Factor Authentication pro jednotlivé uživatele k zabezpečení přihlašovacích událostí
 
@@ -54,7 +54,7 @@ Všichni uživatelé začínají *zakázáni*. Když zaregistrujete uživatele v
 Následující postup použijte pro přístup k Azure Portal stránce, kde můžete zobrazit a spravovat stavy uživatelů:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-1. Vyhledejte a vyberte *Azure Active Directory*a pak vyberte **Uživatelé** > **Všichni uživatelé**.
+1. Vyhledejte a vyberte *Azure Active Directory*a pak vyberte **Uživatelé**  >  **Všichni uživatelé**.
 1. Vyberte **Multi-Factor Authentication**. Pokud chcete zobrazit tuto možnost nabídky, možná se budete muset posunout doprava. Kliknutím na ukázkový snímek obrazovky zobrazíte celé Azure Portal okno a umístění nabídky:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Výběr Multi-Factor Authentication v okně uživatelé ve službě Azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Otevře se nová stránka, která zobrazí stav uživatele, jak je znázorněno v následujícím příkladu.
    ![Snímek obrazovky, který ukazuje ukázkové informace o stavu uživatele pro Azure Multi-Factor Authentication](./media/howto-mfa-userstates/userstate1.png)
@@ -67,7 +67,7 @@ Pokud chcete změnit stav služby Azure Multi-Factor Authentication pro uživate
 1. Vyhledejte uživatele, kterého chcete povolit pro Azure Multi-Factor Authentication. Možná budete muset změnit zobrazení na nejvyšší úrovni na **Uživatelé**.
    ![Na kartě Uživatelé vyberte uživatele, jehož stav chcete změnit.](./media/howto-mfa-userstates/enable1.png)
 1. Zaškrtněte políčko vedle jména uživatelů, pro které chcete změnit stav.
-1. Na pravé straně v části **rychlé kroky**vyberte **Povolit** nebo **Zakázat**. V následujícím příkladu má uživatel *Jan Novák* zaškrtnutí vedle jejich názvu a je povolený pro použití: Povolit vybraného uživatele kliknutím na ![povolit v nabídce rychlé kroky.](./media/howto-mfa-userstates/user1.png)
+1. Na pravé straně v části **rychlé kroky**vyberte **Povolit** nebo **Zakázat**. V následujícím příkladu má uživatel *Jan Novák* zaškrtnutí vedle jejich názvu a je povolený pro použití: ![ Povolit vybraného uživatele kliknutím na Povolit v nabídce rychlé kroky.](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > *Povolení* uživatelé se automaticky přepínají, aby se *vynutili* při registraci k Azure Multi-Factor Authentication. Neměňte ručně stav uživatele na *vynutilo*.
@@ -98,7 +98,7 @@ V dalším kroku se připojte pomocí [Connect-MsolService](/powershell/module/m
 Connect-MsolService
 ```
 
-Následující ukázkový skript PowerShellu umožňuje MFA pro jednotlivé uživatele s názvem *bsimon@contoso.com*:
+Následující ukázkový skript PowerShellu umožňuje MFA pro jednotlivé uživatele s názvem *bsimon@contoso.com* :
 
 ```PowerShell
 $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
@@ -110,7 +110,7 @@ $sta = @($st)
 Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
 ```
 
-Použití prostředí PowerShell je vhodné, pokud potřebujete hromadně povolit uživatele. Následující skript projde seznam uživatelů a povolí MFA na svých účtech. Zadejte uživatelské účty, které si v prvním řádku `$users` nastavili, a to následujícím způsobem:
+Použití prostředí PowerShell je vhodné, pokud potřebujete hromadně povolit uživatele. Následující skript projde seznam uživatelů a povolí MFA na svých účtech. Zadejte uživatelské účty, které si v prvním řádku nastavili, a to následujícím `$users` způsobem:
 
    ```PowerShell
    # Define your list of users to update state in bulk
@@ -185,4 +185,4 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 Informace o konfiguraci nastavení Azure Multi-Factor Authentication, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a výstrahy na podvod, najdete v tématu [Konfigurace nastavení azure Multi-Factor Authentication](howto-mfa-mfasettings.md). Pokud chcete spravovat uživatelská nastavení pro Azure Multi-Factor Authentication, přečtěte si téma [Správa uživatelských nastavení pomocí Azure Multi-Factor Authentication](howto-mfa-userdevicesettings.md).
 
-Informace o tom, proč se uživateli zobrazila výzva k provedení MFA, najdete v tématu [sestavy služby Azure Multi-Factor Authentication](howto-mfa-reporting.md#azure-ad-sign-ins-report).
+Informace o tom, proč se uživateli zobrazila výzva k provedení MFA, najdete v tématu [sestavy služby Azure Multi-Factor Authentication](howto-mfa-reporting.md).

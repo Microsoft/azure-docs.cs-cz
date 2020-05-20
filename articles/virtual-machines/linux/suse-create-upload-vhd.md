@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 5bf26fa096058f5a73d5527c0c6adb1649c9884f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: cf50ee847bd1542a3e024cb88cf7bbc8bc283f91
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857314"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643434"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Příprava virtuálního počítače se SLES nebo openSUSE pro Azure
 
@@ -28,7 +28,7 @@ V tomto článku se předpokládá, že jste už nainstalovali operační systé
 * Všechny virtuální pevné disky v Azure musí mít virtuální velikost zarovnaná na 1 MB. Při převodu z nezpracovaného disku na virtuální pevný disk je nutné před převodem zajistit, aby velikost nezpracovaného disku byla násobkem 1 MB. Další informace najdete v [poznámkách k instalaci systému Linux](create-upload-generic.md#general-linux-installation-notes) .
 
 ## <a name="use-suse-studio"></a>Použití SUSE studia
-[SUSE Studio](http://www.susestudio.com) může snadno vytvářet a spravovat vaše SLES a openSUSE image pro Azure a Hyper-V. Toto je doporučený postup pro přizpůsobení vlastních imagí SLES a openSUSE.
+[SUSE Studio](https://studioexpress.opensuse.org/) může snadno vytvářet a spravovat vaše SLES a openSUSE image pro Azure a Hyper-V. Toto je doporučený postup pro přizpůsobení vlastních imagí SLES a openSUSE.
 
 Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE také publikuje image BYOS (Přineste si vlastní odběr) pro SLES v [VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf).
 
@@ -98,7 +98,7 @@ Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE tak
 ## <a name="prepare-opensuse-131"></a>Příprava openSUSE 13.1 +
 1. V prostředním podokně Správce technologie Hyper-V vyberte virtuální počítač.
 2. Kliknutím na **připojit** otevřete okno pro virtuální počítač.
-3. V prostředí spusťte příkaz`zypper lr`. Pokud tento příkaz vrátí výstup podobný následujícímu, pak jsou úložiště konfigurována podle očekávání – nejsou nutné žádné úpravy (Všimněte si, že čísla verzí se mohou lišit):
+3. V prostředí spusťte příkaz `zypper lr` . Pokud tento příkaz vrátí výstup podobný následujícímu, pak jsou úložiště konfigurována podle očekávání – nejsou nutné žádné úpravy (Všimněte si, že čísla verzí se mohou lišit):
    
         # | Alias                 | Name                  | Enabled | Refresh
         --+-----------------------+-----------------------+---------+--------
@@ -112,7 +112,7 @@ Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE tak
         # sudo zypper ar -f https://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
-    Pak můžete ověřit, že úložiště byla přidána, spuštěním příkazu '`zypper lr`'. V případě, že některá z příslušných úložišť aktualizací není povolená, povolte ji pomocí následujícího příkazu:
+    Pak můžete ověřit, že úložiště byla přidána, spuštěním příkazu ' `zypper lr` '. V případě, že některá z příslušných úložišť aktualizací není povolená, povolte ji pomocí následujícího příkazu:
    
         # sudo zypper mr -e [NUMBER OF REPOSITORY]
 4. Aktualizujte jádro na nejnovější dostupnou verzi:

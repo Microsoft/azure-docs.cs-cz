@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/03/2020
-ms.openlocfilehash: 31b9d4d57e38adcd079082a4f32770c4cbc8fbb3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 05/13/2020
+ms.openlocfilehash: 4b3a2ed71845b8848c9cb0ac5002e0c69a170410
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736198"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642312"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Strategie ověřování služby měření na Marketplace
 
@@ -44,7 +44,7 @@ Další informace o těchto tokenech naleznete v tématu [Azure Active Directory
 
 #### <a name="http-method"></a>HTTP – metoda
 
-**POST**
+**SPUŠTĚNÍ**
 
 #### <a name="request-url"></a>*Adresa URL požadavku*
 
@@ -57,14 +57,14 @@ Další informace o těchto tokenech naleznete v tématu [Azure Active Directory
 |  `tenantId`         |   True         | ID tenanta registrované aplikace služby Azure AD   |
 | | | |
 
-#### <a name="request-header"></a>*Hlavička požadavku*
+#### <a name="request-header"></a>*Hlavička žádosti*
 
 |  **Název hlavičky**    |  **Požadováno**  |  **Popis**          |
 |  ------------------ |--------------- | ------------------------  |
 |  `Content-Type`     |   True         | Typ obsahu přidružený k žádosti Výchozí hodnota je `application/x-www-form-urlencoded`.  |
 | | | |
 
-#### <a name="request-body"></a>*Text požadavku*
+#### <a name="request-body"></a>*Text žádosti*
 
 |  **Název vlastnosti**  |  **Požadováno**  |  **Popis**          |
 |  ------------------ |--------------- | ------------------------  |
@@ -112,13 +112,13 @@ Například použijte následující postup k ověření pomocí virtuálního p
 
 1. Ujistěte se, že je spravovaná identita nakonfigurovaná pomocí jedné z metod:
     * [Azure Portal UI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
-    * [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
+    * [CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
     * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-    * [Šablona Azure Resource Manageru](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
+    * [Šablona Azure Resource Manager](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
     * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
     * [Sady Azure SDK](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
 
-1. Získejte přístupový token pro ID aplikace služby na webu Marketplace (`20e940b3-4c77-4b0b-9a53-9e16a1b010a7`) pomocí identity systému, na virtuálním počítači RDP, otevřete konzolu PowerShellu a spusťte příkaz níže.
+1. Získejte přístupový token pro ID aplikace služby na webu Marketplace ( `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` ) pomocí identity systému, na virtuálním počítači RDP, otevřete konzolu PowerShellu a spusťte příkaz níže.
 
     ```powershell
     # curl is an alias to Web-Invoke PowerShell command
@@ -141,7 +141,7 @@ Například použijte následující postup k ověření pomocí virtuálního p
     $managedappId = $resourceGroupInfo.managedBy 
     ```
 
-1. Služba měření na Marketplace vyžaduje `resourceID`, abyste nahlásili využití na `resourceUsageId` , a pokud spravovaná aplikace.
+1. Služba měření na Marketplace vyžaduje, abyste nahlásili využití na `resourceID` , a `resourceUsageId` Pokud spravovaná aplikace.
 
     ```powershell
     # Get resourceUsageId from the managed app
@@ -151,7 +151,7 @@ Například použijte následující postup k ověření pomocí virtuálního p
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
     ```
 
-1. Využijte [rozhraní API služby měření na webu Marketplace](https://review.docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis?branch=pr-en-us-101847) k vygenerování využití.
+1. Využijte [rozhraní API služby měření na webu Marketplace](./marketplace-metering-service-apis.md) k vygenerování využití.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 80da8d2880509a8ed6a2af8cb181b3bc2c281c09
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 37a458aea659cb6215cf29e6abcbc3341c7e0b7b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930569"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643254"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -105,7 +105,7 @@ Pro odchozí připojení s novou možností pravidla vyrovnávání zatížení 
       ]
 ```
 
-Standardně je `disableOutboundSnat` Tato možnost standardně _nepravdivá_ a oznamuje, že toto pravidlo pro přidružené virtuální počítače ve fondu back-endu pravidla vyrovnávání zatížení odesílá odchozí SNAT. Vlastnost `disableOutboundSnat` lze změnit na _hodnotu true_ , pokud chcete, aby Load Balancer nepoužívala přidruženou IP adresu front-endu pro odchozí připojení virtuálních počítačů ve fondu back-end tohoto pravidla vyrovnávání zatížení.  A také můžete určit konkrétní IP adresu pro odchozí toky, jak je popsáno v [několika kombinovaných scénářích](#combinations) .
+Standardně je `disableOutboundSnat` Tato možnost standardně _nepravdivá_ a oznamuje, že toto pravidlo pro přidružené virtuální počítače ve fondu back-endu pravidla vyrovnávání zatížení odesílá odchozí SNAT. `disableOutboundSnat`Vlastnost lze změnit na _hodnotu true_ , pokud chcete, aby Load Balancer nepoužívala přidruženou IP adresu front-endu pro odchozí připojení virtuálních počítačů ve fondu back-end tohoto pravidla vyrovnávání zatížení.  A také můžete určit konkrétní IP adresu pro odchozí toky, jak je popsáno v [několika kombinovaných scénářích](#combinations) .
 
 #### <a name="load-balancer-basic"></a>Load Balancer Basic
 
@@ -257,6 +257,10 @@ V některých případech je možné, že virtuální počítač nebude moci vyt
 Když použijete NSG k virtuálnímu počítači s vyrovnáváním zatížení, věnujte pozornost [značkám služby](../virtual-network/security-overview.md#service-tags) a [výchozím pravidlům zabezpečení](../virtual-network/security-overview.md#default-security-rules). Musíte zajistit, aby virtuální počítač mohl přijímat požadavky na sondu stavu z Azure Load Balancer. 
 
 Pokud NSG blokuje požadavky na test stavu z AZURE_LOADBALANCER výchozí značky, test stavu virtuálního počítače se nepovede a virtuální počítač se označí jako neplatný. Load Balancer zastaví odesílání nových toků do tohoto virtuálního počítače.
+
+## <a name="connections-to-azure-storage-in-the-same-region"></a>Připojení k Azure Storage ve stejné oblasti
+
+Pro připojení k úložišti ve stejné oblasti jako virtuální počítač není nutné mít odchozí připojení prostřednictvím výše uvedených scénářů. Pokud to nechcete, použijte skupiny zabezpečení sítě (skupin zabezpečení sítě), jak je vysvětleno výše. Připojení k úložišti v jiných oblastech vyžaduje odchozí připojení. Pamatujte na to, že při připojování k úložišti z virtuálního počítače ve stejné oblasti bude zdrojová IP adresa v diagnostických protokolech úložiště interní adresa poskytovatele, nikoli veřejná IP adresa vašeho virtuálního počítače. Pokud chcete omezit přístup k účtu úložiště na virtuální počítače v jedné nebo více Virtual Networkch podsítích ve stejné oblasti, při konfiguraci brány firewall účtu úložiště použijte [koncové body služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) a nemusíte mít veřejnou IP adresu. Po nakonfigurování koncových bodů služby se v diagnostických protokolech úložiště zobrazí vaše Virtual Network privátní IP adresa, nikoli adresa interního poskytovatele.
 
 ## <a name="limitations"></a>Omezení
 - Role webového pracovního procesu bez virtuální sítě a dalších služeb platformy Microsoft můžou být dostupné, když se k vedlejšímu účinku používá jenom vnitřní Standard Load Balancer, která se dá použít jenom pro služby předplatného a jiné služby platformy. Nespoléhá se na tento vedlejší účinek jako na samotnou službu nebo na podkladovou platformu se může změnit bez předchozího upozornění. Vždy musíte předpokládat, že pokud budete chtít používat jenom interní Standard Load Balancer, musíte v případě potřeby explicitně vytvořit odchozí připojení. [Výchozí scénář SNAT](#defaultsnat) 3, který je popsaný v tomto článku, není k dispozici.

@@ -5,16 +5,17 @@ description: Naučte se, jak transformovat data v Návrháři Azure Machine Lear
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
 ms.date: 05/04/2020
-ms.openlocfilehash: 5296ac54cab403ef78b3e8bd32fe5ebe6ea43119
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.custom: designer
+ms.openlocfilehash: 718023424834ffca7a026dc5b3d35b8fb11fe633
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82842874"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644290"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Transformuje data v Návrháři Azure Machine Learning (Preview).
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -71,7 +72,7 @@ V této části použijete [modul rozdělit data](algorithm-module-reference/spl
 
 1. V podokně podrobností modulu napravo od plátna nastavte **rozdělovací režim** na **regulární výraz**.
 
-1. Zadejte **regulární výraz**: `\"native-country" United-States`.
+1. Zadejte **regulární výraz**: `\"native-country" United-States` .
 
     Režim **regulárního výrazu** testuje jeden sloupec pro hodnotu. Další informace o modulu Split data najdete na [referenční stránce modulu souvisejícího algoritmu](algorithm-module-reference/split-data.md).
 
@@ -111,7 +112,7 @@ Teď, když je váš kanál nastavený pro rozdělení dat, je potřeba určit, 
     > [!NOTE]
     > V tomto článku se předpokládá, že máte přístup k úložišti dat registrovanému v aktuálním pracovním prostoru Azure Machine Learning. Pokyny, jak nastavit úložiště dat, najdete v tématu [připojení ke službám Azure Storage](how-to-access-data.md#azure-machine-learning-studio).
 
-    Pokud úložiště dat nemáte, můžete si ho vytvořit teď. V tomto článku se například uloží datové sady do výchozího účtu služby Blob Storage přidruženého k pracovnímu prostoru. Datové sady se uloží do `azureml` kontejneru v nové složce s názvem. `data`
+    Pokud úložiště dat nemáte, můžete si ho vytvořit teď. V tomto článku se například uloží datové sady do výchozího účtu služby Blob Storage přidruženého k pracovnímu prostoru. Datové sady se uloží do `azureml` kontejneru v nové složce s názvem `data` .
 
 1.  Vyberte modul **exportovat data** připojený k *pravému*portu modulu **rozdělit data** .
 
@@ -125,9 +126,9 @@ Teď, když je váš kanál nastavený pro rozdělení dat, je potřeba určit, 
 
     **Formát souboru**: CSV
 
-1. Potvrďte, že je v modulu **Export data** připojené k levému portu **rozdělených dat** **cesta** `/data/us-income`.
+1. Potvrďte, že je v modulu **Export data** připojené k levému portu **rozdělených dat** **cesta** `/data/us-income` .
 
-1. Potvrďte, že je v modulu **Export dat** připojen ke správnému portu **cesta** `/data/non-us-income`.
+1. Potvrďte, že je v modulu **Export dat** připojen ke správnému portu **cesta** `/data/non-us-income` .
 
     Váš kanál a nastavení by měly vypadat takto:
     
@@ -155,11 +156,11 @@ Po dokončení kanálu můžete výsledky zobrazit tak, že přejdete do úloži
 
 1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly**. 
 
-1. Vyberte ikonu](media/how-to-designer-transform-data/visualize-icon.png) vizualizace ikona ![vizualizace vedle **výsledků DataSet1.**. 
+1. Vyberte ikonu vizualizace ikona ![ vizualizace ](media/how-to-designer-transform-data/visualize-icon.png) vedle **výsledků DataSet1.**. 
 
 1. Ověřte, že sloupec "nativní země" obsahuje pouze hodnotu "Spojené státy".
 
-1. Vyberte ikonu](media/how-to-designer-transform-data/visualize-icon.png) vizualizace ikona ![vizualizace vedle **výsledků Dataset2**. 
+1. Vyberte ikonu vizualizace ikona ![ vizualizace ](media/how-to-designer-transform-data/visualize-icon.png) vedle **výsledků Dataset2**. 
 
 1. Ověřte, že sloupec "nativní země" neobsahuje hodnotu "Spojené státy".
 

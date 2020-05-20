@@ -29,12 +29,12 @@ Získejte odpovědi na některé nejčastější dotazy týkající se učebn La
 Kvóta, kterou nastavíte pro testovací prostředí, je určena pro každého studenta po celou dobu trvání testovacího prostředí. A [plánovaná doba spuštění virtuálních počítačů](how-to-create-schedules.md) se nepočítá s kvótou přidělenou uživateli. Kvóta je určena pro dobu mimo plánované hodiny, kterou student stráví na virtuálních počítačích.  Další informace o kvótách najdete v tématu [nastavení kvót pro uživatele](how-to-configure-student-usage.md#set-quotas-for-users).
 
 ### <a name="if-educator-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Pokud Educator zapne virtuální počítač studenta, má vliv na kvótu studenta? 
-No. Nejedná se o. Když se Educator zapne na virtuálním počítači studenta, neovlivní to kvótu, která je přidělena studentovi. 
+Ne. Nejedná se o. Když se Educator zapne na virtuálním počítači studenta, neovlivní to kvótu, která je přidělena studentovi. 
 
 ## <a name="schedules"></a>Plány
 
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>Spustí se všechny virtuální počítače v testovacím prostředí automaticky při nastavení plánu? 
-No. Ne všechny virtuální počítače. Pouze virtuální počítače, které jsou přiřazeny uživatelům podle plánu. Virtuální počítače, které nejsou přiřazeny uživateli, se automaticky nespustí. Je to záměrné. 
+Ne. Ne všechny virtuální počítače. Pouze virtuální počítače, které jsou přiřazeny uživatelům podle plánu. Virtuální počítače, které nejsou přiřazeny uživateli, se automaticky nespustí. Je to záměrné. 
 
 ## <a name="lab-accounts"></a>Účty testovacího prostředí
 
@@ -59,7 +59,7 @@ Přečtěte si téma [rozsahy IP adres Azure a značky služeb – veřejný clo
 Když vám správce přidá jako tvůrce testovacího prostředí do účtu testovacího prostředí, budete mít oprávnění k vytváření cvičení. Nemáte ale oprávnění upravovat žádná nastavení v rámci účtu testovacího prostředí, včetně seznamu povolených imagí virtuálních počítačů. Pokud chcete povolit další image, požádejte správce účtu testovacího prostředí, aby to prohlédl za vás, nebo požádejte správce, aby vás přidal jako roli přispěvatele k účtu testovacího prostředí. Role Přispěvatel vám poskytne oprávnění k úpravám seznamu imagí virtuálního počítače v účtu testovacího prostředí.
 
 ### <a name="can-i-attach-additional-disks-to-a-virtual-machine"></a>Můžu k virtuálnímu počítači připojit další disky?
-No. k virtuálnímu počítači v testovacím prostředí učebny není možné připojit další disky. 
+Ne. k virtuálnímu počítači v testovacím prostředí učebny není možné připojit další disky. 
 
 ## <a name="users"></a>Uživatelé
 

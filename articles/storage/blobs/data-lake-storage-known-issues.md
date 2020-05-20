@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: b02835ae3a1d7fed52f2cdb4ab25aa74ba66e8c3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4b6def2ce2b0c1ba6d3a45e64bb7f82b5948a524
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119888"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642196"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -107,7 +107,7 @@ Aplikace třetích stran, které používají rozhraní REST API k práci, budou
 
 Pokud byl kontejneru udělen [přístup anonymního přístupu pro čtení](storage-manage-access-to-resources.md) , nebudou mít seznamy ACL žádný vliv na tento kontejner nebo soubory v tomto kontejneru.
 
-## <a name="premium-performance-block-blob-storage-accounts"></a>Premium – účty úložiště objektů blob bloku
+## <a name="premium-performance-blockblobstorage-storage-accounts"></a>BlockBlobStorage účty úložiště úrovně Premium – výkon
 
 ### <a name="diagnostic-logs"></a>Diagnostické protokoly
 
@@ -126,7 +126,7 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="lifecycle-management-policies"></a>Zásady správy životního cyklu
 
-- Zásady správy životního cyklu zatím nejsou podporované v účtech úložiště blob bloku úrovně Premium. 
+- Zásady správy životního cyklu ještě nejsou v účtech úložiště úrovně Premium BlockBlobStorage podporované. 
 
 - Data nejde přesunout z úrovně Premium do nižších úrovní. 
 
@@ -134,11 +134,11 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="hdinsight-support"></a>Podpora HDInsight
 
-Když vytvoříte cluster HDInsight n, nemůžete ještě vybrat účet úložiště objektů blob bloku, který má povolenou funkci hierarchického oboru názvů. Po vytvoření však můžete účet připojit ke clusteru.
+Když vytvoříte cluster HDInsight n, nemůžete ještě vybrat účet BlockBlobStorage, který má povolenou funkci hierarchického oboru názvů. Po vytvoření však můžete účet připojit ke clusteru.
 
 ### <a name="dremio-support"></a>Podpora Dremio
 
-Dremio se ještě nepřipojí k účtu úložiště objektů blob bloku, který má povolenou funkci hierarchického oboru názvů. 
+Dremio se ještě nepřipojí k účtu BlockBlobStorage, který má povolenou funkci hierarchického oboru názvů. 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Ovladač Windows Azure Storage Blob (WASB) (není podporován s Data Lake Storage Gen2)
 

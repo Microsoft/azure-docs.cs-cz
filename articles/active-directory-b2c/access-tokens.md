@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8358d3378ea892ebeef653bcb51243c9f1aa0b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36027583d64ac91432888d866440932c6e1bdd07
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259770"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635450"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Vyžádání přístupového tokenu v Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ V tomto článku se dozvíte, jak požádat o přístupový token pro webovou ap
 
 ## <a name="scopes"></a>Obory
 
-Obory poskytují způsob, jak spravovat oprávnění k chráněným prostředkům. Po vyžádání přístupového tokenu musí klientská aplikace zadat požadovaná oprávnění v parametru **Scope** žádosti. Pokud například chcete zadat **hodnotu oboru** `read` pro rozhraní API s **identifikátorem URI ID aplikace** `https://contoso.onmicrosoft.com/api`, bude obor `https://contoso.onmicrosoft.com/api/read`.
+Obory poskytují způsob, jak spravovat oprávnění k chráněným prostředkům. Po vyžádání přístupového tokenu musí klientská aplikace zadat požadovaná oprávnění v parametru **Scope** žádosti. Pokud například chcete zadat **hodnotu oboru** `read` pro rozhraní API s **identifikátorem URI ID aplikace** `https://contoso.onmicrosoft.com/api` , bude obor `https://contoso.onmicrosoft.com/api/read` .
 
 Webové rozhraní API používá obory k implementaci řízení přístupu na základě oboru. Například uživatelé webového rozhraní API můžou mít přístup ke čtení i zápisu nebo přístup pouze ke čtení. Chcete-li získat více oprávnění v rámci jedné žádosti, můžete přidat více položek v parametru s jedním **oborem** žádosti oddělené mezerami.
 
@@ -54,7 +54,7 @@ Pokud požadujete více oborů, než je uděleno pro klientskou aplikaci, bude v
 - **OpenID** – vyžádá token ID.
 - **offline_access** – vyžádá obnovovací token pomocí [toků kódu ověřování](authorization-code-flow.md).
 
-Pokud parametr **response_type** `/authorize` v požadavku obsahuje `token`, musí parametr **Scope** obsahovat alespoň jeden obor prostředků, než `openid` je a `offline_access` který bude udělen. V opačném `/authorize` případě se požadavek nezdařil.
+Pokud parametr **response_type** v `/authorize` požadavku obsahuje `token` , musí parametr **Scope** obsahovat alespoň jeden obor prostředků, než je `openid` a `offline_access` který bude udělen. V opačném případě se `/authorize` požadavek nezdařil.
 
 ## <a name="request-a-token"></a>Požádat o token
 
@@ -85,7 +85,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 Po úspěšném přijetí autorizačního kódu ho můžete použít k vyžádání přístupového tokenu:
 
 ```HTTP
-POST <tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=<policy-name> HTTP/1.1
+POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -111,7 +111,7 @@ Mělo by se zobrazit něco podobného jako u následující odpovědi:
 }
 ```
 
-Při použití https://jwt.ms nástroje k prohlédnutí vráceného přístupového tokenu by se měla zobrazit podobný příklad jako v následujícím příkladu:
+Při použití nástroje https://jwt.ms k prohlédnutí vráceného přístupového tokenu by se měla zobrazit podobný příklad jako v následujícím příkladu:
 
 ```JSON
 {

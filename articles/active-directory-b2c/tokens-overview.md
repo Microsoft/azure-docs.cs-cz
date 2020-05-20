@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cbbd083a6b62733d71c316af95dffaa188b28955
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7725a9ddd1d9559166360b27bd8a5371d8c0557e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186484"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638251"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Přehled tokenů v Azure Active Directory B2C
 
@@ -37,10 +37,10 @@ Při komunikaci s Azure AD B2C se používají následující tokeny:
 
 [Registrovaná aplikace](tutorial-register-applications.md) přijímá tokeny a komunikuje s Azure AD B2C odesláním požadavků do těchto koncových bodů:
 
-- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
-- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/v2.0/authorize`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/v2.0/token`
 
-Tokeny zabezpečení, které vaše aplikace přijímá z Azure AD B2C můžou pocházet z koncových bodů `/authorize` nebo `/token` . Pokud jsou tokeny ID získány `/authorize` z koncového bodu, je provedeno pomocí [implicitního toku](implicit-flow-single-page-application.md), který se často používá pro uživatele přihlašování k webovým aplikacím založeným na jazyce JavaScript. Když se tokeny ID získávají z `/token` koncového bodu, provádí se pomocí [toku autorizačního kódu](openid-connect.md#get-a-token), který tento token udržuje v prohlížeči skrytý.
+Tokeny zabezpečení, které vaše aplikace přijímá z Azure AD B2C můžou pocházet z `/authorize` `/token` koncových bodů nebo. Pokud jsou tokeny ID získány z `/authorize` koncového bodu, je provedeno pomocí [implicitního toku](implicit-flow-single-page-application.md), který se často používá pro uživatele přihlašování k webovým aplikacím založeným na jazyce JavaScript. Když se tokeny ID získávají z `/token` koncového bodu, provádí se pomocí [toku autorizačního kódu](openid-connect.md#get-a-token), který tento token udržuje v prohlížeči skrytý.
 
 ## <a name="claims"></a>Deklarace identity
 
@@ -50,21 +50,21 @@ Deklarace identity v tokenech ID se nevrací v žádném konkrétním pořadí. 
 
 V následující tabulce jsou uvedeny deklarace identity, které můžete očekávat v tokenech ID a přístupových tokenech vydaných Azure AD B2C.
 
-| Název | Deklarovat | Příklad hodnoty | Popis |
+| Name | Deklarovat | Příklad hodnoty | Popis |
 | ---- | ----- | ------------- | ----------- |
 | Cílová skupina | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identifikuje zamýšleného příjemce tokenu. Pro Azure AD B2C je cílovou skupinou ID aplikace. Vaše aplikace by měla tuto hodnotu ověřit a zamítnout token, pokud se neshoduje. Cílová skupina je synonymum s prostředkem. |
-| Vystavitel | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token. Identifikuje taky adresář, ve kterém se uživatel ověřil. Vaše aplikace by měla ověřit deklaraci vystavitele, aby se zajistilo, že token pochází z příslušného koncového bodu. |
+| Vystavitel | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token. Identifikuje taky adresář, ve kterém se uživatel ověřil. Vaše aplikace by měla ověřit deklaraci vystavitele, aby se zajistilo, že token pochází z příslušného koncového bodu. |
 | Vydáno v | `iat` | `1438535543` | Čas vydání tokenu, který je reprezentován v epocha času. |
 | Čas vypršení platnosti | `exp` | `1438539443` | Čas, kdy se token stal neplatným, reprezentovaný v epocha času. Vaše aplikace by měla tuto deklaraci identity použít k ověření platnosti životnosti tokenu. |
 | Ne před | `nbf` | `1438535543` | Čas, kdy bude token platný, reprezentovaný v epocha času. Tato doba je obvykle stejná jako čas, kdy byl token vydán. Vaše aplikace by měla tuto deklaraci identity použít k ověření platnosti životnosti tokenu. |
-| Version | `ver` | `1.0` | Verze tokenu ID definovaného Azure AD B2C. |
+| Verze | `ver` | `1.0` | Verze tokenu ID definovaného Azure AD B2C. |
 | Hodnota hash kódu | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Hodnota hash kódu je obsažena v tokenu ID pouze v případě, že je token vydán společně s autorizačním kódem OAuth 2,0. Hodnota hash kódu se dá použít k ověření pravosti autorizačního kódu. Další informace o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html).  |
 | Hodnota hash tokenu přístupu | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Hodnota hash přístupového tokenu, která je obsažená v tokenu ID jenom v případě, že je token vydaný společně s přístupovým tokenem OAuth 2,0. K ověření pravosti přístupového tokenu se dá použít hodnota hash přístupového tokenu. Další informace o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) .  |
-| Generované | `nonce` | `12345` | Hodnota nonce je strategie používaná ke zmírnění útoků opakovaného přehrání tokenu. Vaše aplikace může zadat hodnotu NONCE v žádosti o autorizaci pomocí parametru `nonce` dotazu. Hodnota, kterou zadáte v požadavku, je vygenerována beze změny `nonce` v deklaraci identity tokenu ID. Tato deklarace umožňuje vaší aplikaci ověřit hodnotu oproti hodnotě zadané v požadavku. Vaše aplikace by měla provést toto ověření během procesu ověřování tokenu ID. |
+| Generované | `nonce` | `12345` | Hodnota nonce je strategie používaná ke zmírnění útoků opakovaného přehrání tokenu. Vaše aplikace může zadat hodnotu NONCE v žádosti o autorizaci pomocí `nonce` parametru dotazu. Hodnota, kterou zadáte v požadavku, je vygenerována beze změny v `nonce` deklaraci identity tokenu ID. Tato deklarace umožňuje vaší aplikaci ověřit hodnotu oproti hodnotě zadané v požadavku. Vaše aplikace by měla provést toto ověření během procesu ověřování tokenu ID. |
 | Subjekt | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k bezpečnému provádění kontrol autorizace, například když se token používá pro přístup k prostředku. Ve výchozím nastavení se deklarace identity subjektu naplní s ID objektu uživatele v adresáři. |
 | Referenční dokumentace třídy kontextu ověřování | `acr` | Neuvedeno | Používá se jenom se staršími zásadami. |
 | Zásada pro pravidlo důvěryhodnosti | `tfp` | `b2c_1_signupsignin1` | Název zásady, která byla použita k získání tokenu ID. |
-| Čas ověřování | `auth_time` | `1438535543` | Čas, kdy uživatel naposledy zadal pověření, reprezentovaný v epocha čase. Neexistuje žádná diskriminace mezi tímto ověřováním, jedná se o nové přihlášení, relaci jednotného přihlašování (SSO) nebo jiný typ přihlášení. `auth_time` Je poslední čas, kdy aplikace (nebo uživatel) iniciovala pokus o ověření u Azure AD B2C. Metoda použitá k ověření není odlišná. |
+| Čas ověřování | `auth_time` | `1438535543` | Čas, kdy uživatel naposledy zadal pověření, reprezentovaný v epocha čase. Neexistuje žádná diskriminace mezi tímto ověřováním, jedná se o nové přihlášení, relaci jednotného přihlašování (SSO) nebo jiný typ přihlášení. `auth_time`Je poslední čas, kdy aplikace (nebo uživatel) iniciovala pokus o ověření u Azure AD B2C. Metoda použitá k ověření není odlišná. |
 | Rozsah | `scp` | `Read`| Oprávnění udělená prostředku pro přístupový token. Vícenásobná udělená oprávnění jsou oddělená mezerou. |
 | Autorizovaná strana | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | **ID aplikace** klientské aplikace, která iniciovala požadavek. |
 
@@ -124,17 +124,17 @@ Hodnota deklarace identity **ALG** je algoritmus, který se použil k podepsán�
 Azure AD B2C má koncový bod metadat OpenID Connect. Pomocí tohoto koncového bodu můžou aplikace požadovat informace o Azure AD B2C za běhu. Mezi tyto informace patří koncové body, obsah tokenu a podpisové klíče tokenu. Váš tenant Azure AD B2C obsahuje dokument metadat JSON pro každou zásadu. Dokument metadat je objekt JSON, který obsahuje několik užitečných informací. Metadata obsahují **jwks_uri**, která poskytuje umístění sady veřejných klíčů, které se používají k podepisování tokenů. Toto umístění je zde k dispozici, ale je nejvhodnější načíst umístění dynamicky pomocí dokumentu metadat a analýzy **jwks_uri**:
 
 ```
-https://contoso.b2clogin.com/contoso.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_signupsignin1
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/discovery/v2.0/keys
 ```
-Dokument JSON umístěný na této adrese URL obsahuje všechny informace o veřejných klíčích, které se v daném okamžiku používají. Vaše aplikace může použít `kid` deklaraci identity v hlavičce JWT k výběru veřejného klíče v dokumentu JSON, který se používá k podepsání konkrétního tokenu. Potom může provést ověření podpisu pomocí správného veřejného klíče a uvedeného algoritmu.
+Dokument JSON umístěný na této adrese URL obsahuje všechny informace o veřejných klíčích, které se v daném okamžiku používají. Vaše aplikace může použít `kid` deklaraci identity v HLAVIČCE JWT k výběru veřejného klíče v dokumentu JSON, který se používá k podepsání konkrétního tokenu. Potom může provést ověření podpisu pomocí správného veřejného klíče a uvedeného algoritmu.
 
 Dokument metadat pro `B2C_1_signupsignin1` zásadu v `contoso.onmicrosoft.com` tenantovi se nachází v těchto umístěních:
 
 ```
-https://contoso.b2clogin.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_signupsignin1
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/v2.0/.well-known/openid-configuration
 ```
 
-Chcete-li zjistit, které zásady byly použity k podepsání tokenu (a kde přejít na požadavky na metadata), máte dvě možnosti. Nejdřív je název zásady zahrnutý v `acr` deklaraci identity v tokenu. Můžete analyzovat deklarace identity mimo tělo tokenu JWT základní-64 dekódováním těla a deserializací řetězce JSON, který je výsledkem. `acr` Deklarace identity je název zásady, která se použila k vystavení tokenu. Druhou možností je zakódovat zásadu v hodnotě `state` parametru při vystavení žádosti a potom dekódovat, abyste zjistili, které zásady byly použity. Kterákoli z metod je platná.
+Chcete-li zjistit, které zásady byly použity k podepsání tokenu (a kde přejít na požadavky na metadata), máte dvě možnosti. Nejdřív je název zásady zahrnutý v `acr` deklaraci identity v tokenu. Můžete analyzovat deklarace identity mimo tělo tokenu JWT základní-64 dekódováním těla a deserializací řetězce JSON, který je výsledkem. `acr`Deklarace identity je název zásady, která se použila k vystavení tokenu. Druhou možností je zakódovat zásadu v hodnotě `state` parametru při vystavení žádosti a potom dekódovat, abyste zjistili, které zásady byly použity. Kterákoli z metod je platná.
 
 Popis, jak provést ověření podpisu, je mimo rozsah tohoto dokumentu. K dispozici je řada Open Source knihoven, které vám pomůžou ověřit token.
 

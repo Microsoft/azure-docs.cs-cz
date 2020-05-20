@@ -6,18 +6,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77672374"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635956"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Přehled rozšíření Azure Diagnostics
 Azure Diagnostics rozšíření je [Agent v Azure monitor](agents-overview.md) , který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure, včetně virtuálních počítačů. Tento článek obsahuje přehled rozšíření Azure Diagnostics, včetně specifických funkcí, které podporuje, a možností instalace a konfigurace. 
 
 > [!NOTE]
 > Azure Diagnostics rozšíření je jedním z agentů, které jsou k dispozici ke shromažďování dat monitorování z hostovaného operačního systému výpočetních prostředků. Popis různých agentů a pokynů k výběru vhodných agentů pro vaše požadavky najdete v tématu [přehled Azure Monitorch agentů](agents-overview.md) .
+
+## <a name="primary-scenarios"></a>Primární scénáře
+K primárním scénářům řešeným pomocí rozšíření pro diagnostiku patří:
+
+- Shromážděte metriky hostů do metrik Azure Monitor.
+- Odeslání protokolů hosta a metrik do služby Azure Storage pro archivaci.
+- Posílání protokolů hostů a metrik do Azure Event hub, aby se odesílaly mimo Azure.
+
 
 ## <a name="comparison-to-log-analytics-agent"></a>Porovnání s agentem Log Analytics
 Agenta Log Analytics v Azure Monitor lze také použít ke shromažďování dat monitorování z hostovaného operačního systému virtuálních počítačů. V závislosti na vašich požadavcích se můžete rozhodnout použít buď nebo. Podrobné porovnání agentů Azure Monitor najdete v tématu [přehled Azure Monitorch agentů](agents-overview.md) . 

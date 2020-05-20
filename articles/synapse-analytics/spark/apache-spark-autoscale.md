@@ -8,12 +8,12 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: be7ac79b9429d2fc72c3b6bc2b6d92666b089dfb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6a627dfed3886a99a458a67d793c3ebbbdd0fb19
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591960"
+ms.locfileid: "83644875"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Automatické škálování Apache Sparkch fondů Azure synapse Analytics
 
@@ -74,4 +74,4 @@ Běžící úlohy budou i nadále spouštěny a dokončeny. Čekající úlohy b
 
 ## <a name="next-steps"></a>Další kroky
 
-Rychlý Start k nastavení nového fondu Spark [Vytvoření fondu Spark](..\quickstart-create-apache-spark-pool.md)
+Rychlý Start k nastavení nového fondu Spark [Vytvoření fondu Spark](../quickstart-create-apache-spark-pool-portal.md)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89431c2bf1838d3264b03c8a5f2ce62cd6df3631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42768c61cc46ba97e9bd16a06c85f20219672fdd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127842"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639804"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Jak funguje zpětný zápis hesla samoobslužné služby pro resetování hesla v Azure Active Directory?
 
@@ -56,9 +56,9 @@ Při pokusu o resetování nebo změně hesla v cloudu se může zobrazit násle
    * Objekt uživatele musí existovat v prostoru konektoru služby Active Directory.
    * Objekt uživatele musí být propojený s odpovídajícím objektem úložiště metaverse (MV).
    * Objekt uživatele musí být propojený s odpovídajícím objektem Azure Active Directory konektoru.
-   * Odkaz z objektu konektoru služby Active Directory na MV musí mít pravidlo `Microsoft.InfromADUserAccountEnabled.xxx` synchronizace na tomto odkazu.
+   * Odkaz z objektu konektoru služby Active Directory na MV musí mít pravidlo synchronizace `Microsoft.InfromADUserAccountEnabled.xxx` na tomto odkazu.
 
-   Když se volání dostane z cloudu, modul synchronizace používá atribut **cloudAnchor** k vyhledání objektu prostoru konektoru Azure Active Directory. Pak následuje odkaz zpátky na objekt MV a pak následuje odkaz zpátky na objekt služby Active Directory. Vzhledem k tomu, že může existovat více objektů služby Active Directory (více doménových struktur) pro stejného uživatele, synchronizační modul `Microsoft.InfromADUserAccountEnabled.xxx` spoléhá na odkaz pro výběr správné.
+   Když se volání dostane z cloudu, modul synchronizace používá atribut **cloudAnchor** k vyhledání objektu prostoru konektoru Azure Active Directory. Pak následuje odkaz zpátky na objekt MV a pak následuje odkaz zpátky na objekt služby Active Directory. Vzhledem k tomu, že může existovat více objektů služby Active Directory (více doménových struktur) pro stejného uživatele, synchronizační modul spoléhá na `Microsoft.InfromADUserAccountEnabled.xxx` odkaz pro výběr správné.
 
 1. Po nalezení uživatelského účtu se provede pokus o resetování hesla přímo v příslušné doménové struktuře služby Active Directory.
 1. Je-li operace set hesla úspěšná, uživatel má informaci, že heslo bylo změněno.
@@ -141,6 +141,7 @@ Hesla se nezapisují zpátky v následujících situacích:
 * **Nepodporované operace Správce**
    * Jakékoli resetování hesla koncového uživatele iniciované správcem z PowerShellu verze 1, verze 2 nebo rozhraní Microsoft Graph API (podporuje se [Microsoft Graph API beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) ).
    * Jakékoli resetování hesla koncového uživatele iniciované správcem v [centru pro správu Microsoft 365](https://admin.microsoft.com).
+   * Žádný správce nemůže použít nástroj pro resetování hesla k resetování vlastního hesla pro zpětný zápis hesla.
 
 > [!WARNING]
 > Pomocí zaškrtávacího políčka "uživatel musí změnit heslo při příštím přihlášení" v místních služba AD DS nástroje pro správu, jako jsou uživatelé a počítače služby Active Directory, nebo Centrum správy služby Active Directory se podporuje jako funkce verze Preview Azure AD Connect. Další informace najdete v tématu [implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](../hybrid/how-to-connect-password-hash-synchronization.md).

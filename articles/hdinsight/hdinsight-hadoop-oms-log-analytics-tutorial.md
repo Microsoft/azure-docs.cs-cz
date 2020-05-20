@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/24/2020
-ms.openlocfilehash: 41688792330214943eeb116dc4b5aaf7eebfeebf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/13/2020
+ms.openlocfilehash: 0d462c76454825c3fcbe0f09f4df13c12de3d7c7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192038"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634529"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Monitorování clusterů HDInsight s využitím protokolů služby Azure Monitor
 
@@ -40,12 +40,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
   Pokyny k vytvoření clusteru HDInsight najdete v tématu Začínáme [se službou Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
 
-* Azure PowerShell AZ Module.  Další informace najdete v tématu [Úvod do nového Azure PowerShell AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az). Ujistěte se, že máte nejnovější verzi. V případě potřeby spusťte `Update-Module -Name Az`.
+* Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/overview). Ujistěte se, že máte nejnovější verzi. V případě potřeby spusťte `Update-Module -Name Az` .
+
+* Pokud chcete použít rozhraní příkazového řádku Azure a ještě jste ho nenainstalovali, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 > [!NOTE]  
 > Pro lepší výkon doporučujeme umístit cluster HDInsight i Log Analytics pracovní prostor do stejné oblasti. Protokoly Azure Monitor nejsou k dispozici ve všech oblastech Azure.
 
-## <a name="enable-azure-monitor-logs-by-using-the-portal"></a>Povolení protokolů Azure Monitor pomocí portálu
+## <a name="enable-azure-monitor-using-the-portal"></a>Povolení Azure Monitor pomocí portálu
 
 V této části nakonfigurujete existující cluster HDInsight Hadoop tak, aby používal pracovní prostor Azure Log Analytics k monitorování úloh, protokolů ladění atd.
 
@@ -61,7 +63,7 @@ V této části nakonfigurujete existující cluster HDInsight Hadoop tak, aby p
 
     ![Povolit monitorování clusterů HDInsight](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "Povolit monitorování clusterů HDInsight")
 
-## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>Povolit protokoly Azure Monitor pomocí Azure PowerShell
+## <a name="enable-azure-monitor-using-azure-powershell"></a>Povolit Azure Monitor pomocí Azure PowerShell
 
 Protokoly Azure Monitor můžete povolit pomocí Azure PowerShell rutinu AZ Module [Enable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) .
 
@@ -99,6 +101,29 @@ Pokud ho chcete zakázat, použijte rutinu [Disable-AzHDInsightMonitoring](https
 
 ```powershell
 Disable-AzHDInsightMonitoring -Name "<your-cluster>"
+```
+
+## <a name="enable-azure-monitor-using-azure-cli"></a>Povolení Azure Monitor pomocí rozhraní příkazového řádku Azure
+
+Protokoly Azure Monitor můžete povolit pomocí rozhraní příkazového řádku Azure (CLI) `[az hdinsight monitor enable` https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-enable) .
+
+```azurecli
+# set variables
+export resourceGroup=RESOURCEGROUPNAME
+export cluster=CLUSTERNAME
+export LAW=LOGANALYTICSWORKSPACENAME
+
+# Enable the Azure Monitor logs integration on an HDInsight cluster.
+az hdinsight monitor enable --name $cluster --resource-group $resourceGroup --workspace $LAW
+
+# Get the status of Azure Monitor logs integration on an HDInsight cluster.
+az hdinsight monitor show --name $cluster --resource-group $resourceGroup
+```
+
+K zakázání použijte [`az hdinsight monitor disable`](https://docs.microsoft.com/cli/azure/hdinsight/monitor?view=azure-cli-latest#az-hdinsight-monitor-disable) příkaz.
+
+```azurecli
+az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 ```
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>Instalace řešení pro správu clusteru HDInsight

@@ -16,4 +16,4 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "75527055"
 ---
-**Platí pro:** ![Ano](media/aml-applies-to-skus/yes.png)Basic Edition ![Yes](media/aml-applies-to-skus/yes.png)Enterprise Edition &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Upgrade to Enterprise edition](../articles/machine-learning/how-to-manage-workspace.md#upgrade)(upgrade na Enterprise Edition) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
+**platí pro:** ![ Ano ](media/aml-applies-to-skus/yes.png) , Basic edice ![ Yes ](media/aml-applies-to-skus/yes.png) Enterprise Edition &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ([upgrade na Enterprise Edition](../articles/machine-learning/how-to-manage-workspace.md#upgrade))  

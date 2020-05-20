@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 06225e284000d7f10f575be08cd683488abec339
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7dca7352a49e668231f64632371a445985e4de3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985486"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634537"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Vytvoření a správa několika řídicích panelů
 
 **Řídicí panel** je stránka, která se načte při prvním přechodu do aplikace. **Tvůrce** v aplikaci definuje výchozí řídicí panel aplikace pro všechny uživatele. Můžete také vytvořit vlastní přizpůsobený řídicí panel aplikace. Můžete mít několik řídicích panelů, které zobrazují různá data a mezi nimi přepínat.
 
-Pokud jste **správcem** aplikace, můžete také vytvořit až 10 řídicích panelů na úrovni aplikace pro sdílení s dalšími uživateli aplikace. Pouze **Správci** mají možnost vytvářet, upravovat a odstraňovat řídicí panely na úrovni aplikace. 
+Pokud jste **správcem** aplikace, můžete také vytvořit až 10 řídicích panelů na úrovni aplikace pro sdílení s dalšími uživateli aplikace. Pouze **Správci** mají možnost vytvářet, upravovat a odstraňovat řídicí panely na úrovni aplikace.  
 
 ## <a name="create-dashboard"></a>Vytvořit řídicí panel
 
 Následující snímek obrazovky ukazuje řídicí panel v aplikaci vytvořené z vlastní šablony **aplikace** . Výchozí řídicí panel aplikace můžete nahradit osobním řídicím panelem, nebo pokud jste správce, na jiný řídicí panel na úrovni aplikace. Provedete to tak, že v levém horním rohu stránky vyberete **+ Nový** .
- 
+
 > [!div class="mx-imgBorder"]
 > ![Řídicí panel pro aplikace založené na šabloně vlastní aplikace](media/howto-create-personal-dashboards/dashboard-custom-app.png)
 
@@ -33,16 +33,17 @@ Výběr **+ Nový** otevře Editor řídicích panelů. V editoru můžete říd
 > [!div class="mx-imgBorder"]
 > ![Knihovna řídicích panelů](media/howto-create-personal-dashboards/dashboard-library.png)
 
-Pokud jste **správcem** aplikace, budete mít možnost přepnout, pokud chcete vytvořit řídicí panel na úrovni aplikace nebo řídicí panel na úrovni aplikace. Pokud vytvoříte řídicí panel osobní úrovně, budete ho moct zobrazit jenom vy. Pokud vytvoříte řídicí panel na úrovni aplikace, bude jej každý uživatel aplikace moci zobrazit. Po zadání nadpisu a výběru typu řídicího panelu, který chcete vytvořit, můžete uložit a přidat dlaždice později. Nebo pokud jste nyní připraveni a Přidali jste šablonu zařízení a instanci zařízení, můžete pokračovat a vytvořit svou první dlaždici. 
+Pokud jste **správcem** aplikace, budete mít možnost vytvořit řídicí panel osobní úrovně nebo řídicí panel na úrovni aplikace. Pokud vytvoříte řídicí panel osobní úrovně, budete ho moct zobrazit jenom vy. Pokud vytvoříte řídicí panel na úrovni aplikace, bude jej každý uživatel aplikace moci zobrazit. Po zadání nadpisu a výběru typu řídicího panelu, který chcete vytvořit, můžete uložit a přidat dlaždice později. Nebo pokud jste nyní připraveni a Přidali jste šablonu zařízení a instanci zařízení, můžete pokračovat a vytvořit svou první dlaždici.  
 
 > [!div class="mx-imgBorder"]
 > ![Formulář pro konfiguraci podrobností o zařízení s podrobnostmi o teplotě](media/howto-create-personal-dashboards/device-details.png)
 
 Můžete například přidat dlaždici **telemetrie** pro aktuální teplotu zařízení. Postupujte následovně:
+
 1. Vybrat **šablonu zařízení**
-1. Vyberte **instanci zařízení** pro zařízení, které chcete zobrazit na dlaždici řídicího panelu. Pak se zobrazí seznam vlastností zařízení, které se dají na dlaždici použít.
-1. Pokud chcete vytvořit dlaždici na řídicím panelu, klikněte na **teplotu** a přetáhněte ji do oblasti řídicího panelu. Můžete také kliknout na zaškrtávací políčko vedle **teploty** a kliknout na **zkombinovat**. Následující snímek obrazovky ukazuje, jak vybrat šablonu zařízení a instanci zařízení a pak na řídicím panelu vytvořit dlaždici telemetrie s teplotou.
-1. Vyberte **Uložit** v levém horním rohu a uložte dlaždici na řídicí panel.
+1. V **zařízení vyberte** zařízení, které chcete zobrazit na dlaždici řídicího panelu. Pak se zobrazí seznam vlastností zařízení, které se dají na dlaždici použít.
+1. Pokud chcete vytvořit dlaždici na řídicím panelu, klikněte na **teplotu** a přetáhněte ji do oblasti řídicího panelu. Můžete také kliknout na zaškrtávací políčko vedle **teploty** a kliknout na **Přidat dlaždici**. Následující snímek obrazovky ukazuje, jak vybrat šablonu zařízení a zařízení a pak na řídicím panelu vytvořit dlaždici s Telemetriem teploty.
+1. Vyberte **Uložit** v levém horním rohu a uložte změny na řídicí panel.
 
 > [!div class="mx-imgBorder"]
 > ![Karta řídicího panelu s podrobnostmi pro dlaždici teploty](media/howto-create-personal-dashboards/temperature-tile-edit.png)
@@ -70,4 +71,4 @@ Můžete upravit osobní řídicí panely a odstranit všechny řídicí panely,
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se seznámili s vytvářením a správou osobních řídicích panelů, se můžete [seznámit s tím, jak spravovat předvolby aplikace](howto-manage-preferences.md) .
+Teď, když jste se seznámili s vytvářením a správou osobních řídicích panelů, se můžete [seznámit s tím, jak spravovat předvolby aplikace](howto-manage-preferences.md).

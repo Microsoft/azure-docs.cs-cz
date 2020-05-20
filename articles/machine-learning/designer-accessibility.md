@@ -9,12 +9,13 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: designer
+ms.openlocfilehash: af676f128796c762b330d986836ea825a36cb246
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77366195"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646301"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Použití klávesnice k použití návrháře Azure Machine Learning (Preview)
 
@@ -62,11 +63,11 @@ Připojení modulu k jinému modulu:
 
 ## <a name="action-shortcuts"></a>Zástupci akcí
 
-Použijte následující klávesové zkratky s přístupovým klíčem. Další informace o přístupových klíčích najdete https://en.wikipedia.org/wiki/Access_keyv tématu.
+Použijte následující klávesové zkratky s přístupovým klíčem. Další informace o přístupových klíčích najdete v tématu https://en.wikipedia.org/wiki/Access_key .
 
 | Klávesnice | Akce |
 |-|-|
-| Přístupový klíč + R | Spusťte |
+| Přístupový klíč + R | Spustit |
 | Přístupový klíč + P | Publikování |
 | Přístupová klávesa + C | Klonování |
 | Přístupová klávesa + D | Nasazení |

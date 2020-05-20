@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c166684484b839ec661ae2e68d5a5e5253d2528f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76718646"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634516"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Pokročilé zkoumání a modelování dat pomocí Spark
 
@@ -54,11 +54,11 @@ Kroky a kód pro instalaci najdete v tomto návodu pro použití HDInsight Spark
 
 ### <a name="spark-16-notebooks"></a>Notebooky Spark 1,6
 
-[pySpark-Machine-Learning-data-věda-Spark-Advanced-data-prozkoumává se Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): obsahuje témata v poznámkových blocích #1 a vývoj modelů pomocí ladění parametrů a křížového ověřování.
+[pySpark-Machine-Learning-data-věda-Spark-Advanced-data-prozkoumává se Modeling. ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): obsahuje témata v poznámkových blocích #1 a vývoj modelů pomocí ladění parametrů a křížového ověřování.
 
 ### <a name="spark-20-notebooks"></a>Notebooky Spark 2,0
 
-[Spark 2.0 – pySpark3-Machine-Learning-data-věda-Spark-rozšířené-data-průzkum-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor poskytuje informace o tom, jak provádět zkoumání dat, modelování a bodování v clusterech Spark 2,0.
+[Spark 2.0 – pySpark3-Machine-Learning-data-věda-Spark-rozšířené-data-průzkum-Modeling. ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor poskytuje informace o tom, jak provádět zkoumání dat, modelování a bodování v clusterech Spark 2,0.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -116,7 +116,7 @@ Jádra PySpark, která jsou poskytována pomocí poznámkových bloků Jupyter, 
 Jádro PySpark poskytuje některé předdefinované "MAGICS", což jsou speciální příkazy, které můžete volat pomocí%%. Existují dva takové příkazy, které jsou použity v těchto ukázkách kódu.
 
 * **%% místní** Určuje, že kód v následných řádcích má být proveden místně. Kód musí být platný kód Pythonu.
-* **%% název proměnné SQL \<-o>** Spustí dotaz na podregistr pro kontext SqlContext. Pokud je předán parametr-o, výsledek dotazu je trvalý v kontextu%% Local Python jako PANDAS dataframe.
+* **%% kontext SqlContext v systému SQL-o \<>název proměnné** spouští dotaz na podregistru pro. Pokud je předán parametr-o, výsledek dotazu je trvalý v kontextu%% Local Python jako PANDAS dataframe.
 
 Další informace o jádrech pro Jupyter poznámkových blocích a předdefinovaných "Magic" najdete v tématu [jádra dostupná pro poznámkové bloky Jupyter s clustery HDInsight Spark Linux v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -197,8 +197,8 @@ Až se data přenesou do Sparku, další krok v rámci vědeckého zpracování 
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Sestrojit histogram frekvencí počtu cestujících v ukázce taxislužby cest
 Tento kód a následné fragmenty kódu používají SQL Magic k dotazování na ukázku a místní Magic k vykreslení dat.
 
-* **SQL Magic (`%%sql`)** Jádro HDInsight PySpark podporuje snadno vložené HiveQL dotazy proti kontext SqlContext. Argument (-o VARIABLE_NAME) uchovává výstup dotazu SQL jako PANDAS dataframe na serveru Jupyter. To znamená, že je k dispozici v místním režimu.
-* Magic se používá ke spouštění kódu místně na serveru Jupyter, což je hlavnímu uzlu clusteru HDInsight. ** `%%local` ** Obvykle použijete `%%local` Magic po použití `%%sql -o` Magic pro spuštění dotazu. Parametr-o by zachoval výstup dotazu SQL místně. Potom `%%local` Magic spustí další sadu fragmentů kódu, aby běžela lokálně na výstupu dotazů SQL, které byly trvale uložené v místním prostředí. Výstup je automaticky vizuálů po spuštění kódu.
+* **SQL Magic ( `%%sql` )** jádro HDInsight PySpark podporuje jednoduché vložené dotazy HiveQL proti kontext SqlContext. Argument (-o VARIABLE_NAME) uchovává výstup dotazu SQL jako PANDAS dataframe na serveru Jupyter. To znamená, že je k dispozici v místním režimu.
+* ** `%%local` Magic** se používá ke spouštění kódu místně na serveru Jupyter, což je hlavnímu uzlu clusteru HDInsight. Obvykle použijete `%%local` Magic po `%%sql -o` použití Magic pro spuštění dotazu. Parametr-o by zachoval výstup dotazu SQL místně. Potom `%%local` Magic spustí další sadu fragmentů kódu, aby běžela lokálně na výstupu dotazů SQL, které byly trvale uložené v místním prostředí. Výstup je automaticky vizuálů po spuštění kódu.
 
 Tento dotaz načte počet cest podle počtu cestujících. 
 
@@ -209,7 +209,7 @@ Tento dotaz načte počet cest podle počtu cestujících.
     SELECT passenger_count, COUNT(*) as trip_counts FROM taxi_train WHERE passenger_count > 0 and passenger_count < 7 GROUP BY passenger_count
 
 
-Tento kód vytvoří lokální datový rámec z výstupu dotazu a vykreslí data. `%%local` Magic vytvoří lokální datový rámec `sqlResults`, který se dá použít k vykreslení pomocí matplotlib. 
+Tento kód vytvoří lokální datový rámec z výstupu dotazu a vykreslí data. `%%local`Magic vytvoří lokální datový rámec, `sqlResults` který se dá použít k vykreslení pomocí matplotlib. 
 
 <!-- -->
 

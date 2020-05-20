@@ -1,48 +1,32 @@
 ---
-title: Sestavy přístupu a využití pro Azure MFA – Azure Active Directory
-description: V této části se dozvíte, jak používat Multi-Factor Authentication sestav funkcí Azure.
+title: Podrobnosti události přihlášení pro Azure Multi-Factor Authentication – Azure Active Directory
+description: Přečtěte si, jak zobrazit přihlašovací aktivitu pro události a stavové zprávy Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/30/2018
+ms.date: 05/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df562d65ad064efb1be337e0b68cb8638536981
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112758"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639846"
 ---
-# <a name="reports-in-azure-multi-factor-authentication"></a>Sestavy v Azure Multi-Factor Authentication
+# <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>Použití sestavy přihlášení ke kontrole událostí Azure Multi-Factor Authentication
 
-Azure Multi-Factor Authentication poskytuje několik sestav, které můžete používat vy a vaše organizace přístupné prostřednictvím Azure Portal. V následující tabulce jsou uvedeny dostupné sestavy:
+Pokud chcete zkontrolovat a pochopit události Azure Multi-Factor Authentication, můžete použít sestavu přihlášení Azure Active Directory (Azure AD). Tato sestava zobrazuje podrobnosti o ověřování pro události, když se uživateli zobrazí výzva k zadání služby Multi-Factor Authentication, a pokud se nějaké zásady podmíněného přístupu používaly. Podrobné informace o sestavě přihlášení najdete v tématu [Přehled sestav aktivit přihlašování v Azure AD](../reports-monitoring/concept-sign-ins.md).
 
-| Sestava | Umístění | Popis |
-|:--- |:--- |:--- |
-| Historie blokovaného uživatele | Azure AD > Security > MFA > blokování nebo odblokování uživatelů | Zobrazuje historii požadavků na blokování nebo odblokování uživatelů. |
-| Používání a výstrahy týkající se podvodů | Přihlášení > Azure AD | Poskytuje informace o celkovém využití, souhrnu uživatelů a podrobnostech uživatelů. a také historii výstrah podvodů odeslaných během zadaného rozsahu dat. |
-| Využití pro místní součásti | Zpráva o aktivitě > > MFA služby Azure AD > Security | Poskytuje informace o celkovém využití MFA prostřednictvím rozšíření NPS, ADFS a MFA serveru. |
-| Historie obcházení uživatelů | Zabezpečení Azure AD > > MFA > jednorázové přihlášení | Poskytuje historii žádostí o obejít Multi-Factor Authentication pro uživatele. |
-| Stav serveru | Azure AD > Security > MFA > Server – stav | Zobrazuje stav serverů Multi-Factor Authentication přidružených k vašemu účtu. |
+V tomto článku se dozvíte, jak zobrazit sestavu přihlášení k Azure AD v Azure Portal a pak modul PowerShellu pro MSOnline v1.
 
-## <a name="view-mfa-reports"></a>Zobrazit sestavy MFA
+## <a name="view-the-azure-ad-sign-ins-report"></a>Zobrazit sestavu přihlášení k Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na levé straně vyberte **Azure Active Directory** > **zabezpečení** > **MFA**.
-3. Vyberte sestavu, kterou chcete zobrazit.
-
-   ![Zpráva o stavu serveru MFA Server v Azure Portal](./media/howto-mfa-reporting/report.png)
-
-## <a name="azure-ad-sign-ins-report"></a>Sestava přihlášení k Azure AD
-
-Pomocí **sestavy aktivity přihlášení** v [Azure Portal](https://portal.azure.com)můžete získat informace, které potřebujete k určení toho, jak vaše prostředí dělá.
-
-Sestava přihlášení vám může poskytnout informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů, které obsahují informace o využití vícefaktorového ověřování (MFA). Data vícefaktorového ověřování poskytují přehled o fungování vícefaktorového ověřování ve vaší organizaci. Poskytují odpovědi na následující otázky:
+Sestava přihlášení poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů, které obsahují informace o využití vícefaktorového ověřování (MFA). Data vícefaktorového ověřování poskytují přehled o fungování vícefaktorového ověřování ve vaší organizaci. Umožňuje vám odpovídat na následující otázky:
 
 - Použilo se při přihlášení vícefaktorové ověřování?
 - Jak uživatel dokončil vícefaktorové ověřování?
@@ -51,94 +35,76 @@ Sestava přihlášení vám může poskytnout informace o použití spravovanýc
 - Kolik uživatelů nemůže dokončit vícefaktorové ověřování?
 - S jakými běžnými problémy se koncoví uživatelé vícefaktorového ověřování setkávají?
 
-Tato data jsou k dispozici prostřednictvím [Azure Portal](https://portal.azure.com) a [rozhraní API pro vytváření sestav](../reports-monitoring/concept-reporting-api.md).
+Chcete-li zobrazit sestavu aktivity přihlašování v [Azure Portal](https://portal.azure.com), proveďte následující kroky. Data můžete také dotazovat pomocí [rozhraní API pro vytváření sestav](../reports-monitoring/concept-reporting-api.md).
 
-![Sestava přihlášení k Azure AD v Azure Portal](./media/howto-mfa-reporting/sign-in-report.png)
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu s oprávněními *globálního správce* .
+1. Vyhledejte a vyberte **Azure Active Directory**a pak v nabídce na levé straně zvolte **Uživatelé** .
+1. V části *aktivita* v nabídce na levé straně vyberte **přihlášení**.
+1. Zobrazí se seznam přihlašovacích událostí, včetně stavu. Můžete vybrat událost a zobrazit další podrobnosti.
 
-### <a name="sign-ins-report-structure"></a>Struktura sestav přihlášení
+    Na kartě *Podrobnosti o ověřování* nebo *podmíněný přístup* v podrobnostech události se zobrazí stavový kód nebo tato zásada aktivovala výzvu MFA.
 
-Sestavy aktivit přihlašování pro vícefaktorové ověřování poskytují přístup k následujícím informacím:
+    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
-**Vyžadování vícefaktorového ověřování:** Uvádí, jestli se pro přihlašování vyžaduje vícefaktorové ověřování, nebo ne. Vícefaktorové ověřování se může vyžadovat v důsledku MFA, podmíněného přístupu pro jednotlivé uživatele nebo z jiných důvodů. Možné hodnoty jsou **Ano** nebo **ne**.
+Pokud je k dispozici, zobrazí se ověřování, například textová zpráva, Microsoft Authenticator oznámení aplikace nebo telefonní hovor.
 
-**Výsledek vícefaktorového ověřování:** Další informace o splnění nebo odepření vícefaktorového ověřování:
+V okně *Podrobnosti o ověřování* se zobrazí následující podrobnosti o události přihlášení, která ukazuje, jestli byla žádost MFA splněná nebo zamítnutá:
 
-- Pokud bylo vícefaktorové ověřování splněno, v tomto sloupci se zobrazí informace o způsobu splnění vícefaktorového ověřování.
-   - Azure Multi-Factor Authentication
-      - dokončeno v cloudu
-      - vypršela platnost kvůli zásadám nakonfigurovaným na tenantovi
-      - zobrazena výzva k registraci
-      - splněno deklarací identity v tokenu
-      - splněno deklarací identity poskytnutou externím poskytovatelem
-      - splněno silným ověřením
-      - přeskočeno, protože tok byl spuštěn tokem přihlášení zprostředkovatele ve Windows
-      - přeskočeno kvůli heslu aplikace
-      - přeskočeno kvůli umístění
-      - přeskočeno kvůli registrovanému zařízení
-      - přeskočeno kvůli zapamatovanému zařízení
-      - úspěšně dokončeno
-   - Přesměrováno k externímu poskytovateli vícefaktorového ověřování
+* Pokud bylo vícefaktorové ověřování splněno, v tomto sloupci se zobrazí informace o způsobu splnění vícefaktorového ověřování.
+   * dokončeno v cloudu
+   * vypršela platnost kvůli zásadám nakonfigurovaným na tenantovi
+   * zobrazena výzva k registraci
+   * splněno deklarací identity v tokenu
+   * splněno deklarací identity poskytnutou externím poskytovatelem
+   * splněno silným ověřením
+   * přeskočeno, protože tok byl spuštěn tokem přihlášení zprostředkovatele ve Windows
+   * přeskočeno kvůli heslu aplikace
+   * přeskočeno kvůli umístění
+   * přeskočeno kvůli registrovanému zařízení
+   * přeskočeno kvůli zapamatovanému zařízení
+   * úspěšně dokončeno
 
-- Pokud bylo vícefaktorové ověřování odepřeno, v tomto sloupci se zobrazí důvod odepření.
-   - Služba Azure Multi-Factor Authentication byla odepřena
-      - probíhá ověřování
-      - duplicitní pokus o ověření
-      - příliš mnohokrát byl zadán nesprávný kód
-      - neplatné ověření
-      - neplatný ověřovací kód z mobilní aplikace
-      - chybná konfigurace
-      - telefonní hovor byl přesměrován do hlasové pošty
-      - telefonní číslo má neplatný formát
-      - chyba služby
-      - Nepovedlo se kontaktovat telefon uživatele.
-      - nepodařilo se odeslat oznámení mobilní aplikace do zařízení
-      - nepodařilo se odeslat oznámení mobilní aplikace
-      - uživatel odmítl ověřování
-      - uživatel nereagoval na oznámení mobilní aplikace
-      - uživatel nemá zaregistrované žádné metody ověřování
-      - uživatel zadal nesprávný kód
-      - uživatel zadal nesprávný kód PIN
-      - uživatel zavěsil před dokončením ověřování
-      - uživatel je blokován
-      - uživatel nezadal ověřovací kód
-      - uživatel nenalezen
-      - ověřovací kód již byl použitý
-
-**Metoda vícefaktorového ověřování:** Metoda ověřování, kterou uživatel dokončil vícefaktorové ověřování. Mezi možné hodnoty patří:
-
-- Textová zpráva
-- Oznámení mobilní aplikace
-- Telefonní hovor (telefon pro ověření)
-- Ověřovací kód z mobilní aplikace
-- Telefonní hovor (telefon do kanceláře)
-- Telefonní hovor (telefon pro alternativní ověření)
-
-**Podrobnosti o vícefaktorovém ověřování:** Zkrácená verze telefonního čísla, například: +X XXXXXXXX64.
-
-**Podmíněný přístup** Vyhledejte informace o zásadách podmíněného přístupu, které ovlivnily pokus o přihlášení, včetně:
-
-- Název zásad
-- Udělit ovládací prvky
-- Ovládací prvky relace
-- Výsledek
+* Pokud bylo vícefaktorové ověřování odepřeno, v tomto sloupci se zobrazí důvod odepření.
+   * probíhá ověřování
+   * duplicitní pokus o ověření
+   * příliš mnohokrát byl zadán nesprávný kód
+   * neplatné ověření
+   * neplatný ověřovací kód z mobilní aplikace
+   * chybná konfigurace
+   * telefonní hovor byl přesměrován do hlasové pošty
+   * telefonní číslo má neplatný formát
+   * chyba služby
+   * Nepovedlo se kontaktovat telefon uživatele.
+   * nepodařilo se odeslat oznámení mobilní aplikace do zařízení
+   * nepodařilo se odeslat oznámení mobilní aplikace
+   * uživatel odmítl ověřování
+   * uživatel nereagoval na oznámení mobilní aplikace
+   * uživatel nemá zaregistrované žádné metody ověřování
+   * uživatel zadal nesprávný kód
+   * uživatel zadal nesprávný kód PIN
+   * uživatel zavěsil před dokončením ověřování
+   * uživatel je blokován
+   * uživatel nezadal ověřovací kód
+   * uživatel nenalezen
+   * ověřovací kód již byl použitý
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>Vytváření sestav PowerShellu u uživatelů registrovaných pro MFA
 
 Nejdřív se ujistěte, že máte nainstalovaný [modul PowerShellu MSOnline v1](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) .
 
-Identifikujte uživatele, kteří se zaregistrovali pro MFA, pomocí PowerShellu, který následuje. Tato sada příkazů vyloučí zakázané uživatele, protože tyto účty se nemůžou v Azure AD ověřit.
+Identifikujte uživatele, kteří se zaregistrovali pro MFA, pomocí PowerShellu, který následuje. Tato sada příkazů nezahrnuje zakázané uživatele, protože tyto účty nelze ověřit vůči službě Azure AD:
 
 ```powershell
 Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
-Identifikujte uživatele, kteří se nezaregistrovali pro MFA pomocí PowerShellu, který následuje. Tato sada příkazů vyloučí zakázané uživatele, protože tyto účty se nemůžou v Azure AD ověřit.
+Identifikujte uživatele, kteří se nezaregistrovali pro MFA pomocí PowerShellu, který následuje. Tato sada příkazů nezahrnuje zakázané uživatele, protože tyto účty nelze ověřit vůči službě Azure AD:
 
 ```powershell
 Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0 -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
-Identifikujte zaregistrované uživatele a výstupní metody. 
+Identifikujte zaregistrované uživatele a výstupní metody:
 
 ```powershell
 Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},
@@ -148,9 +114,9 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 @{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
 ```
 
-## <a name="possible-results-in-activity-reports"></a>Možné výsledky v sestavách aktivit
+## <a name="downloaded-activity-reports-result-codes"></a>Kódy výsledku sestav aktivit ke stažení
 
-Následující tabulka může sloužit k řešení vícefaktorového ověřování pomocí stažené verze sestavy aktivita aplikace Multi-Factor Authentication. Nebudou se zobrazovat přímo v Azure Portal.
+Následující tabulka může pomoct řešit události pomocí stažené verze sestavy aktivity z předchozích kroků portálu nebo příkazů PowerShellu. Tyto kódy výsledku se nezobrazí přímo v Azure Portal.
 
 | Výsledek volání | Popis | Obecný popis |
 | --- | --- | --- |
@@ -200,8 +166,17 @@ Následující tabulka může sloužit k řešení vícefaktorového ověřován
 | FAILED_AUTH_RESULT_TIMEOUT | Časový limit výsledku ověřování | Dokončení Multi-Factor Authentication pokusu uživatele trvalo příliš dlouho. |
 | FAILED_AUTHENTICATION_THROTTLED | Ověřování bylo omezené. | Pokus o Multi-Factor Authentication byl službou omezen. |
 
+## <a name="additional-mfa-reports"></a>Další sestavy MFA
+
+K dispozici jsou následující další informace a sestavy pro události MFA, včetně těch pro MFA Server:
+
+| Sestava | Umístění | Popis |
+|:--- |:--- |:--- |
+| Historie blokovaného uživatele | Azure AD > Security > MFA > blokování nebo odblokování uživatelů | Zobrazuje historii požadavků na blokování nebo odblokování uživatelů. |
+| Využití pro místní součásti | Zpráva o aktivitě > > MFA služby Azure AD > Security | Poskytuje informace o celkovém využití MFA serveru prostřednictvím rozšíření NPS, ADFS a MFA serveru. |
+| Historie obcházení uživatelů | Zabezpečení Azure AD > > MFA > jednorázové přihlášení | Poskytuje historii požadavků MFA serveru na obejití MFA pro uživatele. |
+| Stav serveru | Azure AD > Security > MFA > Server – stav | Zobrazuje stav MFA serverů přidružených k vašemu účtu. |
+
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytváření sestav využití SSPR a MFA a přehledy](howto-authentication-methods-usage-insights.md)
-* [Pro uživatele](../user-help/multi-factor-authentication-end-user.md)
-* [Místo nasazení](concept-mfa-whichversion.md)
+Tento článek poskytuje přehled sestavy aktivit přihlášení. Podrobnější informace o tom, co tato sestava obsahuje a pochopení dat, najdete v tématu [sestavy aktivit přihlašování v Azure AD](../reports-monitoring/concept-sign-ins.md).

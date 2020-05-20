@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd2511dcbf2e387a6f324742219b81c927b534af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632671"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636390"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Omezení paměti a souběžnosti pro Azure synapse Analytics
 
@@ -77,7 +77,7 @@ V rámci zavedení [skupin úloh](sql-data-warehouse-workload-isolation.md)už k
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Maximální počet souběžnosti pro třídy prostředků
 
-Aby každý dotaz měl dostatek prostředků na efektivní spuštění, služba SQL Analytics ve službě Azure synapse sleduje využití prostředků přiřazením slotů souběžnosti k jednotlivým dotazům. Systém převede dotazy do fronty na základě důležitosti a slotů souběžnosti. Dotazy čekají ve frontě, dokud nebudou k dispozici dostatečné sloty souběžnosti. [Důležitost](sql-data-warehouse-workload-importance.md) a sloty souběžnosti určují stanovení priorit procesoru. Další informace najdete v tématu [Analýza úloh](analyze-your-workload.md) .
+Aby každý dotaz měl dostatek prostředků pro efektivní spuštění, synapse SQL sleduje využití prostředků přiřazením slotů souběžnosti k jednotlivým dotazům. Systém převede dotazy do fronty na základě důležitosti a slotů souběžnosti. Dotazy čekají ve frontě, dokud nebudou k dispozici dostatečné sloty souběžnosti. [Důležitost](sql-data-warehouse-workload-importance.md) a sloty souběžnosti určují stanovení priorit procesoru. Další informace najdete v tématu [Analýza úloh](analyze-your-workload.md) .
 
 **Třídy statických prostředků**
 
