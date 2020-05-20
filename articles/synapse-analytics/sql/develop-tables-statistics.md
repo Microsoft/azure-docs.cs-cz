@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: d89baa069543c0571d42807f8034e6008eaddbc8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197598"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659227"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistika v synapse SQL
 
@@ -30,11 +30,13 @@ V tomto článku najdete doporučení a příklady pro vytváření a aktualizac
 
 Optimalizátor dotazů na fond SQL je modul pro optimalizaci na základě nákladů. Porovnává náklady na různé plány dotazů a pak zvolí plán s nejnižšími náklady. Ve většině případů si zvolí plán, který se spustí nejrychleji.
 
-Například pokud Optimalizátor odhadne, že datum, na kterém dotaz vyfiltruje, vrátí jeden řádek, ve kterém se vybere jeden plán. Pokud se odhaduje, že vybrané datum vrátí 1 000 000 řádků, vrátí se jiný plán.
+Například pokud Optimalizátor odhadne, že datum, na kterém dotaz vyfiltruje, vrátí jeden řádek, bude zvolit jeden plán. Pokud se odhaduje, že vybrané datum vrátí 1 000 000 řádků, vrátí se jiný plán.
 
 ### <a name="automatic-creation-of-statistics"></a>Automatické vytváření statistik
 
-Pokud je možnost databáze AUTO_CREATE_STATISTICS nastavena na hodnotu, bude fond SQL analyzovat příchozí dotazy uživatelů pro chybějící statistiky `ON` .  Pokud Statistika chybí, vytvoří Optimalizátor dotazů statistiku pro jednotlivé sloupce v predikátu dotazu nebo v podmínce připojení. Tato funkce slouží ke zlepšení odhadů mohutnosti pro plán dotazu.
+Pokud je možnost databáze AUTO_CREATE_STATISTICS nastavena na hodnotu, bude fond SQL analyzovat příchozí dotazy uživatelů pro chybějící statistiky `ON` .  Pokud Statistika chybí, vytvoří Optimalizátor dotazů statistiku pro jednotlivé sloupce v predikátu dotazu nebo v podmínce připojení. 
+
+Tato funkce slouží ke zlepšení odhadů mohutnosti pro plán dotazu.
 
 > [!IMPORTANT]
 > Automatické vytváření statistik je teď ve výchozím nastavení zapnuté.
@@ -101,7 +103,9 @@ Jedna z prvních otázek, které je třeba položit při řešení potíží s d
 
 Tato otázka není ta, kterou by bylo možné zodpovědět o stáří dat. Aktuální objekt statistiky může být starý, pokud nedošlo ke změně materiálu podkladových dat. Když se počet řádků podstatně změnil, nebo dojde ke změně materiálu v distribuci hodnot pro *sloupec, je* čas aktualizovat statistiku.
 
-K dispozici není zobrazení dynamické správy, které umožňuje určit, zda se data v tabulce od poslední aktualizace statistiky změnila. Znalost stáří statistik vám může poskytnout část obrázku. Pomocí následujícího dotazu můžete určit, kdy se vaše Statistika v každé tabulce aktualizovala.
+K dispozici není zobrazení dynamické správy, které umožňuje určit, zda se data v tabulce od poslední aktualizace statistiky změnila. Znalost stáří statistik vám může poskytnout část obrázku. 
+
+Pomocí následujícího dotazu můžete určit, kdy se vaše Statistika v každé tabulce aktualizovala.
 
 > [!NOTE]
 > Pokud dojde ke změně v distribuci hodnot pro sloupec, měli byste aktualizovat statistiku bez ohledu na čas poslední aktualizace.
@@ -137,9 +141,11 @@ WHERE
 
 Statistiky ve sloupci pohlaví v tabulce zákazníků nemusí být nikdy potřeba aktualizovat. Za předpokladu, že je rozdělení mezi zákazníky konstantní, přidání nových řádků do varianty tabulky nemění distribuci dat.
 
-Pokud ale váš datový sklad obsahuje jenom jedno pohlaví a nový požadavek má za následek více pohlaví, budete muset aktualizovat statistiku ve sloupci pohlaví. Další informace najdete v článku o [statistice](/sql/relational-databases/statistics/statistics) .
+Pokud ale váš datový sklad obsahuje jenom jedno pohlaví a nový požadavek má za následek více pohlaví, budete muset aktualizovat statistiku ve sloupci pohlaví. 
 
-### <a name="implementing-statistics-management"></a>Implementace správy statistik
+Další informace najdete v článku o [statistice](/sql/relational-databases/statistics/statistics) .
+
+### <a name="implement-statistics-management"></a>Implementace správy statistik
 
 Je často vhodné zvětšit proces načítání dat, aby bylo zajištěno, že statistika bude na konci zatížení aktualizována. Načítání dat je v případě, že tabulky nejčastěji mění velikost, distribuci hodnot nebo obojí. Jako takový je proces načítání logické místo pro implementaci některých procesů správy.
 
@@ -167,7 +173,7 @@ CREATE STATISTICS [statistics_name]
     ON [schema_name].[table_name]([column_name]);
 ```
 
-Příklad:
+Například:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -184,7 +190,7 @@ CREATE STATISTICS [statistics_name]
     WITH FULLSCAN;
 ```
 
-Příklad:
+Například:
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -275,6 +281,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 #### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Vytvoření statistiky pro všechny sloupce v databázi pomocí uložené procedury
 
 Fond SQL neobsahuje systémovou uloženou proceduru, která odpovídá sp_create_stats v SQL Server. Tato uložená procedura vytvoří objekt statistiky s jedním sloupcem v každém sloupci databáze, který ještě nemá statistiku.
+
 Následující příklad vám pomůže začít s návrhem databáze. Nebojte se, abyste ji přizpůsobili vašim potřebám:
 
 ```sql
@@ -396,7 +403,7 @@ K aktualizaci konkrétního objektu statistiky použijte následující syntax:
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Příklad:
+Například:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -412,13 +419,15 @@ Jednoduchá metoda aktualizace všech objektů statistiky v tabulce je:
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Příklad:
+Například:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
 ```
 
-Příkaz Aktualizovat STATISTIKu je snadno použitelný. Stačí si pamatovat, že aktualizuje *všechny* statistiky v tabulce a zobrazí se dotazování více práce, než je nutné. Pokud výkon není problémem, je tato metoda nejjednodušší a nejucelenější způsob, jak zaručit, že statistiky jsou aktuální.
+Příkaz Aktualizovat STATISTIKu je snadno použitelný. Stačí si pamatovat, že aktualizuje *všechny* statistiky v tabulce a zobrazí se dotazování více práce, než je nutné. 
+
+Pokud výkon není problémem, je tato metoda nejjednodušší a nejucelenější způsob, jak zaručit, že statistiky jsou aktuální.
 
 > [!NOTE]
 > Při aktualizaci všech statistik v tabulce provede modul SQL kontrolu vzorkování tabulky pro každý objekt statistiky. Pokud je tabulka velká a má mnoho sloupců a mnoho statistik, může být efektivnější aktualizovat jednotlivé statistiky podle potřeby.
@@ -497,11 +506,13 @@ AND     st.[user_created] = 1
 
 Příkaz DBCC SHOW_STATISTICS () zobrazuje data uchovávaná v rámci objektu statistiky. Tato data jsou dodávána se třemi částmi:
 
-- Hlavička
+- Záhlaví
 - Vektor hustoty
 - Histogram
 
-Záhlaví je metadata o statistice. Histogram zobrazí distribuci hodnot v prvním klíčovém sloupci objektu statistiky. Vektor hustoty měří korelaci mezi sloupci. Fond SQL počítá odhady mohutnosti s libovolnými daty v objektu statistiky.
+Záhlaví je metadata o statistice. Histogram zobrazí distribuci hodnot v prvním klíčovém sloupci objektu statistiky. 
+
+Vektor hustoty měří korelaci mezi sloupci. Fond SQL počítá odhady mohutnosti s libovolnými daty v objektu statistiky.
 
 #### <a name="show-header-density-and-histogram"></a>Zobrazit záhlaví, hustotu a histogram
 
@@ -511,7 +522,7 @@ Tento jednoduchý příklad ukazuje všechny tři části objektu statistiky:
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Příklad:
+Například:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -526,7 +537,7 @@ DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
     WITH stat_header, histogram, density_vector
 ```
 
-Příklad:
+Například:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
@@ -555,7 +566,11 @@ Statistiky se pro konkrétní datovou sadu (cestu v úložišti) vytvoří na ko
 
 ### <a name="why-use-statistics"></a>Proč používat statistiku
 
-Čím více SQL na vyžádání (ve verzi Preview) ví o vašich datech, tím rychleji můžete na něj provádět dotazy. Shromažďování statistických údajů o vašich datech je jedním z nejdůležitějších věcí, které můžete udělat k optimalizaci vašich dotazů. Optimalizátor dotazů SQL na vyžádání je modul pro optimalizaci na základě nákladů. Porovnává náklady na různé plány dotazů a pak zvolí plán s nejnižšími náklady. Ve většině případů si zvolí plán, který se spustí nejrychleji. Například pokud Optimalizátor odhadne, že datum, na kterém dotaz vyfiltruje, vrátí jeden řádek, ve kterém se vybere jeden plán. Pokud se odhaduje, že vybrané datum vrátí 1 000 000 řádků, vrátí se jiný plán.
+Čím více SQL na vyžádání (ve verzi Preview) ví o vašich datech, tím rychleji můžete na něj provádět dotazy. Shromažďování statistických údajů o vašich datech je jedním z nejdůležitějších věcí, které můžete udělat k optimalizaci vašich dotazů. 
+
+Optimalizátor dotazů SQL na vyžádání je modul pro optimalizaci na základě nákladů. Porovnává náklady na různé plány dotazů a pak zvolí plán s nejnižšími náklady. Ve většině případů si zvolí plán, který se spustí nejrychleji. 
+
+Například pokud Optimalizátor odhadne, že datum, na kterém dotaz vyfiltruje, vrátí jeden řádek, ve kterém se vybere jeden plán. Pokud se odhaduje, že vybrané datum vrátí 1 000 000 řádků, vrátí se jiný plán.
 
 ### <a name="automatic-creation-of-statistics"></a>Automatické vytváření statistik
 
@@ -570,9 +585,11 @@ Automatické vytváření statistik je prováděno synchronně, takže pokud ve 
 
 ### <a name="manual-creation-of-statistics"></a>Ruční vytváření statistik
 
-SQL na vyžádání umožňuje vytvořit statistiku ručně. Pro soubory CSV je nutné vytvořit statistiku ručně, protože automatické vytváření statistik není pro soubory CSV zapnuté. Pokyny k ručnímu vytváření statistik najdete v níže uvedených příkladech.
+SQL na vyžádání umožňuje vytvořit statistiku ručně. Pro soubory CSV je nutné vytvořit statistiku ručně, protože automatické vytváření statistik není pro soubory CSV zapnuté. 
 
-### <a name="updating-statistics"></a>Aktualizace statistiky
+Pokyny k ručnímu vytváření statistik najdete v následujících příkladech.
+
+### <a name="update-statistics"></a>Aktualizovat statistiku
 
 Změny dat v souborech, odstraňování a přidávání souborů způsobují změnu distribuce dat a zajišťují jejich statistiku. V takovém případě je třeba aktualizovat statistiku.
 
@@ -592,9 +609,9 @@ Když se počet řádků podstatně změnil nebo dojde ke změně v distribuci h
 > [!NOTE]
 > Pokud dojde ke změně v distribuci hodnot pro sloupec, měli byste aktualizovat statistiku bez ohledu na čas poslední aktualizace.
 
-### <a name="implementing-statistics-management"></a>Implementace správy statistik
+### <a name="implement-statistics-management"></a>Implementace správy statistik
 
-Můžete chtít rozšířit datový kanál, aby se zajistilo, že se statistiky aktualizují, když se data významně mění prostřednictvím přidání, odstranění nebo změny souborů.
+Můžete chtít rozšířit datový kanál, aby bylo zajištěno, že se statistiky aktualizují v případě, že se data významně mění, a to prostřednictvím přidání, odstranění nebo změny souborů.
 
 Následující principy GUID jsou k dispozici pro aktualizaci statistik:
 

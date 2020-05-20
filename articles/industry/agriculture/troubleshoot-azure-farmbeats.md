@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a40c64910260a2d63a529d25e1089fb618fcec1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113495"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656813"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
-Tento článek popisuje řešení běžných problémů s FarmBeats Azure. Pokud chcete získat další pomoc, obraťte se na naše [fórum podpory](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) nebo na nás pošlete e-mail na adrese farmbeatssupport@microsoft.com.
+Tento článek popisuje řešení běžných problémů s FarmBeats Azure. Pokud chcete získat další pomoc, obraťte se na naše [fórum podpory](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) nebo na nás pošlete e-mail na adrese farmbeatssupport@microsoft.com .
 
 > [!NOTE]
   > Pokud jste v dubnu v dubnu nainstalovali FarmBeats a vaše úlohy selžou s prázdnou chybovou zprávou, je možné, že instalace nebyla přidělena žádná kvóta služby Batch k určení priorit podpory pro kritické organizace v oblasti zdravotního stavu a zabezpečení. Další informace najdete [tady](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) . K úspěšnému spuštění úloh budete muset požádat o virtuální počítače, které mají být přiděleny k účtu Batch.
@@ -88,11 +88,11 @@ Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromážd
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>":"<value>"
+          "<sensor measure name (as defined in the Sensor Model)>":<value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }
@@ -105,12 +105,12 @@ Pokud chcete pochopit, jak stahovat protokoly, přečtěte si část [shromážd
 **Nápravná opatření**
 
 1. V DataHub Swagger navštivte rozhraní API partnera.
-2. Vyberte **Get** > **Try** > on**Execute**.
+2. Vyberte **Get**  >  **Try**on  >  **Execute**.
 
 > [!NOTE]
 > ID partnera, se kterým se zajímá partnerka snímače.
 
-3. Vraťte se do partnerského rozhraní API a vyberte **Get/\<ID>**.
+3. Vraťte se do partnerského rozhraní API a vyberte **Get/ \< ID>**.
 4. Zadejte ID partnera z kroku 3 a pak vyberte **provést**.
 
    Odpověď rozhraní API by měla mít Event Hubs připojovací řetězec.
@@ -205,7 +205,7 @@ Pokud jste už přístup k této chybě udělili a k této chybě došlo, zkuste
 
     1. Přihlaste se k [portálu Azure](https://portal.azure.com).
     2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
-    3. Vyberte úložiště účtu úložiště * * * * > **kontejnery** > **Batch-PREP-Files** > **to_vm** > **config. ini.**
+    3. Vyberte úložiště účtu úložiště * * * * > **kontejnery**  >  **Batch-PREP-Files**  >  **to_vm**  >  **config. ini.**
     4. Vybrat **Upravit**
     5. Aktualizace uživatelského jména v části sentinel_account
 
@@ -250,7 +250,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: dosáhlo se maximálního počtu připojení.
 
-**Zpráva o selhání úlohy**: "maximální počet dvou souběžných toků dosažených uživatelským\<jménem"> ".
+**Zpráva o selhání úlohy**: "maximální počet dvou souběžných toků dosažených uživatelským \< jménem"> ".
 
 **Význam**: Pokud se úloha nezdařila, protože bylo dosaženo maximálního počtu připojení, je stejný účet Sentinel používán ve více úlohách.
 
@@ -261,7 +261,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="sentinel-server-refused-connection"></a>Ověřovací server: odmítnuté připojení
 
-**Zpráva o selhání úlohy**: Server odmítl připojení v: http://172.30.175.69:8983/solr/dhus.
+**Zpráva o selhání úlohy**: Server odmítl připojení v: http://172.30.175.69:8983/solr/dhus .
 
 **Nápravná opatření**: k tomuto problému může dojít, pokud se na serveru Sentinel provádí nějaké aktivity údržby.
 
@@ -285,11 +285,11 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Shromažďování protokolů úloh Azure Data Factory nebo protokolů App Service v DataHub
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
-3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *datahublogs\* * . Například *datahublogsmvxmq*.  
+3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *datahublogs \* * . Například *datahublogsmvxmq*.  
 4. Ve sloupci **název** vyberte účet úložiště pro zobrazení řídicího panelu **účtu úložiště** .
-5. V podokně **datahubblogs\* ** vyberte **otevřít v Průzkumníkovi** , aby se zobrazila **otevřená aplikace Průzkumník služby Azure Storage** .
+5. V podokně **datahubblogs \* ** vyberte **otevřít v Průzkumníkovi** , aby se zobrazila **otevřená aplikace Průzkumník služby Azure Storage** .
 6. V levém podokně vyberte **kontejnery objektů BLOB**a potom vyberte **protokoly úloh** pro protokoly Azure Data Factory nebo protokoly **appinsights** pro protokoly App Service.
 7. Vyberte **Stáhnout** a stáhnout protokoly do místní složky na vašem počítači.
 
@@ -297,11 +297,11 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Shromažďovat protokoly úloh Azure Data Factory nebo protokoly App Service pro akcelerátor
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků akcelerátoru FarmBeats.
-3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *úložiště\* * . Například *storagedop4k\**.
+3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *úložiště \* * . Například *storagedop4k \* *.
 4. Vyberte účet úložiště ve sloupci **název** pro zobrazení řídicího panelu **účtu úložiště** .
-5. V podokně **úložiště\* ** vyberte **otevřít v Průzkumníkovi** a otevřete aplikaci Průzkumník služby Azure Storage.
+5. V podokně **úložiště \* ** vyberte **otevřít v průzkumníkovi** a otevřete aplikaci Průzkumník služby Azure Storage.
 6. V levém podokně vyberte **kontejnery objektů BLOB**a potom vyberte **protokoly úloh** pro protokoly Azure Data Factory nebo protokoly **appinsights** pro protokoly App Service.
 7. Vyberte **Stáhnout** a stáhnout protokoly do místní složky na vašem počítači.
 

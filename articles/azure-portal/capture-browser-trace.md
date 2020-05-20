@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 01/09/2020
+ms.date: 05/11/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 2b506c9d15dafcd23b24207fe15ed0532939209f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f09477eb174792d6348a6b9761a4f9e5467ec44
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310692"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649497"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Zachycení trasování prohlížeče pro řešení potíží
 
@@ -24,13 +24,13 @@ Pokud řešíte problém s Azure Portal a potřebujete kontaktovat podporu Micro
 
 Google Chrome a Microsoft Edge (chrom) jsou založené na [projektu chrom Open Source](https://www.chromium.org/Home). Následující kroky ukazují, jak používat vývojářské nástroje, které jsou ve dvou prohlížečích velmi podobné. Další informace najdete v tématu [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) a [Microsoft Edge (chrom) vývojářské nástroje](/microsoft-edge/devtools-guide-chromium).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
 
 1. Začněte nahrávat kroky, které provedete na portálu, pomocí [záznamu postupu](https://support.microsoft.com/help/22878/windows-10-record-steps).
 
 1. Na portálu přejděte k tomuto kroku těsně před tím, kde k problému dochází.
 
-1. Stiskněte klávesu F12 ![nebo vyberte snímek obrazovky nastavení](media/capture-browser-trace/chromium-icon-settings.png) > prohlížeče ikony**Další nástroje** > **Developer Tools**.
+1. Stiskněte klávesu F12 nebo vyberte ![ snímek obrazovky nastavení prohlížeče ikony ](media/capture-browser-trace/chromium-icon-settings.png)  >  **Další nástroje**  >  **Developer Tools**.
 
 1. Prohlížeč standardně uchovává informace o trasování pouze pro aktuálně načtenou stránku. Nastavte následující možnosti, aby prohlížeč zachovává všechny informace o trasování, a to i v případě, že váš reprodukci vyžaduje, aby přechází na více než jednu stránku:
 
@@ -58,9 +58,9 @@ Google Chrome a Microsoft Edge (chrom) jsou založené na [projektu chrom Open S
 
     ![Snímek obrazovky "Export HAR"](media/capture-browser-trace/chromium-network-export-har.png)
 
-1. Zastavte záznam kroků a soubor uložte.
+1. Zastavte záznam kroků a záznam uložte.
 
-1. Zpátky v podokně nástroje pro vývojáře v prohlížeči vyberte kartu **Konzola** . Klikněte pravým tlačítkem myši, vyberte **Uložit jako...** a uložte výstup konzoly do textového souboru.
+1. Zpátky v podokně nástroje pro vývojáře v prohlížeči vyberte kartu **Konzola** . Klikněte pravým tlačítkem myši na jednu ze zpráv, vyberte **Uložit jako...** a uložte výstup konzoly do textového souboru.
 
     ![Snímek obrazovky s výstupem konzoly](media/capture-browser-trace/chromium-console-select.png)
 
@@ -70,13 +70,13 @@ Google Chrome a Microsoft Edge (chrom) jsou založené na [projektu chrom Open S
 
 Následující kroky ukazují, jak používat vývojářské nástroje v Microsoft Edge (EdgeHTML). Další informace najdete v tématu [Microsoft Edge (EdgeHTML) vývojářské nástroje](/microsoft-edge/devtools-guide).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
 
 1. Začněte nahrávat kroky, které provedete na portálu, pomocí [záznamu postupu](https://support.microsoft.com/help/22878/windows-10-record-steps).
 
 1. Na portálu přejděte k tomuto kroku těsně před tím, kde k problému dochází.
 
-1. Stiskněte klávesu F12 ![nebo vyberte snímek obrazovky nastavení](media/capture-browser-trace/edge-icon-settings.png) > prohlížeče ikony**Další nástroje** > **Developer Tools**.
+1. Stiskněte klávesu F12 nebo vyberte ![ snímek obrazovky nastavení prohlížeče ikony ](media/capture-browser-trace/edge-icon-settings.png)  >  **Další nástroje**  >  **Developer Tools**.
 
 1. Prohlížeč standardně uchovává informace o trasování pouze pro aktuálně načtenou stránku. Nastavte následující možnosti, aby prohlížeč zachovává všechny informace o trasování, a to i v případě, že váš reprodukci vyžaduje, aby přechází na více než jednu stránku:
 
@@ -104,7 +104,7 @@ Následující kroky ukazují, jak používat vývojářské nástroje v Microso
 
     ![Snímek obrazovky "exportovat jako HAR"](media/capture-browser-trace/edge-network-export-har.png)
 
-1. Zastavte záznam kroků a soubor uložte.
+1. Zastavte záznam kroků a záznam uložte.
 
 1. Zpátky v podokně nástroje pro vývojáře v prohlížeči vyberte kartu **Konzola** a rozbalte okno. Umístěte kurzor na začátek výstupu konzoly a pak přetáhněte a vyberte celý obsah výstupu. Klikněte pravým tlačítkem myši, vyberte možnost **Kopírovat**a uložte výstup konzoly do textového souboru.
 
@@ -126,7 +126,7 @@ Následující kroky ukazují, jak používat vývojářské nástroje v Apple S
 
         ![Snímek obrazovky s pokročilými preferencemi Safari](media/capture-browser-trace/safari-show-develop-menu.png)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
 
 1. Začněte nahrávat kroky, které provedete na portálu. Další informace najdete v tématu [Jak nahrávat obrazovku na Macu](https://support.apple.com/HT208721).
 
@@ -158,11 +158,53 @@ Následující kroky ukazují, jak používat vývojářské nástroje v Apple S
 
     ![Snímek obrazovky "Export"](media/capture-browser-trace/safari-network-export-har.png)
 
-1. Zastavte záznam obrazovky a soubor uložte.
+1. Zastavte záznam obrazovky a záznam uložte.
 
 1. Zpátky v podokně nástroje pro vývojáře v prohlížeči vyberte kartu **Konzola** a rozbalte okno. Umístěte kurzor na začátek výstupu konzoly a pak přetáhněte a vyberte celý obsah výstupu. Pomocí příkazu-C zkopírujte výstup a uložte ho do textového souboru.
 
     ![Snímek obrazovky s výstupem konzoly](media/capture-browser-trace/safari-console-select.png)
+
+1. Zabalit soubor HAR, výstup konzoly a záznam obrazovky v komprimovaném formátu jako. zip a sdílet s podporou Microsoftu.
+
+## <a name="firefox"></a>Firefox
+
+Následující kroky ukazují, jak používat vývojářské nástroje v prohlížeči Firefox. Další informace najdete v tématu [Firefox vývojářské nástroje](https://developer.mozilla.org/docs/Tools).
+
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). _Před_ zahájením trasování je důležité se přihlásit, aby trasování neobsahovalo citlivé informace související s vaším přihlášením. 
+
+1. Začněte nahrávat kroky, které provedete na portálu. Použijte nástroj pro [zaznamenávání kroků](https://support.microsoft.com/help/22878/windows-10-record-steps) ve Windows nebo si přečtěte, [jak si můžete na Mac nahrát obrazovku](https://support.apple.com/HT208721).
+
+1. Na portálu přejděte k tomuto kroku těsně před tím, kde k problému dochází.
+
+1. Stiskněte klávesu F12 nebo vyberte ![ snímek obrazovky ikona nastavení prohlížeče ](media/capture-browser-trace/firefox-icon-settings.png)  >  **webové vývojáře**  >  **Přepnout nástroje**.
+
+1. Prohlížeč standardně uchovává informace o trasování pouze pro aktuálně načtenou stránku. Nastavte následující možnosti, aby prohlížeč zachovává všechny informace o trasování, a to i v případě, že váš reprodukci vyžaduje, aby přechází na více než jednu stránku:
+
+    1. Vyberte kartu **síť** a pak vyberte **zachovat protokoly**.
+
+          ![Snímek obrazovky "trvalé protokoly"](media/capture-browser-trace/firefox-network-persist-logs.png)
+
+    1. Vyberte kartu **Konzola** , vyberte **nastavení konzoly**a pak vyberte **zachovat protokoly**.
+
+          ![Snímek obrazovky "trvalé protokoly"](media/capture-browser-trace/firefox-console-persist-logs.png)
+
+1. Vyberte kartu **síť** a pak vyberte **Vymazat**.
+
+    ![Snímek obrazovky "Clear"](media/capture-browser-trace/firefox-clear-session.png)
+
+1. Reprodukování problému na portálu. Zobrazí se výstup relace podobný následujícímu obrázku.
+
+    ![Snímek obrazovky s výsledky trasování prohlížeče](media/capture-browser-trace/firefox-browser-trace-results.png)
+
+1. Po reprodukování neočekávaného chování portálu vyberte **Har export/import** a pak **vše uložte jako Har**.
+
+    ![Snímek obrazovky "Export HAR"](media/capture-browser-trace/firefox-network-export-har.png)
+
+1. Zastavte záznam kroků ve Windows nebo na obrazovce na Macu a záznam uložte.
+
+1. Zpátky v podokně nástroje pro vývojáře v prohlížeči vyberte kartu **Konzola** . Klikněte pravým tlačítkem myši na jednu ze zpráv, vyberte **exportovat viditelnou zprávu do**a uložte výstup konzoly do textového souboru.
+
+    ![Snímek obrazovky s výstupem konzoly](media/capture-browser-trace/firefox-console-select.png)
 
 1. Zabalit soubor HAR, výstup konzoly a záznam obrazovky v komprimovaném formátu jako. zip a sdílet s podporou Microsoftu.
 

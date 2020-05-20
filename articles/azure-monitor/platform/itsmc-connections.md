@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
-ms.date: 05/24/2018
-ms.openlocfilehash: 0773492c3042a6f8c906aa6ba1bc3c76ea8c0d8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870597"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655913"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů/služeb ke službě IT Service Management Connector
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](../../azure-monitor/platform/itsmc-overview.md).
@@ -88,7 +88,7 @@ Společnost Microsoft vytvořila Service Manager webovou aplikaci na GitHubu, ab
 Pokud chcete pro Service Manager nastavit webovou aplikaci ITSM, postupujte takto:
 
 - **Nasazení webové aplikace** – nasaďte webovou aplikaci, nastavte vlastnosti a proveďte ověření pomocí Azure AD. Webovou aplikaci můžete nasadit pomocí [automatizovaného skriptu](../../azure-monitor/platform/itsmc-service-manager-script.md) , který vám Microsoft poskytl.
-- **Nakonfigurujte hybridní připojení** - [Konfigurace tohoto připojení](#configure-the-hybrid-connection)ručně.
+- **Konfigurace hybridního připojení**  -  [Nakonfigurujte toto připojení](#configure-the-hybrid-connection)ručně.
 
 #### <a name="deploy-the-web-app"></a>Nasazení webové aplikace
 Pomocí automatizovaného [skriptu](../../azure-monitor/platform/itsmc-service-manager-script.md) nasaďte webovou aplikaci, nastavte vlastnosti a proveďte ověření pomocí Azure AD.
@@ -108,8 +108,8 @@ Uložte hodnoty, které použijete při vytváření připojení pomocí ITSMC.
 
 **Ověření instalace webové aplikace**
 
-1. Přejít na **Azure Portal** > **prostředky**.
-2. Vyberte webovou aplikaci, klikněte na **Nastavení** > **aplikace nastavení**.
+1. Přejít na **Azure Portal**  >  **prostředky**.
+2. Vyberte webovou aplikaci, klikněte na **Nastavení**  >  **aplikace nastavení**.
 3. Potvrďte informace o instanci Service Manager, kterou jste zadali v době nasazení aplikace prostřednictvím skriptu.
 
 ### <a name="configure-the-hybrid-connection"></a>Konfigurace hybridního připojení
@@ -117,7 +117,7 @@ Uložte hodnoty, které použijete při vytváření připojení pomocí ITSMC.
 Následující postup slouží ke konfiguraci hybridního připojení, které spojuje instanci Service Manager s ITSMC v Azure.
 
 1. V části **prostředky Azure**Najděte Service Manager webovou aplikaci.
-2. Klikněte na **Nastavení** > **sítě**.
+2. Klikněte na **Nastavení**  >  **sítě**.
 3. V části **Hybrid Connections**klikněte na **Konfigurovat koncové body hybridního připojení**.
 
     ![Sítě hybridního připojení](media/itsmc-connections/itsmc-hybrid-connection-networking-and-end-points.png)
@@ -201,8 +201,10 @@ Ujistěte se, že jsou splněné následující předpoklady:
 > Na konci klikněte na aktualizovat.
 > 2) Doporučujeme, abyste **navázali interní postup, který zajistí, že připojení zůstane aktivní:** Podle životnosti obnovovacího tokenu aktualizujte token. Ujistěte se prosím, že jste provedli následující operace: předchozí doba platnosti tokenu obnovení (několik dní, než vyprší platnost životnosti obnovovacího tokenu, doporučujeme):
 >
->>  1) [Dokončení procesu ruční synchronizace pro konfiguraci konektoru ITSM](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
- >> 2) Odvolat starý obnovovací token, protože nedoporučujeme z z bezpečnostních důvodů zachovat staré klíče. V okně ServiceNow vyhledejte systém OAuth, než vyberte Spravovat tokeny. Ze seznamu vyberte starý token podle názvu OAuth a data vypršení platnosti. Klikněte na odvolat přístup a než na odvolat.
+> 1. [Dokončení procesu ruční synchronizace pro konfiguraci konektoru ITSM](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 2. Odvolat starý obnovovací token, protože nedoporučujeme z z bezpečnostních důvodů zachovat staré klíče. V okně ServiceNow vyhledejte systém OAuth, než vyberte Spravovat tokeny. Ze seznamu vyberte starý token podle názvu OAuth a data vypršení platnosti.
+> ![SNĚH – definice OAuth systému](media/itsmc-connections/snow-system-oauth.png)
+> 3. Klikněte na odvolat přístup a než na odvolat.
 
 - Nainstalujte uživatelskou aplikaci pro Microsoft Log Analytics Integration (aplikace ServiceNow). [Další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Vytvoření role uživatele integrace pro uživatelskou aplikaci nainstalovanou. [Tady najdete](#create-integration-user-role-in-servicenow-app)informace o tom, jak vytvořit roli uživatele Integration.
@@ -398,8 +400,8 @@ Další informace: [vytvoření pracovních položek ITSM z výstrah Azure](../.
 K vygenerování ID klienta/klíče pro Cherwell použijte následující postup:
 
 1. Přihlaste se ke své instanci Cherwell jako správce.
-2. Klikněte na **zabezpečení** > **Upravit REST API nastavení klienta**.
-3. Vyberte **vytvořit nový** > **tajný klíč**klienta klienta.
+2. Klikněte na **zabezpečení**  >  **Upravit REST API nastavení klienta**.
+3. Vyberte **vytvořit nový**  >  **tajný klíč**klienta klienta.
 
     ![ID uživatele Cherwell](media/itsmc-connections/itsmc-cherwell-client-id.png)
 

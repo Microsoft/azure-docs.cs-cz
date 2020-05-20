@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: 26b4232832589827a09774eb0106c25e5c446eb1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b596e349d789584de07943332ede6f6897a1fd22
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791081"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658642"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Řešení běžných chyb při nasazení Azure pomocí Azure Load Balancer
 
@@ -34,7 +34,8 @@ Tento článek popisuje některé běžné chyby při nasazení Azure Load Balan
 |CannotUseInactiveHealthProbe| Nemůžete mít sondu, kterou nepoužívá žádné pravidlo nakonfigurované pro stav Virtual Machine Scale set. Ujistěte se, že se aktivně používá test, který je nastavený. |
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| Nemůžete mít více než jeden nástroj pro vyrovnávání zatížení stejného typu (interní, veřejný). Můžete mít maximálně jednu interní a jednu veřejnou Load Balancer. |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | Základní Load Balancer není podporována pro skupinu virtuálních počítačů s více umístěními nebo pro sadu škálování virtuálních počítačů zóny dostupnosti. Místo toho použijte Standard Load Balancer. |
-|ResourceDeploymentFailure| Pokud je váš nástroj pro vyrovnávání zatížení ve stavu selhání, postupujte podle těchto kroků a vraťte se do stavu selhání:<ol><li>Přejít na https://resources.azure.coma přihlaste se pomocí přihlašovacích údajů Azure Portal.</li><li>Vyberte **čtení i zápis**.</li><li>Na levé straně rozbalte **odběry**a potom rozbalte předplatné s Load Balancer, aby se aktualizace aktualizovala.</li><li>Rozbalte **ResourceGroups**a pak rozbalte skupinu prostředků s Load Balancer, která se má aktualizovat.</li><li>Vyberte **Microsoft. Network** > **LoadBalancers**a pak vyberte Load Balancer, který se má aktualizovat **LoadBalancer_1**.</li><li>Na stránce zobrazení **LoadBalancer_1**vyberte **získat** > **Úpravy**.</li><li>Aktualizace hodnoty **ProvisioningState** **z neúspěšného** **dokončení.**</li><li>Vyberte **PUT**.</li></ol>|
+|MarketplacePurchaseEligibilityFailed | Přepněte se na správný účet pro správu a umožněte nákup z důvodu předplatného, které je předplatným EA. Další informace najdete [tady](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase). |
+|ResourceDeploymentFailure| Pokud je váš nástroj pro vyrovnávání zatížení ve stavu selhání, postupujte podle těchto kroků a vraťte se do stavu selhání:<ol><li>Přejít na https://resources.azure.com a přihlaste se pomocí přihlašovacích údajů Azure Portal.</li><li>Vyberte **čtení i zápis**.</li><li>Na levé straně rozbalte **odběry**a potom rozbalte předplatné s Load Balancer, aby se aktualizace aktualizovala.</li><li>Rozbalte **ResourceGroups**a pak rozbalte skupinu prostředků s Load Balancer, která se má aktualizovat.</li><li>Vyberte **Microsoft. Network**  >  **LoadBalancers**a pak vyberte Load Balancer, který se má aktualizovat **LoadBalancer_1**.</li><li>Na stránce zobrazení **LoadBalancer_1**vyberte **získat**  >  **Úpravy**.</li><li>Aktualizace hodnoty **ProvisioningState** **z neúspěšného** **dokončení.**</li><li>Vyberte **PUT**.</li></ol>|
 |  |  |
 
 ## <a name="next-steps"></a>Další kroky

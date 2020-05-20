@@ -7,14 +7,14 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: fb8fc93174345d0bdb09e4308a4206a65ed2270a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb4c46ecd64958b1daf6c3f7fb5fe613dc9ba729
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148204"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649897"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Integrace Azure Event Hubs s privátním propojením Azure (Preview)
+# <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Integrace Azure Event Hubs s privátním propojením Azure
 Služba privátního propojení Azure umožňuje přístup ke službám Azure (například k Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím **privátního koncového bodu** ve vaší virtuální síti.
 
 Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
@@ -23,8 +23,6 @@ Další informace najdete v tématu [co je privátní propojení Azure?](../priv
 
 > [!IMPORTANT]
 > Tato funkce je podporována pouze u **vyhrazené** úrovně. Další informace o vyhrazené úrovni najdete v tématu [přehled Event Hubs úrovně Dedicated](event-hubs-dedicated-overview.md). 
->
-> Tato funkce je aktuálně ve **verzi Preview**. 
 
 >[!WARNING]
 > Povolení privátních koncových bodů může ostatním službám Azure zabránit v interakci s Event Hubs.
@@ -60,11 +58,11 @@ Váš privátní koncový bod používá privátní IP adresu ve vaší virtuál
 ### <a name="steps"></a>Kroky
 Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k privátnímu propojení pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. Na panelu hledání zadejte do pole **centra událostí**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 4. V části **Nastavení**vyberte kartu **síť** .
-5. V horní části stránky vyberte kartu **připojení privátního koncového bodu (Preview)** . Pokud nepoužíváte vyhrazenou vrstvu Event Hubs, zobrazí se zpráva: **připojení privátního koncového bodu v Event Hubs jsou podporována pouze obory názvů vytvořenými v rámci vyhrazeného clusteru**.
+5. V horní části stránky vyberte kartu **připojení privátního koncového bodu** . Pokud nepoužíváte vyhrazenou vrstvu Event Hubs, zobrazí se zpráva: **připojení privátního koncového bodu v Event Hubs jsou podporována pouze obory názvů vytvořenými v rámci vyhrazeného clusteru**.
 6. V horní části stránky vyberte tlačítko **+ soukromý koncový bod** .
 
     ![Image](./media/private-link-service/private-link-service-3.png)
@@ -86,7 +84,7 @@ Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k priv�
         
             ![Vytvoření stránky privátního koncového bodu – prostředek](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Pokud vyberete **připojit k prostředku Azure podle ID prostředku nebo aliasu**, postupujte podle těchto kroků:
-        1. Zadejte **ID prostředku** nebo **alias**. Může to být ID prostředku nebo alias, který s vámi někdo sdílí. Nejjednodušší způsob, jak získat ID prostředku, je přejít na obor názvů Event Hubs v Azure Portal a zkopírovat část identifikátoru URI od `/subscriptions/`. Příklad najdete na následujícím obrázku. 
+        1. Zadejte **ID prostředku** nebo **alias**. Může to být ID prostředku nebo alias, který s vámi někdo sdílí. Nejjednodušší způsob, jak získat ID prostředku, je přejít na obor názvů Event Hubs v Azure Portal a zkopírovat část identifikátoru URI od `/subscriptions/` . Příklad najdete na následujícím obrázku. 
         2. Pro **cílový dílčí prostředek**zadejte **obor názvů**. Je to typ dílčího prostředku, ke kterému má privátní koncový bod přístup.
         3. volitelné Zadejte **zprávu požadavku**. Vlastník prostředku se zobrazí tato zpráva během správy připojení privátního koncového bodu.
         4. Potom v dolní části stránky vyberte tlačítko **Další: >konfigurace** .
@@ -202,7 +200,7 @@ Existují čtyři stavy zřizování:
 
 | Akce služby | Stav privátního koncového bodu příjemce služby | Popis |
 |--|--|--|
-| Žádná | Čekající na vyřízení | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
+| Žádné | Čekající na vyřízení | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
 | Odmítnout | Rejected | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
 | Odebrat | Propojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |
@@ -244,46 +242,33 @@ Měli byste ověřit, že prostředky ve stejné podsíti prostředku privátní
 
 Nejdřív vytvořte virtuální počítač podle kroků v [části Vytvoření virtuálního počítače s Windows v Azure Portal](../virtual-machines/windows/quick-create-portal.md)
 
-Na kartě **síť** :
+Na kartě **síť** : 
 
-1. Zadejte **virtuální síť** a **podsíť**. Můžete vytvořit novou virtuální síť, nebo vybrat některou z existujících. Pokud vyberete existující, ujistěte se, že oblast odpovídá.
-1. Zadejte prostředek **veřejné IP adresy** .
-1. Ve **skupině zabezpečení sítě síťové karty**vyberte **žádné**.
-1. V části **Vyrovnávání zatížení**vyberte možnost **ne**.
+1. Zadejte **virtuální síť** a **podsíť**. Musíte vybrat Virtual Network, na které jste nasadili privátní koncový bod.
+2. Zadejte prostředek **veřejné IP adresy** .
+3. V případě **skupiny zabezpečení sítě síťové karty**vyberte **žádné**.
+4. V případě **Vyrovnávání zatížení**vyberte možnost **ne**.
 
-Otevřete příkazový řádek a spusťte následující příkaz:
+Připojte se k virtuálnímu počítači, otevřete příkazový řádek a spusťte následující příkaz:
 
 ```console
-nslookup <your-event-hubs-namespace-name>.servicebus.windows.net
+nslookup <event-hubs-namespace-name>.servicebus.windows.net
 ```
 
-Pokud spustíte příkaz pro vyhledání NS k překladu IP adresy Event Hubsového oboru názvů prostřednictvím veřejného koncového bodu, zobrazí se výsledek podobný tomuto:
+Měl by se zobrazit výsledek, který vypadá nějak takto: 
 
 ```console
-c:\ >nslookup <your-event-hubs-namespae-name>.servicebus.windows.net
-
 Non-authoritative answer:
-Name:    
-Address:  (public IP address)
-Aliases:  <your-event-hubs-namespace-name>.servicebus.windows.net
-```
-
-Pokud spustíte příkaz pro vyhledání NS k překladu IP adresy Event Hubsového oboru názvů přes soukromý koncový bod, zobrazí se výsledek podobný tomuto:
-
-```console
-c:\ >nslookup your_event-hubs-namespace-name.servicebus.windows.net
-
-Non-authoritative answer:
-Name:    
-Address:  10.1.0.5 (private IP address)
-Aliases:  <your-event-hub-name>.servicebus.windows.net
+Name:    <event-hubs-namespace-name>.privatelink.servicebus.windows.net
+Address:  10.0.0.4 (private IP address associated with the private endpoint)
+Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 ```
 
 ## <a name="limitations-and-design-considerations"></a>Omezení a faktory návrhu
 
 **Ceny**: informace o cenách najdete v tématu [ceny za privátní propojení Azure](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Omezení**: privátní koncový bod pro Azure Event Hubs je ve verzi Public Preview. Tato funkce je dostupná ve všech veřejných oblastech Azure.
+**Omezení**: Tato funkce je dostupná ve všech veřejných oblastech Azure.
 
 **Maximální počet privátních koncových bodů na obor názvů Event Hubs**: 120.
 

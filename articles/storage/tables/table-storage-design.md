@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255142"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656902"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Návrh škálovatelných a výkonných tabulek
 
@@ -50,7 +50,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Zobrazeny</td>
@@ -70,7 +70,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -107,7 +107,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -132,7 +132,7 @@ Název účtu, název tabulky a **PartitionKey** společně identifikují oddíl
 
 V Table service jednotlivé uzly Services jeden nebo několik úplných oddílů a služba se škáluje podle dynamicky vyrovnávání zatížení oddílů mezi uzly. Pokud je uzel v zatížení, může služba Table Service *rozdělit* rozsah oddílů, které služba obsluhuje, do různých uzlů. Když se provoz nacházejí, může služba *Sloučit* rozsahy oddílů z tichých uzlů zpátky do jednoho uzlu.  
 
-Další informace o interních podrobnostech Table service a zejména o tom, jak služba spravuje oddíly, najdete v dokumentu [Microsoft Azure Storage: vysoce dostupná služba cloudového úložiště s silnou konzistencí](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Další informace o interních podrobnostech Table service a zejména o tom, jak služba spravuje oddíly, najdete v dokumentu [Microsoft Azure Storage: vysoce dostupná služba cloudového úložiště s silnou konzistencí](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency).  
 
 ## <a name="entity-group-transactions"></a>Transakce skupiny entit
 V Table service jsou transakce skupiny entit (EGTs) jediným integrovaným mechanismem pro provádění atomických aktualizací v několika entitách. EGTs se někdy také označují jako *transakce Batch*. EGTs může pracovat pouze s entitami uloženými ve stejném oddílu (tj. sdílet stejný klíč oddílu v dané tabulce). Takže kdykoli budete potřebovat atomické transakční chování napříč několika entitami, musíte zajistit, aby tyto entity byly ve stejném oddílu. To je často důvod pro udržení více typů entit ve stejné tabulce (a oddílu) a nepoužití více tabulek pro různé typy entit. Jeden EGT může pracovat s maximálně 100 entitami.  Pokud odešlete více souběžných EGTs ke zpracování, je důležité zajistit, aby tyto EGTs nepracovaly s entitami, které jsou společné napříč EGTs. v opačném případě může dojít ke zpoždění zpracování.

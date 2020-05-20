@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 4/3/2020
-ms.openlocfilehash: 6a1d2f6079280002c868702a6547c8fd359a7c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/13/2020
+ms.openlocfilehash: 7c74829955085b3aa25043b25101fdaab10d7e6d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310124"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659592"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 
@@ -45,7 +45,7 @@ Další informace o cenách najdete v tématu [fakturace](sql-database-serverles
 
 ## <a name="scenarios"></a>Scénáře
 
-Možnost bez serveru je cenově vyladěná pro izolované databáze s přerušovaným, nepředvídatelným vzorem použití, který umožňuje určitou prodlevu v výpočetních prostředích zahřívání po nečinných obdobích využití. Naproti tomu zřízená výpočetní úroveň je cenově funkčním výkonem optimalizovaným pro izolované databáze nebo více databází v elastických fondech s vyšším průměrem využití, které neumožňuje žádné zpoždění při zahřívání služby Compute.
+Bezserverová architektura nabízí optimální poměr cena/výkon pro jednoúčelové databáze s přerušovanými a nepředvídatelnými vzory využití, které si můžou dovolit určité zpoždění při přípravě výpočetních prostředků po obdobích nečinnosti. Naproti tomu úroveň zřízených výpočetních prostředků nabízí optimální poměr cena/výkon pro jednoúčelové databáze nebo více databází v elastických fondech s vyšším průměrným využitím, které si nemůžou dovolit žádné zpoždění při přípravě výpočetních prostředků.
 
 ### <a name="scenarios-well-suited-for-serverless-compute"></a>Scénáře vhodné pro výpočetní prostředky bez serveru
 
@@ -124,7 +124,7 @@ Při nasazování některých aktualizací služby, které vyžadují databázi 
 
 Automatické obnovení se aktivuje, pokud platí kterákoli z následujících podmínek v libovolnou dobu:
 
-|Funkce|Aktivační událost autoresume|
+|Příznak|Aktivační událost autoresume|
 |---|---|
 |Ověřování a autorizace|Přihlásit|
 |Detekce hrozeb|Povolení nebo zakázání nastavení detekce hrozeb na úrovni databáze nebo serveru.<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru.|
@@ -132,6 +132,7 @@ Automatické obnovení se aktivuje, pokud platí kterákoli z následujících p
 |Auditování|Zobrazení záznamů auditu.<br>Probíhá aktualizace nebo zobrazení zásad auditování.|
 |Maskování dat|Přidání, úprava, odstranění nebo zobrazení pravidel maskování dat|
 |Transparentní šifrování dat|Zobrazení stavu nebo stavu transparentního šifrování dat|
+|Posouzení ohrožení zabezpečení|Kontroly ad hoc a pravidelné kontroly, pokud je povoleno|
 |Dotaz (výkon) úložiště dat|Úprava nebo zobrazení nastavení úložiště dotazů|
 |Automatického ladění|Aplikace a ověření doporučení automatického ladění, jako je automatické indexování|
 |Kopírování databáze|Vytvoří databázi jako kopii.<br>Exportujte do souboru BACPAC.|
@@ -256,11 +257,11 @@ Databáze bez serveru se dá přesunout do zřízené výpočetní vrstvy stejn�
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
 
-Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy automatického pozastavení se provádí pomocí příkazu [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) v PowerShellu pomocí argumentů `MaxVcore`, `MinVcore`a `AutoPauseDelayInMinutes` .
+Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy automatického pozastavení se provádí pomocí příkazu [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) v PowerShellu pomocí `MaxVcore` argumentů, `MinVcore` a `AutoPauseDelayInMinutes` .
 
 ### <a name="use-azure-cli"></a>Použití Azure CLI
 
-Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy při automatickém pozastavení se provádí pomocí příkazu [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) v Azure CLI pomocí `capacity`argumentů `min-capacity`, a `auto-pause-delay` .
+Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy při automatickém pozastavení se provádí pomocí příkazu [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) v Azure CLI pomocí `capacity` `min-capacity` argumentů, a `auto-pause-delay` .
 
 
 ## <a name="monitoring"></a>Monitorování
@@ -281,7 +282,7 @@ Fond zdrojů uživatele je vnitřní hranice správy prostředků pro databázi 
 
 Metriky pro monitorování využití prostředků balíčku aplikace a fondu uživatelů v databázi bez serveru jsou uvedené v následující tabulce:
 
-|Entita|Metrika|Popis|Jednotky|
+|Entita|Metric|Popis|Jednotky|
 |---|---|---|---|
 |Balíček aplikace|app_cpu_percent|Procento virtuální jádra, které aplikace používá vzhledem k maximálnímu virtuální jádra povolenému pro aplikaci|Procento|
 |Balíček aplikace|app_cpu_billed|Množství COMPUTE, které aplikace účtuje během období generování sestav. Částka placená během tohoto období je produktem této metriky a Jednotková cena vCore. <br><br>Hodnoty této metriky se určují tak, že se v průběhu času vyhodnotí maximální využití procesoru a využitá paměť každou sekundu. Pokud je využité množství menší než minimální zajištěné množství, které je stanoveno minimálním virtuální jádra a minimální pamětí, účtuje se minimální stanovený objem.Aby bylo možné porovnat procesor s pamětí pro účely fakturace, je paměť normalizována na jednotky virtuální jádra tím, že převýší množství paměti v GB o 3 GB na vCore.|vCore sekund|

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 05/19/2020
 ms.author: trbye
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+zone_pivot_groups: programming-languages-set-nineteen
+ms.openlocfilehash: 311c85e254711a219ac93424b77f35c2662008b7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402204"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658447"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatické zjišování jazyka pro rozpoznávání řeči na text
 
@@ -25,11 +25,11 @@ Automatická detekce jazyka se používá k určení nejpravděpodobnější sho
 V tomto článku se naučíte, jak použít `AutoDetectSourceLanguageConfig` k vytvoření `SpeechRecognizer` objektu a načtení zjištěného jazyka.
 
 > [!IMPORTANT]
-> Tato funkce je dostupná jenom pro sadu Speech SDK pro jazyky C#, C++, Java a Python.
+> Tato funkce je dostupná jenom pro sadu Speech SDK s jazyky C#, C++, Java, Python a cíl-C.
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatické rozpoznávání jazyka pomocí sady Speech SDK
 
-Automatické rozpoznání jazyka aktuálně má limit na straně služeb pro každé zjištění. Při vytváření `AudoDetectSourceLanguageConfig` objektu si pamatujte na toto omezení. V následujících ukázkách vytvoříte `AutoDetectSourceLanguageConfig`a pak použijete k vytvoření. `SpeechRecognizer`
+Automatické rozpoznání jazyka aktuálně má limit na straně služeb pro každé zjištění. Při vytváření objektu si pamatujte na toto omezení `AudoDetectSourceLanguageConfig` . V následujících ukázkách vytvoříte `AutoDetectSourceLanguageConfig` a pak použijete k vytvoření `SpeechRecognizer` .
 
 > [!TIP]
 > Můžete také zadat vlastní model, který se použije při provádění řeči na text. Další informace najdete v tématu [použití vlastního modelu pro automatické rozpoznávání jazyka](#use-a-custom-model-for-automatic-language-detection).
@@ -118,11 +118,28 @@ detected_language = auto_detect_source_language_result.language
 
 ::: zone-end
 
+::: zone pivot="programming-language-objectivec"
+
+```Objective-C
+NSArray *languages = @[@"zh-CN", @"de-DE"];
+SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
+        [[SPXAutoDetectSourceLanguageConfiguration alloc]init:languages];
+SPXSpeechRecognizer* speechRecognizer = \
+        [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                           autoDetectSourceLanguageConfiguration:autoDetectSourceLanguageConfig
+                                              audioConfiguration:audioConfig];
+SPXSpeechRecognitionResult *result = [speechRecognizer recognizeOnce];
+SPXAutoDetectSourceLanguageResult *languageDetectionResult = [[SPXAutoDetectSourceLanguageResult alloc] init:result];
+NSString *detectedLanguage = [languageDetectionResult language];
+```
+
+::: zone-end
+
 ## <a name="use-a-custom-model-for-automatic-language-detection"></a>Použití vlastního modelu pro automatické zjišování jazyka
 
 Kromě rozpoznávání jazyka pomocí modelů služby Speech můžete pro lepší rozpoznávání zadat vlastní model. Pokud není k dispozici vlastní model, služba použije výchozí jazykový model.
 
-Níže uvedené fragmenty kódu ilustrují, jak zadat vlastní model ve volání služby pro rozpoznávání řeči. Pokud je `en-US`zjištěný jazyk, použije se výchozí model. Pokud je `fr-FR`zjištěný jazyk, je použit koncový bod pro vlastní model:
+Níže uvedené fragmenty kódu ilustrují, jak zadat vlastní model ve volání služby pro rozpoznávání řeči. Pokud je zjištěný jazyk `en-US` , použije se výchozí model. Pokud je zjištěný jazyk `fr-FR` , je použit koncový bod pro vlastní model:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -178,6 +195,20 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
  fr_language_config = speechsdk.languageconfig.SourceLanguageConfig("fr-FR", "The Endpoint Id for custom model of fr-FR")
  auto_detect_source_language_config = speechsdk.languageconfig.AutoDetectSourceLanguageConfig(
         sourceLanguageConfigs=[en_language_config, fr_language_config])
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+
+```Objective-C
+SPXSourceLanguageConfiguration* enLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"en-US"];
+SPXSourceLanguageConfiguration* frLanguageConfig = \
+        [[SPXSourceLanguageConfiguration alloc]initWithLanguage:@"fr-FR"
+                                                     endpointId:@"The Endpoint Id for custom model of fr-FR"];
+NSArray *languageConfigs = @[enLanguageConfig, frLanguageConfig];
+SPXAutoDetectSourceLanguageConfiguration* autoDetectSourceLanguageConfig = \
+        [[SPXAutoDetectSourceLanguageConfiguration alloc]initWithSourceLanguageConfigurations:languageConfigs];
 ```
 
 ::: zone-end

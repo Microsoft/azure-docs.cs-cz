@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d57f02b9aff56c83aa1c12bd441df2863f6d6fa7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884828"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658478"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura Azure synapse Analytics (dříve SQL DW)
 
@@ -23,7 +23,7 @@ Azure Synapse je neomezená analytická služba, která spojuje podnikové sklad
 
  Azure synapse má čtyři součásti:
 
-- Analýza SQL: kompletní analýzy založené na T-SQL
+- Synapse SQL: kompletní analýzy založené na T-SQL
 
   - Fond SQL (placený za DWU zřízený) – všeobecně dostupné
   - SQL na vyžádání (platba za TB zpracovaná) – (Preview)
@@ -39,7 +39,7 @@ Azure Synapse je neomezená analytická služba, která spojuje podnikové sklad
 
 ![Architektura Synapse SQL](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SQL Analytics používá architekturu založenou na uzlech. Aplikace připojují a vydávají příkazy T-SQL do řídicího uzlu, který je jediným bodem záznamu pro SQL Analytics. Řídicí uzel spouští modul MPP, který optimalizuje dotazy pro paralelní zpracování a pak předává operace do výpočetních uzlů, aby fungovaly paralelně.
+Synapse SQL používá architekturu založenou na uzlech. Aplikace připojují a vydávají příkazy T-SQL do řídicího uzlu, který je jediným bodem záznamu pro synapse SQL. Řídicí uzel spouští modul MPP, který optimalizuje dotazy pro paralelní zpracování a pak předává operace do výpočetních uzlů, aby fungovaly paralelně.
 
 Výpočetní uzly ukládají veškerá data uživatelů ve službě Azure Storage a spouští paralelní dotazy. DMS (Data Movement Service) je interní služba na úrovni systému, která podle potřeby přesunuje data mezi uzly, aby bylo možné spouštět dotazy paralelně a získat přesné výsledky.
 
@@ -74,7 +74,7 @@ Služba pro přesun dat (DMS) je technologie pro přenos dat, která koordinuje 
 
 ## <a name="distributions"></a>Distribuce
 
-Distribuce představuje základní jednotku úložiště a zpracování paralelních dotazů, které se spouští u distribuovaných dat. Když SQL Analytics spustí dotaz, bude práce rozdělena do 60 menších dotazů, které běží paralelně.
+Distribuce představuje základní jednotku úložiště a zpracování paralelních dotazů, které se spouští u distribuovaných dat. Když SQL synapse spustí dotaz, bude tato práce rozdělená na 60 menších dotazů, které běží paralelně.
 
 Každý z těchto 60 dotazů běží v jedné z distribucí dat. Každý výpočetní uzel spravuje jednu nebo více distribucí 60. Fond SQL s maximálními výpočetními prostředky má jednu distribuci na výpočetní uzel. Fond SQL s minimálními výpočetními prostředky má všechny distribuce v jednom výpočetním uzlu.  
 

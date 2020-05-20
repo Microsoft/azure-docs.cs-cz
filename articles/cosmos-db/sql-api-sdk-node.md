@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: SQL Node. js API, SDK & prostředky'
 description: Seznamte se se všemi informacemi o rozhraních API Node. js a SDK, včetně dat vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi Azure Cosmos DB Node. js SDK.
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 09/24/2018
-ms.author: dech
-ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 645565b0033324d6edc36a73fb59fa5a5d8689ee
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982884"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650738"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node. js SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -21,8 +21,9 @@ ms.locfileid: "80982884"
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -35,7 +36,7 @@ ms.locfileid: "80982884"
 |Stáhnout sadu SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |Dokumentace k rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-cosmos-js#installation)
-|Přispívání do sady SDK | [GitHubu](https://github.com/Azure/azure-cosmos-js/tree/master)
+|Přispívání do sady SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | ukázky | [Ukázky kódu Node. js](sql-api-nodejs-samples.md)
 | Úvodní kurz | [Začínáme se sadou JavaScript SDK](sql-api-nodejs-get-started.md)
 | Kurz webové aplikace | [Sestavení webové aplikace Node. js pomocí Azure Cosmos DB](sql-api-nodejs-application.md)
@@ -164,7 +165,7 @@ database.containers.create({ id: 'my-container', throughput: 10000 })
 ```
 
 ##### <a name="azurecosmos-sign"></a>@azure/cosmos-sign
-Generování tokenu hlaviček bylo rozděleno do nové knihovny, @azure/cosmos-sign. Kdokoli, kdo volá Cosmos REST API, může přímo použít k podepsání hlaviček pomocí stejného kódu, který @azure/cosmosvoláme uvnitř.
+Generování tokenu hlaviček bylo rozděleno do nové knihovny, @azure/cosmos-sign . Kdokoli, kdo volá Cosmos REST API, může přímo použít k podepsání hlaviček pomocí stejného kódu, který voláme uvnitř @azure/cosmos .
 
 ##### <a name="uuid-for-generated-ids"></a>UUID pro vygenerované identifikátory
 V2 má vlastní kód pro generování ID položek. Přepnuli jsme se na známý a udržovaný UUID pro komunitní knihovny.
@@ -230,7 +231,7 @@ Ne vždy nejčastěji viditelné změny, ale pomůžou náš tým dodat lepší 
 * Oprava chyby v signatuře typu executeNext ()
 * Opravy překlepu
 
-### <a name=""></a><a name="2.1.1"/>bodů</a>
+### <a name=""></a><a name="2.1.1"/>2.1.1</a>
 * Restrukturalizace sestavení Umožňuje vystavení verze sady SDK v době sestavení.
 
 ### <a name=""></a><a name="2.1.0"/>2.1.0</a>
@@ -430,7 +431,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 | [2.1.4](#2.1.4) |15. března 2019 |--- |
 | [2.1.3](#2.1.3) |8. března 2019 |--- |
 | [2.1.2](#2.1.2) |28. ledna 2019 |--- |
-| [bodů](#2.1.1) |5. prosince 2018 |--- |
+| [2.1.1](#2.1.1) |5. prosince 2018 |--- |
 | [2.1.0](#2.1.0) |4. prosince 2018 |--- |
 | [2.0.5](#2.0.5) |7. listopadu 2018 |--- |
 | [2.0.4](#2.0.4) |30. října 2018 |--- |
@@ -474,7 +475,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 | [1.0.1](#1.0.1) |15. května 2015 |30. srpna 2020 |
 | [1.0.0](#1.0.0) |08 8. dubna 2015 |30. srpna 2020 |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také

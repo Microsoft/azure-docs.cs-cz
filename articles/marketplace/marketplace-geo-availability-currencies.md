@@ -1,18 +1,18 @@
 ---
-title: Geografická dostupnost a podpora měny pro komerční tržiště | Azure Marketplace
-description: Geografická dostupnost na komerčním webu Marketplace
+title: Geografická dostupnost a podpora měny pro komerční tržiště Microsoftu
+description: Geografická dostupnost a podpora měny pro transakce na komerčním webu Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16d41879321c7cbaa4f38bcba83d83d39f30ee13
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687591"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657867"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
@@ -73,7 +73,7 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Řecko                              | GR        | EUR          |
 | Guatemala                           | GT        | USD          |
 | Honduras                            | HN        | USD          |
-| Hongkong – zvláštní správní oblast                       | HK        | USD          |
+| Hongkong – zvláštní administrativní oblast                       | HK        | USD          |
 | Maďarsko                             | HU        | EUR          |
 | Island                             | IS        | EUR          |
 | Indie                               | IN        | INR          |
@@ -107,7 +107,7 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Mongolsko                            | MN        | USD          |
 | Černá Hora                          | ME        | USD          |
 | Maroko                             | MA        | USD          |
-| Namibie                             | Není k dispozici        | USD          |
+| Namibie                             | NA        | USD          |
 | Nepál                               | NP        | USD          |
 | Nizozemsko                         | NL        | EUR          |
 | Nikaragua                           | NI        | USD          |
@@ -154,7 +154,7 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Ukrajina                             | UA        | USD          |
 | Spojené arabské emiráty                | AE        | USD          |
 | Spojené království                      | GB        | GBP          |
-| Spojené státy                       | USA        | USD          |
+| USA                       | USA        | USD          |
 | Uruguay                             | UY        | USD          |
 | Uzbekistán                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |

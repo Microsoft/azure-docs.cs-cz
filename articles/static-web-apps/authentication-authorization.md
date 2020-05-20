@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: cb6b99351a5cb995d87b482b7e707a3913fd86f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1ac1df402c25c0f6e5f07ce8d9631c01c0fa504c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597622"
+ms.locfileid: "83655263"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Ověřování a autorizace pro Azure static Web Apps Preview
 
@@ -118,7 +118,7 @@ https://identity.azurestaticapps.net/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 Pokud chcete zabránit tomu, aby platforma poskytovala tyto informace v budoucích požadavcích na jednotlivé aplikace, odešlete žádost na následující adresu URL:
 
 ```url
-https://<WEB_APP_DOMAIN_NAME>/identity/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
+https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```
 
 ## <a name="system-folder"></a>Systémová složka
@@ -154,6 +154,11 @@ Pokud se rozhodnete podporovat více než jednoho poskytovatele, musíte pro ka�
 }
 ```
 
+### <a name="post-login-redirect"></a>Přesměrování po přihlášení
+
+Pokud chcete, aby se uživatel po přihlášení vrátil na konkrétní stránku, zadejte adresu URL v `post_login_redirect_uri` parametru řetězce dotazu.
+
+
 ## <a name="logout"></a>Odhlásit
 
 `/.auth/logout`Směrování zaznamená uživatele z webu. Můžete přidat odkaz na navigaci na webu, aby se uživatel mohl odhlásit, jak je znázorněno v následujícím příkladu.
@@ -170,6 +175,10 @@ Pokud se rozhodnete podporovat více než jednoho poskytovatele, musíte pro ka�
   "serve": "/.auth/logout"
 }
 ```
+
+### <a name="post-logout-redirect"></a>Přesměrování po odhlášení
+
+Pokud chcete, aby se uživatel po odhlášení vrátil na konkrétní stránku, zadejte adresu URL v `post_logout_redirect_uri` parametru řetězce dotazu.
 
 ## <a name="block-an-authorization-provider"></a>Blokování zprostředkovatele autorizace
 

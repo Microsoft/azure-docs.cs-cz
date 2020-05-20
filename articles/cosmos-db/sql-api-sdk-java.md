@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: SQL Java API, SDK & prostředky'
 description: Seznamte se se všemi informacemi o rozhraních SQL Java API a SDK, včetně dat vydání, data odchodu a změn provedených mezi jednotlivými verzemi Azure Cosmos DB SQL Java SDK.
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 02/21/2020
-ms.author: sngun
-ms.openlocfilehash: e57029e53365fbf99054e2d926296ccca3360663
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 61016597310e6bb160999981216190e8caa34fc8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80983598"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656749"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -21,8 +21,9 @@ ms.locfileid: "80983598"
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -30,18 +31,22 @@ ms.locfileid: "80983598"
 > * [Hromadný prováděcí modul – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
 
-Rozhraní SQL API Java SDK podporuje synchronní operace. Pro asynchronní podporu použijte [rozhraní API SQL Async Java SDK](sql-api-sdk-async-java.md). 
+Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní SQL API, která podporuje synchronní operace.
+
+> [!IMPORTANT]  
+> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Zvažte použití [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) pro váš projekt. Chcete-li provést upgrade, postupujte podle pokynů v příručce [k migraci na Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) a v příručce pro předaný [objekt actor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) . 
+>
 
 | |  |
 |---|---|
 |**Stažení sady SDK**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Java API](/java/api/com.microsoft.azure.documentdb)|
-|**Přispívání do sady SDK**|[GitHubu](https://github.com/Azure/azure-documentdb-java/)|
+|**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Začínáme**|[Začínáme se sadou Java SDK](sql-api-java-get-started.md)|
 |**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-java-application.md)|
 |**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="247"></a><a name="2.4.7"/>2.4.7
 * Opravuje problém s vypršením časového limitu fondu připojení.
@@ -72,7 +77,7 @@ Rozhraní SQL API Java SDK podporuje synchronní operace. Pro asynchronní podpo
 ### <a name="223"></a><a name="2.2.3"/>2.2.3
 * Spotřebovává se chybová zpráva s hodnotou null ze služby a vyprodukuje se výjimka klienta dokumentu.
 
-### <a name="222"></a><a name="2.2.2"/>2.2.2
+### <a name="222"></a><a name="2.2.2"/>bodě
 * Vylepšení připojení soketu, přidání výchozí hodnoty true SoKeepAlive
 
 ### <a name="220"></a><a name="2.2.0"/>2.2.0
@@ -86,7 +91,7 @@ Rozhraní SQL API Java SDK podporuje synchronní operace. Pro asynchronní podpo
 * Opravená chyba v globálním správci koncových bodů pro vynucení aktualizace.
 * Opravená chyba pro upsertuje s předběžnými podmínkami v přímém režimu.
 
-### <a name="211"></a><a name="2.1.1"/>bodů
+### <a name="211"></a><a name="2.1.1"/>2.1.1
 * Opravená chyba v mezipaměti adres brány
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
@@ -233,7 +238,7 @@ Rozhraní SQL API Java SDK podporuje synchronní operace. Pro asynchronní podpo
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
 * Podporuje geoprostorové index
-* Ověří vlastnost ID pro všechny prostředky. ID pro prostředky nesmí obsahovat znaky?,/, # \, , znaky nebo končit mezerou.
+* Ověří vlastnost ID pro všechny prostředky. ID pro prostředky nesmí obsahovat znaky?,/, #, \, znaky nebo končit mezerou.
 * Přidá novou hlavičku průběh transformace indexu do ResourceResponse.
 
 ### <a name="110"></a><a name="1.1.0"/>1.1.0
@@ -261,7 +266,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 
 <br/>
 
-| Version | Datum vydání | Datum vyřazení |
+| Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
 | [2.4.7](#2.4.7) |20. února 2020 |--- |
 | [2.4.6](#2.4.6) |24. ledna 2020 |--- |
@@ -272,11 +277,11 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 | [2.4.0](#2.4.0) |4. května 2019 |--- |
 | [2.3.0](#2.3.0) |Duben 24, 2019 |--- |
 | [2.2.3](#2.2.3) |16. dubna 2019 |--- |
-| [2.2.2](#2.2.2) |Duben 05, 2019 |--- |
+| [bodě](#2.2.2) |Duben 05, 2019 |--- |
 | [2.2.0](#2.2.0) |27. března 2019 |--- |
 | [2.1.3](#2.1.3) |13. března 2019 |--- |
 | [2.1.2](#2.1.2) |9. března 2019 |--- |
-| [bodů](#2.1.1) |DEC 13, 2018 |--- |
+| [2.1.1](#2.1.1) |DEC 13, 2018 |--- |
 | [2.1.0](#2.1.0) |20. listopadu 2018 |--- |
 | [2.0.0](#2.0.0) |Září 21, 2018 |--- |
 | [1.16.4](#1.16.4) |Září 10, 2018 |30. května 2020 |
@@ -317,7 +322,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 | 0.9.1 – zapůjčení |19. prosince 2014 |29. února 2016 |
 | 0.9.0 – zapůjčení |10. prosince 2014 |29. února 2016 |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také

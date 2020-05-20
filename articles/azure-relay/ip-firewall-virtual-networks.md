@@ -8,14 +8,14 @@ ms.service: service-bus-relay
 ms.devlang: na
 ms.custom: seodec18
 ms.topic: article
-ms.date: 05/07/2020
+ms.date: 05/13/2020
 ms.author: spelluru
-ms.openlocfilehash: e2a9e89ca8c3b77b09a58a45959f1acda1457b56
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 88eb7acf1e72084a83d6d8631c0ea5d740988640
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211051"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653420"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Konfigurace brány firewall protokolu IP pro obor názvů Azure Relay
 Ve výchozím nastavení jsou obory názvů Relay přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -137,4 +137,3 @@ Další informace o dalších funkcích souvisejících se zabezpečením sítě
 <!-- Links -->
 
 [express-route]:  /azure/expressroute/expressroute-faqs#supported-services
-[LNK-Deploy]:: 

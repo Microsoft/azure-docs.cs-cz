@@ -5,20 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: c291dbe9c1eb37e68174a2353e296a376c7d0896
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74168668"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655094"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall filtrování na základě logiky hrozeb
 
-Filtrování na základě logiky hrozeb lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.
+Filtrování na základě logiky hrozeb lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence. [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.<br>
+<br>
 
-![Analýza hrozeb v bráně firewall](media/threat-intel/firewall-threat.png)
+:::image type="content" source="media/threat-intel/firewall-threat.png" alt-text="Analýza hrozeb v bráně firewall" border="false":::
 
 Pokud jste povolili filtrování založené na hrozbách, budou přidružená pravidla zpracována před všemi pravidly NAT, síťovými pravidly nebo pravidly aplikací.
 
@@ -26,7 +27,7 @@ Můžete zvolit, že při aktivaci pravidla stačí protokolovat výstrahu, nebo
 
 V režimu výstrahy je ve výchozím nastavení povolené filtrování na základě logiky hrozeb. Tuto funkci nemůžete vypnout nebo změnit režim, dokud nebude v oblasti k dispozici rozhraní portálu.
 
-![Rozhraní portálu pro filtrování na základě analýzy hrozeb](media/threat-intel/threat-intel-ui.png)
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Rozhraní portálu pro filtrování na základě analýzy hrozeb":::
 
 ## <a name="logs"></a>Protokoly
 

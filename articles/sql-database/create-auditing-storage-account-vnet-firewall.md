@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/19/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f26fa00f78b8564e08b6352d4da31640b13f47f
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 556b9c2861461ffdfc63f5607cca2157226e15bb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402681"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658298"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Zápis auditu do účtu úložiště za virtuální sítí a branou firewall
 
@@ -137,6 +137,11 @@ Konfigurace auditu SQL pro zápis událostí do účtu úložiště za virtuáln
      }
    }
    ```
+
+## <a name="using-azure-powershell"></a>Použití Azure Powershell
+
+- [Vytvořit nebo aktualizovat zásady auditování databáze (set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
+- [Vytvořit nebo aktualizovat zásady auditování serveru (set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
 
 ## <a name="next-steps"></a>Další kroky
 

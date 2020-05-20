@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
-ms.openlocfilehash: 405ac27fad3c24d3064f11476f452ad00abb9b02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7656944af16db650ec1fea36f0bdefc81b99922e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80387763"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654623"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s auditováním spravované instance Azure SQL Database
 
@@ -37,7 +37,7 @@ V následující části je popsána konfigurace auditování na spravované ins
    1. Přejděte do Azure Storage, kam chcete ukládat protokoly auditu.
 
       > [!IMPORTANT]
-      > Použijte účet úložiště ve stejné oblasti jako spravovanou instanci, aby nedocházelo ke čtení a zápisu mezi jednotlivými oblastmi.
+      > Použijte účet úložiště ve stejné oblasti jako spravovanou instanci, aby nedocházelo ke čtení a zápisu mezi jednotlivými oblastmi. Pokud je váš účet úložiště za Virtual Network nebo bránou firewall, přečtěte si téma [udělení přístupu z virtuální sítě](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network).
 
    1. V účtu úložiště přejděte na **Přehled** a klikněte na **objekty blob**.
 
@@ -106,7 +106,7 @@ V následující části je popsána konfigurace auditování na spravované ins
         GO
         ```
 
-     1. Spuštěním následujícího příkazu T-SQL vytvořte nový audit serveru (vyberte vlastní název auditu, použijte adresu URL kontejneru, kterou jste vytvořili v předchozích krocích). Pokud není zadaný, `RETENTION_DAYS` výchozí hodnota je 0 (neomezené uchovávání):
+     1. Spuštěním následujícího příkazu T-SQL vytvořte nový audit serveru (vyberte vlastní název auditu, použijte adresu URL kontejneru, kterou jste vytvořili v předchozích krocích). Pokud není zadaný, `RETENTION_DAYS` Výchozí hodnota je 0 (neomezené uchovávání):
 
         ```SQL
         CREATE SERVER AUDIT [<your_audit_name>]
@@ -205,7 +205,7 @@ Protokoly auditu ze spravované instance je možné odesílat i do hub nebo Azur
 
 Existuje několik metod, pomocí kterých můžete zobrazit protokoly auditování objektů BLOB.
 
-- Pomocí funkce `sys.fn_get_audit_file` System (T-SQL) Vraťte data protokolu auditu v tabulkovém formátu. Další informace o použití této funkce najdete v dokumentaci k [Sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
+- Pomocí funkce System `sys.fn_get_audit_file` (T-SQL) Vraťte data protokolu auditu v tabulkovém formátu. Další informace o použití této funkce najdete v dokumentaci k [Sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - Protokoly auditu můžete prozkoumat pomocí nástroje, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). V Azure Storage se protokoly auditování ukládají jako kolekce souborů objektů BLOB v kontejneru, který jste definovali pro uložení protokolů auditu. Další podrobnosti o hierarchii složky úložiště, konvencí pojmenování a formátu protokolu najdete v referenčních informacích o [formátu protokolu auditu objektů BLOB](https://go.microsoft.com/fwlink/?linkid=829599).
 
@@ -234,8 +234,8 @@ Auditování XEvent ve spravované instanci podporuje cíle služby Azure Blob S
 
 Hlavní rozdíly v `CREATE AUDIT` syntaxi pro auditování do úložiště objektů BLOB v Azure jsou:
 
-- K dispozici `TO URL` je nová syntaxe, která umožňuje zadat adresu URL kontejneru úložiště objektů BLOB v Azure, `.xel` ve kterém jsou soubory umístěné.
-- K dispozici `TO EXTERNAL MONITOR` je nová syntaxe, která umožňuje, aby byly cílení na rozbočovač a Azure monitor protokoly.
+- K `TO URL` dispozici je nová syntaxe, která umožňuje zadat adresu URL kontejneru úložiště objektů BLOB v Azure, ve kterém `.xel` jsou soubory umístěné.
+- `TO EXTERNAL MONITOR`K dispozici je nová syntaxe, která umožňuje, aby byly cílení na rozbočovač a Azure monitor protokoly.
 - Syntaxe `TO FILE` není **podporována** , protože SQL Database nemá přístup ke sdíleným složkám souborů systému Windows.
 - Možnost vypnutí není **podporována**.
 - `queue_delay`hodnota 0 není **podporována**.

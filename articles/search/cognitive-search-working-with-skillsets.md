@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b336451bde559ce773a9b611bc98b4de3f11871
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191033"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652748"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Dovednosti koncepty a kompozice v Azure Kognitivní hledání
 
@@ -65,7 +65,7 @@ Každá dovednost vyžaduje kontext. Kontext určuje:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-Používá `sourceContext` se pouze ve vstupech [a projekcí](knowledge-store-projection-overview.md)dovedností. Slouží k vytváření víceúrovňových vnořených objektů. Je možné, že budete muset vytvořit nový objekt, který ho buď předáte jako vstup do odbornosti nebo projektu, do znalostní báze Knowledge Store. Uzly obohacení nemusí být platný objekt JSON ve stromu obohacení a odkazující na uzel ve stromové struktuře vrátí tento stav uzlu, když byl vytvořen, pomocí rozšíření, jako jsou vstupy nebo projekce, vyžaduje vytvoření objektu JSON ve správném formátu. `sourceContext` Umožňuje vytvořit hierarchický, anonymní objekt typu, který by vyžadoval více dovedností v případě, že jste používali pouze kontext. Použití `sourceContext` je zobrazeno v následující části. Podívejte se na výstup dovedností, který vygeneroval rozšíření, aby bylo možné zjistit, zda se jedná o platný objekt JSON a nikoli primitivní typ.
+`sourceContext`Používá se pouze ve vstupech a projekcí [projections](knowledge-store-projection-overview.md)dovedností. Slouží k vytváření víceúrovňových vnořených objektů. Je možné, že budete muset vytvořit nový objekt, který ho buď předáte jako vstup do odbornosti nebo projektu, do znalostní báze Knowledge Store. Uzly obohacení nemusí být platný objekt JSON ve stromu obohacení a odkazující na uzel ve stromové struktuře vrátí tento stav uzlu, když byl vytvořen, pomocí rozšíření, jako jsou vstupy nebo projekce, vyžaduje vytvoření objektu JSON ve správném formátu. `sourceContext`Umožňuje vytvořit hierarchický, anonymní objekt typu, který by vyžadoval více dovedností v případě, že jste používali pouze kontext. Použití `sourceContext` je zobrazeno v následující části. Podívejte se na výstup dovedností, který vygeneroval rozšíření, aby bylo možné zjistit, zda se jedná o platný objekt JSON a nikoli primitivní typ.
 
 ### <a name="projections"></a>Projekce
 
@@ -77,7 +77,7 @@ Diagram výše popisuje selektor, se kterým pracujete, na základě toho, kde s
 
 ## <a name="generate-enriched-data"></a>Generovat obohacená data 
 
-Teď si projdeme dovednosti a Projděte si kurz, kde můžete postupovat podle [kurzu](knowledge-store-connect-powerbi.md) a vytvořit dovednosti nebo [Zobrazit](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/samples/skillset.json) dovednosti. Budeme se pohlížet na:
+Teď si projdeme dovednosti a Projděte si kurz, kde můžete postupovat podle [kurzu](knowledge-store-connect-powerbi.md) a vytvořit dovednosti nebo [Zobrazit](https://github.com/Azure-Samples/azure-search-postman-samples/) dovednosti. Budeme se pohlížet na:
 
 * způsob vývoje stromu rozšíření s prováděním jednotlivých dovedností 
 * jak kontext a vstupy pracují k určení, kolikrát se dovednost spustí 
@@ -89,12 +89,12 @@ Vzhledem k tomu, že pro indexer používáme režim analýzy textu s oddělova�
 
 ![strom obohacení po vytrhlině dokumentu](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "Strom obohacení po prolomení dokumentů a před provedením dovedností")
 
-V souvislosti ```"/document/reviews_text"```s dovednostmi dovedností se tato dovednost spustí jednou pro `reviews_text`. Výstup dovedností je seznam, ve kterém `reviews_text` je rozdělen do segmentů 5000 znaků. Výstup z rozdělené dovednosti je pojmenován `pages` a přidán do stromu obohacení. `targetName` Funkce umožňuje přejmenovat výstup dovedností před přidáním do stromu obohacení.
+V souvislosti s dovednostmi dovedností se ```"/document/reviews_text"``` Tato dovednost spustí jednou pro `reviews_text` . Výstup dovedností je seznam, ve kterém `reviews_text` je rozdělen do segmentů 5000 znaků. Výstup z rozdělené dovednosti je pojmenován `pages` a přidán do stromu obohacení. `targetName`Funkce umožňuje přejmenovat výstup dovedností před přidáním do stromu obohacení.
 
 Strom rozkládání teď má nový uzel umístěný pod rámec dovednosti. Tento uzel je k dispozici pro jakékoli mapování dovedností, projekce nebo výstupních polí.
 
 
-Kořenový uzel pro všechna rozšíření je `"/document"`. Při práci s indexery objektů BLOB bude `"/document"` uzel mít podřízené uzly `"/document/content"` a. `"/document/normalized_images"` Při práci s daty ve formátu CSV, jak je v tomto příkladu, se názvy sloupců mapují na uzly níže `"/document"`. Aby bylo možné získat přístup k jakémukoli obohacení rozšíření přidaným do uzlu dovedností, je nutná úplná cesta pro rozšíření. Například pokud chcete použít text z ```pages``` uzlu jako vstup pro jinou dovednost, budete ho muset zadat jako. ```"/document/reviews_text/pages/*"```
+Kořenový uzel pro všechna rozšíření je `"/document"` . Při práci s indexery objektů BLOB `"/document"` bude uzel mít podřízené uzly `"/document/content"` a `"/document/normalized_images"` . Při práci s daty ve formátu CSV, jak je v tomto příkladu, se názvy sloupců mapují na uzly níže `"/document"` . Aby bylo možné získat přístup k jakémukoli obohacení rozšíření přidaným do uzlu dovedností, je nutná úplná cesta pro rozšíření. Například pokud chcete použít text z ```pages``` uzlu jako vstup pro jinou dovednost, budete ho muset zadat jako ```"/document/reviews_text/pages/*"``` .
  
  ![strom obohacení po #1 dovednosti](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "Strom obohacení po provedení #1 dovednosti")
 
@@ -104,7 +104,7 @@ Kořenový uzel pro všechna rozšíření je `"/document"`. Při práci s index
  
  ### <a name="skill-3-key-phrases-skill"></a>Dovednost #3: dovednost klíčových frází 
 
-Vzhledem k, že ```/document/reviews_text/pages/*``` se kontext dovedností klíčových frází vyvolá jednou pro každou položku v `pages` kolekci. Výstup z dovednosti bude uzel pod přidruženým prvkem stránky. 
+Vzhledem k, že se kontext ```/document/reviews_text/pages/*``` dovedností klíčových frází vyvolá jednou pro každou položku v `pages` kolekci. Výstup z dovednosti bude uzel pod přidruženým prvkem stránky. 
 
  Nyní byste měli být schopni se podívat na zbytek dovedností v dovednosti a vizualizovat, jak bude strom rozšíření nadále rostoucí s prováděním jednotlivých dovedností. Některé dovednosti, jako je například dovednost sloučení a kvalifikace Shaper, také vytvářejí nové uzly, ale používají data z existujících uzlů a nevytvářejí čisté nové rozšíření.
 
@@ -126,7 +126,7 @@ Existují dva způsoby, jak definovat projekci. Shaper dovednosti můžete použ
 
 Přístup Shaper je podrobnější než při vložené tvarování, ale zajišťuje, že všechny mutace stromu rozšíření jsou obsaženy v rámci dovedností a že výstupem je objekt, který lze znovu použít. Vložené tvarování vám umožňuje vytvořit tvar, který potřebujete, ale je anonymní objekt a je k dispozici pouze pro projekci, pro kterou je definována. Přístupy lze použít společně nebo samostatně. Dovednosti vytvořená v pracovním postupu na portálu obsahuje obojí. Používá shaperou dovednost pro projektové projekce, ale také používá včleněné tvarování k tomu, aby se v tabulce klíčových frází.
 
-Chcete-li příklad zvětšit, můžete odebrat vložené tvarování a použít dovednost Shaper k vytvoření nového uzlu pro klíčové fráze. Chcete-li vytvořit tvar vytvořený do tří tabulek, konkrétně `hotelReviewsDocument` `hotelReviewsPages`,, a `hotelReviewsKeyPhrases`, jsou tyto dvě možnosti popsány v následujících částech.
+Chcete-li příklad zvětšit, můžete odebrat vložené tvarování a použít dovednost Shaper k vytvoření nového uzlu pro klíčové fráze. Chcete-li vytvořit tvar vytvořený do tří tabulek, konkrétně, `hotelReviewsDocument` , `hotelReviewsPages` a `hotelReviewsKeyPhrases` , jsou tyto dvě možnosti popsány v následujících částech.
 
 
 #### <a name="shaper-skill-and-projection"></a>Shaper dovednosti a projekce 
@@ -204,7 +204,7 @@ Chcete-li příklad zvětšit, můžete odebrat vložené tvarování a použít
 }
 ```
 
-Pomocí `tableprojection` uzlu, který je definován `outputs` v předchozí části, teď můžeme použít funkci dělení k projektové části `tableprojection` uzlu do různých tabulek:
+Pomocí `tableprojection` uzlu, který je definován v `outputs` předchozí části, teď můžeme použít funkci dělení k projektové části `tableprojection` uzlu do různých tabulek:
 
 > [!Note]
 > Toto je pouze fragment projekce v rámci konfigurace znalostní databáze.
@@ -295,7 +295,7 @@ Přístup k vloženým tvarům nevyžaduje shaperou dovednost, protože všechny
 ]
 ```
   
-Jedním z přístupů z obou metod je způsob, jakým jsou hodnoty z `"Keyphrases"` aplikace `"sourceContext"`probíhají pomocí. `"Keyphrases"` Uzel, který obsahuje kolekci řetězců, je podřízeným prvkem textu stránky. Vzhledem k tomu, že projekce vyžadují objekt JSON a stránka je primitivní (řetězec), `"sourceContext"` je použita k zabalení klíčové fráze do objektu s pojmenovanou vlastností. Tento postup umožňuje, aby se dokonce nezávisle promohl projektovat bez primitiv.
+Jedním z přístupů z obou metod je způsob, jakým jsou hodnoty z `"Keyphrases"` aplikace probíhají pomocí `"sourceContext"` . `"Keyphrases"`Uzel, který obsahuje kolekci řetězců, je podřízeným prvkem textu stránky. Vzhledem k tomu, že projekce vyžadují objekt JSON a stránka je primitivní (řetězec), `"sourceContext"` je použita k zabalení klíčové fráze do objektu s pojmenovanou vlastností. Tento postup umožňuje, aby se dokonce nezávisle promohl projektovat bez primitiv.
 
 ## <a name="next-steps"></a>Další kroky
 

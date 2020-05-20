@@ -1,35 +1,35 @@
 ---
-title: Nasazení a volání webových rozhraní API & rozhraní REST API z Azure Logic Apps
-description: Nasazení a volání webových rozhraní API & rozhraní REST API pro pracovní postupy integrace systému v Azure Logic Apps
+title: Volání vlastních webových rozhraní API & rozhraní REST API
+description: Volání vlastních webových rozhraní API & rozhraní REST API z Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/26/2017
-ms.openlocfilehash: d1305be54a22b1460000a357074cbb1f67123bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/13/2020
+ms.openlocfilehash: 7b4d00e8c0366d10fddafa66db699c1a59fd9ad7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74790752"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659786"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Nasazení a volání vlastních rozhraní API z pracovních postupů v Azure Logic Apps
 
-Po [Vytvoření vlastních rozhraní API](./logic-apps-create-api-app.md) pro použití v pracovních postupech aplikace logiky je nutné nasadit rozhraní API předtím, než je budete moci volat. Rozhraní API můžete nasadit jako [webové aplikace](../app-service/overview.md), ale zvažte nasazení rozhraní API jako [aplikací API](../app-service/app-service-web-tutorial-rest-api.md), které usnadňuje práci při sestavování, hostování a využívání rozhraní API v cloudu i místně. Nemusíte měnit žádný kód v rozhraních API – stačí kód nasadit do aplikace API. Své rozhraní API můžete hostovat na [Azure App Service](../app-service/overview.md), jako je nabídka typu platforma jako služba (PaaS), která poskytuje vysoce škálovatelné a jednoduché hostování rozhraní API.
+Po [Vytvoření vlastních rozhraní API](./logic-apps-create-api-app.md) pro použití v pracovních postupech aplikace logiky je nutné nasadit tato rozhraní API předtím, než je můžete volat. Rozhraní API můžete nasadit jako [webové aplikace](../app-service/overview.md), ale zvažte nasazení rozhraní API jako [aplikací API](../app-service/app-service-web-tutorial-rest-api.md), které usnadňuje práci při sestavování, hostování a využívání rozhraní API v cloudu i místně. Nemusíte měnit žádný kód v rozhraních API – stačí kód nasadit do aplikace API. Své rozhraní API můžete hostovat na [Azure App Service](../app-service/overview.md), jako je nabídka typu platforma jako služba (PaaS), která poskytuje vysoce škálovatelné a jednoduché hostování rozhraní API.
 
-I když můžete volat libovolné rozhraní API z aplikace logiky, pro dosažení co nejlepších výsledků přidejte [metadata openapi (dříve Swagger)](https://swagger.io/specification/) , která popisují operace a parametry vašeho rozhraní API. Tento soubor OpenAPI vám pomůže snadněji integrovat rozhraní API a lépe pracovat s Logic Apps.
+I když můžete volat libovolné rozhraní API z aplikace logiky, pro dosažení co nejlepších výsledků přidejte [metadata Swagger](https://swagger.io/specification/) , která popisují operace a parametry vašeho rozhraní API. Tento dokument Swagger usnadňuje integraci rozhraní API a lepší práci s Logic Apps.
 
 ## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Nasazení rozhraní API jako webové aplikace nebo aplikace API
 
-Předtím, než budete moci volat vlastní rozhraní API z aplikace logiky, nasaďte rozhraní API jako webovou aplikaci nebo aplikaci API a Azure App Service. Pokud chcete soubor OpenAPI přečíst v Návrháři Logic Apps, nastavte vlastnosti definice rozhraní API a zapněte [sdílení prostředků mezi zdroji (CORS)](../app-service/overview.md) pro vaši webovou aplikaci nebo aplikaci API.
+Předtím, než budete moci volat vlastní rozhraní API z aplikace logiky, nasaďte rozhraní API jako webovou aplikaci nebo aplikaci API a Azure App Service. Aby dokument Swagger byl čitelný návrhářem Logic Apps, nastavte vlastnosti definice rozhraní API a zapněte [sdílení prostředků mezi zdroji (CORS)](../app-service/overview.md) pro vaši webovou aplikaci nebo aplikaci API.
 
 1. V [Azure Portal](https://portal.azure.com)vyberte webovou aplikaci nebo aplikaci API.
 
-2. V nabídce aplikace, která se otevře, vyberte v části **rozhraní API** **definice rozhraní API**. Nastavte **umístění definice rozhraní API** na adresu URL souboru Swagger. JSON pro openapi.
+2. V nabídce aplikace, která se otevře, vyberte v části **rozhraní API** **definice rozhraní API**. Nastavte **umístění definice rozhraní API** na adresu URL souboru Swagger. JSON.
 
    Adresa URL se obvykle zobrazuje v tomto formátu:`https://{name}.azurewebsites.net/swagger/docs/v1)`
 
-   ![Odkaz na soubor OpenAPI pro vlastní rozhraní API](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
+   ![Odkaz na dokument Swagger pro vaše vlastní rozhraní API](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
 3. V části **rozhraní API**vyberte **CORS**. Nastavte zásadu CORS pro **Povolené zdroje** na ***** (Povolit vše).
 
@@ -45,9 +45,9 @@ Po nastavení vlastností definice rozhraní API a CORS by vaše triggery a akce
 
 *  Pokud chcete zobrazit weby, které mají adresy URL OpenAPI, můžete procházet weby předplatného v Návrháři Logic Apps.
 
-*  Pokud chcete zobrazit dostupné akce a vstupy, přejděte na OpenAPI dokumentu a použijte [akci HTTP + Swagger](../connectors/connectors-native-http-swagger.md).
+*  Chcete-li zobrazit dostupné akce a vstupy ukázáním v dokumentu Swagger, použijte [akci HTTP + Swagger](../connectors/connectors-native-http-swagger.md).
 
-*  Chcete-li volat libovolné rozhraní API, včetně rozhraní API, která nemají nebo zpřístupňují dokument OpenAPI, můžete vždy vytvořit požadavek s [akcí http](../connectors/connectors-native-http.md).
+*  Chcete-li volat libovolné rozhraní API, včetně rozhraní API, která nemají nebo zpřístupňují dokument Swagger, můžete vždy vytvořit požadavek s [akcí http](../connectors/connectors-native-http.md).
 
 ## <a name="next-steps"></a>Další kroky
 

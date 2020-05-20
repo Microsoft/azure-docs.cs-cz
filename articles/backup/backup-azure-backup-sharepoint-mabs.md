@@ -2,155 +2,139 @@
 title: Zálohování farmy služby SharePoint do Azure pomocí MABS
 description: Pomocí Azure Backup Server můžete zálohovat a obnovovat data služby SharePoint. Tento článek poskytuje informace o konfiguraci farmy služby SharePoint, aby bylo možné ukládat požadovaná data do Azure. Chráněná data služby SharePoint můžete obnovit z disku nebo z Azure.
 ms.topic: conceptual
-ms.date: 06/08/2018
-ms.openlocfilehash: 441a896f2faa67a1380007ebb9474d7c311a4842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/26/2020
+ms.openlocfilehash: 7e429eeb5319a12c3483510072fd82c69c8d8ab3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78673138"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657285"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Zálohování farmy služby SharePoint do Azure pomocí MABS
 
-Můžete zálohovat farmu služby SharePoint a Microsoft Azure pomocí Microsoft Azure Backup serveru (MABS), a to podobně jako při zálohování jiných zdrojů dat. Azure Backup poskytuje flexibilitu v plánu zálohování k vytvoření denních, týdenních, měsíčních nebo ročních záložních bodů a poskytuje možnosti zásad uchovávání pro různé body zálohování. Poskytuje taky možnost ukládat kopie místních disků pro cíle rychlého obnovení (RTO) a ukládat kopie do Azure pro účely ekonomického a dlouhodobého uchovávání.
+Můžete zálohovat farmu služby SharePoint a Microsoft Azure pomocí Microsoft Azure Backup serveru (MABS), a to podobně jako při zálohování jiných zdrojů dat. Azure Backup poskytuje flexibilitu v plánu zálohování k vytvoření denních, týdenních, měsíčních nebo ročních záložních bodů a poskytuje možnosti zásad uchovávání pro různé body zálohování. MABS poskytuje možnost ukládat kopie místních disků pro cíle rychlého obnovení (RTO) a ukládat kopie do Azure pro účely ekonomického a dlouhodobého uchovávání.
+
+Zálohování SharePointu do Azure pomocí MABS je podobný postup pro zálohování SharePointu do DPM (Data Protection Manager) místně. V tomto článku se budou poznamenat konkrétní předpoklady pro Azure.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Podporované verze SharePointu a související scénáře ochrany
 
-Azure Backup pro DPM podporuje následující scénáře:
-
-| Úloha | Version | Nasazení služby SharePoint | Ochrana a obnovení |
-| --- | --- | --- | --- |
-| SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3,0 |SharePoint nasazený jako fyzický server nebo virtuální počítač s technologií Hyper-V nebo VMware <br> -------------- <br> SQL AlwaysOn | Ochrana možností obnovení farmy služby SharePoint: farma, databáze a soubor nebo položka seznamu z bodů obnovení disku.  Farma a obnovení databáze z bodů obnovení Azure. |
+Seznam podporovaných verzí služby SharePoint a verze MABS, které jsou nutné k jejich zálohování, najdete v části [MABS Protection Matrix](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) .
 
 ## <a name="before-you-start"></a>Než začnete
 
 Před zálohováním farmy služby SharePoint do Azure je třeba potvrdit několik věcí.
 
-### <a name="prerequisites"></a>Požadavky
-
-Než budete pokračovat, ujistěte se, že jste [nainstalovali a připravili Azure Backup Server](backup-azure-microsoft-azure-backup.md) pro ochranu úloh.
-
-### <a name="protection-agent"></a>Agent ochrany
-
-Agent Azure Backup musí být nainstalován na serveru, na kterém je spuštěna služba SharePoint, na serverech se systémem SQL Server a na všech ostatních serverech, které jsou součástí farmy služby SharePoint. Další informace o tom, jak nastavit agenta ochrany, najdete v tématu [instalace agenta ochrany](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).  Jedinou výjimkou je, že agenta nainstalujete jenom na jeden server s webovým front-end (WFE). Azure Backup Server vyžaduje, aby byl agent na jednom WFE serveru sloužit jenom jako vstupní bod pro ochranu.
-
-### <a name="sharepoint-farm"></a>Farmy služby SharePoint
-
-Pro každý 10 000 000 položek ve farmě musí být na svazku, kde se nachází složka MABS, aspoň 2 GB místa. Toto místo je nezbytné pro generování katalogu. Aby MABS obnovil konkrétní položky (kolekce webů, weby, seznamy, knihovny dokumentů, složky, jednotlivé dokumenty a položky seznamu), generování katalogu vytvoří seznam adres URL, které jsou obsaženy v jednotlivých databázích obsahu. Seznam adres URL můžete zobrazit v podokně obnovitelné položky v oblasti úlohy obnovení v konzole **pro** správu MABS.
-
-### <a name="sql-server"></a>SQL Server
-
-Azure Backup Server spouští jako účet LocalSystem. Pro zálohování SQL Server databází potřebuje MABS oprávnění správce systému pro tento účet pro server, na kterém běží SQL Server. Před zálohováním nastavte NT AUTHORITY\SYSTEM na *sysadmin* na serveru, na kterém běží SQL Server.
-
-Pokud má farma služby SharePoint SQL Server databáze nakonfigurované s aliasy SQL Server, nainstalujte SQL Server součásti klienta na front-end webovém serveru, který MABS bude chránit.
-
-### <a name="sharepoint-server"></a>SharePoint Server
-
-I když výkon závisí na mnoha faktorech, jako je třeba velikost farmy služby SharePoint, protože obecné pokyny One MABS mohou chránit 25 TB farmy služby SharePoint.
-
 ### <a name="whats-not-supported"></a>Co není podporováno
 
 * MABS, který chrání farmu služby SharePoint, nechrání vyhledávací indexy ani databáze služby Application Service. Ochranu těchto databází bude nutné nakonfigurovat samostatně.
+
 * MABS neposkytuje zálohu databází SharePoint SQL Server hostovaných ve sdílených složkách souborového serveru se škálováním na více systému (SOFS).
 
-## <a name="configure-sharepoint-protection"></a>Konfigurace ochrany SharePointu
+### <a name="prerequisites"></a>Požadavky
 
-Než budete moct použít MABS k ochraně SharePointu, musíte nakonfigurovat službu SharePoint VSS Writer (WSS Writer Service) pomocí **ConfigureSharePoint. exe**.
+Než budete pokračovat, ujistěte se, že jste splnili všechny [předpoklady pro použití Microsoft Azure Backup](backup-azure-dpm-introduction.md#prerequisites-and-limitations) k ochraně úloh. Mezi úlohy pro požadavky patří: vytvoření trezoru služby Backup, stažení přihlašovacích údajů trezoru, instalace agenta Azure Backup a registrace Azure Backup Server s trezorem.
 
-**ConfigureSharePoint. exe** najdete na front-end webovém serveru ve složce [Instalační cesta nástroje MABS]. Tento nástroj poskytuje agentovi ochrany pověření pro farmu služby SharePoint. Spouštíte ji na jednom serveru WFE. Pokud máte více serverů WFE, při konfiguraci skupiny ochrany vyberte jenom jednu.
+Další předpoklady a omezení:
 
-### <a name="to-configure-the-sharepoint-vss-writer-service"></a>Konfigurace služby SharePoint VSS Writer
+* Ve výchozím nastavení se při ochraně služby SharePoint budou chránit všechny databáze obsahu (a SharePoint_Config a SharePoint_AdminContent * databází). Pokud chcete přidat přizpůsobení, například prohledávání indexů, šablon, databází aplikačních služeb nebo služby profilů uživatelů, budete muset jejich ochranu nakonfigurovat samostatně. Nezapomeňte povolit ochranu všech složek, které obsahují tyto typy funkcí nebo soubory vlastního nastavení.
 
-1. Na serveru WFE, na příkazovém řádku, přejít na [umístění instalace MABS] \Bin\
-2. Zadejte ConfigureSharePoint-EnableSharePointProtection.
-3. Zadejte přihlašovací údaje správce farmy. Tento účet musí být členem místní skupiny Správci na serveru WFE. Pokud není správcem farmy místní správce, udělte na serveru WFE tato oprávnění:
-   * Udělte skupině WSS_Admin_WPG úplné řízení ke složce DPM (% Program Files%\Microsoft Azure Backup\DPM).
-   * Udělte skupině WSS_Admin_WPG oprávnění ke čtení klíče registru DPM (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager).
+* Databáze SharePoint nejde chránit jako zdroj dat SQL Serveru. Můžete obnovit jednotlivé databáze ze zálohy farmy.
 
-> [!NOTE]
-> Pokud dojde ke změně přihlašovacích údajů správce farmy služby SharePoint, budete muset znovu spustit ConfigureSharePoint. exe.
->
->
+* Mějte na paměti, že MABS běží jako **místní systém**a že k zálohování SQL Server databází potřebuje oprávnění správce systému pro tento účet SQL serveru. Na SQL Server, kterou chcete zálohovat, nastavte NT AUTHORITY\SYSTEM na **sysadmin**.
 
-## <a name="back-up-a-sharepoint-farm-by-using-mabs"></a>Zálohování farmy služby SharePoint pomocí MABS
+* Pro každý 10 000 000 položek ve farmě musí být na svazku, kde se nachází složka MABS, aspoň 2 GB místa. Toto místo je nezbytné pro generování katalogu. Aby bylo možné používat MABS k provedení konkrétního obnovení položek (kolekce webů, weby, seznamy, knihovny dokumentů, složky, jednotlivé dokumenty a položky seznamu), generování katalogu vytvoří seznam adres URL obsažených v jednotlivých databázích obsahu. Seznam adres URL můžete zobrazit v podokně obnovitelné položky v oblasti úloh obnovení v konzole pro správu MABS.
 
-Až nakonfigurujete MABS a farmu služby SharePoint, jak je vysvětleno dříve, SharePoint může být chráněn pomocí MABS.
+* Pokud máte ve farmě služby SharePoint SQL Server databáze, které jsou nakonfigurovány s aliasy SQL Server, nainstalujte SQL Server součásti klienta na front-end webovém serveru, který MABS bude chránit.
 
-### <a name="to-protect-a-sharepoint-farm"></a>Ochrana farmy služby SharePoint
+* V SharePointu 2013 není ochrana uložených položek aplikace podporovaná.
 
-1. Na kartě **ochrana** v konzole pro správu MABS klikněte na **Nový**.
-    ![Nová karta ochrana](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
-2. Na stránce **Vybrat typ skupiny ochrany** v průvodci **vytvořením nové skupiny ochrany** vyberte **servery**a potom klikněte na **Další**.
+* MABS nepodporuje ochranu vzdáleného FILESTREAM. Proud FILESTREAM musí být součástí databáze.
 
-    ![Vybrat typ skupiny ochrany](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
-3. Na obrazovce **Vybrat členy skupiny** zaškrtněte políčko pro server SharePoint, který chcete chránit, a klikněte na **Další**.
+## <a name="configure-backup"></a>Konfigurace zálohování
 
-    ![Vybrat členy skupiny](./media/backup-azure-backup-sharepoint/select-group-members2.png)
+Chcete-li zálohovat farmu služby SharePoint, nakonfigurujte ochranu pro službu SharePoint pomocí ConfigureSharePoint. exe a pak vytvořte skupinu ochrany v MABS.
 
-   > [!NOTE]
-   > S nainstalovaným agentem ochrany můžete v průvodci zobrazit server. MABS také zobrazuje jeho strukturu. Vzhledem k tomu, že jste spustili ConfigureSharePoint. exe, MABS komunikuje se službou zapisovač VSS SharePoint a odpovídajícími databázemi SQL Server a rozpoznává strukturu farmy služby SharePoint, přidružené databáze obsahu a všechny odpovídající položky.
-   >
-   >
-4. Na stránce **Vyberte způsob ochrany dat** zadejte název **skupiny ochrany**a vyberte preferované *metody ochrany*. Klikněte na **Další**.
+1. **Spusťte ConfigureSharePoint.exe** – tento nástroj nakonfiguruje službu Zapisovač VSS SharePointu \(WSS\) a předá agentovi ochrany přihlašovací údaje k farmě SharePointu. Po nasazení agenta ochrany najdete soubor ConfigureSharePoint. exe ve `<MABS Installation Path\>\bin` složce na front- \- End webovém serveru.  Pokud máte více serverů WFE, je třeba ji nainstalovat pouze na jeden z nich. Spuštění proveďte takto:
 
-    ![Výběr způsobu ochrany dat](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
+    * Na serveru WFE přejděte na příkazovém řádku do `\<MABS installation location\>\\bin\\` a spusťte `ConfigureSharePoint \[\-EnableSharePointProtection\] \[\-EnableSPSearchProtection\] \[\-ResolveAllSQLAliases\] \[\-SetTempPath <path>\]` , kde:
 
-   > [!NOTE]
-   > Metoda ochrany disku pomáhá plnit krátké cíle při obnovení.
-   >
-   >
-5. Na stránce **zadat krátkodobé cíle** vyberte preferovaný **Rozsah uchování** a určete, kdy se mají zálohy provádět.
+        * **EnableSharepointProtection** umožňuje ochranu farmy služby SharePoint, povoluje zapisovač VSS a registruje IDENTITU aplikace DCOM WssCmdletsWrapper, která se má spustit jako uživatel, jehož přihlašovací údaje jsou zadané pomocí této možnosti. Tento účet musí být správcem farmy a také místním správcem na front\-end webovém serveru.
 
-    ![Zadat krátkodobé cíle](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
+        * **EnableSPSearchProtection** povolí ochranu vyhledávací služby WSS 3.0 SP pomocí klíče registru SharePointSearchEnumerationEnabled v části HKLM\\Software\\Microsoft\\ Microsoft Data Protection Manager\\Agent\\2.0\\ na front\-end webovém serveru a zaregistruje identitu objektu WssCmdletsWrapper aplikace DCOM, aby se spouštěla jako uživatel, jehož přihlašovací údaje byly zadány pomocí této možnosti. Tento účet musí být správcem farmy a také místním správcem na front\-end webovém serveru.
 
-   > [!NOTE]
-   > Vzhledem k tomu, že se obnovení nejčastěji vyžaduje pro data, která jsou starší než pět dnů, jsme vybrali dobu uchovávání pět dní na disku a zajistili, že záloha proběhne během neprodukčních hodin, a to v tomto příkladu.
-   >
-   >
-6. Zkontrolujte místo na disku fondu úložiště přidělené skupině ochrany a klikněte na tlačítko **Další**.
-7. Pro každou skupinu ochrany MABS přiděluje místo na disku pro ukládání a správu replik. V tomto okamžiku musí MABS vytvořit kopii vybraných dat. Vyberte, jak a kdy má být replika vytvořena, a poté klikněte na tlačítko **Další**.
+        * **ResolveAllSQLAliases** zobrazí všechny aliasy hlášené zapisovačem SharePoint VSS a přeloží je pro odpovídající SQL Server. Zobrazí také jejich přeložené názvy instancí. Pokud jsou servery zrcadlené, zobrazí i zrcadlený server. Oznamuje všechny aliasy, které nejsou přeloženy na SQL Server.
 
-    ![Výběr metody vytvoření repliky](./media/backup-azure-backup-sharepoint/choose-replica-creation-method.png)
+        * **SetTempPath** nastaví proměnné prostředí TEMP a TMP na určenou cestu. Obnovení na úrovni položek se nepodaří, pokud se obnovuje velká kolekce webů, lokalita, seznam nebo položka a v dočasné složce správce farmy není dostatek místa. Pomocí této možnosti lze cestu ke složce dočasných souborů nahradit cestou ke svazku, ve kterém je dostatek místa pro uložení obnovované kolekce lokalit nebo lokality.
 
-   > [!NOTE]
-   > Pokud se chcete ujistit, že síťový provoz není ovlivněný, vyberte čas mimo provozní hodiny.
-   >
-   >
-8. MABS zajišťuje integritu dat prováděním kontrol konzistence repliky. K dispozici jsou dvě možnosti. Můžete definovat plán pro spuštění kontroly konzistence, nebo DPM může spustit kontroly konzistence automaticky v replice, kdykoli bude nekonzistentní. Vyberte upřednostňovanou možnost a potom klikněte na tlačítko **Další**.
+    * Zadejte přihlašovací údaje správce farmy. Tento účet musí být členem místní skupiny Správci na serveru WFE. Pokud správce farmy není místní správce, udělte na serveru WFE tato oprávnění:
 
-    ![Kontrola konzistence](./media/backup-azure-backup-sharepoint/consistency-check.png)
-9. Na stránce **zadat data online ochrany** vyberte farmu služby SharePoint, kterou chcete chránit, a poté klikněte na tlačítko **Další**.
+        * Udělte skupině WSS \_ admin \_ WPG úplnou kontrolu nad složkou MABS \( % Program Files% \\ Data Protection Manager \\ DPM \) .
+            -A
 
-    ![DPM SharePoint Protection1](./media/backup-azure-backup-sharepoint/select-online-protection1.png)
-10. Na stránce **zadat plán online zálohování** vyberte preferovaný plán a potom klikněte na **Další**.
+        * Udělte skupině WSS \_ admin \_ WPG přístup pro čtení ke klíči registru MABS \( HKEY \_ místního \_ počítačového \\ softwaru \\ Microsoft \\ Microsoft Data Protection Manager \) .
 
-    ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
+        Po spuštění ConfigureSharePoint. exe ho budete muset znovu spustit, pokud dojde ke změně v přihlašovacích údajích pro správce farmy služby SharePoint.
 
-    > [!NOTE]
-    > MABS poskytuje do Azure maximálně dva denní zálohy z dostupného bodu zálohy na disku. Azure Backup může také řídit velikost šířky pásma sítě WAN, kterou lze použít pro zálohování v špičkách a mimo špičku pomocí [Azure Backup omezování sítě](backup-windows-with-mars-agent.md#enable-network-throttling).
-    >
-    >
-11. V závislosti na plánu zálohování, který jste vybrali, vyberte na stránce **zadat zásady uchovávání online** zásady uchovávání informací pro denní, týdenní, měsíční a roční body zálohování.
+1. Chcete-li vytvořit skupinu ochrany, klikněte na možnost Akce **ochrany**  >  **Actions**  >  **vytvořit skupinu ochrany** a otevřete průvodce **vytvořením nové skupiny ochrany** v konzole MABS.
 
-    ![Online_retention_policy](./media/backup-azure-backup-sharepoint/specify-online-retention.png)
+1. V **Vyberte typ skupiny ochrany**vyberte **servery**.
 
-    > [!NOTE]
-    > MABS používá schéma uchovávání dědečka-otců-syn, ve kterém se dá zvolit jiné zásady uchovávání informací pro různé body zálohování.
-    >
-    >
-12. Podobně jako disk musí být v Azure vytvořená počáteční replika referenčního bodu. Vyberte upřednostňovanou možnost pro vytvoření prvotní záložní kopie do Azure a pak klikněte na **Další**.
+1. V části **Vybrat členy skupiny**rozbalte server, který obsahuje roli WFE. Pokud existuje více než jeden server WFE, vyberte ten, na kterém jste nainstalovali ConfigureSharePoint. exe.
 
-    ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
-13. Zkontrolujte vybraná nastavení na stránce **Souhrn** a pak klikněte na **vytvořit skupinu**. Po vytvoření skupiny ochrany se zobrazí zpráva o úspěchu.
+    Když rozbalíte službu VSS dotazů serveru SharePoint Server MABS, abyste viděli, co data MABS může chránit.  Pokud je databáze SharePointu vzdálená, MABS se k ní připojí. Pokud se zdroje dat služby SharePoint nezobrazí, zkontrolujte, zda je zapisovač VSS spuštěn na serveru SharePoint a všech vzdálených SQL Server a zda je agent MABS nainstalován na serveru SharePoint a ve vzdáleném SQL Server. Také se ujistěte, že databáze služby SharePoint nejsou chráněny jinde jako SQL Server databáze.
 
-    ![Souhrn](./media/backup-azure-backup-sharepoint/summary.png)
+1. V **Vyberte způsob ochrany dat**určete, jak chcete zpracovat krátkodobé a dlouhodobé \- zálohování. Krátkodobé zálohy se vždy nejdříve ukládají na disk s možností zálohování z disku do cloudu Azure pomocí zálohování Azure \(krátkodobé nebo dlouhodobé\).
+
+1. V nabídce **Vybrat krátkodobé \- cíle**určete, jak se má na disk zálohovat na krátkodobé \- úložiště.   V poli **Rozsah uchování** zadejte dobu, po kterou chcete data na disku uchovávat. V poli **četnost synchronizací**můžete určit, jak často chcete spouštět přírůstkové zálohování na disk. Pokud nechcete nastavit interval zálohování, můžete zaškrtnout možnost těsně před bodem obnovení, takže MABS spustí expresní úplné zálohování těsně před každým naplánovaným bodem obnovení.
+
+1. Na stránce zkontrolovat přidělení disku zkontrolujte přidělené místo na disku fondu úložiště pro skupinu ochrany.
+
+    **Celková velikost dat** je velikost dat, která chcete zálohovat, a **místo na disku, které se má zřídit v MABS** , je místo, které MABS pro skupinu ochrany doporučuje. MABS vybere ideální záložní svazek na základě nastavení. Možnosti záložního svazku ale můžete upravit v části **Podrobnosti přidělení disku**. V rozevírací nabídce vyberte požadované úložiště pro úlohy. Úpravy, které provedete, změní hodnoty v polích **Celková velikost úložiště** a **Volný úložný prostor** v podokně **Dostupný úložný prostor na disku**. Za nezřízené místo je množství MABS úložiště, které vám nabídne přidání do svazku, aby bylo možné v budoucnu pokračovat v zálohování.
+
+1. V části **Vybrat způsob vytvoření repliky**vyberte, jak chcete zpracovat počáteční úplnou replikaci dat.  Pokud zvolíte replikaci přes síť, doporučujeme vám vybrat dobu mimo špičku. Když máte velké objemy dat nebo ne úplně optimální síťové podmínky, zvažte replikaci dat offline pomocí vyměnitelného média.
+
+1. V možnosti **Vybrat nastavení kontroly konzistence** vyberte, jak chcete kontroly konzistence automatizovat. Spuštění kontroly můžete povolit jenom pro případ, že začnou být nekonzistentní data repliky, nebo podle plánu. Pokud nechcete konfigurovat automatickou kontrolu konzistence, můžete kdykoli spustit ruční kontrolu tak, že pravým tlačítkem myši kliknete na skupinu ochrany v oblasti **ochrana** konzoly MABS a vyberete **provést kontrolu konzistence**.
+
+1. Pokud jste vybrali možnost zálohování do cloudu pomocí služby Azure Backup, na stránce **Zadání dat pro online ochranu** zkontrolujte, jestli jsou vybrané úlohy, které chcete do Azure zálohovat.
+
+1. V **Nastavení plán online zálohování**určete, jak často se má provést přírůstkové zálohování do Azure. Spouštění zálohování můžete naplánovat na každý den, týden, měsíc nebo rok a k datu a v čase, ve kterém se mají spustit. Zálohování se může spouštět až dvakrát denně. Pokaždé, když se zálohování spustí, vytvoří se v Azure bod obnovení dat z kopie zálohovaných dat uložených na disku MABS.
+
+1. V části **zadat zásady online uchovávání dat**můžete určit způsob, jakým se v Azure uchovávají body obnovení vytvořené z denních, týdenních, měsíčních nebo ročních záloh.
+
+1. V části **Zvolit online replikaci**určete, jak se bude provádět počáteční Úplná replikace dat. Replikaci můžete provést po síti nebo můžete provést offline zálohování (offline předvyplnění). Zálohování offline používá funkci Azure Import. [Další informace](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/).
+
+1. Na stránce **Souhrn** zkontrolujte nastavení. Po kliknutí na **vytvořit skupinu**dojde k počáteční replikaci dat. Po dokončení se stav skupiny ochrany na stránce **stav** zobrazí jako **OK** . Potom se provede záloha podle nastavení skupiny ochrany.
+
+## <a name="monitoring"></a>Monitorování
+
+Po vytvoření skupiny ochrany dojde k počáteční replikaci a MABS spustí zálohování a synchronizaci dat SharePointu. MABS sleduje počáteční synchronizaci a následné zálohy.  Data SharePointu můžete sledovat několika způsoby:
+
+* Pomocí výchozího monitorování MABS můžete nastavit oznámení pro proaktivní monitorování publikováním výstrah a konfigurací oznámení. Oznámení můžete odesílat e-mailem pro klíčové, varovné nebo informační výstrahy a stav instancí obnovení.
+
+* Pokud používáte Operations Manager, můžete výstrahy publikovat centrálně.
+
+### <a name="set-up-monitoring-notifications"></a>Nastavení oznámení monitorování
+
+1. V konzole pro správu MABS klikněte na **sledování**  >  **Akce**  >  **Možnosti**.
+
+2. Klikněte na **Server SMTP** zadejte název serveru, port a e-mailovou adresu, ze které se budou odesílat oznámení. Adresa musí být platná.
+
+3. V případě **ověřeného serveru SMTP**zadejte uživatelské jméno a heslo. Uživatelské jméno a heslo musí být název doménového účtu osoby, jejíž adresa "od" je popsaná v předchozím kroku. V opačném případě se doručení oznámení nezdařilo.
+
+4. Pokud chcete otestovat nastavení serveru SMTP, klikněte na **Odeslat zkušební E-mail**, zadejte e-mailovou adresu, na kterou má MABS odeslat zkušební zprávu, a potom klikněte na **OK**. Klikněte na **Možnosti**  >  **oznámení** a vyberte typy výstrah, o kterých chcete příjemce informovat. Do pole **příjemci** zadejte e-mailové adresy všech příjemců, kterým chcete MABS posílat kopie oznámení.
+
+### <a name="publish-operations-manager-alerts"></a>Publikování výstrah Operations Manageru
+
+1. V konzole pro správu MABS klikněte na **sledování**  >  **Akce**  >  **Možnosti**  >  **Publikování výstrah**  >  **publikovat aktivní výstrahy** .
+
+2. Po povolení **Publikování výstrah**budou všechny existující výstrahy MABS, které mohou vyžadovat akci uživatele, publikovány do protokolu událostí **MABS Alerts** . Agent Operations Manager, který je nainstalovaný na serveru MABS, pak tyto výstrahy publikuje do Operations Manager a nadále aktualizuje konzolu, když se generují nové výstrahy.
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>Obnovení položky SharePointu z disku pomocí MABS
 
 V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstraněno a je třeba je obnovit.
 ![MABS SharePoint Protection4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
-1. Otevřete **Konzola správce aplikace DPM**. Všechny farmy služby SharePoint, které jsou chráněny aplikací DPM, jsou zobrazeny na kartě **ochrana** .
+1. Otevřete **konzolu pro správu MABS**. Všechny farmy služby SharePoint, které jsou chráněny pomocí MABS, se zobrazí na kartě **ochrana** .
 
     ![MABS SharePoint Protection3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
 2. Chcete-li začít obnovovat položku, vyberte kartu **obnovení** .
@@ -207,7 +191,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
     >
     >
 
-## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>Obnovení databáze služby SharePoint z Azure pomocí DPM
+## <a name="restore-a-sharepoint-database-from-azure-by-using-mabs"></a>Obnovení databáze služby SharePoint z Azure pomocí MABS
 
 1. Chcete-li obnovit databázi obsahu služby SharePoint, procházejte různými body obnovení (jak je uvedeno dříve) a vyberte bod obnovení, který chcete obnovit.
 
@@ -215,7 +199,7 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
 2. Dvojím kliknutím na bod obnovení služby SharePoint zobrazíte dostupné informace o katalogu služby SharePoint.
 
    > [!NOTE]
-   > Vzhledem k tomu, že je farma služby SharePoint chráněná pro dlouhodobé uchovávání v Azure, nejsou v MABS k dispozici žádné informace o katalogu (metadata). V důsledku toho je potřeba obnovit katalog farmy služby SharePoint, kdykoli bude nutné obnovit databázi obsahu služby SharePoint v čase.
+   > Protože je farma služby SharePoint chráněná pro dlouhodobé uchovávání v Azure, na serveru MABS nejsou k dispozici žádné informace o katalogu (metadata). V důsledku toho je potřeba obnovit katalog farmy služby SharePoint, kdykoli bude nutné obnovit databázi obsahu služby SharePoint v čase.
    >
    >
 3. Klikněte na **znovu zařadit do katalogu**.
@@ -233,6 +217,44 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
 
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. V tomto okamžiku postupujte podle kroků pro obnovení výše v tomto článku a obnovte databázi obsahu služby SharePoint z disku.
+
+## <a name="switching-the-front-end-web-server"></a>Přepínání předřazeného webového serveru
+
+Pokud máte více než jeden front-end webový server a chcete přepnout Server, který MABS používá k ochraně farmy, postupujte podle pokynů:
+
+Následující postup využívá příklad serverové farmy se dvěma front-end webovými servery *Server1* a *Server2*. MABS používá k ochraně farmy *Server1* . Změňte front-end webový server, který MABS používá pro *Server2* , abyste mohli z farmy odebrat *Server1* .
+
+> [!NOTE]
+> Pokud je front-end webový server, který MABS používá k ochraně farmy, nedostupný, pomocí následujícího postupu změňte front-end webový server tak, že začnete v kroku 4.
+
+### <a name="to-change-the-front-end-web-server-that-mabs-uses-to-protect-the-farm"></a>Změna předřazeného webového serveru, který MABS používá k ochraně farmy
+
+1. Zastavte službu zapisovač VSS SharePointu na *Server1* spuštěním následujícího příkazu na příkazovém řádku:
+
+    ```CMD
+    stsadm -o unregisterwsswriter
+    ```
+
+1. V *Server1*otevřete Editor registru a přejděte na následující klíč:
+
+   **HKLM\System\CCS\Services\VSS\VssAccessControl**
+
+1. Zkontroluje všechny hodnoty uvedené v podklíči VssAccessControl. Pokud má nějaká položka data s hodnotou 0 a v rámci přidružených přihlašovacích údajů k účtu je spuštěný jiný zapisovač VSS, změňte údaj hodnoty na 1.
+
+1. Nainstalujte agenta ochrany na *Server2*.
+
+   > [!WARNING]
+   > Webové servery front-end můžete přepínat pouze v případě, že jsou oba servery ve stejné doméně.
+
+1. Na počítači *Server2*v příkazovém řádku změňte adresář na `_MABS installation location_\bin\` a spusťte **ConfigureSharePoint**. Další informace o ConfigureSharePoint najdete v tématu [Konfigurace zálohování](#configure-backup).
+
+1. Vyberte skupinu ochrany, do které patří serverová farma, a pak klikněte na **Upravit skupinu ochrany**.
+
+1. V průvodci úpravou skupiny rozbalte na stránce **Vybrat členy skupiny** položku *Server2* a vyberte serverovou farmu a potom průvodce dokončete.
+
+   Spustí se kontrola konzistence.
+
+1. Pokud jste provedli krok 6, můžete nyní odebrat svazek ze skupiny ochrany.
 
 ## <a name="next-steps"></a>Další kroky
 

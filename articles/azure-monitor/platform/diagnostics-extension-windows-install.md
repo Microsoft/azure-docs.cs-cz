@@ -7,43 +7,68 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: dd18fd484ac456f0c38cd6d9b73a2395a08ad5d0
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: a964a28b728a2b1741fb555f47fe6e329bc9902a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883103"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655698"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)
-Rozšíření Azure Diagnostics je agent v Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek poskytuje podrobné informace o instalaci a konfiguraci rozšíření diagnostiky systému Windows a popis způsobu, jakým jsou data uložena v a Azure Storage účtu.
+[Rozšíření Azure Diagnostics](diagnostics-extension-overview.md) je agent v Azure monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek poskytuje podrobné informace o instalaci a konfiguraci rozšíření diagnostiky systému Windows a popis způsobu, jakým jsou data uložena v a Azure Storage účtu.
 
 Diagnostické rozšíření se implementuje jako [rozšíření virtuálního počítače](../../virtual-machines/extensions/overview.md) v Azure, takže podporuje stejné možnosti instalace, které využívají správce prostředků šablon, PowerShellu a rozhraní příkazového řádku. Podrobnosti o instalaci a údržbě rozšíření virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů pro systém Windows](../../virtual-machines/extensions/features-windows.md) .
+
+## <a name="overview"></a>Přehled
+Když konfigurujete rozšíření diagnostiky Windows Azure, musíte zadat účet úložiště, do kterého se budou posílat všechna zadaná data. Volitelně můžete přidat jednu pro více *datových umyvadel* k odeslání dat do různých umístění.
+
+- Azure Monitor jímka – odeslání údajů o výkonu hostů do Azure Monitor metriky.
+- Jímka centra událostí – odesílá data o výkonu a protokolu hostů do centra událostí Azure, aby bylo možné přesměrovat mimo Azure. Tato jímka se nedá nakonfigurovat v Azure Portal.
+
 
 ## <a name="install-with-azure-portal"></a>Instalace pomocí Azure Portal
 Diagnostické rozšíření můžete nainstalovat a nakonfigurovat na samostatném virtuálním počítači ve Azure Portal, který poskytuje rozhraní na rozdíl od práce přímo s konfigurací. Pokud povolíte rozšíření pro diagnostiku, bude automaticky používat výchozí konfiguraci s nejběžnějšími čítači výkonu a událostmi. Tuto výchozí konfiguraci můžete upravit podle svých specifických požadavků.
 
 > [!NOTE]
-> K dispozici jsou nastavení rozšíření diagnostiky, která nejdou konfigurovat pomocí Azure Portal, včetně odesílání dat do Azure Event Hubs. Pro tato nastavení je nutné použít jednu z dalších metod konfigurace.
+> Níže je uveden popis nejběžnějšího nastavení pro diagnostické rozšíření. Podrobnosti o všech možnostech konfigurace najdete v tématu [schéma rozšíření pro diagnostiku systému Windows](diagnostics-extension-schema-windows.md).
 
 1. Otevřete nabídku pro virtuální počítač v Azure Portal.
+
 2. V nabídce virtuální počítač klikněte na **nastavení diagnostiky** v části **monitorování** .
+
 3. Klikněte na **Povolit monitorování na úrovni hosta** , pokud už rozšíření diagnostiky ještě není povolené.
-4. Vytvoří se nový účet Azure Storage pro virtuální počítač s názvem, který bude založený na názvu skupiny prostředků pro virtuální počítač. Virtuální počítač můžete připojit k jinému účtu úložiště tak, že vyberete kartu **Agent** .
 
-![Nastavení diagnostiky](media/diagnostics-extension-windows-install/diagnostic-settings.png)
+   ![Povolení monitorování](media/diagnostics-extension-windows-install/enable-monitoring.png)
 
+4. Vytvoří se nový účet Azure Storage pro virtuální počítač s názvem, který bude založený na názvu skupiny prostředků pro virtuální počítač, a vybere se výchozí sada čítačů výkonu a protokolů výkonu hosta.
 
-Po povolení diagnostického rozšíření můžete upravit výchozí konfiguraci. Následující tabulka popisuje možnosti, které můžete upravit na různých kartách. Některé možnosti mají **vlastní** příkaz, který vám umožní zadat podrobnější konfiguraci. Podrobnosti o různých nastaveních najdete v tématu [schéma rozšíření diagnostiky Windows](diagnostics-extension-schema-windows.md) .
+   ![Nastavení diagnostiky](media/diagnostics-extension-windows-install/diagnostic-settings.png)
 
-| Karta | Popis |
-|:---|:---|
-| Přehled | Zobrazí aktuální konfiguraci s odkazy na jiné karty. |
-| Čítače výkonu | Vyberte čítače výkonu, které chcete shromáždit, a vzorkovací frekvenci pro každý z nich.  |
-| Protokoly | Vyberte data protokolu, která se mají shromažďovat. To zahrnuje protokoly událostí Windows, protokoly IIS, protokoly aplikací .NET a události ETW.  |
-| Výpisy stavu systému | Povolte výpis stavu systému pro různé procesy. |
-| Jímky | Povolit jímky dat pro posílání dat do cílových umístění kromě Azure Storage.<br>Azure Monitor – odesílá údaje o výkonu do Azure Monitor metrik.<br>Application Insights – odeslání dat do Application Insights aplikace. |
-| Agent | Upravte pro agenta následující konfiguraci:<br>-Změnit účet úložiště.<br>-Zadejte maximální místní disk použitý pro agenta.<br>-Nakonfigurujte protokoly pro stav samotného agenta.|
+5. Na kartě **čítače výkonu** vyberte metriky hostů, které chcete shromáždit z tohoto virtuálního počítače. Použijte **vlastní** nastavení pro pokročilejší výběr.
 
+   ![Čítače výkonu](media/diagnostics-extension-windows-install/performance-counters.png)
+
+6. Na kartě **protokoly** vyberte protokoly, které se mají shromažďovat z virtuálního počítače. Protokoly je možné odesílat do úložiště nebo do Center událostí, ale ne do Azure Monitor. Pomocí [agenta Log Analytics](log-analytics-agent.md) můžete shromažďovat protokoly hostů Azure monitor.
+
+   ![Protokoly](media/diagnostics-extension-windows-install/logs.png)
+
+7. Na kartě **výpisy stavu systému** určete všechny procesy, které budou shromažďovat výpisy paměti po havárii. Data budou zapsána do účtu úložiště pro nastavení diagnostiky a volitelně můžete zadat kontejner objektů BLOB.
+
+   ![Výpisy stavu systému](media/diagnostics-extension-windows-install/crash-dumps.png)
+
+8. Na kartě **jímky** určete, jestli se mají posílat data do jiných umístění než do Azure Storage. Pokud vyberete **Azure monitor**, budou se odesílat údaje o výkonu hostů do Azure monitor metrik. Jímka centra událostí se nedá nakonfigurovat pomocí Azure Portal.
+
+   ![Jímky](media/diagnostics-extension-windows-install/sinks.png)
+   
+   Pokud jste nepovolili identitu přiřazenou systémem, která je nakonfigurovaná pro váš virtuální počítač, může se při ukládání konfigurace s Azure Monitorou jímkou zobrazit následující upozornění. Kliknutím na banner povolte identitu přiřazenou systému.
+   
+   ![Spravovaná entita](media/diagnostics-extension-windows-install/managed-entity.png)
+
+9. V **agentovi**můžete změnit účet úložiště, nastavit diskovou kvótu a určit, jestli se mají shromažďovat protokoly diagnostické infrastruktury.  
+
+   ![Agent](media/diagnostics-extension-windows-install/agent.png)
+
+10. Kliknutím na **Uložit** uložte konfiguraci. 
 
 > [!NOTE]
 > I když může být konfigurace pro diagnostické rozšíření naformátovaná ve formátu JSON nebo XML, všechny konfigurace provedené v Azure Portal se vždycky uloží jako JSON. Pokud používáte XML s jinou konfigurační metodou a pak změníte konfiguraci pomocí Azure Portal, nastavení se změní na JSON.
@@ -73,6 +98,7 @@ Chráněná nastavení jsou definována v [elementu PrivateConfig](diagnostics-e
     "storageAccountEndPoint": "https://mystorageaccount.blob.core.windows.net"
 }
 ```
+
 Veřejné nastavení je definováno ve [veřejném elementu](diagnostics-extension-schema-windows.md#publicconfig-element) schématu konfigurace. Následuje minimální příklad souboru veřejného nastavení, který umožňuje shromažďování protokolů diagnostické infrastruktury, jeden čítač výkonu a jeden protokol událostí. Úplné podrobnosti o veřejném nastavení naleznete v tématu [příklad konfigurace](diagnostics-extension-schema-windows.md#publicconfig-element) .
 
 ```JSON
@@ -167,17 +193,17 @@ V následující tabulce jsou uvedeny různé typy dat shromážděných z rozš
 
 | Data | Typ úložiště | Popis |
 |:---|:---|:---|
-| WADDiagnosticInfrastructureLogsTable | Table | Diagnostické monitorování a změny konfigurace. |
-| WADDirectoriesTable | Table | Adresáře, které monitoruje monitorování diagnostiky.  Patří sem protokoly IIS, protokoly neúspěšných požadavků služby IIS a vlastní adresáře.  Umístění souboru protokolu objektu BLOB je zadáno v poli kontejneru a název objektu BLOB je uveden v poli RelativePath.  Pole AbsolutePath označuje umístění a název souboru, který se nachází na virtuálním počítači Azure. |
-| WadLogsTable | Table | Protokoly napsané v kódu pomocí naslouchacího procesu trasování. |
-| WADPerformanceCountersTable | Table | Čítače výkonu. |
-| WADWindowsEventLogsTable | Table | Protokoly událostí systému Windows. |
+| WADDiagnosticInfrastructureLogsTable | Tabulka | Diagnostické monitorování a změny konfigurace. |
+| WADDirectoriesTable | Tabulka | Adresáře, které monitoruje monitorování diagnostiky.  Patří sem protokoly IIS, protokoly neúspěšných požadavků služby IIS a vlastní adresáře.  Umístění souboru protokolu objektu BLOB je zadáno v poli kontejneru a název objektu BLOB je uveden v poli RelativePath.  Pole AbsolutePath označuje umístění a název souboru, který se nachází na virtuálním počítači Azure. |
+| WadLogsTable | Tabulka | Protokoly napsané v kódu pomocí naslouchacího procesu trasování. |
+| WADPerformanceCountersTable | Tabulka | Čítače výkonu. |
+| WADWindowsEventLogsTable | Tabulka | Protokoly událostí systému Windows. |
 | WAD – IIS – failedreqlogfiles | Objekt blob | Obsahuje informace z protokolů neúspěšných požadavků služby IIS. |
 | WAD – IIS – soubory protokolů | Objekt blob | Obsahuje informace o protokolech služby IIS. |
 | Uživatelská | Objekt blob | Vlastní kontejner založený na konfiguraci adresářů monitorovaných monitorováním diagnostiky.  Název tohoto kontejneru objektů BLOB se určí v WADDirectoriesTable. |
 
 ## <a name="tools-to-view-diagnostic-data"></a>Nástroje pro zobrazení diagnostických dat
-K dispozici je několik nástrojů, které vám umožní zobrazit data po přenosu do úložiště. Příklad:
+K dispozici je několik nástrojů, které vám umožní zobrazit data po přenosu do úložiště. Například:
 
 * Průzkumník serveru v aplikaci Visual Studio – Pokud jste nainstalovali nástroje Azure pro Microsoft Visual Studio, můžete použít uzel Azure Storage v Průzkumník serveru k zobrazení dat objektů BLOB jen pro čtení a tabulek z vašich účtů úložiště Azure. Můžete zobrazit data z místního účtu emulátoru úložiště a taky z účtů úložiště, které jste vytvořili pro Azure. Další informace najdete v tématu [procházení a Správa prostředků úložiště pomocí Průzkumník serveru](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Průzkumník služby Microsoft Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje snadnou práci s Azure Storagemi daty v systémech Windows, OSX a Linux.

@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/10/2020
+ms.date: 05/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0e6e243ceb73ca2a1180e59ba6c6b4095ed6069a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 082689dba5fdfa8505f2293223e76f2164b0df14
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116709"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655292"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Změna modelu vyžádání obsahu kanálu v Azure Cosmos DB
 
@@ -43,7 +43,7 @@ FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator();
 Pomocí `FeedIterator` můžete snadno zpracovat kanál změn celého kontejneru vaším vlastním tempem. Tady je příklad:
 
 ```csharp
-FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator<User>(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -61,7 +61,7 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 V některých případech můžete chtít zpracovat pouze změny určitého klíče oddílu. Můžete získat `FeedIterator` konkrétní klíč oddílu a zpracovat změny stejným způsobem jako u celého kontejneru:
 
 ```csharp
-FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator(new PartitionKey("myPartitionKeyValueToRead"), new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator<User>(new PartitionKey("myPartitionKeyValueToRead"), new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -98,7 +98,7 @@ Tady je ukázka, která ukazuje, jak číst ze začátku kanálu změn kontejner
 Počítač 1:
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<Person>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 while (iteratorA.HasMoreResults)
 {
    FeedResponse<User> users = await iteratorA.ReadNextAsync();
@@ -149,6 +149,8 @@ while (iterator.HasMoreResults)
 FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(continuation);
 ```
 
+Dokud kontejner Cosmos stále existuje, token pro pokračování FeedIterator nikdy nevyprší.
+
 ## <a name="comparing-with-change-feed-processor"></a>Porovnání s procesorem Change feed
 
 V mnoha scénářích může být kanál změn zpracován pomocí [procesoru změn kanálu](change-feed-processor.md) nebo modelu Pull. Tokeny pro pokračování modelu vyžádání a kontejner zapůjčení změnového kanálu jsou "záložky" pro poslední zpracovávanou položku (nebo dávku položek) v kanálu změn.
@@ -156,9 +158,9 @@ Nemůžete však převést tokeny pokračování na kontejner zapůjčení (nebo
 
 Měli byste zvážit použití modelu vyžádání obsahu v těchto scénářích:
 
-- Chcete provést jednorázovou čtení stávajících dat v kanálu změn
-- Chcete pouze číst změny z konkrétního klíče oddílu
-- Nechcete využívat model nabízených oznámení a chcete používat kanál změn vlastním tempem.
+- Čtení změn z konkrétního klíče oddílu
+- Řízení tempa, ve kterém klient přijímá změny ke zpracování
+- Provedení jednorázového čtení stávajících dat v kanálu změn (například k migraci dat)
 
 Tady jsou některé klíčové rozdíly mezi procesorem Change feed a modelem Pull:
 
@@ -168,7 +170,7 @@ Tady jsou některé klíčové rozdíly mezi procesorem Change feed a modelem Pu
 | Možnost Přehrát minulé změny | Ano, s modelem push | Ano, s modelem pull|
 | Cyklické dotazování pro budoucí změny | Automaticky kontroluje změny na základě zadaného uživatele.`WithPollInterval` | Ruční |
 | Zpracovat změny z celého kontejneru | Ano a automaticky paralelně napříč několika vlákny nebo počítači, které jsou náročné ze stejného kontejneru| Ano a ručně paralelně s využitím FeedTokens |
-| Zpracovat změny jenom z jednoho klíče oddílu | Nepodporuje se | Yes|
+| Zpracovat změny jenom z jednoho klíče oddílu | Nepodporuje se | Ano|
 | Úroveň podpory | Obecná dostupnost | Preview |
 
 ## <a name="next-steps"></a>Další kroky

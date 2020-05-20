@@ -1,7 +1,7 @@
 ---
 title: Aktivovat události v pracovních postupech ML
 titleSuffix: Azure Machine Learning
-description: Naučte se spouštět aplikace řízené událostmi, procesy nebo postupy CI/CD na základě Azure Machine Learningch událostí a zjednodušit tak životní cyklus ML.
+description: V Azure Machine Learning nastavte aplikace řízené událostmi, procesy nebo CI/CD Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 03/11/2020
-ms.openlocfilehash: 236cc46bb6f9e5ed95e4a49068ac41ae77a736f5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 79bea443ea576ba0c17c1a8150c305d7cd2320ff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982866"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655794"
 ---
-# <a name="trigger-event-driven-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Aktivovat aplikace řízené událostmi, procesy nebo postupy CI/CD na základě Azure Machine Learningch událostí (Preview)
+# <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Aktivovat aplikace, procesy nebo pracovní postupy CI/CD na základě Azure Machine Learningch událostí (Preview)
 
 V tomto článku se dozvíte, jak nastavit aplikace řízené událostmi, procesy nebo postupy CI/CD na základě Azure Machine Learningch událostí, jako jsou například e-maily s oznámením o selhání nebo spuštění kanálu ML, pokud jsou v [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/)zjištěny určité podmínky. 
 

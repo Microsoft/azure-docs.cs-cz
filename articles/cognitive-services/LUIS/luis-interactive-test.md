@@ -2,13 +2,13 @@
 title: Testovací aplikace na portálu LUIS
 description: Pomocí Language Understanding (LUIS) můžete průběžně pracovat na vaší aplikaci a zdokonalit tak její porozumění jazyku.
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.openlocfilehash: cb4559e6d3582a337cbc32ef986bec5db5940ef9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/17/2020
+ms.openlocfilehash: 3608bb17b6d1ea8c9095fa54324993a9e40355b6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591858"
+ms.locfileid: "83653871"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testování aplikace LUIS na portálu LUIS
 
@@ -44,7 +44,7 @@ Utterance testu by neměl být přesně stejný jako jakýkoli příklad projevy
 
     ![Interaktivní testování identifikuje nesprávný záměr.](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>Zkontrolovat skóre
+## <a name="inspect-the-prediction"></a>Zkontrolovat předpověď
 
 Podrobnosti o výsledku testu si můžete prohlédnout na panelu **Kontrola** .
 
@@ -52,23 +52,21 @@ Podrobnosti o výsledku testu si můžete prohlédnout na panelu **Kontrola** .
 
     ![Kliknutím na tlačítko zkontrolovat zobrazíte další podrobnosti o výsledcích testu.](./media/luis-how-to-interactive-test/inspect.png)
 
-1. Zobrazí se panel **Kontrola** . Panel zahrnuje nejvyšší záměr hodnocení i všechny identifikované entity. Na panelu se zobrazí výsledek vybrané utterance.
+1. Zobrazí se panel **Kontrola** . Panel zahrnuje nejvyšší záměr hodnocení i všechny identifikované entity. Na panelu se zobrazuje předpověď vybrané utterance.
 
-    ![Panel zahrnuje nejvyšší záměr hodnocení i všechny identifikované entity. Na panelu se zobrazí výsledek vybrané utterance.](./media/luis-how-to-interactive-test/inspect-panel.png)
+## <a name="add-to-example-utterances"></a>Přidat do ukázkového projevy
 
-## <a name="correct-top-scoring-intent"></a>Opravit nejvyšší záměr hodnocení
+Z panelu Kontrola můžete přidat utterance testu do záměru tak, že vyberete **Přidat do ukázkového projevy**.
 
-1. Pokud je záměr nejvyšší bodování nesprávný, vyberte tlačítko **Upravit** .
+## <a name="disable-required-features"></a>Zakázat požadované funkce
 
-1.  V rozevíracím seznamu vyberte správný záměr pro utterance.
+Výběrem tohoto přepínače zobrazíte, co by předpověď znamenalo, pokud nebyla funkce entity nutná.
 
-    ![Vybrat správný záměr](./media/luis-how-to-interactive-test/intent-select.png)
+Tento přepínač vám pomůže určit, jestli má školená aplikace správně předpovídat vaše entity na základě požadovaných funkcí. Vyškolená aplikace může vyhodnotit neplatnou entitu strojového učení na základě nesprávného označení příkladu projevy nebo požadovaná funkce se neshoduje s textem.
 
 ## <a name="view-sentiment-results"></a>Zobrazit výsledky mínění
 
 Pokud je na stránce **[publikovat](luis-how-to-publish-app.md#enable-sentiment-analysis)** nakonfigurována **Analýza mínění** , výsledky testu zahrnují mínění nalezený v utterance.
-
-![Obrázek testovacího podokna s analýzou mínění](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>Opravit záměr vyhovujícího vzoru
 

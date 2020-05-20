@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentace k převodu řeči na text
-summary: Převod řeči na text ze služby pro rozpoznávání řeči, označovaného také jako rozpoznávání řeči, umožňuje v reálném čase a dávkové přepisy zvukových streamů na text.
+summary: Převod řeči na text ze služby pro rozpoznávání řeči, označovaného také jako rozpoznávání řeči, umožňuje v reálném čase a dávkové přepisy zvukových streamů na text. S dalšími referenčními vstupními textovými vstupy se taky umožňuje vyhodnotit výslovnost v reálném čase a dávat mluvčí názory na přesnost a Fluency mluveného zvuku.
 metadata:
   title: Dokumentace pro převod řeči na text – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: f496ba72f4f649a3ed5146f0b74caf3d8110adf9
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: be34def3c7aacc5419071028a3d3085fe69103fa
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83201922"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83653475"
 landingContent:
 - title: Převod řeči na text
   linkLists:
@@ -38,6 +38,8 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Rozpoznávání řeči uložené v úložišti objektů blob
       url: quickstarts/from-blob.md
+    - text: Posouzení výslovnosti pomocí referenčního vstupu
+      url: rest-speech-to-text.md#pronunciation-assessment-parameters
 - title: Vývoj s využitím řeči na text
   linkLists:
   - linkListType: how-to-guide
@@ -62,7 +64,7 @@ landingContent:
       url: how-to-custom-speech-train-model.md
     - text: Vytváření přepisů pořízených lidmi
       url: how-to-custom-speech-human-labeled-transcriptions.md
-- title: Odkazy
+- title: Reference
   linkLists:
   - linkListType: reference
     links:

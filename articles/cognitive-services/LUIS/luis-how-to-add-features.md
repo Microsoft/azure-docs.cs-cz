@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 12445ec5b14f4c274e471bf1b061a3b221664d20
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8b52102ec26ec94097e4b5b9aa1b1730787cfa4b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592300"
+ms.locfileid: "83654102"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Použití funkcí k posílení signálu v seznamu slov
 
@@ -49,8 +49,23 @@ Seznamte se s [Koncepty](luis-concept-feature.md) a zjistěte, kdy a proč použ
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
+
 > [!Note]
 > Seznam frází můžete odstranit nebo deaktivovat z kontextového panelu nástrojů na stránce **funkce ml** .
+
+## <a name="global-phrase-list-applies-to-entire-app"></a>Seznam globálních frází se vztahuje na celou aplikaci.
+
+Seznam frází by měl být použit na záměr nebo entitu, které má být k dispozici, ale může nastat situace, kdy by měl být seznam frází použit pro celou aplikaci jako **globální** funkce.
+
+Na stránce funkce ML vyberte seznam frází a potom v horním kontextovém panelu nástrojů vyberte **vytvořit globální** .
+
+## <a name="model-as-a-feature"></a>Model jako funkce
+
+Entita může být [funkcí záměru nebo entity](luis-concept-feature.md).
+
+Chcete-li přidat entitu jako funkci k záměru, vyberte záměr ze stránky záměry a pak vyberte **+ Přidat funkci** nad kontextový panel nástrojů. Seznam bude obsahovat všechny seznamy frází a entity, které se dají použít jako funkce.
+
+Chcete-li přidat entitu jako funkci do jiné entity, můžete ji přidat buď na stránce s podrobnostmi záměru pomocí [palety entity](label-entity-example-utterance.md#adding-entity-as-a-feature-from-the-entity-palette) , nebo můžete [Přidat funkci](luis-how-to-add-entities.md#add-a-feature-to-a-machine-learned-entity) na stránce s podrobnostmi entity.
 
 ## <a name="next-steps"></a>Další kroky
 

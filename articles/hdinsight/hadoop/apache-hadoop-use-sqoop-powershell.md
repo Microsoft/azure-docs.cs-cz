@@ -6,16 +6,16 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 01/10/2020
-ms.openlocfilehash: f39b595adf249b7412cb9b6b48f86b6fbd2c5e1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: 87077eacd607acf4efbd660a1926daf15db7f7e5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76263400"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653572"
 ---
-# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Spouštění úloh Apache Sqoop pomocí Azure PowerShell pro Apache Hadoop ve službě HDInsight
+# <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>Spouštění úloh Apache Sqoop pomocí Azure PowerShell ve službě HDInsight
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
@@ -92,7 +92,7 @@ New-AzHDInsightSqoopJobDefinition `
         -DisplayOutputType StandardOutput
     ```
 
-Pokud se zobrazí chybová zpráva, `The specified blob does not exist.`zkuste to znovu za několik minut.
+Pokud se zobrazí chybová zpráva, `The specified blob does not exist.` zkuste to znovu za několik minut.
 
 ## <a name="sqoop-import"></a>Import Sqoop
 
@@ -126,9 +126,9 @@ Get-AzHDInsightJobOutput `
 
 ## <a name="additional-sqoop-export-example"></a>Příklad další Sqoop exportu
 
-Jedná se o robustní příklad, který exportuje data `/tutorials/usesqoop/data/sample.log` z výchozího účtu úložiště a pak je naimportuje do tabulky nazvané `log4jlogs` v databázi SQL Server. Tento příklad není závislý na předchozích příkladech.
+Jedná se o robustní příklad, který exportuje data z `/tutorials/usesqoop/data/sample.log` výchozího účtu úložiště a pak je naimportuje do tabulky nazvané `log4jlogs` v databázi SQL Server. Tento příklad není závislý na předchozích příkladech.
 
-Následující skript prostředí PowerShell předběžně zpracuje zdrojový soubor a pak ho exportuje do Azure SQL Database do tabulky `log4jlogs`. `CLUSTERNAME`Nahraďte `CLUSTERPASSWORD`hodnoty, `SQLPASSWORD` a s hodnotami, které jste použili v rámci požadavků.
+Následující skript prostředí PowerShell předběžně zpracuje zdrojový soubor a pak ho exportuje do Azure SQL Database do tabulky `log4jlogs` . Nahraďte `CLUSTERNAME` `CLUSTERPASSWORD` hodnoty, a `SQLPASSWORD` s hodnotami, které jste použili v rámci požadavků.
 
 ```powershell
 <#------ BEGIN USER INPUT ------#>

@@ -3,12 +3,12 @@ title: Obnovení souborů a složek ze zálohy virtuálního počítače Azure
 description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu obnovení virtuálního počítače Azure.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c518c080f3789d36d2ca600ade23a0b4b2ab385
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273303"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652108"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -53,11 +53,11 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
     ![Generované heslo](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
-7. Z umístění pro stahování (obvykle složky Stažené soubory) klikněte pravým tlačítkem na spustitelný soubor nebo skript a spusťte ho s přihlašovacími údaji správce. Po zobrazení výzvy zadejte heslo nebo vložte heslo z paměti a stiskněte klávesu **ENTER**. Po zadání platného hesla se skript připojí k bodu obnovení.
+7. Ujistěte se, že [máte správný počítač](#selecting-the-right-machine-to-run-the-script) pro spuštění skriptu. Pokud je pravý počítač stejný jako počítač, do kterého jste stáhli skript, můžete pokračovat do části ke stažení. Z umístění pro stahování (obvykle složky *stažené soubory* ) klikněte pravým tlačítkem na spustitelný soubor nebo skript a spusťte ho s přihlašovacími údaji správce. Po zobrazení výzvy zadejte heslo nebo vložte heslo z paměti a stiskněte klávesu **ENTER**. Po zadání platného hesla se skript připojí k bodu obnovení.
 
     ![Nabídka obnovení souborů](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
-8. Pro počítače se systémem Linux se vygeneruje skript Pythonu. Jeden potřebuje stáhnout skript a zkopírovat ho na relevantní/kompatibilní server Linux. Možná budete muset změnit oprávnění k provedení ```chmod +x <python file name>```. Pak spusťte soubor Python s nástrojem ```./<python file name>```.
+8. Pro počítače se systémem Linux se vygeneruje skript Pythonu. Jeden potřebuje stáhnout skript a zkopírovat ho na relevantní/kompatibilní server Linux. Možná budete muset změnit oprávnění k provedení ```chmod +x <python file name>``` . Pak spusťte soubor Python s nástrojem ```./<python file name>``` .
 
 V části [požadavky na přístup](#access-requirements) se ujistěte, že se skript úspěšně spouští.
 
@@ -65,7 +65,7 @@ V části [požadavky na přístup](#access-requirements) se ujistěte, že se s
 
 #### <a name="for-windows"></a>Pro Windows
 
-Když spustíte spustitelný soubor, operační systém tyto nové svazky připojí a přiřadí písmena jednotek. K procházení těchto jednotek můžete použít Průzkumníka Windows nebo Průzkumníka souborů. Písmena jednotek přiřazená ke svazkům nemusí být shodná s písmeny, která jsou v původním virtuálním počítači. Název svazku se ale zachová. Pokud je například svazek na původním virtuálním počítači "datový disk (E:`\`)", může být tento svazek připojen v místním počítači jako datový disk (libovolné písmeno ':`\`). Procházejte všemi svazky uvedenými ve výstupu skriptu, dokud nenajdete soubory nebo složku.  
+Když spustíte spustitelný soubor, operační systém tyto nové svazky připojí a přiřadí písmena jednotek. K procházení těchto jednotek můžete použít Průzkumníka Windows nebo Průzkumníka souborů. Písmena jednotek přiřazená ke svazkům nemusí být shodná s písmeny, která jsou v původním virtuálním počítači. Název svazku se ale zachová. Pokud je například svazek na původním virtuálním počítači "datový disk (E: `\` )", může být tento svazek připojen v místním počítači jako datový disk (libovolné písmeno ': `\` ). Procházejte všemi svazky uvedenými ve výstupu skriptu, dokud nenajdete soubory nebo složku.  
 
    ![Nabídka obnovení souborů](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
@@ -84,6 +84,23 @@ Po zjištění souborů a jejich jejich zkopírování do umístění místního
 Po odpojení disků se zobrazí zpráva. Aktualizace připojení může trvat několik minut, aby bylo možné disky odebrat.
 
 V systému Linux se po navázání připojení k bodu obnovení neodstraní příslušné cesty připojení automaticky. Cesty pro připojení existují jako "osamocené" svazky a jsou viditelné, ale při přístupu k souborům a jejich zapisování vyvolávají chybu. Je možné je odebrat ručně. Skript při spuštění identifikuje všechny takové svazky existující z předchozích bodů obnovení a vyčistí je na základě souhlasu.
+
+## <a name="selecting-the-right-machine-to-run-the-script"></a>Výběr správného počítače ke spuštění skriptu
+
+Pokud byl skript úspěšně stažen, je dalším krokem ověření, zda je počítač, na kterém chcete skript spustit, pravý počítač. Níže jsou uvedené požadavky, které je třeba splnit v počítači.
+
+### <a name="original-backed-up-machine-versus-another-machine"></a>Původní zálohovaný počítač versus jiný počítač
+
+1. Pokud je zálohovaným počítačem velký virtuální počítač s velkým diskem – to znamená, že počet disků je větší než 16 disků nebo je každý disk větší než 4 TB, je **nutné skript spustit na jiném počítači** a [tyto požadavky](#file-recovery-from-virtual-machine-backups-having-large-disks) musí být splněny.
+1. I v případě, že zálohovaný počítač není virtuálním počítačem s velkým diskem, v [těchto scénářích](#special-configurations) se skript nedá spustit na stejném ZÁLOHOVANém virtuálním počítači.
+
+### <a name="os-requirements-on-the-machine"></a>Požadavky na operační systém v počítači
+
+Počítač, ve kterém se skript musí spustit, musí splňovat [tyto požadavky na operační systém](#system-requirements).
+
+### <a name="access-requirements-for-the-machine"></a>Požadavky na přístup k počítači
+
+Počítač, ve kterém musí být spuštěn skript, musí splňovat [tyto požadavky na přístup](#access-requirements).
 
 ## <a name="special-configurations"></a>Speciální konfigurace
 
@@ -190,7 +207,7 @@ V systému Linux musí operační systém počítače používaného k obnovení
 
 Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečně připojeny k bodu obnovení.
 
-|Součást | Version  |
+|Součást | Verze  |
 | --------------- | ---- |
 | bash | 4 a vyšší |
 | python | 2.6.6 a vyšší  |
@@ -210,15 +227,13 @@ Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že
 
 > [!NOTE]
 >
-> - Název souboru staženého skriptu bude mít v adrese URL zadán **geografickou příponu** . Pro exampple \': název staženého skriptu začíná řetězcem\'\_\'VMname name\'_\'\', například *ContosoVM_wcus_12345678*
-> - Adresa URL bude <https://pod01-rec2.wcus.backup.windowsazure.com>"
+> - Název souboru staženého skriptu bude mít v adrese URL zadán **geografickou příponu** . Pro exampple: název staženého skriptu začíná řetězcem \' VMname \' \_ \' name \' _ \' \' , například *ContosoVM_wcus_12345678*
+> - Adresa URL bude <https://pod01-rec2.wcus.backup.windowsazure.com> "
 >
 
 Pro Linux skript vyžaduje pro připojení k bodu obnovení komponenty "Open-iSCSI" a "lshw". Pokud komponenty v počítači, na kterém je spuštěn skript, neexistují, skript si vyžádá oprávnění k instalaci součástí. Poskytněte souhlas pro instalaci nezbytných součástí.
 
 Přístup ke službě `download.microsoft.com` je vyžadován ke stažení komponent používaných k vytvoření zabezpečeného kanálu mezi počítačem, na kterém je skript spuštěn, a daty v bodu obnovení.
-
-Skript můžete spustit na jakémkoli počítači, který má stejný (nebo kompatibilní) operační systém jako zálohovaný virtuální počítač. Kompatibilní operační systémy najdete v [tabulce kompatibilní operační systém](backup-azure-restore-files-from-vm.md#system-requirements) . Pokud chráněný virtuální počítač Azure používá prostory úložiště Windows (pro virtuální počítače s Windows Azure) nebo LVM/RAID (pro virtuální počítače se systémem Linux), nemůžete na stejném virtuálním počítači spustit spustitelný soubor nebo skript. Místo toho spusťte spustitelný soubor nebo skript na jakémkoli jiném počítači s kompatibilním operačním systémem.
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Obnovení souborů ze záloh virtuálních počítačů s velkými disky
 

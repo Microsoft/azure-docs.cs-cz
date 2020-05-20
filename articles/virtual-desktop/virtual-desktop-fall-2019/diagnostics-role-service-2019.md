@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e529144198d0c635e74955e98d47dd46ac4fb733
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615146"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657245"
 ---
 # <a name="identify-and-diagnose-issues"></a>Identifikace a diagnostika problémů
 
@@ -36,7 +36,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="diagnose-issues-with-powershell"></a>Diagnostika problémů s prostředím PowerShell
 
-Diagnostika virtuálních počítačů s Windows používá jenom jednu rutinu prostředí PowerShell, ale obsahuje mnoho volitelných parametrů, které vám pomůžou zúžit a izolovat problémy. V následujících částech jsou uvedeny rutiny, které můžete spustit pro diagnostiku problémů. Většinu filtrů lze použít společně. Hodnoty uvedené v závorkách, například `<tenantName>`, by měly být nahrazeny hodnotami, které se vztahují na vaši situaci.
+Diagnostika virtuálních počítačů s Windows používá jenom jednu rutinu prostředí PowerShell, ale obsahuje mnoho volitelných parametrů, které vám pomůžou zúžit a izolovat problémy. V následujících částech jsou uvedeny rutiny, které můžete spustit pro diagnostiku problémů. Většinu filtrů lze použít společně. Hodnoty uvedené v závorkách, například `<tenantName>` , by měly být nahrazeny hodnotami, které se vztahují na vaši situaci.
 
 >[!IMPORTANT]
 >Funkce diagnostiky je určena pro řešení potíží s jedním uživatelem. Všechny dotazy, které používají PowerShell, musí zahrnovat parametry *-username* nebo *-ActivityId* . Pro možnosti monitorování použijte Log Analytics. Další informace o tom, jak odesílat diagnostická data do vašeho pracovního prostoru, najdete v tématu [použití Log Analytics pro diagnostickou funkci](diagnostics-log-analytics-2019.md) . 
@@ -139,6 +139,7 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 
 |Číselný kód|Kód chyby|Navrhované řešení|
 |---|---|---|
+|1322|ConnectionFailedNoMappingOfSIDinAD|Uživatel není členem Azure Active Directory. Pokud je chcete přidat, postupujte podle pokynů v [Centrum správy služby Active Directory](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) .|
 |3|UnauthorizedAccess|Uživatel, který se pokusil spustit rutinu prostředí PowerShell pro správu, nemá oprávnění k tomu, aby to provedl nebo nedokázal zadat své uživatelské jméno.|
 |1000|TenantNotFound|Název tenanta, který jste zadali, se neshoduje s žádnými stávajícími klienty. Zkontrolujte název tenanta pro překlepy a zkuste to znovu.|
 |1006|TenantCannotBeRemovedHasSessionHostPools|Tenanta nemůžete odstranit, pokud obsahuje objekty. Nejprve odstraňte fondy hostitelů relací a potom akci opakujte.|
@@ -160,6 +161,7 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 
 |Číselný kód|Kód chyby|Navrhované řešení|
 |---|---|---|
+|-2147467259|ConnectionFailedAdErrorNoSuchMember|Uživatel není členem Azure Active Directory. Pokud je chcete přidat, postupujte podle pokynů v [Centrum správy služby Active Directory](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) .|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|Hostitel relace není správně připojen ke službě Active Directory.|
 |-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|Připojení se nezdařilo, protože hostitel relace není k dispozici. Ověřte stav hostitele relace.|
 |-2146233088|ConnectionFailedClientDisconnect|Pokud se tato chyba zobrazí často, ujistěte se, že je počítač uživatele připojený k síti.|

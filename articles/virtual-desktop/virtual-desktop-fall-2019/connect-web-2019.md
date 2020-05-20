@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c264006d51f8f0f9ee2a56e994a0dc52d24bd7a8
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 8b73a6bf2c8b853d9e3e939b6c8ff6fc05ac7021
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006035"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657255"
 ---
 # <a name="connect-with-the-web-client"></a>Připojení k webovému klientovi
 
@@ -39,10 +39,10 @@ I když by měl prohlížeč podporující technologii HTML5 fungovat, oficiáln
 
 ## <a name="access-remote-resources-feed"></a>Přístup ke vzdáleným prostředkům kanálu
 
-V prohlížeči přejděte do [webového klienta virtuální plochy Windows](https://rdweb.wvd.microsoft.com/webclient) a přihlaste se pomocí svého uživatelského účtu.
+V prohlížeči přejděte na webový klient pro virtuální počítače <https://rdweb.wvd.microsoft.com/webclient> s Windows a přihlaste se pomocí svého uživatelského účtu.
 
 >[!NOTE]
->Pokud používáte Windows Virtual Desktop na jaře 2020 Release, připojte se k prostředkům pomocí odkazu webový klient v [tomto článku](../connect-web.md) .
+>Pokud používáte Azure Resource Managerovou integraci virtuálních 2020 počítačů s Windows pomocí služby Integration, připojte se <https://rdweb.wvd.microsoft.com/arm/webclient> místo toho k prostředkům.
 
 >[!NOTE]
 >Pokud jste se už přihlásili pomocí jiného účtu Azure Active Directory, než který chcete použít pro virtuální plochu Windows, měli byste se buď odhlásit, nebo použít soukromé okno prohlížeče.

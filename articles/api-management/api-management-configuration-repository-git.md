@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259166"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649220"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložení a konfigurace nastavení služby API Management pomocí Gitu
 
@@ -31,7 +31,7 @@ Následující diagram znázorňuje přehled různých způsobů konfigurace ins
 
 ![Konfigurace Git][api-management-git-configure]
 
-Když ve službě provedete změny pomocí Azure Portal, rutin prostředí PowerShell nebo REST API spravujete databázi konfigurace služby pomocí `https://{name}.management.azure-api.net` koncového bodu, jak je znázorněno na pravé straně diagramu. Levá strana diagramu znázorňuje, jak můžete spravovat konfiguraci služby pomocí úložiště Git a Git pro vaši službu, která se nachází v `https://{name}.scm.azure-api.net`.
+Když ve službě provedete změny pomocí Azure Portal, rutin prostředí PowerShell nebo REST API spravujete databázi konfigurace služby pomocí `https://{name}.management.azure-api.net` koncového bodu, jak je znázorněno na pravé straně diagramu. Levá strana diagramu znázorňuje, jak můžete spravovat konfiguraci služby pomocí úložiště Git a Git pro vaši službu, která se nachází v `https://{name}.scm.azure-api.net` .
 
 Následující kroky poskytují přehled správy instance služby API Management pomocí Gitu.
 
@@ -118,7 +118,7 @@ Pokud provedete změny v instanci služby API Management v Azure Portal nebo pom
 git pull
 ```
 
-Před spuštěním `git pull` se ujistěte, že jste ve složce pro vaše místní úložiště. Pokud jste `git clone` příkaz právě dokončili, musíte ho změnit na své úložiště spuštěním příkazu podobného následujícímu.
+Před spuštěním se `git pull` ujistěte, že jste ve složce pro vaše místní úložiště. Pokud jste příkaz právě dokončili `git clone` , musíte ho změnit na své úložiště spuštěním příkazu podobného následujícímu.
 
 ```
 cd {name}.scm.azure-api.net/
@@ -174,12 +174,12 @@ Tyto soubory se dají vytvářet, odstraňovat, upravovat a spravovat v místní
 >
 > * [Uživatelé](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
 > * [Předplatná](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
-> * [Pojmenované hodnoty](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/property)
+> * Pojmenované hodnoty
 > * Jiné entity portálu pro vývojáře než styly
 >
 
 ### <a name="root-api-management-folder"></a>Kořenová složka API – Správa
-Kořenová `api-management` složka obsahuje `configuration.json` soubor, který obsahuje informace nejvyšší úrovně o instanci služby v následujícím formátu.
+Kořenová `api-management` Složka obsahuje `configuration.json` soubor, který obsahuje informace nejvyšší úrovně o instanci služby v následujícím formátu.
 
 ```json
 {
@@ -198,7 +198,7 @@ Kořenová `api-management` složka obsahuje `configuration.json` soubor, který
 }
 ```
 
-První čtyři nastavení`RegistrationEnabled`(, `UserRegistrationTerms`, `UserRegistrationTermsEnabled`a `UserRegistrationTermsConsentRequired`) se mapují na následující nastavení na kartě **identity** v části **zabezpečení** .
+První čtyři nastavení ( `RegistrationEnabled` , `UserRegistrationTerms` , `UserRegistrationTermsEnabled` a) se `UserRegistrationTermsConsentRequired` mapují na následující nastavení na kartě **identity** v části **zabezpečení** .
 
 | Nastavení identity | Mapuje na |
 | --- | --- |
@@ -208,7 +208,7 @@ První čtyři nastavení`RegistrationEnabled`(, `UserRegistrationTerms`, `UserR
 | UserRegistrationTermsConsentRequired |Zaškrtávací políčko **vyžadovat souhlas** |
 | RequireUserSigninEnabled |Zaškrtávací políčko **pro přesměrování anonymních uživatelů na přihlašovací stránku** |
 
-Další čtyři nastavení`DelegationEnabled`(, `DelegationUrl`, `DelegatedSubscriptionEnabled`a `DelegationValidationKey`) se mapují na následující nastavení na kartě **delegování** v části **zabezpečení** .
+Další čtyři nastavení ( `DelegationEnabled` , `DelegationUrl` , `DelegatedSubscriptionEnabled` a) se `DelegationValidationKey` mapují na následující nastavení na kartě **delegování** v části **zabezpečení** .
 
 | Nastavení delegování | Mapuje na |
 | --- | --- |
@@ -217,23 +217,23 @@ Další čtyři nastavení`DelegationEnabled`(, `DelegationUrl`, `DelegatedSubsc
 | DelegatedSubscriptionEnabled |**Delegovat předplatné produktu** – zaškrtávací políčko |
 | DelegationValidationKey |Textové pole pro **ověřovací klíč delegáta** |
 
-Poslední nastavení `$ref-policy`, mapuje na soubor globálních příkazů zásad pro instanci služby.
+Poslední nastavení, `$ref-policy` mapuje na soubor globálních příkazů zásad pro instanci služby.
 
 ### <a name="apis-folder"></a>Složka rozhraní API
-`apis` Složka obsahuje složku pro každé rozhraní API v instanci služby, která obsahuje následující položky.
+`apis`Složka obsahuje složku pro každé rozhraní API v instanci služby, která obsahuje následující položky.
 
-* `apis\<api name>\configuration.json`– Jedná se o konfiguraci rozhraní API a obsahuje informace o adrese URL back-end služby a operacích. Jedná se o stejné informace, které by byly vráceny `export=true` v případě, že jste volali funkci [získat konkrétní rozhraní API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) ve `application/json` formátu.
+* `apis\<api name>\configuration.json`– Jedná se o konfiguraci rozhraní API a obsahuje informace o adrese URL back-end služby a operacích. Jedná se o stejné informace, které by byly vráceny v případě, že jste volali funkci [získat konkrétní rozhraní API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) `export=true` ve `application/json` formátu.
 * `apis\<api name>\api.description.html`– Toto je popis rozhraní API a odpovídá `description` vlastnosti [entity rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
 * `apis\<api name>\operations\`– Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje na `description` vlastnost [entity operace](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) v REST API.
 
 ### <a name="groups-folder"></a>Složka skupin
-`groups` Složka obsahuje složku pro každou skupinu definovanou v instanci služby.
+`groups`Složka obsahuje složku pro každou skupinu definovanou v instanci služby.
 
 * `groups\<group name>\configuration.json`– Jedná se o konfiguraci skupiny. Jedná se o stejné informace, které by se vracely v případě, že jste volali operaci [získat konkrétní skupinu](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get) .
 * `groups\<group name>\description.html`– Toto je popis skupiny a odpovídá `description` vlastnosti [entity Group](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>Složka zásad
-`policies` Složka obsahuje příkazy zásad pro instanci služby.
+`policies`Složka obsahuje příkazy zásad pro instanci služby.
 
 * `policies\global.xml`-obsahuje zásady definované v globálním oboru pro instanci služby.
 * `policies\apis\<api name>\`– Pokud máte v oboru rozhraní API definované nějaké zásady, jsou obsažené v této složce.
@@ -241,19 +241,19 @@ Poslední nastavení `$ref-policy`, mapuje na soubor globálních příkazů zá
 * `policies\products\`– Pokud máte v oboru produktů definované nějaké zásady, jsou obsažené v této složce, která obsahuje `<product name>.xml` soubory, které se mapují na příkazy zásad pro každý produkt.
 
 ### <a name="portalstyles-folder"></a>portalStyles složka
-`portalStyles` Složka obsahuje konfiguraci a šablony stylů pro přizpůsobení portálu pro vývojáře pro instanci služby.
+`portalStyles`Složka obsahuje konfiguraci a šablony stylů pro přizpůsobení portálu pro vývojáře pro instanci služby.
 
 * `portalStyles\configuration.json`-obsahuje názvy šablon stylů používaných portálem pro vývojáře.
-* `portalStyles\<style name>.css`– Každý `<style name>.css` soubor obsahuje styly pro portál pro vývojáře (`Preview.css` a `Production.css` ve výchozím nastavení).
+* `portalStyles\<style name>.css`– Každý `<style name>.css` soubor obsahuje styly pro portál pro vývojáře ( `Preview.css` a `Production.css` ve výchozím nastavení).
 
 ### <a name="products-folder"></a>Složka Products
-`products` Složka obsahuje složku pro každý produkt definovaný v instanci služby.
+`products`Složka obsahuje složku pro každý produkt definovaný v instanci služby.
 
 * `products\<product name>\configuration.json`– Jedná se o konfiguraci produktu. Jedná se o stejné informace, které by se vracely v případě, že jste volali operaci [získat konkrétní produkt](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get) .
 * `products\<product name>\product.description.html`– Toto je popis produktu a odpovídá `description` vlastnosti [entity produktu](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) v REST API.
 
 ### <a name="templates"></a>šablony
-`templates` Složka obsahuje konfiguraci pro [e-mailové šablony](api-management-howto-configure-notifications.md) instance služby.
+`templates`Složka obsahuje konfiguraci pro [e-mailové šablony](api-management-howto-configure-notifications.md) instance služby.
 
 * `<template name>\configuration.json`– Jedná se o konfiguraci e-mailové šablony.
 * `<template name>\body.html`– Jedná se o tělo e-mailové šablony.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79efe3cef82a166ca6b56dea5cb07f15a5325083
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60640374"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650324"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Použití dynamického DNS k registraci názvů hostitelů na vlastním serveru DNS
 
@@ -33,9 +33,9 @@ Klienti systému Windows, kteří nejsou připojeni k doméně, se při spuště
 Klienti systému Windows připojené k doméně registrují své IP adresy s řadičem domény pomocí zabezpečeného DDNS. Proces připojení k doméně nastaví primární příponu DNS na klientovi a vytvoří a udržuje vztah důvěryhodnosti.
 
 ## <a name="linux-clients"></a>Klienti Linux
-Klienti se systémem Linux se většinou neregistrují společně se serverem DNS při spuštění, předpokládá, že je server DHCP. Servery DHCP v Azure nemají přihlašovací údaje k registraci záznamů na serveru DNS. K odeslání aktualizací DDNS můžete použít `nsupdate`nástroj s názvem, který je součástí balíčku BIND. Vzhledem k tomu, že je protokol DDNS standardizovaný, `nsupdate` můžete použít i v případě, že na serveru DNS nepoužíváte BIND.
+Klienti se systémem Linux se většinou neregistrují společně se serverem DNS při spuštění, předpokládá, že je server DHCP. Servery DHCP v Azure nemají přihlašovací údaje k registraci záznamů na serveru DNS. K odeslání aktualizací DDNS můžete použít nástroj s názvem `nsupdate` , který je součástí balíčku BIND. Vzhledem k tomu, že je protokol DDNS standardizovaný, můžete použít `nsupdate` i v případě, že na serveru DNS nepoužíváte BIND.
 
-K vytvoření a údržbě položky hostname na serveru DNS můžete použít zavěšení, které poskytuje klient DHCP. V průběhu cyklu DHCP klient spustí skripty v */etc/DHCP/dhclient-Exit-Hooks.d/*. K registraci nové IP adresy můžete použít háky pomocí `nsupdate`. Příklad:
+K vytvoření a údržbě položky hostname na serveru DNS můžete použít zavěšení, které poskytuje klient DHCP. V průběhu cyklu DHCP klient spustí skripty v */etc/DHCP/dhclient-Exit-Hooks.d/*. K registraci nové IP adresy můžete použít háky pomocí `nsupdate` . Například:
 
 ```bash
 #!/bin/sh
@@ -61,11 +61,11 @@ then
 fi
 ```
 
-Pomocí `nsupdate` příkazu můžete také provádět zabezpečené aktualizace DDNS. Pokud například používáte server DNS BIND, je [vygenerován](http://linux.yyz.us/nsupdate/)pár klíčů veřejného a soukromého klíče. Server DNS je [nakonfigurovaný](http://linux.yyz.us/dns/ddns-server.html) s veřejnou částí klíče, aby mohl ověřit podpis na žádosti. Chcete-li zadat dvojici klíčů `nsupdate`, použijte `-k` možnost pro podepsání žádosti o aktualizaci DDNS.
+Pomocí příkazu můžete také `nsupdate` provádět zabezpečené aktualizace DDNS. Pokud například používáte server DNS BIND, je vygenerován pár klíčů veřejného a soukromého klíče ( `http://linux.yyz.us/nsupdate/` ). Server DNS je nakonfigurován ( `http://linux.yyz.us/dns/ddns-server.html` ) s veřejnou částí klíče, aby mohl ověřit podpis na žádosti. Chcete-li zadat dvojici klíčů `nsupdate` , použijte `-k` možnost pro podepsání žádosti o aktualizaci DDNS.
 
-Pokud používáte server DNS systému Windows, můžete použít ověřování pomocí protokolu Kerberos s `-g` parametrem v `nsupdate`, ale není k dispozici ve verzi systému Windows. `nsupdate` K použití protokolu Kerberos použijte `kinit` k načtení přihlašovacích údajů. Můžete například načíst přihlašovací údaje ze [souboru keytab](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)a pak z mezipaměti znovu `nsupdate -g` spustit přihlašovací údaje.
+Pokud používáte server DNS systému Windows, můžete použít ověřování pomocí protokolu Kerberos s `-g` parametrem v `nsupdate` , ale není k dispozici ve verzi systému Windows `nsupdate` . K použití protokolu Kerberos použijte `kinit` k načtení přihlašovacích údajů. Můžete například načíst přihlašovací údaje ze [souboru keytab](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)a pak z mezipaměti znovu spustit `nsupdate -g` přihlašovací údaje.
 
-V případě potřeby můžete k virtuálním počítačům přidat příponu vyhledávání DNS. Přípona DNS je zadaná v souboru */etc/resolv.conf* . Většina systému Linux distribuce automaticky spravuje obsah tohoto souboru, takže ho většinou nemůžete upravovat. Příponu však můžete přepsat pomocí `supersede` příkazu klienta DHCP. Pokud chcete příponu přepsat, přidejte do souboru */etc/DHCP/dhclient.conf* následující řádek:
+V případě potřeby můžete k virtuálním počítačům přidat příponu vyhledávání DNS. Přípona DNS je zadaná v souboru */etc/resolv.conf* . Většina systému Linux distribuce automaticky spravuje obsah tohoto souboru, takže ho většinou nemůžete upravovat. Příponu však můžete přepsat pomocí příkazu klienta DHCP `supersede` . Pokud chcete příponu přepsat, přidejte do souboru */etc/DHCP/dhclient.conf* následující řádek:
 
 ```
 supersede domain-name <required-dns-suffix>;

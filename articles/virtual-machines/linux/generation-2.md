@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3336869a5f91613849cdccb67f9d804205148608
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084273"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652512"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -35,13 +35,13 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 * [Řada HB](../hb-series.md)
 * [Řada HC](../hc-series.md)
 * [Ls-series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) a [Lsv2-Series](../lsv2-series.md)
-* [Řada Mv2](../mv2-series.md)
+* [Řada M](../m-series.md)
+* [Mv2-Series](../mv2-series.md)<sup>1</sup>
 * Řady [NCv2-Series](../ncv2-series.md) a [NCv3-Series](../ncv3-series.md)
 * [Řada ND](../nd-series.md)
 * [Řada NVv3](../nvv3-series.md)
 
-> [!NOTE]
-> Použití imagí virtuálních počítačů 2. generace pro virtuální počítače Mv2-Series je všeobecně dostupné, protože Mv2-Series funguje výhradně s imagemi virtuálních počítačů 2. generace. Image virtuálních počítačů 1. generace nejsou na virtuálních počítačích řady Mv2-Series podporované. 
+<sup>1</sup> Mv2-Series nepodporuje image virtuálních počítačů 1. generace a podporují jenom podmnožinu imagí 2. generace. Podrobnosti najdete v [dokumentaci k Mv2-Series](https://docs.microsoft.com/azure/virtual-machines/mv2-series) .
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Image virtuálních počítačů 2. generace v Azure Marketplace
 
@@ -72,9 +72,9 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 ### <a name="generation-1-vs-generation-2-features"></a>Generace 1 vs. generace 2 – funkce
 
-| Funkce | 1. generace | 2. generace |
+| Příznak | 1. generace | 2. generace |
 |---------|--------------|--------------|
-| Boot             | PCAT         | UEFI |
+| Spouštění             | PCAT         | UEFI |
 | Řadiče disku | IDE – integrované vývojové prostředí          | SCSI |
 | Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
 
@@ -122,12 +122,6 @@ Pomocí následující rutiny prostředí PowerShell můžete například získa
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
 
-Alternativně můžete pomocí Azure CLI Zobrazit všechny dostupné image generace 2 uvedené **vydavatelem**.
-
-```azurecli
-az vm image list --publisher Canonical --sku gen2 --output table --all
-```
-
 Pokud vytváříte virtuální počítač s Windows Serverem 2012 jako operačním systémem, vyberete buď SKLADOVOU položku virtuálního počítače 1. generace (BIOS) nebo generace 2 (UEFI), což bude vypadat takto:
 
 ```powershell
@@ -136,6 +130,14 @@ Pokud vytváříte virtuální počítač s Windows Serverem 2012 jako operačn�
 ```
 
 V části [funkce a možnosti](#features-and-capabilities) najdete aktuální seznam podporovaných imagí na webu Marketplace.
+
+#### <a name="azure-cli"></a>Azure CLI
+
+Alternativně můžete pomocí Azure CLI Zobrazit všechny dostupné image generace 2 uvedené **vydavatelem**.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
 
 ### <a name="managed-image-or-managed-disk"></a>Spravovaná Image nebo spravovaný disk
 

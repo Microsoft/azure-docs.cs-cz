@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: eacdfe8211c97e75b6609f5e11b681f84ae55846
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5afa5b5620532865233e38ccb5889b37b2100854
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472080"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648537"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Vývoj s využitím rozhraní API Media Services V3
 
@@ -54,7 +54,7 @@ Na následujícím obrázku čísla reprezentují tok požadavků v chronologick
    * Identifikátor URI prostředku pro Media Services REST
    * Hodnoty aplikací Azure AD: ID klienta a tajný kód klienta.
 
-   Pokud chcete získat všechny potřebné hodnoty, přečtěte si téma [přístup k rozhraní API Azure Media Services pomocí Azure CLI](access-api-cli-how-to.md).
+   Pokud chcete získat všechny potřebné hodnoty, přečtěte si téma [přístup Azure Media Services API](access-api-cli-how-to.md).
 
 2. Přístupový token Azure AD se pošle do střední úrovně.
 4. Střední vrstva odesílá požadavek do Azure Media REST API s tokenem Azure AD.
@@ -118,7 +118,7 @@ Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vy
 > [!NOTE]
 > Sady SDK Azure Media Services V3 nejsou zaručeny jako bezpečné pro přístup z více vláken. Při vývoji aplikace s více vlákny byste měli přidat vlastní logiku synchronizace vláken pro ochranu klienta nebo použití nového objektu AzureMediaServicesClient na vlákno. Měli byste také dbát na problémy s více vlákny, které přináší volitelné objekty poskytované vaším kódem, klientovi (například instance HttpClient v rozhraní .NET).
 
-|Sada SDK|Referenční informace|
+|Sada SDK|Odkaz|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[Referenční informace k .NET](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Referenční informace k Javě](https://aka.ms/ams-v3-java-ref)|
@@ -136,7 +136,7 @@ Pro danou živou událost nebo jakýkoli z přidružených výstupů živého vy
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) je nástroj dostupný pro zákazníky s Windows, kteří se chtějí dozvědět o Media Services. AMSE je aplikace WinForms/C#, která odesílá, stahuje, kóduje, streamuje VOD a živý obsah pomocí Media Services. Nástroj AMSE je určen pro klienty, kteří chtějí testovat Media Services bez psaní kódu. Kód AMSE je k dispozici jako prostředek pro zákazníky, kteří chtějí vyvíjet pomocí Media Services.
 
-AMSE je otevřený zdrojový projekt. Podpora je poskytována komunitou (mohou být hlášeny problémy) https://github.com/Azure/Azure-Media-Services-Explorer/issues). Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v tématu [Nejčastější dotazy k kódu](https://opensource.microsoft.com/codeofconduct/faq/) , nebo kontaktujte opencode@microsoft.com s dalšími dotazy nebo komentáři.
+AMSE je otevřený zdrojový projekt. Podpora je poskytována komunitou (mohou být hlášeny problémy) https://github.com/Azure/Azure-Media-Services-Explorer/issues) . Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v tématu [Nejčastější dotazy k kódu](https://opensource.microsoft.com/codeofconduct/faq/) , nebo kontaktujte opencode@microsoft.com s dalšími dotazy nebo komentáři.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování Media Services entit
 
@@ -148,7 +148,7 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 ## <a name="see-also"></a>Viz také
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+Pokud chcete získat všechny potřebné hodnoty, přečtěte si téma [přístup Azure Media Services API](access-api-cli-how-to.md).
 
 ## <a name="next-steps"></a>Další kroky
 

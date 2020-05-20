@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 05/18/2019
 ms.author: danis
-ms.openlocfilehash: 1f0395956fa6977be5d1d6f4f4faf06b84c094d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c591efeedc87926a0ed7b42de6c3267721cebab
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79465035"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657437"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora Cloud-init pro virtuální počítače v Azure
 V tomto článku se dozvíte, jak podpora pro [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat virtuální počítač (VM) nebo službu Virtual Machine Scale Sets v době zřizování v Azure. Tyto konfigurace Cloud-init se po prvním spuštění spustí, jakmile se prostředky zřídí v Azure.  
@@ -42,38 +42,48 @@ K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v 
 
 
 ### <a name="canonical"></a>Canonical
-| Vydavatel/verze| Nabídka | Skladová jednotka (SKU) | Version | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
+| Vydavatel/verze| Nabídka | Skladová jednotka (SKU) | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |Kanonický 18,04 |UbuntuServer |18,04 – LTS |nejnovější |ano | ano |
 |Kanonický 16,04|UbuntuServer |16.04-LTS |nejnovější |ano | ano |
 |Kanonický 14,04|UbuntuServer |14.04.5-LTS |nejnovější |ano | ano |
 
 ### <a name="rhel"></a>RHEL
-| Vydavatel/verze | Nabídka | Skladová jednotka (SKU) | Version | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
+| Vydavatel/verze | Nabídka | Skladová jednotka (SKU) | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ano | Ano – podpora z verze balíčku: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 7,7 podporují Cloud-init, odstraní se i část 2020, oznámení se zobrazí). | Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL |7 – RAW | neuvedeno| nedokončené aktualizace imagí na konci dubna 2020| Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL |7 – LVM | neuvedeno| nedokončené aktualizace imagí na konci dubna| Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL |7.7 | neuvedeno| nedokončené aktualizace imagí na konci dubna | Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL – BYOS | RHEL – lvm77 | neuvedeno|nedokončené aktualizace imagí na konci dubna  | Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Poznámka: Toto je náhled image a jakmile všechny image RHEL 7,7 podporují Cloud-init, odstraní se 1. září 2020). | Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL |7 – LVM | Není k dispozici| žádné aktualizace obrazu k dokončení konce května| Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL |7.7 | Není k dispozici| žádné aktualizace obrazu k dokončení konce května | Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 7,7 (Gen1) |RHEL – BYOS | RHEL – lvm77 | Není k dispozici|nedokončené aktualizace imagí na konci dubna  | Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 8,1 (Gen1) |RHEL |8,1 – CI |7.7.2019081601 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020|
+|RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |7.7.2019081601 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020 |
+
+RedHat: image RHEL 7,8 a 8,2 (Gen1 a Gen2) se zřídí pomocí Cloud-init.
 
 ### <a name="centos"></a>CentOS
 
-| Vydavatel/verze | Nabídka | Skladová jednotka (SKU) | Version | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
+| Vydavatel/verze | Nabídka | Skladová jednotka (SKU) | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image CentOS 7,7 podporují Cloud-init, odstraní se i část 2020, oznámení se zobrazí). | Ano – podpora z verze balíčku: *18.5 -3. el7. CentOS*|
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Ano (Poznámka: Toto je náhled image a jakmile všechny image CentOS 7,7 podporují Cloud-init, odstraní se 1. září 2020). | Ano – podpora z verze balíčku: *18.5 -3. el7. CentOS*|
 
-* Image CentOS 7,7, které budou povolené pro cloudovou inicializaci, se aktualizují tady v 2020. března. 
+* Image CentOS 7,7, které budou povolené pro cloudovou inicializaci, se aktualizují tady v červnu 2020. 
 
 ### <a name="oracle"></a>Oracle
 
-| Vydavatel/verze | Nabídka | Skladová jednotka (SKU) | Version | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
+| Vydavatel/verze | Nabídka | Skladová jednotka (SKU) | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |Oracle 7,7 |Oracle – Linux |77 – CI |7.7.01| Náhled obrázku (Všimněte si, že se jedná o image ve verzi Preview a když všechny Image Oracle 7,7 podporují Cloud-init, odstraní se i část 2020, oznámení se zobrazí). | Ne, balíček je ve verzi Preview: *18.5-3.0.1. el7*
 
-### <a name="debian--suse-sles"></a>Debian & SuSE SLES
-V současnosti pracujeme na podpoře verze Preview, očekáváme aktualizace v únoru a březnu 2020.
+### <a name="suse-sles"></a>SuSE SLES
+| Vydavatel/verze | Nabídka | Skladová jednotka (SKU) | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1 – Basic |Cloud-init-Preview| Podrobnosti najdete na [blogu SUSE Cloud-init](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) . | Ne, ve verzi Preview. |
+|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1 – Basic |Gen2-Cloud-init-Preview| Podrobnosti najdete na [blogu SUSE Cloud-init](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) . | Ne, ve verzi Preview. |
+
+
+### <a name="debian"></a>Debian
+V současnosti pracujeme na podpoře verze Preview, očekáváme aktualizace v červnu 2020.
 
 V současné době Azure Stack bude podporovat zřizování imagí s povoleným cloudovým inicializací.
 
@@ -85,7 +95,7 @@ Rozšiřujeme úlohu konfigurace virtuálních počítačů tak, aby používala
 
 Cloud-init nemůže zpracovat rozšíření Azure, takže WALA se v imagi pořád vyžaduje pro proces rozšíření, ale bude muset mít zakázaný kód pro zřizování. pro schválené image distribuce pro Linux, které se převádějí do zřizování pomocí Cloud-init, se WALA nainstalují a instalační program správně.
 
-Pokud při vytváření virtuálního počítače nezahrnete přepínač Azure CLI `--custom-data` při zřizování, Cloud-init nebo Wala převezme minimální parametry zřizování virtuálních počítačů, které musí zřídit virtuální počítač a dokončit nasazení s výchozím nastavením.  Pokud s `--custom-data` přepínačem odkazujete na konfiguraci Cloud-init, vše, co je obsaženo ve vašich vlastních datech, bude k dispozici pro Cloud-init při spuštění virtuálního počítače.
+Pokud při vytváření virtuálního počítače nezahrnete přepínač Azure CLI `--custom-data` při zřizování, Cloud-init nebo Wala převezme minimální parametry zřizování virtuálních počítačů, které musí zřídit virtuální počítač a dokončit nasazení s výchozím nastavením.  Pokud s přepínačem odkazujete na konfiguraci Cloud-init `--custom-data` , vše, co je obsaženo ve vašich vlastních datech, bude k dispozici pro Cloud-init při spuštění virtuálního počítače.
 
 Konfigurace Cloud-init použité u virtuálních počítačů nemají časová omezení a nezpůsobí selhání nasazení pomocí vypršení časového limitu. Neplatí to pro WALA, pokud změníte výchozí WALA ve výchozím nastavení tak, aby zpracovával vlastní data, nemůže přesáhnout celkovou dobu zřizování virtuálních počítačů 40mins. Pokud ano, vytvoření virtuálního počítače se nezdaří.
 
@@ -125,7 +135,7 @@ az vm create \
 Po vytvoření virtuálního počítače se v Azure CLI zobrazí informace, které jsou specifické pro vaše nasazení. Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.  Vytvoření virtuálního počítače bude chvíli trvat, balíčky, které se mají nainstalovat, a aplikaci, která se má spustit. Když vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. K virtuálnímu počítači se můžete přihlásit přes SSH a pomocí kroků popsaných v části řešení potíží zobrazit protokoly Cloud-init. 
 
 ## <a name="troubleshooting-cloud-init"></a>Řešení potíží s cloudem a inicializací
-Po zřízení virtuálního počítače se Cloud-init spustí prostřednictvím všech modulů a skriptu definovaných v `--custom-data` nástroji, aby bylo možné virtuální počítač nakonfigurovat.  Pokud potřebujete odstranit případné chyby nebo opomenutí z konfigurace, je třeba vyhledat název modulu (`disk_setup` `runcmd` například) v protokolu Cloud-init, který se nachází v **/var/log/Cloud-init.log**.
+Po zřízení virtuálního počítače se Cloud-init spustí prostřednictvím všech modulů a skriptu definovaných v nástroji, aby `--custom-data` bylo možné virtuální počítač nakonfigurovat.  Pokud potřebujete odstranit případné chyby nebo opomenutí z konfigurace, je třeba vyhledat název modulu ( `disk_setup` `runcmd` například) v protokolu Cloud-init, který se nachází v **/var/log/Cloud-init.log**.
 
 > [!NOTE]
 > Nejedná se o selhání každého modulu, protože by došlo k závažné chybě při inicializaci Cloud-init. Pokud například použijete `runcmd` modul, Cloud-init bude i nadále hlásit úspěšné zřizování, protože se spustil modul runcmd.

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6212e74ecbf8327d3939138de2e92868f29b0f1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6aaed8d56bb254e5a6385c770f97b5238a5747b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77058418"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647434"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Kurz: Konfigurace základu OnDemand pro Automatické zřizování uživatelů
 
@@ -39,7 +39,7 @@ Scénář popsaný v tomto kurzu předpokládá, že máte následující:
 * Uživatelský účet v obkameni OnDemand s oprávněními správce.
 
 > [!NOTE]
-> Integrace zřizování služby Azure AD spoléhá na [webovou službu OnDemand kamenů](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf). Tato služba je k dispozici pro OnDemand OnDemand Teams.
+> Integrace zřizování služby Azure AD spoléhá na [webovou službu OnDemand kamenů](https://www.cornerstoneondemand.com/). Tato služba je k dispozici pro OnDemand OnDemand Teams.
 
 ## <a name="add-cornerstone-ondemand-from-the-azure-marketplace"></a>Přidat základní kámen OnDemand z Azure Marketplace
 
@@ -81,7 +81,7 @@ Tato část vás provede postupem konfigurace služby zřizování Azure AD. Slo
 
 Pokud chcete nakonfigurovat automatické zřizování uživatelů pro OnDemand OnDemand ve službě Azure AD, postupujte podle těchto kroků.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte možnost **podnikové aplikace** > **všechny aplikace** > v rámci**OnDemand**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte možnost **podnikové aplikace**  >  **všechny aplikace**v rámci  >  **OnDemand**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -103,7 +103,7 @@ Pokud chcete nakonfigurovat automatické zřizování uživatelů pro OnDemand O
 
     * Do pole **heslo správce** zadejte heslo, které odpovídá uživatelskému jménu správce.
 
-    * V poli **doména** vyplňte adresu URL webové služby pro OnDemand tenant. Například služba je umístěna na adrese `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`a pro společnost Contoso je `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`doména. Další informace o tom, jak načíst adresu URL webové služby, najdete v [tomto dokumentu PDF](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
+    * V poli **doména** vyplňte adresu URL webové služby pro OnDemand tenant. Například služba je umístěna na adrese `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx` a pro společnost Contoso je doména `https://ws-contoso.csod.com/feed30/clientdataservice.asmx` . Další informace o tom, jak načíst adresu URL webové služby, najdete v [tomto dokumentu PDF](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
 
 6. Po vyplnění polí zobrazených v kroku 5 vyberte **Test připojení** , abyste se ujistili, že se služba Azure AD může připojit k základnímu základu OnDemand. Pokud se připojení nepovede, ujistěte se, že má váš účet OnDemand na základech oprávnění správce, a zkuste to znovu.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46d00df4970a7268c9856de6d7c090f2deffc7ea
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76773683"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654519"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST  
 
@@ -89,11 +89,11 @@ Ve službě Media Services můžete digitální soubory nahrát do assetu. Entit
 
 Jedna z hodnot, které musíte zadat při vytváření assetu, jsou možnosti vytváření prostředků. Vlastnost **Options** je hodnota výčtu, která popisuje možnosti šifrování, pomocí kterých lze vytvořit Asset. Platná hodnota je jedna z hodnot níže uvedeného seznamu, nikoli kombinace hodnot z tohoto seznamu:
 
-* **Žádné** = **0** – nepoužívá se žádné šifrování. Když použijete tuto možnost, váš obsah se nechrání během přenosu nebo v klidovém úložišti.
+* **Žádné**  =  **0** – nepoužívá se žádné šifrování. Když použijete tuto možnost, váš obsah se nechrání během přenosu nebo v klidovém úložišti.
     Pokud chcete pomocí progresivního stahování dodávat obsah ve formátu MP4, použijte tuto možnost.
-* **StorageEncrypted** = **1** – šifruje obsah místně pomocí šifrování AES-256 a pak ho nahraje, aby Azure Storage tam, kde je uložený zašifrovaný v klidovém stavu. Prostředky chráněné pomocí šifrování úložiště jsou před kódováním automaticky bez šifrování umístěny do systému souborů EFS a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je situace, kdy chcete zabezpečit soubory s vysoce kvalitními vstupními multimediálními soubory pomocí silného šifrování na disku.
-* **CommonEncryptionProtected** = **2** – tuto možnost použijte, pokud nahráváte obsah, který už je zašifrovaný a chráněný pomocí Common Encryption nebo PlayReady DRM (například Smooth Streaming chráněná pomocí technologie PlayReady DRM).
-* **EnvelopeEncryptionProtected** = **4** – tuto možnost použijte, pokud odesíláte HLS šifrované pomocí AES. Soubory musí být zakódované a šifrované pomocí nástroje pro transformaci.
+* **StorageEncrypted**  =  **1** – šifruje obsah místně pomocí šifrování AES-256 a pak ho nahraje, aby Azure Storage tam, kde je uložený zašifrovaný v klidovém stavu. Prostředky chráněné pomocí šifrování úložiště jsou před kódováním automaticky bez šifrování umístěny do systému souborů EFS a volitelně se znovu zašifrují před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je situace, kdy chcete zabezpečit soubory s vysoce kvalitními vstupními multimediálními soubory pomocí silného šifrování na disku.
+* **CommonEncryptionProtected**  =  **2** – tuto možnost použijte, pokud nahráváte obsah, který už je zašifrovaný a chráněný pomocí Common Encryption nebo PlayReady DRM (například Smooth Streaming chráněná pomocí technologie PlayReady DRM).
+* **EnvelopeEncryptionProtected**  =  **4** – tuto možnost použijte, pokud odesíláte HLS ŠIFROVANÝ pomocí AES. Soubory musí být zakódované a šifrované pomocí nástroje pro transformaci.
 
 ### <a name="create-an-asset"></a>Vytvoření assetu
 Asset je kontejner pro více typů nebo sad objektů v Media Services, včetně videa, zvuku, obrázků, kolekcí miniatur, textových stop a souborů titulků. V REST API vytvoření Assetu vyžaduje odeslání žádosti POST do Media Services a umístění jakýchkoli vlastností informací o prostředku do textu žádosti.
@@ -339,7 +339,7 @@ Jakmile budete mít AccessPolicy a lokátor, vlastní soubor se nahraje do konte
 Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
 ### <a name="update-the-assetfile"></a>Aktualizace AssetFile
-Teď, když jste nahráli soubor, aktualizujte informace o velikosti Assetového prostředku (a dalších). Příklad:
+Teď, když jste nahráli soubor, aktualizujte informace o velikosti Assetového prostředku (a dalších). Například:
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -561,7 +561,7 @@ V případě úspěchu se vrátí následující odpověď:
 K dispozici je několik důležitých věcí, které je potřeba si uvědomit v každé žádosti o úlohu:
 
 * Vlastnosti TaskBody – musí použít literál XML pro definování počtu vstupních nebo výstupních prostředků, které úkol používá. Článek o úloze obsahuje definici schématu XML pro XML.
-* V definici TaskBody – je nutné, aby každá vnitřní `<inputAsset>` hodnota `<outputAsset>` pro a byla nastavena jako JobInputAsset (hodnota) nebo JobOutputAsset (hodnota).
+* V definici TaskBody – je nutné, aby každá vnitřní hodnota pro `<inputAsset>` a `<outputAsset>` byla nastavena jako JobInputAsset (hodnota) nebo JobOutputAsset (hodnota).
 * Úloha může mít více výstupních prostředků. Jeden JobOutputAsset (x) lze použít pouze jednou jako výstup úkolu v úloze.
 * Jako vstupní Asset úkolu můžete zadat JobInputAsset nebo JobOutputAsset.
 * Úkoly nesmí tvořit cyklus.
@@ -573,7 +573,7 @@ K dispozici je několik důležitých věcí, které je potřeba si uvědomit v 
 >
 
 * InputMediaAssets se mapuje na jeden nebo více assetů, které jste vytvořili v Media Services. OutputMediaAssets jsou vytvořeny systémem. Neodkazují na stávající Asset.
-* OutputMediaAssets lze pojmenovat pomocí atributu název prostředku. Pokud tento atribut není k dispozici, pak název OutputMediaAsset je bez ohledu na to, zda je vnitřní text `<outputAsset>` hodnoty prvku přípona hodnoty názvu úlohy nebo hodnota ID úlohy (v případě, že vlastnost Name není definována). Pokud například nastavíte hodnotu pro název prostředku na "Sample", vlastnost OutputMediaAsset Name bude nastavena na "Sample". Pokud jste však nenastavili hodnotu pro název prostředku, ale nastavili jste název úlohy na "NewJob", pak bude název OutputMediaAsset "JobOutputAsset (hodnota) _NewJob".
+* OutputMediaAssets lze pojmenovat pomocí atributu název prostředku. Pokud tento atribut není k dispozici, pak název OutputMediaAsset je bez ohledu na to, zda je vnitřní text hodnoty `<outputAsset>` prvku přípona hodnoty názvu úlohy nebo hodnota ID úlohy (v případě, že vlastnost Name není definována). Pokud například nastavíte hodnotu pro název prostředku na "Sample", vlastnost OutputMediaAsset Name bude nastavena na "Sample". Pokud jste však nenastavili hodnotu pro název prostředku, ale nastavili jste název úlohy na "NewJob", pak bude název OutputMediaAsset "JobOutputAsset (hodnota) _NewJob".
 
     Následující příklad ukazuje, jak nastavit atribut majetku:
 
@@ -817,11 +817,11 @@ Vlastnost vracená **cesta** obsahuje adresu URL SAS.
 Jakmile budete mít AccessPolicy a lokátor, můžete soubory stahovat pomocí rozhraní REST API pro Azure Storage.  
 
 > [!NOTE]
-> Je nutné přidat název souboru, který chcete stáhnout, do hodnoty **cesty** lokátoru přijaté v předchozí části. Například https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?. . . .
+> Je nutné přidat název souboru, který chcete stáhnout, do hodnoty **cesty** lokátoru přijaté v předchozí části. Například `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4` ? . . .
 
 Další informace o práci s objekty blob služby Azure Storage najdete v tématu [REST API služby BLOB](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-V důsledku úlohy kódování, kterou jste provedli dříve (při kódování do adaptivní sady souborů MP4), máte více souborů MP4, které můžete postupně stahovat. Příklad:    
+V důsledku úlohy kódování, kterou jste provedli dříve (při kódování do adaptivní sady souborů MP4), máte více souborů MP4, které můžete postupně stahovat. Například:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 

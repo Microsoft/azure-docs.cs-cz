@@ -3,17 +3,17 @@ title: Diagnostika a řešení potíží s Azure Cosmos DB Java SDK v4
 description: Pomocí funkcí, jako je protokolování na straně klienta a další nástroje třetích stran, můžete identifikovat, diagnostikovat a řešit potíže s Azure Cosmos DB v sadě Java SDK v4.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
-ms.openlocfilehash: bdec785ccec2c388eb737da3ec494b525941e2a6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2deec6f6753a03ab46260432c6faceab009e2911
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982594"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651868"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Řešení potíží při použití Azure Cosmos DB Java SDK V4 s účty SQL API
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982594"
 > 
 
 > [!IMPORTANT]
-> Tento článek popisuje řešení potíží pouze v Azure Cosmos DB Java SDK v4. Další informace najdete v tématu poznámky k verzi Azure Cosmos DB Java SDK v4, [úložiště Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos)a [tipy ke zvýšení výkonu](performance-tips-java-sdk-v4-sql.md) . Pokud aktuálně používáte starší verzi než v4, přečtěte si článek průvodce [migrací do Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) , který vám pomůže s upgradem na V4.
+> Tento článek popisuje řešení potíží pouze v Azure Cosmos DB Java SDK v4. Další informace najdete v tématu poznámky k [verzi](sql-api-sdk-java-v4.md)Azure Cosmos DB Java SDK v4, [úložiště Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos)a [tipy ke zvýšení výkonu](performance-tips-java-sdk-v4-sql.md) . Pokud aktuálně používáte starší verzi než v4, přečtěte si článek průvodce [migrací do Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) , který vám pomůže s upgradem na V4.
 >
 
 Tento článek popisuje běžné problémy, alternativní řešení, diagnostické kroky a nástroje při použití Azure Cosmos DB Java SDK V4 s Azure Cosmos DBmi účty rozhraní SQL API.
@@ -82,7 +82,7 @@ Také dodržujte [limit připojení na hostitelském počítači](#connection-li
 
 #### <a name="http-proxy"></a>Proxy server HTTP
 
-Pokud používáte proxy server HTTP, ujistěte se, že může podporovat počet připojení nakonfigurovaných v sadě SDK `ConnectionPolicy`.
+Pokud používáte proxy server HTTP, ujistěte se, že může podporovat počet připojení nakonfigurovaných v sadě SDK `ConnectionPolicy` .
 Jinak čelíte problémům s připojením.
 
 #### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Neplatný vzor kódování: blokuje se vstupně-výstupní podproces.
@@ -135,7 +135,7 @@ Alternativním řešením je změnit vlákno, ve kterém provádíte práci, kte
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = Schedulers.fromExecutor(ex);
 ```
-Možná budete muset udělat práci, která trvá určitou dobu, například výpočetně těžkou práci nebo blokování v/v. V takovém případě přepněte vlákno na pracovní proces poskytnutý `customScheduler` pomocí `.publishOn(customScheduler)` rozhraní API.
+Možná budete muset udělat práci, která trvá určitou dobu, například výpočetně těžkou práci nebo blokování v/v. V takovém případě přepněte vlákno na pracovní proces poskytnutý pomocí `customScheduler` `.publishOn(customScheduler)` rozhraní API.
 
 ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-apply-custom-scheduler"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Async API
 
@@ -146,7 +146,7 @@ container.createItem(family)
         // ...
     );
 ```
-Pomocí nástroje `publishOn(customScheduler)`uvolníte vstupně-výstupní vlákna a přepnete do vlastního vlákna poskytnutého vlastním plánovačem. Tato úprava vyřeší problém. Už nebudete `io.netty.handler.timeout.ReadTimeoutException` mít k chybu.
+Pomocí nástroje `publishOn(customScheduler)` uvolníte vstupně-výstupní vlákna a přepnete do vlastního vlákna poskytnutého vlastním plánovačem. Tato úprava vyřeší problém. Už nebudete mít k `io.netty.handler.timeout.ReadTimeoutException` chybu.
 
 ### <a name="request-rate-too-large"></a>Příliš velký počet požadavků
 Tato chyba je selhání na straně serveru. Indikuje, že jste využili zřízenou propustnost. Zkuste to znovu později. Pokud se toto selhání často dostanou, zvažte zvýšení propustnosti kolekce.
@@ -230,7 +230,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 Další informace najdete v tématu [Ruční protokolování sfl4j](https://www.slf4j.org/manual.html).
 
 ## <a name="os-network-statistics"></a><a name="netstats"></a>Statistika sítě operačního systému
-Spusťte příkaz netstat, abyste získali představu o počtu připojení ve státech, jako jsou `ESTABLISHED` a. `CLOSE_WAIT`
+Spusťte příkaz netstat, abyste získali představu o počtu připojení ve státech, jako jsou `ESTABLISHED` a `CLOSE_WAIT` .
 
 V systému Linux můžete spustit následující příkaz.
 ```bash

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: 2f102199c14ba9611a83e3ed3b31ebcd189624d6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 555ae9e48f538c1100bab8b35ce61742baa88451
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978616"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659832"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
@@ -43,7 +43,7 @@ Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vaš
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
 > [!NOTE]
-> Parametr Language se musí připojit k adrese URL, aby nedošlo k 4xx chybě HTTP. Například jazyk nastavený na AMERICKou angličtinu pomocí Západní USAho koncového bodu je: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
+> Parametr Language se musí připojit k adrese URL, aby nedošlo k 4xx chybě HTTP. Například jazyk nastavený na AMERICKou angličtinu pomocí Západní USAho koncového bodu je: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
 ## <a name="query-parameters"></a>Parametry dotazů
 
@@ -51,28 +51,28 @@ Tyto parametry mohou být zahrnuty do řetězce dotazu žádosti REST.
 
 | Parametr | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `language` | Identifikuje mluvený jazyk, který se rozpozná. Viz [podporované jazyky](language-support.md#speech-to-text). | Požaduje se |
-| `format` | Určuje formát výsledku. Přijaté hodnoty jsou `simple` a `detailed`. Jednoduché výsledky zahrnují `RecognitionStatus`, `DisplayText` `Offset`, a `Duration`. Podrobné odpovědi obsahují čtyři různé reprezentace zobrazovaného textu. Výchozí hodnota je `simple`. | Nepovinné |
-| `profanity` | Určuje způsob zpracování vulgárních výrazů ve výsledcích rozpoznávání. Přijatelné jsou `masked`hodnoty, které nahradí vulgární znaky hvězdičkami, `removed`, které odstraní všechny vulgární výrazy z výsledku, nebo `raw`, které obsahují vulgární výrazy ve výsledku. Výchozí hodnota je `masked`. | Nepovinné |
-| `pronunciationScoreParams` | Určuje parametry pro zobrazení skóre výslovnosti ve výsledcích rozpoznávání, které vyhodnocuje kvalitu výslovnosti vstupu řeči s indikátory přesnosti, Fluency, úplností atd. Tento parametr je JSON kódovaný v kódování Base64 obsahující několik podrobných parametrů. Jak tento parametr sestavit, najdete v tématu věnovaném [parametrům vyhodnocení výslovnosti](#pronunciation-assessment-parameters) . | Nepovinné |
-| `cid` | Při použití [portálu Custom Speech](how-to-custom-speech.md) k vytváření vlastních modelů můžete na stránce **nasazení** použít vlastní modely přes **ID koncového bodu** . Jako argument pro parametr řetězce `cid` dotazu použijte **ID koncového bodu** . | Nepovinné |
+| `language` | Identifikuje mluvený jazyk, který se rozpozná. Viz [podporované jazyky](language-support.md#speech-to-text). | Vyžadováno |
+| `format` | Určuje formát výsledku. Přijaté hodnoty jsou `simple` a `detailed` . Jednoduché výsledky zahrnují `RecognitionStatus` , `DisplayText` , `Offset` a `Duration` . Podrobné odpovědi obsahují čtyři různé reprezentace zobrazovaného textu. Výchozí hodnota je `simple`. | Volitelné |
+| `profanity` | Určuje způsob zpracování vulgárních výrazů ve výsledcích rozpoznávání. Přijatelné jsou hodnoty `masked` , které nahradí vulgární znaky hvězdičkami, `removed` , které odstraní všechny vulgární výrazy z výsledku, nebo `raw` , které obsahují vulgární výrazy ve výsledku. Výchozí hodnota je `masked`. | Volitelné |
+| `cid` | Při použití [portálu Custom Speech](how-to-custom-speech.md) k vytváření vlastních modelů můžete na stránce **nasazení** použít vlastní modely přes **ID koncového bodu** . Jako argument pro parametr řetězce dotazu použijte **ID koncového bodu** `cid` . | Volitelné |
 
 ## <a name="request-headers"></a>Hlavičky požadavku
 
 Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro žádosti o převod řeči na text.
 
-|Hlavička| Popis | Požadováno/volitelné |
+|Záhlaví| Popis | Požadováno/volitelné |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví, `Authorization` nebo je povinné. |
-| `Authorization` | Autorizační token předchází slovu `Bearer`. Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví, `Ocp-Apim-Subscription-Key` nebo je povinné. |
-| `Content-type` | Popisuje formát a kodek poskytovaných zvukových dat. Přijaté hodnoty jsou `audio/wav; codecs=audio/pcm; samplerate=16000` a `audio/ogg; codecs=opus`. | Požaduje se |
-| `Transfer-Encoding` | Určuje, zda jsou odesílána zvuková data v bloku, nikoli jeden soubor. Tuto hlavičku použijte pouze v případě, že jsou zvuková data v bloku. | Nepovinné |
-| `Expect` | Pokud používáte přenos přes blok dat, `Expect: 100-continue`pošlete. Služba rozpoznávání řeči potvrdí počáteční požadavek a očekává další data.| Vyžaduje se, když se posílají zvuková data v bloku. |
-| `Accept` | Je-li tento příkaz zadán `application/json`, musí být. Služba rozpoznávání řeči poskytuje výsledky ve formátu JSON. Některé architektury požadavků poskytují nekompatibilní výchozí hodnotu. Je vhodné vždy zahrnout `Accept`. | Volitelné, ale doporučené. |
+| `Ocp-Apim-Subscription-Key` | Klíč předplatného služby Speech. | Buď toto záhlaví, nebo `Authorization` je povinné. |
+| `Authorization` | Autorizační token předchází slovu `Bearer` . Další informace najdete v tématu [Ověřování](#authentication). | Buď toto záhlaví, nebo `Ocp-Apim-Subscription-Key` je povinné. |
+| `Pronunciation-Assessment` | Určuje parametry pro zobrazení skóre výslovnosti ve výsledcích rozpoznávání, které vyhodnocuje kvalitu výslovnosti vstupu řeči s indikátory přesnosti, Fluency, úplností atd. Tento parametr je JSON kódovaný v kódování Base64 obsahující několik podrobných parametrů. Informace o tom, jak vytvořit tuto hlavičku, najdete v tématu [parametry vyhodnocení výslovnosti](#pronunciation-assessment-parameters) . | Volitelné |
+| `Content-type` | Popisuje formát a kodek poskytovaných zvukových dat. Přijaté hodnoty jsou `audio/wav; codecs=audio/pcm; samplerate=16000` a `audio/ogg; codecs=opus` . | Vyžadováno |
+| `Transfer-Encoding` | Určuje, zda jsou odesílána zvuková data v bloku, nikoli jeden soubor. Tuto hlavičku použijte pouze v případě, že jsou zvuková data v bloku. | Volitelné |
+| `Expect` | Pokud používáte přenos přes blok dat, pošlete `Expect: 100-continue` . Služba rozpoznávání řeči potvrdí počáteční požadavek a očekává další data.| Vyžaduje se, když se posílají zvuková data v bloku. |
+| `Accept` | Je-li tento příkaz zadán, musí být `application/json` . Služba rozpoznávání řeči poskytuje výsledky ve formátu JSON. Některé architektury požadavků poskytují nekompatibilní výchozí hodnotu. Je vhodné vždy zahrnout `Accept` . | Volitelné, ale doporučené. |
 
 ## <a name="audio-formats"></a>Formáty zvuku
 
-V těle požadavku HTTP `POST` se pošle zvuk. Musí být v jednom z formátů v této tabulce:
+V těle požadavku HTTP se pošle zvuk `POST` . Musí být v jednom z formátů v této tabulce:
 
 | Formát | Kodek | Přenosová rychlost | Vzorkovací frekvence  |
 |--------|-------|----------|--------------|
@@ -88,12 +88,12 @@ Tato tabulka uvádí seznam požadovaných a volitelných parametrů pro posouze
 
 | Parametr | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| ReferenceText | Text, proti kterému bude výslovnost vyhodnocena. | Požaduje se |
-| GradingSystem | Systém bodů pro kalibraci skóre. Přijaté hodnoty jsou `FivePoint` a `HundredMark`. Výchozí hodnota je `FivePoint`. | Nepovinné |
-| Členitost | Členitost vyhodnocení. Přípustné hodnoty jsou `Phoneme`, což zobrazuje skóre pro úplný text, na úrovni aplikace Word a foném `Word`, ve kterém se zobrazuje skóre pro úplný text a na úrovni `FullText`slova, ve kterém se zobrazuje skóre pouze na úrovni celého textu. Výchozí hodnota je `Phoneme`. | Nepovinné |
-| Dimenze | Definuje výstupní kritéria. Akceptují se `Basic`hodnoty, které ukazují přesnost přesnosti, `Comprehensive` zobrazuje skóre dalších dimenzí (například skóre Fluency a skóre úplnosti na úrovni úplného textu, typ chyby na úrovni slova). Chcete-li zobrazit definice různých dimenzí skóre a typů chyb aplikace Word, zkontrolujte [parametry odpovědi](#response-parameters) . Výchozí hodnota je `Basic`. | Nepovinné |
-| EnableMiscue | Povolí výpočet miscue. Když je tato možnost povolená, vyslovované slova se porovnají s referenčním textem a budou označená vynechání nebo vložení na základě porovnání. Přijaté hodnoty jsou `False` a `True`. Výchozí hodnota je `False`. | Nepovinné |
-| ScenarioId | Identifikátor GUID označující systém přizpůsobeného bodu. | Nepovinné |
+| ReferenceText | Text, proti kterému bude výslovnost vyhodnocena. | Vyžadováno |
+| GradingSystem | Systém bodů pro kalibraci skóre. Přijaté hodnoty jsou `FivePoint` a `HundredMark` . Výchozí hodnota je `FivePoint`. | Volitelné |
+| Členitost | Členitost vyhodnocení. Přípustné hodnoty jsou, což zobrazuje skóre pro úplný text, na úrovni aplikace Word a foném, ve kterém se zobrazuje skóre `Phoneme` `Word` pro úplný text a na úrovni slova, ve `FullText` kterém se zobrazuje skóre pouze na úrovni celého textu. Výchozí hodnota je `Phoneme`. | Volitelné |
+| Dimenze | Definuje výstupní kritéria. Akceptují se hodnoty `Basic` , které ukazují přesnost přesnosti, `Comprehensive` zobrazuje skóre dalších dimenzí (například skóre Fluency a skóre úplnosti na úrovni úplného textu, typ chyby na úrovni slova). Chcete-li zobrazit definice různých dimenzí skóre a typů chyb aplikace Word, zkontrolujte [parametry odpovědi](#response-parameters) . Výchozí hodnota je `Basic`. | Volitelné |
+| EnableMiscue | Povolí výpočet miscue. Když je tato možnost povolená, vyslovované slova se porovnají s referenčním textem a budou označená vynechání nebo vložení na základě porovnání. Přijaté hodnoty jsou `False` a `True` . Výchozí hodnota je `False`. | Volitelné |
+| ScenarioId | Identifikátor GUID označující systém přizpůsobeného bodu. | Volitelné |
 
 Níže je příklad kódu JSON obsahujícího parametry vyhodnocení výslovnosti:
 
@@ -106,13 +106,16 @@ Níže je příklad kódu JSON obsahujícího parametry vyhodnocení výslovnost
 }
 ```
 
-Následující vzorový kód ukazuje, jak vytvořit parametry vyhodnocení výslovnosti do parametru dotazu adresy URL:
+Následující vzorový kód ukazuje, jak vytvořit parametry vyhodnocení výslovnosti do `Pronunciation-Assessment` hlavičky:
 
 ```csharp
-var pronunciationScoreParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
-var pronunciationScoreParamsBytes = Encoding.UTF8.GetBytes(pronunciationScoreParamsJson);
-var pronunciationScoreParams = Convert.ToBase64String(pronunciationScoreParamsBytes);
+var pronAssessmentParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
+var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson);
+var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
+
+>[!NOTE]
+>Funkce hodnocení výslovnosti je aktuálně dostupná jenom v `westus` `eastasia` oblastech a. A tato funkce je aktuálně dostupná jenom pro `en-US` jazyk.
 
 ## <a name="sample-request"></a>Ukázková žádost
 
@@ -126,6 +129,12 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked
 Expect: 100-continue
+```
+
+Pokud chcete povolit posouzení výslovnosti, můžete přidat pod záhlaví. Informace o tom, jak vytvořit tuto hlavičku, najdete v tématu [parametry vyhodnocení výslovnosti](#pronunciation-assessment-parameters) .
+
+```HTTP
+Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
 ## <a name="http-status-codes"></a>Stavové kódy HTTP
@@ -142,7 +151,7 @@ Stavový kód HTTP pro každou odpověď indikuje úspěch nebo běžné chyby.
 
 ## <a name="chunked-transfer"></a>Přenos v bloku
 
-Přenos v bloku (`Transfer-Encoding: chunked`) může přispět ke snížení latence při rozpoznávání. Umožňuje službě Speech Service zahájit zpracování zvukového souboru během přenosu. REST API neposkytuje částečné nebo dočasné výsledky.
+Přenos v bloku ( `Transfer-Encoding: chunked` ) může přispět ke snížení latence při rozpoznávání. Umožňuje službě Speech Service zahájit zpracování zvukového souboru během přenosu. REST API neposkytuje částečné nebo dočasné výsledky.
 
 Tato ukázka kódu ukazuje, jak odeslat zvuk v blocích. Pouze první blok by měl obsahovat hlavičku zvukového souboru. `request`je `HttpWebRequest` objekt připojený k příslušnému koncovému bodu REST. `audioFile`je cesta ke zvukovému souboru na disku.
 
@@ -178,7 +187,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ## <a name="response-parameters"></a>Parametry odpovědi
 
-Výsledky se poskytují jako JSON. Tento `simple` formát zahrnuje tato pole nejvyšší úrovně.
+Výsledky se poskytují jako JSON. Tento `simple` Formát zahrnuje tato pole nejvyšší úrovně.
 
 | Parametr | Popis  |
 |-----------|--------------|
@@ -187,7 +196,7 @@ Výsledky se poskytují jako JSON. Tento `simple` formát zahrnuje tato pole nej
 |`Offset`|Čas (v jednotkách 100 – nanosekund), na kterém se ve zvukovém streamu zahájí rozpoznané rozpoznávání řeči.|
 |`Duration`|Doba (v jednotkách 100 – nanosekund) rozpoznaného rozpoznávání řeči ve zvukovém datovém proudu.|
 
-`RecognitionStatus` Pole může obsahovat tyto hodnoty:
+`RecognitionStatus`Pole může obsahovat tyto hodnoty:
 
 | Status | Popis |
 |--------|-------------|
@@ -198,9 +207,9 @@ Výsledky se poskytují jako JSON. Tento `simple` formát zahrnuje tato pole nej
 | `Error` | Služba pro rozpoznávání zjistila vnitřní chybu a nemůže pokračovat. Zkuste to znovu, pokud je to možné. |
 
 > [!NOTE]
-> Pokud zvuk obsahuje pouze vulgární výrazy a parametr `profanity` dotazu je nastaven na `remove`hodnotu, služba nevrátí výsledek řeči.
+> Pokud zvuk obsahuje pouze vulgární výrazy a `profanity` parametr dotazu je nastaven na hodnotu `remove` , služba nevrátí výsledek řeči.
 
-`detailed` Formát obsahuje další formy rozpoznaných výsledků.
+`detailed`Formát obsahuje další formy rozpoznaných výsledků.
 Při použití `detailed` formátu `DisplayText` je k dispozici jako `Display` u každého výsledku v `NBest` seznamu.
 
 Objekt v `NBest` seznamu může zahrnovat:
@@ -211,12 +220,12 @@ Objekt v `NBest` seznamu může zahrnovat:
 | `Lexical` | Lexikální forma rozpoznaného textu: skutečná slova byla rozpoznána. |
 | `ITN` | Formát textu, který je v normalizovaném textu (kanonický), s telefonními čísly, čísly, zkratkami ("lékař Novák" na "Dr Smith") a jinými použitými transformacemi. |
 | `MaskedITN` | Formulář vytvořené s použitým maskou vulgárních výrazů, pokud je to požadováno. |
-| `Display` | Formulář pro zobrazení rozpoznaného textu s přidanými interpunkcí a velkými písmeny Tento parametr je stejný, jako `DisplayText` při nastavení Format na `simple`. |
+| `Display` | Formulář pro zobrazení rozpoznaného textu s přidanými interpunkcí a velkými písmeny Tento parametr je stejný, jako `DisplayText` při nastavení Format na `simple` . |
 | `AccuracyScore` | Skóre udávající přesnost výslovnosti daného řeči. |
 | `FluencyScore` | Skóre udávající Fluency daného řeči. |
 | `CompletenessScore` | Skóre udávající úplnost daného rozpoznávání řeči výpočtem poměru slov v celém vstupu. |
 | `PronScore` | Celkové skóre udávající kvalitu výslovnosti daného řeči. Počítá se z `AccuracyScore` `FluencyScore` a `CompletenessScore` s váhou. |
-| `ErrorType` | Tato hodnota označuje, zda je slovo vynecháno, vloženo nebo špatně vyslovované, `ReferenceText`ve srovnání s. Možné hodnoty jsou `None` (to znamená, `Omission` `Insertion` že toto slovo neobsahuje žádnou chybu) `Mispronunciation`, a. |
+| `ErrorType` | Tato hodnota označuje, zda je slovo vynecháno, vloženo nebo špatně vyslovované, ve srovnání s `ReferenceText` . Možné hodnoty jsou `None` (to znamená, že toto slovo neobsahuje žádnou chybu), `Omission` `Insertion` a `Mispronunciation` . |
 
 ## <a name="sample-responses"></a>Ukázkové odpovědi
 

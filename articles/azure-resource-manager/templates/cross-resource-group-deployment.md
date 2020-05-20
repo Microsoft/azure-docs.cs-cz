@@ -2,124 +2,40 @@
 title: Nasazení prostředků mezi předplatnými & skupiny prostředků
 description: Ukazuje, jak během nasazení cílit více než jedno předplatné Azure a skupinu prostředků.
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: 70868f5a3598c26ffff81f0ad3536a6c5c0a7e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/18/2020
+ms.openlocfilehash: 2ef68dcb933075833c323d973b023cdaee61bd2f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460343"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650639"
 ---
-# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků
+# <a name="deploy-azure-resources-across-subscriptions-or-resource-groups"></a>Nasazení prostředků Azure v rámci předplatných nebo skupin prostředků
 
-Obvykle se všechny prostředky v šabloně nasazují do jedné [skupiny prostředků](../management/overview.md). Existují však situace, kdy chcete nasadit sadu prostředků dohromady, ale umístit je do různých skupin prostředků nebo předplatných. Například můžete chtít nasadit virtuální počítač pro zálohování pro Azure Site Recovery do samostatné skupiny prostředků a umístění. Správce prostředků umožňuje používat vnořené šablony pro cílení na více než jedno předplatné a skupinu prostředků.
+Správce prostředků umožňuje nasazení do více než jedné skupiny prostředků v jednom nasazení. Vnořené šablony můžete použít k určení skupin prostředků, které se liší od skupiny prostředků v rámci operace nasazení. Skupiny prostředků můžou existovat v různých předplatných.
 
 > [!NOTE]
-> V jednom nasazení můžete nasadit jenom pět skupin prostředků. Obvykle toto omezení znamená, že můžete nasadit do jedné skupiny prostředků zadané pro nadřazenou šablonu a až čtyř skupin prostředků ve vnořených nebo propojených nasazeních. Pokud ale vaše nadřazená šablona obsahuje jenom vnořené nebo propojené šablony a sám o sobě neimplementuje žádné prostředky, můžete ve vnořených nebo propojených nasazeních zahrnout až pět skupin prostředků.
+> V jednom nasazení můžete nasadit do **skupin prostředků 800** . Obvykle toto omezení znamená, že můžete nasadit do jedné skupiny prostředků zadané pro nadřazenou šablonu a až 799 skupiny prostředků ve vnořených nebo propojených nasazeních. Pokud ale vaše nadřazená šablona obsahuje jenom vnořené nebo propojené šablony a sám o sobě neimplementuje žádné prostředky, můžete do vnořených nebo propojených nasazení zahrnout až 800 skupin prostředků.
 
 ## <a name="specify-subscription-and-resource-group"></a>Zadat předplatné a skupinu prostředků
 
-Pokud chcete cílit na jinou skupinu prostředků nebo předplatné, použijte [vnořenou nebo propojenou šablonu](linked-templates.md). Typ `Microsoft.Resources/deployments` prostředku poskytuje parametry pro `subscriptionId` a `resourceGroup`, které umožňují určit předplatné a skupinu prostředků pro vnořené nasazení. Pokud nezadáte ID předplatného nebo skupinu prostředků, použije se předplatné a skupina prostředků z nadřazené šablony. Před spuštěním nasazení musí existovat všechny skupiny prostředků.
+Chcete-li cílit na skupinu prostředků, která je jiná než ta pro nadřazenou šablonu, použijte [vnořenou nebo propojenou šablonu](linked-templates.md). V části typ prostředku nasazení zadejte hodnoty pro ID předplatného a skupinu prostředků, do které chcete vnořenou šablonu nasadit.
 
-Účet, který použijete k nasazení šablony, musí mít oprávnění k nasazení na zadané ID předplatného. Pokud zadané předplatné existuje v jiném tenantovi Azure Active Directory, musíte [Přidat uživatele typu host z jiného adresáře](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json" range="38-43" highlight="5-6":::
 
-Pokud chcete zadat jinou skupinu prostředků a předplatné, použijte:
+Pokud nezadáte ID předplatného nebo skupinu prostředků, použije se předplatné a skupina prostředků z nadřazené šablony. Před spuštěním nasazení musí existovat všechny skupiny prostředků.
 
-```json
-"resources": [
-  {
-    "apiVersion": "2017-05-10",
-    "name": "nestedTemplate",
-    "type": "Microsoft.Resources/deployments",
-    "resourceGroup": "[parameters('secondResourceGroup')]",
-    "subscriptionId": "[parameters('secondSubscriptionID')]",
-    ...
-  }
-]
-```
+Účet, který nasazuje šablonu, musí mít oprávnění k nasazení na zadané ID předplatného. Pokud zadané předplatné existuje v jiném tenantovi Azure Active Directory, musíte [Přidat uživatele typu host z jiného adresáře](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
-Pokud jsou vaše skupiny prostředků ve stejném předplatném, můžete hodnotu **SubscriptionId** odebrat.
+Následující příklad nasadí dva účty úložiště. První účet úložiště se nasadí do skupiny prostředků zadané v operaci nasazení. Druhý účet úložiště se nasadí do skupiny prostředků zadané v `secondResourceGroup` `secondSubscriptionID` parametrech a:
 
-Následující příklad nasadí dva účty úložiště. První účet úložiště se nasadí do skupiny prostředků zadané během nasazování. Druhý účet úložiště se nasadí do skupiny prostředků zadané v parametrech `secondResourceGroup` a `secondSubscriptionID` :
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storagePrefix": {
-      "type": "string",
-      "maxLength": 11
-    },
-    "secondResourceGroup": {
-      "type": "string"
-    },
-    "secondSubscriptionID": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "secondStorageLocation": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]"
-    }
-  },
-  "variables": {
-    "firstStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
-    "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2017-06-01",
-      "name": "[variables('firstStorageName')]",
-      "location": "[resourceGroup().location]",
-      "sku":{
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "nestedTemplate",
-      "resourceGroup": "[parameters('secondResourceGroup')]",
-      "subscriptionId": "[parameters('secondSubscriptionID')]",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2017-06-01",
-            "name": "[variables('secondStorageName')]",
-            "location": "[parameters('secondStorageLocation')]",
-            "sku":{
-              "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-          }
-          ]
-      },
-      "parameters": {}
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json":::
 
 Pokud nastavíte `resourceGroup` název skupiny prostředků, která neexistuje, nasazení se nezdařilo.
 
 K otestování předchozí šablony a zobrazení výsledků použijte PowerShell nebo Azure CLI.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Pokud chcete nasadit dva účty úložiště do dvou skupin prostředků ve **stejném předplatném**, použijte:
 
@@ -205,7 +121,7 @@ az deployment group create \
 
 ## <a name="use-functions"></a>Použití funkcí
 
-Funkce [Resource ()](template-functions-resource.md#resourcegroup) a [Subscription ()](template-functions-resource.md#subscription) se vyřeší odlišně podle toho, jak zadáte šablonu. Když propojíte externí šablonu, funkce se vždy vyhodnotí do oboru pro tuto šablonu. Při vnořování šablony v rámci nadřazené šablony použijte `expressionEvaluationOptions` vlastnost k určení, zda funkce překládá na skupinu prostředků a odběr nadřazené šablony nebo vnořené šablony. Nastavte vlastnost na `inner` hodnotu, aby se přeložila na obor vnořené šablony. Nastavte vlastnost na `outer` hodnotu, aby se přeložila na rozsah nadřazené šablony.
+Funkce [Resource ()](template-functions-resource.md#resourcegroup) a [Subscription ()](template-functions-resource.md#subscription) se vyřeší odlišně podle toho, jak zadáte šablonu. Když propojíte externí šablonu, funkce se vždy vyhodnotí do oboru pro tuto šablonu. Při vnořování šablony v rámci nadřazené šablony použijte `expressionEvaluationOptions` vlastnost k určení, zda funkce překládá na skupinu prostředků a odběr nadřazené šablony nebo vnořené šablony. Nastavte vlastnost na hodnotu `inner` , aby se přeložila na obor vnořené šablony. Nastavte vlastnost na hodnotu `outer` , aby se přeložila na rozsah nadřazené šablony.
 
 Následující tabulka ukazuje, jestli se funkce překládají na nadřazenou nebo integrovanou skupinu prostředků a předplatné.
 
@@ -221,103 +137,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 * vnořená šablona s vnitřním rozsahem
 * odkazovaná šablona
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "defaultScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "innerScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "expressionEvaluationOptions": {
-          "scope": "inner"
-      },
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "resourceGroup": "linkedGroup",
-      "properties": {
-      "mode": "Incremental",
-      "templateLink": {
-          "contentVersion": "1.0.0.0",
-          "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourceGroupName.json"
-      },
-      "parameters": {}
-      }
-    }
-  ],
-  "outputs": {
-    "parentRG": {
-      "type": "string",
-      "value": "[concat('Parent resource group is ', resourceGroup().name)]"
-    },
-    "defaultScopeRG": {
-      "type": "string",
-      "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "innerScopeRG": {
-      "type": "string",
-      "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "linkedRG": {
-      "type": "string",
-      "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crossresourcegroupproperties.json":::
 
 K otestování předchozí šablony a zobrazení výsledků použijte PowerShell nebo Azure CLI.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus

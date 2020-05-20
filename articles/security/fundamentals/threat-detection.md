@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 3c1c385a87fc302d180729ec2e4bcd1c4a315f6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43a5360965c13df3227ecbc0c716327346244ebd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981466"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653619"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
@@ -268,7 +268,7 @@ SQL Database detektory hrozeb používají jednu z následujících metodologií
 
 ### <a name="application-gateway-web-application-firewall"></a>Application Gateway Firewall webových aplikací
 
-[Firewall webových aplikací (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) je funkce služby [Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) , která poskytuje ochranu webových aplikací, které používají Aplikační bránu pro standardní funkce [řízení doručování aplikací](https://kemptechnologies.com/in/application-delivery-controllers) . Firewall webových aplikací to dělá tak, že je chrání před většinou z [OWASP (Open Web Application Security Project) hlavních 10 běžných webových chyb zabezpečení](https://www.owasp.org/index.php/Top_10_2010-Main).
+[Firewall webových aplikací (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) je funkce služby [Azure Application Gateway](../../application-gateway/application-gateway-web-application-firewall-overview.md) , která poskytuje ochranu webových aplikací, které používají Aplikační bránu pro standardní funkce [řízení doručování aplikací](https://kemptechnologies.com/in/application-delivery-controllers) . Firewall webových aplikací to dělá tak, že je chrání před většinou z [OWASP (Open Web Application Security Project) hlavních 10 běžných webových chyb zabezpečení](https://owasp.org/www-project-top-ten/).
 
 ![Application Gateway diagram firewallu webových aplikací](./media/threat-detection/azure-threat-detection-fig13.png)
 
@@ -366,7 +366,7 @@ Při shromažďování dat z těchto zdrojů Cloud App Security spouští sofist
 
 ## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Pokročilé možnosti detekce hrozeb od jiných výrobců prostřednictvím Azure Marketplace
 
-### <a name="web-application-firewall"></a>Web Application Firewall (Brána firewall webových aplikací)
+### <a name="web-application-firewall"></a>Firewall webových aplikací
 
 Firewall webových aplikací kontroluje příchozí webový provoz a blokuje injektáže SQL, skriptování mezi weby, nakládku malwaru, útoky aplikací DDoS a další útoky zaměřené na vaše webové aplikace. Také kontroluje odpovědi z back-endové webové servery na ochranu před únikem informací (DLP). Integrovaný modul řízení přístupu umožňuje správcům vytvářet podrobné zásady řízení přístupu pro ověřování, autorizaci a monitorování účtů (AAA), které organizacím poskytuje silné ověřování a uživatelský ovládací prvek.
 

@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: fe85fed9268e1a4248ef373d577c89e58c01eba5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 7c9cdf6ee671083420ae8d8fad393110353b8e1a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792033"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657016"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transparentní šifrování dat s klíčem spravovaným zákazníkem
 
@@ -159,7 +159,7 @@ Pokud chcete obnovit zálohu zašifrovanou pomocí ochrany TDE ochrany před Key
 > [!IMPORTANT]
 > V každém okamžiku může být pro server nedostupná více než jedna sada ochrany TDE. Je to klíč označený jako "nastavit klíč jako výchozí TDE ochrana" v okně Azure Portal. Na server ale můžete propojit víc dalších klíčů, aniž byste je museli označit jako ochranu pomocí TDE. Tyto klíče se nepoužívají k ochraně klíč DEK, ale během obnovování se dají použít při obnovení ze zálohy, pokud je záložní soubor zašifrovaný s klíčem s odpovídajícím kryptografickým otiskem.
 
-Pokud klíč, který je potřeba pro obnovení zálohy, už není k dispozici na cílovém serveru, vrátí se při obnovení následující chybová zpráva: "cílový server `<Servername>` nemá přístup ke všem identifikátorům URI integrace vytvořeným mezi \<časovým razítkem #1> \<a časovým razítkem #2>. Opakujte prosím operaci po obnovení všech identifikátorů URI integrace. "
+Pokud klíč, který je potřeba pro obnovení zálohy, už není k dispozici na cílovém serveru, vrátí se při obnovení následující chybová zpráva: "cílový server nemá `<Servername>` přístup ke všem identifikátorům URI integrace vytvořeným mezi \< časovým razítkem #1> a \< časovým razítkem #2>. Opakujte prosím operaci po obnovení všech identifikátorů URI integrace. "
 
 Pokud ho chcete zmírnit, spusťte rutinu [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) pro cílový SQL Database logický Server nebo rutinu [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) pro cílovou spravovanou instanci, která vrátí seznam dostupných klíčů a určí chybějící. Aby bylo možné obnovit všechny zálohy, ujistěte se, že cílový server pro obnovení má přístup ke všem potřebným klíčům. Tyto klíče není nutné označit jako ochranu pomocí TDE.
 

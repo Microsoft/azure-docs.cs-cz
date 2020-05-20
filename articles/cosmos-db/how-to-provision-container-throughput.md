@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4249f1e9f2bf9fcb235644bb211065db460c936e
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 0e7a2e9e5feb848971c4858415510f98a7bdaf78
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869897"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655345"
 ---
-# <a name="provision-throughput-on-an-azure-cosmos-container"></a>Zajištění propustnosti v kontejneru Azure Cosmos
+# <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Zřízení standardní (ruční) propustnosti v kontejneru Azure Cosmos
 
-Tento článek vysvětluje, jak zřídit propustnost pro kontejner (kolekci, graf nebo tabulku) v Azure Cosmos DB. Můžete zřídit propustnost v jednom kontejneru nebo [zřídit propustnost databáze](how-to-provision-database-throughput.md) a sdílet ji mezi kontejnery v rámci databáze. Propustnost můžete zřídit na kontejneru pomocí Azure Portal, rozhraní příkazového řádku Azure nebo sady Azure Cosmos DB SDK.
+Tento článek vysvětluje, jak zřídit standardní (ruční) propustnost na kontejneru (kolekci, grafu nebo tabulky) v Azure Cosmos DB. Můžete zřídit propustnost v jednom kontejneru nebo [zřídit propustnost databáze](how-to-provision-database-throughput.md) a sdílet ji mezi kontejnery v rámci databáze. Propustnost můžete zřídit na kontejneru pomocí Azure Portal, rozhraní příkazového řádku Azure nebo sady Azure Cosmos DB SDK.
 
 ## <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 
@@ -27,7 +27,7 @@ Tento článek vysvětluje, jak zřídit propustnost pro kontejner (kolekci, gra
 
    * Určete, zda vytváříte novou databázi, nebo použijte existující.
    * Zadejte ID kontejneru (nebo tabulky nebo grafu).
-   * Zadejte hodnotu klíče oddílu (například `/userid`).
+   * Zadejte hodnotu klíče oddílu (například `/userid` ).
    * Zadejte propustnost, kterou chcete zřídit (například 1000 ru).
    * Vyberte **OK**.
 
@@ -123,5 +123,6 @@ session.Execute("ALTER TABLE myKeySpace.myTable WITH cosmosdb_provisioned_throug
 
 Informace o zřizování propustnosti v Azure Cosmos DB najdete v následujících článcích:
 
-* [Jak zřídit propustnost pro databázi](how-to-provision-database-throughput.md)
+* [Jak zřídit standardní (ruční) propustnost v databázi](how-to-provision-database-throughput.md)
+* [Jak zřídit propustnost automatického škálování v databázi](how-to-provision-autoscale-throughput.md)
 * [Jednotky žádostí a propustnost ve službě Azure Cosmos DB](request-units.md)

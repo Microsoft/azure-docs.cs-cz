@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 570e84b3a545736aad6983c7f0d8c0f0296ca589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d073bc82b3a9e42e443caa5d3e7855fd4eb5b98b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431810"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658913"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Architektura SQL Azure synapse 
 
@@ -117,4 +117,4 @@ Následující diagram znázorňuje replikovanou tabulku uloženou v mezipaměti
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když víte o synapse SQL, zjistíte, jak rychle [vytvořit fond SQL](../quickstart-create-sql-pool.md) a [načíst ukázková data](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-databases.MD). Nebo začnete [používat SQL na vyžádání](../quickstart-sql-on-demand.md). Pokud s Azure začínáte, můžete využít [Glosář Azure](../../azure-glossary-cloud-terminology.md), kde najdete potřebnou terminologii. 
+Teď, když víte o synapse SQL, zjistíte, jak rychle [vytvořit fond SQL](../quickstart-create-sql-pool-portal.md) a [načíst ukázková data](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-databases.MD). Nebo začnete [používat SQL na vyžádání](../quickstart-sql-on-demand.md). Pokud s Azure začínáte, můžete využít [Glosář Azure](../../azure-glossary-cloud-terminology.md), kde najdete potřebnou terminologii. 

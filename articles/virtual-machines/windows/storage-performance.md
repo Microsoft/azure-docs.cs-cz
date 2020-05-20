@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: cd15df2a7074463789bcf4a2d4de3c41bd012bbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a093303efe63a051e8e2ff9824a35228e44e1aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100545"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652600"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích řady Lsv2-Series
 
@@ -21,7 +21,7 @@ Virtuální počítače řady Lsv2-series podporují nejrůznější úlohy, kte
 
 Návrh Lsv2-Series Virtual Machines (virtuální počítače) maximalizuje procesor AMD EPYC™ 7551, který poskytuje nejlepší výkon mezi procesorem, pamětí, NVMe zařízeními a virtuálními počítači. Kromě maximalizace hardwarového výkonu jsou virtuální počítače Lsv2-Series navržené tak, aby lépe fungovaly s hardwarem a softwarem pro lepší výkon operačního systému Windows a Linux.
 
-Výsledkem optimalizace softwaru a hardwaru je optimalizovaná verze [Windows serveru 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)vydaná do začátku od 2018 do Azure Marketplace, která podporuje maximální výkon na zařízeních NVMe ve virtuálních počítačích Lsv2-Series.
+Výsledkem optimalizace softwaru a hardwaru je optimalizovaná verze [Windows serveru 2019 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)vydaná do začátku od 2018 do Azure Marketplace, která podporuje maximální výkon na zařízeních NVMe ve virtuálních počítačích Lsv2-Series.
 
 Tento článek poskytuje tipy a návrhy, které zajistí, aby vaše úlohy a aplikace dosáhly maximálního výkonu, který je pro virtuální počítače určený. Informace na této stránce budou průběžně aktualizovány, protože do Azure Marketplace jsou přidány další optimalizované obrázky Lsv2.
 

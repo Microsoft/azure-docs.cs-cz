@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548539"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648215"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
 
@@ -39,7 +39,7 @@ Nejprve vytvořte nový projekt s prázdnou aktivitou. Chcete-li vytvořit proje
 1. V části **zvolit projekt**vyberte **telefon a tablet**. Vaše aplikace se spustí v tomto faktoru formuláře.
 2. Na kartě **telefon a tablet** vyberte **prázdná aktivita**a pak vyberte **Další**.
 3. V části **Konfigurovat projekt**vyberte `API 21: Android 5.0.0 (Lollipop)` jako minimální sadu SDK. Toto je nejstarší verze, kterou podporuje Azure Maps Android SDK.
-4. Přijměte výchozí `Activity Name` nastavení `Layout Name` a klikněte na **Dokončit**.
+4. Přijměte výchozí nastavení `Activity Name` a `Layout Name` klikněte na **Dokončit**.
 
 Další nápovědu k instalaci Android Studio a vytvoření nového projektu najdete v [dokumentaci k Android Studio](https://developer.android.com/studio/intro/) .
 
@@ -47,7 +47,7 @@ Další nápovědu k instalaci Android Studio a vytvoření nového projektu naj
 
 ## <a name="set-up-a-virtual-device"></a>Nastavení virtuálního zařízení
 
-Android Studio umožňuje na počítači nastavit virtuální zařízení s Androidem. To vám může pomáhat při testování aplikace během vývoje. Pokud chcete nastavit virtuální zařízení, vyberte ikonu správce virtuálního zařízení (AVD) Android v pravém horním rohu obrazovky projektu a pak vyberte **vytvořit virtuální zařízení**. Do AVD Manageru se můžete dostat taky tak, že na panelu nástrojů vyberete **nástroje** > **pro Android** > **AVD Manager** . V kategorii **telefony** vyberte **Nexus pětinásobné**a pak vyberte **Další**.
+Android Studio umožňuje na počítači nastavit virtuální zařízení s Androidem. To vám může pomáhat při testování aplikace během vývoje. Pokud chcete nastavit virtuální zařízení, vyberte ikonu správce virtuálního zařízení (AVD) Android v pravém horním rohu obrazovky projektu a pak vyberte **vytvořit virtuální zařízení**. Do AVD Manageru se můžete dostat taky tak, že na panelu nástrojů vyberete **nástroje**pro  >  **Android**  >  **AVD Manager** . V kategorii **telefony** vyberte **Nexus pětinásobné**a pak vyberte **Další**.
 
 Další informace o nastavení AVD najdete v [dokumentaci k Android Studio](https://developer.android.com/studio/run/managing-avds).
 
@@ -80,11 +80,11 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
     3. Aktualizujte svůj blok závislosti a přidejte nový řádek s závislostí implementace pro nejnovější Azure Maps Android SDK:
 
         ```
-        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
+        implementation "com.microsoft.azure.maps:mapcontrol:0.4"
         ```
     
     4. Přejděte na **soubor** na panelu nástrojů a pak klikněte na **synchronizovat projekt se soubory Gradle**.
-3. Přidejte do hlavní aktivity fragment mapy (aktivita \> \> \_rozložení res Main. XML):
+3. Přidejte do hlavní aktivity fragment mapy ( \> aktivita rozložení res \> \_ Main. XML):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -109,7 +109,7 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
     * Nastavení ověřovacích informací Azure Maps
     * získání instance mapového ovládacího prvku v metodě **Create**
 
-    Nastavení ověřovacích informací `AzureMaps` třídy globálně pomocí metod `setSubscriptionKey` nebo `setAadProperties` ji vytvoří, takže nebudete muset přidávat informace o ověřování do každého zobrazení. 
+    Nastavení ověřovacích informací `AzureMaps` třídy globálně pomocí `setSubscriptionKey` `setAadProperties` metod nebo ji vytvoří, takže nebudete muset přidávat informace o ověřování do každého zobrazení. 
 
     Mapový ovládací prvek obsahuje vlastní metody životního cyklu pro správu životního cyklu OpenGL pro Android. Tyto metody životního cyklu musí být volány přímo z obsažené aktivity. Aby vaše aplikace správně volala metody životního cyklu mapového ovládacího prvku, je nutné přepsat následující metody životního cyklu v aktivitě, která obsahuje mapový ovládací prvek. A, je nutné zavolat příslušnou metodu mapového ovládacího prvku. 
 
@@ -205,7 +205,7 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
 
 ## <a name="import-classes"></a>Importovat třídy
 
-Po dokončení předchozích kroků se pravděpodobně zobrazí upozornění od Android Studio o některém z kódů. Chcete-li tato upozornění vyřešit, importujte třídy, `MainActivity.java`které jsou odkazovány v.
+Po dokončení předchozích kroků se pravděpodobně zobrazí upozornění od Android Studio o některém z kódů. Chcete-li tato upozornění vyřešit, importujte třídy, které jsou odkazovány v `MainActivity.java` .
 
 Tyto třídy můžete automaticky importovat tak, že vyberete ALT + ENTER (možnost + návrat na Macu).
 
@@ -250,7 +250,7 @@ Druhou možností je předat jazyk a zobrazit informace do XML mapového ovláda
     />
 ```
 
-Třetí možností je programově nastavit jazyk a regionální zobrazení mapy pomocí metody map `setStyle` . To lze provést kdykoli, chcete-li změnit jazyk a regionální zobrazení mapy.
+Třetí možností je programově nastavit jazyk a regionální zobrazení mapy pomocí `setStyle` metody map. To lze provést kdykoli, chcete-li změnit jazyk a regionální zobrazení mapy.
 
 ```Java
 mapControl.onReady(map -> {

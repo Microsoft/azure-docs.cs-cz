@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 9b78c0d93b57a3e3f4963088d0b93f121f57483c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eeeb60cc41f96edbf8733468ca0cfd18d2939af7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945112"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652536"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Jak pomocí filtru paketů FreeBSD vytvořit zabezpečenou bránu firewall v Azure
 Tento článek popisuje, jak nasadit firewall překladu adres (NAT) pomocí filtru FreeBSD Pack Azure Resource Manager prostřednictvím šablony pro běžný scénář webového serveru.
@@ -28,13 +28,13 @@ Pokud vás zajímá nastavení zabezpečené brány firewall v cloudu pro vaše 
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Nasazení prostřednictvím rozhraní příkazového řádku Azure
-Potřebujete nainstalovat nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásit se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index). Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří název `myResourceGroup` skupiny prostředků v `West US` umístění.
+Potřebujete nainstalovat nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásit se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index). Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří název skupiny prostředků `myResourceGroup` v `West US` umístění.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-V dalším kroku nasaďte šablonu [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) pomocí [AZ Group Deployment Create](/cli/azure/group/deployment). Stáhněte si [azuredeploy. Parameters. JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) pod stejnou cestou a definujte vlastní hodnoty prostředků, například `adminPassword`, `networkPrefix`a. `domainNamePrefix` 
+V dalším kroku nasaďte šablonu PF-FreeBSD-Setup pomocí [AZ Group Deployment Create](/cli/azure/group/deployment). Stáhněte si azuredeploy. Parameters. JSON pod stejnou cestou a definujte vlastní hodnoty prostředků, například `adminPassword` , `networkPrefix` a `domainNamePrefix` . 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \
@@ -42,14 +42,14 @@ az group deployment create --resource-group myResourceGroup --name myDeploymentN
     --parameters '@azuredeploy.parameters.json' --verbose
 ```
 
-Po asi pět minut se zobrazí informace o `"provisioningState": "Succeeded"`. Pak můžete pomocí protokolu SSH přejít k virtuálnímu počítači front-end (NAT) nebo přistupovat k webovému serveru Nginx v prohlížeči pomocí veřejné IP adresy nebo plně kvalifikovaného názvu domény (NAT). Následující příklad vypíše plně kvalifikovaný název domény a veřejnou IP adresu, která se přiřadí virtuálnímu počítači `myResourceGroup` front-endu (NAT) ve skupině prostředků. 
+Po asi pět minut se zobrazí informace o `"provisioningState": "Succeeded"` . Pak můžete pomocí protokolu SSH přejít k virtuálnímu počítači front-end (NAT) nebo přistupovat k webovému serveru Nginx v prohlížeči pomocí veřejné IP adresy nebo plně kvalifikovaného názvu domény (NAT). Následující příklad vypíše plně kvalifikovaný název domény a veřejnou IP adresu, která se přiřadí virtuálnímu počítači front-endu (NAT) ve `myResourceGroup` skupině prostředků. 
 
 ```azurecli
 az network public-ip list --resource-group myResourceGroup
 ```
     
 ## <a name="next-steps"></a>Další kroky
-Chcete v Azure nastavit vlastní překlad adres (NAT)? Open Source, zdarma, ale výkonné? Pak je PF dobrá volba. Pomocí šablony [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup)budete potřebovat jenom pět minut, než nastavíte bránu firewall překladu adres (NAT) s vyrovnáváním zatížení s kruhovým dotazováním pomocí služby FreeBSD PF v Azure pro běžný scénář webového serveru. 
+Chcete v Azure nastavit vlastní překlad adres (NAT)? Open Source, zdarma, ale výkonné? Pak je PF dobrá volba. Pomocí šablony PF-FreeBSD-Setup budete potřebovat jenom pět minut, než nastavíte bránu firewall překladu adres (NAT) s vyrovnáváním zatížení s kruhovým dotazováním pomocí služby FreeBSD PF v Azure pro běžný scénář webového serveru. 
 
 Pokud se chcete seznámit s nabídkou FreeBSD v Azure, přečtěte si [Úvod do FreeBSD v Azure](freebsd-intro-on-azure.md).
 

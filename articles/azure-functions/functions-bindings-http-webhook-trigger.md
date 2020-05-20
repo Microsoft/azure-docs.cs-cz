@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce40a46d4c1da627930ef8de8813936b71dcc281
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277593"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648965"
 ---
 # <a name="azure-functions-http-trigger"></a>Aktivační událost Azure Functions HTTP
 
@@ -84,7 +84,7 @@ Tady je soubor *Function. JSON* :
 
 Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#configuration) .
 
-Tady je kód skriptu C#, ke kterému se `HttpRequest`váže:
+Tady je kód skriptu C#, ke kterému se váže `HttpRequest` :
 
 ```cs
 #r "Newtonsoft.Json"
@@ -110,7 +110,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-Můžete vytvořit navázání na vlastní objekt namísto `HttpRequest`. Tento objekt se vytvoří z těla žádosti a analyzuje se jako JSON. Podobně lze typ předat výstupní vazbě odpovědi HTTP a vrátit se jako text odpovědi spolu se `200` stavovým kódem.
+Můžete vytvořit navázání na vlastní objekt namísto `HttpRequest` . Tento objekt se vytvoří z těla žádosti a analyzuje se jako JSON. Podobně lze typ předat výstupní vazbě odpovědi HTTP a vrátit se jako text odpovědi spolu se `200` stavovým kódem.
 
 ```csharp
 using System.Net;
@@ -245,7 +245,7 @@ Následující příklady znázorňují vazbu triggeru HTTP.
 
 #### <a name="read-parameter-from-the-query-string"></a>Načíst parametr z řetězce dotazu
 
-Tento příklad přečte parametr s názvem `id`, z řetězce dotazu a použije ho k sestavení dokumentu JSON vráceného klientovi s typem `application/json`obsahu.
+Tento příklad přečte parametr s názvem `id` , z řetězce dotazu a použije ho k sestavení dokumentu JSON vráceného klientovi s typem obsahu `application/json` .
 
 ```java
 @FunctionName("TriggerStringGet")
@@ -284,7 +284,7 @@ public HttpResponseMessage run(
 
 #### <a name="read-body-from-a-post-request"></a>Přečíst tělo žádosti POST
 
-V tomto příkladu se přečte tělo žádosti POST jako `String`a a použije se k sestavení dokumentu JSON vráceného klientovi s typem `application/json`obsahu.
+V tomto příkladu se přečte tělo žádosti POST jako a `String` a použije se k sestavení dokumentu JSON vráceného klientovi s typem obsahu `application/json` .
 
 ```java
     @FunctionName("TriggerStringPost")
@@ -320,7 +320,7 @@ V tomto příkladu se přečte tělo žádosti POST jako `String`a a použije se
 
 #### <a name="read-parameter-from-a-route"></a>Načíst parametr z trasy
 
-Tento příklad načte povinný parametr s názvem `id`a nepovinný parametr `name` z cesty trasy a použije je k sestavení dokumentu JSON vráceného klientovi s typem `application/json`obsahu. T
+Tento příklad načte povinný parametr s názvem `id` a nepovinný parametr `name` z cesty trasy a použije je k sestavení dokumentu JSON vráceného klientovi s typem obsahu `application/json` . T
 
 ```java
 @FunctionName("TriggerStringRoute")
@@ -388,7 +388,7 @@ public class ToDoItem {
 
 ```
 
-Tento příklad přečte tělo žádosti POST. Text žádosti se automaticky rozdělí do `ToDoItem` objektu a vrátí se klientovi s typem `application/json`obsahu. `ToDoItem` Parametr je serializován modulem runtime Functions, protože je přiřazen `body` vlastnosti `HttpMessageResponse.Builder` třídy.
+Tento příklad přečte tělo žádosti POST. Text žádosti se automaticky rozdělí do `ToDoItem` objektu a vrátí se klientovi s typem obsahu `application/json` . `ToDoItem`Parametr je serializován modulem runtime Functions, protože je přiřazen `body` vlastnosti `HttpMessageResponse.Builder` třídy.
 
 ```java
 @FunctionName("TriggerPojoPost")
@@ -481,17 +481,17 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-| **textový** | neuvedeno| Požadováno – musí být nastavené `httpTrigger`na. |
-| **direction** | neuvedeno| Požadováno – musí být nastavené `in`na. |
-| **Jméno** | neuvedeno| Required – název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. |
+| **textový** | Není k dispozici| Požadováno – musí být nastavené na `httpTrigger` . |
+| **direction** | Není k dispozici| Požadováno – musí být nastavené na `in` . |
+| **Jméno** | Není k dispozici| Required – název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Určuje, které klíče (pokud existují) musí být k žádosti přítomny, aby bylo možné funkci vyvolat. Úroveň autorizace může být jedna z následujících hodnot: <ul><li><code>anonymous</code>&mdash;Není vyžadován žádný klíč rozhraní API.</li><li><code>function</code>&mdash;Klíč rozhraní API specifický pro funkci je povinný. Toto je výchozí hodnota, pokud není zadána žádná.</li><li><code>admin</code>&mdash;Hlavní klíč je povinný.</li></ul> Další informace najdete v části o [autorizačních klíčích](#authorization-keys). |
 | **způsobů** |**Metody** | Pole metod HTTP, na které funkce reaguje. Pokud není zadaný, funkce reaguje na všechny metody HTTP. Viz [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
-| **cestě** | **Cestě** | Definuje šablonu směrování, která řídí, které adresy URL žádostí vaše funkce reaguje. Výchozí hodnota, pokud není zadána, je `<functionname>`. Další informace najdete v tématu [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
-| **webHookType** | **WebHookType** | _Podporováno pouze pro modul runtime verze 1. x._<br/><br/>Nakonfiguruje Trigger HTTP tak, aby sloužil jako přijímač [Webhooku](https://en.wikipedia.org/wiki/Webhook) pro zadaného zprostředkovatele. Pokud jste nastavili tuto vlastnost, nenastavujte tuto `methods` vlastnost. Typ Webhooku může být jedna z následujících hodnot:<ul><li><code>genericJson</code>&mdash;Koncový bod Webhooku pro obecné účely bez logiky pro konkrétního zprostředkovatele. Toto nastavení omezuje požadavky jenom na ty, které používají HTTP POST a s `application/json` typem obsahu.</li><li><code>github</code>&mdash;Funkce reaguje na [Webhooky GitHubu](https://developer.github.com/webhooks/). Nepoužívejte vlastnost _authLevel_ s Webhooky GitHubu. Další informace najdete v části Webhooky GitHubu dále v tomto článku.</li><li><code>slack</code>&mdash;Funkce reaguje na [Webhooky časové rezervy](https://api.slack.com/outgoing-webhooks). Nepoužívejte vlastnost _authLevel_ s Webhooky časové rezervy. Další informace najdete v části časová pole webhooků dále v tomto článku.</li></ul>|
+| **cestě** | **Cestě** | Definuje šablonu směrování, která řídí, které adresy URL žádostí vaše funkce reaguje. Výchozí hodnota, pokud není zadána, je `<functionname>` . Další informace najdete v tématu [přizpůsobení koncového bodu http](#customize-the-http-endpoint). |
+| **webHookType** | **WebHookType** | _Podporováno pouze pro modul runtime verze 1. x._<br/><br/>Nakonfiguruje Trigger HTTP tak, aby sloužil jako přijímač [Webhooku](https://en.wikipedia.org/wiki/Webhook) pro zadaného zprostředkovatele. `methods`Pokud jste nastavili tuto vlastnost, nenastavujte tuto vlastnost. Typ Webhooku může být jedna z následujících hodnot:<ul><li><code>genericJson</code>&mdash;Koncový bod Webhooku pro obecné účely bez logiky pro konkrétního zprostředkovatele. Toto nastavení omezuje požadavky jenom na ty, které používají HTTP POST a s `application/json` typem obsahu.</li><li><code>github</code>&mdash;Funkce reaguje na [Webhooky GitHubu](https://developer.github.com/webhooks/). Nepoužívejte vlastnost _authLevel_ s Webhooky GitHubu. Další informace najdete v části Webhooky GitHubu dále v tomto článku.</li><li><code>slack</code>&mdash;Funkce reaguje na [Webhooky časové rezervy](https://api.slack.com/outgoing-webhooks). Nepoužívejte vlastnost _authLevel_ s Webhooky časové rezervy. Další informace najdete v části časová pole webhooků dále v tomto článku.</li></ul>|
 
 ## <a name="payload"></a>Délka
 
-Vstupní typ triggeru je deklarován jako `HttpRequest` nebo vlastní typ. Pokud zvolíte `HttpRequest`, získáte úplný přístup k objektu Request. Pro vlastní typ se modul runtime pokusí analyzovat tělo požadavku JSON pro nastavení vlastností objektu.
+Vstupní typ triggeru je deklarován jako `HttpRequest` nebo vlastní typ. Pokud zvolíte `HttpRequest` , získáte úplný přístup k objektu Request. Pro vlastní typ se modul runtime pokusí analyzovat tělo požadavku JSON pro nastavení vlastností objektu.
 
 ## <a name="customize-the-http-endpoint"></a>Přizpůsobení koncového bodu HTTP
 
@@ -499,7 +499,7 @@ Ve výchozím nastavení platí, že když vytvoříte funkci triggeru HTTP, fun
 
     http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
 
-Tuto trasu můžete přizpůsobit pomocí volitelné `route` vlastnosti vstupní vazby TRIGGERU protokolu HTTP. Například následující soubor *Function. JSON* definuje `route` vlastnost triggeru http:
+Tuto trasu můžete přizpůsobit pomocí volitelné `route` vlastnosti vstupní vazby triggeru protokolu HTTP. Například následující soubor *Function. JSON* definuje `route` vlastnost triggeru http:
 
 ```json
 {
@@ -566,7 +566,7 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 
 V uzlu poskytuje modul runtime Functions tělo požadavku z `context` objektu. Další informace najdete v [příkladu triggeru JavaScriptu](#example).
 
-Následující příklad ukazuje, jak číst parametry směrování z `context.bindingData`.
+Následující příklad ukazuje, jak číst parametry směrování z `context.bindingData` .
 
 ```javascript
 module.exports = function (context, req) {
@@ -585,7 +585,7 @@ module.exports = function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kontext spuštění funkce je zveřejněn prostřednictvím parametru deklarovaného jako `func.HttpRequest`. Tato instance umožňuje funkci přistupovat k parametrům datových tras, hodnotám řetězce dotazu a metodám, které umožňují vracet odpovědi HTTP.
+Kontext spuštění funkce je zveřejněn prostřednictvím parametru deklarovaného jako `func.HttpRequest` . Tato instance umožňuje funkci přistupovat k parametrům datových tras, hodnotám řetězce dotazu a metodám, které umožňují vracet odpovědi HTTP.
 
 Po definování jsou parametry směrování k dispozici funkci voláním `route_params` metody.
 
@@ -646,9 +646,9 @@ Ve výchozím nastavení jsou všechny trasy funkcí s předponou *rozhraní API
 
 ## <a name="using-route-parameters"></a>Použití parametrů směrování
 
-Parametry směrování, které definují `route` vzor funkce, jsou k dispozici pro každou vazbu. Například pokud máte trasu definovanou jako, `"route": "products/{id}"` vazba Table Storage může použít hodnotu `{id}` parametru v konfiguraci vazby.
+Parametry směrování, které definují vzor funkce, `route` jsou k dispozici pro každou vazbu. Například pokud máte trasu definovanou jako, `"route": "products/{id}"` vazba Table Storage může použít hodnotu `{id}` parametru v konfiguraci vazby.
 
-Následující konfigurace ukazuje, jak je `{id}` parametr předán do vazby `rowKey`.
+Následující konfigurace ukazuje, jak `{id}` je parametr předán do vazby `rowKey` .
 
 ```json
 {
@@ -747,32 +747,12 @@ Ověřený uživatel je k dispozici prostřednictvím [hlaviček protokolu HTTP]
 
 ---
 
-## <a name="authorization-keys"></a>Autorizační klíče
-
-Funkce umožňují používat klíče k tomu, aby během vývoje měly přístup k koncovým bodům funkce HTTP.  Pokud není úroveň autorizace protokolu HTTP u funkce aktivované protokolem HTTP nastavená `anonymous`na, požadavky musí v žádosti zahrnovat klíč rozhraní API. 
+## <a name="function-access-keys"></a><a name="authorization-keys"></a>Přístupové klíče funkce
 
 > [!IMPORTANT]
 > I když klíče mohou během vývoje přispět k zařazování koncových bodů HTTP, nejsou určené jako způsob zabezpečení triggeru HTTP v produkčním prostředí. Další informace najdete v tématu [zabezpečení koncového bodu http v produkčním prostředí](#secure-an-http-endpoint-in-production).
 
-> [!NOTE]
-> V modulu runtime Functions 1. x můžou poskytovatelé Webhooku použít klíče k autorizaci požadavků různými způsoby v závislosti na tom, co poskytovatel podporuje. Tento vztah je popsaný v [webhookech a klíčích](#webhooks-and-keys). Modul runtime Functions ve verzi 2. x a vyšší neobsahuje integrovanou podporu pro poskytovatele webhooků.
-
-#### <a name="authorization-scopes-function-level"></a>Obory autorizace (na úrovni funkcí)
-
-Existují dva obory autorizace pro klíče na úrovni funkce:
-
-* **Funkce**: tyto klíče se vztahují pouze na konkrétní funkce, ve kterých jsou definovány. Když se použije jako klíč rozhraní API, povolí přístup k této funkci.
-
-* **Hostitel**: klíče s oborem hostitele lze použít pro přístup ke všem funkcím v aplikaci Function App. Při použití jako klíč rozhraní API umožňují tyto funkce přístup k libovolné funkci v aplikaci Function App. 
-
-Každý klíč má název pro referenci a výchozí klíč (s názvem "výchozí") na úrovni funkce a hostitele. Klíče funkcí mají přednost před klíči hostitele. Pokud jsou definovány dva klíče se stejným názvem, je klíč funkce vždy použit.
-
-#### <a name="master-key-admin-level"></a>Hlavní klíč (úroveň správce) 
-
-Každá aplikace Function App má také klíč hostitele na úrovni správce s `_master`názvem. Kromě poskytování přístupu na úrovni hostitele ke všem funkcím v aplikaci poskytuje hlavní klíč také přístup správce k rozhraním REST API pro modul runtime. Tento klíč nelze odvolat. Když nastavíte úroveň autorizace `admin`, musí žádosti používat hlavní klíč. jakýkoli jiný klíč způsobí selhání autorizace.
-
-> [!CAUTION]  
-> Vzhledem ke zvýšeným oprávněním v aplikaci Function App udělené hlavním klíčem byste tento klíč neměli sdílet s třetími stranami nebo ho distribuovat v nativních klientských aplikacích. Při volbě úrovně autorizace Správce buďte opatrní.
+[!INCLUDE [functions-authorization-keys](../../includes/functions-authorization-keys.md)]
 
 ## <a name="obtaining-keys"></a>Získání klíčů
 
@@ -788,25 +768,23 @@ Většina šablon triggeru HTTP vyžaduje v žádosti klíč rozhraní API. Vaš
 
     https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
 
-Klíč lze zahrnout do proměnné řetězce dotazu s názvem `code`, jak je uvedeno výše. Může být také obsažena v hlavičce `x-functions-key` protokolu HTTP. Hodnotou klíče může být libovolný klíč funkce definovaný pro funkci nebo libovolný klíč hostitele.
+Klíč lze zahrnout do proměnné řetězce dotazu s názvem `code` , jak je uvedeno výše. Může být také obsažena v `x-functions-key` hlavičce protokolu HTTP. Hodnotou klíče může být libovolný klíč funkce definovaný pro funkci nebo libovolný klíč hostitele.
 
 Můžete povolit anonymní požadavky, které nevyžadují klíče. Můžete také vyžadovat, aby byl hlavní klíč použit. Výchozí úroveň autorizace se mění pomocí `authLevel` vlastnosti ve formátu JSON vazby. Další informace najdete v tématu [Trigger-Configuration](#configuration).
 
 > [!NOTE]
-> Při místním spouštění funkcí je autorizace zakázaná bez ohledu na zadané nastavení úrovně autorizace. Po publikování do Azure se vynutilo `authLevel` nastavení v triggeru. Klíče jsou stále vyžadovány při spuštění [místně v kontejneru](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally).
+> Při místním spouštění funkcí je autorizace zakázaná bez ohledu na zadané nastavení úrovně autorizace. Po publikování do Azure `authLevel` se vynutilo nastavení v triggeru. Klíče jsou stále vyžadovány při spuštění [místně v kontejneru](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally).
 
 
 ## <a name="secure-an-http-endpoint-in-production"></a>Zabezpečení koncového bodu HTTP v produkčním prostředí
 
-Aby bylo možné plně zabezpečit koncové body funkcí v produkčním prostředí, měli byste zvážit implementaci jedné z následujících funkcí zabezpečení na úrovni aplikace.
+Aby bylo možné plně zabezpečit koncové body funkcí v produkčním prostředí, měli byste zvážit implementaci jedné z následujících funkcí zabezpečení na úrovni aplikace. Při použití jedné z těchto metod zabezpečení na úrovni aplikace byste měli nastavit úroveň autorizace funkce aktivované protokolem HTTP na `anonymous` .
 
-* Zapněte App Service ověřování/autorizaci aplikace Function App. Platforma App Service umožňuje používat Azure Active Directory (AAD) a několik zprostředkovatelů identity třetích stran k ověřování klientů. Tuto strategii můžete použít k implementaci vlastních autorizačních pravidel pro vaše funkce a můžete pracovat s uživatelskými informacemi z kódu funkce. Další informace najdete v tématu [ověřování a autorizace v Azure App Service](../app-service/overview-authentication-authorization.md) a [práci s identitami klientů](#working-with-client-identities).
+[!INCLUDE [functions-enable-auth](../../includes/functions-enable-auth.md)]
 
-* K ověření požadavků použijte Azure API Management (APIM). APIM poskytuje celou řadu možností zabezpečení rozhraní API pro příchozí požadavky. Další informace najdete v tématu [zásady ověřování API Management](../api-management/api-management-authentication-policies.md). Pomocí APIM můžete nakonfigurovat aplikaci Function App, aby přijímala požadavky pouze z IP adresy vaší instance APIM. Další informace najdete v tématu [omezení IP adres](ip-addresses.md#ip-address-restrictions).
+#### <a name="deploy-your-function-app-in-isolation"></a>Nasazení aplikace Function App v izolaci
 
-* Nasaďte aplikaci Function App na Azure App Service Environment (pomocného mechanismu). Pomocného mechanismu poskytuje vyhrazené hostitelské prostředí, ve kterém se mají spouštět vaše funkce. Pomocného uživatele vám umožní nakonfigurovat jednu front-end bránu, kterou můžete použít k ověřování všech příchozích požadavků. Další informace najdete v tématu [Konfigurace firewallu webových aplikací (WAF) pro App Service Environment](../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
-
-Při použití jedné z těchto metod zabezpečení na úrovni aplikace byste měli nastavit úroveň autorizace funkce aktivované protokolem HTTP na `anonymous`.
+[!INCLUDE [functions-deploy-isolation](../../includes/functions-deploy-isolation.md)]
 
 ## <a name="webhooks"></a>Webhooky
 
@@ -817,7 +795,7 @@ V šablonách Webhooku verze 1. x poskytují další ověřování datových č�
 
 ### <a name="github-webhooks"></a>Webhooky GitHubu
 
-Pokud chcete reagovat na Webhooky GitHubu, nejprve vytvořte funkci pomocí triggeru HTTP a nastavte vlastnost **webHookType** na `github`hodnotu. Pak zkopírujte jeho adresu URL a klíč rozhraní API do stránky **Přidat Webhook** vašeho úložiště GitHub. 
+Pokud chcete reagovat na Webhooky GitHubu, nejprve vytvořte funkci pomocí triggeru HTTP a nastavte vlastnost **webHookType** na hodnotu `github` . Pak zkopírujte jeho adresu URL a klíč rozhraní API do stránky **Přidat Webhook** vašeho úložiště GitHub. 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
@@ -829,7 +807,7 @@ Webhook časové rezervy vygeneruje token pro místo jeho zadání, takže musí
 
 Autorizace Webhooku se zpracovává komponentou přijímače Webhooku, součástí triggeru HTTP a mechanismus se liší v závislosti na typu Webhooku. Každý mechanismus spoléhá na klíč. Ve výchozím nastavení se používá klíč funkce s názvem "výchozí". Chcete-li použít jiný klíč, nakonfigurujte poskytovatele Webhooku tak, aby odesílal název klíče s požadavkem jedním z následujících způsobů:
 
-* **Řetězec dotazu**: Zprostředkovatel předá název klíče v parametru řetězce `clientid` dotazu, například `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`.
+* **Řetězec dotazu**: Zprostředkovatel předá název klíče v `clientid` parametru řetězce dotazu, například `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>` .
 * **Hlavička žádosti**: Zprostředkovatel předá název klíče v `x-functions-clientid` hlavičce.
 
 ## <a name="limits"></a>Omezení

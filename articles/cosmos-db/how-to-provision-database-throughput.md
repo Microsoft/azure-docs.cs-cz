@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0ba86d6955805fc97743a1a51aa586b179d82235
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: cc89c0052097ba9250370334386943ec4107140c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869866"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655321"
 ---
-# <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Zřízení propustnosti pro databázi v Azure Cosmos DB
+# <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Zřizování standardní (ruční) propustnosti databáze v Azure Cosmos DB
 
-Tento článek vysvětluje, jak zřídit propustnost pro databázi v Azure Cosmos DB. Můžete zřídit propustnost pro jeden [kontejner](how-to-provision-container-throughput.md)nebo pro databázi a sdílet propustnost mezi kontejnery. Informace o použití úrovně kontejneru a propustnosti na úrovni databáze najdete v článku [případy použití pro zajištění propustnosti v kontejnerech a databázích](set-throughput.md) . Propustnost na úrovni databáze můžete zřídit pomocí Azure Portal nebo Azure Cosmos DB SDK.
+Tento článek vysvětluje, jak zřídit standardní (ruční) propustnost v databázi v Azure Cosmos DB. Můžete zřídit propustnost pro jeden [kontejner](how-to-provision-container-throughput.md)nebo pro databázi a sdílet propustnost mezi kontejnery. Informace o použití úrovně kontejneru a propustnosti na úrovni databáze najdete v článku [případy použití pro zajištění propustnosti v kontejnerech a databázích](set-throughput.md) . Propustnost na úrovni databáze můžete zřídit pomocí Azure Portal nebo Azure Cosmos DB SDK.
 
 ## <a name="provision-throughput-using-azure-portal"></a>Zřízení propustnosti pomocí webu Azure Portal
 
 ### <a name="sql-core-api"></a><a id="portal-sql"></a>Rozhraní SQL (Core) API
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 
@@ -84,5 +84,6 @@ V následujících článcích se dozvíte o zřízené propustnosti v Azure Cos
 
 * [Globální škálování zřízené propustnosti](scaling-throughput.md)
 * [Zřízení propustnosti u kontejnerů a databází](set-throughput.md)
-* [Zřízení propustnosti pro kontejner](how-to-provision-container-throughput.md)
+* [Jak zřídit standardní (ruční) propustnost pro kontejner](how-to-provision-container-throughput.md)
+* [Jak zřídit propustnost automatického škálování pro kontejner](how-to-provision-autoscale-throughput.md)
 * [Jednotky žádostí a propustnost ve službě Azure Cosmos DB](request-units.md)

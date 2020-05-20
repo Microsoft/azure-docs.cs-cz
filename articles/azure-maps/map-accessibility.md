@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473315"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648573"
 ---
 # <a name="building-an-accessible-application"></a>Vytvoření přístupné aplikace
 
@@ -28,6 +28,7 @@ Sada Azure Maps Web SDK je dodávána předem s mnoha funkcemi pro usnadnění, 
 - Program pro čtení obrazovky popisuje, kdy se mapa přesune a když se uživatel zaměřuje na ovládací prvek nebo místní nabídku.
 - Podpora myši, dotyku a klávesnice
 - Dostupná podpora barevného kontrastu ve stylu mapy cest
+- Podpora vysokého kontrastu.
 
 Podrobnosti o plném přístupu pro všechny produkty Microsoftu najdete [tady](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/). Vyhledejte "Azure Maps Web" a vyhledejte dokument speciálně pro sadu Azure Maps Web SDK. 
 
@@ -41,8 +42,8 @@ Existuje několik různých způsobů, jak lze mapu zvětšit, vytočit, otočit
 - Pomocí myši posuňte kolečko k přiblížení mapy.
 - S dotykovou obrazovkou dotykovou obrazovku můžete přiblížit dvěma prsty a gesto roztažení prstů dohromady, abyste se přiblížili nebo rozblížili prsty vedle sebe.
 - Pomocí dotykové obrazovky poklikejte na mapu, abyste ji přiblížili na jednu úroveň.
-- S fokusem mapy použijte znaménko plus (`+`) nebo symbol rovná se (`=`) pro přiblížení na jednu úroveň.
-- S soustředěnou mapou použijte znaménko mínus, pomlčku (`-`) nebo podtržítko (`_`), abyste mohli zmenšit jednu úroveň.
+- S fokusem mapy použijte znaménko plus ( `+` ) nebo symbol rovná se ( `=` ) pro přiblížení na jednu úroveň.
+- S soustředěnou mapou použijte znaménko mínus, pomlčku ( `-` ) nebo podtržítko ( `_` ), abyste mohli zmenšit jednu úroveň.
 - Použití ovládacího prvku Lupa pomocí myši, dotyku nebo klávesy TAB/kláves ENTER
 - Stiskněte a podržte `Shift` tlačítko a stiskněte levé tlačítko myši na mapě a přetažením myši nakreslete oblast pro přiblížení mapy.
 
@@ -76,7 +77,7 @@ Ne všichni vývojáři chtějí mít k dispozici všechny možné styly mapy ve
 - Mapový ovládací prvek nemonitoruje režim vysokého kontrastu zařízení. Pokud se změní režim zařízení, mapa nebude. Proto bude uživatel muset znovu načíst mapu tím, že stránku aktualizuje.
 - Když se zjistí vysoký kontrast, styl mapy se automaticky přepne na vysoký kontrast a všechny předdefinované ovládací prvky budou používat styl s vysokým kontrastem. Například ZoomControl, PitchControl, CompassControl, StyleControl a další integrované ovládací prvky budou používat styl vysokého kontrastu.
 - Existují dva typy vysokého kontrastu, světlé a tmavé. Pokud typ vysokého kontrastu lze detekovat ovládacími prvky mapy, chování mapování se odpovídajícím způsobem upraví. Pokud má světlo světla, načtou se styl mapy grayscale_light. Pokud typ nebyl nalezen nebo je tmavý, bude načten high_contrast_dark styl.
-- Pokud vytváříte vlastní ovládací prvky, je vhodné zjistit, zda předdefinované ovládací prvky používají styl vysokého kontrastu. Vývojáři mohou přidat třídu šablony stylů CSS na div kontejneru map pro kontrolu. Třídy šablony stylů CSS, které by se `high-contrast-dark` měly `high-contrast-light`přidat, jsou a. Pokud chcete kontrolovat používání JavaScriptu, použijte:
+- Pokud vytváříte vlastní ovládací prvky, je vhodné zjistit, zda předdefinované ovládací prvky používají styl vysokého kontrastu. Vývojáři mohou přidat třídu šablony stylů CSS na div kontejneru map pro kontrolu. Třídy šablony stylů CSS, které by se měly přidat, jsou `high-contrast-dark` a `high-contrast-light` . Pokud chcete kontrolovat používání JavaScriptu, použijte:
 
 ```javascript
 map.getMapContainer().classList.contains("high-contrast-dark")
@@ -92,7 +93,7 @@ map.getMapContainer().classList.contains("high-contrast-light")
 
 Mapa má několik vestavěných klávesových zkratek, které usnadňují používání mapy. Tyto klávesové zkratky fungují, když má mapa fokus.
 
-| Key      | Akce                            |
+| Klíč      | Akce                            |
 |----------|-----------------------------------|
 | `Tab` | Navigace mezi ovládacími prvky a automaticky otevíraných oken v mapě. |
 | `ESC` | Přesuňte fokus z libovolného prvku v mapě k elementu mapy nejvyšší úrovně. |
@@ -105,15 +106,15 @@ Mapa má několik vestavěných klávesových zkratek, které usnadňují použ�
 | `Shift`+ Šipka dolů | Zmenšit rozteč v mapě o 10 stupňů |
 | `Shift`+ šipka doprava | Otočit mapu o 15 stupňů po směru hodinových ručiček |
 | `Shift`+ šipka doleva | Otočit mapu o 15 stupňů po směru hodinových ručiček |
-| Znaménko plus`+`() <sup>*</sup>nebo symbol rovná se`=`() | Přiblížit |
-| Symbol mínus, spojovník (`-`) nebo <sup>*</sup>podtržítko (`_`) | Oddálit | 
+| Znaménko plus ( `+` ) nebo symbol <sup>*</sup> rovná se ( `=` ) | Přiblížit |
+| Symbol mínus, spojovník ( `-` ) nebo <sup>*</sup> podtržítko ( `_` ) | Oddálit | 
 | `Shift`+ Přetáhnutím myši na mapu pro vykreslení oblasti | Přiblížit oblast |
 
 <sup>*</sup>Tyto klávesové zkratky obvykle sdílejí stejný klíč na klávesnici. Tyto klávesové zkratky byly přidány pro zlepšení uživatelského prostředí. Bez ohledu na to, jestli uživatel používá klávesu SHIFT nebo ne pro tyto klávesové zkratky.
 
 ## <a name="screen-reader-support"></a>Podpora čtečky obrazovky
 
-Uživatelé mohou procházet mapu pomocí klávesnice. Pokud je spuštěný čtečka obrazovky, mapa upozorní uživatele na změny jeho stavu. Například uživatelé jsou upozorňováni na změny v mapě, když je mapa vyvážení nebo zvětšena. Ve výchozím nastavení mapa poskytuje zjednodušené popisy, které vylučují úroveň přiblížení a souřadnice středu mapy. Uživatel může přepínat úroveň podrobností těchto popisů pomocí krátkého vyjmutí `Ctrl`  +  `Shift`  +  `D`klávesnice.
+Uživatelé mohou procházet mapu pomocí klávesnice. Pokud je spuštěný čtečka obrazovky, mapa upozorní uživatele na změny jeho stavu. Například uživatelé jsou upozorňováni na změny v mapě, když je mapa vyvážení nebo zvětšena. Ve výchozím nastavení mapa poskytuje zjednodušené popisy, které vylučují úroveň přiblížení a souřadnice středu mapy. Uživatel může přepínat úroveň podrobností těchto popisů pomocí krátkého vyjmutí klávesnice `Ctrl`  +  `Shift`  +  `D` .
 
 Všechny další informace, které jsou umístěny na základní mapě, by měly mít odpovídající textové informace pro uživatele čtečky obrazovky. V případě potřeby nezapomeňte přidat [dostupné bohatý internetové aplikace (ARIA)](https://www.w3.org/WAI/standards-guidelines/aria/), ALT a atributy nadpisu. 
 
@@ -125,7 +126,7 @@ Následující příklad načte body zájmů na mapě pomocí vrstvy symbolů a 
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Vytvoření přístupné aplikace' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si pero a <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>zpřístupněte aplikaci</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>. </iframe>
+<iframe height='500' scrolling='no' title='Vytvoření přístupné aplikace' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Prohlédněte si pero a <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>zpřístupněte aplikaci</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>. </iframe>
 
 <br/>
 

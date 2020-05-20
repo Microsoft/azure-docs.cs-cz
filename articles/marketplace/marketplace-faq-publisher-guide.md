@@ -1,22 +1,22 @@
 ---
 title: Microsoft Publisher – Nejčastější dotazy
-description: Získejte odpovědi na nejčastější dotazy týkající se Azure Marketplace a Microsoft AppSource.
+description: Získejte odpovědi na běžné otázky týkající se Azure Marketplace a Microsoft AppSource.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: be9a9d6b93068adc6d09db9b9ac23de9abd6a69f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 7e4ec8a5772f0fbc1c0e67ba07a172daeac9b91b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005176"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657888"
 ---
-# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
+# <a name="common-questions-about-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
-Tento článek obsahuje odpovědi na nejčastější dotazy týkající se komerčního tržiště Microsoftu.
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se komerčního tržiště.
 
 ## <a name="general"></a>Obecné
 
@@ -302,13 +302,13 @@ Další informace najdete na webu [Výběr účtu a daňové formuláře](https:
 
 Zákazníci můžou v rámci určeného časového období zrušit odběry, aby mohli získat refundaci. U měsíčních předplatných je to 24 hodin a pro roční předplatné je 14 dní. Nabídky, které se účtují podle spotřeby po použití řešení, nejsou způsobilé k refundaci.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 ### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Kde můžu najít další informace o komerčním tržišti?
 
 Tady je několik zdrojů, které vám pomohou začít:
 
-- [Úvod do komerčního tržiště Microsoftu](https://docs.microsoft.com/learn/commercial-marketplace/intro-commercial-marketplace/intro-commercial-marketplace/)
+- [Úvod do komerčního tržiště Microsoftu](/azure/marketplace/marketplace-publishers-guide)
 - [Centrum partnerů Microsoftu pro komerční web Marketplace](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 - [Vítá vás komerční marketplace](https://docs.microsoft.com/azure/marketplace/)
 

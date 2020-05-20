@@ -5,19 +5,17 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266075"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649115"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurovat přihlašovací údaje nasazení pro Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro nasazení [místního úložiště Git](deploy-local-git.md) a [FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejné jako přihlašovací údaje vašeho předplatného Azure.
 
-* **Přihlašovací údaje na úrovni uživatele**: jedna sada přihlašovacích údajů pro celý účet Azure. Dá se použít k nasazení App Service pro libovolnou aplikaci v libovolném předplatném, ke které má účet Azure oprávnění pro přístup. Je to výchozí sada, která je v grafickém uživatelském rozhraní na portálu (například **Přehled** a **vlastnosti** [stránky prostředku](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)aplikace). Když se uživateli udělí přístup k aplikaci prostřednictvím Access Control na základě rolí (RBAC) nebo oprávnění spolusprávce, může tento uživatel použít vlastní přihlašovací údaje na úrovni uživatele, dokud přístup nevrátí. Nesdílejte tyto přihlašovací údaje s ostatními uživateli Azure.
-
-* **Přihlašovací údaje na úrovni aplikace**: jedna sada přihlašovacích údajů pro každou aplikaci. Dá se použít jenom k nasazení do této aplikace. Přihlašovací údaje pro jednotlivé aplikace se generují automaticky při vytvoření aplikace. Nedají se nakonfigurovat ručně, ale můžete je kdykoli resetovat. Aby mohl uživatel udělit přístup k přihlašovacím údajům na úrovni aplikace přes (RBAC), musí být tento uživatel přispěvatel nebo vyšší v aplikaci (včetně předdefinované role Přispěvatel webu). Čtenáři nemají oprávnění k publikování a nemají přístup k těmto přihlašovacím údajům.
+[!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
 ## <a name="configure-user-level-credentials"></a><a name="userscope"></a>Konfigurace přihlašovacích údajů na úrovni uživatele
 
@@ -25,7 +23,7 @@ Přihlašovací údaje na úrovni uživatele můžete nakonfigurovat na [stránc
 
 ### <a name="in-the-cloud-shell"></a>V Cloud Shell
 
-Chcete-li nakonfigurovat uživatele nasazení v [Cloud Shell](https://shell.azure.com), spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Nahraďte \<uživatelské jméno \<> a heslo> pomocí uživatelského jména a hesla pro nasazení. 
+Chcete-li nakonfigurovat uživatele nasazení v [Cloud Shell](https://shell.azure.com), spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Nahraďte \< uživatelské jméno> a \< heslo> pomocí uživatelského jména a hesla pro nasazení. 
 
 - Uživatelské jméno musí být v rámci Azure jedinečné a pro místní nabízená oznámení Git nesmí obsahovat symbol @. 
 - Heslo musí mít délku alespoň osm znaků a dva z následujících tří prvků: písmena, číslice a symboly. 
@@ -34,17 +32,17 @@ Chcete-li nakonfigurovat uživatele nasazení v [Cloud Shell](https://shell.azur
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-Výstup JSON zobrazuje heslo jako `null`. Pokud se zobrazí chyba `'Conflict'. Details: 409`, změňte uživatelské jméno. Pokud se zobrazí chyba `'Bad Request'. Details: 400`, použijte silnější heslo. 
+Výstup JSON zobrazuje heslo jako `null` . Pokud se zobrazí chyba `'Conflict'. Details: 409`, změňte uživatelské jméno. Pokud se zobrazí chyba `'Bad Request'. Details: 400`, použijte silnější heslo. 
 
 ### <a name="in-the-portal"></a>Na portálu
 
 V Azure Portal musíte mít alespoň jednu aplikaci, abyste mohli získat přístup k přihlašovací stránce nasazení. Konfigurace přihlašovacích údajů na úrovni uživatele:
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services** > **\<any_app **na**řídicím panelu****FTP** >   >  **centra** > nasazení>.
+1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services**  >  ** \< any_app **  >  **na**  >  **FTP**  >  **řídicím panelu**FTP centra nasazení>.
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Nebo, pokud jste již nakonfigurovali nasazení Git, vyberte **App Services** > **&lt;any_app>**  >  > **FTP/přihlašovacích údajů** **centra nasazení**.
+    Nebo, pokud jste již nakonfigurovali nasazení Git, vyberte **App Services**  >  ** &lt; any_app>**  >  **Deployment center**  >  **FTP/přihlašovacích údajů**centra nasazení.
 
     ![](./media/app-service-deployment-credentials/access-with-git.png)
 
@@ -70,7 +68,7 @@ Vzhledem k tomu, že přihlašovací údaje na úrovni uživatele jsou propojen�
 ## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>Získání a resetování přihlašovacích údajů na úrovni aplikace
 Získání přihlašovacích údajů na úrovni aplikace:
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services** > **&lt;any_app>**  >  **služby** > pro nasazení**FTP/přihlašovací údaje**.
+1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services**  >  ** &lt; any_app>**  >  **služby pro nasazení**  >  **FTP/přihlašovací údaje**.
 
 2. Vyberte možnost **přihlašovací údaje aplikace**a kliknutím na odkaz **Kopírovat** zkopírujte uživatelské jméno nebo heslo.
 

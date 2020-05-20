@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a8839609856bda5304712405ec57accb4afb095
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c8b66e42c5719203eb0f195a5b61e81da8b187e7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201680"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658113"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Připojení k synapse SQL pomocí sady Visual Studio a SSDT
 > [!div class="op_single_selector"]
@@ -36,11 +36,11 @@ Chcete-li použít tento kurz, musíte mít následující komponenty:
 
 * Existující fond SQL. Pokud ho nemáte, přečtěte si téma [Vytvoření fondu SQL](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) pro dokončení této součásti.
 * SSDT pro Visual Studio. Pokud máte aplikaci Visual Studio, pravděpodobně tuto součást již máte. Pokyny k instalaci a možnosti najdete v tématu věnovaném [instalaci sady Visual Studio a rozšíření SSDT](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-* Plně kvalifikovaný název serveru SQL. To najdete v tématu [připojení k fondu SQL](connect-overview.md).
+* Plně kvalifikovaný název serveru SQL. Název tohoto serveru najdete v tématu [připojení k fondu SQL](connect-overview.md).
 
 ## <a name="1-connect-to-sql-pool"></a>1. připojení k fondu SQL
 1. Otevřete Visual Studio 2019.
-2. Otevřete Průzkumník objektů systému SQL Server. Provedete to tak, že vyberete **Zobrazit**  >  **Průzkumník objektů systému SQL Server**.
+2. Kliknutím na **Zobrazit**  >  **Průzkumník objektů systému SQL Server**otevřete Průzkumník objektů systému SQL Server.
    
     ![Průzkumník objektů systému SQL Server](./media/get-started-visual-studio/open-ssdt.png)
 3. Klikněte na ikonu **Přidat SQL Server**.
@@ -70,7 +70,7 @@ Teď, když jste navázali připojení k vaší databázi, napíšete dotaz.
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Spusťte dotaz. Pokud to chcete provést, klikněte na zelenou šipku nebo použijte následující klávesovou zkratku: `CTRL`+`SHIFT`+`E`.
+4. Spusťte dotaz kliknutím na zelenou šipku nebo použijte následující klávesovou zkratku: `CTRL` + `SHIFT` + `E` .
    
     ![Spuštění dotazu](./media/get-started-visual-studio/run-query.png)
 5. Podívejte se na výsledky dotazu. V tomto příkladě má tabulka FactInternetSales 60 398 řádků.

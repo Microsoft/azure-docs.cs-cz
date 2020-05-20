@@ -1,26 +1,26 @@
 ---
-title: Povolení Microsoft AppSource a Azure Marketplace výpisu pomocí Azure Active Directory | Azure
-description: Povolit typ výpisu pomocí Azure Active Directory v Azure Marketplace a AppSource pro vydavatele aplikací a služeb.
+title: Integrace nabídky Microsoft Commercial Marketplace s Azure Active Directory
+description: K ověření Microsoft AppSource a Azure Marketplace nabídek použijte Azure Active Directory.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 17cbfe92744ad96f2b5651b7e2f47a6443337068
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160609"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658041"
 ---
-# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Povolení uvedení na AppSource a Marketplace s využitím Azure Active Directory
+# <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integrujte svůj výpis na komerčním trhu s Azure Active Directory
 
- Azure Active Directory (Azure AD) je cloudová služba identit, která umožňuje ověřování pomocí účet Microsoft. Azure AD používá Oborová standardní rozhraní. [Přečtěte si další informace o Azure Active Directory](https://azure.microsoft.com/services/active-directory).
+ Tento článek vysvětluje požadavky na integraci výpisu nebo nabídky komerčního tržiště pomocí Azure Active Directory (Azure AD). Azure AD je cloudová služba identit, která pomocí standardních platforem umožňuje ověřování pomocí účet Microsoft. [Přečtěte si další informace o Azure Active Directory](https://azure.microsoft.com/services/active-directory).
 
 ## <a name="azure-ad-benefits"></a>Výhody Azure AD
 
-Zákazníci Microsoft AppSource a Azure Marketplace používají prostředí v rámci produktu k prohledávání katalogů výpisů. Tyto akce vyžadují, aby se zákazníci přihlásili k produktu. Integrace Azure AD přináší následující výhody:
+Zákazníci, kteří Microsoft AppSource a Azure Marketplace, používají prostředí v produktu k hledání katalogů výpisů prezentace. Tyto akce vyžadují, aby se zákazníci přihlásili k produktu. Integrace Azure AD přináší následující výhody:
 
 - Rychlejší zapojení a optimalizované prostředí pro zákazníky
 - Jednotné přihlašování (SSO) pro miliony podnikových uživatelů
@@ -29,7 +29,7 @@ Zákazníci Microsoft AppSource a Azure Marketplace používají prostředí v r
 
 ## <a name="offers-that-require-azure-ad"></a>Nabídky vyžadující Azure AD
 
-Různé [Možnosti výpisu a typy nabídek](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) pro AppSource a Azure Marketplace mají různé požadavky na implementaci Azure AD. Podrobnosti najdete v následující tabulce:
+Různé možnosti výpisu komerčního tržiště [a typy nabídek](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) mají různé požadavky na implementaci Azure AD. Podrobnosti najdete v následující tabulce.
 
 | **Typ nabídky**    | **Vyžaduje se jednotné přihlašování Azure AD?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|

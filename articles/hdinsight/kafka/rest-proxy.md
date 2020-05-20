@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/03/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: affdbfba125b7e9b3f3fe250a56af30e9efe816e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 04/03/2020
+ms.openlocfilehash: 9b5771197c3e2de109af1a3b3475ab28fcbd6453
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611002"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647754"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interakce s Apache Kafka clustery ve službě Azure HDInsight pomocí proxy REST
 
@@ -56,6 +56,8 @@ V případě požadavků koncových bodů proxy REST by klientské aplikace měl
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>Vytvoření clusteru Kafka s povolenou službou REST proxy
 
+Následující postup používá Azure Portal. Příklad použití rozhraní příkazového řádku Azure najdete v tématu [vytvoření Apache Kafkaho clusteru REST proxy pomocí Azure CLI](tutorial-cli-rest-proxy.md).
+
 1. V pracovním postupu vytváření clusteru Kafka na kartě **zabezpečení + sítě** zaškrtněte možnost **Povolit proxy REST Kafka** .
 
      ![Povolit proxy REST Kafka a vybrat skupinu zabezpečení](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
@@ -75,7 +77,7 @@ V případě požadavků koncových bodů proxy REST by klientské aplikace měl
 K interakci s proxy REST v clusteru Kafka můžete použít následující kód Pythonu. Chcete-li použít ukázku kódu, postupujte podle následujících kroků:
 
 1. Uložte vzorový kód do počítače s nainstalovaným Pythonem.
-1. Pomocí příkazu `pip3 install msal`nainstalujte požadované závislosti Pythonu.
+1. Pomocí příkazu nainstalujte požadované závislosti Pythonu `pip3 install msal` .
 1. Upravte část kód **konfigurace těchto vlastností** a aktualizujte následující vlastnosti svého prostředí:
 
     |Vlastnost |Popis |
@@ -92,7 +94,7 @@ Tento kód provede následující akci:
 1. Načte token OAuth z Azure AD.
 1. Ukazuje, jak vytvořit požadavek na Kafka proxy REST.
 
-Další informace o získání tokenů OAuth v Pythonu najdete v tématu [Třída Python AuthenticationContext](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python). V `topics` takovém případě se může zobrazit prodleva, která není vytvořena ani smazána prostřednictvím proxy Kafka REST. Tato prodleva je způsobená obnovením mezipaměti.
+Další informace o získání tokenů OAuth v Pythonu najdete v tématu [Třída Python AuthenticationContext](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python). V takovém případě se může zobrazit prodleva `topics` , která není vytvořena ani smazána prostřednictvím proxy Kafka REST. Tato prodleva je způsobená obnovením mezipaměti.
 
 ```python
 #Required python packages

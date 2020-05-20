@@ -2,20 +2,20 @@
 title: Monitorování stavu clusteru Kubernetes s využitím Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak můžete zobrazit a analyzovat stav svých clusterů AKS a non-AKS pomocí Azure Monitor for Containers.
 ms.topic: conceptual
-ms.date: 12/01/2019
-ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/18/2020
+ms.openlocfilehash: 94fdb6388134eae326ed5a8e46fbd3d13f8da2d5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843986"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649572"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Pochopení stavu clusteru Kubernetes s využitím Azure Monitor pro kontejnery
 
 U Azure Monitor pro kontejnery monitoruje a hlásí stav komponent spravované infrastruktury a všechny uzly spuštěné v jakémkoli clusteru Kubernetes podporovaném Azure Monitor for Containers. Toto prostředí překračuje stav clusteru vypočtený a nahlášený v [zobrazení více clusterů](container-insights-analyze.md#multi-cluster-view-from-azure-monitor), kde teď můžete pochopit, jestli je jeden nebo více uzlů v clusteru omezené nebo že uzel nebo uzel je nedostupný, což by mohlo mít vliv na spuštěnou aplikaci v clusteru na základě spravovaných metrik.
 
 >[!NOTE]
->Funkce Health je v tuto chvíli ve verzi Public Preview.
+>Funkce Health přejde na konec června 2020 na verzi Private Preview. Další informace najdete v následujících [oznámeních o aktualizacích Azure](https://azure.microsoft.com/updates/ci-health-limited-preview/).
 >
 
 Informace o tom, jak povolit Azure Monitor pro kontejnery, najdete v tématu připojení [Azure monitor kontejnerů](container-insights-onboard.md).
@@ -23,7 +23,7 @@ Informace o tom, jak povolit Azure Monitor pro kontejnery, najdete v tématu př
 >[!NOTE]
 >Pro podporu clusterů modulu AKS ověřte, že splňuje tyto požadavky:
 >- Používá nejnovější verzi [klienta Helm](https://helm.sh/docs/using_helm/).
->- Verze agenta s kontejnerem je *Microsoft/OMS: ciprod11012019*. Chcete-li upgradovat agenta, přečtěte si téma [Upgrade agenta v clusteru Kubernetes](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster).
+>- Verze agenta s kontejnerem je *Microsoft/OMS: ciprod11012019*. Chcete-li upgradovat agenta, přečtěte si téma [Upgrade agenta v clusteru Kubernetes](container-insights-manage-agent.md#how-to-upgrade-the-azure-monitor-for-containers-agent).
 >
 
 ## <a name="overview"></a>Přehled
@@ -63,7 +63,7 @@ Informace o chování a konfiguraci jednotlivých monitorů, které podporují A
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Zobrazení stavu clusteru AKS nebo non-AKS
 

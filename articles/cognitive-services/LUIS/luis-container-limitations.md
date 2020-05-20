@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2f4751440d719a542d39f8d8e83260c8cb628de0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592895"
+ms.locfileid: "83659283"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Omezení kontejneru Language Understanding (LUIS)
 
@@ -35,7 +35,7 @@ Aplikaci LUIS můžete **použít, pokud neobsahuje žádnou z** následujícíc
 
 Nepodporované konfigurace aplikací|Podrobnosti|
 |--|--|
-|Nepodporované jazykové verze kontejneru| Holandština ( `nl-NL` )<br>Japonština ( `ja-JP` )<br>Němčina se podporuje jenom s [1.0.2 provádějících tokenizaci](luis-language-support.md#custom-tokenizer-versions).|
+|Nepodporované jazykové verze kontejneru| Jazyky holandštiny ( `nl-NL` ), japonština ( `ja-JP` ) a němčina ( `de-DE` ) jsou podporovány pouze s [1.0.2 provádějících tokenizaci](luis-language-support.md#custom-tokenizer-versions).|
 |Nepodporované entity pro všechny jazykové verze|[KeyPhrase](luis-reference-prebuilt-keyphrase.md) předem vytvořenou entitu pro všechny jazykové verze|
 |Nepodporované entity pro `en-US` jazykovou verzi Angličtina ()|[GeographyV2](luis-reference-prebuilt-geographyV2.md) předem připravené entity|
 |Neprojevení řeči|Externí závislosti nejsou v kontejneru podporovány.|

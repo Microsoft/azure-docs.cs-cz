@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8551e17ddd71e76aca0c85b9768f564ae0e5f049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a45dc39f5a0795684aba278391e04f6af3f7b55
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681841"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659680"
 ---
 # <a name="materials"></a>Materiály
 
@@ -35,9 +35,13 @@ Vzdálené vykreslování Azure má dva odlišné typy materiálu:
 
 Když upravujete materiál přímo v prostředku sítě, tato změna ovlivní všechny instance této sítě. Změna na MeshComponent však ovlivní pouze jednu instanci sítě. Která metoda je vhodnější, závisí na požadovaném chování, ale úpravou MeshComponent je častější přístup.
 
+## <a name="material-de-duplication"></a>Odstranění duplicit materiálu
+
+Během převodu se na jeden materiál automaticky zruší duplicitní více materiálů se stejnými vlastnostmi a texturami. Tuto funkci můžete zakázat v [Nastavení převodu](../how-tos/conversion/configure-model-conversion.md), ale doporučujeme, abyste ji zanechali pro nejlepší výkon.
+
 ## <a name="material-classes"></a>Třídy materiálu
 
-Všechny materiály poskytované rozhraním API jsou odvozeny ze základní `Material`třídy. Jejich typ lze dotazovat prostřednictvím `Material.MaterialSubType` nebo přetypováním přímo:
+Všechny materiály poskytované rozhraním API jsou odvozeny ze základní třídy `Material` . Jejich typ lze dotazovat prostřednictvím `Material.MaterialSubType` nebo přetypováním přímo:
 
 ``` cs
 void SetMaterialColorToGreen(Material material)

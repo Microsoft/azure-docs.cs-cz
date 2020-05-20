@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 220e73536a892e798139ca54913e09e097c22432
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c08adca17948aceb54b937526dacebbaa13a0530
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191936"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655180"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
 
@@ -138,11 +138,11 @@ Společnost Microsoft poskytuje následující nástroje pro práci s Azure Stor
 
 * Pokud chcete zjistit úplnou cestu k nakonfigurovanému výchozímu úložišti, přejděte na:
 
-    **HDFS** > **Konfigurace** HDFS a zadejte `fs.defaultFS` do pole pro zadání filtru.
+    **HDFS**  >  **Konfigurace** a zadejte `fs.defaultFS` do pole pro zadání filtru.
 
 * Pokud chcete zjistit, jestli je úložiště wasb nakonfigurované jako sekundární úložiště, přejděte na:
 
-    **HDFS** > **Konfigurace** HDFS a zadejte `blob.core.windows.net` do pole pro zadání filtru.
+    **HDFS**  >  **Konfigurace** a zadejte `blob.core.windows.net` do pole pro zadání filtru.
 
 Pokud chcete získat cestu pomocí REST API Ambari, přečtěte si téma [získání výchozího úložiště](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage).
 
@@ -158,7 +158,7 @@ Výchozí kontejner objektu blob ukládá konkrétní informace, jako je histori
 
 ## <a name="use-additional-storage-accounts"></a>Použití dalších účtů úložiště
 
-Při vytváření clusteru HDInsight zadáváte účet služby Azure Storage, který k němu chcete přidružit. Během procesu vytváření můžete také přidat další účty úložiště ze stejného předplatného Azure nebo různých předplatných Azure. Nebo po vytvoření clusteru. Pokyny pro přidání dalších účtů úložiště najdete v tématu [Tvorba clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+Při vytváření clusteru HDInsight zadáváte účet služby Azure Storage, který k němu chcete přidružit. Během procesu vytváření nebo po vytvoření clusteru můžete taky přidat další účty úložiště ze stejného předplatného Azure nebo různých předplatných Azure. Pokyny pro přidání dalších účtů úložiště najdete v tématu [Tvorba clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 > [!WARNING]  
 > Použití dalšího účtu úložiště v jiném umístění, než je cluster HDInsight, není podporováno.

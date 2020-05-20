@@ -8,18 +8,18 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6fbe66d8fbbb92c7fb668cc565da8446d97ab0a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143781"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653609"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Spouštění skriptů PowerShellu na VIRTUÁLNÍm počítači s Windows pomocí příkazu Spustit
 
 Funkce příkazu Run používá agenta virtuálního počítače ke spouštění skriptů PowerShellu v rámci virtuálního počítače Azure s Windows. Tyto skripty můžete použít pro obecnou správu počítačů nebo aplikací. Můžou vám pomůžou rychle diagnostikovat a opravit problémy s přístupem a sítí virtuálních počítačů a získat virtuální počítač zpátky do dobrého stavu.
 
- 
+
 
 ## <a name="benefits"></a>Výhody
 
@@ -45,7 +45,7 @@ Při použití příkazu Run platí následující omezení:
 
 ## <a name="available-commands"></a>Dostupné příkazy
 
-Tato tabulka obsahuje seznam příkazů, které jsou k dispozici pro virtuální počítače s Windows. Pomocí příkazu **RunPowerShellScript** můžete spustit libovolný vlastní skript, který chcete. Pokud ke spuštění příkazu použijete rozhraní příkazového řádku Azure CLI nebo PowerShell, hodnota, kterou zadáte pro `--command-id` parametr `-CommandId` nebo, musí být jedna z následujících hodnot uvedených v seznamu. Pokud zadáte hodnotu, která není dostupným příkazem, zobrazí se tato chyba:
+Tato tabulka obsahuje seznam příkazů, které jsou k dispozici pro virtuální počítače s Windows. Pomocí příkazu **RunPowerShellScript** můžete spustit libovolný vlastní skript, který chcete. Pokud ke spuštění příkazu použijete rozhraní příkazového řádku Azure CLI nebo PowerShell, hodnota, kterou zadáte pro `--command-id` parametr nebo, `-CommandId` musí být jedna z následujících hodnot uvedených v seznamu. Pokud zadáte hodnotu, která není dostupným příkazem, zobrazí se tato chyba:
 
 ```error
 The entity was not found in this Azure location
@@ -94,7 +94,7 @@ Po výběru příkazu spusťte skript výběrem možnosti **Spustit** . Po dokon
 
 ## <a name="powershell"></a>PowerShell
 
-Následující příklad používá ke spuštění skriptu PowerShellu na virtuálním počítači Azure rutinu [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) . Rutina očekává, že se skript, `-ScriptPath` na který je odkazováno v parametru, nachází v místním prostředí, kde se rutina spouští.
+Následující příklad používá ke spuštění skriptu PowerShellu na virtuálním počítači Azure rutinu [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) . Rutina očekává, že se skript, na který je odkazováno v `-ScriptPath` parametru, nachází v místním prostředí, kde se rutina spouští.
 
 ```azurepowershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
@@ -102,9 +102,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>Omezení přístupu ke spuštění příkazu
 
-Výpis příkazů pro spuštění nebo zobrazení podrobností příkazu vyžaduje `Microsoft.Compute/locations/runCommands/read` oprávnění na úrovni předplatného. Toto oprávnění mají i předdefinovanou roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a vyšší úrovně.
+Výpis příkazů pro spuštění nebo zobrazení podrobností příkazu vyžaduje `Microsoft.Compute/locations/runCommands/read` oprávnění. Toto oprávnění mají i předdefinovanou roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a vyšší úrovně.
 
-Spuštění příkazu vyžaduje `Microsoft.Compute/virtualMachines/runCommand/action` oprávnění na úrovni předplatného. Toto oprávnění mají role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) a vyšší úrovně.
+Spuštění příkazu vyžaduje `Microsoft.Compute/virtualMachines/runCommand/action` oprávnění. Toto oprávnění mají role [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) a vyšší úrovně.
 
 Můžete použít jednu z [předdefinovaných rolí](../../role-based-access-control/built-in-roles.md) nebo vytvořit [vlastní roli](../../role-based-access-control/custom-roles.md) pro použití příkazu Spustit.
 

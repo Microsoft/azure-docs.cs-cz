@@ -1,7 +1,6 @@
 ---
-title: Rozšíření CLI
-titleSuffix: Azure Machine Learning
-description: Přečtěte si o rozšíření Azure Machine Learning CLI pro rozhraní příkazového řádku Azure CLI. Azure CLI je nástroj příkazového řádku pro různé platformy, který umožňuje pracovat s prostředky v cloudu Azure. Machine Learning rozšíření vám umožní pracovat s Azure Machine Learning. Rozhraní příkazového řádku s příponou ML vytvoří a spravuje prostředky, jako je váš pracovní prostor, úložiště dat, datové sady, kanály, modely a nasazení.
+title: Instalace & použití rozhraní příkazového řádku Azure Machine Learning
+description: Naučte se, jak nainstalovat a používat rozšíření Azure Machine Learning CLI k vytváření a správě prostředků, jako je váš pracovní prostor, úložiště dat, datové sady, kanály, modely a nasazení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +10,14 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 16f9080487af95e7de5c5f8c91fd5c8d356b7bde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d401522ffc45e2e7ea20de70a59ed967dd7623ab
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618073"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659791"
 ---
-# <a name="use-the-cli-extension-for-azure-machine-learning"></a>Pro Azure Machine Learning použít rozšíření CLI
+# <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Nainstalovat & použít rozšíření CLI pro Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning CLI je rozšíření [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), rozhraní příkazového řádku pro více platforem pro platformu Azure. Toto rozšíření poskytuje příkazy pro práci s Azure Machine Learning. Umožňuje automatizovat aktivity machine learningu. Následující seznam uvádí některé ukázkové akce, které můžete provést s rozšířením CLI:
@@ -33,7 +32,7 @@ Rozhraní příkazového řádku není náhradou za sadu Azure Machine Learning 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud chcete použít rozhraní příkazového řádku, musíte mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Pokud chcete použít rozhraní příkazového řádku, musíte mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -71,7 +70,7 @@ az extension add -n azure-cli-ml
 > [!TIP]
 > Příklady souborů, které můžete použít s níže uvedenými příkazy, najdete [tady](https://aka.ms/azml-deploy-cloud).
 
-Po zobrazení výzvy vyberte `y` možnost instalace rozšíření.
+Po zobrazení výzvy vyberte možnost `y` Instalace rozšíření.
 
 Chcete-li ověřit, zda bylo rozšíření nainstalováno, použijte následující příkaz k zobrazení seznamu dílčích příkazů specifických pro ML:
 
@@ -113,7 +112,7 @@ Následující příkazy ukazují, jak používat rozhraní příkazového řád
     ```
 
     > [!TIP]
-    > Tento příkaz vytvoří pracovní prostor edice Basic. Chcete-li vytvořit pracovní prostor organizace, `--sku enterprise` použijte přepínač s `az ml workspace create` příkazem. Další informace o edicích Azure Machine Learning najdete v tématu [co je Azure Machine Learning](overview-what-is-azure-ml.md#sku).
+    > Tento příkaz vytvoří pracovní prostor edice Basic. Chcete-li vytvořit pracovní prostor organizace, použijte `--sku enterprise` přepínač s `az ml workspace create` příkazem. Další informace o edicích Azure Machine Learning najdete v tématu [co je Azure Machine Learning](overview-what-is-azure-ml.md#sku).
 
     Další informace najdete v tématu [AZ ml Workspace Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create).
 
@@ -161,14 +160,14 @@ Následující příkazy ukazují, jak používat rozhraní příkazového řád
 
 ## <a name="run-experiments"></a><a id="experiments"></a>Spustit experimenty
 
-* Zahajte spuštění experimentu. Při použití tohoto příkazu zadejte název souboru RunConfig (text před \*. RunConfig, pokud hledáte v systému souborů) s parametrem-c.
+* Zahajte spuštění experimentu. Při použití tohoto příkazu zadejte název souboru RunConfig (text před \* . RunConfig, pokud hledáte v systému souborů) s parametrem-c.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
     > [!TIP]
-    > `az ml folder attach` Příkaz vytvoří `.azureml` podadresář, který obsahuje dva příklady souborů RunConfig. 
+    > `az ml folder attach`Příkaz vytvoří `.azureml` podadresář, který obsahuje dva příklady souborů RunConfig. 
     >
     > Pokud máte skript Pythonu, který vytvoří objekt konfigurace spuštění programově, můžete použít [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) a uložit ho jako soubor RunConfig.
     >
@@ -194,7 +193,7 @@ Následující příkazy ukazují, jak pracovat s datovými sadami v Azure Machi
     az ml dataset register -f mydataset.json
     ```
 
-    Informace o formátu souboru JSON, který slouží k definování datové sady, získáte pomocí `az ml dataset register --show-template`.
+    Informace o formátu souboru JSON, který slouží k definování datové sady, získáte pomocí `az ml dataset register --show-template` .
 
     Další informace najdete v tématu [AZ ml DataSet Register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
 
@@ -284,7 +283,7 @@ Následující příkazy ukazují, jak vytvořit, zaregistrovat a vypsat Azure M
 
 ### <a name="environment-configuration-schema"></a>Schéma konfigurace prostředí
 
-Pokud jste použili `az ml environment scaffold` příkaz, vygeneruje soubor šablony `azureml_environment.json` , který lze upravit a použít k vytvoření vlastních konfigurací prostředí pomocí rozhraní příkazového řádku. Objekt nejvyšší úrovně se v sadě Python SDK volně [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) mapuje na třídu. 
+Pokud jste použili `az ml environment scaffold` příkaz, vygeneruje `azureml_environment.json` soubor šablony, který lze upravit a použít k vytvoření vlastních konfigurací prostředí pomocí rozhraní příkazového řádku. Objekt nejvyšší úrovně se [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) v sadě Python SDK volně mapuje na třídu. 
 
 ```json
 {
@@ -328,7 +327,7 @@ Pokud jste použili `az ml environment scaffold` příkaz, vygeneruje soubor ša
 }
 ```
 
-Následující tabulka podrobně popisuje každé pole nejvyšší úrovně v souboru JSON, jeho typ a popis. Pokud je typ objektu propojený se třídou ze sady Python SDK, je mezi jednotlivými poli JSON a názvem veřejné proměnné ve třídě Pythonu volná 1:1. V některých případech může být pole namapováno na argument konstruktoru, nikoli na proměnnou třídy. Například pole je `environmentVariables` mapováno na `environment_variables` proměnnou ve [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) třídě.
+Následující tabulka podrobně popisuje každé pole nejvyšší úrovně v souboru JSON, jeho typ a popis. Pokud je typ objektu propojený se třídou ze sady Python SDK, je mezi jednotlivými poli JSON a názvem veřejné proměnné ve třídě Pythonu volná 1:1. V některých případech může být pole namapováno na argument konstruktoru, nikoli na proměnnou třídy. Například `environmentVariables` pole je mapováno na `environment_variables` proměnnou ve [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) třídě.
 
 | Pole JSON | Typ | Popis |
 |---|---|---|
@@ -339,7 +338,7 @@ Následující tabulka podrobně popisuje každé pole nejvyšší úrovně v so
 | `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | Definuje nastavení pro přizpůsobení image Docker sestavené do specifikací prostředí. |
 | `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | Oddíl nakonfiguruje nastavení Sparku. Používá se jenom v případě, že je architektura nastavená na PySpark. |
 | `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | Konfiguruje závislosti knihoven datacihly. |
-| `inferencingStackVersion` | `string` | Určuje verzi zásobníku Inferencing přidanou k imagi. Chcete-li se vyhnout přidání zásobníku Inferencing, nechte `null`toto pole. Platná hodnota: "poslední". |
+| `inferencingStackVersion` | `string` | Určuje verzi zásobníku Inferencing přidanou k imagi. Chcete-li se vyhnout přidání zásobníku Inferencing, nechte toto pole `null` . Platná hodnota: "poslední". |
 
 ## <a name="ml-pipeline-management"></a>Správa kanálu ML
 

@@ -11,14 +11,14 @@ ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4efd5c63af9f09d41733e8e172270410245977ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65161915a63b58ad75ff2c01c16c95dec1aad2ff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633207"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652620"
 ---
-# <a name="rest-apis-for-azure-sql-data-warehouse"></a>Rozhraní REST API pro Azure SQL Data Warehouse
+# <a name="rest-apis-for-azure-synapse-analytics-data-warehouse"></a>Rozhraní REST API pro datový sklad Azure synapse Analytics
 
 Rozhraní REST API pro správu výpočetních prostředků ve službě Azure synapse Analytics Data Warehouse.
 

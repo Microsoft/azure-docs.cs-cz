@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: bd64321a6a7afbac61a63365c77a75120f837e83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99c21ece202f8d9867045d506574dd7718bd455e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372092"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653666"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker šifrování dat v klidovém umístění
 
@@ -52,6 +52,11 @@ Služba QnA Maker používá CMK ze služby Azure Search. Pomocí těchto kroků
 ## <a name="regional-availability"></a>Regionální dostupnost
 
 Klíče spravované zákazníkem jsou k dispozici ve všech oblastech Azure Search.
+
+## <a name="encryption-of-data-in-transit"></a>Šifrování dat při přenosu
+
+Portál QnA Maker běží v prohlížeči uživatele. Každá akce aktivuje přímé volání na příslušné rozhraní API služby rozpoznávání. Proto je QnA Maker kompatibilní s přenosem dat.
+Vzhledem k tomu, že je služba QnA Maker Portal hostovaná v oblasti Západ USA, není stále ideální pro zákazníky, kteří nejsou US. 
 
 ## <a name="next-steps"></a>Další kroky
 

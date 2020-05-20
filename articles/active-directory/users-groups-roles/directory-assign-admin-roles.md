@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c16ba26d1c59bd932e657f41882fbd23dc3a69e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: ef321e82f1737df4b13d259824acd943a7eea440
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592226"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649352"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -82,7 +82,7 @@ Uživatelé s touto rolí můžou pro některé uživatele nastavit nebo resetov
 Role [správce privilegovaného ověřování](#privileged-authentication-administrator) má oprávnění k vynucení opakované registrace a ověřování Multi-Factor Authentication pro všechny uživatele.
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům ověřování. Prostřednictvím této cesty může správce ověřování předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -267,7 +267,7 @@ Uživatelé s touto rolí můžou měnit hesla, zrušit platnost tokenů aktuali
 * Čtečka sestav
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům helpdesku. Prostřednictvím této cesty může správce helpdesku předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -382,7 +382,7 @@ Uživatelé v této roli můžou vytvářet, spravovat a odstraňovat obsah pro 
 
 ### <a name="security-administrator"></a>[Správce zabezpečení](#security-administrator-permissions)
 
-Uživatelé s touto rolí mají oprávnění ke správě funkcí souvisejících se zabezpečením ve službě Microsoft 365 Security Center, Azure Active Directory Identity Protection, Azure Information Protection a Office 365 Security & Center pro dodržování předpisů. Další informace o oprávněních Office 365 najdete na stránce s [oprávněním v centru zabezpečení office 365 Security & v centru dodržování předpisů](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+Uživatelé s touto rolí mají oprávnění ke správě funkcí souvisejících se zabezpečením ve službě Microsoft 365 Security Center, Azure Active Directory Identity Protection, Azure Active Directory Authentication, Azure Information Protection a Office 365 Security & Security Center. Další informace o oprávněních Office 365 najdete na stránce s [oprávněním v centru zabezpečení office 365 Security & v centru dodržování předpisů](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
 V | Může
 --- | ---
@@ -396,6 +396,8 @@ Ochrana ATP a EDR v programu Windows Defender | Přiřazení rolí<br>Správa sk
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Přidávání správců, přidávání zásad a nastavení, nahrávání protokolů a provádění akcí zásad správného řízení
 [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Může zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, upravit zásady zabezpečení, zobrazit výstrahy a doporučení, zavřít výstrahy a doporučení.
 [Stav služby Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health) | Zobrazení stavu služeb Office 365
+[Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md) | Zadejte prahovou hodnotu a dobu uzamčení, pokud dojde k neúspěšným událostem přihlášení.
+[Ochrana heslem](../authentication/concept-password-ban-bad.md) | Nakonfigurujte vlastní seznam zakázaných hesel nebo místní ochrana heslem.
 
 ### <a name="security-operator"></a>[Operátor zabezpečení](#security-operator-permissions)
 
@@ -476,7 +478,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 |Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatelů|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům uživatelů. Prostřednictvím této cesty může správce uživatelů předpokládat identitu vlastníka aplikace a pak dále předpokládat identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -1893,12 +1895,12 @@ Správci zařízení | Zastaralé | [Dokumentace k zastaralým rolím](directory
 Uživatelé zařízení | Zastaralé | [Dokumentace k zastaralým rolím](directory-assign-admin-roles.md#deprecated-roles)
 Účty synchronizace adresářů | Nezobrazeno, protože by neměl být použit | [Dokumentace k účtům synchronizace adresářů](directory-assign-admin-roles.md#directory-synchronization-accounts)
 Zapisovače adresářů | Nezobrazeno, protože by neměl být použit | [Dokumentace k modulům pro zápis adresářů](directory-assign-admin-roles.md#directory-writers)
-Uživatel typu host | Nezobrazeno, protože nemůže být použit  | Není k dispozici
+Uživatel typu host | Nezobrazeno, protože nemůže být použit  | NA
 Správce služby Lync | Správce Skypu pro firmy | [Odráží aktuální značku produktu.](directory-assign-admin-roles.md#role-template-ids)
 Podpora partnerské vrstvy 1 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů Tier1](directory-assign-admin-roles.md#partner-tier1-support)
 Podpora partnerské úrovně 2 | Nezobrazeno, protože by neměl být použit | [Dokumentace k podpoře partnerů 2](directory-assign-admin-roles.md#partner-tier2-support)
-Omezený uživatel typu Host | Nezobrazeno, protože nemůže být použit | Není k dispozici
-Uživatel | Nezobrazeno, protože nemůže být použit | Není k dispozici
+Omezený uživatel typu Host | Nezobrazeno, protože nemůže být použit | NA
+Uživatel | Nezobrazeno, protože nemůže být použit | NA
 Připojení zařízení na pracovišti | Zastaralé | [Dokumentace k zastaralým rolím](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>Další kroky

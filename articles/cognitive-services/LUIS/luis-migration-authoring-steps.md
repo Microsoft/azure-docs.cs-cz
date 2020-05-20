@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c28e6c1edf4188cf3ea80c14565785dcf1dcbba
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78194630"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653814"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Postup migrace do prostředku pro vytváření obsahu Azure
 
@@ -97,12 +97,12 @@ Pokud jste vlastníkem libovolných aplikací LUIS, je proces migrace k dispozic
 
 1. Než budete mít přístup k vašim aplikacím, vyberte prostředek pro vytváření předplatného a LUIS, abyste viděli aplikace, které můžete vytvořit.
 
-    ![Pokud chcete zobrazit aplikace, které může vytvořit, vyberte předplatné a LUIS Authoring Resource.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
-
+    > [!div class="mx-imgBorder"]
+    > ![Pokud chcete zobrazit aplikace, které může vytvořit, vyberte předplatné a LUIS Authoring Resource.](./media/create-app-in-portal-select-subscription-luis-resource.png)
 
 ## <a name="app-contributor-begins-the-migration-process"></a>Přispěvatel aplikace zahájí proces migrace.
 
-Použijte stejný postup jako u vlastníka aplikace pro migraci. Proces vytvoří nový zdroj obsahu typu `LUIS.Authoring`.
+Použijte stejný postup jako u vlastníka aplikace pro migraci. Proces vytvoří nový zdroj obsahu typu `LUIS.Authoring` .
 
 Abyste se mohli přidat jako přispěvatel do migrovaných aplikací vlastněných ostatními, musíte svůj účet migrovat.
 
@@ -114,7 +114,7 @@ Přečtěte si, [jak přidat přispěvatele](luis-how-to-collaborate.md).
 
 ## <a name="troubleshooting-errors-with-the-migration-process"></a>Řešení chyb v procesu migrace
 
-Pokud na portálu LUIS `MissingSubscriptionRegistration` obdržíte chybu s červeným oznamovacím pruhem během procesu migrace, vytvořte prostředek služby pro rozpoznávání v [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) nebo v rozhraní příkazového [řádku Azure](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Přečtěte si další informace o [příčinách této chyby](../../azure-resource-manager/templates/error-register-resource-provider.md#cause).
+Pokud na portálu LUIS obdržíte `MissingSubscriptionRegistration` chybu s červeným oznamovacím pruhem během procesu migrace, vytvořte prostředek služby pro rozpoznávání v [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) nebo v rozhraní příkazového [řádku Azure](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Přečtěte si další informace o [příčinách této chyby](../../azure-resource-manager/templates/error-register-resource-provider.md#cause).
 
 ## <a name="next-steps"></a>Další kroky
 

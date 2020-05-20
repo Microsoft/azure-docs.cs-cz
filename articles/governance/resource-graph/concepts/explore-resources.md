@@ -1,14 +1,14 @@
 ---
 title: Procházení prostředků Azure
 description: Naučte se používat jazyk dotazů grafu prostředků k prozkoumání vašich prostředků a zjištění způsobu jejich připojení.
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c191915b8c558d80ffef554ef758a35157e035c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76156977"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654483"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Zkoumání prostředků Azure pomocí služby Resource Graph
 
@@ -37,7 +37,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ```
 
 > [!NOTE]
-> Rutina `Search-AzGraph` Azure PowerShell ve výchozím nastavení vrátí **PSCustomObject** . Aby výstup vypadal stejně jako výsledek vrácený rozhraním Azure CLI, použije se `ConvertTo-Json` rutina. Výchozí hodnota **hloubky** je _2_. Nastavení na hodnotu _100_ by mělo být převedeno na všechny vrácené úrovně.
+> `Search-AzGraph`Rutina Azure PowerShell ve výchozím nastavení vrátí **PSCustomObject** . Aby výstup vypadal stejně jako výsledek vrácený rozhraním Azure CLI, `ConvertTo-Json` použije se rutina. Výchozí hodnota **hloubky** je _2_. Nastavení na hodnotu _100_ by mělo být převedeno na všechny vrácené úrovně.
 
 Výsledky JSON jsou strukturované podobně jako v následujícím příkladu:
 

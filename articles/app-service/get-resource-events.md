@@ -4,12 +4,12 @@ description: Naučte se, jak získat události prostředku prostřednictvím pro
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: msangapu
-ms.openlocfilehash: 1fd283f95823a67319dc467a3a1d6251193182da
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7075e3eacc85198e22a9aa0e53f67a22416b2678
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124733"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649068"
 ---
 # <a name="get-resource-events-in-azure-app-service"></a>Získat události prostředků v Azure App Service
 
@@ -41,29 +41,7 @@ I když jsou protokoly aktivit založené na uživatelích, je k dispozici nová
 
 Nebo můžete pomocí služeb Event Grid a Logic Apps zpracovávat data kdekoli bez psaní kódu. Event Grid propojuje zdroje dat a obslužné rutiny událostí. Pomocí služby Event Grid třeba můžete pokaždé, když se do kontejneru úložiště objektů blob přidá nová fotka, okamžitě aktivovat funkci bez serveru, která spustí analýzu obrázku.
 
-### <a name="supported-event-types"></a>Podporované typy událostí
-| Event Type |Popis|
-| -----------| ------------- |
-| Microsoft. Web/weby | WebApp |
-| BackupOperationCompleted |Zálohování WebApp se úspěšně dokončilo.|
-| BackupOperationFailed | Nepovedlo se zálohovat WebApp|
-| RestoreOperationStarted |Obnovení ze zálohy bylo spuštěno.|
-| RestoreOperationCompleted |Obnovení ze zálohy bylo úspěšně dokončeno.|
-| RestoreOperationFailed |Obnovení ze zálohy se nezdařilo|
-| SlotSwapStarted |Zahození slotu bylo spuštěno.|
-| SlotSwapCompleted |Přepnutí slotu se úspěšně dokončilo.|
-| SlotSwapFailed |Slot se nepodařilo prohodit.|
-| SlotSwapWithPreviewStarted |Zahození slotu s verzí Preview bylo spuštěno.|
-| SlotSwapWithPreviewCancelled |Přepnutí slotu s náhledem se nezdařilo.|
-| AppUpdated | |
-| Spuštěn | WebApp se restartoval. |
-| Zastaveno | WebApp se zastavil. |
-| ChangedAppSettings | Nastavení aplikace na WebApp se změnilo. |
-| - | - |
-| Microsoft. Web/serverových farem | (App Service plán) |
-| AspUpdated | Plán služby App Service se aktualizoval. Objekt události obsahuje podrobnosti o vlastnostech, které byly změněny. |
-| Škálovat nahoru/dolů | Plán služby App Service se škáluje nahoru nebo dolů. Objekt události obsahuje počet instancí.|
-
+[Zobrazení vlastností a schématu pro události Azure App Service.](https://docs.microsoft.com/azure/event-grid/event-schema-app-service)
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Další kroky
 * [Dotazování protokolů pomocí Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

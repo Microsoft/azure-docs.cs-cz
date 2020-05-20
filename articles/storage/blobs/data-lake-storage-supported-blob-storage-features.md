@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: ab704f53e608e7021f53a5d4b0a3e06c2ab807a1
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 5be7c9800076cfaf361a3e752162e14d10f22655
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007453"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650754"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Funkce BLOB Storage dostupné v Azure Data Lake Storage Gen2
 
@@ -26,9 +26,9 @@ V této tabulce jsou uvedené funkce služby Blob Storage, které můžete použ
 > [!NOTE]
 > Úroveň podpory odkazuje jenom na to, jak je funkce podporovaná s Data Lake Storage Gen2. 
 >
-> [Premium – účty úložiště blob bloku](storage-blob-create-account-block-blob.md) pro data Lake Storage Gen2 jsou momentálně ve verzi Public Preview. Úrovně podpory pro tyto typy účtů se zobrazí ve sloupci **účty úložiště objektů blob bloku úrovně Premium** .
+> [Účty BlockBlobStorage úrovně Premium-Performance](storage-blob-create-account-block-blob.md) pro data Lake Storage Gen2 jsou momentálně ve verzi Public Preview. Úrovně podpory pro tyto typy účtů se zobrazí ve sloupci **BlockBlobStorage (Premium)** .
 
-|Blob Storage funkce |Účty úložiště pro obecné účely v2|Účty služby Block Blob Storage úrovně Premium |Související články |
+|Blob Storage funkce |Obecné účely v2 |BlockBlobStorage (Premium) |Související články |
 |---------------|-------------------|---|
 |Horká vrstva přístupu|Obecná dostupnost|Nepodporuje se|[Azure Blob Storage: Horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md)|
 |Studená vrstva přístupu|Obecná dostupnost|Nepodporuje se|[Azure Blob Storage: Horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md)|
@@ -39,6 +39,7 @@ V této tabulce jsou uvedené funkce služby Blob Storage, které můžete použ
 |Příkazy Azure CLI služby Blob Storage|Obecná dostupnost|Preview|[Rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI](storage-quickstart-blobs-cli.md)|
 |Rozhraní API pro úložiště objektů BLOB|Obecná dostupnost|Preview|[Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro .NET](storage-quickstart-blobs-dotnet.md)<br>[Rychlý Start: Správa objektů BLOB pomocí sady Java V12 SDK](storage-quickstart-blobs-java.md)<br>[Rychlý Start: Správa objektů BLOB pomocí sady Python V12 SDK](storage-quickstart-blobs-python.md)<br>[Rychlý Start: Správa objektů BLOB pomocí sady JavaScript V12 SDK v Node. js](storage-quickstart-blobs-nodejs.md)|
 |Diagnostické protokoly|Obecná dostupnost|Preview <div role="complementary" aria-labelledby="diagnostic-logging"><sup>1</sup></div> |[Protokolování analýz služby Azure Storage](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Přihlašování Azure Monitor|Preview |Zatím nepodporováno|[Azure Storage monitorování](../common/monitor-storage.md)|
 |Archivní úroveň přístupu|Preview|Nepodporuje se|[Azure Blob Storage: Horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md)|
 |Zásady správy životního cyklu|Preview|Zatím nepodporováno|[Správa životního cyklu úložiště objektů blob v Azure](storage-lifecycle-management-concepts.md)|
 |Změna kanálu|Zatím nepodporováno|Zatím nepodporováno|[Změna podpory kanálu ve službě Azure Blob Storage](storage-blob-change-feed.md)|
@@ -49,7 +50,6 @@ V této tabulce jsou uvedené funkce služby Blob Storage, které můžete použ
 |Snímky|Zatím nepodporováno|Zatím nepodporováno|[Vytvoření a Správa snímku objektu BLOB v .NET](storage-blob-snapshots.md)|
 |Obnovitelné odstranění|Zatím nepodporováno|Zatím nepodporováno|[Obnovitelné odstranění objektů blob služby Azure Storage](storage-blob-soft-delete.md)|
 |Statické weby|Zatím nepodporováno|Zatím nepodporováno|[Hostování statického webu ve službě Azure Storage](storage-blob-static-website.md)|
-|Přihlašování Azure Monitor|Zatím nepodporováno|Zatím nepodporováno|Zatím nedostupné|
 
 <div id="diagnostic-logging"><sup>1</sup> Pro účty úložiště blob bloku úrovně Premium není možné povolit diagnostické protokoly (Classic) pomocí Azure Portal. Povolte je pomocí PowerShellu.</div>
 

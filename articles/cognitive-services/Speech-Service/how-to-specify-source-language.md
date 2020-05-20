@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/07/2020
+ms.date: 05/19/2020
 ms.author: qiohu
-zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 07ca4c519a04910e7e126d3481afb17d2b5dc350
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: 32c08af129172fb1dbebf1679ea01694e8bd3d1a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977681"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653279"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Určení zdrojového jazyka pro převod řeči na text
 
@@ -32,14 +32,14 @@ V tomto příkladu je zdrojový jazyk poskytován explicitně jako parametr pomo
 var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-V tomto příkladu je k dispozici zdrojový jazyk pomocí `SourceLanguageConfig`. Pak `sourceLanguageConfig` je předána jako parametr pro `SpeechRecognizer` konstrukci.
+V tomto příkladu je k dispozici zdrojový jazyk pomocí `SourceLanguageConfig` . Pak `sourceLanguageConfig` je předána jako parametr pro `SpeechRecognizer` konstrukci.
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
 var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-V tomto příkladu jsou k dispozici zdrojový jazyk a vlastní koncový bod `SourceLanguageConfig`pomocí. Pak `sourceLanguageConfig` je předána jako parametr pro `SpeechRecognizer` konstrukci.
+V tomto příkladu jsou k dispozici zdrojový jazyk a vlastní koncový bod pomocí `SourceLanguageConfig` . Pak `sourceLanguageConfig` je předána jako parametr pro `SpeechRecognizer` konstrukci.
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -47,7 +47,7 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 ```
 
 >[!Note]
-> `SpeechRecognitionLanguage`a `EndpointId` metody set jsou zastaralé z `SpeechConfig` třídy v jazyce C#. Použití těchto metod se nedoporučuje a nemělo by se používat při sestavování `SpeechRecognizer`.
+> `SpeechRecognitionLanguage`a `EndpointId` metody set jsou zastaralé z `SpeechConfig` třídy v jazyce C#. Použití těchto metod se nedoporučuje a nemělo by se používat při sestavování `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -62,14 +62,14 @@ V tomto příkladu je zdrojový jazyk poskytován explicitně jako parametr pomo
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, "de-DE", audioConfig);
 ```
 
-V tomto příkladu je k dispozici zdrojový jazyk pomocí `SourceLanguageConfig`. Pak `sourceLanguageConfig` je `FromConfig` při vytváření rozhraní `recognizer`předána jako parametr.
+V tomto příkladu je k dispozici zdrojový jazyk pomocí `SourceLanguageConfig` . Pak `sourceLanguageConfig` je `FromConfig` při vytváření rozhraní předána jako parametr `recognizer` .
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE");
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-V tomto příkladu jsou k dispozici zdrojový jazyk a vlastní koncový bod `SourceLanguageConfig`pomocí. `sourceLanguageConfig` Je předán jako parametr `FromConfig` při vytváření `recognizer`.
+V tomto příkladu jsou k dispozici zdrojový jazyk a vlastní koncový bod pomocí `SourceLanguageConfig` . `sourceLanguageConfig`Je předán jako parametr `FromConfig` při vytváření `recognizer` .
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -77,7 +77,7 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 ```
 
 >[!Note]
-> `SetSpeechRecognitionLanguage`a `SetEndpointId` jsou zastaralé metody ze `SpeechConfig` třídy v jazyce C++ a Java. Použití těchto metod se nedoporučuje a nemělo by se používat při sestavování `SpeechRecognizer`.
+> `SetSpeechRecognitionLanguage`a `SetEndpointId` jsou zastaralé metody ze `SpeechConfig` třídy v jazyce C++ a Java. Použití těchto metod se nedoporučuje a nemělo by se používat při sestavování `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -85,20 +85,20 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 
 ## <a name="how-to-specify-source-language-in-java"></a>Určení zdrojového jazyka v jazyce Java
 
-V tomto příkladu je zdrojový jazyk k dispozici explicitně při vytváření nového `SpeechRecognizer`.
+V tomto příkladu je zdrojový jazyk k dispozici explicitně při vytváření nového `SpeechRecognizer` .
 
 ```Java
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-V tomto příkladu je k dispozici zdrojový jazyk pomocí `SourceLanguageConfig`. Pak `sourceLanguageConfig` je při vytváření nového nového `SpeechRecognizer`předán jako parametr.
+V tomto příkladu je k dispozici zdrojový jazyk pomocí `SourceLanguageConfig` . Pak `sourceLanguageConfig` je při vytváření nového nového předán jako parametr `SpeechRecognizer` .
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE");
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-V tomto příkladu jsou k dispozici zdrojový jazyk a vlastní koncový bod `SourceLanguageConfig`pomocí. Pak `sourceLanguageConfig` je při vytváření nového nového `SpeechRecognizer`předán jako parametr.
+V tomto příkladu jsou k dispozici zdrojový jazyk a vlastní koncový bod pomocí `SourceLanguageConfig` . Pak `sourceLanguageConfig` je při vytváření nového nového předán jako parametr `SpeechRecognizer` .
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -106,7 +106,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 ```
 
 >[!Note]
-> `setSpeechRecognitionLanguage`a `setEndpointId` jsou zastaralé metody ze `SpeechConfig` třídy v jazyce C++ a Java. Použití těchto metod se nedoporučuje a nemělo by se používat při sestavování `SpeechRecognizer`.
+> `setSpeechRecognitionLanguage`a `setEndpointId` jsou zastaralé metody ze `SpeechConfig` třídy v jazyce C++ a Java. Použití těchto metod se nedoporučuje a nemělo by se používat při sestavování `SpeechRecognizer` .
 
 ::: zone-end
 
@@ -121,7 +121,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, language="de-DE", audio_config=audio_config)
 ```
 
-V tomto příkladu je k dispozici zdrojový jazyk pomocí `SourceLanguageConfig`. Pak `SourceLanguageConfig` je předána jako parametr pro `SpeechRecognizer` konstrukci.
+V tomto příkladu je k dispozici zdrojový jazyk pomocí `SourceLanguageConfig` . Pak `SourceLanguageConfig` je předána jako parametr pro `SpeechRecognizer` konstrukci.
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE")
@@ -129,7 +129,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
 
-V tomto příkladu jsou k dispozici zdrojový jazyk a vlastní koncový bod `SourceLanguageConfig`pomocí. Pak `SourceLanguageConfig` je předána jako parametr pro `SpeechRecognizer` konstrukci.
+V tomto příkladu jsou k dispozici zdrojový jazyk a vlastní koncový bod pomocí `SourceLanguageConfig` . Pak `SourceLanguageConfig` je předána jako parametr pro `SpeechRecognizer` konstrukci.
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE", "The Endpoint ID for your custom model.")
@@ -138,54 +138,63 @@ speech_recognizer = speechsdk.SpeechRecognizer(
 ```
 
 >[!Note]
-> `speech_recognition_language`a `endpoint_id` vlastnosti jsou zastaralé ze `SpeechConfig` třídy v Pythonu. Použití těchto vlastností se nedoporučuje a nemělo by se používat při sestavování `SpeechRecognizer`.
+> `speech_recognition_language`a `endpoint_id` vlastnosti jsou zastaralé ze `SpeechConfig` třídy v Pythonu. Použití těchto vlastností se nedoporučuje a nemělo by se používat při sestavování `SpeechRecognizer` .
 
 ::: zone-end
 
-::: zone pivot="programming-language-javascript"
+::: zone pivot="programming-language-more"
 
 ## <a name="how-to-specify-source-language-in-javascript"></a>Jak určit zdrojový jazyk v JavaScriptu
 
-Prvním krokem je vytvoření `SpeechConfig`:
+Prvním krokem je vytvoření `SpeechConfig` :
 
 ```Javascript
 var speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionkey", "YourRegion");
 ```
 
-V dalším kroku určete zdrojový jazyk vašeho zvuku `speechRecognitionLanguage`:
+V dalším kroku určete zdrojový jazyk vašeho zvuku `speechRecognitionLanguage` :
 
 ```Javascript
 speechConfig.speechRecognitionLanguage = "de-DE";
 ```
 
-Pokud používáte vlastní model pro rozpoznávání, můžete koncový bod zadat pomocí `endpointId`:
+Pokud používáte vlastní model pro rozpoznávání, můžete koncový bod zadat pomocí `endpointId` :
 
 ```Javascript
 speechConfig.endpointId = "The Endpoint ID for your custom model.";
 ```
-::: zone-end
-
-::: zone pivot="programming-language-objectivec"
 
 ## <a name="how-to-specify-source-language-in-objective-c"></a>Určení zdrojového jazyka v cíli – C
 
-Prvním krokem je vytvoření `speechConfig`:
+V tomto příkladu je zdrojový jazyk poskytován explicitně jako parametr pomocí `SPXSpeechRecognizer` konstrukce.
 
 ```Objective-C
-SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:@"YourSubscriptionkey" region:@"YourRegion"];
+SPXSpeechRecognizer* speechRecognizer = \
+    [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig language:@"de-DE" audioConfiguration:audioConfig];
 ```
 
-V dalším kroku určete zdrojový jazyk vašeho zvuku `speechRecognitionLanguage`:
+V tomto příkladu je k dispozici zdrojový jazyk pomocí `SPXSourceLanguageConfiguration` . Pak `SPXSourceLanguageConfiguration` je předána jako parametr pro `SPXSpeechRecognizer` konstrukci.
 
 ```Objective-C
-speechConfig.speechRecognitionLanguage = @"de-DE";
+SPXSourceLanguageConfiguration* sourceLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"de-DE"];
+SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                                                                     sourceLanguageConfiguration:sourceLanguageConfig
+                                                                              audioConfiguration:audioConfig];
 ```
 
-Pokud používáte vlastní model pro rozpoznávání, můžete koncový bod zadat pomocí `endpointId`:
+V tomto příkladu jsou k dispozici zdrojový jazyk a vlastní koncový bod pomocí `SPXSourceLanguageConfiguration` . Pak `SPXSourceLanguageConfiguration` je předána jako parametr pro `SPXSpeechRecognizer` konstrukci.
 
 ```Objective-C
-speechConfig.endpointId = @"The Endpoint ID for your custom model.";
+SPXSourceLanguageConfiguration* sourceLanguageConfig = \
+        [[SPXSourceLanguageConfiguration alloc]initWithLanguage:@"de-DE"
+                                                     endpointId:@"The Endpoint ID for your custom model."];
+SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                                                                     sourceLanguageConfiguration:sourceLanguageConfig
+                                                                              audioConfiguration:audioConfig];
 ```
+
+>[!Note]
+> `speechRecognitionLanguage`a `endpointId` vlastnosti jsou zastaralé ze `SPXSpeechConfiguration` třídy v cíli-C. Použití těchto vlastností se nedoporučuje a nemělo by se používat při sestavování `SPXSpeechRecognizer` .
 
 ::: zone-end
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 838835cf44b5ca5048ea6cb7bc1bba582b2a0926
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278529"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647979"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Správa mezipaměti Azure pro Redis s využitím Azure PowerShell
 > [!div class="op_single_selector"]
@@ -44,13 +44,13 @@ Pokud máte více předplatných Azure, budete muset nastavit předplatné Azure
 
     Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 
-Chcete-li zadat odběr, spusťte následující příkaz. V následujícím příkladu je `ContosoSubscription`název předplatného.
+Chcete-li zadat odběr, spusťte následující příkaz. V následujícím příkladu je název předplatného `ContosoSubscription` .
 
     Select-AzSubscription -SubscriptionName ContosoSubscription
 
 Předtím, než budete moci použít prostředí Windows PowerShell s Azure Resource Manager, potřebujete následující:
 
-* Prostředí Windows PowerShell verze 3,0 nebo 4,0. Pokud chcete najít verzi Windows PowerShellu, zadejte:`$PSVersionTable` a ověřte hodnotu `PSVersion` 3,0 nebo 4,0. Informace o instalaci kompatibilní verze naleznete v tématu [Windows Management framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595) nebo [windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855).
+* Prostředí Windows PowerShell verze 3,0 nebo 4,0. Pokud chcete najít verzi Windows PowerShellu, zadejte: `$PSVersionTable` a ověřte hodnotu `PSVersion` 3,0 nebo 4,0. Informace o instalaci kompatibilní verze naleznete v tématu [Windows Management framework 3,0](https://www.microsoft.com/download/details.aspx?id=34595) nebo [windows Management Framework 4,0](https://www.microsoft.com/download/details.aspx?id=40855).
 
 Podrobnou nápovědu k jakékoli rutině, kterou vidíte v tomto kurzu, získáte pomocí rutiny Get-Help.
 
@@ -61,7 +61,7 @@ Chcete-li například získat nápovědu pro `New-AzRedisCache` rutinu, zadejte:
     Get-Help New-AzRedisCache -Detailed
 
 ### <a name="how-to-connect-to-other-clouds"></a>Jak se připojit k jiným cloudům
-Ve výchozím nastavení je `AzureCloud`prostředí Azure, které představuje globální cloudovou instanci Azure. Pokud se chcete připojit k jiné instanci, použijte `Connect-AzAccount` příkaz s přepínačem `-Environment` nebo`EnvironmentName` příkazového řádku s požadovaným názvem prostředí nebo prostředí.
+Ve výchozím nastavení je prostředí Azure `AzureCloud` , které představuje globální cloudovou instanci Azure. Pokud se chcete připojit k jiné instanci, použijte `Connect-AzAccount` příkaz s `-Environment` `EnvironmentName` přepínačem nebo příkazového řádku s požadovaným názvem prostředí nebo prostředí.
 
 Pokud chcete zobrazit seznam dostupných prostředí, spusťte `Get-AzEnvironment` rutinu.
 
@@ -70,7 +70,7 @@ Pokud se chcete připojit ke cloudu Azure Government, použijte jeden z následu
 
     Connect-AzAccount -EnvironmentName AzureUSGovernment
 
-– nebo –
+nebo
 
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureUSGovernment)
 
@@ -86,7 +86,7 @@ Pokud se chcete připojit ke cloudu Azure Čína, použijte jeden z následujíc
 
     Connect-AzAccount -EnvironmentName AzureChinaCloud
 
-– nebo –
+nebo
 
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureChinaCloud)
 
@@ -103,7 +103,7 @@ Pokud se chcete připojit k Microsoft Azure (Německo), použijte jeden z násle
     Connect-AzAccount -EnvironmentName AzureGermanCloud
 
 
-– nebo –
+nebo
 
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureGermanCloud)
 
@@ -119,7 +119,7 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 
 | Parametr | Popis | Výchozí |
 | --- | --- | --- |
-| Název |Název mezipaměti | |
+| Name |Název mezipaměti | |
 | Umístění |Umístění mezipaměti | |
 | ResourceGroupName |Název skupiny prostředků, ve které se má mezipaměť vytvořit | |
 | Velikost |Velikost mezipaměti. Platné hodnoty jsou: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1 GB, 2,5 GB, 6 GB, 13GB, 26GB, 53GB. |PAMĚT |
@@ -153,13 +153,13 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 Nová mezipaměť Azure pro instance Redis se vytvoří pomocí rutiny [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) .
 
 > [!IMPORTANT]
-> Při prvním vytvoření mezipaměti Azure pro Redis v předplatném pomocí Azure Portal portál registruje `Microsoft.Cache` obor názvů pro toto předplatné. Pokud se pokusíte vytvořit první mezipaměť Azure pro Redis v předplatném pomocí PowerShellu, musíte nejdřív tento obor názvů zaregistrovat pomocí následujícího příkazu. v opačném případě rutin `New-AzRedisCache` , `Get-AzRedisCache` například a selhání.
+> Při prvním vytvoření mezipaměti Azure pro Redis v předplatném pomocí Azure Portal portál registruje `Microsoft.Cache` obor názvů pro toto předplatné. Pokud se pokusíte vytvořit první mezipaměť Azure pro Redis v předplatném pomocí PowerShellu, musíte nejdřív tento obor názvů zaregistrovat pomocí následujícího příkazu. v opačném případě rutin, například `New-AzRedisCache` a `Get-AzRedisCache` selhání.
 > 
 > `Register-AzResourceProvider -ProviderNamespace "Microsoft.Cache"`
 > 
 > 
 
-Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `New-AzRedisCache`, spusťte následující příkaz.
+Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `New-AzRedisCache` , spusťte následující příkaz.
 
     PS C:\> Get-Help New-AzRedisCache -detailed
 
@@ -237,20 +237,20 @@ Pokud chcete vytvořit mezipaměť s výchozími parametry, spusťte následují
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
 
-`ResourceGroupName`, `Name`a `Location` jsou vyžadovány parametry, ale zbytek je nepovinný a má výchozí hodnoty. Když spustíte předchozí příkaz, vytvoří se standardní skladová položka SKU Azure cache pro instanci Redis se zadaným názvem, umístěním a skupinou prostředků, která má nepovolený port SSL o velikosti 1 GB.
+`ResourceGroupName`, `Name` a `Location` jsou vyžadovány parametry, ale zbytek je nepovinný a má výchozí hodnoty. Když spustíte předchozí příkaz, vytvoří se standardní skladová položka SKU Azure cache pro instanci Redis se zadaným názvem, umístěním a skupinou prostředků, která má nepovolený port SSL o velikosti 1 GB.
 
 Pokud chcete vytvořit mezipaměť Premium, zadejte velikost P1 (6 GB až 60 GB), P2 (13 GB-130 GB), P3 (26 GB-260 GB) nebo P4 (53 GB-530 GB). Pokud chcete povolit clusteringu, zadejte počet horizontálních oddílů pomocí `ShardCount` parametru. Následující příklad vytvoří mezipaměť Premium P1 se 3 horizontálních oddílů. Mezipaměť P1 Premium má velikost 6 GB. vzhledem k tomu, že jsme určili tři horizontálních oddílů, celková velikost je 18 GB (3 × 6 GB).
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P1 -ShardCount 3
 
-Chcete-li zadat hodnoty `RedisConfiguration` pro parametr, sestavte hodnoty `{}` uvnitř jako páry klíč/hodnota `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}`jako. Následující příklad vytvoří mezipaměť o velikosti 1 GB, která `allkeys-random` má nakonfigurovanou zásadu maxmemory a oznámení na `KEA`místo na úrovni. Další informace najdete v tématech [Upozornění na místo na disku (rozšířené nastavení)](cache-configure.md#keyspace-notifications-advanced-settings) a [zásady paměti](cache-configure.md#memory-policies).
+Chcete-li zadat hodnoty pro parametr, sestavte `RedisConfiguration` hodnoty uvnitř `{}` jako páry klíč/hodnota jako `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}` . Následující příklad vytvoří mezipaměť o velikosti 1 GB, která má `allkeys-random` nakonfigurovanou zásadu maxmemory a oznámení na místo na úrovni `KEA` . Další informace najdete v tématech [Upozornění na místo na disku (rozšířené nastavení)](cache-configure.md#keyspace-notifications-advanced-settings) a [zásady paměti](cache-configure.md#memory-policies).
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
 
 <a name="databases"></a>
 
 ## <a name="to-configure-the-databases-setting-during-cache-creation"></a>Konfigurace nastavení databáze během vytváření mezipaměti
-Nastavení `databases` se dá nakonfigurovat jenom během vytváření mezipaměti. Následující příklad vytvoří mezipaměť Premium P3 (26 GB) s 48 databázemi pomocí rutiny [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCache) .
+`databases`Nastavení se dá nakonfigurovat jenom během vytváření mezipaměti. Následující příklad vytvoří mezipaměť Premium P3 (26 GB) s 48 databázemi pomocí rutiny [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCache) .
 
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
 
@@ -259,7 +259,7 @@ Další informace o této `databases` vlastnosti najdete v tématu [výchozí me
 ## <a name="to-update-an-azure-cache-for-redis"></a>Aktualizace mezipaměti Azure pro Redis
 Mezipaměť Azure pro instance Redis se aktualizuje pomocí rutiny [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/Set-azRedisCache) .
 
-Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Set-AzRedisCache`, spusťte následující příkaz.
+Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Set-AzRedisCache` , spusťte následující příkaz.
 
     PS C:\> Get-Help Set-AzRedisCache -detailed
 
@@ -313,7 +313,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Set-AzRe
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-`Set-AzRedisCache` Rutinu lze použít k aktualizaci `Size`vlastností, `Sku`například,, `EnableNonSslPort`a `RedisConfiguration` hodnot. 
+`Set-AzRedisCache`Rutinu lze použít k aktualizaci vlastností, například, `Size` `Sku` , `EnableNonSslPort` a `RedisConfiguration` hodnot. 
 
 Následující příkaz aktualizuje zásady maxmemory pro Azure cache pro Redis s názvem myCache.
 
@@ -322,7 +322,7 @@ Následující příkaz aktualizuje zásady maxmemory pro Azure cache pro Redis 
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>Škálování mezipaměti Azure pro Redis
-`Set-AzRedisCache`dá se použít ke škálování mezipaměti Azure pro instanci Redis při úpravě vlastností `Size`, `Sku`, nebo `ShardCount` . 
+`Set-AzRedisCache`dá se použít ke škálování mezipaměti Azure pro instanci Redis při `Size` `Sku` úpravě vlastností,, nebo `ShardCount` . 
 
 > [!NOTE]
 > Škálování mezipaměti pomocí prostředí PowerShell podléhá stejným omezením a pokynům pro škálování mezipaměti z Azure Portal. Pomocí následujících omezení můžete škálovat na jinou cenovou úroveň.
@@ -342,7 +342,7 @@ Následující příklad ukazuje, jak škálovat mezipaměť s názvem `myCache`
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
-Po vydání tohoto příkazu se vrátí stav mezipaměti (podobně jako volání `Get-AzRedisCache`). Všimněte si, `ProvisioningState` že `Scaling`je.
+Po vydání tohoto příkazu se vrátí stav mezipaměti (podobně jako volání `Get-AzRedisCache` ). Všimněte si, že `ProvisioningState` je `Scaling` .
 
     PS C:\> Set-AzRedisCache -Name myCache -ResourceGroupName myGroup -Size 2.5GB
 
@@ -371,14 +371,14 @@ Po vydání tohoto příkazu se vrátí stav mezipaměti (podobně jako volání
     TenantSettings     : {}
     ShardCount         :
 
-Po dokončení operace škálování se `ProvisioningState` změní na. `Succeeded` Pokud potřebujete provést následné operace škálování, jako je například změna z úrovně Basic na standard a změna velikosti, je nutné počkat na dokončení předchozí operace nebo obdržet chybu podobnou následující.
+Po dokončení operace škálování se `ProvisioningState` změní na `Succeeded` . Pokud potřebujete provést následné operace škálování, jako je například změna z úrovně Basic na standard a změna velikosti, je nutné počkat na dokončení předchozí operace nebo obdržet chybu podobnou následující.
 
     Set-AzRedisCache : Conflict: The resource '...' is not in a stable state, and is currently unable to accept the update request.
 
 ## <a name="to-get-information-about-an-azure-cache-for-redis"></a>Získání informací o službě Azure cache pro Redis
 Informace o mezipaměti můžete načíst pomocí rutiny [Get-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/get-azrediscache) .
 
-Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Get-AzRedisCache`, spusťte následující příkaz.
+Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Get-AzRedisCache` , spusťte následující příkaz.
 
     PS C:\> Get-Help Get-AzRedisCache -detailed
 
@@ -421,11 +421,11 @@ Pokud chcete vrátit informace o všech mezipamětích v aktuálním předplatn�
 
     Get-AzRedisCache
 
-Pokud chcete vrátit informace o všech mezipamětích v konkrétní skupině prostředků, `Get-AzRedisCache` spusťte s `ResourceGroupName` parametrem.
+Pokud chcete vrátit informace o všech mezipamětích v konkrétní skupině prostředků, spusťte `Get-AzRedisCache` s `ResourceGroupName` parametrem.
 
     Get-AzRedisCache -ResourceGroupName myGroup
 
-Chcete-li vrátit informace o konkrétní mezipaměti, `Get-AzRedisCache` spusťte příkaz `Name` s parametrem obsahujícím název mezipaměti a `ResourceGroupName` parametr se skupinou prostředků obsahující tuto mezipaměť.
+Chcete-li vrátit informace o konkrétní mezipaměti, spusťte příkaz `Get-AzRedisCache` s `Name` parametrem obsahujícím název mezipaměti a `ResourceGroupName` parametr se skupinou prostředků obsahující tuto mezipaměť.
 
     PS C:\> Get-AzRedisCache -Name myCache -ResourceGroupName myGroup
 
@@ -454,7 +454,7 @@ Chcete-li vrátit informace o konkrétní mezipaměti, `Get-AzRedisCache` spusť
 ## <a name="to-retrieve-the-access-keys-for-an-azure-cache-for-redis"></a>Načtení přístupových klíčů pro Azure cache pro Redis
 K načtení přístupových klíčů pro mezipaměť můžete použít rutinu [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-azRedisCacheKey) .
 
-Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Get-AzRedisCacheKey`, spusťte následující příkaz.
+Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Get-AzRedisCacheKey` , spusťte následující příkaz.
 
     PS C:\> Get-Help Get-AzRedisCacheKey -detailed
 
@@ -494,7 +494,7 @@ Pokud chcete načíst klíče pro vaši mezipaměť, zavolejte `Get-AzRedisCache
 ## <a name="to-regenerate-access-keys-for-your-azure-cache-for-redis"></a>Opětovné generování přístupových klíčů pro službu Azure cache pro Redis
 K opětovnému vygenerování přístupových klíčů pro mezipaměť můžete použít rutinu [New-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCacheKey) .
 
-Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `New-AzRedisCacheKey`, spusťte následující příkaz.
+Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `New-AzRedisCacheKey` , spusťte následující příkaz.
 
     PS C:\> Get-Help New-AzRedisCacheKey -detailed
 
@@ -529,7 +529,7 @@ Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `New-AzRe
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-Pokud chcete znovu vygenerovat primární nebo sekundární klíč pro vaši mezipaměť, zavolejte `New-AzRedisCacheKey` rutinu a předejte ji do názvu, skupiny prostředků a zadejte `Primary` buď `Secondary` nebo pro `KeyType` parametr. V následujícím příkladu je znovu vygenerován sekundární přístupový klíč pro mezipaměť.
+Pokud chcete znovu vygenerovat primární nebo sekundární klíč pro vaši mezipaměť, zavolejte `New-AzRedisCacheKey` rutinu a předejte ji do názvu, skupiny prostředků a zadejte buď `Primary` nebo `Secondary` pro `KeyType` parametr. V následujícím příkladu je znovu vygenerován sekundární přístupový klíč pro mezipaměť.
 
     PS C:\> New-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup -KeyType Secondary
 
@@ -544,7 +544,7 @@ Pokud chcete znovu vygenerovat primární nebo sekundární klíč pro vaši mez
 ## <a name="to-delete-an-azure-cache-for-redis"></a>Postup odstranění mezipaměti Azure pro Redis
 K odstranění mezipaměti Azure pro Redis použijte rutinu [Remove-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/remove-azrediscache) .
 
-Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Remove-AzRedisCache`, spusťte následující příkaz.
+Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Remove-AzRedisCache` , spusťte následující příkaz.
 
     PS C:\> Get-Help Remove-AzRedisCache -detailed
 
@@ -590,14 +590,14 @@ V následujícím příkladu je mezipaměť s názvem `myCache` odebrána.
 
 
 ## <a name="to-import-an-azure-cache-for-redis"></a>Import mezipaměti Azure pro Redis
-Pomocí `Import-AzRedisCache` rutiny můžete importovat data do mezipaměti Azure pro instanci Redis.
+Pomocí rutiny můžete importovat data do mezipaměti Azure pro instanci Redis `Import-AzRedisCache` .
 
 > [!IMPORTANT]
 > Import/Export je k dispozici jenom pro mezipaměti [úrovně Premium](cache-premium-tier-intro.md) . Další informace o importu a exportu najdete v tématu [Import a export dat v Azure cache pro Redis](cache-how-to-import-export-data.md).
 > 
 > 
 
-Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Import-AzRedisCache`, spusťte následující příkaz.
+Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Import-AzRedisCache` , spusťte následující příkaz.
 
     PS C:\> Get-Help Import-AzRedisCache -detailed
 
@@ -650,14 +650,14 @@ Následující příkaz importuje data z objektu BLOB určeného identifikátore
     PS C:\>Import-AzRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Files @("https://mystorageaccount.blob.core.windows.net/mycontainername/blobname?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd") -Force
 
 ## <a name="to-export-an-azure-cache-for-redis"></a>Export mezipaměti Azure pro Redis
-Pomocí `Export-AzRedisCache` rutiny můžete exportovat data z mezipaměti Azure pro instanci Redis.
+Pomocí rutiny můžete exportovat data z mezipaměti Azure pro instanci Redis `Export-AzRedisCache` .
 
 > [!IMPORTANT]
 > Import/Export je k dispozici jenom pro mezipaměti [úrovně Premium](cache-premium-tier-intro.md) . Další informace o importu a exportu najdete v tématu [Import a export dat v Azure cache pro Redis](cache-how-to-import-export-data.md).
 > 
 > 
 
-Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Export-AzRedisCache`, spusťte následující příkaz.
+Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Export-AzRedisCache` , spusťte následující příkaz.
 
     PS C:\> Get-Help Export-AzRedisCache -detailed
 
@@ -711,14 +711,14 @@ Následující příkaz exportuje data z mezipaměti Azure pro instanci Redis do
         pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
 
 ## <a name="to-reboot-an-azure-cache-for-redis"></a>Restartování mezipaměti Azure pro Redis
-Pomocí `Reset-AzRedisCache` rutiny můžete restartovat službu Azure cache pro instanci Redis.
+Pomocí rutiny můžete restartovat službu Azure cache pro instanci Redis `Reset-AzRedisCache` .
 
 > [!IMPORTANT]
 > Restart je dostupný jenom pro mezipaměti [úrovně Premium](cache-premium-tier-intro.md) . Další informace o restartování mezipaměti najdete v tématu [Správa mezipaměti – restart](cache-administration.md#reboot).
 > 
 > 
 
-Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Reset-AzRedisCache`, spusťte následující příkaz.
+Pokud chcete zobrazit seznam dostupných parametrů a jejich popis pro `Reset-AzRedisCache` , spusťte následující příkaz.
 
     PS C:\> Get-Help Reset-AzRedisCache -detailed
 
@@ -778,6 +778,6 @@ Další informace o používání prostředí Windows PowerShell s Azure najdete
 * [Rutiny Azure Resource Manager](https://go.microsoft.com/fwlink/?LinkID=394765): Naučte se používat rutiny v modulu Azure Resource Manager.
 * [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/templates/deploy-portal.md): Naučte se vytvářet a spravovat skupiny prostředků v Azure Portal.
 * [Blog o Azure](https://azure.microsoft.com/blog/): Seznamte se s novými funkcemi v Azure.
-* [Blog k Windows PowerShellu](https://blogs.msdn.com/powershell): Přečtěte si o nových funkcích Windows PowerShellu.
+* [Blog k Windows PowerShellu](https://devblogs.microsoft.com/powershell/): Přečtěte si o nových funkcích Windows PowerShellu.
 * ["Hey, Scripting Guy!" Blog](https://blogs.technet.com/b/heyscriptingguy/): Získejte z komunity Windows PowerShellu reálné tipy a triky.
 

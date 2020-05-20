@@ -8,13 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.custom: has-adal-ref
-ms.openlocfilehash: c2800dc361eb274eeef706556e09731da079ccab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611751"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653371"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Ověřování a autorizace pro prostorové kotvy Azure
 
@@ -99,7 +98,7 @@ U aplikací, které cílí na Azure Active Directory uživatele, se doporučuje 
     1.  Zaregistrujte svoji aplikaci ve službě Azure AD jako **nativní aplikaci**. V rámci registrace budete muset určit, jestli má aplikace více tenantů, nebo ne, a zadat adresy URL pro přesměrování povolené pro vaši aplikaci.
         1.  Přepnout na kartu **oprávnění rozhraní API**
         2.  Vyberte **Přidat oprávnění** .
-            1.  Vybrat **poskytovatele prostředků hybridní reality** v **rozhraní API moje organizace používá** kartu
+            1.  Vyberte **Microsoft Mixed reality** v části **rozhraní API moje organizace používá** kartu.
             2.  Vyberte **delegovaná oprávnění** .
             3.  Zaškrtněte políčko **mixedreality.** Přihlaste se pod **mixedreality**
             4.  Vyberte **Přidat oprávnění** .
@@ -112,12 +111,12 @@ U aplikací, které cílí na Azure Active Directory uživatele, se doporučuje 
             2.  Do pole **Vybrat** zadejte jména uživatelů, skupin nebo aplikací, ke kterým chcete přiřadit přístup, a jejich skupiny (y).
             3.  Klikněte na **Uložit**.
 2. V kódu:
-    1.  Nezapomeňte použít **ID aplikace** a **identifikátor URI přesměrování** vlastní aplikace Azure AD jako **ID klienta** a parametry **RedirectUri** v ADAL.
+    1.  Nezapomeňte použít **ID aplikace** a **identifikátor URI přesměrování** vlastní aplikace Azure AD jako **ID klienta** a parametry **RedirectUri** v MSAL.
     2.  Nastavte informace o tenantovi:
         1.  Pokud vaše aplikace podporuje **pouze moji organizaci**, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například contoso.Microsoft.com).
         2.  Pokud vaše aplikace podporuje **účty v jakémkoli organizačním adresáři**, nahraďte tuto hodnotu **organizacemi** .
         3.  Pokud vaše aplikace podporuje **všechny účet Microsoft uživatele**, nahraďte tuto hodnotu **běžnými** .
-    3.  U žádosti o token nastavte **prostředek** na "https://sts.mixedreality.azure.com". Tento prostředek bude označovat Azure AD, že vaše aplikace požaduje token pro službu Azure prostor kotev.
+    3.  U žádosti o token nastavte **Rozsah** na https://sts.mixedreality.azure.com//.default . Tento obor oznamuje službě Azure AD, že vaše aplikace požaduje token pro službu tokenu zabezpečení (STS) pro Mixed reality.
 
 V takovém případě by vaše aplikace měla být schopná získat z MSAL tokenu Azure AD; Tento token Azure AD můžete nastavit jako **authenticationToken** v objektu konfigurace cloudové relace.
 
@@ -185,16 +184,16 @@ Přístupový token Azure AD se načte pomocí [knihovny MSAL](../../active-dire
         2.  Do pole **Vybrat** zadejte název aplikace, kterou jste vytvořili a ke kterému chcete přiřadit přístup. Pokud chcete, aby uživatelé vaší aplikace měli různé role proti účtu prostorové kotvy, měli byste v Azure AD zaregistrovat několik aplikací a přiřadit je ke každé samostatné roli. Potom implementujte logiku autorizace pro použití správné role pro vaše uživatele.
     3.  Klikněte na **Uložit**.
 2.  V kódu (Poznámka: můžete použít ukázku služby, která je součástí GitHubu):
-    1.  Nezapomeňte použít ID aplikace, tajný klíč aplikace a identifikátor URI pro přesměrování vlastní aplikace Azure AD jako ID klienta, tajný klíč a parametry RedirectUri v ADAL.
-    2.  Nastavte ID tenanta na vlastní AAAzure přidání ID tenanta do parametru autorita v ADAL.
-    3.  U žádosti o token nastavte **prostředek** na "https://sts.mixedreality.azure.com".
+    1.  Nezapomeňte použít ID aplikace, tajný klíč aplikace a identifikátor URI pro přesměrování vlastní aplikace Azure AD jako ID klienta, tajný klíč a parametry RedirectUri v MSAL.
+    2.  Nastavte ID tenanta na vlastní ID tenanta Azure ADD v parametru autorita v MSAL.
+    3.  U žádosti o token nastavte **Rozsah** na "". https://sts.mixedreality.azure.com//.default
 
 V takovém případě může back-end služba získat token Azure AD. Pak ho může vyměňovat pro token MR, který se vrátí zpátky klientovi. Použití tokenu Azure AD k načtení tokenu MR se provádí prostřednictvím volání REST. Toto je ukázkové volání:
 
 ```
-GET https://mrc-auth-prod.trafficmanager.net/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-Host: mrc-auth-prod.trafficmanager.net
+Host: sts.mixedreality.azure.com
 Connection: Keep-Alive
 
 HTTP/1.1 200 OK
@@ -206,7 +205,7 @@ MS-CV: 05JLqWeKFkWpbdY944yl7A.0
 {"AccessToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2MzYyMTk5ZTI2NjQxOGU4ZjE3MThlM2IyMThjZTIxIiwidHlwIjoiSldUIn0.eyJqdGkiOiJmMGFiNWIyMy0wMmUxLTQ1MTQtOWEzNC0xNzkzMTA1NTc4NzAiLCJjYWkiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJ0aWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJhaWQiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJhYW8iOi0xLCJhcHIiOiJlYXN0dXMyIiwicmlkIjoiL3N1YnNjcmlwdGlvbnMvNzIzOTdlN2EtNzA4NC00ODJhLTg3MzktNjM5Y2RmNTMxNTI0L3Jlc291cmNlR3JvdXBzL3NhbXBsZV9yZXNvdXJjZV9ncm91cC9wcm92aWRlcnMvTWljcm9zb2Z0Lk1peGVkUmVhbGl0eS9TcGF0aWFsQW5jaG9yc0FjY291bnRzL2RlbW9fYWNjb3VudCIsIm5iZiI6MTU0NDU0NzkwMywiZXhwIjoxNTQ0NjM0MzAzLCJpYXQiOjE1NDQ1NDc5MDMsImlzcyI6Imh0dHBzOi8vbXJjLWF1dGgtcHJvZC50cmFmZmljbWFuYWdlci5uZXQvIiwiYXVkIjoiaHR0cHM6Ly9tcmMtYW5jaG9yLXByb2QudHJhZmZpY21hbmFnZXIubmV0LyJ9.BFdyCX9UJj0i4W3OudmNUiuaGgVrlPasNM-5VqXdNAExD8acFJnHdvSf6uLiVvPiQwY1atYyPbOnLYhEbIcxNX-YAfZ-xyxCKYb3g_dbxU2w8nX3zDz_X3XqLL8Uha-rkapKbnNgxq4GjM-EBMCill2Svluf9crDmO-SmJbxqIaWzLmlUufQMWg_r8JG7RLseK6ntUDRyDgkF4ex515l2RWqQx7cw874raKgUO4qlx0cpBAB8cRtGHC-3fA7rZPM7UQQpm-BC3suXqRgROTzrKqfn_g-qTW4jAKBIXYG7iDefV2rGMRgem06YH_bDnpkgUa1UgJRRTckkBuLkO2FvA"}
 ```
 
-Záhlaví autorizace je formátováno takto:`Bearer <accoundId>:<accountKey>`
+Záhlaví autorizace je formátováno takto:`Bearer <Azure_AD_token>`
 
 A odpověď obsahuje token MR v prostém textu.
 

@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: bd5686b30b07c0f7fb8961f8d1f71035cb2688a4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780330"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656425"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -47,7 +47,7 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Podporované nasazení** | Nasaďte jako virtuální počítač VMware pomocí šablony vajíček.<br/><br/> Nasaďte jako virtuální počítač VMware nebo fyzický počítač pomocí instalačního skriptu PowerShellu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
-**Šablona vajíček** | Stáhněte si z portálu nebo https://aka.ms/migrate/appliance/vmwarez.<br/><br/> Velikost ke stažení je 11,2 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
+**Šablona vajíček** | Stáhněte si z portálu nebo z https://aka.ms/migrate/appliance/vmware .<br/><br/> Velikost ke stažení je 11,2 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 **Skript prostředí PowerShell** | [Stažení](https://go.microsoft.com/fwlink/?linkid=2105112)skriptu.<br/><br/> 
 **Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 32-GB RAM, 8 vCPU, kolem 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud spustíte zařízení na virtuálním počítači VMware, budete potřebovat dostatek prostředků na vCenter Server k přidělení virtuálního počítače, který splňuje požadavky.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware. 
 **Požadavky VMware** | Pokud zařízení nasadíte jako virtuální počítač VMware, musí být nasazen na hostiteli ESXi se spuštěnou verzí 5,5 nebo novější.<br/><br/> vCenter Server se spouští 5,5, 6,0, 6,5 nebo 6,7.
@@ -67,7 +67,7 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Podporované nasazení** | Nasaďte jako virtuální počítač Hyper-V pomocí šablony VHD.<br/><br/> Nasaďte jako virtuální počítač Hyper-V nebo fyzický počítač pomocí instalačního skriptu PowerShellu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může zjistit až 5000 virtuálních počítačů Hyper-V.<br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
-**Šablona VHD** | Složka zip, včetně VHD. Stáhněte si z portálu nebo https://aka.ms/migrate/appliance/hypervz.<br/><br/> Velikost ke stažení je 10 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
+**Šablona VHD** | Složka zip, včetně VHD. Stáhněte si z portálu nebo z https://aka.ms/migrate/appliance/hyperv .<br/><br/> Velikost ke stažení je 10 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 **Skript prostředí PowerShell** | [Stažení](https://go.microsoft.com/fwlink/?linkid=2105112)skriptu.<br/><br/> 
 **Software a hardware***   |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 32-GB RAM, 8 vCPU, kolem 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte jako virtuální počítač Hyper-V, budete potřebovat dostatek prostředků na hostiteli Hyper-V, abyste mohli přidělit 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač pro virtuální počítač zařízení.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware. 
 **Požadavky technologie Hyper-V** | Pokud nasadíte zařízení se šablonou VHD, virtuální počítač zařízení, který poskytuje Azure Migrate, je Hyper-V VM verze 5,0.<br/><br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější. 
@@ -98,7 +98,7 @@ Zařízení Azure Migrate potřebuje připojení k Internetu.
 
 ### <a name="public-cloud-urls"></a>Adresy URL veřejného cloudu
 
-**Adresa URL** | **Zobrazí**  
+**URL** | **Podrobnosti**  
 --- | --- |
 *.portal.azure.com  | Přejděte na Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Přihlaste se ke svému předplatnému Azure.
@@ -115,7 +115,7 @@ download.microsoft.com/download | Povolí stahování ze služby Stažení softw
 
 ### <a name="government-cloud-urls"></a>Adresy URL cloudu pro státní správu
 
-**Adresa URL** | **Zobrazí**  
+**URL** | **Podrobnosti**  
 --- | --- |
 *. portal.azure.us  | Přejděte na Azure Portal.
 graph.windows.net | Přihlaste se ke svému předplatnému Azure.
@@ -222,7 +222,7 @@ Vzdálený port | netstat
 Vzdálená IP adresa | netstat
 Stav připojení TCP | netstat
 ID procesu | netstat
-Ne. aktivních připojení | netstat
+Počet aktivních připojení | netstat
 
 #### <a name="process-data"></a>Zpracování dat
 Tady jsou data procesu, která zařízení shromažďuje z každého virtuálního počítače, který je povolený pro analýzu závislostí bez agentů. Tato data se odesílají do Azure.
@@ -230,7 +230,7 @@ Tady jsou data procesu, která zařízení shromažďuje z každého virtuální
 **Data** | **Třída WMI** | **Vlastnost třídy WMI**
 --- | --- | ---
 Název procesu | Win32_Process | ExecutablePath
-Argumenty procesu | Win32_Process | Řádek
+Argumenty procesu | Win32_Process | CommandLine
 Název aplikace | Win32_Process | VersionInfo. ProductName – parametr vlastnosti ExecutablePath
 
 #### <a name="linux-vm-data"></a>Data virtuálních počítačů Linux
@@ -244,7 +244,7 @@ Místní IP adresa | netstat
 Vzdálený port | netstat 
 Vzdálená IP adresa | netstat 
 Stav připojení TCP | netstat 
-Ne. aktivních připojení | netstat
+Počet aktivních připojení | netstat
 ID procesu  | netstat 
 Název procesu | PS
 Argumenty procesu | PS
@@ -338,18 +338,18 @@ Tady je úplný seznam metadat serveru Linux, které zařízení shromažďuje a
 **ÚDAJŮ** | **LINUX** 
 --- | --- 
 FQDN | Cat/proc/sys/kernel/hostname, hostname-f
-Počet jader procesoru |  /Proc/cpuinfo \| awk mají '/^ procesor/{Print $3} ' \| WC-l
+Počet jader procesoru |  /Proc/cpuinfo \| awk mají '/^ procesor/{print $3} ' \| WC-l
 Přidělená paměť | Cat/proc/meminfo \| grep MemTotal \| awk mají {printf "%. hodnotami 0f", $2/1024}
-Sériové číslo systému BIOS | lshw \| grep "série:" \| Head-N1 \| awk mají "{Print $2} <br/> /usr/sbin/dmidecode-t 1 \| grep ' sériový ' \| awk mají ' {$1 = ""; $2 = ""; Print} "
+Sériové číslo systému BIOS | lshw \| grep "série:" \| head-N1 \| awk mají "{Print $2} <br/> /usr/sbin/dmidecode-t 1 \| grep ' sériový ' \| awk mají ' {$1 = ""; $2 = ""; Print} "
 GUID SYSTÉMU BIOS | product_uuid Cat/sys/Class/DMI/ID/
 Typ spouštění | [-d/sys/firmware/EFI]  && echo EFI \| \| echo BIOS
 Název/verze operačního systému | K těmto souborům přistupujeme pro verzi a název operačního systému:<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
 Architektura operačního systému | Uname-m
-Počet disků | fdisk-l \| egrep ' disk. * bytes \| ' awk mají ' {Print $2} \| ' vyjmout-F1-d ': '
+Počet disků | fdisk-l \| egrep ' disk. * bytes ' \| awk mají ' {Print $2} ' \| Vyjmout-F1-d ': '
 Spouštěcí disk | DF/Boot \| SED-n 2p \| awk mají {Print $1}
-Velikost disku | fdisk-l \| egrep ' disk. * bytes \| ' egrep $disk \| : awk mají ' {Print $5} '
-Seznam síťových karet | IP-o-4 addr show \| awk mají {Print $2}
-IP adresa NIC | IP adresa show $nic \| grep inet \| awk mají ' {Print $2} ' \| vyjmout-F1-d "/" 
+Velikost disku | fdisk-l \| egrep ' disk. * bytes ' \| egrep $disk: \| awk mají ' {Print $5} '
+Seznam síťových karet | IP-o-4 addr show \| awk mají {print $2}
+IP adresa NIC | IP adresa show $nic \| grep inet \| awk mají ' {Print $2} ' \| Vyjmout-F1-d "/" 
 Adresa MAC síťové karty | IP adresa show $nic \| grep ether \| awk mají {Print $2}
 
 ### <a name="windows-performance-data"></a>Údaje o výkonu systému Windows
@@ -377,7 +377,7 @@ Využití paměti | bezplatný \| grep mem \| awk mají ' {Print $3/$ 2 * 100,0}
 Počet síťových adaptérů | lshw – třída \| grep ETH [0-60] \| WC-l
 Přijatá data na síťový adaptér | Cat/sys/Class/NET/ETH $ nic/Statistika/rx_bytes
 Data přenášená na síťový adaptér | Cat/sys/Class/NET/ETH $ nic/Statistika/tx_bytes
-Počet disků | fdisk-l \| egrep ' disk. * bytes \| ' awk mají ' {Print $2} \| ' vyjmout-F1-d ': '
+Počet disků | fdisk-l \| egrep ' disk. * bytes ' \| awk mají ' {Print $2} ' \| Vyjmout-F1-d ': '
 Podrobnosti o disku | /Proc/diskstats Cat
 
 
@@ -410,7 +410,7 @@ Postup odstranění klíče registru:
 Zapnutí z Configuration Manager zařízení po dokončení zjišťování:
 
 1. Na počítači zařízení otevřete Configuration Manager zařízení.
-2. V části **zařízení služby** > **Azure Migrate automatické aktualizace komponent jsou**vypnuté. Kliknutím zapnete automatickou aktualizaci.
+2. V části **zařízení služby**  >  **Azure Migrate automatické aktualizace komponent jsou**vypnuté. Kliknutím zapnete automatickou aktualizaci.
 
     ![Zapnout automatické aktualizace](./media/migrate-appliance/turn-on.png)
 
@@ -419,7 +419,7 @@ Zapnutí z Configuration Manager zařízení po dokončení zjišťování:
 Verzi služby zařízení můžete ověřit pomocí některé z těchto metod:
 
 - V Configuration Manager zařízení po dokončení zjišťování.
-- Na počítači zařízení v **Ovládacích panelech** > **programy a funkce**.
+- Na počítači zařízení v **Ovládacích panelech**  >  **programy a funkce**.
 
 Postup vrácení Configuration Manager zařízení:
 
@@ -430,7 +430,7 @@ Postup vrácení Configuration Manager zařízení:
 
 Chcete-li se vrátit do ovládacích panelů, postupujte takto:
 
-1. Na zařízení klikněte na **Start** > **Control Panel** > **programy a funkce** .
+1. Na zařízení klikněte na **Start**  >  **Control Panel**  >  **programy a funkce** .
 2. Podívejte se na verze služeb zařízení v seznamu.
 
     ![Kontrola verze v Ovládacích panelech](./media/migrate-appliance/programs-features.png)
@@ -441,18 +441,18 @@ Pokud používáte starší verzi nějaké součásti, musíte službu odinstalo
 
 1. Pokud chcete vyhledat nejnovější verze služby zařízení, [Stáhněte](https://aka.ms/latestapplianceservices) si soubor LatestComponents. JSON.
 2.  Po stažení otevřete soubor LatestComponents. JSON v programu Poznámkový blok.
-3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Příklad:
+3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Například:
 
-    "Name": "ASRMigrationWebApp"; "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
+    "Name": "ASRMigrationWebApp"; "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
 4.  Stáhněte si nejnovější verzi zastaralé služby pomocí odkazu ke stažení v souboru.
 5. Po stažení spusťte následující příkaz v okně příkazového řádku správce, abyste ověřili integritu staženého souboru MSI.
 
-    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Příklad: C:\>certutil-HASHFILE C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.msi MD5
+    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Příklad: C: \> certutil-HashFile C:\USERS\PUBLIC\DOWNLOADS\MICROSOFTAZUREAPPLIANCECONFIGURATIONMANAGER.msi MD5
 
 5. Ověřte, že výstup příkazu odpovídá položce hodnoty hash pro službu v souboru (například hodnota hash MD5 výše).
 6. Nyní spusťte instalační službu MSI a nainstalujte ji. Je to tichá instalace a po dokončení se okno instalace zavře.
-7. Po dokončení instalace ověřte verzi služby v části**programy a funkce**v **Ovládacích panelech** > . Verze služby by teď měla být upgradována na nejnovější verzi uvedenou v souboru JSON.
+7. Po dokončení instalace ověřte verzi služby v části **Control panel**  >  **programy a funkce**v Ovládacích panelech. Verze služby by teď měla být upgradována na nejnovější verzi uvedenou v souboru JSON.
 
 
 

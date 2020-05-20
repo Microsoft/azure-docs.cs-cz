@@ -1,6 +1,6 @@
 ---
-title: Průvodce publikováním aplikací Azure Marketplace SaaS
-description: Podrobný průvodce a publikování kontrolních seznamů pro publikování SaaSch aplikací pro Azure Marketplace
+title: Průvodce publikováním aplikací v SaaS – komerční tržiště Microsoftu
+description: Požadavky a prostředky pro publikování SaaS aplikací pro publikování nabízí Microsoft AppSource a Azure Marketplace.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: dsindona
 ms.service: marketplace
@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117229"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657829"
 ---
-# <a name="saas-applications-offer-publishing-guide"></a>Průvodce publikováním nabídky aplikací SaaS
+# <a name="saas-applications-offer-publishing-guide"></a>Průvodce publikováním nabídek aplikací SaaS
 
-Aplikace SaaS můžou být na webu Marketplace publikované se třemi různými voláními akce: "kontaktujte mě", vyzkoušet si ho hned a získat hned. Tato příručka vysvětluje tyto tři možnosti, včetně požadavků pro každý z nich. 
+SaaS aplikace můžete publikovat na komerčním webu Marketplace se třemi různými voláními na akci: "kontaktujte mě," "vyzkoušet si je nyní" a "získat". Tento článek vysvětluje tyto tři možnosti, včetně požadavků na jednotlivé služby. 
 
 ## <a name="offer-overview"></a>Přehled nabídky  
 
@@ -29,7 +29,7 @@ SaaS aplikace jsou k dispozici v Microsoft AppSource a Azure Marketplace.  Prode
 | Nabídka aplikací pro SaaS | Podnikové požadavky | Technické požadavky |  
 | --- | --- | --- |  
 | **Kontaktujte nás** | Ano | Ne |  
-| **PowerBI/Dynamics** | Ano | Ano (Integrace Azure AD) |  
+| **Power BI/Dynamics** | Ano | Ano (Integrace Azure AD) |  
 | **Aplikace SaaS**| Ano | Ano (Integrace Azure AD) |     
 
 ## <a name="saas-list"></a>Seznam SaaS

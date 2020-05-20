@@ -1,18 +1,18 @@
 ---
-title: Určení možnosti publikování na prodejní místa Microsoftu pro komerční tržiště
-description: Tento článek popisuje kritéria způsobilosti a požadavky na publikování pro partnery, kteří se snaží pochopit, jak publikovat aplikace Microsoft AppSource a Azure Marketplace.
+title: Určení možnosti publikování – komerční tržiště Microsoftu
+description: Tento článek popisuje kritéria způsobilosti a požadavky pro publikování nabídek Microsoft AppSource a Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: e91ca0334276dbe9118eb0e40d042f598e8b3c0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415743"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658060"
 ---
 # <a name="determine-your-publishing-option"></a>Určení možnosti publikování
 

@@ -8,18 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 258bddec85e4ab182ff0b07c49cdc93f92264f95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: legacy
+ms.openlocfilehash: 1b72be91ee11ef7003e225fe830a59ea42310ac6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084460"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656679"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image generalizovaného virtuálního počítače v Azure
 
 Prostředek spravované image lze vytvořit ze zobecněného virtuálního počítače, který je uložen v účtu úložiště buď jako spravovaný disk, nebo jako nespravovaný disk. Z image je potom možné vytvořit více virtuálních počítačů. Informace o tom, jak se účtují spravované image, najdete v článku [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
- 
+Jedna spravovaná bitová kopie podporuje až 20 současných nasazení. Při pokusu o vytvoření více než 20 virtuálních počítačů současně ze stejné spravované image může docházet k vypršení časového limitu zřizování z důvodu omezení výkonu úložiště u jednoho virtuálního pevného disku. Pokud chcete vytvořit více než 20 virtuálních počítačů současně, použijte image [Galerie sdílených imagí](shared-image-galleries.md) nakonfigurovanou s 1 replikou pro každé 20 souběžných nasazení virtuálních počítačů.
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Generalizace virtuálního počítače s Windows pomocí nástroje Sysprep
 
@@ -38,7 +39,7 @@ K generalizaci virtuálního počítače s Windows použijte následující post
 
 1. Přihlaste se k VIRTUÁLNÍmu počítači s Windows.
    
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na%WINDIR%\system32\sysprep a potom spusťte příkaz `sysprep.exe`.
+2. Otevřete okno příkazového řádku jako správce. Změňte adresář na%WINDIR%\system32\sysprep a potom spusťte příkaz `sysprep.exe` .
    
 3. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost **Zadejte systém do prostředí při spuštění** a zaškrtněte políčko **generalizace** .
    
@@ -53,14 +54,14 @@ K generalizaci virtuálního počítače s Windows použijte následující post
 > [!TIP]
 > **Volitelné** Pomocí [nástroje DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) optimalizujte svou image a snižte čas prvního spuštění virtuálního počítače.
 >
-> Pokud chcete image optimalizovat, připojte virtuální pevný disk tak, že na něj dvakrát kliknete v Průzkumníkovi Windows, a pak spusťte `/optimize-image` DISM s parametrem.
+> Pokud chcete image optimalizovat, připojte virtuální pevný disk tak, že na něj dvakrát kliknete v Průzkumníkovi Windows, a pak spusťte DISM s `/optimize-image` parametrem.
 >
 > ```cmd
 > DISM /image:D:\ /optimize-image /boot
 > ```
 > Kde D: je cesta připojeného virtuálního pevného disku.
 >
-> `DISM /optimize-image` Mělo by se jednat o poslední změnu, kterou provedete na virtuální pevný disk. Pokud provedete jakékoli změny VHD před nasazením, budete muset znovu spustit `DISM /optimize-image` .
+> `DISM /optimize-image`Mělo by se jednat o poslední změnu, kterou provedete na virtuální pevný disk. Pokud provedete jakékoli změny VHD před nasazením, budete muset `DISM /optimize-image` znovu spustit.
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Vytvoření spravované image na portálu 
 
@@ -96,7 +97,7 @@ Než začnete, ujistěte se, že máte nejnovější verzi modulu Azure PowerShe
 
 
 > [!NOTE]
-> Pokud chcete uložit image do redundantního úložiště zóny, je potřeba ji vytvořit v oblasti, která podporuje [zóny dostupnosti](../../availability-zones/az-overview.md) , a zahrnout `-ZoneResilient` parametr do konfigurace Image (`New-AzImageConfig` příkaz).
+> Pokud chcete uložit image do redundantního úložiště zóny, je potřeba ji vytvořit v oblasti, která podporuje [zóny dostupnosti](../../availability-zones/az-overview.md) , a zahrnout `-ZoneResilient` parametr do konfigurace Image ( `New-AzImageConfig` příkaz).
 
 K vytvoření image virtuálního počítače použijte tento postup:
 
@@ -212,7 +213,7 @@ Spravovanou bitovou kopii můžete vytvořit ze snímku generalizované virtuál
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Vytvoření image z virtuálního počítače, který používá účet úložiště
 
-Pokud chcete vytvořit spravovanou image z virtuálního počítače, který nepoužívá spravované disky, budete potřebovat identifikátor URI virtuálního pevného disku s operačním systémem v účtu úložiště, a to v následujícím formátu: https://*mystorageaccount*. blob.Core.Windows.NET/*vhdcontainer*/*vhdfilename. VHD*. V tomto příkladu je virtuální pevný disk v *mystorageaccount*, v kontejneru s názvem *vhdcontainer*a název souboru VHD je *vhdfilename. VHD*.
+Pokud chcete vytvořit spravovanou image z virtuálního počítače, který nepoužívá spravované disky, budete potřebovat identifikátor URI virtuálního pevného disku s operačním systémem v účtu úložiště, a to v následujícím formátu: https://*mystorageaccount*. blob.Core.Windows.NET/*vhdcontainer* / *vhdfilename. VHD*. V tomto příkladu je virtuální pevný disk v *mystorageaccount*, v kontejneru s názvem *vhdcontainer*a název souboru VHD je *vhdfilename. VHD*.
 
 
 1.  Vytvořte některé proměnné.

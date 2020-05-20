@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267011"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656486"
 ---
 # <a name="azure-serial-console"></a>Sériová konzola Azure
 
@@ -66,6 +66,10 @@ Sériová konzola je k dispozici pro virtuální počítače, které jsou dostup
   1. V části **Podpora a řešení potíží** vyberte **sériová konzola**. Otevře se nové podokno se sériovou konzolou a spustí se připojení.
 
      ![Sériová Konzola pro sadu škálování virtuálního počítače se systémem Linux](./media/virtual-machines-serial-console/vmss-start-console.gif)
+
+
+### <a name="tls-12-in-serial-console"></a>TLS 1,2 ve sériové konzole
+Sériová konzola používá protokol TLS 1,2 end-to-end k zabezpečení veškeré komunikace v rámci služby. Sériová konzola má závislost na účtu úložiště diagnostiky spouštění uživatelů a TLS 1,2 musí být nakonfigurovaná samostatně pro účet úložiště. Pokyny, jak to udělat, najdete [tady](https://docs.microsoft.com/azure/storage/common/storage-security-tls).
 
 ## <a name="advanced-uses-for-serial-console"></a>Pokročilé použití pro sériovou konzolu
 Kromě přístupu ke konzole ke svému VIRTUÁLNÍmu počítači můžete také použít konzolu sériového prostředí Azure pro následující:

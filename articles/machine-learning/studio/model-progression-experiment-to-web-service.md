@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: e6a8fe7771776a92b3c28a188bc352e3bb105313
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1618e64eba32e857ccd0ba4b5a7a656f1d954bf8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217923"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659910"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Způsob, jakým model Machine Learning Studio (klasický) postupuje z experimentu na webovou službu
 
@@ -34,7 +34,7 @@ Jakmile budete s experimentem spokojeni, můžete ho nasadit jako ***klasickou A
 V tomto článku poskytujeme přehled o tom, jak model Machine Learning postupuje z experimentu vývoje do provozní webové služby.
 
 > [!NOTE]
-> Existují i jiné způsoby, jak vyvíjet a nasazovat modely strojového učení, ale tento článek se zaměřuje na použití Machine Learning Studio (Classic). Pokud například chcete přečíst popis postupu vytvoření klasické prediktivní webové služby pomocí jazyka R, přečtěte si Blogový příspěvek [Build & nasazení prediktivních Web Apps pomocí RStudio a Azure Machine Learning Studio](https://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
+> Existují i jiné způsoby, jak vyvíjet a nasazovat modely strojového učení, ale tento článek se zaměřuje na použití Machine Learning Studio (Classic). Pokud například chcete přečíst popis postupu vytvoření klasické prediktivní webové služby pomocí jazyka R, přečtěte si Blogový příspěvek [Build & nasazení prediktivních Web Apps pomocí RStudio a Azure Machine Learning Studio](https://docs.microsoft.com/archive/blogs/machinelearning/build-deploy-predictive-web-apps-using-rstudio-and-azure-ml).
 >
 >
 

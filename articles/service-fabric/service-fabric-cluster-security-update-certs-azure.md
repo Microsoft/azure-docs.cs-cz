@@ -3,12 +3,12 @@ title: Správa certifikátů v clusteru Azure Service Fabric
 description: Popisuje, jak přidat nové certifikáty, certifikát výměny a odebrat certifikát do nebo z Service Fabricho clusteru.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: a3c92e1b39261af32085e4d9b6cb2462d5c0eb64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458349"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658381"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidání nebo odebrání certifikátů clusteru Service Fabric v Azure
 Doporučujeme, abyste se seznámili s tím, jak Service Fabric využívá certifikáty X. 509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Než budete pokračovat, musíte pochopit, co je certifikát clusteru a k čemu se používá.
@@ -35,9 +35,7 @@ Chcete-li odebrat nepoužívaný certifikát zabezpečení clusteru, přejděte 
 
 Pokud je vaším záměrem odebrat certifikát, který je označen jako primární, bude nutné nasadit sekundární certifikát s datem vypršení platnosti do budoucna, než je primární certifikát, a povolit tak chování funkce Automatické přecházení. Po dokončení automatické výměny odstraňte primární certifikát.
 
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Přidání sekundárního certifikátu pomocí Správce prostředků PowerShellu
-> [!TIP]
-> K dispozici je teď lepší a jednodušší způsob, jak přidat sekundární certifikát pomocí rutiny [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) . Nemusíte postupovat podle zbývajících kroků v této části.  K vytvoření a nasazení clusteru při použití rutiny [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) nepotřebujete taky šablonu, která se původně použila.
+## <a name="add-a-secondary-certificate-using-azure-resource-manager"></a>Přidání sekundárního certifikátu pomocí Azure Resource Manager
 
 Tento postup předpokládá, že jste obeznámeni s tím, jak Správce prostředků funguje a že jste nasadili aspoň jeden Service Fabric cluster pomocí šablony Správce prostředků a máte šablonu, kterou jste použili k nastavení praktického clusteru. Také se předpokládá, že máte v kódu JSON pohodlí.
 

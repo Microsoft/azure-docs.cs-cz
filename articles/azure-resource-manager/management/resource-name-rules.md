@@ -3,12 +3,12 @@ title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ab012c5363de643c4cb5de8777de56fad5a9711
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086381"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653703"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -346,7 +346,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | databaseAccounts | global | 3-31 | Malá písmena, číslice a spojovníky.<br><br>Začněte s malým písmenem nebo číslicí. |
+> | databaseAccounts | global | 3-44 | Malá písmena, číslice a spojovníky.<br><br>Začněte s malým písmenem nebo číslicí. |
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
@@ -630,7 +630,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | --- | --- | --- | --- |
 > | managedInstances | global | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
 > | servery | global | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
-> | servery/správci | server |  | Musí být `ActiveDirectory`. |
+> | servery/správci | server |  | Musí být `ActiveDirectory` . |
 > | servery/databáze | server | 1-128 | Nejde použít:<br>`<>*%&:\/?`<br><br>Nemůže končit tečkou nebo mezerou. |
 > | servery/databáze/syncGroups | database | 1-150 | Alfanumerické znaky, spojovníky a podtržítka. |
 > | servery/elasticPools | server | 1-128 | Nejde použít:<br>`<>*%&:\/?`<br><br>Nemůže končit tečkou nebo mezerou. |
@@ -643,11 +643,11 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | storageAccounts | global | 3–24 | Malá písmena a číslice. |
-> | storageAccounts/blobServices | účet úložiště |  | Musí být `default`. |
+> | storageAccounts/blobServices | účet úložiště |  | Musí být `default` . |
 > | storageAccounts/blobServices/kontejnery | účet úložiště | 3–63 | Malá písmena, číslice a spojovníky.<br><br>Začněte s malým písmenem nebo číslicí. Nelze použít po sobě jdoucí spojovníky. |
-> | storageAccounts/služby | účet úložiště |  | Musí být `default`. |
+> | storageAccounts/služby | účet úložiště |  | Musí být `default` . |
 > | storageAccounts/služby/služby/sdílené složky | účet úložiště | 3–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. Nelze použít po sobě jdoucí spojovníky. |
-> | storageAccounts/managementPolicies | účet úložiště |  | Musí být `default`. |
+> | storageAccounts/managementPolicies | účet úložiště |  | Musí být `default` . |
 > | blob | kontejner | 1–1024 | Všechny znaky adresy URL, rozlišovat velikost písmen |
 > | fronta | účet úložiště | 3–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. Nelze použít po sobě jdoucí spojovníky. |
 > | tabulka | účet úložiště | 3–63 | Alfanumerické znaky.<br><br>Začíná písmenem. |

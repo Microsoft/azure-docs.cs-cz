@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: fc9f44739cd57eb46179ff17eba1d4f73d968799
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3b9466bf52b3650216408a8f0906f3208dfae42d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585619"
+ms.locfileid: "83653899"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Vytvoření nové aplikace LUIS na portálu LUIS
 Existuje několik způsobů, jak vytvořit aplikaci LUIS. Aplikaci LUIS můžete vytvořit na portálu LUIS nebo prostřednictvím [rozhraní API](developer-reference-resource.md)pro vytváření Luis.
@@ -45,10 +45,10 @@ Novou aplikaci s rozhraními API pro vytváření obsahu můžete vytvořit něk
 
 ## <a name="create-new-app-in-luis"></a>Vytvoření nové aplikace v LUIS
 
-1. Na stránce **Moje aplikace** vyberte své předplatné a vytvořte prostředek a potom **+ vytvořit**. Pokud používáte bezplatný zkušební klíč, přečtěte si, jak [vytvořit prostředek pro vytváření obsahu](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
+1. Na stránce **Moje aplikace** vyberte své **předplatné**a vytvořte **prostředek** a potom **+ vytvořit**. Pokud používáte bezplatný zkušební klíč, přečtěte si, jak [vytvořit prostředek pro vytváření obsahu](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
 
-    ![Seznam aplikací LUIS](./media/create-app-in-portal.png)
-
+> [!div class="mx-imgBorder"]
+> ![Seznam aplikací LUIS](./media/create-app-in-portal.png)
 
 1. V dialogovém okně zadejte název vaší aplikace, například `Pizza Tutorial` .
 
@@ -64,7 +64,7 @@ Novou aplikaci s rozhraními API pro vytváření obsahu můžete vytvořit něk
     > [!div class="mx-imgBorder"]
     > ![Seznam záměrů s žádnými záměry vytvořenými bez příkladu projevy.](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-## <a name="other-actions-available"></a>Další dostupné akce
+## <a name="other-actions-available-on-my-apps-page"></a>Další akce, které jsou k dispozici na stránce Moje aplikace
 
 Panel nástrojů kontextu poskytuje další akce:
 

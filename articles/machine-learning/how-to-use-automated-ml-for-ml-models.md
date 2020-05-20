@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 841d518c02dbc76a172890f6019d78d048f4e8bb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257227"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653847"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -29,13 +29,13 @@ V případě prostředí Pythonu založeného na kódu můžete pomocí sady Azu
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Azure Machine Learning pracovní prostor s typem edice **Enterprise**. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  Pokud chcete upgradovat stávající pracovní prostor na edici Enterprise, přečtěte si téma [upgrade na Enterprise Edition](how-to-manage-workspace.md#upgrade).
 
 ## <a name="get-started"></a>Začínáme
 
-1. Přihlaste se k https://ml.azure.comAzure Machine Learning na. 
+1. Přihlaste se k Azure Machine Learning na https://ml.azure.com . 
 
 1. Vyberte své předplatné a pracovní prostor. 
 
@@ -70,7 +70,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
         ----|----
         Formát souboru| Definuje rozložení a typ dat uložených v souboru.
         Oddělovač| Jeden nebo více znaků pro určení hranice mezi oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech.
-        Kódování| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
+        Encoding| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.
     
@@ -140,7 +140,7 @@ V rámci datové sady můžete získat velké množství různých souhrnných s
 
 Údaj|Popis
 ------|------
-Funkce| Název sloupce, který je sumarizován.
+Příznak| Název sloupce, který je sumarizován.
 Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
 Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
 Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
@@ -159,14 +159,14 @@ Případné| Měření, jak se liší data tohoto sloupce od normálního rozdě
 
 ## <a name="advanced-featurization-options"></a>Rozšířené možnosti featurization
 
-Automatizované Machine Learning nabízí automatické zpracování a guardrails dat, které vám pomůžou identifikovat a spravovat potenciální problémy s daty. 
+Automatizované Machine Learning nabízí automatické zpracování a guardrails dat, které vám pomůžou identifikovat a spravovat potenciální problémy s daty, jako je třeba [přebudování a nevyvážená data](concept-manage-ml-pitfalls.md#prevent-over-fitting). 
 
 ### <a name="preprocessing"></a>Předzpracování
 
 > [!NOTE]
 > Pokud plánujete exportovat vytvořené modely automatického ML do [modelu ONNX](concept-onnx.md), ve formátu ONNX se podporují jenom možnosti featurization označené *. Přečtěte si další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx). 
 
-|&nbsp;Kroky předběžného zpracování| Popis |
+|Kroky předběžného zpracování &nbsp;| Popis |
 | ------------- | ------------- |
 |Přetáhnout vysokou mohutnost nebo žádné funkce odchylky * |Odřaďte je ze školicích a ověřovacích sad, včetně funkcí se všemi chybějícími hodnotami, stejné hodnoty ve všech řádcích nebo s extrémně vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
 |Imputace – chybějící hodnoty * |Pro numerické funkce, imputac s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastěji hodnotou.|
@@ -188,7 +188,7 @@ Uživatelé můžou zkontrolovat data guardrails v studiu v rámci karty **data 
 
 Data guardrails se zobrazí v jednom ze tří stavů: **dokončeno**, **dokončeno**nebo **výstrahy**.
 
-Stav| Popis
+State| Popis
 ----|----
 Předaný| Nebyly zjištěny žádné problémy s daty a není třeba žádné akce uživatele. 
 Hotovo| Změny byly aplikovány na vaše data. Pro uživatele doporučujeme, aby zkontrolovali, že se u očekávaných výsledků prováděla automatizovaná opatření, aby se zajistilo, že změny budou zarovnané. 
@@ -199,7 +199,7 @@ Upozorněni| Byl zjištěn problém s daty, který nebyl odstraněn. Doporučuje
 
 Následující tabulka popisuje aktuálně podporované guardrails dat a související stavy, se kterými se uživatelé můžou setkat při odesílání jejich experimentu.
 
-Guardrail|Status|Podmínka&nbsp;pro&nbsp;aktivační událost
+Guardrail|Status|Podmínka &nbsp; pro &nbsp; aktivační událost
 ---|---|---
 Chybějící hodnoty funkcí imputace |**Předaný** <br><br><br> **hotovo**| Ve školicích datech se nezjistily žádné chybějící hodnoty funkcí. Přečtěte si další informace o [imputaci chybějících hodnot.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Ve vašich školicích datech se zjistily chybějící hodnoty funkcí a imputované.
 Zpracování funkcí vysoké mohutnosti |**Předaný** <br><br><br> **hotovo**| Vaše vstupy byly analyzovány a nebyly zjištěny žádné funkce vysoké mohutnosti. Přečtěte si další informace o [detekci funkcí vysoké mohutnosti.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Ve vašich vstupech se zjistily funkce vysoké mohutnosti a zpracovaly se.

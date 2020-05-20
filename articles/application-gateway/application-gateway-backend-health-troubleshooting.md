@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: a16120194b1b8015466005f42336828c2b4ace6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c51d79d55f77468030100fa10973e2a31148ceae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80983836"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648438"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu v Application Gateway
 ==================================================
@@ -81,13 +81,13 @@ Až obdržíte stav back-end serveru pro všechny servery ve fondu back-end, po�
 Zpráva zobrazená ve sloupci **Podrobnosti** poskytuje podrobnější přehled o problému a na základě těchto informací můžete začít s řešením tohoto problému.
 
 > [!NOTE]
-> Výchozí požadavek testu se odešle ve \<formátu protokol\>://127.0.0.1:\<port\>/. Například http://127.0.0.1:80 pro test paměti http na portu 80. Pouze stavové kódy HTTP 200 až 399 jsou považovány za v pořádku. Protokol a cílový port se dědí z nastavení protokolu HTTP. Pokud chcete, aby Application Gateway PROBE v jiném protokolu, názvu hostitele nebo cestě a rozpoznal jiný stavový kód jako v pořádku, nakonfigurujte vlastní test a přidružte ho k nastavení HTTP.
+> Výchozí požadavek testu se odešle ve formátu \< protokol \> ://127.0.0.1: \< port \> /. Například http://127.0.0.1:80 pro test paměti http na portu 80. Pouze stavové kódy HTTP 200 až 399 jsou považovány za v pořádku. Protokol a cílový port se dědí z nastavení protokolu HTTP. Pokud chcete, aby Application Gateway PROBE v jiném protokolu, názvu hostitele nebo cestě a rozpoznal jiný stavový kód jako v pořádku, nakonfigurujte vlastní test a přidružte ho k nastavení HTTP.
 
 <a name="error-messages"></a>Chybové zprávy
 ------------------------
 #### <a name="backend-server-timeout"></a>Časový limit back-endu serveru
 
-**Zpráva:** Doba, kterou back-end má reagovat na test\'stavu služby Application Gateway s, je větší než prahová hodnota časového limitu v nastavení sondy.
+**Zpráva:** Doba, kterou back-end má reagovat na test stavu služby Application Gateway \' s, je větší než prahová hodnota časového limitu v nastavení sondy.
 
 **Příčina:** Po Application Gateway odešle back-end serveru požadavek na test HTTP (S), čeká na odpověď serveru back-end po nakonfigurované období. Pokud back-end server nereaguje v rámci nakonfigurovaného období (hodnota časového limitu), označí se jako špatný, dokud znovu nezačne reagovat v nakonfigurovaném časovém limitu.
 
@@ -155,9 +155,9 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
     ```
 1.  Pokud nenajdete žádné problémy s NSG nebo UDR, Projděte si back-end Server pro problémy související s aplikacemi, které brání klientům v navázání relace TCP na portech nakonfigurovaných. Můžete kontrolovat několik věcí:
 
-    a.  Otevřete příkazový řádek (Win + R-\> cmd), zadejte `netstat`a vyberte Enter.
+    a.  Otevřete příkazový řádek (Win + R- \> cmd), zadejte `netstat` a vyberte Enter.
 
-    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Příklad:
+    b.  Ověřte, zda server naslouchá na portu, který je nakonfigurován. Například:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -168,15 +168,15 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
 #### <a name="http-status-code-mismatch"></a>Neshoda stavového kódu HTTP
 
-**Zpráva:** Stavový kód odpovědi HTTP\'back-end se neshoduje s nastavením testu paměti. Očekávalo se: {HTTPStatusCode0} přijatých: {HTTPStatusCode1}.
+**Zpráva:** Stavový kód odpovědi HTTP back-end se \' neshoduje s nastavením testu paměti. Očekávalo se: {HTTPStatusCode0} přijatých: {HTTPStatusCode1}.
 
-**Příčina:** Po navázání připojení TCP a provedení TLS handshake (Pokud je povolený protokol TLS) Application Gateway odešle test jako požadavek HTTP GET na back-end Server. Jak je popsáno výše, výchozí sonda \<bude protokol\>://127.0.0.1:\<port\>/a považuje se za stavové kódy odpovědí ve formátu Rage 200 až 399 jako v pořádku. Pokud server vrátí jakýkoliv jiný stavový kód, bude tato zpráva označena jako poškozená.
+**Příčina:** Po navázání připojení TCP a provedení TLS handshake (Pokud je povolený protokol TLS) Application Gateway odešle test jako požadavek HTTP GET na back-end Server. Jak je popsáno výše, výchozí sonda bude \< protokol \> ://127.0.0.1: \< port \> /a považuje se za stavové kódy odpovědí ve formátu Rage 200 až 399 jako v pořádku. Pokud server vrátí jakýkoliv jiný stavový kód, bude tato zpráva označena jako poškozená.
 
 **Řešení:** V závislosti na kódu odpovědi back-end serveru můžete provést následující kroky. Tady jsou uvedené některé běžné stavové kódy:
 
 | **Chyba** | **Akce** |
 | --- | --- |
-| Neshoda stavového kódu testu: přijata 401 | Ověřte, zda back-end Server vyžaduje ověření. Application Gateway PROBE nemůže v tomto okamžiku předat přihlašovací údaje pro ověření. Buď povolte \"protokol HTTP\" 401 ve stavovém kódu sondy nebo proveďte test na cestu, kde server nevyžaduje ověření. | |
+| Neshoda stavového kódu testu: přijata 401 | Ověřte, zda back-end Server vyžaduje ověření. Application Gateway PROBE nemůže v tomto okamžiku předat přihlašovací údaje pro ověření. Buď povolte \" protokol HTTP 401 \" ve stavovém kódu sondy nebo proveďte test na cestu, kde server nevyžaduje ověření. | |
 | Neshoda stavového kódu testu: přijata 403 | Přístup je zakázán. Ověřte, jestli je na serveru back-end povolený přístup k cestě. | |
 | Neshoda stavového kódu testu: přijata 404 | Stránka se nenašla. Ověřte, zda je na serveru back-end přístupná cesta k názvu hostitele. Změňte název hostitele nebo parametr cesty na hodnotu, která je k dispozici. | |
 | Neshoda stavového kódu testu: přijata 405 | Požadavky testu na Application Gateway používají metodu HTTP GET. Ověřte, zda server tuto metodu povoluje. | |
@@ -189,7 +189,7 @@ Pokud chcete vytvořit vlastní test paměti, postupujte podle [těchto kroků](
 
 #### <a name="http-response-body-mismatch"></a>Neshoda textu odpovědi HTTP
 
-**Zpráva:** Tělo odpovědi HTTP back\'-end s neodpovídá nastavení testu paměti. Přijatý text odpovědi neobsahuje {String}.
+**Zpráva:** Tělo odpovědi HTTP back-end \' s neodpovídá nastavení testu paměti. Přijatý text odpovědi neobsahuje {String}.
 
 **Příčina:** Když vytvoříte vlastní test, budete mít možnost označit back-end Server jako zdravý v závislosti na řetězci z těla odpovědi. Můžete například nakonfigurovat Application Gateway pro přijetí "neautorizovaného" jako řetězce, který se má shodovat. Pokud odpověď serveru back-end pro požadavek sondy obsahuje **neoprávněný**řetězec, bude označena jako v pořádku. V opačném případě bude tato zpráva označena jako poškozená.
 
@@ -202,6 +202,10 @@ Pokud chcete vytvořit vlastní test paměti, postupujte podle [těchto kroků](
 1.  Pokud se neshodují, změňte konfiguraci sondy tak, aby bylo možné přijmout správnou hodnotu řetězce.
 
 Přečtěte si další informace o [Application Gateway shodě](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching).
+
+>[!NOTE]
+> U všech chybových zpráv souvisejících s protokolem TLS si můžete přečíst další informace o chování SNI a rozdílech mezi SKU V1 a v2. Podívejte se na stránku [Přehled protokolu TLS](ssl-overview.md) .
+
 
 #### <a name="backend-server-certificate-invalid-ca"></a>Neplatná CA certifikátu back-end serveru
 
@@ -218,7 +222,7 @@ Aby byl certifikát TLS/SSL důvěryhodný, musí být certifikát serveru back-
 
 1.  Zadejte `certmgr.msc` a vyberte Enter. Správce certifikátů můžete také vyhledat v nabídce **Start** .
 
-1.  Vyhledejte certifikát, obvykle v `\Certificates - Current User\\Personal\\Certificates\`a otevřete ho.
+1.  Vyhledejte certifikát, obvykle v `\Certificates - Current User\\Personal\\Certificates\` a otevřete ho.
 
 1.  Vyberte kořenový certifikát a pak vyberte **Zobrazit certifikát**.
 
@@ -253,7 +257,7 @@ Další informace o extrakci a nahrání důvěryhodných kořenových certifik�
 > [!NOTE]
 > K této chybě může dojít také v případě, že back-end Server nemění úplný řetěz certifikátu, včetně kořenového > zprostředkujícího (Pokud je k dispozici) > list během metody handshake TLS. K ověření můžete použít příkazy OpenSSL z libovolného klienta a připojit se k back-end serveru pomocí nakonfigurovaných nastavení v Application Gateway PROBE.
 
-Příklad:
+Například:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -280,7 +284,7 @@ Pokud výstup nezobrazuje úplný řetěz vráceného certifikátu, exportujte c
 
 **Zpráva:** Běžný název (CN) certifikátu back-endu se neshoduje s hlavičkou hostitele sondy.
 
-**Příčina:** Application Gateway ověří, jestli název hostitele zadaný v nastavení HTTP back-endu odpovídá hodnotě CN, kterou prezentuje certifikát TLS/SSL serveru back-end. Toto je Standard_v2 a WAF_v2 chování skladové položky. Indikace názvu serveru (SNI) standard a WAF SKU se nastaví jako plně kvalifikovaný název domény v adrese back-end fondu.
+**Příčina:** Application Gateway ověří, jestli název hostitele zadaný v nastavení HTTP back-endu odpovídá hodnotě CN, kterou prezentuje certifikát TLS/SSL serveru back-end. Toto je Standard_v2 a chování WAF_v2 SKU (v2). Standard a WAF SKU (V1) Indikace názvu serveru (SNI) se nastaví jako plně kvalifikovaný název domény v adrese back-endu fondu. Další informace o chování SNI a rozdílech mezi systémem V1 a 2 SKU najdete v tématu [Přehled ukončení protokolu TLS a koncového protokolu TLS s Application Gateway](ssl-overview.md).
 
 Pokud ve skladové položce v2 existuje výchozí sonda (není nakonfigurovaný a přidružený žádný vlastní test paměti), SNI se nastaví z názvu hostitele uvedeného v nastavení HTTP. Nebo, pokud je v nastavení HTTP uveden příkaz "vybrat název hostitele z back-endové adresy", bude použito toto nastavení.
 
@@ -290,7 +294,7 @@ Pokud je v nastavení HTTP nastavená možnost **Vybrat název hostitele z back-
 
 Pokud se zobrazí tato chybová zpráva, CN certifikátu back-end se neshoduje s názvem hostitele nakonfigurovaným ve vlastním testu nebo v nastavení HTTP (Pokud je vybraná možnost **Vybrat název hostitele z back-endu http** ). Pokud používáte výchozí test, název hostitele se nastaví jako **127.0.0.1**. Pokud to není požadovaná hodnota, měli byste vytvořit vlastní test a přidružit ho k nastavení HTTP.
 
-**Řešení**
+**Řešení:**
 
 Pokud chcete tento problém vyřešit, použijte následující postup.
 
@@ -302,7 +306,7 @@ Ve Windows:
 
 1.  Zadejte **certmgr. msc** a vyberte Enter. Správce certifikátů můžete také vyhledat v nabídce **Start** .
 
-1.  Vyhledejte certifikát (obvykle v `\Certificates - Current User\\Personal\\Certificates`části) a otevřete certifikát.
+1.  Vyhledejte certifikát (obvykle v části `\Certificates - Current User\\Personal\\Certificates` ) a otevřete certifikát.
 
 1.  Na kartě **Podrobnosti** se podívejte na **Předmět**certifikátu.
 
@@ -319,7 +323,7 @@ Pro Linux pomocí OpenSSL:
 
 #### <a name="backend-certificate-is-invalid"></a>Certifikát back-endu je neplatný.
 
-**Zpráva:** Certifikát back-endu je neplatný. Aktuální datum \"není v rozsahu platné od\" do a \"platnost do\" data v rámci certifikátu.
+**Zpráva:** Certifikát back-endu je neplatný. Aktuální datum není v \" rozsahu platné od do \" a \" platnost do \" data v rámci certifikátu.
 
 **Příčina:** Každý certifikát se dodává s rozsahem platnosti a připojení HTTPS nebude zabezpečené, pokud není certifikát TLS/SSL serveru platný. Aktuální data musí být v rozmezí od do rozsahu **platný od** **do** . Pokud není, certifikát se považuje za neplatný a vytvoří problémy se zabezpečením, které Application Gateway označí back-end Server jako špatný.
 
@@ -353,7 +357,7 @@ K tomuto chování může dojít z některého z následujících důvodů:
 1.  Vlastní server DNS je nakonfigurovaný ve virtuální síti, která nemůže přeložit názvy veřejných domén.
 1.  Application Gateway je ve stavu není v pořádku.
 
-**Řešení**
+**Řešení:**
 
 1.  Ověřte, jestli váš NSG blokuje přístup k portům 65503-65534 (v1 SKU) nebo 65200-65535 (SKU v2) z **Internetu**:
 

@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/24/2020
+ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac0a795c98673eba30531f586ff634c62673cdd6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 52c53cc10fe6517be6083a14c98daa9e6ff3b56f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980945"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648088"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Připojení hybridních počítačů k Azure z Azure Portal
 
@@ -21,7 +21,7 @@ Můžete povolit Azure ARC pro servery (Preview) pro jeden nebo malý počet po�
 
 Tato metoda vyžaduje, abyste na počítači měli oprávnění správce pro instalaci a konfiguraci agenta. V systému Linux, pomocí kořenového účtu a ve Windows, jste členem místní skupiny Administrators.
 
-Než začnete, zkontrolujte [požadavky](overview.md#prerequisites) a ověřte, že vaše předplatné a prostředky splňují požadavky.
+Než začnete, zkontrolujte [požadavky](agent-overview.md#prerequisites) a ověřte, že vaše předplatné a prostředky splňují požadavky.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
@@ -57,7 +57,7 @@ Skript pro automatizaci stahování a instalace a navázání připojení pomoc�
 
 ### <a name="install-manually"></a>Ruční instalace
 
-Agenta připojeného počítače můžete nainstalovat ručně spuštěním balíčku Instalační služba systému Windows *AzureConnectedMachineAgent. msi*. 
+Agenta připojeného počítače můžete nainstalovat ručně spuštěním balíčku Instalační služba systému Windows *AzureConnectedMachineAgent. msi*. Nejnovější verzi [balíčku Windows agent Instalační služba systému Windows](https://aka.ms/AzureConnectedMachineAgent) můžete stáhnout z webu služby Stažení softwaru. 
 
 > [!NOTE]
 > * Chcete-li nainstalovat nebo odinstalovat agenta, je nutné mít oprávnění *správce* .
@@ -79,7 +79,7 @@ Chcete-li nainstalovat agenta tiše a vytvořit soubor protokolu instalace ve `C
 msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
 ```
 
-Soubory pro agenta připojeného počítače jsou ve výchozím nastavení nainstalovány v adresáři *C:\Program Files\AzureConnectedMachineAgent*. Pokud se agent po dokončení instalace nepovede spustit, podívejte se do protokolů, kde najdete podrobnější informace o chybě. Adresář protokolu je *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
+Pokud se agent po dokončení instalace nepovede spustit, podívejte se do protokolů, kde najdete podrobnější informace o chybě. Adresář protokolu je *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
 
 ### <a name="install-with-the-scripted-method"></a>Instalace pomocí skriptované metody
 
@@ -88,6 +88,8 @@ Soubory pro agenta připojeného počítače jsou ve výchozím nastavení nains
 1. Otevřete příkazový řádek PowerShellu se zvýšenými oprávněními.
 
 1. Přejděte do složky nebo sdílené složky, do které jste zkopírovali skript, a spusťte ho na serveru spuštěním `./OnboardingScript.ps1` skriptu.
+
+Pokud se agent po dokončení instalace nepovede spustit, podívejte se do protokolů, kde najdete podrobnější informace o chybě. Adresář protokolu je *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
 
 ### <a name="configure-the-agent-proxy-setting"></a>Konfigurace nastavení proxy agenta
 

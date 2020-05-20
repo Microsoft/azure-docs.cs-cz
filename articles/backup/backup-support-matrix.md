@@ -3,12 +3,12 @@ title: Matice podpory pro Azure Backup
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: faf7abf23d196b389531803c519368b5d474aeb3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801259"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659379"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -28,7 +28,7 @@ Azure Backup používá k orchestraci a správě záloh Recovery Services trezor
 
 Následující tabulka popisuje funkce trezorů Recovery Services:
 
-**Funkce** | **Zobrazí**
+**Příznak** | **Podrobnosti**
 --- | ---
 **Trezory v předplatném** | V jednom předplatném je až 500 Recovery Services trezory.
 **Počítače v trezoru** | Až 1 000 virtuálních počítačů Azure v jednom trezoru.<br/><br/> V jednom trezoru se dají zaregistrovat až 50 serverů MABS.
@@ -54,9 +54,9 @@ Co je se podporuje, pokud chcete zálohovat místní počítače:
 
 ### <a name="azure-vm-limits"></a>Omezení virtuálních počítačů Azure
 
-**Počtu** | **Zobrazí**
+**Počtu** | **Podrobnosti**
 --- | ---
-**Datové disky virtuálních počítačů Azure** | Omezení 16 <br> Pokud se chcete zaregistrovat do omezené verze Preview virtuálních počítačů s 16 disky (až 32 disků), napište nám naAskAzureBackupTeam@microsoft.com
+**Datové disky virtuálních počítačů Azure** | Podívejte se na [podporu pro zálohování virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
 **Velikost datového disku virtuálního počítače Azure** | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
 
 ### <a name="azure-vm-backup-options"></a>Možnosti zálohování virtuálních počítačů Azure
@@ -129,8 +129,8 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 
 **Počítač** | **Komprimovat do MABS/DPM (TCP)** | **Komprimovat do trezoru (HTTPS)**
 --- | --- | ---
-**Přímá záloha místních počítačů s Windows** | Není k dispozici | ![Ano][green]
-**Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Není k dispozici | Není k dispozici
+**Přímá záloha místních počítačů s Windows** | NA | ![Ano][green]
+**Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | NA | NA
 **Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Ano][green] | ![Ano][green]
 
 ## <a name="retention-limits"></a>Omezení uchování
@@ -152,9 +152,9 @@ Azure Backup přidal funkci obnovení mezi oblastmi, aby se posílila dostupnost
 | Typ správy zálohování | Podporuje se                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
-| Agent MARS/místní | No                                                           | –               |
-| SQL/SAP HANA          | No                                                           | –               |
-| BUŇK                    | No                                                           | –               |
+| Agent MARS/místní | Ne                                                           | –               |
+| SQL/SAP HANA          | Ne                                                           | –               |
+| BUŇK                    | Ne                                                           | –               |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,23 +8,23 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: b2cb7494ae3d26fa14bef906b8f5222b9dbc70e1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f282bb0a80226afeb314aac4e8669634327f81d2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584961"
+ms.locfileid: "83654063"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení záměru uživatele projevy
 
 Přidejte do aplikace LUIS [záměry](luis-concept-intent.md) k identifikaci skupin dotazů nebo příkazů, které mají stejný záměr.
 
-Záměry jsou spravovány v části **sestavení** v horním navigačním panelu a pak z **záměrů**v levém panelu.
+V portálu LUIS se záměry spravují z části **sestavení** v horním navigačním panelu a pak z **záměrů**v levém panelu.
 
-## <a name="add-intent"></a>Přidat záměr
+## <a name="add-an-intent-to-your-app"></a>Přidání záměru do aplikace
 
 1. Přihlaste se k [portálu Luis](https://www.luis.ai)a vyberte své **předplatné** a **prostředek pro vytváření obsahu** , abyste viděli aplikace přiřazené k tomuto zdrojovému prostředku.
 1. Otevřete svou aplikaci tak, že na stránce **Moje aplikace** vyberete její název.
@@ -34,7 +34,7 @@ Záměry jsou spravovány v části **sestavení** v horním navigačním panelu
     > [!div class="mx-imgBorder"]
     > ![Přidat záměr](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    Záměr vyžaduje příklad projevy.
+    Záměr vyžaduje [příklad projevy](luis-concept-utterance.md) , aby bylo možné předpovědět projevy na publikovaném koncovém bodu předpovědi.
 
 ## <a name="add-an-example-utterance"></a>Přidat příklad utterance
 
@@ -51,16 +51,16 @@ Příkladem projevy jsou textové příklady dotazů a příkazů uživatele. Po
 
 ## <a name="intent-prediction-errors"></a>Chyby předpovědi záměru
 
-Příklad utterance v záměru může mít chybu předpovědi záměru mezi záměrem, který je v současnosti v rámci, a záměrem určeným během školení.
+V případě, že utterance není předpovězena výukovou aplikací pro záměr, je určena chyba předpovědi záměru.
 
-Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnosti **filtru** nesprávné a nejasné v kombinaci s možností **zobrazení** **podrobného zobrazení**.
+1. Pokud chcete najít chyby předpovědi utterance a opravit je, použijte možnosti **filtru** nesprávného a nejasného.
 
-![Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnost filtr.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+    > [!div class="mx-imgBorder"]
+    > ![Chcete-li najít chyby předpovědi utterance a opravit je, použijte možnost filtr.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-Pokud jsou filtry a zobrazení aplikovány a existují příklady projevy s chybami, zobrazí se v seznamu ukázkový utterance projevy a problémy.
+1. Chcete-li zobrazit hodnotu skóre na stránce s podrobnostmi záměru, v nabídce možnosti **zobrazení** vyberte možnost **Zobrazit výsledky záměru podrobností** .
 
-> [!div class="mx-imgBorder"]
-> ![! [Při použití filtrů a zobrazení se zobrazí příklad projevy s chybami. v seznamu příkladů utterance se zobrazí projevy a problémy.] (./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+    Pokud jsou filtry a zobrazení aplikovány a existují příklady projevy s chybami, zobrazí se v seznamu ukázkový utterance projevy a problémy.
 
 V každém řádku se zobrazuje skóre předpovědi aktuálního školení pro příklad utterance, nejbližšího skóre rival, což je rozdíl v těchto dvou skórech.
 

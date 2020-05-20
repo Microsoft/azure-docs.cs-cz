@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: cb065f10664f46578f84e59501d75d510ccb3c6a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d1ec04a0c16feb6d404018ff9538b9572e1d71c2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201583"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649611"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -88,7 +88,7 @@ Viz [ceny Azure firewall](https://azure.microsoft.com/pricing/details/azure-fire
 
 Můžete použít metody *navrácení* a *přidělení* Azure PowerShell.
 
-Příklad:
+Například:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -129,7 +129,7 @@ Azure Firewall nesnat, pokud je cílová IP adresa rozsahem privátních IP adre
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Je podporováno vynucené tunelové propojení/řetězení k síťovému virtuálnímu zařízení?
 
-Je podporováno vynucené tunelové propojení. Další informace najdete v tématu [Azure firewall vynucené tunelování](forced-tunneling.md). 
+Při vytváření nové brány firewall se podporuje vynucené tunelování. Pro vynucené tunelování nemůžete nakonfigurovat existující bránu firewall. Další informace najdete v tématu [Azure firewall vynucené tunelování](forced-tunneling.md). 
 
 Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu.
 

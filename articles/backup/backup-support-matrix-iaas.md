@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování virtuálních počítačů Azure
 description: Poskytuje souhrn nastavení podpory a omezení při zálohování virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b7201972811c5b9cc8187b671c9e688236667860
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8ac2896b0b3b8c87ff993eddcebb063a66add1fa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199869"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659399"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -112,7 +112,7 @@ Body obnovení na disku DPM/MABS | 64 pro souborové servery a 448 pro aplikačn
 
 ## <a name="support-for-file-level-restore"></a>Podpora pro obnovení na úrovni souborů
 
-**Obnovení** | **Podporuje se**
+**Obnovení** | **Doložen**
 --- | ---
 Obnovení souborů mezi operačními systémy | Můžete obnovit soubory na jakémkoli počítači, který má stejný (nebo kompatibilní) operační systém jako zálohovaný virtuální počítač. Podívejte se na [tabulku kompatibilní operační systém](backup-azure-restore-files-from-vm.md#system-requirements).
 Obnovování souborů z šifrovaných virtuálních počítačů | Není podporováno.
@@ -125,7 +125,7 @@ Obnovení souborů se speciálním nastavením sítě | Obnovení není podporov
 
 Následující tabulka shrnuje podporu zálohování během úloh správy virtuálních počítačů, jako je například přidání nebo nahrazení disků virtuálního počítače.
 
-**Obnovení** | **Podporuje se**
+**Obnovení** | **Doložen**
 --- | ---
 Obnova v rámci předplatného/oblasti nebo zóny. | Není podporováno.
 Obnovit na existující virtuální počítač | Použijte možnost nahradit disk.
@@ -163,7 +163,7 @@ Velikost datového disku | Velikost jednotlivých disků může být až 32 TB a
 Typ úložiště | HDD úrovně Standard, SSD úrovně Standard SSD úrovně Premium.
 Spravované disky | Podporuje se.
 Šifrované disky | Podporuje se.<br/><br/> Virtuální počítače Azure s povoleným Azure Disk Encryption můžou být zálohované (s aplikací Azure AD nebo bez ní).<br/><br/> Šifrované virtuální počítače nelze obnovit na úrovni souboru nebo složky. Musíte obnovit celý virtuální počítač.<br/><br/> Můžete povolit šifrování u virtuálních počítačů, které už jsou chráněné pomocí Azure Backup.
-Disky s povoleným Akcelerátor zápisu | Není podporováno.<br/><br/> Azure Backup automaticky vyloučí disky s Akcelerátor zápisu povolenou během zálohování. Vzhledem k tomu, že nejsou zálohovány, nebudete moci obnovit tyto disky z bodů obnovení virtuálního počítače.
+Disky s povoleným Akcelerátor zápisu | Není podporováno.<br/><br/> Azure Backup automaticky vyloučí disky s povoleným Akcelerátor zápisu (WA) při zálohování. Vzhledem k tomu, že nejsou zálohovány, nebudete moci obnovit tyto disky z bodů obnovení virtuálního počítače. <br><br> **Důležité upozornění**: virtuální počítače s disky v WA potřebují pro úspěšnou zálohu připojení k Internetu (i když se tyto disky ze zálohy vylučují.)
 Zálohování & obnovení virtuálních počítačů nebo disků s odstraněnými duplicitními daty | Azure Backup nepodporuje odstranění duplicit. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) . <br/> <br/>  – Azure Backup neprovádí odstranění duplicit mezi virtuálními počítači v trezoru Recovery Services. <br/> <br/>  – Pokud během obnovování dojde k virtuálním počítačům ve stavu odstranění duplicitních dat, soubory nejde obnovit, protože trezor nerozumí formátu. Kompletní obnovení virtuálního počítače ale budete moct úspěšně provést.
 Přidat disk k chráněnému virtuálnímu počítači | Podporuje se.
 Změna velikosti disku na chráněném virtuálním počítači | Podporuje se.
@@ -231,8 +231,8 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 
 **Počítač** | **Komprimovat do MABS/DPM (TCP)** | **Komprimovat do trezoru (HTTPS)**
 --- | --- | ---
-Místní počítače s Windows bez DPM/MABS | Není k dispozici | ![Ano][green]
-Virtuální počítače Azure | Není k dispozici | Není k dispozici
+Místní počítače s Windows bez DPM/MABS | NA | ![Ano][green]
+Virtuální počítače Azure | NA | NA
 Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green]
 Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
 

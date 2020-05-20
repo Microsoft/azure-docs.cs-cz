@@ -4,12 +4,12 @@ description: Rychlý úvod do rutin prostředí Azure PowerShell, jejichž pomoc
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b768fac7fa6fe0f4821a4fbaf5fa11414b10f81d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8777edbc99550b2fb1f14df00936de57801b0aab
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995322"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657311"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Správa prostředků služby Batch pomocí rutin PowerShellu
 
@@ -39,13 +39,13 @@ Tento článek je založený na rutinách v AZ Batch Module 1.0.0. Moduly Azure 
 
 ### <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
-**New-AzBatchAccount** vytvoří účet Batch v zadané skupině prostředků. Pokud ještě nemáte skupinu prostředků, vytvořte ji spuštěním rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Do parametru **Location** zadejte některou oblast Azure, třeba „Střední USA“. Příklad:
+**New-AzBatchAccount** vytvoří účet Batch v zadané skupině prostředků. Pokud ještě nemáte skupinu prostředků, vytvořte ji spuštěním rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Do parametru **Location** zadejte některou oblast Azure, třeba „Střední USA“. Například:
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
 ```
 
-Potom ve skupině prostředků vytvořte účet Batch. Zadejte název účtu v <*account_name*> a umístění a název vaší skupiny prostředků. Vytváření účtu Batch může nějakou dobu trvat. Příklad:
+Potom ve skupině prostředků vytvořte účet Batch. Zadejte název účtu v <*account_name*> a umístění a název vaší skupiny prostředků. Vytváření účtu Batch může nějakou dobu trvat. Například:
 
 ```powershell
 New-AzBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
@@ -79,7 +79,7 @@ New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 ### <a name="delete-a-batch-account"></a>Odstranění účtu Batch
 
-**Remove-AzBatchAccount** odstraní účet Batch. Příklad:
+**Remove-AzBatchAccount** odstraní účet Batch. Například:
 
 ```powershell
 Remove-AzBatchAccount -AccountName <account_name>
@@ -164,7 +164,7 @@ Parametr **ID** podporuje pouze vyhledávání s úplným ID; Nejedná se o zás
 
 ### <a name="use-the-maxcount-parameter"></a>Použití parametru MaxCount
 
-Ve výchozím nastavení každá rutina vrací maximálně 1 000 objektů. Pokud tento limit překročíte, můžete buď upřesnit filtr, aby vracel méně objektů, nebo explicitně nastavit maximální hodnotu pomocí parametru **MaxCount**. Příklad:
+Ve výchozím nastavení každá rutina vrací maximálně 1 000 objektů. Pokud tento limit překročíte, můžete buď upřesnit filtr, aby vracel méně objektů, nebo explicitně nastavit maximální hodnotu pomocí parametru **MaxCount**. Například:
 
 ```powershell
 Get-AzBatchTask -MaxCount 2500 -BatchContext $context
@@ -247,9 +247,10 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-Teď vytvořte fond a zadejte referenční objekt balíčku jako argument možnosti `ApplicationPackageReferences`:
+Teď vytvořte konfiguraci a fond. V tomto příkladu se používá parametr **CloudServiceConfiguration** s `PSCloudServiceConfiguration` objektem typu inicializovaným v `$configuration` , který nastavuje hodnotu **OSFamily** `6` pro Windows Server 2019 a možnost **OSVersion** na `*` . Zadejte objekt odkazu balíčku jako argument `ApplicationPackageReferences` Možnosti:
 
 ```powershell
+$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(6,"*")  # 6 = OSFamily 'Windows Server 2019'
 New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 

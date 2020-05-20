@@ -12,16 +12,16 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: ed8dd902ac490b4e6a0f172029bf3ffa1d44acee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86cd3d2f7675ca5111c29be278c9433ec7f66945
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251839"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653047"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Ověření ve službě Azure synapse Analytics
 
-Naučte se ověřovat SQL Analytics v Azure synapse pomocí Azure Active Directory (AAD) nebo SQL Serverho ověřování.
+Naučte se, jak ověřit synapse SQL v Azure synapse pomocí Azure Active Directory (AAD) nebo SQL Server ověřování.
 
 Pokud se chcete připojit ke fondu SQL, musíte předat přihlašovací údaje zabezpečení pro účely ověřování. Po navázání připojení jsou určitá nastavení připojení nakonfigurovaná v rámci vytváření relace dotazů.  
 
@@ -80,7 +80,7 @@ Aktuálně Azure Active Directory uživatelé nejsou zobrazeni v Průzkumník ob
 
 ### <a name="find-the-details"></a>Najít podrobnosti
 
-* Postup pro konfiguraci a použití ověřování Azure Active Directory je skoro stejný pro Azure SQL Database a SQL Analytics v Azure synapse. Postupujte podle podrobných pokynů v tématu [připojení k SQL Database nebo fondu SQL pomocí ověřování Azure Active Directory](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+* Postup pro konfiguraci a použití ověřování Azure Active Directory je skoro stejný pro Azure SQL Database a synapse SQL v Azure synapse. Postupujte podle podrobných pokynů v tématu [připojení k SQL Database nebo fondu SQL pomocí ověřování Azure Active Directory](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 * Vytvořte vlastní databázové role a přidejte uživatele k rolím. Pak udělte rolím přesnější oprávnění. Další informace najdete v tématu [Začínáme s oprávněním databázového stroje](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="next-steps"></a>Další kroky

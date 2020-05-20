@@ -1,28 +1,25 @@
 ---
 title: Shromažďování metrik virtuálních počítačů s Windows v Azure Monitor se šablonou
-description: Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Správce prostředků pro virtuální počítač s Windows
+description: Odeslání metriky hostovaného operačního systému do úložiště databáze metriky Azure Monitor pomocí šablony Správce prostředků pro virtuální počítač s Windows
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: ancav
+ms.date: 05/04/2020
+ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: e747ca89912c36538bfb9d02986629fe57c5adcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657363"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650542"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Správce prostředků pro virtuální počítač s Windows
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro virtuální počítač s Windows
+Údaje o výkonu z hostovaného operačního systému virtuálních počítačů Azure se neshromažďují automaticky jako jiné [metriky platforem](../insights/monitor-azure-resource.md#monitoring-data). Nainstalujte rozšíření Azure Monitor [Diagnostics](diagnostics-extension-overview.md) , které shromáždí metriky operačního systému hosta do databáze metrik, takže se dá použít se všemi funkcemi Azure monitor metrik, včetně výstrah v reálném čase, vytváření grafů, směrování a přístupu z REST API. Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro virtuální počítač s Windows do databáze metrik pomocí šablony Správce prostředků. 
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> [!NOTE]
+> Podrobnosti o konfiguraci diagnostického rozšíření pro shromažďování metrik operačního systému hosta pomocí Azure Portal najdete v tématu [instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](diagnostics-extension-windows-install.md).
 
-Pomocí [rozšíření Azure monitor Diagnostics](diagnostics-extension-overview.md)můžete shromažďovat metriky a protokoly z hostovaného operačního systému (hostovaného operačního systému), který je spuštěn jako součást virtuálního počítače, cloudové služby nebo clusteru Service Fabric. Rozšíření může odesílat telemetrii do [mnoha různých umístění.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
-
-Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro virtuální počítač s Windows do úložiště dat Azure Monitor. Počínaje diagnostikou verze 1,11 můžete zapisovat metriky přímo do úložiště metrik Azure Monitor, kde jsou již shromažďovány standardní metriky platforem.
-
-Ukládání do tohoto umístění vám umožní přístup ke stejným akcím pro metriky platforem. Akce zahrnují výstrahy, vytváření grafů, směrování a přístup téměř v reálném čase z REST API a dalších. Diagnostické rozšíření v minulosti vytvořilo Azure Storage, ale ne do Azure Monitorho úložiště dat.
 
 Pokud s Správce prostředků šablonou začínáte, přečtěte si o [Nasazení šablon](../../azure-resource-manager/management/overview.md) a jejich struktuře a syntaxi.
 
@@ -39,7 +36,7 @@ Pokud s Správce prostředků šablonou začínáte, přečtěte si o [Nasazení
 Rozšíření Azure Diagnostics používá funkci s názvem "datové jímky" ke směrování metrik a protokolů do různých umístění. Následující kroky ukazují, jak použít šablonu Správce prostředků a PowerShell k nasazení virtuálního počítače pomocí nové jímky dat "Azure Monitor".
 
 ## <a name="author-resource-manager-template"></a>Šablona pro vytváření Správce prostředků
-V tomto příkladu můžete použít veřejně dostupnou ukázkovou šablonu. Spouští se šablony na adrese https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows.
+V tomto příkladu můžete použít veřejně dostupnou ukázkovou šablonu. Spouští se šablony na adrese https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows .
 
 - **Azuredeploy. JSON** je předkonfigurovaná správce prostředků šablona pro nasazení virtuálního počítače.
 
@@ -125,7 +122,7 @@ Přidejte konfiguraci **identity** do prostředku virtuálního počítače, aby
     ...
 ```
 
-Přidejte následující konfiguraci, aby bylo možné povolit diagnostické rozšíření na virtuálním počítači s Windows. Pro jednoduchý Správce prostředků virtuální počítač můžeme přidat konfiguraci rozšíření do pole prostředky pro virtuální počítač. Řádek "jímky"&mdash; "AzMonSink" a odpovídající "SinksConfig" dále v části&mdash;umožňují rozšíření generovat metriky přímo do Azure monitor. Podle potřeby můžete přidávat nebo odebírat čítače výkonu.
+Přidejte následující konfiguraci, aby bylo možné povolit diagnostické rozšíření na virtuálním počítači s Windows. Pro jednoduchý Správce prostředků virtuální počítač můžeme přidat konfiguraci rozšíření do pole prostředky pro virtuální počítač. Řádek "jímky" " &mdash; AzMonSink" a odpovídající "SinksConfig" dále v části &mdash; umožňují rozšíření generovat metriky přímo do Azure monitor. Podle potřeby můžete přidávat nebo odebírat čítače výkonu.
 
 
 ```json
@@ -240,8 +237,8 @@ Oba soubory uložte a zavřete.
 K nasazení šablony Správce prostředků využíváme Azure PowerShell.
 
 1. Spusťte PowerShell.
-1. Přihlaste se k `Login-AzAccount`Azure pomocí.
-1. Seznam předplatných získáte pomocí `Get-AzSubscription`.
+1. Přihlaste se k Azure pomocí `Login-AzAccount` .
+1. Seznam předplatných získáte pomocí `Get-AzSubscription` .
 1. Nastavte předplatné, které používáte k vytvoření nebo aktualizaci virtuálního počítače v nástroji:
 
    ```powershell
@@ -284,7 +281,7 @@ K nasazení šablony Správce prostředků využíváme Azure PowerShell.
 
 6. V rozevírací nabídce obory názvů vyberte **Azure. VM. Windows. Host.**
 
-7. V rozevírací nabídce metriky vyberte **paměť\%při použití potvrzených bajtů**.
+7. V rozevírací nabídce metriky vyberte **paměť \% při použití potvrzených bajtů**.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -2,17 +2,20 @@
 title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.openlocfilehash: a48bc2fd4efb383b42fd0889df079c9a6f700dda
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 05/18/2020
+ms.openlocfilehash: 4f8bcbfc6467969c9d8ca8b1511e6e8ffff94b14
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929056"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653357"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
-Pro zjednodušení správy prostředků ve vašem předplatném Azure můžete v rámci předplatného definovat a přiřazovat [zásady](../../governance/policy/overview.md) nebo [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) . Pomocí šablon na úrovni předplatného můžete deklarativně uplatňovat zásady a přiřazovat role v rámci předplatného. Můžete také vytvářet skupiny prostředků a nasazovat prostředky.
+Pro zjednodušení správy prostředků můžete nasadit prostředky na úrovni předplatného Azure. Můžete například nasadit [zásady](../../governance/policy/overview.md) a [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) k vašemu předplatnému a tyto prostředky se uplatní v rámci vašeho předplatného. Můžete také vytvořit skupiny prostředků a nasadit prostředky do těchto skupin prostředků.
+
+> [!NOTE]
+> V nasazení na úrovni předplatného můžete nasadit do 800 různých skupin prostředků.
 
 Pokud chcete nasadit šablony na úrovni předplatného, použijte rozhraní příkazového řádku Azure CLI, PowerShellu nebo REST API. Azure Portal nepodporuje nasazení na úrovni předplatného.
 
@@ -130,7 +133,7 @@ Následující šablona vytvoří prázdnou skupinu prostředků.
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
@@ -161,7 +164,7 @@ Pomocí [elementu Copy](copy-resources.md) se skupinami prostředků vytvořte v
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "location": "[parameters('rgLocation')]",
       "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
       "copy": {
@@ -179,7 +182,7 @@ Informace o iteraci prostředků najdete v tématu [nasazení více než jedné 
 
 ## <a name="resource-group-and-resources"></a>Skupina prostředků a prostředky
 
-Pokud chcete vytvořit skupinu prostředků a nasadit do ní prostředky, použijte vnořenou šablonu. Vnořená Šablona definuje prostředky pro nasazení do skupiny prostředků. Nastavte vnořenou šablonu jako závislou na skupině prostředků, abyste před nasazením prostředků zajistili, že skupina prostředků existuje.
+Pokud chcete vytvořit skupinu prostředků a nasadit do ní prostředky, použijte vnořenou šablonu. Vnořená Šablona definuje prostředky pro nasazení do skupiny prostředků. Nastavte vnořenou šablonu jako závislou na skupině prostředků, abyste před nasazením prostředků zajistili, že skupina prostředků existuje. Můžete nasadit až 800 skupin prostředků.
 
 Následující příklad vytvoří skupinu prostředků a nasadí účet úložiště do skupiny prostředků.
 
@@ -205,14 +208,14 @@ Následující příklad vytvoří skupinu prostředků a nasadí účet úloži
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "location": "[parameters('rgLocation')]",
       "name": "[parameters('rgName')]",
       "properties": {}
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "storageDeployment",
       "resourceGroup": "[parameters('rgName')]",
       "dependsOn": [
@@ -228,7 +231,7 @@ Následující příklad vytvoří skupinu prostředků a nasadí účet úloži
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2017-10-01",
+              "apiVersion": "2019-06-01",
               "name": "[variables('storageName')]",
               "location": "[parameters('rgLocation')]",
               "sku": {

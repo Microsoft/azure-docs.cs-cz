@@ -4,12 +4,12 @@ description: Naučte se používat Azure Application Insights s Azure Functions 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 0b4d0f43d00a919c589a11c81df2818f3a058ed8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6218e5163212540f2132020dffea520d34b77cc4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121522"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648860"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -21,7 +21,10 @@ Jelikož je požadovaná instrumentace Application Insights integrovaná do Azur
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights ceny a omezení
 
-Můžete si vyzkoušet Application Insights integraci s aplikacemi Function App zdarma. K dispozici je denní limit pro množství dat, která je možné zpracovat zdarma. Tento limit se může vyrazit během testování. Azure poskytuje přístup k portálu a e-mailovým oznámením při přístupu k dennímu limitu. Pokud jste tyto výstrahy nepřišli a dosáhli jste limitu, nové protokoly se v Application Insightsch dotazech nezobrazují. Nezapomeňte omezit omezení, aby nedocházelo k zbytečnému času řešení potíží. Další informace najdete v tématu [Správa cen a objemu dat v Application Insights](../azure-monitor/app/pricing.md).
+Můžete si vyzkoušet Application Insights integraci s Azure Functions zdarma. K dispozici je denní limit pro množství dat, která je možné zpracovat zdarma. Tento limit se může vyrazit během testování. Azure poskytuje přístup k portálu a e-mailovým oznámením při přístupu k dennímu limitu. Pokud jste tyto výstrahy nepřišli a dosáhli jste limitu, nové protokoly se v Application Insightsch dotazech nezobrazují. Nezapomeňte omezit omezení, aby nedocházelo k zbytečnému času řešení potíží. Další informace najdete v tématu [Správa cen a objemu dat v Application Insights](../azure-monitor/app/pricing.md).
+
+> [!IMPORTANT]
+> Application Insights má funkci [vzorkování](../azure-monitor/app/sampling.md) , která vám může chránit při vytváření příliš velkého množství dat telemetrie při dokončeném provádění v době špičky zatížení. Vzorkování je ve výchozím nastavení povolené. Pokud se zdá, že chybí data, možná budete muset upravit nastavení vzorkování tak, aby vyhovovalo vašemu konkrétnímu scénáři monitorování. Další informace najdete v tématu [Konfigurace vzorkování](#configure-sampling).
 
 Úplný seznam funkcí Application Insights, které jsou k dispozici pro aplikaci Function App, je podrobně popsán v [Application Insights pro Azure Functions podporované funkce](../azure-monitor/app/azure-functions-supported-features.md).
 
@@ -86,7 +89,7 @@ requests
 
 Tabulky, které jsou k dispozici, jsou zobrazeny na kartě **schéma** na levé straně. Data generovaná pomocí volání funkcí najdete v následujících tabulkách:
 
-| Table | Popis |
+| Tabulka | Popis |
 | ----- | ----------- |
 | **trasování** | Protokoly vytvořené modulem runtime a kódem funkce. |
 | **požadavky** | Jedna žádost pro každé vyvolání funkce. |
@@ -131,14 +134,14 @@ Pokud zapisujete protokoly do kódu funkce, kategorie je `Function.<YOUR_FUNCTIO
 
 Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každým protokolem. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) je výčet a celočíselný kód označuje relativní důležitost:
 
-|LogLevel    |kód|
+|LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
 |Ladit       | 1 |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
-|Kritická    | 5 |
+|Kritické    | 5 |
 |Žádné        | 6 |
 
 Úroveň protokolu `None` je vysvětleno v další části. 
@@ -271,9 +274,6 @@ Application Insights má funkci [vzorkování](../azure-monitor/app/sampling.md)
   }
 }
 ```
-
-> [!NOTE]
-> [Vzorkování](../azure-monitor/app/sampling.md) je ve výchozím nastavení povolené. Pokud se zdá, že chybí data, možná budete muset upravit nastavení vzorkování tak, aby vyhovovalo vašemu konkrétnímu scénáři monitorování.
 
 ## <a name="write-logs-in-c-functions"></a>Zápis protokolů ve funkcích jazyka C#
 

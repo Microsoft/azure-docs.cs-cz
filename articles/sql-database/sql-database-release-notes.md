@@ -1,5 +1,5 @@
 ---
-title: Poznámky k verzi
+title: Zpráva k vydání verze
 description: Seznamte se s novými funkcemi a vylepšeními služby Azure SQL Database a v dokumentaci k Azure SQL Database
 services: sql-database
 author: stevestein
@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3e5069c779cee0700bff6b2236f3cd36547fd623
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838480"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659603"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 
@@ -24,7 +24,7 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 
 ### <a name="single-database"></a>[Samostatná databáze](#tab/single-database)
 
-| Funkce | Podrobnosti |
+| Příznak | Podrobnosti |
 | ---| --- |
 | Nové generace hardwaru řady Fsv2-Series a M-Series| Informace najdete v tématu [hardwarové generace](sql-database-service-tiers-vcore.md#hardware-generations).|
 | Urychlené obnovení databáze s izolovanými databázemi a elastickými fondy | Informace najdete v tématu [urychlení obnovení databáze](sql-database-accelerated-database-recovery.md).|
@@ -43,7 +43,7 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 
 ### <a name="managed-instance"></a>[Spravovaná instance](#tab/managed-instance)
 
-| Funkce | Podrobnosti |
+| Příznak | Podrobnosti |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Fondy instancí</a> | Pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvořte přihlášení na úrovni serveru pomocí příkazu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit přihlášení z externího poskytovatele</a> . |
@@ -78,6 +78,7 @@ V modelu nasazení Managed instance v rámci H1 2019 jsou povoleny následujíc�
 
 |Problém  |Datum zjištění  |Status  |Datum vyřešení  |
 |---------|---------|---------|---------|
+|[Obnovení ručního zálohování bez KONTROLNÍho SOUČTu může selhat](#restoring-manual-backup-without-checksum-might-fail)|Květen 2020|Má alternativní řešení| |
 |[Agent přestane reagovat při úpravách, zakázání nebo povolení stávajících úloh.](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Květen 2020|Automaticky zmírňované| |
 |[Oprávnění pro skupinu prostředků neplatí pro spravovanou instanci](#permissions-on-resource-group-not-applied-to-managed-instance)|Únor 2020|Má alternativní řešení| |
 |[Omezení ručního převzetí služeb při selhání prostřednictvím portálu pro skupiny převzetí služeb](#limitation-of-manual-failover-via-portal-for-failover-groups)|Leden 2020|Má alternativní řešení| |
@@ -103,6 +104,12 @@ V modelu nasazení Managed instance v rámci H1 2019 jsou povoleny následujíc�
 |Obnovení databáze v čase z Pro důležité obchodní informace úrovně do Pro obecné účely úrovně nebude úspěšné, pokud zdrojová databáze obsahuje objekty OLTP v paměti.| |Vyřešeno|Říjen 2019|
 |Databázová pošta funkce s externími poštovními servery (ne Azure) pomocí zabezpečeného připojení| |Vyřešeno|Říjen 2019|
 |Obsažené databáze nejsou ve spravované instanci podporované.| |Vyřešeno|Srpna 2019|
+
+### <a name="restoring-manual-backup-without-checksum-might-fail"></a>Obnovení ručního zálohování bez KONTROLNÍho SOUČTu může selhat
+
+V některých případech se nemusí obnovit ruční zálohování databází, které byly vytvořeny na spravované instanci bez KONTROLNÍho SOUČTu. V takovém případě zkuste zálohu obnovit, dokud nebude úspěšná.
+
+**Alternativní řešení**: proveďte ruční zálohování databází ve spravované instanci pomocí POVOLENého KONTROLNÍho součtu.
 
 ### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>Agent přestane reagovat při úpravách, zakázání nebo povolení stávajících úloh.
 
@@ -148,7 +155,7 @@ Služba Pro důležité obchodní informace Service – úroveň v některých p
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Při pokusu o odebrání neprázdného souboru se vrátila chybná chyba.
 
-SQL Server/spravovaná instance [nedovoluje uživateli vyřadit neprázdný soubor](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Pokud se pokusíte odebrat neprázdný datový soubor pomocí `ALTER DATABASE REMOVE FILE` příkazu, Chyba `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` se okamžitě nevrátí. Spravovaná instance bude pokračovat v pokusu o vyřazení souboru a operace po 30min s `Internal server error`se nezdaří.
+SQL Server/spravovaná instance [nedovoluje uživateli vyřadit neprázdný soubor](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Pokud se pokusíte odebrat neprázdný datový soubor pomocí `ALTER DATABASE REMOVE FILE` příkazu, chyba se `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` okamžitě nevrátí. Spravovaná instance bude pokračovat v pokusu o vyřazení souboru a operace po 30min s se nezdaří `Internal server error` .
 
 **Alternativní řešení**: Odeberte obsah souboru pomocí `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` příkazu. Pokud se jedná o jediný soubor ve skupině souborů, musíte před zmenšením souboru odstranit data z tabulky nebo oddílu přidruženého k této skupině souborů a případně tato data načíst do jiné tabulky nebo oddílu.
 
@@ -162,23 +169,23 @@ Průběžný `RESTORE` příkaz, proces migrace dat a integrované obnovení k �
 
 Funkce [Správce prostředků](/sql/relational-databases/resource-governor/resource-governor) , která umožňuje omezit prostředky přiřazené k uživatelskému zatížení, může nesprávně klasifikovat určitou úlohu uživatelů po převzetí služeb při selhání nebo uživatelem iniciované změny úrovně služby (například změna maximální velikosti úložiště Vcore nebo maximálního počtu instancí).
 
-**Alternativní řešení**: `ALTER RESOURCE GOVERNOR RECONFIGURE` spouštějte pravidelně nebo jako součást úlohy agenta SQL, která spustí úlohu SQL při spuštění instance, pokud používáte [Správce zdrojů](/sql/relational-databases/resource-governor/resource-governor).
+**Alternativní řešení**: spouštějte `ALTER RESOURCE GOVERNOR RECONFIGURE` pravidelně nebo jako součást úlohy agenta SQL, která spustí úlohu SQL při spuštění instance, pokud používáte [Správce zdrojů](/sql/relational-databases/resource-governor/resource-governor).
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Dialogová okna mezidatabázového Service Broker se musí po upgradu na úrovni služby znovu inicializovat.
 
-Dialogy Service Broker mezi databázemi ukončí doručování zpráv do služeb v jiných databázích po provedení operace změny úrovně služby. Zprávy nejsou **ztraceny** a je možné je najít ve frontě odesílatelů. Jakákoli změna velikosti úložiště virtuální jádra nebo instance ve spravované instanci způsobí, že `service_broke_guid` se hodnota v zobrazení [Sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) změní pro všechny databáze. Jakékoli `DIALOG` vytvoření pomocí příkazu [Begin dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , který odkazuje na zprostředkovatele služby v jiné databázi, přestane předávat zprávy cílové službě.
+Dialogy Service Broker mezi databázemi ukončí doručování zpráv do služeb v jiných databázích po provedení operace změny úrovně služby. Zprávy nejsou **ztraceny** a je možné je najít ve frontě odesílatelů. Jakákoli změna velikosti úložiště virtuální jádra nebo instance ve spravované instanci způsobí, že se `service_broke_guid` hodnota v zobrazení [Sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) změní pro všechny databáze. Jakékoli `DIALOG` vytvoření pomocí příkazu [Begin dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , který odkazuje na zprostředkovatele služby v jiné databázi, přestane předávat zprávy cílové službě.
 
 **Alternativní řešení:** Před aktualizací úrovně služby zastavte všechny aktivity, které používají konverzaci mezi Service Brokermi databázemi, a potom je znovu inicializujte. Pokud jsou zbývající zprávy nedoručené po změně úrovně služeb, přečtěte si zprávy ze zdrojové fronty a znovu je odešlete do cílové fronty.
 
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Impersonification typů přihlášení Azure AD se nepodporuje.
 
 Zosobnění pomocí `EXECUTE AS USER` nebo `EXECUTE AS LOGIN` z následujících objektů zabezpečení AAD není podporované:
--    Uživatelé AAD s aliasem V tomto případě `15517`se vrátí následující chyba.
-- Přihlášení AAD a uživatelé na základě aplikací AAD nebo instančních objektů. V tomto případě `15517` se vrátí následující chyby a `15406`.
+-    Uživatelé AAD s aliasem V tomto případě se vrátí následující chyba `15517` .
+- Přihlášení AAD a uživatelé na základě aplikací AAD nebo instančních objektů. V tomto případě se vrátí následující chyby `15517` a `15406` .
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryparametr není v sp_send_db_mail podporován.
 
-`@query` Parametr v proceduře [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) nefunguje.
+`@query`Parametr v proceduře [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) nefunguje.
 
 ### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>Po geografickém převzetí služeb při selhání je potřeba znovu nakonfigurovat transakční replikaci.
 
@@ -190,17 +197,17 @@ Nástroje SQL Server Data Tools plně nepodporují přihlášení a uživatele A
 
 ### <a name="temporary-database-is-used-during-restore-operation"></a>Během operace obnovení se používá dočasná databáze.
 
-Když se databáze na spravované instanci obnovuje, služba obnovení nejprve vytvoří prázdnou databázi s požadovaným názvem k přidělení názvu v instanci. Po určité době bude tato databáze vyřazena a bude spuštěna obnova skutečné databáze. Databáze, ve které je stav *obnovení* , bude mít dočasné místo názvu hodnotu NÁHODNÉho identifikátoru GUID. Po dokončení procesu obnovení bude dočasný název změněn na požadovaný název zadaný `RESTORE` v příkazu. V počáteční fázi může uživatel přistupovat k prázdné databázi a dokonce vytvářet tabulky nebo načítat data v této databázi. Tato dočasná databáze se vynechá, když služba obnovení spustí druhou fázi.
+Když se databáze na spravované instanci obnovuje, služba obnovení nejprve vytvoří prázdnou databázi s požadovaným názvem k přidělení názvu v instanci. Po určité době bude tato databáze vyřazena a bude spuštěna obnova skutečné databáze. Databáze, ve které je stav *obnovení* , bude mít dočasné místo názvu hodnotu NÁHODNÉho identifikátoru GUID. Po dokončení procesu obnovení bude dočasný název změněn na požadovaný název zadaný v `RESTORE` příkazu. V počáteční fázi může uživatel přistupovat k prázdné databázi a dokonce vytvářet tabulky nebo načítat data v této databázi. Tato dočasná databáze se vynechá, když služba obnovení spustí druhou fázi.
 
 **Alternativní řešení**: Neprovádějte přístup k databázi, kterou obnovujete, dokud neuvidíte, že obnovení bylo dokončeno.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>Struktura a obsah TEMPDB se znovu vytvoří.
 
-`tempdb` Databáze je vždy rozdělena do 12 datových souborů a struktura souborů nemůže být změněna. Maximální velikost na soubor nelze změnit a nelze přidat nové soubory do `tempdb`. `Tempdb`je vždy znovu vytvořen jako prázdná databáze při spuštění nebo převzetí služeb při selhání a jakékoli změny provedené v `tempdb` nezůstanou zachovány.
+`tempdb`Databáze je vždy rozdělena do 12 datových souborů a struktura souborů nemůže být změněna. Maximální velikost na soubor nelze změnit a nelze přidat nové soubory do `tempdb` . `Tempdb`je vždy znovu vytvořen jako prázdná databáze při spuštění nebo převzetí služeb při selhání a jakékoli změny provedené v nezůstanou `tempdb` zachovány.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Překročení úložného prostoru s malými databázovými soubory
 
-`CREATE DATABASE`příkazy `ALTER DATABASE ADD FILE`, a `RESTORE DATABASE` mohou selhat, protože instance může dosáhnout limitu Azure Storage.
+`CREATE DATABASE``ALTER DATABASE ADD FILE`příkazy, a `RESTORE DATABASE` mohou selhat, protože instance může dosáhnout limitu Azure Storage.
 
 Každá Pro obecné účely spravovaná instance má až 35 TB úložiště rezervovaného pro místo na disku Azure Premium. Každý databázový soubor je umístěn na samostatném fyzickém disku. Velikosti disků můžou být 128 GB, 256 GB, 512 GB, 1 TB nebo 4 TB. Nevyužité místo na disku se neúčtuje, ale celkový součet velikostí disků Azure Premium nesmí překročit 35 TB. V některých případech může spravovaná instance, která nepotřebuje 8 TB celkem, překročit 35 TB Azure na velikost úložiště kvůli vnitřní fragmentaci.
 
@@ -233,7 +240,7 @@ Protokoly chyb, které jsou k dispozici ve spravované instanci, nejsou trvale u
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Obor transakce ve dvou databázích v rámci stejné instance není podporovaný.
 
-**(Vyřešeno v březnu 2020)** `TransactionScope` Třída v rozhraní .NET nefunguje, pokud jsou dva dotazy odesílány do dvou databází v rámci stejné instance v rámci stejného oboru transakce:
+**(Vyřešeno v březnu 2020)** `TransactionScope`Třída v rozhraní .NET nefunguje, pokud jsou dva dotazy odesílány do dvou databází v rámci stejné instance v rámci stejného oboru transakce:
 
 ```csharp
 using (var scope = new TransactionScope())

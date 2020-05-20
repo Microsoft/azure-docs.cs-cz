@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 8fab8c51655c860bc63715a5313c18ac72d4b0cd
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 2d7f53862a30287460ca72297231da468514646b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871621"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648169"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
 
@@ -48,17 +48,21 @@ Můžete také vytvořit ISE pomocí [ukázkové Azure Resource Manager šablony
 
   * Vaše virtuální síť musí mít čtyři *prázdné* podsítě pro vytváření a nasazování prostředků v ISE. Každá podsíť podporuje jinou komponentu Logic Apps, která se používá ve vašem ISE. Tyto podsítě můžete vytvořit předem nebo můžete počkat, dokud nevytvoříte ISE, kde můžete vytvářet podsítě ve stejnou dobu. Přečtěte si další informace o [požadavcích na podsíť](#create-subnet).
 
-  * Názvy podsítí musí začínat znakem abecedy nebo podtržítkem a nesmí používat `<`tyto znaky:, `>`, `%`, `&`, `\\`, `?`,. `/` 
+  * Názvy podsítí musí začínat znakem abecedy nebo podtržítkem a nesmí používat tyto znaky: `<` , `>` , `%` , `&` , `\\` , `?` , `/` . 
   
   * Pokud chcete nasadit ISE pomocí šablony Azure Resource Manager, nejprve se ujistěte, že delegujete jednu prázdnou podsíť do Microsoft. Logic/integrationServiceEnvironment. Toto delegování nemusíte dělat při nasazení prostřednictvím Azure Portal.
 
   * Ujistěte se, že vaše virtuální síť [umožňuje přístup k vašemu ISE](#enable-access) , takže vaše ISE může správně fungovat a zůstat přístupná.
 
-  * Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), který poskytuje privátní připojení ke cloudovým službám Microsoftu, které usnadňuje poskytovatel připojení, musíte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která má následující trasu a propojit ji s každou podsítí, kterou používá vaše ISE:
+  * [ExpressRoute](../expressroute/expressroute-introduction.md) pomáhá rozmístit vaše místní sítě do cloudu Microsoftu a připojit se ke cloudovým službám Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení. Konkrétně ExpressRoute je virtuální privátní síť, která směruje provoz přes soukromou síť místo veřejného Internetu. Logic Apps se můžou připojovat k místním prostředkům, které jsou ve stejné virtuální síti při připojování prostřednictvím ExpressRoute nebo virtuální privátní sítě. 
+  
+    Pokud používáte ExpressRoute, musíte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která má následující trasu a propojit tuto tabulku s každou podsítí, kterou používá vaše ISE:
 
     **Název**: <*trasa-Name*><br>
     **Předpona adresy**: 0.0.0.0/0<br>
     **Další segment směrování**: Internet
+
+    Tato směrovací tabulka se vyžaduje, když Logic Apps komponenty komunikují s dalšími závislými službami Azure, jako jsou Azure Storage a Azure SQL DB.
 
 * Pokud chcete pro službu Azure Virtual Network používat vlastní servery DNS, [nastavte tyto servery pomocí následujících kroků](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ještě před nasazením ISE do virtuální sítě. Další informace o správě nastavení serveru DNS najdete v tématu [Vytvoření, změna nebo odstranění virtuální sítě](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
@@ -91,7 +95,7 @@ Abyste se ujistili, že je váš ISE přístupný a že aplikace logiky v této 
 V této tabulce jsou popsány porty, které vaše ISE vyžaduje k přístupu a účelu pro tyto porty. Tabulka používá [značky služeb](../virtual-network/service-tags-overview.md) , které reprezentují skupiny předpon IP adres pro konkrétní službu Azure, aby při nastavování pravidel zabezpečení lépe omezila složitost. Pokud je uvedeno jinak, *interní ISE* a *externí ISE* odkazují na [koncový bod přístupu, který je vybraný při vytváření ISE](connect-virtual-network-vnet-isolated-environment.md#create-environment). Další informace najdete v tématu [přístup ke koncovému bodu](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access).
 
 > [!IMPORTANT]
-> U všech pravidel nezapomeňte nastavit zdrojové porty na `*` , protože zdrojové porty jsou dočasné.
+> U všech pravidel nezapomeňte nastavit zdrojové porty na, `*` protože zdrojové porty jsou dočasné.
 
 #### <a name="inbound-security-rules"></a>Příchozí pravidla zabezpečení
 
@@ -144,7 +148,7 @@ V této tabulce jsou popsány porty, které vaše ISE vyžaduje k přístupu a �
    |----------|----------|-------|-------------|
    | **Předplatné** | Ano | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro vaše prostředí |
    | **Skupina prostředků** | Ano | <*Azure-Resource-Group-Name*> | Nová nebo existující skupina prostředků Azure, ve které chcete vytvořit prostředí. |
-   | **Název prostředí integrační služby** | Ano | <*Název prostředí*> | Název ISE, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`) a tečky (`.`). |
+   | **Název prostředí integrační služby** | Ano | <*Název prostředí*> | Název ISE, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ) a tečky ( `.` ). |
    | **Umístění** | Ano | <*Azure – Datacenter – oblast*> | Oblast datacenter Azure, kde se má vaše prostředí nasadit |
    | **SKLADOVÉ** | Ano | **Premium** nebo **Developer (bez smlouvy SLA)** | SKU ISE, která se má vytvořit a použít. Rozdíly mezi těmito SKU najdete v tématu [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Důležité**: Tato možnost je k dispozici pouze při vytváření ISE a nedá se změnit později. |
    | **Další kapacita** | Premium: <br>Ano <p><p>Maximalizac <br>Neuvedeno | Premium: <br>0 až 10 <p><p>Maximalizac <br>Neuvedeno | Počet dalších jednotek zpracování, které se mají použít pro tento prostředek ISE. Pokud chcete přidat kapacitu po vytvoření, přečtěte si téma [Přidání kapacity ISE](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). |
@@ -159,11 +163,11 @@ V této tabulce jsou popsány porty, které vaše ISE vyžaduje k přístupu a �
 
    Pro vytváření a nasazování prostředků ve vašem prostředí ISE potřebuje čtyři *prázdné* podsítě, které nejsou delegované na žádnou službu. Každá podsíť podporuje jinou komponentu Logic Apps, která se používá ve vašem ISE. Po vytvoření prostředí *nemůžete* tyto adresy podsítě změnit. Každá podsíť musí splňovat tyto požadavky:
 
-   * Má název, který začíná abecedním znakem nebo podtržítkem (bez čísel), a nepoužívá tyto `<`znaky:, `>`, `%`, `&`, `\\`, `?`,. `/`
+   * Má název, který začíná abecedním znakem nebo podtržítkem (bez čísel), a nepoužívá tyto znaky: `<` , `>` , `%` , `&` , `\\` , `?` , `/` .
 
    * Používá [Formát CIDR (Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) a adresní prostor třídy B.
 
-   * Používá `/27` v adresním prostoru, protože každá podsíť vyžaduje 32 adres. Například má 32 `10.0.0.0/27` adres, protože 2<sup>(32-27)</sup> je 2<sup>5</sup> nebo 32. Další adresy neposkytují další výhody.  Další informace o výpočtu adres najdete v tématu [bloky CIDR protokolu IPv4](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
+   * Používá `/27` v adresním prostoru, protože každá podsíť vyžaduje 32 adres. Například `10.0.0.0/27` má 32 adres, protože 2<sup>(32-27)</sup> je 2<sup>5</sup> nebo 32. Další adresy neposkytují další výhody.  Další informace o výpočtu adres najdete v tématu [bloky CIDR protokolu IPv4](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
    * Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), musíte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která má následující trasu a propojit ji s každou podsítí, kterou používá vaše ISE:
 

@@ -3,18 +3,18 @@ title: Diagnostika a řešení potíží s Azure Cosmos DB Async Java SDK v2
 description: Použijte funkce jako protokolování na straně klienta a další nástroje třetích stran k identifikaci, diagnostice a řešení potíží s Azure Cosmos DB v asynchronní sadě Java SDK v2.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 04fa8d65ffb822fcd37f6da1bf3074a4e6a1d088
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982611"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651886"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>Řešení potíží při použití Azure Cosmos DB Async Java SDK v2 s účty SQL API
 
@@ -25,7 +25,7 @@ ms.locfileid: "82982611"
 > 
 
 > [!IMPORTANT]
-> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Zvažte použití Azure Cosmos DB Java SDK v4 pro váš projekt. Postupujte podle pokynů v tématu [migrace do Azure Cosmos DB příručka Java SDK v4](migrate-java-v4-sdk.md) a příručka [vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Guide to upgrade. 
+> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Projekt byste měli upgradovat na [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) a pak si přečtěte [Průvodce odstraňováním potíží](troubleshoot-java-sdk-v4-sql.md)Azure Cosmos DB Java SDK v4. Postupujte podle pokynů v tématu [migrace do Azure Cosmos DB příručka Java SDK v4](migrate-java-v4-sdk.md) a příručka [vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Guide to upgrade. 
 >
 > Tento článek popisuje řešení potíží pouze Azure Cosmos DB Async Java SDK v2. Další informace najdete v [poznámkách k verzi](sql-api-sdk-async-java.md)Azure Cosmos DB ASYNC Java SDK v2, v tématu [úložiště Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) a [tipy ke zvýšení výkonu](performance-tips-async-java.md) .
 >
@@ -83,7 +83,7 @@ Také dodržujte [limit připojení na hostitelském počítači](#connection-li
 
 #### <a name="http-proxy"></a>Proxy server HTTP
 
-Pokud používáte proxy server HTTP, ujistěte se, že může podporovat počet připojení nakonfigurovaných v sadě SDK `ConnectionPolicy`.
+Pokud používáte proxy server HTTP, ujistěte se, že může podporovat počet připojení nakonfigurovaných v sadě SDK `ConnectionPolicy` .
 Jinak čelíte problémům s připojením.
 
 #### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Neplatný vzor kódování: blokuje se vstupně-výstupní podproces.
@@ -156,7 +156,7 @@ Alternativním řešením je změnit vlákno, ve kterém provádíte práci, kte
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
 ```
-Možná budete muset udělat práci, která trvá určitou dobu, například výpočetně těžkou práci nebo blokování v/v. V takovém případě přepněte vlákno na pracovní proces poskytnutý `customScheduler` pomocí `.observeOn(customScheduler)` rozhraní API.
+Možná budete muset udělat práci, která trvá určitou dobu, například výpočetně těžkou práci nebo blokování v/v. V takovém případě přepněte vlákno na pracovní proces poskytnutý pomocí `customScheduler` `.observeOn(customScheduler)` rozhraní API.
 
 ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 
@@ -170,7 +170,7 @@ createObservable
             // ...
         );
 ```
-Pomocí nástroje `observeOn(customScheduler)`uvolníte vstupně-výstupní vlákna a přepnete do vlastního vlákna poskytnutého vlastním plánovačem. Tato úprava vyřeší problém. Už nebudete `io.netty.handler.timeout.ReadTimeoutException` mít k chybu.
+Pomocí nástroje `observeOn(customScheduler)` uvolníte vstupně-výstupní vlákna a přepnete do vlastního vlákna poskytnutého vlastním plánovačem. Tato úprava vyřeší problém. Už nebudete mít k `io.netty.handler.timeout.ReadTimeoutException` chybu.
 
 ### <a name="connection-pool-exhausted-issue"></a>Problém vyčerpání fondu připojení
 
@@ -258,7 +258,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 Další informace najdete v tématu [Ruční protokolování sfl4j](https://www.slf4j.org/manual.html).
 
 ## <a name="os-network-statistics"></a><a name="netstats"></a>Statistika sítě operačního systému
-Spusťte příkaz netstat, abyste získali představu o počtu připojení ve státech, jako jsou `ESTABLISHED` a. `CLOSE_WAIT`
+Spusťte příkaz netstat, abyste získali představu o počtu připojení ve státech, jako jsou `ESTABLISHED` a `CLOSE_WAIT` .
 
 V systému Linux můžete spustit následující příkaz.
 ```bash

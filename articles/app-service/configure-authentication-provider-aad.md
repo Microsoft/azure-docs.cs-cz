@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: c03a7b89fee188d8a22cfb8ddcd73920ce43f43a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "82609897"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649150"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení Azure AD
 
@@ -125,9 +125,34 @@ Nativní klienty můžete registrovat, aby bylo možné v aplikaci hostovat ově
 1. Po vytvoření registrace aplikace Zkopírujte hodnotu **ID aplikace (klienta)**.
 1. Vyberte **oprávnění API**  >  **Přidat oprávnění**  >  **Moje rozhraní API**.
 1. Vyberte registraci aplikace, kterou jste vytvořili dříve pro App Service aplikaci. Pokud se registrace aplikace nezobrazuje, ujistěte se, že jste přidali obor **user_impersonation** v části [Vytvoření registrace aplikace ve službě Azure AD pro vaši aplikaci App Service](#register).
-1. Vyberte **user_impersonation**a pak vyberte **Přidat oprávnění**.
+1. V části **delegovaná oprávnění**vyberte **user_impersonation**a pak vyberte **Přidat oprávnění**.
 
 Nyní jste nakonfigurovali nativní klientskou aplikaci, která má přístup k vaší aplikaci App Service jménem uživatele.
+
+## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>Konfigurace klientské aplikace démona pro volání služba-služba
+
+Vaše aplikace může získat token pro volání webového rozhraní API hostovaného ve vaší App Service nebo aplikaci Function App jménem sebe sama (ne jménem uživatele). Tento scénář je vhodný pro neinteraktivní aplikace démona, které provádějí úlohy bez přihlášeného uživatele. Používá standardní udělení [přihlašovacích údajů klienta](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md) OAuth 2,0.
+
+1. V [Azure Portal]vyberte možnost **Active Directory**  >  **Registrace aplikací**  >  **Nová registrace**.
+1. Na stránce **zaregistrovat aplikaci** zadejte **název** pro vaši registraci aplikace démona.
+1. V případě aplikace démona není nutné identifikátor URI přesměrování, takže ho můžete ponechat prázdné.
+1. Vyberte **Vytvořit**.
+1. Po vytvoření registrace aplikace Zkopírujte hodnotu **ID aplikace (klienta)**.
+1. Vyberte **certifikáty & tajných klíčů**  >  **nový tajný klíč klienta**  >  **Přidat**. Zkopírujte hodnotu tajného klíče klienta zobrazenou na stránce. Znovu se nezobrazí.
+
+[Pomocí ID klienta a tajného klíče klienta teď můžete požádat o přístupový token](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret) tím, že nastavíte `resource` parametr na **identifikátor URI ID aplikace** cílové aplikace. Výsledný přístupový token se pak dá předvést cílové aplikaci pomocí standardní [hlavičky autorizace OAuth 2,0](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource)a App Service ověřování/autorizace ověří a použije token jako obvykle, což znamená, že volající (aplikace v tomto případě není uživatel) ověřený.
+
+V současné době to umožňuje _všem_ klientským aplikacím v Tenantovi služby Azure AD požádat o přístupový token a ověřit ho v cílové aplikaci. Pokud chcete vymáhat _autorizaci_ , aby povolovala jenom některé klientské aplikace, musíte provést nějakou další konfiguraci.
+
+1. V manifestu registrace aplikace [Definujte roli aplikace](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) , která představuje App Service nebo aplikace Function App, kterou chcete chránit.
+1. V případě registrace aplikace představující klienta, který musí být autorizovaný, vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**  >  **Moje rozhraní API**.
+1. Vyberte registraci aplikace, kterou jste vytvořili dříve. Pokud se registrace aplikace nezobrazuje, ujistěte se, že jste [přidali roli aplikace](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md).
+1. V části **oprávnění aplikace**vyberte roli aplikace, kterou jste vytvořili dříve, a pak vyberte **Přidat oprávnění**.
+1. Nezapomeňte kliknout na **udělit souhlas správce** , aby se autorizace klientské aplikace mohla požádat o oprávnění.
+1. Podobně jako v předchozím scénáři (před přidáním rolí) teď můžete [požádat o přístupový token](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret) pro stejný cíl `resource` a přístupový token bude obsahovat `roles` deklaraci identity obsahující role aplikace, které byly autorizovány pro klientskou aplikaci.
+1. V rámci cílového App Service nebo kódu aplikace Function app teď můžete ověřit, že se v tokenu nachází očekávané role (neprovádí se App Service ověřováním/autorizací). Další informace najdete v tématu [přístup k deklaracím uživatelů](app-service-authentication-how-to.md#access-user-claims).
+
+Nyní jste nakonfigurovali klientskou aplikaci démona, která má přístup k vaší aplikaci App Service pomocí vlastní identity.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Další kroky
 
@@ -135,4 +160,4 @@ Nyní jste nakonfigurovali nativní klientskou aplikaci, která má přístup k 
 
 <!-- URLs. -->
 
-[Azure Portal]: https://portal.azure.com/
+[portál Azure]: https://portal.azure.com/

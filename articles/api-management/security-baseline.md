@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: aa59a37f3a4413c92a483746ed4a08c363ab8457
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: de3f553fd001b06d56663f63402da2489f35877d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796522"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649173"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Základní hodnoty zabezpečení Azure pro API Management
 
@@ -526,7 +526,7 @@ Nakonfigurujte zásady ověřování JWT na příchozí požadavky rozhraní API
 
 Vytvořte nastavení diagnostiky pro uživatelské účty Azure AD a odešlete protokoly auditu a protokoly přihlášení do pracovního prostoru Log Analytics. Nakonfigurujte požadované výstrahy v rámci Log Analytics. Kromě toho můžete připojit Log Analytics pracovní prostor k Azure Sentinel nebo k SIEM třetí strany.
 
-Pomocí `log-to-eventhub` zásad můžete nakonfigurovat rozšířené monitorování pomocí API Management, zachytit další kontextové informace vyžadované pro analýzu zabezpečení a odeslat je do Azure Sentinel nebo Siem třetí strany.
+Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API Management `log-to-eventhub` , zachytit další kontextové informace vyžadované pro analýzu zabezpečení a odeslat je do Azure Sentinel nebo Siem třetí strany.
 
 * [Jak autorizovat vývojářské účty pomocí Azure Active Directory v Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
 
@@ -1070,9 +1070,9 @@ Funkce zálohování a obnovení služby API Management poskytují potřebné st
 
 * [Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
 
-* [Postup volání operace API Management Backup](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)
+* [Postup volání operace API Management Backup](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)
 
-* [Jak volat operaci obnovení API Management](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+* [Jak volat operaci obnovení API Management](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 **Monitorování Azure Security Center**: nelze použít
 

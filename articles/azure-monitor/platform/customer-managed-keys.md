@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/13/2020
-ms.openlocfilehash: 71a28d4a0b69b117039f998891e082740e4269a2
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: aec093d829964c770f59ec7bd328fabdd56e6e86
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402566"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654843"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor klíč spravovaný zákazníkem 
 
@@ -21,7 +21,7 @@ Před konfigurací doporučujeme zkontrolovat níže uvedená [omezení a omezen
 
 ## <a name="disclaimers"></a>Právní omezení
 
-Funkce CMK se doručuje na vyhrazené Log Analytics clustery. [Cenový model Log Analytics clusterů](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) používá rezervace kapacity počínaje úrovní 1000 GB/den.
+Funkce CMK se doručuje na vyhrazené Log Analytics clustery. Abychom ověřili, že ve vaší oblasti máme požadovanou kapacitu, vyžadujeme, aby vaše předplatné bylo předem na seznamu povolených. Použijte kontakt Microsoftu k získání vašeho předplatného, které je na seznamu povolených.
 
 ## <a name="customer-managed-key-cmk-overview"></a>CMK (Customer-Managed Key) – přehled
 
@@ -30,6 +30,8 @@ Funkce CMK se doručuje na vyhrazené Log Analytics clustery. [Cenový model Log
 Azure Monitor zajistí, aby byla všechna data v klidovém stavu zašifrovaná pomocí klíčů spravovaných Azure. Azure Monitor taky nabízí možnost šifrování dat pomocí vlastního klíče, který je uložený ve vaší [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) a k němuž má přístup úložiště pomocí [spravovaného ověřování identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)přiřazené systémem   . Tento klíč může být buď [software, nebo hardware – chráněný](https://docs.microsoft.com/azure/key-vault/key-vault-overview)modulem HSM. 
 
 Azure Monitor použití šifrování je stejné jako způsob, jakým [Azure Storage šifrování](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)   funguje.
+
+Funkce CMK se doručuje na vyhrazené Log Analytics clustery. [Cenový model Log Analytics clusterů](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) používá rezervace kapacity počínaje úrovní 1000 GB/den.
 
 Data ingestovaná za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato data zůstávají šifrovaná pomocí klíčů Microsoftu bez ohledu na konfiguraci CMK, ale vaše kontrola nad daty SSD dodržuje [odvolávání klíčů](#cmk-kek-revocation). Pracujeme na tom, aby data SSD zašifrovaná pomocí CMK byla v druhé polovině 2020.
 
@@ -67,7 +69,7 @@ Platí následující pravidla:
 
 ## <a name="cmk-provisioning-procedure"></a>Postup zřizování CMK
 
-1. Seznam povolených odběrů – abyste se ujistili, že ve vaší oblasti máme potřebnou kapacitu ke zřízení Log Analyticsho clusteru, musíme předem ověřit a povolit vaše předplatné.
+1. Seznam povolených odběrů – funkce CMK se doručuje na vyhrazené Log Analytics clustery. Abychom ověřili, že ve vaší oblasti máme požadovanou kapacitu, vyžadujeme, aby vaše předplatné bylo předem na seznamu povolených. Pomocí kontaktu Microsoftu můžete získat předplatné v seznamu povolených.
 2. Vytváření Azure Key Vault a ukládání klíče
 3. Vytvoření prostředku *clusteru*
 5. Udělování oprávnění vašemu Key Vault
@@ -78,7 +80,7 @@ Procedura není momentálně v uživatelském rozhraní podporovaná a proces z�
 > [!IMPORTANT]
 > Jakýkoli požadavek rozhraní API musí v hlavičce požadavku zahrnovat autorizační token nosiče.
 
-Příklad:
+Například:
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
@@ -595,5 +597,5 @@ Všechna vaše data zůstanou po operaci střídání klíčů dostupná, včetn
 
 - Pokud aktualizujete verzi klíče v Key Vault a neaktualizujete nové podrobnosti identifikátoru klíče v prostředku *clusteru* , cluster Log Analytics bude dál používat předchozí klíč a vaše data nebudou dostupná. Aktualizujte nové podrobnosti identifikátoru klíče v prostředku *clusteru* , aby se obnovil příjem dat a možnost dotazování na data.
 
-- Pro podporu a nápovědu týkající se spravovaného klíče zákazníka použijte své kontakty do Microsoftu.
+- Pokud potřebujete podporu a nápovědu týkající se spravovaného klíče zákazníka, kontaktujte nás pomocí kontaktu Microsoftu.
 

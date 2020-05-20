@@ -11,20 +11,20 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c09e9d9f93ead6f894c954f647ebe33918cf41d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416217"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653014"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure synapse Analytics
 
-Azure synapse Analytics poskytuje bohatě monitorovaný přehled v rámci Azure Portal k obí informací o úlohách datového skladu. Azure Portal je doporučeným nástrojem při monitorování datového skladu, protože poskytuje konfigurovatelné doby uchovávání, výstrahy, doporučení a přizpůsobitelné grafy a řídicí panely pro metriky a protokoly. Portál také umožňuje integraci s dalšími službami monitorování Azure, jako jsou Azure Monitor (protokoly), s Log Analytics a poskytuje tak prostředí pro monitorování holistický nejen pro datový sklad, ale i celou platformu Azure Analytics pro integrované monitorování. Tato dokumentace popisuje, jaké možnosti monitorování jsou k dispozici pro optimalizaci a správu vaší analytické platformy pomocí SQL Analytics.
+Azure synapse Analytics poskytuje bohatě monitorovaný přehled v rámci Azure Portal k obí informací o úlohách datového skladu. Azure Portal je doporučeným nástrojem při monitorování datového skladu, protože poskytuje konfigurovatelné doby uchovávání, výstrahy, doporučení a přizpůsobitelné grafy a řídicí panely pro metriky a protokoly. Portál také umožňuje integraci s dalšími službami monitorování Azure, jako jsou Azure Monitor (protokoly), s Log Analytics a poskytuje tak prostředí pro monitorování holistický nejen pro datový sklad, ale i celou platformu Azure Analytics pro integrované monitorování. Tato dokumentace popisuje, jaké možnosti monitorování jsou k dispozici pro optimalizaci a správu analytických platforem pomocí synapse SQL.
 
 ## <a name="resource-utilization"></a>Využití prostředků
 
-V Azure Portal pro SQL Analytics jsou k dispozici následující metriky. Tyto metriky se procházejí [Azure monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
+V Azure Portal pro synapse SQL jsou k dispozici následující metriky. Tyto metriky se procházejí [Azure monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
 
 | Název metriky             | Popis                                                  | Typ agregace |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -54,13 +54,13 @@ Co je potřeba vzít v úvahu při prohlížení metrik a nastavení výstrah:
 
 ## <a name="query-activity"></a>Aktivita dotazu
 
-Pro programové prostředí při monitorování analýzy SQL prostřednictvím T-SQL poskytuje služba sadu zobrazení dynamické správy (zobrazení dynamické správy). Tato zobrazení jsou užitečná při aktivním řešení potíží a identifikaci slabých míst výkonu s vaším zatížením.
+Pro programové prostředí při monitorování synapse SQL prostřednictvím T-SQL poskytuje služba sadu zobrazení dynamické správy (zobrazení dynamické správy). Tato zobrazení jsou užitečná při aktivním řešení potíží a identifikaci slabých míst výkonu s vaším zatížením.
 
 Pokud chcete zobrazit seznam zobrazení dynamické správy, které platí pro synapse SQL, přečtěte si tuto [dokumentaci](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs). 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metriky a diagnostické protokolování 
 
-Obě metriky a protokoly je možné exportovat do Azure Monitor, konkrétně do [Azure monitor protokolů](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a můžou být prostřednictvím [dotazů protokolu](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)programově dostupné. Latence protokolu pro SQL Analytics je asi 10-15 minut. Další informace o odezvách, které mají vliv na latenci, najdete v následující dokumentaci.
+Obě metriky a protokoly je možné exportovat do Azure Monitor, konkrétně do [Azure monitor protokolů](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a můžou být prostřednictvím [dotazů protokolu](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)programově dostupné. Latence protokolu pro synapse SQL má přibližně 10-15 minut. Další informace o odezvách, které mají vliv na latenci, najdete v následující dokumentaci.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: a09094cf0d1bd3c2e299e968d7de8410dcd9c3cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 269cadc50d55c4b986c55f489cecd7fa17922ba8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721876"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656544"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning rozhraní API pro detekci anomálií
 
@@ -24,7 +24,7 @@ ms.locfileid: "76721876"
 > Probíhá údržba této položky. Doporučujeme vám používat [službu rozhraní API](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/) pro detekci anomálií, která využívá galerii Machine Learning algoritmů v Azure Cognitive Services ke zjištění anomálií z metrik obchodních, provozních a IoT.
 
 ## <a name="overview"></a>Přehled
-[Rozhraní API pro detekci anomálií](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) je příklad sestavený s Azure Machine Learning, který detekuje anomálie v datech časových řad s numerickými hodnotami, které jsou rovnoměrně rozmístěny v čase.
+[Rozhraní API pro detekci anomálií](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2) je příklad sestavený s Azure Machine Learning, který detekuje anomálie v datech časových řad s numerickými hodnotami, které jsou rovnoměrně rozmístěny v čase.
 
 Toto rozhraní API dokáže detekovat následující typy neobvyklé vzorů v datech časových řad:
 
@@ -39,29 +39,29 @@ Nabídka detekce anomálií je dodávána s užitečnými nástroji, které vám
 * [Webová aplikace](https://anomalydetection-aml.azurewebsites.net/) vám pomůže vyhodnotit a vizualizovat výsledky rozhraní API pro detekci anomálií na vašich datech.
 
 > [!NOTE]
-> Vyzkoušejte **si řešení Anomáli Insights** založené na [tomto rozhraní API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)
+> Vyzkoušejte **si řešení Anomáli Insights** založené na [tomto rozhraní API](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2)
 >
 <!-- This Solution is no longer available
 > To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
 -->
 
 ## <a name="api-deployment"></a>Nasazení rozhraní API
-Aby bylo možné používat rozhraní API, je nutné ho nasadit do předplatného Azure, kde bude hostovat jako webová služba Azure Machine Learning.  Můžete to provést z [Azure AI Gallery](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  Tím dojde k nasazení dvou Azure Machine Learning Studio (klasických) webových služeb (a jejich souvisejících prostředků) do předplatného Azure – jeden pro detekci anomálií s detekcí sezónnost a druhý bez detekce sezónnost.  Po dokončení nasazení budete moci spravovat vaše rozhraní API ze stránky [Azure Machine Learning Studio (klasické) webové služby](https://services.azureml.net/webservices/) .  Na této stránce budete moct najít umístění koncových bodů, klíče rozhraní API a ukázkový kód pro volání rozhraní API.  Podrobnější pokyny jsou k dispozici [zde](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
+Aby bylo možné používat rozhraní API, je nutné ho nasadit do předplatného Azure, kde bude hostovat jako webová služba Azure Machine Learning.  Můžete to provést z [Azure AI Gallery](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2).  Tím dojde k nasazení dvou Azure Machine Learning Studio (klasických) webových služeb (a jejich souvisejících prostředků) do předplatného Azure – jeden pro detekci anomálií s detekcí sezónnost a druhý bez detekce sezónnost.  Po dokončení nasazení budete moci spravovat vaše rozhraní API ze stránky [Azure Machine Learning Studio (klasické) webové služby](https://services.azureml.net/webservices/) .  Na této stránce budete moct najít umístění koncových bodů, klíče rozhraní API a ukázkový kód pro volání rozhraní API.  Podrobnější pokyny jsou k dispozici [zde](/azure/machine-learning/studio/manage-new-webservice).
 
 ## <a name="scaling-the-api"></a>Škálování rozhraní API
 Ve výchozím nastavení bude mít vaše nasazení bezplatný fakturační plán pro vývoj/testování, který zahrnuje 1 000 transakcí za měsíc a 2 výpočetní hodiny/měsíc.  V rámci svých potřeb můžete upgradovat na jiný plán.  Podrobnosti o cenách různých plánů [najdete v části](https://azure.microsoft.com/pricing/details/machine-learning/) "ceny produkčního webového rozhraní API".
 
 ## <a name="managing-aml-plans"></a>Správa plánů AML
-Svůj fakturační plán můžete spravovat [tady](https://services.azureml.net/plans/).  Název plánu bude založen na názvu skupiny prostředků, který jste zvolili při nasazování rozhraní API, a navíc k řetězci, který je pro vaše předplatné jedinečný.  Pokyny, jak upgradovat plán, [najdete](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice) v části Správa fakturačních plánů.
+Svůj fakturační plán můžete spravovat [tady](https://services.azureml.net/plans/).  Název plánu bude založen na názvu skupiny prostředků, který jste zvolili při nasazování rozhraní API, a navíc k řetězci, který je pro vaše předplatné jedinečný.  Pokyny, jak upgradovat plán, [najdete](/azure/machine-learning/studio/manage-new-webservice) v části Správa fakturačních plánů.
 
 ## <a name="api-definition"></a>Definice rozhraní API
 Webová služba poskytuje rozhraní API založené na REST prostřednictvím protokolu HTTPS, které lze spotřebovat různými způsoby, včetně webové nebo mobilní aplikace, R, Pythonu, Excelu atd.  Data časové řady odešlete do této služby prostřednictvím volání REST API a spustí se kombinace tří typů anomálií popsaných níže.
 
 ## <a name="calling-the-api"></a>Volání rozhraní API
-Aby bylo možné volat rozhraní API, budete muset znát umístění koncového bodu a klíč rozhraní API.  Tyto dvě požadavky spolu s ukázkovým kódem pro volání rozhraní API jsou k dispozici na stránce [Azure Machine Learning Studio (klasické) webové služby](https://services.azureml.net/webservices/) .  Přejděte na požadované rozhraní API a potom klikněte na kartu spotřebovat a pak ji vyhledejte.  Rozhraní API můžete volat jako rozhraní Swagger API (to znamená s parametrem `format=swagger`URL) nebo jako rozhraní API jiného typu než Swagger (tj. bez parametru `format` URL).  Vzorový kód používá formát Swagger.  Níže je příklad žádosti a odpovědi ve formátu mimo Swagger.  Tyto příklady jsou pro koncový bod sezónnost.  Koncový bod, který není sezónnost, je podobný.
+Aby bylo možné volat rozhraní API, budete muset znát umístění koncového bodu a klíč rozhraní API.  Tyto dvě požadavky spolu s ukázkovým kódem pro volání rozhraní API jsou k dispozici na stránce [Azure Machine Learning Studio (klasické) webové služby](https://services.azureml.net/webservices/) .  Přejděte na požadované rozhraní API a potom klikněte na kartu spotřebovat a pak ji vyhledejte.  Rozhraní API můžete volat jako rozhraní Swagger API (to znamená s parametrem URL `format=swagger` ) nebo jako rozhraní API jiného typu než Swagger (tj `format` . bez parametru URL).  Vzorový kód používá formát Swagger.  Níže je příklad žádosti a odpovědi ve formátu mimo Swagger.  Tyto příklady jsou pro koncový bod sezónnost.  Koncový bod, který není sezónnost, je podobný.
 
 ### <a name="sample-request-body"></a>Ukázka textu žádosti
-Požadavek obsahuje dva objekty: `Inputs` a. `GlobalParameters`  V níže uvedeném příkladu žádosti se některé parametry odesílají explicitně, zatímco jiné nejsou (posuňte se dolů na úplný seznam parametrů pro každý koncový bod).  Parametry, které se explicitně neodesílají v žádosti, budou používat výchozí hodnoty uvedené níže.
+Požadavek obsahuje dva objekty: `Inputs` a `GlobalParameters` .  V níže uvedeném příkladu žádosti se některé parametry odesílají explicitně, zatímco jiné nejsou (posuňte se dolů na úplný seznam parametrů pro každý koncový bod).  Parametry, které se explicitně neodesílají v žádosti, budou používat výchozí hodnoty uvedené níže.
 
     {
                 "Inputs": {
@@ -83,7 +83,7 @@ Požadavek obsahuje dva objekty: `Inputs` a. `GlobalParameters`  V níže uveden
     }
 
 ### <a name="sample-response"></a>Ukázková odpověď
-Chcete-li zobrazit `ColumnNames` pole, musíte do žádosti zahrnout `details=true` jako parametr adresy URL.  V níže uvedených tabulkách najdete význam každého z těchto polí.
+Chcete-li zobrazit `ColumnNames` pole, musíte `details=true` do žádosti zahrnout jako parametr adresy URL.  V níže uvedených tabulkách najdete význam každého z těchto polí.
 
     {
         "Results": {
@@ -125,8 +125,8 @@ Podrobnější informace o těchto vstupních parametrech jsou uvedeny v násled
 | --- | --- | --- | --- | --- | --- |
 | detektory. historywindow |Historie (v počtu datových bodů) použitá pro výpočet skóre anomálií |500 |celé číslo |10-2000 |Závislá na časové řadě |
 | detektory. spikesdips | Určuje, jestli se mají detekovat jenom špičky, jenom vyhrazené nebo obojí. |Obojí |Výčtový |Obě, špičky, DIP |Obojí |
-| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
-| trenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
+| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
+| trenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
 | tspikedetector. Citlivost |Citlivost pro detektor TSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
 | zspikedetector. Citlivost |Citlivost pro detektor ZSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
 | postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |celé číslo |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |– |
@@ -164,9 +164,9 @@ Podrobnější informace o těchto vstupních parametrech jsou uvedeny v násled
 | předzpracování. replaceMissing |Hodnoty, které slouží k imputaci chybějících dat |LKV (Poslední známá hodnota) |Výčtový |nula, LKV, střední hodnota |– |
 | detektory. historywindow |Historie (v počtu datových bodů) použitá pro výpočet skóre anomálií |500 |celé číslo |10-2000 |Závislá na časové řadě |
 | detektory. spikesdips | Určuje, jestli se mají detekovat jenom špičky, jenom vyhrazené nebo obojí. |Obojí |Výčtový |Obě, špičky, DIP |Obojí |
-| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
-| postrenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
-| negtrenddetector. Citlivost |Citlivost pro záporný detektor trendu |3.25 |double |Žádná |3,25-5 (méně hodnoty znamená citlivější) |
+| bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
+| postrenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
+| negtrenddetector. Citlivost |Citlivost pro záporný detektor trendu |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
 | tspikedetector. Citlivost |Citlivost pro detektor TSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
 | zspikedetector. Citlivost |Citlivost pro detektor ZSpike |3 |celé číslo |1-10 |3-5 (méně hodnot znamená citlivější) |
 | sezónnost. Enable |Zda má být provedena analýza sezónnost |true |Boolean |true, false |Závislá na časové řadě |

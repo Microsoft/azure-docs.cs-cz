@@ -5,33 +5,24 @@ keywords: Azure App Service, Webová aplikace, mobilní aplikace, aplikace API, 
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535651"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649052"
 ---
 # <a name="security-in-azure-app-service"></a>Zabezpečení v Azure App Service
 
 V tomto článku se dozvíte, jak [Azure App Service](overview.md) pomáhá zabezpečit webovou aplikaci, back-end mobilní aplikace, aplikaci API a [aplikaci Function App](/azure/azure-functions/). Také ukazuje, jak můžete aplikaci dále zabezpečit pomocí integrovaných funkcí App Service.
 
-Komponenty platformy App Service, včetně virtuálních počítačů Azure, úložiště, síťových připojení, webových rozhraní, funkcí pro správu a integrace, jsou aktivně zabezpečeny a zpřísněny. App Service projde průběžnými kontrolami dodržování předpisů, aby se zajistilo, že:
-
-- Prostředky vaší aplikace jsou [zabezpečené](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) z prostředků Azure jiných zákazníků.
-- [Instance virtuálních počítačů a běhový software se pravidelně aktualizují](overview-patch-os-runtime.md) a řeší nově zjištěná ohrožení zabezpečení. 
-- Komunikace s tajnými kódy (jako jsou připojovací řetězce) mezi vaší aplikací a dalšími prostředky Azure (například [SQL Database](https://azure.microsoft.com/services/sql-database/)) zůstává v Azure a nepřekračuje žádné hranice sítě. Tajné kódy jsou při uložení vždy zašifrovány.
-- Veškerá komunikace přes App Service funkce připojení, jako je [hybridní připojení](app-service-hybrid-connections.md), je zašifrovaná. 
-- Připojení ke vzdáleným nástrojům pro správu, jako je Azure PowerShell, Azure CLI, sady SDK Azure a rozhraní REST API, jsou šifrovaná.
-- 24 hodinová Správa hrozeb chrání infrastrukturu a platformu proti malwaru, distribuovaným útokům na DDoS (man-in-the-middle), MITM a dalším hrozbám.
-
-Další informace o infrastruktuře a zabezpečení platforem v Azure najdete v tématu [Centrum zabezpečení Azure](https://azure.microsoft.com/overview/trusted-cloud/).
+[!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
 V následujících částech se dozvíte, jak dále chránit aplikaci App Service před hrozbami.
 
 ## <a name="https-and-certificates"></a>HTTPS a certifikáty
 
-App Service vám umožní zabezpečit aplikace pomocí [protokolu HTTPS](https://wikipedia.org/wiki/HTTPS). Po vytvoření aplikace je její výchozí název domény (\<APP_NAME>. azurewebsites.NET) již přístupný pomocí protokolu HTTPS. Pokud [pro svou aplikaci nakonfigurujete vlastní doménu](app-service-web-tutorial-custom-domain.md), měli byste [ji také ZABEZPEČIT pomocí certifikátu TLS/SSL](configure-ssl-bindings.md) , aby klientské prohlížeče mohli vytvořit zabezpečená připojení HTTPS k vaší vlastní doméně. App Service podporuje několik typů certifikátů:
+App Service vám umožní zabezpečit aplikace pomocí [protokolu HTTPS](https://wikipedia.org/wiki/HTTPS). Po vytvoření aplikace je její výchozí název domény ( \< app_name>. azurewebsites.NET) již přístupný pomocí protokolu HTTPS. Pokud [pro svou aplikaci nakonfigurujete vlastní doménu](app-service-web-tutorial-custom-domain.md), měli byste [ji také ZABEZPEČIT pomocí certifikátu TLS/SSL](configure-ssl-bindings.md) , aby klientské prohlížeče mohli vytvořit zabezpečená připojení HTTPS k vaší vlastní doméně. App Service podporuje několik typů certifikátů:
 
 - Free App Service spravovaný certifikát
 - App Service certifikát
@@ -52,7 +43,7 @@ App Service podporuje FTP i FTPS pro nasazování souborů. Nicméně FTPS by se
 
 Ve výchozím nastavení vaše aplikace App Service přijímá požadavky ze všech IP adres z Internetu, ale můžete tento přístup omezit na malou podmnožinu IP adres. App Service ve Windows vám umožní definovat seznam IP adres, které mají povolený přístup k vaší aplikaci. Seznam povolených adres může zahrnovat jednotlivé IP adresy nebo rozsah IP adres definovaných maskou podsítě. Další informace najdete v tématu [Azure App Service omezení statických IP adres](app-service-ip-restrictions.md).
 
-Pro App Service ve Windows můžete také dynamicky omezit IP adresy konfigurací _souboru Web. config_. Další informace najdete v tématu [>Dynamic IP \<Security dynamicIpSecurity ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Pro App Service ve Windows můžete také dynamicky omezit IP adresy konfigurací _souboru Web. config_. Další informace najdete v tématu [>Dynamic IP Security \< dynamicIpSecurity ](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Ověřování a autorizace klienta
 

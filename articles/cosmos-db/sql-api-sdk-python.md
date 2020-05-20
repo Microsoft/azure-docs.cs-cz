@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: SQL Python API, SDK & prostředky'
 description: Seznamte se se všemi informacemi o rozhraních API SQL Pythonu a sadě SDK, včetně dat vydání, data odchodu a změn provedených mezi jednotlivými verzemi Azure Cosmos DB Python SDK.
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 11/29/2018
-ms.author: sngun
-ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: ce74a7b02b9c450e07402d96a1aaba2a4b704788
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982901"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650716"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -21,8 +21,9 @@ ms.locfileid: "80982901"
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -35,11 +36,11 @@ ms.locfileid: "80982901"
 |**Stáhnout sadu SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**Pokyny k instalaci sady SDK**|[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-cosmos-python)|
-|**Přispívání do sady SDK**|[GitHubu](https://github.com/Azure/azure-cosmos-python)|
+|**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
 |**Začínáme**|[Začínáme se sadou Python SDK](sql-api-python-application.md)|
 |**Aktuální podporovaná platforma**|[Python 2,7](https://www.python.org/downloads/) a [Python 3,5](https://www.python.org/downloads/)|
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="302"></a><a name="3.0.2"/>3.0.2
 * Přidání podpory pro datový typ s více mnohoúhelníky
@@ -125,7 +126,7 @@ ms.locfileid: "80982901"
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
 * Podporuje geoprostorové indexy.
-* Ověří vlastnost ID pro všechny prostředky. ID pro prostředky nesmí obsahovat znaky?,/, # \, , znaky nebo končit mezerou.
+* Ověří vlastnost ID pro všechny prostředky. ID pro prostředky nesmí obsahovat znaky?,/, #, \, znaky nebo končit mezerou.
 * Přidá novou hlavičku průběh transformace indexu do ResourceResponse.
 
 ### <a name="110"></a><a name="1.1.0"/>1.1.0
@@ -156,7 +157,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK jsou službou o
 
 <br/>
 
-| Version | Datum vydání | Datum vyřazení |
+| Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
 | [3.0.2](#3.0.2) |15. listopadu 2018 |--- |
 | [3.0.1](#3.0.1) |Říjen 04, 2018 |--- |
@@ -187,7 +188,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK jsou službou o
 | 0.9.1 – zapůjčení |23. září 2014 |29. února 2016 |
 | 0.9.0 – zapůjčení |21. srpna 2014 |29. února 2016 |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také

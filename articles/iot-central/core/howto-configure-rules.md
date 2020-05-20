@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f6e85ba5aafaad973d28f799a251b6f3aae548e3
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871940"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659348"
 ---
 # <a name="configure-rules"></a>Konfigurace pravidel
 
@@ -31,7 +31,7 @@ V části cílová zařízení vyberte, jaký typ zařízení bude toto pravidlo
 
 Podmínky určují, na čem se pravidla spouštějí. Když v současné době přidáte více podmínek do pravidla, jsou logicky a společně. Jinými slovy, pro pravidlo, které se má vyhodnotit jako true, musí být splněné všechny podmínky.  
 
-Na následujícím snímku obrazovky se podmínky kontrolují, když je teplota větší než 70&deg; F a vlhkost je menší než 10. Pokud jsou oba tyto příkazy pravdivé, pravidlo se vyhodnotí jako true a aktivuje akci.
+Na následujícím snímku obrazovky se podmínky kontrolují, když je teplota větší než 70 &deg; F a vlhkost je menší než 10. Pokud jsou oba tyto příkazy pravdivé, pravidlo se vyhodnotí jako true a aktivuje akci.
 
 ![Podmínky](media/howto-configure-rules/conditions.png)
 
@@ -53,7 +53,4 @@ Omezení platí pro pravidla, která se použijí pro IoT Edge moduly. Pravidla 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak nakonfigurovat pravidlo v aplikaci Azure IoT Central, můžete:
-
-> [!div class="nextstepaction"]
-> [Průběžná analýza dat](howto-create-analytics.md)
+Teď, když jste se naučili, jak nakonfigurovat pravidlo v aplikaci Azure IoT Central, se dozvíte, jak [nakonfigurovat Rozšířená pravidla](howto-configure-rules-advanced.md) pomocí Power Automate nebo Azure Logic Apps.

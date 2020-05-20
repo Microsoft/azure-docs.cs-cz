@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 86678365d1510199247e8a1aaa48ec844d07de32
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 07ceb8eebed5657f87417dc24281008dd0863851
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592929"
+ms.locfileid: "83650390"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Osvědčené postupy pro SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -52,23 +52,23 @@ Pokud je to možné, můžete připravit soubory pro lepší výkon:
 
 ## <a name="push-wildcards-to-lower-levels-in-path"></a>Vložení zástupných znaků na nižší úrovně v cestě
 
-V cestě můžete použít zástupné znaky k [dotazování více souborů a složek](develop-storage-files-overview.md#query-multiple-files-or-folders). SQL on-demand vypíše soubory ve vašem účtu úložiště počínaje prvním * pomocí rozhraní API úložiště a eliminuje soubory, které se neshodují s určenou cestou. Zmenšení počátečního seznamu souborů může zvýšit výkon, pokud existuje mnoho souborů, které odpovídají zadané cestě k prvnímu zástupnému znaku.
+V cestě můžete použít zástupné znaky k [dotazování více souborů a složek](develop-storage-files-overview.md#query-multiple-files-or-folders). SQL na vyžádání vypíše soubory ve vašem účtu úložiště počínaje prvním * pomocí rozhraní API úložiště a eliminuje soubory, které se neshodují s určenou cestou. Zmenšení počátečního seznamu souborů může zvýšit výkon, pokud existuje mnoho souborů, které odpovídají zadané cestě k prvnímu zástupnému znaku.
 
 ## <a name="use-appropriate-data-types"></a>Použití vhodných datových typů
 
-Datové typy použité v dotazu mají vliv na výkon. Můžete získat lepší výkon, pokud: 
+Datové typy, které používáte ve svém vlivu na výkon dotazu. Můžete získat lepší výkon, pokud: 
 
 - Použijte nejmenší velikost dat, která bude vyhovovat největší možné hodnotě.
   - Pokud je maximální délka znakové hodnoty 30 znaků, použijte datový typ znak o délce 30.
   - Pokud jsou všechny hodnoty sloupce znaků pevné velikosti, použijte char nebo nchar. V opačném případě použijte varchar nebo nvarchar.
   - Pokud je maximální hodnota sloupce celé číslo 500, použijte typ smallint, protože se jedná o nejmenší datový typ, který může být přizpůsoben této hodnotě. [Zde](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15)můžete najít rozsahy datových typů typu Integer.
 - Pokud je to možné, použijte typ varchar a char místo typu nvarchar a nchar.
-- Pokud je to možné, použijte datové typy založené na celých číslech. Řazení, spojování a seskupování podle operací se provádí rychleji na základě celých čísel než u dat znaků.
-- Pokud používáte odvození schématu, podívejte se na odvozený [datový typ](#check-inferred-data-types).
+- Pokud je to možné, použijte datové typy založené na celých číslech. Operace řazení, spojování a seskupit podle jsou prováděny rychleji na základě celých čísel než u znaků.
+- Pokud používáte odvození schématu, ověřte, zda se jedná o [typ dat s odvozeným datovým typem](#check-inferred-data-types).
 
 ## <a name="check-inferred-data-types"></a>Kontrolovat odvozené datové typy
 
-[Odvození schématu](query-parquet-files.md#automatic-schema-inference) vám pomůže rychle napsat dotazy a prozkoumat data bez znalosti schématu souborů. Tato pohodlí se dodává na úkor odvozených datových typů, které jsou větší než ve skutečnosti. K tomu dojde v případě, že ve zdrojových souborech není dostatek informací, aby bylo zajištěno, že bude použit vhodný datový typ. Například soubory Parquet neobsahují metadata o maximální délce sloupce znaků a SQL na vyžádání odvodí jako varchar (8000). 
+[Odvození schématu](query-parquet-files.md#automatic-schema-inference) vám pomůže rychle napsat dotazy a prozkoumat data bez znalosti schématu souborů. Tato pohodlí se dodává na úkor odvozených datových typů, které jsou větší než ve skutečnosti. K tomu dochází, když ve zdrojových souborech není dostatek informací, aby se zajistilo, že se použije vhodný datový typ. Například soubory Parquet neobsahují metadata o maximální délce sloupce znaků a SQL na vyžádání odvodí jako varchar (8000). 
 
 Můžete kontrolovat výsledné datové typy dotazu pomocí [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15).
 
@@ -92,7 +92,7 @@ Zde je sada výsledků.
 |0|2|pickup_datetime|datetime2 (7)|8|
 |0|3|passenger_count|int|4|
 
-Jakmile budeme znát odvozené datové typy pro dotaz, můžeme určit vhodné datové typy:
+Jakmile víme o odvozených datových typech pro dotaz, můžeme specifikovat vhodné datové typy:
 
 ```sql  
 SELECT
@@ -143,4 +143,4 @@ Pokud potřebujete lepší výkon, vyzkoušejte přihlašovací údaje SAS pro p
 
 ## <a name="next-steps"></a>Další kroky
 
-Běžné problémy a řešení najdete v článku [věnovaném řešení potíží](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) . Pokud pracujete s fondem SQL místo SQL na vyžádání, přečtěte si prosím článek [osvědčené postupy pro fond SQL](best-practices-sql-pool.md) , kde najdete konkrétní pokyny.
+Běžné problémy a řešení najdete v článku [věnovaném řešení potíží](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) . Pokud pracujete s fondem SQL místo SQL na vyžádání, přečtěte si článek [osvědčené postupy pro fond SQL](best-practices-sql-pool.md) , kde najdete konkrétní pokyny.

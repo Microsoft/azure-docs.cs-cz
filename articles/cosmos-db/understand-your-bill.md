@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 2b62ee971c2cff84f60bad1be4304631513fed22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186318"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647717"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Vysvětlení informací na faktuře za službu Azure Cosmos DB
 
@@ -208,8 +208,8 @@ U Azure Cosmos DB úrovně Free získáte k bezplatnému účtu první 400 RU/s 
 - Teď Předpokládejme ve stejném účtu, přidáme další databázi nebo kontejner s 1000 RU/s a 10 GB úložiště.
 - Ve vyúčtování se nyní zobrazí poplatek za 1000 RU/s a 10 GB úložiště. 
 
-### <a name="billing-example---container-or-database-with-autoscale-throughput"></a>Příklad fakturace – kontejner nebo databáze s propustností automatického škálování
-- Řekněme, že v účtu bezplatné úrovně se vytvoří databáze nebo kontejner s povoleným autoškálováním s maximálním počtem RU/s 4000 RU/s. Tento prostředek se automaticky škáluje mezi 400 RU/s-4000 RU/s. 
+### <a name="billing-example---container-with-autoscale-throughput"></a>Příklad fakturace – kontejner s propustností automatického škálování
+- Řekněme, že v účtu bezplatné úrovně se vytvoří kontejner s povoleným autoškálováním s maximálním počtem RU/s 4000 RU/s. Tento prostředek se automaticky škáluje mezi 400 RU/s-4000 RU/s. 
 - Předpokládejme ve hodinu 1 až hod. 10 je zdrojem minimálně 400 RU/s. Během hodiny 11 se prostředek škáluje až 1000 RU/s a pak se za hodinu vrátí do 400 RU/s.
 - V hodinách 1 až 10 se vám bude účtovat $0 pro propustnost, protože 400 RU/s se týkalo úrovně Free. 
 - Ve hodiny 11 se vám bude účtovat efektivní 1000 RU/s-400 RU/s = 600 RU/s, protože toto je nejvyšší RU/s v hodinách. Po celou hodinu bude mít 6 jednotek 100 RU/s, takže celkové náklady na propustnost za hodinu budou 6 jednotek × $0,012 = $0,072. 

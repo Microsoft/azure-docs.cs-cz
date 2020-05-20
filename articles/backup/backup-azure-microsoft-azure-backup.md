@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a442cb094f87852c9d4f781d378f5886f3a4a42
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273407"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652130"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -40,6 +40,9 @@ Azure Backup Server zdědí většinu funkcí zálohování úloh z Data Protect
 ## <a name="choose-an-installation-platform"></a>Zvolit instalační platformu
 
 Prvním krokem k zahájení a spuštění Azure Backup Server je nastavení Windows serveru. Váš server může být v Azure nebo v místním prostředí.
+
+* K ochraně místních úloh se musí MABS Server nacházet místně.
+* Aby bylo možné chránit úlohy běžící na virtuálních počítačích Azure, musí být server MABS umístěný v Azure, který běží jako virtuální počítač Azure.
 
 ### <a name="using-a-server-in-azure"></a>Použití serveru v Azure
 
@@ -92,7 +95,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ### <a name="downloading-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Pokud už máte otevřený trezor Recovery Services, pokračujte krokem 3. Pokud nemáte otevřený trezor Recovery Services, ale nachází se v Azure Portal, v hlavní nabídce klikněte na tlačítko **Procházet**.
 
    * V seznamu prostředků zadejte **Recovery Services**.
@@ -183,9 +186,9 @@ Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu 
 
     Pro konfiguraci služby SSRS použijte následující hodnoty:
     * Účet služby: použít předdefinovaný účet by měl být síťová služba
-    * Adresa URL webové služby: virtuální adresář by měl být ReportServer_\<SqlInstanceName>
-    * Databáze: DatabaseName by měla být ReportServer\<$ SqlInstanceName>
-    * Adresa URL webového portálu: virtuální adresář by měl být Reports_\<SqlInstanceName>
+    * Adresa URL webové služby: virtuální adresář by měl být ReportServer_ \< SQLInstanceName>
+    * Databáze: DatabaseName by měla být ReportServer $ \< SQLInstanceName>
+    * Adresa URL webového portálu: virtuální adresář by měl být Reports_ \< SQLInstanceName>
 
     [Přečtěte si další informace](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguraci služby SSRS.
 
@@ -237,7 +240,7 @@ MABS používá agenta ochrany Data Protection Manager System Center. [Tady je p
 
 Následující části popisují, jak aktualizovat agenty ochrany pro klientské počítače.
 
-1. V konzole správce záložního serveru vyberte**agenti** **pro správu** > .
+1. V konzole správce záložního serveru vyberte **Management**  >  **agenti**pro správu.
 
 2. V podokně zobrazení vyberte klientské počítače, pro které chcete aktualizovat agenta ochrany.
 

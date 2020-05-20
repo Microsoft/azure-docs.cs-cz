@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
-ms.openlocfilehash: 9713d963978e34ad874dc032676a6e1f14e4657c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248860ad6963fcd04526f0d94e52d6a6181463c5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77210941"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657339"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrace z CouchBase do Azure Cosmos DB SQL API
 
@@ -161,7 +161,7 @@ Níže jsou uvedené fragmenty kódu pro operace CRUD:
 
 ### <a name="insert-and-update-operations"></a>Operace INSERT a Update
 
-Kde *_repo* je objektem úložiště a *doc* , je objekt třídy Pojo. Můžete použít `.save` k vložení nebo Upsert (Pokud se našel dokument se zadaným ID). Následující fragment kódu ukazuje, jak vložit nebo aktualizovat objekt doc:
+Kde *_repo* je objektem úložiště a *doc* , je objekt třídy Pojo. Můžete použít `.save` k vložení nebo Upsert (Pokud se našel dokument se ZADANÝM ID). Následující fragment kódu ukazuje, jak vložit nebo aktualizovat objekt doc:
 
 ```_repo.save(doc);```
 
@@ -186,7 +186,7 @@ Dotazy N1QL slouží jako způsob, jak definovat dotazy v Couchbase.
 
 |Dotaz N1QL | Dotaz na Azure CosmosDB|
 |-------------------|-------------------|
-|Vyberte META (`TravelDocument`). ID jako ID, `TravelDocument`. * z `TravelDocument` Where `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" a Country = ' Indie ' a jakékoli m v vízech splňuje požadavky m. Type = = ' Multi-Entry ' a m. Country v [' Indie ', Bhútán '] ORDER by ` Validity` limit 25 offset 0   | Vyberte c. ID, c z c JOINa m v c. Country = ' Indie ', kde c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" a c. Country = ' Indie ' a m. Type = ' Multi-Entry ' a m. Country IN (' Indie ', ' Bhútán ') ORDER BY c |
+|Vyberte META ( `TravelDocument` ). ID jako ID, `TravelDocument` . * z `TravelDocument` Where `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" a Country = ' Indie ' a jakékoli m v vízech splňuje požadavky m. Type = = ' Multi-Entry ' a m. Country v [' Indie ', Bhútán '] ORDER by ` Validity` limit 25 offset 0   | Vyberte c. ID, c z c JOINa m v c. Country = ' Indie ', kde c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" a c. Country = ' Indie ' a m. Type = ' Multi-Entry ' a m. Country IN (' Indie ', ' Bhútán ') ORDER BY c |
 
 Ve svých dotazech N1QL si můžete všimnout následujících změn:
 
@@ -314,49 +314,33 @@ Toto je jednoduchý typ úlohy, ve které můžete vyhledávat místo dotazů. P
     
    ```json
    {
-       "indexingMode": "consistent",
-       "includedPaths": 
-       [
-           {
-            "path": "/*",
-            "indexes": 
-             [
-                {
-                  "kind": "Range",
-                  "dataType": "Number"
-                },
-                {
-                  "kind": "Range",
-                  "dataType": "String"
-                },
-                {
-                   "kind": "Spatial",
-                   "dataType": "Point"
-                }
-             ]
-          }
-       ],
-       "excludedPaths": 
-       [
-         {
-             "path": "/path/to/single/excluded/property/?"
-         },
-         {
-             "path": "/path/to/root/of/multiple/excluded/properties/*"
-         }
-      ]
-   }
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ]
+    }
    ````
 
    Nahraďte výše uvedené zásady indexování následujícími zásadami:
 
    ```json
    {
-       "indexingMode": "none"
-   }
+    "indexingMode": "none",
+    "automatic": false,
+    "includedPaths": [],
+    "excludedPaths": []
+    }
    ```
 
-1. Pomocí následujícího fragmentu kódu vytvořte objekt připojení. Objekt připojení (který se má umístit @Bean do statického umístění nebo ho označit jako statický):
+1. Pomocí následujícího fragmentu kódu vytvořte objekt připojení. Objekt připojení (který se má umístit do @Bean statického umístění nebo ho označit jako statický):
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();

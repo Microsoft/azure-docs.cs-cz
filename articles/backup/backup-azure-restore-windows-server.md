@@ -1,17 +1,17 @@
 ---
-title: Obnovení dat v Azure do Windows serveru
+title: Obnovení souborů na Windows serveru pomocí agenta MARS
 description: V tomto článku se dozvíte, jak obnovit data uložená v Azure do počítače s Windows serverem nebo Windows pomocí agenta Microsoft Azure Recovery Services (MARS).
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 0494ce8016ff8b09265dd7ced8dc0926fd0c1a43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 446ebf563a09131b715b2e08033a7a0278a1fd95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186800"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652090"
 ---
-# <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Obnovení souborů do Windows pomocí modelu nasazení Azure Resource Manager
+# <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Obnovení souborů na Windows serveru pomocí agenta MARS
 
 Tento článek vysvětluje, jak obnovit data z trezoru služby Backup. Chcete-li obnovit data, použijte Průvodce obnovením dat v agentovi Microsoft Azure Recovery Services (MARS). Můžete:
 
@@ -40,7 +40,7 @@ Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače
 
     ![Snímek obrazovky Azure Backup se zvýrazněnou možností obnovit data](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Na stránce **Začínáme** pro obnovení dat na stejném serveru nebo počítači vyberte **Tento server (`<server name>`)** > **Další**.
+3. Na stránce **Začínáme** pro obnovení dat na stejném serveru nebo počítači vyberte **Tento server ( `<server name>` )**  >  **Další**.
 
     ![Snímek obrazovky s Začínáme stránku Průvodce obnovením dat](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
@@ -114,7 +114,7 @@ Tyto kroky zahrnují následující terminologii:
 
     ![Snímek obrazovky Průvodce obnovením dat výběr stránky záložního serveru](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. Na stránce **Vybrat režim obnovení** vyberte **jednotlivé soubory a složky** > **Další**.
+7. Na stránce **Vybrat režim obnovení** vyberte **jednotlivé soubory a složky**  >  **Další**.
 
     ![Snímek obrazovky Průvodce obnovením dat – výběr stránky režimu obnovení](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 

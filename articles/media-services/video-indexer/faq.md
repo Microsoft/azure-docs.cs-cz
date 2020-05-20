@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767211"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652178"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer nejčastějších dotazech
 
@@ -99,6 +99,10 @@ Podrobnosti najdete v článcích o přizpůsobení [osob](customize-person-mode
 Ano. Kliknutím na tlačítko **Upravit video** v zobrazení knihovny nebo kliknutím na tlačítko **otevřít v editoru** na displeji přehrávače se dostanete na kartu **projekty** . Můžete vytvořit nový projekt a přidat další videa z knihovny, abyste je mohli společně upravovat. až budete hotovi, můžete si video vykreslit a stáhnout. 
 
 Pokud chcete získat přehled o novém videu, Indexujte ho pomocí Video Indexer a zobrazí se ve vaší knihovně se svými přehledy.
+
+### <a name="can-i-index-multiple-audio-streams-or-channels"></a>Je možné indexovat více zvukových streamů nebo kanálů?
+
+Pokud je k dispozici více zvukových streamů, Video Indexer převezme první výskyt dat a zpracuje pouze tento datový proud. V jakémkoli audio streamu Video Indexer procesy přebírají různé kanály (pokud jsou k dispozici) a zpracovávají je jako mono. V případě manipulace s datovými proudy/kanály můžete v souboru použít příkazy FFmpeg ještě před jejich indexováním.
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Jaká je smlouva SLA pro Video Indexer?
 

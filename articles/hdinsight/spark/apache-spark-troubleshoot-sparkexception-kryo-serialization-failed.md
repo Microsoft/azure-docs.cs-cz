@@ -1,18 +1,18 @@
 ---
 title: Problémy s JDBC/& ODBC – rozhraní Apache Thrift Framework – Azure HDInsight
 description: Nepovedlo se stáhnout velké datové sady pomocí rozhraní JDBC/ODBC a Apache Thrift software Framework ve službě Azure HDInsight.
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 07/29/2019
-ms.openlocfilehash: 23693dcae2f361b88440ec88ca39fd8ed229d85a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 05/14/2020
+ms.openlocfilehash: a8dcd6ae844810213ed6706002cdb9a31de94f60
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75894263"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653597"
 ---
 # <a name="unable-to-download-large-data-sets-using-jdbcodbc-and-apache-thrift-software-framework-in-hdinsight"></a>Nepovedlo se stáhnout velké datové sady pomocí rozhraní JDBC/ODBC a Apache Thrift software Framework v HDInsight.
 
@@ -33,7 +33,10 @@ Tato výjimka je způsobená procesem serializace, který se pokouší použít 
 
 ## <a name="resolution"></a>Řešení
 
-Zvyšte `Kryoserializer` hodnotu vyrovnávací paměti. Přidejte klíč s názvem `spark.kryoserializer.buffer.max` a nastavte ho na `2048` v spark2 config v `Custom spark2-thrift-sparkconf`části.
+Zvyšte `Kryoserializer` hodnotu vyrovnávací paměti. Přidejte klíč s názvem `spark.kryoserializer.buffer.max` a nastavte ho na `2047` v spark2 config v části `Custom spark2-thrift-sparkconf` . Restartujte všechny ovlivněné součásti.
+
+> [!IMPORTANT]
+> Hodnota pro `spark.kryoserializer.buffer.max` musí být menší než 2048. Zlomkové hodnoty nejsou podporovány.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -41,6 +44,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

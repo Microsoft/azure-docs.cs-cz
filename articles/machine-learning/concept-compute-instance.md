@@ -1,5 +1,5 @@
 ---
-title: Co je instance služby COMPUTE Azure Machine Learning?
+title: Co je výpočetní instance služby Azure Machine Learning?
 titleSuffix: Azure Machine Learning
 description: Přečtěte si o Azure Machine Learning výpočetní instanci, plně spravované cloudové pracovní stanici.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7afbfcc7830374c07850d1f634eb5e29fb459597
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283924"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654914"
 ---
-# <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je instance služby COMPUTE Azure Machine Learning?
+# <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance služby Azure Machine Learning?
 
 Instance COMPUTE Azure Machine Learning (Preview) je plně spravovaná cloudová pracovní stanice pro odborníky na data. 
 
@@ -35,7 +35,7 @@ Výpočetní instance je plně spravovaná cloudová pracovní stanice optimaliz
 |----|----|
 |Produktivita|Vědečtí data mohou vytvářet a nasazovat modely pomocí integrovaných poznámkových bloků a ve svém webovém prohlížeči tyto nástroje:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio|
 |Spravované & zabezpečené|Snižte nároky na zabezpečení a přidejte dodržování požadavků podnikového zabezpečení. Výpočetní instance poskytují robustní zásady správy a zabezpečené síťové konfigurace, jako jsou:<br/><br/>– Automatické zřizování z Správce prostředků šablon nebo Azure Machine Learning SDK<br/>- [Řízení přístupu na základě role (RBAC)](/azure/role-based-access-control/overview)<br/>- [Podpora virtuální sítě](how-to-enable-virtual-network.md#compute-instance)<br/>-Zásada SSH pro povolení nebo zakázání přístupu SSH|
-|Předem nakonfigurované&nbsp;nebo&nbsp;ml|Ušetřete čas při instalaci s předem nakonfigurovanými a aktuálními balíčky ML, architekturou pro hloubkové učení a ovladači GPU.|
+|Předem nakonfigurované &nbsp; nebo &nbsp; ml|Ušetřete čas při instalaci s předem nakonfigurovanými a aktuálními balíčky ML, architekturou pro hloubkové učení a ovladači GPU.|
 |Plně přizpůsobitelné|Široká podpora typů virtuálních počítačů Azure, včetně GPU a trvalého přizpůsobení nízké úrovně, jako je instalace balíčků a ovladačů, vede k pokročilým scénářům Breeze. |
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Nástroje a prostředí
@@ -51,7 +51,6 @@ Tyto nástroje a prostředí se nainstalují do výpočetní instance:
 |Knihovna Intel MPI||
 |Azure CLI ||
 |Ukázky Azure Machine Learning ||
-|Azure Machine Learning modul EDAT ||
 |Docker||
 |Nginx||
 |NCCL 2,0 ||
@@ -68,9 +67,8 @@ Tyto nástroje a prostředí se nainstalují do výpočetní instance:
 |Anaconda Python||
 |Jupyter a rozšíření||
 |Jupyterlab a rozšíření||
-|Visual Studio Code ||
 [Sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>z PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
-|Další balíčky PyPI|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
+|Další balíčky PyPI|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Balíčky conda|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Balíčky pro hloubkové učení|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
 |Balíčky ONNX|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
@@ -104,7 +102,7 @@ Soubory ve sdílené složce jsou dostupné ze všech výpočetních instancí v
 
 Nejnovější ukázky Azure Machine Learning můžete také klonovat do složky v adresáři uživatelských souborů ve sdílené složce pracovního prostoru.
 
-Zápis malých souborů může být pomalejší na síťových jednotkách, než je zapisuje do samotného virtuálního počítače.  Pokud píšete mnoho malých souborů, zkuste použít adresář přímo na výpočetní instanci, jako je `/tmp` například adresář. Upozorňujeme, že tyto soubory nebudou přístupné z jiných výpočetních instancí v pracovním prostoru.
+Zápis malých souborů může být pomalejší na síťových jednotkách, než je zapisuje do samotného virtuálního počítače.  Pokud píšete mnoho malých souborů, zkuste použít adresář přímo na výpočetní instanci, jako je například `/tmp` adresář. Upozorňujeme, že tyto soubory nebudou přístupné z jiných výpočetních instancí v pracovním prostoru.
 
 ## <a name="managing-a-compute-instance"></a>Správa výpočetní instance
 

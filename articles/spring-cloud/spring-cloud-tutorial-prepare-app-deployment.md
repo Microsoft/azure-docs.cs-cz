@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731180"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657144"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure
 
@@ -129,11 +129,24 @@ Pro jaře Boot verze 2,2 přidejte do souboru POM aplikace následující závis
 </dependency>
 ```
 
-## <a name="other-required-dependencies"></a>Další požadované závislosti
+## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Další doporučené závislosti pro povolení funkcí Azure jarního cloudu
 
-Aby bylo možné povolit integrované funkce Azure jarního cloudu, musí vaše aplikace zahrnovat následující závislosti. Díky tomu je zajištěno, že aplikace správně nakonfiguruje jednotlivé komponenty.
+Pokud chcete pro distribuované trasování povolit integrované funkce Azure jarního cloudu z registru služby, musíte do své aplikace zahrnout taky následující závislosti. Některé z těchto závislostí můžete odstranit, pokud nepotřebujete odpovídající funkce pro konkrétní aplikace.
 
-### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient anotace
+### <a name="service-registry"></a>Registr služby
+
+Pokud chcete použít spravovanou službu Azure Service Registry, zahrňte `spring-cloud-starter-netflix-eureka-client` závislost do souboru pom. XML, jak je znázorněno zde:
+
+```xml
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+```
+
+Koncový bod serveru registru služby se do vaší aplikace automaticky vloží jako proměnné prostředí. Aplikace se mohou registrovat pomocí serveru registru služby a zjišťovat další závislé mikroslužby.
+
+#### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient anotace
 
 Přidejte následující anotaci do zdrojového kódu aplikace.
 ```java
@@ -159,22 +172,9 @@ public class GatewayApplication {
 }
 ```
 
-### <a name="service-registry-dependency"></a>Závislost registru služby
+### <a name="distributed-configuration"></a>Distribuovaná konfigurace
 
-Pokud chcete použít spravovanou službu Azure Service Registry, zahrňte `spring-cloud-starter-netflix-eureka-client` závislost do souboru pom. XML, jak je znázorněno zde:
-
-```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-```
-
-Koncový bod serveru registru služby se do vaší aplikace automaticky vloží jako proměnné prostředí. Aplikace se mohou registrovat pomocí serveru registru služby a zjišťovat další závislé mikroslužby.
-
-### <a name="distributed-configuration-dependency"></a>Závislost distribuované konfigurace
-
-Pokud chcete povolit distribuovanou konfiguraci, zahrňte do části závislosti v souboru pom. XML následující `spring-cloud-config-client` závislost:
+Pokud chcete povolit distribuovanou konfiguraci, zahrňte `spring-cloud-config-client` do části závislosti v souboru pom. XML následující závislost:
 
 ```xml
 <dependency>
@@ -186,7 +186,7 @@ Pokud chcete povolit distribuovanou konfiguraci, zahrňte do části závislosti
 > [!WARNING]
 > Nezadávejte `spring.cloud.config.enabled=false` v konfiguraci Bootstrap. V opačném případě přestane vaše aplikace pracovat s konfiguračním serverem.
 
-### <a name="metrics-dependency"></a>Závislost metrik
+### <a name="metrics"></a>Metriky
 
 Zahrňte `spring-boot-starter-actuator` závislost do části závislosti v souboru pom. XML, jak je znázorněno zde:
 
@@ -199,7 +199,7 @@ Zahrňte `spring-boot-starter-actuator` závislost do části závislosti v soub
 
  Metriky jsou pravidelně načítány z koncových bodů JMX. Metriky můžete vizualizovat pomocí Azure Portal.
 
-### <a name="distributed-tracing-dependency"></a>Závislost distribuované vektorizace
+### <a name="distributed-tracing"></a>Distribuované trasování
 
 Zahrňte následující `spring-cloud-starter-sleuth` a `spring-cloud-starter-zipkin` závislosti do části závislosti v souboru pom. XML:
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 10d3e3674aef901ad35dfb6d0b9fd13715aace55
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597608"
+ms.locfileid: "83655240"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Nastavení vlastní domény ve službě Azure static Web Apps Preview
 
@@ -80,7 +80,7 @@ Záznam CNAME mapuje jednu doménu do druhé. Záznam CNAME můžete použít k 
 
 1. Klikněte na tlačítko **ověřit** .
 
-Teď, když je nakonfigurovaná vlastní doména, může zprostředkovatel DNS trvat několik hodin, než se poskytovatel DNS rozšíří po celém světě. Stav šíření můžete zjistit tak, že kliknete na [dnspropagation.NET](https://dnspropagation.net). Zadejte vlastní doménu domény včetně, v `www` rozevíracím seznamu vyberte CNAME a vyberte **Spustit**.
+Teď, když je nakonfigurovaná vlastní doména, může zprostředkovatel DNS trvat několik hodin, než se poskytovatel DNS rozšíří po celém světě. Stav šíření můžete zjistit tak, že kliknete na [dnspropagation.NET](https://dnspropagation.net). Zadejte vlastní doménu včetně, v `www` rozevíracím seznamu vyberte CNAME a vyberte **Spustit**.
 
 Pokud se vaše změny DNS naplní, web vrátí automaticky generovanou adresu URL vaší statické webové aplikace (například _Random-Name-123456789c.azurestaticapps.NET_).
 
@@ -92,7 +92,7 @@ I když podpora kořenové domény není během verze Preview dostupná, můžet
 
 ## <a name="map-a-wildcard-domain"></a>Mapování zástupné domény
 
-Někdy budete chtít, aby byl veškerý provoz odeslaný do subdomény směrován do jiné domény. Běžným příkladem je mapování všech mezidoménových přenosů na `www.example.com` . Tímto způsobem, a to i `ww.example.com` v případě, že někdo typ místo `www.example.com` , je žádost odeslána na `www.example.com` .
+Někdy budete chtít, aby byl veškerý provoz odeslaný do subdomény směrován do jiné domény. Běžným příkladem je mapování všech mezidoménových přenosů na `www.example.com` . Tímto způsobem, a to i `w.example.com` v případě, že někdo typ místo `www.example.com` , je žádost odeslána na `www.example.com` .
 
 ### <a name="configure-dns-provider"></a>Konfigurace poskytovatele DNS
 

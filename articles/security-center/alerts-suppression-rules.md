@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 5a5d6a96bd73a67c2611e7f334eba3daeda031ba
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 83ee59ca4353cd1af6c613e7624ee15f21b0a27e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007697"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650919"
 ---
 # <a name="suppressing-alerts-from-azure-security-centers-threat-protection"></a>Potlačení výstrah z ochrany před hrozbami Azure Security Center
 
@@ -147,7 +147,7 @@ Příslušné metody HTTP pro pravidla potlačení v REST API jsou:
 
 - **Odstranit**: odstraní stávající pravidlo (ale nemění stav výstrah, které mu už zavřelo).
 
-Úplné podrobnosti a příklady použití najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/api/securitycenter/). 
+Úplné podrobnosti a příklady použití najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/rest/api/securitycenter/). 
 
 
 ## <a name="next-steps"></a>Další kroky

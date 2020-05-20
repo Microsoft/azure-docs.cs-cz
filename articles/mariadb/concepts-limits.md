@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/1/2020
-ms.openlocfilehash: 18f227c1888e0565eebb640fa61ced56dc994865
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4450689f6865c19436e437e09a3aa9f286c6e21
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632338"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653133"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Omezení Azure Database for MariaDB
 Následující části popisují kapacitu, podporu modulu úložiště, podporu oprávnění, podporu příkazů pro manipulaci s daty a funkční omezení v databázové službě.
@@ -152,6 +152,12 @@ Další informace o tomto parametru najdete v [dokumentaci k MariaDB](https://ma
 
 Tabulky časových pásem lze naplnit voláním `mysql.az_load_timezone` uložené procedury z nástroje, jako je například příkazový řádek MySQL nebo MySQL Workbench. Informace o tom, jak volat uloženou proceduru a nastavit globální časová pásma na úrovni relace, najdete v článcích [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) nebo [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) .
 
+### <a name="innodb_file_per_table"></a>innodb_file_per_table
+
+MariaDB ukládá tabulku InnoDB v různých tabulkových prostorech na základě konfigurace, kterou jste zadali během vytváření tabulky. [Systémový tabulkový prostor](https://mariadb.com/kb/en/innodb-system-tablespaces/) je oblast úložiště pro slovník InnoDB data Dictionary. [Tabulkový prostor pro tabulku](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) obsahuje data a indexy pro jednu tabulku InnoDB a je uložený v systému souborů ve vlastním datovém souboru. Toto chování je řízeno `innodb_file_per_table` parametrem serveru. Nastavení `innodb_file_per_table` na `OFF` způsobí, že InnoDB vytvoří tabulky v systémovém tabulkovém prostoru. V opačném případě InnoDB vytvoří tabulky v tabulkových prostorech v souborové tabulce.
+
+V jednom datovém souboru podporuje Azure Database for MariaDB v největších **1 TB**. Pokud je velikost databáze větší než 1 TB, měli byste vytvořit tabulku v [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) tabulkovém prostoru. Pokud máte velikost jedné tabulky větší než 1 TB, měli byste použít tabulku oddílů.
+
 ## <a name="storage-engine-support"></a>Podpora modulu úložiště
 
 ### <a name="supported"></a>Podporuje se
@@ -173,7 +179,7 @@ Tabulky časových pásem lze naplnit voláním `mysql.az_load_timezone` uložen
 ## <a name="data-manipulation-statement-support"></a>Podpora příkazů manipulace s daty
 
 ### <a name="supported"></a>Podporuje se
-- `LOAD DATA INFILE`je podporováno, ale musí `[LOCAL]` být zadán parametr a směrován na cestu UNC (úložiště Azure připojené prostřednictvím protokolu SMB).
+- `LOAD DATA INFILE`je podporováno, ale `[LOCAL]` musí být zadán parametr a směrován na cestu UNC (úložiště Azure připojené prostřednictvím protokolu SMB).
 
 ### <a name="unsupported"></a>Nepodporované
 - `SELECT ... INTO OUTFILE`

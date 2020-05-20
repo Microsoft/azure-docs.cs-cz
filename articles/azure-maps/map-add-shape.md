@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 91d6ed24c85d08c4b3358204980498d64e1b36ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ecbb5d636b6a6e2fa89d34380e87b6979110f6e3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124036"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648523"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Přidat mnohoúhelníkovou vrstvu k mapě
 
@@ -57,6 +57,8 @@ Níže je uvedená úplná a spuštěná ukázka výše uvedeného kódu.
 ## <a name="use-a-polygon-and-line-layer-together"></a>Použít mnohoúhelník a čáru vrstev společně
 
 Spojnicová vrstva se používá k vykreslení obrysu mnohoúhelníků. Následující ukázka kódu vykreslí mnohoúhelník jako předchozí příklad, ale nyní přidá řádkovou vrstvu. Tato vrstva čáry je druhá vrstva připojená ke zdroji dat.  
+
+<br/>
 
 <iframe height='500' scrolling='no' title='Mnohoúhelníková a Spojnicová vrstva pro přidání mnohoúhelníku' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Pokud <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>chcete přidat mnohoúhelník</a> podle Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>, podívejte se na mnohoúhelník a vrstvu čáry.
 </iframe>

@@ -6,21 +6,16 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1fa34deaa12400a164602d38b6b2d349a64850c6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299001"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652252"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
 Tento článek vás provede jednotlivými kroky konfigurace Azure Active Directory přístupu pomocí Azure Database for MySQL a o tom, jak se připojit pomocí tokenu Azure AD.
-
-> [!IMPORTANT]
-> Ověřování Azure AD pro Azure Database for MySQL je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Nastavení uživatele správce Azure AD
 
@@ -73,7 +68,7 @@ Tento příkaz otevře okno prohlížeče na stránce ověřování Azure AD.
 
 > [!NOTE]
 > K provedení těchto kroků můžete také použít Azure Cloud Shell.
-> Uvědomte si prosím, že při načítání přístupového tokenu Azure AD v Azure Cloud Shell budete muset explicitně `az login` zavolat a znovu se přihlásit (v samostatném okně s kódem). Po přihlášení bude `get-access-token` příkaz fungovat podle očekávání.
+> Uvědomte si prosím, že při načítání přístupového tokenu Azure AD v Azure Cloud Shell budete muset explicitně zavolat `az login` a znovu se přihlásit (v samostatném okně s kódem). Po přihlášení `get-access-token` bude příkaz fungovat podle očekávání.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>Krok 2: načtení přístupového tokenu Azure AD
 
@@ -136,7 +131,7 @@ Nyní jste ověřeni na server MySQL pomocí ověřování Azure AD.
 
 Pokud chcete do databáze Azure Database for MySQL přidat uživatele Azure AD, proveďte následující kroky po připojení (viz později v části Jak se připojit):
 
-1. Nejdřív zajistěte, aby byl `<user>@yourtenant.onmicrosoft.com` uživatel Azure AD platným uživatelem v TENANTOVI Azure AD.
+1. Nejdřív zajistěte, aby byl uživatel Azure AD `<user>@yourtenant.onmicrosoft.com` platným uživatelem v Tenantovi Azure AD.
 2. Přihlaste se ke své instanci Azure Database for MySQL jako uživatel s oprávněními správce Azure AD.
 3. Vytvoří uživatele `<user>@yourtenant.onmicrosoft.com` v Azure Database for MySQL.
 

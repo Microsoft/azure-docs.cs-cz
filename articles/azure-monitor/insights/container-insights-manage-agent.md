@@ -2,13 +2,13 @@
 title: Jak spravovat agenta Azure Monitor for Containers | Microsoft Docs
 description: Tento článek popisuje, jak spravovat nejběžnější úlohy údržby pomocí kontejnerového Log Analyticsho agenta používaného Azure Monitor for Containers.
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: ce014d27c6acc473c4a435dfed4757fb0884f4fe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275318"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652190"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Správa Azure Monitor pro agenta kontejnerů
 
@@ -16,13 +16,13 @@ Azure Monitor for Containers používá kontejnerové verze Log Analytics agenta
 
 ## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>Postup upgradu agenta Azure Monitor for Containers
 
-Azure Monitor for Containers používá kontejnerové verze Log Analytics agenta pro Linux. Po vydání nové verze agenta se agent automaticky upgraduje na spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS) a Azure Red Hat OpenShift. Pro [hybridní cluster Kubernetes](container-insights-hybrid-setup.md) se agent nespravuje a potřebujete ručně upgradovat agenta.
+Azure Monitor for Containers používá kontejnerové verze Log Analytics agenta pro Linux. Po vydání nové verze agenta se agent automaticky upgraduje na spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS) a v Azure Red Hat OpenShift verze 3. x. Pro [hybridní cluster Kubernetes](container-insights-hybrid-setup.md) a Azure Red Hat OpenShift verze 4. x není Agent spravovaný a vy budete muset agenta upgradovat ručně.
 
-Pokud se upgrade agenta pro cluster hostovaný v AKS nepovede, Tento článek popisuje také Postup ručního upgradu agenta. Pokud chcete postupovat podle vydaných verzí, přečtěte si téma [oznámení o vydáních](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)
+Pokud se upgrade agenta pro cluster hostovaný v AKS nebo Azure Red Hat OpenShift verze 3. x nepovede, Tento článek popisuje také Postup ručního upgradu agenta. Pokud chcete postupovat podle vydaných verzí, přečtěte si téma [oznámení o vydáních](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)
 
-### <a name="upgrade-agent-on-monitored-kubernetes-cluster"></a>Upgrade agenta na monitorovaném clusteru Kubernetes
+### <a name="upgrade-agent-on-aks-cluster"></a>Upgrade agenta v clusteru AKS
 
-Proces upgradu agenta v clusterech (kromě Azure Red Hat OpenShift) se skládá ze dvou přímých kroků. Prvním krokem je zakázat monitorování pomocí Azure Monitor pro kontejnery pomocí Azure CLI. Postupujte podle kroků popsaných v článku [zakázání monitorování](container-insights-optout.md?#azure-cli) . Použití rozhraní příkazového řádku Azure umožňuje odebrat agenta z uzlů v clusteru, aniž by to mělo dopad na řešení a odpovídající data uložená v pracovním prostoru. 
+Proces upgradu agenta v clusterech AKS se skládá ze dvou přímých kroků. Prvním krokem je zakázat monitorování pomocí Azure Monitor pro kontejnery pomocí Azure CLI. Postupujte podle kroků popsaných v článku [zakázání monitorování](container-insights-optout.md?#azure-cli) . Použití rozhraní příkazového řádku Azure umožňuje odebrat agenta z uzlů v clusteru, aniž by to mělo dopad na řešení a odpovídající data uložená v pracovním prostoru. 
 
 >[!NOTE]
 >Při provádění této aktivity údržby nejsou uzly v clusteru shromážděnými daty a zobrazení výkonu nezobrazuje data mezi časem odebrání agenta a instalací nové verze. 
@@ -53,9 +53,15 @@ Stav by měl vypadat podobně jako v následujícím příkladu, kde hodnota pro
     omsagent 1.6.0-163
     docker-cimprov 1.0.0.31
 
-## <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>Upgrade agenta na hybridním clusteru Kubernetes
+### <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>Upgrade agenta na hybridním clusteru Kubernetes
 
-Proces upgradu agenta v hostovaném clusteru Kubernetes, AKS Engine v Azure a Azure Stack se dá dokončit spuštěním tohoto příkazu:
+Proveďte následující kroky k upgradu agenta v clusteru Kubernetes se systémem:
+
+* Samostatné spravované clustery Kubernetes hostované v Azure pomocí stroje AKS.
+* Samostatné spravované clustery Kubernetes hostované na Azure Stack nebo místně pomocí AKS Engine.
+* Red Hat OpenShift verze 4. x.
+
+Pokud je pracovní prostor Log Analytics v komerčním Azure, spusťte následující příkaz:
 
 ```
 $ helm upgrade --name myrelease-1 \
@@ -76,6 +82,19 @@ $ helm upgrade --name myrelease-1 \
 --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
 ```
 
+### <a name="upgrade-agent-on-azure-red-hat-openshift-v4"></a>Upgrade agenta na Azure Red Hat OpenShift v4
+
+Proveďte následující kroky k upgradu agenta v clusteru Kubernetes běžícím na Azure Red Hat OpenShift verze 4. x. 
+
+>[!NOTE]
+>Azure Red Hat OpenShift verze 4. x podporuje spouštění jenom v komerčním cloudu Azure.
+>
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
+```
+
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Postup zakázání shromažďování proměnných prostředí v kontejneru
 
 Azure Monitor for Containers shromažďuje proměnné prostředí z kontejnerů spuštěných v poli pod a prezentuje je v podokně vlastností vybraného kontejneru v zobrazení **kontejnerů** . Toto chování můžete řídit tak, že zakážete shromažďování pro konkrétní kontejner během nasazování clusteru Kubernetes nebo po nastavení proměnné prostředí *AZMON_COLLECT_ENV*. Tato funkce je k dispozici z verze agenta – ciprod11292018 a vyšší.  
@@ -87,7 +106,7 @@ Chcete-li zakázat shromažďování proměnných prostředí v novém nebo exis
   value: "False"  
 ```  
 
-Spusťte následující příkaz, který aplikuje změnu na jiné clustery Kubernetes než Azure Red Hat OpenShift) `kubectl apply -f  <path to yaml file>`:. Pokud chcete upravit ConfigMap a použít tuto změnu pro clustery Azure Red Hat OpenShift, spusťte příkaz:
+Spusťte následující příkaz, který aplikuje změnu na jiné clustery Kubernetes než Azure Red Hat OpenShift): `kubectl apply -f  <path to yaml file>` . Pokud chcete upravit ConfigMap a použít tuto změnu pro clustery Azure Red Hat OpenShift, spusťte příkaz:
 
 ``` bash
 oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging

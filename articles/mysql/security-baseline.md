@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1b9a1771ad498fa3fb9b8294adb8a6556a00863a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02050745e7c8a9aa05d3f2de63a4bc5f1ebf8318
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190414"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654777"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Základní hodnoty zabezpečení Azure pro Azure Database for MySQL
 
@@ -573,7 +573,7 @@ Pochopení ochrany zákaznických dat v Azure:https://docs.microsoft.com/azure/s
 
 **Pokyny**: Služba Azure Database for MySQL používá šifrovací modul ověřený standardem FIPS 140-2 pro šifrování úložiště dat v klidovém provozu. Data včetně záloh se šifrují na disku, s výjimkou dočasných souborů vytvořených při spouštění dotazů. Služba používá algoritmus AES 256-bit, který je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
-Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for MySQL vám umožní přinést si vlastní klíč (BYOK) pro ochranu dat v klidovém prostředí. V tuto chvíli musíte požádat o přístup k používání této možnosti. Chcete-li to provést, obraťte se na:
+Šifrování dat pomocí klíčů spravovaných zákazníkem pro službu Azure Database for MySQL umožňuje šifrovat neaktivní uložená data s použitím vlastního klíče. V tuto chvíli musíte požádat o přístup k používání této možnosti. Chcete-li to provést, obraťte se na:
 
 AskAzureDBforMySQL@service.microsoft.com
 
@@ -902,7 +902,7 @@ Jak zajistit Key Vault ověřování pomocí spravované identity:https://docs.m
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Doprovodné**materiály: instance Azure Database for MySQL podporuje ověřování Azure Active Directory (ve verzi Preview) pro přístup k databázím.  Při vytváření instance Azure Database for MySQL poskytnete přihlašovací údaje pro uživatele správce. Tento správce se dá použít k vytvoření dalších uživatelů databáze.  
+**Doprovodné**materiály: instance Azure Database for MySQL podporuje Azure Active Directory ověřování pro přístup k databázím.  Při vytváření instance Azure Database for MySQL poskytnete přihlašovací údaje pro uživatele správce. Tento správce se dá použít k vytvoření dalších uživatelů databáze.  
 
 V případě Azure Virtual Machines nebo webových aplikací běžících na Azure App Service se používá pro přístup k instancím Azure Database for MySQL použijte Identita spravované služby ve spojení s Azure Key Vault k ukládání a načítání přihlašovacích údajů pro Azure Database for MySQL instance. Ujistěte se, že je povolené Key Vault obnovitelné odstranění.
 

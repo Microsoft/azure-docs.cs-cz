@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 79a87f02c8730e0b2110e7475de721f11beda568
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbae67a4861d67526eb1cf4eb2bfb5d131f8e57b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120602"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649764"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití Azure CLI ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
@@ -27,18 +27,18 @@ Mapování Gen1 na [Gen2](https://github.com/Azure/azure-cli-extensions/tree/mas
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 > * Účet úložiště, který má povolený hierarchický obor názvů (HNS). Pokud ho chcete vytvořit, postupujte podle [těchto](data-lake-storage-quickstart-create-account.md) pokynů.
-> * Verze Azure CLI `2.5.1` nebo vyšší
+> * Verze Azure CLI `2.6.0` nebo vyšší
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>Ujistěte se, že máte nainstalovanou správnou verzi rozhraní příkazového řádku Azure CLI.
 
 1. Otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)nebo pokud máte rozhraní příkazového řádku Azure místně [nainstalované](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , otevřete konzolovou aplikaci, například Windows PowerShell.
 
-2. Pomocí následujícího příkazu ověřte, že verze rozhraní příkazového řádku Azure, která je nainstalovaná, je `2.5.1` nebo vyšší.
+2. Pomocí následujícího příkazu ověřte, že verze rozhraní příkazového řádku Azure, která je nainstalovaná, je `2.6.0` nebo vyšší.
 
    ```azurecli
     az --version
    ```
-   Pokud je vaše verze rozhraní příkazového řádku Azure nižší než `2.5.1` , nainstalujte novější verzi. Viz [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+   Pokud je vaše verze rozhraní příkazového řádku Azure nižší než `2.6.0` , nainstalujte novější verzi. Viz [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="connect-to-the-account"></a>Připojit k účtu
 
@@ -311,7 +311,7 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 ## <a name="see-also"></a>Viz také
 
 * [Mapování Gen1 na Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
-* [Váš názor](https://github.com/Azure/azure-cli-extensions/issues)
+* [Poskytnout zpětnou vazbu](https://github.com/Azure/azure-cli-extensions/issues)
 * [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 
 

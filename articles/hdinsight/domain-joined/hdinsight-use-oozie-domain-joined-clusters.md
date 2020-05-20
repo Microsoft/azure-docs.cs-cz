@@ -6,16 +6,16 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seodec18
-ms.date: 12/09/2019
-ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,seodec18,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: 36c04480c46cea904b072c659c5c2642a28e1f27
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78194899"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647572"
 ---
-# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Spusťte Apache Oozie v clusterech HDInsight Hadoop s Balíček zabezpečení podniku
+# <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Spuštění Apache Oozie v clusterech Azure HDInsight s Balíček zabezpečení podniku
 
 Apache Oozie je systém pro pracovní postupy a koordinaci, který spravuje úlohy Apache Hadoop. Oozie je integrovaný do zásobníku Hadoop a podporuje následující úlohy:
 
@@ -43,7 +43,7 @@ Další informace o Secure Shell (SSH) najdete v tématu [připojení ke služb�
     ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
     ```
 
-1. K ověření úspěšného ověřování pomocí protokolu Kerberos `klist` použijte příkaz. Pokud ne, použijte `kinit` ke spuštění ověřování protokolem Kerberos.
+1. K ověření úspěšného ověřování pomocí protokolu Kerberos použijte `klist` příkaz. Pokud ne, použijte `kinit` ke spuštění ověřování protokolem Kerberos.
 
 1. Přihlaste se k bráně HDInsight a zaregistrujte token OAuth vyžadovaný pro přístup k Azure Data Lake Storage:
 
@@ -196,7 +196,7 @@ Definice pracovních postupů Oozie jsou napsané v jazyce hPDL (Apache Hadoop p
 
      Akce podregistru používají pověření definovaná v oddílu přihlašovací údaje pro ověřování pomocí klíčového slova `cred` v elementu Action.
 
-6. Pomocí následujícího příkazu zkopírujte `workflow.xml` soubor do: `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`
+6. Pomocí následujícího příkazu zkopírujte `workflow.xml` soubor do `/user/<domainuser>/examples/apps/map-reduce/workflow.xml` :
 
     ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
@@ -230,11 +230,11 @@ Definice pracovních postupů Oozie jsou napsané v jazyce hPDL (Apache Hadoop p
    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   - Pokud jste `adl://home` Azure Data Lake Storage Gen1 jako primární `nameNode` úložiště clusteru, použijte identifikátor URI pro vlastnost. Pokud používáte Azure Blob Storage, pak tuto akci změňte na `wasb://home`. Pokud používáte Azure Data Lake Storage Gen2, pak tuto akci změňte na `abfs://home`.
+   - Pokud jste `adl://home` `nameNode` Azure Data Lake Storage Gen1 jako primární úložiště clusteru, použijte identifikátor URI pro vlastnost. Pokud používáte Azure Blob Storage, přejděte na `wasb://home` . Pokud používáte Azure Data Lake Storage Gen2, přejděte na `abfs://home` .
    - Nahraďte `domainuser` svým uživatelským jménem pro doménu.  
    - Nahraďte `ClusterShortName` krátkým názvem clusteru. Pokud je název clusteru například https:// *[example Link]* sechadoopcontoso.azurehdisnight.NET, `clustershortname` je prvních šest znaků clusteru: **sechad**.  
    - Nahraďte `jdbcurlvalue` adresou URL JDBC z konfigurace podregistru. Příklad je JDBC: hive2://headnodehost: 10001/; transportMode = http.
-   - Pokud chcete soubor uložit, vyberte CTRL + X, zadejte `Y`a pak vyberte **ENTER**.
+   - Pokud chcete soubor uložit, vyberte CTRL + X, zadejte `Y` a pak vyberte **ENTER**.
 
    Tento soubor vlastností musí být přítomen místně při spouštění úloh Oozie.
 
@@ -331,7 +331,7 @@ V protokolech auditu Ranger pro podregistr Server 2 se zobrazuje Oozie, který s
 
 ## <a name="configure-user-authorization-in-oozie"></a>Konfigurace autorizace uživatele v Oozie
 
-Oozie sám má konfiguraci autorizace uživatele, která může zablokovat uživatelům zastavit nebo odstranit úlohy jiných uživatelů. Chcete-li povolit tuto konfiguraci, `oozie.service.AuthorizationService.security.enabled` nastavte `true`na. 
+Oozie sám má konfiguraci autorizace uživatele, která může zablokovat uživatelům zastavit nebo odstranit úlohy jiných uživatelů. Chcete-li povolit tuto konfiguraci, nastavte na `oozie.service.AuthorizationService.security.enabled` `true` . 
 
 Další informace najdete v tématu [instalace a konfigurace Apache Oozie](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 

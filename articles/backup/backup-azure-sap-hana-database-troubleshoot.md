@@ -3,12 +3,12 @@ title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6520f106011b632da2725f456aeb278c7748ddc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01514847dcd38842d70c4caef2e38df9df3f620a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79459306"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652078"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
@@ -82,6 +82,13 @@ Informace o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [t
 | ------------------ | ------------------------------------------------------------ |
 | **Možné příčiny**    | Parametry zálohování jsou pro Azure Backup nesprávně zadané. |
 | **Doporučená akce** | Ověřte, zda jsou nastaveny následující parametry (backint):<br/>\*[catalog_backup_using_backint: true]<br/>\*[enable_accumulated_catalog_backup: false]<br/>\*[parallel_data_backup_backint_channels: 1]<br/>\*[log_backup_timeout_s: 900)]<br/>\*[backint_response_timeout: 7200]<br/>Pokud jsou na hostiteli přítomné parametry založené na backint, odeberte je. Pokud parametry nejsou k dispozici na úrovni hostitele, ale byly ručně upraveny na úrovni databáze, vraťte je na příslušné hodnoty, jak je popsáno výše. Případně můžete spustit možnost [Zastavit ochranu a zachovat data zálohy](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) z Azure Portal a pak vybrat **obnovit zálohování**. |
+
+### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
+
+|Chybová zpráva  |Zdrojový a cílový systém pro obnovení nejsou kompatibilní.  |
+|---------|---------|
+|Možné příčiny   | Zdrojové a cílové systémy vybrané k obnovení jsou nekompatibilní.        |
+|Doporučená akce   |   Ujistěte se, že váš scénář obnovení není v následujícím seznamu možných nekompatibilních obnovení: <br><br>   **Případ 1:** SYSTEMDB se během obnovování nedá přejmenovat.  <br><br> **Případ 2:** Source-SDC a target-MDC: zdrojová databáze nemůže být v cíli obnovena jako databáze SYSTEMDB nebo tenanta. <br><br> **Případ 3:** Source-MDC a target-SDC: zdrojová databáze (SYSTEMDB nebo tenant DB) se nedá obnovit do cíle. <br><br>  Další informace najdete v poznámce 1642148 v hlavní části [podpory SAP](https://launchpad.support.sap.com). |
 
 ## <a name="restore-checks"></a>Obnovit kontroly
 

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak zálohovat SQL Server databáze n
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 887f15deed74330cf132e0574d166c074d2c7cad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9becb574594672c1cf91e610b4c13f91c91aa14f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685714"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659518"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -51,6 +51,16 @@ Navažte připojení pomocí jedné z následujících možností:
 
 Tato možnost povoluje [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) ve staženém souboru. Pro přístup ke skupině zabezpečení sítě (NSG) použijte rutinu Set-AzureNetworkSecurityRule. Pokud váš seznam bezpečných příjemců obsahuje jenom IP adresy specifické pro oblast, budete taky muset aktualizovat seznam bezpečných příjemců, aby se povolilo ověřování v seznamu služby Azure Active Directory (Azure AD).
 
+Případně můžete také pro vytvoření požadovaného připojení taky dovolit přístup k následujícím plně kvalifikovaným názvům domény:
+
+* `*.<datacentercode>.backup.windowsazure.com`<br>
+( [Tady si můžete](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)prohlédnout kódy datového centra.)
+
+* `login.windows.net`
+* `*.blob.core.windows.net`
+* `*.queue.core.windows.net`
+
+
 #### <a name="allow-access-using-nsg-tags"></a>Povolení přístupu pomocí značek NSG
 
 Pokud k omezení připojení používáte NSG, měli byste pomocí značky služby AzureBackup povolit odchozí přístup k Azure Backup. Kromě toho byste měli také umožňovat připojení pro ověřování a přenos dat pomocí [pravidel](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) pro Azure AD a Azure Storage. To se dá udělat z Azure Portal nebo přes PowerShell.
@@ -91,14 +101,14 @@ Vytvoření pravidla pomocí prostředí PowerShell:
 
 Možnosti připojení zahrnují následující výhody a nevýhody:
 
-**Možnost** | **Výhody** | **Nevýhody**
+**Nastavení** | **Výhody** | **Nevýhody**
 --- | --- | ---
 Povoluje rozsahy IP adres. | Žádné další náklady | Složitá Správa, protože se rozsahy IP adres v průběhu času mění <br/><br/> Poskytuje přístup k celé službě Azure, ne jen Azure Storage
 Použití značek služby NSG | Jednodušší Správa jako změny rozsahu se sloučí automaticky. <br/><br/> Žádné další náklady <br/><br/> | Dá se použít jenom s skupin zabezpečení sítě <br/><br/> Poskytuje přístup k celé službě.
 Použití Azure Firewall značek plně kvalifikovaného názvu domény | Jednodušší Správa, protože jsou automaticky spravovány požadované plně kvalifikované názvy domén | Dá se použít jenom s Azure Firewall.
 Použití proxy serveru HTTP | Přístup k virtuálním počítačům jediným bodem z Internetu <br/> | Další náklady na spuštění virtuálního počítače s využitím softwaru proxy <br/> Žádné publikované adresy plně kvalifikovaného názvu domény – pravidla povolení budou platit pro změny IP adresy Azure
 
-#### <a name="private-endpoints"></a>Soukromé koncové body
+#### <a name="private-endpoints"></a>Privátní koncové body
 
 [!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
@@ -119,7 +129,7 @@ Aliasing je k dispozici pro nepodporované znaky, ale doporučujeme je vyhnout. 
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-## <a name="discover-sql-server-databases"></a>Zjišťování SQL Serverch databází
+## <a name="discover-sql-server-databases"></a>Zjišťování databází SQL Serveru
 
 Jak zjišťovat databáze běžící na virtuálním počítači:
 
@@ -135,7 +145,7 @@ Jak zjišťovat databáze běžící na virtuálním počítači:
 
     ![Vyberte SQL Server na virtuálním počítači Azure pro zálohování.](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-5. V části **cíl** > zálohování ve**virtuálním počítači Najděte databáze**, vyberte **Spustit zjišťování** a vyhledejte nechráněné virtuální počítače v předplatném. Toto hledání může chvíli trvat, v závislosti na počtu nechráněných virtuálních počítačů v předplatném.
+5. V části **cíl zálohování**ve  >  **virtuálním počítači Najděte databáze**, vyberte **Spustit zjišťování** a vyhledejte nechráněné virtuální počítače v předplatném. Toto hledání může chvíli trvat, v závislosti na počtu nechráněných virtuálních počítačů v předplatném.
 
    * Nechráněné virtuální počítače by se měly zobrazit v seznamu po zjištění, které jsou uvedené podle názvu a skupiny prostředků.
    * Pokud se virtuální počítač nezobrazuje podle očekávání, podívejte se, jestli už je zálohovaný v trezoru.
@@ -162,7 +172,7 @@ Jak zjišťovat databáze běžící na virtuálním počítači:
 
 ## <a name="configure-backup"></a>Konfigurace zálohování  
 
-1. V kroku **zálohování cíl** > **2: Konfigurace zálohování**vyberte **Konfigurovat zálohu**.
+1. V kroku **zálohování cíl**  >  **2: Konfigurace zálohování**vyberte **Konfigurovat zálohu**.
 
    ![Vyberte konfigurovat zálohu.](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
@@ -214,7 +224,7 @@ Zásady zálohování definují, kdy se zálohují zálohy a jak dlouho se uchov
 
 Vytvoření zásady zálohování:
 
-1. V trezoru vyberte **zásady** > zálohování**Přidat**.
+1. V trezoru vyberte **zásady zálohování**  >  **Přidat**.
 2. V části **Přidat**vyberte **SQL Server na virtuálním počítači Azure** a definujte typ zásad.
 
    ![Vyberte typ zásad pro nové zásady zálohování.](./media/backup-azure-sql-database/policy-type-details.png)
@@ -242,8 +252,8 @@ Vytvoření zásady zálohování:
 6. V nabídce **zásady úplného zálohování** vyberte **OK** a přijměte nastavení.
 7. Chcete-li přidat zásady rozdílového zálohování, vyberte **rozdílové zálohování**.
 
-   ![Nastavení](./media/backup-azure-sql-database/retention-range-interval.png)
-   ![intervalu rozsahu uchování otevřete nabídku zásad rozdílového zálohování.](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+   ![Nastavení intervalu rozsahu uchování ](./media/backup-azure-sql-database/retention-range-interval.png)
+    ![ otevřete nabídku zásad rozdílového zálohování.](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
 8. V části **rozdílová zásada zálohování**vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování.
 

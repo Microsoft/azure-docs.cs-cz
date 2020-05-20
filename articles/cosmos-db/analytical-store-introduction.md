@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: c78a7d26100d3c3454cd96e2ac79e1767e5efcdb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f00acf3580130d85d6eaeaee4d52eb748d20aa7b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597216"
+ms.locfileid: "83656653"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Co je Azure Cosmos DB analytické úložiště (Preview)?
 
@@ -48,7 +48,7 @@ Například pokud jsou provozní tabulky v následujícím formátu:
 
 Úložiště řádků uchovává výše uvedená data v serializovaném formátu na každém řádku na disku. Tento formát umožňuje rychlejší transakční čtení, zápisy a provozní dotazy, jako například "návratové informace o Product1". Jak ale datová sada roste a pokud chcete spouštět složité analytické dotazy na data, může být nákladné. Například pokud chcete získat "trendy prodeje produktu v kategorii s názvem" vybavení "napříč různými obchodními jednotkami a měsíci", je nutné spustit složitý dotaz. Velký počet kontrol této datové sady může být nákladný z hlediska zřízené propustnosti a může také ovlivnit výkon transakčních úloh, které pracují s aplikacemi a službami v reálném čase.
 
-Analytické úložiště, což je úložiště sloupců, je vhodnější pro tyto dotazy, protože serializace podobných polí dat společně a snižuje počet IOPS disku.
+Analytické úložiště, které je úložištěm sloupců, je vhodnější pro takové dotazy, protože pro ně serializace podobná pole dat a snižuje počet vstupně-výstupních operací disku.
 
 Následující obrázek znázorňuje transakční úložiště řádků vs. analytické úložiště sloupců v Azure Cosmos DB:
 

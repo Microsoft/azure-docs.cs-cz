@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4673bcb71fc2f45c3b02f8fe5e463184395e8ef8
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: a92e64311d8a4f5e87c5be3d00c1c23898db551d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891281"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648354"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Aktivační událost Azure Event Grid pro Azure Functions
 
@@ -21,13 +21,13 @@ Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled
 
 ## <a name="example"></a>Příklad
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Příklad triggeru HTTP najdete v tématu [příjem událostí do koncového bodu http](../event-grid/receive-events.md).
 
 ### <a name="c-2x-and-higher"></a>C# (2. x a vyšší)
 
-Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která se váže k `EventGridEvent`:
+Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která se váže k `EventGridEvent` :
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -53,7 +53,7 @@ Další informace najdete v tématu balíčky, [atributy](#attributes-and-annota
 
 ### <a name="version-1x"></a>Verze 1. x
 
-Následující příklad ukazuje funkce 1. x [C#](functions-dotnet-class-library.md) , která se váže k `JObject`:
+Následující příklad ukazuje funkce 1. x [C#](functions-dotnet-class-library.md) , která se váže k `JObject` :
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -97,7 +97,7 @@ Tady jsou data vazby v souboru *Function. JSON* :
 
 ### <a name="version-2x-and-higher"></a>Verze 2. x a vyšší
 
-Tady je příklad, na který se `EventGridEvent`váže:
+Tady je příklad, na který se váže `EventGridEvent` :
 
 ```csharp
 #r "Microsoft.Azure.EventGrid"
@@ -114,7 +114,7 @@ Další informace najdete v tématu balíčky, [atributy](#attributes-and-annota
 
 ### <a name="version-1x"></a>Verze 1. x
 
-Tady je funkce 1. x C# kód skriptu, ke kterému se `JObject`váže:
+Tady je funkce 1. x C# kód skriptu, ke kterému se váže `JObject` :
 
 ```cs
 #r "Newtonsoft.Json"
@@ -207,7 +207,7 @@ Tato část obsahuje následující příklady:
 * [Aktivační procedura Event Grid, řetězcový parametr](#event-grid-trigger-string-parameter)
 * [Aktivační událost Event Grid, parametr POJO](#event-grid-trigger-pojo-parameter)
 
-V následujících příkladech je znázorněna vazba triggeru v [jazyce Java](functions-reference-java.md) , která používá vazbu a vytiskne událost, nejprve přijme `String` událost jako Pojo a sekundy.
+V následujících příkladech je znázorněna vazba triggeru v [jazyce Java](functions-reference-java.md) , která používá vazbu a vytiskne událost, nejprve přijme událost jako `String` Pojo a sekundy.
 
 ### <a name="event-grid-trigger-string-parameter"></a>Aktivační procedura Event Grid, řetězcový parametr
 
@@ -263,13 +263,13 @@ Po doručení je datová část JSON události deserializovaná do ```EventSchem
   }
 ```
 
-V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `EventGridTrigger` anotaci pro parametry, jejichž hodnota by pocházela z EventGrid. Parametry s těmito poznámkami způsobí, že se funkce spustí při přijetí události.  Tato poznámka se dá použít s nativními typy s možnou hodnotou null, Pojo `Optional<T>`nebo Nullable pomocí.
+V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `EventGridTrigger` anotaci pro parametry, jejichž hodnota by pocházela z EventGrid. Parametry s těmito poznámkami způsobí, že se funkce spustí při přijetí události.  Tato poznámka se dá použít s nativními typy s možnou hodnotou null, Pojo nebo Nullable pomocí `Optional<T>` .
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atribut [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/TriggerBinding/EventGridTriggerAttribute.cs) .
 
@@ -305,17 +305,17 @@ Python nepodporuje atributy.
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* . Nejsou k dispozici žádné parametry konstruktoru nebo vlastnosti, které `EventGridTrigger` by bylo možné nastavit v atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* . Nejsou k dispozici žádné parametry konstruktoru nebo vlastnosti, které by bylo možné nastavit v `EventGridTrigger` atributu.
 
 |Function. JSON – vlastnost |Popis|
 |---------|---------|
-| **textový** | Požadováno – musí být nastavené `eventGridTrigger`na. |
-| **direction** | Požadováno – musí být nastavené `in`na. |
+| **textový** | Požadováno – musí být nastavené na `eventGridTrigger` . |
+| **direction** | Požadováno – musí být nastavené na `in` . |
 | **Jméno** | Required – název proměnné použitý v kódu funkce pro parametr, který přijímá data události. |
 
 ## <a name="usage"></a>Využití
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 V Azure Functions 1. x můžete pro aktivační událost Event Grid použít následující typy parametrů:
 
@@ -327,7 +327,7 @@ V Azure Functions 2. x a vyšší máte také možnost pro aktivační událost 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent`– Definuje vlastnosti pro pole společné pro všechny typy událostí.
 
 > [!NOTE]
-> Ve funkcích v1 Pokud se pokusíte vytvořit vazby `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`na, kompilátor zobrazí "zastaralé" zprávy a pomůže vám místo toho použít `Microsoft.Azure.EventGrid.Models.EventGridEvent` . Chcete-li použít novější typ, odkazujte na balíček NuGet [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) a plně `EventGridEvent` kvalifikováním názvu typu pomocí předpony `Microsoft.Azure.EventGrid.Models`.
+> Ve funkcích v1 Pokud se pokusíte vytvořit vazby na `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` , kompilátor zobrazí "zastaralé" zprávy a pomůže vám `Microsoft.Azure.EventGrid.Models.EventGridEvent` místo toho použít. Chcete-li použít novější typ, odkazujte na balíček NuGet [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) a plně kvalifikováním `EventGridEvent` názvu typu pomocí předpony `Microsoft.Azure.EventGrid.Models` .
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
@@ -341,19 +341,19 @@ V Azure Functions 2. x a vyšší máte také možnost pro aktivační událost 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent`– Definuje vlastnosti pro pole společné pro všechny typy událostí.
 
 > [!NOTE]
-> Ve funkcích v1 Pokud se pokusíte vytvořit vazby `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`na, kompilátor zobrazí "zastaralé" zprávy a pomůže vám místo toho použít `Microsoft.Azure.EventGrid.Models.EventGridEvent` . Chcete-li použít novější typ, odkazujte na balíček NuGet [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) a plně `EventGridEvent` kvalifikováním názvu typu pomocí předpony `Microsoft.Azure.EventGrid.Models`. Informace o tom, jak odkazovat na balíčky NuGet ve funkci skriptu jazyka C#, najdete v tématu [použití balíčků NuGet](functions-reference-csharp.md#using-nuget-packages) .
+> Ve funkcích v1 Pokud se pokusíte vytvořit vazby na `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` , kompilátor zobrazí "zastaralé" zprávy a pomůže vám `Microsoft.Azure.EventGrid.Models.EventGridEvent` místo toho použít. Chcete-li použít novější typ, odkazujte na balíček NuGet [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) a plně kvalifikováním `EventGridEvent` názvu typu pomocí předpony `Microsoft.Azure.EventGrid.Models` . Informace o tom, jak odkazovat na balíčky NuGet ve funkci skriptu jazyka C#, najdete v tématu [použití balíčků NuGet](functions-reference-csharp.md#using-nuget-packages) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve `name` vlastnosti souboru *Function. JSON* .
+Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti souboru *Function. JSON* `name` .
 
 # <a name="python"></a>[Python](#tab/python)
 
-Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve `name` vlastnosti souboru *Function. JSON* , který je `func.EventGridEvent`zadaný jako.
+Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovaného ve vlastnosti souboru *Function. JSON* , který je `name` zadaný jako `func.EventGridEvent` .
 
 # <a name="java"></a>[Java](#tab/java)
 
-Instance události Event Grid je k dispozici prostřednictvím parametru přidruženého k `EventGridTrigger` atributu, který je zadaný `EventSchema`jako. Další podrobnosti najdete v [příkladu](#example) .
+Instance události Event Grid je k dispozici prostřednictvím parametru přidruženého k `EventGridTrigger` atributu, který je zadaný jako `EventSchema` . Další podrobnosti najdete v [příkladu](#example) .
 
 ---
 
@@ -393,7 +393,7 @@ Vlastnosti nejvyšší úrovně v datech JSON události jsou stejné mezi všemi
 
 Vysvětlení běžných vlastností a specifických pro události naleznete v tématu [vlastnosti události](../event-grid/event-schema.md#event-properties) v dokumentaci k Event Grid.
 
-`EventGridEvent` Typ definuje pouze vlastnosti nejvyšší úrovně; `Data` vlastnost je `JObject`.
+`EventGridEvent`Typ definuje pouze vlastnosti nejvyšší úrovně; `Data` vlastnost je `JObject` .
 
 ## <a name="create-a-subscription"></a>Vytvoření odběru
 
@@ -401,13 +401,13 @@ Pokud chcete začít přijímat Event Grid požadavky HTTP, vytvořte Event Grid
 
 ### <a name="azure-portal"></a>portál Azure
 
-U funkcí, které vyvíjíte v Azure Portal pomocí triggeru Event Grid vyberte **přidat Event Grid předplatné**.
+U funkcí, které vyvíjíte v Azure Portal pomocí triggeru Event Grid vyberte možnost **integrace** a potom vyberte **aktivační událost Event Grid** a vyberte **vytvořit Event Grid předplatné**.
 
-![Vytvořit předplatné na portálu](media/functions-bindings-event-grid/portal-sub-create.png)
+:::image type="content" source="media/functions-bindings-event-grid/portal-sub-create.png" alt-text="Připojte nové předplatné události, které se aktivuje na portálu.":::
 
-Po výběru tohoto odkazu otevře portál stránku **vytvořit odběr události** s adresou URL koncového bodu, která je předem vyplněna.
+Po výběru tohoto odkazu otevře portál stránku **vytvořit odběr události** s aktuálním koncovým bodem triggeru, který je již definován.
 
-![Předem vyplněná adresa URL koncového bodu](media/functions-bindings-event-grid/endpoint-url.png)
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="Vytvoření odběru událostí s koncovým bodem funkce je už definované." :::
 
 Další informace o tom, jak vytvořit odběry pomocí Azure Portal, najdete v tématu [Vytvoření vlastní události – Azure Portal](../event-grid/custom-event-quickstart-portal.md) v dokumentaci k Event Grid.
 
@@ -556,7 +556,7 @@ K vytvoření požadavku HTTP POST použijte nástroj, jako je například [post
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
     ```
 
-`functionName` Parametr musí být název zadaný v `FunctionName` atributu.
+`functionName`Parametr musí být název zadaný v `FunctionName` atributu.
 
 Následující snímky obrazovky ukazují záhlaví a text žádosti v poli post:
 

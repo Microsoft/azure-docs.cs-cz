@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa9b090627b6f27a54b67c361b45b6f99e3a6338
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 584fc48aad6a64f8df54088e6dbfd990e8e112e8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982373"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655299"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Procesor kanálu změn ve službě Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Abychom lépe porozuměli tomu, jak tyto čtyři prvky procesoru Change feed fun
 
 ## <a name="implementing-the-change-feed-processor"></a>Implementace procesoru změny kanálu
 
-Bod vstupu je vždy monitorovaný kontejner, z `Container` instance, kterou voláte: `GetChangeFeedProcessorBuilder`
+Bod vstupu je vždy monitorovaný kontejner, z `Container` instance, kterou voláte `GetChangeFeedProcessorBuilder` :
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -50,16 +50,16 @@ Příkladem delegáta může být:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-Nakonec definujete název této instance procesoru s `WithInstanceName` a, který je kontejnerem pro udržení stavu zapůjčení. `WithLeaseContainer`
+Nakonec definujete název této instance procesoru s a, `WithInstanceName` který je kontejnerem pro udržení stavu zapůjčení `WithLeaseContainer` .
 
-Volání `Build` vám poskytne instanci procesoru, kterou můžete spustit voláním `StartAsync`.
+Volání vám `Build` poskytne instanci procesoru, kterou můžete spustit voláním `StartAsync` .
 
 ## <a name="processing-life-cycle"></a>Životní cyklus zpracování
 
 Normální životní cyklus instance hostitele je:
 
 1. Přečtěte si kanál změn.
-1. Pokud nedošlo k žádným změnám, přejdete do režimu spánku v předdefinovaném `WithPollInterval` čase (dá se přizpůsobit v Tvůrci) a přejdete na #1.
+1. Pokud nedošlo k žádným změnám, přejdete do režimu spánku v předdefinovaném čase (dá se přizpůsobit `WithPollInterval` v Tvůrci) a přejdete na #1.
 1. Pokud dojde ke změnám, odešlete je **delegátovi**.
 1. Když delegát dokončí zpracování změn **úspěšně**, aktualizujte úložiště zapůjčení s nejnovějším zpracovávaným bodem v čase a přejděte na #1.
 
@@ -71,15 +71,21 @@ Chcete-li zabránit tomu, aby procesor změn v kanálu se neustále znovu pokusi
 
 Kromě toho můžete pomocí [estimatoru Change feed](how-to-use-change-feed-estimator.md) monitorovat průběh instancí procesoru změn kanálu při čtení kanálu změn. Kromě monitorování, jestli se procesor Change feed při opakovaném pokusu o stejnou dávku změn stále opakuje, můžete taky zjistit, jestli je procesor změn s kanálem změn zpožděný, a to kvůli dostupným prostředkům, jako je CPU, paměť a šířka pásma sítě.
 
+## <a name="deployment-unit"></a>Jednotka nasazení
+
+Jednotka nasazení s jedinou změnou kanálu se skládá z jedné nebo několika instancí se stejnou `processorName` konfigurací kontejneru zapůjčení. Můžete mít mnoho jednotek nasazení, kde má každý z nich jiný obchodní tok pro změny a každou jednotku nasazení, která se skládá z jedné nebo několika instancí. 
+
+Například můžete mít jednu jednotku nasazení, která spustí externí rozhraní API, kdykoli dojde ke změně v kontejneru. Jiná jednotka nasazení může přesunout data v reálném čase pokaždé, když dojde ke změně. Když dojde ke změně v monitorovaném kontejneru, všechny vaše jednotky nasazení budou dostávat oznámení.
+
 ## <a name="dynamic-scaling"></a>Dynamické škálování
 
-Jak je uvedeno v úvodu, procesor Change feed může distribuovat výpočty napříč několika instancemi automaticky. Můžete nasadit více instancí aplikace pomocí procesoru změn kanálu a využít je k tomu, že jsou k dispozici jenom tyto klíčové požadavky:
+Jak je uvedeno dříve, v rámci jednotky nasazení můžete mít jednu nebo více instancí. Aby bylo možné využít výhod výpočtů v rámci jednotky nasazení, jsou k dispozici pouze klíčové požadavky:
 
 1. Všechny instance musí mít stejnou konfiguraci kontejneru zapůjčení.
-1. Všechny instance musí mít stejný název pracovního postupu.
-1. Každá instance musí mít jiný název instance (`WithInstanceName`).
+1. Všechny instance by měly být stejné `processorName` .
+1. Každá instance musí mít jiný název instance ( `WithInstanceName` ).
 
-Pokud platí tyto tři podmínky, bude procesor změn pomocí stejného distribučního algoritmu distribuovat všechna zapůjčení do kontejneru zapůjčení ve všech spuštěných instancích a paralelizovat Compute. Jednu zapůjčenou adresu může vlastnit jenom jedna instance v daném okamžiku, takže maximální počet instancí se rovná počtu zapůjčení.
+Pokud platí tyto tři podmínky, bude procesor změn s použitím stejného distribučního algoritmu distribuovat všechna zapůjčení do kontejneru zapůjčení ve všech spuštěných instancích této jednotky nasazení a paralelizovat Compute. Jednu zapůjčenou adresu může vlastnit jenom jedna instance v daném okamžiku, takže maximální počet instancí se rovná počtu zapůjčení.
 
 Počet instancí se může zvětšovat a zmenšovat a procesor změn bude dynamicky upravovat zatížení tím, že je odpovídajícím způsobem distribuován.
 
@@ -100,7 +106,7 @@ Procesor změn kanálu se navíc může dynamicky upravovat na kontejnery škál
 Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 
 * [Přehled kanálu změn](change-feed.md)
-* [Model vyžádání změny kanálu změn](change-feed-pull-model.md)
+* [Model vyžádání kanálu změn](change-feed-pull-model.md)
 * [Postup migrace z knihovny Change feed Processor](how-to-migrate-from-change-feed-library.md)
 * [Použití estimátoru pro kanálu změn](how-to-use-change-feed-estimator.md)
 * [Počáteční čas procesoru kanálu změn](how-to-configure-change-feed-start-time.md)

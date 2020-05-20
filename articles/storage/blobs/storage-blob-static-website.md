@@ -6,14 +6,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/29/2019
+ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: 57ba59288cbf65c1ef588302965d480ee357ea4d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 6a007525f8402bb163195b623173d665f9721bff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779973"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648505"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 
@@ -50,24 +50,24 @@ Pomocí kteréhokoli z těchto nástrojů můžete nahrát obsah do kontejneru *
 
 ## <a name="viewing-content"></a>Zobrazení obsahu
 
-Uživatelé mohou zobrazit obsah webu z prohlížeče pomocí veřejné adresy URL webu. Adresu URL můžete najít pomocí Azure Portal, Azure CLI nebo PowerShellu. Tuto tabulku použijte jako vodítko.
-
-|Nástroj| Doprovodné materiály |
-|----|----|
-|**portál Azure** | [Vyhledejte adresu URL webu pomocí Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure CLI** | [Vyhledání adresy URL webu pomocí rozhraní příkazového řádku Azure](storage-blob-static-website-how-to.md#cli-find-url) |
-|**Modul Azure PowerShellu** | [Vyhledání adresy URL webu pomocí PowerShellu](storage-blob-static-website-how-to.md#powershell-find-url) |
-
-Adresa URL vašeho webu obsahuje regionální kód. Například adresa URL `https://contosoblobaccount.z22.web.core.windows.net/` obsahuje regionální kód `z22`.
-
-I když tento kód musí zůstat v adrese URL, je k dispozici pouze pro interní použití a tento kód nebude nutné používat žádným jiným způsobem.
-
-Indexový dokument, který zadáte při povolování hostování statických webů, se zobrazí, když uživatelé otevřou web a nezadáte konkrétní soubor (například `https://contosoblobaccount.z22.web.core.windows.net`:).  
+Uživatelé mohou zobrazit obsah webu z prohlížeče pomocí veřejné adresy URL webu. Adresu URL můžete najít pomocí Azure Portal, Azure CLI nebo PowerShellu. Viz [najít adresu URL webu](storage-blob-static-website-how-to.md#portal-find-url).
 
 Pokud server vrátí chybu 404 a nezadali jste dokument s chybou, když jste web povolili, bude uživateli vrácena výchozí stránka 404.
 
 > [!NOTE]
 > Pro statický web není podporována [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
+
+### <a name="regional-codes"></a>Regionální kódy
+
+Adresa URL vašeho webu obsahuje regionální kód. Například adresa URL `https://contosoblobaccount.z22.web.core.windows.net/` obsahuje regionální kód `z22` .
+
+I když tento kód musí zůstat v adrese URL, je k dispozici pouze pro interní použití a tento kód nebude nutné používat žádným jiným způsobem.
+
+Indexový dokument, který zadáte při povolování hostování statických webů, se zobrazí, když uživatelé otevřou web a nezadáte konkrétní soubor (například: `https://contosoblobaccount.z22.web.core.windows.net` ).  
+
+### <a name="secondary-endpoints"></a>Sekundární koncové body
+
+Pokud nastavíte [redundanci v sekundární oblasti](../common/storage-redundancy.md#redundancy-in-a-secondary-region), můžete k obsahu webu získat přístup také pomocí sekundárního koncového bodu. Vzhledem k tomu, že jsou data replikována do sekundárních oblastí asynchronně, nejsou soubory, které jsou k dispozici v sekundárním koncovém bodu, synchronizovány se soubory, které jsou dostupné na primárním koncovém bodu. 
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Dopad nastavení úrovně veřejného přístupu webového kontejneru
 
@@ -79,9 +79,9 @@ Následující snímek obrazovky ukazuje nastavení úrovně veřejného příst
 
 I když primární koncový bod statického webu není ovlivněný, změna úrovně veřejného přístupu ovlivní primární koncový bod služby BLOB Service.
 
-Pokud například změníte úroveň veřejného přístupu kontejneru **$Web** z **privátního (bez anonymního přístupu)** do **objektu BLOB (anonymní přístup pro čtení jenom pro objekty BLOB)**, pak se úroveň veřejného přístupu k primárnímu koncovému bodu `https://contosoblobaccount.z22.web.core.windows.net/index.html` statického webu nezmění.
+Pokud například změníte úroveň veřejného přístupu kontejneru **$Web** z **privátního (bez anonymního přístupu)** do **objektu BLOB (anonymní přístup pro čtení jenom pro objekty BLOB)**, pak se úroveň veřejného přístupu k primárnímu koncovému bodu statického webu `https://contosoblobaccount.z22.web.core.windows.net/index.html` nezmění.
 
-Veřejný přístup k primárnímu koncovému bodu `https://contosoblobaccount.blob.core.windows.net/$web/index.html` služby BLOB Service se ale změní z Private na Public. Nyní mohou uživatelé tento soubor otevřít pomocí některého z těchto dvou koncových bodů.
+Veřejný přístup k primárnímu koncovému bodu služby BLOB Service se ale `https://contosoblobaccount.blob.core.windows.net/$web/index.html` změní z Private na Public. Nyní mohou uživatelé tento soubor otevřít pomocí některého z těchto dvou koncových bodů.
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Mapování vlastní domény na statickou adresu URL webu
 

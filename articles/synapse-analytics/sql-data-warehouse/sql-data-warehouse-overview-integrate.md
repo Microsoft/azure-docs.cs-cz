@@ -11,29 +11,29 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2f6e091b6e0285bea5fef9e4d0be40faec936c6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 469fdf19f8c5fa511070f2d809d06829578c2131
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633146"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653720"
 ---
-# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>Integrace dalších služeb s datovým skladem SQL Analytics
+# <a name="integrate-other-services-with-a-synapse-sql-pool-data-warehouse"></a>Integrace dalších služeb s synapse fondem SQL (datový sklad)
 
-Schopnost SQL Analytics v rámci služby Azure synapse Analytics umožňuje uživatelům integraci s mnoha ostatními službami v Azure. Pomocí SQL Analytics můžete vytvořit datový sklad prostřednictvím svého prostředku fondu SQL, který pak může využívat několik dalších služeb, z nichž některé zahrnují:
+Schopnost fondu SQL ve službě Azure synapse Analytics umožňuje uživatelům integraci s mnoha ostatními službami v Azure. Pomocí synapse SQL můžete vytvořit datový sklad prostřednictvím svého prostředku fondu SQL, který pak může využívat několik dalších služeb, z nichž některé zahrnují:
 
 * Power BI
 * Azure Data Factory
 * Azure Machine Learning
 * Azure Stream Analytics
 
-Další informace o integračních službách v Azure najdete v článku o [partnerech pro integraci](sql-data-warehouse-partner-data-integration.md).
+Další informace o integračních službách v rámci Azure najdete v článku o [partnerech pro integraci](sql-data-warehouse-partner-data-integration.md).
 
 ## <a name="power-bi"></a>Power BI
 
-Power BI Integration umožňuje kombinovat výpočetní výkon datového skladu s dynamickým generováním sestav a vizualizací Power BI. Power BI integrace v současné době zahrnuje:
+Power BI Integration umožňuje kombinovat výpočetní výkon datového skladu s dynamickým generováním sestav a vizualizací Power BI. Integrace Power BI v současné době zahrnuje:
 
-* **Přímé připojení**: pokročilejší připojení s logickým přenosem na datový sklad zřízený pomocí fondu SQL. Přenos přenosů zajišťuje rychlejší analýzu ve větším měřítku.
+* **Přímé připojení**: pokročilejší připojení s logickým přenosem na datový sklad zřízený pomocí fondu SQL. Zásobník zajišťuje rychlejší analýzy ve větším měřítku.
 * **Otevřít v Power BI**: tlačítko otevřít v Power BI předává informace o instanci Power BI pro zjednodušený způsob připojení.
 
 Další informace najdete v tématu věnovaném [integraci s Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)nebo v [dokumentaci k Power BI](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).

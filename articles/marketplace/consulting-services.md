@@ -1,29 +1,28 @@
 ---
-title: Microsoft AppSource a Azure Marketplace konzultační služby
-description: Tento článek popisuje kritéria způsobilosti a požadavky na publikování pro nové konzultační nabídky – služby v Microsoft AppSource a Azure Marketplace.
-services: Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Konzultační služby na komerčním webu Microsoft Marketplace
+description: Tento článek popisuje kritéria způsobilosti a požadavky na publikování pro nové nabídky konzultačních služeb v Microsoft AppSource a Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: e5f22a681a9a5cbed4eceea2f70faa1cb21c07bc
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: fc0a82617346f60b90de34b379b4a0a114faf804
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994845"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658081"
 ---
-# <a name="consulting-services-for-microsoft-appsource-and-azure-marketplace"></a>Konzultační služby pro Microsoft AppSource a Azure Marketplace
+# <a name="consulting-service-offers"></a>Konzultační nabídky služeb
 
-Microsoft AppSource a Azure Marketplace konzultační služby poskytují partnerům pro Microsoft System-integrátor výhody připojení svých zákazníků ke službám, které podporují a rozšiřuje jejich používání Azure. Tyto konzultační služby zákazníkům pomohou vyhodnocovat, hodnotit a nasazovat obchodní řešení, která jsou podrobněji jejich obchodním cílům a cílům.  
+Tento článek vysvětluje kritéria způsobilosti a požadavky na publikování nových nabídek konzultačních služeb na komerčním webu Marketplace. Konzultační nabídky služeb poskytují partnerům pro Microsoft System-integrátor výhody připojení svých zákazníků ke službám, které podporují a rozšiřuje jejich používání Azure. Tyto konzultační služby zákazníkům pomohou vyhodnocovat, hodnotit a nasazovat obchodní řešení, která jsou podrobněji jejich obchodním cílům a cílům.  
 
 Konzultační nabídky služeb jsou zapojení specifické pro zákazníky. Vydavatelé mají možnost určit typ výpisu, rozsah, dobu trvání a cenovou strukturu (pevná cena nebo volná). Nabídky mají definované agendu pro dodávky zákazníkovi. Zájemci jsou přijímáni prostřednictvím oznámení v systémech CRM partnerů a partneři usilují o reakci na zákazníky během 48 hodin.
 
 ## <a name="compare-consulting-services"></a>Porovnání konzultačních služeb
 
-Prodejní místa na webu Marketplace jsou zarovnané na cílové skupiny a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý prezentace má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Následující tabulka shrnuje tyto možnosti:
+Komerční tržiště prodejní místa, Microsoft AppSource a Azure Marketplace, jsou zarovnané na cílové skupiny a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý prezentace má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Následující tabulka shrnuje tyto možnosti:
 
 |         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
@@ -31,7 +30,7 @@ Prodejní místa na webu Marketplace jsou zarovnané na cílové skupiny a cloud
 |Závažnost řešení      |Technické aplikace sestavené pro nebo postavené na Azure|Obchodní aplikace, které využívají nebo rozšířily Dynamics 365, Power BI, Office 365, Azure (doplněk nebo doplňky dokončených aplikací)|
 |Možnosti publikování      |Kontaktujte mě, zkušební verzi, transakční službu nebo služby pro Azure|Kontaktujte mě, zkušební verzi nebo služby pro Dynamics 365 a Power BI|
 |Prostředí v produktu      |portál Azure|Dynamics 365, Office 365, klientské aplikace Office| 
-|Ostatní      |Místní publikování prostřednictvím Azure Stack konzultační služby pro Azure, spravované služby pro Azure|Konzultační služby pro Dynamics 365 a Power BI|
+|Jiné      |Místní publikování prostřednictvím Azure Stack konzultační služby pro Azure, spravované služby pro Azure|Konzultační služby pro Dynamics 365 a Power BI|
 ||
 
 Nabídky konzultačních služeb, které jsou založené na Dynamics 365, Power Apps a Power BI, mají nárok na uvedení v AppSource. Další informace najdete v souboru PDF s [pokyny pro Microsoft AppSource konzultační služby](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) .
@@ -68,7 +67,7 @@ V případě AppSource jsou způsobilé kompetence uvedené v následující tab
 | Dynamics 365 Sales<br>Dynamics 365 marketing<br>Zákaznická služba Dynamics 365<br>Služba pole Dynamics 365<br>Lidské zdroje pro Dynamics 365 |   V [cloudu Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro možnost zapojení zákazníka musí být certifikováno Gold nebo stříbrné.    | 
 | Dynamics 365 – finance<br>Správa dodavatelských řetězců Dynamics 365<br>Dynamics 365 – obchod<br>Lidské zdroje pro Dynamics 365<br>Automatizace služby projektu Dynamics 365 |  V [cloudu Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro možnost sjednocení operací musí být certifikováno Gold nebo stříbrné.       |
 | Dynamics 365 Customer Insights | Musí mít alespoň jednu úspěšnou implementaci v produkčním prostředí [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/)s aspoň pěti mírami a pěti segmenty. |
-| Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v rámci [kompetence plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)a musí se jednat o poskytovatele Cloud Solution Provider minimálně pro tři obchodní centrální zákazníky.<br><br>or <br><br>V AppSource musí být publikována [aplikace Business Central](https://appsource.microsoft.com/). |
+| Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v rámci [kompetence plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)a musí se jednat o poskytovatele Cloud Solution Provider minimálně pro tři obchodní centrální zákazníky.<br><br>nebo <br><br>V AppSource musí být publikována [aplikace Business Central](https://appsource.microsoft.com/). |
 | Power BI | Musí být uvedený na [Power BI prezentující Partnerská](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
 |Power Apps | Musí mít nárok na pokročilé výhody v [programu Power Apps pro partnerství](https://aka.ms/PowerAppsPartner) (PDF). |
 ||
@@ -88,21 +87,13 @@ Partneři se systémovým integrátorem mohou odesílat konzultační nabídky p
 | Finsko  | Francie | Německo  | Indie   |
 | Itálie    | Japonsko  |  Mexiko  |  Nizozemsko  |
 |  Nový Zéland  |  Norsko  |  Polsko  | Jižní Afrika |
-|  Španělsko  | Švédsko  | Švýcarsko  |  Spojené státy  |
+|  Španělsko  | Švédsko  | Švýcarsko  |  USA  |
 | Spojené království  |
 ||
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Zaregistrujte se na konzultační služby na komerčním webu Marketplace.
 
 Začněte tím, že [zaregistrujete](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) firemní informace na webu Marketplace. Úplný kontrolní seznam požadavků na registraci najdete v tématu [se stala vydavatelem na webu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher). 
-
-<!---
-**What to expect after registration**
-The Onboarding Team will reach out in 1 to 3 business days with a welcome email, which will include your Cloud Partner Portal sign-in information. [Cloud Partner Portal](https://cloudpartner.azure.com) is the offer listing portal where publishers submit listing information and submissions.
-
->[!Note]
->Partners need to register only once to become a publisher. After you become a publisher and receive your welcome email and Partner Center sign-in information, you don't need to re-register to publish different listing types.
---->
 
 ## <a name="prepare-your-publishing-artifacts"></a>Příprava publikovaných artefaktů
 Před registrací můžete začít shromažďovat a připravovat obsah, který vám pomůže vašemu seznamu vyjadřují hodnotu vaší služby a řešení cílovému zákazníkovi. 
@@ -169,7 +160,7 @@ Příklady:
 
 Jakmile tým přezkoumání obsahu zkontroluje popisy vaší nabídky a nabídne souhrny, uplatní následující kritéria:
 
-|Typ nabídky  |Požaduje se |Doporučené  |
+|Typ nabídky  |Vyžadováno |Doporučené  |
 |---------|---------|---------|
 |**Posouzení**    |   Zahrňte podrobný agendu pro posouzení na více dní nebo více týdnů a vyjadřují, co může zákazník očekávat.      |    Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.     |
 |**Briefingu**    |   Vyjadřují, co může zákazník očekávat. Pamatujte si, že je třeba poskytnout *přehlednou* osobu. Pokud poskytujete virtuální službu, vyberte jiný typ nabídky.    |  Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.       |
@@ -181,12 +172,12 @@ Jakmile tým přezkoumání obsahu zkontroluje popisy vaší nabídky a nabídne
 V rámci partnerského centra můžete do svého seznamu přidat formátování pomocí [Markdownu](/contribute/markdown-reference), zjednodušeného návrhového jazyka, který pomáhá přidat k vašemu seznamu dokonalý vzhled.
 
 Zde jsou některé tipy pro Markdownu:
-* V případě formátování *kurzívou* Přidejte hvězdičku\*() bez mezer na začátku a konci slova nebo řady slov (například typ \*Content * pro formátování slova jako *obsahu*). Naformátujte *Souhrn své nabídky* kurzívou.
+* V případě formátování *kurzívou* Přidejte hvězdičku ( \* ) bez mezer na začátku a konci slova nebo řady slov (například typ \* Content * pro formátování slova jako *obsahu*). Naformátujte *Souhrn své nabídky* kurzívou.
 * Vložit zalomení řádku za dvojtečkou (:) k uvedení seznamu s odrážkami nebo číslovaného seznamu.
-* Chcete-li vytvořit seznam s odrážkami, zadejte\*hvězdičku () následovanou mezerou pro každou položku s odrážkou (například \*[prostor] první slovo obsahu).
-* Chcete-li vytvořit nadpisy, zadejte jeden nebo více\#křížových znaků () následovaný mezerou (například # # # [space] agenda/dodávky).
+* Chcete-li vytvořit seznam s odrážkami, zadejte hvězdičku ( \* ) následovanou mezerou pro každou položku s odrážkou (například \* [prostor] první slovo obsahu).
+* Chcete-li vytvořit nadpisy, zadejte jeden nebo více křížových znaků ( \# ) následovaný mezerou (například # # # [space] agenda/dodávky).
 * Přidejte zalomení řádku za každý nadpis.
-* Pro formátování **tučného písma** přidejte dvojitou hvězdičku (\*\*) bez mezer na začátku a konci slova nebo řady slov (například zadejte \* \*\* \* obsah pro formátování slova jako **obsahu**).
+* Pro formátování **tučného písma** přidejte dvojitou hvězdičku ( \* \* ) bez mezer na začátku a konci slova nebo řady slov (například zadejte \* \* obsah \* \* pro formátování slova jako **obsahu**).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 9475fce054356606c09947721019a264143a716b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 998155c2505277170518a62af4ae2481e217a1df
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982509"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650110"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB synchronizaci Java SDK v2
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982509"
 > 
 
 > [!IMPORTANT]  
-> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Zvažte použití Azure Cosmos DB Java SDK v4 pro váš projekt. Chcete-li provést upgrade, postupujte podle pokynů v příručce [k migraci na Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) a v příručce pro předaný [objekt actor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) . 
+> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Projekt byste měli upgradovat na [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) a pak si přečtěte příručku Azure Cosmos DB Java SDK v4 – [Průvodce tipy pro výkon](performance-tips-java-sdk-v4-sql.md). Postupujte podle pokynů v tématu [migrace do Azure Cosmos DB příručka Java SDK v4](migrate-java-v4-sdk.md) a příručka [vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Guide to upgrade. 
 > 
 > Tyto tipy k výkonu jsou pro Azure Cosmos DB synchronizaci pouze s Java SDK v2. Další informace najdete v [poznámkách k vydání verze](sql-api-sdk-java.md) Java SDK v2 a Azure Cosmos DB v [úložišti Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb) .
 >

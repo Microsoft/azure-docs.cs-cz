@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1317989434cca9375c612c8af0525323c6dda3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0348461e2a58bd8e71b8dff10667c512125d7b03
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081655"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656708"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Vytvoření a konfigurace trezoru klíčů pro službu Azure Disk Encryption
 
@@ -31,7 +31,7 @@ Vytvoření a konfigurace trezoru klíčů pro použití s Azure Disk Encryption
 Tyto kroky jsou znázorněné v následujících rychlých startech:
 
 - [Vytvoření a šifrování virtuálního počítače s Windows s využitím Azure CLI](disk-encryption-cli-quickstart.md)
-- [Vytvoření a šifrování virtuálního počítače s Windows s využitím Azure PowerShellu](disk-encryption-cli-quickstart.md)
+- [Vytvoření a šifrování virtuálního počítače s Windows s využitím Azure PowerShellu](disk-encryption-powershell-quickstart.md)
 
 Můžete také, pokud chcete, vygenerovat nebo importovat klíč šifrování klíče (KEK).
 

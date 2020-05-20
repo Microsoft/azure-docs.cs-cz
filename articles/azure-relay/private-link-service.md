@@ -4,15 +4,15 @@ description: Naučte se integrovat Azure Relay se službou Azure Private Link.
 services: service-bus-relay
 author: spelluru
 ms.author: spelluru
-ms.date: 05/07/2020
+ms.date: 05/13/2020
 ms.service: service-bus-relay
 ms.topic: article
-ms.openlocfilehash: ad57ea4ddeab2fb2af0da68d199445d9737a67cd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3c2426b65e16d8d6bcdd9733280c8f97f4aa79d6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210617"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657533"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Integrace Azure Relay s privátním odkazem Azure (Preview)
 **Služba privátního propojení** Azure umožňuje přístup ke službám Azure (například Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím privátního koncového bodu ve vaší virtuální síti. Další informace najdete v tématu [co je to Azure Private Link (Preview)?](../private-link/private-link-overview.md)
@@ -43,7 +43,7 @@ Váš privátní koncový bod používá privátní IP adresu ve vaší virtuál
 ### <a name="steps"></a>Kroky
 Podrobné pokyny k vytvoření nového oboru názvů Azure Relay a entit v této části najdete v tématu [Vytvoření oboru názvů Azure Relay pomocí Azure Portal](relay-create-namespace-portal.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. Do vyhledávacího panelu zadejte text **Relay**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 4. V části **Nastavení**vyberte kartu **síť** .

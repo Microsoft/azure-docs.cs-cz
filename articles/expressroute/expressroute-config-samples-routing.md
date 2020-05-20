@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: osamaz
-ms.openlocfilehash: 3603bc45b920dc62eb8bf6f2eb8557f98e21638e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6aa66ddc52665c22310fb58977fd516eea4e806a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024808"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651991"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Ukázky konfigurace směrovače pro nastavení a správu směrování
 Tato stránka poskytuje při práci se službou Azure ExpressRoute ukázky konfigurace rozhraní a směrování pro směrovače Cisco IOS – XE a Juniper MX řady.
@@ -175,8 +175,8 @@ Nakonfigurujte směrovač tak, aby inzeroval vybrané předpony do Microsoftu po
         policy-statement <Policy_Name> {
             term 1 {
                 from protocol OSPF;
-        route-filter 
-    <Prefix_to_be_advertised/Subnet_Mask> exact;
+                route-filter; 
+                <Prefix_to_be_advertised/Subnet_Mask> exact;
                 then {
                     accept;
                 }
@@ -186,7 +186,7 @@ Nakonfigurujte směrovač tak, aby inzeroval vybrané předpony do Microsoftu po
     protocols {
         bgp { 
             group <Group_Name> { 
-                export <Policy_Name>
+                export <Policy_Name>;
                 peer-as 12076;              
                 neighbor <IP#2_used_by_Azure>;
             }                               
@@ -205,7 +205,7 @@ Pomocí map tras a seznamů předpon můžete filtrovat předpony šířené do 
         policy-statement <MS_Prefixes_Inbound> {
             term 1 {
                 from {
-                prefix-list MS_Prefixes;
+                    prefix-list MS_Prefixes;
                 }
                 then {
                     accept;
@@ -216,8 +216,8 @@ Pomocí map tras a seznamů předpon můžete filtrovat předpony šířené do 
     protocols {
         bgp { 
             group <Group_Name> { 
-                export <Policy_Name>
-                import <MS_Prefixes_Inbound>
+                export <Policy_Name>;
+                import <MS_Prefixes_Inbound>;
                 peer-as 12076;              
                 neighbor <IP#2_used_by_Azure>;
             }                               
@@ -240,6 +240,26 @@ Nakonfigurujte BFD jenom v části protokol BGP.
         }                                   
     }
 
+### <a name="configure-macsec"></a>Konfigurace MACSec
+V případě konfigurace MACSec musí klíč přidružení připojení (CAK) a název klíče přidružení připojení (CKN) odpovídat nakonfigurovaným hodnotám prostřednictvím příkazů PowerShellu.
+
+    security {
+        macsec {
+            connectivity-association <Connectivity_Association_Name> {
+                cipher-suite gcm-aes-xpn-128;
+                security-mode static-cak;
+                pre-shared-key {
+                    ckn <Connectivity_Association_Key_Name>;
+                    cak <Connectivity_Association_Key>; ## SECRET-DATA
+                }
+            }
+            interfaces {
+                <Interface_Number> {
+                    connectivity-association <Connectivity_Association_Name>;
+                }
+            }
+        }
+    }
 
 ## <a name="next-steps"></a>Další kroky
 Další podrobnosti najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

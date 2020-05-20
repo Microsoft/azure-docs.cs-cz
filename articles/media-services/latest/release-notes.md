@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/28/2020
 ms.author: juliako
-ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e072bcb0edc741b7843f470f14c3c37153338efb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769750"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647634"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
->Přečtěte si informace o tom, kdy se má tato stránka na aktualizace znovu navštívit kopírováním `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` a vložením této adresy URL: do čtečky kanálů RSS.
+>Přečtěte si informace o tom, kdy se má tato stránka na aktualizace znovu navštívit kopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` do čtečky kanálů RSS.
 
 V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vývojem.
 
@@ -35,6 +35,10 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 > Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 Další informace najdete v tématu [pokyny k migraci pro přesun z Media Services V2 na V3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="may-2020"></a>Květen 2020
+
+Azure Media Services je teď všeobecně dostupná v následujících oblastech: "Německo – sever", "Německo – středozápad", "Švýcarsko – sever" a "Švýcarsko – západ". Zákazníci mohou nasadit Media Services do těchto oblastí pomocí Azure Portal.
 
 ## <a name="april-2020"></a>Duben 2020
 
@@ -245,30 +249,30 @@ Modul CLI 2,0 je teď dostupný pro [Azure Media Services V3 GA](https://docs.mi
 #### <a name="asset-commands"></a>Příkazy assetu
 
 - ```--storage-account```a ```--container``` přidané argumenty.
-- Výchozí hodnoty pro čas vypršení platnosti (nyní + 23H) a oprávnění (čtení) ```az ams asset get-sas-url``` v příkazu byl přidán.
+- Výchozí hodnoty pro čas vypršení platnosti (nyní + 23H) a oprávnění (čtení) v ```az ams asset get-sas-url``` příkazu byl přidán.
 
 #### <a name="job-commands"></a>Příkazy úlohy
 
 - ```--correlation-data```a ```--label``` přidané argumenty
-- ```--output-asset-names```přejmenování na ```--output-assets```. Nyní přijímá seznam assetů oddělených mezerou ve formátu "název prostředku". Prostředek bez popisku se dá odeslat takto: "Asset =".
+- ```--output-asset-names```přejmenování na ```--output-assets``` . Nyní přijímá seznam assetů oddělených mezerou ve formátu "název prostředku". Prostředek bez popisku se dá odeslat takto: "Asset =".
 
 #### <a name="streaming-locator-commands"></a>Příkazy lokátoru streamování
 
-- ```az ams streaming locator```základní příkaz nahrazen ```az ams streaming-locator```.
+- ```az ams streaming locator```základní příkaz nahrazen ```az ams streaming-locator``` .
 - ```--streaming-locator-id```a ```--alternative-media-id support``` přidané argumenty.
 - ```--content-keys argument```argument se aktualizoval.
-- ```--content-policy-name```přejmenování na ```--content-key-policy-name```.
+- ```--content-policy-name```přejmenování na ```--content-key-policy-name``` .
 
 #### <a name="streaming-policy-commands"></a>Příkazy zásad streamování
 
-- ```az ams streaming policy```základní příkaz nahrazen ```az ams streaming-policy```.
+- ```az ams streaming policy```základní příkaz nahrazen ```az ams streaming-policy``` .
 - Podporuje parametry šifrování v ```az ams streaming-policy create``` přidaných.
 
 #### <a name="transform-commands"></a>Příkazy transformace
 
-- ```--preset-names```Argument byl nahrazen ```--preset```parametrem. Nyní můžete nastavit pouze 1 výstup/přednastavení současně (Pokud chcete přidat více, je třeba spustit ```az ams transform output add```). Můžete také nastavit vlastní StandardEncoderPreset předáním cesty k vlastnímu formátu JSON.
+- ```--preset-names```Argument byl nahrazen parametrem ```--preset``` . Nyní můžete nastavit pouze 1 výstup/přednastavení současně (Pokud chcete přidat více, je třeba spustit ```az ams transform output add``` ). Můžete také nastavit vlastní StandardEncoderPreset předáním cesty k vlastnímu formátu JSON.
 - ```az ams transform output remove```dá se provést předáním výstupního indexu, který se má odebrat.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumenty přidané v ```az ams transform create``` příkazech a ```az ams transform output add``` .
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumenty přidané v ```az ams transform create``` ```az ams transform output add``` příkazech a.
 
 ## <a name="october-2018---ga"></a>Říjen 2018 – GA
 

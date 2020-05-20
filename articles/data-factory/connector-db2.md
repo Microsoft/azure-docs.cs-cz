@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: jingwang
-ms.openlocfilehash: 9f705a0a56975860cf07d8a9b09de9999a923501
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: b33f9a11cee08ea8c4accb683d70960d7f98e776
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891441"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659567"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopírování dat z DB2 pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -67,26 +67,26 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu DB2 jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Db2** . | Ano |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci DB2.<br/> Můžete také do Azure Key Vault umístit heslo a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
+| typ | Vlastnost Type musí být nastavená na: **Db2** . | Ano |
+| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci DB2.<br/> Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci z `password` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
 
 Typické vlastnosti v připojovacím řetězci:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| server |Název serveru DB2. Můžete zadat číslo portu za názvem serveru oddělené dvojtečkou, např. `server:port`. |Ano |
+| server |Název serveru DB2. Můžete zadat číslo portu za názvem serveru oddělené dvojtečkou, např. `server:port` . |Ano |
 | database |Název databáze DB2 |Ano |
 | authenticationType |Typ ověřování, který se používá pro připojení k databázi DB2.<br/>Povolená hodnota je: **Basic**. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno pro připojení k databázi DB2. |Ano |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| balíček balíčkucollection | Určete, kde jsou potřebné balíčky automaticky vytvořeny pomocí ADF při dotazování databáze. | No |
-| certificateCommonName | Pokud používáte šifrování SSL (Secure Sockets Layer) (SSL) nebo TLS (Transport Layer Security), musíte zadat hodnotu pro běžný název certifikátu. | No |
+| balíček balíčkucollection | Určete, kde jsou potřebné balíčky automaticky vytvořeny pomocí ADF při dotazování databáze. | Ne |
+| certificateCommonName | Pokud používáte šifrování SSL (Secure Sockets Layer) (SSL) nebo TLS (Transport Layer Security), musíte zadat hodnotu pro běžný název certifikátu. | Ne |
 
 > [!TIP]
-> Pokud se zobrazí chybová zpráva oznamující `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`, že je důvod potřebný balíček pro uživatele nevytvoří. Ve výchozím nastavení se ADF pokusí vytvořit balíček v kolekci s názvem jako uživatel, kterého jste použili pro připojení k DB2. Určete vlastnost kolekce balíčku, která bude označovat, kde má ADF při dotazování na databázi vytvořit potřebné balíčky.
+> Pokud se zobrazí chybová zpráva oznamující, že je `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` důvod potřebný balíček pro uživatele nevytvoří. Ve výchozím nastavení se ADF pokusí vytvořit balíček v kolekci s názvem jako uživatel, kterého jste použili pro připojení k DB2. Určete vlastnost kolekce balíčku, která bude označovat, kde má ADF při dotazování na databázi vytvořit potřebné balíčky.
 
 **Případě**
 
@@ -96,7 +96,7 @@ Typické vlastnosti v připojovacím řetězci:
     "properties": {
         "type": "Db2",
         "typeProperties": {
-            "connectionString": "server=<server:port>; database=<database>; authenticationType=Basic;username=<username>; password=<password>; packageCollection=<packagecollection>;certificateCommonName=<certname>;"
+            "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;password=<password>;packageCollection=<packagecollection>;certificateCommonName=<certname>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -113,7 +113,7 @@ Typické vlastnosti v připojovacím řetězci:
     "properties": {
         "type": "Db2",
         "typeProperties": {
-            "connectionString": "server=<server:port>; database=<database>; authenticationType=Basic;username=<username>; packageCollection=<packagecollection>;certificateCommonName=<certname>;",
+            "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;packageCollection=<packagecollection>;certificateCommonName=<certname>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -164,14 +164,14 @@ Pokud jste používali propojenou službu DB2 s následující datovou částí,
 
 Chcete-li kopírovat data z DB2, jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **Db2Table** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **Db2Table** . | Ano |
 | XSD | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
-| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro `schema` nové `table` zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. `schema` `table` Pro nové zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -199,10 +199,10 @@ Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporo
 
 Chcete-li kopírovat data z DB2, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **Db2Source** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **Db2Source** . | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Případě**
 
@@ -247,28 +247,28 @@ Při kopírování dat z DB2 se z datových typů DB2 používají následujíc�
 | BigInt |Int64 |
 | binární |Byte [] |
 | Objekt blob |Byte [] |
-| Char |Řetězec |
-| Datový typ CLOB |Řetězec |
+| Char |String |
+| Datový typ CLOB |String |
 | Datum |Datum a čas |
-| DB2DynArray |Řetězec |
-| DbClob |Řetězec |
+| DB2DynArray |String |
+| DbClob |String |
 | Desetinné číslo |Desetinné číslo |
 | DecimalFloat |Desetinné číslo |
 | Double |Double |
 | Float |Double |
-| Objekty |Řetězec |
+| Objekty |String |
 | Integer |Int32 |
 | LongVarBinary |Byte [] |
-| LongVarChar |Řetězec |
-| LongVarGraphic |Řetězec |
+| LongVarChar |String |
+| LongVarGraphic |String |
 | Numeric |Desetinné číslo |
 | Skutečné |Single |
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | Časové razítko |DateTime |
 | VarBinary |Byte [] |
-| VarChar |Řetězec |
-| VarGraphic |Řetězec |
+| VarChar |String |
+| VarGraphic |String |
 | XML |Byte [] |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání

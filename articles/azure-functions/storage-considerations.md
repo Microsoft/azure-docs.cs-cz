@@ -3,12 +3,12 @@ title: Požadavky na úložiště pro Azure Functions
 description: Seznamte se s požadavky na úložiště Azure Functions a o šifrování uložených dat.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984159"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648795"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Požadavky na úložiště pro Azure Functions
 
@@ -17,7 +17,7 @@ Azure Functions vyžaduje účet Azure Storage při vytváření instance aplika
 
 |Služba úložiště  | Využití funkcí  |
 |---------|---------|
-| [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Zachovat stav vazeb a klíče funkcí  <br/>Používá se také pro [centra úloh v Durable Functions](durable/durable-functions-task-hubs.md). |
+| [Úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md)     | Zachovat stav vazeb a klíče funkcí  <br/>Používá se také pro [centra úloh v Durable Functions](durable/durable-functions-task-hubs.md). |
 | [Soubory Azure](../storage/files/storage-files-introduction.md)  | Sdílená složka používaná k ukládání a spouštění kódu aplikace Function App v [plánu spotřeby](functions-scale.md#consumption-plan). |
 | [Úložiště front Azure](../storage/queues/storage-queues-introduction.md)     | Používá [se pro centra úloh v Durable Functions](durable/durable-functions-task-hubs.md).   |
 | [Úložiště tabulek v Azure](../storage/tables/table-storage-overview.md)  |  Používá [se pro centra úloh v Durable Functions](durable/durable-functions-task-hubs.md).       |
@@ -53,21 +53,19 @@ Je možné, že více aplikací Function App sdílí stejný účet úložiště
 
 ## <a name="storage-data-encryption"></a>Šifrování dat úložiště
 
-Azure Storage šifruje všechna data v účtu úložiště v klidovém umístění. Další informace najdete v tématu [Azure Storage šifrování pro](../storage/common/storage-service-encryption.md)neaktivní neaktivní data.
-
-Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem. Pro další kontrolu nad šifrovacími klíči můžete zadat klíče spravované zákazníkem, které se použijí k šifrování dat objektů BLOB a souborů. Aby funkce mohly získat přístup k účtu úložiště, musí se tyto klíče vyskytovat v Azure Key Vault. Další informace najdete v tématu [konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault pomocí Azure Portal](../storage/common/storage-encryption-keys-portal.md).  
+[!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
 ## <a name="mount-file-shares-linux"></a>Připojit sdílené soubory (Linux)
 
 Existující sdílené složky Azure můžete připojit k aplikacím funkcí pro Linux. Připojením sdílené složky k aplikaci Functions pro Linux můžete využít stávající modely strojového učení nebo jiná data ve vašich funkcích. Pomocí [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) příkazu můžete připojit existující sdílenou složku k aplikaci Functions pro Linux. 
 
-V tomto příkazu `share-name` je název existující sdílené složky Azure Files a `custom-id` může to být libovolný řetězec, který jedinečně definuje sdílenou složku, když je připojená k aplikaci Function App. Také je `mount-path` cesta, ze které je sdílená složka k dispozici ve vaší aplikaci Function App. `mount-path`musí být ve formátu `/dir-name`a nemůže začínat na. `/home`
+V tomto příkazu `share-name` je název existující sdílené složky Azure Files a `custom-id` může to být libovolný řetězec, který jedinečně definuje sdílenou složku, když je připojená k aplikaci Function App. Také `mount-path` je cesta, ze které je sdílená složka k dispozici ve vaší aplikaci Function App. `mount-path`musí být ve formátu `/dir-name` a nemůže začínat na `/home` .
 
 Úplný příklad najdete ve skriptech v tématu [Vytvoření aplikace funkcí Pythonu a připojení sdílené složky služby soubory Azure](scripts/functions-cli-mount-files-storage-linux.md). 
 
-V současné době je `storage-type` podporována `AzureFiles` pouze část z. Do dané aplikace Function App můžete připojit jenom pět sdílených složek. Připojení sdílené složky může prodloužit čas spuštění alespoň 200-300ms nebo ještě více, pokud je účet úložiště v jiné oblasti.
+V současné době `storage-type` je podporována pouze část z `AzureFiles` . Do dané aplikace Function App můžete připojit jenom pět sdílených složek. Připojení sdílené složky může prodloužit čas spuštění alespoň 200-300ms nebo ještě více, pokud je účet úložiště v jiné oblasti.
 
-Připojená sdílená složka je k dispozici pro váš `mount-path` kód funkce na zadaném. Například když `mount-path` je `/path/to/mount`, můžete získat přístup k cílovému adresáři pomocí rozhraní API systému souborů, jak je uvedeno v následujícím příkladu Pythonu:
+Připojená sdílená složka je k dispozici pro váš kód funkce na `mount-path` zadaném. Například když `mount-path` je `/path/to/mount` , můžete získat přístup k cílovému adresáři pomocí rozhraní API systému souborů, jak je uvedeno v následujícím příkladu Pythonu:
 
 ```python
 import os

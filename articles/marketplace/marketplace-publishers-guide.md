@@ -1,22 +1,22 @@
 ---
-title: Příručka pro publikování na komerčním webu Marketplace
-description: Přehled komerčního tržiště pro vydavatele aplikací a služeb.
+title: Příručka pro publikování komerčního tržiště Microsoftu
+description: Přehled komerčního tržiště pro partnery Microsoftu, kteří chtějí publikovat nabídky Microsoft AppSource a Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261988"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657851"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>Příručka pro publikování na komerčním webu Marketplace
 
-Příručka pro publikování na webu Marketplace je navržená tak, aby pomáhala novým a stávajícím vydavatelům Naučte se používat prodejní místa v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [Microsoft AppSource](https://appsource.microsoft.com) k rozvoji jejich podnikání ve spolupráci s Microsoftem prostřednictvím výpisu aplikací a služeb.
+Tato příručka pro publikování je navržená tak, aby pomáhala novým a stávajícím vydavatelům, které se seznámí s tím, jak vypisovat aplikace a služby na komerčních prodejní místaích na webu Marketplace, [Azure Marketplace](https://azuremarketplace.microsoft.com) a [Microsoft AppSource](https://appsource.microsoft.com)a rozšiřují jejich podnikání do
 
 >[!Note]
 >Marketplace tady odkazuje jak na Azure Marketplace, tak i na AppSource.  Další informace najdete [na jednom webu prodejní místa](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) .
@@ -30,7 +30,7 @@ Tato příručka se zabývá následujícími tématy:
 
 Tato příručka obsahuje technickou i firemní informace o krocích, které je třeba provést před uvedením svých aplikací a služeb. Pomocí obsahu můžete přejít k různým částem příručky a přejít přímo ke klíčovým tématům.
 
-Pokud máte dotazy týkající se Azure Marketplace a AppSource, pošlete nám zprávu v části **typ** > problému**připojování Marketplace**. Náš tým pro zprovoznění publikování na webu Marketplace vám pomůže! 
+Pokud máte dotazy týkající se Azure Marketplace a AppSource, pošlete nám zprávu v části **typ problému**  >  **připojování Marketplace**. Náš tým pro zprovoznění publikování na webu Marketplace vám pomůže! 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>Výhody účasti na Marketplace 
 

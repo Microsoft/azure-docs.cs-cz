@@ -1,29 +1,34 @@
 ---
 title: Spolupráce na znalostní bázi Knowledge Base – QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker umožňuje více lidem spolupracovat na znalostní bázi. Tato funkce je k dispozici u Access Control na základě rolí Azure.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/03/2020
-ms.author: diberry
-ms.openlocfilehash: b5adc7ebacde056a141ca3b361b9eb2ea7900a39
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 03/17/2020
+ms.openlocfilehash: 1a2908b4b65017f427682627ce5d83b186956a58
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75660745"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650784"
 ---
-# <a name="collaborate-on-your-knowledge-base"></a>Spolupráce na znalostní bázi
+# <a name="collaboration-with-authors-and-editors"></a>Spolupráce s autory a editory
 
-QnA Maker umožňuje více lidem spolupracovat na všech základech znalostní báze ve stejném prostředku QnA Maker. Tato funkce je k dispozici u [Access Control na základě rolí](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)Azure.
+Spolupráce je poskytována na úrovni prostředků QnA Maker, která umožňuje omezit přístup spolupracovníka na základě role spolupracovníka. Přečtěte si další informace o QnA Maker [konceptech](../Concepts/role-based-access-control.md)ověřování spolupracovníka.
 
-Pomocí následujících kroků můžete svoji QnA Maker službu sdílet s někým:
+## <a name="add-role-based-access-rbac-to-your-qna-maker-resource"></a>Přidání přístupu na základě role (RBAC) do prostředku QnA Maker
 
-1. Přihlaste se k Azure Portal a Projděte si prostředek QnA Maker.
+QnA Maker umožňuje více lidem spolupracovat na všech základech znalostní báze ve stejném prostředku QnA Maker. Tato funkce je k dispozici u [Access Control na základě rolí](../../../active-directory/role-based-access-control-configure.md)Azure.
+
+## <a name="access-at-the-qna-maker-resource-level"></a>Přístup na úrovni prostředků QnA Maker
+
+V QnA Maker službě nemůžete sdílet konkrétní znalostní bázi. Pokud chcete podrobnější řízení přístupu, zvažte distribuci znalostní báze mezi různými QnA Maker prostředky a pak přidejte role do každého prostředku.
+
+## <a name="add-role-to-resource"></a>Přidat roli do prostředku
+
+### <a name="add-a-user-account-to-the-qna-maker-resource"></a>Přidat uživatelský účet do prostředku QnA Maker
+
+V následujících krocích se používá role spolupracovníka, ale kterákoli z [rolí](../reference-role-based-access-control.md) se dá přidat pomocí těchto kroků.
+
+1. Přihlaste se k webu [Azure](https://portal.azure.com/) Portal a Projděte si prostředek QnA maker.
 
     ![Seznam prostředků QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
 
@@ -35,7 +40,15 @@ Pomocí následujících kroků můžete svoji QnA Maker službu sdílet s něk�
 
     ![QnA Maker IAM – přidat](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-1. Vyberte **vlastníka** nebo roli **Přispěvatel** . Pomocí Access Control na základě rolí nelze udělit přístup jen pro čtení. Role vlastníka a přispěvatele mají oprávnění ke čtení i zápisu pro službu QnA Maker.
+1. Vyberte roli z následujícího seznamu:
+
+    |Role|
+    |--|
+    |Vlastník|
+    |Přispěvatel|
+    |Čtecí modul QnA Maker|
+    |Editor QnA Maker|
+    |Cognitive Services uživatel|
 
     ![QnA Maker přidat roli IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 
@@ -43,11 +56,13 @@ Pomocí následujících kroků můžete svoji QnA Maker službu sdílet s něk�
 
     ![QnA Maker IAM – Přidání e-mailu](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
 
-Když někdo sdílí službu QnA Maker s nástrojem, přihlásí se k [portálu QnA maker](https://qnamaker.ai) , kde se zobrazí všechna znalostní báze v této službě.
-
-Pamatujte, že v QnA Maker službě nemůžete sdílet konkrétní znalostní bázi. Pokud chcete podrobnější řízení přístupu, zvažte distribuci znalostní báze napříč různými QnA Maker službami.
+Když někdo nasdílel službu QnA Maker pomocí protokolů na [portál QnA maker](https://qnamaker.ai), uvidí všechny databáze znalostí v této službě na základě jejich role.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Testování znalostní báze](./test-knowledge-base.md)
+
+Další informace o spolupráci:
+* Řízení přístupu na základě role v [Azure](../../../active-directory/role-based-access-control-configure.md)
+* QnA Maker [koncepce](../Concepts/role-based-access-control.md) řízení přístupu na základě rolí

@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 04/29/2020
 ms.author: aschhab
-ms.openlocfilehash: 49748006baf779e6aea4322068ca3bd07a03a0a3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a5a1e7a7ef73825b4b13d2f36c1c8554fdc2a9b6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209396"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647847"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geografické zotavení po havárii
 
@@ -146,6 +146,43 @@ Zóny dostupnosti můžete povolit jenom pro nové obory názvů pomocí Azure P
 
 ![3][]
 
+## <a name="private-endpoints"></a>Soukromé koncové body
+V této části najdete další požadavky při použití geografického zotavení po havárii s obory názvů, které používají privátní koncové body. Další informace o používání privátních koncových bodů s Service Bus obecně najdete v tématu věnovaném [integraci Azure Service Bus s privátním odkazem Azure](private-link-service.md).
+
+### <a name="new-pairings"></a>Nové párování
+Pokud se pokusíte vytvořit párování mezi primárním oborem názvů s privátním koncovým bodem a sekundárním oborem názvů bez privátního koncového bodu, párování selže. Párování bude úspěšné pouze v případě, že oba primární i sekundární obory názvů mají privátní koncové body. Doporučujeme použít stejné konfigurace na primárních a sekundárních oborech názvů a na virtuálních sítích, ve kterých jsou vytvořeny privátní koncové body. 
+
+> [!NOTE]
+> Pokud se pokusíte spárovat primární obor názvů se soukromým koncovým bodem a sekundárním oborem názvů, proces ověření kontroluje pouze to, zda privátní koncový bod existuje v sekundárním oboru názvů. Nekontroluje, jestli koncový bod funguje nebo bude po převzetí služeb při selhání fungovat. Je vaše zodpovědnost za to, že sekundární obor názvů s privátním koncovým bodem bude po převzetí služeb při selhání fungovat podle očekávání.
+>
+> Chcete-li otestovat, zda jsou konfigurace privátních koncových bodů stejné, zaslat požadavek [Get Queues](/rest/api/servicebus/queues/get) sekundárnímu oboru názvů mimo virtuální síť a ověřte, že se od služby zobrazí chybová zpráva.
+
+### <a name="existing-pairings"></a>Existující párování
+Pokud párování mezi primárním a sekundárním oborem názvů už existuje, vytvoření privátního koncového bodu na primárním oboru názvů se nezdaří. Chcete-li tento problém vyřešit, vytvořte nejprve privátní koncový bod v sekundárním oboru názvů a potom jej vytvořte pro primární obor názvů.
+
+> [!NOTE]
+> I když povolujeme přístup jen pro čtení k sekundárnímu oboru názvů, jsou povoleny aktualizace konfigurací privátního koncového bodu. 
+
+### <a name="recommended-configuration"></a>Doporučená konfigurace
+Při vytváření konfigurace zotavení po havárii pro vaši aplikaci a Service Bus musíte vytvořit privátní koncové body pro primární i sekundární obory názvů Service Bus pro virtuální sítě, které hostují primární i sekundární instance vaší aplikace.
+
+Řekněme, že máte dvě virtuální sítě: VNET-1, VNET-2 a tyto primární a druhé obory názvů: ServiceBus-Namespace1-Primary, ServiceBus-Namespace2-Secondary. Je třeba provést následující kroky: 
+
+- V ServiceBus-Namespace1-Primary vytvořte dva privátní koncové body, které používají podsítě z VNET-1 a VNET-2.
+- V ServiceBus-Namespace2-Secondary vytvořte dva privátní koncové body, které používají stejné podsítě z VNET-1 a VNET-2. 
+
+![Privátní koncové body a virtuální sítě](./media/service-bus-geo-dr/private-endpoints-virtual-networks.png)
+
+
+Výhodou tohoto přístupu je, že k převzetí služeb při selhání může dojít v aplikační vrstvě nezávisle na Service Bus oboru názvů. Zvažte následující scénáře: 
+
+**Převzetí služeb při selhání jen pro aplikace:** V tomto případě aplikace nebude existovat v VNET-1, ale přesune se do sítě VNET-2. Jak jsou oba privátní koncové body konfigurovány pro virtuální i sekundární obory názvů VNET-1 i VNET-2, bude aplikace pracovat pouze. 
+
+**Service Bus převzetí služeb při selhání jen pro obor názvů**: tady se nakonfigurují oba privátní koncové body v obou virtuálních sítích pro primární i sekundární obory názvů. aplikace bude jenom fungovat. 
+
+> [!NOTE]
+> Pokyny pro obnovení geografických havárií virtuální sítě najdete v tématu [Virtual Network – provozní kontinuita](../virtual-network/virtual-network-disaster-recovery-guidance.md).
+
 ## <a name="next-steps"></a>Další kroky
 
 - [Tady najdete referenční](/rest/api/servicebus/disasterrecoveryconfigs)informace o geografickém zotavení po havárii REST API.
@@ -155,7 +192,7 @@ Zóny dostupnosti můžete povolit jenom pro nové obory názvů pomocí Azure P
 Další informace o Service Bus zasílání zpráv najdete v následujících článcích:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 * [Rozhraní REST API](/rest/api/servicebus/) 
 

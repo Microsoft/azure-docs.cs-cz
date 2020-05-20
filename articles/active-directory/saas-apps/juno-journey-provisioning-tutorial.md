@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 08de07a52d1e43dea91e6684d33027d8bcad61fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41a6cc3a4fd604c4272783f528ed3d37372044fb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641846"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647740"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Kurz: Konfigurace Juno cesty pro Automatické zřizování uživatelů
 
@@ -40,7 +40,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 * [Tenant Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
-*  [Tenant pro Juno cestu](https://www.junojourney.com/getstartedwithjuno).
+*  [Tenant pro Juno cestu](https://www.junojourney.com/blank).
 *  Uživatelský účet v Juno cestě s oprávněními správce.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
@@ -50,7 +50,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 ## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace Juno cesty pro podporu zřizování pomocí Azure AD
 
-1. V případě **tajného tokenu** a **adresy URL klienta** kontaktujte tým support@the-juno.compodpory Juno pro jízdu na adrese. Tato hodnota se zadá do polí **tajný token** a **Adresa URL tenanta** na kartě zřizování aplikace Juno pro cestu v Azure Portal. 
+1. V případě **tajného tokenu** a **adresy URL klienta** kontaktujte tým podpory Juno pro jízdu na adrese support@the-juno.com . Tato hodnota se zadá do polí **tajný token** a **Adresa URL tenanta** na kartě zřizování aplikace Juno pro cestu v Azure Portal. 
 
 ## <a name="step-3-add-juno-journey-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání cesty Juno z Galerie aplikací Azure AD
 
@@ -71,7 +71,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-juno-journey-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro cestu Juno ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -103,32 +103,32 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
    |Proměnná|Typ|
    |---|---|
-   |userName|Řetězec|
-   |externalId|Řetězec|
-   |displayName|Řetězec|
-   |title|Řetězec|
+   |userName|String|
+   |externalId|String|
+   |displayName|String|
+   |title|String|
    |aktivně|Logická hodnota|
-   |preferredLanguage|Řetězec|
-   |e-maily [typ EQ "Work"]. Value|Řetězec|
-   |adresy [typ EQ "Work"]. Country|Řetězec|
-   |adresy [typ EQ "Work"]. region|Řetězec|
-   |adresy [typ EQ "Work"].|Řetězec|
-   |adresy [typ EQ "Work"]. postalCode|Řetězec|
-   |adresy [Type EQ "Work"]. formátovaný|Řetězec|
-   |adresy [Type EQ "]. streetAddress|Řetězec|
-   |název. křestní jméno|Řetězec|
-   |název. rodina|Řetězec|
-   |název. middleName|Řetězec|
-   |název. formátovaný|Řetězec|
-   |phoneNumbers [typ EQ "fax"]. hodnota|Řetězec|
-   |phoneNumbers [Type EQ "mobilní"]. Value|Řetězec|
-   |phoneNumbers [typ EQ "Work"]. Value|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: costCenter|Řetězec|
-   urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
-   urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Řetězec|
-   urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|Řetězec|
+   |preferredLanguage|String|
+   |e-maily [typ EQ "Work"]. Value|String|
+   |adresy [typ EQ "Work"]. Country|String|
+   |adresy [typ EQ "Work"]. region|String|
+   |adresy [typ EQ "Work"].|String|
+   |adresy [typ EQ "Work"]. postalCode|String|
+   |adresy [Type EQ "Work"]. formátovaný|String|
+   |adresy [Type EQ "]. streetAddress|String|
+   |název. křestní jméno|String|
+   |název. rodina|String|
+   |název. middleName|String|
+   |název. formátovaný|String|
+   |phoneNumbers [typ EQ "fax"]. hodnota|String|
+   |phoneNumbers [Type EQ "mobilní"]. Value|String|
+   |phoneNumbers [typ EQ "Work"]. Value|String|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|String|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|String|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: costCenter|String|
+   urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|String|
+   urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|String|
+   urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|String|
 
 
 10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).

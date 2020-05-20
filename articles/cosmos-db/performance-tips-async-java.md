@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 1a3ec22b9d1375f1c438d24791389284c1d4ee84
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 461602aee6d88f8d8f829fcf89e3433a8185e34d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982543"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658940"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB Async Java SDK v2
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982543"
 > 
 
 > [!IMPORTANT]  
-> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Zvažte použití Azure Cosmos DB Java SDK v4 pro váš projekt. Chcete-li provést upgrade, postupujte podle pokynů v příručce [k migraci na Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) a v příručce pro předaný [objekt actor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) . 
+> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Projekt byste měli upgradovat na [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) a pak si přečtěte příručku Azure Cosmos DB Java SDK v4 – [Průvodce tipy pro výkon](performance-tips-java-sdk-v4-sql.md). Postupujte podle pokynů v tématu [migrace do Azure Cosmos DB příručka Java SDK v4](migrate-java-v4-sdk.md) a příručka [vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Guide to upgrade. 
 > 
 > Tipy ke zvýšení výkonu v tomto článku jsou pouze pro Azure Cosmos DB Async Java SDK v2. Další informace najdete v [poznámkách k verzi](sql-api-sdk-async-java.md)Azure Cosmos DB ASYNC Java SDK v2, [úložišti Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)a Azure Cosmos DB asynchronní [příručce k odstraňování potíží](troubleshoot-java-async-sdk.md) se sadou Java SDK v2.
 >
@@ -154,7 +154,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
 * **Použití adresování na základě názvu**
 
-    Použijte adresování na základě názvu, kde odkazy mají formát `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`namísto SelfLinks (\_samoobslužný), který má formát `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` , aby nedocházelo k načítání ResourceID všech prostředků použitých k vytvoření odkazu. I když se tyto prostředky znovu vytvoří (možná se stejným názvem), nemusí do mezipaměti pomáhat.
+    Použijte adresování na základě názvu, kde odkazy mají formát `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId` namísto SelfLinks ( \_ samoobslužný), který má formát, `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` aby nedocházelo k načítání ResourceID všech prostředků použitých k vytvoření odkazu. I když se tyto prostředky znovu vytvoří (možná se stejným názvem), nemusí do mezipaměti pomáhat.
 
    <a id="tune-page-size"></a>
 
@@ -209,7 +209,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
       });
     ```
 
-    Na základě typu vaší práce byste měli použít odpovídající existující Plánovač RxJava pro vaši práci. Přečtěte [``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html)si tento článek.
+    Na základě typu vaší práce byste měli použít odpovídající existující Plánovač RxJava pro vaši práci. Přečtěte si tento článek [``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html) .
 
     Další informace najdete na [stránce GitHubu](https://github.com/Azure/azure-cosmosdb-java) , kde Azure Cosmos DB ASYNC Java SDK v2.
 
@@ -296,7 +296,7 @@ Pro jiné platformy (Red Hat, Windows, Mac atd.) odkazují na tyto pokyny.https:
 
     Složitost dotazu ovlivňuje počet spotřebovaných jednotek požadavků pro určitou operaci. Počet predikátů, povaha predikátů, počet UDF a velikost zdrojové sady dat ovlivňují náklady na operace dotazů.
 
-    Pokud chcete změřit režii jakékoli operace (vytvořit, aktualizovat nebo odstranit), zkontrolujte, že se v hlavičce [x-MS-Request-poplatek](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) měří počet jednotek žádostí spotřebovaných těmito operacemi. Můžete se také podívat na ekvivalentní vlastnost RequestCharge v ResourceResponse\<t> nebo FeedResponse\<t>.
+    Pokud chcete změřit režii jakékoli operace (vytvořit, aktualizovat nebo odstranit), zkontrolujte, že se v hlavičce [x-MS-Request-poplatek](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) měří počet jednotek žádostí spotřebovaných těmito operacemi. Můžete se také podívat na ekvivalentní vlastnost RequestCharge v ResourceResponse \< t> nebo FeedResponse \< t>.
 
     ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-requestcharge"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 

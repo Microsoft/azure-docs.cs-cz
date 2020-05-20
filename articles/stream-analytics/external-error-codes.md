@@ -6,12 +6,12 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: e7ef1adea72ed69dc11f0ea8c7e3ce0db3e6ab7c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fad0794a3628e6a89d1c2b2c80bb27d70937db95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597006"
+ms.locfileid: "83650033"
 ---
 # <a name="azure-stream-analytics-external-error-codes"></a>Azure Stream Analytics kódů externích chyb
 
@@ -24,10 +24,6 @@ Protokoly aktivit a protokoly prostředků můžete použít k ladění neoček�
 ## <a name="adapterfailedtowriteevents"></a>AdapterFailedToWriteEvents
 
 * **Příčina**: při zápisu dat na adaptér došlo k chybě.
-
-## <a name="kafkaservererror"></a>KafkaServerError
-
-* **Příčina**: Server Kafka vrátil chybu:
 
 ## <a name="azurefunctionhttperror"></a>AzureFunctionHttpError
 

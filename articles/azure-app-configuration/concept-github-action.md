@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cb1149073247b7f5fc3e74a1aef6f96388c7135
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585486"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648113"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Synchronizovat úložiště GitHub s konfigurací aplikace
 
@@ -33,7 +33,7 @@ Pokud chcete začít používat tuto akci GitHubu, přejděte do úložiště a 
 > ![Vybrat akci synchronizace konfigurace aplikace](media/app-configuration-sync-action.png)
 
 ## <a name="sync-configuration-files-after-a-push"></a>Synchronizovat konfigurační soubory po vložení
-Tato akce synchronizuje konfigurační soubory aplikace Azure při vložení změny do `appsettings.json`. Když vývojář nahraje změnu na `appsettings.json`, akce synchronizace konfigurace aplikace aktualizuje instanci konfigurace aplikace o nové hodnoty.
+Tato akce synchronizuje konfigurační soubory aplikace Azure při vložení změny do `appsettings.json` . Když vývojář nahraje změnu na `appsettings.json` , akce synchronizace konfigurace aplikace aktualizuje instanci konfigurace aplikace o nové hodnoty.
 
 První část tohoto pracovního postupu určuje, že akce se spustí *u* *nabízených oznámení* , která obsahují `appsettings.json` *hlavní* větev. Druhá část uvádí úlohy, které se spustí, jakmile se spustí akce. Tato akce rezervuje příslušné soubory a aktualizuje instanci konfigurace aplikace pomocí připojovacího řetězce uloženého jako tajného klíče v úložišti.  Další informace o používání tajných kódů v GitHubu najdete v [článku GitHubu](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) o vytváření a používání šifrovaných tajných klíčů.
 
@@ -61,8 +61,121 @@ jobs:
           separator: ':' 
 ```
 
+## <a name="use-strict-sync"></a>Použít striktní synchronizaci
+Ve výchozím nastavení akce GitHub nepovoluje striktní režim, což znamená, že synchronizace přidá do instance aplikace pouze hodnoty klíče z konfiguračního souboru (žádné páry klíč-hodnota nebudou odstraněny). Povolení striktního režimu znamená, že páry klíč-hodnota, které nejsou v konfiguračním souboru, se odstraní z instance konfigurace aplikace tak, aby odpovídaly konfiguračnímu souboru. Pokud synchronizujete z více zdrojů nebo pomocí Azure Key Vault s konfigurací aplikace, budete chtít použít jiné předpony nebo popisky s přísnou synchronizací, aby nedocházelo k vymazání konfiguračních nastavení z jiných souborů (viz ukázky níže). 
+
+```json
+on: 
+  push: 
+    branches: 
+      - 'master' 
+    paths: 
+      - 'appsettings.json' 
+ 
+jobs: 
+  syncconfig: 
+    runs-on: ubuntu-latest 
+    steps: 
+      # checkout done so that files in the repo can be read by the sync 
+      - uses: actions/checkout@v1 
+      - uses: azure/appconfiguration-sync@v1 
+        with: 
+          configurationFile: 'appsettings.json' 
+          format: 'json' 
+          # Replace <ConnectionString> with the name of the secret in your 
+          # repository 
+          connectionString: ${{ secrets.<ConnectionString> }}  
+          separator: ':' 
+          label: 'Label' 
+          prefix: 'Prefix:' 
+          strict: true 
+```
+## <a name="sync-multiple-files-in-one-action"></a>Synchronizace více souborů v jedné akci 
+
+Pokud je vaše konfigurace ve více souborech, můžete použít následující vzor, který spustí synchronizaci při změně některého souboru. Tento model používá knihovnu glob.https://www.npmjs.com/package/glob 
+
+```json
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+      - 'appsettings2.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: '{appsettings.json,appsettings2.json}'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+```
+
+## <a name="sync-by-prefix-or-label"></a>Synchronizovat podle předpony nebo popisku
+Zadáním předpon nebo popisků v akci synchronizace se synchronizuje pouze tato konkrétní sada. To je důležité pro použití striktní synchronizace s více soubory. V závislosti na tom, jak je konfigurace nastavená, může být k jednotlivým souborům přidružená buď předpona, nebo popisek, přičemž každou předponu nebo popisek můžete synchronizovat samostatně, aby se nic nepřepsalo. Předpony se obvykle používají pro různé aplikace nebo služby a popisky se používají pro různá prostředí. 
+
+Synchronizace podle předpony: 
+
+```json
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'appsettings.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          prefix: 'Prefix::'
+```
+
+Synchronizovat podle popisku: 
+
+```json
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'appsettings.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          label: 'Label'
+
+```
+
 ## <a name="use-a-dynamic-label-on-sync"></a>Při synchronizaci použít dynamický popisek
-Předchozí akce aktualizuje instanci konfigurace aplikace vždy, když `appsettings.json` je aktualizace aktualizována. Tato akce vloží do každé synchronizace dynamický popisek, což zajistí, že každou synchronizaci je možné jednoznačně identifikovat a povolit mapování změn kódu na změny konfigurace.
+Následující akce vloží dynamický popisek pro každou synchronizaci, což zajistí, že každou synchronizaci lze jednoznačně identifikovat a povolit mapování změn kódu na změny konfigurace.
 
 První část tohoto pracovního postupu určuje, že akce se spustí *u* *nabízených oznámení* , která obsahují `appsettings.json` *hlavní* větev. Druhá část spustí úlohu, která vytvoří jedinečnou jmenovku pro aktualizaci konfigurace na základě hodnoty hash potvrzení. Úloha pak aktualizuje instanci konfigurace aplikace o nové hodnoty a jedinečnou jmenovku pro tuto aktualizaci.
 
@@ -95,42 +208,51 @@ jobs:
           label: ${{ steps.determine_label.outputs.LABEL }} 
 ```
 
-## <a name="use-strict-sync"></a>Použít striktní synchronizaci
-Pokud je povolen striktní režim, synchronizace zajistí, že instance konfigurace aplikace bude odpovídat konfiguračnímu souboru pro danou předponu a popisek přesně. Odstraní se páry klíč-hodnota se stejnou předponou a popiskem, které nejsou v konfiguračním souboru. 
- 
-Pokud není režim Strict povolený, bude synchronizace nastavovat jenom hodnoty klíč-hodnota z konfiguračního souboru. Neodstraní se žádné páry klíč-hodnota. 
+## <a name="use-azure-key-vault-with-github-action"></a>Použití Azure Key Vault s akcí GitHubu
+Vývojáři, kteří používají Azure Key Vault s AppConfiguration, by měli používat dva samostatné soubory, obvykle appSettings. JSON a secretreferences. JSON. Secretreferences. JSON bude obsahovat adresu URL tajného klíče trezoru klíčů.
+
+{"mySecret": "{ \" URI \" :" \" https://myKeyVault.vault.azure.net/secrets/mySecret } "}
+
+Akci GitHubu je pak možné nakonfigurovat tak, aby provedla striktní synchronizaci v souboru appSettings. JSON a za ní následovala nestriktní synchronizace na secretreferences. JSON. Následující ukázka spustí synchronizaci, je-li soubor aktualizován:
 
 ```json
-on: 
-  push: 
-    branches: 
-      - 'master' 
-    paths: 
-      - 'appsettings.json' 
- 
-jobs: 
-  syncconfig: 
-    runs-on: ubuntu-latest 
-    steps: 
-      # checkout done so that files in the repo can be read by the sync 
-      - uses: actions/checkout@v1 
-      - uses: azure/appconfiguration-sync@v1 
-        with: 
-          configurationFile: 'appsettings.json' 
-          format: 'json' 
-          # Replace <ConnectionString> with the name of the secret in your 
-          # repository 
-          connectionString: ${{ secrets.<ConnectionString> }}  
-          separator: ':' 
-          label: 'Label' 
-          prefix: 'Prefix:' 
-          strict: true 
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'appsettings.json'
+      - 'secretreferences.json'
+
+jobs:
+  syncconfig:
+    runs-on: ubuntu-latest
+    steps:
+      # checkout done so that files in the repo can be read by the sync
+      - uses: actions/checkout@v1
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'appsettings.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          strict: true
+      - uses: azure/appconfiguration-sync@v1
+        with:
+          configurationFile: 'secretreferences.json'
+          format: 'json'
+          # Replace <ConnectionString> with the name of the secret in your repository
+          connectionString: ${{ secrets.<ConnectionString> }}
+          separator: ':'
+          contentType: 'application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8'
+
 ```
 
 ## <a name="use-max-depth-to-limit-github-action"></a>Omezit akci GitHubu pomocí maximální hloubky
 Výchozím chováním pro vnořené atributy JSON je sloučení celého objektu.  Následující kód JSON definuje tuto dvojici klíč-hodnota:
 
-| Key | Hodnota |
+| Klíč | Hodnota |
 | --- | --- |
 | Objekt: vnitřní: InnerKey | InnerValue |
 
@@ -173,7 +295,7 @@ jobs:
 
 V případě, že výše uvedená hloubka je 2, vrátí výše uvedený příklad následující pár klíč-hodnota:
 
-| Key | Hodnota |
+| Klíč | Hodnota |
 | --- | --- |
 | Objekt: vnitřní | {"InnerKey": "InnerValue"} |
 

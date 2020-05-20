@@ -3,12 +3,12 @@ title: Vylepšení znalostní báze Knowledge Base – QnA Maker
 description: Vylepšete kvalitu znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo odmítněte, přidejte bez odebrání nebo změny existujících otázek.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756750"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650774"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Přijetí dotazů na aktivní učení ve znalostní bázi Knowledge Base
 
@@ -59,7 +59,7 @@ Robot nebo jiná klientská aplikace by se měli pomocí tohoto toku architektur
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Použijte vlastnost Top v žádosti GenerateAnswer k získání několika vyhovujících odpovědí.
 
-Při odesílání otázky QnA Maker pro odpověď nastaví `top` vlastnost těla zprávy JSON počet odpovědí, které se mají vrátit.
+Při odesílání otázky QnA Maker pro odpověď `top` nastaví vlastnost těla zprávy JSON počet odpovědí, které se mají vrátit.
 
 ```json
 {
@@ -71,7 +71,7 @@ Při odesílání otázky QnA Maker pro odpověď nastaví `top` vlastnost těla
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>K získání seznamu odpovědí pro zobrazení uživatele použijte vlastnost skóre spolu s obchodní logikou.
 
-Když klientská aplikace (například robota v programu chat) obdrží odpověď, vrátí se 3 Nejčastější dotazy. `score` Vlastnost slouží k analýze blízkosti výsledků. Tento rozsah blízkosti je určený vaší vlastní obchodní logikou.
+Když klientská aplikace (například robota v programu chat) obdrží odpověď, vrátí se 3 Nejčastější dotazy. Vlastnost slouží `score` k analýze blízkosti výsledků. Tento rozsah blízkosti je určený vaší vlastní obchodní logikou.
 
 ```json
 {
@@ -127,12 +127,12 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Vlastnost požadavku HTTP|Název|Typ|Účel|
+|Vlastnost požadavku HTTP|Name|Typ|Účel|
 |--|--|--|--|
 |Parametr trasy adresy URL|ID znalostní báze|řetězec|Identifikátor GUID znalostní báze|
-|Vlastní subdoména|Název prostředku Qnamakerem|řetězec|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce nastavení po publikování znalostní báze. Je uveden jako `host`.|
-|Hlavička|Typ obsahu|řetězec|Typ média těla odesílaného do rozhraní API Výchozí hodnota je:`application/json`|
-|Hlavička|Autorizace|řetězec|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Vlastní subdoména|Název prostředku Qnamakerem|řetězec|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce nastavení po publikování znalostní báze. Je uveden jako `host` .|
+|Záhlaví|Typ obsahu|řetězec|Typ média těla odesílaného do rozhraní API Výchozí hodnota je:`application/json`|
+|Záhlaví|Autorizace|řetězec|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Tělo příspěvku|Objekt JSON|JSON|Váš názor na školení|
 
 Tělo JSON má několik nastavení:
@@ -162,7 +162,7 @@ Ukázkový text JSON vypadá takto:
 
 ### <a name="batch-many-feedback-records-into-a-single-call"></a>Batch mnoho záznamů zpětné vazby do jednoho volání
 
-V aplikaci na straně klienta, jako je robot, můžete ukládat data a potom do `feedbackRecords` pole poslat mnoho záznamů v jednom těle JSON.
+V aplikaci na straně klienta, jako je robot, můžete ukládat data a potom do pole poslat mnoho záznamů v jednom těle JSON `feedbackRecords` .
 
 Ukázkový text JSON vypadá takto:
 
@@ -311,7 +311,7 @@ async callTrain(stepContext){
 
 Když má vaše aplikace aktivní učení a exportujete aplikaci, `SuggestedQuestions` sloupec v souboru TSV uchová aktivní výuková data.
 
-`SuggestedQuestions` Sloupec je objekt JSON s informacemi o implicitní, `autosuggested`a explicitní `usersuggested` zpětné vazbě. Příkladem tohoto objektu JSON pro jednu otázku odeslanou uživatelem `help` je:
+`SuggestedQuestions`Sloupec je objekt JSON s informacemi o implicitní, `autosuggested` a explicitní `usersuggested` zpětné vazbě. Příkladem tohoto objektu JSON pro jednu otázku odeslanou uživatelem `help` je:
 
 ```JSON
 [
@@ -329,11 +329,6 @@ Když má vaše aplikace aktivní učení a exportujete aplikaci, `SuggestedQues
     }
 ]
 ```
-
-Můžete také použít rozhraní API pro stažení změn ke kontrole těchto změn pomocí REST nebo jakékoli sady SDK založené na jazyku:
-* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
-
 
 Když znovu naimportujete tuto aplikaci, aktivní učení nadále shromažďuje informace a doporučuje návrhy vaší znalostní báze.
 

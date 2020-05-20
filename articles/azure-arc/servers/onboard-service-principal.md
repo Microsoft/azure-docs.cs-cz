@@ -8,22 +8,22 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3a19dc019d2566ddddb2c0ba7988b342d30a45d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45a61b5bc6f1082b84bf94db7e8ad5ce49ec068f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77192269"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648070"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Připojení hybridních počítačů k Azure ve velkém měřítku
 
-Můžete povolit Azure ARC pro servery (Preview) pro více počítačů se systémem Windows nebo Linux ve vašem prostředí s několika flexibilními možnostmi v závislosti na vašich požadavcích. Pomocí skriptu šablony, který poskytujeme, můžete automatizovat všechny kroky instalace, včetně navázání připojení ke službě Azure ARC. Je ale potřeba, abyste tento skript mohli interaktivně spustit pomocí účtu, který má zvýšená oprávnění na cílovém počítači a v Azure. Pokud chcete připojit počítače k Azure ARC pro servery, můžete místo použití privilegované identity k [interaktivnímu připojení počítače](onboard-portal.md)použít [instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt je speciální omezená identita pro správu, která je udělována jenom minimálním oprávněním, která jsou nutná pro připojení `azcmagent` počítačů k Azure pomocí příkazu. Je to bezpečnější než použití vyšší privilegovaného účtu, jako je Správce klienta, a postupuje podle osvědčených postupů zabezpečení řízení přístupu. Instanční objekt se používá jenom během připojování. nepoužívá se pro žádný jiný účel.  
+Můžete povolit Azure ARC pro servery (Preview) pro více počítačů se systémem Windows nebo Linux ve vašem prostředí s několika flexibilními možnostmi v závislosti na vašich požadavcích. Pomocí skriptu šablony, který poskytujeme, můžete automatizovat všechny kroky instalace, včetně navázání připojení ke službě Azure ARC. Je ale potřeba, abyste tento skript mohli interaktivně spustit pomocí účtu, který má zvýšená oprávnění na cílovém počítači a v Azure. Pokud chcete připojit počítače k Azure ARC pro servery, můžete místo použití privilegované identity k [interaktivnímu připojení počítače](onboard-portal.md)použít [instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt je speciální omezená identita pro správu, která je udělována jenom minimálním oprávněním, která jsou nutná pro připojení počítačů k Azure pomocí `azcmagent` příkazu. Je to bezpečnější než použití vyšší privilegovaného účtu, jako je Správce klienta, a postupuje podle osvědčených postupů zabezpečení řízení přístupu. Instanční objekt se používá jenom během připojování. nepoužívá se pro žádný jiný účel.  
 
 Metody instalace pro instalaci a konfiguraci agenta připojeného počítače vyžadují, aby automatizovaná metoda, kterou použijete, měla na počítačích oprávnění správce. V systému Linux pomocí kořenového účtu a ve Windows jako člen místní skupiny Administrators.
 
-Než začnete, zkontrolujte [požadavky](overview.md#prerequisites) a ověřte, že vaše předplatné a prostředky splňují požadavky.
+Než začnete, zkontrolujte [požadavky](agent-overview.md#prerequisites) a ověřte, že vaše předplatné a prostředky splňují požadavky.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 Na konci tohoto procesu budete mít k serverům Azure ARC k dispozici úspěšně připojené hybridní počítače.
 
@@ -37,7 +37,7 @@ K vytvoření instančního objektu pomocí rutiny [New-AzADServicePrincipal](/p
 
 Pokud chcete vytvořit instanční objekt pomocí PowerShellu, udělejte toto:
 
-1. Spusťte následující příkaz. Výstup [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) rutiny je nutné uložit do proměnné nebo nebudete moci načíst heslo potřebné v pozdějším kroku.
+1. Spusťte následující příkaz. Výstup rutiny je nutné uložit [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) do proměnné nebo nebudete moci načíst heslo potřebné v pozdějším kroku.
 
     ```azurepowershell-interactive
     $sp = New-AzADServicePrincipal -DisplayName "Arc-for-servers" -Role "Azure Connected Machine Onboarding"
@@ -63,9 +63,9 @@ Pokud chcete vytvořit instanční objekt pomocí PowerShellu, udělejte toto:
 
 3. Ve výstupu vyhledejte v poli **heslo** pole hodnotu heslo a zkopírujte ji. Vyhledejte také hodnotu v poli **ApplicationId** pole a zkopírujte také. Uložte je pro pozdější použití na bezpečném místě. Pokud zapomenete nebo ztratíte heslo instančního objektu služby, můžete ho resetovat pomocí [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) rutiny.
 
-Hodnoty z následujících vlastností jsou použity s parametry předaných do `azcmagent`:
+Hodnoty z následujících vlastností jsou použity s parametry předaných do `azcmagent` :
 
-* Hodnota vlastnosti **ApplicationId** se používá pro hodnotu `--service-principal-id` parametru.
+* Hodnota vlastnosti **ApplicationId** se používá pro `--service-principal-id` hodnotu parametru.
 * Hodnota vlastnosti **Password** se používá pro `--service-principal-secret` parametr použitý k připojení agenta.
 
 > [!NOTE]
@@ -76,7 +76,7 @@ Role registrace **počítače připojeného k Azure** obsahuje jenom oprávněn�
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>Instalace agenta a připojení k Azure
 
-Následující postup nainstaluje a nakonfiguruje agenta připojeného počítače na hybridních počítačích pomocí šablony skriptu, která provádí podobný postup popsaný v tématu [připojení hybridních počítačů k Azure z Azure Portal](onboard-portal.md) . Rozdíl je v posledním kroku, kdy navážete připojení ke službě Azure ARC pomocí `azcmagent` příkazu, který používá objekt služby. 
+Následující postup nainstaluje a nakonfiguruje agenta připojeného počítače na hybridních počítačích pomocí šablony skriptu, která provádí podobný postup popsaný v tématu [připojení hybridních počítačů k Azure z Azure Portal](onboard-portal.md) . Rozdíl je v posledním kroku, kdy navážete připojení ke službě Azure ARC pomocí příkazu, který `azcmagent` používá objekt služby. 
 
 Níže jsou uvedené nastavení, pomocí kterého nakonfigurujete `azcmagent` příkaz pro použití instančního objektu.
 
@@ -86,7 +86,7 @@ Níže jsou uvedené nastavení, pomocí kterého nakonfigurujete `azcmagent` p�
 * `location`: Viz [podporované oblasti Azure](overview.md#supported-regions). Toto umístění může být stejné nebo jiné jako umístění skupiny prostředků.
 * `resource-name`: (*Volitelné*) používá se pro reprezentaci prostředků Azure vašeho místního počítače. Pokud tuto hodnotu nezadáte, použije se název hostitele počítače.
 
-Další informace o nástroji `azcmagent` příkazového řádku najdete v [referenčních](azcmagent-reference.md)informacích k Azcmagent.
+Další informace o `azcmagent` nástroji příkazového řádku najdete v [referenčních](azcmagent-reference.md)informacích k Azcmagent.
 
 ### <a name="windows-installation-script"></a>Instalační skript Windows
 

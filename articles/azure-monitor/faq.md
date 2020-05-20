@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/11/2020
-ms.openlocfilehash: 471ccddd31fd6c9f332bdaa8ea76b7bda25ac191
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/15/2020
+ms.openlocfilehash: df3e107b111161284c697aa8f619eed96443a893
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117780"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651841"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -97,7 +97,12 @@ Mnoho poskytovatelů prostředků se registruje automaticky, ale možná budete 
 ### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Proč se při otevírání Log Analytics z virtuálního počítače zobrazuje chybová zpráva o přístupu? 
 Chcete-li zobrazit protokoly virtuálních počítačů, je třeba udělit oprávnění ke čtení pro pracovní prostory, ve kterých jsou uloženy protokoly virtuálních počítačů. V těchto případech vám správce musí udělit oprávnění v Azure.
 
-## <a name="alerts"></a>Výstrahy
+## <a name="metrics"></a>Metriky
+
+### <a name="why-are-metrics-from-the-guest-os-of-my-azure-virtual-machine-not-showing-up-in-metrics-explorer"></a>Proč se v Průzkumníkovi metrik nezobrazuje metriky z hostovaného operačního systému virtuálního počítače Azure?
+[Metriky platformy](insights/monitor-azure-resource.md#monitoring-data) se shromažďují automaticky pro prostředky Azure. Abyste mohli shromažďovat metriky z hostovaného operačního systému virtuálního počítače, musíte udělat nějakou konfiguraci. Pro virtuální počítač s Windows nainstalujte diagnostické rozšíření a nakonfigurujte Azure Monitor jímku, jak je popsáno v tématu [instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](platform/diagnostics-extension-windows-install.md). Pro Linux nainstalujte agenta telegraf, jak je popsáno v tématu [shromáždění vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta telegraf InfluxData](platform/collect-custom-metrics-linux-telegraf.md).
+
+## <a name="alerts"></a>Upozornění
 
 ### <a name="what-is-an-alert-in-azure-monitor"></a>Co je výstraha v Azure Monitor?
 Výstrahy proaktivně upozorňují na skutečnost, že jsou ve vašich datech monitorování zjištěny důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete. Existuje několik typů výstrah:
@@ -508,6 +513,10 @@ Většina dat Application Insights má latenci kratší než 5 minut. Některá 
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
 
 Toto je seznam nejčastějších dotazů týkajících se Azure Monitor kontejnerů. Pokud máte další dotazy týkající se řešení, navštivte [diskuzní fórum](https://feedback.azure.com/forums/34192--general-feedback) a publikujte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
+
+### <a name="health-feature-is-in-private-preview"></a>Funkce Health je v privátní verzi Preview.
+
+Plánujeme vytvořit řadu změn pro přidání funkcí a řešení vašich názorů. Funkce Health přejde na konec června 2020 na verzi Private Preview a další informace najdete v [oznámení o aktualizacích Azure](https://azure.microsoft.com/updates/ci-health-limited-preview/).
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Co *jiné procesy* reprezentují v rámci zobrazení uzlu?
 

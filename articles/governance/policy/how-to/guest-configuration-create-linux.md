@@ -3,12 +3,12 @@ title: Postup vytvoření zásad konfigurace hostů pro Linux
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 219b38bd81cae8d16241d1ee16cfdd2f400ae91e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a636b63c80799f8bfe3dfd3a0eb37d1367cdcf0d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024978"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654863"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytvoření zásad konfigurace hostů pro Linux
 
@@ -31,7 +31,14 @@ Pomocí následujících akcí můžete vytvořit vlastní konfiguraci pro ově�
 
 ## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 
-Vytvořením artefaktu konfigurace hosta, automatizovaného testování artefaktu, vytvořením definice zásady a publikováním této zásady je výhradně automatizováno pomocí modulu Konfigurace hosta v prostředí PowerShell. Modul lze nainstalovat do počítače se systémem Windows, macOS nebo Linux s prostředím PowerShell 6,2 nebo novějším spuštěným místně nebo pomocí [Azure Cloud Shell](https://shell.azure.com)nebo s [imagí Azure PowerShell Core Docker](https://hub.docker.com/r/azuresdk/azure-powershell-core).
+Modul konfigurace hosta automatizuje proces vytváření vlastního obsahu, včetně:
+
+- Vytváření artefaktu obsahu konfigurace hosta (. zip)
+- Automatizované testování artefaktu
+- Vytvoření definice zásady
+- Publikování zásady
+
+Modul lze nainstalovat do počítače se systémem Windows, macOS nebo Linux s prostředím PowerShell 6,2 nebo novějším spuštěným místně nebo pomocí [Azure Cloud Shell](https://shell.azure.com)nebo s [imagí Azure PowerShell Core Docker](https://hub.docker.com/r/azuresdk/azure-powershell-core).
 
 > [!NOTE]
 > V systému Linux není kompilace konfigurací podporována.
@@ -78,7 +85,7 @@ Název vlastní konfigurace musí být konzistentní všude. Název souboru. zip
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Konfigurace vlastní konfigurace hosta v systému Linux
 
-Konfigurace hosta v systému Linux `ChefInSpecResource` používá prostředek k poskytnutí modulu s názvem [INSPEC Profile](https://www.inspec.io/docs/reference/profiles/). **Název** je jediná požadovaná vlastnost prostředku. Vytvořte soubor YaML a soubor skriptu Ruby, jak je popsáno níže.
+Konfigurace hosta v systému Linux používá `ChefInSpecResource` prostředek k poskytnutí modulu s názvem [INSPEC Profile](https://www.inspec.io/docs/reference/profiles/). **Název** je jediná požadovaná vlastnost prostředku. Vytvořte soubor YaML a soubor skriptu Ruby, jak je popsáno níže.
 
 Nejprve vytvořte soubor YaML používaný nespecifikací. Soubor poskytuje základní informace o prostředí. Příklad je uveden níže:
 
@@ -103,7 +110,7 @@ describe file('/tmp') do
 end
 ```
 
-Uložte tento soubor s názvem `linux-path.rb` do nové složky s názvem `controls` v `linux-path` adresáři.
+Uložte tento soubor s názvem `linux-path.rb` do nové složky s názvem v `controls` `linux-path` adresáři.
 
 Nakonec vytvořte konfiguraci, importujte modul prostředků **PSDesiredStateConfiguration** a zkompilujte konfiguraci.
 
@@ -127,9 +134,9 @@ import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
-Uložte tento soubor s názvem `config.ps1` do složky projektu. Spusťte ji v PowerShellu tak `./config.ps1` , že ji spustíte v terminálu. Vytvoří se nový soubor MOF.
+Uložte tento soubor s názvem `config.ps1` do složky projektu. Spusťte ji v PowerShellu tak, že ji spustíte `./config.ps1` v terminálu. Vytvoří se nový soubor MOF.
 
-`Node AuditFilePathExists` Příkaz není technicky vyžadován, ale vytváří soubor s názvem `AuditFilePathExists.mof` , `localhost.mof`nikoli jako výchozí. Pokud má název souboru. mof postupovat podle konfigurace, usnadňuje uspořádání mnoha souborů při škálování.
+`Node AuditFilePathExists`Příkaz není technicky vyžadován, ale vytváří soubor s názvem `AuditFilePathExists.mof` , nikoli jako výchozí `localhost.mof` . Pokud má název souboru. mof postupovat podle konfigurace, usnadňuje uspořádání mnoha souborů při škálování.
 
 
 
@@ -147,7 +154,7 @@ Nyní byste měli mít strukturu projektu, jak je uvedeno níže:
 
 Podpůrné soubory musí být zabaleny dohromady. Dokončený balíček používá konfigurace hosta k vytvoření Azure Policych definic.
 
-`New-GuestConfigurationPackage` Rutina vytvoří balíček. Parametry `New-GuestConfigurationPackage` rutiny při vytváření obsahu pro Linux:
+`New-GuestConfigurationPackage`Rutina vytvoří balíček. Parametry `New-GuestConfigurationPackage` rutiny při vytváření obsahu pro Linux:
 
 - **Název**: název konfiguračního balíčku hosta.
 - **Konfigurace**: úplná cesta k kompilované konfiguraci dokumentu.
@@ -163,7 +170,7 @@ New-GuestConfigurationPackage `
   -ChefInSpecProfilePath './'
 ```
 
-Po vytvoření konfiguračního balíčku, ale před jeho publikováním do Azure, můžete balíček otestovat z prostředí pracovní stanice nebo CI/CD. Rutina `Test-GuestConfigurationPackage` GuestConfiguration zahrnuje stejného agenta ve vývojovém prostředí, které se používá v počítačích Azure. Pomocí tohoto řešení můžete provádět testování integrací místně před vydáním do fakturovaných cloudových prostředí.
+Po vytvoření konfiguračního balíčku, ale před jeho publikováním do Azure, můžete balíček otestovat z prostředí pracovní stanice nebo CI/CD. Rutina GuestConfiguration `Test-GuestConfigurationPackage` zahrnuje stejného agenta ve vývojovém prostředí, které se používá v počítačích Azure. Pomocí tohoto řešení můžete provádět testování integrací místně před vydáním do fakturovaných cloudových prostředí.
 
 Vzhledem k tomu, že agent ve skutečnosti vyhodnocuje místní prostředí, ve většině případů je třeba spustit rutinu test-rutiny na stejné platformě operačního systému, jakou máte v plánu auditovat.
 
@@ -242,7 +249,7 @@ $uri = publish `
   -filePath ./AuditFilePathExists.zip `
   -blobName 'AuditFilePathExists'
 ```
-Po vytvoření a nahrání balíčku vlastní zásady konfigurace hosta se vytvoří definice zásady konfigurace hosta. `New-GuestConfigurationPolicy` Rutina převezme vlastní balíček zásad a vytvoří definici zásady.
+Po vytvoření a nahrání balíčku vlastní zásady konfigurace hosta se vytvoří definice zásady konfigurace hosta. `New-GuestConfigurationPolicy`Rutina převezme vlastní balíček zásad a vytvoří definici zásady.
 
 Parametry `New-GuestConfigurationPolicy` rutiny:
 
@@ -267,7 +274,7 @@ New-GuestConfigurationPolicy `
     -Verbose
 ```
 
-Následující soubory vytvořil `New-GuestConfigurationPolicy`:
+Následující soubory vytvořil `New-GuestConfigurationPolicy` :
 
 - **auditIfNotExists. JSON**
 - **deployIfNotExists. JSON**
@@ -275,8 +282,16 @@ Následující soubory vytvořil `New-GuestConfigurationPolicy`:
 
 Výstup rutiny vrátí objekt, který obsahuje zobrazovaný název iniciativy a cestu k souborům zásad.
 
+> [!Note]
+> Nejnovější modul konfigurace hosta obsahuje nové parametry:
+> - **Tag** přidá do definice zásady jeden nebo více filtrů značek.
+>   - Viz část [filtrování zásad konfigurace hostů pomocí značek](#filtering-guest-configuration-policies-using-tags).
+> - **Kategorie** nastaví pole metadata kategorie v definici zásady.
+>   - Pokud parametr není zahrnutý, kategorie se nastaví jako výchozí konfigurace hostů.
+> Tyto funkce jsou momentálně ve verzi Preview a vyžadují modul konfigurace hosta verze 1.20.1, který se dá nainstalovat pomocí nástroje `Install-Module GuestConfiguration -AllowPrerelease` .
+
 Nakonec publikujte definice zásad pomocí `Publish-GuestConfigurationPolicy` rutiny.
-Rutina má pouze parametr **path** , který odkazuje na umístění souborů JSON, které vytvořil `New-GuestConfigurationPolicy`.
+Rutina má pouze parametr **path** , který odkazuje na umístění souborů JSON, které vytvořil `New-GuestConfigurationPolicy` .
 
 K provedení příkazu Publikovat budete potřebovat přístup k vytváření zásad v Azure. Konkrétní autorizační požadavky jsou zdokumentovány na stránce [přehled Azure Policy](../overview.md) . Nejlepší integrovanou rolí je **Přispěvatel zásad prostředků**.
 
@@ -285,7 +300,7 @@ Publish-GuestConfigurationPolicy `
   -Path '.\policyDefinitions'
 ```
 
- `Publish-GuestConfigurationPolicy` Rutina akceptuje cestu z kanálu PowerShellu. Tato funkce znamená, že můžete vytvořit soubory zásad a publikovat je v jedné sadě příkazů s použitím kanálu.
+ `Publish-GuestConfigurationPolicy`Rutina akceptuje cestu z kanálu PowerShellu. Tato funkce znamená, že můžete vytvořit soubory zásad a publikovat je v jedné sadě příkazů s použitím kanálu.
 
  ```azurepowershell-interactive
  New-GuestConfigurationPolicy `
@@ -383,9 +398,41 @@ Configuration AuditFilePathExists
 K vydání aktualizace definice zásady existují dvě pole, která vyžadují pozornost.
 
 - **Verze**: když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované. Vlastnost aktualizuje verzi přiřazení konfigurace hosta, aby agent rozpoznal aktualizovaný balíček.
-- **contentHash**: Tato vlastnost je automaticky aktualizována `New-GuestConfigurationPolicy` rutinou. Jedná se o hodnotu hash balíčku, kterou `New-GuestConfigurationPackage`vytvořil. Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud se aktualizuje jenom vlastnost **contentUri** , rozšíření nepřijme balíček obsahu.
+- **contentHash**: Tato vlastnost je automaticky aktualizována `New-GuestConfigurationPolicy` rutinou. Jedná se o hodnotu hash balíčku, kterou vytvořil `New-GuestConfigurationPackage` . Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud se aktualizuje jenom vlastnost **contentUri** , rozšíření nepřijme balíček obsahu.
 
 Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze. Tento proces zaručuje, že všechny vlastnosti jsou správně aktualizované.
+
+
+### <a name="filtering-guest-configuration-policies-using-tags"></a>Filtrování zásad konfigurace hostů pomocí značek
+
+> [!Note]
+> Tato funkce je aktuálně ve verzi Preview a vyžaduje modul konfigurace hosta verze 1.20.1, který se dá nainstalovat pomocí nástroje `Install-Module GuestConfiguration -AllowPrerelease` .
+
+Zásady vytvořené rutinami v modulu Konfigurace hosta můžou volitelně zahrnovat filtr pro značky. Parametr **-tag** pro `New-GuestConfigurationPolicy` podporuje pole zatřiďovacími tabulkami obsahující jednotlivá označení celých značek. Značky se přidají do `If` oddílu definice zásady a nedá se upravit pomocí přiřazení zásady.
+
+Příklad fragmentu definice zásady, která bude filtrovat značky, je uveden níže.
+
+```json
+"if": {
+  "allOf" : [
+    {
+      "allOf": [
+        {
+          "field": "tags.Owner",
+          "equals": "BusinessUnit"
+        },
+        {
+          "field": "tags.Role",
+          "equals": "Web"
+        }
+      ]
+    },
+    {
+      // Original Guest Configuration content will follow
+    }
+  ]
+}
+```
 
 ## <a name="optional-signing-guest-configuration-packages"></a>Volitelné: podepisování balíčků konfigurace hosta
 
@@ -394,7 +441,7 @@ V případě potřeby mohou zákazníci také použít certifikát k podepisová
 
 Chcete-li povolit tento scénář, je třeba provést dva kroky. Spusťte rutinu pro podepsání balíčku obsahu a přidejte značku do počítačů, které by měly vyžadovat podepsání kódu.
 
-Chcete-li použít funkci ověřování podpisem, `Protect-GuestConfigurationPackage` spusťte rutinu pro podepsání balíčku před jeho publikováním. Tato rutina vyžaduje certifikát pro podepsání kódu.
+Chcete-li použít funkci ověřování podpisem, spusťte `Protect-GuestConfigurationPackage` rutinu pro podepsání balíčku před jeho publikováním. Tato rutina vyžaduje certifikát pro podepsání kódu.
 
 Parametry `Protect-GuestConfigurationPackage` rutiny:
 

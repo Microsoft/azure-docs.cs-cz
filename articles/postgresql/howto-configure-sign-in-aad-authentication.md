@@ -6,21 +6,16 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f5588503825281f407ddbbc2c1c57cd94a9c7ee6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804703"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652545"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Použití Azure Active Directory k ověřování pomocí PostgreSQL
 
 Tento článek vás provede jednotlivými kroky konfigurace Azure Active Directory přístupu pomocí Azure Database for PostgreSQL a o tom, jak se připojit pomocí tokenu Azure AD.
-
-> [!IMPORTANT]
-> Ověřování Azure AD pro Azure Database for PostgreSQL je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Nastavení uživatele správce Azure AD
 
@@ -36,7 +31,7 @@ Pokud chcete nastavit správce Azure AD (můžete použít uživatele nebo skupi
 3. Vyberte platného uživatele Azure AD v tenantovi zákazníka, kterému bude správce Azure AD.
 
 > [!IMPORTANT]
-> Při nastavování správce se do serveru Azure Database for PostgreSQL, který má oprávnění správce s úplnými oprávněními, přidá nový uživatel. Uživatel s rolí správce Azure AD v Azure Database for PostgreSQL bude mít roli `azure_ad_admin`.
+> Při nastavování správce se do serveru Azure Database for PostgreSQL, který má oprávnění správce s úplnými oprávněními, přidá nový uživatel. Uživatel s rolí správce Azure AD v Azure Database for PostgreSQL bude mít roli `azure_ad_admin` .
 
 Pro každý PostgreSQL Server a výběr jiného se dá vytvořit jenom jeden správce Azure AD, který přepíše stávajícího správce Azure AD nakonfigurovaného pro server. Můžete určit skupinu Azure AD, ne jednotliví uživatelé, kteří mají více správců. Všimněte si, že se pak budete přihlašovat pomocí názvu skupiny pro účely správy.
 
@@ -73,7 +68,7 @@ Tento příkaz otevře okno prohlížeče na stránce ověřování Azure AD.
 
 > [!NOTE]
 > K provedení těchto kroků můžete také použít Azure Cloud Shell.
-> Uvědomte si prosím, že při načítání přístupového tokenu Azure AD v Azure Cloud Shell budete muset explicitně `az login` zavolat a znovu se přihlásit (v samostatném okně s kódem). Po přihlášení bude `get-access-token` příkaz fungovat podle očekávání.
+> Uvědomte si prosím, že při načítání přístupového tokenu Azure AD v Azure Cloud Shell budete muset explicitně zavolat `az login` a znovu se přihlásit (v samostatném okně s kódem). Po přihlášení `get-access-token` bude příkaz fungovat podle očekávání.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>Krok 2: načtení přístupového tokenu Azure AD
 
@@ -118,7 +113,7 @@ Token je základní řetězec 64, který zakóduje všechny informace o ověřen
 
 Při připojování musíte použít přístupový token jako heslo uživatele PostgreSQL.
 
-Při použití klienta `psql` příkazového řádku musí být přístupový token předán přes proměnnou `PGPASSWORD` prostředí, protože přístupový token překračuje délku hesla, která `psql` může přijmout přímo:
+Při použití `psql` klienta příkazového řádku musí být přístupový token předán přes `PGPASSWORD` proměnnou prostředí, protože přístupový token překračuje délku hesla, která `psql` může přijmout přímo:
 
 Příklad Windows:
 
@@ -144,7 +139,7 @@ Nyní jste ověřeni na server PostgreSQL pomocí ověřování Azure AD.
 
 Pokud chcete do databáze Azure Database for PostgreSQL přidat uživatele Azure AD, proveďte následující kroky po připojení (viz později v části Jak se připojit):
 
-1. Nejdřív zajistěte, aby byl `<user>@yourtenant.onmicrosoft.com` uživatel Azure AD platným uživatelem v TENANTOVI Azure AD.
+1. Nejdřív zajistěte, aby byl uživatel Azure AD `<user>@yourtenant.onmicrosoft.com` platným uživatelem v Tenantovi Azure AD.
 2. Přihlaste se ke své instanci Azure Database for PostgreSQL jako uživatel s oprávněními správce Azure AD.
 3. Vytvořit roli `<user>@yourtenant.onmicrosoft.com` v Azure Database for PostgreSQL.
 4. Vytvořte `<user>@yourtenant.onmicrosoft.com` člena role azure_ad_user. Tento postup je třeba udělit jenom uživatelům Azure AD.
@@ -185,7 +180,7 @@ Můžete povolit ověřování Azure AD pro stávající uživatele. Je třeba v
 
 ### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>Případ 1: PostgreSQL uživatelské jméno odpovídá hlavnímu názvu uživatele Azure AD
 
-V nepravděpodobném případě, že stávající uživatelé už se shodují s uživatelskými jmény služby Azure AD `azure_ad_user` , můžete jim udělit roli, aby jim mohli povolit ověřování Azure AD:
+V nepravděpodobném případě, že stávající uživatelé už se shodují s uživatelskými jmény služby Azure AD, můžete jim udělit roli, aby `azure_ad_user` jim mohli povolit ověřování Azure AD:
 
 ```sql
 GRANT azure_ad_user TO "existinguser@yourtenant.onmicrosoft.com";

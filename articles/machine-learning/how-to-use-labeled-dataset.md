@@ -5,14 +5,14 @@ description: Naučte se exportovat popisky dat z Azure Machine Learning pro ozna
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.topic: how-to
-ms.date: 01/21/2020
-ms.openlocfilehash: 5138109de3f80d405ce95b605714b511480563f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.date: 05/14/2020
+ms.openlocfilehash: 657b1dbb169d80a3e5563dd1a4fa52eac2278aae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76549486"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655764"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Vytvoření a zkoumání Azure Machine Learning datové sady s popisky
 
@@ -78,7 +78,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision datové sady
 
-Pomocí metody [to_torchvision ()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) lze z `azureml-contrib-dataset` třídy načítat datové sady s popisky do datové sady Torchvision. Pokud chcete použít tuto metodu, musíte mít nainstalovanou [PyTorch](https://pytorch.org/) . 
+Pomocí metody [to_torchvision ()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) lze z třídy načítat datové sady s popisky do datové sady Torchvision `azureml-contrib-dataset` . Pokud chcete použít tuto metodu, musíte mít nainstalovanou [PyTorch](https://pytorch.org/) . 
 
 ```python
 from torchvision.transforms import functional as F

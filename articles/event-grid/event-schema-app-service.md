@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: jafreebe
-ms.openlocfilehash: 19cb7d7cfdb5c5ae61aba0f75d06476b40bdd6d7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0a24e8ba84739dbc1b5de5e0546a8fe0d2e826f1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116930"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650704"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>Azure App Service jako zdroj Event Grid
 
@@ -64,7 +64,7 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 {
     id:'7c5d6de5-eb70-4de2-b788-c52a544e68b8',
     subject:'/Microsoft.Web/sites/<site-name>',
-    eventType:'Microsoft.Web.SlotSwapStarted',
+    eventType:'Microsoft.Web.BackupOperationStarted',
     eventTime:'2020-01-28T18:26:51.7194887Z',
     data: {
         "appEventTypeDetail": { "action": "Started" },
@@ -87,7 +87,7 @@ Datový objekt obsahuje následující vlastnosti:
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
 |    action                  |    řetězec    |    Typ akce operace                                                                                   |
-|    jméno                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
+|    name                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta         |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId    |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |
 |    Identifikátor               |    řetězec    |    ID žádosti vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost                |
@@ -98,24 +98,24 @@ Datový objekt obsahuje následující vlastnosti:
 
 ```js
 {
-    id:'7c5d6de5-eb70-4de2-b788-c52a544e68b8',
-    subject:'/Microsoft.Web/sites/<site-name>',
-    eventType:'Microsoft.Web.RestoreOperationStarted,
-    eventTime:'2020-01-28T18:26:51.7194887Z',
+    id: '7c5d6de5-eb70-4de2-b788-c52a544e68b8',
+    subject: '/Microsoft.Web/sites/<site-name>',
+    eventType: 'Microsoft.Web.RestoreOperationStarted',
+    eventTime: '2020-01-28T18:26:51.7194887Z',
     data: {
-        "appEventTypeDetail": { 
-            "action": "Started" 
+        appEventTypeDetail: { 
+            action: "Started" 
         },
-        "siteName": "<site-name>",
-        "clientRequestId": "None",
-        "correlationRequestId": "None",
-        "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
-        "address": "None",
-        "verb": "POST"
+        siteName: "<site-name>",
+        clientRequestId: "None",
+        correlationRequestId: "None",
+        requestId: "292f499d-04ee-4066-994d-c2df57b99198",
+        address: "None",
+        verb: "POST"
     }
-    topic:'/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
-    dataVersion:'1',
-    metaDataVersion:'1'
+    topic: '/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
+    dataVersion: '1',
+    metaDataVersion: '1'
 }
 ```
 
@@ -125,7 +125,7 @@ Datový objekt obsahuje následující vlastnosti:
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
 |    action                  |    řetězec    |    Typ akce operace                                                                                   |
-|    jméno                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
+|    name                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta         |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId    |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |
 |    Identifikátor               |    řetězec    |    ID žádosti vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost                |
@@ -136,24 +136,24 @@ Datový objekt obsahuje následující vlastnosti:
 
 ```js
 {
-    id:'7c5d6de5-eb70-4de2-b788-c52a544e68b8',
-    subject:'/Microsoft.Web/sites/<site-name>',
-    eventType:'Microsoft.Web.SlotSwapStarted',
-    eventTime:'2020-01-28T18:26:51.7194887Z',
-    data:{
-        appEventTypeDetail:null,
-        siteName:'<site-name>',
-        clientRequestId:'922f4841-20d9-4dd6-8c5b-23f0d85e5592',
-        correlationRequestId:'9ac46505-2b8a-4e06-834c-05ffbe2e8c3a',
-        requestId:'765117aa-eaf8-4bd2-a644-1dbf69c7b0fd',
+    id: '7c5d6de5-eb70-4de2-b788-c52a544e68b8',
+    subject: '/Microsoft.Web/sites/<site-name>',
+    eventType: 'Microsoft.Web.SlotSwapStarted',
+    eventTime: '2020-01-28T18:26:51.7194887Z',
+    data: {
+        appEventTypeDetail: null,
+        siteName: '<site-name>',
+        clientRequestId: '922f4841-20d9-4dd6-8c5b-23f0d85e5592',
+        correlationRequestId: '9ac46505-2b8a-4e06-834c-05ffbe2e8c3a',
+        requestId: '765117aa-eaf8-4bd2-a644-1dbf69c7b0fd',
         address: '/websystems/WebSites/web/subscriptions/<id>/webspaces/<webspace>/sites/<site-name>/slots?Command=SWAP&targetSlot=production',
-        verb:'POST'
+        verb: 'POST'
         sourceSlot: "staging",
         targetSlot: "production"
     },
-    topic:'/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
-    dataVersion:'1',
-    metaDataVersion:'1'
+    topic: '/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
+    dataVersion: '1',
+    metaDataVersion: '1'
 }
 ```
 
@@ -163,7 +163,7 @@ Datový objekt obsahuje následující vlastnosti:
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
 |    action                  |    řetězec    |    Typ akce operace                                                                                   |
-|    jméno                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
+|    name                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta         |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId    |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |
 |    Identifikátor               |    řetězec    |    ID žádosti vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost                |
@@ -175,24 +175,24 @@ Datový objekt obsahuje následující vlastnosti:
 
 ```js
 {
-    id:'7c5d6de5-eb70-4de2-b788-c52a544e68b8',
-    subject:'/Microsoft.Web/sites/<site-name>',
-    eventType:'Microsoft.Web.SlotSwapWithPreviewStarted',
-    eventTime:'2020-01-28T18:26:51.7194887Z',
-    data:{
-        appEventTypeDetail:null,
-        siteName:'<site-name >',
-        clientRequestId:'922f4841-20d9-4dd6-8c5b-23f0d85e5592',
-        correlationRequestId:'9ac46505-2b8a-4e06-834c-05ffbe2e8c3a',
-        requestId:'765117aa-eaf8-4bd2-a644-1dbf69c7b0fd',
+    id: '7c5d6de5-eb70-4de2-b788-c52a544e68b8',
+    subject: '/Microsoft.Web/sites/<site-name>',
+    eventType: 'Microsoft.Web.SlotSwapWithPreviewStarted',
+    eventTime: '2020-01-28T18:26:51.7194887Z',
+    data: {
+        appEventTypeDetail: null,
+        siteName: '<site-name>',
+        clientRequestId: '922f4841-20d9-4dd6-8c5b-23f0d85e5592',
+        correlationRequestId: '9ac46505-2b8a-4e06-834c-05ffbe2e8c3a',
+        requestId: '765117aa-eaf8-4bd2-a644-1dbf69c7b0fd',
         address: '/websystems/WebSites/web/subscriptions/<id>/webspaces/<webspace>/sites/<site-name>/slots?Command=SWAP&targetSlot=production',
-        verb:'POST'
+        verb: 'POST'
         sourceSlot: "staging",
         targetSlot: "production"
     },
-    topic:'/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
-    dataVersion:'1',
-    metaDataVersion:'1'
+    topic: '/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<site-name>',
+    dataVersion: '1',
+    metaDataVersion: '1'
 }
 ```
 
@@ -202,7 +202,7 @@ Datový objekt obsahuje následující vlastnosti:
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
 |    action                  |    řetězec    |    Typ akce operace                                                                                   |
-|    jméno                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
+|    name                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta         |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId    |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |
 |    Identifikátor               |    řetězec    |    ID žádosti vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost                |
@@ -225,10 +225,10 @@ Datový objekt obsahuje následující vlastnosti:
         clientRequestId: '64a5e0aa-7cee-4ff1-9093-b9197b820014',
         correlationRequestId: '25bb36a5-8f6c-4f04-b615-e9a0ee045756',
         requestId: 'f2e8eb3f-b190-42de-b99e-6acefe587374',
-        address: '/websystems/WebSites/web/subscriptions/<id>/webspaces/ <webspace>/sites/<site-name>/stop',
+        address: '/websystems/WebSites/web/subscriptions/<id>/webspaces/<webspace>/sites/<site-name>/stop',
         verb: 'POST'
     },
-    topic: '/subscriptions/<id>/resourceGroups/<group>/providers/ Microsoft.Web/sites/<site-name>',
+    topic: '/subscriptions/<id>/resourceGroups/<group>/providers/Microsoft.Web/sites/<site-name>',
     dataVersion: '1',
     metaDataVersion: '1'
 }
@@ -240,7 +240,7 @@ Datový objekt má následující vlastnosti:
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
 |    appEventTypeDetail      |    odkazy objektů    |    Podrobnosti o akci u aplikace                                                                                       |
 |    action                  |    řetězec    |    Typ akce operace                                                                                   |
-|    jméno                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
+|    name                    |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta         |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId    |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |
 |    Identifikátor               |    řetězec    |    ID žádosti vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost                |
@@ -251,33 +251,33 @@ Datový objekt má následující vlastnosti:
 
 ```js
 {
-   "id":"56501672-9150-40e1-893a-18420c7fdbf7",
-   "subject":"/Microsoft.Web/serverfarms/<plan-name>",
-   "eventType":"Microsoft.Web.AppServicePlanUpdated",
-   "eventTime":"2020-01-28T18:22:23.5516004Z",
-   "data":{
-        "serverFarmEventTypeDetail":{
-            "stampKind":"Public",
-            "action":"Updated",
-            "status":"Started"
+   id: "56501672-9150-40e1-893a-18420c7fdbf7",
+   subject: "/Microsoft.Web/serverfarms/<plan-name>",
+   eventType: "Microsoft.Web.AppServicePlanUpdated",
+   eventTime: "2020-01-28T18:22:23.5516004Z",
+   data: {
+        serverFarmEventTypeDetail: {
+            stampKind: "Public",
+            action: "Updated",
+            status: "Started"
         },
-        "serverFarmId":"0",
-        "sku":{
-            "name":"P1v2",
-            "tier":"PremiumV2",
-            "size":"P1v2",
-            "family":"Pv2",
-            "capacity":1
+        serverFarmId: "0",
+        sku: {
+            name: "P1v2",
+            tier: "PremiumV2",
+            size: "P1v2",
+            family: "Pv2",
+            capacity: 1
         },
-        "clientRequestId":"8f880321-a991-45c7-b743-6ff63fe4c004",
-        "correlationRequestId":"1995c3be-ba7f-4ccf-94af-516df637ec8a",
-        "requestId":"b973a8e6-6949-4783-b44c-ac778be831bb",
-        "address":"/websystems/WebSites/serverfarms/subscriptions/<id>/webspaces/<webspace-id>/serverfarms/<plan-name>/async",
-        "verb":"PUT"
+        clientRequestId: "8f880321-a991-45c7-b743-6ff63fe4c004",
+        correlationRequestId: "1995c3be-ba7f-4ccf-94af-516df637ec8a",
+        requestId: "b973a8e6-6949-4783-b44c-ac778be831bb",
+        address: "/websystems/WebSites/serverfarms/subscriptions/<id>/webspaces/<webspace-id>/serverfarms/<plan-name>/async",
+        verb: "PUT"
    },
-   "topic":"/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/ serverfarms/<serverfarm-name>",
-   "dataVersion":"1",
-   "metaDataVersion":"1"
+   topic: "/subscriptions/<id>/resourceGroups/<rg>/providers/Microsoft.Web/serverfarms/<serverfarm-name>",
+   dataVersion: "1",
+   metaDataVersion: "1"
 }
 ```
 
@@ -290,13 +290,13 @@ Datový objekt má následující vlastnosti:
 |    action                           |    řetězec    |    Typ akce v plánu služby App Service                                                                            |
 |    status                           |    řetězec    |    Stav operace v plánu služby App Service                                                                   |
 |    skladové                              |    odkazy objektů    |    SKU plánu služby App Service                                                                                       |
-|    jméno                             |    řetězec    |    název plánu služby App Service                                                                                      |
+|    name                             |    řetězec    |    název plánu služby App Service                                                                                      |
 |    Úroveň                             |    řetězec    |    úroveň plánu služby App Service                                                                                      |
 |    Velikost                             |    řetězec    |    velikost plánu služby App Service                                                                                      |
 |    Rodina                           |    řetězec    |    řada plánu služby App Service                                                                                        |
 |    Kapacita                         |    řetězec    |    kapacita plánu služby App Service                                                                                      |
 |    action                           |    řetězec    |    Typ akce operace                                                                                   |
-|    jméno                             |    řetězec    |    název webu, který měl tuto událost                                                                          |
+|    name                             |    řetězec    |    název webu, který měl tuto událost                                                                          |
 |    ID žádosti klienta                  |    řetězec    |    ID žádosti klienta vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost         |
 |    correlationRequestId             |    řetězec    |    ID žádosti o korelaci vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost    |
 |    Identifikátor                        |    řetězec    |    ID žádosti vygenerované službou App Service pro operaci rozhraní API lokality, která aktivovala tuto událost                |

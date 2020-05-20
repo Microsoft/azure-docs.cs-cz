@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28915967dc7697c08b2bbd7118f7e2377418045d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80877384"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647241"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
@@ -111,13 +111,13 @@ Existují čtyři aspekty, které je třeba vzít v úvahu při použití odchoz
 
 Povolte přístup k následujícím adresám URL:
 
-| zprostředkovatele identity | Jak se používá |
+| URL | Jak se používá |
 | --- | --- |
 | \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Konektor používá tyto adresy URL k ověření certifikátů. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com<br>*. microsoftonline-p.com<br>*. msauth.NET<br>*. msauthimages.NET<br>*. msecnd.NET<br>*. msftauth.NET<br>*. msftauthimages.NET<br>*. PhoneFactor.NET<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Konektor tyto adresy URL používá během procesu registrace. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.NET <br> *. msauthimages.net<br>*. msecnd.NET <br> *. msftauth.net<br>*. msftauthimages.NET <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Konektor tyto adresy URL používá během procesu registrace. |
 
-Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy povolených serverů DNS, můžete povolit připojení \*k příponám \*. msappproxy.NET a. ServiceBus.Windows.NET. V takovém případě je potřeba, abyste povolili přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
+Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy povolených serverů DNS, můžete povolit připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET. V takovém případě je potřeba, abyste povolili přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
 
 Pokud nemůžete připojení podle plně kvalifikovaného názvu domény a potřebujete místo toho zadat rozsahy IP adres, použijte tyto možnosti:
 
@@ -144,12 +144,12 @@ Použití předávacího proxy serveru pro komunikaci směrem k back-endové apl
 Pokud to chcete povolit, postupujte prosím podle následujících kroků:
 
 ### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Krok 1: přidejte do serveru požadovanou hodnotu registru
-1. Pokud chcete povolit použití výchozího proxy serveru, přidejte následující hodnotu registru (DWORD `UseDefaultProxyForBackendRequests = 1` ) do klíče registru konfigurace konektoru, který najdete v části HKEY_LOCAL_MACHINE \Software\microsoft\microsoft AAD App proxy Connector.
+1. Pokud chcete povolit použití výchozího proxy serveru, přidejte následující hodnotu registru (DWORD) `UseDefaultProxyForBackendRequests = 1` do klíče registru konfigurace konektoru, který najdete v části HKEY_LOCAL_MACHINE \SOFTWARE\MICROSOFT\MICROSOFT AAD App proxy Connector.
 
 ### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Krok 2: ruční konfigurace proxy server pomocí příkazu netsh
 1.  Povolte zásadám skupiny vytvořit nastavení proxy serveru na počítač. Najdete ho v: počítač \ \ součásti systému Windows\internet Explorer. Tento postup je potřeba nastavit, aby tato zásada nebyla nastavená na jednotlivé uživatele.
 2.  Spusťte `gpupdate /force` na serveru nebo restartujte server, aby se zajistilo, že bude používat aktualizované nastavení zásad skupiny.
-3.  Spusťte příkazový řádek se zvýšenými oprávněními s právy `control inetcpl.cpl`správce a zadejte.
+3.  Spusťte příkazový řádek se zvýšenými oprávněními s právy správce a zadejte `control inetcpl.cpl` .
 4.  Nakonfigurujte požadovaná nastavení proxy serveru. 
 
 Tato nastavení nastaví konektor pro komunikaci do Azure a back-endu stejný proxy server pro předávání. Pokud konektor ke komunikaci Azure nevyžaduje žádný dopředný proxy server nebo jiný dopředný proxy server, můžete ho nastavit úpravou souboru ApplicationProxyConnectorService. exe. config, jak je popsáno v částech obejití odchozích proxy serverů nebo použití odchozího proxy server.
@@ -162,7 +162,7 @@ Nyní byste měli vidět veškerý tok provozu prostřednictvím proxy serveru. 
 
 Nejlepším způsobem, jak identifikovat a řešit potíže s připojením konektoru, je zařídit síťové zachycení při spuštění služby konektoru. Tady jsou některé rychlé tipy pro zachytávání a filtrování trasování sítě.
 
-Můžete použít nástroj pro monitorování podle vašeho výběru. Pro účely tohoto článku jsme použili Microsoft Message Analyzer. Můžete [si ho stáhnout od Microsoftu](https://www.microsoft.com/download/details.aspx?id=44226).
+Můžete použít nástroj pro monitorování podle vašeho výběru. Pro účely tohoto článku jsme použili Microsoft Message Analyzer.
 
 Následující příklady jsou specifické pro analyzátor zpráv, ale zásady je možné použít na jakýkoli nástroj pro analýzu.
 
@@ -185,7 +185,7 @@ Při prvotním řešení potíží proveďte následující kroky:
 
 Pokud jste proxy server aplikace nakonfigurovali tak, aby se nepoužívaly proxy servery a připojili se přímo k proxy službě aplikace, chcete se podívat na síťové zachycení pro neúspěšné pokusy o připojení TCP.
 
-Tyto pokusy Identifikujte pomocí filtru analyzátoru zpráv. Do `property.TCPSynRetransmit` pole Filtr zadejte a vyberte **použít**.
+Tyto pokusy Identifikujte pomocí filtru analyzátoru zpráv. `property.TCPSynRetransmit`Do pole Filtr zadejte a vyberte **použít**.
 
 Paket SYN je první paket odeslaný k navázání připojení TCP. Pokud tento paket nevrátí odpověď, dojde k pokusu o SYN. K zobrazení všech přenesených SYNs můžete použít předchozí filtr. Pak můžete ověřit, zda tyto SYNs odpovídají jakýmkoli přenosům spojeným s konektorem.
 
@@ -195,7 +195,7 @@ Pokud očekáváte, že konektor bude přímá připojení ke službám Azure, S
 
 Pokud jste nakonfigurovali provoz konektoru proxy aplikací tak, aby procházel servery proxy, chcete vyhledat neúspěšná připojení HTTPS k vašemu proxy serveru.
 
-Pokud chcete pro tyto pokusy o připojení filtrovat zachytávání `(https.Request or https.Response) and tcp.port==8080` sítě, zadejte do filtru analyzátoru zpráv a nahraďte 8080 portem služby proxy. Výběrem **použít** zobrazíte výsledky filtru.
+Pokud chcete pro tyto pokusy o připojení filtrovat zachytávání sítě, zadejte `(https.Request or https.Response) and tcp.port==8080` do filtru analyzátoru zpráv a nahraďte 8080 portem služby proxy. Výběrem **použít** zobrazíte výsledky filtru.
 
 Předchozí filtr ukazuje pouze požadavky HTTPs a odpovědi na nebo z portu proxy serveru. Hledáte žádosti o připojení, které ukazují komunikaci s proxy server. Po úspěchu získáte odpověď HTTP OK (200).
 

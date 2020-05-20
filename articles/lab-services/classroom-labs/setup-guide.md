@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/18/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: e00b6dd5af1cb489aee9e8b4c9f3337eb02e4b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c2ea38dfa799239adde158506e1359fb84adcc4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878098"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650533"
 ---
 # <a name="classroom-lab-setup-guide"></a>Průvodce nastavením testovacího prostředí pro učebnu
 
@@ -127,7 +127,12 @@ Až pochopíte požadavky na testovací prostředí vaší třídy, jste připra
    - [Povolení automatického vypnutí při odpojení](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 
         > [!NOTE]
-        > Plány, kvóty a automatické vypnutí se nevztahují na virtuální počítač šablony. V důsledku toho je nutné zajistit, aby byl virtuální počítač šablony vypnutý, pokud se nepoužívá. V opačném případě se bude nadále účtovat náklady. Ve výchozím nastavení se při vytváření testovacího prostředí automaticky spustí i virtuální počítač šablony. Ujistěte se, že jste hned dokončí nastavení testovacího prostředí a vypnete virtuální počítač šablony.
+        > Plány a kvóty se nevztahují na virtuální počítač šablony, ale nastavení automatického vypnutí se použije. 
+        > 
+        > Při vytváření testovacího prostředí se vytvoří virtuální počítač šablony, který ale není spuštěný. Můžete ji spustit, připojit k ní a nainstalovat libovolný nezbytný software pro testovací prostředí a pak ho publikovat. Když publikujete virtuální počítač šablony, automaticky se vypíná za vás, pokud jste to ještě neudělali. 
+        > 
+        > Virtuální počítače šablony účtují **náklady** při jejich spuštění, takže se ujistěte, že je virtuální počítač šablony vypnutý, když ho nepotřebujete používat. 
+
 
 1. **Použijte řídicí panel.** Pokyny najdete v tématu [Použití řídicího panelu testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard).
 

@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/25/2019
-ms.openlocfilehash: 84b72a71ed2de910bce44b0c3f3309782f096680
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf63d5c8cb46fd791508af40dcefd7b39d4ba9de
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77581833"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652024"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Použití poznámkových bloků Jupyter k prolovení bezpečnostních hrozeb
 
@@ -60,9 +60,9 @@ Můžete spustit Poznámkový blok přímo z Azure Sentinel nebo klonovat všech
 
 ## <a name="run-a-notebook-from-azure-sentinel"></a>Spuštění poznámkového bloku z Azure Sentinel
  
-1. V Azure Portal přejděte na**poznámkové bloky**služby **Azure Sentinel** > **Threat Management** > , kde vidíte poznámkové bloky, které poskytuje Azure Sentinel. 
+1. V Azure Portal přejděte na **Azure Sentinel**  >  **Threat management**  >  **poznámkové bloky**služby Azure Sentinel Threat Management, kde vidíte poznámkové bloky, které poskytuje Azure Sentinel. 
 
-2. Vyberte jednotlivé poznámkové bloky pro čtení jejich popisů, požadovaných datových typů a zdrojů dat. Příklad:
+2. Vyberte jednotlivé poznámkové bloky pro čtení jejich popisů, požadovaných datových typů a zdrojů dat. Například:
     
     > [!div class="mx-imgBorder"]
     > ![spustit Poznámkový blok](./media/notebooks/sentinel-azure-notebooks-launch.png)
@@ -73,7 +73,7 @@ Můžete spustit Poznámkový blok přímo z Azure Sentinel nebo klonovat všech
 
 Tento postup vytvoří Azure Notebooks projekt, který obsahuje poznámkové bloky Sentinel Azure. Pak můžete poznámkové bloky spustit tak, jak jsou, nebo je změnit a pak je spustit.
 
-1. V Azure Portal přejděte na**poznámkové bloky** služby **Azure Sentinel** > **Threat Management** > a pak na panelu příkazů vyberte **klonovat poznámkové bloky** :
+1. V Azure Portal přejděte na **Azure Sentinel**  >  **Threat management**  >  **poznámkové bloky** služby Azure Sentinel Threat Management a pak na panelu příkazů vyberte **klonovat poznámkové bloky** :
   
     > [!div class="mx-imgBorder"]
     >![Možnost klonování poznámkových bloků](./media/notebooks/sentinel-azure-clone-notebooks.png)
@@ -86,7 +86,7 @@ Tento postup vytvoří Azure Notebooks projekt, který obsahuje poznámkové blo
 
    ![Importovat Poznámkový blok](./media/notebooks/sentinel-create-project.png)
 
-4. Otevřete projekt, který jste právě vytvořili, a pak otevřete složku **poznámkové bloky** a zobrazte si poznámkové bloky. Příklad:
+4. Otevřete projekt, který jste právě vytvořili, a pak otevřete složku **poznámkové bloky** a zobrazte si poznámkové bloky. Například:
 
    ![Importovat úložiště](./media/notebooks/sentinel-open-notebook1.png)
 
@@ -115,17 +115,17 @@ Každý Poznámkový blok vás provede kroky pro provedení průzkumu nebo šet�
 
 3. Vyberte Poznámkový blok, který chcete otevřít.
     
-    Při prvním otevření poznámkového bloku se může zobrazit výzva k výběru verze jádra. Pokud se vám nezobrazí výzva, můžete vybrat verzi jádra z**jádra změny** **jádra** >  a pak vybrat verzi, která bude aspoň 3,6. Vybraná verze jádra se zobrazí v pravém horním rohu okna poznámkového bloku:
+    Při prvním otevření poznámkového bloku se může zobrazit výzva k výběru verze jádra. Pokud se vám nezobrazí výzva, můžete vybrat verzi jádra z **Kernel**  >   **jádra změny**jádra a pak vybrat verzi, která bude aspoň 3,6. Vybraná verze jádra se zobrazí v pravém horním rohu okna poznámkového bloku:
     
    ![vybrat Poznámkový blok](./media/notebooks/sentinel-select-kernel.png)
 
-4. Předtím, než provedete všechny změny v poznámkovém bloku, který jste stáhli, je vhodné vytvořit kopii původního poznámkového bloku a na kopii pracovat. Provedete to tak, že vyberete **soubor** > **vytvořit kopii**. Práce na kopiích vám umožní bezpečně aktualizovat budoucí verze poznámkových bloků bez přepsání jakýchkoli dat.
+4. Předtím, než provedete všechny změny v poznámkovém bloku, který jste stáhli, je vhodné vytvořit kopii původního poznámkového bloku a na kopii pracovat. Provedete to tak, že vyberete **soubor**  >  **vytvořit kopii**. Práce na kopiích vám umožní bezpečně aktualizovat budoucí verze poznámkových bloků bez přepsání jakýchkoli dat.
     
     Teď jste připraveni spustit nebo upravit vybraný Poznámkový blok.
 
 Doporučit
 
-- Rychlý úvod k dotazování na data ve službě Azure Sentinel najdete v poznámkovém bloku [getstarted](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) ve složce hlavní **poznámkové bloky** . 
+- Rychlý úvod k dotazování na data ve službě Azure Sentinel najdete v poznámkovém bloku [getstarted](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/345cf9f7c8f6137f5af4593a3f9d7568acd6cbc2/DeprecatedNotebooks/Get%20Started.ipynb) ve složce hlavní **poznámkové bloky** . 
 
 - Další ukázkové poznámkové bloky najdete v podsložce **ukázek poznámkových bloků** . Tyto ukázkové poznámkové bloky byly uloženy s daty, takže je snazší zobrazit zamýšlený výstup. Doporučujeme zobrazit tyto poznámkové bloky v [nbviewer](https://nbviewer.jupyter.org/). 
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: eb287b812c477b2e472c48d7bd8f44574a398bac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83f80f893620a225c928be2ad7ad1679b3a9c465
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681568"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652234"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurace převodu modelů
 
@@ -18,7 +18,7 @@ Tato kapitola dokumentuje možnosti převodu modelu.
 
 ## <a name="settings-file"></a>Soubor nastavení
 
-Pokud je soubor s `ConversionSettings.json` názvem nalezen ve vstupním kontejneru vedle vstupního modelu, je použit k poskytnutí dodatečné konfigurace pro proces převodu modelu.
+Pokud je soubor s názvem `ConversionSettings.json` nalezen ve vstupním kontejneru vedle vstupního modelu, je použit k poskytnutí dodatečné konfigurace pro proces převodu modelu.
 
 Obsah souboru by měl vyhovovat následujícímu schématu JSON:
 
@@ -39,6 +39,7 @@ Obsah souboru by měl vyhovovat následujícímu schématu JSON:
         "generateCollisionMesh" : { "type" : "boolean", "default" : true },
         "unlitMaterials" : { "type" : "boolean", "default" : false },
         "fbxAssumeMetallic" : { "type" : "boolean", "default" : true },
+        "deduplicateMaterials" : { "type" : "boolean", "default" : true },
         "axis" : {
             "type" : "array",
             "items" : {
@@ -79,6 +80,10 @@ Pokud to není zamýšlené chování, tento parametr by měl být nastaven na "
 
 * `material-override`– Tento parametr umožňuje zpracovat [přizpůsobení materiálů během převodu](override-materials.md).
 
+### <a name="material-de-duplication"></a>Odstranění duplicit materiálu
+
+* `deduplicateMaterials`– Tento parametr povoluje nebo zakazuje automatickou odstraňování duplicit materiálů, které sdílejí stejné vlastnosti a textury. Odstranění duplicit proběhne po zpracování přepsání materiálu. Tato možnost je ve výchozím nastavení povolená.
+
 ### <a name="color-space-parameters"></a>Parametry barevného prostoru
 
 Vykreslovací modul očekává, že hodnoty barev budou v lineárním prostoru.
@@ -88,7 +93,7 @@ Pokud je model definován pomocí prostoru hodnot gamma, pak tyto možnosti by m
 * `gammaToLinearVertex`-Převést barvy vrcholů z prostoru gamma na lineární místo
 
 > [!NOTE]
-> Pro soubory FBX jsou tato nastavení standardně `true` nastavená na. U všech ostatních typů souborů je `false`výchozí hodnota.
+> Pro soubory FBX jsou tato nastavení standardně nastavená na `true` . U všech ostatních typů souborů je výchozí hodnota `false` .
 
 ### <a name="scene-parameters"></a>Parametry scény
 
@@ -99,16 +104,16 @@ Pokud je model definován pomocí prostoru hodnot gamma, pak tyto možnosti by m
 
 Každý režim má jiný běhový výkon. V `dynamic` režimu se náklady na výkon lineárně škálují s počtem [entit](../../concepts/entities.md) v grafu, a to i v případě, že se nepřesouvají žádné součásti. Mělo by být použito pouze při přesunu částí, které jsou pro aplikaci nezbytné, například pro animaci "zobrazení rozpadu".
 
-`static` Režim provede export celého grafu scény, ale části v tomto grafu mají konstantní transformaci vzhledem ke své kořenové části. Kořenový uzel objektu je však stále možné přesunout, otočit nebo škálovat bez značných nákladů na výkon. Kromě toho [prostorové dotazy](../../overview/features/spatial-queries.md) vrátí jednotlivé části a každá část se dá upravit pomocí [přepsání stavu](../../overview/features/override-hierarchical-state.md). V tomto režimu je režie za modul runtime na objekt zanedbatelná. Je ideální pro velké scény, kde stále potřebujete kontrolu na jednotlivé objekty, ale ne žádné transformační změny pro jednotlivé objekty.
+`static`Režim provede export celého grafu scény, ale části v tomto grafu mají konstantní transformaci vzhledem ke své kořenové části. Kořenový uzel objektu je však stále možné přesunout, otočit nebo škálovat bez značných nákladů na výkon. Kromě toho [prostorové dotazy](../../overview/features/spatial-queries.md) vrátí jednotlivé části a každá část se dá upravit pomocí [přepsání stavu](../../overview/features/override-hierarchical-state.md). V tomto režimu je režie za modul runtime na objekt zanedbatelná. Je ideální pro velké scény, kde stále potřebujete kontrolu na jednotlivé objekty, ale ne žádné transformační změny pro jednotlivé objekty.
 
 V `none` režimu je minimální režie za běhu a také mírně lepší doba načítání. V tomto režimu není možné kontrolovat nebo transformovat jednotlivé objekty. Případy použití jsou například modely Photogrammetry, které nemají smysluplný graf scény na prvním místě.
 
 > [!TIP]
-> Mnoho aplikací načte více modelů. V závislosti na tom, jak se bude používat, byste měli optimalizovat parametry převodu pro každý model. Pokud například chcete zobrazit model automobilu, který může uživatel oddělit a prozkoumat podrobněji, je nutné ho převést do `dynamic` režimu. Pokud ale kromě toho chcete auto umístit do prostředí pro zobrazení místnosti, tento model je možné převést pomocí `sceneGraphMode` nastavení na `static` nebo dokonce. `none`
+> Mnoho aplikací načte více modelů. V závislosti na tom, jak se bude používat, byste měli optimalizovat parametry převodu pro každý model. Pokud například chcete zobrazit model automobilu, který může uživatel oddělit a prozkoumat podrobněji, je nutné ho převést do `dynamic` režimu. Pokud ale kromě toho chcete auto umístit do prostředí pro zobrazení místnosti, tento model je možné převést pomocí `sceneGraphMode` nastavení na `static` nebo dokonce `none` .
 
 ### <a name="physics-parameters"></a>Parametry fyzika
 
-* `generateCollisionMesh`– Pokud potřebujete podporu [prostorových dotazů](../../overview/features/spatial-queries.md) pro model, je nutné tuto možnost povolit. V nejhorším případě může vytvoření sítě kolizí zdvojnásobit dobu převodu. Modely s kolize sítí trvá delší dobu načítání a při použití grafu `dynamic` scény mají také vyšší režii na výkon modulu runtime. Pro celkový optimální výkon byste měli zakázat tuto možnost u všech modelů, na kterých nepotřebujete prostorové dotazy.
+* `generateCollisionMesh`– Pokud potřebujete podporu [prostorových dotazů](../../overview/features/spatial-queries.md) pro model, je nutné tuto možnost povolit. V nejhorším případě může vytvoření sítě kolizí zdvojnásobit dobu převodu. Modely s kolize sítí trvá delší dobu načítání a při použití `dynamic` grafu scény mají také vyšší režii na výkon modulu runtime. Pro celkový optimální výkon byste měli zakázat tuto možnost u všech modelů, na kterých nepotřebujete prostorové dotazy.
 
 ### <a name="unlit-materials"></a>Unlit materiály
 
@@ -116,11 +121,11 @@ V `none` režimu je minimální režie za běhu a také mírně lepší doba na�
 
 ### <a name="converting-from-older-fbx-formats-with-a-phong-material-model"></a>Převod ze starších formátů FBX pomocí modelu Phongova materiálu
 
-* `fbxAssumeMetallic`– Starší verze formátu FBX definují své materiály pomocí modelu Phongova materiálu. Proces převodu musí odvodit, jak se tyto materiály mapují na [model PBR](../../overview/features/pbr-materials.md)vykreslovacího modulu. Obvykle to funguje dobře, ale nejednoznačnost může nastat, když materiál nemá žádné textury, vysoké odlesky a nešedou barvu albedo barvy. V tomto případě musí převod zvolit mezi stanovením priorit horních hodnot, a to tak, že definuje vysoce odrážející kovový materiál, kde barva albedo vyhodnotí pryč nebo nastaví prioritu albedo barvy, což definuje něco jako lesklý barevný plast. Ve výchozím nastavení předpokládá proces převodu, že vysoce odlesky hodnot implikuje kovový materiál v případech, kdy se nejednoznačnost uplatní. Tento parametr může být nastaven na `false` hodnotu pro přepnutí na opak.
+* `fbxAssumeMetallic`– Starší verze formátu FBX definují své materiály pomocí modelu Phongova materiálu. Proces převodu musí odvodit, jak se tyto materiály mapují na [model PBR](../../overview/features/pbr-materials.md)vykreslovacího modulu. Obvykle to funguje dobře, ale nejednoznačnost může nastat, když materiál nemá žádné textury, vysoké odlesky a nešedou barvu albedo barvy. V tomto případě musí převod zvolit mezi stanovením priorit horních hodnot, a to tak, že definuje vysoce odrážející kovový materiál, kde barva albedo vyhodnotí pryč nebo nastaví prioritu albedo barvy, což definuje něco jako lesklý barevný plast. Ve výchozím nastavení předpokládá proces převodu, že vysoce odlesky hodnot implikuje kovový materiál v případech, kdy se nejednoznačnost uplatní. Tento parametr může být nastaven na hodnotu `false` pro přepnutí na opak.
 
 ### <a name="coordinate-system-overriding"></a>Přepisování systému souřadnic
 
-* `axis`– Pro přepsání souřadnic systémových jednotek-vektory. Výchozí hodnoty jsou `["+x", "+y", "+z"]`. Teoreticky má formát FBX hlavičku, kde jsou tyto vektory definovány, a převod používá tyto informace k transformaci scény. Formát glTF definuje také pevný systém souřadnic. V praxi některé prostředky mají buď nesprávné informace v hlavičce nebo byly uloženy s jinou konvencí souřadnicového systému. Tato možnost umožňuje přepsat souřadnicový systém pro kompenzaci. Například: `"axis" : ["+x", "+z", "-y"]` vyměňuje osu Z a osu Y a zachová změnu hodnoty pera systému tím, že se obrátí směr osy Y.
+* `axis`– Pro přepsání souřadnic systémových jednotek-vektory. Výchozí hodnoty jsou `["+x", "+y", "+z"]` . Teoreticky má formát FBX hlavičku, kde jsou tyto vektory definovány, a převod používá tyto informace k transformaci scény. Formát glTF definuje také pevný systém souřadnic. V praxi některé prostředky mají buď nesprávné informace v hlavičce nebo byly uloženy s jinou konvencí souřadnicového systému. Tato možnost umožňuje přepsat souřadnicový systém pro kompenzaci. Například: `"axis" : ["+x", "+z", "-y"]` vyměňuje osu Z a osu Y a zachová změnu hodnoty pera systému tím, že se obrátí směr osy Y.
 
 ### <a name="vertex-format"></a>Formát vrcholu
 
@@ -152,7 +157,7 @@ Následující `vertex` oddíl v `.json` souboru je nepovinný. Pro každou čá
     ...
 ```
 
-Vynucením komponenty na `NONE`je zaručeno, že výstupní síť nemá příslušný datový proud.
+Vynucením komponenty na `NONE` je zaručeno, že výstupní síť nemá příslušný datový proud.
 
 #### <a name="component-formats-per-vertex-stream"></a>Formáty komponent na datový proud vrcholu
 
@@ -179,14 +184,14 @@ Paměťové nároky na formáty jsou následující:
 |16_16_FLOAT|poloviční přesnost s plovoucí desetinnou čárkou pro dvě komponenty|4
 |32_32_32_FLOAT|Úplná přesnost s plovoucí desetinnou čárkou pro tři součásti|12
 |16_16_16_16_FLOAT|poloviční přesnost s plovoucí desetinnou čárkou pro čtyři komponenty|8
-|8_8_8_8_UNSIGNED_NORMALIZED|bajt se čtyřmi komponentami, normalizovaný na `[0; 1]` rozsah|4
-|8_8_8_8_SIGNED_NORMALIZED|bajt se čtyřmi komponentami, normalizovaný na `[-1; 1]` rozsah|4
+|8_8_8_8_UNSIGNED_NORMALIZED|bajt se čtyřmi komponentami, normalizovaný na `[0; 1]` Rozsah|4
+|8_8_8_8_SIGNED_NORMALIZED|bajt se čtyřmi komponentami, normalizovaný na `[-1; 1]` Rozsah|4
 
 #### <a name="best-practices-for-component-format-changes"></a>Osvědčené postupy pro změny formátu součásti
 
 * `position`: Je vzácná, že omezená přesnost je dostačující. **16_16_16_16_FLOAT** zavádí znatelné artefakty kvantizační, i pro malé modely.
-* `normal`, `tangent`, `binormal`: Obvykle se tyto hodnoty mění dohromady. Pokud nejsou k dispozici znatelné světelné artefakty, které jsou výsledkem normálního kvantizační, neexistuje žádný důvod ke zvýšení jejich přesnosti. V některých případech ale může být tato součást nastavena na **none**:
-  * `normal`, `tangent`a `binormal` jsou potřebné pouze v případě, že by měl být osvětlen alespoň jeden materiál v modelu. V ARR se jedná o případ, kdy se v modelu kdykoli používá [materiál PBR](../../overview/features/pbr-materials.md) .
+* `normal`, `tangent` , `binormal` : Obvykle se tyto hodnoty mění dohromady. Pokud nejsou k dispozici znatelné světelné artefakty, které jsou výsledkem normálního kvantizační, neexistuje žádný důvod ke zvýšení jejich přesnosti. V některých případech ale může být tato součást nastavena na **none**:
+  * `normal`, `tangent` a `binormal` jsou potřebné pouze v případě, že by měl být osvětlen alespoň jeden materiál v modelu. V ARR se jedná o případ, kdy se v modelu kdykoli používá [materiál PBR](../../overview/features/pbr-materials.md) .
   * `tangent`a `binormal` jsou potřebné pouze v případě, že některé z materiálů osvětleny používají normální texturu mapy.
 * `texcoord0`, `texcoord1` : Souřadnice textury mohou používat omezenou přesnost (**16_16_FLOAT**), pokud jejich hodnoty zůstávají v `[0; 1]` rozsahu a pokud mají určené textury maximální velikost 2048 x 2048 pixelů. Pokud dojde k překročení těchto omezení, kvalita mapování textur se zachová.
 
@@ -194,9 +199,9 @@ Paměťové nároky na formáty jsou následující:
 
 Předpokládejme, že máte model Photogrammetry, který má vloženými osvětlení do textur. Vše potřebné k vykreslení modelu je pozice vrcholu a souřadnice textury.
 
-Ve výchozím nastavení má převaděč předpokládat, že v modelu můžete chtít používat i materiály PBR, takže vygeneruje `normal`data, `tangent`a `binormal` za vás. V důsledku toho je `position` využití paměti na vrcholu (12 bajtů) `texcoord0` + (8 bajtů) `normal` + (4 bajty) `tangent` + (4 bajty) `binormal` + (4 bajt) = 32 bajtů. Větší modely tohoto typu můžou snadno mít spoustu milionů vrcholů v důsledku modelů, které můžou zabírat více GB paměti. Takové velké objemy dat budou mít vliv na výkon a dokonce i nedostatek paměti.
+Ve výchozím nastavení má převaděč předpokládat, že v modelu můžete chtít používat i materiály PBR, takže vygeneruje `normal` `tangent` data, a `binormal` za vás. V důsledku toho je využití paměti na vrcholu `position` (12 bajtů) + `texcoord0` (8 bajtů) + `normal` (4 bajty) + `tangent` (4 bajty) + `binormal` (4 bajt) = 32 bajtů. Větší modely tohoto typu můžou snadno mít spoustu milionů vrcholů v důsledku modelů, které můžou zabírat více GB paměti. Takové velké objemy dat budou mít vliv na výkon a dokonce i nedostatek paměti.
 
-S vědomím, že v modelu nikdy nepotřebujete dynamické osvětlení a že všechny souřadnice textury jsou `[0; 1]` v rozsahu, můžete nastavit `normal`, `tangent`, a `binormal` na `NONE` a `texcoord0` na poloviční přesnost (`16_16_FLOAT`), výsledkem je pouze 16 bajtů na vrchol. Rozřezání dat sítě na polovinu umožňuje načíst větší modely a potenciálně zvyšuje výkon.
+S vědomím, že v modelu nikdy nepotřebujete dynamické osvětlení a že všechny souřadnice textury jsou v `[0; 1]` rozsahu, můžete nastavit `normal` , `tangent` , a `binormal` na `NONE` a `texcoord0` na poloviční přesnost ( `16_16_FLOAT` ), výsledkem je pouze 16 bajtů na vrchol. Rozřezání dat sítě na polovinu umožňuje načíst větší modely a potenciálně zvyšuje výkon.
 
 ## <a name="typical-use-cases"></a>Typické případy použití
 
@@ -206,7 +211,7 @@ Existují určité třídy případů použití, které mají nárok na konkrét
 
 ### <a name="use-case-architectural-visualization--large-outdoor-maps"></a>Případ použití: vizualizace architektury/Velká vnější mapy
 
-* Tyto typy scén mají být statické, což znamená, že nepotřebují pohyblivé části. V `sceneGraphMode` důsledku toho může být nastavení nastaveno `static` na nebo `none`dokonce, což zvyšuje výkon modulu runtime. V `static` režimu můžete kořenový uzel scény pořád přesunout, otočit a škálovat, například k dynamickému přepínání mezi 1:1 škálou (pro první zobrazení osob) a v horním zobrazení tabulky.
+* Tyto typy scén mají být statické, což znamená, že nepotřebují pohyblivé části. V důsledku toho `sceneGraphMode` může být nastavení nastaveno na `static` nebo dokonce `none` , což zvyšuje výkon modulu runtime. V `static` režimu můžete kořenový uzel scény pořád přesunout, otočit a škálovat, například k dynamickému přepínání mezi 1:1 škálou (pro první zobrazení osob) a v horním zobrazení tabulky.
 
 * Když potřebujete přesunout části kolem, obvykle to znamená, že potřebujete podporu pro raycasts nebo jiné [prostorové dotazy](../../overview/features/spatial-queries.md), abyste je mohli vybrat na prvním místě. Na druhé straně platí, že pokud nechcete něco přesunout, je pravděpodobné, že nepotřebujete, aby se účastnil prostorových dotazů, a proto může `generateCollisionMesh` příznak vypnout. Tento přepínač má výrazný dopad na časy převodu, časy načítání a také náklady na aktualizaci za běhu za sekundu.
 
@@ -214,7 +219,7 @@ Existují určité třídy případů použití, které mají nárok na konkrét
 
 ### <a name="use-case-photogrammetry-models"></a>Případ použití: Photogrammetry modely
 
-Při vykreslování modelů Photogrammetry obvykle není nutné mít graf scény, takže můžete nastavit `sceneGraphMode` na. `none` Vzhledem k tomu, že tyto modely zřídka obsahují složitý graf scény, který začíná, by měl být dopad této možnosti nedůležitý, i když.
+Při vykreslování modelů Photogrammetry obvykle není nutné mít graf scény, takže můžete nastavit na `sceneGraphMode` `none` . Vzhledem k tomu, že tyto modely zřídka obsahují složitý graf scény, který začíná, by měl být dopad této možnosti nedůležitý, i když.
 
 Vzhledem k tomu, že se osvětlení již vloženými do textur, není nutné provádět dynamické osvětlení. Proto:
 
@@ -225,9 +230,9 @@ Vzhledem k tomu, že se osvětlení již vloženými do textur, není nutné pro
 
 V těchto případech mají modely často velmi vysoký detail v rámci malých objemů. Zobrazovací jednotka je silně optimalizovaná tak, aby tyto případy dobře zpracovávala. Většina optimalizací uvedených v předchozím případu použití se ale netýká:
 
-* Jednotlivé části by měly být vybrané a pohyblivé, takže `sceneGraphMode` musí být ponecháno `dynamic`na.
+* Jednotlivé části by měly být vybrané a pohyblivé, takže `sceneGraphMode` musí být ponecháno na `dynamic` .
 * Přetypování do ray jsou obvykle nedílnou součástí aplikace, takže je potřeba vygenerovat sítě kolizí.
-* Vyjmuté roviny vypadají lépe `opaqueMaterialDefaultSidedness` s povoleným příznakem.
+* Vyjmuté roviny vypadají lépe s `opaqueMaterialDefaultSidedness` povoleným příznakem.
 
 ## <a name="next-steps"></a>Další kroky
 

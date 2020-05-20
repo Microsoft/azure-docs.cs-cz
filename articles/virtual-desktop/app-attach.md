@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94ec85ae658ca6012cd1f1594b431d12bb73013d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3f54c296575b256339f4c22708c06e3579720e00
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121061"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647796"
 ---
 # <a name="set-up-msix-app-attach"></a>Nastavení připojení aplikace MSIX
 
@@ -194,7 +194,7 @@ Pokud vaše aplikace používá certifikát, který není veřejný nebo podepsa
 Připojení aplikace MSIX má čtyři samostatné fáze, které je potřeba provést v uvedeném pořadí:
 
 1. Krok
-2. Zaregistrovat
+2. Registrovat
 3. Zrušení registrace
 4. Depříprava
 
@@ -460,4 +460,4 @@ catch [Exception]
 
 Tato funkce se momentálně nepodporuje, ale můžete klást otázky komunitě na [virtuálním počítači s Windows TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-Zpětnou vazbu k virtuálnímu počítači s Windows můžete také opustit v [centru pro zpětnou vazbu na virtuálním počítači s Windows](https://aka.ms/MRSFeedbackHub)nebo si můžete nechat svůj názor na MSIX aplikaci a nástroj pro balení v [aplikaci MSIX připojit Centrum zpětné vazby](https://aka.ms/msixappattachfeedback) a [Centrum pro zabalení MSIX](https://aka.ms/msixtoolfeedback).
+Zpětnou vazbu k virtuálnímu počítači s Windows můžete také opustit v [centru pro zpětnou vazbu na virtuálním počítači s Windows](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app).

@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/12/2020
 ms.author: jlian
-ms.openlocfilehash: c0d01ae6507864373a79282476846d6f96adf83b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61d24ac9f99a7c7b2b4d9ca6f3fd7b0a338341b8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231437"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652360"
 ---
 # <a name="iot-hub-support-for-virtual-networks"></a>Podpora IoT Hub pro virtuální sítě
 
@@ -46,10 +46,7 @@ Tento článek popisuje, jak dosáhnout těchto cílů pomocí [privátních kon
 
 ## <a name="ingress-connectivity-to-iot-hub-using-private-endpoints"></a>Připojení příchozího připojení k IoT Hub pomocí privátních koncových bodů
 
-Privátní koncový bod je privátní IP adresa přidělená v rámci virtuální sítě vlastněné zákazníkem, přes kterou je prostředek Azure dostupný. Díky tomu, že máte privátní koncový bod pro službu IoT Hub, budete moci umožnit, aby služby, které jsou ve vaší virtuální síti v provozu, mohly být dostupné IoT Hub bez nutnosti odesílat data do veřejného koncového bodu IoT Hub. Podobně zařízení, která pracují v místním prostředí, můžou používat [virtuální privátní síť (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) nebo soukromý partnerský vztah [ExpressRoute](https://azure.microsoft.com/services/expressroute/) k získání připojení k vaší virtuální síti v Azure a následně k vašemu IoT Hub (prostřednictvím svého privátního koncového bodu). Výsledkem je, že zákazníci, kteří chtějí omezit připojení ke svým veřejným koncovým bodům služby IoT Hub (nebo ho může zcela blokovat), můžou tento cíl dosáhnout pomocí [IoT Hub pravidel brány firewall](./iot-hub-ip-filtering.md) a přitom zachovat připojení ke svému centru pomocí privátního koncového bodu.
-
-> [!NOTE]
-> Hlavním soustředěním tohoto nastavení je zařízení v místní síti. Tato instalace se nedoporučuje u zařízení nasazených v síti WAN.
+Privátní koncový bod je privátní IP adresa přidělená v rámci virtuální sítě vlastněné zákazníkem, přes kterou je prostředek Azure dostupný. Díky tomu, že máte privátní koncový bod pro službu IoT Hub, budete moci umožnit, aby služby, které jsou ve vaší virtuální síti v provozu, mohly být dostupné IoT Hub bez nutnosti odesílat data do veřejného koncového bodu IoT Hub. Podobně zařízení, která pracují v místním prostředí, můžou používat [virtuální privátní síť (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) nebo soukromý partnerský vztah [ExpressRoute](https://azure.microsoft.com/services/expressroute/) k získání připojení k vaší virtuální síti v Azure a následně k vašemu IoT Hub (prostřednictvím svého privátního koncového bodu). Výsledkem je, že zákazníci, kteří chtějí omezit připojení ke svým veřejným koncovým bodům služby IoT Hub (nebo ho může zcela blokovat), můžou tento cíl dosáhnout pomocí [IoT Hub filtru IP](./iot-hub-ip-filtering.md) a [konfigurací směrování, aby neodesílala žádná data do integrovaného koncového bodu](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Tento přístup zachovává připojení ke svému centru pomocí privátního koncového bodu pro zařízení. Hlavním soustředěním tohoto nastavení je zařízení v místní síti. Tato instalace se nedoporučuje u zařízení nasazených v síti WAN.
 
 ![IoT Hub veřejný koncový bod](./media/virtual-network-support/virtual-network-ingress.png)
 
@@ -95,8 +92,19 @@ K nastavení privátního koncového bodu použijte následující postup:
 
 6. Klikněte na **Další: značky**a volitelně poskytněte pro svůj prostředek všechny značky.
 
-7. Kliknutím na tlačítko **zkontrolovat + vytvořit** vytvořte prostředek privátního koncového bodu.
+7. Kliknutím na tlačítko **zkontrolovat + vytvořit** vytvořte prostředek privátního propojení.
 
+### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>Vestavěný koncový bod kompatibilní s centrem událostí nepodporuje přístup prostřednictvím privátního koncového bodu.
+
+[Předdefinovaný koncový bod kompatibilní](iot-hub-devguide-messages-read-builtin.md) s centrem událostí nepodporuje přístup prostřednictvím privátního koncového bodu. Po nakonfigurování je privátní koncový bod služby IoT Hub určen jenom pro připojení příchozího přenosu dat. Zpracování dat z integrovaného koncového bodu kompatibilního s centrem událostí se dá provést jenom přes veřejný Internet. 
+
+[Filtr IP](iot-hub-ip-filtering.md) IoT Hub také neřídí veřejný přístup k předdefinovanému koncovému bodu. Pokud chcete zcela zablokovat přístup k veřejné síti ke službě IoT Hub, musíte: 
+
+1. Konfigurace přístupu k privátnímu koncovému bodu pro IoT Hub
+1. Vypnout přístup k veřejné síti pomocí filtru IP pro blokování všech IP adres
+1. Vypnutí vestavěného koncového bodu centra událostí [nastavením směrování na Neodesílat data](iot-hub-devguide-messages-d2c.md)
+1. Vypnutí [záložní trasy](iot-hub-devguide-messages-d2c.md#fallback-route)
+1. Konfigurace odchozích přenosů na jiné prostředky Azure pomocí [důvěryhodných služeb Azure First stran](#egress-connectivity-from-iot-hub-to-other-azure-resources)
 
 ### <a name="pricing-private-endpoints"></a>Ceny (soukromé koncové body)
 
@@ -196,7 +204,7 @@ Identitu spravované služby je možné přiřadit ke svému centru během zřiz
 }
 ```
 
-Po nahrazení hodnot `name`prostředku, `location` `SKU.name` a `SKU.tier`můžete pomocí Azure CLI nasadit prostředek do existující skupiny prostředků pomocí:
+Po nahrazení hodnot prostředku `name` , `location` `SKU.name` a `SKU.tier` můžete pomocí Azure CLI nasadit prostředek do existující skupiny prostředků pomocí:
 
 ```azurecli-interactive
 az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
@@ -319,9 +327,9 @@ await registryManager.ExportDevicesAsync(
 
 Použití této verze sady SDK Azure IoT v oblasti s podporou virtuální sítě pro jazyky C#, Java a Node. js:
 
-1. Vytvořte proměnnou prostředí s názvem `EnableStorageIdentity` a nastavte její hodnotu na `1`.
+1. Vytvořte proměnnou prostředí s názvem `EnableStorageIdentity` a nastavte její hodnotu na `1` .
 
-2. Stažení sady SDK:[Node. js](https://aka.ms/vnetnodesdk) [jazyka Java](https://aka.ms/vnetjavasdk) | [C#](https://aka.ms/vnetcsharpsdk) | 
+2. Stažení sady SDK: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node. js](https://aka.ms/vnetnodesdk) jazyka Java C#
  
 V případě Pythonu si stáhněte naši omezené verze z GitHubu.
 

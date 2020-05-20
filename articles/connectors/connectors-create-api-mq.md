@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: ChristopherHouser
 ms.author: chrishou
-ms.reviewer: valthom, logicappspm
+ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 737c5b90b216156ca08346f4a64fd0b421ad6c19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410276"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652467"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Připojení k serveru IBM MQ z Azure Logic Apps
 
@@ -33,6 +33,7 @@ Tady jsou oficiálně podporované verze IBM WebSphere MQ:
   * MQ 7,5
   * MQ 8,0
   * MQ 9,0
+  * MQ 9,1
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -88,10 +89,10 @@ Když se aplikace logiky pokusí připojit k místnímu serveru MQ, může se zo
 
   1. V počítači, kde je spuštěna služba místní brána dat, otevřete nabídku Start, vyhledejte a vyberte možnost **Spravovat uživatelské certifikáty**.
 
-  1. Po otevření nástroje Správce certifikace systému Windows přejdete do složky **certifikáty – místní počítač** >  **Důvěryhodné kořenové certifikační autority** a certifikát nainstalujete.
+  1. Po otevření nástroje Správce certifikace systému Windows přejdete do složky **certifikáty – místní počítač**  >   **Důvěryhodné kořenové certifikační autority** a certifikát nainstalujete.
 
      > [!IMPORTANT]
-     > Ujistěte se, že jste nainstalovali certifikát do úložiště**Důvěryhodné kořenové certifikační autority** **počítače místní počítač** > .
+     > Ujistěte se, že jste nainstalovali certifikát do **Certificates - Local Computer**  >  úložiště**Důvěryhodné kořenové certifikační autority** počítače místní počítač.
 
 * Server MQ vyžaduje, abyste definovali specifikaci šifrování, kterou chcete použít pro připojení SSL. SsLStream v rozhraní .NET ale neumožňuje zadat pořadí pro specifikace šifry. Pokud chcete toto omezení obejít, můžete změnit konfiguraci serveru MQ tak, aby odpovídala první specifikaci šifry v sadě, kterou konektor odesílá při vyjednávání SSL.
 
@@ -101,7 +102,7 @@ Když se aplikace logiky pokusí připojit k místnímu serveru MQ, může se zo
 
 1. V aplikaci logiky pod triggerem nebo jinou akcí vyberte **Nový krok**.
 
-1. Do vyhledávacího pole zadejte `mq`a vyberte akci **Procházet zprávu** .
+1. Do vyhledávacího pole zadejte `mq` a vyberte akci **Procházet zprávu** .
 
    ![Vybrat akci procházet zprávu](media/connectors-create-api-mq/browse-message.png)
 
@@ -117,7 +118,7 @@ Když se aplikace logiky pokusí připojit k místnímu serveru MQ, může se zo
    | **Prodlev** | Zadejte hodnotu, která určuje, jak dlouho se má čekat na doručení zprávy do prázdné fronty. Pokud nezadáte žádnou hodnotu, načte se první zpráva ve frontě a nestrávená doba čekání na zobrazení zprávy. |
    |||
 
-   Příklad:
+   Například:
 
    ![Vlastnosti pro akci procházet zprávu](media/connectors-create-api-mq/browse-message-properties.png)
 

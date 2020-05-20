@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: d77fc756530115ff828c79a3b444c1152ffe5c5a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 68d04603ba9f0633bfa55598790b790055384fdb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608673"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648158"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů Azure Automation spustit jako
 
@@ -66,15 +66,15 @@ Chcete-li vytvořit nebo aktualizovat účet Spustit jako, je nutné mít specif
 |Vytvoření aplikace Azure AD|[New-AzADApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | Role vývojáře aplikace<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Registrace aplikací > domovského > služby Azure AD |
 |Přidejte do aplikace přihlašovací údaje.|[New-AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | Správce aplikace nebo globální správce<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Registrace aplikací > domovského > služby Azure AD|
 |Vytvoření a získání instančního objektu služby Azure AD|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | Správce aplikace nebo globální správce<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Registrace aplikací > domovského > služby Azure AD|
-|Přiřazení nebo získání role RBAC pro zadaný objekt zabezpečení|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Správce nebo vlastník přístupu uživatele nebo musí mít následující oprávnění:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Předplatné](../role-based-access-control/role-assignments-portal.md)</br>Předplatné Home > > \<název\> předplatného Access Control (IAM)|
+|Přiřazení nebo získání role RBAC pro zadaný objekt zabezpečení|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Správce nebo vlastník přístupu uživatele nebo musí mít následující oprávnění:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Předplatné](../role-based-access-control/role-assignments-portal.md)</br>Předplatné Home > > \< název předplatného \> Access Control (IAM)|
 |Vytvoření nebo odebrání certifikátu Automation|[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate)     | Přispěvatel ve skupině prostředků         |Skupina prostředků účtu služby Automation|
 |Vytvoření nebo odebrání připojení služby Automation|[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection)|Přispěvatel ve skupině prostředků |Skupina prostředků účtu služby Automation|
 
 <sup>1</sup> uživatelé bez oprávnění správce v TENANTOVI Azure AD můžou [Registrovat aplikace služby AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) , pokud je možnost Uživatelé klienta Azure AD **můžou registrovat aplikace** na stránce nastavení uživatele je nastavená na **Ano**. Pokud je nastavení registrace aplikace **ne**, uživatel provádějící tuto akci musí být definovaný v této tabulce.
 
-Pokud nejste členem instance Active Directory předplatného, než se přiřadíte do role globálního správce předplatného, jste přidaní jako host. V takovém případě se na stránce `You do not have permissions to create…` přidat účet Automation zobrazí upozornění. 
+Pokud nejste členem instance Active Directory předplatného, než se přiřadíte do role globálního správce předplatného, jste přidaní jako host. V takovém případě se `You do not have permissions to create…` na stránce Přidat účet Automation zobrazí upozornění. 
 
-Pokud jste členem instance Active Directory předplatného, když je přiřazená role globálního správce, můžete také zobrazit `You do not have permissions to create…` upozornění na stránce Přidat účet Automation. V takovém případě si můžete vyžádat odebrání z instance Active Directory předplatného a potom požádat o opětovné přidání, takže se ve službě Active Directory stanete úplným uživatelem.
+Pokud jste členem instance Active Directory předplatného, když je přiřazená role globálního správce, můžete také zobrazit `You do not have permissions to create…` Upozornění na stránce Přidat účet Automation. V takovém případě si můžete vyžádat odebrání z instance Active Directory předplatného a potom požádat o opětovné přidání, takže se ve službě Active Directory stanete úplným uživatelem.
 
 Chcete-li ověřit, zda byla odstraněna situace, kdy došlo k chybě této chybové zprávy:
 
@@ -105,15 +105,15 @@ Následující seznam uvádí požadavky na vytvoření účtu Spustit jako v pr
 
 * Windows 10 nebo Windows Server 2016 s Azure Resource Manager moduly 3.4.1 a novější. PowerShellový skript nepodporuje starší verze Windows.
 * Azure PowerShell 1.0 nebo novější. Informace o vydání PowerShellu 1.0 najdete v článku [Postup instalace a konfigurace Azure PowerShellu](/powershell/azureps-cmdlets-docs).
-* Účet Automation, na který se odkazuje jako na hodnotu pro parametry `AutomationAccountName` a `ApplicationDisplayName` .
+* Účet Automation, na který se odkazuje jako na hodnotu pro `AutomationAccountName` parametry a `ApplicationDisplayName` .
 * Oprávnění, která jsou shodná s těmi, která jsou uvedena v [požadovaných oprávněních ke konfiguraci účtů spustit jako](#permissions).
 
-Chcete-li získat hodnoty `SubscriptionId`pro `ResourceGroupName`, a, které jsou vyžadovány parametry pro skript prostředí PowerShell, proveďte následující kroky.
+Chcete-li získat hodnoty pro `SubscriptionId` , `ResourceGroupName` a `AutomationAccountName` , které jsou vyžadovány parametry pro skript prostředí PowerShell, proveďte následující kroky.
 
 1. V Azure Portal vyberte **účty Automation**.
 1. Na stránce účty Automation vyberte svůj účet Automation.
 1. V části nastavení účtu vyberte **vlastnosti**.
-1. Poznamenejte si hodnoty pro **název**, **ID předplatného**a **skupinu prostředků** na stránce Vlastnosti. Tyto hodnoty odpovídají hodnotám `AutomationAccountName` `SubscriptionId`parametrů skriptu PowerShellu, a `ResourceGroupName` v uvedeném pořadí.
+1. Poznamenejte si hodnoty pro **název**, **ID předplatného**a **skupinu prostředků** na stránce Vlastnosti. Tyto hodnoty odpovídají hodnotám `AutomationAccountName` `SubscriptionId` `ResourceGroupName` parametrů skriptu PowerShellu, a v uvedeném pořadí.
 
    ![Stránka vlastností účtu služby Automation](media/manage-runas-account/automation-account-properties.png)
 
@@ -347,7 +347,7 @@ Pokud jste vytvořili účet Spustit jako pro Classic s podnikovým veřejným c
 .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment
 ```
 
-Pokud jste vytvořili účet Spustit jako pro Classic s veřejným certifikátem podepsaným svým držitelem (soubor **. cer** ), skript ho vytvoří a uloží do složky dočasných souborů ve vašem počítači. Najdete ho v profilu `%USERPROFILE%\AppData\Local\Temp`uživatele, který jste použili ke spuštění relace PowerShellu.
+Pokud jste vytvořili účet Spustit jako pro Classic s veřejným certifikátem podepsaným svým držitelem (soubor **. cer** ), skript ho vytvoří a uloží do složky dočasných souborů ve vašem počítači. Najdete ho v profilu uživatele `%USERPROFILE%\AppData\Local\Temp` , který jste použili ke spuštění relace PowerShellu.
 
 ## <a name="deleting-a-run-as-or-classic-run-as-account"></a>Odstranění účtu Spustit jako nebo účtu Spustit jako pro Classic
 
@@ -439,7 +439,7 @@ Pokud chcete řídit cílení na automatizaci u prostředků v Azure, můžete s
 >[!IMPORTANT]
 >Po spuštění skriptu **Update-AutomationRunAsAccountRoleAssignments. ps1** nebudou Runbooky, které přistupují k Key Vault pomocí účtů spustit jako, nadále fungovat. Před spuštěním skriptu byste měli zkontrolovat Runbooky ve vašem účtu pro volání Azure Key Vault. Pokud chcete povolit přístup k Key Vault z Azure Automation sad Runbook, musíte [Přidat účet Spustit jako pro Key Vault oprávnění](#add-permissions-to-key-vault).
 
-Pokud potřebujete omezit, co může instanční objekt spustit jako, můžete přidat další typy prostředků do `NotActions` prvku definice vlastní role. Následující příklad omezuje přístup na `Microsoft.Compute/*`. Pokud přidáte tento typ prostředku do `NotActions` definice role, role nebude mít přístup k žádnému výpočetnímu prostředku. Další informace o definicích rolí najdete v tématu [vysvětlení definic rolí pro prostředky Azure](../role-based-access-control/role-definitions.md).
+Pokud potřebujete omezit, co může instanční objekt spustit jako, můžete přidat další typy prostředků do `NotActions` prvku definice vlastní role. Následující příklad omezuje přístup na `Microsoft.Compute/*` . Pokud přidáte tento typ prostředku do `NotActions` definice role, role nebude mít přístup k žádnému výpočetnímu prostředku. Další informace o definicích rolí najdete v tématu [vysvětlení definic rolí pro prostředky Azure](../role-based-access-control/role-definitions.md).
 
 ```powershell
 $roleDefinition = Get-AzRoleDefinition -Name 'Automation RunAs Contributor'

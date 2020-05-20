@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/8/2020
-ms.openlocfilehash: d1eda3671b52a1e4bbae9af2d97010657880c383
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c4790585d089ab287260f74001a8aa3f1cb7e5f7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585398"
+ms.locfileid: "83647499"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Porozumění výstupům z Azure Stream Analytics
 
@@ -80,7 +80,7 @@ Existují dva adaptéry, které umožňují výstup z Azure Stream Analytics do 
 
 Aby bylo možné přidat jako výstup do úlohy Stream Analytics, musí existovat tabulka fondu SQL. Schéma tabulky musí odpovídat polím a jejich typům ve výstupu vaší úlohy. 
 
-Pokud chcete jako výstup použít Azure synapse, musíte zajistit, aby byl účet úložiště nakonfigurovaný. Přejděte do nastavení účtu úložiště a nakonfigurujte účet úložiště. Povolují se jenom typy účtů úložiště, které podporují tabulky: obecné účely v2 a obecné účely v1.   
+Pokud chcete jako výstup použít Azure synapse, musíte zajistit, aby byl účet úložiště nakonfigurovaný. Přejděte do nastavení účtu úložiště a nakonfigurujte účet úložiště. Povolují se jenom typy účtů úložiště, které podporují tabulky: obecné účely v2 a obecné účely v1. Vyberte pouze úroveň Standard. Úroveň Premium se nepodporuje.   
 
 V následující tabulce jsou uvedené názvy vlastností a jejich popisy pro vytváření výstupu Azure synapse Analytics.
 
@@ -351,16 +351,16 @@ Následující tabulka shrnuje podporu oddílů a počet výstupních modulů pr
 
 | Typ výstupu | Podpora dělení | Klíč oddílu  | Počet zapisovačů výstupu |
 | --- | --- | --- | --- |
-| Azure Data Lake Store | Yes | Použijte {Date} a {Time} tokens ve vzoru předpony cesty. Vyberte formát data, například rrrr/MM/DD, DD/MM/RRRR nebo MM-DD-RRRR. HH se používá pro formát času. | Sleduje vstupní oddíly pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). |
+| Azure Data Lake Store | Ano | Použijte {Date} a {Time} tokens ve vzoru předpony cesty. Vyberte formát data, například rrrr/MM/DD, DD/MM/RRRR nebo MM-DD-RRRR. HH se používá pro formát času. | Sleduje vstupní oddíly pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). |
 | Azure SQL Database | Ano, je nutné povolit. | Na základě klauzule PARTITION BY v dotazu. | Když je povolená možnost zdědit rozdělení na oddíly, řídí se vstupní oddíly pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). Další informace o dosažení lepšího výkonu propustnosti zápisu při načítání dat do Azure SQL Database naleznete v tématu [Azure Stream Analytics Output to Azure SQL Database](stream-analytics-sql-output-perf.md). |
-| Azure Blob Storage | Yes | Použijte {Date} a {Time} tokeny z polí události ve vzoru cesty. Vyberte formát data, například rrrr/MM/DD, DD/MM/RRRR nebo MM-DD-RRRR. HH se používá pro formát času. Výstup objektu BLOB se dá rozdělit na oddíly jedním vlastním atributem události {FieldName} nebo {DateTime: \< specifikátorem>}. | Sleduje vstupní oddíly pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). |
+| Azure Blob Storage | Ano | Použijte {Date} a {Time} tokeny z polí události ve vzoru cesty. Vyberte formát data, například rrrr/MM/DD, DD/MM/RRRR nebo MM-DD-RRRR. HH se používá pro formát času. Výstup objektu BLOB se dá rozdělit na oddíly jedním vlastním atributem události {FieldName} nebo {DateTime: \< specifikátorem>}. | Sleduje vstupní oddíly pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). |
 | Azure Event Hubs | Ano | Ano | Liší se v závislosti na zarovnání oddílů.<br /> Když je klíč oddílu pro výstup centra událostí rovnoměrně zarovnaný k nadřazenému kroku (předchozímu) dotazu, počet zapisovačů je stejný jako počet oddílů ve výstupu centra událostí. Každý zapisovač používá ke posílání událostí do konkrétního oddílu [třídu EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) . <br /> Pokud klíč oddílu pro výstup centra událostí není zarovnaný k nadřazenému kroku (předchozímu) dotazu, počet zapisovačů je stejný jako počet oddílů v předchozím kroku. Každý zapisovač používá v **EventHubClient** [třídu SendBatchAsync](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) k odesílání událostí do všech výstupních oddílů. |
-| Power BI | No | Žádné | Neužívá se. |
-| Azure Table Storage | Yes | Libovolný výstupní sloupec.  | Sleduje vstupní dělení pro [plně paralelní dotazy](stream-analytics-scale-jobs.md). |
-| Téma služby Azure Service Bus | Yes | Automaticky zvoleno. Počet oddílů je založený na [Service Bus SKU a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečná celočíselná hodnota pro každý oddíl.| Stejné jako počet oddílů v tématu výstupu.  |
-| Fronta služby Azure Service Bus | Yes | Automaticky zvoleno. Počet oddílů je založený na [Service Bus SKU a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečná celočíselná hodnota pro každý oddíl.| Stejné jako počet oddílů ve výstupní frontě. |
-| Azure Cosmos DB | Yes | Na základě klauzule PARTITION BY v dotazu. | Sleduje vstupní dělení pro [plně paralelní dotazy](stream-analytics-scale-jobs.md). |
-| Azure Functions | Yes | Na základě klauzule PARTITION BY v dotazu. | Sleduje vstupní dělení pro [plně paralelní dotazy](stream-analytics-scale-jobs.md). |
+| Power BI | Ne | Žádné | Neužívá se. |
+| Azure Table Storage | Ano | Libovolný výstupní sloupec.  | Sleduje vstupní dělení pro [plně paralelní dotazy](stream-analytics-scale-jobs.md). |
+| Téma služby Azure Service Bus | Ano | Automaticky zvoleno. Počet oddílů je založený na [Service Bus SKU a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečná celočíselná hodnota pro každý oddíl.| Stejné jako počet oddílů v tématu výstupu.  |
+| Fronta služby Azure Service Bus | Ano | Automaticky zvoleno. Počet oddílů je založený na [Service Bus SKU a velikosti](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečná celočíselná hodnota pro každý oddíl.| Stejné jako počet oddílů ve výstupní frontě. |
+| Azure Cosmos DB | Ano | Na základě klauzule PARTITION BY v dotazu. | Sleduje vstupní dělení pro [plně paralelní dotazy](stream-analytics-scale-jobs.md). |
+| Azure Functions | Ano | Na základě klauzule PARTITION BY v dotazu. | Sleduje vstupní dělení pro [plně paralelní dotazy](stream-analytics-scale-jobs.md). |
 
 Počet výstupních zapisovačů lze také ovládat pomocí `INTO <partition count>` klauzule (viz [v](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)tématu) v dotazu, což může být užitečné při dosahování požadované topologie úlohy. Pokud váš výstupní adaptér není rozdělený na oddíly, nedostatečné množství dat v jednom vstupním oddílu způsobí zpoždění až do doby doručení. V takových případech se výstup sloučí do jediného zapisovače, což může způsobit kritické body ve vašem kanálu. Další informace o zásadách pozdního doručení najdete v tématu [Azure Stream Analytics požadavky na pořadí událostí](stream-analytics-out-of-order-and-late-events.md).
 

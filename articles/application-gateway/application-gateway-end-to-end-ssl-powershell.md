@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57f2ce1fb8bf6415387eac5c760dadeb04e65648
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312501"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648414"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Konfigurace koncového protokolu TLS pomocí Application Gateway s využitím PowerShellu
 
@@ -167,7 +167,9 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
    > [!NOTE]
    > Výchozí sonda získá veřejný klíč z *výchozí* vazby TLS na IP adrese back-endu a porovná hodnotu veřejného klíče, kterou přijme, k hodnotě veřejného klíče, kterou tady zadáte. 
    > 
-   > Pokud používáte hlavičky hostitele a Indikace názvu serveru (SNI) na back-endu, načtený veřejný klíč nemusí být zamýšlenou lokalitou, na kterou přenosové toky. Pokud nejste jistí, navštivte https://127.0.0.1/ back-endové servery a ověřte, který certifikát se používá pro *výchozí* vazbu TLS. Použijte veřejný klíč z tohoto požadavku v této části. Pokud používáte pro vazby HTTPS možnost https://127.0.0.1/ hostitel-Headers a sni a neobdržíte odpověď a certifikát od ručního požadavku prohlížeče na back-endové servery, musíte pro ně nastavit výchozí vazbu TLS. Pokud to neuděláte, sondy selžou a back-end není povolený.
+   > Pokud používáte hlavičky hostitele a Indikace názvu serveru (SNI) na back-endu, načtený veřejný klíč nemusí být zamýšlenou lokalitou, na kterou přenosové toky. Pokud nejste jistí, navštivte https://127.0.0.1/ back-endové servery a ověřte, který certifikát se používá pro *výchozí* vazbu TLS. Použijte veřejný klíč z tohoto požadavku v této části. Pokud používáte pro vazby HTTPS možnost hostitel-Headers a SNI a neobdržíte odpověď a certifikát od ručního požadavku prohlížeče na https://127.0.0.1/ back-endové servery, musíte pro ně nastavit výchozí vazbu TLS. Pokud to neuděláte, sondy selžou a back-end není povolený.
+   
+   Další informace o SNI v Application Gateway najdete v tématu [Přehled ukončení protokolu TLS a koncového šifrování TLS s Application Gateway](ssl-overview.md).
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -200,7 +202,7 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Nakonfigurujte velikost instance služby Application Gateway. Dostupné velikosti jsou **standardní\_malé**, **standardní\_střední**a **standardní\_**.  V případě kapacity mají dostupné hodnoty **1** až **10**.
+10. Nakonfigurujte velikost instance služby Application Gateway. Dostupné velikosti jsou **standardní \_ malé**, **standardní \_ střední**a **standardní \_ **.  V případě kapacity mají dostupné hodnoty **1** až **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -217,7 +219,7 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Následující příklad nastaví minimální verzi protokolu na **TLSv1_2** a povolí **TLS\_ECDH\_ECDSA\_s\_AES\_128\_GCM\_SHA256**, **TLS\_ECDH\_ECDSA\_with\_AES\_256\_GCM\_SHA384**a **TLS\_RSA\_s\_AES\_128\_pouze GCM\_** SHA256.
+    Následující příklad nastaví minimální verzi protokolu na **TLSv1_2** a povolí **TLS \_ ecdh \_ ECDSA \_ s \_ AES \_ 128 \_ GCM \_ SHA256**, **TLS \_ ECDH \_ ECDSA \_ with \_ AES \_ 256 \_ GCM \_ SHA384**a **TLS \_ RSA \_ s \_ AES \_ 128 pouze \_ GCM \_ ** SHA256.
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -310,7 +312,7 @@ Předchozí kroky vás provedly vytvořením aplikace s koncovým protokolem TLS
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Definujte zásadu TLS. V následujícím příkladu jsou **tlsv 1.0** a **tlsv 1.1** zakázané a šifrovací sady **TLS\_\_ECDH ECDSA\_s\_AES\_128\_GCM\_SHA256**, **TLS\_ECDH\_ECDSA\_s\_AES\_256\_GCM\_SHA384**a **TLS\_RSA\_s\_AES\_128\_GCM\_** SHA256 jsou jenom ty povolené.
+2. Definujte zásadu TLS. V následujícím příkladu jsou **tlsv 1.0** a **tlsv 1.1** zakázané a šifrovací sady **TLS \_ ECDH \_ ECDSA \_ s \_ AES \_ 128 \_ GCM \_ SHA256**, **TLS \_ ECDH \_ ECDSA \_ s \_ AES \_ 256 \_ GCM \_ SHA384**a **TLS \_ RSA \_ s \_ AES \_ 128 \_ GCM \_ ** SHA256 jsou jenom ty povolené.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw

@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: fcae1ed9064d38457ede73c675afb75ce4872fe6
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 78a38938ad31bb349b7215f0a26dda69f4fec966
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611772"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651924"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Table Storage: škálovatelné a výkonné tabulky
 
@@ -52,7 +52,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Zobrazeny</td>
@@ -72,7 +72,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -109,7 +109,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -125,7 +125,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 
 Tento návrh se zatím bude podobat tabulce v relační databázi. Hlavní rozdíly jsou povinné sloupce a možnost ukládat více typů entit do stejné tabulky. Kromě toho má každý z uživatelem definovaných vlastností, jako je například **FirstName** nebo **věk**, datový typ, jako je například celé číslo nebo řetězec, stejně jako sloupec v relační databázi. Na rozdíl od relační databáze ale bez schématu pro úložiště tabulek je to, že vlastnost nemusí mít stejný datový typ pro každou entitu. Pro uložení složitých datových typů do jediné vlastnosti je nutné použít serializovaný formát, jako je JSON nebo XML. Další informace najdete v tématu [Principy datového modelu Table Storage](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Vaše volba `PartitionKey` a `RowKey` je zásadní pro dobrý návrh tabulek. Každá entita uložená v tabulce musí mít jedinečnou kombinaci `PartitionKey` a. `RowKey` Stejně jako u klíčů v tabulce relační databáze jsou hodnoty `PartitionKey` a `RowKey` indexovány, aby se vytvořil clusterovaný index, který umožňuje rychlé vyhledávání. Table Storage ale nevytváří žádné sekundární indexy, takže se jedná o jediné dvě indexované vlastnosti (některé ze vzorů popsaných později ukazují, jak můžete toto zjevné omezení obejít).  
+Vaše volba `PartitionKey` a `RowKey` je zásadní pro dobrý návrh tabulek. Každá entita uložená v tabulce musí mít jedinečnou kombinaci `PartitionKey` a `RowKey` . Stejně jako u klíčů v tabulce relační databáze `PartitionKey` `RowKey` jsou hodnoty a indexovány, aby se vytvořil clusterovaný index, který umožňuje rychlé vyhledávání. Table Storage ale nevytváří žádné sekundární indexy, takže se jedná o jediné dvě indexované vlastnosti (některé ze vzorů popsaných později ukazují, jak můžete toto zjevné omezení obejít).  
 
 Tabulka se skládá z jednoho nebo více oddílů a mnohé z rozhodnutí o návrhu budou kolem výběru vhodné `PartitionKey` a `RowKey` optimalizuje vaše řešení. Řešení se může skládat pouze z jedné tabulky, která obsahuje všechny vaše entity uspořádané do oddílů, ale obvykle má řešení více tabulek. Tabulky vám pomůžou logicky organizovat vaše entity a pomáhat vám spravovat přístup k datům pomocí seznamů řízení přístupu. Celou tabulku můžete vyřadit pomocí jediné operace úložiště.  
 
@@ -134,7 +134,7 @@ Název účtu, název tabulky a `PartitionKey` společně identifikují oddíl v
 
 V tabulkovém úložišti má jednotlivé uzly služby jednoho nebo více úplných oddílů a služba se škáluje podle dynamicky vyrovnávání zatížení oddílů v uzlech. Pokud je uzel v zatížení, může tabulka úložiště rozdělit rozsah oddílů, které služba obsluhuje v tomto uzlu, na jiné uzly. V případě provozu může tabulka úložiště sloučit rozsahy oddílů z tichých uzlů zpátky do jednoho uzlu.  
 
-Další informace o interních podrobnostech úložiště tabulek a zejména o tom, jak spravuje oddíly, najdete v tématu [Microsoft Azure Storage: vysoce dostupnou cloudovou službu cloudového úložiště se silnými konzistencí](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Další informace o interních podrobnostech úložiště tabulek a zejména o tom, jak spravuje oddíly, najdete v tématu [Microsoft Azure Storage: vysoce dostupnou cloudovou službu cloudového úložiště se silnými konzistencí](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency).  
 
 ### <a name="entity-group-transactions"></a>Transakce skupiny entit
 V úložišti tabulek jsou transakce skupin entit (EGTs) jediným integrovaným mechanismem pro provádění atomických aktualizací v několika entitách. EGTs se také označují jako *transakce Batch*. EGTs může pracovat pouze s entitami uloženými ve stejném oddílu (sdílení stejného klíče oddílu v konkrétní tabulce), takže kdykoli budete potřebovat atomické transakční chování napříč více entitami, ujistěte se, že jsou tyto entity ve stejném oddílu. To je často důvod pro udržení více typů entit ve stejné tabulce (a oddílu) a nepoužívá více tabulek pro různé typy entit. Jeden EGT může pracovat s maximálně 100 entitami.  Pokud odešlete více souběžných EGTs ke zpracování, je důležité zajistit, aby tyto EGTs nespolupracovaly s entitami, které jsou společné napříč EGTs. V opačném případě riskujete zpracování zpoždění.
@@ -151,7 +151,7 @@ Následující tabulka obsahuje některé klíčové hodnoty, které je třeba z
 | Počet tabulek v účtu služby Azure Storage |Omezeno pouze na kapacitu účtu úložiště. |
 | Počet oddílů v tabulce |Omezeno pouze na kapacitu účtu úložiště. |
 | Počet entit v oddílu |Omezeno pouze na kapacitu účtu úložiště. |
-| Velikost jednotlivé entity |Až 1 MB s maximálním počtem 255 vlastností (včetně `PartitionKey`, `RowKey`a `Timestamp`). |
+| Velikost jednotlivé entity |Až 1 MB s maximálním počtem 255 vlastností (včetně `PartitionKey` , a `RowKey` `Timestamp` ). |
 | Velikost`PartitionKey` |Velikost řetězce až 1 KB. |
 | Velikost`RowKey` |Velikost řetězce až 1 KB. |
 | Velikost transakce skupiny entit |Transakce může zahrnovat maximálně 100 entit a velikost datové části musí být menší než 4 MB. EGT může entitu aktualizovat pouze jednou. |
@@ -170,7 +170,7 @@ Návrh tabulkového úložiště, aby bylo možné efektivně *číst* :
 * **Zadejte obojí `PartitionKey` i `RowKey` v dotazech.** *Dotazy na body* , jako jsou ty, nejúčinnější dotazy na úložiště tabulek.  
 * **Zvažte uložení duplicitních kopií entit.** Úložiště tabulek je levné, proto zvažte uložení stejné entity vícekrát (s různými klíči), čímž umožníte efektivnější dotazy.  
 * **Zvažte denormalizaci vašich dat.** Úložiště tabulek je levné, proto zvažte denormalizaci vašich dat. Můžete například uložit souhrnné entity, aby dotazy na agregovaná data měly jenom přístup k jedné entitě.  
-* **Použijte hodnoty složených klíčů.** Jedinými klíči jsou `PartitionKey` a `RowKey`. Použijte například hodnoty složeného klíče k povolení alternativních přístupových cest k entitám.  
+* **Použijte hodnoty složených klíčů.** Jedinými klíči jsou `PartitionKey` a `RowKey` . Použijte například hodnoty složeného klíče k povolení alternativních přístupových cest k entitám.  
 * **Použití projekce dotazu.** Množství dat přenášených přes síť můžete snížit pomocí dotazů, které vyberou pouze pole, která potřebujete.  
 
 Návrh tabulkového úložiště pro efektivní *zápis* :  
@@ -195,22 +195,22 @@ V následujících příkladech se předpokládá, že Table Storage ukládá en
 
 | Název sloupce | Datový typ |
 | --- | --- |
-| `PartitionKey`(Název oddělení) |Řetězec |
-| `RowKey`(ID zaměstnance) |Řetězec |
-| `FirstName` |Řetězec |
-| `LastName` |Řetězec |
+| `PartitionKey`(Název oddělení) |String |
+| `RowKey`(ID zaměstnance) |String |
+| `FirstName` |String |
+| `LastName` |String |
 | `Age` |Integer |
-| `EmailAddress` |Řetězec |
+| `EmailAddress` |String |
 
 Tady jsou některé obecné pokyny pro navrhování dotazů na úložiště tabulek. Syntaxe filtru použitá v následujících příkladech je z tabulkového úložiště REST API. Další informace najdete v tématu věnovaném [dotazování entit](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
-* *Dotaz na bod* je nejúčinnější vyhledávání, které se má použít, a doporučuje se pro vyhledávání ve velkém objemu nebo vyhledávání vyžadující nejnižší latenci. Takový dotaz může pomocí indexů snadno vyhledat jednotlivou entitu zadáním hodnot `PartitionKey` a. `RowKey` Například: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
-* Druhý nejlepší je *dotaz na rozsah*. Pomocí `PartitionKey`filtrů a na základě rozsahu `RowKey` hodnot vrátí více než jednu entitu. `PartitionKey` Hodnota identifikuje konkrétní oddíl a `RowKey` hodnoty identifikují podmnožinu entit v tomto oddílu. Například: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
-* Třetí nejlepší je *Kontrola oddílu*. Používá filtry `PartitionKey`, a pro jinou neklíčovou vlastnost a může vracet více než jednu entitu. `PartitionKey` Hodnota určuje konkrétní oddíl a hodnoty vlastností se vyberou pro podmnožinu entit v tomto oddílu. Například: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
-* *Prohledávání tabulky* nezahrnuje a je `PartitionKey`neefektivní, protože vyhledává všechny oddíly, které tvoří tabulku pro všechny odpovídající entity. Provede prohledávání tabulky bez ohledu na to, zda filtr používá `RowKey`. Například: `$filter=LastName eq 'Jones'`.  
-* Dotazy služby Azure Table Storage, které vracejí více entit, `PartitionKey` je `RowKey` seřadí v pořadí a. Chcete-li se vyhnout vyřazování entit v klientovi, vyberte `RowKey` , který definuje nejběžnější pořadí řazení. Výsledky dotazu vrácené službou Azure rozhraní API pro tabulky v Azure Cosmos DB nejsou seřazené podle klíče oddílu nebo klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní API pro tabulky v Azure Cosmos DB a v úložišti tabulek Azure](table-api-faq.md#table-api-vs-table-storage).
+* *Dotaz na bod* je nejúčinnější vyhledávání, které se má použít, a doporučuje se pro vyhledávání ve velkém objemu nebo vyhledávání vyžadující nejnižší latenci. Takový dotaz může pomocí indexů snadno vyhledat jednotlivou entitu zadáním `PartitionKey` `RowKey` hodnot a. Příklad: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
+* Druhý nejlepší je *dotaz na rozsah*. Pomocí `PartitionKey` filtrů a na základě rozsahu `RowKey` hodnot vrátí více než jednu entitu. `PartitionKey`Hodnota identifikuje konkrétní oddíl a `RowKey` hodnoty identifikují podmnožinu entit v tomto oddílu. Příklad: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
+* Třetí nejlepší je *Kontrola oddílu*. Používá `PartitionKey` filtry, a pro jinou neklíčovou vlastnost a může vracet více než jednu entitu. `PartitionKey`Hodnota určuje konkrétní oddíl a hodnoty vlastností se vyberou pro podmnožinu entit v tomto oddílu. Příklad: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
+* *Prohledávání tabulky* nezahrnuje `PartitionKey` a je neefektivní, protože vyhledává všechny oddíly, které tvoří tabulku pro všechny odpovídající entity. Provede prohledávání tabulky bez ohledu na to, zda filtr používá `RowKey` . Příklad: `$filter=LastName eq 'Jones'`.  
+* Dotazy služby Azure Table Storage, které vracejí více entit, je seřadí v `PartitionKey` `RowKey` pořadí a. Chcete-li se vyhnout vyřazování entit v klientovi, vyberte `RowKey` , který definuje nejběžnější pořadí řazení. Výsledky dotazu vrácené službou Azure rozhraní API pro tabulky v Azure Cosmos DB nejsou seřazené podle klíče oddílu nebo klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní API pro tabulky v Azure Cosmos DB a v úložišti tabulek Azure](table-api-faq.md#table-api-vs-table-storage).
 
-Použití "**nebo**" k určení filtru založeného na `RowKey` hodnotách má za následek kontrolu oddílu a nepovažuje se za dotaz na rozsah. Proto se vyhněte dotazům, které používají filtry `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`jako:.  
+Použití "**nebo**" k určení filtru založeného na `RowKey` hodnotách má za následek kontrolu oddílu a nepovažuje se za dotaz na rozsah. Proto se vyhněte dotazům, které používají filtry jako: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
 
 Příklady kódu na straně klienta, který používá klientskou knihovnu pro úložiště ke spouštění efektivních dotazů, najdete v těchto tématech:  
 
@@ -230,14 +230,14 @@ V jednom krajním případě můžete všechny entity ukládat do jednoho oddíl
 Ideální `PartitionKey` možnost umožňuje používat efektivní dotazy a má dostatečné oddíly pro zajištění škálovatelnosti vašeho řešení. Obvykle zjistíte, že vaše entity budou mít vhodnou vlastnost, která distribuuje vaše entity mezi dostatečné oddíly.
 
 > [!NOTE]
-> V systému, který ukládá informace o uživatelích nebo zaměstnaních, `UserID` může být například dobrá. `PartitionKey` Je možné, že máte několik entit, které `UserID` používají konkrétní klíč oddílu. Každá entita, která ukládá data o uživateli, je seskupena do jednoho oddílu. Tyto entity jsou přístupné prostřednictvím EGTs, zatímco jsou pořád vysoce škálovatelné.
+> V systému, který ukládá informace o uživatelích nebo zaměstnaních, `UserID` může být například dobrá `PartitionKey` . Je možné, že máte několik entit, které používají konkrétní `UserID` klíč oddílu. Každá entita, která ukládá data o uživateli, je seskupena do jednoho oddílu. Tyto entity jsou přístupné prostřednictvím EGTs, zatímco jsou pořád vysoce škálovatelné.
 > 
 > 
 
 K dispozici jsou další informace `PartitionKey` , které se týkají způsobu vkládání, aktualizace a odstraňování entit. Další informace najdete v tématu [Návrh pro úpravu dat](#design-for-data-modification) dále v tomto článku.  
 
 ### <a name="optimize-queries-for-table-storage"></a>Optimalizace dotazů pro úložiště tabulek
-Table Storage automaticky indexuje vaše entity pomocí hodnot `PartitionKey` a `RowKey` v jednom seskupeném indexu. Důvodem je to, že dotazy na daný bod jsou nejúčinnější pro použití. Nejsou však k dispozici žádné indexy jiné než v clusterovaných indexech v `PartitionKey` systémech `RowKey`a.
+Table Storage automaticky indexuje vaše entity pomocí `PartitionKey` hodnot a `RowKey` v jednom seskupeném indexu. Důvodem je to, že dotazy na daný bod jsou nejúčinnější pro použití. Nejsou však k dispozici žádné indexy jiné než v clusterovaných indexech v systémech `PartitionKey` a `RowKey` .
 
 Mnoho návrhů musí splňovat požadavky na povolení vyhledávání entit na základě více kritérií. Například vyhledání entit zaměstnanců na základě e-mailu, ID zaměstnance nebo příjmení. Následující vzory [vzorů návrhu tabulek](#table-design-patterns) řeší tyto typy požadavků. Vzory také popisují způsob práce se skutečností, že služba Table Storage neposkytuje sekundární indexy.  
 
@@ -247,7 +247,7 @@ Mnoho návrhů musí splňovat požadavky na povolení vyhledávání entit na z
 
 ### <a name="sort-data-in-table-storage"></a>Řazení dat v úložišti tabulek
 
-Table Storage vrátí výsledky dotazu seřazené vzestupně podle `PartitionKey` a potom podle. `RowKey`
+Table Storage vrátí výsledky dotazu seřazené vzestupně podle `PartitionKey` a potom podle `RowKey` .
 
 > [!NOTE]
 > Výsledky dotazu vrácené službou Azure rozhraní API pro tabulky v Azure Cosmos DB nejsou seřazené podle klíče oddílu nebo klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní API pro tabulky v Azure Cosmos DB a v úložišti tabulek Azure](table-api-faq.md#table-api-vs-table-storage).
@@ -264,7 +264,7 @@ Mnoho aplikací má požadavky na použití dat seřazených v různých objedn�
 Tato část se zaměřuje na požadavky návrhu na optimalizaci vložení, aktualizace a odstranění. V některých případech budete muset vyhodnotit kompromis mezi návrhy, které se optimalizují pro dotazování na návrhy, které optimalizují úpravu dat. Toto hodnocení je podobné jako v návrzích pro relační databáze (i když postupy pro správu kompromisů v návrhu se liší v relační databázi). [Vzory návrhu tabulek](#table-design-patterns) oddílu popisují některé podrobné vzory návrhu pro úložiště tabulek a zvýrazňují některé z těchto kompromisů. V praxi zjistíte, že mnoho návrhů, které jsou optimalizované pro dotazování entit, také dobře fungují pro úpravy entit.  
 
 ### <a name="optimize-the-performance-of-insert-update-and-delete-operations"></a>Optimalizace výkonu operací vložení, aktualizace a odstranění
-Chcete-li aktualizovat nebo odstranit entitu, musíte být schopni ji identifikovat pomocí hodnot `PartitionKey` a `RowKey` . V tomto ohledu byste si měli vybrat `PartitionKey` možnosti `RowKey` a pro úpravu entit, podle toho, jaká kritéria se mají zvolit pro dotazy na bod podpory. Chcete co nejefektivnější identifikaci entit. Nechcete vyhledat entitu, abyste mohli zjistit hodnoty `PartitionKey` a `RowKey` , které je třeba aktualizovat nebo odstranit, pomocí neefektivního vyhledávání oddílu nebo tabulky.  
+Chcete-li aktualizovat nebo odstranit entitu, musíte být schopni ji identifikovat pomocí `PartitionKey` hodnot a `RowKey` . V tomto ohledu byste si měli vybrat možnosti `PartitionKey` a `RowKey` pro úpravu entit, podle toho, jaká kritéria se mají zvolit pro dotazy na bod podpory. Chcete co nejefektivnější identifikaci entit. Nechcete vyhledat entitu, abyste mohli zjistit `PartitionKey` hodnoty a, `RowKey` které je třeba aktualizovat nebo odstranit, pomocí neefektivního vyhledávání oddílu nebo tabulky.  
 
 Následující vzory [vzorů návrhu tabulek](#table-design-patterns) řeší optimalizaci výkonu operací vložení, aktualizace a odstranění:  
 
@@ -292,13 +292,13 @@ V mnoha případech je návrh účinného dotazování v důsledku efektivních 
 
 Následující vzory [vzorů návrhu tabulek](#table-design-patterns) řeší kompromisy mezi návrhem pro efektivní dotazy a návrhem pro efektivní úpravu dat:  
 
-* [Vzor složeného klíče](#compound-key-pattern): pomocí `RowKey` složených hodnot můžete klientovi Povolit hledání souvisejících dat pomocí dotazu s jedním bodem.  
+* [Vzor složeného klíče](#compound-key-pattern): pomocí složených `RowKey` hodnot můžete klientovi Povolit hledání souvisejících dat pomocí dotazu s jedním bodem.  
 * [Vzor koncového protokolu](#log-tail-pattern): načte entity *n* naposledy přidané do oddílu pomocí `RowKey` hodnoty, která se seřadí v obráceném data a časovém pořadí.  
 
 ## <a name="encrypt-table-data"></a>Šifrovat data tabulky
 Klientská knihovna Azure Storage .NET podporuje šifrování vlastností entity řetězce pro operace INSERT a nahrazování. Šifrované řetězce jsou uloženy ve službě jako binární vlastnosti a jsou převedeny zpět na řetězce po dešifrování.    
 
-U tabulek (kromě zásad šifrování) musí uživatelé zadat vlastnosti, které mají být zašifrované. Buď zadejte `EncryptProperty` atribut (pro entity POCO odvozené od `TableEntity`), nebo v možnostech žádosti zadejte překladač šifrování. Překladač šifrování je delegát, který převezme klíč oddílu, klíč řádku a název vlastnosti a vrátí logickou hodnotu, která označuje, jestli má být tato vlastnost zašifrovaná. Při šifrování používá Klientská knihovna tyto informace k rozhodnutí, jestli má být při zápisu do tohoto drátu zašifrovaná vlastnost. Delegát také poskytuje možnost logiky kolem způsobu šifrování vlastností. (Například pokud X, pak Šifrujte vlastnost A; jinak Zašifrujte vlastnosti a a B.) Při čtení nebo dotazování entit není nutné tyto informace zadávat.
+U tabulek (kromě zásad šifrování) musí uživatelé zadat vlastnosti, které mají být zašifrované. Buď zadejte `EncryptProperty` atribut (pro entity POCO odvozené od `TableEntity` ), nebo v možnostech žádosti zadejte překladač šifrování. Překladač šifrování je delegát, který převezme klíč oddílu, klíč řádku a název vlastnosti a vrátí logickou hodnotu, která označuje, jestli má být tato vlastnost zašifrovaná. Při šifrování používá Klientská knihovna tyto informace k rozhodnutí, jestli má být při zápisu do tohoto drátu zašifrovaná vlastnost. Delegát také poskytuje možnost logiky kolem způsobu šifrování vlastností. (Například pokud X, pak Šifrujte vlastnost A; jinak Zašifrujte vlastnosti a a B.) Při čtení nebo dotazování entit není nutné tyto informace zadávat.
 
 Sloučení není aktuálně podporováno. Vzhledem k tomu, že podmnožina vlastností mohla být předtím zašifrovaná pomocí jiného klíče, stačí sloučit nové vlastnosti a aktualizace metadat bude mít za následek ztrátu dat. Slučování vyžaduje, aby dodatečná volání služby přečetla existující entita ze služby nebo používala nový klíč na vlastnost. Ani jedna z těchto možností není vhodná z důvodů výkonu.     
 
@@ -416,23 +416,23 @@ Mapa vzorů zvýrazňuje některé vztahy mezi vzory (modré) a antipatterns (or
 Více kopií každé entity uložte pomocí různých `RowKey` hodnot (ve stejném oddílu). Díky tomu můžete rychle a efektivně vyhledávat a alternativní objednávky řazení pomocí různých `RowKey` hodnot. Aktualizace mezi kopiemi se můžou uchovávat konzistentně pomocí EGTs.  
 
 #### <a name="context-and-problem"></a>Kontext a problém
-Table Storage automaticky indexuje entity pomocí hodnot `PartitionKey` a `RowKey` . To umožňuje klientské aplikaci efektivně načíst entitu pomocí těchto hodnot. Například pomocí následující struktury tabulky může klientská aplikace použít dotaz typu Point k načtení konkrétní entity zaměstnance pomocí názvu oddělení a ID zaměstnance (hodnoty `PartitionKey` a `RowKey` ). Klient může také načíst entity seřazené podle ID zaměstnance v rámci každého oddělení.
+Table Storage automaticky indexuje entity pomocí `PartitionKey` hodnot a `RowKey` . To umožňuje klientské aplikaci efektivně načíst entitu pomocí těchto hodnot. Například pomocí následující struktury tabulky může klientská aplikace použít dotaz typu Point k načtení konkrétní entity zaměstnance pomocí názvu oddělení a ID zaměstnance ( `PartitionKey` `RowKey` hodnoty a). Klient může také načíst entity seřazené podle ID zaměstnance v rámci každého oddělení.
 
 ![Obrázek entity zaměstnance][6]
 
-Pokud chcete také vyhledat entitu zaměstnance na základě hodnoty jiné vlastnosti, jako je například e-mailová adresa, je třeba použít méně efektivní kontrolu oddílů a vyhledat shodu. Důvodem je to, že služba Table Storage neposkytuje sekundární indexy. Kromě toho neexistuje možnost vyžádat si seznam zaměstnanců seřazených v jiném pořadí než `RowKey` v pořadí.  
+Pokud chcete také vyhledat entitu zaměstnance na základě hodnoty jiné vlastnosti, jako je například e-mailová adresa, je třeba použít méně efektivní kontrolu oddílů a vyhledat shodu. Důvodem je to, že služba Table Storage neposkytuje sekundární indexy. Kromě toho neexistuje možnost vyžádat si seznam zaměstnanců seřazených v jiném pořadí než v `RowKey` pořadí.  
 
 #### <a name="solution"></a>Řešení
-Pokud chcete obejít nedostatku sekundárních indexů, můžete uložit více kopií každé entity s každou kopií s použitím jiné `RowKey` hodnoty. Pokud uložíte entitu s následujícími strukturami, můžete efektivně načíst entity zaměstnanců na základě e-mailové adresy nebo ID zaměstnance. Hodnoty předpony pro `RowKey`, `empid_`a `email_` umožňují dotazovat se na jednoho zaměstnance nebo na určitou škálu zaměstnanců pomocí rozsahu e-mailových adres nebo ID zaměstnanců.  
+Pokud chcete obejít nedostatku sekundárních indexů, můžete uložit více kopií každé entity s každou kopií s použitím jiné `RowKey` hodnoty. Pokud uložíte entitu s následujícími strukturami, můžete efektivně načíst entity zaměstnanců na základě e-mailové adresy nebo ID zaměstnance. Hodnoty předpony pro `RowKey` , `empid_` a `email_` umožňují dotazovat se na jednoho zaměstnance nebo na určitou škálu zaměstnanců pomocí rozsahu e-mailových adres nebo ID zaměstnanců.  
 
 ![Obrázek znázorňující entitu zaměstnance s různými RowKey hodnotami][7]
 
 Následující dvě kritéria filtru (jedno vyhledávání podle ID zaměstnance a jedna z nich hledají e-mailovou adresu) určují obě dotazy na bod:  
 
 * $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ ' empid_000223 ')  
-* $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ 'email_jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' Sales ') a (RowKey EQ ' email_jonesj@contoso.com ')  
 
-Pokud se dotazuje na rozsah entit zaměstnanců, můžete určit rozsah seřazený v pořadí podle ID zaměstnance nebo rozsah seřazený v e-mailové adrese. Dotaz na entity s odpovídající předponou v `RowKey`.  
+Pokud se dotazuje na rozsah entit zaměstnanců, můžete určit rozsah seřazený v pořadí podle ID zaměstnance nebo rozsah seřazený v e-mailové adrese. Dotaz na entity s odpovídající předponou v `RowKey` .  
 
 * Chcete-li najít všechny zaměstnance v rámci prodejního oddělení s ID zaměstnance v rozsahu 000100 až 000199, použijte: $filter = (PartitionKey EQ ' Sales ') a (RowKey GE ' empid_000100 ') a (RowKey Le ' empid_000199 ')  
 * Chcete-li najít všechny zaměstnance v oddělení Sales s e-mailovou adresou začínající písmenem "a", použijte: $filter = (PartitionKey EQ ' Sales ') a (RowKey GE ' email_a ') a (RowKey lt ' email_b ')  
@@ -446,8 +446,8 @@ Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v �
 * Vzhledem k tomu, že se entity sekundárního indexu ukládají do stejného oddílu jako původní entity, ujistěte se, že nepřekračujete cíle škálovatelnosti pro jednotlivé oddíly.  
 * Duplicitní entity můžete udržovat vzájemně konzistentní pomocí EGTs k aktualizaci dvou kopií této entity. To znamená, že byste měli ukládat všechny kopie entity do stejného oddílu. Další informace najdete v tématu [použití transakcí skupin entit](#entity-group-transactions).  
 * Hodnota použitá pro `RowKey` musí být jedinečná pro každou entitu. Zvažte použití hodnot složených klíčů.  
-* Vyplňování číselných hodnot `RowKey` v (například zaměstnance s ID 000223) umožňuje správné řazení a filtrování na základě horních a dolních mezí.  
-* Nemusíte nutně Duplikovat všechny vlastnosti vaší entity. Pokud například dotazy, které hledají entity pomocí e-mailové adresy, `RowKey` nikdy nepotřebují věk zaměstnance, můžou mít tyto entity následující strukturu:
+* Vyplňování číselných hodnot v `RowKey` (například zaměstnance s ID 000223) umožňuje správné řazení a filtrování na základě horních a dolních mezí.  
+* Nemusíte nutně Duplikovat všechny vlastnosti vaší entity. Pokud například dotazy, které hledají entity pomocí e-mailové adresy `RowKey` , nikdy nepotřebují věk zaměstnance, můžou mít tyto entity následující strukturu:
 
   ![Obrázek entity zaměstnance][8]
 
@@ -474,25 +474,25 @@ Při implementaci tohoto modelu můžou být relevantní také následující mo
 Více kopií každé entity uložte pomocí různých `RowKey` hodnot v samostatných oddílech nebo v samostatných tabulkách. Díky tomu můžete rychle a efektivně vyhledávat a alternativní objednávky řazení pomocí různých `RowKey` hodnot.  
 
 #### <a name="context-and-problem"></a>Kontext a problém
-Table Storage automaticky indexuje entity pomocí hodnot `PartitionKey` a `RowKey` . To umožňuje klientské aplikaci efektivně načíst entitu pomocí těchto hodnot. Například pomocí následující struktury tabulky může klientská aplikace použít dotaz typu Point k načtení konkrétní entity zaměstnance pomocí názvu oddělení a ID zaměstnance (hodnoty `PartitionKey` a `RowKey` ). Klient může také načíst entity seřazené podle ID zaměstnance v rámci každého oddělení.  
+Table Storage automaticky indexuje entity pomocí `PartitionKey` hodnot a `RowKey` . To umožňuje klientské aplikaci efektivně načíst entitu pomocí těchto hodnot. Například pomocí následující struktury tabulky může klientská aplikace použít dotaz typu Point k načtení konkrétní entity zaměstnance pomocí názvu oddělení a ID zaměstnance ( `PartitionKey` `RowKey` hodnoty a). Klient může také načíst entity seřazené podle ID zaměstnance v rámci každého oddělení.  
 
 ![Obrázek entity zaměstnance][9]
 
-Pokud chcete také vyhledat entitu zaměstnance na základě hodnoty jiné vlastnosti, jako je například e-mailová adresa, je třeba použít méně efektivní kontrolu oddílů a vyhledat shodu. Důvodem je to, že služba Table Storage neposkytuje sekundární indexy. Kromě toho neexistuje možnost vyžádat si seznam zaměstnanců seřazených v jiném pořadí než `RowKey` v pořadí.  
+Pokud chcete také vyhledat entitu zaměstnance na základě hodnoty jiné vlastnosti, jako je například e-mailová adresa, je třeba použít méně efektivní kontrolu oddílů a vyhledat shodu. Důvodem je to, že služba Table Storage neposkytuje sekundární indexy. Kromě toho neexistuje možnost vyžádat si seznam zaměstnanců seřazených v jiném pořadí než v `RowKey` pořadí.  
 
 Očekáváte velký objem transakcí na těchto entitách a chcete minimalizovat riziko, že míra úložiště tabulek omezuje vaše klienta.  
 
 #### <a name="solution"></a>Řešení
-Pokud chcete vymezit nedostatku sekundárních indexů, můžete ukládat víc kopií každé z těchto entit s každou `PartitionKey` kopií `RowKey` pomocí různých hodnot a. Pokud uložíte entitu s následujícími strukturami, můžete efektivně načíst entity zaměstnanců na základě e-mailové adresy nebo ID zaměstnance. Hodnoty předpony pro `PartitionKey`, `empid_`a `email_` umožňují určit, který index chcete použít pro dotaz.  
+Pokud chcete vymezit nedostatku sekundárních indexů, můžete ukládat víc kopií každé z těchto entit s každou kopií pomocí různých `PartitionKey` `RowKey` hodnot a. Pokud uložíte entitu s následujícími strukturami, můžete efektivně načíst entity zaměstnanců na základě e-mailové adresy nebo ID zaměstnance. Hodnoty předpony pro `PartitionKey` , `empid_` a `email_` umožňují určit, který index chcete použít pro dotaz.  
 
 ![Obrázek znázorňující entitu zaměstnance s primárním indexem a entitou zaměstnance se sekundárním indexem][10]
 
 Následující dvě kritéria filtru (jedno vyhledávání podle ID zaměstnance a jedna z nich hledají e-mailovou adresu) určují obě dotazy na bod:  
 
 * $filter = (PartitionKey EQ ' empid_Sales ') a (RowKey EQ ' 000223 ')
-* $filter = (PartitionKey EQ ' email_Sales ') a (RowKey EQ 'jonesj@contoso.com')  
+* $filter = (PartitionKey EQ ' email_Sales ') a (RowKey EQ ' jonesj@contoso.com ')  
 
-Pokud se dotazuje na rozsah entit zaměstnanců, můžete určit rozsah seřazený v pořadí podle ID zaměstnance nebo rozsah seřazený v e-mailové adrese. Dotaz na entity s odpovídající předponou v `RowKey`.  
+Pokud se dotazuje na rozsah entit zaměstnanců, můžete určit rozsah seřazený v pořadí podle ID zaměstnance nebo rozsah seřazený v e-mailové adrese. Dotaz na entity s odpovídající předponou v `RowKey` .  
 
 * Chcete-li najít všechny zaměstnance v rámci prodejního oddělení s ID zaměstnance v rozsahu **000100** až **000199**, seřazené v pořadí ID zaměstnanců, použijte: $Filter = (PartitionKey EQ ' empid_Sales ') a (RowKey GE ' 000100 ') a (RowKey Le ' 000199 ')  
 * Chcete-li najít všechny zaměstnance v prodejním oddělení pomocí e-mailové adresy, která začíná na "a" seřazené v e-mailové adrese, použijte: $filter = (PartitionKey EQ ' email_Sales ') a (RowKey GE ' a ') a (RowKey lt ' b ')  
@@ -505,8 +505,8 @@ Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v �
 * V případě, že jsou vaše duplicitní entity trvale konzistentní, pomocí [vzoru nakonec konzistentní transakce](#eventually-consistent-transactions-pattern) Udržujte entity primárního a sekundárního indexu.  
 * Úložiště tabulek je poměrně levné na použití, takže náklady spojené s ukládáním duplicitních dat by neměly být zásadním problémem. Na základě předpokládaných požadavků na úložiště ale vždy vyhodnoťte náklady na váš návrh a přidejte duplicitní entity, které budou podporovat dotazy, které klientská aplikace spustí.  
 * Hodnota použitá pro `RowKey` musí být jedinečná pro každou entitu. Zvažte použití hodnot složených klíčů.  
-* Vyplňování číselných hodnot `RowKey` v (například zaměstnance s ID 000223) umožňuje správné řazení a filtrování na základě horních a dolních mezí.  
-* Nemusíte nutně Duplikovat všechny vlastnosti vaší entity. Pokud například dotazy, které hledají entity pomocí e-mailové adresy, `RowKey` nikdy nepotřebují věk zaměstnance, můžou mít tyto entity následující strukturu:
+* Vyplňování číselných hodnot v `RowKey` (například zaměstnance s ID 000223) umožňuje správné řazení a filtrování na základě horních a dolních mezí.  
+* Nemusíte nutně Duplikovat všechny vlastnosti vaší entity. Pokud například dotazy, které hledají entity pomocí e-mailové adresy `RowKey` , nikdy nepotřebují věk zaměstnance, můžou mít tyto entity následující strukturu:
   
   ![Obrázek znázorňující entitu zaměstnance se sekundárním indexem][11]
 * Obvykle je lepší ukládat duplicitní data a zajistit, abyste mohli načíst všechna potřebná data s jediným dotazem, než použijete jeden dotaz k vyhledání entity pomocí sekundárního indexu a další pro vyhledání požadovaných dat v primárním indexu.  
@@ -585,7 +585,7 @@ Při implementaci tohoto modelu můžou být relevantní také následující mo
 Udržujte entity indexu, abyste umožnili efektivní hledání, které vrací seznam entit.  
 
 #### <a name="context-and-problem"></a>Kontext a problém
-Table Storage automaticky indexuje entity pomocí hodnot `PartitionKey` a `RowKey` . To umožňuje klientské aplikaci efektivně načíst entitu pomocí dotazu na bod. Například pomocí následující struktury tabulek může klientská aplikace efektivně načíst jednotlivou entitu zaměstnance pomocí názvu oddělení a ID zaměstnance ( `PartitionKey` a `RowKey`).  
+Table Storage automaticky indexuje entity pomocí `PartitionKey` hodnot a `RowKey` . To umožňuje klientské aplikaci efektivně načíst entitu pomocí dotazu na bod. Například pomocí následující struktury tabulek může klientská aplikace efektivně načíst jednotlivou entitu zaměstnance pomocí názvu oddělení a ID zaměstnance ( `PartitionKey` a `RowKey` ).  
 
 ![Obrázek entity zaměstnance][13]
 
@@ -600,7 +600,7 @@ Chcete-li povolit vyhledávání podle příjmení s předchozí strukturou enti
 
 Možnost 1: použití úložiště objektů BLOB  
 
-Vytvořte objekt BLOB pro každé jedinečné příjmení a v každém objektu BLOB uložte seznam hodnot `PartitionKey` (oddělení) a `RowKey` (ID zaměstnance) pro zaměstnance, kteří mají toto příjmení. Když zaměstnance přidáte nebo odstraníte, zajistěte, aby obsah relevantního objektu BLOB byl nakonec konzistentní s entitami zaměstnanců.  
+Vytvořte objekt BLOB pro každé jedinečné příjmení a v každém objektu BLOB uložte seznam `PartitionKey` hodnot (oddělení) a `RowKey` (ID zaměstnance) pro zaměstnance, kteří mají toto příjmení. Když zaměstnance přidáte nebo odstraníte, zajistěte, aby obsah relevantního objektu BLOB byl nakonec konzistentní s entitami zaměstnanců.  
 
 Možnost 2: vytvoření entit indexu ve stejném oddílu  
 
@@ -608,19 +608,19 @@ Použijte entity indexů, které ukládají následující data:
 
 ![Obrázek znázorňující entitu zaměstnance s řetězcem, který obsahuje seznam ID zaměstnanců se stejným posledním jménem][14]
 
-`EmployeeIDs` Vlastnost obsahuje seznam ID zaměstnanců pro zaměstnance s posledním jménem uloženým v `RowKey`.  
+`EmployeeIDs`Vlastnost obsahuje seznam ID zaměstnanců pro zaměstnance s posledním jménem uloženým v `RowKey` .  
 
 Následující kroky popisují postup, který byste měli provést při přidávání nového zaměstnance. V tomto příkladu přidáme zaměstnance s ID 000152 a názvem Novotný do oddělení Sales:  
 
-1. Načtěte indexovou entitu `PartitionKey` s hodnotou Sales a `RowKey` hodnotou "Novotný". Uložte značku ETag této entity, která se použije v kroku 2.  
-2. Vytvoření transakce skupiny entit (tj. operace dávky), která vloží novou`PartitionKey` entitu zaměstnance (hodnota prodej a `RowKey` hodnota "000152") a aktualizuje entitu indexu (`PartitionKey` hodnota prodej a `RowKey` hodnota "Novotný"). EGT to dělá přidáním nového ID zaměstnance do seznamu v poli ČísloZaměstnance. Další informace o EGTs najdete v tématu [transakce skupiny entit](#entity-group-transactions).  
+1. Načtěte indexovou entitu s `PartitionKey` hodnotou Sales a `RowKey` hodnotou "Novotný". Uložte značku ETag této entity, která se použije v kroku 2.  
+2. Vytvoření transakce skupiny entit (tj. operace dávky), která vloží novou entitu zaměstnance ( `PartitionKey` hodnota prodej a `RowKey` hodnota "000152") a aktualizuje entitu indexu ( `PartitionKey` hodnota prodej a `RowKey` hodnota "Novotný"). EGT to dělá přidáním nového ID zaměstnance do seznamu v poli ČísloZaměstnance. Další informace o EGTs najdete v tématu [transakce skupiny entit](#entity-group-transactions).  
 3. Pokud se EGT nepovede kvůli optimistické chybě souběžnosti (to znamená, že entita indexu změnila někdo jiný), pak je potřeba začít znovu v kroku 1.  
 
 Pokud používáte druhou možnost, můžete použít podobný přístup k odstranění zaměstnance. Změna příjmení zaměstnance je mírně složitější, protože potřebujete spustit EGT, který aktualizuje tři entity: entita zaměstnance, indexová entita pro staré příjmení a entitu indexu pro nové příjmení. Musíte načíst každou entitu před provedením jakýchkoli změn, aby bylo možné načíst hodnoty ETag, které pak můžete použít k provedení aktualizací pomocí optimistické souběžnosti.  
 
 Následující kroky popisují postup, který byste měli provést, pokud potřebujete vyhledat všechny zaměstnance s určitým jménem v oddělení. V tomto příkladu prohledáváme všechny zaměstnance s názvem Novotný v oddělení Sales (prodej):  
 
-1. Načtěte indexovou entitu `PartitionKey` s hodnotou Sales a `RowKey` hodnotou "Novotný".  
+1. Načtěte indexovou entitu s `PartitionKey` hodnotou Sales a `RowKey` hodnotou "Novotný".  
 2. Analyzovat seznam ID zaměstnanců v `EmployeeIDs` poli.  
 3. Pokud potřebujete další informace o každém z těchto zaměstnanců (například jejich e-mailové adresy), načtěte každou entitu zaměstnance pomocí `PartitionKey` hodnoty "prodej" a `RowKey` hodnot ze seznamu zaměstnanců, které jste získali v kroku 2.  
 
@@ -630,14 +630,14 @@ Pro tuto možnost použijte entity indexů, které ukládají následující dat
 
 ![Obrázek znázorňující entitu zaměstnance s řetězcem, který obsahuje seznam ID zaměstnanců se stejným posledním jménem][15]
 
-`EmployeeIDs` Vlastnost obsahuje seznam ID zaměstnanců pro zaměstnance s posledním jménem uloženým v `RowKey`.  
+`EmployeeIDs`Vlastnost obsahuje seznam ID zaměstnanců pro zaměstnance s posledním jménem uloženým v `RowKey` .  
 
 EGTs se nedá použít k udržení konzistence, protože entity indexu jsou v samostatném oddílu od entit zaměstnanců. Zajistěte, aby entity indexu byly nakonec konzistentní s entitami zaměstnanců.  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
 Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
-* Toto řešení vyžaduje aspoň dva dotazy, aby se načetly vyhovující entity: jednu pro dotazování entit indexu pro získání `RowKey` seznamu hodnot a pak dotazy pro načtení jednotlivých entit v seznamu.  
+* Toto řešení vyžaduje aspoň dva dotazy, aby se načetly vyhovující entity: jednu pro dotazování entit indexu pro získání seznamu `RowKey` hodnot a pak dotazy pro načtení jednotlivých entit v seznamu.  
 * Vzhledem k tomu, že každá entita má maximální velikost 1 MB, možnost 2 a možnost 3 v řešení, předpokládá, že seznam ID zaměstnanců pro jakékoli konkrétní příjmení není nikdy větší než 1 MB. Pokud je seznam ID zaměstnanců pravděpodobně větší než 1 MB, použijte možnost 1 a uložte data indexu do úložiště objektů BLOB.  
 * Pokud použijete možnost 2 (pomocí EGTs k obsluze přidávání a odstraňování zaměstnanců a změníte příjmení zaměstnance), musíte vyhodnotit, jestli se objem transakcí bude přicházet k omezením škálovatelnosti v konkrétním oddílu. Pokud se jedná o tento případ, měli byste zvážit vhodné řešení (možnost 1 nebo možnost 3). Tyto fronty slouží ke zpracování požadavků na aktualizace a umožňují ukládat entity indexu do samostatného oddílu od entit zaměstnanců.  
 * Možnost 2 v tomto řešení předpokládá, že chcete hledat podle příjmení v rámci oddělení. Například chcete načíst seznam zaměstnanců s posledním názvem Novotný v oddělení Sales (prodej). Pokud chcete mít možnost Hledat všechny zaměstnance s posledním názvem Novotný v celé organizaci, použijte jednu z možností 1 nebo 3.
@@ -663,7 +663,7 @@ V relační databázi obvykle Normalizujte data pro odstranění duplicit, ke kt
 ![Grafika entity oddělení a entit zaměstnanců][16]
 
 #### <a name="solution"></a>Řešení
-Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Příklad:  
+Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Například:  
 
 ![Obrázek denormalizované a kombinované entity oddělení][17]
 
@@ -706,7 +706,7 @@ Uložte do původní tabulky nový typ entity pomocí entit s následující str
 
 ![Obrázek entity zaměstnance se složeným klíčem][20]
 
-Všimněte si, `RowKey` jak je nyní složený klíč, který se skládá z ID zaměstnance a roku revizních dat. Díky tomu můžete načíst výkon a zkontrolovat data pomocí jediné žádosti pro jednu entitu.  
+Všimněte si `RowKey` , jak je nyní složený klíč, který se skládá z ID zaměstnance a roku revizních dat. Díky tomu můžete načíst výkon a zkontrolovat data pomocí jediné žádosti pro jednu entitu.  
 
 Následující příklad popisuje, jak můžete načíst všechna data revize pro konkrétního zaměstnance (například zaměstnanec 000123 v prodejním oddělení):  
 
@@ -736,12 +736,12 @@ Načtěte entity *n* naposledy přidané do oddílu pomocí `RowKey` hodnoty, kt
 > Výsledky dotazu vrácené službou Azure rozhraní API pro tabulky v Azure Cosmos DB nejsou seřazené podle klíče oddílu nebo klíče řádku. Takže i když je tento model vhodný pro úložiště tabulek, není vhodný pro Azure Cosmos DB. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní API pro tabulky v Azure Cosmos DB a v Azure Table Storage](table-api-faq.md#table-api-vs-table-storage).
 
 #### <a name="context-and-problem"></a>Kontext a problém
-Běžným požadavkem je, aby bylo možné načíst naposledy vytvořené entity, například deset největších nedávných deklarací identity odeslaných zaměstnancem. Dotazy tabulky podporují operaci `$top` dotazu, která vrací první *n* entit ze sady. Neexistuje žádná ekvivalentní operace dotazu, která by vrátila poslední *n* entit v sadě.  
+Běžným požadavkem je, aby bylo možné načíst naposledy vytvořené entity, například deset největších nedávných deklarací identity odeslaných zaměstnancem. Dotazy tabulky podporují `$top` operaci dotazu, která vrací první *n* entit ze sady. Neexistuje žádná ekvivalentní operace dotazu, která by vrátila poslední *n* entit v sadě.  
 
 #### <a name="solution"></a>Řešení
 Uložte entity pomocí typu `RowKey` , který přirozeně seřadí v pořadí podle data a času, takže poslední položka je vždy první v tabulce.  
 
-Pokud například chcete mít možnost načíst deset nejaktuálnějších deklarací výdajů odeslaných zaměstnancem, můžete použít reverzní hodnotu zahozenou od aktuálního data a času. Následující ukázka kódu jazyka C# ukazuje jeden ze způsobů `RowKey` , jak vytvořit vhodnou hodnotu "obrácené" značky ", která je seřazena od nejnovějšího po nejstarší:  
+Pokud například chcete mít možnost načíst deset nejaktuálnějších deklarací výdajů odeslaných zaměstnancem, můžete použít reverzní hodnotu zahozenou od aktuálního data a času. Následující ukázka kódu jazyka C# ukazuje jeden ze způsobů, jak vytvořit vhodnou hodnotu "obrácené" značky " `RowKey` , která je seřazena od nejnovějšího po nejstarší:  
 
 `string invertedTicks = string.Format("{0:D19}", DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks);`  
 
@@ -774,7 +774,7 @@ Umožněte odstranění velkého objemu entit tím, že uložíte všechny entit
 #### <a name="context-and-problem"></a>Kontext a problém
 Mnoho aplikací odstraní stará data, která už nejsou k dispozici pro klientskou aplikaci, nebo jestli se aplikace archivuje na jiné paměťové médium. Tato data obvykle Identifikujte podle data. Například máte požadavek na odstranění záznamů všech žádostí o přihlášení, které jsou starší než 60 dní.  
 
-Jedním z možných návrhů je použití data a času žádosti o přihlášení v `RowKey`:  
+Jedním z možných návrhů je použití data a času žádosti o přihlášení v `RowKey` :  
 
 ![Obrázek entity pokus o přihlášení][21]
 
@@ -844,7 +844,7 @@ Pomocí služby Table Storage můžete ukládat více entit, které reprezentuj�
 
 ![Obrázek znázorňující entitu statistiky zprávy s Rowkey 01 a entitou Statistika zprávy s Rowkey 02][24]
 
-Pokud potřebujete provést změnu, která vyžaduje aktualizaci obou entit, aby byla vzájemně synchronizovaná, můžete použít EGT. V opačném případě můžete použít jednu operaci sloučení k aktualizaci počtu zpráv pro určitý den. Chcete-li načíst všechna data pro jednotlivé zaměstnance, je nutné načíst obě entity. To lze provést pomocí dvou efektivních požadavků, které používají `PartitionKey` a i. `RowKey`  
+Pokud potřebujete provést změnu, která vyžaduje aktualizaci obou entit, aby byla vzájemně synchronizovaná, můžete použít EGT. V opačném případě můžete použít jednu operaci sloučení k aktualizaci počtu zpráv pro určitý den. Chcete-li načíst všechna data pro jednotlivé zaměstnance, je nutné načíst obě entity. To lze provést pomocí dvou efektivních požadavků, které používají `PartitionKey` a i `RowKey` .  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
 Při rozhodování, jak tento model implementovat, vezměte v úvahu následující body:  
@@ -901,7 +901,7 @@ Následující alternativní struktura entity zabraňuje hotspotu v jakémkoli k
 
 ![Obrázek znázorňující entitu zaměstnance s RowKeyem složeným z kódu pro rok, měsíc, den, hodinu a ID události][27]
 
-V tomto příkladu si všimněte, jak `PartitionKey` jsou `RowKey` složené klíče a. K `PartitionKey` distribuci protokolování mezi více oddíly používá oddělení i ID zaměstnance.  
+V tomto příkladu si všimněte, jak `PartitionKey` `RowKey` jsou složené klíče a. K `PartitionKey` distribuci protokolování mezi více oddíly používá oddělení i ID zaměstnance.  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
 Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
@@ -927,7 +927,7 @@ Běžný případ použití pro data protokolu je načtení výběru položek pr
 
 ![Obrázek entity zprávy protokolu][28]
 
-V tomto příkladu `RowKey` obsahuje datum a čas zprávy protokolu, aby se zajistilo, že se zprávy protokolu v pořadí podle data a času řadí. Zahrnuje `RowKey` také ID zprávy, v případě, že více zpráv protokolu sdílí stejné datum a čas.  
+V tomto příkladu `RowKey` obsahuje datum a čas zprávy protokolu, aby se zajistilo, že se zprávy protokolu v pořadí podle data a času řadí. `RowKey`Zahrnuje také ID zprávy, v případě, že více zpráv protokolu sdílí stejné datum a čas.  
 
 Další možností je použít `PartitionKey` , který zajišťuje, že aplikace zapisuje zprávy do celé řady oddílů. Pokud například zdroj zprávy protokolu poskytuje způsob, jak distribuovat zprávy v mnoha oddílech, můžete použít následující schéma entity:  
 
@@ -974,10 +974,10 @@ if (retrieveResult.Result != null)
 }  
 ```
 
-Všimněte si, jak tento příklad očekává, že entita, kterou načítá `EmployeeEntity`, je typu.  
+Všimněte si, jak tento příklad očekává, že entita, kterou načítá, je typu `EmployeeEntity` .  
 
 #### <a name="retrieve-multiple-entities-by-using-linq"></a>Načtení více entit pomocí LINQ
-Můžete načíst více entit pomocí knihovny LINQ s klientskou knihovnou úložiště a zadat dotaz s klauzulí **WHERE** . Abyste se vyhnuli prohledávání tabulky, měli byste vždycky `PartitionKey` zahrnout hodnotu do klauzule WHERE, a pokud je `RowKey` to možné, aby se zabránilo prohledávání tabulek a oddílů. Úložiště tabulek podporuje omezené sady relačních operátorů (větší než, je větší nebo rovno, je menší než, je menší než nebo rovno, rovno a není rovno) pro použití v klauzuli WHERE. Následující fragment kódu jazyka C# vyhledá všechny zaměstnance, jejichž příjmení začíná písmenem "B" (za předpokladu, že ukládá příjmení) do oddělení Sales (za předpokladu, `RowKey` že `PartitionKey` ukládá název oddělení):  
+Můžete načíst více entit pomocí knihovny LINQ s klientskou knihovnou úložiště a zadat dotaz s klauzulí **WHERE** . Abyste se vyhnuli prohledávání tabulky, měli byste vždycky zahrnout `PartitionKey` hodnotu do klauzule WHERE, a pokud je to možné, `RowKey` aby se zabránilo prohledávání tabulek a oddílů. Úložiště tabulek podporuje omezené sady relačních operátorů (větší než, je větší nebo rovno, je menší než, je menší než nebo rovno, rovno a není rovno) pro použití v klauzuli WHERE. Následující fragment kódu jazyka C# vyhledá všechny zaměstnance, jejichž příjmení začíná písmenem "B" (za předpokladu, že ukládá `RowKey` příjmení) do oddělení Sales (za předpokladu, že `PartitionKey` ukládá název oddělení):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();
@@ -989,7 +989,7 @@ var query = (from employee in employeeQuery
 var employees = query.Execute();  
 ```
 
-Všimněte si, jak dotaz určuje, `RowKey` jak a `PartitionKey` , aby bylo zajištěno lepší výkon.  
+Všimněte si, jak dotaz určuje, jak `RowKey` a, `PartitionKey` aby bylo zajištěno lepší výkon.  
 
 Následující ukázka kódu ukazuje ekvivalentní funkce pomocí rozhraní Fluent API (Další informace o rozhraních API Fluent najdete v tématu [osvědčené postupy pro návrh rozhraní Fluent API](https://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
 
@@ -1011,7 +1011,7 @@ var employees = employeeTable.ExecuteQuery(employeeQuery);
 ```
 
 > [!NOTE]
-> Ukázka vnořování více `CombineFilters` metod, aby zahrnovaly tři podmínky filtru.  
+> Ukázka vnořování více metod, `CombineFilters` aby zahrnovaly tři podmínky filtru.  
 > 
 > 
 
@@ -1081,7 +1081,7 @@ employeeQuery.TakeCount = 50;
 ```
 
 #### <a name="server-side-projection"></a>Projekce na straně serveru
-Jedna entita může mít až 255 vlastností a musí mít velikost až 1 MB. Při dotazování tabulky a načtení entit nemusíte potřebovat všechny vlastnosti a můžete se vyhnout nutnosti přenášet data zbytečně (což snižuje latenci a náklady). Pomocí projekce na straně serveru můžete přenést jenom vlastnosti, které potřebujete. Následující `Email` příklad načte pouze vlastnost (společně s `PartitionKey`, `RowKey`, `Timestamp`a `ETag`) z entit vybraných dotazem.  
+Jedna entita může mít až 255 vlastností a musí mít velikost až 1 MB. Při dotazování tabulky a načtení entit nemusíte potřebovat všechny vlastnosti a můžete se vyhnout nutnosti přenášet data zbytečně (což snižuje latenci a náklady). Pomocí projekce na straně serveru můžete přenést jenom vlastnosti, které potřebujete. Následující příklad načte pouze `Email` vlastnost (společně s `PartitionKey` , `RowKey` , `Timestamp` a `ETag` ) z entit vybraných dotazem.  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(
@@ -1097,7 +1097,7 @@ foreach (var e in entities)
 }  
 ```
 
-Všimněte si, `RowKey` jak je tato hodnota dostupná, i když není zahrnutá v seznamu vlastností, které se mají načíst.  
+Všimněte si, jak `RowKey` je tato hodnota dostupná, i když není zahrnutá v seznamu vlastností, které se mají načíst.  
 
 ### <a name="modify-entities"></a>Úpravy entit
 Klientská knihovna pro úložiště umožňuje upravovat entity uložené v úložišti tabulek vložením, odstraněním a aktualizací entit. EGTs můžete použít ke dávkovému zpracování vícenásobných operací vložení, aktualizace a odstranění a snížit tak počet požadovaných požadavků na odezvy a zvýšit výkon vašeho řešení.  
@@ -1110,12 +1110,12 @@ Měli byste také zvážit, jak váš návrh ovlivňuje způsob, jakým vaše kl
 Ve výchozím nastavení implementuje úložiště tabulek při operacích vložení, sloučení a odstranění optimistické kontroly souběžnosti na úrovni jednotlivých entit, i když je možné, že klient vynutí obejít tyto kontroly v úložišti tabulek. Další informace najdete v tématu [Správa souběžnosti v Microsoft Azure Storage](../storage/common/storage-concurrency.md).  
 
 #### <a name="merge-or-replace"></a>Sloučit nebo nahradit
-`Replace` Metoda `TableOperation` třídy vždy nahrazuje kompletní entitu v úložišti tabulek. Pokud do žádosti v případě, že tato vlastnost existuje v uložené entitě, nezadáte vlastnost, požadavek tuto vlastnost odebere z uložené entity. Pokud nechcete odebrat vlastnost explicitně z uložené entity, musíte do žádosti zahrnout každou vlastnost.  
+`Replace`Metoda `TableOperation` třídy vždy nahrazuje kompletní entitu v úložišti tabulek. Pokud do žádosti v případě, že tato vlastnost existuje v uložené entitě, nezadáte vlastnost, požadavek tuto vlastnost odebere z uložené entity. Pokud nechcete odebrat vlastnost explicitně z uložené entity, musíte do žádosti zahrnout každou vlastnost.  
 
-Pomocí `Merge` metody `TableOperation` třídy můžete omezit množství dat, která odesíláte do úložiště tabulky, když chcete entitu aktualizovat. `Merge` Metoda nahrazuje jakékoli vlastnosti v uložené entitě hodnotami vlastností z entity zahrnuté v žádosti. Tato metoda opustí nedotčené vlastnosti v uložené entitě, které nejsou zahrnuté v žádosti. To je užitečné, pokud máte velké entity a potřebujete aktualizovat pouze malý počet vlastností v žádosti.  
+Pomocí `Merge` metody `TableOperation` třídy můžete omezit množství dat, která odesíláte do úložiště tabulky, když chcete entitu aktualizovat. `Merge`Metoda nahrazuje jakékoli vlastnosti v uložené entitě hodnotami vlastností z entity zahrnuté v žádosti. Tato metoda opustí nedotčené vlastnosti v uložené entitě, které nejsou zahrnuté v žádosti. To je užitečné, pokud máte velké entity a potřebujete aktualizovat pouze malý počet vlastností v žádosti.  
 
 > [!NOTE]
-> Metody `*Replace` a `Merge` selžou, pokud entita neexistuje. Alternativně můžete použít metody `InsertOrReplace` a `InsertOrMerge` , které vytvoří novou entitu, pokud neexistuje.  
+> `*Replace`Metody a `Merge` selžou, pokud entita neexistuje. Alternativně můžete použít `InsertOrReplace` `InsertOrMerge` metody a, které vytvoří novou entitu, pokud neexistuje.  
 > 
 > 
 
@@ -1139,7 +1139,7 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1159,7 +1159,7 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1196,7 +1196,7 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1209,9 +1209,9 @@ Table Storage je úložiště tabulek *bez schématu* . To znamená, že jedna t
 </tr>
 </table>
 
-Každá entita musí mít `PartitionKey`stále hodnoty `RowKey`, a `Timestamp` , ale může mít libovolnou sadu vlastností. Kromě toho není nic označovat typ entity, pokud se nerozhodnete ukládat tyto informace někam. Existují dvě možnosti, jak identifikovat typ entity:  
+Každá entita musí mít stále `PartitionKey` `RowKey` hodnoty, a `Timestamp` , ale může mít libovolnou sadu vlastností. Kromě toho není nic označovat typ entity, pokud se nerozhodnete ukládat tyto informace někam. Existují dvě možnosti, jak identifikovat typ entity:  
 
-* Předřaďte typ entity do objektu `RowKey` (nebo případně do `PartitionKey`). Například `EMPLOYEE_000123` nebo `DEPARTMENT_SALES` jako `RowKey` hodnoty.  
+* Předřaďte typ entity do objektu `RowKey` (nebo případně do `PartitionKey` ). Například `EMPLOYEE_000123` nebo `DEPARTMENT_SALES` jako `RowKey` hodnoty.  
 * Použijte samostatnou vlastnost pro záznam typu entity, jak je znázorněno v následující tabulce.  
 
 <table>
@@ -1232,7 +1232,7 @@ Každá entita musí mít `PartitionKey`stále hodnoty `RowKey`, a `Timestamp` ,
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -1254,7 +1254,7 @@ Každá entita musí mít `PartitionKey`stále hodnoty `RowKey`, a `Timestamp` ,
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -1295,7 +1295,7 @@ Každá entita musí mít `PartitionKey`stále hodnoty `RowKey`, a `Timestamp` ,
 <th>FirstName</th>
 <th>LastName</th>
 <th>Věk</th>
-<th>E-mailu</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Zaměstnanec</td>
@@ -1309,7 +1309,7 @@ Každá entita musí mít `PartitionKey`stále hodnoty `RowKey`, a `Timestamp` ,
 </tr>
 </table>
 
-První možnost, před vyřízením typu entity `RowKey`, je užitečná, pokud existuje možnost, že dvě entity různých typů mohou mít stejnou klíčovou hodnotu. Také seskupuje entity stejného typu společně v oddílu.  
+První možnost, před vyřízením typu entity `RowKey` , je užitečná, pokud existuje možnost, že dvě entity různých typů mohou mít stejnou klíčovou hodnotu. Také seskupuje entity stejného typu společně v oddílu.  
 
 Techniky popsané v této části jsou obzvláště důležité pro diskuzi o[vztazích dědičnosti](#inheritance-relationships).  
 
@@ -1323,7 +1323,7 @@ Zbývající část této části popisuje některé funkce v klientské knihovn
 #### <a name="retrieve-heterogeneous-entity-types"></a>Načtení heterogenních typů entit
 Pokud používáte klientskou knihovnu pro úložiště, máte k dispozici tři možnosti pro práci s více typy entit.  
 
-Pokud víte, jaký typ entity je uložený s konkrétní `RowKey` hodnotou `PartitionKey` a, můžete typ entity zadat při načtení entity. Viděli jste to v předchozích dvou příkladech, které načítají entity `EmployeeEntity`typu: [Spusťte dotaz Point pomocí klientské knihovny úložiště](#run-a-point-query-by-using-the-storage-client-library) a [načtěte více entit pomocí LINQ](#retrieve-multiple-entities-by-using-linq).  
+Pokud víte, jaký typ entity je uložený s konkrétní `RowKey` `PartitionKey` hodnotou a, můžete typ entity zadat při načtení entity. Viděli jste to v předchozích dvou příkladech, které načítají entity typu `EmployeeEntity` : [Spusťte dotaz Point pomocí klientské knihovny úložiště](#run-a-point-query-by-using-the-storage-client-library) a [načtěte více entit pomocí LINQ](#retrieve-multiple-entities-by-using-linq).  
 
 Druhou možností je použít `DynamicTableEntity` typ (kontejner objektů vlastností) místo konkrétního typu entity POCO. Tato možnost může také zvýšit výkon, protože není nutné serializovat a deserializovat entitu na typy .NET. Následující kód jazyka C# potenciálně načte více entit různých typů z tabulky, ale vrátí všechny entity jako `DynamicTableEntity` instance. Pak použije `EntityType` vlastnost k určení typu každé entity:  
 
@@ -1358,9 +1358,9 @@ if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
 }  
 ```
 
-Chcete-li načíst další vlastnosti, je nutné `TryGetValue` použít metodu u `Properties` vlastnosti `DynamicTableEntity` třídy.  
+Chcete-li načíst další vlastnosti, je nutné použít `TryGetValue` metodu u `Properties` vlastnosti `DynamicTableEntity` třídy.  
 
-Třetí možností je kombinovat použití `DynamicTableEntity` typu a `EntityResolver` instance. To umožňuje překládat na více typů POCO ve stejném dotazu. V tomto příkladu `EntityResolver` delegát používá `EntityType` vlastnost k rozlišení mezi dvěma typy entity, které dotaz vrátí. `Resolve` Metoda `resolver` používá delegáta k překladu `DynamicTableEntity` instancí na `TableEntity` instance.  
+Třetí možností je kombinovat použití `DynamicTableEntity` typu a `EntityResolver` instance. To umožňuje překládat na více typů POCO ve stejném dotazu. V tomto příkladu `EntityResolver` delegát používá `EntityType` vlastnost k rozlišení mezi dvěma typy entity, které dotaz vrátí. `Resolve`Metoda používá `resolver` delegáta k překladu `DynamicTableEntity` instancí na `TableEntity` instance.  
 
 ```csharp
 EntityResolver<TableEntity> resolver = (pk, rk, ts, props, etag) =>
@@ -1434,7 +1434,7 @@ Další informace o použití tokenů SAS s tabulkovým úložištěm najdete v 
 
 Přesto však musíte vygenerovat tokeny SAS, které klientským aplikacím udělují entity v úložišti tabulek. Provedete to v prostředí, které má zabezpečený přístup k klíčům účtu úložiště. Obvykle se používá webová role nebo role pracovního procesu pro generování tokenů SAS a jejich doručování klientským aplikacím, které potřebují přístup k vašim entitám. Vzhledem k tomu, že je stále k dispozici režie při generování a poskytování tokenů SAS klientům, byste měli zvážit, jak nejlépe snížit tuto režii, zejména ve scénářích s vysokým objemem.  
 
-Je možné vygenerovat token SAS, který uděluje přístup podmnožině entit v tabulce. Ve výchozím nastavení vytvoříte token SAS pro celou tabulku. Je ale také možné určit, že token SAS uděluje přístup buď k rozsahu `PartitionKey` hodnot, nebo rozsahu hodnot `PartitionKey` a. `RowKey` Můžete zvolit generování tokenů SAS pro jednotlivé uživatele systému, takže token SAS každého uživatele umožňuje přístup pouze k vlastním entitám v úložišti tabulek.  
+Je možné vygenerovat token SAS, který uděluje přístup podmnožině entit v tabulce. Ve výchozím nastavení vytvoříte token SAS pro celou tabulku. Je ale také možné určit, že token SAS uděluje přístup buď k rozsahu `PartitionKey` hodnot, nebo rozsahu hodnot `PartitionKey` a `RowKey` . Můžete zvolit generování tokenů SAS pro jednotlivé uživatele systému, takže token SAS každého uživatele umožňuje přístup pouze k vlastním entitám v úložišti tabulek.  
 
 ### <a name="asynchronous-and-parallel-operations"></a>Asynchronní a paralelní operace
 Za předpokladu, že rozšíříte žádosti napříč více oddíly, můžete zvýšit propustnost a odezvu klienta pomocí asynchronních nebo paralelních dotazů.
@@ -1492,11 +1492,11 @@ private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, strin
 V tomto asynchronním příkladu vidíte následující změny z synchronní verze:  
 
 * Signatura metody teď obsahuje `async` modifikátor a vrátí `Task` instanci.  
-* Namísto volání `ExecuteSegmented` metody k načtení výsledků metoda nyní volá `ExecuteSegmentedAsync` metodu. Metoda používá `await` modifikátor k asynchronnímu načtení výsledků.  
+* Namísto volání `ExecuteSegmented` metody k načtení výsledků metoda nyní volá `ExecuteSegmentedAsync` metodu. Metoda používá `await` Modifikátor k asynchronnímu načtení výsledků.  
 
 Klientská aplikace může tuto metodu zavolat víckrát s různými hodnotami pro `department` parametr. Každý dotaz se spouští v samostatném vlákně.  
 
-Ve `Execute` `TableQuery` třídě neexistuje žádná asynchronní verze metody, protože `IEnumerable` rozhraní nepodporuje asynchronní výčet.  
+Ve třídě neexistuje žádná asynchronní verze `Execute` metody `TableQuery` , protože `IEnumerable` rozhraní nepodporuje asynchronní výčet.  
 
 Entity můžete také vkládat, aktualizovat a odstraňovat asynchronně. Následující příklad jazyka C# ukazuje jednoduchou, synchronní metodu pro vložení nebo nahrazení entity zaměstnance:  
 
@@ -1525,7 +1525,7 @@ private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
 V tomto asynchronním příkladu vidíte následující změny z synchronní verze:  
 
 * Signatura metody teď obsahuje `async` modifikátor a vrátí `Task` instanci.  
-* Namísto volání `Execute` metody pro aktualizaci entity nyní metoda volá `ExecuteAsync` metodu. Metoda používá `await` modifikátor k asynchronnímu načtení výsledků.  
+* Namísto volání `Execute` metody pro aktualizaci entity nyní metoda volá `ExecuteAsync` metodu. Metoda používá `await` Modifikátor k asynchronnímu načtení výsledků.  
 
 Klientská aplikace může volat několik asynchronních metod, jako je tato, a každá metoda vyvolání se spouští v samostatném vlákně.  
 

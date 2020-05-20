@@ -5,14 +5,14 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/22/2017
+ms.date: 05/12/2020
 ms.author: robinsh
-ms.openlocfilehash: b1550254e969e96fbc83c4c344189d414a8fa8d3
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 74ee9506d7b21e5f0654c8a46976b4d5c63b5197
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995511"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649372"
 ---
 # <a name="use-ip-filters"></a>Použití filtrů IP adres
 
@@ -28,9 +28,12 @@ Existují dva konkrétní případy použití, když je užitečné zablokovat I
 
 ## <a name="how-filter-rules-are-applied"></a>Jak se používají pravidla filtru
 
-Pravidla filtru IP jsou použita na úrovni služby IoT Hub. Proto se pravidla filtru IP použijí na všechna připojení ze zařízení a back-endové aplikace s využitím jakéhokoli podporovaného protokolu.
+Pravidla filtru IP jsou použita na úrovni služby IoT Hub. Proto se pravidla filtru IP použijí na všechna připojení ze zařízení a back-endové aplikace s využitím jakéhokoli podporovaného protokolu. Nicméně klienti načtou přímo z [integrovaného koncového bodu kompatibilního](iot-hub-devguide-messages-read-builtin.md) s centrem událostí (ne prostřednictvím připojovacího řetězce IoT Hub) nejsou vázány na pravidla filtru IP. 
 
-Jakýkoli pokus o připojení z IP adresy, která odpovídá pravidlu odmítnutí protokolu IP ve službě IoT Hub, obdrží ne401 autorizovaný kód stavu a popis. Zpráva odpovědi nezmiňuje pravidlo protokolu IP.
+Jakýkoli pokus o připojení z IP adresy, která odpovídá pravidlu odmítnutí protokolu IP ve službě IoT Hub, obdrží ne401 autorizovaný kód stavu a popis. Zpráva odpovědi nezmiňuje pravidlo protokolu IP. Odmítání IP adres může zabránit jiným službám Azure, jako je Azure Stream Analytics, Azure Virtual Machines nebo Device Explorer v Azure Portal z interakce se službou IoT Hub.
+
+> [!NOTE]
+> Pokud musíte použít Azure Stream Analytics (ASA) ke čtení zpráv ze služby IoT Hub s povoleným filtrem IP adres, použijte název a koncový bod služby IoT Hub, který je kompatibilní s centrem událostí, a ručně přidejte [vstup datového proudu Event Hubs](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-event-hubs) do ASA.
 
 ## <a name="default-setting"></a>Výchozí nastavení
 
@@ -48,7 +51,7 @@ Po výběru možnosti **Přidat pravidlo filtru protokolu IP**zadejte pole.
 
 ![Po výběru možnosti Přidat pravidlo filtru IP](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Zadejte **název** pravidla filtru IP. Musí se jednat o jedinečný řetězec bez rozlišení velkých a malých písmen, který je dlouhý až 128 znaků. Jsou přijímány pouze alfanumerické znaky ASCII a `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` 7.
+* Zadejte **název** pravidla filtru IP. Musí se jednat o jedinečný řetězec bez rozlišení velkých a malých písmen, který je dlouhý až 128 znaků. Jsou přijímány pouze alfanumerické znaky ASCII a 7 `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` .
 
 * Zadejte jednu adresu IPv4 nebo blok IP adres v zápisu CIDR. Například v zápisu CIDR 192.168.100.0/22 představuje adresy IPv4 1024 z 192.168.100.0 do 192.168.103.255.
 
@@ -61,12 +64,6 @@ Po vyplnění polí vyberte **Uložit** a uložte pravidlo. Zobrazí se upozorn�
 Možnost **Přidat** je zakázaná, když dosáhnete maximálního počtu 10 pravidel filtru IP.
 
 Pokud chcete upravit stávající pravidlo, vyberte data, která chcete změnit, proveďte změnu a pak kliknutím na **Uložit** uložte úpravy.
-
-> [!NOTE]
-> Odmítání IP adres může zabránit jiným službám Azure (například Azure Stream Analytics, Azure Virtual Machines nebo Device Explorer na portálu) v interakci se službou IoT Hub.
-
-> [!WARNING]
-> Pokud používáte Azure Stream Analytics (ASA) ke čtení zpráv ze služby IoT Hub s povoleným filtrováním IP adres, použijte název a koncový bod služby IoT Hub, který je kompatibilní s centrem událostí, a ručně přidejte [vstup datového proudu Event Hubs](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs#stream-data-from-event-hubs) do ASA.
 
 ## <a name="delete-an-ip-filter-rule"></a>Odstraní pravidlo filtru IP.
 
@@ -120,7 +117,7 @@ Pokud chcete ve svém IoT Hub odebrat existující filtr IP adres, spusťte:
 az resource update -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs --add properties.ipFilterRules <ipFilterIndexToRemove>
 ```
 
-Všimněte si `<ipFilterIndexToRemove>` , že musí odpovídat řazení filtrů IP adres v IoT Hub `properties.ipFilterRules`.
+Všimněte si, že `<ipFilterIndexToRemove>` musí odpovídat řazení filtrů IP adres v IoT Hub `properties.ipFilterRules` .
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>Načtení a aktualizace filtrů IP adres pomocí Azure PowerShell
 

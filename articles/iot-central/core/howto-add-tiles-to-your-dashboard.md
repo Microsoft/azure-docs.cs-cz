@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f75e5a28f7ec56750432e74ee48ba68491a5e481
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1110f76a792a7e3955d5fd32e01ac1566d467151
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310287"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659068"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicího panelu aplikace
 
-**Řídicí panel** je stránka, která se načte, když uživatelé, kteří mají přístup k aplikaci, navigují na adresu URL aplikace. Pokud jste aplikaci vytvořili z některé z **šablon aplikace**, bude mít aplikace předem definovaný řídicí panel. Pokud jste aplikaci vytvořili ze šablony **starší verze** aplikace, bude řídicí panel prázdný, aby se spouštěl.
+**Řídicí panel** je stránka, která se načte, když uživatelé, kteří mají přístup k aplikaci, navigují na adresu URL aplikace. Pokud jste aplikaci vytvořili z některé z **šablon aplikace**, bude mít aplikace předem definovaný řídicí panel. Pokud jste aplikaci vytvořili z **vlastní** šablony aplikační aplikace, zobrazí se na řídicím panelu několik tipů k zahájení práce.
 
 > [!NOTE]
-> Uživatelé mohou kromě výchozího řídicího panelu aplikace [vytvořit několik řídicích panelů](howto-create-personal-dashboards.md) . Tyto řídicí panely mohou být osobní pouze uživateli nebo sdíleny napříč všemi uživateli aplikace. 
+> Uživatelé mohou kromě výchozího řídicího panelu aplikace [vytvořit několik řídicích panelů](howto-create-personal-dashboards.md) . Tyto řídicí panely mohou být osobní pouze uživateli nebo sdíleny napříč všemi uživateli aplikace.  
 
 ## <a name="add-tiles"></a>Přidat dlaždice
 
@@ -35,22 +35,23 @@ Výběr možnosti **Upravit** otevře panel Knihovna řídicích panelů. Knihov
 > ![Knihovna řídicích panelů](media/howto-add-tiles-to-your-dashboard/dashboard-library.png)
 
 Můžete například přidat dlaždici **telemetrie** pro aktuální teplotu zařízení. Postupujte následovně:
+
 1. Vybrat **šablonu zařízení**
-1. Vyberte **instanci zařízení** pro zařízení, které chcete zobrazit na dlaždici řídicího panelu. Pak se zobrazí seznam vlastností zařízení, které se dají na dlaždici použít.
-1. Pokud chcete vytvořit dlaždici na řídicím panelu, klikněte na **teplotu** a přetáhněte ji do oblasti řídicího panelu. Můžete také kliknout na zaškrtávací políčko vedle **teploty** a kliknout na **zkombinovat**. Následující snímek obrazovky ukazuje, jak vybrat šablonu zařízení a instanci zařízení a pak na řídicím panelu vytvořit dlaždici telemetrie s teplotou.
+1. V **zařízení vyberte** zařízení, které chcete zobrazit na dlaždici řídicího panelu. Pak se zobrazí seznam vlastností zařízení, které se dají na dlaždici použít.
+1. Pokud chcete vytvořit dlaždici na řídicím panelu, klikněte na **teplotu** a přetáhněte ji do oblasti řídicího panelu. Můžete také kliknout na zaškrtávací políčko vedle **teploty** a kliknout na **Přidat dlaždici**. Následující snímek obrazovky ukazuje, jak vybrat šablonu zařízení a instanci zařízení a pak na řídicím panelu vytvořit dlaždici telemetrie s teplotou.
 1. Vyberte **Uložit** v levém horním rohu a uložte dlaždici na řídicí panel.
 
 > [!div class="mx-imgBorder"]
 > ![Formulář konfigurace podrobností o zařízení s podrobnostmi o nastavení a vlastnostech](media/howto-add-tiles-to-your-dashboard/device-details.png)
 
-Když teď operátor zobrazí výchozí řídicí panel aplikace, uvidí novou dlaždici s **teplotou** pro zařízení. Každá dlaždice má předem vybraný graf, graf atd., který se zobrazí při vytvoření dlaždice. Uživatelé ale můžou tuto vizualizaci upravit a změnit. 
+Když teď operátor zobrazí výchozí řídicí panel aplikace, uvidí novou dlaždici s **teplotou** pro zařízení. Každá dlaždice má předem vybraný graf, graf atd., který se zobrazí při vytvoření dlaždice. Uživatelé ale můžou tuto vizualizaci upravit a změnit.  
 
 > [!div class="mx-imgBorder"]
 > ![Karta řídicí panel se zobrazeným nastavením a vlastnostmi dlaždice](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
 
 ## <a name="edit-tiles"></a>Upravit dlaždice
 
-Chcete-li upravit dlaždici na řídicím panelu, nejprve klikněte na tlačítko **Upravit** v levém horním rohu stránky, čímž otevřete režim úprav řídicího panelu a všech jeho dlaždic. 
+Chcete-li upravit dlaždici na řídicím panelu, nejprve klikněte na tlačítko **Upravit** v levém horním rohu stránky, čímž otevřete režim úprav řídicího panelu a všech jeho dlaždic.  
 
 > [!div class="mx-imgBorder"]
 > ![Obrazovka řídicího panelu s aktivovaným režimem úprav pro vybranou dlaždici](media/howto-add-tiles-to-your-dashboard/edit-mode.png)
@@ -68,7 +69,7 @@ Vizualizaci grafu můžete také změnit kliknutím na ikonu **pravítka** na dl
 ## <a name="tile-types"></a>Typy dlaždic
 
 Následující tabulka shrnuje použití dlaždic v Azure IoT Central:
- 
+
 | dlaždici | Řídicí panel | Popis
 | ----------- | ------- | ------- |
 | Obsah | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice podporované Markdownu jsou kliknutí na dlaždice, které zobrazují nadpis a text popisu. Tuto dlaždici můžete použít také jako dlaždici odkazů a povolit tak uživateli přejít na adresu URL, která se vztahuje k vaší aplikaci.|
@@ -78,11 +79,24 @@ Následující tabulka shrnuje použití dlaždic v Azure IoT Central:
 | Spojnicový graf | Řídicí panely aplikací a zařízení |Dlaždice spojnicového grafu zobrazují graf agregovaného měření pro zařízení za určité časové období. Můžete například zobrazit spojnicový graf, který zobrazuje průměrnou teplotu a tlak zařízení za poslední hodinu.|
 | Pruhový graf | Řídicí panely aplikací a zařízení |Dlaždice pruhového grafu zobrazují graf agregovaných měření pro zařízení za určité časové období. Můžete například zobrazit pruhový graf, který zobrazuje průměrnou teplotu a tlak zařízení za poslední hodinu.|
 | Výsečový graf | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice výsečového grafu zobrazují graf agregovaných měření pro zařízení za určité časové období.|
-| Heat mapa | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice Heat mapy zobrazují informace o sadě zařízení reprezentované jako barvy.|
+| Heat mapa | Řídicí panely pro aplikace a nastavení zařízení |Dlaždice Heat mapy zobrazují informace o zařízení, které jsou reprezentované jako barvy.|
 | Historie událostí | Řídicí panely aplikací a zařízení |Dlaždice historie událostí zobrazují události pro zařízení za časové období. Můžete ho například použít k zobrazení všech změn teploty zařízení během poslední hodiny.|
 | Historie stavu | Řídicí panely aplikací a zařízení |Dlaždice historie stavu zobrazují hodnoty měření za časové období. Můžete ho například použít k zobrazení hodnot teploty pro zařízení během poslední hodiny.|
-| Klíčové ukazatele výkonu | Řídicí panely aplikací a zařízení | Dlaždice klíčových ukazatelů výkonu zobrazují agregovanou telemetrii nebo měření událostí za časové období. Můžete ho například použít k zobrazení maximální teploty zařízení během poslední hodiny.|
-| Poslední známá hodnota | Řídicí panely aplikací a zařízení |Dlaždice Poslední známá hodnota zobrazují nejnovější hodnotu pro telemetrii nebo měření stavu. Pomocí této dlaždice můžete například zobrazit nejnovější měření teploty, tlaku a vlhkosti zařízení.|
+| KPI | Řídicí panely aplikací a zařízení | Dlaždice klíčových ukazatelů výkonu zobrazují agregovanou telemetrii nebo měření událostí za časové období. Můžete ho například použít k zobrazení maximální teploty zařízení během poslední hodiny.|
+| Poslední známá hodnota | Řídicí panely aplikací a zařízení |Dlaždice Poslední známá hodnota zobrazují nejnovější hodnotu pro telemetrii nebo měření stavu. Pomocí této dlaždice můžete například zobrazit nejnovější měření teploty, tlaku a vlhkosti zařízení. |
+| Vlastnost | Řídicí panely aplikací a zařízení | Dlaždice vlastností zobrazují aktuální hodnotu vlastností a vlastností cloudu zařízení. Tuto dlaždici můžete například použít k zobrazení vlastností zařízení, jako je výrobce nebo verze firmwaru pro zařízení. |
+
+### <a name="customizing-visualizations"></a>Přizpůsobení vizualizací
+
+V případě spojnicových grafů, pruhových grafů a výsečových grafů můžete přizpůsobit barvy zobrazené v různých telemetrií v grafu. Provedete to tak, že vyberete ikonu akcemi vedle telemetrie, kterou chcete přizpůsobit, a zvolíte barvu.
+
+> [!div class="mx-imgBorder"]
+> ![Rozevírací seznam pro nastavení barevného zobrazení telemetrie](media/howto-add-tiles-to-your-dashboard/color-customization.png)
+
+V případě telemetrií nebo vlastností typu String můžete zvolit, jak chcete vizualizovat text. Například pokud vaše zařízení odešle adresu URL jako telemetrii řetězců, můžete vizualizovat tuto adresu URL jako odkaz s odkazem. Pokud adresa URL odkazuje na obrázek, můžete obrázek vykreslit v poslední známé hodnotě nebo dlaždici Vlastnosti. Způsob zobrazení telemetrie řetězců můžete změnit tak, že vyberete ozubené kolečko vedle názvu telemetrie. Tímto způsobem můžete zobrazit text jako text, odkaz nebo obrázek.
+
+> [!div class="mx-imgBorder"]
+> ![Rozevírací seznam pro nastavení řetězcové vizualizace](media/howto-add-tiles-to-your-dashboard/string-viz-customization.png)
 
 ## <a name="next-steps"></a>Další kroky
 

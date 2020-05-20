@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f10b987fa8783084b14774b9bce5e857f3c59c4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408028"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650473"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Dočasné tabulky v synapse fondu SQL
 Tento článek obsahuje základní pokyny k používání dočasných tabulek a zvýrazňuje principy dočasných tabulek úrovně relace. 
@@ -29,7 +29,7 @@ Dočasné tabulky jsou viditelné pouze v relaci, ve které byly vytvořeny, a j
 
 Dočasné tabulky nabízejí výkonnostní výhodu, protože jejich výsledky jsou zapisovány do místního úložiště místo vzdáleného úložiště.
 
-Dočasné tabulky jsou užitečné při zpracování dat, zejména při transformaci, kde jsou mezilehlé výsledky přechodné. V rámci SQL Analytics existují na úrovni relace dočasné tabulky.  Jsou viditelné pouze v relaci, ve které byly vytvořeny. V takovém případě jsou automaticky vyhozeny při odhlášení relace. 
+Dočasné tabulky jsou užitečné při zpracování dat, zejména při transformaci, kde jsou mezilehlé výsledky přechodné. S fondem SQL existují dočasné tabulky na úrovni relace.  Jsou viditelné pouze v relaci, ve které byly vytvořeny. V takovém případě jsou automaticky vyhozeny při odhlášení relace. 
 
 ## <a name="temporary-tables-in-sql-pool"></a>Dočasné tabulky ve fondu SQL
 
@@ -37,7 +37,7 @@ V prostředku fondu SQL nabízí dočasné tabulky přínos pro zvýšení výko
 
 ### <a name="create-a-temporary-table"></a>Vytvoření dočasné tabulky
 
-Dočasné tabulky jsou vytvářeny pomocí předpony názvu tabulky s `#`příponou.  Příklad:
+Dočasné tabulky jsou vytvářeny pomocí předpony názvu tabulky s `#` příponou.  Například:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -105,7 +105,7 @@ GROUP BY
 ## <a name="dropping-temporary-tables"></a>Vyřazení dočasných tabulek
 Při vytvoření nové relace by neexistovaly žádné dočasné tabulky.  
 
-Pokud voláte stejnou uloženou proceduru, která vytvoří dočasný se stejným názvem, aby bylo zajištěno, že budou `CREATE TABLE` příkazy úspěšné, je možné použít jednoduchou kontrolu existence s a `DROP` , jak je uvedeno v následujícím příkladu:
+Pokud voláte stejnou uloženou proceduru, která vytvoří dočasný se stejným názvem, aby bylo zajištěno, že `CREATE TABLE` budou příkazy úspěšné, je možné použít jednoduchou kontrolu existence s a, `DROP` jak je uvedeno v následujícím příkladu:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -203,7 +203,7 @@ V této fázi je jediná akce, ke které došlo, vytvořit uloženou proceduru, 
 
 Tato uložená procedura uvolní existující #stats_ddl, aby se zajistilo, že selže v případě, že se v rámci relace spustí více než jednou.  
 
-Vzhledem k tomu, že po `DROP TABLE` dokončení uložené procedury na konci uloženou proceduru neexistuje, opustí vytvořenou tabulku, aby ji bylo možné číst mimo uloženou proceduru.  
+Vzhledem k tomu, že `DROP TABLE` po dokončení uložené procedury na konci uloženou proceduru neexistuje, opustí vytvořenou tabulku, aby ji bylo možné číst mimo uloženou proceduru.  
 
 Ve fondu SQL na rozdíl od jiných databází SQL Server lze použít dočasnou tabulku mimo postup, který ho vytvořil.  Dočasné tabulky fondu SQL lze použít **kdekoli** v relaci. Tato funkce může vést k drobnějšímu a spravovatelnému kódu, jak je uvedeno v následujícím příkladu:
 
@@ -233,5 +233,5 @@ V dočasných tabulkách také nelze vytvořit zobrazení.  Dočasné tabulky lz
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o vývoji tabulek najdete v článku [navrhování tabulek pomocí informací o prostředcích SQL Analytics](sql-data-warehouse-tables-overview.md) .
+Další informace o vývoji tabulek najdete v článku [navrhování tabulek pomocí prostředků SQL synapse](sql-data-warehouse-tables-overview.md) .
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4a94b0b84290bbf796e951dfee8b3f35b80036ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89d760e28025f64b8cd8940fc08f06d23c969e12
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183156"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655755"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Základní plán zabezpečení Azure pro Azure Database for PostgreSQL jeden server
 
@@ -906,7 +906,7 @@ Jak zajistit Key Vault ověřování pomocí spravované identity:https://docs.m
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
 
-**Pokyny**: Azure Database for PostgreSQL Server podporuje ověřování Azure Active Directory (ve verzi Preview) pro přístup k databázím.  Při vytváření Azure Database for PostgreSQLho serveru poskytnete přihlašovací údaje pro uživatele správce. Tento správce se dá použít k vytvoření dalších uživatelů databáze.  
+**Pokyny**: Azure Database for PostgreSQL Server podporuje ověřování Azure Active Directory pro přístup k databázím.  Při vytváření Azure Database for PostgreSQLho serveru poskytnete přihlašovací údaje pro uživatele správce. Tento správce se dá použít k vytvoření dalších uživatelů databáze.  
 
 V případě Azure Virtual Machines nebo webových aplikací běžících na Azure App Service se používá pro přístup k serveru Azure Database for PostgreSQL použijte Identita spravované služby ve spojení s Azure Key Vault ukládat a načítat přihlašovací údaje pro Azure Database for PostgreSQL Server. Ujistěte se, že je povolené Key Vault obnovitelné odstranění.
 

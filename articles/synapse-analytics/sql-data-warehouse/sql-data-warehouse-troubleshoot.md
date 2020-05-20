@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží
-description: Řešení potíží s Azure synapse Analytics.
+title: Řešení potíží s synapse SQL
+description: Řešení potíží s synapse SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 973d2339db1e55f2cca45025f2d678e5126f4317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 618ef7329d28dc8006a338d8326d790a6a9d3554
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743666"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650461"
 ---
-# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Řešení potíží s SQL Analytics v Azure synapse
+# <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Řešení potíží s synapse SQL ve službě Azure synapse Analytics
 
-V tomto článku jsou uvedené běžné otázky týkající se řešení potíží.
+V tomto článku jsou uvedené běžné problémy s odstraňováním problémů v synapse SQL.
 
 ## <a name="connecting"></a>Připojovaného
 
@@ -32,11 +32,11 @@ V tomto článku jsou uvedené běžné otázky týkající se řešení potíž
 | Blokováno bránou firewall                                          | Fondy SQL jsou chráněné branami firewall, aby se zajistil přístup k databázi jenom známým IP adresám. Brány firewall jsou ve výchozím nastavení zabezpečené, což znamená, že před připojením musíte explicitně povolit a IP adresu nebo rozsah adres.  Pokud chcete bránu firewall nakonfigurovat pro přístup, postupujte podle pokynů v tématu [Konfigurace přístupu k bráně firewall serveru pro IP adresu vašeho klienta](create-data-warehouse-portal.md) v [pokynech k zřizování](create-data-warehouse-portal.md). |
 | Nejde se připojit pomocí nástroje nebo ovladače.                           | Synapse fond SQL doporučuje používat [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [SSDT pro Visual Studio](sql-data-warehouse-install-visual-studio.md)nebo [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) k dotazování na data. Další informace o ovladačích a připojení k Azure synapse najdete v tématu [ovladače pro Azure synapse](sql-data-warehouse-connection-strings.md) a [připojení k Azure synapse](sql-data-warehouse-connect-overview.md) articles. |
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Průzkumník objektů Visual studia nemá žádné uživatele Azure AD.           | Jedná se o známý problém.  Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Další informace o použití Azure Active Directory s fondem SQL synapse najdete v tématu [ověřování do Azure synapse](sql-data-warehouse-authentication.md) . |
+| Průzkumník objektů Visual studia nemá žádné uživatele Azure AD.           | Jde o známý problém.  Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Další informace o použití Azure Active Directory s fondem SQL synapse najdete v tématu [ověřování do Azure synapse](sql-data-warehouse-authentication.md) . |
 | Ruční skriptování, použití Průvodce skriptováním nebo připojení prostřednictvím SSMS je pomalé, nereaguje nebo produkuje chyby. | Zajistěte, aby byl uživatel vytvořen v hlavní databázi. V možnostech skriptování se ujistěte také, že je edice stroje nastavená na Microsoft Azure SQL Data Warehouse Edition a typ modulu je "Microsoft Azure SQL Database". |
 | Generování skriptů v SSMS se nezdařilo                               | Generování skriptu pro synapse fond SQL se nepovede, pokud je možnost "vygenerovat skript pro závislé objekty" nastavená na hodnotu "true". Alternativním řešením je, že uživatelé musí ručně přejít na **nástroje-> možnosti->Průzkumník objektů systému SQL Server – > vygenerovat skript pro závislé možnosti a nastavit na hodnotu NEPRAVDA** . |
 

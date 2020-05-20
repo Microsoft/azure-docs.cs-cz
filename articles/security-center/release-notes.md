@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/11/2020
+ms.date: 05/15/2020
 ms.author: memildin
-ms.openlocfilehash: bfe1e5d6a0c4171a262b36387f02be356fb1d72d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f71bffd1db023ece19071bb8f71ec49a855e828b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210893"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654662"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -31,6 +31,36 @@ Tato stránka se pravidelně aktualizuje, takže ji můžete často znovu navšt
 
 
 ## <a name="may-2020"></a>Květen 2020
+
+
+### <a name="alert-suppression-rules-preview"></a>Pravidla pro potlačení výstrah (Preview)
+
+Tato nová funkce (aktuálně ve verzi Preview) pomáhá snižovat únavu výstrah. Pomocí pravidel můžete automaticky skrýt výstrahy, které se neškodného nebo které souvisejí s běžnými aktivitami ve vaší organizaci. To vám umožní soustředit se na nejrelevantnější hrozby. 
+
+Budou se vygenerovat i výstrahy, které odpovídají povoleným pravidlům potlačení, ale jejich stav se nastaví na zastaveno. Můžete zobrazit stav v Azure Portal, nebo máte přístup k výstrahám zabezpečení Security Center.
+
+Pravidla potlačení definují kritéria, pro která se mají automaticky odkládat výstrahy. Obvykle byste pravidlo potlačení používali k těmto akcím:
+
+- potlačit výstrahy, které jste identifikovali jako falešně pozitivní
+
+- potlačit výstrahy, které se spouštějí příliš často, aby byly užitečné
+
+[Přečtěte si další informace o potlačení výstrah z ochrany před hrozbami v Azure Security Center](alerts-suppression-rules.md).
+
+
+### <a name="virtual-machine-vulnerability-assessment-is-now-generally-available"></a>Posouzení ohrožení zabezpečení virtuálního počítače je teď všeobecně dostupné
+
+Úroveň Standard Security Center nyní obsahuje integrované posouzení ohrožení zabezpečení pro virtuální počítače bez dalších poplatků. Toto rozšíření používá Qualys, ale oznamuje své závěry přímo zpátky do Security Center. Nepotřebujete licenci Qualys ani účet Qualys – všechno se bez problémů zpracovává v Security Center.
+
+Nové řešení může průběžně kontrolovat vaše virtuální počítače a odhalit tak ohrožení zabezpečení a prezentovat zjištění v Security Center. 
+
+K nasazení řešení použijte nové doporučení zabezpečení:
+
+"Povolte integrované řešení posouzení ohrožení zabezpečení na virtuálních počítačích (s technologií Qualys)."
+
+[Další informace](built-in-vulnerability-assessment.md).
+
+
 
 ### <a name="changes-to-just-in-time-jit-virtual-machine-vm-access"></a>Změny přístupu k virtuálnímu počítači JIT (just-in-time)
 
@@ -67,22 +97,40 @@ Ovládací prvky zabezpečení – a tento přepínač jsou součástí nového 
 Přečtěte si další informace o ovládacích prvcích zabezpečení v [rozšířeném zabezpečeném skóre (Preview) v Azure Security Center](secure-score-security-controls.md).
 
 
-### <a name="account-security-recommendations-moved-to-security-best-practices-security-control"></a>Doporučení zabezpečení účtu se přesunula do řízení zabezpečení osvědčené postupy zabezpečení
+### <a name="expanded-security-control-implement-security-best-practices"></a>Rozšířené řízení zabezpečení "implementovat osvědčené postupy zabezpečení" 
 
-Jedním z bezpečnostních mechanismů zavedených s vylepšeným zabezpečeným skóre je "osvědčené postupy zabezpečení". Pokud je v tomto ovládacím prvku doporučení, nemá to vliv na zabezpečené skóre. 
+Jedním z ovládacích prvků zabezpečení zavedených pomocí rozšířeného zabezpečeného skóre je implementace osvědčených postupů zabezpečení. Pokud je v tomto ovládacím prvku doporučení, nemá to vliv na zabezpečené skóre. 
 
 V této aktualizaci se tři doporučení přesunuly mimo ovládací prvky, ve kterých byly původně umístěné, a do tohoto osvědčeného postupu. Provedli jsme tento krok, protože jsme zjistili, že riziko těchto tří doporučení je nižší, než bylo původně v myšlenkě.
 
-Doporučení jsou:
+Kromě toho byla do tohoto ovládacího prvku zavedena dvě nová doporučení a přidána.
 
-- Pro účty s oprávněním ke čtení v předplatném (původně v ovládacím prvku povolit MFA) by měla být povolená MFA.
-- Externí účty s oprávněním ke čtení by se měly z předplatného odebrat (původně v ovládacím prvku Správa přístupu a oprávnění).
-- Pro vaše předplatné by se měla určit maximálně 3 vlastníci (v ovládacím prvku Správa přístupu a oprávnění).
+Existují tři doporučení, která jste přesunuli:
+
+- **Pro účty s oprávněním ke čtení v předplatném** (původně v ovládacím prvku povolit MFA) by měla být povolená MFA.
+- **Externí účty s oprávněním ke čtení by se měly z předplatného odebrat** (původně v ovládacím prvku Správa přístupu a oprávnění).
+- **Pro vaše předplatné by se měla určit maximálně 3 vlastníci** (v ovládacím prvku Správa přístupu a oprávnění).
+
+K ovládacímu prvku jsou přidána dvě nová doporučení:
+
+- **[Preview] agent konfigurace hosta by měl být nainstalovaný** – pomocí [Azure Policy konfigurace hosta](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) poskytuje viditelnost v rámci virtuálních počítačů s nastavením serveru a aplikace (jenom Windows).
+
+- **[Preview] Ochrana před zneužitím systému Windows by měla být povolená** – ochrana před zneužitím v programu Windows Defender využívá Azure Policyho agenta konfigurace hostů. Ochrana před zneužitím má čtyři komponenty, které jsou navržené tak, aby se zařízení zamkly na širokou škálu útoků, a to v případě, že se v případě malwaru povoluje vyrovnávat rizika zabezpečení a požadavky na produktivitu (jenom Windows).
+
+Další informace o systému Windows Defender zneužití Guard v [vytváření a nasazení zásad pro ochranu před zneužitím](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy).
 
 Přečtěte si další informace o ovládacích prvcích zabezpečení v [rozšířeném zabezpečeném skóre (Preview) v Azure Security Center](secure-score-security-controls.md).
 
 
-### <a name="custom-policies-with-custom-metadata-generally-available"></a>Všeobecně dostupné vlastní zásady s vlastními metadaty
+
+
+
+
+
+
+
+
+### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Vlastní zásady s vlastními metadaty jsou teď všeobecně dostupné.
 
 Vlastní zásady jsou teď součástí prostředí Security Center doporučení, bezpečného skóre a řídicího panelu standardů dodržování předpisů regulativních předpisů. Tato funkce je teď všeobecně dostupná a umožňuje rozšíření pokrytí posouzení zabezpečení vaší organizace v Security Center. 
 
@@ -95,7 +143,7 @@ Nyní jsme také přidali možnost Upravit metadata vlastního doporučení. Mez
 
 ## <a name="april-2020"></a>Duben 2020
 
-### <a name="dynamic-compliance-packages-now-generally-available"></a>Dynamické balíčky pro dodržování předpisů jsou teď všeobecně dostupné
+### <a name="dynamic-compliance-packages-are-now-generally-available"></a>Dynamické balíčky pro dodržování předpisů jsou teď všeobecně dostupné.
 
 Řídicí panel dodržování předpisů Azure Security Center nyní zahrnuje **dynamické balíčky kompatibility** (teď všeobecně dostupné) ke sledování dalších odvětví a regulativních standardů.
 
@@ -197,7 +245,7 @@ Tato doporučení se už nebudou zobrazovat v seznamu Security Centerch doporuč
 
 ## <a name="february-2020"></a>Únor 2020
 
-### <a name="fileless-attack-detection-for-linux-is-now-in-preview"></a>Detekce útoků typu soubor pro Linux je teď ve verzi Preview.
+### <a name="fileless-attack-detection-for-linux-preview"></a>Detekce útoků typu soubor pro Linux (Preview)
 
 Díky tomu, že útočníci zvyšují stealthier metody, aby se vyhnuli detekci, Azure Security Center kromě systému Windows rozšířit rozpoznávání útoků bez souborů pro Linux. Útoky bez souborů zneužívají chyby softwaru, vkládají škodlivé datové části do neškodných systémových procesů a skrývají se v paměti. Tyto techniky:
 
@@ -209,7 +257,7 @@ Pokud chcete tuto hrozbu vyhodnotit, Azure Security Center pro Windows v říjnu
 
 ## <a name="january-2020"></a>Leden 2020
 
-### <a name="enhanced-secure-score"></a>Rozšířené zabezpečené skóre
+### <a name="enhanced-secure-score-preview"></a>Rozšířené zabezpečené skóre (Preview)
 
 Vylepšená verze funkce zabezpečeného skóre Azure Security Center je teď dostupná ve verzi Preview. V této verzi se více doporučení seskupují do ovládacích prvků zabezpečení, které lépe odráží zranitelné plochy pro útoky (například omezují přístup k portům pro správu).
 

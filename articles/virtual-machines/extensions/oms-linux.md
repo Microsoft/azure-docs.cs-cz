@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 9ddac229fc38a91a8b97b24dc2807080b2295758
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34dbde25106dbb82fb9548ad53f368230f2c728c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250553"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654413"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Rozšíření Log Analytics pro virtuální počítače pro Linux
 
@@ -43,6 +43,7 @@ Následující tabulka poskytuje mapování verze Log Analyticsho rozšíření 
 
 | Verze rozšíření virtuálního počítače s Log Analytics Linux | Verze sady prostředků agenta Log Analytics | 
 |--------------------------------|--------------------------|
+| 1.13.9 | 1.13.3-3 |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0 – 9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -86,7 +87,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "autoUpgradeMinorVersion": true,
     "settings": {
       "workspaceId": "myWorkspaceId"
@@ -99,15 +100,15 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 ```
 
 >[!NOTE]
->Výše uvedené schéma předpokládá, že bude umístěn na kořenové úrovni šablony. Pokud jste ho umístili do prostředku virtuálního počítače v šabloně, je `type` třeba změnit `name` vlastnosti a, jak je popsáno [dále](#template-deployment).
+>Výše uvedené schéma předpokládá, že bude umístěn na kořenové úrovni šablony. Pokud jste ho umístili do prostředku virtuálního počítače v šabloně, je `type` `name` třeba změnit vlastnosti a, jak je popsáno [dále](#template-deployment).
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | vydavatel | Microsoft. EnterpriseCloud. Monitoring |
-| type | OmsAgentForLinux |
+| typ | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
 | ID pracovního prostoru (např.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (např.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |

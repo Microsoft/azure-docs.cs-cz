@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/29/2020
+ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 685c56c7ef270acb416d4b76c6aceb8553e9a07f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 965e59f9c51cc41d4e5a8e8931b5c2f62c260599
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581707"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648105"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného počítače
 
@@ -28,11 +28,19 @@ Agenta připojeného počítače Azure pro Windows a Linux se dá upgradovat na 
 | Windows | Ručně<br> Windows Update |
 | Ubuntu | [Apt](https://help.ubuntu.com/lts/serverguide/apt.html) |
 | SUSE Linux Enterprise Server | [zypperu](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
-| RedHat Enterprise, Amazon, CentOS Linux | [Yumu](https://wiki.centos.org/PackageManagement/Yum) | 
+| RedHat Enterprise, Amazon, CentOS Linux | [Yumu](https://wiki.centos.org/PackageManagement/Yum) |
 
 ### <a name="windows-agent"></a>Agent Windows
 
-Chcete-li aktualizovat agenta v počítači se systémem Windows na nejnovější verzi, je agent dostupný z Microsoft Update a lze jej nasadit pomocí stávajícího procesu správy aktualizací softwaru. Můžete ji také spustit ručně z příkazového řádku, ze skriptu nebo jiného řešení automatizace nebo z Průvodce uživatelským rozhraním spuštěním příkazu `AzureConnectedMachine.msi`. 
+Balíček aktualizace pro agenta připojeného počítače pro Windows je dostupný z těchto počítačů:
+
+* Microsoft Update
+
+* [Katalog Microsoft Update](https://www.catalog.update.microsoft.com/Home.aspx)
+
+* [Balíček Windows agent Instalační služba systému Windows](https://aka.ms/AzureConnectedMachineAgent) z webu Microsoft Download Center.
+
+Agenta je možné upgradovat podle různých metod, aby bylo možné podporovat proces správy aktualizací softwaru. Mimo získání z Microsoft Update můžete stáhnout a spustit ručně z příkazového řádku, ze skriptu nebo jiného řešení automatizace nebo z Průvodce uživatelským rozhraním spuštěním `AzureConnectedMachine.msi` .
 
 > [!NOTE]
 > * Chcete-li upgradovat agenta, je nutné mít oprávnění *správce* .
@@ -60,7 +68,9 @@ Průvodce instalací zjistí, zda existuje předchozí verze, a poté automatick
 
 ### <a name="linux-agent"></a>Agent pro Linux
 
-Chcete-li aktualizovat agenta na počítači se systémem Linux na nejnovější verzi, zahrnuje dva příkazy. Jeden příkaz pro aktualizaci indexu místního balíčku se seznamem nejnovějších dostupných balíčků z úložišť a jedním příkazem k upgradu místního balíčku. 
+Chcete-li aktualizovat agenta na počítači se systémem Linux na nejnovější verzi, zahrnuje dva příkazy. Jeden příkaz pro aktualizaci indexu místního balíčku se seznamem nejnovějších dostupných balíčků z úložišť a jedním příkazem k upgradu místního balíčku.
+
+Nejnovější balíček agenta si můžete stáhnout z [úložiště balíčků](https://packages.microsoft.com/)Microsoftu.
 
 > [!NOTE]
 > Chcete-li upgradovat agenta, je nutné mít oprávnění *root* Access nebo s účtem, který má zvýšená oprávnění s použitím sudo.
@@ -79,7 +89,7 @@ Chcete-li aktualizovat agenta na počítači se systémem Linux na nejnovější
     apt upgrade
     ```
 
-Akce příkazu [apt](https://help.ubuntu.com/lts/serverguide/apt.html) , jako je instalace a odebrání balíčků, se zaznamenávají do souboru `/var/log/dpkg.log` protokolu.
+Akce příkazu [apt](https://help.ubuntu.com/lts/serverguide/apt.html) , jako je instalace a odebrání balíčků, se zaznamenávají do `/var/log/dpkg.log` souboru protokolu.
 
 #### <a name="upgrade-red-hatcentosamazon-linux"></a>Upgrade Red Hat/CentOS/Amazon Linux
 
@@ -95,7 +105,7 @@ Akce příkazu [apt](https://help.ubuntu.com/lts/serverguide/apt.html) , jako je
     yum update
     ```
 
-Akce příkazu [Yumu](https://access.redhat.com/articles/yum-cheat-sheet) , jako je instalace a odebrání balíčků, se zaznamenávají do souboru `/var/log/yum.log` protokolu. 
+Akce příkazu [Yumu](https://access.redhat.com/articles/yum-cheat-sheet) , jako je instalace a odebrání balíčků, se zaznamenávají do `/var/log/yum.log` souboru protokolu. 
 
 #### <a name="upgrade-suse-linux-enterprise"></a>Upgrade SUSE Linux Enterprise
 
@@ -111,7 +121,7 @@ Akce příkazu [Yumu](https://access.redhat.com/articles/yum-cheat-sheet) , jako
     zypper update
     ```
 
-Akce příkazu [zypperu](https://en.opensuse.org/Portal:Zypper) , jako je instalace a odebrání balíčků, se zaznamenávají do souboru `/var/log/zypper.log` protokolu. 
+Akce příkazu [zypperu](https://en.opensuse.org/Portal:Zypper) , jako je instalace a odebrání balíčků, se zaznamenávají do `/var/log/zypper.log` souboru protokolu. 
 
 ## <a name="about-the-azcmagent-tool"></a>O nástroji Azcmagent
 
@@ -127,7 +137,7 @@ Nástroj Azcmagent (Azcmagent. exe) se používá ke konfiguraci agenta Azure AR
 
 * **-h nebo--help** -zobrazí dostupné parametry příkazového řádku.
 
-    Pokud například chcete zobrazit podrobnou nápovědu pro parametr **reconnect** , zadejte `azcmagent reconnect -h`. 
+    Pokud například chcete zobrazit podrobnou nápovědu pro parametr **reconnect** , zadejte `azcmagent reconnect -h` . 
 
 * **-v nebo--verbose** – Povolit podrobné protokolování
 
@@ -171,7 +181,7 @@ Pokud se chcete odpojit od přihlašovacích údajů se zvýšenými oprávněn�
 
 Tento parametr znovu připojí již registrovaný nebo připojený počítač ke službě Azure ARC pro servery (Preview). To může být nutné v případě, že je počítač vypnutý, minimálně 45 dní, aby jeho platnost jeho certifikátu vypršela. Tento parametr používá možnosti ověřování, které jsou k dispozici pro načtení nových přihlašovacích údajů odpovídajících prostředku Azure Resource Manager, který představuje tento počítač.
 
-Tento příkaz vyžaduje vyšší oprávnění než role registrace [počítače připojeného k Azure](overview.md#required-permissions) .
+Tento příkaz vyžaduje vyšší oprávnění než role registrace [počítače připojeného k Azure](agent-overview.md#required-permissions) .
 
 Pokud se chcete znovu připojit pomocí instančního objektu, spusťte následující příkaz:
 
@@ -206,11 +216,11 @@ Obě následující metody odeberou agenta, ale neodstraňují složku *C:\Progr
 
 #### <a name="uninstall-from-the-command-line"></a>Odinstalace z příkazového řádku
 
-K ručnímu odinstalování agenta z příkazového řádku nebo k použití automatizované metody, jako je například skript, můžete použít následující příklad. Nejprve musíte načíst kód produktu, což je identifikátor GUID, který je hlavním identifikátorem balíčku aplikace, z operačního systému. Odinstalace se provádí pomocí příkazového řádku Msiexec. exe – `msiexec /x {Product Code}`.
-    
+K ručnímu odinstalování agenta z příkazového řádku nebo k použití automatizované metody, jako je například skript, můžete použít následující příklad. Nejprve musíte načíst kód produktu, což je identifikátor GUID, který je hlavním identifikátorem balíčku aplikace, z operačního systému. Odinstalace se provádí pomocí příkazového řádku Msiexec. exe – `msiexec /x {Product Code}` .
+
 1. Otevřete Editor registru.
 
-2. V části klíč `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`registru vyhledejte a zkopírujte identifikátor GUID kódu produktu.
+2. V části klíč registru `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` vyhledejte a zkopírujte identifikátor GUID kódu produktu.
 
 3. Pak můžete agenta odinstalovat pomocí následujících příkladů pomocí programu Msiexec:
 

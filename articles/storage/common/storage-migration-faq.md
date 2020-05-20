@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: b020cbd15ba17609b7a476ccda9b1e814405341e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858779"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651129"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy ohledně migrace služby Azure Storage
 
@@ -263,11 +263,11 @@ Poskytnutí přístupu k prostředkům úložiště ostatním lidem:
 
 -   Pokud k AzCopy přistupujete z příkazového řádku Microsoft Azure Storage zadejte **AzCopy**. Příkazový řádek se nainstaluje společně s AzCopy.
 
--   Pokud jste nainstalovali 32 verzi, najdete ji tady: **% ProgramFiles (x86)%\\Microsoft SDK\\Azure\\AzCopy**.
+-   Pokud jste nainstalovali 32 verzi, najdete ji tady: **% ProgramFiles (x86)% \\ Microsoft SDK \\ Azure \\ AzCopy**.
 
--   Pokud jste nainstalovali 64 verzi, najdete ji tady: **% ProgramFiles%\\Microsoft\\SDK Azure\\AzCopy**.
+-   Pokud jste nainstalovali 64 verzi, najdete ji tady: **% ProgramFiles% \\ Microsoft SDK \\ Azure \\ AzCopy**.
 
-**Návody použít vlastní doménu HTTPS s účtem úložiště? Například, jak se dá "https:\//mystorageaccountname.blob.Core.Windows.net/images/image.gif" Zobrazit jako "https:\//www.contoso.com/images/image.gif"?**
+**Návody použít vlastní doménu HTTPS s účtem úložiště? Například, jak se dá "https: \/ /mystorageaccountname.blob.Core.Windows.net/images/image.gif" Zobrazit jako "https: \/ /www.contoso.com/images/image.gif"?**
 
 TLS/SSL se v současné době nepodporuje u účtů úložiště s vlastními doménami.
 Můžete ale použít vlastní domény bez HTTPS. Další informace najdete v tématu [Konfigurace vlastního názvu domény pro koncový bod služby Blob Storage](../blobs/storage-custom-domain-name.md).
@@ -288,9 +288,9 @@ Pro přístup k redundantnímu úložišti se vyžaduje geograficky redundantní
 
 -   Pokud používáte geograficky redundantní úložiště s přístupem pro čtení, můžete kdykoli získat přístup k datům ze sekundární oblasti. Použijte jednu z následujících metod:  
 
-    - **AzCopy**: pro přístup k sekundárnímu koncovému bodu se připojí k názvu účtu úložiště v adrese URL **sekundární** . Příklad:  
+    - **AzCopy**: pro přístup k sekundárnímu koncovému bodu se připojí k názvu účtu úložiště v adrese URL **sekundární** . Například:  
 
-      https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
+      `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
     - **Token SAS**: pro přístup k datům z koncového bodu použijte token SAS. Další informace najdete v tématu [použití sdílených přístupových podpisů](storage-sas-overview.md).
 

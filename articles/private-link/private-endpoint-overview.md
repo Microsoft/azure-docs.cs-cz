@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: c0cf8a91ee1dbdd70f1b911dba24fb69ee7bc0e3
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 429a342fcc5dd69e1ae8d0be5611e908e216b2d1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744395"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659689"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -35,7 +35,9 @@ Privátní koncový bod Azure je síťové rozhraní, které vás privátně a z
 Tady jsou některé klíčové podrobnosti o privátních koncových bodech: 
 - Privátní koncový bod umožňuje připojení mezi spotřebiteli ze stejné virtuální sítě, v oblasti partnerských virtuální sítě, globálně vázaných virtuální sítě a místně pomocí [VPN](https://azure.microsoft.com/services/vpn-gateway/) nebo [Express Route](https://azure.microsoft.com/services/expressroute/) and Services využívajících soukromé odkazy.
  
-- Při vytváření privátního koncového bodu se pro životní cyklus prostředku vytvoří také síťové rozhraní jen pro čtení. Rozhraní je přiřazena privátní IP adresa z podsítě, která je mapována na prostředek privátního propojení.
+- Připojení k síti můžou inicializovat jenom klienti připojující se k privátnímu koncovému bodu, poskytovatelé služeb nemají žádnou konfiguraci směrování, aby mohli iniciovat připojení k příjemcům služeb. Připojení se dají vytvořit jenom v jednom směru.
+
+- Při vytváření privátního koncového bodu se pro životní cyklus prostředku vytvoří také síťové rozhraní jen pro čtení. Rozhraní jsou přiřazovány dynamicky privátních IP adres z podsítě, která je mapována na prostředek privátního propojení. hodnota privátní IP adresy zůstane beze změny pro celý životní cyklus privátního koncového bodu.
  
 - Privátní koncový bod musí být nasazený ve stejné oblasti jako virtuální síť. 
  
@@ -83,7 +85,7 @@ Pro připojení k podporované službě Azure můžete úlohy zcela uzamknout z 
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Přístup k prostředku privátního propojení pomocí pracovního postupu schválení 
 K prostředku privátního propojení se můžete připojit pomocí následujících metod schvalování připojení:
-- **Automaticky** schváleno, pokud vlastníte nebo máte oprávnění ke konkrétnímu prostředku privátního propojení. Požadovaná oprávnění jsou založená na typu prostředku privátního propojení v následujícím formátu: Microsoft. \<Zprostředkovatel>/<resource_type>/privateendpointconnectionapproval/Action
+- **Automaticky** schváleno, pokud vlastníte nebo máte oprávnění ke konkrétnímu prostředku privátního propojení. Požadovaná oprávnění jsou založená na typu prostředku privátního propojení v následujícím formátu: Microsoft. \< Zprostředkovatel>/<resource_type>/privateEndpointConnectionApproval/action
 - **Ruční** požadavek, pokud nemáte požadovaná oprávnění a přejete si požádat o přístup. Zahájí se schvalovací pracovní postup. Privátní koncový bod a další připojení privátního koncového bodu se vytvoří ve stavu Čeká na vyřízení. Za schválení připojení je zodpovědný vlastník prostředku služby Private Link. Po schválení je povolený privátní koncový bod pro normální odesílání provozu, jak je znázorněno v následujícím diagramu pracovního postupu schválení.  
 
 ![schválení pracovního postupu](media/private-endpoint-overview/private-link-paas-workflow.png)

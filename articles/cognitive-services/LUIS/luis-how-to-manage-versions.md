@@ -9,51 +9,47 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 138b84a9b7f54782fd6254304a3fdcf4dba83182
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2de39a2822056a4539c2dca915a483ab5bbc4965
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220894"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653979"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Použití verzí k úpravám a testování bez dopadu na pracovní nebo produkční aplikace
 
-Verze umožňují sestavovat a publikovat různé modely. Dobrým postupem je naklonování aktuálního aktivního modelu do jiné [verze](luis-concept-version.md) aplikace před provedením změn v modelu. 
+Verze umožňují sestavovat a publikovat různé modely. Dobrým postupem je naklonování aktuálního aktivního modelu do jiné [verze](luis-concept-version.md) aplikace před provedením změn v modelu.
 
-Pokud chcete pracovat s verzemi, otevřete svoji aplikaci tak, že na stránce **Moje aplikace** vyberete její název a potom v horním panelu vyberete spravovat a pak v levém navigačním panelu **vyberete možnost** **Správa** . 
+Aktivní verze je verze, kterou upravujete v části **sestavení** portálu Luis, s záměry, entitami, funkcemi a vzory. Při použití rozhraní API pro vytváření obsahu není nutné nastavovat aktivní verzi, protože volání REST API specifických pro verzi zahrnují verzi v trase.
 
-Seznam verzí ukazuje, které verze jsou publikovány, kde jsou publikovány a která verze je aktuálně aktivní. 
+Pokud chcete pracovat s verzemi, otevřete svoji aplikaci tak, že na stránce **Moje aplikace** vyberete její název a potom v horním panelu vyberete spravovat a pak v levém navigačním panelu **vyberete možnost** **Správa** .
 
-> [!div class="mx-imgBorder"]
-> [![Správa oddílu, verze – stránka](./media/luis-how-to-manage-versions/versions-import.png "Správa oddílu, verze – stránka")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+Seznam verzí ukazuje, které verze jsou publikovány, kde jsou publikovány a která verze je aktuálně aktivní.
 
 ## <a name="clone-a-version"></a>Klonovat verzi
 
-1. Vyberte verzi, kterou chcete klonovat, a pak na panelu nástrojů vyberte **klonovat** . 
+1. Vyberte verzi, kterou chcete klonovat, a pak na panelu nástrojů vyberte **klonovat** .
 
 2. V dialogovém okně **naklonovat verzi** zadejte název nové verze, například "0,2".
 
    ![Dialogové okno naklonování verze](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
- 
+
      > [!NOTE]
      > ID verze se může skládat jenom z znaků, číslic nebo. a nemůže být delší než 10 znaků.
- 
+
    Vytvoří se nová verze se zadaným názvem, která se nastaví jako aktivní verze.
 
 ## <a name="set-active-version"></a>Nastavit aktivní verzi
 
-V seznamu vyberte verzi a pak na panelu nástrojů vyberte **aktivovat** . 
-
-> [!div class="mx-imgBorder"]
-> [![Stránka spravovat oddíl, verze, vytvořit akci verze](./media/luis-how-to-manage-versions/versions-other.png "Stránka spravovat oddíl, verze, vytvořit akci verze")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+V seznamu vyberte verzi a pak na panelu nástrojů vyberte **aktivovat** .
 
 ## <a name="import-version"></a>Importovat verzi
 
 Můžete importovat `.json` nebo `.lu` verzi aplikace.
 
-1. Na panelu nástrojů vyberte **importovat** a pak vyberte formát. 
+1. Na panelu nástrojů vyberte **importovat** a pak vyberte formát.
 
 2. V automaticky otevíraném okně **importovat novou verzi** zadejte nový název verze o desítku znaků. ID verze je potřeba nastavit jenom v případě, že verze v souboru už v aplikaci existuje.
 
@@ -69,7 +65,7 @@ Můžete importovat `.json` nebo `.lu` verzi aplikace.
 
 ## <a name="other-actions"></a>Další akce
 
-* Pokud chcete **Odstranit** verzi, vyberte ze seznamu verzi a pak na panelu nástrojů vyberte **Odstranit** . Vyberte **OK**. 
-* Pokud chcete **Přejmenovat** verzi, vyberte ze seznamu verzi a pak na panelu nástrojů vyberte **Přejmenovat** . Zadejte nový název a vyberte **Hotovo**. 
-* Pokud chcete **exportovat** verzi, vyberte ze seznamu verzi a pak na panelu nástrojů vyberte **exportovat aplikaci** . Vyberte JSON pro export pro zálohování, vyberte **Exportovat pro kontejner** pro [použití této aplikace v kontejneru Luis](luis-container-howto.md).  
+* Pokud chcete **Odstranit** verzi, vyberte ze seznamu verzi a pak na panelu nástrojů vyberte **Odstranit** . Vyberte **OK**.
+* Pokud chcete **Přejmenovat** verzi, vyberte ze seznamu verzi a pak na panelu nástrojů vyberte **Přejmenovat** . Zadejte nový název a vyberte **Hotovo**.
+* Pokud chcete **exportovat** verzi, vyberte ze seznamu verzi a pak na panelu nástrojů vyberte **exportovat aplikaci** . Vyberte JSON pro export pro zálohování, vyberte **Exportovat pro kontejner** pro [použití této aplikace v kontejneru Luis](luis-container-howto.md).
 

@@ -6,28 +6,16 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 9951a6ddfbd1c562184e2b7e02a9da98f7d94b12
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5aa15ae4a234a56a172a0166070c32be4f822910
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598063"
+ms.locfileid: "83650068"
 ---
 # <a name="azure-stream-analytics-configuration-error-codes"></a>Kódy chyb konfigurace Azure Stream Analytics
 
 Protokoly aktivit a protokoly prostředků můžete použít k ladění neočekávaného chování z vaší Azure Stream Analytics úlohy. V tomto článku je uveden popis každého kódu chyby konfigurace. Chyby konfigurace souvisejí s konfigurací vaší úlohy nebo se vstupními a výstupními konfiguracemi.
-
-## <a name="kafkainvalidpermission"></a>KafkaInvalidPermission
-
-* **Příčina**: úloha Stream Analytics nemá správná oprávnění k provedení určitých akcí.
-
-## <a name="kafkainvalidconfiguration"></a>KafkaInvalidConfiguration
-
-* **Příčina**: některé konfigurace na adaptéru Kafka jsou neplatné.
-
-## <a name="kafkainvalidtimestamptype"></a>KafkaInvalidTimestampType
-
-* **Příčina**: typ časového razítka používaný Kafka je neplatný.
 
 ## <a name="eventhubunauthorizedaccess"></a>EventHubUnauthorizedAccess
 

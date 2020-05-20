@@ -1,24 +1,24 @@
 ---
-title: Poskytovatelé cloudových řešení | Azure Marketplace
-description: Vydavatelé teď mohou prodávat své nabídky prostřednictvím kanálu partnerů Microsoft Cloud poskytovatel řešení (CSP).
+title: Cloud Solution Provider – Microsoft Commercial Marketplace
+description: Naučte se prodávat vaše nabídky prostřednictvím kanálu partnera programu Microsoft Cloud (CSP) na komerčním webu Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: b962610c585df288a9cb3297ed8e09c8abc5ac0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: d7f14728f5acbcb76d3109d76b6de3c691e35543
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160643"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658087"
 ---
-# <a name="cloud-solution-providers"></a>Poskytovatelé cloudových řešení
+# <a name="cloud-solution-provider-program"></a>Program Cloud Solution Provider
 
-Nabídky softwaru můžou kromě veřejné dostupnosti nabídek přes [Microsoft Web prodejní místa](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)kontaktovat miliony kvalifikovaných zákazníků Microsoftu, které obsluhují partneři v programu Cloud Solution Provider (CSP).
+Tento článek vysvětluje, jak nakonfigurovat nabídku, která bude k dispozici pro program poskytovatele Cloud Solution Provider (CSP). Kromě publikování vašich nabídek prostřednictvím [komerčního webového prodejní místau](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)na webu Marketplace můžete také prodávat prostřednictvím programu CSP a oslovit miliony kvalifikovaných zákazníků Microsoftu, které tento program obsluhuje.
 
-Vydavatelé konfigurují nabídky pro dostupnost v programu CSP na základě výslovného souhlasu, pro novou nabídku nebo pro stávající a umožňují partnerům prodávat vaše produkty a vytvářet řešení pro zákazníky.
+Můžete nakonfigurovat nové nebo existující nabídky k dostupnosti v programu CSP na základě výslovného souhlasu, který partnerům CSP umožní prodávat vaše produkty a vytvářet řešení pro zákazníky.
 
 Vydavatelé zodpovídají za poskytování podpory opravných řešení koncovým zákazníkům a poskytování mechanismů pro partnery v programu CSP a/nebo zákazníkům, aby vás kontaktovali o podporu. Osvědčeným postupem je poskytnout partnerům v programu CSP pomocí dokumentace uživatele, školení a oznámení o stavu/výpadku, aby partneři v programu CSP mohli zpracovávat žádosti o podporu vrstvy 1 od zákazníků.  
 

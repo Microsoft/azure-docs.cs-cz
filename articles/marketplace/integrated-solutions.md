@@ -1,24 +1,23 @@
 ---
-title: Integrovaná řešení – Azure Marketplace
-description: Integrovaná řešení v Azure Marketplace a AppSource
+title: Integrovaná řešení – komerční tržiště Microsoftu
+description: Přečtěte si o výhodách, prostředcích a dalších krocích pro poskytování integrovaných řešení na komerčním webu Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 4c32fe80b681e6d82d40b0f5c94d5e9288f72cd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf20473b407db1804a4275fdc6dd3d528de1f189
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684406"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657991"
 ---
-# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Integrovaná řešení v Microsoft AppSource a Azure Marketplace
-
+# <a name="integrated-solutions-in-the-commercial-marketplace"></a>Integrovaná řešení na komerčním webu Marketplace
 Integrované řešení přináší dohromady špičkové technologie od partnerů Microsoftu, společně s konzultacemi, nasazením a podporou poskytovanou odborníky z odborníků na služby.
 
-Dva nebo víc partnerů Microsoftu integruje své technologie a služby, aby vytvořily jednotné, bezproblémové a opakované nasazení, aby zákazníci mohli rychle začít pracovat.  Vedoucí pracovník v řešení (obvykle partner služeb) poskytuje jeden kontaktní bod pro zákazníka, který poskytuje relevantní přizpůsobení, konzultace a podporu řešení.
+Dva nebo víc partnerů Microsoftu integrují své technologie a služby, aby mohli vytvořit jednotné, bezproblémové a opakované nasazení, a díky tomu můžou zákazníci rychle začít pracovat.  Vedoucí pracovník v řešení (obvykle partner služeb) poskytuje jeden kontaktní bod pro zákazníka, který poskytuje relevantní přizpůsobení, konzultace a podporu řešení.
 
 V jiných scénářích se partneři společně prodávají nebo spolupracují na jejich řešení, zatímco integrované řešení je společně sestavené nové řešení, které integruje technologie a služby mezi partnery.
 
@@ -30,7 +29,7 @@ Mezi výhody integrovaného přístupu patří:
 * *Čas do hodnoty*: přístup k integrovanému nasazení, který vám může pomáhat s okamžitými výhodami
 * *Nejlepší řešení*: Seznamte se s usnadněním integrovaného nákupu a implementačního prostředí.
 
-Další informace najdete v tématu [publikování integrovaného řešení](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers).
+Další informace najdete v tématu [publikování integrovaného řešení](./integrated-solutions-for-publishers.md).
 
 ## <a name="submit-a-nomination"></a>Vyplňte nominační formulář.
 

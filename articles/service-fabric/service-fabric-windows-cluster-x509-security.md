@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: cf7d418d8bca8f690acf29ba701fdc54ced1ca6c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561994"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653638"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpečení samostatného clusteru ve Windows pomocí certifikátů X. 509
 Tento článek popisuje, jak zabezpečit komunikaci mezi různými uzly samostatného clusteru se systémem Windows. Popisuje také způsob ověřování klientů, kteří se připojují k tomuto clusteru pomocí certifikátů X. 509. Ověřování zajišťuje, že přístup ke clusteru a nasazeným aplikacím a provádění úloh správy bude mít jenom autorizovaní uživatelé. V případě vytvoření clusteru by mělo být v clusteru povoleno zabezpečení certifikátů.  
@@ -248,12 +248,24 @@ Pokud používáte úložiště vystavitelů, není třeba provést upgrade konf
 ## <a name="acquire-the-x509-certificates"></a>Získání certifikátů X. 509
 Aby bylo možné zabezpečit komunikaci v rámci clusteru, musíte nejprve získat certifikáty X. 509 pro uzly clusteru. Chcete-li kromě toho omezit připojení k tomuto clusteru na autorizované počítače nebo uživatele, je třeba získat a nainstalovat certifikáty pro klientské počítače.
 
-Pro clustery, na kterých běží produkční úlohy, použijte k zabezpečení clusteru certifikát X. 509 podepsaný certifikační [autoritou (CA)](https://en.wikipedia.org/wiki/Certificate_authority). Další informace o tom, jak tyto certifikáty získat, najdete v tématu [Jak získat certifikát](https://msdn.microsoft.com/library/aa702761.aspx).
+Pro clustery, na kterých běží produkční úlohy, použijte k zabezpečení clusteru certifikát X. 509 podepsaný certifikační [autoritou (CA)](https://en.wikipedia.org/wiki/Certificate_authority). Další informace o tom, jak tyto certifikáty získat, najdete v tématu [Jak získat certifikát](https://msdn.microsoft.com/library/aa702761.aspx). 
+
+K dispozici je řada vlastností, které musí mít certifikát, aby bylo možné správně fungovat:
+
+* Poskytovatel certifikátu musí být od **společnosti Microsoft vylepšený zprostředkovatel kryptografických služeb RSA a AES** .
+
+* Při vytváření klíče RSA se ujistěte, že je klíč **2048 bitů**.
+
+* Rozšíření použití klíče má hodnotu **digitální podpis, zakódování klíče (a0)** .
+
+* Rozšíření použití rozšířeného klíče má hodnoty **ověřování serveru** (OID: 1.3.6.1.5.5.7.3.1) a **ověření klienta** (OID: 1.3.6.1.5.5.7.3.2).
 
 Pro clustery, které používáte pro účely testování, můžete použít certifikát podepsaný svým držitelem.
 
+Další otázky najdete v [nejčastějších](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#troubleshooting-and-frequently-asked-questions)dotazech k certifikátu.
+
 ## <a name="optional-create-a-self-signed-certificate"></a>Volitelné: vytvoření certifikátu podepsaného svým držitelem
-Jedním ze způsobů, jak vytvořit certifikát podepsaný svým držitelem, který se dá správně zabezpečit, je použít skript CertSetup. ps1 ve složce sady SDK pro Service Fabric v adresáři C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure.. Úpravou tohoto souboru můžete změnit výchozí název certifikátu. (Podívejte se na hodnotu CN = ServiceFabricDevClusterCert.) Spusťte tento skript jako `.\CertSetup.ps1 -Install`.
+Jedním ze způsobů, jak vytvořit certifikát podepsaný svým držitelem, který se dá správně zabezpečit, je použít skript CertSetup. ps1 ve složce sady SDK pro Service Fabric v adresáři C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure.. Úpravou tohoto souboru můžete změnit výchozí název certifikátu. (Podívejte se na hodnotu CN = ServiceFabricDevClusterCert.) Spusťte tento skript jako `.\CertSetup.ps1 -Install` .
 
 Nyní exportujte certifikát do souboru. pfx s chráněným heslem. Nejprve Získejte kryptografický otisk certifikátu. 
 1. Z nabídky **Start** spusťte **spravovat certifikáty počítače**. 
@@ -292,7 +304,7 @@ Po nainstalování certifikátů je můžete nainstalovat na uzly clusteru. Uzly
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. Teď pro tento certifikát nastavte řízení přístupu, aby proces Service Fabric, který se spouští pod účtem síťové služby, mohl použít tento skript spuštěním následujícího skriptu. Zadejte kryptografický otisk certifikátu a **síťové služby** pro účet služby. Seznam ACL na certifikátu můžete ověřit tak, že otevřete certifikát v **nabídce Start** > **spravovat certifikáty počítače** a vyhledáte **všechny úlohy** > **Správa privátních klíčů**.
+3. Teď pro tento certifikát nastavte řízení přístupu, aby proces Service Fabric, který se spouští pod účtem síťové služby, mohl použít tento skript spuštěním následujícího skriptu. Zadejte kryptografický otisk certifikátu a **síťové služby** pro účet služby. Seznam ACL na certifikátu můžete ověřit tak, že otevřete certifikát v **nabídce Start**  >  **spravovat certifikáty počítače** a vyhledáte **všechny úlohy**  >  **Správa privátních klíčů**.
    
     ```powershell
     param
@@ -338,7 +350,7 @@ Až nakonfigurujete oddíl zabezpečení v souboru ClusterConfig. X509. s více 
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Po úspěšném spuštění zabezpečeného samostatného clusteru Windows a nastavování ověřených klientů pro připojení použijte postup v části [připojení ke clusteru pomocí PowerShellu](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) , který se k němu připojí. Příklad:
+Po úspěšném spuštění zabezpečeného samostatného clusteru Windows a nastavování ověřených klientů pro připojení použijte postup v části [připojení ke clusteru pomocí PowerShellu](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) , který se k němu připojí. Například:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
@@ -355,7 +367,7 @@ Pokud chcete cluster odebrat, připojte se k uzlu v clusteru, do kterého jste s
 ```
 
 > [!NOTE]
-> Nesprávná konfigurace certifikátu může zabránit tomu, aby se cluster během nasazení dostal. Chcete-li provést samočinnou diagnostiku problémů se zabezpečením, podívejte se do části Prohlížeč událostí **aplikace a služby** > **společnosti Microsoft-Service Fabric**.
+> Nesprávná konfigurace certifikátu může zabránit tomu, aby se cluster během nasazení dostal. Chcete-li provést samočinnou diagnostiku problémů se zabezpečením, podívejte se do části Prohlížeč událostí **aplikace a služby**  >  **společnosti Microsoft-Service Fabric**.
 > 
 > 
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: c5a53167c6a4ca6c886b858a1608eaa173185bd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1afc389508eb75313d046b759bcc9c03a50daad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335850"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648408"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Přehled monitorování stavu Application Gateway
 
@@ -49,7 +49,7 @@ Následující kritéria odpovídají kritériím:
 
 Kritéria shody lze zadat pomocí `New-AzApplicationGatewayProbeHealthResponseMatch` rutiny.
 
-Příklad:
+Například:
 
 ```azurepowershell
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
@@ -64,12 +64,12 @@ Po zadání kritérií shody je lze připojit ke konfiguraci testu pomocí `-Mat
 | Adresa URL testu paměti |http://127.0.0.1:\<port\>/ |Cesta URL |
 | Interval |30 |Doba v sekundách, po kterou se má čekat, než se pošle další sonda stavu.|
 | Časový limit |30 |Doba v sekundách, po kterou Aplikační brána čeká na odezvu testu před označením sondy jako není v pořádku. Pokud se sonda vrátí jako v pořádku, odpovídající back-end se hned označí jako v pořádku.|
-| Prahová hodnota pro poškozený stav |3 |Určuje, kolik sond se má odeslat v případě, že dojde k selhání normální sondy stavu. Tyto dodatečné sondy stavu se odesílají v rychlém úspěchu, aby bylo možné rychle zjistit stav back-endu a nečekat na interval sondy. Tato behaivor je pouze SKU v1. V případě SKU verze 2 se sondy stavu vyčká na interval. Back-end Server je označený po po sobě jdoucí počet po sobě jdoucích selhání testu dosáhne prahové hodnoty, která není v pořádku. |
+| Prahová hodnota pro poškozený stav |3 |Určuje, kolik sond se má odeslat v případě, že dojde k selhání normální sondy stavu. Tyto dodatečné sondy stavu se odesílají v rychlém úspěchu, aby bylo možné rychle zjistit stav back-endu a nečekat na interval sondy. Toto chování je pouze SKU v1. V případě SKU verze 2 se sondy stavu vyčká na interval. Back-end Server je označený po po sobě jdoucí počet po sobě jdoucích selhání testu dosáhne prahové hodnoty, která není v pořádku. |
 
 > [!NOTE]
 > Port je stejný port jako nastavení back-endu protokolu HTTP.
 
-Výchozí sonda se vyhledá jenom na http\/:/127.0.0.1\<:\> port pro určení stavu. Pokud potřebujete nakonfigurovat sondu stavu tak, aby přešel na vlastní adresu URL nebo upravili jakékoli jiné nastavení, musíte použít vlastní testy.
+Výchozí sonda se vyhledá jenom na http: \/ /127.0.0.1: \< port \> pro určení stavu. Pokud potřebujete nakonfigurovat sondu stavu tak, aby přešel na vlastní adresu URL nebo upravili jakékoli jiné nastavení, musíte použít vlastní testy. Další informace o testech HTTP najdete v tématu [Přehled ukončení protokolu TLS a koncového šifrování TLS s Application Gateway](ssl-overview.md#for-probe-traffic).
 
 ### <a name="probe-intervals"></a>Intervaly sondy
 
@@ -87,7 +87,7 @@ Následující tabulka poskytuje definice vlastností pro vlastní sondu stavu.
 
 | Vlastnost sondy | Popis |
 | --- | --- |
-| Název |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
+| Name |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
 | Protocol (Protokol) |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
 | Hostitel |Název hostitele, který má odeslat test. Dá se použít jenom v případě, že je na Application Gateway nakonfigurovaný vícenásobný web, jinak použijte 127.0.0.1. Tato hodnota se liší od názvu hostitele virtuálního počítače. |
 | Cesta |Relativní cesta sondy. Platná cesta začíná znakem/. |
@@ -97,7 +97,7 @@ Následující tabulka poskytuje definice vlastností pro vlastní sondu stavu.
 
 > [!IMPORTANT]
 > Pokud je pro jednu lokalitu nakonfigurované Application Gateway, ve výchozím nastavení by měl být název hostitele zadaný jako 127.0.0.1, pokud není v vlastní sondě nakonfigurovaný.
-> Pro odkaz na vlastní test paměti se pošle \<protokol\>://\<hostitel\>:\<cesta\>\<\>k portu. Použitý port bude stejný jako port definovaný v nastavení back-endu protokolu HTTP.
+> Pro odkaz na vlastní test paměti se pošle \< protokol \> :// \< hostitel \> : \< cesta k portu \> \< \> . Použitý port bude stejný jako port definovaný v nastavení back-endu protokolu HTTP.
 
 ## <a name="nsg-considerations"></a>NSG požadavky
 

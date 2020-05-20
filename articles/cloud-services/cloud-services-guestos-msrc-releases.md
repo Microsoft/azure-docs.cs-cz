@@ -10,17 +10,59 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/4/2020
+ms.date: 5/14/2020
 ms.author: yohaddad
-ms.openlocfilehash: e74bccbd7465a8f0e0d2da0a672a88c7d70d666f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9ea1caff5a0aba99bcd0d21b97650d075b830d2a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791557"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656389"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
+
+## <a name="may-2020-guest-os"></a>Květen 2020 hostovaného operačního systému
+>[!NOTE]
+>Hostovaný operační systém v dubnu se v tuto chvíli zavádí na virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. Následující opravy jsou součástí hostovaného operačního systému v dubnu. Tento seznam se může změnit. "
+
+| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 20-05   |  [4556798]  |  Internet Explorer   |  2,98, 3,85, 4,78  |  12. května 2020  |
+|  Rel. 20-05   |  [4556813]  |  Nejnovější kumulativní aktualizace (LCU)   |  5,43  |  12. května 2020  |
+|  Rel. 20-05   |  [4551853]  |  Nejnovější kumulativní aktualizace (LCU)   |  6,19  |  12. května 2020  |
+|  Rel. 20-05   |  [4552940]  |  Měsíční souhrn   |  2,98  |  12. května 2020  |
+|  Rel. 20-05   |  [4556836]  |  Měsíční souhrn   |  2,98  |  12. května 2020  |
+|  Rel. 20-05   |  [4555449]  |  Aktualizace servisního zásobníku   |  2,98  |  12. května 2020  |
+|  Rel. 20-05   |  [4552920]  |  Měsíční souhrn   |  2,98  |  12. května 2020  |
+|  Rel. 20-05   |  [4552979]  |  Měsíční souhrn   |  3,85  |  12. května 2020  |
+|  Rel. 20-05   |  [4556840]  |  Měsíční souhrn   |  3,85  |  12. května 2020  |
+|  Rel. 20-05   |  [4552947]  |  Měsíční souhrn   |  3,85  |  12. května 2020  |
+|  Rel. 20-05   |  [4552982]  |  Měsíční souhrn   |  3,85  |  12. května 2020  |
+|  Rel. 20-05   |  [4552946]  |  Měsíční souhrn   |  4,78  |  12. května 2020  |
+|  Rel. 20-05   |  [4556846]  |  Měsíční souhrn   |  4,78  |  12. května 2020  |
+|  Rel. 20-05   |  [4550994]  |  Aktualizace servisního zásobníku   |  5,43  |  Dubna 14 2020  |
+|  Rel. 20-05   |  [4552924]  |  Měsíční souhrn   |  6,19  |  12. května 2020  |
+|  Rel. 20-05   |  [4549947]  |  Aktualizace servisního zásobníku   |  6,19  |  Dubna 14 2020  |
+
+
+[4556798]: https://support.microsoft.com/kb/4556798
+[4556813]: https://support.microsoft.com/kb/4556813
+[4551853]: https://support.microsoft.com/kb/4551853
+[4552940]: https://support.microsoft.com/kb/4552940
+[4556836]: https://support.microsoft.com/kb/4556836
+[4555449]: https://support.microsoft.com/kb/4555449
+[4552920]: https://support.microsoft.com/kb/4552920
+[4552979]: https://support.microsoft.com/kb/4552979
+[4556840]: https://support.microsoft.com/kb/4556840
+[4552947]: https://support.microsoft.com/kb/4552947
+[4552982]: https://support.microsoft.com/kb/4552982
+[4552946]: https://support.microsoft.com/kb/4552946
+[4556846]: https://support.microsoft.com/kb/4556846
+[4550994]: https://support.microsoft.com/kb/4550994
+[4552924]: https://support.microsoft.com/kb/4552924
+[4549947]: https://support.microsoft.com/kb/4549947
+
 
 ## <a name="april-2020-guest-os"></a>Hostovaný operační systém od dubna 2020
 
@@ -1461,7 +1503,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS15 – 075 |[3072633] |Chyby zabezpečení v technologii OLE umožňují zvýšení úrovně oprávnění. |4,22, 3,29, 2,41 |14. července 2015 |
 | MS15 – 076 |[3067505] |Ohrožení zabezpečení ve volání vzdálené procedury systému Windows by mohlo umožnit zvýšení oprávnění. |4,22, 3,29, 2,41 |14. července 2015 |
 | MS15 – 077 |[3077657] |Ohrožení zabezpečení v ovladači pro písma ATM může umožnit zvýšení oprávnění. |4,22, 3,29, 2,41 |14. července 2015 |
-| Není k dispozici |[3057154] |Aktualizace k omezení použití šifrování DES |4,22, 3,29, 2,41 |14. července 2015 |
+| NA |[3057154] |Aktualizace k omezení použití šifrování DES |4,22, 3,29, 2,41 |14. července 2015 |
 
 ## <a name="june-2015-guest-os"></a>Operační systém hosta červen 2015
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
@@ -1494,7 +1536,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS15 – 040 |[3045711] |Chyba zabezpečení ve službě ADFS by mohla umožnit zpřístupnění informací |4,20, 3,27, 2,39 |Duben 17, 2015 |
 | MS15 – 041 |[3048010] |Ohrožení zabezpečení v .NET Framework může umožnit vyzrazení informací. |4,20, 3,27, 2,39 |Duben 17, 2015 |
 | MS15 – 042 |[3047234] |Ohrožení zabezpečení v systému Windows Hyper-V může způsobit odepření služby. |4,20, 3,27, 2,39 |Duben 17, 2015 |
-| Není k dispozici |[3045755] |Aktualizace pro zlepšení ověřování PKU2U |4,20, 3,27, 2,39 |Duben 17, 2015 |
+| NA |[3045755] |Aktualizace pro zlepšení ověřování PKU2U |4,20, 3,27, 2,39 |Duben 17, 2015 |
 
 ## <a name="april-2015-guest-os"></a>Hostovaný operační systém od dubna 2015
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
