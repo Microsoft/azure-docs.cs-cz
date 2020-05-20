@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7d8fbddc86c0d05d7b0d4ce46cb06c5fc92a2cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56c25ce417a17024843de1b9b16f57740de1e9fc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188113"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636979"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlašování pomocí účet Microsoft s využitím vlastních zásad v Azure Active Directory B2C
 
@@ -27,19 +27,19 @@ V tomto článku se dozvíte, jak povolit přihlášení uživatelů ze účet M
 ## <a name="prerequisites"></a>Požadavky
 
 - Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md).
-- Pokud ještě nemáte účet Microsoft, vytvořte ho na adrese [https://www.live.com/](https://www.live.com/).
+- Pokud ještě nemáte účet Microsoft, vytvořte ho na adrese [https://www.live.com/](https://www.live.com/) .
 
 ## <a name="register-an-application"></a>Registrace aplikace
 
 Pokud chcete povolit přihlašování pro uživatele pomocí účet Microsoft, musíte zaregistrovat aplikaci v tenantovi Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
 1. Zadejte **název** vaší aplikace. Například *MSAapp1*.
-1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft (např. Skype, Xbox, Outlook.com)**.
-1. V části **identifikátor URI přesměrování (volitelné)** vyberte **Web** a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` do textového pole zadejte. Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C.
+1. V části **podporované typy účtů**vyberte **účty v jakémkoli adresáři organizace (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (např. Skype, Xbox)**.
+1. V části **identifikátor URI přesměrování (volitelné)** vyberte **Web** a `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp` do textového pole zadejte. Nahraďte `<tenant-name>` názvem vašeho tenanta Azure AD B2C.
 1. Vybrat **registraci**
 1. Poznamenejte si **ID aplikace (klienta)** zobrazené na stránce Přehled aplikace. To budete potřebovat při konfiguraci zprostředkovatele deklarací v pozdější části.
 1. Vybrat **certifikáty & tajných** kódů
@@ -49,9 +49,9 @@ Pokud chcete povolit přihlašování pro uživatele pomocí účet Microsoft, m
 
 ## <a name="configuring-optional-claims"></a>Konfigurace volitelných deklarací identity
 
-Pokud chcete získat deklarace identity `family_name` a `given_name` ze služby Azure AD, můžete nakonfigurovat volitelné deklarace identity pro aplikaci v uživatelském rozhraní Azure Portal nebo manifestu aplikace. Další informace najdete v tématu [jak poskytnout volitelné deklarace identity vaší aplikaci Azure AD](../active-directory/develop/active-directory-optional-claims.md).
+Pokud chcete získat `family_name` `given_name` deklarace identity a ze služby Azure AD, můžete nakonfigurovat volitelné deklarace identity pro aplikaci v uživatelském rozhraní Azure Portal nebo manifestu aplikace. Další informace najdete v tématu [jak poskytnout volitelné deklarace identity vaší aplikaci Azure AD](../active-directory/develop/active-directory-optional-claims.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
 1. V části **Správa** vyberte **Konfigurace tokenu (Preview)**.
@@ -64,15 +64,15 @@ Pokud chcete získat deklarace identity `family_name` a `given_name` ze služby 
 
 Teď, když jste vytvořili aplikaci v tenantovi Azure AD, musíte do svého tenanta Azure AD B2C Uložit tajný klíč klienta této aplikace.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
-1. Pro **Možnosti**vyberte `Manual`možnost.
+1. Pro **Možnosti**vyberte možnost `Manual` .
 1. Zadejte **název** klíče zásad. Například, `MSASecret`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 1. Do pole **tajný kód**zadejte tajný klíč klienta, který jste si poznamenali v předchozí části.
-1. Pro **použití klíče**vyberte `Signature`.
+1. Pro **použití klíče**vyberte `Signature` .
 1. Klikněte na **Vytvořit**.
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
@@ -148,7 +148,7 @@ Pokud se na portálu nezobrazí žádné chyby, pokračujte k další části.
 V tomto okamžiku jste nastavili zprostředkovatele identity, ale ještě není dostupný na žádném z vašich přihlašovacích nebo přihlašovacích obrazovek. Aby byl k dispozici, vytvořte duplikát stávající cesty uživatele šablony a pak ho upravte, aby měl i účet Microsoft poskytovatele identity.
 
 1. Otevřete soubor *TrustFrameworkBase. XML* z úvodní sady.
-1. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"`.
+1. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"` .
 1. Otevřete *soubor TrustFrameworkExtensions. XML* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
 1. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
 1. Přejmenujte ID cesty pro uživatele. Například, `SignUpSignInMSA`.
@@ -157,8 +157,8 @@ V tomto okamžiku jste nastavili zprostředkovatele identity, ale ještě není 
 
 Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na obrazovce pro registraci nebo přihlášení. Pokud přidáte prvek **claimsproviderselection.** pro účet Microsoft, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
 
-1. V souboru *TrustFrameworkExtensions. XML* vyhledejte prvek **OrchestrationStep** , který obsahuje `Order="1"` cestu k uživateli, kterou jste vytvořili.
-1. Pod **ClaimsProviderSelects**přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `MicrosoftAccountExchange`:
+1. V souboru *TrustFrameworkExtensions. XML* vyhledejte prvek **OrchestrationStep** , který obsahuje cestu k `Order="1"` uživateli, kterou jste vytvořili.
+1. Pod **ClaimsProviderSelects**přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `MicrosoftAccountExchange` :
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
@@ -197,7 +197,7 @@ Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatel
 1. Ujistěte se, že Azure AD B2C aplikace, kterou jste vytvořili v předchozí části (nebo dokončení požadavků, například *WebApp1* nebo *testapp1*), se vybrala v poli **Vybrat aplikaci** a potom ji otestujete kliknutím na **Spustit nyní**.
 1. Vyberte tlačítko **účet Microsoft** a přihlaste se.
 
-    Pokud je operace přihlášení úspěšná, budete přesměrováni na `jwt.ms` to, které zobrazí Dekódovatelné tokeny, podobně jako:
+    Pokud je operace přihlášení úspěšná, budete přesměrováni na to, `jwt.ms` které zobrazí Dekódovatelné tokeny, podobně jako:
 
     ```json
     {
@@ -208,7 +208,7 @@ Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatel
       "exp": 1562365200,
       "nbf": 1562361600,
       "ver": "1.0",
-      "iss": "https://your-b2c-tenant.b2clogin.com/10000000-0000-0000-0000-000000000000/v2.0/",
+      "iss": "https://<tenant-name>.b2clogin.com/10000000-0000-0000-0000-000000000000/v2.0/",
       "sub": "20000000-0000-0000-0000-000000000000",
       "aud": "30000000-0000-0000-0000-000000000000",
       "acr": "b2c_1a_signupsigninmsa",

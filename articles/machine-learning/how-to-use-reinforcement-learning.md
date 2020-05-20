@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: b0a596ee4c576ff98be302b15a86a8758b11ce25
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01e7e6c84be13db839338928f8086bcceb2ea169
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598588"
+ms.locfileid: "83654416"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Posílení učení (Preview) s Azure Machine Learning
 
@@ -49,7 +49,7 @@ Tento kód spusťte v jednom z následujících prostředí. Doporučujeme, abys
  - Váš vlastní server Jupyter Notebook
 
     - Nainstalujte [sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-    - Nainstalujte [sadu Azure Machine Learning RL SDK](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&branch=harnvirdebug):`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - Nainstalujte [sadu Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py):`pip install --upgrade azureml-contrib-reinforcementlearning`
     - Vytvořte [konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
     - Spusťte [Poznámkový blok instalace](https://aka.ms/azure-rl-env-setup) virtuální sítě a otevřete tak síťové porty, které se používají pro distribuované výztuže při výuce.
 
@@ -210,7 +210,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Vytvoření posílení výukového Estimator
 
-V této části se dozvíte, jak pomocí [ReinforcementLearningEstimator](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&branch=harnvirdebug) odeslat školicí úlohu Azure Machine Learning.
+V této části se dozvíte, jak pomocí [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) odeslat školicí úlohu Azure Machine Learning.
 
 Azure Machine Learning používá třídy Estimator k zapouzdření informací o konfiguraci spuštění. To vám umožní snadno určit, jak se má nakonfigurovat provádění skriptu. Další informace o modelu Azure Machine Learning Estimator najdete v tématu [výuka modelů pomocí odhady](how-to-train-ml-models.md).
 

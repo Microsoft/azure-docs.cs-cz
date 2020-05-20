@@ -4,13 +4,13 @@ description: Přečtěte si o krocích požadovaných k povolení nových Azure 
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 65c2220bd3e9ea93e562b256e84796aed9046d00
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/18/2020
+ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211405"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647894"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Prostředky Application Insights založené na pracovním prostoru (Preview)
 
@@ -40,9 +40,7 @@ Kliknutím na modrý text přejdete k přidruženému pracovnímu prostoru Log A
 
 ## <a name="copy-the-connection-string"></a>Zkopírování připojovacího řetězce
 
-[Připojovací řetězec]() identifikuje prostředek, ke kterému chcete přidružit data telemetrie. Umožňuje také upravit koncové body, které prostředek použije jako cíl pro vaši telemetrii. Budete muset zkopírovat připojovací řetězec a přidat ho do kódu aplikace nebo do proměnné prostředí.
-
-![Klikněte a zkopírujte klíč instrumentace.](./media/create-new-resource/instrumentation-key.png)
+[Připojovací řetězec](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) identifikuje prostředek, ke kterému chcete přidružit data telemetrie. Umožňuje také upravit koncové body, které prostředek použije jako cíl pro vaši telemetrii. Budete muset zkopírovat připojovací řetězec a přidat ho do kódu aplikace nebo do proměnné prostředí.
 
 ## <a name="monitoring-configuration"></a>Konfigurace monitorování
 
@@ -192,6 +190,10 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 Po vytvoření prostředku Application Insights založeném na pracovním prostoru můžete upravit přidružené pracovní prostory Log Analytics.
 
 V podokně Application Insights prostředku vyberte **vlastnosti**  >  **změnit pracovní prostor**  >  **Log Analytics pracovní prostory** .
+
+## <a name="export-telemetry"></a>Exportovat telemetrii
+
+Funkce starší verze průběžného exportu není u prostředků založených na pracovních prostorech podporována. Místo toho vyberte **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky** v rámci vašeho prostředku Application Insights. Můžete vybrat všechny tabulky nebo podmnožinu tabulek k archivaci do účtu úložiště nebo streamovat do centra událostí Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

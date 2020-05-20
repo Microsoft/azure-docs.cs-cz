@@ -13,12 +13,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: aae1b8aa27363e8f1d3c72d3934146c47b0cf2c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4aaeb2ab6e22107d8c9edfbce45c4ae212e8649f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535889"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640428"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
 
@@ -124,9 +124,9 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 ```
 
-Ve webovém rozhraní API 1 se chyba `error=interaction_required`zachytí a pošle se zpět `claims` výzva do desktopové aplikace. V tomto okamžiku aplikace klasické pracovní plochy může vytvořit nové `acquireToken()` volání a připojit `claims`výzvu jako další parametr řetězce dotazu. Tato nová žádost vyžaduje, aby uživatel prováděl vícefaktorové ověřování, a pak tento nový token poslal zpátky do webového rozhraní API 1 a dokončil tok.
+Ve webovém rozhraní API 1 se chyba zachytí `error=interaction_required` a pošle se zpět `claims` výzva do desktopové aplikace. V tomto okamžiku aplikace klasické pracovní plochy může vytvořit nové `acquireToken()` volání a připojit `claims` výzvu jako další parametr řetězce dotazu. Tato nová žádost vyžaduje, aby uživatel prováděl vícefaktorové ověřování, a pak tento nový token poslal zpátky do webového rozhraní API 1 a dokončil tok.
 
-Chcete-li tento scénář vyzkoušet, podívejte se na náš [ukázkový kód .NET](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access). Ukazuje, jak předat výzvy deklarací identity zpátky z webového rozhraní API 1 do nativní aplikace a vytvořit novou žádost v klientské aplikaci.
+Chcete-li tento scénář vyzkoušet, podívejte se na náš [ukázkový kód .NET](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph#handling-required-interactions-with-the-user-dynamic-consent-mfa-etc-). Ukazuje, jak předat výzvy deklarací identity zpátky z webového rozhraní API 1 do nativní aplikace a vytvořit novou žádost v klientské aplikaci.
 
 ## <a name="scenario-app-accessing-multiple-services"></a>Scénář: aplikace přistupující k více službám
 
@@ -136,7 +136,7 @@ Předpokládejme, že máme webové služby a a B a webové služby B, které po
 
 ![Aplikace, která přistupuje k vývojovému diagramu více služeb](./media/v2-conditional-access-dev-guide/app-accessing-multiple-services-scenario.png)
 
-Případně, pokud aplikace poprvé požaduje token webové služby A, koncový uživatel nespustí zásadu podmíněného přístupu. Díky tomu může vývojář aplikace řídit činnost koncového uživatele a nenutí, aby se zásady podmíněného přístupu vyvolaly ve všech případech. Velká písmena jsou v případě, že aplikace následně požaduje token pro webovou službu B. V tomto okamžiku musí koncový uživatel dodržovat zásady podmíněného přístupu. Když se aplikace pokusí `acquireToken`, může generovat následující chybu (znázorněné v následujícím diagramu):
+Případně, pokud aplikace poprvé požaduje token webové služby A, koncový uživatel nespustí zásadu podmíněného přístupu. Díky tomu může vývojář aplikace řídit činnost koncového uživatele a nenutí, aby se zásady podmíněného přístupu vyvolaly ve všech případech. Velká písmena jsou v případě, že aplikace následně požaduje token pro webovou službu B. V tomto okamžiku musí koncový uživatel dodržovat zásady podmíněného přístupu. Když se aplikace pokusí `acquireToken` , může generovat následující chybu (znázorněné v následujícím diagramu):
 
 ```
 HTTP 400; Bad Request
@@ -147,19 +147,19 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![Aplikace přistupující k více službám požadujícím nový token](./media/v2-conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-Pokud aplikace používá knihovnu MSAL, neúspěšné opakované pokus o získání tokenu se vždy provádí interaktivně. Když dojde k tomuto interaktivnímu požadavku, má koncový uživatel možnost dodržovat podmíněný přístup. To platí, pokud se jedná o žádost `AcquireTokenSilentAsync` nebo `PromptBehavior.Never` v takovém případě aplikace potřebuje provést interaktivní ```AcquireToken``` požadavek, aby koncovému uživateli bylo umožněno dodržovat tyto zásady.
+Pokud aplikace používá knihovnu MSAL, neúspěšné opakované pokus o získání tokenu se vždy provádí interaktivně. Když dojde k tomuto interaktivnímu požadavku, má koncový uživatel možnost dodržovat podmíněný přístup. To platí, pokud se jedná o žádost `AcquireTokenSilentAsync` nebo `PromptBehavior.Never` v takovém případě aplikace potřebuje provést interaktivní požadavek, ```AcquireToken``` aby koncovému uživateli bylo umožněno dodržovat tyto zásady.
 
 ## <a name="scenario-single-page-app-spa-using-msaljs"></a>Scénář: jednostránkové aplikace (SPA) využívající MSAL. js
 
 V tomto scénáři Vás provedeme v případě, že máme jednostránkovou aplikaci (SPA) pomocí MSAL. js k volání webového rozhraní API chráněného podmíněného přístupu. Toto je jednoduchá architektura, ale má několik drobné odlišnosti, které je potřeba vzít v úvahu při vývoji podmíněného přístupu.
 
-V MSAL. js existuje několik funkcí, které získají tokeny `loginPopup()`:, `acquireTokenSilent(...)`, `acquireTokenPopup(…)`a. `acquireTokenRedirect(…)`
+V MSAL. js existuje několik funkcí, které získají tokeny: `loginPopup()` , `acquireTokenSilent(...)` , a `acquireTokenPopup(…)` `acquireTokenRedirect(…)` .
 
 * `loginPopup()`Získá token ID prostřednictvím interaktivní žádosti o přihlášení, ale nezíská přístupové tokeny žádné služby (včetně webového rozhraní API pro podmíněný přístup).
 * `acquireTokenSilent(…)`dá se pak použít k tichému získání přístupového tokenu, což znamená, že v žádném případě nezobrazuje uživatelské rozhraní.
 * `acquireTokenPopup(…)`a `acquireTokenRedirect(…)` jsou použity k interaktivnímu vyžádání tokenu pro prostředek, což znamená, že vždy zobrazují uživatelské rozhraní pro přihlašování.
 
-Když aplikace potřebuje přístupový token pro volání webového rozhraní API, pokusí se `acquireTokenSilent(…)`. Pokud vypršela platnost relace tokenu nebo je potřeba splnit zásady podmíněného přístupu, funkce *acquireToken* se nezdařila a aplikace používá `acquireTokenPopup()` nebo. `acquireTokenRedirect()`
+Když aplikace potřebuje přístupový token pro volání webového rozhraní API, pokusí se `acquireTokenSilent(…)` . Pokud vypršela platnost relace tokenu nebo je potřeba splnit zásady podmíněného přístupu, funkce *acquireToken* se nezdařila a aplikace používá `acquireTokenPopup()` nebo `acquireTokenRedirect()` .
 
 ![Jednostránkové aplikace s využitím MSAL Flow diagramu](./media/v2-conditional-access-dev-guide/spa-using-msal-scenario.png)
 
@@ -173,7 +173,7 @@ error=interaction_required
 error_description=AADSTS50076: Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to access '<Web API App/Client ID>'.
 ```
 
-Naše aplikace potřebuje zachytit `error=interaction_required`. Aplikace pak může použít buď `acquireTokenPopup()` nebo `acquireTokenRedirect()` u stejného prostředku. Uživatel je nucen provést službu Multi-Factor Authentication. Jakmile uživatel dokončí službu Multi-Factor Authentication, aplikace vydá nový přístupový token pro požadovaný prostředek.
+Naše aplikace potřebuje zachytit `error=interaction_required` . Aplikace pak může použít buď `acquireTokenPopup()` nebo `acquireTokenRedirect()` u stejného prostředku. Uživatel je nucen provést službu Multi-Factor Authentication. Jakmile uživatel dokončí službu Multi-Factor Authentication, aplikace vydá nový přístupový token pro požadovaný prostředek.
 
 Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukázku kódu v tématu js Spa](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access). V tomto příkladu kódu se k předvedení tohoto scénáře používá zásada podmíněného přístupu a webové rozhraní API, které jste zaregistrovali dříve pomocí zabezpečeného hesla. Ukazuje, jak správně zpracovat výzvu deklarací identity a získat přístupový token, který se dá použít pro vaše webové rozhraní API. Alternativně můžete v případě, že si vyrezervujete [vzorový kód pro obecné úhlové. js](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) , najdete pokyny k úhlů
 

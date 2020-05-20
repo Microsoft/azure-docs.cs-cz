@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4113328a5de02c36b7285c837bd5314d11e526b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690404"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641592"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Přehledy podmíněného přístupu a vytváření sestav
 
@@ -36,9 +36,6 @@ K přehledům a sestavám můžete získat přístup následujícími rolemi:
 
 Uživatelé také potřebují jednu z následujících Log Analytics rolí pracovního prostoru:  
 
-- Čtenář 
-- Čtečka monitorování 
-- Čtecí modul Log Analytics 
 - Přispěvatel  
 - Vlastník 
 
@@ -53,8 +50,8 @@ Pokud jste protokoly služby Azure AD neintegroval s protokoly Azure Monitor, bu
 
 Přístup k sešitu Insights a vytváření sestav:  
 
-1. Přihlaste se k webu **Azure Portal**.
-1. Přejděte na **Azure Active Directory** > **zabezpečení** > a přehled**podmíněného přístupu** > **a vytváření sestav**.
+1. Přihlaste se k **portálu Azure Portal**.
+1. Přejděte na **Azure Active Directory**  >  **zabezpečení**  >  a přehled**podmíněného přístupu**  >  **a vytváření sestav**.
 
 ### <a name="get-started-select-parameters"></a>Začínáme: Výběr parametrů 
 
@@ -112,11 +109,11 @@ Pokud svazek přihlášení překračuje kapacitu dotazu Log Analytics, vrátí 
 
 ### <a name="can-i-save-my-parameter-selections"></a>Můžu uložit výběry parametrů?  
 
-Výběry parametrů můžete uložit v horní části sešitu tak, že na **Azure Active Directory** > **sešity** > vydáte**přehledy podmíněného přístupu a vytváření sestav**. Tady najdete šablonu sešitu, kde můžete sešit upravovat a ukládat do svého pracovního prostoru kopii, včetně výběrů parametrů, v **mých sestavách** nebo ve **sdílených sestavách**. 
+Výběry parametrů můžete uložit v horní části sešitu tak, že na **Azure Active Directory**  >  **sešity**vydáte  >  **přehledy podmíněného přístupu a vytváření sestav**. Tady najdete šablonu sešitu, kde můžete sešit upravovat a ukládat do svého pracovního prostoru kopii, včetně výběrů parametrů, v **mých sestavách** nebo ve **sdílených sestavách**. 
 
 ### <a name="can-i-edit-and-customize-the-workbook-with-additional-queries"></a>Můžu sešit upravovat a přizpůsobovat dalším dotazům? 
 
-Sešit můžete upravit a přizpůsobit tak, že kliknete na **Azure Active Directory** > **sešity** > **podmíněného přístupu a vytváření sestav**. Tady najdete šablonu sešitu, kde můžete sešit upravovat a ukládat do svého pracovního prostoru kopii, včetně výběrů parametrů, v **mých sestavách** nebo ve **sdílených sestavách**. Pokud chcete začít upravovat dotazy, klikněte v horní části sešitu na **Upravit** .  
+Sešit můžete upravit a přizpůsobit tak, že kliknete na **Azure Active Directory**  >  **sešity**  >  **podmíněného přístupu a vytváření sestav**. Tady najdete šablonu sešitu, kde můžete sešit upravovat a ukládat do svého pracovního prostoru kopii, včetně výběrů parametrů, v **mých sestavách** nebo ve **sdílených sestavách**. Pokud chcete začít upravovat dotazy, klikněte v horní části sešitu na **Upravit** .  
  
 ## <a name="next-steps"></a>Další kroky
 

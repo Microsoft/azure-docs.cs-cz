@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06c8949be681d13b9dc7d5c433197dd9371aeef8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667223"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651859"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimalizace prostředí Active Directory s využitím řešení kontroly stavu Active Directory ve službě Azure Monitor
 
@@ -36,8 +36,8 @@ Po přidání řešení a dokončení kontroly se na řídicím panelu **kontrol
 ## <a name="prerequisites"></a>Požadavky
 
 * Řešení kontroly stavu služby Active Directory vyžaduje, aby na každém počítači, který má Log Analytics agenta pro Windows (také označovaný jako Microsoft Monitoring Agent (MMA)), byla nainstalovaná podporovaná verze .NET Framework 4.6.2 nebo vyšší.  Agent používá System Center 2016-Operations Manager, Operations Manager 2012 R2 a Azure Monitor.
-* Řešení podporuje řadiče domény se systémy Windows Server 2008 a 2008 R2, Windows Server 2012 a 2012 R2 a Windows Server 2016.
-* Pracovní prostor Log Analytics pro přidání řešení kontroly stavu služby Active Directory z webu Azure Marketplace v Azure Portal. Není vyžadována žádná další konfigurace.
+* Řešení podporuje řadiče domény se systémy Windows Server 2008 a 2008 R2, Windows Server 2012 a 2012 R2, Windows Server 2016 a Windows Server 2019.
+* Pracovní prostor Log Analytics pro přidání řešení kontroly stavu služby Active Directory z Azure Marketplace v Azure Portal. Není vyžadována žádná další konfigurace.
 
   > [!NOTE]
   > Po přidání řešení se soubor AdvisorAssessment. exe přidá na servery s agenty. Konfigurační data se čtou a pak se odesílají do Azure Monitor v cloudu ke zpracování. Na přijatá data se aplikuje logika a cloudová služba data zaznamená.

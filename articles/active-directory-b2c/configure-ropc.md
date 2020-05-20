@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1989f65f73ac4f9dc8dd328fa9d7ed267eec1aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189697"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636419"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure AD B2C
 
@@ -40,7 +40,7 @@ Tok přihlašovacích údajů pro heslo vlastníka prostředku (ROPC) je standar
 
    Pak uvidíte koncový bod, jako je například tento příklad:
 
-   `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
+   `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/v2.0/.well-known/openid-configuration`
 
 
 ## <a name="register-an-application"></a>Registrace aplikace
@@ -50,18 +50,18 @@ Tok přihlašovacích údajů pro heslo vlastníka prostředku (ROPC) je standar
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
 Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování volání rozhraní API a Projděte si odpověď pro ladění toku uživatele. Sestavte podobné volání s informacemi v následující tabulce jako text požadavku POST:
-- * \<Yourtenant.onmicrosoft.com>* nahraďte názvem vašeho tenanta B2C.
+- Nahraďte * \< název tenanta>. onmicrosoft.com* názvem vašeho tenanta B2C.
 - * \<>B2C_1A_ROPC_Auth* nahraďte úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
-- Nahraďte * \<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* s ID aplikace z vaší registrace.
+- Nahraďte * \< bef2222d56-552f-4a5b-b90a-1988a7d634c3>* s ID aplikace z vaší registrace.
 
-`https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-| Key | Hodnota |
+| Klíč | Hodnota |
 | --- | ----- |
 | uživatelské jméno | leadiocl@outlook.com |
 | heslo | Passxword1 |
 | grant_type | heslo |
-| scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| scope | OpenID \< bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | id_token tokenu |
 
@@ -70,8 +70,8 @@ Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování vol
 Skutečný požadavek POST vypadá takto:
 
 ```
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+POST /<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -94,9 +94,9 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 Sestavte následné volání jako tu, která se tady zobrazuje s informacemi v následující tabulce jako text požadavku:
 
-`https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-| Key | Hodnota |
+| Klíč | Hodnota |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

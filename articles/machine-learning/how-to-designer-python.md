@@ -5,16 +5,17 @@ description: Naučte se používat Python v Návrháři Azure Machine Learning k
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.openlocfilehash: a2bd9845cd29c7d139e2042f39b4697847639207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: designer
+ms.openlocfilehash: e27844f9f534ea4db1aba53c12fb3947e7269846
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455787"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644470"
 ---
 # <a name="execute-python-code-in-azure-machine-learning-designer"></a>Spouštění kódu v Pythonu v Návrháři Azure Machine Learning
 
@@ -47,7 +48,7 @@ Tento článek používá ukázkovou datovou sadu, **údaje o cenách automobilu
     ![Připojení datových sad](media/how-to-designer-python/connect-dataset.png)
         
 
-1. Poznamenejte si, který vstupní port používáte. Návrhář přiřadí levý vstupní port k proměnné `dataset1` a střednímu vstupnímu portu. `dataset2` 
+1. Poznamenejte si, který vstupní port používáte. Návrhář přiřadí levý vstupní port k proměnné `dataset1` a střednímu vstupnímu portu `dataset2` . 
 
 Vstupní moduly jsou volitelné, protože data můžete generovat nebo importovat přímo v modulu **spouštění skriptu Pythonu** .
 
@@ -74,7 +75,7 @@ V tomto příkladu použijete PANDAS ke kombinování dvou sloupců, které se n
     
     ![Spustit kanál Pythonu](media/how-to-designer-python/execute-python-pipeline.png)
 
-    Skript vstupního bodu musí obsahovat funkci `azureml_main`. K dispozici jsou dva parametry funkcí, které se mapují na dva vstupní porty pro modul **spouštění skriptu Pythonu** .
+    Skript vstupního bodu musí obsahovat funkci `azureml_main` . K dispozici jsou dva parametry funkcí, které se mapují na dva vstupní porty pro modul **spouštění skriptu Pythonu** .
 
     Vrácená hodnota musí být PANDAS dataframe. Jako výstupy modulu můžete vracet až dva datarámce.
     

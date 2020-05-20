@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 207f4aecfb57480293c138c95ed6e8f6562bbc7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529168"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638566"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C pomocí vlastní zásady
 
@@ -227,7 +227,7 @@ Dále aktualizujte soubor předávající strany, který zahájí cestu uživate
 
 1. Vytvořte kopii souboru *SignUpOrSignin. XML* v pracovním adresáři a přejmenujte jej na *ROPC_Auth. XML*.
 2. Otevřete nový soubor a změňte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** na jedinečnou hodnotu. ID zásady je název vaší zásady. Například **B2C_1A_ROPC_Auth**.
-3. Změňte hodnotu atributu **ReferenceId** v **DefaultUserJourney** na `ResourceOwnerPasswordCredentials`.
+3. Změňte hodnotu atributu **ReferenceId** v **DefaultUserJourney** na `ResourceOwnerPasswordCredentials` .
 4. Změňte element **OutputClaims** tak, aby obsahoval pouze následující deklarace identity:
 
     ```XML
@@ -246,12 +246,12 @@ Dále aktualizujte soubor předávající strany, který zahájí cestu uživate
 
 Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování volání rozhraní API a Projděte si odpověď pro ladění zásad. Sestavte volání jako v tomto příkladu s následujícími informacemi jako text požadavku POST:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C.
+- Nahraďte `<tenant-name>` názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
 
-| Key | Hodnota |
+| Klíč | Hodnota |
 | --- | ----- |
 | uživatelské jméno | `user-account` |
 | heslo | `password1` |
@@ -268,8 +268,8 @@ Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování vol
 Skutečný požadavek POST vypadá jako v následujícím příkladu:
 
 ```HTTPS
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -291,12 +291,12 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 Sestavte následné volání jako tu, který je zde zobrazen. Použijte informace v následující tabulce jako text žádosti:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C.
+- Nahraďte `<tenant-name>` názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
 
-| Key | Hodnota |
+| Klíč | Hodnota |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

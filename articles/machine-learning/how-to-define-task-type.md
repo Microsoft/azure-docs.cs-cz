@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
-ms.openlocfilehash: fef3f0347d963b8a7d5fe2f1ca771293e9c3d2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb2fbcda7f30db24b876a66df22071f14df74814
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475499"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653245"
 ---
 # <a name="how-to-define-a-machine-learning-task"></a>Jak definovat úlohu strojového učení 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,5 +77,5 @@ automl_config = AutoMLConfig(task="classification")
 + Přečtěte si další informace o [automatizovaném ml](concept-automated-ml.md) v Azure Machine Learning.
 + Přečtěte si další informace o [automatickém školení modelu prognózy časových řad](how-to-auto-train-forecast.md) v Azure Machine Learning
 + Vyzkoušejte kurz [automatizovaného Machine Learningho vyhodnocení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) .
-+ Vyzkoušejte ukázkový Poznámkový blok [automatizované Machine Learning regrese](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb) .
++ Vyzkoušejte ukázkový Poznámkový blok [automatizované Machine Learning regrese](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb) .
 

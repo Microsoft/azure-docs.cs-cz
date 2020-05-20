@@ -4,14 +4,14 @@ description: Přečtěte si, jak nastavit privátní odkaz Azure pro přístup k
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/14/2020
 ms.author: thweiss
-ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ba85961ac4ec9b1b439de18a1d6da0cec4ead4f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270685"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652570"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos
 
@@ -22,9 +22,6 @@ Privátní odkaz umožňuje uživatelům přístup k účtu Azure Cosmos z virtu
 K účtu Azure Cosmos nakonfigurovanému pomocí privátního propojení se můžete připojit pomocí metody automatického nebo ručního schválení. Další informace najdete v části [schvalovací pracovní postup](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) v dokumentaci k privátnímu odkazu. 
 
 Tento článek popisuje postup vytvoření privátního koncového bodu. Předpokládá, že používáte metodu automatického schvalování.
-
-> [!NOTE]
-> Podpora privátního koncového bodu je v současnosti všeobecně dostupná jenom pro režim připojení brány. V případě přímého režimu je k dispozici jako funkce ve verzi Preview.
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Vytvoření privátního koncového bodu pomocí Azure Portal
 
@@ -44,7 +41,7 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte skupinu prostředků.|
     | **Podrobnosti instance** |  |
-    | Název | Zadejte libovolný název vašeho privátního koncového bodu. Pokud se tento název povede, vytvořte jedinečný. |
+    | Name | Zadejte libovolný název vašeho privátního koncového bodu. Pokud se tento název povede, vytvořte jedinečný. |
     |Oblast| Vyberte oblast, ve které chcete nasadit privátní propojení. Vytvořte privátní koncový bod ve stejném umístění, kde existuje vaše virtuální síť.|
     |||
 1. Vyberte **Další: prostředek**.
@@ -86,8 +83,8 @@ Následující tabulka ukazuje mapování mezi různými typy rozhraní API úč
 |Mongo   |  MongoDB       |  privatelink.mongo.cosmos.azure.com    |
 |Gremlin     | Gremlin        |  privatelink.gremlin.cosmos.azure.com   |
 |Gremlin     |  Sql       |  privatelink.documents.azure.com    |
-|Table    |    Table     |   privatelink.table.cosmos.azure.com    |
-|Table     |   Sql      |  privatelink.documents.azure.com    |
+|Tabulka    |    Tabulka     |   privatelink.table.cosmos.azure.com    |
+|Tabulka     |   Sql      |  privatelink.documents.azure.com    |
 
 ### <a name="fetch-the-private-ip-addresses"></a>Načtení privátních IP adres
 
@@ -401,14 +398,14 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-V PowerShellovém skriptu může `GroupId` proměnná obsahovat jenom jednu hodnotu. Tato hodnota je typ rozhraní API tohoto účtu. Povolené hodnoty jsou: `Sql`, `MongoDB`, `Cassandra`, `Gremlin`a `Table`. Některé typy účtů Azure Cosmos jsou přístupné prostřednictvím více rozhraní API. Příklad:
+V PowerShellovém skriptu `GroupId` může proměnná obsahovat jenom jednu hodnotu. Tato hodnota je typ rozhraní API tohoto účtu. Povolené hodnoty jsou: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` a `Table` . Některé typy účtů Azure Cosmos jsou přístupné prostřednictvím více rozhraní API. Například:
 
 * K účtu rozhraní Gremlin API je možné přihlédnout z účtů Gremlin a SQL API.
 * K účtu rozhraní API pro tabulky lze přihlédnout z tabulek i z účtů rozhraní SQL API.
 
-Pro tyto účty musíte pro každý typ rozhraní API vytvořit jeden privátní koncový bod. V `GroupId` poli je uveden odpovídající typ rozhraní API.
+Pro tyto účty musíte pro každý typ rozhraní API vytvořit jeden privátní koncový bod. V poli je uveden odpovídající typ rozhraní API `GroupId` .
 
-Po úspěšném nasazení šablony se zobrazí výstup podobný následujícímu obrázku. `provisioningState` Hodnota je `Succeeded` , pokud jsou privátní koncové body nastaveny správně.
+Po úspěšném nasazení šablony se zobrazí výstup podobný následujícímu obrázku. `provisioningState`Hodnota je, `Succeeded` Pokud jsou privátní koncové body nastaveny správně.
 
 ![Výstup nasazení pro šablonu Správce prostředků](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
 
@@ -611,7 +608,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="configure-custom-dns"></a>Konfigurace vlastního systému DNS
 
-V podsíti, ve které jste vytvořili privátní koncový bod, byste měli použít privátní zónu DNS. Konfigurace koncových bodů tak, aby každá privátní IP adresa byla namapovaná na položku DNS. (Podívejte se `fqdns` na vlastnost v odpovědi uvedené dříve.)
+V podsíti, ve které jste vytvořili privátní koncový bod, byste měli použít privátní zónu DNS. Konfigurace koncových bodů tak, aby každá privátní IP adresa byla namapovaná na položku DNS. (Podívejte se na `fqdns` vlastnost v odpovědi uvedené dříve.)
 
 Při vytváření privátního koncového bodu ho můžete integrovat s privátní zónou DNS v Azure. Pokud se rozhodnete místo toho použít vlastní zónu DNS, musíte ji nakonfigurovat tak, aby přidala záznamy DNS pro všechny privátní IP adresy rezervované pro soukromý koncový bod.
 
@@ -627,7 +624,7 @@ Při použití privátního odkazu v kombinaci s pravidly brány firewall jsou m
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>Blokování přístupu k veřejné síti při vytváření účtu
 
-Jak je popsáno v předchozí části, a pokud nejsou nastavená konkrétní pravidla brány firewall, přidání privátního koncového bodu zpřístupňuje účet Azure Cosmos jenom prostřednictvím privátních koncových bodů. To znamená, že účet Azure Cosmos je možné dosáhnout z veřejného provozu po jeho vytvoření a před přidáním privátního koncového bodu. Abyste se ujistili, že je přístup k veřejné síti zakázán dokonce i před vytvořením privátních koncových `publicNetworkAccess` bodů, `Disabled` můžete nastavit příznak při vytváření účtu. V [této Azure Resource Manager šabloně](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) najdete příklad ukazující použití tohoto příznaku.
+Jak je popsáno v předchozí části, a pokud nejsou nastavená konkrétní pravidla brány firewall, přidání privátního koncového bodu zpřístupňuje účet Azure Cosmos jenom prostřednictvím privátních koncových bodů. To znamená, že účet Azure Cosmos je možné dosáhnout z veřejného provozu po jeho vytvoření a před přidáním privátního koncového bodu. Abyste se ujistili, že je přístup k veřejné síti zakázán dokonce i před vytvořením privátních koncových bodů, můžete nastavit `publicNetworkAccess` příznak `Disabled` při vytváření účtu. V [této Azure Resource Manager šabloně](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) najdete příklad ukazující použití tohoto příznaku.
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Aktualizace privátního koncového bodu při přidání nebo odebrání oblasti
 
@@ -643,21 +640,17 @@ Stejný postup můžete použít při odebrání oblasti. Po odebrání této ob
 
 Pokud používáte privátní propojení s účtem Azure Cosmos, platí následující omezení:
 
-* Pokud používáte privátní propojení s účtem Azure Cosmos pomocí připojení přímého režimu, můžete použít jenom protokol TCP. Protokol HTTP ještě není podporovaný.
+* Pokud používáte privátní propojení s účtem Azure Cosmos pomocí připojení přímého režimu, můžete použít jenom protokol TCP. Protokol HTTP se v tuto chvíli nepodporuje.
 
-* Podpora privátního koncového bodu je v současnosti všeobecně dostupná jenom pro režim připojení brány. V případě přímého režimu je k dispozici jako funkce ve verzi Preview.
+* Pokud používáte rozhraní API Azure Cosmos DB pro účty MongoDB, pro účty na serveru verze 3,6 se podporuje privátní koncový bod (tj. účty používající koncový bod ve formátu `*.mongo.cosmos.azure.com` ). Pro účty na serveru verze 3,2 (tj. účty používající koncový bod ve formátu) se nepodporuje privátní propojení `*.documents.azure.com` . Pro použití privátního odkazu byste měli migrovat staré účty na novou verzi.
 
-* Pokud používáte rozhraní API Azure Cosmos DB pro účty MongoDB, pro účty na serveru verze 3,6 se podporuje privátní koncový bod (tj. účty používající koncový bod ve formátu `*.mongo.cosmos.azure.com`). Pro účty na serveru verze 3,2 (tj. účty používající koncový bod ve formátu `*.documents.azure.com`) se nepodporuje privátní propojení. Pro použití privátního odkazu byste měli migrovat staré účty na novou verzi.
-
-* Pokud používáte rozhraní API Azure Cosmos DB pro účty MongoDB, které mají privátní odkaz, nemůžete používat nástroje jako Robo 3T, Studio 3T a Mongoose. Koncový bod může obsahovat podporu privátních odkazů pouze v `appName=<account name>` případě, že je zadán parametr. Příklad: `replicaSet=globaldb&appName=mydbaccountname`. Vzhledem k tomu, že tyto nástroje nepředá název aplikace v připojovacím řetězci ke službě, nemůžete použít privátní odkaz. K těmto účtům ale můžete i nadále přistupovat pomocí ovladačů SDK s verzí 3,6.
+* Pokud používáte rozhraní API Azure Cosmos DB pro účet MongoDB, který má privátní propojení, nemusí některé nástroje nebo knihovny fungovat, protože automaticky vyřadí `appName` parametr z připojovacího řetězce. Tento parametr se vyžaduje pro připojení k účtu přes soukromý koncový bod. Některé nástroje, například Visual Studio Code, neodstraňují tento parametr z připojovacího řetězce a jsou proto kompatibilní.
 
 * Virtuální síť se nedá přesunout ani odstranit, pokud obsahuje privátní odkaz.
 
-* Účet Azure Cosmos nemůžete odstranit, pokud je připojený k privátnímu koncovému bodu.
-
 * Nemůžete převzít služby při selhání účtu Azure Cosmos do oblasti, která není namapovaná na všechny privátní koncové body připojené k účtu.
 
-* Správce sítě by měl mít alespoň oprávnění "*/PrivateEndpointConnectionsApproval" v oboru účtu Azure Cosmos pro vytváření automaticky schválených privátních koncových bodů.
+* Správce sítě by měl mít alespoň `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` oprávnění v oboru účtu Azure Cosmos k vytváření automaticky schválených privátních koncových bodů.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Omezení integrace privátní zóny DNS
 

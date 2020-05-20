@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 05/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 957aa77e18ea8f910f258d1dc59de0d093b0eab6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83e657114f4e51775fb73267322a48e362f57b1c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476651"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641703"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postupy: blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
 
@@ -82,9 +82,9 @@ Další informace o těchto ověřovacích protokolech a službách najdete v t�
 
 Než budete moct v adresáři zablokovat starší verze ověřování, musíte nejdřív pochopit, jestli mají vaši uživatelé aplikace, které používají starší verze ověřování a jak ovlivňují celkový adresář. Protokoly přihlášení k Azure AD se dají použít k pochopení, jestli používáte starší verze ověřování.
 
-1. Přejděte do **Azure Portal** > **Azure Active Directory** > **přihlášení**.
-1. Pokud není zobrazený, klikněte na **sloupce** > **klientská aplikace**a přidejte sloupec aplikace klienta.
-1. **Přidejte** > **klientskou aplikaci** filtry > vyberte všechny starší protokoly pro ověřování a klikněte na **použít**.
+1. Přejděte do **Azure Portal**  >  **Azure Active Directory**  >  **přihlášení**.
+1. Pokud není zobrazený, klikněte na **sloupce**  >  **klientská aplikace**a přidejte sloupec aplikace klienta.
+1. **Přidat filtry**  >  **Klientská aplikace** > vybrat všechny starší protokoly pro ověřování a kliknout na **použít**.
 
 Filtrování zobrazí jenom ty pokusy o přihlášení, které udělaly starší protokoly ověřování. Kliknutím na každý jednotlivý pokus o přihlášení zobrazíte další podrobnosti. V poli **klientská aplikace** na kartě **základní informace** se určí, který starší verze ověřovacího protokolu se použil.
 
@@ -154,3 +154,4 @@ Pokud zablokujete starší ověřování pomocí podmínky **ostatních klientů
 - [Určení dopadu pomocí režimu pouze sestavy podmíněného přístupu](howto-conditional-access-report-only.md)
 - Pokud ještě nejste obeznámeni s konfigurací zásad podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md) pro příklad.
 - Další informace o podpoře moderního ověřování najdete v článku [jak moderní ověřování funguje pro klientské aplikace office 2013 a office 2016](/office365/enterprise/modern-auth-for-office-2013-and-2016) . 
+- [Jak nastavit multifunkční zařízení nebo aplikaci pro odesílání e-mailů pomocí Office 365 a Microsoft 365](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)

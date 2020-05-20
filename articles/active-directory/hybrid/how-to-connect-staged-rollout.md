@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/12/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b7536704d68e96429d715705a0518410db399a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fbe76fb18e33efaa161d2e2b488b48fa5c8580d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112316"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644154"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
@@ -38,8 +38,8 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 -   Máte tenanta Azure Active Directory (Azure AD) se federovanémi doménami.
 
 -   Rozhodli jste se přesunout jednu ze dvou možností:
-    - **Možnost**synchronizace*hodnot hash hesel (synchronizace)* + *bezproblémového jednotného přihlašování (SSO)*  - 
-    - **Option B** - Plynulé*ověřování* + pomocí možnosti B*bezproblémové jednotné přihlašování*
+    - **Možnost A**  -  *synchronizace hodnot hash hesel (synchronizace)*  +  *bezproblémové jednotné přihlašování (SSO)*
+    - **Možnost B**  -  *předávací ověřování*  +  *bezproblémové jednotné přihlašování*
     
     I když je *snadné jednotné přihlašování* volitelné, doporučujeme, aby mu zajistili tiché přihlašování pro uživatele, kteří používají počítače připojené k doméně v rámci podnikové sítě.
 
@@ -51,6 +51,7 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 
 -   Pokud chcete povolit *bezproblémové přihlašování* v konkrétní doménové struktuře služby Active Directory, musíte být správce domény.
 
+
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
 Následující scénáře jsou podporovány pro připravené zavedení. Funkce funguje pouze pro:
@@ -58,6 +59,7 @@ Následující scénáře jsou podporovány pro připravené zavedení. Funkce f
 - Uživatele, kteří jsou zřízeni ve službě Azure AD pomocí Azure AD Connect. Netýká se pouze cloudových uživatelů.
 
 - Přihlašovací data uživatelů v prohlížečích a v *moderních ověřovacích* klientech. Aplikace nebo cloudové služby, které používají starší verze ověřování, se vrátí do toků federovaného ověřování. Příkladem může být Exchange Online se moderním ověřováním vypnuto nebo Outlook 2010, které nepodporuje moderní ověřování.
+- Velikost skupiny je aktuálně omezená na 50 000 uživatelů.  Pokud máte skupiny větší než 50 000 uživatelů, doporučujeme tuto skupinu rozdělit do několika skupin pro připravené zavedení.
 
 ## <a name="unsupported-scenarios"></a>Nepodporované scénáře
 
@@ -78,6 +80,9 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
 
 - Když poprvé přidáte skupinu zabezpečení pro dvoufázové zavedení, budete omezeni na 200 uživatelů, aby nedocházelo k vypršení časového limitu uživatelského prostředí. Po přidání skupiny můžete podle potřeby přidat do ní další uživatele přímo.
 
+>[!NOTE]
+> Vzhledem k tomu, že koncové body klienta neodesílají pomocné parametry přihlášení, nejsou podporovány pro připravené zavedení.  Aplikace SAML používají koncové body klienta a také nejsou podporovány pro připravené zavedení.
+
 ## <a name="get-started-with-staged-rollout"></a>Začínáme s fází uvedení do provozu
 
 Pokud chcete otestovat přihlášení k *synchronizaci hodnot hash hesel* pomocí připraveného zavedení, postupujte podle pokynů v následující části.
@@ -86,7 +91,7 @@ Informace o tom, které rutiny prostředí PowerShell použít, najdete v témat
 
 ## <a name="pre-work-for-password-hash-sync"></a>Předběžná práce pro synchronizaci hodnot hash hesel
 
-1.  Povolte *synchronizaci hodnot hash hesel*na stránce [volitelné funkce](how-to-connect-install-custom.md#optional-features) v Azure AD Connect. 
+1. Povolte *synchronizaci hodnot hash hesel*na   stránce [volitelné funkce](how-to-connect-install-custom.md#optional-features)   v Azure AD Connect. 
 
    ![Snímek obrazovky se stránkami volitelné funkce v Azure Active Directory Connect](media/how-to-connect-staged-rollout/sr1.png)
 
@@ -112,27 +117,27 @@ Doporučujeme, abyste povolili *bezproblémové přihlašování* bez ohledu na 
 
 ## <a name="pre-work-for-seamless-sso"></a>Předběžná práce pro bezproblémové přihlašování
 
-Pomocí prostředí PowerShell povolte *bezproblémové jednotné přihlašování* v doménových strukturách služby Active Directory. Pokud máte více než jednu doménovou strukturu služby Active Directory, povolte ji pro každou doménovou strukturu jednotlivě.  *Bezproblémové jednotné přihlašování* se aktivuje jenom pro uživatele, kteří jsou vybráni pro připravené zavedení. Nemá vliv na stávající nastavení federace.
+Pomocí prostředí PowerShell povolte *bezproblémové jednotné přihlašování*   v doménových strukturách služby Active Directory. Pokud máte více než jednu doménovou strukturu služby Active Directory, povolte ji pro každou doménovou strukturu jednotlivě.  *Bezproblémové jednotné přihlašování* se aktivuje jenom pro uživatele, kteří jsou vybráni pro připravené zavedení. Nemá vliv na stávající nastavení federace.
 
 Pomocí následujícího postupu povolte *bezproblémové přihlašování* :
 
 1. Přihlaste se k serveru Azure AD Connect.
 
-2. Přejít do složky *% ProgramFiles%\\Microsoft Azure Active Directory Connect.* 
+2. Přejít do složky *% ProgramFiles% \\ Microsoft Azure Active Directory Connect*   .
 
 3. Pomocí následujícího příkazu Importujte modul prostředí PowerShell pro *bezproblémové přihlašování* : 
 
    `Import-Module .\AzureADSSO.psd1`
 
-4. Spusťte PowerShell jako správce. V prostředí PowerShell volejte `New-AzureADSSOAuthenticationContext`. Tento příkaz otevře podokno, kde můžete zadat přihlašovací údaje globálního správce vašeho tenanta.
+4. Spusťte PowerShell jako správce. V prostředí PowerShell volejte  `New-AzureADSSOAuthenticationContext` . Tento příkaz otevře podokno, kde můžete zadat přihlašovací údaje globálního správce vašeho tenanta.
 
-5. Volání `Get-AzureADSSOStatus | ConvertFrom-Json`. Tento příkaz zobrazí seznam doménových struktur služby Active Directory (viz seznam domény), na kterém je tato funkce povolená. Ve výchozím nastavení je nastavena na hodnotu false na úrovni tenanta.
+5. Volání  `Get-AzureADSSOStatus | ConvertFrom-Json` . Tento příkaz zobrazí seznam doménových struktur služby Active Directory (viz seznam domény), na kterém je tato funkce povolená. Ve výchozím nastavení je nastavena na hodnotu false na úrovni tenanta.
 
    ![Příklad výstupu Windows PowerShellu](./media/how-to-connect-staged-rollout/sr3.png)
 
-6. Volání `$creds = Get-Credential`. Na příkazovém řádku zadejte přihlašovací údaje správce domény pro požadovanou doménovou strukturu služby Active Directory.
+6. Volání  `$creds = Get-Credential` . Na příkazovém řádku zadejte přihlašovací údaje správce domény pro požadovanou doménovou strukturu služby Active Directory.
 
-7. Volání `Enable-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz vytvoří účet počítače AZUREADSSOACC z místního řadiče domény pro doménovou strukturu služby Active Directory, která je potřebná pro *bezproblémové jednotné přihlašování*.
+7. Volání `Enable-AzureADSSOForest -OnPremCredentials $creds` . Tento příkaz vytvoří účet počítače AZUREADSSOACC z místního řadiče domény pro doménovou strukturu služby Active Directory, která je potřebná pro *bezproblémové jednotné přihlašování*.
 
 8. *Bezproblémové jednotné přihlašování* vyžaduje, aby adresy URL byly v zóně intranetu. Pokud chcete tyto adresy URL nasadit pomocí zásad skupiny, přečtěte si [rychlý Start: Azure AD bezproblémové jednotné přihlašování](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature).
 
@@ -146,9 +151,9 @@ Pokud chcete zavést konkrétní funkci (*předávací ověřování*, *synchron
 
 Můžete zavést jednu z těchto možností:
 
-- **Možnost nastavení pro** -  + *synchronizaci hodnot hash hesel**bezproblémové jednotné přihlašování*
-- **Option B** - Plynulé*ověřování* + pomocí možnosti B*bezproblémové jednotné přihlašování*
-- **Nepodporovaná** -  + *předávací ověřování* + *synchronizace hodnot hash hesel*–*bezproblémové jednotné přihlašování*
+- **Možnost A**  -  synchronizace hodnot hash *hesel*  +  *bezproblémové jednotné přihlašování*
+- **Možnost B**  -  *předávací ověřování*  +  *bezproblémové jednotné přihlašování*
+- **Nepodporováno**  -  synchronizace hodnot hash *hesel*  +  *předávací ověřování*  +  *bezproblémové jednotné přihlašování*
 
 Udělejte toto:
 

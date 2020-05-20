@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6316165ba08d055be1186995e2fe2ad5a0079fb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78f7c8eb363d791b7109aebced668c1e0a952274
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330725"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636099"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Návod: Přidání výměn deklarací identity REST API do vlastních zásad v Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Interakci můžete také navrhnout jako technický profil ověřování. To je v
 
 ## <a name="prepare-a-rest-api-endpoint"></a>Příprava REST APIho koncového bodu
 
-Pro tento návod byste měli mít REST API, který ověří, jestli je Azure AD B2C objectId uživatele v systému back-end zaregistrovaný. Pokud je zaregistrováno, REST API vrátí zůstatek uživatelského účtu. V opačném případě REST API zaregistruje nový účet v adresáři a vrátí počáteční zůstatek `50.00`.
+Pro tento návod byste měli mít REST API, který ověří, jestli je Azure AD B2C objectId uživatele v systému back-end zaregistrovaný. Pokud je zaregistrováno, REST API vrátí zůstatek uživatelského účtu. V opačném případě REST API zaregistruje nový účet v adresáři a vrátí počáteční zůstatek `50.00` .
 
 Následující kód JSON znázorňuje data Azure AD B2C odešle do vašeho koncového bodu REST API. 
 
@@ -59,7 +59,7 @@ Nastavení koncového bodu REST API je mimo rámec tohoto článku. Vytvořili j
 
 Deklarace identity poskytuje dočasné úložiště dat během provádění zásad Azure AD B2C. Deklarace identity můžete deklarovat v části [schéma deklarací](claimsschema.md) . 
 
-1. Otevřete soubor rozšíření vaší zásady. Například <em> `SocialAndLocalAccounts/` </em>.
+1. Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Vyhledejte element [BuildingBlocks](buildingblocks.md) . Pokud element neexistuje, přidejte jej.
 1. Vyhledejte element [ClaimsSchema](claimsschema.md) . Pokud element neexistuje, přidejte jej.
 1. Do prvku **ClaimsSchema** přidejte následující deklarace identity.  
@@ -77,7 +77,7 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
 
 ## <a name="configure-the-restful-api-technical-profile"></a>Konfigurace technického profilu rozhraní RESTful API 
 
-[Technický profil RESTful](restful-technical-profile.md) poskytuje podporu pro propojení s vlastní službou RESTful. Azure AD B2C odesílá data do služby RESTful v `InputClaims` kolekci a přijímá data zpátky v `OutputClaims` kolekci. V <em>**`TrustFrameworkExtensions.xml`**</em> souboru vyhledejte element **ClaimsProviders** a přidejte nového zprostředkovatele deklarací identity následujícím způsobem:
+[Technický profil RESTful](restful-technical-profile.md) poskytuje podporu pro propojení s vlastní službou RESTful. Azure AD B2C odesílá data do služby RESTful v `InputClaims` kolekci a přijímá data zpátky v `OutputClaims` kolekci. V souboru vyhledejte element **ClaimsProviders** <em>**`TrustFrameworkExtensions.xml`**</em> a přidejte nového zprostředkovatele deklarací identity následujícím způsobem:
 
 ```xml
 <ClaimsProvider>
@@ -109,19 +109,19 @@ Deklarace identity poskytuje dočasné úložiště dat během provádění zás
 </ClaimsProvider>
 ```
 
-V tomto příkladu `userLanguage` se do služby REST pošle jako `lang` v datové části JSON. Hodnota `userLanguage` deklarace identity obsahuje ID jazyka aktuálního uživatele. Další informace najdete v tématu [překladač deklarací identity](claim-resolver-overview.md).
+V tomto příkladu se do `userLanguage` služby REST pošle jako `lang` v datové části JSON. Hodnota `userLanguage` deklarace identity obsahuje ID jazyka aktuálního uživatele. Další informace najdete v tématu [překladač deklarací identity](claim-resolver-overview.md).
 
-Výše uvedené `AuthenticationType` komentáře a `AllowInsecureAuthInProduction` určete změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API RESTful pro produkční prostředí, najdete v tématu [Secure RESTFUL API](secure-rest-api.md).
+Výše uvedené komentáře `AuthenticationType` a `AllowInsecureAuthInProduction` Určete změny, které byste měli dělat při přesunu do produkčního prostředí. Informace o tom, jak zabezpečit rozhraní API RESTful pro produkční prostředí, najdete v tématu [Secure RESTFUL API](secure-rest-api.md).
 
 ## <a name="add-an-orchestration-step"></a>Přidat krok orchestrace
 
 [Cesty uživatelů](userjourneys.md) určují explicitní cesty, pomocí kterých zásada umožňuje aplikaci předávající strany získat požadované deklarace identity pro uživatele. Cesta uživatele je reprezentována jako sekvence orchestrace, která musí následovat po úspěšné transakci. Můžete přidat nebo odečíst kroky orchestrace. V tomto případě přidáte nový krok orchestrace, který se použije k rozšíření informací poskytnutých aplikaci po registraci nebo přihlášení uživatele prostřednictvím volání REST API.
 
-1. Otevřete základní soubor zásad. Například <em> `SocialAndLocalAccounts/` </em>.
+1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> .
 1. Vyhledejte `<UserJourneys>` element. Zkopírujte celý element a pak ho odstraňte.
-1. Otevřete soubor rozšíření vaší zásady. Například <em> `SocialAndLocalAccounts/` </em>.
+1. Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Vložte `<UserJourneys>` do souboru rozšíření za zavřením `<ClaimsProviders>` elementu.
-1. `<UserJourney Id="SignUpOrSignIn">`Vyhledejte a přidejte následující krok orchestrace před poslední.
+1. Vyhledejte `<UserJourney Id="SignUpOrSignIn">` a přidejte následující krok orchestrace před poslední.
 
     ```XML
     <OrchestrationStep Order="7" Type="ClaimsExchange">
@@ -131,7 +131,7 @@ Výše uvedené `AuthenticationType` komentáře a `AllowInsecureAuthInProductio
     </OrchestrationStep>
     ```
 
-1. Refaktorujte poslední krok orchestrace změnou `Order` na. `8` Vaše poslední kroky orchestrace by měly vypadat takto:
+1. Refaktorujte poslední krok orchestrace změnou na `Order` `8` . Vaše poslední kroky orchestrace by měly vypadat takto:
 
     ```XML
     <OrchestrationStep Order="7" Type="ClaimsExchange">
@@ -148,7 +148,7 @@ Výše uvedené `AuthenticationType` komentáře a `AllowInsecureAuthInProductio
 
 ## <a name="include-a-claim-in-the-token"></a>Zahrnutí deklarace identity do tokenu 
 
-Pokud chcete vrátit `balance` deklaraci identity zpátky do aplikace předávající strany, přidejte do <em> `SocialAndLocalAccounts/` </em> souboru výstupní deklaraci identity. Přidáním výstupní deklarace identity se tato deklarace vydá do tokenu po úspěšné cestě uživatele a pošle se do aplikace. Upravte prvek Technical Profile v části předávající strany a přidejte `balance` jako výstupní deklaraci identity.
+Pokud chcete vrátit `balance` deklaraci identity zpátky do aplikace předávající strany, přidejte do souboru výstupní deklaraci identity <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> . Přidáním výstupní deklarace identity se tato deklarace vydá do tokenu po úspěšné cestě uživatele a pošle se do aplikace. Upravte prvek Technical Profile v části předávající strany a přidejte `balance` jako výstupní deklaraci identity.
  
 ```xml
 <RelyingParty>
@@ -177,14 +177,14 @@ Uložte soubory, které jste změnili: *TrustFrameworkBase. XML*a *TrustFramewor
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **architekturu prostředí identity**.
 1. Vyberte **Odeslat vlastní zásadu**a pak nahrajte soubory zásad, které jste změnili: *TrustFrameworkBase. XML*a *TrustFrameworkExtensions. XML*, *SignUpOrSignin. XML*, *ProfileEdit. XML*a *PasswordReset. XML*. 
 1. Vyberte zásadu registrace nebo přihlašování, kterou jste nahráli, a klikněte na tlačítko **Spustit** .
 1. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy nebo účtu Facebook.
-1. Token, který se odesílá zpátky do vaší aplikace `balance` , zahrnuje deklaraci identity.
+1. Token, který se odesílá zpátky do vaší aplikace, zahrnuje `balance` deklaraci identity.
 
 ```json
 {
@@ -209,9 +209,6 @@ Uložte soubory, které jste změnili: *TrustFrameworkBase. XML*a *TrustFramewor
   ...
 }
 ```
-
-## <a name="next-steps"></a>Další kroky
-
 
 ## <a name="next-steps"></a>Další kroky
 

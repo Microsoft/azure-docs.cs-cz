@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6a6cc8e5931f3e29c242f51a6e062441953228ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337412"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636987"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Integrace REST APIch výměn deklarací identity do vlastních zásad Azure AD B2C
 
@@ -74,7 +74,7 @@ Když je nakonfigurovaná možnost **tělo** , REST API Technical profil vám um
 
 ## <a name="receiving-data"></a>Příjem dat
 
-`OutputClaims` Element [RESTful Technical profil](restful-technical-profile.md) obsahuje seznam deklarací identity vrácených REST API. Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v REST API. Můžete také zahrnout deklarace identity, které nevrací poskytovatel REST API identity, pokud nastavíte atribut DefaultValue.
+`OutputClaims`Element [RESTful Technical profil](restful-technical-profile.md) obsahuje seznam deklarací identity vrácených REST API. Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v REST API. Můžete také zahrnout deklarace identity, které nevrací poskytovatel REST API identity, pokud nastavíte atribut DefaultValue.
 
 Výstupní deklarace identity, které analyzuje Poskytovatel deklarací RESTful, vždycky očekávají, že by se měla analyzovat nepřímá odpověď těla těla JSON, jako například:
 
@@ -162,7 +162,7 @@ V technickém profilu RESTful můžete chtít odeslat jazyk/národní prostřed�
 
 ## <a name="handling-error-messages"></a>Manipulace s chybovými zprávami
 
-Vaše REST API může potřebovat vrátit chybovou zprávu, například "uživatel nebyl nalezen v systému CRM". Pokud dojde k chybě, REST API by měla vracet chybovou zprávu HTTP 409 (kód stavu odpovědi na konflikt). Další informace najdete v tématu [RESTful Technical Profile](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster&anchor=returning-error-message).
+Vaše REST API může potřebovat vrátit chybovou zprávu, například "uživatel nebyl nalezen v systému CRM". Pokud dojde k chybě, REST API by měla vracet chybovou zprávu HTTP 409 (kód stavu odpovědi na konflikt). Další informace najdete v tématu [RESTful Technical Profile](restful-technical-profile.md#returning-error-message).
 
 Toho lze dosáhnout pouze voláním REST API Technical Profile z technického profilu ověření. To umožňuje uživateli opravovat data na stránce a znovu spustit ověřování po odeslání stránky.
 

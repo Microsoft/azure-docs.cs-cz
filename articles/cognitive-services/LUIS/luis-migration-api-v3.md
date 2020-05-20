@@ -2,14 +2,14 @@
 title: Změny koncového bodu předpovědi v rozhraní V3 API
 description: Rozhraní API pro koncový bod pro předpověď dotazu se změnila. Tento průvodce vám pomůže pochopit, jak migrovat na rozhraní API koncového bodu verze 3.
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d6e5981bcdc81383454c65d3cf7b6c1195b70a4a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81530381"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653860"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Předpověď změn koncového bodu pro v3
 
@@ -39,7 +39,7 @@ Hodnota V3 provedla v rámci přechodu na GA následující změny:
     * [OrdinalV1](luis-reference-prebuilt-ordinal.md)
     * [GeographyV2](luis-reference-prebuilt-geographyv2.md)
     * [DatetimeV2](luis-reference-prebuilt-datetimev2.md)
-    * S měřitelnou příponou klíče `units` jednotky z na`unit`
+    * S měřitelnou příponou klíče jednotky z `units` na`unit`
 
 * Změna JSON textu požadavku:
     * od `preferExternalEntities` do`preferExternalEntities`
@@ -73,16 +73,9 @@ Předpokládané rozhraní API v2 nebude zastaralé po dobu nejméně 9 měsíc�
 
 ### <a name="changes-by-slot-name-and-version-name"></a>Změny podle názvu slotu a názvu verze
 
-Byl změněn formát volání rozhraní HTTP koncového bodu v3.
+Byl změněn [Formát volání rozhraní HTTP koncového bodu V3](developer-reference-resource.md#rest-endpoints) .
 
-Pokud se chcete dotazovat podle verze, musíte nejdřív [publikovat přes rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) pomocí `"directVersionPublish":true`. Dotaz na koncový bod odkazující na ID verze místo názvu slotu.
-
-|PREDIKTIVNÍ VERZE ROZHRANÍ API|Metoda|zprostředkovatele identity|
-|--|--|--|
-|Technologie|GET|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>předpověď</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-Name}</b>/Predict? dotaz =<b>{Query}</b>|
-|Technologie|POST|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>předpověď</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Slots/<b>{slot-Name}</b>/Predict|
-|V2|GET|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>předpověď</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{Version-ID}</b>/Predict? dotaz =<b>{Query}</b>|
-|V2|POST|https://<b>{region}</b>. API.Cognitive.Microsoft.com/Luis/<b>předpověď</b>/<b>v 3.0</b>/Apps/<b>{App-ID}</b>/Versions/<b>{Version-ID}</b>/Predict|
+Pokud se chcete dotazovat podle verze, musíte nejdřív [publikovat přes rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) pomocí `"directVersionPublish":true` . Dotaz na koncový bod odkazující na ID verze místo názvu slotu.
 
 |Platné hodnoty pro`SLOT-NAME`|
 |--|
@@ -95,12 +88,12 @@ Pokud se chcete dotazovat podle verze, musíte nejdřív [publikovat přes rozhr
 
 Rozhraní API V3 má jiné parametry řetězce dotazu.
 
-|Název param|Typ|Version|Výchozí|Účel|
+|Název param|Typ|Verze|Výchozí|Účel|
 |--|--|--|--|--|
 |`log`|Boolean|V2 & V3|false (nepravda)|Dotaz na uložení v souboru protokolu. Výchozí hodnota je false.|
 |`query`|řetězec|Jenom V3|Žádná výchozí hodnota – v žádosti GET se vyžaduje.|**V v2**je utterance, který má být předpovězen, v `q` parametru. <br><br>**V v3**je funkce předána do `query` parametru.|
-|`show-all-intents`|Boolean|Jenom V3|false (nepravda)|Vrátí všechny záměry s odpovídajícím skóre v objektu **předpověď. záměrs** . Záměry jsou vráceny jako objekty v nadřazeném `intents` objektu. To umožňuje programový přístup bez nutnosti najít záměr v poli: `prediction.intents.give`. V v2 byly vráceny v poli. |
-|`verbose`|Boolean|V2 & V3|false (nepravda)|**V v2**při nastavení na hodnotu true byly vráceny všechny předpovězené záměry. Pokud potřebujete všechny předpovídané záměry, použijte parametr V3 `show-all-intents`.<br><br>**V v3**tento parametr poskytuje pouze podrobnosti o metadatech entit pro předpovědi entit.  |
+|`show-all-intents`|Boolean|Jenom V3|false (nepravda)|Vrátí všechny záměry s odpovídajícím skóre v objektu **předpověď. záměrs** . Záměry jsou vráceny jako objekty v nadřazeném `intents` objektu. To umožňuje programový přístup bez nutnosti najít záměr v poli: `prediction.intents.give` . V v2 byly vráceny v poli. |
+|`verbose`|Boolean|V2 & V3|false (nepravda)|**V v2**při nastavení na hodnotu true byly vráceny všechny předpovězené záměry. Pokud potřebujete všechny předpovídané záměry, použijte parametr V3 `show-all-intents` .<br><br>**V v3**tento parametr poskytuje pouze podrobnosti o metadatech entit pro předpovědi entit.  |
 |`timezoneOffset`|řetězec|V2|-|Časové pásmo bylo použito pro datetimeV2 entity.|
 |`datetimeReference`|řetězec|Technologie|-|[Časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) bylo použito pro datetimeV2 entity. Nahrazuje `timezoneOffset` z v2.|
 
@@ -119,7 +112,7 @@ Rozhraní API V3 má jiné parametry řetězce dotazu.
 }
 ```
 
-|Vlastnost|Typ|Version|Výchozí|Účel|
+|Vlastnost|Typ|Verze|Výchozí|Účel|
 |--|--|--|--|--|
 |`dynamicLists`|pole|Jenom V3|Nepožadováno.|[Dynamické seznamy](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) umožňují rozšiřování existující entity vyškolené a publikované seznamu, která už je v aplikaci Luis.|
 |`externalEntities`|pole|Jenom V3|Nepožadováno.|[Externí entity](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) poskytují vaší aplikaci Luis schopnost identifikovat a označovat entity za běhu, které se dají použít jako funkce pro stávající entity. |
@@ -160,7 +153,7 @@ Horních vlastností JSON pro v3 jsou:
 }
 ```
 
-`intents` Objekt je neuspořádaný seznam. Nepředpokládáme, že první podřízená `intents` položka v odpovídá `topIntent`. Místo toho použijte `topIntent` hodnotu k nalezení skóre:
+`intents`Objekt je neuspořádaný seznam. Nepředpokládáme, že první podřízená položka v `intents` odpovídá `topIntent` . Místo toho použijte `topIntent` hodnotu k nalezení skóre:
 
 ```nodejs
 const topIntentName = response.prediction.topIntent;
@@ -169,18 +162,18 @@ const score = intents[topIntentName];
 
 Změny schématu JSON odpovědi umožňují:
 
-* Jasně rozlišovat mezi původními utterance `query`, a vrácenou předpověď `prediction`.
+* Jasně rozlišovat mezi původními utterance, `query` a vrácenou předpověď `prediction` .
 * Jednodušší programový přístup k předpokládaným datům. Místo vytváření výčtu pomocí pole ve verzi v2 můžete získat přístup k hodnotám podle **názvu** pro oba záměry a entity. U předpokládaných rolí entit se vrátí název role, protože je v celé aplikaci jedinečný.
 * Jsou respektovány datové typy, pokud jsou určeny. Číselné znaky již nejsou vraceny jako řetězce.
-* Rozdíl mezi informacemi o předpovědi první priority a dalšími metadaty, které `$instance` jsou vráceny v objektu.
+* Rozdíl mezi informacemi o předpovědi první priority a dalšími metadaty, které jsou vráceny v `$instance` objektu.
 
 ### <a name="entity-response-changes"></a>Změny odezvy entity
 
 #### <a name="marking-placement-of-entities-in-utterances"></a>Označení umístění entit v projevy
 
-**V v2**byla entita označena v utterance s `startIndex` a. `endIndex`
+**V v2**byla entita označena v utterance s `startIndex` a `endIndex` .
 
-**V v3**je entita označena pomocí `startIndex` a. `entityLength`
+**V v3**je entita označena pomocí `startIndex` a `entityLength` .
 
 #### <a name="access-instance-for-entity-metadata"></a>Přístup `$instance` k metadatům entit
 
@@ -188,7 +181,7 @@ Pokud potřebujete metadata entity, řetězec dotazu musí používat `verbose=t
 
 #### <a name="each-predicted-entity-is-represented-as-an-array"></a>Každá předpovězená entita se reprezentuje jako pole.
 
-`prediction.entities.<entity-name>` Objekt obsahuje pole, protože každou entitu lze v utterance předpovědět více než jednou.
+`prediction.entities.<entity-name>`Objekt obsahuje pole, protože každou entitu lze v utterance předpovědět více než jednou.
 
 <a name="prebuilt-entities-with-new-json"></a>
 
@@ -222,7 +215,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 V v2 `entities` pole vrátilo všechny předpovězené entity s názvem entity, který je jedinečný identifikátor. Pokud ve verzi V3 používá entita role a předpověď je pro roli entity, primární identifikátor je název role. To je možné, protože názvy rolí entit musí být v celé aplikaci jedinečné, včetně jiných názvů modelů (záměr, entita).
 
-V následujícím příkladu: Zvažte utterance, který obsahuje text, `Yellow Bird Lane`. Tento text je předpovězen jako role vlastní `Location` entity. `Destination`
+V následujícím příkladu: Zvažte utterance, který obsahuje text, `Yellow Bird Lane` . Tento text je předpovězen jako `Location` role vlastní entity `Destination` .
 
 |Utterance text|Název entity|Název role|
 |--|--|--|

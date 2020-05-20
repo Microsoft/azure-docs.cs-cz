@@ -1,6 +1,6 @@
 ---
-title: Změna velikosti disku s operačním systémem pomocí oddílu GPT | Microsoft Docs
-description: Tento článek poskytuje pokyny k změně velikosti disku s operačním systémem pomocí oddílu GPT.
+title: Změna velikosti disku s operačním systémem, který má oddíl GPT | Microsoft Docs
+description: Tento článek obsahuje pokyny k změně velikosti disku s operačním systémem, který má oddíl GPT.
 services: virtual-machines-linux
 documentationcenter: ''
 author: kailashmsft
@@ -14,27 +14,27 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: f863233f0a34271841cc8e973f9aa3ca9416ceeb
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 7c408e8e29b3f9ac423a6104c40242f11f93a171
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858987"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651086"
 ---
-# <a name="resize-an-os-disk-with-a-gpt-partition"></a>Změna velikosti disku s operačním systémem pomocí oddílu GPT
+# <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>Změna velikosti disku s operačním systémem, který má oddíl GPT
 
 > [!NOTE]
-> Tento scénář se vztahuje jenom na disk s operačním systémem s oddílem GPT.
+> Tento scénář se vztahuje jenom na disky s operačním systémem, které mají oddíl GPT (GUID Partition Table).
 
-Tento článek popisuje, jak zvětšit velikost disku s operačním systémem pomocí oddílu GPT v systému Linux.
+Tento článek popisuje, jak zvětšit velikost disku s operačním systémem, který má oddíl GPT v systému Linux. 
 
 ## <a name="identify-whether-the-os-disk-has-an-mbr-or-gpt-partition"></a>Určení, jestli disk s operačním systémem má oddíl MBR nebo GPT
 
-Pomocí příkazu **, který jste** vytvořili, zjistěte, jestli byl diskový oddíl vytvořený pomocí oddílu MBR (Master Boot Record), nebo oddílu GPT (GUID Partition Table).
+Pomocí příkazu, který jste **vytvořili, zjistěte** , jestli byl diskový oddíl vytvořený pomocí oddílu MBR (Master Boot Record) nebo oddílu GPT.
 
 ### <a name="mbr-partition"></a>Oddíl MBR
 
-V následujícím výstupu **tabulka oddílů** zobrazuje hodnotu **MSDOS**a identifikuje oddíl **MBR** .
+V následujícím výstupu **tabulka oddílů** zobrazuje hodnotu **MSDOS**. Tato hodnota identifikuje oddíl MBR.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -50,7 +50,7 @@ Number  Start   End     Size    Type     File system  Flags
 
 ### <a name="gpt-partition"></a>Oddíl GPT
 
-V následujícím výstupu **tabulka oddílů** zobrazuje hodnotu **GPT**, která identifikuje oddíl GPT.
+V následujícím výstupu **tabulka oddílů** zobrazuje hodnotu **GPT**. Tato hodnota identifikuje oddíl GPT.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -76,16 +76,16 @@ Následující pokyny se vztahují na distribuce schválené systémem Linux.
 > [!NOTE]
 > Než budete pokračovat, vytvořte si záložní kopii virtuálního počítače nebo si poznamenejte disk s operačním systémem.
 
-### <a name="ubuntu-16x-and-18x"></a>Ubuntu 16. x a 18. x
+### <a name="ubuntu"></a>Ubuntu
 
 Chcete-li zvětšit velikost disku s operačním systémem v Ubuntu 16. x a 18. x:
 
 1. Zastavte virtuální počítač.
-1. Zvětšete velikost OSDisk z portálu.
+1. Zvětšete velikost disku s operačním systémem z portálu.
 1. Restartujte virtuální počítač a pak se přihlaste k virtuálnímu počítači jako uživatel **root** .
-1. V OSDisk se teď zobrazí zvětšená velikost systému souborů.
+1. Ověřte, že disk s operačním systémem teď zobrazuje zvýšenou velikost systému souborů.
 
-Jak ukazuje následující příklad, velikost disku s operačním systémem se změnila z portálu na 100 GB, protože systém souborů **/dev/sda1** se **/** teď zobrazuje 97 GB.
+Jak je znázorněno v následujícím příkladu, změnila se velikost disku s operačním systémem z portálu na 100 GB. **/Dev/sda1** systém souborů, který je připojen k systému, **/** nyní zobrazuje 97 GB.
 
 ```
 user@myvm:~# df -Th
@@ -102,17 +102,17 @@ tmpfs          tmpfs      65M     0   65M   0% /run/user/1000
 user@myvm:~#
 ```
 
-### <a name="suse-12-sp4suse-sles-12-for-sap-suse-sles-15-and-suse-sles-15-for-sap"></a>SUSE 12 SP4, SUSE SLES 12 pro SAP, SUSE SLES 15 a SUSE SLES 15 pro SAP
+### <a name="suse"></a>SUSE
 
-Pokud chcete zvětšit velikost disku s operačním systémem v SUSE 12 SP4, SUSE SLES 15 a SUSE SLES 15 pro SAP:
+Pokud chcete zvětšit velikost disku s operačním systémem v SUSE 12 SP4, SUSE SLES 12 pro SAP, SUSE SLES 15 a SUSE SLES 15 pro SAP:
 
 1. Zastavte virtuální počítač.
-1. Zvětšete velikost OSDisk z portálu.
+1. Zvětšete velikost disku s operačním systémem z portálu.
 1. Restartujte virtuální počítač.
 
 Po restartování virtuálního počítače proveďte následující kroky:
 
-   1. K VIRTUÁLNÍmu počítači se dostanete jako **uživatel s kořenovým adresářem** pomocí následujícího příkazu:
+   1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel **root** pomocí tohoto příkazu:
    
       `#sudo su`
 
@@ -124,11 +124,11 @@ Po restartování virtuálního počítače proveďte následující kroky:
 
       `#sgdisk -e /dev/sda`
 
-   1. Změňte velikost oddílu, aniž byste ho odstranili, a to pomocí následujícího příkazu. Rozdělený **příkaz má** možnost s názvem **resizepart** pro změnu velikosti oddílu bez jeho odstranění. Počet 4 po resizepart indikuje změnu velikosti čtvrtého oddílu (4).
+   1. Změňte velikost oddílu, aniž byste ho odstranili pomocí následujícího příkazu. Rozdělený **příkaz má** možnost s názvem **resizepart** pro změnu velikosti oddílu bez jeho odstranění. Počet 4 po **resizepart** indikuje změnu velikosti čtvrtého oddílu.
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
 
-   1. Spusťte `#lsblk` příkaz a ověřte, zda byl oddíl zvětšen.
+   1. Spusťte příkaz **#lsblk** a ověřte, zda byl oddíl zvětšen.
 
       Následující výstup ukazuje, že se změnila velikost oddílu **/dev/sda4** na 98,5 GB.
 
@@ -143,7 +143,7 @@ Po restartování virtuálního počítače proveďte následující kroky:
       └─sdb1   8:17   0   20G  0 part /mnt/resource
       ```
       
-   1. Určete typ systému souborů v OSDisk pomocí následujícího příkazu:
+   1. Určete typ systému souborů na disku s operačním systémem pomocí následujícího příkazu:
 
       `blkid`
 
@@ -208,17 +208,19 @@ Po restartování virtuálního počítače proveďte následující kroky:
       user@myvm:~ #
       ```
 
-Jak je znázorněno v předchozím příkladu, můžeme vidět, že velikost systému souborů pro OSDisk se zvýšila.
+V předchozím příkladu vidíte, že se zvýšila velikost systému souborů pro disk s operačním systémem.
 
-### <a name="rhel-7x-with-lvm"></a>RHEL 7. x s LVM
+### <a name="rhel"></a>RHEL
+
+Chcete-li zvětšit velikost disku s operačním systémem v RHEL 7. x s LVM:
 
 1. Zastavte virtuální počítač.
-1. Zvětšete velikost OSDisk z portálu.
+1. Zvětšete velikost disku s operačním systémem z portálu.
 1. Spusťte virtuální počítač.
 
 Po restartování virtuálního počítače proveďte následující kroky:
 
-   1. K VIRTUÁLNÍmu počítači se dostanete jako **uživatel s kořenovým adresářem** pomocí následujícího příkazu:
+   1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel **root** pomocí tohoto příkazu:
    
       `#sudo su`
 
@@ -230,7 +232,7 @@ Po restartování virtuálního počítače proveďte následující kroky:
 
       `#sgdisk -e /dev/sda`
 
-   1. Změňte velikost oddílu, aniž byste ho odstranili, a to pomocí následujícího příkazu. Rozdělený **příkaz má** možnost s názvem **resizepart** pro změnu velikosti oddílu bez jeho odstranění. Počet 4 po resizepart indikuje změnu velikosti čtvrtého oddílu (4).
+   1. Změňte velikost oddílu, aniž byste ho odstranili pomocí následujícího příkazu. Rozdělený **příkaz má** možnost s názvem **resizepart** pro změnu velikosti oddílu bez jeho odstranění. Počet 4 po **resizepart** indikuje změnu velikosti čtvrtého oddílu.
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
     
@@ -259,7 +261,7 @@ Po restartování virtuálního počítače proveďte následující kroky:
       └─sdb1              8:17   0   50G  0 part /mnt/resource
       ```
 
-   1. Chcete-li změnit velikost **fyzického svazku (souč_hod)**, použijte následující příkaz:
+   1. Chcete-li změnit velikost fyzického svazku (souč_hod), použijte následující příkaz:
 
       `#pvresize /dev/sda4`
 
@@ -275,7 +277,7 @@ Po restartování virtuálního počítače proveďte následující kroky:
       /dev/sda4  rootvg lvm2 a--  <99.02g <74.02g
       ```
 
-   1. V následujícím příkladu `/dev/mapper/rootvg-rootlv` se mění velikost z 2 GB na 12GB (zvýšení 10 GB) pomocí následujícího příkazu, ve kterém se také změní velikost systému souborů:
+   1. V následujícím příkladu se velikost **/dev/Mapper/rootvg-rootlv** mění z 2 GB na 12 GB (zvýšení velikosti 10 GB) prostřednictvím následujícího příkazu. Tento příkaz změní také velikost systému souborů.
 
       `#lvresize -r -L +10G /dev/mapper/rootvg-rootlv`
 
@@ -297,7 +299,7 @@ Po restartování virtuálního počítače proveďte následující kroky:
       data blocks changed from 524288 to 3145728
       ```
          
-   1. Ověřte, `/dev/mapper/rootvg-rootlv` zda se zvýšila velikost systému souborů nebo nepoužívá následující příkaz:
+   1. Pomocí následujícího příkazu ověřte, zda má **/dev/Mapper/rootvg-rootlv** zvýšenou velikost systému souborů:
 
       `#df -Th /`
 
@@ -310,8 +312,8 @@ Po restartování virtuálního počítače proveďte následující kroky:
       [user@myvm ~]#
       ```
 
-      > [!NOTE]
-      > Chcete-li použít stejný postup pro změnu velikosti jakéhokoli jiného logického svazku, změňte název **LV** v kroku 7.
+   > [!NOTE]
+   > Chcete-li použít stejný postup pro změnu velikosti jakéhokoli jiného logického svazku, změňte název **LV** v kroku 7.
 
 ## <a name="next-steps"></a>Další kroky
 

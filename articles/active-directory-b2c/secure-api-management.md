@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2019
+ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ffadca550a3a28b0ab490dd43c3b884602c93df
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186926"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638484"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpečení rozhraní API služby Azure API Management pomocí Azure AD B2C
 
@@ -39,7 +39,7 @@ K získání ID aplikace můžete použít aktuální prostředí **aplikací** 
 
 #### <a name="applications"></a>[Aplikace](#tab/applications/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **aplikace**.
@@ -47,7 +47,7 @@ K získání ID aplikace můžete použít aktuální prostředí **aplikací** 
 
 #### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte kartu **vlastněné aplikace** .
@@ -69,15 +69,15 @@ Dále Získejte dobře známou adresu URL konfigurace pro některý z vašich Az
 1. Výběrem hypertextového odkazu přejděte na stránku dobře známou konfiguraci OpenID Connect.
 1. Na stránce, která se otevře v prohlížeči, zaznamenejte `issuer` hodnotu například:
 
-    `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
+    `https://<tenant-name>.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
     Tuto hodnotu použijete v další části při konfiguraci rozhraní API v Azure API Management.
 
-Teď byste měli mít zaznamenané dvě adresy URL pro použití v další části: OpenID Connected a adresa URL koncového bodu konfigurace a identifikátor URI vystavitele. Příklad:
+Teď byste měli mít zaznamenané dvě adresy URL pro použití v další části: OpenID Connected a adresa URL koncového bodu konfigurace a identifikátor URI vystavitele. Například:
 
 ```
-https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1
-https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
+https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_signupsignin1/v2.0/.well-known/openid-configuration
+https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 ```
 
 ## <a name="configure-inbound-policy-in-azure-api-management"></a>Konfigurace příchozí zásady v Azure API Management
@@ -88,23 +88,23 @@ Nyní jste připraveni přidat příchozí zásadu v Azure API Management, kter�
 1. Vyberte **Rozhraní API**.
 1. Vyberte rozhraní API, které chcete zabezpečit pomocí Azure AD B2C.
 1. Vyberte kartu **Návrh**.
-1. V části **příchozí zpracování**vyberte ** \< / ** otevřít Editor kódu zásad.
-1. Do `<inbound>` zásady umístěte `<validate-jwt>` následující značku.
+1. V části **příchozí zpracování**vyberte **\</\>** otevřít Editor kódu zásad.
+1. Do zásady umístěte následující `<validate-jwt>` značku `<inbound>` .
 
     1. Aktualizujte `url` hodnotu v `<openid-config>` prvku o dobře známou adresu URL konfigurace vaší zásady.
-    1. Aktualizujte `<audience>` element s ID aplikace aplikace, kterou jste vytvořili dříve v tenantovi B2C (například *WebApp1*).
+    1. Aktualizujte `<audience>` element s ID aplikace aplikace, kterou jste vytvořili dříve v TENANTOVI B2C (například *WebApp1*).
     1. Aktualizujte `<issuer>` element pomocí koncového bodu vystavitele tokenu, který jste si poznamenali
 
     ```xml
     <policies>
         <inbound>
             <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-                <openid-config url="https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1" />
+                <openid-config url="https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_signupsignin1/v2.0/.well-known/openid-configuration" />
                 <audiences>
                     <audience>44444444-0000-0000-0000-444444444444</audience>
                 </audiences>
                 <issuers>
-                    <issuer>https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
+                    <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
                 </issuers>
             </validate-jwt>
             <base />
@@ -129,12 +129,12 @@ Nejdřív potřebujete token vydaný Azure AD B2C, který se má použít v `Aut
 1. V části **zásady**vyberte **toky uživatelů (zásady)**.
 1. Vyberte existující tok uživatelů registrace nebo přihlašování, například *B2C_1_signupsignin1*.
 1. V případě **aplikace**vyberte *WebApp1*.
-1. V možnosti **Adresa URL odpovědi**vyberte `https://jwt.ms`.
+1. V možnosti **Adresa URL odpovědi**vyberte `https://jwt.ms` .
 1. Vyberte **Spustit tok uživatele**.
 
     ![Spustit stránku Flow uživatele pro registraci uživatelského toku přihlášení v Azure Portal](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
 
-1. Dokončete proces přihlašování. Měli byste být přesměrováni `https://jwt.ms`na.
+1. Dokončete proces přihlašování. Měli byste být přesměrováni na `https://jwt.ms` .
 1. Poznamenejte si hodnotu kódovaného tokenu, která se zobrazí v prohlížeči. Tuto hodnotu tokenu použijete pro autorizační hlavičku v poli post.
 
     ![Hodnota kódovaného tokenu zobrazená na jwt.ms](media/secure-apim-with-b2c-token/jwt-ms-01-token.png)
@@ -146,7 +146,7 @@ Klientská aplikace (v tomto případě), která volá publikované rozhraní AP
 1. V [Azure Portal](https://portal.azure.com)přejděte do instance služby Azure API Management.
 1. Vyberte **Předplatná**.
 1. Vyberte tři tečky pro **produkt: neomezeno**a pak vyberte **Zobrazit/skrýt klíče**.
-1. Zaznamenejte **primární klíč** pro daný produkt. Tento klíč použijete pro hlavičku `Ocp-Apim-Subscription-Key` v žádosti HTTP v poli post.
+1. Zaznamenejte **primární klíč** pro daný produkt. Tento klíč použijete pro `Ocp-Apim-Subscription-Key` hlavičku v žádosti HTTP v poli post.
 
 ![Stránka klíče předplatného s vybranými možnostmi Zobrazit/skrýt klíče v Azure Portal](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
 
@@ -154,15 +154,15 @@ Klientská aplikace (v tomto případě), která volá publikované rozhraní AP
 
 Po nahrání přístupového tokenu a klíče předplatného APIM jste teď připraveni otestovat, jestli jste správně nakonfigurovali zabezpečený přístup k rozhraní API.
 
-1. Vytvoří novou `GET` žádost v [post](https://www.getpostman.com/). V poli Adresa URL požadavku Zadejte koncový bod seznamu mluvčího rozhraní API, které jste publikovali jako jeden z požadovaných součástí. Příklad:
+1. Vytvoří novou `GET` žádost v [post](https://www.getpostman.com/). V poli Adresa URL požadavku Zadejte koncový bod seznamu mluvčího rozhraní API, které jste publikovali jako jeden z požadovaných součástí. Například:
 
     `https://contosoapim.azure-api.net/conference/speakers`
 
 1. Dále přidejte následující hlavičky:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     | --- | ----- |
-    | `Authorization` | Hodnota kódovaného tokenu, kterou jste si poznamenali dříve, s `Bearer ` předponou (uveďte místo za "nosič") |
+    | `Authorization` | Hodnota kódovaného tokenu, kterou jste si poznamenali dříve, s předponou `Bearer ` (uveďte místo za "nosič") |
     | `Ocp-Apim-Subscription-Key` | APIM klíč předplatného, který jste si dříve poznamenal |
 
     Adresa URL požadavku **Get** a **záhlaví** by se měly zobrazit podobně jako:
@@ -213,11 +213,11 @@ Teď, když jste udělali úspěšnou žádost, otestujte případ selhání, ab
     }
     ```
 
-Pokud se `401` zobrazí stavový kód, ověřili jste, že úspěšné požadavky na rozhraní API Azure API Management můžou provádět jenom volající s platným přístupovým tokenem vydaným Azure AD B2C.
+Pokud se zobrazí `401` stavový kód, ověřili jste, že úspěšné požadavky na rozhraní API Azure API Management můžou provádět jenom volající s platným přístupovým tokenem vydaným Azure AD B2C.
 
 ## <a name="support-multiple-applications-and-issuers"></a>Podpora více aplikací a vystavitelů
 
-Několik aplikací obvykle komunikuje s jedním REST API. Pokud chcete povolit rozhraní API pro přijímání tokenů, které jsou určené pro víc aplikací, přidejte `<audiences>` jejich ID do prvku ve APIM příchozích zásadách.
+Několik aplikací obvykle komunikuje s jedním REST API. Pokud chcete povolit rozhraní API pro přijímání tokenů, které jsou určené pro víc aplikací, přidejte jejich ID do `<audiences>` prvku ve APIM příchozích zásadách.
 
 ```XML
 <!-- Accept tokens intended for these recipient applications -->
@@ -227,12 +227,12 @@ Několik aplikací obvykle komunikuje s jedním REST API. Pokud chcete povolit r
 </audiences>
 ```
 
-Podobně pokud chcete podporovat více vystavitelů tokenů, přidejte jejich identifikátory URI `<issuers>` koncového bodu do elementu v zásadách příchozího APIM.
+Podobně pokud chcete podporovat více vystavitelů tokenů, přidejte jejich identifikátory URI koncového bodu do `<issuers>` elementu v zásadách příchozího APIM.
 
 ```XML
 <!-- Accept tokens from multiple issuers -->
 <issuers>
-    <issuer>https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
+    <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
     <issuer>https://login.microsoftonline.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
 </issuers>
 ```
@@ -253,14 +253,14 @@ Následující příklad APIM příchozí zásady znázorňuje, jak přijímat t
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-            <openid-config url="https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1" />
+            <openid-config url="https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_signupsignin1/v2.0/.well-known/openid-configuration" />
             <audiences>
                 <audience>44444444-0000-0000-0000-444444444444</audience>
                 <audience>66666666-0000-0000-0000-666666666666</audience>
             </audiences>
             <issuers>
                 <issuer>https://login.microsoftonline.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
-                <issuer>https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
+                <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
             </issuers>
         </validate-jwt>
         <base />

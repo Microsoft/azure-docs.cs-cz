@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 7cbe0015eeb9b46cd72496a220ce7f7d094cb61d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: dd5ca3c52364813a9aabe3db821c4f7e094fa637
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198556"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634138"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -91,7 +91,7 @@ Zálohy, ke kterým dojde před dobou uchovávání, se automaticky vyprázdní 
 Azure SQL Database počítá vaše celkové úložiště zálohování v rámci uchovávání jako kumulativní hodnotu. Každou hodinu se tato hodnota oznamuje fakturačnímu kanálu Azure, který zodpovídá za agregaci tohoto hodinového využití za účelem výpočtu spotřeby na konci každého měsíce. Po vyřazení databáze se spotřeba sníží jako stáří zálohování. Až budou zálohy starší než doba uchovávání, fakturace se zastaví.
 
    > [!IMPORTANT]
-   > Zálohy databáze se uchovávají po určenou dobu uchování, a to i v případě, že databáze byla vyřazena. Při vyřazování a opětovném vytváření databáze se může často ušetřit náklady na úložiště a výpočetní výkon, protože společnost Microsoft uchovává zálohu pro zadanou dobu uchování (což je 7 dní) pro každou vyřazenou databázi pokaždé, když je zahozena.
+   > Zálohy databáze se uchovávají po určenou dobu uchování, a to i v případě, že databáze byla vyřazena. Při vyřazování a opětovném vytváření databáze se může často ušetřit náklady na úložiště a výpočetní výkon, protože společnost Microsoft uchovává zálohu pro zadanou dobu uchování pro každou vyřazenou databázi pokaždé, když je zahozena.
 
 ### <a name="monitor-consumption"></a>Monitorovat spotřebu
 
@@ -149,6 +149,9 @@ Pokud potřebujete uchovat zálohy po dobu delší, než je maximální doba uch
 
 > [!IMPORTANT]
 > Pokud odstraníte server SQL Azure, který je hostitelem databází SQL, odstraní se také všechny fondy elastické databáze a databáze patřící do serveru. Nelze je obnovit. Odstraněný Server nelze obnovit. Pokud jste ale nakonfigurovali dlouhodobou dobu uchovávání, zálohy pro databáze s LTR se neodstraní a tyto databáze je možné obnovit.
+
+> [!NOTE]
+> Minimální doba uchovávání záloh PITR, kterou je možné nakonfigurovat pro jednotlivé databáze ve fondu a spravované isntances prostřednictvím Azure Portal je 7 dní. Minimální doba uchovávání záloh PITR 1 den se dá nakonfigurovat jenom pro spravovanou instanci pomocí PowerShellu s AS. modul SQL Module v 2.6.0 nebo vyšším.
 
 ## <a name="encrypted-backups"></a>Šifrovaná zálohování
 

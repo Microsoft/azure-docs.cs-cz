@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 054f1449d6f06225633bf0647cac93ca42f2b59b
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929005"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652049"
 ---
 # <a name="azure-stack-edge-technical-specifications"></a>Technické specifikace Azure Stack Edge
 
-Hardwarové součásti Microsoft Azure Stack hraničního zařízení vyhovují technickým specifikacím a regulativním normám, které jsou uvedené v tomto článku. Technické specifikace popisují jednotky zdroje napájení (PSUs), kapacitu úložiště, skříně a environmentální standardy. 
+Hardwarové součásti Microsoft Azure Stack hraničního zařízení vyhovují technickým specifikacím a regulativním normám, které jsou uvedené v tomto článku. Technické specifikace popisují jednotky zdroje napájení (PSUs), kapacitu úložiště, skříně a environmentální standardy.
 
 ## <a name="compute-memory-specifications"></a>Výpočetní prostředí, specifikace paměti
 
@@ -28,15 +28,13 @@ Azure Stack hraniční zařízení má následující specifikace pro výpočetn
 | Procesor    | PROCESOR 2 X 10 Core                     |
 | Memory (Paměť)              | 128 GB RAM                  |
 
-
 ## <a name="fpga-specifications"></a>Specifikace FPGA
 
-Pole programovatelné brány (FPGA) je součástí každého Azure Stack hraničního zařízení, které umožňuje použití scénářů Machine Learning (ML). 
+Pole programovatelné brány (FPGA) je součástí každého Azure Stack hraničního zařízení, které umožňuje použití scénářů Machine Learning (ML).
 
 | Specifikace           | Hodnota                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> Dostupné modely neuronové sítě (DNN) jsou stejné jako ty, které [podporuje instance cloudu FPGA](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
-
+| FPGA   | Intel Arria 10 <br> Dostupné modely neuronové sítě (DNN) jsou stejné jako ty, které [podporuje instance cloudu FPGA](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).|
 
 ## <a name="power-supply-unit-specifications"></a>Specifikace jednotek napájení
 
@@ -45,9 +43,14 @@ Hraniční zařízení Azure Stack má dvě 100-240 V jednotkách napájení (PS
 | Specifikace           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximální výstupní výkon    | 750 W                     |
-| Frequency               | 50/60 Hz                   |
+| Frekvence               | 50/60 Hz                   |
 | Výběr rozsahu napětí | Automatické rozsahy: 100-240 V AC |
 | Horká, připojitelná           | Ano                        |
+
+### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>Azure Stack specifikace napájecího kabelu na hraničních zařízeních podle oblasti
+
+Vaše zařízení Azure Stack Edge potřebuje napájecí kabel, který se liší v závislosti na vaší oblasti Azure.
+Technické specifikace všech podporovaných napájecích kabelů najdete v článku [Specifikace napájecího kabelu Azure Stack Edge podle oblasti](azure-stack-edge-technical-specifications-power-cords-regional.md).
 
 <!--## Power consumption statistics
 
@@ -133,7 +136,6 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně, j
 |    Energetický sektor             |    Nařízení Komise (EU) – ne. 617/2013                                                                                                                                                                                        |
 |    RoHS           |    EN 50581:2012                                                                                                                                                                                        |
 
-
 ### <a name="operating-temperature-de-rating-specifications"></a>Specifikace pro dehodnocení provozní teploty
 
 |     Dehodnocení provozní teploty     |     Rozsah okolních teplot                                                         |
@@ -141,7 +143,6 @@ V této části jsou uvedeny specifikace týkající se prostředí skříně, j
 |    Až 35 oC (95 °F)                       |    Maximální teplota se sníží o 1 °C/300 m (1 °F/547 ft) nad 950 m (3 117 ft).    |
 |    35 oC až 40 oC (95 °F až 104 °F)            |    Maximální teplota se zmenší o 1 °C/175 m (1 °F/319 ft) nad 950 m (3 117 ft).    |
 |    40 oC až 45 °C (104 °F až 113 °F)           |    Maximální teplota se sníží o 1 °C/125 m (1 °F/228 ft) nad 950 m (3 117 ft).    |
-
 
 ## <a name="next-steps"></a>Další kroky
 

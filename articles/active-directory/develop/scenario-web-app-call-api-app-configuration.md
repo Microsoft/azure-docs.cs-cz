@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 68f6f8ec67aca44c89b338287bdd37b6066992e0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f20636bfaf8b1b1f7714a9cede63886deaf53e36
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207016"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641185"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webová aplikace, která volá webová rozhraní API: Konfigurace kódu
 
@@ -41,7 +41,7 @@ Vyberte kartu pro platformu, které vás zajímá:
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Pokud chcete, aby webová aplikace při použití Microsoft. identity. Web vyvolala chráněná rozhraní API, stačí `AddWebAppCallsProtectedWebApi` volat a zadat formát serializace mezipaměti tokenu (například mezipaměť tokenu v paměti):
+Pokud chcete, aby webová aplikace při použití Microsoft. identity. Web vyvolala chráněná rozhraní API, stačí volat `AddWebAppCallsProtectedWebApi` a zadat formát serializace mezipaměti tokenu (například mezipaměť tokenu v paměti):
 
 ```C#
 // This method gets called by the runtime. Use this method to add services to the container.
@@ -95,7 +95,7 @@ Microsoft. identity. Web zjednodušuje váš kód nastavením správných nastav
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET zpracovává podobně ASP.NET Core, s tím rozdílem, že konfigurace OpenID připojení a odběr k `OnAuthorizationCodeReceived` události dochází v souboru [app_start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . Koncepty jsou také podobné těm v ASP.NET Core, s výjimkou toho, že v ASP.NET je nutné `RedirectUri` zadat v souboru [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Tato konfigurace je trochu méně robustní než ta v ASP.NET Core, protože ji budete muset při nasazení aplikace změnit.
+ASP.NET zpracovává podobně ASP.NET Core, s tím rozdílem, že konfigurace OpenID připojení a odběr k `OnAuthorizationCodeReceived` události dochází v souboru [app_start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . Koncepty jsou také podobné těm v ASP.NET Core, s výjimkou toho, že v ASP.NET je nutné zadat `RedirectUri` v souboru [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Tato konfigurace je trochu méně robustní než ta v ASP.NET Core, protože ji budete muset při nasazení aplikace změnit.
 
 Zde je kód pro Startup.Auth.cs:
 
@@ -169,7 +169,7 @@ public partial class Startup
 Viz [Webová aplikace, která přihlašuje uživatele: Konfigurace kódu](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code) pro pochopení, jak ukázka Java získá autorizační kód. Poté, co aplikace obdrží kód, [AuthFilter. Java # L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56):
 
 1. Deleguje delegáty `AuthHelper.processAuthenticationCodeRedirect` metody v [AuthHelper. Java # L67-L97](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L67-L97).
-1. Volání `getAuthResultByAuthCode`.
+1. Volání `getAuthResultByAuthCode` .
 
 ```Java
 class AuthHelper {
@@ -191,7 +191,7 @@ class AuthHelper {
 }
 ```
 
-`getAuthResultByAuthCode` Metoda je definována v [AuthHelper. Java # L176](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176). Vytvoří MSAL `ConfidentialClientApplication`a pak zavolá metodu `acquireToken()` `AuthorizationCodeParameters` vytvořenou z autorizačního kódu.
+`getAuthResultByAuthCode`Metoda je definována v [AuthHelper. Java # L176](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L176). Vytvoří MSAL `ConfidentialClientApplication` a pak zavolá metodu `acquireToken()` `AuthorizationCodeParameters` vytvořenou z autorizačního kódu.
 
 ```Java
    private IAuthenticationResult getAuthResultByAuthCode(
@@ -268,7 +268,7 @@ Použití kontrolních výrazů klienta je pokročilý scénář, podrobně popi
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Kurz ASP.NET Core používá vkládání závislostí a umožňuje určit implementaci mezipaměti tokenů v souboru Startup.cs pro vaši aplikaci. Microsoft. identity. Web přichází s předem vytvořenými serializátory mezipaměti tokenů, které jsou popsané v tématu [serializace mezipaměti tokenů](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/README.md#token-cache-serialization). Zajímavou možností je zvolit ASP.NET Core [distribuované mezipaměti paměti](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache):
+Kurz ASP.NET Core používá vkládání závislostí a umožňuje určit implementaci mezipaměti tokenů v souboru Startup.cs pro vaši aplikaci. Microsoft. identity. Web přichází s předem vytvořenými serializátory mezipaměti tokenů, které jsou popsané v tématu [serializace mezipaměti tokenů](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application). Zajímavou možností je zvolit ASP.NET Core [distribuované mezipaměti paměti](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache):
 
 ```csharp
 // Use a distributed token cache by adding:
