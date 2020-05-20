@@ -98,7 +98,7 @@ Tento článek se týká fakturačního účtu za smlouvu se zákazníkem Micros
 
 ### <a name="rest-api"></a>[REST API](#tab/rest)
 
-K programovému získání zůstatku kreditu u fakturačního účtu můžete použít rozhraní API pro [spotřebu](https://docs.microsoft.com/rest/api/billing/) nebo [fakturaci Azure](https://docs.microsoft.com/rest/api/consumption/).
+K programovému získání zůstatku kreditu u fakturačního účtu můžete použít rozhraní API pro [spotřebu](https://docs.microsoft.com/rest/api/consumption/) nebo [fakturaci Azure](https://docs.microsoft.com/rest/api/billing/).
 
 V následujících příkladech se používají rozhraní REST API. PowerShell ani Azure CLI se v současné době nepodporují.
 

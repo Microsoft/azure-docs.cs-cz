@@ -75,7 +75,7 @@ Následující JSON zobrazuje schéma pro rozšíření pro stav aplikace. Pří
 ## <a name="deploy-the-application-health-extension"></a>Nasazení rozšíření stavu aplikace
 Rozšíření pro stav aplikace můžete nasadit do sady škálování, jak je popsáno níže v následujících příkladech.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Následující příklad přidá rozšíření stavu aplikace (s názvem myHealthExtension) do extensionProfile v modelu sady škálování sady Windows se škálováním na více systémů.
 
@@ -165,7 +165,7 @@ Obsah souboru extension. JSON.
 ```
 
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstraňování potíží
 Výstup spuštění rozšíření se protokoluje do souborů, které se nacházejí v následujících adresářích:
 
 ```Windows
