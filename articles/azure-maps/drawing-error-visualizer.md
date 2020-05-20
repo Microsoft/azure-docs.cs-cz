@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e1b5b16d5522285f2d028303f3295cc1fb740330
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598812"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681950"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Použití Azure Mapsho vykreslování – Vizualizér chyb
 
-Vizualizér chyb při vykreslování je samostatná webová aplikace, která zobrazuje [Upozornění a chyby balíčku pro vykreslování](drawing-conversion-error-codes.md) během procesu převodu. Webová aplikace Vizualizér chyb se skládá ze statické stránky, kterou můžete použít bez připojení k Internetu.  K opravě chyb a upozornění podle [požadavků balíčku pro vykreslování](drawing-requirements.md)můžete použít Vizualizér chyb. [Rozhraní API pro převod Azure Maps](https://docs.microsoft.com/rest/api/maps/data/conversion) vrátí odpověď s odkazem na Vizualizér chyb pouze v případě, že je zjištěna chyba.
+Vizualizér chyb při vykreslování je samostatná webová aplikace, která zobrazuje [Upozornění a chyby balíčku pro vykreslování](drawing-conversion-error-codes.md) během procesu převodu. Webová aplikace Vizualizér chyb se skládá ze statické stránky, kterou můžete použít bez připojení k Internetu.  K opravě chyb a upozornění podle [požadavků balíčku pro vykreslování](drawing-requirements.md)můžete použít Vizualizér chyb. [Rozhraní API pro převod Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) vrátí odpověď s odkazem na Vizualizér chyb pouze v případě, že je zjištěna chyba.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -90,7 +90,7 @@ Po načtení souboru _ConversionWarningsAndErrors. JSON_ se zobrazí seznam chyb
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile [balíček pro vykreslování splňuje požadavky](drawing-requirements.md), můžete použít [službu Azure Maps DataSet](https://docs.microsoft.com/rest/api/maps/data/conversion) k převodu balíčku pro kreslení na datovou sadu. Pak můžete k vývoji aplikace použít webový modul vnitřních map. Další informace najdete v následujících článcích:
+Jakmile [balíček pro vykreslování splňuje požadavky](drawing-requirements.md), můžete použít [službu Azure Maps DataSet](https://docs.microsoft.com/rest/api/maps/conversion) k převodu balíčku pro kreslení na datovou sadu. Pak můžete k vývoji aplikace použít webový modul vnitřních map. Další informace najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
 > [Vykreslení kódů chyb převodu](drawing-conversion-error-codes.md)

@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
-ms.date: 03/24/2020
-ms.openlocfilehash: 57ca594dd067d15009de5e3abf7276fae48720d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: f259d423f465d93031c3a72855fd7aac4e320573
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238658"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684974"
 ---
 # <a name="accelerated-database-recovery"></a>Urychlené obnovení databáze
 
@@ -33,7 +33,7 @@ ms.locfileid: "80238658"
 
   V případě pravidla automatického nasazení je transakční protokol agresivní a dokonce i v přítomnosti aktivních dlouhotrvajících transakcí, což brání v rozšiřování řízení.
 
-## <a name="the-current-database-recovery-process"></a>Aktuální proces obnovení databáze
+## <a name="standard-database-recovery-process"></a>Proces obnovení databáze úrovně Standard
 
 Obnovení databáze v SQL Server řídí model obnovení [Aries](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) a skládá se ze tří fází, které jsou znázorněny v následujícím diagramu a jsou podrobněji vysvětleny v následujícím diagramu.
 

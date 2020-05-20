@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 4b02039c86f43e6bebed58dfff475816f09a3da1
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890150"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679654"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Podobnost a bodování v Azure Kognitivní hledání
 
@@ -25,10 +25,10 @@ Skóre hledání je vypočítáno na základě statistických vlastností dat a 
 
 Hodnoty skóre hledání je možné opakovat v rámci sady výsledků dotazu. Pokud má více přístupů stejné skóre hledání, řazení stejných položek skóre není definováno a není stabilní. Spusťte dotaz znovu a můžete se podívat na pozici posunu položek, zejména pokud používáte bezplatnou službu nebo fakturovatelnou službu s více replikami. Vzhledem k tomu, že se dvě položky shodují se stejným skóre, neexistuje žádná záruka, která se zobrazí jako první.
 
-Pokud chcete přerušit vazbu mezi opakujícími se výsledky, můžete přidat klauzuli **$OrderBy** do prvního pořadí podle skóre a pak seřadit podle jiného pole, které lze seřadit (například `$orderby=search.score() desc,Rating desc`). Další informace najdete v tématu [$OrderBy](https://docs.microsoft.com/azure/search/search-query-odata-orderby).
+Pokud chcete přerušit vazbu mezi opakujícími se výsledky, můžete přidat klauzuli **$OrderBy** do prvního pořadí podle skóre a pak seřadit podle jiného pole, které lze seřadit (například `$orderby=search.score() desc,Rating desc` ). Další informace najdete v tématu [$OrderBy](https://docs.microsoft.com/azure/search/search-query-odata-orderby).
 
 > [!NOTE]
-> Symbol `@search.score = 1.00` označuje sadu výsledků bez hodnocení nebo Neseřazený výsledek. Skóre je rovnoměrné napříč všemi výsledky. Pokud je formulář dotazu přibližné vyhledávání, zástupné dotazy nebo výrazy regulárního výrazu nebo výraz **$Filter** , dojde k neskóre výsledků. 
+> `@search.score = 1.00`Symbol označuje sadu výsledků bez hodnocení nebo Neseřazený výsledek. Skóre je rovnoměrné napříč všemi výsledky. Pokud je formulář dotazu přibližné vyhledávání, zástupné dotazy nebo výrazy regulárního výrazu nebo výraz **$Filter** , dojde k neskóre výsledků. 
 
 ## <a name="scoring-profiles"></a>Profily skórování
 
@@ -36,7 +36,9 @@ Můžete přizpůsobit způsob řazení různých polí definováním vlastního
 
 Profil vyhodnocování je součástí definice indexu, která se skládá z vážených polí, funkcí a parametrů. Další informace o definování jednoho najdete v tématu [profily vyhodnocování](index-add-scoring-profiles.md).
 
-## <a name="scoring-statistics"></a>Statistiky bodování
+<a name="scoring-statistics"></a>
+
+## <a name="scoring-statistics-and-sticky-sessions-preview"></a>Statistiky bodování a rychlé relace (Preview)
 
 Z důvodu škálovatelnosti Azure Kognitivní hledání distribuuje každý index vodorovně prostřednictvím procesu horizontálního dělení, což znamená, že části indexu jsou fyzicky oddělené.
 
@@ -45,13 +47,21 @@ Ve výchozím nastavení se skóre dokumentu počítá na základě statistický
 Pokud upřednostňujete výpočet skóre na základě statistických vlastností ve všech horizontálních oddílů, můžete to udělat přidáním *scoringStatistics = Global* jako [parametru dotazu](https://docs.microsoft.com/rest/api/searchservice/search-documents) (nebo přidat *"scoringStatistics": "Global"* jako parametr těla [žádosti o dotaz](https://docs.microsoft.com/rest/api/searchservice/search-documents)).
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
   Content-Type: application/json
-  api-key: [admin key]  
+  api-key: [admin or query key]  
 ```
+Použití scoringStatistics zajistí, že všechny horizontálních oddílů ve stejné replice budou mít stejné výsledky. V takovém případě se jiné repliky mohou mírně lišit, protože jsou vždy aktualizovány pomocí nejnovějších změn v indexu. V některých scénářích můžete chtít, aby vaši uživatelé měli během dotazové relace k větší konzistenci výsledků. V takových scénářích můžete zadat `sessionId` jako součást dotazů. `sessionId`Je jedinečný řetězec, který vytvoříte pro odkazování na jedinečnou relaci uživatele.
+
+```http
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+  Content-Type: application/json
+  api-key: [admin or query key]  
+```
+Pokud `sessionId` použijete stejný postup, bude proveden doporučený pokus o dosažení stejné repliky. tím se zvýší konzistence výsledků, které uživatelé uvidí. 
 
 > [!NOTE]
-> Pro `scoringStatistics` parametr je vyžadován klíč rozhraní API pro správu.
+> Opakované opakované použití stejných `sessionId` hodnot může kolidovat s vyrovnáváním zatížení žádostí mezi replikami a nepříznivě ovlivnit výkon služby Search Service. Hodnota použitá jako sessionId nemůže začínat znakem podtržítka.
 
 ## <a name="similarity-ranking-algorithms"></a>Algoritmy řazení podobnosti
 

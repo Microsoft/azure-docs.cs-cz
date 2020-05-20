@@ -10,12 +10,12 @@ ms.reviewer: trbye, jmartens, larryfr, vaidyas
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 01/15/2020
-ms.openlocfilehash: ca50d70965d5edc4e31606e542ddf163fe3b0741
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5431ae574f40c29368848808004a53abe43c3a8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76122961"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680970"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Ladění a řešení potíží s ParallelRunStep
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,32 +28,37 @@ Přečtěte si [část testování skriptů místně](how-to-debug-pipelines.md#
 
 ## <a name="debugging-scripts-from-remote-context"></a>Ladění skriptů ze vzdáleného kontextu
 
-Přechod z ladění skriptu bodování místně na ladění vyhodnocovacího skriptu ve skutečném kanálu může být obtížné. Informace o hledání protokolů na portálu najdete v [části kanály strojového učení na webu ladění skriptů ze vzdáleného kontextu](how-to-debug-pipelines.md#debugging-scripts-from-remote-context). Informace v této části se vztahují také na běh v paralelním kroku.
+Přechod z ladění skriptu bodování místně na ladění vyhodnocovacího skriptu ve skutečném kanálu může být obtížné. Informace o hledání protokolů na portálu najdete v [části kanály strojového učení na webu ladění skriptů ze vzdáleného kontextu](how-to-debug-pipelines.md#debugging-scripts-from-remote-context). Informace v této části platí i pro ParallelRunStep.
 
-Například soubor `70_driver_log.txt` protokolu obsahuje informace z kontroleru, který spouští kód paralelního spuštění.
+Například soubor protokolu `70_driver_log.txt` obsahuje informace z kontroleru, který spouští kód ParallelRunStep.
 
-Z důvodu distribuované povahy úloh paralelního spuštění jsou protokoly z několika různých zdrojů. Vytvoří se ale dva konsolidované soubory, které poskytují informace vysoké úrovně:
+Z důvodu distribuované povahy úloh ParallelRunStep existují protokoly z několika různých zdrojů. Vytvoří se ale dva konsolidované soubory, které poskytují informace vysoké úrovně:
 
 - `~/logs/overview.txt`: Tento soubor poskytuje informace vysoké úrovně o počtu Mini-dávek (označovaných také jako úlohy), které byly doposud vytvořeny a počtu mininích dávek zpracovaných zatím. Na tomto konci se zobrazuje výsledek úlohy. Pokud se úloha nezdařila, zobrazí se chybová zpráva a kde začít odstraňování potíží.
 
 - `~/logs/sys/master.txt`: Tento soubor poskytuje hlavní uzel (také označovaný jako Orchestrator) zobrazení spuštěné úlohy. Zahrnuje vytvoření úlohy, monitorování průběhu, výsledek spuštění.
 
-Protokoly generované ze vstupního skriptu pomocí EntryScript. protokolovacího nástroje a příkazy Print budou nalezeny v následujících souborech:
+Protokoly vygenerované ze vstupního skriptu pomocí pomocníka EntryScript a příkazů Print budou nalezeny v následujících souborech:
 
-- `~/logs/user/<ip_address>/Process-*.txt`: Tento soubor obsahuje protokoly napsané z entry_script pomocí nástroje EntryScript. protokolovacího nástroje. Obsahuje také příkaz Print (stdout) z entry_script.
+- `~/logs/user/<node_name>.log.txt`: Jedná se o protokoly napsané z entry_script pomocí pomocné rutiny EntryScript. Obsahuje také příkaz Print (stdout) z entry_script.
 
-Pokud potřebujete úplný přehled o tom, jak každý uzel spustil skript skóre, podívejte se na jednotlivé protokoly procesu pro každý uzel. Protokoly procesu lze nalézt ve `sys/worker` složce seskupené podle uzlů pracovních procesů:
+Stručné porozumění chybám ve skriptu:
 
-- `~/logs/sys/worker/<ip_address>/Process-*.txt`: Tento soubor poskytuje podrobné informace o každé Mini dávce, jak je pracovník vybral nebo dokončil. Pro každou miniskou dávku tento soubor obsahuje:
+- `~/logs/user/error.txt`: Tento soubor se pokusí shrnout chyby ve vašem skriptu.
+
+Další informace o chybách ve skriptu najdete v těchto případech:
+
+- `~/logs/user/error/`: Obsahuje všechny chyby vyvolané a úplné trasování zásobníku uspořádané podle uzlu.
+
+Pokud potřebujete úplný přehled o tom, jak každý uzel spustil skript skóre, podívejte se na jednotlivé protokoly procesu pro každý uzel. Protokoly procesu lze nalézt ve `sys/node` složce seskupené podle uzlů pracovních procesů:
+
+- `~/logs/sys/node/<node_name>.txt`: Tento soubor poskytuje podrobné informace o každé Mini dávce, jak je pracovník vybral nebo dokončil. Pro každou miniskou dávku tento soubor obsahuje:
 
     - IP adresa a PID pracovního procesu. 
     - Celkový počet položek, počet úspěšně zpracovaných položek a počet neúspěšných položek.
     - Čas spuštění, doba trvání, doba zpracování a metoda spuštění.
 
-Můžete také vyhledat informace o využití prostředků pro jednotlivé pracovní procesy. Tyto informace jsou ve formátu CSV a jsou umístěné na `~/logs/sys/perf/<ip_address>/`adrese. V případě jednoho uzlu budou soubory úlohy k dispozici v `~logs/sys/perf`části. Například při kontrole využití prostředků se podívejte na následující soubory:
-
-- `Process-*.csv`: Využití prostředků v rámci pracovního procesu. 
-- `sys.csv`: Protokol na uzel.
+Můžete také vyhledat informace o využití prostředků pro jednotlivé pracovní procesy. Tyto informace jsou ve formátu CSV a jsou umístěné na adrese `~/logs/sys/perf/overview.csv` . Informace o jednotlivých procesech jsou k dispozici v části `~logs/sys/processes.csv` .
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Návody se protokolovat z uživatelského skriptu ze vzdáleného kontextu?
 Můžete získat protokolovací nástroj z EntryScript, jak je znázorněno v následujícím ukázkovém kódu, aby se protokoly zobrazovaly ve složce **logs/uživatel** na portálu.
@@ -82,19 +87,32 @@ def run(mini_batch):
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Jak můžu předat vstup ze strany, například soubor nebo soubory obsahující vyhledávací tabulku, do všech mých pracovníků?
 
-Sestavte objekt [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) obsahující vstup na straně a proveďte registraci v pracovním prostoru. Poté, co k němu máte přístup ve skriptu pro odvození (například v metodě Init ()) následujícím způsobem:
+Sestavte [datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) obsahující vstup ze strany a zaregistrujte ji do pracovního prostoru. Předejte ho do `side_input` parametru vašeho `ParallelRunStep` . Navíc můžete přidat cestu do `arguments` oddílu a snadno tak přistupovat k připojené cestě:
 
 ```python
-from azureml.core.run import Run
-from azureml.core.dataset import Dataset
+label_config = label_ds.as_named_input("labels_input")
+batch_score_step = ParallelRunStep(
+    name=parallel_step_name,
+    inputs=[input_images.as_named_input("input_images")],
+    output=output_dir,
+    arguments=["--labels_dir", label_config],
+    side_inputs=[label_config],
+    parallel_run_config=parallel_run_config,
+)
+```
 
-ws = Run.get_context().experiment.workspace
-lookup_ds = Dataset.get_by_name(ws, "<registered-name>")
-lookup_ds.download(target_path='.', overwrite=True)
+Poté, co k němu máte přístup ve skriptu pro odvození (například v metodě Init ()) následujícím způsobem:
+
+```python
+parser = argparse.ArgumentParser()
+parser.add_argument('--labels_dir', dest="labels_dir", required=True)
+args, _ = parser.parse_known_args()
+
+labels_path = args.labels_dir
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
 * Nápovědu k balíčku [AzureML-contrib-Pipeline-Step](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py) a [dokumentaci](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py) ke třídě ParallelRunStep najdete v referenčních informacích k sadě SDK.
 
-* Postupujte podle pokynů v [rozšířeném kurzu](tutorial-pipeline-batch-scoring-classification.md) použití kanálů pomocí paralelního spuštění.
+* Postupujte podle pokynů v [rozšířeném kurzu](tutorial-pipeline-batch-scoring-classification.md) použití kanálů s ParallelRunStep a jako příklad předání jiného souboru jako vstupu ze strany. 

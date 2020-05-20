@@ -10,19 +10,19 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 81299751affe5f59e1132950ccb80844fcc1fae3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588900"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681388"
 ---
 # <a name="composite-entity"></a>Složená entita
 
 Složená entita je tvořena dalšími entitami, jako jsou předem připravené entity, jednoduché, regulární výrazy a seznam entit. Samostatné entity tvoří celou entitu.
 
 > [!CAUTION]
-> Tato entita je **zastaralá**. Migrujte prosím na [počítačově získanou entitu](reference-entity-machine-learned-entity.md).
+> Tato entita je **zastaralá**. Migrujte prosím na [entitu Machine Learning](reference-entity-machine-learned-entity.md).
 
 **Tato entita je vhodná, když jsou data:**
 

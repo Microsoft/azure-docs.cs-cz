@@ -3,12 +3,12 @@ title: Webhooky, které reagují na akce registru
 description: Naučte se, jak pomocí webhooků aktivovat události, když se akce push nebo Pull vyskytnou v úložištích registru.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 5e6fd2d9f4c7727365a8e2fe3893aafebfeb7bd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74454377"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685032"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Používání Azure Container Registry webhooků
 
@@ -18,12 +18,12 @@ Podrobnosti o požadavcích Webhooku najdete v tématu [Azure Container Registry
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Registr kontejnerů Azure – Vytvořte registr kontejnerů ve svém předplatném Azure. Použijte například [Azure Portal](container-registry-get-started-portal.md) nebo rozhraní příkazového [řádku Azure CLI](container-registry-get-started-azure-cli.md). [Azure Container Registry SKU](container-registry-skus.md) mají různé kvóty webhooků.
+* Registr kontejnerů Azure – Vytvořte registr kontejnerů ve svém předplatném Azure. Použijte například [Azure Portal](container-registry-get-started-portal.md) nebo rozhraní příkazového [řádku Azure CLI](container-registry-get-started-azure-cli.md). [Úrovně služby Azure Container Registry](container-registry-skus.md) mají různé kvóty webhooků.
 * Rozhraní příkazového řádku Dockeru – Chcete-li nastavit místní počítač jako hostitele Dockeru a získat přístup k příkazům rozhraní příkazového řádku Dockeru, nainstalujte si modul runtime [Docker Engine](https://docs.docker.com/engine/installation/).
 
 ## <a name="create-webhook---azure-portal"></a>Vytvořit Webhook – Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte do registru kontejneru, ve kterém chcete vytvořit Webhook.
 1. V části **služby**vyberte **Webhooky**.
 1. Na panelu nástrojů Webhooku vyberte **Přidat** .

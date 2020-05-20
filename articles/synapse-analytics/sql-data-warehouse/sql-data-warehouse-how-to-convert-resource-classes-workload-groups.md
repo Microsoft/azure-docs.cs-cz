@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/19/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0cc0cd7233d0c16cae8389fcddd50a16cf96bd2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383631"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683637"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Převod tříd prostředků na skupiny úloh
 
@@ -27,7 +27,7 @@ Skupiny úloh poskytují mechanismus pro izolaci a zahrnutí systémových prost
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>Porozumění existující konfiguraci třídy prostředků
 
-Skupiny úloh vyžadují parametr s názvem `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , který určuje procentuální hodnotu celkových systémových prostředků přidělených na požadavek.  Přidělení prostředků se provádí pro [třídy prostředků](resource-classes-for-workload-management.md#what-are-resource-classes) přidělením slotů souběžnosti.  K určení hodnoty `REQUEST_MIN_RESOURCE_GRANT_PERCENT`, kterou chcete zadat, použijte sys. dm_workload_management_workload_groups_stats <link tbd> DMV.  Například následující dotaz dotazu vrátí hodnotu, kterou lze použít pro `REQUEST_MIN_RESOURCE_GRANT_PERCENT` parametr k vytvoření skupiny úloh, podobně jako staticrc40.
+Skupiny úloh vyžadují parametr s názvem `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , který určuje procentuální hodnotu celkových systémových prostředků přidělených na požadavek.  Přidělení prostředků se provádí pro [třídy prostředků](resource-classes-for-workload-management.md#what-are-resource-classes) přidělením slotů souběžnosti.  K určení hodnoty, kterou chcete zadat `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , použijte sys. dm_workload_management_workload_groups_stats <link tbd> DMV.  Například následující dotaz dotazu vrátí hodnotu, kterou lze použít pro `REQUEST_MIN_RESOURCE_GRANT_PERCENT` parametr k vytvoření skupiny úloh, podobně jako staticrc40.
 
 ```sql
 SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant_percent
@@ -38,11 +38,11 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 > [!NOTE]
 > Skupiny úloh fungují na základě procentuálních hodnot celkových systémových prostředků.  
 
-Vzhledem k tomu, že skupiny úloh fungují na základě procenta celkových systémových prostředků, při horizontálním navýšení a snížení kapacity je procento prostředků přidělených ke statickým třídám prostředků relativních ke změnám celkových systémových prostředků.  Například staticrc40 na DW1000c přiděluje 9,6% celkových systémových prostředků.  V DW2000c se přidělí 19,2%.  Tento model je podobný, pokud chcete škálovat na souběžnost a přidělit více prostředků na požadavek.
+Vzhledem k tomu, že skupiny úloh fungují na základě procenta celkových systémových prostředků, při horizontálním navýšení a snížení kapacity je procento prostředků přidělených ke statickým třídám prostředků relativních ke změnám celkových systémových prostředků.  Například staticrc40 na DW1000c přiděluje 19,2% celkových systémových prostředků.  V DW2000c se přidělí 9,6%.  Tento model je podobný, pokud chcete škálovat na souběžnost a přidělit více prostředků na požadavek.
 
 ## <a name="create-workload-group"></a>Vytvořit skupinu úloh
 
-Známou `REQUEST_MIN_RESOURCE_GRANT_PERCENT`je, že k vytvoření skupiny úloh můžete použít <link> syntaxi vytvořit skupinu úloh.  Volitelně můžete zadat hodnotu `MIN_PERCENTAGE_RESOURCE` , která je větší než nula pro izolaci prostředků pro skupinu úloh.  Volitelně můžete také zadat `CAP_PERCENTAGE_RESOURCE` méně než 100 a omezit tak množství prostředků, které může skupina zatížení spotřebovat.  
+Známou je `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , že <link> k vytvoření skupiny úloh můžete použít SYNTAXI vytvořit skupinu úloh.  Volitelně můžete zadat hodnotu `MIN_PERCENTAGE_RESOURCE` , která je větší než nula pro izolaci prostředků pro skupinu úloh.  Volitelně můžete také zadat `CAP_PERCENTAGE_RESOURCE` méně než 100 a omezit tak množství prostředků, které může skupina zatížení spotřebovat.  
 
 Následující příklad nastavuje, `MIN_PERCENTAGE_RESOURCE` aby vyhradal 9,6% systémových prostředků `wgDataLoads` a zaručil, že jeden dotaz bude možné spustit všechny časy.  Navíc `CAP_PERCENTAGE_RESOURCE` je nastaveno na 38,4% a omezí tuto skupinu úloh na čtyři souběžné požadavky.  Když nastavíte `QUERY_EXECUTION_TIMEOUT_SEC` parametr na 3600, všechny dotazy, které se spustí po dobu více než 1 hodiny, se automaticky zruší.
 
@@ -59,7 +59,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 Dříve bylo mapování dotazů na třídy prostředků provedeno pomocí [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Chcete-li dosáhnout stejných funkcí a požadavků na mapování na skupiny úloh, použijte syntaxi [vytvořit třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Použití sp_addrolemember povoluje mapování prostředků na požadavek na základě přihlášení.  Klasifikátor nabízí další možnosti kromě přihlášení, například:
     - label
     - relace
-    - čas, kdy níže uvedený příklad přiřadí `AdfLogin` dotazy z přihlášení, které mají také [popisek možnost](sql-data-warehouse-develop-label.md) nastavený `factloads` na skupinu `wgDataLoads` úloh vytvořenou výše.
+    - čas, kdy níže uvedený příklad přiřadí dotazy z `AdfLogin` přihlášení, které mají také [popisek možnost](sql-data-warehouse-develop-label.md) nastavený na `factloads` skupinu úloh `wgDataLoads` vytvořenou výše.
 
 ```sql
 CREATE WORKLOAD CLASSIFIER wcDataLoads WITH  

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: ce51a1b25453a5bbacbd268b37f2bd21cfe37fea
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f328b86d07a997ea761b4381f1d6a2f8a1dae269
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983461"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683075"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -46,7 +46,7 @@ Podobně jako u klasifikace jsou regresní úlohy také běžnou úlohou v dohle
 
 Liší se od klasifikace, kde jsou hodnoty předpokládaných výstupů kategorií, regresní modely odhadne číselné výstupní hodnoty na základě nezávislých prediktivních. V regresi je cílem přispět k navázání vztahu mezi těmito nezávislými proměnnými proměnných odhadem toho, jak jedna proměnná má vliv na ostatní. Například cena automobilu na základě funkcí, jako je plynová km, bezpečnostní hodnocení atd. Přečtěte si další informace a podívejte [se na příklad regrese pomocí automatizovaného strojového učení](tutorial-auto-train-models.md).
 
-Podívejte se na příklady regrese a automatizovaného strojového učení pro předpovědi v těchto poznámkových blocích Pythonu: [předpověď výkonu procesoru](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb), 
+Podívejte se na příklady regrese a automatizovaného strojového učení pro předpovědi v těchto poznámkových blocích Pythonu: [předpověď výkonu procesoru](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb), 
 
 ### <a name="time-series-forecasting"></a>Prognózování časových řad
 
@@ -93,7 +93,7 @@ Tento proces je znázorněn na následujícím obrázku.
 ![Automatizované Machine Learning](./media/concept-automated-ml/automl-concept-diagram2.png)
 
 
-Můžete také zkontrolovat protokolované informace o spuštění, které [obsahují metriky](how-to-understand-automated-ml.md) shromážděné během spuštění. Školicí běh vytvoří serializovaný objekt (`.pkl` soubor) Pythonu, který obsahuje model a předzpracování dat.
+Můžete také zkontrolovat protokolované informace o spuštění, které [obsahují metriky](how-to-understand-automated-ml.md) shromážděné během spuštění. Školicí běh vytvoří serializovaný objekt ( `.pkl` soubor) Pythonu, který obsahuje model a předzpracování dat.
 
 I když je vytváření modelů automatizované, můžete také zjistit, jak jsou pro vygenerované modely [důležité nebo relevantní funkce](how-to-configure-auto-train.md#explain) .
 
@@ -110,9 +110,9 @@ V každém automatizovaném experimentu Machine Learning se vaše data předzpra
 
 ### <a name="automatic-preprocessing-standard"></a>Automatické předzpracování (Standard)
 
-V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly.  Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace.
+V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly.  Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace. Přečtěte si, jak autoML pomáhá [zabránit přebudování a nevyváženým datům](concept-manage-ml-pitfalls.md) ve vašich modelech.
 
-|Normalizace škálování&nbsp;&&nbsp;| Popis |
+|&nbsp; & &nbsp; Normalizace škálování| Popis |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardizace funkcí odebráním střední odchylky a měřítka jednotky  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformuje funkce změnou velikosti jednotlivých funkcí na minimum a maximum tohoto sloupce.  |
@@ -168,7 +168,7 @@ Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
 
  K dispozici jsou další funkce, pokud používáte vzdálené výpočty, jak je znázorněno v následující tabulce. Některé z těchto funkcí jsou k dispozici pouze v pracovním prostoru Enterprise.
 
-| Funkce                                                    | Remote | Local | Nutné <br>Pracovní prostor Enterprise |
+| Příznak                                                    | Remote | Local | Nutné <br>Pracovní prostor Enterprise |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Streamování dat (podpora velkých objemů dat, až 100 GB)          | ✓      |       | ✓                             |
 | Featurization a školení textu založeného na DNN-BERT             | ✓      |       | ✓                             |
@@ -186,8 +186,19 @@ Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
 | Zaregistrujte a vizualizujte informace a metriky experimentů v uživatelském rozhraní. | ✓      | ✓     |                               |
 | Guardrails dat                                            | ✓      | ✓     |                               |
 
+## <a name="many-models"></a>Mnoho modelů 
 
-## <a name="automated-ml-in-azure-machine-learning"></a>Automatizované ML v Azure Machine Learning
+[Mnoho modelů řešení model](https://aka.ms/many-models) (Preview) sestavuje na Azure Machine Learning a umožňuje používat automatizované ml k výuce, provozování a správě stovek nebo dokonce tisíců modelů strojového učení.
+
+Například vytvoření modelu __pro každou instanci nebo jednotlivce__ v následujících scénářích může vést k lepším výsledkům:
+
+* Předpověď prodeje pro každé individuální úložiště
+* Prediktivní údržba stovek ropných zásobníků
+* Přizpůsobení prostředí pro jednotlivé uživatele.
+
+Další informace najdete v tématu o [mnoha modelech řešení modelů](https://aka.ms/many-models) na GitHubu.
+
+## <a name="automl-in-azure-machine-learning"></a>AutoML v Azure Machine Learning
 
 Azure Machine Learning nabízí dvě prostředí pro práci s automatizovanými ML.
 

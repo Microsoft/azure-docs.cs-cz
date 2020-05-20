@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23105a78e2ba34cf6a45f749ebfdd6b034ebf0dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253478"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680160"
 ---
 # <a name="how-to-investigate-risk"></a>Postupy: šetření rizik
 
@@ -26,7 +26,7 @@ Všechny tři sestavy umožňují stažení událostí v nástroji. Formát CSV 
 
 Organizace můžou využít výhod Microsoft Graph integrace rozhraní API k agregaci dat s jinými zdroji, ke kterým můžou mít přístup jako organizace.
 
-Tři sestavy se nacházejí v**zabezpečení** **Azure Portal** > **Azure Active Directory** > .
+Tři sestavy se nacházejí v zabezpečení **Azure Portal**  >  **Azure Active Directory**  >  **Security**.
 
 ## <a name="navigating-the-reports"></a>Navigace v sestavách
 
@@ -74,6 +74,9 @@ Správci se pak mohou rozhodnout, že budou provádět akce s těmito událostmi
 
 - Potvrdit ohrožení při přihlašování
 - Potvrzení bezpečného přihlášení
+
+> [!NOTE] 
+> Identity Protection vyhodnocuje riziko pro všechny toky ověřování, bez ohledu na to, jestli je interaktivní nebo neinteraktivní. Sestava přihlášení ale zobrazuje jenom interaktivní přihlášení. Můžou se zobrazit riziková přihlášení, ke kterým došlo v neinteraktivním přihlášení, ale přihlášení se nezobrazí v sestavě přihlášení Azure AD.
 
 ## <a name="risk-detections"></a>Detekce rizik
 

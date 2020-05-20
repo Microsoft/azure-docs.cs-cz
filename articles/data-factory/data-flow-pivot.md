@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686432"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683297"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Transformace pivotu v toku dat mapování
 
@@ -27,7 +27,7 @@ Transformace pivotu vyžaduje tři různé vstupy: seskupit podle sloupců, vytv
 
 ### <a name="group-by"></a>Seskupit podle
 
-![Možnosti pro seskupení](media/data-flow/pivot2.png "[Možnosti pro seskupení")
+![Možnosti pro seskupení](media/data-flow/pivot2.png "Možnosti pro seskupení")
 
 Vyberte sloupce, přes které se mají agregovat sloupce tabulky. Výstupní data budou seskupovat všechny řádky se stejnou hodnotou Group by do jednoho řádku. Agregace provedená v kontingenčním sloupci probíhají přes každou skupinu.
 
@@ -63,7 +63,7 @@ Následující obrázek Help znázorňuje, jak různé komponenty pivotu vzájem
 
 Nejsou-li v konfiguraci klíče Pivot zadány žádné hodnoty, budou v době běhu dynamicky generovány sloupce s kontingenčními tabulkami. Počet předaných sloupců se rovná počtu jedinečných hodnot klíče Pivot vynásobený počtem kontingenčních sloupců. Může se jednat o měnící se číslo, ale v uživatelském rozhraní se nezobrazí metadata sloupce na kartě **Kontrola** a nebude se provádět žádné šíření sloupců. Chcete-li tyto sloupce transformovat, použijte možnosti [vzoru sloupce](concepts-data-flow-column-pattern.md) pro mapování toku dat. 
 
-Pokud jsou nastaveny konkrétní hodnoty klíčů pivotu, budou se v metadatech zobrazovat sloupce s kontingenčními tabulkami. e názvy sloupců budou k dispozici v mapování kontroly a jímky.
+Pokud jsou nastavené konkrétní hodnoty klíče pivotu, v metadatech se zobrazí sloupce s kontingenčními tabulkami. Názvy sloupců budou k dispozici v mapování kontroly a jímky.
 
 ### <a name="generate-metadata-from-drifted-columns"></a>Generovat metadata z vydaných sloupců
 
@@ -73,7 +73,7 @@ Kontingenční tabulka dynamicky generuje nové názvy sloupců založené na ho
 
 ### <a name="sinking-pivoted-columns"></a>Jímka – kontingenční sloupce
 
-I když jsou pivotované sloupce dynamické, můžou být pořád zapsané do cílového úložiště dat. Povolte možnost **Povolit posun schématu** v nastavení jímky. To vám umožní zapsat sloupce, které nejsou zahrnuté v metadatech. Vaše metadata sloupce, ale možnost posunu schématu vám umožní obkládat data.
+I když jsou pivotované sloupce dynamické, můžou být pořád zapsané do cílového úložiště dat. Povolte možnost **Povolit posun schématu** v nastavení jímky. To vám umožní zapsat sloupce, které nejsou zahrnuté v metadatech. V metadatech sloupců se neobjeví nové dynamické názvy, ale možnost posunu schématu vám umožní tato data obložit.
 
 ### <a name="rejoin-original-fields"></a>Znovu připojit původní pole
 

@@ -3,12 +3,12 @@ title: Práce s rozsáhlými datovými sadami
 description: Seznamte se s tím, jak ve velkých datových sadách získat záznamy, které se mají při práci se službou Azure Resource Graph získávat, formátovat, stránkovat a přeskakovat.
 ms.date: 03/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: be15a6234935627ca748276e6330c50c3ee5a775
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064748"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681069"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s velkými sadami dat prostředků Azure
 
@@ -21,7 +21,7 @@ Pokyny k práci s dotazy s vysokou frekvencí najdete v tématu [doprovodné mat
 Ve výchozím nastavení graf prostředků omezuje všechny dotazy na vrácení pouze **100** záznamů. Tento ovládací prvek chrání uživatele i službu před neúmyslnými dotazy, které by mohly vést k rozsáhlým datovým sadám. K této události nejčastěji dochází, když zákazník experimentuje s dotazy, aby vyhledal a vyfiltroval prostředky způsobem, který vyhovuje jejich konkrétním potřebám. Tento ovládací prvek se liší od použití [horních](/azure/kusto/query/topoperator) nebo [Omezení](/azure/kusto/query/limitoperator) operátorů jazyka Azure Průzkumník dat k omezení výsledků.
 
 > [!NOTE]
-> Při použití **prvního**se doporučuje seřadit výsledky alespoň v jednom sloupci pomocí `asc` nebo. `desc` Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat.
+> Při použití **prvního**se doporučuje seřadit výsledky alespoň v jednom sloupci pomocí `asc` nebo `desc` . Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat.
 
 Výchozí omezení lze přepsat všemi metodami interakce s diagramem prostředků. Následující příklady ukazují, jak změnit omezení velikosti datové sady na _200_:
 
@@ -37,14 +37,17 @@ V [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/reso
 
 Ovládací prvek, který je _nejvíce omezující_ , se podaří. Pokud Váš dotaz například používá operátory **Top** nebo **limit** a výsledkem by bylo více záznamů než **první**, maximální počet vrácených záznamů bude stejný jako **první**. Podobně, pokud je **horní** nebo **limit** menší než **první**, vrácená sada záznamů bude menší hodnota nakonfigurovaná funkcí **Top** nebo **limit**.
 
-**Aktuálně má** maximální povolenou hodnotu _5000_.
+V současné době **má aktuálně maximální** povolenou hodnotu _5000_, která dosahuje záznamy s [výsledky stránkování](#paging-results) _1000_ .
+
+> [!IMPORTANT]
+> Je-li **první** nakonfigurován tak, aby byl větší než _1000_ záznamů, musí dotaz pro práci stránkováním **projektovat** pole **ID** . Pokud v dotazu chybí, odpověď se nezíská [a výsledky](#paging-results) se budou omezovat na _1000_ záznamů.
 
 ## <a name="skipping-records"></a>Vynechávání záznamů
 
 Další možností pro práci s velkými sadami dat je ovládací prvek **Skip** . Tento ovládací prvek umožňuje vašemu dotazu přeskočit nebo přeskočit definovaný počet záznamů před vrácením výsledků. Funkce **Skip** je užitečná pro dotazy, které seřadí výsledky smysluplně, kde je záměrem získat záznamy někam uprostřed sady výsledků dotazu. Pokud jsou požadované výsledky na konci vrácené datové sady, je efektivnější použít jinou konfiguraci řazení a načíst výsledky z horní části sady dat.
 
 > [!NOTE]
-> Při použití příkazu **Přeskočit**doporučujeme seřazení výsledků alespoň v jednom sloupci pomocí `asc` nebo. `desc` Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat.
+> Při použití příkazu **Přeskočit**doporučujeme seřazení výsledků alespoň v jednom sloupci pomocí `asc` nebo `desc` . Bez řazení jsou vrácené výsledky náhodné a nelze je opakovat.
 
 Následující příklady ukazují, jak přeskočit prvních _10_ záznamů, které dotaz by měl mít za následek, že se místo toho spustí vrácená sada výsledků s jedenáctým záznamem:
 
@@ -63,7 +66,7 @@ V [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/reso
 Pokud je nutné rozdělit sadu výsledků na menší sady záznamů ke zpracování nebo protože sada výsledků by překročila maximální povolenou hodnotu _1000_ vrácených záznamů, použijte stránkování. [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** poskytuje hodnoty pro indikaci sady výsledků byla rozdělena: **resultTruncated** a **$skipToken**.
 **resultTruncated** je logická hodnota, která informuje příjemce, pokud v odpovědi nejsou vráceny další záznamy. Tato podmínka se dá identifikovat také v případě, že vlastnost **Count** je menší než vlastnost **totalRecords** . **totalRecords** definuje počet záznamů, které odpovídají dotazu.
 
- **resultTruncated** má **hodnotu true** , pokud je buď zakázáno stránkování, nebo není možné `id` , protože není k dispozici žádný sloupec, nebo pokud je k dispozici méně prostředků, než vyžaduje dotaz. Pokud **resultTruncated** má resultTruncated **hodnotu true**, vlastnost **$skipToken** není nastavena.
+ **resultTruncated** má **hodnotu true** , pokud je buď zakázáno stránkování, nebo není možné, protože není k `id` dispozici žádný sloupec, nebo pokud je k dispozici méně prostředků, než vyžaduje dotaz. Pokud **resultTruncated** má resultTruncated **hodnotu true**, vlastnost **$skipToken** není nastavena.
 
 Následující příklady ukazují, jak **Přeskočit** prvních 3000 záznamů a vracet **prvních** 1000 záznamů po přeskočení těchto záznamů pomocí Azure CLI a Azure PowerShell:
 

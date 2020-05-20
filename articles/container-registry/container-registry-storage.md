@@ -3,12 +3,12 @@ title: Úložiště image kontejneru
 description: Podrobnosti o tom, jak jsou image kontejnerů Docker uložené v Azure Container Registry, včetně zabezpečení, redundance a kapacity.
 ms.topic: article
 ms.date: 03/21/2018
-ms.openlocfilehash: f66c3dd95edfe5035c46857cb6f9aa59d8a6a0e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b738556e5a4f764cd47c72d964ee188d1344b336
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74456205"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683401"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Úložiště imagí kontejneru v Azure Container Registry
 
@@ -46,7 +46,7 @@ Výkon vašeho registru může ovlivnit velmi vysoký počet úložišť a znač
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o různých Azure Container Registry SKU (Basic, Standard, Premium) najdete v tématu [Azure Container Registry SKU](container-registry-skus.md).
+Další informace o kontejnerech kontejneru Basic, Standard a Premium najdete v tématu [Azure Container Registry úrovně služeb](container-registry-skus.md).
 
 <!-- IMAGES -->
 

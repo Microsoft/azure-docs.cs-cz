@@ -1,14 +1,14 @@
 ---
 title: Vytváření zásad pro vlastnosti polí u prostředků
 description: Naučte se pracovat s parametry pole a výrazy jazyka pole, vyhodnotit alias [*] a přidat prvky pomocí pravidel Definice Azure Policy.
-ms.date: 11/26/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3d30f76d555386e5ab8041a0b8cc82b5b60e28e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280661"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684255"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytváření zásad pro vlastnosti pole v prostředcích Azure
 
@@ -103,8 +103,8 @@ Chcete-li použít tento řetězec pro každou sadu SDK, použijte následujíc�
 
 ### <a name="array-conditions"></a>Podmínky pole
 
-[Podmínky](../concepts/definition-structure.md#conditions) pravidla zásad, které mohou být použity jako**typ** `in` _pole_
-, jsou omezeny na a `notIn`. Následující definici zásad proveďte `equals` jako příklad:
+[Podmínky](../concepts/definition-structure.md#conditions) pravidla zásad, které _array_ 
+ mohou být použity jako**typ** pole, jsou omezeny na `in` a `notIn` . Následující definici zásad proveďte `equals` jako příklad:
 
 ```json
 {
@@ -136,14 +136,14 @@ Při pokusu o vytvoření této definice zásady prostřednictvím Azure Portal 
 
 - Zásady {GUID} nešlo parametrizované kvůli chybám ověření. Zkontrolujte prosím, jestli jsou parametry zásad správně definované. Výsledek vyhodnocení vnitřní výjimky pro výraz jazyka [Parameters (' allowedLocations ')] je typu Array, očekával se typ String.
 
-Očekávaným **typem** podmínky `equals` je _řetězec_. Vzhledem k tomu, že **allowedLocations** je definován jako _pole_ **typu** , modul zásad vyhodnotí výraz jazyka a vyvolá chybu. V případě `in` podmínky `notIn` a modul zásad očekává _pole_ **typu** ve výrazu jazyka. Chcete-li tuto chybovou zprávu `equals` vyřešit, `in` změňte `notIn`hodnotu na nebo.
+Očekávaným **typem** podmínky `equals` je _řetězec_. Vzhledem k tomu, že **allowedLocations** je definován jako _pole_ **typu** , modul zásad vyhodnotí výraz jazyka a vyvolá chybu. V případě `in` `notIn` podmínky a modul zásad očekává _pole_ **typu** ve výrazu jazyka. Chcete-li tuto chybovou zprávu vyřešit, změňte `equals` hodnotu na `in` nebo `notIn` .
 
 ### <a name="evaluating-the--alias"></a>Vyhodnocení aliasu [*]
 
-Aliasy, ** \[ \* ** které jsou připojeny k jejich názvu, označují **typ** je _pole_. Místo vyhodnocení hodnoty celého pole ** \[ \* ** je možné vyhodnotit každý prvek pole jednotlivě, s logickým a mezi nimi. Existují tři standardní scénáře, které jsou pro vyhodnocení každé položky užitečné: _žádné_, _žádné_nebo _všechny_ prvky se shodují. U složitých scénářů použijte [počet](../concepts/definition-structure.md#count).
+Aliasy, které jsou **\[\*\]** připojeny k jejich názvu, označují **typ** je _pole_. Místo vyhodnocení hodnoty celého pole je **\[\*\]** možné vyhodnotit každý prvek pole jednotlivě, s logickým a mezi nimi. Existují tři standardní scénáře, které jsou pro vyhodnocení každé položky užitečné: _žádné_, _žádné_nebo _všechny_ prvky se shodují. U složitých scénářů použijte [počet](../concepts/definition-structure.md#count).
 
 Modul zásad aktivuje **efekt** v **a pak** jenom v případě, že se pravidlo **if** vyhodnotí jako true.
-Tento fakt je důležitý pro pochopení v kontextu způsobu, jak ** \[ \* ** vyhodnotit každý jednotlivý prvek pole.
+Tento fakt je důležitý pro pochopení v kontextu způsobu, jak **\[\*\]** vyhodnotit každý jednotlivý prvek pole.
 
 Příklad pravidla zásad pro tabulku scénář:
 
@@ -179,7 +179,7 @@ Pole **ipRules** je pro následující tabulku scénář následující:
 ]
 ```
 
-Pro každý příklad podmínky Nahraďte parametr `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
+Pro každý příklad podmínky Nahraďte parametr `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"` .
 
 Následující výsledky jsou výsledkem kombinace podmínky a ukázkového pravidla zásad a pole stávajících hodnot výše:
 
@@ -196,10 +196,10 @@ Následující výsledky jsou výsledkem kombinace podmínky a ukázkového prav
 
 ## <a name="the-append-effect-and-arrays"></a>Efekt připojení a pole
 
-[Efekt připojení](../concepts/effects.md#append) se chová odlišně v závislosti na tom, zda je ** \[ \* ** v **poli Podrobnosti alias.**
+[Efekt připojení](../concepts/effects.md#append) se chová odlišně v závislosti na tom, zda je v **poli Podrobnosti** **\[\*\]** alias.
 
-- Pokud se nejedná o ** \[ \* ** alias, příkaz append nahradí celé pole vlastností **Value** .
-- Když alias připojí, přidá vlastnost Value do existujícího pole nebo vytvoří nové pole. **value** ** \[ \* **
+- Pokud se nejedná o **\[\*\]** alias, příkaz append nahradí celé pole vlastností **Value** .
+- Když **\[\*\]** alias připojí, přidá vlastnost **Value** do existujícího pole nebo vytvoří nové pole.
 
 Další informace najdete v [příkladech připojení](../concepts/effects.md#append-examples).
 

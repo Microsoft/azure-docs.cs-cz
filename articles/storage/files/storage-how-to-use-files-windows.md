@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2694e0c1536064267faad10517ae58d0709ad1c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 62b3445ba841a87f04dbe8c867411814b849be07
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231760"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682444"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -80,7 +80,7 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 ## <a name="using-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Pokud chcete používat sdílenou složku Azure s Windows, musíte ji buď připojit, což znamená přiřadit jí písmeno jednotky nebo cestu k přípojnému bodu, nebo k ní přistupovat přes její [cestu UNC](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx). 
 
-Na rozdíl od ostatních sdílených složek SMB, se kterými jste možná pracovali, jako jsou například sdílené složky SMB hostované na Windows Serveru, serveru Linux Samba nebo zařízení NAS, sdílené složky Azure v současné době nepodporují ověřování protokolu Kerberos pomocí identity Active Directory (AD) ani Azure Active Directory (AAD). Na této funkci však [pracujeme](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles). Místo toho musíte ke sdílené složce Azure přistupovat pomocí klíče účtu úložiště, ve kterém se sdílená složka nachází. Klíč účtu úložiště je klíč správce pro účet úložiště, včetně oprávnění správce ke všem souborům a složkám v rámci sdílené složky, ke které přistupujete, a ke všem sdíleným složkám a dalším prostředkům úložiště (objektům blob, frontám, tabulkám atd.) obsaženým v účtu úložiště. Pokud to pro vaši úlohu není dostatečné, v přechodném období do veřejného zpřístupnění chybějícího ověřování protokolu Kerberos založeného na AAD a podpory ACL může tento nedostatek vyřešit [Synchronizace souborů Azure](storage-sync-files-planning.md).
+Tento článek používá klíč účtu úložiště pro přístup ke sdílené složce souborů. Klíč účtu úložiště je klíč správce pro účet úložiště, včetně oprávnění správce ke všem souborům a složkám v rámci sdílené složky, ke které přistupujete, a ke všem sdíleným složkám a dalším prostředkům úložiště (objektům blob, frontám, tabulkám atd.) obsaženým v účtu úložiště. Pokud to pro vaše zatížení nestačí, můžete použít [Azure File Sync](storage-sync-files-planning.md) , nebo můžete použít [ověřování na základě identity přes protokol SMB](storage-files-active-directory-overview.md).
 
 Při migraci obchodních aplikací očekávajících sdílenou složku SMB metodou „lift and shift“ do Azure se jako alternativa k provozu vyhrazeného souborového serveru Windows na virtuálním počítači Azure běžně používá sdílená složka Azure. Jedním z důležitých aspektů úspěšné migrace obchodní aplikace, která má používat sdílenou složku Azure, je to, že řada obchodních aplikací se spouští v kontextu vyhrazeného účtu služby s omezenými systémovými oprávněními, a ne v kontextu účtu správce virtuálního počítače. Proto je potřeba zajistit připojení a uložení přihlašovacích údajů pro sdílenou složku Azure z kontextu účtu služby, a nikoli účtu správce.
 
@@ -186,7 +186,7 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![Snímek obrazovky s rozevírací nabídkou Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. Vyberte písmeno jednotky a zadejte cestu UNC, formát cesty UNC `<storageAccountName>.file.core.windows.net/<fileShareName>`. Například: `anexampleaccountname.file.core.windows.net/example-share-name`.
+1. Vyberte písmeno jednotky a zadejte cestu UNC, formát cesty UNC `<storageAccountName>.file.core.windows.net/<fileShareName>` . Příklad: `anexampleaccountname.file.core.windows.net/example-share-name`.
     
     ![Snímek obrazovky s dialogovým oknem Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 

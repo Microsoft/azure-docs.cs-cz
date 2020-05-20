@@ -10,12 +10,12 @@ ms.date: 05/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 65d898112396755bb2518cade0ac94c21bc52685
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c4d14c21174f9631a1ad72489d4c0bafe013572c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117712"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681350"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -138,24 +138,42 @@ Můžete zadat dotaz na hodnotu vlastnosti **čas poslední synchronizace** pomo
 
 ## <a name="summary-of-redundancy-options"></a>Souhrn možností redundance
 
-Následující tabulka ukazuje, jak jsou data odolná a k dispozici v daném scénáři v závislosti na tom, jaký typ redundance platí pro váš účet úložiště:
+Tabulky v následujících částech shrnují možnosti redundance, které jsou k dispozici pro Azure Storage
 
-| Scénář                                                                                                 | LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
+### <a name="durability-and-availability-parameters"></a>Parametry odolnosti a dostupnosti
+
+Následující tabulka popisuje klíčové parametry pro každou možnost redundance:
+
+| Parametr                                                                                                 | LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Uzel v datovém centru nebude dostupný.                                                                 | Ano                             | Ano                              | Ano                                  | Ano                                  |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | Ne                              | Ano                              | Ano                                  | Ano                                  |
-| Dojde k výpadku v rámci oblasti                                                                                     | Ne                              | Ne                               | Ano                                  | Ano                                  |
-| Přístup pro čtení dat v sekundární oblasti, pokud primární oblast nebude k dispozici | Ne                              | Ne                               | Ano (s RA-GRS)                                   | Ano (s RA-GZRS)                                 |
 | Procentuální hodnota odolnosti objektů v průběhu daného roku<sup>1</sup>                                          | alespoň 99,999999999% (11 9 's) | minimálně 99,9999999999% (12 9 's) | minimálně 99.99999999999999% (16 9) | minimálně 99.99999999999999% (16 9) |
-| Podporované typy účtů úložiště<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, Storage                | GPv2, BlockBlobStorage, úložiště                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
 | Smlouva SLA o dostupnosti pro žádosti o čtení<sup>1</sup>  | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) pro GRS<br /><br />Minimálně 99,99% (99,9% pro studenou úroveň přístupu) pro RA-GRS | Minimálně 99,9% (99% pro studenou úroveň přístupu) pro GZRS<br /><br />Minimálně 99,99% (99,9% pro studenou úroveň přístupu) pro RA-GZRS |
 | Smlouva SLA o dostupnosti pro žádosti o zápis<sup>1</sup>  | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) | Minimálně 99,9% (99% pro studenou úroveň přístupu) |
 
 <sup>1</sup> informace o tom, jak Azure Storage garantuje odolnost a dostupnost, najdete v [Azure Storage smlouvě SLA](https://azure.microsoft.com/support/legal/sla/storage/).
 
-<sup>2</sup> informace o typech účtů úložiště najdete v tématu [Přehled účtu úložiště](storage-account-overview.md).
+### <a name="durability-and-availability-by-outage-scenario"></a>Scénář odolnosti a dostupnosti při výpadku
 
-Všechna data pro všechny typy účtů úložiště se zkopírují podle možnosti redundance pro účet úložiště. Zkopírují se objekty, mezi které patří objekty blob bloku, doplňovací objekty blob, objekty blob stránky, fronty, tabulky a soubory. Data na všech úrovních, včetně archivní úrovně, se zkopírují. Další informace o úrovních objektů BLOB najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
+Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná a dostupná v závislosti na tom, jaký typ redundance je platný pro váš účet úložiště:
+
+| Scénář výpadku                                                                                                 | LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
+| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| Uzel v datovém centru nebude dostupný.                                                                 | Ano                             | Ano                              | Ano                                  | Ano                                 |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | Ne                              | Ano                              | Ano<sup>1</sup>                                  | Ano                                  |
+| V primární oblasti dojde k výpadku v rámci oblasti.                                                                                     | Ne                              | Ne                               | Ano<sup>1</sup>                                  | Ano<sup>1</sup>                                  |
+| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | Ne                              | Ne                               | Ano (s RA-GRS)                                   | Ano (s RA-GZRS)                                 |
+
+<sup>1</sup> převzetí služeb při selhání účtu se vyžaduje k obnovení dostupnosti pro zápis, pokud primární oblast nebude k dispozici. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](storage-disaster-recovery-guidance.md).
+
+### <a name="supported-storage-account-types"></a>Podporované typy účtů úložiště
+
+Následující tabulka uvádí, které možnosti redundance jsou podporovány jednotlivými typy účtů úložiště. Informace o typech účtů úložiště najdete v tématu [Přehled účtu úložiště](storage-account-overview.md).
+
+| LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
+| :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| Účty pro obecné účely verze 2<br /> Účty pro obecné účely verze 1<br /> Úložiště objektů blob bloku<br /> Blob Storage<br /> File Storage                | Účty pro obecné účely verze 2<br /> Úložiště objektů blob bloku<br /> File Storage                             | Účty pro obecné účely verze 2<br /> Účty pro obecné účely verze 1<br /> Blob Storage                     | Účty pro obecné účely verze 2                     |
+
+Všechna data pro všechny účty úložiště se zkopírují podle možnosti redundance pro účet úložiště. Zkopírují se objekty, mezi které patří objekty blob bloku, doplňovací objekty blob, objekty blob stránky, fronty, tabulky a soubory. Data na všech úrovních, včetně archivní úrovně, se zkopírují. Další informace o úrovních objektů BLOB najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
 
 Informace o cenách pro jednotlivé možnosti redundance najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/).
 

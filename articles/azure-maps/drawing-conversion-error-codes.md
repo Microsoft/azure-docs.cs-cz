@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 0d73d0b395547c281a2dbbe6a6ac5e8dc6dfd849
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598896"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681996"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Vykreslování chyb a upozornění při převodu
 
-[Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/data/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Balíčky pro kreslení musí splňovat [požadavky balíčku pro vykreslování](drawing-requirements.md). Pokud nejsou splněny některé požadavky, služba konverze vrátí chyby nebo upozornění. V tomto článku jsou uvedeny kódy chyb a varování při převodu s doporučeními, jak je vyřešit. Poskytuje také některé příklady kreseb, které mohou způsobit, že služba převodu vrátí tyto kódy.
+[Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Balíčky pro kreslení musí splňovat [požadavky balíčku pro vykreslování](drawing-requirements.md). Pokud nejsou splněny některé požadavky, služba konverze vrátí chyby nebo upozornění. V tomto článku jsou uvedeny kódy chyb a varování při převodu s doporučeními, jak je vyřešit. Poskytuje také některé příklady kreseb, které mohou způsobit, že služba převodu vrátí tyto kódy.
 
 Služba konverze bude úspěšná, pokud dojde k nějakým upozorněním na převod. Doporučuje se ale zkontrolovat a vyřešit všechna upozornění. Upozornění znamená, že část převodu byla ignorována nebo automaticky opravena. Selhání při řešení problémů by mohlo způsobit chyby v těchto procesech.
 
@@ -73,7 +73,7 @@ K **unsupportedFeatureRepresentation** upozornění dojde, Pokud kresba obsahuje
 
 Následující obrázek ukazuje nepodporovaný typ entity jako víceřádkový textový objekt na vrstvě popisku.
   
-![Příklad víceřádkového textového objektu na vrstvě popisku](./media/drawing-conversion-error-codes/multiline.png)
+![Příklad víceřádkového textového objektu na vrstvě popisku](./media/drawing-conversion-error-codes/multi-line.png)
 
 #### <a name="how-to-fix-unsupportedfeaturerepresentation"></a>*Jak opravit unsupportedFeatureRepresentation*
 
@@ -494,7 +494,7 @@ Následující obrázek ukazuje oblast svislého průniku bez překrývajících
 
 Následující obrázek znázorňuje oblast svislého průniku, která se překrývá s více než jednou oblastí svislého průniku na sousední úrovni.
 
-![Příklad svislého průniku 2](./media/drawing-conversion-error-codes/vrt.png)
+![Příklad svislého průniku 2](./media/drawing-conversion-error-codes/vrt-1.png)
 
 #### <a name="how-to-fix-verticalpenetrationerror"></a>Jak opravit verticalPenetrationError
 

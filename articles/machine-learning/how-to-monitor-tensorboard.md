@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 02/27/2020
-ms.openlocfilehash: b6b7e47acdbc5bd059e17e512731bd09c8580798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3df37126281a6654a6113f31895ddee276784c1c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78195375"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681461"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Vizualizace běhů experimentů a metrik pomocí TensorBoard a Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -87,7 +87,7 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-V celém souboru kódu mnist ručně zapsaných mnist_with_summaries. py, Všimněte si, že existují řádky, které `tf.summary.scalar()`volají `tf.summary.histogram()`, `tf.summary.FileWriter()` atd. Tyto metody seskupují, protokolují a klíčová metriky značek svých experimentů do historie spuštění. `tf.summary.FileWriter()` Je obzvláště důležité při serializaci dat z metriky protokolovaných experimentů, které umožňují TensorBoard vygenerovat vizualizace z nich.
+V celém souboru kódu mnist ručně zapsaných mnist_with_summaries. py, Všimněte si, že existují řádky, které `tf.summary.scalar()` volají `tf.summary.histogram()` , `tf.summary.FileWriter()` atd. Tyto metody seskupují, protokolují a klíčová metriky značek svých experimentů do historie spuštění. `tf.summary.FileWriter()`Je obzvláště důležité při serializaci dat z metriky protokolovaných experimentů, které umožňují TensorBoard vygenerovat vizualizace z nich.
 
  ### <a name="configure-experiment"></a>Konfigurovat experiment
 
@@ -166,7 +166,7 @@ run = exp.submit(tf_estimator)
 
 ### <a name="launch-tensorboard"></a>Spustit TensorBoard
 
-TensorBoard můžete spustit během běhu nebo po jeho dokončení. V následujícím `tb` `start()` postupu vytvoříme instanci objektu TensorBoard, která převezme historii spuštění experimentu, která byla načtena `run`v nástroji, a potom spustí TensorBoard s metodou. 
+TensorBoard můžete spustit během běhu nebo po jeho dokončení. V následujícím postupu vytvoříme instanci objektu TensorBoard, `tb` která převezme historii spuštění experimentu, která byla načtena v `run` nástroji, a potom spustí TensorBoard s `start()` metodou. 
   
 [Konstruktor TensorBoard](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py) přebírá pole spuštění, proto se ujistěte, že je a předáte do jako pole s jedním prvkem.
 
@@ -194,11 +194,11 @@ Následující kód nastaví vzorový experiment, zahájí proces protokolován�
 
 ### <a name="set-up-experiment"></a>Nastavení experimentu
 
-Následující kód nastaví nový experiment a pojmenuje adresář `root_run`run. 
+Následující kód nastaví nový experiment a pojmenuje adresář Run `root_run` . 
 
 ```python
 from azureml.core import Workspace, Experiment
-import azuremml.core
+import azureml.core
 
 # set experiment name and run name
 ws = Workspace.from_config()
@@ -225,7 +225,7 @@ data = {
 
 ### <a name="run-experiment-and-log-metrics"></a>Spouštění metrik experimentů a protokolů
 
-Pro tento kód vytvoříme v historii spuštění lineární regresní model a metriky klíčů protokolu, koeficient alfa, `alpha`a střední hodnotu chyby `mse`.
+Pro tento kód vytvoříme v historii spuštění lineární regresní model a metriky klíčů protokolu, koeficient alfa, `alpha` a střední hodnotu chyby `mse` .
 
 ```Python
 from tqdm import tqdm
@@ -233,7 +233,7 @@ alphas = [.1, .2, .3, .4, .5, .6 , .7]
 # try a bunch of alpha values in a Linear Regression (aka Ridge regression) mode
 for alpha in tqdm(alphas):
   # create child runs and fit lines for the resulting models
-  with root_run.child_run("alpha" + str(alpha)) as run
+  with root_run.child_run("alpha" + str(alpha)) as run:
  
    reg = Ridge(alpha=alpha)
    reg.fit(data["train"]["x"], data["train"]["y"])    

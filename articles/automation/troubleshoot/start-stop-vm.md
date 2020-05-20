@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s řešením spuštění/zastavení virtuálních počítačů v době mimo špičku
-description: Tento článek poskytuje informace o řešení potíží s virtuálním počítačem spustit/zastavit během nepracovních řešení.
+title: Řešení potíží s nasazováním Azure Automation Start/Stop VMs during off-hours
+description: V tomto článku se dozvíte, jak řešit problémy vznikající při nasazení Start/Stop VMs during off-hours funkce.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,25 +9,22 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 611e8441fab56114ca010d0b555c9ed156ae9d40
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bd537fd943e9a13a59c2fa630235130ce9ccfe2d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855056"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680846"
 ---
-# <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Řešení potíží s řešením spuštění/zastavení virtuálních počítačů v době mimo špičku
+# <a name="troubleshoot-startstop-vms-during-off-hours-deployment-issues"></a>Řešení potíží s nasazením Start/Stop VMs during off-hours
 
-Tento článek poskytuje informace o řešení problémů, které vznikají při práci s Azure Automation spustit nebo zastavit virtuální počítače v době mimo špičku.
+Tento článek poskytuje informace o řešení potíží a řešení problémů, které se vyskytnou při nasazení funkce Azure Automation Start/Stop VMs during off-hours na vašich virtuálních počítačích. 
 
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Azure Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu, jak aktualizovat moduly Azure PowerShell v Azure Automation](../automation-update-azure-modules.md).
-
-## <a name="scenario-the-startstop-vms-during-off-hours-solution-fails-to-properly-deploy"></a><a name="deployment-failure"></a>Scénář: řešení spouštění a zastavování virtuálních počítačů v době mimo špičku se nepodařilo správně nasadit.
+## <a name="scenario-startstop-vms-during-off-hours-fails-to-properly-deploy"></a><a name="deployment-failure"></a>Scénář: Start/Stop VMs during off-hours se nepodařilo správně nasadit
 
 ### <a name="issue"></a>Problém
 
-Když nasadíte [virtuální počítače spustit/zastavit v době mimo špičku](../automation-solution-vm-management.md), zobrazí se jedna z následujících chyb:
+Při nasazení [Start/Stop VMS during off-hours](../automation-solution-vm-management.md)se zobrazí jedna z následujících chyb:
 
 ```error
 Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
@@ -62,18 +59,18 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 Nasazení mohou selhat z jednoho z následujících důvodů:
 
 - V vybrané oblasti již existuje účet Automation se stejným názvem.
-- Zásada zakáže nasazení virtuálních počítačů spustit/zastavit během nepracovních řešení.
-- Typ `Microsoft.OperationsManagement`prostředku `Microsoft.Insights`, nebo `Microsoft.Automation` není zaregistrován.
+- Zásada zakáže nasazení Start/Stop VMs during off-hours.
+- `Microsoft.OperationsManagement` `Microsoft.Insights` Typ prostředku, nebo `Microsoft.Automation` není zaregistrován.
 - Váš pracovní prostor Log Analytics je uzamčený.
-- Máte zastaralou verzi modulů AzureRM nebo spustit nebo zastavit virtuální počítače v době mimo špičku.
+- Máte zastaralou verzi modulů AzureRM nebo funkci Start/Stop VMs during off-hours.
 
 ### <a name="resolution"></a>Řešení
 
-V následujících opravách si můžete přečíst možná řešení vašeho problému:
+Podívejte se na následující opravy a vyhledejte možná řešení:
 
 * Účty Automation musí být jedinečné v rámci oblasti Azure, a to i v případě, že jsou v různých skupinách prostředků. Projděte si existující účty služby Automation v cílové oblasti.
-* Stávající zásada brání prostředku, který je požadován pro virtuální počítače Start/Stop, během nepracovních řešení, které se má nasadit. V Azure Portal přejít na přiřazení zásad a ověřte, jestli máte přiřazení zásady, které nepovoluje nasazení tohoto prostředku. Další informace najdete v tématu [RequestDisallowedByPolicy chyba](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md).
-* Pokud chcete nasadit řešení pro spouštění a zastavování virtuálních počítačů, musí být vaše předplatné zaregistrované v následujících oborech názvů prostředků Azure:
+* Stávající zásady zabrání prostředku, který je vyžadován pro nasazení Start/Stop VMs during off-hours. V Azure Portal přejít na přiřazení zásad a ověřte, jestli máte přiřazení zásady, které nepovoluje nasazení tohoto prostředku. Další informace najdete v tématu [RequestDisallowedByPolicy chyba](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md).
+* Pokud chcete nasadit Start/Stop VMs during off-hours, musí být vaše předplatné zaregistrované v následujících oborech názvů prostředků Azure:
 
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
@@ -81,13 +78,13 @@ V následujících opravách si můžete přečíst možná řešení vašeho pr
 
    Další informace o chybách při registraci zprostředkovatelů najdete v tématu [řešení chyb pro registraci poskytovatele prostředků](../../azure-resource-manager/templates/error-register-resource-provider.md).
 * Pokud máte zámek v pracovním prostoru Log Analytics, v Azure Portal vyberte svůj pracovní prostor a odeberte všechny zámky v prostředku.
-* Pokud tato řešení problém nevyřeší, postupujte podle pokynů v části [aktualizace řešení](../automation-solution-vm-management.md#update-the-solution) pro opětovné nasazení virtuálních počítačů spustit/zastavit během nepracovních řešení.
+* Pokud tato řešení problém nevyřeší, postupujte podle pokynů v části [aktualizace funkce](../automation-solution-vm-management.md#update-the-feature) pro opětovné nasazení Start/Stop VMS during off-hours.
 
 ## <a name="scenario-all-vms-fail-to-start-or-stop"></a><a name="all-vms-fail-to-startstop"></a>Scénář: Nepodařilo se spustit nebo zastavit všechny virtuální počítače.
 
 ### <a name="issue"></a>Problém
 
-Nakonfigurovali jste virtuální počítače spustit/zastavit během nepracovních řešení, ale nespustí se ani nezastaví všechny virtuální počítače.
+Nakonfigurovali jste Start/Stop VMs during off-hours, ale nespustí ani nezastaví všechny virtuální počítače.
 
 ### <a name="cause"></a>Příčina
 
@@ -100,9 +97,9 @@ Tato chyba může být způsobena jedním z následujících důvodů:
 
 ### <a name="resolution"></a>Řešení
 
-Podívejte se na následující seznam a vyhledejte možná řešení vašeho problému:
+V následujícím seznamu najdete možná řešení:
 
-* Ověřte, že jste správně nakonfigurovali plán pro virtuální počítače spustit/zastavit v době mimo špičku. Informace o tom, jak nakonfigurovat plán, najdete v tématu [plány](../automation-schedules.md).
+* Ověřte, že jste správně nakonfigurovali plán pro Start/Stop VMs during off-hours. Informace o tom, jak nakonfigurovat plán, najdete v tématu [plány](../automation-schedules.md).
 
 * Zkontrolujte [streamy úlohy](../automation-runbook-execution.md#job-statuses) a vyhledejte případné chyby. Vyhledejte úlohy z jedné z následujících sad Runbook:
 
@@ -118,7 +115,7 @@ Podívejte se na následující seznam a vyhledejte možná řešení vašeho pr
 
 * Ověřte, že váš [účet Spustit jako](../manage-runas-account.md) má správná oprávnění k virtuálním počítačům, které se pokoušíte spustit nebo zastavit. Informace o tom, jak kontrolovat oprávnění k prostředku, najdete v tématu [rychlý Start: Zobrazení rolí přiřazených uživateli pomocí Azure Portal](../../role-based-access-control/check-access.md). Bude nutné zadat ID aplikace pro instanční objekt používaný účtem spustit jako. Tuto hodnotu můžete načíst tak, že v Azure Portal kliknete na účet Automation. V části **Nastavení účtu**vyberte **účty Spustit jako** a vyberte příslušný účet Spustit jako.
 
-* Pokud jsou virtuální počítače explicitně vyloučené, nemusí se spustit nebo zastavit. Vyloučené virtuální počítače se nastavují v `External_ExcludeVMNames` proměnné v účtu Automation, na který se řešení nasadí. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
+* Pokud jsou virtuální počítače explicitně vyloučené, nemusí se spustit nebo zastavit. Vyloučené virtuální počítače se nastavují v `External_ExcludeVMNames` proměnné v účtu Automation, na který je tato funkce nasazená. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
 
   ```powershell-interactive
   Get-AzAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
@@ -128,7 +125,7 @@ Podívejte se na následující seznam a vyhledejte možná řešení vašeho pr
 
 ### <a name="issue"></a>Problém
 
-Nakonfigurovali jste virtuální počítače spustit/zastavit v době mimo špičku, ale nespustí se nebo zastavují některé virtuální počítače nakonfigurované.
+Nakonfigurovali jste Start/Stop VMs during off-hours, ale nespustí nebo zastaví některé virtuální počítače nakonfigurované.
 
 ### <a name="cause"></a>Příčina
 
@@ -141,15 +138,15 @@ Tato chyba může být způsobena jedním z následujících důvodů:
 
 ### <a name="resolution"></a>Řešení
 
-Projděte si následující seznam, kde můžete najít možná řešení vašeho problému nebo umístit tyto problémy:
+V následujícím seznamu najdete možná řešení:
 
-* Když použijete [scénář sekvence](../automation-solution-vm-management.md) virtuálních počítačů spustit/zastavit v době mimo špičku, musíte se ujistit, že každý virtuální počítač, který chcete spustit nebo zastavit, má správnou značku. Ujistěte se, že virtuální počítače, které chcete spustit, `sequencestart` mají značku a virtuální počítače, které chcete zastavit, `sequencestop` mají značku. Obě značky vyžadují kladnou celočíselnou hodnotu. Dotaz podobný následujícímu příkladu můžete použít k vyhledání všech virtuálních počítačů, které mají značky a jejich hodnoty.
+* Když použijete [scénář sekvence](../automation-solution-vm-management.md) Start/Stop VMS during off-hours, musíte se ujistit, že každý virtuální počítač, který chcete spustit nebo zastavit, má správnou značku. Ujistěte se, že virtuální počítače, které chcete spustit, mají `sequencestart` značku a virtuální počítače, které chcete zastavit, mají `sequencestop` značku. Obě značky vyžadují kladnou celočíselnou hodnotu. Dotaz podobný následujícímu příkladu můžete použít k vyhledání všech virtuálních počítačů, které mají značky a jejich hodnoty.
 
   ```powershell-interactive
   Get-AzResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
   ```
 
-* Pokud jsou virtuální počítače explicitně vyloučené, nemusí se spustit nebo zastavit. Vyloučené virtuální počítače se nastavují v `External_ExcludeVMNames` proměnné v účtu Automation, na který se řešení nasadí. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
+* Pokud jsou virtuální počítače explicitně vyloučené, nemusí se spustit nebo zastavit. Vyloučené virtuální počítače se nastavují v `External_ExcludeVMNames` proměnné v účtu Automation, na který je tato funkce nasazená. Následující příklad ukazuje, jak můžete zadat dotaz na tuto hodnotu pomocí PowerShellu.
 
   ```powershell-interactive
   Get-AzAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
@@ -173,14 +170,14 @@ Může se jednat o mnoho příčin selhání. V Azure Portal na svém účtu Aut
 
 Doporučený postup:
 
-* Pomocí [řešení spustit nebo zastavit virtuální počítače v době mimo špičku](../automation-solution-vm-management.md) můžete spouštět a zastavovat virtuální počítače v Azure Automation. Toto řešení je vytvořené Microsoftem. 
-* Uvědomte si, že Microsoft nepodporuje vlastní Runbooky. Můžete najít řešení pro vlastní Runbook z [řešení potíží](runbooks.md)se sadou Runbook. Zkontrolujte [streamy úlohy](../automation-runbook-execution.md#job-statuses) a vyhledejte případné chyby. 
+* Pomocí [Start/Stop VMS during off-hours](../automation-solution-vm-management.md) zahajte a zastavte virtuální počítače v Azure Automation. 
+* Uvědomte si, že Microsoft nepodporuje vlastní Runbooky. Při [řešení problémů s runbookm](runbooks.md)můžete najít řešení pro vlastní sadu Runbook. Zkontrolujte [streamy úlohy](../automation-runbook-execution.md#job-statuses) a vyhledejte případné chyby. 
 
 ## <a name="scenario-vms-dont-start-or-stop-in-the-correct-sequence"></a><a name="dont-start-stop-in-sequence"></a>Scénář: virtuální počítače se nespustí ani nezastaví ve správném pořadí.
 
 ### <a name="issue"></a>Problém
 
-Virtuální počítače, které jste nakonfigurovali v řešení, se nespustí ani neukončí ve správném pořadí.
+Virtuální počítače, které jste povolili pro funkci, se nespustí ani nezastaví ve správném pořadí.
 
 ### <a name="cause"></a>Příčina
 
@@ -188,19 +185,17 @@ K tomuto problému dochází v důsledku nesprávného označování na virtuál
 
 ### <a name="resolution"></a>Řešení
 
-Postupujte podle těchto kroků a ujistěte se, že je řešení správně nakonfigurováno.
+Pomocí těchto kroků ověřte, zda je funkce správně povolena:
 
-1. Zajistěte, aby všechny virtuální počítače byly `sequencestart` `sequencestop` spuštěny nebo zastaveny, v závislosti na vaší situaci. Tyto značky vyžadují jako hodnotu kladné celé číslo. Virtuální počítače jsou zpracovávány vzestupném pořadím na základě této hodnoty.
-1. Ujistěte se, že skupiny prostředků pro virtuální počítače, které se mají spustit nebo zastavit `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` jsou v proměnných nebo, podle toho, jakou situaci máte.
-1. Otestujte provedené změny spuštěním `SequencedStartStop_Parent` sady Runbook s `WHATIF` parametrem nastaveným na hodnotu true a zobrazte náhled změn.
+1. Ujistěte se, že všechny virtuální počítače, které mají být spuštěny nebo zastaveny `sequencestart` `sequencestop` , mají značku nebo, v závislosti na vaší situaci. Tyto značky vyžadují jako hodnotu kladné celé číslo. Virtuální počítače jsou zpracovávány vzestupném pořadím na základě této hodnoty.
+1. Ujistěte se, že skupiny prostředků pro virtuální počítače, které se mají spustit nebo zastavit, jsou v `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` proměnných nebo, podle toho, jakou situaci máte.
+1. Otestujte provedené změny spuštěním sady **SequencedStartStop_Parent** Runbook s `WHATIF` parametrem nastaveným na hodnotu true, abyste zobrazili náhled změn.
 
-Další informace o tom, jak používat řešení ke spouštění a zastavování virtuálních počítačů v sekvenci, najdete v tématu [spuštění/zastavení virtuálních počítačů v sekvenci](../automation-solution-vm-management.md).
-
-## <a name="scenario-startstop-vms-during-off-hours-job-fails-with-403-forbidden-error"></a><a name="403"></a>Scénář: úloha spuštění/zastavení virtuálních počítačů v době mimo špičku se nezdařila s chybou 403 zakázáno
+## <a name="scenario-startstop-vms-during-off-hours-job-fails-with-403-forbidden-error"></a><a name="403"></a>Scénář: Start/Stop VMs during off-hours úloha se nezdařila s chybou 403 zakázáno
 
 ### <a name="issue"></a>Problém
 
-Vyhledáte úlohy, které selhaly s `403 forbidden` chybou pro virtuální počítače spustit/zastavit v době mimo špičku řešení Runbook.
+Vyhledáte úlohy, které selhaly s `403 forbidden` chybou pro start/stop VMS during off-hours Runbooky.
 
 ### <a name="cause"></a>Příčina
 
@@ -220,23 +215,23 @@ Pokud chybí oprávnění, přečtěte si téma [rychlý Start: Zobrazení rolí
 
 ### <a name="issue"></a>Problém
 
-Dojde k problému nebo neočekávanému výsledku při použití řešení spustit/zastavit v době nečinnosti, které není uvedené na této stránce.
+Když použijete Start/Stop VMs during off-hours, která není na této stránce uvedená, dojde k problému nebo neočekávanému výsledku.
 
 ### <a name="cause"></a>Příčina
 
-V mnoha případech může být chyba způsobena použitím staré a zastaralé verze řešení.
+V mnoha případech může být chyba způsobena použitím staré a zastaralé verze funkce.
 
 > [!NOTE]
-> Řešení spouštění a zastavování virtuálních počítačů v době mimo špičku bylo testováno pomocí modulů Azure, které jsou importovány do účtu Automation při nasazení řešení. Řešení momentálně nefunguje s novějšími verzemi modulu Azure. Toto omezení ovlivňuje pouze účet Automation, který používáte ke spuštění virtuálních počítačů spustit/zastavit během nepracovních řešení. V dalších účtech Automation můžete dál používat novější verze modulu Azure, jak je popsáno v tématu [Postup aktualizace Azure PowerShellch modulů v Azure Automation](../automation-update-azure-modules.md).
+> Funkce Start/Stop VMs during off-hours byla testována s moduly Azure, které jsou importovány do účtu Automation při nasazení funkce na virtuální počítače. Tato funkce v tuto chvíli nefunguje s novějšími verzemi modulu Azure. Toto omezení ovlivňuje pouze účet Automation, který používáte ke spuštění Start/Stop VMs during off-hours. V dalších účtech Automation můžete dál používat novější verze modulu Azure, jak je popsáno v tématu [aktualizace Azure PowerShell moduly](../automation-update-azure-modules.md).
 
 ### <a name="resolution"></a>Řešení
 
-Pokud chcete vyřešit mnoho chyb, odeberte a [aktualizujte virtuální počítače spustit/zastavit během nepracovních řešení](../automation-solution-vm-management.md#update-the-solution). Můžete také zkontrolovat [streamy úloh](../automation-runbook-execution.md#job-statuses) a vyhledat případné chyby. 
+Pokud chcete vyřešit mnoho chyb, odeberte [Start/Stop VMS during off-hours a aktualizujte](../automation-solution-vm-management.md#update-the-feature)je. Můžete také zkontrolovat [streamy úloh](../automation-runbook-execution.md#job-statuses) a vyhledat případné chyby. 
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud tady nevidíte svůj problém nebo nemůžete problém vyřešit, zkuste další podporu vyzkoušet u některého z následujících kanálů:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport)pomocí oficiálního Microsoft Azure účtu pro zlepšení prostředí pro zákazníky. Podpora Azure spojuje komunitu Azure s odpověďmi, podporou a odborníky.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) oficiálního Microsoft Azure účtu pro zlepšení prostředí pro zákazníky. Podpora Azure spojuje komunitu Azure s odpověďmi, podporou a odborníky.
 * Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**.

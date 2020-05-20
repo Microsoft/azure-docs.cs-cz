@@ -5,17 +5,23 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: a50ba39777e6a9d3d609e584c0c7d872f2a65f35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/31/2020
+ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283714"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684395"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Jak vynést výkon grafu pomocí Azure Monitor pro virtuální počítače
 
 Azure Monitor pro virtuální počítače obsahuje sadu grafů výkonu, které cílí na několik klíčových ukazatelů výkonu (KPI), které vám pomůžou určit, jak dobře je virtuální počítač prováděn. Grafy ukazují využití prostředků v časovém intervalu, takže můžete identifikovat kritická místa, anomálie nebo přepnout na jednotlivé počítače a zobrazit tak využití prostředků na základě vybrané metriky. I když existuje mnoho prvků, které je potřeba vzít v úvahu při práci s výkonem, Azure Monitor pro virtuální počítače sleduje klíčové ukazatele výkonu operačního systému související s procesorem, pamětí, síťovým adaptérem a využitím disku. Výkon doplňuje funkci monitorování stavu a pomáhá vystavovat problémy, které naznačují možné selhání součásti systému, podporují optimalizaci a optimalizaci, aby dosáhly efektivity, nebo podporovala plánování kapacity.  
+
+## <a name="limitations"></a>Omezení
+Níže jsou uvedena omezení pro shromažďování výkonu pomocí Azure Monitor pro virtuální počítače.
+
+- **Dostupná paměť** není dostupná pro virtuální počítače se systémem Red Hat Linux (RHEL) 6. Tato metrika se počítá z **MemAvailable** , která byla představena v [jádru verze 3,14](http://www.man7.org/linux/man-pages/man1/free.1.html).
+- Metriky jsou k dispozici pouze pro datové disky na virtuálních počítačích se systémem Linux pomocí rodiny systému souborů (EXT2, EXT3, EXT4).
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Perspektiva pro více virtuálních počítačů z Azure Monitor
 

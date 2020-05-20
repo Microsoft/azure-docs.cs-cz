@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 0542106f70e96b6c2f63e8ca03d2532de191d365
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79477166"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682712"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technický průvodce řešením pro prediktivní údržbu v programu Aerospace
 
@@ -91,7 +91,7 @@ Pro šablonu řešení prediktivní údržba pro společnosti Aerospace se Azure
 Dotaz Azure Stream Analytics lze najít pomocí:
 
 * Připojit k Azure Portal
-* Vyhledání Stream Analytics úloh ![](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png) Stream Analytics ikonu, která byla generována při nasazení řešení (*například* **maintenancesa02asapbi** a **maintenancesa02asablob** pro řešení prediktivní údržby)
+* Vyhledání Stream Analytics úloh ![ Stream Analytics ikonu ](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png) , která byla generována při nasazení řešení (*například* **maintenancesa02asapbi** a **maintenancesa02asablob** pro řešení prediktivní údržby)
 * Kliknutím
   
   * ***Vstupy*** pro zobrazení vstupu dotazu
@@ -113,7 +113,7 @@ Tato část popisuje potřebné [kanály a aktivity](../../data-factory/concepts
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-Dva z těchto kanálů tohoto objektu [Factory obsahují skripty](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) pro oddíly, které se používají k dělení a agregaci dat. V případě popsaných se skripty nacházejí v účtu [Azure Storage](https://azure.microsoft.com/services/storage/) vytvořeném při instalaci. Jejich umístění je: maintenancesascript\\\\podregistr\\\\\\ \\ Script (nebo https://[název vašeho řešení]. blob. Core. Windows. NET/maintenancesascript).
+Dva z těchto kanálů tohoto objektu [Factory obsahují skripty](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) pro oddíly, které se používají k dělení a agregaci dat. V případě popsaných se skripty nacházejí v účtu [Azure Storage](https://azure.microsoft.com/services/storage/) vytvořeném při instalaci. Jejich umístění je: maintenancesascript \\ \\ \\ \\ podregistr Script \\ \\ (nebo https://[název vašeho řešení]. blob. Core. Windows. NET/maintenancesascript).
 
 Podobně jako u [Azure Stream Analytics](#azure-stream-analytics-1) dotazů mají skripty v [podregistru](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) implicitní znalosti formátu příchozích dat a musí se měnit v závislosti na vašem datovém formátu.
 
@@ -142,7 +142,7 @@ Tento [kanál](../../data-factory/concepts-pipelines-activities.md) obsahuje jed
 Po spuštění generátoru dat se kanál začne dehydratované a jednotlivé komponenty vašeho řešení začnou propustit do akce, které následují po příkazech vydaných datovou továrnou. Existují dva způsoby, jak kanál monitorovat.
 
 * Jedna z Stream Analytics úloh zapisuje nezpracovaná příchozí data do úložiště objektů BLOB. Pokud kliknete na Blob Storage součásti řešení na obrazovce, kterou jste úspěšně nasadili řešení, a pak kliknete na tlačítko otevřít v pravém panelu, přejdete na [Azure Portal](https://portal.azure.com/). Potom klikněte na objekty blob. Na dalším panelu vidíte seznam kontejnerů. Klikněte na **maintenancesadata**. Na dalším panelu je složka **rawData** . Ve složce rawData jsou složky s názvy, jako je například hour = 17 a hodina = 18. Přítomnost těchto složek indikuje, že se v počítači generují nezpracovaná data a ukládají se do úložiště objektů BLOB. V těchto složkách byste měli vidět soubory CSV s omezenými velikostmi v MB.
-* Posledním krokem kanálu je zápis dat (například předpovědi ze strojového učení) do SQL Database. Aby se data zobrazovala v SQL Database, možná budete muset počkat maximálně tři hodiny. Jedním ze způsobů, jak monitorovat, kolik dat je k dispozici ve vašem SQL Database, je prostřednictvím [Azure Portal](https://portal.azure.com/). Na levém panelu najděte ikonu ![](./media/predictive-maintenance-technical-guide/icon-SQL-databases.png) databáze SQL databases a klikněte na ni. Pak vyhledejte databázi **pmaintenancedb** a klikněte na ni. Na další stránce dole klikněte na spravovat.
+* Posledním krokem kanálu je zápis dat (například předpovědi ze strojového učení) do SQL Database. Aby se data zobrazovala v SQL Database, možná budete muset počkat maximálně tři hodiny. Jedním ze způsobů, jak monitorovat, kolik dat je k dispozici ve vašem SQL Database, je prostřednictvím [Azure Portal](https://portal.azure.com/). Na levém panelu najděte ikonu databáze SQL databases ![ ](./media/predictive-maintenance-technical-guide/icon-SQL-databases.png) a klikněte na ni. Pak vyhledejte databázi **pmaintenancedb** a klikněte na ni. Na další stránce dole klikněte na spravovat.
    
     ![Spravovat ikonu](./media/predictive-maintenance-technical-guide/icon-manage.png)
    
@@ -159,7 +159,7 @@ Power BI se k Azure SQL Database připojí jako zdroj dat, kde jsou uložené v�
 
 Poznámka: 
 1.    Při nasazení vašeho řešení se v databázi zobrazí předpověď do 3 hodin. Soubor pbix, který byl dodán se stažením generátoru, obsahuje data počátečních dat, abyste mohli řídicí panel Power BI hned vytvořit. 
-2.    V tomto kroku je nutné stáhnout a nainstalovat bezplatný software [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/).
+2.    V tomto kroku je nutné stáhnout a nainstalovat bezplatný software [Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop).
 
 Následující postup vás provede postupem připojení souboru pbix k SQL Database, který se provedl v době nasazení řešení obsahující data (například výsledky předpovědi) pro vizualizaci.
 
@@ -169,29 +169,29 @@ Následující postup vás provede postupem připojení souboru pbix k SQL Datab
    
    * Po **' Azure SQL Database '** v diagramu šablony řešení se změní na zelený, klikněte na něj a potom klikněte na **otevřít**.
    * Zobrazí se nová karta nebo okno prohlížeče, které zobrazí stránku Azure Portal. Na levém panelu klikněte na **skupiny prostředků** .
-   * Vyberte předplatné, které používáte pro nasazení řešení, a pak vyberte **\_YourSolutionName Resource**.
-   * V novém panelu pro místní vyjmutí klikněte na ![ikonu ikona](./media/predictive-maintenance-technical-guide/icon-sql.png) SQL pro přístup k databázi. Název databáze je vedle této ikony (například **' pmaintenancedb '**) a **název databázového serveru** je uveden ve vlastnosti název serveru a měl by vypadat podobně jako **YourSolutionName.Database.Windows.NET**.
+   * Vyberte předplatné, které používáte pro nasazení řešení, a pak vyberte **YourSolutionName \_ Resource**.
+   * V novém panelu pro místní vyjmutí klikněte na ![ ikonu ikona SQL ](./media/predictive-maintenance-technical-guide/icon-sql.png) pro přístup k databázi. Název databáze je vedle této ikony (například **' pmaintenancedb '**) a **název databázového serveru** je uveden ve vlastnosti název serveru a měl by vypadat podobně jako **YourSolutionName.Database.Windows.NET**.
    * **Uživatelské jméno** a **heslo** databáze jsou stejné jako uživatelské jméno a heslo, které jste dříve nahráli během nasazování řešení.
 2. Aktualizujte zdroj dat pro soubor sestavy studené cesty pomocí Power BI Desktop.
    
-   * Ve složce, do které jste stáhli a stáhnete soubor generátoru, poklikejte na soubor **PowerBI\\PredictiveMaintenanceAerospace. pbix** . Pokud se při otevření souboru zobrazí nějaké zprávy s upozorněním, ignorujte je. V horní části souboru klikněte na **Upravit dotazy**.
+   * Ve složce, do které jste stáhli a stáhnete soubor generátoru, poklikejte na soubor **PowerBI \\ PredictiveMaintenanceAerospace. pbix** . Pokud se při otevření souboru zobrazí nějaké zprávy s upozorněním, ignorujte je. V horní části souboru klikněte na **Upravit dotazy**.
      
      ![Upravit dotazy](./media/predictive-maintenance-technical-guide/edit-queries.png)
-   * Zobrazí se dvě tabulky, **RemainingUsefulLife** a **PMResult**. Vyberte první tabulku a v pravém ![](./media/predictive-maintenance-technical-guide/icon-query-settings.png) podokně **nastavení dotazu** klikněte na ikonu nastavení dotazu vedle položky **zdroj** v části **použité kroky** . Ignorujte všechny zobrazené varovné zprávy.
+   * Zobrazí se dvě tabulky, **RemainingUsefulLife** a **PMResult**. Vyberte první tabulku a v ![ pravém podokně nastavení dotazu klikněte na ikonu nastavení dotazu ](./media/predictive-maintenance-technical-guide/icon-query-settings.png) vedle položky **zdroj** v části **použité kroky** . **'Query Settings'** Ignorujte všechny zobrazené varovné zprávy.
    * V okně místní nabídky nahraďte **' Server '** a **' Database '** vlastními názvy serverů a databází a potom klikněte na tlačítko **' OK '**. V poli název serveru se ujistěte, že zadáváte port 1433 (**YourSolutionName.Database.Windows.NET, 1433**). Pole databáze nechte **pmaintenancedb**. Ignorujte varovné zprávy, které se zobrazí na obrazovce.
    * V dalším okně místní nabídky se zobrazí dvě možnosti v levém podokně (**Windows** a **databáze**). Klikněte na **databáze**, vyplňte **uživatelské** jméno a **heslo** (uživatelské jméno a heslo, které jste zadali při prvním nasazení řešení a vytvořili Azure SQL Database). V možnosti vybrat úroveň, pro kterou ***chcete použít tato nastavení***, zaškrtněte políčko na úrovni databáze. Pak klikněte na **připojit**.
-   * Klikněte na druhou tabulku **PMResult** a potom klikněte ![na ikonu](./media/predictive-maintenance-technical-guide/icon-navigation.png) navigace vedle položky **zdroj** v části **použité kroky** na pravé straně **nastavení dotazu** a aktualizujte názvy serverů a databází jako v předchozích krocích a klikněte na OK.
+   * Klikněte na druhou tabulku **PMResult** a potom klikněte na ![ ikonu navigace ](./media/predictive-maintenance-technical-guide/icon-navigation.png) vedle položky **zdroj** v části **použité kroky** na pravé straně **nastavení dotazu** a aktualizujte názvy serverů a databází jako v předchozích krocích a klikněte na OK.
    * Až budete s přechodem na předchozí stránku, okno zavřete. Zobrazí se zpráva – klikněte na **použít**. Nakonec kliknutím na tlačítko **Uložit** změny uložte. Váš soubor Power BI nyní navázal připojení k serveru. Pokud jsou vaše vizualizace prázdné, ujistěte se, že jste v pravém horním rohu legendy vymazali výběry pro vizualizaci všech dat kliknutím na ikonu gumy. Pomocí tlačítka Aktualizovat můžete odrážet nová data ve vizualizacích. Zpočátku se ve vašich vizualizacích zobrazí jenom data o počátečním stavu, ve kterém se naplánuje aktualizace služby Data Factory každé 3 hodiny. Po 3 hodinách se při aktualizaci dat v vizualizacích zobrazí nový předpovědi.
 3. Volitelné Publikujte řídicí panel pro studenou cestu a [Power BI online](https://www.powerbi.com/). Tento krok vyžaduje účet Power BI (nebo účet Office 365).
    
    * Klikněte na tlačítko **' publikovat '** a později se zobrazí okno se zobrazením "publikování Power BI úspěšné!". se zeleným znakem zaškrtnutí. Klikněte na odkaz níže "otevřít PredictiveMaintenanceAerospace. pbix v Power BI". Podrobné pokyny najdete v tématu [publikování z Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
-   * Vytvoření nového řídicího panelu: v levém **+** podokně klikněte na symbol vedle části **řídicí panely** . Zadejte název "ukázka prediktivní údržby" pro tento nový řídicí panel.
-   * Po otevření sestavy klikněte na ![ikonu](./media/predictive-maintenance-technical-guide/icon-pin.png) připnout, aby se všechny vizualizace připnout na řídicí panel. Podrobné pokyny najdete v tématu [připnutí dlaždice na řídicí panel Power BI ze sestavy](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
+   * Vytvoření nového řídicího panelu: **+** v levém podokně klikněte na symbol vedle části **řídicí panely** . Zadejte název "ukázka prediktivní údržby" pro tento nový řídicí panel.
+   * Po otevření sestavy klikněte na ![ ikonu Připnout, ](./media/predictive-maintenance-technical-guide/icon-pin.png) aby se všechny vizualizace připnout na řídicí panel. Podrobné pokyny najdete v tématu [připnutí dlaždice na řídicí panel Power BI ze sestavy](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
      Přejít na stránku řídicího panelu a upravit velikost a umístění vizualizací a upravit jejich názvy. Podrobné pokyny k úpravám dlaždic najdete v tématu [Úprava dlaždice – Změna velikosti, přesunutí, přejmenování, připnutí, odstranění, přidání hypertextového odkazu](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Tady je příklad řídicího panelu s některými vizualizacemi na studenou cestu, na které se připnuté.  V závislosti na tom, jak dlouho spouštíte generátor dat, se vaše čísla ve vizualizacích můžou lišit.
      <br/>
      ![Finální zobrazení](./media/predictive-maintenance-technical-guide/final-view.png)
      <br/>
-   * Pokud chcete naplánovat aktualizaci dat, najeďte myší na **PredictiveMaintenanceAerospace** datovou sadu, klikněte ![na ikonu](./media/predictive-maintenance-technical-guide/icon-elipsis.png) se třemi tečkami a pak zvolte **naplánovat aktualizaci**.
+   * Pokud chcete naplánovat aktualizaci dat, najeďte myší na **PredictiveMaintenanceAerospace** datovou sadu, klikněte na ![ ikonu se třemi tečkami ](./media/predictive-maintenance-technical-guide/icon-elipsis.png) a pak zvolte **naplánovat aktualizaci**.
      <br/>
      > [!NOTE]
      > Pokud se zobrazí zpráva s upozorněním, klikněte na **Upravit přihlašovací údaje** a ujistěte se, že jsou vaše přihlašovací údaje databáze stejné, jako ty popsané v kroku 1.
@@ -222,7 +222,7 @@ Následující kroky popisují, jak vizualizovat výstup dat z Stream Analytics 
    * V části datové sady na levém panelu klikněte na datová sada **aircraftmonitor** .
    * Klikněte na ikonu **spojnicového grafu** .
    * V podokně **pole** klikněte na **zpracované** a v podokně **vizualizace** se zobrazí v části osa.
-   * Klikněte na "S11" a "\_S11 Alert", aby se obě zobrazily v části "hodnoty". Klikněte na malou šipku vedle **S11** a **S11\_výstrahy**, změňte "Sum" na "Average".
+   * Klikněte na "S11" a "S11 \_ Alert", aby se obě zobrazily v části "hodnoty". Klikněte na malou šipku vedle **S11** a **S11 \_ výstrahy**, změňte "Sum" na "Average".
    * V horní části klikněte na **Save (Uložit** ) a pojmenujte sestavu "aircraftmonitor". Sestava s názvem "aircraftmonitor" je uvedena v části **sestavy** v podokně **navigátor** na levé straně.
    * Klikněte na ikonu **připnout vizuál** v pravém horním rohu tohoto spojnicového grafu. Může se zobrazit okno připnout na řídicí panel, ve kterém můžete vybrat řídicí panel. Vyberte možnost prediktivní údržba ukázka a pak klikněte na připnout.
    * Najeďte myší na tuto dlaždici na řídicím panelu, klikněte na ikonu Upravit v pravém horním rohu a změňte její název na "zobrazení loďstva snímače 11 vs. prahová hodnota 48,26" a podnadpis na "průměr v rámci loďstva v průběhu času".

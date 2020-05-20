@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae0632fbc3208befe197c15ffdbf2d9a4e7b2d7a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926472"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680217"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
 Tato funkce byla představena s [1.1.105.0EM buildu (vydáno 2016. února)](reference-connect-version-history.md#111050).  Tato funkce se aktualizovala v [Build 1.1.561](reference-connect-version-history.md#115610) a teď podporuje další scénáře, které se dřív nepodporovaly.
@@ -35,15 +35,15 @@ Automatický upgrade je ve výchozím nastavení povolený pro následující:
 * Účet služby AD je výchozí účet MSOL_ vytvořený pomocí expresního nastavení a DirSync.
 * V úložišti Metaverse musí být méně než 100 000 objektů.
 
-Aktuální stav automatického upgradu můžete zobrazit pomocí rutiny `Get-ADSyncAutoUpgrade`PowerShellu. Má následující stavy:
+Aktuální stav automatického upgradu můžete zobrazit pomocí rutiny PowerShellu `Get-ADSyncAutoUpgrade` . Má následující stavy:
 
-| Stav | Poznámka |
+| State | Komentář |
 | --- | --- |
 | Povoleno |Automatický upgrade je povolen. |
 | Dočasně blokován. |Nastaveno pouze systémem. Systém nemá v **současné době** nárok na příjem automatických upgradů. |
 | Zakázáno |Automatický upgrade je zakázán. |
 
-Můžete změnit mezi **povolenými** a **zakázanými** pomocí `Set-ADSyncAutoUpgrade`. Pouze systém by měl nastavit stav **pozastaveno**.  Před 1.1.750.0 by rutina Set-ADSyncAutoUpgrade blokovala automatický upgrade, pokud byl stav automatického upgradu nastavený na pozastaveno. Tato funkce se teď změnila, takže neblokuje autoupgrade.
+Můžete změnit mezi **povolenými** a **zakázanými** pomocí `Set-ADSyncAutoUpgrade` . Pouze systém by měl nastavit stav **pozastaveno**.  Před 1.1.750.0 by rutina Set-ADSyncAutoUpgrade blokovala automatický upgrade, pokud byl stav automatického upgradu nastavený na pozastaveno. Tato funkce se teď změnila, takže neblokuje autoupgrade.
 
 Automatický upgrade používá Azure AD Connect Health pro infrastrukturu upgradu. Aby mohl automatický upgrade fungovat, ujistěte se, že jste otevřeli adresy URL v proxy server pro **Azure AD Connect Health** , jak je popsáno v [adresách URL Office 365 a rozsahech IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
@@ -55,7 +55,7 @@ Pokud se vaše instalace připojení neupgraduje podle očekávání, postupujte
 
 Za prvé byste neměli očekávat, že se automatický upgrade bude pokoušet o první vydání nové verze. Před pokusem o upgrade došlo k úmyslnému náhodnosti, takže pokud se instalace neupgraduje hned, neprovádějte upozornění.
 
-Pokud si myslíte, že něco není napravo `Get-ADSyncAutoUpgrade` , spusťte nejprve, abyste zajistili, že je povolen automatický upgrade.
+Pokud si myslíte, že něco není napravo, spusťte nejprve, `Get-ADSyncAutoUpgrade` abyste zajistili, že je povolen automatický upgrade.
 
 Pak se ujistěte, že jste na proxy serveru nebo v bráně firewall otevřeli požadované adresy URL. Automatická aktualizace používá Azure AD Connect Health, jak je popsáno v [přehledu](#overview). Pokud používáte proxy server, ujistěte se, že stav byl nakonfigurován tak, aby používal [proxy server](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Také otestujte [připojení ke stavu](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) Azure AD.
 
@@ -92,7 +92,7 @@ Tady je seznam nejběžnějších zpráv, které najdete. Neobsahuje žádné v�
 | UpgradeNotSupportedAdfsSignInMethod | Jako metodu přihlašování jste vybrali službu AD FS. |
 | UpgradeNotSupportedCustomizedSyncRules |Do konfigurace jste přidali vlastní pravidla. |
 | UpgradeNotSupportedDeviceWritebackEnabled |Povolili jste funkci [zpětného zápisu zařízení](how-to-connect-device-writeback.md) . |
-| UpgradeNotSupportedGroupWritebackEnabled |Povolili jste funkci [zpětného zápisu skupiny](how-to-connect-preview.md#group-writeback) . |
+| UpgradeNotSupportedGroupWritebackEnabled |Povolili jste funkci zpětného zápisu skupiny. |
 | UpgradeNotSupportedInvalidPersistedState |Instalace není expresním nastavením nebo DirSyncm upgradem. |
 | UpgradeNotSupportedMetaverseSizeExceeeded |V úložišti Metaverse máte více než 100 000 objektů. |
 | UpgradeNotSupportedMultiForestSetup |Připojujete se k více než jedné doménové struktuře. Expresní instalace se připojuje jenom k jedné doménové struktuře. |

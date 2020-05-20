@@ -3,18 +3,20 @@ title: Zásady pro zachování netagovaných manifestů
 description: Naučte se, jak ve službě Azure Container Registry povolit zásady uchovávání informací pro automatické odstranění netagovaných manifestů po definovaném období.
 ms.topic: article
 ms.date: 10/02/2019
-ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74454812"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683456"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Nastavit zásady uchovávání informací pro netagované manifesty
 
-Azure Container Registry vám dává možnost nastavit *zásady uchovávání informací* pro manifesty uložených imagí, které nemají žádné přidružené značky (*netagované manifesty*). Pokud jsou povoleny zásady uchovávání informací, odtagované manifesty v registru budou automaticky odstraněny po nastaveném počtu dní. Tato funkce zabrání registru v naplnění artefaktů, které nepotřebujete, a pomůže vám ušetřit náklady na úložiště. Pokud je `delete-enabled` atributem netagovaného manifestu nastavený na `false`, manifest se nedá odstranit a zásady uchovávání se nevztahují.
+Azure Container Registry vám dává možnost nastavit *zásady uchovávání informací* pro manifesty uložených imagí, které nemají žádné přidružené značky (*netagované manifesty*). Pokud jsou povoleny zásady uchovávání informací, odtagované manifesty v registru budou automaticky odstraněny po nastaveném počtu dní. Tato funkce zabrání registru v naplnění artefaktů, které nepotřebujete, a pomůže vám ušetřit náklady na úložiště. Pokud `delete-enabled` je atributem netagovaného manifestu nastavený na `false` , manifest se nedá odstranit a zásady uchovávání se nevztahují.
 
 Příklady příkazů v tomto článku můžete spustit pomocí Azure Cloud Shell nebo místní instalace rozhraní příkazového řádku Azure CLI. Pokud ho chcete používat místně, je potřeba verze 2.0.74 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+
+Zásady uchovávání informací jsou funkcí pro Registry kontejnerů úrovně **Premium** . Informace o úrovních služby registru najdete v tématu [Azure Container Registry úrovně služeb](container-registry-skus.md).
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview a [platí některá omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
@@ -24,7 +26,6 @@ Příklady příkazů v tomto článku můžete spustit pomocí Azure Cloud Shel
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
-* Pomocí zásad uchovávání informací se dá nakonfigurovat jenom registr kontejnerů **Premium** . Informace o úrovních služby registru najdete v tématu [Azure Container Registry SKU](container-registry-skus.md).
 * Zásady uchovávání informací lze nastavit pouze pro netagované manifesty.
 * Zásady uchovávání informací se aktuálně vztahují jenom na manifesty, které jsou *po* povolení zásady neoznačené. Existující netagované manifesty v registru nepodléhají zásadám. Chcete-li odstranit existující netagované manifesty, přečtěte si příklady v tématu [odstranění imagí kontejneru v Azure Container Registry](container-registry-delete.md).
 
@@ -58,8 +59,8 @@ az acr config retention update --registry myregistry --status enabled --days 0 -
 
 Pokud povolíte předchozí zásadu s dobou uchování 0 dnů, můžete rychle ověřit, jestli jsou netagované manifesty smazány:
 
-1. Nahrajte `hello-world:latest` image obrazu testu do registru nebo nahraďte další testovací image podle vašeho výběru.
-1. Zrušit označení `hello-world:latest` image například pomocí příkazu [AZ ACR úložiště zrušit označení][az-acr-repository-untag] . Netagovaný manifest zůstane v registru.
+1. Nahrajte image obrazu testu `hello-world:latest` do registru nebo nahraďte další testovací image podle vašeho výběru.
+1. Zrušit označení `hello-world:latest` Image například pomocí příkazu [AZ ACR úložiště zrušit označení][az-acr-repository-untag] . Netagovaný manifest zůstane v registru.
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
     ```
@@ -73,7 +74,7 @@ Pokud chcete zobrazit sadu zásad uchovávání dat v registru, spusťte příka
 az acr config retention show --registry myregistry
 ```
 
-Chcete-li zakázat zásady uchovávání informací v registru, spusťte příkaz [AZ ACR config uchování aktualizace][az-acr-config-retention-update] a `--status disabled`nastavte:
+Chcete-li zakázat zásady uchovávání informací v registru, spusťte příkaz [AZ ACR config uchování aktualizace][az-acr-config-retention-update] a nastavte `--status disabled` :
 
 ```azurecli
 az acr config retention update --registry myregistry --status disabled --type UntaggedManifests

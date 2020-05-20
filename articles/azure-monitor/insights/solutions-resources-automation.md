@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3b1b134afbc4a13d7888281a82609d444cee377
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663058"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682870"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Přidání prostředků Azure Automation do řešení pro správu (Preview)
 > [!NOTE]
@@ -33,7 +33,7 @@ V tomto článku se předpokládá, že už jste obeznámeni s následujícími 
 - [Vytváření šablon Správce prostředků](../../azure-resource-manager/templates/template-syntax.md)
 
 ## <a name="automation-account"></a>Účet Automation
-Všechny prostředky v Azure Automation jsou obsaženy v [účtu Automation](../../automation/automation-security-overview.md#automation-account-overview).  Jak je popsáno v [Log Analytics pracovní prostor a účet Automation]( solutions.md#log-analytics-workspace-and-automation-account) účet Automation není zahrnutý do řešení pro správu, ale musí existovat před tím, než se řešení nainstaluje.  Pokud není k dispozici, instalace řešení se nezdaří.
+Všechny prostředky v Azure Automation jsou obsaženy v [účtu Automation](../../automation/automation-security-overview.md).  Jak je popsáno v [Log Analytics pracovní prostor a účet Automation]( solutions.md#log-analytics-workspace-and-automation-account) účet Automation není zahrnutý do řešení pro správu, ale musí existovat před tím, než se řešení nainstaluje.  Pokud není k dispozici, instalace řešení se nezdaří.
 
 Název každého prostředku automatizace zahrnuje název svého účtu Automation.  To se provádí v řešení s parametrem **účtu** , jako v následujícím příkladu prostředku sady Runbook.
 
@@ -264,20 +264,20 @@ Vlastnosti prostředků proměnných jsou popsány v následující tabulce.
 |:--- |:--- |
 | description | Volitelný popis proměnné. |
 | isEncrypted | Určuje, zda má být proměnná zašifrovaná. |
-| type | Tato vlastnost aktuálně nemá žádný vliv.  Datový typ proměnné bude stanoven počáteční hodnotou. |
+| typ | Tato vlastnost aktuálně nemá žádný vliv.  Datový typ proměnné bude stanoven počáteční hodnotou. |
 | value | Hodnota proměnné |
 
 > [!NOTE]
 > Vlastnost **Type** nemá v současné době žádný vliv na vytvořenou proměnnou.  Datový typ proměnné bude stanoven hodnotou.  
 
-Pokud nastavíte počáteční hodnotu pro proměnnou, je nutné ji nakonfigurovat jako správný datový typ.  Následující tabulka poskytuje různé datové typy, které umožňují a jejich syntaxi.  Všimněte si, že hodnoty ve formátu JSON by měly být vždy uzavřeny v uvozovkách se všemi speciálními znaky v uvozovkách.  Například řetězcová hodnota by byla určena uvozovkami kolem řetězce (pomocí řídicího znaku (\\)), zatímco číselná hodnota by byla zadána s jednou sadou uvozovek.
+Pokud nastavíte počáteční hodnotu pro proměnnou, je nutné ji nakonfigurovat jako správný datový typ.  Následující tabulka poskytuje různé datové typy, které umožňují a jejich syntaxi.  Všimněte si, že hodnoty ve formátu JSON by měly být vždy uzavřeny v uvozovkách se všemi speciálními znaky v uvozovkách.  Například řetězcová hodnota by byla určena uvozovkami kolem řetězce (pomocí řídicího znaku ( \\ )), zatímco číselná hodnota by byla zadána s jednou sadou uvozovek.
 
 | Datový typ | Popis | Příklad | Překládá na |
 |:--|:--|:--|:--|
-| řetězec   | Uzavřete hodnotu do dvojitých uvozovek.  | \"Hello World\" | Hello World |
+| řetězec   | Uzavřete hodnotu do dvojitých uvozovek.  | \"Hello World \" | Hello World |
 | numerické  | Číselná hodnota s jednoduchými uvozovkami.| "64" | 64 |
 | Boolean  | **hodnota true** nebo **false** v uvozovkách  Všimněte si, že tato hodnota musí být malá. | podmínka | true |
-| datetime | Hodnota serializovaného data<br>K vygenerování této hodnoty pro konkrétní datum můžete použít rutinu ConvertTo-JSON v prostředí PowerShell.<br>Příklad: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
+| datetime | Hodnota serializovaného data<br>K vygenerování této hodnoty pro konkrétní datum můžete použít rutinu ConvertTo-JSON v prostředí PowerShell.<br>Příklad: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | " \\ /Date (1495656897378) \\ /" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduly
 Vaše řešení pro správu nemusí definovat [globální moduly](../../automation/automation-integration-modules.md) používané vašimi Runbooky, protože budou vždy k dispozici ve vašem účtu Automation.  Je potřeba zahrnout prostředek pro všechny ostatní moduly, které vaše Runbooky používají.

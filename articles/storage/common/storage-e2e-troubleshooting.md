@@ -9,12 +9,13 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: monitoring
+ms.openlocfilehash: 9b4accd14785aedee06850d5a79dc9835086306a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610968"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680368"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Kompletní řešení potíží pomocí metrik a protokolování služby Azure Storage, nástrojů AzCopy a Message Analyzer
 
@@ -85,7 +86,7 @@ V tomto kurzu použijeme analyzátor zpráv pro práci se třemi různými typy 
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Konfigurace protokolování a metrik na straně serveru
 
-Nejdřív bude nutné nakonfigurovat Azure Storage protokolování a metriky, aby bylo možné analyzovat data ze strany služby. Protokolování a metriky můžete nakonfigurovat různými způsoby – prostřednictvím [Azure Portal](https://portal.azure.com), pomocí PowerShellu nebo prostřednictvím kódu programu. Podrobnosti o konfiguraci protokolování a metrik najdete v tématu [Povolení metrik](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal) a [Povolení protokolování](storage-analytics-logging.md#enable-storage-logging) .
+Nejdřív bude nutné nakonfigurovat Azure Storage protokolování a metriky, aby bylo možné analyzovat data ze strany služby. Protokolování a metriky můžete nakonfigurovat různými způsoby – prostřednictvím [Azure Portal](https://portal.azure.com), pomocí PowerShellu nebo prostřednictvím kódu programu. Podrobnosti o konfiguraci protokolování a metrik najdete v tématu [Povolení metrik](storage-analytics-metrics.md#enable-metrics-by-using-the-azure-portal) a [Povolení protokolování](storage-analytics-logging.md#enable-storage-logging) .
 
 ### <a name="configure-net-client-side-logging"></a>Konfigurace protokolování na straně klienta .NET
 
@@ -141,9 +142,9 @@ Další podrobnosti o přidávání a přizpůsobení grafů metrik najdete v t�
 
 ## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>Kopírování protokolů serveru do místního adresáře pomocí AzCopy
 
-Azure Storage zapisuje data protokolu serveru do objektů blob, zatímco metriky se zapisují do tabulek. Objekty blob protokolu jsou k dispozici ve známém `$logs` kontejneru pro váš účet úložiště. Objekty blob protokolů se pojmenují hierarchicky po rocích, měsíc, den a hodinu, takže můžete snadno najít rozsah času, který chcete prozkoumat. Například v `storagesample` účtu je `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`kontejner pro objekty blob protokolu pro 01/02/2015 od 8-9 dop. Jednotlivé objekty BLOB v tomto kontejneru jsou pojmenovány sekvenčně, počínaje `000000.log`.
+Azure Storage zapisuje data protokolu serveru do objektů blob, zatímco metriky se zapisují do tabulek. Objekty blob protokolu jsou k dispozici ve známém `$logs` kontejneru pro váš účet úložiště. Objekty blob protokolů se pojmenují hierarchicky po rocích, měsíc, den a hodinu, takže můžete snadno najít rozsah času, který chcete prozkoumat. Například v `storagesample` účtu je kontejner pro objekty blob protokolu pro 01/02/2015 od 8-9 dop `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800` . Jednotlivé objekty BLOB v tomto kontejneru jsou pojmenovány sekvenčně, počínaje `000000.log` .
 
-Pomocí nástroje příkazového řádku AzCopy můžete stáhnout tyto soubory protokolu na straně serveru do libovolného umístění v místním počítači. Pomocí následujícího příkazu můžete například stáhnout soubory protokolu pro operace objektů blob, které se konaly do 2. ledna 2015 do složky `C:\Temp\Logs\Server`. Nahraďte `<storageaccountname>` názvem vašeho účtu úložiště:
+Pomocí nástroje příkazového řádku AzCopy můžete stáhnout tyto soubory protokolu na straně serveru do libovolného umístění v místním počítači. Pomocí následujícího příkazu můžete například stáhnout soubory protokolu pro operace objektů blob, které se konaly do 2. ledna 2015 do složky `C:\Temp\Logs\Server` . nahraďte `<storageaccountname>` názvem svého účtu úložiště:
 
 ```azcopy
 azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
@@ -211,7 +212,7 @@ Níže uvedené části popisují, jak použít předem nakonfigurovaná a vlast
 
 Prostředky úložiště pro analyzátor zpráv zahrnují Azure Storage zobrazení rozložení, která jsou předem nakonfigurovaná zobrazení, která můžete použít k zobrazení dat s užitečnými seskupeními a sloupci pro různé scénáře. Můžete také vytvořit vlastní rozložení zobrazení a uložit je pro opakované použití.
 
-Následující obrázek znázorňuje nabídku **rozložení zobrazení** , která je k dispozici, výběrem možnosti **Zobrazit rozložení** na pásu karet na panelu nástrojů. Rozložení zobrazení pro Azure Storage jsou seskupena pod uzlem **Azure Storage** v nabídce. `Azure Storage` Ve vyhledávacím poli můžete hledat a filtrovat tak Azure Storage jenom rozložení zobrazení. Můžete také vybrat hvězdičku vedle rozložení zobrazení a nastavit ji jako oblíbenou a zobrazit ji v horní části nabídky.
+Následující obrázek znázorňuje nabídku **rozložení zobrazení** , která je k dispozici, výběrem možnosti **Zobrazit rozložení** na pásu karet na panelu nástrojů. Rozložení zobrazení pro Azure Storage jsou seskupena pod uzlem **Azure Storage** v nabídce. `Azure Storage`Ve vyhledávacím poli můžete hledat a filtrovat tak Azure Storage jenom rozložení zobrazení. Můžete také vybrat hvězdičku vedle rozložení zobrazení a nastavit ji jako oblíbenou a zobrazit ji v horní části nabídky.
 
 ![Zobrazit nabídku rozložení](./media/storage-e2e-troubleshooting/view-layout-menu.png)
 

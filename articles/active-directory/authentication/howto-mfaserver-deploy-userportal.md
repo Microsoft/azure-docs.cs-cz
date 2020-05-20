@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1869fac973cd4cd68e1e91be89c25fdf1427f6a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8b7d3945adaf75949ef36b50a5e56a02fde1548
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653211"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680912"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>User Portal pro Azure Multi-Factor Authentication Server
 
@@ -69,7 +69,7 @@ Pokud chcete nasadit portál User Portal, postupujte takto:
    > [!NOTE]
    > Certifikát TLS/SSL je obvykle veřejně podepsaný certifikát TLS/SSL.
 
-4. Z libovolného počítače otevřete webový prohlížeč a přejděte na adresu URL, kam se nainstaloval portál User Portal (příklad: `https://mfa.contoso.com/MultiFactorAuth`). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
+4. Z libovolného počítače otevřete webový prohlížeč a přejděte na adresu URL, kam se nainstaloval portál User Portal (příklad: `https://mfa.contoso.com/MultiFactorAuth` ). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
 
 ![Instalace portálu User Portal pro MFA Server](./media/howto-mfaserver-deploy-userportal/install.png)
 
@@ -105,10 +105,10 @@ Instalace portálu uživatele na jiném serveru, než je Azure Multi-Factor Auth
     * Vyhledejte klíč **"USE_WEB_SERVICE_SDK"** a změňte **value="false"** na **value="true"**.
     * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** a změňte **value=""** na **value="DOMÉNA\Uživatel"**, kde DOMÉNA\Uživatel je účet služby, který je součástí skupiny PhoneFactor Admins.
     * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** a změňte **value=""** na **value="Heslo"**, kde Heslo je heslo pro účet úložiště zadaný na předchozím řádku.
-    * Vyhledejte hodnotu **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** a změňte tuto zástupnou adresu URL na adresu URL sady SDK webové služby, kterou jsme nainstalovali v kroku 2.
+    * Vyhledejte hodnotu `https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx` a změňte tuto zástupnou adresu URL na adresu URL sady SDK webové služby, kterou jsme nainstalovali v kroku 2.
     * Uložte soubor Web.Config a zavřete Poznámkový blok.
 
-6. Z libovolného počítače otevřete webový prohlížeč a přejděte na adresu URL, kam se nainstaloval portál User Portal (příklad: `https://mfa.contoso.com/MultiFactorAuth`). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
+6. Z libovolného počítače otevřete webový prohlížeč a přejděte na adresu URL, kam se nainstaloval portál User Portal (příklad: `https://mfa.contoso.com/MultiFactorAuth` ). Ujistěte se, že se nezobrazí žádná varování nebo chyby týkající se certifikátu.
 
 Pokud máte dotazy týkající se konfigurace certifikátu TLS/SSL na serveru IIS, přečtěte si článek [jak nastavit protokol SSL ve službě IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 

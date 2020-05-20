@@ -1,6 +1,6 @@
 ---
 title: Správa certifikátů v Azure Automation
-description: Azure Automation bezpečně ukládá certifikáty, aby k nim měly přístup Runbooky nebo konfigurace DSC k ověřování proti prostředkům Azure a jiných výrobců. V tomto článku se dozvíte podrobnosti o certifikátech a o tom, jak s nimi pracovat v textovém i grafickém vytváření.
+description: Tento článek obsahuje informace o tom, jak pracovat s certifikáty pro přístup pomocí runbooků a konfigurací DSC.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2793679fb4588d00ea4e37340b19183398cb9d90
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: bf7e6d0ed8d6e318e6a78d25bcc7764f6302ef22
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864313"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685368"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Správa certifikátů v Azure Automation
 
@@ -22,9 +22,6 @@ Azure Automation ukládá certifikáty bezpečně pro přístup pomocí runbook�
 
 >[!NOTE]
 >Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou šifrované a uložené v automatizaci pomocí jedinečného klíče, který se generuje pro každý účet Automation. Služba Automation ukládá klíč do služby Key Vault spravované systémem. Před uložením zabezpečeného prostředku Automation načte klíč z Key Vault a pak ho použije k zašifrování assetu. 
-
->[!NOTE]
->V tomto článku se dozvíte, jak použít Azure PowerShell AZ Module. I nadále můžete použít modul AzureRM. Další informace o kompatibilitě modulu AZ Module a AzureRM naleznete v tématu [Představujeme nový Azure PowerShell AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](../automation-update-azure-modules.md).
 
 ## <a name="powershell-cmdlets-to-access-certificates"></a>Rutiny PowerShellu pro přístup k certifikátům
 
@@ -41,7 +38,7 @@ Pomocí rutiny [Add-AzureCertificate](/powershell/module/servicemanagement/azure
 
 ## <a name="internal-cmdlets-to-access-certificates"></a>Interní rutiny pro přístup k certifikátům
 
-Interní rutina v následující tabulce se používá pro přístup k certifikátům ve vašich sadách Runbook. Tato rutina se dodává s globálním `Orchestrator.AssetManagement.Cmdlets`modulem. Další informace najdete v tématu [interní rutiny](modules.md#internal-cmdlets).
+Interní rutina v následující tabulce se používá pro přístup k certifikátům ve vašich sadách Runbook. Tato rutina se dodává s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](modules.md#internal-cmdlets).
 
 | Interní rutina | Popis |
 |:---|:---|
@@ -59,7 +56,7 @@ Použijte funkci v následující tabulce pro přístup k certifikátům v sadě
 | `automationassets.get_automation_certificate` | Načte informace o prostředku certifikátu. |
 
 > [!NOTE]
-> Aby bylo možné získat `automationassets` přístup k funkcím assetu, musíte importovat modul na začátek Runbooku sady Python.
+> `automationassets`Aby bylo možné získat přístup k funkcím assetu, musíte importovat modul na začátek Runbooku sady Python.
 
 ## <a name="create-a-new-certificate"></a>Vytvořit nový certifikát
 
@@ -67,7 +64,7 @@ Když vytváříte nový certifikát, nahrajete soubor. cer nebo. pfx pro automa
 
 ### <a name="create-a-new-certificate-with-the-azure-portal"></a>Vytvořit nový certifikát s Azure Portal
 
-1. Z účtu Automation vyberte**certifikáty** >  **assetů** > **Přidat certifikát**.
+1. Z účtu Automation vyberte certifikáty **assetů**  >  **Certificates**  >  **Přidat certifikát**.
 1. Do pole **název** zadejte název certifikátu.
 1. Chcete-li vyhledat soubor **. cer** nebo **. pfx** , v části **nahrát soubor certifikátu**zvolte **možnost vybrat soubor**. Pokud vyberete soubor **. pfx** , zadejte heslo a určete, jestli se dá exportovat.
 1. Vyberte **vytvořit** a uložte nový prostředek certifikátu.

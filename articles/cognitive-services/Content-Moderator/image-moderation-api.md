@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd6228ea50968c98c5ba151b8af9a0c2fa829582
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81404265"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684060"
 ---
 # <a name="learn-image-moderation-concepts"></a>Základní informace o principech moderování obrázků
 
-Využijte Nástroj pro kontrolu obrazu s asistencí Content Moderator a [Nástroj pro recenze na základě lidského](Review-Tool-User-Guide/human-in-the-loop.md) provozu pro použití pro dospělé a pikantní obsah. Naskenujte obrázky pro textový obsah a extrahuje text a detekuje obličeje. Obrázky můžete porovnávat s vlastními seznamy a provádět další akce.
+Pro dospělé a pikantní obsah Content Moderator použijte nástroj pro moderování imagí a [Nástroj pro kontrolu](Review-Tool-User-Guide/human-in-the-loop.md) obrazu s asistencí pro počítače. Naskenujte obrázky pro textový obsah a extrahuje text a detekuje obličeje. Obrázky můžete porovnávat s vlastními seznamy a provádět další akce.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>Hodnocení obsahu pro dospělé a pikantní
 
@@ -147,4 +147,4 @@ Pro více případů odlišit použijte [Nástroj pro kontrolu](Review-Tool-User
 
 ## <a name="next-steps"></a>Další kroky
 
-Otestujte [konzolu rozhraní API pro moderování imagí](try-image-api.md) a použijte ukázky kódu REST API. Pokud jste obeznámeni se sadou Visual Studio a jazykem C#, podívejte se také na oddíl moderování imagí v sadě [.NET SDK pro rychlý Start](dotnet-sdk-quickstart.md) .
+Otestujte [konzolu rozhraní API pro moderování imagí](try-image-api.md) a použijte ukázky kódu REST API. Podívejte se také na [recenze, pracovní postupy a úlohy,](./review-api.md) kde se dozvíte, jak nastavit lidské recenze.

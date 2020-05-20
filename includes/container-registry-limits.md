@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 05/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0090f02382e024e5539383328b55d58798002d63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19d0be6a032868c6683cd5b6bbfa7f07306171fb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79117151"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683436"
 ---
 | Prostředek | Základní | Standard | Premium |
 |---|---|---|---|
@@ -26,9 +26,9 @@ ms.locfileid: "79117151"
 | Webhooky | 2 | 10 | 500 |
 | Geografická replikace | – | – | [Doložen][geo-replication] |
 | Důvěryhodnost obsahu | – | – | [Doložen][content-trust] |
-| Přístup k virtuální síti | – | – | [Tisk][vnet] |
-| Integrace privátních odkazů | – | – | [Tisk][plink] |
-| Klíče spravované zákazníkem | – | – | [Tisk][cmk] |
+| Privátní odkaz s privátními koncovými body | – | – | [Doložen][plink] |
+| Přístup k virtuální síti koncového bodu služby | – | – | [Tisk][vnet] |
+| Klíče spravované zákazníkem | – | – | [Doložen][cmk] |
 | Oprávnění rozsahu úložiště | – | – | [Tisk][token]|
 | &bull;Klíčov | – | – | 20 000 |
 | &bull;Mapy oboru | – | – | 20 000 |

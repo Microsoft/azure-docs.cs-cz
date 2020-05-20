@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81274006"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685061"
 ---
 # <a name="learn-text-moderation-concepts"></a>Základní informace o principech moderování textu
 
-Používejte funkce moderování textu s asistencí Content Moderator a funkce pro [kontrolu lidského](Review-Tool-User-Guide/human-in-the-loop.md) textu pro střední obsah.
+Pomocí modelů pro moderování textu Content Moderator můžete analyzovat textový obsah.
 
-Obsah můžete blokovat, schvalovat nebo kontrolovat na základě zásad a prahových hodnot. Využijte ji k rozšíření lidského moderování prostředí, kde partneři, zaměstnanci a spotřebitelé generují textový obsah. Patří sem chatovací místnosti, diskuzní vývěsky, chatovací roboti, katalogy elektronického obchodování a dokumenty. 
+V závislosti na vašich zásadách a prahech můžete obsah zablokovat, schvalovat nebo kontrolovat (podívejte se na [recenze, pracovní postupy a úlohy,](./review-api.md) kde se dozvíte, jak nastavit lidské recenze). Pomocí modelů moderování textu můžete rozšířit moderování lidských prostředí, kde partneři, zaměstnanci a spotřebitelé vygenerují textový obsah. Patří sem chatovací místnosti, diskuzní vývěsky, chatovací roboti, katalogy elektronického obchodování a dokumenty. 
 
 Odpověď služby zahrnuje následující informace:
 
@@ -34,7 +34,7 @@ Odpověď služby zahrnuje následující informace:
 
 ## <a name="profanity"></a>Vulgární výrazy
 
-Pokud rozhraní API zjistí jakékoli vulgární výrazy v některém z [podporovaných jazyků](Text-Moderation-API-Languages.md), jsou tyto výrazy součástí odpovědi. Odpověď také obsahuje jejich umístění (`Index`) v původním textu. `ListId` V následujícím ukázkovém formátu JSON odkazuje na podmínky nalezené v [seznamech vlastních termínů](try-terms-list-api.md) , pokud jsou k dispozici.
+Pokud rozhraní API zjistí jakékoli vulgární výrazy v některém z [podporovaných jazyků](Text-Moderation-API-Languages.md), jsou tyto výrazy součástí odpovědi. Odpověď také obsahuje jejich umístění ( `Index` ) v původním textu. `ListId`V následujícím ukázkovém formátu JSON odkazuje na podmínky nalezené v [seznamech vlastních termínů](try-terms-list-api.md) , pokud jsou k dispozici.
 
     "Terms": [
     {
@@ -45,7 +45,7 @@ Pokud rozhraní API zjistí jakékoli vulgární výrazy v některém z [podporo
     }
 
 > [!NOTE]
-> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila **odpověď s** podporou počítače (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
+> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače **classification** (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
 >
 > Pro detekci **podmínek vulgárních** výrazů použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo ponechte prázdné.
 
@@ -155,4 +155,4 @@ Content Moderator poskytuje [rozhraní API pro seznam termínů](https://westus.
 
 ## <a name="next-steps"></a>Další kroky
 
-Otestujte [konzolu rozhraní API pro moderování textu](try-text-api.md) a použijte ukázky kódu REST API. Pokud jste obeznámeni se sadou Visual Studio a jazykem C#, podívejte se také na oddíl moderování textu v sadě [.NET SDK pro rychlý Start](dotnet-sdk-quickstart.md) .
+Otestujte rozhraní API [konzolou rozhraní API pro moderování textu](try-text-api.md). Podívejte se také na [recenze, pracovní postupy a úlohy,](./review-api.md) kde se dozvíte, jak nastavit lidské recenze.

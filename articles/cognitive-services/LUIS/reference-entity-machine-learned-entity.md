@@ -1,7 +1,7 @@
 ---
-title: Typ entity, která se naučila počítačem – LUIS
+title: Typ entity strojového učení – LUIS
 titleSuffix: Azure Cognitive Services
-description: Entita získaná počítačem je upřednostňovanou entitou pro sestavování aplikací LUIS.
+description: Entita strojového učení je upřednostňovanou entitou pro sestavování aplikací LUIS.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ddaf5c921f92aeaefd8a8b0cb13602bc70a4dd5d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585585"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684573"
 ---
-# <a name="machine-learned-entity"></a>Strojově naučená entita
+# <a name="machine-learning-entity"></a>Entita strojového učení
 
-Entita získaná počítačem je upřednostňovanou entitou pro sestavování aplikací LUIS.
+Entita strojového učení je upřednostňovanou entitou pro sestavování aplikací LUIS.
 
 
 ## <a name="example-json"></a>Ukázkový kód JSON
@@ -38,7 +38,7 @@ Mezi ukázkové promluvy patří:
 
 #### <a name="v3-prediction-endpoint-response"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Vzhledem k tomu, že entita získaná počítačem může mít mnoho podentit s požadovanými funkcemi, jedná se pouze o příklad. Měl by se považovat za vodítko, co vaše entita vrátí.
+Vzhledem k tomu, že entita strojového učení může mít mnoho dílčích entit s požadovanými funkcemi, jedná se pouze o příklad. Měl by se považovat za vodítko, co vaše entita vrátí.
 
 Vezměte v úvahu dotaz:
 
@@ -348,6 +348,6 @@ Tato entita není k dispozici v modulu runtime předpovědi v2.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o provedených entitách počítačů, včetně [kurzu](tutorial-machine-learned-entity.md), [konceptů](luis-concept-entity-types.md#design-entities-for-decomposition)a [Průvodce](luis-how-to-add-entities.md#create-a-machine-learned-entity).
+Přečtěte si další informace o entitě machine learningu, včetně [kurzu](tutorial-machine-learned-entity.md), [konceptů](luis-concept-entity-types.md#design-entities-for-decomposition)a [Průvodce](luis-how-to-add-entities.md#create-a-machine-learned-entity).
 
 Přečtěte si informace o entitě [seznamu](reference-entity-list.md) a entitě [regulárního výrazu](reference-entity-regular-expression.md) .

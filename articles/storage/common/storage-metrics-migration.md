@@ -8,12 +8,13 @@ ms.date: 03/30/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b5d8add293a2ba8f14dc2d2fb8ba3b4228f455b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: monitoring
+ms.openlocfilehash: 10768ca4c6fbe4afc322fa9a7045c7cc4fe6f175
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176222"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681300"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure Storage migrace metrik
 
@@ -45,7 +46,7 @@ Pokud data metriky přečtete programově, musíte v programech přijmout nové 
 
 | Stará metrika | Nová metrika |
 | ------------------- | ----------------- |
-| **Klíčivost**            | **BlobCapacity** s dimenzí **BlobType** se rovná **BlockBlob** nebo **PageBlob** |
+| **Kapacita**            | **BlobCapacity** s dimenzí **BlobType** se rovná **BlockBlob** nebo **PageBlob** |
 | **ObjectCount**        | **BlobCount** s dimenzí **BlobType** se rovná **BlockBlob** nebo **PageBlob** |
 | **ContainerCount**      | **ContainerCount** |
 
@@ -97,14 +98,14 @@ Následující metriky představují nové nabídky, které staré metriky nepod
 | **SASThrottlingError** | Transakce s dimenzí **ResponseType** se rovnají hodnotě **ClientThrottlingError** nebo **ServerBusyError** a **ověřování** dimenzí se rovná **SAS** . |
 | **ServerOtherError** | Transakce s dimenzí **ResponseType** se rovnají hodnotě **ServerOtherError** |
 | **ServerTimeoutError** | Transakce s dimenzí **ResponseType** se rovnají hodnotě **ServerTimeoutError** |
-| **Úspěch** | Transakce s dimenzí **ResponseType** se rovná **úspěchu** . |
+| **Nástup** | Transakce s dimenzí **ResponseType** se rovná **úspěchu** . |
 | **ThrottlingError** | **Transakce** s dimenzí **ResponseType** se rovnají hodnotě **ClientThrottlingError** nebo **ServerBusyError** .|
 | **TotalBillableRequests** | **Transakce** |
 | **TotalEgress** | **Výchozí přenos dat** |
 | **TotalIngress** | **Příchozí přenos dat** |
 | **TotalRequests** | **Transakce** |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="how-should-i-migrate-existing-alert-rules"></a>Jak mám migrovat existující pravidla upozornění?
 

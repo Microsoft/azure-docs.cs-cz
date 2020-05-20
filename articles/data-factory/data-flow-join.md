@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/02/2020
-ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/15/2020
+ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233413"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683364"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Transformace spojení v toku dat mapování
 
@@ -48,9 +48,9 @@ Pravé vnější spojení vrátí všechny řádky z pravého proudu a odpovída
 
 V případě vzájemného spojení se v závislosti na podmínce vytvoří výstup z obou datových proudů mezi různými produkty. Pokud používáte podmínku, která není rovnost, zadejte jako podmínku vzájemného spojení vlastní výraz. Výstupní datový proud bude obsahovat všechny řádky, které splňují podmínku spojení.
 
-Tento typ spojení můžete použít pro spojení a podmínky, ```OR``` které nejsou typu ekvivalentní.
+Tento typ spojení můžete použít pro spojení a podmínky, které nejsou typu ekvivalentní ```OR``` .
 
-Pokud chcete explicitně vytvořit úplný kartézském produkt, použijte transformaci odvozeného sloupce v každém ze dvou nezávislých datových proudů předtím, než se připojíte k vytvoření syntetického klíče, který se má shodovat. V každém datovém proudu můžete například vytvořit nový sloupec v odvozeném sloupci ```SyntheticKey``` a nastavit jej jako je ```1```roven. Pak použijte ```a.SyntheticKey == b.SyntheticKey``` jako vlastní výraz JOIN.
+Pokud chcete explicitně vytvořit úplný kartézském produkt, použijte transformaci odvozeného sloupce v každém ze dvou nezávislých datových proudů předtím, než se připojíte k vytvoření syntetického klíče, který se má shodovat. V každém datovém proudu můžete například vytvořit nový sloupec v odvozeném sloupci ```SyntheticKey``` a nastavit jej jako je roven ```1``` . Pak použijte ```a.SyntheticKey == b.SyntheticKey``` jako vlastní výraz JOIN.
 
 > [!NOTE]
 > Nezapomeňte do vlastního vzájemného spojení zahrnout alespoň jeden sloupec z každé strany levého a pravého vztahu. Výsledkem provádění vzájemného spojení se statickými hodnotami místo sloupců z každé strany je úplné prověřování celé datové sady, což způsobí, že tok dat nebude dostatečně fungovat.
@@ -61,7 +61,13 @@ Pokud chcete explicitně vytvořit úplný kartézském produkt, použijte trans
 1. Vyberte **typ spojení**
 1. Vyberte, na které klíčové sloupce se má shoda při spojování podmínky připojit. Ve výchozím nastavení tok dat hledá rovnost mezi jedním sloupcem v každém datovém proudu. Pro porovnání přes vypočítanou hodnotu umístěte ukazatel myši na rozevírací seznam sloupec a vyberte **vypočítaný sloupec**.
 
-![Transformace spojení](media/data-flow/join.png "Spojit")
+![Transformace spojení](media/data-flow/join.png "Připojení")
+
+### <a name="non-equi-joins"></a>Spojení nepoužívající operátora
+
+Chcete-li použít podmíněný operátor, jako je například není rovno (! =) nebo větší než (>) v podmínkách připojení, změňte rozevírací seznam operátoru mezi dvěma sloupci. Spojení typu non-čárka vyžadují všesměrové vysílání aspoň jednoho ze dvou datových proudů pomocí **pevného** vysílání na kartě **optimalizace** .
+
+![Spojení typu non-čárka](media/data-flow/non-equi-join.png "Spojení typu non-čárka")
 
 ## <a name="optimizing-join-performance"></a>Optimalizace výkonu připojení
 
@@ -98,7 +104,7 @@ Při testování transformací spojení s náhledem dat v režimu ladění použ
 
 ### <a name="inner-join-example"></a>Příklad vnitřního spojení
 
-Níže uvedený příklad je transformační transformace s názvem `JoinMatchedData` , která přebírá `TripData` levý Stream a `TripFare`správný Stream.  Podmínka spojení je výraz `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` , který vrací hodnotu true, pokud `hack_license`se `medallion`v `vendor_id`každém datovém proudu shodují sloupce,, a `pickup_datetime` . `joinType` Je `'inner'`. Povolujeme všesměrové vysílání pouze v levém datovém `broadcast` proudu, `'left'`takže má hodnotu.
+Níže uvedený příklad je transformační transformace s názvem `JoinMatchedData` , která přebírá levý Stream `TripData` a správný Stream `TripFare` .  Podmínka spojení je výraz `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` , který vrací hodnotu true, pokud `hack_license` se `medallion` `vendor_id` `pickup_datetime` v každém datovém proudu shodují sloupce,, a. `joinType`Je `'inner'` . Povolujeme všesměrové vysílání pouze v levém datovém proudu, takže `broadcast` má hodnotu `'left'` .
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 
@@ -120,7 +126,7 @@ TripData, TripFare
 
 ### <a name="custom-cross-join-example"></a>Příklad vlastního vzájemného propojení
 
-Níže uvedený příklad je transformační transformace s názvem `JoiningColumns` , která přebírá `LeftStream` levý Stream a `RightStream`správný Stream. Tato transformace přebírá dva proudy a spojuje všechny řádky, kde `leftstreamcolumn` sloupec je větší než `rightstreamcolumn`sloupec. `joinType` Je `cross`. U všesměrového vysílání `broadcast` není povolená hodnota `'none'`.
+Níže uvedený příklad je transformační transformace s názvem `JoiningColumns` , která přebírá levý Stream `LeftStream` a správný Stream `RightStream` . Tato transformace přebírá dva proudy a spojuje všechny řádky, kde sloupec `leftstreamcolumn` je větší než sloupec `rightstreamcolumn` . `joinType`Je `cross` . U všesměrového vysílání není povolená `broadcast` hodnota `'none'` .
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

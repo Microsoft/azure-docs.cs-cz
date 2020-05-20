@@ -1,14 +1,14 @@
 ---
 title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s různými sadami SDK při dotazování na prostředky Azure pomocí Azure Resource graphu.
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1b3758e52641bc27341c5da0ced9e811263c02b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74303898"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683232"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Řešení chyb pomocí Azure Resource graphu
 
@@ -19,6 +19,25 @@ Při dotazování na prostředky Azure pomocí Azure Resource graphu může doj�
 Většina chyb je výsledkem problému při spouštění dotazu pomocí grafu prostředků Azure. Pokud se dotaz nezdařil, sada SDK poskytuje podrobnosti o neúspěšném dotazu. Tyto informace označují problém tak, aby mohl být vyřešen a pozdější dotaz bude úspěšný.
 
 ## <a name="general-errors"></a>Obecné chyby
+
+### <a name="scenario-throttled-requests"></a><a name="throttled"></a>Scénář: omezené požadavky
+
+#### <a name="issue"></a>Problém
+
+Zákazníci, kteří provádějí rozsáhlé nebo časté dotazy na prostředky, mají omezení požadavků.
+
+#### <a name="cause"></a>Příčina
+
+Graf prostředků Azure přiděluje číslo kvóty pro každého uživatele na základě časového okna. Uživatel může například odeslat maximálně 15 dotazů v rámci každého 5 sekundového okna bez omezení. Hodnota kvóty je určena mnoha faktory a může se změnit. Další informace najdete v tématu [omezování v Azure Resource graphu](../overview.md#throttling).
+
+#### <a name="resolution"></a>Řešení
+
+Existuje několik metod, jak řešit omezené požadavky:
+
+- [Seskupování dotazů](../concepts/guidance-for-throttled-requests.md#grouping-queries)
+- [Rozložení dotazů](../concepts/guidance-for-throttled-requests.md#staggering-queries)
+- [Paralelní dotazování](../concepts/guidance-for-throttled-requests.md#query-in-parallel)
+- [Stránkování](../concepts/guidance-for-throttled-requests.md#pagination)
 
 ### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>Scénář: moc velký počet předplatných
 
@@ -65,11 +84,11 @@ Zákazníci, kteří se dotazují do grafu prostředků Azure REST API obdrží 
 
 #### <a name="cause"></a>Příčina
 
-Graf Azure Resource REST API podporuje `Content-Type` jenom **Application/JSON**. Některé nástroje nebo agenti REST mají výchozí hodnotu **Text/prostý**, což REST API nepodporuje.
+Graf Azure Resource REST API podporuje jenom `Content-Type` **Application/JSON**. Některé nástroje nebo agenti REST mají výchozí hodnotu **Text/prostý**, což REST API nepodporuje.
 
 #### <a name="resolution"></a>Řešení
 
-Ověřte, že nástroj nebo agent, který používáte k dotazování na Azure Resource Graph, má `Content-Type` záhlaví REST API nakonfigurované pro **Application/JSON**.
+Ověřte, že nástroj nebo agent, který používáte k dotazování na Azure Resource Graph, má záhlaví REST API `Content-Type` nakonfigurované pro **Application/JSON**.
 
 ### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>Scénář: žádné oprávnění ke čtení pro všechna předplatná v seznamu
 
@@ -90,5 +109,5 @@ V seznamu předplatných uveďte aspoň jedno předplatné, ke kterému má zák
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 - Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-- Spojte se [@AzureSupport](https://twitter.com/azuresupport) s nástrojem – oficiální Microsoft Azure účet pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure s správnými zdroji: odpověďmi, podporou a odborníky.
+- Spojte se s nástrojem [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure s správnými zdroji: odpověďmi, podporou a odborníky.
 - Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.

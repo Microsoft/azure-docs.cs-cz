@@ -1,14 +1,14 @@
 ---
 title: Získání změn prostředků
 description: Pochopte, jak zjistit, kdy byl prostředek změněn, získat seznam vlastností, které se změnily, a vyhodnotit rozdíly.
-ms.date: 10/09/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d53148f302d82a7563520036f327406ca4a86040
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873025"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681054"
 ---
 # <a name="get-resource-changes"></a>Získání změn prostředků
 
@@ -40,8 +40,8 @@ Prvním krokem při zobrazení toho, co se změnilo u prostředku, je najít ud�
 
 Koncový bod **resourceChanges** akceptuje v textu požadavku následující parametry:
 
-- **resourceId** \[požadováno\]ResourceID: prostředek Azure, ve kterém se mají hledat změny.
-- **interval** \[požadovaný\]interval: vlastnost s _počátečním_ a _koncovým_ datem pro kontrolu události změny pomocí **časového pásma Zulu (Z)**.
+- **ResourceID** \[ požadováno \] : prostředek Azure, na kterém se mají hledat změny.
+- **interval** \[ požadováno \] : vlastnost s _počátečním_ a _koncovým_ datem pro kontrolu události změny pomocí **časového pásma Zulu (Z)**.
 - **fetchPropertyChanges** (volitelné): logická vlastnost, která nastavuje, zda objekt Response obsahuje změny vlastností.
 
 Příklad textu žádosti:
@@ -289,3 +289,4 @@ Pro porovnání výsledků buď použijte vlastnost **changess** v **resourceCha
 - Podívejte se na jazyk používaný v [počátečních dotazech](../samples/starter.md).
 - Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md).
 - Přečtěte si další informace o tom, jak [prozkoumat prostředky](../concepts/explore-resources.md).
+- Pokyny k práci s dotazy s vysokou frekvencí najdete v tématu [doprovodné materiály k omezením požadavků](../concepts/guidance-for-throttled-requests.md).

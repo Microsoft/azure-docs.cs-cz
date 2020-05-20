@@ -4,12 +4,12 @@ description: Naučte se, jak pomocí automatického škálování clusteru autom
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 3ebbeab82031ddc037c7885e7453e603a8f440a1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: f40d13b6b9a37f4c5efcc73e52b631bd2eec659a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509240"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683553"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatické škálování clusteru pro splnění požadavků aplikace ve službě Azure Kubernetes (AKS)
 
@@ -81,7 +81,7 @@ Vytvoření clusteru a konfigurace nastavení automatického škálování clust
 ## <a name="change-the-cluster-autoscaler-settings"></a>Změna nastavení automatického škálování clusteru
 
 > [!IMPORTANT]
-> Pokud máte ve svém clusteru AKS více fondů uzlů, přeskočte do [části Automatické škálování s více fondy agentů](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Clustery s více fondy agentů vyžadují použití `az aks nodepool` sady příkazů ke změně vlastností specifických pro fond uzlů místo `az aks`.
+> Pokud máte ve svém clusteru AKS více fondů uzlů, přeskočte do [části Automatické škálování s více fondy agentů](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Clustery s více fondy agentů vyžadují použití `az aks nodepool` sady příkazů ke změně vlastností specifických pro fond uzlů místo `az aks` .
 
 Pokud jste v předchozím kroku vytvořili cluster AKS nebo aktualizovali existující fond uzlů, byl minimální počet uzlů pro automatické škálování clusteru nastavený na *1*a maximální počet uzlů byl nastavený na *3*. Jak vaše aplikace vyžaduje změnu, možná budete muset upravit počet uzlů automatického škálování clusteru.
 
@@ -99,7 +99,7 @@ az aks update \
 Výše uvedený příklad aktualizuje automatické škálování clusteru ve fondu s jedním uzlem v *myAKSCluster* na minimálně *1* a maximálně *5* uzlů.
 
 > [!NOTE]
-> Nemůžete nastavit vyšší minimální počet uzlů, než je aktuálně nastaveno pro fond uzlů. Pokud máte například v současné době minimální počet minut nastavenou na hodnotu *1*, nelze aktualizovat minimální počet na *3*.
+Automatické škálování clusteru provede rozhodnutí o škálování na základě minimálního a maximálního počtu nastaveného v jednotlivých fondech uzlů, ale neuplatňuje je. Například nastavení minimálního počtu na hodnotu 5, pokud je počet aktuálních uzlů nastavený na hodnotu 3, nebude fond okamžitě škálovat na 5. Pokud změníte minimální počet ve fondu uzlů na hodnotu vyšší, než je aktuální počet uzlů, bude tento nový limit dodržen, pokud jsou přítomna dostatečná unschedulable lusky, která by vyžadovala 2 nové další uzly a aktivovala událost automatického škálování. Po této situaci bude pro automatické škálování clusteru respektován nový limit minimálního počtu.
 
 Monitorujte výkon svých aplikací a služeb a upravte počty uzlů automatického škálování clusteru tak, aby odpovídaly požadovanému výkonu.
 
@@ -145,7 +145,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Pokud povolíte automatické škálování clusteru u fondů uzlů v clusteru, budou tyto clustery také používat profil automatického škálování clusteru. Příklad:
+Pokud povolíte automatické škálování clusteru u fondů uzlů v clusteru, budou tyto clustery také používat profil automatického škálování clusteru. Například:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -162,7 +162,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>Nastavení profilu automatického škálování clusteru při vytváření clusteru AKS
 
-Můžete také použít parametr *cluster-autoscaleer-Profile* při vytváření clusteru. Příklad:
+Můžete také použít parametr *cluster-autoscaleer-Profile* při vytváření clusteru. Například:
 
 ```azurecli-interactive
 az aks create \
@@ -226,7 +226,7 @@ Měli byste vidět protokoly podobné následujícímu příkladu, pokud existuj
 
 ![Protokoly Log Analytics](media/autoscaler/autoscaler-logs.png)
 
-Automatické škálování clusteru také zapíše stav do configmap s názvem `cluster-autoscaler-status`. Chcete-li načíst tyto protokoly, spusťte `kubectl` následující příkaz. Stav bude hlášen pro každý fond uzlů nakonfigurovaný pomocí automatického škálování clusteru.
+Automatické škálování clusteru také zapíše stav do configmap s názvem `cluster-autoscaler-status` . Chcete-li načíst tyto protokoly, spusťte následující `kubectl` příkaz. Stav bude hlášen pro každý fond uzlů nakonfigurovaný pomocí automatického škálování clusteru.
 
 ```
 kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml

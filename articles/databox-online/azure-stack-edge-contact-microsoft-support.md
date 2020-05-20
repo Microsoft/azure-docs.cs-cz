@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 3839fb325b1ed0c052f7a4e8955e9a9fda51fc5f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 291dbdd874e3d657ff171d7e08ea6a1ee7e5999f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569651"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683098"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Otevření lístku podpory pro Azure Stack Edge a Azure Data Box Gateway
 
@@ -27,9 +27,9 @@ Tento článek se týká Azure Stack Edge a Azure Data Box Gateway, která jsou 
 Chcete-li vytvořit žádost o podporu, proveďte následující kroky:
 
 1. Přejít na Azure Stack Edge nebo Data Box Gateway objednávku. Přejděte do části **Podpora a řešení potíží** a pak vyberte **Nová žádost o podporu**.
-   
+
 2. V části **Nová žádost o podporu**na kartě **základy** proveďte následující kroky:
-    
+
     1. V rozevíracím seznamu **typ problému** vyberte možnost **technický**.
     2. Vyberte své **předplatné**.
     3. V části **Služba**zaškrtněte **moje služby**. V rozevíracím seznamu vyberte **Azure Stack Edge a data box Gateway**.
@@ -42,7 +42,7 @@ Chcete-li vytvořit žádost o podporu, proveďte následující kroky:
         ![Základy](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
 3. Na kartě **Podrobnosti** proveďte následující kroky:
-    
+
     1. Zadejte datum a čas spuštění problému.
     2. Zadejte **Popis** problému.
     3. V části **nahrání souboru**vyberte ikonu složky a procházejte všechny další soubory, které chcete nahrát.
@@ -67,16 +67,16 @@ Chcete-li vytvořit žádost o podporu, proveďte následující kroky:
 
 Tyto informace se vztahují jenom na zařízení Azure Stack. Postup hlášení hardwarových problémů je následující:
 
-1. Otevřete lístek podpory z Azure Portal pro hardwarový problém. V části **typ problému**vyberte **Azure Stack hardware**. Vyberte **podtyp problému** jako **selhání hardwaru**. 
+1. Otevřete lístek podpory z Azure Portal pro hardwarový problém. V části **typ problému**vyberte **Azure Stack hardware**. Vyberte **podtyp problému** jako **selhání hardwaru**.
 
     ![Problém s hardwarem](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-hardware-issue-1.png)
 
-    Po vytvoření lístku podpory vás pracovník podpory vás bude kontaktovat, jakmile bude možné pokračovat ve vaší žádosti. 
+    Po vytvoření lístku podpory vás pracovník podpory vás bude kontaktovat, jakmile bude možné pokračovat ve vaší žádosti.
 
-2. Pokud podpora Microsoftu zjistí, že se jedná o problém s hardwarem, nastane jedna z následujících akcí: 
+2. Pokud podpora Microsoftu zjistí, že se jedná o problém s hardwarem, nastane jedna z následujících akcí:
 
-    - Je odeslána jednotka pro nahrazení pole (FRU) pro neúspěšnou součást hardwaru. V současné době je jednotka napájení jedinou podporovanou jednotkou FRU. 
-    - V případě selhání jakékoli jiné součásti provede společnost Microsoft úplné nahrazení systému (FSR) nebo swap zařízení.
+    * Je odeslána jednotka pro nahrazení pole (FRU) pro neúspěšnou součást hardwaru. V současné době jsou v současnosti podporované FRUs jednotky napájení a pevné disky.
+    * V rámci následujícího pracovního dne se nahradí jenom FRUs, všechno ostatní vyžaduje, aby se dodalo úplné nahrazení systému (FSR).
 
 3. Pokud se lístek podpory vygeneruje před 4:30 místního času (od pondělí do pátku), technik na pracovišti odešle do svého umístění další pracovní den, aby se provedla jednotka FRU nebo celá náhrada zařízení.
 
@@ -84,11 +84,11 @@ Tyto informace se vztahují jenom na zařízení Azure Stack. Postup hlášení 
 
 Po vytvoření lístku můžete spravovat lístek v celém jeho životním cyklu přímo z portálu.
 
-#### <a name="to-manage-your-support-requests"></a>Správa žádostí o podporu
+### <a name="to-manage-your-support-requests"></a>Správa žádostí o podporu
 
 1. Pokud se chcete dostat na stránku Nápověda a podpora, přejděte na **Procházet a přejděte > nápovědu a podpora**.
 
-    ![Správa žádostí o podporu](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)   
+    ![Správa žádostí o podporu](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)
 
 2. V **nápovědě a podpoře**se zobrazí tabulkový výpis **posledních žádostí o podporu** .
 
@@ -96,7 +96,6 @@ Po vytvoření lístku můžete spravovat lístek v celém jeho životním cyklu
 
 3. Vyberte a klikněte na žádost o podporu. Můžete zobrazit stav a podrobnosti této žádosti. Pokud chcete pokračovat v této žádosti, klikněte na **+ Nová zpráva** .
 
-   
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se [řešit problémy související s Azure Stack Edge](azure-stack-edge-troubleshoot.md).

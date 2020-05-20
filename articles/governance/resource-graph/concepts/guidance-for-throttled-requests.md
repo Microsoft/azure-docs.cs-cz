@@ -1,14 +1,14 @@
 ---
 title: Pokyny pro omezované požadavky
 description: Naučte se paralelně seskupovat, rozložit, stránkování a dotazovat, abyste se vyhnuli požadavkům, které Azure Resource Graph omezuje.
-ms.date: 12/02/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259848"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682062"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Doprovodné materiály k omezením požadavků v grafu prostředků Azure
 
@@ -23,17 +23,17 @@ Tento článek se věnuje čtyřem oblastem a vzorům, které souvisejí s vytv�
 
 ## <a name="understand-throttling-headers"></a>Vysvětlení hlaviček omezování
 
-Azure Resource Graph přiděluje číslo kvóty pro každého uživatele na základě časového okna. Uživatel může například odeslat maximálně 15 dotazů v rámci každého 5 sekundového okna bez omezení. Hodnota kvóty je určena mnoha faktory a může se změnit.
+Graf prostředků Azure přiděluje číslo kvóty pro každého uživatele na základě časového okna. Uživatel může například odeslat maximálně 15 dotazů v rámci každého 5 sekundového okna bez omezení. Hodnota kvóty je určena mnoha faktory a může se změnit.
 
 V každé odpovědi na dotaz přidává Azure Resource Graph dvě hlavičky omezení:
 
 - `x-ms-user-quota-remaining`(int): zbývající kvóta prostředků pro uživatele. Tato hodnota se mapuje na počet dotazů.
 - `x-ms-user-quota-resets-after`(hh: mm: SS): časový interval, po jehož uplynutí se neobnoví spotřeba kvóty uživatele.
 
-Pro ilustraci, jak fungují záhlaví, se podívejme na odpověď na dotaz, která má hlavičku a hodnoty `x-ms-user-quota-remaining: 10` a. `x-ms-user-quota-resets-after: 00:00:03`
+Pro ilustraci, jak fungují záhlaví, se podívejme na odpověď na dotaz, která má hlavičku a hodnoty `x-ms-user-quota-remaining: 10` a `x-ms-user-quota-resets-after: 00:00:03` .
 
 - Během příštích 3 sekund se dá odeslat maximálně 10 dotazů bez omezení.
-- Za 3 sekundy se `x-ms-user-quota-remaining` hodnoty a `x-ms-user-quota-resets-after` obnoví do `15` a `00:00:05` v uvedeném pořadí.
+- Za 3 sekundy se hodnoty `x-ms-user-quota-remaining` a `x-ms-user-quota-resets-after` obnoví do `15` a v `00:00:05` uvedeném pořadí.
 
 Pokud chcete zobrazit příklad použití hlaviček k _omezení rychlostií_ dotazů na dotazy, přečtěte si ukázku v [dotazu paralelně](#query-in-parallel).
 
@@ -228,14 +228,14 @@ Vzhledem k tomu, že Azure Resource Graph vrací maximálně 1000 záznamů v je
 
 ## <a name="still-get-throttled"></a>Pořád se omezuje?
 
-Pokud se vám po uplatnění výše uvedených doporučení omezuje omezení, obraťte se na tým na [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)adrese.
+Pokud se vám po uplatnění výše uvedených doporučení omezuje omezení, obraťte se na tým na adrese [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com) .
 
 Zadejte tyto podrobnosti:
 
 - Vaše specifické požadavky na použití a obchodní ovladače se vyžadují pro vyšší limit omezení.
 - K kolika prostředkům máte přístup? Kolik z je vráceno jedním dotazem?
 - Jaké typy prostředků máte zajímat?
-- Co je to váš vzor dotazu? Počet dotazů X za sekundu atd.
+- Co je to váš vzor dotazu? Počet dotazů X za sekundu a tak dále.
 
 ## <a name="next-steps"></a>Další kroky
 

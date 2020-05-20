@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží se sdílenými prostředky v Azure Automation
-description: Naučte se řešit potíže s Azure Automation sdílenými prostředky a řešit problémy.
+title: Řešení potíží s Azure Automation sdílenými prostředky
+description: Tento článek popisuje, jak řešit problémy s Azure Automation sdílenými prostředky a řešit potíže.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,19 +8,16 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c59e8ec67777a9cfebc12508b197e1237a61df4a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864194"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680888"
 ---
-# <a name="troubleshoot-shared-resources-in-azure-automation"></a>Řešení potíží se sdílenými prostředky v Azure Automation
+# <a name="troubleshoot-shared-resource-issues"></a>Řešení potíží se sdílenými prostředky
 
-Tento článek popisuje řešení problémů, které můžete mít při používání [sdílených prostředků](../automation-intro.md#shared-resources) v Azure Automation.
-
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. V současné době můžete stále používat modul AzureRM. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](../automation-update-azure-modules.md).
+Tento článek popisuje problémy, které mohou nastat při používání [sdílených prostředků](../automation-intro.md#shared-resources) v Azure Automation.
 
 ## <a name="modules"></a>Moduly
 
@@ -98,7 +95,7 @@ V této sadě Runbook se ve výchozím nastavení určí, kolik modulů je souč
 Není běžné, že ve stejném účtu Automation jsou vyžadovány všechny moduly AzureRM nebo AZ. Měli byste importovat jenom konkrétní moduly, které potřebujete.
 
 > [!NOTE]
-> Vyhněte se `Az.Automation` importování `AzureRM.Automation` celého modulu nebo, který importuje všechny obsažené moduly.
+> Vyhněte se importování celého `Az.Automation` `AzureRM.Automation` modulu nebo, který importuje všechny obsažené moduly.
 
 Pokud se proces aktualizace pozastaví, přidejte `SimultaneousModuleImportJobCount` parametr do skriptu **Update-AzureModules. ps1** a zadejte nižší hodnotu, než je výchozí hodnota 10. Pokud implementujete tuto logiku, zkuste začít hodnotou 3 nebo 5. `SimultaneousModuleImportJobCount`je parametr Runbooku sady **Update-AutomationAzureModulesForAccount** , který se používá k aktualizaci modulů Azure. Pokud provedete tuto úpravu, proces aktualizace se spustí déle, ale bude mít lepší šanci na jejich dokončení. Následující příklad ukazuje parametr a místo vložení do sady Runbook:
 
@@ -170,6 +167,6 @@ Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 Pokud tento článek problém nevyřeší, zkuste další podporu vyzkoušet v jednom z následujících kanálů:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport)pomocí. Jedná se o oficiální Microsoft Azure účet pro připojení komunity Azure ke správným zdrojům: odpovědi, podpora a odborníky.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) . Jedná se o oficiální Microsoft Azure účet pro připojení komunity Azure ke správným zdrojům: odpovědi, podpora a odborníky.
 * Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**.
 

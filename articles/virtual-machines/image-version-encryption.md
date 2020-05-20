@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: cynthn
-ms.openlocfilehash: aeacfdc07e5349dfce45b209da1d78bddf870f33
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3d55efb15454f0b1dfe5ac1101a8a53eb1c9aa8f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83269576"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683954"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
 
-Image z Galerie se ukládají jako spravované disky, takže se automaticky šifrují pomocí šifrování na straně serveru. Šifrování na straně serveru používá 256 [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jedno z nejsilnějších šifrovacích šifr, které jsou kompatibilní se standardem FIPS 140-2. Další informace o kryptografických modulech založených na službě Azure Managed disks najdete v tématu [kryptografie API: Next Generation.](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
+Image z Galerie se ukládají jako spravované disky, takže se automaticky šifrují pomocí šifrování na straně serveru. Šifrování na straně serveru používá 256 [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jedno z nejsilnějších šifrovacích šifr, které jsou kompatibilní se standardem FIPS 140-2. Další informace o kryptografických modulech založených na službě Azure Managed disks najdete v tématu [kryptografie API: Next Generation.](/windows/desktop/seccng/cng-portal)
 
 Pro šifrování imagí můžete spoléhat na klíče spravované platformou, nebo můžete šifrování spravovat pomocí vlastních klíčů. Pokud se rozhodnete spravovat šifrování pomocí vlastních klíčů, můžete zadat *klíč spravovaný zákazníkem* , který se použije pro šifrování a dešifrování všech disků v imagí. 
 
@@ -24,7 +24,7 @@ Pro šifrování imagí můžete spoléhat na klíče spravované platformou, ne
 
 Pokud chcete používat pro Image spravované klíče zákazníka, musíte nejdřív Azure Key Vault. Pak vytvoříte sadu šifrování disku. Sada šifrování disku se pak použije při vytváření verzí imagí.
 
-Další informace o vytváření a používání sad Encryption disks najdete v tématu [spravované klíče zákazníka](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
+Další informace o vytváření a používání sad Encryption disks najdete v tématu [spravované klíče zákazníka](./windows/disk-encryption.md#customer-managed-keys).
 
 ## <a name="limitations"></a>Omezení
 
@@ -72,7 +72,7 @@ Pokud se nevrátí `Registered` , k registraci zprostředkovatelů použijte ná
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-Chcete-li určit šifrování disku nastavené pro verzi bitové kopie, použijte [příkaz New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) s `-TargetRegion` parametrem. 
+Chcete-li určit šifrování disku nastavené pro verzi bitové kopie, použijte [příkaz New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) s `-TargetRegion` parametrem. 
 
 ```azurepowershell-interactive
 
@@ -113,7 +113,7 @@ Virtuální počítač můžete vytvořit z Galerie sdílených imagí a pomocí
 V případě datových disků je nutné přidat `-DiskEncryptionSetId $setID` parametr při použití [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk).
 
 
-## <a name="cli"></a>Rozhraní příkazového řádku 
+## <a name="cli"></a>CLI 
 
 Ve verzi Public Preview musíte nejprve zaregistrovat funkci.
 
@@ -194,4 +194,4 @@ Virtuální počítač můžete vytvořit z Galerie sdílených imagí a pomocí
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [šifrování disku na straně serveru](/windows/disk-encryption.md)).
+Přečtěte si další informace o [šifrování disků na straně serveru](./windows/disk-encryption.md).

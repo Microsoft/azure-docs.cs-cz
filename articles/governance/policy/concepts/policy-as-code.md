@@ -1,14 +1,14 @@
 ---
 title: Návrh pracovních postupů pro zásady jako kód
 description: Naučte se navrhovat pracovní postupy pro nasazení Azure Policy definic jako kódu a automatické ověřování prostředků.
-ms.date: 11/04/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fd77fdd4011c3e1e83f8dfa9f30045bb72881c25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 972ec40609c340b159d21dde2bf18ab3330bf8cd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187728"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684264"
 ---
 # <a name="design-policy-as-code-workflows"></a>Návrh pracovních postupů pro zásady jako kód
 
@@ -29,7 +29,7 @@ Doporučený obecný pracovní postup zásad jako kódu vypadá jako v tomto dia
 
 ### <a name="create-and-update-policy-definitions"></a>Vytvoření a aktualizace definic zásad
 
-Definice zásad jsou vytvořeny pomocí formátu JSON a uloženy ve správě zdrojového kódu. Každá zásada má vlastní sadu souborů, jako jsou parametry, pravidla a parametry prostředí, které by měly být uloženy ve stejné složce. Následující struktura je doporučeným způsobem, jak zachovat definice zásad ve správě zdrojového kódu.
+Definice zásad jsou vytvořeny pomocí formátu JSON a uloženy ve správě zdrojového kódu. Každá zásada má svou vlastní sadu souborů, jako jsou parametry, pravidla a parametry prostředí, které by měly být uloženy ve stejné složce. Následující struktura je doporučeným způsobem, jak zachovat definice zásad ve správě zdrojového kódu.
 
 ```text
 .
@@ -87,10 +87,10 @@ Podobně jako definice zásad při přidávání nebo aktualizaci stávající i
 
 Jakmile automatizace povede vaše nově vytvořené nebo aktualizované definice zásad nebo iniciativy a provedla aktualizaci objektu v Azure, je čas otestovat provedené změny. Zásady nebo podněty, které jsou součástí této části, by měly být přiřazeny k prostředkům v prostředí, které jsou nejvíce z výroby. Toto prostředí obvykle slouží jako _vývoj_.
 
-Přiřazení by mělo používat [enforcementMode](./assignment-structure.md#enforcement-mode) _zakázané_ , aby se vytváření a aktualizace prostředků neblokovaly, ale aby se stávající prostředky ještě auditoval na dodržování předpisů aktualizované definice zásad. I u enforcementMode doporučujeme, aby obor přiřazení byl buď skupina prostředků, nebo předplatné, které se používá zejména pro ověřování zásad.
+Přiřazení by mělo používat [enforcementMode](./assignment-structure.md#enforcement-mode) _zakázané_ , aby se vytváření a aktualizace prostředků neblokovaly, ale aby se stávající prostředky ještě auditoval na dodržování předpisů aktualizované definice zásad. I v případě enforcementMode se doporučuje, aby obor přiřazení byl buď skupina prostředků, nebo předplatné, které je specifické pro ověřování zásad.
 
 > [!NOTE]
-> I když je režim vynucení užitečný, není náhrada za účelem důkladného testování definice zásad za různých podmínek. Definice zásad by měla být testována `PUT` pomocí `PATCH` a REST API volání, kompatibilních a nekompatibilních prostředků a hranové případy, jako je vlastnost chybějící v prostředku.
+> I když je režim vynucení užitečný, není náhrada za účelem důkladného testování definice zásad za různých podmínek. Definice zásad by měla být testována pomocí `PUT` a `PATCH` REST API volání, kompatibilních a nekompatibilních prostředků a hranové případy, jako je vlastnost chybějící v prostředku.
 
 Po nasazení přiřazení můžete pomocí sady SDK zásad [získat data o dodržování předpisů](../how-to/get-compliance-data.md) pro nové přiřazení. Prostředí, které se používá k testování zásad a přiřazení, by mělo mít odpovídající i nekompatibilní prostředky. Stejně jako dobrý test jednotek kódu, chcete testovat, že prostředky jsou podle očekávání a že také nemáte žádné falešně pozitivní nebo falešně negativní. Pokud otestujete a ověříte pouze za to, co očekáváte, může dojít k neočekávanému a Neidentifikovanému dopadu zásad. Další informace najdete v tématu [vyhodnocení dopadu nové definice Azure Policy](./evaluate-impact.md).
 
@@ -99,7 +99,7 @@ Po nasazení přiřazení můžete pomocí sady SDK zásad [získat data o dodr�
 Pokud ověření přiřazení splňuje očekávání, dalším krokem je ověření nápravy.
 Zásady, které používají [deployIfNotExists](./effects.md#deployifnotexists) nebo [Modify](./effects.md#modify) , mohou být přeměněny na úlohu nápravy a správné prostředky z nevyhovujícího stavu.
 
-Prvním krokem k tomu je udělit přiřazení zásady přiřazení role definované v definici zásady. Přiřazení této role poskytuje zásadám oprávnění ke správě dostatečná práva, aby bylo možné provést potřebné změny pro zajištění kompatibility prostředků.
+Prvním krokem k opravaí prostředků je udělení přiřazení zásad přiřazení role definované v definici zásady. Přiřazení této role poskytuje zásadám oprávnění ke správě dostatečná práva, aby bylo možné provést potřebné změny pro zajištění kompatibility prostředků.
 
 Jakmile přiřazení zásady má příslušná práva, pomocí sady SDK zásad aktivujte úlohu nápravy proti sadě prostředků, u kterých je známo, že nejsou kompatibilní. Než budete pokračovat, měli byste pro tyto napravované úlohy dokončit tři testy:
 
@@ -111,7 +111,7 @@ Při testování aktualizovaných výsledků hodnocení zásad a prostředí je 
 
 ### <a name="update-to-enforced-assignments"></a>Aktualizace k vynutilému přiřazení
 
-Po dokončení všech bran ověřování aktualizujte přiřazení tak, aby bylo _povoleno_používání **enforcementMode** . Tato změna by se zpočátku měla provádět ve stejném prostředí, které je daleko z výroby. Jakmile se toto prostředí ověří podle očekávání, měla by být tato změna vymezená tak, aby zahrnovala další prostředí, a to až do chvíle, kdy se tato zásada nasadí do produkčních prostředků.
+Po dokončení všech bran ověřování aktualizujte přiřazení tak, aby bylo _povoleno_používání **enforcementMode** . Doporučuje se tuto změnu zpočátku udělat ve stejném prostředí daleko z výroby. Jakmile se toto prostředí ověří podle očekávání, měla by být tato změna vymezená tak, aby zahrnovala další prostředí, a tak dále, dokud se tato zásada nenasazením do produkčních prostředků.
 
 ## <a name="process-integrated-evaluations"></a>Zpracování integrovaných vyhodnocení
 

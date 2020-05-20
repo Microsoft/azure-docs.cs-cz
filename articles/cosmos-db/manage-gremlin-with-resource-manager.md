@@ -4,14 +4,14 @@ description: Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfi
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: defeec2317f47e9d79245cbde0ef81c8a3543bfb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0f807213d68e2731e784198f8ce968cdea9b3957
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791234"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684814"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Správa Azure Cosmos DBch prostředků rozhraní API Gremlin pomocí šablon Azure Resource Manager
 
@@ -31,9 +31,7 @@ Chcete-li vytvořit některý z níže uvedených prostředků Azure Cosmos DB, 
 
 ## <a name="azure-cosmos-db-account-for-gremlin-with-autoscale-provisioned-throughput"></a>Azure Cosmos DB účet pro Gremlin s zajištěnou propustností automatického škálování
 
-Tato šablona vytvoří účet Azure Cosmos pro rozhraní Gremlin API s databází a grafem s propustností automatického škálování.
-
-Tato šablona je dostupná taky pro nasazení jedním kliknutím z galerie šablon pro rychlý Start Azure.
+Tato šablona vytvoří účet Azure Cosmos pro rozhraní Gremlin API s databází a grafem s propustností automatického škálování. Tato šablona je dostupná taky pro nasazení jedním kliknutím z galerie šablon pro rychlý Start Azure.
 
 [![Nasazení do Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin-autoscale%2Fazuredeploy.json)
 
@@ -43,9 +41,7 @@ Tato šablona je dostupná taky pro nasazení jedním kliknutím z galerie šabl
 
 ## <a name="azure-cosmos-db-account-for-gremlin-with-standard-provisioned-throughput"></a>Účet Azure Cosmos DB pro Gremlin se standardní zřízenou propustností
 
-Tato šablona vytvoří účet Azure Cosmos pro rozhraní Gremlin API s databází a grafem se standardní (ruční) propustností.
-
-Tato šablona je dostupná taky pro nasazení jedním kliknutím z galerie šablon pro rychlý Start Azure.
+Tato šablona vytvoří účet Azure Cosmos pro rozhraní Gremlin API s databází a grafem se standardní (ruční) propustností. Tato šablona je dostupná taky pro nasazení jedním kliknutím z galerie šablon pro rychlý Start Azure.
 
 [![Nasazení do Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin%2Fazuredeploy.json)
 

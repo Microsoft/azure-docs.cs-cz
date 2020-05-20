@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 74a6d1aecfc83ea68b9e30453056d231f4bf3e65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: daaa5e3a075eee19ab473818ae3bd84d4bd3b32b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416171"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683681"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analýza dat pomocí Azure Machine Learning
 > [!div class="op_single_selector"]
@@ -132,4 +132,4 @@ Uvidíte, že se do testovací datové sady přidaly další dva sloupce.
 Při porovnání sloupce BikeBuyer (skutečnost) s popisky vyhodnocení (předpověď) můžete vidět, jaká byla úspěšnost modelu. Dále můžete tento model použít k vytvoření předpovědi pro nové zákazníky a k publikování tohoto modelu jako webové služby nebo k zápisu výsledků zpět do Azure synapse.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o vytváření prediktivních modelů strojového učení najdete v tématu [Úvod do strojového učení na platformě Azure](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/).
+Další informace o vytváření prediktivních modelů strojového učení najdete v tématu [Úvod do strojového učení na platformě Azure](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).

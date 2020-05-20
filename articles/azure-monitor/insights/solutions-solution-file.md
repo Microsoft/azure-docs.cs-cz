@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 018fb457840e9ffe382ec1ed54df582ecfec8e49
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275175"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682854"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Vytvoření souboru řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -21,7 +21,7 @@ ms.locfileid: "79275175"
 Řešení pro správu v Azure se implementují jako [šablony Správce prostředků](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).  Hlavním úkolem při učení, jak vytvářet řešení pro správu, je učení, jak vytvořit [šablonu](../../azure-resource-manager/templates/template-syntax.md).  Tento článek poskytuje jedinečné podrobnosti o šablonách používaných pro řešení a konfiguraci typických prostředků řešení.
 
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 
 Můžete použít libovolný textový editor pro práci se soubory řešení, ale doporučujeme využívat funkce poskytované v aplikaci Visual Studio nebo Visual Studio Code, jak je popsáno v následujících článcích.
 
@@ -63,7 +63,7 @@ Následující tabulka popisuje atributy parametru.
 
 | Atribut | Popis |
 |:--- |:--- |
-| type |Datový typ pro parametr Ovládací prvek vstupu zobrazený pro uživatele závisí na datovém typu.<br><br>logická hodnota – rozevírací seznam<br>řetězec – textové pole<br>int – textové pole<br>SecureString – pole hesla<br> |
+| typ |Datový typ pro parametr Ovládací prvek vstupu zobrazený pro uživatele závisí na datovém typu.<br><br>logická hodnota – rozevírací seznam<br>řetězec – textové pole<br>int – textové pole<br>SecureString – pole hesla<br> |
 | category |Volitelná kategorie pro parametr  Parametry ve stejné kategorii jsou seskupeny dohromady. |
 | – ovládací prvek |Další funkce pro řetězcové parametry.<br><br>zobrazí se ovládací prvek DateTime-DateTime.<br>identifikátor GUID – hodnota GUID je vygenerována automaticky a parametr není zobrazen. |
 | description |Volitelný popis parametru  Zobrazuje se v informační bublině vedle parametru. |
@@ -153,7 +153,7 @@ Můžete také definovat komplexní proměnné, které mají více sad hodnot.  
 
 V takovém případě odkazujete na proměnné hodnoty prostřednictvím řešení pomocí **proměnných syntaxe (' název proměnné '). Property**.  Například pro přístup k proměnné názvu řešení byste měli použít **proměnné (Solution). Název**.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 [Prostředky](../../azure-resource-manager/templates/template-syntax.md#resources) definují různé prostředky, které vaše řešení pro správu budou instalovat a konfigurovat.  Toto bude největší a nejsložitější část šablony.  Můžete získat strukturu a úplný popis prvků prostředků při [vytváření Azure Resource Manager šablon](../../azure-resource-manager/templates/template-syntax.md#resources).  Různé prostředky, které obvykle definujete, jsou podrobně popsané v dalších článcích v této dokumentaci. 
 
 
@@ -161,7 +161,7 @@ V takovém případě odkazujete na proměnné hodnoty prostřednictvím řešen
 Element **dependsOn** Určuje [závislost](../../azure-resource-manager/templates/define-resource-dependency.md) na jiném prostředku.  Po instalaci řešení není prostředek vytvořen, dokud nebudou vytvořeny všechny jeho závislosti.  Řešení může například [Spustit sadu Runbook](solutions-resources-automation.md#runbooks) při instalaci pomocí [prostředku úlohy](solutions-resources-automation.md#automation-jobs).  Prostředek úlohy by byl závislý na prostředku Runbooku, aby se zajistilo, že se Runbook vytvoří před vytvořením úlohy.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics pracovní prostor a účet Automation
-Řešení pro správu vyžadují, aby [Log Analytics pracovní prostor](../../azure-monitor/platform/manage-access.md) obsahovat zobrazení a [účet Automation](../../automation/automation-security-overview.md#automation-account-overview) , které obsahují Runbooky a související prostředky.  Tyto musí být k dispozici před vytvořením prostředků v řešení a neměly by být definovány v samotném řešení.  Uživatel zadá [pracovní prostor a účet](solutions.md#log-analytics-workspace-and-automation-account) při nasazení vašeho řešení, ale jako autor byste měli zvážit následující body.
+Řešení pro správu vyžadují, aby [Log Analytics pracovní prostor](../../azure-monitor/platform/manage-access.md) obsahovat zobrazení a [účet Automation](../../automation/automation-security-overview.md) , které obsahují Runbooky a související prostředky.  Tyto musí být k dispozici před vytvořením prostředků v řešení a neměly by být definovány v samotném řešení.  Uživatel zadá [pracovní prostor a účet](solutions.md#log-analytics-workspace-and-automation-account) při nasazení vašeho řešení, ale jako autor byste měli zvážit následující body.
 
 
 ## <a name="solution-resource"></a>Prostředek řešení
@@ -206,7 +206,7 @@ Prostředek řešení obsahuje vlastnosti v následující tabulce.  To zahrnuje
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| workspaceResourceId |ID pracovního prostoru Log Analytics v * \<ID skupiny prostředků Form\<> název\>pracovního prostoru/Providers/Microsoft.operationalinsights/Workspaces/*. |
+| workspaceResourceId |ID pracovního prostoru Log Analytics v * \< ID skupiny prostředků Form> \< název \> pracovního prostoru/Providers/Microsoft.operationalinsights/Workspaces/*. |
 | referencedResources |Seznam prostředků v řešení, které by neměly být odebrány po odebrání řešení. |
 | containedResources |Seznam prostředků v řešení, které by měly být odebrány po odebrání řešení. |
 
@@ -217,8 +217,8 @@ Entita **plánu** prostředku řešení má vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| jméno |Název řešení. |
-| version |Verze řešení určená autorem. |
+| name |Název řešení. |
+| verze |Verze řešení určená autorem. |
 | product |Jedinečný řetězec pro identifikaci řešení |
 | vydavatel |Vydavatel řešení. |
 

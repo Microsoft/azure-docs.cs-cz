@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5a7f64ead6d2e19242950002feed1cd1491dbacc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a49661ca8776f04d98cc04bbe7a07b8c388f91ee
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598763"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681668"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Vytvoření vnitřních map pomocí autora
 
@@ -57,7 +57,7 @@ Rozhraní API pro nahrání dat je dlouhodobá transakce, která implementuje vz
 
 4. Na kartě **hlavičky** zadejte hodnotu pro `Content-Type` klíč. Balíček pro kreslení je složka zip, takže použijte `application/octet-stream` hodnotu. Na kartě **tělo** vyberte **binární**. Klikněte na **Vybrat soubor** a zvolte balíček pro kreslení.
 
-     ![Správa dat](./media/tutorial-creator-indoor-maps/enter-content-type.png)
+     ![Správa dat](./media/tutorial-creator-indoor-maps/enter-content-type-dialog.png)
 
 5. Klikněte na modré tlačítko **Odeslat** a počkejte na zpracování žádosti. Až se žádost dokončí, přejdete na kartu **hlavičky** odpovědi. Zkopírujte hodnotu klíče **umístění** , což je `status URL` .
 

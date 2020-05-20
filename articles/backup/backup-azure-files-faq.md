@@ -3,16 +3,16 @@ title: Nejčastější dotazy k zálohování Souborů Azure
 description: V tomto článku najdete odpovědi na běžné otázky týkající se ochrany sdílených složek Azure pomocí služby Azure Backup.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b19fd11e6784a188a18f6a613eef5ff4f77764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aaa0d47b540a1c3eacd9efebda84f22b83529a28
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105637"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680988"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 
-V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Dotazy k Azure Backup také můžete pokládat v [diskuzním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Dotazy týkající se Azure Backup služby můžete také publikovat v [Microsoft Q&A pro Azure Backup](https://docs.microsoft.com/answers/topics/azure-backup.html).
 
 K rychlému procházení částmi tohoto článku použijte odkazy vpravo v části **V tomto článku**.
 
@@ -80,9 +80,80 @@ Ke všem snímkům pořízeným pomocí Azure Backup lze přihlédnout zobrazen�
 
 Podrobnosti o maximálním uchování najdete v části [support Matrix](azure-file-share-support-matrix.md) . Azure Backup provádí výpočet počtu snímků v reálném čase, když při konfiguraci zásad zálohování zadáte hodnoty uchování. Jakmile počet snímků odpovídajících definovaným hodnotám uchování překročí 200, zobrazí se na portálu upozornění požadující úpravu hodnot uchování. To je proto, že nepřekračuje limit maximálního počtu snímků, které soubory Azure podporuje pro každou sdílenou složku v jakémkoli okamžiku.
 
-### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share"></a>Co se stane, když u sdílené složky Azure změním zásady zálohování?
+### <a name="what-is-the-impact-on-existing-recovery-points-and-snapshots-when-i-modify-the-backup-policy-for-an-azure-file-share-to-switch-from-daily-policy-to-gfs-policy"></a>Jaký je dopad na existující body obnovení a snímky, když změní zásady zálohování pro sdílenou složku Azure tak, aby přešly ze "každodenních zásad" na "zásady GFS"?
 
-Pokud se pro sdílené složky použije nová zásada, plán a uchovávání se budou řídit touto novou zásadou. Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu. Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a budou odstraněny.
+Když upravíte zásady denního zálohování na zásady GFS (přidání týdně/měsíčně/ročního uchování), chování je následující:
+
+- **Uchovávání**: Pokud přidáváte jako součást změny zásad týdenní/měsíční/roční uchování, všechny budoucí body obnovení vytvořené jako součást plánovaného zálohování budou označeny podle nových zásad. Všechny existující body obnovení budou stále považovány za denní body obnovení, a proto nebudou označeny jako týdně a měsíčně/za rok.
+
+- **Vyčištění snímků a bodů obnovení**:
+
+  - Pokud je denní uchovávání prodlouženo, datum vypršení platnosti stávajících bodů obnovení se aktualizuje podle denní hodnoty uchování nakonfigurované v nových zásadách.
+  - Pokud se denní uchovávání sníží, existující body obnovení a snímky jsou označené k odstranění v další úloze spuštění čištění podle hodnoty denního uchování nakonfigurovaného v nové zásadě a pak se odstraní.
+
+Tady je příklad toho, jak to funguje:
+
+#### <a name="existing-policy-p1"></a>Existující zásady [P1]
+
+|Typ uchování |Plán |Uchovávání  |
+|---------|---------|---------|
+|Každý den    |    Každý den v 8 ODP.    |  100 dní       |
+
+#### <a name="new-policy-modified-p1"></a>Nové zásady [upraveno P1]
+
+| Typ uchování | Plán                       | Uchovávání |
+| -------------- | ------------------------------ | --------- |
+| Každý den          | Každý den v 9 ODP.              | 50 dní   |
+| Každý týden         | V neděli v 9 ODP.              | 3 týdny   |
+| měsíčně        | Poslední pondělí v 9 ODP.         | 1 měsíc   |
+| Roční         | V lednu na třetí neděli v 9 ODP. | 4 roky   |
+
+#### <a name="impact"></a>Dopad
+
+1. Datum vypršení platnosti stávajících bodů obnovení se upraví podle hodnoty denního uchování nové zásady: to znamená 50 dnů. Takže všechny body obnovení, které jsou starší než 50 dní, budou označeny k odstranění.
+
+2. Existující body obnovení nebudou v závislosti na nových zásadách označeny jako týdenní/měsíční/roční.
+
+3. Všechna budoucí zálohování se aktivují podle nového plánu: to znamená 9 ODP.
+
+4. Datum vypršení platnosti všech budoucích bodů obnovení bude zarovnáno s novou zásadou.
+
+>[!NOTE]
+>Změny zásad budou mít vliv pouze na body obnovení vytvořené v rámci spuštění naplánované úlohy zálohování. V případě zálohování na vyžádání je doba uchování určena hodnotou **zachovat** pozici určenou v době pořízení zálohy.
+
+### <a name="what-is-the-impact-on-existing-recovery-points-when-i-modify-an-existing-gfs-policy"></a>Jaký je dopad na existující body obnovení při úpravách existujících zásad GFS?
+
+Když se u sdílených složek použije nová zásada, všechna budoucí naplánovaná zálohování se budou považovat podle plánu nakonfigurovaného ve upravených zásadách.  Uchovávání všech existujících bodů obnovení je zarovnáno podle nových nakonfigurovaných hodnot pro uchování. Takže pokud je zachování rozšířené, existující body obnovení jsou označeny tak, aby byly v souladu s novou zásadou. Pokud se uchování zmenší, označí se pro vyčištění v další úloze čištění a pak se odstraní.
+
+Tady je příklad toho, jak to funguje:
+
+#### <a name="existing-policy-p2"></a>Existující zásada [P2]
+
+| Typ uchování | Plán           | Uchovávání |
+| -------------- | ------------------ | --------- |
+| Každý den          | Každý den v 8 ODP. | 50 dní   |
+| Každý týden         | V pondělí po 8 ODP.  | 3 týdny   |
+
+#### <a name="new-policy-modified-p2"></a>Nové zásady [upraveno P2]
+
+| Typ uchování | Plán               | Uchovávání |
+| -------------- | ---------------------- | --------- |
+| Každý den          | Každý den v 9 ODP.     | 10 dní   |
+| Každý týden         | V pondělí v 9 ODP.      | 2 týdny   |
+| měsíčně        | Poslední pondělí v 9 ODP. | 2 měsíce  |
+
+#### <a name="impact-of-change"></a>Dopad změny
+
+1. Datum vypršení platnosti existujících denních bodů obnovení bude zarovnáno podle nové hodnoty denního uchování, což je 10 dní. Proto se odstraní každý denní bod obnovení, který je starší než 10 dní.
+
+2. Datum vypršení platnosti stávajících týdenních bodů obnovení bude zarovnáno podle nové týdenní hodnoty uchovávání, která je dva týdny. Proto se odstraní každý týdenní bod obnovení, který je starší než dva týdny.
+
+3. Měsíční body obnovení budou vytvořeny pouze jako součást budoucích záloh na základě nové konfigurace zásad.
+
+4. Datum vypršení platnosti všech budoucích bodů obnovení bude zarovnáno s novou zásadou.
+
+>[!NOTE]
+>Změny zásad budou mít vliv pouze na body obnovení vytvořené v rámci plánovaného zálohování. V případě zálohování na vyžádání se uchování určuje podle hodnoty **zachovat** do, která je určená v době pořízení zálohy.
 
 ## <a name="next-steps"></a>Další kroky
 

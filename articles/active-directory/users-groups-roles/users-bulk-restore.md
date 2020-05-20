@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11f35c7615135f5aa6c63d5d05898d139df61d0d
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 1db23bb1176a41b4b9bac548b737fbd13fbe82c4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203286"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685257"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Hromadné obnovení odstraněných uživatelů v Azure Active Directory
 
@@ -35,7 +35,7 @@ Stáhněte si a vyplňte šablonu sdíleného svazku clusteru, která vám umož
 Řádky ve stažené šabloně CSV jsou následující:
 
 - **Číslo verze**: první řádek obsahující číslo verze musí být zahrnut do souboru CSV pro nahrávání.
-- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název* &gt; položky [PropertyName] &lt; *povinný nebo prázdný*&gt;. Například, `Object ID [objectId] Required`. Některé starší verze šablony mohou mít drobné variace.
+- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název položky* &gt; [PropertyName] &lt; *povinný nebo prázdný* &gt; . Například, `Object ID [objectId] Required`. Některé starší verze šablony mohou mít drobné variace.
 - **Řádek příklady**: v šabloně jsme zahrnuli řádek příkladů přípustných hodnot pro každý sloupec. Řádek příklady musíte odebrat a nahradit ho vlastními položkami.
 
 ### <a name="additional-guidance"></a>Další doprovodné materiály
@@ -48,14 +48,14 @@ Stáhněte si a vyplňte šablonu sdíleného svazku clusteru, která vám umož
 ## <a name="to-bulk-restore-users"></a>Postup hromadného obnovení uživatelů
 
 1. [Přihlaste se ke svojí organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci Azure AD.
-1. V Azure AD vyberte **Uživatelé** > **odstranění**.
+1. V Azure AD vyberte **Uživatelé**  >  **odstranění**.
 1. Na stránce **odstraněné uživatele** výběrem možnosti **Hromadná obnova** nahrajte platný soubor CSV s vlastnostmi uživatelů, které chcete obnovit.
 
-   ![Na stránce odstraněné uživatele vyberte příkaz hromadné obnovení.](./media/users-bulk-restore/bulk-restore.png)
+    ![Na stránce odstraněné uživatele vyberte příkaz hromadné obnovení.](./media/users-bulk-restore/bulk-restore.png)
 
 1. Otevřete šablonu sdíleného svazku clusteru a přidejte řádek pro každého uživatele, který chcete obnovit. Jediná požadovaná hodnota je **objectID**. Pak soubor uložte.
 
-   ![Vyberte místní soubor CSV, ve kterém chcete zobrazit seznam uživatelů, které chcete přidat.](./media/users-bulk-restore/upload-button.png)
+    :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="Vyberte místní soubor CSV, ve kterém chcete zobrazit seznam uživatelů, které chcete přidat.":::
 
 1. Na stránce **hromadné obnovení** v části **nahrát soubor CSV**přejděte k souboru. Když vyberete soubor a kliknete na **Odeslat**, spustí se ověření souboru CSV.
 1. Když se obsah souboru ověří, zobrazí se soubor se **úspěšně nahrál**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.

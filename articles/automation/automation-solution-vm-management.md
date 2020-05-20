@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: f7e30fd0d53af7ee61d919b56e9ffcd1f1b6bd36
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 760c56ad6179a7bf94f19e004e2fbbece3908198
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207594"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683508"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v řešení mimo špičku v Azure Automation
 
@@ -108,31 +108,31 @@ Všechny nadřazené Runbooky obsahují `WhatIf` parametr. Při nastavení na ho
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se z nadřazeného Runbooku. Tato sada Runbook vytváří výstrahy na základě jednotlivých prostředků pro scénář automatického zastavení.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true nebo false  | Vytvoří nebo aktualizuje pravidla upozornění Azure na virtuálních počítačích v cílovém předplatném nebo ve skupinách prostředků. <br> `VMList`je čárkami oddělený seznam virtuálních počítačů. Například, `vm1, vm2, vm3`.<br> `WhatIf`povolí ověřování logiky sady Runbook bez provedení.|
-|AutoStop_Disable | Žádná | Zakáže automatické zastavení výstrah a výchozí plán.|
+|AutoStop_Disable | Žádné | Zakáže automatické zastavení výstrah a výchozí plán.|
 |AutoStop_VM_Child | WebHookData | Volá se z nadřazeného Runbooku. Pravidla výstrah volají tuto sadu Runbook, aby zastavila klasický virtuální počítač.|
 |AutoStop_VM_Child_ARM | WebHookData |Volá se z nadřazeného Runbooku. Pravidla výstrah volají tuto sadu Runbook, aby zastavila virtuální počítač.  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Akce: spustit nebo zastavit<br> VMList  | Provede akci spustit nebo zastavit ve skupině klasických virtuálních počítačů Cloud Services. |
 |ScheduledStartStop_Child | VMName <br> Akce: spustit nebo zastavit <br> ResourceGroupName | Volá se z nadřazeného Runbooku. Provede akci spuštění nebo zastavení pro naplánované zastavení.|
 |ScheduledStartStop_Child_Classic | VMName<br> Akce: spustit nebo zastavit<br> ResourceGroupName | Volá se z nadřazeného Runbooku. Provede akci spuštění nebo zastavení pro naplánované zastavení klasických virtuálních počítačů. |
-|ScheduledStartStop_Parent | Akce: spustit nebo zastavit <br>VMList <br> WhatIf: true nebo false | Spustí nebo zastaví všechny virtuální počítače v rámci předplatného. Upravte proměnné `External_Start_ResourceGroupNames` a `External_Stop_ResourceGroupNames` spouštějte je jenom u těchto cílových skupin prostředků. Pomocí aktualizace `External_ExcludeVMNames` proměnné můžete také vyloučit konkrétní virtuální počítače.|
-|SequencedStartStop_Parent | Akce: spustit nebo zastavit <br> WhatIf: true nebo false<br>VMList| Vytvoří značky s názvem **sequencestart** a **sequencestop** na každém virtuálním počítači, pro který chcete sekvenci aktivity spustit/zastavit. U těchto názvů značek se rozlišují malá a velká písmena. Hodnota značky by měla být kladné celé číslo (1, 2, 3), které odpovídá pořadí, ve kterém chcete spustit nebo zastavit. <br>**Poznámka**: virtuální počítače musí být v rámci skupin prostředků `External_Start_ResourceGroupNames`definovaných `External_Stop_ResourceGroupNames`v proměnných `External_ExcludeVMNames` , a. Aby se akce projevily, musí mít odpovídající značky.|
+|ScheduledStartStop_Parent | Akce: spustit nebo zastavit <br>VMList <br> WhatIf: true nebo false | Spustí nebo zastaví všechny virtuální počítače v rámci předplatného. Upravte proměnné a spouštějte je `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` jenom u těchto cílových skupin prostředků. Pomocí aktualizace proměnné můžete také vyloučit konkrétní virtuální počítače `External_ExcludeVMNames` .|
+|SequencedStartStop_Parent | Akce: spustit nebo zastavit <br> WhatIf: true nebo false<br>VMList| Vytvoří značky s názvem **sequencestart** a **sequencestop** na každém virtuálním počítači, pro který chcete sekvenci aktivity spustit/zastavit. U těchto názvů značek se rozlišují malá a velká písmena. Hodnota značky by měla být kladné celé číslo (1, 2, 3), které odpovídá pořadí, ve kterém chcete spustit nebo zastavit. <br>**Poznámka**: virtuální počítače musí být v rámci skupin prostředků definovaných v `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` proměnných, a `External_ExcludeVMNames` . Aby se akce projevily, musí mít odpovídající značky.|
 
 ### <a name="variables"></a>Proměnné
 
-V následující tabulce jsou uvedeny proměnné vytvořené v účtu Automation. Upravovat pouze proměnné s `External`předponou. Modifikace proměnných s `Internal` předponou způsobuje nežádoucí účinky.
+V následující tabulce jsou uvedeny proměnné vytvořené v účtu Automation. Upravovat pouze proměnné s předponou `External` . Modifikace proměnných s předponou `Internal` způsobuje nežádoucí účinky.
 
 > [!NOTE]
 > Omezení pro název virtuálního počítače a skupinu prostředků jsou z velké části výsledkem proměnné velikosti. Viz [variabilní prostředky v Azure Automation](https://docs.microsoft.com/azure/automation/shared-resources/variables).
 
 |Proměnná | Popis|
 |---------|------------|
-|External_AutoStop_Condition | Podmíněný operátor vyžadovaný pro konfiguraci podmínky před aktivací výstrahy. Přijatelné hodnoty jsou `GreaterThan`, `GreaterThanOrEqual`, `LessThan`a `LessThanOrEqual`.|
+|External_AutoStop_Condition | Podmíněný operátor vyžadovaný pro konfiguraci podmínky před aktivací výstrahy. Přijatelné hodnoty jsou `GreaterThan` , `GreaterThanOrEqual` , `LessThan` a `LessThanOrEqual` .|
 |External_AutoStop_Description | Výstraha, která zastaví virtuální počítač, pokud procento procesoru překročí prahovou hodnotu.|
 |External_AutoStop_Frequency | Frekvence vyhodnocení pro pravidlo. Tento parametr akceptuje vstup ve formátu TimeSpan. Možné hodnoty jsou 5 minut až 6 hodin. |
 |External_AutoStop_MetricName | Název metriky výkonu, pro kterou má být nakonfigurováno pravidlo upozornění Azure.|
 |External_AutoStop_Severity | Závažnost výstrahy metriky, která může být v rozsahu od 0 do 4. |
-|External_AutoStop_Threshold | Prahová hodnota pro pravidlo upozornění Azure zadané v proměnné `External_AutoStop_MetricName`. Procentuální hodnoty v rozsahu od 1 do 100.|
-|External_AutoStop_TimeAggregationOperator | Operátor časové agregace aplikovaný na velikost vybraného okna pro vyhodnocení podmínky. Přijatelné hodnoty jsou `Average`, `Minimum`, `Maximum` `Total`, a `Last`.|
+|External_AutoStop_Threshold | Prahová hodnota pro pravidlo upozornění Azure zadané v proměnné `External_AutoStop_MetricName` . Procentuální hodnoty v rozsahu od 1 do 100.|
+|External_AutoStop_TimeAggregationOperator | Operátor časové agregace aplikovaný na velikost vybraného okna pro vyhodnocení podmínky. Přijatelné hodnoty jsou `Average` , `Minimum` ,, a `Maximum` `Total` `Last` .|
 |External_AutoStop_TimeWindow | Velikost okna, během kterého Azure analyzuje vybrané metriky pro aktivaci výstrahy. Tento parametr akceptuje vstup ve formátu TimeSpan. Možné hodnoty jsou 5 minut až 6 hodin.|
 |External_EnableClassicVMs| Hodnota, která určuje, jestli je na klasických virtuálních počítačích cíleno řešení. Výchozí hodnota je true (pravda). Pro předplatná Azure Cloud Solution Provider (CSP) nastavte tuto proměnnou na false. Klasické virtuální počítače vyžadují [účet Spustit jako pro Classic](automation-create-standalone-account.md#create-a-classic-run-as-account).|
 |External_ExcludeVMNames | Čárkami oddělený seznam názvů virtuálních počítačů, které se mají vyloučit, jsou omezené na 140 virtuálních počítačů. Pokud do seznamu přidáte více než 140 virtuálních počítačů, virtuální počítače, které mají být vyloučeny, mohou být neúmyslně spuštěny nebo zastaveny.|
@@ -146,9 +146,9 @@ V následující tabulce jsou uvedeny proměnné vytvořené v účtu Automation
 |Internal_ResourceGroupName | Název skupiny prostředků účtu Automation|
 
 >[!NOTE]
->Pro proměnnou `External_WaitTimeForVMRetryInSeconds`byla výchozí hodnota aktualizována z 600 na 2100. 
+>Pro proměnnou byla `External_WaitTimeForVMRetryInSeconds` Výchozí hodnota aktualizována z 600 na 2100. 
 
-V rámci všech scénářů jsou `External_Start_ResourceGroupNames`proměnné `External_Stop_ResourceGroupNames`, a `External_ExcludeVMNames` nezbytné pro cílení virtuálních počítačů, s výjimkou seznamů pro virtuální počítače oddělené čárkami pro **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**a **ScheduledStartStop_Parent** sady Runbook. To znamená, že virtuální počítače musí patřit do cílových skupin prostředků pro spuštění a zastavení akcí. Tato logika funguje podobně jako Azure Policy. v takovém případě můžete cílit na předplatné nebo skupinu prostředků a mít akce děděné nově vytvořenými virtuálními počítači. Tento přístup zabraňuje nutnosti udržovat samostatný plán pro každý virtuální počítač a zahájí správu a zastaví se ve škálování.
+V rámci všech scénářů `External_Start_ResourceGroupNames` jsou proměnné, `External_Stop_ResourceGroupNames` a `External_ExcludeVMNames` nezbytné pro cílení virtuálních počítačů, s výjimkou seznamů pro virtuální počítače oddělené čárkami pro **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**a **ScheduledStartStop_Parent** sady Runbook. To znamená, že virtuální počítače musí patřit do cílových skupin prostředků pro spuštění a zastavení akcí. Tato logika funguje podobně jako Azure Policy. v takovém případě můžete cílit na předplatné nebo skupinu prostředků a mít akce děděné nově vytvořenými virtuálními počítači. Tento přístup zabraňuje nutnosti udržovat samostatný plán pro každý virtuální počítač a zahájí správu a zastaví se ve škálování.
 
 ### <a name="schedules"></a>Plány
 
@@ -156,9 +156,9 @@ V následující tabulce jsou uvedeny všechny výchozí plány vytvořené v ú
 
 Nepovolujte všechny plány, protože se tak můžou vytvořit překrývající se akce plánování. Nejvhodnější je určit, které optimalizace chcete provést, a odpovídajícím způsobem je upravit. Další vysvětlení najdete v ukázkových scénářích v části Přehled.
 
-|Název plánu | Frequency | Popis|
+|Název plánu | Frekvence | Popis|
 |--- | --- | ---|
-|Schedule_AutoStop_CreateAlert_Parent | Každých 8 hodin | Spouští sadu Runbook **AutoStop_CreateAlert_Parent** každých 8 hodin, která zase zastavuje hodnoty založené na virtuálním `External_Start_ResourceGroupNames`počítači `External_Stop_ResourceGroupNames`v proměnných `External_ExcludeVMNames` , a. Případně můžete pomocí `VMList` parametru zadat čárkami oddělený seznam virtuálních počítačů.|
+|Schedule_AutoStop_CreateAlert_Parent | Každých 8 hodin | Spouští sadu Runbook **AutoStop_CreateAlert_Parent** každých 8 hodin, která zase zastavuje hodnoty založené na virtuálním počítači v `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` proměnných, a `External_ExcludeVMNames` . Případně můžete pomocí parametru zadat čárkami oddělený seznam virtuálních počítačů `VMList` .|
 |Scheduled_StopVM | Uživatelem definované, denní | Spustí **ScheduledStopStart_Parent** sadu Runbook s parametrem `Stop` každý den v zadaném čase.Automaticky zastaví všechny virtuální počítače, které splňují pravidla definovaná pomocí variabilních prostředků.Povolte související plán **naplánované – StartVM**.|
 |Scheduled_StartVM | Uživatelem definované, denní | Spustí sadu **ScheduledStopStart_Parent** Runbook s hodnotou parametru `Start` každý den v zadaném čase. Automaticky spustí všechny virtuální počítače, které splňují pravidla definovaná pomocí variabilních prostředků.Povolte související plán **naplánované – StopVM**.|
 |Sequenced – StopVM | 1:00 dop. (UTC), každý pátek | Spustí **Sequenced_StopStop_Parent** sadu Runbook s hodnotou parametru v `Stop` každém pátek v zadaném čase.Sekvenčně (vzestupně) zastaví všechny virtuální počítače s tagem **SequenceStop** definovanými příslušnými proměnnými. Další informace o hodnotách značek a proměnných prostředků naleznete v tématu [Runbooky](#runbooks).Povolí související plán, **Sequenced-StartVM**.|
@@ -199,11 +199,11 @@ Výběrem řešení se zobrazí stránka řešení **Start-Stop-VM [pracovní pr
 
 Kliknutím na dlaždici prstence můžete provádět další analýzu záznamů úloh. Řídicí panel řešení zobrazuje historii úloh a předdefinované vyhledávací dotazy protokolů. Přepněte na rozšířený portál Log Analytics, abyste mohli vyhledávat na základě vyhledávacích dotazů.
 
-## <a name="update-the-solution"></a>Aktualizace tohoto řešení
+## <a name="update-the-feature"></a>Aktualizace funkce
 
-Pokud jste nasadili předchozí verzi tohoto řešení, před nasazením aktualizované verze ho odstraňte z účtu. Postupujte podle kroků pro [Odebrání řešení](#remove-the-solution) a pak postupujte podle kroků k [nasazení řešení](automation-solution-vm-management-enable.md).
+Pokud jste nasadili předchozí verzi tohoto řešení, před nasazením aktualizované verze ho odstraňte z účtu. Postupujte podle kroků pro [Odebrání řešení](#remove-the-feature) a pak postupujte podle kroků k [nasazení řešení](automation-solution-vm-management-enable.md).
 
-## <a name="remove-the-solution"></a>Odebrání tohoto řešení
+## <a name="remove-the-feature"></a>Odebrání funkce
 
 Pokud už řešení použít nechcete, můžete ho odstranit z účtu Automation. Odstraněním řešení se odstraní jenom Runbooky. Neodstraní plány nebo proměnné, které byly vytvořeny při přidání řešení. Tyto prostředky odeberte ručně, pokud je nepoužíváte s jinými sadami Runbook.
 

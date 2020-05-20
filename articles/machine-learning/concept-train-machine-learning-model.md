@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/13/2020
+ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592385"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683010"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -111,6 +111,18 @@ Návrhář vám umožní naučit modely pomocí rozhraní přetažení ve webov�
 + [Klasifikace: předpověď změn, appetencyí a prodejů](how-to-designer-sample-classification-churn.md)
 + [Klasifikace s vlastním skriptem R: předpověď zpoždění letů](how-to-designer-sample-classification-flight-delay.md)
 + [Klasifikace textu: Wikipedii sada dat SP 500](how-to-designer-sample-text-classification.md)
+
+## <a name="many-models-solution-accelerator"></a>Řada akcelerátorů řešení modelů
+
+[Mnohé modely řešení](https://aka.ms/many-models) (Preview) jsou sestavené na Azure Machine Learning a umožňují výuku, provozování a správu stovek nebo dokonce tisíců modelů strojového učení.
+
+Například vytvoření modelu __pro každou instanci nebo jednotlivce__ v následujících scénářích může vést k lepším výsledkům:
+
+* Předpověď prodeje pro každé individuální úložiště
+* Prediktivní údržba stovek ropných zásobníků
+* Přizpůsobení prostředí pro jednotlivé uživatele.
+
+Další informace najdete v tématu o [mnoha modelech řešení modelů](https://aka.ms/many-models) na GitHubu.
 
 ## <a name="cli"></a>CLI
 

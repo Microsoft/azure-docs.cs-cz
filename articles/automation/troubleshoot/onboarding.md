@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží při připojování řešení pro správu Azure Automation
-description: Naučte se řešit chyby při připojování Azure Automation řešení.
+title: Řešení potíží s nasazením funkcí Azure Automation
+description: Tento článek popisuje, jak řešit problémy, které vznikají při nasazování funkcí Azure Automation.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 27b93e77e7b813e73496d15c4003e999daff10d5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836525"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681277"
 ---
-# <a name="troubleshoot-solution-onboarding"></a>Řešení potíží s připojováním k řešení
+# <a name="troubleshoot-feature-deployment-issues"></a>Řešení potíží s nasazením funkcí
 
-Při připojování řešení Azure Automation Update Management nebo řešení Change Tracking a inventáře může docházet k chybovým zprávám. Tento článek popisuje různé chyby, ke kterým může dojít, a způsob jejich řešení.
+Po nasazení funkce Azure Automation Update Management nebo funkce Change Tracking a inventáře na virtuálních počítačích se mohou zobrazit chybové zprávy. Tento článek popisuje chyby, ke kterým může dojít, a jak je vyřešit.
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -39,7 +39,7 @@ Zrušte registraci uzlu v konfiguraci stavu Azure Automation a poté jej znovu z
 
 #### <a name="issue"></a>Problém
 
-Když se připojíte prostřednictvím řešení proxy, které ukončí provoz HTTPS a pak ho znovu zašifruje pomocí nového certifikátu, služba nepovoluje připojení.
+Když se připojíte přes proxy server, který ukončuje provoz HTTPS a pak ho znovu zašifruje pomocí nového certifikátu, služba nepovoluje připojení.
 
 #### <a name="cause"></a>Příčina
 
@@ -51,11 +51,11 @@ Pro tento problém není aktuálně k dispozici žádné alternativní řešení
 
 ## <a name="general-errors"></a>Obecné chyby
 
-### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Scénář: připojování se nepovede se zprávou, že řešení se nedá povolit.
+### <a name="scenario-feature-deployment-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Scénář: nasazení funkcí se nepovede a zobrazí se zpráva řešení se nedá povolit.
 
 #### <a name="issue"></a>Problém
 
-Při pokusu o připojení virtuálního počítače k řešení se zobrazí jedna z následujících zpráv:
+Při pokusu o povolení funkce na virtuálním počítači se zobrazí jedna z následujících zpráv:
 
 ```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
@@ -71,13 +71,13 @@ K této chybě dochází v důsledku nesprávných nebo chybějících oprávně
 
 #### <a name="resolution"></a>Řešení
 
-Ujistěte se, že máte správná [oprávnění potřebná k připojování počítačů](../automation-role-based-access-control.md#onboarding-permissions)a pak zkuste řešení připojit znovu. Pokud se zobrazí chybová zpráva `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, ujistěte se, že máte `Microsoft.OperationalInsights/workspaces/read` oprávnění, abyste mohli zjistit, jestli je virtuální počítač připojen k pracovnímu prostoru.
+Ujistěte se, že máte správná [oprávnění k nasazení funkcí](../automation-role-based-access-control.md#onboarding-permissions), a pak zkuste funkci nasadit znovu. Pokud se zobrazí chybová zpráva `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , ujistěte se, že máte `Microsoft.OperationalInsights/workspaces/read` oprávnění, abyste mohli zjistit, jestli je virtuální počítač pro pracovní prostor povolený.
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scénář: připojování se nepovede se zprávou "selhalo konfigurace účtu Automation pro diagnostické protokolování"
+### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Scénář: nasazení funkcí se nepovede a zobrazí se zpráva "nepovedlo se nakonfigurovat účet Automation pro diagnostické protokolování".
 
 #### <a name="issue"></a>Problém
 
-Při pokusu o připojení virtuálního počítače k řešení se zobrazí následující zpráva:
+Při pokusu o povolení funkce na virtuálním počítači se zobrazí následující zpráva:
 
 ```error
 Failed to configure automation account for diagnostic logging
@@ -89,13 +89,13 @@ Tato chyba může být způsobena tím, že cenová úroveň neodpovídá modelu
 
 #### <a name="resolution"></a>Řešení
 
-Vytvořte pracovní prostor Log Analytics ručně a opakujte proces zprovoznění a vyberte vytvořený pracovní prostor.
+Vytvořte pracovní prostor Log Analytics ručně a opakujte proces nasazení funkcí a vyberte vytvořený pracovní prostor.
 
 ### <a name="scenario-computergroupqueryformaterror"></a><a name="computer-group-query-format-error"></a>Scénář: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Problém
 
-Tento kód chyby znamená, že dotaz na skupinu uložených hledání, který se používá k cílení na řešení, není správně naformátován. 
+Tento kód chyby znamená, že dotaz na skupinu uloženého hledání, který se používá k cílení na funkci, není správně naformátován. 
 
 #### <a name="cause"></a>Příčina
 
@@ -103,7 +103,7 @@ Je možné, že jste dotaz změnili nebo ho systém mohl změnit.
 
 #### <a name="resolution"></a>Řešení
 
-Dotaz pro řešení můžete odstranit a pak znovu připojit řešení, které dotaz znovu vytvoří. Dotaz najdete v části **uložená hledání**v pracovním prostoru. Název dotazu je **MicrosoftDefaultComputerGroup**a kategorie dotazu je název přidruženého řešení. Pokud je povolené více řešení, dotaz **MicrosoftDefaultComputerGroup** se v části **uložená hledání**zobrazuje vícekrát.
+Dotaz na funkci můžete odstranit a pak znovu povolit funkci, která znovu vytvoří dotaz. Dotaz najdete v části **uložená hledání**v pracovním prostoru. Název dotazu je **MicrosoftDefaultComputerGroup**a kategorie dotazu je název přidružené funkce. Pokud je povoleno více funkcí, dotaz **MicrosoftDefaultComputerGroup** se v části **uložená hledání**zobrazuje vícekrát.
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Scénář: PolicyViolation
 
@@ -117,10 +117,10 @@ Zásada blokuje dokončení operace.
 
 #### <a name="resolution"></a>Řešení
 
-K úspěšnému nasazení řešení musíte zvážit změnu uvedené zásady. Vzhledem k tomu, že existuje celá řada různých typů zásad, které je možné definovat, závisí požadované změny na zásadách, u kterých došlo k porušení. Pokud je například zásada definovaná ve skupině prostředků, která Odepře oprávnění ke změně obsahu některých obsažených prostředků, můžete zvolit jednu z těchto oprav:
+K úspěšnému nasazení této funkce je nutné zvážit změnu označených zásad. Vzhledem k tomu, že existuje celá řada různých typů zásad, které je možné definovat, závisí požadované změny na zásadách, u kterých došlo k porušení. Pokud je například zásada definovaná ve skupině prostředků, která Odepře oprávnění ke změně obsahu některých obsažených prostředků, můžete zvolit jednu z těchto oprav:
 
 * Zásadu odeberte úplně.
-* Zkuste řešení připojit do jiné skupiny prostředků.
+* Zkuste funkci povolit pro jinou skupinu prostředků.
 * Změnit cílení zásad na konkrétní prostředek, například účet Automation.
 * Revidujte sadu prostředků, pro které je zásada nakonfigurovaná na odepřít.
 
@@ -138,26 +138,26 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Příčina
 
-K této chybě dochází, když máte pořád aktivní řešení v pracovním prostoru Log Analytics, který závisí na vašem účtu Automation a na propojených pracovních prostorech Log Analytics.
+K této chybě dochází, pokud pořád máte aktivní funkce v pracovním prostoru Log Analytics, které závisí na vašem účtu Automation a na propojených pracovních prostorech Log Analytics.
 
 ### <a name="resolution"></a>Řešení
 
-Pokud je používáte, odeberte z pracovního prostoru následující řešení:
+Odeberte prostředky z následujících funkcí z pracovního prostoru, pokud je používáte:
 
 * Update Management
 * Change Tracking a Inventory
 * Spuštění/zastavení virtuálních počítačů mimo špičku
 
-Po odebrání řešení můžete zrušit propojení pracovního prostoru. Z těchto řešení je důležité vyčistit všechny existující artefakty z vašeho pracovního prostoru a účtu Automation:
+Po odebrání prostředků funkce můžete zrušit propojení pracovního prostoru. Je důležité vyčistit všechny existující artefakty z těchto funkcí z vašeho pracovního prostoru a účtu Automation:
 
 * V případě Update Management z účtu Automation odeberte **nasazení aktualizací (plány)** .
-* V případě Start/Stop VMS during off-hours odeberte všechny zámky na součástech řešení v účtu Automation v části **Nastavení** > **zámků**. Další informace najdete v tématu [Odebrání řešení Start/Stop VMS during off-hours](../automation-solution-vm-management.md#remove-the-solution).
+* V případě Start/Stop VMS during off-hours odeberte všechny zámky na součástech funkcí v účtu Automation v části **Nastavení**  >  **zámků**. Další informace najdete v tématu [odebrání funkce](../automation-solution-vm-management.md#remove-the-feature).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Log Analytics pro chyby rozšíření Windows
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Instalace rozšíření Log Analytics agenta pro Windows může selhat z nejrůznějších důvodů. Následující část popisuje problémy s připojováním, které mohou způsobit chyby během nasazování rozšíření Log Analytics agenta pro Windows.
+Instalace rozšíření Log Analytics agenta pro Windows může selhat z nejrůznějších důvodů. V následující části jsou popsané problémy s nasazením funkcí, které můžou způsobit chyby během nasazování rozšíření Log Analytics agenta pro Windows.
 
 >[!NOTE]
 >Log Analytics Agent pro Windows je název, který se aktuálně používá v Azure Automation pro Microsoft Monitoring Agent (MMA).
@@ -245,5 +245,5 @@ Zkuste nainstalovat rozšíření Log Analytics agenta pro Windows, když je vir
 Pokud tady nevidíte svůj problém nebo nemůžete problém vyřešit, zkuste další podporu vyzkoušet u některého z následujících kanálů:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport)pomocí oficiálního Microsoft Azure účtu pro zlepšení prostředí pro zákazníky. Podpora Azure spojuje komunitu Azure s odpověďmi, podporou a odborníky.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) oficiálního Microsoft Azure účtu pro zlepšení prostředí pro zákazníky. Podpora Azure spojuje komunitu Azure s odpověďmi, podporou a odborníky.
 * Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**.

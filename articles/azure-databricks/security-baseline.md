@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d417f412592d87dec751b9d98a26bf786c719e5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 23057723d46ed5d9203741ab2eb1a15edb5bd510
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796847"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681692"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Základní hodnoty zabezpečení Azure pro Azure Databricks
 
@@ -146,7 +146,7 @@ Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure 
 
 **Doprovodné**materiály: používejte značky pro skupin zabezpečení sítě a další prostředky související se zabezpečením sítě a tokem provozu, které jsou přidružené k vaší instanci Azure Databricks. U individuálních pravidel NSG použijte pole Popis k zadání obchodních potřeb a/nebo doby trvání (atd.) pro všechna pravidla, která umožňují provoz do/ze sítě.
 
-* [Vytváření a používání značek](httphttps://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: nelze použít
 

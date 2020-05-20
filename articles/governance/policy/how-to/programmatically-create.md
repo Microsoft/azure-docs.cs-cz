@@ -1,14 +1,14 @@
 ---
 title: Programové vytváření zásad
 description: Tento článek vás provede programově vytvářením a správou zásad pro Azure Policy pomocí rozhraní příkazového řádku Azure, Azure PowerShell a REST API.
-ms.date: 01/31/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ee87ecd9e7c636b5bb63c8e94be0e353acc3e13
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264541"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682121"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 
@@ -72,7 +72,7 @@ Prvním krokem k lepšímu přehledu vašich prostředků je vytváření a při
    Příkaz vytvoří definici zásady s názvem _audit účty úložiště otevřená ve veřejných sítích_.
    Další informace o dalších parametrech, které můžete použít, najdete v části [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
 
-   Když se volá bez parametrů umístění `New-AzPolicyDefinition` , ve výchozím nastavení se uloží definice zásady ve vybraném předplatném kontextu relace. Definici uložíte do jiného umístění pomocí následujících parametrů:
+   Když se volá bez parametrů umístění, `New-AzPolicyDefinition` ve výchozím nastavení se uloží definice zásady ve vybraném předplatném kontextu relace. Definici uložíte do jiného umístění pomocí následujících parametrů:
 
    - **SubscriptionId** – Uložit do jiného předplatného Vyžaduje hodnotu _GUID_ .
    - **ManagementGroupName** -Uložit do skupiny pro správu. Vyžaduje hodnotu typu _String_ .
@@ -87,7 +87,7 @@ Prvním krokem k lepšímu přehledu vašich prostředků je vytváření a při
 
    Nahraďte _ContosoRG_ názvem vaší zamýšlené skupiny prostředků.
 
-   Parametr **Scope** v `New-AzPolicyAssignment` sadě funguje se skupinou pro správu, předplatným, skupinou prostředků nebo jedním prostředkem. Parametr používá úplnou cestu prostředku, která `Get-AzResourceGroup` vrací vlastnost **ResourceID** . Vzor pro **Rozsah** každého kontejneru je následující. `{rName}`Nahraďte `{rgName}`, `{subId}`, a `{mgName}` názvem prostředku, názvem skupiny prostředků, ID předplatného a názvem skupiny pro správu v uvedeném pořadí.
+   Parametr **Scope** v `New-AzPolicyAssignment` sadě funguje se skupinou pro správu, předplatným, skupinou prostředků nebo jedním prostředkem. Parametr používá úplnou cestu prostředku, která vrací vlastnost **ResourceID** `Get-AzResourceGroup` . Vzor pro **Rozsah** každého kontejneru je následující. Nahraďte `{rName}` ,, `{rgName}` a názvem `{subId}` `{mgName}` prostředku, názvem skupiny prostředků, ID předplatného a názvem skupiny pro správu v uvedeném pořadí.
    `{rType}`by se nahradilo **typem prostředku** prostředku, například `Microsoft.Compute/virtualMachines` pro virtuální počítač.
 
    - Partner`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
@@ -133,10 +133,10 @@ K vytvoření definice zásady použijte následující postup.
 
    ```console
    # For defining a policy in a subscription
-   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
 
    # For defining a policy in a management group
-   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+   armclient PUT "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2019-09-01" @<path to policy definition JSON file>
    ```
 
    Nahraďte předchozí {subscriptionId} IDENTIFIKÁTORem vašeho předplatného nebo {managementGroupId} ID vaší [skupiny pro správu](../../management-groups/overview.md).
@@ -145,7 +145,7 @@ K vytvoření definice zásady použijte následující postup.
 
 Pomocí následujícího postupu vytvořte přiřazení zásady a přiřaďte definici zásady na úrovni skupiny prostředků.
 
-1. Zkopírujte následující fragment kódu JSON pro vytvoření souboru přiřazení zásad JSON. Nahraďte ukázkové informace &lt; &gt; v symbolech vlastními hodnotami.
+1. Zkopírujte následující fragment kódu JSON pro vytvoření souboru přiřazení zásad JSON. Nahraďte ukázkové informace v &lt; &gt; symbolech vlastními hodnotami.
 
    ```json
    {
@@ -162,10 +162,10 @@ Pomocí následujícího postupu vytvořte přiřazení zásady a přiřaďte de
 1. Pomocí následujícího volání vytvořte přiřazení zásady:
 
    ```console
-   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2017-06-01-preview" @<path to Assignment JSON file>
+   armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2019-09-01" @<path to Assignment JSON file>
    ```
 
-   Nahraďte ukázkové informace &lt; &gt; v symbolech vlastními hodnotami.
+   Nahraďte ukázkové informace v &lt; &gt; symbolech vlastními hodnotami.
 
    Další informace o tom, jak provádět volání HTTP do REST API, najdete v tématu [prostředky Azure REST API](/rest/api/resources/).
 
@@ -205,18 +205,18 @@ Pokud chcete vytvořit definici zásady, použijte následující postup:
    Příkaz vytvoří definici zásady s názvem _audit účty úložiště otevřená ve veřejných sítích_.
    Další informace o dalších parametrech, které můžete použít, najdete v tématu [AZ Policy definition Create](/cli/azure/policy/definition#az-policy-definition-create).
 
-   Když se volá bez parametrů umístění `az policy definition creation` , ve výchozím nastavení se uloží definice zásady ve vybraném předplatném kontextu relace. Definici uložíte do jiného umístění pomocí následujících parametrů:
+   Když se volá bez parametrů umístění, `az policy definition creation` ve výchozím nastavení se uloží definice zásady ve vybraném předplatném kontextu relace. Definici uložíte do jiného umístění pomocí následujících parametrů:
 
-   - **--předplatné** – uložení do jiného předplatného. Vyžaduje hodnotu _identifikátoru GUID_ pro ID předplatného nebo hodnotu _řetězce_ pro název předplatného.
-   - **--Management-Group** -Uložit do skupiny pro správu. Vyžaduje hodnotu typu _String_ .
+   - **předplatné** – uložte si do jiného předplatného. Vyžaduje hodnotu _identifikátoru GUID_ pro ID předplatného nebo hodnotu _řetězce_ pro název předplatného.
+   - **Správa-skupina** – uložení do skupiny pro správu. Vyžaduje hodnotu typu _String_ .
 
-1. K vytvoření přiřazení zásady použijte následující příkaz. Nahraďte ukázkové informace &lt; &gt; v symbolech vlastními hodnotami.
+1. K vytvoření přiřazení zásady použijte následující příkaz. Nahraďte ukázkové informace v &lt; &gt; symbolech vlastními hodnotami.
 
    ```azurecli-interactive
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   Parametr **--Scope** v `az policy assignment create` sadě funguje se skupinou pro správu, předplatným, skupinou prostředků nebo jedním prostředkem. Parametr používá úplnou cestu prostředku. Vzor pro **Rozsah** pro každý kontejner je následující. `{rName}`Nahraďte `{rgName}`, `{subId}`, a `{mgName}` názvem prostředku, názvem skupiny prostředků, ID předplatného a názvem skupiny pro správu v uvedeném pořadí. `{rType}`by se nahradilo **typem prostředku** prostředku, například `Microsoft.Compute/virtualMachines` pro virtuální počítač.
+   Parametr **Scope** v `az policy assignment create` sadě funguje se skupinou pro správu, předplatným, skupinou prostředků nebo jedním prostředkem. Parametr používá úplnou cestu prostředku. Vzor pro **Rozsah** každého kontejneru je následující. Nahraďte `{rName}` ,, `{rgName}` a názvem `{subId}` `{mgName}` prostředku, názvem skupiny prostředků, ID předplatného a názvem skupiny pro správu v uvedeném pořadí. `{rType}`by se nahradilo **typem prostředku** prostředku, například `Microsoft.Compute/virtualMachines` pro virtuální počítač.
 
    - Partner`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Skupina prostředků –`/subscriptions/{subID}/resourceGroups/{rgName}`

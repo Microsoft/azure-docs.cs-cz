@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s agentem aktualizace pro Linux v Azure Automation Update Management
-description: Naučte se řešit potíže s agentem Windows Update pro Linux pomocí Update Management řešení.
+title: Řešení potíží s agentem aktualizace pro Linux v Azure Automation
+description: V tomto článku se dozvíte, jak řešit problémy s agentem Windows Update pro Linux v Update Management.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: a4082ddfd8c092a6f9223a0894f21bc734b6efb6
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997017"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680869"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Řešení potíží s agentem aktualizace pro Linux
 
@@ -22,7 +22,7 @@ Může to mít spoustu důvodů, proč se Váš počítač v Update Management n
 
 * Připraveno: Hybrid Runbook Worker se nasadí a poslední se zobrazila před méně než jednou hodinou.
 * Odpojeno: Hybrid Runbook Worker se nasazuje a naposledy se zobrazilo před jednou hodinou.
-* Nenakonfigurováno: Hybrid Runbook Worker se nenašlo nebo nedokončilo registraci.
+* Nenakonfigurováno: Hybrid Runbook Worker není nalezeno nebo nebylo dokončeno nasazení.
 
 > [!NOTE]
 > Mezi zobrazením Azure Portal a aktuálním stavem počítače může být mírné zpoždění.
@@ -70,7 +70,7 @@ Tato kontrolu zajistí, že je nainstalován agent Log Analytics pro Linux. Poky
 
 ### <a name="log-analytics-agent-status"></a>Stav agenta Log Analytics
 
-Tato kontrolu zajistí, že je spuštěný agent Log Analytics pro Linux. Pokud agent neběží, můžete spustit následující příkaz a pokusit se ho restartovat. Další informace o řešení potíží s agentem najdete v tématu [řešení potíží se systémem Linux Hybrid Runbook Worker](hybrid-runbook-worker.md#linux).
+Tato kontrolu zajistí, že je spuštěný agent Log Analytics pro Linux. Pokud agent neběží, můžete spustit následující příkaz a pokusit se ho restartovat. Další informace o řešení potíží s agentem najdete v tématu [Linux – řešení potíží s Hybrid Runbook Worker problémy](hybrid-runbook-worker.md#linux).
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -78,13 +78,13 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ### <a name="multihoming"></a>Multihoming
 
-Tato kontrolu určuje, zda agent hlásí do více pracovních prostorů. Update Management nepodporuje více domovských stránek.
+Tato kontrolu určuje, zda agent hlásí do více pracovních prostorů. Update Management nepodporuje více domovských.
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-Tato kontrolu ověří, zda má Log Analytics Agent pro Linux balíček Hybrid Runbook Worker. Tento balíček je nutný, aby Update Management fungoval. Další informace najdete v tématu [agent Log Analytics pro Linux není spuštěný](hybrid-runbook-worker.md#oms-agent-not-running).
+Tato kontrolu ověří, zda má Log Analytics Agent pro Linux balíček Hybrid Runbook Worker. Tento balíček je nutný, aby Update Management fungoval. Další informace najdete v tématu [Log Analytics Agent pro Linux neběží](hybrid-runbook-worker.md#oms-agent-not-running).
 
-Update Management stáhne Hybrid Runbook Worker balíčky z koncového bodu operací. Proto pokud Hybrid Runbook Worker neběží a [koncový bod operací](#operations-endpoint) selže, může aktualizace selhat.
+Update Management stáhne Hybrid Runbook Worker balíčky z koncového bodu operací. Proto pokud Hybrid Runbook Worker neběží a kontrolní [bod operací](#operations-endpoint) selže, aktualizace může selhat.
 
 ### <a name="hybrid-runbook-worker-status"></a>Stav Hybrid Runbook Worker
 
@@ -184,4 +184,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete řešit další problémy s procesy Hybrid Runbook Worker, přečtěte si téma [řešení potíží s hybridními procesy Runbooku](hybrid-runbook-worker.md).
+[Řešení potíží s Hybrid Runbook Worker](hybrid-runbook-worker.md).

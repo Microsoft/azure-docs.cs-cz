@@ -3,12 +3,12 @@ title: Glosář – LUIS
 description: Glosář vysvětluje výrazy, se kterými se můžete setkat při práci se službou LUIS API.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: eb823e65acc55dd9d739b31e506ad27f6af9095a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589665"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681616"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Jazyk porozumění běžným slovníkům a konceptům
 Glosář Language Understanding (LUIS) vysvětluje výrazy, se kterými se můžete setkat při práci se službou LUIS.
@@ -139,9 +139,9 @@ Schéma entit je struktura, kterou definujete pro entity, které se strojově se
 
 ### <a name="entitys-subentity"></a>Subentity entity
 
-Podentita je podřízenou entitou entity, která se naučila počítač.
+Podentita je podřízenou entitou entity strojového učení.
 
-### <a name="non-machine-learned-entity"></a>Entita získaná mimo počítač
+### <a name="non-machine-learning-entity"></a>Entita bez strojového učení
 
 Entita, která používá text odpovídající extrakci dat:
 * Entita seznamu
@@ -164,7 +164,7 @@ Zobrazit položku předem sestaveného modelu pro [předem vytvořenou entitu](#
 
 Ve strojovém učení je funkcí charakteristikou, která pomáhá modelu pochopit konkrétní koncept. Je to pomocný parametr, který může LUIS použít, ale ne pevné pravidlo.
 
-Tento termín se také označuje jako **[funkce zjištěná počítačem](luis-concept-feature.md)**.
+Tento termín se také označuje jako **[funkce strojového učení](luis-concept-feature.md)**.
 
 Tyto pomocné údaje se používají ve spojení s popisky a Naučte se, jak předpovídat nová data. LUIS podporuje seznamy frází a jako funkce používají jiné modely.
 
@@ -199,6 +199,10 @@ Model A (strojové učení) je funkce, která provádí předpověď na vstupní
 ## <a name="normalized-value"></a>Normalizovaná hodnota
 
 Do entit [seznamu](#list-entity) přidáte hodnoty. Každá z těchto hodnot může mít seznam jednoho nebo více synonym. V odpovědi se vrátí jenom normalizovaná hodnota.
+
+## <a name="overfitting"></a>Přeučení
+
+K překrytí dojde, když je model v konkrétních příkladech přizpůsobený a není schopný zobecnit správně.
 
 ## <a name="owner"></a>Vlastník
 
@@ -260,7 +264,7 @@ LUIS kvóta je omezením úrovně předplatného Azure. Kvóta LUIS může být 
 
 ## <a name="schema"></a>Schéma
 
-Vaše schéma zahrnuje vaše záměry a entity spolu s podentitami. U schématu je zpočátku naplánováno iterace v průběhu času. Schéma neobsahuje nastavení aplikace, funkce nebo příklad projevy. 
+Vaše schéma zahrnuje vaše záměry a entity spolu s podentitami. U schématu je zpočátku naplánováno iterace v průběhu času. Schéma neobsahuje nastavení aplikace, funkce nebo příklad projevy.
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 Analýza mínění poskytuje kladné nebo záporné hodnoty projevy, které poskytuje [Analýza textu](../text-analytics/overview.md).

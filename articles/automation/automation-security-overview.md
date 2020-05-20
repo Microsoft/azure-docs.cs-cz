@@ -1,31 +1,27 @@
 ---
-title: Úvod do ověřování v Azure Automation
-description: Tento článek nabízí přehled zabezpečení služby Automation a různé metody ověřování, které jsou dostupné pro účty Automation ve službě Azure Automation.
+title: Přehled ověřování účtu Azure Automation
+description: Tento článek poskytuje přehled Azure Automation metod zabezpečení a ověřování pro účty Automation.
 keywords: automation security, secure automation; automation authentication
 services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3d3dbaad18f6acbe1ddf17d81f54e4232c838dd7
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c9e3c2b15b45eb15b40782a5d0ecfe1e736fc013
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787409"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683517"
 ---
-# <a name="introduction-to-authentication-in-azure-automation"></a>Úvod do ověřování ve službě Azure Automation
+# <a name="azure-automation-account-authentication-overview"></a>Přehled ověřování účtu Azure Automation
 
-Azure Automation umožňuje automatizovat úlohy s prostředky v Azure, místně a u jiných poskytovatelů cloudu, například Amazon Web Services (AWS). Aby mohl runbook provádět požadované akce, musí mít oprávnění pro bezpečný přístup k prostředkům s minimálními požadovanými právy v rámci předplatného.
-
-Tento článek se zabývá různými scénáři ověřování podporovanými nástrojem Azure Automation a postupem, jak začít na základě prostředí nebo prostředí, které potřebujete spravovat.  
-
-## <a name="automation-account-overview"></a>Přehled účtu Automation
+Azure Automation umožňuje automatizovat úlohy s prostředky v Azure, místně a u jiných poskytovatelů cloudu, například Amazon Web Services (AWS). Aby sada Runbook mohla provádět požadované akce, musí mít oprávnění k zabezpečenému přístupu k prostředkům s minimálními nároky vyžadovanými v rámci předplatného.
 
 Při prvním spuštění služby Azure Automation vytvořte alespoň jeden účet Automation. Účty Automation umožňují izolovat vaše prostředky Automation (runbooky, assety, konfigurace) od prostředků, které jsou obsažené v jiných účtech Automation. Účty Automation můžete použít k oddělení prostředků do samostatných logických prostředí. Jeden účet můžete například použít pro vývoj, druhý k produkci a další pro svoje místní prostředí. Účet Azure Automation se liší od účtu Microsoft a účtů vytvořených v rámci vašeho předplatného Azure.
 
 Prostředky Automation jednotlivých účtů Automation jsou přidružené k jedné oblasti Azure, ale účty Automation mohou spravovat veškeré prostředky v rámci předplatného. Hlavním důvodem k vytvoření účtů Automation v různých oblastech by byla situace, kdy máte zásady, které vyžadují izolaci dat a prostředků v určité oblasti.
 
-Všechny úlohy, které s prostředky provádíte pomocí správce Azure Resource Manager a rutin Azure ve službě Azure Automation, se musí ověřovat pro službu Azure pomocí ověření na základě přihlašovacích údajů organizační identity v Azure Active Directory. Účty Spustit jako v Azure Automation poskytují ověřování pro správu prostředků v Azure pomocí rutin Azure. Když vytvoříte účet Spustit jako, vytvoří se nový uživatel instančního objektu ve službě Azure Active Directory (AD) a přiřadí roli přispěvatele tomuto uživateli na úrovni předplatného. Pro Runbooky, které používají hybridní pracovní procesy Runbooku na virtuálních počítačích Azure, můžete místo účtů spustit jako použít pro ověřování prostředků Azure [ověřování pomocí sady Runbook se spravovanými identitami](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) .
+Všechny úlohy, které provedete na prostředky pomocí Azure Resource Manager a rutiny Azure v Azure Automation, se musí ověřovat v Azure pomocí ověřování na základě přihlašovacích údajů organizace v Azure Active Directory (Azure AD). Účty Spustit jako v Azure Automation poskytují ověřování pro správu prostředků v Azure pomocí rutin Azure. Když vytvoříte účet Spustit jako, vytvoří se ve službě Azure AD nový uživatel instančního objektu, který tomuto uživateli přiřadí roli přispěvatel na úrovni předplatného. Pro Runbooky, které používají hybridní pracovní procesy Runbooku na virtuálních počítačích Azure, můžete místo účtů spustit jako použít pro ověřování prostředků Azure [ověřování pomocí sady Runbook se spravovanými identitami](automation-hrw-run-runbooks.md#runbook-auth-managed-identities) .
 
 Instanční objekt pro účet Spustit jako nemá oprávnění ke čtení Azure AD ve výchozím nastavení. Pokud chcete přidat oprávnění ke čtení nebo správě služby Azure AD, musíte oprávnění k instančnímu objektu udělit v části **oprávnění rozhraní API**. Další informace najdete v tématu [Přidání oprávnění pro přístup k webovým rozhraním API](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
@@ -36,7 +32,5 @@ Runbooky běžící na Hybrid Runbook Worker ve vašem datovém centru nebo na v
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvořte účet Automation z Azure Portal](automation-create-standalone-account.md).
-
 * [Vytvořte účet Automation pomocí šablony Azure Resource Manager](automation-create-account-template.md).
-
 * [Ověřování pomocí Amazon Web Services (AWS)](automation-config-aws-account.md).

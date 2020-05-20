@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 7c843b45b5a398aaaa1aab66f80961560477cf18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 794c88556fb69aae11c582afd03f548480469e34
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128059"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684706"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Shromažďování dat telemetrie pro vyhledávání analýz provozu
 
@@ -48,7 +48,7 @@ Jakmile budete mít prostředek Application Insights, můžete podle [pokynů pr
 
 Zástupce, který funguje pro některé typy projektů aplikace Visual Studio, se projeví v následujících krocích. Vytvoří prostředek a zaregistruje aplikaci během několika kliknutí.
 
-1. Pro vývoj aplikací Visual Studio a ASP.NET otevřete řešení a vyberte **projekt** > **Přidat telemetrie Application Insights**.
+1. Pro vývoj aplikací Visual Studio a ASP.NET otevřete řešení a vyberte **projekt**  >  **Přidat telemetrie Application Insights**.
 
 1. Klikněte **na Začínáme.**
 
@@ -236,4 +236,4 @@ Instrumentujte svoji vyhledávací aplikaci, abyste získali výkonná a přehle
 
 Další informace o [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/application-insights/) , kde najdete další informace o různých úrovních služeb.
 
-Přečtěte si další informace o vytváření úžasnéch sestav. Podrobnosti najdete v tématu [Začínáme s Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) .
+Přečtěte si další informace o vytváření úžasnéch sestav. Podrobnosti najdete v tématu [Začínáme s Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started) .

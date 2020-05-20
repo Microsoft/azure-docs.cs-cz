@@ -4,17 +4,17 @@ description: Extrahovat data z utterance textu s záměry a entitami. Zjistěte,
 author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 3b6b09fd1066a9caa745cddf30d76e2843c3f56c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589716"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682187"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrakce dat z utterance textu s využitím záměrů a entit
 LUIS poskytuje možnost získávat informace z přirozeného jazyka projevy uživatele. Informace jsou extrahovány způsobem, který může být použit programem, aplikací nebo robotem chatu k provedení akce. V následujících částech se dozvíte, jaká data se vracejí z záměrů a entit s příklady JSON.
 
-Nejzávažnější data k extrakci jsou data získaná počítačem, protože se neshoduje s přesným textem. Extrakce dat v počítačích, které [se naučila](luis-concept-entity-types.md) , musí být součástí [cyklu vytváření](luis-concept-app-iteration.md) , dokud nebudete mít jistotu, že obdržíte očekávaná data.
+Nejzávažnější data pro extrakci jsou data strojového učení, protože se neshoduje s přesným textem. Extrakce dat [entitami](luis-concept-entity-types.md) strojového učení musí být součástí [cyklu vytváření](luis-concept-app-iteration.md) , dokud nebudete mít jistotu, že obdržíte očekávaná data.
 
 ## <a name="data-location-and-key-usage"></a>Umístění dat a použití klíče
 LUIS extrahuje data z utterance uživatele v publikovaném [koncovém bodu](luis-glossary.md#endpoint). **Požadavek https** (post nebo Get) obsahuje utterance a také některé volitelné konfigurace, například pracovní nebo produkční prostředí.
@@ -245,7 +245,7 @@ Některé aplikace musí být schopné najít nové a nově vznikající názvy,
 
 ## <a name="patternany-entity-data"></a>Vzor. libovolná data entity
 
-[Pattern. any](reference-entity-pattern-any.md) je zástupný symbol s proměnlivou délkou, který se používá jenom v šabloně vzoru utterance k označení, kde začíná a končí entita. Aby bylo možné použít vzor, musí být entita použitá ve vzoru nalezena. 
+[Pattern. any](reference-entity-pattern-any.md) je zástupný symbol s proměnlivou délkou, který se používá jenom v šabloně vzoru utterance k označení, kde začíná a končí entita. Aby bylo možné použít vzor, musí být entita použitá ve vzoru nalezena.
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 Pokud je při [publikování](luis-how-to-publish-app.md#sentiment-analysis)nakonfigurovaná analýza mínění, odpověď Luis JSON zahrnuje analýzu mínění. Další informace o analýze mínění najdete v dokumentaci k [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) .

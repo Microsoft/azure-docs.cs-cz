@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1084be9a63e023257326de824ea200dcc1be74d9
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275565"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684644"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Řešení monitorování sítě Azure v Azure Monitor
 
@@ -150,7 +150,7 @@ Pro skupiny zabezpečení sítě jsou podporovány následující protokoly:
 ### <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení Azure Networking Analytics použijte následující pokyny:
 
-1. Povolte řešení Azure Network Security Group Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání řešení Azure monitor z galerie řešení](../../azure-monitor/insights/solutions.md).
+1. Pomocí postupu popsaného v tématu [přidání Azure monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md)povolte řešení Azure Network Security Group Analytics.
 2. Povolte protokolování diagnostiky pro prostředky [skupiny zabezpečení sítě](../../virtual-network/virtual-network-nsg-manage-log.md) , které chcete monitorovat.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Povolení diagnostiky skupiny zabezpečení sítě Azure na portálu
@@ -218,8 +218,8 @@ Použití aktualizovaných řešení:
      | NetworkApplicationgateways &#124;, kde OperationName = = "ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde ResourceType = = "APPLICATIONGATEWAYS" a NázevOperace = = "ApplicationGatewayPerformance" |
      | NetworkSecuritygroups | AzureDiagnostics &#124; kde ResourceType = = "NETWORKSECURITYGROUPS" |
 
-   + Pro každé pole, které má v názvu \_příponu s \_, d nebo \_g, změňte první znak na malá písmena.
-   + Pro každé pole, které má příponu \_o v názvu, jsou data rozdělena do jednotlivých polí na základě názvů vnořených polí.
+   + Pro každé pole, které má \_ v názvu příponu s, \_ d nebo \_ g, změňte první znak na malá písmena.
+   + Pro každé pole, které má příponu \_ o v názvu, jsou data rozdělena do jednotlivých polí na základě názvů vnořených polí.
 4. Odeberte řešení *Azure Networking Analytics (zastaralé)* .
    + Pokud používáte PowerShell, použijte`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 

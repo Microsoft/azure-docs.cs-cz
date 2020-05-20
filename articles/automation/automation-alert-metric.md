@@ -1,17 +1,17 @@
 ---
 title: Monitorování Azure Automation runbooků s upozorněními na metriky
-description: Tento článek vás provede monitorováním Azure Automation sad Runbook založených na metrikách.
+description: Tento článek popisuje, jak monitorovat Runbooky na základě metrik.
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: f288029bb35fe4e3c71db37a1de265edbcd913b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0d30e3d18ecb279e26731346bca7bb7c12943cb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310539"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685408"
 ---
-# <a name="monitoring-runbooks-with-metric-alerts"></a>Monitorování runbooků s upozorněními na metriky
+# <a name="monitor-runbooks-with-metric-alerts"></a>Monitorování runbooků s upozorněními metrik
 
 V tomto článku se dozvíte, jak vytvořit výstrahy na základě stavu dokončení runbooků.
 
@@ -67,7 +67,7 @@ V Azure Portal přejděte do svého účtu Automation. V části **monitorován�
 > [!NOTE]
 > Když přidáváte e-mailovou adresu do skupiny akcí, pošle se e-mail s oznámením, že se adresa přidala do skupiny akcí.
 
-## <a name="notification"></a>Oznámení
+## <a name="receive-notification"></a>Doručení oznámení
 
 Když je splněno kritérium výstrahy, Skupina akcí spustí definovanou akci. V tomto článku je třeba poslat e-mail. Následující obrázek je příkladem e-mailu, který obdržíte po aktivaci výstrahy:
 

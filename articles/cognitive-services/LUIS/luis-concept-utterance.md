@@ -2,17 +2,17 @@
 title: Dobrý příklad projevy-LUIS
 description: Výrok představuje zadání od uživatele, které má aplikace interpretovat. Shromážděte fráze, které budou uživatelé zadávat. Zahrňte projevy, který je stejný jako stejný objekt, ale je vytvořen jinak v délce slova a v umístění slova.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592861"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685267"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Vysvětlení, co je pro vaši aplikaci LUIS dobré projevy
 
-**Projevy** jsou vstupy od uživatele, který vaše aplikace potřebuje k interpretaci. Pro výuku LUIS k extrakci záměrů a entit z nich je důležité zachytit různé příklady projevy pro každý záměr. Aktivní učení nebo proces pokračování ve výukovém programu na nové projevy je nezbytný pro důležité informace, které LUIS poskytuje.
+**Projevy** jsou vstupy od uživatele, který vaše aplikace potřebuje k interpretaci. Pro výuku LUIS k extrakci záměrů a entit z nich je důležité zachytit různé příklady projevy pro každý záměr. Aktivní učení nebo proces pokračujícího učení s novým projevy je základem pro kurzy strojového učení, které LUIS poskytuje.
 
 Shromážděte projevyy, které se domníváte, že uživatelé vstoupí v úvahu. Zahrňte projevy, což znamená totéž, ale je tvořeno různými způsoby:
 
@@ -84,7 +84,7 @@ Nastavení verze nastavte prostřednictvím portálu LUIS, v části **Správa**
 
 ### <a name="word-forms"></a>Formuláře aplikace Word
 
-Normalizace **tvarů slov** ignoruje rozdíly v slovech, které přesahují kořen. Například slova `run` , `running` a se `runs` mění v závislosti na příkazu vhodné.
+Normalizace **tvarů slov** ignoruje rozdíly v slovech, které přesahují kořen.
 
 <a name="utterance-normalization-for-diacritics-and-punctuation"></a>
 

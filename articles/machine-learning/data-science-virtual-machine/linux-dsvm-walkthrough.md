@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 38088503fee016651a8c1c9a1f57ad4bbe102456
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257143"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682473"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Datové vědy s Data Science Virtual Machine pro Linux v Azure
 
@@ -29,9 +29,9 @@ V tomto návodu analyzujeme datovou sadu [spambase](https://archive.ics.uci.edu/
 Než budete moct použít DSVM pro Linux, musíte mít následující požadavky:
 
 * **Předplatné Azure**. Pokud chcete získat předplatné Azure, přečtěte si téma [Vytvoření bezplatného účtu Azure ještě dnes](https://azure.microsoft.com/free/).
-* [**Data Science Virtual Machine Linux**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Informace o zřizování virtuálního počítače najdete v tématu [zřízení Data Science Virtual Machine pro Linux](linux-dsvm-intro.md).
+* [**Data Science Virtual Machine Linux**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Informace o zřizování virtuálního počítače najdete v tématu [zřízení Data Science Virtual Machine pro Linux](linux-dsvm-intro.md).
 * V počítači je nainstalovaná [**X2Go**](https://wiki.x2go.org/doku.php) s otevřenou relací desktop Xfce. Další informace najdete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#x2go).
-* Chcete-li plynulejší posouvání, přepněte ve webovém prohlížeči DSVM na prohlížeč Firefox `gfx.xrender.enabled` příznaku. `about:config` [Další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte také nastavení `mousewheel.enable_pixel_scrolling` na `False`. [Další informace](https://support.mozilla.org/questions/981140).
+* Chcete-li plynulejší posouvání, přepněte ve webovém prohlížeči DSVM na prohlížeč Firefox `gfx.xrender.enabled` příznaku `about:config` . [Další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte také nastavení `mousewheel.enable_pixel_scrolling` na `False` . [Další informace](https://support.mozilla.org/questions/981140).
 * **Účet Azure Machine Learning**. Pokud ho ještě nemáte, zaregistrujte si nový účet na [domovské stránce Azure Machine Learning](https://azure.microsoft.com/free/services/machine-learning//).
 
 ## <a name="download-the-spambase-dataset"></a>Stáhnout datovou sadu spambase
@@ -64,11 +64,11 @@ mv headers spambaseHeaders.data
 
 Datová sada obsahuje několik typů statistik pro každý e-mail:
 
-* Sloupce jako **\_wordové\_frekvence** označují procento slov v e-mailu, které odpovídají *Wordu*. Pokud je například **\_slovo frekvence\_** nastavené na **1**, pak se v e-mailu *provedlo*1% všech slov.
-* Sloupce jako **char\_frekvence\_** znaků označují procento všech znaků v e-mailu, které jsou typu *char*.
-* **nejdelší\_\_délka\_běhu** v rámci kapitálu je nejdelší délka posloupnosti velkých písmen.
-* **Průměrná délka\_běhu pro velká\_písmena je průměrná délka všech velkých písmen.\_**
-* **hodnota\_\_délka\_běhu** na základě velkých písmen je celková délka všech sekvencí velkých písmen.
+* Sloupce jako **wordové \_ frekvence \_ _WORD_ ** označují procento slov v e-mailu, které odpovídají *Wordu*. Pokud je například **slovo \_ frekvence \_ ** nastavené na **1**, pak se v e-mailu *provedlo*1% všech slov.
+* Sloupce jako **char \_ frekvence \_ _CHAR_ ** znaků označují procento všech znaků v e-mailu, které jsou typu *char*.
+* ** \_ \_ \_ nejdelší délka běhu** v rámci kapitálu je nejdelší délka posloupnosti velkých písmen.
+* ** \_ \_ \_ Průměrná délka běhu pro velká** písmena je průměrná délka všech velkých písmen.
+* **hodnota \_ \_ délka běhu \_ ** na základě velkých písmen je celková délka všech sekvencí velkých písmen.
 * **spam** označuje, zda byl e-mail považován za spam nebo ne (1 = spam, 0 = Nevyžádaná pošta).
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>Prozkoumat datovou sadu pomocí jazyka R Open
@@ -313,17 +313,17 @@ predictSpam.service(1, 1, 1)
 
 ### <a name="jupyterhub"></a>JupyterHub
 
-Anaconda distribuce v DSVM se dodává s Jupyter Notebook, prostředím pro různé platformy pro sdílení kódu Python, R nebo Helena a analýzy. K Jupyter Notebook k dispozici prostřednictvím JupyterHub. Přihlašujete se pomocí místního uživatelského jména a hesla pro Linux na adrese\<https://DSVM DNS nebo IP adrese\>: 8000/. Všechny konfigurační soubory pro JupyterHub se nacházejí v/etc/jupyterhub.
+Anaconda distribuce v DSVM se dodává s Jupyter Notebook, prostředím pro různé platformy pro sdílení kódu Python, R nebo Helena a analýzy. K Jupyter Notebook k dispozici prostřednictvím JupyterHub. Přihlašujete se pomocí místního uživatelského jména a hesla pro Linux na adrese https:// \< DSVM DNS nebo IP adrese \> : 8000/. Všechny konfigurační soubory pro JupyterHub se nacházejí v/etc/jupyterhub.
 
 > [!NOTE]
-> Chcete-li použít Správce balíčků Pythonu ( `pip` prostřednictvím příkazu) z Jupyter notebook v aktuálním jádru, použijte tento příkaz v buňce kódu:
+> Chcete-li použít Správce balíčků Pythonu (prostřednictvím `pip` příkazu) z Jupyter notebook v aktuálním jádru, použijte tento příkaz v buňce kódu:
 >
 >   ```Python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
-> Chcete-li použít instalační program conda ( `conda` prostřednictvím příkazu) z Jupyter notebook v aktuálním jádru, použijte tento příkaz v buňce kódu:
+> Chcete-li použít instalační program conda (prostřednictvím `conda` příkazu) z Jupyter notebook v aktuálním jádru, použijte tento příkaz v buňce kódu:
 >
 >   ```Python
 >    import sys
@@ -368,7 +368,7 @@ Načtení a konfigurace datové sady:
 Prozkoumat data:
 
 1. Vyberte kartu **prozkoumat** .
-1. Chcete-li zobrazit informace o typech proměnných a některých souhrnných statistik, vyberte možnost **Souhrn** > **provést**.
+1. Chcete-li zobrazit informace o typech proměnných a některých souhrnných statistik, vyberte možnost **Souhrn**  >  **provést**.
 1. Chcete-li zobrazit další typy statistik o jednotlivých proměnných, vyberte další možnosti, například **Popis** nebo **základy**.
 
 Můžete také použít kartu **prozkoumat** k vygenerování přehlednéch ploch. Vykreslení histogramu dat:
@@ -421,7 +421,7 @@ Užitečnou funkcí Rattle je schopnost spustit několik metod strojového učen
 Po dokončení vytváření modelů vyberte kartu **protokol** . zobrazí se kód R, který byl spuštěn Rattle během vaší relace. Můžete vybrat tlačítko **exportovat** a uložit ho.
 
 > [!NOTE]
-> Aktuální verze Rattle obsahuje chybu. Chcete-li změnit skript nebo ho použít k opakování kroků později, je nutné před **#** *exportem tohoto protokolu* vložit znak... v textu protokolu.
+> Aktuální verze Rattle obsahuje chybu. Chcete-li změnit skript nebo ho použít k opakování kroků později, je nutné **#** před *exportem tohoto protokolu* vložit znak... v textu protokolu.
 
 ### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL a SQuirreL SQL
 
@@ -492,16 +492,16 @@ Teď se podívejme na data a spustíme některé dotazy pomocí SQuirreL SQL, co
 
 Začněte tím, že v nabídce **aplikace** otevřete SQuirreL SQL. Postup nastavení ovladače:
 
-1. Vyberte možnost **Windows** > **View Drivers**.
+1. Vyberte možnost **Windows**  >  **View Drivers**.
 1. Klikněte pravým tlačítkem na **PostgreSQL** a vyberte **Upravit ovladač**.
-1. Vyberte **Další cesta** > ke třídě**Přidat**.
+1. Vyberte **Další cesta ke třídě**  >  **Přidat**.
 1. Jako **název souboru**zadejte **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**.
 1. Vyberte **Open** (Otevřít).
 1. Vyberte možnost **seznam ovladačů**. Jako **název třídy**vyberte **org. PostgreSQL. Driver**a pak vyberte **OK**.
 
 Nastavení připojení k místnímu serveru:
 
-1. Vyberte možnost **Windows** > **View aliasy.**
+1. Vyberte možnost **Windows**  >  **View aliasy.**
 1. Kliknutím na **+** tlačítko vytvořte nový alias. Jako název nového aliasu zadejte **Nevyžádaná databáze**. 
 1. V případě **ovladače**vyberte **PostgreSQL**.
 1. Nastavte adresu URL na **JDBC: PostgreSQL://localhost/spam**.
@@ -513,7 +513,7 @@ Nastavení připojení k místnímu serveru:
 Spuštění některých dotazů:
 
 1. Vyberte kartu **SQL** .
-1. Do pole dotaz v horní části karty **SQL** zadejte základní dotaz, například `SELECT * from data;`.
+1. Do pole dotaz v horní části karty **SQL** zadejte základní dotaz, například `SELECT * from data;` .
 1. Spusťte dotaz stisknutím kombinace kláves CTRL + ENTER. Ve výchozím nastavení vrátí SQuirreL SQL prvních 100 řádků z dotazu.
 
 Existuje mnoho dalších dotazů, které můžete použít k prozkoumání těchto dat. Například způsob, jakým *se frekvence slova liší* mezi nevyžádanou poštou a Ham?

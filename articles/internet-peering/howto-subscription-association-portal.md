@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee4fb0708d437c21bea8e77864f210c42b5df019
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75912148"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683960"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Přidružení partnerského čísla ASN k předplatnému Azure s využitím portálu
 
@@ -55,22 +55,8 @@ Pomocí následujícího postupu zaregistrujte pro poskytovatele prostředků pa
     > ![Registrace dokončena](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>Vytvořit PeerAsn
-Můžete vytvořit nový prostředek PeerAsn pro přiřazení čísla autonomního systému (ASN) k předplatnému Azure. K předplatnému můžete přidružit více čísla ASN vytvořením **PeerAsn** pro každé číslo ASN, které potřebujete přidružit.
+Jako poskytovatel internetových služeb nebo poskytovatel internetového Exchange můžete vytvořit nový prostředek PeerAsn pro přiřazení čísla autonomního systému (ASN) k předplatnému Azure. K předplatnému můžete přidružit několik čísla asnů, a to tak, že přejdete na [stránku přidružit PeerASN](https://go.microsoft.com/fwlink/?linkid=2129592) pro každé číslo ASN, které potřebujete přidružit.
 
-1. Klikněte na **vytvořit prostředek** > **Zobrazit vše**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Hledat PeerAsn](./media/peerasn-seeall.png)
-
-1. Do vyhledávacího pole vyhledejte *PeerAsn* a stiskněte *ENTER* na klávesnici. Z výsledků klikněte na prostředek **PeerAsn** .
-
-    > [!div class="mx-imgBorder"]
-    > ![Spustit PeerAsn](./media/peerasn-launch.png)
-
-1. Po spuštění **PeerAsn** klikněte na **vytvořit**.
-
-    > [!div class="mx-imgBorder"]
-    > ![Vytvořit PeerAsn](./media/peerasn-create.png)
 
 1. Na stránce **přidružit partnerské číslo ASN** na kartě **základy** vyplňte pole, jak vidíte níže.
 

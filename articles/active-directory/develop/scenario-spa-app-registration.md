@@ -1,48 +1,81 @@
 ---
-title: Registrace jednostránkovéch aplikací – Microsoft Identity Platform | Azure
+title: Registrovat jednostránkové aplikace (SPA) | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se vytvářet jednostránkové aplikace (registrace aplikací).
 services: active-directory
-author: navyasric
+author: hahamil
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
-ms.author: nacanuma
+ms.date: 05/19/2020
+ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 6f690a8b3436a45d434ccad2bbaa7d2a1b0b76aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9dc5b446e2ab26ca43c2a300e1af1237353325a3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882144"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682392"
 ---
 # <a name="single-page-application-app-registration"></a>Jednostránkové aplikace: registrace aplikace
 
-Tato stránka vysvětluje konkrétní registraci aplikace pro jednostránkové aplikace (SPA).
+K registraci jednostránkové aplikace (SPA) na platformě Microsoft Identity proveďte následující kroky. Registrační postup se liší od MSAL. js 1,0, který podporuje tok implicitního udělení a MSAL. js 2,0, který podporuje tok autorizačního kódu s PKCE.
 
-Podle postupu [Zaregistrujte novou aplikaci s platformou Microsoft Identity](quickstart-register-app.md)a vyberte podporované účty pro vaši aplikaci. Scénář SPA může podporovat ověřování s účty ve vaší organizaci nebo v jakékoli organizaci a osobní účty Microsoft.
+## <a name="create-the-app-registration"></a>Vytvoření registrace aplikace
 
-V dalším kroku se dozvíte, jaké jsou konkrétní aspekty registrace aplikace, které se vztahují k aplikacím s jednou stránkou.
+Pro aplikace založené na MSAL. js 1,0 a 2,0 začněte provedením následujících kroků a vytvořte prvotní registraci aplikace.
 
-## <a name="register-a-redirect-uri"></a>Registrovat identifikátor URI pro přesměrování
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud má váš účet přístup k více klientům, v horní nabídce vyberte filtr **adresář + předplatné** a pak vyberte tenanta, který by měl obsahovat registraci aplikace, kterou chcete vytvořit.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. V části **Spravovat** vyberte **Registrace aplikací**.
+1. Vyberte **Nová registrace**, zadejte **název** aplikace a zvolte **podporované typy účtů** pro aplikaci. Nezadávejte **identifikátor URI přesměrování**. **NOT** Popis různých typů účtů najdete v tématu [Registrace nové aplikace pomocí Azure Portal](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
+1. Kliknutím na **Registrovat** vytvořte registraci aplikace.
 
-Implicitní tok odesílá tokeny v přesměrování na jednostránkovou aplikaci běžící ve webovém prohlížeči. Proto je důležité registrovat identifikátor URI přesměrování, kde vaše aplikace může získat tokeny. Zajistěte, aby identifikátor URI přesměrování přesně odpovídal identifikátoru URI vaší aplikace.
+V dalším kroku nakonfigurujte registraci aplikace pomocí **identifikátoru URI přesměrování** , abyste určili, kde má platforma Microsoft identity by měla přesměrovat klienta spolu s případnými tokeny zabezpečení. Použijte postup, který je vhodný pro verzi MSAL. js, kterou používáte v aplikaci:
 
-V [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2083908)přejdete do vaší registrované aplikace. Na stránce **ověřování** aplikace vyberte **webovou** platformu. Do pole **identifikátor URI pro přesměrování** zadejte hodnotu identifikátoru URI přesměrování vaší aplikace.
+- [MSAL. js 2,0 s tokem kódu ověřování](#redirect-uri-msaljs-20-with-auth-code-flow) (doporučeno)
+- [MSAL. js 1,0 s implicitním tokem](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="enable-the-implicit-flow"></a>Povolit implicitní tok
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Identifikátor URI pro přesměrování: MSAL. js 2,0 s tokem kódu ověřování
 
-Na stejné stránce **ověřování** musíte v části **Upřesnit nastavení**také povolit **implicitní udělení**. Pokud se vaše aplikace přihlašuje jenom uživatelům a získáváte tokeny ID, stačí zaškrtnout políčko **tokeny ID** .
+Pomocí těchto kroků přidejte identifikátor URI přesměrování pro aplikaci, která používá MSAL. js 2,0 nebo novější. MSAL. js 2.0 + podporuje tok autorizačního kódu s PKCE a CORS v reakci na [omezení souborů cookie třetích stran v prohlížeči](reference-third-party-cookies-spas.md). V MSAL. js 2.0 + není podporován tok implicitního udělení.
 
-Pokud vaše aplikace také potřebuje získat přístupové tokeny pro volání rozhraní API, ujistěte se, že je zaškrtnuto i políčko **přístupové tokeny** . Další informace najdete v tématu [tokeny ID](./id-tokens.md) a [přístupové tokeny](./access-tokens.md).
+1. V Azure Portal vyberte registraci aplikace, kterou jste vytvořili dříve v části [Vytvoření registrace aplikace](#create-the-app-registration).
+1. V části **Spravovat**vyberte **ověřování**a pak vyberte **Přidat platformu**.
+1. V části **webové aplikace**vyberte dlaždici **aplikace s jednou stránkou** .
+1. V části **identifikátory URI pro přesměrování**zadejte [identifikátor URI pro přesměrování](reply-url.md). Nevybírejte **buď** CheckBox v rámci **implicitního udělení**.
+1. Vyberte **Konfigurovat** a dokončete přidávání identifikátoru URI přesměrování.
 
-## <a name="api-permissions"></a>Oprávnění rozhraní API
+Právě jste dokončili registraci jednostránkové aplikace (SPA) a nakonfigurovali identifikátor URI pro přesměrování, ke kterému bude klient přesměrován, a budou odeslány všechny tokeny zabezpečení. Když nakonfigurujete identifikátor URI pro přesměrování pomocí dlaždice **jednostránkové aplikace** v podokně **Přidat platformu** , registrace vaší aplikace je nakonfigurovaná tak, aby podporovala tok autorizačního kódu s PKCE a CORS.
 
-Jednostránkové aplikace mohou volat rozhraní API jménem přihlášeného uživatele. Potřebují požádat o delegovaná oprávnění. Podrobnosti najdete v tématu [Přidání oprávnění pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Identifikátor URI pro přesměrování: MSAL. js 1,0 s implicitním tokem
+
+Pomocí těchto kroků přidejte identifikátor URI pro přesměrování pro jednostránkovou aplikaci, která používá MSAL. js 1,3 nebo starší, a implicitní tok udělení. Aplikace, které používají MSAL. js 1,3 nebo starší, nepodporují tok kódu ověřování.
+
+1. V Azure Portal vyberte registraci aplikace, kterou jste vytvořili dříve v části [Vytvoření registrace aplikace](#create-the-app-registration).
+1. V části **Spravovat**vyberte **ověřování**a pak vyberte **Přidat platformu**.
+1. V části **webové aplikace**vyberte dlaždici **aplikace s jednou stránkou** .
+1. V části **identifikátory URI pro přesměrování**zadejte [identifikátor URI pro přesměrování](reply-url.md).
+1. Povolit **implicitní tok**:
+    - Pokud se vaše aplikace přihlásí uživatelům, vyberte **tokeny ID**.
+    - Pokud vaše aplikace také potřebuje volat chráněné webové rozhraní API, vyberte **přístupové tokeny**. Další informace o těchto typech tokenů najdete v tématu [tokeny ID](id-tokens.md) a [přístupové tokeny](access-tokens.md).
+1. Vyberte **Konfigurovat** a dokončete přidávání identifikátoru URI přesměrování.
+
+Právě jste dokončili registraci jednostránkové aplikace (SPA) a nakonfigurovali identifikátor URI pro přesměrování, ke kterému bude klient přesměrován, a budou odeslány všechny tokeny zabezpečení. Výběrem jednoho nebo obou **tokenů ID** a **přístupových tokenů**jste povolili postup implicitního udělení.
+
+## <a name="note-about-authorization-flows"></a>Poznámka o autorizačních tocích
+
+Ve výchozím nastavení je registrace aplikace vytvořená pomocí stránky konfigurace platformy s jednou stránkou umožňuje tok autorizačního kódu. Aby bylo možné využít tento tok, musí vaše aplikace používat MSAL. js 2,0 nebo novější.
+
+Jak bylo zmíněno dříve, jednostránkové aplikace používající MSAL. js 1,3 jsou omezeny na implicitní tok udělení. Aktuální [osvědčené postupy OAuth 2,0](v2-oauth2-auth-code-flow.md) doporučují použití toku autorizačního kódu místo implicitního toku pro jednostránkové. Použití obnovovacích tokenů s omezeným počtem dob také pomůže přizpůsobit aplikaci na [moderní omezení ochrany osobních údajů souborů cookie v prohlížeči](reference-third-party-cookies-spas.md), jako je Safari ITP.
+
+Když všechny vaše produkční aplikace s jednou stránkou, které jsou reprezentované registrací aplikace, používají MSAL. js 2,0 a tok autorizačního kódu, zrušte v Azure Portal podokno **ověřování** registrace aplikace v podokně s nastavením implicitní udělení. Aplikace používající MSAL. js 1. x a implicitní tok mohou i nadále fungovat, ale pokud ponecháte povolený implicitní tok (zaškrtnuto).
 
 ## <a name="next-steps"></a>Další kroky
+
+Dále nakonfigurujte kód vaší aplikace tak, aby používal registraci aplikace, kterou jste vytvořili v předchozích krocích:.
 
 > [!div class="nextstepaction"]
 > [Konfigurace kódu aplikace](scenario-spa-app-configuration.md)

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdacee476fbc25154fe225700730f1b8f7f872ec
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677987"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682270"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro platformu Microsoft Identity Platform
 
@@ -25,7 +25,7 @@ Koncový bod Microsoft Identity Platform (v 2.0) podporuje ověřování pro cel
 
 ## <a name="the-basics"></a>Základy
 
-Každou aplikaci, která používá koncový bod Microsoft Identity Platform, je nutné zaregistrovat na novém [portálu registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908). Proces registrace aplikace shromažďuje a přiřazuje tyto hodnoty pro vaši aplikaci:
+Každou aplikaci, která používá koncový bod Microsoft Identity Platform, je nutné zaregistrovat v [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908)Azure Portal. Proces registrace aplikace shromažďuje a přiřazuje tyto hodnoty pro vaši aplikaci:
 
 * **ID aplikace (klienta)** , které jedinečně identifikuje vaši aplikaci
 * **Identifikátor URI pro přesměrování** , který můžete použít k přímému směrování odpovědí zpět do vaší aplikace
@@ -42,13 +42,19 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Jednostránkové aplikace (JavaScript)
 
-Mnohé moderní aplikace mají front-end jednostránkové aplikace, který je primárně napsán v JavaScriptu. Často je napsaný pomocí architektury, jako je například úhlová, reakce nebo Vue. Koncový bod platformy Microsoft identity podporuje tyto aplikace pomocí [implicitního toku OAuth 2,0](v2-oauth2-implicit-grant-flow.md).
+Mnohé moderní aplikace mají front-end samoobslužnou aplikaci vytvořenou hlavně v JavaScriptu, často i v rámci architektury, jako je například úhlová, reakce nebo Vue. Koncový bod platformy Microsoft identity podporuje tyto aplikace pomocí [toku autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md).
 
-V tomto toku aplikace obdrží tokeny přímo z koncového bodu autorizace platformy Microsoft identity a bez jakýchkoli výměn mezi servery. Veškerá logika ověřování a zpracování relace probíhá zcela v jazyce JavaScript, aniž by došlo k nadbytečnému přesměrování stránky.
+V tomto toku aplikace obdrží kód z `authorize` koncového bodu Microsoft Identity Platform a uplatní ho pro tokeny a aktualizace tokenů pomocí webových požadavků mezi weby. Obnovovací token vyprší každých 24 hodin a aplikace musí požádat o jiný kód.
 
-![Zobrazuje implicitní tok ověřování.](./media/v2-app-types/convergence-scenarios-implicit.svg)
+![Tok kódu pro aplikace SPA](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
 
-Pokud se chcete podívat na tento scénář v akci, zkuste v části [Začínáme s Microsoft Identity platformou začít](v2-overview.md#getting-started) jeden z ukázkových kódu aplikace na jedné stránce.
+Pokud se chcete podívat na tento scénář v akci, podívejte se na [kurz: přihlášení uživatelů a volání rozhraní API Microsoft Graph z JavaScript Spa pomocí toku kódu ověřování](tutorial-v2-javascript-auth-code.md).
+
+### <a name="authorization-code-flow-vs-implicit-flow"></a>Tok autorizačního kódu vs. implicitní tok
+
+Pro většinu historie OAuth 2,0 byl [implicitní tok](v2-oauth2-implicit-grant-flow.md) doporučeným způsobem pro vytváření jednostránkovéch aplikací. S odebráním [souborů cookie třetích stran](reference-third-party-cookies-spas.md) a [větší pozornost](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14) placeným proti problémům se zabezpečením v rámci implicitního toku jsme přešli na tok autorizačního kódu pro jednostránkové aplikace.
+
+Aby se zajistila kompatibilita vaší aplikace v Safari a dalších prohlížečích s vědomím ochrany osobních údajů, už nedoporučujeme používat implicitní tok a místo toho doporučujeme tok autorizačního kódu.
 
 ## <a name="web-apps"></a>Webové aplikace
 
@@ -77,7 +83,8 @@ Identitu uživatele můžete zajistit ověřením tokenu ID pomocí veřejného 
 
 Pokud chcete tento scénář zobrazit v akci, zkuste jednu z ukázek přihlašovacích kódů webové aplikace v části [Začínáme s platformou Microsoft Identity](v2-overview.md#getting-started) .
 
-Kromě jednoduchého přihlašování může aplikace webového serveru vyžadovat přístup k jiné webové službě, jako je například REST API. V takovém případě se aplikace webového serveru zavazuje do kombinovaného toku OpenID Connect a OAuth 2,0 pomocí [toku autorizačního kódu oauth 2,0](active-directory-v2-protocols.md). Další informace o tomto scénáři najdete v článku [Začínáme s webovými aplikacemi a webovými rozhraními API](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+Kromě jednoduchého přihlašování může aplikace webového serveru vyžadovat přístup k jiné webové službě, jako je například REST API. V takovém případě se aplikace webového serveru zavazuje do kombinovaného toku OpenID Connect a OAuth 2,0 pomocí [toku autorizačního kódu oauth 2,0](v2-oauth2-auth-code-flow.md). Další informace o tomto scénáři najdete v článku [Začínáme s webovými aplikacemi a webovými rozhraními API](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+
 
 ## <a name="web-apis"></a>Webová rozhraní API
 
@@ -120,3 +127,7 @@ V tomto toku aplikace komunikuje přímo s `/token` koncovým bodem a získá p�
 ![Zobrazuje tok ověřování aplikace démona.](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
 Pokud chcete vytvořit aplikaci démona, přečtěte si [dokumentaci k přihlašovacím údajům klienta](v2-oauth2-client-creds-grant-flow.md)nebo vyzkoušejte [ukázkovou aplikaci .NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+
+## <a name="next-steps"></a>Další kroky
+
+Teď, když jste obeznámeni s typy aplikací, které podporuje platforma Microsoft identity, se dozvíte víc o protokolech [OAuth 2,0 a OpenID Connect](active-directory-v2-protocols.md) , abyste získali informace o součástech protokolu používaných různými scénáři.

@@ -5,12 +5,12 @@ description: Naučte se zabezpečit provoz, který se zachází do lusků, pomoc
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: ca0b6d4acd48dde0ea381ab37080fb6af1fb936c
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 7e494c6ac89289a9b271d16b871b8a22e1ca9e6a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854227"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683204"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení provozu mezi lusky pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak nainstalovat modul zásad sítě a vytvořit z
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 > [!TIP]
 > Pokud jste ve verzi Preview použili funkci síťové zásady, doporučujeme [vytvořit nový cluster](#create-an-aks-cluster-and-enable-network-policy).
@@ -55,9 +55,9 @@ Obě implementace používají Linux *softwaru iptables* k vykonání zadaných 
 | Podporované platformy                      | Linux                      | Linux                       |
 | Podporované síťové možnosti             | CNI Azure                  | Azure CNI a kubenet       |
 | Dodržování předpisů pomocí specifikace Kubernetes | Všechny podporované typy zásad |  Všechny podporované typy zásad |
-| Další funkce                      | Žádné                       | Model rozšířených zásad skládající se z globálních síťových zásad, globální síťové sady a koncového bodu hostitele. Další informace o použití rozhraní `calicoctl` příkazového řádku ke správě těchto rozšířených funkcí naleznete v tématu [calicoctl User reference][calicoctl]. |
+| Další funkce                      | Žádné                       | Model rozšířených zásad skládající se z globálních síťových zásad, globální síťové sady a koncového bodu hostitele. Další informace o použití rozhraní příkazového `calicoctl` řádku ke správě těchto rozšířených funkcí naleznete v tématu [calicoctl User reference][calicoctl]. |
 | Podpora                                  | Podporováno technickou podporou a technickým týmem pro Azure | Podpora komunity Calico. Další informace o další placené podpoře najdete v tématu [Možnosti podpory pro Project Calico][calico-support]. |
-| protokolování                                  | Pravidla přidaná/Odstraněná v softwaru iptables se protokolují na všech hostitelích pod */var/log/Azure-npm.log* . | Další informace najdete v tématu [protokoly komponent Calico][calico-logs] . |
+| Protokolování                                  | Pravidla přidaná/Odstraněná v softwaru iptables se protokolují na všech hostitelích pod */var/log/Azure-npm.log* . | Další informace najdete v tématu [protokoly komponent Calico][calico-logs] . |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Vytvoření clusteru AKS a povolení zásad sítě
 
@@ -81,7 +81,7 @@ Následující vzorový skript:
 * Vytvoří instanční objekt služby Azure Active Directory (Azure AD) pro použití s clusterem AKS.
 * Přiřadí oprávnění *přispěvatele* pro objekt služby Cluster AKS ve virtuální síti.
 * Vytvoří v definované virtuální síti cluster AKS a povolí zásady sítě.
-    * Použije se možnost Zásady sítě *Azure* . Pokud chcete místo toho použít Calico jako zásadu sítě, použijte `--network-policy calico` parametr. Poznámka: Calico lze použít s buď `--network-plugin azure` nebo. `--network-plugin kubenet`
+    * Použije se možnost zásady _sítě Azure_ . Pokud chcete místo toho použít Calico jako zásadu sítě, použijte `--network-policy calico` parametr. Poznámka: Calico lze použít s buď `--network-plugin azure` nebo `--network-plugin kubenet` .
 
 Všimněte si, že místo použití instančního objektu můžete pro oprávnění použít spravovanou identitu. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
 
@@ -146,7 +146,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>Odepřít veškerý příchozí provoz do pod
 
-Před definováním pravidel pro povolení konkrétního síťového provozu vytvořte nejprve zásadu sítě, která zamítne veškerý provoz. Tato zásada nabízí výchozí bod, který začíná na seznam povolených přenosů. Můžete také jasně vidět, že při použití zásad sítě dojde k přerušení provozu.
+Před definováním pravidel pro povolení konkrétního síťového provozu vytvořte nejprve zásadu sítě, která zamítne veškerý provoz. Tato zásada vám umožní začít vytvářet seznam povolených dat jenom pro požadovaný provoz. Můžete také jasně vidět, že při použití zásad sítě dojde k přerušení provozu.
 
 V případě ukázkových prostředí aplikace a pravidel přenosů nejprve vytvoříme obor názvů s názvem *vývoj* pro spuštění příkladu lusků:
 
@@ -207,7 +207,7 @@ spec:
   ingress: []
 ```
 
-[https://shell.azure.com](https://shell.azure.com) V prohlížeči otevřete Azure Cloud Shell.
+[https://shell.azure.com](https://shell.azure.com)V prohlížeči otevřete Azure Cloud Shell.
 
 Použijte zásady sítě pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název manifestu YAML:
 
@@ -474,9 +474,9 @@ Další informace o zásadách najdete v tématu [zásady sítě Kubernetes][kub
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/reference/calicoctl/
 [calico-support]: https://www.tigera.io/tigera-products/calico/
-[calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
+[calico-logs]: https://docs.projectcalico.org/maintenance/troubleshoot/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->

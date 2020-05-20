@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s agentem Windows Update v Azure Automation Update Management
-description: Naučte se řešit problémy s agentem Windows Update pomocí Update Management řešení.
+title: Řešení potíží s agentem Windows Update v Azure Automation
+description: Tento článek popisuje, jak řešit problémy s agentem Windows Update během Update Management a řešit z něj problémy.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e9af9c6472f49ebccd36e8d73688636c98918ff1
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996443"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680828"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Řešení potíží s agentem Windows Update
 
-Může to mít spoustu důvodů, proč se Váš počítač v Update Management nezobrazuje jako připravený (v pořádku). Chcete-li zjistit základní problém, můžete ověřit stav agenta Windows Hybrid Runbook Worker. Níže jsou uvedené tři stavy připravenosti pro počítač:
+Může to mít spoustu důvodů, proč se Váš počítač během nasazování Update Management nezobrazuje jako připravený (v pořádku). Chcete-li zjistit základní problém, můžete ověřit stav agenta Windows Hybrid Runbook Worker. Níže jsou uvedené tři stavy připravenosti pro počítač:
 
 * Připraveno: Hybrid Runbook Worker se nasadí a poslední se zobrazila před méně než jednou hodinou.
 * Odpojeno: Hybrid Runbook Worker se nasazuje a naposledy se zobrazilo před jednou hodinou.
-* Nenakonfigurováno: Hybrid Runbook Worker se nenašlo nebo nedokončilo registraci.
+* Nenakonfigurováno: Hybrid Runbook Worker se nenajde nebo nedokončilo nasazení.
 
 > [!NOTE]
 > Mezi zobrazením Azure Portal a aktuálním stavem počítače může být mírné zpoždění.
@@ -34,7 +34,7 @@ Tento článek popisuje, jak spustit Poradce při potížích pro počítače Az
 
 ## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 
-U počítačů Azure můžete spustit stránku Poradce při potížích s agentem aktualizace kliknutím na odkaz **Poradce při potížích** pod sloupcem **připravenosti agenta aktualizace** na portálu. V případě počítačů mimo Azure se v tomto článku zobrazí odkaz. Přečtěte si [pokyny offline](#troubleshoot-offline) k řešení potíží s počítačem mimo Azure.
+U počítačů Azure můžete spustit stránku Poradce při potížích s agentem aktualizace kliknutím na odkaz **Poradce při potížích** pod sloupcem **připravenosti agenta aktualizace** na portálu. V případě počítačů mimo Azure se v tomto článku zobrazí odkaz. Řešení potíží s počítačem mimo Azure najdete v tématu věnovaném [řešení potíží offline](#troubleshoot-offline) .
 
 ![Snímek obrazovky se seznamem Update Management virtuálních počítačů](../media/update-agent-issues/vm-list.png)
 
@@ -89,7 +89,7 @@ Konfigurace proxy serveru a brány firewall musí umožňovat, aby agent Hybrid 
 
 ### <a name="monitoring-agent-service-status"></a>Stav služby agenta monitorování
 
-Tato kontrolu určuje, zda je na počítači spuštěn Agent`healthservice`Log Analytics pro systém Windows (). Další informace o řešení potíží se službou najdete v tématu [agent Log Analytics pro Windows není spuštěný](hybrid-runbook-worker.md#mma-not-running).
+Tato kontrolu určuje, zda je na počítači spuštěn Agent Log Analytics pro systém Windows ( `healthservice` ). Další informace o řešení potíží se službou najdete v tématu [agent Log Analytics pro Windows není spuštěný](hybrid-runbook-worker.md#mma-not-running).
 
 Chcete-li přeinstalovat agenta Log Analytics pro systém Windows, přečtěte si téma [instalace agenta pro systém Windows](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
@@ -110,7 +110,7 @@ Při kontrole přístupu ke složce kryptografických souborů se určuje, jestl
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Řešení potíží offline
 
-Poradce při potížích můžete použít Hybrid Runbook Worker v režimu offline spuštěním skriptu místně. Získejte následující skript z Galerie prostředí PowerShell: [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Pokud chcete skript spustit, musíte mít nainstalovanou verzi WMF 4,0 nebo novější. Pokud si chcete stáhnout nejnovější verzi PowerShellu, přečtěte si téma [instalace různých verzí PowerShellu](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+Poradce při potížích s Hybrid Runbook Worker můžete použít offline spuštěním skriptu místně. Získejte následující skript z Galerie prostředí PowerShell: [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Pokud chcete skript spustit, musíte mít nainstalovanou verzi WMF 4,0 nebo novější. Pokud si chcete stáhnout nejnovější verzi PowerShellu, přečtěte si téma [instalace různých verzí PowerShellu](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 
 Výstup tohoto skriptu vypadá jako v následujícím příkladu:
 
@@ -208,4 +208,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>Další kroky
 
-[Řešení potíží s procesy Hybrid Runbook Worker](hybrid-runbook-worker.md)
+[Řešení potíží s Hybrid Runbook Worker](hybrid-runbook-worker.md).

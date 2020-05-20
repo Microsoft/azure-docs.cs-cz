@@ -4,19 +4,19 @@ description: Vytvořte entity pro extrakci klíčových dat z uživatelských pr
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 1665f1ef8a868b011e9e4de8562aeda9edef5ce2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585568"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684549"
 ---
 # <a name="pattern-syntax"></a>Syntaxe vzoru
 
 Syntaxe vzoru je šablona pro utterance. Šablona by měla obsahovat slova a entity, které chcete porovnat, a také slova a [interpunkční znaménka](luis-reference-application-settings.md#punctuation-normalization) , která chcete ignorovat. Nejedná **se o regulární** výraz.
 
 > [!CAUTION]
-> Vzory zahrnují jenom nadřazené entity, které se naučily počítač, ne subentity.
+> Vzory zahrnují jenom nadřazené entity strojového učení, ne subentity.
 
 Entity v vzorcích jsou obklopené složenými závorkami `{}` . Vzory mohou zahrnovat entity a entity s rolemi. [Vzor. any](luis-concept-entity-types.md#patternany-entity) je entita, která se používá pouze ve vzorcích.
 
@@ -56,8 +56,8 @@ Kombinace **seskupení** s **volitelnou** syntaxí má limit 3 úrovní vnořen�
 
 |Povoleno|Příklad|
 |--|--|
-|Yes|([(Test1 &#x7c; test2)] &#x7c; test3)|
-|No|([([test1] &#x7c; test2)] &#x7c; test3)|
+|Ano|([(Test1 &#x7c; test2)] &#x7c; test3)|
+|Ne|([([test1] &#x7c; test2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Omezení vnořování pro skupiny s syntaxí or-Lo
 
@@ -65,8 +65,8 @@ Kombinace **seskupení** se syntaxí **or-Lo** má omezení 2 svislé pruhy.
 
 |Povoleno|Příklad|
 |--|--|
-|Yes|(Test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
-|No|(Test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+|Ano|(Test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
+|Ne|(Test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxe pro přidání entity do šablony vzoru
 Chcete-li přidat entitu do šablony vzoru, uzavřete název entity do složených závorek, například `Who does {Employee} manage?` .

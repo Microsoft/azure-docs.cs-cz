@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37935d229f62028e074f92bb6f8b70b9eebd87dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565498"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685199"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Sdílení účtů s Azure AD
 
@@ -62,13 +62,13 @@ Funkce Azure AD, které umožňují sdílení účtů, zahrnují:
 * [Řídicí panel a sestavy využití aplikací](../active-directory-passwords-get-insights.md)
 * Portál pro přístup koncových uživatelů
 * [Proxy aplikace](../manage-apps/application-proxy.md)
-* [Tržiště služby Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/)
+* [Tržiště služby Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
 
 ## <a name="sharing-an-account"></a>Sdílení účtu
 
 Pokud chcete ke sdílení účtu použít Azure AD, musíte:
 
-* Přidání [Galerie](https://azure.microsoft.com/marketplace/active-directory/) aplikačních aplikací nebo [vlastní aplikace](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
+* Přidání [Galerie](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) aplikačních aplikací nebo [vlastní aplikace](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
 * Konfigurace aplikace pro jednotné přihlašování k heslům (SSO)
 * Použijte [přiřazení na základě skupin](groups-saasapps.md) a vyberte možnost zadání sdíleného přihlašovacího údaje.
 

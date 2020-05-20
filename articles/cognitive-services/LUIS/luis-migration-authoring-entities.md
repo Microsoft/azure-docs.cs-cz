@@ -1,24 +1,24 @@
 ---
-title: Migrace na počítač se zjištěnou entitou V3
-description: Vytváření obsahu V3 poskytuje jeden nový typ entity, počítačově získanou entitu a možnost přidávat relace do uživatelsky získané entity a dalších entit nebo funkcí aplikace.
+title: Migrace na verzi V3 – entita strojového učení
+description: Vytváření obsahu V3 poskytuje jeden nový typ entity, entitu strojového učení, společně s možností přidávat relace do entity strojového učení a dalších entit nebo funkcí aplikace.
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 79fbe261f597f55ca6caff468d4d5c154a273c42
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: aaa5472f25a5eca5ceadf979c57a83874ce4cb6e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593218"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684591"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migrace na entitu pro vytváření obsahu V3
 
-Vytváření obsahu V3 poskytuje jeden nový typ entity, počítačově získanou entitu a možnost přidávat relace do uživatelsky získané entity a dalších entit nebo funkcí aplikace.
+Vytváření obsahu V3 poskytuje jeden nový typ entity, entitu strojového učení, společně s možností přidávat relace do entity strojového učení a dalších entit nebo funkcí aplikace.
 
 ## <a name="entities-are-decomposable-in-v3"></a>Entity jsou v v3.
 
-Entity vytvořené pomocí rozhraní API pro vytváření obsahu v3, a to buď pomocí [rozhraní API](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) nebo s portálem, umožňují sestavit model vrstvené entity s nadřazenými a podřízenými objekty. Nadřazený objekt je známý jako **entita získaná počítačem** a podřízené položky jsou označovány jako **subentity** dané entity počítač, který se naučil.
+Entity vytvořené pomocí rozhraní API pro vytváření obsahu v3, a to buď pomocí [rozhraní API](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) nebo s portálem, umožňují sestavit model vrstvené entity s nadřazenými a podřízenými objekty. Nadřazený objekt je známý jako **entita strojového učení** a podřízené objekty jsou označovány jako **subentity** pro danou entitu počítač s učením.
 
-Každá podentita je také entitou získanou počítačem, ale s přidanými možnostmi konfigurace funkcí.
+Každá podentita je také entitou strojového učení, ale s přidanými možnostmi konfigurace funkcí.
 
 * **Požadované funkce** jsou pravidla, která zaručují, že entita je extrahována, když odpovídá funkci. Pravidlo je definováno podle požadované funkce pro model:
     * [Předem vytvořená entita](luis-reference-prebuilt-entities.md)
@@ -54,36 +54,36 @@ Při migraci zvažte následující skutečnosti v plánu migrace:
     * Entity
         * Hierarchická entita
         * Složená entita
-    * Role – role se dají použít jenom u entity, které se naučila počítačová (nadřazená). Role se nedají použít u subentit.
+    * Role – role se dají použít jenom pro entitu strojového učení (nadřazená). Role se nedají použít u subentit.
     * Dávkové testy a vzory, které používají hierarchické a složené entity
 
-Při návrhu plánu migrace ponechte čas na kontrolu finálních entit zjištěných počítačem, až budou všechny hierarchické a složené entity migrovány. I když bude přímá migrace fungovat, po provedení změny a kontrole výsledků testu dávky a kódu JSON předpovědi může více Unified JSON vést k provádění změn, takže konečné informace doručené do aplikace na straně klienta jsou uspořádány jinak. To se podobá refaktorování kódu a měla by být zpracována stejným procesem revize, jakou vaše organizace používá.
+Při návrhu plánu migrace ponechte čas na kontrolu konečných entit strojového učení po migraci všech hierarchických a složených entit. I když bude přímá migrace fungovat, po provedení změny a kontrole výsledků testu dávky a kódu JSON předpovědi může více Unified JSON vést k provádění změn, takže konečné informace doručené do aplikace na straně klienta jsou uspořádány jinak. To se podobá refaktorování kódu a měla by být zpracována stejným procesem revize, jakou vaše organizace používá.
 
 Pokud pro model v2 nepoužijete testy pro dávku a v rámci migrace migrujete testy dávky na model v3, nebudete moct ověřit, jak bude migrace ovlivnit výsledky předpovědi koncového bodu.
 
 ## <a name="migrating-from-v2-entities"></a>Migrace z entit v2
 
-Jak se chystáte přejít k modelu vytváření obsahu v3, měli byste zvážit, jak přejít na počítačově získanou entitu a její subentity a funkce.
+Jak se chystáte přejít k modelu vytváření obsahu v3, měli byste zvážit, jak přejít na entitu strojového učení a jejích podentit a funkcí.
 
 V následující tabulce jsou poznámy entity, které je třeba migrovat z verze V2 na návrh entity v3.
 
 |Typ entity pro vytváření obsahu V2|Typ entity pro vytváření obsahu V3|Příklad|
 |--|--|--|
 |Složená entita|Entita zjištěná počítačem|[Víc se uč](#migrate-v2-composite-entity)|
-|Hierarchická entita|Role entity naučila počítač|[Víc se uč](#migrate-v2-hierarchical-entity)|
+|Hierarchická entita|role entity strojového učení|[Víc se uč](#migrate-v2-hierarchical-entity)|
 
 ## <a name="migrate-v2-composite-entity"></a>Migrace složené entity v2
 
-Každý podřízený objekt v2 složený z nich by měl být reprezentován podentitou entity, která se naučila počítač. Pokud je složená podřízená položka předem sestavený, regulární výraz nebo entita seznamu, měla by být použita jako požadovaná funkce v subentitě.
+Každý podřízený objekt v2 složený z nich by měl být reprezentován podentitou entity strojového učení v3. Pokud je složená podřízená položka předem sestavený, regulární výraz nebo entita seznamu, měla by být použita jako požadovaná funkce v subentitě.
 
-Co je potřeba zvážit při plánování migrace složené entity na konkrétní počítačově učenou entitu:
+Co je potřeba zvážit při plánování migrace složené entity na entitu strojového učení:
 * Podřízené entity se nedají používat ve vzorcích.
 * Podřízené entity už nejsou sdílené.
 * Podřízené entity musí být označeny, pokud se používají pro nestrojové učení.
 
 ### <a name="existing-features"></a>Existující funkce
 
-Libovolný seznam frází, který se používá ke zvýšení množství slov v složené entitě, by měl být použit jako funkce pro entitu (nadřazenou) (nadřazenou), entitu (podřízenou) nebo záměr (Pokud se seznam frází vztahuje pouze na jeden záměr). Naplánujte přidání funkce do entity, kde by se měla výrazně zvýšit. Nepřiřazujte funkci obecně na počítačově získanou (nadřazenou) entitu, pokud bude mnohem významně zvyšovat předpověď dílčí entity (podřízená).
+Libovolný seznam frází, který se používá ke zvýšení množství slov v složené entitě, by měl být použit jako součást pro entitu Machine Learning (nadřazená), entitu subentity (podřízeného) nebo záměr (Pokud se seznam frází vztahuje pouze na jeden záměr). Naplánujte přidání funkce do entity, kde by se měla výrazně zvýšit. Nepřiřazujte funkci obecně k entitě strojového učení (nadřazeným), pokud bude nejdůležitějším způsobem vyzvyšovat předpověď dílčí entity (podřízená).
 
 ### <a name="new-features"></a>Nové funkce
 
@@ -106,7 +106,7 @@ Následující tabulka ukazuje migraci:
 
 |Modely v2|Modely V3|
 |--|--|
-|Nadřazená entita součásti s názvem`Order`|Entita získaná nadřazeným počítačem s názvem`Order`|
+|Nadřazená entita součásti s názvem`Order`|Nadřazená entita-Machine-Learning s názvem`Order`|
 |DatetimeV2 sestavené jako podřízené|* Migruje předem vytvořenou entitu na novou aplikaci.<br>* Do nadřazeného objektu přidejte požadovanou funkci pro předem sestavené datetimeV2.|
 |Entita podřízeného seznamu pro toppings|* Migrujte entitu seznamu do nové aplikace.<br>* Potom pro entitu seznam přidejte požadovanou funkci pro nadřazenou položku.|
 
@@ -116,7 +116,7 @@ Následující tabulka ukazuje migraci:
 V rámci vytváření obsahu V2 se hierarchická entita poskytla před rolemi existujícími v LUIS. Oba sloužily stejný účel extrakce entit na základě použití kontextu. Pokud máte hierarchické entity, můžete je představit jako jednoduché entity s rolemi.
 
 Při vytváření obsahu V3:
-* Roli lze použít u entity, kterou se naučila počítačová (nadřazená).
+* Role se dá použít pro entitu strojového učení (nadřazená).
 * Roli nelze použít pro žádné subentity.
 
 Tato entita je pouze příkladem. Vaše vlastní migrace entit může vyžadovat další okolnosti.
@@ -132,7 +132,7 @@ Následující tabulka ukazuje migraci:
 
 |Modely v2|Modely V3|
 |--|--|
-|Nadřazená entita součásti s názvem`Order`|Entita získaná nadřazeným počítačem s názvem`Order`|
+|Nadřazená entita součásti s názvem`Order`|Nadřazená entita-Machine-Learning s názvem`Order`|
 |Podřízená entita s původní a konečnou pizzaou Topping|* Do `Order` každého Topping přidejte roli.|
 
 ## <a name="api-change-constraint-replaced-with-required-feature"></a>Omezení změn rozhraní API nahrazené požadovanou funkcí

@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecd49b340810f92727f0fc98f84031c8cbf68179
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481173"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680137"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
@@ -30,7 +30,7 @@ Velké organizace, které zdůrazňují zabezpečení chcete přejít ke cloudov
 
 V případě omezení tenanta můžou organizace určovat seznam tenantů, ke kterým mají uživatelé přístup. Azure AD pak udělí přístup jenom těmto povoleným klientům.
 
-Tento článek se zaměřuje na omezení klientů pro Office 365, ale tato funkce by měla fungovat s libovolnou cloudovou aplikací SaaS, která používá moderní ověřovací protokoly se službou Azure AD pro jednotné přihlašování. Pokud používáte aplikace SaaS s jiným klientem Azure AD z tenanta používaného sadou Office 365, ujistěte se, že jsou povoleni všichni povinní klienti. Další informace o cloudových aplikacích SaaS najdete na [webu Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
+Tento článek se zaměřuje na omezení klientů pro Office 365, ale tato funkce by měla fungovat s libovolnou cloudovou aplikací SaaS, která používá moderní ověřovací protokoly se službou Azure AD pro jednotné přihlašování. Pokud používáte aplikace SaaS s jiným klientem Azure AD z tenanta používaného sadou Office 365, ujistěte se, že jsou povoleni všichni povinní klienti. Další informace o cloudových aplikacích SaaS najdete na [webu Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -74,7 +74,7 @@ Pro každý příchozí požadavek do login.microsoftonline.com, login.microsoft
 
 Hlavičky by měly obsahovat následující prvky:
 
-- Pro *omezení přístupu k tenantovi*použijte hodnotu \<povoleného seznamu\>klientů, což je seznam klientů oddělených čárkami, kterým chcete povolit přístup uživatelům. K identifikaci tenanta v tomto seznamu se dá použít každá doména, která je zaregistrovaná v tenantovi. Chcete-li například povolit přístup k klientům společnosti Contoso i Fabrikam, bude dvojice název/hodnota vypadat takto: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- Pro *omezení přístupu k tenantovi*použijte hodnotu \< povoleného seznamu klientů \> , což je seznam klientů oddělených čárkami, kterým chcete povolit přístup uživatelům. K identifikaci tenanta v tomto seznamu se dá použít každá doména, která je zaregistrovaná v tenantovi. Chcete-li například povolit přístup k klientům společnosti Contoso i Fabrikam, bude dvojice název/hodnota vypadat takto: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - Pro *kontext omezení přístupu*použijte hodnotu jednoho ID adresáře, která deklaruje, který tenant nastavuje omezení tenanta. Chcete-li například deklarovat contoso jako tenanta, který nastaví zásady omezení tenanta, bude dvojice název/hodnota vypadat takto: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
@@ -119,7 +119,7 @@ Podobně jako u jiných sestav v Azure Portal můžete použít filtry k určen�
 - **Podrobnosti** o ověřování MFA (podrobnosti o vícefaktorového ověřování)
 - **Výsledek MFA**
 - **IP adresa**
-- **Služba**
+- **Klient**
 - **Jmen**
 - **Umístění**
 - **ID cílového tenanta**
@@ -155,7 +155,7 @@ Fiddler je bezplatný proxy server pro ladění, který se dá použít k zachyc
 
    1. V nástroji Fiddler webového ladicího programu vyberte nabídku **pravidla** a vyberte **přizpůsobit pravidla...** pro otevření souboru CustomRules.
 
-   2. Na začátek `OnBeforeRequest` funkce přidejte následující řádky. Nahraďte \<doménu\> tenanta doménou registrovanou pro vašeho tenanta (například `contoso.onmicrosoft.com`). Nahraďte \<ID\> adresáře identifikátorem GUID Azure AD vašeho tenanta.
+   2. Na začátek funkce přidejte následující řádky `OnBeforeRequest` . Nahraďte \< doménu tenanta \> doménou registrovanou pro vašeho tenanta (například `contoso.onmicrosoft.com` ). Nahraďte \< ID adresáře \> identifikátorem GUID Azure AD vašeho tenanta.
 
       ```JScript.NET
       if (
@@ -169,7 +169,7 @@ Fiddler je bezplatný proxy server pro ladění, který se dá použít k zachyc
       }
       ```
 
-      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Příklad:
+      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Například:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 

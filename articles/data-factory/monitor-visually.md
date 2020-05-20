@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.openlocfilehash: 40b1b8d040c4b3ea76372920f88551fba35c5f26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: 01a4cd172b699cef009197d1fce1d5bae62f2925
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419438"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680600"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Vizuálně monitorovat Azure Data Factory
 
@@ -132,6 +132,21 @@ Můžete si také zobrazit historii opětovného spuštění určitého běhu ka
 
 ![Zobrazení historie spuštění kanálu](media/monitor-visually/rerun-history-image2.png)
 
+## <a name="monitor-consumption"></a>Monitorovat spotřebu
+
+Prostředky spotřebované spuštěním kanálu můžete zobrazit kliknutím na ikonu spotřebovat vedle spuštění. 
+
+![Monitorovat spotřebu](media/monitor-visually/monitor-consumption-1.png)
+
+Kliknutím na ikonu otevřete sestavu využití prostředků používaných tímto spuštěním kanálu. 
+
+![Monitorovat spotřebu](media/monitor-visually/monitor-consumption-2.png)
+
+Tyto hodnoty můžete připojit do [spuštění kanálu Azure Price calcula. Hat. Další informace o cenách Azure Data Factory najdete v tématu [Principy cen](pricing-concepts.md).
+
+> [!NOTE]
+> Tyto hodnoty vracené cenové kalkulačkou jsou odhad. Neodráží přesnou částku, kterou se vám bude účtovat Azure Data Factory 
+
 ## <a name="gantt-views"></a>Zobrazení Ganttova diagramu
 
 Použijte zobrazení Ganttova diagramu k rychlé vizualizaci vašich kanálů a spuštění aktivit.
@@ -151,9 +166,9 @@ Vyberte ikonu **informace** v levém dolním rohu. Pak vyberte **prohlídky s as
 
 ![Řízená prohlídky](media/monitor-visually/guided-tours.png)
 
-## <a name="alerts"></a>Výstrahy
+## <a name="alerts"></a>Upozornění
 
-Upozornění na podporované metriky můžete vyvolávat v Data Factory. Začněte tím, že vyberete **monitorovat** > **výstrahy & metriky** na stránce monitorování Data Factory.
+Upozornění na podporované metriky můžete vyvolávat v Data Factory. Začněte tím, že vyberete **monitorovat**  >  **výstrahy & metriky** na stránce monitorování Data Factory.
 
 ![Stránka monitorování objektu pro vytváření dat](media/monitor-visually/alerts01.png)
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: dad9bb40161a2adc8654f50de5c1d876e3344e59
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0c81f529dfc959916ff7c102b2b903a808b9672
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598798"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681904"
 ---
 # <a name="drawing-package-requirements"></a>Požadavky na balíček pro vykreslování
 
-[Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/data/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Tento článek popisuje požadavky balíčku pro vykreslování pro rozhraní API pro převod. Pokud chcete zobrazit ukázkový balíček, můžete si stáhnout vzorový [balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
+[Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Tento článek popisuje požadavky balíčku pro vykreslování pro rozhraní API pro převod. Pokud chcete zobrazit ukázkový balíček, můžete si stáhnout vzorový [balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -25,7 +25,7 @@ Balíček pro kreslení obsahuje kresby uložené ve formátu DWG, což je nativ
 
 Můžete zvolit libovolný software CAD pro vytváření kreseb v balíčku pro kreslení.  
 
-[Služba konverze Azure Maps](https://docs.microsoft.com/rest/api/maps/data/conversion) převede balíček pro vykreslování na data mapy.  Převodní služba byla vyvinuta a testována pomocí formátu souboru DWG AutoCADu. `AC1032`je interní formát verze souborů DWG. Doporučujeme, abyste vybrali `AC1032` interní verzi formátu souboru DWG.  
+[Služba konverze Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) převede balíček pro vykreslování na data mapy.  Převodní služba byla vyvinuta a testována pomocí formátu souboru DWG AutoCADu. `AC1032`je interní formát verze souborů DWG. Doporučujeme, abyste vybrali `AC1032` interní verzi formátu souboru DWG.  
 
 Glosář termínů používaných v tomto dokumentu.
 
@@ -54,7 +54,7 @@ Pro každou úroveň zařízení je vyžadován jeden soubor DWG. Data úrovně 
 * Nesmí obsahovat funkce z více úrovní.
 * Nesmí obsahovat funkce z více zařízení.
 
-[Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/data/conversion) může extrahovat následující třídy funkcí ze souboru DWG:
+[Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) může extrahovat následující třídy funkcí ze souboru DWG:
 
 * Úrovně
 * Jednotky
@@ -71,11 +71,11 @@ Vrstvy DWG musí také splňovat následující kritéria:
 
 * Počátek kreseb pro všechny soubory DWG se musí Zarovnat ke stejné zeměpisné šířce a délce.
 * Každá úroveň musí být ve stejné orientaci jako ostatní úrovně.
-* Mnohoúhelníky s automatickým průnikem budou automaticky opraveny a [služba Azure Maps Conversion Service](https://docs.microsoft.com/rest/api/maps/data/conversion) vyvolá upozornění. Doporučujeme ručně zkontrolovat opravené výsledky, protože neodpovídají očekávaným výsledkům.
+* Mnohoúhelníky s automatickým průnikem budou automaticky opraveny a [služba Azure Maps Conversion Service](https://docs.microsoft.com/rest/api/maps/conversion) vyvolá upozornění. Doporučujeme ručně zkontrolovat opravené výsledky, protože neodpovídají očekávaným výsledkům.
 
 Všechny entity vrstvy musí být jedním z následujících typů: line, lomená, mnohoúhelník, kruhový oblouk, Circle, text (single line). Všechny ostatní typy entit budou ignorovány.
 
-Následující tabulka popisuje podporované typy entit a podporované funkce pro každou vrstvu. Pokud vrstva obsahuje nepodporované typy entit, bude [služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/data/conversion) tyto entity ignorovat.  
+Následující tabulka popisuje podporované typy entit a podporované funkce pro každou vrstvu. Pokud vrstva obsahuje nepodporované typy entit, bude [služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) tyto entity ignorovat.  
 
 | Vrstva | Typy entit | Funkce |
 | :----- | :-------------------| :-------
@@ -167,11 +167,11 @@ Příkladem vrstvy Zonelabel lze zobrazit jako vrstvu ZONELABELS v [ukázkovém 
 
 ## <a name="manifest-file-requirements"></a>Požadavky souboru manifestu
 
-Složka zip musí obsahovat soubor manifestu na kořenové úrovni adresáře a soubor musí mít název **manifest. JSON**. Popisuje soubory DWG, aby [Služba konverze Azure Maps](https://docs.microsoft.com/rest/api/maps/data/conversion) mohla analyzovat svůj obsah. Budou ingestovat pouze soubory identifikované manifestem. Soubory, které jsou ve složce zip, ale nejsou správně uvedeny v manifestu, budou ignorovány.
+Složka zip musí obsahovat soubor manifestu na kořenové úrovni adresáře a soubor musí mít název **manifest. JSON**. Popisuje soubory DWG, aby [Služba konverze Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) mohla analyzovat svůj obsah. Budou ingestovat pouze soubory identifikované manifestem. Soubory, které jsou ve složce zip, ale nejsou správně uvedeny v manifestu, budou ignorovány.
 
 Cesty k souborům v objektu **buildingLevels** souboru manifestu musí být relativní ke kořenu složky zip. Název souboru DWG se musí přesně shodovat s názvem úrovně zařízení. Například soubor DWG pro úroveň "Basement" by byl "Basement. DWG". Soubor DWG pro úroveň 2 bude pojmenován jako "level_2. DWG". Použijte podtržítko, pokud má název úrovně mezeru. 
 
-I když jsou k dispozici požadavky při použití objektů manifestu, nejsou všechny objekty požadovány. V následující tabulce jsou uvedeny povinné a volitelné objekty pro verzi 1,1 [služby Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/data/conversion).
+I když jsou k dispozici požadavky při použití objektů manifestu, nejsou všechny objekty požadovány. V následující tabulce jsou uvedeny povinné a volitelné objekty pro verzi 1,1 [služby Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion).
 
 | Objekt | Povinné | Popis |
 | :----- | :------- | :------- |
@@ -402,7 +402,7 @@ Níže je ukázkový soubor manifestu ukázkového balíčku pro kreslení. Poku
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile balíček pro vykreslování splňuje požadavky, můžete použít [službu Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/data/conversion) k převedení balíčku na datovou sadu mapy. Pak můžete použít datovou sadu k vygenerování mapy interiéru pomocí modulu mapy Vnitřníchy. Další informace o používání modulu mapy Vnitřníchy najdete v následujících článcích:
+Jakmile balíček pro vykreslování splňuje požadavky, můžete použít [službu Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) k převedení balíčku na datovou sadu mapy. Pak můžete použít datovou sadu k vygenerování mapy interiéru pomocí modulu mapy Vnitřníchy. Další informace o používání modulu mapy Vnitřníchy najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
 >[Autor pro mapy vnitřníchy](creator-indoor-maps.md)

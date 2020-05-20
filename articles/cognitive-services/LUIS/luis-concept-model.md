@@ -3,12 +3,12 @@ title: Návrh s modely – LUIS
 description: Jazyk porozumění nabízí několik typů modelů. Některé modely lze použít více než jedním způsobem.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 933588f96570e931cdc627aaae82bee1037bbdaa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591875"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683930"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Návrh s využitím a modelů entit
 
@@ -36,9 +36,9 @@ Následující utterance je **kladný příklad** pro `OrderBook` záměr a **ne
 
 ## <a name="entities-extract-data"></a>Entity extrahují data
 
-Entita představuje jednotku dat, která se má extrahovat z utterance. Entita získaná počítačem je entita nejvyšší úrovně obsahující subentity, které jsou také entitami, které se naučily strojově.
+Entita představuje jednotku dat, která se má extrahovat z utterance. Entita strojového učení je entita nejvyšší úrovně obsahující subentity, které jsou také entitami strojového učení.
 
-Příkladem uživatelsky řízené entity je objednávka pro lístek roviny. V koncepčním případě je to jediná transakce s mnoha menšími jednotkami dat, jako je datum, čas, množství sedadel, typ sedadla, jako je například první třída nebo autokar, umístění původu, cílové umístění a volba krupice.
+Příkladem entity strojového učení je objednávka pro lístek roviny. V koncepčním případě je to jediná transakce s mnoha menšími jednotkami dat, jako je datum, čas, množství sedadel, typ sedadla, jako je například první třída nebo autokar, umístění původu, cílové umístění a volba krupice.
 
 ## <a name="intents-versus-entities"></a>Záměry versus entity
 
@@ -65,11 +65,11 @@ Dekompozice modelu má následující části:
 
 * [záměry](#intents-classify-utterances)
     * [funkce](#features)
-* [entity rozpoznané počítačem](reference-entity-machine-learned-entity.md)
-    * subentity (také přeučené entity počítače)
+* [entity strojového učení](reference-entity-machine-learned-entity.md)
+    * subentity (také entity strojového učení)
         * [funkce](#features)
             * [seznam frází](luis-concept-feature.md)
-            * [entity](luis-concept-feature.md) nenáročné na počítač, například [regulární výrazy](reference-entity-regular-expression.md), [seznamy](reference-entity-list.md)a [předem připravené entity](luis-reference-prebuilt-entities.md)
+            * [entity bez strojového učení](luis-concept-feature.md) , například [regulární výrazy](reference-entity-regular-expression.md), [seznamy](reference-entity-list.md)a [předem připravené entity](luis-reference-prebuilt-entities.md)
 
 <a name="entities-extract-data"></a>
 <a name="machine-learned-entities"></a>

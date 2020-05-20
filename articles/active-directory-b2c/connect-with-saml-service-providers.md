@@ -8,22 +8,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 38c98a65ac0b0f95a9a6e111a79b5dede04912c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 543320adb490ff51b0394fb26137ebc977d2c04b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229744"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679549"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
 V tomto článku se dozvíte, jak nakonfigurovat Azure Active Directory B2C (Azure AD B2C), aby fungoval Security Assertion Markup Language jako zprostředkovatel identity SAML (IdP) pro vaše aplikace.
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
@@ -77,7 +75,7 @@ Můžete použít certifikát vydaný veřejnou certifikační autoritou nebo pr
 
 Pokud ještě certifikát nemáte, můžete pro tento kurz použít certifikát podepsaný svým držitelem. Ve Windows můžete k vygenerování certifikátu použít rutinu [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) prostředí PowerShell.
 
-1. Spuštěním tohoto příkazu PowerShellu Vygenerujte certifikát podepsaný svým držitelem. Upravte `-Subject` argument podle potřeby pro vaši aplikaci a Azure AD B2C název tenanta. Můžete také upravit `-NotAfter` datum a zadat jiné vypršení platnosti certifikátu.
+1. Spuštěním tohoto příkazu PowerShellu Vygenerujte certifikát podepsaný svým držitelem. Upravte `-Subject` argument podle potřeby pro vaši aplikaci a Azure AD B2C název tenanta. Můžete také upravit `-NotAfter` Datum a zadat jiné vypršení platnosti certifikátu.
 
     ```PowerShell
     New-SelfSignedCertificate `
@@ -90,9 +88,9 @@ Pokud ještě certifikát nemáte, můžete pro tento kurz použít certifikát 
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```
 
-1. Otevřete **Spravovat uživatelské certifikáty** > **aktuální uživatel** > **osobní** > **certifikáty** > *YourAppName.yourtenant.onmicrosoft.com* .
-1. Vyberte certifikát > **akci** > **všechny úkoly** > **exportovat** .
-1. Vyberte **Ano** > **Další** > **Ano, exportovat privátní klíč** > **Další** .
+1. Otevřete **Spravovat uživatelské certifikáty**  >  **aktuální uživatel**  >  **osobní**  >  **certifikáty**  >  *YourAppName.yourtenant.onmicrosoft.com* .
+1. Vyberte certifikát > **akci**  >  **všechny úkoly**  >  **exportovat** .
+1. Vyberte **Ano**  >  **Next**  >  **, další Ano, exportovat privátní klíč**  >  **Další** .
 1. Přijměte výchozí hodnoty pro **Formát souboru pro export** .
 1. Zadejte heslo pro certifikát.
 
@@ -102,7 +100,7 @@ Potom do Azure AD B2C nahrajte kontrolní výraz SAML a podpisový certifikát o
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyhledejte Azure AD B2C tenanta.
 1. V části **zásady**vyberte možnost **Architektura prostředí identity** a pak **klíče zásad**.
-1. Vyberte **Přidat**a pak vybrat **Možnosti** > **nahrát**.
+1. Vyberte **Přidat**a pak vybrat **Možnosti**  >  **nahrát**.
 1. Zadejte **název**, například *SamlIdpCert*. *B2C_1A_* předpony se automaticky přidají do názvu vašeho klíče.
 1. Nahrajte certifikát pomocí ovládacího prvku nahrát soubor.
 1. Zadejte heslo certifikátu.
@@ -165,7 +163,7 @@ Teď, když váš tenant může vystavovat kontrolní výrazy SAML, je nutné vy
 
 1. V upřednostňovaném editoru otevřete soubor *SignUpOrSigninSAML. XML* .
 
-1. Změňte zásadu `PolicyId` a `PublicPolicyUri` na _B2C_1A_signup_signin_saml_ , `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` jak vidíte níže.
+1. Změňte `PolicyId` zásadu a na `PublicPolicyUri` _B2C_1A_signup_signin_saml_ , `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` Jak vidíte níže.
 
     ```XML
     <TrustFrameworkPolicy
@@ -178,7 +176,7 @@ Teď, když váš tenant může vystavovat kontrolní výrazy SAML, je nutné vy
     PublicPolicyUri="http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml">
     ```
 
-1. Přidejte následující fragment kódu XML těsně před `<RelyingParty>` element. Tento kód XML přepíše krok orchestrace číslo 7 cesty uživatele _SignUpOrSignIn_ . Pokud jste spustili z jiné složky v počátečním balíčku nebo jste přizpůsobili cestu uživatele přidáním nebo odebráním kroků orchestrace, ujistěte se, že je číslo ( `order` v elementu) zarovnáno s parametrem zadaným v cestě uživatele pro krok vystavitele tokenu (například ve složkách dalších počátečních sad je číslo kroku 4 pro `LocalAccounts`, 6 pro `SocialAccounts` a 9 pro `SocialAndLocalAccountsWithMfa`).
+1. Přidejte následující fragment kódu XML těsně před `<RelyingParty>` element. Tento kód XML přepíše krok orchestrace číslo 7 cesty uživatele _SignUpOrSignIn_ . Pokud jste spustili z jiné složky v počátečním balíčku nebo jste přizpůsobili cestu uživatele přidáním nebo odebráním kroků orchestrace, ujistěte se, že je číslo (v `order` elementu) zarovnáno s parametrem zadaným v cestě uživatele pro krok vystavitele tokenu (například ve složkách dalších počátečních sad je číslo kroku 4 pro `LocalAccounts` , 6 pro `SocialAccounts` a 9 pro `SocialAndLocalAccountsWithMfa` ).
 
     ```XML
     <UserJourneys>
@@ -269,13 +267,13 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-active-directory"></a>4,1 zaregistrovat aplikaci v Azure Active Directory
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
 1. Zadejte **název** aplikace. Například *SAMLApp1*.
 1. V části **podporované typy účtů**vyberte **účty jenom v tomto organizačním adresáři** .
-1. V části **identifikátor URI pro přesměrování**vyberte **Web**a potom `https://localhost`zadejte. Tuto hodnotu upravíte později v manifestu registrace aplikace.
+1. V části **identifikátor URI pro přesměrování**vyberte **Web**a potom zadejte `https://localhost` . Tuto hodnotu upravíte později v manifestu registrace aplikace.
 1. Vyberte **Zaregistrovat**.
 
 ### <a name="42-update-the-app-manifest"></a>4,2 aktualizace manifestu aplikace
@@ -287,7 +285,7 @@ Pro aplikace SAML existuje několik vlastností, které je třeba nakonfigurovat
 
 #### <a name="identifieruris"></a>identifierUris
 
-`identifierUris` Je kolekce řetězců obsahující uživatelsky definované identifikátory URI, které jedinečně identifikují webovou aplikaci v rámci jejího Azure AD B2C tenanta. Váš poskytovatel služeb musí tuto hodnotu nastavit v `Issuer` elementu požadavku SAML.
+`identifierUris`Je kolekce řetězců obsahující uživatelsky definované identifikátory URI, které jedinečně identifikují webovou aplikaci v rámci jejího Azure AD B2C tenanta. Váš poskytovatel služeb musí tuto hodnotu nastavit v `Issuer` elementu požadavku SAML.
 
 #### <a name="samlmetadataurl"></a>samlMetadataUrl
 
@@ -297,7 +295,7 @@ Metadata jsou informace, které se používají v protokolu SAML k vystavení ko
 
 Pokud jsou v adrese URL metadat *SAML i v* manifestu registrace aplikace zadány vlastnosti, budou **sloučeny**. Vlastnosti zadané v adrese URL metadat jsou zpracovávány jako první a mají přednost.
 
-Pro účely tohoto kurzu, který používá testovací aplikaci SAML, použijte následující hodnotu pro `samlMetadataUrl`:
+Pro účely tohoto kurzu, který používá testovací aplikaci SAML, použijte následující hodnotu pro `samlMetadataUrl` :
 
 ```JSON
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
@@ -305,7 +303,7 @@ Pro účely tohoto kurzu, který používá testovací aplikaci SAML, použijte 
 
 #### <a name="replyurlswithtype-optional"></a>replyUrlsWithType (volitelné)
 
-Pokud neposkytnete identifikátor URI metadat, můžete explicitně zadat adresu URL odpovědi. Tato volitelná vlastnost představuje `AssertionConsumerServiceUrl` (`SingleSignOnService` adresa URL v metadatech poskytovatele služeb) a `BindingType` předpokládá se, že `HTTP POST`je.
+Pokud neposkytnete identifikátor URI metadat, můžete explicitně zadat adresu URL odpovědi. Tato volitelná vlastnost představuje `AssertionConsumerServiceUrl` ( `SingleSignOnService` Adresa URL v metadatech poskytovatele služeb) a předpokládá se, že `BindingType` je `HTTP POST` .
 
 Pokud se rozhodnete nakonfigurovat adresu URL odpovědi a adresu URL pro odhlášení v manifestu aplikace bez použití metadat poskytovatele služby, Azure AD B2C neověří podpis žádosti SAML ani nezašifruje odpověď SAML.
 
@@ -322,9 +320,9 @@ Pro účely tohoto kurzu, ve kterém používáte aplikaci testu SAML, nastavte 
 
 #### <a name="logouturl-optional"></a>logoutUrl (volitelné)
 
-Tato volitelná vlastnost představuje `Logout` adresu URL`SingleLogoutService` (adresa URL v metadatech předávající strany) a předpokládá `BindingType` se, že je `Http-Redirect`.
+Tato volitelná vlastnost představuje `Logout` adresu URL ( `SingleLogoutService` Adresa URL v metadatech předávající strany) a předpokládá se, že je `BindingType` `Http-Redirect` .
 
-Pro účely tohoto kurzu, který používá testovací aplikaci SAML, nechejte `logoutUrl` nastaveno na `https://samltestapp2.azurewebsites.net/logout`:
+Pro účely tohoto kurzu, který používá testovací aplikaci SAML, nechejte `logoutUrl` nastaveno na `https://samltestapp2.azurewebsites.net/logout` :
 
 ```JSON
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",

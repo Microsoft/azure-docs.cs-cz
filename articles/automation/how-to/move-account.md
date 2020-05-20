@@ -1,6 +1,6 @@
 ---
 title: Přesunutí účtu Azure Automation do jiného předplatného
-description: Tento článek popisuje, jak přesunout účet Automation do jiného předplatného.
+description: V tomto článku se dozvíte, jak přesunout účet Automation do jiného předplatného.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bfb2f2d1d0f6a0d11784847344cd3dbcafdb0959
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 5ba3ff2cc98e505486de9cf2337fe19024f97c62
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901000"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680453"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Přesunutí účtu Azure Automation do jiného předplatného
 
@@ -22,29 +22,26 @@ Azure Automation umožňuje přesunout některé prostředky do nové skupiny pr
 
 Účet Automation je jedním z prostředků, které můžete přesunout. V tomto článku se dozvíte, jak přesunout účty Automation do jiného prostředku nebo předplatného. Postup při přesunu vašeho účtu Automation je v rámci vysoké úrovně:
 
-1. Odeberte svá řešení.
+1. Zakažte své funkce.
 2. Odpojte svůj pracovní prostor.
 3. Přesuňte účet Automation.
 4. Odstraňte a znovu vytvořte účty Spustit jako.
-5. Znovu povolte vaše řešení.
+5. Znovu povolte své funkce.
 
->[!NOTE]
->V tomto článku budete pracovat s Azure PowerShell AZ Module. I nadále můžete použít modul AzureRM. Další informace o AZ Module a AzureRM Compatibility najdete v tématu [představení nového Azure PowerShell AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](../automation-update-azure-modules.md).
+## <a name="disable-features"></a>Zakázat funkce
 
-## <a name="remove-solutions"></a>Odebrat řešení
-
-Pokud chcete odpojit svůj pracovní prostor od svého účtu Automation, musíte tato řešení odebrat z pracovního prostoru:
+Pokud chcete odpojit svůj pracovní prostor od svého účtu Automation, musíte zakázat prostředky funkce ve vašem pracovním prostoru:
 
 - Change Tracking a Inventory
 - Update Management
 - Spuštění/zastavení virtuálních počítačů mimo špičku
 
 1. Na webu Azure Portal vyhledejte svou skupinu prostředků.
-2. Vyhledejte jednotlivá řešení a na stránce **Odstranit prostředky** vyberte **Odstranit** .
+2. Najděte jednotlivé funkce a na stránce Odstranit prostředky vyberte **Odstranit** .
 
-    ![Snímek obrazovky s odstraňováním řešení z Azure Portal](../media/move-account/delete-solutions.png)
+    ![Snímek obrazovky odstranění prostředků funkce z Azure Portal](../media/move-account/delete-solutions.png)
 
-Pokud budete chtít, můžete řešení odstranit pomocí rutiny [Remove-AzResource](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) :
+Pokud budete chtít, můžete prostředky odstranit pomocí rutiny [Remove-AzResource](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) :
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -54,15 +51,15 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM($workspaceName)" -ResourceGroupName $resourceGroupName
 ```
 
-### <a name="remove-alert-rules-for-the-startstop-vms-during-off-hours-solution"></a>Odebrat pravidla upozornění pro řešení "spuštění/zastavení virtuálních počítačů v době mimo špičku"
+### <a name="remove-alert-rules-for-startstop-vms-during-off-hours"></a>Odebrat pravidla upozornění pro Start/Stop VMs during off-hours
 
-Pro toto řešení je také nutné odebrat pravidla upozornění vytvořená řešením.
+Pro Start/Stop VMs during off-hours musíte také odebrat pravidla upozornění vytvořená funkcí.
 
-1. V Azure Portal přejdete do skupiny prostředků a vyberte **monitorování** > **výstrahy** > **Spravovat pravidla výstrah**.
+1. V Azure Portal přejdete do skupiny prostředků a vyberte **monitorování**  >  **výstrahy**  >  **Spravovat pravidla výstrah**.
 
    ![Snímek stránky s výstrahami, která zobrazuje výběr pravidel pro správu pravidel výstrah](../media/move-account/alert-rules.png)
 
-2. Na stránce **pravidla** by se měl zobrazit seznam výstrah nakonfigurovaných v této skupině prostředků. Řešení vytváří tato pravidla:
+2. Na stránce pravidla by se měl zobrazit seznam výstrah nakonfigurovaných v této skupině prostředků. Tato funkce vytvoří tato pravidla:
 
     * AutoStop_VM_Child
     * ScheduledStartStop_Parent
@@ -70,18 +67,18 @@ Pro toto řešení je také nutné odebrat pravidla upozornění vytvořená ře
 
 3. Vyberte pravidla po jednom a vyberte **Odstranit** a odstraňte je.
 
-    ![Snímek obrazovky se stránkou pravidla, která vyžaduje potvrzení odstranění pro vybraná pravidla](../media/move-account/delete-rules.png)
+    ![Snímek obrazovky se stránkou pravidel, která vyžaduje potvrzení odstranění pro vybraná pravidla](../media/move-account/delete-rules.png)
 
     > [!NOTE]
-    > Pokud nevidíte žádná pravidla výstrahy na stránce **pravidla** , změňte pole **stav** na **zakázáno** , aby se zobrazily zakázané výstrahy. Možná jste je zakázali.
+    > Pokud nevidíte žádná pravidla výstrahy na stránce pravidla, změňte pole **stav** na **zakázáno** , aby se zobrazily zakázané výstrahy. 
 
-4. Když odeberete pravidla upozornění, je nutné odebrat skupinu akcí vytvořenou pro "spuštění/zastavení virtuálních počítačů v době mimo špičku" v oznámeních řešení. V Azure Portal vyberte **monitorování** > **výstrahy** > **Spravovat skupiny akcí**.
+4. Po odebrání pravidel výstrahy je nutné odebrat skupinu akcí vytvořenou pro Start/Stop VMs during off-hours oznámení. V Azure Portal vyberte **monitorování**  >  **výstrahy**  >  **Spravovat skupiny akcí**.
 
 5. Vyberte **StartStop_VM_Notification**. 
 
 6. Na stránce skupina akcí vyberte **Odstranit**.
 
-    ![Snímek obrazovky se stránkou skupiny akcí](../media/move-account/delete-action-group.png)
+    ![Snímek stránky skupiny akcí](../media/move-account/delete-action-group.png)
 
 Pokud budete chtít, můžete odstranit skupinu akcí pomocí rutiny [Remove-AzActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) :
 
@@ -93,7 +90,7 @@ Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Not
 
 Nyní můžete zrušit propojení pracovního prostoru:
 
-1. V Azure Portal vyberte**pracovní prostor propojené** > **prostředky** > v **účtu Automation**. 
+1. V Azure Portal vyberte **Automation account**  >  **Related Resources**  >  **pracovní prostor propojené**prostředky v účtu Automation. 
 
 2. Vyberte zrušit **propojení pracovního prostoru** , abyste mohli zrušit propojení pracovního prostoru s vaším účtem Automation.
 
@@ -103,7 +100,7 @@ Nyní můžete zrušit propojení pracovního prostoru:
 
 Nyní můžete přesunout svůj účet Automation a jeho Runbooky. 
 
-1. V Azure Portal přejděte do skupiny prostředků svého účtu Automation. Vyberte **přesunout** > **přesunout do jiného předplatného**.
+1. V Azure Portal přejděte do skupiny prostředků svého účtu Automation. Vyberte **přesunout**  >  **přesunout do jiného předplatného**.
 
     ![Snímek stránky skupiny prostředků, přejít na jiné předplatné](../media/move-account/move-resources.png)
 
@@ -120,31 +117,31 @@ Nyní můžete přesunout svůj účet Automation a jeho Runbooky.
 2. Odstraňte účty Spustit jako, a to tak, že na stránce **vlastnosti** vyberete **Odstranit** . 
 
     > [!NOTE]
-    > Pokud nemáte oprávnění k vytvoření nebo zobrazení účtů spustit jako, zobrazí se následující zpráva: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` Další informace najdete v tématu [oprávnění požadovaná ke konfiguraci účtů spustit jako](../manage-runas-account.md#permissions).
+    > Pokud nemáte oprávnění k vytvoření nebo zobrazení účtů spustit jako, zobrazí se následující zpráva: další `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` informace najdete v tématu [oprávnění požadovaná ke konfiguraci účtů spustit jako](../manage-runas-account.md#permissions).
 
 3. Po odstranění účtů spustit jako vyberte v části **účet Spustit jako pro Azure**možnost **vytvořit** . 
 
-4. Na stránce **Přidat účet Spustit jako pro Azure** vyberte **vytvořit** a vytvořte účet Spustit jako a instanční objekt. 
+4. Na stránce Přidat účet Spustit jako pro Azure vyberte **vytvořit** a vytvořte účet Spustit jako a instanční objekt. 
 
 5. Opakujte výše uvedené kroky s účtem spustit jako pro Azure Classic.
 
-## <a name="enable-solutions"></a>Povolení řešení
+## <a name="enable-features"></a>Povolit funkce
 
-Po opětovném vytvoření účtů spustit jako je nutné znovu povolit řešení, která jste odebrali před přesunutím: 
+Po opětovném vytvoření účtů spustit jako je nutné znovu povolit funkce, které jste před přesunutím zakázali: 
 
-1. Pokud chcete zapnout řešení "Change Tracking a inventář", vyberte **Change Tracking a inventář** v účtu Automation. Zvolte pracovní prostor Log Analytics, který jste přesunuli, a vyberte **Povolit**.
+1. Pokud chcete zapnout Change Tracking a inventář, vyberte **Change Tracking a inventář** v účtu Automation. Zvolte pracovní prostor Log Analytics, který jste přesunuli, a vyberte **Povolit**.
 
-2. Opakujte krok 1 pro řešení "Update Management".
+2. Opakujte krok 1 pro Update Management.
 
-    ![Snímek obrazovky s opakovaným povolením řešení ve vašem přesunutém účtu Automation](../media/move-account/reenable-solutions.png)
+    ![Snímek obrazovky pro opětovné povolení funkcí v přesunutém účtu Automation](../media/move-account/reenable-solutions.png)
 
-3. Počítače, které jsou připojené k vašim řešením, se zobrazí, když jste připojili existující Log Analytics pracovní prostor. Pokud chcete zapnout řešení "spouštění a zastavování virtuálních počítačů v době mimo špičku", musíte řešení znovu nasadit. V části **související prostředky**vyberte **Spustit nebo zastavit virtuální počítače** > další**informace o a povolte řešení** > **vytvořit** , abyste mohli nasazení spustit.
+3. Počítače, které jsou s vašimi funkcemi povolené, se zobrazí, když se připojíte ke stávajícímu pracovnímu prostoru Log Analytics. Chcete-li zapnout funkci Start/Stop VMs during off-hours, je nutné ji znovu povolit. V části **související prostředky**vyberte **Spustit nebo zastavit virtuální počítače**další  >  **informace o a povolte řešení**  >  **vytvořit** , abyste mohli nasazení spustit.
 
-4. Na stránce **Přidat řešení** vyberte pracovní prostor Log Analytics a účet Automation.
+4. Na stránce Přidat řešení vyberte pracovní prostor Log Analytics a účet Automation.
 
     ![Snímek obrazovky nabídky Přidat řešení](../media/move-account/add-solution-vm.png)
 
-5. Nakonfigurujte řešení, jak je popsáno v tématu [spuštění/zastavení virtuálních počítačů v době mimo špičku v Azure Automation](../automation-solution-vm-management.md).
+5. Nakonfigurujte funkci, jak je popsáno v tématu [Start/Stop VMS during off-hours Overview](../automation-solution-vm-management.md).
 
 ## <a name="verify-the-move"></a>Ověřit přesunutí
 

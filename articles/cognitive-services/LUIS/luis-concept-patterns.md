@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 86f4eab266aabccd25e1269e1942e535f6af5436
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d8088f537c4148f780c5f250eda3dcd5198f67f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591828"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683918"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzorce zlepšují přesnost předpovědi
 Vzory jsou navržené tak, aby se zlepšila přesnost, když je několik projevy velmi podobné.  Vzor vám umožní získat větší přesnost záměru bez dalších projevy.
@@ -36,16 +36,16 @@ Pokud má aplikace více než 10 až 20 projevy s různou délkou věty, jiné p
 Vzory řeší následující situace:
 
 * Skóre záměru je nízké.
-* Správný záměr není nejvyšší skóre, ale příliš blízko k hornímu skóre. 
+* Správný záměr není nejvyšší skóre, ale příliš blízko k hornímu skóre.
 
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Vzory nejsou zárukou záměru.
 Vzory využívají kombinaci předpovědních technologií. Nastavení záměru pro šablonu utterance ve vzoru není zárukou předpovědi záměru, ale jedná se o silný signál.
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
-## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Vzory nezlepšují detekci entit zjištěné počítačem
+## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>Vzory nezlepšují detekci entit strojového učení
 
-Vzor je primárně určen pro lepší předpověď záměrů a rolí. _Vzor. Každá_ entita se používá k extrakci entit volných formulářů. I když vzory používají entity, vzor nedokáže detekovat entitu získanou počítačem.
+Vzor je primárně určen pro lepší předpověď záměrů a rolí. _Vzor. Každá_ entita se používá k extrakci entit volných formulářů. I když vzory používají entity, vzor nedokáže detekovat entitu strojového učení.
 
 Neočekává se, že se lepší předpověď entity zobrazí, pokud sbalíte více projevy do jediného vzoru. Aby bylo možné jednoduché entity aktivovat, je nutné přidat projevy nebo použít entity seznamu jinak se váš vzor neaktivuje.
 
@@ -59,7 +59,7 @@ LUIS by měl mít dostatečný příklad projevy, což by mohlo zvýšit důvěr
 Vzor se shoduje na základě zjištění entit uvnitř vzoru a pak ověřování zbývajících slov a pořadí slov ve vzorci. V modelu jsou vyžadovány entity, aby bylo možné model porovnat. Vzor je použit na úrovni tokenu, nikoli na úrovni znaků.
 
 ## <a name="pattern-only-apps"></a>Pouze vzorové aplikace
-Můžete vytvořit aplikaci s záměry, které nemají žádný vzorový projevy, pokud existuje vzor pro každý záměr. V případě aplikace jenom se vzorkem by neměl vzor obsahovat entity, které se naučily počítačem, protože to vyžaduje příklad projevy.
+Můžete vytvořit aplikaci s záměry, které nemají žádný vzorový projevy, pokud existuje vzor pro každý záměr. Pro aplikaci pouze se vzorkem by neměl vzor obsahovat entity strojového učení, protože to vyžaduje příklad projevy.
 
 ## <a name="patternany-entity"></a>Entita Pattern.any
 

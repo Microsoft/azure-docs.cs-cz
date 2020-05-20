@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/16/2020
+ms.date: 5/19/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 4cb5a3d471aa3131d3233841cd6450f0a968dfe7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 97599d8113d20511882ec38928b221706e7f37b9
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82800970"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682420"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Synchronizace souborů Azure
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -25,17 +25,15 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 | RTM | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
-| V10 za účelem verze – [4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9. dubna 2020 | V letu |
+| Kumulativní aktualizace květen 2020 – [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 19. května 2020 | Podporuje se |
+| Verze V10 za účelem – [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9. dubna 2020 | Podporuje se |
 | Kumulativní aktualizace z prosince 2019 – [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12. prosince 2019 | Podporuje se |
 | Verze v9 – [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2. prosince 2019 | Podporuje se |
 | Verze V8 – [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 8. října 2019 | Podporuje se |
 | Kumulativní aktualizace z července 2019 – [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24. července 2019 | Podporuje se |
 | Kumulativní aktualizace z července 2019 – [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12. července 2019 | Podporuje se |
 | Verze v7 – [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 19. června 2019 | Podporuje se |
-| Kumulativní aktualizace z června 2019 – [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 27. června 2019 | Verze Supported agenta vyprší 21. dubna 2020 |
-| Kumulativní aktualizace z června 2019 – [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13. června 2019 | Verze Supported agenta vyprší 21. dubna 2020 |
-| Kumulativní aktualizace květen 2019 – [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7. května 2019 | Verze Supported agenta vyprší 21. dubna 2020 |
-| Verze V6 – [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21. dubna 2019 | Verze Supported agenta vyprší 21. dubna 2020 |
+| Verze V6 | 6.0.0.0 - 6.3.0.0 | – | Nepodporováno – platnost verzí agentů vypršela 21. dubna 2020 |
 | Verze verze 5 | 5.0.2.0 - 5.2.0.0 | – | Nepodporováno – platnost verzí agentů vypršela 18. března 2020 |
 | Verze v4 | 4.0.1.0 - 4.3.0.0 | – | Nepodporované – verze agentů vypršela 6. listopadu 2019 |
 | Verze v3 | 3.1.0.0 - 3.4.0.0 | – | Nepodporované – platnost verzí agenta vyprší 19. srpna 2019 |
@@ -43,6 +41,12 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-10020"></a>Verze agenta 10.0.2.0
+Následující poznámky k verzi jsou pro 10.0.2.0 verze agenta Azure File Sync vydání 19. května 2020. Tyto poznámky se doplňují od poznámky k verzi uvedené pro verzi 10.0.0.0.
+
+Problém opravený v této verzi:  
+- Agent synchronizace úložiště (FileSyncSvc) se často zhroutí po instalaci agenta Azure File Sync v10 za účelem.
 
 ## <a name="agent-version-10000"></a>Verze agenta 10.0.0.0
 Následující poznámky k verzi jsou pro verzi 10.0.0.0 agenta Azure File Sync (vydané 9. dubna 2020).
@@ -310,7 +314,7 @@ Následující poznámky k verzi jsou pro 7.0.0.0 agenta Azure File Sync (vydan�
 ### <a name="improvements-and-issues-that-are-fixed"></a>Vylepšení a problémy, které jsou vyřešeny
 
 - Podpora větších velikostí sdílení souborů
-    - S verzí Preview větších sdílených složek Azure zvyšujeme také naše limity podpory pro synchronizaci souborů. V tomto prvním kroku teď Azure File Sync podporuje až 25 TB a 50 000 000 souborů v jednom synchronizovaném oboru názvů. Chcete-li použít pro velkou verzi Preview sdílení souborů, vyplňte tento https://aka.ms/azurefilesatscalesurveyformulář. 
+    - S verzí Preview větších sdílených složek Azure zvyšujeme také naše limity podpory pro synchronizaci souborů. V tomto prvním kroku teď Azure File Sync podporuje až 25 TB a 50 000 000 souborů v jednom synchronizovaném oboru názvů. Chcete-li použít pro velkou verzi Preview sdílení souborů, vyplňte tento formulář https://aka.ms/azurefilesatscalesurvey . 
 - Podpora nastavení brány firewall a virtuální sítě pro účty úložiště
     - Azure File Sync teď podporuje nastavení brány firewall a virtuální sítě v účtech úložiště. Pokud chcete nakonfigurovat nasazení tak, aby fungovalo s nastavením brány firewall a virtuální sítě, přečtěte si téma [Konfigurace nastavení brány firewall a virtuální sítě](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
 - Rutina PowerShellu pro okamžitou synchronizaci souborů změněných ve sdílené složce Azure
@@ -501,7 +505,7 @@ Následující poznámky k verzi jsou pro 5.0.2.0 agenta Azure File Sync (vydan�
 ### <a name="improvements-and-issues-that-are-fixed"></a>Vylepšení a problémy, které jsou vyřešeny
 
 - Podpora Azure Governmentho cloudu
-  - Přidali jsme podporu Preview pro cloud Azure Government. To vyžaduje prázdné předplatné a speciálního agenta pro stažení od Microsoftu. Pokud chcete získat přístup k verzi Preview, pošlete nám prosím e-mail [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com)přímo na.
+  - Přidali jsme podporu Preview pro cloud Azure Government. To vyžaduje prázdné předplatné a speciálního agenta pro stažení od Microsoftu. Pokud chcete získat přístup k verzi Preview, pošlete nám prosím e-mail přímo na [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com) .
 - Podpora odstranění duplicitních dat
     - Odstranění duplicitních dat je teď plně podporované s povoleným vytvářením vrstev cloudu v systémech Windows Server 2016 a Windows Server 2019. Povolení odstranění duplicitních dat u svazku s povoleným vrstvou cloudu umožňuje ukládat do mezipaměti více souborů bez toho, aby bylo zajištěno více úložiště.
 - Podpora offline přenosu dat (například prostřednictvím Data Box)

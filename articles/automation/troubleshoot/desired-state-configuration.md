@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s konfigurací stavu Azure Automation
-description: Tento článek poskytuje informace o řešení potíží s konfigurací stavu Azure Automation.
+title: Řešení potíží s konfigurací Azure Automation stavů
+description: V tomto článku se dozvíte, jak řešit problémy s konfigurací stavu Azure Automation a vyřešit je.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c9e7b6d93fb4bbc3e3b05d9346ec84197665a55
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 6e057f5c9525f3b4ca373897c865990eb29835c0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995306"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681370"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Řešení potíží s konfigurací Azure Automation stavů
 
-Tento článek poskytuje informace o řešení problémů, které vznikají při kompilaci nebo nasazování konfigurací v konfiguraci stavu Azure Automation.
+Tento článek poskytuje informace o řešení potíží a řešení problémů, které vznikají při kompilaci nebo nasazování konfigurací v konfiguraci stavu Azure Automation. Obecné informace o funkci Konfigurace stavu najdete v tématu [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md).
 
 ## <a name="diagnose-an-issue"></a>Diagnostika problému
 
@@ -40,9 +40,9 @@ Pokud se konfigurace úspěšně zkompiluje, ale při použití v uzlu dojde k c
 
 Modul [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) vám může pomoci při analýze podrobných informací z protokolů DSC. Pokud se obrátíte na podporu, vyžadují tyto protokoly k diagnostice vašeho problému.
 
-`xDscDiagnostics` Modul můžete nainstalovat na místní počítač podle pokynů v části [Instalace modulu stabilní verze](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
+Modul můžete nainstalovat `xDscDiagnostics` na místní počítač podle pokynů v části [Instalace modulu stabilní verze](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
 
-Pokud chcete `xDscDiagnostics` modul nainstalovat do počítače Azure, použijte [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0). V Azure Portal můžete použít taky možnost **Spustit příkaz** pomocí postupu v části [spuštění skriptů POWERSHELLu na virtuálním počítači s Windows pomocí příkazu Spustit](../../virtual-machines/windows/run-command.md).
+Pokud chcete modul nainstalovat do `xDscDiagnostics` počítače Azure, použijte [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0). V Azure Portal můžete použít taky možnost **Spustit příkaz** pomocí postupu v části [spuštění skriptů POWERSHELLu na virtuálním počítači s Windows pomocí příkazu Spustit](../../virtual-machines/windows/run-command.md).
 
 Informace o použití **xDscDiagnostics**najdete v tématu věnovaném [použití xDscDiagnostics k analýze protokolů DSC](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Viz také [rutiny xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
 
@@ -66,7 +66,7 @@ Tato chyba je dočasným problémem, který se plánuje vyřešit.
 
 ### <a name="resolution"></a>Řešení
 
-K odstranění konfigurace použijte rutinu [removehttps://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 -AzAutomationDscConfiguration] (.
+K odstranění konfigurace použijte rutinu [Remove-AzAutomationDscConfiguration] ( https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 .
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>Scénář: Nepodařilo se zaregistrovat agenta DSC.
 
@@ -119,13 +119,13 @@ Pomocí následujícího postupu můžete znovu zaregistrovat uzel DSC, který s
 
 #### <a name="step-1-unregister-the-node"></a>Krok 1: zrušení registrace uzlu
 
-1. V Azure Portal přejít na účty služby **Home** > **Automation** > (účet Automation) > **Konfigurace stavu (DSC)**.
+1. V Azure Portal přejít na účty služby **Home**  >  **Automation** > (účet Automation) > **Konfigurace stavu (DSC)**.
 1. Vyberte **uzly**a vyberte uzel, který má potíže.
 1. Chcete-li zrušit registraci uzlu, vyberte možnost zrušit **registraci** .
 
 #### <a name="step-2-uninstall-the-dsc-extension-from-the-node"></a>Krok 2: Odinstalace rozšíření DSC z uzlu
 
-1. V Azure Portal přejít na **domovskou** > **virtuální počítač** > (selhání uzlu) > **rozšíření**.
+1. V Azure Portal přejít na **domovskou**  >  **virtuální počítač** > (selhání uzlu) > **rozšíření**.
 1. Vyberte **Microsoft. PowerShell. DSC**, rozšíření PowerShell DSC.
 1. Vyberte **odinstalovat** pro odinstalaci rozšíření.
 
@@ -151,7 +151,7 @@ If (($certs.Count) -gt 0)
 
 #### <a name="step-4-reregister-the-failing-node"></a>Krok 4: opětovná registrace uzlu, který selhal
 
-1. V Azure Portal přejít na účty služby **Home** > **Automation** > (účet Automation) > **Konfigurace stavu (DSC)**.
+1. V Azure Portal přejít na účty služby **Home**  >  **Automation** > (účet Automation) > **Konfigurace stavu (DSC)**.
 1. Vyberte **uzly**.
 1. Vyberte **Přidat**.
 1. Vyberte uzel, který selhal.
@@ -176,7 +176,7 @@ K této chybě obvykle dochází v případě, že je uzel přiřazen k názvu k
 * Ujistěte se, že přiřazujete uzel s názvem konfigurace uzlu, a ne s názvem konfigurace.
 * Konfiguraci uzlu můžete přiřadit uzlu pomocí Azure Portal nebo pomocí rutiny prostředí PowerShell.
 
-  * V Azure Portal přejít na účty služby **Home** > **Automation** > (účet Automation) > **Konfigurace stavu (DSC)**. Pak vyberte uzel a vyberte **přiřadit konfiguraci uzlu**.
+  * V Azure Portal přejít na účty služby **Home**  >  **Automation** > (účet Automation) > **Konfigurace stavu (DSC)**. Pak vyberte uzel a vyberte **přiřadit konfiguraci uzlu**.
   * Použijte rutinu [set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) .
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>Scénář: při kompilaci konfigurace nevytvořily se žádné konfigurace uzlů (soubory MOF).
@@ -191,7 +191,7 @@ Compilation completed successfully, but no node configuration **.mof** files wer
 
 ### <a name="cause"></a>Příčina
 
-Pokud výraz následující za `Node` klíčovým slovem v konfiguraci DSC vyhodnocuje `$null`, nebudou vytvořeny žádné konfigurace uzlů.
+Pokud výraz následující za `Node` klíčovým slovem v konfiguraci DSC vyhodnocuje `$null` , nebudou vytvořeny žádné konfigurace uzlů.
 
 ### <a name="resolution"></a>Řešení
 
@@ -230,11 +230,11 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 ### <a name="cause"></a>Příčina
 
-V konfiguraci jste použili přihlašovací údaje, ale nezadali jste pro `ConfigurationData` každou konfiguraci `PSDscAllowPlainTextPassword` uzlu správný stav pro nastavení na hodnotu true.
+V konfiguraci jste použili přihlašovací údaje, ale nezadali jste pro `ConfigurationData` každou konfiguraci uzlu správný stav pro nastavení `PSDscAllowPlainTextPassword` na hodnotu true.
 
 ### <a name="resolution"></a>Řešení
 
-Nezapomeňte předat správné `ConfigurationData` nastavení `PSDscAllowPlainTextPassword` na hodnotu true pro každou konfiguraci uzlu uvedenou v konfiguraci. Viz [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](../automation-dsc-compile.md).
+Nezapomeňte předat správné `ConfigurationData` nastavení na `PSDscAllowPlainTextPassword` hodnotu true pro každou konfiguraci uzlu uvedenou v konfiguraci. Viz [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](../automation-dsc-compile.md).
 
 ## <a name="scenario-failure-processing-extension-error-when-enabling-a-machine-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Scénář: Chyba při zpracování rozšíření při povolování počítače z rozšíření DSC
 
@@ -292,7 +292,7 @@ Tato zpráva se zobrazí, když dojde k potížím s připojením mezi uzlem a A
 
 ### <a name="resolution"></a>Řešení
 
-Zjistěte, jestli je váš uzel ve virtuální privátní síti (VPN) nebo jestli má jiné problémy s připojením k Azure. Přečtěte si článek [řešení chyb při připojování řešení](onboarding.md).
+Zjistěte, jestli je váš uzel ve virtuální privátní síti (VPN) nebo jestli má jiné problémy s připojením k Azure. Přečtěte si téma [řešení potíží s nasazením funkcí](onboarding.md).
 
 ## <a name="scenario-failure-with-a-general-error-when-applying-a-configuration-in-linux"></a><a name="failure-linux-temp-noexec"></a>Scénář: při použití konfigurace v systému Linux došlo k chybě s obecnou chybou
 
@@ -306,7 +306,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 ### <a name="cause"></a>Příčina
 
-Pokud je umístění **adresáře/TMP** nastaveno na `noexec`, aktuální verze DSC nedokáže použít konfigurace.
+Pokud je umístění **adresáře/TMP** nastaveno na `noexec` , aktuální verze DSC nedokáže použít konfigurace.
 
 ### <a name="resolution"></a>Řešení
 
@@ -330,7 +330,7 @@ Nejlepším řešením je kompilovat místně nebo v kanálu CI/CD a nahrát sou
 
 #### <a name="issue"></a>Problém
 
-Při nahrávání konfigurace `GatewayTimeout` DSC se zobrazí chyba. 
+`GatewayTimeout`Při nahrávání konfigurace DSC se zobrazí chyba. 
 
 ### <a name="cause"></a>Příčina
 
@@ -345,5 +345,5 @@ Konfigurace DSC můžete urychlit tak, že explicitně zahrnete `ModuleName` par
 Pokud tady nevidíte svůj problém nebo nemůžete problém vyřešit, zkuste další podporu vyzkoušet u některého z následujících kanálů:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport)pomocí oficiálního Microsoft Azure účtu pro zlepšení prostředí pro zákazníky. Podpora Azure spojuje komunitu Azure s odpověďmi, podporou a odborníky.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) oficiálního Microsoft Azure účtu pro zlepšení prostředí pro zákazníky. Podpora Azure spojuje komunitu Azure s odpověďmi, podporou a odborníky.
 * Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**.

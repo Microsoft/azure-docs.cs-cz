@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5e0043ebba1a317dcc6798d6be74aac051d97012
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597923"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685172"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Vytvoření úlohy Stream Analytics v Azure SQL Edge (Preview) 
 
@@ -22,6 +22,9 @@ Tento článek vysvětluje, jak vytvořit úlohu streamování T-SQL ve službě
 
 1. Vytvoření vstupních a výstupních objektů externího datového proudu
 2. V rámci vytváření úlohy streamování definujte dotaz na úlohu streamování.
+
+> [!NOTE]
+> Pokud chcete povolit funkci streamování T-SQL ve službě Azure SQL Edge, povolte jako možnost spuštění TF 11515 nebo použijte příkaz [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) . Další informace o tom, jak povolit příznaky trasování pomocí souboru MSSQL. conf, najdete v tématu [Konfigurace použití souboru MSSQL. conf](configure.md#configure-using-mssqlconf-file). Tento požadavek se odebere v budoucích aktualizacích Azure SQL Edge (Preview).
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>Konfigurace vstupního a výstupního objektu externího datového proudu
 

@@ -1,6 +1,6 @@
 ---
 title: Správa proměnných v Azure Automation
-description: Proměnné assets jsou hodnoty, které jsou k dispozici pro všechny Runbooky a konfigurace DSC v Azure Automation.  V tomto článku se dozvíte o podrobnostech proměnných a o tom, jak s nimi pracovat v textovém i grafickém vytváření.
+description: Tento článek popisuje, jak pracovat s proměnnými v sadách Runbook a konfiguracích DSC.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bf7840daad02f679cad4c3b798d2add02c863a15
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: cc6cf908c5550f81ca6002de031d8d54dcff1eec
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82651953"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685322"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
 
@@ -35,20 +35,17 @@ Azure Automation ukládá každou šifrovanou proměnnou bezpečně. Při vytvá
 >[!NOTE]
 >Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou zašifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet Automation. Azure Automation ukládá klíč do Key Vault spravovaném systémem. Před uložením zabezpečeného assetu Automation načte klíč z Key Vault a pak ho použije k zašifrování prostředku. 
 
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](../automation-update-azure-modules.md).
-
 ## <a name="variable-types"></a>Typy proměnných
 
 Když vytvoříte proměnnou pomocí Azure Portal, je nutné zadat datový typ z rozevíracího seznamu, aby portál mohl zobrazit příslušný ovládací prvek pro zadání hodnoty proměnné. Následující typy proměnných jsou k dispozici v Azure Automation:
 
-* Řetězec
+* String
 * Integer
 * DateTime
 * Logická hodnota
 * Null
 
-Proměnná není omezena na zadaný datový typ. Pokud chcete zadat hodnotu jiného typu, je nutné nastavit proměnnou pomocí prostředí Windows PowerShell. Pokud označíte `Not defined`, hodnota proměnné je nastavená na null. Hodnotu je nutné nastavit pomocí rutiny [set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) nebo interní `Set-AutomationVariable` rutiny.
+Proměnná není omezena na zadaný datový typ. Pokud chcete zadat hodnotu jiného typu, je nutné nastavit proměnnou pomocí prostředí Windows PowerShell. Pokud označíte `Not defined` , hodnota proměnné je nastavená na null. Hodnotu je nutné nastavit pomocí rutiny [set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) nebo interní `Set-AutomationVariable` rutiny.
 
 Nemůžete použít Azure Portal k vytvoření nebo změně hodnoty pro komplexní typ proměnné. Pomocí Windows PowerShellu ale můžete zadat hodnotu libovolného typu. Komplexní typy jsou načteny jako [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
 
@@ -63,14 +60,14 @@ Rutiny v následující tabulce vytvářejí a spravují proměnné automatizace
 
 | Rutina | Popis |
 |:---|:---|
-|[Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Načte hodnotu existující proměnné. Pokud je hodnota jednoduchý typ, je načten stejný typ. Pokud se jedná o komplexní typ, načte `PSCustomObject` se typ. <br>**Poznámka:**  Tuto rutinu nemůžete použít k načtení hodnoty šifrované proměnné. Jediným způsobem, jak to provést, je použít interní `Get-AutomationVariable` rutinu v konfiguraci sady RUNBOOK nebo DSC. Viz [interní rutiny pro přístup k proměnným](#internal-cmdlets-to-access-variables). |
+|[Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Načte hodnotu existující proměnné. Pokud je hodnota jednoduchý typ, je načten stejný typ. Pokud se jedná o komplexní typ, `PSCustomObject` načte se typ. <br>**Poznámka:**  Tuto rutinu nemůžete použít k načtení hodnoty šifrované proměnné. Jediným způsobem, jak to provést, je použít interní `Get-AutomationVariable` rutinu v konfiguraci sady Runbook nebo DSC. Viz [interní rutiny pro přístup k proměnným](#internal-cmdlets-to-access-variables). |
 |[New-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Vytvoří novou proměnnou a nastaví její hodnotu.|
 |[Remove-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| Odstraní existující proměnnou.|
 |[Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| Nastaví hodnotu pro existující proměnnou. |
 
 ## <a name="internal-cmdlets-to-access-variables"></a>Interní rutiny pro přístup k proměnným
 
-Interní rutiny v následující tabulce se používají pro přístup k proměnným v sadách Runbook a konfiguracích DSC. Tyto rutiny se dodávají s globálním `Orchestrator.AssetManagement.Cmdlets`modulem. Další informace najdete v tématu [interní rutiny](modules.md#internal-cmdlets).
+Interní rutiny v následující tabulce se používají pro přístup k proměnným v sadách Runbook a konfiguracích DSC. Tyto rutiny se dodávají s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](modules.md#internal-cmdlets).
 
 | Interní rutina | Popis |
 |:---|:---|
@@ -78,7 +75,7 @@ Interní rutiny v následující tabulce se používají pro přístup k proměn
 |`Set-AutomationVariable`|Nastaví hodnotu pro existující proměnnou.|
 
 > [!NOTE]
-> Vyhněte se použití proměnných `Name` v parametru `Get-AutomationVariable` v sadě Runbook nebo konfiguraci DSC. Použití proměnných může zkomplikovat zjišťování závislostí mezi sadami Runbook a proměnnými automatizace v době návrhu.
+> Vyhněte se použití proměnných v `Name` parametru `Get-AutomationVariable` v sadě Runbook nebo konfiguraci DSC. Použití proměnných může zkomplikovat zjišťování závislostí mezi sadami Runbook a proměnnými automatizace v době návrhu.
 
 `Get-AutomationVariable`nefunguje v prostředí PowerShell, ale pouze v sadě Runbook nebo konfiguraci DSC. Chcete-li například zobrazit hodnotu zašifrované proměnné, můžete vytvořit sadu Runbook, která získá proměnnou a následně ji zapsat do výstupního datového proudu:
  
@@ -97,7 +94,7 @@ Funkce v následující tabulce se používají pro přístup k proměnným v sa
 |`automationassets.set_automation_variable`|Nastaví hodnotu pro existující proměnnou. |
 
 > [!NOTE]
-> Aby bylo možné získat `automationassets` přístup k funkcím assetu, musíte importovat modul v horní části Runbooku sady Python.
+> Aby bylo možné `automationassets` získat přístup k funkcím assetu, musíte importovat modul v horní části Runbooku sady Python.
 
 ## <a name="create-and-get-a-variable"></a>Vytvoření a získání proměnné
 
@@ -115,7 +112,7 @@ Funkce v následující tabulce se používají pro přístup k proměnným v sa
 
 ### <a name="create-and-get-a-variable-in-windows-powershell"></a>Vytvoření a získání proměnné v prostředí Windows PowerShell
 
-Vaše sada Runbook nebo konfigurace DSC pomocí `New-AzAutomationVariable` rutiny vytvoří novou proměnnou a nastaví její počáteční hodnotu. Pokud je proměnná zašifrovaná, volání by mělo použít `Encrypted` parametr. Váš skript může načíst hodnotu proměnné pomocí `Get-AzAutomationVariable`. 
+Vaše sada Runbook nebo konfigurace DSC pomocí `New-AzAutomationVariable` rutiny vytvoří novou proměnnou a nastaví její počáteční hodnotu. Pokud je proměnná zašifrovaná, volání by mělo použít `Encrypted` parametr. Váš skript může načíst hodnotu proměnné pomocí `Get-AzAutomationVariable` . 
 
 >[!NOTE]
 >Skript PowerShellu nemůže načíst šifrovanou hodnotu. Jediným způsobem, jak to provést, je použití interní `Get-AutomationVariable` rutiny.
@@ -146,7 +143,7 @@ $vmIpAddress = $vmValue.IpAddress
 
 ### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>Načtení a nastavení jednoduché hodnoty z proměnné
 
-Následující příklad ukazuje, jak nastavit a načíst proměnnou v textovém Runbooku. Tento příklad předpokládá vytvoření celočíselných proměnných s názvem `NumberOfIterations` a `NumberOfRunnings` a řetězcovou proměnnou s `SampleMessage`názvem.
+Následující příklad ukazuje, jak nastavit a načíst proměnnou v textovém Runbooku. Tento příklad předpokládá vytvoření celočíselných proměnných s názvem `NumberOfIterations` a `NumberOfRunnings` a řetězcovou proměnnou s názvem `SampleMessage` .
 
 ```powershell
 $NumberOfIterations = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
@@ -187,7 +184,7 @@ except AutomationAssetNotFound:
 
 ## <a name="graphical-runbook-examples"></a>Příklady grafického Runbooku
 
-V grafickém Runbooku můžete přidat aktivity pro interní rutiny `Get-AutomationVariable` nebo. `Set-AutomationVariable` Stačí kliknout pravým tlačítkem na každou proměnnou v podokně Knihovna v grafickém editoru a vybrat aktivitu, kterou požadujete.
+V grafickém Runbooku můžete přidat aktivity pro interní rutiny `Get-AutomationVariable` nebo `Set-AutomationVariable` . Stačí kliknout pravým tlačítkem na každou proměnnou v podokně Knihovna v grafickém editoru a vybrat aktivitu, kterou požadujete.
 
 ![Přidat proměnnou na plátno](../media/variables/runbook-variable-add-canvas.png)
 

@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.date: 05/15/2020
+ms.openlocfilehash: 59c7a34e975a53226b032827feae436202c8fa30
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594317"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683316"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Transformace vyhledávání v toku dat mapování
 
@@ -41,13 +41,19 @@ Transformace vyhledávání podporuje pouze shody rovnosti. Pokud chcete výraz 
 
 Výstupní data obsahují všechny sloupce z obou datových proudů. Chcete-li odstranit duplicitní nebo nechtěné sloupce, po transformaci vyhledávání přidejte [transformaci Select](data-flow-select.md) . Sloupce je také možné v transformaci jímky vyřadit nebo přejmenovat.
 
+### <a name="non-equi-joins"></a>Spojení nepoužívající operátora
+
+Chcete-li použít podmíněný operátor, jako je například není rovno (! =) nebo větší než (>) ve vašich podmínkách vyhledávání, změňte rozevírací seznam operátoru mezi dvěma sloupci. Spojení typu non-čárka vyžadují všesměrové vysílání aspoň jednoho ze dvou datových proudů pomocí **pevného** vysílání na kartě **optimalizace** .
+
+![Vyhledávání bez operátorů](media/data-flow/non-equi-lookup.png "Vyhledávání bez operátorů")
+
 ## <a name="analyzing-matched-rows"></a>Analýza odpovídajících řádků
 
-Po transformaci vyhledávání lze funkci `isMatch()` použít k zobrazení, zda vyhledávání odpovídá jednotlivým řádkům.
+Po transformaci vyhledávání `isMatch()` lze funkci použít k zobrazení, zda vyhledávání odpovídá jednotlivým řádkům.
 
 ![Vzor vyhledávání](media/data-flow/lookup111.png "Vzor vyhledávání")
 
-Příklad tohoto modelu používá transformaci podmíněného rozdělení k rozdělení na `isMatch()` funkci. V předchozím příkladu přecházejí řádky, které odpovídají hornímu streamu, a nevyhovujícím tokům ```NoMatch``` řádků přes datový proud.
+Příklad tohoto modelu používá transformaci podmíněného rozdělení k rozdělení na `isMatch()` funkci. V předchozím příkladu přecházejí řádky, které odpovídají hornímu streamu, a nevyhovujícím tokům řádků přes ```NoMatch``` datový proud.
 
 ## <a name="testing-lookup-conditions"></a>Testování podmínek vyhledávání
 

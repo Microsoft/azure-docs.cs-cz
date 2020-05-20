@@ -3,12 +3,12 @@ title: Osvědčené postupy registru
 description: Zjistěte, jak pomocí těchto osvědčených postupů efektivně používat službu Azure Container Registry.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc84fb8cb98f58e28570095370d55a7358ce3a99
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247069"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682685"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Osvědčené postupy pro službu Azure Container Registry
 
@@ -33,7 +33,7 @@ Informace o použití geografické replikace najdete v třídílném kurzu [Geog
 
 S využitím oborů názvů úložiště můžete umožnit sdílení jednoho registru napříč několika skupinami v rámci vaší organizace. Registry se můžou sdílet napříč nasazeními a týmy. Azure Container Registry podporuje vnořené obory názvů a díky tomu umožňuje izolaci skupin.
 
-Představte si například následující značky image kontejneru. Image, které se používají v rámci podnikové sítě `aspnetcore`, jako jsou umístěné v kořenovém oboru názvů, zatímco image kontejneru vlastněné produkty a marketingovými skupinami používají své vlastní obory názvů.
+Představte si například následující značky image kontejneru. Image, které se používají v rámci podnikové sítě, jako `aspnetcore` jsou umístěné v kořenovém oboru názvů, zatímco image kontejneru vlastněné produkty a marketingovými skupinami používají své vlastní obory názvů.
 
 - *contoso.azurecr.io/aspnetcore:2.0*
 - *contoso.azurecr.io/products/widget/web:1*
@@ -59,7 +59,7 @@ Podrobné informace o ověřování ve službě Azure Container Registry najdete
 
 ## <a name="manage-registry-size"></a>Správa velikosti registru
 
-Omezení úložiště pro jednotlivé [skladové položky registru kontejneru][container-registry-skus] by měla odpovídat obvyklému scénáři: **Basic** pro začátek, **Standard** pro většinu produkčních aplikací a **Premium** pro zajištění vysoce škálovatelného výkonu a [geografické replikace][container-registry-geo-replication]. Po celou dobu životnosti vašeho registru byste měli spravovat jeho velikost pravidelným odstraňováním nevyužívaného obsahu.
+Omezení úložiště každé [úrovně služby registru kontejneru][container-registry-skus] mají být v souladu s obvyklým scénářem: **základní** pro začátek, **Standard** pro většinu produkčních aplikací a **Premium** pro výkon a [geografickou replikaci][container-registry-geo-replication]na úrovni Hyper-v. Po celou dobu životnosti vašeho registru byste měli spravovat jeho velikost pravidelným odstraňováním nevyužívaného obsahu.
 
 Pomocí příkazu Azure CLI [AZ ACR show-Usage][az-acr-show-usage] zobrazte aktuální velikost registru:
 
@@ -86,7 +86,7 @@ Podrobnosti o odstranění dat imagí z registru, včetně neoznačeného (někd
 
 ## <a name="next-steps"></a>Další kroky
 
-Služba Azure Container Registry je dostupná v několika úrovních, označovaných jako skladové položky, každá z nichž poskytuje různé možnosti. Podrobnosti o dostupných skladových položkách najdete v tématu [Skladové položky služby Azure Container Registry](container-registry-skus.md).
+Azure Container Registry je k dispozici na několika úrovních (označovaných také jako SKU), které poskytují různé možnosti. Podrobnosti o dostupných úrovních služby najdete v tématu [Azure Container Registry úrovně služeb](container-registry-skus.md).
 
 <!-- IMAGES -->
 [delete-repository-portal]: ./media/container-registry-best-practices/delete-repository-portal.png

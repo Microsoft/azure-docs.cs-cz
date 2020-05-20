@@ -1,44 +1,44 @@
 ---
 title: Upgrade složené entity – LUIS
-description: Upgradujte složenou entitu na počítačově získanou entitu pomocí procesu upgradu na portálu LUIS.
+description: Upgradujte složenou entitu na entitu strojového učení s procesem upgradu na portálu LUIS.
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 9bbb03a2009bdcb6e2fa5d20aefadd4c7c99f025
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 58b546a27c1ff1e90e1b70026f430063a47a09e8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599422"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684082"
 ---
-# <a name="upgrade-composite-entity-to-machine-learned-entity"></a>Upgrade složené entity na počítačově získanou entitu
+# <a name="upgrade-composite-entity-to-machine-learning-entity"></a>Upgrade složené entity na entitu strojového učení
 
-Upgradujte složenou entitu na počítačově získanou entitu a sestavte entitu, která přijímá více úplných předpovědi s lepším detvorbou pro ladění entit.
+Upgradujte složenou entitu na entitu strojového učení a sestavte entitu, která přijímá více úplných předpovědi s lepším detvorbou pro ladění entit.
 
 ## <a name="current-version-model-restrictions"></a>Omezení modelu aktuální verze
 
-Proces upgradu vytvoří entity, které se naučily na stroji, na základě existujících složených entit, které se nacházejí ve vaší aplikaci, do nové verze vaší aplikace. To zahrnuje i podřízené prvky a role složených entit. Proces také přepne popisky v příkladu projevy k použití nové entity.
+Proces upgradu vytvoří entity strojového učení na základě existujících složených entit, které se ve vaší aplikaci našly, do nové verze vaší aplikace. To zahrnuje i podřízené prvky a role složených entit. Proces také přepne popisky v příkladu projevy k použití nové entity.
 
 ## <a name="upgrade-process"></a>Proces upgradu
 
 Proces upgradu:
-* Vytvoří novou entitu získanou počítačem pro každou složenou entitu.
+* Vytvoří novou entitu strojového učení pro každou složenou entitu.
 * Podřízené entity:
-    * Pokud se podřízená entita používá jenom ve složené entitě, přidají se jenom k entitě rozpoznané počítačem.
-    * Pokud se podřízená entita používá ve složených _a_ jako samostatná entita (označená jako projevy), přidá se do verze jako entita a jako podentita k nové entitě získané počítačem.
+    * Pokud se podřízená entita používá jenom ve složené entitě, přidá se jenom k entitě Machine-Learning.
+    * Pokud se podřízená entita používá ve složených _a_ jako samostatná entita (označená například jako projevy), přidá se do verze jako entita a jako podentita do nové entity Machine-Learning.
     * Pokud podřízená entita používá roli, převede se každá role na subentitu se stejným názvem.
-    * Pokud je podřízenou entitou entita nenáročné na počítač (regulární výraz, seznam entit nebo předem vytvořená entita), vytvoří se nová podentita se stejným názvem a nová podentita obsahuje funkci s použitím entity nenáročné na počítač s přidanou funkcí.
+    * Pokud je podřízená entita entitou bez strojového učení (regulární výraz, seznam entit nebo předem sestavená entita), vytvoří se nová podentita se stejným názvem a nová podentita obsahuje funkci s použitím entity bez strojového učení s přidanou funkcí.
 * Názvy jsou zachovány, ale musí být jedinečné na úrovni stejné subentity nebo na stejné úrovni. Přečtěte si [jedinečné omezení pro pojmenování](luis-boundaries.md#name-uniqueness).
-* Popisky v příkladu projevy jsou přepnuty na nově získanou entitu počítač s podentitami.
+* Popisky v příkladu projevy jsou přepnuty na novou entitu strojového učení s podentitami.
 
 Pro pochopení, jak se model mění, použijte následující graf:
 
 |Starý objekt|Nový objekt|Poznámky|
 |--|--|--|
-|Složená entita|Entita získaná počítačem se strukturou|Oba objekty jsou nadřazené objekty.|
+|Složená entita|entita strojového učení se strukturou|Oba objekty jsou nadřazené objekty.|
 |Podřízená entita složeného objektu je **Jednoduchá entita** .|subentity|Oba objekty jsou podřízené objekty.|
 |Složená podřízená entita je **předem sestavená entita** , například číslo.|podentita s názvem předem sestavené entity, jako je číslo a subentita, má _funkci_ předem připravené číselné entity s možností omezení nastavenou na _hodnotu true_.|subentity obsahuje funkci s omezením na úrovni subentity.|
 |Složená podřízená entita je **předem sestavená entita** , jako je číslo a předem sestavená entita má **roli** .|podentita s názvem role a subentita má funkci předem připravené číselné entity s možností omezení nastavenou na hodnotu true.|subentity obsahuje funkci s omezením na úrovni subentity.|
-|Role|subentity|Název role se bude jmenovat jako název subentity. Subentita je přímým potomkem uživatelsky rozpoznané entity.|
+|Role|subentity|Název role se bude jmenovat jako název subentity. Subentita je přímým potomkem entity strojového učení.|
 
 ## <a name="begin-upgrade-process"></a>Zahájit proces upgradu
 
@@ -64,7 +64,7 @@ Před aktualizací se ujistěte, že:
 
 1. Indikátor průběhu indikuje stav procesu upgradu.
 
-1. Po dokončení procesu se zobrazí nová poučená verze s novými entitami učenými počítačem. Pokud chcete novou entitu zobrazit, vyberte **vyzkoušet nové entity** .
+1. Po dokončení procesu budete mít novou výukovou verzi s novými entitami strojového učení. Pokud chcete novou entitu zobrazit, vyberte **vyzkoušet nové entity** .
 
     Pokud se pro novou entitu upgrade nebo školení nezdařil, poskytuje oznámení další informace.
 

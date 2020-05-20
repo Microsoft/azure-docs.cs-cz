@@ -1,14 +1,14 @@
 ---
 title: Vyhodnotit dopad nové definice Azure Policy
 description: Pochopení procesu, který se má provést při zavedení nové definice zásady do prostředí Azure
-ms.date: 09/23/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 394f87c0328bce46d4c7177a336a7861991ad0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9844e8435452b388c934c5969898fe01d23fb47
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187745"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684303"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Vyhodnotit dopad nové definice Azure Policy
 
@@ -33,8 +33,7 @@ Z tohoto důvodu by měly být definice zásad pevně definované a zaměřené 
 
 ## <a name="audit-existing-resources"></a>Auditovat stávající prostředky
 
-Než budete chtít spravovat nové nebo aktualizované prostředky pomocí nové definice zásad, je nejlepší zjistit, jak vyhodnocuje omezené podmnožiny stávajících prostředků, jako je například testovací skupina prostředků. Pro přiřazení
-zásad použijte [režim vynucení](./assignment-structure.md#enforcement-mode)_disabled_ (DoNotEnforce), aby se zabránilo tomu, že se [projeví](./effects.md) spuštění nebo záznam z protokolu aktivit.
+Než budete chtít spravovat nové nebo aktualizované prostředky pomocí nové definice zásad, je nejlepší zjistit, jak vyhodnocuje omezené podmnožiny stávajících prostředků, jako je například testovací skupina prostředků. Pro přiřazení zásad použijte [režim vynucení](./assignment-structure.md#enforcement-mode) _disabled_ (DoNotEnforce), aby se zabránilo tomu, že se [projeví](./effects.md) spuštění nebo záznam z protokolu aktivit.
 
 Tento krok vám umožní vyhodnotit výsledky dodržování předpisů pro nové zásady u existujících prostředků, aniž by to ovlivnilo pracovní tok. Ověřte, že žádné kompatibilní prostředky nejsou označené jako nevyhovující (_falešně pozitivní_) a že všechny prostředky, které očekáváte nedodržující předpisy, jsou správně označeny.
 Po počáteční podmnožině prostředků se ověří podle očekávání, pomalu Rozšiřte vyhodnocení na všechny stávající prostředky.

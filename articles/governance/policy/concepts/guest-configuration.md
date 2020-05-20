@@ -1,14 +1,14 @@
 ---
 title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
-ms.date: 11/04/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 89f7cc3931971d70b441490f77b67ace89434c2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ff24f14281712497798f2c5231a8d98d7d89055
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025216"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684291"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta Azure Policy
 
@@ -18,7 +18,8 @@ Kromě auditování a [Oprava](../how-to/remediate-resources.md) prostředků Az
 - Konfigurace nebo přítomnost aplikací
 - Nastavení prostředí
 
-V tuto chvíli většina zásad konfigurace hosta Azure Policy jenom auditovat nastavení v rámci počítače. Nepoužívají konfigurace. Výjimkou je jedna integrovaná zásada, na [kterou se odkazuje níže](#applying-configurations-using-guest-configuration).
+V tuto chvíli většina zásad konfigurace hosta Azure Policy jenom auditovat nastavení v rámci počítače.
+Nepoužívají konfigurace. Výjimkou je jedna integrovaná zásada, na [kterou se odkazuje níže](#applying-configurations-using-guest-configuration).
 
 ## <a name="resource-provider"></a>Poskytovatel prostředků
 
@@ -28,11 +29,10 @@ Než budete moct použít konfiguraci hosta, musíte zaregistrovat poskytovatele
 
 Pokud chcete auditovat nastavení v rámci počítače, je povolená [rozšíření virtuálního počítače](../../../virtual-machines/extensions/overview.md) . Rozšíření stáhne příslušné přiřazení zásad a odpovídající definici konfigurace.
 
-> [!Important]
-> K provádění auditů na virtuálních počítačích Azure se vyžaduje rozšíření konfigurace hosta.
-> Pokud chcete nasadit rozšíření ve velkém měřítku, přiřaďte následující definice zásad:
->   - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích s Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
->   - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích se systémem Linux.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> [!IMPORTANT]
+> K provádění auditů na virtuálních počítačích Azure se vyžaduje rozšíření konfigurace hosta. Pokud chcete nasadit rozšíření ve velkém měřítku, přiřaďte následující definice zásad: 
+>  - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích s Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+>  - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích se systémem Linux.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ### <a name="limits-set-on-the-extension"></a>Omezení nastavená pro rozšíření
 
@@ -51,14 +51,14 @@ V následující tabulce je uveden seznam místních nástrojů používaných p
 
 ### <a name="validation-frequency"></a>Frekvence ověřování
 
-Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí přiřazení hostů se nastavení této konfigurace znovu zkontrolují v intervalu 15 minut.
-Výsledky se odešlou do poskytovatele prostředků konfigurace hosta, až se audit dokončí. Když dojde k [aktivaci vyhodnocení](../how-to/get-compliance-data.md#evaluation-triggers) zásad, stav počítače se zapíše do poskytovatele prostředků konfigurace hosta. Tato aktualizace způsobí Azure Policy vyhodnocení vlastností Azure Resource Manager. Vyhodnocení Azure Policy na vyžádání načte nejnovější hodnotu z poskytovatele prostředků konfigurace hosta. Neaktivuje ale nové auditování konfigurace v rámci počítače.
+Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí přiřazení hostů se nastavení této konfigurace znovu zkontrolují v intervalu 15 minut. Výsledky se odešlou do poskytovatele prostředků konfigurace hosta, až se audit dokončí. Když dojde k [aktivaci vyhodnocení](../how-to/get-compliance-data.md#evaluation-triggers) zásad, stav počítače se zapíše do poskytovatele prostředků konfigurace hosta. Tato aktualizace způsobí Azure Policy vyhodnocení vlastností Azure Resource Manager. Vyhodnocení Azure Policy na vyžádání načte nejnovější hodnotu z poskytovatele prostředků konfigurace hosta. Neaktivuje ale nové auditování konfigurace v rámci počítače.
 
 ## <a name="supported-client-types"></a>Podporované typy klientů
 
-Zásady konfigurace hosta jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici na webu Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní. Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
+Zásady konfigurace hosta jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici ve Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní.
+Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Vydavatel|Název|Verze|
+|Publisher|Name|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 a novější|
 |Credativ|Debian|8 a novější|
@@ -76,19 +76,18 @@ Windows Server nano Server se v žádné verzi nepodporuje.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Síťové požadavky rozšíření konfigurace hosta
 
-Aby počítače komunikovaly s poskytovatelem prostředků konfigurace hosta v Azure, vyžadují odchozí přístup k datacentrům Azure na portu **443**. Pokud síť v Azure nepovoluje odchozí přenosy, nakonfigurujte výjimky s pravidly [skupiny zabezpečení sítě](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) .
-[Označení služby](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" lze použít k odkazování na službu konfigurace hosta.
+Aby počítače komunikovaly s poskytovatelem prostředků konfigurace hosta v Azure, vyžadují odchozí přístup k datacentrům Azure na portu **443**. Pokud síť v Azure nepovoluje odchozí přenosy, nakonfigurujte výjimky s pravidly [skupiny zabezpečení sítě](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . [Označení služby](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" lze použít k odkazování na službu konfigurace hosta.
 
-## <a name="azure-managed-identity-requirements"></a>Požadavky na spravovanou identitu Azure
+## <a name="managed-identity-requirements"></a>Požadavky na spravovanou identitu
 
 Zásady **DeployIfNotExists** , které přidávají rozšíření do virtuálních počítačů, také povolují spravovanou identitu přiřazenou systémem, pokud taková neexistuje.
 
 > [!WARNING]
-> Vyhněte se povolení spravované identity přiřazené uživateli pro virtuální počítače v oboru pro zásady, které povolují spravovanou identitu přiřazenou systémem. Identita přiřazená uživatelem se nahradí a může způsobit, že počítač přestane reagovat.
+> Vyhněte se povolení spravované identity přiřazené uživateli pro virtuální počítače v oboru pro zásady, které povolují spravovanou identitu přiřazenou systémem. Identita přiřazená uživatelem je nahrazena a může způsobit, že počítač přestane reagovat.
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na definici konfigurace hosta
 
-Každý audit spouštěný pomocí konfigurace hosta vyžaduje dvě definice zásad, definici **DeployIfNotExists** a definici **AuditIfNotExists** . 
+Každý audit spouštěný pomocí konfigurace hosta vyžaduje dvě definice zásad, definici **DeployIfNotExists** a definici **AuditIfNotExists** .
 
 Definice zásad **DeployIfNotExists** ověří a opraví následující položky:
 
@@ -106,13 +105,14 @@ Azure Policy používá k hlášení dodržování předpisů v uzlu **dodržov�
 > [!NOTE]
 > Zásady **DeployIfNotExists** se vyžadují, aby zásady **AuditIfNotExists** vracely výsledky. Bez **DeployIfNotExists**se v zásadách **AuditIfNotExists** zobrazuje "0 z 0" prostředků jako stav.
 
-V iniciativě jsou zahrnuty všechny předdefinované zásady pro konfiguraci hosta, aby bylo možné seskupit definice pro použití v přiřazeních. Integrovaná iniciativa s názvem _ \[Preview\]: audit zabezpečení hesel uvnitř počítačů se systémy Linux a Windows_ obsahuje 18 zásad. Pro systém Linux existuje šest párů **DeployIfNotExists** a **AuditIfNotExists** pro Windows a tři páry. Logika [definice zásad](definition-structure.md#policy-rule) ověřuje, zda je vyhodnocen pouze cílový operační systém.
+V iniciativě jsou zahrnuty všechny předdefinované zásady pro konfiguraci hosta, aby bylo možné seskupit definice pro použití v přiřazeních. Integrovaná iniciativa s názvem _ \[ Preview \] : audit zabezpečení hesel uvnitř počítačů se systémy Linux a Windows_ obsahuje 18 zásad. Pro systém Linux existuje šest párů **DeployIfNotExists** a **AuditIfNotExists** pro Windows a tři páry. Logika [definice zásad](definition-structure.md#policy-rule) ověřuje, zda je vyhodnocen pouze cílový operační systém.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Auditování nastavení operačního systému po oborových plánech
 
-Jedna z iniciativ v Azure Policy poskytuje možnost auditu nastavení operačního systému podle směrného plánu. Definice, _ \[verze Preview\]: Auditovat virtuální počítače s Windows, které neodpovídají nastavení základní hodnoty zabezpečení Azure,_ zahrnuje sadu pravidel založených na zásady skupiny Active Directory.
+Jedna z iniciativ v Azure Policy poskytuje možnost auditu nastavení operačního systému podle směrného plánu. Definice, _ \[ verze Preview \] : Auditovat virtuální počítače s Windows, které neodpovídají nastavení základní hodnoty zabezpečení Azure,_ zahrnuje sadu pravidel založených na zásady skupiny Active Directory.
 
-Většina nastavení je k dispozici jako parametry. Parametry umožňují přizpůsobit, co je auditováno. Zarovnejte zásady s vašimi požadavky nebo namapujte zásady na informace třetích stran, jako jsou například oborový zákon o standardech.
+Většina nastavení je k dispozici jako parametry. Parametry umožňují přizpůsobit, co je auditováno.
+Zarovnejte zásady s vašimi požadavky nebo namapujte zásady na informace třetích stran, jako jsou například oborový zákon o standardech.
 
 Některé parametry podporují rozsah celočíselných hodnot. Například nastavení maximálního stáří hesla může auditovat platné nastavení Zásady skupiny. Rozsah "1; 70" by potvrdil, že uživatelé musí měnit hesla alespoň každých 70 dní, ale ne méně než jeden den.
 
@@ -144,7 +144,7 @@ Kde `<version>` odkazuje na aktuální číslo verze.
 
 ### <a name="collecting-logs-remotely"></a>Vzdálené shromažďování protokolů
 
-Prvním krokem při řešení potíží s konfiguracemi konfigurace hosta nebo moduly by se `Test-GuestConfigurationPackage` měly používat rutiny podle kroků, jak [vytvořit vlastní zásady auditu konfigurace hostů pro Windows](../how-to/guest-configuration-create.md#step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows).
+Prvním krokem při řešení potíží s konfiguracemi konfigurace hosta nebo moduly by se měly používat `Test-GuestConfigurationPackage` rutiny podle kroků, jak [vytvořit vlastní zásady auditu konfigurace hostů pro Windows](../how-to/guest-configuration-create.md#step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows).
 Pokud to neproběhne úspěšně, může shromažďování protokolů klienta pomáhat s diagnostikou problémů.
 
 #### <a name="windows"></a>Windows

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/13/2020
-ms.openlocfilehash: 3aecaf45a04c1428968791a71abece783c7eb7c0
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 05/19/2020
+ms.openlocfilehash: 36012801a2d36b75a0683db6f029a4560150ac2b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891320"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683054"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -44,8 +44,8 @@ Azure Machine Learning podporuje dvě formy ověřování pro webové služby: k
 
 |Metoda ověřování|Popis|Azure Container Instances|AKS|
 |---|---|---|---|
-|Key|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolená|
-|Podpisový|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici.| Zakázáno ve výchozím nastavení |
+|Klíč|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolená|
+|Podpisový|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici| Zakázáno ve výchozím nastavení |
 
 Příklady kódu naleznete v [části ověřování webové služby](how-to-setup-authentication.md#web-service-authentication).
 
@@ -99,7 +99,7 @@ Další informace o spravovaných identitách najdete v tématu [spravované ide
 
 Nedoporučujeme, aby správci odvolali přístup ke spravované identitě k prostředkům uvedeným v předchozí tabulce. Přístup můžete obnovit pomocí operace opětovné synchronizace klíčů.
 
-Azure Machine Learning vytvoří další aplikaci (název začíná `aml-` nebo `Microsoft-AzureML-Support-App-`) s přístupem na úrovni přispěvatele v rámci vašeho předplatného pro každou oblast pracovního prostoru. Například pokud máte jeden pracovní prostor v Východní USA a druhý v Severní Evropa ve stejném předplatném, uvidíte dvě z těchto aplikací. Tyto aplikace umožňují Azure Machine Learning, které vám pomůžou se správou výpočetních prostředků.
+Azure Machine Learning vytvoří další aplikaci (název začíná `aml-` nebo `Microsoft-AzureML-Support-App-` ) s přístupem na úrovni přispěvatele v rámci vašeho předplatného pro každou oblast pracovního prostoru. Například pokud máte jeden pracovní prostor v Východní USA a druhý v Severní Evropa ve stejném předplatném, uvidíte dvě z těchto aplikací. Tyto aplikace umožňují Azure Machine Learning, které vám pomůžou se správou výpočetních prostředků.
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
@@ -116,7 +116,7 @@ Můžete také povolit privátní propojení Azure pro váš pracovní prostor. 
 > [!IMPORTANT]
 > Pokud váš pracovní prostor obsahuje citlivá data, doporučujeme při vytváření pracovního prostoru nastavit [příznak hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) . 
 
-`hbi_workspace` Příznak řídí množství dat, která Microsoft shromažďuje pro účely diagnostiky, a umožňuje další šifrování v prostředích spravovaných společností Microsoft. Kromě toho umožňuje následující:
+`hbi_workspace`Příznak řídí množství dat, která Microsoft shromažďuje pro účely diagnostiky, a umožňuje další šifrování v prostředích spravovaných společností Microsoft. Kromě toho umožňuje následující:
 
 * Spustí šifrování místního pomocného disku v clusteru Amlcompute, pokud jste v tomto předplatném nevytvořili žádné předchozí clustery. V opačném případě je potřeba vyvolat lístek podpory, který umožní šifrování pomocného disku vašich výpočetních clusterů. 
 * Vyčistí místní poškrábaný disk mezi běhy.
@@ -146,8 +146,6 @@ Pokud chcete k šifrování instance Azure Cosmos DB použít vlastní klíče (
 
 Pokud chcete ve svém předplatném povolit zřizování Cosmos DB instance pomocí klíčů spravovaných zákazníkem, proveďte následující akce:
 
-* Povolte klíčové funkce spravované zákazníkem pro Cosmos DB. V tuto chvíli musíte požádat o přístup k používání této možnosti. Pokud to chcete udělat, kontaktujte [cosmosdbpm@microsoft.com](mailto:cosmosdbpm@microsoft.com)prosím.
-
 * Pokud jste to ještě neudělali, zaregistrujte Azure Machine Learning a poskytovatele prostředků Azure Cosmos DB v předplatném.
 
 * Autorizaci aplikace Machine Learning (v části Správa identit a přístupu) s oprávněními přispěvatele v předplatném.
@@ -163,7 +161,7 @@ Pokud chcete ve svém předplatném povolit zřizování Cosmos DB instance pomo
         > [!NOTE]
         > Tato instance trezoru klíčů se může lišit od trezoru klíčů, který je vytvořený Azure Machine Learning při zřizování pracovního prostoru. Pokud chcete pro pracovní prostor použít stejnou instanci trezoru klíčů, předejte stejný Trezor klíčů při zřizování pracovního prostoru pomocí [parametru key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
-Tato instance Cosmos DB se vytvoří ve skupině prostředků spravovaných Microsoftem v rámci vašeho předplatného. Spravovaná skupina prostředků je pojmenována ve formátu `<AML Workspace Resource Group Name><GUID>`.
+Tato instance Cosmos DB se vytvoří ve skupině prostředků spravovaných Microsoftem v rámci vašeho předplatného. Spravovaná skupina prostředků je pojmenována ve formátu `<AML Workspace Resource Group Name><GUID>` .
 
 > [!IMPORTANT]
 > * Pokud potřebujete tuto instanci Cosmos DB odstranit, je nutné odstranit Azure Machine Learning pracovní prostor, který ji používá. 
@@ -188,7 +186,7 @@ Příklad vytvoření pracovního prostoru pomocí existující Azure Container 
 
 Nasazený prostředek Azure Container instance (ACI) můžete šifrovat pomocí klíčů spravovaných zákazníkem. Klíč spravovaný zákazníkem, který se používá pro ACI, může být uložený v Azure Key Vault pro váš pracovní prostor. Informace o vygenerování klíče najdete v tématu [šifrování dat pomocí klíče spravovaného zákazníkem](../container-instances/container-instances-encrypt-data.md#generate-a-new-key).
 
-Pokud chcete klíč použít při nasazování modelu do služby Azure Container instance, vytvořte novou konfiguraci nasazení pomocí `AciWebservice.deploy_configuration()`. Zadejte klíčové informace pomocí následujících parametrů:
+Pokud chcete klíč použít při nasazování modelu do služby Azure Container instance, vytvořte novou konfiguraci nasazení pomocí `AciWebservice.deploy_configuration()` . Zadejte klíčové informace pomocí následujících parametrů:
 
 * `cmk_vault_base_url`: Adresa URL trezoru klíčů, který obsahuje klíč.
 * `cmk_key_name`: Název klíče.
@@ -215,7 +213,7 @@ Tento proces umožňuje šifrovat data i disk s operačním systémem nasazenýc
 
 Disk s operačním systémem pro každý výpočetní uzel, který je uložený v Azure Storage, je zašifrovaný pomocí klíčů spravovaných Microsoftem v Azure Machine Learning účty úložiště. Tento cílový výpočetní výkon je dočasný a clustery se obvykle škálují, když nejsou žádné běhy ve frontě. V podkladovém virtuálním počítači se zruší zřízení a disk s operačním systémem se odstraní. Pro disk s operačním systémem se Azure Disk Encryption nepodporuje.
 
-Každý virtuální počítač má také místní dočasný disk pro operace s operačním systémem. Pokud chcete, můžete použít disk pro přípravu školicích dat. Disk je ve výchozím nastavení zašifrovaný pro pracovní prostory s `hbi_workspace` parametrem nastaveným `TRUE`na. Toto prostředí je krátkodobé jenom po dobu trvání běhu a podpora šifrování je omezená jenom na klíče spravované systémem.
+Každý virtuální počítač má také místní dočasný disk pro operace s operačním systémem. Pokud chcete, můžete použít disk pro přípravu školicích dat. Disk je ve výchozím nastavení zašifrovaný pro pracovní prostory s `hbi_workspace` parametrem nastaveným na `TRUE` . Toto prostředí je krátkodobé jenom po dobu trvání běhu a podpora šifrování je omezená jenom na klíče spravované systémem.
 
 #### <a name="azure-databricks"></a>Azure Databricks
 
@@ -247,7 +245,7 @@ Společnost Microsoft může shromažďovat neuživatelem identifikovatelné inf
 
 Microsoft také doporučuje do proměnných prostředí ukládat citlivé informace (třeba klíčová tajná klíče účtu). Proměnné prostředí jsou protokolovány, šifrovány a uloženy v USA. Podobně při pojmenování [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)Vyhněte zahrnutí citlivých informací, jako jsou uživatelská jména nebo tajné názvy projektů. Tyto informace se mohou zobrazit v protokolech telemetrie, které jsou přístupné pro podpora Microsoftu inženýry.
 
-Shromážděná diagnostická data můžete odhlásit tím, že při zřizování `hbi_workspace` pracovního prostoru `TRUE` nastavíte parametr na. Tato funkce se podporuje při použití šablon aplikace AzureML Python SDK, CLI, REST API nebo Azure Resource Manager.
+Shromážděná diagnostická data můžete odhlásit tím, že `hbi_workspace` `TRUE` při zřizování pracovního prostoru nastavíte parametr na. Tato funkce se podporuje při použití šablon aplikace AzureML Python SDK, CLI, REST API nebo Azure Resource Manager.
 
 ### <a name="microsoft-generated-data"></a>Data generovaná společností Microsoft
 

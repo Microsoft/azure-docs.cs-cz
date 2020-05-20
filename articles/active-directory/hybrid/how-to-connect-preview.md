@@ -12,38 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 396e1d9e6ad474d053ca803218d55396c073845d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261278"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680183"
 ---
 # <a name="more-details-about-features-in-preview"></a>Další podrobnosti o funkcích ve verzi Preview
 Toto téma popisuje, jak používat funkce, které jsou aktuálně ve verzi Preview.
 
-## <a name="group-writeback"></a>Zpětný zápis skupin
-Možnost pro zpětný zápis skupin v volitelných funkcích umožňuje zpětný zápis **skupin Office 365** do doménové struktury s nainstalovaným systémem Exchange. Toto je skupina, která je v cloudu vždycky spravovaná. Pokud máte místní Exchange, můžete tyto skupiny do místní schránky zapsat zpátky, aby uživatelé s místní poštovní schránkou Exchange mohli odesílat a přijímat e-maily z těchto skupin.
+## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Rozhraní API koncového bodu služby Azure AD Connect Sync v2 (Public Preview) 
 
-Další informace o skupinách Office 365 a jejich použití najdete [tady](https://aka.ms/O365g).
-
-Skupina Office 365 se reprezentuje jako distribuční skupina v místních služba AD DS. Místní Exchange Server musí být na Exchangi 2013 kumulativní aktualizace 8 (vydané v březnu 2015) nebo Exchange 2016 pro rozpoznání tohoto nového typu skupiny.
-
-**Poznámky během verze Preview**
-
-* Atribut adresáře není aktuálně naplněný ve verzi Preview. Bez tohoto atributu není skupina viditelná v globálním seznamu. Nejjednodušší způsob, jak tento atribut naplnit, je použití rutiny `update-recipient`prostředí Exchange PowerShell.
-* Platnými cíli pro skupiny jsou pouze doménové struktury se schématem Exchange. Pokud se nezjistil žádný Exchange, není možné povolit zpětný zápis skupin.
-* V tuto chvíli se podporují jenom nasazení organizace Exchange s jednou doménovou strukturou. Pokud máte místní organizaci Exchange, budete potřebovat místní řešení GALSync, aby se tyto skupiny zobrazovaly v jiných doménových strukturách.
-* Funkce zpětného zápisu skupiny nezpracovává skupiny zabezpečení nebo distribuční skupiny.
-
-> [!NOTE]
-> Pro zpětný zápis skupin se vyžaduje předplatné Azure AD Premium.
-> 
->
+Nasadili jsme nový koncový bod (API) pro Azure AD Connect, který vylepšuje výkon operací synchronizační služby Azure Active Directory. Díky použití nového koncového bodu v2 budete mít při exportu a importu do Azure AD patrné zvýšení výkonu. Tento nový koncový bod podporuje i synchronizaci skupin s až 250 tisíc členy. Použití tohoto koncového bodu vám taky umožní zapisovat do vaší místní služby Active Directory zpátky sjednocené skupiny O365 bez maximálního počtu členství, pokud je povolen zpětný zápis skupin.   Další informace najdete v tématu [Azure AD Connect Sync v2 Endpoint API (Public Preview)](how-to-connect-sync-endpoint-api-v2.md).
 
 ## <a name="user-writeback"></a>Zpětný zápis uživatele
 > [!IMPORTANT]

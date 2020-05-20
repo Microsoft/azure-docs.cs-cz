@@ -3,14 +3,14 @@ title: Začínáme s Azure Service Fabric CLI
 description: Naučte se používat Azure Service Fabric CLI. Zjistěte, jak se připojit ke clusteru a jak spravovat aplikace.
 author: jeffj6123
 ms.topic: conceptual
-ms.date: 1/16/2020
+ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258938"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681798"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -30,7 +30,8 @@ Smyslem Service Fabric CLI je podpora nejnovější verze modulu runtime sady Se
 
 | Verze rozhraní příkazového řádku   | Podporovaná verze modulu runtime |
 |---------------|---------------------------|
-| Nejnovější (~ = 9)  | Nejnovější (~ = 7)              |
+| Nejnovější (~ = 10) | Nejnovější (~ = 7,1)            |
+| 9.0.0         | 7.1                       |
 | 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
@@ -210,7 +211,7 @@ Příkaz vrátí následující výstup:
 }
 ```
 
-## <a name="tips-and-troubleshooting"></a>Tipy a řešení potíží
+## <a name="tips-and-troubleshooting"></a>Tipy a řešení potíží
 
 Tady jsou některé návrhy a tipy pro řešení běžných problémů.
 
@@ -240,7 +241,7 @@ Ověřte, že zadaný koncový bod clusteru je dostupný a naslouchá. Ověřte 
 
 ### <a name="detailed-logs"></a>Podrobné protokoly
 
-Podrobné protokoly jsou často užitečné při ladění nebo hlášení problému. `--debug` Příznak zvyšuje úroveň podrobností výstupu.
+Podrobné protokoly jsou často užitečné při ladění nebo hlášení problému. `--debug`Příznak zvyšuje úroveň podrobností výstupu.
 
 ### <a name="command-help-and-syntax"></a>Nápověda k příkazům a jejich syntaxe
 

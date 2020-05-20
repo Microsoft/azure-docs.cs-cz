@@ -8,12 +8,13 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: monitoring
+ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268285"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684674"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorování účtu úložiště na webu Azure Portal
 
@@ -111,10 +112,10 @@ Můžete vytvářet výstrahy, které vás upozorní, když budou dosaženy prah
 Do řídicího panelu portálu můžete přidat grafy Azure Storage metriky pro libovolný účet úložiště.
 
 1. Vyberte možnost **Upravit řídicí panel** při prohlížení řídicího panelu v [Azure Portal](https://portal.azure.com).
-1. V **galerii dlaždic**vyberte **najít dlaždice podle** > **typu**.
-1. Vyberte **typ** > **účty úložiště**.
+1. V **galerii dlaždic**vyberte **najít dlaždice podle**  >  **typu**.
+1. Vyberte **typ**  >  **účty úložiště**.
 1. V části **prostředky**vyberte účet úložiště, jehož metriky chcete přidat na řídicí panel.
-1. Vyberte možnost**monitorování** **kategorií** > .
+1. Vyberte **Categories**možnost  >  **monitorování**kategorií.
 1. Přetáhněte dlaždici grafu na řídicí panel, aby se zobrazila metrika, kterou chcete zobrazit. Opakujte pro všechny metriky, které byste chtěli zobrazit na řídicím panelu. Na následujícím obrázku je jako příklad zvýrazněný graf objekty blob – celkový počet požadavků, ale všechny grafy jsou k dispozici pro umístění na řídicím panelu.
 
    ![Galerie dlaždic v Azure Portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)

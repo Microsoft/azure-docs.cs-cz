@@ -8,24 +8,72 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/08/2020
+ms.date: 05/19/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: e8c7ec6cf1d15e414a6db54d5bc2ad7e4994cd82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 346d5560d8388c8958e94efd4e149f54eb0235b7
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991292"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681785"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Videa k platformě Microsoft Identity Platform
 
 Seznamte se se základy moderního ověřování, platformy Microsoft identity a knihoven Microsoft Authentication Library (MSAL).
 
+## <a name="microsoft-identity-platform-for-developers"></a>Platforma Microsoft identity pro vývojáře
+
+*Identita pro vývojáře* video Series se zaměřuje jenom na to, co potřebujete znát, abyste mohli začít přidávat podporu identit do vaší aplikace. Vyladěno pro rychlé doručování základních aspektů platformy a používání knihoven pro ověřování, což je dobrým místem, kde můžete začít používat všechny vývojáře.
+___
+
+:::row:::
+    :::column:::
+        1. Přehled platformy Microsoft identity pro vývojáře (33:55)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/zjezqZPPOfc]
+    :::column-end:::
+     :::column:::
+        2 – jak ověřovat uživatele vašich aplikací pomocí platformy Microsoft identity (29:09)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/Mtpx_lpfRLs]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        3. oprávnění a rozhraní pro udělení souhlasu platformy Microsoft identity (45:08)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/toAWRNqqDL4]
+    :::column-end:::
+    :::column:::
+        4 – jak chránit rozhraní API pomocí platformy Microsoft Identity Platform (33:17)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/IIQ7QW4bYqA]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        5 – aplikační role a skupiny zabezpečení na platformě Microsoft identity (15:52)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/-BK2iBDrmNo]
+    :::column-end:::
+    :::column:::
+        <!-- BLANK TITLE CELL -->
+    :::column-end:::
+    :::column:::
+        <!-- BLANK VIDEO CELL -->
+    :::column-end:::
+:::row-end:::
+
 ## <a name="authentication-fundamentals"></a>Základy ověřování
 
-Pokud začínáte s koncepty, jako jsou poskytovatelé identity, tokeny zabezpečení, deklarace identity a cílová skupina, je tato série videí dobrým místem, kde začít.
+Pokud začínáte s koncepty, jako jsou poskytovatelé identity, tokeny zabezpečení, deklarace identity a cílová skupina, může vám tato série videí vyjasnit koncepty a komponenty v moderních ověřováních.
 ___
 
 :::row:::

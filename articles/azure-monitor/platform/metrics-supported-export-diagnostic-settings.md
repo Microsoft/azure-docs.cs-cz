@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422110"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680687"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor metriky platformy exportovatelné prostřednictvím nastavení diagnostiky
 
@@ -24,7 +24,10 @@ Vzhledem k tomu, že v Azure Monitor back-endu složitými rozhraními, nejsou v
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Změna chování pro hodnoty NULL a nulové hodnoty 
  
-Pro metriky platforem, které se dají exportovat prostřednictvím nastavení diagnostiky, je k dispozici několik metrik, pro které Azure Monitor interpretuje 0s jako null. To způsobilo nejasnost mezi skutečnou ' 0s ' (vysílanou prostředkem) a interpretována ' 0s ' (hodnoty null). Brzy dojde ke změně a metriky platforem exportované prostřednictvím nastavení diagnostiky již nebudou exportovány "0s", pokud je skutečně nevygeneroval základní prostředek. Změna byla naplánována 1. dubna 2020, ale byla odložena z důvodu priority posunutí z důvodu COVID-19. 
+Pro metriky platforem, které se dají exportovat prostřednictvím nastavení diagnostiky, je k dispozici několik metrik, pro které Azure Monitor interpretuje 0s jako null. To způsobilo nejasnost mezi skutečnou ' 0s ' (vysílanou prostředkem) a interpretována ' 0s ' (hodnoty null). Brzy dojde ke změně a metriky platforem exportované prostřednictvím nastavení diagnostiky již nebudou exportovány "0s", pokud je skutečně nevygeneroval základní prostředek. 
+
+> [!CAUTION]
+> Změna v chování popsané výše je naplánována na 1. června 2020.
 
 Poznámka:
 
@@ -41,7 +44,7 @@ Tabulka obsahuje následující sloupce.
 - Exportovatelné přes nastavení diagnostiky? 
 - Ovlivněno hodnotou NULL/0 
 - ResourceType 
-- Metrika 
+- Metric 
 - MetricDisplayName
 - Jednotka 
 - AggregationType
@@ -51,7 +54,7 @@ Tabulka obsahuje následující sloupce.
 > Následující tabulka může mít v dolní části vodorovný posuvník. Pokud se domníváte, že jste neztratili nějaké informace, zkontrolujte, že posuvník je zcela vlevo.  
 
 
-| Exportovatelné přes nastavení diagnostiky?  | Již generuje hodnoty NULL. |  ResourceType  |  Metrika  |  MetricDisplayName  |  Jednotka  |  AggregationType | 
+| Exportovatelné přes nastavení diagnostiky?  | Již generuje hodnoty NULL. |  ResourceType  |  Metric  |  MetricDisplayName  |  Jednotka  |  AggregationType | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | Ano * * * *  | Ne |  Microsoft. AnalysisServices/servery  |  CleanerCurrentPrice  |  Paměť: aktuální cena čisticího modulu  |  Počet  |  Průměr | 
 | Ano * * * *  | Ne |  Microsoft. AnalysisServices/servery  |  CleanerMemoryNonshrinkable  |  Paměť: nezmenšovaná paměť čisticí paměti  |  Bajty  |  Průměr | 
@@ -262,7 +265,7 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients8  |  Připojení klienti (horizontálních oddílů 8)  |  Počet  |  Maximum | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  connectedclients9  |  Připojení klienti (horizontálních oddílů 9)  |  Počet  |  Maximum | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  chyby  |  chyby  |  Počet  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys  |  Vyřazení klíčů  |  Počet  |  Celkem | 
+| **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys  |  Vyloučené klíče  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys0  |  Vyřazené klíče (horizontálních oddílů 0)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys1  |  Vyřazené klíče (horizontálních oddílů 1)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  evictedkeys2  |  Vyřazené klíče (horizontálních oddílů 2)  |  Počet  |  Celkem | 
@@ -284,7 +287,7 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys7  |  Klíče vypršení platnosti (horizontálních oddílů 7)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys8  |  Klíče vypršení platnosti (horizontálních oddílů 8)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  expiredkeys9  |  Klíče vypršení platnosti (horizontálních oddílů 9)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  GetCommands  |  Získá  |  Počet  |  Celkem | 
+| **Ano**  | Ne |  Microsoft. cache/Redis  |  GetCommands  |  Příkazy Get  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands0  |  Načtení (horizontálních oddílů 0)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands1  |  Načtení (horizontálních oddílů 1)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  getcommands2  |  Get (horizontálních oddílů 2)  |  Počet  |  Celkem | 
@@ -328,7 +331,7 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad7  |  Zatížení serveru (horizontálních oddílů 7)  |  Procento  |  Maximum | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad8  |  Zatížení serveru (horizontálních oddílů 8)  |  Procento  |  Maximum | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  serverLoad9  |  Zatížení serveru (horizontálních oddílů 9)  |  Procento  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands  |  Sady  |  Počet  |  Celkem | 
+| **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands  |  Příkazy Set  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands0  |  Sady (horizontálních oddílů 0)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands1  |  Sady (horizontálních oddílů 1)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands2  |  Sady (horizontálních oddílů 2)  |  Počet  |  Celkem | 
@@ -339,7 +342,7 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands7  |  Sady (horizontálních oddílů 7)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands8  |  Sady (horizontálních oddílů 8)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  setcommands9  |  Sady (horizontálních oddílů 9)  |  Počet  |  Celkem | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed  |  Celkem operací  |  Počet  |  Celkem | 
+| **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed  |  Celkový počet operací  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed0  |  Celkem operací (horizontálních oddílů 0)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed1  |  Celkem operací (horizontálních oddílů 1)  |  Počet  |  Celkem | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  totalcommandsprocessed2  |  Celkem operací (horizontálních oddílů 2)  |  Počet  |  Celkem | 
@@ -372,7 +375,7 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory7  |  Využitá paměť (horizontálních oddílů 7)  |  Bajty  |  Maximum | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory8  |  Využitá paměť (horizontálních oddílů 8)  |  Bajty  |  Maximum | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemory9  |  Využitá paměť (horizontálních oddílů 9)  |  Bajty  |  Maximum | 
-| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemorypercentage  |  Procento využité paměti  |  Procento  |  Maximum | 
+| **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemorypercentage  |  Využitá paměť v procentech  |  Procento  |  Maximum | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss  |  RSS využité paměti  |  Bajty  |  Maximum | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss0  |  RSS využité paměti (horizontálních oddílů 0)  |  Bajty  |  Maximum | 
 | **Ano**  | Ne |  Microsoft. cache/Redis  |  usedmemoryRss1  |  RSS využité paměti (horizontálních oddílů 1)  |  Bajty  |  Maximum | 
@@ -755,7 +758,7 @@ Tabulka obsahuje následující sloupce.
 | **Ano**  | **Ano** |  Microsoft. Devices/provisioningServices  |  AttestationAttempts  |  Pokusy o ověření identity  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/provisioningServices  |  DeviceAssignments  |  Přiřazená zařízení  |  Počet  |  Celkem | 
 | **Ano**  | **Ano** |  Microsoft. Devices/provisioningServices  |  RegistrationAttempts  |  Pokusy o registraci  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  AvailableStorage  |  Úložiště k dispozici  |  Bajty  |  Celkem | 
+| Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  AvailableStorage  |  Dostupné úložiště  |  Bajty  |  Celkem | 
 | Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  CassandraConnectionClosures  |  Ukončení připojení Cassandra  |  Počet  |  Celkem | 
 | Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  CassandraRequestCharges  |  Poplatky za žádosti Cassandra  |  Počet  |  Celkem | 
 | Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  CassandraRequests  |  Žádosti Cassandra  |  Počet  |  Počet | 
@@ -777,8 +780,8 @@ Tabulka obsahuje následující sloupce.
 | Ne  | Ne |  Microsoft. DocumentDB/databaseAccounts  |  ServiceAvailability  |  Dostupnost služby  |  Procento  |  Průměr | 
 | **Ano**  | **Ano** |  Microsoft. DocumentDB/databaseAccounts  |  TotalRequests  |  Požadavky celkem  |  Počet  |  Počet | 
 | **Ano**  | **Ano** |  Microsoft. DocumentDB/databaseAccounts  |  TotalRequestUnits  |  Celkový počet jednotek žádostí  |  Počet  |  Celkem | 
-| Ne  | Ne |  Microsoft. EnterpriseKnowledgeGraph/Services  |  FailureCount  |  Failure Count  |  Počet  |  Počet | 
-| Ne  | Ne |  Microsoft. EnterpriseKnowledgeGraph/Services  |  SuccessCount  |  Success Count  |  Počet  |  Počet | 
+| Ne  | Ne |  Microsoft. EnterpriseKnowledgeGraph/Services  |  FailureCount  |  Počet selhání  |  Počet  |  Počet | 
+| Ne  | Ne |  Microsoft. EnterpriseKnowledgeGraph/Services  |  SuccessCount  |  Počet úspěchů  |  Počet  |  Počet | 
 | Ne  | Ne |  Microsoft. EnterpriseKnowledgeGraph/Services  |  SuccessLatency  |  Latence úspěchu  |  Milisekund  |  Průměr | 
 | Ne  | Ne |  Microsoft. EnterpriseKnowledgeGraph/Services  |  TransactionCount  |  Počet transakcí  |  Počet  |  Počet | 
 | **Ano**  | **Ano** |  Microsoft. EventGrid/domény  |  DeadLetteredCount  |  Nedoručené události s písmeny  |  Počet  |  Celkem | 

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6e5e54f7bf61d933240403ff952c1aa6e162958f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5d7274712f3e7f5b16dc5be28d0ad47cfefba9fa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597356"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685150"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Co je Azure SQL Edge (Preview)?
 
@@ -33,7 +33,7 @@ Azure SQL Edge je k dispozici na Azure Marketplace a je možné ho nasadit jako 
 
 ## <a name="editions-of-sql-edge"></a>Edice SQL Edge
 
-SQL Edge je k dispozici se třemi různými edicemi nebo softwarovými plány. Tyto edice mají stejné sady funkcí a liší se jenom v souvislosti s jejich právy na používání a množstvím procesorů a paměti, které podporují.
+SQL Edge je k dispozici ve dvou různých edicích nebo softwarových plánech. Tyto edice mají stejné sady funkcí a liší se jenom v souvislosti s jejich právy na používání a množstvím procesorů a paměti, které podporují.
 
    |**Plán**  |**Popis**  |
    |---------|---------|

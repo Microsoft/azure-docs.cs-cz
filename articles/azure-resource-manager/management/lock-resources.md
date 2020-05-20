@@ -2,13 +2,13 @@
 title: Uzamknout prostředky, aby nedocházelo ke změnám
 description: Zabrání uživatelům aktualizovat nebo odstraňovat důležité prostředky Azure tím, že použije zámek pro všechny uživatele a role.
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: 6bd595e3c676c8521470a1f5a00fe782e83dc840
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274005"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683747"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -25,17 +25,23 @@ Na rozdíl od řízení přístupu na základě role slouží zámky správy k n
 
 Zámky služby Resource Manager se vztahují jen na operace, které probíhají v rovině správy, tedy operace odesílané na `https://management.azure.com`. Tyto zámky nijak neomezují, jak prostředky vykonávají své vlastní funkce. Omezené jsou změny prostředků, ale ne jejich operace. Například zámek jen pro čtení na SQL Database zabrání v odstranění nebo změně databáze. Nebrání ve vytváření, aktualizování nebo odstraňování dat v databázi. Datové transakce jsou povolené, protože tyto operace se neodesílají na `https://management.azure.com`.
 
-Použití **ReadOnly** může vést k neočekávaným výsledkům, protože některé operace, které se nejeví pro úpravu prostředku, skutečně vyžadují akce, které jsou blokovány zámkem. Zámek **ReadOnly** lze použít u prostředku nebo skupiny prostředků obsahující prostředek. Mezi běžné příklady operací, které jsou blokovány zámkem **jen pro čtení** , patří:
+## <a name="considerations-before-applying-locks"></a>Předpoklady před použitím zámků
 
-* Zámek **jen pro čtení** v účtu úložiště znemožní všem uživatelům zobrazovat seznam klíčů. Operace výpisu klíčů se zpracovává prostřednictvím požadavku POST, protože vrácené klíče jsou k dispozici pro operace zápisu.
+Použití zámků může vést k neočekávaným výsledkům, protože některé operace, které nezpůsobují úpravu prostředku, skutečně vyžadují akce blokované zámkem. Mezi běžné příklady operací, které jsou blokované zámky, patří:
 
-* Zámek **jen pro čtení** u prostředku App Service zabraňuje tomu, aby aplikace Visual Studio Průzkumník serveru zobrazování souborů pro daný prostředek, protože tato interakce vyžaduje přístup pro zápis.
+* Zámek jen pro čtení v **účtu úložiště** zabraňuje všem uživatelům v výpisu klíčů. Operace výpisu klíčů se zpracovává prostřednictvím požadavku POST, protože vrácené klíče jsou k dispozici pro operace zápisu.
 
-* Zámek **jen pro čtení** u skupiny prostředků, která obsahuje virtuální počítač, zabrání všem uživatelům v spuštění nebo restartování virtuálního počítače. Tyto operace vyžadují požadavek POST.
+* Zámek jen pro čtení u prostředku **App Service** zabraňuje tomu, aby aplikace Visual Studio Průzkumník serveru zobrazování souborů pro daný prostředek, protože tato interakce vyžaduje přístup pro zápis.
+
+* Zámek jen pro čtení ve **skupině prostředků** , která obsahuje **virtuální počítač** , zabrání všem uživatelům v spuštění nebo restartování virtuálního počítače. Tyto operace vyžadují požadavek POST.
+
+* Zámek jen pro čtení u **předplatného** , který brání **Azure Advisor** správné fungování. Poradce nemůže uložit výsledky svých dotazů.
+
+* Zámek nejde odstranit, protože **Skupina prostředků** vytvořená **službou Azure Backup** způsobuje selhání zálohování. Služba podporuje maximálně 18 bodů obnovení. Při uzamčení nemůže služba zálohování vyčistit body obnovení. Další informace najdete v článku [Nejčastější dotazy – zálohování virtuálních počítačů Azure](../../backup/backup-azure-vm-backup-faq.md).
 
 ## <a name="who-can-create-or-delete-locks"></a>Kdo může vytvářet nebo odstraňovat zámky
 
-Chcete-li vytvořit nebo odstranit zámky pro správu, je `Microsoft.Authorization/*` nutné `Microsoft.Authorization/locks/*` mít přístup k akcím nebo. Z předdefinovaných rolí má tyto akce povolené pouze **vlastník** a **správce uživatelských přístupů**.
+Chcete-li vytvořit nebo odstranit zámky pro správu, je nutné mít přístup k `Microsoft.Authorization/*` `Microsoft.Authorization/locks/*` akcím nebo. Z předdefinovaných rolí má tyto akce povolené pouze **vlastník** a **správce uživatelských přístupů**.
 
 ## <a name="managed-applications-and-locks"></a>Spravované aplikace a zámky
 
@@ -56,10 +62,6 @@ Všimněte si, že služba obsahuje odkaz na **spravovanou skupinu prostředků*
 Chcete-li odstranit vše pro službu včetně uzamčené skupiny prostředků infrastruktury, vyberte možnost **Odstranit** pro službu.
 
 ![Odstranit službu](./media/lock-resources/delete-service.png)
-
-## <a name="azure-backups-and-locks"></a>Zálohy a zámky Azure
-
-Pokud zamknete skupinu prostředků vytvořenou službou Azure Backup, zálohování začnou selhat. Služba podporuje maximálně 18 bodů obnovení. Služba Backup **CanNotDelete** Lock nemůže vyčistit body obnovení. Další informace najdete v článku [Nejčastější dotazy – zálohování virtuálních počítačů Azure](../../backup/backup-azure-vm-backup-faq.md).
 
 ## <a name="portal"></a>Portál
 

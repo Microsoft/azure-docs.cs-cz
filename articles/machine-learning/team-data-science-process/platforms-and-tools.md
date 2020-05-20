@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88e9cdfa8ea4554a44ddfc25cde2b0eb2aed7a57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81256514"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682698"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty pro datové vědy
 
@@ -49,7 +49,7 @@ Zahrnuje také **nástroje ml a AI** , jako jsou xgboost, Mxnet a pro dostupné.
 
 V současné době je DSVM k dispozici v operačních systémech **Windows** a **Linux CentOS** . Vyberte velikost DSVM (počet jader procesoru a množství paměti) na základě potřeb projektů pro datové vědy, na kterých chcete provádět plánování. 
 
-Další informace o edici Windows DSVM najdete v části [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) na Azure Marketplace. Informace o edici DSVM pro Linux najdete v tématu [linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804).
+Další informace o edici Windows DSVM najdete v části [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) na Azure Marketplace. Informace o edici DSVM pro Linux najdete v tématu [linux Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804).
 
 Další informace o tom, jak efektivně provádět některé běžné úkoly pro datové vědy na DSVM, najdete v tématu [10 věcí, které můžete dělat na virtuálním počítači pro datové vědy](../data-science-virtual-machine/vm-do-ten-things.md) .
 
@@ -136,7 +136,7 @@ Pokud používáte počítače se systémem Linux (CentOS) ke spuštění přík
 
 1. Zkopírujte celý klíč SSH včetně *SSH-RSA*. 
 1. Přihlaste se ke svému Azure DevOps Services. 
-1. V pravém horním rohu stránky klikněte na **<jméno\> ** a pak klikněte na **zabezpečení**. 
+1. V pravém horním rohu stránky klikněte na **<jméno \> ** a pak klikněte na **zabezpečení**. 
     
    ![Klikněte na své jméno a pak klikněte na zabezpečení.](./media/platforms-and-tools/resources-2-user-setting.png)
 

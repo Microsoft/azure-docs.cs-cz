@@ -8,12 +8,13 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: monitoring
+ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605068"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684656"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -75,7 +76,7 @@ Praktickou příručku pro komplexní řešení potíží v aplikacích Azure St
   * [Příloha 4: použití Excelu k zobrazení metrik a dat protokolu]
   * [Příloha 5: monitorování pomocí Application Insights pro Azure DevOps]
 
-## <a name="introduction"></a><a name="introduction"></a>Úvod
+## <a name="introduction"></a><a name="introduction"></a>Ukázek
 V této příručce se dozvíte, jak používat funkce, jako je Analýza úložiště Azure, protokolování na straně klienta v klientské knihovně Azure Storage a další nástroje třetích stran k identifikaci, diagnostice a řešení potíží souvisejících s Azure Storage.
 
 ![][1]
@@ -359,7 +360,7 @@ Služba Storage počítá jenom **hodnotu averagee2elatency** metriky pro úspě
 #### <a name="investigating-client-performance-issues"></a>Zkoumání problémů s výkonem klienta
 Možné příčiny, proč klient reaguje pomalu, zahrnuje omezený počet dostupných připojení nebo vláken nebo má nízkou velikost prostředků, jako jsou například CPU, paměť nebo šířka pásma sítě. Problém může být možné vyřešit úpravou kódu klienta tak, aby byl efektivnější (například pomocí asynchronního volání služby úložiště), nebo pomocí většího virtuálního počítače (s více jádry a více paměti).
 
-Pro služby Table a Queue může Nagle algoritmus také způsobit vysoké **hodnotu averagee2elatency** ve srovnání s **hodnotu averageserverlatency**: Další informace najdete v tématu o [algoritmu post Nagle není uživatelsky přívětivý vůči malým požadavkům](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx). Nagle algoritmus můžete v kódu zakázat pomocí třídy **Třída ServicePointManager** v oboru názvů **System.NET** . Tento postup byste měli provést předtím, než v aplikaci provedete jakékoli volání služby Table nebo Queue, protože to nemá vliv na připojení, která jsou již otevřena. Následující příklad pochází z metody **Application_Start** v roli pracovního procesu.
+Pro služby Table a Queue může Nagle algoritmus také způsobit vysoké **hodnotu averagee2elatency** ve srovnání s **hodnotu averageserverlatency**: Další informace najdete v tématu o [algoritmu post Nagle není uživatelsky přívětivý vůči malým požadavkům](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). Nagle algoritmus můžete v kódu zakázat pomocí třídy **Třída ServicePointManager** v oboru názvů **System.NET** . Tento postup byste měli provést předtím, než v aplikaci provedete jakékoli volání služby Table nebo Queue, protože to nemá vliv na připojení, která jsou již otevřena. Následující příklad pochází z metody **Application_Start** v roli pracovního procesu.
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
@@ -516,24 +517,24 @@ Položky protokolu:
 
 | ID požadavku | Text operace |
 | --- | --- |
-| 07b26a5d-... |Spouští se synchronní požadavek `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`na. |
+| 07b26a5d-... |Spouští se synchronní požadavek na `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = HEAD.................. x-MS-Client-Request-ID: 07b26a5d-.... x-MS-Date: Út, 03. června 2014 10:33:11 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: Container. |
 | 07b26a5d-... |Čeká se na odpověď. |
-| 07b26a5d-... |Přijata odpověď. Stavový kód = 200, ID žádosti = eeead849-... Content-MD5 =, ETag = &quot;0x8D14D2DC63D059B&quot;. |
+| 07b26a5d-... |Přijata odpověď. Stavový kód = 200, ID žádosti = eeead849-... Content-MD5 =, ETag = &quot; 0x8D14D2DC63D059B &quot; . |
 | 07b26a5d-... |Hlavičky odpovědi byly úspěšně zpracovány, pokračuje se zbývající částí operace. |
 | 07b26a5d-... |Stahuje se text odpovědi. |
 | 07b26a5d-... |Operace se úspěšně dokončila. |
-| 07b26a5d-... |Spouští se synchronní požadavek `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`na. |
+| 07b26a5d-... |Spouští se synchronní požadavek na `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = odstranit................... x-MS-Client-Request-ID: 07b26a5d-.... x-MS-Date: Út, 03. června 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: Container. |
 | 07b26a5d-... |Čeká se na odpověď. |
 | 07b26a5d-... |Přijata odpověď. Stavový kód = 202, ID žádosti = 6ab2a4cf-..., obsahu-MD5 =, ETag =. |
 | 07b26a5d-... |Hlavičky odpovědi byly úspěšně zpracovány, pokračuje se zbývající částí operace. |
 | 07b26a5d-... |Stahuje se text odpovědi. |
 | 07b26a5d-... |Operace se úspěšně dokončila. |
-| e2d06d78-... |Spouští se asynchronní požadavek `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`na.</td> |
+| e2d06d78-... |Spouští se asynchronní požadavek na `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` .</td> |
 | e2d06d78-... |StringToSign = HEAD.................. x-MS-Client-Request-ID: e2d06d78-.... x-MS-Date: Út, 03. června 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: Container. |
 | e2d06d78-... |Čeká se na odpověď. |
-| de8b1c3c-... |Spouští se synchronní požadavek `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt`na. |
+| de8b1c3c-... |Spouští se synchronní požadavek na `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` . |
 | de8b1c3c-... |StringToSign = PUT... 64. qCmF + TQLPhq/YYK50mP9ZQ = =........... x-MS-BLOB-typ: BlockBlob. x-MS-Client-Request-ID: de8b1c3c-.... x-MS-Date: Út, 03 června 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated. txt. |
 | de8b1c3c-... |Probíhá příprava na zápis dat žádosti. |
 | e2d06d78-... |Při čekání na odpověď se vyvolala výjimka: vzdálený server vrátil chybu: (404) Nenalezeno. |
@@ -541,7 +542,7 @@ Položky protokolu:
 | e2d06d78-... |Hlavičky odpovědi byly úspěšně zpracovány, pokračuje se zbývající částí operace. |
 | e2d06d78-... |Stahuje se text odpovědi. |
 | e2d06d78-... |Operace se úspěšně dokončila. |
-| e2d06d78-... |Spouští se asynchronní požadavek `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`na. |
+| e2d06d78-... |Spouští se asynchronní požadavek na `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | e2d06d78-... |StringToSign = PUT... 0................... x-MS-Client-Request-ID: e2d06d78-.... x-MS-Date: Út, 03. června 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: Container. |
 | e2d06d78-... |Čeká se na odpověď. |
 | de8b1c3c-... |Zápis dat požadavku. |
@@ -562,7 +563,7 @@ Pokud se klientská aplikace pokusí použít klíč SAS, který neobsahuje pot�
 
 Následující tabulka ukazuje ukázkovou zprávu protokolu na straně serveru ze souboru protokolu protokolování úložiště:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 | Čas zahájení požadavku | 2014-05-30T06:17:48.4473697 Z |
 | Typ operace     | GetBlobProperties            |
@@ -571,7 +572,7 @@ Následující tabulka ukazuje ukázkovou zprávu protokolu na straně serveru z
 | Typ ověřování| Vede                          |
 | Typ služby       | Objekt blob                         |
 | Adresa URL požadavku         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
-| &nbsp;                 |   ? sv = 2014-02-14&SR = c&si = mypolicy&SIG = XXXXX&;API-Version = 2014-02-14 |
+| &nbsp;                 |   ? sv = 2014-02-14&SR = c&si = mypolicy&SIG = XXXXX &; API-Version = 2014-02-14 |
 | Hlavička ID žádosti  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | ID požadavku klienta  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
@@ -814,7 +815,7 @@ Další informace najdete v [Application Insights](../../azure-monitor/app/app-i
 Další informace o analýzách v Azure Storage najdete v těchto materiálech:
 
 * [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)
-* [Analýzy úložiště](storage-analytics.md)
+* [Analýza úložiště](storage-analytics.md)
 * [Metriky služby Storage Analytics](storage-analytics-metrics.md)
 * [Schéma tabulky metrik analýzy úložiště](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [Protokoly analýzy úložiště](storage-analytics-logging.md)

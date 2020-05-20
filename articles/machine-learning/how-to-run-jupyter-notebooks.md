@@ -1,5 +1,5 @@
 ---
-title: Spuštění poznámkových bloků Jupyter ve vašem pracovním prostoru
+title: Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 titleSuffix: Azure Machine Learning
 description: Přečtěte si, jak spustit Jupyter Notebook, aniž byste opustili pracovní prostor v Azure Machine Learning Studiu.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 67da2cb31d59838bb3ad2b964530d85d8be9be4c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 96e37afd8bf7d59eef4a4c0c831f535faa36d34d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783653"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681439"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spuštění poznámkových bloků Jupyter ve vašem pracovním prostoru
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Přečtěte si, jak spustit poznámkové bloky Jupyter přímo ve vašem pracovním prostoru v Azure Machine Learning Studiu. I když můžete spustit [Jupyter](https://jupyter.org/) nebo [JupyterLab](https://jupyterlab.readthedocs.io), můžete také upravit a spustit poznámkové bloky, aniž byste museli opustit pracovní prostor.
@@ -31,7 +31,7 @@ Podívejte se, jak můžete:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) před tím, než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://aka.ms/AMLFree), ještě než začnete.
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a>Vytvoření poznámkových bloků
@@ -62,7 +62,7 @@ Váš pracovní prostor obsahuje složku **ukázek** s poznámkami, které jsou 
 
 Příklad najdete v tématu [kurz: vytvoření prvního experimentu ml](tutorial-1st-experiment-sdk-setup.md#azure).
 
-### <a name="a-nameterminal-use-files-from-git-and-version-my-files"></a><a name="terminal">Použít soubory z Gitu a verze moje soubory
+### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a>Použít soubory z Gitu a verze moje soubory
 
 Ke všem operacím Git můžete přistupovat pomocí okna terminálu. Všechny soubory a složky Git budou uložené v systému souborů pracovního prostoru.
 
@@ -161,7 +161,7 @@ Poznámkový blok automaticky vyhledá všechny jádra Jupyter nainstalované na
 
 1. Na panelu nástrojů poznámkového bloku vyberte [**otevřít terminál**](#terminal) .
 1. Pomocí okna terminálu vytvořte nové prostředí.
-1. Aktivujte prostředí.  Například po vytvoření `newenv`:
+1. Aktivujte prostředí.  Například po vytvoření `newenv` :
 
     ```shell
     source activate newenv
@@ -174,7 +174,7 @@ Můžete nainstalovat kterýkoli z [dostupných jader Jupyter](https://github.co
 
 Indikátor vedle rozevíracího seznamu **COMPUTE** zobrazuje jeho stav.  Stav je zobrazen také v rozevíracím seznamu.  
 
-|Barvy |Stav výpočtů |
+|Barva |Stav výpočtů |
 |---------|---------| 
 | Green | Spuštěná výpočetní prostředí |
 | Červený |Výpočet se nezdařil | 
@@ -184,7 +184,7 @@ Indikátor vedle rozevíracího seznamu **COMPUTE** zobrazuje jeho stav.  Stav j
 
 Indikátor vedle rozevíracího seznamu **jádro** zobrazuje jeho stav.
 
-|Barvy |Stav jádra |
+|Barva |Stav jádra |
 |---------|---------|
 |  Green |Připojení jádra, nečinné, zaneprázdněné|
 |  Les |Jádro není připojeno. |

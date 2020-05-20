@@ -1,14 +1,14 @@
 ---
 title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
-ms.date: 02/01/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: d4d9c530a7f9c4683f522a08a30e23437d1774cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c75f078cb80d5e2dbc00a69817d223d4818d55b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194002"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684523"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -26,17 +26,17 @@ Než začnete se zaměřením na dodržování předpisů, Podívejme se na to, 
 
 ## <a name="evaluation-triggers"></a>Aktivační události vyhodnocení
 
-Výsledky dokončeného cyklu vyhodnocení jsou k dispozici ve zprostředkovateli `Microsoft.PolicyInsights` prostředků prostřednictvím `PolicyStates` operací `PolicyEvents` a. Další informace o operacích REST API Azure Policy Insights najdete v tématu [Azure Policy Insights](/rest/api/policy-insights/).
+Výsledky dokončeného cyklu vyhodnocení jsou k dispozici ve `Microsoft.PolicyInsights` zprostředkovateli prostředků prostřednictvím `PolicyStates` `PolicyEvents` operací a. Další informace o operacích REST API Azure Policy Insights najdete v tématu [Azure Policy Insights](/rest/api/policy-insights/).
 
 K vyhodnocení přiřazených zásad a iniciativ dojde v důsledku různých událostí:
 
-- Zásada nebo iniciativa je nově přiřazena k oboru. Použití přiřazení pro definovaný obor trvá přibližně 30 minut. Jakmile se použije, cyklus hodnocení začne u prostředků v tomto rozsahu s nově přiřazenou zásadou nebo iniciativou a v závislosti na účincích používaných zásadami nebo iniciativou jsou prostředky označené jako vyhovující nebo nevyhovující. Velký počet zásad nebo iniciativ vyhodnocených pro velký rozsah prostředků může chvíli trvat. V takovém případě neexistuje předem definované očekávání, kdy se cyklus vyhodnocení dokončí. Po dokončení budou aktualizované výsledky dodržování předpisů k dispozici na portálu a sadách SDK.
+- Zásada nebo iniciativa je nově přiřazena k oboru. Použití přiřazení pro definovaný obor trvá přibližně 30 minut. Jakmile se použije, cyklus hodnocení začne u prostředků v tomto rozsahu s nově přiřazenou zásadou nebo iniciativou a v závislosti na účincích používaných zásadami nebo iniciativou jsou prostředky označené jako vyhovující nebo nevyhovující. Velký počet zásad nebo iniciativ vyhodnocených pro velký rozsah prostředků může chvíli trvat. V takovém případě neexistuje předem definované očekávání po dokončení zkušebního cyklu. Po dokončení budou aktualizované výsledky dodržování předpisů k dispozici na portálu a sadách SDK.
 
 - Zásada nebo iniciativa, která je již přiřazena k oboru, je aktualizována. Cyklus hodnocení a časování pro tento scénář je stejný jako u nového přiřazení k oboru.
 
 - Prostředek se nasadí do oboru s přiřazením prostřednictvím Správce prostředků, REST, Azure CLI nebo Azure PowerShell. V tomto scénáři se na portálu budou k dispozici informace o vlivu události (připojení, audit, zamítnutí, nasazení) a odpovídajících informací o stavu pro jednotlivé prostředky na portálu a sady SDK o 15 minutách. Tato událost nezpůsobí vyhodnocení dalších prostředků.
 
-- Standardní cyklus hodnocení dodržování předpisů. Každých 24 hodin se přiřazení automaticky přehodnotí. Velké zásady nebo podněty mnoha prostředků můžou nějakou dobu trvat, takže není k dispozici předem definovaná Očekávaná doba, po které se cyklus vyhodnocení dokončí. Po dokončení budou aktualizované výsledky dodržování předpisů k dispozici na portálu a sadách SDK.
+- Standardní cyklus hodnocení dodržování předpisů. Každých 24 hodin se přiřazení automaticky přehodnotí. Velké zásady nebo podněty mnoha prostředků můžou nějakou dobu trvat, takže není k dispozici předem definovaná Očekávaná doba, po které se zkušební cyklus dokončí. Po dokončení budou aktualizované výsledky dodržování předpisů k dispozici na portálu a sadách SDK.
 
 - Poskytovatel prostředků [Konfigurace hosta](../concepts/guest-configuration.md) se aktualizuje s podrobnostmi o dodržování předpisů spravovaným prostředkem.
 
@@ -44,7 +44,41 @@ K vyhodnocení přiřazených zásad a iniciativ dojde v důsledku různých ud�
 
 ### <a name="on-demand-evaluation-scan"></a>Prohledávání hodnocení na vyžádání
 
-Kontrolu vyhodnocení předplatného nebo skupiny prostředků lze spustit voláním REST API. Tato kontrola je asynchronní proces. V takovém případě koncový bod REST pro zahájení kontroly nečeká na odpověď, dokud se kontrola nedokončí. Místo toho poskytuje identifikátor URI pro dotaz na stav vyžádaného vyhodnocení.
+Kontrolu vyhodnocení předplatného nebo skupiny prostředků lze spustit Azure PowerShell nebo volání REST API. Tato kontrola je asynchronní proces.
+
+#### <a name="on-demand-evaluation-scan---azure-powershell"></a>Kontrola vyhodnocení na vyžádání – Azure PowerShell
+
+Kontrola dodržování předpisů se spouští pomocí rutiny [Start-AzPolicyComplianceScan](/powershell/module/az.policyinsights/start-azpolicycompliancescan) .
+
+Ve výchozím nastavení `Start-AzPolicyComplianceScan` spustí vyhodnocení pro všechny prostředky v aktuálním předplatném. Pokud chcete zahájit vyhodnocení konkrétní skupiny prostředků, použijte parametr **ResourceGroupName** . Následující příklad spustí kontrolu dodržování předpisů v aktuálním předplatném pro skupinu prostředků _MyRG_ :
+
+```azurepowershell-interactive
+Start-AzPolicyComplianceScan -ResourceGroupName MyRG
+```
+
+PowerShell může počkat na dokončení asynchronního volání před zadáním výstupu výsledků nebo jeho spuštěním na pozadí jako [úloha](/powershell/module/microsoft.powershell.core/about/about_jobs). Chcete-li pomocí úlohy PowerShell spustit kontrolu kompatibility na pozadí, použijte parametr **AsJob** a nastavte hodnotu na objekt, jako `$job` v tomto příkladu:
+
+```azurepowershell-interactive
+$job = Start-AzPolicyComplianceScan -AsJob
+```
+
+Stav úlohy můžete zkontrolovat zaškrtnutím tohoto `$job` objektu. Úloha je typu `Microsoft.Azure.Commands.Common.AzureLongRunningJob` . Použijte k `Get-Member` `$job` zobrazení dostupných vlastností a metod na objektu.
+
+Kontrola kompatibility je spuštěná a kontroluje `$job` výsledky výstupů objektů, jako jsou tyto:
+
+```azurepowershell-interactive
+$job
+
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+2      Long Running O… AzureLongRunni… Running       True            localhost            Start-AzPolicyCompliance…
+```
+
+Po dokončení kontroly dodržování předpisů se vlastnost **stav** změní na _dokončeno_.
+
+#### <a name="on-demand-evaluation-scan---rest"></a>Kontrola vyhodnocení na vyžádání – REST
+
+V rámci asynchronního procesu koncový bod REST ke spuštění kontroly nečeká na odpověď, dokud se kontrola nedokončí. Místo toho poskytuje identifikátor URI pro dotaz na stav vyžádaného vyhodnocení.
 
 Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
 
@@ -56,19 +90,19 @@ Kontrola podporuje vyhodnocení prostředků v rámci předplatného nebo ve sku
 - Předplatné
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 - Skupina prostředků
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 Volání vrátí stav **přijato 202** . Zahrnuté v hlavičce odpovědi je vlastnost **umístění** s následujícím formátem:
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2019-10-01
 ```
 
 `{ResourceContainerGUID}`je staticky generován pro požadovaný rozsah. Pokud je v oboru již spuštěno prohledávání na vyžádání, nová kontrola není spuštěna. Místo toho se nové žádosti dodávají stejnému `{ResourceContainerGUID}` identifikátoru URI **umístění** pro stav. Příkaz REST API **Get** do identifikátoru URI pro **umístění** vrací **202 přijatý** , zatímco probíhá vyhodnocení. Po dokončení kontroly vyhodnocení vrátí stav **200 OK** . Tělo dokončeného prohledávání je odpověď JSON se stavem:
@@ -143,7 +177,7 @@ Zpět na stránce kompatibilita prostředků klikněte pravým tlačítkem na ř
 
 ### <a name="understand-non-compliance"></a>Pochopení nedodržování předpisů
 
-Pokud je zjištěno, že prostředky nejsou **kompatibilní**, existuje mnoho možných důvodů. Informace o tom, proč prostředek **nedodržuje předpisy** nebo najít odpovědné změny, najdete v tématu [určení nedodržení předpisů](./determine-non-compliance.md).
+Pokud je zjištěno, že prostředek není **kompatibilní**, existuje mnoho možných důvodů. Informace o tom, proč prostředek **nedodržuje předpisy** nebo najít odpovědné změny, najdete v tématu [určení nedodržení předpisů](./determine-non-compliance.md).
 
 ## <a name="command-line"></a>Příkazový řádek
 
@@ -269,7 +303,7 @@ Další informace o dotazování na události zásad najdete v článku referen�
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Azure PowerShell modul pro Azure Policy je na Galerie prostředí PowerShell k dispozici jako [AZ. PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights).
-Pomocí PowerShellGet můžete nainstalovat modul pomocí nástroje `Install-Module -Name Az.PolicyInsights` (Ujistěte se, že máte nainstalovanou nejnovější [Azure PowerShell](/powershell/azure/install-az-ps) ):
+Pomocí PowerShellGet můžete nainstalovat modul pomocí nástroje (Ujistěte se, že `Install-Module -Name Az.PolicyInsights` máte nainstalovanou nejnovější [Azure PowerShell](/powershell/azure/install-az-ps) ):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
@@ -383,7 +417,7 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-Pole **PrincipalOid** lze použít k získání konkrétního uživatele pomocí rutiny `Get-AzADUser`Azure PowerShell. Nahraďte **{principalOid}** odpovědí, kterou jste dostali z předchozího příkladu.
+Pole **PrincipalOid** lze použít k získání konkrétního uživatele pomocí rutiny Azure PowerShell `Get-AzADUser` . Nahraďte **{principalOid}** odpovědí, kterou jste dostali z předchozího příkladu.
 
 ```azurepowershell-interactive
 PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
@@ -392,7 +426,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-Pokud máte [pracovní prostor Log Analytics](../../../log-analytics/log-analytics-overview.md) s `AzureActivity` z [Activity log Analyticsho řešení](../../../azure-monitor/platform/activity-log-collect.md) , které je svázáno s vaším předplatným, můžete také výsledky nedodržování předpisů zobrazit v rámci zkušebního cyklu pomocí `AzureActivity` jednoduchých dotazů Kusto a tabulky. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
+Pokud máte [pracovní prostor Log Analytics](../../../log-analytics/log-analytics-overview.md) s `AzureActivity` z [Activity log Analyticsho řešení](../../../azure-monitor/platform/activity-log-collect.md) , které je svázáno s vaším předplatným, můžete také výsledky nedodržování předpisů zobrazit v rámci zkušebního cyklu pomocí jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure Policy dodržování předpisů pomocí protokolů Azure Monitor" border="false":::
 

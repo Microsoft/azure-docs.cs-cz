@@ -2,13 +2,13 @@
 title: Funkce – LUIS
 description: Přidáním funkcí do jazykového modelu poskytněte nápovědu týkající se rozpoznávání vstupu, který chcete označit nebo klasifikovat.
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 906876e39eb7ff31c2e6b954d1514d8afc50bf3a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/14/2020
+ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591892"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682156"
 ---
 # <a name="machine-learning-ml-features"></a>Funkce strojového učení (ML)
 
@@ -38,9 +38,9 @@ Pokud potřebujete, aby vaše aplikace LUIS dokázala zobecnit a identifikovat n
 Seznam frází LUIS považuje za kontext a generalizy k identifikaci položek, které jsou podobné, ale nikoli přesného textu.
 
 Postup použití seznamu frází:
-* Začínáme s entitou učenou počítačem
+* Začínáme s entitou strojového učení
     * Přidat ukázkové promluvy
-    * Popisek s entitou učenou počítačem
+    * Popisek s entitou strojového učení
 * Přidat seznam frází
     * Přidat slova s podobným významem – **Nepřidávat všechna** možná slova nebo fráze. Místo toho přidejte několik slov nebo frází najednou a pak je přehlaste a publikujte.
     * Kontrola a přidání navrhovaných slov
@@ -54,7 +54,7 @@ Příkladem slov, která můžou potřebovat seznam frází, jsou lékařské v�
 Pokud chcete extrahovat lékařské výrazy:
 * Nejprve v rámci těchto projevy vytvořte příklad lékařského lékařství projevy a návěští.
 * Pak vytvořte seznam frází s příklady podmínek v doméně předmětu. Seznam frází by měl zahrnovat skutečný termín, který jste popsali, a další podmínky, které popisují stejný pojem.
-* Přidejte seznam frází k entitě nebo podentitě, která extrahuje koncept použitý v seznamu frází. Nejběžnějším scénářem je součást (podřízená) entita učená počítačem. Pokud má být seznam frází použit ve všech záměrech nebo entitách, označte seznam frází jako globální seznam frází. `enabledForAllModels`Příznak řídí tento rozsah modelu v rozhraní API.
+* Přidejte seznam frází k entitě nebo podentitě, která extrahuje koncept použitý v seznamu frází. Nejběžnějším scénářem je součást (podřízená) entita strojového učení. Pokud má být seznam frází použit ve všech záměrech nebo entitách, označte seznam frází jako globální seznam frází. `enabledForAllModels`Příznak řídí tento rozsah modelu v rozhraní API.
 
 <a name="how-to-use-phrase-lists"></a>
 <a name="how-to-use-a-phrase-lists"></a>
@@ -88,9 +88,21 @@ Pokud například entita adresa pro expedici obsahovala subentitu ulice, pak hle
     * Země (subentity)
     * Poštovní směrovací číslo (subentity)
 
+## <a name="nested-subentities-with-features"></a>Vnořené subentity s funkcemi
+
+Počítač, na který se odkazuje subentita, indikuje, že nadřazená entita má k dispozici koncept, ať už je nadřazeným objektem jiná subentita nebo nejvyšší entita. Hodnota subentity funguje jako funkce nadřazeného objektu.
+
+Podentita může mít jak seznam frází jako funkci, tak i jako model (jinou entitu) jako funkce.
+
+Pokud má podentita seznam frází, bude se zvyšovat slovní slovo konceptu, ale nepřidá žádné informace do odpovědi JSON předpovědi.
+
+Pokud má podentita funkci jiné entity, odpověď JSON zahrnuje extrahovaná data této jiné entity.
+
 ## <a name="required-features"></a>Požadované funkce
 
 Aby byl model vrácen z koncového bodu předpovědi, je nutné najít požadovanou funkci. Požadovanou funkci použijte, když víte, že příchozí data se musí shodovat s funkcí.
+
+Pokud text utterance neodpovídá požadované funkci, nebude extrahován.
 
 **Požadovaná funkce používá nepočítačovou entitu, která se nejedná o počítač**:
 * Entiay regulárního výrazu

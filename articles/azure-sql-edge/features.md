@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7d33c2bef1cd0f7bfab4ec3c09f16c049881d1cd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0994ac1d28118869f0d5c2844a034623d101ee8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597384"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684363"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Podporované funkce Edge SQL Azure (Preview) 
 
@@ -34,7 +34,7 @@ Azure SQL Edge je k dispozici ve dvou různých edicích nebo softwarových plá
 
 ## <a name="operating-system"></a>Operační systém
 
-Kontejnery pro Azure SQL Edge jsou aktuálně založené na Ubuntu (16,04 a 18,04). to se podporuje jenom pro spouštění na hostitelích Docker se systémem Ubuntu 16,04 a 18,04. Azure SQL Edge můžete také spustit na jiných hostitelích operačního systému, například v jiných distribucích systému Linux nebo ve Windows (pomocí Docker CE nebo Docker EE), ale tyto konfigurace nejsou v Microsoftu důkladně testovány.
+Kontejnery Azure SQL Edge jsou aktuálně založené na Ubuntu 16,04 a jsou podporované jenom pro spouštění na hostitelích Docker se systémem Ubuntu 16,04 (doporučeno) nebo Ubuntu 18,04. Azure SQL Edge můžete také spustit na jiných hostitelích operačního systému, například v jiných distribucích systému Linux nebo ve Windows (pomocí Docker CE nebo Docker EE), ale tyto konfigurace nejsou v Microsoftu důkladně testovány.
 
 Azure SQL Edge se momentálně podporuje jenom pro nasazení prostřednictvím Azure IoT Edge. Další informace o podporovaných systémech pro Azure IoT Edge najdete v [Azure IoT Edge podporovaných systémech](https://docs.microsoft.com/azure/iot-edge/support).
 

@@ -3,9 +3,7 @@ title: Řešení potíží způsobených aplikacemi, které nepodporují protoko
 description: Řešení potíží způsobených aplikacemi, které nepodporují protokol TLS 1,2
 services: cloud-services
 documentationcenter: ''
-author: mimckitt
-manager: vashan
-editor: ''
+author: tanmaygore
 tags: top-support-issue
 ms.assetid: ''
 ms.service: cloud-services
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 6153b9d5e8ef11412b0dd53a15c565becfa1c8a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053757"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683788"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Řešení potíží s aplikacemi, které nepodporují protokol TLS 1,2
 Tento článek popisuje, jak povolit starší protokoly TLS (TLS 1,0 a 1,1) a jak používat starší šifrovací sady pro podporu dalších protokolů na webu a rolích pracovních procesů cloudové služby v systému Windows 2019 Server. 

@@ -4,14 +4,14 @@ description: Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfi
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: d1675e6827f3684785d11ef6b081f166267a8283
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 5e4e514a8d39679e5a1d07b0ea7100cf4837072e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791183"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684756"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Správa prostředků Azure Cosmos DB rozhraní API pro tabulky pomocí šablon Azure Resource Manager
 
@@ -42,7 +42,7 @@ Tato šablona vytvoří účet Azure Cosmos pro rozhraní API pro tabulky s jedn
 
 <a id="create-manual"></a>
 
-## <a name="azure-cosmos-account-for-table-with-standard-manual-throughput"></a>Účet Azure Cosmos pro tabulku se standardní (ruční) propustností
+## <a name="azure-cosmos-account-for-table-with-standard-provisioned-throughput"></a>Účet Azure Cosmos pro tabulku se standardní zřízenou propustností
 
 Tato šablona vytvoří účet Azure Cosmos pro rozhraní API pro tabulky s jednou tabulkou se standardní propustností. Tato šablona je dostupná taky pro nasazení jedním kliknutím z galerie šablon pro rychlý Start Azure.
 

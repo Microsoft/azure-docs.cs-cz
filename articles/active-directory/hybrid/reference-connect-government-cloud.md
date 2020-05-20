@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acdc99ca50255bd9b75828f0a051f364c5218471
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 217cf8822fcd8ef515ac9ce2dacdac3682e5fd12
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115485"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680165"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Požadavky na hybridní identitu pro cloud Azure Government
 
@@ -38,10 +38,10 @@ Před nasazením předávacího agenta pro ověřování ověřte, zda existuje 
 > [!NOTE]
 > Následující pokyny platí také pro instalaci [konektoru služby Azure proxy aplikací služby AD](https://aka.ms/whyappproxy) pro Azure Government prostředí.
 
-|zprostředkovatele identity |Jak se používá|
+|URL |Jak se používá|
 |-----|-----|
 |&#42;. msappproxy.us</br>&#42;.servicebus.usgovcloudapi.net|Agent používá tyto adresy URL ke komunikaci s cloudovou službou Azure AD. |
-|mscrl.microsoft.us:80 </br>crl.microsoft.us:80 </br>ocsp.msocsp.us:80 </br>www.microsoft.us:80| Agent používá tyto adresy URL k ověření certifikátů.|
+|`mscrl.microsoft.us:80` </br>`crl.microsoft.us:80` </br>`ocsp.msocsp.us:80` </br>`www.microsoft.us:80`| Agent používá tyto adresy URL k ověření certifikátů.|
 |login.windows.us </br>secure.aadcdn.microsoftonline-p.com </br>&#42;. microsoftonline.us </br>&#42;. microsoftonline-p.us </br>&#42;. msauth.net </br>&#42;. msauthimages.net </br>&#42;. msecnd.net</br>&#42;. msftauth.net </br>&#42;. msftauthimages.net</br>&#42;. phonefactor.net </br>enterpriseregistration.windows.net</br>management.azure.com </br>policykeyservice.dc.ad.msft.net</br>ctdl.windowsupdate.us:80| Agent tyto adresy URL používá během procesu registrace.
 
 ### <a name="install-the-agent-for-the-azure-government-cloud"></a>Instalace agenta pro Azure Government Cloud
@@ -76,7 +76,7 @@ Pokud jako metodu přihlašování použijete předávací ověřování, nevyž
 
 ### <a name="roll-out-seamless-single-sign-on"></a>Zavedení bezproblémového jednotného přihlašování
 
-K bezproblémovému jednotnému přihlašování uživatelů Azure AD můžete použít následující pokyny. Začnete přidáním adresy URL Azure AD [https://autologon.microsoft.us](https://autologon.microsoft.us) do nastavení zóny intranetu pro všechny nebo vybrané uživatele pomocí Zásady skupiny ve službě Active Directory.
+K bezproblémovému jednotnému přihlašování uživatelů Azure AD můžete použít následující pokyny. Začnete přidáním adresy URL Azure AD `https://autologon.microsoft.us` do nastavení zóny intranetu pro všechny nebo vybrané uživatele pomocí Zásady skupiny ve službě Active Directory.
 
 Musíte taky povolit nastavení zásad zóny intranetu **Povolit aktualizace stavového řádku prostřednictvím skriptu prostřednictvím zásady skupiny**.
 
@@ -89,16 +89,16 @@ Mozilla Firefox nepoužívá automatické ověřování pomocí protokolu Kerber
 1. Spusťte Firefox a do adresního řádku zadejte **About: config**   . Zavřete všechna oznámení, která se mohou zobrazit.
 1. Vyhledejte **síť. vyjednat-auth. Trusted-URI**   preference. Tato předvolba obsahuje seznam webů důvěryhodných aplikací Firefox pro ověřování protokolem Kerberos.
 1. Klikněte pravým tlačítkem na název předvolby a pak vyberte **Upravit**.
-1.  [**https://autologon.microsoft.us**](https://autologon.microsoft.us**)   Do pole zadejte.
+1. `https://autologon.microsoft.us`Do pole zadejte.
 1. Vyberte **OK**   a pak znovu otevřete prohlížeč.
 
 ### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Microsoft Edge na základě chromu (všechny platformy)
 
-Pokud jste v prostředí přepsali  `AuthNegotiateDelegateAllowlist`   `AuthServerAllowlist`   nastavení nebo, ujistěte se, že jste do nich přidali adresu URL služby Azure AD [https://autologon.microsoft.us](https://autologon.microsoft.us) .
+Pokud jste v prostředí přepsali  `AuthNegotiateDelegateAllowlist`   `AuthServerAllowlist`   nastavení nebo, ujistěte se, že jste do nich přidali adresu URL služby Azure AD `https://autologon.microsoft.us` .
 
 ### <a name="google-chrome-all-platforms"></a>Google Chrome (všechny platformy)
 
-Pokud jste v prostředí přepsali  `AuthNegotiateDelegateWhitelist`   `AuthServerWhitelist`   nastavení nebo, ujistěte se, že jste do nich přidali adresu URL služby Azure AD [https://autologon.microsoft.us](https://autologon.microsoft.us) .
+Pokud jste v prostředí přepsali  `AuthNegotiateDelegateWhitelist`   `AuthServerWhitelist`   nastavení nebo, ujistěte se, že jste do nich přidali adresu URL služby Azure AD `https://autologon.microsoft.us` .
 
 ## <a name="next-steps"></a>Další kroky
 

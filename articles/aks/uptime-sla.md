@@ -1,30 +1,30 @@
 ---
-title: Vysoká dostupnost služby Azure Kubernetes Service (AKS) s smlouvou SLA pro provozuschopnost
-description: Přečtěte si o volitelné nabídce SLA pro dobu provozu vysoké dostupnosti pro Server API služby Azure Kubernetes (AKS).
+title: Azure Kubernetes Service (AKS) s smlouvou SLA pro provozuschopnost
+description: Přečtěte si o volitelné nabídce SLA pro dobu provozu pro Server API služby Azure Kubernetes (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 1c340f85a107cac437e1241025d8c9bc6991b965
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/19/2020
+ms.openlocfilehash: e0e1399f69640dddfd618ac99637023390f28a92
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125719"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683217"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Smlouva SLA pro Azure Kubernetes Service (AKS) pro provozuschopnost
 
-Smlouva SLA pro provozuschopnost je volitelná funkce, která umožňuje finančně zajištěnou vyšší smlouvu SLA pro cluster. Smlouva SLA pro dobu provozu garantuje 99,95% dostupnost koncového bodu serveru Kubernetes API pro clustery, které používají [zónu dostupnosti][availability-zones] , a 99,9% dostupnosti pro clustery, které nepoužívají zóny dostupnosti. AKS používá k zajištění splnění požadavků smlouvy SLA repliky hlavních uzlů napříč aktualizacemi a doménami selhání.
+Smlouva SLA pro dobu provozu je volitelná funkce, která umožňuje finančně zajištěnou a vyšší smlouvu SLA pro cluster. Smlouva SLA pro dobu provozu garantuje 99,95% dostupnost koncového bodu serveru Kubernetes API pro clustery, které používají [zóny dostupnosti][availability-zones] a 99,9% dostupnosti pro clustery, které nepoužívají zóny dostupnosti. AKS používá k zajištění splnění požadavků smlouvy SLA repliky hlavních uzlů napříč aktualizacemi a doménami selhání.
 
-Zákazníci, kteří potřebují smlouvu SLA na dodržování předpisů nebo rozšiřují smlouvy SLA na jejich zákazníky, by měli tuto funkci zapnout. Zákazníci s důležitými úlohami, kteří potřebují vyšší dostupnost s možností zvýhodnění SLA od povolení této funkce. Pokud chcete získat vyšší dostupnost serveru Kubernetes API, povolte funkci s Zóny dostupnosti.  
+Zákazníci, kteří potřebují smlouvu SLA pro splnění požadavků na dodržování předpisů nebo vyžadují rozšíření smlouvy SLA koncovým uživatelům, by měli tuto funkci povolit. Zákazníci s důležitými úlohami, které budou využívat zvýšení smlouvy SLA na vyšší dobu provozu, můžou také těžit. Použití funkce SLA pro dobu provozu s Zóny dostupnosti umožňuje vyšší dostupnost pro dobu provozu serveru rozhraní Kubernetes API.  
 
-Zákazníci můžou vytvářet neomezený počet bezplatných clusterů s cílem úrovně služeb (SLO) 99,5%.
+Zákazníci můžou pořád vytvářet neomezený počet bezplatných clusterů s cílem úrovně služeb (SLO) o 99,5% a podle potřeby považovat za dobu provozu na úrovni SLO nebo SLA.
 
 > [!Important]
-> Clustery s uzamčením odchozích dat najdete v tématu [omezení odchozího provozu](limit-egress-traffic.md) pro otevření odpovídajících portů pro smlouvu SLA pro provozuschopnost.
+> Clustery s uzamčením odchozích dat najdete v tématu [omezení odchozího provozu](limit-egress-traffic.md) pro otevření odpovídajících portů.
 
 ## <a name="sla-terms-and-conditions"></a>Podmínky a ujednání SLA
 
-Smlouva SLA pro dobu provozu je placená funkce a je povolená pro jednotlivé clustery. Ceny smlouvy SLA pro dobu provozu určují počet clusterů, a ne velikost clusterů. Další informace najdete v [podrobnostech o cenách smlouvy SLA pro dobu provozu](https://azure.microsoft.com/pricing/details/kubernetes-service/) .
+Smlouva SLA pro dobu provozu je placená funkce a je povolená pro jednotlivé clustery. Ceny smlouvy SLA pro dobu provozu určují počet diskrétních clusterů, a ne velikost jednotlivých clusterů. Další informace najdete v [podrobnostech o cenách smlouvy SLA pro dobu provozu](https://azure.microsoft.com/pricing/details/kubernetes-service/) .
 
 ## <a name="region-availability"></a>Dostupnost oblasti
 
@@ -64,19 +64,18 @@ Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve f
     "name": "Basic",
     "tier": "Paid"
   },
-  "tags": null,
-  "type": "Microsoft.ContainerService/ManagedClusters",
-  "windowsProfile": null
 ```
 
 ## <a name="limitations"></a>Omezení
 
-* V tuto chvíli nemůžete do existujících clusterů přidat smlouvu SLA pro dobu provozu.
-* V současné době neexistuje způsob, jak odebrat smlouvu SLA pro provozuschopnost z clusteru AKS.  
+* V současné době nejde převést existující cluster, aby se povolila smlouva SLA pro provozuschopnost.
+* V současné době neexistuje způsob, jak odebrat smlouvu SLA pro provozuschopnost z clusteru AKS po vytvoření s povoleným povolením.  
+* Soukromé clustery se aktuálně nepodporují.
 
 ## <a name="next-steps"></a>Další kroky
 
 Pomocí [zóny dostupnosti][availability-zones] můžete zvýšit vysokou dostupnost úloh clusteru AKS.
+Nakonfigurujte cluster tak, aby [omezil přenos odchozího provozu](limit-egress-traffic.md).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

@@ -4,14 +4,14 @@ description: Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfi
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: f16dec74b15f4945b54fe1423835fd8f5c8d96f1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 630c965eadf17e21c75e1bd180fec4496df830e2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791268"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684837"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Správa prostředků Azure Cosmos DB rozhraní API Cassandra pomocí šablon Azure Resource Manager
 
@@ -33,13 +33,13 @@ Chcete-li vytvořit některý z níže uvedených prostředků Azure Cosmos DB, 
 
 Tato šablona vytvoří účet Azure Cosmos ve dvou oblastech s možnostmi pro zajištění konzistence a převzetí služeb při selhání s místem a tabulkou nakonfigurovanou pro propustnost automatického škálování. Tato šablona je dostupná taky pro nasazení jedním kliknutím z galerie šablon pro rychlý Start Azure.
 
-[![Nasazení do Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra-autosscale%2Fazuredeploy.json)
+[![Nasazení do Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra-autoscale%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra-autoscale/azuredeploy.json":::
 
 <a id="create-manual"></a>
 
-## <a name="azure-cosmos-account-for-cassandra-with-standard-manual-provisioned-throughput"></a>Účet Azure Cosmos pro Cassandra s zřízenou propustností Standard (ruční)
+## <a name="azure-cosmos-account-for-cassandra-with-standard-provisioned-throughput"></a>Účet Azure Cosmos pro Cassandra se standardní zřízenou propustností
 
 Tato šablona vytvoří účet Azure Cosmos ve dvou oblastech s možnostmi pro zajištění konzistence a převzetí služeb při selhání s místem a tabulkou nakonfigurovanou pro standardní propustnost. Tato šablona je dostupná taky pro nasazení jedním kliknutím z galerie šablon pro rychlý Start Azure.
 

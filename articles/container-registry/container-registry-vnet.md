@@ -3,12 +3,12 @@ title: Omezení přístupu pomocí koncového bodu služby
 description: Omezení přístupu ke službě Azure Container Registry pomocí koncového bodu služby ve službě Azure Virtual Network
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: da5ab67d6658d8760565353e2a690c53d862d0ed
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5a3cc9638fb12853e0e26f3806c17dc47f522249
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982577"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685056"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Omezení přístupu k registru kontejneru pomocí koncového bodu služby ve službě Azure Virtual Network
 
@@ -19,7 +19,7 @@ Tento článek ukazuje, jak nakonfigurovat koncový bod služby registru kontejn
 > [!IMPORTANT]
 > Azure Container Registry teď podporuje [privátní propojení Azure](container-registry-private-link.md)a povoluje umístění privátních koncových bodů z virtuální sítě do registru. Privátní koncové body jsou přístupné z virtuální sítě pomocí privátních IP adres. Ve většině síťových scénářů doporučujeme použít místo koncových bodů služby soukromé koncové body.
 
-Konfigurace koncového bodu služby registru je dostupná na úrovni služby **Premium** Registry Service. Informace o úrovních a omezeních služby registru najdete v tématu [Azure Container Registry úrovně](container-registry-skus.md).
+Konfigurace koncového bodu služby registru je dostupná na úrovni služby **Premium** Registry Service. Informace o úrovních a omezeních služby registru najdete v tématu [Azure Container Registry úrovně služeb](container-registry-skus.md).
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
@@ -32,7 +32,7 @@ Konfigurace koncového bodu služby registru je dostupná na úrovni služby **P
 
 * K používání kroků Azure CLI v tomto článku se vyžaduje Azure CLI verze 2.0.58 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-* Pokud ještě nemáte registr kontejneru, vytvořte si ho (vyžaduje se Premium SKU) a nahrajte do něj ukázkovou image, jako je například `hello-world` Docker Hub. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] . 
+* Pokud ještě nemáte registr kontejnerů, vytvořte ho (je potřeba Premium úrovně) a nahrajte do něj ukázkovou image, jako je například `hello-world` Docker Hub. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] . 
 
 * Pokud chcete omezit přístup k registru pomocí koncového bodu služby v jiném předplatném Azure, zaregistrujte poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Například:
 

@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: b8af654e14d8a5fa48c60ae62c590c4c99e66edb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: c5862ee90a12240e7293647fae6af4f18f30c164
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891520"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680385"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Správa & zvýšení kvót pro prostředky pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,15 +114,9 @@ Pokud chcete nastavit kvóty na úrovni pracovního prostoru, přejděte na libo
 
 ## <a name="view-your-usage-and-quotas"></a>Zobrazení využití a kvót
 
-Zobrazení kvóty pro různé prostředky, jako je Virtual Machines, úložiště, síť, je snadno Azure Portal.
+Azure Machine Learning výpočetní prostředky se spravují odděleně od jiných kvót prostředků Azure v rámci vašeho předplatného. Chcete-li zobrazit tuto kvótu, je třeba přejít k podrobnostem Machine Learning Services.  
 
-1. V levém podokně vyberte **všechny služby** a potom v kategorii Obecné vyberte **předplatná** .
-
-1. V seznamu předplatných vyberte předplatné, jehož kvótu hledáte.
-
-   K **dispozici je upozornění**, konkrétně pro zobrazení Azure Machine Learning kvóty Compute. Jak je uvedeno výše, tato kvóta je nezávislá na výpočetní kvótě v předplatném.
-
-1. V levém podokně vyberte **službu Machine Learning Service** a pak vyberte libovolný pracovní prostor ze seznamu zobrazených
+1. V levém podokně vyberte **Machine Learning Service** a pak vyberte libovolný pracovní prostor ze seznamu.
 
 1. V dalším okně vyberte v části **Podpora a Poradce při potížích** možnost **využití + kvóty** , abyste zobrazili aktuální limity a využití kvóty.
 
@@ -132,6 +126,12 @@ Zobrazení kvóty pro různé prostředky, jako je Virtual Machines, úložišt�
     + **Zobrazení odběru:** Díky tomu můžete zobrazit využití základní kvóty podle rodiny virtuálních počítačů, rozšířit je podle pracovního prostoru a dále je rozšířit o skutečné názvy clusterů. Toto zobrazení je optimální pro rychlé získání podrobností o základním využití konkrétní rodiny virtuálních počítačů, aby se zobrazilo rozdělení v pracovních prostorech a dále podle základních clusterů pro každý z těchto pracovních prostorů. Obecná konvence v tomto zobrazení je (využití/kvóta), kde využití je aktuální počet jader s horizontálním škálováním a kvóta představuje logický maximální počet jader, na které se může prostředek škálovat. U každého **pracovního prostoru**by kvóta byla kvóta na úrovni pracovního prostoru (jak je vysvětleno výše), která označuje maximální počet jader, na které se dá pro konkrétní rodinu virtuálních počítačů škálovat. Pro **cluster** podobně je kvóta ve skutečnosti jádry, které odpovídají maximálnímu počtu uzlů, které může cluster škálovat, aby byl definovaný vlastností max_nodes.
 
     + **Zobrazení pracovního prostoru:** Díky tomu můžete zobrazit využití základních kvót podle pracovního prostoru, rozšíříte je pomocí rodiny virtuálních počítačů a dále je rozšíříte pomocí skutečných názvů clusterů. Toto zobrazení je optimální pro rychlé získání podrobností o základním použití pro konkrétní pracovní prostor, aby se mohla zobrazit zaregistrované v rámci rodin virtuálních počítačů a dále podkladové clustery pro každou z těchto rodin.
+
+Zobrazení kvóty pro různé další prostředky Azure, jako je Virtual Machines, úložiště, síť, je snadno Azure Portal.
+
+1. V levém podokně vyberte **všechny služby** a potom v kategorii Obecné vyberte **předplatná** .
+
+1. V seznamu předplatných vyberte předplatné, jehož kvótu hledáte.
 
 ## <a name="request-quota-increases"></a>Žádost o navýšení kvóty
 

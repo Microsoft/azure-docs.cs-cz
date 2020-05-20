@@ -1,6 +1,6 @@
 ---
 title: Spravovat plány v Azure Automation
-description: Naučte se, jak vytvořit a spravovat plán v Azure Automation, abyste mohli automaticky spustit sadu Runbook v určitou dobu nebo podle plánu opakování.
+description: V tomto článku se dozvíte, jak vytvořit a pracovat s plánem v Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,22 +9,22 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4cd6d4236b95a17f404df13e8b50daf989cf6072
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: c644333fd49c4e54a54d00e7fb033c6d4bdc158b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652115"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685335"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Spravovat plány v Azure Automation
 
 Pokud chcete naplánovat spuštění Runbooku v Azure Automation v zadanou dobu, můžete ho propojit s jedním nebo více plány. Plán se dá nakonfigurovat tak, aby se spouštěl buď jednou, nebo podle opakovaného hodinového nebo denního plánu pro Runbooky v Azure Portal. Můžete je také naplánovat na týdenní, měsíční, konkrétní dny v týdnu nebo dny v měsíci nebo určitý den v měsíci. Runbook můžete spojit s víc plány a k jednomu plánu může být připojených víc Runbooků.
 
 > [!NOTE]
-> Plány v současné době nepodporují Azure Automation konfigurací DSC.
+> Azure Automation podporuje letní čas a plánuje je vhodným způsobem pro operace automatizace.
 
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](../automation-update-azure-modules.md).
+> [!NOTE]
+> V plánech aktuálně nejsou povoleny Azure Automation konfigurací DSC.
 
 ## <a name="powershell-cmdlets-used-to-access-schedules"></a>Rutiny PowerShellu používané pro přístup k plánům
 
@@ -164,7 +164,7 @@ Když plán zakážete, na tento plán se už nespustí žádná sada Runbook, n
 
 ### <a name="disable-a-schedule-with-powershell"></a>Zakázání plánu pomocí PowerShellu
 
-Pomocí rutiny [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) můžete změnit vlastnosti stávajícího plánu. Pokud chcete plán zakázat, zadejte pro `IsEnabled` parametr hodnotu false.
+Pomocí rutiny [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) můžete změnit vlastnosti stávajícího plánu. Pokud chcete plán zakázat, zadejte pro parametr hodnotu false `IsEnabled` .
 
 Následující příklad ukazuje, jak zakázat plán pro sadu Runbook pomocí rutiny Azure Resource Manager.
 

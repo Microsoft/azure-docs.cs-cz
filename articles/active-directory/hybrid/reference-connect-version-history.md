@@ -8,17 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: bc3c572aeb72328bc4708d27052756623ccd7701
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7b75f03afc587d9616997b1df48b9c5c5166cb89
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200978"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681716"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -55,10 +54,12 @@ Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect
 05/07/2020: vydáno ke stažení
 
 ### <a name="fixed-issues"></a>Oprava potíží
-- Opravili jsme problém, kdy se v uživatelském rozhraní Průvodce nesprávně vybraly nevybrané domény.
-- Opravili jsme problém v modulu ADSyncConfig PowerShellu, kde vyvolání příkazu DSACLS, který se používá ve všech rutinách oprávnění set-ADSync *, by způsobilo jednu z následujících chyb:
-     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
-     - `GrantAcls : No GUID Found for computer …`
+Toto sestavení opravy hotfix řeší problém, ve kterém nevybrané domény byly nesprávně vybrány z uživatelského rozhraní průvodce, pokud byly vybrány pouze podoblasti.
+
+
+>[!NOTE]
+>Tato verze je nutná k použití nového rozhraní API koncového bodu Azure AD Connect Sync v2.  Další informace najdete v tématu [Azure AD Connect Sync v2 Endpoint API (Public Preview)](how-to-connect-sync-endpoint-api-v2.md).
+
 
 ## <a name="15290"></a>1.5.29.0
 
@@ -82,7 +83,10 @@ Toto sestavení opravy hotfix řeší problém v Build 1.5.20.0, pokud jste nakl
 04/09/2020: vydáno ke stažení
 
 ### <a name="fixed-issues"></a>Oprava potíží
-Toto sestavení opravy hotfix řeší problém se 1.5.18.0 Build, pokud máte povolenou funkci filtrování skupin a jako zdrojovou kotvu použijete mS-DS-ConsistencyGuid.
+- Toto sestavení opravy hotfix řeší problém se 1.5.18.0 Build, pokud máte povolenou funkci filtrování skupin a jako zdrojovou kotvu použijete mS-DS-ConsistencyGuid.
+- Opravili jsme problém v modulu ADSyncConfig PowerShellu, kde vyvolání příkazu DSACLS, který se používá ve všech rutinách oprávnění set-ADSync *, by způsobilo jednu z následujících chyb:
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 > [!IMPORTANT]
 > Pokud jste naklonováni v nástroji z pravidla synchronizace **spojení se službou AD-Group** a Neklonujte ho z pravidla synchronizace **AD-Group Common** Sync a plánu, který chcete upgradovat, proveďte v rámci upgradu následující kroky:
@@ -117,7 +121,6 @@ Toto sestavení opravy hotfix řeší problém se 1.5.18.0 Build, pokud máte po
 - Opravili jsme problém s vytvořením účtu synchronizace Azure Active Directory, kde povolení rozšíření adresáře nebo KOSMETICE může selhat, protože účet se před pokusem o použití nerozšířil napříč všemi replikami služby. 
 - Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpracovává správně náhradní znaky. 
 - Opravili jsme chybu v rámci automatického upgradu, která opustila Server ve službě Scheduler Suspended State. 
-- Opravili jsme chybu na stránce filtrování domény nebo organizační jednotky, která by odebrala profily spuštění domény tím, že se jenom částečně rozšíří stromové struktury domény, aniž by se musely provádět žádné změny.
 
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Stav verze
@@ -572,7 +575,7 @@ Typ     | Name                          | Access               | Platí pro
 Povolit    | SYSTEM                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
 Povolit    | Domain Admins                 | Úplné řízení         | Tento objekt  |
-Povolit    | Správci                | Úplné řízení         | Tento objekt  |
+Povolit    | Administrators                | Úplné řízení         | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Vypsat obsah        | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Číst všechny vlastnosti  | Tento objekt  |
 Povolit    | Podnikové řadiče domény | Oprávnění ke čtení     | Tento objekt  |
@@ -1337,7 +1340,6 @@ Změnil se název z Azure AD Sync na Azure AD Connect.
 **Nové funkce ve verzi Preview:**
 
 * [Zpětný zápis uživatele](how-to-connect-preview.md#user-writeback)
-* [Zpětný zápis skupin](how-to-connect-preview.md#group-writeback)
 * [Zpětný zápis zařízení](how-to-connect-device-writeback.md)
 * [Rozšíření adresáře](how-to-connect-preview.md)
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/11/2020
+ms.date: 05/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eab9db77dee5420ddc5baa9f71bde98fc46ca3f6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5991c6e073001e565a965a8db3cf32ca76d843f4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196843"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684417"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -29,7 +29,7 @@ Když použijete Microsoft Azure, můžete spolehlivě spouštět klíčové úl
 
 Kromě hostování scénářů SAP NetWeaver s různými systémy DBMS v Azure můžete hostovat i další scénáře úloh SAP, jako je například SAP BI v Azure. 
 
-Jedinečnost Azure pro SAP HANA je nabídka, která nastavuje Azure odděleně. Aby bylo možné hostovat víc paměti a scénářů SAP náročných na prostředky procesoru, které zahrnují SAP HANA, Azure nabízí použití holého hardwaru vyhrazeného pro zákazníky. Pomocí tohoto řešení můžete spouštět SAP HANA nasazení, která vyžadují až 24 TB (120 – TB škálování) paměti pro S/4HANA nebo jiné úlohy SAP HANA. 
+Jedinečnost Azure pro SAP HANA je nabídka, která nastavuje Azure odděleně. Aby bylo možné hostovat víc paměti a scénářů SAP náročných na prostředky procesoru, které zahrnují SAP HANA, Azure nabízí použití holého hardwaru vyhrazeného pro zákazníky. Pomocí tohoto řešení můžete spouštět SAP HANA nasazení, která vyžadují až 24 TB (120 TB škálování) paměti pro S/4HANA nebo jiné úlohy SAP HANA. 
 
 Hostování scénářů pro úlohy SAP v Azure taky může vytvořit požadavky na integraci identit a jednotné přihlašování. K této situaci může dojít, když použijete Azure Active Directory (Azure AD) k propojení různých komponent SAP a SAP software-as-a-Service (SaaS) nebo Platform-as-a-Service (PaaS). Seznam takových scénářů integrace a jednotného přihlašování s entitami služby Azure AD a SAP je popsán v části "AAD SAP Identity Integration and Single přihlašování".
 
@@ -48,7 +48,7 @@ Pokud máte konkrétní otázky, budeme v této části úvodní stránky ukazov
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA v Azure (velké instance)
 
-Řada dokumentů vás provede SAP HANA v Azure (velké instance) nebo pro krátké instance s vysokou kapacitou HANA. Informace o velkých instancích HANA začínají [přehledem dokumentů a architekturou SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) a Projděte si související dokumentaci v oddílu velká instance Hana.
+Řada dokumentů vás provede SAP HANA v Azure (velké instance) nebo pro krátké instance s vysokou kapacitou HANA. Informace o velkých instancích HANA najdete v dokumentu [Přehled a architektura SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) a Projděte si související dokumentaci v oddílu velká instance Hana.
 
 
 
@@ -111,6 +111,10 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 05/19/2020: přidejte důležitou zprávu, která nepoužívá skupinu kořenových svazků při použití LVM pro svazky související se službou HANA v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) .
+- 05/19/2020: přidejte nový podporovaný operační systém pro velký typ instance (II) pro HANA a [kompatibilní operační systémy pro velké instance HANA] (https://docs.microsoft.com/
+- Azure/virtuální počítače/úlohy/SAP/OS – kompatibilita-Matrix-Hana-velká instance)
+- 05/12/2020: Změna [připojení veřejných koncových bodů pro virtuální počítače pomocí Azure Standard interního nástroje ve scénářích SAP ha](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) k aktualizaci odkazů a přidání informací pro konfiguraci brány firewall třetích stran
 - 05/11/2020: změňte [vysokou dostupnost SAP HANA na virtuálních počítačích Azure v SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) a nastavte vytrvalost prostředků na hodnotu 0 pro prostředek netcat, protože to vede k efektivnějšímu převzetí služeb při selhání. 
 - 05/05/2020: změny v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) , které vyjadřují, že Gen2 nasazení jsou k dispozici pro rodinu virtuálních počítačů: Mv1
 - 04/24/2020: změny ve [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s ANF v SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse), ve SAP HANA škálování na více instancí [s pohotovostním uzlem na virtuálních počítačích Azure s ANF na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)a s [vysokou dostupností](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) pro SAP NetWeaver na virtuálních počítačích Azure v SLES s [ANF, které](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) umožňují objasnění, že se automaticky přiřazují IP adresy pro NetWeaver svazky
@@ -163,13 +167,13 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 - 01/16/2020: změny [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v průvodci SLES s více SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) pro přidání pokynů pro systémy SAP s použitím architektury serveru fronty 2 (ENSA2)
 - 01/10/2020: změny ve [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) a v [SAP HANA škálování s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) pro přidání pokynů k `nfs4_disable_idmapping` trvalému provedení změn.
 - 01/10/2020: změny [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SLES s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) a v [Azure Virtual Machines vysoké dostupnosti pro SAP NetWeaver v RHEL s Azure NETAPP Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) pro přidání pokynů k připojení Azure NetApp Filesch svazků názvů NFSv4.
-- 12/23/2019: vydání [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v průvodci SLES s více SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-- 12/18/2019: vydání [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
-- 11/21/2019: změny v [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) pro zjednodušení konfigurace mapování ID NFS a změna doporučeného primárního síťového rozhraní pro zjednodušení směrování.
-- 11/15/2019: drobné změny [vysoké dostupnosti pro SAP NetWeaver v SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](high-availability-guide-suse-netapp-files.md) a [vysokou dostupnost pro sap NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace](high-availability-guide-rhel-netapp-files.md) SAP pro vysvětlení omezení velikosti fondu kapacity a příkazu Remove, který podporuje jenom NFSv3 verze.
-- 11/12/2019: vydání [vysoké dostupnosti pro SAP NetWeaver v systému Windows s použitím protokolu SMB (Azure NetApp Files)](high-availability-guide-windows-netapp-files-smb.md)
-- 11/08/2019: změny [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v SUSE Linux Enterprise Server](sap-hana-high-availability.md), [nastavení SAP HANA systémové replikace na virtuálních počítačích Azure (virtuální počítače)](sap-hana-high-availability-rhel.md), [Azure Virtual Machines vysoké dostupnosti pro SAP NetWeaver v SUSE Linux Enterprise Server pro aplikace SAP](high-availability-guide-suse.md), Azure Virtual Machines High pro [SAP NetWeaver on SUSE Linux Enterprise Server s Azure NetApp Files](high-availability-guide-suse-netapp-files.md), [Azure Virtual Machines vysoká dostupnost](high-availability-guide-rhel.md)pro systém souborů SAP NetWeaver v Red Hat Enterprise Linux, Azure Virtual Machines vysoká dostupnost pro systém souborů SAP [NetWeaver na Red Hat Enterprise Linux s Azure NetApp Files](high-availability-guide-rhel-netapp-files.md)a [vysokou dostupností pro NFS na virtuálních počítačích Azure](high-availability-guide-suse-nfs.md)v SUSE Linux Enterprise Server, na [virtuálních](high-availability-guide-rhel-glusterfs.md) počítačích Azure v Red Hat Enterprise Linux, které doporučují Azure Load Balancer  
-- 11/08/2019: změny v [kontrolním seznamu plánování úloh SAP a nasazení](sap-deployment-checklist.md) k objasnění doporučení pro šifrování  
-- 11/04/2019: změny v [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](high-availability-guide-suse-pacemaker.md) pro vytvoření clusteru přímo s konfigurací jednosměrového vysílání  
+- 23. prosince 2019: vydání [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SLES průvodce pro více SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+- 18. prosince 2019: vydání [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+- 21. listopadu 2019: změny v [SAP HANA škálování na více instancí s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) pro zjednodušení konfigurace mapování ID NFS a změna doporučeného primárního síťového rozhraní pro zjednodušení směrování.
+- 15. listopadu 2019: drobné změny [vysoké dostupnosti pro SAP NetWeaver v SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](high-availability-guide-suse-netapp-files.md) a [vysokou dostupnost pro sap NetWeaver v Red Hat Enterprise Linux s Azure NETAPP Files pro aplikace SAP](high-availability-guide-rhel-netapp-files.md) pro vysvětlení omezení velikosti fondu kapacity a příkazu Remove, který podporuje jenom NFSv3 verzi.
+- 12. listopadu 2019: vydání [vysoké dostupnosti pro SAP NetWeaver v systému Windows s využitím protokolu SMB (Azure NetApp Files)](high-availability-guide-windows-netapp-files-smb.md)
+- 8. listopadu 2019: změny [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v SUSE Linux Enterprise Server](sap-hana-high-availability.md), [nastavení SAP HANA systémové replikace na virtuálních počítačích Azure (virtuální počítače)](sap-hana-high-availability-rhel.md), [Azure Virtual Machines vysoké dostupnosti pro SAP NetWeaver v SUSE Linux Enterprise Server pro aplikace SAP](high-availability-guide-suse.md), Azure Virtual Machines High pro [SAP NetWeaver on SUSE Linux Enterprise Server s Azure NetApp Files](high-availability-guide-suse-netapp-files.md), [Azure Virtual Machines vysoká dostupnost](high-availability-guide-rhel.md)pro systém souborů SAP NetWeaver v Red Hat Enterprise Linux, Azure Virtual Machines vysoká dostupnost pro systém souborů SAP [NetWeaver na Red Hat Enterprise Linux s Azure NetApp Files](high-availability-guide-rhel-netapp-files.md)a [vysokou dostupností pro NFS na virtuálních počítačích Azure](high-availability-guide-suse-nfs.md)v SUSE Linux Enterprise Server, na [virtuálních](high-availability-guide-rhel-glusterfs.md) počítačích Azure v Red Hat Enterprise Linux, které doporučují Azure Load Balancer  
+- 8. listopadu 2019: změny v [kontrolním seznamu plánování úloh SAP a nasazení](sap-deployment-checklist.md) k objasnění doporučení pro šifrování  
+- 4. listopadu 2019: změny v [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](high-availability-guide-suse-pacemaker.md) pro vytvoření clusteru přímo s konfigurací jednosměrového vysílání  
 
 

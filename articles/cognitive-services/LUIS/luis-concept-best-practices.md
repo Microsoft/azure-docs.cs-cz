@@ -2,14 +2,14 @@
 title: Osvědčené postupy pro sestavení aplikace v LUIS
 description: Seznamte se s osvědčenými postupy pro dosažení nejlepších výsledků z modelu vaší aplikace v LUIS.
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9c22256f6fac3647108b7078b774338d7f22d29a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589801"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683753"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Osvědčené postupy pro sestavování aplikace pro porozumění jazyku (LUIS)
 Pomocí procesu vytváření aplikací sestavte aplikaci LUIS:
@@ -31,13 +31,27 @@ Následující seznam obsahuje osvědčené postupy pro aplikace LUIS:
 
 |Správný postup|Chybný postup|
 |--|--|
-|[Definovat jedinečné záměry](#do-define-distinct-intents)<br>[Přidání funkcí do záměrů](#do-add-features-to-intents) |[Přidejte spoustu příkladů projevy k záměrům](#dont-add-many-example-utterances-to-intents)<br>[Použití několika nebo jednoduchých entit](#dont-use-few-or-simple-entities) |
+|[Plánování schématu](#do-plan-your-schema)|[Sestavování a publikování bez plánu](#dont-publish-too-quickly)|
+|[Definovat jedinečné záměry](#do-define-distinct-intents)<br>[Přidání funkcí do záměrů](#do-add-features-to-intents)<br>
+[Použití entit strojových zkušeností](#do-use-machine-learned-entities) |[Přidejte spoustu příkladů projevy k záměrům](#dont-add-many-example-utterances-to-intents)<br>[Použití několika nebo jednoduchých entit](#dont-use-few-or-simple-entities) |
 |[Najděte sladkou skvrnu mezi příliš obecným a příliš specifickou pro každý záměr.](#do-find-sweet-spot-for-intents)|[Použití LUIS jako školicí platformy](#dont-use-luis-as-a-training-platform)|
 |[Opakované sestavení aplikace s použitím verzí](#do-build-your-app-iteratively-with-versions)<br>[Sestavení entit pro rozložení modelu](#do-build-for-model-decomposition)|[Přidejte spoustu příkladů projevy stejného formátu a ignorujte jiné formáty.](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Přidat vzory v pozdějších iteracích](#do-add-patterns-in-later-iterations)|[Kombinace definice záměrů a entit](#dont-mix-the-definition-of-intents-and-entities)|
 |[Vyvážení projevy napříč všemi záměry](#balance-your-utterances-across-all-intents) s výjimkou záměru None.<br>[Přidat příklad projevy k žádnému záměru](#do-add-example-utterances-to-none-intent)|[Vytvoření seznamů frází se všemi možnými hodnotami](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[Využijte funkci navrhnout pro aktivní učení.](#do-leverage-the-suggest-feature-for-active-learning)|[Přidat příliš mnoho vzorů](#dont-add-many-patterns)|
 |[Sledování výkonu aplikace pomocí dávkového testování](#do-monitor-the-performance-of-your-app)|[Školení a publikování s každým jedním příkladem utterance přidání](#dont-train-and-publish-with-every-single-example-utterance)|
+
+## <a name="do-plan-your-schema"></a>Plánování schématu
+
+Než začnete sestavovat schéma vaší aplikace, měli byste zjistit, co a kde plánujete použít tuto aplikaci. Čím je vaše plánování důkladnější a konkrétní, tím lepší bude aplikace.
+
+* Cílení na výzkumné uživatele
+* Definování koncových osoby, které reprezentují vaši aplikaci – hlas, miniaturu, zpracování problémů (proaktivní, reaktivní)
+* Identifikujte interakce uživatele (text, řeč), pomocí kterých kanály, předáváte stávajícím řešením nebo vytvoříte nové řešení pro tuto aplikaci.
+* Koncová cesta uživatele
+    * Co byste měli očekávat, že tato aplikace má dělat a ne? * Jaké jsou priority, co by měl dělat?
+    * Jaké jsou hlavní případy použití?
+* Shromažďování dat – [informace](data-collection.md) o shromažďování a přípravě dat
 
 ## <a name="do-define-distinct-intents"></a>Definování jedinečných záměrů
 Ujistěte se, že slovník pro každý záměr je pouze pro tento záměr a nepřekrývá s jiným záměrem. Například pokud chcete mít aplikaci, která zpracovává cestovní mechanismy, jako jsou letecké lety a hotely, můžete se rozhodnout, že tyto oblasti budou mít samostatné záměry nebo stejný záměr s entitami pro konkrétní data v rámci utterance.
@@ -60,6 +74,14 @@ Funkce popisují koncepty pro záměr. Může se jednat o Frázový seznam slov,
 ## <a name="do-find-sweet-spot-for-intents"></a>Najděte si pro záměry sladkou skvrnu
 Data předpovědi z LUIS můžete použít k určení, jestli se jejich záměry překrývají. Překrývající se záměry Zaměňujte LUIS. Výsledkem je, že nejvyšší záměr bodování je příliš blízko k jinému záměru. Vzhledem k tomu, že LUIS nepoužívá přesnou cestu přes data pro školení pokaždé, překrývající se záměr je pravděpodobné, že je první nebo druhý v rámci školení. Chcete, aby se utterance skóre každého záměru více rozdělilo, aby tato funkce překlopení nedocházelo. Dobrý rozdíl pro záměry by měl vést k očekávanému nejvyššímu záměru pokaždé.
 
+## <a name="do-use-machine-learned-entities"></a>Použití entit strojového učení
+
+Počítače, které se naučily, jsou přizpůsobené vaší aplikaci a vyžadují, aby popisek byl úspěšný. Pokud nepoužíváte entity, které se strojově naučily, je možné, že používáte nesprávný nástroj.
+
+Entity učené počítačem můžou jako funkce používat jiné entity. Tyto další entity můžou být vlastními entitami, jako jsou entity regulárních výrazů nebo seznam entit, nebo můžete jako funkce použít předem připravené entity.
+
+Přečtěte si o [efektivních entitách strojového učení](luis-concept-entity-types.md#effective-machine-learned-entities).
+
 <a name="#do-build-the-app-iteratively"></a>
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>Opakované sestavování aplikace pomocí verzí
@@ -79,9 +101,9 @@ Dekompozice modelu má typický proces:
 
 Jakmile vytvoříte záměr a přidáte příklad projevy, následující příklad popisuje dekompozici entit.
 
-Začněte tím, že identifikujete kompletní koncepty dat, které chcete extrahovat v utterance. Toto je vaše entita získaná počítačem. Pak rozložíte frázi na její části. To zahrnuje identifikaci subentit a funkcí.
+Začněte tím, že identifikujete kompletní koncepty dat, které chcete extrahovat v utterance. Toto je vaše entita pro strojové učení. Pak rozložíte frázi na její části. To zahrnuje identifikaci subentit a funkcí.
 
-Pokud například chcete extrahovat adresu, mohla by být volána nejdůležitější entita zjištěná počítačem `Address` . Při vytváření adresy Identifikujte některé z jejích podřízených entit, jako je adresa ulice, město, stát a poštovní směrovací číslo.
+Pokud například chcete extrahovat adresu, může být volána nejvyšší entita strojového učení `Address` . Při vytváření adresy Identifikujte některé z jejích podřízených entit, jako je adresa ulice, město, stát a poštovní směrovací číslo.
 
 Pokračovat v deskládání těchto elementů:
 * Přidání požadované funkce poštovního kódu jako entity regulárního výrazu.
@@ -122,13 +144,21 @@ Sledujte přesnost předpovědi pomocí sady [dávkových testů](luis-concept-b
 
 Ponechte samostatnou sadu projevy, která se nepoužívá jako [příklad projevy](luis-concept-utterance.md) nebo Endpoint projevy. Udržujte lepší aplikaci pro sadu testů. Přizpůsobte sadu testů tak, aby odrážela reálného uživatele projevy. Pomocí této sady testů vyhodnoťte každou iteraci nebo verzi aplikace.
 
+## <a name="dont-publish-too-quickly"></a>Nepublikovat příliš rychle
+
+Publikování aplikace je příliš rychlé, bez [správného plánování](#do-plan-your-schema), může vést k několika problémům, jako například:
+
+* Vaše aplikace nebude ve vašem aktuálním scénáři fungovat na přijatelné úrovni výkonu.
+* Schéma (záměry a entity) by neodpovídalo vhodnému a pokud jste vytvořili logiku klientské aplikace podle schématu, možná budete muset přepsat úplně od začátku. To by způsobilo neočekávané zpoždění a navíc náklady na projekt, na kterém pracujete.
+* Projevy, které přidáte do modelu, může způsobit posun směrem k ukázkové utterance sadě, která je těžká ladit a identifikuje. Po potvrzení do konkrétního schématu taky dojde k obtížnému odebrání nejednoznačnosti.
+
 ## <a name="dont-add-many-example-utterances-to-intents"></a>Nepřidávejte spoustu příkladů projevy k záměrům
 
 Po publikování aplikace se do procesu životního cyklu vývoje přidají jenom projevy z aktivního učení. Pokud je projevy příliš podobný, přidejte vzor.
 
 ## <a name="dont-use-few-or-simple-entities"></a>Nepoužívejte pár nebo jednoduché entity.
 
-Entity jsou sestaveny pro extrakci a předpověď dat. Je důležité, aby každý záměr získal entity, které popisují data v záměru. To pomáhá LUIS odhadnout záměr, i když klientská aplikace nemusí používat extrahovanou entitu.
+Entity jsou sestaveny pro extrakci a předpověď dat. Je důležité, aby každý záměr měl entity strojového učení, které popisují data v záměru. To pomáhá LUIS odhadnout záměr, i když klientská aplikace nemusí používat extrahovanou entitu.
 
 ## <a name="dont-use-luis-as-a-training-platform"></a>Nepoužívejte LUIS jako školicí platformu
 
