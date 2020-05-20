@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: ce4e4d11ead41ee8cc4a4bd1d85f1fbad2af4b07
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: dca9babff198fc780e54df6e89149f2c4c8157bf
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982526"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677700"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB Java SDK v4
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982526"
 > 
 
 > [!IMPORTANT]  
-> Tipy k výkonu v tomto článku jsou k disAzure Cosmos DB pouze v jazyce Java SDK v4. Další informace najdete v části Azure Cosmos DB zpráva k vydání verze Java SDK v4, [úložiště Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos)a [Průvodce řešením potíží s](troubleshoot-java-sdk-v4-sql.md) Azure Cosmos DB Java SDK v4. Pokud aktuálně používáte starší verzi než v4, přečtěte si článek průvodce [migrací do Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) , který vám pomůže s upgradem na V4.
+> Tipy k výkonu v tomto článku jsou k disAzure Cosmos DB pouze v jazyce Java SDK v4. Další informace najdete v části Azure Cosmos DB zpráva k [vydání verze](sql-api-sdk-java-v4.md)Java SDK v4, [úložiště Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos)a [Průvodce řešením potíží s](troubleshoot-java-sdk-v4-sql.md) Azure Cosmos DB Java SDK v4. Pokud aktuálně používáte starší verzi než v4, přečtěte si článek průvodce [migrací do Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) , který vám pomůže s upgradem na V4.
 >
 
 Azure Cosmos DB je rychlá a flexibilní distribuovaná databáze, která bez problémů škáluje zaručenou latenci a propustnost. Nemusíte dělat zásadní změny architektury nebo psát složitý kód pro škálování databáze pomocí Azure Cosmos DB. Vertikální navýšení a snížení kapacity je stejně snadné jako volání jednoho rozhraní API nebo volání metody sady SDK. Vzhledem k tomu, že k Azure Cosmos DB je k dispozici prostřednictvím síťových volání, existují optimalizace na straně klienta, které vám při použití Azure Cosmos DB Java SDK v4 můžou dosáhnout špičkového výkonu.
@@ -92,7 +92,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     ![Obrázek zásad Azure Cosmos DBho připojení](./media/performance-tips/same-region.png)
 
-    Aplikace, která komunikuje s Azure Cosmos DB účtem s více oblastmi, musí nakonfigurovat [upřednostňovaná umístění]() , aby se zajistilo, že se požadavky přecházejí do společně umístěného oblasti.
+    Aplikace, která komunikuje s Azure Cosmos DB účtem s více oblastmi, musí nakonfigurovat [upřednostňovaná umístění](tutorial-global-distribution-sql-api.md#preferred-locations) , aby se zajistilo, že se požadavky přecházejí do společně umístěného oblasti.
 
 * **Povolte na VIRTUÁLNÍm počítači Azure akcelerované síťové služby, aby se snížila latence.**
 
@@ -133,7 +133,7 @@ Další podrobnosti najdete v pokynech pro [Windows](https://docs.microsoft.com/
     
     Geografické společné umístění vám může při použití rozhraní API pro synchronizaci zajistit vyšší a jednotnější propustnost (viz [společné umístění klienti ve stejné oblasti Azure pro výkon](#collocate-clients)), ale pořád se nepředpokládá, že by se překročila propustnost, která by mohla dosáhnout ASYNCHRONNÍHO rozhraní API.
 
-    Někteří uživatelé mohou také být Neobeznámeni s nástrojem [Project Reactor](https://projectreactor.io/), což je rozhraní reaktivních datových proudů, které se používá k implementaci Azure Cosmos DB asynchronní rozhraní API Java SDK v4. Pokud se to týká, doporučujeme, abyste si přečetli náš [Průvodce vzorem](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) pro úvodní reaktor a potom se podíváme na tento [Úvod k Reaktivnímu programování](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) , abyste mohli seznámení sami. Pokud jste již používali Azure Cosmos DB s asynchronním rozhraním a sada SDK, kterou jste použili, byla Azure Cosmos DB Async Java SDK v2, možná budete obeznámeni s[RxJavam](https://github.com/ReactiveX/RxJava) [ovládacího prvku ActiveX](http://reactivex.io/)/, ale nemusíte si být jisti, co se změnilo v reaktoru projektu. V takovém případě se prosím podívejte na náš aktéra [vs. RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) , abyste se seznámili.
+    Někteří uživatelé mohou také být Neobeznámeni s nástrojem [Project Reactor](https://projectreactor.io/), což je rozhraní reaktivních datových proudů, které se používá k implementaci Azure Cosmos DB asynchronní rozhraní API Java SDK v4. Pokud se to týká, doporučujeme, abyste si přečetli náš [Průvodce vzorem](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) pro úvodní reaktor a potom se podíváme na tento [Úvod k Reaktivnímu programování](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) , abyste mohli seznámení sami. Pokud jste již používali Azure Cosmos DB s asynchronním rozhraním a sada SDK, kterou jste použili, byla Azure Cosmos DB Async Java SDK v2, možná budete obeznámeni s RxJavam [ovládacího prvku ActiveX](http://reactivex.io/), ale nemusíte / [RxJava](https://github.com/ReactiveX/RxJava) si být jisti, co se změnilo v reaktoru projektu. V takovém případě se prosím podívejte na náš aktéra [vs. RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) , abyste se seznámili.
 
     Následující fragmenty kódu ukazují, jak inicializovat klienta Azure Cosmos DB pro operaci rozhraní API asynchronního rozhraní API nebo synchronizace, v uvedeném pořadí:
 
@@ -278,7 +278,7 @@ Další podrobnosti najdete v pokynech pro [Windows](https://docs.microsoft.com/
         });
     ```
 
-    Na základě typu vaší práce byste měli použít příslušného stávajícího plánovače Reactor pro vaši práci. Přečtěte [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html)si tento článek.
+    Na základě typu vaší práce byste měli použít příslušného stávajícího plánovače Reactor pro vaši práci. Přečtěte si tento článek [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html) .
 
     Další informace o Azure Cosmos DB Java SDK v4 najdete v [adresáři Cosmos DB sady Azure SDK pro Java monorepo na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos).
 
@@ -393,7 +393,7 @@ Další podrobnosti najdete v pokynech pro [Windows](https://docs.microsoft.com/
 
     Složitost dotazu ovlivňuje počet spotřebovaných jednotek požadavků pro určitou operaci. Počet predikátů, povaha predikátů, počet UDF a velikost zdrojové sady dat ovlivňují náklady na operace dotazů.
 
-    Pokud chcete změřit režii jakékoli operace (vytvořit, aktualizovat nebo odstranit), zkontrolujte, že se v hlavičce [x-MS-Request-poplatek](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) měří počet jednotek žádostí spotřebovaných těmito operacemi. Můžete se také podívat na ekvivalentní vlastnost RequestCharge v ResourceResponse\<t> nebo FeedResponse\<t>.
+    Pokud chcete změřit režii jakékoli operace (vytvořit, aktualizovat nebo odstranit), zkontrolujte, že se v hlavičce [x-MS-Request-poplatek](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) měří počet jednotek žádostí spotřebovaných těmito operacemi. Můžete se také podívat na ekvivalentní vlastnost RequestCharge v ResourceResponse \< t> nebo FeedResponse \< t>.
 
     #### <a name="async"></a>[Async](#tab/api-async)
 

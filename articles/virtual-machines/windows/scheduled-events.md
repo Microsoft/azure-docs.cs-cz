@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: 105279940546c8e5b40d1d8378b35f85af1ea98b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b688341b8814c52523821851bef4d7600105cafd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099542"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675871"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače s Windows
 
@@ -47,21 +47,21 @@ Scheduled Events poskytuje události v následujících případech použití:
 Služba Azure metadata Service zpřístupňuje informace o spouštění Virtual Machines pomocí koncového bodu REST přístupného v rámci virtuálního počítače. Tyto informace jsou k dispozici prostřednictvím IP adresy, která není směrovatelný, takže se nezveřejňuje mimo virtuální počítač.
 
 ### <a name="endpoint-discovery"></a>Zjišťování koncových bodů
-Pro virtuální počítače s povolenými VIRTUÁLNÍmi sítěmi je služba metadat dostupná ze statické IP adresy, `169.254.169.254`která není směrovatelný. Úplný koncový bod pro nejnovější verzi Scheduled Events je: 
+Pro virtuální počítače s povolenými VIRTUÁLNÍmi sítěmi je služba metadat dostupná ze statické IP adresy, která není směrovatelný `169.254.169.254` . Úplný koncový bod pro nejnovější verzi Scheduled Events je: 
 
  > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
 
 Pokud se virtuální počítač nevytvoří v Virtual Network, výchozí případy cloudových služeb a klasických virtuálních počítačů vyžadují další logiku pro zjištění IP adresy, která se má použít. Informace o tom, jak [zjistit koncový bod hostitele](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm), najdete v této ukázce.
 
 ### <a name="version-and-region-availability"></a>Dostupnost verze a oblasti
-Služba Scheduled Events má verzi. Verze jsou povinné a aktuální verze je `2019-01-01`.
+Služba Scheduled Events má verzi. Verze jsou povinné a aktuální verze je `2019-01-01` .
 
-| Version | Typ verze | Oblasti | Poznámky k verzi | 
+| Verze | Typ verze | Oblasti | Zpráva k vydání verze | 
 | - | - | - | - |
-| 2019-01-01 | Obecná dostupnost | Všechny | <li> Přidaná podpora pro virtuální počítač Scale Sets EventType ' ukončit ' |
-| 2017-11-01 | Obecná dostupnost | Všechny | <li> Přidání podpory pro vyřazení virtuálních počítačů s názvem EventType<br> | 
-| 2017-08-01 | Obecná dostupnost | Všechny | <li> Z názvů prostředků pro virtuální počítače s IaaS se odebraly předpony s podtržítkem.<br><li>Požadavek na hlavičku metadat vynutil pro všechny požadavky | 
-| 2017-03-01 | Preview | Všechny |<li>Původní vydaná verze |
+| 2019-01-01 | Obecná dostupnost | Vše | <li> Přidaná podpora pro virtuální počítač Scale Sets EventType ' ukončit ' |
+| 2017-11-01 | Obecná dostupnost | Vše | <li> Přidání podpory pro vyřazení virtuálních počítačů s názvem EventType<br> | 
+| 2017-08-01 | Obecná dostupnost | Vše | <li> Z názvů prostředků pro virtuální počítače s IaaS se odebraly předpony s podtržítkem.<br><li>Požadavek na hlavičku metadat vynutil pro všechny požadavky | 
+| 2017-03-01 | Preview | Vše |<li>Původní vydaná verze |
 
 > [!NOTE] 
 > Předchozí verze Preview s naplánovanými událostmi, které jsou podporované {nejnovější} jako verze API. Tento formát se už nepodporuje a v budoucnu se už nepoužívá.
@@ -74,12 +74,12 @@ Scheduled Events je pro vaši službu zakázaný, pokud nevytvoří žádost na 
 ### <a name="user-initiated-maintenance"></a>Údržba iniciovaná uživatelem
 Uživatelem iniciovaná údržba virtuálního počítače pomocí Azure Portal, rozhraní API, CLI nebo PowerShellu způsobí naplánovanou událost. To vám umožní testovat logiku přípravy údržby ve vaší aplikaci a umožňuje aplikaci připravit se na údržbu iniciované uživatelem.
 
-Po restartování virtuálního počítače se naplánuje událost `Reboot`s typem. Když se znovu nasadí virtuální počítač, naplánuje `Redeploy`se událost s typem.
+Po restartování virtuálního počítače se naplánuje událost s typem `Reboot` . Když se znovu nasadí virtuální počítač, naplánuje se událost s typem `Redeploy` .
 
 ## <a name="using-the-api"></a>Použití rozhraní API
 
 ### <a name="headers"></a>Hlavičky
-Při dotazování na Metadata Service musíte zadat hlavičku `Metadata:true` , abyste zajistili, že se žádost neúmyslně přesměrovala. `Metadata:true` Hlavička je vyžadována pro všechny požadavky na naplánované události. Nepovedlo se zahrnout hlavičku do žádosti. výsledkem bude nesprávná odpověď na požadavek od Metadata Service.
+Při dotazování na Metadata Service musíte zadat hlavičku, `Metadata:true` abyste zajistili, že se žádost neúmyslně přesměrovala. `Metadata:true`Hlavička je vyžadována pro všechny požadavky na naplánované události. Nepovedlo se zahrnout hlavičku do žádosti. výsledkem bude nesprávná odpověď na požadavek od Metadata Service.
 
 ### <a name="query-for-events"></a>Dotaz na události
 Dotaz na Scheduled Events můžete jednoduše provést následujícím voláním:
@@ -114,12 +114,12 @@ DocumentIncarnation je ETag a poskytuje snadný způsob, jak zkontrolovat, jestl
 | ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | Typ události | Dopad této události způsobí. <br><br> Hodnoty: <br><ul><li> `Freeze`: U virtuálního počítače se naplánovalo pozastavení na několik sekund. Může být pozastaveno připojení k procesoru a k síti, ale neexistuje žádný vliv na paměť nebo otevřené soubory. <li>`Reboot`: Virtuální počítač má naplánován restart (netrvalá paměť je ztracená). <li>`Redeploy`: Virtuální počítač má naplánovaný přesun na jiný uzel (dočasné disky se ztratí). <li>`Preempt`: Odstraňuje se virtuální počítač se skvrnou (dočasné disky se ztratí). <li> `Terminate`: Je naplánováno odstranění virtuálního počítače. |
 | ResourceType | Typ prostředku, na který tato událost ovlivňuje. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
-| Zdroje a prostředky| Seznam prostředků, které tato událost ovlivňuje. Je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| Stav události | Stav této události <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánována na spuštění po uplynutí doby zadané ve `NotBefore` vlastnosti.<li>`Started`: Tato událost je spuštěná.</ul> Není `Completed` k dispozici žádný nebo podobný stav; Po dokončení události již událost nebude vrácena.
+| Prostředky| Seznam prostředků, které tato událost ovlivňuje. Je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Stav události | Stav této události <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánována na spuštění po uplynutí doby zadané ve `NotBefore` Vlastnosti.<li>`Started`: Tato událost je spuštěná.</ul> V tuto `Completed` chvíli není k dispozici žádný nebo podobný stav. po dokončení události již událost nebude vrácena.
 | NotBefore| Čas, po kterém se tato událost může spustit. <br><br> Příklad: <br><ul><li> Pondělí 19. září 2016 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>Plánování událostí
-Každé události je naplánováno minimální množství času v budoucnu na základě typu události. Tato doba se projeví ve `NotBefore` vlastnosti události. 
+Každé události je naplánováno minimální množství času v budoucnu na základě typu události. Tato doba se projeví ve vlastnosti události `NotBefore` . 
 
 |Typ události  | Minimální oznámení |
 | - | - |
@@ -137,15 +137,15 @@ Naplánované události jsou doručovány do:
  - Samostatné Virtual Machines
  - Všechny Virtual Machines v cloudové službě      
  - Všechny Virtual Machines ve skupině dostupnosti      
- - Všechny Virtual Machines ve skupině umístění sady škálování.         
+ - Všechny Virtual Machines ve skupině umístění sady škálování (včetně dávky)        
 
 V důsledku toho byste měli zaškrtnout `Resources` pole v události a určit, které virtuální počítače budou mít vliv na to. 
 
 ### <a name="starting-an-event"></a>Spuštění události 
 
-Jakmile jste se dozvěděli o nadcházející události a dokončili jste logiku pro řádné vypnutí, můžete nezpracované události schválit `POST` voláním služby metadat pomocí. `EventId` To znamená, že Azure může zkrátit minimální dobu oznámení (Pokud je to možné). 
+Jakmile jste se dozvěděli o nadcházející události a dokončili jste logiku pro řádné vypnutí, můžete nezpracované události schválit `POST` voláním služby metadat pomocí `EventId` . To znamená, že Azure může zkrátit minimální dobu oznámení (Pokud je to možné). 
 
-Následuje znak JSON očekávaný v textu `POST` požadavku. Žádost by měla obsahovat seznam `StartRequests`. Každý `StartRequest` obsahuje `EventId` pro událost, kterou chcete urychlit:
+Následuje znak JSON očekávaný v `POST` textu požadavku. Žádost by měla obsahovat seznam `StartRequests` . Každý `StartRequest` obsahuje `EventId` pro událost, kterou chcete urychlit:
 ```
 {
     "StartRequests" : [
@@ -162,7 +162,7 @@ curl -H @{"Metadata"="true"} -Method POST -Body '{"StartRequests": [{"EventId": 
 ```
 
 > [!NOTE] 
-> Potvrzení události umožní, aby událost pokračovala `Resources` v případě, že událost není pouze virtuálním počítačem, který událost potvrdí. Můžete tedy zvolit vedoucího vedoucího ke koordinaci potvrzení, což může být jednoduché jako první počítač v `Resources` poli.
+> Potvrzení události umožní, aby událost pokračovala v případě, že událost `Resources` není pouze virtuálním počítačem, který událost potvrdí. Můžete tedy zvolit vedoucího vedoucího ke koordinaci potvrzení, což může být jednoduché jako první počítač v `Resources` poli.
 
 
 ## <a name="powershell-sample"></a>Ukázka PowerShellu 

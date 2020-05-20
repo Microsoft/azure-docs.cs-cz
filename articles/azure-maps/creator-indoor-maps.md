@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 34a1495d1a14e35bc5a94bfc01f4034c6fd6de72
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb0293c66662c86723c31baebeed42dd42d33413
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598392"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677809"
 ---
 # <a name="creator-for-indoor-maps"></a>Autor pro mapy vnitřníchy
 
@@ -35,7 +35,7 @@ Pro nahrání balíčku pro kreslení použijte [Azure Maps rozhraní API pro na
 
 ## <a name="convert-a-drawing-package"></a>Převod balíčku pro kreslení
 
-[Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/data/conversion) převede nahraný balíček vykreslování na data mapy vnitřních dat. Služba konverze také ověřuje balíček. Problémy s ověřením jsou klasifikovány do dvou typů: chyby a upozornění. Pokud jsou zjištěny nějaké chyby, proces převodu se nezdařil. By měla být zjištěna upozornění, převod bude úspěšný. Doporučuje se ale zkontrolovat a vyřešit všechna upozornění. Upozornění znamená, že část převodu byla ignorována nebo automaticky opravena. Selhání při řešení problémů by mohlo způsobit chyby v těchto procesech. Další informace najdete v tématu [Upozornění a chyby při vykreslování balíčku](drawing-conversion-error-codes.md).
+[Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) převede nahraný balíček vykreslování na data mapy vnitřních dat. Služba konverze také ověřuje balíček. Problémy s ověřením jsou klasifikovány do dvou typů: chyby a upozornění. Pokud jsou zjištěny nějaké chyby, proces převodu se nezdařil. By měla být zjištěna upozornění, převod bude úspěšný. Doporučuje se ale zkontrolovat a vyřešit všechna upozornění. Upozornění znamená, že část převodu byla ignorována nebo automaticky opravena. Selhání při řešení problémů by mohlo způsobit chyby v těchto procesech. Další informace najdete v tématu [Upozornění a chyby při vykreslování balíčku](drawing-conversion-error-codes.md).
 
 Pokud dojde k chybě, služba převodu poskytuje odkaz na Azure Maps vykreslení samostatné webové aplikace [Vizualizér chyb](drawing-error-visualizer.md) . K prozkoumání [Upozornění a chyb](drawing-conversion-error-codes.md) , ke kterým došlo během procesu převodu, můžete použít Vizualizér chyb při vykreslování. Až chyby opravíte, můžete se pokusit o nahrání a převod balíčku.
 

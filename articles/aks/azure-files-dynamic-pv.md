@@ -5,12 +5,12 @@ description: Zjistěte, jak dynamicky vytvořit trvalý svazek se soubory Azure 
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: 0826035a6c81cdbdd8c93f78cb32835dce675eb4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 447df96240891e30570f0c7a8174674e1f404efc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207679"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677915"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamické vytvoření a použití trvalého svazku se soubory Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložišt
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="create-a-storage-class"></a>Vytvoření třídy úložiště
 
@@ -33,7 +33,6 @@ Třída úložiště se používá k definování způsobu vytvoření sdílené
 * *Standard_ZRS* – standardní zóna redundantního úložiště (ZRS)
 * *Standard_RAGRS* – standardní geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)
 * *Premium_LRS* – Premium místně redundantní úložiště (LRS)
-* *Premium_ZRS* – redundantní úložiště zóny Premium (GRS)
 
 > [!NOTE]
 > Služba soubory Azure podporuje Prémiové úložiště v clusterech AKS, které používají Kubernetes 1,13 nebo vyšší, je minimální úroveň Premium pro sdílení souborů 100 GB
@@ -107,7 +106,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 Následující YAML vytvoří pod, který pomocí *azurefile* trvalého objemu deklarací identity připojí sdílenou složku Azure na cestě */mnt/Azure* . V případě kontejnerů Windows serveru určete *mountPath* pomocí konvence cesty Windows, třeba *:*.
 
-Vytvořte soubor s názvem `azure-pvc-files.yaml`a ZKOPÍRUJTE následující YAML. Ujistěte se, že tento *argument* se shoduje s virtuálním okruhem vytvořeným v posledním kroku.
+Vytvořte soubor s názvem `azure-pvc-files.yaml` a zkopírujte následující YAML. Ujistěte se, že tento *argument* se shoduje s virtuálním okruhem vytvořeným v posledním kroku.
 
 ```yaml
 kind: Pod
@@ -140,7 +139,7 @@ Vytvořte pod příkazem [kubectl Apply][kubectl-apply] .
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-Teď máte spuštěný pod složkou sdílené složky Azure, která je připojená v adresáři */mnt/Azure* . Tato konfigurace se dá zobrazit při kontrole přes `kubectl describe pod mypod`. Následující zhuštěný příklad výstupu ukazuje svazek připojený do kontejneru:
+Teď máte spuštěný pod složkou sdílené složky Azure, která je připojená v adresáři */mnt/Azure* . Tato konfigurace se dá zobrazit při kontrole přes `kubectl describe pod mypod` . Následující zhuštěný příklad výstupu ukazuje svazek připojený do kontejneru:
 
 ```
 Containers:

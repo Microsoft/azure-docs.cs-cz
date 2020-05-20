@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f3b37a6336c578ed25d8ab9553bc1ea9c79872f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117203"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660578"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Postup převzetí služeb při selhání pro zotavení po havárii
 
@@ -39,7 +39,7 @@ Pokud chcete provést obnovení na nejnovější replikované snímky úložišt
 Pokud chcete více instancí SAP HANA převzít při selhání, spusťte příkaz azure_hana_dr_failover několikrát. V případě vyžádání zadejte identifikátor SID SAP HANA, který chcete převzít a obnovit. 
 
 
-Převzetí služeb při selhání můžete testovat i bez dopadu na skutečný vztah replikace. Pokud chcete provést test převzetí služeb při selhání, postupujte podle kroků v tématu "provedení testu zotavení po převzetí služeb při selhání azure_hana_test_dr_failover" v tématu [Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf). 
+Převzetí služeb při selhání můžete testovat i bez dopadu na skutečný vztah replikace. Pokud chcete provést test převzetí služeb při selhání, postupujte podle kroků v tématu "provedení testu zotavení po převzetí služeb při selhání azure_hana_test_dr_failover" v tématu [Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf). 
 
 >[!IMPORTANT]
 >Nespouštějte *žádné* provozní transakce v instanci, kterou jste vytvořili v lokalitě Dr, prostřednictvím procesu **testování převzetí služeb při selhání**. Příkaz azure_hana_test_dr_failover vytvoří sadu svazků, které nemají žádný vztah k primární lokalitě. V důsledku toho *není* možné synchronizaci zpět do primární lokality. 
@@ -117,7 +117,7 @@ Postupujte následovně:
 
 Pokud chcete monitorovat stav procesu replikace úložiště, spusťte skript `azure_hana_replication_status` . Tento příkaz musí být spuštěn z jednotky, která je spuštěna v umístění zotavení po havárii, aby fungovala podle očekávání. Příkaz nefunguje bez ohledu na to, jestli je replikace aktivní. Příkaz se dá spustit pro každou jednotku velkých instancí v tenantovi v umístění pro zotavení po havárii. Nedá se použít k získání podrobných informací o spouštěcím svazku. 
 
-Další informace o příkazu a jeho výstupu najdete v tématu "získání stavu replikace DR-azure_hana_replication_status" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf).
+Další informace o příkazu a jeho výstupu najdete v tématu "získání stavu replikace DR-azure_hana_replication_status" v [nástrojích Microsoft Snapshot Tools pro SAP HANA v Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf).
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,17 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: e47c8bc4dc814f1d4c5cb115a2da911544dd55f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a93c478f0621bf62b710f58f3e6f06298bad9954
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399977"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673046"
 ---
 :::row:::
     :::column span="3":::
         Sada Speech SDK podporuje pouze **Ubuntu 16.04/18.04**, **Debian 9**, **Red Hat Enterprise Linux (RHEL) 7/8**a **CentOS 7/8** při použití se systémem Linux pro následující cílové architektury:
-        - x64
     :::column-end:::
     :::column:::
         <br>
@@ -24,19 +23,21 @@ ms.locfileid: "81399977"
     :::column-end:::
 :::row-end:::
 
-> [!IMPORTANT]
-> Při cílení na Linux ARM64 a použití jazyka C# je vyžadován balíček .NET Core 3. x (dotnet-SDK-3. x). Pokud cílíte na ARM32 nebo ARM64, Python se nepodporuje.
+- x86 (Debian/Ubuntu), x64, ARM32 (Debian/Ubuntu) a ARM64 (Debian/Ubuntu) pro vývoj v jazyce C++
+- x64, ARM32 (Debian/Ubuntu) a ARM64 (Debian/Ubuntu) pro Java
+- x64, ARM32 (Debian/Ubuntu) a ARM64 (Debian/Ubuntu) pro .NET Core
+- x64 pro Python
 
-> [!NOTE]
-> Architektury x86 rozhraní Ubuntu 16,04, Ubuntu 18,04 a Debian 9 podporují pouze vývoj v jazyce C++ se sadou Speech SDK.
+> [!IMPORTANT]
+> Pro C# v systému Linux ARM64 se vyžaduje balíček .NET Core 3. x (dotnet-SDK-3. x).
 
 ### <a name="system-requirements"></a>Požadavky na systém
 
-Pro nativní aplikaci závisí sada Speech SDK na `libMicrosoft.CognitiveServices.Speech.core.so`. Ujistěte se, že cílová architektura (x86, x64) odpovídá aplikaci. V závislosti na verzi pro Linux můžou být potřeba další závislosti.
+Pro nativní aplikaci závisí sada Speech SDK na `libMicrosoft.CognitiveServices.Speech.core.so` . Ujistěte se, že cílová architektura (x86, x64) odpovídá aplikaci. V závislosti na verzi pro Linux můžou být potřeba další závislosti.
 
-- Sdílené knihovny knihovny GNU C (včetně knihovny programování vláken POSIX `libpthreads`)
-- Knihovna OpenSSL (`libssl.so.1.0.0` nebo `libssl.so.1.0.2`)
-- Sdílená knihovna pro aplikace ALSA (`libasound.so.2`)
+- Sdílené knihovny knihovny GNU C (včetně knihovny programování vláken POSIX `libpthreads` )
+- Knihovna OpenSSL ( `libssl.so.1.0.0` nebo `libssl.so.1.0.2` )
+- Sdílená knihovna pro aplikace ALSA ( `libasound.so.2` )
 
 # <a name="ubuntu-16041804"></a>[Ubuntu 16.04/18.04](#tab/ubuntu)
 
@@ -60,10 +61,8 @@ sudo yum install alsa-lib openssl
 ```
 
 > [!IMPORTANT]
-> Postupujte podle pokynů, [jak nakonfigurovat RHEL/CentOS 7 pro sadu Speech SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md).
-
-> [!TIP]
-> V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](../how-to-configure-openssl-linux.md).
+> - V RHEL/CentOS 7 postupujte podle pokynů, [jak nakonfigurovat RHEL/CentOS 7 pro sadu Speech SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md).
+> - V RHEL/CentOS 8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 ---
 

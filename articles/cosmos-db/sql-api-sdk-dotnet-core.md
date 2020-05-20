@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: rozhraní SQL .NET Core API, sady SDK & prostředky'
 description: Přečtěte si všechno o rozhraních API SQL .NET Core a sadě SDK včetně dat vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi Azure Cosmos DB .NET Core SDK.
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 03/22/2018
-ms.author: sngun
-ms.openlocfilehash: 35c81f023726803fb2346d68ae783fdfe124143f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 3738af6349a6f71f6100c601858b39c6329d0295
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72177709"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660396"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Sada Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Poznámky k verzi a zdroje informací
 > [!div class="op_single_selector"]
@@ -22,8 +22,9 @@ ms.locfileid: "72177709"
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -40,7 +41,7 @@ ms.locfileid: "72177709"
 |**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Aktuální podporovaná architektura**|[.NET Standard 1,6 a .NET Standard 1,5](https://www.nuget.org/packages/NETStandard.Library)|
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Zpráva k vydání verze
 
 > [!NOTE]
 > Pokud používáte .NET Core, přečtěte si prosím nejnovější verzi 3. x sady [.NET SDK](sql-api-sdk-dotnet-standard.md), která cílí na .NET Standard. 

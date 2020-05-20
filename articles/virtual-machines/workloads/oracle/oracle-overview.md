@@ -10,18 +10,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
+ms.date: 05/12/2020
 ms.author: borisb
-ms.openlocfilehash: c737189650d571fb62a770707e84ed15c5a37a57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 649d96a158682752e0d4a31bf7ec73eb7c442f0f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870508"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660538"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Přehled aplikací a řešení Oracle v Azure
 
-V tomto článku se seznámíte s možnostmi spouštění řešení Oracle pomocí infrastruktury Azure. Přečtěte si také podrobné informace o dostupných [imagích virtuálních počítačů Oracle](oracle-vm-solutions.md) v Azure Marketplace a schopnost [propojit Azure se službou Oracle Cloud Infrastructure (OCI)](oracle-oci-overview.md).
+V tomto článku se seznámíte s možnostmi spouštění řešení Oracle pomocí infrastruktury Azure. Viz také podrobná Úvod k dostupným [aplikacím serveru WebLogic Server Azure](oracle-weblogic.md), [image virtuálních počítačů Oracle](oracle-vm-solutions.md) v Azure Marketplace a schopnost [propojit Azure se službou Oracle Cloud Infrastructure (OCI)](oracle-oci-overview.md).
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Databáze Oracle v infrastruktuře Azure
 
@@ -35,9 +35,13 @@ Můžete se také rozhodnout nastavit Oracle Database na neOracle Linux image do
 
 Volitelně můžete nakonfigurovat s více připojenými disky a zvýšit výkon databáze tím, že nainstalujete systém Oracle Automated Storage Management (ASM).
 
+## <a name="weblogic-server-with-azure-service-integrations"></a>WebLogic Server s integrací služeb Azure
+
+Vyberte si z nejrůznějších aplikací serveru WebLogic Server Azure, abyste urychlili cestu do cloudu.  K dispozici je několik předem nakonfigurovaných integrací služeb Azure, včetně databází, Azure App Gateway a Azure Active Directory.
+
 ## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Aplikace na Oracle Linux a WebLogic Server
 
-Spouštějte podnikové aplikace v Azure v podporovaných operačních systémech Oracle. Následující obrázky jsou k dispozici v Azure Marketplace:
+Spouštějte podnikové aplikace v Azure v podporovaných operačních systémech Oracle. Následující image virtuálních počítačů jsou k dispozici v Azure Marketplace:
 
 * Oracle WebLogic server 12.1.2
 
@@ -55,7 +59,7 @@ Spouštějte podnikové aplikace v Azure v podporovaných operačních systémec
 
 * Zálohování virtuálních počítačů Oracle pomocí [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)
 
-* Pomocí RMANu Oracle zálohujte svůj Oracle Database a volitelně pomocí služby [Azure Blob pojistky](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) připojte [vysoce redudant účet Azure Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) a zapište do něj zálohy rman pro zvýšení odolnosti.
+* Zálohujte Oracle Database pomocí Oracle RMAN a volitelně pomocí služby [Azure Blob pojistky](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) připojte [vysoce redundantní účet Azure Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) a zapište do něj zálohy rman pro zvýšení odolnosti.
 
 ## <a name="integration-of-azure-with-oci"></a>Integrace Azure s OCI
 
@@ -84,11 +88,13 @@ Nasaďte také vlastní aplikace v Azure, které se připojují k OCI a dalším
 V kombinaci s aplikacemi Oracle běžícími v Azure použijte Oracle Database Cloud Services (autonomní databáze, RAC, Exadata, DBaaS, jeden uzel). Přečtěte si další informace o [možnostech databáze OCI](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Licencování
+## <a name="licensing"></a>Licensing
 
 Nasazení aplikací Oracle v Azure je založené na modelu "Přineste si vlastní licenci". Předpokládáte, že máte řádně licenci na používání softwaru Oracle a máte k dispozici aktuální smlouvu o podpoře pro Oracle. Oracle garantuje mobilitu licencí z místního prostředí do Azure. Podívejte se na [Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)k Oracle-Azure.
 
 ## <a name="next-steps"></a>Další kroky
+
+* Přečtěte si další informace o [aplikacích Azure pro WebLogic Server](oracle-weblogic.md) a o integraci služeb Azure, které podporují.
 
 * Přečtěte si další informace o nasazování [imagí virtuálních počítačů Oracle](oracle-vm-solutions.md) v infrastruktuře Azure.
 

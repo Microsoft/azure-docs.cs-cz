@@ -9,13 +9,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 12/19/2019
-ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: bf0aeb3b73f2b12e723269a792d67d7f6185894f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418486"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674569"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vytváření vizuálů v Azure Data Factory
 
@@ -34,6 +34,14 @@ V současné době je Azure Data Factory UX podporován pouze v Microsoft Edge a
 Tady budete vytvářet kanály, aktivity, datové sady, propojené služby, toky dat, triggery a prostředí Integration runtime, které tvoří vaši továrnu. Pokud chcete začít vytvářet kanál pomocí plátna pro vytváření obsahu, přečtěte si téma [kopírování dat pomocí aktivity kopírování](tutorial-copy-data-portal.md). 
 
 Výchozí prostředí pro vytváření vizuálů funguje přímo s Data Factory službou. Integrace s Azure Repos Git nebo GitHubem je taky podporovaná tak, aby umožňovala správu zdrojového kódu a spolupráci pro práci na kanálech datové továrny. Další informace o rozdílech mezi těmito prostředími pro vytváření najdete [v tématu Správa zdrojového kódu v Azure Data Factory](source-control.md).
+
+### <a name="properties-pane"></a>Podokno Vlastnosti
+
+U prostředků nejvyšší úrovně, jako jsou kanály, datové sady a toky dat, jsou vlastnosti vysoké úrovně editovatelné v podokně vlastnosti na pravé straně plátna. Podokno vlastnosti obsahuje vlastnosti, jako je název, popis, poznámky a další vlastnosti na nejvyšší úrovni. Podzdroje, jako jsou aktivity kanálu a transformace toku dat, se upravují pomocí panelu v dolní části plátna. 
+
+![Plátno pro vytváření obsahu](media/author-visually/properties-pane.png)
+
+Podokno vlastnosti bude ve výchozím nastavení otevřeno pouze při vytváření prostředku. Pokud ho chcete upravit, klikněte na ikonu podokna Vlastnosti umístěnou v pravém horním rohu plátna.
 
 ## <a name="expressions-and-functions"></a>Výrazy a funkce
 

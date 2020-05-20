@@ -4,12 +4,12 @@ description: Naučte se definovat vlastní výstupní trasu ve službě Azure Ku
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: babfd70a6a9732113531be13073af212a6820557
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733494"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677883"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy (Preview)
 
@@ -40,29 +40,29 @@ az extension update --name aks-preview
 ```
 
 ## <a name="limitations"></a>Omezení
-* Během období Preview `outboundType` se dá definovat jenom při vytváření clusteru a nedá se aktualizovat později.
-* Ve `outboundType` verzi Preview by clustery AKS měly používat Azure CNI. Kubenet je konfigurovatelné, použití vyžaduje ruční přidružení směrovací tabulky k podsíti AKS.
-* Nastavení `outboundType` vyžaduje clustery AKS s `vm-set-type` `VirtualMachineScaleSets` a `load-balancer-sku` z `Standard`.
+* Během období Preview se `outboundType` dá definovat jenom při vytváření clusteru a nedá se aktualizovat později.
+* Ve verzi Preview `outboundType` by clustery AKS měly používat Azure CNI. Kubenet je konfigurovatelné, použití vyžaduje ruční přidružení směrovací tabulky k podsíti AKS.
+* Nastavení `outboundType` vyžaduje clustery AKS s `vm-set-type` `VirtualMachineScaleSets` a `load-balancer-sku` z `Standard` .
 * Nastavení `outboundType` na hodnotu `UDR` vyžaduje trasu definovanou uživatelem s platným odchozím připojením pro cluster.
 * Nastavení `outboundType` na hodnotu `UDR` znamená, že IP adresa příchozího přenosu dat směrovaného do nástroje pro vyrovnávání zatížení nemusí **odpovídat** cílové adrese odchozího výstupu clusteru.
 
 ## <a name="overview-of-outbound-types-in-aks"></a>Přehled odchozích typů v AKS
 
-Cluster AKS se dá přizpůsobit jedinečným `outboundType` typem pro vyrovnávání zatížení nebo uživatelem definovaným směrováním.
+Cluster AKS se dá přizpůsobit jedinečným typem pro `outboundType` Vyrovnávání zatížení nebo uživatelem definovaným směrováním.
 
 > [!IMPORTANT]
 > Typ odchozího přenosu ovlivňuje jenom výstupní přenos vašeho clusteru. Další informace najdete v tématu [nastavení řadičů](ingress-basic.md) příchozího přenosu dat.
 
 ### <a name="outbound-type-of-loadbalancer"></a>Odchozí typ vyrovnávání zatížení
 
-Pokud `loadBalancer` je nastavená, AKS se automaticky dokončí následující nastavení. Nástroj pro vyrovnávání zatížení se používá k odchozímu přenosu prostřednictvím AKS s přiřazenou veřejnou IP adresou. Odchozí typ `loadBalancer` podporuje služby Kubernetes typu `loadBalancer`, které očekávají výstup z nástroje pro vyrovnávání zatížení vytvořeného poskytovatelem prostředků AKS.
+Pokud `loadBalancer` je nastavená, AKS se automaticky dokončí následující nastavení. Nástroj pro vyrovnávání zatížení se používá k odchozímu přenosu prostřednictvím AKS s přiřazenou veřejnou IP adresou. Odchozí typ `loadBalancer` podporuje služby Kubernetes typu `loadBalancer` , které očekávají výstup z nástroje pro vyrovnávání zatížení vytvořeného poskytovatelem prostředků AKS.
 
 Následující nastavení se provádí pomocí AKS.
    * Veřejná IP adresa se zřídí pro odchozí výstup clusteru.
    * Veřejné IP adresy se přiřadí prostředku nástroje pro vyrovnávání zatížení.
    * Back-endové fondy pro nástroj pro vyrovnávání zatížení jsou instalačním programem uzlů agentů v clusteru.
 
-Níže je síťová topologie nasazená v clusterech AKS ve výchozím nastavení, která `outboundType` používají `loadBalancer`.
+Níže je síťová topologie nasazená v clusterech AKS ve výchozím nastavení, která `outboundType` používají `loadBalancer` .
 
 ![outboundtype-kg](media/egress-outboundtype/outboundtype-lb.png)
 
@@ -119,9 +119,6 @@ DEVSUBNET_NAME="${PREFIX}dev"
 V dalším kroku nastavte ID předplatných.
 
 ```azure-cli
-# Get ARM Access Token and Subscription ID - This will be used for AuthN later.
-
-ACCESS_TOKEN=$(az account get-access-token -o tsv --query 'accessToken')
 
 # NOTE: Update Subscription Name
 # Set Default Azure Subscription to be Used via Subscription ID
@@ -318,7 +315,7 @@ az role assignment list --assignee $APPID --all -o table
 
 ### <a name="deploy-aks"></a>Nasazení AKS
 
-A konečně, cluster AKS se dá nasadit do existující podsítě, kterou jsme pro cluster vyhradí. Cílová podsíť, do které se má nasadit, `$SUBNETID`je definována s proměnnou prostředí. V předchozích krocích jsme `$SUBNETID` nedefinovali proměnnou. Chcete-li nastavit hodnotu ID podsítě, můžete použít následující příkaz:
+A konečně, cluster AKS se dá nasadit do existující podsítě, kterou jsme pro cluster vyhradí. Cílová podsíť, do které se má nasadit, je definována s proměnnou prostředí `$SUBNETID` . V předchozích krocích jsme nedefinovali `$SUBNETID` proměnnou. Chcete-li nastavit hodnotu ID podsítě, můžete použít následující příkaz:
 
 ```azurecli
 SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
@@ -399,7 +396,7 @@ kubectl apply -f internal-lb.yaml
 
 Vzhledem k tomu, že typ odchozího clusteru je nastaven jako UDR, přidružení uzlů agentů jako back-end fond pro nástroj pro vyrovnávání zatížení není v době vytvoření clusteru automaticky dokončeno pomocí AKS. Přidružení fondu back-endu se ale při nasazení služby Kubernetes zpracovává poskytovatelem cloudu Azure Kubernetes.
 
-Nasaďte aplikaci hlasovací aplikace v Azure zkopírováním níže uvedeného YAML do souboru s `example.yaml`názvem.
+Nasaďte aplikaci hlasovací aplikace v Azure zkopírováním níže uvedeného YAML do souboru s názvem `example.yaml` .
 
 ```yaml
 apiVersion: apps/v1

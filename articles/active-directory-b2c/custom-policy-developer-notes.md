@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 471c2d45e28e634adde78c2d96d407ec219be68c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90d9c6a2ebf445ba492f2e1634e57910cd235aed
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229659"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679249"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky pro vývojáře pro vlastní zásady v Azure Active Directory B2C
 
@@ -62,20 +62,20 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="protocols-and-authorization-flows"></a>Protokoly a autorizační toky
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Příznak | Development | Preview | GA | Poznámky |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [Autorizační kód OAuth2](authorization-code-flow.md) |  |  | × |  |
 | OAuth2 autorizační kód s PKCE |  |  | × | Pouze mobilní aplikace  |
 | [OAuth2 implicitní tok](implicit-flow-single-page-application.md) |  |  | × |  |
 | [Přihlašovací údaje pro heslo vlastníka prostředku OAuth2](ropc-custom.md) |  | × |  |  |
 | [OIDC připojit](openid-connect.md) |  |  | × |  |
-| [TYPU Saml2](connect-with-saml-service-providers.md)  |  |×  |  | Vystavení a přesměrování vazeb. |
+| [TYPU Saml2](connect-with-saml-service-providers.md)  |  |  |×  | Vystavení a přesměrování vazeb. |
 | OAuth1 |  |  |  | Není podporováno. |
 | WSFED | × |  |  |  |
 
 ### <a name="identify-providers-federation"></a>Identifikace federačních zprostředkovatelů 
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Příznak | Development | Preview | GA | Poznámky |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | × | Například Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | × | Například Facebook.  |
@@ -86,7 +86,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="rest-api-integration"></a>Integrace REST API
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Příznak | Development | Preview | GA | Poznámky |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [REST API se základním ověřováním](secure-rest-api.md#http-basic-authentication) |  |  | × |  |
 | [REST API s ověřováním klientským certifikátem](secure-rest-api.md#https-client-certificate-authentication) |  |  | × |  |
@@ -94,7 +94,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="component-support"></a>Podpora komponent
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Příznak | Development | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Ověřování pro telefonní faktor](phone-factor-technical-profile.md) |  |  | × |  |
 | [Ověřování Azure MFA](multi-factor-auth-technical-profile.md) |  | × |  |  |
@@ -109,7 +109,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="page-layout-versions"></a>Verze rozložení stránky
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Příznak | Development | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [2.0.0](page-layout.md#200) |  | × |  |  |
 | [1.2.0](page-layout.md#120) |  | × |  |  |
@@ -119,7 +119,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="app-ief-integration"></a>Integrace aplikací – IEF
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Příznak | Development | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Parametr řetězce dotazu`domain_hint` |  |  | × | K dispozici jako deklarace identity, se dají předat do IDP. |
 | Parametr řetězce dotazu`login_hint` |  |  | × | K dispozici jako deklarace identity, se dají předat do IDP. |
@@ -129,7 +129,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="session-management"></a>Správa relací
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Příznak | Development | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Výchozí zprostředkovatel relace jednotného přihlašování](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | × |  |
 | [Externí zprostředkovatel přihlašovací relace](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | × |  |
@@ -139,7 +139,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="security"></a>Zabezpečení
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Příznak | Development | Preview | GA | Poznámky |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Klíče zásad – vygenerování, ruční, nahrání |  |  | × |  |
 | Klíče zásad – RSA/certifikát, tajné klíče |  |  | × |  |
@@ -147,7 +147,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="developer-interface"></a>Vývojové rozhraní
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Příznak | Development | Preview | GA | Poznámky |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Portál Azure – IEF UX |  |  | × |  |
 | Nahrávání zásad |  |  | × |  |

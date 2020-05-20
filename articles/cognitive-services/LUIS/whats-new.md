@@ -2,31 +2,37 @@
 title: Co je nového – Language Understanding (LUIS)
 description: Tento článek se pravidelně aktualizuje o novinky o Language Understanding API Azure Cognitive Services.
 ms.topic: overview
-ms.date: 05/08/2020
-ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592793"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675955"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 
 Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="may-2020---build"></a>Květen 2020 – Build
 
 * Vydáno **všeobecně k dispozici** (GA):
     * [Language Understanding kontejner](luis-container-howto.md)
     * Portál Preview povýšen na [aktuální portál](https://www.luis.ai), [předchozí](https://previous.luis.ai) portál je stále k dispozici
-    * Vytváření a označování entit, které se naučily pro nový počítač
-    * [Proces upgradu](migrate-from-composite-entity.md) ze složených a jednoduchých entit na počítače se naučily
+    * Nové prostředí pro vytváření a označování entit pro strojové učení
+    * [Proces upgradu](migrate-from-composite-entity.md) ze složených a jednoduchých entit na entity strojového učení
     * [Nastavení](how-to-application-settings-portal.md) podpory normalizace variant Wordu
 * Náhled změn rozhraní API pro vytváření verzí
-    * Schéma aplikace 7. x pro vnořené entity rozpoznané počítačem
+    * Schéma aplikace 7. x pro vnořené entity strojového učení
     * [Migrace na požadovanou funkci](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+* Nové prostředky pro vývojáře
+    * [Nástroje pro kontinuální integraci](developer-reference-resource.md#continuous-integration-tools)
+    * Workshop – Naučte se osvědčené postupy pro [ _přirozené Language Understanding_ (NLU) pomocí Luis](developer-reference-resource.md#workshops)
+* [Spravované klíče zákazníka](luis-encryption-of-data-at-rest.md) – Šifrujte všechna data, která používáte v Luis, pomocí vlastního klíče.
+* [Zobrazit AI](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (video) – Podívejte se na nové funkce v Luis.
+
 
 
 ### <a name="march-2020"></a>Březen 2020
@@ -48,13 +54,13 @@ Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k ver
     * [Předem připravené entity](luis-reference-prebuilt-entities.md#italian-entity-support) v italštině – stáří, měna, dimenze, číslo a procento rozlišení se změnilo z v2.
 * Vylepšené uživatelské prostředí [portálu Preview.Luis.AI](https://preview.luis.ai) – prostředí přepracované označování, které umožňuje sestavování a ladění složitých modelů. Vyzkoušejte si kurzy portálu Preview:
     * [Jenom záměry](tutorial-intents-only.md)
-    * [Devytvořená entita získaná počítačem](tutorial-machine-learned-entity.md)
+    * [Entita pro desložení strojového učení](tutorial-machine-learned-entity.md)
 * Možnosti pro pokročilý jazyk – [vytváření sofistikovaných jazykových modelů](luis-concept-entity-types.md) s menší námahou
 * Definujte funkce strojového učení na úrovni modelu a povolte použití modelů jako signálů jiným modelům, například pomocí entit jako funkcí k záměrům a jiným entitám.
 * Nové, rozšířená [omezení](luis-limits.md) – vyšší maximum pro seznamy frází a celkový počet frází, nový model jako omezení funkcí
 * Extrahujte informace z textu ve formátu hloubkové hierarchické struktury, aby aplikace v konverzaci byly výkonnější.
 
-    ![bitová kopie entity zjištěná počítačem](./media/whats-new/deep-entity-extraction-example.png)
+    ![Obrázek entity strojového učení](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>3. září 2019
 

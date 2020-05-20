@@ -3,12 +3,12 @@ title: Nejčastější dotazy – zálohování databází SAP HANA na virtuáln
 description: V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování SAP HANA databází pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a46c4d6cccc00452a56567880400ef5779e6aed4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9e0d96439a79c2c3d2cb2caa00ff09be3ff790d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155388"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660110"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Nejčastější dotazy – zálohování SAP HANA databází na virtuálních počítačích Azure
 
@@ -60,6 +60,18 @@ V současné době nemáme možnost nastavit řešení pouze na virtuální IP a
 ### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>Mám replikaci systému SAP HANA (HSR), jak mám nakonfigurovat zálohování pro tuto instalaci?
 
 Primární a sekundární uzel HSR se budou považovat za dva jednotlivé virtuální počítače, které se netýkají. Musíte nakonfigurovat zálohování na primárním uzlu a když dojde k převzetí služeb při selhání, musíte nakonfigurovat zálohování na sekundárním uzlu (který se teď stane primárním uzlem). Neexistuje žádné automatické zálohování po převzetí služeb při selhání do druhého uzlu.
+
+### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>Jak můžu přesunout zálohu na vyžádání do místního systému souborů místo do trezoru Azure?
+
+1. Počkat na dokončení aktuálně běžícího zálohování v požadované databázi (kontrolu dokončíte od studia)
+1. Zakažte zálohy protokolů a nastavte zálohu katalogu na **systém souborů** pro požadovanou databázi pomocí následujících kroků:
+1. Dvakrát klikněte na **SYSTEMDB**  ->  **Konfigurace**  ->  **vybrat databázový**  ->  **filtr (protokol)** .
+    1. Nastavit enable_auto_log_backup na **ne**
+    1. Nastavit log_backup_using_backint na **hodnotu false**
+1. Proveďte zálohování na vyžádání v požadované databázi a počkejte, než se dokončí zálohování a zálohování katalogu.
+1. Vraťte se k předchozímu nastavení, aby bylo možné zálohy do trezoru Azure přesměrovat:
+    1. Nastavit enable_auto_log_backup na **Ano**
+    1. Nastavit log_backup_using_backint na **hodnotu true**
 
 ## <a name="restore"></a>Obnovení
 

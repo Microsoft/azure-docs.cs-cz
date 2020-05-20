@@ -3,12 +3,12 @@ title: Soubory SharePointu – QnA Maker
 description: Přidejte do znalostní báze zabezpečené zdroje dat SharePointu, abyste mohli rozšířit znalostní bázi s dotazy a odpověďmi, které je možné zabezpečit pomocí služby Active Directory.
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 6f05079e39c8afb001bd4ba09d68f435c18efad5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80294885"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660310"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidání zabezpečeného zdroje dat SharePointu do znalostní báze
 
@@ -27,12 +27,12 @@ Pokud správce znalostní báze QnA Maker Knowledge Base není správce služby 
 
 Z webu služby SharePoint do znalostní báze můžete přidat všechny [typy souborů](../Concepts/content-types.md) podporované QnA maker. Je možné, že budete muset udělit [oprávnění](#permissions) , pokud je prostředek souboru zabezpečený.
 
-1. Z knihovny s webem služby SharePoint vyberte nabídku se třemi tečkami v souboru `...`.
+1. Z knihovny s webem služby SharePoint vyberte nabídku se třemi tečkami v souboru `...` .
 1. Zkopírujte adresu URL souboru.
 
    ![Adresu URL souboru SharePointu získáte tak, že vyberete nabídku se třemi tečkami souboru a pak zkopírujete adresu URL.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. Na portálu QnA Maker na stránce **Nastavení** [přidejte adresu URL](manage-knowledge-bases.md#edit-knowledge-base) do znalostní báze.
+1. Na portálu QnA Maker na stránce **Nastavení** přidejte adresu URL do znalostní báze.
 
 ### <a name="images-with-sharepoint-files"></a>Obrázky se soubory SharePointu
 
@@ -44,7 +44,7 @@ Přidejte bitovou kopii s následující syntaxí Markdownu:
 ![Explanation or description of image](URL of public image)
 ```
 
-Text v hranatých závorkách `[]`, popis obrázku. Adresa URL v závorkách `()`je přímý odkaz na obrázek.
+Text v hranatých závorkách, `[]` Popis obrázku. Adresa URL v závorkách `()` je přímý odkaz na obrázek.
 
 Při testování páru QnA na interaktivním panelu testu se zobrazí obrázek místo Markdownu textu v portálu QnA Maker. Tím se ověří, že image se dá veřejně načíst z klienta aplikace.
 
@@ -113,7 +113,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. Správce služby Active Directory se přihlásí k Azure Portal a otevře **[podnikové aplikace](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)**.
 
-1. `QnAMakerPortalSharePoint` Vyhledejte aplikaci QnA maker vyberte.
+1. Vyhledejte `QnAMakerPortalSharePoint` aplikaci QnA maker vyberte.
 
     [![Hledat QnAMakerPortalSharePoint v seznamu podnikových aplikací](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 

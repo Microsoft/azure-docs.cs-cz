@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 05/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded28ef872bbc3147793ea3d68c94f8dde35f74e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461629"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674177"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Nastavení klíče spravovaného zákazníkem Sentinel Azure
 
@@ -27,13 +27,15 @@ ms.locfileid: "81461629"
 Tento článek popisuje základní informace a kroky ke konfiguraci klíče spravovaného zákazníkem (CMK) pro Sentinel Azure. CMK umožňuje šifrovat všechna data uložená nebo odesílaná do Azure Sentinel, aby byla zašifrovaná v rámci všech relevantních prostředků úložiště pomocí Azure Key Vaultho klíče vytvořeného nebo vlastněného vámi.
 
 > [!NOTE]
-> -   Funkce Azure Sentinel CMK je k dispozici pouze pro zákazníky, kteří jsou **noví** a mají přístup k této funkci, a to prostřednictvím registrace funkcí Azure.Můžete požádat o přístup kontaktováním azuresentinelCMK@microsoft.coma jakmile bude dostupná kapacita, čekají na vyřízení žádosti.
+> -   Funkce Azure Sentinel CMK je k dispozici pouze pro zákazníky, kteří jsou **noví** a mají přístup k této funkci, a to prostřednictvím registrace funkcí Azure.Můžete požádat o přístup kontaktováním azuresentinelCMK@microsoft.com a jakmile bude dostupná kapacita, čekají na vyřízení žádosti.
 > -   Funkce Azure Sentinel CMK je k dispozici pouze v oblastech Východní USA, Západní USA 2 a Jižní Střed USA.
-> -   Funkce CMK je dostupná jenom pro zákazníky, kteří odesílají 1 TB za den. Při použití Microsoftu k zřízení CMK ve vašem předplatném Azure budete dostávat informace o dalších cenách. Přečtěte si další informace o [Log Analytics](../azure-monitor/platform/customer-managed-keys.md#disclaimers) zpoplatnění.
+> -   Funkce CMK je dostupná jenom pro zákazníky, kteří odesílají 1 TB za den. Při použití Microsoftu k zřízení CMK ve vašem předplatném Azure budete dostávat informace o dalších cenách. Přečtěte si další informace o [cenách Log Analytics](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
 
 ## <a name="how-cmk-works"></a>Jak funguje CMK 
 
-Řešení Sentinel Azure používá několik prostředků úložiště pro shromažďování a funkce protokolů, mezi které patří Log Analytics a další prostředky úložiště. V rámci konfigurace Azure Sentinel CMK budete muset taky nakonfigurovat nastavení CMK na souvisejících prostředcích úložiště. Data uložená v jiných úložných zdrojích než Log Analytics budou také šifrována.
+Řešení Sentinel Azure využívá několik prostředků úložiště pro shromažďování a funkce protokolů, včetně Log Analytics a dalších. V rámci konfigurace Azure Sentinel CMK budete muset taky nakonfigurovat nastavení CMK na souvisejících prostředcích úložiště. Data uložená v jiných úložných zdrojích než Log Analytics budou také šifrována.
+
+Přečtěte si další informace o [CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview).
 
 > [!NOTE]
 > Pokud povolíte CMK v Azure Sentinel, nebude povolena žádná funkce Public Preview, která nepodporuje CMK.

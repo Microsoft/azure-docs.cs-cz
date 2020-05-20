@@ -11,21 +11,23 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
+ms.date: 05/12/2020
 ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: e70eedcfcdf548965b79e4a48a3a8bfa643f0396
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 077fd70f0908dcef3af0c1e037fe137d636a4ac4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687429"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660558"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Řešení aplikací Oracle integrující Microsoft Azure a Oracle cloudovou infrastrukturu
 
 Microsoft a Oracle mají partnerství, aby poskytovaly nízkou latenci a vysokou propustnost připojení mezi cloudy, což vám umožní využít výhod obou cloudů. 
 
 Pomocí tohoto připojení mezi cloudy můžete rozdělit vícevrstvou aplikaci tak, aby běžela vaše databázová vrstva na platformě Oracle Cloud Infrastructure (OCI), a na Microsoft Azure aplikace a další vrstvy. Prostředí je podobné jako spuštění celého zásobníku řešení v jednom cloudu. 
+
+Pokud vás zajímá spouštění middlewaru, včetně WebLogic serveru, v infrastruktuře Azure, ale databáze Oracle běžící v rámci rozhraní OCI, přečtěte si téma [WebLogic Server Azure Applications](oracle-weblogic.md).
 
 Pokud vás zajímá nasazení řešení Oracle výhradně do infrastruktury Azure, přečtěte si téma [image virtuálních počítačů Oracle a jejich nasazení na Microsoft Azure](oracle-vm-solutions.md).
 
@@ -44,18 +46,18 @@ Mezi aplikace, které můžete spustit v konfiguraci mezi cloudy patří:
 * Maloobchodní aplikace Oracle
 * Hyperion finanční správa Oracle
 
-Následující diagram představuje podrobný přehled připojeného řešení. Pro zjednodušení diagram zobrazuje pouze aplikační vrstvu a datovou vrstvu. V závislosti na architektuře aplikace může vaše řešení zahrnovat další úrovně, jako je například webová vrstva v Azure. Další informace najdete v následujících oddílech.
+Následující diagram představuje podrobný přehled připojeného řešení. Pro zjednodušení diagram zobrazuje pouze aplikační vrstvu a datovou vrstvu. V závislosti na architektuře aplikace může vaše řešení zahrnovat další úrovně, jako je cluster serveru WebLogic Server nebo webová vrstva v Azure. Další informace najdete v následujících oddílech.
 
 ![Přehled řešení Azure OCI](media/oracle-oci-overview/crosscloud.png)
 
 ## <a name="region-availability"></a>Dostupnost oblasti 
 
 Připojení mezi cloudy je omezené na tyto oblasti:
-* Azure Východní USA (eastus) & OCI Ashburn (USA – východ)
-* Azure Velká Británie – jih (uksouth) & OCI Londýn (Velká Británie – jih)
-* Azure Canada Central (canadacentral) & OCI Toronto (Kanada – jihovýchod)
-* Azure Západní Evropa (westeurope) & OCI Amsterdam (Nizozemsko – severozápadní)
-* Azure Japonsko – východ (japaneast) & OCI – Tokio (Japonsko – východ)
+* Azure Východní USA (EastUS) & OCI Ashburn, VA (USA – východ)
+* Azure Velká Británie – jih (UKSouth) & OCI Londýn (Velká Británie – jih)
+* Azure Canada Central (CanadaCentral) & OCI Toronto (Kanada – jihovýchod)
+* Azure Západní Evropa (WestEurope) & OCI Amsterdam (Nizozemsko – severozápadní)
+* Azure Japonsko – východ (JapanEast) & OCI – Tokio (Japonsko – východ)
 
 ## <a name="networking"></a>Sítě
 
@@ -70,10 +72,12 @@ Pomocí ExpressRoute a FastConnect můžou zákazníci vytvořit partnerský vzt
 Zabezpečení sítě je zásadní součástí libovolné podnikové aplikace a je centrální k tomuto řešení pro více cloudů. Veškerý provoz procházející ExpressRoute a FastConnect se předává přes soukromou síť. Tato konfigurace umožňuje zabezpečenou komunikaci mezi virtuální sítí Azure a virtuální cloudovou sítí Oracle. Nemusíte zadávat veřejnou IP adresu pro žádné virtuální počítače v Azure. Obdobně nepotřebujete internetovou bránu v rozhraní OCI. Veškerá komunikace probíhá prostřednictvím privátní IP adresy počítačů.
 
 Kromě toho můžete nastavit [seznamy zabezpečení](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) ve vaší virtuální cloudové síti OCI a pravidla zabezpečení (připojené ke [skupinám zabezpečení sítě](../../../virtual-network/security-overview.md)Azure). Pomocí těchto pravidel můžete řídit tok provozu mezi počítači ve virtuálních sítích. Pravidla zabezpečení sítě je možné přidat na úrovni počítače, na úrovni podsítě a také na úrovni virtuální sítě.
+
+[Aplikace WebLogic Server Azure](oracle-weblogic.md) každý vytvoří skupinu zabezpečení sítě, která je předem nakonfigurovaná tak, aby fungovala s konfiguracemi portů serveru WebLogic Server.
  
 ## <a name="identity"></a>Identita
 
-Identita je jedním z hlavních pilířů partnerství mezi společnostmi Microsoft a Oracle. Pro integraci [služby Oracle identity Cloud Service](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) pomocí služby [Azure Active Directory](../../../active-directory/index.yml) (Azure AD) se udělala významná práce. Azure AD je cloudová služba pro správu identit a přístupu od Microsoftu. Pomáhá uživatelům přihlašovat se k různým prostředkům a přistupovat k nim. Azure AD také umožňuje spravovat uživatele a jejich oprávnění.
+Identita je jedním z hlavních pilířů partnerství mezi společnostmi Microsoft a Oracle. Pro integraci [služby Oracle identity Cloud Service](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) pomocí služby [Azure Active Directory](../../../active-directory/index.yml) (Azure AD) se udělala významná práce. Azure AD je cloudová služba pro správu identit a přístupu od Microsoftu. Uživatelé se můžou přihlašovat a přistupovat k různým prostředkům pomocí služby Azure AD. Azure AD také umožňuje spravovat uživatele a jejich oprávnění.
 
 V současné době tato integrace umožňuje správu v jednom centrálním umístění, které je Azure Active Directory. Azure AD synchronizuje všechny změny v adresáři s odpovídajícím adresářem Oracle a používá se pro jednotné přihlašování do řešení Oracle pro více cloudů.
 

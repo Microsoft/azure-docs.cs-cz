@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB rozhraní API změny rozhraní .NET pro zpracování kanálu, poznámky k verzi sady SDK
 description: Seznamte se s rozhraním API pro změny kanálu a sadou SDK včetně data vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi sady SDK pro změny rozhraní .NET pro zpracování datových kanálů.
-author: ealsur
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 01/30/2019
-ms.author: maquaran
-ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: e39cef33d8d402b6e04c6b9952cae21848e02424
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619447"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660426"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK pro rozhraní Change feed pro .NET: stažení a poznámky k verzi
 
@@ -23,8 +23,9 @@ ms.locfileid: "80619447"
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -42,13 +43,13 @@ ms.locfileid: "80619447"
 > [!NOTE]
 > Pokud používáte procesor Change feed, přečtěte si prosím nejnovější verzi 3. x sady [.NET SDK](change-feed-processor.md), která obsahuje kanál změn integrovaný do sady SDK. 
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="v2-builds"></a>V2 sestavení
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* Přidala se nová `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` metoda a odpovídající veřejné `ICheckpointPartitionProcessorFactory`rozhraní. To umožňuje implementaci `IPartitionProcessor` rozhraní k použití integrovaného mechanismu kontrolního bodu. Nový objekt pro vytváření je podobný jako stávající `IPartitionProcessorFactory`, s tím rozdílem, že `Create` jeho `ILeaseCheckpointer` metoda také přijímá parametr.
-* Pro stejnou `ChangeFeedProcessorBuilder` instanci lze použít pouze jednu ze `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` dvou `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`metod, buď nebo.
+* Přidala se nová metoda `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` a odpovídající veřejné rozhraní `ICheckpointPartitionProcessorFactory` . To umožňuje implementaci `IPartitionProcessor` rozhraní k použití integrovaného mechanismu kontrolního bodu. Nový objekt pro vytváření je podobný jako stávající `IPartitionProcessorFactory` , s tím rozdílem, že jeho `Create` Metoda také přijímá `ILeaseCheckpointer` parametr.
+* `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` Pro stejnou instanci lze použít pouze jednu ze dvou metod, buď nebo `ChangeFeedProcessorBuilder` .
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * Vylepšení stability a diagnostiky:
@@ -56,13 +57,13 @@ ms.locfileid: "80619447"
     * Operace čtení kanálu změn u problematického oddílu se přerušila.
     * Instance procesoru změny kanálu převezme vlastnictví problematického zapůjčení. Zrušené zapůjčení se vybere během příštího kroku získání zapůjčení, který bude proveden stejnou nebo jinou instancí Change feed Processor. Tímto způsobem se zahájí čtení kanálu změn.
     * Monitorování stavu oznamuje problém. Výchozí monitorování stavu odesílá všechny nahlášené problémy do protokolu trasování.
-  * Přidání nové veřejné vlastnosti: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. Výchozí hodnota této vlastnosti je 10 minut.
-  * Byla přidána nová hodnota veřejného výčtu: `Monitoring.MonitoredOperation.ReadChangeFeed`. Pokud `HealthMonitoringRecord.Operation` je hodnota nastavena na `Monitoring.MonitoredOperation.ReadChangeFeed`, znamená to, že problém se stavem souvisí se čtením kanálu změn.
+  * Přidání nové veřejné vlastnosti: `ChangeFeedProcessorOptions.ChangeFeedTimeout` . Výchozí hodnota této vlastnosti je 10 minut.
+  * Byla přidána nová hodnota veřejného výčtu: `Monitoring.MonitoredOperation.ReadChangeFeed` . Pokud `HealthMonitoringRecord.Operation` je hodnota nastavena na `Monitoring.MonitoredOperation.ReadChangeFeed` , znamená to, že problém se stavem souvisí se čtením kanálu změn.
 
 ### <a name="227"></a><a name="2.2.7"/>2.2.7
 * Vylepšená strategie vyrovnávání zatížení pro situaci, kdy se u všech zapůjčení trvá déle než interval vypršení platnosti zapůjčení, např. kvůli problémům se sítí:
   * V tomto scénáři se algoritmus vyrovnávání zatížení, který se používá k nepravdivému zvážení zapůjčených adres, což způsobilo odcizení zapůjčení od aktivních vlastníků. To může aktivovat zbytečné opětovné vyrovnávání zapůjčených adres.
-  * Tento problém se v této verzi opravil tím, že se vyhnete opakování při pokusu o konflikt při získání vypršení zapůjčení, které vlastník nezměnil, a posponing pro další iteraci vyrovnávání zatížení.
+  * Tento problém se v této verzi opravil tím, že se vyhnete opakovanému pokusu o konflikt při získání vypršení zapůjčení, které vlastník nezměnil, a odložení platnosti zapůjčení do příštího vyrovnávání zatížení.
 
 ### <a name="226"></a><a name="2.2.6"/>2.2.6
 * Vylepšené zpracování výjimek pozorovatele.
@@ -84,7 +85,7 @@ ms.locfileid: "80619447"
   * Rozhraní ILeaseManager se refaktoruje na více rozhraních role.
 * Menší zásadní změna: odebraný bod rozšíření ChangeFeedProcessorBuilder. WithLeaseManager (ILeaseManager) použijte místo toho ChangeFeedProcessorBuilder. WithLeaseStoreManager (ILeaseStoreManager).
 
-### <a name="222"></a><a name="2.2.2"/>2.2.2
+### <a name="222"></a><a name="2.2.2"/>bodě
 * Tato verze opravuje problém, ke kterému došlo během zpracování rozdělení v monitorované kolekci a použití dělené kolekce zapůjčení. Při zpracování zapůjčení rozděleného oddílu nemusí být zapůjčení odpovídající tomuto oddílu smazáno. Tento problém je opravený v této verzi.
 
 ### <a name="221"></a><a name="2.2.1"/>2.2.1
@@ -96,7 +97,7 @@ ms.locfileid: "80619447"
 * Menší vylepšení diagnostiky.
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
-* Bylo přidáno nové rozhraní API&lt;,&lt;Task&gt; &gt; IReadOnlyList RemainingPartitionWork IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). To se dá použít k získání odhadované práce pro každý oddíl.
+* Bylo přidáno nové rozhraní API, Task &lt; IReadOnlyList &lt; RemainingPartitionWork &gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). To se dá použít k získání odhadované práce pro každý oddíl.
 * Podporuje Microsoft. Azure. DocumentDB SDK 2,0. Vyžaduje Microsoft. Azure. DocumentDB 2,0 nebo novější.
 
 ### <a name="206"></a><a name="2.0.6"/>2.0.6
@@ -184,7 +185,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 
 <br/>
 
-| Version | Datum vydání | Datum vyřazení |
+| Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
 | [2.3.0](#2.3.0) |2. dubna 2020 |--- |
 | [2.2.8](#2.2.8) |28. října 2019 |--- |
@@ -193,7 +194,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 | [2.2.5](#2.2.5) |13. prosince 2018 |--- |
 | [2.2.4](#2.2.4) |29. listopadu 2018 |--- |
 | [2.2.3](#2.2.3) |19. listopadu 2018 |--- |
-| [2.2.2](#2.2.2) |31. října 2018 |--- |
+| [bodě](#2.2.2) |31. října 2018 |--- |
 | [2.2.1](#2.2.1) |24. října 2018 |--- |
 | [1.3.3](#1.3.3) |8. května 2018 |--- |
 | [1.3.2](#1.3.2) |18. dubna 2018 |--- |
@@ -203,7 +204,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 | [1.1.0](#1.1.0) |13. srpna 2017 |--- |
 | [1.0.0](#1.0.0) |7. července 2017 |--- |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

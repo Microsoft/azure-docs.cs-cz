@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/19/2020
+ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faeab07ce7ec057981d23228461c2fa07600cdc1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80744961"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660021"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategie načítání dat pro synapse fond SQL
 
@@ -29,7 +29,7 @@ I když fond SQL podporuje mnoho metod načítání, včetně oblíbených SQL S
 Pomocí základu a příkazu Kopírovat můžete přistupovat k externím datům uloženým ve službě Azure Blob Storage nebo Azure Data Lake Store prostřednictvím jazyka T-SQL. Pro největší flexibilitu při nasazování doporučujeme použít příkaz COPY.
 
 > [!NOTE]  
-> Příkaz COPY je aktuálně ve verzi Public Preview. Pokud chcete poskytnout zpětnou vazbu, odešlete e-mail na následující sqldwcopypreview@service.microsoft.comdistribuční seznam:.
+> Příkaz COPY je aktuálně ve verzi Public Preview. Pokud chcete poskytnout zpětnou vazbu, odešlete e-mail na následující distribuční seznam: sqldwcopypreview@service.microsoft.com .
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
@@ -68,7 +68,7 @@ Nástroje a služby, které můžete použít k přesunu dat do Azure Storage:
 
 - Služba [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vylepšuje propustnost, výkon a předvídatelnost sítě. ExpressRoute je služba, která směruje vaše data prostřednictvím vyhrazeného privátního připojení k Azure. Připojení ExpressRoute nesměrují data prostřednictvím veřejného Internetu. Připojení nabízejí spolehlivější, rychlejší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes veřejný Internet.
 - [Nástroj AzCopy](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) přesouvá data Azure Storage přes veřejný Internet. To funguje, pokud jsou velikosti vašich dat menší než 10 TB. Pokud chcete pravidelně provádět zátěž s AZCopy, otestujte rychlost sítě a zjistěte, jestli je přijatelné.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) má bránu, kterou můžete nainstalovat na svůj místní server. Pak můžete vytvořit kanál pro přesun dat z místního serveru až do Azure Storage. Pokud chcete použít Data Factory s analýzou SQL, přečtěte si téma [načítání dat pro SQL Analytics](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) má bránu, kterou můžete nainstalovat na svůj místní server. Pak můžete vytvořit kanál pro přesun dat z místního serveru až do Azure Storage. Pokud chcete použít Data Factory s fondem SQL, přečtěte si téma [načítání dat pro fond SQL](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. Příprava dat pro načtení
 
@@ -88,30 +88,43 @@ Definování externích tabulek zahrnuje určení zdroje dat, formátu textovýc
 
 Při načítání Parquet je mapování datových typů SQL:
 
-| **Datový typ Parquet** | **Datový typ SQL** |
-| :-------------------: | :---------------: |
-|        tinyint        |      tinyint      |
-|       smallint        |     smallint      |
-|          int          |        int        |
-|        bigint         |      bigint       |
-|        Boolean        |        bitové        |
-|        double         |       float       |
-|         float         |       real        |
-|        double         |       papír       |
-|        double         |    smallmoney     |
-|        řetězec         |       nchar       |
-|        řetězec         |     nvarchar      |
-|        řetězec         |       char        |
-|        řetězec         |      varchar      |
-|        binární         |      binární       |
-|        binární         |     varbinary     |
-|       časové razítko       |       date        |
-|       časové razítko       |   smalldatetime   |
-|       časové razítko       |     datetime2     |
-|       časové razítko       |     datetime      |
-|       časové razítko       |       time        |
-|         date          |       date        |
-|        decimal        |      decimal      |
+|                         Typ Parquet                         |   Logický typ Parquet (anotace)   |  Datový typ SQL   |
+| :----------------------------------------------------------: | :-----------------------------------: | :--------------: |
+|                           DATOVÉHO                            |                                       |       bit        |
+|                     BINÁRNÍ/BYTE_ARRAY                      |                                       |    varbinary     |
+|                            KLEPAT                            |                                       |      float       |
+|                            Plovák                             |                                       |       real       |
+|                            UVEDENA                             |                                       |       int        |
+|                            INT64                             |                                       |      bigint      |
+|                            INT96                             |                                       |    datetime2     |
+|                     FIXED_LEN_BYTE_ARRAY                     |                                       |      binární      |
+|                            TVARU                            |                 UTF                  |     nvarchar     |
+|                            TVARU                            |                ŘETEZCE                 |     nvarchar     |
+|                            TVARU                            |                 VYTVÁŘENÍ                  |     nvarchar     |
+|                            TVARU                            |                 IDENTIFIKÁTOR                  | uniqueidentifier |
+|                            TVARU                            |                NOTACI                |     decimal      |
+|                            TVARU                            |                 JSON                  |  nvarchar(MAX)   |
+|                            TVARU                            |                 BSON                  |  varbinary (max)  |
+|                     FIXED_LEN_BYTE_ARRAY                     |                NOTACI                |     decimal      |
+|                          BYTE_ARRAY                          |               DOBA                |  varchar (max);   |
+|                            UVEDENA                             |             INT (8, true)              |     smallint     |
+|                            UVEDENA                             |            INT (16, true)            |     smallint     |
+|                            UVEDENA                             |             INT (32, true)             |       int        |
+|                            UVEDENA                             |            INT (8, false)            |     tinyint      |
+|                            UVEDENA                             |            INT (16, false)             |       int        |
+|                            UVEDENA                             |           INT (32, false)            |      bigint      |
+|                            UVEDENA                             |                 DATE (Datum)                  |       date       |
+|                            UVEDENA                             |                NOTACI                |     decimal      |
+|                            UVEDENA                             |            ČAS (LISOVNY)             |       time       |
+|                            INT64                             |            INT (64; true)            |      bigint      |
+|                            INT64                             |           INT (64, false)            |  desetinné číslo (20, 0)   |
+|                            INT64                             |                NOTACI                |     decimal      |
+|                            INT64                             |         ČAS (MIKROČASU A NANO)         |       time       |
+|                            INT64                             | ČASOVÉ RAZÍTKO (LISOVNY//NANO) |    datetime2     |
+| [Komplexní typ](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 SEZNAMU                  |   varchar(max)   |
+| [Komplexní typ](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  MAPY                  |   varchar(max)   |
+
+
 
 Příklad vytváření externích objektů naleznete v kroku [Vytvoření externích tabulek](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) v kurzu načítání.
 

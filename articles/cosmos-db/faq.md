@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 976ff4d3be194bf33d2c01f06c66782caf8dad50
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0a890139f9d7a955a5c96262d6e5b8f275e61d0d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608043"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675931"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy k různým rozhraním API ve službě Azure Cosmos DB
 
@@ -70,7 +70,7 @@ Pokud s Azure začínáte, můžete si zaregistrovat [bezplatný účet Azure](h
 
 Pokud se chcete zeptat na technický dotaz, můžete publikovat na jedno z těchto dvou fór otázek a odpovědí:
 
-* [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
+* [Fórum MSDN](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow je nejvhodnější pro otázky týkající se programování. Ujistěte se, že je váš dotaz [v rámci vašeho tématu](https://stackoverflow.com/help/on-topic) [, a uveďte co nejvíce podrobností a vymažte otázku a odpovězte na](https://stackoverflow.com/help/how-to-ask)ně.
 
 Pokud chcete požádat o nové funkce, vytvořte nový požadavek na [uživatelský hlas](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -173,7 +173,7 @@ Dotazovací jazyk SQL podporovaný účty SQL API je rozšířená podmnožina f
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Podporuje rozhraní SQL API agregační funkce SQL?
 
-Rozhraní SQL API podporuje agregaci s nízkou latencí v jakémkoli měřítku prostřednictvím `COUNT`agregačních `MAX`funkcí `AVG`, `MIN`, `SUM` , a prostřednictvím gramatiky SQL. Další informace najdete v tématu [agregační funkce](sql-query-aggregates.md).
+Rozhraní SQL API podporuje agregaci s nízkou latencí v jakémkoli měřítku prostřednictvím agregačních funkcí `COUNT` , `MIN` ,, `MAX` `AVG` a `SUM` prostřednictvím gramatiky SQL. Další informace najdete v tématu [agregační funkce](sql-query-aggregates.md).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Jak rozhraní API SQL zajišťuje souběžnost?
 

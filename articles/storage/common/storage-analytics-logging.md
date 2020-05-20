@@ -5,17 +5,18 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 1e41eb02f4b02078dbf4d42c46cab574cf8d0701
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: monitoring
+ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204062"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675925"
 ---
-# <a name="azure-storage-analytics-logging"></a>Protokolování Analýzy úložiště Azure
+# <a name="azure-storage-analytics-logging"></a>Protokolování analýz služby Azure Storage
 
 Analýza úložiště protokoluje podrobné informace o úspěšných a neúspěšných požadavcích na službu úložiště. Tyto informace je možné použít k monitorování jednotlivých požadavků a diagnostice problémů se službou úložiště. Požadavky jsou protokolovány na základě nejlepší úsilí.
 
@@ -24,7 +25,7 @@ Analýza úložiště protokoluje podrobné informace o úspěšných a neúspě
  Položky protokolu jsou vytvořeny pouze v případě, že jsou zadány požadavky na koncový bod služby. Pokud například účet úložiště obsahuje aktivitu v koncovém bodu objektu blob, ale ne ve svých koncových bodech tabulky nebo fronty, vytvoří se jenom protokoly týkající se Blob service.
 
 > [!NOTE]
->  Protokolování Analýzy úložiště je v současné době dostupné pouze pro služby Blob a Table service a Službu front. Účet úložiště Premium se však nepodporuje.
+>  Protokolování Analýzy úložiště je v současné době dostupné pouze pro služby Blob a Table service a Službu front. K dispozici je také protokolování Analýza úložiště pro účty Premium-Performance [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) . Není ale k dispozici pro účty pro obecné účely v2 s výkonem Premium.
 
 ## <a name="requests-logged-in-logging"></a>Požadavky zaznamenávané v protokolování
 ### <a name="logging-authenticated-requests"></a>Protokolování ověřených požadavků
@@ -51,10 +52,10 @@ Analýza úložiště protokoluje podrobné informace o úspěšných a neúspě
 
 ## <a name="how-logs-are-stored"></a>Způsob ukládání protokolů
 
-Všechny protokoly se ukládají v objektech blob bloku v kontejneru `$logs`s názvem, který se automaticky vytvoří, když je povolený analýza úložiště pro účet úložiště. `$logs` Kontejner se nachází v oboru názvů objektu BLOB účtu úložiště, například: `http://<accountname>.blob.core.windows.net/$logs`. Po povolení Analýza úložiště nelze tento kontejner odstranit, i když jeho obsah lze odstranit. Pokud použijete nástroj pro procházení úložiště k přímému přechodu do kontejneru, zobrazí se všechny objekty blob, které obsahují vaše data protokolování.
+Všechny protokoly se ukládají v objektech blob bloku v kontejneru s názvem `$logs` , který se automaticky vytvoří, když je povolený analýza úložiště pro účet úložiště. `$logs`Kontejner se nachází v oboru názvů objektu BLOB účtu úložiště, například: `http://<accountname>.blob.core.windows.net/$logs` . Po povolení Analýza úložiště nelze tento kontejner odstranit, i když jeho obsah lze odstranit. Pokud použijete nástroj pro procházení úložiště k přímému přechodu do kontejneru, zobrazí se všechny objekty blob, které obsahují vaše data protokolování.
 
 > [!NOTE]
->  `$logs` Kontejner se nezobrazuje, když je provedena operace výpisu kontejneru, jako je například operace Container lists. K němu je potřeba získat přímý pøístup. Můžete například použít operaci list BLOBs pro přístup k objektům blob v `$logs` kontejneru.
+>  `$logs`Kontejner se nezobrazuje, když je provedena operace výpisu kontejneru, jako je například operace Container lists. K němu je potřeba získat přímý pøístup. Můžete například použít operaci list BLOBs pro přístup k objektům blob v `$logs` kontejneru.
 
 Jak jsou požadavky protokolovány, Analýza úložiště odešle mezilehlé výsledky jako bloky. Analýza úložiště tyto bloky pravidelně zařadí a zpřístupní je jako objekt BLOB. Může trvat až hodinu, než se data protokolu objeví v objektech blob v kontejneru **$logs** , protože frekvence, s jakou služba úložiště vyprázdní zapisovače protokolů. Pro protokoly vytvořené ve stejnou hodinu můžou existovat duplicitní záznamy. Zaškrtnutím čísla **ID** a **operace** můžete určit, jestli je záznam duplicitní.
 
@@ -88,13 +89,13 @@ Informace o tom, jak programově vypsat objekty blob, najdete v tématech [vytv�
 
 |Atribut|Popis|
 |---------------|-----------------|
-|`<service-name>`|Název služby úložiště Například: `blob`, `table`, nebo`queue`|
+|`<service-name>`|Název služby úložiště Například: `blob` , `table` , nebo`queue`|
 |`YYYY`|Rok čtyř číslice pro protokol. Příklad: `2011`|
 |`MM`|Dva číslice měsíce pro protokol. Příklad: `07`|
 |`DD`|Dva číselné dny pro protokol. Příklad: `31`|
 |`hh`|Dvě číslice hodiny, která označuje počáteční hodinu pro protokoly ve formátu UTC (24 hodin). Příklad: `18`|
-|`mm`|Dva číselné číslo, které označuje počáteční minutu pro protokoly. **Poznámka:**  Tato hodnota není v aktuální verzi Analýza úložiště podporována a její hodnota bude vždy `00`.|
-|`<counter>`|Čítač založený na nule se šesti číslicemi, který indikuje počet objektů BLOB protokolu generovaných pro službu úložiště v časovém intervalu. Tento čítač začíná na `000000`. Příklad: `000001`|
+|`mm`|Dva číselné číslo, které označuje počáteční minutu pro protokoly. **Poznámka:**  Tato hodnota není v aktuální verzi Analýza úložiště podporována a její hodnota bude vždy `00` .|
+|`<counter>`|Čítač založený na nule se šesti číslicemi, který indikuje počet objektů BLOB protokolu generovaných pro službu úložiště v časovém intervalu. Tento čítač začíná na `000000` . Příklad: `000001`|
 
  Následuje úplný název ukázkového protokolu, který kombinuje výše uvedené příklady:
 
@@ -113,8 +114,8 @@ Informace o tom, jak programově vypsat objekty blob, najdete v tématech [vytv�
 |Atribut|Popis|
 |---------------|-----------------|
 |`LogType`|Popisuje, jestli protokol obsahuje informace týkající se operací čtení, zápisu nebo odstranění. Tato hodnota může obsahovat jeden typ nebo kombinaci všech tří, oddělených čárkami.<br /><br /> Příklad 1:`write`<br /><br /> Příklad 2:`read,write`<br /><br /> Příklad 3:`read,write,delete`|
-|`StartTime`|Čas nejdřívějšího záznamu v protokolu ve formě `YYYY-MM-DDThh:mm:ssZ`. Příklad: `2011-07-31T18:21:46Z`|
-|`EndTime`|Poslední čas záznamu v protokolu ve formě `YYYY-MM-DDThh:mm:ssZ`. Příklad: `2011-07-31T18:22:09Z`|
+|`StartTime`|Čas nejdřívějšího záznamu v protokolu ve formě `YYYY-MM-DDThh:mm:ssZ` . Příklad: `2011-07-31T18:21:46Z`|
+|`EndTime`|Poslední čas záznamu v protokolu ve formě `YYYY-MM-DDThh:mm:ssZ` . Příklad: `2011-07-31T18:22:09Z`|
 |`LogVersion`|Verze formátu protokolu|
 
  Následující seznam obsahuje kompletní ukázková metadata pomocí výše uvedených příkladů:
@@ -187,7 +188,7 @@ queueClient.SetServiceProperties(serviceProperties);
  Pokud chcete zobrazit a analyzovat data protokolu, měli byste si stáhnout objekty blob, které obsahují data protokolu, která vás zajímají, do místního počítače. Mnoho nástrojů pro procházení úložiště vám umožní stahovat objekty BLOB z účtu úložiště. k stažení dat protokolu můžete použít taky Azure Storage týmu [AzCopy](storage-use-azcopy-v10.md) příkazového řádku Azure Copy.  
  
 >[!NOTE]
-> `$logs` Kontejner není integrován s Event Grid, takže nebudete dostávat oznámení, když budou soubory protokolu zapisovány. 
+> `$logs`Kontejner není integrován s Event Grid, takže nebudete dostávat oznámení, když budou soubory protokolu zapisovány. 
 
  Abyste se ujistili, že jste si stáhli data protokolu, která vás zajímají, a nestahovat stejná data protokolu více než jednou:  
 

@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cf6c82b330a2672fdde39c3acf156a74cb57e34
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414272"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659974"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>Rychlý Start: Fivetran s datovým skladem 
 
@@ -66,7 +66,7 @@ V tomto rychlém startu se dozvíte, jak nastavit nového uživatele Fivetran pr
 
 3. Přidejte do uživatele Fivetran vhodnou třídu prostředků. Použitá Třída prostředků závisí na paměti, která je potřebná k vytvoření indexu columnstore. Například integrace s produkty, jako je Marketo a Salesforce, vyžadují vyšší třídu prostředků z důvodu velkého počtu sloupců a většího objemu dat, která používají produkty. Vyšší Třída prostředků vyžaduje více paměti pro vytváření indexů columnstore.
 
-    Doporučujeme použít statické třídy prostředků. Můžete začít s třídou `staticrc20` prostředků. Třída `staticrc20` prostředků přiděluje každému uživateli 200 MB bez ohledu na úroveň výkonu, kterou používáte. Pokud indexování columnstore na počáteční úrovni třídy prostředků selhává, zvyšte třídu prostředků.
+    Doporučujeme použít statické třídy prostředků. Můžete začít s `staticrc20` třídou prostředků. `staticrc20`Třída prostředků přiděluje každému uživateli 200 MB bez ohledu na úroveň výkonu, kterou používáte. Pokud indexování columnstore na počáteční úrovni třídy prostředků selhává, zvyšte třídu prostředků.
 
     ```sql
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
@@ -82,5 +82,5 @@ Pokud se chcete připojit k datovému skladu z účtu Fivetran, zadejte přihla�
 * Hostitel (název vašeho serveru).
 * Přístavní.
 * Databáze.
-* Uživatel (uživatelské jméno by mělo být **fivetran\@server_name** , kde *server_name* je součástí identifikátoru URI hostitele Azure: ** _název serveru\__. Database.Windows.NET**).
+* Uživatel (uživatelské jméno by mělo být **fivetran \@ _server_name_ ** , kde *server_name* je součástí identifikátoru URI hostitele Azure: ** _ \_ název serveru_. Database.Windows.NET**).
 * Heslo.

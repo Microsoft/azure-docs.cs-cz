@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2020
+ms.date: 05/15/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 11a9b8609218a6cf56a789b18094d048e26d4af8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9bbf2288ac92c33c2b24af4e6a97882013a4ff1d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343333"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673454"
 ---
 Standardizované image virtuálních počítačů umožňují organizacím migrovat do cloudu a zajistit konzistenci nasazení. Obrázky obvykle zahrnují předdefinovaná nastavení zabezpečení a konfigurace a potřebný software. Nastavení vlastního kanálu pro vytváření imagí vyžaduje čas, infrastrukturu a instalaci, ale s nástrojem Azure VM Image Builder stačí jednoduše zadat jednoduchou konfiguraci popisující vaši image, odeslat ji do služby a image se sestaví a distribuuje.
  
@@ -86,7 +86,8 @@ Jakmile budete mít identitu, kterou potřebujete udělit, můžete k tomu použ
 
 [Tady](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)jsou podrobněji vysvětlena oprávnění a příklady ukazují, jak je to implementováno.
 
-> [Poznámka!] V minulosti jste používali AIB hlavní název služby AIB a udělili oprávnění hlavního názvu služby pro skupiny prostředků imagí. Od tohoto modelu přesouváme, aby bylo možné budoucí možnosti využít. Od 1. června 2020 neakceptuje image Builder šablony, které nemají přiřazenou identitu uživatele, takže stávající šablony bude nutné znovu odeslat do služby pomocí [uživatelské identity](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity). Níže uvedené příklady již ukazují, jak lze vytvořit uživatelem přiřazenou identitu a přidat je do šablony.
+> [!Note]
+> V minulosti jste používali AIB hlavní název služby AIB a udělili oprávnění hlavního názvu služby pro skupiny prostředků imagí. Od tohoto modelu přesouváme, aby bylo možné budoucí možnosti využít. V 26 může 2020 image Builder nepřijímá šablony, které nemají přiřazenou identitu uživatele, takže stávající šablony bude nutné znovu odeslat do služby pomocí [uživatelské identity](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity). Níže uvedené příklady již ukazují, jak lze vytvořit uživatelem přiřazenou identitu a přidat je do šablony. Další informace najdete v této [dokumentaci](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information) k této změně a vydání aktualizací.
 
 ## <a name="costs"></a>Náklady
 Při vytváření, sestavování a ukládání imagí pomocí Azure image Builder budete mít za následek několik výpočetních, síťových a úložných nákladů. Tyto náklady jsou podobné nákladům, které vznikly ručním vytvářením vlastních imagí. U prostředků se vám budou účtovat sazby za Azure. 

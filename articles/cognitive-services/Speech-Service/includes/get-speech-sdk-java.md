@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 47cb20f3a23caf586777523e56902af20b747ea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3a4a68d45d633caf9a318cd17f1e8d94752ecfe9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400030"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673063"
 ---
 :::row:::
     :::column span="3":::
-        Java SDK pro Android je zabalená jako <a href="https://developer.android.com/studio/projects/android-library" target="_blank">Knihovna AAR (Android Library) <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>, která zahrnuje nezbytné knihovny a požadovaná oprávnění pro Android. Hostuje se v úložišti `https://csspeechstorage.blob.core.windows.net/maven/` Maven v balíčku. `com.microsoft.cognitiveservices.speech:client-sdk:1.11.0`
+        Java SDK pro Android je zabalená jako <a href="https://developer.android.com/studio/projects/android-library" target="_blank">Knihovna AAR (Android Library) <span class="docon docon-navigate-external x-hidden-focus"></span> </a>, která zahrnuje nezbytné knihovny a požadovaná oprávnění pro Android. Hostuje se v úložišti Maven v `https://csspeechstorage.blob.core.windows.net/maven/` balíčku `com.microsoft.cognitiveservices.speech:client-sdk:1.12.0` .
     :::column-end:::
     :::column:::
         <br>
@@ -32,12 +32,12 @@ Chcete-li balíček využívat z Android Studio projektu, proveďte následujíc
 
 2. V souboru *Build. Gradle* na úrovni modulu přidejte do `dependencies` oddílu následující:
   ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.11.0'
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.12.0'
   ```
 
 Sada Java SDK je také součástí [sady Speech SDK pro zařízení](../speech-devices-sdk.md).
 
-#### <a name="additional-resources"></a>Další materiály a zdroje informací
+#### <a name="additional-resources"></a>Další zdroje
 
 - <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android" target="_blank">Zdrojový kód pro rychlý Start Java specifický pro Android<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre" target="_blank">Zdrojový kód pro rychlé zprovoznění Java Runtime (JRE)<span class="docon docon-navigate-external x-hidden-focus"></span></a>

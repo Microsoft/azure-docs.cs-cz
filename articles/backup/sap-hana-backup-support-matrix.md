@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování SAP HANA
 description: V tomto článku se dozvíte o podporovaných scénářích a omezeních při zálohování SAP HANA databází na virtuálních počítačích Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 8496dc4996cac68535bfe9be30e4b5f72e2d5721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20519562151a70c9fd8e8fe5d86ce912e615b460
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252438"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660134"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Matice podpory pro zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -37,7 +37,7 @@ Azure Backup podporuje zálohování databází SAP HANA do Azure. Tento článe
 ------
 
 > [!NOTE]
-> Operace zálohování a obnovení z SAP HANA nativních klientů (řídicí panel SAP HANA studia/řídicí panel/DBA) nejsou aktuálně podporovány.
+> Nyní můžete [monitorovat úlohy zálohování a obnovení](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) (do stejného počítače) aktivované z nativních klientů Hana (řídicí panel SAP HANA Studio/řídicí panel/DBA) v Azure Portal.
 
 ## <a name="next-steps"></a>Další kroky
 

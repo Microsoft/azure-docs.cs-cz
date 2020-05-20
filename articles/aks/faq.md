@@ -2,13 +2,13 @@
 title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 5ba776424462b3a8b586b1f90e83f409770e5597
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/14/2020
+ms.openlocfilehash: 767b5b80aab7d98af92f86bf66cc2ff83242ff92
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123815"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677790"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -127,11 +127,7 @@ Podpora Windows serveru pro fond uzlů obsahuje některá omezení, která jsou 
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Nabízí AKS smlouvu o úrovni služeb?
 
-AKS poskytuje možnost dosáhnout 99,95% dostupnosti pro Server rozhraní API s [doba SLA] [doba provozu-sla.md].
-
-V rámci smlouvy o úrovni služeb (SLA) poskytovatel souhlasí s tím, že zákazníkovi vrátí náklady na službu, pokud není splněna publikovaná úroveň služby. Vzhledem k tomu, že je AKS zdarma, nejsou k dispozici žádné náklady, takže AKS nemá žádnou oficiální smlouvu SLA. AKS se ale snaží zachovat dostupnost minimálně 99,5% pro server Kubernetes API.
-
-Je důležité rozpoznat rozdíl mezi dostupností služby AKS, která odkazuje na dobu provozu Kubernetes řídicí roviny a dostupnost konkrétního zatížení, které běží na Azure Virtual Machines. I když rovina ovládacího prvku nemusí být k dispozici, pokud řídicí plocha není připravená, úlohy clusteru běžící na virtuálních počítačích Azure stále můžou fungovat. Vzhledem k tomu, že virtuální počítače Azure jsou placené prostředky, se účtují pomocí finanční smlouvy SLA. [Další podrobnosti](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) o smlouvě SLA pro virtuální počítače Azure a o tom, jak tuto dostupnost zvýšit, najdete tady: [zóny dostupnosti][availability-zones].
+AKS poskytuje záruky smlouvy SLA jako volitelné přidání funkce s smlouvou [SLA pro provozuschopnost][uptime-sla].
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Můžu u svých uzlů agentů AKS uplatnit slevy na rezervované platformy Azure?
 
@@ -211,7 +207,7 @@ I když AKS má mechanismy odolnosti k vyvýšení těchto konfigurací a obnove
 [bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
 [availability-zones]: ./availability-zones.md
 [az-regions]: ../availability-zones/az-region.md
-[doba provozu – SLA]./uptime-sla.mdd
+[uptime-sla]: ./uptime-sla.md
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
@@ -220,3 +216,4 @@ I když AKS má mechanismy odolnosti k vyvýšení těchto konfigurací a obnove
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [private-clusters-github-issue]: https://github.com/Azure/AKS/issues/948
 [csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure
+[vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines/

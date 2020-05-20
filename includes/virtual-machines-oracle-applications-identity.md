@@ -4,18 +4,18 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
-ms.openlocfilehash: c1cca99a04e78c40cdd1061e52e49f45a73c73eb
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 2b28cc742bb981e0db535d39cb0c7fbf027470ea
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68361554"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673760"
 ---
 ### <a name="identity-tier"></a>Úroveň identity 
 
 Partnerství s Microsoftem Oracle vám umožní nastavit jednotnou identitu napříč Azure, OCI a aplikací Oracle. Pro řešení JD Edwards EnterpriseOne nebo PeopleSoft spouštěných místně se vyžaduje instance serveru Oracle HTTP (OHS) pro nastavení jednotného přihlašování mezi Azure AD a Oracle IDCS.
 
-OHS slouží jako reverzní proxy server aplikační vrstvy, což znamená, že procházejí všechny požadavky na koncové aplikace. Webbrána správce přístupu Oracle je modul plug-in OHS webového serveru, který zachycuje každý požadavek na ukončení aplikace. Pokud je přístup k prostředkům chráněný (vyžaduje ověřenou relaci), zahájí brána OIDC ověřování pomocí cloudové služby identity prostřednictvím prohlížeče uživatele. Další informace o tocích podporovaných webbranou OpenID Connect najdete v [dokumentaci k Oracle Access Manageru](https://docs.oracle.com/en/middleware/idm/access-manager/12.2.1.3/aiaag/integrating-webgate-oidc-server.html).
+OHS slouží jako reverzní proxy server aplikační vrstvy, což znamená, že procházejí všechny požadavky na koncové aplikace. Webbrána správce přístupu Oracle je modul plug-in OHS webového serveru, který zachycuje každý požadavek na ukončení aplikace. Pokud je přístup k prostředkům chráněný (vyžaduje ověřenou relaci), zahájí brána OIDC ověřování pomocí cloudové služby identity prostřednictvím prohlížeče uživatele. Další informace o tocích podporovaných webbranou OpenID Connect najdete v [dokumentaci k Oracle Access Manageru](https://docs.oracle.com/cd/E52734_01/oam/AIAAG/GUID-1E927D1B-FB83-425B-8768-85DB441821A4.htm#AIAAG7327).
 
 S tímto nastavením může uživatel, který je už přihlášený k Azure AD, přejít na aplikaci řešení JD Edwards EnterpriseOne nebo PeopleSoft spouštěných místně, aniž by se musel znovu přihlašovat prostřednictvím cloudové služby Oracle identity. Zákazníci, kteří toto řešení nasadí, získají výhody jednotného přihlašování, včetně jediné sady přihlašovacích údajů, vylepšeného přihlašování, vylepšeného zabezpečení a snížených nákladů na technickou podporu.
 

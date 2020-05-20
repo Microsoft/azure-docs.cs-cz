@@ -3,12 +3,12 @@ title: Správa zálohovaných SAP HANA databází na virtuálních počítačíc
 description: V tomto článku se seznámíte s běžnými úlohami při správě a monitorování SAP HANAch databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 89fd7f23163d301817e767771257d9bc6f4ed526
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c810a049fafcbce6d4c840557b101e5226343ab7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480058"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660149"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Správa a monitorování zálohovaných databází SAP HANA
 
@@ -32,7 +32,7 @@ Další informace o monitorování najdete [v části monitorování v Azure Por
 
 Výstrahy představují snadný způsob, jak monitorovat zálohy databází SAP HANA. Výstrahy vám pomůžou soustředit se na události, které vás zajímají, aniž byste se museli ztratit v mnoha událostech, které zálohování vygeneruje. Azure Backup vám umožní nastavit upozornění a můžou se monitorovat takto:
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 * Na řídicím panelu trezoru vyberte **výstrahy zálohování**.
 
   ![Výstrahy zálohování na řídicím panelu trezoru](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -64,17 +64,25 @@ Zálohy se spouštějí v souladu s plánem zásad. Zálohu můžete spustit na 
 1. V nabídce trezoru klikněte na položku **zálohované položky**.
 2. V části **zálohované položky**vyberte virtuální počítač, na kterém běží databáze SAP HANA, a pak klikněte na **Zálohovat nyní**.
 3. V části **Zálohovat nyní**pomocí ovládacího prvku kalendáře vyberte poslední den, kdy se má bod obnovení zachovat. Pak klikněte na **OK**.
-4. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > **> probíhající** **úlohy zálohování**. V závislosti na velikosti databáze může vytváření prvotní zálohy chvíli trvat.
+4. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  **In progress**. V závislosti na velikosti databáze může vytváření prvotní zálohy chvíli trvat.
 
 ### <a name="hana-native-client-integration"></a>Integrace nativního klienta HANA
 
-Úplné zálohování na vyžádání spouštěné ze všech nativních klientů HANA se na stránce **zálohované položky** zobrazí jako úplné zálohování.
+#### <a name="backup"></a>Backup
+
+Zálohy na vyžádání aktivované ze všech nativních klientů HANA (do **Backint**) se zobrazí v seznamu zálohování na stránce **zálohované položky** .
 
 ![Poslední spuštění zálohy](./media/sap-hana-db-manage/last-backups.png)
 
-Tyto ad-hoc úplné zálohy se zobrazí také v seznamu bodů obnovení pro obnovení.
+[Tyto zálohy můžete také monitorovat](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) na stránce **úlohy zálohování** .
+
+Tyto zálohy na vyžádání se zobrazí také v seznamu bodů obnovení pro obnovení.
 
 ![Seznam bodů obnovení](./media/sap-hana-db-manage/list-restore-points.png)
+
+#### <a name="restore"></a>Obnovení
+
+Obnovení spouštěné z nativních klientů HANA (pomocí **Backint**) pro obnovení na stejný počítač se dá [monitorovat](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) na stránce **úlohy zálohování** .
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>SAP HANA spuštění zálohování nativního klienta v databázi s povolenou službou Azure Backup
 
@@ -82,7 +90,7 @@ Pokud chcete použít místní zálohu (pomocí HANA Studio/řídicího panelu) 
 
 1. Počkejte na dokončení všech úplných záloh nebo zálohování protokolů databáze. Podívejte se na stav v SAP HANA studiu nebo řídicím panelu.
 2. Zakažte zálohování protokolů a nastavte Katalog zálohování na systém souborů pro příslušnou databázi.
-3. Provedete to tak, že dvakrát kliknete na**Konfigurace** >  **SystemDB** > **vybrat databázový** > **filtr (protokol)**.
+3. Provedete to tak, že dvakrát kliknete na konfigurace **SystemDB**  >  **Configuration**  >  **vybrat databázový**  >  **filtr (protokol)**.
 4. Nastavte **enable_auto_log_backup** na **ne**.
 5. Nastavte **log_backup_using_backint** na **false**.
 6. Proveďte úplné zálohování databáze na vyžádání.

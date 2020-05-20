@@ -5,22 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: f987d5d9640c3bfef61320df379a68eae2f4712b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/18/2020
+ms.openlocfilehash: 608206ed1c1ffe1015f579d69868385ebd32208c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80246330"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660270"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Připojení k Azure Database for MySQL pomocí přesměrování
 
 Toto téma vysvětluje, jak připojit aplikaci Azure Database for MySQL server s režimem přesměrování. Přesměrování se zaměřuje na snížení latence sítě mezi klientskými aplikacemi a servery MySQL tím, že umožňuje aplikacím připojení přímo k uzlům back-end serverů.
 
 ## <a name="before-you-begin"></a>Před zahájením
-Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvořte Azure Database for MySQL server s modulem verze 5,6, 5,7 nebo 8,0. Podrobnosti najdete v tématu [Postup vytvoření serveru Azure Database for MySQL z portálu](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvoření Azure Database for MySQL serveru pomocí](quickstart-create-mysql-server-database-using-azure-cli.md)rozhraní příkazového řádku (CLI).
-
-Přesměrování se momentálně podporuje jenom v případě, že je na vašem Azure Database for MySQL serveru **povolený protokol SSL** . Podrobnosti o tom, jak nakonfigurovat SSL, najdete v tématu [použití protokolu SSL s Azure Database for MySQL](howto-configure-ssl.md#step-3--enforcing-ssl-connections-in-azure).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvořte Azure Database for MySQL server s modulem verze 5,6, 5,7 nebo 8,0. Podrobnosti najdete v tématu [Postup vytvoření serveru Azure Database for MySQL z portálu](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvoření Azure Database for MySQL serveru pomocí](quickstart-create-mysql-server-database-using-azure-cli.md)rozhraní příkazového řádku (CLI).
 
 ## <a name="php"></a>PHP
 
@@ -36,15 +34,15 @@ Rozšíření mysqlnd_azure je k dispozici pro přidání do aplikací PHP prost
 >[!IMPORTANT]
 > Logika/chování přesměrování – počáteční verze 1.1.0 byla aktualizována a **doporučuje se použít verzi 1.1.0 +**.
 
-Chování přesměrování je určeno hodnotou `mysqlnd_azure.enableRedirect`. Následující tabulka popisuje chování přesměrování na základě hodnoty tohoto parametru počínaje **verzí 1.1.0 +**.
+Chování přesměrování je určeno hodnotou `mysqlnd_azure.enableRedirect` . Následující tabulka popisuje chování přesměrování na základě hodnoty tohoto parametru počínaje **verzí 1.1.0 +**.
 
-Pokud používáte starší verzi rozšíření mysqlnd_azure (verze 1.0.0-1.0.3), chování přesměrování je určeno hodnotou `mysqlnd_azure.enabled`. Platné hodnoty jsou `off` (funguje podobně jako v následující tabulce) a `on` (jako `preferred` v tabulce níže).  
+Pokud používáte starší verzi rozšíření mysqlnd_azure (verze 1.0.0-1.0.3), chování přesměrování je určeno hodnotou `mysqlnd_azure.enabled` . Platné hodnoty jsou `off` (funguje podobně jako v následující tabulce) a `on` (jako `preferred` v tabulce níže).  
 
 |**hodnota mysqlnd_azure. enableRedirect**| **Chování**|
 |----------------------------------------|-------------|
 |`off` nebo `0`|Přesměrování nebude použito. |
-|`on` nebo `1`|– Pokud na Azure Database for MySQLovém serveru není protokol SSL povolený, připojení se neprovede. Vrátí se následující chyba: *"mysqlnd_azure. enableRedirect je zapnutá, ale v připojovacím řetězci není nastavená možnost SSL. Přesměrování je možné jenom s protokolem SSL.*<br>– Pokud je na serveru MySQL povolený protokol SSL, ale přesměrování není na serveru podporované, první připojení se přerušilo a vrátí se následující chyba: *"připojení bylo přerušeno, protože na serveru MySQL není povolené přesměrování, nebo síťový balíček nesplňuje protokol přesměrování."*<br>– Pokud server MySQL podporuje přesměrování, ale přesměrované připojení z nějakého důvodu selhalo, přeruší také první připojení k proxy. Vrátí chybu přesměrovaného připojení.|
-|`preferred` nebo `2`<br> (výchozí hodnota)|-mysqlnd_azure použije přesměrování, pokud je to možné.<br>– Pokud připojení nepoužívá protokol SSL, server nepodporuje přesměrování nebo se přesměrovanému připojení nepovedlo připojit k žádnému nezávažnému důvodu, zatímco připojení k proxy serveru je stále platným serverem, přejde k prvnímu připojení proxy serveru.|
+|`on` nebo `1`|– Pokud připojení na straně ovladače nepoužívá protokol SSL, nebude provedeno žádné připojení. Vrátí se následující chyba: *"mysqlnd_azure. enableRedirect je zapnutá, ale v připojovacím řetězci není nastavená možnost SSL. Přesměrování je možné jenom s protokolem SSL.*<br>– Pokud se na straně ovladače používá protokol SSL, ale přesměrování není na straně serveru podporované, první připojení se přerušilo a vrátí se následující chyba: *"připojení přerušeno, protože přesměrování není na serveru MySQL povolené, nebo síťový balíček nesplňuje protokol přesměrování".*<br>– Pokud server MySQL podporuje přesměrování, ale přesměrované připojení z nějakého důvodu selhalo, přeruší také první připojení k proxy. Vrátí chybu přesměrovaného připojení.|
+|`preferred` nebo `2`<br> (výchozí hodnota)|-mysqlnd_azure použije přesměrování, pokud je to možné.<br>– Pokud připojení na straně ovladače nepoužívá protokol SSL, server nepodporuje přesměrování nebo se přesměrované připojení nepovede na nezávažný důvod, zatímco připojení k proxy serveru je stále platným serverem, a to se přepne na první připojení proxy|
 
 V dalších částech dokumentu se dozvíte, jak nainstalovat `mysqlnd_azure` rozšíření pomocí PECL a jak nastavit hodnotu tohoto parametru.
 
@@ -54,7 +52,7 @@ V dalších částech dokumentu se dozvíte, jak nainstalovat `mysqlnd_azure` ro
 - Verze PHP 7.2.15 + a 7.3.2 +
 - HRUŠKY PHP 
 - PHP – MySQL
-- Server Azure Database for MySQL se zapnutým protokolem SSL
+- Server Azure Database for MySQL
 
 1. Nainstalujte [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) s využitím [PECL](https://pecl.php.net/package/mysqlnd_azure). Doporučuje se používat verzi 1.1.0 +.
 
@@ -62,7 +60,7 @@ V dalších částech dokumentu se dozvíte, jak nainstalovat `mysqlnd_azure` ro
     sudo pecl install mysqlnd_azure
     ```
 
-2. Vyhledejte adresář rozšíření (`extension_dir`) spuštěním následujícího příkladu:
+2. Vyhledejte adresář rozšíření ( `extension_dir` ) spuštěním následujícího příkladu:
 
     ```bash
     php -i | grep "extension_dir"
@@ -78,7 +76,7 @@ V dalších částech dokumentu se dozvíte, jak nainstalovat `mysqlnd_azure` ro
 
 5. Umožňuje změnit adresáře na tuto vrácenou složku. 
 
-6. Vytvořte nový soubor. ini pro `mysqlnd_azure`. Zajistěte, aby bylo abecední pořadí názvu po mysqnld, protože moduly jsou načteny podle pořadí názvů souborů INI. Například pokud `mysqlnd` je pojmenovaný `10-mysqlnd.ini`. ini název, pojmenujte mysqlnd ini jako `20-mysqlnd-azure.ini`.
+6. Vytvořte nový soubor. ini pro `mysqlnd_azure` . Zajistěte, aby bylo abecední pořadí názvu po mysqnld, protože moduly jsou načteny podle pořadí názvů souborů INI. Například pokud `mysqlnd` je pojmenovaný. ini `10-mysqlnd.ini` název, pojmenujte mysqlnd ini jako `20-mysqlnd-azure.ini` .
 
 7. Do nového souboru. ini přidejte následující řádky, aby bylo možné přesměrování povolit.
 
@@ -92,7 +90,7 @@ V dalších částech dokumentu se dozvíte, jak nainstalovat `mysqlnd_azure` ro
 #### <a name="prerequisites"></a>Požadavky 
 - Verze PHP 7.2.15 + a 7.3.2 +
 - PHP – MySQL
-- Server Azure Database for MySQL se zapnutým protokolem SSL
+- Server Azure Database for MySQL
 
 1. Zjistěte, zda používáte verzi PHP x64 nebo x86 spuštěním následujícího příkazu:
 
@@ -102,9 +100,9 @@ V dalších částech dokumentu se dozvíte, jak nainstalovat `mysqlnd_azure` ro
 
 2. Stáhněte si odpovídající verzi x64 nebo x86 knihovny [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) dll z [PECL](https://pecl.php.net/package/mysqlnd_azure) , která odpovídá vaší verzi PHP. Doporučuje se používat verzi 1.1.0 +.
 
-3. Extrahujte soubor zip a vyhledejte DLL s názvem `php_mysqlnd_azure.dll`.
+3. Extrahujte soubor zip a vyhledejte DLL s názvem `php_mysqlnd_azure.dll` .
 
-4. Vyhledejte adresář rozšíření (`extension_dir`) spuštěním následujícího příkazu:
+4. Vyhledejte adresář rozšíření ( `extension_dir` ) spuštěním následujícího příkazu:
 
     ```cmd
     php -i | find "extension_dir"

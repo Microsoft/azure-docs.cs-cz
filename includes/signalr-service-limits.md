@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 05/11/2020
 ms.author: zhshang
-ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 496d98c5faebfcef511152476b58dd6257dbbedc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67175408"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673539"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení | 
 | --- | --- | --- |
@@ -29,6 +29,9 @@ ms.locfileid: "67175408"
 | Počet připojení za jednotku a den pro úroveň Free |20 |20 |
 | Počet připojení za jednotku a den pro úroveň Standard |1 000 |1 000|
 | Zahrnuté zprávy na jednotku za den pro úroveň Free|20 000 |20 000 |
+| Další zprávy za jednotku za den pro úroveň Free|0 |0 |
 | Zahrnuté zprávy na jednotku za den pro úroveň Standard|1 000 000 |1 000 000 |
+| Další zprávy na jednotku za den pro úroveň Standard|Unlimited |Unlimited |
 
-Pokud chcete požádat o aktualizaci výchozích omezení vašich předplatných, otevřete lístek podpory. 
+Pokud chcete požádat o aktualizaci výchozích omezení vašich předplatných, otevřete lístek podpory.
+

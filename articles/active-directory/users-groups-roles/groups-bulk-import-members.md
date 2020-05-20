@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8902c3147bbe142fc58d4e2c3fa83601c8ccbba3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 5b83b0687db72c78a0c7788933acf07f5cb9e0ed
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203508"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679344"
 ---
-# <a name="bulk-import-group-members-in-azure-active-directory"></a>Členové skupiny hromadného importu v Azure Active Directory
+# <a name="bulk-add-group-members-in-azure-active-directory"></a>Hromadné přidání členů skupiny v Azure Active Directory
 
 Pomocí portálu Azure Active Directory (Azure AD) můžete do skupiny přidat velký počet členů pomocí souboru hodnot oddělených čárkami (CSV) pro hromadnou import členů skupiny.
 
@@ -35,7 +35,7 @@ Pokud chcete úspěšně přidat členy skupiny Azure AD hromadně, Stáhněte a
 Řádky ve stažené šabloně CSV jsou následující:
 
 - **Číslo verze**: první řádek obsahující číslo verze musí být zahrnut do souboru CSV pro nahrávání.
-- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název* &gt; položky [PropertyName] &lt; *povinný nebo prázdný*&gt;. Například, `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Některé starší verze šablony mohou mít drobné variace. Pro změny členství ve skupinách máte možnost, který identifikátor použít: ID objektu člena nebo hlavní název uživatele.
+- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název položky* &gt; [PropertyName] &lt; *povinný nebo prázdný* &gt; . Například, `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Některé starší verze šablony mohou mít drobné variace. Pro změny členství ve skupinách máte možnost, který identifikátor použít: ID objektu člena nebo hlavní název uživatele.
 - **Řádek příklady**: v šabloně jsme zahrnuli řádek příkladů přípustných hodnot pro každý sloupec. Řádek příklady musíte odebrat a nahradit ho vlastními položkami.
 
 ### <a name="additional-guidance"></a>Další doprovodné materiály
@@ -48,7 +48,7 @@ Pokud chcete úspěšně přidat členy skupiny Azure AD hromadně, Stáhněte a
 ## <a name="to-bulk-import-group-members"></a>Hromadný import členů skupiny
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu správce uživatele v organizaci. Vlastníci skupiny můžou také hromadně importovat členy skupin, které vlastní.
-1. V Azure AD vyberte **skupiny** > **všechny skupiny**.
+1. V Azure AD vyberte **skupiny**  >  **všechny skupiny**.
 1. Otevřete skupinu, do které přidáváte členy, a pak vyberte **Členové**.
 1. Na stránce **Členové** vyberte **importovat členy**.
 1. Na stránce **Hromadný import členů skupiny** vyberte **Stáhnout** a získejte šablonu souboru CSV s požadovanými vlastnostmi člena skupiny.
@@ -57,7 +57,7 @@ Pokud chcete úspěšně přidat členy skupiny Azure AD hromadně, Stáhněte a
 
 1. Otevřete soubor CSV a přidejte řádek pro každého člena skupiny, který chcete do skupiny importovat (požadované hodnoty jsou buď **ID členského objektu** , nebo **hlavní název uživatele**). Pak soubor uložte.
 
-   ![Soubor CSV obsahuje názvy a ID pro import členů.](./media/groups-bulk-import-members/csv-file.png)
+    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="Soubor CSV obsahuje názvy a ID členů k importu.":::
 
 1. Na stránce **hromadně importovat skupiny členů** v části **nahrát soubor CSV**přejděte k souboru. Po výběru souboru se spustí ověření souboru CSV.
 1. Po ověření obsahu souboru se zobrazí stránka hromadného importu **úspěšně nahrané soubory**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.

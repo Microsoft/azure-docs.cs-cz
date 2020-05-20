@@ -6,22 +6,17 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fa9a4ebe64880ae136a8460d35200fb84abb6cf
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74769910"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660179"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Použití Azure Active Directory k ověřování pomocí PostgreSQL
 
 Ověřování pomocí Microsoft Azure Active Directory (Azure AD) je mechanismus připojení k Azure Database for PostgreSQL pomocí identit definovaných ve službě Azure AD.
 Pomocí ověřování Azure AD můžete spravovat identity uživatelů databáze a další služby Microsoftu v centrálním umístění, které zjednodušuje správu oprávnění.
-
-> [!IMPORTANT]
-> Ověřování Azure AD pro Azure Database for PostgreSQL je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Mezi výhody použití Azure AD patří:
 
@@ -57,7 +52,7 @@ Při použití ověřování Azure AD jsou k dispozici dva účty správců pro 
 
 ## <a name="permissions"></a>Oprávnění
 
-Pokud chcete vytvořit nové uživatele, kteří se můžou ověřit ve službě Azure AD, `azure_ad_admin` musíte mít roli v databázi. Tato role je přiřazená konfigurací účtu správce Azure AD pro konkrétní server Azure Database for PostgreSQL.
+Pokud chcete vytvořit nové uživatele, kteří se můžou ověřit ve službě Azure AD, musíte mít `azure_ad_admin` roli v databázi. Tato role je přiřazená konfigurací účtu správce Azure AD pro konkrétní server Azure Database for PostgreSQL.
 
 Pokud chcete vytvořit nového uživatele databáze Azure AD, musíte se připojit jako správce Azure AD. To je znázorněno v [konfiguraci a přihlášení pomocí Azure AD pro Azure Database for PostgreSQL](howto-configure-sign-in-aad-authentication.md).
 

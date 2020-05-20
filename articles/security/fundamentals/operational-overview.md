@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443884"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674239"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled služby Azure Operational Security
 
@@ -60,7 +60,7 @@ Další informace najdete v [tabulce Azure Backup komponenty](/azure/backup/back
 
 -   Povolí správu identit a přístupu (IAM) jako cloudovou službu.
 -   Poskytuje správu centrálního přístupu, jednotné přihlašování (SSO) a vytváření sestav.
--   Podporuje správu integrovaného přístupu pro [tisíce aplikací](https://azure.microsoft.com/marketplace/active-directory/) v Azure Marketplace, včetně Salesforce, Google Apps, box a Concur.
+-   Podporuje správu integrovaného přístupu pro [tisíce aplikací](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) v Azure Marketplace, včetně Salesforce, Google Apps, box a Concur.
 
 Azure AD zahrnuje také plnou sadu [funkcí pro správu identit](/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports), včetně těchto:
 
