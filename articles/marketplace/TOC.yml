@@ -202,26 +202,6 @@
           href: ./cloud-partner-portal/consulting-services/consulting-services-offer.md
         - name: Nabídka kontejnerů
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
-          items:
-            - name: Požadavky
-              href: ./cloud-partner-portal/containers/cpp-prerequisites.md
-            - name: Vytvoření nabídky kontejnerů
-              href: ./cloud-partner-portal/containers/cpp-create-offer.md
-              items:
-                - name: Karta nastavení nabídky
-                  href: ./cloud-partner-portal/containers/cpp-offer-settings-tab.md
-                - name: Karta Skladové položky
-                  href: ./cloud-partner-portal/containers/cpp-skus-tab.md
-                - name: Karta Marketplace
-                  href: ./cloud-partner-portal/containers/cpp-marketplace-tab.md
-                - name: Karta Podpora
-                  href: ./cloud-partner-portal/containers/cpp-support-tab.md
-            - name: Vytvoření technických prostředků kontejneru
-              href: ./cloud-partner-portal/containers/cpp-create-technical-assets.md
-            - name: Publikace nabídky kontejnerů
-              href: ./cloud-partner-portal/containers/cpp-publish-offer.md
-            - name: Aktualizace stávající nabídky
-              href: ./cloud-partner-portal/containers/cpp-update-existing-offer.md
         - name: Nabídka Dynamics 365 for Business Central
           href: ./cloud-partner-portal-orig/cpp-business-central-offer.md
           items:

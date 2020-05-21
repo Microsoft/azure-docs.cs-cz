@@ -50,6 +50,8 @@
           href: ./samples/pattern-parameters.md
         - name: Podrobnosti o efektu
           href: ./samples/pattern-effect-details.md
+        - name: Značky
+          href: ./samples/pattern-tags.md
         - name: Operátor hodnoty
           href: ./samples/pattern-value-operator.md
         - name: Operátor počtu
@@ -76,13 +78,8 @@
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: Azure Policy pro Kubernetes
-      items:
-        - name: Zásady pro AKS
-          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
-          href: ./concepts/rego-for-aks.md
-        - name: Zásady pro modul AKS
-          displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
-          href: ./concepts/aks-engine.md
+      displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
+      href: ./concepts/policy-for-kubernetes.md
     - name: Auditování virtuálních počítačů s konfigurací hosta
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

@@ -81,6 +81,11 @@
       href: tutorial-firmware-update.md
     - name: Testování připojení zařízení
       href: tutorial-connectivity.md
+- name: ukázky
+  items:
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Podpora TLS

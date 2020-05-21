@@ -4,18 +4,17 @@ summary: Azure Batch efektivně spouští rozsáhlé aplikace v cloudu. Využijt
 metadata:
   title: Dokumentace ke službě Azure Batch
   description: Azure Batch efektivně spouští rozsáhlé aplikace v cloudu. Využijte možnost plánovat úlohy náročné na výpočetní funkce a dynamicky upravovat prostředky pro vaše řešení bez nutnosti spravovat infrastrukturu.
-  services: batch
   ms.service: batch
   ms.topic: landing-page
-  author: LauraBrenner
-  ms.author: labrenne
+  author: JnHs
+  ms.author: jenhayes
   ms.date: 09/23/2019
-  ms.openlocfilehash: d44ef419ec93e890ac1f8696d3ee45aadd3cd26f
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 72c72d8125d9d7d4e3f3e00ad0ee8d99acd501c0
+  ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77026060"
+  ms.lasthandoff: 05/21/2020
+  ms.locfileid: "83725699"
 landingContent:
 - title: Informace o službě Azure Batch
   linkLists:
@@ -85,7 +84,7 @@ landingContent:
     links:
     - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/batch?view=azure-cli-latest
-    - text: Azure Powershell
+    - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.batch/?view=azps-2.6.0
     - text: .NET
       url: https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet

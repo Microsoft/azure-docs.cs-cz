@@ -11,13 +11,12 @@ metadata:
   author: markingmyname
   ms.author: maghan
   ms.date: 10/02/2019
-  monikerRange: ''
-  ms.openlocfilehash: fc85ae8cc6dcb2d5d04a6cbd7f79eb03470a58fb
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 5e7c778eb3d5de197044cb51e35875399908d205
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74321752"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83657226"
 landingContent:
 - title: Informace o službě Azure Data Factory
   linkLists:
@@ -47,7 +46,7 @@ landingContent:
       url: /azure/data-factory/quickstart-create-data-factory-portal
     - text: Nástroj pro kopírování dat
       url: /azure/data-factory/quickstart-create-data-factory-copy-data-tool
-    - text: Azure Powershell
+    - text: Azure PowerShell
       url: /azure/data-factory/quickstart-create-data-factory-powershell
     - text: .NET
       url: /azure/data-factory/quickstart-create-data-factory-dot-net
@@ -161,7 +160,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure Powershell
+    - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.datafactory/
     - text: .NET
       url: https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactory/

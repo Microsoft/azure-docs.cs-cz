@@ -16,7 +16,7 @@
   expanded: true
   items:
     - name: Vytvoření privátního clusteru Azure Red Hat OpenShift 4
-      href: create-private-cluster.md
+      href: howto-create-private-cluster-4x.md
     - name: Konfigurace předávání DNS pro cluster Azure Red Hat OpenShift 4
       href: dns-forwarding.md
     - name: Konfigurace ověřování Active Directory pro cluster Azure Red Hat OpenShift 4
@@ -48,7 +48,7 @@
         - name: Správa projektů v clusteru Azure Red Hat OpenShift 3.11
           href: howto-manage-projects.md
         - name: Vytvoření privátního clusteru Azure Red Hat OpenShift 3.11
-          href: howto-create-private-cluster.md
+          href: howto-create-private-cluster-3x.md
         - name: Monitorování a protokolování pro Azure Red Hat OpenShift 3.11
           items:
             - name: Azure Monitor pro kontejnery v Azure Red Hat OpenShiftu 3.11 (Preview)
