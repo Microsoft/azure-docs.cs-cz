@@ -8,23 +8,20 @@ author: mlearned
 ms.author: mlearned
 description: 'Vytvoření instančního objektu s povolenou službou Azure ARC '
 keywords: Kubernetes, oblouk, Azure, kontejnery
-ms.openlocfilehash: f9f750980d8a8b5d8190ba0b399fe068f1dd99c7
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680795"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725597"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Vytvoření instančního objektu s povolenou službou Azure ARC (verze Preview)
 
 ## <a name="overview"></a>Přehled
 
-Když se cluster připojí do Azure, agenti běžící v clusteru se musí ověřit, aby se Azure Resource Manager jako součást registrace. `connectedk8s`Rozšíření Azure CLI má automatizované vytváření instančního objektu. Může ale existovat několik scénářů, kdy automatizace CLI nefunguje:
+Je možné používat instanční objekty s přiřazením rolí s omezenými oprávněními pro připojování clusterů Kubernetes do Azure ARC. To je užitečné v kanálech průběžné integrace a průběžného nasazování (CI/CD), jako jsou Azure Pipelines a akce GitHubu.
 
-* Vaše organizace obecně omezuje vytváření instančních objektů.
-* Uživatel, který registruje cluster, nemá dostatečná oprávnění k vytvoření instančních objektů.
-
-Místo toho vytvořte instanční objekt vzdáleně a pak předejte objekt zabezpečení rozhraní příkazového řádku Azure CLI.
+Následující kroky poskytují návod k používání instančních objektů pro připojování clusterů Kubernetes do Azure ARC.
 
 ## <a name="create-a-new-service-principal"></a>Vytvořit nový instanční objekt
 
@@ -57,13 +54,13 @@ Oprávnění se můžou dál omezovat předáním příslušného `--scope` argu
 | Prostředek  | Argument `scope`| Účinek |
 | ------------- | ------------- | ------------- |
 | Předplatné | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | Instanční objekt může zaregistrovat libovolný cluster v existující skupině prostředků v daném předplatném. |
-| Skupina prostředků | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Instanční objekt může registrovat __jenom__ clustery ve skupině prostředků.`myGroup` |
+| Resource Group | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | Instanční objekt může registrovat __jenom__ clustery ve skupině prostředků.`myGroup` |
 
 ```console
 az role assignment create \
     --role 34e09817-6cbe-4d01-b1a2-e0eac5743d41 \      # this is the id for the built-in role
     --assignee 22cc2695-54b9-49c1-9a73-2269592103d8 \  # use the appId from the new SP
-    --scope /subscriptions/<<SUBSCRIPTION_ID>>         # apply the apropriate scope
+    --scope /subscriptions/<<SUBSCRIPTION_ID>>         # apply the appropriate scope
 ```
 
 **Výkonem**

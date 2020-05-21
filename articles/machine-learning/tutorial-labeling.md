@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: d960c8225cbb22c221ecaec1b7c49b5bb20c1429
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8136f8fe6431187884a180925234d6aab36983f
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203637"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725512"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem pro klasifikaci imagí ve více třídách 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +69,7 @@ Dále budete spravovat projekt označování dat v aplikaci Azure Machine Learni
     Název úložiště dat | Poskytněte úložiště dat název.  Zde používáme **labeling_tutorial**.
     Typ úložiště dat | Vyberte typ úložiště.  Tady používáme **Azure Blob Storage**, což je preferované úložiště pro obrázky.
     Metoda výběru účtu | Vyberte **zadat ručně**.
-    zprostředkovatele identity | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
+    URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
     Typ ověřování | Vyberte **token SAS**.
     Klíč účtu | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
@@ -77,7 +77,7 @@ Dále budete spravovat projekt označování dat v aplikaci Azure Machine Learni
 
 ### <a name="create-a-labeling-project"></a>Vytvoření projektu s popisem
 
-Teď, když máte seznam popisků a přístup k datům, která chcete mít s popisky, vytvořte svůj projekt označování.
+Teď, když máte přístup k datům, která mají být označená, vytvořte svůj projekt označování.
 
 1. V horní části stránky vyberte **projekty**.
 

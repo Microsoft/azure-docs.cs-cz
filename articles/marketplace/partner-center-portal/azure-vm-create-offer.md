@@ -1,23 +1,20 @@
 ---
 title: Vytvoření nabídky virtuálního počítače Azure v Azure Marketplace
-description: Naučte se, jak vytvořit nabídku virtuálního počítače v Azure Marketplace s požadovanými SKU.
+description: Naučte se, jak vytvořit nabídku virtuálního počítače v Azure Marketplace s požadovanou SKU.
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 25b7a619f6d3e308de966ead5925133f6094d9c8
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ab41d3619150ace8e55702792d5974060133d5c1
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701078"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726175"
 ---
-# <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>Vytvoření nabídky virtuálního počítače Azure v Azure Marketplace
-
-> [!IMPORTANT]
-> Přesouváme správu nabídek virtuálních počítačů Azure z portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, pokračujte podle pokynů v tématu [Vytvoření nabídky virtuálních počítačů](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer) v portál partnerů cloudu ke správě nabídek.
+# <a name="create-an-azure-virtual-machine-offer-in-azure-marketplace"></a>Vytvoření nabídky virtuálního počítače Azure v Azure Marketplace
 
 Tento článek popisuje, jak vytvořit a publikovat nabídku virtuálních počítačů Azure pro [Azure Marketplace](https://azuremarketplace.microsoft.com/). Řeší virtuální počítače se systémem Windows i Linux, které obsahují operační systém, virtuální pevný disk (VHD) a až 16 datových disků. Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
@@ -39,7 +36,7 @@ Pokud jste to ještě neudělali, Projděte si [příručku pro publikování na
 - Průvodci rychlým startem
   - [Šablony Azure pro rychlé zprovoznění](https://azure.microsoft.com/resources/templates/)
   - [Šablony Azure pro rychlý Start pro GitHub](https://github.com/azure/azure-quickstart-templates)
-- Výukové kurzy
+- Kurzy
   - [Virtuální počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
   - [Virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - ukázky

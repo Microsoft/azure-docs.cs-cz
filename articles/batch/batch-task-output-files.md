@@ -1,15 +1,15 @@
 ---
-title: Zachovat výstupní data Azure Storage pomocí rozhraní API služby Batch – Azure Batch
+title: Zachování výstupních dat pro Azure Storage s využitím rozhraní API služby Batch
 description: Naučte se používat rozhraní API služby Batch k trvalému zachovávání výstupních dat úlohy a úloh Batch a Azure Storage.
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d9c6465a553e5652ecab5dcd167bb4058ff5cc08
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8020fbd184e200504d0fb0a9ab7ef5de64bd76c9
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234277"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726311"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Zachování dat úkolu Azure Storage pomocí rozhraní API služby Batch
 
@@ -43,7 +43,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Získání sdíleného přístupového podpisu pro kontejner
 
-Po vytvoření kontejneru Získejte sdílený přístupový podpis (SAS) s přístupem pro zápis do kontejneru. SAS poskytuje delegovaný přístup ke kontejneru. SAS udělí přístup se zadanou sadou oprávnění a v zadaném časovém intervalu. Služba Batch potřebuje k zápisu výstupu úlohy do kontejneru SAS s oprávněním k zápisu. Další informace o SAS najdete v tématu [použití \(SAS\) sdílených přístupových podpisů v Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Po vytvoření kontejneru Získejte sdílený přístupový podpis (SAS) s přístupem pro zápis do kontejneru. SAS poskytuje delegovaný přístup ke kontejneru. SAS udělí přístup se zadanou sadou oprávnění a v zadaném časovém intervalu. Služba Batch potřebuje k zápisu výstupu úlohy do kontejneru SAS s oprávněním k zápisu. Další informace o SAS najdete v tématu [použití SAS sdílených přístupových podpisů \( \) v Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 Když obdržíte SAS pomocí Azure Storage rozhraní API, rozhraní API vrátí řetězec tokenu SAS. Tento řetězec tokenu zahrnuje všechny parametry SAS, včetně oprávnění a intervalu, za který je SAS platný. Chcete-li použít SAS pro přístup ke kontejneru v Azure Storage, je nutné připojit řetězec tokenu SAS k identifikátoru URI prostředku. Identifikátor URI prostředku, společně s připojením tokenu SAS, poskytuje ověřený přístup k Azure Storage.
 
@@ -63,7 +63,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 Chcete-li určit výstupní soubory pro úlohu, vytvořte kolekci objektů typu [Výstupní_soubor](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) a přiřaďte ji k vlastnosti [CloudTask. OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) při vytváření úlohy.
 
-Následující příklad kódu jazyka C# vytvoří úlohu, která zapíše náhodná čísla do souboru `output.txt`s názvem. Příklad vytvoří výstupní soubor pro `output.txt` zápis do kontejneru. V tomto příkladu se vytvoří také výstupní soubory pro všechny soubory protokolů, které odpovídají `std*.txt` vzoru souboru (_např._ `stdout.txt` a `stderr.txt`). Adresa URL kontejneru vyžaduje SAS, který byl vytvořen dříve pro kontejner. Služba Batch používá k ověření přístupu ke kontejneru SAS:
+Následující příklad kódu jazyka C# vytvoří úlohu, která zapíše náhodná čísla do souboru s názvem `output.txt` . Příklad vytvoří výstupní soubor pro `output.txt` zápis do kontejneru. V tomto příkladu se vytvoří také výstupní soubory pro všechny soubory protokolů, které odpovídají vzoru souboru `std*.txt` (_např._ `stdout.txt` a `stderr.txt` ). Adresa URL kontejneru vyžaduje SAS, který byl vytvořen dříve pro kontejner. Služba Batch používá k ověření přístupu ke kontejneru SAS:
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -93,11 +93,11 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 Při zadání výstupního souboru můžete použít vlastnost [Výstupní_soubor. File Pattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) k určení vzoru souboru pro porovnávání. Vzor souboru se může shodovat s nulovými soubory, s jedním souborem nebo sadou souborů, které jsou vytvořeny úlohou.
 
-Vlastnost **Pattern vzor** podporuje standardní zástupné znaky systému souborů, `*` například (pro nerekurzivní shody) a `**` (pro rekurzivní shody). Například vzor kódu výše určuje vzor souboru, který se bude shodovat `std*.txt` bez rekurzivní:
+Vlastnost **Pattern vzor** podporuje standardní zástupné znaky systému souborů, například `*` (pro nerekurzivní shody) a `**` (pro rekurzivní shody). Například vzor kódu výše určuje vzor souboru, který se bude shodovat `std*.txt` bez rekurzivní:
 
 `filePattern: @"..\std*.txt"`
 
-Pokud chcete nahrát jeden soubor, určete vzorek souboru bez zástupných znaků. Například vzor kódu výše určuje vzor souboru, který se má shodovat `output.txt`:
+Pokud chcete nahrát jeden soubor, určete vzorek souboru bez zástupných znaků. Například vzor kódu výše určuje vzor souboru, který se má shodovat `output.txt` :
 
 `filePattern: @"output.txt"`
 
@@ -117,7 +117,7 @@ Další nastavení naleznete v tématu [OutputFileUploadCondition](https://docs.
 
 Vlastnost [OutputFileBlobContainerDestination. Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) Určuje cílový objekt BLOB nebo virtuální adresář pro výstupní soubory. Vlastnost **path** můžete použít k pojmenování objektu BLOB nebo virtuálního adresáře takovým způsobem, že výstupní soubory se stejným názvem jsou jednoznačně pojmenované v Azure Storage. Použití ID úlohy v cestě je dobrý způsob, jak zajistit jedinečné názvy a snadno identifikovat soubory.
 
-Pokud je vlastnost **Pattern vzoru** nastavená na zástupný znak, všechny soubory, které se shodují se vzorem, se nahrají do virtuálního adresáře zadaného vlastností **path** . Například pokud je `mycontainer`kontejner, ID úkolu je `mytask`a vzor souboru je `..\std*.txt`, pak absolutní identifikátory URI na výstupní soubory v Azure Storage budou vypadat podobně jako:
+Pokud je vlastnost **Pattern vzoru** nastavená na zástupný znak, všechny soubory, které se shodují se vzorem, se nahrají do virtuálního adresáře zadaného vlastností **path** . Například pokud je kontejner `mycontainer` , ID úkolu je `mytask` a vzor souboru je `..\std*.txt` , pak absolutní identifikátory URI na výstupní soubory v Azure Storage budou vypadat podobně jako:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stderr.txt
@@ -147,7 +147,7 @@ Code: FileUploadContainerNotFound
 Message: One of the specified Azure container(s) was not found while attempting to upload an output file
 ```
 
-Při každém nahrání souboru Batch zapisuje dva soubory protokolu do výpočetního uzlu `fileuploadout.txt` a. `fileuploaderr.txt` Můžete si prohlédnout tyto soubory protokolu a získat další informace o konkrétní chybě. V případech, kdy se odeslání souboru nikdy nepokoušelo, například kvůli tomu, že se nezdařilo spustit samotný úkol, tyto soubory protokolu nebudou existovat.
+Při každém nahrání souboru Batch zapisuje dva soubory protokolu do výpočetního uzlu `fileuploadout.txt` a `fileuploaderr.txt` . Můžete si prohlédnout tyto soubory protokolu a získat další informace o konkrétní chybě. V případech, kdy se odeslání souboru nikdy nepokoušelo, například kvůli tomu, že se nezdařilo spustit samotný úkol, tyto soubory protokolu nebudou existovat.
 
 ## <a name="diagnose-file-upload-performance"></a>Diagnostika výkonu nahrávání souborů
 

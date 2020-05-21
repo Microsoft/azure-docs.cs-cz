@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 159d2c60fc1fc5ad1f21f2b948208eaae0d06208
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/18/2020
+ms.openlocfilehash: 95eba648219413923ce27d433a5236877c4953f3
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857865"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725461"
 ---
 # <a name="marketplace-metering-service-apis"></a>Rozhraní API služeb měření na marketplace
 
@@ -36,6 +36,9 @@ Rozhraní API události využití umožňuje generovat události využití pro k
 | `x-ms-correlationid` | Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
 | `authorization`   | [Získat token nosiče webového tokenu JSON (JWT).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Poznámka: při vytváření požadavku HTTP se předpona `Bearer` tokenu získá z odkazovaného odkazu. |
 
+>[!Note]
+>V případě plánů aplikací spravovaných aplikacemi Azure se `resourceId` nachází v `resourceUsageId` rámci `billingDetails` objektu metadat spravované aplikace.  Ukázkový skript pro načtení najdete v [části použití tokenu identity spravovaného službou Azure](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token).  V případě nabídek SaaS `resourceId` je to ID předplatného SaaS.  Další podrobnosti o předplatných SaaS najdete v tématu [seznam předplatných](./pc-saas-fulfillment-api-v2.md#list-subscriptions).
+
 *Request*
 
 ```json
@@ -48,7 +51,7 @@ Rozhraní API události využití umožňuje generovat události využití pro k
 }
 ```
 
-### <a name="responses"></a>Odezvy
+### <a name="responses"></a>Odpovědi
 
 Kód: 200<br>
 OK 
@@ -157,7 +160,7 @@ Rozhraní API události využití dávky umožňuje generovat události využit�
   ]
 }
 ```
-### <a name="responses"></a>Odezvy
+### <a name="responses"></a>Odpovědi
 
 Kód: 200<br>
 OK
@@ -192,7 +195,7 @@ OK
 }
 ```
 
-Popis stavového kódu odkazovaného `BatchUsageEvent` v odpovědi rozhraní API:
+Popis stavového kódu odkazovaného v `BatchUsageEvent` odpovědi rozhraní API:
 
 | Stavový kód  | Description |
 | ---------- | -------------------- |

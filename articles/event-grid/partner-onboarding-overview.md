@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 2c275a5cd5dd7dd9399aa957dd7e68c611fc7c0e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3c2c2e3d5a2ef48ddc212fc0df4906c91071d803
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691177"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725917"
 ---
 # <a name="become-and-event-grid-partner"></a>Staňte se Event Grid partnerem
 
@@ -34,10 +34,14 @@ Témata o partnerovi umožňují publikovat události pro Azure Event Grid pro v
 #### <a name="partner-flow"></a>Partnerský tok
 
 1. Vytvořte tenanta Azure, pokud ho ještě nemáte.
-1. Pomocí rozhraní příkazového řádku vytvořte novou Event Grid `partnerRegistration` . Tento prostředek obsahuje informace, jako je zobrazované jméno, popis, identifikátor URI instalace atd. 
-![Vytvořit partnerský předmět](./media/partner-onboarding-how-to/create-partner-registration.png)
+1. Pomocí rozhraní příkazového řádku vytvořte novou Event Grid `partnerRegistration` . Tento prostředek obsahuje informace, jako je zobrazované jméno, popis, identifikátor URI instalace atd.
+
+    ![Vytvořit partnerský předmět](./media/partner-onboarding-how-to/create-partner-registration.png)
+
 1. `partnerNamespaces`V každé oblasti, kterou chcete publikovat události, vytvořte jednu nebo více. V rámci této služby Event Grid služba zřídit koncový bod publikování (například https://contoso.westus-1.eventgrid.azure.net/api/events) přístup k klíčům).
-![Vytvořit obor názvů partnera](./media/partner-onboarding-how-to/create-partner-namespace.png)
+
+    ![Vytvořit obor názvů partnera](./media/partner-onboarding-how-to/create-partner-namespace.png)
+
 1. Poskytněte zákazníkům způsob, jak se zaregistrovat v systému, který by měl jako Partnerská témata.
 1. Obraťte se na tým Event Grid a sdělte nám, jak se má stát, že se Váš typ partnerského tématu stane veřejným.
 
@@ -46,9 +50,12 @@ Témata o partnerovi umožňují publikovat události pro Azure Event Grid pro v
 1. Váš zákazník navštíví Azure Portal a poznamenejte si ID předplatného Azure a skupinu prostředků, které by chtěli jako partnerské téma vytvořené v.
 1. Zákazník si vyžádá Partnerská témata prostřednictvím vašeho systému. V reakci vytvoříte tunelové propojení událostí pro váš partnerský obor názvů.
 1. Event Grid vytvoří **nedokončené** partnerské téma v předplatném Azure a skupině prostředků zákazníka.
-![Vytvoření kanálu událostí](./media/partner-onboarding-how-to/create-event-tunnel-partner-topic.png)
+
+    ![Vytvoření kanálu událostí](./media/partner-onboarding-how-to/create-event-tunnel-partner-topic.png)
+
 1. Zákazník aktivuje téma partnera prostřednictvím Azure Portal. Události teď můžou z vaší služby přesměrovat do předplatného Azure zákazníka.
-![Aktivovat téma partnera](./media/partner-onboarding-how-to/activate-partner-topic.png)
+
+    ![Aktivovat téma partnera](./media/partner-onboarding-how-to/activate-partner-topic.png)
 
 ## <a name="resource-model"></a>Model prostředků
 
@@ -64,21 +71,14 @@ Níže je uvedený model prostředků pro témata o partnerovi.
     Zákazníci můžou zjistit jenom partnerRegistrations schválené společností Microsoft.
 * Obor: vytvořeno v rámci předplatného Azure partnera. Metadata viditelná pro zákazníky po veřejném.
 
-### <a name="event-types"></a>Typy událostí
-* Partner`partnerRegistrations/eventTypes`
-* Používá: partneři
-* Popis: zachycuje metadata o typech událostí podporovaných registrací partnera.
-* Rozsah: zjistitelný zákazníky, jakmile se zveřejní. V rámci předplatného partnera jako podřízený prostředek registrace partnera.
-        
-
 ### <a name="partner-namespaces"></a>Obory názvů partnerů
 * Prostředek: partnerNamespaces
 * Používá: partneři
 * Popis: poskytuje regionální prostředek pro publikování událostí zákazníků. Každý partnerský obor názvů má koncový bod publikování a ověřovací klíče. Obor názvů je také způsob, jakým partner požaduje partnerské téma pro daného zákazníka a uvádí seznam aktivních zákazníků.
 * Obor: životnost v rámci předplatného partnera.
 
-### <a name="event-tunnels"></a>Tunely událostí
-* Partner`partnerNamespaces/eventTunnels`
+### <a name="event-channel"></a>Kanál událostí
+* Partner`partnerNamespaces/eventChannels`
 * Používá: partneři
 * Popis: tunely událostí jsou zrcadlem k tématu partnera zákazníka. Vytvořením tunelového propojení událostí a zadáním předplatného Azure a skupiny prostředků v metadatech budete signalizovat, Event Grid vytvořit partnerské téma pro zákazníka. Event Grid vydá volání ARM k vytvoření odpovídajícího partnerTopic v předplatném zákazníka. Téma partner se vytvoří ve stavu čeká na vyřízení. Mezi jednotlivými eventTunnel a partnerTopic se vytvoří propojení 1-1.
 * Obor: životnost v rámci předplatného partnera.
@@ -153,7 +153,7 @@ Po odeslání do koncového bodu partnerNamespace obdržíte odpověď. Odpově�
 | Nesprávný koncový bod                 | 404 Nenalezeno         |
 | Pole nebo událost překračuje omezení velikosti. | datová část 413 je moc velká. |
 
-## <a name="reference"></a>Reference
+## <a name="reference"></a>Referenční informace
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [Šablona ARM](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)

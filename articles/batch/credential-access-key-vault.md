@@ -1,14 +1,14 @@
 ---
 title: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
 description: Naučte se programově přistupovat k přihlašovacím údajům z Key Vault pomocí Azure Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: d24904c3a539431e8aff420e9fbd8291cddde78a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d0b2128bef1434f073700eb83e5935d74d8bb7a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117450"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725716"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Zabezpečený přístup ke Key Vaultu s využitím služby Batch
 
@@ -23,21 +23,21 @@ K ověření Azure Key Vault z uzlu Batch budete potřebovat:
 
 ## <a name="obtain-a-certificate"></a>Získání certifikátu
 
-Pokud certifikát ještě nemáte, nejjednodušší způsob, jak ho získat, je vytvořit certifikát podepsaný svým držitelem pomocí nástroje `makecert` příkazového řádku.
+Pokud certifikát ještě nemáte, nejjednodušší způsob, jak ho získat, je vytvořit certifikát podepsaný svým držitelem pomocí `makecert` nástroje příkazového řádku.
 
-Obvykle můžete najít `makecert` v této cestě: `C:\Program Files (x86)\Windows Kits\10\bin\<arch>`. Otevřete příkazový řádek jako správce a přejděte k `makecert` části použití následujícího příkladu.
+Obvykle můžete najít `makecert` v této cestě: `C:\Program Files (x86)\Windows Kits\10\bin\<arch>` . Otevřete příkazový řádek jako správce a přejděte k `makecert` části použití následujícího příkladu.
 
 ```console
 cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 ```
 
-Dále použijte `makecert` nástroj k vytvoření souborů certifikátů podepsaných svým držitelem s `batchcertificate.cer` názvem `batchcertificate.pvk`a. Použitý běžný název (CN) není pro tuto aplikaci důležitý, ale je vhodné ho využít k tomu, abyste si využívali, k čemu se certifikát používá.
+Dále použijte `makecert` Nástroj k vytvoření souborů certifikátů podepsaných svým držitelem s názvem `batchcertificate.cer` a `batchcertificate.pvk` . Použitý běžný název (CN) není pro tuto aplikaci důležitý, ale je vhodné ho využít k tomu, abyste si využívali, k čemu se certifikát používá.
 
 ```console
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Batch vyžaduje `.pfx` soubor. Použijte nástroj [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) `.cer` k převodu souborů `.pvk` a vytvořených pomocí `makecert` do jediného `.pfx` souboru.
+Batch vyžaduje `.pfx` soubor. Použijte nástroj [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) k převodu `.cer` `.pvk` souborů a vytvořených pomocí `makecert` do jediného `.pfx` souboru.
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po
@@ -87,7 +87,7 @@ Když teď vytvoříte fond služby Batch, můžete přejít na **certifikáty**
 
 ## <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
 
-Pokud plánujete přístup k Key Vault pomocí skriptů PowerShellu na uzlech, budete potřebovat nainstalovanou knihovnu Azure PowerShell. Existuje několik způsobů, jak to provést, pokud jsou v uzlech nainstalované rozhraní Windows Management Framework (WMF) 5, můžete ho stáhnout pomocí příkazu install-Module. Pokud používáte uzly, které nemají WMF 5, nejjednodušší způsob, jak ji nainstalovat, je soubor Azure PowerShell `.msi` pomocí dávkových souborů odinstalujte a potom zavolejte instalační program jako první část spouštěcího skriptu služby Batch. Podrobnosti najdete v tomto příkladu:
+Pokud plánujete přístup k Key Vault pomocí skriptů PowerShellu na uzlech, budete potřebovat nainstalovanou knihovnu Azure PowerShell. Existuje několik způsobů, jak to provést, pokud jsou v uzlech nainstalované rozhraní Windows Management Framework (WMF) 5, můžete ho stáhnout pomocí příkazu install-Module. Pokud používáte uzly, které nemají WMF 5, nejjednodušší způsob, jak ji nainstalovat, je `.msi` soubor Azure PowerShell pomocí dávkových souborů odinstalujte a potom zavolejte instalační program jako první část spouštěcího skriptu služby Batch. Podrobnosti najdete v tomto příkladu:
 
 ```powershell
 $psModuleCheck=Get-Module -ListAvailable -Name Azure -Refresh

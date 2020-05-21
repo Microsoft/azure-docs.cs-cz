@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abbf5d79da033a696890566d85bd24bb54577d2c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450347"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715694"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Změna vzorů návrhu informačního kanálu v Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Informační kanál změny v Azure Cosmos DB umožňuje vytváření efektivníc
 
 ## <a name="event-computing-and-notifications"></a>Výpočet a oznámení událostí
 
-Kanál změny Azure Cosmos DB může zjednodušit scénáře, které vyžadují spuštění oznámení nebo volání rozhraní API na základě určité události. [Knihovnu procesů změn kanálu](change-feed-processor.md) můžete použít k automatickému dotazování kontejneru na změny a volání externího rozhraní API pokaždé, když je k dispozici zápis nebo aktualizace.
+Kanál změny Azure Cosmos DB může zjednodušit scénáře, které vyžadují spuštění oznámení nebo odeslání volání rozhraní API na základě určité události. [Knihovnu procesů změn kanálu](change-feed-processor.md) můžete použít k automatickému dotazování kontejneru na změny a volání externího rozhraní API pokaždé, když je k dispozici zápis nebo aktualizace.
 
 Můžete také selektivně aktivovat oznámení nebo poslat volání rozhraní API na základě určitých kritérií. Pokud například čtete z kanálu změn pomocí [Azure Functions](change-feed-functions.md), můžete do funkce Vložit logiku, která odešle pouze oznámení v případě splnění konkrétního kritéria. I když se kód funkce Azure spustí během každého zápisu a aktualizace, oznámení se odešle jenom v případě, že byla splněna specifická kritéria.
 

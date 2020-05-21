@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování virtuálních počítačů Azure
 description: Poskytuje souhrn nastavení podpory a omezení při zálohování virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ac2896b0b3b8c87ff993eddcebb063a66add1fa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 01c81257ab2cc9882ec1d388702a00f58694a7e4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659399"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724254"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -48,7 +48,7 @@ Zálohování disků po migraci na spravované disky | Podporuje se.<br/><br/> Z
 Zálohování spravovaných disků po povolení zámku skupiny prostředků | Není podporováno.<br/><br/> Azure Backup nemůže odstranit starší body obnovení, a pokud dojde k dosažení maximálního limitu bodů obnovení, zálohování se spustí neúspěšné.
 Úprava zásad zálohování pro virtuální počítač | Podporuje se.<br/><br/> Virtuální počítač se zálohuje pomocí nastavení plánu a uchovávání v nové zásadě. Pokud jsou nastavení uchovávání rozšířená, existující body obnovení jsou označeny a udržovány. Pokud se sníží, existující body obnovení se vyřadí do další úlohy čištění a nakonec se odstraní.
 Zrušení úlohy zálohování| Podporováno během procesu snímku.<br/><br/> Nepodporováno, pokud se snímek přenáší do trezoru.
-Zálohování virtuálního počítače do jiné oblasti nebo předplatného |Není podporováno.
+Zálohování virtuálního počítače do jiné oblasti nebo předplatného |Není podporováno.<br><br>Aby bylo možné úspěšně zálohovat virtuální počítače, musí být ve stejném předplatném jako trezor pro zálohování.
 Zálohy za den (přes rozšíření virtuálního počítače Azure) | Jedno naplánované zálohování za den.<br/><br/>Služba Azure Backup podporuje až devět záloh na vyžádání za den, ale společnost Microsoft nedoporučuje více než čtyři každodenní zálohy na vyžádání, aby bylo zajištěno nejlepší výkon.
 Zálohy za den (přes agenta MARS) | Tři plánované zálohy za den.
 Zálohy za den (přes DPM/MABS) | Dvě naplánované zálohy za den.

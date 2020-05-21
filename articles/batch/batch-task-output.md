@@ -1,15 +1,15 @@
 ---
-title: Uložení výstupu úlohy a úlohy do úložiště dat – Azure Batch
+title: Trvalý výstup úloh a úloh do úložiště dat
 description: Přečtěte si o různých možnostech, jak zachovat výstupní data z úloh a úloh služby Batch. Data můžete ukládat do Azure Storage nebo do jiného úložiště dat.
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a0c8f7517e88bf4e5476c7bad98d167ce760a9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 492de237acdf2d6d42f27638bac3adc0f6549828
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116413"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726294"
 ---
 # <a name="persist-job-and-task-output"></a>Trvalý výstup úloh a funkcí
 

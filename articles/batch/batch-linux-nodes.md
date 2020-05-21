@@ -1,15 +1,15 @@
 ---
-title: Provozovat Linux na výpočetních uzlech virtuálních počítačů – Azure Batch | Microsoft Docs
+title: Spuštění systému Linux na výpočetních uzlech virtuálních počítačů
 description: Naučte se zpracovávat paralelní výpočetní úlohy na fondech virtuálních počítačů se systémem Linux v Azure Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31e7a9558590ee3c6943e7a50c67c93f713908c7
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: cd8a39556fb0aec0ddbf6c8e639281d7329228a4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993826"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726600"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
 

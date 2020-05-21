@@ -1,20 +1,20 @@
 ---
-title: Konfigurace nastavení web Windows Update pro práci s Azure Update Management
-description: Tento článek popisuje nastavení web Windows Update, která konfigurujete pro práci s Azure Update Management.
+title: Konfigurace nastavení web Windows Update pro Azure Automation Update Management
+description: V tomto článku se dozvíte, jak nakonfigurovat web Windows Update nastavení pro práci s Update Management Azure Automation.
 services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9b5f2b19b29eae0132ec01a9f3fb7e8355361f5
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 22bec66467dc7a42470c3660b8505c4aa13557d4
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779446"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715773"
 ---
-# <a name="configure-windows-update-settings-for-update-management"></a>Konfigurace nastavení web Windows Update pro Update Management
+# <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Konfigurace nastavení web Windows Update pro Azure Automation Update Management
 
-Azure Update Management spoléhá na [klienta web Windows Update](https://docs.microsoft.com//windows/deployment/update/windows-update-overview) ke stažení a instalaci aktualizací Windows. K dispozici jsou určitá nastavení, která používá klient web Windows Update při připojování k Windows Server Update Services (WSUS) nebo web Windows Update. Mnohé z těchto nastavení se dají spravovat pomocí:
+Azure Automation Update Management spoléhá na [klienta web Windows Update](https://docs.microsoft.com//windows/deployment/update/windows-update-overview) ke stažení a instalaci aktualizací Windows. K dispozici jsou určitá nastavení, která používá klient web Windows Update při připojování k Windows Server Update Services (WSUS) nebo web Windows Update. Mnohé z těchto nastavení se dají spravovat pomocí:
 
 - Editor místních zásad skupiny
 - Zásady skupiny
@@ -27,9 +27,9 @@ Další doporučení týkající se nastavení služby WSUS v předplatném Azur
 
 ## <a name="pre-download-updates"></a>Předběžné stažení aktualizací
 
-Pokud chcete konfigurovat automatické stahování aktualizací, ale neinstalovat je automaticky, můžete pomocí Zásady skupiny nastavit [nastavení konfigurace automatických aktualizací](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) na **3**. Toto nastavení umožňuje stáhnout požadované aktualizace na pozadí a upozorní vás, že jsou aktualizace připravené k instalaci. Tímto způsobem Update Management zůstane v řízení plánů, ale aktualizace se dají stáhnout mimo Update Management časový interval pro správu a údržbu. Toto chování brání časovému **intervalu údržby** při Update Management.
+Pokud chcete automaticky stahovat aktualizace, aniž byste je museli instalovat, můžete pomocí Zásady skupiny [nakonfigurovat nastavení automatických aktualizací](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) na 3. Toto nastavení umožňuje stáhnout požadované aktualizace na pozadí a upozorní vás, že jsou aktualizace připravené k instalaci. Tímto způsobem Update Management zůstane v řízení plánů, ale umožňuje stahovat aktualizace mimo Update Management časový interval pro správu a údržbu. Toto chování brání `Maintenance window exceeded` chybám v Update Management.
 
-Nastavení tohoto nastavení můžete povolit pomocí prostředí PowerShell spuštěním následujícího příkazu:
+Toto nastavení můžete povolit v PowerShellu:
 
 ```powershell
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
@@ -43,9 +43,9 @@ Klíče registru uvedené v [části Konfigurace automatických aktualizací úp
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Povolit aktualizace pro ostatní produkty Microsoftu
 
-Ve výchozím nastavení je web Windows Update klient nakonfigurován tak, aby poskytoval aktualizace pouze pro systém Windows. Pokud **při aktualizaci nastavení systému Windows povolíte aktualizace pro další produkty společnosti Microsoft** , obdržíte také aktualizace pro další produkty, včetně oprav zabezpečení pro Microsoft SQL Server a další software společnosti Microsoft. Tuto možnost lze nakonfigurovat, pokud jste stáhli a zkopírovali nejnovější [soubory šablon pro správu](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra) , které jsou k dispozici pro systém Windows 2016 a novější.
+Ve výchozím nastavení je klient web Windows Update nakonfigurovaný tak, aby poskytoval aktualizace jenom pro Windows. Pokud **při aktualizaci nastavení systému Windows povolíte aktualizace pro další produkty společnosti Microsoft** , obdržíte také aktualizace pro další produkty, včetně oprav zabezpečení pro Microsoft SQL Server a další software společnosti Microsoft. Tuto možnost můžete nakonfigurovat, pokud jste stáhli a zkopírovali nejnovější [soubory šablon pro správu](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra) , které jsou k dispozici pro Windows 2016 a novější.
 
-Pokud používáte systém Windows Server 2012 R2, nelze toto nastavení konfigurovat pomocí Zásady skupiny. Na těchto počítačích spusťte následující příkaz PowerShellu. Update Management v souladu s tímto nastavením.
+Pokud máte počítače s Windows Serverem 2012 R2, nemůžete toto nastavení konfigurovat prostřednictvím Zásady skupiny. Na těchto počítačích spusťte následující příkaz PowerShellu:
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -54,16 +54,12 @@ $ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
 $ServiceManager.AddService2($ServiceId,7,"")
 ```
 
-## <a name="wsus-configuration-settings"></a>Nastavení konfigurace služby WSUS
+## <a name="make-wsus-configuration-settings"></a>Vytvoření nastavení konfigurace služby WSUS
 
-Update Management podporuje nastavení služby WSUS. Nastavení služby WSUS, která můžete nakonfigurovat pro práci s Update Management, jsou uvedená níže.
+Update Management podporuje nastavení služby WSUS. Můžete určit zdroje pro vyhledávání a stahování aktualizací podle pokynů v tématu [určení umístění intranetové Microsoft Update služby](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location). Ve výchozím nastavení je klient web Windows Update nakonfigurovaný tak, aby stahoval aktualizace z web Windows Update. Pokud zadáte server WSUS jako zdroj pro počítače, pokud aktualizace nejsou schváleny ve službě WSUS, nasazení aktualizace se nepovede. 
 
-### <a name="intranet-microsoft-update-service-location"></a>Umístění intranetové služby Microsoft Update
-
-Můžete určit zdroje pro vyhledávání a stahování aktualizací v části [Zadejte umístění intranetové Microsoft Update služby](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location). Ve výchozím nastavení je web Windows Update klient nakonfigurován tak, aby stahoval aktualizace z web Windows Update. Pokud zadáte server WSUS jako zdroj pro počítače, pokud aktualizace nejsou schváleny ve službě WSUS, nasazení aktualizace se nepovede. 
-
-Pokud chcete omezit počítače jenom na tuto interní službu aktualizace, nakonfigurujte [Nepřipojujte se k žádným web Windows Update internetovým umístěním](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations). 
+Chcete-li omezit počítače na službu interní aktualizace, nastavte [Nepřipojujte se k žádným web Windows Update internetovým umístěním](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations). 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po konfiguraci nastavení web Windows Update můžete naplánovat nasazení aktualizací podle pokynů v tématu [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
+[Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md)

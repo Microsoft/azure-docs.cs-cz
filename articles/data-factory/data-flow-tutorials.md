@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 04/17/2020
-ms.openlocfilehash: 3abec9b0c37e0475e369ce3cd2f91e40a1040b75
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 58f74ab060fef32de31cb91653a1bd38ad946934
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628959"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725631"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
@@ -148,6 +148,8 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 [Logické modely vs. fyzické modely](http://youtu.be/K5tgzLjEE9Q)
 
 [Detekovat změny zdrojových dat](http://youtu.be/CaxIlI7oXfI?hd=1)
+
+[Obecný typ 2 pomalu měnící dimenzi](http://youtu.be/tc283k8CWh8)
 
 ## <a name="data-flow-expressions"></a>Výrazy toku dat
 

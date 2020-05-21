@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 84c132c333e4d6ba052029350f275ebf499a906f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a12f74e1b96cd305ec7b7a89f8ad77725122ac75
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79536798"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724577"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell
 
@@ -33,7 +33,7 @@ Ukázková úloha načte streamovaná data z IoT Hubho zařízení. Vstupní dat
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému `Connect-AzAccount` Azure pomocí příkazu a zadejte svoje přihlašovací údaje Azure v místním prohlížeči:
+Přihlaste se k předplatnému Azure pomocí `Connect-AzAccount` příkazu a zadejte svoje přihlašovací údaje Azure v místním prohlížeči:
 
 ```powershell
 # Connect to your Azure account
@@ -70,7 +70,7 @@ Následující blok kódu Azure CLI provede mnoho příkazů pro přípravu vstu
 
 1. V okně PowerShellu spuštěním příkazu [AZ Login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) se přihlaste ke svému účtu Azure.
 
-    Po úspěšném přihlášení Azure CLI vrátí seznam vašich předplatných. Zkopírujte předplatné, které používáte pro tento rychlý Start, a spuštěním příkazu [AZ Account set](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) vyberte toto předplatné. V prostředí PowerShell vyberte stejné předplatné, které jste vybrali v předchozí části. Ujistěte se, že `<your subscription name>` jste nahradili názvem vašeho předplatného.
+    Po úspěšném přihlášení Azure CLI vrátí seznam vašich předplatných. Zkopírujte předplatné, které používáte pro tento rychlý Start, a spuštěním příkazu [AZ Account set](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) vyberte toto předplatné. V prostředí PowerShell vyberte stejné předplatné, které jste vybrali v předchozí části. Ujistěte se, že jste nahradili `<your subscription name>` názvem vašeho předplatného.
 
     ```azurecli
     az login
@@ -96,7 +96,7 @@ Následující blok kódu Azure CLI provede mnoho příkazů pro přípravu vstu
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-4. Pomocí příkazu [AZ IoT Hub Device-identity show-Connection-String](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) Získejte připojovací řetězec zařízení. Zkopírujte celý připojovací řetězec a při vytváření simulátoru pro maliny PI ho uložte.
+4. Pomocí příkazu [AZ IoT Hub Device-identity show-Connection-String](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) Získejte připojovací řetězec zařízení. Zkopírujte celý připojovací řetězec a při vytváření simulátoru pro maliny PI ho uložte.
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
@@ -162,7 +162,7 @@ Vytvořte úlohu Stream Analytics pomocí rutiny [New-AzStreamAnalyticsJob](http
 }
 ```
 
-Potom spusťte rutinu `New-AzStreamAnalyticsJob`. Nahraďte hodnotu `jobDefinitionFile` proměnné cestou, kam jste ULOŽILI soubor JSON definice úlohy.
+Potom spusťte rutinu `New-AzStreamAnalyticsJob`. Nahraďte hodnotu `jobDefinitionFile` proměnné cestou, kam jste uložili soubor JSON definice úlohy.
 
 ```powershell
 $jobName = "MyStreamingJob"
@@ -178,7 +178,7 @@ New-AzStreamAnalyticsJob `
 
 Přidejte vstup do úlohy pomocí rutiny [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) . Tato rutina použije název úlohy, název vstupu úlohy, název skupiny prostředků a definici vstupu úlohy jako parametry. Definici vstupu úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné ke konfiguraci vstupu úlohy. V tomto příkladu vytvoříte úložiště objektů BLOB jako vstup.
 
-Na místním počítači vytvořte soubor s názvem `JobInputDefinition.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu `accesspolicykey` v `SharedAccessKey` části připojovacího řetězce IoT Hub, který jste uložili v předchozí části.
+Na místním počítači vytvořte soubor s názvem `JobInputDefinition.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu v `accesspolicykey` `SharedAccessKey` části připojovacího řetězce IoT Hub, který jste uložili v předchozí části.
 
 ```json
 {
@@ -209,7 +209,7 @@ Na místním počítači vytvořte soubor s názvem `JobInputDefinition.json` a 
 }
 ```
 
-Dále spusťte `New-AzStreamAnalyticsInput` rutinu, ujistěte se, že jste hodnotu `jobDefinitionFile` proměnné nahradili cestou, kam jste uložili soubor JSON definice vstupu úlohy.
+Dále spusťte `New-AzStreamAnalyticsInput` rutinu, ujistěte se, že jste hodnotu proměnné nahradili `jobDefinitionFile` cestou, kam jste ULOŽILI soubor JSON definice vstupu úlohy.
 
 ```powershell
 $jobInputName = "IoTHubInput"
@@ -286,7 +286,7 @@ Pomocí rutiny [New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/
 }
 ```
 
-Potom spusťte rutinu `New-AzStreamAnalyticsTransformation`. Nezapomeňte nahradit hodnotu `jobTransformationDefinitionFile` proměnné cestou, kam jste ULOŽILI soubor JSON definice transformace úlohy.
+Potom spusťte rutinu `New-AzStreamAnalyticsTransformation`. Nezapomeňte nahradit hodnotu `jobTransformationDefinitionFile` proměnné cestou, kam jste uložili soubor JSON definice transformace úlohy.
 
 ```powershell
 $jobTransformationName = "MyJobTransformation"

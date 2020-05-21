@@ -1,15 +1,15 @@
 ---
-title: Spouštění úloh v rámci uživatelských účtů – Azure Batch
+title: Spouštění úloh v rámci uživatelských účtů
 description: Je užitečné, abyste mohli nakonfigurovat uživatelský účet, pod kterým chcete úlohu spustit. Přečtěte si o typech uživatelských účtů a o tom, jak je nakonfigurovat.
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f1bd31f9d4881bdc489988d3f955e7143eaf7759
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980282"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726260"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Spouštění úloh v rámci uživatelských účtů ve Batch
 
@@ -81,7 +81,7 @@ Pokud potřebujete spustit úlohu s vyšším přístupem, můžete nakonfigurov
 >
 >
 
-Následující fragmenty kódu ukazují, jak nakonfigurovat specifikaci automatického uživatele. Příklady nastaví úroveň zvýšení úrovně na `Admin` a rozsah na. `Task` Výchozím nastavením je obor úkolu, který je zde uveden v tomto příkladu.
+Následující fragmenty kódu ukazují, jak nakonfigurovat specifikaci automatického uživatele. Příklady nastaví úroveň zvýšení úrovně na `Admin` a rozsah na `Task` . Výchozím nastavením je obor úkolu, který je zde uveden v tomto příkladu.
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -146,7 +146,7 @@ Pojmenovaný uživatelský účet je užitečný v případě, že chcete spouš
 
 Pomocí pojmenovaného uživatelského účtu můžete taky spustit úlohu, která nastaví oprávnění u externích prostředků, jako jsou sdílené složky. Pomocí pojmenovaného uživatelského účtu můžete řídit identitu uživatele a pomocí této identity uživatele nastavit oprávnění.  
 
-Pojmenované uživatelské účty umožňují SSH bez hesla mezi uzly Linux. U uzlů se systémem Linux, které potřebují spouštět úlohy s více instancemi, můžete použít pojmenovaný uživatelský účet. Každý uzel ve fondu může spouštět úlohy pod uživatelským účtem definovaným v celém fondu. Další informace o úlohách s více instancemi najdete v tématu [použití úloh s více\-instancemi ke spouštění aplikací MPI](batch-mpi.md).
+Pojmenované uživatelské účty umožňují SSH bez hesla mezi uzly Linux. U uzlů se systémem Linux, které potřebují spouštět úlohy s více instancemi, můžete použít pojmenovaný uživatelský účet. Každý uzel ve fondu může spouštět úlohy pod uživatelským účtem definovaným v celém fondu. Další informace o úlohách s více instancemi najdete v tématu [použití \- úloh s více instancemi ke spouštění aplikací MPI](batch-mpi.md).
 
 ### <a name="create-named-user-accounts"></a>Vytvoření pojmenovaných uživatelských účtů
 
@@ -282,7 +282,7 @@ batch_client.pool.add(pool)
 
 ### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Spuštění úlohy pod názvem uživatelského účtu se zvýšeným přístupem
 
-Chcete-li spustit úlohu jako uživatel se zvýšenými oprávněními, nastavte vlastnost **UserIdentity** úlohy na pojmenovaný uživatelský účet, který byl vytvořen s vlastností **ElevationLevel** nastavenou `Admin`na.
+Chcete-li spustit úlohu jako uživatel se zvýšenými oprávněními, nastavte vlastnost **UserIdentity** úlohy na pojmenovaný uživatelský účet, který byl vytvořen s vlastností **ElevationLevel** nastavenou na `Admin` .
 
 Tento fragment kódu určuje, že úloha by měla běžet pod jménem uživatelského účtu. Tento pojmenovaný uživatelský účet byl ve fondu definován při vytvoření fondu. V tomto případě byl vytvořen pojmenovaný uživatelský účet s oprávněními správce:
 

@@ -1,15 +1,15 @@
 ---
 title: Začínáme s Azure CLI pro Batch
 description: Rychlý úvod k příkazům Batch v rozhraní příkazového řádku Azure CLI pro správu prostředků služby Azure Batch
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fe73770dbe8dfe6d69cb08e1fbf44d42bff9e54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9aa9a43dd036b4a547d1bff85b4431afcf74e23
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117365"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726787"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Správa prostředků služby Batch pomocí Azure CLI
 
@@ -28,7 +28,7 @@ Nejnovější verzi Azure CLI můžete spustit ve službě [Azure Cloud Shell](.
 
 ## <a name="command-help"></a>Nápověda k příkazům
 
-Pro každý příkaz v rámci rozhraní příkazového řádku Azure CLI můžete zobrazit nápovědu, pokud za název příkazu přidáte parametr `-h`. Jiné parametry vynechejte. Příklad:
+Pro každý příkaz v rámci rozhraní příkazového řádku Azure CLI můžete zobrazit nápovědu, pokud za název příkazu přidáte parametr `-h`. Jiné parametry vynechejte. Například:
 
 * Pokud chcete zobrazit nápovědu pro příkaz `az`, zadejte: `az -h`
 * Pokud chcete vypsat seznam všech příkazů Batch v rámci rozhraní příkazového řádku, zadejte: `az batch -h`
@@ -111,7 +111,7 @@ Viz [příklady skriptu CLI](cli-samples.md) pro službu Batch k provedení bě�
 
 ## <a name="json-files-for-resource-creation"></a>Soubory JSON pro vytváření prostředků
 
-Při vytváření prostředků Batch, jako jsou fondy a úlohy, můžete určit soubor JSON obsahující konfiguraci nového prostředku namísto předávání jejích parametrů v podobě parametrů příkazového řádku. Příklad:
+Při vytváření prostředků Batch, jako jsou fondy a úlohy, můžete určit soubor JSON obsahující konfiguraci nového prostředku namísto předávání jejích parametrů v podobě parametrů příkazového řádku. Například:
 
 ```azurecli
 az batch pool create my_batch_pool.json

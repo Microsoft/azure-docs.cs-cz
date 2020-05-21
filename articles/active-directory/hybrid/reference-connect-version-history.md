@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 05/07/2020
+ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b75f03afc587d9616997b1df48b9c5c5166cb89
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fe9c9f44c42ef1e8dd6ff3401ad7201b174aa952
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681716"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725291"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -58,8 +58,7 @@ Toto sestavení opravy hotfix řeší problém, ve kterém nevybrané domény by
 
 
 >[!NOTE]
->Tato verze je nutná k použití nového rozhraní API koncového bodu Azure AD Connect Sync v2.  Další informace najdete v tématu [Azure AD Connect Sync v2 Endpoint API (Public Preview)](how-to-connect-sync-endpoint-api-v2.md).
-
+>Tato verze zahrnuje nové rozhraní API koncového bodu Azure AD Connect Sync v2.  Tento nový koncový bod v2 je momentálně ve verzi Public Preview.  Tato verze nebo novější se vyžaduje k použití nového rozhraní API koncového bodu v2.  Pouhá instalace této verze ale nepovolí koncový bod v2. Pokud nepovolíte koncový bod v2, budete moct dál používat koncový bod v1.  Pokud chcete povolit a přihlásit se k veřejné verzi Preview, musíte postupovat podle kroků v části [Azure AD Connect Sync v2 Endpoint API (Public Preview)](how-to-connect-sync-endpoint-api-v2.md) .  
 
 ## <a name="15290"></a>1.5.29.0
 

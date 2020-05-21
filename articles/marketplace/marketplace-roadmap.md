@@ -1,32 +1,24 @@
 ---
-title: Plán komerčního tržiště Microsoftu
-description: Tento plán zvýrazňuje nové a nadcházející funkce a další verze pro komerční tržiště.
+title: Prostředky vydaných verzí Microsoft Commercial Marketplace
+description: Další informace o nových a nadcházejících funkcích, vydáních a dalších aktualizacích pro komerční tržiště
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/02/2019
-ms.openlocfilehash: 847d4f95d7e8bacb721c450f7e831c0c2d98334c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/19/2020
+ms.openlocfilehash: d8f836af35c433bd078b721b6829097e6ee8482b
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657840"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725886"
 ---
-# <a name="microsoft-commercial-marketplace-roadmap"></a>Plán komerčního tržiště Microsoftu
+# <a name="microsoft-commercial-marketplace-resources"></a>Prostředky komerčního tržiště Microsoftu
 
-Tento článek popisuje poslední vydání a další informace o komerčním tržišti společnosti Microsoft pro vydavatele, prodejce a zákazníky. Zachycuje některé z funkcí, na které jsme se zavázali, a poskytuje přibližný časový rámec, kdy je možné je zobrazit. Nejedná se o úplný seznam všech nových funkcí, ale je určený k tomu, aby poskytoval přehled o našich klíčových investicích. Tyto sady funkcí a časové rámce pro doručení jsou aktuální a mohou se změnit.
+Informace o nejnovějších verzích a dalších aktualizacích od komerčního tržiště Microsoftu najdete v následujících zdrojích.
 
-Vítáme vaše návrhy! Připojte se ke konverzaci v [komunitě partnerů Microsoftu](https://www.microsoftpartnercommunity.com/) , abyste získali nejnovější aktualizace nových funkcí, programů a událostí.
-
-## <a name="roadmap"></a>Plán
-![Průvodce Marketplace pro listopadu 2019](./media/marketplace-publishers-guide/roadmap-nov19.png)
-
-## <a name="recent-releases"></a>Poslední verze
-
-Jakmile je funkce živá, odebere se z plánu. Funkce, které byly přidány do webu Marketplace, najdete v následující dokumentaci.
-
+* [Fórum komunity Microsoft AppSource a partnerství Azure Marketplace](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222)
 * [Blog o aktualizaci pro Marketplace a Cloud Solution Provider (CSP)](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
 * [Publikování nabídek do kanálu CSP (ISV)](./cloud-solution-providers.md)
 * [Proprodej nabídek na webu Marketplace (CSP)](https://docs.microsoft.com/partner-center/sell-marketplace-products)
@@ -41,6 +33,4 @@ Jakmile je funkce živá, odebere se z plánu. Funkce, které byly přidány do 
 )  /  [existující nabídka](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)  /  [Analýza](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
 * [Získat podporu pro Marketplace v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
-## <a name="next-steps"></a>Další kroky
-
-Navštivte stránku [Příručka pro vydavatele Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) .
+Vítáme vaše návrhy! Připojte se ke konverzaci v [komunitě partnerů Microsoftu](https://www.microsoftpartnercommunity.com/) , abyste získali nejnovější aktualizace nových funkcí, programů a událostí.

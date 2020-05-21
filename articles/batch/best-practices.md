@@ -2,13 +2,13 @@
 title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
 ms.date: 04/03/2020
-ms.topic: article
-ms.openlocfilehash: 43a0020953ea44593cf38298a78547194751fc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.openlocfilehash: f7d2add5fb30e3efdfb761364babf2211c3c254f
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117501"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725801"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -91,7 +91,7 @@ Existuje výchozí [kvóta pro aktivní úlohu a plán úlohy](batch-quota-limit
 - **Po dokončení úlohy odstraňte.**
     Odstraňte úkoly, které už nepotřebujete, nebo nastavte omezení úlohy [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) . Pokud `retentionTime` je nastavená, služba Batch automaticky vyčistí místo na disku, které úloha využívala při `retentionTime` vypršení platnosti.
 
-    Odstranění úloh provede dvě věci. Zajišťuje, abyste v úloze nemuseli sestavovat úlohy, dělat dotazování nebo hledání úlohy, které vás zajímá (protože budete muset filtrovat přes dokončené úkoly). Vyčistí také odpovídající data úkolu v uzlu ( `retentionTime` v případě, že ještě není dosaženo). Tím se zajistí, že se vaše uzly neplní daty úlohy a nebudou mít dostatek místa na disku.
+    Odstranění úloh provede dvě věci. Zajišťuje, abyste v úloze nemuseli sestavovat úlohy, dělat dotazování nebo hledání úlohy, které vás zajímá (protože budete muset filtrovat přes dokončené úkoly). Vyčistí také odpovídající data úkolu v uzlu (v případě, že ještě `retentionTime` není dosaženo). Tím se zajistí, že se vaše uzly neplní daty úlohy a nebudou mít dostatek místa na disku.
 
 ### <a name="task-submission"></a>Odeslání úkolu
 
@@ -100,11 +100,11 @@ Existuje výchozí [kvóta pro aktivní úlohu a plán úlohy](batch-quota-limit
 
 ### <a name="task-execution"></a>Provádění úlohy
 
-- **Výběr maximálního počtu úkolů na uzel** Batch podporuje přepočet úkolů na uzlech (spouštění více úloh, než má uzel obsahuje jádra). Je to na vás, abyste se ujistili, že se vaše úkoly vejdou do uzlů ve fondu. Například můžete mít zhoršené prostředí, pokud se pokusíte naplánovat osm úloh, které každý využívá 25% využití CPU na jeden uzel (ve fondu s `maxTasksPerNode = 8`).
+- **Výběr maximálního počtu úkolů na uzel** Batch podporuje přepočet úkolů na uzlech (spouštění více úloh, než má uzel obsahuje jádra). Je to na vás, abyste se ujistili, že se vaše úkoly vejdou do uzlů ve fondu. Například můžete mít zhoršené prostředí, pokud se pokusíte naplánovat osm úloh, které každý využívá 25% využití CPU na jeden uzel (ve fondu s `maxTasksPerNode = 8` ).
 
 ### <a name="designing-for-retries-and-re-execution"></a>Návrh pro opakování a opětovné spuštění
 
-Úlohy mohou být automaticky opakovány službou Batch. Existují dva typy opakování: uživatel byl řízen a interní. Opakované pokusy řízené uživatelem jsou určeny [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)úlohy. Když se program zadaný v úloze ukončí s nenulovým ukončovacím kódem, úloha se znovu vyzkouší do hodnoty `maxTaskRetryCount`.
+Úlohy mohou být automaticky opakovány službou Batch. Existují dva typy opakování: uživatel byl řízen a interní. Opakované pokusy řízené uživatelem jsou určeny [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)úlohy. Když se program zadaný v úloze ukončí s nenulovým ukončovacím kódem, úloha se znovu vyzkouší do hodnoty `maxTaskRetryCount` .
 
 I když je to zřídka, může se úloha opakovat interně z důvodu selhání ve výpočetním uzlu, jako je například neschopnost aktualizovat vnitřní stav nebo selhání uzlu v době, kdy je úloha spuštěná. Tato úloha se zopakuje na stejném výpočetním uzlu, pokud je to možné, až do interního limitu před tím, než se vrátíte k úloze a oddělíte úlohu, která má být přeplánována službou Batch, případně na jiném výpočetním uzlu.
 
@@ -121,7 +121,7 @@ I když je to zřídka, může se úloha opakovat interně z důvodu selhání v
 - **Počáteční úlohy by měly být idempotentní** Podobně jako u jiných úloh by měl být spouštěcí úkol uzlu idempotentní, protože se znovu spustí při každém spuštění uzlu. Úkol idempotentní je jednoduše ten, který při spuštění několikrát vytvoří konzistentní výsledek.
 
 - **Spravujte dlouhodobě běžící služby prostřednictvím rozhraní služeb operačního systému.**
-    Někdy je potřeba spustit jiného agenta společně s agentem služby Batch v uzlu, například pro shromáždění dat z uzlu a hlášení. Doporučujeme, aby tyto agenty byly nasazeny jako služby operačního systému, například služba systému Windows nebo `systemd` služba Linux.
+    Někdy je potřeba spustit jiného agenta společně s agentem služby Batch v uzlu, například pro shromáždění dat z uzlu a hlášení. Doporučujeme, aby tyto agenty byly nasazeny jako služby operačního systému, například služba systému Windows nebo `systemd` Služba Linux.
 
     Pokud tyto služby spouštíte, nesmí přebírat zámky souborů u všech souborů v adresářích spravovaných službou Batch v uzlu, protože jinak služba Batch nebude moci odstranit tyto adresáře z důvodu zámků souborů. Pokud například instalujete službu systému Windows do spouštěcího úkolu, místo spuštění služby přímo z pracovního adresáře spouštěcího úkolu zkopírujte soubory jinam (Pokud soubory existují pouze k přeskočení kopie). Nainstalujte službu z tohoto umístění. Když Batch znovu spustí spouštěcí úkol, odstraní pracovní adresář spouštěcí úlohy a znovu ho vytvoří. Tato operace funguje, protože služba má zámky souborů v jiném adresáři jako pracovní adresář spouštěcího úkolu.
 
@@ -149,10 +149,10 @@ Další informace o Správce prostředků a šablonách najdete v tématu [rychl
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr)
 
-Při zřizování `BatchNodeManagement` [fondů služby Batch ve virtuální síti](batch-virtual-network.md)se ujistěte, že jste úzce využívali pokyny týkající se použití značky služby, portů, protokolů a směru pravidla.
+Při zřizování [fondů služby Batch ve virtuální síti](batch-virtual-network.md)se ujistěte, že jste úzce využívali pokyny týkající se použití `BatchNodeManagement` značky služby, portů, protokolů a směru pravidla.
 Použití značky služby se důrazně doporučuje, a ne základní IP adresy služby Batch, protože se můžou v průběhu času měnit. Použití IP adres služby Batch můžete přímo narušit jako nestabilitu, přerušení nebo výpadky fondů služby Batch, protože služba Batch aktualizuje IP adresy používané v průběhu času. Pokud v pravidlech NSG aktuálně používáte IP adresy služby Batch, doporučuje se přepnout na používání značky služby.
 
-V případě uživatelem definovaných tras se ujistěte, že máte zavedený proces, který bude pravidelně aktualizovat IP adresy služby Batch v tabulce směrování, protože se tato změna v průběhu času provádí. Informace o tom, jak získat seznam IP adres služby Batch, najdete v tématu věnovaném místním [značkám služby](../virtual-network/service-tags-overview.md). IP adresy služby Batch budou přidruženy k značce `BatchNodeManagement` služby (nebo k místní variantě, která odpovídá vaší oblasti účtu Batch).
+V případě uživatelem definovaných tras se ujistěte, že máte zavedený proces, který bude pravidelně aktualizovat IP adresy služby Batch v tabulce směrování, protože se tato změna v průběhu času provádí. Informace o tom, jak získat seznam IP adres služby Batch, najdete v tématu věnovaném místním [značkám služby](../virtual-network/service-tags-overview.md). IP adresy služby Batch budou přidruženy k `BatchNodeManagement` značce služby (nebo k místní variantě, která odpovídá vaší oblasti účtu Batch).
 
 ### <a name="honoring-dns"></a>Respektování DNS
 

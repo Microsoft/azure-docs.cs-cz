@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 9bd7e40855f30612b90cf28365c0b1410cd3e3d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe04cb12dc1afea78b023eab623927a07224888c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731131"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726141"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Certifikace imagí virtuálních počítačů Azure
-
-> [!NOTE]
-> Přesouváme správu nabídek virtuálních počítačů Azure z portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, pokračujte podle pokynů v tématu [Vytvoření certifikátů pro Azure Key Vault](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) v portál partnerů cloudu ke správě nabídek.
 
 Tento článek popisuje, jak otestovat a odeslat image virtuálního počítače (VM) na komerčním tržišti, aby splňovala nejnovější Azure Marketplace požadavky na publikování.
 
@@ -89,7 +86,7 @@ Pro tuto práci můžete použít buď novou, nebo existující skupinu prostře
 
 #### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>Vytvoření trezoru klíčů Azure pro uložení certifikátu
 
-Zkopírujte obsah šablony níže do souboru na místním počítači. V následujícím příkladu skriptu je `C:\certLocation\keyvault.json`tento prostředek).
+Zkopírujte obsah šablony níže do souboru na místním počítači. V následujícím příkladu skriptu je tento prostředek `C:\certLocation\keyvault.json` ).
 
 ```json
 {
@@ -571,7 +568,7 @@ Upravte tento soubor a zadejte hodnoty pro tyto parametry:
 | vmName | Název virtuálního počítače |
 | vaultName | Název trezoru klíčů |
 | vaultResourceGroup | Skupina prostředků trezoru klíčů. |
-| certificateUrl | Webová adresa (URL) certifikátu, včetně verze uložené v trezoru klíčů, například: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`. |
+| certificateUrl | Webová adresa (URL) certifikátu, včetně verze uložené v trezoru klíčů, například: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` . |
 | vhdUrl | Webová adresa virtuálního pevného disku. |
 | vmSize | Velikost instance virtuálního počítače |
 | publicIPAddressName | Název veřejné IP adresy. |
@@ -583,7 +580,7 @@ Upravte tento soubor a zadejte hodnoty pro tyto parametry:
 
 ### <a name="deploy-an-azure-vm"></a>Nasazení virtuálního počítače Azure
 
-Zkopírujte a upravte následující skript, který poskytne hodnoty pro proměnné `$storageaccount` a `$vhdUrl` . Spusťte ho k vytvoření prostředku virtuálního počítače Azure ze stávajícího zobecněného virtuálního pevného disku.
+Zkopírujte a upravte následující skript, který poskytne hodnoty pro `$storageaccount` proměnné a `$vhdUrl` . Spusťte ho k vytvoření prostředku virtuálního počítače Azure ze stávajícího zobecněného virtuálního pevného disku.
 
 ```PowerShell
 

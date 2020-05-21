@@ -1,15 +1,15 @@
 ---
 title: Kvóty a omezení služeb
 description: Přečtěte si o výchozích Azure Batch kvótách, omezeních a omezeních a o zvýšení kvóty.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: a901d54ea584ec67bfa679e9cdc716ab27d45eca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f47f2df38a601c6359ed257a9787130ea95d2ac8
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115818"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726566"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -80,14 +80,14 @@ Pomocí těchto kroků můžete požádat o zvýšení kvóty pro účet Batch n
 ### <a name="increase-cores-quota-in-batch"></a>Zvýšení kvóty jader v dávce 
 
 1. Na řídicím panelu portálu vyberte dlaždici **Nápověda a podpora** nebo otazník (**?**) v pravém horním rohu portálu.
-1. Vyberte **nové základy žádosti o** > **Basics**podporu.
+1. Vyberte **nové základy žádosti o podporu**  >  **Basics**.
 1. **Základní informace**:
    
-    a. **Issue Type** > **Omezení služby typu problém a předplatné (kvóty)**
+    a. **Typ problému**  >  **Omezení služeb a předplatného (kvóty)**
    
     b. Vyberte své předplatné.
    
-    c. **Dávka typu kvóty** > **Batch**
+    c. **Typ kvóty**  >  **Batch**
       
     Vyberte **Další**.
     

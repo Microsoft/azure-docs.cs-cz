@@ -1,15 +1,15 @@
 ---
 title: Integrace se zásadami Azure
 description: Azure Policy je služba v Azure, kterou používáte k vytváření, přiřazování a správě zásad, které vynutily pravidla pro vaše prostředky.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: a160de1277afea026a16f470c8f76cdc2ec1733f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e576c99e918410cb63743aaca32bdef78ae01d83
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184261"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726651"
 ---
 # <a name="integration-with-azure-policy"></a>Integrace s Azure Policy
 
@@ -19,8 +19,8 @@ Azure Batch má dvě Vestavěná rozšíření, která vám pomůžou spravovat 
 
 |**Název**...|   **Popis**|**Vliv (s)**|  **Verze**|    **Zdroj**
 |----------------|----------|----------|----------------|---------------|
-|V účtech Batch by měly být povolené diagnostické protokoly.|   Audituje povolení diagnostických protokolů. To umožňuje znovu vytvořit stopy aktivity, které se mají použít pro účely šetření. Když dojde k bezpečnostnímu incidentu nebo při ohrožení zabezpečení sítě|AuditIfNotExists, zakázáno|  2.0.0|  GitHubu|
-|Pravidla upozornění na metriky by měly být nakonfigurovaná na účtech Batch.| Audituje konfiguraci pravidel upozornění metrik na účtu Batch, aby se aktivovala požadovaná metrika.|   AuditIfNotExists, zakázáno| 1.0.0|  GitHubu|
+|V účtech Batch by měly být povolené diagnostické protokoly.|   Audituje povolení diagnostických protokolů. To umožňuje znovu vytvořit stopy aktivity, které se mají použít pro účely šetření. Když dojde k bezpečnostnímu incidentu nebo při ohrožení zabezpečení sítě|AuditIfNotExists, zakázáno|  2.0.0|  GitHub|
+|Pravidla upozornění na metriky by měly být nakonfigurovaná na účtech Batch.| Audituje konfiguraci pravidel upozornění metrik na účtu Batch, aby se aktivovala požadovaná metrika.|   AuditIfNotExists, zakázáno| 1.0.0|  GitHub|
 
 Definice zásad popisují podmínky, které je třeba splnit. Podmínka porovnává vlastnost prostředku s požadovanou hodnotou. K polím vlastností prostředku se dostanete pomocí předem definovaných aliasů. Aliasy vlastností se používají pro přístup ke specifickým vlastnostem pro typ prostředku. Aliasy umožňují omezit, jaké hodnoty nebo podmínky jsou povoleny pro vlastnost v prostředku. Každý alias se mapuje na cesty v různých verzích rozhraní API pro daný typ prostředku. Během hodnocení zásad získá modul zásad cestu k vlastnosti pro tuto verzi rozhraní API.
 

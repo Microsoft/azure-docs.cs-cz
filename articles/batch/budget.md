@@ -1,14 +1,14 @@
 ---
 title: Analýza nákladů a rozpočet
 description: Naučte se, jak získat nákladovou analýzu a nastavit rozpočet pro základní výpočetní prostředky a softwarové licence používané ke spouštění úloh služby Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: c3c3203882d003d7fbb5f9d5092a1c93886f313a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117484"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725767"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Analýza nákladů a rozpočty pro Azure Batch
 
@@ -43,7 +43,7 @@ Prostřednictvím Azure Portal můžete vytvořit rozpočty a oznámení o výda
 1. V Azure Portal v levém navigačním panelu vyberte **cost management + fakturace** .
 1. Vyberte své předplatné z oddílu **Moje předplatné** .
 1. V části **cost management** v levém navigačním panelu se podívejte na **Analýza nákladů** , která zobrazí toto zobrazení:
-1. Vyberte **Přidat filtr**. V prvním rozevíracím seznamu vyberte **prostředek** ![vybrat filtr prostředků.](./media/batch-budget/resource-filter.png)
+1. Vyberte **Přidat filtr**. V prvním rozevíracím seznamu vyberte **prostředek** ![ Vybrat filtr prostředků.](./media/batch-budget/resource-filter.png)
 1. V druhém rozevíracím seznamu vyberte fond Batch. Při výběru fondu bude analýza nákladů vypadat podobně jako u následující analýzy.
     ![Analýza nákladů fondu](./media/batch-budget/pool-cost-analysis.png)
 
@@ -68,7 +68,7 @@ Přečtěte si další informace o nastavení virtuálních počítačů s nízk
 
 ### <a name="virtual-machine-os-disk-type"></a>Typ disku s operačním systémem virtuálního počítače
 
-Existuje několik [typů disků s operačním systémem virtuálních počítačů](../virtual-machines/windows/disks-types.md). Většina řady virtuálních počítačů má velikosti podporující úložiště úrovně Premium i Standard. Když je pro fond vybraná velikost virtuálního počítače, Batch nakonfiguruje disky s operačním systémem SSD úrovně Premium. Když je vybraná velikost virtuálního počítače bez s, použije se levnější pevný disk typu HDD. Například disky s operačním systémem SSD úrovně Premium se používají `Standard_D2s_v3` pro a standardní disky s operačním systémem HDD `Standard_D2_v3`se používají pro.
+Existuje několik [typů disků s operačním systémem virtuálních počítačů](../virtual-machines/windows/disks-types.md). Většina řady virtuálních počítačů má velikosti podporující úložiště úrovně Premium i Standard. Když je pro fond vybraná velikost virtuálního počítače, Batch nakonfiguruje disky s operačním systémem SSD úrovně Premium. Když je vybraná velikost virtuálního počítače bez s, použije se levnější pevný disk typu HDD. Například disky s operačním systémem SSD úrovně Premium se používají pro `Standard_D2s_v3` a standardní disky s operačním systémem HDD se používají pro `Standard_D2_v3` .
 
 SSD úrovně Premium disky s operačním systémem jsou dražší, ale mají vyšší výkon a virtuální počítače s disky Premium můžou u virtuálních počítačů s disky s pevným pevným operačním systémem trochu rychlejší. Při použití dávky se disk s operačním systémem často nepoužívá mnohem jako aplikace a soubory úloh se nacházejí na dočasném disku SSD. V mnoha případech tedy není nutné platit zvýšené náklady na jednotku SSD úrovně Premium, která je zřízena při určení velikosti virtuálního počítače.
 

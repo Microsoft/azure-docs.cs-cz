@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Automatický strojové učení vybere algoritmus pro vás a vygeneruje model připravený k nasazení. Seznamte se s možnostmi, které můžete použít ke konfiguraci automatizovaných experimentů strojového učení.
 author: cartacioS
 ms.author: sacartac
-ms.reviewer: sgilley
+ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0eadb0f7ca6aad635d20148f63a204506a821d75
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c183c179200738566d0794ba23582f16068013b6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681599"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722843"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -251,16 +251,23 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 Modely kompletu jsou ve výchozím nastavení povolené a zobrazují se jako poslední iterace v automatizovaném spuštění strojového učení. Aktuálně podporované metody kompletování jsou hlasovací a Stacked. Hlasování je implementováno jako měkký hlas pomocí vážených průměrů a implementace skládání používá dvě implementace vrstvy, kde první vrstva má stejné modely jako hlasovacího kompletu, a druhý model vrstvy se používá k nalezení optimální kombinace modelů z první vrstvy. Pokud používáte modely ONNX **nebo** Pokud máte povolenou možnost vysvětlování modelu, bude zablokování zakázané a budou využívány jenom hlasovací prvky.
 
-Existuje více výchozích argumentů, které lze zadat jako `kwargs` v `AutoMLConfig` objektu pro změnu výchozího chování kompletování zásobníku.
+Existuje více výchozích argumentů, které lze zadat jako `kwargs` v `AutoMLConfig` objektu pro změnu výchozího chování kompletu.
+
+* `ensemble_download_models_timeout_sec`: Během generování modelu VotingEnsemble a StackEnsemble se stáhnou několik namontovaných modelů z předchozích podřízených běhů. Pokud se setkáte s touto chybou: `AutoMLEnsembleException: Could not find any models for running ensembling` , možná bude potřeba poskytnout více času pro stažení modelů. Výchozí hodnota je 300 sekund pro stažení těchto modelů paralelně a neexistuje maximální časový limit. Pokud je potřeba víc času, nakonfigurujte tento parametr s vyšší hodnotou než 300 s. **Poznámka**: Pokud je dosažen časový limit a jsou staženy modely, pak ensembling pokračuje s libovolným počtem modelů, které se stáhly (není nutné, aby všechny modely byly staženy do konce tohoto časového limitu).
+
+Následující parametry platí pouze pro modely StackEnsemble: 
 
 * `stack_meta_learner_type`: meta-učí se model vyškolený na výstupu jednotlivých heterogenních modelů. Výchozí metaznačky jsou `LogisticRegression` pro úlohy klasifikace (nebo `LogisticRegressionCV` Pokud je povolené křížové ověřování) a `ElasticNet` pro úlohy regrese/předpovědi (nebo `ElasticNetCV` Pokud je povolené křížové ověřování). Tento parametr může být jeden z následujících řetězců: `LogisticRegression` , `LogisticRegressionCV` , `LightGBMClassifier` , `ElasticNet` , `ElasticNetCV` , `LightGBMRegressor` , nebo `LinearRegression` .
-* `stack_meta_learner_train_percentage`: určuje podíl sady školení (při výběru typu výuky a ověření školení), který má být rezervován pro školení meta-učí. Výchozí hodnota je `0.2` .
+
+* `stack_meta_learner_train_percentage`: určuje podíl sady školení (při výběru typu výuky a ověření školení), který má být rezervován pro školení meta-učí. Výchozí hodnota je `0.2` . 
+
 * `stack_meta_learner_kwargs`: volitelné parametry, které mají být předána inicializátoru meta-učí. Tyto parametry a typy parametrů zrcadlí parametry a typy parametrů z odpovídajícího konstruktoru modelu a jsou předávány do konstruktoru modelu.
 
 Následující kód ukazuje příklad určení chování vlastního kompletování v `AutoMLConfig` objektu.
 
 ```python
 ensemble_settings = {
+    "ensemble_download_models_timeout_sec": 600
     "stack_meta_learner_type": "LogisticRegressionCV",
     "stack_meta_learner_train_percentage": 0.3,
     "stack_meta_learner_kwargs": {

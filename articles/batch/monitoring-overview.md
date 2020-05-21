@@ -1,14 +1,14 @@
 ---
 title: Azure Batch monitorování
 description: Přečtěte si o službě Azure Monitoring Services, metrikách, diagnostických protokolech a dalších funkcích monitorování pro Azure Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: c8b11d0b7187d6c4b5b3ccff1e19eb533ff3f0da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113886"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723523"
 ---
 # <a name="monitor-batch-solutions"></a>Monitorování řešení Batch
 
@@ -22,7 +22,7 @@ Na úrovni předplatného, která zahrnuje účty Batch, shromažďuje [Protokol
 
 Pro účty Batch konkrétně protokol aktivit shromažďuje události související se vytvářením a odstraňováním účtů a správou klíčů.
 
-Jedním ze způsobů, jak načíst události z protokolu aktivit, je použít Azure Portal. Klikněte na **všechny služby** > **Protokol aktivit**. Nebo se můžete dotazovat na události pomocí rozhraní příkazového řádku Azure CLI, rutin PowerShellu nebo Azure Monitor REST API. Můžete také exportovat protokol aktivit nebo nakonfigurovat [výstrahy protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
+Jedním ze způsobů, jak načíst události z protokolu aktivit, je použít Azure Portal. Klikněte na **všechny služby**  >  **Protokol aktivit**. Nebo se můžete dotazovat na události pomocí rozhraní příkazového řádku Azure CLI, rutin PowerShellu nebo Azure Monitor REST API. Můžete také exportovat protokol aktivit nebo nakonfigurovat [výstrahy protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
 
 ## <a name="batch-account-level-monitoring"></a>Monitorování na úrovni účtu Batch
 
@@ -33,7 +33,7 @@ Monitorujte každý účet Batch pomocí funkcí [Azure monitor](../azure-monito
 
 ## <a name="batch-resource-monitoring"></a>Sledování prostředků Batch
 
-V aplikacích Batch pomocí rozhraní API služby Batch můžete monitorovat stav svých prostředků, včetně úloh, úkolů, uzlů a fondů, a dotazovat se na ně. Příklad:
+V aplikacích Batch pomocí rozhraní API služby Batch můžete monitorovat stav svých prostředků, včetně úloh, úkolů, uzlů a fondů, a dotazovat se na ně. Například:
 
 * [Počet úloh a výpočetních uzlů podle stavu](batch-get-resource-counts.md)
 * [Efektivní vytváření dotazů k vypsání prostředků Batch](batch-efficient-list-queries.md)

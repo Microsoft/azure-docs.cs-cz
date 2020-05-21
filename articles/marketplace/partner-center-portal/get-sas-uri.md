@@ -7,17 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: b521a3a035044e2f0c1b625df19d265cfa35b49a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857940"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725869"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Získat identifikátor URI sdíleného přístupového podpisu pro vaši image virtuálního počítače
-
-> [!IMPORTANT]
-> Přesouváme správu nabídek virtuálních počítačů Azure z portál partnerů cloudu do partnerského centra. Dokud nebudou vaše nabídky migrovány, postupujte podle pokynů v části [Získání identifikátoru URI sdíleného přístupového podpisu pro vaši image virtuálního počítače](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri) , aby bylo možné portál partnerů cloudu spravovat vaše nabídky.
 
 Tento článek popisuje, jak vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro každý virtuální pevný disk (VHD).
 
@@ -26,7 +23,7 @@ Během procesu publikování je nutné zadat identifikátor URI pro každý virt
 Při generování identifikátorů URI SAS pro vaše virtuální pevné disky postupujte podle těchto požadavků:
 
 * Podporují se jenom nespravované virtuální pevné disky.
-* Jsou `List` vyžadována `Read` pouze oprávnění. Nezadávejte přístup pro zápis ani odstranění.
+* `List` `Read` Jsou vyžadována pouze oprávnění. Nezadávejte přístup pro zápis ani odstranění.
 * Doba trvání přístupu (datum vypršení platnosti) by měla být minimálně tři týdny od okamžiku, kdy se identifikátor URI SAS vytvoří.
 * Pro ochranu proti změnám času UTC nastavte počáteční datum na jeden den před aktuálním datem. Pokud je aktuální datum například 6. října 2019, vyberte 10/5/2019.
 
@@ -62,7 +59,7 @@ Existují dva běžné nástroje, které slouží k vytvoření adresy SAS (URL)
 
 9. Po řetězci VHD v identifikátoru URI SAS vložte název virtuálního pevného disku (včetně lomítka). Výsledný identifikátor URI SAS by měl vypadat takto:
 
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Například pokud je `TestRGVM2.vhd`název při, výsledný identifikátor URI SAS by byl:
+    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Například pokud je název při `TestRGVM2.vhd` , výsledný identifikátor URI SAS by byl:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -77,7 +74,7 @@ Existují dva běžné nástroje, které slouží k vytvoření adresy SAS (URL)
     az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
     ```
 
-3. Upravte soubor tak, aby používal následující hodnoty parametrů. Zadejte data ve formátu UTC DateTime, například `2020-04-01T00:00:00Z`.
+3. Upravte soubor tak, aby používal následující hodnoty parametrů. Zadejte data ve formátu UTC DateTime, například `2020-04-01T00:00:00Z` .
 
     * `<account-name>`– Váš název účtu služby Azure Storage
     * `<account-key>`– Váš klíč účtu úložiště Azure
@@ -109,7 +106,7 @@ Existují dva běžné nástroje, které slouží k vytvoření adresy SAS (URL)
 
     `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`
 
-    Například pokud je `TestRGVM2.vhd`název VHD, identifikátor URI SAS bude:
+    Například pokud je název VHD `TestRGVM2.vhd` , identifikátor URI SAS bude:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
@@ -121,7 +118,7 @@ Zkontrolujte každý vytvořený identifikátor URI SAS pomocí následujícího
 
 * Identifikátor URI vypadá takto:`<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 * Identifikátor URI zahrnuje název souboru bitové kopie VHD, včetně přípony názvu souboru. VHD.
-* `sp=rl`zobrazí se poblíž středu vašeho identifikátoru URI. Tento řetězec ukazuje, `Read` že `List` a je určen přístup.
+* `sp=rl`zobrazí se poblíž středu vašeho identifikátoru URI. Tento řetězec ukazuje, že `Read` a `List` je určen přístup.
 * Když `sr=c` se zobrazí, znamená to, že je určený přístup na úrovni kontejneru.
 * Zkopírování a vložení identifikátoru URI do prohlížeče pro testování – stažení objektu BLOB (tuto operaci můžete zrušit před dokončením stahování).
 

@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.openlocfilehash: 909f044fd18ce98577e16d877f174dfa00bc1f3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: 95d57e34694190b4ab997229f005ebeef7924e57
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270396"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724815"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Přehled portálu komerčního tržiště v partnerském centru
 
@@ -26,31 +26,15 @@ Podniky, vlády a organizace všech velikostí hledají podniková řešení, in
 
 Partnerským centrem je centrum zkušeností Microsoftu pro partnery. Pro organizace, které přicházejí na trh s Microsoftem a využívají komerční tržiště, je partnerským centrem portál, který vydavatelé používá k tvorbě a správě nabídek, poskytování demonstračních ukázek testovacích jednotek a zobrazení analýz na výkon nabídky.
 
-## <a name="migration-from-cloud-partner-portal"></a>Migrace z portál partnerů cloudu
+## <a name="migration-from-the-cloud-partner-portal"></a>Migrace z portál partnerů cloudu
 
-Partnerské centrum se vyvíjí, aby bylo možné lépe integrovat všechny aspekty našeho vztahu s vydavateli softwaru. V rámci tohoto vývoje migrujeme [portál partnerů cloudu](https://cloudpartner.azure.com/) do partnerského centra.
+Partnerské centrum se vyvíjí, aby bylo možné lépe integrovat všechny aspekty našeho vztahu s vydavateli softwaru. V rámci tohoto vývoje jsme migrovali veškerou správu nabídky komerčních webů na webu Marketplace z [portál partnerů cloudu](https://cloudpartner.azure.com/) do partnerského centra.
 
-Stávající komerční vydavatelé webu Marketplace budou najít známé, ale vylepšené uživatelské prostředí pomocí intuitivního rozhraní. Oznámení na portálu a e-mailová oznámení, která vydavatelé této migrace informují. Uživatelé budou plynule přesměrováni na příslušné umístění. Tento upgrade tohoto partnerských zkušeností nebude mít na zákazníky vliv.
-
->[!NOTE]
->Partnerské centrum v současné době podporuje vytváření a správu některých typů nabídek, jak je uvedeno v následující tabulce. Další typy nabídek se budou brzy podporovat, jakmile migrujeme veškerou správu nabídek do partnerského centra.
-
-|Typ nabídky  |Správa nabídek migrována z portál partnerů cloudu do partnerského centra  |
-|---------|---------|
-|Software jako služba (SaaS)     | Nově dostupné       |
-|Dynamics 365 pro Customer Engagement & PowerApps     | Nově dostupné         |
-|Dynamics 365 pro operace     | Nově dostupné        |
-|Dynamics 365 pro firmy – střed     | Nově dostupné        |
-|Azure Application     | Nově dostupné        |
-|Virtuální počítač Azure     | Obecná dostupnost duben – květen 2020        |
-|Kontejner Azure     | Obecná dostupnost duben – květen 2020        |
-|Konzultační služba     | Obecná dostupnost duben – květen 2020        |
-|Modul IoT Edge     | Obecná dostupnost duben – květen 2020        |
-|Aplikace Power BI    | Obecná dostupnost duben – květen 2020        |
+Stávající vydavatelé, kteří dřív použili portál partnerů cloudu, najdou známé, ale vylepšené a intuitivní uživatelské prostředí s partnerským centrem. Uživatelé budou plynule přesměrováni na příslušné umístění. Tento upgrade tohoto partnerských zkušeností nebude mít na zákazníky vliv.
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Vylepšení publikování a řízení uživatelských prostředí pro správu
 
-S přechodem do partnerského centra jsou kromě vylepšení uživatelského prostředí k dispozici nové funkce vydavatelům.  Podrobnosti najdete v tématu [Nejčastější dotazy k migraci z portál partnerů cloudu do partnerského centra](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-migration-faq).
+S přechodem do partnerského centra jsou kromě vylepšení uživatelského prostředí k dispozici nové funkce vydavatelům.  Podrobnosti najdete v tématu [Nejčastější dotazy k migraci z portál partnerů cloudu do partnerského centra](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-migration-faq).
 
 ### <a name="account-and-user-management-updates"></a>Aktualizace správy účtů a uživatelů
 

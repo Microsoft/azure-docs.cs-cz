@@ -1,15 +1,15 @@
 ---
-title: Nainstalovat balíčky aplikací na výpočetní uzly
+title: Nasazení balíčků aplikací do výpočetních uzlů
 description: Pomocí funkce balíčky aplikací Azure Batch můžete snadno spravovat víc aplikací a verzí pro instalaci na výpočetních uzlech služby Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61e94ade21d8dd6fad2ba10dff87d4ba10333e3a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115614"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726872"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -123,7 +123,7 @@ V podrobnostech o aplikaci můžete pro svou aplikaci nakonfigurovat následují
 ### <a name="add-a-new-application"></a>Přidat novou aplikaci
 Chcete-li vytvořit novou aplikaci, přidejte balíček aplikace a zadejte nové jedinečné ID aplikace. První balíček aplikace, který přidáte s novým ID aplikace, vytvoří také novou aplikaci.
 
-Klikněte na **aplikace** > **Přidat**.
+Klikněte na **aplikace**  >  **Přidat**.
 
 ![Okno Nová aplikace v Azure Portal][5]
 
@@ -159,7 +159,7 @@ Po výběru souboru kliknutím na tlačítko **OK** zahajte nahrávání na Azur
 > 
 
 ### <a name="add-a-new-application-package"></a>Přidat nový balíček aplikace
-Chcete-li přidat verzi balíčku aplikace pro existující aplikaci, vyberte aplikaci v oknech **aplikace** a klikněte na **balíčky** > **Přidat**.
+Chcete-li přidat verzi balíčku aplikace pro existující aplikaci, vyberte aplikaci v oknech **aplikace** a klikněte na **balíčky**  >  **Přidat**.
 
 ![Okno Přidat balíček aplikace v Azure Portal][8]
 
@@ -248,7 +248,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Příklad:
+V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Například:
 
 ```
 Linux:

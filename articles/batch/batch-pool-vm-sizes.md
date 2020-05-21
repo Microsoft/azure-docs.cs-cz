@@ -1,16 +1,15 @@
 ---
 title: Volba velikostí virtuálních počítačů pro fondy
 description: Jak vybrat z dostupných velikostí virtuálních počítačů pro výpočetní uzly ve fondech Azure Batch
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2019
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: d33b97790d2ce9a276a552fd02fe28c796234b15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a299ce05caa02432f96dfbb5eb675bc2d6f82ab5
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115852"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723710"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Vyberte velikost virtuálního počítače pro výpočetní uzly ve fondu Azure Batch.
 
@@ -32,8 +31,8 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny v
 | Basic A | Všechny velikosti *kromě* Basic_A0 (a0) |
 | A | Všechny velikosti *kromě* Standard_A0 |
 | Av2 | Všechny velikosti |
-| B | Žádná |
-| DC | Žádná |
+| B | Žádné |
+| DC | Žádné |
 | Dv2, DSv2 | Všechny velikosti |
 | Dv3, Dsv3 | Všechny velikosti |
 | Dav4, Dasv4 | Žádný – zatím není k dispozici |
@@ -57,8 +56,8 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny v
 | NDv2<sup>1</sup> | Žádný – zatím není k dispozici |
 | NV | Všechny velikosti |
 | NVv3<sup>1</sup> | Všechny velikosti |
-| NVv4 | Žádná |
-| SAP HANA | Žádná |
+| NVv4 | Žádné |
+| SAP HANA | Žádné |
 
 <sup>1</sup> tyto velikosti virtuálních počítačů je možné přidělit ve fondech Batch v konfiguraci virtuálního počítače, musíte ale vytvořit nový účet Batch a požádat o konkrétní [zvýšení kvóty](batch-quota-limit.md#increase-a-quota). Toto omezení se odebere, až se vCPU kvóta pro každou řadu virtuálních počítačů plně podporuje pro účty Batch.
 

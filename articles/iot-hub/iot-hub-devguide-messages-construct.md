@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77145c691f5b2b6364de64e491aac3c84495d464
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69872486"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726124"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv IoT Hubu
 
@@ -51,25 +51,45 @@ Další informace o tom, jak zakódovat a dekódovat zprávy odeslané pomocí r
 
 | Vlastnost | Popis  |Nastavit uživatele?|Klíčové slovo pro </br>dotaz směrování|
 | --- | --- | --- | --- |
-| ID zprávy |Uživatelsky nastavitelný identifikátor zprávy, která se používá ke vzorům požadavků a odpovědí. Format: řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) znaků ASCII 7 bitů `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.  | Ano | Parametr |
-| iothub – enqueuedtime |Datum a čas přijetí zprávy ze [zařízení do cloudu](iot-hub-devguide-d2c-guidance.md) IoT Hub. | Ne | enqueuedTime |
-| user-id |ID, které slouží k určení původu zpráv. Když jsou zprávy generovány IoT Hub, je nastavena na `{iot hub name}`. | Ano | userId |
-| iothub-ID zařízení-připojení |ID nastavené IoT Hub u zpráv ze zařízení do cloudu. Obsahuje **deviceId** zařízení, které zprávu odeslalo. | Ne | connectionDeviceId |
-| iothub-Connection-Module-ID |ID nastavené IoT Hub u zpráv ze zařízení do cloudu. Obsahuje **moduleId** zařízení, které zprávu odeslalo. | Ne | connectionModuleId |
-| iothub-Connection-auth-Generation-ID |ID nastavené IoT Hub u zpráv ze zařízení do cloudu. Obsahuje **connectionDeviceGenerationId** (podle [vlastností identity jednotlivých zařízení](iot-hub-devguide-identity-registry.md#device-identity-properties)) zařízení, které zprávu odeslalo. | Ne |connectionDeviceGenerationId |
-| iothub připojení-auth-Method |Metoda ověřování nastavená IoT Hub na zprávy ze zařízení do cloudu. Tato vlastnost obsahuje informace o metodě ověřování, která se používá k ověření zařízení odesílajícího zprávu.| Ne | connectionAuthMethod |
+| ID zprávy |Uživatelsky nastavitelný identifikátor zprávy, která se používá ke vzorům požadavků a odpovědí. Format: řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) znaků ASCII 7 bitů `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  | Ano | Parametr |
+| iothub – enqueuedtime |Datum a čas přijetí zprávy ze [zařízení do cloudu](iot-hub-devguide-d2c-guidance.md) IoT Hub. | No | enqueuedTime |
+| user-id |ID, které slouží k určení původu zpráv. Když jsou zprávy generovány IoT Hub, je nastavena na `{iot hub name}` . | Ano | userId |
+| iothub-ID zařízení-připojení |ID nastavené IoT Hub u zpráv ze zařízení do cloudu. Obsahuje **deviceId** zařízení, které zprávu odeslalo. | No | connectionDeviceId |
+| iothub-Connection-Module-ID |ID nastavené IoT Hub u zpráv ze zařízení do cloudu. Obsahuje **moduleId** zařízení, které zprávu odeslalo. | No | connectionModuleId |
+| iothub-Connection-auth-Generation-ID |ID nastavené IoT Hub u zpráv ze zařízení do cloudu. Obsahuje **connectionDeviceGenerationId** (podle [vlastností identity jednotlivých zařízení](iot-hub-devguide-identity-registry.md#device-identity-properties)) zařízení, které zprávu odeslalo. | No |connectionDeviceGenerationId |
+| iothub připojení-auth-Method |Metoda ověřování nastavená IoT Hub na zprávy ze zařízení do cloudu. Tato vlastnost obsahuje informace o metodě ověřování, která se používá k ověření zařízení odesílajícího zprávu.| No | connectionAuthMethod |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>Systémové vlastnosti zpráv **C2D** IoT Hub
 
 | Vlastnost | Popis  |Nastavit uživatele?|
 | --- | --- | --- |
-| ID zprávy |Uživatelsky nastavitelný identifikátor zprávy, která se používá ke vzorům požadavků a odpovědí. Format: řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) znaků ASCII 7 bitů `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`.  |Ano|
-| pořadové číslo |Číslo (jedinečné pro každou frontu zařízení) přiřazené IoT Hub ke každé zprávě typu cloud-zařízení. |Ne|
-| na |Cíl určený ve zprávách typu [Cloud-zařízení](iot-hub-devguide-c2d-guidance.md) . |Ne|
-| absolutní – doba vypršení platnosti |Datum a čas vypršení platnosti zprávy |Ne|   |
+| ID zprávy |Uživatelsky nastavitelný identifikátor zprávy, která se používá ke vzorům požadavků a odpovědí. Format: řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) znaků ASCII 7 bitů `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  |Ano|
+| pořadové číslo |Číslo (jedinečné pro každou frontu zařízení) přiřazené IoT Hub ke každé zprávě typu cloud-zařízení. |No|
+| na |Cíl určený ve zprávách typu [Cloud-zařízení](iot-hub-devguide-c2d-guidance.md) . |No|
+| absolutní – doba vypršení platnosti |Datum a čas vypršení platnosti zprávy |No|   |
 | correlation-id |Řetězcová vlastnost ve zprávě odpovědi, která obvykle obsahuje parametr MessageId žádosti ve vzorech požadavek-odpověď. |Ano|
-| user-id |ID, které slouží k určení původu zpráv. Když jsou zprávy generovány IoT Hub, je nastavena na `{iot hub name}`. |Ano|
+| user-id |ID, které slouží k určení původu zpráv. Když jsou zprávy generovány IoT Hub, je nastavena na `{iot hub name}` . |Ano|
 | iothub – ACK |Generátor zpráv zpětné vazby. Tato vlastnost se používá ve zprávách typu cloud-zařízení k vyžádání IoT Hub k vygenerování zpráv zpětné vazby v důsledku spotřeby zprávy ze zařízení. Možné hodnoty: **none** (výchozí): není generována žádná zpětná vazba, **kladná**zpráva o zpětné vazbě v případě, že zpráva byla dokončena, **záporná**: doručení zprávy zpětné vazby, pokud vypršela platnost zprávy (nebo byl dosažen maximální počet doručení), aniž by bylo zařízení dokončeno nebo **úplné**: kladné i záporné. |Ano|
+
+### <a name="system-property-names"></a>Názvy systémových vlastností
+
+Názvy systémových vlastností se liší v závislosti na koncovém bodu, na který jsou směrovány zprávy. Podrobnosti o těchto názvech naleznete v následující tabulce.
+
+
+|Název systémové vlastnosti|Event Hubs|Azure Storage|Service Bus|Event Grid|
+|--------------------|----------|-------------|-----------|----------|
+|ID zprávy|ID zprávy|Parametr|Parametr|ID zprávy|
+|Čas zařazení do fronty centra IoT Hub|iothub – enqueuedtime|enqueuedTime|iothub – enqueuedtime|iothub – enqueuedtime|
+|Id uživatele|user-id|userId|UserId|user-id|
+|ID zařízení připojení|iothub-ID zařízení-připojení| connectionDeviceId|iothub-ID zařízení-připojení|iothub-ID zařízení-připojení|
+|ID modulu připojení|iothub-Connection-Module-ID|connectionModuleId|iothub-Connection-Module-ID|iothub-Connection-Module-ID|
+|ID generování ověřování připojení|iothub-Connection-auth-Generation-ID|connectionDeviceGenerationId| iothub-Connection-auth-Generation-ID|iothub-Connection-auth-Generation-ID|
+|Metoda auth připojení|iothub připojení-auth-Method|connectionAuthMethod|iothub připojení-auth-Method|iothub připojení-auth-Method|
+|Třída|typ obsahu|Třída|Třída|iothub-Content-Type|
+|contentEncoding|kódování obsahu|contentEncoding|ContentEncoding|iothub – kódování obsahu|
+|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime|     |iothub – enqueuedtime|
+|iothub – název rozhraní|iothub – název rozhraní|interfaceName|Iothub – název rozhraní|iothub – název rozhraní|
+|CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
 
 ## <a name="message-size"></a>Velikost zpráv
 

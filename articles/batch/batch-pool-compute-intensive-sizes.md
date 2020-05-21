@@ -1,19 +1,18 @@
 ---
 title: Použití virtuálních počítačů Azure náročných na výpočetní výkon pomocí služby Batch
 description: Jak využít výhod velikosti virtuálních počítačů HPC a GPU v fondech Azure Batch. Seznamte se se závislostmi operačních systémů a podívejte se na několik příkladů scénářů.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/17/2018
-ms.author: labrenne
-ms.openlocfilehash: 674ee6c5b96c7aaf2926b51824488d03fc56d0a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04e39678c77604bca4194bebc7968c5c43fb019c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115954"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724084"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Použití instancí RDMA nebo GPU ve fondech Batch
 
-Pokud chcete spustit určité dávkové úlohy, můžete využít výhod velikosti virtuálních počítačů Azure určených pro velké výpočty. Příklad:
+Pokud chcete spustit určité dávkové úlohy, můžete využít výhod velikosti virtuálních počítačů Azure určených pro velké výpočty. Například:
 
 * Pokud chcete spouštět [úlohy MPI](batch-mpi.md)s více instancemi, vyberte H-Series nebo jiné velikosti, které mají síťové rozhraní pro přímý přístup do paměti vzdáleného počítače (RDMA). Tyto velikosti se připojují k InfiniBand síti pro komunikaci mezi uzly, což dokáže zrychlit aplikace MPI. 
 
@@ -101,7 +100,7 @@ Pokud chcete spouštět aplikace CUDA ve fondu uzlů Windows NC, musíte nainsta
 | Nastavení | Hodnota |
 | ---- | ----- | 
 | **Typ image** | Marketplace (Linux/Windows) |
-| **Microsoft** | MicrosoftWindowsServer |
+| **Publisher** | MicrosoftWindowsServer |
 | **Nabídka** | WindowsServer |
 | **Skladové** | 2016 – Datacenter |
 | **Velikost uzlu** | NC6 Standard |
@@ -155,7 +154,7 @@ Pomocí rozhraní API nebo Azure Portal dávky vytvořte fond s použitím tohot
 | Nastavení | Hodnota |
 | ---- | ---- |
 | **Typ image** | Marketplace (Linux/Windows) |
-| **Microsoft** | OpenLogic |
+| **Publisher** | OpenLogic |
 | **Nabídka** | CentOS – HPC |
 | **Skladové** | 7.4 |
 | **Velikost uzlu** | H16r Standard |

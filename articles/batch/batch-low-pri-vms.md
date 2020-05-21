@@ -2,15 +2,15 @@
 title: Spouštění úloh na nákladově efektivních virtuálních počítačích s nízkou prioritou
 description: Naučte se zřizovat virtuální počítače s nízkou prioritou a snížit tak náklady na Azure Batch úlohy.
 author: mscurrell
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: ec75dac7e5615cddf942ff7939ea7e95315f8699
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39c4674da2ddf63c5fab8b39e16a0cc0d9f299ac
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116039"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726583"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Použití virtuálních počítačů s nízkou prioritou se službou Batch
 

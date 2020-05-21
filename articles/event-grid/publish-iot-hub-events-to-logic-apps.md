@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
-ms.openlocfilehash: 889c5e68759a94682150ac88970b7123ad0fc412
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b1870af6316713590eec59aee2af94ce34b7e1a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201733"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722554"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Kurz: odesílání e-mailových oznámení o událostech Azure IoT Hub pomocí Event Grid a Logic Apps
 
@@ -27,7 +27,7 @@ Tento článek vás provede ukázkovou konfigurací, která používá IoT Hub a
 * E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje Azure Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Tento e-mailový účet se používá k posílání oznámení o událostech. Úplný seznam podporovaných konektorů aplikace logiky najdete v tématu [Přehled konektorů](https://docs.microsoft.com/connectors/).
 
   > [!IMPORTANT]
-  > Než použijete Gmail, ověřte, jestli máte obchodní účet G-Suite (e-mailová adresa s vlastní doménou) nebo účet uživatele Gmail (e- @gmail.com mailová adresa s nebo @googlemail.com). Konektor Gmail můžou používat jenom obchodní účty G-Suite s jinými konektory bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete použít konektor Gmail s pouze konkrétními službami, které jsou schváleny pro Google, nebo můžete [vytvořit klientskou aplikaci Google, která bude použita pro ověřování](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Než použijete Gmail, ověřte, jestli máte obchodní účet G-Suite (e-mailová adresa s vlastní doménou) nebo účet uživatele Gmail (e-mailová adresa s @gmail.com nebo @googlemail.com ). Konektor Gmail můžou používat jenom obchodní účty G-Suite s jinými konektory bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete použít konektor Gmail s pouze konkrétními službami, které jsou schváleny pro Google, nebo můžete [vytvořit klientskou aplikaci Google, která bude použita pro ověřování](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * IoT Hub v Azure. Pokud jste si ještě žádné nevytvořili, přečtěte si téma [Začínáme se službou IoT Hub](../iot-hub/iot-hub-csharp-csharp-getstarted.md), kde najdete návod.
 
@@ -137,7 +137,7 @@ Akce jsou všechny kroky, které se provádějí potom, co trigger spustí praco
 
    * **Komu**: Zadejte e-mailovou adresu, která bude dostávat e-maily s oznámeními. V tomto kurzu použijte e-mailový účet, který máte dostupný pro testování. 
 
-   * **Předmět**: Vyplňte text předmětu. Po kliknutí na textové pole Předmět můžete vybrat dynamický obsah, který chcete zahrnout. Tento kurz například používá `IoT Hub alert: {event Type}`. Pokud nevidíte dynamický obsah, vyberte hypertextový odkaz **Přidat dynamický obsah** – tím ho přepínáte a vypnuli.
+   * **Předmět**: Vyplňte text předmětu. Po kliknutí na textové pole Předmět můžete vybrat dynamický obsah, který chcete zahrnout. Tento kurz například používá `IoT Hub alert: {event Type}` . Pokud nevidíte dynamický obsah, vyberte hypertextový odkaz **Přidat dynamický obsah** – tím ho přepínáte a vypnuli.
 
    * **Tělo**: napište text pro váš e-mail. Vyberte vlastnosti JSON z nástroje pro výběr, aby se zahrnul dynamický obsah na základě dat událostí. Pokud nemůžete zobrazit dynamický obsah, v textovém poli text **zprávy** vyberte hypertextový odkaz **Přidat dynamický obsah** . Pokud se vám nezobrazují požadovaná pole, klikněte na tlačítko *Další* na obrazovce dynamický obsah a přidejte pole z předchozí akce.
 
@@ -193,17 +193,17 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
 6. Vyberte **Přidat nový filtr**. Vyplňte pole těmito hodnotami:
 
-   * **Klíč**: vyberte `Subject`.
+   * **Klíč**: vyberte `Subject` .
 
-   * **Operátor**: Select `String begins with`.
+   * **Operátor**: Select `String begins with` .
 
    * **Hodnota**: zadejte `devices/Building1_` , chcete-li vyfiltrovat události zařízení v budově 1.
   
    Přidejte další filtr s těmito hodnotami:
 
-   * **Klíč**: vyberte `Subject`.
+   * **Klíč**: vyberte `Subject` .
 
-   * **Operátor**: Select `String ends with`.
+   * **Operátor**: Select `String ends with` .
 
    * **Hodnota**: Pokud `_Temperature` chcete vyfiltrovat události zařízení související s teplotou, zadejte.
 
@@ -240,7 +240,7 @@ Otestujte si aplikaci logiky vytvořením nového zařízení, aby se aktivoval 
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
-Místo použití webu Azure Portal můžete provést kroky služby IoT Hub pomocí rozhraní příkazového řádku Azure CLI. Podrobnosti najdete na stránkách Azure CLI pro [Vytvoření odběru událostí](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) a [Vytvoření zařízení IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity).
+Místo použití webu Azure Portal můžete provést kroky služby IoT Hub pomocí rozhraní příkazového řádku Azure CLI. Podrobnosti najdete na stránkách Azure CLI pro [Vytvoření odběru událostí](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) a [Vytvoření zařízení IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

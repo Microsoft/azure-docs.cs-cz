@@ -1,16 +1,16 @@
 ---
-title: Kopírování aplikací a dat do uzlů fondu
+title: Kopírovat aplikace a data do uzlů fondu
 description: Naučte se kopírovat aplikace a data do uzlů fondu.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/17/2020
-ms.openlocfilehash: 700e9b80f8420266c0300b47bdd30bc271f8421c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dad52a69ee468872c10b3a9e66b967a1c7bd101d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115580"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726821"
 ---
-# <a name="copying-applications-and-data-to-pool-nodes"></a>Kopírování aplikací a dat do uzlů fondu
+# <a name="copy-applications-and-data-to-pool-nodes"></a>Kopírovat aplikace a data do uzlů fondu
 
 Azure Batch podporuje několik způsobů, jak získat data a aplikace na výpočetní uzly, aby byla data a aplikace k dispozici pro použití v úlohách. Data a aplikace můžou být potřeba ke spuštění celé úlohy, takže je potřeba je nainstalovat na každý uzel. Některé mohou být vyžadovány pouze pro konkrétní úkol nebo musí být pro úlohu nainstalovány, ale nemusí být na všech uzlech. Batch obsahuje nástroje pro každý z těchto scénářů.
 

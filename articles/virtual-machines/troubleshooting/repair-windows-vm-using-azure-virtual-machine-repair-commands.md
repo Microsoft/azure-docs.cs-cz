@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 2055558ef80a641084a7cf9d299281497d282936
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97c4461fd2abd39e75838f67ab5d34bd52a79459
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060676"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715609"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Oprava virtuálního počítače s Windows pomocí příkazů pro opravu virtuálních počítačů Azure
 
@@ -54,13 +54,13 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](https://docs.micro
 
    Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Zahrnuje běžné nástroje Azure, které jsou předinstalované a nakonfigurované pro použití s vaším účtem.
 
-   Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to návštěvou [https://shell.azure.com](https://shell.azure.com).
+   Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to návštěvou [https://shell.azure.com](https://shell.azure.com) .
 
    Vyberte **Kopírovat** pro zkopírování bloků kódu, poté vložte kód do Cloud Shell a vyberte **ENTER** pro spuštění.
 
    Pokud dáváte přednost místní instalaci a používání rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu ``az --version``. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-2. Pokud `az vm repair` příkazy použijete poprvé, přidejte rozšíření rozhraní příkazového řádku pro opravu virtuálního počítače.
+2. Pokud příkazy použijete poprvé `az vm repair` , přidejte rozšíření rozhraní příkazového řádku pro opravu virtuálního počítače.
 
    ```azurecli-interactive
    az extension add -n vm-repair
@@ -72,16 +72,16 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](https://docs.micro
    az extension update -n vm-repair
    ```
 
-3. Spusťte `az vm repair create`. Tento příkaz vytvoří kopii disku s operačním systémem pro virtuální počítač, který není funkční, vytvoří opravný virtuální počítač a připojí disk.
+3. Spusťte `az vm repair create`. Tento příkaz vytvoří kopii disku s operačním systémem pro virtuální počítač bez funkčního fungování, vytvoří opravný virtuální počítač v nové skupině prostředků a připojí kopii disku s operačním systémem.  Opravný virtuální počítač bude mít stejnou velikost a oblast jako zadaný virtuální počítač, který není funkční.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. Spusťte `az vm repair run`. Tento příkaz spustí na připojeném disku určený skript opravy pomocí opravného virtuálního počítače.
+4. Spusťte `az vm repair run`. Tento příkaz spustí na připojeném disku určený skript opravy pomocí opravného virtuálního počítače.  Pokud vám průvodce pro odstraňování potíží, který používáte, zadal identifikátor Run-ID, použijte ho tady. v opačném případě můžete použít `az vm repair list-scripts` k zobrazení dostupných skriptů oprav.
 
    ```azurecli-interactive
-   az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id 2 --verbose
+   az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id win-hello-world --verbose
    ```
 
 5. Spusťte `az vm repair restore`. Tento příkaz zahodí opravený disk s operačním systémem s původním diskem s operačním systémem virtuálního počítače.
@@ -92,7 +92,7 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](https://docs.micro
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Ověření a povolení diagnostiky spouštění
 
-Následující příklad aktivuje diagnostické rozšíření na virtuálním počítači s ``myVMDeployed`` názvem ve skupině prostředků s ``myResourceGroup``názvem:
+Následující příklad aktivuje diagnostické rozšíření na virtuálním počítači s názvem ``myVMDeployed`` ve skupině prostředků s názvem ``myResourceGroup`` :
 
 Azure CLI
 

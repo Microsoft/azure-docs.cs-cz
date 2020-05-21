@@ -1,15 +1,14 @@
 ---
 title: Událost dokončení změny velikosti fondu Azure Batch
 description: Odkaz na událost dokončení změny velikosti fondu Batch Podívejte se na příklad fondu, který se zvýšil a byl úspěšně dokončen.
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: 4268c9d840aa9dfadd785d74811e9d12ac32ec31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94301f29fb6e7968dbe0389754fcf2a3b105d7ef
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115886"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723812"
 ---
 # <a name="pool-resize-complete-event"></a>Událost dokončení změny velikosti fondu
 
@@ -36,8 +35,8 @@ ms.locfileid: "82115886"
 
 |Prvek|Typ|Poznámky|
 |-------------|----------|-----------|
-|`id`|Řetězec|ID fondu|
-|`nodeDeallocationOption`|Řetězec|Určuje, kdy se můžou uzly odebírat z fondu, pokud se zmenší velikost fondu.<br /><br /> Možné hodnoty:<br /><br /> **Queue (fronta** ) – ukončí spuštěné úlohy a znovu je zařadí do fronty. Úkoly se spustí znovu, až bude úloha povolená. Po ukončení úloh odeberte uzly.<br /><br /> **ukončit** – ukončí spuštěné úlohy. Úkoly se znovu nespustí. Po ukončení úloh odeberte uzly.<br /><br /> **taskcompletion** – povolí dokončení aktuálně spuštěných úloh. Naplánujte během čekání žádné nové úlohy. Po dokončení všech úloh odeberte uzly.<br /><br /> **Retaineddata** – umožňuje dokončit aktuálně spuštěné úlohy a pak počkat na vypršení platnosti všech dob uchovávání dat úkolů. Naplánujte během čekání žádné nové úlohy. Odebrat uzly, pokud vypršela platnost všech dob uchovávání úkolů.<br /><br /> Výchozí hodnota je requeue.<br /><br /> Pokud se velikost fondu zvyšuje, hodnota je nastavená na **neplatné**.|
+|`id`|String|ID fondu|
+|`nodeDeallocationOption`|String|Určuje, kdy se můžou uzly odebírat z fondu, pokud se zmenší velikost fondu.<br /><br /> Možné hodnoty:<br /><br /> **Queue (fronta** ) – ukončí spuštěné úlohy a znovu je zařadí do fronty. Úkoly se spustí znovu, až bude úloha povolená. Po ukončení úloh odeberte uzly.<br /><br /> **ukončit** – ukončí spuštěné úlohy. Úkoly se znovu nespustí. Po ukončení úloh odeberte uzly.<br /><br /> **taskcompletion** – povolí dokončení aktuálně spuštěných úloh. Naplánujte během čekání žádné nové úlohy. Po dokončení všech úloh odeberte uzly.<br /><br /> **Retaineddata** – umožňuje dokončit aktuálně spuštěné úlohy a pak počkat na vypršení platnosti všech dob uchovávání dat úkolů. Naplánujte během čekání žádné nové úlohy. Odebrat uzly, pokud vypršela platnost všech dob uchovávání úkolů.<br /><br /> Výchozí hodnota je requeue.<br /><br /> Pokud se velikost fondu zvyšuje, hodnota je nastavená na **neplatné**.|
 |`currentDedicatedNodes`|Int32|Počet vyhrazených výpočetních uzlů, které jsou aktuálně přiřazeny ke fondu.|
 |`targetDedicatedNodes`|Int32|Počet vyhrazených výpočetních uzlů, které jsou požadovány pro fond.|
 |`currentLowPriorityNodes`|Int32|Počet výpočetních uzlů s nízkou prioritou, které jsou aktuálně přiřazeny ke fondu.|
@@ -46,5 +45,5 @@ ms.locfileid: "82115886"
 |`isAutoPool`|Logická hodnota|Určuje, jestli se fond vytvořil pomocí mechanismu autopoolu úlohy.|
 |`startTime`|DateTime|Čas zahájení změny velikosti fondu.|
 |`endTime`|DateTime|Čas, kdy se změna velikosti fondu dokončila.|
-|`resultCode`|Řetězec|Výsledek změny velikosti.|
-|`resultMessage`|Řetězec| Podrobná zpráva o výsledku.<br /><br /> Pokud se změna velikosti úspěšně dokončila, uvádí, že operace byla úspěšná.|
+|`resultCode`|String|Výsledek změny velikosti.|
+|`resultMessage`|String| Podrobná zpráva o výsledku.<br /><br /> Pokud se změna velikosti úspěšně dokončila, uvádí, že operace byla úspěšná.|

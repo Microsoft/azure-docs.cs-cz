@@ -10,12 +10,12 @@ ms.reviewer: trbye, jmartens, larryfr, vaidyas
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 01/15/2020
-ms.openlocfilehash: b5431ae574f40c29368848808004a53abe43c3a8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4e2777f59bab8d7d874019004bff2e30395ab1d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680970"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723472"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Ladění a řešení potíží s ParallelRunStep
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Z důvodu distribuované povahy úloh ParallelRunStep existují protokoly z něk
 
 Protokoly vygenerované ze vstupního skriptu pomocí pomocníka EntryScript a příkazů Print budou nalezeny v následujících souborech:
 
-- `~/logs/user/<node_name>.log.txt`: Jedná se o protokoly napsané z entry_script pomocí pomocné rutiny EntryScript. Obsahuje také příkaz Print (stdout) z entry_script.
+- `~/logs/user/<ip_address>/<node_name>.log.txt`: Jedná se o protokoly napsané z entry_script pomocí pomocné rutiny EntryScript. Obsahuje také příkaz Print (stdout) z entry_script.
 
 Stručné porozumění chybám ve skriptu:
 

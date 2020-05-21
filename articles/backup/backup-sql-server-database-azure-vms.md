@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak zálohovat SQL Server databáze n
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 9becb574594672c1cf91e610b4c13f91c91aa14f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3fd94dc6332d96f875c164dfeadff3a8ab2cad4e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659518"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715592"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -43,74 +43,59 @@ Před zálohováním SQL Server databáze ověřte následující kritéria:
 
 ### <a name="establish-network-connectivity"></a>Navázat připojení k síti
 
-Pro všechny operace vyžaduje SQL Server virtuální počítač připojení k veřejným IP adresám Azure. Operace virtuálních počítačů (zjišťování databáze, konfigurace záloh, plánování záloh, obnovení bodů obnovení atd.) bez připojení k veřejným IP adresám Azure.
+Pro všechny operace vyžaduje SQL Server virtuální počítač připojení ke službě Azure Backup, Azure Storage a Azure Active Directory. Toho lze dosáhnout použitím privátních koncových bodů nebo povolením přístupu k požadovaným veřejným IP adresám nebo plně kvalifikovanému názvu domény. Pokud nepovolíte správné připojení k požadovaným službám Azure, může dojít k selhání operací, jako je zjišťování databáze, konfigurace zálohování, provádění zálohování a obnovování dat.
 
-Navažte připojení pomocí jedné z následujících možností:
+V následující tabulce jsou uvedeny různé alternativy, které můžete použít při navazování připojení:
 
-#### <a name="allow-the-azure-datacenter-ip-ranges"></a>Povoluje rozsahy IP adres datacentra Azure.
+| **Nastavení**                        | **Výhody**                                               | **Nevýhody**                                            |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Soukromé koncové body                 | Povolení zálohování přes privátní IP adresy uvnitř virtuální sítě  <br><br>   Podrobné řízení na straně sítě a trezoru | Má za následek standardní [náklady](https://azure.microsoft.com/pricing/details/private-link/) na soukromý koncový bod |
+| Značky služby NSG                  | Jednodušší Správa jako změny rozsahu se sloučí automaticky.   <br><br>   Žádné další náklady | Dá se použít jenom s skupin zabezpečení sítě  <br><br>    Poskytuje přístup k celé službě. |
+| Azure Firewall značek plně kvalifikovaného názvu domény          | Jednodušší Správa, protože jsou automaticky spravovány požadované plně kvalifikované názvy domén | Dá se použít jenom s Azure Firewall.                         |
+| Povolení přístupu k plně kvalifikovanému názvu domény služby/IP adresám | Žádné další náklady   <br><br>  Funguje se všemi zařízeními a branami zabezpečení sítě. | Pro získání pøístupu k široké škále IP adres nebo plně kvalifikovaných názvů domén může být potřeba.   |
+| Použití proxy serveru HTTP                 | Přístup k virtuálním počítačům jediným bodem z Internetu                       | Další náklady na spuštění virtuálního počítače s využitím softwaru proxy         |
 
-Tato možnost povoluje [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) ve staženém souboru. Pro přístup ke skupině zabezpečení sítě (NSG) použijte rutinu Set-AzureNetworkSecurityRule. Pokud váš seznam bezpečných příjemců obsahuje jenom IP adresy specifické pro oblast, budete taky muset aktualizovat seznam bezpečných příjemců, aby se povolilo ověřování v seznamu služby Azure Active Directory (Azure AD).
+Další podrobnosti o použití těchto možností jsou sdílené níže:
 
-Případně můžete také pro vytvoření požadovaného připojení taky dovolit přístup k následujícím plně kvalifikovaným názvům domény:
+#### <a name="private-endpoints"></a>Soukromé koncové body
 
-* `*.<datacentercode>.backup.windowsazure.com`<br>
-( [Tady si můžete](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)prohlédnout kódy datového centra.)
+Soukromé koncové body umožňují zabezpečené připojení ze serverů ve virtuální síti do trezoru Recovery Services. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro váš trezor. Síťový provoz mezi prostředky uvnitř virtuální sítě a trezoru se přenáší přes virtuální síť a privátní odkaz na páteřní síť Microsoftu. Tím se eliminuje riziko z veřejného Internetu. [Tady](https://docs.microsoft.com/azure/backup/private-endpoints)si můžete přečíst další informace o privátních koncových bodech pro Azure Backup.
 
-* `login.windows.net`
-* `*.blob.core.windows.net`
-* `*.queue.core.windows.net`
+#### <a name="nsg-tags"></a>Značky NSG
 
+Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *AzureBackup* povolte odchozí přístup k Azure Backup. Kromě značky Azure Backup je také potřeba, abyste umožnili připojení k ověřování a přenosu dat vytvořením podobných [pravidel NSG](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) pro *Azure AD* a *Azure Storage*.  Následující kroky popisují proces vytvoření pravidla pro Azure Backup značku:
 
-#### <a name="allow-access-using-nsg-tags"></a>Povolení přístupu pomocí značek NSG
+1. Ve **všech službách**klikněte na **skupiny zabezpečení sítě** a vyberte skupinu zabezpečení sítě.
 
-Pokud k omezení připojení používáte NSG, měli byste pomocí značky služby AzureBackup povolit odchozí přístup k Azure Backup. Kromě toho byste měli také umožňovat připojení pro ověřování a přenos dat pomocí [pravidel](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) pro Azure AD a Azure Storage. To se dá udělat z Azure Portal nebo přes PowerShell.
+1. V části **Nastavení**vyberte **odchozí pravidla zabezpečení** .
 
-Vytvoření pravidla pomocí portálu:
+1. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
 
-  1. Ve **všech službách**klikněte na **skupiny zabezpečení sítě** a vyberte skupinu zabezpečení sítě.
-  2. V části **Nastavení**vyberte **odchozí pravidla zabezpečení** .
-  3. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na **příznak služby** a **cílová značka služby** je nastavená na **AzureBackup**.
-  4. Klikněte na tlačítko **Přidat**a uložte nově vytvořené odchozí pravidlo zabezpečení.
+1. Kliknutím na **Přidat** uložte nově vytvořené odchozí pravidlo zabezpečení.
 
-Vytvoření pravidla pomocí prostředí PowerShell:
+Podobně můžete vytvořit NSG odchozí pravidla zabezpečení pro Azure Storage a Azure AD.
 
- 1. Přidání přihlašovacích údajů k účtu Azure a aktualizace národních cloudů<br/>
-      `Add-AzureRmAccount`<br/>
+#### <a name="azure-firewall-tags"></a>Značky Azure Firewall
 
- 2. Výběr předplatného NSG<br/>
-      `Select-AzureRmSubscription "<Subscription Id>"`
+Pokud používáte Azure Firewall, vytvořte pravidlo aplikace pomocí [značky plně kvalifikovaného názvu domény Azure firewall](https://docs.microsoft.com/azure/firewall/fqdn-tags) *AzureBackup* . To umožňuje všem odchozím přístupům Azure Backup.
 
- 3. Vybrat NSG<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
+#### <a name="allow-access-to-service-ip-ranges"></a>Povolení přístupu k rozsahům IP adres služby
 
- 4. Přidat odchozí pravidlo pro Azure Backup tag služby<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+Pokud se rozhodnete, že povolíte IP adresy služby Access, přečtěte si [zde](https://www.microsoft.com/download/confirmation.aspx?id=56519)dostupné ROZSAHy IP adres v souboru JSON. Bude potřeba, abyste povolili přístup k IP adresám, které odpovídají Azure Backup, Azure Storage a Azure Active Directory.
 
- 5. Přidat odchozí pravidlo pro značku služby úložiště<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "StorageAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "Storage" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
+#### <a name="allow-access-to-service-fqdns"></a>Povolení přístupu k plně kvalifikovanému názvu domény služby
 
- 6. Přidat odchozí pravidlo pro značku služby Azureactivedirectory selhala<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureActiveDirectoryAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureActiveDirectory" -DestinationPortRange 443 -Description "Allow outbound traffic to AzureActiveDirectory service"`
+K povolení přístupu k požadovaným službám z vašich serverů můžete použít taky tyto plně kvalifikované názvy domény:
 
- 7. Uložit NSG<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+| Služba    | Názvy domén, které se mají použít                             |
+| -------------- | ------------------------------------------------------------ |
+| Azure Backup  | `*.backup.windowsazure.com`                             |
+| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
+| Služba Azure AD      | V souladu s [tímto článkem](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) povolte přístup k plně kvalifikovanému názvu domény v oddílech 56 a 59. |
 
-**Povolí přístup pomocí značek Azure firewall**. Pokud používáte Azure Firewall, vytvořte pravidlo aplikace pomocí [značky plně kvalifikovaného názvu domény](https://docs.microsoft.com/azure/firewall/fqdn-tags)AzureBackup. To umožňuje odchozí přístup k Azure Backup.
+#### <a name="use-an-http-proxy-server-to-route-traffic"></a>Použití proxy server HTTP ke směrování provozu
 
-**Nasaďte proxy server HTTP pro směrování provozu**. Při zálohování databáze SQL Server na virtuálním počítači Azure používá rozšíření zálohování na virtuálním počítači rozhraní API HTTPS k posílání příkazů pro správu do Azure Backup a dat do Azure Storage. Rozšíření zálohování používá pro ověřování taky službu Azure AD. Přesměrujte provoz rozšíření zálohování pro tyto tři služby prostřednictvím proxy serveru HTTP. K dispozici nejsou žádné domény se zástupnými znaky s Azure Backup pro přidání do seznamu povolených pravidel proxy serveru. Pro tyto služby poskytované Azure budete muset použít rozsahy veřejných IP adres. Rozšíření jsou jedinou komponentou, která je nakonfigurovaná pro přístup k veřejnému Internetu.
-
-Možnosti připojení zahrnují následující výhody a nevýhody:
-
-**Nastavení** | **Výhody** | **Nevýhody**
---- | --- | ---
-Povoluje rozsahy IP adres. | Žádné další náklady | Složitá Správa, protože se rozsahy IP adres v průběhu času mění <br/><br/> Poskytuje přístup k celé službě Azure, ne jen Azure Storage
-Použití značek služby NSG | Jednodušší Správa jako změny rozsahu se sloučí automaticky. <br/><br/> Žádné další náklady <br/><br/> | Dá se použít jenom s skupin zabezpečení sítě <br/><br/> Poskytuje přístup k celé službě.
-Použití Azure Firewall značek plně kvalifikovaného názvu domény | Jednodušší Správa, protože jsou automaticky spravovány požadované plně kvalifikované názvy domén | Dá se použít jenom s Azure Firewall.
-Použití proxy serveru HTTP | Přístup k virtuálním počítačům jediným bodem z Internetu <br/> | Další náklady na spuštění virtuálního počítače s využitím softwaru proxy <br/> Žádné publikované adresy plně kvalifikovaného názvu domény – pravidla povolení budou platit pro změny IP adresy Azure
-
-#### <a name="private-endpoints"></a>Privátní koncové body
-
-[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
+Při zálohování databáze SQL Server na virtuálním počítači Azure používá rozšíření zálohování na virtuálním počítači rozhraní API HTTPS k posílání příkazů pro správu do Azure Backup a dat do Azure Storage. Rozšíření zálohování používá pro ověřování taky službu Azure AD. Přesměrujte provoz rozšíření zálohování pro tyto tři služby prostřednictvím proxy serveru HTTP. Pro povolení přístupu k požadovaným službám použijte seznam IP adres a plně kvalifikovaných názvů domén uvedených výše. Ověřené proxy servery se nepodporují.
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Pokyny pro pojmenovávání databází pro Azure Backup
 

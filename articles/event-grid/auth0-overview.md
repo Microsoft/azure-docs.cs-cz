@@ -7,15 +7,17 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: f96aa4d75f85aea046981641f84fd2b2c3078bd1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 17416131566edf8710737862f0cbea2e31477960
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691212"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722520"
 ---
 # <a name="auth0-partner-topics"></a>Témata týkající se partnerů Auth0
-![Auth0 logo ](./media/auth0-overview/auth0-logo.png) Auth0, platforma identit pro sestavovatele aplikací, poskytuje vývojářům a podnikům stavební kameny, které potřebují k zabezpečení svých aplikací.
+![Logo Auth0](./media/auth0-overview/auth0-logo.png)
+
+Auth0, platforma identit pro sestavovatele aplikací, poskytuje vývojářům a podnikům stavební kameny, které potřebují k zabezpečení svých aplikací.
 
 Téma Auth0 partner umožňuje použít události, které vygeneroval systém Auth0's, aby bylo možné provádět řadu úkolů. Po ověření nebo automatizaci úloh zabezpečení a infrastruktury se uživatelům zapojte smysluplné způsoby.
 

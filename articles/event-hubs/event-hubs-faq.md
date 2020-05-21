@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d461652758dd1fe6bb90a703b7c3fa113c9bd3e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086364"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726243"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -85,7 +85,7 @@ Chcete-li najít správné IP adresy pro připojení k seznamu, postupujte podle
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Poznamenejte si IP adresu vrácenou `Non-authoritative answer`v. Jediná doba, kterou by se změnila, je, že obor názvů obnovíte na jiný cluster.
+2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer` . Jediná doba, kterou by se změnila, je, že obor názvů obnovíte na jiný cluster.
 
 Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést několik dalších kroků: 
 
@@ -150,9 +150,11 @@ Možná budete chtít začít s počet propustnosti jednotkami s nízkou propust
 S touto funkcí nejsou spojené **žádné náklady** . 
 
 ### <a name="how-are-throughput-limits-enforced"></a>Jak se vynutily limity propustnosti?
-Pokud celková propustnost příchozího přenosu dat nebo celková frekvence událostí příchozího přenosu dat ve všech centrech událostí v oboru názvů přesáhne agregované hodnoty jednotek propustnosti, odesílají se omezení a dostanou chyby, které signalizují překročení kvóty příchozího přenosu dat.
+Pokud celková propustnost příchozího přenosu dat **nebo celková frekvence** událostí příchozího přenosu dat ve všech centrech událostí v oboru názvů přesáhne agregované hodnoty jednotek propustnosti, odesílají se omezení a dostanou chyby, které signalizují překročení kvóty příchozího přenosu dat.
 
-Pokud celková propustnost odchozích dat nebo celková přenosová rychlost události ve všech centrech událostí v oboru názvů přesáhne agregované odchylky jednotek propustnosti, přijímače se omezují a přijímají chyby indikující, že se překročila kvóta odchozího přenosu dat. Kvóty příchozího a odchozího přenosu dat se uplatňují samostatně, takže žádný odesilatel nemůže způsobit zpomalení události, ani nemůže přijímač zabránit v posílání událostí do centra událostí.
+Pokud celková propustnost **odchozích** dat nebo celková přenosová rychlost události napříč všemi centry událostí v oboru názvů překročí agregované odchylky jednotek propustnosti, přijímače se omezují, ale negenerují se žádné chyby omezování. 
+
+Kvóty příchozího a odchozího přenosu dat se uplatňují samostatně, takže žádný odesilatel nemůže způsobit zpomalení události, ani nemůže přijímač zabránit v posílání událostí do centra událostí.
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Existuje limit počtu jednotek propustnosti (počet propustnosti), které je možné rezervovat/vybrat?
 V nabídce pro více tenantů můžou jednotky propustnosti růst až 40 počet propustnosti (na portálu můžete vybrat až 20 počet propustnosti a vyvolat lístek podpory, který ho zvýší na 40 počet propustnosti ve stejném oboru názvů). Kromě 40 počet propustnosti Event Hubs nabízí model založený na prostředku nebo kapacitě, který se označuje jako **clustery Event Hubs úrovně Dedicated**. Vyhrazené clustery se prodávají v jednotkách kapacity (kapacitní jednotky).
@@ -236,7 +238,7 @@ Seznam všech kvót Event Hubs najdete v tématu [kvóty](event-hubs-quotas.md).
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč nemůžu vytvořit obor názvů po jeho odstranění z jiného předplatného? 
-Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva `Namespace already exists`:. 
+Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva: `Namespace already exists` . 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Jaké jsou některé výjimky vygenerované Event Hubs a jejich navrhovanými akcemi?
 

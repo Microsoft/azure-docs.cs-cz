@@ -1,15 +1,15 @@
 ---
 title: Začínáme s PowerShellem
 description: Rychlý úvod do rutin prostředí Azure PowerShell, jejichž pomocí lze spravovat prostředky služby Batch
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8777edbc99550b2fb1f14df00936de57801b0aab
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3baa69f7ad51be59390a12c62797ff78250db9c0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657311"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726549"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Správa prostředků služby Batch pomocí rutin PowerShellu
 

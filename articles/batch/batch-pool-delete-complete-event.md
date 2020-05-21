@@ -1,15 +1,14 @@
 ---
 title: Událost dokončení odstranění fondu Azure Batch
 description: Odkaz na událost dokončení odstranění fondu Batch Tato událost je vyvolána, když je dokončena operace odstranění fondu.
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: d28223c79f96f35a6ee11f98e0f09f21d7db4451
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e009b55869b7ba8c81190837086557743d53219
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115937"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724050"
 ---
 # <a name="pool-delete-complete-event"></a>Událost dokončení odstranění fondu
 
@@ -27,7 +26,7 @@ ms.locfileid: "82115937"
 
 |Prvek|Typ|Poznámky|
 |-------------|----------|-----------|
-|`id`|Řetězec|ID fondu|
+|`id`|String|ID fondu|
 |`startTime`|DateTime|Čas zahájení odstranění fondu|
 |`endTime`|DateTime|Čas dokončení odstranění fondu|
 

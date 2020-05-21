@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 2aebccdf18aaba345beb344a8b6fc3b37754a4a1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793614"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725665"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrace s nasazením Kubernetes pomocí Helm
 
@@ -23,7 +23,7 @@ Během procesu vydávání Helm sloučí graf se správnou konfigurací pro spu�
 
 Hodnoty uložené v *hodnotách. yaml* můžete přepsat tak, že na příkazovém řádku zadáte další konfigurační soubory založené na YAML při spuštění Helm. Konfigurace aplikace Azure podporuje export hodnot konfigurace do souborů YAML. Integrací této možnosti exportu do nasazení umožníte aplikacím Kubernetes využívat konfigurační hodnoty uložené v konfiguraci aplikace.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 > [!div class="checklist"]
 > * Při nasazování aplikace do Kubernetes pomocí Helm používejte hodnoty z konfigurace aplikace.
 > * Vytvoření tajného klíče Kubernetes na základě odkazu na Key Vault v konfiguraci aplikace.
@@ -41,9 +41,9 @@ V tomto kurzu se předpokládá základní znalost správy Kubernetes pomocí He
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník** > konfigurace**vytvořit** a přidejte následující páry klíč-hodnota:
+6. Vyberte **Průzkumník konfigurace**  >  **vytvořit** a přidejte následující páry klíč-hodnota:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |---|---|
     | Settings. Color | White |
     | nastavení. zpráva | Data z konfigurace aplikace Azure |
@@ -56,7 +56,7 @@ V tomto kurzu se předpokládá základní znalost správy Kubernetes pomocí He
 
 3. Vyberte **Průzkumník konfigurace**.
 
-4. Vyberte **+ vytvořit** > **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
+4. Vyberte **+ vytvořit**  >  **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
     - **Klíč**: vyberte **tajné klíče. Password**.
     - **Popisek**: Nechte tuto hodnotu prázdnou.
     - **Předplatné**, **Skupina prostředků**a **Trezor klíčů**: zadejte hodnoty odpovídající klíčům v trezoru klíčů, který jste vytvořili v předchozím kroku.
@@ -169,7 +169,7 @@ metadata:
   name: mysecret
 type: Opaque
 data:
-  password: {{ .Values.secrets.password }}
+  password: {{ .Values.secrets.password | b64enc }}
 ```
 
 Nakonec aktualizujte soubor *Values. yaml* následujícím obsahem, abyste mohli volitelně zadat výchozí hodnoty nastavení konfigurace a tajné klíče, na které se odkazuje v souborech *Deployment. yaml* a tajné soubory. *YAML* . Jejich skutečné hodnoty budou přepsány konfigurací získanými z konfigurace aplikace.

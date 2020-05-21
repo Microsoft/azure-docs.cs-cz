@@ -8,16 +8,18 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 70282879b64054d48d904b5ada9284f844448851
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 54f82d0ba4b0c5de0b4e373416857d670d4bba53
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792679"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723302"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření spravované image virtuálního počítače nebo virtuálního pevného disku
 
 Pokud chcete vytvořit více kopií virtuálního počítače pro použití v Azure pro vývoj a testování, Zachyťte spravovanou bitovou kopii virtuálního počítače nebo virtuálního pevného disku s operačním systémem. Pokud chcete vytvářet, ukládat a sdílet image ve velkém měřítku, přečtěte si téma [Galerie sdílených imagí](../shared-images-cli.md).
+
+Jedna spravovaná bitová kopie podporuje až 20 současných nasazení. Při pokusu o vytvoření více než 20 virtuálních počítačů současně ze stejné spravované image může docházet k vypršení časového limitu zřizování z důvodu omezení výkonu úložiště u jednoho virtuálního pevného disku. Pokud chcete vytvořit více než 20 virtuálních počítačů současně, použijte image [Galerie sdílených imagí](shared-image-galleries.md) nakonfigurovanou s 1 replikou pro každé 20 souběžných nasazení virtuálních počítačů.
 
 Chcete-li vytvořit spravovanou bitovou kopii, bude nutné odebrat informace o osobním účtu. V následujících krocích zrušíte zřízení existujícího virtuálního počítače, zrušíte jeho přidělení a vytvoříte image. Tuto image můžete použít k vytvoření virtuálních počítačů napříč všemi skupinami prostředků v rámci vašeho předplatného.
 
@@ -37,7 +39,7 @@ Pro zjednodušenou verzi tohoto článku a pro testování, hodnocení nebo uče
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Krok 1: zrušení zřízení virtuálního počítače
-Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure k odstranění souborů a dat specifických pro konkrétní počítač. Použijte `waagent` příkaz s `-deprovision+user` parametrem na zdrojovém virtuálním počítači Linux. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md).
+Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuálního počítače Azure k odstranění souborů a dat specifických pro konkrétní počítač. Použijte `waagent` příkaz s `-deprovision+user` parametrem na ZDROJovém virtuálním počítači Linux. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md).
 
 1. Připojte se k VIRTUÁLNÍmu počítači se systémem Linux pomocí klienta SSH.
 2. V okně SSH zadejte následující příkaz:
@@ -46,9 +48,9 @@ Nejprve zrušíte zřízení virtuálního počítače pomocí agenta virtuáln�
     sudo waagent -deprovision+user
     ```
    > [!NOTE]
-   > Spusťte tento příkaz jenom na virtuálním počítači, který budete zachytit jako image. Tento příkaz nezaručuje, že image je smazána u všech citlivých informací, nebo je vhodná pro redistribuci. `+user` Parametr také odebere naposledy zřízený uživatelský účet. Pokud chcete zachovat přihlašovací údaje uživatelského účtu ve virtuálním počítači `-deprovision`, používejte jenom.
+   > Spusťte tento příkaz jenom na virtuálním počítači, který budete zachytit jako image. Tento příkaz nezaručuje, že image je smazána u všech citlivých informací, nebo je vhodná pro redistribuci. `+user`Parametr také odebere naposledy zřízený uživatelský účet. Pokud chcete zachovat přihlašovací údaje uživatelského účtu ve virtuálním počítači, používejte jenom `-deprovision` .
  
-3. Pokračujte zadáním **y** . Chcete-li se `-force` tomuto kroku potvrzení vyhnout, můžete přidat parametr.
+3. Pokračujte zadáním **y** . `-force`Chcete-li se tomuto kroku potvrzení vyhnout, můžete přidat parametr.
 4. Po dokončení příkazu zadejte **Exit** a zavřete tak klienta ssh.  Virtuální počítač bude v tuto chvíli i nadále spuštěn.
 
 ## <a name="step-2-create-vm-image"></a>Krok 2: vytvoření image virtuálního počítače

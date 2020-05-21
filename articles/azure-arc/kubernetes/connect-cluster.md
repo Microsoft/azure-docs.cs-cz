@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: 9b37ad264dc8a8a6c653c25ddf6ac0fcb4065f9b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: dd4e03ac6bdf2e4554f07f2aa5ffca78b1ed1230
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680820"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725614"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
@@ -169,7 +169,7 @@ AzureArcTest1  eastus      AzureArcTest
 Kubernetes s povoleným obloukem Azure nasadí několik operátorů do `azure-arc` oboru názvů. Tato nasazení a lusky můžete zobrazit tady:
 
 ```console
-kubectl -n azure-arc get deploy,po
+kubectl -n azure-arc get deployments,pods
 ```
 
 **Výkonem**
@@ -198,8 +198,13 @@ pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 
 Kubernetes s povoleným ARC Azure se skládá z několika agentů (operátorů), které běží v clusteru nasazeném do `azure-arc` oboru názvů.
 
-* `deploy/config-agent`: sleduje připojený cluster pro prostředky konfigurace správy zdrojového kódu použité v clusteru a aktualizuje stav dodržování předpisů.
-* `deploy/controller-manager`: je operátor operátorů a orchestruje interakce mezi komponentami ARC Azure.
+* `deployment.apps/config-agent`: sleduje připojený cluster pro prostředky konfigurace správy zdrojového kódu použité v clusteru a aktualizuje stav dodržování předpisů.
+* `deployment.apps/controller-manager`: je operátor operátorů a orchestruje interakce mezi komponentami ARC Azure.
+* `deployment.apps/metrics-agent`: shromažďuje metriky jiných agentů ARC, aby se zajistilo, že tito agenti vykazují optimální výkon.
+* `deployment.apps/cluster-metadata-operator`: shromažďuje metadata clusteru – verze clusteru, počet uzlů a verzi agenta ARC.
+* `deployment.apps/resource-sync-agent`: synchronizuje výše uvedená metadata clusteru do Azure.
+* `deployment.apps/clusteridentityoperator`: udržuje certifikát MSI (Managed Service identity), který používají jiní agenti pro komunikaci s Azure.
+* `deployment.apps/flux-logs-agent`: shromažďuje protokoly z operátorů toku nasazených jako součást konfigurace správy zdrojového kódu.
 
 ## <a name="delete-a-connected-cluster"></a>Odstranění připojeného clusteru
 

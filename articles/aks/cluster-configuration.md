@@ -4,12 +4,12 @@ description: Informace o tom, jak nakonfigurovat cluster ve službě Azure Kuber
 services: container-service
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 94f84beee2d7a76e48ac1470a0ce0b387929cc08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe5ce13d9db8f2bc2231f87de7e602e63d239bfa
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79479160"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725142"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -49,6 +49,8 @@ Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft
 az provider register --namespace Microsoft.ContainerService
 ```
 
+### <a name="new-clusters"></a>Nové clustery
+
 Nakonfigurujte cluster tak, aby při vytvoření clusteru používal Ubuntu 18,04. Pomocí `--aks-custom-headers` příznaku nastavte Ubuntu 18,04 jako výchozí operační systém.
 
 ```azure-cli
@@ -57,17 +59,28 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-
 
 Pokud chcete vytvořit běžný cluster Ubuntu 16,04, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
 
+### <a name="existing-clusters"></a>Existující clustery
+
+Nakonfigurujte nový fond uzlů tak, aby používal Ubuntu 18,04. Pomocí `--aks-custom-headers` příznaku nastavte Ubuntu 18,04 jako výchozí operační systém pro tento fond uzlů.
+
+```azure-cli
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
+```
+
+Pokud chcete vytvořit běžné fondy uzlů Ubuntu 16,04, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
+
+
 ## <a name="custom-resource-group-name"></a>Název vlastní skupiny prostředků
 
-Když v Azure nasadíte cluster služby Azure Kubernetes, vytvoří se pro pracovní uzly druhá skupina prostředků. Ve výchozím nastavení pojmenuje skupinu `MC_resourcegroupname_clustername_location`prostředků uzlu AKS, ale můžete zadat i vlastní název.
+Když v Azure nasadíte cluster služby Azure Kubernetes, vytvoří se pro pracovní uzly druhá skupina prostředků. Ve výchozím nastavení pojmenuje skupinu prostředků uzlu AKS `MC_resourcegroupname_clustername_location` , ale můžete zadat i vlastní název.
 
-Pokud chcete zadat vlastní název skupiny prostředků, nainstalujte rozšíření Azure CLI AKS-Preview verze 0.3.2 nebo novější. Pomocí rozhraní `az aks create` příkazového řádku Azure použijte `--node-resource-group` parametr příkazu k zadání vlastního názvu pro skupinu prostředků. Pokud k nasazení clusteru AKS použijete šablonu Azure Resource Manager, můžete definovat název skupiny prostředků pomocí `nodeResourceGroup` vlastnosti.
+Pokud chcete zadat vlastní název skupiny prostředků, nainstalujte rozšíření Azure CLI AKS-Preview verze 0.3.2 nebo novější. Pomocí rozhraní příkazového řádku Azure použijte `--node-resource-group` parametr `az aks create` příkazu k zadání vlastního názvu pro skupinu prostředků. Pokud k nasazení clusteru AKS použijete šablonu Azure Resource Manager, můžete definovat název skupiny prostředků pomocí `nodeResourceGroup` Vlastnosti.
 
 ```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup --node-resource-group myNodeResourceGroup
 ```
 
-Sekundární skupinu prostředků automaticky vytvoří poskytovatel prostředků Azure ve vlastním předplatném. Všimněte si, že při vytváření clusteru můžete zadat jenom název vlastní skupiny prostředků. 
+Sekundární skupinu prostředků automaticky vytvoří poskytovatel prostředků Azure ve vlastním předplatném. Název vlastní skupiny prostředků můžete zadat jenom při vytvoření clusteru. 
 
 Při práci s skupinou prostředků uzlu Pamatujte na to, že nemůžete:
 

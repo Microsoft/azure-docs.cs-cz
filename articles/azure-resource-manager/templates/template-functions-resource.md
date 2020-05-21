@@ -2,13 +2,13 @@
 title: Funkce šablon – prostředky
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot o prostředcích.
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: 508933cbea3e21fdec63907cef73102866732bb1
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 05/20/2020
+ms.openlocfilehash: d6d98062e2228c22302b250ab3c7bb9683bff232
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891009"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715915"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -43,7 +43,7 @@ Vrátí ID prostředku pro [prostředek rozšíření](../management/extension-r
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Základní formát ID prostředku vrácený touto funkcí je:
 
@@ -108,7 +108,7 @@ Následující příklad vrátí ID prostředku pro zámek skupiny prostředků.
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementace vrací hodnoty pro typ prostředku, který podporuje operaci list. Název operace musí začínat `list`na. Některé běžné použití jsou `listKeys` a. `listSecrets`
+Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementace vrací hodnoty pro typ prostředku, který podporuje operaci list. Název operace musí začínat na `list` . Některé běžné použití jsou `listKeys` `listKeyValue` a `listSecrets` .
 
 ### <a name="parameters"></a>Parametry
 
@@ -116,11 +116,11 @@ Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementa
 |:--- |:--- |:--- |:--- |
 | resourceName nebo resourceIdentifier |Ano |řetězec |Jedinečný identifikátor prostředku |
 | apiVersion |Ano |řetězec |Verze rozhraní API stavu modulu runtime prostředku Obvykle ve formátu **yyyy-MM-DD**. |
-| functionValues |No |objekt | Objekt, který má hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
+| functionValues |No |odkazy objektů | Objekt, který má hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
 
 ### <a name="valid-uses"></a>Platná použití
 
-Funkce seznamu se dá použít jenom ve vlastnostech definice prostředků a v části výstupy šablony nebo nasazení. Při použití s [iterací vlastnosti](copy-properties.md)můžete použít funkce seznamu, `input` protože výraz je přiřazen vlastnosti prostředku. Nelze je použít s `count` , protože počet musí být určen před vyřešením funkce seznamu.
+Funkce seznamu se dá použít jenom ve vlastnostech definice prostředků a v části výstupy šablony nebo nasazení. Při použití s [iterací vlastnosti](copy-properties.md)můžete použít funkce seznamu, `input` protože výraz je přiřazen vlastnosti prostředku. Nelze je použít s, `count` protože počet musí být určen před vyřešením funkce seznamu.
 
 ### <a name="implementations"></a>Implementace
 
@@ -129,6 +129,7 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Typ prostředku | Název funkce |
 | ------------- | ------------- |
 | Microsoft. AnalysisServices/servery | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Microsoft. AppConfiguration] | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
 | Microsoft. AppConfiguration/configurationStores | Klíče listkey |
 | Microsoft. Automation/automationAccounts | [Klíče listkey](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft. Batch/batchAccounts | [klíče listkey](/rest/api/batchmanagement/batchaccount/getkeys) |
@@ -227,15 +228,15 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. Web/umístění | listwsdlinterfaces |
 | Microsoft. Web/apimanagementaccounts/API/Connections | listconnectionkeys |
 | Microsoft. Web/apimanagementaccounts/API/Connections | listsecrets |
-| Microsoft. Web/weby/zálohy | [list](/rest/api/appservice/webapps/listbackups) |
-| Microsoft. Web/weby/konfigurace | [list](/rest/api/appservice/webapps/listconfigurations) |
+| Microsoft. Web/weby/zálohy | [seznamu](/rest/api/appservice/webapps/listbackups) |
+| Microsoft. Web/weby/konfigurace | [seznamu](/rest/api/appservice/webapps/listconfigurations) |
 | Microsoft. Web/weby/funkce | [klíče listkey](/rest/api/appservice/webapps/listfunctionkeys)
 | Microsoft. Web/weby/funkce | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
 | Microsoft. Web/weby/hybridconnectionnamespaces/Relay | [klíče listkey](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | Microsoft. Web/weby | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
 | Microsoft. Web/weby/sloty/funkce | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
-| Microsoft. Web/weby/sloty/zálohy | [list](/rest/api/appservice/webapps/listbackupsslot) |
-| Microsoft. Web/weby/sloty/config | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
+| Microsoft. Web/weby/sloty/zálohy | [seznamu](/rest/api/appservice/webapps/listbackupsslot) |
+| Microsoft. Web/weby/sloty/config | [seznamu](/rest/api/appservice/webapps/listconfigurationsslot) |
 | Microsoft. Web/weby/sloty/funkce | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
 Chcete-li zjistit, které typy prostředků mají operaci seznamu, máte následující možnosti:
@@ -252,7 +253,7 @@ Chcete-li zjistit, které typy prostředků mají operaci seznamu, máte násled
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrácený objekt se liší podle funkce seznamu, kterou používáte. Například klíče listkey pro účet úložiště vrátí následující formát:
 
@@ -363,7 +364,7 @@ Vrátí informace o poskytovateli prostředků a jeho podporovaných typech pros
 | providerNamespace |Ano |řetězec |Obor názvů poskytovatele |
 | resourceType |No |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Každý podporovaný typ je vrácen v následujícím formátu:
 
@@ -437,9 +438,9 @@ Vrátí objekt představující běhový stav prostředku.
 |:--- |:--- |:--- |:--- |
 | resourceName nebo resourceIdentifier |Ano |řetězec |Název nebo jedinečný identifikátor prostředku Při odkazování na prostředek v aktuální šabloně zadejte jako parametr jenom název prostředku. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
 | apiVersion |No |řetězec |Verze rozhraní API zadaného prostředku **Tento parametr je vyžadován, pokud prostředek není zřízen v rámci stejné šablony.** Obvykle ve formátu **yyyy-MM-DD**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
-| Kompletní |No |řetězec |Hodnota, která určuje, zda má být vrácen úplný objekt prostředku. Pokud nezadáte `'Full'`, vrátí se pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID a umístění prostředku. |
+| Kompletní |No |řetězec |Hodnota, která určuje, zda má být vrácen úplný objekt prostředku. Pokud nezadáte `'Full'` , vrátí se pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID a umístění prostředku. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Každý typ prostředku vrátí různé vlastnosti referenční funkce. Funkce nevrací jeden, předdefinovaný formát. Vrácená hodnota se také liší v závislosti na hodnotě `'Full'` argumentu. Chcete-li zobrazit vlastnosti pro typ prostředku, vraťte objekt v části výstupy, jak je znázorněno v příkladu.
 
@@ -488,7 +489,7 @@ Použijte `'Full'` v případě, že potřebujete hodnoty prostředků, které n
 
 ### <a name="valid-uses"></a>Platná použití
 
-Odkazovaná funkce se dá použít jenom ve vlastnostech definice prostředků a v části výstupy šablony nebo nasazení. Při použití s [iterací vlastnosti](copy-properties.md)můžete použít referenční funkci pro `input` , protože výraz je přiřazen vlastnosti prostředku.
+Odkazovaná funkce se dá použít jenom ve vlastnostech definice prostředků a v části výstupy šablony nebo nasazení. Při použití s [iterací vlastnosti](copy-properties.md)můžete použít referenční funkci pro, `input` protože výraz je přiřazen vlastnosti prostředku.
 
 Pomocí referenční funkce nelze nastavit hodnotu `count` vlastnosti ve smyčce kopírování. Můžete použít k nastavení dalších vlastností ve smyčce. Odkaz je blokován pro vlastnost Count, protože tato vlastnost musí být určena před vyřešením Referenční funkce.
 
@@ -508,7 +509,7 @@ Když odkazujete na prostředek, který je nasazený ve stejné šabloně, zadej
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-Když odkazujete na prostředek, který není nasazený ve stejné šabloně, zadejte ID prostředku a `apiVersion`.
+Když odkazujete na prostředek, který není nasazený ve stejné šabloně, zadejte ID prostředku a `apiVersion` .
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
@@ -524,9 +525,9 @@ Při sestavování plně kvalifikovaného odkazu na prostředek, pořadí pro ko
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Příklad:
+Například:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`je správné `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` , není správné.
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`je správné, není `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` správné.
 
 Pro zjednodušení vytváření ID prostředku použijte `resourceId()` funkce popsané v tomto dokumentu namísto `concat()` funkce.
 
@@ -666,7 +667,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Vrátí objekt, který představuje aktuální skupinu prostředků.
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrácený objekt je v následujícím formátu:
 
@@ -689,7 +690,7 @@ Vlastnost **ManagedBy** je vrácena pouze pro skupiny prostředků, které obsah
 
 ### <a name="remarks"></a>Poznámky
 
-`resourceGroup()` Funkci nelze použít v šabloně, která je [nasazena na úrovni předplatného](deploy-to-subscription.md). Dá se použít jenom v šablonách, které se nasazují do skupiny prostředků. `resourceGroup()` Funkci můžete použít v [propojené nebo vnořené šabloně (s vnitřním rozsahem)](linked-templates.md) , která cílí na skupinu prostředků, i když je nadřazená šablona nasazena do předplatného. V takovém případě je propojená nebo vnořená šablona nasazena na úrovni skupiny prostředků. Další informace o cílení skupiny prostředků v nasazení na úrovni předplatného najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](cross-resource-group-deployment.md).
+`resourceGroup()`Funkci nelze použít v šabloně, která je [nasazena na úrovni předplatného](deploy-to-subscription.md). Dá se použít jenom v šablonách, které se nasazují do skupiny prostředků. Funkci můžete použít `resourceGroup()` v [propojené nebo vnořené šabloně (s vnitřním rozsahem)](linked-templates.md) , která cílí na skupinu prostředků, i když je nadřazená šablona nasazena do předplatného. V takovém případě je propojená nebo vnořená šablona nasazena na úrovni skupiny prostředků. Další informace o cílení skupiny prostředků v nasazení na úrovni předplatného najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](cross-resource-group-deployment.md).
 
 Běžné použití funkce Resource je vytvořit prostředky ve stejném umístění jako skupina prostředků. Následující příklad používá umístění skupiny prostředků pro výchozí hodnotu parametru.
 
@@ -756,7 +757,7 @@ Vrátí jedinečný identifikátor prostředku. Tuto funkci použijete, pokud je
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Když je šablona nasazená v oboru skupiny prostředků, vrátí se ID prostředku v následujícím formátu:
 
@@ -888,10 +889,10 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| sameRGOutput | Řetězec | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | Řetězec | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | Řetězec | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | Řetězec | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 ## <a name="subscription"></a>předplatné
 
@@ -899,7 +900,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 Vrátí podrobnosti o předplatném pro aktuální nasazení.
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Funkce vrátí následující formát:
 
@@ -951,7 +952,7 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni předplatn
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Identifikátor se vrátí v následujícím formátu:
 
@@ -1032,7 +1033,7 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni tenanta.
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Identifikátor se vrátí v následujícím formátu:
 

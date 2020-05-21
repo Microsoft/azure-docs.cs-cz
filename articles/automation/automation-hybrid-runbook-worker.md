@@ -1,16 +1,16 @@
 ---
-title: Přehled Hybrid Runbook Worker v Azure Automation
-description: Tento článek poskytuje přehled Hybrid Runbook Worker, což je funkce Azure Automation, kterou můžete použít ke spouštění Runbooků na počítačích v místním datovém centru nebo poskytovateli cloudu.
+title: Přehled Azure Automation Hybrid Runbook Worker
+description: Tento článek poskytuje přehled Hybrid Runbook Worker, které můžete použít ke spouštění Runbooků na počítačích v místním datovém centru nebo poskytovateli cloudu.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: c02a61366b05fa2750c581a1dedefb0d6239dada
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f555d603756159dd108345260d71233c23c01ce5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994765"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715711"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Přehled funkce Hybrid Runbook Worker
 
@@ -53,7 +53,7 @@ Pro Hybrid Runbook Worker jsou vyžadovány následující porty a adresy URL:
 * Port: pro odchozí přístup k Internetu se vyžaduje jenom TCP 443.
 * Globální adresa URL: *. azure-automation.net
 * Globální adresa URL US Gov – Virginie: *.azure-automation.us
-* Služba agenta: https://\<id pracovního prostoru\>. agentsvc.Azure-Automation.NET
+* Služba agenta: https:// \< ID pracovního prostoru \> . agentsvc.Azure-Automation.NET
 
 Doporučujeme používat adresy uvedené při definování [výjimek](automation-runbook-execution.md#exceptions). Pro IP adresy můžete stáhnout [Microsoft Azure rozsahy IP adres datacentra](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Tento soubor se aktualizuje týdně a má aktuálně nasazené rozsahy a všechny nadcházející změny rozsahu IP adres.
 
@@ -112,9 +112,9 @@ Nad standardními adresami a porty, které Hybrid Runbook Worker vyžaduje, Upda
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
 |*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
 
-## <a name="state-configuration-dsc-on-hybrid-runbook-worker"></a>Konfigurace stavu (DSC) v Hybrid Runbook Worker
+## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Konfigurace stavu Azure Automation na Hybrid Runbook Worker
 
-Můžete spustit funkci [Konfigurace stavu (DSC)](automation-dsc-overview.md) na Hybrid Runbook Worker. Chcete-li spravovat konfiguraci serverů, které podporují Hybrid Runbook Worker, je nutné přidat servery jako uzly DSC. Další informace o registraci najdete v tématu [zprovoznění počítačů pro správu podle konfigurace stavu (DSC)](automation-dsc-onboarding.md).
+V Hybrid Runbook Worker můžete spustit [konfiguraci stavu Azure Automation](automation-dsc-overview.md) . Chcete-li spravovat konfiguraci serverů, které podporují Hybrid Runbook Worker, je nutné přidat servery jako uzly DSC. Další informace najdete v tématu [Povolení počítačů pro správu podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
 
 ## <a name="runbooks-on-a-hybrid-runbook-worker"></a>Runbooky na Hybrid Runbook Worker
 

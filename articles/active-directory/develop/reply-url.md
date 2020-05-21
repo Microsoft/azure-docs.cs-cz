@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7aefc54a20e23ae969750532e7e3bc824f69c56
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77656734"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725308"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Omezení pro adresu URL odpovědi / identifikátor URI přesměrování
 
@@ -23,8 +23,9 @@ Identifikátor URI pro přesměrování nebo adresa URL odpovědi je umístění
 
  Pro adresy URL odpovědí platí následující omezení:
 
-    * Adresa URL odpovědi musí začínat schématem `https`.
-    * Adresa URL odpovědi rozlišuje velká a malá písmena. Jeho velikost se musí shodovat s písmenem adresy URL vaší běžící aplikace. Například pokud vaše aplikace obsahuje jako součást cesty `.../abc/response-oidc`, nezadávejte `.../ABC/response-oidc` v adrese URL odpovědi. Vzhledem k tomu, že webový prohlížeč považuje cesty jako rozlišování velkých a `.../abc/response-oidc` malých písmen, mohou být soubory cookie přidružené k vyloučeny při `.../ABC/response-oidc` přesměrování na neshodnou adresu URL.
+* Adresa URL odpovědi musí začínat schématem `https` .
+
+* Adresa URL odpovědi rozlišuje velká a malá písmena. Jeho velikost se musí shodovat s písmenem adresy URL vaší běžící aplikace. Například pokud vaše aplikace obsahuje jako součást cesty `.../abc/response-oidc` , nezadávejte `.../ABC/response-oidc` v adrese URL odpovědi. Vzhledem k tomu, že webový prohlížeč považuje cesty jako rozlišování velkých a malých písmen, mohou být soubory cookie přidružené k `.../abc/response-oidc` vyloučeny při přesměrování na neshodnou `.../ABC/response-oidc` adresu URL.
     
 ## <a name="maximum-number-of-redirect-uris"></a>Maximální počet identifikátorů URI pro přesměrování
 
@@ -47,7 +48,7 @@ Aplikační model Azure AD dnes podporuje schémata HTTP i HTTPS pro aplikace, k
 
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>Omezení používající zástupné znaky v identifikátorech URI
 
-Zástupné identifikátory URI `https://*.contoso.com`, například, jsou pohodlné, ale měly by se vyhnout. Použití zástupných znaků v identifikátoru URI přesměrování má vliv na zabezpečení. V souladu se specifikací OAuth 2,0 ([oddíl 3.1.2 dokumentu RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)) musí být identifikátor URI koncového bodu přesměrování ABSOLUTNÍm identifikátorem URI. 
+Zástupné identifikátory URI, například `https://*.contoso.com` , jsou pohodlné, ale měly by se vyhnout. Použití zástupných znaků v identifikátoru URI přesměrování má vliv na zabezpečení. V souladu se specifikací OAuth 2,0 ([oddíl 3.1.2 dokumentu RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)) musí být identifikátor URI koncového bodu přesměrování ABSOLUTNÍm identifikátorem URI. 
 
 Aplikační model Azure AD nepodporuje zástupné identifikátory URI pro aplikace, které jsou nakonfigurované k podepisování osobních účtů Microsoft a pracovních nebo školních účtů. Pro aplikace, které jsou nakonfigurované na pracovní nebo školní účty v tenantovi Azure AD ve vaší organizaci, ale jsou povolené identifikátory URI se zástupnými znaky. 
  

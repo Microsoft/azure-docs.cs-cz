@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: add2d515e4f8e8c56a98a7292e137e601332d10c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e653adfd7a148cea7bfb1ecfdbbf386eff0c3e86
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410865"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723319"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
@@ -65,18 +65,18 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 ```
 
 > [!NOTE]
-> Vaše sledované adresy URL certifikátů by měly být ve `https://myVaultName.vault.azure.net/secrets/myCertName`formátu.
+> Vaše sledované adresy URL certifikátů by měly být ve formátu `https://myVaultName.vault.azure.net/secrets/myCertName` .
 > 
-> Důvodem je to, `/secrets` že cesta vrátí úplný certifikát, včetně privátního klíče, ale `/certificates` cesta ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates) .
+> Důvodem je to `/secrets` , že cesta vrátí úplný certifikát, včetně privátního klíče, ale `/certificates` cesta ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates) .
 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
-| type | KeyVaultForLinux | řetězec |
+| typ | KeyVaultForLinux | řetězec |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | řetězec |
 | certificateStoreName | MY | řetězec |
@@ -194,7 +194,7 @@ Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Ke
 Mějte na paměti následující omezení/požadavky:
 - Omezení Key Vault:
   - Musí existovat v době nasazení. 
-  - Zásada přístupu Key Vault je nastavená pro identitu VM/VMSS pomocí MSI.
+  - Mustbe sada zásad přístupu Key Vault pro identitu VM/VMSS pomocí spravované identity. Viz [poskytnutí Key Vault ověřování pomocí spravované identity](../../key-vault/managed-identity.md)
 
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora

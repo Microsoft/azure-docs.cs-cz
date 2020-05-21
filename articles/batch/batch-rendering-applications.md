@@ -2,13 +2,13 @@
 title: Vykreslování aplikací
 description: Je možné použít jakékoli aplikace pro vykreslování Azure Batch. Azure Marketplace imagí virtuálních počítačů ale jsou k dispozici společně s předinstalovanými běžnými aplikacemi.
 ms.date: 09/19/2019
-ms.topic: conceptual
-ms.openlocfilehash: f04fff3df2deb714f0432e5ad77d921a2d7ac205
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 70e3fb18f0cc4788303ed16656e1eed0f8177dfc
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115784"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726481"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>Předem instalované aplikace na vykreslování imagí virtuálních počítačů
 
@@ -60,7 +60,7 @@ Následující seznam platí pro Windows Server 2016, verze vykreslování imag�
 * AZ 10
 
 > [!IMPORTANT]
-> Pokud chcete spustit V-Ray s Maya mimo [šablony rozšíření Azure Batch](https://github.com/Azure/batch-extension-templates), začněte `vrayses.exe` ještě před spuštěním vykreslování. Chcete-li spustit vrayses. exe mimo šablony, můžete použít následující příkaz `%MAYA_2017%\vray\bin\vrayses.exe"`.
+> Pokud chcete spustit V-Ray s Maya mimo [šablony rozšíření Azure Batch](https://github.com/Azure/batch-extension-templates), začněte `vrayses.exe` ještě před spuštěním vykreslování. Chcete-li spustit vrayses. exe mimo šablony, můžete použít následující příkaz `%MAYA_2017%\vray\bin\vrayses.exe"` .
 >
 > Příklad najdete v tématu spuštění úlohy [šablony Maya a v-Ray](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) na GitHubu.
 

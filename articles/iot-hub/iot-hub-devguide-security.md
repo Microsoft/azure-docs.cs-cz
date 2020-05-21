@@ -11,12 +11,12 @@ ms.date: 07/18/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b7f9ac7e6e7049a3b744151bc9cb05115fbac935
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1f6f4a6a1d48a0f409d5e5aba644a26653aa7df
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729216"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726056"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -75,7 +75,7 @@ Další informace o tom, jak vytvářet a používat tokeny zabezpečení, najde
 
 Každý podporovaný protokol, například MQTT, AMQP a HTTPS, přesměruje tokeny různými způsoby.
 
-Při použití MQTT má paket CONNECT deviceId jako ClientId, v poli UserName ( `{iothubhostname}/{deviceId}` uživatelské jméno) a token SAS v poli heslo. `{iothubhostname}`mělo by se jednat o úplný záznam CName služby IoT Hub (například contoso.azure-devices.net).
+Při použití MQTT má paket CONNECT deviceId jako ClientId, `{iothubhostname}/{deviceId}` v poli UserName (uživatelské jméno) a token SAS v poli heslo. `{iothubhostname}`mělo by se jednat o úplný záznam CName služby IoT Hub (například contoso.azure-devices.net).
 
 Při použití [AMQP](https://www.amqp.org/)podporuje IoT Hub [SASL Plain](https://tools.ietf.org/html/rfc4616) a [AMQP a zabezpečení založené na deklaracích identity](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
 
@@ -94,7 +94,7 @@ Protokol HTTPS implementuje ověřování zahrnutím platného tokenu do hlavič
 
 Username (DeviceId rozlišuje velká a malá písmena):`iothubname.azure-devices.net/DeviceId`
 
-Heslo (můžete vygenerovat token SAS pomocí příkazu CLI Extension. [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
+Heslo (můžete vygenerovat token SAS pomocí příkazu CLI Extension. [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -139,15 +139,15 @@ Tady jsou očekávané hodnoty:
 
 | Hodnota | Popis |
 | --- | --- |
-| označení |Řetězec pro podpis HMAC-SHA256 ve formátu: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: klíč se dekóduje z formátu Base64 a používá se jako klíč k provedení výpočtu HMAC-SHA256. |
+| označení |Řetězec pro podpis HMAC-SHA256 ve formátu: `{URL-encoded-resourceURI} + "\n" + expiry` . **Důležité**: klíč se dekóduje z formátu Base64 a používá se jako klíč k provedení výpočtu HMAC-SHA256. |
 | resourceUri |Předpona URI (podle segmentu) koncových bodů, ke kterým se dá dostat s tímto tokenem, počínaje názvem hostitele centra IoT (bez protokolu). Například `myHub.azure-devices.net/devices/device1`. |
 | vypršení platnosti |Řetězce UTF8 po dobu v sekundách od epocha 00:00:00 UTC dne 1. ledna 1970. |
 | {URL-Encoded-resourceURI} |Malá adresa URL – kódování identifikátoru URI pro malý případ prostředku |
 | PolicyName |Název zásad sdíleného přístupu, na který tento token odkazuje Chybí, pokud token odkazuje na přihlašovací údaje registru zařízení. |
 
-**Poznámka k předponě**: PŘEDPONa identifikátoru URI je vypočítána segmentem a nikoli znakem. Například `/a/b` je prefix pro `/a/b/c` , ale ne pro. `/a/bc`
+**Poznámka k předponě**: PŘEDPONa identifikátoru URI je vypočítána segmentem a nikoli znakem. Například `/a/b` je prefix pro `/a/b/c` , ale ne pro `/a/bc` .
 
-Následující fragment kódu Node. js ukazuje funkci nazvanou **generateSasToken** , která vypočítá token ze vstupů `resourceUri, signingKey, policyName, expiresInMins`. Další části podrobně popisují, jak inicializovat různé vstupy pro různé případy použití tokenu.
+Následující fragment kódu Node. js ukazuje funkci nazvanou **generateSasToken** , která vypočítá token ze vstupů `resourceUri, signingKey, policyName, expiresInMins` . Další části podrobně popisují, jak inicializovat různé vstupy pro různé případy použití tokenu.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -243,7 +243,7 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 Existují dva způsoby, jak pomocí IoT Hub s tokeny zabezpečení získat oprávnění **DeviceConnect** : použijte [symetrický klíč zařízení z registru identity](#use-a-symmetric-key-in-the-identity-registry)nebo použijte [sdílený přístupový klíč](#use-a-shared-access-policy).
 
-Mějte na paměti, že všechny funkce dostupné ze zařízení jsou zpřístupněné návrhem `/devices/{deviceId}`u koncových bodů s předponou.
+Mějte na paměti, že všechny funkce dostupné ze zařízení jsou zpřístupněné návrhem u koncových bodů s předponou `/devices/{deviceId}` .
 
 > [!IMPORTANT]
 > Jediný způsob, jak IoT Hub ověřit konkrétní zařízení, používá symetrický klíč identity zařízení. V případech, kdy se k přístupu k funkcím zařízení používá zásada sdíleného přístupu, musí řešení brát v úvahu součást, která vydává token zabezpečení jako důvěryhodnou podsoučást.
@@ -257,12 +257,12 @@ Koncové body směřující k zařízení jsou (bez ohledu na protokol):
 
 ### <a name="use-a-symmetric-key-in-the-identity-registry"></a>Použití symetrického klíče v registru identit
 
-Pokud k vygenerování tokenu použijete symetrický klíč identity zařízení, bude element Policy (`skn`) tohoto tokenu vynechán.
+Pokud k vygenerování tokenu použijete symetrický klíč identity zařízení, bude element Policy ( `skn` ) tohoto tokenu vynechán.
 
 Například token vytvořený pro přístup ke všem funkcím zařízení by měl mít následující parametry:
 
-* identifikátor URI prostředku `{IoT hub name}.azure-devices.net/devices/{device id}`:,
-* podpisový klíč: libovolný symetrický klíč `{device id}` pro identitu,
+* identifikátor URI prostředku: `{IoT hub name}.azure-devices.net/devices/{device id}` ,
+* podpisový klíč: libovolný symetrický klíč pro `{device id}` identitu,
 * žádný název zásad,
 * čas vypršení platnosti.
 
@@ -280,7 +280,7 @@ Výsledek, který uděluje přístup ke všem funkcím pro zařízení1, by byl:
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Je možné vygenerovat token SAS pomocí příkazu CLI rozšíření [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+> Je možné vygenerovat token SAS pomocí příkazu CLI rozšíření [AZ IoT Hub Generate-SAS-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token)nebo [Azure iot Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 ### <a name="use-a-shared-access-policy"></a>Použití zásad sdíleného přístupu
 
@@ -295,9 +295,9 @@ Vzhledem k tomu, že zásady sdíleného přístupu můžou potenciálně uděli
 
 Například služba tokenů pomocí předem vytvořených zásad sdíleného přístupu označovaného jako **zařízení** vytvoří token s následujícími parametry:
 
-* identifikátor URI prostředku `{IoT hub name}.azure-devices.net/devices/{device id}`:,
+* identifikátor URI prostředku: `{IoT hub name}.azure-devices.net/devices/{device id}` ,
 * podpisový klíč: jeden z klíčů `device` zásady,
-* Název zásady: `device`,
+* Název zásady: `device` ,
 * čas vypršení platnosti.
 
 Příklad využívající předchozí funkci Node. js by byl:
@@ -314,7 +314,7 @@ Výsledek, který uděluje přístup ke všem funkcím pro zařízení1, by byl:
 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697&skn=device`
 
-Brána protokolu může použít stejný token pro všechna zařízení pouhým nastavením identifikátoru URI prostředku na `myhub.azure-devices.net/devices`.
+Brána protokolu může použít stejný token pro všechna zařízení pouhým nastavením identifikátoru URI prostředku na `myhub.azure-devices.net/devices` .
 
 ### <a name="use-security-tokens-from-service-components"></a>Použití tokenů zabezpečení z komponent služby
 
@@ -331,9 +331,9 @@ Tady jsou funkce služby vystavené na koncových bodech:
 
 Například služba, která vygenerovala pomocí předem vytvořených zásad sdíleného přístupu s názvem **registryRead** , vytvoří token s následujícími parametry:
 
-* identifikátor URI prostředku `{IoT hub name}.azure-devices.net/devices`:,
+* identifikátor URI prostředku: `{IoT hub name}.azure-devices.net/devices` ,
 * podpisový klíč: jeden z klíčů `registryRead` zásady,
-* Název zásady: `registryRead`,
+* Název zásady: `registryRead` ,
 * čas vypršení platnosti.
 
 ```javascript
@@ -368,13 +368,13 @@ Další informace o ověřování pomocí certifikační autority najdete v tém
 
 [Sada Azure IoT Service SDK pro C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (verze 1.0.8 +) podporuje registraci zařízení, které pro ověřování používá certifikát X. 509. Další rozhraní API, jako je například import a export zařízení, podporují také certifikáty X. 509.
 
-Můžete také použít příkaz rozšíření CLI [AZ IoT Hub Device-identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) ke konfiguraci certifikátů X. 509 pro zařízení.
+Můžete také použít příkaz rozšíření CLI [AZ IoT Hub Device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) ke konfiguraci certifikátů X. 509 pro zařízení.
 
-### <a name="c-support"></a>Podpora\# jazyka C
+### <a name="c-support"></a>Podpora jazyka C \#
 
 Třída **RegistryManager** poskytuje programový způsob registrace zařízení. Konkrétně metody **AddDeviceAsync** a **UpdateDeviceAsync** umožňují registraci a aktualizaci zařízení v registru IoT Hub identity. Tyto dvě metody jako vstup přebírají instanci **zařízení** . Třída **zařízení** zahrnuje vlastnost **ověřování** , která umožňuje určit primární a sekundární kryptografické otisky certifikátů X. 509. Kryptografický otisk představuje SHA256 hodnotu hash certifikátu X. 509 (uložený pomocí binárního kódování DER). Máte možnost určit primární kryptografický otisk nebo sekundární kryptografický otisk nebo obojí. U primárních a sekundárních kryptografických otisků se podporuje zpracování scénářů přechodu certifikátů.
 
-Tady je ukázkový fragment kódu\# jazyka C k registraci zařízení pomocí kryptografického otisku certifikátu X. 509:
+Tady je ukázkový \# fragment kódu jazyka C k registraci zařízení pomocí kryptografického otisku certifikátu X. 509:
 
 ```csharp
 var device = new Device(deviceId)
@@ -395,7 +395,7 @@ await registryManager.AddDeviceAsync(device);
 
 [Sada SDK pro zařízení Azure IoT pro .NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device) (verze 1.0.11 +) podporuje použití certifikátů X. 509.
 
-### <a name="c-support"></a>Podpora\# jazyka C
+### <a name="c-support"></a>Podpora jazyka C \#
 
 Třída **DeviceAuthenticationWithX509Certificate** podporuje vytváření instancí **DeviceClient** pomocí certifikátu X. 509. Certifikát X. 509 musí být ve formátu PFX (označovaném také jako PKCS #12), který obsahuje privátní klíč.
 
@@ -421,7 +421,7 @@ Tady jsou hlavní kroky vzoru služby tokenu:
 
 2. Když zařízení nebo modul potřebuje přístup k centru IoT, vyžádá si podepsaný token ze služby tokenů. Zařízení se může ověřit pomocí vlastního schématu registru nebo ověřování identity, aby bylo možné zjistit identitu zařízení/modulu, kterou služba tokenů používá k vytvoření tokenu.
 
-3. Služba tokenů vrací token. Token se `/devices/{deviceId}` vytvoří pomocí nebo `/devices/{deviceId}/module/{moduleId}` jako `resourceURI`s `deviceId` ověřováním zařízení nebo `moduleId` jako modul, který se ověřuje. Služba tokenů používá zásady sdíleného přístupu k vytvoření tokenu.
+3. Služba tokenů vrací token. Token se vytvoří pomocí `/devices/{deviceId}` nebo `/devices/{deviceId}/module/{moduleId}` jako `resourceURI` s `deviceId` ověřováním zařízení nebo jako modul, který se `moduleId` ověřuje. Služba tokenů používá zásady sdíleného přístupu k vytvoření tokenu.
 
 4. Zařízení/modul používá token přímo ve službě IoT Hub.
 

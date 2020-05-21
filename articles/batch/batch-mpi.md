@@ -1,15 +1,15 @@
 ---
 title: Použití úkolů s více instancemi ke spouštění aplikací MPI
 description: Naučte se spouštět aplikace MPI (Message Passing Interface) pomocí typu úlohy s více instancemi v Azure Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/13/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4502fc9632c2cb05d757459d07bcfe17ae96aea2
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 43902e774f4c291e8d6a9c659b575d7e75ca032e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735262"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724223"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Použití úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing Interface) ve Batch
 
@@ -30,8 +30,8 @@ Když odešlete úlohu s nastavením více instancí do úlohy, dávka provede n
 1. Služba Batch vytvoří jeden **primární** a několik dílčích **úloh** na základě nastavení s více instancemi. Celkový počet úloh (primární a všechny dílčí úkoly) odpovídá počtu **instancí** (výpočetních uzlů), které zadáte v nastavení více instancí.
 2. Batch označí jeden z výpočetních uzlů jako **Hlavní**a naplánuje primární úlohu, která se má spustit na hlavním serveru. Naplánuje dílčí úkoly, které se mají provést, na zbytek výpočetních uzlů přidělených úloze s více instancemi, jednoho dílčího úkolu na uzel.
 3. Primární a všechny dílčí úkoly stáhnou všechny **běžné soubory prostředků** , které zadáte v nastavení více instancí.
-4. Po stažení běžných souborů prostředků provede primární a dílčí úkoly **příkaz koordinace** , který zadáte v nastavení více instancí. Příkaz koordinace se obvykle používá k přípravě uzlů pro provedení úlohy. To může zahrnovat spouštění služeb na pozadí (například [Microsoft MPI][msmpi_msdn] `smpd.exe`) a ověření, že uzly jsou připravené na zpracování zpráv mezi uzly.
-5. Primární úloha spustí **příkaz aplikace** na hlavním uzlu *po* úspěšném dokončení příkazu koordinace primárním a všemi dílčími úkoly. Příkaz aplikace je příkazový řádek samotného úkolu s více instancemi a je proveden pouze primárním úkolem. V řešení založeném na [MS-MPI][msmpi_msdn]se jedná o místo, kde spouštíte aplikaci s povoleným `mpiexec.exe`MPI pomocí.
+4. Po stažení běžných souborů prostředků provede primární a dílčí úkoly **příkaz koordinace** , který zadáte v nastavení více instancí. Příkaz koordinace se obvykle používá k přípravě uzlů pro provedení úlohy. To může zahrnovat spouštění služeb na pozadí (například [Microsoft MPI][msmpi_msdn] `smpd.exe` ) a ověření, že uzly jsou připravené na zpracování zpráv mezi uzly.
+5. Primární úloha spustí **příkaz aplikace** na hlavním uzlu *po* úspěšném dokončení příkazu koordinace primárním a všemi dílčími úkoly. Příkaz aplikace je příkazový řádek samotného úkolu s více instancemi a je proveden pouze primárním úkolem. V řešení založeném na [MS-MPI][msmpi_msdn]se jedná o místo, kde spouštíte aplikaci s povoleným MPI pomocí `mpiexec.exe` .
 
 > [!NOTE]
 > I když je funkce velmi odlišná, nejedná se o jedinečný typ úlohy, jako je [StartTask][net_starttask] nebo [JobPreparationTask][net_jobprep]. Úloha s více instancemi je jednoduše standardní dávková úloha ([CloudTask][net_task] v dávce .NET), jejíž nastavení s více instancemi je nakonfigurované. V tomto článku budeme tento postup označovat jako úlohu s **více instancemi**.
@@ -150,19 +150,19 @@ Vyvolání příkazu koordinace je blokováno – dávka nespustí příkaz apli
 cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 ```
 
-Všimněte si použití `start` v tomto příkazu koordinace. To je nutné, `smpd.exe` protože aplikace se po provedení nevrátí hned. Bez použití příkazu [Start][cmd_start] by tento příkaz koordinace nevrátil, a proto zablokoval spuštění příkazu aplikace.
+Všimněte si použití `start` v tomto příkazu koordinace. To je nutné, protože `smpd.exe` aplikace se po provedení nevrátí hned. Bez použití příkazu [Start][cmd_start] by tento příkaz koordinace nevrátil, a proto zablokoval spuštění příkazu aplikace.
 
 ## <a name="application-command"></a>Příkaz aplikace
 Jakmile primární úkol a všechny dílčí úkoly dokončí příkaz koordinace, příkazový řádek úlohy s více instancemi se spustí *jenom*primární úlohou. Tento **příkaz aplikace** voláme, aby se lišil od příkazu koordinace.
 
-Pro aplikace MS-MPI použijte příkaz aplikace a spusťte aplikaci s `mpiexec.exe`podporou MPI. Například tady je příkaz aplikace pro řešení s použitím MS-MPI verze 7:
+Pro aplikace MS-MPI použijte příkaz aplikace a spusťte aplikaci s podporou MPI `mpiexec.exe` . Například tady je příkaz aplikace pro řešení s použitím MS-MPI verze 7:
 
 ```
 cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe
 ```
 
 > [!NOTE]
-> Vzhledem k tomu, že `mpiexec.exe` MS- `CCP_NODES` MPI používá proměnnou ve výchozím nastavení (viz [proměnné prostředí](#environment-variables)) výše uvedený příkazový řádek aplikace je vyloučí.
+> Vzhledem k tomu, že MS-MPI `mpiexec.exe` používá `CCP_NODES` proměnnou ve výchozím nastavení (viz [proměnné prostředí](#environment-variables)) výše uvedený příkazový řádek aplikace je vyloučí.
 >
 >
 
@@ -186,12 +186,12 @@ Následující proměnné prostředí vytváří služba Batch pro použití v �
 ## <a name="resource-files"></a>Soubory prostředků
 Existují dvě sady souborů prostředků, které je třeba vzít v úvahu pro úlohy s více instancemi: **běžné soubory prostředků** , které *všechny* úlohy stahují (primární i dílčí úkoly), a **soubory prostředků** zadané pro vlastní úlohu s více instancemi, které se pouze stahují *primární* úlohy.
 
-V nastaveních více instancí úlohy můžete určit jeden nebo více **běžných souborů prostředků** . Tyto běžné soubory prostředků se stáhnou z [Azure Storage](../storage/common/storage-introduction.md) do **sdíleného adresáře úkolů** každého uzlu na základě primárního a všech dílčích úkolů. Ke sdílenému adresáři úlohy můžete přistupovat z aplikace a příkazového řádku pro `AZ_BATCH_TASK_SHARED_DIR` koordinaci pomocí proměnné prostředí. `AZ_BATCH_TASK_SHARED_DIR` Cesta je shodná na všech uzlech přidělených k úloze s více instancemi, takže můžete sdílet jeden příkaz koordinace mezi primárním a dílčím úkolem. Batch nesdílí adresář ve smyslu vzdáleného přístupu, ale můžete ho použít jako přípojný nebo sdílený bod, jak je uvedeno výše v popisu proměnné prostředí.
+V nastaveních více instancí úlohy můžete určit jeden nebo více **běžných souborů prostředků** . Tyto běžné soubory prostředků se stáhnou z [Azure Storage](../storage/common/storage-introduction.md) do **sdíleného adresáře úkolů** každého uzlu na základě primárního a všech dílčích úkolů. Ke sdílenému adresáři úlohy můžete přistupovat z aplikace a příkazového řádku pro koordinaci pomocí `AZ_BATCH_TASK_SHARED_DIR` proměnné prostředí. `AZ_BATCH_TASK_SHARED_DIR`Cesta je shodná na všech uzlech přidělených k úloze s více instancemi, takže můžete sdílet jeden příkaz koordinace mezi primárním a dílčím úkolem. Batch nesdílí adresář ve smyslu vzdáleného přístupu, ale můžete ho použít jako přípojný nebo sdílený bod, jak je uvedeno výše v popisu proměnné prostředí.
 
-Soubory prostředků, které zadáte pro samotný úkol s více instancemi, se ve výchozím nastavení stáhnou do pracovního `AZ_BATCH_TASK_WORKING_DIR`adresáře úlohy. Jak je uvedeno na rozdíl od běžných souborů prostředků, stáhne pouze primární úlohy soubory prostředků zadané pro vlastní úlohu s více instancemi.
+Soubory prostředků, které zadáte pro samotný úkol s více instancemi, se ve výchozím nastavení stáhnou do pracovního adresáře úlohy `AZ_BATCH_TASK_WORKING_DIR` . Jak je uvedeno na rozdíl od běžných souborů prostředků, stáhne pouze primární úlohy soubory prostředků zadané pro vlastní úlohu s více instancemi.
 
 > [!IMPORTANT]
-> Vždy používejte proměnné `AZ_BATCH_TASK_SHARED_DIR` prostředí a `AZ_BATCH_TASK_WORKING_DIR` k odkazování na tyto adresáře na příkazových řádcích. Nepokoušejte se vytvořit cesty ručně.
+> Vždy používejte proměnné prostředí `AZ_BATCH_TASK_SHARED_DIR` a `AZ_BATCH_TASK_WORKING_DIR` k odkazování na tyto adresáře na příkazových řádcích. Nepokoušejte se vytvořit cesty ručně.
 >
 >
 
@@ -263,16 +263,16 @@ Ukázka kódu [MultiInstanceTasks][github_mpi] na GitHubu ukazuje, jak používa
 4. Pomocí [Azure Portal][portal] vytvořte [aplikaci](batch-application-packages.md) Batch s názvem "MPIHelloWorld" a zadejte soubor zip, který jste vytvořili v předchozím kroku, jako verze "1,0" balíčku aplikace. Další informace najdete v tématu [nahrání a Správa aplikací](batch-application-packages.md#upload-and-manage-applications) .
 
 > [!TIP]
-> Sestavte *prodejní* verzi `MPIHelloWorld.exe` , abyste nemuseli do balíčku aplikace zahrnout žádné další závislosti (například `msvcp140d.dll` nebo `vcruntime140d.dll`).
+> Sestavte *prodejní* verzi `MPIHelloWorld.exe` , abyste nemuseli do balíčku aplikace zahrnout žádné další závislosti (například `msvcp140d.dll` nebo `vcruntime140d.dll` ).
 >
 >
 
 ### <a name="execution"></a>Spouštěcí
 1. Stáhněte si [Azure-Batch-Samples][github_samples_zip] z GitHubu.
-2. Otevřete **řešení** MultiInstanceTasks v aplikaci Visual Studio 2019. Soubor `MultiInstanceTasks.sln` řešení je umístěný v:
+2. Otevřete **řešení** MultiInstanceTasks v aplikaci Visual Studio 2019. `MultiInstanceTasks.sln`Soubor řešení je umístěný v:
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
-3. Zadejte přihlašovací údaje služby Batch a účtu úložiště `AccountSettings.settings` v projektu **Microsoft. Azure. batch. Samples. Common** .
+3. Zadejte přihlašovací údaje služby Batch a účtu úložiště v `AccountSettings.settings` projektu **Microsoft. Azure. batch. Samples. Common** .
 4. **Sestavte a spusťte** řešení MultiInstanceTasks, které spustí ukázkovou aplikaci MPI na výpočetních uzlech ve fondu Batch.
 5. *Volitelné*: před odstraněním prostředků použijte [Azure Portal][portal] nebo [Batch Explorer][batch_labs] a Projděte si ukázkový fond, úlohu a úlohu ("MultiInstanceSamplePool", "MultiInstanceSampleJob", "MultiInstanceSampleTask").
 

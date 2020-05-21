@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 4d2d33f9d83132147b5b257ffcd6d659f272b8ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c4e5fa4ce960f8113504b52aa0d5055bf1bf85a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730719"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722707"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Vytvoření technických prostředků virtuálního počítače Azure
-
-> [!IMPORTANT]
-> Přesouváme správu nabídek virtuálních počítačů Azure z portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, postupujte podle pokynů v tématu [Vytvoření technických prostředků pro nabídku virtuálního počítače pro portál partnerů cloudu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-technical-assets) ke správě nabídek.
 
 Tento článek popisuje, jak vytvořit a nakonfigurovat technické prostředky pro nabídku virtuálního počítače pro Azure Marketplace. Virtuální počítač obsahuje dvě součásti: virtuální pevné disky s operačním systémem (VHD) a volitelné přidružené datové disky VHD:
 
@@ -270,7 +267,7 @@ Následující proces generalizuje virtuální počítač Linux a znovu ho nasad
 1. **Odebrat agenta Azure Linux**
 
     1. Připojte se k VIRTUÁLNÍmu počítači se systémem Linux pomocí klienta SSH.
-    2. V okně SSH zadejte následující příkaz: `sudo waagent -deprovision+user`.
+    2. V okně SSH zadejte následující příkaz: `sudo waagent -deprovision+user` .
     3. Zadejte **Y** pro pokračování (můžete přidat parametr **-Force** k předchozímu příkazu, abyste se vyhnuli potvrzovacímu kroku).
     d. Po dokončení příkazu zadejte **příkaz exit** a zavřete tak klienta ssh.
 

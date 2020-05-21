@@ -1,15 +1,15 @@
 ---
-title: Vytváření řešení pomocí šablon sady Visual Studio – Azure Batch | Microsoft Docs
+title: Vytváření řešení pomocí šablon sady Visual Studio
 description: Přečtěte si, jak vám šablony projektů sady Visual Studio pomůžou implementovat a spouštět úlohy náročné na výpočetní výkon na Azure Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 8e8d5be4a9f0fb5482ba6c86a8766a25e5713c09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0dac39d1ff463dc4ba5efae50c7fc1ea9d36c829
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117518"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725818"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Použití šablon projektů sady Visual Studio ke skoku na zahájení dávkového řešení
 
@@ -57,7 +57,7 @@ Chcete-li použít šablony Batch, budete potřebovat následující:
 ## <a name="preparation"></a>Příprava
 Doporučujeme vytvořit řešení, které může obsahovat Správce úloh i procesor úkolů, protože díky tomu může být snazší sdílet kód mezi správcem úloh a programy procesoru úloh. Chcete-li vytvořit toto řešení, postupujte podle následujících kroků:
 
-1. Otevřete Visual Studio a vyberte **soubor** > **Nový** > **projekt**.
+1. Otevřete Visual Studio a vyberte **soubor**  >  **Nový**  >  **projekt**.
 2. V části **šablony**rozbalte **jiné typy projektů**, klikněte na **řešení sady Visual Studio**a pak vyberte **prázdné řešení**.
 3. Zadejte název, který popisuje vaši aplikaci, a účel tohoto řešení (např. "LitwareBatchTaskPrograms").
 4. Chcete-li vytvořit nové řešení, klikněte na tlačítko **OK**.
@@ -77,7 +77,7 @@ Doporučujeme vytvořit řešení, které může obsahovat Správce úloh i proc
 Chcete-li do řešení, které jste vytvořili dříve, přidat správce úloh, postupujte podle následujících kroků:
 
 1. Otevřete existující řešení v aplikaci Visual Studio.
-2. V Průzkumník řešení klikněte pravým tlačítkem myši na řešení, klikněte na **Přidat** > **Nový projekt**.
+2. V Průzkumník řešení klikněte pravým tlačítkem myši na řešení, klikněte na **Přidat**  >  **Nový projekt**.
 3. V části **Visual C#** klikněte na **Cloud**a pak klikněte na **Azure Batch Správce úloh s rozdělovačem úlohy**.
 4. Zadejte název, který popisuje vaši aplikaci, a tento projekt Identifikujte jako správce úloh (např. "LitwareJobManager").
 5. Chcete-li vytvořit projekt, klikněte na tlačítko **OK**.
@@ -156,13 +156,13 @@ Vaše implementace rozdělení () má přístup k:
 * Objekt vlastnosti cloudjob reprezentující úlohu prostřednictvím `_job` pole.
 * Objekt CloudTask, který představuje úkol správce úloh, prostřednictvím `_jobManagerTask` pole.
 
-Vaše `Split()` implementace nepotřebuje přidávat do úlohy úkoly přímo. Místo toho by měl váš kód vracet sekvenci objektů CloudTask a tyto objekty budou automaticky přidány do úlohy pomocí tříd rozhraní, které vyvolávají rozdělovač úlohy. K implementaci rozdělovačů úloh je běžné použít funkci`yield return`iterátoru () jazyka C#, protože to umožňuje, aby se úlohy spouštěly co nejdříve a nikoli čekaly na výpočet všech úkolů.
+Vaše `Split()` implementace nepotřebuje přidávat do úlohy úkoly přímo. Místo toho by měl váš kód vracet sekvenci objektů CloudTask a tyto objekty budou automaticky přidány do úlohy pomocí tříd rozhraní, které vyvolávají rozdělovač úlohy. K implementaci rozdělovačů úloh je běžné použít funkci iterátoru () jazyka C# `yield return` , protože to umožňuje, aby se úlohy spouštěly co nejdříve a nikoli čekaly na výpočet všech úkolů.
 
 **Selhání rozdělovače úlohy**
 
 Pokud v průběhu úlohy dojde k chybě, mělo by to mít jednu z těchto akcí:
 
-* Ukončete sekvenci pomocí příkazu jazyka `yield break` C#. v takovém případě bude Správce úloh považován za úspěšný; ani
+* Ukončete sekvenci pomocí příkazu jazyka C# `yield break` . v takovém případě bude Správce úloh považován za úspěšný; nebo
 * Vyvolejte výjimku. v takovém případě se Správce úloh bude považovat za neúspěšný a může se pokusit znovu v závislosti na tom, jak klient nakonfigurovali.
 
 V obou případech bude možné spustit všechny úlohy, které už vrátil rozdělovač úlohy a přidaly do úlohy Batch. Pokud nechcete, aby k tomu docházelo, můžete:
@@ -180,7 +180,7 @@ Ukončovací kódy a výjimky poskytují mechanismus pro určení výsledku spu�
 
 Úkol správce úloh implementovaný pomocí šablony Správce úloh může vracet tři možné ukončovací kódy:
 
-| kód | Popis |
+| Kód | Popis |
 | --- | --- |
 | 0 |Správce úloh byl úspěšně dokončen. Došlo k dokončení kódu rozdělovače úlohy a všechny úkoly byly přidány do úlohy. |
 | 1 |Úloha správce úloh se nezdařila s výjimkou v části očekávaná v programu. Výjimka byla přeložena do JobManagerException s diagnostickými informacemi a tam, kde je to možné, návrhy pro vyřešení selhání. |
@@ -223,7 +223,7 @@ Je obvykle bezpečné, aby klient nastavil *runExclusive* na **hodnotu false**.
 
 Klient by měl pomocí kolekce *resourceFiles* nebo *applicationPackageReferences* mít na výpočetním uzlu nasazený spustitelný soubor Správce úloh (a jeho požadované knihovny DLL).
 
-Ve výchozím nastavení se Správce úloh nebude opakovat, pokud selže. V závislosti na vaší logice Správce úloh může klient chtít povolit opakované pokusy prostřednictvím *omezení*/*maxTaskRetryCount*.
+Ve výchozím nastavení se Správce úloh nebude opakovat, pokud selže. V závislosti na vaší logice Správce úloh může klient chtít povolit opakované pokusy prostřednictvím *omezení* / *maxTaskRetryCount*.
 
 **Nastavení úlohy**
 
@@ -346,7 +346,7 @@ Metoda Run () zodpovídá za spuštění příkazového řádku, spuštění jed
 Vaše implementace Run () má přístup k:
 
 * Parametry úlohy prostřednictvím `_parameters` pole.
-* ID úlohy a úlohy, a to prostřednictvím `_jobId` polí `_taskId` a.
+* ID úlohy a úlohy, a to prostřednictvím `_jobId` `_taskId` polí a.
 * Konfigurace úkolu prostřednictvím `_configuration` pole
 
 **Selhání úlohy**
@@ -358,7 +358,7 @@ Ukončovací kódy a výjimky poskytují mechanismus pro určení výsledku spu�
 
 Úloha procesoru úlohy, která je implementovaná pomocí šablony procesoru úloh, může vracet tři možné ukončovací kódy:
 
-| kód | Popis |
+| Kód | Popis |
 | --- | --- |
 | [Process. ExitCode][process_exitcode] |Procesor úkolů byl dokončen. Všimněte si, že to neznamená, že program, který jste vyvolali, byl úspěšný – pouze tento procesor úkol vyvolal úspěšně a provedl jakékoli následné zpracování bez výjimek. Význam ukončovacího kódu závisí na vyvolaném programu – obvykle ukončovací kód 0 znamená úspěšné dokončení programu a další ukončovací kód znamená, že se program nezdařil. |
 | 1 |Procesor úloh se nezdařil s výjimkou v části očekávaná v programu. Výjimka byla přeložena na `TaskProcessorException` s diagnostickými informacemi a je-li to možné, návrhy pro vyřešení selhání. |
@@ -383,7 +383,7 @@ job.CommonEnvironmentSettings = new [] {
 };
 ```
 
-Účet úložiště je pak k dispozici ve třídě TaskProcessor prostřednictvím `_configuration.StorageAccount` vlastnosti.
+Účet úložiště je pak k dispozici ve třídě TaskProcessor prostřednictvím `_configuration.StorageAccount` Vlastnosti.
 
 Pokud dáváte přednost použití adresy URL kontejneru s SAS, můžete to předat taky pomocí společného prostředí úlohy, ale šablona procesoru úloh v současné době neobsahuje integrovanou podporu pro tuto možnost.
 
@@ -416,7 +416,7 @@ Můžete také předat parametry jednotlivým úlohám implementovaným pomocí 
 
 Parameters. JSON, a pokud ho najde, načte ho jako slovník parametrů. Existuje několik možností, jak předat parametry úlohám procesoru úloh:
 
-* Znovu použijte parametry úlohy JSON. To funguje dobře, pokud jsou jediné parametry v rámci úlohy (například výška a šířka vykreslování). Pokud to chcete provést při vytváření CloudTask v rozdělovače úlohy, přidejte odkaz na objekt souboru prostředků Parameters. JSON z úlohy Správce úloh ResourceFiles (`JobSplitter._jobManagerTask.ResourceFiles`) do kolekce ResourceFiles CloudTask.
+* Znovu použijte parametry úlohy JSON. To funguje dobře, pokud jsou jediné parametry v rámci úlohy (například výška a šířka vykreslování). Pokud to chcete provést při vytváření CloudTask v rozdělovače úlohy, přidejte odkaz na objekt souboru prostředků Parameters. JSON z úlohy Správce úloh ResourceFiles ( `JobSplitter._jobManagerTask.ResourceFiles` ) do kolekce ResourceFiles CloudTask.
 * Vygenerujte a nahrajte dokument parametry konkrétního úkolu. JSON jako součást provádění rozdělovače úlohy a odkázat na tento objekt BLOB v kolekci souborů prostředků úlohy. To je nezbytné v případě, že různé úlohy mají různé parametry. Příkladem může být scénář prostorového vykreslování, ve kterém je index rámce předán úkolu jako parametr.
 
 > [!NOTE]

@@ -1,15 +1,15 @@
 ---
 title: Metriky, výstrahy a diagnostické protokoly
 description: Zaznamenává a analyzuje události diagnostického protokolu pro prostředky Azure Batch účtů, jako jsou fondy a úkoly.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7f75a8302c8ba368138e6c8edee6c6069c5031d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a33f71cd185a327bfe6852b9acd7d7317b94c2c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117297"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726736"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metriky, výstrahy a protokoly služby Batch pro vyhodnocení a monitorování diagnostiky
 
@@ -34,7 +34,7 @@ Zobrazte metriky pro účet Batch v Azure Portal. Stránka **Přehled** pro úč
 
 Zobrazení všech metrik účtu Batch: 
 
-1. Na portálu klikněte na **všechny služby** > **účty Batch**a potom klikněte na název vašeho účtu Batch.
+1. Na portálu klikněte na **všechny služby**  >  **účty Batch**a potom klikněte na název vašeho účtu Batch.
 2. V části **monitorování**klikněte na **metriky**.
 3. Vyberte jednu nebo více metrik. Pokud chcete, vyberte další metriky prostředků pomocí rozevíracích seznamů **předplatná**, **Skupina prostředků**, **typ prostředku**a **prostředky** .
     * Pro metriky založené na počtu (například "vyhrazený počet jader" nebo "počet uzlů s nízkou prioritou") použijte agregaci "průměr". Pro metriky založené na událostech (například "velikost fondu dokončené události") použijte agregaci Count (počet).
@@ -62,8 +62,8 @@ Můžete například chtít nakonfigurovat výstrahu metriky, když počet jader
 
 Konfigurace upozornění na metriku na portálu:
 
-1. Klikněte na **všechny služby** > **účty Batch**a potom klikněte na název vašeho účtu Batch.
-2. V části **monitorování**klikněte na **pravidla** > výstrah**Přidat výstrahu metriky**.
+1. Klikněte na **všechny služby**  >  **účty Batch**a potom klikněte na název vašeho účtu Batch.
+2. V části **monitorování**klikněte na **pravidla výstrah**  >  **Přidat výstrahu metriky**.
 3. Vyberte metriku, podmínku výstrahy (například když metrika překročí určitou hodnotu během období) a jedno nebo více oznámení.
 
 Pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/)můžete také nakonfigurovat upozornění téměř v reálném čase. Další informace najdete v tématu [Přehled výstrah](../azure-monitor/platform/alerts-overview.md). Pokud chcete do výstrah zahrnout informace o úlohách, úkolech nebo fondech, přečtěte si informace o vyhledávacích dotazech v tématu [reakce na události s výstrahami Azure monitor](../azure-monitor/learn/tutorial-response.md) .
@@ -94,8 +94,8 @@ Další volitelné cíle pro diagnostické protokoly:
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>Povolit shromažďování diagnostických protokolů Batch
 
-1. Na portálu klikněte na **všechny služby** > **účty Batch**a potom klikněte na název vašeho účtu Batch.
-2. V části **monitorování**klikněte na **diagnostické protokoly** > **zapnout diagnostiku**.
+1. Na portálu klikněte na **všechny služby**  >  **účty Batch**a potom klikněte na název vašeho účtu Batch.
+2. V části **monitorování**klikněte na **diagnostické protokoly**  >  **zapnout diagnostiku**.
 3. V okně **nastavení diagnostiky**zadejte název nastavení a vyberte cíl protokolu (existující účet úložiště, centrum událostí nebo protokoly Azure monitor). Vyberte buď **ServiceLog** a **AllMetrics**.
 
     Když vyberete účet úložiště, můžete volitelně nastavit zásady uchovávání informací. Pokud nezadáte počet dní pro uchování, data se zachovají během životnosti účtu úložiště.
@@ -125,9 +125,9 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-Každý `PT1H.json` soubor objektu BLOB obsahuje události ve formátu JSON, ke kterým došlo během hodiny zadané v adrese URL objektu BLOB ( `h=12`například). Během této hodiny se události připojí k `PT1H.json` souboru, když k nim dojde. Hodnota minute (`m=00`) je vždy `00`, protože události diagnostického protokolu jsou v jednotlivých objektech blob za hodinu rozdělené. (Všechny časy jsou v UTC.)
+Každý `PT1H.json` soubor objektu BLOB obsahuje události ve formátu JSON, ke kterým došlo během hodiny zadané v adrese URL objektu BLOB (například `h=12` ). Během této hodiny se události připojí k `PT1H.json` souboru, když k nim dojde. Hodnota minute ( `m=00` ) je vždy `00` , protože události diagnostického protokolu jsou v jednotlivých objektech blob za hodinu rozdělené. (Všechny časy jsou v UTC.)
 
-Níže je uveden příklad `PoolResizeCompleteEvent` položky v souboru `PT1H.json` protokolu. Obsahuje informace o aktuálním a cílovém počtu vyhrazených uzlů a uzlů s nízkou prioritou a také o počátečním a koncovém času operace:
+Níže je uveden příklad `PoolResizeCompleteEvent` položky v `PT1H.json` souboru protokolu. Obsahuje informace o aktuálním a cílovém počtu vyhrazených uzlů a uzlů s nízkou prioritou a také o počátečním a koncovém času operace:
 
 ```
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}

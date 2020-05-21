@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 05/11/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 5099cc2ce2228bcdbf49d3484e488e7373883ec0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 771f6dd265b2df686d00642d2063915dfab17a86
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119043"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722741"
 ---
 # <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>Zabezpečení životního cyklu služby Machine Learning pomocí privátních virtuálních sítí
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -404,7 +404,7 @@ except:
 __Azure CLI__
 
 ```azurecli-interactive
-az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
+az rest --method put --uri https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace>/computes/<compute>?api-version=2018-11-19 --body @body.json
 ```
 
 Obsah souboru, na `body.json` který se odkazuje pomocí příkazu, je podobný následujícímu dokumentu JSON:
@@ -413,7 +413,7 @@ Obsah souboru, na `body.json` který se odkazuje pomocí příkazu, je podobný 
 { 
     "location": "<region>", 
     "properties": { 
-        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
+        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-name>", 
         "computeType": "AKS", 
         "provisioningState": "Succeeded", 
         "properties": { 
@@ -462,7 +462,7 @@ Informace o použití Azure Machine Learning s Azure Firewall najdete v tématu 
 
 1. Chcete-li najít název Azure Container Registry pro váš pracovní prostor, použijte jednu z následujících metod:
 
-    __Azure Portal__
+    __portál Azure__
 
     V části Přehled pracovního prostoru se hodnota __registru__ odkazuje na Azure Container Registry.
 
@@ -608,7 +608,7 @@ Konkrétní informace o použití Azure Databricks s virtuální sítí najdete 
 
 Pokud chcete použít virtuální počítač nebo cluster Azure HDInsight ve virtuální síti s vaším pracovním prostorem, použijte následující postup:
 
-1. Vytvořte virtuální počítač nebo cluster HDInsight pomocí Azure Portal nebo Azure CLI a vložte cluster do virtuální sítě Azure. Další informace najdete v těchto článcích:
+1. Vytvořte virtuální počítač nebo cluster HDInsight pomocí Azure Portal nebo Azure CLI a vložte cluster do virtuální sítě Azure. Další informace najdete v následujících článcích:
     * [Vytváření a správa virtuálních sítí Azure pro virtuální počítače se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [Rozšiřování HDInsight pomocí virtuální sítě Azure](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)

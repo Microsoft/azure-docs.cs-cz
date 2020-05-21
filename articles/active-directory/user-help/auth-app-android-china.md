@@ -1,5 +1,5 @@
 ---
-title: Microsoft Authenticator dostupnosti a omezení Foe Androidu v Číně | Microsoft Docs
+title: Microsoft Authenticator dostupnost a omezení pro Android v Číně | Microsoft Docs
 description: Další informace o tom, jak získat aplikaci Microsoft Authenticator – dostupnost v Číně
 services: active-directory
 author: curtand
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 05/06/2020
+ms.date: 05/20/2020
 ms.author: curtand
-ms.openlocfilehash: 3ba1b41859a543ab5e0393c5715dc49d452ea73c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: e42c4e5aced9fd567c67b520a98318c965045e07
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891834"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715524"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Microsoft Authenticator pro Android ve veřejném cloudu v Číně
 

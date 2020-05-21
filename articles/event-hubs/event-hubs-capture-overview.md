@@ -13,17 +13,20 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 05/20/2020
 ms.author: shvija
-ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3411b3e138778ca7ca1ffcfe14d8d6e84d76d4e
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265009"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726090"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí prostřednictvím Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
 Azure Event Hubs umožňuje automaticky zachytit streamovaná data v Event Hubs v [úložišti objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo v účtu, který si využijete [Azure Data Lake Storage obecné 1 nebo Gen 2](https://azure.microsoft.com/services/data-lake-store/) s přidanou flexibilitou zadání času nebo velikosti intervalu. Nastavení zachytávání je rychlé, neexistují žádné náklady na správu, které by bylo možné spustit, a automaticky se škálují s Event Hubs [jednotkami propustnosti](event-hubs-scalability.md#throughput-units). Event Hubs Capture je nejjednodušší způsob, jak načíst streamovaná data do Azure, a umožňuje se zaměřit na zpracování dat, nikoli na shromažďování dat.
+
+> [!NOTE]
+> Konfigurace Event Hubsho zachycení pro použití Azure Data Lake Storage **Gen 2** je stejná jako konfigurace pro použití BLOB Storage Azure. Podrobnosti najdete v tématu [konfigurace Event Hubsho zachycení](event-hubs-capture-enable-through-portal.md). 
 
 Event Hubs Capture umožňuje zpracovávat kanály založené na službě Batch v reálném čase a ve stejném datovém proudu. To znamená, že můžete vytvářet řešení, která se v průběhu času dorůstou podle vašich potřeb. Bez ohledu na to, jestli sestavíte do budoucna v reálném čase a chcete přidat efektivní studenou cestu k existujícímu řešení v reálném čase, Event Hubs Capture usnadňuje práci s datovými proudy.
 
@@ -44,7 +47,7 @@ Event Hubs Capture vám umožní nastavit okno pro řízení zachytávání. Tot
 {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}
 ```
 
-Všimněte si, že hodnoty data jsou doplněny nulami; Příklad názvu souboru může být:
+Hodnoty data jsou doplněny nulami; Příklad názvu souboru může být:
 
 ```
 https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhub/0/2017/12/08/03/03/17.avro
@@ -60,7 +63,7 @@ Po nakonfigurování se Event Hubs zachycení automaticky spustí při odeslán�
 
 ## <a name="setting-up-event-hubs-capture"></a>Nastavení zachycení Event Hubs
 
-V čase vytvoření centra událostí můžete pomocí [Azure Portal](https://portal.azure.com)nakonfigurovat záznam pomocí Azure Resource Manager šablony. Další informace najdete v těchto článcích:
+V čase vytvoření centra událostí můžete pomocí [Azure Portal](https://portal.azure.com)nakonfigurovat záznam pomocí Azure Resource Manager šablony. Další informace najdete v následujících článcích:
 
 - [Povolení funkce Event Hubs Capture prostřednictvím webu Azure Portal](event-hubs-capture-enable-through-portal.md)
 - [Vytvoření oboru názvů Event Hubs s centrem událostí a povolení funkce Capture pomocí šablony Azure Resource Manageru](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
@@ -129,7 +132,7 @@ Tento příkaz vrátí
 
 Pomocí nástrojů Avro můžete také převést soubor na formát JSON a provést jiné zpracování.
 
-Chcete-li provést pokročilejší zpracování, Stáhněte a nainstalujte Avro pro vaši volbu platformy. V době psaní tohoto zápisu jsou k dispozici implementace pro jazyky C, C++, C\#, Java, NodeJS, Perl, php, Python a Ruby.
+Chcete-li provést pokročilejší zpracování, Stáhněte a nainstalujte Avro pro vaši volbu platformy. V době psaní tohoto zápisu jsou k dispozici implementace pro jazyky C, C++, C \# , Java, NodeJS, Perl, php, Python a Ruby.
 
 Apache Avro nabízí kompletní Příručky k Začínáme pro [jazyky Java][Java] a [Python][Python]. Můžete si také přečíst článek [Začínáme s Event Hubs Capture](event-hubs-capture-python.md) .
 
@@ -137,7 +140,7 @@ Apache Avro nabízí kompletní Příručky k Začínáme pro [jazyky Java][Java
 
 Záznam Event Hubs se měří podobně jako jednotky propustnosti: jako hodinová sazba. Poplatek je přímo úměrný počtu jednotek propustnosti koupených pro obor názvů. Vzhledem k tomu, že se jednotky propustnosti zvyšují a snižují, Event Hubs, aby se měřiče zachycení zvýšily a snížily tak, aby Měřiče se objevují společně. Podrobnosti o cenách najdete v tématu [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/). 
 
-Všimněte si, že Capture nespotřebovává kvótu pro odchozí přenosy, protože se účtuje samostatně. 
+Capture nespotřebovává kvótu pro odchozí přenosy, protože se účtuje samostatně. 
 
 ## <a name="integration-with-event-grid"></a>Integrace s Event Grid 
 

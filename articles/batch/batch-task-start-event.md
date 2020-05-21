@@ -1,14 +1,14 @@
 ---
 title: Událost zahájení úlohy Azure Batch
 description: Referenční informace pro událost zahájení úlohy Batch Tato událost je generována, jakmile Scheduler naplánuje spuštění úlohy na výpočetním uzlu.
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: 6e897cb02163d11657c915d31ee5564e5bbd7407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f872e6c89e2f528729ae08125c6cc3eb5718e19a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116396"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725784"
 ---
 # <a name="task-start-event"></a>Událost zahájení úlohy
 
@@ -41,9 +41,9 @@ ms.locfileid: "82116396"
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|`jobId`|Řetězec|ID úlohy obsahující úlohu.|
-|`id`|Řetězec|ID úkolu|
-|`taskType`|Řetězec|Typ úkolu. Může to být buď "JobManager", což značí, že se jedná o úkol správce úloh nebo "uživatel", což značí, že se nejedná o úkol správce úloh.|
+|`jobId`|String|ID úlohy obsahující úlohu.|
+|`id`|String|ID úkolu|
+|`taskType`|String|Typ úkolu. Může to být buď "JobManager", což značí, že se jedná o úkol správce úloh nebo "uživatel", což značí, že se nejedná o úkol správce úloh.|
 |`systemTaskVersion`|Int32|Toto je interní čítač opakování na úkolu. Interně může služba Batch Opakovat úlohu, aby se zohlednila přechodná chyba. Tyto problémy mohou zahrnovat interní chyby plánování nebo se pokusí o zotavení z výpočetních uzlů ve špatném stavu.|
 |[`nodeInfo`](#nodeInfo)|Komplexní typ|Obsahuje informace o výpočetním uzlu, na kterém byl úkol spuštěn.|
 |[`multiInstanceSettings`](#multiInstanceSettings)|Komplexní typ|Určuje, že úkol je úloha s více instancemi vyžadující více výpočetních uzlů.  Podrobnosti najdete v tématu [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) .|
@@ -54,8 +54,8 @@ ms.locfileid: "82116396"
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|`poolId`|Řetězec|ID fondu, ve kterém byl úkol spuštěn.|
-|`nodeId`|Řetězec|ID uzlu, na kterém byl úkol spuštěn.|
+|`poolId`|String|ID fondu, ve kterém byl úkol spuštěn.|
+|`nodeId`|String|ID uzlu, na kterém byl úkol spuštěn.|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a>multiInstanceSettings
 

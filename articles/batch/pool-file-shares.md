@@ -1,14 +1,14 @@
 ---
 title: Sdílená složka Azure pro fondy Azure Batch
 description: Jak připojit sdílenou složku služby soubory Azure z výpočetních uzlů ve fondu Linux nebo Windows ve službě Azure Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 666ee6bd0e6287545c107427dffcc9f2ccde900a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0aa8c8f6dcf1114688e6abaf1a17f2e8af6fa4fe
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115444"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723489"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Použití sdílené složky Azure s fondem služby Batch
 
@@ -39,8 +39,8 @@ V dávce je potřeba připojit sdílenou složku pokaždé, když je úloha spu�
 
 Například zahrňte `net use` příkaz pro připojení sdílené složky jako součást každého příkazového řádku úkolu. Pro připojení sdílené složky jsou potřeba následující přihlašovací údaje:
 
-* **Uživatelské jméno**: Azure\\\<storageaccountname\>, například Azure\\*mystorageaccountname*
-* **Heslo**: \<StorageAccountKeyWhichEnds in = =>, například *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Uživatelské jméno**: Azure \\ \< storageaccountname \> , například Azure \\ *mystorageaccountname*
+* **Heslo**: \< StorageAccountKeyWhichEnds in = =>, například *XXXXXXXXXXXXXXXXXXXXX = =*
 
 Následující příkaz připojí sdílenou složku *myfileshare* v účtu úložiště *mystorageaccountname* jako jednotku *S:* .
 
@@ -52,14 +52,14 @@ V případě jednoduchosti tyto příklady přihlašovací údaje předají př�
 
 Chcete-li zjednodušit operaci připojení, volitelně zachovejte přihlašovací údaje na uzlech. Pak můžete sdílenou složku připojit bez přihlašovacích údajů. Proveďte následující dva kroky:
 
-1. Spusťte nástroj `cmdkey` příkazového řádku pomocí spouštěcího úkolu v konfiguraci fondu. Tím se uchovávají přihlašovací údaje na jednotlivých uzlech systému Windows. Příkazový řádek spouštěcího úkolu je podobný následujícímu:
+1. Spusťte `cmdkey` Nástroj příkazového řádku pomocí spouštěcího úkolu v konfiguraci fondu. Tím se uchovávají přihlašovací údaje na jednotlivých uzlech systému Windows. Příkazový řádek spouštěcího úkolu je podobný následujícímu:
 
    ```
    cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
 
    ```
 
-2. Připojte sdílenou složku na každý uzel jako součást každého úkolu pomocí `net use`. Například následující příkazový řádek úkolu připojí sdílenou složku jako jednotku *S:* . Za tímto by následoval příkaz nebo skript, který odkazuje na sdílenou složku. Přihlašovací údaje uložené v mezipaměti se používají při `net use`volání metody. Tento krok předpokládá, že používáte stejnou identitu uživatele pro úlohy, které jste použili v počátečním úkolu ve fondu, což není vhodné pro všechny scénáře.
+2. Připojte sdílenou složku na každý uzel jako součást každého úkolu pomocí `net use` . Například následující příkazový řádek úkolu připojí sdílenou složku jako jednotku *S:* . Za tímto by následoval příkaz nebo skript, který odkazuje na sdílenou složku. Přihlašovací údaje uložené v mezipaměti se používají při volání metody `net use` . Tento krok předpokládá, že používáte stejnou identitu uživatele pro úlohy, které jste použili v počátečním úkolu ve fondu, což není vhodné pro všechny scénáře.
 
    ```
    cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
@@ -108,7 +108,7 @@ tasks.Add(task);
 
 Sdílené složky Azure je možné připojit v rámci distribucí systému Linux pomocí [klienta jádra CIFS](https://wiki.samba.org/index.php/LinuxCIFS). Následující příklad ukazuje, jak připojit sdílenou složku ve fondu výpočetních uzlů Ubuntu 16,04 LTS. Pokud používáte jinou distribuci systému Linux, je obecný postup podobný, ale použijte Správce balíčků, který je vhodný pro distribuci. Podrobnosti a další příklady najdete v tématu [použití souborů Azure se systémem Linux](../storage/files/storage-how-to-use-files-linux.md).
 
-Nejprve v rámci identity uživatele správce nainstalujte `cifs-utils` balíček a vytvořte přípojný bod (například */mnt/MyAzureFileShare*) v místním systému souborů. Složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je to obvyklá konvence, kterou je možné vytvořit do `/mnt` složky. Ujistěte se, že nechcete vytvořit přípojný bod přímo `/mnt` v umístění (na Ubuntu `/mnt/resource` ) nebo (v jiných distribucích).
+Nejprve v rámci identity uživatele správce nainstalujte `cifs-utils` balíček a vytvořte přípojný bod (například */mnt/MyAzureFileShare*) v místním systému souborů. Složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je to obvyklá konvence, kterou je možné vytvořit do `/mnt` složky. Ujistěte se, že nechcete vytvořit přípojný bod přímo v umístění `/mnt` (na Ubuntu) nebo `/mnt/resource` (v jiných distribucích).
 
 ```
 apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileShare
@@ -116,8 +116,8 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 
 Pak spusťte `mount` příkaz pro připojení sdílené složky a zadejte tyto přihlašovací údaje:
 
-* **Uživatelské jméno**: \<storageaccountname\>, například *mystorageaccountname*
-* **Heslo**: \<StorageAccountKeyWhichEnds in = =>, například *XXXXXXXXXXXXXXXXXXXXX = =*
+* **Uživatelské jméno**: \< storageaccountname \> , například *mystorageaccountname*
+* **Heslo**: \< StorageAccountKeyWhichEnds in = =>, například *XXXXXXXXXXXXXXXXXXXXX = =*
 
 Následující příkaz připojí sdílení souborů *myfileshare* v účtu úložiště *mystorageaccountname* na adrese */mnt/MyAzureFileShare*: 
 

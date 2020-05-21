@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cc7c1fd1dff85908c96e2fd7b2276df3d833e37f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97bc3c8571793ec8c8b67fe0e7c5cb3b6a56fde4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134309"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726039"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Monitorování nasazení IoT Edge
 
@@ -67,7 +67,7 @@ Chcete-li provést změny v nasazení, přečtěte si téma [Změna nasazení](h
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Monitorování nasazení pomocí Azure CLI
 
-Podrobnosti o jednom nasazení zobrazíte pomocí příkazu [az IoT Edge Deployment show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show) :
+Podrobnosti o jednom nasazení zobrazíte pomocí příkazu [az IoT Edge Deployment show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show) :
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -85,7 +85,7 @@ Prozkoumejte nasazení v příkazovém okně.Vlastnost **metriky** uvádí poče
 * **reportedSuccessfulCount** – metrika zařízení, která určuje počet IoT Edge zařízení v rámci generování sestav nasazení v IoT Edge modulu runtime klienta.
 * **reportedFailedCount** – metrika zařízení, která určuje počet IoT Edge zařízení v hlášení nasazení, které se nezdařily z modulu runtime klienta IoT Edge.
 
-Pomocí příkazu [az IoT Edge Deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric) můžete zobrazit seznam ID zařízení nebo objektů pro každou z těchto metrik:
+Pomocí příkazu [az IoT Edge Deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show-metric) můžete zobrazit seznam ID zařízení nebo objektů pro každou z těchto metrik:
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
@@ -94,8 +94,8 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 Příkaz pro zobrazení metriky nasazení má následující parametry:
 
 * **--Deployment-ID** – název nasazení, které existuje ve službě IoT Hub.
-* **--metrika-ID** – název metriky, pro kterou chcete zobrazit seznam ID zařízení, například `reportedFailedCount`.
-* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu `az account set -s [subscription name]`.
+* **--metrika-ID** – název metriky, pro kterou chcete zobrazit seznam ID zařízení, například `reportedFailedCount` .
+* **--hub – název** – název centra IoT, ve kterém existuje nasazení. Centrum musí být v aktuálním předplatném. Přepněte na požadované předplatné pomocí příkazu `az account set -s [subscription name]` .
 
 Chcete-li provést změny v nasazení, přečtěte si téma [Změna nasazení](how-to-deploy-cli-at-scale.md#modify-a-deployment).
 

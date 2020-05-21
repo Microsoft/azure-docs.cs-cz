@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bc79dabe82ab02166e3aa60a378ff394bca25028
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402142"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725546"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro službu Custom Speech
 
@@ -27,9 +27,9 @@ Tato tabulka obsahuje seznam povolených datových typů, kdy se má použít ka
 
 | Datový typ | Používá se pro testování. | Doporučené množství | Používá se pro školení. | Doporučené množství |
 |-----------|-----------------|----------|-------------------|----------|
-| [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | Ne | Není k dispozici |
+| [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | No | – |
 | [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Ano<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Ano | 1 – 1000 hodin zvukového přenosu |
-| [Související text](#related-text-data-for-training) | Ne | Není k dispozici | Ano | 1-200 MB souvisejícího textu |
+| [Související text](#related-text-data-for-training) | No | Není k dispozici | Ano | 1-200 MB souvisejícího textu |
 
 Soubory by měly být seskupené podle typu do datové sady a nahrané jako soubor. zip. Každá datová sada může obsahovat pouze jeden datový typ.
 
@@ -38,7 +38,7 @@ Soubory by měly být seskupené podle typu do datové sady a nahrané jako soub
 
 ## <a name="upload-data"></a>Nahrání dat
 
-Data odešlete tak, že přejdete na <a href="https://speech.microsoft.com/customspeech" target="_blank">portál <span class="docon docon-navigate-external x-hidden-focus"> </span>Custom Speech </a>. Na portálu klikněte na **nahrát data** a spusťte průvodce a vytvořte svou první datovou sadu. Před tím, než budete moci odeslat data, budete požádáni o výběr datového typu řeči pro datovou sadu.
+Data odešlete tak, že přejdete na <a href="https://speech.microsoft.com/customspeech" target="_blank">portál <span class="docon docon-navigate-external x-hidden-focus"></span> Custom Speech </a>. Na portálu klikněte na **nahrát data** a spusťte průvodce a vytvořte svou první datovou sadu. Před tím, než budete moci odeslat data, budete požádáni o výběr datového typu řeči pro datovou sadu.
 
 ![Výběr zvuku z portálu pro rozpoznávání řeči](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -81,6 +81,8 @@ Pomocí <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox 
 
 Chcete-li změřit přesnost přesnosti řeči na text od společnosti Microsoft při zpracování zvukových souborů, je nutné zadat přepisy (Word-by-Word) pro porovnání. I když je přepis uživatelsky popisku často časově náročný, je nutné vyhodnotit přesnost a vyškolit model pro vaše případy použití. Mějte na paměti, že vylepšení v oblasti rozpoznávání budou stejně vhodná jako poskytnutá data. Z tohoto důvodu je důležité, aby se nahrály jenom přepisy s vysokou kvalitou.
 
+Zvukové soubory mohou mít na začátku a na konci záznamu tiché ukončení. Pokud je to možné, zahrňte před a po řeči do každého ukázkového souboru alespoň poloviční sekundu tichého běhu. I když zvuk s nízkým objemem záznamů nebo hluku na pozadí není užitečný, neměli byste snížit svůj vlastní model. Před shromažďováním ukázek zvuku vždy zvažte upgrade mikrofonu a hardwaru pro zpracování signálu.
+
 | Vlastnost                 | Hodnota                               |
 |--------------------------|-------------------------------------|
 | Formát souboru              | RIFF (WAV)                          |
@@ -98,7 +100,7 @@ Chcete-li změřit přesnost přesnosti řeči na text od společnosti Microsoft
 
 Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování slov, je nutné, aby se vylepšilo rozpoznávání dat s větším množstvím dat. Obecně se doporučuje zadat přepisy slova po slovech přibližně 10 až 1 000 hodin zvukového přenosu. Přepisy všech souborů WAV by měl obsahovat jediný soubor prostého textu. Každý řádek souboru s přepisem by měl obsahovat název jednoho zvukového souboru a za ním odpovídající přepis. Název souboru a přepis by měly být oddělené tabulátorem (\t).
 
-  Příklad:
+  Například:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -110,7 +112,7 @@ Aby bylo možné řešit problémy, jako je odstraňování nebo nahrazování s
 
 Přepisy se budou normalizovat, aby je mohl systém zpracovat. Existují však některé důležité normalizace, které je nutné provést před odesláním dat do sady Speech Studio. Příslušný jazyk, který se má použít, když připravujete přepisy, najdete v tématu [Vytvoření přepisu s popiskem](how-to-custom-speech-human-labeled-transcriptions.md) .
 
-Až shromáždíte zvukové soubory a odpovídající přepisy, před nahráním na <a href="https://speech.microsoft.com/customspeech" target="_blank">portál <span class="docon docon-navigate-external x-hidden-focus"> </span>Custom Speech </a>je zabalíte jako jeden soubor. zip. Níže je příklad datové sady se třemi zvukovými soubory a soubor přepisu s popisem:
+Až shromáždíte zvukové soubory a odpovídající přepisy, před nahráním na <a href="https://speech.microsoft.com/customspeech" target="_blank">portál <span class="docon docon-navigate-external x-hidden-focus"></span> Custom Speech </a>je zabalíte jako jeden soubor. zip. Níže je příklad datové sady se třemi zvukovými soubory a soubor přepisu s popisem:
 
 > [!div class="mx-imgBorder"]
 > ![Výběr zvuku z portálu pro rozpoznávání řeči](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
@@ -124,7 +126,7 @@ Názvy produktů nebo funkce, které jsou jedinečné, by měly obsahovat souvis
 | Věty (projevy) | Zvyšte přesnost při rozpoznávání názvů produktů nebo slovníku specifického pro konkrétní obor v kontextu věty. |
 | Výslovnost | Zlepšení výslovnosti neobvyklých pojmů, akronymů nebo jiných slov pomocí nedefinovaných výslovnosti. |
 
-Věty lze zadat jako jeden textový soubor nebo více textových souborů. Chcete-li zlepšit přesnost, používejte textová data, která se blíží očekávanému mluvenému projevy. Výslovnost by se měla zadat jako jediný textový soubor. Všechno se dá zabalit jako jeden soubor zip a nahrát na <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech portál <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+Věty lze zadat jako jeden textový soubor nebo více textových souborů. Chcete-li zlepšit přesnost, používejte textová data, která se blíží očekávanému mluvenému projevy. Výslovnost by se měla zadat jako jediný textový soubor. Všechno se dá zabalit jako jeden soubor zip a nahrát na <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech portál <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>Pokyny k vytvoření souboru s větami
 
@@ -143,7 +145,7 @@ Pomocí této tabulky zajistěte, aby byl správně naformátován váš souvise
 Navíc se budete chtít přihlédnout k následujícím omezením:
 
 * Nepoužívejte opakující se znaky víckrát než čtyřikrát. Například: "AAAA" nebo "uuuu".
-* Nepoužívejte speciální znaky ani znaky UTF-8 uvedené `U+00A1`výše.
+* Nepoužívejte speciální znaky ani znaky UTF-8 uvedené výše `U+00A1` .
 * Identifikátory URI se odmítnou.
 
 ### <a name="guidelines-to-create-a-pronunciation-file"></a>Pokyny pro vytvoření souboru s výslovností
@@ -163,7 +165,7 @@ Zahrnuje příklady mluveného utterance a vlastní výslovnost pro každý z ni
 
 Mluvený formulář je fonetická sekvence, která je vypsána. Může se skládat z písmen, slov, slabik nebo kombinace všech tří.
 
-Přizpůsobená výslovnost je k dispozici v angličtině`en-US`(`de-DE`) a němčině (). V této tabulce jsou uvedeny podporované znaky podle jazyka:
+Přizpůsobená výslovnost je k dispozici v angličtině ( `en-US` ) a němčině ( `de-DE` ). V této tabulce jsou uvedeny podporované znaky podle jazyka:
 
 | Jazyk | Národní prostředí | Znaky |
 |----------|--------|------------|

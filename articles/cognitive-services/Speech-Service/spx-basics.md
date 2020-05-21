@@ -10,40 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 68947895891b4875ef4c57355f1236afdb8c2c7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 31c1d50962b2710fbeb249c61c8b3c144762be43
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204818"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715643"
 ---
 # <a name="learn-the-basics-of-spx"></a>Seznamte se se základy SPX
 
 V tomto článku se naučíte základní vzorce používání SPX, což je nástroj příkazového řádku pro použití služby Speech bez psaní kódu. Můžete rychle otestovat hlavní funkce služby Speech, aniž byste museli vytvářet vývojová prostředí nebo psát kód, abyste zjistili, jestli je možné vaše případy použití vhodně splnit. Kromě toho je možnost SPX připravena na produkční prostředí a je možné ji použít k automatizaci jednoduchých pracovních postupů ve službě pro rozpoznávání řeči, pomocí `.bat` skriptů nebo prostředí.
 
-## <a name="prerequisites"></a>Požadavky
-
-Jediným předpokladem je předplatné služby Azure Speech. Pokud ho ještě nemáte, přečtěte si [příručku](get-started.md#new-resource) k vytvoření nového předplatného.
-
-## <a name="download-and-install"></a>Stažení a instalace
-
-SPX je k dispozici v systémech Windows a Linux. Začněte stažením [archivu zip](https://aka.ms/speech/spx-zips.zip)a potom ho rozbalte. SPX vyžaduje rozhraní .NET Core nebo .NET Framework runtime a následující verze jsou podporovány platformou:
-
-* Windows: [.NET Framework 4,7](https://dotnet.microsoft.com/download/dotnet-framework/net471), [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-* Linux: [.NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
-
-Po nainstalování modulu runtime přejdete do kořenového adresáře `spx-zips` , který jste extrahovali ze staženého souboru, a extrahováním podadresáře, který potřebujete ( `spx-net471` například). Na příkazovém řádku změňte adresář na toto umístění a spusťte aplikaci spuštěním příkazu `spx` .
-
-## <a name="create-subscription-config"></a>Vytvořit konfiguraci předplatného
-
-Pokud chcete začít používat protokol SPX, musíte nejdřív zadat klíč předplatného pro rozpoznávání řeči a informace o oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) . Jakmile budete mít svůj klíč předplatného a identifikátor oblasti (např. `eastus`, `westus` ) spusťte následující příkazy.
-
-```shell
-spx config @key --set YOUR-SUBSCRIPTION-KEY
-spx config @region --set YOUR-REGION-ID
-```
-
-Ověřování předplatného je nyní uloženo pro budoucí požadavky SPX. Pokud potřebujete některou z těchto uložených hodnot odebrat, spusťte `spx config @region --clear` nebo `spx config @key --clear` .
+[!INCLUDE [](includes/spx-setup.md)]
 
 ## <a name="basic-usage"></a>Základní použití
 

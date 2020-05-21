@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 06c28c2e0df7333d0c2d6f735ae0758bcd93191a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 798da0261dbb692d411f1bb568a272a6bb7dbb03
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685391"
+ms.locfileid: "83715660"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Spravovat přihlašovací údaje v Azure Automation
 
@@ -138,7 +138,7 @@ Aktivitu pro interní `Get-AutomationPSCredential` rutinu můžete do grafickéh
 
 ![Přidat přihlašovací údaje na plátno](../media/credentials/credential-add-canvas.png)
 
-Následující obrázek ukazuje příklad použití přihlašovacích údajů v grafickém Runbooku. V takovém případě přihlašovací údaje poskytují ověřování pro sadu Runbook prostředky Azure, jak je popsáno v tématu [použití Azure AD v Azure Automation k ověření v Azure](../automation-use-azure-ad.md). První aktivita načte přihlašovací údaje, které mají přístup k předplatnému Azure. Aktivita připojení k účtu pak pomocí těchto přihlašovacích údajů poskytuje ověřování pro všechny aktivity, které jsou po ní. [Odkaz na kanál](../automation-graphical-authoring-intro.md#links-and-workflow) se tady používá, protože `Get-AutomationPSCredential` očekává jeden objekt.  
+Následující obrázek ukazuje příklad použití přihlašovacích údajů v grafickém Runbooku. V takovém případě přihlašovací údaje poskytují ověřování pro sadu Runbook prostředky Azure, jak je popsáno v tématu [použití Azure AD v Azure Automation k ověření v Azure](../automation-use-azure-ad.md). První aktivita načte přihlašovací údaje, které mají přístup k předplatnému Azure. Aktivita připojení k účtu pak pomocí těchto přihlašovacích údajů poskytuje ověřování pro všechny aktivity, které jsou po ní. [Odkaz na kanál](../automation-graphical-authoring-intro.md#use-links-for-workflow) se tady používá, protože `Get-AutomationPSCredential` očekává jeden objekt.  
 
 ![Přidat přihlašovací údaje na plátno](../media/credentials/get-credential.png)
 
@@ -163,6 +163,6 @@ print cred["password"]
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o rutinách použitých pro přístup k přihlašovacím údajům najdete v tématu [Správa modulů v Azure Automation](modules.md).
-* Obecné informace o sadách Runbook naleznete [v tématu Spuštění Runbooku v Azure Automation](../automation-runbook-execution.md).
-* Podrobnosti o konfiguracích DSC najdete v tématu [Přehled konfigurace stavu](../automation-dsc-overview.md).
+* [Správa modulů ve službě Azure Automation](modules.md)
+* [Spouštění runbooků ve službě Azure Automation](../automation-runbook-execution.md)
+* [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md) 

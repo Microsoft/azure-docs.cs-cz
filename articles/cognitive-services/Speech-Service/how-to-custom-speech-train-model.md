@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77137775"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722622"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Trénování modelu pro Custom Speech
 
@@ -42,7 +42,7 @@ Prvním krokem při výuce modelu je odeslání školicích dat. Použijte [př�
 2. Přejít na **> převodu řeči na text Custom Speech > školení**.
 3. Klikněte na **výuka model**.
 4. V dalším kroku poskytněte školení **název** a **Popis**.
-5. V rozevírací nabídce **scénář a model standardních hodnot** vyberte scénář, který nejlépe odpovídá vaší doméně. Pokud si nejste jisti, který scénář zvolíte, vyberte možnost **Obecné**. Základní model je výchozím bodem pro školení. Pokud nemáte předvolbu, můžete použít nejnovější.
+5. V rozevírací nabídce **scénář a model standardních hodnot** vyberte scénář, který nejlépe odpovídá vaší doméně. Pokud si nejste jisti, který scénář zvolíte, vyberte možnost **Obecné**. Základní model je výchozím bodem pro školení. Nejnovější model je obvykle nejlepší volbou.
 6. Na stránce **Vybrat školicí data** vyberte jednu nebo více zvukových a uživatelem označených datových sad, které chcete použít pro školení.
 7. Po dokončení školení se můžete rozhodnout pro provádění testování přesnosti u nově vyučeného modelu. Tento krok je volitelný.
 8. Vyberte **vytvořit** a sestavte vlastní model.
@@ -62,7 +62,7 @@ Pokud se rozhodnete vyzkoušet přesnost testování, je důležité vybrat akus
 
 - [Nasazení modelu](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Příprava a testování dat](how-to-custom-speech-test-data.md)
 - [Kontrola dat](how-to-custom-speech-inspect-data.md)

@@ -1,14 +1,14 @@
 ---
 title: Monitorování služby Batch pomocí Application Insights Azure
 description: Naučte se, jak instrumentovat aplikaci Azure Batch .NET pomocí knihovny Azure Application Insights.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: ca8cde9b1838239a79ebca4efe43d9e619f80f12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115461"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723608"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorování a ladění aplikace Azure Batch .NET pomocí Application Insights
 
@@ -215,7 +215,7 @@ foreach (string aiFile in AIFilesToUpload)
 ...
 ```
 
-`FileToStage` Metoda je pomocná funkce v ukázce kódu, která umožňuje snadno nahrát soubor z místního disku do objektu blob Azure Storage. Každý soubor je později stažen do výpočetního uzlu a na něj odkazuje úkol.
+`FileToStage`Metoda je pomocná funkce v ukázce kódu, která umožňuje snadno nahrát soubor z místního disku do objektu blob Azure Storage. Každý soubor je později stažen do výpočetního uzlu a na něj odkazuje úkol.
 
 Nakonec přidejte úlohy do úlohy a zahrňte nezbytné Application Insights binární soubory.
 ```csharp
@@ -280,13 +280,13 @@ Následující snímky obrazovky ukazují, jak Application Insights protokoluje 
 Vlastní metriky jsou také cenným nástrojem na portálu. Můžete například zobrazit průměrnou dobu trvání každého výpočetního uzlu ke stažení požadovaného textového souboru, který zpracovává.
 
 Vytvoření ukázkového grafu:
-1. V prostředku Application Insights klikněte na **Průzkumník metrik** > **přidat graf**.
+1. V prostředku Application Insights klikněte na **Průzkumník metrik**  >  **přidat graf**.
 2. V přidaném grafu klikněte na **Upravit** .
 2. Aktualizujte podrobnosti grafu následujícím způsobem:
    * Nastavte **typ grafu** na **Grid**.
    * Nastavte **agregaci** na **průměr**.
    * Nastavte **Seskupit podle** na **NodeId**.
-   * V **metrikách**vyberte **vlastní** > **stahování objektů BLOB během několika sekund**.
+   * V **metrikách**vyberte **vlastní**  >  **stahování objektů BLOB během několika sekund**.
    * Upravte **paletu barev** zobrazení podle vašeho výběru. 
 
 ![Doba stahování objektu BLOB na uzel](./media/monitor-application-insights/blobdownloadtime.png)

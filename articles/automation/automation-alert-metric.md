@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak monitorovat Runbooky na základě metr
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: e0d30e3d18ecb279e26731346bca7bb7c12943cb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c5f51ec34ea0b31f4c8fc349246b439425112104
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685408"
+ms.locfileid: "83715847"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Monitorování runbooků s upozorněními metrik
 
@@ -77,7 +77,4 @@ Jakmile metrika přestane být mimo stanovenou prahové hodnoty, výstraha se de
 
 ## <a name="next-steps"></a>Další kroky
 
-V následujícím článku se dozvíte další informace o tom, jak můžete výstrahy integrovat do svého účtu Automation.
-
-> [!div class="nextstepaction"]
-> [Aktivace sady Runbook Azure Automation pomocí výstrahy](automation-create-alert-triggered-runbook.md)
+* [Aktivace sady Runbook Azure Automation pomocí výstrahy](automation-create-alert-triggered-runbook.md)

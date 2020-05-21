@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 52258a8bc287df36158ec143e4aad74c34455ea4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e015999d8c1f60340fb30609c6563f770c5c824f
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80236073"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726209"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rychlý Start: nasazení prvního modulu IoT Edge do virtuálního zařízení se systémem Linux
 
@@ -94,7 +94,7 @@ Zaregistrujte zařízení IoT Edge do nově vytvořeného centra IoT.
 
 Vytvořte identitu zařízení pro zařízení IoT Edge, aby mohla komunikovat se službou IoT Hub. Identita zařízení se uchovává v cloudu a k přidružení fyzického zařízení k identitě zařízení se používá jedinečný připojovací řetězec zařízení.
 
-Vzhledem k tomu, že se zařízení IoT Edge chovají a dají se spravovat jinak než typická zařízení IoT, deklarujte tuto identitu pro IoT Edge zařízení `--edge-enabled` s příznakem.
+Vzhledem k tomu, že se zařízení IoT Edge chovají a dají se spravovat jinak než typická zařízení IoT, deklarujte tuto identitu pro IoT Edge zařízení s `--edge-enabled` příznakem.
 
 1. Ve službě Azure Cloud Shell zadejte následující příkaz, kterým v centru vytvoříte zařízení **myEdgeDevice**.
 
@@ -102,7 +102,7 @@ Vzhledem k tomu, že se zařízení IoT Edge chovají a dají se spravovat jinak
    az iot hub device-identity create --hub-name {hub_name} --device-id myEdgeDevice --edge-enabled
    ```
 
-   Pokud se vám zobrazí chyba týkající se klíčů zásad iothubowner, ujistěte se, že Cloud Shell má spuštěnou nejnovější verzi rozšíření azure-cli-iot-ext.
+   Pokud se zobrazí chyba týkající se klíčů zásad iothubowner, ujistěte se, že vaše cloudové prostředí používá nejnovější verzi rozšíření Azure-IoT.
 
 2. Načtěte připojovací řetězec svého zařízení, který propojí vaše fyzické zařízení s jeho identitou ve službě IoT Hub.
 
@@ -136,7 +136,7 @@ Pokud používáte IoT Edge v místním počítači nebo zařízení ARM32 nebo 
 
 ### <a name="view-the-iot-edge-runtime-status"></a>Zobrazení stavu modulu runtime IoT Edge
 
-Zbývající příkazy v tomto rychlém startu se uskuteční na svém IoT Edge samotném zařízení, abyste viděli, co se děje na zařízení. Pokud používáte virtuální počítač, připojte se k tomuto počítači nyní pomocí veřejné IP adresy, která byla výstupem příkazu vytvoření. Veřejnou IP adresu můžete také najít na stránce Přehled na svém virtuálním počítači v Azure Portal. Pokud se chcete připojit k virtuálnímu počítači, použijte následující příkaz. Nahraďte `{azureuser}` , pokud jste použili jiné uživatelské jméno, než jaké je navržené v požadavcích. Nahraďte `{publicIpAddress}` adresou vašeho počítače.
+Zbývající příkazy v tomto rychlém startu se uskuteční na svém IoT Edge samotném zařízení, abyste viděli, co se děje na zařízení. Pokud používáte virtuální počítač, připojte se k tomuto počítači nyní pomocí veřejné IP adresy, která byla výstupem příkazu vytvoření. Veřejnou IP adresu můžete také najít na stránce Přehled na svém virtuálním počítači v Azure Portal. Pokud se chcete připojit k virtuálnímu počítači, použijte následující příkaz. Nahraďte, `{azureuser}` Pokud jste použili jiné uživatelské jméno, než jaké je navržené v požadavcích. Nahraďte `{publicIpAddress}` adresou vašeho počítače.
 
    ```console
    ssh azureuser@{publicIpAddress}

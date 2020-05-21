@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402068"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725529"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
@@ -37,9 +37,11 @@ Tento diagram zvýrazňuje části, které tvoří [portál Custom Speech](https
 
 4. [Vyhodnotit přesnost](how-to-custom-speech-evaluate-data.md) – vyhodnotit přesnost modelu řeči na text. [Portál Custom Speech](https://speech.microsoft.com/customspeech) poskytne *Četnost chyb slov*, která se dá použít k určení, jestli je potřeba další školení. Pokud jste spokojeni s přesností, můžete použít rozhraní API služby Speech přímo. Pokud byste chtěli zlepšit přesnost relativních průměrů 5% až 20%, použijte na portálu kartu **školení** k nahrání dalších školicích dat, jako jsou přepisy popisků a související text.
 
-5. Vylepšete [model](how-to-custom-speech-train-model.md) – zvyšte přesnost vašeho modelu řeči na text tím, že poskytnete písemné přepisy (10 – 1000 hodin) a související text (<200 MB) spolu s daty testovacího testu. Tato data pomáhají naučit model řeči na text. Po školení, opětovném testování a pokud jste s výsledkem spokojeni, můžete model nasadit.
+5. [Zlepšení přesnosti](how-to-custom-speech-improve-accuracy.md) – vyberte další školicí data strategická za účelem zlepšení kvality modelu řeči na text v závislosti na vašem scénáři.
 
-6. [Nasazení modelu](how-to-custom-speech-deploy-model.md) – vytvořte vlastní koncový bod pro model řeči a text a používejte ho ve svých aplikacích, nástrojích nebo produktech.
+6. Vylepšete [model](how-to-custom-speech-train-model.md) – zvyšte přesnost vašeho modelu řeči na text tím, že poskytnete písemné přepisy (10 – 1000 hodin) a související text (<200 MB) spolu s daty testovacího testu. Tato data pomáhají naučit model řeči na text. Po školení, opětovném testování a pokud jste s výsledkem spokojeni, můžete model nasadit.
+
+7. [Nasazení modelu](how-to-custom-speech-deploy-model.md) – vytvořte vlastní koncový bod pro model řeči a text a používejte ho ve svých aplikacích, nástrojích nebo produktech.
 
 ## <a name="set-up-your-azure-account"></a>Nastavení účtu Azure
 

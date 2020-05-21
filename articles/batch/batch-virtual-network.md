@@ -1,15 +1,15 @@
 ---
-title: Zřízení fondu ve virtuální síti – Azure Batch | Microsoft Docs
+title: Zřízení fondu ve virtuální síti
 description: Vytvoření fondu služby Batch ve službě Azure Virtual Network, aby výpočetní uzly mohly bezpečně komunikovat s jinými virtuálními počítači v síti, jako je třeba souborový server.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 616118d5f75f9bfa6d97d89baac9d7ea9186cd5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ca9a8bb60ecbea38da7dfdb44123d7201d6a112
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111891"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726277"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu Azure Batch ve virtuální síti
 
@@ -51,9 +51,9 @@ Ve vaší organizaci můžete mít požadavky na přesměrování (vynucení) in
 
 Aby bylo zajištěno, že výpočetní uzly fondu Azure Batch fungují ve virtuální síti s povoleným vynuceným tunelovým propojením, je nutné pro tuto podsíť přidat následující [trasy definované uživatelem](../virtual-network/virtual-networks-udr-overview.md) :
 
-* Služba Batch potřebuje komunikovat s výpočetními uzly fondu pro úlohy plánování. Pokud chcete povolit tuto komunikaci, přidejte uživatelsky definovanou trasu pro každou IP adresu, kterou používá služba Batch, v oblasti, ve které existuje účet Batch. Informace o tom, jak získat seznam IP adres služby Batch, najdete v tématu věnovaném místním [značkám služby](../virtual-network/service-tags-overview.md). IP adresy služby Batch budou přidruženy k značce `BatchNodeManagement` služby (nebo k místní variantě, která odpovídá vaší oblasti účtu Batch).
+* Služba Batch potřebuje komunikovat s výpočetními uzly fondu pro úlohy plánování. Pokud chcete povolit tuto komunikaci, přidejte uživatelsky definovanou trasu pro každou IP adresu, kterou používá služba Batch, v oblasti, ve které existuje účet Batch. Informace o tom, jak získat seznam IP adres služby Batch, najdete v tématu věnovaném místním [značkám služby](../virtual-network/service-tags-overview.md). IP adresy služby Batch budou přidruženy k `BatchNodeManagement` značce služby (nebo k místní variantě, která odpovídá vaší oblasti účtu Batch).
 
-* Ujistěte se, že odchozí přenosy do Azure Storage (konkrétně adresy URL formuláře `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`a `<account>.blob.core.windows.net`) nejsou blokované prostřednictvím místního síťového zařízení.
+* Ujistěte se, že odchozí přenosy do Azure Storage (konkrétně adresy URL formuláře `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` a `<account>.blob.core.windows.net` ) nejsou blokované prostřednictvím místního síťového zařízení.
 
 Když přidáte trasu definovanou uživatelem, definujte trasu pro každou související předponu IP adresy dávky a nastavte **typ dalšího segmentu směrování** na **Internet**. Prohlédněte si následující příklad:
 

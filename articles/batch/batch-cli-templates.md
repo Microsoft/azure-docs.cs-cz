@@ -1,15 +1,15 @@
 ---
 title: Kompletní spouštění úloh pomocí šablon
 description: Když máte jenom příkazy rozhraní příkazového řádku, můžete vytvořit fond, nahrávat vstupní data, vytvářet úlohy a související úlohy a stahovat výsledná výstupní data.
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 634a0b66379d8c94988d5f974baffe475af94c2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b1a28c817e0b0aa8047cdd9952065862bda9b73
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117348"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726770"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Použití Azure Batch šablon CLI a přenosu souborů
 
@@ -61,7 +61,7 @@ Pokud se chcete přihlásit k účtu Batch pomocí Azure CLI, přečtěte si té
 
 -   **Parametry**
 
-    -   Povolí zadání hodnot vlastností v oddílu body, přičemž při použití šablony se musí zadat jenom hodnoty parametrů. Například úplná definice pro fond může být umístěná v těle a jenom jeden parametr definovaný pro `poolId`; k vytvoření fondu je proto nutné zadat pouze řetězec ID fondu.
+    -   Povolí zadání hodnot vlastností v oddílu body, přičemž při použití šablony se musí zadat jenom hodnoty parametrů. Například úplná definice pro fond může být umístěná v těle a jenom jeden parametr definovaný pro `poolId` ; pro vytvoření fondu je potřeba zadat jenom řetězec ID fondu.
         
     -   Tělo šablony může vytvořit někdo se znalostí o službě Batch a aplikace, které se mají spustit pomocí dávky. Při použití šablony musí být zadány pouze hodnoty pro parametry definované autorem. Uživatel bez podrobných znalostí a/nebo aplikací v dávce může proto šablony použít.
 
@@ -136,7 +136,7 @@ Pokud se soubor šablony jmenoval jako _Pool-ffmpeg. JSON_, pak tuto šablonu vy
 az batch pool create --template pool-ffmpeg.json
 ```
 
-Rozhraní příkazového řádku vás vyzve k zadání hodnot `poolId` parametrů `nodeCount` a. Parametry můžete také dodat v souboru JSON. Příklad:
+Rozhraní příkazového řádku vás vyzve k zadání hodnot `poolId` `nodeCount` parametrů a. Parametry můžete také dodat v souboru JSON. Například:
 
 ```json
 {
@@ -253,7 +253,7 @@ Můžete nahrát šablonu Batch CLI do desktopové aplikace [Batch Explorer](htt
 
 Postup nahrání šablony:
 
-1. V Batch Explorer vyberte**místní šablony** **Galerie** > .
+1. V Batch Explorer vyberte **Gallery**  >  **místní šablony**galerie.
 
 2. Vyberte nebo přetáhněte místní fond nebo šablonu úlohy do seznamu.
 

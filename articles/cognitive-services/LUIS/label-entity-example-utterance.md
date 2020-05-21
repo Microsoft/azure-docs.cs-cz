@@ -1,46 +1,48 @@
 ---
 title: Popisek entity příkladu utterance
-description: Naučte se, jak označit entitu strojového učení pomocí dílčích součástí na příkladu utterance na stránce s podrobnostmi záměru na portálu LUIS.
+description: Naučte se, jak označit entitu strojového učení s podentitami na příkladu utterance na stránce s podrobnostmi záměru na portálu LUIS.
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: 0181057bd693280223806e9b5b7cd8c7f7345f79
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 05/20/2020
+ms.openlocfilehash: 959b9c6b25a7a76a87112fcbd1a10e7da12db1dd
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683781"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722639"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Označení entity strojového učení v příkladu utterance
 
 Označení entity v příkladu utterance poskytuje LUIS příklad, co je entita a kde se entita může zobrazit v utterance.
 
+Můžete označovat prvky, které se naučily počítač, a subentity.
+
+Vzhledem k tomu, že nemůžete označovat regulární výraz, seznam nebo předem sestavené entity, vytvořte entitu nebo subentitu, pak přidejte tyto entity funkce, pokud je to možné, na entitu nebo subentitu.
+
 ## <a name="label-example-utterances-from-the-intent-detail-page"></a>Příklad popisku projevy na stránce s podrobnostmi záměru
+
+Chcete-li popsat příklady entit v rámci utterance, vyberte záměr utterance.
 
 1. Přihlaste se k [portálu Luis](https://www.luis.ai)a vyberte své **předplatné** a **prostředek pro vytváření obsahu** , abyste viděli aplikace přiřazené k tomuto zdrojovému prostředku.
 1. Otevřete svou aplikaci tak, že na stránce **Moje aplikace** vyberete její název.
 1. Vyberte záměr s příkladem projevy, který chcete označit pro extrakci s entitou.
 1. Vyberte text, který chcete označit, a pak vyberte entitu.
 
+## <a name="two-techniques-to-label-entities"></a>Dva postupy pro označení entit
+
+Na stránce s podrobnostmi záměru jsou podporovány dvě techniky označování.
+* Vyberte entitu nebo podentitu z [palety entit](#label-with-the-entity-palette-visible) a pak vyberte v příkladu utterance text. To je doporučený postup, protože můžete vizuálně ověřit, že pracujete se správnou entitou nebo podentitou podle vašeho schématu.
+* Nejprve vyberte v příkladu utterance text. Když to uděláte, zobrazí se místní nabídka [možností označování](#how-to-label-entity-from-in-place-menu) .
+
 ## <a name="label-with-the-entity-palette-visible"></a>Popisek s viditelnou paletou entit
 
-Po naplánování schématu pomocí entit nechejte při označování zobrazovat **paletu entit** . **Paleta entit** představuje připomenutí, jaké entity jste si naplánovali k extrakci.
+Po [Naplánování schématu pomocí entit](luis-how-plan-your-app.md)nechejte při označování zobrazovat **paletu entit** . **Paleta entit** představuje připomenutí, které entity jste si naplánovali k extrakci.
 
 Pokud chcete získat přístup k **paletě entit**, vyberte **@** symbol na panelu nástrojů nad ukázkovým seznamem utterance.
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky se stránkou s podrobnostmi o záměru v paletě entit](media/label-utterances/entity-palette-from-tool-bar.png)
 
-## <a name="label-entity-from-in-place-menu"></a>Popisek entity z místní nabídky
-
-Vezměte v úvahu příklad utterance, `hi, please I want a cheese pizza in 20 minutes` .
-
-1. Vyberte text na nejvyšší úrovni, vyberte nejvíce vpravo text entity a potom v místní nabídce vyberte entitu, se kterou chcete popisek označit.
-
-    > [!div class="mx-imgBorder"]
-    > ![Popisek dokončení počítače – studijní entita](media/label-utterances/label-steps-in-place-menu.png)
-
-
-## <a name="label-entity-from-entity-palette"></a>Popisek entity z palety entit
+## <a name="how-to-label-entity-from-entity-palette"></a>Jak označit entitu z palety entit
 
 Paleta entit nabízí alternativu k předchozímu prostředí označování. Umožňuje přenášet text na text, abyste ho mohli hned označit entitou.
 
@@ -69,6 +71,17 @@ Role entit jsou označené pomocí **palety entit**.
 1. Pod seznamem entit vyberte existující roli.
 1. V příkladu utterance text označte text pomocí role entity.
 
+## <a name="how-to-label-entity-from-in-place-menu"></a>Jak označit entitu v místní nabídce
+
+Označování na místě umožňuje rychle vybrat text v rámci utterance a označit ho jako popisek. Můžete také vytvořit entitu služby Machine Learning nebo seznam entit z textu s popiskem.
+
+Vezměte v úvahu příklad utterance, `hi, please I want a cheese pizza in 20 minutes` .
+
+Vyberte text na nejvyšší úrovni, vyberte nejvíce vpravo text entity a potom v místní nabídce vyberte entitu, se kterou chcete popisek označit.
+
+> [!div class="mx-imgBorder"]
+> ![Popisek dokončení počítače – studijní entita](media/label-utterances/label-steps-in-place-menu.png)
+
 ## <a name="review-labeled-text"></a>Zkontrolovat text s popiskem
 
 Po označení se podívejte na příklad utterance a ujistěte se, že vybraný rozsah textu byl podtržený zvolenou entitou. Plná čára indikuje, že text byl označený.
@@ -86,12 +99,12 @@ Pokud Přepište text, který je už označený, LUIS může rozdělit nebo slou
 
 ## <a name="labeling-for-punctuation"></a>Označení pro interpunkční znaménka
 
-Nemusíte označovat interpunkční znaménka. Použijte [nastavení aplikace](luis-reference-application-settings.md) _wordové formuláře_ k řízení, zda interpunkční znaménka ovlivňuje utterance předpovědi.
+Nemusíte označovat interpunkční znaménka. Pomocí [nastavení aplikace](luis-reference-application-settings.md) můžete řídit, jak interpunkce ovlivňuje utterance předpovědi.
 
 ## <a name="unlabel-entities"></a>Odznačení entit
 
 > [!NOTE]
-> U některých entit strojového počítače se dají bez označení označit.
+> U některých entit strojového počítače se dají bez označení označit. Nemůžete označovat nebo odoznačovat entity regulárních výrazů, seznam entit nebo předem sestavených entit.
 
 Chcete-li zrušit označení entity, vyberte entitu a v místní nabídce vyberte možnost zrušit **označení** .
 
@@ -107,6 +120,12 @@ Pokud přidáváte popisek pro podentitu, bude nadřazená položka automaticky 
 ## <a name="automatic-labeling-for-non-machine-learned-entities"></a>Automatické označování pro entity, které nejsou učené počítačem
 
 Mezi nestrojové entity, které patří mezi počítače, patří předem připravené entity, entity regulárních výrazů, seznam entit a vzor. jakékoli entity. Tyto jsou automaticky označeny pomocí LUIS, takže není nutné je ručně popsat podle uživatelů.
+
+## <a name="intent-prediction-errors"></a>Chyby předpovědi záměru
+
+Chyba předpovědi záměru indikuje, že příklad utterance, s ohledem na aktuálně vyškolenou aplikaci, se pro záměr nepředpokládá.
+
+Přečtěte si, jak [Zobrazit tyto chyby](luis-how-to-add-intents.md#intent-prediction-errors) na stránce s podrobnostmi záměru.
 
 ## <a name="entity-prediction-errors"></a>Chyby předpovědi entity
 

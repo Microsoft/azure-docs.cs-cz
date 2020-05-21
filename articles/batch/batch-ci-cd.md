@@ -4,13 +4,13 @@ description: Naučte se, jak nasadit kanál sestavení nebo vydání pro aplikac
 author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
-ms.topic: conceptual
-ms.openlocfilehash: 79c4e74086acc0f74bcc43f6b4543afe12916364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 72f976071a5fc65c8e96f6b3cd5c0094785e287b
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117382"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726838"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Použití Azure Pipelines k sestavení a nasazení řešení HPC
 
@@ -475,7 +475,7 @@ Po nastavení prostředí potvrďte, že následující testy mohou být úspě�
 
 Připojte se k novému účtu Azure Batch pomocí Azure CLI z příkazového řádku PowerShellu.
 
-* Přihlaste se ke svému účtu `az login` Azure pomocí a postupujte podle pokynů k ověření.
+* Přihlaste se ke svému účtu Azure pomocí `az login` a postupujte podle pokynů k ověření.
 * Nyní ověřte účet Batch:`az batch account login -g <resourceGroup> -n <batchAccount>`
 
 #### <a name="list-the-available-applications"></a>Seznam dostupných aplikací

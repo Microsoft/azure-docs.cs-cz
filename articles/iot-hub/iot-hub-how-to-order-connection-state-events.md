@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954259"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726192"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Uspořádání událostí připojení zařízení z Azure IoT Hubu pomocí služby Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Pořadové číslo je řetězcové vyjádření šestnáctkového čísla. K ide
 
 Nejdřív vytvořte uloženou proceduru a nastavte ji tak, aby běžela logika, která porovnává pořadová čísla příchozích událostí a zaznamenává poslední událost na zařízení v databázi.
 
-1. V Cosmos DB rozhraní SQL API vyberte **Průzkumník dat** > **položky** > **Nová uložená procedura**.
+1. V Cosmos DB rozhraní SQL API vyberte **Průzkumník dat**  >  **položky**  >  **Nová uložená procedura**.
 
    ![Vytvořit uloženou proceduru](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
@@ -334,7 +334,7 @@ Výsledky spuštěné uložené procedury můžete zobrazit v dokumentu Cosmos D
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
-Místo používání [Azure Portal](https://portal.azure.com)můžete IoT Hub kroky provést pomocí rozhraní příkazového řádku Azure CLI. Podrobnosti najdete na stránkách Azure CLI pro [Vytvoření odběru událostí](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) a [Vytvoření zařízení IoT](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create).
+Místo používání [Azure Portal](https://portal.azure.com)můžete IoT Hub kroky provést pomocí rozhraní příkazového řádku Azure CLI. Podrobnosti najdete na stránkách Azure CLI pro [Vytvoření odběru událostí](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) a [Vytvoření zařízení IoT](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

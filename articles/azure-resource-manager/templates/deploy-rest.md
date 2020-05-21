@@ -2,13 +2,13 @@
 title: Nasazení prostředků pomocí REST API a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Správce prostředků REST API. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
-ms.date: 06/04/2019
-ms.openlocfilehash: 9cdb7b668e5170917b41ef49639bd9a17e538766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: d7865ac6f9b2bb176ea5308e326dec0741a80962
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153229"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723115"
 ---
 # <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>Nasazení prostředků pomocí šablon ARM a Správce prostředků REST API
 
@@ -20,27 +20,35 @@ Můžete buď zahrnout šablonu do textu žádosti nebo odkaz na soubor. Při po
 
 Nasazení můžete cílit do skupiny pro správu, předplatného Azure nebo skupiny prostředků. Ve většině případů budete cílit na nasazení do skupiny prostředků. Pomocí skupiny pro správu nebo nasazení předplatných můžete použít zásady a přiřazení rolí v rámci zadaného rozsahu. K vytvoření skupiny prostředků a nasazení prostředků do ní taky použijete nasazení předplatného. V závislosti na rozsahu nasazení použijete jiné příkazy.
 
-K nasazení do **skupiny prostředků**použijte [nasazení – vytvořit](/rest/api/resources/deployments/createorupdate). Požadavek se pošle na:
+* K nasazení do **skupiny prostředků**použijte [nasazení – vytvořit](/rest/api/resources/deployments/createorupdate). Požadavek se pošle na:
 
-```HTTP
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
-K nasazení do **předplatného**použijte [nasazení – vytvořit v oboru předplatného](/rest/api/resources/deployments/createorupdateatsubscriptionscope). Požadavek se pošle na:
+* K nasazení do **předplatného**použijte [nasazení – vytvořit v oboru předplatného](/rest/api/resources/deployments/createorupdateatsubscriptionscope). Požadavek se pošle na:
 
-```HTTP
-PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
-Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
+  Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
-Pro nasazení do **skupiny pro správu**použijte [nasazení – vytvořte v oboru skupiny pro správu](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). Požadavek se pošle na:
+* Pro nasazení do **skupiny pro správu**použijte [nasazení – vytvořte v oboru skupiny pro správu](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). Požadavek se pošle na:
 
-```HTTP
-PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
-```
+  ```HTTP
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
 
-Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
+  Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
+
+* K nasazení do **tenanta**použijte [nasazení – vytvořit nebo aktualizovat v oboru tenanta](/rest/api/resources/deployments/createorupdateattenantscope). Požadavek se pošle na:
+
+  ```HTTP
+  PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  ```
+
+  Další informace o nasazeních na úrovni tenanta najdete v tématu [vytvoření prostředků na úrovni tenanta](deploy-to-tenant.md).
 
 Příklady v tomto článku používají nasazení skupin prostředků.
 
@@ -51,7 +59,7 @@ Příklady v tomto článku používají nasazení skupin prostředků.
 1. Pokud nemáte existující skupinu prostředků, vytvořte skupinu prostředků. Zadejte ID předplatného, název nové skupiny prostředků a umístění, které budete potřebovat pro vaše řešení. Další informace najdete v tématu [Vytvoření skupiny prostředků](/rest/api/resources/resourcegroups/createorupdate).
 
    ```HTTP
-   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-05-01
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-10-01
    ```
 
    S textem žádosti, jako je:
@@ -70,7 +78,7 @@ Příklady v tomto článku používají nasazení skupin prostředků.
 1. Pokud chcete nasadit šablonu, zadejte ID předplatného, název skupiny prostředků, název nasazení v identifikátoru URI požadavku.
 
    ```HTTP
-   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-10-01
    ```
 
    V textu žádosti zadejte odkaz na šablonu a soubor parametrů. Další informace o souboru parametrů naleznete v tématu [Create správce prostředků Parameter File](parameter-files.md).
@@ -184,7 +192,7 @@ Příklady v tomto článku používají nasazení skupin prostředků.
 1. Chcete-li získat stav nasazení šablony, použijte [nasazení – získat](/rest/api/resources/deployments/get).
 
    ```HTTP
-   GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
+   GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
    ```
 
 ## <a name="next-steps"></a>Další kroky

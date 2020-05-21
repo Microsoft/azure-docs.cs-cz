@@ -1,36 +1,42 @@
 ---
 title: Ověření runbooků Azure Automation pomocí Amazon Web Services
-description: Tento článek popisuje postup vytvoření a ověření přihlašovacích údajů Amazon Web Services (AWS) pro runbooky ve službě Azure Automation, které spravují prostředky AWS.
+description: Tento článek popisuje, jak ověřit Runbooky pomocí Amazon Web Services.
 keywords: ověřování aws, konfigurace aws
 services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 92919d2e0cc7ca685d2b60a8e7a8cf20433bbefc
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 0c724b1782381c0499991124c359d3e1339109d3
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994713"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715796"
 ---
-# <a name="authenticate-azure-automation-runbooks-with-amazon-web-services"></a>Ověření runbooků Azure Automation pomocí Amazon Web Services
+# <a name="authenticate-runbooks-with-amazon-web-services"></a>Ověřování runbooků s využitím Amazon Web Services
 
-Automatizaci běžných úkolů pomocí prostředků ve službě Amazon Web Services můžete provést pomocí runbooků Automation v Azure. V AWS můžete automatizovat celou řadu úloh pomocí runbooků Automation, stejně to děláte s prostředky v Azure. Potřebujete jen dvě věci:
+Automatizaci běžných úkolů pomocí prostředků ve službě Amazon Web Services můžete provést pomocí runbooků Automation v Azure. V AWS můžete automatizovat celou řadu úloh pomocí runbooků Automation, stejně to děláte s prostředky v Azure. Pro ověřování musíte mít předplatné Azure.
 
-* Předplatné AWS a sadu přihlašovacích údajů. Zejména přístupový klíč a tajný klíč AWS. Další informace najdete v článku [Použití přihlašovacích údajů AWS](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html).
-* Předplatné Azure a účet Automation.
+## <a name="obtain-aws-subscription-and-credentials"></a>Získání předplatného AWS a přihlašovacích údajů
 
-Abyste mohli ověřovat pomocí AWS, musíte zadat sadu přihlašovacích údajů AWS a ověřit svoje runbooky spuštěné ve službě Azure Automation. Pokud už máte vytvořený účet Automation a chcete ho použít k ověřování pomocí AWS, postupujte podle návodu v následující části. Pokud chcete vyhradit účet pro Runbooky cílící na prostředky AWS, měli byste nejdřív vytvořit nový [účet Automation](automation-create-standalone-account.md) a přeskočit tento krok a vytvořit účet Spustit jako. Po vytvoření účtu postupujte podle následujících kroků a dokončete konfiguraci.
+K ověřování pomocí AWS musíte získat předplatné AWS a zadat sadu přihlašovacích údajů AWS pro ověření vašich runbooků běžících na Azure Automation. Konkrétní požadovaná pověření jsou přístupová klávesa AWS a tajný klíč. Viz [použití přihlašovacích údajů AWS](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html).
 
 ## <a name="configure-automation-account"></a>Konfigurace účtu Automation
 
-Pokud má Azure Automation komunikovat s AWS, musíte nejdřív načíst přihlašovací údaje AWS a uložit je jako assety ve službě Azure Automation. Proveďte následující kroky, které jsou popsány v dokumentu AWS [Správa přístupových klíčů k vašemu účtu AWS](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html), vytvořte přístupový klíč a zkopírujte **Access Key ID** (ID přístupového klíče) a **Secret Access Key** (Tajný přístupový klíč) (případně si můžete soubor s klíčem stáhnout a uložit na bezpečné místo).
+K ověření pomocí AWS můžete použít existující účet Automation. Alternativně můžete vyhradit účet pro Runbooky cílící na AWS prostředky. V takovém případě vytvořte nový [účet Automation](automation-create-standalone-account.md).  
 
-Po vytvoření a zkopírování bezpečnostních klíčů AWS vytvořte pomocí účtu Azure Automation asset přihlašovacích údajů, bezpečně klíče uložte a odkazujte na ně ve svých runboocích. Postupujte podle kroků v části: **vytvoření nových přihlašovacích údajů** v [prostředcích přihlašovacích údajů v Azure Automation](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal) článku a zadejte následující informace:
+## <a name="store-aws-credentials"></a>Ukládat přihlašovací údaje AWS
 
-1. Do pole **Název** zadejte **AWScred** nebo odpovídající hodnotu v souladu se svými standardy pro vytváření názvů.
-2. Do pole **uživatelské jméno** zadejte své **ID přístupu** a **klíč tajného přístupu** do pole **heslo** a **potvrzení hesla** .
+Přihlašovací údaje AWS musíte uložit jako prostředky v Azure Automation. Pokyny k vytvoření přístupového klíče a tajného klíče najdete v tématu [Správa přístupových klíčů pro účet AWS](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) . Až budou klíče k dispozici, zkopírujte na bezpečné místo ID přístupového klíče a tajného klíče. Soubor klíče si můžete stáhnout a bezpečně ho uložit.
+
+## <a name="create-credential-asset"></a>Vytvořit prostředek přihlašovacích údajů
+
+Po vytvoření a zkopírování klíčů zabezpečení AWS musíte vytvořit Asset přihlašovacích údajů s účtem Automation. Asset vám umožní bezpečně ukládat klíče AWS a odkazovat na ně ve svých sadách Runbook. Přečtěte si téma [Vytvoření nového assetu přihlašovacích údajů pomocí Azure Portal](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal). Do uvedených polí zadejte následující AWS informace:
+    
+* **Název**  -  **AWScred**nebo vhodnou hodnotu podle standardů pojmenovávání
+* **Uživatelské jméno** – ID vašeho přístupu
+* **Heslo** – název tajného klíče 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si téma [Automatizace nasazení virtuálního počítače v Amazon Web Services](automation-scenario-aws-deployment.md) , kde se dozvíte, jak vytvářet Runbooky pro automatizaci úloh v AWS.
+* [Automatizace nasazení virtuálního počítače v Amazon Web Services](automation-scenario-aws-deployment.md)

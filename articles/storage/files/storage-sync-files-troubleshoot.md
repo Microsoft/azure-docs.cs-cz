@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 41bc2a05b81bca586cde261bf2eb05db96d687f8
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 062fa867115ea90dd129cac9c71ac6d9df6f3de2
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801312"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725852"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -161,7 +161,7 @@ K této chybě dochází v případě, že dojde k dosažení limitu koncových 
 K této chybě dochází v případě, že se v zadané cestě ke koncovému bodu serveru již synchronizuje jiný koncový bod serveru. Synchronizace souborů Azure nepodporuje synchronizaci stejného adresáře nebo svazku několika koncovými body serveru.
 
 <a id="-2160590967"></a>**Vytvoření koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobFailed" (kód chyby:-2160590967 nebo 0x80c80077)**  
-K této chybě dochází, pokud cesta koncového bodu serveru obsahuje osamocené vrstvené soubory. Pokud byl koncový bod serveru nedávno odebraný, počkejte, až se dokončí čištění osamocených vrstvených souborů. Jakmile se spustí čištění osamocených vrstvených souborů, do protokolu událostí telemetrie se zaprotokoluje událost s ID 6662. Po dokončení čištění osamocených vrstvených souborů se protokoluje událost s ID 6661 a koncový bod serveru se dá znovu vytvořit pomocí cesty. Pokud se vytvoření koncového bodu serveru nepovede po přihlášení události s ID 6661, odeberte osamocené vrstvené soubory provedením kroků popsaných v [vrstvených souborech na serveru po odstranění oddílu koncového bodu serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) .
+K této chybě dochází, pokud cesta koncového bodu serveru obsahuje osamocené vrstvené soubory. Pokud byl koncový bod serveru nedávno odebraný, počkejte, až se dokončí čištění osamocených vrstvených souborů. Jakmile se spustí čištění osamocených vrstvených souborů, do protokolu událostí telemetrie se zaprotokoluje událost s ID 6662. Po dokončení čištění osamocených vrstvených souborů se protokoluje událost s ID 6661 a koncový bod serveru se dá znovu vytvořit pomocí cesty. Pokud se vytvoření koncového bodu serveru nepovede, když se dokončí čištění vrstvených souborů, nebo pokud se v protokolu událostí telemetrie nenalezne událost s ID 6661, protože došlo k přechodu do protokolu událostí, odeberte osamocené vrstvené soubory provedením kroků popsaných v [vrstvených souborech na serveru po odstranění oddílu koncového bodu serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) .
 
 <a id="-2134347757"></a>**Odstranění koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobExpired" (kód chyby:-2134347757 nebo 0x80c87013)**  
 K této chybě dojde v případě, že je server offline nebo nemá připojení k síti. Pokud server už není k dispozici, zrušte registraci serveru na portálu. Tím se odstraní koncové body serveru. Pokud chcete odstranit koncové body serveru, postupujte podle kroků popsaných v tématu [zrušení registrace serveru pomocí Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
@@ -221,13 +221,13 @@ Koncový bod serveru nemůže v důsledku chyby nebo nedostatku systémových pr
 Tento problém se očekává, když vytvoříte koncový bod cloudu a použijete sdílenou složku Azure, která obsahuje data. Aby bylo možné synchronizovat soubory mezi koncovými body cloudu a serveru, je potřeba provést úlohu výčtu změn, která kontroluje změny ve sdílené složce Azure. Čas k dokončení úlohy závisí na velikosti oboru názvů ve sdílené složce Azure. Stav koncového bodu serveru by se měl aktualizovat, jakmile se dokončí úloha změny výčtu.
 
 ### <a name="how-do-i-monitor-sync-health"></a><a id="broken-sync"></a>Jak monitorovat stav synchronizace?
-# <a name="portal"></a>[Portál](#tab/portal1)
+# <a name="portal"></a>[Azure Portal](#tab/portal1)
 V rámci každé skupiny synchronizace můžete přejít k podrobnostem svého jednotlivého koncového bodu serveru a zobrazit stav posledních dokončených relací synchronizace. Zelený sloupec stavu a nesynchronizovaná hodnota 0 značí, že synchronizace pracuje podle očekávání. Pokud se nejedná o tento případ, níže naleznete seznam běžných chyb synchronizace a postup zpracování nesynchronizovaných souborů. 
 
 ![Snímek obrazovky Azure Portal](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
 # <a name="server"></a>[Server](#tab/server)
-Přejít na protokoly telemetrie serveru, které najdete v Prohlížeč událostí na `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`. Událost 9102 odpovídá dokončené relaci synchronizace; v případě nejnovějšího stavu synchronizace vyhledejte nejnovější událost s ID 9102. SyncDirection zobrazí informace o tom, jestli se jednalo o nahrání nebo stažení. Pokud je HResult 0, relace synchronizace byla úspěšná. Nenulová hodnota HResult znamená, že během synchronizace došlo k chybě; seznam běžných chyb najdete níže. Pokud je PerItemErrorCount větší než 0, znamená to, že některé soubory nebo složky se nesynchronizoval správně. Je možné mít hodnotu HResult 0, ale PerItemErrorCount, která je větší než 0.
+Přejít na protokoly telemetrie serveru, které najdete v Prohlížeč událostí na `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` . Událost 9102 odpovídá dokončené relaci synchronizace; v případě nejnovějšího stavu synchronizace vyhledejte nejnovější událost s ID 9102. SyncDirection zobrazí informace o tom, jestli se jednalo o nahrání nebo stažení. Pokud je HResult 0, relace synchronizace byla úspěšná. Nenulová hodnota HResult znamená, že během synchronizace došlo k chybě; seznam běžných chyb najdete níže. Pokud je PerItemErrorCount větší než 0, znamená to, že některé soubory nebo složky se nesynchronizoval správně. Je možné mít hodnotu HResult 0, ale PerItemErrorCount, která je větší než 0.
 
 Níže je uveden příklad úspěšného nahrání. V zájmu zkrácení jsou níže uvedené jenom některé hodnoty obsažené v každé události 9102. 
 
@@ -258,7 +258,7 @@ V některých případech se relace synchronizace celkově nezdařila, nebo maj�
 ---
 
 ### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>Jak monitorovat průběh aktuální relace synchronizace?
-# <a name="portal"></a>[Portál](#tab/portal1)
+# <a name="portal"></a>[Azure Portal](#tab/portal1)
 V rámci skupiny synchronizace přejděte na příslušný koncový bod serveru a podívejte se na část aktivita synchronizace a zobrazte počet souborů, které se nahrály nebo stáhly v aktuální relaci synchronizace. Všimněte si, že tento stav bude zpožděn přibližně o 5 minut a v případě, že je relace synchronizace dostatečně malá, aby mohla být dokončena v rámci této doby, nemusí být uvedena na portálu. 
 
 # <a name="server"></a>[Server](#tab/server)
@@ -276,7 +276,7 @@ PerItemErrorCount: 1006.
 ---
 
 ### <a name="how-do-i-know-if-my-servers-are-in-sync-with-each-other"></a>Jak zjistit, jestli jsou servery mezi sebou synchronizované?
-# <a name="portal"></a>[Portál](#tab/portal1)
+# <a name="portal"></a>[Azure Portal](#tab/portal1)
 Pro každý server v dané skupině synchronizace se ujistěte, že:
 - Časová razítka posledního pokusu o synchronizaci pro nahrávání a stahování jsou poslední.
 - Stav je zelený pro nahrávání i stahování.
@@ -284,7 +284,7 @@ Pro každý server v dané skupině synchronizace se ujistěte, že:
 - Pole nesynchronizované soubory je 0 pro nahrávání i stahování.
 
 # <a name="server"></a>[Server](#tab/server)
-Podívejte se na dokončené relace synchronizace, které jsou označené událostmi 9102 v protokolu událostí telemetrie pro každý server (v Prohlížeč událostí, přejít na `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`). 
+Podívejte se na dokončené relace synchronizace, které jsou označené událostmi 9102 v protokolu událostí telemetrie pro každý server (v Prohlížeč událostí, přejít na `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` ). 
 
 1. Na jakémkoli daném serveru se chcete ujistit, že se úspěšně odeslaly nejnovější relace nahrávání a stahování. Provedete to tak, že zkontrolujete, jestli je hodnota HResult a PerItemErrorCount 0 pro nahrávání i stahování (pole SyncDirection označuje, jestli je daná relace relace nahrávání nebo stahování). Všimněte si, že Pokud nevidíte nedávno dokončenou relaci synchronizace, je pravděpodobně relace synchronizace právě probíhající, což se očekává, pokud jste právě přidali nebo upravili velké množství dat.
 2. Pokud je server plně aktuální s cloudem a nemá žádné změny k synchronizaci v obou směrech, zobrazí se prázdné relace synchronizace. Ty jsou označeny odesláním a stažením událostí, ve kterých jsou všechna pole Sync * (SyncFileCount, SyncDirCount, SyncTombstoneCount a SyncSizeBytes) nulová, což znamená, že nedošlo k žádné synchronizaci. Pamatujte na to, že tyto prázdné relace synchronizace se nemusí nacházet na serverech s vysokou mírou změny, protože k synchronizaci je vždycky něco nového. Pokud neexistují žádné aktivity synchronizace, měly by se vyskytnout každých 30 minut. 
@@ -884,7 +884,7 @@ K této chybě dojde, když operace přijímání dat překročí časový limit
 
 ### <a name="common-troubleshooting-steps"></a>Běžné kroky při řešení potíží
 <a id="troubleshoot-storage-account"></a>**Ověřte, že účet úložiště existuje.**  
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 1. Přejděte do skupiny synchronizace v rámci služby synchronizace úložiště.
 2. V rámci skupiny synchronizace vyberte koncový bod cloudu.
 3. Poznamenejte si název sdílené složky Azure v otevřeném podokně.
@@ -967,7 +967,7 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**Ujistěte se, že sdílená složka Azure existuje.**  
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 1. Kliknutím na **Přehled** v obsahu na levé straně se vraťte na stránku hlavního účtu úložiště.
 2. Vyberte **soubory** a zobrazte seznam sdílených složek.
 3. Ověřte, že se sdílená složka, na kterou se odkazuje koncový bod cloudu, zobrazuje v seznamu sdílených složek (měli byste si je poznamenali v kroku 1 výše).
@@ -986,7 +986,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**Ujistěte se, že Azure File Sync má přístup k účtu úložiště.**  
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 1. V obsahu na levé straně klikněte na **řízení přístupu (IAM)** .
 1. Klikněte na kartu **přiřazení rolí** a seznam uživatelů a aplikací (*instanční objekty*), které mají přístup k vašemu účtu úložiště.
 1. Ověřte, že se v seznamu zobrazí položka **Microsoft. StorageSync** nebo **Služba hybridní synchronizace souborů** (starý název aplikace) s rolí **Čtenář a přístup k datům** . 
@@ -1078,7 +1078,7 @@ Pokud se soubory nedaří navrstvit na soubory Azure:
 
    2. Ověřte, že je server připojený k Internetu. 
    3. Ověřte, že jsou spuštěné ovladače filtru Azure File Sync (StorageSync. sys a StorageSyncGuard. sys):
-       - Na příkazovém řádku se zvýšenými oprávněními `fltmc`spusťte příkaz. Ověřte, že jsou uvedené ovladače filtru systému souborů StorageSync. sys a StorageSyncGuard. sys.
+       - Na příkazovém řádku se zvýšenými oprávněními spusťte příkaz `fltmc` . Ověřte, že jsou uvedené ovladače filtru systému souborů StorageSync. sys a StorageSyncGuard. sys.
 
 > [!NOTE]
 > ID události 9003 se protokoluje jednou za hodinu v protokolu událostí telemetrie, pokud se soubor nepovede na vrstvu (jedna událost je protokolována podle kódu chyby). Pokud chcete zjistit, jestli jsou v tomto kódu chyby, podívejte se na část [chyby vrstvení a řešení potíží](#tiering-errors-and-remediation) .
@@ -1118,7 +1118,7 @@ Pokud se soubory nepodaří odvolat:
     2. Ověřte, že je server připojený k Internetu. 
     3. Otevřete modul snap-in služby konzoly MMC a ověřte, jestli je spuštěná služba agenta synchronizace úložiště (FileSyncSvc).
     4. Ověřte, že jsou spuštěné ovladače filtru Azure File Sync (StorageSync. sys a StorageSyncGuard. sys):
-        - Na příkazovém řádku se zvýšenými oprávněními `fltmc`spusťte příkaz. Ověřte, že jsou uvedené ovladače filtru systému souborů StorageSync. sys a StorageSyncGuard. sys.
+        - Na příkazovém řádku se zvýšenými oprávněními spusťte příkaz `fltmc` . Ověřte, že jsou uvedené ovladače filtru systému souborů StorageSync. sys a StorageSyncGuard. sys.
 
 > [!NOTE]
 > ID události 9006 se v protokolu událostí telemetrie zaznamená jednou za hodinu, pokud se soubor nepovede vyvolat (jedna událost je protokolována podle kódu chyby). V části [chyby odvolání a náprava problému](#recall-errors-and-remediation) zjistíte, jestli jsou pro kód chyby uvedené opravné kroky.
@@ -1243,7 +1243,7 @@ Pokud narazíte na problémy s Azure File Sync na serveru, začněte provedením
 2. Ověřte, že je na serveru spuštěná služba Azure File Sync:
     - Otevřete modul snap-in služby konzoly MMC a ověřte, jestli je spuštěná služba agenta synchronizace úložiště (FileSyncSvc).
 3. Ověřte, že jsou spuštěné ovladače filtru Azure File Sync (StorageSync. sys a StorageSyncGuard. sys):
-    - Na příkazovém řádku se zvýšenými oprávněními `fltmc`spusťte příkaz. Ověřte, že jsou uvedené ovladače filtru systému souborů StorageSync. sys a StorageSyncGuard. sys.
+    - Na příkazovém řádku se zvýšenými oprávněními spusťte příkaz `fltmc` . Ověřte, že jsou uvedené ovladače filtru systému souborů StorageSync. sys a StorageSyncGuard. sys.
 
 Pokud se problém nevyřeší, spusťte nástroj AFSDiag a odešlete jeho výstup souboru. zip do technické podpory, který je přiřazený k vašemu případu pro další diagnostiku.
 

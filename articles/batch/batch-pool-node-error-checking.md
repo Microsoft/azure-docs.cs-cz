@@ -4,13 +4,13 @@ description: Tento článek se zabývá operacemi na pozadí, ke kterým může 
 author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
-ms.topic: conceptual
-ms.openlocfilehash: 5051b9c536ded50e77fb75515c16daba884d5d24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 5ac3991a52ab75dccd0033160d6e972d155a882b
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115903"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723914"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Vyhledat chyby fondu a uzlů
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: cdbb6d0f26b6a999d289e7e0ddbd8cb45dac8e47
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b222a94ee754b24192261451d8ddc429886e705c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665198"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725648"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB rozhraní Java SDK v4 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -47,10 +47,10 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 | |  |
 |---|---|
 | **Stažení sady SDK** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**Dokumentace k rozhraní API** |Referenční dokumentace k rozhraní Java API|
+|**Dokumentace k rozhraní API** | [Referenční dokumentace k rozhraní Java API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1-beta.3/index.html) |
 |**Přispívání do sady SDK** | [Azure SDK pro centrální úložiště Java na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
 |**Začínáme** | [Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [Úložiště GitHub s kódem pro rychlý Start](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
-|**Ukázky základních kódů** | Azure Cosmos DB: Příklady jazyka Java pro rozhraní SQL API · [Úložiště GitHub s ukázkovým kódem](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
+|**Ukázky základních kódů** | [Azure Cosmos DB: Příklady jazyka Java pro rozhraní SQL API](sql-api-java-sdk-samples.md) · [Úložiště GitHub s ukázkovým kódem](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**Konzolová aplikace se změněným kanálem**| [Změna kanálu – ukázka pro Java SDK v4](create-sql-api-java-changefeed.md) · [Úložiště GitHub s ukázkovým kódem](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Ukázka webové aplikace**| [Vytvoření webové aplikace pomocí Java SDK v4](sql-api-java-application.md) · [Úložiště GitHub s ukázkovým kódem](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
 | **Tipy pro zvýšení výkonu**| [Tipy ke zvýšení výkonu pro Java SDK v4](performance-tips-java-sdk-v4-sql.md)| 

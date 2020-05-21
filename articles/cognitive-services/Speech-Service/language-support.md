@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 28c5c1258c0733cd23f7c4ad3c901360461d5bdc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93dc831fa631a28b918ef5015a3c9ff107d41541
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682136"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726073"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -24,7 +24,11 @@ Jazyková podpora se liší podle funkcí služby Speech. Následující tabulka
 
 ## <a name="speech-to-text"></a>Převod řeči na text
 
-Sada Microsoft Speech SDK i REST API podporují následující jazyky (národní prostředí). Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání zvuku a přepisu s popiskem nebo souvisejícího textu: věty. Přizpůsobení výslovnosti se nabízí prostřednictvím nahrání související text: výslovnost. Další informace o přizpůsobení [najdete tady](how-to-custom-speech.md).
+Sada Microsoft Speech SDK i REST API podporují následující jazyky (národní prostředí). 
+
+Pro zvýšení přesnosti se přizpůsobení nabídne pro podmnožinu jazyků prostřednictvím nahrávání **zvuku a přepisu s popiskem** nebo **souvisejícího textu: věty**. Další informace o přizpůsobení najdete v tématu [Začínáme s Custom Speech](how-to-custom-speech.md).
+
+Další informace o tom, jak můžete zlepšit výslovnost, najdete v tématu [zlepšení modelu pro Custom Speech](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation).
 
 <!--
 To get the AM and ML bits:
@@ -75,7 +79,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ta-IN` | Tamilština (Indie)                     | Ano       | Jazykový model                                    |
 | `te-IN` | Telugština (Indie)                    | Ano       | Ne                                                |
 | `th-TH` | thajština (Thajsko)                   | Ano       | Ne                                                |
-| `tr-TR` | turečtina (Turecko)                  | Ano       | Ne                                                |
+| `tr-TR` | turečtina (Turecko)                  | Ano       | Jazykový model                                    |
 | `zh-CN` | Čínština (Mandarin, zjednodušená)    | Ano       | Akustický model<br>Jazykový model                  |
 | `zh-HK` | Čínština (kantonština, tradiční)  | Ano       | Jazykový model                                    |
 | `zh-TW` | Čínština (tchajwanský mandarinka)      | Ano       | Jazykový model                                    |
@@ -95,29 +99,29 @@ Neuronové hlasy se dají použít k zajištění většího přirozeného a pou
 
 Další informace o regionální dostupnosti najdete v tématu [oblasti](regions.md#standard-and-neural-voices).
 
-|Národní prostředí  | Jazyk            | Pohlaví | Název hlasu  | Podpora pro BI | Podpora stylů |
-|--|--|--|--|--|--|
-| `de-DE` | němčina (Německo)    | Female | de-DE-KatjaNeural " | Ano. Angličtina (USA) | Obecné |
-| `en-AU` | Angličtina (Austrálie) | Female |  "en-AU-NatashaNeural" | Ne | Obecné |
-| `en-CA` | Angličtina (Kanada)    | Female |  "en-CA-ClaraNeural"| Ne | Obecné |
-| `en-GB` | Angličtina (Spojené království)        | Female |  "en-GB-LibbyNeural"| Ne | Obecné |
-|  |      | Female |  "en-GB-MiaNeural" | Ne | Obecné |
-| `en-US` | Angličtina (USA)        | Female |  "en-US-AriaNeural"| Ne | Obecné, více dostupných stylů hlasu |
-|  |      | Male   | "en-US-GuyNeural" | Ne | Obecné |
-| `es-ES` | Španělština (Španělsko)     | Female |  ES-ES-ElviraNeural "| Ano. Angličtina (USA) | Obecné |
-| `es-MX` | Španělština (Mexiko)    | Female |  ES-MX-DaliaNeural | Ano. Angličtina (USA) | Obecné |
-| `fr-CA` | Francouzština (Kanada)     | Female |  "fr-CA-SylvieNeural" | Ano. Angličtina (USA) | Obecné |
-| `fr-FR` | francouzština (Francie)     | Female | "fr-FR-DeniseNeural"  | Ano. Angličtina (USA) | Obecné |
-| `it-IT` | italština (Itálie)     | Female |  "IT-IT-ElsaNeural"  | Ano. Angličtina (USA) | Obecné |
-| `ja-JP` | Japonština            | Female |  "ja-JP-NanamiNeural" | Ano. Angličtina (USA) | Obecné |
-| `ko-KR` | Korejština              | Female |  "ko-KR-SunHiNeural" | Ano. Angličtina (USA) | Obecné |
-| `nb-NO` | Norština           | Female | "NB-NO-IselinNeural" | Ne | Obecné |
-| `pt-BR` | Portugalština (Brazílie) | Female |  pt-BR-FranciscaNeural | Ne | Obecné |
-| `tr-TR` | Turečtina             | Female | "tr-TR-EmelNeural" | Ne | Obecné |
-| `zh-CN` | Čínština (Mandarin, zjednodušená)  | Female |  zh-CN-XiaoxiaoNeural "  | Ano. Angličtina (USA) | Obecné, více dostupných stylů hlasu |
-|  |  | Female |  zh-CN-XiaoyouNeural "  | Ano. Angličtina (USA) | Dětský hlas, optimalizovaný pro mluvený popis scénáře |
-|  |  | Male |  zh-CN-YunyangNeural "  | Ano. Angličtina (USA) | Optimalizováno pro čtení zpráv, je k dispozici více stylů hlasu |
-|  |  | Male |  zh-CN-YunyeNeural "  | Ne | Optimalizováno pro mluvený popis scénáře |
+|Národní prostředí  | Jazyk            | Pohlaví | Název hlasu | Podpora stylů |
+|--|--|--|--|--|
+| `de-DE` | němčina (Německo)                | Female | de-DE-KatjaNeural "      | Obecné |
+| `en-AU` | Angličtina (Austrálie)             | Female | "en-AU-NatashaNeural"    | Obecné |
+| `en-CA` | Angličtina (Kanada)                | Female | "en-CA-ClaraNeural"      | Obecné |
+| `en-GB` | Angličtina (Spojené království)                    | Female | "en-GB-LibbyNeural"      | Obecné |
+|         |                                 | Female | "en-GB-MiaNeural"        | Obecné |
+| `en-US` | Angličtina (USA)                    | Female | "en-US-AriaNeural"       | Obecné, více dostupných stylů hlasu |
+|         |                                 | Male   | "en-US-GuyNeural"        | Obecné |
+| `es-ES` | Španělština (Španělsko)                 | Female | ES-ES-ElviraNeural "     | Obecné |
+| `es-MX` | Španělština (Mexiko)                | Female | ES-MX-DaliaNeural      | Obecné |
+| `fr-CA` | Francouzština (Kanada)                 | Female | "fr-CA-SylvieNeural"     | Obecné |
+| `fr-FR` | francouzština (Francie)                 | Female | "fr-FR-DeniseNeural"     | Obecné |
+| `it-IT` | italština (Itálie)                 | Female | "IT-IT-ElsaNeural"       | Obecné |
+| `ja-JP` | Japonština                        | Female | "ja-JP-NanamiNeural"     | Obecné |
+| `ko-KR` | Korejština                          | Female | "ko-KR-SunHiNeural"      | Obecné |
+| `nb-NO` | Norština                       | Female | "NB-NO-IselinNeural"     | Obecné |
+| `pt-BR` | Portugalština (Brazílie)             | Female | pt-BR-FranciscaNeural  | Obecné |
+| `tr-TR` | Turečtina                         | Female | "tr-TR-EmelNeural"       | Obecné |
+| `zh-CN` | Čínština (Mandarin, zjednodušená)  | Female | zh-CN-XiaoxiaoNeural "   | Obecné, více dostupných stylů hlasu |
+|         |                                 | Female | zh-CN-XiaoyouNeural "    | Dětský hlas, optimalizovaný pro mluvený popis scénáře |
+|         |                                 | Male   | zh-CN-YunyangNeural "    | Optimalizováno pro čtení zpráv, je k dispozici více stylů hlasu |
+|         |                                 | Male   | zh-CN-YunyeNeural "      | Optimalizováno pro mluvený popis scénáře |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural`Hlas se změnil na `en-US-AriaNeural` . Pokud jste předtím používali "Jessa", převeďte ho na standard ARIA.

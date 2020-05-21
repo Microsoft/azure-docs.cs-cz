@@ -2,16 +2,14 @@
 title: Řešení běžných problémů se službou Azure Kubernetes
 description: Přečtěte si, jak řešit problémy a řešit běžné problémy při používání služby Azure Kubernetes Service (AKS).
 services: container-service
-author: sauryadas
 ms.topic: troubleshooting
-ms.date: 12/13/2019
-ms.author: saudas
-ms.openlocfilehash: 8460f4f2a66a1f545bea767cccf3aa77c9d3bff3
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 05/16/2020
+ms.openlocfilehash: f9831077d1f2850d39e4ef5e5ba35245f16cd683
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778953"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724990"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -24,16 +22,16 @@ Je zde také [Průvodce odstraňováním potíží](https://github.com/feiskyer/
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Zobrazuje se chyba překročení kvóty při vytváření nebo upgradu. Co bych měl/a dělat? 
 
-Musíte [požádat o jádra](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+ [Vyžádejte si více jader](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Jaké je nastavení maximálního počtu lusků na uzel pro AKS?
 
 Pokud nasadíte cluster AKS do Azure Portal, je nastavení maximálního počtu lusků na jeden uzel ve výchozím nastavení 30.
-Pokud nasadíte cluster AKS v rozhraní příkazového řádku Azure, je nastavení maximálního počtu lusků na jeden uzel standardně 110. (Ujistěte se, že používáte nejnovější verzi rozhraní příkazového řádku Azure CLI). Toto výchozí nastavení lze změnit pomocí `–-max-pods` příznaku v `az aks create` příkazu.
+Pokud nasadíte cluster AKS v rozhraní příkazového řádku Azure, je nastavení maximálního počtu lusků na jeden uzel standardně 110. (Ujistěte se, že používáte nejnovější verzi rozhraní příkazového řádku Azure CLI). Toto nastavení lze změnit pomocí `–-max-pods` příznaku v `az aks create` příkazu.
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Při nasazování clusteru AKS s pokročilými sítěmi se zobrazuje chyba insufficientSubnetSize. Co bych měl/a dělat?
 
-Pokud se používá Azure CNI (pokročilé sítě), AKS přiděluje IP adresy na základě "Max-lusků" na uzel nakonfigurovaný. V závislosti na nastaveném maximálním počtu lusků na uzel musí být velikost podsítě větší než součin počtu uzlů a nastavení maximálního počtu pod na uzel. Následující rovnice popisuje toto:
+Když použijete modul plug-in Azure CNI Network, AKS přidělí IP adresy na základě parametru--Max-lusky na jeden uzel. Velikost podsítě musí být větší než počet uzlů, kolikrát je nastaven maximální počet lusků na uzel. Následující rovnice ho popisuje:
 
 Velikost podsítě > počet uzlů v clusteru (berou v úvahu budoucí požadavky na škálování) * max. lusky na jeden uzel sady.
 
@@ -43,32 +41,32 @@ Další informace najdete v tématu [plánování adresování IP adres pro vá�
 
 V tomto režimu mohou být v případě, že se zablokuje, k dispozici různé důvody. Můžete se podívat na:
 
-* Sám pod sebou, pomocí `kubectl describe pod <pod-name>`.
-* Protokoly pomocí `kubectl logs <pod-name>`.
+* Sám pod sebou, pomocí `kubectl describe pod <pod-name>` .
+* Protokoly pomocí `kubectl logs <pod-name>` .
 
 Další informace o řešení problémů v nástroji najdete v tématu [ladění aplikací](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
-## <a name="im-trying-to-enable-rbac-on-an-existing-cluster-how-can-i-do-that"></a>V existujícím clusteru se snažím povolit RBAC. Jak to můžu udělat?
+## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>V existujícím clusteru se snažím povolit Access Control na základě rolí (RBAC). Jak to můžu udělat?
 
-V současné době bohužel není podporováno povolení řízení přístupu na základě role (RBAC) u existujících clusterů. Je nutné explicitně vytvořit nové clustery. Pokud použijete rozhraní příkazového řádku, bude ve výchozím nastavení povolena možnost RBAC. Pokud použijete portál AKS, je k dispozici přepínací tlačítko pro povolení RBAC v pracovním postupu vytváření.
+Povolení řízení přístupu na základě role (RBAC) na existujících clusterech se v tuto chvíli nepodporuje, musí se nastavit při vytváření nových clusterů. Při použití rozhraní příkazového řádku, portálu nebo verze rozhraní API je ve výchozím nastavení povolena RBAC `2020-03-01` .
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořili jste cluster s povolenou RBAC pomocí rozhraní příkazového řádku Azure s výchozími hodnotami nebo Azure Portal a teď se na řídicím panelu Kubernetes zobrazí mnoho upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co bych měl/a dělat?
+## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořili jste cluster s povoleným RBAC a teď jsem na řídicím panelu Kubernetes spousta upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co bych měl/a dělat?
 
-Důvodem upozornění na řídicím panelu je to, že cluster je teď povolený pomocí RBAC a přístup k němu je ve výchozím nastavení zakázaný. Obecně platí, že tento přístup je dobrým zvykem, protože výchozí expozicí řídicího panelu všem uživatelům clusteru může vést k bezpečnostním hrozbám. Pokud přesto chcete řídicí panel povolit, postupujte podle kroků v [tomto blogovém příspěvku](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
+Důvodem upozornění je, že cluster má zapnutou RBAC a přístup k řídicímu panelu je teď ve výchozím nastavení omezený. Obecně platí, že tento přístup je dobrým zvykem, protože výchozí expozicí řídicího panelu všem uživatelům clusteru může vést k bezpečnostním hrozbám. Pokud přesto chcete řídicí panel povolit, postupujte podle kroků v [tomto blogovém příspěvku](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nejde se připojit k řídicímu panelu. Co bych měl/a dělat?
 
-Nejjednodušší způsob, jak získat přístup ke službě mimo cluster, je spustit `kubectl proxy`, které požadavky proxy odeslaly na port místního hostitele 8001 na server rozhraní Kubernetes API. Odtud může Server API na vaši službu proxy: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/`.
+Nejjednodušší způsob, jak získat přístup ke službě mimo cluster, je spustit `kubectl proxy` , které požadavky proxy odeslaly na port místního hostitele 8001 na server rozhraní Kubernetes API. Odtud může Server API na vaši službu proxy: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/` .
 
 Pokud řídicí panel Kubernetes nevidíte, zkontrolujte, jestli `kube-proxy` je pod `kube-system` oborem názvů spuštěný. Pokud není ve spuštěném stavu, odstraňte ho a restartuje se.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nemůžu získat protokoly pomocí protokolů kubectl nebo se nemůžu připojit k serveru rozhraní API. Zobrazuje se chyba ze serveru: Chyba při vytáčení back-endu: vytočit TCP... Co bych měl/a dělat?
 
-Ujistěte se, že výchozí skupina zabezpečení sítě není upravená a že jsou pro připojení k serveru rozhraní API otevřené porty 22 a 9000. Pomocí `kubectl get pods --namespace kube-system` příkazu ověřte `tunnelfront` , zda je pod spuštěným v oboru názvů *Kube-System* . Pokud ne, vynutí odstranění položky pod a restartuje se.
+Zajistěte, aby byly porty 22, 9000 a 1194 otevřené pro připojení k serveru rozhraní API. Pomocí příkazu ověřte, zda `tunnelfront` `aks-link` je nebo pod spuštěno v oboru názvů *Kube-System* `kubectl get pods --namespace kube-system` . Pokud ne, vynutí odstranění položky pod a restartuje se.
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Snažím se upgradovat nebo škálovat a připravuje se zpráva "zpráva: Změna vlastnosti element imagereference není povolená". Návody tento problém vyřešit?
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Snažím se upgradovat nebo škálovat a připravuje se `"Changing property 'imageReference' is not allowed"` Chyba. Návody tento problém vyřešit?
 
-K této chybě může dojít, protože jste změnili značky v uzlech agentů v clusteru AKS. Úprava a odstranění značek a dalších vlastností prostředků ve skupině prostředků MC_ * může vést k neočekávaným výsledkům. Změna prostředků v rámci skupiny MC_ * v clusteru AKS přerušuje cíl na úrovni služby (SLO).
+K této chybě může dojít, protože jste změnili značky v uzlech agentů v clusteru AKS. Úprava nebo odstranění značek a dalších vlastností prostředků ve skupině prostředků MC_ * může vést k neočekávaným výsledkům. Změna prostředků v rámci skupiny MC_ * v clusteru AKS zruší cíl na úrovni služby (SLO).
 
 ## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Zobrazují se chyby, že můj cluster je ve stavu selhání a upgrade nebo škálování nebude fungovat, dokud nebude vyřešeno.
 
@@ -81,30 +79,30 @@ K této chybě dojde v případě, že clustery vstupují do neúspěšného sta
     * Škálování clusteru pomocí pokročilých síťových a **nedostatečných podsítí (síťových) prostředků**. Pokud chcete řešení vyřešit, nejprve škálovat cluster zpátky do stabilního stavu cíle v rámci kvóty. Pak postupujte podle [těchto kroků a vyžádejte si zvýšení kvóty prostředků](../azure-resource-manager/templates/error-resource-quota.md#solution) , než se pokusíte o horizontální navýšení kapacity nad rámec počáteční kvóty.
 2. Jakmile se podkladová příčina selhání upgradu vyřeší, cluster by měl být v úspěšném stavu. Po ověření stavu úspěšného dokončení zopakujte původní operaci.
 
-## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Zobrazují se chyby při pokusu o upgrade nebo škálování, že se cluster právě aktualizuje nebo se nezdařil upgrade
+## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>Při pokusu o upgrade nebo škálování stavu, ve kterém se cluster aktualizuje nebo se nezdařil upgrade, dochází k chybám
 
 *Tato pomoc při řešení potíží je směrována zhttps://aka.ms/aks-pending-upgrade*
 
-Operace upgradu a škálování v clusteru s jedním fondem uzlů nebo clusterem s [více fondy uzlů](use-multiple-node-pools.md) se vzájemně vylučují. Cluster ani fond uzlů nemůžete současně upgradovat a škálovat. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. V důsledku toho jsou operace omezené, když dojde k aktivnímu upgradu nebo operacím škálování a následně došlo k selhání. 
+ Cluster nebo fond uzlů nejde současně upgradovat a škálovat. Místo toho musí být každý typ operace dokončen u cílového prostředku před dalším požadavkem na stejný prostředek. V důsledku toho jsou operace omezené, když dojde k aktivnímu upgradu nebo operacím škálování nebo k pokusu. 
 
-Aby bylo možné diagnostikovat potíže `az aks show -g myResourceGroup -n myAKSCluster -o table` s tím, že se v clusteru načtou podrobné informace o stavu. Na základě výsledku:
+Aby bylo možné diagnostikovat potíže s tím, že se `az aks show -g myResourceGroup -n myAKSCluster -o table` v clusteru načtou podrobné informace o stavu. Na základě výsledku:
 
-* Pokud se cluster aktivně upgraduje, počkejte, až se operace ukončí. Pokud byla úspěšná, zkuste znovu provést dříve neúspěšnou operaci.
+* Pokud se cluster aktivně upgraduje, počkejte, až se operace dokončí. Pokud byla úspěšná, zkuste znovu provést dříve neúspěšnou operaci.
 * Pokud se upgrade clusteru nezdařil, postupujte podle kroků uvedených v předchozí části.
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Můžu svůj cluster přesunout do jiného předplatného nebo mého předplatného s clusterem do nového tenanta?
 
-Pokud jste svůj cluster AKS přesunuli na jiné předplatné nebo cluster vlastnící předplatné pro nového tenanta, cluster ztratí funkčnost z důvodu ztráty přiřazení rolí a práv instančních objektů. **AKS nepodporuje přesouvání clusterů mezi předplatnými nebo klienty** z důvodu tohoto omezení.
+Pokud jste svůj cluster AKS přesunuli do jiného předplatného nebo do předplatného clusteru pro nového tenanta, cluster nebude fungovat kvůli chybějícím oprávněním identity clusteru. **AKS nepodporuje přesunutí clusterů mezi předplatnými nebo klienty** z důvodu tohoto omezení.
 
 ## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>Dochází k chybám při pokusu o použití funkcí, které vyžadují Virtual Machine Scale Sets
 
 *Tato pomoc při řešení potíží je směrována z aka.ms/aks-vmss-enablement*
 
-Může dojít k chybám, které naznačují, že váš cluster AKS není na sadě škálování virtuálního počítače, jako je například následující příklad:
+Může dojít k chybám, které naznačují, že váš cluster AKS není v sadě škálování virtuálního počítače, například v následujícím příkladu:
 
-**Neznámá ' Neznámá ' má nastaveno automatické škálování jako povolené, ale není na Virtual Machine Scale Sets**
+**Neznámá `<agentpoolname>` má nastaveno automatické škálování jako povolené, ale není na Virtual Machine Scale Sets**
 
-Pokud chcete používat funkce, jako je například automatické škálování clusteru nebo fondy více uzlů, je nutné vytvořit clustery AKS, které používají Virtual Machine Scale Sets. Pokud se pokusíte použít funkce, které závisí na virtuálních počítačích služby Virtual Machine Scale Sets, a zacílíte na běžný cluster AKS s nevirtuálními počítači, budou se vám vracet chyby.
+Funkce, jako je například automatické škálování clusteru nebo fondy více uzlů, vyžadují jako součást virtuální počítač Scale Sets `vm-set-type` .
 
 Abyste mohli správně vytvořit cluster *AKS, postupujte* podle pokynů v příslušném dokumentu:
 
@@ -118,8 +116,9 @@ Abyste mohli správně vytvořit cluster *AKS, postupujte* podle pokynů v pří
 Omezení pojmenování jsou implementovaná platformou Azure i AKS. Pokud název prostředku nebo parametr zruší jedno z těchto omezení, bude vrácena chyba s výzvou k zadání jiného vstupu. Platí následující obecné pokyny pro pojmenovávání:
 
 * Názvy clusterů musí být 1-63 znaků. Jediné povolené znaky jsou písmena, číslice, pomlčky a podtržítka. První a poslední znak musí být písmeno nebo číslo.
-* Název skupiny prostředků AKS *MC_* kombinuje název skupiny prostředků a název prostředku. Automaticky generovaná syntaxe `MC_resourceGroupName_resourceName_AzureRegion` nesmí být větší než 80 znaků. V případě potřeby snižte délku názvu skupiny prostředků nebo názvu clusteru AKS.
+* Název skupiny prostředků AKS uzel/*MC_* kombinuje název skupiny prostředků a název prostředku. Automaticky vygenerovaná syntaxe `MC_resourceGroupName_resourceName_AzureRegion` nesmí být větší než 80 znaků. V případě potřeby snižte délku názvu skupiny prostředků nebo názvu clusteru AKS. Můžete také [přizpůsobit název skupiny prostředků uzlu](cluster-configuration.md#custom-resource-group-name) .
 * *Pole dnsprefix* musí začínat a končit alfanumerickými hodnotami a musí mít 1-54 znaků. Mezi platné znaky patří alfanumerické hodnoty a spojovníky (-). *Pole dnsprefix* nemůže obsahovat speciální znaky, jako je například tečka (.).
+* Názvy fondů uzlů AKS musí mít malými písmeny a musí mít 1-11 znaků pro fondy uzlů Linux a 1-6 znaků pro fondy uzlů Windows. Název musí začínat písmenem a jediným povoleným znakem jsou písmena a číslice.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Při pokusu o vytvoření, aktualizaci, škálování, odstranění nebo upgrade clusteru dochází k chybám. Tato operace není povolená, protože probíhá jiná operace.
 
@@ -129,57 +128,52 @@ Operace clusteru jsou omezené, když stále probíhá předchozí operace. Chce
 
 Na základě výstupu stavu clusteru:
 
-* Pokud je cluster v jakémkoli stavu zřizování než *úspěšný* nebo *neúspěšný*, počkejte na ukončení operace (*upgrade/aktualizace/vytvoření/škálování/odstranění/migrace*). Po dokončení předchozí operace zkuste znovu vyzkoušet nejnovější operaci clusteru.
+* Pokud je cluster v jakémkoli stavu zřizování než *úspěšný* nebo *neúspěšný*, počkejte, než se dokončí operace (*upgrade/aktualizace/vytvoření/škálování/odstranění/migrace*). Po dokončení předchozí operace zkuste zopakovat svoji nejnovější operaci clusteru.
 
 * Pokud dojde k selhání upgradu clusteru, postupujte podle kroků uvedených v části mi dochází k [chybám, že můj cluster je ve stavu selhání a upgrade nebo škálování nebude fungovat, dokud nebude opraveno](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
-## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>Zobrazují se chyby, které se při pokusu o vytvoření nového clusteru nenašly u svého instančního objektu, aniž by se musel předávat existující cluster.
+## <a name="received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster"></a>Při pokusu o vytvoření nového clusteru se zobrazila chyba s informací, že se nepovedlo najít hlavní název služby nebo je neplatný.
 
-Při vytváření clusteru AKS vyžaduje instanční objekt k vytváření prostředků vaším jménem. AKS nabízí možnost mít v době vytváření clusteru nově vytvořenou možnost, ale to vyžaduje Azure Active Directory k úplnému rozšíření nového instančního objektu v přiměřené době, aby cluster byl úspěšně vytvořen. Pokud toto rozšíření trvá příliš dlouho, cluster se nedaří ověřit a vytvořit, protože nedokáže najít dostupný instanční objekt. 
+Při vytváření clusteru AKS vyžaduje objekt služby nebo spravovanou identitu k vytváření prostředků vaším jménem. AKS může automaticky vytvořit nový instanční objekt v době vytváření clusteru nebo získat existující. Při použití automaticky vytvořeného prvku Azure Active Directory nutné ho rozšířit do každé oblasti, aby bylo vytváření úspěšné. Když šíření trvá příliš dlouho, cluster se nedaří ověřit a vytvořit, protože nenalezne dostupný instanční objekt. 
 
-Použijte následující alternativní řešení:
-1. Použijte existující instanční objekt, který už je šířený v různých oblastech a existuje k předání do AKS v době vytváření clusteru.
-2. Pokud používáte skripty pro automatizaci, přidejte časovou prodlevu mezi vytvořením instančního objektu a vytvořením clusteru AKS.
-3. Pokud používáte Azure Portal, vraťte se do nastavení clusteru během vytváření a zkuste stránku ověření zopakovat po několika minutách.
+Pro tento problém použijte následující alternativní řešení:
+* Použijte existující instanční objekt, který už je šířený v různých oblastech a existuje pro předání do AKS v době vytváření clusteru.
+* Pokud používáte skripty pro automatizaci, přidejte časovou prodlevu mezi vytvořením instančního objektu a vytvořením clusteru AKS.
+* Pokud používáte Azure Portal, vraťte se do nastavení clusteru během vytváření a zkuste stránku ověření zopakovat po několika minutách.
 
-## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Po omezení odchozího provozu mi dochází k chybám
 
-Při omezení odchozího provozu z clusteru AKS se [vyžadují a volitelné Doporučené](limit-egress-traffic.md) Odchozí porty/pravidla sítě a plně kvalifikovaný název domény nebo pravidla použití pro AKS. Pokud jsou nastavení v konfliktu s některým z těchto pravidel, možná nebudete moci spustit určité `kubectl` příkazy. Při vytváření clusteru AKS můžete také zobrazit chyby.
 
-Ověřte, že nastavení nejsou v konfliktu s žádným z požadovaných nebo volitelných odchozích portů/síťových pravidel a plně kvalifikovaného názvu domény nebo pravidel pro aplikace.
+
+
+## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Po omezení odchozího provozu mi dochází k chybám
+
+Při omezení odchozího provozu z clusteru AKS se [vyžadují a volitelné Doporučené](limit-egress-traffic.md) Odchozí porty/pravidla sítě a plně kvalifikovaný název domény nebo pravidla použití pro AKS. Pokud jsou nastavení v konfliktu s některým z těchto pravidel, nebudou některé `kubectl` příkazy správně fungovat. Při vytváření clusteru AKS můžete také zobrazit chyby.
+
+Ověřte, že vaše nastavení nejsou v konfliktu s žádným z požadovaných nebo volitelných odchozích portů/síťových pravidel a plně kvalifikovaného názvu domény nebo pravidel pro aplikace.
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Řešení potíží s Azure Storage a AKS
 
 ### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>Jaké jsou doporučené stabilní verze Kubernetes pro disk Azure? 
 
 | Verze Kubernetes | Doporučená verze |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.9 nebo novější |
 | 1.13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
-
-
-### <a name="what-versions-of-kubernetes-have-azure-disk-support-on-the-sovereign-cloud"></a>Jaké verze Kubernetes mají v rámci svrchovaného cloudu podporu disků Azure?
-
-| Verze Kubernetes | Doporučená verze |
-| -- | :--: |
-| 1.12 | 1.12.0 nebo novější |
-| 1.13 | 1.13.0 nebo novější |
-| 1,14 | 1.14.0 nebo novější |
 
 
 ### <a name="waitforattach-failed-for-azure-disk-parsing-devdiskazurescsi1lun1-invalid-syntax"></a>WaitForAttach se nezdařilo pro disk Azure: analýza "/dev/disk/Azure/scsi1/lun1": Neplatná syntaxe
 
 V Kubernetes verze 1,10 může MountVolume. WaitForAttach selhat s opětovným připojením k disku Azure.
 
-V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Příklad:
+V systému Linux se může zobrazit nesprávná chyba formátu DevicePath. Například:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Příklad:
+Ve Windows se může zobrazit nesprávná chyba na číslo DevicePath (LUN). Například:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -189,10 +183,11 @@ Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.Wait
 Tento problém byl opraven v následujících verzích Kubernetes:
 
 | Verze Kubernetes | Pevná verze |
-| -- | :--: |
+|--|:--:|
 | 1.10 | 1.10.2 nebo novější |
 | 1,11 | 1.11.0 nebo novější |
 | 1,12 a novější | – |
+
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
 
@@ -207,7 +202,7 @@ mount: wrong fs type, bad option, bad superblock on /dev/sde,
        missing codepage or helper program, or other error
 ```
 
-Problém můžete zmírnit jedním z následujících způsobů:
+Problém můžete zmírnit tím, že uděláte jednu z možností:
 
 * [Nakonfigurujte kontext zabezpečení pro objekt pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) nastavením UID v runAsUser a GID v fsGroup. Například následující nastavení se nastaví pod kořenem spustit jako a zpřístupní ho pro libovolný soubor:
 
@@ -223,9 +218,9 @@ spec:
 ```
 
   >[!NOTE]
-  > Vzhledem k tomu, že GID a UID jsou ve výchozím nastavení připojeny jako kořen nebo 0. Pokud jsou GID nebo UID nastaveny jako neroot, například 1000, použije `chown` Kubernetes ke změně všech adresářů a souborů v tomto disku. Tato operace může být časově náročná a může způsobit velmi pomalé připojení disku.
+  > Vzhledem k tomu, že GID a UID jsou ve výchozím nastavení připojeny jako kořen nebo 0. Pokud jsou GID nebo UID nastaveny jako neroot, například 1000, použije Kubernetes `chown` ke změně všech adresářů a souborů v tomto disku. Tato operace může být časově náročná a může způsobit velmi pomalé připojení disku.
 
-* Použijte `chown` v initContainers k nastavení GID a UID. Příklad:
+* Použijte `chown` v initContainers k nastavení GID a UID. Například:
 
 ```yaml
 initContainers:
@@ -237,100 +232,24 @@ initContainers:
     mountPath: /data
 ```
 
-### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>Chyba při odstraňování služby Azure disk PersistentVolumeClaim, která se používá pod
-
-Pokud se pokusíte odstranit službu Azure disk PersistentVolumeClaim, kterou používá část pod, může se zobrazit chyba. Příklad:
-
-```console
-$ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
-...
-Message:         disk.DisksClient#Delete: Failure responding to request: StatusCode=409 -- Original Error: autorest/azure: Service returned an error. Status=409 Code="OperationNotAllowed" Message="Disk kubernetes-dynamic-pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06 is attached to VM /subscriptions/{subs-id}/resourceGroups/MC_markito-aks-pvc_markito-aks-pvc_westus/providers/Microsoft.Compute/virtualMachines/aks-agentpool-25259074-0."
-```
-
-V Kubernetes verze 1,10 a novější je ve výchozím nastavení povolená funkce PersistentVolumeClaim Protection, aby se zabránilo této chybě. Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, můžete tento problém zmírnit odstraněním pod použití PersistentVolumeClaim před odstraněním PersistentVolumeClaim.
-
-
-### <a name="error-cannot-find-lun-for-disk-when-attaching-a-disk-to-a-node"></a>Chyba "při připojování disku k uzlu nejde najít logickou jednotku (LUN) pro disk"
-
-Při připojování disku k uzlu se může zobrazit následující chyba:
-
-```console
-MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6" : Cannot find Lun for disk kubernetes-dynamic-pvc-12b458f4-c23f-11e8-8d27-46799c22b7c6
-```
-
-Tento problém byl opraven v následujících verzích Kubernetes:
-
-| Verze Kubernetes | Pevná verze |
-| -- | :--: |
-| 1.10 | 1.10.10 nebo novější |
-| 1,11 | 1.11.5 nebo novější |
-| 1.12 | 1.12.3 nebo novější |
-| 1.13 | 1.13.0 nebo novější |
-| 1,14 a novější | – |
-
-Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, můžete problém zmírnit tím, že počkáte několik minut a zkusíte to znovu.
-
-### <a name="azure-disk-attachdetach-failure-mount-issues-or-io-errors-during-multiple-attachdetach-operations"></a>Chyba připojení a odpojení disku Azure, problémy s připojením nebo vstupně-výstupní chyby během několika operací připojení/odpojení
-
-Počínaje verzí 1.9.2 se při souběžném spouštění několika operací připojení a odpojení můžou v důsledku nestandardní mezipaměti virtuálních počítačů zobrazit následující problémy s diskem:
-
-* Selhání připojení a odpojení disku
-* Chyby v/v disku
-* Neočekávané odpojení disku z virtuálního počítače
-* Spuštění virtuálního počítače v neúspěšném stavu kvůli připojení neexistujícího disku
-
-Tento problém byl opraven v následujících verzích Kubernetes:
-
-| Verze Kubernetes | Pevná verze |
-| -- | :--: |
-| 1.10 | 1.10.12 nebo novější |
-| 1,11 | 1.11.6 nebo novější |
-| 1.12 | 1.12.4 nebo novější |
-| 1.13 | 1.13.0 nebo novější |
-| 1,14 a novější | – |
-
-Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete problém zmírnit tím, že vyzkoušíte následující:
-
-* Pokud disk čeká na odpojení po dlouhou dobu, zkuste disk odpojit ručně.
-
-### <a name="azure-disk-waiting-to-detach-indefinitely"></a>Disk Azure, který čeká na odpojení po neomezenou dobu
-
-V některých případech platí, že pokud se při prvním pokusu operace odpojení disku Azure nepovede, nebude se opakovat operace odpojení a zůstane připojená k virtuálnímu počítači s původním uzlem. K této chybě může dojít při přesunu disku z jednoho uzlu do druhého. Příklad:
-
-```console
-[Warning] AttachVolume.Attach failed for volume "pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" : Attach volume "kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance "/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0" failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code="ConflictingUserInput" Message="Disk '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9' cannot be attached as the disk is already owned by VM '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1'."
-```
-
-Tento problém byl opraven v následujících verzích Kubernetes:
-
-| Verze Kubernetes | Pevná verze |
-| -- | :--: |
-| 1,11 | 1.11.9 nebo novější |
-| 1.12 | 1.12.7 nebo novější |
-| 1.13 | 1.13.4 nebo novější |
-| 1,14 a novější | – |
-
-Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete tento problém zmírnit ručním odpojením disku.
-
 ### <a name="azure-disk-detach-failure-leading-to-potential-race-condition-issue-and-invalid-data-disk-list"></a>Selhání odpojení disku Azure vedlo k potenciálnímu problému s podmínkou časování a neplatnému seznamu datových disků.
 
-Když se disk s Azure nepovede odpojit, zopakuje se pokus o odpojení disku pomocí exponenciálního pozadí. Bude také obsahovat zámek na úrovni uzlu v seznamu datových disků po dobu přibližně 3 minut. Pokud se seznam disků v tomto časovém intervalu aktualizuje ručně, například ruční operace připojit nebo odpojit, způsobí to, že seznam disků uchovávaný zámkem na úrovni uzlu bude zastaralý a způsobil nestabilitu virtuálního počítače uzlu.
+Když se disk s Azure nepovede odpojit, zopakuje se pokus o odpojení disku pomocí exponenciálního pozadí. Bude také obsahovat zámek na úrovni uzlu v seznamu datových disků po dobu přibližně 3 minut. Pokud se seznam disků v této době aktualizuje ručně, způsobí to, že seznam disků uložený zámkem na úrovni uzlu bude zastaralý a způsobil nestabilitu uzlu.
 
 Tento problém byl opraven v následujících verzích Kubernetes:
 
 | Verze Kubernetes | Pevná verze |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.9 nebo novější |
 | 1.13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
 | 1,15 a novější | – |
 
-Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a váš virtuální počítač uzlu má zastaralý seznam disků, můžete problém zmírnit tím, že z virtuálního počítače odpojíte všechny neexistující disky jako jedinou hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
-
+Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém a váš uzel obsahuje zastaralý seznam disků, můžete zmírnit odpojením všech neexistujících disků z virtuálního počítače jako hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
 
 ### <a name="large-number-of-azure-disks-causes-slow-attachdetach"></a>Velký počet disků Azure způsobuje pomalé připojení a odpojení.
 
-Pokud je počet disků Azure připojených k virtuálnímu počítači uzlu větší než 10, můžou operace připojení a odpojení být pomalé. Tento problém je známý a v tuto chvíli neexistují žádná alternativní řešení.
+Pokud je počet operací připojení a odpojení disku Azure, které cílí na virtuální počítač s jedním uzlem, větší než 10 nebo větší než 3 při cílení na jeden fond škálování sady virtuálních počítačů, můžou být pomalejší, než se čekalo, protože se provádějí postupně. Tento problém je známý a v současné době neexistuje žádné alternativní řešení. [Položka uživatelského hlasu pro podporu paralelního připojení/odpojení nad číslem.](https://feedback.azure.com/forums/216843-virtual-machines/suggestions/40444528-vmss-support-for-parallel-disk-attach-detach-for)..
 
 ### <a name="azure-disk-detach-failure-leading-to-potential-node-vm-in-failed-state"></a>Selhání odpojení disku Azure vedlo k potenciálnímu virtuálnímu počítači uzlu ve stavu selhání
 
@@ -339,13 +258,13 @@ V některých hraničních případech může odpojení disku Azure částečně
 Tento problém byl opraven v následujících verzích Kubernetes:
 
 | Verze Kubernetes | Pevná verze |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.10 nebo novější |
 | 1.13 | 1.13.8 nebo novější |
 | 1,14 | 1.14.4 nebo novější |
 | 1,15 a novější | – |
 
-Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a virtuální počítač uzlu je ve stavu selhání, můžete problém zmírnit tím, že ručně aktualizujete stav virtuálního počítače pomocí jedné z níže uvedených akcí:
+Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém, a váš uzel je ve stavu selhání, můžete zmírnit ruční aktualizací stavu virtuálního počítače pomocí jedné z následujících akcí:
 
 * Pro cluster založený na sadě dostupnosti:
     ```azurecli
@@ -362,17 +281,9 @@ Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici
 ### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>Jaké jsou doporučené stabilní verze Kubernetes pro soubory Azure?
  
 | Verze Kubernetes | Doporučená verze |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.6 nebo novější |
 | 1.13 | 1.13.4 nebo novější |
-| 1,14 | 1.14.0 nebo novější |
-
-### <a name="what-versions-of-kubernetes-have-azure-files-support-on-the-sovereign-cloud"></a>Jaké verze Kubernetes mají podporu souborů Azure ve službě svrchovaného cloudu?
-
-| Verze Kubernetes | Doporučená verze |
-| -- | :--: |
-| 1.12 | 1.12.0 nebo novější |
-| 1.13 | 1.13.0 nebo novější |
 | 1,14 | 1.14.0 nebo novější |
 
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Jaké jsou výchozí mountOptions při používání služby soubory Azure?
@@ -380,11 +291,11 @@ Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici
 Doporučené nastavení:
 
 | Verze Kubernetes | hodnota fileMode a dirMode|
-| -- | :--: |
+|--|:--:|
 | 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 a novější | 0777 |
 
-Pokud používáte cluster s Kubernetes verze 1.8.5 nebo vyšší a dynamicky vytváříte trvalý svazek s třídou úložiště, můžete v objektu třídy úložiště zadat možnosti připojení. Následující příklad nastaví *0777*:
+Možnosti připojení lze zadat u objektu třídy úložiště. Následující příklad nastaví *0777*:
 
 ```yaml
 kind: StorageClass
@@ -446,7 +357,7 @@ Problém můžete zmírnit pomocí [statického zřizování se soubory Azure](a
 
 ### <a name="azure-files-fails-to-remount-in-windows-pod"></a>Opětovné připojení souborů Azure v systému Windows pod se nezdařilo.
 
-Pokud se odstraní Windows s připojením služby soubory Azure a pak se naplánuje jeho opětovné vytvoření ve stejném uzlu, připojení se nezdaří. Příčinou této chyby je selhání `New-SmbGlobalMapping` příkazu, protože připojení k souborům Azure je už na uzlu připojené.
+Pokud se odstraní Windows s připojením služby soubory Azure a pak se naplánuje jeho opětovné vytvoření ve stejném uzlu, připojení se nezdaří. Příčinou této chyby je selhání příkazu, protože `New-SmbGlobalMapping` připojení k souborům Azure je už na uzlu připojené.
 
 Například se může zobrazit chyba podobná této:
 
@@ -457,24 +368,24 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 Tento problém byl opraven v následujících verzích Kubernetes:
 
 | Verze Kubernetes | Pevná verze |
-| -- | :--: |
+|--|:--:|
 | 1.12 | 1.12.6 nebo novější |
 | 1.13 | 1.13.4 nebo novější |
 | 1,14 a novější | – |
 
-### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
+### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
 
 Pokud se váš klíč účtu úložiště změnil, může se zobrazit chyba připojení souborů Azure.
 
-Problém můžete zmírnit ruční aktualizací pole *azurestorageaccountkey* v tajných souborech Azure pomocí klíče účtu úložiště s kódováním base64.
+Můžete zmírnit ruční aktualizací `azurestorageaccountkey` pole v tajných souborech Azure pomocí klíče účtu úložiště s kódováním base64.
 
-K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64`. Příklad:
+K zakódování klíče účtu úložiště ve formátu base64 můžete použít `base64` . Například:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Pokud chcete aktualizovat svůj tajný soubor Azure, `kubectl edit secret`použijte. Příklad:
+Pokud chcete aktualizovat svůj tajný soubor Azure, použijte `kubectl edit secret` . Například:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret
@@ -482,19 +393,20 @@ kubectl edit secret azure-storage-account-{storage-account-name}-secret
 
 Po několika minutách uzel agenta znovu pokusí službu Azure File Mount s aktualizovaným klíčem úložiště.
 
+
 ### <a name="cluster-autoscaler-fails-to-scale-with-error-failed-to-fix-node-group-sizes"></a>Automatické škálování clusteru se nepovedlo škálovat. Chyba při opravě velikosti skupin uzlů
 
-Pokud automatický škálování clusteru nemění vertikální navýšení nebo snížení kapacity a v [protokolech automatického škálování clusteru][view-master-logs]se zobrazí chyba podobná následující.
+Pokud váš automatický škálování clusteru nemění vertikální navýšení nebo snížení kapacity a v [protokolech automatického škálování clusteru][view-master-logs]se zobrazí chyba podobná následující.
 
 ```console
 E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes: failed to decrease aks-default-35246781-vmss: attempt to delete existing nodes
 ```
 
-Tato chyba je způsobená nepodmíněným konfliktem automatického škálování clusteru, kde automatické škálování clusteru končí jinou hodnotou, než je ta, která je ve skutečnosti v clusteru. Pokud se chcete dostat z tohoto stavu, stačí zakázat a znovu povolit [Automatické škálování clusteru][cluster-autoscaler].
+Tato chyba je způsobena konfliktem časování v případě automatického škálování nadřazeného clusteru. V takovém případě funkce automatického škálování clusteru končí jinou hodnotou než ta, která je ve skutečnosti v clusteru. Pokud se chcete dostat z tohoto stavu, zakažte a znovu povolte [Automatické škálování clusteru][cluster-autoscaler].
 
 ### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Pomalé přílohy disku, GetAzureDiskLun trvá 10 až 15 minut a zobrazí se chyba.
 
-U verzí Kubernetes **starších než 1.15.0** se může zobrazit chyba, jako je například **Error WaitForAttach. pro disk nelze najít logickou jednotku (LUN)**.  Alternativním řešením pro tuto operaci je počkat přibližně 15 minut a opakovat akci.
+Ve verzích Kubernetes **starších než 1.15.0**se může zobrazit chyba, jako je například **Error WaitForAttach. pro disk se nepovedlo najít logickou jednotku (LUN)**.  Alternativním řešením tohoto problému je počkat přibližně 15 minut a pak to zkuste znovu.
 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md

@@ -2,14 +2,14 @@
 title: Počet stavů pro úlohy a uzly
 description: Spočítejte stav úloh Azure Batch a výpočetních uzlů, které vám pomůžou se správou a monitorováním řešení Batch.
 ms.date: 09/07/2018
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: 1abff4c1a07ba0c5375228995330646204d33cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e063ef56deeb7fa0f2a217f48b1c23a810a9d890
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116090"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726685"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Monitorování řešení Batch pomocí počítání úkolů a uzlů podle stavu
 
@@ -30,10 +30,10 @@ Pokud používáte verzi služby, která nepodporuje operace počet úloh nebo p
 Operace získat počty úloh počítá úlohy podle následujících stavů:
 
 - **Aktivní** – úkol, který je ve frontě a který je schopný spustit, ale není aktuálně přiřazený k výpočetnímu uzlu. Úkol je také `active` v případě, že je [závislý na nadřazené úloze](batch-task-dependencies.md) , která ještě nebyla dokončena. 
-- **Running** – úkol, který byl přiřazen k výpočetnímu uzlu, ale ještě nebyl dokončen. Úkol `running` se počítá jako v případě, že je jeho `preparing` stav `running`buď nebo, jak je uvedeno v [informacích o operaci úlohy][rest_get_task] .
+- **Running** – úkol, který byl přiřazen k výpočetnímu uzlu, ale ještě nebyl dokončen. Úkol se počítá jako v `running` případě, že je jeho stav buď `preparing` nebo `running` , jak je uvedeno v [informacích o operaci úlohy][rest_get_task] .
 - **Dokončeno** – úkol, který již není způsobilý ke spuštění, protože buď byl dokončen úspěšně, nebo byl dokončen neúspěšně a také vyčerpal svůj limit opakování. 
-- **Úspěch** – úkol, jehož výsledkem je provedení úkolu, `success`je. Služba Batch určí, zda byl úkol úspěšný nebo neúspěšný, `TaskExecutionResult` kontrolou vlastnosti vlastnosti [executionInfo][rest_get_exec_info] .
-- **Nepodařilo se** Úkol, jehož výsledkem je `failure`provedení úkolu.
+- **Úspěch** – úkol, jehož výsledkem je provedení úkolu `success` , je. Služba Batch určí, zda byl úkol úspěšný nebo neúspěšný, kontrolou `TaskExecutionResult` vlastnosti vlastnosti [executionInfo][rest_get_exec_info] .
+- **Nepodařilo se** Úkol, jehož výsledkem je provedení úkolu `failure` .
 
 Následující ukázka kódu .NET ukazuje, jak načíst počty úloh podle stavu: 
 
@@ -61,7 +61,7 @@ Operace počítání uzlů fondu vypočítává počet výpočetních uzlů podl
 - **Nečinné** – dostupný výpočetní uzel, který aktuálně nespouští úlohu.
 - **LeavingPool** – uzel, který opouští fond, buď proto, že ho uživatel explicitně odebral, nebo protože se mění velikost fondu nebo automatické škálování.
 - **Offline** – uzel, který dávka nemůže použít k naplánování nových úloh.
-- **Přerušeno – uzel** s nízkou prioritou, který byl odebrán z fondu, protože Azure znovu VYVOLAL virtuální počítač. `preempted` Uzel lze znovu inicializovat, pokud je k dispozici náhradní kapacita virtuálního počítače s nízkou prioritou.
+- **Přerušeno – uzel** s nízkou prioritou, který byl odebrán z fondu, protože Azure znovu VYVOLAL virtuální počítač. `preempted`Uzel lze znovu inicializovat, pokud je k dispozici náhradní kapacita virtuálního počítače s nízkou prioritou.
 - **Restartování – uzel** , který se restartuje.
 - Obnovování **imagí** – uzel, na kterém je operační systém přeinstalován.
 - **Spuštěno** – uzel, na kterém je spuštěna jedna nebo více úloh (jiné než počáteční úkol).

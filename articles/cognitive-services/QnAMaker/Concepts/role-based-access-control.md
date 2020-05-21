@@ -3,12 +3,12 @@ title: Spolupráce s ostatními QnA Maker
 description: ''
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: ef0823fc60424dc861ab70f4112e4689c1b97fb0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 080e6549579675e27486e6173d5907d92bbaad70
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665979"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724917"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Spolupráce s ostatními autory a editory
 
@@ -40,7 +40,7 @@ Následující diagram znázorňuje tok z pohledu autora pro přihlášení k po
 |3|Rozhraní API služby QnA Maker ověří token.|
 |4 |Rozhraní API služby QnA Maker volá službu Qnamakerem.|
 
-Pokud máte v úmyslu volat rozhraní API pro vytváření obsahu] (.. /How-To/collaborate-knowledge-base.md), přečtěte si další informace o nastavení ověřování.
+Pokud máte v úmyslu volat [vytváření rozhraní API](../How-To/collaborate-knowledge-base.md), přečtěte si další informace o nastavení ověřování.
 
 ## <a name="authenticate-by-qna-maker-portal"></a>Ověřování pomocí portálu QnA Maker
 

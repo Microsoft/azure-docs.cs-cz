@@ -1,15 +1,15 @@
 ---
-title: Vytvoření závislostí úloh pro spouštění úloh – Azure Batch
+title: Vytvoření závislostí úloh pro spouštění úloh
 description: Vytvořte úkoly, které závisí na dokončení dalších úloh pro zpracování MapReduce stylu a podobných úloh velkých objemů dat v Azure Batch.
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/22/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b3bc37a3d004f077e2e780d096b7bb2a8e5f773
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42cf24758c64f107723ae0907db08bd4b757a15a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116481"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726379"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Vytváření závislostí úloh pro spouštění úloh, které jsou závislé na jiných úkolech
 
@@ -30,7 +30,7 @@ Můžete vytvořit úkoly, které jsou závislé na jiných úkolech v relaci 1:
 V tomto článku se zabýváme konfigurací závislostí úloh pomocí knihovny [Batch .NET][net_msdn] . Nejprve vám ukážeme, jak [Povolit závislosti úkolů](#enable-task-dependencies) na vašich úlohách, a pak Ukázat, jak [nakonfigurovat úlohu se závislostmi](#create-dependent-tasks). Také popíšeme, jak zadat akci závislosti pro spuštění závislých úloh, pokud nadřazený objekt neproběhne úspěšně. Nakonec se podíváme na [scénáře závislosti](#dependency-scenarios) , které tato dávková podpora podporuje.
 
 ## <a name="enable-task-dependencies"></a>Povolit závislosti úkolů
-Chcete-li použít závislosti úkolů v aplikaci Batch, je nutné nejprve nakonfigurovat úlohu, aby používala závislosti úkolů. V rozhraní Batch .NET ho povolte na [vlastnosti cloudjob][net_cloudjob] nastavením jeho vlastnosti [UsesTaskDependencies][net_usestaskdependencies] na `true`:
+Chcete-li použít závislosti úkolů v aplikaci Batch, je nutné nejprve nakonfigurovat úlohu, aby používala závislosti úkolů. V rozhraní Batch .NET ho povolte na [vlastnosti cloudjob][net_cloudjob] nastavením jeho vlastnosti [UsesTaskDependencies][net_usestaskdependencies] na `true` :
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -57,7 +57,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Tento fragment kódu vytvoří závislý úkol s ID úlohy "květiny". Úloha "květiny" závisí na úkolech "deště" a "Sun". Úloha "květiny" bude naplánována na výpočetní uzel až po úspěšném dokončení úloh "deště" a "Sun".
 
 > [!NOTE]
-> Ve výchozím nastavení se úkol považuje za úspěšně dokončený, když je ve stavu **dokončeno** a jeho **ukončovací kód** je `0`. V dávce .NET to znamená [CloudTask][net_cloudtask]. Hodnota vlastnosti [State][net_taskstate] `Completed` a CloudTask [TaskExecutionInformation][net_taskexecutioninformation]. Hodnota vlastnosti [ExitCode][net_exitcode] je `0`. Informace o tom, jak to změnit, najdete v části [Akce závislosti](#dependency-actions) .
+> Ve výchozím nastavení se úkol považuje za úspěšně dokončený, když je ve stavu **dokončeno** a jeho **ukončovací kód** je `0` . V dávce .NET to znamená [CloudTask][net_cloudtask]. Hodnota vlastnosti [State][net_taskstate] `Completed` a CloudTask [TaskExecutionInformation][net_taskexecutioninformation].[ ][net_exitcode]Hodnota vlastnosti ExitCode je `0` . Informace o tom, jak to změnit, najdete v části [Akce závislosti](#dependency-actions) .
 > 
 > 
 
@@ -110,9 +110,9 @@ V závislosti na rozsahu nadřazených úkolů závisí úkol na dokončení úl
 Chcete-li vytvořit závislost, zadejte ID první a poslední úlohy v rozsahu pro [TaskDependencies][net_taskdependencies]. [OnIdRange][net_onidrange] statická metoda, když naplníte vlastnost [DependsOn][net_dependson] třídy [CloudTask][net_cloudtask].
 
 > [!IMPORTANT]
-> Pokud pro závislosti použijete rozsah ID úkolu, budou rozsahem vybrány pouze úlohy s ID reprezentujícími celočíselné hodnoty. Rozsah `1..10` pak bude vybírat úlohy `3` `7`, ale ne. `5flamingoes` 
+> Pokud pro závislosti použijete rozsah ID úkolu, budou rozsahem vybrány pouze úlohy s ID reprezentujícími celočíselné hodnoty. Rozsah pak `1..10` bude vybírat úlohy `3` `7` , ale ne `5flamingoes` . 
 > 
-> Úvodní nuly nejsou významné při vyhodnocování závislostí rozsahu, takže úkoly s `4`identifikátory řetězců `04` a `004` budou všechny *v* rozsahu a všechny budou považovány za úlohu `4`, takže první z nich bude vyhovovat závislosti.
+> Úvodní nuly nejsou významné při vyhodnocování závislostí rozsahu, takže úkoly s identifikátory řetězců `4` `04` a `004` budou všechny *v* rozsahu a všechny budou považovány za úlohu `4` , takže první z nich bude vyhovovat závislosti.
 > 
 > Každý úkol v rozsahu musí splňovat závislosti, a to buď pomocí úspěšného dokončení, nebo dokončením selhání namapovaného na akci závislosti nastavenou na hodnotu **vyhovující**. Podrobnosti najdete v části [Akce závislosti](#dependency-actions) .
 >

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 60771d5a188df5dfeca3530a551a116c870e63f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2db3dffbbf0f6d98fe6da7a0cec5400f7f2c03da
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82149330"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722452"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>Rychlý Start: Vytvoření clusteru Service Fabric pomocí šablony Správce prostředků
 
@@ -91,7 +91,7 @@ $certThumbprint = "<Certificate Thumbprint>"
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype). Šablona pro tento článek je moc dlouhá, takže se tady nedá zobrazit. Chcete-li zobrazit šablonu, https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.jsonPřečtěte si téma.
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/). Šablona pro tento článek je moc dlouhá, takže se tady nedá zobrazit. Chcete-li zobrazit šablonu, přečtěte si soubor [azuredeploy. JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) .
 
 V šabloně bylo definováno více prostředků Azure:
 
@@ -111,9 +111,9 @@ Otevřete *azuredeploy. Parameters. JSON* a upravte hodnoty parametrů tak, aby:
 * název **clusteru** odpovídá hodnotě, kterou jste zadali pro *CertDNSName* při vytváření certifikátu clusteru.
 * **adminUserName** je jiná hodnota než výchozí *gen – jedinečný* token.
 * hodnota **adminPassword** je jinou hodnotou než výchozí token *pro obecné heslo* .
-* **certificateThumbprint**, **sourceVaultResourceId**a **certificateUrlValue** jsou všechny prázdné řetězce (`""`).
+* **certificateThumbprint**, **sourceVaultResourceId**a **certificateUrlValue** jsou všechny prázdné řetězce ( `""` ).
 
-Příklad:
+Například:
 
 ```json
 {

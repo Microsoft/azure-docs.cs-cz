@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 999204cf2fc8ce18b42f873b9d34af4e6c08052b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3edd29703f74c7671537fbcf08159dd830e5453c
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411500"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726222"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Ověření podřízeného zařízení pro Azure IoT Hub
 
@@ -59,7 +59,7 @@ K provedení stejné operace můžete použít [rozšíření IoT pro Azure CLI]
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
-Další informace o příkazech rozhraní příkazového řádku Azure pro vytváření zařízení a správě nadřazených a podřízených objektů najdete v referenčním obsahu pro příkaz [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) .
+Další informace o příkazech rozhraní příkazového řádku Azure pro vytváření zařízení a správě nadřazených a podřízených objektů najdete v referenčním obsahu pro příkaz [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) .
 
 
 Pak [načtěte a upravte připojovací řetězec](#retrieve-and-modify-connection-string) tak, aby se vaše zařízení vědělo o připojení přes bránu.
@@ -109,7 +109,7 @@ K dokončení stejné operace vytváření zařízení můžete použít [rozš�
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Další informace o příkazech rozhraní příkazového řádku Azure pro vytváření zařízení, generování certifikátů a nadřazené a podřízené správě najdete v referenčním obsahu pro příkaz [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) .
+Další informace o příkazech rozhraní příkazového řádku Azure pro vytváření zařízení, generování certifikátů a nadřazené a podřízené správě najdete v referenčním obsahu pro příkaz [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) .
 
 Pak [načtěte a upravte připojovací řetězec](#retrieve-and-modify-connection-string) tak, aby se vaše zařízení vědělo o připojení přes bránu.
 
@@ -123,7 +123,7 @@ Pokud nemáte certifikační autoritu k vytváření certifikátů X. 509, můž
 
 1. Postupujte podle pokynů v části [Registrace certifikátů certifikační autority x. 509 do centra IoT Hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) *v tématu Nastavení zabezpečení X. 509 ve službě Azure IoT Hub*. V této části provedete následující kroky:
 
-   1. Nahrajte certifikát kořenové certifikační autority. Pokud používáte ukázkové certifikáty, kořenová certifikační autorita je ** \<cesta>/certs/Azure-IoT-test-Only.root.ca.CERT.pem**.
+   1. Nahrajte certifikát kořenové certifikační autority. Pokud používáte ukázkové certifikáty, kořenová certifikační autorita je ** \< cesta>/certs/Azure-IoT-test-Only.root.ca.CERT.pem**.
 
    2. Ověřte, že vlastníte certifikát kořenové certifikační autority.
 
@@ -152,7 +152,7 @@ K dokončení stejné operace vytváření zařízení můžete použít [rozš�
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-Další informace najdete v referenčním obsahu Azure CLI pro příkazy [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) .
+Další informace najdete v referenčním obsahu Azure CLI pro příkazy [AZ IoT Hub Device-identity](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) .
 
 Pak [načtěte a upravte připojovací řetězec](#retrieve-and-modify-connection-string) tak, aby se vaše zařízení vědělo o připojení přes bránu.
 
@@ -173,7 +173,7 @@ Celý připojovací řetězec se všemi dohromady vypadá takto:
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
-Pokud jste pro toto zařízení pro příjem dat vytvořili vztah nadřazenosti/podřízenosti, můžete připojovací řetězec zjednodušit voláním brány přímo jako hostitele připojení. Pro ověřování X. 509 se vyžadují relace nadřazený-podřízený, ale volitelné pro ověřování symetrického klíče. Příklad:
+Pokud jste pro toto zařízení pro příjem dat vytvořili vztah nadřazenosti/podřízenosti, můžete připojovací řetězec zjednodušit voláním brány přímo jako hostitele připojení. Pro ověřování X. 509 se vyžadují relace nadřazený-podřízený, ale volitelné pro ověřování symetrického klíče. Například:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz

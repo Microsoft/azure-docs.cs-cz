@@ -4,13 +4,13 @@ description: Jak používat vykreslování aplikací pomocí Azure Batch. Tento 
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 6610724cd2ecb14d165b587f9df31353e8eb8e41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115801"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726498"
 ---
 # <a name="rendering-applications"></a>Vykreslování aplikací
 
@@ -29,9 +29,9 @@ Kromě vykreslovacích modulů integrovaných do aplikace 3ds Max jsou k dispozi
 
 ### <a name="task-command-line"></a>Příkazový řádek úlohy
 
-Vyvolat `3dsmaxcmdio.exe` aplikaci k provedení vykreslování příkazového řádku na uzlu fondu.  Tato aplikace se nachází na cestě při spuštění úlohy. `3dsmaxcmdio.exe` Aplikace má stejné dostupné parametry jako `3dsmaxcmd.exe` aplikace, která je popsána v dokumentaci k nástroji [3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (rendering | Oddíl vykreslování příkazového řádku).
+Vyvolat `3dsmaxcmdio.exe` aplikaci k provedení vykreslování příkazového řádku na uzlu fondu.  Tato aplikace se nachází na cestě při spuštění úlohy. `3dsmaxcmdio.exe`Aplikace má stejné dostupné parametry jako `3dsmaxcmd.exe` aplikace, která je popsána v dokumentaci k nástroji [3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (rendering | Oddíl vykreslování příkazového řádku).
 
-Příklad:
+Například:
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"
@@ -57,7 +57,7 @@ Kromě vykreslovacích modulů integrovaných do Maya jsou k dispozici následuj
 
 ### <a name="task-command-line"></a>Příkazový řádek úlohy
 
-Vykreslovací `renderer.exe` modul příkazového řádku se používá v příkazovém řádku úlohy. Modul pro vykreslování příkazového řádku je popsán v [nápovědě k Maya](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
+`renderer.exe`Vykreslovací modul příkazového řádku se používá v příkazovém řádku úlohy. Modul pro vykreslování příkazového řádku je popsán v [nápovědě k Maya](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4).
 
 V následujícím příkladu se k kopírování souborů scény a prostředků do pracovního adresáře přípravy úlohy používá úloha přípravy úlohy. k uložení image vykreslování se použije výstupní složka a vykreslí se snímek 10.
 

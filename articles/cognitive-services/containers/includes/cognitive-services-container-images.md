@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d47829d32ed0b7ded545c73748cda1019d94bde
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590655"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83721715"
 ---
 ### <a name="container-repositories-and-images"></a>Úložiště kontejnerů a obrázky
 
@@ -62,12 +62,12 @@ Následující kontejnery Preview jsou veřejně dostupné. Microsoft Container 
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Public "gated" Preview (registr kontejneru: `containerpreview.azurecr.io` )
 
-Následující chráněné kontejnery Preview jsou hostovány v registru Preview kontejneru a vyžadují aplikaci pro přístup. Další informace najdete v tématu o [procesu uzavírání Cognitive Services](../../cognitive-services-gating-process.md) .
+Následující chráněné kontejnery Preview jsou hostovány v registru Preview kontejneru a vyžadují aplikaci pro přístup. Další informace najdete v následujících článcích o kontejneru.
 
 | Služba | Kontejner | Název Container Registry/úložiště/image |
 |--|--|--|
-| [Počítačové zpracování obrazu](../../Computer-vision/computer-vision-how-to-install-containers.md) | Čtení | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
-| [Rozpoznávání tváře](../../face/face-how-to-install-containers.md) | Rozpoznávání tváře | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
+| [Computer Vision](../../Computer-vision/computer-vision-how-to-install-containers.md) | Čtení | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
+| [Tvář](../../face/face-how-to-install-containers.md) | Tvář | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Nástroj pro rozpoznávání formulářů](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Rozpoznávání formulářů | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=stt) | Převod řeči na text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=cstt) | Custom Speech na text | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d6902b2b076df86012cec6941be417ad0f0c7660
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b5d508450d17d6e07e2c2bdb78b7934988936b9
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428729"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715745"
 ---
 # <a name="optimizing-transactions-in-sql-pool"></a>Optimalizace transakcí ve fondu SQL
 
@@ -44,7 +44,7 @@ Limity bezpečnosti transakce platí pouze pro plně protokolované operace.
 
 Následující operace jsou schopné provádět minimální protokolování:
 
-* CREATE TABLE jako SELECT ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+* CREATE TABLE JAKO SELECT ([CTAS]) (.. /SQL-Data-Warehouse/SQL-Data-Warehouse-Develop-CTAS.MD? TOC =/Azure/synapse-Analytics/TOC.JSON&BC =/Azure/synapse-Analytics/breadcrumb/TOC.JSON)
 * Vložit.. VYBRALI
 * CREATE INDEX
 * ZMĚNIT INDEX OPĚTOVNÉHO SESTAVENÍ
@@ -84,7 +84,7 @@ Načtení dat do neprázdné tabulky s clusterovaným indexem může často obsa
 
 ## <a name="optimizing-deletes"></a>Optimalizace odstranění
 
-ODSTRANĚNÍ je plně zaprotokolovaná operace.  Pokud potřebujete v tabulce nebo oddílu odstranit velké množství dat, často to znamená, že data, která chcete zachovat, je `SELECT` vhodnější, což je možné spustit jako podobuně zaznamenanou operaci.  Pokud chcete data vybrat, vytvořte novou tabulku pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  Po vytvoření pomocí [Přejmenovat](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zahodíte starou tabulku s nově vytvořenou tabulkou.
+ODSTRANĚNÍ je plně zaprotokolovaná operace.  Pokud potřebujete v tabulce nebo oddílu odstranit velké množství dat, často to znamená, že `SELECT` data, která chcete zachovat, je vhodnější, což je možné spustit jako podobuně zaznamenanou operaci.  Pokud chcete data vybrat, vytvořte novou tabulku pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  Po vytvoření pomocí [Přejmenovat](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zahodíte starou tabulku s nově vytvořenou tabulkou.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -413,7 +413,7 @@ Když pozastavíte nebo zmenšíte svůj fond SQL, je důležité pochopit, že 
 Pokud vaše úloha vystavila dlouho probíhající a nedokončená úprava dat před operací pozastavit nebo škálování, bude potřeba tuto práci vrátit zpátky. To může mít vliv na dobu potřebnou k pozastavení nebo škálování fondu SQL. 
 
 > [!IMPORTANT]
-> `UPDATE` A `DELETE` jsou plně protokolované operace, takže tyto operace vrácení zpět/opětovného zpracování mohou trvat výrazně déle než ekvivalentní minimální zaznamenání operací.
+> `UPDATE`A `DELETE` jsou plně protokolované operace, takže tyto operace vrácení zpět/opětovného zpracování mohou trvat výrazně déle než ekvivalentní minimální zaznamenání operací.
 
 Nejlepším řešením je umožnit, aby transakce změny letových dat byly dokončeny před tím, než se pozastavily nebo mění velikost fondu SQL. Tento scénář ale nemusí být vždycky praktický. Chcete-li zmírnit riziko dlouhého vrácení zpět, vezměte v úvahu jednu z následujících možností:
 
