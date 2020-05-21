@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/07/2020
-ms.openlocfilehash: 4ede8833fdbdbd57654e6c02147f53e58a17b1de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/07/2020
+ms.openlocfilehash: 8e76f767470b9052b25cd2b2958f3f9e9780881b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886989"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714742"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -84,7 +84,6 @@ Kapacitu clusteru můžete škálovat tak, aby splňovala požadavky na zatíže
 
 > [!NOTE]  
 > Při odstranění clusteru se odstraní i jeho výchozí metastore Hive. Pokud chcete zachovat metastore pro další opětovné vytvoření clusteru, použijte externí úložiště metadat, jako je Azure Database nebo [Apache Oozie](https://oozie.apache.org/).
-<!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
 ### <a name="isolate-cluster-job-errors"></a>Izolace chyb úloh clusteru
 
@@ -92,40 +91,7 @@ K chybám může dojít, pokud dojde k paralelnímu spuštění více map a omez
 
 ## <a name="quotas"></a>Kvóty
 
-Po určení velikosti virtuálního počítače clusteru, škálování a typu ověřte aktuální limity kapacity vašeho předplatného. Při dosažení limitu kvóty nemůžete nasadit nové clustery. Nebo nahorizontální navýšení kapacity pro existující clustery přidáním dalších pracovních uzlů. Jedinou omezenou kvótou je kvóta PROCESORových jader, která existuje na úrovni oblasti pro každé předplatné. Například vaše předplatné může mít v Východní USA oblasti 30 jader omezení.
-
-Chcete-li zjistit dostupné jádra, proveďte následující kroky:
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Přejděte na stránku **Přehled** pro cluster HDInsight.
-3. V nabídce vlevo vyberte **omezení kvóty**.
-
-   Na stránce se zobrazí počet používaných jader, počet dostupných jader a celkový počet jader.
-
-Pokud potřebujete požádat o zvýšení kvóty, proveďte následující kroky:
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-1. V levé dolní části stránky vyberte **help + support** .
-1. Vyberte **novou žádost o podporu**.
-1. Na stránce **Nová žádost o podporu** na kartě **základy** vyberte následující možnosti:
-
-   - **Typ problému**: **omezení služby a předplatného (kvóty)**
-   - **Předplatné**: předplatné, které chcete upravit.
-   - **Typ kvóty**: **HDInsight**
-
-     ![Vytvoření žádosti o podporu pro zvýšení kvóty jádra HDInsight](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
-
-1. Vyberte **Další: řešení >>**.
-1. Na stránce **Podrobnosti** zadejte popis problému, vyberte závažnost problému, upřednostňovanou metodu kontaktu a další povinná pole.
-1. Vyberte **Další: zkontrolovat + vytvořit >>**.
-1. Na kartě **Revize + vytvořit** vyberte **vytvořit**.
-
-> [!NOTE]  
-> Pokud potřebujete zvýšit kvótu jádra HDInsight v soukromé oblasti, [odešlete žádost o seznam povolených](https://aka.ms/canaryintwhitelist).
-
-Můžete [kontaktovat podporu a požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
-
-Existují některá pevná omezení kvót. Například jedno předplatné Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+Další informace o správě kvót předplatného najdete v tématu [vyžádání zvýšení kvóty](quota-increase-request.md).
 
 ## <a name="next-steps"></a>Další kroky
 

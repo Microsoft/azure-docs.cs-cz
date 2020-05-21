@@ -12,16 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff291592efc73415cce74ff666117851bb53e8a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0428671cf41bf148bc76bbd963bdd8fd90fce8e5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681013"
+ms.locfileid: "83712266"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Přidat Facebook jako zprostředkovatele identity pro externí identity
 
 Facebook můžete přidat do uživatelských toků samoobslužné registrace (Preview), aby se uživatelé mohli k vašim aplikacím přihlašovat pomocí vlastních účtů Facebook. Pokud chcete uživatelům povolit, aby se přihlásili pomocí Facebooku, nejdřív musíte [Povolit samoobslužnou registraci](self-service-sign-up-user-flow.md) pro vašeho tenanta. Po přidání Facebooku jako poskytovatele identity nastavte pro aplikaci tok uživatele a jako jednu z možností přihlášení vyberte Facebook.
+
 > [!NOTE]
 > Uživatelé můžou pomocí svých účtů Facebooku registrovat aplikace pomocí samoobslužných registračních a uživatelských toků. Uživatele nelze pozvat a uplatnit jejich pozvánku pomocí účtu Facebook.
 

@@ -9,16 +9,16 @@ ms.date: 05/11/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 9f09477eb174792d6348a6b9761a4f9e5467ec44
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: dba321d055e64d62ca91f95461c3299bee5f90d2
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649497"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714215"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Zachycení trasování prohlížeče pro řešení potíží
 
-Pokud řešíte problém s Azure Portal a potřebujete kontaktovat podporu Microsoftu, doporučujeme nejprve zachytit trasování prohlížeče a další informace. Informace, které shromažďujete, mohou poskytnout důležité informace o portálu v době výskytu problému. Postupujte podle kroků v tomto článku pro vývojářské nástroje v prohlížeči, který používáte: Google Chrome nebo Microsoft Edge (chrom), Microsoft Edge (EdgeHTML) nebo Apple Safari.
+Pokud řešíte problém s Azure Portal a potřebujete kontaktovat podporu Microsoftu, doporučujeme nejprve zachytit trasování prohlížeče a další informace. Informace, které shromažďujete, mohou poskytnout důležité informace o portálu v době výskytu problému. Postupujte podle kroků v tomto článku pro vývojářské nástroje v prohlížeči, který používáte: Google Chrome nebo Microsoft Edge (chrom), Microsoft Edge (EdgeHTML), Apple Safari nebo Firefox.
 
 ## <a name="google-chrome-and-microsoft-edge-chromium"></a>Google Chrome a Microsoft Edge (chrom)
 

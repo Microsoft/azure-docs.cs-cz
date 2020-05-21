@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc6cf908c5550f81ca6002de031d8d54dcff1eec
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cb89caa0a2fe5cde5bcea92e08c0df117215d916
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685322"
+ms.locfileid: "83713297"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
 
@@ -188,12 +188,12 @@ V grafickém Runbooku můžete přidat aktivity pro interní rutiny `Get-Automat
 
 ![Přidat proměnnou na plátno](../media/variables/runbook-variable-add-canvas.png)
 
-Následující obrázek ukazuje ukázkové aktivity pro aktualizaci proměnné s jednoduchou hodnotou v grafickém Runbooku. V tomto příkladu aktivita `Get-AzVM` načte jeden virtuální počítač Azure a uloží název počítače do existující proměnné řetězce Automation. Nezáleží na tom, zda [je odkaz kanálem nebo sekvencí](../automation-graphical-authoring-intro.md#links-and-workflow) , protože kód očekává pouze jeden objekt ve výstupu.
+Následující obrázek ukazuje ukázkové aktivity pro aktualizaci proměnné s jednoduchou hodnotou v grafickém Runbooku. V tomto příkladu aktivita `Get-AzVM` načte jeden virtuální počítač Azure a uloží název počítače do existující proměnné řetězce Automation. Nezáleží na tom, zda [je odkaz kanálem nebo sekvencí](../automation-graphical-authoring-intro.md#use-links-for-workflow) , protože kód očekává pouze jeden objekt ve výstupu.
 
 ![Nastavit jednoduchou proměnnou](../media/variables/runbook-set-simple-variable.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o rutinách, které se používají pro přístup k proměnným, najdete v tématu [Správa modulů v Azure Automation](modules.md).
-* Obecné informace o sadách Runbook naleznete [v tématu Spuštění Runbooku v Azure Automation](../automation-runbook-execution.md).
-* Podrobnosti o konfiguracích DSC najdete v tématu [Přehled konfigurace stavu](../automation-dsc-overview.md).
+* [Správa modulů ve službě Azure Automation](modules.md)
+* [Spouštění runbooků ve službě Azure Automation](../automation-runbook-execution.md)
+* [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md) 

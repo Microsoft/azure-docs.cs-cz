@@ -1,24 +1,20 @@
 ---
-title: Přehled Azure Automation
-description: Zjistěte, jako pomocí Azure Automation automatizovat životní cyklus infrastruktury a aplikací.
+title: Seznámení s Azure Automation
+description: Tento článek obsahuje informace o tom, co Azure Automation a jak ho používat k automatizaci životního cyklu infrastruktury a aplikací.
 services: automation
 ms.subservice: process-automation
 keywords: Azure Automation, DSC, PowerShell, konfigurace stavu, Správa aktualizací, sledování změn, DSC, inventář, Runbooky, Python, grafické
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 8ee8fd4d9a81746be7b65aeb6410691a5e3aea96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5e9d680e2f7d4a0ed3439d5acb6106fa1415aec1
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010235"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712770"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
-
-Tento článek poskytuje stručný přehled Azure Automation a odpovědi na některé běžné dotazy. Další informace o různých možnostech najdete na odkazech uvedených v tomto přehledu.
-
-## <a name="about-azure-automation"></a>O Azure Automation
 
 Azure Automation zajišťuje cloudovou službu pro automatizaci a konfiguraci, která podporuje konzistentní správu napříč prostředími Azure a mimo Azure. Zahrnuje automatizaci procesů, správu konfigurace, správu aktualizací, sdílené funkce a heterogenní funkce. Automatizace poskytuje plnou kontrolu nad nasazením, provozem a vyřazením úloh a prostředků z provozu.
 
@@ -32,13 +28,22 @@ Automatizace procesů podporuje integraci služeb Azure a dalších veřejných 
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
-[Konfigurace stavu](automation-dsc-overview.md) Azure Automation je cloudové řešení pro konfiguraci požadovaného stavu (DSC) prostředí PowerShell, které poskytuje služby pro podniková prostředí. Pomocí této funkce můžete spravovat prostředky DSC v Azure Automation a aplikovat konfigurace na virtuální nebo fyzické počítače ze serveru vyžádané replikace DSC v cloudu Azure. Můžete monitorovat a automaticky aktualizovat konfigurace počítačů ve fyzických i virtuálních počítačích v systému Windows nebo Linux, v cloudu i v místním prostředí. Podpora inventáře vám umožní dotazovat se na prostředky v hostovi pro přehlednost v nainstalovaných aplikacích a dalších položkách konfigurace.
- 
-Služba konfigurace stavu Azure Automation poskytuje bohatou možnost vytváření sestav a vyhledávání. Pomocí těchto funkcí můžete najít podrobné informace o tom, co je v operačním systému nakonfigurované. Služba podporuje sledování změn napříč službami, démony, softwarem, Registry a soubory ve vašem prostředí, které vám pomůžou diagnostikovat nechtěné změny a vyvolat výstrahy. Důležitou související funkcí je vytváření sestav o hlavních událostech, například událostech vydaných, když se uzly odchylují od jejich přiřazených konfigurací. 
+Správa konfigurace v Azure Automation umožňuje přístup ke dvěma funkcím:
+
+* Change Tracking a Inventory
+* Azure Automation State Configuration
+
+### <a name="change-tracking-and-inventory"></a>Change Tracking a Inventory
+
+Change Tracking a inventář kombinuje funkce Change Tracking a Inventory, které vám umožní sledovat změny infrastruktury virtuálních počítačů a serverů. Služba podporuje sledování změn napříč službami, démony, softwarem, Registry a soubory ve vašem prostředí, které vám pomůžou diagnostikovat nechtěné změny a vyvolat výstrahy. Podpora inventáře vám umožní dotazovat se na prostředky v hostovi pro přehlednost v nainstalovaných aplikacích a dalších položkách konfigurace. Podrobnosti o této funkci najdete v tématu [Change Tracking a inventář](change-tracking.md).
+
+### <a name="azure-automation-state-configuration"></a>Azure Automation State Configuration
+
+[Konfigurace stavu Azure Automation](automation-dsc-overview.md) je cloudová funkce pro konfiguraci požadovaného stavu PowerShellu (DSC), která poskytuje služby pro podniková prostředí. Pomocí této funkce můžete spravovat prostředky DSC v Azure Automation a aplikovat konfigurace na virtuální nebo fyzické počítače ze serveru vyžádané replikace DSC v cloudu Azure. 
 
 ## <a name="update-management"></a>Správa aktualizací
 
-Azure Automation zahrnuje řešení [Update Management](automation-update-management.md) pro systémy Windows a Linux napříč hybridními prostředími. V tomto řešení získáte přehled o kompatibilitě aktualizací v rámci Azure a dalších cloudech i v místním prostředí. Správa aktualizací umožňuje vytvářet plánovaná nasazení, která orchestrují instalaci aktualizací v rámci definovaného časového období údržby. Pokud by se aktualizace neměla instalovat na počítač, můžete k vyloučení z nasazení použít funkce správy aktualizací.
+Azure Automation obsahuje funkci [Update Management](automation-update-management.md) pro systémy Windows a Linux napříč hybridními prostředími. Update Management vám poskytne přehled o kompatibilitě aktualizací napříč Azure a ostatními cloudy a místním prostředí. Tato funkce umožňuje vytvářet plánovaná nasazení, která orchestrují instalaci aktualizací v rámci definovaného časového období údržby. Pokud by se aktualizace neměla instalovat na počítač, můžete k vyloučení z nasazení použít funkci Update Management.
 
 ## <a name="shared-capabilities"></a>Sdílené možnosti
 
@@ -63,7 +68,7 @@ Azure Automation podporuje řízení přístupu na základě role (RBAC) k regul
 
 ### <a name="source-control-integration"></a>Integrace správy zdrojového kódu
 
-Azure Automation umožňuje [integraci správy zdrojového kódu](source-control-integration.md). Tato funkce propaguje konfiguraci jako kód, kde mohou být Runbooky nebo konfigurace zkontrolovány do systému správy zdrojového kódu.
+Azure Automation podporuje [integraci správy zdrojového kódu](source-control-integration.md). Tato funkce propaguje konfiguraci jako kód, kde mohou být Runbooky nebo konfigurace zkontrolovány do systému správy zdrojového kódu.
 
 ## <a name="heterogeneous-support-windows-and-linux"></a>Heterogenní podpora (Windows a Linux)
 
@@ -85,7 +90,7 @@ Azure Automation podporuje správu v celém životním cyklu vaší infrastruktu
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
-## <a name="pricing-for-automation"></a>Ceny služby Automation
+## <a name="pricing-for-azure-automation"></a>Ceny za Azure Automation
 
 Ceny spojené s Azure Automation můžete zkontrolovat na stránce s [cenami](https://azure.microsoft.com/pricing/details/automation/) .
 

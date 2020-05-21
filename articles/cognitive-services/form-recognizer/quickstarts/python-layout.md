@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 342ae7e42c85ad661c04ba4ebb6629673f4af4dc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f0c1e9eccda8171ab816d33dac3f1947cea67eea
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77482272"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714606"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce informací o textu a rozložení pomocí REST API pro rozpoznávání formulářů v Pythonu
 
 V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azure REST API s Pythonem k extrakci informací o rozložení textu a tabulkových datech z dokumentů formuláře.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -55,7 +55,7 @@ Chcete-li zahájit analýzu rozložení, zavolejte rozhraní API **[analyzovat r
     
     headers = {
         # Request headers
-        'Content-Type': '<file type>',
+        'Content-Type': 'application/json',
         'Ocp-Apim-Subscription-Key': apim_key,
     }
     with open(source, "rb") as f:
@@ -77,7 +77,7 @@ Chcete-li zahájit analýzu rozložení, zavolejte rozhraní API **[analyzovat r
 1. Otevřete okno příkazového řádku.
 1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python form-recognizer-layout.py`.
 
-Dostanete `202 (Success)` odpověď, která obsahuje hlavičku **umístění operace** , kterou skript vytiskne do konzoly. Tato hlavička obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky. V následujícím příkladu hodnoty řetězec `operations/` následuje ID operace.
+Dostanete `202 (Success)` odpověď, která obsahuje hlavičku **umístění operace** , kterou skript vytiskne do konzoly. Tato hlavička obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky. V následujícím příkladu hodnoty řetězec následuje `operations/` ID operace.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0-preview/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
@@ -119,7 +119,7 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat rozložení** . Pak bude ve formátu JSON tisknout extrahovaná data. `"readResults"` Uzel obsahuje všechny řádky textu s příslušným umístěním ohraničovacího rámečku na stránce. `"pageResults"` Pole zobrazuje všechny části textu v tabulkách, z nichž každá má souřadnici řádku sloupce.
+Skript vytiskne odpovědi na konzolu, dokud se nedokončí operace **analyzovat rozložení** . Pak bude ve formátu JSON tisknout extrahovaná data. `"readResults"`Uzel obsahuje všechny řádky textu s příslušným umístěním ohraničovacího rámečku na stránce. `"pageResults"`Pole zobrazuje všechny části textu v tabulkách, z nichž každá má souřadnici řádku sloupce.
 
 Podívejte se na následující obrázek faktury a příslušný výstup JSON. Výstup byl zkrácen pro zjednodušení.
 

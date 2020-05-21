@@ -6,37 +6,33 @@ author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c1951c772dcd2f49f4f7c09021f69193af0a87e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3e28a76a559603755d3d72e8d5e27cde72aa9533
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424577"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701059"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Sdílené tabulky metadat Azure synapse Analytics
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky založené na Parquet mezi jeho fondy Apache Spark (Preview), modulem SQL na vyžádání (Preview) a fondy SQL.
+Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky založené na Parquet mezi svými Apache Spark fondy (Preview) a SQL na vyžádání (Preview).
 
 Jakmile se databáze vytvoří pomocí úlohy Sparku, můžete v ní vytvářet tabulky pomocí Sparku, která jako formát úložiště používá Parquet. Tyto tabulky budou okamžitě k dispozici pro dotazování pomocí všech fondů Sparku v pracovním prostoru Azure synapse. Lze je také použít ze všech úloh Spark podléhajících oprávněním.
 
-Vytvořené, spravované a externí tabulky Spark jsou také k dispozici jako externí tabulky se stejným názvem v odpovídající synchronizované databázi v SQL na vyžádání a v odpovídajících `$`pevných schématech ve fondech SQL, které mají povolenou synchronizaci metadat. Vystavení [tabulky Spark v SQL](#exposing-a-spark-table-in-sql) poskytuje další podrobnosti o synchronizaci tabulek.
+Vytvořené, spravované a externí tabulky Spark jsou také k dispozici jako externí tabulky se stejným názvem v odpovídající synchronizované databázi v SQL na vyžádání. Vystavení [tabulky Spark v SQL](#exposing-a-spark-table-in-sql) poskytuje další podrobnosti o synchronizaci tabulek.
 
-Vzhledem k tomu, že jsou tabulky synchronizovány do SQL na vyžádání a z asynchronních fondů SQL, dojde k prodlevě, dokud se nezobrazí.
-
-Mapování tabulek na externí tabulky, zdroje dat a formáty souborů.
+Vzhledem k tomu, že se tabulky synchronizují na vyžádání SQL asynchronně, dojde k prodlevě, dokud se nezobrazí.
 
 ## <a name="manage-a-spark-created-table"></a>Spravovat tabulku vytvořenou v Sparku
 
 Pomocí Sparku můžete spravovat databáze Spark vytvořené. Můžete ho například odstranit pomocí úlohy fondu Spark a vytvořit v něm tabulky z Sparku.
 
 Pokud vytvoříte objekty v takové databázi z SQL na vyžádání nebo zkusíte databázi odpojit, operace bude úspěšná, ale původní databáze Spark se nemění.
-
-Pokud se pokusíte odstranit synchronizované schéma ve fondu SQL nebo se v něm pokusíte vytvořit tabulku, Azure vrátí chybu.
 
 ## <a name="exposing-a-spark-table-in-sql"></a>Vystavení tabulky Spark v SQL
 
@@ -50,13 +46,13 @@ Spark nabízí dva typy tabulek, které Azure synapse zveřejňuje v SQL automat
 
 - Externí tabulky
 
-  Spark také nabízí způsoby vytváření externích tabulek přes existující data, a to buď zadáním `LOCATION` možnosti, nebo použitím formátu podregistru. Tyto externí tabulky můžou být v nejrůznějších formátech dat, včetně Parquet.
+  Spark také nabízí způsoby vytváření externích tabulek přes existující data, a to buď zadáním `LOCATION` Možnosti, nebo použitím formátu podregistru. Tyto externí tabulky můžou být v nejrůznějších formátech dat, včetně Parquet.
 
 Azure synapse aktuálně sdílí jenom spravované a externí tabulky Sparku, které ukládají svá data ve formátu Parquet pomocí modulů SQL. Tabulky s jinými formáty se automaticky nesynchronizují. Pokud modul SQL podporuje základní formát tabulky, je možné, že tyto tabulky budou explicitně synchronizovány jako externí tabulky ve vlastní databázi SQL.
 
 ### <a name="how-are-spark-tables-shared"></a>Jak jsou sdílené tabulky Sparku
 
-Spravované a externí tabulky Spark vystavené v modulech SQL jako externí tabulky s následujícími vlastnostmi:
+Spravované a externí tabulky Spark vystavené v modulu SQL jako externí tabulky s následujícími vlastnostmi:
 
 - Zdroj dat externí tabulky SQL je zdroj dat reprezentující složku umístění tabulky Spark.
 - Formát souboru v externí tabulce SQL je Parquet.
@@ -88,7 +84,7 @@ Tabulky Spark poskytují různé datové typy než synapse moduly SQL. V násled
 
 ## <a name="security-model"></a>Model zabezpečení
 
-Databáze a tabulky Spark i jejich synchronizované reprezentace v modulech SQL budou zabezpečeny na základní úrovni úložiště. Vzhledem k tomu, že aktuálně nemají oprávnění k samotným objektům, lze objekty zobrazit v Průzkumníku objektů.
+Databáze a tabulky Spark i jejich synchronizované reprezentace v modulu SQL budou zabezpečeny na základní úrovni úložiště. Vzhledem k tomu, že aktuálně nemají oprávnění k samotným objektům, lze objekty zobrazit v Průzkumníku objektů.
 
 Objekt zabezpečení, který vytváří spravovanou tabulku, se považuje za vlastníka této tabulky a má všechna práva k tabulce a také základní složky a soubory. Kromě toho se vlastník databáze automaticky stane spoluvlastníkem tabulky.
 
@@ -100,7 +96,7 @@ Další informace o tom, jak nastavit oprávnění pro složky a soubory, najdet
 
 ### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Vytvoření spravované tabulky založené na Parquet ve Sparku a dotazování z SQL na vyžádání
 
-V tomto scénáři máte databázi Spark s názvem `mytestdb`. Přečtěte si téma [vytvoření & připojení k databázi Spark – SQL na vyžádání](database.md#create--connect-to-spark-database---sql-on-demand).
+V tomto scénáři máte databázi Spark s názvem `mytestdb` . Přečtěte si téma [vytvoření & připojení k databázi Spark – SQL na vyžádání](database.md#create--connect-to-spark-database---sql-on-demand).
 
 Spuštěním následujícího příkazu vytvořte spravovanou tabulku Spark pomocí SparkSQL:
 
@@ -108,14 +104,14 @@ Spuštěním následujícího příkazu vytvořte spravovanou tabulku Spark pomo
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-Tím se vytvoří tabulka `myParquetTable` v databázi `mytestdb`. Po krátké prodlevě uvidíte tabulku v SQL na vyžádání. Například spusťte následující příkaz z SQL na vyžádání.
+Tím se vytvoří tabulka `myParquetTable` v databázi `mytestdb` . Po krátké prodlevě uvidíte tabulku v SQL na vyžádání. Například spusťte následující příkaz z SQL na vyžádání.
 
 ```sql
     USE mytestdb;
     SELECT * FROM sys.tables;
 ```
 
-Ověřte, `myParquetTable` že je součástí výsledků.
+Ověřte, že `myParquetTable` je součástí výsledků.
 
 >[!NOTE]
 >Tabulka, která nepoužívá Parquet jako formát úložiště, nebude synchronizována.
@@ -169,16 +165,16 @@ CREATE TABLE mytestdb.myExternalParquetTable
     LOCATION "abfss://<fs>@arcadialake.dfs.core.windows.net/synapse/workspaces/<synapse_ws>/warehouse/mytestdb.db/myparquettable/"
 ```
 
-Zástupný text `<fs>` nahraďte názvem systému souborů, který je výchozím systémem souborů v pracovním prostoru, a `<synapse_ws>` zástupným symbolem s názvem synapse pracovního prostoru, který používáte ke spuštění tohoto příkladu.
+Zástupný text nahraďte `<fs>` názvem systému souborů, který je výchozím systémem souborů v pracovním prostoru, a zástupným symbolem `<synapse_ws>` s názvem synapse pracovního prostoru, který používáte ke spuštění tohoto příkladu.
 
-Předchozí příklad vytvoří tabulku `myExtneralParquetTable` v databázi. `mytestdb` Po krátké prodlevě uvidíte tabulku v SQL na vyžádání. Například spusťte následující příkaz z SQL na vyžádání.
+Předchozí příklad vytvoří tabulku `myExtneralParquetTable` v databázi `mytestdb` . Po krátké prodlevě uvidíte tabulku v SQL na vyžádání. Například spusťte následující příkaz z SQL na vyžádání.
 
 ```sql
 USE mytestdb;
 SELECT * FROM sys.tables;
 ```
 
-Ověřte, `myExternalParquetTable` že je součástí výsledků.
+Ověřte, že `myExternalParquetTable` je součástí výsledků.
 
 Teď můžete data z SQL na vyžádání přečíst následujícím způsobem:
 
@@ -193,27 +189,6 @@ id | name | birthdate
 ---+-------+-----------
 1 | Alice | 2010-01-01
 ```
-
-### <a name="querying-spark-tables-in-a-sql-pool"></a>Dotazování na tabulky Spark ve fondu SQL
-
-Díky tabulkám vytvořeným v předchozích příkladech teď v pracovním prostoru vytvoříte ve svém pracovním prostoru `mysqlpool` SQL fond s názvem, který umožňuje synchronizaci metadat (nebo použití již vytvořeného fondu z vystavení [databáze Spark ve fondu SQL](database.md#exposing-a-spark-database-in-a-sql-pool).
-
-Spusťte následující příkaz pro fond `mysqlpool` SQL:
-
-```sql
-SELECT * FROM sys.tables;
-```
-
-Ověřte, zda jsou `myParquetTable` tabulky `myExternalParquetTable` a viditelné ve schématu `$mytestdb`.
-
-Teď můžete data z SQL na vyžádání přečíst následujícím způsobem:
-
-```sql
-SELECT * FROM [$mytestdb].myParquetTable WHERE name = 'Alice';
-SELECT * FROM [$mytestdb].myExternalParquetTable WHERE name = 'Alice';
-```
-
-Měli byste získat stejné výsledky jako u výše uvedených požadavků SQL na vyžádání.
 
 ## <a name="next-steps"></a>Další kroky
 

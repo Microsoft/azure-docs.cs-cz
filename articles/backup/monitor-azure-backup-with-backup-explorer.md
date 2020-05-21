@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak pomocí Průzkumníka služby Backup p
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 87780124d531212a141520df65ff7408cc120e55
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160985"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715201"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Monitorování záloh pomocí Průzkumníka zálohování
 
@@ -30,6 +30,7 @@ Tyto možnosti jsou poskytovány předem pomocí nativní integrace s Azure Reso
 > * Průzkumník zálohování se v současné době nepodporuje v národních cloudech.
 > * V současné době se přizpůsobení šablony Průzkumníka zálohování nepodporuje.
 > * Nedoporučujeme psát vlastní automatizaci do dat grafu prostředků Azure.
+> * Průzkumník zálohování v současné době umožňuje monitorovat zálohy na maximum 1000 předplatných (mezi klienty).
 
 ## <a name="get-started"></a>Začínáme
 

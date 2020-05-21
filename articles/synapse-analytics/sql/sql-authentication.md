@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b80efa30ac7e04b9eb21dd6f8a39ab4ee90adf6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ff29b9ab87b2cd48297f5f1ee195f11fb56b428a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424850"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700314"
 ---
 # <a name="sql-authentication"></a>Ověřování SQL
 
@@ -45,12 +45,12 @@ Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce
 - Jsou jedinými účty, které se můžou automaticky připojit k jakémukoli SQL Database na serveru. (Pro připojení k uživatelské databázi ostatní účty musí buď být vlastníkem databáze, nebo musí v uživatelské databázi mít uživatelský účet.)
 - Tyto účty přistupují k uživatelským databázím jako uživatel `dbo` a mají pro ně veškerá oprávnění. (Vlastník databáze také k databázi přistupuje jako uživatel `dbo`.)
 - Nezadávejte `master` databázi jako `dbo` uživatele a mít v hlavní databázi omezená oprávnění.
-- Nejsou **členy standardní** role serveru SQL Server `sysadmin` pevné, což není k dispozici ve službě SQL Database.  
+- Nejsou **členy standardní** `sysadmin` role serveru SQL Server pevné, což není k dispozici ve službě SQL Database.  
 - Může vytvářet, měnit a odstraňovat databáze, přihlášení, uživatele v hlavní databázi a pravidla brány firewall na úrovni serveru.
-- Může přidat nebo odebrat členy do rolí `dbmanager` a `loginmanager` .
+- Může přidat nebo odebrat členy do `dbmanager` rolí a `loginmanager` .
 - Může zobrazit `sys.sql_logins` systémovou tabulku.
 
-## <a name="sql-on-demand-preview"></a>SQL na vyžádání (Preview)
+## <a name="sql-on-demand-preview"></a>[SQL na vyžádání (Preview)](#tab/serverless)
 
 Pokud chcete spravovat uživatele, kteří mají přístup k SQL na vyžádání, můžete použít následující pokyny.
 
@@ -72,7 +72,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 Po vytvoření přihlášení a uživatele můžete k udělení práv použít syntaxi Regular SQL Server.
 
-## <a name="sql-pool"></a>Fond SQL
+## <a name="sql-pool"></a>[Fond SQL](#tab/provisioned)
 
 ### <a name="administrator-access-path"></a>Cesta pro přístup správce
 
@@ -127,6 +127,8 @@ Nyní se uživatel může připojit k `master` databázi a může vytvářet nov
 ### <a name="login-managers"></a>Správci přihlášení
 
 Druhou správní rolí je role správce přihlášení. Členové této role mohou v hlavní databázi vytvářet nová přihlášení. Pokud chcete, můžete použít stejný postup (vytvořit přihlášení a uživatele a přidat uživatele do role **loginmanager**) a povolit tak uživateli vytvářet nová přihlášení v hlavní databázi. Tato přihlášení obvykle nejsou nutná, protože Microsoft doporučuje místo uživatelů s ověřováním na základě přihlášení používat uživatele databáze s omezením, kteří jsou ověřovaní na úrovni databáze. Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+
+---
 
 ## <a name="non-administrator-users"></a>Uživatelé bez oprávnění správce
 
@@ -202,7 +204,7 @@ Začněte seznamem oprávnění podle tématu [Oprávnění (databázový stroj)
 
 Při správě přihlášení a uživatelů v SQL Database Vezměte v úvahu následující body:
 
-- Při provádění `CREATE/ALTER/DROP DATABASE` příkazů musíte být připojeni k **Hlavní** databázi.
+- Při provádění příkazů musíte být připojeni k **Hlavní** databázi `CREATE/ALTER/DROP DATABASE` .
 - Databázového uživatele, který odpovídá **správci serveru**, není možné změnit ani vyřadit.
 - Výchozím jazykem přihlášení **správce serveru** je americká angličtina.
 - Příkazy `CREATE DATABASE` a `DROP DATABASE` mohou provádět jen správci (přihlášení **správce serveru** nebo správce Azure AD) a členové databázové role **dbmanager** v **hlavní** databázi.

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 15f8a3ac8c2777b3a878de92db495e559f64ad20
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726547"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698309"
 ---
 # <a name="changelog"></a>Protokol změn #
 
@@ -246,7 +246,7 @@ ms.locfileid: "81726547"
 
 ### <a name="changes-211"></a>Změny 2.1.1 ####
 
-- Mění Byl přidán chybový kód pro požadavek Widevine https: od v58 pro Chrome musí být obsah Widevine načten nebo přehrán prostřednictvím `https://` protokolu, jinak se přehrávání nezdaří.
+- Mění Byl přidán chybový kód pro požadavek Widevine https: od v58 pro Chrome musí být obsah Widevine načten nebo přehrán prostřednictvím protokolu, `https://` jinak se přehrávání nezdaří.
 - Mění Přidána jmenovka ARIA pro číselník načítání, takže technologie usnadnění může při načítání obsahu v mluveném komentáři popsat "načítání videa"  
 
 ## <a name="210-official-release"></a>2.1.0 (oficiální verze) ##
@@ -577,8 +577,8 @@ ms.locfileid: "81726547"
 - [Oprava chyby] [AzureHtml5JS] Při živém přehrávání se zamrznutí na MPD aktualizace, když jsou v časovém razítku malé nepřesnosti.
 - [Oprava chyby] [AzureHtml5JS] Zmírnění některých problémů s živým přehráváním
 - [Oprava chyby] [AzureHtml5JS] Vyprázdnit vyrovnávací paměť při zapnuté heuristické velikosti okna a přejít na obrazovku s vyšším rozlišením
-- [Oprava chyby] [AzureHtml5JS] Chrome teď správně zobrazuje ukončenou událost. Při použití AzureHtml5JS nebude při použití odkazu na předchozí známý problém s *chromem správně odeslána událost â&euro;œendedâ.&euro; V podkladovém prohlížeči se vyskytl problém.*
-- [Oprava chyby] [AzureHtml5JS] Pro tento techer byl zakázán Safari pro řešení *potíží s přehráváním pomocí OSX Yosemite s AzureHtml5JS tech. K dispozici jsou problémy s implementací programu MSE. Dočasné zmírnění rizika: vynutit&euro;â&euro;œflashSSâ,&euro;â&euro;œsilverlightSSâ jako tech Order pro tyto uživatelské agenty*
+- [Oprava chyby] [AzureHtml5JS] Chrome teď správně zobrazuje ukončenou událost. *Při použití AzureHtml5JS se při použití odkazu na předchozí známý problém Chromu nepošle správně událost ukončení. V podkladovém prohlížeči se vyskytl problém.*
+- [Oprava chyby] [AzureHtml5JS] Pro tento techer byl zakázán Safari pro řešení *potíží s přehráváním pomocí OSX Yosemite s AzureHtml5JS tech. K dispozici jsou problémy s implementací programu MSE. Dočasné zmírnění: vynutí aplikaci Flash, Silverlight jako technickou objednávku pro tyto uživatelské agenty.*
 - [Oprava chyby] [Flash] loadstart aktivována po chybě
 
 ## <a name="020-beta"></a>0.2.0 (beta verze) ##
@@ -589,7 +589,7 @@ ms.locfileid: "81726547"
 - Zapnut Manipulace s nekontinuitou
 - Zapnut Podpora pro časová razítka větší než 2 ^ 53
 - Zapnut Parametr dotazu adresy URL uchovává požadavek manifestu.
-- Zapnut Netestovanými Podpora pro `QuickStart` profily `HighQuality` a heuristické služby
+- Zapnut Netestovanými Podpora pro `QuickStart` `HighQuality` profily a heuristické služby
 - Zapnut Netestovanými Vystavení informací streamu videa pro přenosové rychlosti, šířku a výšku na AzureHtml5JS a na blesku
 - Zapnut Netestovanými Výběr přenosové rychlosti na AzureHtml5JS a přehrávači (viz dokumentace k rozhraní API)
 

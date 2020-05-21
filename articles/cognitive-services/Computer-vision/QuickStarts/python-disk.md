@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d859d04b9fee9af52c2d63004ba9c84665fe9edf
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 05941081580295ddcf396a9ec2c12826d2cc2136
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404455"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712736"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>Rychlý Start: analýza místní Image pomocí Počítačové zpracování obrazu REST API a Pythonu
 
@@ -26,12 +26,12 @@ Tento rychlý start můžete spustit jako podrobný návod pomocí Jupyter Noteb
 
 [![Vazba](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/try/cognitive-services/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/try/cognitive-services/), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud chcete spustit tuto ukázku v místním prostředí, musíte mít nainstalovaný jazyk [Python](https://www.python.org/downloads/).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a v `COMPUTER_VISION_ENDPOINT` uvedeném pořadí.
 - Musíte mít nainstalované následující balíčky Pythonu. Pomocí [PIP](https://packaging.python.org/tutorials/installing-packages/) můžete nainstalovat balíčky Pythonu.
     - požádal
     - [matplotlib](https://matplotlib.org/)
@@ -42,7 +42,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
 1. Zkopírujte do textového editoru následující kód.
-1. Volitelně můžete hodnotu `image_path` nahradit cestou a názvem souboru jiného obrázku, který chcete analyzovat.
+1. Hodnotu nahraďte `image_path` cestou a názvem souboru jiné image, kterou chcete analyzovat.
 1. Uložte kód jako soubor s příponou `.py`. Například, `analyze-local-image.py`.
 1. Otevřete okno příkazového řádku.
 1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python analyze-local-image.py`.
@@ -67,9 +67,11 @@ else:
 if 'COMPUTER_VISION_ENDPOINT' in os.environ:
     endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-analyze_url = endpoint + "vision/v2.1/analyze"
+analyze_url = endpoint + "vision/v3.0/analyze"
 
 # Set image_path to the local path of an image that you want to analyze.
+# Sample images are here, if needed:
+# https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/ComputerVision/Images
 image_path = "C:/Documents/ImageToAnalyze.jpg"
 
 # Read the image into a byte array
@@ -92,6 +94,7 @@ image = Image.open(BytesIO(image_data))
 plt.imshow(image)
 plt.axis("off")
 _ = plt.title(image_caption, size="x-large", y=-0.1)
+plt.show()
 ```
 
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi

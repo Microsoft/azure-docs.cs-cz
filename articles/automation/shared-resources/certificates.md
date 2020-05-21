@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bf7e6d0ed8d6e318e6a78d25bcc7764f6302ef22
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9542fe6cb574b36b03151a50a0352c9175a22b55
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685368"
+ms.locfileid: "83711461"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Správa certifikátů v Azure Automation
 
@@ -165,6 +165,6 @@ print cert
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o rutinách používaných pro přístup k certifikátům najdete v tématu [Správa modulů v Azure Automation](modules.md).
-* Obecné informace o sadách Runbook naleznete [v tématu Spuštění Runbooku v Azure Automation](../automation-runbook-execution.md).
-* Podrobnosti o konfiguracích DSC najdete v tématu [Přehled konfigurace stavu](../automation-dsc-overview.md). 
+* [Správa modulů ve službě Azure Automation](modules.md)
+* [Spouštění runbooků ve službě Azure Automation](../automation-runbook-execution.md)
+* [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md) 

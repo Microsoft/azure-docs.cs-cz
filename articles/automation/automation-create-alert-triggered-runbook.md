@@ -1,16 +1,16 @@
 ---
 title: Aktivace sady Runbook Azure Automation pomocí výstrahy
-description: Naučte se, jak aktivovat Runbook, který se spustí při vyvolání výstrahy Azure.
+description: Tento článek obsahuje informace o tom, jak aktivovat Runbook, který se spustí při vyvolání výstrahy Azure.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: eb7a1cc0cb589fa3d2fe605913d47be4444516e8
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 30ef3e0ccef859ec183d8aad18c0b9910a5d3c9f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996872"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712498"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Aktivace sady Runbook Azure Automation pomocí výstrahy
 
@@ -32,7 +32,7 @@ Když výstraha zavolá Runbook, samotné volání je požadavek HTTP POST Webho
 |Výstrahy  |Popis|Schéma datové části  |
 |---------|---------|---------|
 |[Běžná výstraha](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|Běžné schéma výstrah, které spojuje prostředí spotřeby pro oznamování výstrah v Azure ještě dnes.|Společné schéma datové části výstrahy|
-|[Upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Pošle oznámení, pokud jakákoli nová událost v protokolu aktivit Azure odpovídá specifickým podmínkám. Například při výskytu `Delete VM` operace v **myProductionResourceGroup** nebo při zobrazení nové události Azure Service Health s aktivním stavem.| [Schéma datové části upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[Upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Pošle oznámení, pokud jakákoli nová událost v protokolu aktivit Azure odpovídá specifickým podmínkám. Například při `Delete VM` výskytu operace v **myProductionResourceGroup** nebo při zobrazení nové události Azure Service Health s aktivním stavem.| [Schéma datové části upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
 |[Výstraha metriky téměř v reálném čase](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Pokud jedna nebo více metrik na úrovni platformy splňuje zadané podmínky, pošle oznámení rychleji než výstrahy metriky. Například pokud je hodnota pro **procesor%** na virtuálním počítači větší než 90 a hodnota pro **síť v** je větší než 500 MB za posledních 5 minut.| [Schéma datové části výstrah téměř v reálném čase](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 Vzhledem k tomu, že se data poskytnutá jednotlivými typy výstrah liší, je každý typ výstrahy zpracováván jinak. V další části se dozvíte, jak vytvořit Runbook pro zpracování různých typů výstrah.
@@ -41,7 +41,7 @@ Vzhledem k tomu, že se data poskytnutá jednotlivými typy výstrah liší, je 
 
 Chcete-li použít automatizaci s výstrahami, potřebujete sadu Runbook s logikou, která spravuje datovou část JSON výstrahy, která je předána sadě Runbook. Následující příklad Runbooku musí být volán z výstrahy Azure.
 
-Jak je popsáno v předchozí části, každý typ výstrahy má jiné schéma. Skript převezme data Webhooku z výstrahy ve vstupním `WebhookData` parametru Runbooku. Potom skript vyhodnocuje datovou část JSON a určí, který typ výstrahy se používá.
+Jak je popsáno v předchozí části, každý typ výstrahy má jiné schéma. Skript převezme data Webhooku z výstrahy ve `WebhookData` vstupním parametru Runbooku. Potom skript vyhodnocuje datovou část JSON a určí, který typ výstrahy se používá.
 
 V tomto příkladu se používá výstraha z virtuálního počítače. Načte data virtuálního počítače z datové části a pak tyto informace použije k zastavení virtuálního počítače. Připojení musí být nastaveno v účtu Automation, ve kterém je sada Runbook spuštěna. Pokud používáte výstrahy pro aktivaci runbooků, je důležité kontrolovat stav upozornění v aktivovaném Runbooku. Sada Runbook se spustí při každé změně stavu výstrahy. Výstrahy mají více stavů, přičemž tyto dva nejběžnější jsou aktivované a vyřešené. Zkontrolujte stav v logice Runbooku, aby se zajistilo, že se Runbook nespustí víckrát než jednou. V příkladu v tomto článku se dozvíte, jak vyhledat výstrahy se stavem aktivováno.
 
@@ -191,9 +191,8 @@ Výstrahy používají skupiny akcí, což jsou kolekce akcí, které výstraha 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o spuštění Runbooku služby Automation pomocí Webhooku najdete v tématu [Spuštění runbooku z Webhooku](automation-webhooks.md).
-* Podrobnosti o různých způsobech, jak spustit sadu Runbook, najdete v tématu [Spuštění Runbooku](automation-starting-a-runbook.md).
-* Informace o tom, jak vytvořit upozornění protokolu aktivit, najdete v tématu [Vytvoření upozornění protokolu](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)aktivit.
-* Informace o tom, jak vytvořit upozornění téměř v reálném čase, najdete [v tématu Vytvoření pravidla výstrahy v Azure Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* [Spuštění runbooku z webhooku](automation-webhooks.md)
+* [Spuštění runbooku](automation-starting-a-runbook.md)
+* [Vytvoření upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)
+* [Vytvoření pravidla výstrahy v Azure Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)
+* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)

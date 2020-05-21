@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd430d750b2220882479a430322f4b4c4e0c44c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597461"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712345"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)
 |     |
@@ -25,7 +25,10 @@ ms.locfileid: "83597461"
 | Samoobslužná registrace je funkce veřejné verze Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.|
 |     |
 
-Přidružení toku uživatele k aplikaci vám umožní povolit registraci této aplikace. Můžete zvolit více než jednu aplikaci, kterou chcete přidružit k toku uživatele. Po přidružení toku uživatele k jedné nebo více aplikacím se uživatelé, kteří navštíví tuto aplikaci, budou moci zaregistrovat pomocí možností nakonfigurovaných v toku uživatele.
+Můžete vytvářet toky uživatelů pro aplikace, které jsou sestavené vaší organizací. Přidružení toku uživatele k aplikaci vám umožní povolit registraci této aplikace. Můžete zvolit více než jednu aplikaci, kterou chcete přidružit k toku uživatele. Po přidružení toku uživatele k jedné nebo více aplikacím se uživatelé, kteří navštíví tuto aplikaci, budou moci zaregistrovat a získat účet Guest pomocí možností nakonfigurovaných v toku uživatele.
+
+> [!NOTE]
+> Můžete přidružit toky uživatelů k aplikacím vytvořeným vaší organizací. Toky uživatelů se nedají použít pro aplikace Microsoftu, jako je SharePoint nebo Teams.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -33,9 +36,12 @@ Přidružení toku uživatele k aplikaci vám umožní povolit registraci této 
 
 Služba Azure AD je výchozím zprostředkovatelem identity pro samoobslužné registrace. To znamená, že se uživatelé můžou k účtu Azure AD zaregistrovat ve výchozím nastavení. Poskytovatelé sociálních identit taky můžou být součástí těchto toků registrace pro podporu účtů Google a Facebook.
 
-- [Přidat Google do seznamu poskytovatelů sociálních identit](google-federation.md)
 - [Přidat Facebook do seznamu poskytovatelů sociálních identit](facebook-federation.md)
- 
+- [Přidat Google do seznamu poskytovatelů sociálních identit](google-federation.md)
+
+> [!NOTE]
+> Pokud je v aktuální verzi Preview přidružený uživatelský tok samoobslužné registrace k aplikaci a odešlete uživateli pozvánku k této aplikaci, uživatel nebude moct použít účet Gmail k uplatnění pozvánky. Alternativním řešením je, že uživatel může projít samoobslužným procesem registrace. Nebo můžou uplatnit pozvánku pomocí přístupu k jiné aplikaci nebo pomocí portálu moje aplikace na https://myapps.microsoft.com .
+
 ### <a name="define-custom-attributes-optional"></a>Definovat vlastní atributy (volitelné)
 
 Atributy uživatele jsou hodnoty shromážděné uživatelem během samoobslužného přihlášení. Azure AD obsahuje integrovanou sadu atributů, ale můžete vytvořit vlastní atributy pro použití v toku uživatele. Tyto atributy můžete také číst a zapisovat pomocí rozhraní Microsoft Graph API. Viz [definování vlastních atributů pro toky uživatelů](user-flow-add-custom-attributes.md).

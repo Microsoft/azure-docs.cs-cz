@@ -6,32 +6,40 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc772368de1a0f7d8a7d4f44b47ecafda70f0a70
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127695"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714844"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure CLI
  
 
 Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
-Ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.70 nebo novější a přihlásili jste se k účtu `az login`Azure pomocí. 
+Ujistěte se, že máte nainstalovanou verzi Azure CLI 2.0.70 nebo novější a přihlásili jste se k účtu Azure pomocí `az login` . 
 
 
 ## <a name="limitations"></a>Omezení
 
 - Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
 - Typy velikosti a hardwaru, které jsou dostupné pro vyhrazené hostitele, se v jednotlivých oblastech liší. Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
- 
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků 
 Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí AZ Group Create. Následující příklad vytvoří skupinu prostředků s názvem *myDHResourceGroup* v umístění *východní USA* .
 
 ```bash
 az group create --name myDHResourceGroup --location eastus 
+```
+ 
+## <a name="list-available-host-skus-in-a-region"></a>Výpis dostupných SKU hostitelů v oblasti
+Ne všechny SKU hostitele jsou dostupné ve všech oblastech a zónách dostupnosti. 
+
+Seznamte se s dostupností hostitele a dalšími omezeními nabídky, než začnete zřizovat vyhrazené hostitele. 
+
+```bash
+az vm list-skus -l eastus2  -r hostGroups/hosts  -o table  
 ```
  
 ## <a name="create-a-host-group"></a>Vytvoření skupiny hostitelů 

@@ -3,12 +3,12 @@ title: Datový model Azure Monitor protokolů
 description: V tomto článku se dozvíte informace o Azure Monitor Log Analytics datových modelů pro Azure Backup data.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 72484923bc94e197cd195c0192b53feb3ef457ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
+ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183683"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83707985"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
 
@@ -463,7 +463,9 @@ Níže najdete několik ukázek, které vám pomohou při psaní dotazů na Azur
 ## <a name="v1-schema-vs-v2-schema"></a>Schéma v1 schématu vs v2
 Dříve byla diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure odeslána do tabulky Azure Diagnostics ve schématu, které se říká ***schématu v1***. Následně byly přidány nové sloupce pro podporu jiných scénářů a úloh a diagnostická data byla vložena do nového schématu, které se říká jako ***schéma v2***. 
 
-Z důvodu zpětné kompatibility se v současné době odesílají diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure do Azure Diagnostics tabulky ve schématu V1 a v2 (se schématem v1 nyní na cestě k vyřazení). Pomocí filtrování záznamů pro SchemaVersion_s = = v1 v dotazech protokolu můžete určit, které záznamy v Log Analytics mají schéma v1.
+Z důvodu zpětné kompatibility se v současné době odesílají diagnostická data pro Azure Backup agenta a zálohování virtuálních počítačů Azure do Azure Diagnostics tabulky ve schématu V1 a v2 (se schématem v1 nyní na cestě k vyřazení). Pomocí filtrování záznamů pro SchemaVersion_s = = v1 v dotazech protokolu můžete určit, které záznamy v Log Analytics mají schéma v1. 
+
+Pokud chcete zjistit, které sloupce patří pouze ke schématu V1, podívejte se do třetího sloupce "Description" v [datovém modelu](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model) popsaném výše.
 
 ## <a name="next-steps"></a>Další kroky
 

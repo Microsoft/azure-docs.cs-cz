@@ -1,15 +1,15 @@
 ---
 title: Kurz – nasazení místní šablony Azure Resource Manager
 description: Naučte se nasadit šablonu Azure Resource Manager z místního počítače.
-ms.date: 03/13/2020
+ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7f134bb836d05d006ef2e474ea48382a671957fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 01f04d18ae54c3c512010dd005e9d820b914e536
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188820"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714062"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Kurz: nasazení místní šablony Azure Resource Manager
 
@@ -69,7 +69,7 @@ Pokud máte více předplatných Azure, vyberte předplatné, které chcete pou�
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-Select-AzSubscription [SubscriptionID/SubscriptionName]
+Set-AzContext [SubscriptionID/SubscriptionName]
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)

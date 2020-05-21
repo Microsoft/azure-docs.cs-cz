@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: c6d8dc087e6306173fc4d55368cd3c4c624d5302
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0dea516ea6b938b91fc4b9b833979bcecc285339
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978565"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714963"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps
 
@@ -51,9 +51,9 @@ Aktivační událost žádosti podporuje [Azure Active Directory otevřené ově
 
 Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, který může přijímat *jenom* příchozí požadavky HTTPS. Když dojde k této události, Trigger se aktivuje a spustí aplikaci logiky. Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v tématu [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [pracovní postupy volání, triggeru nebo vnoření do koncových bodů HTTPS v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
 
-1. Po otevření návrháře aplikace logiky zadejte `http request` do vyhledávacího pole jako filtr. V seznamu triggery vyberte aktivační událost **při přijetí požadavku HTTP** , což je první krok v pracovním postupu aplikace logiky.
+1. Po otevření návrháře aplikace logiky zadejte do vyhledávacího pole `http request` jako filtr. V seznamu triggery vyberte aktivační událost **při přijetí požadavku HTTP** , což je první krok v pracovním postupu aplikace logiky.
 
    ![Vybrat aktivační událost žádosti](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -61,7 +61,7 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
    ![Aktivační událost žádosti](./media/connectors-native-reqres/request-trigger.png)
 
-   | Název vlastnosti | Název vlastnosti JSON | Požaduje se | Popis |
+   | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
    | **ADRESA URL PRO POST HTTP** | nTato | Ano | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
    | **Schéma JSON pro tělo požadavku** | `schema` | No | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
@@ -117,7 +117,7 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
    }
    ```
 
-   Když zadáte schéma JSON, Návrhář zobrazí připomenutí, které zahrne `Content-Type` hlavičku do žádosti, a nastaví tuto hodnotu hlavičky na. `application/json` Další informace najdete v tématu [zpracování typů obsahu](../logic-apps/logic-apps-content-type.md).
+   Když zadáte schéma JSON, Návrhář zobrazí připomenutí, které zahrne `Content-Type` hlavičku do žádosti, a nastaví tuto hodnotu hlavičky na `application/json` . Další informace najdete v tématu [zpracování typů obsahu](../logic-apps/logic-apps-content-type.md).
 
    ![Připomenutí, které zahrnuje hlavičku "Content-Type"](./media/connectors-native-reqres/include-content-type.png)
 
@@ -160,7 +160,7 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
 1. Chcete-li zadat další vlastnosti, otevřete seznam **Přidat nový parametr** a vyberte parametry, které chcete přidat.
 
-   | Název vlastnosti | Název vlastnosti JSON | Požaduje se | Popis |
+   | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
    | **Metoda** | `method` | No | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
    | **Relativní cesta** | `relativePath` | No | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
@@ -178,7 +178,7 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
    Například můžete na žádost reagovat [přidáním akce odpovědi](#add-response), kterou můžete použít k vrácení vlastní odpovědi a je popsáno dále v tomto tématu.
 
-   Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom za jednu minutu. Za předpokladu, že pracovní postup aplikace logiky obsahuje akci odpovědi, pokud aplikace logiky nevrátí odpověď po uplynutí této doby, aplikace logiky `504 GATEWAY TIMEOUT` vrátí volajícímu. V opačném případě, pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě `202 ACCEPTED` vrátí odpověď volajícímu.
+   Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [omezeného času](../logic-apps/logic-apps-limits-and-config.md#request-limits). Za předpokladu, že pracovní postup aplikace logiky obsahuje akci odpovědi, pokud aplikace logiky nevrátí odpověď po uplynutí této doby, aplikace logiky vrátí `504 GATEWAY TIMEOUT` volajícímu. V opačném případě, pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě vrátí `202 ACCEPTED` odpověď volajícímu.
 
 1. Až budete hotovi, uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
@@ -208,13 +208,13 @@ Zde jsou další informace o výstupech z triggeru požadavku:
 
 Akci reakce můžete použít ke reakci na datovou část (data) na příchozí požadavek HTTPS, ale jenom v aplikaci logiky, která se aktivuje požadavkem HTTPS. Akci odpovědi můžete přidat kdykoli ve svém pracovním postupu. Další informace o základní definici JSON pro tuto aktivační událost najdete v tématu [typ akce odpovědi](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
-Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom za jednu minutu. Za předpokladu, že pracovní postup aplikace logiky obsahuje akci odpovědi, pokud aplikace logiky nevrátí odpověď po uplynutí této doby, aplikace logiky `504 GATEWAY TIMEOUT` vrátí volajícímu. V opačném případě, pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě `202 ACCEPTED` vrátí odpověď volajícímu.
+Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [omezeného času](../logic-apps/logic-apps-limits-and-config.md#request-limits). Za předpokladu, že pracovní postup aplikace logiky obsahuje akci odpovědi, pokud aplikace logiky nevrátí odpověď po uplynutí této doby, aplikace logiky vrátí `504 GATEWAY TIMEOUT` volajícímu. V opačném případě, pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě vrátí `202 ACCEPTED` odpověď volajícímu.
 
 > [!IMPORTANT]
 > Pokud akce odpovědi zahrnuje tyto hlavičky, Logic Apps tyto hlavičky z vygenerované zprávy odpovědi odebrat bez zobrazení upozornění nebo chyby:
 >
 > * `Allow`
-> * `Content-*`s těmito výjimkami `Content-Disposition`: `Content-Encoding`, a`Content-Type`
+> * `Content-*`s těmito výjimkami: `Content-Disposition` , `Content-Encoding` a`Content-Type`
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
@@ -229,7 +229,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom za jednu 
 
    ![Přidat nový krok](./media/connectors-native-reqres/add-response.png)
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. V části **zvolit akci**zadejte do vyhledávacího pole jako filtr "Response" a vyberte akci **odpovědi** .
 
@@ -241,7 +241,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom za jednu 
 
    V některých polích se kliknutím do příslušných polí otevře seznam dynamického obsahu. Pak můžete vybrat tokeny, které reprezentují dostupné výstupy z předchozích kroků v pracovním postupu. Vlastnosti ze schématu zadaného v předchozím příkladu se nyní zobrazí v seznamu dynamického obsahu.
 
-   Například pro pole **záhlaví** zadejte `Content-Type` jako název klíče a nastavte hodnotu klíče na `application/json` , jak je uvedeno dříve v tomto tématu. V poli **tělo** můžete vybrat výstup těla aktivační události ze seznamu dynamického obsahu.
+   Například pro pole **záhlaví** zadejte `Content-Type` jako název klíče a nastavte hodnotu klíče na, `application/json` jak je uvedeno dříve v tomto tématu. V poli **tělo** můžete vybrat výstup těla aktivační události ze seznamu dynamického obsahu.
 
    ![Podrobnosti o akci odpovědi](./media/connectors-native-reqres/response-details.png)
 
@@ -251,10 +251,10 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom za jednu 
 
    Zde jsou další informace o vlastnostech, které lze nastavit v akci reakce. 
 
-   | Název vlastnosti | Název vlastnosti JSON | Požaduje se | Popis |
+   | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
    | **Stavový kód** | `statusCode` | Ano | Stavový kód, který se má vrátit v odpovědi |
-   | **Záhlaví** | `headers` | No | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
+   | **Hlavičky** | `headers` | No | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
    | **Text** | `body` | No | Tělo odpovědi |
    |||||
 

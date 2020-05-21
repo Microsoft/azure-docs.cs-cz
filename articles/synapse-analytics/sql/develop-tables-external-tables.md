@@ -9,34 +9,36 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0405644af24eb277aa47db64348c9a217cf72239
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bf014c7188232f07a399cc3e438d1d894c96a233
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195969"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701436"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Použití externích tabulek s synapse SQL
 
 Externí tabulka odkazuje na data umístěná v Hadoop, Azure Storage BLOB nebo Azure Data Lake Storage. Externí tabulky se používají ke čtení dat ze souborů nebo zápisu dat do souborů v Azure Storage. Pomocí synapse SQL můžete použít externí tabulky ke čtení a zápisu dat do fondu SQL nebo na vyžádání SQL (Preview).
 
-## <a name="external-tables-in-synapse-sql"></a>Externí tabulky v synapse SQL
+## <a name="external-tables-in-synapse-sql-pool-and-on-demand"></a>Externí tabulky ve fondu SQL synapse a na vyžádání
 
-### <a name="sql-pool"></a>[Fond SQL](#tab/sql-pool)
+### <a name="sql-pool"></a>[Fond SQL](#tab/sql-pool) 
 
 Ve fondu SQL můžete použít externí tabulku k těmto akcím:
 
 - Dotazování Azure Blob Storage a Azure Data Lake Gen2 pomocí příkazů jazyka Transact-SQL.
 - Importuje a ukládá data z Azure Blob Storage a Azure Data Lake Storage do fondu SQL.
 
-Při použití ve spojení s příkazem [Create Table jako SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , výběr z externí tabulky importuje data do tabulky v rámci fondu SQL. V doplňku k [příkazu Kopírovat](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)jsou externí tabulky užitečné pro načítání dat. Kurz načítání najdete v tématu [použití základny k načtení dat z Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Při použití ve spojení s příkazem [Create Table jako SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , výběr z externí tabulky importuje data do tabulky v rámci fondu SQL. Kromě [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)jsou externí tabulky užitečné pro načítání dat. 
 
-### <a name="sql-on-demand"></a>[SQL na vyžádání](#tab/sql-ondemand)
+Kurz načítání najdete v tématu [použití základny k načtení dat z Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+
+### <a name="sql-on-demand"></a>[SQL na vyžádání](#tab/sql-on-demand)
 
 V případě SQL na vyžádání použijete externí tabulku k těmto akcím:
 
 - Dotazování na data ve službě Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazů jazyka Transact-SQL
-- Uložte výsledky dotazů na vyžádání SQL do souborů v Azure Blob Storage nebo Azure Data Lake Storage pomocí [CETAS](develop-tables-cetas.md).
+- Uložení výsledků dotazů na vyžádání SQL do souborů v Azure Blob Storage nebo Azure Data Lake Storage pomocí [CETAS](develop-tables-cetas.md)
 
 Externí tabulky můžete vytvořit pomocí SQL na vyžádání pomocí následujících kroků:
 
@@ -51,7 +53,7 @@ Externí tabulky můžete vytvořit pomocí SQL na vyžádání pomocí následu
 Uživatel musí mít `SELECT` oprávnění k externí tabulce pro čtení dat.
 Externí tabulka přistupuje k základní službě Azure Storage pomocí oboru pověření definovaného ve zdroji dat s použitím následujících pravidel:
 - Zdroj dat bez přihlašovacích údajů umožňuje externím tabulkám přistupovat k veřejně dostupným souborům v Azure Storage.
-- Zdroj dat může mít přihlašovací údaje, které umožňuje externím tabulkám přistupovat k souborům v Azure Storage pomocí tokenu SAS nebo spravované identity v pracovním prostoru – [tady najdete příklady](develop-storage-files-storage-access-control.md#examples).
+- Zdroj dat může mít přihlašovací údaje, které umožňuje externím tabulkám přistupovat k souborům v Azure Storage pomocí tokenu SAS nebo spravované identity v pracovním prostoru. Příklady najdete [v článku vývoj souborů úložiště pro přístup do úložiště](develop-storage-files-storage-access-control.md#examples) .
 
 > [!IMPORTANT]
 > V rámci fondu SQL umožňuje DataSource bez creadential uživateli Azure AD přístup k souborům úložiště pomocí své identity Azure AD. V SQL na vyžádání potřebujete vytvořit zdroj dat s přihlašovacími údaji pro databáze s rozsahem, který obsahuje `IDENTITY='User Identity'` vlastnost – [tady najdete příklady](develop-storage-files-storage-access-control.md#examples).
@@ -74,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="sql-on-demand"></a>[SQL na vyžádání](#tab/sql-ondemand)
+#### <a name="sql-on-demand"></a>[SQL na vyžádání](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -84,11 +86,14 @@ WITH
 )
 [;]
 ```
+
 ---
 
 ### <a name="arguments-for-create-external-data-source"></a>Argumenty pro vytvoření externího zdroje dat
 
-data_source_name – určuje uživatelsky definovaný název pro zdroj dat. Název musí být v rámci databáze jedinečný.
+data_source_name
+
+Určuje uživatelsky definovaný název pro zdroj dat. Název musí být v rámci databáze jedinečný.
 
 #### <a name="location"></a>Umístění
 LOCATION = `'<prefix>://<path>'` – poskytuje protokol připojení a cestu k externímu zdroji dat. Cesta může obsahovat kontejner ve formě `'<prefix>://<path>/container'` a složka ve formě `'<prefix>://<path>/container/folder'` .
@@ -100,7 +105,9 @@ LOCATION = `'<prefix>://<path>'` – poskytuje protokol připojení a cestu k ex
 | Azure Data Lake Store Gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
 
 #### <a name="credential"></a>Přihlašovací údaj
-CREDENTIAL = `<database scoped credential>` je volitelné přihlašovací údaje, které se použijí k ověření v Azure Storage. Externí zdroj dat bez přihlašovacích údajů má přístup ke veřejnému účtu úložiště. Externí zdroje dat bez přihlašovacích údajů ve fondu SQL můžou k přístupu k souborům v úložišti používat taky identitu Azure AD. Externí zdroj dat s přihlašovacími údaji, který je zadaný v přihlašovacích údajích pro přístup k souborům
+CREDENTIAL = `<database scoped credential>` je volitelné přihlašovací údaje, které se použijí k ověření v Azure Storage. Externí zdroj dat bez přihlašovacích údajů má přístup ke veřejnému účtu úložiště. 
+
+Externí zdroje dat bez přihlašovacích údajů ve fondu SQL můžou k přístupu k souborům v úložišti používat taky identitu Azure AD. Externí zdroj dat s přihlašovacími údaji, který je zadaný v přihlašovacích údajích pro přístup k souborům
 - V rámci fondu SQL může pověření v oboru databáze určovat identitu vlastní aplikace, spravovanou identitu pracovního prostoru nebo SAK klíč. 
 - V SQL na vyžádání můžou přihlašovací údaje vymezené databází určovat identitu Azure AD s rozsahem, spravovanou identitu nebo klíč SAS volajícího. 
 
@@ -123,7 +130,7 @@ WITH
   ) ;
 ```
 
-#### <a name="sql-on-demand"></a>[SQL na vyžádání](#tab/sql-ondemand)
+#### <a name="sql-on-demand"></a>[SQL na vyžádání](#tab/sql-on-demand)
 
 Následující příklad vytvoří externí zdroj dat pro Azure Data Lake Gen2, ke kterému lze přistupovat pomocí pověření SAS:
 
@@ -366,4 +373,4 @@ Externí tabulka je teď vytvořená, aby ji uživatel mohl příště dotazovat
 
 ## <a name="next-steps"></a>Další kroky
 
-V článku [CETAS](develop-tables-cetas.md) najdete informace o tom, jak uložit výsledky dotazu do externí tabulky v Azure Storage. Můžete také spustit dotazování na [tabulky Spark](develop-storage-files-spark-tables.md).
+V článku [CETAS](develop-tables-cetas.md) najdete informace o tom, jak uložit výsledky dotazu do externí tabulky v Azure Storage. Můžete také spustit dotazování [Apache Spark pro externí tabulky Azure synapse](develop-storage-files-spark-tables.md).

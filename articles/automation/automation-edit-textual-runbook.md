@@ -1,6 +1,6 @@
 ---
-title: Úpravy textových runbooků v Azure Automation
-description: Tento článek popisuje různé postupy pro práci s PowerShellem a runbooky pracovního postupu PowerShellu v Azure Automation pomocí textového editoru.
+title: Upravit textové Runbooky v Azure Automation
+description: Tento článek popisuje, jak použít textový editor Azure Automation pro práci s Runbooky PowerShellu a powershellovým prostředím pracovních postupů.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aef6a58d18c0d9c1b18915786dd6e3359c31eda0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 2b30b807764159378c594f82ae6cfc55cfa4f7e4
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855791"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712906"
 ---
-# <a name="editing-textual-runbooks-in-azure-automation"></a>Úpravy textových runbooků v Azure Automation
+# <a name="edit-textual-runbooks-in-azure-automation"></a>Upravit textové Runbooky v Azure Automation
 
-Textový editor v Azure Automation lze použít k úpravě runbooků [PowerShellu](automation-runbook-types.md#powershell-runbooks) a [runbooků powershellového pracovního postupu](automation-runbook-types.md#powershell-workflow-runbooks). Tento Editor obsahuje typické funkce jiných editorů kódu, jako je například IntelliSense. Obsahuje také barevné kódování s dalšími speciálními funkcemi, které vám pomůžou při přístupu k prostředkům, které jsou společné pro Runbooky. 
+Pomocí textového editoru v Azure Automation můžete upravit [powershellové Runbooky](automation-runbook-types.md#powershell-runbooks) a [Runbooky pracovních postupů PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks). Tento Editor obsahuje typické funkce jiných editorů kódu, jako je například IntelliSense. Také používá barevné kódování s dalšími speciálními funkcemi, které vám pomůžou při přístupu k prostředkům, které jsou společné pro Runbooky. 
 
 Textový Editor obsahuje funkci pro vložení kódu pro rutiny, prostředky a podřízené Runbooky do sady Runbook. Místo psaní v kódu si můžete vybrat ze seznamu dostupných prostředků a editor vloží příslušný kód do Runbooku.
 
@@ -26,12 +26,7 @@ Každá sada Runbook v Azure Automation má dvě verze, koncept a Publikováno. 
 
 Tento článek poskytuje podrobné pokyny pro provádění různých funkcí v tomto editoru. Neplatí to pro [grafické Runbooky](automation-runbook-types.md#graphical-runbooks). Pokud chcete s těmito sadami Runbook pracovat, přečtěte si téma [vytváření grafiky v Azure Automation](automation-graphical-authoring-intro.md).
 
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
-
-## <a name="editing-a-runbook-with-the-azure-portal"></a>Úprava Runbooku pomocí Azure Portal
-
-Pomocí následujícího postupu otevřete Runbook pro úpravy v textovém editoru.
+## <a name="edit-a-runbook-with-the-azure-portal"></a>Úprava Runbooku pomocí Azure Portal
 
 1. V Azure Portal vyberte svůj účet Automation.
 2. V části **Automatizace procesu**vyberte **Runbooky** a otevřete seznam runbooků.
@@ -65,7 +60,7 @@ Pomocí následujícího postupu otevřete Runbook pro úpravy v textovém edito
 4. Klikněte pravým tlačítkem na název assetu, který chcete vložit, a vyberte **Přidat na plátno**. V případě [variabilních prostředků](automation-variables.md)vyberte **Přidat "získat proměnnou" na plátno** nebo **Přidat "nastavit proměnnou" na plátno**v závislosti na tom, zda chcete získat nebo nastavit proměnnou.
 5. Všimněte si, že kód pro Asset je vložen do sady Runbook.
 
-## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>Úprava Azure Automation sady Runbook pomocí prostředí Windows PowerShell
+## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Úprava Azure Automation sady Runbook pomocí prostředí Windows PowerShell
 
 Chcete-li upravit sadu Runbook pomocí prostředí Windows PowerShell, použijte Editor dle vlastního výběru a uložte sadu Runbook do souboru **. ps1** . K načtení obsahu Runbooku můžete použít rutinu [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) . Pomocí rutiny [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) můžete stávající koncept sady Runbook nahradit upravenou sadou.
 

@@ -8,12 +8,12 @@ ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: b3c6926f17e8378fd3b53bfd59a7c5ea8141adb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 977b2fa40e2ce27a2711e5a44f5fb487433c9462
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097230"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714555"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při použití Azure Cosmos DB
 
@@ -36,8 +36,8 @@ Před čtením tohoto průvodce je užitečné vzít v úvahu běžné problémy
     > [!NOTE]
     > Pro lepší výkon doporučujeme zpracování bitového hostitelského systému Windows 64. Sada SQL SDK obsahuje nativní knihovnu ServiceInterop. dll pro místní analýzu a optimalizaci dotazů v místním prostředí. ServiceInterop. dll je podporován pouze na platformě Windows x64. Pro Linux a jiné nepodporované platformy, kde ServiceInterop. dll není k dispozici, se k získání optimalizovaného dotazu provede další síťové volání brány.
 - Sada SDK umožňuje nastavení `MaxItemCount` pro vaše dotazy, ale nemůžete zadat minimální počet položek.
-    - Kód by měl zpracovat libovolnou velikost stránky od nuly do `MaxItemCount`.
-    - Počet položek na stránce bude vždy menší nebo roven zadanému `MaxItemCount`. `MaxItemCount` Je však striktně maximálně a může to být méně výsledků než tato částka.
+    - Kód by měl zpracovat libovolnou velikost stránky od nuly do `MaxItemCount` .
+    - Počet položek na stránce bude vždy menší nebo roven zadanému `MaxItemCount` . Je však `MaxItemCount` striktně maximálně a může to být méně výsledků než tato částka.
 - Někdy dotazy mohou mít prázdné stránky i v případě, že na budoucí stránce dojde k výsledkům. Možné příčiny:
     - Sada SDK by mohla provedla více síťových volání.
     - Načtení dokumentů může trvat dlouhou dobu.
@@ -47,7 +47,7 @@ Před čtením tohoto průvodce je užitečné vzít v úvahu běžné problémy
 
 Když v Azure Cosmos DB optimalizujete dotaz, prvním krokem je vždycky [získat metriky dotazu](profile-sql-api-query.md) pro dotaz. Tyto metriky jsou také k dispozici prostřednictvím Azure Portal. Po spuštění dotazu v Průzkumník dat jsou metriky dotazů zobrazené vedle karty **výsledky** :
 
-[![Získávání metrik](./media/troubleshoot-query-performance/obtain-query-metrics.png) dotazů](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+[![Získávání metrik ](./media/troubleshoot-query-performance/obtain-query-metrics.png) dotazů](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
 
 Po získání metriky dotazu Porovnejte **počet načtených dokumentů** s **počtem výstupních dokumentů** pro váš dotaz. Pomocí tohoto porovnání Identifikujte relevantní oddíly, které je potřeba si projít v tomto článku.
 
@@ -135,12 +135,12 @@ Client Side Metrics
 
 ### <a name="include-necessary-paths-in-the-indexing-policy"></a>Zahrnutí potřebných cest do zásad indexování
 
-Vaše zásada indexování by měla zahrnovat jakékoli vlastnosti zahrnuté `WHERE` v `ORDER BY` klauzulích `JOIN`, klauzulích a většině systémových funkcí. Požadované cesty zadané v zásadách indexu by měly odpovídat vlastnostem v dokumentech JSON.
+Vaše zásada indexování by měla zahrnovat jakékoli vlastnosti zahrnuté v `WHERE` klauzulích, `ORDER BY` klauzulích `JOIN` a většině systémových funkcí. Požadované cesty zadané v zásadách indexu by měly odpovídat vlastnostem v dokumentech JSON.
 
 > [!NOTE]
 > Vlastnosti v zásadách indexování Azure Cosmos DB rozlišují velká a malá písmena.
 
-Pokud spustíte následující jednoduchý dotaz na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datové sadě, budete při indexování `WHERE` klauzule v klauzuli pozorovat mnohem nižší poplatky za ru:
+Pokud spustíte následující jednoduchý dotaz na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datové sadě, budete při indexování klauzule v klauzuli pozorovat mnohem nižší poplatky za ru `WHERE` :
 
 #### <a name="original"></a>Původně
 
@@ -200,7 +200,8 @@ Pokud lze výraz přeložit do rozsahu řetězcových hodnot, může použít in
 
 Zde je seznam některých běžných řetězcových funkcí, které mohou použít index:
 
-- STARTSWITH(str_expr, str_expr)
+- STARTSWITH (str_expr1, str_expr2, bool_expr)  
+- OBSAHUJE (str_expr, str_expr, bool_expr)
 - LEFT(str_expr, num_expr) = str_expr
 - Substring (str_expr, num_expr, num_expr) = str_expr, ale pouze v případě, že první num_expr je 0
 
@@ -208,8 +209,7 @@ Níže jsou uvedeny některé běžné systémové funkce, které nepoužívají
 
 | **Systémová funkce**                     | **Nápady pro optimalizaci**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| CONTAINS                                | Pro fulltextové vyhledávání použijte Azure Search.                        |
-| HORNÍ/DOLNÍ                             | Namísto použití systémové funkce k normalizování dat pro porovnání, Normalizujte při vložení velká a malá písmena. Dotaz, jako ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` se ```SELECT * FROM c WHERE c.name = 'BOB'```má. |
+| HORNÍ/DOLNÍ                             | Namísto použití systémové funkce k normalizování dat pro porovnání, Normalizujte při vložení velká a malá písmena. Dotaz, jako ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` se má ```SELECT * FROM c WHERE c.name = 'BOB'``` . |
 | Matematické funkce (neagregace) | Pokud v dotazu potřebujete často vypočítat hodnotu, zvažte uložení hodnoty jako vlastnosti v dokumentu JSON. |
 
 ------
@@ -220,7 +220,7 @@ Jiné části dotazu mohou i nadále používat index, i když systémové funkc
 
 Ve většině případů agregační funkce systému v Azure Cosmos DB použijí index. V závislosti na filtrech nebo dalších klauzulích v agregačních dotazech však může být dotazovací modul nutný k načtení vysokého počtu dokumentů. V dotazovacím modulu se obvykle nejprve použijí filtry rovnosti a rozsah. Po použití těchto filtrů může dotazovací modul vyhodnotit další filtry a použít k načtení zbývajících dokumentů pro výpočet agregace v případě potřeby.
 
-Například vzhledem k těmto dvěma ukázkovým dotazům bude dotaz s filtrem rovnosti `CONTAINS` a funkcí filtru systému obecně efektivnější než dotaz pouze s filtrem `CONTAINS` systémové funkce. Důvodem je, že je použit filtr rovnosti, který používá index před tím, než bude nutné načíst dokumenty pro dražší `CONTAINS` filtr.
+Například vzhledem k těmto dvěma ukázkovým dotazům bude dotaz s filtrem rovnosti a `CONTAINS` funkcí filtru systému obecně efektivnější než dotaz pouze s `CONTAINS` filtrem systémové funkce. Důvodem je, že je použit filtr rovnosti, který používá index před tím, než bude nutné načíst dokumenty pro dražší `CONTAINS` Filtr.
 
 Dotaz s pouze `CONTAINS` filtrem s vyššími náklady na ru:
 
@@ -260,7 +260,7 @@ WHERE udf.MyUDF("Sausages and Luncheon Meats")
 
 #### <a name="queries-with-group-by"></a>Dotazy pomocí GROUP BY
 
-Náklady na RU v dotazech `GROUP BY` , které se budou zvyšovat, se zvýší mohutnost vlastností `GROUP BY` v klauzuli. V níže uvedeném dotazu se například poplatek za RU v dotazu zvýší, protože se zvýší počet jedinečných popisů.
+Náklady na RU v dotazech, které se budou zvyšovat, se zvýší `GROUP BY` mohutnost vlastností v `GROUP BY` klauzuli. V níže uvedeném dotazu se například poplatek za RU v dotazu zvýší, protože se zvýší počet jedinečných popisů.
 
 Poplatek za částku v agregační funkci s `GROUP BY` klauzulí bude vyšší než poplatek za agregační funkci samotnou. V tomto příkladu musí dotazovací modul načítat každý dokument, který odpovídá `c.foodGroup = "Sausages and Luncheon Meats"` filtru, aby poplatek za ru byl vysoký.
 
@@ -275,7 +275,7 @@ Pokud máte v plánu často spouštět stejné agregované dotazy, může být e
 
 ### <a name="optimize-queries-that-have-both-a-filter-and-an-order-by-clause"></a>Optimalizujte dotazy, které mají klauzuli Filter i ORDER BY.
 
-I když dotazy, které obsahují `ORDER BY` klauzuli Filter a klauzule, budou normálně používat index rozsahu, budou efektivnější, pokud je lze zpracovat ze složeného indexu. Kromě změny zásad indexování byste měli do `ORDER BY` klauzule přidat všechny vlastnosti složeného indexu. Tato změna dotazu zajistí, že se použije složený index.  Můžete sledovat dopad spuštěním dotazu na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datovou sadu:
+I když dotazy, které obsahují klauzuli Filter a `ORDER BY` klauzule, budou normálně používat index rozsahu, budou efektivnější, pokud je lze zpracovat ze složeného indexu. Kromě změny zásad indexování byste měli do klauzule přidat všechny vlastnosti složeného indexu `ORDER BY` . Tato změna dotazu zajistí, že se použije složený index.  Můžete sledovat dopad spuštěním dotazu na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datovou sadu:
 
 #### <a name="original"></a>Původně
 
@@ -365,7 +365,7 @@ AND n.nutritionValue < 10) AND s.amount > 1
 
 **Poplatek za ru:** 167,62 ru
 
-Pro tento dotaz bude index odpovídat jakémukoli dokumentu, který má značku s názvem `infant formula`, `nutritionValue` větší než 0 a `amount` větší než 1. Tento `JOIN` výraz provede více produktů všech položek značek, živin a zachová pole pro každý shodný dokument před použitím jakéhokoli filtru. `WHERE` Klauzule pak použije predikát filtru u každé `<c, t, n, s>` řazené kolekce členů.
+Pro tento dotaz bude index odpovídat jakémukoli dokumentu, který má značku s názvem `infant formula` , `nutritionValue` větší než 0 a `amount` větší než 1. Tento `JOIN` výraz provede více produktů všech položek značek, živin a zachová pole pro každý shodný dokument před použitím jakéhokoli filtru. `WHERE`Klauzule pak použije predikát filtru u každé `<c, t, n, s>` řazené kolekce členů.
 
 Pokud má například odpovídající dokument 10 položek v každém ze tří polí, rozšíří se na 1 x 10 x 10 x 10 (tj. 1 000) řazené kolekce členů. Použití poddotazů tady může přispět k filtrování propojených položek pole před připojením k dalšímu výrazu.
 
@@ -381,11 +381,11 @@ JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 
 **Poplatek za ru:** 22,17 ru
 
-Předpokládejte, že pouze jedna položka v poli značek odpovídá filtru a že existuje pět položek pro živiny a pole. `JOIN` Výrazy se rozšíří na 1 x 1 x 5 × 5 = 25 položek, a to na rozdíl od 1 000 položek v prvním dotazu.
+Předpokládejte, že pouze jedna položka v poli značek odpovídá filtru a že existuje pět položek pro živiny a pole. `JOIN`Výrazy se rozšíří na 1 x 1 x 5 × 5 = 25 položek, a to na rozdíl od 1 000 položek v prvním dotazu.
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Dotazy, kde se načtený počet dokumentů rovná počtu výstupních dokumentů
 
-Pokud je **počet načtených dokumentů** přibližně roven **výstupnímu počtu dokumentů**, stroj dotazů nemusel kontrolovat mnoho zbytečných dokumentů. U mnoha dotazů, například u těch, které `TOP` používají klíčové slovo, může **počet načtených dokumentů** překročit **Počet výstupních dokumentů** o 1. Nemusíte se k tomu zabývat.
+Pokud je **počet načtených dokumentů** přibližně roven **výstupnímu počtu dokumentů**, stroj dotazů nemusel kontrolovat mnoho zbytečných dokumentů. U mnoha dotazů, například u těch, které používají `TOP` klíčové slovo, může **počet načtených dokumentů** překročit **Počet výstupních dokumentů** o 1. Nemusíte se k tomu zabývat.
 
 ### <a name="minimize-cross-partition-queries"></a>Minimalizace dotazů mezi oddíly
 
@@ -401,7 +401,7 @@ FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-Dotazy, které mají `IN` filtr s klíčem oddílu, kontrolují pouze relevantní fyzické oddíly a nebudou "ventilátor-out":
+Dotazy, které mají `IN` Filtr s klíčem oddílu, kontrolují pouze relevantní fyzické oddíly a nebudou "ventilátor-out":
 
 ```sql
 SELECT *

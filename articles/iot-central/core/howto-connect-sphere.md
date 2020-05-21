@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: sandeepu
 author: sandeeppujar
 ms.date: 04/30/2020
-ms.openlocfilehash: cd583b79d6c73ff8da1c9770bf72b3e6990c3140
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597202"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715052"
 ---
 # <a name="connect-an-azure-sphere-device-to-your-azure-iot-central-application"></a>Připojení zařízení Azure Sphere k aplikaci Azure IoT Central
 
@@ -20,7 +20,7 @@ ms.locfileid: "83597202"
 
 V tomto článku se dozvíte, jak připojit zařízení Azure Sphere (DevKit) k aplikaci Azure IoT Central.
 
-Azure Sphere je zabezpečená špičková aplikační platforma s integrovanými komunikačními funkcemi a funkcemi zabezpečení pro zařízení připojená k Internetu. Zahrnuje zabezpečenou, připojenou a křížený mikrokontrolerů jednotku (MCU), vlastní operační systém Linux na bázi Linux a cloudovou službu zabezpečení, která poskytuje nepřetržité a obnovitelné zabezpečení. Další informace najdete v tématu[co je Azure sphere?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere).
+Azure Sphere je zabezpečená špičková aplikační platforma s integrovanými komunikačními funkcemi a funkcemi zabezpečení pro zařízení připojená k Internetu. Zahrnuje zabezpečenou, připojenou a křížený mikrokontrolerů jednotku (MCU), vlastní operační systém Linux na bázi Linux a cloudovou službu zabezpečení, která poskytuje nepřetržité a obnovitelné zabezpečení. Další informace najdete v tématu [co je Azure sphere?](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere).
 
 [Azure sphere Development Kit](https://azure.microsoft.com/services/azure-sphere/get-started/) poskytují vše, co potřebujete ke spuštění vytváření prototypů a vývoji Azure sphere aplikací. Azure IoT Central s Azure Sphere umožňuje kompletní zásobník pro řešení IoT. Azure Sphere poskytuje podporu zařízení a IoT Central jako s nulovým kódem a spravovanou aplikační platformou IoT.
 

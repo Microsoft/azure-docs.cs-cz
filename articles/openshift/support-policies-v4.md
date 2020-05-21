@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 7bdcccee3270f9d2b611682a9a59505158a494d2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 593cca5fbf0aa6e4c162e541560763c50cbc067e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82205206"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711410"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Zásady podpory Azure Red Hat OpenShift
 
@@ -22,13 +22,13 @@ Některé konfigurace pro clustery Azure Red Hat OpenShift 4 můžou ovlivnit mo
 
 ## <a name="cluster-configuration-requirements"></a>Požadavky na konfiguraci clusteru
 
-* Všechny obsluhy clusteru OpenShift musí zůstat ve spravovaném stavu. Seznam operátorů clusteru lze vrátit spuštěním `oc get clusteroperators`.
+* Všechny obsluhy clusteru OpenShift musí zůstat ve spravovaném stavu. Seznam operátorů clusteru lze vrátit spuštěním `oc get clusteroperators` .
 * Neodstraňujte ani neměňte cluster Prometheus a služby Alertmanager.
 * Neodstraňujte pravidla Alertmanager služby.
 * Neupravujte verzi clusteru OpenShift.
 * Neodstraňujte ani neměňte protokolování služby Azure Red Hat OpenShift (MDSD lusky).
 * Neodstraňujte ani neupravujte tajný klíč pro vyžádání obsahu clusteru arosvc.azurecr.io.
-* Všechny virtuální počítače s clustery musí mít odchozí přístup k Internetu, přinejmenším k koncovým bodům Azure Resource Manager (ARM) a Service Logging (Ženeva).
+* Všechny virtuální počítače s clustery musí mít přímý odchozí přístup k Internetu, přinejmenším k koncovým bodům Azure Resource Manager (ARM) a Service Logging (Ženeva).  Není podporována žádná forma proxy serveru HTTPS.
 * Služba Azure Red Hat OpenShift přistupuje ke clusteru prostřednictvím služby privátního propojení.  Neodstraňujte ani neměňte přístup k službě.
 * Výpočetní uzly, které nejsou RHCOS, se nepodporují. Například nemůžete použít výpočetní uzel RHEL.
 

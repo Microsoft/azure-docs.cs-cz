@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2d5d508afe81975cbeda448b497a098e8a3bbcf3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 83410d5945a7fe462afa86a9d217ee7e005550f4
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589274"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696918"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Řízení přístupu účtu úložiště pro SQL na vyžádání (Preview)
 
@@ -99,7 +99,7 @@ Před přístupem k datům musí správce Azure Storage udělit oprávnění ke 
 
 ### <a name="anonymous-access"></a>[Anonymní přístup](#tab/public-access)
 
-Můžete přistupovat k veřejně dostupným souborům umístěným na účtech Azure Storage, které [povolují anonymní přístup](/azure/storage/blobs/storage-manage-access-to-resources.md).
+Můžete přistupovat k veřejně dostupným souborům umístěným na účtech Azure Storage, které [povolují anonymní přístup](/azure/storage/blobs/storage-manage-access-to-resources).
 
 ---
 

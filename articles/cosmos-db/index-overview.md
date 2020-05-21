@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 921a11d8846c868436365fe400852eac0f7dcd3e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273235"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712090"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – Přehled
 
@@ -90,7 +90,7 @@ Index **rozsahu** je založen na seřazené struktuře podobné stromové strukt
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  (funguje pro `>`, `<`, `>=`, `<=`, `!=`)
+  (funguje pro `>` , `<` , `>=` , `<=` , `!=` )
 
 - Kontrola přítomnosti vlastnosti:
 
@@ -98,7 +98,11 @@ Index **rozsahu** je založen na seřazené struktuře podobné stromové strukt
    SELECT * FROM c WHERE IS_DEFINED(c.property)
    ```
 
-- Shoda předpony řetězce (obsahuje klíčové slovo nebude využívat index rozsahu):
+- Řetězcové funkce systému:
+
+   ```sql
+   SELECT * FROM c WHERE CONTAINS(c.property, "value")
+   ```
 
    ```sql
    SELECT * FROM c WHERE STARTSWITH(c.property, "value")
@@ -152,7 +156,7 @@ Prostorové indexy lze použít na správně formátovaných objektech typu [inj
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Dotazy s filtrem a `ORDER BY`. Tyto dotazy mohou využít složený index, pokud je do `ORDER BY` klauzule přidána vlastnost Filter.
+- Dotazy s filtrem a `ORDER BY` . Tyto dotazy mohou využít složený index, pokud je do klauzule přidána vlastnost Filter `ORDER BY` .
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
@@ -175,12 +179,12 @@ Pokud jeden predikát filtru používá jeden z druhů indexů, nástroj pro dot
 
 Cesty extrahované při indexování dat usnadňují vyhledání indexu při zpracování dotazu. Porovnáním `WHERE` klauzule dotazu se seznamem indexovaných cest je možné identifikovat položky, které odpovídají predikátu dotazu velmi rychle.
 
-Zvažte například následující dotaz: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Predikát dotazu (filtrování položek, kde jakékoli umístění má "France" jako země), by odpovídala cestě zvýrazněné červeně:
+Zvažte například následující dotaz: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Predikát dotazu (filtrování položek, kde jakékoli umístění má "France" jako země), by odpovídala cestě zvýrazněné červeně:
 
 ![Odpovídá konkrétní cestě v rámci stromu.](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Klauzule, která má ORDER by jedna vlastnost, vždy potřebuje index rozsahu a nezdaří se, pokud cesta, na kterou odkazuje, nemá jednu. *always* `ORDER BY` Podobně `ORDER BY` dotaz, který ORDER by má více vlastností, *vždy* potřebuje složený index.
+> `ORDER BY`Klauzule, která má ORDER by jedna vlastnost, *vždy* potřebuje index rozsahu a nezdaří se, pokud cesta, na kterou odkazuje, nemá jednu. Podobně dotaz, `ORDER BY` který ORDER by má více vlastností, *vždy* potřebuje složený index.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 7afbfcc7830374c07850d1f634eb5e29fb459597
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9f10825d8f22a7ddd9858e86dc2083ae47da9a69
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654914"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712753"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance služby Azure Machine Learning?
 
@@ -114,7 +114,7 @@ Můžete provést následující akce:
 
 * Vytvořit výpočetní instanci Zadejte název, typ virtuálního počítače Azure, včetně GPU (po vytvoření se nedá změnit typ virtuálního počítače), povolit nebo zakázat přístup přes SSH a nakonfigurovat nastavení virtuální sítě volitelně. Můžete také vytvořit instanci přímo z integrovaných poznámkových bloků, Azure Portal, Správce prostředků šablony nebo Azure Machine Learning SDK. Kvóta vyhrazených jader na oblast, která se vztahuje k vytváření výpočetních instancí, je jednotná a sdílená s Azure Machine Learning kvótou výpočetního clusteru.
 * Aktualizovat kartu výpočetních instancí
-* Spuštění, zastavení a restartování výpočetní instance
+* Spusťte, zastavte a restartujte výpočetní instanci. Pokud nepoužíváte, můžete virtuální počítač zastavit, abyste snížili náklady. Pak ho znovu spusťte, až ho budete potřebovat.
 * Odstranění instance COMPUTE
 
 Pro každou výpočetní instanci v pracovním prostoru můžete:

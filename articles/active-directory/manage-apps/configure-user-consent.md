@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 2064ac929063fcdcf15c1e7495769c7d84aeef33
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 0a508e52189938447ea6fc1928d441d81deab392
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698017"
+ms.locfileid: "83713989"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu souhlasu koncových uživatelů s aplikacemi
 
@@ -49,7 +49,7 @@ Konfigurace nastavení souhlasu uživatele prostřednictvím Azure Portal:
 1. V části **souhlas uživatele u aplikací**vyberte, které nastavení souhlasu se má nakonfigurovat pro všechny uživatele.
 1. Vyberte **Uložit** a uložte nastavení.
 
-![Nastavení souhlasu uživatele](./media/configure-user-consent/configure-consent-setting-for-all-users.png)
+![Nastavení souhlasu uživatele](./media/configure-user-consent/setting-for-all-users.png)
 
 > [!TIP]
 > Zvažte možnost povolit [pracovní postup souhlasu](configure-admin-consent-workflow.md) správce, aby uživatelé mohli požádat o revizi správce a schválení aplikace, které uživatel nemá oprávněně vyjádřit souhlas – například když je souhlas uživatele zakázán nebo když aplikace požaduje oprávnění, která uživatel nemá povoleno udělit.
@@ -102,7 +102,7 @@ Klasifikace oprávnění umožňují určit dopad, který mají různá oprávn�
 
 V tomto příkladu jsme klasifikováni s minimální sadou oprávnění vyžadovaných pro jednotné přihlašování:
 
-![Klasifikace oprávnění](./media/configure-user-consent/configure-permission-classifications.png)
+![Klasifikace oprávnění](./media/configure-user-consent/permission-classifications.png)
 
 > [!TIP]
 > Pro rozhraní Microsoft Graph API jsou minimální oprávnění potřebná k tomu, aby základní jednotné přihlašování `openid` , `profile` `User.Read` a `offline_access` . Pomocí těchto oprávnění může aplikace číst podrobnosti profilu přihlášeného uživatele a může tento přístup zachovat, i když uživatel už tuto aplikaci nepoužívá.
@@ -192,7 +192,7 @@ Můžete nakonfigurovat, kteří uživatelé můžou udělit souhlas aplikacím,
 
 V tomto příkladu můžou všichni vlastníci skupiny udělit souhlas s aplikacemi, které přistupují k datům jejich skupin:
 
-![Klasifikace oprávnění](./media/configure-user-consent/configure-group-owner-consent.png)
+![Klasifikace oprávnění](./media/configure-user-consent/group-owner-consent.png)
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>Konfigurace souhlasu vlastníka skupiny pomocí PowerShellu
 

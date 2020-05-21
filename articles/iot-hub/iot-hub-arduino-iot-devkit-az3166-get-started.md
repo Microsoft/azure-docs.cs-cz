@@ -9,12 +9,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
 ms.custom: mqtt
-ms.openlocfilehash: 1c6af4f44cd16405d1ef12ae909085220b0d072d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63fa7481b96f8a606893b76b66f8c414a54cdb82
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733585"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714810"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Připojení IoT DevKit AZ3166 k Azure IoT Hub
 
@@ -83,7 +83,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     ```
 
    > [!NOTE]
-   > Pokud se zobrazí chyba při spuštění `device-identity`, nainstalujte [rozšíření Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md).
+   > Pokud se zobrazí chyba při spuštění `device-identity` , nainstalujte [rozšíření Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md).
    > Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá příkazy, které jsou specifické pro IoT Hub, IoT Edge a službu IoT Device Provisioning (DPS) do Azure CLI.
    > 
    > ```azurecli-interactive
@@ -297,7 +297,7 @@ Místo zřízení IoT Hub a zařízení Azure z Azure Portal to můžete udělat
 
     ![Výběr panelu a modelu COM](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
 
-1. Kliknutím `F1` otevřete paletu příkazů, potom zadejte a vyberte **Azure IoT Device Workbench: konfigurovat nastavení zařízení...**, pak vyberte **config device Connection String > vyberte IoT Hub připojovací řetězec zařízení**.
+1. Kliknutím `F1` otevřete paletu příkazů, potom zadejte a vyberte **Azure IoT Device Workbench: konfigurovat nastavení zařízení...**, pak vyberte **Config Device connection string > vyberte IoT Hub připojovací řetězec zařízení**.
 
 1. V DevKit stiskněte **tlačítko**a, nahrajte a uvolněte tlačítko **obnovit** a pak uvolněte **tlačítko**a. Vaše DevKit vstoupí do režimu konfigurace a uloží připojovací řetězec.
 
@@ -350,11 +350,11 @@ Pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemNa
 
     ![Připojovací řetězec služby Azure IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-portal-conn-string.png)
 
-1. V VS Code klikněte na `F1`, zadejte a vyberte **Azure IoT Hub: nastavte IoT Hub připojovací řetězec**. Zkopírujte do něj připojovací řetězec.
+1. V VS Code klikněte na `F1` , zadejte a vyberte **Azure IoT Hub: nastavte IoT Hub připojovací řetězec**. Zkopírujte do něj připojovací řetězec.
 
     ![Nastavit připojovací řetězec služby Azure IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
-1. Rozbalte podokno **zařízení Azure IoT Hub** na pravé straně, klikněte pravým tlačítkem na název zařízení, které jste vytvořili, a vyberte **Spustit sledování integrovaný koncový bod události**.
+1. V levém podokně rozbalte podokno **zařízení Azure IoT Hub** , klikněte pravým tlačítkem na název zařízení, které jste vytvořili, a vyberte **Spustit sledování integrovaný koncový bod události**.
 
     ![Monitorovat zprávu D2C](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
 
@@ -364,13 +364,13 @@ Pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemNa
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-`GetStarted.ino` Je hlavní soubor náčrtu Arduino.
+`GetStarted.ino`Je hlavní soubor náčrtu Arduino.
 
 ![Zpráva D2C](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/code.png)
 
-Pokud chcete zjistit, jak se telemetrie zařízení odešlou do IoT Hub Azure, `utility.cpp` otevřete soubor ve stejné složce. Podívejte se na [odkaz rozhraní API](https://microsoft.github.io/azure-iot-developer-kit/docs/apis/arduino-language-reference/) , kde se dozvíte, jak používat senzory a periferní zařízení v IoT DevKit.
+Pokud chcete zjistit, jak se telemetrie zařízení odešlou do IoT Hub Azure, otevřete `utility.cpp` soubor ve stejné složce. Podívejte se na [odkaz rozhraní API](https://microsoft.github.io/azure-iot-developer-kit/docs/apis/arduino-language-reference/) , kde se dozvíte, jak používat senzory a periferní zařízení v IoT DevKit.
 
-`DevKitMQTTClient` Použitý je obálka **Iothub_client** ze [Microsoft Azure sad SDK a knihoven IoT pro C pro](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) interakci s Azure IoT Hub.
+`DevKitMQTTClient`Použitý je obálka **iothub_client** ze [Microsoft Azure sad SDK a knihoven IoT pro C pro](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) interakci s Azure IoT Hub.
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 

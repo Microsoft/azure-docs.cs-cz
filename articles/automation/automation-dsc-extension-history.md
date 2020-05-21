@@ -1,33 +1,33 @@
 ---
-description: Přečtěte si o historii verzí pro rozšíření konfigurace požadovaného stavu (DSC) v Azure.
+title: Práce s historií verze rozšíření pro konfiguraci požadovaného stavu Azure
+description: Tento článek obsahuje informace o tom, jak pracovat s historií verzí pro rozšíření konfigurace požadovaného stavu (DSC) v Azure.
 ms.date: 06/21/2018
 keywords: DSC, PowerShell, Azure, rozšíření
-title: Historie verzí rozšíření Azure DSC
 author: mgoedtel
 ms.author: magoedte
 services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 207b8f7467753a8693bbabe6dd3f7a890307cf21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4578e3bff7951293c5ec2f1992e597face84b716
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82120701"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713195"
 ---
-# <a name="azure-desired-state-configuration-extension-version-history"></a>Historie verzí rozšíření konfigurace požadovaného stavu Azure
+# <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Práce s historií verze rozšíření pro konfiguraci požadovaného stavu Azure
 
 Rozšíření virtuálního počítače pro konfiguraci požadovaného stavu Azure (DSC) se aktualizuje tak, aby podporovalo vylepšení a nové funkce dodávané pomocí Azure, Windows serveru a Windows Management Frameworku (WMF), která zahrnuje Windows PowerShell.
 
-Tento článek obsahuje informace o jednotlivých verzích rozšíření virtuálních počítačů Azure DSC, jaká prostředí podporuje, a komentáře a poznámky k novým funkcím nebo změnám.
+Tento článek obsahuje informace o jednotlivých verzích rozšíření virtuálních počítačů Azure DSC, která prostředí podporuje, a komentáře a poznámky k novým funkcím nebo změnám.
 
 ## <a name="latest-version"></a>Nejnovější verze
 
 ### <a name="version-276"></a>Verze 2,76
 
 - **Datum vydání:**
-  - 9. května 2018 (Azure) | 21. června 2018 (Azure Čína, Azure Government)
+  - 9. května 2018 (Azure) | 21. června 2018 (Azure Čína Vianet 21, Azure Government)
 - **Podpora operačního systému:**
   - Windows Server 2016
   - Windows Server 2012 R2
@@ -42,7 +42,7 @@ Tento článek obsahuje informace o jednotlivých verzích rozšíření virtuá
   - WMF 4.0
 - **Hlediska**
   - Azure
-  - Azure (Čína)
+  - Azure Čína Vianet 21
   - Azure Government
 - **Poznámky:** Tato verze používá DSC jako součást Windows serveru 2016; pro ostatní systémy Windows operačních systémech nainstaluje rozhraní [Windows Management Framework 5,1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/) (instalace WMF vyžaduje restart). Pro nano Server je na virtuálním počítači nainstalovaná role DSC.
 - **Nové funkce:**
@@ -181,10 +181,10 @@ Tento článek obsahuje informace o jednotlivých verzích rozšíření virtuá
 - **Datum vydání:** 3. června 2016
 - **Podpora operačního systému:** Windows Server 2016 Technical Preview, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 SP1
 - **Podpora WMF:** WMF 5,0 RTM, WMF 4,0 Update, WMF 4,0
-- **Prostředí:** Azure, Azure Čína, Azure Government
+- **Prostředí:** Azure, Azure Čína Vianet 21, Azure Government
 - **Poznámky:** Tato verze používá DSC jako součást Windows serveru 2016 Technical Preview. pro ostatní systémy Windows operačních systémech nainstaluje rozhraní [Windows Management Framework 5,0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/) (instalace WMF vyžaduje restart).
 - **Nové funkce:**
-  - Rozšíření DSC se teď připojuje do Azure Čína. Tato verze primárně obsahuje opravy pro spuštění rozšíření v Azure Čína.
+  - Rozšíření DSC se teď připojuje do Azure Čína Vianet 21. Tato verze primárně obsahuje opravy pro spuštění rozšíření v Azure Čína Vianet 21.
 
 ### <a name="version-218"></a>Verze 2,18
 
@@ -249,7 +249,7 @@ Tento článek obsahuje informace o jednotlivých verzích rozšíření virtuá
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o prostředí PowerShell DSC najdete v [centru dokumentace PowerShellu](/powershell/scripting/dsc/overview/overview).
+- Další informace o prostředí PowerShell DSC najdete v tématu [PowerShell Documentation Center](/powershell/scripting/dsc/overview/overview).
 - Projděte si [šablonu správce prostředků pro rozšíření DSC](/azure/virtual-machines/extensions/dsc-template).
 - Další funkce, které můžete spravovat pomocí prostředí PowerShell DSC a další prostředky DSC, najdete v [galerii prostředí PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
 - Podrobnosti o předávání citlivých parametrů do konfigurací najdete v tématu [Zabezpečená Správa přihlašovacích údajů s obslužným rutinou rozšíření DSC](/azure/virtual-machines/extensions/dsc-credentials).

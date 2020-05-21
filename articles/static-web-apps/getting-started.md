@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 14fd237b6437c15ede2da7c0694004f6c22736cc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83600001"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714232"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Rychlý Start: Vytvoření první statické webové aplikace
 
@@ -29,7 +29,7 @@ Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](ht
 
 V tomto článku se používají úložiště šablon GitHubu, která usnadňují vytvoření nového úložiště. Šablony nastavují aplikace úvodní s různými rozhraními front-endu.
 
-# <a name="angular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Úhlová](#tab/angular)
 
 - Pokud chcete vytvořit nové úložiště, přejděte do následujícího umístění.
   - https://github.com/staticwebdev/angular-basic/generate
@@ -81,7 +81,7 @@ Začněte tím, že nakonfigurujete novou aplikaci a propojíte ji s úložišt�
 - Výběr vašeho _předplatného Azure_
 - Vyberte nebo vytvořte novou _skupinu prostředků_ .
 - Pojmenujte aplikaci **My-First-static-Web-App**.
-  - Platné znaky jsou `a-z` (bez rozlišení velkých a malých písmen), `0-9` a `_` .
+  - Platné znaky jsou `a-z` (bez rozlišení velkých a malých písmen), `0-9` a `-` .
 - Vyberte _oblast_ , která je pro vás nejblíže
 - Výběr **bezplatné** _SKU_
 - Klikněte na tlačítko **Přihlásit se pomocí GitHubu** a proveďte ověření pomocí GitHubu.
@@ -101,7 +101,7 @@ Až se přihlásíte pomocí GitHubu, zadejte informace o úložišti.
 
 Dále přidejte podrobnosti o konfiguraci, které jsou specifické pro preferovanou front-end architekturu.
 
-# <a name="angular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Úhlová](#tab/angular)
 
 - Zadejte **/** do pole _umístění aplikace_ .
 - Vymazat výchozí hodnotu z pole _umístění rozhraní API_
@@ -130,6 +130,8 @@ Dále přidejte podrobnosti o konfiguraci, které jsou specifické pro preferova
 Klikněte na tlačítko **Zkontrolovat a vytvořit**.
 
 :::image type="content" source="media/getting-started/review-create.png" alt-text="Tlačítko pro vytvoření Revize":::
+
+Chcete-li po vytvoření aplikace tyto hodnoty změnit, můžete upravit [soubor pracovního postupu](github-actions-workflow.md).
 
 ### <a name="review--create"></a>Zkontrolovat a vytvořit
 

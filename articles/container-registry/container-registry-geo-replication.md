@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: ea5e3dffaafb691a667bad3ef0014389e1604e27
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: bea71695c66c77a8e9fff3cb708113a04f24ed96
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682782"
+ms.locfileid: "83711563"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace v Azure Container Registry
 
@@ -95,7 +95,7 @@ ACR zahájí synchronizaci imagí napříč nakonfigurovanými replikami. Po dok
 * Když nahrajete nebo vyžádáte image z geograficky replikovaného registru, Azure Traffic Manager na pozadí pošle požadavek do registru v oblasti, která je nejblíže vaší latenci v síti.
 * Po nahrání obrázku nebo aktualizace značky do nejbližší oblasti trvá Azure Container Registry pro replikaci manifestů a vrstev do zbývajících oblastí, do kterých jste se přihlásili. Větším imagí trvá replikace déle než menší. Image a značky jsou synchronizované v rámci replikačních oblastí s konečným modelem konzistence.
 * Chcete-li spravovat pracovní postupy, které jsou závislé na nabízených aktualizacích do geograficky replikovaného registru, doporučujeme nakonfigurovat [Webhooky](container-registry-webhook.md) , aby reagovaly na nabízené události. Můžete nastavit regionální Webhooky v rámci geograficky replikovaného registru a sledovat tak nabízené události, které se dokončí napříč geograficky replikovanými oblastmi.
-* Pro poskytování objektů blob, které představují vrstvy obsahu, je pro Azure Container-registrování použito koncové body dat. V každé z geograficky replikovaných oblastí v registru můžete povolit [vyhrazené koncové body dat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints-preview) pro váš registr. Tyto koncové body umožňují konfiguraci přísně vymezených pravidel přístupu brány firewall.
+* Pro poskytování objektů blob, které představují vrstvy obsahu, je pro Azure Container-registrování použito koncové body dat. V každé z geograficky replikovaných oblastí v registru můžete povolit [vyhrazené koncové body dat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) pro váš registr. Tyto koncové body umožňují konfiguraci přísně vymezených pravidel přístupu brány firewall.
 * Pokud nakonfigurujete [privátní odkaz](container-registry-private-link.md) pro váš registr pomocí privátních koncových bodů ve virtuální síti, budou ve výchozím nastavení povoleny vyhrazené koncové body dat v každé z geograficky replikovaných oblastí. 
 
 ## <a name="delete-a-replica"></a>Odstranění repliky

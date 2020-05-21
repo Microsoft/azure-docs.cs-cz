@@ -1,17 +1,17 @@
 ---
 title: Rychlý start Azure – Vytvoření runbooku Azure Automation | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit runbook Azure Automation.
+description: Tento článek vám pomůže začít vytvářet Azure Automation sadu Runbook.
 services: automation
 ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 250f51c9f028dd55d8327259e35b82b0c392c1f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a784ddbc2ab1298bec3e2dc21469785163d7a228
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536994"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711988"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Vytvoření runbooku Azure Automation
 
@@ -21,7 +21,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k https://portal.azure.comAzure na adrese.
+Přihlaste se k Azure na adrese https://portal.azure.com .
 
 ## <a name="create-the-runbook"></a>Vytvoření Runbooku
 
@@ -33,7 +33,7 @@ Nejprve vytvořte runbook. Ukázkový runbook vytvářený v tomto rychlém star
 
 1. V horní části seznamu klikněte na **vytvořit Runbook** .
 
-1. Do `Hello-World` pole **název** zadejte název Runbooku a v poli **typ Runbooku** vyberte **PowerShell** . 
+1. `Hello-World`Do pole **název** zadejte název Runbooku a v poli **typ Runbooku** vyberte **PowerShell** . 
 
    ![Zadání informací o runbooku Automation na stránce](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
@@ -41,7 +41,7 @@ Nejprve vytvořte runbook. Ukázkový runbook vytvářený v tomto rychlém star
 
     ![Vytvoření skriptu PowerShellu v editoru runbooků](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
-1. Zadejte nebo zkopírujte a vložte následující kód do podokna úprav. Vytvoří volitelný vstupní parametr s názvem `Name` s výchozí hodnotou `World`a vypíše řetězec, který používá tuto vstupní hodnotu:
+1. Zadejte nebo zkopírujte a vložte následující kód do podokna úprav. Vytvoří volitelný vstupní parametr `Name` s názvem s výchozí hodnotou `World` a vypíše řetězec, který používá tuto vstupní hodnotu:
 
    ```powershell-interactive
    param
@@ -85,7 +85,7 @@ Po publikování runbooku se zobrazí stránka s přehledem.
 
    ![Testovací úloha Runbooku](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
-1. Když je `Running` stav úlohy nebo `Completed`, kliknutím na **výstup** otevřete podokno výstup a zobrazí se výstup Runbooku.
+1. Když je stav úlohy `Running` nebo `Completed` , kliknutím na **výstup** otevřete podokno výstup a zobrazí se výstup Runbooku.
 
    ![Testovací úloha Runbooku](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 

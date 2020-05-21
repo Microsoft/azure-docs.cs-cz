@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: ee9348c835a30c34a45bec78cc0d6b3ee298bf08
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 39c1c534a930dae2967d982f7c175fadb3222e83
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201406"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700907"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>Připojení a použití datových disků se škálovací sadou virtuálních počítačů pomocí PowerShellu
 Tento skript vytvoří škálovací sadu virtuálních počítačů a připojí a připraví datové disky.
@@ -47,5 +47,3 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
-
-Další ukázkové skripty PowerShellu pro škálovací sady virtuálních počítačů najdete v [dokumentaci ke škálovacím sadám virtuálních počítačů Azure](../powershell-samples.md).

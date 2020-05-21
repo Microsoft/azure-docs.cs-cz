@@ -3,12 +3,12 @@ title: 'Rychlý Start: Vytvoření aplikace – LUIS'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci LUIS, která používá předem vytvořenou doménu `HomeAutomation` pro zapnutí a vypnutí světla a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
 ms.topic: quickstart
 ms.date: 05/05/2020
-ms.openlocfilehash: 186a60a7fd8315d68718ceedd3b5cadb4d3645e8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cefa9d5995f876ef3f07cc32324e747125e9cbf7
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589120"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701272"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
 
@@ -42,7 +42,8 @@ Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace)
 1. Vyhledejte **HomeAutomation**.
 1. Na kartě HomeAutomation vyberte **Přidat doménu** .
 
-    ![Vyberte předem sestavené domény a vyhledejte "HomeAutomation". Na kartě HomeAutomation vyberte Přidat doménu.](media/luis-quickstart-new-app/home-automation.png)
+    > [!div class="mx-imgBorder"]
+    > ![Vyberte předem sestavené domény a vyhledejte "HomeAutomation". Na kartě HomeAutomation vyberte Přidat doménu.](media/luis-quickstart-new-app/home-automation.png)
 
     Po úspěšném přidání domény pak pole předem připravené domény zobrazuje tlačítko **Remove domain** (Odebrat doménu).
 
@@ -50,7 +51,8 @@ Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace)
 
 1. Pokud chcete zkontrolovat záměry domény HomeAutomation, vyberte **záměry** . Předem sestavené záměry domény mají například projevy.
 
-    ![Snímek obrazovky seznamu HomeAutomation záměrů](media/luis-quickstart-new-app/home-automation-intents.png "Snímek obrazovky seznamu HomeAutomation záměrů")
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky seznamu HomeAutomation záměrů](media/luis-quickstart-new-app/home-automation-intents.png "Snímek obrazovky seznamu HomeAutomation záměrů")
 
     > [!NOTE]
     > **None** (Žádný) je záměr, který poskytují všechny aplikace LUIS. Používá se ke zpracování promluv, které neodpovídají funkci poskytované vaší aplikací.
@@ -114,25 +116,25 @@ Jakmile aplikaci vytrénujete, můžete ji otestovat.
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.984315455
+                    "score": 0.969448864
                 },
                 "HomeAutomation.QueryState": {
-                    "score": 0.009912962
-                },
-                "HomeAutomation.TurnDown": {
-                    "score": 0.00626645749
+                    "score": 0.0122336326
                 },
                 "HomeAutomation.TurnUp": {
-                    "score": 0.00572059769
+                    "score": 0.006547436
+                },
+                "HomeAutomation.TurnDown": {
+                    "score": 0.0050634006
                 },
                 "HomeAutomation.SetDevice": {
-                    "score": 0.00379381469
+                    "score": 0.004951761
                 },
                 "HomeAutomation.TurnOn": {
-                    "score": 0.00366983772
+                    "score": 0.00312553928
                 },
                 "None": {
-                    "score": 0.000623856
+                    "score": 0.000552945654
                 }
             },
             "entities": {
@@ -156,7 +158,7 @@ Jakmile aplikaci vytrénujete, můžete ji otestovat.
                             "text": "living room",
                             "startIndex": 13,
                             "length": 11,
-                            "score": 0.907323956,
+                            "score": 0.902181149,
                             "modelTypeId": 1,
                             "modelType": "Entity Extractor",
                             "recognitionSources": [

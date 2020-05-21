@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0f2a05f6d7268bea3c5ccdaccc9ac99863aaf5fe
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e60e4cc907dd96d85d45978cb914e6dd8db39141
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198186"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700016"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>Připojení a použití datových disků se škálovací sadou virtuálních počítačů pomocí Azure CLI
 Tento skript vytvoří škálovací sadu virtuálních počítačů a připojí a připraví datové disky.
@@ -46,5 +46,3 @@ Tento skript k vytvoření skupiny prostředků, škálovací sady virtuálních
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure/overview).
-
-Další ukázkové skripty Azure CLI pro škálovací sady virtuálních počítačů najdete v [dokumentaci ke škálovacím sadám virtuálních počítačů Azure](../cli-samples.md).

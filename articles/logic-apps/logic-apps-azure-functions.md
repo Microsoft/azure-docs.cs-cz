@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605898"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714572"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Volání služby Azure Functions z Azure Logic Apps
 
@@ -40,7 +40,7 @@ Chcete-li spustit fragmenty kódu bez vytváření Azure Functions, přečtěte 
 
   * Vaše funkce používá šablonu **triggeru http** .
 
-    Šablona triggeru HTTP může přijmout obsah, který `application/json` je typu z vaší aplikace logiky. Když do aplikace logiky přidáte funkci Azure Functions, návrhář aplikace logiky zobrazí vlastní funkce, které jsou vytvořeny z této šablony v rámci vašeho předplatného Azure.
+    Šablona triggeru HTTP může přijmout obsah, který je `application/json` typu z vaší aplikace logiky. Když do aplikace logiky přidáte funkci Azure Functions, návrhář aplikace logiky zobrazí vlastní funkce, které jsou vytvořeny z této šablony v rámci vašeho předplatného Azure.
 
   * Vaše funkce nepoužívá vlastní trasy, pokud jste nedefinovali [definici openapi](../azure-functions/functions-openapi-definition.md) (dříve označovanou jako [soubor Swagger](https://swagger.io/)).
 
@@ -60,11 +60,11 @@ Pro rozsáhlejší prostředí při práci s parametry funkcí v Návrháři Log
 
 1. Ve vaší aplikaci Function App nastavte [sdílení prostředků mezi zdroji (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) , aby se všechny zdroje povolovaly pomocí následujících kroků:
 
-   1. V seznamu **aplikace Function** App vyberte svou aplikaci Function App. V pravém podokně vyberte **funkce** > platformy**CORS**.
+   1. V seznamu **aplikace Function** App vyberte svou aplikaci Function App. V pravém podokně vyberte **funkce platformy**  >  **CORS**.
 
       ![Výběr aplikace Function App > "funkce platformy" > "CORS"](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-   1. V části **CORS**přidejte zástupný znak hvězdičky (**`*`**), ale odeberte všechny ostatní počáteky v seznamu a vyberte **Uložit**.
+   1. V části **CORS**přidejte zástupný znak hvězdičky ( **`*`** ), ale odeberte všechny ostatní počáteky v seznamu a vyberte **Uložit**.
 
       ![Nastavte CORS * na zástupný znak *.](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
@@ -127,11 +127,11 @@ Než ale budete moct vytvořit libovolnou funkci Azure Functions, musíte už m�
 
    1. V poli **kód** přidejte svůj kód do šablony funkce, včetně odpovědi a datové části, kterou chcete vrátit do vaší aplikace logiky poté, co byla funkce dokončena. Až to budete mít, vyberte **Vytvořit**.
 
-   Příklad:
+   Například:
 
    ![Definovat funkci](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-   V kódu šablony * `context` objekt* odkazuje na zprávu, kterou aplikace logiky posílá v pozdějším kroku v poli **Text žádosti** . Chcete-li `context` získat přístup k vlastnostem objektu zevnitř vaší funkce, použijte tuto syntaxi:
+   V kódu šablony * `context` objekt* odkazuje na zprávu, kterou aplikace logiky posílá v pozdějším kroku v poli **Text žádosti** . Chcete-li získat přístup k `context` vlastnostem objektu zevnitř vaší funkce, použijte tuto syntaxi:
 
    `context.body.<property-name>`
 
@@ -139,14 +139,14 @@ Než ale budete moct vytvořit libovolnou funkci Azure Functions, musíte už m�
 
    `context.body.content`
 
-   Kód šablony obsahuje také `input` proměnnou, která ukládá hodnotu z `data` parametru, aby vaše funkce mohla provádět operace s touto hodnotou. V rámci funkcí JavaScriptu je `data` proměnná také zástupcem pro `context.body`.
+   Kód šablony obsahuje také `input` proměnnou, která ukládá hodnotu z `data` parametru, aby vaše funkce mohla provádět operace s touto hodnotou. V rámci funkcí JavaScriptu `data` je proměnná také zástupcem pro `context.body` .
 
    > [!NOTE]
    > Tato `body` vlastnost se vztahuje na `context` objekt a není shodná s tokenem **těla** z výstupu akce, který může být také předána vaší funkci.
 
 1. Do pole **Text žádosti** zadejte vstup funkce, který musí být naformátován jako objekt JavaScript Object Notation (JSON).
 
-   Tento vstup je *kontextový objekt* nebo zpráva, kterou vaše aplikace logiky posílá do vaší funkce. Když kliknete na pole **Text žádosti** , zobrazí se seznam dynamického obsahu, ve kterém můžete vybrat tokeny pro výstupy z předchozích kroků. Tento příklad určuje, že datová část kontextu obsahuje vlastnost s `content` názvem, která má hodnotu **od** tokenu z triggeru e-mailu.
+   Tento vstup je *kontextový objekt* nebo zpráva, kterou vaše aplikace logiky posílá do vaší funkce. Když kliknete na pole **Text žádosti** , zobrazí se seznam dynamického obsahu, ve kterém můžete vybrat tokeny pro výstupy z předchozích kroků. Tento příklad určuje, že datová část kontextu obsahuje vlastnost s názvem `content` , která má hodnotu **od** tokenu z triggeru e-mailu.
 
    !["Tělo žádosti" – příklad – datová část objektu kontextu](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -180,7 +180,7 @@ Pokud chcete volat existující služby Azure Functions z aplikací logiky, mů�
 
 1. Do pole **Text žádosti** zadejte vstup funkce, který musí být naformátován jako objekt JavaScript Object Notation (JSON).
 
-   Tento vstup je *kontextový objekt* nebo zpráva, kterou vaše aplikace logiky posílá do vaší funkce. Když kliknete na pole **Text žádosti** , zobrazí se seznam dynamického obsahu, ve kterém můžete vybrat tokeny pro výstupy z předchozích kroků. Tento příklad určuje, že datová část kontextu obsahuje vlastnost s `content` názvem, která má hodnotu **od** tokenu z triggeru e-mailu.
+   Tento vstup je *kontextový objekt* nebo zpráva, kterou vaše aplikace logiky posílá do vaší funkce. Když kliknete na pole **Text žádosti** , zobrazí se seznam dynamického obsahu, ve kterém můžete vybrat tokeny pro výstupy z předchozích kroků. Tento příklad určuje, že datová část kontextu obsahuje vlastnost s názvem `content` , která má hodnotu **od** tokenu z triggeru e-mailu.
 
    !["Tělo žádosti" – příklad – datová část objektu kontextu](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -200,7 +200,7 @@ Pokud chcete aktivovat aplikaci logiky z funkce Azure Functions, musí aplikace 
 
 ## <a name="enable-authentication-for-azure-functions"></a>Povolení ověřování pro službu Azure Functions
 
-K ověření přístupu k prostředkům v jiných klientech Azure Active Directory (Azure AD), aniž byste se museli přihlašovat a poskytovat přihlašovací údaje nebo tajné kódy, může vaše aplikace logiky používat [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) (dřív označovanou jako identita spravované služby nebo MSI). Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče. Přečtěte si další informace o [službách Azure, které podporují spravované identity pro ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Abyste mohli snadno ověřit přístup k jiným prostředkům, které jsou chráněné službou Azure Active Directory (Azure AD), aniž byste se museli přihlašovat a poskytovat přihlašovací údaje nebo tajné kódy, může vaše aplikace logiky používat [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) (dřív označovanou jako identita spravované služby nebo MSI). Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče. Přečtěte si další informace o [službách Azure, které podporují spravované identity pro ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 Pokud nastavíte aplikaci logiky tak, aby používala identitu přiřazenou systémem, nebo ručně vytvořenou identitu uživatele, funkce Azure ve vaší aplikaci logiky může stejnou identitu použít i pro ověřování. Další informace o podpoře ověřování pro službu Azure Functions v Logic Apps najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -229,7 +229,7 @@ Pokud chcete ve funkci Azure Functions používat spravovanou identitu vaší ap
 
    ![V nabídce Konzola ladění vyberte možnost "CMD"](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
 
-1. Po zobrazení další stránky vyberte v seznamu složka možnost **lokalita** > **wwwroot** > *vaše funkce*. Tyto kroky jako ukázkovou funkci používají "FabrikamAzureFunction".
+1. Po zobrazení další stránky vyberte v seznamu složka možnost **lokalita**  >  **wwwroot**  >  *vaše funkce*. Tyto kroky jako ukázkovou funkci používají "FabrikamAzureFunction".
 
    ![Vyberte "Web" > "wwwroot" > funkci](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
 
@@ -237,7 +237,7 @@ Pokud chcete ve funkci Azure Functions používat spravovanou identitu vaší ap
 
    ![Klikněte na upravit pro soubor Function. JSON.](./media/logic-apps-azure-functions/edit-function-json-file.png)
 
-1. V `bindings` objektu ověřte, zda `authLevel` vlastnost existuje. Pokud vlastnost existuje, nastavte hodnotu vlastnosti na `anonymous`. V opačném případě přidejte tuto vlastnost a nastavte hodnotu.
+1. V `bindings` objektu ověřte, zda `authLevel` vlastnost existuje. Pokud vlastnost existuje, nastavte hodnotu vlastnosti na `anonymous` . V opačném případě přidejte tuto vlastnost a nastavte hodnotu.
 
    ![Přidat vlastnost "authLevel" a nastavit na "anonymous"](./media/logic-apps-azure-functions/set-authentication-level-function-app.png)
 
@@ -253,11 +253,11 @@ Před zahájením této úlohy Najděte a uložte tyto hodnoty pro pozdější p
 
   * Pokud chcete vygenerovat toto ID objektu, [Povolte identitu přiřazenou systému vaší aplikace logiky](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app).
 
-  * V opačném případě pro vyhledání tohoto ID objektu otevřete aplikaci logiky v návrháři aplikace logiky. V nabídce aplikace logiky v části **Nastavení**vyberte**přiřazený systém** **identit** > .
+  * V opačném případě pro vyhledání tohoto ID objektu otevřete aplikaci logiky v návrháři aplikace logiky. V nabídce aplikace logiky v části **Nastavení**vyberte **Identity**  >  **přiřazený systém**identit.
 
 * ID adresáře pro vašeho tenanta ve službě Azure Active Directory (Azure AD)
 
-  Pokud chcete získat ID adresáře vašeho tenanta, můžete spustit příkaz [`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) prostředí PowerShell. Nebo v Azure Portal postupujte podle následujících kroků:
+  Pokud chcete získat ID adresáře vašeho tenanta, můžete spustit [`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) příkaz prostředí PowerShell. Nebo v Azure Portal postupujte podle následujících kroků:
 
   1. V [Azure Portal](https://portal.azure.com)Najděte aplikaci Function App a vyberte ji.
 

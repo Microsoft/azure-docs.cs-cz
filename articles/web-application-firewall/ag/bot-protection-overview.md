@@ -5,15 +5,15 @@ description: Tento článek poskytuje přehled firewallu webových aplikací (WA
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 02/04/2020
+ms.date: 05/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 3bc481cfc35ac94699d2795862f1fe8e4decf875
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e01f9ac8966223e11ad218af7bf6fbb2462f28f6
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77027092"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714895"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Firewall webových aplikací Azure v Azure Application Gateway – přehled ochrany bot
 
@@ -22,7 +22,7 @@ Přibližně 20% veškerého internetového provozu pochází ze špatné roboty
 Můžete povolit sadu pravidel spravované ochrany robotů pro WAF k blokování nebo protokolování požadavků ze známých škodlivých IP adres. IP adresy se naúčtují z informačního kanálu Microsoft Threat Intelligence. Intelligent Security Graph využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.
 
 > [!IMPORTANT]
-> Sada pravidel ochrany robota je aktuálně ve verzi Public Preview a poskytuje verzi Preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Sada pravidel ochrany robota je aktuálně ve verzi Public Preview a poskytuje verzi Preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobné informace o Microsoft Azure verzích Preview najdete v tématu s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)   .
 
 ## <a name="use-with-owasp-rulesets"></a>Použití s OWASP RuleSets
 
@@ -33,6 +33,33 @@ RuleSet ochranu robota můžete použít vedle kteréhokoli OWASP RuleSets (2.2.
 ## <a name="ruleset-update"></a>RuleSet aktualizace
 
 Seznam známých neplatných IP adres RuleSet v robotu se aktualizuje několikrát za den z informačního kanálu Microsoft Threat Intelligence, aby zůstal synchronizovaný s roboty. Webové aplikace jsou průběžně chráněny i v případě, že se změní vektory útoku robota.
+
+## <a name="log-example"></a>Příklad protokolu
+
+Tady je příklad položky protokolu pro ochranu robota:
+
+```
+{
+        "timeStamp": "0000-00-00T00:00:00+00:00",
+            "resourceId": "appgw",
+            "operationName": "ApplicationGatewayFirewall",
+            "category": "ApplicationGatewayFirewallLog",
+            "properties": {
+            "instanceId": "vm1",
+                "clientIp": "1.2.3.4",
+                "requestUri": "/hello.php?arg1=aaaaaaabccc",
+                "ruleSetType": "MicrosoftBotProtection",
+                "message": "IPReputationTriggered",
+                "action": "Blocked",
+                "hostname": "example.com",
+                "transactionId": "abc",
+                "policyId": "waf policy 1",
+                "policyScope": "Global",
+                "policyScopeName": "Default Policy",
+                "engine": "Azwaf"
+        }
+    }
+```
 
 ## <a name="next-steps"></a>Další kroky
 

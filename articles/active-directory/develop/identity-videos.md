@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 346d5560d8388c8958e94efd4e149f54eb0235b7
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 232b166d667996f2138224dc6ecbbc925d0ebe9e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681785"
+ms.locfileid: "83712651"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Videa k platformě Microsoft Identity Platform
 
@@ -25,7 +25,9 @@ Seznamte se se základy moderního ověřování, platformy Microsoft identity a
 
 ## <a name="microsoft-identity-platform-for-developers"></a>Platforma Microsoft identity pro vývojáře
 
-*Identita pro vývojáře* video Series se zaměřuje jenom na to, co potřebujete znát, abyste mohli začít přidávat podporu identit do vaší aplikace. Vyladěno pro rychlé doručování základních aspektů platformy a používání knihoven pro ověřování, což je dobrým místem, kde můžete začít používat všechny vývojáře.
+V části *identita pro vývojáře* video Series Matthijs Hoekstra a Kyle Marsh poskytují Úvod k platformě Microsoft identity. Seznamte se s klíčovými součástmi a funkcemi platformy a pomocí knihoven pro ověřování začít s přidáváním moderního a zabezpečeného ověřování do vašich aplikací.
+
+Díky tomu, že se obsah seznámil a honed přes celou řadu školicích cvičení, je tato série dobrým místem, kde můžete začít pracovat s identitou v Azure.
 ___
 
 :::row:::
@@ -33,13 +35,13 @@ ___
         1. Přehled platformy Microsoft identity pro vývojáře (33:55)
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/zjezqZPPOfc]
+        >[!VIDEO https://www.youtube.com/embed/zjezqZPPOfc]
     :::column-end:::
      :::column:::
         2 – jak ověřovat uživatele vašich aplikací pomocí platformy Microsoft identity (29:09)
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/Mtpx_lpfRLs]
+        >[!VIDEO https://www.youtube.com/embed/Mtpx_lpfRLs]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -47,13 +49,13 @@ ___
         3. oprávnění a rozhraní pro udělení souhlasu platformy Microsoft identity (45:08)
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/toAWRNqqDL4]
+        >[!VIDEO https://www.youtube.com/embed/toAWRNqqDL4]
     :::column-end:::
     :::column:::
         4 – jak chránit rozhraní API pomocí platformy Microsoft Identity Platform (33:17)
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/IIQ7QW4bYqA]
+        >[!VIDEO https://www.youtube.com/embed/IIQ7QW4bYqA]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -61,7 +63,7 @@ ___
         5 – aplikační role a skupiny zabezpečení na platformě Microsoft identity (15:52)
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/-BK2iBDrmNo]
+        >[!VIDEO https://www.youtube.com/embed/-BK2iBDrmNo]
     :::column-end:::
     :::column:::
         <!-- BLANK TITLE CELL -->
@@ -81,13 +83,13 @@ ___
         1 Základy: koncepce moderního ověřování (4:33)
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        >[!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
     :::column-end:::
      :::column:::
         2 – moderní ověřování pro webové aplikace (6:02)
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        >[!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -95,13 +97,13 @@ ___
         3 – jednotné přihlašování k webu (4:13)
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/51B-jSOBF8U?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        >[!VIDEO https://www.youtube.com/embed/51B-jSOBF8U?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
     :::column-end:::
     :::column:::
         4 – federované webové ověřování (6:19)
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        >[!VIDEO https://www.youtube.com/embed/CjarTgjKcX8?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -109,13 +111,13 @@ ___
         5. nativní klientské aplikace – část 1 (8:12)
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/OGMDnuDrAcQ?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        >[!VIDEO https://www.youtube.com/embed/OGMDnuDrAcQ?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
     :::column-end:::
     :::column:::
         6. nativní klientské aplikace – část 2 (5:33)
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/2RE6IhXfmHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        >[!VIDEO https://www.youtube.com/embed/2RE6IhXfmHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
     :::column-end:::
 :::row-end:::
 
@@ -129,7 +131,7 @@ ___
         Přehled platformy Microsoft identity
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
+        >[!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -141,13 +143,13 @@ ___
         Úvod do knihoven MSAL
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
+        >[!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
     :::column-end:::
     :::column:::
         Jak MSAL usnadňuje ověřování
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/yLVEBU9Z96Q]
+        >[!VIDEO https://www.youtube.com/embed/yLVEBU9Z96Q]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -155,13 +157,13 @@ ___
         Vysvětlení oborů
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/eiPHOoLmGJs]
+        >[!VIDEO https://www.youtube.com/embed/eiPHOoLmGJs]
     :::column-end:::
     :::column:::
         Co jsou zprostředkovatelé
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/Zd_Uubnu0U0]
+        >[!VIDEO https://www.youtube.com/embed/Zd_Uubnu0U0]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -169,13 +171,13 @@ ___
         Co dělají identifikátory URI pro přesměrování
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/znSN_3JAuoU]
+        >[!VIDEO https://www.youtube.com/embed/znSN_3JAuoU]
     :::column-end:::
     :::column:::
         Vysvětlení tenantů
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/mDhT4Zv1fZU]
+        >[!VIDEO https://www.youtube.com/embed/mDhT4Zv1fZU]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -183,13 +185,13 @@ ___
         Role Azure AD
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/zDEC7A5ZS2Q]
+        >[!VIDEO https://www.youtube.com/embed/zDEC7A5ZS2Q]
     :::column-end:::
     :::column:::
         Role objektů aplikací Azure AD
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/HEpq_YSmuWw]
+        >[!VIDEO https://www.youtube.com/embed/HEpq_YSmuWw]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -197,13 +199,13 @@ ___
         Rozdíly v organizačních a osobních účet Microsoft
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/E2OUluQQKSk]
+        >[!VIDEO https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
     :::column:::
         ZABEZPEČENÉ webové aplikace a rozdíly mezi webovými aplikacemi
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/ZJirt7eTVw8?t=5]
+        >[!VIDEO https://www.youtube.com/embed/ZJirt7eTVw8?t=5]
     :::column-end:::
 :::row-end:::
 
@@ -217,13 +219,13 @@ ___
         Koncové body a výhody přechodu na verzi v 2.0
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
+        >[!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
         Migrace základu ADAL na MSAL
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
+        >[!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -231,12 +233,12 @@ ___
         Proč migrovat z ADAL na MSAL
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
+        >[!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
         Výhody MSAL přes ADAL
     :::column-end:::
     :::column:::
-        > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]
+        >[!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]
     :::column-end:::
 :::row-end:::

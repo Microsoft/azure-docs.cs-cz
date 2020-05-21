@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/20/2020
 ms.author: dsindona
-ms.openlocfilehash: 3886b29a47edcfb36114cedf8b8edb3799e0c345
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 53a22140fe62ce0db18c1d02d816eb31b12a381b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871430"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714147"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Smlouva standard pro komerční tržiště Microsoftu
 
@@ -36,7 +36,7 @@ K dispozici jsou dva druhy změn pro komerční vydavatele na webu Marketplace:
 >[!Note]
 >Tyto dva typy změn zásobníků jsou navzájem navzájem. Zákazníci, na které cílíte vlastní změny, získají při nákupu také univerzální změnu standardní smlouvy.
 
-Standardní smlouvu na komerční tržišti společnosti Microsoft můžete využít pro následující typy nabídek: aplikace Azure (šablony řešení a spravované aplikace), Virtual Machines, kontejnery, aplikace kontejneru, IoT Edge moduly a SaaS.
+Standardní smlouvu pro komerční tržiště společnosti Microsoft můžete využít pro následující typy nabídek: aplikace Azure (šablony řešení a spravované aplikace), Virtual Machines a SaaS.
 
 ## <a name="customer-experience"></a>Prostředí pro zákazníky
 

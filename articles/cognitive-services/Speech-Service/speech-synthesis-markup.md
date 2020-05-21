@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 41de12c08dee52240f9b10c191ced4aacaea8e94
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8ec4c87dc4f19c140c5ac02779c5551016dfb0b3
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592776"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714317"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -195,10 +195,8 @@ Ve výchozím nastavení služba pro převod textu na řeč syntetizuje text pom
 
 V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu speaking:
 * `en-US-AriaNeural`
-* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
-* `zh-CN-YunyeNeural`
 
 Změny se aplikují na úrovni věty a styl se liší podle hlasu. Pokud styl není podporován, služba vrátí řeč ve výchozím stylu neutrálního mluveného slova.
 
@@ -223,15 +221,11 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 |                         | `style="chat"`            | Vyjádření nepříležitostného a odlehčeného tónu                         |
 |                         | `style="cheerful"`        | Vyjadřuje kladný a šťastný tón.                         |
 |                         | `style="empathetic"`      | Vyjadřuje smysl caring a porozumění               |
-|   `pt-BR-FranciscaNeural`| `style="calm"`      | Vyjádření CALM tón               |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Vyjadřuje formální a profesionální tón pro zprávy mluveného komentáře. |
 |                         | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  |
 |                         | `style="assistant"`       | Vyjadřuje teplý a odlehčený tón pro digitální asistenty    |
 |                         | `style="lyrical"`         | Vyjadřuje emoce v Melodic a Sentimental         |   
-| `zh-CN-YunyangNeural`  | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  |
-| `zh-CN-YunyeNeural`  | `style="calm"`      | Vyjádření CALM tón               |  
-|                         | `style="sad"`       | Vyjadřuje tón nespokojenosti a narušit.    |
-|                         | `style="serious"`         | Vyjádření vážného a obtížného tónu        |   
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  | 
 
 **Příklad**
 

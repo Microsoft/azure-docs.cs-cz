@@ -7,23 +7,23 @@ ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
-ms.date: 04/27/2020
-ms.openlocfilehash: 7313d12509859514e41b30c4021f74f25a0e50b9
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 05/19/2020
+ms.openlocfilehash: 4fef9db91369c23d27090cc2433b5e0ed09bbc7d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629949"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684730"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-arm-template"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí šablony ARM
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for MySQL
 
-Azure Database for MySQL je spravovaná služba, pomocí které můžete spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. V tomto rychlém startu se dozvíte, jak pomocí předdefinované šablony Azure Resource Manager (ARM) vytvořit Azure Database for MySQL server s integrací virtuální sítě. Server můžete vytvořit pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell.
+Azure Database for MySQL je spravovaná služba, pomocí které můžete spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. V tomto rychlém startu použijete šablonu ARM k vytvoření serveru Azure Database for MySQL s integrací virtuální sítě. Server můžete vytvořit v Azure Portal, Azure CLI nebo Azure PowerShell.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 
@@ -32,7 +32,7 @@ Azure Database for MySQL je spravovaná služba, pomocí které můžete spoušt
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Pokud chcete spustit kód místně, [Azure PowerShell](/powershell/azure/).
 
-# <a name="cli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
 * Pokud chcete spustit kód místně, [Azure CLI](/cli/azure/).
@@ -61,7 +61,7 @@ Další příklady šablon Azure Database for MySQL najdete v [galerii šablon r
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vyberte následující odkaz pro nasazení šablony Azure Database for MySQL serveru do Azure Portal:
 
@@ -121,7 +121,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
-# <a name="cli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 Pomocí následujícího interaktivního kódu vytvořte nový Azure Database for MySQL server pomocí šablony. Kód vás vyzve k zadání nového názvu serveru, názvu a umístění nové skupiny prostředků a jména a hesla účtu správce.
 
@@ -148,7 +148,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Pomocí těchto kroků můžete zobrazit přehled nového serveru Azure Database for MySQL:
 
@@ -166,7 +166,7 @@ Get-AzResource -ResourceType "Microsoft.DBforMySQL/servers" -Name $serverName | 
 Write-Host "Press [ENTER] to continue..."
 ```
 
-# <a name="cli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 Chcete-li zobrazit podrobnosti o serveru Azure Database for MySQL, spusťte následující interaktivní kód. Budete muset zadat název a skupinu prostředků nového serveru.
 
@@ -184,7 +184,7 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, která odstraní prostředky ve skupině prostředků.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků**.
 
@@ -202,7 +202,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-# <a name="cli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/18/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: ba34976192d7e840f6077b13fd9aa165ed22b900
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3f51c4e50c3c5499c73e18ce40e55de6aeb54472
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195883"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700899"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí Azure CLI
 
@@ -216,8 +216,3 @@ V tomto kurzu jste zjistili, jak automaticky horizontálně snižovat nebo zvyš
 > * Vytvoření a použití pravidel automatického škálování
 > * Zátěžový test instancí virtuálních počítačů a aktivace pravidel automatického škálování
 > * Opětovné automatické horizontální snížení kapacity po snížení požadavků
-
-Další příklady škálovacích sad virtuálních počítačů v akci najdete v následujících ukázkových skriptech Azure CLI:
-
-> [!div class="nextstepaction"]
-> [Ukázkové skripty Azure CLI pro škálovací sady](cli-samples.md)

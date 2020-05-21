@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5d7274712f3e7f5b16dc5be28d0ad47cfefba9fa
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 40128c68caeba793919a680ba2beeb35eb3aa3be
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685150"
+ms.locfileid: "83712804"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Co je Azure SQL Edge (Preview)?
 
@@ -38,11 +38,11 @@ SQL Edge je k dispozici ve dvou různých edicích nebo softwarových plánech. 
    |**Plán**  |**Popis**  |
    |---------|---------|
    |Vývojář Azure SQL Edge  |  Pouze vývoj SKU, každý kontejner SQL Edge je omezený na až 4 jádra a 32 GB paměti.  |
-   |Edge Azure SQL    |  Produkční skladová jednotka má každý kontejner SQL Edge omezený na až 8 jader a 64 GB paměti. |
+   |Azure SQL Edge    |  Produkční skladová jednotka má každý kontejner SQL Edge omezený na až 8 jader a 64 GB paměti. |
 
 ## <a name="pricing-and-availability"></a>Ceny a dostupnost
 
-Azure SQL Edge je momentálně ve verzi Preview. Další informace o cenách a dostupnosti najdete v tématu [Azure SQL Edge](https://azure.microsoft.com/services/sql-database-edge/).
+Azure SQL Edge je momentálně ve verzi Preview. Další informace o cenách a dostupnosti najdete v tématu [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/).
 
 > [!IMPORTANT]
 > Pro pochopení rozdílů funkcí mezi Azure SQL Edge a SQL Server a rozdíly mezi různými možnostmi Azure SQL Edge najdete informace v tématu [podporované funkce Edge SQL serveru Azure](features.md).

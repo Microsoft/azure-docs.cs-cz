@@ -1,27 +1,24 @@
 ---
 title: Nejčastější dotazy k Azure Automation | Microsoft Docs
-description: Odpovědi na nejčastější dotazy týkající se Azure Automation.
+description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Automation.
 services: automation
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 02/25/2020
-ms.openlocfilehash: 3fa29f3df5f0434c4c61e8d12adbb3f55156a29f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46786ff5bd158804ea5d93377fbbcc39a9c8af26
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405967"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712872"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure Automation nejčastějších dotazech
 
 Toto je seznam nejčastějších dotazů k Azure Automation. Pokud máte další dotazy týkající se jeho schopností, navštivte diskuzní fórum a publikujte své dotazy. V případě častého dotazu přidáme Tento článek do tohoto článku, aby ho bylo možné rychle a snadno najít.
 
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
-
-## <a name="update-management-solution"></a>Řešení Update Management
+## <a name="update-management"></a>Update Management
 
 ### <a name="can-i-prevent-unexpected-os-level-upgrades"></a>Můžu zabránit neočekávaným upgradům na úrovni operačního systému?
 
@@ -29,7 +26,7 @@ U některých variant systému Linux, například Red Hat Enterprise Linux, mů�
 
 Abyste se vyhnuli aktualizace verze operačního systému pomocí Update Management nasazení, použijte funkci **vyloučení** .
 
-V Red Hat Enterprise Linux název balíčku, který se má vyloučit `redhat-release-server.x86_64`, je.
+V Red Hat Enterprise Linux název balíčku, který se má vyloučit, je `redhat-release-server.x86_64` .
 
 ### <a name="why-arent-criticalsecurity-updates-applied"></a>Proč nejsou důležité nebo se nepoužívají aktualizace zabezpečení?
 
@@ -41,7 +38,7 @@ Nasazení aktualizací podle klasifikace aktualizací nefunguje na verzích RTM 
 
 ### <a name="can-i-deploy-updates-across-azure-tenants"></a>Můžu v klientech Azure nasazovat aktualizace?
 
-Pokud máte počítače, které vyžadují opravy v jiném tenantovi Azure pro Update Management, musíte k jejich naplánování použít následující alternativní řešení. K vytvoření plánu můžete použít rutinu [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) s `ForUpdateConfiguration` parametrem zadaným. Můžete použít rutinu [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) a předat do `NonAzureComputer` parametru počítače v druhém tenantovi. Následující příklad ukazuje, jak to provést.
+Pokud máte počítače, které vyžadují opravy v jiném tenantovi Azure pro Update Management, musíte k jejich naplánování použít následující alternativní řešení. K vytvoření plánu můžete použít rutinu [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) s `ForUpdateConfiguration` parametrem zadaným. Můžete použít rutinu [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) a předat do parametru počítače v druhém tenantovi `NonAzureComputer` . Následující příklad ukazuje, jak to provést.
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")

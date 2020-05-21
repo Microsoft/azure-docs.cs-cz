@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 30df02062d3b94836f0131ac1124f56d1deefb5b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997488"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714776"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Prostředí pomocníka návrhů pro Windows 10
 
@@ -63,25 +63,22 @@ Asistenti by měli vytvořit prostředí pro naslouchání, které vám poskytne
 - Asistent zpracovává a připravuje odpověď.
 - Asistent reaguje
 
-I když se stavy mění rychle, je vhodné zvážit poskytování uživatelského rozhraní pro stavy, protože doba trvání je proměnná v ekosystému systému Windows. Vizuální zpětnou vazbu a krátký zvuk CHIMES nebo chirps, označovaný &quot;také&quot;jako earcons, můžou být součástí řešení. Podobně se u vizuálních karet, které jsou propojeny s popisy zvuku, doplní dobré možnosti odezvy.
+I když se stavy mění rychle, je vhodné zvážit poskytování uživatelského rozhraní pro stavy, protože doba trvání je proměnná v ekosystému systému Windows. Vizuální zpětnou vazbu a krátký zvuk CHIMES nebo chirps, označovaný také jako &quot; earcons &quot; , můžou být součástí řešení. Podobně se u vizuálních karet, které jsou propojeny s popisy zvuku, doplní dobré možnosti odezvy.
 
 ## <a name="design-guidance-for-in-app-voice-activation"></a>Pokyny k návrhu aktivace hlasu v aplikaci
 
 Když má aplikace pomocníka fokus, záměr zákazníka je snadno interagovat s aplikací, takže všechna prostředí hlasové aktivace by měla být zpracována hlavním zobrazením aplikace. Toto zobrazení může změnit velikost zákazníka. Aby bylo možné vysvětlit interakce prostředí pomocníka, zbytek tohoto dokumentu používá konkrétní příklad asistenta finančních služeb s názvem contoso. V tomto a dalším diagramu se zobrazí zpráva o tom, co zákazník zobrazuje na stránce kreslené bubliny řeči na levé straně s odezvami pomocníka ve kreslené bublině na pravé straně.
 
-**Zobrazení v aplikaci. Počáteční stav při zahájení aktivace hlasu:**
-![snímek hlasového pomocníka ve Windows před aktivací](media/voice-assistants/windows_voice_assistant/initial_state.png)
+**Zobrazení v aplikaci. Počáteční stav při zahájení aktivace hlasu:** 
+ ![ snímek hlasového pomocníka ve Windows před aktivací](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
-**Zobrazení v aplikaci. Po úspěšném pokusu o aktivaci hlasu se spustí naslouchací proces:**![snímek hlasového pomocníka ve Windows, když hlasová asistent naslouchá.](media/voice-assistants/windows_voice_assistant/listening.png)
+**Zobrazení v aplikaci. Po úspěšném pokusu o aktivaci hlasu se spustí naslouchací proces:** ![ snímek hlasového pomocníka ve Windows, když hlasová asistent naslouchá.](media/voice-assistants/windows_voice_assistant/listening.png)
 
-**Zobrazení v aplikaci. Všechny odpovědi zůstanou v prostředí aplikace.** ![Snímek obrazovky hlasového asistenta v systému Windows jako reakce pomocníka](media/voice-assistants/windows_voice_assistant/response.png)
+**Zobrazení v aplikaci. Všechny odpovědi zůstanou v prostředí aplikace.** ![ Snímek obrazovky hlasového asistenta v systému Windows jako reakce pomocníka](media/voice-assistants/windows_voice_assistant/response.png)
 
 ## <a name="design-guidance-for-voice-activation-above-lock"></a>Pokyny k návrhu aktivace hlasu nad zámkem
 
 K dispozici pro 19H2, asistenti postavená na platformě Windows Voice Activation Platform jsou k dispozici pro zodpovězení výše uvedeného zámku.
-
-> [!NOTE]
-> V důsledku aktivního problému musí asistenti, kteří nakreslí nad rámec uživatelského rozhraní zámku, implementovat WindowService. CloseWindow () pro všechny dismissals. Výsledkem bude ukončení aplikace, ale zmírnění technického problému a ponechání pomocníka v čistém stavu. Aby bylo možné udržovat čistý stav, pokud je aplikace povolená pro výše uvedenou funkci uzamknout hlasovou aktivaci, musí při uzamčení zařízení naslouchat změnám stavu zámku a WindowService. CloseWindow ().
 
 ### <a name="customer-opt-in"></a>Výslovný souhlas se zákazníkem
 
@@ -108,16 +105,16 @@ Pomocník musí v této části implementovat pokyny k odhlášení, aby se zák
 - **Všechna plátna pomocníka, která zobrazují výše, musí** v pravém horním rohu obsahovat znak X, který pomocníka vynechává.
 - **Stisknutí libovolné klávesy musí také zavřít aplikaci pomocníka**. Vstup z klávesnice je tradiční signál zámku aplikace, ke kterému se chce zákazník přihlásit. Proto by žádný vstup z klávesnice/textu neměl být směrován do aplikace. Místo toho by se měla aplikace při zjištění klávesnice automaticky zavřít, aby se zákazník mohl snadno přihlásit ke svému zařízení.
 - **V případě, že obrazovka zmizí, musí se aplikace samo zavřít.** Tím se zajistí, že při příštím použití počítače zákazník bude přihlašovací obrazovka připravená a čeká na ně.
-- Pokud je &quot;aplikace používána&quot;, může pokračovat výše v zámku. &quot;používá&quot; se pro jakýkoliv vstup nebo výstup. Například při streamování hudby nebo videa může aplikace pokračovat výše v zámku. &quot;Sledování a&quot; další kroky při více zapnutích jsou povoleny, aby aplikace zůstala nad zámkem.
+- Pokud je aplikace &quot; používána &quot; , může pokračovat výše v zámku. &quot;používá se pro &quot; jakýkoliv vstup nebo výstup. Například při streamování hudby nebo videa může aplikace pokračovat výše v zámku. &quot;Sledování &quot; a další kroky při více zapnutích jsou povoleny, aby aplikace zůstala nad zámkem.
 - **Podrobnosti o implementaci chybějící aplikace** najdete [v části výše Průvodce implementací zámku](windows-voice-assistants-implementation-guide.md#closing-the-application).
 
 ![Snímek obrazovky hlasového pomocníka ve Windows před aktivací](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
 
 ![Snímek obrazovky hlasového pomocníka ve Windows před aktivací](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
 
-### <a name="privacy-amp-security-considerations-above-lock"></a>Požadavky &amp; na zabezpečení ochrany osobních údajů nad zámkem
+### <a name="privacy-amp-security-considerations-above-lock"></a>Požadavky na zabezpečení ochrany osobních údajů &amp; nad zámkem
 
-Mnoho počítačů je přenosné, ale ne vždy v rámci dosahu zákazníků. Mohou být krátce ponechány v hotelových místnostech, na sedadlech v letadle nebo v pracovních prostorech, kde mají jiní uživatelé fyzický přístup. Pokud pomocníky, které jsou povolené výše než zámek, nejsou připravené, můžou se stát podléhat &quot; [Maid](https://en.wikipedia.org/wiki/Evil_maid_attack) &quot; útokům, které se nazývají Evil.
+Mnoho počítačů je přenosné, ale ne vždy v rámci dosahu zákazníků. Mohou být krátce ponechány v hotelových místnostech, na sedadlech v letadle nebo v pracovních prostorech, kde mají jiní uživatelé fyzický přístup. Pokud pomocníky, které jsou povolené výše než zámek, nejsou připravené, můžou se stát podléhat Maid útokům, které se nazývají &quot; [Evil](https://en.wikipedia.org/wiki/Evil_maid_attack) &quot; .
 
 Proto by asistenti měli postupovat podle pokynů v této části, aby se zajistila bezpečnost. Interakce nad zámkem nastane, pokud uživatel Windows není ověřený. To znamená, že obecně platí, že **vstup pro pomocníka by měl být také považován za Neověřeno**.
 
@@ -127,9 +124,9 @@ Proto by asistenti měli postupovat podle pokynů v této části, aby se zajist
 
 | **Action – třída** | **Popis** | **Příklady (není úplný seznam)** |
 | --- | --- | --- |
-| Bezpečné bez ověřování | Obecné informace o účelu nebo příkaz a řízení základní aplikace | &quot;Kolik je hodin? &quot;, &quot;Přehrát další stopu&quot; |
-| Bezpečná s ID mluvčího | Riziko zosobnění a odhalení osobních údajů. | &quot;Co&#39;s má příští událost? &quot;, &quot;Zkontrolujte můj nákupní seznam&quot;, &quot;odpovězte na volání.&quot; |
-| Bezpečné až po ověření systému Windows | Vysoce rizikové akce, které by mohl útočník zneužít k poškozování zákazníka | &quot;&quot;Kupte si více nákupů &quot;, odstraňte moji (důležitou&quot;) &quot;schůzku, odešlete (střední)&quot;textovou zprávu, &quot;otevřete webovou stránku (nekalé).&quot; |
+| Bezpečné bez ověřování | Obecné informace o účelu nebo příkaz a řízení základní aplikace | &quot;Jak to je? &quot; , &quot; Hrajte další stopu.&quot; |
+| Bezpečná s ID mluvčího | Riziko zosobnění a odhalení osobních údajů. | &quot;Co&#39;s má příští událost? &quot; , &quot; zkontrolovat můj seznam nakupování &quot; , &quot; odpovědět na volání&quot; |
+| Bezpečné až po ověření systému Windows | Vysoce rizikové akce, které by mohl útočník zneužít k poškozování zákazníka | &quot;Kupte si více nákupů &quot; , &quot; odstraňte moji (důležitou) schůzku &quot; , &quot; odešlete (střední) textovou zprávu &quot; , &quot; otevřete webovou stránku (nekalé).&quot; |
 
 V případě společnosti Contoso jsou obecné informace o veřejných informacích o zásobách bezpečné bez ověření. Informace specifické pro konkrétní zákazníky, jako je třeba počet vlastněných akcií, jsou nejspíš bezpečné s ID mluvčího. Nákup nebo prodej zásob by však nikdy neměl být povolen bez ověřování systému Windows.
 

@@ -1,16 +1,16 @@
 ---
 title: Přehled Azure Automation Update Management
-description: Přehled funkce Update Management, která spravuje aktualizace pro počítače se systémem Windows a Linux
+description: Přehled funkce Update Management, která spravuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 05/04/2020
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: d3a3a19673ecb6edb82f0512f318298865c8ed24
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ba4ce84dca85ea1e3f2385ac280bd82c16aa8fb3
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681291"
+ms.locfileid: "83714759"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -98,9 +98,11 @@ V následující tabulce jsou uvedeny nepodporované operační systémy:
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Klient Windows     | Klientské operační systémy (například Windows 7 a Windows 10) se nepodporují.        |
+|Klient Windows     | Klientské operační systémy (například Windows 7 a Windows 10) se nepodporují.<br> Pro virtuální počítače Azure s Windows (WVD) se doporučuje metoda.<br> pro správu aktualizací je [web Windows Update pro firmy](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) pro správu oprav klientských počítačů s Windows 10. |
 |Windows Server 2016 Nano Server     | Není podporováno.       |
 |Uzly služby Azure Kubernetes | Není podporováno. Použijte proces opravy popsaný v tématu [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md) .|
+
+
 
 ### <a name="client-requirements"></a>Požadavky na klienty
 

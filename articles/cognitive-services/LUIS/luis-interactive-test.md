@@ -2,13 +2,13 @@
 title: Testovací aplikace na portálu LUIS
 description: Pomocí Language Understanding (LUIS) můžete průběžně pracovat na vaší aplikaci a zdokonalit tak její porozumění jazyku.
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: 3608bb17b6d1ea8c9095fa54324993a9e40355b6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/20/2020
+ms.openlocfilehash: 91994418b50eb112582bbed1853dd85e9db3599d
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653871"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714384"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testování aplikace LUIS na portálu LUIS
 
@@ -42,7 +42,8 @@ Utterance testu by neměl být přesně stejný jako jakýkoli příklad projevy
 
 1. Do seznamu projevy pod textovým polem se přidají utterance, jeho nejvyšší záměr a skóre.
 
-    ![Interaktivní testování identifikuje nesprávný záměr.](./media/luis-how-to-interactive-test/test-weather-1.png)
+    > [!div class="mx-imgBorder"]
+    > ![Interaktivní testování identifikuje nesprávný záměr.](./media/luis-how-to-interactive-test/test-weather-1.png)
 
 ## <a name="inspect-the-prediction"></a>Zkontrolovat předpověď
 
@@ -50,9 +51,13 @@ Podrobnosti o výsledku testu si můžete prohlédnout na panelu **Kontrola** .
 
 1. V otevřeném panelu **testovacího** snímku vyberte **zkontrolovat** pro utterance, který chcete porovnat.
 
-    ![Kliknutím na tlačítko zkontrolovat zobrazíte další podrobnosti o výsledcích testu.](./media/luis-how-to-interactive-test/inspect.png)
+    > [!div class="mx-imgBorder"]
+    > ![Kliknutím na tlačítko zkontrolovat zobrazíte další podrobnosti o výsledcích testu.](./media/luis-how-to-interactive-test/inspect.png)
 
 1. Zobrazí se panel **Kontrola** . Panel zahrnuje nejvyšší záměr hodnocení i všechny identifikované entity. Na panelu se zobrazuje předpověď vybrané utterance.
+
+    > [!div class="mx-imgBorder"]
+    > ![Částečný snímek obrazovky s panelem pro kontrolu testu](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="add-to-example-utterances"></a>Přidat do ukázkového projevy
 
@@ -76,12 +81,14 @@ Pokud používáte [vzory](luis-concept-patterns.md) , ale utterance odpovídá 
 
 Aktivní verzi aplikace můžete otestovat pomocí publikované verze [koncového bodu](luis-glossary.md#endpoint) . Na panelu **Kontrola** vyberte **Porovnat s publikováním**. Jakékoli testování u publikovaného modelu se odečte od vyvážení kvóty předplatného Azure.
 
-![Porovnat s publikovaným](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+> [!div class="mx-imgBorder"]
+> ![Porovnat s publikovaným](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
 ## <a name="view-endpoint-json-in-test-panel"></a>Zobrazit JSON koncového bodu na testovacím panelu
 Můžete zobrazit vrácený koncový bod JSON pro porovnání tím, že vyberete **zobrazení zobrazit JSON**.
 
-![Publikovaná odpověď JSON](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+> [!div class="mx-imgBorder"]
+> ![Publikovaná odpověď JSON](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 ## <a name="additional-settings-in-test-panel"></a>Další nastavení na testovacím panelu
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ba3ff2cc98e505486de9cf2337fe19024f97c62
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 62291505aae35b6fe334e2bdb53335a1ea3fe20b
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680453"
+ms.locfileid: "83714538"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Přesunutí účtu Azure Automation do jiného předplatného
 
@@ -28,16 +28,16 @@ Azure Automation umožňuje přesunout některé prostředky do nové skupiny pr
 4. Odstraňte a znovu vytvořte účty Spustit jako.
 5. Znovu povolte své funkce.
 
-## <a name="disable-features"></a>Zakázat funkce
+## <a name="remove-features"></a>Odebrat funkce
 
-Pokud chcete odpojit svůj pracovní prostor od svého účtu Automation, musíte zakázat prostředky funkce ve vašem pracovním prostoru:
+Pokud chcete odpojit svůj pracovní prostor od svého účtu Automation, musíte odebrat prostředky funkce ve vašem pracovním prostoru:
 
 - Change Tracking a Inventory
 - Update Management
 - Spuštění/zastavení virtuálních počítačů mimo špičku
 
 1. Na webu Azure Portal vyhledejte svou skupinu prostředků.
-2. Najděte jednotlivé funkce a na stránce Odstranit prostředky vyberte **Odstranit** .
+2. Najděte jednotlivé funkce a na stránce **Odstranit prostředky** vyberte **Odstranit** .
 
     ![Snímek obrazovky odstranění prostředků funkce z Azure Portal](../media/move-account/delete-solutions.png)
 
@@ -127,7 +127,7 @@ Nyní můžete přesunout svůj účet Automation a jeho Runbooky.
 
 ## <a name="enable-features"></a>Povolit funkce
 
-Po opětovném vytvoření účtů spustit jako je nutné znovu povolit funkce, které jste před přesunutím zakázali: 
+Po opětovném vytvoření účtů spustit jako je nutné znovu povolit funkce, které jste odebrali před přesunutím:
 
 1. Pokud chcete zapnout Change Tracking a inventář, vyberte **Change Tracking a inventář** v účtu Automation. Zvolte pracovní prostor Log Analytics, který jste přesunuli, a vyberte **Povolit**.
 
@@ -157,4 +157,4 @@ Po dokončení přesunu ověřte, že jsou povolené níže uvedené možnosti.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o přesouvání prostředků v Azure najdete v tématu [Přesunutí prostředků v Azure](../../azure-resource-manager/management/move-support-resources.md).
+[Přesunutí prostředků v Azure](../../azure-resource-manager/management/move-support-resources.md)

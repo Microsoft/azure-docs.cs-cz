@@ -1,6 +1,6 @@
 ---
-title: Oblasti podpory pro propojený pracovní prostor Log Analytics
-description: Tento článek popisuje, jak podporovat mapování oblastí mezi účtem služby Automation a pracovním prostorem Log Analytics.
+title: Podporované oblasti pro propojený pracovní prostor Log Analytics
+description: Tento článek popisuje podporovaná mapování oblastí mezi účtem služby Automation a pracovním prostorem Log Analytics.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 229fab5550d7b03fcbba80b5f4d9433d3b31e5b1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e637aec3c5105bb9628a854b0d4c73988e60daaf
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680436"
+ms.locfileid: "83714504"
 ---
-# <a name="support-regions-for-linked-log-analytics-workspace"></a>Oblasti podpory pro propojený pracovní prostor Log Analytics
+# <a name="supported-regions-for-linked-log-analytics-workspace"></a>Podporované oblasti pro propojený pracovní prostor Log Analytics
 
 V Azure Automation můžete pro své virtuální počítače povolit Update Management, Change Tracking a inventář a Start/Stop VMs during off-hours funkce. Propojení Log Analyticsho pracovního prostoru a účtu Automation v rámci předplatného ale podporuje jenom některé oblasti. Mapování oblastí platí pouze pro účet Automation a pracovní prostor Log Analytics. Pracovní prostor Log Analytics a účet Automation musí být ve stejném předplatném, ale můžou být v různých skupinách prostředků nasazených do stejné oblasti. Další informace najdete v tématu [Log Analytics pracovní prostor a účet Automation](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
 
@@ -49,9 +49,9 @@ V následující tabulce jsou uvedena podporovaná mapování:
 
 ## <a name="unlink-a-workspace"></a>Zrušit propojení pracovního prostoru
 
-Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete zrušit propojení svého účtu přímo s Azure Portal. Než budete pokračovat, musíte nejdřív [zakázat](move-account.md#disable-features) Update Management, Change Tracking a inventář a Start/Stop VMS during off-hours, pokud je používáte. Pokud tyto funkce nezakážete, nebudete moct dokončit operaci odpojování. 
+Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete zrušit propojení svého účtu přímo s Azure Portal. Než budete pokračovat, musíte nejdřív [odebrat](move-account.md#remove-features) Update Management, Change Tracking a inventář a Start/Stop VMS during off-hours, pokud je používáte. Pokud je neodeberete, nemůžete dokončit operaci odpojování. 
 
-Díky funkcím, které jsou zakázané, můžete pomocí následujících kroků zrušit propojení svého účtu Automation.
+Po odebrání funkcí můžete pomocí následujících kroků zrušit propojení svého účtu Automation.
 
 > [!NOTE]
 > Některé funkce, včetně dřívějších verzí řešení Azure SQL monitoring, mohly vytvořit assety automatizace, které je potřeba před odpojením pracovního prostoru odebrat.
@@ -80,6 +80,6 @@ Alternativně můžete zrušit propojení pracovního prostoru s účtem Automat
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o Update Management v článku [Update Management přehled](../automation-update-management.md).
-* Přečtěte si o Change Tracking a inventáři v [přehledu Change Tracking a inventáře](../change-tracking.md).
-* Přečtěte si o Start/Stop VMs during off-hours v článku [Start/Stop VMS during off-hours přehled](../automation-solution-vm-management.md).
+* [Přehled Update Managementu](../automation-update-management.md)
+* [Přehled Change Tracking a inventáře](../change-tracking.md)
+* [Přehled Start/Stop VMs during off-hours](../automation-solution-vm-management.md)

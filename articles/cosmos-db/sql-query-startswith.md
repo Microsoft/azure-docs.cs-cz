@@ -4,32 +4,35 @@ description: Další informace o funkci SQL System Function STARTSWITH v Azure C
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9ed49c067946186f8b79f67bad0a460113eacb73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e915ea4be058f805e938ec8526ca0ee40d556271
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78295704"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715269"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
+
  Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým.  
   
 ## <a name="syntax"></a>Syntaxe
   
 ```sql
-STARTSWITH(<str_expr1>, <str_expr2>)  
+STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
   
-## <a name="arguments"></a>Argumenty
+## <a name="arguments"></a>Arguments
   
 *str_expr1*  
    Je řetězcový výraz.
   
 *str_expr2*  
    Je řetězcový výraz, který má být porovnán s počátkem *str_expr1*.
+
+*bool_expr* Volitelná hodnota pro ignorování velkých a malých písmen Při nastavení na hodnotu true provede STARTSWITH hledání bez rozlišování velkých a malých písmen. Je-li tento parametr zadán, je tato hodnota false.
 
 ## <a name="return-types"></a>Návratové typy
   

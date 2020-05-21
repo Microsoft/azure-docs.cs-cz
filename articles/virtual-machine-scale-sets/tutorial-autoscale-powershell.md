@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 3c8488fa794e2bfa4de7833cb4cd4756b5394263
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d2e10c2a02bf14f7a01ce03bc70f6e3f43b96385
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201358"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700824"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 
@@ -28,7 +28,7 @@ Při vytváření škálovací sady definujete počet instancí virtuálních po
 > * Zátěžový test instancí virtuálních počítačů a aktivace pravidel automatického škálování
 > * Opětovné automatické horizontální snížení kapacity po snížení požadavků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 Existuje známý problém, který má vliv na modul Azure PowerShell verze 6.8.1 nebo novější včetně aktuální verze služby Azure Cloud Shell. Tento kurz vyžaduje modul Azure PowerShell verze 6.0.0 až 6.8.0. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
@@ -68,7 +68,7 @@ Pro toto pravidlo se používají následující parametry:
 | Parametr               | Vysvětlení                                                                                                         | Hodnota          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-Metric*           | Metrika výkonu, která se má monitorovat a na kterou se mají použít akce škálovací sady.                                                   | Procento CPU |
-| *– TimeGrain*            | Četnost shromažďování metrik pro účely analýzy.                                                                   | 1 minuta       |
+| *– TimeGrain*            | Četnost shromažďování metrik pro účely analýzy.                                                                   | 1 min.       |
 | *-MetricStatistic*      | Definuje způsob agregace shromážděných metrik pro účely analýzy.                                                | Průměr        |
 | *– TimeWindow*           | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 5 minut      |
 | *– – Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než   |
@@ -255,8 +255,3 @@ V tomto kurzu jste zjistili, jak automaticky horizontálně snižovat nebo zvyš
 > * Vytvoření a použití pravidel automatického škálování
 > * Zátěžový test instancí virtuálních počítačů a aktivace pravidel automatického škálování
 > * Opětovné automatické horizontální snížení kapacity po snížení požadavků
-
-Další příklady škálovacích sad virtuálních počítačů v akci najdete v následujících ukázkových skriptech Azure PowerShellu:
-
-> [!div class="nextstepaction"]
-> [Ukázkové skripty Azure PowerShellu pro škálovací sady](powershell-samples.md)

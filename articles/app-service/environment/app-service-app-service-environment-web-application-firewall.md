@@ -7,19 +7,19 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 33fd0b6a3a07fa4fbc5448a97ca93c75a3e239d5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804465"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684213"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurace brány firewall webových aplikací pro službu App Service Environment
 ## <a name="overview"></a>Přehled
 
 Brány firewall webových aplikací (WAF) pomáhají zabezpečit webové aplikace tím, že zkoumají příchozí webový provoz a blokují injektáže SQL, skriptování napříč weby, nahrávání malwaru, útoky DDoS a další útoky. Zkoumají také odpovědi webových serverů pro zajištění ochrany před únikem informací (DLP). V kombinaci s izolací a dalším škálováním, které poskytuje služba App Service Environment, to představuje ideální prostředí pro hostování důležitých obchodních webových aplikací, které potřebují odolat škodlivým požadavkům a velkému objemu provozu. Azure poskytuje funkci WAF prostřednictvím služby [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).  Pokud chcete zjistit, jak integrovat službu App Service Environment se službou Application Gateway, přečtěte si dokument [Integrace služby ASE s interním nástrojem pro vyrovnávání zatížení se službou Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway).
 
-Kromě služby Azure Application Gateway je k dispozici několik možností na webu [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/), například [Barracuda WAF pro Azure](https://www.barracuda.com/programs/azure). Zbytek tohoto dokumentu se zaměřuje na integraci služby App Service Environment se zařízením Barracuda WAF.
+Kromě služby Azure Application Gateway je k dispozici několik možností na webu [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice), například [Barracuda WAF pro Azure](https://www.barracuda.com/programs/azure). Zbytek tohoto dokumentu se zaměřuje na integraci služby App Service Environment se zařízením Barracuda WAF.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 

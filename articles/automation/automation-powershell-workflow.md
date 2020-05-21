@@ -1,31 +1,31 @@
 ---
-title: Školicí pracovní postup prostředí PowerShell pro Azure Automation
-description: Tento článek je určený jako Rychlá lekce pro autory, kteří znají prostředí PowerShell, aby porozuměli konkrétním rozdílům mezi PowerShellem a pracovním postupem PowerShellu a koncepty platnými pro Runbooky Automation.
+title: Informace o pracovním postupu PowerShellu pro Azure Automation
+description: V tomto článku se dozvíte o rozdílech mezi pracovním postupem PowerShellu a prostředím PowerShell a koncepty platnými pro Runbooky Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1b275239c19584bc11472711a32972aa3ebea1ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6156b28a3baa51e84e2c46b74e63a6c8e81491cc
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457531"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715473"
 ---
-# <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Principy konceptu pracovního postupu prostředí Windows PowerShell pro výuku pro Runbooky služby Automation
+# <a name="learn-powershell-workflow-for-azure-automation"></a>Informace o pracovním postupu PowerShellu pro Azure Automation
 
-Runbooky v Azure Automation jsou implementované jako pracovní postupy prostředí Windows PowerShell.  Pracovní postup prostředí Windows PowerShell je podobný skriptu prostředí Windows PowerShell, ale obsahuje některé významné rozdíly, které mohou být matoucí pro nového uživatele.  Tento článek je určený k tomu, aby vám usnadnil psaní runbooků pomocí pracovního postupu PowerShellu. Pokud nepotřebujete kontrolní body, doporučujeme psát Runbooky pomocí prostředí PowerShell.  K dispozici je několik rozdílů syntaxe při vytváření runbooků pracovního postupu PowerShellu a tyto rozdíly vyžadují pro zápis efektivních pracovních postupů trochu větší práci.
+Sady Runbook v Azure Automation jsou implementovány jako pracovní postupy prostředí Windows PowerShell, skripty prostředí Windows PowerShell, které používají programovací model Windows Workflow Foundation. Pracovní postup je pořadí naprogramovaných, propojených kroků, které provádějí dlouhodobé úlohy nebo vyžadují koordinaci více kroků v rámci více zařízení nebo spravovaných uzlů. 
 
-Pracovní postup je pořadí naprogramovaných, propojených kroků, které provádějí dlouhodobé úlohy nebo vyžadují koordinaci více kroků v rámci více zařízení nebo spravovaných uzlů. Mezi výhody pracovního postupu oproti běžnému skriptu patří schopnost současně provádět akci vůči několika zařízením a schopnost se automaticky zotavit po selhání. Pracovní postup prostředí Windows PowerShell je skript Windows PowerShellu, který používá programovací model Windows Workflow Foundation. Přestože je pracovní postup napsán pomocí syntaxe prostředí Windows PowerShell a spuštěn tímto prostředím, je zpracován programovacím modelem Windows Workflow Foundation.
+Když je pracovní postup zapsaný pomocí syntaxe Windows PowerShellu a spustí se v prostředí Windows PowerShell, zpracovává se programovací model Windows Workflow Foundation. Výhody pracovního postupu v rámci normálního skriptu zahrnují souběžný výkon akce proti více zařízením a automatické obnovení při selhání. 
 
-Kompletní informace o tématech v tomto článku najdete v tématu [Začínáme s pracovním postupem prostředí Windows PowerShell](https://technet.microsoft.com/library/jj134242.aspx).
+> [!NOTE]
+> Skript PowerShellového pracovního postupu je velmi podobný skriptu prostředí Windows PowerShell, ale obsahuje některé významné rozdíly, které mohou být matoucí pro nového uživatele. Proto doporučujeme napsat své Runbooky pomocí pracovního postupu PowerShellu jenom v případě, že potřebujete použít [kontrolní body](#use-checkpoints-in-a-workflow). 
 
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
+Podrobné informace o tématech v tomto článku najdete v tématu [Začínáme s pracovním postupem prostředí Windows PowerShell](https://technet.microsoft.com/library/jj134242.aspx).
 
-## <a name="basic-structure-of-a-workflow"></a>Základní struktura pracovního postupu
+## <a name="use-workflow-keyword"></a>Použít klíčové slovo pracovního postupu
 
-Prvním krokem k převedení skriptu PowerShellu na pracovní postup PowerShellu je jeho orámování s `Workflow` klíčovým slovem.  Pracovní postup začíná `Workflow` klíčovým slovem následovaným textem skriptu uzavřeným ve složených závorkách. Název pracovního postupu následuje za `Workflow` klíčovým slovem, jak je znázorněno v následující syntaxi:
+Prvním krokem k převedení skriptu PowerShellu na pracovní postup PowerShellu je jeho orámování s `Workflow` klíčovým slovem. Pracovní postup začíná `Workflow` klíčovým slovem následovaným textem skriptu uzavřeným ve složených závorkách. Název pracovního postupu následuje za `Workflow` klíčovým slovem, jak je znázorněno v následující syntaxi:
 
 ```powershell
 Workflow Test-Workflow
@@ -34,31 +34,31 @@ Workflow Test-Workflow
 }
 ```
 
-Název pracovního postupu musí odpovídat názvu Runbooku služby Automation. Pokud se Runbook naimportuje, název souboru se musí shodovat s názvem pracovního postupu a musí končit *. ps1*.
+Název pracovního postupu musí odpovídat názvu Runbooku služby Automation. Pokud se sada Runbook importuje, musí název souboru odpovídat názvu pracovního postupu a musí končit **příponou. ps1**.
 
 K přidání parametrů do pracovního postupu použijte `Param` klíčové slovo stejně jako ve skriptu.
 
-## <a name="code-changes"></a>Změny kódu
+## <a name="learn-differences-between-powershell-workflow-code-and-powershell-script-code"></a>Informace o rozdílech mezi kódem pracovního postupu PowerShellu a kódem skriptu PowerShellu
 
-Kód pracovního postupu PowerShellu vypadá téměř stejně jako kód skriptu PowerShellu s výjimkou některých významných změn.  Následující části popisují změny, které je třeba provést v PowerShellovém skriptu, aby je bylo možné spustit v pracovním postupu.
+Kód pracovního postupu PowerShellu vypadá téměř stejně jako kód skriptu PowerShellu s výjimkou některých významných změn. Následující části popisují změny, které je třeba provést v PowerShellovém skriptu, aby je bylo možné spustit v pracovním postupu.
 
 ### <a name="activities"></a>Aktivity
 
-Aktivita je specifická úloha v pracovním postupu. Stejně jako se skript skládá z jednoho nebo víc příkazů, pracovní postup se skládá z jedné nebo víc aktivit, které se provádějí v uvedeném pořadí. Pracovní postup prostředí Windows PowerShell automaticky převádí mnoho rutin prostředí Windows PowerShell na aktivity při spuštění pracovního postupu. Když zadáte jednu z těchto rutin v Runbooku, odpovídající aktivita se spustí programovací model Windows Workflow Foundation. V případě rutin bez odpovídající aktivity pracovní postup prostředí Windows PowerShell automaticky spustí rutinu v rámci aktivity [InlineScript](#inlinescript) . Existuje sada rutin, které jsou vyloučeny a nelze je použít v pracovním postupu, pokud je výslovně nezahrnete do bloku InlineScript. Další podrobnosti o těchto konceptech najdete v tématu [použití aktivit ve skriptových pracovních postupech](https://technet.microsoft.com/library/jj574194.aspx).
+Aktivita je konkrétní úloha v pracovním postupu, která se provádí v rámci sekvence. Pracovní postup prostředí Windows PowerShell automaticky převádí mnoho rutin prostředí Windows PowerShell na aktivity při spuštění pracovního postupu. Když zadáte jednu z těchto rutin v Runbooku, odpovídající aktivita se spustí programovací model Windows Workflow Foundation. 
 
-Aktivity pracovních postupů sdílejí sadu společných parametrů ke konfiguraci svého provozu. Podrobnosti o společných parametrech pracovního postupu najdete v tématu [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
+Pokud rutina nemá odpovídající aktivitu, pracovní postup prostředí Windows PowerShell automaticky spustí rutinu v aktivitě [InlineScript](#use-inlinescript) . Některé rutiny jsou vyloučené a nelze je použít v pracovním postupu, pokud je výslovně nezahrnete do bloku InlineScript. Další informace najdete v tématu [použití aktivit ve skriptových pracovních postupech](https://technet.microsoft.com/library/jj574194.aspx).
+
+Aktivity pracovních postupů sdílejí sadu společných parametrů ke konfiguraci svého provozu. Viz [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
 
 ### <a name="positional-parameters"></a>Poziční parametry
 
-V pracovním postupu nemůžete použít poziční parametry s aktivitami a rutinami.  To znamená, že je nutné použít názvy parametrů.
-
-Zvažte například následující kód, který získá všechny běžící služby.
+V pracovním postupu nemůžete použít poziční parametry s aktivitami a rutinami. Proto je nutné použít názvy parametrů. Vezměte v úvahu následující kód, který získá všechny běžící služby:
 
 ```azurepowershell-interactive
 Get-Service | Where-Object {$_.Status -eq "Running"}
 ```
 
-Pokud se pokusíte spustit stejný kód v pracovním postupu, zobrazí se zpráva typu "sada parametrů nelze přeložit pomocí zadaných pojmenovaných parametrů".  Pokud to chcete opravit, zadejte název parametru jako v následujícím seznamu.
+Pokud se pokusíte tento kód spustit v pracovním postupu, obdržíte zprávu, kterou je třeba `Parameter set cannot be resolved using the specified named parameters.` pro tento problém opravit, zadejte název parametru, jak je uvedeno v následujícím příkladu:
 
 ```powershell
 Workflow Get-RunningServices
@@ -69,16 +69,16 @@ Workflow Get-RunningServices
 
 ### <a name="deserialized-objects"></a>Deserializovatelné objekty
 
-Objekty v pracovních postupech jsou deserializovány.  To znamená, že jejich vlastnosti jsou stále k dispozici, ale ne jejich metody.  Zvažte například následující kód PowerShellu, který zastaví službu pomocí metody Stop objektu Service.
+Objekty v pracovních postupech jsou deserializovány, což znamená, že jejich vlastnosti jsou stále k dispozici, ale nikoli jejich metody.  Zvažte například následující kód PowerShellu, který zastaví službu pomocí `Stop` metody `Service` objektu.
 
 ```azurepowershell-interactive
 $Service = Get-Service -Name MyService
 $Service.Stop()
 ```
 
-Pokud se pokusíte spustit tento postup v pracovním postupu, zobrazí se chybová zpráva "volání metody se v pracovním postupu prostředí Windows PowerShell nepodporuje."
+Pokud se pokusíte tento postup spustit v pracovním postupu, zobrazí se chybová zpráva.`Method invocation is not supported in a Windows PowerShell Workflow.`
 
-Jednou z možností je zabalit tyto dva řádky kódu do [InlineScript](#inlinescript) bloku, v takovém případě by $Service by byl objekt služby v rámci bloku.
+Jednou z možností je zabalit tyto dva řádky kódu do [InlineScript](#use-inlinescript) bloku. V tomto případě `Service` představuje objekt služby v rámci bloku.
 
 ```powershell
 Workflow Stop-Service
@@ -90,7 +90,7 @@ Workflow Stop-Service
 }
 ```
 
-Další možností je použít jinou rutinu, která provádí stejnou funkci jako metoda, pokud je k dispozici.  V naší ukázce rutina Stop-Service poskytuje stejné funkce jako metoda stop a pro pracovní postup můžete použít následující.
+Další možností je použít jinou rutinu, která má stejnou funkci jako metoda, pokud je k dispozici. V našem příkladu `Stop-Service` rutina poskytuje stejné funkce jako `Stop` Metoda a můžete použít následující kód pro pracovní postup.
 
 ```powershell
 Workflow Stop-MyService
@@ -100,9 +100,9 @@ Workflow Stop-MyService
 }
 ```
 
-## <a name="inlinescript"></a>Vložený skript
+## <a name="use-inlinescript"></a>Použití InlineScript
 
-Tato`InlineScript` aktivita je užitečná v případě, že potřebujete spustit jeden nebo více příkazů jako tradiční powershellový skript namísto pracovního postupu PowerShellu.  Přesto jsou příkazy v pracovním postupu odesílány ke zpracování do programovacího modelu Windows Workflow Foundation, příkazy v bloku InlineScript jsou zpracovány prostředím Windows PowerShell.
+Tato `InlineScript` aktivita je užitečná v případě, že potřebujete spustit jeden nebo více příkazů jako tradiční powershellový skript namísto pracovního postupu PowerShellu.  Přesto jsou příkazy v pracovním postupu odesílány ke zpracování do programovacího modelu Windows Workflow Foundation, příkazy v bloku InlineScript jsou zpracovány prostředím Windows PowerShell.
 
 InlineScript používá níže uvedenou syntaxi.
 
@@ -145,19 +145,19 @@ Workflow Stop-MyService
 }
 ```
 
-I když aktivity InlineScript můžou být v určitých pracovních postupech kritické, nepodporují konstrukce pracovního postupu a měly by se v případě potřeby používat jenom v následujících případech:
+I když aktivity InlineScript můžou být v určitých pracovních postupech kritické, nepodporují konstrukce pracovního postupu. Používejte je pouze v případě potřeby z následujících důvodů:
 
-* V bloku InlineScript nemůžete použít [kontrolní body](#checkpoints) . Pokud dojde k selhání v rámci bloku, musí být obnovena od začátku bloku.
-* [Paralelní provádění](#parallel-processing) nelze použít uvnitř InlineScriptBlock.
+* V bloku InlineScript nemůžete použít [kontrolní body](#use-checkpoints-in-a-workflow) . Pokud dojde k selhání v rámci bloku, musí pokračovat od začátku bloku.
+* [Paralelní provádění](#use-parallel-processing) nelze použít uvnitř InlineScript bloku.
 * InlineScript má vliv na škálovatelnost pracovního postupu, protože obsahuje relaci prostředí Windows PowerShell pro celou délku bloku InlineScript.
 
 Další informace o použití InlineScript najdete v tématu [spuštění příkazů prostředí Windows PowerShell v pracovním postupu](https://technet.microsoft.com/library/jj574197.aspx) a [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx).
 
-## <a name="parallel-processing"></a>Paralelní zpracování
+## <a name="use-parallel-processing"></a>Použít paralelní zpracování
 
 Jednou z výhod pracovních postupů prostředí Windows PowerShell je schopnost provádět sadu příkazů paralelně namísto postupně jako v případě typického skriptu.
 
-`Parallel` Klíčové slovo můžete použít k vytvoření bloku skriptu s více příkazy, které běží souběžně. K tomu se používá následující syntaxe. V tomto případě Activity1 a "Activity2" spustí ve stejnou dobu. Activity3 se spustí až po dokončení Activity1 a "Activity2".
+Klíčové slovo můžete použít `Parallel` k vytvoření bloku skriptu s více příkazy, které běží souběžně. K tomu se používá následující syntaxe. V tomto případě Activity1 a "Activity2" spustí ve stejnou dobu. Activity3 se spustí až po dokončení Activity1 a "Activity2".
 
 ```powershell
 Parallel
@@ -168,7 +168,7 @@ Parallel
 <Activity3>
 ```
 
-Zvažte například následující příkazy PowerShellu, které kopírují více souborů do cílového umístění v síti.  Tyto příkazy jsou spouštěny postupně, aby jeden soubor musel dokončit kopírování před dalším spuštěním.
+Zvažte například následující příkazy PowerShellu, které kopírují více souborů do cílového umístění v síti. Tyto příkazy jsou spouštěny postupně, aby jeden soubor musel dokončit kopírování před dalším spuštěním.
 
 ```azurepowershell-interactive
 Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
@@ -192,7 +192,7 @@ Workflow Copy-Files
 }
 ```
 
-Můžete použít `ForEach -Parallel` konstrukci ke zpracování příkazů pro každou položku v kolekci současně. Položky v kolekci jsou zpracovávány paralelně, zatímco příkazy v bloku skriptu se spouštějí postupně. K tomu se používá následující syntaxe. V tomto případě Activity1 spustí ve stejnou dobu pro všechny položky v kolekci. Pro každou položku "Activity2" začíná po dokončení Activity1. Activity3 se spustí až po dokončení Activity1 i "Activity2" pro všechny položky. `ThrottleLimit` Parametr používáme k omezení paralelismu. Příliš vysoký `ThrottleLimit` může způsobit problémy. Ideální hodnota pro `ThrottleLimit` parametr závisí na mnoha faktorech ve vašem prostředí. Měli byste zkusit začít s nízkou hodnotou a vyzkoušet jiné hodnoty, dokud nezjistíte, které funguje pro konkrétní situaci.
+Můžete použít `ForEach -Parallel` konstrukci ke zpracování příkazů pro každou položku v kolekci současně. Položky v kolekci jsou zpracovávány paralelně, zatímco příkazy v bloku skriptu se spouštějí postupně. Tento proces používá níže uvedenou syntaxi. V tomto případě Activity1 spustí ve stejnou dobu pro všechny položky v kolekci. Pro každou položku "Activity2" začíná po dokončení Activity1. Activity3 se spustí až po dokončení Activity1 i "Activity2" pro všechny položky. Parametr používáme `ThrottleLimit` k omezení paralelismu. Příliš vysoký `ThrottleLimit` může způsobit problémy. Ideální hodnota pro `ThrottleLimit` parametr závisí na mnoha faktorech ve vašem prostředí. Začněte s nízkou hodnotou a zkuste různé hodnoty zvětšit, dokud nezjistíte, které funguje pro konkrétní situaci.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -203,7 +203,7 @@ ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
 <Activity3>
 ```
 
-Následující příklad je podobný předchozímu příkladu, který kopíruje soubory paralelně.  V tomto případě se pro každý soubor po zkopírování zobrazí zpráva.  Po úplném zkopírování je zobrazena zpráva o konečném dokončení.
+Následující příklad je podobný předchozímu příkladu, který kopíruje soubory paralelně.  V tomto případě se pro každý soubor po zkopírování zobrazí zpráva.  Pouze po zkopírování je zobrazena zpráva o konečném dokončení.
 
 ```powershell
 Workflow Copy-Files
@@ -221,13 +221,17 @@ Workflow Copy-Files
 ```
 
 > [!NOTE]
-> Nedoporučujeme paralelní spouštění podřízených runbooků, protože se ukázalo, že poskytuje nespolehlivé výsledky. Výstup z podřízené sady Runbook se někdy nezobrazuje a nastavení v jedné podřízené sadě Runbook mohou ovlivnit ostatní paralelní podřízené Runbooky. Proměnné jako $VerbosePreference, $WarningPreference a jiné nemusí být šířeny do podřízených runbooků. A pokud podřízený Runbook změní tyto hodnoty, nemusí být po vyvolání správně obnoveny.
+> Nedoporučujeme paralelní spouštění podřízených runbooků, protože se ukázalo, že poskytuje nespolehlivé výsledky. Výstup z podřízené sady Runbook se někdy nezobrazuje a nastavení v jedné podřízené sadě Runbook mohou ovlivnit ostatní paralelní podřízené Runbooky. Proměnné, jako například `VerbosePreference` , `WarningPreference` a jiné, se nemusí šířit do podřízených runbooků. A pokud podřízený Runbook změní tyto hodnoty, nemusí být po vyvolání správně obnoveny.
 
-## <a name="checkpoints"></a>Kontrolní body
+## <a name="use-checkpoints-in-a-workflow"></a>Použití kontrolních bodů v pracovním postupu
 
-*Kontrolní bod* je snímek aktuálního stavu pracovního postupu, který obsahuje aktuální hodnotu proměnných a všechny výstupy vygenerované do tohoto bodu. Pokud pracovní postup skončí chybou nebo je pozastaven, pak se při příštím spuštění spustí z posledního kontrolního bodu místo na začátku pracovního postupu.  Kontrolní bod můžete v pracovním postupu nastavit pomocí `Checkpoint-Workflow` aktivity. Azure Automation má funkci s názvem [spravedlivá sdílená](automation-runbook-execution.md#fair-share)sada Runbook, která se spouští po dobu 3 hodin, aby bylo možné spouštět jiné Runbooky. Nakonec se uvolněná sada Runbook znovu načte a v případě, že bude, bude pokračovat v provádění z posledního kontrolního bodu, který byl proveden v sadě Runbook. Aby bylo zajištěno, že sada Runbook bude nakonec dokončena, je nutné přidat kontrolní body v intervalech, které jsou spuštěny méně než 3 hodiny. Při každém spuštění se přidá nový kontrolní bod, a pokud se sada Runbook po 3 hodinách vyřadí z důvodu chyby, sada Runbook se obnoví neomezeně.
+Kontrolní bod je snímek aktuálního stavu pracovního postupu, který obsahuje aktuální hodnoty proměnných a všechny výstupy vygenerované do tohoto bodu. Pokud pracovní postup skončí chybou nebo je pozastaven, začne při příštím spuštění od posledního kontrolního bodu, a ne od začátku. 
 
-V následujícím ukázkovém kódu dojde k výjimce po "Activity2" způsob ukončení pracovního postupu. Po opětovném spuštění pracovního postupu se spustí spuštěním "Activity2", protože se jednalo o hned za poslední nastavenou kontrolní sadu.
+Kontrolní bod můžete v pracovním postupu nastavit pomocí `Checkpoint-Workflow` aktivity. Azure Automation má funkci s názvem [spravedlivá sdílená](automation-runbook-execution.md#fair-share)sada Runbook, která běží na tři hodiny, aby bylo možné spouštět jiné Runbooky. Nakonec se uvolněná sada Runbook znovu načte. V takovém případě pokračuje v provádění z posledního kontrolního bodu pořízeného v sadě Runbook.
+
+Chcete-li zaručit, že se sada Runbook nakonec dokončí, je nutné přidat kontrolní body v intervalech, které jsou spuštěny méně než tři hodiny. Při každém spuštění se přidá nový kontrolní bod. Pokud je sada Runbook po třech hodinách vyřazena z důvodu chyby, sada Runbook se obnoví neomezeně.
+
+V následujícím příkladu dojde k výjimce po "Activity2", což způsobí ukončení pracovního postupu. Po opětovném spuštění pracovního postupu se spustí spuštěním "Activity2", protože tato aktivita byla hned za poslední nastavenou kontrolní sadu.
 
 ```powershell
 <Activity1>
@@ -237,9 +241,9 @@ Checkpoint-Workflow
 <Activity3>
 ```
 
-Kontrolní body v pracovním postupu byste měli nastavit po aktivitách, které by mohly být náchylné k výjimce a neměly by se opakovat, pokud je pracovní postup obnovený. Pracovní postup může například vytvořit virtuální počítač. Můžete nastavit kontrolní bod před i po příkazech, které slouží k vytvoření virtuálního počítače. Pokud se vytvoření nepovede, příkazy se zopakují, pokud se pracovní postup spustí znovu. Pokud pracovní postup po úspěšném vytvoření selže, pak se virtuální počítač po obnovení pracovního postupu znovu nevytvoří.
+Nastavte kontrolní body v pracovním postupu po aktivitách, které by mohly být náchylné k výjimce a neměly by být opakované, pokud je pracovní postup obnovený. Pracovní postup může například vytvořit virtuální počítač. Můžete nastavit kontrolní bod před a za příkazy k vytvoření virtuálního počítače. Pokud se vytvoření nepovede, příkazy se zopakují, pokud se pracovní postup spustí znovu. Pokud pracovní postup po úspěšném vytvoření selže, virtuální počítač se po obnovení pracovního postupu znovu nevytvoří.
 
-Následující příklad zkopíruje více souborů do umístění v síti a nastaví kontrolní bod za každým souborem.  Pokud dojde ke ztrátě síťového umístění, pracovní postup skončí chybou.  Po opětovném spuštění bude pokračovat v posledním kontrolním bodu, což znamená, že jsou přeskočeny pouze soubory, které již byly zkopírovány.
+Následující příklad zkopíruje více souborů do umístění v síti a nastaví kontrolní bod za každým souborem.  Pokud dojde ke ztrátě síťového umístění, pracovní postup skončí chybou.  Až se znovu spustí, obnoví se u posledního kontrolního bodu. Přeskočeny jsou pouze soubory, které již byly zkopírovány.
 
 ```powershell
 Workflow Copy-Files
@@ -257,9 +261,9 @@ Workflow Copy-Files
 }
 ```
 
-Vzhledem k tomu, že přihlašovací údaje uživatelského jména nejsou trvalé po volání aktivity [pozastavit-Workflow](https://technet.microsoft.com/library/jj733586.aspx) nebo po posledním kontrolním bodu, je nutné nastavit přihlašovací údaje na hodnotu null a pak je znovu načíst z úložiště `Suspend-Workflow` Asset po volání nebo kontrolního bodu.  V opačném případě se může zobrazit následující chybová zpráva:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+Vzhledem k tomu, že přihlašovací údaje uživatelského jména nejsou po volání aktivity [pozastavit-Workflow](https://technet.microsoft.com/library/jj733586.aspx) nebo po posledním kontrolním bodu zachovány, je třeba nastavit přihlašovací údaje na hodnotu null a pak je znovu načíst z úložiště Asset po `Suspend-Workflow` volání nebo zadání kontrolního bodu.  V opačném případě se může zobrazit následující chybová zpráva:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
-Následující stejný kód ukazuje, jak tento postup zpracovat ve vašich sadách Runbook pracovního postupu PowerShellu.
+Následující stejný kód ukazuje, jak tuto situaci zpracovat ve vašich sadách Runbook pracovního postupu PowerShellu.
 
 ```powershell
 workflow CreateTestVms
@@ -286,14 +290,10 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
-
-
-Toto není vyžadováno, pokud ověřujete pomocí účtu Spustit jako nakonfigurovaného s objektem služby.
+> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation. Pokud ověřujete pomocí účtu Spustit jako nakonfigurovaného s instančním objektem, není použití těchto rutin nutné.
 
 Další informace o kontrolních bodech najdete v tématu [Přidání kontrolních bodů do pracovního postupu skriptu](https://technet.microsoft.com/library/jj574114.aspx).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete začít s Runbooky pracovních postupů PowerShellu, podívejte se na [můj první Runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md) .
-
+* [Můj první Runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md)

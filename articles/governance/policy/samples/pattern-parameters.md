@@ -1,14 +1,14 @@
 ---
 title: 'Vzor: parametry v definici zásady'
 description: Tento model Azure Policy poskytuje příklad použití parametrů v definici zásady.
-ms.date: 01/31/2020
+ms.date: 05/20/2020
 ms.topic: sample
-ms.openlocfilehash: 4921bb216ef67b561bc8986cf48239e6448beafc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e163a243a0dc23f04d564287b630634eb4662cda
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172804"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696727"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy – vzor: parametry
 
@@ -16,7 +16,10 @@ Definici zásady je možné nastavit jako dynamickou a snížit tak počet defin
 
 ## <a name="sample-1-string-parameters"></a>Ukázka 1: parametry řetězce
 
-Tato definice zásady používá dva parametry, **TagName** a **tagValue** k nastavení toho, co přiřazení zásad hledá u prostředků. Tento formát umožňuje použít zásady pro libovolný počet kombinací názvu značky a hodnoty značek, ale udržuje jenom jednu definici zásady.
+Tato definice zásady používá dva parametry, **TagName** a **tagValue** k nastavení toho, co přiřazení zásad hledá u prostředků. Tento formát umožňuje použití definice zásad pro libovolný počet kombinací názvů značek a hodnot značek, ale udržuje jenom jednu definici zásady.
+
+> [!NOTE]
+> Pro ukázku značek, která používá **režim** _All_ a pracuje se skupinou prostředků, viz [vzor: značky-Sample #1](./pattern-tags.md#sample-1-parameterize-tags).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json":::
 
@@ -42,11 +45,27 @@ Tato definice zásady používá jeden parametr **listOfBandwidthinMbps**a kontr
 
 V této části definice zásad je parametr **listOfBandwidthinMbps** definován jako _pole_ a popis je k dispozici pro jeho použití. Jako _pole_má více hodnot, které mají být shodné.
 
-Parametr je pak použit v bloku **policyRule. if** . Jako parametr _pole_ musí být použita _array_
-[Podmínka](../concepts/definition-structure.md#conditions)pole **v** nebo **notIn** .
+Parametr je pak použit v bloku **policyRule. if** . Jako parametr _pole_ _array_ 
+ musí být použita[Podmínka](../concepts/definition-structure.md#conditions)pole **v** nebo **notIn** .
 Tady se používá pro alias **serviceProvider. bandwidthInMbps** jako jedna z definovaných hodnot.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="21-24" highlight="3":::
+
+## <a name="sample-3-parameterized-effect"></a>Ukázka 3: parametrizovaný efekt
+
+Běžným způsobem, jak nastavit změny v definicích zásad, je parametrizovat vliv sám na sebe. V tomto příkladu se používá jeden parametr, **efekt**. Parametrizace účinek umožňuje přiřadit stejnou definici různým oborům s různými účinky.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json":::
+
+### <a name="sample-3-explanation"></a>Ukázka 3: vysvětlení
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="11-25":::
+
+V této části definice zásady je parametr **efekt** definovaný jako _řetězec_. Definice zásady nastaví výchozí hodnotu pro přiřazení pro _audit_ a omezí další možnosti na _zakázáno_ a _Odepřít_.
+
+Parametr se pak použije v **policyRule. potom** pro _efekt_.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="38-40" highlight="2":::
 
 ## <a name="next-steps"></a>Další kroky
 

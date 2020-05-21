@@ -1,18 +1,18 @@
 ---
-title: Azure Automation průběžného nasazování konfigurace stavu pomocí čokolády
-description: Popisuje průběžné nasazování DevOps pomocí konfigurace stavu Azure Automation se správcem balíčků pro čokolády. Obsahuje příklad s úplnou šablonou Správce prostředků JSON a zdrojem PowerShellu.
+title: Nastavení Azure Automation průběžného nasazování s čokoládou
+description: V tomto článku se dozvíte, jak nastavit průběžné nasazování s konfigurací stavu a správcem balíčků pro čokolády.
 services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 278c6ee05fdf78cbfa8653381b65233fbb513593
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 63fd65f6a80dec582b9cecc8483bc3425d08c551
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996125"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714181"
 ---
-# <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Zajištění průběžného nasazování virtuálních počítačů pomocí konfigurace stavu služby Automation a čokolády
+# <a name="set-up-continuous-deployment-with-chocolatey"></a>Nastavení průběžného nasazování pomocí čokolády
 
 V DevOps světě existuje mnoho nástrojů, které vám pomůžou s různými body v kanálu průběžné integrace. [Konfigurace stavu](automation-dsc-overview.md) Azure Automation je dobrým novým doplňkem k možnostem, které mohou týmy DevOps využívat. 
 
@@ -69,7 +69,7 @@ Když aktualizujete balíček na virtuálním počítači, který je v produkčn
 
 ## <a name="step-1-set-up-the-pull-server-and-automation-account"></a>Krok 1: nastavení serveru pro vyžádané replikace a účtu Automation
 
-Na příkazovém řádku ověřeného (`Connect-AzAccount`) PowerShellu: (může trvat několik minut, než se nastavil Server pro vyžádání obsahu)
+Na příkazovém řádku ověřeného ( `Connect-AzAccount` ) PowerShellu: (může trvat několik minut, než se nastavil Server pro vyžádání obsahu)
 
 ```azurepowershell-interactive
 New-AzResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
@@ -189,7 +189,7 @@ Get-AzAutomationDscCompilationJob `
     -Id $compilationJobId
 ```
 
-Výsledkem těchto kroků je nová konfigurace uzlu s názvem **ISVBoxConfig. isvbox** , která se umístí na server vyžádané replikace. Název konfigurace uzlu je sestaven jako `configurationName.nodeName`.
+Výsledkem těchto kroků je nová konfigurace uzlu s názvem **ISVBoxConfig. isvbox** , která se umístí na server vyžádané replikace. Název konfigurace uzlu je sestaven jako `configurationName.nodeName` .
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>Krok 5: vytvoření a údržba metadat balíčku
 

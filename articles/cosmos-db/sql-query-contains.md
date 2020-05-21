@@ -4,32 +4,35 @@ description: Přečtěte si, jak funkce CONTAINS SQL System v Azure Cosmos DB vr
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c0c25b63fb6a7bf42bd2ec5b9503cac2cce7583f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0de34e6e0e238887b8f75ae2397e9e650eaac340
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78302589"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711699"
 ---
 # <a name="contains-azure-cosmos-db"></a>OBSAHUJE (Azure Cosmos DB)
+
  Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz obsahuje sekundu.  
   
 ## <a name="syntax"></a>Syntaxe
   
 ```sql
-CONTAINS(<str_expr1>, <str_expr2>)  
+CONTAINS(<str_expr1>, <str_expr2> [, <bool_expr>])  
 ```  
   
-## <a name="arguments"></a>Argumenty
+## <a name="arguments"></a>Arguments
   
 *str_expr1*  
    Je řetězcový výraz, který má být prohledán.  
   
 *str_expr2*  
    Je řetězcový výraz, který se má najít.  
+
+*bool_expr* Volitelná hodnota pro ignorování velkých a malých písmen Pokud je nastaveno na hodnotu true, obsahuje se při hledání bez rozlišování velkých a malých písmen. Je-li tento parametr zadán, je tato hodnota false.
   
 ## <a name="return-types"></a>Návratové typy
   
@@ -40,7 +43,7 @@ CONTAINS(<str_expr1>, <str_expr2>)
   Následující příklad zkontroluje, zda "ABC" obsahuje "AB" a "ABC" obsahuje "d".  
   
 ```sql
-SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2 
+SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2
 ```  
   
  Zde je sada výsledků.  
@@ -51,7 +54,7 @@ SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2
 
 ## <a name="remarks"></a>Poznámky
 
-Tato systémová funkce nebude index využívat.
+Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 

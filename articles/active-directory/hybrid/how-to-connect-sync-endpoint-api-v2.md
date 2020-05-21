@@ -8,16 +8,16 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fce1168f8f95e01b6ac05e673636e02356043cf3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b5501153a9c54d4509aa7dd948e03e011b30d79e
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691072"
+ms.locfileid: "83713807"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Rozhraní API koncového bodu služby Azure AD Connect Sync v2 (Public Preview) 
 Společnost Microsoft nasadila nový koncový bod (rozhraní API) pro Azure AD Connect, který vylepšuje výkon operací synchronizační služby Azure Active Directory. Díky použití nového koncového bodu v2 budete mít při exportu a importu do Azure AD patrné zvýšení výkonu. Tento nový koncový bod podporuje následující:
@@ -31,6 +31,9 @@ Společnost Microsoft nasadila nový koncový bod (rozhraní API) pro Azure AD C
 
 ## <a name="pre-requisites"></a>Požadavky  
 Aby bylo možné použít nový koncový bod v2, budete muset použít [Azure AD Connect verze 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) nebo novější a postupovat podle níže uvedených kroků nasazení a povolit koncový bod v2 pro váš Azure AD Connect Server.   
+
+>[!NOTE]
+>V současné době je tato verze Public Preview dostupná jenom v globálním cloudu Azure a není dostupná pro [národní](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)cloudy.
 
 ### <a name="public-preview-limitations"></a>Omezení veřejné verze Preview  
 I když tato verze prošla rozsáhlým testováním, může dojít k problémům. Jedním z cílů této verze Public Preview je vyhledat a opravit takové problémy.  

@@ -1,20 +1,20 @@
 ---
-title: Použití šablon Azure Resource Manager k vytvoření účtu Automation | Microsoft Docs
-description: K vytvoření účtu Azure Automation můžete použít šablonu Azure Resource Manager.
+title: Vytvoření účtu Automation pomocí šablony Azure Resource Manager | Microsoft Docs
+description: V tomto článku se dozvíte, jak pomocí šablony Azure Resource Manager vytvořit účet Azure Automation.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 949b07a16b2c2b08891d721e46948481cfe572b2
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 10b53da1ef277d7a3d6ab7c850192ce8f08ded68
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996101"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712668"
 ---
-# <a name="create-an-automation-account-by-using-an-azure-resource-manager-template"></a>Vytvoření účtu Automation pomocí šablony Azure Resource Manager
+# <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Vytvoření účtu Automation pomocí šablony Azure Resource Manager
 
 Pomocí [Azure Resource Manager šablon](../azure-resource-manager/templates/template-syntax.md) můžete vytvořit účet Azure Automation ve skupině prostředků. Tento článek poskytuje ukázkovou šablonu, která:
 
@@ -310,8 +310,6 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte účet Automation, můžete vytvářet Runbooky a automatizovat ruční procesy.
-
-* Pokud chcete začít pracovat s Runbooky PowerShellu, přečtěte si téma [Vytvoření Runbooku PowerShellu](automation-first-runbook-textual-powershell.md).
-* Informace o tom, jak začít s Runbooky pracovních postupů PowerShellu, najdete v tématu [Vytvoření Runbooku pracovního postupu PowerShellu](automation-first-runbook-textual.md).
-* Chcete-li začít s Runbooky Python 2, přečtěte si téma [Vytvoření Runbooku v Pythonu](automation-first-runbook-textual-python2.md).
+* [Vytvoření runbooku v PowerShellu](automation-first-runbook-textual-powershell.md)
+* [Vytvoření Runbooku pracovního postupu PowerShellu](automation-first-runbook-textual.md)
+* [Vytvoření runbooku v Pythonu](automation-first-runbook-textual-python2.md)

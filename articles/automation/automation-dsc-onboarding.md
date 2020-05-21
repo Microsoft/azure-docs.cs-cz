@@ -1,6 +1,6 @@
 ---
-title: Povolit počítače pro správu podle konfigurace stavu Azure Automation
-description: Nastavení počítačů pro správu pomocí konfigurace stavu Azure Automation
+title: Povolit konfiguraci stavu Azure Automation
+description: V tomto článku se dozvíte, jak nastavit počítače pro správu pomocí konfigurace stavu Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 52cd72d1144fa2acad993e927d49545d645d596f
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: a2693803603e053f06c8b6886c6f6639f0859461
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993737"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713144"
 ---
-# <a name="enable-machines-for-management-by-azure-automation-state-configuration"></a>Povolit počítače pro správu podle konfigurace stavu Azure Automation
+# <a name="enable-azure-automation-state-configuration"></a>Povolit konfiguraci stavu Azure Automation
 
 V tomto tématu se dozvíte, jak můžete nastavit počítače pro správu pomocí konfigurace stavu Azure Automation. Podrobnosti o této službě najdete v tématu [Přehled konfigurace stavu Azure Automation](automation-dsc-overview.md).
 
@@ -26,7 +26,7 @@ Konfigurace stavu Azure Automation umožňuje snadno povolit virtuální počít
 
 > [!NOTE]
 >Nasazení DSC na uzel Linux používá složku **adresáře/TMP** . Moduly, jako `nxautomation` jsou dočasně staženy k ověření před jejich instalací do příslušných umístění. Aby se zajistilo, že se moduly správně nainstalují, musí mít agent Log Analytics pro Linux oprávnění ke čtení a zápisu ve složce **adresáře/TMP** .<br><br>
->Agent Log Analytics pro Linux se spouští jako `omsagent` uživatel. Pokud chcete `omsagent` uživateli udělit oprávnění k zápisu >, spusťte příkaz `setfacl -m u:omsagent:rwx /tmp`.
+>Agent Log Analytics pro Linux se spouští jako `omsagent` uživatel. Pokud chcete uživateli udělit oprávnění k zápisu >`omsagent` , spusťte příkaz `setfacl -m u:omsagent:rwx /tmp` .
 
 ### <a name="enable-a-vm-using-azure-portal"></a>Povolení virtuálního počítače pomocí Azure Portal
 
@@ -53,7 +53,7 @@ Pomocí šablon Azure Resource Manager můžete nainstalovat a povolit virtuáln
 Pomocí rutiny [Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) v PowerShellu můžete povolit virtuální počítače pro konfiguraci stavu. 
 
 > [!NOTE]
->Rutina je implementována v `Register-AzAutomationDscNode` současné době pouze pro počítače s Windows, protože aktivuje pouze rozšíření systému Windows.
+>`Register-AzAutomationDscNode`Rutina je implementována v současné době pouze pro počítače s Windows, protože aktivuje pouze rozšíření systému Windows.
 
 ### <a name="register-vms-across-azure-subscriptions"></a>Registrace virtuálních počítačů napříč předplatnými Azure
 
@@ -83,7 +83,7 @@ Pro konfiguraci stavu můžete povolit servery Linux spuštěné místně nebo v
 1. Ujistěte se, že na počítačích je nainstalovaná nejnovější verze [prostředí PowerShell pro konfiguraci požadovaného stavu pro Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) , aby bylo možné konfigurovat stav.
 2. Pokud se ve [výchozím nastavení místní Configuration Manager PowerShellu pro DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4) shodují s vaším případem použití, a chcete povolit počítače tak, aby využívaly konfiguraci a nahlásily stav:
 
-   - V každém počítači se systémem Linux, který `Register.py` chcete povolit, použijte k povolení nastavení počítače s místními Configuration Manager PowerShellu pro DSC.
+   - V každém počítači se systémem Linux, který chcete povolit, použijte `Register.py` k povolení nastavení počítače s místními Configuration Manager PowerShellu pro DSC.
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
@@ -123,7 +123,7 @@ Pokud chcete povolit libovolný počítač pro konfiguraci stavu, můžete vygen
 > [!NOTE]
 > DSC metaconfigurations obsahují tajné kódy potřebné k povolení počítače v účtu Automation pro správu. Ujistěte se, že jste správně chránili všechny metaconfigurationsy DSC, které jste vytvořili, nebo je po použití odstraňte.
 
-Podpora proxy serveru pro metaconfigurations je řízena pomocí LCM, což je modul Windows PowerShell DSC. LCM běží na všech cílových uzlech a zodpovídá za volání prostředků konfigurace, které jsou součástí skriptu DSC metaconfiguration. Do metaconfiguration můžete zahrnout podporu proxy serveru tak, že zahrnete definice adresy URL proxy serveru a přihlašovacích údajů proxy serveru `ConfigurationRepositoryWeb`podle `ResourceRepositoryWeb`potřeby v `ReportServerWeb` blocích, a. Viz [Konfigurace místního Configuration Manager](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7).
+Podpora proxy serveru pro metaconfigurations se řídí [místním Configuration Manager](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7), což je modul Windows PowerShell DSC. LCM běží na všech cílových uzlech a zodpovídá za volání prostředků konfigurace, které jsou součástí skriptu DSC metaconfiguration. Do metaconfiguration můžete zahrnout podporu proxy tak, že zahrnete definice `ProxyURL` a `ProxyCredential` vlastnosti podle potřeby v `ConfigurationRepositoryWeb` blocích, `ResourceRepositoryWeb` a `ReportServerWeb` . Příkladem nastavení adresy URL je `ProxyURL = "http://172.16.3.6:3128";` . `ProxyCredential`Vlastnost je nastavena na `PSCredential` objekt, jak je popsáno v tématu [Správa přihlašovacích údajů v Azure Automation](shared-resources/credentials.md). 
 
 ### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>Generování DSC metaconfigurations pomocí konfigurace DSC
 
@@ -245,9 +245,9 @@ Podpora proxy serveru pro metaconfigurations je řízena pomocí LCM, což je mo
 
 1. Zadejte registrační klíč a adresu URL pro váš účet Automation a názvy počítačů, které chcete povolit. Všechny ostatní parametry jsou volitelné. Pokud chcete najít registrační klíč a registrační adresu URL pro váš účet Automation, přečtěte si téma [povolení zabezpečeného počítače pomocí registrace](#enable-machines-securely-using-registration).
 
-1. Pokud chcete, aby počítače nahlásily informace o stavu DSC do konfigurace stavu Azure Automation, ale ne z konfigurace Pull nebo modulů prostředí `ReportOnly` PowerShell, nastavte parametr na hodnotu true.
+1. Pokud chcete, aby počítače nahlásily informace o stavu DSC do konfigurace stavu Azure Automation, ale ne z konfigurace Pull nebo modulů prostředí PowerShell, nastavte `ReportOnly` parametr na hodnotu true.
 
-1. Pokud `ReportOnly` není nastavené, počítače nahlásí informace o stavu DSC do konfigurace stavu Azure Automation a konfigurace pro vyžádání obsahu nebo moduly prostředí PowerShell. Nastavte parametry odpovídajícím způsobem `ConfigurationRepositoryWeb`v `ResourceRepositoryWeb`blocích, `ReportServerWeb` a.
+1. Pokud není `ReportOnly` nastavené, počítače nahlásí informace o stavu DSC do konfigurace stavu Azure Automation a konfigurace pro vyžádání obsahu nebo moduly prostředí PowerShell. Nastavte parametry odpovídajícím způsobem `ConfigurationRepositoryWeb` v `ResourceRepositoryWeb` blocích, a `ReportServerWeb` .
 
 1. Spusťte skript. Teď byste měli mít pracovní složku s názvem **DscMetaConfigs**, která obsahuje PowerShell DSC metaconfigurations pro počítače, které chcete povolit (jako správce).
 
@@ -299,11 +299,11 @@ Pro zvýšení zabezpečení můžete na stránce klíče kdykoli znovu vygenero
 
 Po registraci počítače jako uzlu DSC v konfiguraci stavu Azure Automation existuje několik důvodů, proč možná budete muset uzel v budoucnu znovu zaregistrovat.
 
-- **Obnovení certifikátu.** U verzí Windows serveru před Windows serverem 2019 každý uzel automaticky vyjednává jedinečný certifikát pro ověřování, jehož platnost vyprší po jednom roce. Pokud certifikát vyprší bez obnovení, uzel nebude schopen komunikovat s Azure Automation a je označen `Unresponsive`. V současné době nemůže registrační protokol pro PowerShell DSC automaticky obnovovat certifikáty, když se blíží vypršení platnosti, a musíte uzly znovu zaregistrovat po roce. Před opakovaným registrací se ujistěte, že na každém uzlu je spuštěný WMF 5 RTM. 
+- **Obnovení certifikátu.** U verzí Windows serveru před Windows serverem 2019 každý uzel automaticky vyjednává jedinečný certifikát pro ověřování, jehož platnost vyprší po jednom roce. Pokud certifikát vyprší bez obnovení, uzel nebude schopen komunikovat s Azure Automation a je označen `Unresponsive` . V současné době nemůže registrační protokol pro PowerShell DSC automaticky obnovovat certifikáty, když se blíží vypršení platnosti, a musíte uzly znovu zaregistrovat po roce. Před opakovaným registrací se ujistěte, že na každém uzlu je spuštěný WMF 5 RTM. 
 
     Opakovaná registrace provedla 90 dní nebo méně z času vypršení platnosti certifikátu nebo kdykoli po uplynutí doby vypršení platnosti certifikátu dojde k vygenerování a použití nového certifikátu. Řešení tohoto problému je součástí Windows serveru 2019 a novějších verzí.
 
-- **Změny hodnot LCM v DSC.** Možná budete muset změnit [hodnoty prostředí POWERSHELL DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4) , které nastavíte při počáteční registraci uzlu, například `ConfigurationMode`. V současné době můžete tyto hodnoty agenta DSC změnit pouze pomocí opětovné registrace. Jedinou výjimkou je hodnota konfigurace uzlu přiřazená uzlu. Tuto možnost můžete v Azure Automation DSC změnit přímo.
+- **Změny hodnot LCM v DSC.** Možná budete muset změnit [hodnoty prostředí POWERSHELL DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4) , které nastavíte při počáteční registraci uzlu, například `ConfigurationMode` . V současné době můžete tyto hodnoty agenta DSC změnit pouze pomocí opětovné registrace. Jedinou výjimkou je hodnota konfigurace uzlu přiřazená uzlu. Tuto možnost můžete v Azure Automation DSC změnit přímo.
 
 Uzel můžete znovu zaregistrovat stejně, jako jste předtím zaregistrovali uzel, a to pomocí kterékoli z metod popsaných v tomto dokumentu. Před opětovnou registrací není nutné zrušit registraci uzlu v konfiguraci stavu Azure Automation.
 

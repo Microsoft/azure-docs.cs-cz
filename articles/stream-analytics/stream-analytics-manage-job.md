@@ -7,18 +7,18 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 79b8cfd3f50ffd9f1c6b36dd73942ed3ddc5929f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 577a80f04ad186ab1575fa78db3fa59402d6058f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594912"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697395"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Kurz: Analýza dat telefonního hovoru pomocí Stream Analytics a vizualizace výsledků v řídicím panelu Power BI
 
 V tomto kurzu se dozvíte, jak analyzovat data telefonních hovorů pomocí Azure Stream Analytics. Data telefonního hovoru generovaná klientskou aplikací obsahují některá falešná volání, která se budou filtrovat podle Stream Analytics úlohy.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Generování ukázkových dat telefonních hovorů a jejich odesílání do služby Azure Event Hubs
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 Než začnete, proveďte následující akce:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 * Stáhněte si aplikaci pro generování událostí telefonních hovorů [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z webu Microsoft Download Center. Případně získejte zdrojový kód z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator).
 * Budete potřebovat účet Power BI.
 
@@ -43,15 +43,15 @@ Než bude Stream Analytics moct analyzovat datový proud podvodných volání, m
 
 Pomocí následujícího postupu vytvořte centrum událostí a odešlete do něj data volání:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte **vytvořit prostředek** > **Internet věcí** > **Event Hubs**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Event Hubs**.
 
    ![Vytvoření centra událostí Azure na portálu](media/stream-analytics-manage-job/find-event-hub-resource.png)
 3. Vyplňte podokno **vytvořit obor názvů** s následujícími hodnotami:
 
    |**Nastavení**  |**Navrhovaná hodnota** |**Popis**  |
    |---------|---------|---------|
-   |Název     | myEventHubsNS        |  Jedinečný název pro identifikaci oboru názvů centra událostí.       |
+   |Name     | myEventHubsNS        |  Jedinečný název pro identifikaci oboru názvů centra událostí.       |
    |Předplatné     |   \<Vaše předplatné\>      |   Vyberte předplatné Azure, ve kterém chcete vytvořit centrum událostí.      |
    |Skupina prostředků     |   MyASADemoRG      |  Vyberte **Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet.       |
    |Umístění     |   USA – západ 2      |    Umístění, kde můžete nasadit obor názvů centra událostí.     |
@@ -113,7 +113,7 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
 
    Po několika sekundách aplikace začne zobrazovat záznamy telefonních hovorů na obrazovce, když je odešle do centra událostí. Data telefonních hovorů obsahují následující pole:
 
-   |**Záznam**  |**Definice**  |
+   |**Zapisovací**  |**Definice**  |
    |---------|---------|
    |CallrecTime    |  Časové razítko pro počáteční čas volání.       |
    |SwitchNum     |  Telefonní ústředna použitá pro spojení volání. V tomto příkladu jsou přepínače řetězce reprezentující zemi nebo oblast původu (USA, Čína, Spojené království, Německo nebo Austrálie).       |
@@ -128,7 +128,7 @@ Teď, když máte stream událostí volání, můžete vytvořit úlohu Stream A
 
 1. Pokud chcete vytvořit úlohu Stream Analytics, přejděte na web [Azure Portal](https://portal.azure.com/).
 
-2. Vyberte **vytvořit prostředek** > **Internet věcí** > **Stream Analytics úlohu**.
+2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Stream Analytics úlohu**.
 
 3. Vyplňte podokno **Nová úloha Stream Analytics** následujícími hodnotami:
 
@@ -175,7 +175,7 @@ Posledním krokem je definování výstupní jímky pro úlohu, do které může
 
 2. V podokně úlohy Stream Analytics v části **Topologie úlohy** vyberte možnost **Výstupy**.
 
-3. Vyberte **+ Přidat** > **Power BI**. Potom ve formuláři vyplňte následující podrobnosti a vyberte **Autorizovat**:
+3. Vyberte **+ Přidat**  >  **Power BI**. Potom ve formuláři vyplňte následující podrobnosti a vyberte **Autorizovat**:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
@@ -210,7 +210,7 @@ V tomto příkladu podvodná volání provádí stejný uživatel v pětisekundo
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   Při kontrole podvodných volání můžete ověřovat spojení sama na sebe ve streamovaných datech podle hodnoty `CallRecTime`. Pak můžete vyhledat záznamy volání, kde `CallingIMSI` hodnota (původní číslo) je stejná, ale `SwitchNum` hodnota (země/oblast původu) se liší. Když použijete operaci JOIN se streamovanými daty, musí spojení určit nějaké limity, jak daleko mohou být odpovídající řádky vzdáleny v čase. Protože streamování dat je nekonečné, jsou časové hranice pro relaci určené v klauzuli spojení **ON** pomocí funkce [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics).
+   Při kontrole podvodných volání můžete ověřovat spojení sama na sebe ve streamovaných datech podle hodnoty `CallRecTime`. Pak můžete vyhledat záznamy volání `CallingIMSI` , kde hodnota (původní číslo) je stejná, ale `SwitchNum` hodnota (země/oblast původu) se liší. Když použijete operaci JOIN se streamovanými daty, musí spojení určit nějaké limity, jak daleko mohou být odpovídající řádky vzdáleny v čase. Protože streamování dat je nekonečné, jsou časové hranice pro relaci určené v klauzuli spojení **ON** pomocí funkce [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics).
 
    Tento dotaz je jako normální spojení SQL, kromě funkce **DATEDIFF**. Funkce **DATEDIFF** použitá v tomto dotazu je specifická pro Stream Analytics a musí se nacházet v rámci klauzule `ON...BETWEEN`.
 
@@ -264,7 +264,7 @@ Dotaz z editoru dotazů můžete otestovat s použitím ukázkových dat. Otestu
 
 V této části kurzu použijete ukázkovou webovou aplikaci [ASP.NET](https://asp.net/) vytvořenou týmem Power BI pro vložení vašeho řídicího panelu. Další informace o vkládání řídicích panelů najdete v tématu [Vkládání pomocí Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
 
-Pokud chcete nastavit aplikaci, přejděte do úložiště GitHubu [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) a postupujte podle pokynů v části **data, která vlastní uživatel** (použijte adresy URL přesměrování a domovské stránky v podčásti **Integration-Web-App** ). Vzhledem k tomu, že používáme příklad řídicího panelu, použijte vzorový kód **Integration-Web-App** umístěný v [úložišti GitHub](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/User%20Owns%20Data/integrate-web-app).
+Pokud chcete nastavit aplikaci, přejděte do úložiště GitHubu [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) a postupujte podle pokynů v části **data, která vlastní uživatel** (použijte adresy URL přesměrování a domovské stránky v podčásti **Integration-Web-App** ). Vzhledem k tomu, že používáme příklad řídicího panelu, použijte vzorový kód **Integration-Web-App** umístěný v [úložišti GitHub](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/Embed%20for%20your%20organization/integrate-web-app).
 Jakmile aplikace běží v prohlížeči, postupujte podle těchto kroků a vložte do webové stránky řídicí panel, který jste vytvořili dříve:
 
 1. Vyberte možnost **Přihlásit se k Power BI**, která aplikaci udělí přístup k řídicím panelům v účtu Power BI.

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace založená na STIG, která se má použít v konfiguraci stavu – Azure Automation
-description: Přečtěte si o konfiguracích založených na STIG pro konfiguraci stavu v Azure Automation.
+title: Konfigurace dat na základě STIG pro konfiguraci stavu Azure Automation
+description: V tomto článku se dozvíte, jak nakonfigurovat data na základě STIG pro konfiguraci stavu Azure Automation.
 keywords: DSC, PowerShell, konfigurace, instalace
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d6d257198fcae54b1214d77f6b905d876d2687f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e17ae51addce2bb156b6f1c54e29fd777699516f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585535"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83711376"
 ---
-# <a name="configuration-based-on-stig"></a>Konfigurace na základě STIG
+# <a name="configure-data-based-on-stig-for-azure-automation-state-configuration"></a>Konfigurace dat na základě STIG pro konfiguraci stavu Azure Automation
 
 > Platí pro: Windows PowerShell 5,1
 

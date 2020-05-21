@@ -1,17 +1,17 @@
 ---
 title: Rychlý start Azure – Vytvoření účtu Azure Automation | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit účet Azure Automation a spustit runbook.
+description: Tento článek vám pomůže začít vytvářet účet Azure Automation a spouštět Runbook.
 services: automation
 ms.date: 04/04/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 7704f080b7c1878f2fa2b079a1f242c8c2cc87a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d4cdb87302e12c024e15f8e0a7e3854d6f707a7
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536977"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715456"
 ---
 # <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
 
@@ -63,7 +63,7 @@ Spusťte některý z runbooků pro tento kurz.
 
     ![Stránka úlohy runbooku](./media/automation-quickstart-create-account/automation-tutorial-script-job.png)
 
-1. Jakmile se `Running`stav úlohy zobrazí, klikněte na **výstup** nebo **všechny protokoly** a zobrazte výstup úlohy Runbooku. V případě tohoto cvičného runbooku je výstupem seznam vašich prostředků Azure.
+1. Jakmile se stav úlohy `Running` zobrazí, klikněte na **výstup** nebo **všechny protokoly** a zobrazte výstup úlohy Runbooku. V případě tohoto cvičného runbooku je výstupem seznam vašich prostředků Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

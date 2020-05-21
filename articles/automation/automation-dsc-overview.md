@@ -1,6 +1,6 @@
 ---
 title: Přehled konfigurace stavu Azure Automation
-description: Přehled konfigurace stavu Azure Automation, jejích podmínek a známých problémů
+description: Tento článek poskytuje přehled konfigurace stavu Azure Automation.
 keywords: PowerShell DSC, konfigurace požadovaného stavu, PowerShell DSC Azure
 services: automation
 ms.service: automation
@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dbe617e6614eb69f0a7f6e31c89c1f645804fe1b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: be0da641a67d532851b8d295065213016c795f01
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993851"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713178"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
 
@@ -88,18 +88,18 @@ Pokud jsou uzly umístěny v privátní síti, je nutné zadat následující po
 * Port: pro odchozí přístup k Internetu se vyžaduje jenom TCP 443.
 * Globální adresa URL: ***. Azure-Automation.NET**
 * Globální adresa URL US Gov – Virginie: ***. Azure-Automation.us**
-* Služba agenta: **https://\<ID pracovního prostoru\>. agentsvc.Azure-Automation.NET**
+* Služba agenta: **https:// \< id pracovního prostoru \> . agentsvc.Azure-Automation.NET**
 
 Pokud používáte prostředky DSC, které komunikují mezi uzly, například s [prostředky WAITFOR *](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), musíte taky u těchto uzlů povolený přenos. Pochopte tyto požadavky na síť v dokumentaci ke každému prostředku DSC.
 
 #### <a name="proxy-support"></a>Podpora proxy serveru
 
-Podpora proxy serveru pro agenta DSC je dostupná ve Windows verze 1809 a novějším. Tato možnost je povolena nastavením hodnot pro `ProxyURL` a `ProxyCredential` v [metaconfiguration skriptu](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) , který slouží k registraci uzlů.
+Podpora proxy serveru pro agenta DSC je dostupná ve Windows verze 1809 a novějším. Tato možnost je povolena nastavením hodnot `ProxyURL` `ProxyCredential` vlastností a v [metaconfiguration skriptu](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) , který slouží k registraci uzlů. 
 
 >[!NOTE]
 >Konfigurace stavu Azure Automation neposkytuje podporu proxy serveru DSC pro předchozí verze Windows.
 
-V případě uzlů se systémem Linux agent DSC podporuje proxy a používá `http_proxy` proměnnou k určení adresy URL.
+V případě uzlů se systémem Linux agent DSC podporuje proxy a používá `http_proxy` proměnnou k určení adresy URL. Další informace o podpoře proxy serveru najdete v tématu věnovaném [generování DSC metaconfigurations](automation-dsc-onboarding.md#generate-dsc-metaconfigurations).
 
 #### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Azure Automation rozsahy sítě a obor názvů v síti konfigurace stavu
 

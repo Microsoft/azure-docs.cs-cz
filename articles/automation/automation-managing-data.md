@@ -1,23 +1,20 @@
 ---
-title: Správa dat Azure Automation
-description: Tento článek obsahuje několik témat pro správu Azure Automationho prostředí.  V současné době zahrnuje uchovávání dat a zálohování Azure Automation zotavení po havárii v Azure Automation.
+title: Správa dat služby Azure Automation
+description: Tento článek obsahuje koncepty správy dat v Azure Automation, včetně uchovávání a zálohování dat.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: f917e9c64a932d75fd0f6b14c9e0f35808467355
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44fe626abd71c13b7f16aa07c4ddf261ff3cacea
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984653"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715422"
 ---
-# <a name="managing-azure-automation-data"></a>Správa dat Azure Automation
+# <a name="management-of-azure-automation-data"></a>Správa dat služby Azure Automation
 
 Tento článek obsahuje několik témat pro správu dat v prostředí Azure Automation.
-
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="data-retention"></a>Uchovávání dat
 

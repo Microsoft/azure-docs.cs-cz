@@ -4,12 +4,12 @@ description: Správa výkonu aplikací a monitorování využití živých webov
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 0ffa9e38d0ffbca41e4f4a8f3d27015ebe4b8bae
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 96ac0d81e477f4ac45208971282b3be982bf4fa5
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891744"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698223"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights, funkce [Azure monitor](../overview.md), je rozšiřitelná služba pro správu výkonu aplikací (APM) pro vývojáře a odborníky v oblasti DevOps. Použijte ho k monitorování svých živých aplikací. Automaticky detekuje anomálie výkonu a obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací skutečně dělají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node. js, Java a Python hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
@@ -49,7 +49,7 @@ Data se dají prozkoumávat mnoha způsoby. Podívejte se na tyto články:
 
 |  |  |
 | --- | --- |
-| [**Inteligentní zjišťování a ruční výstrahy**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Nastavte automatické výstrahy, které se přizpůsobí normálním vzorům telemetrie a triggeru vaší aplikace, když je něco mimo obvyklý vzor. Můžete také [nastavit výstrahy](../../azure-monitor/app/alerts.md) na konkrétní úrovně vlastních nebo standardních metrik. |![Ukázka výstrah](./media/app-insights-overview/alerts-tn.png) |
+| [**Inteligentní zjišťování a ruční výstrahy**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Nastavte automatické výstrahy, které se přizpůsobí normálním vzorům telemetrie a triggeru vaší aplikace, když je něco mimo obvyklý vzor. Můžete také [nastavit výstrahy](../../azure-monitor/platform/alerts-log.md) na konkrétní úrovně vlastních nebo standardních metrik. |![Ukázka výstrah](./media/app-insights-overview/alerts-tn.png) |
 | [**Mapa aplikace**](../../azure-monitor/app/app-map.md)<br/>Prozkoumejte komponenty vaší aplikace s klíčovými metrikami a výstrahami. |![Mapa aplikace](./media/app-insights-overview/appmap-tn.png)  |
 | [**Profiler**](../../azure-monitor/app/profiler.md)<br/>Zkontrolujte profily spouštění u vzorků požadavků. |![Profiler](./media/app-insights-overview/profiler.png) |
 | [**Analýza využití**](../../azure-monitor/app/usage-overview.md)<br/>Analyzujte segmentaci a udržení uživatelů.|![Nástroj Udržení](./media/app-insights-overview/retention.png) |

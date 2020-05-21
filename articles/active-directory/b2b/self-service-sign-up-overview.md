@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e0325b43b6726f04d5994b60404f218ac58122d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fd76a0556ff22890aff9f4b623e7688064192558
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597531"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712192"
 ---
 # <a name="self-service-sign-up-preview"></a>Samoobslužná registrace (Preview)
 |     |
@@ -24,17 +24,20 @@ ms.locfileid: "83597531"
 | Samoobslužná registrace je funkce veřejné verze Preview služby Azure Active Directory. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.|
 |     |
 
-Když sdílíte aplikace s externími uživateli, možná nebudete vždy znát předem, který bude potřebovat přístup k aplikaci. Jako alternativu k zasílání pozvánek přímo jednotlivcům můžete povolit externím uživatelům zaregistrovat se ke konkrétním aplikacím sami tím, že povolíte samoobslužné registrace. Přizpůsobené prostředí pro registraci můžete vytvořit přizpůsobením uživatelského toku samoobslužné registrace. Můžete například poskytnout možnosti pro poskytovatele služeb Azure AD nebo sociální identity a shromažďovat informace o uživateli.
+Když sdílíte aplikaci s externími uživateli, možná nebudete vždy znát předem, který bude potřebovat přístup k aplikaci. Jako alternativu k zasílání pozvánek přímo jednotlivcům můžete povolit externím uživatelům zaregistrovat se ke konkrétním aplikacím sami tím, že povolíte samoobslužné registrace. Přizpůsobené prostředí pro registraci můžete vytvořit přizpůsobením uživatelského toku samoobslužné registrace. Můžete například zadat možnosti pro registraci pomocí poskytovatelů služeb Azure AD nebo sociální identity a shromažďovat informace o uživateli během procesu registrace.
+
+> [!NOTE]
+> Můžete přidružit toky uživatelů k aplikacím vytvořeným vaší organizací. Toky uživatelů se nedají použít pro aplikace Microsoftu, jako je SharePoint nebo Teams.
 
 ## <a name="user-flow-for-self-service-sign-up"></a>Tok uživatele pro samoobslužné přihlášení
 
-Uživatelský tok pro samoobslužné zápisy vytváří pro externí uživatele prostředí pro registraci prostřednictvím aplikace, kterou chcete sdílet. Tok uživatele je možné přidružit k jedné nebo více aplikacím. Nejprve povolíte samoobslužnou registraci svého tenanta a federovat se všemi zprostředkovateli identity, kterým chcete povolit použití externích uživatelů pro přihlášení. Pak vytvoříte a přizpůsobíte uživatelský tok pro registraci a přiřadíte k němu své aplikace.
+Uživatelský tok pro samoobslužné zápisy vytváří pro externí uživatele prostředí pro registraci prostřednictvím aplikace, kterou chcete sdílet. Tok uživatele je možné přidružit k jedné nebo více aplikacím. Nejprve povolíte samoobslužnou registraci svého tenanta a federovat s poskytovateli identity, kterým chcete povolit použití externích uživatelů pro přihlášení. Pak vytvoříte a přizpůsobíte uživatelský tok pro registraci a přiřadíte k němu své aplikace.
 Nastavení toku uživatele můžete nakonfigurovat, abyste mohli řídit, jak se uživatel zaregistruje do aplikace:
 
 - Typy účtů používané pro přihlašování, jako jsou účty na Facebooku nebo účty Azure AD
 - Atributy, které se mají shromáždit od uživatele, který se registruje, jako je jméno, PSČ nebo země sídla
 
-Když se uživatel chce přihlásit ke svojí aplikaci, ať už se jedná o webovou, mobilní, desktopovou nebo jednostránkovou aplikaci (SPA), zahájí žádost o autorizaci koncovému bodu zadaného uživatelem. Tok uživatele definuje a řídí uživatelské prostředí. Po dokončení uživatelského toku registrace Azure AD vygeneruje token a pak přesměruje uživatele zpět do vaší aplikace. Stejný tok uživatelů může používat více aplikací.
+Když se uživatel chce přihlásit ke svojí aplikaci, ať už se jedná o webovou, mobilní, desktopovou nebo jednostránkovou aplikaci (SPA), zahájí žádost o autorizaci koncovému bodu zadaného uživatelem. Tok uživatele definuje a řídí uživatelské prostředí. Když uživatel dokončí uživatelský tok registrace, Azure AD vygeneruje token a přesměruje ho uživatele zpátky do vaší aplikace. Po dokončení registrace se účet hosta zřídí pro uživatele v adresáři. Stejný tok uživatelů může používat více aplikací.
 
 ## <a name="example-of-self-service-sign-up"></a>Příklad samoobslužné registrace
 
@@ -47,7 +50,7 @@ K registraci používají e-mail podle svého výběru.
 
 ![Příklad zobrazující výběr Facebooku pro přihlášení](media/self-service-sign-up-overview/example-sign-in-with-facebook.png)
 
-Azure AD vytvoří relaci s Woodgrove pomocí účtu Facebook partnera a vytvoří nový účet.
+Azure AD vytvoří relaci s Woodgrove pomocí účtu Facebook partnera a po registraci vytvoří nový účet Guest pro uživatele.
 
 Woodgrove chce o uživateli získat další informace, jako je název, obchodní název, registrační kód pro firmy, telefonní číslo.
 

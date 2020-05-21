@@ -4,12 +4,12 @@ description: Monitorujte Azure Backup úlohy a vytvářejte vlastní výstrahy p
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 54a98cebc2887f7508543a4dc752b2145c3bbda2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81e4f9f63df19ed57f26be8eb246c6dab1bf512c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183649"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714827"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure Monitor
 
@@ -45,6 +45,9 @@ Charakteristickou charakteristikou výstrahy je stav triggeru. Vyberte **podmín
 
 V případě potřeby můžete upravit dotaz Kusto. Výběr prahové hodnoty, tečky a frekvence. Prahová hodnota určuje, kdy bude vyvolána výstraha. Období je okno času, ve kterém se dotaz spustí. Pokud je například prahová hodnota větší než 0, období je 5 minut a frekvence je 5 minut, potom pravidlo spustí dotaz každých 5 minut a zkontroluje předchozí 5 minut. Pokud je počet výsledků větší než 0, budete upozorněni na vybranou skupinu akcí.
 
+> [!NOTE]
+> Chcete-li spustit pravidlo výstrahy jednou denně, ve všech událostech nebo protokolech, které byly vytvořeny v daném dni, změňte hodnotu period a počet_plateb na 1440, tj. 24 hodin.
+
 #### <a name="alert-action-groups"></a>Skupiny akcí výstrah
 
 Pro zadání kanálu oznámení použijte skupinu akcí. Chcete-li zobrazit dostupné mechanismy oznámení, vyberte v části **skupiny akcí**možnost **vytvořit nový**.
@@ -64,6 +67,7 @@ Výchozí grafy vám umožní Kusto dotazy na základní scénáře, ve kterých
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     ````
 
@@ -72,6 +76,7 @@ Výchozí grafy vám umožní Kusto dotazy na základní scénáře, ve kterých
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Failed"
     ````
 
@@ -80,6 +85,7 @@ Výchozí grafy vám umožní Kusto dotazy na základní scénáře, ve kterých
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -96,6 +102,7 @@ Výchozí grafy vám umožní Kusto dotazy na základní scénáře, ve kterých
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup" and JobOperationSubType=="Log"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -112,6 +119,7 @@ Výchozí grafy vám umožní Kusto dotazy na základní scénáře, ve kterých
     ````Kusto
     AddonAzureBackupJobs
     | where JobOperation=="Backup"
+    | summarize arg_max(TimeGenerated,*) by JobUniqueId
     | where JobStatus=="Completed"
     | join kind=inner
     (
@@ -161,8 +169,8 @@ Diagnostická data z trezoru se do Log Analyticsho pracovního prostoru napumpa 
 Protokoly aktivit můžete použít také k získání oznámení o událostech, jako je například úspěch zálohování. Začněte tím, že prodržíte tyto kroky:
 
 1. Přihlaste se k portálu Azure Portal.
-1. Otevřete příslušný trezor Recovery Services.
-1. Ve vlastnostech trezoru otevřete část **Protokol aktivit** .
+2. Otevřete příslušný trezor Recovery Services.
+3. Ve vlastnostech trezoru otevřete část **Protokol aktivit** .
 
 Chcete-li identifikovat příslušný protokol a vytvořit výstrahu:
 
@@ -170,9 +178,9 @@ Chcete-li identifikovat příslušný protokol a vytvořit výstrahu:
 
    ![Filtrování pro vyhledání protokolů aktivit pro zálohování virtuálních počítačů Azure](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-1. Chcete-li zobrazit relevantní podrobnosti, vyberte název operace.
-1. Výběrem **nového pravidla výstrahy** otevřete stránku **vytvořit pravidlo** .
-1. Pomocí Azure Monitor postupujte podle kroků uvedených v části [Vytvoření, zobrazení a správa výstrah protokolu aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
+2. Chcete-li zobrazit relevantní podrobnosti, vyberte název operace.
+3. Výběrem **nového pravidla výstrahy** otevřete stránku **vytvořit pravidlo** .
+4. Pomocí Azure Monitor postupujte podle kroků uvedených v části [Vytvoření, zobrazení a správa výstrah protokolu aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
 
    ![Nové pravidlo výstrahy](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 

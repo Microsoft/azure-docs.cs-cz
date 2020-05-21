@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 7a142060a29561526c378ce04b23aa2b286cd6c1
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 726dd4e18565174c8bbf49b204af64129e607db5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997400"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714725"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Implementace hlasových asistentů ve Windows
 
@@ -43,7 +43,7 @@ K odemknutí funkce hlasového asistenta použijte klíč funkce pro omezený p�
 
 Aplikace musí zaregistrovat sám sebe, model klíčových slov a jeho jazyk v systému Windows.
 
-Začněte načtením klíčového slova detektor. V tomto ukázkovém kódu načteme první detektor, ale můžete vybrat konkrétní detektor výběrem z `configurableDetectors`.
+Začněte načtením klíčového slova detektor. V tomto ukázkovém kódu načteme první detektor, ale můžete vybrat konkrétní detektor výběrem z `configurableDetectors` .
 
 ```csharp
 private static async Task<ActivationSignalDetector> GetFirstEligibleDetectorAsync()
@@ -65,19 +65,19 @@ private static async Task<ActivationSignalDetector> GetFirstEligibleDetectorAsyn
 }
 ```
 
-Po načtení objektu ActivationSignalDetector zavolejte svou `ActivationSignalDetector.CreateConfigurationAsync` metodu s ID signálu, ID modelu a zobrazovaným názvem pro registraci klíčového slova a načtení aplikace. `ActivationSignalDetectionConfiguration` ID signálu a modelu by měly být identifikátory GUID, které vývojář určil a zůstávají konzistentní pro stejné klíčové slovo.
+Po načtení objektu ActivationSignalDetector zavolejte svou `ActivationSignalDetector.CreateConfigurationAsync` metodu s ID signálu, ID modelu a zobrazovaným názvem pro registraci klíčového slova a načtení aplikace `ActivationSignalDetectionConfiguration` . ID signálu a modelu by měly být identifikátory GUID, které vývojář určil a zůstávají konzistentní pro stejné klíčové slovo.
 
 ### <a name="verify-that-the-voice-activation-setting-is-enabled"></a>Ověřte, že je povolené nastavení aktivace hlasu.
 
-Pro použití aktivace hlasu musí uživatel povolit aktivaci hlasu pro svůj systém a povolit aktivaci hlasu pro svoji aplikaci. Nastavení v části nastavení ochrany osobních údajů aktivace hlasu najdete v tématu Nastavení systému Windows. Chcete-li zjistit stav nastavení aktivace hlasu ve vaší aplikaci, použijte instanci z části `ActivationSignalDetectionConfiguration` registrace klíčového slova. Pole [AvailabilityInfo](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-uwp/UWPVoiceAssistantSample/UIAudioStatus.cs#L128) v `ActivationSignalDetectionConfiguration` obsahuje hodnotu výčtu, která popisuje stav nastavení aktivace hlasu.
+Pro použití aktivace hlasu musí uživatel povolit aktivaci hlasu pro svůj systém a povolit aktivaci hlasu pro svoji aplikaci. Nastavení v části nastavení ochrany osobních údajů aktivace hlasu najdete v tématu Nastavení systému Windows. Chcete-li zjistit stav nastavení aktivace hlasu ve vaší aplikaci, použijte instanci `ActivationSignalDetectionConfiguration` z části registrace klíčového slova. Pole [AvailabilityInfo](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-uwp/UWPVoiceAssistantSample/UIAudioStatus.cs#L128) v `ActivationSignalDetectionConfiguration` obsahuje hodnotu výčtu, která popisuje stav nastavení aktivace hlasu.
 
 ### <a name="retrieve-a-conversationalagentsession-to-register-the-app-with-the-mva-system"></a>Načtení ConversationalAgentSession k registraci aplikace v systému MVA
 
-`ConversationalAgentSession` Je třída v Windows SDK, která umožňuje vaší aplikaci aktualizovat Windows pomocí stavu aplikace (nečinný, detekuje, poslouchá, pracuje, mluví) a přijímá události, jako je například detekce aktivace a změny stavu systému, jako je například zamykání obrazovky. Načtení instance AgentSession také slouží k registraci aplikace ve Windows jako aktivovatelné pomocí hlasu. Osvědčeným postupem je udržovat jeden odkaz na `ConversationalAgentSession`. K načtení relace použijte `ConversationalAgentSession.GetCurrentSessionAsync` rozhraní API.
+`ConversationalAgentSession`Je třída v Windows SDK, která umožňuje vaší aplikaci aktualizovat Windows pomocí stavu aplikace (nečinný, detekuje, poslouchá, pracuje, mluví) a přijímá události, jako je například detekce aktivace a změny stavu systému, jako je například zamykání obrazovky. Načtení instance AgentSession také slouží k registraci aplikace ve Windows jako aktivovatelné pomocí hlasu. Osvědčeným postupem je udržovat jeden odkaz na `ConversationalAgentSession` . K načtení relace použijte `ConversationalAgentSession.GetCurrentSessionAsync` rozhraní API.
 
 ### <a name="listen-to-the-two-activation-signals-the-onbackgroundactivated-and-onsignaldetected"></a>Naslouchat dvěma aktivačním signálům: OnBackgroundActivated a OnSignalDetected
 
-Systém Windows zavolá vaši aplikaci, když zjistí klíčové slovo jedním ze dvou způsobů. Pokud aplikace není aktivní (to znamená, že nemáte odkaz na neuvolněnou instanci `ConversationalAgentSession`), pak spustí vaši aplikaci a zavolá metodu OnBackgroundActivated v souboru App.XAML.cs vaší aplikace. Pokud se `BackgroundActivatedEventArgs.TaskInstance.Task.Name` pole argumenty události shoduje s řetězcem "AgentBackgroundTrigger", pak bylo spuštění aplikace aktivované aktivací hlasu. Aplikace musí tuto metodu přepsat a načíst instanci ConversationalAgentSession k signalizaci systému Windows, který je nyní aktivní. Když je aplikace aktivní, bude systém Windows signalizovat výskyt aktivace hlasu pomocí `ConversationalAgentSession.OnSignalDetected` události. Přidejte k této události obslužnou rutinu události hned po načtení `ConversationalAgentSession`.
+Systém Windows zavolá vaši aplikaci, když zjistí klíčové slovo jedním ze dvou způsobů. Pokud aplikace není aktivní (to znamená, že nemáte odkaz na neuvolněnou instanci `ConversationalAgentSession` ), pak spustí vaši aplikaci a zavolá metodu OnBackgroundActivated v souboru App.XAML.cs vaší aplikace. Pokud se pole argumenty události `BackgroundActivatedEventArgs.TaskInstance.Task.Name` shoduje s řetězcem "AgentBackgroundTrigger", pak bylo spuštění aplikace aktivované aktivací hlasu. Aplikace musí tuto metodu přepsat a načíst instanci ConversationalAgentSession k signalizaci systému Windows, který je nyní aktivní. Když je aplikace aktivní, bude systém Windows signalizovat výskyt aktivace hlasu pomocí `ConversationalAgentSession.OnSignalDetected` události. Přidejte k této události obslužnou rutinu události hned po načtení `ConversationalAgentSession` .
 
 ## <a name="keyword-verification"></a>Ověření klíčového slova
 
@@ -85,7 +85,7 @@ Jakmile je aplikace hlasového agenta aktivována hlasem, dalším krokem je ov�
 
 ### <a name="retrieve-activation-audio"></a>Načíst zvuk aktivace
 
-Vytvořte [AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) a předejte ho do `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession`. Tím se načte zvuková vyrovnávací paměť grafu se zvukem *začínajícím přibližně 3 sekundy, než bylo zjištěno klíčové slovo*. Tento dodatečný úvodní zvuk je zahrnutý k přizpůsobení široké škály délek klíčových slov a rychlosti mluvčího. Pak zpracujte událost [QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) z zvukového grafu, aby se načetla zvuková data.
+Vytvořte [AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) a předejte ho do `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Tím se načte zvuková vyrovnávací paměť grafu se zvukem *začínajícím přibližně 3 sekundy, než bylo zjištěno klíčové slovo*. Tento dodatečný úvodní zvuk je zahrnutý k přizpůsobení široké škály délek klíčových slov a rychlosti mluvčího. Pak zpracujte událost [QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) z zvukového grafu, aby se načetla zvuková data.
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);
@@ -104,7 +104,7 @@ Po úspěšném ověření klíčového slova musí aplikace přejít na popřed
 
 Při první aktivaci aplikace hlasem se spustí kompaktní zobrazení. Pokyny k různým zobrazením a přechodům mezi nimi pro hlasové asistenty ve Windows najdete v tématu [pokyny k návrhu pro ukázkovou aktivaci hlasu](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview) .
 
-Pokud chcete přejít z kompaktního zobrazení do úplného zobrazení aplikace, použijte rozhraní ApplicationView `TryEnterViewModeAsync`API:
+Pokud chcete přejít z kompaktního zobrazení do úplného zobrazení aplikace, použijte rozhraní ApplicationView API `TryEnterViewModeAsync` :
 
 ```csharp
 var appView = ApplicationView.GetForCurrentView();
@@ -113,19 +113,28 @@ await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);
 
 ## <a name="implementing-above-lock-activation"></a>Implementace nad aktivací zámku
 
-Následující postup se zabývá požadavky na povolení hlasového asistenta v systému Windows, který je možné spustit výše, včetně odkazů na ukázkový kód a pokyny pro správu životního cyklu aplikace. Pokyny pro návrh nad rámec zámků najdete v [Průvodci osvědčenými postupy](windows-voice-assistants-best-practices.md).
+Následující postup se zabývá požadavky na povolení hlasového asistenta v systému Windows, který je možné spustit výše, včetně odkazů na ukázkový kód a pokyny pro správu životního cyklu aplikace.
+
+Pokyny pro návrh nad rámec zámků najdete v [Průvodci osvědčenými postupy](windows-voice-assistants-best-practices.md).
+
+Když aplikace zobrazuje zámek výše, považuje se za "Celoobrazovkový režim". Další informace o implementaci aplikace, která používá celoobrazovkový režim, najdete v [dokumentaci k celoobrazovkovém režimu](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access).
+
+### <a name="transitioning-above-lock"></a>Přechod nad zámkem
+
+Aktivace přes zámek je podobná aktivaci nižší než zámek. Pokud neexistují žádné aktivní instance aplikace, bude spuštěna nová instance na pozadí a `OnBackgroundActivated` v App.XAML.cs bude volána. Pokud existuje instance aplikace, tato instance obdrží oznámení prostřednictvím `ConversationalAgentSession.SignalDetected` události.
+
+Pokud aplikace ještě není zobrazená nad zámkem, musí volat `ConversationalAgentSession.RequestForegroundActivationAsync` . Tím se aktivuje `OnLaunched` metoda v App.XAML.cs, která by měla přejít k zobrazení, které se zobrazí nad zámkem.
 
 ### <a name="detecting-lock-screen-transitions"></a>Zjišťování přechodů na zamykací obrazovce
 
-Knihovna ConversationalAgent v Windows SDK poskytuje rozhraní API k vytvoření stavu zamykací obrazovky a změnám stavu zamykací obrazovky, který je snadno přístupný. Chcete-li zjistit aktuální stav zamykací obrazovky, podívejte `ConversationalAgentSession.IsUserAuthenticated` se do pole. Chcete-li zjistit změny ve stavu zámku, přidejte do `ConversationalAgentSession` `SystemStateChanged` události objektu obslužnou rutinu události. Aktivuje se vždycky, když se obrazovka změní z odemčeno na uzamčeno nebo naopak. Pokud je `ConversationalAgentSystemStateChangeType.UserAuthentication`hodnota argumentů události, změnil se stav zamykací obrazovky a aplikace by měla být zavřena.
+Knihovna ConversationalAgent v Windows SDK poskytuje rozhraní API k vytvoření stavu zamykací obrazovky a změnám stavu zamykací obrazovky, který je snadno přístupný. Chcete-li zjistit aktuální stav zamykací obrazovky, podívejte se do `ConversationalAgentSession.IsUserAuthenticated` pole. Chcete-li zjistit změny ve stavu zámku, přidejte do události objektu obslužnou rutinu události `ConversationalAgentSession` `SystemStateChanged` . Aktivuje se vždycky, když se obrazovka změní z odemčeno na uzamčeno nebo naopak. Pokud je hodnota argumentů události `ConversationalAgentSystemStateChangeType.UserAuthentication` , změnil se stav zamykací obrazovky.
 
 ```csharp
-// When the app changes lock state, close the application to prevent duplicates running at once
 conversationalAgentSession.SystemStateChanged += (s, e) =>
 {
     if (e.SystemStateChangeType == ConversationalAgentSystemStateChangeType.UserAuthentication)
     {
-        WindowService.CloseWindow();
+        // Handle lock state change
     }
 };
 ```
@@ -136,7 +145,10 @@ Položka aplikace na stránce nastavení ochrany osobních údajů aktivace hlas
 
 ## <a name="closing-the-application"></a>Ukončování aplikace
 
-Aby bylo možné aplikaci řádně zavřít programově během výše nebo pod zámkem, `WindowService.CloseWindow()` použijte rozhraní API. Tím se aktivují všechny metody životního cyklu UWP, včetně potlačení, což umožňuje aplikaci `ConversationalAgentSession` uvolnit její instanci před zavřením.
+Aby bylo možné aplikaci řádně zavřít programově během výše nebo pod zámkem, použijte `WindowService.CloseWindow()` rozhraní API. Tím se aktivují všechny metody životního cyklu UWP, včetně potlačení, což umožňuje aplikaci uvolnit její `ConversationalAgentSession` instanci před zavřením.
+
+> [!NOTE]
+> Aplikace může být zavřena bez zavření [níže uvedené instance zámku](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-). V takovém případě musí výše uvedené zobrazení zámku "vyčistit", což zajistí, že po odemčení obrazovky nejsou k dispozici žádné obslužné rutiny událostí ani úlohy, které by se pokusily manipulovat s výše uvedeným zobrazením zámku.
 
 ## <a name="next-steps"></a>Další kroky
 

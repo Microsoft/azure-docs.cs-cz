@@ -4,15 +4,15 @@ description: Naučte se rychle vytvořit instanci Azure Analysis Services server
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4c1b22d4871d3e490f59be71b63569fdf563ce45
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 36899aa789f4947fe860621bc1795bfbe2ff1ecf
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75442842"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697484"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Rychlý start: Vytvoření serveru – portál
 
@@ -30,7 +30,7 @@ Tento rychlý start popisuje, jak pomocí portálu vytvořit prostředek serveru
 
 ## <a name="create-a-server"></a>Vytvoření serveru
 
-1. Klikněte na **+ vytvořit Analysis Services pro** > **analýzu** > **Analysis Services**prostředků.
+1. Klikněte na **+ vytvořit Analysis Services pro**  >  **analýzu**prostředků  >  **Analysis Services**.
 
     ![Portál](./media/analysis-services-create-server/aas-create-server-portal.png)
 
@@ -45,7 +45,7 @@ Tento rychlý start popisuje, jak pomocí portálu vytvořit prostředek serveru
    * **Nastavení úložiště zálohování:** Volitelné. Pokud už máte [účet úložiště](../storage/common/storage-introduction.md), můžete ho zadat jako výchozí účet úložiště pro zálohování modelové databáze. Později můžete zadat také nastavení [zálohování a obnovení](analysis-services-backup.md).
    * **Vypršení platnosti klíče úložiště:** Volitelné. Zadejte dobu platnosti klíče úložiště.
 
-Vytvoření serveru obvykle trvá necelou minutu. Pokud jste vybrali možnost **Přidat na portál**, přejděte na portál a prohlédněte si nový server. Případně můžete přejít na **všechny služby** > **Analysis Services** a zjistit, jestli je váš server připravený. Servery podporují tabelární modely na úrovni kompatibility 1200 a vyšší. Úroveň kompatibility modelu je určena v aplikaci Visual Studio nebo SSMS.
+Vytvoření serveru obvykle trvá necelou minutu. Pokud jste vybrali možnost **Přidat na portál**, přejděte na portál a prohlédněte si nový server. Případně můžete přejít na **všechny služby**  >  **Analysis Services** a zjistit, jestli je váš server připravený. Servery podporují tabelární modely na úrovni kompatibility 1200 a vyšší. Úroveň kompatibility modelu je určena v aplikaci Visual Studio nebo SSMS.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

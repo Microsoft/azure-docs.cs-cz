@@ -5,18 +5,18 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/20/2020
 ms.author: jgao
-ms.openlocfilehash: 5b938e2072daec56261e529ab8a2a8b15b55d143
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 24a0891b57f67bfb78cf3699bddbcf8d345ee679
+ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872333"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83708002"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
-Naučte se používat skripty pro nasazení v šablonách prostředků Azure. S názvem `Microsoft.Resources/deploymentScripts`nový typ prostředku můžou uživatelé spouštět skripty nasazení v nasazeních šablon a kontrolovat výsledky spuštění. Tyto skripty lze použít k provedení vlastních kroků, jako například:
+Naučte se používat skripty pro nasazení v šablonách prostředků Azure. S názvem nový typ prostředku `Microsoft.Resources/deploymentScripts` můžou uživatelé spouštět skripty nasazení v nasazeních šablon a kontrolovat výsledky spuštění. Tyto skripty lze použít k provedení vlastních kroků, jako například:
 
 - Přidání uživatelů do adresáře
 - provádět operace roviny dat, například objekty blob kopírování nebo databáze počátečních dat
@@ -140,12 +140,12 @@ Podrobnosti hodnoty vlastnosti:
 - **forceUpdateTag**: Změna této hodnoty mezi nasazeními šablon vynutí opětovné spuštění skriptu nasazení. Použijte funkci newGuid () nebo utcNow (), která musí být nastavena jako výchozí hodnota parametru. Další informace najdete v tématu [spuštění skriptu více než jednou](#run-script-more-than-once).
 - **containerSettings**: Zadejte nastavení pro přizpůsobení instance kontejneru Azure.  **containerGroupName** je určen pro zadání názvu skupiny kontejnerů.  Pokud není zadaný, název skupiny se automaticky vygeneruje.
 - **storageAccountSettings**: Zadejte nastavení pro použití existujícího účtu úložiště. Pokud není zadaný, automaticky se vytvoří účet úložiště. Viz [použití existujícího účtu úložiště](#use-an-existing-storage-account).
-- **azPowerShellVersion**/**azCliVersion**: Zadejte verzi modulu, která se má použít. Seznam podporovaných verzí PowerShellu a rozhraní příkazového řádku najdete v tématu [požadavky](#prerequisites).
+- **azPowerShellVersion** / **azCliVersion**: Zadejte verzi modulu, která se má použít. Seznam podporovaných verzí PowerShellu a rozhraní příkazového řádku najdete v tématu [požadavky](#prerequisites).
 - **argumenty**: zadejte hodnoty parametrů. Hodnoty jsou oddělené mezerami.
 - **environmentVariables**: Určete proměnné prostředí, které se mají předat skriptu. Další informace najdete v tématu [vývoj skriptů nasazení](#develop-deployment-scripts).
 - **scriptContent**: Zadejte obsah skriptu. Pokud chcete spustit externí skript, použijte `primaryScriptUri` místo toho. Příklady najdete v tématu [použití vloženého skriptu](#use-inline-scripts) a [použití externího skriptu](#use-external-scripts).
 - **primaryScriptUri**: zadejte veřejně přístupnou adresu URL ke skriptu primárního nasazení s podporovanými příponami souborů.
-- **supportingScriptUris**: Určete pole veřejně přístupných adres URL k podpůrným souborům, které jsou `ScriptContent` volány `PrimaryScriptUri`buď nebo.
+- **supportingScriptUris**: Určete pole veřejně přístupných adres URL k podpůrným souborům, které jsou volány buď `ScriptContent` nebo `PrimaryScriptUri` .
 - **timeout**: zadejte maximální povolenou dobu spuštění skriptu zadanou ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí hodnota je **P1D**.
 - **cleanupPreference**. Určete předvolbu čisticích prostředků nasazení, když se spuštění skriptu dostane do stavu terminálu. Výchozí nastavení je **vždy**, což znamená odstranění prostředků navzdory stavu terminálu (úspěšné, neúspěšné, zrušené). Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources).
 - **retentionInterval**: zadejte interval, po který služba uchovává prostředky skriptu nasazení poté, co spuštění skriptu nasazení dosáhne stavu terminálu. Prostředky skriptu nasazení budou odstraněny po uplynutí této doby. Doba trvání vychází ze [vzoru ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí hodnota je **P1D**, což znamená sedm dní. Tato vlastnost se používá, pokud je cleanupPreference nastaveno na hodnotu- *vypršení platnosti*. Vlastnost- *vypršení platnosti* není v současné době povolena. Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources).
@@ -190,7 +190,7 @@ Výstup bude vypadat následovně:
 
 ## <a name="use-external-scripts"></a>Použití externích skriptů
 
-Kromě vložených skriptů můžete použít také externí soubory skriptu. Podporují se jenom primární skripty PowerShellu s příponou souboru **ps1** . U skriptů CLI můžou primární skripty mít jakákoli rozšíření (nebo bez přípony), pokud jsou tyto skripty platné bash skripty. Chcete-li použít externí soubory skriptu `scriptContent` , `primaryScriptUri`Nahraďte parametr. Příklad:
+Kromě vložených skriptů můžete použít také externí soubory skriptu. Podporují se jenom primární skripty PowerShellu s příponou souboru **ps1** . U skriptů CLI můžou primární skripty mít jakákoli rozšíření (nebo bez přípony), pokud jsou tyto skripty platné bash skripty. Chcete-li použít externí soubory skriptu, nahraďte parametr `scriptContent` `primaryScriptUri` . Například:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -204,7 +204,7 @@ Zodpovídáte za zajištění integrity skriptů, které jsou odkazovány pomoc�
 
 ## <a name="use-supporting-scripts"></a>Použití podpůrných skriptů
 
-Složité logiky můžete oddělit do jednoho nebo více podpůrných souborů skriptu. `supportingScriptURI` Vlastnost umožňuje v případě potřeby zadat pole identifikátorů URI pro podpůrné soubory skriptu:
+Složité logiky můžete oddělit do jednoho nebo více podpůrných souborů skriptu. `supportingScriptURI`Vlastnost umožňuje v případě potřeby zadat pole identifikátorů URI pro podpůrné soubory skriptu:
 
 ```json
 "scriptContent": "
@@ -254,6 +254,8 @@ Pomocí proměnné [**$ErrorActionPreference**](/powershell/module/microsoft.pow
 ### <a name="pass-secured-strings-to-deployment-script"></a>Předání zabezpečených řetězců skriptu nasazení
 
 Nastavení proměnných prostředí (objekt EnvironmentVariable) ve vašich kontejnerových instancích vám umožní poskytnout dynamickou konfiguraci aplikace nebo skriptu spouštěného kontejnerem. Skript nasazení zpracovává nezabezpečené a zabezpečené proměnné prostředí stejným způsobem jako instance kontejneru Azure. Další informace najdete v tématu [nastavení proměnných prostředí v instancích kontejnerů](../../container-instances/container-instances-environment-variables.md#secure-values).
+
+Maximální povolená velikost pro proměnné prostředí je 64 KB.
 
 ## <a name="debug-deployment-scripts"></a>Ladit skripty nasazení
 
@@ -308,7 +310,7 @@ K provádění skriptů a odstraňování potíží je potřeba účet úložiš
 - Pravidla brány firewall účtu úložiště ještě nejsou podporovaná. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../../storage/common/storage-network-security.md).
 - Spravovaná identita přiřazená uživatelem skriptu pro nasazení musí mít oprávnění ke správě účtu úložiště, který zahrnuje čtení, vytváření a odstraňování sdílených složek.
 
-Chcete-li zadat existující účet úložiště, přidejte následující JSON do elementu Property elementu `Microsoft.Resources/deploymentScripts`:
+Chcete-li zadat existující účet úložiště, přidejte následující JSON do elementu Property elementu `Microsoft.Resources/deploymentScripts` :
 
 ```json
 "storageAccountSettings": {
@@ -318,7 +320,7 @@ Chcete-li zadat existující účet úložiště, přidejte následující JSON 
 ```
 
 - **storageAccountName**: zadejte název účtu úložiště.
-- **storageAccountKey "**: zadejte jeden z klíčů účtu úložiště. K načtení klíče lze [`listKeys()`](./template-functions-resource.md#listkeys) použít funkci. Příklad:
+- **storageAccountKey "**: zadejte jeden z klíčů účtu úložiště. [`listKeys()`](./template-functions-resource.md#listkeys)K načtení klíče lze použít funkci. Například:
 
     ```json
     "storageAccountSettings": {
@@ -327,7 +329,7 @@ Chcete-li zadat existující účet úložiště, přidejte následující JSON 
     }
     ```
 
-Kompletní `Microsoft.Resources/deploymentScripts` ukázku definice najdete v tématu [ukázkové šablony](#sample-templates) .
+Kompletní ukázku definice najdete v tématu [ukázkové šablony](#sample-templates) `Microsoft.Resources/deploymentScripts` .
 
 Když se použije existující účet úložiště, služba skriptu vytvoří sdílený soubor s jedinečným názvem. Informace o tom, jak služba skriptu vyčistí sdílenou složku, najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources) .
 
@@ -357,7 +359,7 @@ Spuštění skriptu nasazení je operace idempotentní. Pokud se nezměnila žá
     > [!NOTE]
     > Funkci utcNow lze použít pouze ve výchozí hodnotě pro parametr.
 
-- Zadejte jinou hodnotu ve vlastnosti `forceUpdateTag` Template.  Jako hodnotu použijte například utcNow.
+- Zadejte jinou hodnotu ve `forceUpdateTag` vlastnosti Template.  Jako hodnotu použijte například utcNow.
 
 > [!NOTE]
 > Zapište skripty nasazení, které jsou idempotentní. Tím se zajistí, že pokud se znovu spustí, nezpůsobí se změny systému. Například pokud se skript nasazení používá k vytvoření prostředku Azure, ověřte, že prostředek neexistuje, než ho vytvoříte, takže skript bude úspěšný, nebo znovu nevytvářejte prostředek.
@@ -397,7 +399,7 @@ Jako vývojové prostředí skriptu nasazení můžete použít předem nakonfig
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    Nahraďte ** &lt;písmeno hostitelského ovladače>** a ** &lt;název adresáře hostitele>** existující složkou na sdílené jednotce.  Namapuje složku do složky **/data** v kontejneru. Příklady pro mapování D:\docker:
+    Nahraďte ** &lt; písmeno hostitelského ovladače>** a ** &lt; název adresáře hostitele>** existující složkou na sdílené jednotce.  Namapuje složku do složky **/data** v kontejneru. Příklady pro mapování D:\docker:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7

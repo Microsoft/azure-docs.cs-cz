@@ -9,12 +9,12 @@ ms.subservice: powershell
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6ba1410034abcfb95923fd2ccb3fdcbc9939ec4b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 63487cc09ab6635967dcee79e7c0ab0041f33dde
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195857"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701987"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-powershell"></a>Instalace aplikací do škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 Tento skript vytvoří škálovací sadu virtuálních počítačů s Windows Serverem 2016 a pomocí rozšíření vlastních skriptů nainstaluje základní webovou aplikaci. Po spuštění skriptu můžete k webové aplikaci přistupovat přes webový prohlížeč.
@@ -48,5 +48,3 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
-
-Další ukázkové skripty PowerShellu pro škálovací sady virtuálních počítačů najdete v [dokumentaci ke škálovacím sadám virtuálních počítačů Azure](../powershell-samples.md).

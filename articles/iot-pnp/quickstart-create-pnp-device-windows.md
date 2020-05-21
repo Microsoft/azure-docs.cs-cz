@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e80194f53a406b8b378d0fb787df627937125a27
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4f9b8f3edc475ec50eaf11080020aa9f62a0d2c1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75867492"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700874"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Rychlý Start: vytvoření zařízení IoT technologie Plug and Play Preview pomocí modelu schopností zařízení (Windows)
 
@@ -87,7 +87,7 @@ V tomto rychlém startu použijete existující Vzorový model zařízení a př
 
 1. Vytvořte `pnp_app` složku na místním disku. Tuto složku použijete pro soubory modelů zařízení a pro zástupné kódy zařízení.
 
-1. Stáhněte si [model funkce zařízení a ukázkové soubory rozhraní](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) a [ukázky](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) rozhraní a pak soubory uložte do `pnp_app` složky.
+1. Stáhněte si [model funkce zařízení a ukázkové soubory rozhraní](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.model.json) a [ukázky](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) rozhraní a pak soubory uložte do `pnp_app` složky.
 
     > [!TIP]
     > Pokud chcete stáhnout soubor z GitHubu, přejděte do souboru, klikněte pravým tlačítkem na **nezpracovaný**a pak vyberte **Uložit odkaz jako**.
@@ -96,13 +96,13 @@ V tomto rychlém startu použijete existující Vzorový model zařízení a př
 
     ![Model schopností zařízení](media/quickstart-create-pnp-device/dcm.png)
 
-1. V souborech, které jste stáhli `<YOUR_COMPANY_NAME_HERE>` , nahraďte v polích `@id` a `schema` jedinečnou hodnotou. Používejte pouze znaky a-z, A-Z, 0-9 a podtržítko. Další informace najdete v tématu [Formát digitálního Nevlákenového identifikátoru](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
+1. V souborech, které jste stáhli, nahraďte `<YOUR_COMPANY_NAME_HERE>` v `@id` `schema` polích a jedinečnou hodnotou. Používejte pouze znaky a-z, A-Z, 0-9 a podtržítko. Další informace najdete v tématu [Formát digitálního Nevlákenového identifikátoru](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format).
 
 ## <a name="generate-the-c-code-stub"></a>Generovat zástupný kód kódu jazyka C
 
 Teď, když máte modul DCM a jeho přidružená rozhraní, můžete vygenerovat kód zařízení, který model implementuje. Chcete-li vygenerovat zástupnou proceduru kódu C v VS Code:
 
-1. Po otevření `pnp_app` složky v vs Code použijte **kombinaci kláves CTRL + SHIFT + P** k otevření palety příkazů, zadejte **IoT technologie Plug and Play**a vyberte **vygenerovat zástupnou proceduru pro kód zařízení**.
+1. Po `pnp_app` otevření složky v vs Code použijte **kombinaci kláves CTRL + SHIFT + P** k otevření palety příkazů, zadejte **IoT technologie Plug and Play**a vyberte **vygenerovat zástupnou proceduru pro kód zařízení**.
 
     > [!NOTE]
     > Při prvním použití rozhraní příkazového řádku IoT technologie Plug and Play CodeGen bude stažení a instalace automaticky trvat několik sekund.
@@ -126,7 +126,7 @@ Teď, když máte modul DCM a jeho přidružená rozhraní, můžete vygenerovat
 
 Pomocí balíčku Vcpkg vytvoříte zástupný kód vygenerovaných kódů zařízení. Vytvořená aplikace simuluje zařízení, které se připojuje ke službě IoT Hub. Aplikace odesílá telemetrie a vlastnosti a přijímá příkazy.
 
-1. `cmake` Vytvořte podadresář ve `sample_device` složce a přejděte do této složky:
+1. Vytvořte `cmake` podadresář ve `sample_device` složce a přejděte do této složky:
 
     ```cmd
     mkdir cmake
@@ -169,9 +169,9 @@ Pomocí balíčku Vcpkg vytvoříte zástupný kód vygenerovaných kódů zař�
 
 K ověření kódu zařízení v **Azure IoT Exploreru**je potřeba publikovat soubory do úložiště modelu.
 
-1. Po otevření `pnp_app` složky v vs Code použijte **kombinaci kláves CTRL + SHIFT + P** a otevřete paletu příkazů, zadejte a vyberte **IoT plug & Play: odeslání souborů do úložiště modelů**.
+1. Po `pnp_app` otevření složky v vs Code použijte **kombinaci kláves CTRL + SHIFT + P** a otevřete paletu příkazů, zadejte a vyberte **IoT plug & Play: odeslání souborů do úložiště modelů**.
 
-1. Vyberte `SampleDevice.capabilitymodel.json` soubory `EnvironmentalSensor.interface.json` a.
+1. Vyberte `SampleDevice.capabilitymodel.json` `EnvironmentalSensor.interface.json` soubory a.
 
 1. Zadejte připojovací řetězec úložiště podnikového modelu.
 

@@ -1,20 +1,20 @@
 ---
 title: Předávání dat úloh Azure Automation do protokolů Azure Monitoru
-description: V tomto článku se dozvíte, jak odesílat datové proudy úloh Runbooku a Azure Monitor protokoly pro zajištění dalšího přehledu a správy.
+description: V tomto článku se dozvíte, jak odesílat datové proudy úloh Runbooku a Azure Monitor protokoly.
 services: automation
 ms.subservice: process-automation
 ms.date: 02/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: a9f4e641e60d6cf1c481c445767422e8b4df683b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cd1983a6aa1ea942fb6f3154d8bb99e255f51e9
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457684"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715439"
 ---
-# <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Přeposlání datových proudů úloh a úloh z automatizace do protokolů Azure Monitor
+# <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Předávání dat úloh Azure Automation do protokolů Azure Monitoru
 
-Automatizace může odesílat streamy stavů a úloh Runbooku do vašeho pracovního prostoru Log Analytics. Tento proces nezahrnuje propojení pracovního prostoru a je zcela nezávislý. Protokoly úloh a datové proudy úloh jsou viditelné v Azure Portal nebo v prostředí PowerShell pro jednotlivé úlohy a umožňují provádět jednoduché šetření. Teď díky protokolům Azure Monitor můžete:
+Azure Automation může odesílat datové proudy úloh sady Runbook a streamování úloh do pracovního prostoru Log Analytics. Tento proces nezahrnuje propojení pracovního prostoru a je zcela nezávislý. Protokoly úloh a datové proudy úloh jsou viditelné v Azure Portal nebo v prostředí PowerShell pro jednotlivé úlohy a umožňují provádět jednoduché šetření. Teď díky protokolům Azure Monitor můžete:
 
 * Získejte přehled o stavu úloh automatizace.
 * Aktivace e-mailu nebo výstrahy na základě stavu úlohy Runbooku (například selhání nebo pozastaveno).
@@ -23,9 +23,6 @@ Automatizace může odesílat streamy stavů a úloh Runbooku do vašeho pracovn
 * Pomocí vlastních zobrazení a vyhledávacích dotazů můžete vizualizovat výsledky Runbooku, stav úlohy Runbooku a další související klíčové ukazatele nebo metriky.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="prerequisites-and-deployment-considerations"></a>Předpoklady a požadavky na nasazení
 
@@ -59,7 +56,7 @@ Pokud máte ve výstupu předchozích příkazů více než jeden účet služby
 
 ## <a name="azure-monitor-log-records"></a>Záznamy protokolu Azure Monitor
 
-Diagnostika Azure Automation v protokolech Azure Monitor vytvoří dva typy záznamů, které jsou `AzureDiagnostics`označené jako. Tabulky v dalších částech jsou příklady záznamů, které Azure Automation generuje, a typy dat, které se zobrazí ve výsledcích prohledávání protokolu.
+Diagnostika Azure Automation v protokolech Azure Monitor vytvoří dva typy záznamů, které jsou označené jako `AzureDiagnostics` . Tabulky v dalších částech jsou příklady záznamů, které Azure Automation generuje, a typy dat, které se zobrazí ve výsledcích prohledávání protokolu.
 
 ### <a name="job-logs"></a>Protokoly úloh
 
@@ -105,7 +102,7 @@ Diagnostika Azure Automation v protokolech Azure Monitor vytvoří dva typy záz
 | ResourceProvider | Poskytovatel prostředků. Hodnota je MICROSOFT. Automation. |
 | ResourceType | Typ prostředku. Hodnota je AUTOMATIONACCOUNTS. |
 
-## <a name="setting-up-integration-with-azure-monitor-logs"></a>Nastavení integrace s protokoly Azure Monitor
+## <a name="set-up-integration-with-azure-monitor-logs"></a>Nastavení integrace s protokoly Azure Monitor
 
 1. V počítači spusťte prostředí Windows PowerShell z obrazovky **Start** .
 2. Spusťte následující příkazy prostředí PowerShell a upravte hodnoty pro `[your resource ID]` a `[resource ID of the log analytics workspace]` s hodnotami z předchozí části.
@@ -131,10 +128,10 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 
 Ve výstupu se ujistěte, že:
 
-* V `Logs`části `Enabled` je hodnota true.
-* `WorkspaceId``ResourceId` hodnota je nastavená na hodnotu pro váš pracovní prostor Log Analytics.
+* V části `Logs` `Enabled` je hodnota true.
+* `WorkspaceId`hodnota je nastavená na `ResourceId` hodnotu pro váš pracovní prostor Log Analytics.
 
-## <a name="viewing-automation-logs-in-azure-monitor-logs"></a>Zobrazení protokolů automatizace v protokolech Azure Monitor
+## <a name="view-automation-logs-in-azure-monitor-logs"></a>Zobrazení protokolů automatizace v protokolech Azure Monitor
 
 Teď, když jste začali odesílat protokoly úloh služby Automation, abyste Azure Monitor protokoly, Podívejme se na to, co můžete s těmito protokoly dělat v protokolech Azure Monitor.
 
@@ -149,7 +146,7 @@ Chcete-li vytvořit pravidlo výstrahy, začněte tím, že vytvoříte hledán�
 1. Na stránce Přehled pracovního prostoru Log Analytics klikněte na **Zobrazit protokoly**.
 2. Vytvořte dotaz hledání protokolu pro upozornění zadáním následujícího hledání do pole dotazu:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`<br><br>Můžete také seskupit podle názvu Runbooku pomocí:`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
-   Pokud jste v pracovním prostoru nastavili protokoly z více než jednoho účtu Automation nebo předplatného, můžete své výstrahy seskupit podle předplatného a účtu Automation. Název účtu Automation najdete v `Resource` poli hledání. `JobLogs`
+   Pokud jste v pracovním prostoru nastavili protokoly z více než jednoho účtu Automation nebo předplatného, můžete své výstrahy seskupit podle předplatného a účtu Automation. Název účtu Automation najdete v `Resource` poli hledání `JobLogs` .
 3. Obrazovku **vytvořit pravidlo** otevřete kliknutím na **nové pravidlo výstrahy** v horní části stránky. Další informace o možnostech konfigurace výstrahy najdete v tématu [protokolování výstrah v Azure](../azure-monitor/platform/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Vyhledá všechny úlohy, které byly dokončeny s chybami.
@@ -157,7 +154,7 @@ Chcete-li vytvořit pravidlo výstrahy, začněte tím, že vytvoříte hledán�
 Kromě upozorňování na chyby můžete zjistit, kdy má úloha Runbooku neukončující chybu. V těchto případech PowerShell vytvoří chybový proud, ale neukončující chyby nezpůsobí, že by vaše úloha mohla pozastavit nebo selhat.
 
 1. V pracovním prostoru Log Analytics klikněte na **protokoly**.
-2. Do pole dotazu zadejte `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g`.
+2. Do pole dotazu zadejte `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` .
 3. Klikněte na tlačítko **Hledat** .
 
 ### <a name="view-job-streams-for-a-job"></a>Zobrazení datových proudů úloh pro úlohu
@@ -173,7 +170,7 @@ Nakonec můžete chtít vizualizovat historii úloh v průběhu času. Pomocí t
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`
 <br> ![Graf stavu Log Analytics historické úlohy](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
-## <a name="removing-diagnostic-settings"></a>Odebírá se nastavení diagnostiky.
+## <a name="remove-diagnostic-settings"></a>Odebrat nastavení diagnostiky
 
 Chcete-li odebrat nastavení diagnostiky z účtu Automation, spusťte následující příkaz:
 
@@ -182,10 +179,11 @@ $automationAccountId = "[resource ID of your Automation account]"
 
 Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 ```
+
 ## <a name="next-steps"></a>Další kroky
 
 * Pomoc při řešení potíží s Log Analytics najdete v tématu [řešení potíží, proč Log Analytics už neshromažďují data](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).
 * Další informace o tom, jak vytvářet různé vyhledávací dotazy a kontrolovat protokoly úloh služby Automation pomocí protokolů Azure Monitor, najdete [v tématu prohledávání protokolů v protokolech Azure monitor](../log-analytics/log-analytics-log-searches.md).
 * Chcete-li pochopit, jak vytvořit a načíst výstupní a chybové zprávy ze sad Runbook, přečtěte si téma [výstup a zprávy Runbooku](automation-runbook-output-and-messages.md).
-* Další informace o spouštění runbooků, postupy při monitorování úloh runbooků a další technické podrobnosti najdete v článku [Sledování úlohy runbooku](automation-runbook-execution.md).
+* Další informace o spuštění sady Runbook, způsobu monitorování úloh sady Runbook a dalších technických informací naleznete v tématu [spuštění sady Runbook v Azure Automation](automation-runbook-execution.md).
 * Další informace o Azure Monitor protokolů a zdrojích shromažďování dat najdete [v tématu shromažďování dat služby Azure Storage v protokolech Azure monitor přehled](../azure-monitor/platform/collect-azure-metrics-logs.md).

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 0d857a0066737cd7bdc14dff435e25add66f2cdd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 95baaaff0936d288b5a56efb8f6ce1ba87637d8a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201384"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700920"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí šablony Azure
 Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu. Co se v tomto kurzu naučíte:
@@ -67,7 +67,7 @@ Pro toto pravidlo se používají následující parametry:
 | Parametr         | Vysvětlení                                                                                                         | Hodnota           |
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | Metrika výkonu, která se má monitorovat a na kterou se mají použít akce škálovací sady.                                                   | Procento CPU  |
-| *timeGrain*       | Četnost shromažďování metrik pro účely analýzy.                                                                   | 1 minuta        |
+| *timeGrain*       | Četnost shromažďování metrik pro účely analýzy.                                                                   | 1 min.        |
 | *timeAggregation* | Definuje způsob agregace shromážděných metrik pro účely analýzy.                                                | Průměr         |
 | *timeWindow*      | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 5 minut       |
 | *podnikatel*        | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než    |
@@ -272,8 +272,3 @@ V tomto kurzu jste zjistili, jak automaticky horizontálně snižovat nebo zvyš
 > * Vytvoření a použití pravidel automatického škálování
 > * Zátěžový test instancí virtuálních počítačů a aktivace pravidel automatického škálování
 > * Opětovné automatické horizontální snížení kapacity po snížení požadavků
-
-Další příklady škálovacích sad virtuálních počítačů v akci najdete v následujících ukázkových skriptech Azure CLI:
-
-> [!div class="nextstepaction"]
-> [Ukázkové skripty Azure CLI pro škálovací sady](cli-samples.md)

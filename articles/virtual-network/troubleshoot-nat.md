@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/28/2020
+ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: c9b5aaefeb8ab21eed850f5bf291d38981239aab
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 7723e74b9617d5e8d56dd3c3e46145c4945ca21f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508424"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698095"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Řešení potíží s připojením služby Azure Virtual Network NAT
 
@@ -31,6 +31,7 @@ Tento článek pomáhá správcům diagnostikovat a řešit problémy s připoje
 * [Nepodaří se odeslat test ICMP](#icmp-ping-is-failing)
 * [Selhání připojení](#connectivity-failures)
 * [Koexistence protokolu IPv6](#ipv6-coexistence)
+* [Připojení nepochází z IP adresy brány NAT.](#connection-doesnt-originate-from-nat-gateway-ips)
 
 Chcete-li tyto problémy vyřešit, postupujte podle kroků v následující části.
 
@@ -61,10 +62,10 @@ _**Řešení:**_ Použití vhodných vzorů a osvědčených postupů
 - Pokud klient neukládá do mezipaměti výsledek překladače DNS, může do svazku zavést mnoho jednotlivých toků. Použijte ukládání do mezipaměti.
 - Toky UDP (například vyhledávání DNS) přidělují porty SNAT po dobu nečinnosti časového limitu. Čím delší časový limit nečinnosti, tím vyšší je tlak na portech SNAT. Použijte krátký časový limit nečinnosti (například 4 minuty).
 - Pomocí fondů připojení natvarujte svazek připojení.
-- Nikdy netiché opuštění toku TCP a spoléhá na časovače TCP, aby se vyčistil tok. Pokud nepovolíte, aby protokol TCP explicitně zavřel připojení, stav zůstane přidělený v zprostředkujících systémech a koncových bodech a zpřístupňuje porty SNAT pro další připojení. To může aktivovat selhání aplikace a vyčerpání SNAT. 
+- Nikdy netiché opuštění toku TCP a spoléhá na časovače TCP, aby se vyčistil tok. Pokud nepovolíte, aby protokol TCP explicitně zavřel připojení, stav zůstane přidělený v zprostředkujících systémech a koncových bodech a zpřístupňuje porty SNAT pro další připojení. Tento model může aktivovat selhání aplikace a vyčerpání SNAT. 
 - Neměňte hodnoty časovače související s ukončením protokolu TCP na úrovni operačního systému bez odborných znalostí o dopadu. I když dojde k obnovení zásobníku protokolu TCP, výkon vaší aplikace může mít negativní vliv na to, že koncové body připojení neodpovídají očekávání. Přáním změnit časovače je obvykle znaménkem základního problému s návrhem. Přečtěte si následující doporučení.
 
-V důsledku toho je také možné vyčerpání SNAT pomocí dalších antipatternů v podkladové aplikaci. Projděte si tyto další vzory a osvědčené postupy, které vám pomůžou zlepšit škálovatelnost a spolehlivost vaší služby.
+Vyčerpání SNAT je také možné doplnit dalšími antivzory v podkladové aplikaci. Projděte si tyto další vzory a osvědčené postupy, které vám pomůžou zlepšit škálovatelnost a spolehlivost vaší služby.
 
 - Vyzkoumejte dopad snížení [časového limitu nečinnosti protokolu TCP](nat-gateway-resource.md#timers) na nižší hodnoty, včetně výchozího časového limitu nečinnosti 4 minut, aby se uvolnil inventář portů SNAT dříve.
 - Zvažte [asynchronní vzorce cyklického dotazování](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) pro dlouhotrvající operace pro uvolnění prostředků připojení pro jiné operace.
@@ -116,8 +117,8 @@ K ověření připojení použijte nástroje, jako jsou následující. Protokol
 
 #### <a name="configuration"></a>Konfigurace
 
-Zkontrolujte následující:
-1. Má prostředek brány NAT aspoň jeden prostředek veřejné IP adresy nebo jeden prostředek předpony veřejných IP adres? Aby bylo možné poskytovat odchozí připojení, je nutné, aby byla k bráně NAT přidružená alespoň jedna IP adresa.
+Ověřte svou konfiguraci:
+1. Má prostředek služby NAT Gateway alespoň jeden prostředek veřejné IP adresy nebo jeden prostředek předpony veřejné IP adresy? Aby služba NAT Gateway mohla zajišťovat odchozí připojení, musí k ní být přidružená alespoň jedna IP adresa.
 2. Je podsíť virtuální sítě nakonfigurovaná tak, aby používala bránu NAT?
 3. Používáte UDR (uživatelem definovaná trasa) a přepisujete cíl?  Prostředky brány NAT se stanou výchozí trasou (0/0) v nakonfigurovaných podsítích.
 
@@ -129,7 +130,7 @@ Přečtěte si část o [vyčerpání SNAT](#snat-exhaustion) v tomto článku.
 
 Azure monitoruje a provozuje svoji infrastrukturu se špičkovou péčí. K přechodným chybám může dojít, není nijak zaručeno, že jsou přenosy bezeztrátové.  Použití vzorů návrhu umožňujících opětovné přenosy SYN pro aplikace TCP. Používejte dostatečně velký časový limit připojení, aby bylo možné povolit opakovaný přenos TCP SYN, aby se snížily přechodné dopady způsobené ztrátou paketu SYN.
 
-_**Řešení**_
+_**Řešení:**_
 
 * Kontroluje [vyčerpání SNAT](#snat-exhaustion).
 * Parametr konfigurace v zásobníku protokolu TCP, který řídí chování funkce SYN pro opakování přenosu, se nazývá RTO ([časový limit opětovného přenosu](https://tools.ietf.org/html/rfc793)). Hodnota RTO je ve výchozím nastavení přizpůsobitelná, ale obvykle 1 sekunda nebo vyšší s exponenciálním pozadím.  Pokud je časový limit připojení aplikace moc krátký (například 1 sekunda), můžete se setkat s časovými prodlevami připojení.  Zvyšte časový limit připojení aplikace.
@@ -154,7 +155,7 @@ Předchozí části se vztahují spolu s koncovým bodem Internetu, se kterým s
 
 K určení toho, co se provádí, se obvykle vyžaduje zachycení paketů na zdrojovém a cílovém umístění (Pokud je k dispozici).
 
-_**Řešení**_
+_**Řešení:**_
 
 * Kontroluje [vyčerpání SNAT](#snat-exhaustion). 
 * Ověřte připojení ke koncovému bodu ve stejné oblasti nebo jinde pro porovnání.  
@@ -170,7 +171,7 @@ Jedním z možných důvodů je, že připojení TCP má nečinné časový limi
 
 Resety TCP se negenerují na veřejné straně prostředků brány NAT. Resetování TCP na straně cíle je vygenerováno zdrojovým virtuálním počítačem, nikoli prostředkem brány NAT.
 
-_**Řešení**_
+_**Řešení:**_
 
 * Projděte si doporučení pro [vzory návrhu](#design-patterns) .  
 * Otevřete případ podpory pro další řešení potíží, pokud je to potřeba.
@@ -182,6 +183,18 @@ _**Řešení**_
 _**Řešení:**_ Nasaďte bránu NAT v podsíti bez předpony IPv6.
 
 Díky [Virtual Network překladu adres (NAT)](https://aka.ms/natuservoice)můžete v zájmu dalších možností indikovat další možnosti.
+
+### <a name="connection-doesnt-originate-from-nat-gateway-ips"></a>Připojení nepochází z IP adresy brány NAT.
+
+Nakonfigurujete bránu NAT, IP adresy, které se mají použít, a kterou podsíť má použít prostředek brány NAT. Připojení z instancí virtuálních počítačů, které existovaly před nasazením brány NAT, ale nepoužívají IP adresy.  Zdá se, že používají IP adresy, které se nepoužívají s prostředkem brány NAT.
+
+_**Řešení:**_
+
+[Virtual Network NAT](nat-overview.md) nahrazuje odchozí připojení pro podsíť, ve které je nakonfigurované. Při přechodu z výchozí adresy SNAT nebo nástroje pro vyrovnávání zatížení na používání bran NAT budou nová připojení okamžitě začít používat IP adresy přidružené k prostředku brány NAT.  Pokud ale virtuální počítač stále během přepínání na prostředek brány NAT zavede připojení, bude připojení dál používat starou IP adresu SNAT, která byla přiřazena při navázání připojení.  Ujistěte se, že skutečně vytváříte nové připojení místo opětovného použití připojení, které již existovalo, protože operační systém nebo prohlížeč vytvořil do mezipaměti připojení ve fondu připojení.  Například při použití _kudrlinkou_ v prostředí PowerShell Nezapomeňte zadat parametr _-DisableKeepalive_ , který vynutí nové připojení.  Pokud používáte prohlížeč, můžou být taky připojení ve fondu.
+
+Pro prostředek brány NAT není nutné restartovat virtuální počítač s konfigurací podsítě.  Pokud je však virtuální počítač restartován, bude stav připojení vyprázdněn.  Po vyprázdnění stavu připojení budou všechna připojení začínat použitím IP adres prostředku brány NAT.  Jedná se ale o vedlejší účinek restartování virtuálního počítače, který není indikátorem, který vyžaduje restart.
+
+Pokud pořád máte potíže, otevřete případ podpory pro další řešení potíží.
 
 ## <a name="next-steps"></a>Další kroky
 

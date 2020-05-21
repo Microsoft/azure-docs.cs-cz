@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d4de424d5d4d6da1ee80e04b35e63ae29df57c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3cca8403897227843b088a3985d54a3b164be0d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424906"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702057"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL na vyžádání (Preview) ve službě Azure synapse Analytics 
 
@@ -28,7 +28,7 @@ SQL na vyžádání je distribuovaný systém zpracování dat, který je založ
 
 SQL na vyžádání je bez serveru, proto není k dispozici žádná infrastruktura pro instalaci ani clustery. Výchozí koncový bod pro tuto službu je k dispozici v rámci každého pracovního prostoru Azure synapse, takže můžete začít zadávat dotazy na data hned po vytvoření pracovního prostoru. Za rezervované prostředky se neúčtují žádné poplatky, účtují se vám jenom data, která prohledáváte pomocí dotazů, které spustíte, takže tento model je skutečným modelem plateb za použití.  
 
-Pokud používáte Spark v datovém kanálu, pro přípravu a čištění dat, můžete [dotazovat libovolné tabulky Spark](develop-storage-files-spark-tables.md) , které jste v procesu vytvořili, přímo z SQL na vyžádání. Pomocí [privátního odkazu](../security/how-to-connect-to-workspace-with-private-links.md) přeneste koncový bod SQL na vyžádání do vaší [virtuální sítě spravovaného pracovního prostoru](../security/synapse-workspace-managed-vnet.md).  
+Pokud používáte Apache Spark pro Azure synapse v datovém kanálu, pro přípravu, čištění nebo obohacení dat, můžete [zadávat dotazy na externí tabulky Spark](develop-storage-files-spark-tables.md) , které jste v procesu vytvořili, přímo z SQL na vyžádání. Pomocí [privátního odkazu](../security/how-to-connect-to-workspace-with-private-links.md) přeneste koncový bod SQL na vyžádání do vaší [virtuální sítě spravovaného pracovního prostoru](../security/synapse-workspace-managed-vnet.md).  
 
 ## <a name="who-is-sql-on-demand-for"></a>Kdo je SQL na vyžádání pro
 
@@ -42,7 +42,7 @@ Z SQL na vyžádání můžou využívat různé role Professional:
 
 - Data technici můžou Prozkoumat Lake, transformovat a připravit data pomocí této služby a zjednodušit jejich kanály pro transformaci dat. Další informace najdete v tomto [kurzu](tutorial-data-analyst.md).
 - Vědečtí data mohou rychle vypříčinit obsah a strukturu dat v Lake, a to díky funkcím, jako je například OPENROWSET a automatické odvození schématu.
-- Analytiké dat může [Prozkoumat data a tabulky Spark](develop-storage-files-spark-tables.md) vytvořené odborníky přes data nebo pomocí známých nástrojů T-SQL nebo jejich oblíbených nástrojů, které se můžou připojit k SQL na vyžádání.
+- Datové Analytiké můžou [Prozkoumat data a Spark externí tabulky](develop-storage-files-spark-tables.md) vytvořené odborníky přes data nebo pomocí známých nástrojů T-SQL nebo jejich oblíbených nástrojů, které se můžou připojit k SQL na vyžádání.
 - Profesionálové v BI můžou rychle [vytvářet Power BI sestavy nad daty v tabulkách Lake](tutorial-connect-power-bi-desktop.md) a Spark.
 
 ## <a name="what-do-i-need-to-do-to-start-using-it"></a>Co je potřeba udělat, aby ji bylo možné začít používat?
@@ -110,7 +110,7 @@ SQL na vyžádání nabízí mechanismy pro zabezpečení přístupu k datům.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integrace s Azure Active Directory a vícefaktorové ověřování
 
-SQL na vyžádání umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory (Azure AD) podporuje [vícefaktorové ověřování](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) pro zvýšení zabezpečení dat a aplikací a současně podporuje proces jednotného přihlašování.
+SQL na vyžádání umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory (Azure AD) podporuje [vícefaktorové ověřování](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) pro zvýšení zabezpečení dat a aplikací a současně podporuje proces jednotného přihlašování.
 
 #### <a name="authentication"></a>Authentication
 

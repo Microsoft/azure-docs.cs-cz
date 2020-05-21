@@ -2,13 +2,13 @@
 title: 'Rychlý Start: vytvoření nové aplikace na portálu LUIS'
 description: V tomto rychlém startu vytvoříte základní části aplikace, záměry a entity a otestujete je pomocí Sample utterance na portálu LUIS.
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: b2ab2ec0fa5398ae8a69906aee25ef44ad5db3c9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585187"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697258"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý Start: vytvoření nové aplikace na portálu LUIS
 
@@ -137,7 +137,7 @@ Příklad projevy záměru **none** by měl být mimo vaši doménu klientské a
 
 1. Ověřte, že se entita nachází v **FindForm** záměru tím, že v nabídce vlevo vyberete **záměry** . Pak vyberte **FindForm** záměr.
 
-   Entita je označena tak, jak se zobrazuje v příkladu projevy. Chcete-li zobrazit původní text místo názvu entity, přepínejte **zobrazení entit** z panelu nástrojů.
+   Entita je označena tak, jak se zobrazuje v příkladu projevy.
 
    > [!div class="mx-imgBorder"]
    > [![Snímek obrazovky všech příkladů projevy označených entitami](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)

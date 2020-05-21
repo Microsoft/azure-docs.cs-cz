@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3bf7ff668584a78fea6e2d787e96f36a20f12e37
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f3e53ac189e0d612b09c362e82ba5bc2fe5fec8d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197632"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696832"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS s synapse SQL
 
@@ -89,7 +89,9 @@ Aby CETAS fungovalo, musíte mít oprávnění k výpisu obsahu složky a zápis
 
 Tyto příklady používají CETAS k uložení celkového počtu obyvatel agregovaného po rocích a State do složky aggregated_data, která je umístěná ve zdroji dat population_ds.
 
-Tato ukázka spoléhá na dříve vytvořené přihlašovací údaje, zdroj dat a externí formát souboru. Přečtěte si dokument [externí tabulky](develop-tables-external-tables.md) . Chcete-li uložit výsledky dotazu do jiné složky ve stejném zdroji dat, změňte argument umístění. Pokud chcete výsledky Uložit do jiného účtu úložiště, vytvořte a použijte jiný zdroj dat pro DATA_SOURCE argument.
+Tato ukázka spoléhá na dříve vytvořené přihlašovací údaje, zdroj dat a externí formát souboru. Přečtěte si dokument [externí tabulky](develop-tables-external-tables.md) . Chcete-li uložit výsledky dotazu do jiné složky ve stejném zdroji dat, změňte argument umístění. 
+
+Pokud chcete výsledky Uložit do jiného účtu úložiště, vytvořte a použijte jiný zdroj dat pro DATA_SOURCE argument.
 
 > [!NOTE]
 > Níže uvedené příklady používají veřejný účet úložiště Azure Open data. Je jen pro čtení. Chcete-li spustit tyto dotazy, je nutné zadat zdroj dat, pro který máte oprávnění k zápisu.
@@ -114,7 +116,7 @@ GO
 SELECT * FROM population_by_year_state
 ```
 
-Následující ukázka používá externí tabulku jako zdroj pro CETAS. Spoléhá se na přihlašovací údaje, zdroj dat, formát externích souborů a externí tabulku vytvořenou dříve. Přečtěte si dokument [externí tabulky](develop-tables-external-tables.md) .
+Následující příklad používá externí tabulku jako zdroj pro CETAS. Spoléhá se na přihlašovací údaje, zdroj dat, formát externích souborů a externí tabulku vytvořenou dříve. Přečtěte si dokument [externí tabulky](develop-tables-external-tables.md) .
 
 ```sql
 -- use CETAS with select from external table
@@ -142,7 +144,7 @@ CETAS lze použít k uložení sad výsledků s následujícími datovými typy 
 - varbinary
 - char
 - varchar
-- datum
+- date
 - time
 - datetime2
 - decimal
@@ -153,9 +155,10 @@ CETAS lze použít k uložení sad výsledků s následujícími datovými typy 
 - int
 - smallint
 - tinyint
-- bitové
+- bit
 
-Objekty LOBs s nelze použít s CETAS.
+> [!NOTE]
+> Objekty LOBs s nelze použít s CETAS.
 
 V rámci vybrané části CETAS nelze použít následující datové typy:
 
@@ -170,4 +173,4 @@ V rámci vybrané části CETAS nelze použít následující datové typy:
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete vyzkoušet dotazování na [tabulky Spark](develop-storage-files-spark-tables.md).
+Můžete zkusit dotazování [Apache Spark pro externí tabulky Azure synapse](develop-storage-files-spark-tables.md).

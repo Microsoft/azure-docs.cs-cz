@@ -6,18 +6,18 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.date: 05/06/2020
+ms.date: 05/19/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 4067b4439c166a4d3af02b3448bbe7edd98a0a07
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 52a1e0f2691a9b60cc60ed866fc6e316c94e47cd
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585053"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701275"
 ---
-Abyste mohli přijmout předpověď služby LUIS v chatbotu nebo jiné klientské aplikaci, musíte aplikaci publikovat do koncového bodu.
+Aby bylo možné získat LUIS předpověď v robotu chatu nebo v jiné klientské aplikaci, musíte aplikaci publikovat do koncového bodu předpovědi.
 
 1. V pravém horním navigačním panelu vyberte **publikovat** .
 

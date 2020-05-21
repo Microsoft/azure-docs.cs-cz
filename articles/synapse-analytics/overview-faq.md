@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 083bad1aa9abd2cb8efe3520b0acecc9ab00853c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: b28f34c6ee160f96a7b30ded274b030936ce3266
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983869"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701566"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure synapse Analytics (pracovní prostor ve verzi Preview)
 
@@ -35,9 +35,7 @@ Odpověď: Azure synapse je integrovaná datová platforma pro BI, AI a nepřetr
 
 ### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>Otázka: Návody Začínáme s Azure synapse Analytics
 
-Odpověď: Chcete-li začít používat Azure synapse Analytics, vytvořte [pracovní prostor synapse](https://portal.azure.com) (je zdarma!) a v rámci tohoto pracovního prostoru vytvořte požadované prostředky. Můžete postupovat podle některého z našich kurzů pro rychlý Start, například [vytvořit synapse fond SQL](quickstart-create-sql-pool.md) nebo [vytvořit pracovní prostor](quickstart-create-workspace.md), který vás provede jednoduchým případem použití. 
-
-V našem [úložišti](https://github.com/Azure/azure-synapse-analytics/tree/master/samples)můžete také najít ukázkové poznámkové bloky a skripty SQL. Pokud se potřebujete připojit k veřejné datové sadě, vytvořte novou propojenou službu s následujícími atributy:
+O: Pokud chcete začít používat Azure synapse Analytics, [Zaregistrujte poskytovatele prostředků Azure synapse](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types) , a to tak, že v seznamu poskytovatelů prostředků vyberete *Microsoft. synapse* . Pak vytvořte [pracovní prostor synapse](https://portal.azure.com) (je zdarma!) a v rámci tohoto pracovního prostoru vytvořte požadované prostředky. Můžete postupovat podle některého z našich kurzů pro rychlý Start, například [vytvořit synapse fond SQL](quickstart-create-sql-pool-portal.md) nebo [vytvořit pracovní prostor](quickstart-create-workspace.md), který vás provede jednoduchým případem použití. V našem [úložišti](https://github.com/Azure/azure-synapse-analytics/tree/master/samples)můžete také najít ukázkové poznámkové bloky a skripty SQL. Pokud se potřebujete připojit k veřejné datové sadě, vytvořte novou propojenou službu s následujícími atributy:
 
 - azure_storage_account_name = "azureopendatastorage"
 - azure_storage_sas_token = "" (Write **"**")
@@ -106,6 +104,6 @@ Odpověď: Ano, můžete použít obchodní aplikace třetích stran, jako je Ta
 
 - [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
 - [Použití synapse studia](quickstart-synapse-studio.md)
-- [Vytvoření fondu SQL](quickstart-create-sql-pool.md)
+- [Vytvoření fondu SQL](quickstart-create-sql-pool-portal.md)
 - [Používání SQL na vyžádání](quickstart-sql-on-demand.md)
-- [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool.md) 
+- [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool-portal.md) 

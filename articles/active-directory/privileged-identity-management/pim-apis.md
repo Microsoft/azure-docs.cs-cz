@@ -14,23 +14,21 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da6bffbc54bfa6e9c39ddace665eb7cfec58614
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 35d5bb13cf9c3735c61173177a3b94f4594c9272
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75638659"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714130"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Rozhraní API pro Microsoft Graph pro Privileged Identity Management (Preview)
 
-Všechny úlohy Privileged Identity Management můžete provádět pomocí [Microsoft Graph rozhraní API](https://developer.microsoft.com/graph/docs/concepts/overview) pro Azure Active Directory. Tento článek popisuje důležité koncepty pro používání rozhraní Microsoft Graph API pro Privileged Identity Management.
+Privileged Identity Management úlohy můžete provádět pomocí [rozhraní api Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/overview) pro Azure Active Directory. Tento článek popisuje důležité koncepty pro používání rozhraní Microsoft Graph API pro Privileged Identity Management.
 
 Podrobnosti o rozhraních API Microsoft Graph najdete v referenčních informacích k [rozhraní api Azure AD Privileged Identity Management](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
 
 > [!IMPORTANT]
 > Rozhraní API pod verzí/beta v Microsoft Graph jsou ve verzi Preview a mohou se měnit. Použití těchto rozhraní API v produkčních aplikacích není podporováno.
->
-> I když jsou všechny operace PIM podporované prostřednictvím našich Graph APIch příkazů, používáme pro schvalování žádostí o aktivaci jiný systém. Graph API ke schválení se momentálně vyvíjí a vydávají se za několik následujících měsíců.
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 

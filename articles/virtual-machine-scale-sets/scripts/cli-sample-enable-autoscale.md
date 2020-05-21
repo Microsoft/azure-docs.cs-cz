@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 03/27/2018
 ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 0b934e327a4c1ed18c682f909b2d82e85d61125f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3502fda1b924aa5351e7edab8e8b712fd0e6bf2c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81008397"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701227"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Automatické škálování škálovací sady virtuálních počítačů pomocí Azure CLI
 Tento skript vytvoří škálovací sadu virtuálních počítačů s Ubuntu a použije metriky hostitele k automatickému škálování s ohledem na měnící se zatížení procesoru.
@@ -45,5 +45,3 @@ Tento skript k vytvoření skupiny prostředků, škálovací sady virtuálních
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure/overview).
-
-Další ukázkové skripty Azure CLI pro škálovací sady virtuálních počítačů najdete v [dokumentaci ke škálovacím sadám virtuálních počítačů Azure](../cli-samples.md).

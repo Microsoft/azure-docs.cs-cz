@@ -4,14 +4,14 @@ description: Získání ukázek Azure PowerShell k provádění různých běžn
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/26/2020
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: efc0ff8e6c198071d3906a0e7e999510198f73bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7cd14151d8cb0fbef7593d62eee050be7987ab18
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80366192"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83713535"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---sql-core-api"></a>Ukázky Azure PowerShell pro rozhraní API Azure Cosmos DB-SQL (Core)
 
@@ -20,7 +20,7 @@ Následující tabulka obsahuje odkazy na běžně používané skripty Azure Po
 Další Cosmos DB ukázky PowerShellu pro rozhraní API a dokumentaci k SQL (Core) najdete v tématu [správa Azure Cosmos DBch prostředků rozhraní SQL API pomocí PowerShellu](manage-with-powershell.md). Ukázky Cosmos DB PowerShellu pro jiná rozhraní API najdete v tématu [rozhraní API Cassandra](powershell-samples-cassandra.md), [MongoDB API](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)a [rozhraní API pro tabulky](powershell-samples-table.md).
 
 > [!NOTE]
-> Ukázky využívají rutiny [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management. Počítejte s tím, `Az.CosmosDB` že rutiny jsou stále ve verzi Preview a můžou se před vydáním změnit. `Az.CosmosDB` Pravidelně prosím zkontrolujte aktualizace.
+> Ukázky využívají rutiny [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management. Pravidelně prosím zkontrolujte aktualizace `Az.CosmosDB` .
 
 | | |
 |---|---|

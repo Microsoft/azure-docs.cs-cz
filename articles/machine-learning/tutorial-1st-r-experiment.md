@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 5b1c6561519bc25c2b7ac77f0a25eff89413a07a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81256480"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684751"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>Kurz: použití jazyka R k vytvoření modelu Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ V tomto kurzu provedete následující úlohy:
 > * Nasazení koncového bodu předpovědi
 > * Testování modelu z R
 
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
@@ -89,7 +89,7 @@ Ke spuštění tohoto kurzu použijte RStudio na výpočetní instanci nebo na v
 > Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v tématu *výuka a nasazení-do-ACI. Soubor RMD* Pokud máte zkušenosti s RMarkdown, můžete použít kód z tohoto souboru.  Nebo můžete zkopírovat nebo vložit fragmenty kódu z nebo z tohoto článku do skriptu R nebo příkazového řádku.  
 
 
-## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
+## <a name="set-up-your-development-environment"></a>Nastavíte vývojové prostředí
 Nastavení pro vývojovou práci v tomto kurzu zahrnuje následující akce:
 
 * Instalace požadovaných balíčků
@@ -121,10 +121,10 @@ Nyní pokračujte a naimportujte balíček **azuremlsdk** .
 library(azuremlsdk)
 ```
 
-Skripty pro školení a bodování (`accidents.R` a `accident_predict.R`) mají nějaké další závislosti. Pokud plánujete spouštět tyto skripty místně, ujistěte se, že máte také tyto požadované balíčky.
+Skripty pro školení a bodování ( `accidents.R` a `accident_predict.R` ) mají nějaké další závislosti. Pokud plánujete spouštět tyto skripty místně, ujistěte se, že máte také tyto požadované balíčky.
 
 ### <a name="load-your-workspace"></a>Načtení pracovního prostoru
-Vytvořte instanci objektu pracovního prostoru z existujícího pracovního prostoru. Následující kód načte podrobnosti pracovního prostoru ze souboru **config. JSON** . Pracovní prostor můžete také načíst pomocí [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html).
+Vytvořte instanci objektu pracovního prostoru z existujícího pracovního prostoru. Následující kód načte podrobnosti pracovního prostoru ze souboru **config. JSON** . Pracovní prostor můžete také načíst pomocí [`get_workspace()`](https://azure.github.io/azureml-sdk-for-r/reference/get_workspace.html) .
 
 ```R
 ws <- load_workspace_from_config()
@@ -159,7 +159,7 @@ wait_for_provisioning_completion(compute_target)
 
 ## <a name="prepare-data-for-training"></a>Příprava dat pro školení
 V tomto kurzu se používá data z [státní správy zabezpečení provozu](https://cdan.nhtsa.gov/tsftables/tsfar.htm) USA (s poděkováním [Marie C. Meyer a Tremika Finney](https://www.stat.colostate.edu/~meyer/airbags.htm)).
-Tato datová sada zahrnuje data z více než 25 000 chyb auta v USA s proměnnými, které můžete použít k předpovědi pravděpodobnosti závažnosti. Nejprve importujte data do jazyka `accidents` `Rdata` R a Transformujte je do nového datového rámce pro analýzu a exportujte je do souboru.
+Tato datová sada zahrnuje data z více než 25 000 chyb auta v USA s proměnnými, které můžete použít k předpovědi pravděpodobnosti závažnosti. Nejprve importujte data do jazyka R a Transformujte je do nového datového rámce `accidents` pro analýzu a exportujte je do `Rdata` souboru.
 
 ```R
 nassCDS <- read.csv("nassCDS.csv", 
@@ -200,11 +200,11 @@ Pro tento kurz si nahráli model logistické regrese pro nahraná data pomocí v
 * Odeslání úlohy
 
 ### <a name="prepare-the-training-script"></a>Příprava školicího skriptu
-Ve stejném adresáři jako `accidents.R` v tomto kurzu jste zadali školicí skript s názvem. Všimněte si následujících podrobností v **školicím skriptu** , které byly provedeny k využití Azure Machine Learning pro školení:
+`accidents.R`Ve stejném adresáři jako v tomto kurzu jste zadali školicí skript s názvem. Všimněte si následujících podrobností v **školicím skriptu** , které byly provedeny k využití Azure Machine Learning pro školení:
 
 * Školicí skript přebírá argument `-d` pro vyhledání adresáře, který obsahuje školicí data. Při pozdějším definování a odeslání úlohy odkazujete na úložiště dat pro tento argument. Služba Azure ML připojí složku úložiště ke vzdálenému clusteru pro úlohu školení.
-* Školicí skript zaznamená konečnou přesnost jako metriku pro záznam spuštění v Azure ML pomocí `log_metric_to_run()`. Sada Azure ML SDK poskytuje sadu protokolovacích rozhraní API pro protokolování různých metrik během školicích běhů. Tyto metriky se zaznamenávají a ukládají v záznamu experimentálního spuštění. Metriky je pak možné kdykoli otevřít nebo zobrazit na stránce Podrobnosti o spuštění v nástroji [Studio](https://ml.azure.com). Úplnou sadu metod `log_*()`protokolování najdete v [referenčních informacích](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) .
-* Školicí skript uloží model do adresáře s názvem **výstupy**. `./outputs` Složka přijímá zvláštní zacházení pomocí Azure ml. Během školení se soubory zapsané `./outputs` do automaticky odešlou do záznamu o spuštění pomocí Azure ml a trvale se uloží jako artefakty. Uložením školicího modelu do `./outputs`nástroje budete moci získat přístup k souboru modelu a načíst ho i po skončení běhu a už nebudete mít přístup ke vzdálenému školicímu prostředí.
+* Školicí skript zaznamená konečnou přesnost jako metriku pro záznam spuštění v Azure ML pomocí `log_metric_to_run()` . Sada Azure ML SDK poskytuje sadu protokolovacích rozhraní API pro protokolování různých metrik během školicích běhů. Tyto metriky se zaznamenávají a ukládají v záznamu experimentálního spuštění. Metriky je pak možné kdykoli otevřít nebo zobrazit na stránce Podrobnosti o spuštění v nástroji [Studio](https://ml.azure.com). Úplnou sadu metod protokolování najdete v [referenčních informacích](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) `log_*()` .
+* Školicí skript uloží model do adresáře s názvem **výstupy**. `./outputs`Složka přijímá zvláštní zacházení pomocí Azure ml. Během školení se soubory zapsané do `./outputs` automaticky odešlou do záznamu o spuštění pomocí Azure ml a trvale se uloží jako artefakty. Uložením školicího modelu do nástroje budete `./outputs` moci získat přístup k souboru modelu a načíst ho i po skončení běhu a už nebudete mít přístup ke vzdálenému školicímu prostředí.
 
 ### <a name="create-an-estimator"></a>Vytvoření estimátoru
 
@@ -212,11 +212,11 @@ Azure ML Estimator zapouzdřuje informace o konfiguraci spuštění potřebné k
 
 Chcete-li vytvořit Estimator, zadejte:
 
-* Adresář, který obsahuje skripty potřebné pro školení (`source_directory`). Všechny soubory v tomto adresáři se nahrají na uzly, které se mají vykoná. Adresář musí obsahovat školicí skript a požadované další skripty.
-* Školicí skript, který se spustí (`entry_script`).
-* Výpočetní cíl (`compute_target`), v tomto případě cluster AmlCompute, který jste vytvořili dříve.
-* Parametry požadované ze školicího skriptu (`script_params`). Azure ML spustí školicí skript jako skript příkazového řádku s `Rscript`. V tomto kurzu zadáte jeden argument skriptu, bod připojení k datovému adresáři, ke kterému máte přístup `ds$path(target_path)`.
-* Jakékoli závislosti prostředí požadované pro školení. Výchozí image Docker vytvořená pro školení už obsahuje tři balíčky (`caret`, `e1071`a `optparse`) potřebné ve školicím skriptu.  Takže nemusíte zadávat další informace. Pokud používáte balíčky R, které nejsou ve výchozím nastavení zahrnuty, přidejte další balíčky CRAN pomocí `cran_packages` parametru Estimator. Úplnou sadu [`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html) konfigurovatelných možností najdete v referenčních informacích.
+* Adresář, který obsahuje skripty potřebné pro školení ( `source_directory` ). Všechny soubory v tomto adresáři se nahrají na uzly, které se mají vykoná. Adresář musí obsahovat školicí skript a požadované další skripty.
+* Školicí skript, který se spustí ( `entry_script` ).
+* Výpočetní cíl ( `compute_target` ), v tomto případě cluster AmlCompute, který jste vytvořili dříve.
+* Parametry požadované ze školicího skriptu ( `script_params` ). Azure ML spustí školicí skript jako skript příkazového řádku s `Rscript` . V tomto kurzu zadáte jeden argument skriptu, bod připojení k datovému adresáři, ke kterému máte přístup `ds$path(target_path)` .
+* Jakékoli závislosti prostředí požadované pro školení. Výchozí image Docker vytvořená pro školení už obsahuje tři balíčky ( `caret` , a `e1071` `optparse` ) potřebné ve školicím skriptu.  Takže nemusíte zadávat další informace. Pokud používáte balíčky R, které nejsou ve výchozím nastavení zahrnuty, `cran_packages` přidejte další balíčky Cran pomocí parametru Estimator. [`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html)Úplnou sadu konfigurovatelných možností najdete v referenčních informacích.
 
 ```R
 est <- estimator(source_directory = ".",
@@ -252,7 +252,7 @@ Vy a kolegové, kteří mají přístup k pracovnímu prostoru, můžou odeslat 
 Jakmile váš model dokončí školení, můžete získat přístup k artefaktům vaší úlohy, které byly trvale uloženy na záznam spuštění, včetně všech protokolovaných metrik a konečného školicího modelu.
 
 ### <a name="get-the-logged-metrics"></a>Získání protokolovaných metrik
-Ve školicím skriptu `accidents.R`jste zaznamenali metriku z modelu: Přesnost předpovědi ve školicích datech. Metriky můžete zobrazit v [studiu](https://ml.azure.com)nebo je extrahovat do místní relace jako seznam R, a to takto:
+Ve školicím skriptu `accidents.R` jste zaznamenali metriku z modelu: Přesnost předpovědi ve školicích datech. Metriky můžete zobrazit v [studiu](https://ml.azure.com)nebo je extrahovat do místní relace jako seznam R, a to takto:
 
 ```R
 metrics <- get_run_metrics(run)
@@ -309,7 +309,7 @@ Pomocí modelu můžete předpovědět nebezpečí smrti proti kolizi. Použijte
 
 ### <a name="register-the-model"></a>Registrace modelu
 
-Nejprve zaregistrujte model, který jste stáhli do [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html)pracovního prostoru, pomocí. Registrovaný model může být libovolná kolekce souborů, ale v tomto případě je objekt modelu R dostačující. Azure ML použije registrovaný model pro nasazení.
+Nejprve zaregistrujte model, který jste stáhli do pracovního prostoru, pomocí [`register_model()`](https://azure.github.io/azureml-sdk-for-r/reference/register_model.html) . Registrovaný model může být libovolná kolekce souborů, ale v tomto případě je objekt modelu R dostačující. Azure ML použije registrovaný model pro nasazení.
 
 ```R
 model <- register_model(ws, 
@@ -319,7 +319,7 @@ model <- register_model(ws,
 ```
 
 ### <a name="define-the-inference-dependencies"></a>Definovat závislosti odvození
-Pokud chcete vytvořit webovou službu pro váš model, musíte nejdřív vytvořit hodnoticí skript (`entry_script`), skript R, který bude přebírat jako hodnoty vstupních proměnných (ve formátu JSON), a vyhodnotit předpovědi z modelu. Pro tento kurz použijte poskytnutý soubor `accident_predict.R`hodnocení. Skript bodování musí obsahovat `init()` metodu, která načte váš model a vrátí funkci, která používá model k vytvoření předpovědi založené na vstupních datech. Další podrobnosti najdete v [dokumentaci](https://azure.github.io/azureml-sdk-for-r/reference/inference_config.html#details) .
+Pokud chcete vytvořit webovou službu pro váš model, musíte nejdřív vytvořit hodnoticí skript ( `entry_script` ), skript R, který bude přebírat jako hodnoty vstupních proměnných (ve formátu JSON), a vyhodnotit předpovědi z modelu. Pro tento kurz použijte poskytnutý soubor hodnocení `accident_predict.R` . Skript bodování musí obsahovat `init()` metodu, která načte váš model a vrátí funkci, která používá model k vytvoření předpovědi založené na vstupních datech. Další podrobnosti najdete v [dokumentaci](https://azure.github.io/azureml-sdk-for-r/reference/inference_config.html#details) .
 
 Dále definujte **prostředí** Azure ml pro závislosti balíčku vašeho skriptu. V prostředí zadáte balíčky R (od CRAN nebo jinde), které jsou potřeba ke spuštění skriptu. Můžete také zadat hodnoty proměnných prostředí, na které může skript odkazovat, aby bylo možné změnit jeho chování. Ve výchozím nastavení vytvoří Azure ML stejnou výchozí image Docker, která se používá s Estimator pro školení. Vzhledem k tomu, že kurz nemá žádné zvláštní požadavky, vytvořte prostředí bez speciálních atributů.
 
@@ -327,7 +327,7 @@ Dále definujte **prostředí** Azure ml pro závislosti balíčku vašeho skrip
 r_env <- r_environment(name = "basic_env")
 ```
 
-Pokud místo toho chcete použít vlastní image Docker pro nasazení, zadejte `custom_docker_image` parametr. Úplnou sadu [`r_environment()`](https://azure.github.io/azureml-sdk-for-r/reference/r_environment.html) konfigurovatelných možností pro definování prostředí najdete v referenčních informacích.
+Pokud místo toho chcete použít vlastní image Docker pro nasazení, zadejte `custom_docker_image` parametr. [`r_environment()`](https://azure.github.io/azureml-sdk-for-r/reference/r_environment.html)Úplnou sadu konfigurovatelných možností pro definování prostředí najdete v referenčních informacích.
 
 Nyní máte všechno, co potřebujete k vytvoření **Konfigurace odvození** pro zapouzdření skriptu bodování a závislostí prostředí.
 
@@ -338,7 +338,7 @@ inference_config <- inference_config(
 ```
 
 ### <a name="deploy-to-aci"></a>Nasazení do ACI
-V tomto kurzu nasadíte službu, která bude ACI. Tento kód zřídí jeden kontejner, který reaguje na příchozí požadavky, který je vhodný pro testování a světelnou zátěž. Další [`aci_webservice_deployment_config()`](https://azure.github.io/azureml-sdk-for-r/reference/aci_webservice_deployment_config.html) konfigurovatelné možnosti najdete v tématu. (Pro nasazení v produkčním měřítku můžete také [nasadit do služby Azure Kubernetes](https://azure.github.io/azureml-sdk-for-r/articles/deploy-to-aks/deploy-to-aks.html).)
+V tomto kurzu nasadíte službu, která bude ACI. Tento kód zřídí jeden kontejner, který reaguje na příchozí požadavky, který je vhodný pro testování a světelnou zátěž. [`aci_webservice_deployment_config()`](https://azure.github.io/azureml-sdk-for-r/reference/aci_webservice_deployment_config.html)Další konfigurovatelné možnosti najdete v tématu. (Pro nasazení v produkčním měřítku můžete také [nasadit do služby Azure Kubernetes](https://azure.github.io/azureml-sdk-for-r/articles/deploy-to-aks.html).)
 
 ``` R
 aci_config <- aci_webservice_deployment_config(cpu_cores = 1, memory_gb = 0.5)
@@ -358,7 +358,7 @@ wait_for_deployment(aci_service, show_output = TRUE)
 
 ## <a name="test-the-deployed-service"></a>Otestování nasazené služby
 
-Teď, když je model nasazený jako služba, můžete otestovat službu z R pomocí [`invoke_webservice()`](https://azure.github.io/azureml-sdk-for-r/reference/invoke_webservice.html).  Poskytněte novou sadu dat pro předpověď, převeďte je na JSON a odešlete ji do služby.
+Teď, když je model nasazený jako služba, můžete otestovat službu z R pomocí [`invoke_webservice()`](https://azure.github.io/azureml-sdk-for-r/reference/invoke_webservice.html) .  Poskytněte novou sadu dat pro předpověď, převeďte je na JSON a odešlete ji do služby.
 
 ```R
 library(jsonlite)

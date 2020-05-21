@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 05/20/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 533e38206b9a85b449880d88c9ff969c051fac53
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593722"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712226"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -25,14 +25,14 @@ Automatické zřizování se týká vytváření identit uživatelů a rolí v c
 **Služba zřizování Azure AD** zřídí uživatele k SaaS aplikací a dalších systémů připojením k systému pro správu identit mezi doménami (SCIM) 2,0 koncovým bodem rozhraní API pro správu uživatelů poskytovaným dodavatelem aplikace. Tento koncový bod SCIM umožňuje službě Azure AD programově vytvářet, aktualizovat a odebírat uživatele. Pro vybrané aplikace může služba zřizování také vytvářet, aktualizovat a odebírat další objekty související s identitou, jako jsou například skupiny a role. Kanál použitý ke zřízení služby Azure AD a aplikace je zašifrovaný pomocí šifrování HTTPS TLS 1,2.
 
 
-![Azure AD Provisioning](./media/how-provisioning-works/provisioning0.PNG)
-Service *– Obrázek 1: služba zřizování Azure AD*
+![Azure AD Provisioning Service ](./media/how-provisioning-works/provisioning0.PNG)
+ *– Obrázek 1: služba zřizování Azure AD*
 
-![Obrázek pracovní postup](./media/how-provisioning-works/provisioning1.PNG)
-odchozího zřizování uživatelů*2: odchozí pracovní postup zřizování uživatelů z Azure AD do oblíbených aplikací SaaS*
+![Obrázek pracovní postup odchozího zřizování uživatelů ](./media/how-provisioning-works/provisioning1.PNG)
+ *2: odchozí pracovní postup zřizování uživatelů z Azure AD do oblíbených aplikací SaaS*
 
-![Obrázek 3 příchozí pracovní postup](./media/how-provisioning-works/provisioning2.PNG)
-zřizování uživatelů *: "příchozí" pracovní postup zřizování uživatelů z oblíbených aplikací pro správu lidských kapitálu (HCM) pro Azure Active Directory a Windows Server Active Directory*
+![Obrázek 3 příchozí pracovní postup zřizování uživatelů ](./media/how-provisioning-works/provisioning2.PNG)
+ *: "příchozí" pracovní postup zřizování uživatelů z oblíbených aplikací pro správu lidských kapitálu (HCM) pro Azure Active Directory a Windows Server Active Directory*
 
 ## <a name="provisioning-using-scim-20"></a>Zřizování pomocí SCIM 2,0
 
@@ -63,7 +63,7 @@ Při konfiguraci zřizování pro aplikaci SaaS je jedním z typů mapování at
 
 Pro odchozí zřizování z Azure AD do aplikace SaaS, která se spoléhá na [přiřazení uživatele nebo skupiny](../manage-apps/assign-user-or-group-access-portal.md) , je nejběžnější způsob, jak určit, kteří uživatelé jsou v oboru pro zřizování. Vzhledem k tomu, že přiřazení uživatelů slouží také k povolení jednotného přihlašování, lze stejnou metodu použít ke správě přístupu i zřizování. Obory založené na přiřazení se nevztahují na vstupní scénáře zřizování, například Workday a SuccessFactors.
 
-* **Skupiny.** Pomocí Azure AD Premiumho licenčního plánu můžete pomocí skupin přiřadit přístup k aplikaci SaaS. Až se pak obor zřizování nastaví na **synchronizovat jenom přiřazené uživatele a skupiny**, služba zřizování Azure AD zřídí nebo zruší zřízení uživatelů na základě toho, jestli jsou členy skupiny, která je přiřazená k dané aplikaci. Samotný objekt skupiny není zřízený, pokud aplikace nepodporuje skupinové objekty. Zajistěte, aby skupiny přiřazené k vaší aplikaci měly vlastnost "SecurityEnabled" nastavenou na hodnotu "false".
+* **Skupiny.** Pomocí Azure AD Premiumho licenčního plánu můžete pomocí skupin přiřadit přístup k aplikaci SaaS. Až se pak obor zřizování nastaví na **synchronizovat jenom přiřazené uživatele a skupiny**, služba zřizování Azure AD zřídí nebo zruší zřízení uživatelů na základě toho, jestli jsou členy skupiny, která je přiřazená k dané aplikaci. Samotný objekt skupiny není zřízený, pokud aplikace nepodporuje skupinové objekty. Zajistěte, aby skupiny přiřazené k vaší aplikaci měly vlastnost "SecurityEnabled" nastavenou na hodnotu "true".
 
 * **Dynamické skupiny.** Služba zřizování uživatelů Azure AD může číst a zřizovat uživatele v [dynamických skupinách](../users-groups-roles/groups-create-rule.md). Mějte na paměti tato upozornění a doporučení:
 
@@ -83,7 +83,7 @@ Filtry oborů lze použít k definování pravidel založených na atributech, k
 
 Je možné použít službu Azure AD Provisioning Service ke zřízení uživatelů B2B (nebo hostů) ve službě Azure AD a SaaS aplikace. Aby se však uživatelé B2B přihlásili k aplikaci SaaS pomocí služby Azure AD, musí mít aplikace SaaS možnost jednotného přihlašování založené na SAML nakonfigurovanou určitým způsobem. Další informace o tom, jak nakonfigurovat aplikace SaaS tak, aby podporovaly přihlášení uživatelů B2B, najdete v tématu [Konfigurace aplikací SaaS pro spolupráci B2B](../b2b/configure-saas-apps.md).
 
-Všimněte si, že userPrincipalName pro uživatele typu Host je často uložen jako "alias # EXT@domain.com#". Pokud je hodnota userPrincipalName obsažena v mapování atributů jako zdrojový atribut, #EXT # je odstraněn z třídy userPrincipalName. Pokud požadujete, aby byla k dispozici #EXT #, nahraďte atribut userPrincipalName parametrem originalUserPrincipalName jako zdrojový atribut. 
+Všimněte si, že userPrincipalName pro uživatele typu Host je často uložen jako "alias # EXT # @domain.com ". Pokud je hodnota userPrincipalName obsažena v mapování atributů jako zdrojový atribut, #EXT # je odstraněn z třídy userPrincipalName. Pokud požadujete, aby byla k dispozici #EXT #, nahraďte atribut userPrincipalName parametrem originalUserPrincipalName jako zdrojový atribut. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Cykly zřizování: počáteční a přírůstkové
 
