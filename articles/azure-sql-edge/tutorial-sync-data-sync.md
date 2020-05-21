@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6bcdfc3eb09b6c5ed4f8dde4d48a34bee8746e1e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7971681c3f0c99a11567e6a30e61167c5d42348c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599653"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680504"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Kurz: synchronizace dat z Edge SQL na Azure SQL Database pomocí Synchronizace dat SQL
 
@@ -32,7 +32,7 @@ Tento kurz vyžaduje počítač se systémem Windows nakonfigurovaný s [agentem
 
 * V nasazení Azure SQL Database vytvořte tabulky a další potřebné objekty.
 
-* Vytvořte potřebné tabulky a objekty v nasazení Azure SQL Edge. Další informace najdete v tématu [použití SQL Databasech DAC Packages s nástrojem SQL Edge](stream-analytics.md).
+* Vytvořte potřebné tabulky a objekty v nasazení Azure SQL Edge. Další informace najdete v tématu [použití SQL Databasech DAC Packages s nástrojem SQL Edge](deploy-dacpac.md).
 
 * Zaregistrujte instanci Azure SQL Edge s agentem synchronizace dat pro Azure Synchronizace dat SQL. Další informace najdete v tématu [Přidání místní databáze SQL Server](../sql-database/sql-database-get-started-sql-data-sync.md#add-on-prem).
 

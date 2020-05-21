@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.openlocfilehash: 5b57a2463815d5db1c83d3bc4e8cd56314fb204d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 19ccdf85e1753bea202c5c157919ab4e8ff96d06
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176991"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660253"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mapování stávající vlastní domény na jarní cloud Azure
 Služba DNS (Distributed Name Service) je technika pro ukládání názvů síťových uzlů v síti. Tento kurz namapuje doménu, například www.contoso.com, pomocí záznamu CNAME. Zabezpečuje vlastní doménu s certifikátem a ukazuje, jak vymáhat protokol TLS (Transport Layer Security), označovaný také jako SSL (Secure Sockets Layer) (SSL). 
@@ -21,7 +21,7 @@ Certifikáty šifrují webový provoz. Tyto certifikáty TLS/SSL můžou být ul
 ## <a name="prerequisites"></a>Požadavky
 * Aplikace nasazená do jarního cloudu Azure (Další informace najdete v tématu [rychlý Start: spuštění stávající aplikace pro jarní Cloud v Azure pomocí Azure Portal](spring-cloud-quickstart-launch-app-portal.md), nebo použití existující aplikace).
 * Název domény s přístupem k registru DNS pro poskytovatele domény, jako je GoDaddy.
-* Privátní certifikát od poskytovatele třetí strany. Certifikát se musí shodovat s doménou.
+* Privátní certifikát (tedy certifikát podepsaný svým držitelem) od poskytovatele třetí strany. Certifikát se musí shodovat s doménou.
 * Nasazená instance [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 
 ## <a name="import-certificate"></a>Import certifikátu 
@@ -31,25 +31,44 @@ Postup nahrání certifikátu do trezoru klíčů:
 1. Přejít do instance trezoru klíčů.
 1. V levém navigačním podokně klikněte na **certifikáty**.
 1. V horní nabídce klikněte na možnost **Generovat/importovat**.
-1. V dialogovém okně **vytvořit certifikát** v části **Metoda vytvoření certifikátu**vyberte `Import`.
+1. V dialogovém okně **vytvořit certifikát** v části **Metoda vytvoření certifikátu**vyberte `Import` .
 1. V části **nahrát soubor certifikátu**přejděte do umístění certifikátu a vyberte ho.
 1. V části **heslo**zadejte privátní klíč certifikátu.
 1. Klikněte na **Vytvořit**.
 
-![Importovat certifikát 1](./media/custom-dns-tutorial/import-certificate-a.png)
+    ![Importovat certifikát 1](./media/custom-dns-tutorial/import-certificate-a.png)
 
 Import certifikátu do jarního cloudu Azure:
 1. Přejít na instanci služby. 
 1. V levém navigačním podokně aplikace vyberte **Nastavení TLS/SSL**.
 1. Pak klikněte na **importovat Key Vault certifikát**.
 
-![Import certifikátu](./media/custom-dns-tutorial/import-certificate.png)
+    ![Import certifikátu](./media/custom-dns-tutorial/import-certificate.png)
+
+Nebo můžete k importu certifikátu použít Azure CLI:
+
+```
+az spring-cloud certificate add --name <cert name> --vault-uri <key vault uri> --vault-certificate-name <key vault cert name>
+```
+
+> [!IMPORTANT] 
+> Než spustíte předchozí příkaz Import certifikátu, ujistěte se, že jste vašemu trezoru klíčů udělili přístup k Azure jaře cloudu. Pokud jste to ještě neudělali, můžete pro udělení přístupových práv spustit následující příkaz.
+
+```
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id 938df8e2-2b9d-40b1-940c-c75c33494239 --certificate-permissions get list
+``` 
 
 Po úspěšném Importování certifikátu se zobrazí seznam **certifikátů privátních klíčů**.
 
 ![Certifikát privátního klíče](./media/custom-dns-tutorial/key-certificates.png)
 
->[!IMPORTANT] 
+Případně můžete pomocí rozhraní příkazového řádku Azure zobrazit seznam certifikátů:
+
+```
+az spring-cloud certificate list
+```
+
+> [!IMPORTANT] 
 > Chcete-li zabezpečit vlastní doménu pomocí tohoto certifikátu, je nutné vytvořit navázání certifikátu na konkrétní doménu. Postupujte podle kroků v tomto dokumentu pod nadpisem **Přidat vazbu SSL**.
 
 ## <a name="add-custom-domain"></a>Přidat vlastní doménu
@@ -71,19 +90,29 @@ Přejít na stránku aplikace
 1. Vyberte **vlastní doména**.
 2. Pak **přidejte vlastní doménu**. 
 
-![Vlastní doména](./media/custom-dns-tutorial/custom-domain.png)
+    ![Vlastní doména](./media/custom-dns-tutorial/custom-domain.png)
 
 3. Zadejte plně kvalifikovaný název domény, pro který jste přidali záznam CNAME, například www.contoso.com. Ujistěte se, že typ záznamu názvu hostitele je nastavený na CNAME (<service_name>. azuremicroservices.io).
 4. Kliknutím na tlačítko **ověřit** povolte tlačítko **Přidat** .
 5. Klikněte na tlačítko **Add** (Přidat).
 
-![Přidat vlastní doménu](./media/custom-dns-tutorial/add-custom-domain.png)
+    ![Přidat vlastní doménu](./media/custom-dns-tutorial/add-custom-domain.png)
+
+Nebo můžete použít rozhraní příkazového řádku Azure a přidat vlastní doménu:
+```
+az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> 
+```
 
 Jedna aplikace může mít víc domén, ale jedna doména se dá mapovat jenom na jednu aplikaci. Po úspěšném namapování vlastní domény k aplikaci se zobrazí v tabulce vlastní doména.
 
 ![Vlastní doménová tabulka](./media/custom-dns-tutorial/custom-domain-table.png)
 
->[!NOTE]
+Nebo můžete použít rozhraní příkazového řádku Azure CLI k zobrazení seznamu vlastních domén:
+```
+az spring-cloud app custom-domain list --app <app name> 
+```
+
+> [!NOTE]
 > **Nezabezpečený** popisek pro vaši vlastní doménu znamená, že ještě není vázaný na certifikát SSL. Jakékoli žádosti HTTPS z prohlížeče do vaší vlastní domény zobrazí chybu nebo varování.
 
 ## <a name="add-ssl-binding"></a>Přidat vazbu SSL
@@ -91,7 +120,12 @@ V tabulce vlastní doména vyberte **Přidat vazbu SSL** , jak je znázorněno n
 1. Vyberte svůj **certifikát** nebo ho importujte.
 1. Klikněte na **Uložit**.
 
-![Přidat vazbu SSL](./media/custom-dns-tutorial/add-ssl-binding.png)
+    ![Přidat vazbu SSL](./media/custom-dns-tutorial/add-ssl-binding.png)
+
+Nebo můžete k **Přidání vazby SSL**použít Azure CLI:
+```
+az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> 
+```
 
 Po úspěšném přidání vazby SSL bude stav domény zabezpečený: **v pořádku**. 
 
@@ -104,10 +138,15 @@ Na stránce aplikace v levém navigačním panelu vyberte **vlastní doména**. 
 
 ![Přidat vazbu SSL](./media/custom-dns-tutorial/enforce-http.png)
 
+Nebo můžete použít rozhraní příkazového řádku Azure pro vymáhání protokolu HTTPS:
+```
+az spring-cloud app update -name <app-name> --https-only <true|false> -g <resource group> --service <service-name>
+```
+
 Po dokončení operace přejděte na libovolnou adresu URL HTTPS, která odkazuje na vaši aplikaci. Upozorňujeme, že adresy URL HTTP nefungují.
 
 ## <a name="see-also"></a>Viz také
 * [Co je Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 * [Import certifikátu](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
-* [Spuštění vaší jarní cloudové aplikace pomocí Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
+* [Spusťte svoji jarní cloudovou aplikaci pomocí Azure CLI.](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
 

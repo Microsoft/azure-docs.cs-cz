@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 7d66d226554c4b6f84e3040cdd7c3edea0a5f054
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c54d3187af1faee3a47a794dcf5b9b91733e5592
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982169"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683359"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Rychlý Start: vytvoření datové továrny pomocí Azure Data Factoryho uživatelského rozhraní
 
@@ -29,7 +29,7 @@ ms.locfileid: "82982169"
 Tento rychlý start popisuje vytvoření a monitorování datové továrny pomocí uživatelského rozhraní služby Azure Data Factory. Kanál, který vytvoříte v této datové továrně, *kopíruje* data z jedné složky do jiné složky v úložišti objektů blob v Azure. Pokud chcete *transformovat* data pomocí Azure Data Factory, přečtěte si téma [mapování toku dat](concepts-data-flow-overview.md) a [toku dat tahání (Preview)](wrangling-data-flow-overview.md).
 
 > [!NOTE]
-> Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](data-factory-introduction.md), než s tímto rychlým startem začnete. 
+> Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](introduction.md), než s tímto rychlým startem začnete. 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -49,7 +49,7 @@ Toto video vám pomůže seznámit se s uživatelským rozhraním služby Data F
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Na stránce **Nová datová továrna** jako **Název** zadejte **ADFTutorialDataFactory**. 
  
-   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (například ** &lt;na&gt;ADFTutorialDataFactory**) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí následující chyba, změňte název datové továrny (například na ** &lt; &gt; ADFTutorialDataFactory**) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
    ![Chyba: název není k dispozici](./media/doc-common-process/name-not-available-error.png)
 1. Jako **Předplatné** vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
@@ -106,7 +106,7 @@ Výstupní datová sada představuje data kopírovaná do cíle. V definici výs
 
 V nastavení propojené služby jste zadali Azure Storage účet, který obsahuje zdrojová data. V nastavení zdrojové datové sady určíte, kde přesně se data nacházejí (kontejner objektů blob, složka a soubor). V nastavení datové sady jímky určíte, kam se data kopírují (kontejner objektů blob, složka a soubor). 
  
-1. Vyberte tlačítko **+** (plus) a pak vyberte **datová sada**.
+1. Vyberte **+** tlačítko (plus) a pak vyberte **datová sada**.
 
    ![Nabídka pro vytvoření datové sady](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
 1. Na stránce **Nová datová sada** vyberte **Azure Blob Storage**a pak vyberte **pokračovat**. 
@@ -130,7 +130,7 @@ V nastavení propojené služby jste zadali Azure Storage účet, který obsahuj
     ![Nastavit vlastnosti pro InputDataset](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
 1. Pomocí stejného postupu vytvořte výstupní datovou sadu:  
 
-    a. Vyberte tlačítko **+** (plus) a pak vyberte **datová sada**.
+    a. Vyberte **+** tlačítko (plus) a pak vyberte **datová sada**.
 
     b. Na stránce **Nová datová sada** vyberte **Azure Blob Storage**a pak vyberte **pokračovat**.
 
@@ -146,7 +146,7 @@ V nastavení propojené služby jste zadali Azure Storage účet, který obsahuj
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu 
 V tomto postupu vytvoříte a ověříte kanál s aktivitou kopírování, která používá vstupní a výstupní datovou sadu. Aktivita kopírování kopíruje data ze souboru zadaného v nastavení vstupní datové sady do souboru zadaného v nastavení výstupní datové sady. Pokud vstupní datová sada určuje pouze složku (bez názvu souboru), aktivita kopírování zkopíruje do cíle všechny soubory ve zdrojové složce. 
 
-1. Vyberte tlačítko **+** (plus) a pak vyberte **kanál**. 
+1. Vyberte **+** tlačítko (plus) a pak vyberte **kanál**. 
 
 1. Na kartě **Obecné** jako **Název** zadejte **CopyPipeline**. 
 
@@ -157,7 +157,7 @@ V tomto postupu vytvoříte a ověříte kanál s aktivitou kopírování, kter�
 
 1. V nastavení aktivity kopírování přepněte na kartu **Jímka** a jako **Datová sada jímky** vyberte **OutputDataset**.
 
-1. Kliknutím na **Ověřit** na panelu nástrojů kanálu nad plátnem ověřte nastavení kanálu. Ověřte úspěšné ověření kanálu. Pokud chcete výstup ověřování zavřít, vyberte tlačítko **>>** (šipka doprava). 
+1. Kliknutím na **Ověřit** na panelu nástrojů kanálu nad plátnem ověřte nastavení kanálu. Ověřte úspěšné ověření kanálu. Pokud chcete výstup ověřování zavřít, vyberte **>>** tlačítko (šipka doprava). 
    ![Ověření kanálu](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
 ## <a name="debug-the-pipeline"></a>Ladění kanálu

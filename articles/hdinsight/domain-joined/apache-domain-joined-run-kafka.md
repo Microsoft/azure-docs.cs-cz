@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 09/04/2019
-ms.openlocfilehash: 58c5b3bdd6d50f2e512cccffe78bd4e70805d729
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/19/2020
+ms.openlocfilehash: 6da2537464e39ecb2c613a97b19f2d8f316818af
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78204731"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677553"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Konfigurace zásad Apache Kafka v HDInsight pomocí Balíček zabezpečení podniku (Preview)
 
 Přečtěte si, jak nakonfigurovat zásady Apache Ranger pro clustery Balíček zabezpečení podniku (ESP) Apache Kafka. ESP clustery jsou připojené k doméně, což uživatelům umožňuje ověření pomocí přihlašovacích údajů do domény. V tomto kurzu vytvoříte dvě zásady Ranger pro omezení přístupu k tématům `sales` a `marketingspend`.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvoření uživatelů domén
@@ -48,7 +48,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
 1. Otevřete **Uživatelské rozhraní správce Ranger**.
 
-2. V části **Kafka**vyberte ** \<název_clusteru>_kafka** . Může být uvedena jedna předem nakonfigurovaná zásada.
+2. V části **Kafka**vyberte ** \< název_clusteru>_kafka** . Může být uvedena jedna předem nakonfigurovaná zásada.
 
 3. Vyberte **Přidat novou zásadu** a zadejte následující hodnoty:
 
@@ -85,7 +85,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>Vytvoření témat v clusteru Kafka pomocí ESP
 
-Chcete-li vytvořit dvě `salesevents` témata `marketingspend`a:
+Chcete-li vytvořit dvě témata `salesevents` a `marketingspend` :
 
 1. Navažte připojení SSH ke clusteru použitím následujícího příkazu:
 
@@ -123,7 +123,7 @@ Chcete-li vytvořit dvě `salesevents` témata `marketingspend`a:
 
 ## <a name="test-the-ranger-policies"></a>Testování zásad Ranger
 
-V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytvářet a spotřebovávat téma `salesevents` , ale ne `marketingspend`téma. Naopak **marketing_user** může vytvářet a využívat téma `marketingspend` , ale ne téma. `salesevents`
+V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytvářet a spotřebovávat téma, `salesevents` ale ne téma `marketingspend` . Naopak **marketing_user** může vytvářet a využívat téma `marketingspend` , ale ne téma `salesevents` .
 
 1. Otevřete nové připojení SSH ke clusteru. Pomocí následujícího příkazu se přihlaste jako uživatel **sales_user1**:
 
@@ -145,17 +145,18 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytv
 
    Příklad: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Postupujte podle kroků 3 v části **sestavení a nasazení příkladu** v [kurzu: pomocí rozhraní API pro Apache Kafka výrobce a příjemce](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) ověřte, `kafka-producer-consumer.jar` zda je k dispozici také **sales_user**.
+4. Postupujte podle kroků 3 v části **sestavení a nasazení příkladu** v [kurzu: pomocí rozhraní API pro Apache Kafka výrobce a příjemce](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) ověřte, zda `kafka-producer-consumer.jar` je k dispozici také **sales_user**.
 
-**Poznámka: pro tento kurz použijte Kafka-Producer-Consumer. jar v části "DomainJoined-producent-Consumer" projekt (nikoli na jednom projektu producent-příjemce).**
+> [!NOTE]  
+> Pro tento kurz použijte Kafka-Producer-Consumer. jar v části "DomainJoined-producent-Consumer" Project (nikoli na jednom projektu producent-příjemce).
 
-5. Spuštěním následujícího **sales_user1** příkazu ověřte, že sales_user1 `salesevents` může vydávat k tématu:
+5. Spuštěním následujícího příkazu ověřte, že **sales_user1** může vydávat k tématu `salesevents` :
 
    ```bash
    java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-6. Spusťte následující příkaz, který se má využít `salesevents`v tématu:
+6. Spusťte následující příkaz, který se má využít v tématu `salesevents` :
 
    ```bash
    java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
@@ -163,7 +164,7 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytv
 
    Ověřte, zda je možné číst zprávy.
 
-7. Ověřte, že **sales_user1** nejde vyvolat do tématu `marketingspend` , a to spuštěním následujícího příkazu ve stejném okně SSH:
+7. Ověřte, že **sales_user1** nejde vyvolat do tématu, a `marketingspend` to spuštěním následujícího příkazu ve stejném okně SSH:
 
    ```bash
    java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
@@ -171,11 +172,11 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytv
 
    Dojde k chybě autorizace, kterou můžete ignorovat.
 
-8. Všimněte si, že **marketing_user1** nemůže spotřebovávat `salesevents`z tématu.
+8. Všimněte si, že **marketing_user1** nemůže spotřebovávat z tématu `salesevents` .
 
    Opakujte kroky 1-4 výše, ale tentokrát jako **marketing_user1**.
 
-   Spusťte následující příkaz, který se má využít `salesevents`v tématu:
+   Spusťte následující příkaz, který se má využít v tématu `salesevents` :
 
    ```bash
    java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
@@ -191,7 +192,7 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user** vytv
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster Kafka, který jste vytvořili, pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 1. V části **služby**vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu. 

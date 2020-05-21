@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f23520bd724d2f7ed5a9422a0541e717c800dee2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 596b47ecc0cf42e8cf1e7001c1462f55d34ff9c3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201019"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680287"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -25,7 +25,7 @@ Pomocí správy zařízení v Azure Active Directory (Azure AD) můžete zajisti
 > [!TIP]
 > Pokud je pro vás možnost použití Azure AD Connect, přečtěte si související kurzy ke [spravovaným](hybrid-azuread-join-managed-domains.md) nebo [federovaným](hybrid-azuread-join-federated-domains.md) doménám. Pomocí Azure AD Connect můžete významně zjednodušit konfiguraci hybridního připojení ke službě Azure AD.
 
-Pokud máte místní prostředí Active Directory a chcete připojit svá zařízení připojená k doméně k Azure AD, můžete to provést tak, že nakonfigurujete hybridní zařízení připojená k Azure AD. V tomto kurzu se naučíte:
+Pokud máte místní prostředí Active Directory a chcete připojit svá zařízení připojená k doméně k Azure AD, můžete to provést tak, že nakonfigurujete hybridní zařízení připojená k Azure AD. V tomto kurzu:
 
 > [!div class="checklist"]
 > * Ruční konfigurace služby hybridního připojení k Azure AD
@@ -141,7 +141,7 @@ Rutina `Initialize-ADSyncDomainJoinedComputerSync`:
 
 * Používá modul PowerShellu služby Active Directory a nástroje Azure Active Directory Domain Services (Azure služba AD DS). Tyto nástroje spoléhají na službu Active Directory Web Services běžící na řadiči domény. Služba Active Directory Web Services se podporuje v řadičích domény s Windows Serverem 2008 R2 nebo novějším.
 * Se podporuje pouze v modulu MSOnline PowerShell verze 1.1.166.0. Tento modul můžete stáhnout pomocí [tohoto odkazu](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0).
-* Pokud nejsou nainstalované nástroje služba AD DS, `Initialize-ADSyncDomainJoinedComputerSync` selže. Nástroje pro služba AD DS můžete nainstalovat přes Správce serveru v části **funkce** > **Remote Server Administration Tools** > **Nástroje pro správu rolí**nástroje pro vzdálenou správu serveru.
+* Pokud nejsou nainstalované nástroje služba AD DS, `Initialize-ADSyncDomainJoinedComputerSync` selže. Nástroje pro služba AD DS můžete nainstalovat přes Správce serveru v části **funkce**  >  **Remote Server Administration Tools**  >  **Nástroje pro správu rolí**nástroje pro vzdálenou správu serveru.
 
 Pro řadiče domény se systémem Windows Server 2008 nebo staršími verzemi použijte následující skript k vytvoření spojovacího bodu služby. V konfiguraci s více doménovými strukturami použijte následující skript k vytvoření spojovacího bodu služby v každé doménové struktuře, kde počítače existují.
 
@@ -185,7 +185,7 @@ Pokud používáte AD FS, musíte povolit následující koncové body WS-Trust.
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části**koncové body** **služby** > můžete zjistit, jaké koncové body jsou povolené.
+> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části **Service**  >  **koncové body**služby můžete zjistit, jaké koncové body jsou povolené.
 
 > [!NOTE]
 >Pokud nemáte AD FS jako místní federační službu, postupujte podle pokynů od dodavatele a ujistěte se, že podporují koncové body WS-Trust 1,3 nebo 2005 a že jsou publikované prostřednictvím souboru výměny metadat (MEX).
@@ -200,7 +200,7 @@ Pokud máte více než jeden ověřený název domény, musíte počítačům po
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`
 
-Pokud už vydáváte deklaraci identity ImmutableID (například alternativním přihlašovacím ID), musíte pro počítače zadat jednu odpovídající deklaraci identity:
+Pokud už vydáváte deklaraci identity ImmutableID (například použitím `mS-DS-ConsistencyGuid` nebo jiného atributu jako zdrojové hodnoty pro ImmutableID), musíte pro počítače zadat jednu odpovídající deklaraci identity:
 
 * `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`
 
@@ -216,7 +216,7 @@ Definice vám pomůže ověřit, jestli požadované hodnoty existují, nebo jes
 
 ### <a name="issue-account-type-claim"></a>Vystavení deklarace identity typu účtu
 
-`http://schemas.microsoft.com/ws/2012/01/accounttype` Deklarace identity musí obsahovat hodnotu **přehrávače**, která identifikuje zařízení jako počítač připojený k doméně. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá přibližně takto:
+`http://schemas.microsoft.com/ws/2012/01/accounttype`Deklarace identity musí obsahovat hodnotu **přehrávače**, která identifikuje zařízení jako počítač připojený k doméně. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá přibližně takto:
 
    ```
    @RuleName = "Issue account type for domain-joined computers"
@@ -233,7 +233,7 @@ Definice vám pomůže ověřit, jestli požadované hodnoty existují, nebo jes
 
 ### <a name="issue-objectguid-of-the-computer-account-on-premises"></a>Vystavení identity objectGUID místního účtu počítače
 
-`http://schemas.microsoft.com/identity/claims/onpremobjectguid` Deklarace identity musí obsahovat hodnotu **objectGUID** účtu místního počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá přibližně takto:
+`http://schemas.microsoft.com/identity/claims/onpremobjectguid`Deklarace identity musí obsahovat hodnotu **objectGUID** účtu místního počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá přibližně takto:
 
    ```
    @RuleName = "Issue object GUID for domain-joined computers"
@@ -257,7 +257,7 @@ Definice vám pomůže ověřit, jestli požadované hodnoty existují, nebo jes
 
 ### <a name="issue-objectsid-of-the-computer-account-on-premises"></a>Vystavení identity objectSID místního účtu počítače
 
-`http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid` Deklarace identity musí obsahovat hodnotu **objectSID** účtu místního počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá přibližně takto:
+`http://schemas.microsoft.com/ws/2008/06/identity/claims/primarysid`Deklarace identity musí obsahovat hodnotu **objectSID** účtu místního počítače. Ve službě AD FS můžete přidat pravidlo transformace vystavování, které vypadá přibližně takto:
 
    ```
    @RuleName = "Issue objectSID for domain-joined computers"
@@ -276,7 +276,7 @@ Definice vám pomůže ověřit, jestli požadované hodnoty existují, nebo jes
 
 ### <a name="issue-issuerid-for-the-computer-when-multiple-verified-domain-names-are-in-azure-ad"></a>Vystavení issuerID pro počítač, pokud jsou v Azure AD víc ověřených názvů domén
 
-`http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid` Deklarace identity musí obsahovat identifikátor URI (Uniform Resource Identifier) libovolného ověřeného názvu domény, který se připojuje k místní službě fs (AD FS nebo partner), který vydává token. V AD FS můžete přidat pravidla transformace vystavování, která v určitém pořadí vypadají jako následující, a to za předchozí. Všimněte si, že jedno pravidlo, které explicitně vydává pravidlo pro uživatele, je nezbytné. V následujících pravidlech se přidá první pravidlo, které identifikuje uživatele proti ověření počítače.
+`http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`Deklarace identity musí obsahovat identifikátor URI (Uniform Resource Identifier) libovolného ověřeného názvu domény, který se připojuje k místní službě FS (AD FS nebo partner), který vydává token. V AD FS můžete přidat pravidla transformace vystavování, která v určitém pořadí vypadají jako následující, a to za předchozí. Všimněte si, že jedno pravidlo, které explicitně vydává pravidlo pro uživatele, je nezbytné. V následujících pravidlech se přidá první pravidlo, které identifikuje uživatele proti ověření počítače.
 
    ```
    @RuleName = "Issue account type with the value User when its not a computer"
@@ -321,7 +321,7 @@ Definice vám pomůže ověřit, jestli požadované hodnoty existují, nebo jes
    );
    ```
 
-V předchozí deklaraci identity `<verified-domain-name>` je zástupný symbol. Nahraďte ho jedním z ověřených názvů domén ve službě Azure AD. Například použijte `Value = "http://contoso.com/adfs/services/trust/"`.
+V předchozí deklaraci identity `<verified-domain-name>` je zástupný symbol. Nahraďte ho jedním z ověřených názvů domén ve službě Azure AD. Například použijte `Value = "http://contoso.com/adfs/services/trust/"` .
 
 Další informace o ověřených názvech domén najdete v tématu [Přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md).  
 
@@ -329,9 +329,9 @@ Pokud chcete zobrazit seznam ověřených domén vaší společnosti, můžete p
 
 ![Seznam domén společnosti](./media/hybrid-azuread-join-manual/01.png)
 
-### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-an-alternate-login-id-is-set"></a>Vystavení ImmutableID počítače, když pro uživatele existuje (například alternativní ID přihlášení je nastavené)
+### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-using-ms-ds-consistencyguid-as-the-source-for-immutableid"></a>Vydejte ImmutableID pro počítač, když pro uživatele existuje (třeba pomocí mS-DS-ConsistencyGuid jako zdroje pro ImmutableID).
 
-`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` Deklarace identity musí obsahovat platnou hodnotu pro počítače. Ve službě AD FS můžete vytvořit následující pravidlo transformace vystavování:
+`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`Deklarace identity musí obsahovat platnou hodnotu pro počítače. Ve službě AD FS můžete vytvořit následující pravidlo transformace vystavování:
 
    ```
    @RuleName = "Issue ImmutableID for computers"
@@ -501,7 +501,7 @@ Pokud jsou některá z vašich zařízení připojených k doméně zařízení 
 
 ### <a name="set-a-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Nastavení zásady v Azure AD, aby uživatelé mohli registrovat zařízení
 
-Pokud chcete zaregistrovat zařízení Windows na nižší úrovni, ujistěte se, že je povolené nastavení Povolit uživatelům registraci zařízení v Azure AD. V Azure Portal můžete najít toto nastavení v části **Azure Active Directory** > **Uživatelé a skupiny** > **nastavení zařízení**.
+Pokud chcete zaregistrovat zařízení Windows na nižší úrovni, ujistěte se, že je povolené nastavení Povolit uživatelům registraci zařízení v Azure AD. V Azure Portal můžete najít toto nastavení v části **Azure Active Directory**  >  **Uživatelé a skupiny**  >  **nastavení zařízení**.
 
 Následující zásady musí být nastavené na **All**: **Uživatelé můžou svá zařízení zaregistrovat ve službě Azure AD**.
 
@@ -523,7 +523,7 @@ V takovém případě musí místní služba FS (Federation Service) ověřit u�
 
 V AD FS musíte přidat pravidlo transformace vystavování, které projde metodou ověřování. Přidání tohoto pravidla:
 
-1. V konzole pro správu AD FS přejít na **AD FS** > vztahy**důvěryhodnosti** > **předávající strany**.
+1. V konzole pro správu AD FS přejít na **AD FS**vztahy  >  **důvěryhodnosti**  >  **předávající strany**.
 1. Klikněte pravým tlačítkem na objekt důvěryhodnosti přijímající strany služby Microsoft Office 365 Identity Platform a pak vyberte **Upravit pravidla deklarace identity**.
 1. Na kartě **Pravidla transformace vystavování** vyberte **Přidat pravidlo**.
 1. V seznamu šablon **Pravidlo deklarace identity** vyberte **Odesílat deklarace pomocí vlastního pravidla**.
@@ -533,7 +533,7 @@ V AD FS musíte přidat pravidlo transformace vystavování, které projde metod
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. Na federačním serveru zadejte následující příkaz prostředí PowerShell. Nahraďte ** \<RPObjectName\> ** názvem objektu předávající strany pro objekt vztahu důvěryhodnosti předávající strany Azure AD. Tento objekt má obvykle název **Microsoft Office 365 Identity Platform**.
+1. Na federačním serveru zadejte následující příkaz prostředí PowerShell. Nahraďte ** \< RPObjectName \> ** názvem objektu předávající strany pro objekt vztahu důvěryhodnosti předávající strany Azure AD. Tento objekt má obvykle název **Microsoft Office 365 Identity Platform**.
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 

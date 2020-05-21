@@ -4,12 +4,12 @@ description: Rychle se naučíte, jak vytvořit privátní registr Docker v Azur
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 872b2a29444e5278db34ce44741e2ca90d885702
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 792146abeaad137a29bfea25a59a957c5f69c5ac
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74456377"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682774"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure PowerShell
 
@@ -51,7 +51,7 @@ Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-V tomto rychlém startu vytvoříte *základní* registr, což je výhodná možnost pro vývojáře, kteří se naučí o Azure Container Registry. Podrobnosti k dostupným úrovním služeb najdete v tématu [SKU služby Container Registry][container-registry-skus].
+V tomto rychlém startu vytvoříte *základní* registr, což je výhodná možnost pro vývojáře, kteří se naučí o Azure Container Registry. Podrobnosti o dostupných úrovních služby najdete v tématu [úrovně služby registru kontejnerů][container-registry-skus].
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 

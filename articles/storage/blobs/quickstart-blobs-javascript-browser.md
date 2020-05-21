@@ -7,12 +7,12 @@ ms.date: 04/18/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 3b23eac4ab50401e68e17064d0964dacc3c17d32
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 4d486b8ffc921a5ca2f38bef912ba6dc46ecec40
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82120503"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634088"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -20,7 +20,7 @@ ms.locfileid: "82120503"
 
 Úložiště objektů BLOB v Azure je optimalizované pro ukládání velkých objemů nestrukturovaných dat. Objekty blob jsou objekty, které mohou obsahovat text nebo binární data, včetně obrázků, dokumentů, datových proudů médií a archivovaných dat. V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí JavaScriptu v prohlížeči. Nahrajete a vypíšete objekty BLOB a vytvoříte a odstraníte kontejnery.
 
-[API reference documentation](/javascript/api/@azure/storage-blob) | [Library source code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)[Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples) knihovny | dokumentace k referenční dokumentaci rozhraní API[(npm)](https://www.npmjs.com/package/@azure/storage-blob) | 
+[Referenční dokumentace k](/javascript/api/@azure/storage-blob)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-blob)  |  [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 > [!NOTE]
 > Informace o tom, jak začít s předchozí verzí sady SDK, najdete v tématu [rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v Node. js](storage-quickstart-blobs-nodejs-legacy.md).
@@ -32,9 +32,9 @@ ms.locfileid: "82120503"
 * [Node.js](https://nodejs.org)
 * [Microsoft Visual Studio Code](https://code.visualstudio.com)
 * Rozšíření Visual Studio Code pro ladění prohlížeče, například:
-    * [Ladicí program pro Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge)
-    * [Ladicí program pro Chrome](vscode:extension/msjsdiag.debugger-for-chrome)
-    * [Ladicí program pro Firefox](vscode:extension/firefox-devtools.vscode-firefox-debug)
+    * [Ladicí program pro Microsoft Edge](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
+    * [Ladicí program pro Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+    * [Ladicí program pro Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
 
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
@@ -53,9 +53,9 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 V tomto rychlém startu použijete následující třídy JavaScriptu k interakci s těmito prostředky:
 
-* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient): `BlobServiceClient` třída umožňuje manipulovat s Azure Storage prostředky a kontejnery objektů BLOB.
-* [ContainerClient](/javascript/api/@azure/storage-blob/containerclient): `ContainerClient` třída umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
-* [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient): `BlockBlobClient` třída umožňuje manipulovat s objekty blob Azure Storage.
+* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient): `BlobServiceClient` Třída umožňuje manipulovat s Azure Storage prostředky a kontejnery objektů BLOB.
+* [ContainerClient](/javascript/api/@azure/storage-blob/containerclient): `ContainerClient` Třída umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
+* [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient): `BlockBlobClient` Třída umožňuje manipulovat s objekty blob Azure Storage.
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -123,7 +123,7 @@ Nainstalujte parcelu spuštěním následujícího `npm` příkazu v okně termi
 npm install -g parcel-bundler
 ```
 
-V Visual Studio Code otevřete soubor *Package. JSON* a přidejte `browserlist` mezi položky `license` a. `dependencies` Tím `browserlist` se cílí na nejnovější verzi tří oblíbených prohlížečů. Úplný soubor *Package. JSON* by teď měl vypadat takto:
+V Visual Studio Code otevřete soubor *Package. JSON* a přidejte `browserlist` mezi `license` `dependencies` položky a. Tím `browserlist` se cílí na nejnovější verzi tří oblíbených prohlížečů. Úplný soubor *Package. JSON* by teď měl vypadat takto:
 
 :::code language="json" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/package.json" highlight="12-16":::
 
@@ -203,7 +203,7 @@ Po kliknutí na tlačítko **Zobrazit soubory** vypíšete obsah kontejneru úlo
 
 Uložte soubor *index. js* .
 
-Tento kód volá funkci [ContainerClient. listBlobsFlat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) a poté pomocí iterátoru načte název každého vráceného [BlobItem](/javascript/api/@azure/storage-blob/blobitem) . Pro každý `BlobItem`se v seznamu **souborů** aktualizuje hodnota vlastnosti [název](/javascript/api/@azure/storage-blob/blobitem#name) .
+Tento kód volá funkci [ContainerClient. listBlobsFlat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) a poté pomocí iterátoru načte název každého vráceného [BlobItem](/javascript/api/@azure/storage-blob/blobitem) . Pro každý `BlobItem` se v seznamu **souborů** aktualizuje hodnota vlastnosti [název](/javascript/api/@azure/storage-blob/blobitem#name) .
 
 ### <a name="upload-blobs"></a>Nahrát objekty blob
 
@@ -213,7 +213,7 @@ Po kliknutí na tlačítko **Vybrat a nahrát soubory** nahrajte soubory do kont
 
 Uložte soubor *index. js* .
 
-Tento kód propojí tlačítko **Vybrat a odeslat soubory** do skrytého `file-input` prvku. Událost tlačítka `click` aktivuje událost vstupu `click` souboru a zobrazí nástroj pro výběr souboru. Po výběru souborů a zavření dialogového okna dojde k `input` události a zavolá se `uploadFiles` funkce. Tato funkce vytvoří objekt [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) a potom zavolá funkci [uploadBrowserData](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) pouze pro prohlížeč pro každý vybraný soubor. Každé volání vrátí `Promise`. Každá `Promise` je přidána do seznamu tak, aby mohly být všechny očekávány společně, což způsobí, že se soubory budou nahrávat paralelně.
+Tento kód propojí tlačítko **Vybrat a odeslat soubory** do skrytého `file-input` prvku. Událost tlačítka `click` aktivuje událost vstupu souboru `click` a zobrazí nástroj pro výběr souboru. Po výběru souborů a zavření dialogového okna `input` dojde k události a `uploadFiles` zavolá se funkce. Tato funkce vytvoří objekt [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) a potom zavolá funkci [uploadBrowserData](/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) pouze pro prohlížeč pro každý vybraný soubor. Každé volání vrátí `Promise` . Každá `Promise` je přidána do seznamu tak, aby mohly být všechny očekávány společně, což způsobí, že se soubory budou nahrávat paralelně.
 
 ### <a name="delete-blobs"></a>Odstranění objektů blob
 
@@ -236,7 +236,7 @@ Nastavení rozšíření ladicího programu v Visual Studio Code:
 1. Vyberte **spustit > Přidat konfiguraci** .
 2. Vyberte **Edge**, **Chrome**nebo **Firefox**v závislosti na tom, jaké rozšíření jste předtím nainstalovali v části [požadavky](#prerequisites) .
 
-Přidáním nové konfigurace se vytvoří soubor *Launch. JSON* , který se otevře v editoru. Upravte soubor *Launch. JSON* tak, aby byla `url` hodnota, `http://localhost:1234/index.html`jak je znázorněno zde:
+Přidáním nové konfigurace se vytvoří soubor *Launch. JSON* , který se otevře v editoru. Upravte soubor *Launch. JSON* tak, aby `url` byla hodnota `http://localhost:1234/index.html` , jak je znázorněno zde:
 
 :::code language="json" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/.vscode/launch.json" highlight="11":::
 
@@ -250,9 +250,9 @@ Chcete-li spustit místní vývojový webový server, vyberte možnost **zobrazi
 parcel index.html
 ```
 
-Parcela rozbalí váš kód a spustí místní vývojový server pro vaši stránku na `http://localhost:1234/index.html`adrese. Změny, které provedete v souboru *index. js* , se automaticky sestaví a projeví na vývojovém serveru při každém uložení souboru.
+Parcela rozbalí váš kód a spustí místní vývojový server pro vaši stránku na adrese `http://localhost:1234/index.html` . Změny, které provedete v souboru *index. js* , se automaticky sestaví a projeví na vývojovém serveru při každém uložení souboru.
 
-Pokud se zobrazí zpráva oznamující, že se **nepodařilo použít nakonfigurovaný port 1234**, můžete port změnit spuštěním příkazu `parcel -p <port#> index.html`. V souboru *Launch. JSON* aktualizujte port v cestě URL tak, aby odpovídal.
+Pokud se zobrazí zpráva oznamující, že se **nepodařilo použít nakonfigurovaný port 1234**, můžete port změnit spuštěním příkazu `parcel -p <port#> index.html` . V souboru *Launch. JSON* aktualizujte port v cestě URL tak, aby odpovídal.
 
 ### <a name="start-debugging"></a>Spustit ladění
 
@@ -285,7 +285,7 @@ V [Azure Portal](https://portal.azure.com)můžete pomocí následujících krok
 #### <a name="step-4---delete-the-container"></a>Krok 4 – odstranění kontejneru
 
 1. Ve webové aplikaci vyberte **Odstranit kontejner**. Stav označuje, že byl kontejner odstraněn.
-2. V Azure Portal vyberte ** \<\> název účtu | **Odkaz na kontejnery v levém horním rohu podokna portálu.
+2. V Azure Portal vyberte ** \< název účtu \> | **Odkaz na kontejnery v levém horním rohu podokna portálu.
 3. Vyberte **aktualizovat**. Nový kontejner zmizí.
 4. Zavřete webovou aplikaci.
 

@@ -5,21 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 02/05/2020
+ms.date: 05/14/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 927c09f61ce0847c72cefb51935116070e956861
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8bdba64445212c564a3d4762bc8497be15f7d9a0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80743102"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657009"
 ---
 # <a name="about-azure-virtual-wan"></a>Informace o službě Azure Virtual WAN
 
-Azure Virtual WAN je síťová služba, která přináší více funkcí sítě, zabezpečení a směrování, aby poskytovala jediné provozní rozhraní. Mezi tyto funkce patří připojení k síti (prostřednictvím automatizace připojení z virtuálních zařízení WAN, jako jsou SD-WAN nebo VPN CPE), připojení VPN typu Site-to-site, vzdálené připojení VPN (Point-to-site), privátní připojení (ExpressRoute), konektivita v rámci cloudového připojení (přenosné připojení k virtuálním sítím), VPN ExpressRoute vzájemné propojení, směrování, Azure firewall, šifrování pro privátní Nemusíte mít všechny tyto případy použití, abyste mohli začít používat virtuální síť WAN. Můžete jednoduše začít jenom s jedním případem použití a upravit svou síť při jejich vývojovém prostředí. Virtuální architektura sítě WAN je architektura rozbočovače a paprsku s integrovaným škálováním a výkonem pro větve (zařízení VPN/SD-WAN), uživatele (Azure VPN/OpenVPN/IKEv2), okruhy ExpressRoute a virtuální sítě. Umožňuje [globální přenosovou architekturu sítě](virtual-wan-global-transit-network-architecture.md) , ve které cloudová hostovaná síť "centrum" umožňuje přenosné připojení mezi koncovými body, které mohou být distribuovány napříč různými typy "paprsků".
+Azure Virtual WAN je síťová služba, která přináší více funkcí směrování, zabezpečení a směrování, aby poskytovaly jediné provozní rozhraní. Mezi tyto funkce patří připojení větví (prostřednictvím automatizace připojení z virtuálních zařízení WAN, jako je SD-WAN nebo VPN CPE). připojení VPN typu Site-to-site, VPN vzdáleného uživatele (Point-to-site), konektivita privátního uživatele (ExpressRoute), připojení mezi cloudem (přenosné připojení k virtuálním sítím), připojení VPN ExpressRoute, směrování, Azure Firewall a šifrování pro privátní připojení. Nemusíte mít všechny tyto případy použití, abyste mohli začít používat virtuální síť WAN. Můžete jednoduše začít jenom s jedním případem použití a pak upravit síť tak, jak se vyvíjí.
 
-Oblasti Azure slouží jako centra, ke kterým se můžete rozhodnout pro připojení. Všechna centra jsou připojená v celé síti sítě WAN, která usnadňuje uživateli používání páteřní sítě Microsoftu pro připojení typu any-to-Any (jakékoli paprsky). Pro připojení paprsků se zařízeními SD-WAN/VPN je uživatelé mohli ručně nastavit ve službě Azure Virtual WAN nebo použít řešení partner Virtual WAN CPE (SD-WAN/VPN) k nastavení připojení k Azure. Máme seznam partnerů, kteří podporují automatizaci připojení (schopnost exportovat informace o zařízení do Azure, stáhnout konfiguraci Azure a vytvořit připojení) pomocí Azure Virtual WAN. Další informace najdete v článku věnovaném [virtuálním partnerům a umístěním sítě WAN](virtual-wan-locations-partners.md) . 
+Virtuální architektura sítě WAN je architektura rozbočovače a paprsku s integrovaným škálováním a výkonem pro větve (zařízení VPN/SD-WAN), uživatele (Azure VPN/OpenVPN/IKEv2), okruhy ExpressRoute a virtuální sítě. Umožňuje [globální přenosovou architekturu sítě](virtual-wan-global-transit-network-architecture.md), ve které cloudová hostovaná síť "centrum" umožňuje přenosné připojení mezi koncovými body, které mohou být distribuovány napříč různými typy "paprsků".
+
+Oblasti Azure slouží jako centra, ke kterým se můžete rozhodnout pro připojení. Všechna centra jsou připojená v celé síti sítě WAN, která usnadňuje uživateli používání páteřní sítě Microsoftu pro připojení typu any-to-Any (jakékoli paprsky). Pro připojení paprsků se zařízeními SD-WAN/VPN je uživatelé mohli ručně nastavit ve službě Azure Virtual WAN nebo použít řešení partner Virtual WAN CPE (SD-WAN/VPN) k nastavení připojení k Azure. Máme seznam partnerů, kteří podporují automatizaci připojení (schopnost exportovat informace o zařízení do Azure, stáhnout konfiguraci Azure a vytvořit připojení) pomocí Azure Virtual WAN. Další informace najdete v článku věnovaném [virtuálním partnerům a umístěním sítě WAN](virtual-wan-locations-partners.md) .
 
 ![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan1.png)
 

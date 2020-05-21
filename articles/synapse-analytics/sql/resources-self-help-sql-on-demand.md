@@ -2,19 +2,19 @@
 title: SQL Preview na vyžádání – samoobslužná ochrana
 description: Tato část obsahuje informace, které vám pomůžou při řešení problémů s SQL na vyžádání (Preview).
 services: synapse analytics
-author: vvasic-msft
+author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: vvasic
+ms.date: 05/15/2020
+ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e2c262915c928cf487cb84aeb3423d67e7a96e97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b2a9b6c5324240d71a80cde904057757d6ef421
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424829"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658873"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>Samoobslužná Pomocník pro SQL na vyžádání (Preview)
 
@@ -29,17 +29,47 @@ Pokud synapse Studio nemůže navázat připojení k SQL na vyžádání, všimn
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>Dotaz se nezdařil, protože soubor nelze otevřít.
 
-Pokud se dotaz nezdařil s chybou říká ' soubor nelze otevřít, protože neexistuje nebo je používán jiným procesem ' a Vy jste si jisti, že oba soubory existují a že se nepoužívá v jiném procesu, znamená to, že SQL na vyžádání nemá přístup k souboru. K tomuto problému obvykle dochází, protože vaše Azure Active Directory identita nemá práva pro přístup k souboru. Ve výchozím nastavení se SQL na vyžádání snaží získat přístup k souboru pomocí vaší Azure Active Directory identity. Chcete-li tento problém vyřešit, musíte mít správná oprávnění pro přístup k souboru. Nejjednodušší způsob je udělit sami sobě roli Přispěvatel dat objektů BLOB úložiště v účtu úložiště, se kterým se pokoušíte dotazovat. [Další informace najdete v úplné příručce k Azure Active Directory řízení přístupu pro úložiště](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
+Pokud se dotaz nezdařil s chybou říká ' soubor nelze otevřít, protože neexistuje nebo je používán jiným procesem ' a Vy jste si jisti, že oba soubory existují a že se nepoužívá v jiném procesu, znamená to, že SQL na vyžádání nemá přístup k souboru. K tomuto problému obvykle dochází, protože vaše Azure Active Directory identita nemá práva pro přístup k souboru. Ve výchozím nastavení se SQL na vyžádání snaží získat přístup k souboru pomocí vaší Azure Active Directory identity. Chcete-li tento problém vyřešit, musíte mít správná oprávnění pro přístup k souboru. Nejjednodušší je udělit sami sobě roli Přispěvatel dat v objektech blob služby Storage pro účet úložiště, který se pokoušíte dotazovat. [Další informace najdete v úplném průvodci řízením přístupu k úložišti pomocí Azure Active Directory](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>Dotaz se nezdařil, protože jej nelze provést z důvodu aktuálních omezení prostředků. 
 
-Pokud se dotaz nezdařil s chybovou zprávou "Tento dotaz nelze provést z důvodu aktuálních omezení prostředků", znamená to, že SQL Oh není schopen ho v tuto chvíli spustit kvůli omezením prostředků: 
+Pokud se dotaz nezdařil s chybovou zprávou "Tento dotaz nelze provést z důvodu aktuálních omezení prostředků", znamená to, že SQL na vyžádání není schopen ho v tuto chvíli spustit v důsledku omezení prostředků: 
 
-- Zajistěte, aby byly použity datové typy přiměřených velikostí. Také zadejte schéma pro soubory Parquet pro sloupce řetězců, protože budou ve výchozím nastavení VARCHAR (8000). 
+- Ujistěte se, že používáte datové typy přiměřených velikostí. Kromě toho pro soubory Parquet určete schéma sloupců řetězců, které jsou ve výchozím nastavení datového typu VARCHAR(8000). 
 
 - Pokud vaše dotazy cílí na soubory CSV, zvažte [vytvoření statistiky](develop-tables-statistics.md#statistics-in-sql-on-demand-preview). 
 
 - Vyjděte si [osvědčené postupy výkonu pro optimalizaci dotazu SQL na vyžádání](best-practices-sql-on-demand.md) .  
+
+## <a name="create-statement-is-not-supported-in-master-database"></a>PŘÍKAZ CREATE STATEMENT není v hlavní databázi podporován.
+
+Pokud se dotaz nezdařil s chybovou zprávou:
+
+> Nepovedlo se spustit dotaz. Chyba: vytvoření externí tabulky/zdroje dat/datový rozsah databáze/formát souboru není v hlavní databázi podporován. 
+
+To znamená, že hlavní databáze na vyžádání SQL na vyžádání nepodporuje vytváření:
+  - Externí tabulky
+  - Externí zdroje dat
+  - Přihlašovací údaje v oboru databáze
+  - Formáty externích souborů
+
+Řešení:
+
+  1. Vytvořit uživatelskou databázi:
+
+```sql
+CREATE DATABASE <DATABASE_NAME>
+```
+
+  2. Příkaz EXECUTE Create v kontextu <DATABASE_NAME> který se dřív nezdařil pro hlavní databázi. 
+  
+  Příklad pro vytvoření formátu externího souboru:
+    
+```sql
+USE <DATABASE_NAME>
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] 
+WITH ( FORMAT_TYPE = PARQUET)
+```
 
 ## <a name="next-steps"></a>Další kroky
 

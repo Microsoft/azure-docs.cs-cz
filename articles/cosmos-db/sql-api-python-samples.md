@@ -8,20 +8,19 @@ ms.devlang: python
 ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1e7c3e06c8aa49f9a23d3cc600ee6f60218c2fbd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 89c1b6b63c0c423400a5197c460a44f68f13d9d2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72170143"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683807"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Příklady Azure Cosmos DB Python
 
 > [!div class="op_single_selector"]
 > * [Příklady sady .NET v2 SDK](sql-api-dotnet-samples.md)
 > * [Příklady sady .NET V3 SDK](sql-api-dotnet-v3sdk-samples.md)
-> * [Příklady v Javě](sql-api-java-samples.md)
-> * [Příklady v asynchronní Javě](sql-api-async-java-samples.md)
+> * [Příklady sady Java v4 SDK](sql-api-java-sdk-samples.md)
 > * [Příklady v Node.js](sql-api-nodejs-samples.md)
 > * [Příklady v Pythonu](sql-api-python-samples.md)
 > * [Galerie ukázkového kódu Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
@@ -51,7 +50,7 @@ Potřebujete taky [Python SDK](sql-api-sdk-python.md).
 ## <a name="database-examples"></a>Příklady pro databáze
 Soubor [program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py) projektu [DatabaseManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement) ukazuje, jak provádět následující úlohy. Další informace o databázích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu. 
 
-| Úkol | API – referenční informace |
+| Úkol | referenční dokumentace k rozhraní API |
 | --- | --- |
 | [Vytvoření databáze](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py#L65-L76) |[CosmosClient. CreateDatabase](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#createdatabase-database--options-none-) |
 | [Čtení databáze podle ID](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py#L79-L96) |[CosmosClient.ReadDatabase](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#readdatabase-database-link--options-none-) |
@@ -61,7 +60,7 @@ Soubor [program.py](https://github.com/Azure/azure-documentdb-python/blob/master
 ## <a name="collection-examples"></a>Příklady pro kolekce
 Soubor [program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py) projektu [CollectionManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement) ukazuje, jak provádět následující úlohy. Informace o kolekcích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu. 
 
-| Úkol | API – referenční informace |
+| Úkol | referenční dokumentace k rozhraní API |
 | --- | --- |
 | [Vytvoření kolekce](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py#L84-L135) |[CosmosClient. CreateContainer](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#createcontainer-database-link--collection--options-none-) |
 | [Čtení seznamu všech kolekcí v databázi](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py#L210-L222) |[CosmosClient.ReadContainers](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#readcontainers-database-link--options-none-) |
@@ -72,7 +71,7 @@ Soubor [program.py](https://github.com/Azure/azure-documentdb-python/blob/master
 ## <a name="document-examples"></a>Příklady pro dokumenty
 Soubor [program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py) projektu [DocumentManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement) ukazuje, jak provádět následující úlohy. Další informace o dokumentech Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu. 
 
-| Úkol | API – referenční informace |
+| Úkol | referenční dokumentace k rozhraní API |
 | --- | --- |
 | [Vytvoření dokumentu](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py#L55-L66) |[CosmosClient. CreateItem –](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#createitem-database-or-container-link--document--options-none-) |
 | [Vytvoření kolekce dokumentů](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py#L55-L66) |[CosmosClient. CreateItem –](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#createitem-database-or-container-link--document--options-none-) |
@@ -83,7 +82,7 @@ Soubor [program.py](https://github.com/Azure/azure-documentdb-python/blob/master
 ## <a name="indexing-examples"></a>Příklady indexování
 Soubor [program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py) projektu [IndexManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement) ukazuje, jak provádět následující úlohy.  Další informace o indexování v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku o [zásadách indexování](index-policy.md), [typech indexování](index-types.md)a [indexovaných cestách](index-paths.md) . 
 
-| Úkol | API – referenční informace |
+| Úkol | referenční dokumentace k rozhraní API |
 | --- | --- |
 | [Použití ručního indexování (místo automatického)](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py#L245-L246) | Zásady automatického indexování |
 | [Vyloučení zadaných cest dokumentů z indexu](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py#L294-L367) | Indexování zásad s vyloučenými cestami|
@@ -96,7 +95,7 @@ Soubor [program.py](https://github.com/Azure/azure-documentdb-python/blob/master
 Ukázkové projekty také ukazují, jak provádět následující úlohy dotazů. Další informace o odkazech na dotaz SQL v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku [příklady dotazů SQL](how-to-sql-query.md) koncepční článek. Další informace o odkazech na dotaz SQL v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku [příklady dotazů SQL](how-to-sql-query.md) koncepční článek. 
 
 
-| Úkol | API – referenční informace |
+| Úkol | referenční dokumentace k rozhraní API |
 | --- | --- |
 | [Dotaz na účet pro databázi](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py#L49-L62) |[CosmosClient.QueryDatabases](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#querydatabases-query--options-none-) |
 | [Dotaz na dokumenty](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py#L152-L169) |[CosmosClient.QueryItems](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#queryitems-database-or-container-link--query--options-none--partition-key-none-) |

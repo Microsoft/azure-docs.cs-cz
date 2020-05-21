@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Virtual Network
 description: Seznam Azure Policy integrovaných definic zásad pro Azure Virtual Network. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 557e3658b73314660ffde134b6151f9d83b26824
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: bae8d7b6e102cb5fdc4938ee4951f8a89a50753e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928512"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659897"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-virtual-network"></a>Azure Policy předdefinované definice zásad pro Azure Virtual Network
 

@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 3933edff3730b9c16ea3c129890c1a7d66cf5215
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fa1ce8516223b725c1efcb7e27d4726bbadfe62e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117821"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655047"
 ---
-# <a name="enhance-data-factory-security-and-configure-customer-managed-keys-with-azure-key-vault"></a>Vylepšení zabezpečení Data Factory a konfigurace klíčů spravovaných zákazníkem pomocí Azure Key Vault
+# <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Šifrování Azure Data Factory pomocí klíčů spravovaných zákazníkem
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -25,7 +25,7 @@ Azure Data Factory šifruje neaktivní uložená data, včetně definic entit, v
 K ukládání klíčů spravovaných zákazníkem se vyžaduje Azure Key Vault. Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Trezor klíčů a Data Factory musí být ve stejném regionu Azure Active Directory (Azure AD) a ve stejné oblasti, ale můžou být v různých předplatných. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../key-vault/general/overview.md)
 
 > [!NOTE]
-> Klíč spravovaný zákazníkem se teď dá nakonfigurovat jenom pro prázdné Data Factory: žádná propojená služba, žádný kanál, žádné datové sady, nic. Zvažte možnost povolit klíč spravovaný zákazníkem ihned po vytvoření výrobního oddělení.
+> Klíč spravovaný zákazníkem se dá nakonfigurovat jenom pro prázdnou datovou továrnu. Datová továrna nemůže obsahovat žádné prostředky, jako jsou propojené služby, kanály a toky dat. Doporučuje se povolit klíč spravovaný zákazníkem hned po vytvoření výrobního oddělení.
 
 ## <a name="about-customer-managed-keys"></a>O klíčích spravovaných zákazníkem
 
@@ -54,13 +54,13 @@ Pokud vytváříte novou Azure Key Vault prostřednictvím Azure Portal, __obnov
 
   ![Snímek obrazovky s povolením obnovitelného odstranění a vymazání ochrany při vytváření Key Vault](media/quickstart-enable-customer-managed-key/01-enable-purge-protection.png)
 
-### <a name="grant-data-factory-access-to-key-vault"></a>Udělení přístupu Data Factory Key Vault
+### <a name="grant-data-factory-access-to-azure-key-vault"></a>Udělení přístupu Data Factory Azure Key Vault
 
 Ujistěte se, že Azure Key Vault a Azure Data Factory jsou ve stejném tenantovi Azure Active Directory (Azure AD) a ve _stejné oblasti_. Z Azure Key Vault řízení přístupu udělte přístup k Identita spravované služby (MSI) Datové továrny následujícím oprávněním: _Get_, _Unwrap Key_a _Wrap Key_. Tato oprávnění jsou nutná pro povolení klíčů spravovaných zákazníkem v Data Factory.
 
   ![Snímek obrazovky povolení Data Factoryho přístupu k Key Vault](media/quickstart-enable-customer-managed-key/02-access-policy-factory-msi.png)
 
-### <a name="generate-or-upload-customer-managed-key-to-key-vault"></a>Vygenerujte nebo nahrajte klíč spravovaný zákazníkem pro Key Vault
+### <a name="generate-or-upload-customer-managed-key-to-azure-key-vault"></a>Vygenerujte nebo nahrajte klíč spravovaný zákazníkem pro Azure Key Vault
 
 Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Data Factory šifrování podporují jenom 2048 klíčů RSA. Další informace najdete v tématu [o klíčích, tajných klíčích a certifikátech](../key-vault/general/about-keys-secrets-certificates.md).
 
@@ -68,7 +68,7 @@ Můžete buď vytvořit vlastní klíče a uložit je do trezoru klíčů, nebo 
 
 ## <a name="enable-customer-managed-keys"></a>Povolit klíče spravované zákazníkem
 
-1. Ujistěte se, že je Data Factory prázdné: žádná propojená služba, žádný kanál ani žádná sada dat není žádná. V současné době nasazení klíče spravovaného zákazníkem do neprázdné továrny způsobí chybu.
+1. Ujistěte se, že je Data Factory prázdné. Datová továrna nemůže obsahovat žádné prostředky, jako jsou propojené služby, kanály a toky dat. V současné době nasazení klíče spravovaného zákazníkem do neprázdné továrny způsobí chybu.
 
 1. Pokud chcete najít identifikátor URI klíče v Azure Portal, přejděte na Azure Key Vault a vyberte nastavení klíče. Vyberte požadovaný klíč a potom kliknutím na klíč zobrazte jeho verze. Vyberte verzi klíče pro zobrazení nastavení.
 

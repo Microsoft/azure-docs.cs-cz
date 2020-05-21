@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 49c1a29547195ad8557550ba1bc0cb80fae40ad8
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402632"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652217"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Zajištění Key Vault ověřování pomocí zásad řízení přístupu
 
@@ -107,9 +107,6 @@ Ve výstupu je identifikátor objectId uveden jako `Id` :
 Id                    : 1cef38c4-388c-45a9-b5ae-3d88375e166a
 ...
 ```
-
-> [!WARNING]
-> Skupiny Azure AD se spravovanými identitami vyžadují až 8hr k aktualizaci tokenu a začnou platit.
 
 #### <a name="users"></a>Uživatelé
 
@@ -225,6 +222,9 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 Nakonec udělte skupině AD oprávnění k vašemu trezoru klíčů pomocí rozhraní příkazového řádku Azure CLI [AZ Key trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) nebo rutiny Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) . Příklady najdete v části [poskytnutí aplikace, skupiny Azure AD nebo přístupu uživatele k sekci trezoru klíčů](#give-the-principal-access-to-your-key-vault) výše.
 
 Aplikace taky potřebuje alespoň jednu roli správy identit a přístupu (IAM) přiřazenou k trezoru klíčů. V opačném případě se nebude moci přihlásit a nezdaří se jim nedostatečná oprávnění pro přístup k předplatnému.
+
+> [!WARNING]
+> Skupiny Azure AD se spravovanými identitami můžou vyžadovat až 8hr k aktualizaci tokenu a začnou platit.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,29 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/24/2020
-ms.openlocfilehash: 0aea6a42269712e5c1e505c270f9d88635de83e5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/19/2020
+ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195292"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682462"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
 Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
-<a name="new-service-name"></a>
-
-## <a name="new-service-name"></a>Nový název služby
-
-Azure Search se teď přejmenuje na **Azure kognitivní hledání** , aby odráželo rozšířené (zatím volitelné) používání vnímání a zpracování AI v základních operacích. Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Nová a stávající řešení hledání nejsou ovlivněna změnou názvu služby.
-
 ## <a name="feature-announcements"></a>Oznámení funkcí
 
-### <a name="may-2020"></a>Květen 2020
+### <a name="may-2020-microsoft-build"></a>Květen 2020 (Microsoft Build)
 
-+ Funkce relace ladění je teď ve verzi Preview. [Zaregistrujte se, abyste mohli požádat o přístup](https://aka.ms/DebugSessions).
++ Funkce [relace ladění](cognitive-search-debug-session.md) je teď ve verzi Preview. [Zaregistrujte se, abyste mohli požádat o přístup](https://aka.ms/DebugSessions). Relace ladění poskytují rozhraní založené na portálu pro zkoumání a řešení problémů s dovednosti. Opravy vytvořené v relaci ladění se dají uložit do produkčního dovednostiu. Začněte s [tímto kurzem](cognitive-search-tutorial-debug-sessions.md).
+
++ Mezi vylepšení zabezpečení patří možnost [nastavit privátní koncový bod hledání (Preview)](service-create-private-endpoint.md) , který je nepřístupný na veřejném Internetu. Můžete také [nakonfigurovat pravidla protokolu IP pro podporu integrovaného bezpečnostního brány firewall (Preview)](service-configure-firewall.md).
+
++ K nastavení připojení ke zdroji dat Azure pro indexování použijte [systémově spravovanou identitu (Preview)](search-howto-managed-identities-data-sources.md) . Platí pro [indexery](search-indexer-overview.md) , které ingestují obsah ze zdrojů dat Azure, jako jsou Azure SQL Database, Azure Cosmos DB a Azure Storage.
+
++ Změňte základ pro vypočítání výsledků hledání z horizontálních oddílů na All-horizontálních oddílů pomocí [parametru scoringStatistics = Global Query](index-similarity-and-scoring.md#scoring-statistics).
 
 ### <a name="march-2020"></a>Březen 2020
 
@@ -77,6 +77,12 @@ Azure Search se teď přejmenuje na **Azure kognitivní hledání** , aby odrá�
 ### <a name="july-2019"></a>Červenec 2019
 
 + Obecně dostupné v [cloudu Azure Government](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search).
+
+<a name="new-service-name"></a>
+
+## <a name="new-service-name"></a>Nový název služby
+
+Azure Search se teď přejmenuje na **Azure kognitivní hledání** , aby odráželo rozšířené (zatím volitelné) používání vnímání a zpracování AI v základních operacích. Verze API, balíčky NuGet, obory názvů a koncové body se nezměnily. Nová a stávající řešení hledání nejsou ovlivněna změnou názvu služby.
 
 ## <a name="service-updates"></a>Aktualizace služeb
 

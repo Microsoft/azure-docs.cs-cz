@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 68a6504668b9f180a421fe20c2c89d73b87bcc35
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9f80d9be8966d1e2d8350f7fbc3c34182cb7b63e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404350"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684129"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Rychlý Start: vygenerování miniatury pomocí Počítačové zpracování obrazu REST API a Pythonu
 
 V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Pomocí metody [získat miniatury](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) můžete určit požadovanou výšku a šířku a počítačové zpracování obrazu používat inteligentní ořezávání k inteligentně identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/try/cognitive-services/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/try/cognitive-services/), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a v `COMPUTER_VISION_ENDPOINT` uvedeném pořadí.
 - Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download).
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
@@ -37,46 +37,49 @@ Chcete-li vytvořit a spustit ukázku, zkopírujte následující kód do editor
 import os
 import sys
 import requests
-# If you are using a Jupyter notebook, uncomment the following line.
+# If you are using a Jupyter notebook, uncomment the following lines.
 # %matplotlib inline
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from PIL import Image
 from io import BytesIO
 
 # Add your Computer Vision subscription key and endpoint to your environment variables.
-if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:
-    subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
-else:
-    print("\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n**Restart your shell or IDE for changes to take effect.**")
-    sys.exit()
-
-if 'COMPUTER_VISION_ENDPOINT' in os.environ:
-    endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
+subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
+endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
 thumbnail_url = endpoint + "vision/v2.1/generateThumbnail"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
 
+# Construct URL
 headers = {'Ocp-Apim-Subscription-Key': subscription_key}
 params = {'width': '50', 'height': '50', 'smartCropping': 'true'}
 data = {'url': image_url}
-response = requests.post(thumbnail_url, headers=headers,
-                         params=params, json=data)
+# Call API
+response = requests.post(thumbnail_url, headers=headers, params=params, json=data)
 response.raise_for_status()
 
+# Open the image from bytes
 thumbnail = Image.open(BytesIO(response.content))
-
-# Display the thumbnail.
-plt.imshow(thumbnail)
-plt.axis("off")
 
 # Verify the thumbnail size.
 print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
+
+# Save thumbnail to file
+thumbnail.save('thumbnail.png')
+
+# Display image
+thumbnail.show()
+
+# Optional. Display the thumbnail from Jupyter.
+# plt.imshow(thumbnail)
+# plt.axis("off")
 ```
 
 Dále postupujte následovně:
-1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, pro který chcete vygenerovat miniaturu.
+
+1. Volitelné Nahraďte hodnotu `image_url` adresou URL vlastního obrázku.
 1. Uložte kód jako soubor s příponou `.py`. Například, `get-thumbnail.py`.
 1. Otevřete okno příkazového řádku.
 1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python get-thumbnail.py`.

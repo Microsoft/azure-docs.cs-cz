@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 01a9a8239e2997335f5123d63cfc664027cffa02
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27471cad2dfcd7accdb6b43414f216f85552fab3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376354"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652488"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Rychlý Start: Vytvoření aplikace HoloLens pomocí prostorových kotev Azure v C++/WinRT a DirectX
 
@@ -50,9 +50,11 @@ Dalším krokem je konfigurace aplikace tak, aby používala identifikátor úč
 
 Otevřete `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
 
-Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` ho klíčem účtu.
+Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem účtu.
 
-Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` ho identifikátorem účtu.
+Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
+
+Vyhledejte `case DemoStep::ConfigSession:` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `configuration.AccountKey("MyAccountDomain");` .
 
 ## <a name="deploy-the-app-to-your-hololens"></a>Nasazení aplikace do HoloLens
 
@@ -64,7 +66,7 @@ Pokud používáte HoloLens 2, používejte jako platformu pro **řešení** **A
 
 Zapněte zařízení HoloLens, přihlaste se a připojte ho k počítači pomocí kabelu USB.
 
-Vyberte **ladit** > **Spustit ladění** pro nasazení aplikace a spuštění ladění.
+Vyberte **ladit**  >  **Spustit ladění** pro nasazení aplikace a spuštění ladění.
 
 Podle pokynů v aplikaci založte a odvoláte kotvu.
 

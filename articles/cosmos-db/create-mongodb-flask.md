@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 43f4cf7e4008aa01a26c48a8e99f7465eeeb234b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 53d1010f501e59b99c3ba6bac675124cdc5f77a0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77061739"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659217"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -23,7 +23,7 @@ ms.locfileid: "77061739"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 V tomto rychlém startu použijete Azure Cosmos DB pro účet rozhraní API služby Mongo DB nebo emulátor Azure Cosmos DB ke spuštění webové aplikace, která je naklonována z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
@@ -96,9 +96,9 @@ Všechny následující fragmenty kódu jsou pořízeny ze souboru *App.py* a po
 
 2. Otevřete okno a příkazem `cd` přejděte do adresáře, ve kterém je aplikace uložená.
 
-3. Pak nastavte proměnnou prostředí pro aplikaci `set FLASK_APP=app.py`v baňce `$env:FLASK_APP = app.py` pro editory prostředí PowerShell, nebo `export FLASK_APP=app.py` Pokud používáte Mac. 
+3. Pak nastavte proměnnou prostředí pro aplikaci v baňce `set FLASK_APP=app.py` `$env:FLASK_APP = app.py` pro editory prostředí PowerShell, nebo `export FLASK_APP=app.py` Pokud používáte Mac. 
 
-4. Spusťte aplikaci pomocí `flask run` nástroje a přejděte na adresu *http\/:/127.0.0.1:5000/*.
+4. Spusťte aplikaci pomocí nástroje `flask run` a přejděte na adresu *http: \/ /127.0.0.1:5000/*.
 
 5. Přidávejte a odebírejte úlohy a sledujte, jak se objevují a mění v rámci kolekce.
 

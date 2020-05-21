@@ -1,26 +1,26 @@
 ---
 title: Rychlý Start – použití Node. js k dotazování z Azure Cosmos DB účtu rozhraní SQL API
 description: Jak pomocí Node. js vytvořit aplikaci, která se připojuje k Azure Cosmos DB účtu rozhraní SQL API a dotazování na data.
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 02/26/2020
-ms.author: dech
-ms.openlocfilehash: 0b29f9c1f395e079c97d5877d08bd7bd73c7ea53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 4f874bd77432ba9ee110a7304629a80f1ce5d0dd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240316"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655355"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Rychlý Start: použití Node. js k připojení a dotazování dat z Azure Cosmos DB účtu rozhraní SQL API
 
 > [!div class="op_single_selector"]
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
-> - [Java](create-sql-api-java.md)
+> - [Java SDK v4](create-sql-api-java.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -35,7 +35,7 @@ V tomto videu získáte kompletní návod k obsahu v tomto článku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčem. `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčem `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
 - [Node. js 6.0.0 +](https://nodejs.org/).
 - [Git](https://www.git-scm.com/downloads).
 
@@ -55,7 +55,7 @@ Možnost "vyzkoušet Azure Cosmos DB zdarma" nevyžaduje předplatné Azure a na
 
 Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření databáze a kontejneru.
 
-1. Vyberte **Průzkumník dat** > **Nový kontejner**.
+1. Vyberte **Průzkumník dat**  >  **Nový kontejner**.
 
    Úplně vpravo se zobrazí oblast **Přidat kontejner** , možná se budete muset posunout doprava, aby se zobrazila.
 
@@ -65,9 +65,9 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
 
    | Nastavení           | Navrhovaná hodnota | Popis                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **ID databáze**   | Úlohy           | Jako název nové databáze zadejte _Tasks_. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`ani mezeru. Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
+   | **ID databáze**   | Úlohy           | Jako název nové databáze zadejte _Tasks_. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
    | **Propustnost**    | 400             | Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.                                                                                                                                                                                                                                                    |
-   | **ID kontejneru**  | Items           | Jako název nového kontejneru zadejte _položky_ . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.                                                                                                                                                                                                                                                               |
+   | **ID kontejneru**  | Items (Položky)           | Jako název nového kontejneru zadejte _položky_ . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.                                                                                                                                                                                                                                                               |
    | **Klíč oddílu** | /kategorie       | Ukázka popsaná v tomto článku používá jako klíč oddílu _/Category_ .                                                                                                                                                                                                                                                                                                           |
 
    Kromě předchozích nastavení můžete volitelně přidat **jedinečné klíče** pro kontejner. V tomto příkladu ponecháme toto pole prázdné. Jedinečné klíče umožňují vývojářům přidat do databáze vrstvu integrity dat. Vytvořením jedinečné zásady klíčů při vytváření kontejneru zajistíte jedinečnost jedné nebo více hodnot na klíč oddílu. Další informace najdete v článku [Jedinečné klíče ve službě Azure Cosmos DB](unique-keys.md).
@@ -98,7 +98,7 @@ Tento krok je volitelný. Pokud vás zajímá, jak se v kódu vytvářejí prost
 
 Pokud jste obeznámeni s předchozí verzí sady SQL JavaScript SDK, můžete použít k zobrazení _kolekce_ a _dokumentu_. Vzhledem k tomu, že Azure Cosmos DB podporuje [více modelů rozhraní API](introduction.md), [verze 2.0 + sady JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) používá obecný _kontejner_, což může být kolekce, graf nebo tabulka a _položka_ pro popis obsahu kontejneru.
 
-Sada Cosmos DB JavaScript SDK se nazývá "@azure/cosmos" a je možné ji nainstalovat z npm...
+Sada Cosmos DB JavaScript SDK se nazývá " @azure/cosmos " a je možné ji nainstalovat z npm...
 
 ```bash
 npm install @azure/cosmos
@@ -106,13 +106,13 @@ npm install @azure/cosmos
 
 Všechny následující fragmenty kódu jsou pořízeny ze souboru _App. js_ .
 
-- `CosmosClient` Je importován z balíčku `@azure/cosmos` npm.
+- `CosmosClient`Je importován z `@azure/cosmos` balíčku npm.
 
   ```javascript
   const CosmosClient = require("@azure/cosmos").CosmosClient;
   ```
 
-- Byl inicializován `CosmosClient` nový objekt.
+- `CosmosClient`Byl inicializován nový objekt.
 
   ```javascript
   const client = new CosmosClient({ endpoint, key });
@@ -167,7 +167,7 @@ Všechny následující fragmenty kódu jsou pořízeny ze souboru _App. js_ .
   ```
 
 > [!NOTE]
-> V metodách "Update" i "Delete" musí být položka vybrána z databáze voláním `container.item()`. Dva předané parametry jsou ID položky a klíč oddílu položky. V tomto případě je klíč parition hodnotou pole kategorie.
+> V metodách "Update" i "Delete" musí být položka vybrána z databáze voláním `container.item()` . Dva předané parametry jsou ID položky a klíč oddílu položky. V tomto případě je klíč parition hodnotou pole kategorie.
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
@@ -189,7 +189,7 @@ Teď se vraťte na Azure Portal a Získejte podrobnosti o připojovacím řetěz
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-1. Spusťte `npm install` v terminálu, aby se nainstaloval@azure/cosmosbalíček npm.
+1. Spusťte `npm install` v terminálu, aby se nainstaloval @azure/cosmos balíček npm.
 
 2. Spuštění v terminálu `node app.js`, aby se spustila aplikace uzlu.
 

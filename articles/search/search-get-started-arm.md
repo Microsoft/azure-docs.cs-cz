@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/20/2020
-ms.openlocfilehash: 6da2c324872a86c2c0ce6f55801bc7b0ee8d713e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 670cebe1c0f1c9002e33b729d0db9ee9f9a01283
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80607621"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682531"
 ---
 # <a name="quickstart-deploy-cognitive-search-using-a-resource-manager-template"></a>Rychlý Start: nasazení Kognitivní hledání pomocí šablony Správce prostředků
 
@@ -24,15 +24,15 @@ Tento článek vás provede procesem použití šablony Správce prostředků k 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="create-a-cognitive-search-service"></a>Vytvoření služby Kognitivní hledání
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchservices).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-azure-search-create/).
 
-:::code language="json"source="~/quickstart-templates/101-azure-search-create/azuredeploy.json" range="1-86" highlight="4-50":::
+:::code language="json"source="~/quickstart-templates/101-azure-search-create/azuredeploy.json" range="1-86" highlight="4-50,70-85":::
 
 Prostředek Azure definovaný v této šabloně:
 
@@ -42,7 +42,7 @@ Prostředek Azure definovaný v této šabloně:
 
 Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří prostředek služby Azure Kognitivní hledání.
 
-[![Nasazení do Azure](./media/search-get-started-arm/arm-deploybuttona.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
 
 Portál zobrazí formulář, který umožňuje snadno zadat hodnoty parametrů. Některé parametry jsou předem vyplněny výchozími hodnotami ze šablony. Budete muset zadat předplatné, skupinu prostředků, umístění a název služby. Pokud chcete použít Cognitive Services v kanálu pro [rozšíření AI](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) , například k analýze souborů binárních obrázků pro text, vyberte umístění, které nabízí Kognitivní hledání i Cognitive Services. Obě služby se musí nacházet ve stejné oblasti pro úlohy rozšíření AI. Po vyplnění formuláře budete muset souhlasit s podmínkami a ujednáními a pak vybrat tlačítko koupit a dokončit nasazení.
 

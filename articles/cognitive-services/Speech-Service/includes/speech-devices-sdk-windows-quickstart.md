@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: df29ecf0a4ddb30aea1c1ab9ceed44a93fc61eb8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b22ba1df6eeddfaf04d11e542acb4f2b8ab00d76
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400074"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673114"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Windows vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription-service.md) . Pro konverzaci s přepisem se podporuje jenom [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) . Pro jiný hlas použijte lineární pole Mic, která poskytují geometrii pole mikrofonu.
 
@@ -48,19 +48,19 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
 1. Za chvíli se zobrazí hlavní okno prostředí Eclipse IDE. Pokud se zobrazí úvodní obrazovka, zavřete ji.
 
-1. V panelu nabídek zatmění vytvořte nový projekt kliknutím na **soubor** > **Nový** > **projekt Java**. Pokud není k dispozici, zvolte **projekt** a pak **projekt Java**.
+1. V panelu nabídek zatmění vytvořte nový projekt kliknutím na **soubor**  >  **Nový**  >  **projekt Java**. Pokud není k dispozici, zvolte **projekt** a pak **projekt Java**.
 
 1. Spustí se Průvodce vytvořením **nového projektu Java** . **Vyhledejte** umístění ukázkového projektu. Vyberte **Finish** (Dokončit).
 
    ![Snímek obrazovky s průvodcem novým projektem Javy](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. V **Průzkumníku balíčků**klikněte pravým tlačítkem myši na projekt. V místní nabídce vyberte **Konfigurace** > **převést na projekt Maven** . Vyberte **Finish** (Dokončit).
+1. V **Průzkumníku balíčků**klikněte pravým tlačítkem myši na projekt. V místní nabídce vyberte **Konfigurace**  >  **převést na projekt Maven** . Vyberte **Finish** (Dokončit).
 
    ![Snímek obrazovky s průzkumníkem balíčků](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
 1. Otevřete soubor pom.xml a upravte ho.
 
-    Na konci souboru před uzavírací `</project>`značkou vytvořte `repositories` a `dependencies` prvky, jak je znázorněno zde, a ujistěte se, že `version` odpovídá aktuální verzi:
+    Na konci souboru před uzavírací značkou `</project>` vytvořte `repositories` a `dependencies` prvky, jak je znázorněno zde, a ujistěte se, že `version` odpovídá aktuální verzi:
     ```xml
     <repositories>
          <repository>
@@ -74,7 +74,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.11.0</version>
+             <version>1.12.0</version>
         </dependency>
     </dependencies>
    ```
@@ -87,7 +87,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
 1. Přidejte klíč předplatného řeči do zdrojového kódu. Pokud chcete vyzkoušet rozpoznávání záměru, přidejte také klíč předplatného [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) a ID aplikace.
 
-   V případě řeči a LUIS se vaše informace nacházejí `FunctionsList.java`v těchto případech:
+   V případě řeči a LUIS se vaše informace nacházejí v těchto případech `FunctionsList.java` :
 
    ```java
     // Subscription
@@ -98,22 +98,22 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-   Pokud používáte přepis konverzace, informace o vašich klíčích a oblastech řeči jsou také potřeba v `Cts.java`nástroji:
+   Pokud používáte přepis konverzace, informace o vašich klíčích a oblastech řeči jsou také potřeba v nástroji `Cts.java` :
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
    ```
 
-1. Výchozí klíčové slovo (klíčové slovo) je "Computer". Můžete také vyzkoušet jedno z dalších poskytnutých klíčových slov, například "počítač" nebo "asistent". Soubory prostředků pro tato alternativní klíčová slova jsou v sadě Speech Devices SDK ve složce klíčová slova. `C:\SDSDK\JRE-Sample-Release\keyword\Computer` Obsahuje například soubory používané pro klíčové slovo "Computer".
+1. Výchozí klíčové slovo (klíčové slovo) je "Computer". Můžete také vyzkoušet jedno z dalších poskytnutých klíčových slov, například "počítač" nebo "asistent". Soubory prostředků pro tato alternativní klíčová slova jsou v sadě Speech Devices SDK ve složce klíčová slova. `C:\SDSDK\JRE-Sample-Release\keyword\Computer`Obsahuje například soubory používané pro klíčové slovo "Computer".
 
     > [!TIP]
     > Můžete také [vytvořit vlastní klíčové slovo](../speech-devices-sdk-create-kws.md).
 
-    Chcete-li použít nové klíčové slovo, aktualizujte následující `FunctionsList.java`řádek v a zkopírujte klíčové slovo do aplikace. Například pro použití klíčového slova ' Machine ' z balíčku `machine.zip`klíčového slova:
+    Chcete-li použít nové klíčové slovo, aktualizujte následující řádek v `FunctionsList.java` a zkopírujte klíčové slovo do aplikace. Například pro použití klíčového slova ' Machine ' z balíčku klíčového slova `machine.zip` :
 
    * Zkopírujte `kws.table` soubor z balíčku zip do složky **cíl/třídy**projektu.
-   * `FunctionsList.java` Aktualizujte název klíčového slova:
+   * Aktualizujte `FunctionsList.java` název klíčového slova:
 
      ```java
      private static final String Keyword = "Machine";
@@ -121,7 +121,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Spuštění ukázkové aplikace z zatmění
 
-1. V řádku nabídek zatmění **Spusťte** > **Run As** > **aplikaci Java**. Pak vyberte **FunctionsList** a **OK**.
+1. V řádku nabídek zatmění **Spusťte**  >  **Run As**  >  **aplikaci Java**. Pak vyberte **FunctionsList** a **OK**.
 
    ![Snímek obrazovky s vybranou aplikací Java](../media/speech-devices-sdk/eclipse-run-sample.png)
 
@@ -129,7 +129,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
    ![Ukázková sada Speech Devices SDK – ukázková aplikace a možnosti](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. Vyzkoušejte si novou ukázku **přepisu konverzace** . Spusťte zdlouhavého přepisování s **Session** > **zahájením**relace. Ve výchozím nastavení je každý host. Nicméně pokud máte signatury hlasu účastníka, mohou být vloženy do souboru `participants.properties` v **cílové nebo třídy**složky projektu. Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Vyzkoušejte si novou ukázku **přepisu konverzace** . Spusťte zdlouhavého přepisování s **Session**  >  **zahájením**relace. Ve výchozím nastavení je každý host. Nicméně pokud máte signatury hlasu účastníka, mohou být vloženy do souboru `participants.properties` v **cílové nebo třídy**složky projektu. Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription-service.md).
 
    ![Ukázková aplikace přepisu konverzace](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
@@ -145,7 +145,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
    ![Snímek obrazovky spustitelný pro export souborů JAR](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
-1. V cílové `kws.table`složce `participants.properties`, `unimic_runtime.dll`kterou `pma.dll` jste `Microsoft.CognitiveServices.Speech.extension.pma.dll` vybrali výše, prosím vložte,, a, protože aplikace potřebuje tyto soubory.
+1. `kws.table` `participants.properties` `unimic_runtime.dll` `pma.dll` V cílové složce, kterou jste vybrali výše, prosím vložte,, a, `Microsoft.CognitiveServices.Speech.extension.pma.dll` protože aplikace potřebuje tyto soubory.
 
 1. Spuštění samostatné aplikace
 

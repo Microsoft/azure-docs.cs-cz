@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 204fd1b1a0a2984886684bbabf33dc7e73c1b45c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691879"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653534"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v synapse SQL
 
@@ -90,7 +90,7 @@ Tyto další parametry jsou představené pro práci se soubory CSV (s oddělova
 ```
 
 - ESCAPE_CHAR = char určuje znak v souboru, který se používá k zaznamenání samotného řídicího panelu a všech hodnot oddělovače v souboru. Je-li řídicí znak následován buď jinou hodnotou než samotná, nebo jakoukoli hodnotou oddělovače, je řídicí znak při čtení hodnoty vynechán.
-Parametr ESCAPE_CHAR bude použit bez ohledu na to, zda je FIELDQUOTE nebo není povolen. Nepoužije se k řídicímu znaku pro uvozovky. Znak quotování je řídicím znakem s dvojitými uvozovkami v zarovnání s chováním CSV v Excelu.
+Parametr ESCAPE_CHAR bude použit bez ohledu na to, jestli je FIELDQUOTE nebo není povolený. Nepoužije se k řídicímu znaku pro uvozovky. Znak quotování je řídicím znakem s dvojitými uvozovkami v zarovnání s chováním CSV v Excelu.
 - FIELDTERMINATOR = ' field_terminator ' Určuje ukončovací znak pole, který se má použít. Výchozí ukončovací znak pole je čárka (**,**).
 - ROWTERMINATOR = ' row_terminator ' Určuje ukončovací znak řádku, který má být použit. Výchozí ukončovací znak řádku je znak nového řádku: **\r\n**.
 

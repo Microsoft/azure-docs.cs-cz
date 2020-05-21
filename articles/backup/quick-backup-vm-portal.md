@@ -1,17 +1,16 @@
 ---
 title: Rychlý Start – zálohování virtuálního počítače pomocí Azure Portal
 description: V tomto rychlém startu se dozvíte, jak vytvořit trezor Recovery Services, povolit ochranu na VIRTUÁLNÍm počítači Azure a zálohovat virtuální počítač s Azure Portal.
-ms.reviewer: saurse
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 02/06/2020
+ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80944d99c51ae4880a40df8700a73d08a95efe77
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240447"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656953"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Zálohování virtuálního počítače v Azure
 
@@ -21,7 +20,7 @@ V tomto rychlém startu se povolí zálohování na existujícím virtuálním p
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="select-a-vm-to-back-up"></a>Výběr virtuálního počítače k zálohování
 
@@ -66,11 +65,11 @@ V okně **Zálohování** pro váš virtuální počítač je zobrazený stav z�
 
 Pokud už ochrana virtuálního počítače není potřeba, můžete ji vypnout, odebrat body obnovení a trezor služby Recovery Services a pak odstranit skupinu prostředků a související prostředky virtuálního počítače.
 
-Pokud se chystáte pokračovat ke kurzu služby Backup, který vysvětluje postup obnovení dat virtuálního počítače, přeskočte kroky v této části a přejděte na [Další kroky](#next-steps).
+Pokud budete pokračovat k kurzu zálohování, který vysvětluje, jak obnovit data pro váš virtuální počítač, přeskočte kroky v této části a přejděte k části [Další kroky](#next-steps).
 
 1. Vyberte možnost **Zálohování** pro váš virtuální počítač.
 
-2. Výběrem **... Další** zobrazte další možnosti a pak zvolte **Zastavit zálohování**.
+2. Vyberte **Zastavit zálohování**.
 
     ![Zastavení zálohování virtuálního počítače z webu Azure Portal](./media/quick-backup-vm-portal/stop-backup.png)
 

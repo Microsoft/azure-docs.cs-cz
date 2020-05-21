@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d7759dbf1377cb46a9868dbcf01c61e20a7a2144
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 96b4a2637404aa33d72c6b786ed8878d34c76737
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82966033"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652311"
 ---
-|Name |Popis |Vliv (s) |Verze |GitHubu |
+|Name |Popis |Vliv (s) |Verze |GitHub |
 |---|---|---|---|---|
 |[Spravovat povolené typy klíčů certifikátů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1151cede-290b-4ba0-8b38-0ad145ac888f) |Tato zásada spravuje povolené typy klíčů pro certifikáty. |audit, zamítnutí, zakázáno |1.0.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_AllowedKeyTypes.json) |
 |[Spravovat povolené názvy křivek pro certifikáty kryptografie s eliptickou křivkou](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd78111f-4953-4367-9fd5-7e08808b54bf) |Tato zásada spravuje povolené názvy eliptické křivky pro certifikáty kryptografie s eliptickou křivkou. |audit, zamítnutí, zakázáno |1.0.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_EC_AllowedCurveNames.json) |

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 40a1d75ff90efafff14cd27ab439df8ab3729c50
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77132034"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674301"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 
@@ -36,16 +36,16 @@ Azure poskytuje nástroje, včetně rozhraní příkazového řádku Azure, Azur
 
 ## <a name="key-features"></a>Klíčové funkce
 
-* **SKU registru** – vytvořte v předplatném Azure jednu nebo víc registrů kontejnerů. Registry jsou dostupné ve třech skladových položkách: [Basic, Standard a Premium](container-registry-skus.md), z nichž každý podporuje integraci webhooků, ověřování registru pomocí Azure Active Directory a odstraňování funkcí. Využijte místní úložiště imagí kontejnerů v síťové blízkosti vytvořením registru ve stejném umístění Azure, jako jsou vaše nasazení. Funkci [geografické replikace](container-registry-geo-replication.md) v registrech úrovně Premium můžete využít ve scénářích pokročilé replikace a distribuce imagí kontejnerů. 
+* **Úrovně služby registru** – ve svém předplatném Azure vytvořte jednu nebo víc registrů kontejnerů. Registry jsou dostupné ve třech úrovních: [Basic, Standard a Premium](container-registry-skus.md), z nichž každý podporuje integraci webhooků, ověřování registru pomocí Azure Active Directory a odstraňování funkcí. Využijte místní úložiště imagí kontejnerů v síťové blízkosti vytvořením registru ve stejném umístění Azure, jako jsou vaše nasazení. Funkci [geografické replikace](container-registry-geo-replication.md) v registrech úrovně Premium můžete využít ve scénářích pokročilé replikace a distribuce imagí kontejnerů. 
 
-* **Zabezpečení a přístup** – Přihlaste se k registru pomocí rozhraní příkazového řádku Azure CLI `docker login` nebo standardního příkazu. Azure Container Registry přenáší image kontejneru přes protokol HTTPS a podporuje TLS k zabezpečení připojení klientů. 
+* **Zabezpečení a přístup** – Přihlaste se k registru pomocí rozhraní příkazového řádku Azure CLI nebo standardního `docker login` příkazu. Azure Container Registry přenáší image kontejneru přes protokol HTTPS a podporuje TLS k zabezpečení připojení klientů. 
 
   > [!IMPORTANT]
   > Od 13. ledna 2020 bude Azure Container Registry vyžadovat, aby všechna zabezpečená připojení ze serverů a aplikací používala protokol TLS 1,2. Povolte TLS 1,2 pomocí libovolného nedávného klienta Docker (verze 18.03.0 nebo novější). Bude vyřazena podpora TLS 1,0 a 1,1. 
 
   Přístup k registru kontejnerů [ovládáte](container-registry-authentication.md) pomocí identity Azure, [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md), který je Azure Active Directory zálohovaný, nebo zadaného účtu správce. Použijte řízení přístupu na základě role (RBAC) k přiřazení uživatelů nebo systémů jemně odstupňovaná oprávnění k registru.
 
-  Funkce zabezpečení SKU Premium zahrnují [vztah důvěryhodnosti obsahu](container-registry-content-trust.md) pro podepisování značek image a [brány firewall a virtuální sítě (Preview)](container-registry-vnet.md) , aby se omezil přístup k registru. Azure Security Center se volitelně integruje s Azure Container Registry pro [skenování imagí](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) vždy, když se do registru vloží obrázek.
+  K funkcím zabezpečení úrovně Premium Service patří [důvěryhodnost obsahu](container-registry-content-trust.md) pro podepisování značek image a [brány firewall a virtuální sítě (Preview)](container-registry-vnet.md) , aby se omezil přístup k registru. Azure Security Center se volitelně integruje s Azure Container Registry pro [skenování imagí](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) vždy, když se do registru vloží obrázek.
 
 * **Podporované image a artefakty** – seskupené do úložiště, každý obrázek je snímkem, který je jen pro čtení kontejneru kompatibilního s Docker. Registry kontejnerů Azure mohou zahrnovat image systémů Windows i Linux. Názvy imagí pro všechna nasazení kontejnerů určujete vy. Pomocí standardních [příkazů Dockeru](https://docs.docker.com/engine/reference/commandline/) můžete nahrávat image do úložiště nebo si z úložiště image stáhnout. Kromě imagí kontejnerů Docker Azure Container Registry ukládá [související formáty obsahu](container-registry-image-formats.md) , jako jsou grafy a obrázky [Helm](container-registry-helm-repos.md) sestavené do [specifikace formátu rozhraní OCI (Open container Initiative)](https://github.com/opencontainers/image-spec/blob/master/spec.md).
 

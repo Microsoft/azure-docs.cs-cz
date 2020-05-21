@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 09ccb9f095e58d8fa22ec3d119853c729f0c7026
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 328f3d0dc648b3c5fa96c3aab02e80a37cf4218f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090578"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680674"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Kurz: Azure Active Directory integrace s Skillport
 
@@ -139,7 +139,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Skillpor
 
 ### <a name="configure-skillport-single-sign-on"></a>Konfigurace jednotného přihlašování Skillport
 
-Ke konfiguraci jednotného přihlašování na straně **Skillport** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Skillport](https://www.skillsoft.com/contact.asp). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na straně **Skillport** je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory Skillport](https://www.skillsoft.com/about/contact-us). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -194,7 +194,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-skillport-test-user"></a>Vytvořit testovacího uživatele Skillport
 
-Aby bylo možné vytvořit testovacího uživatele Skillport, musíte kontaktovat [tým podpory Skillport](https://www.skillsoft.com/contact.asp) , protože mají více podnikových scénářů podle požadavku koncového uživatele. Po diskuzi s uživateli je nakonfiguruje.
+Aby bylo možné vytvořit testovacího uživatele Skillport, musíte kontaktovat [tým podpory Skillport](https://www.skillsoft.com/about/contact-us) , protože mají více podnikových scénářů podle požadavku koncového uživatele. Po diskuzi s uživateli je nakonfiguruje.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f149678bd65ff47b8582e56cf376d88284c8fa8b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78298815"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681329"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
@@ -148,7 +148,7 @@ Pokud chcete ověřit, že se agent zobrazuje v Azure, postupujte podle těchto 
 3.  Na obrazovce **zřizování Azure AD (Preview)** klikněte na **zkontrolovat všechny agenty**.
 ![Zřizování Azure AD](media/how-to-install/install7.png)</br>
  
-4. Na **obrazovce místní zřizovací agenti** se zobrazí agenti, které jste nainstalovali.  Ověřte, že je na něm daný agent a že je označený jako **zakázaný**.  Agent je ve výchozím nastavení ![zakázaný.](media/how-to-install/verify1.png)</br>
+4. Na **obrazovce místní zřizovací agenti** se zobrazí agenti, které jste nainstalovali.  Ověřte, že je na něm daný agent a že je označený jako **zakázaný**.  Agent je ve výchozím nastavení zakázaný. ![](media/how-to-install/verify1.png)</br>
 
 ### <a name="on-the-local-server"></a>Na místním serveru
 Pokud chcete ověřit, jestli je agent spuštěný, postupujte takto:
@@ -199,7 +199,9 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
 3.  Spusťte `Start-ADSyncSyncCycle`.  Stiskněte ENTER.  
 
 >[!NOTE] 
->Pokud používáte vlastní Plánovač pro synchronizaci AAD Connect, povolte prosím Plánovač. 
+>Pokud používáte vlastní Plánovač pro Azure AD Connect synchronizaci, povolte prosím Plánovač. 
+
+Jakmile je Plánovač povolený, Azure AD Connect zastaví export jakýchkoli změn objektů `cloudNoFlow=true` do úložiště metaverse, pokud žádný atribut Reference (např. manažer) se aktualizuje. V případě, že je u objektu nějaká aktualizace atributu reference, Azure AD Connect bude signál ignorovat `cloudNoFlow` a exportovat všechny aktualizace objektu.
 
 ## <a name="something-went-wrong"></a>Něco se pokazilo.
 V případě, že pilotní projekt nefunguje podle očekávání, můžete se vrátit k nastavení Azure AD Connect synchronizace pomocí následujících kroků:

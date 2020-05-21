@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Security Center
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Security Center. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 05/04/2020
+ms.date: 05/13/2020
 ms.topic: sample
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 67af35cc3aeffecb12b0558079618502a5bd2ff8
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 30ad99228ce9c3a936c8c43e61489d7b0cc94114
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966495"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650161"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-security-center"></a>Azure Policy předdefinované definice zásad pro Azure Security Center
 

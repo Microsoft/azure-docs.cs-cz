@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c458b1c04a7f3be1a43d725591426e619286b7d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0f34b853728c91d9e3c6e32396c0f7eb427af101
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587867"
+ms.locfileid: "83656202"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Co je Azure synapse Analytics (pracovní prostory verze Preview)?
 
@@ -63,7 +63,7 @@ Azure synapse odstraňuje tradiční technologické bariéry mezi použitím SQL
 
 Azure synapse nabízí integrovaný modul pro integraci dat a prostředí, jako Azure Data Factory, což vám umožní vytvářet kanály s bohatou datovou částí bez použití samostatného modulu orchestrace.
 
-* Přesun dat mezi synapse a 85 a místními zdroji dat
+* Přesun dat mezi Azure synapse a 90 + místními zdroji dat
 * Orchestrace poznámkových bloků, kanálů, úloh Spark, skriptů SQL, uložených procedur
 * ETL bez kódu s aktivitami toku dat
 
@@ -87,6 +87,6 @@ Azure synapse nabízí pro podniky jediný způsob, jak spravovat analytické pr
 
 * [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
 * [Použití synapse studia](quickstart-synapse-studio.md)
-* [Vytvoření fondu SQL](quickstart-create-sql-pool.md)
+* [Vytvoření fondu SQL](quickstart-create-sql-pool-portal.md)
 * [Používání SQL na vyžádání](quickstart-sql-on-demand.md)
-* [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool.md)
+* [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool-portal.md)

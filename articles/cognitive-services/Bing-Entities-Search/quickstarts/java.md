@@ -8,32 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: c4335e1ac0f0ffc7ee5570a8f0819827fc77dd18
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6d4e7297ba0b325aa0045c16620d716ceb1418b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75384147"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650257"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí jazyka Java
 
 Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace Java pošle vyhledávací dotaz na zprávy do rozhraní API a zobrazí odpověď.
 
-Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Sada Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
-* [Knihovna Gson](https://github.com/google/gson)
+* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/).
+* [Knihovna gson](https://github.com/google/gson)
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java a naimportujte následující knihovny.
+1. V oblíbených IDE nebo editoru vytvořte nový projekt Java a importujte následující knihovny:
 
    ```java
    import java.io.*;
@@ -50,7 +50,7 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
    import com.google.gson.JsonParser;
    ```
 
-2. V nové třídě vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a vyhledávací dotaz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. V nové třídě vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a vyhledávací dotaz. Můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
    ```java
    public class EntitySearch {
@@ -68,7 +68,7 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
 
 ## <a name="construct-a-search-request-string"></a>Sestavení řetězce požadavku hledání
 
-1. Vytvořte funkci s názvem `search()` , která vrátí JSON `String`. URL – zakódovat vyhledávací dotaz a přidat ho do řetězce parametrů s `&q=`. Přidejte svůj trh do řetězce pomocí `?mkt=`.
+1. Vytvořte funkci s názvem `search()` , která vrátí JSON `String` . URL – zakódovat vyhledávací dotaz a přidat ho do řetězce parametrů s `&q=` . Přidejte svůj trh do řetězce parametru pomocí `?mkt=` .
  
 2. Vytvořte objekt URL s vaším hostitelem, cestou a parametry řetězce.
     
@@ -83,7 +83,7 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
       
 ## <a name="send-a-search-request-and-receive-a-response"></a>Odeslat žádost o vyhledávání a přijmout odpověď
 
-1. Ve `search()` funkci vytvořené výše vytvořte nový `HttpsURLConnection` objekt s. `url.openCOnnection()` Nastavte metodu Request na `GET`a přidejte do `Ocp-Apim-Subscription-Key` hlavičky klíč předplatného.
+1. Ve `search()` funkci vytvořené výše vytvořte nový `HttpsURLConnection` objekt s `url.openCOnnection()` . Nastavte metodu Request na `GET` a přidejte do hlavičky klíč předplatného `Ocp-Apim-Subscription-Key` .
 
     ```java
     //...
@@ -94,7 +94,7 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
     //...
     ```
 
-2. Vytvořte nový `StringBuilder`. Při vytváření instancí `InputStreamReader` `BufferedReader` pro čtení odpovědi rozhraní API použijte nový jako parametr.  
+2. Vytvořte nový `StringBuilder` . `InputStreamReader`Při vytváření instancí `BufferedReader` pro čtení odpovědi rozhraní API použijte nový jako parametr.  
     
     ```java
     //...
@@ -104,7 +104,7 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
     //...
     ```
 
-3. Vytvořte `String` objekt pro uložení odpovědi z `BufferedReader`. Iterujte přes něj a přidejte jednotlivé řádky do řetězce. Pak zavřete čtecí modul a vraťte odpověď. 
+3. Vytvořte `String` objekt pro uložení odpovědi z `BufferedReader` . Iterujte přes něj a přidejte jednotlivé řádky do řetězce. Pak zavřete čtecí modul a vraťte odpověď. 
     
     ```java
     String line;
@@ -119,9 +119,9 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
 
 ## <a name="format-the-json-response"></a>Formátování odpovědi JSON
 
-1. Vytvořte novou funkci nazvanou `prettify` pro formátování odpovědi JSON. Vytvořte nový `JsonParser`, zavolejte `parse()` na text JSON a uložte ho jako objekt JSON. 
+1. Vytvořte novou funkci nazvanou `prettify` pro formátování odpovědi JSON. Vytvořte nový `JsonParser` , zavolejte `parse()` na text JSON a pak ho uložte jako objekt JSON. 
 
-2. Použijte knihovnu gson k vytvoření nového `GsonBuilder()`a použijte `setPrettyPrinting().create()` k formátování formátu JSON. Pak ji vraťte.    
+2. Použijte knihovnu gson k vytvoření nového `GsonBuilder()` , použijte `setPrettyPrinting().create()` k naformátování JSON a pak ho vraťte.    
   
    ```java
    //...
@@ -136,7 +136,7 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
 
 ## <a name="call-the-search-function"></a>Volání funkce hledání
 
-1. Z metody Main projektu, zavolejte `search()`a použijte `prettify()` k formátování textu.
+- Z metody Main projektu, zavolejte `search()` a použijte `prettify()` k formátování textu.
     
     ```java
         public static void main(String[] args) {
@@ -220,5 +220,5 @@ Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful 
 > [!div class="nextstepaction"]
 > [Sestavení jednostránkové webové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )
-* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md)
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

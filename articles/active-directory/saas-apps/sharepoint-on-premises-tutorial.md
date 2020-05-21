@@ -14,126 +14,126 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: miguego
-ms.openlocfilehash: 7e47891a74feb60b0f3e4594bd1621e8b62d64d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c623ed8cfcdb61081c74a0f7326106c42781cefa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81867109"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648486"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharepoint-on-premises"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k místnímu SharePointu
+# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí služby SharePoint v místním prostředí
 
-V tomto kurzu se dozvíte, jak integrovat SharePoint místně pomocí Azure Active Directory (Azure AD). Při integraci služby SharePoint v místním prostředí se službou Azure AD můžete:
+V tomto kurzu se naučíte integrovat SharePoint místně pomocí Azure Active Directory (Azure AD). Při integraci služby SharePoint v místním prostředí se službou Azure AD můžete:
 
-* Řízení ve službě Azure AD, která má přístup k místnímu webu SharePoint.
+* Řízení přístupu k místnímu SharePointu v Azure AD.
 * Umožněte uživatelům, aby se automaticky přihlásili k místnímu SharePointu pomocí svých účtů Azure AD.
-* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
+* Spravujte své účty v Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete nakonfigurovat integraci Azure Active Directory s místním SharePointem, potřebujete následující položky:
+Pokud chcete nakonfigurovat integraci Azure AD s místním SharePointem, budete potřebovat tyto položky:
 
-* Azure Active Directory předplatné. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * Farma SharePoint 2013 nebo novější.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete Azure Active Directory jednotné přihlašování v testovacím prostředí. Uživatelé z Azure Active Directory by měli mít přístup k místnímu SharePointu.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD (SSO) v testovacím prostředí. Uživatelé z Azure AD mají přístup k místnímu SharePointu.
 
-## <a name="create-the-enterprise-applications-in-azure-portal"></a>Vytváření podnikových aplikací v Azure Portal
+## <a name="create-enterprise-applications-in-the-azure-portal"></a>Vytváření podnikových aplikací v Azure Portal
 
 Pokud chcete nakonfigurovat integraci služby SharePoint místně do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat místní SharePoint z galerie.
 
-Pokud chcete z Galerie přidat místní SharePoint, proveďte následující kroky:
+Postup přidání místního SharePointu z Galerie:
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+1. V podokně [Azure Portal](https://portal.azure.com)v levém podokně vyberte možnost **Azure Active Directory**.
 
- > [!NOTE]
- > Pokud by element neměl být k dispozici, lze jej také otevřít prostřednictvím odkazu pevný **všechny služby** v horní části levého navigačního panelu. V následujícím přehledu se **Azure Active Directory** odkaz nachází v části **Identita** nebo ho můžete vyhledat pomocí textového pole filtrovat.
+   > [!NOTE]
+   > Pokud prvek není k dispozici, můžete jej otevřít také pomocí odkazu **všechny služby** v horní části podokna vlevo. V následujícím přehledu se **Azure Active Directory** odkaz nachází v části **Identita** . Můžete ho také vyhledat pomocí pole Filtr.
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+1. Chcete-li přidat novou aplikaci, vyberte v horní části dialogového okna možnost **Nová aplikace** .
 
-4. Do vyhledávacího pole zadejte místní **SharePoint**a z panelu výsledek vyberte **místní SharePoint** .
+1. Do vyhledávacího pole zadejte **SharePoint místně**. V podokně výsledků vyberte **místní SharePoint** .
 
     <kbd>![Místní SharePoint v seznamu výsledků](./media/sharepoint-on-premises-tutorial/search-new-app.png)</kbd>
 
-1. Zadejte název pro SharePoint OnPrem a kliknutím na tlačítko **Přidat** přidejte aplikaci.
+1. Zadejte název místní instance SharePointu a vyberte **Přidat** pro přidání aplikace.
 
-1. V nové podnikové aplikaci klikněte na vlastnosti a ověřte, jestli je **požadované přiřazení uživatele** .
+1. V nové podnikové aplikaci vyberte možnost **vlastnosti**a ověřte, zda je požadovaná hodnota **přiřazení uživatele?**.
 
-   <kbd>![Místní SharePoint v seznamu výsledků](./media/sharepoint-on-premises-tutorial/user-assignment-required.png)</kbd>
+   <kbd>![Je vyžadováno přiřazení uživatele? přepnut](./media/sharepoint-on-premises-tutorial/user-assignment-required.png)</kbd>
 
-v našem scénáři je tato hodnota nastavená na **ne**.
+   V tomto scénáři je hodnota nastavena na **ne**.
 
 ## <a name="configure-and-test-azure-ad"></a>Konfigurace a testování Azure AD
 
-V této části nakonfigurujete jednotné přihlašování Azure AD pomocí služby SharePoint v místním prostředí.
-Aby se jednotné přihlašování fungovalo, je potřeba vytvořit odkazový vztah mezi uživatelem služby Azure AD a souvisejícím uživatelem v SharePointu.
+V této části nakonfigurujete jednotné přihlašování Azure AD pomocí služby SharePoint v místním prostředí. Jednotné přihlašování umožňuje vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SharePointu.
 
-Chcete-li nakonfigurovat a otestovat Azure Active Directory jednotné přihlašování pomocí služby SharePoint v místním prostředí, je nutné dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí služby SharePoint v místním prostředí, dokončete tyto stavební bloky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-1. **[Nakonfigurujte místní SharePoint](#configure-sharepoint-on-premises)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-1. **[Vytvořte testovacího uživatele Azure AD v části Azure Portal](#create-an-azure-ad-test-user-in-the-azure-portal)** – vytvořit nového uživatele ve službě Azure AD pro jednotné přihlašování.
-1. **[Vytvořte skupinu zabezpečení Azure AD ve službě Azure Portal](#create-an-azure-ad-security-group-in-the-azure-portal)** – vytvořit novou skupinu zabezpečení ve službě Azure AD pro jednotné přihlašování.
-1. **[Udělte oprávnění Azure Active Directory účtu v SharePointu místně](#grant-permissions-to-azure-active-directory-account-in-sharepoint-on-premises)** – udělte oprávnění uživateli Azure AD.
-1. **[Udělení oprávnění skupině Azure AD v místní nabídce SharePoint](#grant-permissions-to-azure-ad-group-in-sharepoint-on-premises)** – udělte oprávnění skupině Azure AD.
-1. **[Udělte účtu Guest přístup k místnímu serveru SharePoint v Azure Portal](#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal)** – udělte oprávnění účtu Guest ve službě Azure AD pro místní SharePoint.
-1. **[Konfigurace důvěryhodného zprostředkovatele identity pro více webových aplikací](#configuring-the-trusted-identity-provider-for-multiple-web-applications)** – způsob použití stejného důvěryhodného zprostředkovatele identity pro více webových aplikací
+- [Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on) , aby mohli vaši uživatelé používat tuto funkci.
+- [Nakonfigurujte místní SharePoint](#configure-sharepoint-on-premises) tak, aby na straně aplikace nakonfiguroval nastavení jednotného přihlašování.
+- [Vytvořte v Azure Portal testovacího uživatele Azure AD](#create-an-azure-ad-test-user-in-the-azure-portal) a vytvořte nového uživatele ve službě Azure AD pro jednotné přihlašování.
+- [Vytvořte v Azure Portal skupinu zabezpečení Azure AD](#create-an-azure-ad-security-group-in-the-azure-portal) , která vytvoří novou skupinu zabezpečení ve službě Azure AD pro jednotné přihlašování.
+- [Udělení oprávnění k účtu Azure AD v SharePointu v místním počítači](#grant-permissions-to-an-azure-ad-account-in-sharepoint-on-premises) pro udělení oprávnění uživateli Azure AD.
+- [Udělení oprávnění skupině Azure AD v místní službě SharePoint](#grant-permissions-to-an-azure-ad-group-in-sharepoint-on-premises) pro udělení oprávnění skupině Azure AD.
+- [Udělte účtu Guest přístup k místnímu serveru SharePoint v Azure Portal](#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal) a udělte mu oprávnění k účtu hosta ve službě Azure AD pro místní SharePoint.
+- [Nakonfigurujte důvěryhodného zprostředkovatele identity pro více webových aplikací](#configure-the-trusted-identity-provider-for-multiple-web-applications) tak, aby používal stejného důvěryhodného poskytovatele identity pro více webových aplikací.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
 V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí místní služby SharePoint, proveďte následující kroky:
+Konfigurace jednotného přihlašování Azure AD pomocí služby SharePoint v místním prostředí:
 
-1. V [Azure Portal](https://portal.azure.com/)otevřete adresář služby Azure AD, klikněte na **podnikové aplikace**, klikněte na **dříve vytvořený název podnikové aplikace** a klikněte na **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte dříve vytvořený název podnikové aplikace a vyberte **jednotné přihlašování**.
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** klikněte na režim **SAML** a povolte jednotné přihlašování.
+1. V dialogovém okně **Vybrat metodu jednotného přihlašování** vyberte režim **SAML** , aby bylo možné povolit jednotné přihlašování.
  
-3. Na stránce **nastavit jednotné přihlašování se** stránkou SAML kliknutím na ikonu **Upravit** otevřete základní dialogové okno **Konfigurace SAML** .
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu **Upravit** a otevřete tak základní dialogové okno **Konfigurace SAML** .
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+1. V části **základní konfigurace SAML** postupujte následovně:
 
-    ![Informace o jednotném přihlašování v místní doméně a adresách URL služby SharePoint](./media/sharepoint-on-premises-tutorial/sp-identifier-reply.png)
+    ![Informace o jednotném přihlašování k místní doméně a adresám URL služby SharePoint](./media/sharepoint-on-premises-tutorial/sp-identifier-reply.png)
 
-    1. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`urn:<sharepointFarmName>:<federationName>`
+    1. Do pole **identifikátor** zadejte adresu URL pomocí tohoto vzoru: `urn:<sharepointFarmName>:<federationName>` .
 
-    1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<YourSharePointSiteURL>/_trust/`
+    1. Do pole **Adresa URL odpovědi** zadejte adresu URL pomocí tohoto vzoru: `https://<YourSharePointSiteURL>/_trust/` .
 
-    1. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<YourSharePointSiteURL>/`
-    1. klikněte na Uložit.
+    1. Do pole **přihlašovací adresa URL** zadejte adresu URL pomocí tohoto vzoru: `https://<YourSharePointSiteURL>/` .
+    1. Vyberte **Uložit**.
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi.
 
-5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností na základě vašich požadavků a uložte ho do svého počítače.
 
     ![Odkaz na stažení certifikátu](./media/sharepoint-on-premises-tutorial/certificatebase64.png)
 
-6. V části **nastavit místní SharePoint** zkopírujte příslušné adresy URL podle vašich požadavků.
+1. V části **nastavit místní SharePoint** zkopírujte příslušné adresy URL podle vašeho požadavku:
     
-    1. **Přihlašovací adresa URL**
+    - **Přihlašovací adresa URL**
     
-        Kopírovat přihlašovací adresu URL: nahradit **/Saml2** na konci pomocí **/wsfed**, by vypadala **https://login.microsoftonline.com/2c4f1a9f-be5f-10ee-327d-a95dac567e4f/wsfed** takto: (Tato adresa URL není přesná)
+        Zkopírujte adresu URL pro přihlášení a nahraďte **/Saml2** na konci pomocí **/wsfed** , aby vypadala jako https://login.microsoftonline.com/2c4f1a9f-be5f-10ee-327d-a95dac567e4f/wsfed . (Tato adresa URL není přesná.)
 
-    1. **Identifikátor Azure AD**
-    1. **Odhlašovací adresa URL**
+    - **Identifikátor Azure AD**
+    - **Odhlašovací adresa URL**
+
     > [!NOTE]
-    > Tato adresa URL se nedá použít, protože je na SharePointu: musíte nahradit **/Saml2** pomocí **/wsfed**. Místní aplikace SharePoint používá token SAML 1,1, takže služba Azure AD očekává požadavek WS dodaný ze SharePoint serveru a po ověření vydá SAML 1,1. klíčové.
+    > Tato adresa URL se nedá použít, protože je na SharePointu. **/Saml2** je nutné nahradit **/wsfed**. Místní aplikace SharePoint používá token SAML 1,1, takže Azure AD očekává od SharePointového serveru požadavek WS. Po ověření vydá token SAML 1,1.
 
 ### <a name="configure-sharepoint-on-premises"></a>Místní konfigurace SharePointu
 
-1. **Vytvoření nového důvěryhodného zprostředkovatele identity v SharePoint serveru 2016**
+1. Vytvoří nového důvěryhodného zprostředkovatele identity v SharePoint serveru 2016.
 
     Přihlaste se k serveru SharePoint a otevřete prostředí pro správu služby SharePoint. Vyplňte hodnoty:
-    1. **$Realm** (hodnota identifikátoru z části místní doména a adresy URL služby SharePoint v Azure Portal).
-    1. **$wsfedurl** (adresa URL služby jednotného přihlašování)
-   1. **$FilePath** (cesta k souboru, do které jste stáhli soubor certifikátu) z Azure Portal.
+    - **$Realm** je hodnota identifikátoru z části místní doména a adresy URL služby SharePoint v Azure Portal.
+    - **$wsfedurl** je adresa URL služby jednotného přihlašování.
+    - **$FilePath** je cesta k souboru, do které jste stáhli soubor certifikátu z Azure Portal.
 
     Spusťte následující příkazy, abyste nakonfigurovali nového důvěryhodného zprostředkovatele identity.
 
@@ -151,15 +151,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí místní
     $map2 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" -IncomingClaimTypeDisplayName "Role" -SameAsIncoming
     $ap = New-SPTrustedIdentityTokenIssuer -Name "AzureAD" -Description "Azure AD SharePoint server 201x" -realm $realm -ImportTrustCertificate $cert -ClaimsMappings $map1,$map2 -SignInUrl $wsfedurl -IdentifierClaim $map1.InputClaimType
     ```
-1. **Povolení důvěryhodného zprostředkovatele identity pro vaši aplikaci**
+1. Povolte důvěryhodného zprostředkovatele identity pro vaši aplikaci.
 
-    a. V centrální správě přejděte na **Správa webové aplikace** a vyberte webovou aplikaci, kterou chcete zabezpečit pomocí Azure AD.
+    1. V **centrální správě**, přejít na **Správa webové aplikace** a vyberte webovou aplikaci, kterou chcete zabezpečit pomocí Azure AD.
 
-    b. Na pásu karet klikněte na **Zprostředkovatelé ověřování** a vyberte zónu, kterou chcete použít.
+    1. Na pásu karet vyberte možnost **poskytovatelé ověřování** a zvolte zónu, kterou chcete použít.
 
-    c. Vyberte **Důvěryhodný zprostředkovatel identity** a vyberte poskytovatele identifikace, kterého jste právě zaregistrovali s názvem *AzureAD*.
+    1. Vyberte **Důvěryhodný zprostředkovatel identity**a vyberte poskytovatele identifikace, kterého jste právě zaregistrovali s názvem *AzureAD*.
 
-    d. Klikněte na tlačítko **OK**.
+    1. Vyberte **OK**.
 
     ![Konfigurace poskytovatele ověřování](./media/sharepoint-on-premises-tutorial/config-auth-provider.png)
 
@@ -167,135 +167,132 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí místní
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory**a v části **Spravovat** posouvání vyberte **uživatele**.
+1. V podokně Azure Portal v levém podokně vyberte možnost **Azure Active Directory**. V podokně **Správa** vyberte **Uživatelé**.
 
-2. Pak v horní části obrazovky vyberte **Všichni uživatelé** , za kterými následuje **Nový uživatel** .
+1. V horní části obrazovky vyberte **Všichni uživatelé**  >  **Nový uživatel** .
 
-3. Vyberte možnost **vytvořit uživatele** a ve vlastnostech uživatele proveďte následující kroky.  
-   Můžete být schopni vytvářet uživatele v Azure AD pomocí vaší přípony tenanta nebo jakékoli ověřené domény. 
+1. Vyberte **vytvořit uživatele**a ve vlastnostech uživatele postupujte podle těchto kroků. Můžete být schopni vytvářet uživatele v Azure AD pomocí vaší přípony tenanta nebo jakékoli ověřené domény. 
 
-    a. Do pole **název** zadejte uživatelské jméno, používáme příkaz **testuser**.
+    1. Do pole **název** zadejte uživatelské jméno. Použili jsme k použití **testuser**.
   
-    b. Do pole typ **uživatelského jména**`TestUser@yourcompanydomain.extension`  
-    Například TestUser@contoso.com.
+    1. Do pole **Uživatelské jméno** zadejte `TestUser@yourcompanydomain.extension`. Tento příklad ukazuje `TestUser@contoso.com` .
 
-    ![Uživatelský dialog](./media/sharepoint-on-premises-tutorial/user-properties.png)
+       ![Uživatelský dialog](./media/sharepoint-on-premises-tutorial/user-properties.png)
 
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
+    1. Zaškrtněte políčko **Zobrazit heslo** a potom zapište hodnotu, která se zobrazí v poli **heslo** .
 
-    d. Klikněte na **Vytvořit**.
+    1. Vyberte **Vytvořit**.
 
-    e. Teď můžete web sdílet s TestUser@contoso.com a povolit tomuto uživateli přístup k němu.
+    1. Teď můžete web sdílet s TestUser@contoso.com a povolit tomuto uživateli přístup k němu.
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Vytvoření skupiny zabezpečení Azure AD v Azure Portal
 
-1. Klikněte na **Azure Active Directory > skupiny**.
+1. Vyberte **Azure Active Directory**  >  **skupiny**.
 
-2. Klikněte na **Nová skupina**:
+1. Vyberte možnost **Nová skupina**.
 
-3. Vyplňte pole **typ skupiny**, **název skupiny**, **Popis skupiny**, **typ členství**. Klikněte na šipku a vyberte členy, vyhledejte nebo klikněte na člen, který chcete přidat do skupiny. Kliknutím na **Vybrat** přidejte vybrané členy a pak klikněte na **vytvořit**.
+1. Vyplňte pole **typ skupiny**, **název skupiny**, **Popis skupiny**a **typ členství** . Vyberte šipky pro výběr členů a potom vyhledejte nebo vyberte členy, které chcete přidat do skupiny. Zvolte **Vybrat** pro přidání vybraných členů a pak vyberte **vytvořit**.
 
 ![Vytvoření skupiny zabezpečení Azure AD](./media/sharepoint-on-premises-tutorial/new-group.png)
 
-### <a name="grant-permissions-to-azure-active-directory-account-in-sharepoint-on-premises"></a>Udělení oprávnění Azure Active Directory účtu v SharePointu v místním prostředí
+### <a name="grant-permissions-to-an-azure-ad-account-in-sharepoint-on-premises"></a>Udělení oprávnění k účtu Azure AD ve službě SharePoint v místním prostředí
 
-Chcete-li udělit přístup k Azure Active Directory uživateli v místní službě SharePoint, je nutné sdílet kolekci webů nebo přidat Azure Active Directory uživatele do jedné ze skupin kolekce webů. Uživatelé se teď můžou přihlašovat ke službě SharePoint 201x pomocí identit z Azure AD, ale stále existují příležitosti pro zlepšení uživatelského prostředí. Například vyhledávání uživatele v nástroji pro výběr osob představuje více výsledků hledání. U každého typu deklarace identity, který je vytvořený v mapování deklarací, se vyskytuje výsledek hledání. Chcete-li vybrat uživatele pomocí výběru osoby, je nutné zadat jeho uživatelské jméno přesně a zvolit výsledek **deklarace identity** .
+Pokud chcete udělit přístup k uživateli Azure AD v místní službě SharePoint, sdílejte kolekci webů nebo přidejte uživatele Azure AD k jedné ze skupin kolekce webů. Uživatelé se teď můžou ke službě SharePoint 201x přihlašovat pomocí identit z Azure AD, ale stále existují příležitosti pro zlepšení uživatelského prostředí. Například vyhledávání uživatele v nástroji pro výběr osob představuje více výsledků hledání. U každého typu deklarace identity, který je vytvořený v mapování deklarací, se vyskytuje výsledek hledání. Chcete-li vybrat uživatele pomocí výběru osob, je nutné zadat své uživatelské jméno přesně a zvolit **výsledek deklarace identity** .
 
 ![Výsledky hledání deklarací identity](./media/sharepoint-on-premises-tutorial/claims-search-results.png)
 
-Pro hodnoty, které hledáte, neexistuje žádné ověření, což může vést k chybám nebo uživatelům omylem zvolit špatný typ deklarace identity. To může uživatelům zabránit v úspěšném přístupu k prostředkům.
+U hledaných hodnot neexistuje žádné ověření, což může vést k nesprávnému pravopisu nebo uživatelům omylem vybrat špatný typ deklarace identity. Tato situace může uživatelům zabránit v úspěšném přístupu k prostředkům.
 
-**K opravě výběru osob** v tomto scénáři existuje open source řešení s názvem [AzureCP](https://yvand.github.io/AzureCP/) , které poskytuje vlastního zprostředkovatele deklarací identity pro SharePoint 2013, 2016 a 2019. Použije rozhraní Microsoft Graph API k vyřešení toho, co uživatelé zadávají a provádějí ověřování. Další informace najdete na adrese [AzureCP](https://yvand.github.io/AzureCP/).
+Pokud chcete tento scénář vyřešit pomocí výběru osob, open source řešení s názvem [AzureCP](https://yvand.github.io/AzureCP/) poskytuje vlastního zprostředkovatele deklarací identity pro SharePoint 2013, 2016 a 2019. Používá rozhraní Microsoft Graph API k vyřešení toho, co uživatelé zadávají a provádějí ověřování. Další informace najdete v tématu [AzureCP](https://yvand.github.io/AzureCP/).
 
   > [!NOTE]
-  > Bez AzureCP můžete přidat skupiny tím, že přidáte ID skupiny Azure AD, ale toto není uživatelsky přívětivé a spolehlivé. Vypadá to, jak vypadá:  
-  >   
-  >![Přidat skupinu Azure AD do skupiny služby SharePoint](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
+  > Bez AzureCP můžete přidat skupiny přidáním ID skupiny Azure AD, ale tato metoda není uživatelsky přívětivá a spolehlivá. Jak vypadá:
+  > 
+  >![Přidání skupiny Azure AD do skupiny služby SharePoint](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
   
-### <a name="grant-permissions-to-azure-ad-group-in-sharepoint-on-premises"></a>Udělení oprávnění skupině Azure AD v místní službě SharePoint
+### <a name="grant-permissions-to-an-azure-ad-group-in-sharepoint-on-premises"></a>Udělení oprávnění skupině Azure AD ve službě SharePoint v místním prostředí
 
-Aby bylo možné přiřadit skupiny zabezpečení Azure Active Directory k místnímu serveru SharePoint, bude nutné použít vlastního zprostředkovatele deklarací pro server SharePoint. V našem příkladu jsme použili AzureCP.
+Chcete-li přiřadit skupiny zabezpečení Azure AD k místnímu serveru SharePoint, je nutné použít vlastního zprostředkovatele deklarací pro server SharePoint. V tomto příkladu se používá AzureCP.
 
  > [!NOTE]
- > Upozorňujeme, že AzureCP není produktem společnosti Microsoft ani není podporován technickou podporou společnosti Microsoft. Stáhněte, nainstalujte a nakonfigurujte AzureCP na místní SharePointové farmě na https://yvand.github.io/AzureCP/. 
+ > AzureCP není produktem Microsoftu a nepodporuje ho podpora Microsoftu. Pokud chcete stáhnout, nainstalovat a nakonfigurovat AzureCP na místní farmě služby SharePoint, přečtěte si web [AzureCP](https://yvand.github.io/AzureCP/) . 
 
-1. Nakonfigurujte AzureCP pro místní farmu služby SharePoint nebo alternativní řešení vlastního zprostředkovatele deklarací identity. Postup konfigurace AzureCP je k dispozici na adresehttps://yvand.github.io/AzureCP/Register-App-In-AAD.html
+1. Nakonfigurujte AzureCP pro místní farmu služby SharePoint nebo alternativní řešení vlastního zprostředkovatele deklarací identity. Pokud chcete nakonfigurovat AzureCP, přečtěte si tento web [AzureCP](https://yvand.github.io/AzureCP/Register-App-In-AAD.html) .
 
-1. V Azure Portal otevřete adresář služby Azure AD. Klikněte na **podnikové aplikace**, klikněte na **dříve vytvořený název podnikové aplikace** a klikněte na **jednotné přihlašování**.
+1. V Azure Portal vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte dříve vytvořený název podnikové aplikace a vyberte **jednotné přihlašování**.
 
-1. Na stránce **nastavte jednotné přihlašování pomocí Sam**, upravte **atributy uživatele & deklarace identity** .
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** upravte **atributy uživatele & deklarace identity** .
 
-1. Klikněte na **přidat deklaraci skupiny**.
+1. Vyberte **přidat deklaraci skupiny**.
 
-1. Vyberte, které skupiny přidružené k uživateli by měly být vráceny v deklaraci, v našem případě vyberte **všechny skupiny** a v části zdrojový atribut vyberte **ID skupiny** a klikněte na **Uložit**.
+1. Vyberte, které skupiny přidružené k uživateli by měly být vráceny v deklaraci identity. V takovém případě vyberte **všechny skupiny**. V části **zdrojový atribut** vyberte položku **ID skupiny** a vyberte **Uložit**.
 
-Chcete-li udělit přístup ke skupině zabezpečení Azure Active Directory v místním SharePointu, je třeba sdílet kolekci webů nebo přidat Azure Active Directory skupinu zabezpečení do jedné ze skupin kolekce webů.
+Pokud chcete udělit přístup ke skupině zabezpečení Azure AD v místním SharePointu, sdílejte kolekci webů nebo přidejte skupinu zabezpečení Azure AD do jedné ze skupin kolekce webů.
 
-1. Přejděte do kolekce webů služby SharePoint, v části nastavení lokality pro kolekci webů klikněte na možnost lidé a skupiny. Vyberte skupinu SharePoint a pak klikněte na nová, do přidat uživatele do této skupiny a začněte zadávat název skupiny. Výběr uživatelů zobrazí Azure Active Directory skupinu zabezpečení.
+1. Přejděte do **kolekce webů služby SharePoint**. V části **nastavení lokality** pro kolekci webů vyberte **osoby a skupiny**. 
 
-    ![Přidat skupinu Azure AD do skupiny služby SharePoint](./media/sharepoint-on-premises-tutorial/permission-azure-ad-group.png)
+1. Vyberte skupinu SharePoint a potom vyberte **Nový**  >  **Přidat uživatele do této skupiny**. Při zadávání názvu skupiny se pro výběr osob zobrazuje skupina zabezpečení Azure AD.
+
+    ![Přidání skupiny Azure AD do skupiny služby SharePoint](./media/sharepoint-on-premises-tutorial/permission-azure-ad-group.png)
 
 ### <a name="grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal"></a>Udělte přístup k účtu Guest k místnímu SharePointu v Azure Portal
 
-je teď možné, že budete mít jednotný způsob, jak udělit přístup k webu služby SharePoint k účtu Guest. Dojde k úpravě hlavního názvu uživatele (UPN). Uživatel s jdoe@outlook.com bude reprezentován jako `jdoe_outlook.com#ext#@TENANT.onmicrosoft.com`. Je možné, že budete mít bezproblémové prostředí při sdílení webu s externími uživateli. v Azure Portal je potřeba přidat do atributů uživatele některé změny **& deklarace identity** .
+Konzistentním způsobem můžete udělit přístup k webu služby SharePoint k účtu Guest, protože hlavní název uživatele teď bude změněn. Uživatel `jdoe@outlook.com` je například reprezentován jako `jdoe_outlook.com#ext#@TENANT.onmicrosoft.com` . Chcete-li sdílet web s externími uživateli, je třeba přidat některé změny do **atributů uživatele & v části deklarace identity** v Azure Portal.
 
-1. V Azure Portal otevřete adresář služby Azure AD. Klikněte na **podnikové aplikace**, klikněte na **dříve vytvořený název podnikové aplikace** a klikněte na **jednotné přihlašování**.
+1. V Azure Portal vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte dříve vytvořený název podnikové aplikace a vyberte **jednotné přihlašování**.
 
-1. Na stránce **nastavte jednotné přihlašování pomocí Sam**, upravte **atributy uživatele & deklarace identity** .
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** upravte **atributy uživatele & deklarace identity** .
 
-1. v **požadované zóně deklarací** klikněte na **jedinečný identifikátor uživatele (ID názvu)**.
+1. V **požadované zóně deklarací identity** vyberte **jedinečný identifikátor uživatele (ID názvu)**.
 
-1. Změňte vlastnost **zdrojového atributu** na hodnotu **User. localuserprincipalname** a Save ( **Uložit**).
+1. Změňte vlastnost **atributu source** na hodnotu **User. Localuserprincipalname**a vyberte **Save (Uložit**).
 
     ![Atributy uživatele & deklarace identity jako počáteční](./media/sharepoint-on-premises-tutorial/manage-claim.png)
 
-1. Použití pásu karet se vrátí zpět k **přihlašování založené na SAML** . **atributy uživatele & části deklarace identity** teď budou vypadat takto: 
+1. Pomocí pásu karet se vraťte k **přihlašování založenému na SAML**. Nyní jsou **atributy uživatele & části deklarace identity** vypadat takto: 
 
-    ![Atributy uživatele & deklarace identity jako konečný](./media/sharepoint-on-premises-tutorial/user-attributes-claims-final.png)  
+    ![Atributy uživatele & deklarace identity jako konečný](./media/sharepoint-on-premises-tutorial/user-attributes-claims-final.png)
 
     > [!NOTE]
-    > V tomto nastavení nejsou vyžadovány příjmení a křestní jméno.
+    > V této instalaci není vyžadováno příjmení a křestní jméno.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**.
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory** a pak vyberte **Uživatelé**.
 
-1. klikněte na **Nový uživatel typu Host** .
+1. Vyberte možnost **Nový uživatel typu Host**.
 
-1. Vyberte možnost **pozvat uživatele** a vyplňte vlastnosti uživatele a klikněte na **pozvat**.
+1. Vyberte možnost **pozvat uživatele** . Vyplňte vlastnosti uživatele a vyberte **pozvat**.
 
 1. Teď můžete web sdílet s MyGuestAccount@outlook.com a povolit tomuto uživateli přístup k němu.
 
-    ![Web pro sdílení s účtem hosta](./media/sharepoint-on-premises-tutorial/sharing-guest-account.png)
+    ![Sdílení lokality s účtem hosta](./media/sharepoint-on-premises-tutorial/sharing-guest-account.png)
 
-### <a name="configuring-the-trusted-identity-provider-for-multiple-web-applications"></a>Konfigurace důvěryhodného zprostředkovatele identity pro více webových aplikací
+### <a name="configure-the-trusted-identity-provider-for-multiple-web-applications"></a>Konfigurace důvěryhodného zprostředkovatele identity pro více webových aplikací
 
-Konfigurace funguje pro jednu webovou aplikaci, ale vyžaduje další konfiguraci, pokud máte v úmyslu použít stejného důvěryhodného poskytovatele identity pro více webových aplikací. Předpokládejme například, že jsme rozšířili webovou aplikaci, aby používala adresu `https://sales.contoso.com` URL, a teď chcete ověřovat i uživatele `https://marketing.contoso.com` . Abychom to mohli udělat, musíme aktualizovat poskytovatele identity, aby se zavedl parametr WReply, a aktualizovat registraci aplikace ve službě Azure AD, aby se přidala adresa URL odpovědi.
+Konfigurace funguje pro jednu webovou aplikaci, ale pokud chcete použít stejného důvěryhodného poskytovatele identity pro více webových aplikací, je nutná další konfigurace. Předpokládejme například, že jste rozšířili webovou aplikaci, aby používala adresu URL `https://sales.contoso.com` a nyní chcete ověřovat uživatele `https://marketing.contoso.com` . Provedete to tak, že aktualizujete zprostředkovatele identity a splníte parametr WReply a aktualizujete registraci aplikace ve službě Azure AD, aby se přidala adresa URL odpovědi.
 
-1. V Azure Portal otevřete adresář služby Azure AD. Klikněte na **podnikové aplikace**, klikněte na **dříve vytvořený název podnikové aplikace** a klikněte na **jednotné přihlašování**.
+1. V Azure Portal vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte dříve vytvořený název podnikové aplikace a vyberte **jednotné přihlašování**.
 
-2. Na stránce **nastavte jednotné přihlašování pomocí Sam**a upravte **základní konfiguraci SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** upravte **základní konfiguraci SAML**.
 
-    ![upravit základní konfiguraci SAML](./media/sharepoint-on-premises-tutorial/add-reply-url.png)
+    ![Základní konfigurace SAML](./media/sharepoint-on-premises-tutorial/add-reply-url.png)
 
-3. Do pole **Adresa URL odpovědi (adresa URL služby vyhodnocení zákazníka)** přidejte adresu URL pro další webové aplikace a klikněte na **Uložit**.
+1. Pro **adresu URL odpovědi (adresa URL služby vyhodnocení zákazníka)** přidejte adresu URL pro další webové aplikace a vyberte **Uložit**.
 
-    ![upravit základní konfiguraci SAML](./media/sharepoint-on-premises-tutorial/reply-url-for-web-application.png)
+    ![Úprava základní konfigurace SAML](./media/sharepoint-on-premises-tutorial/reply-url-for-web-application.png)
 
-4. Na serveru SharePoint otevřete **prostředí pro správu SharePoint 201x** a spusťte následující příkazy pomocí názvu vystavitele důvěryhodného tokenu identity, který jste použili dříve.
+1. Na serveru SharePoint otevřete prostředí pro správu SharePoint 201x a spusťte následující příkazy. Použijte název vystavitele důvěryhodného tokenu identity, který jste použili dříve.
     ```
     $t = Get-SPTrustedIdentityTokenIssuer "AzureAD"
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
-5. V centrální správě přejdete do webové aplikace a povolíte stávajícího důvěryhodného zprostředkovatele identity.
+1. V **centrální správě**přejdete do webové aplikace a povolíte stávajícího důvěryhodného zprostředkovatele identity.
 
-Můžete mít další situaci, kdy chcete pro interní uživatele poskytnout přístup k místnímu SharePointu. pro tento scénář byste museli nasadit Microsoft Azure Active Directory Connect, které umožní synchronizaci místních uživatelů s Azure Active Directory. Tato instalace by byla součástí jiného článku. 
+Můžete mít další scénáře, ve kterých chcete pro interní uživatele poskytnout přístup k místní instanci služby SharePoint. V tomto scénáři je nutné nasadit Microsoft Azure Active Directory Connect, aby bylo možné synchronizovat místní uživatele s Azure AD. Tato instalace je popsána v jiném článku.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
 - [Co je hybridní identita s Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)

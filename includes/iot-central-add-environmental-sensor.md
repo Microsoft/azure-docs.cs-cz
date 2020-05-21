@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9618dc1cef8d04cc5906579af0ef372694aeaaa9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9717c76b42a63479c77f862057bfb141954eacff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673982"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673403"
 ---
 ## <a name="create-a-device-template"></a>Vytvoření šablony zařízení
 
 Vytvořte složku s názvem `environmental-sensor` na místním počítači.
 
-Stáhněte si soubor JSON [modelu schopností environmentálního senzoru](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) a uložte ho `environmental-sensor` do složky.
+Stáhněte si soubor JSON [modelu schopností environmentálního senzoru](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensorInline.capabilitymodel.json) a uložte ho do `environmental-sensor` složky.
 
 Pomocí textového editoru nahraďte tyto dvě instance `{YOUR_COMPANY_NAME_HERE}` názvem vaší společnosti v `EnvironmentalSensorInline.capabilitymodel.json` souboru, který jste stáhli.
 
-V aplikaci Azure IoT Central vytvořte šablonu zařízení s názvem *senzor okolního prostředí* importem souboru modelu `EnvironmentalSensorInline.capabilitymodel.json` schopností zařízení:
+V aplikaci Azure IoT Central vytvořte šablonu zařízení s názvem *senzor okolního prostředí* importem `EnvironmentalSensorInline.capabilitymodel.json` souboru modelu schopností zařízení:
 
 ![Šablona zařízení s importovaným modelem schopností zařízení](./media/iot-central-add-environmental-sensor/device-template.png)
 
@@ -32,10 +32,10 @@ Model schopností zařízení zahrnuje dvě rozhraní: standardní **informace o
 | Typ | Zobrazovaný název | Popis |
 | ---- | ------------ | ----------- |
 | Vlastnost | Stav zařízení     | Stav zařízení. K dispozici jsou dva stavy online/offline. |
-| Vlastnost (zapisovatelná) | Jméno zákazníka    | Jméno zákazníka, který aktuálně provozuje zařízení. |
+| Vlastnost (zapisovatelná) | Název zákazníka    | Jméno zákazníka, který aktuálně provozuje zařízení. |
 | Vlastnost (zapisovatelná) | Úroveň jasu | Úroveň jasu světla na zařízení. Může být zadáno jako 1 (vysoká), 2 (střední), 3 (nízká). |
-| Telemetrie | Teplota | Aktuální teplota zjištěná zařízením. |
-| Telemetrie | Vlhkost    | Aktuální vlhkost zjištěná zařízením |
+| Telemetrická data | Teplota | Aktuální teplota zjištěná zařízením. |
+| Telemetrická data | Vlhkost    | Aktuální vlhkost zjištěná zařízením |
 | Příkaz | blikají          | Zahájit blikání indikátoru LED na zařízení pro daný časový interval. |
 | Příkaz | turnon         | Zapněte na zařízení indikátor LED. |
 | Příkaz | turnoff        | Vypněte na zařízení indikátor LED. |

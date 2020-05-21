@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 97dfe175a609ab336206098948b4e3fcc401d8bc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1f47b4532a009694d4167c08f6f04312f8020acc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203951"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673471"
 ---
 Tento rychlý Start založený na držiteli vás provede tím, že získáte odpověď ze znalostní báze.
 
@@ -37,7 +37,7 @@ Pomocí tohoto postupu nakonfigurujete příkaz post a potom si přečtěte jedn
 
 1. Na stránce **Nastavení** znalostní báze vyberte kartu **publikovat** a zobrazte tak konfiguraci používanou k vygenerování odpovědi ze znalostní báze. Zkopírujte následující informace, které se použijí v poli post.
 
-    |Název|Nastavení|Účel a hodnota|
+    |Name|Nastavení|Účel a hodnota|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Toto je metoda HTTP a trasa pro adresu URL.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Toto je hostitel adresy URL. Po zřetězení hodnoty host a post získáte úplnou adresu URL generateAnswer.|
@@ -51,7 +51,7 @@ Pomocí tohoto postupu nakonfigurujete příkaz post a potom si přečtěte jedn
 
 V předchozím rychlém startu se metadata přidaly do dvou párů QnA a rozlišily se mezi dvěma různými otázkami. Přidejte metadata do dotazu, abyste omezili filtr jenom na příslušný pár QnA.
 
-1. V poli post změňte pouze JSON dotazu tak, že přidáte `strictFilters` vlastnost s dvojicí název-hodnota. `service:qna_maker` KÓD JSON pro tělo by měl být:
+1. V poli post změňte pouze JSON dotazu tak, že přidáte `strictFilters` vlastnost s dvojicí název-hodnota `service:qna_maker` . KÓD JSON pro tělo by měl být:
 
     ```json
     {
@@ -64,7 +64,7 @@ V předchozím rychlém startu se metadata přidaly do dvou párů QnA a rozliš
     }
     ```
 
-    Otázka je jenom jedno slovo, `size`které může vracet jednu ze dvou sad otázek a odpovědí. `strictFilters` Pole oznamuje odpověď, aby se snížila pouze na `qna_maker` odpovědi.
+    Otázka je jenom jedno slovo, `size` které může vracet jednu ze dvou sad otázek a odpovědí. `strictFilters`Pole oznamuje odpověď, aby se snížila pouze na `qna_maker` odpovědi.
 
 1. Odpověď obsahuje pouze odpověď, která splňuje kritéria filtru.
 
@@ -103,13 +103,16 @@ V předchozím rychlém startu se metadata přidaly do dvou párů QnA a rozliš
     }
     ```
 
-    Pokud je k dispozici sada otázek a odpovědí, která nevyhověla hledanému termínu, ale nesplnila tento filtr, nebude vrácena. Místo toho se vrátí obecná `No good match found in KB.` odpověď.
+    Pokud je k dispozici sada otázek a odpovědí, která nevyhověla hledanému termínu, ale nesplnila tento filtr, nebude vrácena. Místo toho se vrátí obecná odpověď `No good match found in KB.` .
 
 ## <a name="use-debug-query-property"></a>Použít vlastnost dotazu pro ladění
 
-Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I když je to užitečné, není nutné. Pokud chcete vygenerovat odpověď s ladicími informacemi, `debug` přidejte vlastnost:
+> [!NOTE]
+>Pro žádnou závislost nedoporučujeme používat poreperty pro ladění. Tato vlastnost byla přidána pro pomoc s produktovým týmem při řešení potíží. 
 
-1. V poli post změňte pouze JSON těla přidáním `debug` vlastnosti. JSON by měl být:
+Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I když je to užitečné, není nutné. Pokud chcete vygenerovat odpověď s ladicími informacemi, přidejte `debug` vlastnost:
+
+1. V poli post změňte pouze JSON těla přidáním `debug` Vlastnosti. JSON by měl být:
 
     ```json
     {
@@ -213,9 +216,9 @@ Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I k
 
 ## <a name="use-test-knowledge-base"></a>Použít testovací znalostní bázi
 
-Pokud chcete získat odpověď ze zkušební znalostní báze, použijte vlastnost `isTest` text.
+Pokud chcete získat odpověď ze zkušební znalostní báze, použijte `isTest` vlastnost text.
 
-V poli post změňte pouze JSON těla přidáním `isTest` vlastnosti. JSON by měl být:
+V poli post změňte pouze JSON těla přidáním `isTest` Vlastnosti. JSON by měl být:
 
 ```json
 {
@@ -357,7 +360,7 @@ Pro odpověď můžete požádat o minimální prahovou hodnotu. Pokud není pra
     }
     ```
 
-    QnA Maker vrátilo skóre `0`, což znamená bez obav. Vrátila se také výchozí odpověď.
+    QnA Maker vrátilo skóre `0` , což znamená bez obav. Vrátila se také výchozí odpověď.
 
 1. Změňte prahovou hodnotu na 60% a požádejte o dotaz znovu:
 

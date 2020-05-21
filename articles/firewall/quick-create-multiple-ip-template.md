@@ -5,20 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 3d58173d239e7a9249b588ff038ea46cfedb27a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b81362f191e6317aa7ffa974a6d432b0c7514d8f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605209"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680538"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---resource-manager-template"></a>Rychlý Start: vytvoření Azure Firewall s více veřejnými IP adresami – šablona Správce prostředků
 
-V tomto rychlém startu použijete šablonu Správce prostředků k nasazení Azure Firewall s více veřejnými IP adresami.
-
-Nasazená brána firewall má pravidla shromažďování pravidel NAT, která umožňují připojení RDP ke dvěma virtuálním počítačům s Windows serverem 2019.
+V tomto rychlém startu použijete šablonu Správce prostředků k nasazení Azure Firewall s více veřejnými IP adresami. Nasazená brána firewall má pravidla shromažďování pravidel NAT, která umožňují připojení RDP ke dvěma virtuálním počítačům s Windows serverem 2019.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,21 +33,20 @@ Tato šablona vytvoří Azure Firewall se dvěma veřejnými IP adresami, včetn
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/blob/master/fw-docs-qs/azuredeploy.json) .
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/fw-docs-qs).
 
 :::code language="json" source="~/quickstart-templates/fw-docs-qs/azuredeploy.json" range="001-391" highlight="238-370":::
 
 V šabloně je definováno víc prostředků Azure:
 
-- [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 - [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
-
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 

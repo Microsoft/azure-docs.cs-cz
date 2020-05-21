@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2f39b6f58b250d68a3b2ce962f158c7df36d812
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 83fd986e31410e34871d1b795db0c8c83ece688e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77046601"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648612"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k Workday
 
@@ -91,7 +91,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi. Vaše adresa URL odpovědi musí mít subdoménu například: www, WD2, WD3, WD3-impl, wd5, wd5-impl).
-    > Použití něčeho `http://www.myworkday.com` jako funguje `http://myworkday.com` , ale ne. Pro získání těchto hodnot se obraťte na [tým podpory klienta v Workday](https://www.workday.com/en-us/partners-services/services/support.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Použití něčeho jako `http://www.myworkday.com` funguje `http://myworkday.com` , ale ne. Pro získání těchto hodnot se obraťte na [tým podpory klienta v Workday](https://www.workday.com/en-us/partners-services/services/support.html) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 6. Vaše aplikace Workday očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Aplikace Workday očekává, že **NameIdentifier** má být namapován pomocí **User. mail**, **UPN**atd., takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
@@ -126,7 +126,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -170,7 +170,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
    > [!NOTE]
    > Hodnota atributu prostředí je vázána na hodnotu adresy URL klienta:  
-   > – Pokud název domény pro adresu URL tenanta Workday začíná na impl, například: * https://www.myworkday.com/tenant/Login-Saml2.htmld*), musí být atribut **prostředí** nastavený na implementaci.  
+   > – Pokud název domény pro adresu URL tenanta Workday začíná na impl, například: * https://www.myworkday.com/ tenant/Login-Saml2.htmld*), musí být atribut **prostředí** nastavený na implementaci.  
    > – Pokud název domény začíná na něco jiného, musíte kontaktovat [tým podpory pro pracovníka pracovního](https://www.workday.com/en-us/partners-services/services/support.html) dne a získat tak porovnání hodnoty **prostředí** .
 
 4. V části **Nastavení SAML** proveďte následující kroky:
@@ -209,7 +209,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Zobrazit veřejný klíč x509](./media/workday-tutorial/IC782930.png "Zobrazit veřejný klíč x509")
 
-    a. Do textového pole **název** zadejte název vašeho certifikátu (například: *OOP\_SP*).
+    a. Do textového pole **název** zadejte název vašeho certifikátu (například: *OOP \_ SP*).
 
     b. Do textového pole **platné od** zadejte platnou hodnotu atributu certifikátu.
 
@@ -230,7 +230,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednotného přihlašování](./media/workday-tutorial/WorkdaySSOConfiguratio.png "Konfigurace jednotného přihlašování")
 
-    a.  Do textového pole **ID poskytovatele služby** zadejte **http://www.workday.com**.
+    a.  Do textového pole **ID poskytovatele služby** zadejte **http://www.workday.com** .
 
     b. Vyberte **Neuprostřed žádosti o ověření iniciované v SP**.
 
@@ -247,13 +247,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-workday-test-user"></a>Vytvořit testovacího uživatele v Workday
 
-V této části vytvoříte v Workday uživatele s názvem B. Simon. Pokud chcete přidat uživatele do platformy Workday, pracujte s [týmem podpory klientů v pracovních klientech](https://www.workday.com/partners-services/services/support.html) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte v Workday uživatele s názvem B. Simon. Pokud chcete přidat uživatele do platformy Workday, pracujte s [týmem podpory klientů v pracovních klientech](https://www.workday.com/en-us/partners-services/services/support.html) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO
 
 Když vyberete dlaždici Workday na přístupovém panelu, měli byste být automaticky přihlášení do pracovního dne, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

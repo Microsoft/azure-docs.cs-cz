@@ -1,5 +1,5 @@
 ---
-title: Přihlaste se uživatelům v aplikacích JavaScript Single-Page s ověřovacím kódem | Azure
+title: Přihlaste se uživatelům v aplikacích JavaScript Single-Page (SPA) s ověřovacím kódem | Azure
 titleSuffix: Microsoft identity platform
 description: Zjistěte, jak může aplikace JavaScriptu volat rozhraní API, které vyžaduje přístupové tokeny pomocí platformy Microsoft Identity Platform.
 services: active-directory
@@ -9,33 +9,30 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 05/19/2020
 ms.author: hahamil
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ROBOTS: NOINDEX
-ms.openlocfilehash: 9663c11508b0478a67f528cb301d705a3125e4f6
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript
+ms.openlocfilehash: 0ba4531ed15630a8887cb7be843a00ba23a439cc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871526"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682019"
 ---
-# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu v JavaScriptu pomocí toku kódu ověřování 
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu v JavaScriptu pomocí toku kódu ověřování
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před všeobecnou dostupností změnit (GA).
 
+V tomto rychlém startu spustíte ukázku kódu, která předvádí, jak se jednostránkové aplikace v JavaScriptu (SPA) může přihlašovat uživatelům osobních účtů, pracovních účtů a školních účtů pomocí toku autorizačního kódu. Ukázka kódu také ukazuje získání přístupového tokenu pro volání webového rozhraní API, v tomto případě rozhraní Microsoft Graph API. Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
-V tomto rychlém startu se používá MSAL. js 2,0 s tokem autorizačního kódu. Chcete-li použít MSAL. js 1,0 s implicitním tokem, zobrazte si [Tento rychlý Start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
-
-V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové aplikace v JavaScriptu (SPA) můžou přihlašovat uživatelům osobních účtů, pracovních účtů a školních účtů. K volání rozhraní API pro Microsoft Graph nebo libovolné webové rozhraní API může získat přístupový token, a to prostřednictvím JavaScriptu. Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
+V tomto rychlém startu se používá MSAL. js 2,0 s tokem autorizačního kódu. Podobný rychlý Start, který používá MSAL. js 1,0 s implicitním tokem, najdete v tématu [rychlý Start: přihlášení uživatelů v JavaScriptu jednostránkovéch aplikacích](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [vytvoření předplatného Azure zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
-* [Visual Studio Code](https://code.visualstudio.com/download) (pro úpravy souborů projektu)
-
+* [Visual Studio Code](https://code.visualstudio.com/download) nebo jiný Editor kódu
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>Registrace a stažení aplikace pro rychlý Start
@@ -43,7 +40,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 > 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a nastavte relaci portálu na tenanta Azure Active Directory (Azure AD), který chcete použít.
 > 1. Vyberte [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs).
 > 1. Zadejte název své aplikace.
@@ -55,8 +52,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 >
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
->
+> 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 > 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure AD, kterého chcete použít.
 > 1. Vyberte [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908).
 > 1. Vyberte **Nová registrace**.
@@ -64,13 +60,13 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 > 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
 > 1. V levém podokně registrované aplikace vyberte **ověřování**.
-> 1. V části **konfigurace platformy**vyberte **Přidat platformu**. Panel se otevře vlevo. Tam vyberte oblast s **jednou stránkou aplikací** .
-> 1. Pořád na levé straně nastavte hodnotu **identifikátoru URI přesměrování** na `http://localhost:3000/`. 
+> 1. V části **konfigurace platformy**vyberte **Přidat platformu**. V podokně, které se otevře, vyberte **jednostránkovou aplikaci**.
+> 1. Nastavte hodnotu **identifikátoru URI přesměrování** na `http://localhost:3000/` .
 > 1. Vyberte **Konfigurovat**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
-> Chcete-li, aby ukázka kódu v tomto rychlém startu fungovala, `redirectUri` je `http://localhost:3000/`nutné přidat jako.
+> Chcete-li, aby ukázka kódu v tomto rychlém startu fungovala, je nutné přidat `redirectUri` jako `http://localhost:3000/` .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
 >
@@ -80,50 +76,57 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 #### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu
 
 > [!div renderon="docs"]
-> Chcete-li spustit projekt s webovým serverem pomocí Node. js, [Stáhněte si základní soubory projektu](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/quickstart.zip).
+> Chcete-li spustit projekt s webovým serverem pomocí Node. js, [Stáhněte si základní soubory projektu](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/master.zip).
 
 > [!div renderon="portal" class="sxs-lookup"]
 > Spustit projekt s webovým serverem pomocí Node. js
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction" class="sxs-lookup"]
-> [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/quickstart.zip)
+> [!div renderon="portal" class="sxs-lookup" id="autoupdate" class="nextstepaction"]
+> [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/master.zip)
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-javascript-app"></a>Krok 3: Konfigurace aplikace JavaScriptu
 >
-> Ve složce *aplikace* upravte *authConfig. js*a nastavte `clientID`hodnoty `authority` a `redirectUri` v části. `msalConfig`
+> Ve složce *aplikace* otevřete soubor *authConfig. js* a aktualizujte `clientID` hodnoty, a `authority` `redirectUri` v `msalConfig` objektu.
 >
 > ```javascript
->
->  // Config object to be passed to Msal on creation
->  const msalConfig = {
->    auth: {
->      clientId: "Enter_the_Application_Id_Here",
->      authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
->      redirectUri: "Enter_the_Redirect_Uri_Here",
->    },
->    cache: {
->      cacheLocation: "sessionStorage", // This configures where your cache will be stored
->      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
->    }
->  };
->
->```
+> // Config object to be passed to Msal on creation
+> const msalConfig = {
+>   auth: {
+>     clientId: "Enter_the_Application_Id_Here",
+>     authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
+>     redirectUri: "Enter_the_Redirect_Uri_Here",
+>   },
+>   cache: {
+>     cacheLocation: "sessionStorage", // This configures where your cache will be stored
+>     storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+>   }
+> };
+> ```
 
 > [!div renderon="portal" class="sxs-lookup"]
 > > [!NOTE]
-> > :::no-loc text="Enter_the_Supported_Account_Info_Here":::
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
 >
-> Kde:
-> - Enter_the_Application_Id_Here>je **ID aplikace (klienta)** pro zaregistrovanou aplikaci. * \<*
-> - Enter_the_Cloud_Instance_Id_Here>je instance cloudu Azure. * \<* V případě hlavního nebo globálního cloudu Azure stačí zadat *https://login.microsoftonline.com/*. Pro **národní** cloudy (například Čína) si přečtěte téma [národní cloudy](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
-> - Enter_the_Tenant_info_here>je nastavená na jednu z následujících možností: * \<*
->    - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například *contoso.Microsoft.com*).
->    - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu **organizacemi**.
->    - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu **běžnými**. Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu **příjemci**.
-> - * \<Enter_the_Redirect_Uri_Here>*`http://localhost:3000`
+> Upravte hodnoty v `msalConfig` části, jak je popsáno zde:
+>
+> - `Enter_the_Application_Id_Here`je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.
+> - `Enter_the_Cloud_Instance_Id_Here`je instancí cloudu Azure. V případě hlavního nebo globálního cloudu Azure zadejte `https://login.microsoftonline.com/` . Pro **národní** cloudy (například Čína) si přečtěte téma [národní cloudy](authentication-national-cloud.md).
+> - `Enter_the_Tenant_info_here`je nastaveno na jednu z následujících možností:
+>   - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta**. Například, `contoso.microsoft.com`.
+>   - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu hodnotou `organizations` .
+>   - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu hodnotou `common` . **Pro tento rychlý Start**použijte `common` .
+>   - Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu hodnotou `consumers` .
+> - `Enter_the_Redirect_Uri_Here` je `http://localhost:3000/`.
+>
+> `authority`Pokud používáte hlavní (globální) cloud Azure, měla by být hodnota v *authConfig. js* podobná následující:
+>
+> ```javascript
+> authority: "https://login.microsoftonline.com/common",
+> ```
+>
 > > [!TIP]
 > > Pokud chcete najít hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **podporované typy účtů**, na stránce s **přehledem** registrace aplikace se podívejte do Azure Portal.
 >
@@ -133,7 +136,8 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 
 > [!div renderon="docs"]
 >
-> Potom stále ve stejné složce upravte soubor *graphConfig. js* pro nastavení `graphMeEndpoint` a `graphMailEndpoint` pro `apiConfig` objekt.
+> Potom stále ve stejné složce upravte soubor *graphConfig. js* a aktualizujte `graphMeEndpoint` `graphMailEndpoint` hodnoty a v `apiConfig` objektu.
+>
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
 >   const graphConfig = {
@@ -147,23 +151,29 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 >   };
 > ```
 >
-
 > [!div renderon="docs"]
 >
-> Enter_the_Graph_Endpoint_Here>je koncový bod, proti kterému se volání rozhraní API budou provádět. * \<* Pro Main nebo Global Microsoft Graph API Service zadejte `https://graph.microsoft.com`. Další informace najdete v tématu věnovaném [národním cloudovým nasazením](https://docs.microsoft.com/graph/deployments).
+> `Enter_the_Graph_Endpoint_Here`je koncový bod, na který se bude volat volání rozhraní API. U hlavní (globální) Microsoft Graph služby API zadejte `https://graph.microsoft.com/` (včetně koncového lomítka). Další informace o Microsoft Graph v národních cloudech najdete v tématu věnovaném [národním cloudovým nasazením](https://docs.microsoft.com/graph/deployments).
+>
+> `graphMeEndpoint`Hodnoty a `graphMailEndpoint` v souboru *graphConfig. js* by měly být podobné následujícímu, pokud používáte službu API main (Global) Microsoft Graph:
+>
+> ```javascript
+> graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
+> graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages"
+> ```
 >
 > #### <a name="step-4-run-the-project"></a>Krok 4: spuštění projektu
 
-Spusťte projekt s webovým serverem pomocí [Node. js](https://nodejs.org/en/download/):
+Spusťte projekt s webovým serverem pomocí Node. js:
 
 1. Chcete-li spustit server, spusťte v adresáři projektu následující příkazy:
-    ```bash
+    ```console
     npm install
     npm start
     ```
 1. Přejděte na `http://localhost:3000/`.
 
-1. Vyberte **Přihlásit** se a spusťte proces přihlášení a potom zavolejte Microsoft Graph API.
+1. Vyberte **Přihlásit** se a spusťte proces přihlášení a pak zavolejte rozhraní API pro Microsoft Graph.
 
     Při prvním přihlášení se zobrazí výzva k zadání vašeho souhlasu, který aplikaci umožní přístup k vašemu profilu a bude vás přihlašovat. Po úspěšném přihlášení by se na stránce měly zobrazit informace o vašem profilu uživatele.
 
@@ -171,7 +181,7 @@ Spusťte projekt s webovým serverem pomocí [Node. js](https://nodejs.org/en/do
 
 ### <a name="how-the-sample-works"></a>Jak ukázka funguje
 
-![Jak ukázka ZABEZPEČENÉho kódu JavaScript funguje: 1. SPA inicializuje přihlášení. 2. SPA získá token ID z platformy Microsoft identity. 3. Zabezpečené ověřování hesla volá token získání. 4. Platforma Microsoft Identity vrací přístupový token do zabezpečeného hesla. 5. Pomocí přístupového tokenu k rozhraní Microsoft Graph API vytvoří protokol SPA požadavek a HTTP GET. 6. Graph API vrátí odpověď protokolu HTTP do zabezpečeného hesla.](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+:::image type="content" source="media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="Diagram znázorňující tok autorizačního kódu pro jednostránkovou aplikaci":::
 
 ### <a name="msaljs"></a>msal. js
 
@@ -181,20 +191,16 @@ Knihovna MSAL. js podepisuje uživatele a žádá o tokeny, které se používaj
 <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.0.0-beta.0/js/msal-browser.js" integrity=
 "sha384-r7Qxfs6PYHyfoBR6zG62DGzptfLBxnREThAlcJyEfzJ4dq5rqExc1Xj3TPFE/9TH" crossorigin="anonymous"></script>
 ```
-> [!TIP]
-> Předchozí verzi můžete nahradit nejnovější vydanou verzí ve [verzích MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
 
-Případně, pokud máte nainstalovanou aplikaci Node. js, můžete si stáhnout nejnovější verzi pomocí Správce balíčků Node. js (npm):
+Pokud máte nainstalovanou aplikaci Node. js, můžete si stáhnout nejnovější verzi pomocí Správce balíčků Node. js (npm):
 
-```batch
+```console
 npm install @azure/msal-browser
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-[Úložiště GitHub MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js) obsahuje další dokumentaci ke knihovně, nejčastější dotazy a poskytuje podporu pro vydání.
-
-Podrobnější návod k sestavování aplikace pro tento rychlý Start najdete v těchto tématech:
+Podrobnější návod k sestavování aplikace použité v tomto rychlém startu najdete v následujícím kurzu:
 
 > [!div class="nextstepaction"]
-> [Kurz pro přihlášení a volání MS graphu](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-auth-code)
+> [Kurz pro přihlášení a volání v MS Graph >](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-auth-code)

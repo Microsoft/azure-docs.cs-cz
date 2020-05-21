@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 62c661f75aef77117a61be7e802562e6dde17ba5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 52158fe78262b5b2b3d006fb3a543ca743f4e417
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604681"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683829"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -19,7 +19,7 @@ ms.locfileid: "81604681"
 
 Informace o cenách najdete v tématu [ceny služby Automation pro Update Management](https://azure.microsoft.com/pricing/details/automation/).
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Zobrazení posouzení aktualizací
@@ -118,15 +118,15 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
    |Operační systém  |Typ  |
    |---------|---------|
-   |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>Nástroje</br>Aktualizace<br>Ovladač        |
+   |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>nástroje</br>Aktualizace<br>Ovladač        |
    |Linux     | Důležité aktualizace a aktualizace zabezpečení</br>Další aktualizace       |
 
    Popisy typů klasifikace najdete v tématu [klasifikace aktualizací](automation-view-update-assessments.md#update-classifications).
 
-* **Aktualizace k zahrnutí/vyloučení** – otevře stránku zahrnutí/vyloučení. Aktualizace, které mají být zahrnuty nebo vyloučeny, jsou na různých kartách zadáním čísel ID článků znalostní báze. Při zadávání jednoho nebo více čísel ID je nutné odebrat nebo zrušit kontrolu všech klasifikací v nasazení aktualizace. Tím se zajistí, že balíček aktualizace nebude zahrnovat žádné další aktualizace při zadávání ID aktualizací.
+* **Zahrnutí a vyloučení aktualizací** – otevře stránku zahrnutí/vyloučení. Aktualizace, které mají být zahrnuty nebo vyloučeny, jsou na různých kartách zadáním čísel ID článků znalostní báze. Při zadávání jednoho nebo více čísel ID je nutné odebrat nebo zrušit kontrolu všech klasifikací v nasazení aktualizace. Tím se zajistí, že balíček aktualizace nebude zahrnovat žádné další aktualizace při zadávání ID aktualizací.
 
 > [!NOTE]
-> Je důležité, abyste věděli, že vyloučení přepisují. Například pokud definujete pravidlo vyloučení `*`, Update Management nainstaluje žádné opravy ani balíčky, protože jsou všechny vyloučené. Vyloučené opravy se pořád na počítači zobrazují jako chybějící. U počítačů se systémem Linux, pokud zahrnete balíček, který má vyloučený závislý balíček, Update Management nenainstaluje hlavní balíček.
+> Je důležité, abyste věděli, že vyloučení přepisují. Například pokud definujete pravidlo vyloučení `*` , Update Management nainstaluje žádné opravy ani balíčky, protože jsou všechny vyloučené. Vyloučené opravy se pořád na počítači zobrazují jako chybějící. U počítačů se systémem Linux, pokud zahrnete balíček, který má vyloučený závislý balíček, Update Management nenainstaluje hlavní balíček.
 
 > [!NOTE]
 > Aktualizace, které byly nahrazeny pro zahrnutí do nasazení aktualizace, nelze zadat.
@@ -149,7 +149,7 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
   > Pokud nechcete, aby se aktualizace používaly mimo časové období údržby v Ubuntu, překonfigurujte balíček bezobslužné aktualizace tak, aby nedocházelo k automatickým aktualizacím. Informace o tom, jak nakonfigurovat balíček, najdete [v tématu věnovaném automatickým aktualizacím v příručce k serveru Ubuntu](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
 * **Možnosti restartování**: slouží k zadání možností pro zpracování restartování. K dispozici jsou následující možnosti:
-  * V případě potřeby restartování (výchozí)
+  * Restartovat v případě potřeby (výchozí)
   * Vždy restartovat
   * Nikdy nerestartovat
   * Jenom restartovat – neinstaluje aktualizace

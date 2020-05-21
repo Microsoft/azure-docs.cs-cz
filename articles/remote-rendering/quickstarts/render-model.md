@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b0af45ba4a6b1ca7f9e751af082ff0db80776ec0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be5bc8ec4e8f363d9b6079d22f3bba1af2d4d5fb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679783"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682569"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Rychlý Start: vykreslení modelu pomocí Unity
 
@@ -66,13 +66,13 @@ Výchozí model, který vykreslíme, je [vestavěný Vzorový model](../samples/
 
 1. V prohlížeči assetů Unity přejděte do složky *scény* a otevřete scénu **rychlý Start** .
 1. Z *hierarchie*vyberte objekt **RemoteRendering** Game.
-1. V *inspektoru*zadejte své [přihlašovací údaje k účtu](../how-tos/create-an-account.md).
+1. V *inspektoru*zadejte své [přihlašovací údaje k účtu](../how-tos/create-an-account.md). Pokud ještě nemáte účet, [vytvořte ho](../how-tos/create-an-account.md).
 
 ![Informace o účtu ARR](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
 > Azure Portal zobrazí doménu vašeho účtu jenom jako *mixedreality.Azure.com*. To není pro úspěšné připojení dostatečné.
-> Nastavte **AccountDomain** na `<region>.mixedreality.azure.com`, kde `<region>` je [jedna z dostupných oblastí poblíž](../reference/regions.md).
+> Nastavte **AccountDomain** na `<region>.mixedreality.azure.com` , kde `<region>` je [jedna z dostupných oblastí poblíž](../reference/regions.md).
 
 Později chceme nasadit tento projekt na HoloLens a připojit se ke službě vzdáleného vykreslování z tohoto zařízení. Vzhledem k tomu, že jsme nemuseli na zařízení zadat přihlašovací údaje, ukázka pro rychlý Start **uloží přihlašovací údaje v rámci scény Unity**.
 
@@ -85,7 +85,7 @@ Kliknutím na tlačítko **Přehrát** v Unity spustíte relaci. V dolní část
 
 ![Výstup z ukázky](media/arr-sample-output.png)
 
-Blahopřejeme! Nyní prohlížíte vzdáleně vykreslený model.
+Gratulujeme! Nyní prohlížíte vzdáleně vykreslený model.
 
 ## <a name="inspecting-the-scene"></a>Kontrola scény
 

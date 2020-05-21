@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b6af42f09351df60beb2aa449f8fcd2ff6a554e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 470cc8cc16c8bdb32bac32a7227690899abb9c51
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116651"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644673"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Co je Apache Spark ve službě Azure synapse Analytics
 
@@ -32,10 +32,10 @@ Apache Spark poskytuje primitivní prvky pro výpočetní clustery v paměti. Ú
 
 Fondy Spark v Azure synapse nabízejí plně spravovanou službu Spark. Tady jsou uvedené výhody vytvoření fondu Spark v synapse Analytics.
 
-| Funkce | Popis |
+| Příznak | Popis |
 | --- | --- |
 | Rychlost a efektivita |Instance Spark začínají přibližně 2 minuty pro méně než 60 uzlů a přibližně 5 minut pro více než 60 uzlů. Instance se ukončí, ve výchozím nastavení 5 minut po poslední provedené úloze, pokud není udržována připojením poznámkového bloku. |
-| Snadné vytvoření |Během několika minut můžete vytvořit nový fond Spark v Azure synapse pomocí Azure Portal, Azure PowerShell nebo sady synapse Analytics .NET SDK. Přečtěte si téma Začínáme [se fondy Spark v synapse Analytics](../quickstart-create-apache-spark-pool.md). |
+| Snadné vytvoření |Během několika minut můžete vytvořit nový fond Spark v Azure synapse pomocí Azure Portal, Azure PowerShell nebo sady synapse Analytics .NET SDK. Přečtěte si téma Začínáme [se fondy Spark v synapse Analytics](../quickstart-create-apache-spark-pool-studio.md). |
 | Snadné používání |Synapse Analytics zahrnuje vlastní Poznámkový blok odvozený z [Nteract](https://nteract.io/). Tyto poznámkové bloky můžete použít pro interaktivní zpracování dat a vizualizaci.|
 | Rozhraní REST API |Spark v synapse Analytics zahrnuje [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), Server úloh Spark založený na REST API pro vzdálené odesílání a monitorování úloh. |
 | Podpora pro Azure Data Lake Storage generace 2| Fondy Spark ve službě Azure synapse můžou používat Azure Data Lake Storage generace 2 i úložiště objektů BLOB. Další informace o Data Lake Storage najdete v tématu [přehled Azure Data Lake Storage](../../data-lake-store/data-lake-store-overview.md). |
@@ -78,7 +78,7 @@ Apache Spark se dodává s [MLlib](https://spark.apache.org/mllib/), knihovny st
 
 Další informace o Apache Spark v synapse Analytics najdete v následujících článcích:
 
-- [Rychlý Start: Vytvoření fondu Spark ve službě Azure synapse](../quickstart-create-apache-spark-pool.md)
+- [Rychlý Start: Vytvoření fondu Spark ve službě Azure synapse](../quickstart-create-apache-spark-pool-portal.md)
 - [Rychlý Start: vytvoření poznámkového bloku Apache Spark](../quickstart-apache-spark-notebook.md)
 - [Kurz: Machine Learning pomocí Apache Spark](./apache-spark-machine-learning-mllib-notebook.md)
 - [Apache Spark oficiální dokumentace](https://spark.apache.org/docs/latest/)
@@ -90,4 +90,4 @@ Další informace o Apache Spark v synapse Analytics najdete v následujících 
 
 V tomto přehledu získáte základní informace o Apache Spark ve službě Azure synapse Analytics. V dalším článku se dozvíte, jak ve službě Azure synapse Analytics vytvořit fond Spark:
 
-- [Vytvoření fondu Spark v Azure synapse](../quickstart-create-apache-spark-pool.md)
+- [Vytvoření fondu Spark v Azure synapse](../quickstart-create-apache-spark-pool-portal.md)

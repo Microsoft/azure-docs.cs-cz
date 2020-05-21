@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: c7ae76128e90dbd9328c4bc5adcbddc334ab11cc
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c49e5f421f88b4d2676204ff0a32a0aa2b808be1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983155"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652653"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Tabulka tahák analýzy Azure synapse
 
@@ -31,7 +31,7 @@ List tahák Analytics pro Azure synapse vás provede základními koncepty služ
 | Podstatná jména a operace                         | Co dělá       |
 |:---                                 |:---                 |
 | **Pracovní prostor synapse (Preview)** | Zabezpečená hranice spolupráce pro cloudové podnikové analýzy v Azure. Pracovní prostor je nasazený v konkrétní oblasti a má přidružený ADLS Gen2 účet a systém souborů (pro ukládání dočasných dat). Pracovní prostor je pod skupinou prostředků. |
-| **SQL Analytics**   | Spusťte analytiky s využitím fondů nebo možností na vyžádání.  |
+| **Synapse SQL**   | Spusťte analytiky s využitím fondů nebo možností na vyžádání.  |
 | **Fond SQL**   | od 0 do N prostředků SQL zřízené s odpovídajícími databázemi se dají nasadit v pracovním prostoru. Každý fond SQL má přidruženou databázi. Fond SQL se dá škálovat, pozastavit a obnovit ručně nebo automaticky. Fond SQL se může škálovat z 100 DWU až 30 000 DWU.       |
 | **SQL na vyžádání (Preview)**   | Distribuovaný systém zpracování dat sestavený pro rozsáhlá data, který umožňuje spouštění dotazů T-SQL nad daty v Data Lake. Nejedná se o server, takže nemusíte spravovat infrastrukturu.       |
 |**Apache Spark** | Čas spuštění Sparku používaný ve fondu Spark. Aktuální podporovaná verze je Spark 2,4 s Pythonem 3.6.1, Scala 2.11.12, podpora rozhraní .NET pro Apache Spark 0,5 a rozdílový Lake 0,3.  | 
@@ -40,7 +40,7 @@ List tahák Analytics pro Azure synapse vás provede základními koncepty služ
 | **Relace Spark**  |   Sjednocený vstupní bod aplikace Spark. Poskytuje způsob, jak pracovat s různými funkcemi Sparku a s menším počtem konstrukcí. Chcete-li spustit Poznámkový blok, je třeba vytvořit relaci. Relaci lze nakonfigurovat tak, aby běžela na určitém počtu prováděcích modulů určité velikosti. Výchozí konfigurací pro relaci poznámkového bloku je spuštění ve dvou prováděcích modulech střední velikosti. |
 | **Požadavek SQL**  |   Operace, jako je dotaz spouštěný prostřednictvím fondu SQL nebo SQL na vyžádání. |
 |**Integrace dat**| Poskytuje schopnost ingestovat data mezi různými zdroji a orchestrovat aktivity běžící v rámci pracovního prostoru nebo mimo pracovní prostor.| 
-|**Artefakty**| Pojem, který zapouzdřuje všechny objekty, které jsou nezbytné pro uživatele ke správě zdrojů dat, vývoji, Orchestrace a vizualizaci.|
+|**Artifacts**| Pojem, který zapouzdřuje všechny objekty, které jsou nezbytné pro uživatele ke správě zdrojů dat, vývoji, Orchestrace a vizualizaci.|
 |**Poznámkový blok**| Interaktivní a znovu aktivní datové vědy a inženýrské rozhraní, které podporuje Scala, PySpark, C# a SparkSQL. |
 |**Definice úlohy Spark**|Rozhraní k odeslání úlohy Sparku pomocí sestavení jar obsahujícího kód a jeho závislosti.|
 |**Data Flow**|  Poskytuje plně vizuální prostředí bez nutnosti kódování, které by vyžadovalo transformaci velkých objemů dat. Veškerá optimalizace a provádění jsou zpracovávána způsobem bez serveru. |
@@ -55,7 +55,7 @@ List tahák Analytics pro Azure synapse vás provede základními koncepty služ
 
 - [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
 - [Použití synapse studia](quickstart-synapse-studio.md)
-- [Vytvoření fondu SQL](quickstart-create-sql-pool.md)
+- [Vytvoření fondu SQL](quickstart-create-sql-pool-portal.md)
 - [Používání SQL na vyžádání](quickstart-sql-on-demand.md)
-- [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool.md)
+- [Vytvoření fondu Apache Spark](quickstart-create-apache-spark-pool-portal.md)
 

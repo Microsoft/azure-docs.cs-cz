@@ -5,26 +5,27 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: 17ab693033b61c25ba2f5b5bd588ef52caf8c046
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 9b9b7926caa717c1a02988ac7a927bd9bd39d52a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597701"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683707"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---resource-manager-template"></a>Rychlý Start: nasazení Azure Firewall se šablonou Zóny dostupnosti-Správce prostředků
 
 V tomto rychlém startu použijete šablonu Správce prostředků k nasazení Azure Firewall ve třech Zóny dostupnosti. 
 
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
 Šablona vytvoří testovací síťové prostředí s bránou firewall. Síť má jednu virtuální síť se třemi podsítěmi: *AzureFirewallSubnet*, *ServersSubnet*a *JumpboxSubnet*. Každá podsíť *ServersSubnet* a *JumpboxSubnet* má jeden virtuální počítač se dvěma jádry Windows serveru.
 
-Brána firewall je v podsíti *AzureFirewallSubnet* a má kolekci pravidel aplikace s jedním pravidlem, které umožňuje přístup k `www.microsoft.com`.
+Brána firewall je v podsíti *AzureFirewallSubnet* a má kolekci pravidel aplikace s jedním pravidlem, které umožňuje přístup k `www.microsoft.com` .
 
 Uživatelem definovaná trasa směrování v síti z podsítě *ServersSubnet* přes bránu firewall, kde se používají pravidla brány firewall.
-
-[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Další informace o Azure Firewall najdete v tématu [nasazení a konfigurace Azure firewall použití Azure Portal](tutorial-firewall-deploy-portal.md).
 
@@ -38,20 +39,20 @@ Tato šablona vytvoří Azure Firewall s Zóny dostupnosti, včetně nezbytných
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/blob/master/101-azurefirewall-with-zones-sandbox/azuredeploy.json).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox).
 
 :::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json" range="001-444" highlight="369-442":::
 
 V šabloně je definováno víc prostředků Azure:
 
-- [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -77,15 +78,17 @@ Další informace o syntaxi a vlastnostech JSON pro bránu firewall v šabloně 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud je už nepotřebujete, můžete skupinu prostředků, bránu firewall a všechny související prostředky odebrat spuštěním příkazu `Remove-AzResourceGroup` PowerShellu. Pokud chcete odebrat skupinu prostředků s názvem *MyResourceGroup*, spusťte: 
+Pokud je už nepotřebujete, můžete skupinu prostředků, bránu firewall a všechny související prostředky odebrat spuštěním `Remove-AzResourceGroup` příkazu PowerShellu. Pokud chcete odebrat skupinu prostředků s názvem *MyResourceGroup*, spusťte: 
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
+
 Neodstraňujte skupinu prostředků a bránu firewall, pokud máte v plánu pokračovat na kurz monitorování brány firewall. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Dále můžete monitorovat protokoly Azure Firewall:
+Dál můžete pokračovat monitorováním protokolů brány Azure Firewall.
 
-[Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
+> [!div class="nextstepaction"]
+> [Kurz: Monitorování protokolů brány Azure Firewall](tutorial-diagnostics.md)

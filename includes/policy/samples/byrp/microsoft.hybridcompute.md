@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: ff2a55d9eb7b5c0787c5327ea34338a7efb90da0
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: a69c093320c47bf5732ddb93daea47ab6c0586af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836563"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648027"
 ---
-|Name |Popis |Vliv (s) |Verze |GitHubu |
+|Name |Popis |Vliv (s) |Verze |GitHub |
 |---|---|---|---|---|
-|[Auditovat virtuální počítače s Windows, na kterých není ochrana před zneužitím v programu Windows Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Ochrana před zneužitím v programu Windows Defender pomáhá chránit před malwarem, který využívá zneužití k nainfikování zařízení a dvojstránky. Ochrana před zneužitím se skládá z několika rizik, která se dají použít buď pro operační systém, nebo pro jednotlivé aplikace. Tato zásada vyžaduje rozšíření Azure Policy pro Windows. Podrobnosti najdete na adrese [https://aks.ms/gcpol](https://aks.ms/gcpol). |AuditIfNotExists, zakázáno |1.0.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AuditIfNotExist.json) |
+|[Auditovat virtuální počítače s Windows, na kterých není ochrana před zneužitím v programu Windows Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Ochrana před zneužitím v programu Windows Defender pomáhá chránit před malwarem, který využívá zneužití k nainfikování zařízení a dvojstránky. Ochrana před zneužitím se skládá z několika rizik, která se dají použít buď pro operační systém, nebo pro jednotlivé aplikace. Tato zásada vyžaduje rozšíření Azure Policy pro Windows. Podrobnosti najdete na adrese [https://aks.ms/gcpol](https://aks.ms/gcpol) . |AuditIfNotExists, zakázáno |1.0.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AuditIfNotExist.json) |
 |[Nakonfigurujte časové pásmo na počítačích s Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |Tato zásada vytvoří přiřazení konfigurace hosta pro nastavení zadaného časového pásma na virtuálních počítačích s Windows. |deployIfNotExists |1.0.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json) |
 |[Nasazení požadavků pro audit virtuálních počítačů Linux, které umožňují vzdálená připojení z účtů bez hesel](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fec49586f-4939-402d-a29e-6ff502b20592) |Tato zásada vytvoří přiřazení konfigurace hosta pro audit virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesel. Zároveň vytvoří spravovanou identitu přiřazenou systémem a nasadí rozšíření virtuálního počítače pro konfiguraci hosta. Tyto zásady by se měly používat jenom spolu s odpovídajícími zásadami auditu v iniciativě. Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |deployIfNotExists |1.1.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword110_Deploy.json) |
 |[Nasaďte požadavky pro audit virtuálních počítačů Linux, které nemají oprávnění k souboru passwd nastavené na 0644.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff19aa1c1-6b91-4c27-ae6a-970279f03db9) |Tato zásada vytvoří přiřazení konfigurace hosta pro audit virtuálních počítačů se systémem Linux, které nemají oprávnění k souboru passwd nastavené na 0644. Zároveň vytvoří spravovanou identitu přiřazenou systémem a nasadí rozšíření virtuálního počítače pro konfiguraci hosta. Tyto zásady by se měly používat jenom spolu s odpovídajícími zásadami auditu v iniciativě. Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |deployIfNotExists |1.1.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword121_Deploy.json) |

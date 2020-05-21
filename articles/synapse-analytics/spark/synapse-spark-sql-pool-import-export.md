@@ -9,28 +9,30 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: f562c195e90f2356568530b9b618ae9e6610fa56
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d2c8215a68d2f80471be87b0ca07aa1438a25ac4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201467"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660047"
 ---
 # <a name="introduction"></a>Úvod
 
-Konektor Spark SQL Analytics je navržený tak, aby efektivně přenesl data mezi fondem Spark (Preview) a fondy SQL v Azure synapse. Konektor Spark SQL Analytics funguje jenom na fondech SQL, ale nefunguje s SQL na vyžádání.
+Azure synapse Apache Spark pro synapse SQL Connector je navržený tak, aby efektivně přenesl data mezi fondy Spark (Preview) a fondy SQL ve službě Azure synapse. Služba Azure synapse Apache Spark pro synapse SQL Connector funguje jenom na fondech SQL, ale nefunguje s SQL na vyžádání.
 
 ## <a name="design"></a>Návrh
 
 Přenos dat mezi fondy Spark a fondy SQL se dá provést pomocí JDBC. Nicméně u dvou distribuovaných systémů, jako jsou Spark a SQL, je JDBC kritickým bodem pro přenos dat pomocí sériového přenosu dat.
 
-Fondy Sparku na SQL Analytics Connector jsou implementace zdroje dat pro Apache Spark. Používá Azure Data Lake Storage Gen 2 a základnu v rámci fondů SQL k efektivnímu přenosu dat mezi clusterem Spark a instancí SQL Analytics.
+Azure synapse Apache Spark fond až synapse SQL Connector je implementace zdroje dat pro Apache Spark. Používá Azure Data Lake Storage Gen2 a základnu v fondech SQL k efektivnímu přenosu dat mezi clusterem Spark a instancí SQL synapse.
 
 ![Architektura konektoru](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Ověřování ve službě Azure synapse Analytics
 
-Ověřování mezi systémy je v Azure synapse Analytics bezproblémové. Existuje služba tokenů, která se připojuje k Azure Active Directory, aby získala tokeny zabezpečení pro použití při přístupu k účtu úložiště nebo k serveru datového skladu. Z tohoto důvodu není nutné vytvářet přihlašovací údaje ani je zadat v rozhraní API konektoru, pokud je v účtu úložiště a na serveru datového skladu nakonfigurováno AAD-auth. V takovém případě může být zadáno ověřování SQL. Další podrobnosti najdete v části věnované [používání](#usage) .
+Ověřování mezi systémy je v Azure synapse Analytics bezproblémové. Existuje služba tokenů, která se připojuje k Azure Active Directory, aby získala tokeny zabezpečení pro použití při přístupu k účtu úložiště nebo k serveru datového skladu. 
+
+Z tohoto důvodu není nutné vytvářet přihlašovací údaje ani je zadat v rozhraní API konektoru, pokud je v účtu úložiště a na serveru datového skladu nakonfigurováno AAD-auth. V takovém případě může být zadáno ověřování SQL. Další podrobnosti najdete v části věnované [používání](#usage) .
 
 ## <a name="constraints"></a>Omezení
 
@@ -120,7 +122,7 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 
 #### <a name="read-api"></a>Rozhraní API pro čtení
 
-V současné době konektor nepodporuje ověřování na základě tokenů pro fond SQL, který je mimo pracovní prostor. Musíte použít ověřování SQL.
+V současné době konektor nepodporuje ověřování na základě tokenů pro fond SQL, který je mimo pracovní prostor. Budete muset použít ověřování SQL.
 
 ```Scala
 val df = spark.read.
@@ -147,13 +149,13 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 
 Předpokládejme, že máte datový rámec "pyspark_df", který chcete zapisovat do datové sady DW.
 
-Vytvoření dočasné tabulky pomocí datového rámce v PySpark
+Vytvořte dočasnou tabulku pomocí datového rámce v PySpark:
 
 ```Python
 pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 ```
 
-Spuštění Scala buňky v poznámkovém bloku PySpark pomocí MAGICS
+Spusťte v poznámkovém bloku PySpark Scala buňku pomocí MAGICS:
 
 ```Scala
 %%spark
@@ -166,7 +168,7 @@ Podobně ve scénáři čtení si přečtěte data pomocí Scala a zapište je d
 
 ## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>Povolení použití konektoru DW v pracovním prostoru jiným uživatelům
 
-Pokud chcete pro ostatní měnit chybějící oprávnění, musíte být vlastníkem dat objektu BLOB úložiště v účtu úložiště ADLS Gen2 připojeném k pracovnímu prostoru. Ujistěte se, že uživatel má přístup k pracovnímu prostoru a oprávnění ke spouštění poznámkových bloků.
+V účtu úložiště ADLS Gen2 připojeném k pracovnímu prostoru musíte být vlastníkem dat objektu BLOB úložiště, abyste mohli změnit chybějící oprávnění pro ostatní. Ujistěte se, že uživatel má přístup k pracovnímu prostoru a oprávnění ke spouštění poznámkových bloků.
 
 ### <a name="option-1"></a>Možnost 1
 
@@ -178,19 +180,20 @@ Pokud chcete pro ostatní měnit chybějící oprávnění, musíte být vlastn�
 
 | Složka | / | synapse | pracovní prostory  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
 |--|--|--|--|--|--|--|--|
-| Přístupová oprávnění |--X |--X |--X |--X |--X |--X |– WX |
-| Výchozí oprávnění |---|---|---|---|---|---|---|
+| Přístupová oprávnění | --X | --X | --X | --X | --X | --X | – WX |
+| Výchozí oprávnění | ---| ---| ---| ---| ---| ---| ---|
 
-- Měli byste být schopni se připojit k seznamu všech složek z "synapse" a dolů od Azure Portal. V případě, že chcete kořenovou složku "/" seznamu ACL, postupujte podle následujících pokynů.
+- Měli byste být schopni se připojit k seznamu všech složek z "synapse" a dolů od Azure Portal. Pro kořenovou složku "/" seznamu ACL postupujte podle následujících pokynů.
 
 - Připojení k účtu úložiště připojenému k pracovnímu prostoru z Průzkumník služby Storage pomocí AAD
 - Vyberte svůj účet a zadejte adresu URL ADLS Gen2 a výchozí systém souborů pro pracovní prostor.
 - Jakmile uvidíte účet úložiště, který je uvedený v seznamu, klikněte pravým tlačítkem na pracovní prostor výpisu a vyberte spravovat přístup.
 - Přidejte uživatele do složky/a s oprávněním "spustit" přístup. Vyberte OK.
 
-**Pokud nechcete, ujistěte se, že nevyberete možnost výchozí.**
+> [!IMPORTANT]
+> Pokud nechcete, ujistěte se, že nevyberete možnost výchozí.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření fondu SQL](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
-- [Vytvoření nového fondu Apache Spark pro pracovní prostor Azure synapse Analytics](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 
+- [Vytvoření fondu SQL pomocí Azure Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+- [Vytvoření nového fondu Apache Spark pomocí Azure Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

@@ -7,18 +7,18 @@ ms.service: virtual-machines-linux
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: a2cb8919ac0752c42f22e064d6201c7120fbc9b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b78ef71c63448653cab24ccea25e53f64490fa2f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78970536"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655832"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>Rychlý Start: vytvoření a šifrování virtuálního počítače se systémem Linux v Azure pomocí Azure PowerShell
 
 Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí modulu Azure PowerShell vytvořit virtuální počítač se systémem Linux, vytvořit Key Vault pro ukládání šifrovacích klíčů a zašifrovat virtuální počítač. V tomto rychlém startu se používá image z Ubuntu 16,04 LTS z kanonického a Standard_D2S_V3 velikosti virtuálního počítače. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -33,9 +33,9 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 Vytvořte virtuální počítač Azure pomocí [New-AzVM](/powershell/module/az.compute/new-azvm)a předejte mu objekt konfigurace virtuálního počítače, který jste vytvořili výše.
 
 ```powershell-interactive
-$cred = = Get-Credential
+$cred = Get-Credential
 
-New-AzVM -Name MyVm -Credential $cred -ResourceGroupName MyResourceGroup -Image Canonical:UbuntuServer:16.04-LTS:latest -Size Standard_D2S_V3
+New-AzVM -Name MyVm -Credential $cred -ResourceGroupName MyResourceGroup -Image Canonical:UbuntuServer:18.04-LTS:latest -Size Standard_D2S_V3
 ```
 
 Nasazení virtuálního počítače bude několik minut trvat. 

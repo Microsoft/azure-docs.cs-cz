@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/29/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 83e9e802d2150ee7f43f01e9f6d6827ef3acfcdd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c5b86319752fc70e754e34b787bbdc12f18636f0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204752"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655981"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-analytics-workspace-preview"></a>Rychlý Start: propojení pracovního prostoru Power BI k pracovnímu prostoru analýzy synapse (Preview)
 
@@ -70,4 +70,4 @@ Nové sestavy lze vytvořit kliknutím v **+** horní části karty **vývoj** .
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším kroku můžete [vytvořit sestavu Power BI u souborů uložených v Azure Storage](sql/tutorial-connect-power-bi-desktop.md)
+Přečtěte si další informace o [vytváření sestav Power BI u souborů uložených v Azure Storage](sql/tutorial-connect-power-bi-desktop.md).

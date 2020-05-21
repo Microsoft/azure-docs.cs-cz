@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 94906d645ec38a24d54536ee8aa93e7418c8dc35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1de2d647a6292467a5ac4cc333ccacdedfc3c9ea
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75465178"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638996"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro Xamarin Android pomocí prostorových kotev Azure
 
@@ -59,9 +59,11 @@ Dalším krokem je konfigurace aplikace tak, aby používala identifikátor úč
 
 Otevřete `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
-Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` ho klíčem účtu.
+Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem účtu.
 
-Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` ho identifikátorem účtu.
+Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
+
+Vyhledejte `AzureSpatialAnchorsManager(Session arCoreSession)` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `this.spatialAnchorsSession.Configuration.AccountId = "MyAccountDomain";` .
 
 ## <a name="deploy-the-app-to-your-android-device"></a>Nasazení aplikace na zařízení s Androidem
 
@@ -73,21 +75,21 @@ Nastavte projekt po spuštění na **SampleXamarin. Android**, změňte **konfig
 
 ![Konfigurace sady Visual Studio](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-Vyberte **ladit** > **Spustit ladění** a nasaďte a spusťte svoji aplikaci.
+Vyberte **ladit**  >  **Spustit ladění** a nasaďte a spusťte svoji aplikaci.
 
 # <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Konfigurace sady Visual Studio](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-Pokud chcete nasadit a spustit aplikaci, vyberte **Spustit** > **Spustit bez ladění** .
+Pokud **Run**  >  chcete nasadit a spustit aplikaci, vyberte spustit**Spustit bez ladění** .
 
 ---
 
 V aplikaci vyberte **základní** , aby se spustila ukázka, a postupujte podle pokynů k umístění a odvolání kotvy.
 
-> ![Snímek obrazovky](./media/get-started-xamarin-android/screenshot-1.jpg)
-> ![1 snímek](./media/get-started-xamarin-android/screenshot-2.jpg)
-> ![obrazovky 2 snímek obrazovky 3](./media/get-started-xamarin-android/screenshot-3.jpg)
+> ![Snímek obrazovky 1 ](./media/get-started-xamarin-android/screenshot-1.jpg)
+>  ![ snímek obrazovky 2 snímek ](./media/get-started-xamarin-android/screenshot-2.jpg)
+>  ![ obrazovky 3](./media/get-started-xamarin-android/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

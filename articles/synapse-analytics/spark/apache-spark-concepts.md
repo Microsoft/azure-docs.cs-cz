@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b1db306ffdb1c05c880e5fc639de2cc1db130d8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6276d198e547efec3d2e3cb88816da5e2b593aae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096278"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644687"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark v základních konceptech služby Azure synapse Analytics
 
@@ -30,7 +30,7 @@ Protože se k vytváření fondů Sparku nevztahují žádné dolary ani náklad
 
 Osvědčeným postupem je vytvořit menší fondy Sparku, které se dají použít pro vývoj a ladění a pak větší pro spouštění produkčních úloh.
 
-Můžete si přečíst, jak vytvořit fond Spark a zobrazit všechny jeho vlastnosti. Začněte [s fondy Spark v synapse Analytics](../quickstart-create-apache-spark-pool.md) .
+Můžete si přečíst, jak vytvořit fond Spark a zobrazit všechny jeho vlastnosti. Začněte [s fondy Spark v synapse Analytics](../quickstart-create-apache-spark-pool-portal.md) .
 
 ## <a name="spark-instances"></a>Instance Spark
 

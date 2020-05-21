@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: Vytvoření vlastní definice zásady'
 description: V tomto kurzu vytvoříte vlastní definici zásad pro Azure Policy, která vynutila vlastní obchodní pravidla pro vaše prostředky Azure.
-ms.date: 11/25/2019
+ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7a1eb8abcfbf7513b4620f66c0a7fdbd288f8705
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d91ae589adbadb7d03e318dc20d6b2b78a84a18
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190703"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683255"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
 
@@ -33,7 +33,7 @@ Přístup k vytváření vlastních zásad se řídí těmito kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
 ## <a name="identify-requirements"></a>Identifikace požadavků
 
@@ -174,7 +174,7 @@ Rozšíření Azure Policy pro rozšíření VS Code usnadňuje procházení pro
 
 ### <a name="azure-cli"></a>Azure CLI
 
-V Azure CLI se skupina `az provider` příkazů používá k hledání aliasů prostředků. Vyfiltrujeme obor názvů **Microsoft. Storage** na základě detailů, které jsme o prostředku Azure dostali dřív.
+V Azure CLI se `az provider` skupina příkazů používá k hledání aliasů prostředků. Vyfiltrujeme obor názvů **Microsoft. Storage** na základě detailů, které jsme o prostředku Azure dostali dřív.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -321,7 +321,7 @@ Azure Resource Graph se dá použít prostřednictvím [Cloud Shell](https://she
 
 Rozhodnutí o tom, co dělat s prostředky, které nedodržují předpisy, je skoro stejně důležité jako rozhodování, co vyhodnotit na prvním místě. Každá možná odpověď na prostředek, který nedodržuje předpisy, se nazývá [efekt](../concepts/effects.md). Tento efekt řídí, jestli je prostředek, který nedodržuje předpisy, přihlášen, je blokovaný, má připojená data, nebo má přidružené nasazení pro uvedení prostředku zpátky do stavu kompatibility.
 
-V našem příkladu je odepřený efekt, protože nepotřebujeme nekompatibilní prostředky vytvořené v našem prostředí Azure. Audit je vhodný první volbou pro účinek zásad, která určuje, jaký dopad zásad je před tím, než je nastavování zamítnuto. Jedním ze způsobů, jak změnit účinek na přiřazení, je parametrizovat efekt. Podrobnosti o tom, jak najdete v níže uvedených [parametrech](#parameters) .
+V našem příkladu je odepřený efekt, protože nepotřebujeme, aby byly prostředky, které nedodržují předpisy, vytvořené v prostředí Azure. Audit je vhodný první volbou pro účinek zásad, která určuje, jaký dopad zásad je před tím, než je nastavování zamítnuto. Jedním ze způsobů, jak změnit účinek na přiřazení, je parametrizovat efekt. Podrobnosti o tom, jak najdete v níže uvedených [parametrech](#parameters) .
 
 ## <a name="compose-the-definition"></a>Vytvoření definice
 

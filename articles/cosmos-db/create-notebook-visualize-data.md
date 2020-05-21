@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41f68ead6f985d6cc2c8120091c36783d074b066
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720922"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659148"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Kurz: vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
 
@@ -28,13 +28,13 @@ V této části vytvoříte databázi Azure Cosmos, kontejner a naimportujete ma
 
 1. Přejděte k účtu Azure Cosmos a otevřete **Průzkumník dat.**
 
-1. Přejít na kartu **poznámkové bloky** , `…` vyberte vedle do **složky poznámkové bloky** a vytvořte **Nový Poznámkový blok**. Jako výchozí jádro vyberte **Python 3** .
+1. Přejít na kartu **poznámkové bloky** , vyberte `…` vedle do **složky poznámkové bloky** a vytvořte **Nový Poznámkový blok**. Jako výchozí jádro vyberte **Python 3** .
 
    ![Vytvoření nového poznámkového bloku](./media/create-notebook-visualize-data/create-new-notebook.png)
 
 1. Po vytvoření nového poznámkového bloku ho můžete přejmenovat na něco, jako je **VisualizeRetailData. ipynb.**
 
-1. V dalším kroku vytvoříte databázi s názvem "RetailDemo" a kontejnerem s názvem "WebsiteData", do kterých budou uložena maloobchodní data. /CardID můžete použít jako klíč oddílu. Zkopírujte následující kód a vložte ho do nové buňky v poznámkovém bloku a spusťte ho:
+1. V dalším kroku vytvoříte databázi s názvem "RetailDemo" a kontejnerem s názvem "WebsiteData", do kterých budou uložena maloobchodní data. /CartID můžete použít jako klíč oddílu. Zkopírujte následující kód a vložte ho do nové buňky v poznámkovém bloku a spusťte ho:
 
    ```python
    import azure.cosmos
@@ -47,7 +47,7 @@ V této části vytvoříte databázi Azure Cosmos, kontejner a naimportujete ma
    print('Container WebsiteData created')
    ```
 
-   Chcete-li spustit buňku, `Shift + Enter` vyberte nebo vyberte buňku a zvolte možnost **spustit aktivní buňku** na navigačním panelu Průzkumníka dat.
+   Chcete-li spustit buňku, vyberte `Shift + Enter` nebo vyberte buňku a zvolte možnost **spustit aktivní buňku** na navigačním panelu Průzkumníka dat.
 
    ![Spustit aktivní buňku](./media/create-notebook-visualize-data/run-active-cell.png)
 
@@ -121,7 +121,7 @@ Před spuštěním dotazů k analýze dat můžete načíst data z kontejneru do
 {Query text}
 ```
 
-Další informace najdete v tématu [integrované příkazy a funkce poznámkového bloku v článku Azure Cosmos DB](use-notebook-features-and-commands.md) . Spustíte dotaz – `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Výsledky budou uloženy do PANDAS dataframe s názvem df_cosmos. Do nové buňky poznámkového bloku vložte následující příkaz a spusťte ho:
+Další informace najdete v tématu [integrované příkazy a funkce poznámkového bloku v článku Azure Cosmos DB](use-python-notebook-features-and-commands.md) . Spustíte dotaz – `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c` . Výsledky budou uloženy do PANDAS dataframe s názvem df_cosmos. Do nové buňky poznámkového bloku vložte následující příkaz a spusťte ho:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -290,4 +290,4 @@ V této části budete spouštět některé dotazy na načtená data.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o příkazech poznámkového bloku najdete [v článku Jak používat integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB](use-notebook-features-and-commands.md) článku.
+* Další informace o příkazech poznámkových bloků Python najdete [v článku Jak používat integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB](use-python-notebook-features-and-commands.md) článku.

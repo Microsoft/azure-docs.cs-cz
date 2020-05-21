@@ -4,12 +4,12 @@ description: Rychle se naučíte, jak vytvořit privátní registr Docker v Azur
 ms.topic: quickstart
 ms.date: 03/03/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6fe6358655f50ab783b4017efa8ee1db351cd018
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0875e5be628ddfe47696a9d4fc537a8a07122804
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409234"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682797"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure Portal
 
@@ -25,7 +25,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Vyberte **vytvořit** > **kontejnery** > prostředků**Container Registry**.
+Vyberte **vytvořit**  >  **kontejnery**prostředků  >  **Container Registry**.
 
 ![Vytvoření registru kontejnerů na webu Azure Portal][qs-portal-01]
 
@@ -35,7 +35,7 @@ Na kartě **základy** zadejte hodnoty pro **skupinu prostředků** a **název r
 
 Přijměte výchozí hodnoty pro zbývající nastavení. Pak vyberte **zkontrolovat + vytvořit**. Po zkontrolování nastavení vyberte **vytvořit**.
 
-V tomto rychlém startu vytvoříte *základní* registr, což je výhodná možnost pro vývojáře, kteří se naučí o Azure Container Registry. Podrobnosti k dostupným úrovním služeb najdete v tématu [SKU služby Container Registry][container-registry-skus].
+V tomto rychlém startu vytvoříte *základní* registr, což je výhodná možnost pro vývojáře, kteří se naučí o Azure Container Registry. Podrobnosti o dostupných úrovních služby najdete v tématu [úrovně služby registru kontejnerů][container-registry-skus].
 
 Po zobrazení zprávy o **úspěšném nasazení** vyberte v portálu registr kontejnerů. 
 
@@ -57,9 +57,9 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 ## <a name="list-container-images"></a>Výpis imagí kontejnerů
 
-Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr a vyberte úložiště a pak vyberte **úložiště, pomocí** `docker push`kterého jste vytvořili.
+Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr a vyberte úložiště a pak vyberte **úložiště, pomocí**kterého jste vytvořili `docker push` .
 
-V tomto příkladu vybereme úložiště **Hello-World** a v části `v1` **značky**se zobrazí obrázek označený příznakem.
+V tomto příkladu vybereme úložiště **Hello-World** a v `v1` části **značky**se zobrazí obrázek označený příznakem.
 
 ![Výpis imagí kontejneru v Azure Portal][qs-portal-09]
 

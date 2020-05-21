@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: quickstart
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 6a781e767393f35a1ec22f195ba787e3018d8d1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b5647dd2e43c8a73bb999af559a579c14bb86a1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76713099"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683979"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>Měření vlastních koncových bodů pro vyhodnocení testů pro Internet Analyzer 
 
@@ -31,7 +31,7 @@ Ujistěte se, že jste nastavili prostředek pro Internet Analyzer a vybrali mo�
 
 1. Stáhněte si [sem](https://fpc.msedge.net/apc/trans.gif)transparentní test obrazu na jeden pixel. Tento obrázek s jedním pixelem je prostředek, který klientský JavaScript načte pro měření výkonu.
 2. V vlastní webové aplikaci nasaďte testovací obrázek v veřejně přístupné cestě. Cesta by měla fungovat přes protokol HTTPS. 
-3. Zkopírujte úplnou adresu URL vlastního koncového bodu ( https://contoso.com/test/trans.gif) např. do pole vlastní koncový bod během vytváření testu).
+3. Zkopírujte úplnou adresu URL vlastního koncového bodu (např. `https://contoso.com/test/trans.gif` ) do pole vlastní koncový bod během vytváření testu.
 
 ## <a name="next-steps"></a>Další kroky
 

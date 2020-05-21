@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: 8b187e058299f8aa8b762231c0ed1e708e5ad9d1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 29086acb1fe4dd3167434f795d09da05ee594722
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80659129"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673165"
 ---
 1. Spusťte Android Studio a v **uvítacím** okně vyberte **spustit nový projekt Android Studio** .
 
@@ -27,22 +27,22 @@ Android Studiu chvíli trvá, než nový projekt pro Android připraví. Dále n
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je 1.11.0.
+Aktuální verze sady Cognitive Services Speech SDK je 1.12.0.
 
 Sada Speech SDK pro Android je zabalená jako [Knihovna AAR (Android Library)](https://developer.android.com/studio/projects/android-library), která zahrnuje nezbytné knihovny a požadovaná oprávnění pro Android.
-Hostuje se v úložišti Maven na adrese https:\//csspeechstorage.blob.Core.Windows.NET/Maven/.
+Hostuje se v úložišti Maven na adrese https: \/ /csspeechstorage.blob.Core.Windows.NET/Maven/.
 
-Nastavte projekt tak, aby používal sadu Speech SDK. Otevřete okno **struktury projektu** výběrem **soubor** > **struktura projektu** z panelu nabídek Android Studio. V okně **struktura projektu** proveďte následující změny:
+Nastavte projekt tak, aby používal sadu Speech SDK. Otevřete okno **struktury projektu** výběrem **soubor**  >  **struktura projektu** z panelu nabídek Android Studio. V okně **struktura projektu** proveďte následující změny:
 
-1. V seznamu na levé straně okna vyberte **Project** (Projekt). Upravte **výchozí nastavení úložiště knihovny** tak, že připojíte čárku a adresu URL úložiště Maven v jednoduchých uvozovkách: https:\//csspeechstorage.blob.Core.Windows.NET/Maven/.
+1. V seznamu na levé straně okna vyberte **Project** (Projekt). Upravte **výchozí nastavení úložiště knihovny** tak, že připojíte čárku a adresu URL úložiště Maven v jednoduchých uvozovkách: https: \/ /csspeechstorage.blob.Core.Windows.NET/Maven/.
 
    ![Snímek obrazovky okna se strukturou projektu](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-06-add-maven-repository.png)
 
-1. Na stejné obrazovce na levé straně vyberte **aplikace**. Pak vyberte kartu **Dependencies** (Závislosti) v horní části okna. Vyberte zelený symbol plus (**+**) a v rozevírací nabídce vyberte **závislost knihovny** .
+1. Na stejné obrazovce na levé straně vyberte **aplikace**. Pak vyberte kartu **Dependencies** (Závislosti) v horní části okna. Vyberte zelený symbol plus ( **+** ) a v rozevírací nabídce vyberte **závislost knihovny** .
 
    ![Snímek obrazovky se závislostí knihovny](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. V zobrazeném okně zadejte název a verzi sady Speech SDK pro Android, *com. Microsoft. cognitiveservices Account. Speech: Client-SDK: 1.11.0*. Pak vyberte **OK**.
+1. V zobrazeném okně zadejte název a verzi sady Speech SDK pro Android, *com. Microsoft. cognitiveservices Account. Speech: Client-SDK: 1.12.0*. Pak vyberte **OK**.
    Sada Speech SDK by teď měla být přidána do seznamu závislostí, jak je znázorněno níže:
 
    ![Snímek obrazovky sady Speech SDK v seznamu závislostí](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

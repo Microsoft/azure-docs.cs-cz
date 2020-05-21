@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 4a2d9f382045db2aeab80d9ecf5a05b031bcbc9e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 57244c2022d06d8f1768dbe8bcc971aa59acd6a9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400127"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673131"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Android vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription-service.md) .
 
@@ -47,7 +47,7 @@ Než začnete používat sadu Speech SDK pro zařízení, budete muset:
 
 1. Vaše zařízení by mělo být uvedené v části **zvolit zařízení**. Vyberte tlačítko **Zobrazit** vedle zařízení.
 
-1. Připojte se k bezdrátové síti tak, že vyberete ikonu složky a pak vyberete **Nastavení** > **síť WLAN**.
+1. Připojte se k bezdrátové síti tak, že vyberete ikonu složky a pak vyberete **Nastavení**  >  **síť WLAN**.
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
@@ -58,7 +58,7 @@ Než začnete používat sadu Speech SDK pro zařízení, budete muset:
    >
    > ![Složka souborů Vysor](../media/speech-devices-sdk/qsg-10.png)
    >
-   > Vyberte **Nastavení**. Vyhledejte adresu MAC a pak vyberte **MAC adresa** > **Upřesnit síť WLAN**. Zapište adresu MAC, která se zobrazí v dolní části dialogového okna.
+   > Vyberte **Nastavení**. Vyhledejte adresu MAC a pak vyberte **MAC adresa**  >  **Upřesnit síť WLAN**. Zapište adresu MAC, která se zobrazí v dolní části dialogového okna.
    >
    > ![Adresa MAC Vysor](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -96,7 +96,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
     Aktualizujte **Build. Gradle (Module: App)** tak, že přidáte tento řádek do oddílu závislosti. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.11.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.12.0'
     ```
     
 1. Přidejte klíč předplatného řeči do zdrojového kódu. Pokud chcete vyzkoušet rozpoznávání záměru, přidejte také klíč předplatného [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) a ID aplikace.
@@ -124,7 +124,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
    > [!TIP]
    > Můžete také [vytvořit vlastní klíčové slovo](../speech-devices-sdk-create-kws.md).
 
-   Chcete-li použít nové klíčové slovo, aktualizujte následující dva `MainActivity.java`řádky v a zkopírujte balíček klíčových slov do aplikace. Například pro použití klíčového slova ' Machine ' z klíčového slova Package KWS-Machine. zip:
+   Chcete-li použít nové klíčové slovo, aktualizujte následující dva řádky v `MainActivity.java` a zkopírujte balíček klíčových slov do aplikace. Například pro použití klíčového slova ' Machine ' z klíčového slova Package KWS-Machine. zip:
 
    - Zkopírujte balíček s klíčovým slovem do složky "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\".
    - Aktualizujte `MainActivity.java` klíčové slovo pomocí klíčového slova a názvu balíčku:
@@ -162,7 +162,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
 
    ![Ukázková sada Speech Devices SDK – ukázková aplikace a možnosti](../media/speech-devices-sdk/qsg-8.png)
 
-1. Vyzkoušejte si novou ukázku přepisu konverzace. Spusťte zdlouhavého přepisování pomocí příkazu ' spustit relaci '. Ve výchozím nastavení je každý host. Pokud ale máte signatury hlasu účastníka, můžou se do zařízení umístit do `/video/participants.properties` souboru. Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Vyzkoušejte si novou ukázku přepisu konverzace. Spusťte zdlouhavého přepisování pomocí příkazu ' spustit relaci '. Ve výchozím nastavení je každý host. Pokud ale máte signatury hlasu účastníka, můžou se do zařízení umístit do souboru `/video/participants.properties` . Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription-service.md).
 
    ![Ukázková aplikace přepisu konverzace](../media/speech-devices-sdk/qsg-15.png)
 
@@ -177,6 +177,6 @@ Pokud se nemůžete připojit k zařízení pro rozpoznávání řeči. V okně 
 ```
 
 > [!NOTE]
-> Tento příkaz používá Android Debug Bridge, `adb.exe`, který je součástí instalace Android Studio. Tento nástroj je umístěný v umístění\[C:\Users User name] \AppData\Local\Android\Sdk\platform-Tools. Tento adresář můžete přidat do své cesty, abyste ho mohli lépe vyvolávat `adb`. V opačném případě je nutné zadat úplnou cestu k instalaci souboru ADB. exe v každém příkazu, který vyvolá `adb`.
+> Tento příkaz používá Android Debug Bridge, `adb.exe` , který je součástí instalace Android Studio. Tento nástroj je umístěný v umístění C:\Users \[ User name] \AppData\Local\Android\Sdk\platform-Tools. Tento adresář můžete přidat do své cesty, abyste ho mohli lépe vyvolávat `adb` . V opačném případě je nutné zadat úplnou cestu k instalaci souboru ADB. exe v každém příkazu, který vyvolá `adb` .
 >
-> Pokud se zobrazí chyba `no devices/emulators found` , zkontrolujte, zda je kabel USB připojen a zda je použit kabel s vysokou kvalitou.
+> Pokud se zobrazí chyba, `no devices/emulators found` Zkontrolujte, zda je kabel USB připojen a zda je použit kabel s vysokou kvalitou.

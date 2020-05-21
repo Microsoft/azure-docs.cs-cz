@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: de4a9324cd1cfaccec6dcca6a8dfc057d37275c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3a6a20b4f92a7e78f7ed82210bb46d8bf1081628
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80619243"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659180"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Rychlý Start: migrace stávající webové aplikace Node. js v MongoDB na Azure Cosmos DB 
 
@@ -24,13 +24,13 @@ ms.locfileid: "80619243"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 V tomto rychlém startu vytváříte a spravujete Azure Cosmos DB pro účet rozhraní API služby Mongo DB pomocí Azure Cloud Shell a s aplikací střední (MongoDB, Express, úhlová a Node. js), která je naklonovaná z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
 ## <a name="prerequisites"></a>Požadavky
-- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) spolu s připojovacím řetězcem `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`.
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) spolu s připojovacím řetězcem `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
 - [Node. js](https://nodejs.org/)a praktické znalosti Node. js.
 - [Git](https://git-scm.com/downloads).
 - Pokud nechcete používat Azure Cloud Shell, [Azure CLI 2.0 +](/cli/azure/install-azure-cli).
@@ -104,7 +104,7 @@ az group create --name myResourceGroup --location "West Europe"
 
 Pomocí příkazu [AZ cosmosdb Create](/cli/azure/cosmosdb#az-cosmosdb-create) vytvořte účet Cosmos.
 
-V následujícím příkazu nahraďte `<cosmosdb-name>` zástupný symbol vlastním jedinečným názvem účtu Cosmos. Tento jedinečný název se použije jako součást Cosmos DBho koncového bodu (`https://<cosmosdb-name>.documents.azure.com/`), takže název musí být jedinečný ve všech účtech Cosmos v Azure. 
+V následujícím příkazu nahraďte zástupný symbol vlastním jedinečným názvem účtu Cosmos `<cosmosdb-name>` . Tento jedinečný název se použije jako součást Cosmos DBho koncového bodu ( `https://<cosmosdb-name>.documents.azure.com/` ), takže název musí být jedinečný ve všech účtech Cosmos v Azure. 
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -198,7 +198,7 @@ npm start
 
 Zpráva konzoly by vás teď měla informovat o tom, že vývojové prostředí je připravené a spuštěné. 
 
-V prohlížeči `http://localhost:3000` přejdete na. V horní nabídce vyberte možnost **zaregistrovat** se a zkuste vytvořit dva fiktivní uživatele. 
+V prohlížeči přejdete na `http://localhost:3000` . V horní nabídce vyberte možnost **zaregistrovat** se a zkuste vytvořit dva fiktivní uživatele. 
 
 Ukázková aplikace MEAN.js ukládá data uživatelů v databázi. Pokud budete úspěšní a aplikace MEAN.js automaticky zaregistruje vytvořeného uživatele, bude připojení Azure Cosmos DB fungovat. 
 
@@ -230,7 +230,7 @@ V objektu `db` nahraďte hodnotu `uri` tak, jak je uvedeno v následujícím p
 ```
 
 > [!NOTE] 
-> `ssl=true` Možnost je důležitá z důvodu Cosmos DB požadavků. Další informace najdete v tématu [požadavky na připojovací řetězec](connect-mongodb-account.md#connection-string-requirements).
+> `ssl=true`Možnost je důležitá z důvodu Cosmos DB požadavků. Další informace najdete v tématu [požadavky na připojovací řetězec](connect-mongodb-account.md#connection-string-requirements).
 >
 >
 

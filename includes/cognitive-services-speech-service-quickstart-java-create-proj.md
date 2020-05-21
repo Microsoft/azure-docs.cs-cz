@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: e0bc7eeff276d44f3cd23e30eb54c9bd1ca94efd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 49aaf9c748d75df8ffbb2adcd80aa6b966f88680
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80659113"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673182"
 ---
 1. Spusťte Eclipse.
 
@@ -19,7 +19,7 @@ ms.locfileid: "80659113"
 
 1. Za chvíli se zobrazí hlavní okno prostředí Eclipse IDE. Pokud je k dispozici, zavřete **úvodní** obrazovku.
 
-1. V panelu nabídek zatmění vytvořte nový projekt výběrem možnosti **soubor** > **Nový** > **projekt**.
+1. V panelu nabídek zatmění vytvořte nový projekt výběrem možnosti **soubor**  >  **Nový**  >  **projekt**.
 
 1. Zobrazí se dialogové okno **Nový projekt**. Vyberte **Java Project** (Projekt Javy) a vyberte **Next** (Další).
 
@@ -31,7 +31,7 @@ ms.locfileid: "80659113"
 
 1. Pokud se zobrazí okno **Open Associated Perspective?** (Otevřít související perspektivu?), vyberte **Open Perspective** (Otevřít perspektivu).
 
-1. V **průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt **quickstart**. V místní nabídce vyberte **Konfigurace** > **převést na projekt Maven** .
+1. V **průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt **quickstart**. V místní nabídce vyberte **Konfigurace**  >  **převést na projekt Maven** .
 
    ![Snímek obrazovky s průzkumníkem balíčků](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "80659113"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * Přidejte také `dependencies` element s sadou Speech SDK verze 1.11.0 jako závislost:
+   * Přidejte také `dependencies` element s sadou Speech SDK verze 1.12.0 jako závislost:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

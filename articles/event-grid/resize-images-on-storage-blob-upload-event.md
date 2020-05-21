@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 1d1da88d1e7eaf06ebf71da999ef8fb25c7cf066
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81482197"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652714"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: automatizace změny velikosti nahraných imagí pomocí Event Grid
 
@@ -37,7 +37,7 @@ Funkce změny velikosti se do existující aplikace pro nahrávání obrázků p
 
 ---
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvoření účtu služby Azure Storage
@@ -192,15 +192,15 @@ Kód projektu funkce se nasadí přímo z veřejného úložiště ukázek. Dal�
 
 Odběr událostí udává, které události vygenerované zprostředkovatelem chcete odeslat do určitého koncového bodu. V tomto případě zveřejňuje koncový bod vaše funkce. Pomocí následujících kroků vytvořte na webu Azure Portal odběr událostí, který odesílá oznámení do vaší funkce:
 
-1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **všechny služby** a pak vyberte **aplikace Function**App.
+1. V [Azure Portal](https://portal.azure.com)v horní části hledání stránky a vyberte `Function App` a zvolte aplikaci funkcí, kterou jste právě vytvořili. Vyberte **funkce** a zvolte funkci **Miniatura** .
 
-    ![Navigace na aplikace Function App v Azure Portal](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
+    :::image type="content" source="media/resize-images-on-storage-blob-upload-event/choose-thumbnail-function.png" alt-text="Volba funkce miniatury na portálu":::
 
-2. Rozbalte aplikaci Function App, zvolte funkci **Miniatura** a pak vyberte **Přidat Event Grid předplatného**.
+1.  Vyberte vybrat **integraci** a pak zvolte **aktivační událost Event Grid** a vyberte **vytvořit Event Grid předplatné**.
 
-    ![Přejděte k části Přidání předplatného Event Grid v Azure Portal](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Přejděte k části Přidání předplatného Event Grid v Azure Portal" :::
 
-3. Použijte nastavení odběru událostí uvedená v tabulce.
+1. Použijte nastavení odběru událostí uvedená v tabulce.
     
     ![Vytvoření odběru událostí z funkce na webu Azure Portal](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
@@ -215,13 +215,13 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
     | **Typ koncového bodu** | automaticky generovaný | Předem definováno jako **funkce Azure Functions**. |
     | **Služba** | automaticky generovaný | Název funkce V tomto případě je to **Miniatura**. |
 
-4. Přepněte na kartu **filtry** a proveďte následující akce:
+1. Přepněte na kartu **filtry** a proveďte následující akce:
     1. Vyberte možnost **Povolit filtrování subjektu** .
     2. Pro **předmět začíná**na zadejte následující hodnotu: **/blobServices/default/Containers/images/BLOBs/**.
 
         ![Zadat filtr pro odběr události](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
-5. Vyberte **vytvořit** a přidejte odběr událostí. Tím se vytvoří odběr události, který aktivuje `Thumbnail` funkci při přidání objektu blob do `images` kontejneru. Funkce změní velikost obrázků a přidá je do `thumbnails` kontejneru.
+1. Vyberte **vytvořit** a přidejte odběr událostí. Tím se vytvoří odběr události, který aktivuje `Thumbnail` funkci při přidání objektu blob do `images` kontejneru. Funkce změní velikost obrázků a přidá je do `thumbnails` kontejneru.
 
 Teď máte nakonfigurované back-endové služby a můžete funkci změny velikosti obrázků otestovat v ukázkové webové aplikaci.
 

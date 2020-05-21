@@ -2,13 +2,13 @@
 title: Nastavení aplikace
 description: Nakonfigurujte nastavení aplikace a verze na portálu LUIS, jako je například normalizace utterance a ochrana osobních údajů aplikací.
 ms.topic: quickstart
-ms.date: 05/04/2020
-ms.openlocfilehash: 4f0703973a4ef15f1d9b6582bd4789cd825dfe9f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/17/2020
+ms.openlocfilehash: c1d5572c3eeb71ec0631a03444d08da46d0a0106
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83600079"
+ms.locfileid: "83653209"
 ---
 # <a name="application-and-version-settings"></a>Nastavení aplikace a verze
 
@@ -21,21 +21,25 @@ Můžete upravit název aplikace a její popis. Můžete zkopírovat ID aplikace
 1. Přihlaste se k [portálu Luis](https://www.luis.ai).
 1. Vyberte aplikaci ze seznamu **Moje aplikace** .
 .
-1. V horním navigačním panelu vyberte **Spravovat** a pak v levém navigačním panelu na **nastavení aplikace** .
+1. V horním navigačním panelu vyberte **Spravovat** a pak **Nastavení** z levého navigačního panelu.
 
 > [!div class="mx-imgBorder"]
 > ![Snímek obrazovky s LUIS portálem, Správa oddílu, stránky nastavení aplikace](media/app-settings/luis-portal-manage-section-application-settings.png)
 
 
-## <a name="change-training-and-endpoint-settings"></a>Změnit nastavení školení a koncových bodů
+## <a name="change-application-settings"></a>Změna nastavení aplikace
 
 Chcete-li změnit nastavení, vyberte na stránce přepínač.
 
-[!INCLUDE [App and version settings](includes/app-version-settings.md)]
+[!INCLUDE [App settings](includes/app-settings.md)]
 
+## <a name="change-version-settings"></a>Změnit nastavení verze
 
-Použijte [odkaz nastavení](luis-reference-application-settings.md) aplikace a verze, abyste pochopili, které textové formuláře se ignorují.
+Chcete-li změnit nastavení, vyberte na stránce přepínač.
+
+[!INCLUDE [Version settings](includes/app-version-settings.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
 * Jak [spolupracovat](luis-how-to-collaborate.md) s ostatními autory
+* [Publish settings](luis-how-to-publish-app.md#configuring-publish-settings) (Nastavení publikování)

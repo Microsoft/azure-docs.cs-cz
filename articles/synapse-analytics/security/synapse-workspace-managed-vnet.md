@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 162d96244b01f8c5e1acf224475aadb9508f0aa5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 623b6325b88f42f0076c84a221864762cd3918f9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423632"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645234"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure synapse Analytics Managed Virtual Network (Preview)
 
@@ -40,6 +40,8 @@ Fond SQL a SQL na vyžádání jsou možnosti víceklientské architektury, a pr
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-vnet"></a>Vytvoření pracovního prostoru Azure synapse s virtuální sítí spravovaného pracovního prostoru
 
+Pokud jste to ještě neudělali, zaregistrujte poskytovatele síťových prostředků. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Po [registraci](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)vyberte v seznamu poskytovatelů prostředků možnost *Microsoft. Network* .
+
 Pokud chcete vytvořit pracovní prostor Azure synapse, který má přidruženou virtuální síť spravovaného pracovního prostoru, vyberte kartu **zabezpečení + sítě** v Azure Portal a zaškrtněte políčko **Povolit spravovanou virtuální síť** .
 
 Pokud políčko nezaškrtnete, nebudete mít k pracovnímu prostoru přidruženou virtuální síť.
@@ -50,7 +52,7 @@ Pokud políčko nezaškrtnete, nebudete mít k pracovnímu prostoru přidruženo
 ![Povolit virtuální síť spravovaného pracovního prostoru](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
 >[!NOTE]
->Veškerý odchozí provoz z virtuální sítě spravovaného pracovního prostoru bude v budoucnu blokovaný. Doporučuje se připojit ke všem zdrojům dat pomocí spravovaných privátních koncových bodů.
+>Všechny odchozí přenosy z virtuální sítě spravovaného pracovního prostoru s výjimkou spravovaných privátních koncových bodů budou v budoucnu blokované. Doporučuje se vytvořit spravované privátní koncové body pro připojení ke všem zdrojům dat Azure, které jsou externí pro daný pracovní prostor. 
 
 Výběrem **přehledu** z Azure Portal můžete ověřit, jestli je váš pracovní prostor Azure synapse přidružený k virtuální síti spravovaného pracovního prostoru.
 

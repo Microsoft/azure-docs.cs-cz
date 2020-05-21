@@ -1,20 +1,20 @@
 ---
 title: Rychlý Start – použití jazyka Java k vytvoření databáze dokumentů pomocí Azure Cosmos DB
 description: V tomto rychlém startu se zobrazí ukázka kódu Java, kterou můžete použít k připojení a dotazování Azure Cosmos DB rozhraní SQL API.
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/31/2019
-ms.author: sngun
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1d818957daa53efc856a345a4886e814fdaab6f3
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 236cff59ffbef835b5a57a3d5a0d223cfebf34ae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858141"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647706"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
 
@@ -22,16 +22,20 @@ ms.locfileid: "82858141"
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
 V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhraní SQL API z Azure Portal a pomocí aplikace Java naklonované z GitHubu. Nejdřív vytvoříte Azure Cosmos DB účet rozhraní SQL API pomocí Azure Portal a pak vytvoříte aplikaci Java pomocí SQL Java SDK a potom do svého účtu Cosmos DB přidáte prostředky pomocí aplikace Java. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
+> [!IMPORTANT]  
+> Tento rychlý Start je určen pouze pro Azure Cosmos DB Java SDK v4. Další informace najdete v Azure Cosmos DB zpráva k [vydání verze](sql-api-sdk-java-v4.md)Java SDK v4, [úložiště pro Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB [tipy pro výkon](performance-tips-java-sdk-v4-sql.md)Java SDK v4 a Azure Cosmos DB [Průvodce řešením potíží](troubleshoot-java-sdk-v4-sql.md) se sadou Java SDK v4. Pokud aktuálně používáte starší verzi než v4, přečtěte si článek průvodce [migrací do Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) , který vám pomůže s upgradem na V4.
+>
+
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčem. `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčem `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Najeďte `JAVA_HOME` proměnnou prostředí na složku, ve které je nainstalovaná JDK.
 - [Binární archiv Maven](https://maven.apache.org/download.cgi) Na Ubuntu spusťte `apt-get install maven` instalaci Maven.
 - [Git](https://www.git-scm.com/downloads). Na Ubuntu spusťte `sudo apt-get install git` instalaci Gitu.
@@ -86,7 +90,7 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
 
 ### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Správa databázových prostředků pomocí synchronního (synchronizačního) rozhraní API
 
-* Inicializace klienta `CosmosClient`. `CosmosClient` Poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos Database. Tento klient slouží ke konfiguraci a provádění požadavků na službu.
+* Inicializace klienta `CosmosClient`. `CosmosClient`Poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos Database. Tento klient slouží ke konfiguraci a provádění požadavků na službu.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
@@ -116,7 +120,7 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
 
 * Asynchronní volání rozhraní API vrátí okamžitě bez čekání na odpověď serveru. Na základě tohoto příkladu následující fragmenty kódu ukazují správné vzory návrhu pro splnění všech předchozích úloh správy pomocí asynchronního rozhraní API.
 
-* Inicializace klienta `CosmosAsyncClient`. `CosmosAsyncClient` Poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos Database. Tento klient se používá ke konfiguraci a spouštění asynchronních požadavků na službu.
+* Inicializace klienta `CosmosAsyncClient`. `CosmosAsyncClient`Poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos Database. Tento klient se používá ke konfiguraci a spouštění asynchronních požadavků na službu.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
 
@@ -128,11 +132,11 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
-* Stejně jako u rozhraní API pro synchronizaci je vytvoření položky provedeno pomocí `createItem` metody. Tento příklad ukazuje, jak efektivně vydávat mnoho `createItem` asynchronních požadavků přihlášením k odběru reaktivního proudu, který vydává žádosti a tiskne oznámení. Vzhledem k tomu, že tento jednoduchý příklad běží na dokončování a končí, instance slouží k zajištění, `CountDownLatch` že program během vytváření položky nekončí. **Správný postup asynchronního programování není blokován při asynchronním volání – v reálných žádostech o použití jsou generovány z hlavní () smyčky, která se spouští po neomezenou dobu, což eliminuje nutnost západky na asynchronní volání.**
+* Stejně jako u rozhraní API pro synchronizaci je vytvoření položky provedeno pomocí `createItem` metody. Tento příklad ukazuje, jak efektivně vydávat mnoho asynchronních `createItem` požadavků přihlášením k odběru reaktivního proudu, který vydává žádosti a tiskne oznámení. Vzhledem k tomu, že tento jednoduchý příklad běží na dokončování a končí, `CountDownLatch` instance slouží k zajištění, že program během vytváření položky nekončí. **Správný postup asynchronního programování není blokován při asynchronním volání – v reálných žádostech o použití jsou generovány z hlavní () smyčky, která se spouští po neomezenou dobu, což eliminuje nutnost západky na asynchronní volání.**
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
    
-* Stejně jako u rozhraní API pro synchronizaci jsou čtení bodů provedeno `readItem` pomocí metody.
+* Stejně jako u rozhraní API pro synchronizaci jsou čtení bodů provedeno pomocí `readItem` metody.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
 
