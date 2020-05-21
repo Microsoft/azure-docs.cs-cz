@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 52f9e6529329c5bb1abb176082294dc26e64baa3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b5487233e2bd0e532efad4e108c41f188b51d91
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78675532"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727152"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v C prostřednictvím datových proudů zařízení IoT Hub (Preview)
 
@@ -120,7 +120,7 @@ V tomto rychlém startu použijete [sadu SDK pro zařízení Azure IoT pro jazyk
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-Abyste se mohli připojit, musíte zařízení zaregistrovat ve službě IoT Hub. V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) k registraci simulovaného zařízení.
+Abyste se mohli připojit, musíte zařízení zaregistrovat ve službě IoT Hub. V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) k registraci simulovaného zařízení.
 
 1. Chcete-li vytvořit identitu zařízení, spusťte následující příkaz v Cloud Shell:
 

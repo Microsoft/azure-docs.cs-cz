@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
-ms.openlocfilehash: 2759644c68d65e76de222a0ac74f1d4900caddc0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9ebbd773d56a54114f4bbb9b0db7ffddd2fbf893
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121248"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727025"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Maskování dynamických dat pro Azure SQL Database a Azure synapse Analytics
 
@@ -74,7 +74,7 @@ Modul doporučení DDM označuje některá pole z vaší databáze jako potenci�
 
 Pomocí REST API můžete programově spravovat zásady a pravidla maskování dat. Publikovaný REST API podporuje následující operace:
 
-### <a name="data-masking-policies"></a>Zásady maskování dat
+### <a name="data-masking-policy"></a>Zásady maskování dat
 
 - [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): vytvoří nebo aktualizuje popisek citlivosti pro zadaný sloupec.
 - [Get](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get): Získá zásadu maskování dat databáze. 

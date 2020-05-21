@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 8c3a9c6c5e835104675239882d2a1929a3c07c82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b9afd1c4ca5e4c652a03bc2ef652b8e43ea12787
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81771031"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727195"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Rychlý Start: řízení zařízení připojeného ke centru IoT (Android)
 
@@ -123,7 +123,7 @@ Ukázkovou aplikaci sady SDK pro zařízení můžete spustit na fyzickém zař�
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. V Android Studio klikněte na **File** > **projekt synchronizace souborů se soubory Gradle**. Ověřte, že se sestavení dokončilo.
+3. V Android Studio klikněte na **File**  >  **projekt synchronizace souborů se soubory Gradle**. Ověřte, že se sestavení dokončilo.
 
    > [!NOTE]
    > Pokud synchronizace projektu neproběhne úspěšně, může to být z některého z následujících důvodů:
@@ -131,7 +131,7 @@ Ukázkovou aplikaci sady SDK pro zařízení můžete spustit na fyzickém zař�
    > * Verze modulu plug-in pro Android Gradle a Gradle, na které se odkazuje v projektu, jsou zastaralé pro vaši verzi Android Studio. Podle [těchto pokynů](https://developer.android.com/studio/releases/gradle-plugin) můžete odkazovat a instalovat správné verze modulu plug-in a Gradle pro vaši instalaci.
    > * Licenční smlouva pro Android SDK nebyla podepsána. Podle pokynů ve výstupu sestavení podepište licenční smlouvu a Stáhněte si sadu SDK.
 
-4. Po dokončení sestavení klikněte na **Spustit** > **Spustit aplikaci**. Nakonfigurujte aplikaci tak, aby běžela na fyzickém zařízení s Androidem nebo v emulátoru Androidu. Další informace o spuštění aplikace pro Android na fyzickém zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
+4. Po dokončení sestavení klikněte na **Spustit**  >  **Spustit aplikaci**. Nakonfigurujte aplikaci tak, aby běžela na fyzickém zařízení s Androidem nebo v emulátoru Androidu. Další informace o spuštění aplikace pro Android na fyzickém zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Po načtení aplikace kliknutím na tlačítko **Start** spustíte odesílání telemetrie do IoT Hub:
 
@@ -141,7 +141,7 @@ Tato aplikace musí být při spuštění ukázky sady SDK v provozu na fyzické
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
-V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) k monitorování zpráv odesílaných zařízením s Androidem.
+V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) k monitorování zpráv odesílaných zařízením s Androidem.
 
 1. Pomocí služby Azure Cloud Shell spusťte následující příkaz, který provede připojení a čtení zpráv z centra IoT:
 
@@ -176,7 +176,7 @@ Aplikace služby back-end IoT Hub obvykle běží v cloudu, kde je snazší zmí
     DeviceId=MyAndroidDevice
     ```
 
-3. V Android Studio klikněte na **File** > **projekt synchronizace souborů se soubory Gradle**. Ověřte, že se sestavení dokončilo.
+3. V Android Studio klikněte na **File**  >  **projekt synchronizace souborů se soubory Gradle**. Ověřte, že se sestavení dokončilo.
 
    > [!NOTE]
    > Pokud synchronizace projektu neproběhne úspěšně, může to být z některého z následujících důvodů:
@@ -184,7 +184,7 @@ Aplikace služby back-end IoT Hub obvykle běží v cloudu, kde je snazší zmí
    > * Verze modulu plug-in pro Android Gradle a Gradle, na které se odkazuje v projektu, jsou zastaralé pro vaši verzi Android Studio. Podle [těchto pokynů](https://developer.android.com/studio/releases/gradle-plugin) můžete odkazovat a instalovat správné verze modulu plug-in a Gradle pro vaši instalaci.
    > * Licenční smlouva pro Android SDK nebyla podepsána. Podle pokynů ve výstupu sestavení podepište licenční smlouvu a Stáhněte si sadu SDK.
 
-4. Po dokončení sestavení klikněte na **Spustit** > **Spustit aplikaci**. Nakonfigurujte aplikaci tak, aby běžela na samostatném fyzickém zařízení s Androidem nebo v emulátoru Androidu. Další informace o spuštění aplikace pro Android na fyzickém zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
+4. Po dokončení sestavení klikněte na **Spustit**  >  **Spustit aplikaci**. Nakonfigurujte aplikaci tak, aby běžela na samostatném fyzickém zařízení s Androidem nebo v emulátoru Androidu. Další informace o spuštění aplikace pro Android na fyzickém zařízení nebo emulátoru najdete v tématu [spuštění aplikace](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Po načtení aplikace aktualizujte hodnotu **nastavit interval zasílání zpráv** na **1000** a klikněte na **vyvolat**.
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a028d597c3eb2a1c66df0e40266c2822e5cd7aab
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086313"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726957"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Vytvoření virtuálního počítače ze spravované image
 
@@ -20,6 +20,7 @@ Můžete vytvořit několik virtuálních počítačů z image spravovaného vir
 
 Před vytvořením nového virtuálního počítače budete muset [vytvořit spravovanou image virtuálního počítače](capture-image-resource.md) , která se použije jako zdrojová image, a udělit všem uživatelům, kteří mají mít přístup k imagi, přístup pro čtení k imagi. 
 
+Jedna spravovaná bitová kopie podporuje až 20 současných nasazení. Při pokusu o vytvoření více než 20 virtuálních počítačů současně ze stejné spravované image může docházet k vypršení časového limitu zřizování z důvodu omezení výkonu úložiště u jednoho virtuálního pevného disku. Pokud chcete vytvořit více než 20 virtuálních počítačů současně, použijte image [Galerie sdílených imagí](shared-image-galleries.md) nakonfigurovanou s 1 replikou pro každé 20 souběžných nasazení virtuálních počítačů.
 
 ## <a name="use-the-portal"></a>Použití portálu
 

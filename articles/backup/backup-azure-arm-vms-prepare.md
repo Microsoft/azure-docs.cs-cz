@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů Azure v trezoru Recovery Service
 description: Popisuje, jak zálohovat virtuální počítače Azure v Recovery Services trezoru pomocí Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cba042efb08f121d4cd9fa5693edd69c827f1465
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273511"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727008"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -41,7 +41,7 @@ Kromě toho je možné, že v některých případech budete muset udělat něko
 
  Trezor ukládá zálohy a body obnovení vytvořené v průběhu času a ukládá zásady zálohování přidružené k zálohovaným počítačům. Vytvořte Trezor následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Do Hledat zadejte **Recovery Services**. V části **služby**klikněte na **Recovery Services trezory**.
 
      ![Hledat trezory Recovery Services](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
@@ -91,7 +91,7 @@ Nakonfigurujte zásady zálohování pro trezor.
 
    ![Tlačítko zálohovat](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-2. V **cíli** > zálohování **, kde je spuštěná vaše úloha?** vyberte **Azure**. V **Možnosti co chcete zálohovat?** vyberte **virtuální počítač** >  **OK**. Tím se registruje rozšíření virtuálního počítače v trezoru.
+2. V **cíli zálohování**  >  **, kde je spuštěná vaše úloha?** vyberte **Azure**. V **Možnosti co chcete zálohovat?** vyberte **virtuální počítač**  >   **OK**. Tím se registruje rozšíření virtuálního počítače v trezoru.
 
    ![Podokna zálohování a cíle zálohování](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
@@ -108,6 +108,9 @@ Nakonfigurujte zásady zálohování pro trezor.
    * Virtuální počítače se dají zálohovat jenom v jednom trezoru.
 
      ![Podokno vybrat virtuální počítače](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
+
+    >[!NOTE]
+    > Pro konfiguraci zálohování budou dostupné jenom virtuální počítače ve stejné oblasti a předplatném jako trezor.
 
 5. V **zálohování**klikněte na **Povolit zálohování**. Tím se tyto zásady nasadí do trezoru a do virtuálních počítačů a nainstaluje se rozšíření zálohování na agenta virtuálního počítače spuštěného na virtuálním počítači Azure.
 
@@ -149,7 +152,7 @@ Počáteční zálohování se spustí podle plánu, ale můžete ho spustit hne
 3. V seznamu **zálohované položky** klikněte na tři tečky (...).
 4. Klikněte na **Zálohovat nyní**.
 5. V části **Zálohovat nyní**pomocí ovládacího prvku kalendáře vyberte poslední den, kdy se má bod obnovení zachovat. Pak klikněte na **OK**.
-6. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > **> probíhající** **úlohy zálohování**. V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
+6. Monitorujte oznámení na portálu. Průběh úlohy můžete monitorovat na řídicím panelu trezoru > probíhající **úlohy zálohování**  >  **In progress**. V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
 
 ## <a name="verify-backup-job-status"></a>Ověřit stav úlohy zálohování
 
@@ -168,7 +171,7 @@ Stav úlohy se může lišit v závislosti na následujících scénářích:
 
 **Snímek** | **Přenos dat do trezoru** | **Stav úlohy**
 --- | --- | ---
-Dokončeno | Probíhá | Probíhá
+Dokončeno | Rozpracované | Rozpracované
 Dokončeno | Přeskočeno | Dokončeno
 Dokončeno | Dokončeno | Dokončeno
 Dokončeno | Failed | Dokončeno s upozorněním
@@ -183,9 +186,9 @@ Přírůstkový bod obnovení vytvořený v trezoru bude zachytit všechny změn
 
 Azure Backup zálohuje virtuální počítače Azure tím, že nainstaluje rozšíření na agenta virtuálního počítače Azure, který běží na počítači. Pokud byl váš virtuální počítač vytvořen z bitové kopie Azure Marketplace, je agent nainstalovaný a spuštěný. Pokud vytvoříte vlastní virtuální počítač nebo migrujete místní počítač, možná budete muset agenta nainstalovat ručně, jak je shrnuto v tabulce.
 
-**SÍŤ** | **Zobrazí**
+**SÍŤ** | **Podrobnosti**
 --- | ---
-**Windows** | 1. [Stáhněte a nainstalujte](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) soubor MSI agenta.<br/><br/> 2. Nainstalujte na počítači oprávnění správce.<br/><br/> 3. Ověřte instalaci. V *C:\WindowsAzure\Packages* na virtuálním počítači klikněte pravým tlačítkem na**vlastnosti** **WaAppAgent. exe** > . Na kartě **Podrobnosti** by **verze produktu** měla být 2.6.1198.718 nebo vyšší.<br/><br/> Pokud aktualizujete agenta, zajistěte, aby neběžely žádné operace zálohování, a [přeinstalujte agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
+**Windows** | 1. [Stáhněte a nainstalujte](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) soubor MSI agenta.<br/><br/> 2. Nainstalujte na počítači oprávnění správce.<br/><br/> 3. Ověřte instalaci. V *C:\WindowsAzure\Packages* na virtuálním počítači klikněte pravým tlačítkem na vlastnosti **WaAppAgent. exe**  >  **Properties**. Na kartě **Podrobnosti** by **verze produktu** měla být 2.6.1198.718 nebo vyšší.<br/><br/> Pokud aktualizujete agenta, zajistěte, aby neběžely žádné operace zálohování, a [přeinstalujte agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Nainstalujte pomocí balíčku ot./min. nebo balíčku DEB z úložiště balíčků distribuce. Toto je upřednostňovaná metoda pro instalaci a upgrade agenta Azure Linux. Všichni [poskytovatelé schválené distribuce](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrují balíček agenta Azure Linux do svých imagí a úložišť. Agent je k dispozici na [GitHubu](https://github.com/Azure/WALinuxAgent), ale nedoporučujeme ho instalovat.<br/><br/> Pokud aktualizujete agenta, zajistěte, aby neběžely žádné operace zálohování, a aktualizujte binární soubory.
 
 >[!NOTE]

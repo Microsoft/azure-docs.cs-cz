@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8a057890d20fc233eae6f1636d83e73855305b7
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851425"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727042"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a jejich sledování pomocí Azure CLI
 
@@ -92,7 +92,7 @@ V této části pomocí Azure CLI vytvoříte skupinu prostředků a IoT Hub.  S
 V této části vytvoříte simulované zařízení v první relaci CLI. Simulované zařízení odesílá telemetrii zařízení do služby IoT Hub. V druhé relaci rozhraní příkazového řádku můžete monitorovat události a telemetrii a odesílat do simulovaného zařízení zprávu typu cloud-zařízení.
 
 Vytvoření a spuštění simulovaného zařízení:
-1. Spusťte příkaz [AZ IoT Hub Device-identity Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) v první relaci CLI. Tím se vytvoří simulovaná identita zařízení. 
+1. Spusťte příkaz [AZ IoT Hub Device-identity Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) v první relaci CLI. Tím se vytvoří simulovaná identita zařízení. 
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. 
 
@@ -102,7 +102,7 @@ Vytvoření a spuštění simulovaného zařízení:
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
     ```
 
-1. Spusťte příkaz [AZ IoT Device simuluje](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/device?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-device-simulate) v první relaci CLI.  Tím se spustí simulované zařízení. Zařízení pošle telemetrii do služby IoT Hub a přijímá z ní zprávy.  
+1. Spusťte příkaz [AZ IoT Device simuluje](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/device?view=azure-cli-latest#ext-azure-iot-az-iot-device-simulate) v první relaci CLI.  Tím se spustí simulované zařízení. Zařízení pošle telemetrii do služby IoT Hub a přijímá z ní zprávy.  
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. 
 
@@ -111,7 +111,7 @@ Vytvoření a spuštění simulovaného zařízení:
     ```
 
 Postup monitorování zařízení:
-1. V druhé relaci CLI spusťte příkaz [AZ IoT Hub monitor-Events](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) . Tím se spustí monitorování simulovaného zařízení. Výstup zobrazuje telemetrii, kterou simulované zařízení odesílá do centra IoT.
+1. V druhé relaci CLI spusťte příkaz [AZ IoT Hub monitor-Events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) . Tím se spustí monitorování simulovaného zařízení. Výstup zobrazuje telemetrii, kterou simulované zařízení odesílá do centra IoT.
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. 
 
@@ -134,7 +134,7 @@ V této části použijete druhou relaci CLI k odeslání zprávy na simulované
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-1. V druhé relaci CLI spusťte příkaz [AZ IoT Device C2D-Message Send](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/device/c2d-message?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-device-c2d-message-send) . Tím se do simulovaného zařízení pošle zpráva typu cloud-zařízení ze služby IoT Hub. Zpráva obsahuje řetězec a dvě páry klíč-hodnota.  
+1. V druhé relaci CLI spusťte příkaz [AZ IoT Device C2D-Message Send](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/device/c2d-message?view=azure-cli-latest#ext-azure-iot-az-iot-device-c2d-message-send) . Tím se do simulovaného zařízení pošle zpráva typu cloud-zařízení ze služby IoT Hub. Zpráva obsahuje řetězec a dvě páry klíč-hodnota.  
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. 
 

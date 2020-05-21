@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2020
+ms.date: 05/20/2020
 ms.author: aschhab
-ms.openlocfilehash: a4bc2dcfd1826623516a40be0aff7688d0b6168c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cedf3678fc73b004c142380b4ba69c10ca72ebf
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116685"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726991"
 ---
 # <a name="message-sessions"></a>Relace zpráv
-Microsoft Azure Service Bus relace umožňují společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv. Relace se dají použít v vzorcích first in, First out (FIFO) a Request-Response. Tento článek popisuje, jak používat relace k implementaci těchto vzorů při použití Service Bus. 
-
-## <a name="first-in-first-out-fifo-pattern"></a>Vzor first-in, First out (FIFO)
-Pokud chcete v Service Bus realizovat jistotu FIFO, použijte relace. Service Bus není podrobnější informace o povaze vztahu mezi zprávami a také nedefinuje konkrétní model pro zjištění, kde začíná nebo končí sekvence zpráv.
+Microsoft Azure Service Bus relace umožňují společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv. Relace se dají použít v vzorcích **First in, First out (FIFO)** a **Request-response** . Tento článek popisuje, jak používat relace k implementaci těchto vzorů při použití Service Bus. 
 
 > [!NOTE]
 > Základní Service Bus úrovně nepodporuje relace. Úrovně Standard a Premium podporují relace. Rozdíly mezi těmito úrovněmi najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
+
+## <a name="first-in-first-out-fifo-pattern"></a>Vzor first-in, First out (FIFO)
+Pokud chcete v Service Bus realizovat jistotu FIFO, použijte relace. Service Bus není podrobnější informace o povaze vztahu mezi zprávami a také nedefinuje konkrétní model pro zjištění, kde začíná nebo končí sekvence zpráv.
 
 Každý odesilatel může vytvořit relaci při odesílání zpráv do tématu nebo do fronty nastavením vlastnosti [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) na některý identifikátor definovaný aplikací, který je pro relaci jedinečný. Na úrovni protokolu AMQP 1,0 se tato hodnota mapuje na vlastnost *Group-ID* .
 
@@ -89,16 +89,16 @@ Definice počtu doručení na zprávu v kontextu relací se mírně liší od de
 | Scénář | Zvyšuje se počet doručení zprávy |
 |----------|---------------------------------------------|
 | Relace je přijata, ale zámek relace vyprší (z důvodu vypršení časového limitu). | Ano |
-| Relace je přijata, zprávy v relaci nejsou dokončeny (i v případě, že jsou uzamčené) a relace je zavřena. | Ne |
+| Relace je přijata, zprávy v relaci nejsou dokončeny (i v případě, že jsou uzamčené) a relace je zavřena. | No |
 | Relace je přijata, zprávy jsou dokončeny a relace je explicitně zavřena. | Není k dispozici (Jedná se o standardní tok. Z relace se odeberou tyto zprávy.) |
 
 ## <a name="request-response-pattern"></a>Vzor požadavku a odpovědi
 [Vzor požadavku a odpovědi](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) je dobře zavedený model integrace, který umožňuje aplikaci odesílatele odeslat žádost a dát příjemci možnost správně odeslat odpověď zpět do aplikace odesílatele. Tento vzor obvykle vyžaduje krátkodobou frontu nebo téma, aby aplikace odesílala odpovědi na. V tomto scénáři představují relace jednoduché alternativní řešení s srovnatelnou sémantikou. 
 
-Více aplikací může odesílat požadavky do jediné fronty požadavků, přičemž konkrétní parametr hlavičky je nastaven pro jedinečnou identifikaci aplikace odesílatele. Aplikace příjemce může zpracovat žádosti přicházející do fronty a odesílat odpovědi ve frontě s povolenými relacemi, přičemž nastaví ID relace na jedinečný identifikátor, který odesilatel poslal ve zprávě požadavku. Aplikace, která odeslala požadavek, může následně přijímat zprávy na konkrétní ID relace a správně zpracovat odpovědi.
+Více aplikací může odesílat požadavky do jediné fronty požadavků, přičemž konkrétní parametr hlavičky je nastaven pro jedinečnou identifikaci aplikace odesílatele. Aplikace příjemce může zpracovat žádosti přicházející ve frontě a odesílat odpovědi na frontu s povolenými relacemi a nastavit ID relace na jedinečný identifikátor, který odesilatel poslal ve zprávě požadavku. Aplikace, která odeslala požadavek, může následně přijímat zprávy o konkrétním ID relace a správně zpracovat odpovědi.
 
 > [!NOTE]
-> Aplikace, která odesílá počáteční požadavky, by měla znát ID relace a použít `SessionClient.AcceptMessageSession(SessionID)` ji k uzamknutí relace, na které očekává odpověď. Je vhodné použít identifikátor GUID, který jedinečně identifikuje instanci aplikace jako ID relace. Ve frontě by neměl být žádná `AcceptMessageSession(timeout)` obslužná rutina relace ani fronta, aby bylo možné zajistit, aby byly odpovědi k dispozici pro uzamknutí a zpracování konkrétními přijímači.
+> Aplikace, která odesílá počáteční požadavky, by měla znát ID relace a použít `SessionClient.AcceptMessageSession(SessionID)` ji k uzamknutí relace, na které očekává odpověď. Je vhodné použít identifikátor GUID, který jedinečně identifikuje instanci aplikace jako ID relace. Ve frontě by neměl být žádná obslužná rutina relace ani `AcceptMessageSession(timeout)` fronta, aby bylo možné zajistit, aby byly odpovědi k dispozici pro uzamknutí a zpracování konkrétními přijímači.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -107,7 +107,7 @@ Více aplikací může odesílat požadavky do jediné fronty požadavků, při�
 Další informace o Service Bus zasílání zpráv najdete v následujících tématech:
 
 * [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 [1]: ./media/message-sessions/sessions.png

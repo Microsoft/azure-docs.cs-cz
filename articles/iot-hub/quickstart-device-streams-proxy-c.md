@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 91cf594e74d91b8b4df2108d23459016fa843700
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8cba8f7a21b04dc722124eb2873c64f67fd6def
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80586597"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727127"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud IoT Hub zařízení pomocí aplikace proxy v jazyce C (Preview)
 
@@ -48,7 +48,7 @@ Následující obrázek ukazuje, jak se v místních a koncových procesech prox
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -126,7 +126,7 @@ V tomto rychlém startu použijete [sadu SDK pro zařízení Azure IoT pro jazyk
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) k registraci simulovaného zařízení.
+Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) k registraci simulovaného zařízení.
 
 1. Chcete-li vytvořit identitu zařízení, spusťte následující příkaz v Cloud Shell:
 
@@ -157,7 +157,7 @@ V této části vytvoříte ucelený Stream pro tunelování provozu SSH.
 
 ### <a name="run-the-device-local-proxy-application"></a>Spuštění aplikace místní proxy zařízení
 
-1. Upravte zdrojový soubor **iothub_client_c2d_streaming_proxy_sample. c** ve složce `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`a zadejte připojovací řetězec zařízení, IP adresu cílového zařízení nebo název hostitele a port SSH 22:
+1. Upravte zdrojový soubor **iothub_client_c2d_streaming_proxy_sample. c** ve složce `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` a zadejte připojovací řetězec zařízení, IP adresu cílového zařízení nebo název hostitele a port SSH 22:
 
    ```C
    /* Paste in your device connection string  */
@@ -211,7 +211,7 @@ ssh {username}@localhost -p 2222
 
 V tomto okamžiku se zobrazí okno přihlášení SSH s výzvou k zadání přihlašovacích údajů.
 
-Následující obrázek ukazuje výstup konzoly na místní proxy zařízení, které se připojí k procesu démon SSH na adrese `IP_address:22`:
+Následující obrázek ukazuje výstup konzoly na místní proxy zařízení, které se připojí k procesu démon SSH na adrese `IP_address:22` :
 
 ![Výstup místního proxy serveru v zařízení](./media/quickstart-device-streams-proxy-c/device-console-output.png)
 

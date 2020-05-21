@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 46dc5298337b2ee0d16d22ec6ab24cb9d751fc38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fbebfe2ec554c7c9c2f85a5657daeeee8dae31a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769182"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727076"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a její čtení pomocí back-endové aplikace (C)
 
@@ -31,7 +31,7 @@ Tento článek je napsán pro systém Windows, ale tento rychlý Start můžete 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -82,7 +82,7 @@ V tomto rychlém startu ale připravíte vývojové prostředí, které se použ
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z `azure-iot-sdk-c` adresáře spusťte následující příkazy:
+4. V kořenovém adresáři úložiště Git vytvořte podadresář `cmake` a přejděte do této složky. Z adresáře spusťte následující příkazy `azure-iot-sdk-c` :
 
     ```cmd/sh
     mkdir cmake
@@ -95,7 +95,7 @@ V tomto rychlém startu ale připravíte vývojové prostředí, které se použ
     cmake ..
     ```
 
-    Pokud `cmake` nenajde kompilátor jazyka C++, může při spuštění výše uvedeného příkazu dojít k chybám sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Pokud nenajde `cmake` kompilátor jazyka C++, může při spuštění výše uvedeného příkazu dojít k chybám sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
@@ -119,7 +119,7 @@ V tomto rychlém startu ale připravíte vývojové prostředí, které se použ
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) k registraci simulovaného zařízení.
+Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) k registraci simulovaného zařízení.
 
 1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
@@ -162,7 +162,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
     static const char* connectionString = "[device connection string]";
     ```
 
-    Hodnotu `connectionString` konstanty nahraďte připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak uložte změny do souboru **iothub_convenience_sample.c**.
+    Hodnotu konstanty nahraďte `connectionString` připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak uložte změny do souboru **iothub_convenience_sample.c**.
 
 3. V okně místního terminálu přejděte v adresáři CMake do adresáře projektu *iothub_convenience_sample*, který jste vytvořili v sadě Azure IoT C SDK. Do pracovního adresáře zadejte tento příkaz:
 
@@ -188,7 +188,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
-V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) , abyste mohli monitorovat zprávy zařízení odesílané simulovaným zařízením.
+V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) , abyste mohli monitorovat zprávy zařízení odesílané simulovaným zařízením.
 
 1. Pomocí služby Azure Cloud Shell spusťte následující příkaz, který provede připojení a čtení zpráv z centra IoT:
 

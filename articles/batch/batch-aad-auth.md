@@ -1,15 +1,15 @@
 ---
 title: Ověřování služby Azure Batch Services pomocí Azure Active Directory
 description: Služba Batch podporuje službu Azure AD k ověřování ze služby Batch. Přečtěte si, jak ověřit jedním ze dvou způsobů.
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3ed3db184174d0a383c5c1fbd85e69d9fef0da44
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608468"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726906"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -39,7 +39,7 @@ K ověřování ve službě Azure AD použijete tento koncový bod společně s 
 > [!NOTE]
 > Koncový bod specifický pro tenanta se vyžaduje při ověřování pomocí instančního objektu.
 >
-> Koncový bod specifický pro klienta je při ověřování pomocí integrovaného ověřování volitelný, ale doporučuje se. Můžete ale použít i společný koncový bod Azure AD. Společný koncový bod poskytuje obecné rozhraní pro shromažďování přihlašovacích údajů, když není k dispozici konkrétní tenant. Běžný koncový bod je `https://login.microsoftonline.com/common`.
+> Koncový bod specifický pro klienta je při ověřování pomocí integrovaného ověřování volitelný, ale doporučuje se. Můžete ale použít i společný koncový bod Azure AD. Společný koncový bod poskytuje obecné rozhraní pro shromažďování přihlašovacích údajů, když není k dispozici konkrétní tenant. Běžný koncový bod je `https://login.microsoftonline.com/common` .
 >
 >
 
