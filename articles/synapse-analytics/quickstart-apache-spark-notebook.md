@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 27ec09f1286f4e7999db56acdedaba1a37122aad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592946"
+ms.locfileid: "83656192"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) ve službě Azure synapse Analytics pomocí nástrojů pro web
 
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor analýzy synapse](quickstart-create-workspace.md)
-- [Fond Apache Spark](quickstart-create-apache-spark-pool.md)
+- [Fond Apache Spark](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -133,7 +133,9 @@ Jazyk SQL (Structured Query Language) (SQL) je nejběžnějším a široce použ
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Azure synapse ukládá vaše data v Azure Data Lake Storage. Můžete bezpečně dovolit, aby se instance Sparku ukončila, když se nepoužívá. Účtuje se vám Apache Spark fond Azure synapse, pokud je spuštěný, i když se nepoužívá. Poplatky za fond jsou mnohokrát vyšší než poplatky za úložiště. V takovém případě má ekonomický smysl nechat instance Sparku vypnuté, když se nepoužívají.
+Azure synapse ukládá vaše data v Azure Data Lake Storage. Pokud se instance Sparku nepoužívá, můžete ji bezpečně nechat vypnout. Účtuje se vám Apache Spark fond Azure synapse, pokud je spuštěný, i když se nepoužívá. 
+
+Vzhledem k tomu, že se poplatky za fond mnohokrát účtují více než poplatky za úložiště, má ekonomický smysl, aby instance Sparku byly vypnuté, když se nepoužívají.
 
 Pokud chcete zajistit, aby se instance Spark vypnula, ukončete všechny připojené relace (poznámkové bloky). Fond se ukončí, když je dosaženo **času nečinnosti** zadaného ve fondu Apache Spark. Můžete také vybrat možnost **ukončit relaci** ze stavového řádku v dolní části poznámkového bloku.
 

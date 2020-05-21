@@ -1,5 +1,5 @@
 ---
-title: Používání SQL na vyžádání (Preview)
+title: Použití SQL na vyžádání (Preview)
 description: V tomto rychlém startu uvidíte a naučíte se, jak se snadno dotazovat na různé typy souborů pomocí SQL na vyžádání (Preview).
 services: synapse-analytics
 author: azaricstefan
@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb90ba81f6399d7b0e238d673c2d956911bd004
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8c87b059d94d6b3be1a4b5cf2f83007b746f4156
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201031"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658588"
 ---
-# <a name="quickstart-using-sql-on-demand"></a>Rychlý Start: používání SQL na vyžádání
+# <a name="quickstart-use-sql-on-demand"></a>Rychlý Start: použití SQL na vyžádání
 
 Synapse SQL na vyžádání (Preview) je služba pro dotazování bez serveru, která umožňuje spouštět dotazy SQL na souborech umístěných v Azure Storage. V tomto rychlém startu se dozvíte, jak zadávat dotazy na různé typy souborů pomocí SQL na vyžádání. Podporované formáty jsou uvedeny ve funkci [OpenRowset](sql/develop-openrowset.md).
 
-V tomto rychlém startu se zobrazují dotazy: CSV, Apache Parquet a soubory JSON.
+V tomto rychlém startu se zobrazí dotazování: CSV, Apache Parquet a soubory JSON.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,7 +30,7 @@ Zvolit klienta SQL pro vydávání dotazů:
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) je klientský nástroj, který umožňuje spouštět dotazy a poznámkové bloky SQL v databázi na vyžádání.
 - [SQL Server Management Studio](sql/get-started-ssms.md) je klientský nástroj, který umožňuje spouštět dotazy SQL v databázi na vyžádání.
 
-Parametry pro rychlý Start:
+Parametry pro tento rychlý Start:
 
 | Parametr                                 | Popis                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
@@ -89,7 +89,7 @@ SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-
 GO
 ```
 
-## <a name="querying-csv-files"></a>Dotazování na soubory CSV
+## <a name="query-csv-files"></a>Dotazování na soubory CSV
 
 Následující obrázek je náhled souboru, který se má dotazovat:
 
@@ -118,7 +118,7 @@ WHERE
 V době kompilace dotazu můžete zadat schéma.
 Další příklady najdete v tématu Postup [dotazování souboru CSV](sql/query-single-csv-file.md).
 
-## <a name="querying-parquet-files"></a>Dotazování na soubory Parquet
+## <a name="query-parquet-files"></a>Dotazování souborů Parquet
 
 Následující příklad ukazuje schopnosti automatického odvození schématu pro dotazování souborů Parquet. Vrátí počet řádků v září 2017 bez zadání schématu.
 
@@ -136,7 +136,7 @@ FROM OPENROWSET
 
 Přečtěte si další informace o [dotazování souborů Parquet](sql/query-parquet-files.md).
 
-## <a name="querying-json-files"></a>Dotazování na soubory JSON
+## <a name="query-json-files"></a>Dotazování souborů JSON
 
 ### <a name="json-sample-file"></a>Ukázkový soubor JSON
 
@@ -158,7 +158,7 @@ Soubory jsou uloženy v kontejneru *JSON* , v *knihách*složek a obsahují jedn
 }
 ```
 
-### <a name="querying-json-files"></a>Dotazování na soubory JSON
+### <a name="query-json-files"></a>Dotazování souborů JSON
 
 Následující dotaz ukazuje, jak použít [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení skalárních hodnot (title, Publisher) z knihy s názvem *pravděpodobnostní a statistickými metodami v Cryptology, Úvod do vybraných článků*:
 

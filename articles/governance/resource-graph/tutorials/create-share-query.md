@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: Správa dotazů v Azure Portal'
 description: V tomto kurzu vytvoříte dotaz na diagram prostředku a nasdílíte nový dotaz s ostatními uživateli v Azure Portal.
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74303952"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83637749"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Kurz: vytvoření a sdílení dotazu na graf Azure Resource v Azure Portal
 
@@ -129,7 +129,7 @@ Výběr dotazu grafu prostředku otevře stránku pro daný dotaz. Tři tečky a
 
 ### <a name="query-resource-graph"></a>Graf prostředku dotazu
 
-Dotazy na grafy prostředků můžete najít prostřednictvím dotazu do grafu prostředků. Následující dotaz na diagram prostředku je omezen podle `Microsoft.ResourceGraph/queries`typu a poté používá `project` k vypsání pouze názvu, času změny a samotného dotazu:
+Dotazy na grafy prostředků můžete najít prostřednictvím dotazu do grafu prostředků. Následující dotaz na diagram prostředku je omezen podle typu `Microsoft.ResourceGraph/queries` a poté používá `project` k vypsání pouze názvu, času změny a samotného dotazu:
 
 ```kusto
 Resources

@@ -12,12 +12,12 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1251049add8c9d3c71b6ba13aff24e086613e84b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1dd0bc589b8290172d18482b36baf30c24d099b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450951"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640582"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph z aplikace pro iOS nebo macOS.
 
@@ -58,24 +58,24 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
 1. Otevřete Xcode a vyberte **vytvořit nový projekt Xcode**.
-2. V případě aplikací pro iOS vyberte možnost**aplikace s jedním zobrazením** pro **iOS** > a vyberte **Další**.
-3. V případě aplikací MacOS vyberte **MacOS** > **aplikace pro kakao** a vyberte **Další**.
+2. V případě aplikací pro iOS **iOS**vyberte možnost  >  **aplikace s jedním zobrazením** pro iOS a vyberte **Další**.
+3. V případě aplikací MacOS vyberte **MacOS**  >  **aplikace pro kakao** a vyberte **Další**.
 4. Zadejte název produktu.
 5. Nastavte **jazyk** na **SWIFT** a vyberte **Další**.
 6. Vyberte složku pro vytvoření aplikace a klikněte na **vytvořit**.
 
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
-1. Přejděte na web [Azure Portal](https://aka.ms/MobileAppReg).
+1. Přejít na [Azure Portal](https://aka.ms/MobileAppReg)
 2. Otevřete okno Registrace aplikací a klikněte na **+ Nová registrace**.
 3. Zadejte **název** aplikace a pak bez nastavení identifikátoru URI přesměrování.
 4. V části **podporované typy účtů** vyberte **účty v jakémkoli adresáři organizace (libovolný Azure AD Directory – víceklientské klienty) a osobní účty Microsoft (např. Skype, Xbox)** .
 5. Klikněte na **zaregistrovat** .
 6. V části **Spravovat** v podokně, které se zobrazí, vyberte **ověřování**.
 
-7. Kliknutím na **vyzkoušet nové prostředí** v horní části obrazovky otevřete nové prostředí pro registraci aplikací a potom klikněte na **+ Nová registrace** > **+ Přidat platformu** > **iOS/MacOS**.
-    - Zadejte ID sady projektu. Pokud jste kód stáhli, je `com.microsoft.identitysample.MSALiOS`to. Pokud vytváříte vlastní projekt, vyberte projekt v Xcode a otevřete kartu **Obecné** . Identifikátor sady prostředků se zobrazí v oddílu **Identita** .
-8. Klikněte `Configure` na a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace MSAL** , abyste ji mohli zadat při pozdější konfiguraci aplikace.  Klikněte na **Done** (Hotovo).
+7. Kliknutím na **vyzkoušet nové prostředí** v horní části obrazovky otevřete nové prostředí pro registraci aplikací a potom klikněte na **+ Nová registrace**  >  **+ Přidat platformu**  >  **iOS/MacOS**.
+    - Zadejte ID sady projektu. Pokud jste kód stáhli, je to `com.microsoft.identitysample.MSALiOS` . Pokud vytváříte vlastní projekt, vyberte projekt v Xcode a otevřete kartu **Obecné** . Identifikátor sady prostředků se zobrazí v oddílu **Identita** .
+8. Klikněte na `Configure` a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace MSAL** , abyste ji mohli zadat při pozdější konfiguraci aplikace.  Klikněte na **Done** (Hotovo).
 
 ## <a name="add-msal"></a>Přidat MSAL
 
@@ -83,7 +83,7 @@ Vyberte jeden z následujících způsobů, jak nainstalovat knihovnu MSAL do va
 
 ### <a name="cocoapods"></a>CocoaPods
 
-1. Pokud používáte [CocoaPods](https://cocoapods.org/), nainstalujte `MSAL` nejprve vytvořením prázdného souboru `podfile` ve stejné složce jako `.xcodeproj` soubor projektu. Přidejte následující `podfile`:
+1. Pokud používáte [CocoaPods](https://cocoapods.org/), nainstalujte `MSAL` nejprve vytvořením prázdného souboru `podfile` ve stejné složce jako `.xcodeproj` soubor projektu. Přidejte následující `podfile` :
 
    ```
    use_frameworks!
@@ -95,17 +95,17 @@ Vyberte jeden z následujících způsobů, jak nainstalovat knihovnu MSAL do va
 
 2. Nahraďte `<your-target-here>` názvem vašeho projektu.
 3. V okně terminálu přejděte do složky, která obsahuje `podfile` vámi vytvořenou a spuštěnou `pod install` pro instalaci knihovny MSAL.
-4. Zavřete Xcode a otevřete `<your project name>.xcworkspace` a znovu načtěte projekt v Xcode.
+4. Zavřete Xcode a otevřete a `<your project name>.xcworkspace` znovu načtěte projekt v Xcode.
 
 ### <a name="carthage"></a>Carthage
 
-Pokud používáte [Carthage](https://github.com/Carthage/Carthage), nainstalujte `MSAL` ho přidáním do `Cartfile`:
+Pokud používáte [Carthage](https://github.com/Carthage/Carthage), nainstalujte `MSAL` ho přidáním do `Cartfile` :
 
 ```
 github "AzureAD/microsoft-authentication-library-for-objc" "master"
 ```
 
-V okně terminálu ve stejném adresáři jako aktualizovaný `Cartfile`spusťte následující příkaz, aby Carthage aktualizoval závislosti ve vašem projektu.
+V okně terminálu ve stejném adresáři jako aktualizovaný `Cartfile` Spusťte následující příkaz, aby Carthage aktualizoval závislosti ve vašem projektu.
 
 iOS:
 
@@ -127,13 +127,13 @@ Můžete také použít dílčí modul Git nebo si zaregistrovat nejnovější v
 
 V dalším kroku přidáme vaši registraci vaší aplikace do vašeho kódu. 
 
-Nejprve přidejte následující příkaz Import na začátek `ViewController.swift`a také soubory `AppDelegate.swift` nebo: `SceneDelegate.swift`
+Nejprve přidejte následující příkaz Import na začátek a `ViewController.swift` také `AppDelegate.swift` `SceneDelegate.swift` soubory nebo:
 
 ```swift
 import MSAL
 ```
 
-Pak přidejte následující kód `ViewController.swift` před: `viewDidLoad()`
+Pak přidejte následující kód `ViewController.swift` před `viewDidLoad()` :
 
 ```swift
 // Update the below to your client ID you received in the portal. The below is for running the demo only
@@ -149,13 +149,19 @@ var webViewParameters : MSALWebviewParameters?
 var currentAccount: MSALAccount?
 ```
 
-Jedinou hodnotou, kterou je třeba upravit výše, je hodnota přiřazená `kClientID`k ID vaší [aplikace](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id). Tato hodnota je součástí dat konfigurace MSAL, která jste uložili během kroku na začátku tohoto kurzu, abyste aplikaci zaregistrovali v Azure Portal.
+Jedinou hodnotou, kterou je třeba upravit výše, je hodnota přiřazená k `kClientID` ID vaší [aplikace](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id). Tato hodnota je součástí dat konfigurace MSAL, která jste uložili během kroku na začátku tohoto kurzu, abyste aplikaci zaregistrovali v Azure Portal.
+
+## <a name="configure-xcode-project-settings"></a>Konfigurace nastavení projektu Xcode
+
+Přidejte novou skupinu řetězce klíčů k **funkcím podepisování projektu &**. Skupina řetězce klíčů by měla být `com.microsoft.adalcache` v systému iOS a `com.microsoft.identity.universalstorage` v MacOS.
+
+![Uživatelské rozhraní Xcode zobrazující, jak by se měla nastavit skupina klíčů klíčů](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro-keychainShare.png)
 
 ## <a name="for-ios-only-configure-url-schemes"></a>Jenom pro iOS, konfigurace schémat URL
 
-V tomto kroku se zaregistrujete `CFBundleURLSchemes` tak, aby se uživatel mohl po přihlášení přesměrovat zpátky do aplikace. Díky tomu také umožňuje `LSApplicationQueriesSchemes` , aby vaše aplikace mohla využívat Microsoft Authenticator.
+V tomto kroku se zaregistrujete `CFBundleURLSchemes` tak, aby se uživatel mohl po přihlášení přesměrovat zpátky do aplikace. Díky `LSApplicationQueriesSchemes` tomu také umožňuje, aby vaše aplikace mohla využívat Microsoft Authenticator.
 
-V Xcode otevřete `Info.plist` jako soubor zdrojového kódu a do `<dict>` oddílu přidejte následující. Nahraďte `[BUNDLE_ID]` hodnotou, kterou jste použili v Azure Portal, který je `com.microsoft.identitysample.MSALiOS`v případě, že jste kód stáhli. Pokud vytváříte vlastní projekt, vyberte projekt v Xcode a otevřete kartu **Obecné** . Identifikátor sady prostředků se zobrazí v oddílu **Identita** .
+V Xcode otevřete `Info.plist` jako soubor zdrojového kódu a do oddílu přidejte následující `<dict>` . Nahraďte `[BUNDLE_ID]` hodnotou, kterou jste použili v Azure Portal, který je v případě, že jste kód stáhli `com.microsoft.identitysample.MSALiOS` . Pokud vytváříte vlastní projekt, vyberte projekt v Xcode a otevřete kartu **Obecné** . Identifikátor sady prostředků se zobrazí v oddílu **Identita** .
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -176,12 +182,12 @@ V Xcode otevřete `Info.plist` jako soubor zdrojového kódu a do `<dict>` oddí
 
 ## <a name="for-macos-only-configure-app-sandbox"></a>Pro macOS, konfigurace izolovaného prostoru aplikace
 
-1. Přejít na nastavení projektu Xcode > **Možnosti** > **aplikačního prostoru aplikace** TAB
+1. Přejít na nastavení projektu Xcode > **Možnosti**  >  **aplikačního prostoru aplikace** TAB
 2. Zaškrtněte políčko **odchozí připojení (klient)** . 
 
 ## <a name="create-your-apps-ui"></a>Vytvoření uživatelského rozhraní vaší aplikace
 
-Nyní vytvořte uživatelské rozhraní, které obsahuje tlačítko pro volání rozhraní Microsoft Graph API, jiné pro odhlášení a textové zobrazení pro zobrazení výstupu přidáním následujícího kódu do `ViewController`třídy:
+Nyní vytvořte uživatelské rozhraní, které obsahuje tlačítko pro volání rozhraní Microsoft Graph API, jiné pro odhlášení a textové zobrazení pro zobrazení výstupu přidáním následujícího kódu do `ViewController` třídy:
 
 ### <a name="ios-ui"></a>uživatelské rozhraní iOS
 
@@ -364,7 +370,7 @@ Dále v rámci `ViewController` třídy nahraďte `viewDidLoad()` metodu násled
 
 ### <a name="initialize-msal"></a>Inicializovat MSAL
 
-Do `ViewController` třídy přidejte `initMSAL` následující metodu:
+`initMSAL`Do třídy přidejte následující metodu `ViewController` :
 
 ```swift
     func initMSAL() throws {
@@ -382,7 +388,7 @@ Do `ViewController` třídy přidejte `initMSAL` následující metodu:
     }
 ```
 
-Do `ViewController` třídy přidejte následující `initMSAL` metodu.
+Do třídy přidejte následující `initMSAL` metodu `ViewController` .
 
 ### <a name="ios-code"></a>kód pro iOS:
 
@@ -413,7 +419,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 
 ```
 
-**Pokud používáte Xcode 11**, měli byste místo `SceneDelegate.swift` toho umístit MSAL zpětné volání do.
+**Pokud používáte Xcode 11**, měli byste místo toho umístit MSAL zpětné volání do `SceneDelegate.swift` .
 Pokud podporujete UISceneDelegate i UIApplicationDelegate pro zajištění kompatibility se staršími systémy iOS, je nutné MSAL zpětné volání umístit do obou souborů.
 
 ```swift
@@ -434,13 +440,13 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 Nyní můžeme implementovat logiku zpracování uživatelského rozhraní aplikace a interaktivně získat tokeny prostřednictvím MSAL.
 
-MSAL zpřístupňuje dvě primární metody získání tokenů `acquireTokenSilently()` : `acquireTokenInteractively()`a: 
+MSAL zpřístupňuje dvě primární metody získání tokenů: `acquireTokenSilently()` a `acquireTokenInteractively()` : 
 
 - `acquireTokenSilently()`pokusí se přihlásit uživatele a získat tokeny bez zásahu uživatele, pokud je přítomen účet. `acquireTokenSilently()`vyžaduje poskytnutí platného `MSALAccount` , který lze načíst pomocí některého z rozhraní API výčtu MSAL účtu. Tato ukázka používá `applicationContext.getCurrentAccount(with: msalParameters, completionBlock: {})` k načtení aktuálního účtu. 
 
 - `acquireTokenInteractively()`Při pokusu o přihlášení uživatele vždy zobrazuje uživatelské rozhraní. K zajištění interaktivního prostředí jednotného přihlašování může používat soubory cookie relace v prohlížeči nebo účtu v rámci služby Microsoft Authenticator.
 
-Do `ViewController` třídy přidejte následující kód:
+Do třídy přidejte následující kód `ViewController` :
 
 ```swift
     func getGraphEndpoint() -> String {
@@ -505,14 +511,14 @@ Do `ViewController` třídy přidejte následující kód:
 
 #### <a name="get-a-token-interactively"></a>Interaktivní získání tokenu
 
-Následující kód získá token poprvé, a to vytvořením `MSALInteractiveTokenParameters` objektu a voláním. `acquireToken` Dále přidáte kód, který:
+Následující kód získá token poprvé, a to vytvořením `MSALInteractiveTokenParameters` objektu a voláním `acquireToken` . Dále přidáte kód, který:
 
 1. Vytvoří `MSALInteractiveTokenParameters` s rozsahy.
 2. Volání `acquireToken()` s vytvořenými parametry.
 3. Zpracovává chyby. Další podrobnosti najdete v tématu [Průvodce zpracováním chyb MSAL pro iOS a MacOS](msal-handling-exceptions.md).
 4. Zpracuje úspěšný případ.
 
-Do `ViewController` třídy přidejte následující kód.
+Do třídy přidejte následující kód `ViewController` .
 
 ```swift
 func acquireTokenInteractively() {
@@ -552,7 +558,7 @@ func acquireTokenInteractively() {
 
 #### <a name="get-a-token-silently"></a>Bezobslužné získání tokenu
 
-Chcete-li získat aktualizovaný token tiše, přidejte do `ViewController` třídy následující kód. Vytvoří `MSALSilentTokenParameters` objekt a volání `acquireTokenSilent()`:
+Chcete-li získat aktualizovaný token tiše, přidejte do třídy následující kód `ViewController` . Vytvoří `MSALSilentTokenParameters` objekt a volání `acquireTokenSilent()` :
 
 ```swift
     
@@ -622,7 +628,7 @@ Jakmile máte token, může ji aplikace v hlavičce HTTP použít k provedení a
 | ------------- | --------------------- |
 | Autorizace | \<Přístup k> nosných tokenů |
 
-Do `ViewController` třídy přidejte následující kód:
+Do třídy přidejte následující kód `ViewController` :
 
 ```swift
     func getContentWithToken() {
@@ -663,7 +669,7 @@ Dále přidejte podporu pro odhlášení.
 > [!Important]
 > Odhlášení pomocí MSAL odebere všechny známé informace o uživateli z aplikace a odebere aktivní relaci na jejich zařízení, pokud to povoluje konfigurace zařízení. Volitelně můžete uživatele z prohlížeče taky podepsat.
 
-Chcete-li přidat možnost odhlášení, přidejte do `ViewController` třídy následující kód. 
+Chcete-li přidat možnost odhlášení, přidejte do třídy následující kód `ViewController` . 
 
 ```swift 
 @objc func signOut(_ sender: AnyObject) {
@@ -705,11 +711,11 @@ Ve výchozím nastavení MSAL ukládá do mezipaměti tokeny vaší aplikace v �
 
 Postup povolení ukládání tokenů do mezipaměti:
 1. Ujistěte se, že je aplikace správně podepsaná.
-2. Přejít na nastavení projektu Xcode **karta** > možnosti >**Povolit sdílení řetězce klíčů**
+2. Přejít na nastavení projektu Xcode **karta možnosti**>  >  **Povolit sdílení řetězce klíčů**
 3. Klikněte **+** a zadejte následující položku **skupin klíčů** : 3. a pro iOS zadejte `com.microsoft.adalcache` 3. b pro MacOS ENTER.`com.microsoft.identity.universalstorage`
 
 ### <a name="add-helper-methods"></a>Přidat pomocné metody
-Dokončete ukázku přidáním následujících pomocných `ViewController` metod do třídy.
+Dokončete ukázku přidáním následujících pomocných metod do `ViewController` třídy.
 
 ### <a name="ios-ui"></a>uživatelské rozhraní iOS:
 
@@ -822,7 +828,7 @@ Pomocí následujícího kódu si přečtete aktuální konfiguraci zařízení,
 
 ### <a name="multi-account-applications"></a>Aplikace s více účty
 
-Tato aplikace je vytvořená pro scénář s jedním účtem. MSAL podporuje také scénáře s více účty, ale vyžaduje další práci z aplikací. Budete muset vytvořit uživatelské rozhraní, které uživatelům pomůže vybrat, který účet chtějí použít pro každou akci, která vyžaduje tokeny. Alternativně může vaše aplikace implementovat heuristiku pro výběr účtu, který se má použít, dotazování na všechny účty z MSAL. Podívejte `accountsFromDeviceForParameters:completionBlock:` se například na [rozhraní API](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplication.html#/c:objc(cs)MSALPublicClientApplication(im)accountsFromDeviceForParameters:completionBlock:)
+Tato aplikace je vytvořená pro scénář s jedním účtem. MSAL podporuje také scénáře s více účty, ale vyžaduje další práci z aplikací. Budete muset vytvořit uživatelské rozhraní, které uživatelům pomůže vybrat, který účet chtějí použít pro každou akci, která vyžaduje tokeny. Alternativně může vaše aplikace implementovat heuristiku pro výběr účtu, který se má použít, dotazování na všechny účty z MSAL. Podívejte se například na `accountsFromDeviceForParameters:completionBlock:` [rozhraní API](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplication.html#/c:objc(cs)MSALPublicClientApplication(im)accountsFromDeviceForParameters:completionBlock:)
 
 ## <a name="test-your-app"></a>Testování aplikace
 
@@ -834,6 +840,6 @@ Když se uživatel poprvé přihlásí do vaší aplikace, zobrazí se mu výzva
 
 Po přihlášení aplikace zobrazí data vrácená z Microsoft Graphho `/me` koncového bodu.
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
 Pokud máte potíže s tímto kurzem nebo s platformou Microsoft identity, přejděte na [pomoc a podpora](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) .

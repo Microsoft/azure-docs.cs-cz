@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: 9f3a175352aa0455cecc2e31e235a60cc27c76c5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: bed65754dd872d51d4cbd1bccc673373e8e96846
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792169"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652997"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure CLI
 
@@ -53,7 +53,7 @@ K dokončení příkladu v tomto kurzu potřebujete existující virtuální po�
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/powershell](https://shell.azure.com/powershell)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="create-an-image-gallery"></a>Vytvoření galerie imagí 
 
@@ -118,7 +118,7 @@ Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v r
 
 V tomto příkladu je verze naší image *1.0.0* a v oblasti *středozápadní USA* se vytvoří 2 repliky, 1 replika v *střed USA – jih* oblasti a 1 replika v oblasti *východní USA 2* s použitím redundantního úložiště v zóně. Oblasti replikace musí zahrnovat oblast, ve které je umístěný zdrojový virtuální počítač.
 
-`--managed-image` V tomto příkladu nahraďte hodnotu ID virtuálního počítače z předchozího kroku.
+`--managed-image`V tomto příkladu nahraďte hodnotu ID virtuálního počítače z předchozího kroku.
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -134,7 +134,7 @@ az sig image-version create \
 > [!NOTE]
 > Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image.
 >
-> Image můžete ukládat do úložiště `--storage-account-type  premium_lrs`Premiun přidáním nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `--storage-account-type  standard_zrs` při vytváření verze image.
+> Image můžete ukládat do úložiště Premiun přidáním `--storage-account-type  premium_lrs` nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `--storage-account-type  standard_zrs` při vytváření verze image.
 >
 
  
@@ -142,7 +142,7 @@ az sig image-version create \
 
 Vytvořte virtuální počítač pomocí příkazového typu [AZ VM Create](/cli/azure/vm#az-vm-create) pomocí parametru--specializované, který označuje, že se jedná o specializovanou image. 
 
-Použijte ID definice image pro `--image` k vytvoření virtuálního počítače z nejnovější verze image, která je k dispozici. Virtuální počítač můžete vytvořit také z konkrétní verze zadáním ID verze image pro `--image`. 
+Použijte ID definice image pro `--image` k vytvoření virtuálního počítače z nejnovější verze image, která je k dispozici. Virtuální počítač můžete vytvořit také z konkrétní verze zadáním ID verze image pro `--image` . 
 
 V tomto příkladu vytváříme virtuální počítač z nejnovější verze *myImageDefinition* image.
 
@@ -167,7 +167,7 @@ az sig show \
    --query id
 ```
 
-Pomocí ID objektu jako oboru společně s e-mailovou adresou a [AZ role Assignment vytvořit](/cli/azure/role/assignment#az-role-assignment-create) poskytněte uživateli přístup k galerii sdílených imagí. `<email-address>` Nahraďte `<gallery iD>` a vlastními informacemi.
+Pomocí ID objektu jako oboru společně s e-mailovou adresou a [AZ role Assignment vytvořit](/cli/azure/role/assignment#az-role-assignment-create) poskytněte uživateli přístup k galerii sdílených imagí. Nahraďte `<email-address>` a `<gallery iD>` vlastními informacemi.
 
 ```azurecli-interactive
 az role assignment create \
@@ -196,5 +196,5 @@ V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili
 Přejděte k dalšímu kurzu, kde se seznámíte s vysoce dostupnými virtuálními počítači.
 
 > [!div class="nextstepaction"]
-> [Vytvořte virtuální počítače s vysokou dostupností](tutorial-availability-sets.md).
+> [Vytvoření vysoce dostupných virtuálních počítačů](tutorial-availability-sets.md)
 

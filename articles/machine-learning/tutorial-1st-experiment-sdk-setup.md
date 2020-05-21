@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 535cf95216cca210b5add5ca22cd6e5b1b997541
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 3177de6816dd690514620098e79db844077fbaf6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778993"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655443"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,9 @@ Pracovní prostor můžete vytvořit prostřednictvím Azure Portal, webové kon
 
 V tomto kurzu se v pracovním prostoru používá cloudový notebook pro instalaci bez předkonfigurovaného a předem nakonfigurovaného prostředí. Použijte [vlastní prostředí](how-to-configure-environment.md#local) , pokud dáváte přednost kontrole prostředí, balíčků a závislostí.
 
- Pomocí podrobných kroků níže můžete tento kurz klonovat a spustit z pracovního prostoru. 
+ Postupujte podle tohoto videa nebo použijte podrobný postup k naklonování a spuštění kurzu z pracovního prostoru. 
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
 ### <a name="clone-a-notebook-folder"></a>Naklonování složky poznámkového bloku
 
@@ -110,7 +112,7 @@ V tomto kurzu jste dokončili tyto úkoly:
 * Byl vytvořen Azure Machine Learning pracovní prostor.
 * Vytvořili a nakonfigurovali jste v pracovním prostoru Server cloudového poznámkového bloku.
 
-Ve **druhé části** kurzu spouštíte kód v `tutorial-1st-experiment-sdk-train.ipynb` nástroji pro výuku modelu strojového učení. 
+Ve **druhé části** kurzu spouštíte kód v nástroji `tutorial-1st-experiment-sdk-train.ipynb` pro výuku modelu strojového učení. 
 
 > [!div class="nextstepaction"]
 > [Kurz: výuka prvního modelu](tutorial-1st-experiment-sdk-train.md)

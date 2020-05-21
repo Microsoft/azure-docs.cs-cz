@@ -3,12 +3,12 @@ title: 'Rychlý Start: nasazení aplikace pomocí portálu LUIS'
 description: V tomto rychlém startu se dozvíte, jak nasadit aplikaci vytvořením prostředku koncového bodu předpovědi, přiřazení prostředku, školení a publikování aplikace.
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585054"
+ms.locfileid: "83653232"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý Start: nasazení aplikace na portálu LUIS
 
@@ -40,7 +40,8 @@ Pokaždé, když vytvoříte nový prostředek pro vytváření obsahu nebo pře
 
 1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřadit prostředek**.
 
-   ![Přiřazení prostředku k aplikaci](./media/get-started-portal-deploy-app/assign-resource.png)
+   > [!div class="mx-imgBorder"]
+   > ![Přiřazení prostředku k aplikaci](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. Při přidávání klíčového obsahu do aplikace proveďte stejný postup.
 
@@ -51,11 +52,11 @@ Pokaždé, když vytvoříte nový prostředek pro vytváření obsahu nebo pře
 
 ## <a name="train-the-app"></a>Trénování aplikace
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
+Pokud jste aplikaci změnili, protože jste ji proučeni jako poslední, [prohlaste](get-started-portal-build-app.md) si aplikaci.
 
 ## <a name="publish-the-app-to-the-prediction-endpoint"></a>Publikování aplikace do koncového bodu předpovědi
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="prediction-endpoint-request"></a>Požadavek koncového bodu předpovědi
 

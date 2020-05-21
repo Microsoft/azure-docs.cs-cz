@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e453723692e0e6c08c1bd03301318688082201c2
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: e6b752eab3f6a8f40fad8b2f947a82f86a8ccfe5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570948"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652063"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>Kurz: Příprava na nasazení Azure Stack Edge  
 
@@ -22,15 +22,16 @@ Toto je první kurz v sérii kurzů pro nasazení, které jsou potřeba k úpln�
 
 K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Příprava portálu trvá méně než 10 minut.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
+>
 > * Vytvoření nového prostředku
 > * Získání aktivačního klíče
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-### <a name="get-started"></a>Začínáme
+## <a name="get-started"></a>Začínáme
 
 Postup nasazení Azure Stack Edge najdete v následujících kurzech v předepsané posloupnosti.
 
@@ -52,14 +53,15 @@ Níže jsou uvedené požadavky na konfiguraci pro váš Azure Stack hraniční 
 
 Než začnete, ujistěte se, že:
 
-- Vaše předplatné Microsoft Azure je povolené pro prostředek Azure Stack Edge. Předplatná s průběžnými platbami se nepodporují.
-- Máte přístup vlastníka nebo přispěvatele na úrovni skupiny prostředků pro Azure Stack prostředky hraniční/Data Box Gateway, IoT Hub a Azure Storage.
+* Vaše předplatné Microsoft Azure je povolené pro prostředek Azure Stack Edge. Ujistěte se, že jste použili podporované předplatné, jako je například [Microsoft smlouva Enterprise (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Předplatná s průběžnými platbami se nepodporují.
 
-    - Pokud chcete vytvořit Azure Stack hraničního nebo Data Box Gatewayho prostředku, měli byste mít oprávnění jako Přispěvatel (nebo vyšší) vymezené na úrovni skupiny prostředků. Musíte se také ujistit, že je `Microsoft.DataBoxEdge` poskytovatel zaregistrován. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Pokud chcete vytvořit libovolný prostředek IoT Hub, ujistěte se, že je poskytovatel Microsoft. Devices zaregistrovaný. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Pokud chcete vytvořit prostředek účtu úložiště, musíte pro něj znovu použít rozsah přístupu přispěvatele nebo vyšší úrovně. Azure Storage je ve výchozím nastavení registrovaný poskytovatel prostředků.
-- K Graph API Azure Active Directory máte oprávnění správce nebo uživatel. Další informace najdete v tématu [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
-- Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
+* Máte přístup vlastníka nebo přispěvatele na úrovni skupiny prostředků pro Azure Stack prostředky hraniční/Data Box Gateway, IoT Hub a Azure Storage.
+
+  * Pokud chcete vytvořit Azure Stack hraničního nebo Data Box Gatewayho prostředku, měli byste mít oprávnění jako Přispěvatel (nebo vyšší) vymezené na úrovni skupiny prostředků. Musíte se také ujistit, že `Microsoft.DataBoxEdge` je poskytovatel zaregistrován. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+  * Pokud chcete vytvořit libovolný prostředek IoT Hub, ujistěte se, že je poskytovatel Microsoft. Devices zaregistrovaný. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+  * Pokud chcete vytvořit prostředek účtu úložiště, musíte pro něj znovu použít rozsah přístupu přispěvatele nebo vyšší úrovně. Azure Storage je ve výchozím nastavení registrovaný poskytovatel prostředků.
+* K Graph API Azure Active Directory máte oprávnění správce nebo uživatel. Další informace najdete v tématu [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+* Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
 
 ### <a name="for-the-azure-stack-edge-device"></a>Pro zařízení Azure Stack Edge
 
@@ -70,7 +72,6 @@ Před nasazením fyzického zařízení se ujistěte, že:
 - Máte přístup k plochému, stabilnímu a pracovnímu pracovnímu prostoru, kde může zařízení bezpečně klidovat.
 - Lokalita, ve které máte v úmyslu zařízení nastavit, má standardní sílu napájení z nezávislého zdroje nebo jednotky PDU (AC) (napájení) s nepřerušitelným zdrojem napájení (UPS).
 - Máte přístup k fyzickému zařízení.
-
 
 ### <a name="for-the-datacenter-network"></a>Síť datacentra
 
@@ -90,9 +91,9 @@ Pokud máte existující Azure Stack hraniční prostředek pro správu fyzické
 Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal následující kroky.
 
 1. Použití přihlašovacích údajů pro Microsoft Azure pro přihlášení k 
-    
-    - Azure Portal na této adrese URL: [https://portal.azure.com](https://portal.azure.com).
-    - Nebo Azure Government portál na této adrese URL: [https://portal.azure.us](https://portal.azure.us). Další podrobnosti najdete na webu [připojení k Azure Government pomocí portálu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+
+    - Azure Portal na této adrese URL: [https://portal.azure.com](https://portal.azure.com) .
+    - Nebo Azure Government portál na této adrese URL: [https://portal.azure.us](https://portal.azure.us) . Další podrobnosti najdete na webu [připojení k Azure Government pomocí portálu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte a vyberte **Azure Stack Edge/data box Gateway**. Vyberte **Vytvořit**.
 3. Vyberte předplatné, které chcete použít pro Azure Stack hraniční zařízení. Vyberte oblast, ve které chcete nasadit prostředek Azure Stack Edge. Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
@@ -155,14 +156,16 @@ Až bude prostředek Azure Stack Edge v provozu, budete muset získat aktivačn�
     ![Získání aktivačního klíče](media/azure-stack-edge-deploy-prep/get-activation-key.png)
 
 > [!IMPORTANT]
-> - Aktivační klíč vyprší tři dny po vygenerování.
-> - Pokud vypršela platnost klíče, vygenerujte nový klíč. Starší klíč není platný.
+>
+> * Aktivační klíč vyprší tři dny po vygenerování.
+> * Pokud vypršela platnost klíče, vygenerujte nový klíč. Starší klíč není platný.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se seznámili s tématy Azure Stack Edge, jako jsou:
 
 > [!div class="checklist"]
+>
 > * Vytvoření nového prostředku
 > * Získání aktivačního klíče
 

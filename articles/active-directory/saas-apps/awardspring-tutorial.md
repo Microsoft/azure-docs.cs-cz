@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab8f18c065b283883cfca0a0d555a5fa3bb9d5a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e199b0d6cf2be7dc956267843f4dabe521d87428
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78897817"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647622"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-awardspring"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s AwardSpring
 
@@ -99,11 +99,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace AwardSpring několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    |  Název | Zdrojový atribut |
+    |  Name | Zdrojový atribut |
     | ---------------| --------------- |
     | Jméno | User. křestní jméno |
     | Příjmení | User. příjmení |
-    | E-mailu | uživatel. pošta |
+    | E-mail | uživatel. pošta |
     | Uživatelské jméno | User. userPrincipalName |
     | StudentID | ID studenta < > |
 
@@ -126,7 +126,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -157,7 +157,7 @@ Ke konfiguraci jednotného přihlašování na straně **AwardSpring** je potře
 V této části se v AwardSpring vytvoří uživatel s názvem B. Simon. AwardSpring podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v AwardSpring neexistuje, vytvoří se po ověření nový.
 
 > [!Note]
-> Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory AwardSpring](maito:support@awardspring.com).
+> Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory AwardSpring](mailto:support@awardspring.com).
 
 ## <a name="test-sso"></a>Test SSO
 
@@ -165,7 +165,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici AwardSpring, měli byste se automaticky přihlásit k AwardSpring, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

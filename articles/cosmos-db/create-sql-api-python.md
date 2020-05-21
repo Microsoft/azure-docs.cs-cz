@@ -1,30 +1,30 @@
 ---
 title: 'Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API'
 description: Tento článek představuje ukázku kódu Python, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API.
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 03/09/2020
-ms.author: sngun
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 10247e22b3fbe1250a15b06a0cce974905ca6b7f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 674b9d132f96b8807355955949463c000565bb38
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78942616"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654609"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -33,8 +33,8 @@ V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhran�
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčem. `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`
-- [Python 3.6 +](https://www.python.org/downloads/), se `python` spustitelným souborem v `PATH`.
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčem `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
+- [Python 3.6 +](https://www.python.org/downloads/), se `python` spustitelným souborem v `PATH` .
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Přípona Pythonu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview).
 - [Git](https://www.git-scm.com/downloads). 
@@ -47,7 +47,7 @@ V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhran�
 
 Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření databáze a kontejneru. 
 
-1. Vyberte **Průzkumník dat** > **Nový kontejner**. 
+1. Vyberte **Průzkumník dat**  >  **Nový kontejner**. 
     
     Úplně vpravo se zobrazí oblast **Přidat kontejner** , možná se budete muset posunout doprava, aby se zobrazila.
 
@@ -57,9 +57,9 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
 
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
-    |**ID databáze**|Úlohy|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`ani mezeru. Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
+    |**ID databáze**|Úlohy|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
     |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
-    |**ID kontejneru**|Items|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
+    |**ID kontejneru**|Items (Položky)|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
     |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
     
     Kromě předchozích nastavení můžete volitelně přidat **jedinečné klíče** pro kontejner. V tomto příkladu ponecháme toto pole prázdné. Jedinečné klíče umožňují vývojářům přidat do databáze vrstvu integrity dat. Vytvořením jedinečné zásady klíčů při vytváření kontejneru zajistíte jedinečnost jedné nebo více hodnot na klíč oddílu. Další informace najdete v článku [Jedinečné klíče ve službě Azure Cosmos DB](unique-keys.md).
@@ -147,19 +147,19 @@ Všechny následující fragmenty kódu jsou pořízeny ze souboru *cosmos_get_s
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=read_item)]
 
-* Dotaz se provádí pomocí syntaxe dotazu SQL. Vzhledem k tomu, že ```lastName``` v klauzuli WHERE používáme klíčové hodnoty oddílu, Azure Cosmos DB bude efektivně směrovat tento dotaz na relevantní oddíly a zlepší výkon.
+* Dotaz se provádí pomocí syntaxe dotazu SQL. Vzhledem k tomu, že v klauzuli WHERE používáme klíčové hodnoty oddílu ```lastName``` , Azure Cosmos DB bude efektivně směrovat tento dotaz na relevantní oddíly a zlepší výkon.
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
    
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-1. V Visual Studio Code vyberte **Zobrazit** > **paleta příkazů**. 
+1. V Visual Studio Code vyberte **Zobrazit**  >  **paleta příkazů**. 
 
 2. Do příkazového řádku zadejte **Python: Select Interpreter** a pak vyberte verzi jazyka Python, kterou chcete používat.
 
     Zápatí v aplikaci Visual Studio Code se aktualizuje a bude označovat, že je vybraný interpret. 
 
-3. Výběrem **Zobrazit** > **integrovaný terminál** otevřete Visual Studio Code integrovaný terminál.
+3. Výběrem **Zobrazit**  >  **integrovaný terminál** otevřete Visual Studio Code integrovaný terminál.
 
 4. V okně integrovaného terminálu se ujistěte, že jste ve složce *Azure-Cosmos-DB-Python-Začínáme-Started* . Pokud ne, spusťte následující příkaz, abyste do složky ukázky přešli. 
 
@@ -181,7 +181,7 @@ Všechny následující fragmenty kódu jsou pořízeny ze souboru *cosmos_get_s
     python cosmos_get_started.py
     ```
 
-7. Pokud chcete potvrdit, že se nové položky vytvořily a uložily, vyberte v Azure Portal **Průzkumník dat** > **AzureSampleFamilyDatabase** > **položky**AzureSampleFamilyDatabase. Zobrazit položky, které byly vytvořeny. Například tady je ukázkový dokument JSON pro Andersen rodinu:
+7. Pokud chcete potvrdit, že se nové položky vytvořily a uložily, vyberte v Azure Portal **Průzkumník dat**  >  **AzureSampleFamilyDatabase**  >  **položky**AzureSampleFamilyDatabase. Zobrazit položky, které byly vytvořeny. Například tady je ukázkový dokument JSON pro Andersen rodinu:
    
    ```json
    {

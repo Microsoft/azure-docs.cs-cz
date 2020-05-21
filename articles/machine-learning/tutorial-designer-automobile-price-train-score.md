@@ -9,12 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
-ms.openlocfilehash: d730eb64f5025daa740e4fad0fce0a95300363e1
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: designer
+ms.openlocfilehash: 16f281cce70fb8d2a943b62c796c3037649c3c72
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983393"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656577"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,7 +70,7 @@ Kanál běží na výpočetním cíli, což je výpočetní prostředek, který 
 
 Pro celý kanál můžete nastavit **výchozí výpočetní cíl** , který všem modulům oznámí, že ve výchozím nastavení bude používat stejný cíl výpočtů. Pro jednotlivé moduly ale můžete určit výpočetní cíle.
 
-1. Vedle názvu kanálu ![vyberte](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) **ikonu ozubeného kolečka** ikony ozubeného kolečka v horní části plátna a otevřete tak podokno **Nastavení** .
+1. Vedle názvu kanálu vyberte **ikonu ozubeného kolečka** ![ ikony ozubeného kolečka ](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) v horní části plátna a otevřete tak podokno **Nastavení** .
 
 1. V podokně **Nastavení** napravo od plátna vyberte **vybrat cíl výpočtů**.
 
@@ -217,7 +218,7 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
     
     Tato možnost zobrazí několik kategorií modulů, které lze použít k inicializaci výukových algoritmů.
 
-1. Vyberte **regresní** > **lineární regresi**a přetáhněte ji na plátno kanálu.
+1. Vyberte **regresní**  >  **lineární regresi**a přetáhněte ji na plátno kanálu.
 
 1. Připojte výstup modulu **lineární regrese** k levému vstupu modulu **vlak model** .
 
@@ -292,7 +293,7 @@ Po dokončení běhu můžete zobrazit výsledky spuštění kanálu. Nejprve se
 
 1. Vyberte modul určení **skóre modelu** , ve kterém chcete zobrazit jeho výstup.
 
-1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly** > ikona vizualizace ![ikona grafu](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) pro zobrazení výsledků.
+1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly** > ikona ![ vizualizace ikona grafu ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) pro zobrazení výsledků.
 
     Tady vidíte předpovězené ceny a skutečné ceny z testovacích dat.
 
@@ -304,7 +305,7 @@ Pomocí **modelu vyhodnocení** můžete zjistit, jak dobře byl vyškolený mod
 
 1. Vyberte modul **vyhodnocení modelu** a zobrazte jeho výstup.
 
-1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly** > ikona vizualizace ![ikona grafu](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) pro zobrazení výsledků.
+1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly** > ikona ![ vizualizace ikona grafu ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) pro zobrazení výsledků.
 
 Pro váš model se zobrazí následující statistiky:
 

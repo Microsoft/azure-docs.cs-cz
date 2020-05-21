@@ -9,12 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d8c38707f68b5841edb39e4527ec2cdcb1a35adf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: designer
+ms.openlocfilehash: 41b6fb38798e9aa7264000676d81101db1c83236
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983376"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656538"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Kurz: nasazení modelu strojového učení pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,7 +38,7 @@ Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení 
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Vytvoření kanálu odvození v reálném čase
 
-1. Nad plátnem kanálu vyberte **vytvořit odvození kanálu** > **odvození kanálu v reálném čase**.
+1. Nad plátnem kanálu vyberte **vytvořit odvození kanálu**  >  **odvození kanálu v reálném čase**.
 
     ![Snímek obrazovky ukazující, kde najít tlačítko vytvořit kanál](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
@@ -68,7 +69,7 @@ V dialogovém okně, které se zobrazí, můžete vybrat z existujících cluste
 
 1. V dialogovém okně, které se zobrazí, vyberte **COMPUTE** . tím přejdete na stránku **COMPUTE** .
 
-1. Na pásu karet navigace vyberte **odvozené clustery** > **+ nové**.
+1. Na pásu karet navigace vyberte **odvozené clustery**  >  **+ nové**.
 
     ![Snímek obrazovky znázorňující, jak se dostat k novému podoknu clusteru odvození](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 

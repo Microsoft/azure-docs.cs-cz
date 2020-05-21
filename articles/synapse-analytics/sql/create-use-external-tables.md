@@ -9,16 +9,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f90021e35b4089547b236d01b10820f6c06bd0cc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 039fdda4ab8fe636c1eab926c477aea420b59de8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195172"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647479"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Vytvoření a použití externích tabulek v SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
 
-V této části se dozvíte, jak vytvořit a používat externí tabulky v SQL na vyžádání (Preview). Externí tabulky jsou užitečné, pokud chcete řídit přístup k externím datům v SQL na vyžádání a pokud chcete používat nástroje, jako je například Power BI, ve spojení s SQL na vyžádání. Externí tabulky mají přístup ke dvěma typům úložiště:
+V této části se dozvíte, jak vytvořit a používat [externí tabulky](develop-tables-external-tables.md) v SQL na vyžádání (Preview). Externí tabulky jsou užitečné, pokud chcete řídit přístup k externím datům v SQL na vyžádání a pokud chcete používat nástroje, jako je například Power BI, ve spojení s SQL na vyžádání. Externí tabulky mají přístup ke dvěma typům úložiště:
 - Veřejné úložiště, kde uživatelé přistupují k souborům veřejného úložiště.
 - Chráněné úložiště, kde uživatelé přistupují k souborům úložiště pomocí pověření SAS, identity Azure AD nebo spravované identity pracovního prostoru synapse.
 
@@ -61,7 +61,11 @@ Dotazy v tomto článku se spustí ve vzorové databázi a použijí tyto objekt
 
 ## <a name="create-an-external-table-on-protected-data"></a>Vytvoření externí tabulky v chráněných datech
 
-Můžete vytvářet externí tabulky, které přistupují k datům v účtu služby Azure Storage, který umožňuje přístup k uživatelům s určitou identitou Azure AD nebo klíčem SAS. Externí tabulky můžete vytvořit stejným způsobem jako běžné SQL Server externích tabulkách. Následující dotaz vytvoří externí tabulku, která načte soubor *. csv* z ukázkového účtu Azure Storage SynapseSQL, na který se odkazuje pomocí `sqlondemanddemo` zdroje dat a který je chráněný pomocí pověření s oborem databáze s názvem `sqlondemand` . Přihlašovací údaje zdroje dat a oboru databáze se vytvoří ve [skriptu instalace](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql).
+Můžete vytvářet externí tabulky, které přistupují k datům v účtu služby Azure Storage, který umožňuje přístup k uživatelům s určitou identitou Azure AD nebo klíčem SAS. Externí tabulky můžete vytvořit stejným způsobem jako běžné SQL Server externích tabulkách. 
+
+Následující dotaz vytvoří externí tabulku, která načte soubor *. csv* z ukázkového účtu Azure Storage SynapseSQL, na který se odkazuje pomocí `sqlondemanddemo` zdroje dat a který je chráněný pomocí pověření s oborem databáze s názvem `sqlondemand` . 
+
+Přihlašovací údaje zdroje dat a oboru databáze se vytvoří ve [skriptu instalace](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql).
 
 > [!NOTE]
 > Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili. 
@@ -81,7 +85,6 @@ WITH (
     DATA_SOURCE = sqlondemanddemo,
     FILE_FORMAT = QuotedCSVWithHeaderFormat
 );
-GO
 ```
 
 ## <a name="create-an-external-table-on-public-data"></a>Vytvoření externí tabulky pro veřejná data
@@ -105,9 +108,9 @@ CREATE EXTERNAL TABLE Taxi (
          FILE_FORMAT = ParquetFormat
 );
 ```
-## <a name="use-a-external-table"></a>Použití externí tabulky
+## <a name="use-an-external-table"></a>Použití externí tabulky
 
-Externí tabulky v dotazech můžete použít stejným způsobem jako v SQL Server dotazy.
+[Externí tabulky](develop-tables-external-tables.md) v dotazech můžete použít stejným způsobem jako v SQL Server dotazy.
 
 Následující dotaz demonstruje to pomocí externí tabulky *obyvatel* , kterou jsme vytvořili v předchozí části. V sestupném pořadí vrátí názvy zemí se svými populacemi v 2019.
 

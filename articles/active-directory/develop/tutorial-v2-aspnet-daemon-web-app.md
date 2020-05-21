@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: b9c40d93c48bcf5959b5d9651510ce6076eb789e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201750"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641108"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Kurz: sestavení procesu víceklientské architektury s využitím koncového bodu Microsoft Identity Platform
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Aplikace je sestavená jako aplikace ASP.NET MVC. K přihlašování uživatelů používá middleware OWIN OpenID Connect.
 
-Komponentou "démon" v této ukázce je kontroler rozhraní API `SyncController.cs`,. Když se kontroler zavolá, vyžádá si seznam uživatelů v tenantovi Azure Active Directory zákazníka (Azure AD) z Microsoft Graph. `SyncController.cs`je aktivován voláním AJAX ve webové aplikaci. K získání přístupového tokenu pro Microsoft Graph používá [Microsoft Authentication Library (MSAL) pro .NET](msal-overview.md) .
+Komponentou "démon" v této ukázce je kontroler rozhraní API, `SyncController.cs` . Když se kontroler zavolá, vyžádá si seznam uživatelů v tenantovi Azure Active Directory zákazníka (Azure AD) z Microsoft Graph. `SyncController.cs`je aktivován voláním AJAX ve webové aplikaci. K získání přístupového tokenu pro Microsoft Graph používá [Microsoft Authentication Library (MSAL) pro .NET](msal-overview.md) .
 
 >[!NOTE]
 > Pokud začínáte s platformou Microsoft identity, doporučujeme začít s rychlým startem [procesu .NET Core](quickstart-v2-netcore-daemon.md).
@@ -114,8 +114,8 @@ Pokud nechcete používat automatizaci, postupujte podle kroků v následující
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Na stránce **Přehled** aplikace vyhledejte hodnotu **ID aplikace (klienta)** a zaznamenejte ji pro pozdější použití. Budete ho potřebovat ke konfiguraci konfiguračního souboru sady Visual Studio pro tento projekt.
 1. V seznamu stránek pro aplikaci vyberte **Ověřování**. Potom:
-   - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na **https://localhost:44316/Account/EndSession**.
-   - V části **Upřesnit nastavení** > **implicitní udělení** **přístupu vyberte přístupové tokeny** a **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele a volání rozhraní API.
+   - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na **https://localhost:44316/Account/EndSession** .
+   - V části **Upřesnit nastavení**  >  **implicitní udělení** **přístupu vyberte přístupové tokeny** a **tokeny ID**. Tato ukázka vyžaduje, aby byl [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) povolen pro přihlášení uživatele a volání rozhraní API.
 1. Vyberte **Uložit**.
 1. Na stránce **certifikáty & tajné klíče** v části **tajné klíče klienta** vyberte **nový tajný klíč klienta**. Potom:
 
@@ -199,7 +199,7 @@ Příslušný kód pro tuto ukázku je v následujících souborech:
 1. Přidejte nový **kontroler MVC 5 – prázdná instance s** názvem **UserController**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Přidejte nový **kontroler webového rozhraní API 2 – prázdná instance s** názvem **SyncController**. Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
 1. Pro uživatelské rozhraní ve složce **Views\Account** přidejte tři **prázdné (bez modelu) zobrazení** instancí s názvem **GrantPermissions**, **index**a **UserMismatch**. Přidejte a jeden pojmenovaný **index** do složky **Views\User** . Nahraďte implementaci obsahem souboru se stejným názvem z ukázky.
-1. Aktualizujte **Shared\_layout. cshtml** a **Home\Index.cshtml** , aby správně propojuje různá zobrazení.
+1. Aktualizujte **Shared \_ layout. cshtml** a **Home\Index.cshtml** , aby správně propojuje různá zobrazení.
 
 ## <a name="deploy-the-sample-to-azure"></a>Nasazení ukázky do Azure
 
@@ -211,9 +211,9 @@ Tento projekt má webové aplikace a projekty webového rozhraní API. Pokud je 
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Vytvoření a publikování dotnet-web-démon-v2 na webu Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V levém horním rohu vyberte **Vytvořit prostředek**.
-1. Vyberte **Webová** > **Webová aplikace**a potom zadejte název svého webu. Například pojmenujte ho **dotnet-web-daemon-v2-contoso.azurewebsites.NET**.
+1. Vyberte **Webová**  >  **Webová aplikace**a potom zadejte název svého webu. Například pojmenujte ho **dotnet-web-daemon-v2-contoso.azurewebsites.NET**.
 1. Vyberte informace pro **předplatné**, **skupinu prostředků**a **plán a umístění služby App Service**. **Operační** systém je **Windows**a **publikování** je **kód**.
 1. Vyberte **vytvořit** a počkejte, než se služba App Service vytvoří.
 1. Až se vám zobrazí oznámení o **úspěšném nasazení** , vyberte **Přejít k prostředku** a přejít na nově vytvořenou službu App Service.
@@ -224,7 +224,7 @@ Tento projekt má webové aplikace a projekty webového rozhraní API. Pokud je 
    1. Klikněte pravým tlačítkem na projekt v Průzkumník řešení a pak vyberte **publikovat**.
    1. Na dolním panelu vyberte **Importovat profil** a importujte profil publikování, který jste si stáhli dříve.
 1. Vyberte **Konfigurovat**.
-1. Na kartě **připojení** aktualizujte cílovou adresu URL tak, aby používala https. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`. Vyberte **Další**.
+1. Na kartě **připojení** aktualizujte cílovou adresu URL tak, aby používala https. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` . Vyberte **Další**.
 1. Na kartě **Nastavení** se ujistěte, že je zaškrtnuté políčko **Povolit ověřování organizace** .
 1. Vyberte **Uložit**. Na hlavní obrazovce vyberte **publikovat** .
 
@@ -235,15 +235,15 @@ Visual Studio projekt zveřejní a automaticky otevře prohlížeč na adrese UR
 1. Vraťte se na portál [Azure Portal](https://portal.azure.com).
 1. V levém podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
 1. Vyberte aplikaci **dotnet-web-démon-v2** .
-1. Na stránce **ověřování** pro vaši aplikaci aktualizujte pole **Adresa URL pro odhlášení** pomocí adresy vaší služby. Například použijte [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net).
-1. V nabídce **značky** aktualizujte adresu **URL domovské stránky** na adresu vaší služby. Například použijte [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net).
+1. Na stránce **ověřování** pro vaši aplikaci aktualizujte pole **Adresa URL pro odhlášení** pomocí adresy vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
+1. V nabídce **značky** aktualizujte adresu **URL domovské stránky** na adresu vaší služby. Například použijte `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` .
 1. Konfiguraci uložte.
-1. V seznamu hodnot v nabídce**identifikátory URI přesměrování** **ověřování** > přidejte stejnou adresu URL. Pokud máte více adres URL pro přesměrování, ujistěte se, že je k dispozici nová položka, která pro každou adresu URL přesměrování používá identifikátor URI služby App Service.
+1. V seznamu hodnot v **Authentication**  >  nabídce**identifikátory URI přesměrování** ověřování přidejte stejnou adresu URL. Pokud máte více adres URL pro přesměrování, ujistěte se, že je k dispozici nová položka, která pro každou adresu URL přesměrování používá identifikátor URI služby App Service.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už je nepotřebujete, odstraňte objekt aplikace, který jste vytvořili v kroku [Registrace aplikace](#register-your-application) .  Pokud chcete aplikaci odebrat, postupujte podle pokynů v části [odebrání aplikace vytvořené vámi nebo vaší organizací](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
 K získání podpory od komunity použijte [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) .
 Nejdřív si položte otázky na Stack Overflow a Projděte si stávající problémy, abyste viděli, jestli se někdo na svůj dotaz dotazoval.

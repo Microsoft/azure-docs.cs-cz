@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 026165c7c2052992e8ab485f9ab81c8964f38235
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75889055"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647965"
 ---
-# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Kurz: přístup k Azure Blob Storage z Azure Databricks pomocí Azure Key Vault
+# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Kurz: Přístup ke službě Azure Blob Storage ze služby Azure Databricks s využitím služby Azure Key Vault
 
 V tomto kurzu se dozvíte, jak získat přístup k Azure Blob Storage z Azure Databricks pomocí tajných kódů uložených v trezoru klíčů.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvoření účtu úložiště a kontejneru objektů BLOB
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 > [!Note]
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
@@ -40,7 +40,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Vytvoření účtu úložiště a kontejneru objektů BLOB
 
-1. V Azure Portal vyberte **vytvořit** > **úložiště**prostředků. Pak vyberte **účet úložiště**.
+1. V Azure Portal vyberte **vytvořit**  >  **úložiště**prostředků. Pak vyberte **účet úložiště**.
 
    ![Najít prostředek účtu úložiště Azure](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
 
@@ -76,7 +76,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
    |Vlastnost|Popis|
    |--------|-----------|
-   |Název|Jedinečný název vašeho trezoru klíčů.|
+   |Name|Jedinečný název vašeho trezoru klíčů.|
    |Předplatné|Zvolte předplatné.|
    |Skupina prostředků|Vyberte skupinu prostředků nebo vytvořte novou.|
    |Umístění|Zvolte umístění.|
@@ -94,7 +94,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
    |Vlastnost|Hodnota|
    |--------|-----------|
    |Možnosti nahrání|Ruční|
-   |Název|Popisný název klíče účtu úložiště|
+   |Name|Popisný název klíče účtu úložiště|
    |Hodnota|klíč1 z vašeho účtu úložiště.|
 
    ![Vlastnosti nového tajného klíče trezoru klíčů](./media/store-secrets-azure-key-vault/create-storage-secret.png)
@@ -105,7 +105,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace-and-add-a-secret-scope"></a>Vytvoření pracovního prostoru Azure Databricks a přidání oboru tajného klíče
 
-1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků** > **Analytics** > **Azure Databricks**.
+1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  **Azure Databricks**.
 
     ![Datacihly na Azure Portal](./media/store-secrets-azure-key-vault/azure-databricks-on-portal.png)
 
@@ -167,7 +167,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
    ```
 
    * **Mount-Name** je DBFS cesta, která představuje, kde bude připojen kontejner BLOB Storage nebo složka uvnitř kontejneru (určený ve zdroji).
-   * **klíč conf-Key** může být `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` buď nebo.`fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
+   * **klíč conf-Key** může být buď `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` nebo.`fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
    * **Scope-Name** je název oboru tajného klíče, který jste vytvořili v předchozí části. 
    * **klíč-name** je název tajného klíče, který jste vytvořili pro klíč účtu úložiště ve vašem trezoru klíčů.
 
@@ -176,7 +176,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 6. Spusťte následující příkaz, který přečte textový soubor v kontejneru úložiště objektů blob do datového rámce. Změňte hodnoty v příkazu tak, aby odpovídaly názvu svého připojení a názvu souboru.
 
    ```python
-   df = spark.read.text("mnt/<mount-name>/<file-name>")
+   df = spark.read.text("/mnt/<mount-name>/<file-name>")
    ```
 
    ![Přečíst soubor pro datový rámec](./media/store-secrets-azure-key-vault/command2.png)

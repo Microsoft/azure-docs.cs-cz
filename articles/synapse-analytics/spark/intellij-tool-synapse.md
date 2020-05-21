@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 62546fc98429c3a28217b1992f803aa40ce615c8
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 4d1fafa131a39ab72f6fc09663c7eb5b06107539
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982339"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644860"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Kurz: použití Azure Toolkit for IntelliJ k vytvoření Apache Sparkch aplikací pro fondy Spark (Preview)
 
@@ -23,7 +23,7 @@ V tomto kurzu se dozvíte, jak používat modul plug-in Azure Toolkit for Intell
 - Přístup k prostředkům fondů Spark
 - Vývoj a spouštění aplikace Scala Spark lokálně
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 > [!div class="checklist"]
 >
 > - Použití modulu plug-in Azure Toolkit for IntelliJ
@@ -59,16 +59,17 @@ V tomto kurzu se naučíte:
     | Vlastnost | Popis |
     | ----- | ----- |
     |Název projektu| Zadejte název. Tento kurz používá oblast `myApp`.|
-    |Umístění&nbsp;projektu| Zadejte požadované umístění pro uložení projektu.|
+    |&nbsp;Umístění projektu| Zadejte požadované umístění pro uložení projektu.|
     |Projektový SDK| Může být prázdná při prvním použití NÁPADu. Vyberte **Nový...** a přejděte k JDK.|
     |Verze Sparku|Průvodce vytvořením integruje správnou verzi sady Spark SDK a Scala SDK. Synapse podporuje pouze **Spark 2.4.0**.|
+    |||
 
     ![Výběr sady Apache Spark SDK](./media/intellij-tool-synapse/create-synapse-application02.png)
 
 7. Vyberte **Finish** (Dokončit). Může to trvat několik minut, než bude projekt k dispozici.
 8. Projekt Spark automaticky vytvoří artefakt za vás. Chcete-li zobrazit artefakt, proveďte následující postup:
 
-   a. Z řádku nabídek přejděte na **soubor** > **struktura projektu...**.
+   a. Z řádku nabídek přejděte na **soubor**  >  **struktura projektu...**.
 
    b. V okně **struktura projektu** vyberte **artefakty**.
 
@@ -76,7 +77,7 @@ V tomto kurzu se naučíte:
 
     ![Informace o artefaktu v dialogovém okně](./media/intellij-tool-synapse/default-artifact-dialog.png)
 
-9. Vyhledejte **LogQuery** z **MyApp** > **Src** > **Main** > **scala**Scala> **sample**Sample> **LogQuery**. Tento kurz používá **LogQuery** ke spuštění.
+9. Vyhledejte **LogQuery** z **MyApp**  >  **Src**  >  **Main**  >  **Scala** >  **Sample** >  **LogQuery**. Tento kurz používá **LogQuery** ke spuštění.
 
    ![Příkazy pro vytvoření třídy Scala z projektu](./media/intellij-tool-synapse/select-run-file.png)
 
@@ -86,7 +87,7 @@ Přihlaste se k předplatnému Azure a připojte se k vašim fondům Spark.
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure
 
-1. V řádku nabídek přejděte k **zobrazení** > **nástrojů Windows** > **Azure Explorer**.
+1. V řádku nabídek přejděte k **zobrazení**  >  **nástrojů Windows**  >  **Azure Explorer**.
 
    ![IntelliJ nápad ukazuje Azure Explorer](./media/intellij-tool-synapse/show-azure-explorer1.png)
 
@@ -141,7 +142,7 @@ Po vytvoření aplikace v Scala můžete tuto aplikaci spustit vzdáleně.
     |Fondy Spark|Vyberte fondy Spark, na kterých chcete aplikaci spustit.|
     |Vyberte artefakt, který se má odeslat.|Ponechte výchozí nastavení.|
     |Název hlavní třídy|Výchozí hodnota je hlavní třída z vybraného souboru. Třídu můžete změnit tak, že vyberete tři tečky (**...**) a zvolíte jinou třídu.|
-    |Konfigurace úloh|Můžete změnit výchozí klíč a hodnoty. Další informace najdete v článku [Apache Livy REST API](https://livy.incubator.apache.org./docs/latest/rest-api.html).|
+    |Konfigurace úloh|Můžete změnit výchozí klíč a hodnoty. Další informace najdete v článku [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Argumenty příkazového řádku|V případě potřeby můžete zadat argumenty oddělené mezerou pro hlavní třídu.|
     |Odkazované jar a odkazované soubory|Můžete zadat cesty pro odkazované jar a soubory, pokud existují. Můžete také procházet soubory ve virtuálním systému souborů Azure, který v současné době podporuje jenom cluster ADLS Gen2. Další informace: [Apache Spark konfiguraci](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) a [Postup nahrání prostředků do clusteru](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
     |Úložiště nahrávání úlohy|Rozbalením zobrazíte další možnosti.|
@@ -164,7 +165,7 @@ Můžete postupovat podle pokynů níže pro nastavení místního běhu a míst
 
 ### <a name="scenario-1-do-local-run"></a>Scénář 1: místní spuštění
 
-1. Otevřete dialog **Konfigurace spuštění/ladění** a vyberte znaménko plus (**+**). Pak vyberte možnost **Apache Spark v synapse** . Zadejte informace pro **název**, **název hlavní třídy** , který chcete uložit.
+1. Otevřete dialog **Konfigurace spuštění/ladění** a vyberte znaménko plus ( **+** ). Pak vyberte možnost **Apache Spark v synapse** . Zadejte informace pro **název**, **název hlavní třídy** , který chcete uložit.
 
     ![IntelliJ spustit místní běh konfigurací ladění](./media/intellij-tool-synapse/local-run-synapse.png)
 
@@ -176,7 +177,7 @@ Můžete postupovat podle pokynů níže pro nastavení místního běhu a míst
 
     ![IntelliJ spustit místní běh konfigurací ladění](./media/intellij-tool-synapse/local-run-synapse01.png)
 
-3. Po dokončení místního spuštění, pokud skript obsahuje výstup, můžete výstupní soubor kontrolovat z **dat** > ve**__výchozím nastavení__**.
+3. Po dokončení místního spuštění, pokud skript obsahuje výstup, můžete výstupní soubor kontrolovat z dat ve **data**  >  **__výchozím nastavení__**.
 
     ![Výsledek místního běhu projektu IntelliJ](./media/intellij-tool-synapse/spark-local-run-result.png)
 
@@ -189,7 +190,7 @@ Můžete postupovat podle pokynů níže pro nastavení místního běhu a míst
 
 ## <a name="access-and-manage-synapse-workspace"></a>Přístup a Správa pracovního prostoru synapse
 
-V Azure Exploreru můžete v rámci Azure Toolkit for IntelliJ provádět různé operace. V řádku nabídek přejděte k **zobrazení** > **nástrojů Windows** > **Azure Explorer**.
+V Azure Exploreru můžete v rámci Azure Toolkit for IntelliJ provádět různé operace. V řádku nabídek přejděte k **zobrazení**  >  **nástrojů Windows**  >  **Azure Explorer**.
 
 ### <a name="launch-workspace"></a>Spustit pracovní prostor
 
@@ -211,8 +212,8 @@ Můžete spustit místní konzolu Spark (Scala) nebo spustit konzolu Spark Livy 
 
 Ujistěte se, že jste spokojeni s WINUTILS. Požadovaná součást EXE.
 
-1. Z řádku nabídek přejděte na **Spustit** > **úpravy konfigurace...**.
-2. V okně **Konfigurace spuštění/ladění** v levém podokně přejděte na **Apache Spark v synapse** > **[Spark on synapse] MyApp**.
+1. Z řádku nabídek přejděte na **Spustit**  >  **úpravy konfigurace...**.
+2. V okně **Konfigurace spuštění/ladění** v levém podokně přejděte na **Apache Spark v synapse**  >  **[Spark on synapse] MyApp**.
 3. V hlavním okně vyberte kartu **spustit místně** .
 4. Zadejte následující hodnoty a pak vyberte **OK**:
 
@@ -223,15 +224,15 @@ Ujistěte se, že jste spokojeni s WINUTILS. Požadovaná součást EXE.
 
     ![Konfigurace sady místních konzol](./media/intellij-tool-synapse/local-console-synapse01.png)
 
-5. Z projektu přejděte do **MyApp** > **Src** > **Main** > **Scala** > **MyApp**.
-6. V řádku nabídek přejděte do**konzoly** >  **nástroje** > Spark**spustit prostředí Spark místní konzola (Scala)**.
+5. Z projektu přejděte do **MyApp**  >  **Src**  >  **Main**  >  **Scala**  >  **MyApp**.
+6. V řádku nabídek přejděte do konzoly **nástroje**  >  **Spark**  >  **spustit prostředí Spark místní konzola (Scala)**.
 7. Pak se můžou zobrazit dvě dialogová okna, která vás požádají, pokud chcete automaticky opravovat závislosti. Pokud ano, vyberte možnost **automaticky opravit**.
 
     ![IntelliJ nápad Spark auto Fix Dialog1](./media/intellij-tool-synapse/intellij-console-autofix1.png)
 
     ![IntelliJ nápad Spark auto Fix dialog2](./media/intellij-tool-synapse/intellij-console-autofix2.png)
 
-8. Konzola by měla vypadat podobně jako na obrázku níže. V okně konzoly zadejte `sc.appName`a stiskněte kombinaci kláves CTRL + ENTER. Zobrazí se výsledek. Místní konzolu můžete zastavit kliknutím na tlačítko červené.
+8. Konzola by měla vypadat podobně jako na obrázku níže. V okně konzoly zadejte `sc.appName` a stiskněte kombinaci kláves CTRL + ENTER. Zobrazí se výsledek. Místní konzolu můžete zastavit kliknutím na tlačítko červené.
 
     ![Výsledek místní konzoly IntelliJ](./media/intellij-tool-synapse/local-console-result.png)
 
@@ -239,9 +240,9 @@ Ujistěte se, že jste spokojeni s WINUTILS. Požadovaná součást EXE.
 
 Podporuje se jenom na IntelliJ 2018,2 a 2018,3.
 
-1. Z řádku nabídek přejděte na **Spustit** > **úpravy konfigurace...**.
+1. Z řádku nabídek přejděte na **Spustit**  >  **úpravy konfigurace...**.
 
-2. V okně **Konfigurace spuštění/ladění** v levém podokně přejděte na **Apache Spark v synapse** > **[Spark on synapse] MyApp**.
+2. V okně **Konfigurace spuštění/ladění** v levém podokně přejděte na **Apache Spark v synapse**  >  **[Spark on synapse] MyApp**.
 
 3. V hlavním okně vyberte kartu **vzdáleně spustit na clusteru** .
 
@@ -254,10 +255,10 @@ Podporuje se jenom na IntelliJ 2018,2 a 2018,3.
 
     ![Konfigurace sady interaktivní konzoly](./media/intellij-tool-synapse/interactive-console-configuration.png)
 
-5. Z projektu přejděte do **MyApp** > **Src** > **Main** > **Scala** > **MyApp**.
+5. Z projektu přejděte do **MyApp**  >  **Src**  >  **Main**  >  **Scala**  >  **MyApp**.
 
-6. V řádku nabídek přejděte do**konzoly** >  **nástroje** > Spark**Spustit Livy interaktivní relace (Scala) Sparku**.
-7. Konzola by měla vypadat podobně jako na obrázku níže. V okně konzoly zadejte `sc.appName`a stiskněte kombinaci kláves CTRL + ENTER. Zobrazí se výsledek. Místní konzolu můžete zastavit kliknutím na tlačítko červené.
+6. V řádku nabídek přejděte do konzoly **nástroje**  >  **Spark**  >  **Spustit Livy interaktivní relace (Scala) Sparku**.
+7. Konzola by měla vypadat podobně jako na obrázku níže. V okně konzoly zadejte `sc.appName` a stiskněte kombinaci kláves CTRL + ENTER. Zobrazí se výsledek. Místní konzolu můžete zastavit kliknutím na tlačítko červené.
 
     ![Výsledek IntelliJ NÁPADu pro interaktivní konzolu](./media/intellij-tool-synapse/interactive-console-result.png)
 
@@ -270,4 +271,4 @@ Je vhodné, abyste mohli výsledek skriptu předvídat odesláním kódu do mís
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Vytvoření nového fondu Apache Spark pro pracovní prostor Azure synapse Analytics](../../synapse-analytics/quickstart-create-apache-spark-pool.md)
+- [Vytvoření nového fondu Apache Spark pro pracovní prostor Azure synapse Analytics](../../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)

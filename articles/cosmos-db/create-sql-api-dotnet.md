@@ -1,26 +1,26 @@
 ---
 title: Rychlý Start – vytvoření konzolové aplikace .NET pro správu Azure Cosmos DBch prostředků rozhraní SQL API
 description: Naučte se vytvářet konzolovou aplikaci .NET pro správu Azure Cosmos DB prostředků účtů rozhraní SQL API v tomto rychlém startu.
-author: SnehaGunda
-ms.author: sngun
+author: anfeldma-ms
+ms.author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/12/2019
-ms.openlocfilehash: 0981ed30c6bcd9d4246ce1eb047aa66168e3884a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/11/2020
+ms.openlocfilehash: 829cbad707f24daf3331c87a5cc373239bb83b98
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240412"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658312"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Rychlý Start: Vytvoření konzolové aplikace .NET pro správu Azure Cosmos DBch prostředků rozhraní SQL API
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -34,7 +34,7 @@ Databáze Azure Cosmos je databázová služba Microsoftu s více modely použit
 * Vytváření dotazů na data 
 * Odstranění databáze
 
-[Dokumentace k referenční dokumentaci](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet) | rozhraní API balíček[zdrojového kódu](https://github.com/Azure/azure-cosmos-dotnet-v3) | knihovny[(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
+[Referenční dokumentace k](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-cosmos-dotnet-v3)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,17 +43,17 @@ Databáze Azure Cosmos je databázová služba Microsoftu s více modely použit
 
 ## <a name="setting-up"></a>Nastavení
 
-V této části se seznámíte s vytvořením účtu Azure Cosmos a nastavením projektu, který používá Azure Cosmos DB klientské knihovně rozhraní SQL API pro .NET ke správě prostředků. Vzorový kód popsaný v tomto článku vytvoří `FamilyDatabase` databázi a rodinné příslušníky (každý rodinný člen je položka) v této databázi. Každý rodinný člen má vlastnosti, jako `Id, FamilyName, FirstName, LastName, Parents, Children, Address,`je například. `LastName` Vlastnost se používá jako klíč oddílu pro kontejner. 
+V této části se seznámíte s vytvořením účtu Azure Cosmos a nastavením projektu, který používá Azure Cosmos DB klientské knihovně rozhraní SQL API pro .NET ke správě prostředků. Vzorový kód popsaný v tomto článku vytvoří `FamilyDatabase` databázi a rodinné příslušníky (každý rodinný člen je položka) v této databázi. Každý rodinný člen má vlastnosti, jako je například `Id, FamilyName, FirstName, LastName, Parents, Children, Address,` . `LastName`Vlastnost se používá jako klíč oddílu pro kontejner. 
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Vytvoření účtu Azure Cosmos
 
 Pokud k vytvoření účtu Azure Cosmos použijete možnost [vyzkoušet Azure Cosmos DB for Free](https://azure.microsoft.com/try/cosmosdb/) , je nutné vytvořit účet Azure Cosmos DB typu **SQL API**. Pro vás už je vytvořený testovací účet Azure Cosmos DB. Účet není nutné vytvářet explicitně, takže můžete tuto část přeskočit a přejít k další části.
 
-Pokud máte vlastní předplatné Azure nebo jste předplatné vytvořili zdarma, měli byste účet Azure Cosmos vytvořit explicitně. Následující kód vytvoří účet Azure Cosmos s konzistencí relací. Účet je replikován v `South Central US` a. `North Central US`  
+Pokud máte vlastní předplatné Azure nebo jste předplatné vytvořili zdarma, měli byste účet Azure Cosmos vytvořit explicitně. Následující kód vytvoří účet Azure Cosmos s konzistencí relací. Účet je replikován v `South Central US` a `North Central US` .  
 
 K vytvoření účtu Azure Cosmos můžete použít Azure Cloud Shell. Azure Cloud Shell je interaktivní prostředí pro správu prostředků Azure, které je po ověření dostupné z webového prohlížeče. Umožňuje flexibilně zvolit prostředí, které nejlépe vyhovuje vašemu stylu práce – Bash nebo PowerShell. Pro tento rychlý Start vyberte režim **bash** . Azure Cloud Shell také vyžaduje účet úložiště, můžete ho po zobrazení výzvy vytvořit.
 
-Vyberte tlačítko **vyzkoušet** vedle následujícího kódu, zvolte režim **bash** , vyberte **vytvořit účet úložiště** a přihlaste se Cloud Shell. Další zkopírujte a vložte následující kód do Azure Cloud Shell a spusťte ho. Název účtu Azure Cosmos musí být globálně jedinečný, před spuštěním příkazu se ujistěte, `mysqlapicosmosdb` že jste aktualizovali hodnotu.
+Vyberte tlačítko **vyzkoušet** vedle následujícího kódu, zvolte režim **bash** , vyberte **vytvořit účet úložiště** a přihlaste se Cloud Shell. Další kopii a vložte následující kód, který Azure Cloud Shell a spustí. Název účtu Azure Cosmos musí být globálně jedinečný, před spuštěním příkazu se ujistěte, že jste aktualizovali `mysqlapicosmosdb` hodnotu.
 
 ```azurecli-interactive
 
@@ -84,7 +84,7 @@ Vytvoření účtu Azure Cosmos trvá chvilku, jakmile bude operace úspěšná,
 
 ### <a name="create-a-new-net-app"></a><a id="create-dotnet-core-app"></a>Vytvoření nové aplikace .NET
 
-Vytvořte novou aplikaci .NET v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE). Otevřete příkazový řádek systému Windows nebo okno terminálu z místního počítače. Všechny příkazy v dalších částech budete spouštět z příkazového řádku nebo terminálu.  Spusťte následující příkaz dotnet New a vytvořte novou aplikaci s názvem `todo`. Parametr--langversion – nastaví vlastnost langversion – v souboru vytvořeného projektu.
+Vytvořte novou aplikaci .NET v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE). Otevřete příkazový řádek systému Windows nebo okno terminálu z místního počítače. Všechny příkazy v dalších částech budete spouštět z příkazového řádku nebo terminálu.  Spusťte následující příkaz dotnet New a vytvořte novou aplikaci s názvem `todo` . Parametr--langversion – nastaví vlastnost langversion – v souboru vytvořeného projektu.
 
 ```console
 dotnet new console --langVersion 7.1 -n todo
@@ -123,7 +123,7 @@ dotnet add package Microsoft.Azure.Cosmos
 
 Ukázková aplikace se musí ověřit pro váš účet Azure Cosmos. K ověřování byste měli do aplikace předat přihlašovací údaje účtu Azure Cosmos. Pomocí následujících kroků Získejte přihlašovací údaje k účtu Azure Cosmos:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Přejděte k účtu Azure Cosmos.
 
@@ -131,7 +131,7 @@ Ukázková aplikace se musí ověřit pro váš účet Azure Cosmos. K ověřov�
 
 ### <a name="set-the-environment-variables"></a>Nastavení proměnných prostředí
 
-Po zkopírování **identifikátoru URI** a **primárního klíče** účtu ho uložte do nové proměnné prostředí v místním počítači, na kterém je spuštěná aplikace. Chcete-li nastavit proměnnou prostředí, otevřete okno konzoly a spusťte následující příkaz. Nezapomeňte nahradit `<Your_Azure_Cosmos_account_URI>` hodnoty a `<Your_Azure_Cosmos_account_PRIMARY_KEY>` .
+Po zkopírování **identifikátoru URI** a **primárního klíče** účtu ho uložte do nové proměnné prostředí v místním počítači, na kterém je spuštěná aplikace. Chcete-li nastavit proměnnou prostředí, otevřete okno konzoly a spusťte následující příkaz. Nezapomeňte nahradit `<Your_Azure_Cosmos_account_URI>` `<Your_Azure_Cosmos_account_PRIMARY_KEY>` hodnoty a.
 
 **Windows**
 
@@ -147,7 +147,7 @@ export EndpointUrl = "<Your_Azure_Cosmos_account_URI>"
 export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 ```
 
-**MacOS**
+**macOS**
 
 ```bash
 export EndpointUrl = "<Your_Azure_Cosmos_account_URI>"
@@ -161,7 +161,7 @@ Než začnete sestavovat aplikaci, Podívejme se na hierarchii prostředků v Az
 * Účet Azure Cosmos 
 * Databáze 
 * Containers 
-* Items
+* Items (Položky)
 
 Další informace o hierarchii různých entit najdete v tématu [práce s databázemi, kontejnery a položkami v Azure Cosmos DB](databases-containers-items.md) článku. K interakci s těmito prostředky použijete následující třídy .NET:
 
@@ -177,7 +177,7 @@ Další informace o hierarchii různých entit najdete v tématu [práce s datab
 * [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet
 ) – Tato metoda vytvoří dotaz na položky v rámci kontejneru v databázi Azure Cosmos pomocí příkazu jazyka SQL s parametrizovanými hodnotami. 
 
-* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet) – odstraní zadanou databázi ze svého účtu Azure Cosmos. `DeleteAsync`Metoda odstraní pouze databázi. K disDeleteDatabaseAndCleanupAsync `Cosmosclient` instance by se mělo provádět samostatně (to dělá v metodě). 
+* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet) – odstraní zadanou databázi ze svého účtu Azure Cosmos. `DeleteAsync`Metoda odstraní pouze databázi. K `Cosmosclient` disDeleteDatabaseAndCleanupAsync instance by se mělo provádět samostatně (to dělá v metodě). 
 
  ## <a name="code-examples"></a><a id="code-examples"></a>Příklady kódu
 
@@ -247,7 +247,7 @@ using System.Net;
 using Microsoft.Azure.Cosmos;
 ```
 
-Do souboru **program.cs** přidejte kód pro čtení proměnných prostředí, které jste nastavili v předchozím kroku. Definujte `Container` objekty `CosmosClient`, `Database`a. Dále přidejte kód do metody Main, která volá `GetStartedDemoAsync` metodu, ve které budete spravovat prostředky účtu Azure Cosmos. 
+Do souboru **program.cs** přidejte kód pro čtení proměnných prostředí, které jste nastavili v předchozím kroku. Definujte `CosmosClient` objekty, `Database` a `Container` . Dále přidejte kód do metody Main, která volá `GetStartedDemoAsync` metodu, ve které budete spravovat prostředky účtu Azure Cosmos. 
 
 ```csharp
 namespace todo
@@ -332,7 +332,7 @@ private async Task CreateContainerAsync()
 
 ### <a name="create-an-item"></a>Vytvořit položku
 
-Vytvořte položku rodiny přidáním `AddItemsToContainerAsync` metody s následujícím kódem. Pomocí metod `CreateItemAsync` nebo `UpsertItemAsync` můžete vytvořit položku:
+Vytvořte položku rodiny přidáním `AddItemsToContainerAsync` metody s následujícím kódem. Pomocí `CreateItemAsync` metod nebo můžete `UpsertItemAsync` vytvořit položku:
 
 ```csharp
 private async Task AddItemsToContainerAsync()
@@ -381,7 +381,7 @@ private async Task AddItemsToContainerAsync()
 
 ### <a name="query-the-items"></a>Dotazování na položky
 
-Po vložení položky můžete spustit dotaz a získat podrobnosti o řadě "Andersen". Následující kód ukazuje, jak spustit dotaz přímo pomocí dotazu SQL. Dotaz SQL pro získání podrobností o řadě "Anderson" je: `SELECT * FROM c WHERE c.LastName = 'Andersen'`. Definujte `QueryItemsAsync` metodu v rámci `program.cs` třídy a přidejte do ní následující kód:
+Po vložení položky můžete spustit dotaz a získat podrobnosti o řadě "Andersen". Následující kód ukazuje, jak spustit dotaz přímo pomocí dotazu SQL. Dotaz SQL pro získání podrobností o řadě "Anderson" je: `SELECT * FROM c WHERE c.LastName = 'Andersen'` . Definujte `QueryItemsAsync` metodu v rámci `program.cs` třídy a přidejte do ní následující kód:
 
 
 ```csharp
@@ -428,7 +428,7 @@ private async Task DeleteDatabaseAndCleanupAsync()
 
 ### <a name="execute-the-crud-operations"></a>Provedení operací CRUD
 
-Po definování všech požadovaných metod je proveďte v `GetStartedDemoAsync` metodě. `DeleteDatabaseAndCleanupAsync` Metoda odhlásila do tohoto kódu, protože při spuštění této metody se nezobrazí žádné prostředky. Po ověření, že se v Azure Portal vytvořily prostředky Azure Cosmos DB, je můžete odkomentovat. 
+Po definování všech požadovaných metod je proveďte v `GetStartedDemoAsync` metodě. `DeleteDatabaseAndCleanupAsync`Metoda odhlásila do tohoto kódu, protože při spuštění této metody se nezobrazí žádné prostředky. Po ověření, že se v Azure Portal vytvořily prostředky Azure Cosmos DB, je můžete odkomentovat. 
 
 ```csharp
 public async Task GetStartedDemoAsync()

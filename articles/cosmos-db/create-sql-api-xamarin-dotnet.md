@@ -1,26 +1,26 @@
 ---
 title: 'Azure Cosmos DB: Vytvoření aplikace seznamu úkolů v prostředí Xamarin'
 description: Obsahuje ukázku kódu Xamarin, kterou můžete použít k připojení ke službě Azure Cosmos DB a jejímu dotazování.
-author: codemillmatt
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/30/2018
-ms.author: masoucou
-ms.openlocfilehash: 125cc2516fbd694bbe62545e85d4e14225fb2a6a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 3278374a0a09ed4e776ba0f773ad2dafd9786164
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756427"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652003"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Rychlý Start: Vytvoření aplikace TODO pomocí Azure Cosmos DB účtu rozhraní SQL API pomocí Xamarin
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -118,19 +118,19 @@ Kód v řešení ToDoItems obsahuje:
 Teď se rychle podíváme na to, jak aplikace komunikuje se službou Azure Cosmos DB.
 
 * Do všech projektů je potřeba přidat balíček NuGet [Microsoft.Azure.DocumentDb.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
-* `ToDoItem` Třída ve složce Azure-DocumentDB-dotnet/Samples/Xamarin/ToDoItems/ToDoItems. Core/Models modeluje dokumenty v kontejneru **Items** , který jste vytvořili výše. Mějte na paměti, že v názvech vlastností se rozlišují malá a velká písmena.
+* `ToDoItem`Třída ve složce Azure-DocumentDB-dotnet/Samples/Xamarin/ToDoItems/ToDoItems. Core/Models modeluje dokumenty v kontejneru **Items** , který jste vytvořili výše. Mějte na paměti, že v názvech vlastností se rozlišují malá a velká písmena.
 * Třída `CosmosDBService` ve složce azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Services zapouzdřuje komunikaci se službou Azure Cosmos DB.
-* V třídě `CosmosDBService` je proměnná typu `DocumentClient`. `DocumentClient` Slouží ke konfiguraci a provádění požadavků na účet Azure Cosmos DB a je vytvořena instance:
+* V třídě `CosmosDBService` je proměnná typu `DocumentClient`. `DocumentClient`Slouží ke konfiguraci a provádění požadavků na účet Azure Cosmos DB a je vytvořena instance:
 
     ```csharp
     docClient = new DocumentClient(new Uri(APIKeys.CosmosEndpointUrl), APIKeys.CosmosAuthKey);
     ```
 
-* Při dotazování kontejneru pro dokumenty se používá `DocumentClient.CreateDocumentQuery<T>` metoda, jak je vidět ve `CosmosDBService.GetToDoItems` funkci:
+* Při dotazování kontejneru pro dokumenty se `DocumentClient.CreateDocumentQuery<T>` používá metoda, jak je vidět ve `CosmosDBService.GetToDoItems` funkci:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
 
-    `CreateDocumentQuery<T>` PŘEVEZME identifikátor URI, který odkazuje na kontejner vytvořený v předchozí části. Můžete také zadat operátory LINQ, jako je například klauzule `Where`. V tomto případě se vrátí pouze nesplněné položky seznamu úkolů.
+    `CreateDocumentQuery<T>`Převezme identifikátor URI, který odkazuje na kontejner vytvořený v předchozí části. Můžete také zadat operátory LINQ, jako je například klauzule `Where`. V tomto případě se vrátí pouze nesplněné položky seznamu úkolů.
 
     Funkce `CreateDocumentQuery<T>` se provádí asynchronně a vrací `IQueryable<T>`. Metoda `AsDocumentQuery` však převede `IQueryable<T>` na objekt `IDocumentQuery<T>`, který je možné spustit asynchronně. Díky tomu se v mobilních aplikacích neblokuje vlákno uživatelského rozhraní.
 
@@ -139,17 +139,17 @@ Teď se rychle podíváme na to, jak aplikace komunikuje se službou Azure Cosmo
 > [!TIP]
 > Několik funkcí, které fungují v kontejnerech a dokumentech Azure Cosmos, přebírají identifikátor URI jako parametr, který určuje adresu kontejneru nebo dokumentu. Tento identifikátor URI se vytváří pomocí třídy `URIFactory`. Pomocí této třídy lze vytvořit všechny identifikátory URI pro databáze, kontejnery a dokumenty.
 
-* `ComsmosDBService.InsertToDoItem` Funkce ukazuje, jak vložit nový dokument:
+* `ComsmosDBService.InsertToDoItem`Funkce ukazuje, jak vložit nový dokument:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
 
     Je zadán identifikátor URI položky a také položka, která má být vložena.
 
-* `CosmosDBService.UpdateToDoItem` Funkce ukazuje, jak nahradit existující dokument novým:
+* `CosmosDBService.UpdateToDoItem`Funkce ukazuje, jak nahradit existující dokument novým:
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
 
-    Tady je potřeba nový identifikátor URI, který jednoznačně identifikuje dokument, který se má nahradit, a `UriFactory.CreateDocumentUri` je získaný pomocí a předáním názvů databáze a kontejneru a ID dokumentu.
+    Tady je potřeba nový identifikátor URI, který jednoznačně identifikuje dokument, který se má nahradit, a je získaný pomocí `UriFactory.CreateDocumentUri` a předáním názvů databáze a kontejneru a ID dokumentu.
 
     Metoda `DocumentClient.ReplaceDocumentAsync` nahradí dokument určený identifikátorem URI za nový dokument určený jako parametr.
 
@@ -157,7 +157,7 @@ Teď se rychle podíváme na to, jak aplikace komunikuje se službou Azure Cosmo
 
    [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
 
-    Nezapomeňte si znovu vytvořit jedinečný identifikátor URI dokumentu, který se vytvoří `DocumentClient.DeleteDocumentAsync` a předává do funkce.
+    Nezapomeňte si znovu vytvořit jedinečný identifikátor URI dokumentu, který se vytvoří a předává do `DocumentClient.DeleteDocumentAsync` funkce.
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 

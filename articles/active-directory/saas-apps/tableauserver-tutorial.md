@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 05/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d19a7cc8d81f9e6e913f147b24c5cce03ff82027
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2325259cd5e613223ee77371d7e563e8ab1e94ca
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76986729"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648453"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Kurz: Azure Active Directory integrace jednotného přihlašování se serverem Tableau
 
@@ -107,7 +107,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -145,7 +145,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     b. Zaškrtněte políčko **Povolit ověřování SAML pro server**.
 
-    c. Tableau návratová adresa URL serveru: adresa URL, na kterou budou uživatelé serveru Tableau přístup <http://tableau_server>, například. Použití `http://localhost` se nedoporučuje. Použití adresy URL s koncovým lomítkem (například `http://tableau_server/`) není podporováno. Zkopírujte **návratovou adresu URL serveru Tableau** a vložte ji do TEXTOVÉHO pole **URL pro přihlášení** v **základní části Konfigurace SAML** v Azure Portal
+    c. Tableau návratová adresa URL serveru: adresa URL, na kterou budou uživatelé serveru Tableau přístup, například <http://tableau_server> . Použití `http://localhost` se nedoporučuje. Použití adresy URL s koncovým lomítkem (například) není `http://tableau_server/` podporováno. Zkopírujte **návratovou adresu URL serveru Tableau** a vložte ji do TEXTOVÉHO pole **URL pro přihlášení** v **základní části Konfigurace SAML** v Azure Portal
 
     d. ID entity SAML – ID entity jednoznačně identifikuje vaši instalaci serveru Tableau na IdP. Sem můžete zadat adresu URL serveru Tableau, pokud se vám to líbí, ale nemusí se jednat o adresu URL vašeho serveru Tableau. Zkopírujte **ID entity SAML** a vložte je do textového pole **identifikátor** v **základní části Konfigurace SAML** v Azure Portal
 
@@ -158,7 +158,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     h. Klikněte na **Uložit** .
 
     > [!NOTE]
-    > Zákazník musí nahrávat všechny certifikáty v konfiguraci Tableau serveru SAML pro jednotné přihlašování a v toku jednotného přihlašování se bude ignorovat. Pokud potřebujete pomáhat s konfigurací SAML na serveru Tableau, přečtěte si článek [Konfigurace SAML](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm).
+    > Zákazník musí nahrát PEM soubor certifikátu x509 s příponou. CRT a soubor privátního klíče RSA nebo DSA s příponou. Key jako soubor klíče certifikátu. Další informace o souboru certifikátu a souboru klíče certifikátu najdete v [tomto](https://help.tableau.com/current/server/en-us/saml_requ.htm) dokumentu. Pokud potřebujete pomáhat s konfigurací SAML na serveru Tableau, přečtěte si tento článek [Konfigurace protokolu SAML pro server na šířku](https://help.tableau.com/current/server/en-us/config_saml.htm).
 
 ### <a name="create-tableau-server-test-user"></a>Vytvořit testovacího uživatele serveru Tableau
 

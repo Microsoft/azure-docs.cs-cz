@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: 2cad73f85ce81c650e1f1ff702a099b2d6df8e16
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: ad7baea087cd6073659929cc41f626b597bbae63
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984877"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650337"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: připojení aplikace typu přejít k rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -23,15 +23,15 @@ ms.locfileid: "82984877"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování. V tomto rychlém startu vytvoříte a spravujete účet Azure Cosmos DB pomocí Azure Cloud Shell, naklonete existující ukázkovou aplikaci z GitHubu a nakonfigurujete ji tak, aby fungovala s Azure Cosmos DB. 
 
-Ukázková aplikace je nástroj pro správu založený `todo` na příkazovém řádku napsaný v části přejít. Rozhraní API pro MongoDB je [kompatibilní s MongoDBm přenosovým protokolem](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction#wire-protocol-compatibility), takže je možné, že se k němu připojí kterýkoli klientský ovladač MongoDB. Azure Cosmos DB Tato aplikace používá [ovladač cestách pro MongoDB](https://github.com/mongodb/mongo-go-driver) způsobem, který je transparentní pro aplikaci, že jsou data uložena v databázi Azure Cosmos DB.
+Ukázková aplikace je nástroj pro správu založený na příkazovém řádku `todo` napsaný v části přejít. Rozhraní API pro MongoDB je [kompatibilní s MongoDBm přenosovým protokolem](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction#wire-protocol-compatibility), takže je možné, že se k němu připojí kterýkoli klientský ovladač MongoDB. Azure Cosmos DB Tato aplikace používá [ovladač cestách pro MongoDB](https://github.com/mongodb/mongo-go-driver) způsobem, který je transparentní pro aplikaci, že jsou data uložena v databázi Azure Cosmos DB.
 
 ## <a name="prerequisites"></a>Požadavky
-- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) spolu s připojovacím řetězcem `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true`.
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. Můžete také použít [emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) spolu s připojovacím řetězcem `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
 - V počítači [se nainstaluje a získáte praktické](https://golang.org/) znalosti o cestách.
 - [Git](https://git-scm.com/downloads).
 - Pokud nechcete používat Azure Cloud Shell, [Azure CLI 2.0 +](/cli/azure/install-azure-cli).
@@ -42,7 +42,7 @@ Ukázková aplikace je nástroj pro správu založený `todo` na příkazovém �
 
 Spuštěním následujících příkazů naklonujte ukázkové úložiště.
 
-1. Otevřete příkazový řádek, vytvořte novou složku s názvem `git-samples`a pak zavřete příkazový řádek.
+1. Otevřete příkazový řádek, vytvořte novou složku s názvem `git-samples` a pak zavřete příkazový řádek.
 
     ```bash
     mkdir "C:\git-samples"
@@ -75,7 +75,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru `todo.go`.
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Připojení aplikace v jazyce Go ke službě Azure Cosmos DB
 
-[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions)Zapouzdřuje připojovací řetězec pro Azure Cosmos DB, který se předává pomocí proměnné prostředí (podrobnosti najdete v nadcházející části). Připojení je inicializováno pomocí [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient) , ke kterému `clientOptions` je instance předána. vyvolaná funkce pro potvrzení úspěšného připojení (Jedná se o strategii s chybou pro rychlé obnovení) [ `Ping` ](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping)
+[`clientOptions`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions)Zapouzdřuje připojovací řetězec pro Azure Cosmos DB, který se předává pomocí proměnné prostředí (podrobnosti najdete v nadcházející části). Připojení je inicializováno pomocí, [`mongo.NewClient`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#NewClient) ke kterému `clientOptions` je instance předána. vyvolaná [ `Ping` funkce](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Client.Ping) pro potvrzení úspěšného připojení (Jedná se o strategii s chybou pro rychlé obnovení)
 
 ```go
     ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
@@ -96,12 +96,12 @@ Všechny následující fragmenty kódu pocházejí ze souboru `todo.go`.
 ```
 
 > [!NOTE] 
-> Použití [`SetDirect(true)`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions.SetDirect) konfigurace je důležité, bez toho, aby se zobrazila následující chyba připojení:`unable to connect connection(cdb-ms-prod-<azure-region>-cm1.documents.azure.com:10255[-4]) connection is closed`
+> Použití [`SetDirect(true)`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo/options?tab=doc#ClientOptions.SetDirect) Konfigurace je důležité, bez toho, aby se zobrazila následující chyba připojení:`unable to connect connection(cdb-ms-prod-<azure-region>-cm1.documents.azure.com:10255[-4]) connection is closed`
 >
 
 ### <a name="create-a-todo-item"></a>Vytvořit `todo` položku
 
-Chcete-li `todo`vytvořit, získáme popisovač [`mongo.Collection`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection) a vyvolá [`InsertOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.InsertOne) funkci. 
+Chcete-li vytvořit `todo` , získáme popisovač [`mongo.Collection`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection) a vyvolá [`InsertOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.InsertOne) funkci. 
 
 ```go
 func create(desc string) {
@@ -116,7 +116,7 @@ func create(desc string) {
     }
 ```
 
-Předáte do `Todo` struktury, která obsahuje popis a stav (který je zpočátku nastavený na `pending`hodnotu).
+Předáte do `Todo` struktury, která obsahuje popis a stav (který je zpočátku nastavený na hodnotu `pending` ).
 
 ```go
 type Todo struct {
@@ -125,9 +125,9 @@ type Todo struct {
     Status      string             `bson:"status"`
 }
 ```
-### <a name="list-todo-items"></a>Položky `todo` seznamu
+### <a name="list-todo-items"></a>`todo`Položky seznamu
 
-Na základě kritérií můžeme seznam TODO. Vytvoří [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) se pro zapouzdření kritérií filtru.
+Na základě kritérií můžeme seznam TODO. Vytvoří se [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) pro zapouzdření kritérií filtru.
 
 ```go
 func list(status string) {
@@ -181,7 +181,7 @@ Nakonec se informace vykreslí v tabulkovém formátu.
 
 ### <a name="update-a-todo-item"></a>Aktualizace `todo` položky
 
-`todo` Může být aktualizován na základě jeho `_id`. Vytvoří [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) se filtr založený na `_id` a druhý vytvoří aktualizované informace, což je nový stav (`completed` nebo `pending`) v tomto případě. Nakonec je [`UpdateOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.UpdateOne) funkce vyvolána s filtrem a aktualizovaným dokumentem.
+`todo`Může být aktualizován na základě jeho `_id` . Vytvoří se [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) filtr založený na `_id` a druhý vytvoří aktualizované informace, což je nový stav ( `completed` nebo `pending` ) v tomto případě. Nakonec [`UpdateOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.UpdateOne) je funkce vyvolána s filtrem a aktualizovaným dokumentem.
 
 ```go
 func update(todoid, newStatus string) {
@@ -201,7 +201,7 @@ func update(todoid, newStatus string) {
 
 ### <a name="delete-a-todo"></a>Odstraní`todo`
 
-A `todo` je odstraněn v závislosti na `_id` jeho a zapouzdřený ve formě [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) instance. [`DeleteOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.DeleteOne)je vyvolána pro odstranění dokumentu.
+A `todo` je odstraněn v závislosti na jeho `_id` a zapouzdřený ve formě [`bson.D`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/bson?tab=doc#D) instance. [`DeleteOne`](https://pkg.go.dev/go.mongodb.org/mongo-driver@v1.3.2/mongo?tab=doc#Collection.DeleteOne)je vyvolána pro odstranění dokumentu.
 
 ```go
 func delete(todoid string) {
@@ -221,7 +221,7 @@ func delete(todoid string) {
 
 ## <a name="build-the-application"></a>Sestavení aplikace
 
-Přejděte do adresáře, kam jste naklonováni aplikaci, a sestavte `go build`ji (pomocí).
+Přejděte do adresáře, kam jste naklonováni aplikaci, a sestavte ji (pomocí `go build` ).
 
 ```bash
 cd monogdb-go-quickstart
@@ -268,7 +268,7 @@ az group create --name myResourceGroup --location "West Europe"
 
 Pomocí příkazu [AZ cosmosdb Create](/cli/azure/cosmosdb#az-cosmosdb-create) vytvořte účet Cosmos.
 
-V následujícím příkazu nahraďte `<cosmosdb-name>` zástupný symbol vlastním jedinečným názvem účtu Cosmos. Tento jedinečný název se použije jako součást Cosmos DBho koncového bodu (`https://<cosmosdb-name>.documents.azure.com/`), takže název musí být jedinečný ve všech účtech Cosmos v Azure. 
+V následujícím příkazu nahraďte zástupný symbol vlastním jedinečným názvem účtu Cosmos `<cosmosdb-name>` . Tento jedinečný název se použije jako součást Cosmos DBho koncového bodu ( `https://<cosmosdb-name>.documents.azure.com/` ), takže název musí být jedinečný ve všech účtech Cosmos v Azure. 
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -337,10 +337,10 @@ export MONGODB_CONNECTION_STRING="mongodb://<COSMOSDB_ACCOUNT_NAME>:<COSMOSDB_PA
 ```
 
 > [!NOTE] 
-> `ssl=true` Možnost je důležitá z důvodu Cosmos DB požadavků. Další informace najdete v tématu [požadavky na připojovací řetězec](connect-mongodb-account.md#connection-string-requirements).
+> `ssl=true`Možnost je důležitá z důvodu Cosmos DB požadavků. Další informace najdete v tématu [požadavky na připojovací řetězec](connect-mongodb-account.md#connection-string-requirements).
 >
 
-Pro proměnnou `MONGODB_CONNECTION_STRING` prostředí Nahraďte zástupné symboly pro `<COSMOSDB_ACCOUNT_NAME>` a.`<COSMOSDB_PASSWORD>`
+Pro `MONGODB_CONNECTION_STRING` proměnnou prostředí Nahraďte zástupné symboly pro `<COSMOSDB_ACCOUNT_NAME>` a.`<COSMOSDB_PASSWORD>`
 
 1. `<COSMOSDB_ACCOUNT_NAME>`: Název účtu Azure Cosmos DB, který jste vytvořili.
 2. `<COSMOSDB_PASSWORD>`: Klíč databáze extrahovaný v předchozím kroku
@@ -372,7 +372,7 @@ Vytvořit další`todo`
 ./todo --create "Get the MongoDB connection string using the Azure CLI"
 ```
 
-Zobrazit seznam `todo`s
+Zobrazit seznam `todo` s
 
 ```bash
 ./todo --list all
@@ -397,7 +397,7 @@ Pokud chcete aktualizovat stav `todo` (třeba změnit na `completed` stav), pou�
 ./todo --update 5e9fd6b1bcd2fa6bd267d4c4,completed
 ```
 
-Vypsat pouze dokončené `todo`s
+Vypsat pouze dokončené `todo` s
 
 ```bash
 ./todo --list completed
@@ -431,13 +431,13 @@ Odstranit `todo` pomocí ID IT
 ./todo --delete 5e9fd6b1bcd2fa6bd267d4c4,completed
 ```
 
-Výpis `todo`s potvrzením
+Výpis `todo` s potvrzením
 
 ```bash
 ./todo --list all
 ```
 
-`todo` Právě odstraněné by nemělo být přítomno.
+`todo`Právě odstraněné by nemělo být přítomno.
 
 ```bash
 +----------------------------+--------------------------------+-----------+
@@ -454,7 +454,7 @@ Výpis `todo`s potvrzením
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se dozvěděli, jak vytvořit Azure Cosmos DB účet rozhraní API MongoDB pomocí Azure Cloud Shell a vytvořit a spustit aplikaci příkazového řádku přejít pro správu `todo`s. Teď můžete do svého účtu služby Azure Cosmos DB importovat další data.
+V tomto rychlém startu jste se dozvěděli, jak vytvořit Azure Cosmos DB účet rozhraní API MongoDB pomocí Azure Cloud Shell a vytvořit a spustit aplikaci příkazového řádku přejít pro správu `todo` s. Teď můžete do svého účtu služby Azure Cosmos DB importovat další data.
 
 > [!div class="nextstepaction"]
 > [Importování dat MongoDB do databáze Azure Cosmos](mongodb-migrate.md)

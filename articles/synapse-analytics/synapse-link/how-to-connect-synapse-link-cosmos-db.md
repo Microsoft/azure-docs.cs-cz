@@ -1,5 +1,5 @@
 ---
-title: Připojení ke službě Azure synapse Link pro Azure Cosmos DB
+title: Připojení ke službě Azure synapse Link (Preview) pro Azure Cosmos DB
 description: Jak připojit Azure Cosmos DB k pracovnímu prostoru synapse pomocí Azure synapse Link
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: d72d1feda4c267dfa3d5c0dea6928f1b7541b26d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6bdc2eca3bdf02814ee851ff266e04bb57f7978c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599935"
+ms.locfileid: "83658824"
 ---
-# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Připojení ke službě Azure synapse Link pro Azure Cosmos DB
+# <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Připojení ke službě Azure synapse Link (Preview) pro Azure Cosmos DB
 
 Tento článek popisuje, jak získat přístup k databázi Azure Cosmos DB z Azure synapse Analytics studia pomocí Azure synapse Link.
 

@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 03/04/2020
-ms.openlocfilehash: b5a335a3f215ad5883b1b223245ca9d3f9967c3b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8af412fb2660625ffb413052b06d4429d7844e70
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366520"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656508"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -23,6 +23,8 @@ ms.locfileid: "80366520"
 V tomto kurzu se naučíte, jak vytvořit základní model klasifikace bez psaní jediného řádku kódu pomocí automatizovaného rozhraní machine learningu Azure Machine Learning. Tento model klasifikace předpovídá, jestli se klient přihlásí k odběru pevně stanoveného termínu s finanční institucí.
 
 Pomocí automatizovaného strojového učení můžete automatizovat časově náročné úlohy. Automatizované Machine Learning rychle projde mnoho kombinací algoritmů a parametrů, které vám pomůžou najít nejlepší model na základě metriky úspěšnosti výběru.
+
+Příklad předpovědi časových řad najdete v tématu [kurz: prognózování poptávky & AutoML](tutorial-automated-ml-forecast.md).
 
 V tomto kurzu se naučíte, jak provádět následující úlohy:
 
@@ -51,7 +53,7 @@ Pracovní prostor můžete vytvořit prostřednictvím Azure Portal, webové kon
 
 ## <a name="create-and-run-the-experiment"></a>Vytvoření a spuštění experimentu
 
-V rámci služby Azure Machine Learning na https://ml.azure.comwebu můžete provést následující kroky experimentu, které zahrnují nástroje strojového učení, které slouží k provádění scénářů pro datové vědy u všech úrovní dovedností. Toto rozhraní není podporované v prohlížečích Internet Exploreru.
+V rámci služby Azure Machine Learning na webu můžete provést následující kroky experimentu, https://ml.azure.com které zahrnují nástroje strojového učení, které slouží k provádění scénářů pro datové vědy u všech úrovní dovedností. Toto rozhraní není podporované v prohlížečích Internet Exploreru.
 
 1. Přihlaste se k [Azure Machine Learning](https://ml.azure.com).
 
@@ -90,10 +92,10 @@ V rámci služby Azure Machine Learning na https://ml.azure.comwebu můžete pro
         Pole|Popis| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
-        Oddělovač|Jeden nebo více znaků pro určení hranice mezi&nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
+        Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
         Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví.
-        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádná
+        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
 
     1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač přepínacího tlačítka pro funkci **day_of_week** , tak, aby se pro tento experiment nezahrnul. Vyberte **Další**.
 
@@ -115,7 +117,7 @@ V rámci služby Azure Machine Learning na https://ml.azure.comwebu můžete pro
         Pole | Popis | Hodnota pro kurz
         ----|---|---
         Název výpočtu |Jedinečný název, který identifikuje váš výpočetní kontext.|automl – COMPUTE
-        Velikost&nbsp;virtuálního&nbsp;počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
+        &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
         Minimální/maximální počet uzlů (v rozšířených nastaveních)| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
   
         1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
@@ -133,14 +135,14 @@ V rámci služby Azure Machine Learning na https://ml.azure.comwebu můžete pro
         >[!NOTE]
         > V tomto kurzu nenastavíte prahovou hodnotu metriky nebo maximální počet jader na iteraci. Ani nebudete blokovat testování algoritmů.
    
-        Další&nbsp;konfigurace|Popis|Hodnota&nbsp;pro&nbsp;kurz
+        Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
-        Automaticky featurization| Umožňuje předzpracování. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolení
-        Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Žádná
-        Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |Čas&nbsp;úlohy&nbsp;školení (hodiny): 1 <br> Prahová&nbsp;hodnota&nbsp;skóre metriky: žádné
-        Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>&nbsp;k skládání&nbsp;křížového ověřování <br> <br> Počet ověření: 2
-        Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální&nbsp;počet&nbsp;souběžných iterací: 5
+        Automaticky featurization| Umožňuje předzpracování. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolit
+        Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Žádné
+        Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |&nbsp;Čas úlohy školení &nbsp; (hodiny): 1 <br> &nbsp;Prahová hodnota skóre metriky &nbsp; : žádné
+        Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>&nbsp;k skládání &nbsp; křížového ověřování <br> <br> Počet ověření: 2
+        Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální počet &nbsp; souběžných &nbsp; iterací: 5
         
         Vyberte **Uložit**.
 
@@ -201,7 +203,7 @@ Soubory nasazení jsou větší než data a experimenty, takže se o jejich ulo�
 
 ### <a name="delete-the-deployment-instance"></a>Odstraní instanci nasazení.
 
-Pokud chcete zachovat skupinu prostředků a pracovní prostor pro jiné\/kurzy a průzkum, odstraňte jenom instanci nasazení z Azure Machine Learning na https:/ml.Azure.com/. 
+\/Pokud chcete zachovat skupinu prostředků a pracovní prostor pro jiné kurzy a průzkum, odstraňte jenom instanci nasazení z Azure Machine Learning na https:/ml.Azure.com/. 
 
 1. Přejít na [Azure Machine Learning](https://ml.azure.com/). Přejděte do pracovního prostoru a vlevo pod podoknem **assety** vyberte **koncové body**. 
 
@@ -221,7 +223,8 @@ V tomto kurzu automatizovaného strojového učení jste pomocí automatizované
 > [Využívání webové služby](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
-+ Další informace o metrikách a grafech klasifikace najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) . Další informace o [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
++ Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) .
++ Přečtěte si další informace o [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
 + Přečtěte si další informace o [profilování dat](how-to-use-automated-ml-for-ml-models.md#profile).
 
 

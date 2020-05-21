@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 3a2381302a378e7b2635b84c32a87e844e4605a7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68844883"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652157"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Monitorování a řešení potíží s aplikací cloudového úložiště
 
@@ -87,9 +87,9 @@ V tomto scénáři použijete k práci se svým účtem úložiště Azure aplik
 
 ### <a name="download-microsoft-message-analyzer"></a>Stažení aplikace Microsoft Message Analyzer
 
-Stáhněte a nainstalujte aplikaci [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226).
+Stáhněte a nainstalujte aplikaci [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer).
 
-Spusťte aplikaci a vyberte **soubor** > **otevřít** > **z jiných zdrojů souborů**.
+Spusťte aplikaci a vyberte **soubor**  >  **otevřít**  >  **z jiných zdrojů souborů**.
 
 V dialogovém okně **File Selector** (Selektor souborů) vyberte **+ Add Azure Connection** (+ Přidat připojení k Azure). Zadejte **název účtu úložiště** a **klíč účtu** a pak klikněte na **OK**.
 

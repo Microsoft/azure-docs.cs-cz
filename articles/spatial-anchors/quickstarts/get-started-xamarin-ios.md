@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c5e217a33c8b461a438e2d0209fe6733850634e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c5e36fd062a2579ece4aaa1501243295af72e1b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75465141"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649822"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Xamarin iOS pomocí prostorových kotev Azure
 
@@ -51,9 +51,11 @@ Dalším krokem je konfigurace aplikace tak, aby používala identifikátor úč
 
 Otevřete `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
-Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` ho klíčem účtu.
+Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem účtu.
 
-Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` ho identifikátorem účtu.
+Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
+
+Vyhledejte `StartSession()` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `this.cloudSession.Configuration.AccountKey = "MyAccountDomain";` .
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace do zařízení s iOS
 
@@ -63,13 +65,13 @@ Nastavte projekt po spuštění na **SampleXamarin. iOS**, změňte **konfigurac
 
 ![Konfigurace sady Visual Studio](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 
-Pokud chcete nasadit a spustit aplikaci, vyberte **Spustit** > **Spustit bez ladění** .
+Pokud **Run**  >  chcete nasadit a spustit aplikaci, vyberte spustit**Spustit bez ladění** .
 
 V aplikaci vyberte **základní** , aby se spustila ukázka, a postupujte podle pokynů k umístění a odvolání kotvy.
 
-> ![Snímek obrazovky](./media/get-started-xamarin-ios/screenshot-1.jpg)
-> ![1 snímek](./media/get-started-xamarin-ios/screenshot-2.jpg)
-> ![obrazovky 2 snímek obrazovky 3](./media/get-started-xamarin-ios/screenshot-3.jpg)
+> ![Snímek obrazovky 1 ](./media/get-started-xamarin-ios/screenshot-1.jpg)
+>  ![ snímek obrazovky 2 snímek ](./media/get-started-xamarin-ios/screenshot-2.jpg)
+>  ![ obrazovky 3](./media/get-started-xamarin-ios/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

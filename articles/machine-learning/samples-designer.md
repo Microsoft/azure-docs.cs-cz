@@ -9,12 +9,13 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
-ms.openlocfilehash: 60f8f2593ef9c05fa905e9d3d6f6ba0901a14243
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: designer
+ms.openlocfilehash: e40c49cdcaae6fa84a72c645f5fea4bac99ee03f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983342"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654566"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Příklady kanálů & datových sad pro návrháře Azure Machine Learning
 
@@ -54,7 +55,7 @@ Tady je postup použití ukázkového návrháře:
 
    1. Vyberte modul na plátně.
 
-   1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly**. Pokud chcete zobrazit výsledky ![každého modulu,](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) vyberte ikonu vizualizace ikony grafu. 
+   1. V podokně podrobností modulu napravo od plátna vyberte **výstupy + protokoly**. Pokud ![ ](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) chcete zobrazit výsledky každého modulu, vyberte ikonu vizualizace ikony grafu. 
 
    Použijte ukázky jako výchozí body pro některé z nejběžnějších scénářů strojového učení.
 
@@ -102,12 +103,12 @@ Přečtěte si další informace o ukázkách, které předvádějí nástroje a
 
 Při vytváření nového kanálu v Návrháři Azure Machine Learning je ve výchozím nastavení zahrnuto několik ukázkových datových sad. Tyto ukázkové datové sady jsou používány vzorovými kanály na domovské stránce návrháře. 
 
-Ukázkové datové sady jsou k dispozici v kategorii**ukázky** **datových sad**-. Najdete ho v paletě modulu nalevo od plátna v návrháři. Můžete použít kteroukoli z těchto datových sad ve vlastním kanálu přetažením na plátno.
+Ukázkové datové sady jsou k dispozici v kategorii ukázky **datových sad** - **Samples** . Najdete ho v paletě modulu nalevo od plátna v návrháři. Můžete použít kteroukoli z těchto datových sad ve vlastním kanálu přetažením na plátno.
 
-| Název&nbsp;datové sady&nbsp;&nbsp;&nbsp;&nbsp;| Popis datové sady |
+| Název datové sady &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Popis datové sady |
 |-------------|:--------------------|
 | Datová sada klasifikace binárního výnosu pro dospělé | Podmnožina 1994ch databází, která používá pracovní dospělí za stáří 16, s upraveným indexem příjmů > 100.<br/>**Použití**: Klasifikujte lidi pomocí demografických údajů, abyste předpovídat, jestli osoba za 50 tis za rok.<br/> **Související výzkum**: Kohavi, R., Becker, B., (1996). [UCI Machine Learning úložiště](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, školní školy a počítačové vědy|
-|Údaje o cenách automobilu (RAW)|Informace o automatickém mobilním zařízení, včetně ceny, funkcí, jako je třeba počet lahví a MPG, a hodnocení rizikového rizika.<br/> K automatické ceně je zpočátku přidruženo skóre rizika. Pak se upraví na skutečné riziko v procesu známém Pojistní matematici jako symboling. Hodnota + 3 znamená, že auto je rizikové a hodnota-3 je pravděpodobně bezpečná.<br/>**Použití**:</b> předpověď rizikového skóre podle funkcí pomocí regrese nebo klasifikace lineární<br/>**Související výzkum**:</b> Schlimmer, J.C. (1987). [UCI Machine Learning úložiště](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, školní informace a počítačové vědy. |
+|Údaje o cenách automobilu (RAW)|Informace o automatickém mobilním zařízení, včetně ceny, funkcí, jako je třeba počet lahví a MPG, a hodnocení rizikového rizika.<br/> K automatické ceně je zpočátku přidruženo skóre rizika. Pak se upraví na skutečné riziko v procesu známém Pojistní matematici jako symboling. Hodnota + 3 znamená, že auto je rizikové a hodnota-3 je pravděpodobně bezpečná.<br/>**Použití**: </b> předpověď rizikového skóre podle funkcí pomocí regrese nebo klasifikace lineární<br/>**Související výzkum**: </b> Schlimmer, J.C. (1987). [UCI Machine Learning úložiště](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, školní informace a počítačové vědy. |
 | Appetency popisky CRM – sdílené |Štítky z konference KDD ([orange_small_train_appetency. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)2009) – výzva pro předpověď vztahů se zákazníky.|
 |Sdílené změny v CRM|Štítky z konference KDD ([orange_small_train_churn. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)2009) – výzva pro předpověď vztahů se zákazníky.|
 |Sdílená datová sada CRM | Tato data pocházejí z konference KDD ([orange_small_train. data. zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)) s 2009. <br/>Datová sada obsahuje zákazníky 50 tis z francouzské telekomunikační společnosti oranžová. Každý zákazník má 230 funkcí Anonyme, 190 z nich je numerická a 40 jsou kategorií. Funkce jsou velmi zhuštěné. |
@@ -117,7 +118,7 @@ Ukázkové datové sady jsou k dispozici v kategorii**ukázky** **datových sad*
 |Názvy filmů IMDB|Datová sada obsahuje informace o videích, které byly ohodnoceny na Twitteru tweety: IMDB ID filmu, název filmu, Žánr a produkční rok. V datové sadě jsou 17K filmy. Datová sada byla představena v dokumentu "S". Dooms, T. de Pessemier a L. Martens. MovieTweetings: datová sada hodnocení filmu shromážděná z Twitteru. Dílna v Crowdsourcingový a lidské výpočtu pro doporučované systémy, CrowdRec na RecSys 2013. "|
 |Hodnocení filmů|Datová sada je rozšířená verze datové sady ve formátu videa. Tato datová sada má 170K hodnocení filmů, která se extrahují z dobře strukturovaných tweety na Twitteru. Každá instance představuje prostupnost a je řazená kolekce členů: ID uživatele, ID videa IMDB, hodnocení, časové razítko, počet oblíbených položek pro tento seznam a počet předaných prostředků. Datová sada byla zpřístupněna prostřednictvím. říkáme, S. Dooms, B. loni a D. Tikk pro doporučované systémy Challenge 2014.|
 |Datová sada počasí|Hodinově založené počasí z NOAA ([sloučená data z 201304 do 201310](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Údaje o počasí se týkají pozorování z povětrnostních stanic na letišti, které pokrývají dobu od dubna do října 2013. Před nahráním do návrháře byla datová sada zpracována takto:    <br/> – ID stanice počasí byly namapovány na odpovídající ID letišť.    <br/> – Počasí, které nejsou přidružené k letiště 70 nejvytíženější, se odfiltrují.    <br/> – Sloupec data byl rozdělen na sloupce samostatného roku, měsíce a dne.    <br/> -Byly vybrány následující sloupce: AirportID, rok, měsíc, den, čas, časové pásmo, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter,,|
-|Wikipedii sada dat SP 500|Data jsou odvozena z Wikipediihttps://www.wikipedia.org/) (na základě článků z každé z&společnosti P 500, uložená jako data XML).    <br/>Před nahráním do návrháře byla datová sada zpracována takto:    <br/> – Extrakce textového obsahu pro každou konkrétní firmu    <br/> -Odebrat formátování wiki    <br/> -Odebrání jiných než alfanumerických znaků    <br/> -Převést veškerý text na malá písmena    <br/> – Přidaly se známé kategorie společnosti.    <br/>Upozorňujeme, že některé společnosti nemohly najít článek, takže počet záznamů je menší než 500.|
+|Wikipedii sada dat SP 500|Data jsou odvozena z Wikipedii ( https://www.wikipedia.org/) na základě článků z každé z&společnosti P 500, uložená jako data XML).    <br/>Před nahráním do návrháře byla datová sada zpracována takto:    <br/> – Extrakce textového obsahu pro každou konkrétní firmu    <br/> -Odebrat formátování wiki    <br/> -Odebrání jiných než alfanumerických znaků    <br/> -Převést veškerý text na malá písmena    <br/> – Přidaly se známé kategorie společnosti.    <br/>Upozorňujeme, že některé společnosti nemohly najít článek, takže počet záznamů je menší než 500.|
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

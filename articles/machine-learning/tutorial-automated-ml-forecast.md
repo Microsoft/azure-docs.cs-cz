@@ -1,5 +1,5 @@
 ---
-title: Předpověď požadavků na sdílení kol pomocí automatizovaného experimentu ML
+title: 'Kurz: prognózování poptávky & AutoML'
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak pomocí automatizovaného strojového učení v Azure Machine Learning Studiu naučit a nasazovat model prognózy poptávky.
 services: machine-learning
@@ -9,24 +9,27 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 01/27/2020
-ms.openlocfilehash: 11e0a8a0076fb2e68c379b279f471ff74846df2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/19/2020
+ms.openlocfilehash: 07450f0c1ea85f22d19e59aaa27898cbf34a7978
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77088239"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656567"
 ---
-# <a name="tutorial-forecast-bike-sharing-demand-with-automated-machine-learning"></a>Kurz: plánování požadavků na sdílení kol pomocí automatizovaného strojového učení
+# <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Kurz: Předpověď poptávky pomocí automatizovaného strojového učení
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-V tomto kurzu pomocí automatizovaného strojového učení nebo automatizovaného ML v Azure Machine Learning Studiu vytvoříte model prognózy časových řad, který předpovídá požadavky na pronájem pro službu sdílení kol.
+V tomto kurzu pomocí automatizovaného strojového učení nebo automatizovaného ML v Azure Machine Learning Studiu vytvoříte model prognózy časových řad, který předpovídá poptávku pro službu pro sdílení kol.
+
+Příklad klasifikačního modelu najdete v tématu [kurz: vytvoření klasifikačního modelu pomocí automatizovaného ml v Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
 
 V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 > [!div class="checklist"]
 > * Vytvořte a načtěte datovou sadu.
 > * Proveďte konfiguraci a spuštění automatizovaného experimentu ML.
+> * Zadejte nastavení prognózy.
 > * Prozkoumejte výsledky experimentů.
 > * Nasaďte nejlepší model.
 
@@ -75,10 +78,10 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
         Pole|Popis| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
-        Oddělovač|Jeden nebo více znaků pro určení hranice mezi&nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
+        Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
         Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Použít hlavičky z prvního souboru
-        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádná
+        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
 
     1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. 
     
@@ -110,7 +113,7 @@ Po načtení a konfiguraci dat nastavte vzdálený cíl výpočtů a vyberte, kt
         Pole | Popis | Hodnota pro kurz
         ----|---|---
         Název výpočtu |Jedinečný název, který identifikuje váš výpočetní kontext.|kolo – COMPUTE
-        Velikost&nbsp;virtuálního&nbsp;počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
+        &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
         Minimální/maximální počet uzlů (v rozšířených nastaveních)| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů.|Minimální počet uzlů: 1<br>Maximální počet uzlů: 6
   
         1. Pokud chcete získat cíl výpočtů, vyberte **vytvořit** . 
@@ -129,19 +132,19 @@ Dokončete instalaci pro automatický experiment ML zadáním typu úlohy Machin
 
 1. Vyberte **Datum** ve **sloupci čas** a pole **Seskupit podle sloupce** ponechte prázdné. 
 
-    1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
+    1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení a určují nastavení prognózy. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
 
   
-        Další&nbsp;konfigurace|Popis|Hodnota&nbsp;pro&nbsp;kurz
+        Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|Normalizovaný průměrný střední znak – chyba
-        Automaticky featurization| Umožňuje předzpracování. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolení
-        Vysvětlete nejlepší model (Preview)| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolení
+        Automaticky featurization| Umožňuje předzpracování. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolit
+        Vysvětlete nejlepší model (Preview)| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolit
         Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Extrémní náhodné stromy
-        Další nastavení prognózování| Tato nastavení vám pomůžou zlepšit přesnost modelu. <br><br> _**Horizont předpovědi**_: délka času do budoucna, kterou chcete předpovědět <br> _**Předpověď Target prodlevy:**_ jak daleko dozadu chcete vytvořit prodlevy cílové proměnné <br> _**Cílové posuvné okno**_: Určuje velikost posuvných oken, na které se budou generovat funkce, například *Max, min* a *Sum*. |Horizont předpovědi: 14 <br> Prodlevy&nbsp;cíle&nbsp;prognózy: žádné <br> Cílová&nbsp;velikost&nbsp;návratového okna&nbsp;: žádné
-        Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |Čas&nbsp;úlohy&nbsp;školení (hodiny): 3 <br> Prahová&nbsp;hodnota&nbsp;skóre metriky: žádné
-        Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>&nbsp;k skládání&nbsp;křížového ověřování <br> <br> Počet ověření: 5
-        Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální&nbsp;počet&nbsp;souběžných iterací: 6
+        Další nastavení prognózování| Tato nastavení vám pomůžou zlepšit přesnost modelu. <br><br> _**Horizont předpovědi**_: délka času do budoucna, kterou chcete předpovědět <br> _**Předpověď Target prodlevy:**_ jak daleko dozadu chcete vytvořit prodlevy cílové proměnné <br> _**Cílové posuvné okno**_: Určuje velikost posuvných oken, na které se budou generovat funkce, například *Max, min* a *Sum*. |Horizont předpovědi: 14 <br> &nbsp;Prodlevy cíle prognózy &nbsp; : žádné <br> Cílová &nbsp; Velikost návratového &nbsp; okna &nbsp; : žádné
+        Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |&nbsp;Čas úlohy školení &nbsp; (hodiny): 3 <br> &nbsp;Prahová hodnota skóre metriky &nbsp; : žádné
+        Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>&nbsp;k skládání &nbsp; křížového ověřování <br> <br> Počet ověření: 5
+        Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální počet &nbsp; souběžných &nbsp; iterací: 6
         
         Vyberte **Uložit**.
 
@@ -224,6 +227,10 @@ Postup vytvoření Power BI podporovaného schématu pro usnadnění spotřeby n
 > [!div class="nextstepaction"]
 > [Využívání webové služby](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
++ Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
++ Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) .
++ Přečtěte si další informace o [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
++ Přečtěte si další informace o [profilování dat](how-to-use-automated-ml-for-ml-models.md#profile).
 
 >[!NOTE]
 > Tato datová sada pro sdílení kol se pro tento kurz změnila. Tato datová sada byla zpřístupněna jako součást [soutěže Kaggle](https://www.kaggle.com/c/bike-sharing-demand/data) a byla původně dostupná prostřednictvím [kapitálového Bikeshareu](https://www.capitalbikeshare.com/system-data). Můžete ji také najít v rámci [databáze UCI Machine Learning](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset).<br><br>

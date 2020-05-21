@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 2cefd3c7f85e043497084e2cd2b906bd546ca10d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 333b1fd94372a79e501de6be261a4cde5c6ab074
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80282269"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658367"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Co je geograficky umělá Data Science Virtual Machine inteligentních inteligentních funkcí?
 
-Geografické umělé Data Science Virtual Machine inteligentních analýz (označované také jako geografické AI Data Science VM nebo Geo-DSVM) poskytují možnosti geoprostorové analýzy z Azure Data Science Virtual Machine (DSVM). Konkrétně tento virtuální počítač rozšiřuje sady nástrojů AI a data vědu v [DSVM](overview.md) přidáním špičkového geografického informačního systému [ARCGIS pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) od Esri.
+Geografické umělé Data Science Virtual Machine inteligentních analýz (označované také jako geografické AI Data Science VM nebo Geo-DSVM) poskytují možnosti geoprostorové analýzy z Azure Data Science Virtual Machine (DSVM). Konkrétně tento virtuální počítač rozšiřuje sady nástrojů AI a data vědu v [DSVM](overview.md) přidáním špičkového geografického informačního systému [ArcGIS pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) od Esri.
 
- Geografické AI Data Science VM je nabídka produktů, která nevznikla z spolupráce mezi ESRI a Microsoftem. Výsledkem je výkonné prostředí, které poskytuje možnosti:
+ Geografické AI Data Science VM je nabídka produktů, která nevznikla z spolupráce mezi Esri a Microsoftem. Výsledkem je výkonné prostředí, které poskytuje možnosti:
 
 - Prozkoumejte data pomocí nejoblíbenějších nástrojů AI a pro datové vědy
 - Použití statistické analýzy na data s geografickými nebo prostorovým aspektem

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376456"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652500"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro Android pomocí prostorových kotev Azure
 
@@ -34,7 +34,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 - Počítač s Windows nebo macOS, který má <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
   - Pokud používáte systém Windows, budete také potřebovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> a <a href="https://git-lfs.github.com/">Git LFS</a>.
-  - Pokud používáte macOS, načtěte Git prostřednictvím HomeBrew. Do jednoho řádku terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Pak spusťte `brew install git` příkaz a `brew install git-lfs`.
+  - Pokud používáte macOS, načtěte Git prostřednictvím HomeBrew. Do jednoho řádku terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . Pak spusťte příkaz `brew install git` a `brew install git-lfs` .
   - Chcete-li vytvořit ukázku NDK, budete také muset nainstalovat NDK a CMake 3,6 nebo vyšší SDK Tools v Android Studio.
 - Zařízení s Androidem podporující <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">vývojáře</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
   - Počítač může pro komunikaci se zařízením s Androidem vyžadovat další ovladače zařízení. Další informace a pokyny najdete [tady](https://developer.android.com/studio/run/device.html) .
@@ -52,7 +52,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Stáhněte `arcore_c_api.h` si ho [odsud](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) a umístěte ho `Android\NDK\libraries\include`do umístění.
+Stáhněte si `arcore_c_api.h` ho [odsud](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) a umístěte ho do umístění `Android\NDK\libraries\include` .
 
 V rámci nově naklonovaného úložiště inicializujte dílčí modul spuštěním následujícího příkazu:
 
@@ -66,11 +66,11 @@ Otevřete Android Studio.
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
-Vyberte **otevřít existující Android Studio projekt** a vyberte projekt v `Android/Java/`umístění.
+Vyberte **otevřít existující Android Studio projekt** a vyberte projekt v umístění `Android/Java/` .
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
-Vyberte **otevřít existující Android Studio projekt** a vyberte projekt v `Android/NDK/`umístění.
+Vyberte **otevřít existující Android Studio projekt** a vyberte projekt v umístění `Android/NDK/` .
 
 ---
 
@@ -82,17 +82,21 @@ Dalším krokem je konfigurace aplikace tak, aby používala identifikátor úč
 
 Otevřete `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
-Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` ho klíčem účtu.
+Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem účtu.
 
-Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` ho identifikátorem účtu.
+Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
+
+Vyhledejte `public AzureSpatialAnchorsManager(Session arCoreSession)` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");` .
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 Otevřete `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
-Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` ho klíčem účtu.
+Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem účtu.
 
-Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` ho identifikátorem účtu.
+Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
+
+Vyhledejte `AzureSpatialAnchorsApplication::StartCloudSession()` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");` .
 
 ---
 

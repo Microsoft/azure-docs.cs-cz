@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61d401a543032b1a206a4477f04d7e8e209c0f2a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77525885"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646608"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Rychlý Start: nastavení geograficky umělého virtuálního počítače s logikou v Azure 
 
@@ -24,7 +24,7 @@ Nástroje AI, které jsou zahrnuté v geograficky DSVM, obsahují tyto možnosti
 - Edice GPU oblíbených hloubkových architektur, jako jsou Microsoft Cognitive Toolkit, TensorFlow, Keras, Caffe2 a chainer
 - Nástroje pro získání a předzpracování obrázků a textových dat
 - Nástroje pro vývojové aktivity, jako je Microsoft Machine Learning Server Developer Edition, Anaconda Python, Jupyter poznámkové bloky pro Python a R, IDEs pro Python a R a databáze SQL
-- Desktopový software ArcGIS pro od ESRI, společně s rozhraními Pythonu a R, která můžou pracovat s geoprostorovémi daty z aplikací AI
+- Desktopový software ArcGIS pro od Esri, společně s rozhraními Pythonu a R, která můžou pracovat s geoprostorovémi daty z aplikací AI
  
 
 ## <a name="create-your-geo-ai-data-science-vm"></a>Vytvoření Data Science VM geografické AI

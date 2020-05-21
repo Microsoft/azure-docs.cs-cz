@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 69e4d992e2ef89b4d3d9408d6e50591fb8166c79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9699bb0e75aac19a2d5c5c68d07e85b1c17c7cbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75385775"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650186"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Rychlý start pro rozhraní API Bingu pro vyhledávání entit s využitím Ruby
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-ruby"></a>Rychlý Start: odeslání žádosti o vyhledávání Vyhledávání entit Bingu REST API pomocí Ruby
 
 Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace v rámci Ruby pošle do rozhraní API dotaz pro hledání zpráv a zobrazí odpověď. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb).
 
-Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+I když je tato aplikace napsaná v Ruby, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful k
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. V oblíbeném prostředí IDE nebo editoru kódu vytvořte soubor oznámení Ruby a importujte následující balíčky.
+1. V oblíbeném prostředí IDE nebo editoru kódu vytvořte soubor oznámení Ruby a importujte následující balíčky:
 
     ```ruby
     require 'net/https'
@@ -39,7 +39,7 @@ Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful k
     require 'json'
     ```
 
-2. Vytvořte proměnné pro svůj koncový bod rozhraní API, adresu URL pro vyhledávání zpráv, klíč předplatného a vyhledávací dotaz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro svůj koncový bod rozhraní API, adresu URL pro vyhledávání zpráv, klíč předplatného a vyhledávací dotaz. Můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'
@@ -58,7 +58,7 @@ Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful k
     uri = URI (host + path + params)
     ```
 
-2. K vytvoření žádosti použijte proměnné z posledního kroku. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného.
+2. K vytvoření žádosti použijte proměnné z posledního kroku. Přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` .
 
     ```ruby
     request = Net::HTTP::Get.new(uri)
@@ -145,5 +145,5 @@ Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful k
 > [!div class="nextstepaction"]
 > [Sestavení jednostránkové webové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
-* [Co je rozhraní API Bingu pro vyhledávání entit](../search-the-web.md)
-* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Co je rozhraní API Bingu pro vyhledávání entit?](../search-the-web.md)
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

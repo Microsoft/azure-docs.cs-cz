@@ -4,21 +4,21 @@ description: Získání ukázek Azure PowerShell k provádění různých běžn
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: ab8f9f1428ecab09623060519e76052fc56d0ceb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1790edd41426a7395705485d764682bd47f75186
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80366155"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649698"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Azure PowerShell ukázky pro Azure Cosmos DB-rozhraní API pro tabulky
 
 Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pro Azure Cosmos DB rozhraní API pro tabulky.
 
 > [!NOTE]
-> Ukázky využívají rutiny [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management. Počítejte s tím, `Az.CosmosDB` že rutiny jsou stále ve verzi Preview a můžou se před vydáním změnit. `Az.CosmosDB` Pravidelně prosím zkontrolujte aktualizace.
+> Ukázky využívají rutiny [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management. Pravidelně prosím zkontrolujte aktualizace `Az.CosmosDB` .
 
 | | |
 |---|---|

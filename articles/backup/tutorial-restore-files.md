@@ -4,12 +4,12 @@ description: Zjistěte, jak na virtuálním počítači Azure provádět obnoven
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 439ffeed7f0e37f04eda39380ddcabe1fa4e06c3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74171724"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653263"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Obnovení souborů do virtuálního počítače v Azure
 
@@ -117,6 +117,9 @@ Pro obnovení souborů poskytuje Azure Backup skript, který můžete spustit na
 ## <a name="restore-file-to-your-vm"></a>Obnovení souboru do virtuálního počítače
 
 Po zkopírování skriptu pro obnovení do svého virtuálního počítače teď můžete připojit bod obnovení a obnovit soubory.
+
+>[!NOTE]
+> Pokud chcete zjistit, jestli můžete skript spustit na VIRTUÁLNÍm počítači, než budete pokračovat, podívejte se [sem](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script) .
 
 1. Připojte se ke svému virtuálnímu počítači přes SSH. Nahraďte *publicIpAddress* veřejnou IP adresou vašeho virtuálního počítače:
 

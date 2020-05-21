@@ -1,14 +1,14 @@
 ---
 title: Ukázka nasazení úřadu pro plán 1075
 description: Nasaďte kroky pro příklad podrobného plánu finančního 1075 úřadu (rev. 11 – 2016), včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 11/20/2019
+ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 15fcac5bfd11d889522d078853bd6f916eb54616
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7faf1042f695ac43b2fa22d2685149426cb1ed80
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74546801"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653098"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>Nasazení ukázky finančního úřadu 1075
 
@@ -19,7 +19,7 @@ Chcete-li nasadit ukázku podrobného plánu pro Azure Modrotiskys 1075 (rev. 11
 > - Označení kopie ukázky jako **publikované**
 > - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
 
 ## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
@@ -116,8 +116,8 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 Teď, když jste zkontrolovali postup nasazení ukázky podrobného plánu pro finanční 1075 úřad (rev. 11 – 2016), najdete v následujících článcích informace o mapování podrobného plánu a ovládacího prvku:
 
 > [!div class="nextstepaction"]
-> [Finanční úřad finančního úřadu 1075 podrobný přehled](./index.md)
-> [finančního 1075 úřadu – mapování řízení](./control-mapping.md)
+> [Finanční úřad pro 1075 – přehled](./index.md) 
+>  [Mapování ovládacího prvku úřadu 1075](./control-mapping.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
