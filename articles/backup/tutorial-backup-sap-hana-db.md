@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: f64dd74ad0e038c5cad152e20ae2255de03114e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79501450"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747216"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -32,6 +32,11 @@ Před konfigurací zálohování se ujistěte, že jste provedli následující 
   * V případě MDC by měl klíč ukazovat na port SQL **názvový server**. V případě SDC by měl odkazovat na port SQL **INDEXSERVER**
   * Měl by obsahovat přihlašovací údaje k přidávání a odstraňování uživatelů.
 * Spusťte skript konfigurace zálohování SAP HANA (předregistrující skript) ve virtuálním počítači, kde je nainstalovaná verze HANA, jako uživatel root. [Tento skript](https://aka.ms/scriptforpermsonhana) NAČTE systém Hana, který je připravený k zálohování. Další informace o skriptu před registrací najdete v části [co je to skript](#what-the-pre-registration-script-does) pro předběžnou registraci.
+
+>[!NOTE]
+>Azure Backup se při zálohování databáze SAP HANA běžící na virtuálním počítači Azure automaticky neupraví na letní čas při ukládání.
+>
+>Zásadu podle potřeby upravte ručně.
 
 ## <a name="set-up-network-connectivity"></a>Nastavení připojení k síti
 
@@ -83,7 +88,7 @@ Vytvoření pravidla pomocí prostředí PowerShell:
 
 Možnosti připojení zahrnují následující výhody a nevýhody:
 
-**Možnost** | **Výhody** | **Nevýhody**
+**Nastavení** | **Výhody** | **Nevýhody**
 --- | --- | ---
 Povoluje rozsahy IP adres. | Žádné další náklady | Složitá Správa, protože se rozsahy IP adres v průběhu času mění <br/><br/> Poskytuje přístup k celé službě Azure, ne jen Azure Storage
 Použití značek služby NSG | Jednodušší Správa jako změny rozsahu se sloučí automaticky. <br/><br/> Žádné další náklady <br/><br/> | Dá se použít jenom s skupin zabezpečení sítě <br/><br/> Poskytuje přístup k celé službě.
@@ -116,7 +121,7 @@ hdbuserstore list
 Výstup příkazu by měl zobrazovat klíč {SID} {DBNAME} s uživatelem zobrazeným jako AZUREWLBACKUPHANAUSER.
 
 >[!NOTE]
-> Ujistěte se, že je v `/usr/sap/{SID}/home/.hdb/`systému k dispozici jedinečná sada souborů SSFS. V této cestě by měla být jenom jedna složka.
+> Ujistěte se, že je v systému k dispozici jedinečná sada souborů SSFS `/usr/sap/{SID}/home/.hdb/` . V této cestě by měla být jenom jedna složka.
 
 ## <a name="create-a-recovery-service-vault"></a>Vytvoření trezoru služby Recovery Services
 

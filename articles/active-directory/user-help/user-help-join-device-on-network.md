@@ -8,16 +8,16 @@ ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266309"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745723"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Připojte své pracovní zařízení k síti vaší organizace.
 Připojte zařízení s Windows 10 vlastněné do sítě vaší organizace, abyste měli přístup k potenciálně omezeným prostředkům.
@@ -61,7 +61,7 @@ Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 
     ![Účty na obrazovce nastavení](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že se zobrazuje text, který říká, že je **připojený k * \<your_organization>* Azure AD**.
+2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že se zobrazuje text, který říká, že je **připojený k * \< your_organization>* Azure AD**.
 
     ![Přístup k pracovní nebo školní obrazovce s připojeným účtem contoso](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -79,7 +79,7 @@ Pokud máte zařízení v době a a už je nastavené, můžete pomocí těchto 
 
     ![Nastavení obrazovky pracovního nebo školního účtu](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. Na obrazovce **přihlášení, které vám přihlásíte** , zadejte svou e-mailovou adresu ( alain@contoso.comnapříklad) a pak vyberte **Další**.
+4. Na obrazovce **přihlášení, které vám přihlásíte** , zadejte svou e-mailovou adresu (například alain@contoso.com ) a pak vyberte **Další**.
 
     ![Pojďme vám přihlášený displej](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
@@ -106,7 +106,7 @@ Můžete se ujistit, že jste připojeni. Prohlédněte si nastavení.
 
     ![Účty na obrazovce nastavení](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že se zobrazuje text, který říká, že je **připojený k * \<your_organization>* Azure AD**.
+2. Vyberte možnost **přístup do práce nebo do školy**a ujistěte se, že se zobrazuje text, který říká, že je **připojený k * \< your_organization>* Azure AD**.
 
     ![Přístup k pracovní nebo školní obrazovce s připojeným účtem contoso](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

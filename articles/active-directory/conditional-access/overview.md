@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/17/2019
+ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c3082fbd7c02cbb075fd118f8e6021ac951e8e3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240909"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737669"
 ---
 # <a name="what-is-conditional-access"></a>Co je podmíněný přístup?
 
@@ -47,7 +47,7 @@ Běžné signály, které může podmíněný přístup vzít v úvahu při rozh
    - Zásady je možné cílit na konkrétní uživatele a skupiny, které správcům poskytují jemně odstupňovanou kontrolu nad přístupem.
 - Informace o umístění IP adresy
    - Organizace můžou vytvářet důvěryhodné rozsahy IP adres, které se dají použít při rozhodování o zásadách. 
-   - Správci můžou určit rozsahy IP adres celé země pro blokování nebo povolení provozu.
+   - Správci mohou určit celé země/oblasti IP rozsahů pro blokování nebo povolení provozu.
 - Zařízení
    - Uživatelé se zařízeními konkrétních platforem nebo označenými určitým stavem lze použít při vynucování zásad podmíněného přístupu.
 - Aplikace

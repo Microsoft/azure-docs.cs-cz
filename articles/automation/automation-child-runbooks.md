@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: ac3f24e06553fd037ef5deaf374690fb92b0fa8c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 5c562fb43966fda203e92cc5003ef3c85945364b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715813"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742839"
 ---
 # <a name="create-modular-runbooks"></a>Vytváření modulárních runbooků
 
@@ -35,7 +35,7 @@ Když vyvoláte přiřazený Runbook, spustí se ve stejné úloze jako nadřaze
 
 Při publikování Runbooku musí být všechny podřízené Runbooky, které volá, už publikované. Důvodem je to, že Azure Automation při kompilování Runbooku sestaví přidružení s jakýmikoli podřízenými Runbooky. Pokud podřízené Runbooky ještě nejsou publikované, zdá se, že se nadřazený Runbook správně publikuje, ale při jeho spuštění vygeneruje výjimku. Pokud k tomu dojde, můžete nadřazený Runbook znovu publikovat, aby správně odkazoval na podřízené Runbooky. Nemusíte znovu publikovat nadřazený Runbook, pokud se změní kterákoli podřízená sada Runbook, protože přidružení již bylo vytvořeno.
 
-Parametry podřízeného Runbooku s názvem inline můžou být libovolného datového typu, včetně složitých objektů. Není k dispozici [serializace JSON](start-runbooks.md#runbook-parameters), protože při spuštění sady runbook pomocí Azure Portal nebo pomocí rutiny [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) je k dispozici.
+Parametry podřízeného Runbooku s názvem inline můžou být libovolného datového typu, včetně složitých objektů. Není k dispozici [serializace JSON](start-runbooks.md#work-with-runbook-parameters), protože při spuštění sady runbook pomocí Azure Portal nebo pomocí rutiny [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) je k dispozici.
 
 ### <a name="runbook-types"></a>Typy runbooků
 
@@ -80,7 +80,7 @@ Výstup podřízené sady Runbook se nevrátí do nadřazeného Runbooku spolehl
 
 Pokud nechcete, aby se nadřazená sada Runbook při čekání zablokovala, můžete spustit podřízenou sadu Runbook pomocí `Start-AzAutomationRunbook` bez `Wait` parametru. V takovém případě musí sada Runbook čekat na dokončení úlohy pomocí [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) . K načtení výsledků musí také použít příkaz [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
 
-Parametry pro podřízený Runbook spuštěný pomocí rutiny jsou k dispozici jako zatřiďovací tabulka, jak je popsáno v tématu [parametry Runbooku](start-runbooks.md#runbook-parameters). Lze použít pouze jednoduché datové typy. Pokud má Runbook parametr komplexního datového typu, musí být volaný jako přiřazený.
+Parametry pro podřízený Runbook spuštěný pomocí rutiny jsou k dispozici jako zatřiďovací tabulka, jak je popsáno v tématu [parametry Runbooku](start-runbooks.md#work-with-runbook-parameters). Lze použít pouze jednoduché datové typy. Pokud má Runbook parametr komplexního datového typu, musí být volaný jako přiřazený.
 
 Kontext předplatného může být ztracen při spouštění podřízených runbooků jako samostatných úloh. Aby mohla podřízená sada Runbook spustit příkaz AZ Module rutiny proti konkrétnímu předplatnému Azure, musí se podřízená položka ověřit pro toto předplatné nezávisle na nadřazeném Runbooku.
 
@@ -117,5 +117,5 @@ Start-AzAutomationRunbook `
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Spuštění Runbooku v Azure Automation](start-runbooks.md)
+* [Spuštění runbooku ve službě Azure Automation](start-runbooks.md)
 * [Výstup a zprávy Runbooku v Azure Automation](automation-runbook-output-and-messages.md)

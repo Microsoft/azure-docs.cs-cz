@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981541"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747530"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -196,7 +196,7 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 
     ![Výběr účtu úložiště, Log Analytics pracovního prostoru a povolení Analýza provozu](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-Předchozí kroky opakujte pro všechny ostatní skupin zabezpečení sítě, pro které chcete povolit analýzu provozu pro. Data z protokolů toků se odesílají do pracovního prostoru, takže zajistěte, aby místní zákony a předpisy ve vaší zemi povolovaly ukládání dat v oblasti, ve které pracovní prostor existuje. Pokud jste pro různé skupin zabezpečení sítě nastavili různé intervaly zpracování, budou se data shromažďovat v různých intervalech. Například: můžete povolit interval zpracování 10 minut pro kritické virtuální sítě a 1 hodinu pro Nekritická virtuální sítě.
+Předchozí kroky opakujte pro všechny ostatní skupin zabezpečení sítě, pro které chcete povolit analýzu provozu pro. Data z protokolů toků se odesílají do pracovního prostoru, takže zajistěte, aby místní zákony a předpisy ve vaší zemi nebo oblasti povolovaly ukládání dat v oblasti, kde pracovní prostor existuje. Pokud jste pro různé skupin zabezpečení sítě nastavili různé intervaly zpracování, budou se data shromažďovat v různých intervalech. Například: můžete povolit interval zpracování 10 minut pro kritické virtuální sítě a 1 hodinu pro Nekritická virtuální sítě.
 
 Analýzu provozu můžete nakonfigurovat taky pomocí rutiny [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) prostředí PowerShell v Azure PowerShell. Pokud `Get-Module -ListAvailable Az` chcete najít nainstalovanou verzi, spusťte příkaz. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 

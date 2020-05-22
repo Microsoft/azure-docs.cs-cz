@@ -3,12 +3,12 @@ title: Obnovení souborů a složek ze zálohy virtuálního počítače Azure
 description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu obnovení virtuálního počítače Azure.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 0c518c080f3789d36d2ca600ade23a0b4b2ab385
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652108"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757972"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -142,14 +142,23 @@ Výpis všech logických svazků, názvů a jejich cest ve skupině svazků:
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command's results>
+lvdisplay <volume-group-name from the pvs commands results>
 ```
+
+Tento ```lvdisplay``` příkaz také ukazuje, zda jsou skupiny svazků aktivní. Pokud je skupina svazků označená jako neaktivní, je nutné ji znovu aktivovat, aby se mohla připojit. Pokud je skupina Volume-Group zobrazená jako neaktivní, aktivujte ji pomocí následujícího příkazu.
+
+```bash
+#!/bin/bash
+vgchange –a y  <volume-group-name from the pvs commands results>
+```
+
+Až bude název skupiny svazků aktivní, spusťte ```lvdisplay``` příkaz jednou pro zobrazení všech relevantních atributů.
 
 Připojení logických svazků k vybrané cestě:
 
 ```bash
 #!/bin/bash
-mount <LV path> </mountpath>
+mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>Pro pole RAID

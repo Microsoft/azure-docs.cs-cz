@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 45e7e59f72fcda983053314c0b11ff56de8a72e8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314358"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747763"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Firewall webových aplikací Azure v Azure Application Gateway
 
@@ -72,7 +72,7 @@ Tato část popisuje základní výhody, které WAF Application Gateway poskytuj
 - Konfigurovatelné omezení velikosti žádostí s použitím dolních a horních mezí.
 - Seznamy vyloučení umožňují vynechat určité atributy žádosti z WAF vyhodnocení. Běžným příkladem jsou vložené tokeny vložené službou Active Directory, které se používají pro pole ověřování nebo hesla.
 - Vytvářejte vlastní pravidla, aby vyhovovala konkrétním potřebám vašich aplikací.
-- Přenos geografického filtru pro povolení nebo blokování určitých zemí pro získání přístupu k vašim aplikacím. (Preview)
+- Přenos geografického filtru, který umožňuje nebo blokuje určité země nebo oblasti, aby získal přístup k vašim aplikacím. (Preview)
 - Chraňte své aplikace z roboty pomocí RuleSet zmírnění ochrany bot. (Preview)
 
 ## <a name="waf-policy"></a>Zásady WAF
@@ -125,7 +125,7 @@ V režimu bodování anomálií není přenos, který odpovídá libovolnému pr
 
 |Severity  |Hodnota  |
 |---------|---------|
-|Kritická     |5|
+|Kritické     |5|
 |Chyba        |4|
 |Upozornění      |3|
 |Šestiměsíční       |2|
@@ -160,7 +160,7 @@ S integrovaným sešitem událostí brány firewall Azure WAF můžete získat p
 
 ![Sentinel](../media/ag-overview/sentinel.png)
 
-#### <a name="logging"></a>protokolování
+#### <a name="logging"></a>Protokolování
 
 Application Gateway WAF poskytuje podrobné hlášení o každé zjištěné hrozbě. Protokolování je integrované s protokoly Azure Diagnostics. Výstrahy se zaznamenávají ve formátu. JSON. Tyto protokoly je možné integrovat s [protokoly Azure monitor](../../azure-monitor/insights/azure-networking-analytics.md).
 

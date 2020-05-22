@@ -8,15 +8,15 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: d4714a78ed03a9b861f3a266cfd0d7bca456b3c4
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 0c55f15d12ddc51573f59f56c742a8cac525af0b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628346"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744438"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>Nastavení bezpečnostních otázek jako metody ověřování
 
@@ -55,7 +55,7 @@ Pokud používáte bezpečnostní otázky, doporučujeme je používat ve spojen
 
 ### <a name="to-set-up-your-security-questions"></a>Nastavení bezpečnostních otázek
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myaccount.microsoft.com/ pak přejít na stránku.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na https://myaccount.microsoft.com/ stránku.
 
     ![Stránka můj profil zobrazující odkazy na zvýrazněné informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
 

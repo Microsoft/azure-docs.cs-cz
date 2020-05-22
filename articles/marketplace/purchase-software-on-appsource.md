@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: bc19246354bebd1ba2a827e7718cbad95b896e14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 450a97b0be1b11980d65477d396431170180d00f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80284972"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746640"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Jak koupit software na Microsoft AppSource
 
@@ -29,11 +29,11 @@ K nákupu nabídek SaaS potřebujete:
 - Platná platební karta v zemi nebo oblasti, kde si nabídku koupíte.
 
     > [!Note]
-    > Země fakturace platební karty může být zamčená do umístění vaší instance Azure Active Directory.
+    > Země/oblast fakturace platební karty může být zamčená do umístění vaší instance Azure Active Directory.
 
 ## <a name="steps-for-making-purchases-on-appsource"></a>Postup při nákupu na AppSource
 
-1. Vyberte oblast fakturace/země v [AppSource](https://appsource.microsoft.com/).
+1. Vyberte zemi nebo oblast fakturace v [AppSource](https://appsource.microsoft.com/).
 1. Najděte aplikaci, kterou chcete koupit.
 1. Vyberte **získat hned**.
 1. Vyberte plán:

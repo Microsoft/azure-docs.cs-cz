@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: bdd8104200bf21507e978abacf600c4780bb3808
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636673"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744159"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
@@ -53,14 +53,6 @@ Azure Security Center se integruje se službami Azure za účelem monitorování
     > Senzor ATP v programu Microsoft Defender je automaticky povolen na serverech se systémem Windows, které používají Security Center.
 
     Když ATP v programu Microsoft Defender zjistí hrozbu, aktivuje výstrahu. Výstraha se zobrazí na řídicím panelu Security Center. Z řídicího panelu se můžete překlopit do konzoly ATP v programu Microsoft Defender a provést podrobné šetření, které odhalí rozsah útoku. Další informace o ochraně ATP v programu Microsoft Defender najdete v tématu připojení [serverů ke službě Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
-
-* Analýza výpisu **stavu systému** <a name="windows-dump"></a> – Když dojde k chybě softwaru, výpis stavu systému zaznamená část paměti v době selhání.
-
-    Selhání mohlo být způsobeno malwarem nebo obsahem malwaru. Aby nedocházelo k detekci v produktech zabezpečení, různé formy malwaru používají útok bez souborů, což zabraňuje psaní na disk nebo šifrování softwarových součástí zapsaných na disk. Tento typ útoku se obtížně detekuje pomocí tradičních přístupů založených na disku.
-
-    Pomocí analýzy paměti ale můžete zjistit tento druh útoku. Díky analýze paměti ve výpisu stavu systému může Security Center detekovat techniky, které útok používá. Útok se například může pokusit zneužít ohrožení zabezpečení softwaru, přistupovat k důvěrným datům a nenápadně uchovat v napadeném počítači. Security Center to funguje s minimálním dopadem na výkon hostitelů.
-
-    Podrobnosti o výstrahách analýzy výpisu stavu systému najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-windows).
 
 * Detekce útoků typu **soubor** <a name="windows-fileless"></a> – Jsou běžné útoky zaměřené na vaše koncové body. Aby nedocházelo k detekci, útoky bez souborů vkládají do paměti škodlivá datová data. V paměti napadených procesů a provádění široké škály škodlivých aktivit může dojít k trvalému uložení datových částí.
 

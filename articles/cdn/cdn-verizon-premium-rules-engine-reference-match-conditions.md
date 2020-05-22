@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bc439e3244be63bff1c54d3230eda17dfb9d88d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253437"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745595"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN z podmínek shody modulu pravidel Verizon Premium
 
@@ -30,7 +30,7 @@ Podmínku shody můžete například použít k těmto akcím:
 
 Podmínka vždycky se vztahuje na všechny požadavky na výchozí sadu funkcí.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Vždy](#always) | Použije výchozí sadu funkcí pro všechny požadavky.
 
@@ -38,7 +38,7 @@ Název | Účel
 
 Podmínka shody zařízení identifikuje požadavky vytvořené z mobilního zařízení na základě jeho vlastností.  
 
-Název | Účel
+Name | Účel
 -----|--------
 [Zařízení](#device) | Identifikuje požadavky vytvořené z mobilního zařízení na základě jeho vlastností.
 
@@ -46,7 +46,7 @@ Název | Účel
 
 Podmínky shody umístění identifikují požadavky na základě umístění žadatele.
 
-Název | Účel
+Name | Účel
 -----|--------
 [JAKO číslo](#as-number) | Identifikuje požadavky, které pocházejí z konkrétní sítě.
 [Země](#country) | Identifikuje požadavky, které pocházejí ze zadaných zemí nebo oblastí.
@@ -55,7 +55,7 @@ Název | Účel
 
 Původní podmínky shody identifikují požadavky, které odkazují na Content Delivery Network Storage nebo na server původu zákazníka.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Zdroj CDN](#cdn-origin) | Identifikuje požadavky na obsah uložený v Content Delivery Network Storage.
 [Původ zákazníka](#customer-origin) | Identifikuje požadavky na obsah uložený na konkrétním zákaznickém serveru.
@@ -64,7 +64,7 @@ Název | Účel
 
 Podmínky shody požadavků identifikují požadavky na základě jejich vlastností.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Client IP Address](#client-ip-address) | Identifikuje požadavky, které pocházejí z konkrétní IP adresy.
 [Parametr souboru cookie](#cookie-parameter) | Kontroluje soubory cookie přidružené ke každé žádosti zadané hodnoty.
@@ -81,7 +81,7 @@ Název | Účel
 
 Podmínky shody adresy URL identifikují požadavky na základě jejich adres URL.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Adresář cesty URL](#url-path-directory) | Identifikuje požadavky podle jejich relativní cesty.
 [Přípona cesty URL](#url-path-extension) | Identifikuje žádosti podle jejich přípony názvu souboru.
@@ -112,7 +112,7 @@ Podmínka vždycky se vztahuje na všechny požadavky na výchozí sadu funkcí.
 
 AS Number Network je definována číslem autonomního systému (ASN). 
 
-/Shoda **neodpovídá****možnosti určuje** podmínky, za kterých je splněna podmínka pro shodu čísla as:
+Shoda **neodpovídá** / **Does Not Match** možnosti určuje podmínky, za kterých je splněna podmínka pro shodu čísla as:
 
 - **Shody**: vyžaduje, aby ASN klientské sítě odpovídalo jednomu ze zadaných čísla ASN. 
 - **Neodpovídá: vyžaduje**, aby ASN klientské sítě neodpovídá žádnému ze zadaných čísla ASN.
@@ -157,7 +157,7 @@ Informace o klíči:
 
 ### <a name="client-ip-address"></a>Client IP Address
 
-/Možnost **shody neodpovídá**možnosti určuje podmínky, za kterých je splněna**Podmínka shody IP** adresy klienta:
+Možnost **shody neodpovídá** / **Does Not Match** možnosti určuje podmínky, za kterých je splněna podmínka shody IP adresy klienta:
 
 - **Shody**: vyžaduje, aby IP adresa klienta odpovídala jedné ze zadaných IP adres. 
 - **Neodpovídá: vyžaduje**, aby IP adresa klienta neodpovídala žádné ze zadaných IP adres. 
@@ -165,10 +165,10 @@ Informace o klíči:
 Informace o klíči:
 
 - Použijte notaci CIDR.
-- Určete více IP adres nebo bloků IP adres tak, že každý z nich oddělujete jedním mezerou. Příklad:
+- Určete více IP adres nebo bloků IP adres tak, že každý z nich oddělujete jedním mezerou. Například:
   - **Příklad protokolu IPv4**: 1.2.3.4 10.20.30.40 odpovídá všem žádostem, které dorazí buď na adresu 1.2.3.4 nebo 10.20.30.40.
   - **Příklad IPv6**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 odpovídá všem žádostem, které přicházejí buď z adresy 1:2:3:4:5:6:7:8 nebo 10:20:30:40:50:60:70:80.
-- Syntaxe bloku IP adres je základní IP adresa, za kterou následuje lomítko a velikost předpony. Příklad:
+- Syntaxe bloku IP adres je základní IP adresa, za kterou následuje lomítko a velikost předpony. Například:
   - **Příklad IPv4**: 5.5.5.64/26 odpovídá všem žádostem, které přicházejí z adres 5.5.5.64 prostřednictvím 5.5.5.127.
   - **Příklad IPv6**: 1:2:3:/48 odpovídá všem žádostem, které přicházejí z adres 1:2:3:0:0:0:0:0 až 1:2: ffff: ffff: ffff: ffff: ffff: FFFF.
 - Kvůli způsobu, jakým jsou sledována nastavení mezipaměti, je tato podmínka shody nekompatibilní s následujícími funkcemi:
@@ -186,7 +186,7 @@ Informace o klíči:
 
 ### <a name="cookie-parameter"></a>Parametr souboru cookie
 
-/Možnost **shody neodpovídá**možnosti určuje podmínky, za kterých je splněna**Podmínka shody parametru** souboru cookie.
+Možnost **shody neodpovídá** / **Does Not Match** možnosti určuje podmínky, za kterých je splněna podmínka shody parametru souboru cookie.
 
 - **Shody**: vyžaduje, aby požadavek obsahoval zadaný soubor cookie s hodnotou, která odpovídá nejméně jedné z hodnot, které jsou definovány v této podmínce shody.
 - **Neodpovídá: vyžaduje**, aby požadavek splňoval jedno z následujících kritérií:
@@ -220,7 +220,7 @@ Informace o klíči:
 
 Podmínka porovnávání regulárního výrazu v parametru cookie definuje název a hodnotu souboru cookie. Můžete použít [regulární výrazy](cdn-verizon-premium-rules-engine-reference.md#regular-expressions) k definování požadované hodnoty souboru cookie.
 
-/**Does Not Match** Možnost **shody neodpovídá**možnosti určuje podmínky, za kterých je splněna podmínka pro parametr souboru cookie Regex.
+Možnost **shody neodpovídá** / **Does Not Match** možnosti určuje podmínky, za kterých je splněna podmínka pro parametr souboru cookie Regex.
 
 - **Shody**: vyžaduje, aby požadavek obsahoval zadaný soubor cookie s hodnotou, která odpovídá zadanému regulárnímu výrazu.
 - **Neodpovídá: vyžaduje**, aby požadavek splňoval jedno z následujících kritérií:
@@ -253,7 +253,7 @@ Informace o klíči:
 
 Zemi můžete zadat pomocí jejího kódu země. 
 
-/Možnost **shody neodpovídá**možnosti určuje podmínky, za kterých je splněna**Podmínka shody země** :
+Možnost **shody neodpovídá** / **Does Not Match** možnosti určuje podmínky, za kterých je splněna podmínka shody země:
 
 - **Shody**: vyžaduje, aby požadavek obsahoval zadané hodnoty kódu země. 
 - **Neodpovídá: vyžaduje**, aby požadavek neobsahuje zadané hodnoty kódu země.
@@ -279,9 +279,9 @@ Tato podmínka shody vám umožňuje provádět řadu úprav na základě umíst
 - Shoda se zástupnými znaky cesty URL: nastavte [podmínku shody zástupných znaků cesty URL](#url-path-wildcard) do adresáře, který bude zabezpečený. 
     Připojí hvězdičku ke konci relativní cesty, aby se zajistilo, že bude mít přístup ke všem jeho podřízeným položkám omezení toto pravidlo.
 
-- Shoda země: nastavte podmínku shody země na požadovanou sadu zemí.
-  - Allow: nastaví podmínku shody země na, že se **neshoduje** s tím, že umožňuje přístup k obsahu uloženému v umístění, které je definováno podmínkou pro porovnávání zástupných znaků cesty adresy URL.
-  - Blok: nastavte podmínku shody země na **shodu** s cílem blokovat přístup určených zemí k obsahu uloženému v umístění, které je definováno podmínkou pro porovnávání zástupných znaků cesty adresy URL.
+- Shoda země: nastavte podmínku shody země na požadovanou sadu zemí nebo oblastí.
+  - Allow: nastavte podmínku shody země na, že se **neshoduje** s tím, že umožňuje přístup k obsahu uloženému v umístění, které je definováno podmínkou pro porovnávání zástupných znaků cesty adresy URL.
+  - Blok: nastavte podmínku shody země na **shody** , aby zablokovaly zadané země nebo oblasti přístup k obsahu uloženému v umístění, které je definováno podmínkou pro zástupné znaky cesty adresy URL.
 
 - Funkce odepření přístupu (403): povolení [funkce odepřít přístup (403)](cdn-verizon-premium-rules-engine-reference-features.md#deny-access-403) pro replikaci části povolení nebo blokování funkce filtrování země.
 
@@ -311,7 +311,7 @@ Informace o klíči:
 
 Podmínka shody zařízení identifikuje požadavky vytvořené z mobilního zařízení na základě jeho vlastností. Zjišťování mobilních zařízení se dosahuje prostřednictvím [WURFL](http://wurfl.sourceforge.net/). 
 
-/Možnost **shody neodpovídá**možnosti určuje podmínky, za kterých je splněna**Podmínka shody zařízení** :
+Možnost **shody neodpovídá** / **Does Not Match** možnosti určuje podmínky, za kterých je splněna podmínka shody zařízení:
 
 - **Shody**: vyžaduje, aby zařízení žadatele odpovídalo zadané hodnotě. 
 - **Neodpovídá: vyžaduje**, aby zařízení žadatele neodpovídalo zadané hodnotě.
@@ -351,7 +351,7 @@ Název značky | % {wurfl_cap_brand_name} | Řetězec, který označuje název z
 Operační systém zařízení | % {wurfl_cap_device_os} | Řetězec, který indikuje, že je operační systém nainstalovaný na zařízení. | iOS
 Verze operačního systému zařízení | % {wurfl_cap_device_os_version} | Řetězec, který označuje číslo verze operačního systému nainstalovaného v zařízení. | 1.0.1
 Dvojitá orientace | % {wurfl_cap_dual_orientation} | Logická hodnota, která označuje, jestli zařízení podporuje dvojí orientaci. | true
-Preferovaná deklarace DTD HTML | % {wurfl_cap_html_preferred_dtd} | Řetězec, který označuje upřednostňovanou definici typu dokumentu (DTD) mobilního zařízení pro obsah HTML. | Žádná<br/>xhtml_basic<br/>HTML5
+Preferovaná deklarace DTD HTML | % {wurfl_cap_html_preferred_dtd} | Řetězec, který označuje upřednostňovanou definici typu dokumentu (DTD) mobilního zařízení pro obsah HTML. | žádné<br/>xhtml_basic<br/>HTML5
 Vkládání obrázků | % {wurfl_cap_image_inlining} | Logická hodnota, která označuje, zda zařízení podporuje obrázky kódované v kódování Base64. | false (nepravda)
 Je Android | % {wurfl_vcap_is_android} | Logická hodnota, která označuje, jestli zařízení používá operační systém Android. | true
 Je IOS | % {wurfl_vcap_is_ios} | Logická hodnota, která indikuje, jestli zařízení používá iOS. | false (nepravda)
@@ -398,7 +398,7 @@ Informace o klíči:
 
 Název hostitele přidružený k odkazujícímu serveru, prostřednictvím kterého byl požadován obsah, určuje, zda je splněna podmínka odkazující domény.
 
-Možnost **shody**/**neodpovídá možnosti** určuje podmínky, za kterých je splněna odkazovaná podmínka domény:
+Možnost **shody** / **neodpovídá** možnosti určuje podmínky, za kterých je splněna odkazovaná podmínka domény:
 
 - **Shody**: vyžaduje odkazující název hostitele, aby odpovídal zadaným hodnotám. 
 - **Neodpovídá: vyžaduje**, aby odkazující název hostitele neodpovídá zadané hodnotě.
@@ -424,7 +424,7 @@ Informace o klíči:
 
 ### <a name="request-header-literal"></a>Literál hlavičky požadavku
 
-Možnost **shody**/**neodpovídá možnosti** určuje podmínky, za kterých je splněna podmínka shody s literálem hlavičky požadavku.
+Možnost **shody** / **neodpovídá** možnosti určuje podmínky, za kterých je splněna podmínka shody s literálem hlavičky požadavku.
 
 - **Shody**: vyžaduje, aby požadavek obsahoval určenou hlavičku. Jeho hodnota musí odpovídat hodnotě, která je definována v této podmínce shody.
 - **Neodpovídá: vyžaduje**, aby požadavek splňoval jedno z následujících kritérií:
@@ -449,7 +449,7 @@ Informace o klíči:
 
 ### <a name="request-header-regex"></a>Regulární výraz pro záhlaví požadavku
 
-Možnost **shody**/**neodpovídá možnosti** určuje podmínky, za kterých je splněna podmínka záhlaví žádosti o porovnání regulárního výrazu.
+Možnost **shody** / **neodpovídá** možnosti určuje podmínky, za kterých je splněna podmínka záhlaví žádosti o porovnání regulárního výrazu.
 
 - **Shody**: vyžaduje, aby požadavek obsahoval určenou hlavičku. Jeho hodnota musí odpovídat vzoru, který je definován v zadaném [regulárním výrazu](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
 - **Neodpovídá: vyžaduje**, aby požadavek splňoval jedno z následujících kritérií:
@@ -480,7 +480,7 @@ Informace o klíči:
 
 ### <a name="request-header-wildcard"></a>Zástupný znak hlavičky žádosti
 
-Možnost **shody**/**neodpovídá možnosti** určuje podmínky, za kterých je splněna podmínka shody se zástupnými znaky v hlavičce požadavku.
+Možnost **shody** / **neodpovídá** možnosti určuje podmínky, za kterých je splněna podmínka shody se zástupnými znaky v hlavičce požadavku.
 
 - **Shody**: vyžaduje, aby požadavek obsahoval určenou hlavičku. Jeho hodnota musí odpovídat alespoň jedné z hodnot, které jsou definovány v této podmínce shody.
 - **Neodpovídá: vyžaduje**, aby požadavek splňoval jedno z následujících kritérií:
@@ -565,7 +565,7 @@ Informace o klíči:
 
 Identifikuje požadavek podle jeho relativní cesty, která vylučuje název souboru požadovaného prostředku.
 
-Možnost **shody**/**neodpovídá možnosti** určuje podmínky, za kterých je splněna podmínka shody adresáře cesty adresy URL.
+Možnost **shody** / **neodpovídá** možnosti určuje podmínky, za kterých je splněna podmínka shody adresáře cesty adresy URL.
 
 - **Shody**: vyžaduje, aby žádost obsahovala relativní cestu URL s výjimkou názvu souboru, která odpovídá zadanému vzoru adresy URL.
 - **Neodpovídá: vyžaduje**, aby žádost obsahovala relativní cestu URL s vyloučením názvu souboru, která neodpovídá zadanému vzoru adresy URL.
@@ -577,23 +577,23 @@ Informace o klíči:
    Pro možnost **relativně k** dispozici jsou následující hodnoty:
   - **Root**: označuje, zda se bod porovnání adresy URL začíná přímo za názvem hostitele CDN. 
 
-  Například: http:\//WPC.0001. &lt;&gt;doména/**800001/myorigin/myFolder**/index.htm
+  Například: http: \/ /WPC.0001. &lt; Doména &gt; / **800001/myorigin/myFolder**/index.htm
 
-  - **Počátek**: označuje, že se bod porovnání adresy URL začíná za přístupovým bodem obsahu (například/000001 nebo/800001/myorigin). Vzhledem k \*tomu, že se ve výchozím nastavení vytvoří název CNAME. azureedge.NET relativní ke zdrojovému adresáři Verizon CDN, Azure CDN uživatelé by měli použít **počáteční** hodnotu. 
+  - **Počátek**: označuje, že se bod porovnání adresy URL začíná za přístupovým bodem obsahu (například/000001 nebo/800001/myorigin). Vzhledem k tomu, že se ve \* výchozím nastavení vytvoří název CNAME. azureedge.NET relativní ke zdrojovému adresáři Verizon CDN, Azure CDN uživatelé by měli použít **počáteční** hodnotu. 
 
-  Příklad: https:\//&lt;Endpoint&gt;. azureedge.NET/**myFolder**/index.htm 
+  Příklad: https: \/ / &lt; Endpoint &gt; . azureedge.NET/**myFolder**/index.htm 
 
-  Tato adresa URL odkazuje na následující název hostitele CDN Verizon: http\/:/WPC.0001. &lt;doména&gt;/800001/myorigin/**myFolder**/index.htm
+  Tato adresa URL odkazuje na následující název hostitele CDN Verizon: http: \/ /WPC.0001. &lt; Doména &gt; /800001/myorigin/**myFolder**/index.htm
 
 - Adresa URL hraničního CNAME se před porovnáním adresy URL přepíše na adresu URL CDN.
 
     Například obě následující adresy URL ukazují na stejný Asset a mají proto stejnou cestu URL.
-  - Adresa URL CDN: http\/:/WPC.0001. &lt;doména&gt;/800001/CustomerOrigin/Path/Asset.htm
+  - Adresa URL CDN: http: \/ /WPC.0001. &lt; Doména &gt; /800001/CustomerOrigin/Path/Asset.htm
     
-  - Adresa URL CNAME Edge: http\//&lt;:&gt;Endpoint. azureedge.NET/Path/Asset.htm
+  - Adresa URL CNAME Edge: http: \/ / &lt; Endpoint &gt; . azureedge.NET/Path/Asset.htm
     
     Další informace:
-  - Vlastní doména: https:\//my.domain.com/Path/Asset.htm
+  - Vlastní doména: https: \/ /My.domain.com/Path/Asset.htm
     
     - Cesta URL (relativní ke kořenu):/800001/CustomerOrigin/path/
     
@@ -623,7 +623,7 @@ Informace o klíči:
 
 Identifikuje požadavky podle přípony souboru požadovaného prostředku.
 
-/Shoda **neodpovídá**možnosti určuje podmínky, za kterých je splněna**Podmínka shody přípony** cesty URL.
+Shoda **neodpovídá** / **Does Not Match** možnosti určuje podmínky, za kterých je splněna podmínka shody přípony cesty URL.
 
 - **Shody**: vyžaduje, aby adresa URL požadavku obsahovala příponu souboru, která přesně odpovídá zadanému vzoru.
 
@@ -666,7 +666,7 @@ Tato podmínka shody je splněna, pokud nalezne adresy URL, které končí násl
 
 Identifikuje požadavky podle názvu souboru požadovaného prostředku. Pro účely této podmínky shody se název souboru skládá z názvu požadovaného prostředku, tečky a přípony souboru (například index. html).
 
-Možnost **shody**/**neodpovídá možnosti** určuje podmínky, za kterých je splněna podmínka adresy URL názvu cesty.
+Možnost **shody** / **neodpovídá** možnosti určuje podmínky, za kterých je splněna podmínka adresy URL názvu cesty.
 
 - **Shody**: vyžaduje, aby žádost obsahovala název souboru v cestě URL, která odpovídá zadanému vzoru.
 - **Neodpovídá: vyžaduje**, aby požadavek obsahoval název souboru v cestě URL, která se neshoduje se zadaným vzorem.
@@ -697,7 +697,7 @@ Informace o klíči:
 
 Porovná cestu URL požadavku, včetně názvu souboru, s určenou hodnotou.
 
-/Shoda **neodpovídá**možnosti určuje podmínky, za kterých je splněna**Podmínka shody cesty** URL.
+Shoda **neodpovídá** / **Does Not Match** možnosti určuje podmínky, za kterých je splněna podmínka shody cesty URL.
 
 - **Shody**: vyžaduje, aby požadavek OBSAHOVAL cestu URL, která odpovídá zadanému vzoru.
 - **Neodpovídá: vyžaduje**, aby požadavek OBSAHOVAL cestu URL, která se neshoduje se zadaným vzorem.
@@ -709,20 +709,20 @@ Informace o klíči:
     Pro možnost **relativně k** dispozici jsou následující hodnoty:
   - **Root**: označuje, zda se bod porovnání adresy URL začíná přímo za názvem hostitele CDN.
 
-    Například: http:\//WPC.0001. &lt;&gt;/**800001/myorigin/myFolder/index.htm** domény
+    Například: http: \/ /WPC.0001. &lt; &gt; / **800001/myorigin/myFolder/index.htm** domény
 
-  - **Počátek**: označuje, že se bod porovnání adresy URL začíná za přístupovým bodem obsahu (například/000001 nebo/800001/myorigin). Vzhledem k \*tomu, že se ve výchozím nastavení vytvoří název CNAME. azureedge.NET relativní ke zdrojovému adresáři Verizon CDN, Azure CDN uživatelé by měli použít **počáteční** hodnotu. 
+  - **Počátek**: označuje, že se bod porovnání adresy URL začíná za přístupovým bodem obsahu (například/000001 nebo/800001/myorigin). Vzhledem k tomu, že se ve \* výchozím nastavení vytvoří název CNAME. azureedge.NET relativní ke zdrojovému adresáři Verizon CDN, Azure CDN uživatelé by měli použít **počáteční** hodnotu. 
 
-    Příklad: https:\//&lt;Endpoint&gt;. azureedge.NET/**myFolder/index.htm**
+    Příklad: https: \/ / &lt; Endpoint &gt; . azureedge.NET/**myFolder/index.htm**
 
-  Tato adresa URL odkazuje na následující název hostitele CDN Verizon: http\/:/WPC.0001. &lt;myFolder/index.htm&gt;domény**myfolder/index.htm** /800001/myorigin/
+  Tato adresa URL odkazuje na následující název hostitele CDN Verizon: http: \/ /WPC.0001. &lt; &gt;**myFolder/index.htm** domény/800001/myorigin/
 
 - Adresa URL hraničního CNAME se před porovnáním adresy URL přepíše na adresu URL CDN.
 
 Například obě následující adresy URL ukazují na stejný Asset a mají proto stejnou cestu adresy URL:
 
-- Adresa URL CDN: http\/:/WPC.0001. &lt;doména&gt;/800001/CustomerOrigin/Path/Asset.htm
-- Adresa URL CNAME Edge: http\//&lt;:&gt;Endpoint. azureedge.NET/Path/Asset.htm
+- Adresa URL CDN: http: \/ /WPC.0001. &lt; Doména &gt; /800001/CustomerOrigin/Path/Asset.htm
+- Adresa URL CNAME Edge: http: \/ / &lt; Endpoint &gt; . azureedge.NET/Path/Asset.htm
 
     Další informace:
     
@@ -746,7 +746,7 @@ Například obě následující adresy URL ukazují na stejný Asset a mají pro
 
 Porovná cestu URL požadavku k určenému [regulárnímu výrazu](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
 
-/Shoda **neodpovídá****možnosti určuje** podmínky, za kterých je splněna podmínka cesty URL regulárního výrazu.
+Shoda **neodpovídá** / **Does Not Match** možnosti určuje podmínky, za kterých je splněna podmínka cesty URL regulárního výrazu.
 
 - **Shody**: vyžaduje, aby požadavek OBSAHOVAL cestu URL, která odpovídá zadanému regulárnímu výrazu.
 - **Neodpovídá: vyžaduje**, aby požadavek OBSAHOVAL cestu URL, která neodpovídá zadanému regulárnímu výrazu.
@@ -757,9 +757,9 @@ Informace o klíči:
 
     Například obě adresy URL ukazují na stejný Asset a mají proto stejnou cestu URL.
 
-     - Adresa URL CDN: http\/:/WPC.0001. &lt;doména&gt;/800001/CustomerOrigin/Path/Asset.htm
+     - Adresa URL CDN: http: \/ /WPC.0001. &lt; Doména &gt; /800001/CustomerOrigin/Path/Asset.htm
 
-     - Adresa URL CNAME Edge: http\/:/My.domain.com/Path/Asset.htm
+     - Adresa URL CNAME Edge: http: \/ /My.domain.com/Path/Asset.htm
 
     Další informace:
     
@@ -781,7 +781,7 @@ Informace o klíči:
 
 Porovná relativní cestu URL požadavku se zadaným zástupným vzorem.
 
-Možnost **shody**/**neodpovídá možnosti** určuje podmínky, za kterých je splněna podmínka shody mezi zástupnými znaky cesty URL.
+Možnost **shody** / **neodpovídá** možnosti určuje podmínky, za kterých je splněna podmínka shody mezi zástupnými znaky cesty URL.
 
 - **Shody**: vyžaduje, aby požadavek OBSAHOVAL cestu URL, která odpovídá zadanému zástupnému vzoru.
 - **Neodpovídá: vyžaduje**, aby požadavek OBSAHOVAL cestu URL, která neodpovídá zadanému vzoru zástupných znaků.
@@ -793,19 +793,19 @@ Informace o klíči:
    Tato možnost může mít následující hodnoty:
      - **Root**: označuje, zda se bod porovnání adresy URL začíná přímo za názvem hostitele CDN.
 
-       Například: http:\//WPC.0001. &lt;&gt;/**800001/myorigin/myFolder/index.htm** domény
+       Například: http: \/ /WPC.0001. &lt; &gt; / **800001/myorigin/myFolder/index.htm** domény
 
-     - **Počátek**: označuje, že se bod porovnání adresy URL začíná za přístupovým bodem obsahu (například/000001 nebo/800001/myorigin). Vzhledem k \*tomu, že se ve výchozím nastavení vytvoří název CNAME. azureedge.NET relativní ke zdrojovému adresáři Verizon CDN, Azure CDN uživatelé by měli použít **počáteční** hodnotu. 
+     - **Počátek**: označuje, že se bod porovnání adresy URL začíná za přístupovým bodem obsahu (například/000001 nebo/800001/myorigin). Vzhledem k tomu, že se ve \* výchozím nastavení vytvoří název CNAME. azureedge.NET relativní ke zdrojovému adresáři Verizon CDN, Azure CDN uživatelé by měli použít **počáteční** hodnotu. 
 
-       Příklad: https:\//&lt;Endpoint&gt;. azureedge.NET/**myFolder/index.htm**
+       Příklad: https: \/ / &lt; Endpoint &gt; . azureedge.NET/**myFolder/index.htm**
 
-     Tato adresa URL odkazuje na následující název hostitele CDN Verizon: http\/:/WPC.0001. &lt;myFolder/index.htm&gt;domény**myfolder/index.htm** /800001/myorigin/
+     Tato adresa URL odkazuje na následující název hostitele CDN Verizon: http: \/ /WPC.0001. &lt; &gt;**myFolder/index.htm** domény/800001/myorigin/
 
 - Adresa URL hraničního CNAME se před porovnáním adresy URL přepíše na adresu URL CDN.
 
     Například obě následující adresy URL ukazují na stejný Asset a mají proto stejnou cestu adresy URL:
-     - Adresa URL CDN http://wpc.0001.&lt:;d&gt;omain/800001/CustomerOrigin/Path/Asset.htm
-     - Adresa URL CNAME Edge: http\//&lt;:&gt;Endpoint. azureedge.NET/Path/Asset.htm
+     - Adresa URL CDN: http://wpc.0001.&lt ;d omain &gt; /800001/CustomerOrigin/Path/Asset.htm
+     - Adresa URL CNAME Edge: http: \/ / &lt; Endpoint &gt; . azureedge.NET/Path/Asset.htm
     
     Další informace:
     
@@ -835,7 +835,7 @@ Hodnota                   | Relativní vzhledem k    | Výsledek
 /80ABCD/origin/text/*   | Kořenová složka           | Tento model se spáruje, když požadovaný prostředek splňuje následující kritéria: <br />– Musí se nacházet na zdroji zákazníka s názvem "Origin". <br />-Relativní cesta musí začínat složkou s názvem "text". To znamená, že požadovaný prostředek může být umístěn ve složce "text" nebo v jedné z jeho rekurzivních podsložek.
 */CSS/* */js/*          | Kořen nebo původ | Tento model odpovídá všem adresám URL CDN nebo hraničním záznamům CNAME, které obsahují složku CSS nebo JS.
 *. jpg *. gif *. png       | Kořen nebo původ | Tento model odpovídá všem adresám URL CDN nebo hraničních záznamů CNAME končícím na. jpg,. gif nebo. png. Alternativním způsobem, jak tento model zadat, je [Podmínka shody rozšíření cesty URL](#url-path-extension).
-/images/* /media/*      | Zdroj         | Tento model odpovídá adresám CNAME CDN nebo Edge, jejichž relativní cesta začíná složkou "image" nebo "médium". <br />-CDN adresa URL: http\/:/WPC.0001. &lt;/800001/myorigin/images/Sales/event1.png&gt;domény<br />-Ukázka adresa URL CNAME hraničního okraje\/: http:/CDN.mydomain.com/images/Sales/event1.png
+/images/* /media/*      | Zdroj         | Tento model odpovídá adresám CNAME CDN nebo Edge, jejichž relativní cesta začíná složkou "image" nebo "médium". <br />-CDN adresa URL: http: \/ /WPC.0001. &lt; &gt;/800001/myorigin/images/Sales/event1.png domény<br />-Ukázka adresa URL CNAME hraničního okraje: http: \/ /CDN.mydomain.com/images/Sales/event1.png
 
 [Zpět na začátek](#reference-for-rules-engine-match-conditions)
 
@@ -847,7 +847,7 @@ Hodnota                   | Relativní vzhledem k    | Výsledek
 
 Porovná řetězec dotazu požadavku se zadanou hodnotou.
 
-/Možnost **shody neodpovídá**možnosti určuje podmínky, za kterých je splněna**Podmínka shody** literálu dotazu URL.
+Možnost **shody neodpovídá** / **Does Not Match** možnosti určuje podmínky, za kterých je splněna podmínka shody literálu dotazu URL.
 
 - **Shody**: vyžaduje, aby žádost obsahovala řetězec dotazu adresy URL, který odpovídá zadanému řetězci dotazu.
 - **Neodpovídá: vyžaduje**, aby požadavek obsahoval řetězec dotazu adresy URL, který se neshoduje se zadaným řetězcem dotazu.
@@ -884,7 +884,7 @@ Informace o klíči:
 
 Identifikuje požadavky, které obsahují zadaný parametr řetězce dotazu. Tento parametr je nastaven na hodnotu, která odpovídá zadanému vzoru. Parametry řetězce dotazu (například parametr = hodnota) v adrese URL požadavku určují, zda je tato podmínka splněna. Tato podmínka shody identifikuje parametr řetězce dotazu podle názvu a přijímá jednu nebo více hodnot pro hodnotu parametru. 
 
-/Shoda **neodpovídá****parametru určuje** podmínky, za kterých je splněna podmínka dotazu adresy URL.
+Shoda **neodpovídá** / **Does Not Match** parametru určuje podmínky, za kterých je splněna podmínka dotazu adresy URL.
 
 - **Shody**: vyžaduje, aby požadavek obsahoval zadaný parametr s hodnotou, která odpovídá nejméně jedné z hodnot, které jsou definovány v této podmínce shody.
 - **Neodpovídá: vyžaduje**, aby požadavek splňoval jedno z následujících kritérií:
@@ -953,7 +953,7 @@ Informace o klíči:
 
 Následující příklad ukazuje, jak tato možnost funguje v určitých situacích:
 
-Název  | Hodnota |  Výsledek
+Name  | Hodnota |  Výsledek
 ------|-------|--------
 Uživatel  | Joe   | Tento model odpovídá, pokud je řetězec dotazu pro požadovanou adresu URL "? User = Jan".
 Uživatel  | *     | Tento model odpovídá, pokud řetězec dotazu pro požadovanou adresu URL obsahuje parametr uživatele.
@@ -969,7 +969,7 @@ E-mailu | Joe\* | Tento model se spáruje, když řetězec dotazu pro požadovan
 
 Identifikuje požadavky, které obsahují zadaný parametr řetězce dotazu. Tento parametr je nastaven na hodnotu, která odpovídá zadanému [regulárnímu výrazu](cdn-verizon-premium-rules-engine-reference.md#regular-expressions).
 
-/Shoda **neodpovídá****možnosti určuje** podmínky, za kterých je splněna podmínka dotazu URL regulárního výrazu.
+Shoda **neodpovídá** / **Does Not Match** možnosti určuje podmínky, za kterých je splněna podmínka dotazu URL regulárního výrazu.
 
 - **Shody**: vyžaduje, aby žádost obsahovala řetězec dotazu adresy URL, který odpovídá zadanému regulárnímu výrazu.
 - **Neodpovídá: vyžaduje**, aby požadavek obsahoval řetězec dotazu adresy URL, který neodpovídá zadanému regulárnímu výrazu.
@@ -987,13 +987,13 @@ Informace o klíči:
    Znak | Kódování adresy URL | Hodnota
    ----------|--------------|------
    Místo     | %20          | \%20o
-   &         | %25          | \%25
+   &         | %25          | \%0,25
 
    Všimněte si, že symboly procentuálních hodnot musí být uvozeny řídicími znaky.
 
-- Speciální znaky regulárního výrazu dvojitého Escape (například \^$. +) pro vložení zpětného lomítka do regulárního výrazu.
+- Speciální znaky regulárního výrazu dvojitého Escape (například \^ $. +) pro vložení zpětného lomítka do regulárního výrazu.
 
-   Příklad:
+   Například:
 
    Hodnota | Interpretováno jako 
    ------|---------------
@@ -1017,7 +1017,7 @@ Informace o klíči:
 
 Porovná zadané hodnoty s řetězcem dotazu žádosti.
 
-Možnost **shody**/**neodpovídá možnosti** určuje podmínky, za kterých je splněna podmínka shody zástupného znaku dotazu URL.
+Možnost **shody** / **neodpovídá** možnosti určuje podmínky, za kterých je splněna podmínka shody zástupného znaku dotazu URL.
 
 - **Shody**: vyžaduje, aby žádost obsahovala řetězec dotazu adresy URL, který odpovídá zadané zástupné hodnotě.
 - **Neodpovídá: vyžaduje**, aby požadavek obsahoval řetězec dotazu adresy URL, který neodpovídá zadané zástupné hodnotě.
@@ -1053,10 +1053,10 @@ Informace o klíči:
 
 Následující příklad ukazuje, jak tato možnost funguje v určitých situacích:
 
- Název                 | Popis
+ Name                 | Popis
  ---------------------|------------
 uživatel = Jan              | Tento model odpovídá, pokud je řetězec dotazu pro požadovanou adresu URL "? User = Jan".
-\*Uživatel =\* \*OptOut =\* | Tento model se spáruje, když dotaz na adresu URL CDN obsahuje buď parametr User nebo OptOut.
+\*Uživatel = \* \* OptOut =\* | Tento model se spáruje, když dotaz na adresu URL CDN obsahuje buď parametr User nebo OptOut.
 
 [Zpět na začátek](#reference-for-rules-engine-match-conditions)
 

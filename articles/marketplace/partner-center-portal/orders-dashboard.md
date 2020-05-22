@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0c5bfb6632a22a890ac2387f06464c18be7dd714
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3b4159d81ce1d202dd1a302e863e5392f51a9868
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699054"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747797"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Objednávky v analýzách komerčního marketplace
 
@@ -58,7 +58,7 @@ Procentuální hodnota vedle Celková objednávka představuje množství nárů
 
 ### <a name="orders-by-geography"></a>Objednávky podle geografického
 
-Heatmapu **ORDER by geografie** zobrazuje počet objednávek na mapě světa a ukazuje, že jsou na základě země zákazníka mapovány místa. Tato heatmapu funguje stejně jako **[Zákazník podle geografické heatmapu](./customer-dashboard.md#customer-by-geography)**.
+Heatmapu **ORDER by geografie** zobrazuje počet objednávek na mapě světa a ukazuje, že jsou na základě země nebo oblasti zákazníka mapovány místa. Tato heatmapu funguje stejně jako **[Zákazník podle geografické heatmapu](./customer-dashboard.md#customer-by-geography)**.
 
 ![Partnerské centrum analyzuje objednávky podle geografického středu](./media/orders-by-geography.png)
 
@@ -103,7 +103,7 @@ Tabulka Podrobnosti objednávky zobrazuje číslovaný seznam 1000 hlavních obj
 - Každý sloupec v mřížce lze seřadit.
 - Data je možné extrahovat do souboru TSV, pokud je počet záznamů menší než 1000.
 - Pokud zaznamenává číslo přes 1000, vyexportovaná data se asynchronně nasadí na stránku ke stažení po dobu příštích 30 dnů.
-- Filtry lze použít v **tabulce podrobností objednávky** k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle země, typu licence Azure, typu licence Marketplace, typu nabídky, stavu objednávky, volných stop, ID předplatného Marketplace, ID zákazníka a názvu společnosti.
+- Filtry lze použít v **tabulce podrobností objednávky** k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle země/oblasti, typu licence Azure, typu licence Marketplace, typu nabídky, stavu objednávky, volných stop, ID předplatného Marketplace, ID zákazníka a názvu společnosti.
 - Vzhledem k tomu, že SaaS nabídky zakoupené prostřednictvím Azure Marketplace nebo AppSource nevyžadují předplatné Azure, ID předplatného na webu Marketplace se v části **podrobné údaje o objednávkách** zobrazí jako 00000000-0000-0000-0000-000000000000.
 
 #### <a name="orders-page-filters"></a>Filtry stránek objednávky

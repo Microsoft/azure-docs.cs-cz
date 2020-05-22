@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6298b3a9c5769b1d82f89956736b451935b2c5d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7bf05fe039de2ab9e25495f9e2652fde8fac34e1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612635"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747699"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Připojení ke službě virtuální plochy Windows
 
@@ -42,36 +42,6 @@ Get-AzRoleAssignment -SignInName <userupn>
 Potvrďte, že se uživatel přihlašuje se správnými přihlašovacími údaji.
 
 Pokud je webový klient používán, zkontrolujte, zda nejsou k dispozici žádné problémy s přihlašovacími údaji v mezipaměti.
-
-## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Virtuální počítače s Windows 10 Enterprise s více relacemi nereagují
-
-Pokud virtuální počítač neodpovídá a nemůžete k němu přistupovat prostřednictvím protokolu RDP, budete ho muset vyřešit pomocí diagnostické funkce zkontrolováním stavu hostitele.
-
-Chcete-li zjistit stav hostitele, spusťte tuto rutinu:
-
-```powershell
-Get-AzWvdSessionHost -HostPoolName <hostpoolname> -ResourceGroupName <resourcegroupname>| Format-List Name, LastHeartBeat, AllowNewSession, Status
-```
-
-Pokud je `NoHeartBeat`stav hostitele, znamená to, že virtuální počítač neodpovídá a Agent nemůže komunikovat se službou Virtual Desktop systému Windows.
-
-```powershell
-Name            : 0301HP/win10pd-0.contoso.com 
-LastHeartBeat   : 4/8/2020 1:48:35 AM 
-AllowNewSession : True 
-Status          : Available 
-
-Name            : 0301HP/win10pd-1.contoso.com 
-LastHeartBeat   : 4/8/2020 1:45:44 AM 
-AllowNewSession : True 
-Status          : NoHeartBeat
-```
-
-Existuje několik věcí, pomocí kterých můžete opravit stav prezenčního signálu.
-
-### <a name="update-fslogix"></a>Aktualizovat FSLogix
-
-Pokud vaše FSLogix není aktuální, obzvláště pokud je to verze 2.9.7205.27375 of frxdrvvt. sys, může to způsobit zablokování. Nezapomeňte [aktualizovat FSLogix na nejnovější verzi](https://go.microsoft.com/fwlink/?linkid=2084562).
 
 ## <a name="next-steps"></a>Další kroky
 

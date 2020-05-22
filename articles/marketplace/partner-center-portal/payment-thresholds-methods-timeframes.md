@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 29b6b47a30760887fb01700e50ecdeb5dd307ad4
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 33c4286c5a3fa8be68c1e6ec3bd331aa1e804cb4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858178"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745013"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Prahové hodnoty, způsoby a časové rámce plateb
 
@@ -38,7 +38,7 @@ Obvykle pošleme platbu, která je splatná v daném měsíci, do 15. dne v měs
 
 Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby používají pro každé tržiště. Prahová hodnota platby ve všech případech je $50 USD.
 
-| Země | Azure Marketplace | Ukládání, inzerce, míchání a Minecraftu | Office | Platby PayPal  |
+| Země/oblast | Azure Marketplace | Ukládání, inzerce, míchání a Minecraftu | Office | Platby PayPal  |
 | --- | --- | --- | --- | --- |
 | Afghánistán | Ano | Ano | Ne | Ne |
 | Albánie | Ano | Ano | Ano | Ano |
@@ -185,7 +185,7 @@ Jedná se o země a oblasti, ve kterých se výše uvedené způsoby platby pou�
 | Ukrajina | Ano | Ano | Ne | Ne |
 | Spojené arabské emiráty | Ano | Ano | Ano | Ano |
 | Spojené království | Ano | Ano | Ano | Ano |
-| Spojené státy | Ano | Ano | Ano | Ano |
+| USA | Ano | Ano | Ano | Ano |
 | Uruguay | Ano | Ano | Ano | Ano |
 | Uzbekistán | Ano | Ano | Ne | Ne |
 | Venezuela | Ano | Ano | Ano | Ano |

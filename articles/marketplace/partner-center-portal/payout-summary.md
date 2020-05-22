@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 0380330c2cfd4b0a72dcc158a0d6e051d5547b31
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6639026d071b496027996036a81f6bc66e0185e3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857012"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744814"
 ---
 # <a name="payout-summaries"></a>Přehledy plateb
 
@@ -73,7 +73,7 @@ Pokud chcete na této stránce Exportovat data transakcí, vyberte **exportovat*
 | Nevyřízená daňová faktura      | Vaše daňová faktura je neúplná nebo neplatná.                                                                                                  | Abyste mohli platit, musíte si nejdřív aktualizovat svou daňovou fakturu. |
 | Zamítnuto během revize   | Platba byla během revize odmítnuta.                                                                                                     | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support) .                      |
 | Failed                   | Platba se nezdařila z důvodu chyby systému Microsoft.                                                                                         | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support) .                      |
-| Probíhá              | Platba probíhá.                                                                                                                 | No                                                         |
+| Rozpracované              | Platba probíhá.                                                                                                                 | No                                                         |
 | Nesprávná platba        | Recouping platby probíhá.                                                                                                       | No                                                         |
 | Odesláno                     | Platba byla odeslána do vaší banky.                                                                                                     | No                                                         |
 | Opětovného zpracování             | V platbě došlo k systémové chybě společnosti Microsoft a probíhá její zpracování.                                                                  | No                                                         |
@@ -129,7 +129,7 @@ Tato možnost poskytuje stažení každé položky řádku pro přijetí dat, kt
 | participantId                  | Primární identita partnera v rámci programu                                                                            | Vše                                                            |
 | participantIdType              | Převážně ID programu pro pobídkové programy a prodejce, pokud je to pro aplikace ze Storu a Azure Marketplace                                          | Vše                                                            |
 | účastník                | Název partnerského partnera                                                                                                              | Vše                                                            |
-| partnerCountryCode             | Umístění/země pro partnerský partner                                                                                                  | Vše                                                            |
+| partnerCountryCode             | Umístění/země/oblast pro partnerský partner                                                                                                  | Vše                                                            |
 | programName                    | Motivace/uložení názvu programu                                                                                                             | Vše                                                            |
 | transactionId                  | Jedinečný identifikátor pro transakci                                                                                                    | Vše                                                            |
 | transactionCurrency            | Měna, ve které došlo k původní transakci zákazníka (nejedná se o měnu umístění partnera)                                     | Vše                                                            |
@@ -183,7 +183,7 @@ Tato možnost poskytuje stažení každé položky řádku pro přijetí dat, kt
 | storeFee                       | Množství, které Microsoft zachovává jako poplatek za zpřístupnění aplikace nebo doplňku ve Storu                                           | Jenom úložiště                                                     |
 | transactionPaymentMethod       | Platební nástroj zákazníka, který se používá pro transakci, jako je karta, fakturace mobilních dopravců nebo PayPal                                | Uložení a Azure Marketplace                                    |
 | tpan                           | Indikuje síť AD třetí strany.                                                                                                     | Store – pouze inzeráty                                               |
-| customerCountry                | Země zákazníka                                                                                                                         | Uložení a Azure Marketplace                                    |
+| customerCountry                | Země nebo oblast zákazníka                                                                                                                         | Uložení a Azure Marketplace                                    |
 | customerCity                   | Město zákazníka                                                                                                                            | Uložení a Azure Marketplace                                    |
 | customerState                  | Stav zákazníka                                                                                                                           | Uložení a Azure Marketplace                                    |
 | customerZip                    | PSČ zákazníka, PSČ                                                                                                                 | Uložení a Azure Marketplace                                    |
@@ -234,7 +234,7 @@ Historie transakcí od 1. července 1 2019 se zpracovává samostatně. Příkaz
 | Odmítnuté daně          | Množství srážky daně z příjmu (zahrnuté do **rezervovaného** souboru CSV)                                                                                                |
 | Platba                 | Aplikace pokračuje bez jakýchkoli příslušných srážkových daní za příjem (částka uvedená v transakční měně). Nezahrnuto do **rezervovaného** souboru CSV.                               |
 | Míra FX                 | Směnný kurz, který se používá k převodu transakční měny na platební měnu                                                                                         |
-| Platební měna        | Měna, ve které se platby provedly                                                                                                                                       |
+| Měna platby        | Měna, ve které se platby provedly                                                                                                                                       |
 | Převedená platba       | Částka platby převedená na platební měnu pomocí míry FX                                                                                                         |
 | Model daňové úhrady         | Strana odpovědná za přebírání daní (prodej, použití nebo DPH/GST daně)                                                                                                   |
 | Datum a čas nároku   | Datum a čas, kdy transakce pokračuje v nároku na výběr (UTC). Když je vytvořen výběr, zahrnuje transakci transakce s datem a časem nároku před datem vytvoření výběr (zahrnuto pouze do **rezervovaného** souboru CSV). |

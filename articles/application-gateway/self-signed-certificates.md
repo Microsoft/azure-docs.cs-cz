@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0e930116447ded51616651751bba7482b638ca1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311943"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745486"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Vygenerování certifikátu podepsaného svým držitelem Azure Application Gateway s vlastní kořenovou certifikační autoritou
 
@@ -67,7 +67,7 @@ Vytvořte certifikát od kořenové certifikační autority pomocí OpenSSL.
    ```
    Předchozí příkazy vytvoří kořenový certifikát. Použijete ho k podepsání certifikátu serveru.
 
-1. Po zobrazení výzvy zadejte heslo pro kořenový klíč a informace o organizaci vlastní certifikační autority, jako je například země, stát, org, OU a plně kvalifikovaný název domény (Jedná se o doménu vystavitele).
+1. Po zobrazení výzvy zadejte heslo pro kořenový klíč a informace o organizaci vlastní certifikační autority, jako je například země/oblast, stát, organizace, organizační jednotka a plně kvalifikovaný název domény (Jedná se o doménu vystavitele).
 
    ![vytvořit kořenový certifikát](media/self-signed-certificates/root-cert.png)
 
@@ -88,7 +88,7 @@ K vygenerování klíče pro certifikát serveru použijte následující přík
 CSR je veřejný klíč, který se udělí certifikační autoritě při žádosti o certifikát. Certifikační autorita vydá certifikát pro tento konkrétní požadavek.
 
 > [!NOTE]
-> CN (běžný název) pro certifikát serveru musí být jiný než doména vystavitele. V tomto případě je například CN pro vystavitele `www.contoso.com` a CN je certifikát serveru. `www.fabrikam.com`
+> CN (běžný název) pro certifikát serveru musí být jiný než doména vystavitele. V tomto případě je například CN pro vystavitele `www.contoso.com` a CN je certifikát serveru `www.fabrikam.com` .
 
 
 1. K vygenerování CSR použijte následující příkaz:
@@ -97,7 +97,7 @@ CSR je veřejný klíč, který se udělí certifikační autoritě při žádos
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. Po zobrazení výzvy zadejte heslo pro kořenový klíč a informace o organizaci pro vlastní certifikační autoritu: země, stát, org, OU, OU a plně kvalifikovaný název domény. Toto je doména webu a měla by se lišit od vystavitele.
+1. Po zobrazení výzvy zadejte heslo pro kořenový klíč a informace o organizaci pro vlastní certifikační autoritu: země/oblast, stát, org, OU a plně kvalifikovaný název domény. Toto je doména webu a měla by se lišit od vystavitele.
 
    ![Certifikát serveru](media/self-signed-certificates/server-cert.png)
 

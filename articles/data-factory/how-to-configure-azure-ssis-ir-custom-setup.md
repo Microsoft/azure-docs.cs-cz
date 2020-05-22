@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: ab2ba31d6b712bd3399bc8bf5b491337d462dac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2a5928d8326c4a0628ebc1bfb7eec3cd20f9254
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606204"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747507"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro Azure-SSIS Integration Runtime
 
@@ -42,7 +42,7 @@ Následující omezení platí pouze pro standardní vlastní nastavení:
 
 - Pokud chcete použít nástroj *Gacutil. exe* ve skriptu k instalaci sestavení v globální mezipaměti sestavení (GAC), je nutné poskytnout *Gacutil. exe* jako součást vlastního nastavení. Případně můžete použít kopii, která je k dispozici v kontejneru *Public Preview* , popsaný dále v části "pokyny".
 
-- Pokud chcete odkazovat na podsložku ve skriptu, *Msiexec. exe* nepodporuje `.\` zápis, aby odkazoval na kořenovou složku. Použijte příkaz, například `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` místo. `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...`
+- Pokud chcete odkazovat na podsložku ve skriptu, *Msiexec. exe* nepodporuje `.\` zápis, aby odkazoval na kořenovou složku. Použijte příkaz, například `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` místo `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` .
 
 - Sdílené složky pro správu nebo skryté sdílené síťové složky, které jsou automaticky vytvořeny systémem Windows, nejsou aktuálně podporovány v Azure-SSIS IR.
 
@@ -68,7 +68,7 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující položky:
 
    * Musíte mít soubor skriptu s názvem *Main. cmd*, který je vstupním bodem vlastní instalace.  
    * Abyste měli jistotu, že se skript dá spustit bezobslužně, doporučujeme ho nejdřív otestovat na svém místním počítači.  
-   * Pokud chcete, aby se další protokoly vygenerovaly jinými nástroji (například *Msiexec. exe*), které se mají nahrát do kontejneru, zadejte předdefinovanou proměnnou `CUSTOM_SETUP_SCRIPT_LOG_DIR`prostředí, jako složku protokolu ve vašich skriptech (například *msiexec/i xxx. msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ Install. log*).
+   * Pokud chcete, aby se další protokoly vygenerovaly jinými nástroji (například *Msiexec. exe*), které se mají nahrát do kontejneru, zadejte předdefinovanou proměnnou prostředí, `CUSTOM_SETUP_SCRIPT_LOG_DIR` jako složku protokolu ve vašich skriptech (například *msiexec/i xxx. msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ Install. log*).
 
 1. Stáhněte, nainstalujte a otevřete [Průzkumník služby Azure Storage](https://storageexplorer.com/). Postupujte následovně:
 
@@ -123,7 +123,7 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující položky:
 
      * Pokud vyberete **OH22'S HEDDA. V/** v součást, můžete nainstalovat [HEDDA. Kvalita/čisticí data Azure-SSIS IR v/](https://hedda.io/ssis-component/) v oh22 po zakoupení služby Aktuální integrovaná verze je **1.0.13**.
 
-     * Pokud vyberete komponentu **oh22's SQLPhonetics.NET** , můžete nainstalovat součást [SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) Data Quality/Matching z oh22 na svou Azure-SSIS IR zadáním licenčního kódu produktu, který jste si z nich koupili v poli **licenční klíč** . Aktuální integrovaná verze je **1.0.43**.
+     * Pokud vyberete komponentu **oh22's SQLPhonetics.NET** , můžete nainstalovat součást [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) Data Quality/Matching z oh22 na svou Azure-SSIS IR zadáním licenčního kódu produktu, který jste si z nich koupili v poli **licenční klíč** . Aktuální integrovaná verze je **1.0.43**.
 
      * Pokud vyberete komponentu **KingswaySoft Integration Toolkit pro SSIS** , můžete nainstalovat konektory sady [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) pro aplikace CRM/ERP/marketing a spolupráci, jako je například Microsoft Dynamics/SharePoint/Project Server, marketingový Cloud Oracle nebo Salesforce, a to z KingswaySoft na vaše Azure-SSIS IR zadáním licenčního kódu produktu, který jste si z nich koupili v poli **licenční klíč** . Aktuální integrovaná verze je **2019,2**.
 

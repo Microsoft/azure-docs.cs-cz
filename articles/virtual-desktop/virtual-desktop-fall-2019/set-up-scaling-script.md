@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 012cdc53099bf156e50fe766b04c3176d415db1c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117389"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745708"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Škálování hostitelů relací pomocí Azure Automation
 
@@ -114,7 +114,7 @@ Nejdřív budete potřebovat účet Azure Automation ke spuštění Runbooku Pow
 
 Teď, když máte účet Azure Automation, budete také muset vytvořit účet Azure Automation spustit jako pro přístup k prostředkům Azure.
 
-[Azure Automation účet Spustit jako](../../automation/manage-runas-account.md) poskytuje ověřování pro správu prostředků v Azure pomocí rutin Azure. Když vytvoříte účet Spustit jako, vytvoří se nový uživatel instančního objektu v Azure Active Directory a přiřadí roli přispěvatele k uživatelskému objektu služby na úrovni předplatného, účet Spustit jako pro Azure je skvělým způsobem, jak bezpečně ověřit s certifikáty a hlavní název služby, aniž byste museli ukládat uživatelské jméno a heslo v objektu přihlašovacích údajů. Další informace o ověřování spustit jako najdete v tématu [omezení oprávnění účtu Spustit jako](../../automation/manage-runas-account.md#limiting-run-as-account-permissions).
+[Azure Automation účet Spustit jako](../../automation/manage-runas-account.md) poskytuje ověřování pro správu prostředků v Azure pomocí rutin Azure. Když vytvoříte účet Spustit jako, vytvoří se nový uživatel instančního objektu v Azure Active Directory a přiřadí roli přispěvatele k uživatelskému objektu služby na úrovni předplatného, účet Spustit jako pro Azure je skvělým způsobem, jak bezpečně ověřit s certifikáty a hlavní název služby, aniž byste museli ukládat uživatelské jméno a heslo v objektu přihlašovacích údajů. Další informace o ověřování spustit jako najdete v tématu [omezení oprávnění účtu Spustit jako](../../automation/manage-runas-account.md#limit-run-as-account-permissions).
 
 Každý uživatel, který je členem role správců předplatného a spolusprávcem předplatného, může vytvořit účet Spustit jako podle pokynů pro další oddíl.
 

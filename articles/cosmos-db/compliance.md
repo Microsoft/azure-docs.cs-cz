@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 5a35ec10d7d9bc60bbbf28ee85c83c838108050b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527363"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747360"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Dodržování předpisů ve službě Azure Cosmos DB 
 
@@ -20,7 +20,7 @@ Azure Cosmos DB je k dispozici ve všech oblastech Azure. Společnost Microsoft 
 
 * **Veřejný cloud Azure** , který je k dispozici globálně.
 
-* **Azure Čína 21Vianet** je k dispozici prostřednictvím jedinečného partnerství mezi společnostmi Microsoft a 21Vianet (jedním z největších poskytovatelů internetových služeb v zemi).
+* **Azure Čína 21Vianet** je k dispozici prostřednictvím jedinečného partnerství mezi společnostmi Microsoft a 21Vianet, jedním z největších poskytovatelů internetových služeb v zemi nebo oblasti.
 
 * **Azure Německo** poskytuje služby v rámci modelu důvěryhodného data, který zajišťuje, že zákaznická data zůstanou v Německu pod kontrolou T-Systems International GmbH, dceřinou společností německého telekomunikačního systému, který působí jako důvěryhodný datový zplnomocněnec.
 
@@ -34,11 +34,11 @@ Pro pomoc zákazníkům, kteří splnili své vlastní povinnosti dodržování 
 
 Počet certifikací služby Azure Cosmos DB se neustále zvyšuje. V současné době je Azure Cosmos DB certifikováno pomocí následujících certifikátů:
 
-| **Globálně použitelné** | **US Government** | **Specifické pro obor** | **Konkrétní oblast nebo země** |
+| **Globálně použitelné** | **Státní správa USA** | **Specifické pro obor** | **Konkrétní oblast nebo země** |
 | --- | --- | --- | --- |
 | Certifikace pro CSA STAR | DoD SRG úrovně 2 | HIPAA BAA | IRAP Austrálie |
 | Ověření identity CSA STAR | FedRAMP Moderate | HITRUST | Německo C5|
-| ISO 20000-1:2011 | GxP (FDA 21 CFR část 11) | PCI DSS | Singapur MTCS úrovně 3 |
+| ISO 20000-1:2011 | GxP (FDA 21 CFR, část 11) | PCI DSS | Singapur MTCS úrovně 3 |
 | ISO 22301:2012 | | | Španělsko ENS vysoký|
 | ISO 27001:2013| | | |
 | ISO 27017:2015 | | | |
@@ -51,7 +51,7 @@ Další informace o každé z těchto nabídek dodržování předpisů a o tom,
 
 V následující tabulce jsou uvedeny certifikace podporované nástrojem Azure Cosmos DB v Azure Government:
 
-| **Globálně použitelné** | **US Government** | **Specifické pro obor** | 
+| **Globálně použitelné** | **Státní správa USA** | **Specifické pro obor** | 
 | --- | --- | --- | --- |
 | Certifikace pro CSA STAR | CJIS| HIPAA BAA | 
 | Ověření identity CSA STAR| DoD SRG úrovně 2| HITRUST  | 

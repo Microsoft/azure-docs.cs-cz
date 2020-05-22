@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
-ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89a3c65eb8d8bffd4cf87160286d1905bd1ba5b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985622"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747612"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Propojení s Čínou pomocí Azure Virtual WAN a zabezpečeného centra
 
@@ -137,7 +137,7 @@ Provoz, který směřuje do propojených větví nebo z nich do umístění v Č
 
 ![ExpressRoute Global Reach](./media/interconnect-china/expressroute-virtual.png)
 
-Aktuálně ExpressRoute Global Reach není v každé zemi k dispozici, můžete ale nakonfigurovat řešení pomocí Azure Virtual WAN.
+Aktuálně ExpressRoute Global Reach není k dispozici v každé zemi nebo oblasti, ale můžete nakonfigurovat řešení pomocí Azure Virtual WAN.
 
 Můžete například nakonfigurovat ExpressRoute s partnerským vztahem Microsoftu a připojit tunel VPN prostřednictvím tohoto partnerského vztahu k Azure Virtual WAN. Nyní jste povolili a znovu provedete přenos mezi sítěmi VPN a ExpressRoute bez Global Reach a poskytovatele a služby třetí strany, jako je Megaport Cloud.
 

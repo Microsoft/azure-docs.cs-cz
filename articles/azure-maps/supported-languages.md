@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b3733dfc32dae21ddcf4c5f73cddf9ad6b7fc59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2bab7b101b5461d854bb2db509b5cb243012a592
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334074"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746022"
 ---
 # <a name="localization-support-in-azure-maps"></a>Podpora lokalizace v Azure Maps
 
@@ -25,7 +25,7 @@ Azure Maps podporuje různé jazyky a zobrazení založené na zemi nebo oblasti
 Azure Maps byly lokalizovány do různých jazyků v rámci svých služeb. Následující tabulka uvádí podporované kódy jazyků pro každou službu.  
   
 
-| ID         | Název                   |  Maps | Search | Směrování | Weather | Incidenty provozu | JS – ovládací prvek mapy |
+| ID         | Name                   |  Maps | Search | Směrování | Weather | Incidenty provozu | JS – ovládací prvek mapy |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | Afrikánština              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabština                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -142,7 +142,7 @@ Ujistěte se, že jste nastavili parametr **zobrazení** požadovaný pro rozhra
 >    * Azure Maps Web SDK
 >    * Azure Maps Android SDK
 
-Ve výchozím nastavení je parametr zobrazení nastavený na **sjednocené**, i když jste ho v žádosti nedefinovali. Určete umístění vašich uživatelů. Potom nastavte pro toto umístění parametr **zobrazení** správně. Případně můžete nastavit možnost zobrazit = automaticky, která vrátí data mapy na základě IP adresy žádosti.  Parametr **zobrazení** v Azure Maps musí být použit v souladu s platnými zákony, včetně zákonů o mapování země, kde jsou k dispozici mapy, obrázky a další data a obsah třetích stran, ke kterým máte oprávnění pro přístup prostřednictvím Azure Maps.
+Ve výchozím nastavení je parametr zobrazení nastavený na **sjednocené**, i když jste ho v žádosti nedefinovali. Určete umístění vašich uživatelů. Potom nastavte pro toto umístění parametr **zobrazení** správně. Případně můžete nastavit možnost zobrazit = automaticky, která vrátí data mapy na základě IP adresy žádosti.  Parametr **zobrazení** v Azure Maps musí být používán v souladu s platnými zákony, včetně zákonů o mapování země nebo oblasti, kde jsou k dispozici mapy, obrázky a další data a obsah třetích stran, ke kterým máte oprávnění pro přístup prostřednictvím Azure Maps.
 
 
 Následující tabulka poskytuje podporovaná zobrazení.

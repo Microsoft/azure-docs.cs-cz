@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 952be68a1675732857969f875cd2b39c2feab674
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: eb34199f6f1b304d56c691f56b78d9c035be8a5b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691658"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744776"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Analýza dat v Azure Data Lake Storage Gen1 pomocí Power BI
 V tomto článku se naučíte, jak pomocí Power BI Desktop analyzovat a vizualizovat data uložená v Azure Data Lake Storage Gen1.
@@ -52,19 +52,19 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
     V dalších krocích aktualizujeme dotaz na převod importovaných dat v požadovaném formátu.
 9. Na pásu karet **Domů** klikněte na **Upravit dotazy**.
    
-    ![Úprava dotazů](./media/data-lake-store-power-bi/edit-queries.png "Úprava dotazů")
+    ![Upravit dotazy](./media/data-lake-store-power-bi/edit-queries.png "Úprava dotazů")
 10. V editoru dotazů pod sloupcem **obsah** klikněte na **binární**.
     
-    ![Úprava dotazů](./media/data-lake-store-power-bi/convert-query1.png "Úprava dotazů")
+    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query1.png "Úprava dotazů")
 11. Zobrazí se ikona souboru, která představuje soubor **Drivers. txt** , který jste nahráli. Klikněte na soubor pravým tlačítkem a klikněte na **CSV**.    
     
-    ![Úprava dotazů](./media/data-lake-store-power-bi/convert-query2.png "Úprava dotazů")
+    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query2.png "Úprava dotazů")
 12. Měl by se zobrazit výstup, jak je znázorněno níže. Vaše data jsou teď dostupná ve formátu, který můžete použít k vytváření vizualizací.
     
-    ![Úprava dotazů](./media/data-lake-store-power-bi/convert-query3.png "Úprava dotazů")
+    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query3.png "Úprava dotazů")
 13. Na pásu karet **Domů** klikněte na **Zavřít a použít**a pak klikněte na **Zavřít a použít**.
     
-    ![Úprava dotazů](./media/data-lake-store-power-bi/load-edited-query.png "Úprava dotazů")
+    ![Upravit dotazy](./media/data-lake-store-power-bi/load-edited-query.png "Úprava dotazů")
 14. Po aktualizaci dotazu se na kartě **pole** zobrazí nová pole, která jsou k dispozici pro vizualizaci.
     
     ![Aktualizovaná pole](./media/data-lake-store-power-bi/updated-query-fields.png "Aktualizovaná pole")
@@ -81,10 +81,10 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
         ![Výsečový graf](./media/data-lake-store-power-bi/pie-chart.png "Vytváření vizualizací")
 16. Výběrem konkrétní země nebo oblasti z filtrů na úrovni stránek teď můžete zobrazit počet ovladačů v každém městě vybrané země nebo oblasti. Například na kartě **vizualizace** v části **filtry na úrovni stránky**vyberte **Brazílie**.
     
-    ![Vyberte zemi](./media/data-lake-store-power-bi/select-country.png "Vybrat zemi/oblast")
+    ![Vybrat zemi/oblast](./media/data-lake-store-power-bi/select-country.png "Vybrat zemi/oblast")
 17. Výsečový graf se automaticky aktualizuje, aby zobrazoval ovladače ve městech Brazílie.
     
-    ![Ovladače v zemi](./media/data-lake-store-power-bi/driver-per-country.png "Ovladače na zemi nebo oblast")
+    ![Ovladače v zemi nebo oblasti](./media/data-lake-store-power-bi/driver-per-country.png "Ovladače na zemi nebo oblast")
 18. V nabídce **soubor** klikněte na **Uložit** a uložte vizualizaci jako soubor Power BI Desktop.
 
 ## <a name="publish-report-to-power-bi-service"></a>Publikovat sestavu pro služba Power BI

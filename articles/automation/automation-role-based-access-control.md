@@ -1,24 +1,21 @@
 ---
-title: Řízení přístupu na základě role ve službě Azure Automation
-description: Řízení přístupu na základě role (RBAC) umožňuje správu přístupu k prostředkům Azure. Tento článek popisuje způsob nastavení řízení přístupu na základě role ve službě Azure Automation.
+title: Správa oprávnění a zabezpečení rolí v Azure Automation
+description: V tomto článku se dozvíte, jak používat řízení přístupu na základě role (RBAC), které umožňuje správu přístupu pro prostředky Azure.
 keywords: rbac v automation, řízení přístupu na základě rolí, rbac v azure
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: a49f2596df91c44deafa1be83483f8972e223742
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cdde8d1142ec47f835e4a06e7fe2e843d796a3a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535566"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743933"
 ---
-# <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu na základě role ve službě Azure Automation
+# <a name="manage-role-permissions-and-security"></a>Správa oprávnění rolí a zabezpečení
 
 Řízení přístupu na základě role (RBAC) umožňuje správu přístupu k prostředkům Azure. Pomocí [RBAC](../role-based-access-control/overview.md)můžete oddělit povinnosti v rámci svého týmu a udělit jenom přístup k uživatelům, skupinám a aplikacím, které potřebují k provádění svých úloh. Přístup na základě role můžete uživatelům udělit pomocí Azure Portal, nástrojů příkazového řádku Azure nebo rozhraní API pro správu Azure.
-
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="roles-in-automation-accounts"></a>Role v účtech Automation
 
@@ -32,7 +29,7 @@ Ve službě Azure Automation se přístup uděluje přiřazením příslušné r
 | Operátor služby Automation |Role operátora služby Automation umožňuje zobrazit název a vlastnosti Runbooku a vytvářet a spravovat úlohy pro všechny Runbooky v účtu Automation. Tato role je užitečná, pokud chcete chránit prostředky účtu Automation, jako jsou přihlašovací údaje assetů a runbooky, aby se zobrazovaly nebo upravily, ale stále umožňují členům vaší organizace spouštět tyto Runbooky. |
 |Operátor úlohy služby Automation|Role operátora úlohy Automation umožňuje vytvářet a spravovat úlohy pro všechny Runbooky v účtu Automation.|
 |Operátor Runbooku služby Automation|Role operátora Runbooku Automation umožňuje zobrazit název a vlastnosti Runbooku.|
-| Přispěvatel Log Analytics | Role Přispěvatel Log Analytics umožňuje číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů, čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage, vytváření a konfiguraci účtů Automation, přidávání řešení a konfiguraci diagnostiky Azure na všech prostředcích Azure.|
+| Přispěvatel Log Analytics | Role Přispěvatel Log Analytics umožňuje číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálních počítačů do virtuálních počítačů, čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage, vytváření a konfiguraci účtů služby Automation, přidávání Azure Automationch funkcí a konfigurace diagnostiky Azure na všech prostředcích Azure.|
 | Čtenář Log Analytics | Role čtecího modulu Log Analytics umožňuje zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování. To zahrnuje zobrazení konfigurace diagnostiky Azure pro všechny prostředky Azure. |
 | Přispěvatel monitorování | Role Přispěvatel monitorování umožňuje číst všechna data monitorování a aktualizovat nastavení monitorování.|
 | Čtečka monitorování | Role čtenář monitorování umožňuje číst všechna data monitorování. |
@@ -130,7 +127,7 @@ Role operátora Runbooku Automation se uděluje v oboru Runbooku. Operátor Runb
 
 ### <a name="log-analytics-contributor"></a>Přispěvatel Log Analytics
 
-Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání řešení; a konfigurují se diagnostiky Azure na všech prostředcích Azure. Následující tabulka uvádí oprávnění udělená pro roli:
+Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání funkcí; a konfigurují se diagnostiky Azure na všech prostředcích Azure. Následující tabulka uvádí oprávnění udělená pro roli:
 
 |**Akce**  |**Popis**  |
 |---------|---------|
@@ -142,7 +139,7 @@ Přispěvatel Log Analytics může číst všechna data monitorování a upravov
 |Microsoft. Insights/alertRules/*|Pravidla upozornění pro čtení, zápis a odstranění.|
 |Microsoft. Insights/diagnosticSettings/*|Nastavení diagnostiky pro čtení, zápis a odstranění|
 |Microsoft. OperationalInsights/*|Správa protokolů Azure Monitor.|
-|Microsoft. OperationsManagement/*|Spravujte řešení v pracovních prostorech.|
+|Microsoft. OperationsManagement/*|Správa funkcí Azure Automation v pracovních prostorech.|
 |Microsoft. Resources/nasazení/*|Vytváření a Správa nasazení skupin prostředků|
 |Microsoft. Resources/Subscriptions/ResourceGroups/Deployments/*|Vytváření a Správa nasazení skupin prostředků|
 |Microsoft. Storage/storageAccounts/klíče listkey/Action|Vypíše klíče účtu úložiště.|
@@ -207,11 +204,11 @@ Správce přístupu uživatelů může spravovat přístup uživatelů k prostř
 |Microsoft. Authorization/*|Spravovat autorizaci|
 |Microsoft. support/*|Vytváření a Správa lístků podpory|
 
-## <a name="onboarding-permissions"></a>Oprávnění k registraci
+## <a name="feature-setup-permissions"></a>Oprávnění k instalaci funkcí
 
-V následujících částech jsou popsány minimální požadovaná oprávnění potřebná ke zprovoznění virtuálních počítačů pro řešení Change Tracking nebo Update Management.
+V následujících částech jsou popsány minimální požadovaná oprávnění, která jsou nutná pro povolení funkcí Update Management a Change Tracking a inventáře.
 
-### <a name="permissions-for-onboarding-from-a-vm"></a>Oprávnění pro připojování z virtuálního počítače
+### <a name="permissions-for-enabling-update-management-and-change-tracking-and-inventory-from-a-vm"></a>Oprávnění pro povolení Update Management a Change Tracking a inventáře z virtuálního počítače
 
 |**Akce**  |**Oprávnění**  |**Minimální rozsah**  |
 |---------|---------|---------|
@@ -231,9 +228,9 @@ V následujících částech jsou popsány minimální požadovaná oprávnění
 | Vyhledání pracovního prostoru připojování pro virtuální počítač<sup>1</sup>       | Microsoft. OperationalInsights/pracovní prostory/číst         | Předplatné         |
 | Registrace poskytovatele Log Analytics |Microsoft. Insights/registr/Action | Předplatné|
 
-<sup>1</sup> toto oprávnění je potřeba k připojování prostřednictvím prostředí portálu virtuálních počítačů.
+<sup>1</sup> toto oprávnění je potřeba k povolení funkcí prostřednictvím prostředí portálu virtuálních počítačů.
 
-### <a name="permissions-for-onboarding-from-automation-account"></a>Oprávnění pro připojování z účtu Automation
+### <a name="permissions-for-enabling-update-management-and-change-tracking-and-inventory-from-an-automation-account"></a>Oprávnění pro povolení Update Management a Change Tracking a inventáře z účtu Automation
 
 |**Akce**  |**Oprávnění** |**Minimální rozsah**  |
 |---------|---------|---------|
@@ -248,7 +245,7 @@ V následujících částech jsou popsány minimální požadovaná oprávnění
 |Vytvořit nebo upravit uložené výsledky hledání     | Microsoft. OperationalInsights/pracovní prostory/zápis        | Pracovní prostor        |
 |Vytvořit nebo upravit konfiguraci oboru     | Microsoft. OperationalInsights/pracovní prostory/zápis        | Pracovní prostor        |
 | Registrace poskytovatele Log Analytics |Microsoft. Insights/registr/Action | Předplatné|
-|**Krok 2 – zprovoznění více virtuálních počítačů**     |         |         |
+|**Krok 2 – povolení více virtuálních počítačů**     |         |         |
 |VMOnboarding okno – vytvořit MMA rozšíření     | Microsoft. COMPUTE/virtualMachines/Write           | Virtuální počítač        |
 |Vytvořit nebo upravit uložené výsledky hledání     | Microsoft. OperationalInsights/pracovní prostory/zápis           | Pracovní prostor        |
 |Vytvořit nebo upravit konfiguraci oboru  | Microsoft. OperationalInsights/pracovní prostory/zápis   | Pracovní prostor|
@@ -286,7 +283,7 @@ V následující části se dozvíte, jak nakonfigurovat RBAC na svém účtu Au
 
 3. Do pole pro **Výběr** zadejte jméno uživatele, kterému chcete udělit oprávnění. Vyberte uživatele ze seznamu a klikněte na **Uložit**.
 
-   ![Přidávání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Přidání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Nyní byste měli vidět, že uživatel byl přidán na stránku Uživatelé s přiřazenou vybranou rolí.
 
@@ -333,7 +330,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) vypíše přiřazení rolí RBAC Azure AD v zadaném oboru. Bez parametrů Tato rutina vrátí všechna přiřazení rolí provedené v rámci předplatného. K vypsání přiřazení přístupu pro zadaného uživatele a také skupin, do kterých uživatel patří, použijte `ExpandPrincipalGroups` parametr.
+[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) vypíše přiřazení rolí RBAC Azure AD v zadaném oboru. Bez parametrů Tato rutina vrátí všechna přiřazení rolí provedené v rámci předplatného. `ExpandPrincipalGroups`K vypsání přiřazení přístupu pro zadaného uživatele a také skupin, do kterých uživatel patří, použijte parametr.
 
 **Příklad:** K vypsání všech uživatelů a jejich rolí v rámci účtu Automation použijte následující rutinu.
 
@@ -385,7 +382,7 @@ K odebrání přístupu zadaného uživatele, skupiny nebo aplikace z konkrétn�
 Remove-AzRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-V předchozím příkladu `sign-in ID of a user you wish to remove`nahraďte, `SubscriptionID`, `Resource Group Name`a `Automation account name` s podrobnostmi o účtu. Než budete pokračovat v odebírání přiřazení role uživatele, klikněte na **Ano** , pokud se zobrazí výzva k potvrzení.
+V předchozím příkladu nahraďte `sign-in ID of a user you wish to remove` , `SubscriptionID` , a `Resource Group Name` `Automation account name` s podrobnostmi o účtu. Než budete pokračovat v odebírání přiřazení role uživatele, klikněte na **Ano** , pokud se zobrazí výzva k potvrzení.
 
 ### <a name="user-experience-for-automation-operator-role---automation-account"></a>Činnost koncového uživatele pro roli operátora automatizace – účet Automation
 
@@ -428,6 +425,6 @@ Když uživatel přiřazený k roli operátor Automation v oboru Runbooku zobraz
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o způsobech konfigurace RBAC pro Azure Automation najdete v tématu [Správa RBAC pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
-* Podrobnosti o způsobech, jak spustit sadu Runbook, najdete v tématu [Spuštění Runbooku](automation-starting-a-runbook.md).
-* Informace o typech sad Runbook najdete v [Azure Automation typech runbooků](automation-runbook-types.md).
+* [Správa RBAC pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
+* [Spuštění runbooku ve službě Azure Automation](start-runbooks.md)
+* [Azure Automation typy runbooků](automation-runbook-types.md)

@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/27/2018
+ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: c79c1fd687e329b97a854a3ff66a3cf95076b5d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79e06fe95b48468616dce913e19c430dc2818719
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80384224"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744882"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Nastavení DPDK na virtuálním počítači se systémem Linux
 
@@ -50,7 +50,7 @@ Jsou podporovány následující distribuce z Azure Marketplace:
 
 **Podpora vlastního jádra**
 
-Informace o všech neuvedených verzích jádra pro Linux najdete v tématu [opravy pro sestavení jádra systému Linux pro Azure](https://github.com/microsoft/azure-linux-kernel). Další informace můžete také kontaktovat [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com). 
+Informace o všech neuvedených verzích jádra pro Linux najdete v tématu [opravy pro sestavení jádra systému Linux pro Azure](https://github.com/microsoft/azure-linux-kernel). Další informace můžete také kontaktovat [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com) . 
 
 ## <a name="region-support"></a>Podpora oblastí
 
@@ -109,10 +109,10 @@ zypper \
 ## <a name="set-up-the-virtual-machine-environment-once"></a>Nastavení prostředí virtuálního počítače (jednou)
 
 1. [Stáhněte si nejnovější verzi DPDK](https://core.dpdk.org/download). Pro Azure se vyžaduje verze 18,11 LTS nebo 19,11 LTS.
-2. Vytvořte výchozí konfiguraci pomocí `make config T=x86_64-native-linuxapp-gcc`.
-3. Povolte Mellanox PMDs ve vygenerované konfiguraci pomocí `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`.
-4. Zkompilujte s `make`.
-5. Nainstalujte pomocí `make install DESTDIR=<output folder>`.
+2. Vytvořte výchozí konfiguraci pomocí `make config T=x86_64-native-linuxapp-gcc` .
+3. Povolte Mellanox PMDs ve vygenerované konfiguraci pomocí `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` .
+4. Zkompilujte s `make` .
+5. Nainstalujte pomocí `make install DESTDIR=<output folder>` .
 
 ## <a name="configure-the-runtime-environment"></a>Konfigurace běhového prostředí
 
@@ -126,9 +126,9 @@ Po restartování spusťte následující příkazy jednou:
      echo 1024 | sudo tee /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
-   * Vytvořte adresář pro připojení `mkdir /mnt/huge`.
-   * Připojte hugepages pomocí `mount -t hugetlbfs nodev /mnt/huge`.
-   * Ověřte, že je hugepages rezervovaný `grep Huge /proc/meminfo`.
+   * Vytvořte adresář pro připojení `mkdir /mnt/huge` .
+   * Připojte hugepages pomocí `mount -t hugetlbfs nodev /mnt/huge` .
+   * Ověřte, že je hugepages rezervovaný `grep Huge /proc/meminfo` .
 
      > ZNAČTE Existuje způsob, jak upravit soubor GRUB tak, aby hugepages byly rezervované při spouštění, a to podle [pokynů](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) pro DPDK. Pokyny najdete v dolní části stránky. Pokud používáte virtuální počítač Azure Linux, upravte místo toho soubory **/etc/config/grub.d** a vyhradte hugepages v rámci restartování.
 
@@ -139,7 +139,7 @@ Po restartování spusťte následující příkazy jednou:
    * Použijte `ethtool -i <vf interface name>` k zjištění, která adresa PCI se má použít pro *VF*.
    * Pokud má *eth0* zapnuté akcelerované síťové služby, zajistěte, aby testpmd nechtěně převzala zařízení *VF* PCI pro *eth0*. Pokud aplikace DPDK omylem převezme rozhraní sítě pro správu a způsobí ztrátu připojení SSH, zastavte aplikaci DPDK pomocí konzoly sériového portu. K zastavení nebo spuštění virtuálního počítače můžete použít také konzolu sériového portu.
 
-4. Načíst *ibuverbs* při každém restartování pomocí `modprobe -a ib_uverbs`. Pouze pro SLES 15 načtěte také *mlx4_ib* `modprobe -a mlx4_ib`.
+4. Načíst *ibuverbs* při každém restartování pomocí `modprobe -a ib_uverbs` . Pouze pro SLES 15 načtěte také *mlx4_ib* `modprobe -a mlx4_ib` .
 
 ## <a name="failsafe-pmd"></a>Failsafe PMD
 
@@ -149,7 +149,7 @@ Pokud spustíte aplikaci DPDK prostřednictvím Failsafe PMD, zaručuje to, že 
 
 ## <a name="run-testpmd"></a>Spustit testpmd
 
-Chcete-li spustit testpmd v kořenovém `sudo` režimu, použijte před příkazem *testpmd* .
+Chcete-li spustit testpmd v kořenovém režimu, použijte `sudo` před příkazem *testpmd* .
 
 ### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Základní: správnosti check, inicializace adaptéru Failsafe
 
@@ -172,9 +172,9 @@ Chcete-li spustit testpmd v kořenovém `sudo` režimu, použijte před příkaz
    -- -i
    ```
 
-   Pokud používáte testpmd s více než dvěma síťovými rozhraními, `--vdev` argument odpovídá tomuto vzoru: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>`.
+   Pokud používáte testpmd s více než dvěma síťovými rozhraními, `--vdev` argument odpovídá tomuto vzoru: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>` .
 
-3.  Po spuštění spusťte `show port info all` příkaz a ověřte informace o portu. Měl by se zobrazit jeden nebo dva porty DPDK, které jsou net_failsafe (není *net_mlx4*).
+3.  Po spuštění spusťte příkaz `show port info all` a ověřte informace o portu. Měl by se zobrazit jeden nebo dva porty DPDK, které jsou net_failsafe (není *net_mlx4*).
 4.  Použijte `start <port> /stop <port>` ke spuštění provozu.
 
 Předchozí příkazy se spustí *testpmd* v interaktivním režimu, což se doporučuje při vyzkoušení příkazů testpmd.
@@ -213,7 +213,7 @@ Následující příkazy pravidelně tisknou statistiku paketů za sekundu:
      --stats-period <display interval in seconds>
    ```
 
-Pokud spouštíte předchozí příkazy na virtuálním počítači, změňte *IP_SRC_ADDR* a *IP_DST_ADDR* v `app/test-pmd/txonly.c` systému tak, aby odpovídaly skutečné IP adrese virtuálních počítačů před kompilací. V opačném případě jsou pakety před dosažením přijímače vyřazeny.
+Pokud spouštíte předchozí příkazy na virtuálním počítači, změňte *IP_SRC_ADDR* a *IP_DST_ADDR* v systému `app/test-pmd/txonly.c` tak, aby odpovídaly skutečné IP adrese virtuálních počítačů před kompilací. V opačném případě jsou pakety před dosažením přijímače vyřazeny.
 
 ### <a name="advanced-single-sendersingle-forwarder"></a>Upřesnit: jeden odesílatel/jeden server pro posílání
 Následující příkazy pravidelně tisknou statistiku paketů za sekundu:
@@ -249,7 +249,7 @@ Následující příkazy pravidelně tisknou statistiku paketů za sekundu:
      --stats-period <display interval in seconds>
     ```
 
-Pokud spouštíte předchozí příkazy na virtuálním počítači, změňte *IP_SRC_ADDR* a *IP_DST_ADDR* v `app/test-pmd/txonly.c` systému tak, aby odpovídaly skutečné IP adrese virtuálních počítačů před kompilací. V opačném případě jsou pakety vyřazeny před tím, než se dostane do serveru pro předání. Nebudete mít přístup k přesměrovanému provozu z jiného počítače, protože server pro přeposílání *testpmd* nemění adresy vrstvy 3, Pokud neprovedete nějaké změny kódu.
+Pokud spouštíte předchozí příkazy na virtuálním počítači, změňte *IP_SRC_ADDR* a *IP_DST_ADDR* v systému `app/test-pmd/txonly.c` tak, aby odpovídaly skutečné IP adrese virtuálních počítačů před kompilací. V opačném případě jsou pakety vyřazeny před tím, než se dostane do serveru pro předání. Nebudete mít přístup k přesměrovanému provozu z jiného počítače, protože server pro přeposílání *testpmd* nemění adresy vrstvy 3, Pokud neprovedete nějaké změny kódu.
 
 ## <a name="references"></a>Odkazy
 

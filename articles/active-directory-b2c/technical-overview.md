@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332535"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739095"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technický přehled funkcí Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ Uživatel se zákaznickým účtem se může přihlásit s více identitami, nap
 
 ![Identity účtu příjemce](media/technical-overview/identities.png)<br/>*Obrázek: jeden účet příjemce s více identitami v Azure AD B2C*
 
-Azure AD B2C vám umožní spravovat společné atributy profilů uživatelských účtů, jako je zobrazované jméno, příjmení, křestní jméno, město a další. Můžete také rozšíříte schéma Azure AD pro ukládání dalších informací o uživatelích. Například jejich země nebo sídlo, preferovaný jazyk a předvolby, jako je třeba přihlášení k odběru bulletinu nebo povolení služby Multi-Factor Authentication.
+Azure AD B2C vám umožní spravovat společné atributy profilů uživatelských účtů, jako je zobrazované jméno, příjmení, křestní jméno, město a další. Můžete také rozšíříte schéma Azure AD pro ukládání dalších informací o uživatelích. Například jejich země/oblast nebo umístění, preferovaný jazyk a předvolby, například zda se chtějí přihlásit k odběru bulletinu nebo povolit službu Multi-Factor Authentication.
 
 Přečtěte si další informace o typech uživatelských účtů v Azure AD B2C v článku [Přehled uživatelských účtů v Azure Active Directory B2C](user-overview.md).
 
@@ -100,7 +100,7 @@ Aby vám pomohla rychle nastavit nejběžnější úlohy identity, Azure Portal 
 Můžete nakonfigurovat nastavení toku uživatele tak, aby bylo možné řídit chování identity v aplikacích:
 
 * Typy účtů používané pro přihlášení, jako jsou například účty na Facebooku nebo místní účty, které používají e-mailovou adresu a heslo pro přihlášení
-* Atributy, které se mají shromáždit od příjemce, jako je křestní jméno, PSČ nebo země sídla
+* Atributy, které mají být shromažďovány od příjemce, jako je například křestní jméno, PSČ nebo země/oblast, kde sídlí
 * Azure Multi-Factor Authentication (MFA)
 * Přizpůsobení uživatelského rozhraní
 * Sada deklarací identity v tokenu, který vaše aplikace obdrží poté, co uživatel dokončí tok uživatele
@@ -115,7 +115,7 @@ Přečtěte si další informace o toku uživatelů v [toku uživatelů v Azure 
 
 Vlastní zásady odemkněte přístup k celému výkonu modulu pro orchestraci identit v architektuře IEF (identity Experience Framework). Díky vlastním zásadám můžete využít IEF k sestavení téměř všech ověřování, registrace uživatelů nebo možností úprav profilů, které si můžete představit.
 
-Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Příklad:
+Rozhraní identity Experience Framework poskytuje možnost vytvářet cesty uživatelů pomocí libovolné kombinace kroků. Například:
 
 * Federovat s jinými zprostředkovateli identity
 * První a další výzvy k Multi-Factor Authentication (MFA) třetích stran
@@ -136,7 +136,7 @@ Přečtěte si další informace o vlastních zásadách ve [vlastních zásadá
 
 Azure AD B2C podporuje [protokoly OpenID Connect a OAuth 2,0](protocols-overview.md) pro cesty uživatelů. V implementaci OpenID Connect v Azure AD B2C zahajuje aplikace tuto cestu uživatele zasíláním žádostí o ověření do Azure AD B2C.
 
-Výsledkem požadavku na Azure AD B2C je token zabezpečení, jako je token [ID nebo přístupový token](tokens-overview.md). Tento token zabezpečení definuje identitu uživatele. Tokeny jsou přijímány z Azure AD B2C koncových bodů, jako je `/token` například koncový bod nebo `/authorize` . Pomocí těchto tokenů můžete získat přístup k deklaracím, které se dají použít k ověření identity a povolení přístupu k zabezpečeným prostředkům.
+Výsledkem požadavku na Azure AD B2C je token zabezpečení, jako je token [ID nebo přístupový token](tokens-overview.md). Tento token zabezpečení definuje identitu uživatele. Tokeny jsou přijímány z Azure AD B2C koncových bodů, jako je například `/token` `/authorize` koncový bod nebo. Pomocí těchto tokenů můžete získat přístup k deklaracím, které se dají použít k ověření identity a povolení přístupu k zabezpečeným prostředkům.
 
 Pro externí identity Azure AD B2C podporuje federaci s jakýmkoli poskytovatelem identity OAuth 1,0, OAuth 2,0, OpenID Connect, SAML a WS-dodaný.
 

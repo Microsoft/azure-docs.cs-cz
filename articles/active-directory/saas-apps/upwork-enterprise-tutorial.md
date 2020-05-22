@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 421f799d7f4c76992794684379f3bb0088602ac0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5d9377ec88764f6f89bf486fe515a539c12077a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75533619"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747457"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-upwork-enterprise"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s podporou pro práci v podniku
 
@@ -97,7 +97,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává podniková aplikace pro práci v reakci SAML méně dalších atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název |   Zdrojový atribut|
+    | Name |   Zdrojový atribut|
     | ------------ | --------- |
     | FirstName | User. křestní jméno |
     | LastName | User. příjmení |
@@ -120,7 +120,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 

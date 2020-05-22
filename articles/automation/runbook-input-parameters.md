@@ -1,25 +1,20 @@
 ---
-title: Vstupní parametry runbooku
-description: Vstupní parametry Runbooku zvyšují flexibilitu runbooků tím, že vám umožní předat data do Runbooku při jeho spuštění. Tento článek popisuje různé scénáře použití vstupních parametrů v sadách Runbook.
+title: Konfigurace vstupních parametrů Runbooku v Azure Automation
+description: Tento článek obsahuje informace o tom, jak nakonfigurovat vstupní parametry Runbooku, které umožňují předávat data do sady Runbook při jejím spuštění.
 services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3741adbab6bcbc68f266c331e3056013afc0105e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cda803c886a3db9099a8c47bb70a582b6a1f6d52
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656034"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745044"
 ---
-# <a name="runbook-input-parameters"></a>Vstupní parametry runbooku
+# <a name="configure-runbook-input-parameters"></a>Vstupní parametry runbooku
 
 Vstupní parametry Runbooku zvyšují flexibilitu sady Runbook tím, že umožňují, aby se data předala do IT, když se spustí. Tyto parametry umožňují cílit na akce sady Runbook pro konkrétní scénáře a prostředí. Tento článek popisuje konfiguraci a použití vstupních parametrů v sadách Runbook.
-
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
-
-## <a name="configuring-input-parameters"></a>Konfigurace vstupních parametrů
 
 Můžete nakonfigurovat vstupní parametry pro PowerShell, PowerShellový pracovní postup, grafické a Python Runbooky. Sada Runbook může mít více parametrů s různými datovými typy nebo žádné parametry vůbec. Vstupní parametry můžou být povinné nebo volitelné a můžete použít výchozí hodnoty pro volitelné parametry.
 
@@ -32,7 +27,7 @@ Runbooky pracovních postupů PowerShellu a PowerShellu v Azure Automation podpo
 | **Vlastnost** | **Popis** |
 |:--- |:--- |
 | Typ |Povinná hodnota. Pro hodnotu parametru se očekával datový typ. Jakýkoli typ .NET je platný. |
-| Název |Povinná hodnota. Název parametru Tento název musí být v rámci Runbooku jedinečný, musí začínat písmenem a může obsahovat jenom písmena, číslice nebo podtržítka. |
+| Name |Povinná hodnota. Název parametru Tento název musí být v rámci Runbooku jedinečný, musí začínat písmenem a může obsahovat jenom písmena, číslice nebo podtržítka. |
 | Povinné |Nepovinný parametr. Logická hodnota určující, zda parametr vyžaduje hodnotu. Pokud nastavíte hodnotu true, musí se při spuštění Runbooku zadat hodnota. Pokud nastavíte hodnotu false, hodnota je nepovinná. Pokud nezadáte hodnotu `Mandatory` vlastnosti, PowerShell posuzuje vstupní parametr ve výchozím nastavení jako volitelný. |
 | Výchozí hodnota |Nepovinný parametr. Hodnota, která se používá pro parametr, pokud není žádná vstupní hodnota předána při spuštění Runbooku. Sada Runbook může nastavit výchozí hodnotu pro libovolný parametr. |
 
@@ -51,13 +46,13 @@ Param
 )
 ```
 
-Teď nakonfigurujeme vstupní parametry pro Runbook pracovního postupu PowerShellu, který bude výstupem podrobností o virtuálních počítačích, buď k jednomu virtuálnímu počítači, nebo k virtuálním počítačům v rámci skupiny prostředků. Tento Runbook má dva parametry, jak je znázorněno na následujícím snímku obrazovky: název virtuálního počítače (`VMName`) a název skupiny prostředků (`resourceGroupName`).
+Teď nakonfigurujeme vstupní parametry pro Runbook pracovního postupu PowerShellu, který bude výstupem podrobností o virtuálních počítačích, buď k jednomu virtuálnímu počítači, nebo k virtuálním počítačům v rámci skupiny prostředků. Tento Runbook má dva parametry, jak je znázorněno na následujícím snímku obrazovky: název virtuálního počítače ( `VMName` ) a název skupiny prostředků ( `resourceGroupName` ).
 
 ![Pracovní postup PowerShellu pro automatizaci](media/automation-runbook-input-parameters/automation-01-powershellworkflow.png)
 
 V této definici parametru jsou vstupní parametry jednoduché parametry typu String.
 
-Všimněte si, že Runbooky PowerShellu a PowerShellového pracovního postupu podporují všechny jednoduché typy a `Object` komplexní `PSCredential` typy, například nebo pro vstupní parametry. Pokud má sada Runbook vstupní parametr objektu, je nutné použít hodnotu hash prostředí PowerShell s páry název-hodnota k předání hodnoty. V sadě Runbook například máte následující parametr.
+Všimněte si, že Runbooky PowerShellu a PowerShellového pracovního postupu podporují všechny jednoduché typy a komplexní typy, například `Object` nebo `PSCredential` pro vstupní parametry. Pokud má sada Runbook vstupní parametr objektu, je nutné použít hodnotu hash prostředí PowerShell s páry název-hodnota k předání hodnoty. V sadě Runbook například máte následující parametr.
 
 ```powershell
 [Parameter (Mandatory = $true)]
@@ -83,7 +78,7 @@ Grafický Runbook používá tyto hlavní aktivity sady Runbook:
 * Definice rutiny [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) pro získání vlastností virtuálního počítače
 * Použití aktivity [Write-Output](/powershell/module/microsoft.powershell.utility/write-output) k výstupu názvů virtuálních počítačů. 
 
-`Get-AzVM` Aktivita definuje dva vstupy, název virtuálního počítače a název skupiny prostředků. Vzhledem k tomu, že tyto názvy mohou být při spuštění sady Runbook odlišné, je nutné přidat do Runbooku vstupní parametry, abyste tyto vstupy přijímali. Informace najdete v tématu věnovaném [vytváření grafik v Azure Automation](automation-graphical-authoring-intro.md).
+`Get-AzVM`Aktivita definuje dva vstupy, název virtuálního počítače a název skupiny prostředků. Vzhledem k tomu, že tyto názvy mohou být při spuštění sady Runbook odlišné, je nutné přidat do Runbooku vstupní parametry, abyste tyto vstupy přijímali. Informace najdete v tématu věnovaném [vytváření grafik v Azure Automation](automation-graphical-authoring-intro.md).
 
 Při konfiguraci vstupních parametrů postupujte podle těchto kroků.
 
@@ -98,15 +93,15 @@ Při konfiguraci vstupních parametrů postupujte podle těchto kroků.
 4. Vytvořte dva parametry s následujícími vlastnostmi, které má `Get-AzVM` aktivita používat, a pak klikněte na **OK**.
 
    * Parametr 1:
-        * **Name** -- **VMName** názvu
+        * **Název**  --  **VMName**
         * **Typ** – řetězec
-        * **Povinný** -- **žádný**
+        * **Povinný**  --  **Ne**
 
    * Parametr 2:
-        * **Name** -- **ResourceGroupName** názvu
+        * **Název**  --  **resourceGroupName**
         * **Typ** – řetězec
-        * **Povinný** -- **žádný**
-        * **Vlastní výchozí hodnota** -- **Custom**
+        * **Povinný**  --  **Ne**
+        * **Výchozí hodnota**  --  **Vlastní**
         * Vlastní výchozí hodnota – název skupiny prostředků, která obsahuje virtuální počítače
 
 5. Zobrazení parametrů v ovládacím prvku vstup a výstup. 
@@ -115,11 +110,11 @@ Při konfiguraci vstupních parametrů postupujte podle těchto kroků.
 
 ### <a name="configure-input-parameters-in-python-runbooks"></a>Konfigurace vstupních parametrů v sadách Runbook sady Python
 
-Na rozdíl od PowerShellu, pracovního postupu PowerShellu a grafických runbooků nepřijímá Runbooky v Pythonu pojmenované parametry. Editor runbooků provede analýzu všech vstupních parametrů jako pole hodnot argumentů. K poli se dostanete tak, že do `sys` skriptu Pythonu naimportujete modul a pak ho `sys.argv` použijete. Je důležité si uvědomit, že první prvek pole `sys.argv[0]`je název skriptu. Proto první skutečný vstupní parametr je `sys.argv[1]`.
+Na rozdíl od PowerShellu, pracovního postupu PowerShellu a grafických runbooků nepřijímá Runbooky v Pythonu pojmenované parametry. Editor runbooků provede analýzu všech vstupních parametrů jako pole hodnot argumentů. K poli se dostanete tak `sys` , že do skriptu Pythonu naimportujete modul a pak ho použijete `sys.argv` . Je důležité si uvědomit, že první prvek pole `sys.argv[0]` je název skriptu. Proto první skutečný vstupní parametr je `sys.argv[1]` .
 
 Příklad použití vstupních parametrů v sadě Runbook Pythonu najdete [v tématu můj první Runbook v Pythonu v Azure Automation](automation-first-runbook-textual-python2.md).
 
-## <a name="assigning-values-to-input-parameters-in-runbooks"></a>Přiřazování hodnot vstupním parametrům v sadách Runbook
+## <a name="assign-values-to-input-parameters-in-runbooks"></a>Přiřazení hodnot k vstupním parametrům v sadách Runbook
 
 Tato část popisuje několik způsobů, jak předat hodnoty do vstupních parametrů v sadách Runbook. Hodnoty parametrů můžete přiřadit v těchto případech:
 
@@ -163,7 +158,7 @@ V popisku pod vstupním polem můžete zobrazit vlastnosti, které byly nastaven
    ```
 
 > [!NOTE]
-> Když spustíte Runbook pomocí rutin PowerShellu, vytvoří se výchozí parametr `MicrosoftApplicationManagementStartedBy`s hodnotou. `PowerShell` Tento parametr můžete zobrazit v podokně podrobností úlohy.  
+> Když spustíte Runbook pomocí rutin PowerShellu, vytvoří se výchozí parametr `MicrosoftApplicationManagementStartedBy` s hodnotou `PowerShell` . Tento parametr můžete zobrazit v podokně podrobností úlohy.  
 
 #### <a name="start-a-runbook-using-an-sdk-and-assign-parameters"></a>Spuštění Runbooku pomocí sady SDK a přiřazení parametrů
 
@@ -207,7 +202,7 @@ V popisku pod vstupním polem můžete zobrazit vlastnosti, které byly nastaven
     }
    ```
 
-   Chcete-li spustit tuto metodu, vytvořte slovník pro uložení parametrů `VMName` Runbooku a `resourceGroupName` a jejich hodnoty. Poté spusťte sadu Runbook. Níže je fragment kódu jazyka C# pro volání metody, která je definována výše.
+   Chcete-li spustit tuto metodu, vytvořte slovník pro uložení parametrů Runbooku `VMName` a `resourceGroupName` a jejich hodnoty. Poté spusťte sadu Runbook. Níže je fragment kódu jazyka C# pro volání metody, která je definována výše.
 
    ```csharp
    IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
@@ -229,14 +224,14 @@ V identifikátoru URI požadavku nahraďte následující parametry:
 * `subscriptionId`: ID vašeho předplatného Azure.  
 * `resourceGroupName`: Název skupiny prostředků pro účet Automation.
 * `automationAccountName`: Název účtu Automation, který je hostovaný v zadané cloudové službě.  
-* `jobName`: Identifikátor GUID pro úlohu. Identifikátory GUID v PowerShellu se dají vytvořit pomocí `[GUID]::NewGuid().ToString()*`.
+* `jobName`: Identifikátor GUID pro úlohu. Identifikátory GUID v PowerShellu se dají vytvořit pomocí `[GUID]::NewGuid().ToString()*` .
 
 Chcete-li předat parametry do úlohy Runbooku, použijte text žádosti. Vybírá následující informace, které jsou k dispozici ve formátu JSON:
 
 * Název Runbooku: povinné. Název Runbooku, který má úloha začít.  
 * Parametry Runbooku: volitelné. Slovník seznamu parametrů ve formátu (název, hodnota), kde název je typu řetězec a hodnota, může být libovolná platná hodnota JSON.
 
-Pokud chcete spustit sadu Runbook **Get-AzureVMTextual** vytvořenou dříve s `VMName` parametrem `resourceGroupName` a jako parametry, použijte pro tělo žádosti následující formát JSON.
+Pokud chcete spustit sadu Runbook **Get-AzureVMTextual** vytvořenou dříve s `VMName` `resourceGroupName` parametrem a jako parametry, použijte pro tělo žádosti následující formát JSON.
 
 ```json
     {
@@ -274,7 +269,7 @@ Při spuštění sady Runbook pomocí Webhooku se odešle předdefinovaný vstup
 
 ![Parametr WebhookData](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 
-## <a name="passing-a-json-object-to-a-runbook"></a>Předání objektu JSON do Runbooku
+## <a name="pass-a-json-object-to-a-runbook"></a>Předání objektu JSON do Runbooku
 
 Může být užitečné ukládat data, která chcete předat Runbooku v souboru JSON. Můžete například vytvořit soubor JSON, který obsahuje všechny parametry, které chcete předat Runbooku. Chcete-li to provést, je nutné převést kód JSON na řetězec a poté převést řetězec na objekt prostředí PowerShell před předáním do sady Runbook.
 
@@ -328,7 +323,7 @@ Nyní můžete sadu Runbook volat z místního počítače pomocí Azure PowerSh
    ```
 
     >[!NOTE]
-    >Pro PowerShellové Runbooky `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy `Connect-AzAccount`pro. Všimněte si, že tyto aliasy nejsou k dispozici pro grafické Runbooky. Grafická sada Runbook může používat `Connect-AzAccount` pouze sebe sama.
+    >Pro PowerShellové Runbooky `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro `Connect-AzAccount` . Všimněte si, že tyto aliasy nejsou k dispozici pro grafické Runbooky. Grafická sada Runbook může používat pouze `Connect-AzAccount` sebe sama.
 
 1. Získá obsah uloženého souboru JSON a převede ho na řetězec. `JsonPath`Určuje cestu, kam jste uložili soubor JSON.
 
@@ -342,7 +337,7 @@ Nyní můžete sadu Runbook volat z místního počítače pomocí Azure PowerSh
    $JsonParams = @{"json"=$json}
    ```
 
-1. Vytvořte zatřiďovací tabulku pro parametry pro `Start-AzAutomationRunbook`. 
+1. Vytvořte zatřiďovací tabulku pro parametry pro `Start-AzAutomationRunbook` . 
 
    ```powershell
    $RBParams = @{
@@ -362,6 +357,5 @@ Nyní můžete sadu Runbook volat z místního počítače pomocí Azure PowerSh
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobnosti o různých způsobech, jak spustit sadu Runbook, najdete v tématu [Spuštění Runbooku](automation-starting-a-runbook.md).
-* Pokud chcete upravit textový Runbook, přečtěte si téma [úpravy textových runbooků](automation-edit-textual-runbook.md).
-* Informace o tom, jak upravit grafický Runbook, najdete v tématu věnovaném [vytváření grafiky v Azure Automation](automation-graphical-authoring-intro.md).
+* [Upravit textové Runbooky v Azure Automation](automation-edit-textual-runbook.md)
+* [Vytváření grafických runbooků v Azure Automation](automation-graphical-authoring-intro.md)

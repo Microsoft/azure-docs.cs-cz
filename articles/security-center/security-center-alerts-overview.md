@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 697c038a2fefdde8e488dad23a4e38e0b2b7b288
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77e75caf836c4f7d142b0b5c23327d73afa6a77
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79415855"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744628"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Výstrahy zabezpečení ve službě Azure Security Center
 
@@ -55,7 +55,7 @@ Služba Security Center využívá pokročilou analýzu zabezpečení, která da
 
 * **Integrovaná analýza hrozeb**: Microsoft má obrovské množství globálních analýz hrozeb. Telemetrie se nachází z různých zdrojů, jako je Azure, Office 365, Microsoft CRM Online, Microsoft Dynamics AX, outlook.com, MSN.com, DCU (Microsoft Digital Zločins Unit) a Microsoft Security Response Center (MSRC). Výzkumníki také dostávají informace analýzy hrozeb, které se sdílejí mezi hlavními poskytovateli cloudových služeb a informačními kanály od jiných třetích stran. Služba Azure Security Center vás pomocí těchto informací může upozornit na hrozby známých útočníků.
 
-* **Analýza chování**: analýza chování je technika, která analyzuje a porovnává data s kolekcí známých vzorů. Tato schémata však nepředstavují jednoduché příznaky. Určují se prostřednictvím komplexních algoritmů strojového učení, které se aplikují na rozsáhlé datové sady. Určují se také prostřednictvím pečlivé analýzy škodlivého chování, kterou provádí zkušení analytici. Azure Security Center může pomocí analýzy chování identifikovat ohrožené prostředky na základě analýzy protokolů virtuálních počítačů, protokolů virtuálních síťových zařízení, protokolů prostředků infrastruktury, výpisů stavu systému a dalších zdrojů.
+* **Analýza chování**: analýza chování je technika, která analyzuje a porovnává data s kolekcí známých vzorů. Tato schémata však nepředstavují jednoduché příznaky. Určují se prostřednictvím komplexních algoritmů strojového učení, které se aplikují na rozsáhlé datové sady. Určují se také prostřednictvím pečlivé analýzy škodlivého chování, kterou provádí zkušení analytici. Azure Security Center může pomocí analýzy chování identifikovat ohrožené prostředky na základě analýzy protokolů virtuálních počítačů, protokolů virtuálních síťových zařízení, protokolů prostředků infrastruktury a dalších zdrojů.
 
 * **Detekce anomálií**: Azure Security Center k identifikaci hrozeb používá taky detekci anomálií. Na rozdíl od behaviorální analýzy (která závisí na známých vzorech odvozených z velkých datových sad) je detekce anomálií více "individuálních" a zaměřuje se na směrné plány, které jsou specifické pro vaše nasazení. Pomocí strojového učení se určí běžné úrovně aktivity pro vaše nasazení a poté se vygenerují pravidla definující neobvyklé hodnoty, které by mohly představovat událost zabezpečení.
 

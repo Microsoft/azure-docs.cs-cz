@@ -4,12 +4,12 @@ description: Výstrahy protokolu aktivit Vytvářejte pomocí Azure Portal, šab
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: bfbe2bc3ae3edf9285d3ec006ab0451f070cabd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132392"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744266"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor  
 
@@ -37,7 +37,7 @@ Pomocí Azure Portal můžete vytvářet a upravovat pravidla upozornění proto
 
 Použijte následující postup.
 
-1. V Azure Portal vyberte **monitorovat** > **výstrahy**.
+1. V Azure Portal vyberte **monitorovat**  >  **výstrahy**.
 2. V levém horním rohu okna **výstrahy** vyberte **nové pravidlo výstrahy** .
 
      ![Nové pravidlo výstrahy](media/alerts-activity-log/AlertsPreviewOption.png)
@@ -48,7 +48,7 @@ Použijte následující postup.
 
 3. V části **definovat podmínku výstrahy**zadejte následující informace a vyberte **Hotovo**:
 
-   - **Cíl výstrahy:** Pokud chcete zobrazit a vybrat cíl pro novou výstrahu, použijte filtr **filtrovat podle předplatného** / **podle typu prostředku**. Vyberte prostředek nebo skupinu prostředků ze zobrazeného seznamu.
+   - **Cíl výstrahy:** Pokud chcete zobrazit a vybrat cíl pro novou výstrahu, použijte filtr **filtrovat podle předplatného**  /  **podle typu prostředku**. Vyberte prostředek nebo skupinu prostředků ze zobrazeného seznamu.
 
      > [!NOTE]
      > 
@@ -67,6 +67,11 @@ Použijte následující postup.
      **Obrazovka Přidat kritéria**
 
      ![Přidat kritéria](media/alerts-activity-log/add-criteria.png)
+     
+     > [!NOTE]
+     > 
+     >  Aby bylo možné mít vysoce kvalitní a efektivní pravidla, požádáme o přidání alespoň jedné další podmínky do pravidel se signálem "All Administrative". 
+     > Jako součást definice výstrahy musíte vyplnit jedno z rozevíracích seznamu: "úroveň události", "stav" nebo "iniciováno" a tím, že bude pravidlo konkrétnější.
 
      - **Čas historie**: události, které jsou k dispozici pro vybranou operaci, se dají vykreslovat za posledních 6, 12 nebo 24 hodin nebo za poslední týden.
 
@@ -103,7 +108,7 @@ Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvo�
 
 ### <a name="view-and-manage-in-the-azure-portal"></a>Zobrazení a správa v Azure Portal
 
-1. V Azure Portal vyberte **monitorovat** > **výstrahy**. V levém horním rohu okna vyberte **Spravovat pravidla výstrah** .
+1. V Azure Portal vyberte **monitorovat**  >  **výstrahy**. V levém horním rohu okna vyberte **Spravovat pravidla výstrah** .
 
     ![Správa pravidel výstrah](media/alerts-activity-log/manage-alert-rules.png)
 
@@ -127,7 +132,7 @@ Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvo�
 
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
-Chcete-li vytvořit pravidlo upozornění protokolu aktivit pomocí šablony Azure Resource Manager, vytvořte prostředek typu `microsoft.insights/activityLogAlerts`. Pak vyplníte všechny související vlastnosti. Tady je šablona, která vytvoří pravidlo upozornění protokolu aktivit:
+Chcete-li vytvořit pravidlo upozornění protokolu aktivit pomocí šablony Azure Resource Manager, vytvořte prostředek typu `microsoft.insights/activityLogAlerts` . Pak vyplníte všechny související vlastnosti. Tady je šablona, která vytvoří pravidlo upozornění protokolu aktivit:
 
 ```json
 {
@@ -208,7 +213,7 @@ Následující pole jsou možnosti, které můžete použít v šabloně Azure R
 9. Dílčí stav: obvykle stavový kód HTTP odpovídajícího volání REST, ale může také zahrnovat další řetězce popisující dílčí stav.   Příklad: OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybný požadavek (kód stavu HTTP: 400), Nenalezeno (kód stavu HTTP: 404), konflikt (kód stavu HTTP: 409), interní chyba serveru (Stavový kód http: 500), nedostupná služba (Stavový kód http: 503), časový limit brány (kód stavu http: 504).
 10. ResourceType: typ prostředku, který byl ovlivněn událostí. Například: Microsoft. Resources/Deployments
 
-Příklad:
+Například:
 
 ```json
 "condition": {

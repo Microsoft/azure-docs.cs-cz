@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426389"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747637"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics vlastní dělení výstupu objektů BLOB
 
@@ -77,10 +77,10 @@ Následující tokeny specifikátoru formátu lze použít samostatně nebo v ko
 |{DateTime: MM}|Měsíc od 01 do 12|01|
 |{DateTime: M}|Měsíc od 1 do 12|1|
 |{DateTime: DD}|Den od 01 do 31|02|
-|{DateTime: d}|Den od 1 do 12|2|
+|{DateTime: d}|Den od 1 do 31|2|
 |{DateTime: HH}|Hodiny ve 24hodinovém formátu, od 00 do 23|10|
-|{DateTime: mm}|Minuty od 00 do 24|06|
-|{DateTime: m}|Minuty od 0 do 24|6|
+|{DateTime: mm}|Minuty od 00 do 60|06|
+|{DateTime: m}|Minuty od 0 do 60|6|
 |{DateTime: SS}|Sekundy od 00 do 60|08|
 
 Pokud nechcete používat vlastní vzory DateTime, můžete přidat token {Date} a/nebo {Time} k předponě cesty pro vygenerování rozevíracího seznamu s vestavěnými formáty data a času.
@@ -89,9 +89,9 @@ Pokud nechcete používat vlastní vzory DateTime, můžete přidat token {Date}
 
 ### <a name="extensibility-and-restrictions"></a>Rozšiřitelnost a omezení
 
-Můžete použít tolik tokenů, `{datetime:<specifier>}`jak budete chtít ve vzoru cesty, dokud nedosáhnete limitu znaků předpony cesty. Specifikátory formátu nelze kombinovat v rámci jednoho tokenu nad kombinacemi, které jsou již uvedeny v rozevíracích seznamech data a času. 
+Můžete použít tolik tokenů, `{datetime:<specifier>}` jak budete chtít ve vzoru cesty, dokud nedosáhnete limitu znaků předpony cesty. Specifikátory formátu nelze kombinovat v rámci jednoho tokenu nad kombinacemi, které jsou již uvedeny v rozevíracích seznamech data a času. 
 
-Pro oddíl cesty `logs/MM/dd`:
+Pro oddíl cesty `logs/MM/dd` :
 
 |Platný výraz   |Neplatný výraz   |
 |----------|-----------|
@@ -101,7 +101,7 @@ V předponě cesty můžete několikrát použít stejný specifikátor formátu
 
 ### <a name="hive-streaming-conventions"></a>Konvence streamování podregistru
 
-Vlastní vzory cest pro úložiště objektů BLOB lze použít s konvencí pro streamování podregistru, která očekává, že složky `column=` budou označeny v názvu složky.
+Vlastní vzory cest pro úložiště objektů BLOB lze použít s konvencí pro streamování podregistru, která očekává, že složky budou označeny `column=` v názvu složky.
 
 Například, `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
 

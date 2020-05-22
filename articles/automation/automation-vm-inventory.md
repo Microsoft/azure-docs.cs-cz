@@ -1,51 +1,51 @@
 ---
-title: Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci | Dokumentace Microsoftu
-description: Správa virtuálního počítače se shromažďováním dat pro inventarizaci
+title: Správa shromažďování Azure Automation inventáře z virtuálních počítačů | Microsoft Docs
+description: V tomto článku se dozvíte, jak spravovat shromažďování inventáře z virtuálních počítačů.
 services: automation
 ms.subservice: change-inventory-management
 keywords: inventory, automation, change, tracking
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0627d2daa70c276535dc43b722e22e1d73b0c8d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5142286bc50620d5a12a0722b3c4f9b8b75f5b73
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617379"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745269"
 ---
-# <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci
+# <a name="manage-inventory-collection-from-vms"></a>Správa shromažďování dat pro inventarizaci z virtuálních počítačů
 
-Sledování inventáře pro virtuální počítač Azure můžete povolit na stránce prostředků příslušného virtuálního počítače. V počítačích můžete shromažďovat a zobrazovat tyto informace o inventáři:
+Sledování inventáře pro virtuální počítač Azure můžete povolit ze stránky prostředků v počítači. V počítačích můžete shromažďovat a zobrazovat tyto informace o inventáři:
 
-- Software systému Windows (aplikace systému Windows a aktualizace systému Windows), služby, soubory a klíče registru
-- Procesy démonů a soubory Linux softwaru (balíčky)
+- Aktualizace systému Windows, aplikace systému Windows, soubory a klíče registru
+- Balíčky softwaru, procesy démony a soubory pro Linux
 
-Tato metoda poskytuje uživatelské rozhraní v prohlížeči pro nastavení a konfiguraci shromažďování dat pro inventarizaci.
+Azure Automation Change Tracking a inventář poskytují uživatelské rozhraní založené na prohlížeči pro nastavení a konfiguraci shromažďování inventáře.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
-V tomto článku se předpokládá, že máte virtuální počítač, na kterém chcete řešení nakonfigurovat. Pokud ještě nemáte virtuální počítač Azure, [vytvořte si virtuální počítač](../virtual-machines/windows/quick-create-portal.md).
+V tomto článku se předpokládá, že máte virtuální počítač, který se má povolit s Change Tracking a inventářem. Pokud nemáte virtuální počítač Azure, můžete [vytvořit virtuální počítač](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
-## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>Povolení shromažďování dat pro inventarizaci na stránce prostředků virtuálního počítače
+## <a name="enable-inventory-collection-from-the-vm-resource-page"></a>Povolit shromažďování inventáře ze stránky prostředku virtuálního počítače
 
 1. V levém podokně webu Azure Portal vyberte **Virtuální počítače**.
-2. V seznamu virtuálních počítačů vyberte virtuální počítač.
+2. V seznamu virtuálních počítačů vyberte počítač.
 3. V nabídce **prostředek** v části **operace**vyberte **inventarizace**.
 4. Vyberte Log Analytics pracovní prostor pro ukládání datových protokolů.
     Pokud v dané oblasti nemáte k dispozici žádný pracovní prostor, zobrazí se výzva k vytvoření výchozího pracovního prostoru a účtu Automation.
-5. Pokud chcete zahájit připojování vašeho počítače, vyberte **Povolit**.
+5. Chcete-li začít počítač povolit, vyberte možnost **Povolit**.
 
    ![Zobrazení možností připojení](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
-    Stavový řádek vás bude informovat o povolování řešení. Tento proces může trvat až 15 minut. Během této doby můžete okno zavřít nebo ho můžete nechat otevřené a upozorní vás, když je řešení povolené. Stav nasazení můžete monitorovat v podokně oznámení.
+    Stavový řádek vás upozorní, že je povolená funkce Change Tracking a inventáře. Tento proces může trvat až 15 minut. Během této doby můžete okno zavřít nebo ho můžete nechat otevřené a upozorní vás, když je funkce povolená. Stav nasazení můžete monitorovat v podokně oznámení.
 
-   ![Zobrazení řešení inventarizace ihned po připojení](./media/automation-vm-inventory/inventory-onboarded.png)
+   ![Zobrazení inventáře](./media/automation-vm-inventory/inventory-onboarded.png)
 
 Po dokončení nasazení stavový řádek zmizí. Systém stále shromažďuje data inventáře, ale data ještě nemusí být viditelná. Úplné shromáždění dat může trvat až 24 hodin.
 
@@ -57,7 +57,7 @@ Ve výchozím nastavení jsou pro shromažďování nakonfigurovány software, s
 2. Chcete-li přidat nové nastavení kolekce, do kategorie nastavení, kterou chcete přidat, vyberte kartu soubory **registru systému Windows**, **soubory systému Windows**nebo **Linux** .
 3. Vyberte příslušnou kategorii a klikněte na **Přidat** v horní části stránky.
 
-Následující tabulky obsahují informace o jednotlivých vlastnostech, které lze nakonfigurovat pro různé kategorie.
+Následující části obsahují informace o jednotlivých vlastnostech, které je možné nakonfigurovat pro různé kategorie.
 
 ### <a name="windows-registry"></a>Registr Windows
 
@@ -110,14 +110,14 @@ Pokud chcete vytvořit novou skupinu počítačů, klikněte na **+ vytvořit sk
 
 ![Vytvořit novou skupinu počítačů](./media/automation-vm-inventory/create-new-group.png)
 
-## <a name="disconnect-your-virtual-machine-from-management"></a>Odpojení virtuálního počítače od správy
+## <a name="disconnect-your-vm-from-management"></a>Odpojení virtuálního počítače od správy
 
 Odebrání virtuálního počítače ze správy inventáře:
 
-1. V levém podokně webu Azure Portal vyberte **Log Analytics** a pak vyberte pracovní prostor, který jste použili při připojování vašeho virtuálního počítače.
+1. V levém podokně Azure Portal vyberte **Log Analytics**a pak vyberte pracovní prostor, který jste použili při povolování virtuálního počítače pro Change Tracking a inventář.
 2. Na stránce Log Analytics otevřete nabídku **prostředků** .
 3. V části **zdroje dat pracovního prostoru**vyberte **Virtual Machines** .
-4. V seznamu vyberte virtuální počítač, který chcete odpojit. U virtuálního počítače se zobrazí zelené zaškrtnutí vedle textu **Tento pracovní prostor** ve sloupci **Připojení OMS**.
+4. V seznamu vyberte virtuální počítač, který chcete odpojit. Počítač má vedle **tohoto pracovního prostoru** ve sloupci **připojení OMS** zelenou značku zaškrtnutí.
 
    >[!NOTE]
    >Operations Management Suite (OMS) se teď označuje jako protokoly Azure Monitor.
@@ -127,5 +127,6 @@ Odebrání virtuálního počítače ze správy inventáře:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o správě změn nastavení souborů a registru na virtuálních počítačích najdete v tématu [Sledování změn softwaru v prostředí pomocí řešení Change Tracking](../log-analytics/log-analytics-change-tracking.md).
-* Další informace o správě aktualizací pro Windows a balíčky na virtuálních počítačích najdete v tématu [řešení Update Management v Azure](../operations-management-suite/oms-solution-update-management.md).
+* [Správa Change Tracking a inventáře](change-tracking-file-contents.md)
+* [Sledujte změny softwaru ve vašem prostředí pomocí Change Tracking](../log-analytics/log-analytics-change-tracking.md).
+* [Update Management v Azure](../operations-management-suite/oms-solution-update-management.md).

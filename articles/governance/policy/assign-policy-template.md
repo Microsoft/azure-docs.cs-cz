@@ -1,15 +1,15 @@
 ---
 title: 'Rychlý Start: nové přiřazení zásad pomocí šablon'
 description: V tomto rychlém startu použijete šablonu Správce prostředků k vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy.
-ms.date: 03/16/2020
+ms.date: 05/21/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 646e2e064618e70fd9e9e747926f0886d85fde26
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b9e372e8b86e1ac5b0a99d0aba77982896b4d11
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82187779"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757445"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí šablony Správce prostředků
 
@@ -30,7 +30,7 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte definici
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/).
 
-:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-36" highlight="26-34":::
+:::code language="json" source="~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json" range="1-30" highlight="20-28":::
 
 Prostředek definovaný v šabloně je:
 
@@ -47,10 +47,10 @@ Prostředek definovaný v šabloně je:
 
 1. Vyberte nebo zadejte následující hodnoty:
 
-   | Název | Hodnota |
+   | Name | Hodnota |
    |------|-------|
    | Předplatné | Vyberte své předplatné Azure. |
-   | Skupina prostředků | Vyberte **vytvořit novou**, zadejte název a pak vyberte **OK**. Název skupiny prostředků na snímku obrazovky je _mypolicyquickstart\<datum v MMDD\>RG_. |
+   | Skupina prostředků | Vyberte **vytvořit novou**, zadejte název a pak vyberte **OK**. Název skupiny prostředků na snímku obrazovky je _mypolicyquickstart \< datum v MMDD \> RG_. |
    | Umístění | Vyberte oblast. Například **střed USA**. |
    | Název přiřazení zásady | Zadejte název přiřazení zásady. Pokud chcete, můžete použít zobrazení definice zásad. Například proveďte **audit virtuálních počítačů, které nepoužívají spravované disky**. |
    | Název RG | Zadejte název skupiny prostředků, ke které chcete zásadu přiřadit. V tomto rychlém startu použijte výchozí hodnotu **[resourceName (). name]**. Skupina prostředků **[()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** je šablonou funkce, která načítá skupinu prostředků. |

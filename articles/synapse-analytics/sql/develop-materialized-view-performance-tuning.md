@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 30ca03633b9b0788235439204a3c1926fe6b6a6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a07c419ecaa0cb0ec05c7c392a4d5ed9b0bfa491
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429977"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747415"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Ladění výkonu s využitím materializovaných zobrazení
 
@@ -117,7 +117,7 @@ Možnosti snížení počtu materializovaná zobrazení:
 
 - Vyřadit materializovaná zobrazení, která mají nízké využití nebo již nejsou potřebná.  Zakázané zobrazení s materializací není zachováno, ale stále stojí náklady na úložiště.  
 
-- Zkombinujte materializovaná zobrazení vytvořená ve stejných nebo podobných základních tabulkách i v případě, že se jejich data nepřekrývají.  Kombinování zobrazení s materializací může mít za následek větší zobrazení velikosti, než součet samostatných zobrazení, ale náklady na údržbu by se měly snížit.  Příklad:
+- Zkombinujte materializovaná zobrazení vytvořená ve stejných nebo podobných základních tabulkách i v případě, že se jejich data nepřekrývají.  Kombinování zobrazení s materializací může mít za následek větší zobrazení velikosti, než součet samostatných zobrazení, ale náklady na údržbu by se měly snížit.  Například:
 
 ```sql
 -- Query 1 would benefit from having a materialized view created with this SELECT statement
@@ -153,7 +153,7 @@ Chcete-li použít výsledek uložený v mezipaměti, musí být ve formátu mez
 
 ## <a name="example"></a>Příklad
 
-V tomto příkladu se používá dotaz podobný TPCDS, který vyhledává zákazníky, kteří tráví více peněz prostřednictvím katalogu než v obchodech. Identifikuje taky preferované zákazníky a jejich zemi původu.   Dotaz zahrnuje výběr prvních 100 záznamů ze SJEDNOCENí tří příkazů dílčího výběru zahrnujících SUM () a GROUP BY.
+V tomto příkladu se používá dotaz podobný TPCDS, který vyhledává zákazníky, kteří tráví více peněz prostřednictvím katalogu než v obchodech. Identifikuje taky preferované zákazníky a jejich zemi nebo oblast původu.   Dotaz zahrnuje výběr prvních 100 záznamů ze SJEDNOCENí tří příkazů dílčího výběru zahrnujících SUM () a GROUP BY.
 
 ```sql
 WITH year_total AS (

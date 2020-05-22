@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a49661ca8776f04d98cc04bbe7a07b8c388f91ee
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681668"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745923"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Vytvoření vnitřních map pomocí autora
 
@@ -215,7 +215,7 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. Text odpovědi bude dodán ve formátu injson a bude obsahovat všechny kolekce v datové sadě. Pro zjednodušení tento příklad zobrazuje pouze `unit` kolekci. Příklad, který obsahuje všechny kolekce, najdete v tématu [WFS Popis rozhraní API kolekcí](https://docs.microsoft.com/rest/api/maps/wfs/describecollectionspreview). Chcete-li získat další informace o jakékoli kolekci, můžete kliknout na kteroukoli z adres URL uvnitř `link` elementu.
+3. Text odpovědi bude dodán ve formátu injson a bude obsahovat všechny kolekce v datové sadě. Pro zjednodušení tento příklad zobrazuje pouze `unit` kolekci. Příklad, který obsahuje všechny kolekce, najdete v tématu [WFS Popis rozhraní API kolekcí](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview). Chcete-li získat další informace o jakékoli kolekci, můžete kliknout na kteroukoli z adres URL uvnitř `link` elementu.
 
     ```json
     {
@@ -285,7 +285,7 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
 
 1. V aplikaci post vyberte možnost **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** a vyberte kolekci. Klikněte na **Uložit** .
 
-2. Vytvořte požadavek **post** [rozhraní API pro vytvoření stateset](https://docs.microsoft.com/rest/api/maps/featurestate/createstatepreview). Použijte `datasetId` datovou sadu, která obsahuje stav, který chcete upravit. Požadavek by měl vypadat jako na následující adrese URL:
+2. Vytvořte požadavek **post** [rozhraní API pro vytvoření stateset](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview). Použijte `datasetId` datovou sadu, která obsahuje stav, který chcete upravit. Požadavek by měl vypadat jako na následující adrese URL:
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}

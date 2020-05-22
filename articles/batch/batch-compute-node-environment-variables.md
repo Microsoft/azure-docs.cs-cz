@@ -3,12 +3,12 @@ title: Proměnné prostředí modulu runtime úloh
 description: Doprovodné materiály k proměnnou prostředí modulu runtime úlohy a referenční informace pro Azure Batch Analytics.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 2027716283ca4910f45ae3e32111896ef0045ce8
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 0b3f00bcae50b0913432b122c85a3725a489679a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726753"
+ms.locfileid: "83745334"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Proměnné prostředí Azure Batch runtime
 
@@ -48,7 +48,7 @@ Příkazové řádky spouštěné úkoly na výpočetních uzlech neběží v pr
 | AZ_BATCH_JOB_ID                 | Číslo ID úlohy, ke které úkol patří. | Všechny úlohy s výjimkou spouštěcího úkolu. | batchjob001 |
 | AZ_BATCH_JOB_PREP_DIR           | Úplná cesta [adresáře úkolu][files_dirs] přípravy úlohy na uzlu. | Všechny úlohy kromě úlohy spustit úlohu a příprava úlohy. K dispozici pouze v případě, že je úloha konfigurována s úlohou přípravy úlohy. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
 | AZ_BATCH_JOB_PREP_WORKING_DIR   | Úplná cesta [pracovního adresáře úkolu][files_dirs] přípravy úlohy na uzlu | Všechny úlohy kromě úlohy spustit úlohu a příprava úlohy. K dispozici pouze v případě, že je úloha konfigurována s úlohou přípravy úlohy. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
-| AZ_BATCH_MASTER_NODE            | IP adresa a port výpočetního uzlu, na kterém se spouští primární úloha [úlohy s více instancemi][multi_instance] . | Primární a dílčí úkoly s více instancemi. | `10.0.0.4:6000` |
+| AZ_BATCH_MASTER_NODE            | IP adresa a port výpočetního uzlu, na kterém se spouští primární úloha [úlohy s více instancemi][multi_instance] . Nepoužívejte zde zadaný port pro komunikaci MPI nebo NCCL – je vyhrazený pro službu Azure Batch. Místo toho použijte MASTER_PORT proměnné, a to buď nastavením hodnoty předané prostřednictvím argumentu příkazového řádku (port 6105 je dobrá výchozí volba), nebo pomocí hodnoty AML sady, pokud k tomu dojde. | Primární a dílčí úkoly s více instancemi. | `10.0.0.4:6000` |
 | AZ_BATCH_NODE_ID                | ID uzlu, ke kterému je úkol přiřazen | Všechny úlohy. | TVM – 1219235766_3 – 20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Pokud `true` je aktuální uzel vyhrazený uzel. `false`Je-li, jedná se o [uzel s nízkou prioritou](batch-low-pri-vms.md). | Všechny úlohy. | `true` |
 | AZ_BATCH_NODE_LIST              | Seznam uzlů, které jsou přiděleny úloze s [více instancemi][multi_instance] ve formátu `nodeIP;nodeIP` . | Primární a dílčí úkoly s více instancemi. | `10.0.0.4;10.0.0.5` |

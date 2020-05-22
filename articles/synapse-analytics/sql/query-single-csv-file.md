@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0e4208f4f9a01bc42d4c6134ec3ec4fb1cb19fd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431589"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744288"
 ---
 # <a name="query-csv-files"></a>Dotazování na soubory CSV
 
@@ -176,7 +176,7 @@ WHERE
 ```
 
 > [!NOTE]
-> Tento dotaz by se nezdařil, pokud není zadán parametr ESCAPECHAR, protože čárka v "slov, enia" by byla považována za oddělovač polí namísto části názvu země. "Slov, enia" by se považovat za dva sloupce. Proto bude mít konkrétní řádek jeden sloupec více než ostatní řádky a jeden sloupec je více, než jste definovali v klauzuli WITH.
+> Tento dotaz by se nezdařil, pokud není zadán parametr ESCAPECHAR, protože čárka v "slov, enia" by byla považována za oddělovač polí namísto části názvu země nebo oblasti. "Slov, enia" by se považovat za dva sloupce. Proto bude mít konkrétní řádek jeden sloupec více než ostatní řádky a jeden sloupec je více, než jste definovali v klauzuli WITH.
 
 ## <a name="tab-delimited-files"></a>Soubory s hodnotami oddělenými tabulátory
 
@@ -210,7 +210,7 @@ WHERE
 
 Zatím jste určili schéma souboru CSV pomocí nástroje s a seznamem všech sloupců. V dotazu můžete zadat pouze sloupce, které skutečně potřebujete, a to pomocí pořadového čísla pro každý požadovaný sloupec. Vynecháte také sloupce bez zájmu.
 
-Následující dotaz vrátí do souboru počet jedinečných názvů zemí a určí pouze sloupce, které jsou potřeba:
+Následující dotaz vrátí počet jedinečných názvů zemí nebo oblastí v souboru, přičemž určí pouze sloupce, které jsou nutné:
 
 > [!NOTE]
 > Podívejte se na klauzuli WITH v následujícím dotazu a Všimněte si, že na konci řádku, ve kterém definujete sloupec *[country_name]* , se nachází znak "2" (bez uvozovek). To znamená, že sloupec *[country_name]* je druhým sloupcem v souboru. Dotaz bude ignorovat všechny sloupce v souboru s výjimkou druhé.

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 798da0261dbb692d411f1bb568a272a6bb7dbb03
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 540ae25b22b2c134a47f91ad5b8b19089c7f2acb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715660"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745002"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Spravovat přihlašovací údaje v Azure Automation
 
@@ -163,6 +163,6 @@ print cred["password"]
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa modulů ve službě Azure Automation](modules.md)
-* [Spouštění runbooků ve službě Azure Automation](../automation-runbook-execution.md)
-* [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md) 
+* Další informace o rutinách používaných pro přístup k certifikátům najdete v tématu [Správa modulů v Azure Automation](modules.md).
+* Obecné informace o sadách Runbook naleznete [v tématu Spuštění Runbooku v Azure Automation](../automation-runbook-execution.md).
+* Podrobnosti o konfiguracích DSC najdete v tématu [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md). 

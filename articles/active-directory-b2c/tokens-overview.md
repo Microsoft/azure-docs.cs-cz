@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7725a9ddd1d9559166360b27bd8a5371d8c0557e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638251"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757615"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Přehled tokenů v Azure Active Directory B2C
 
@@ -37,8 +37,8 @@ Při komunikaci s Azure AD B2C se používají následující tokeny:
 
 [Registrovaná aplikace](tutorial-register-applications.md) přijímá tokeny a komunikuje s Azure AD B2C odesláním požadavků do těchto koncových bodů:
 
-- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/v2.0/authorize`
-- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/v2.0/token`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize`
+- `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token`
 
 Tokeny zabezpečení, které vaše aplikace přijímá z Azure AD B2C můžou pocházet z `/authorize` `/token` koncových bodů nebo. Pokud jsou tokeny ID získány z `/authorize` koncového bodu, je provedeno pomocí [implicitního toku](implicit-flow-single-page-application.md), který se často používá pro uživatele přihlašování k webovým aplikacím založeným na jazyce JavaScript. Když se tokeny ID získávají z `/token` koncového bodu, provádí se pomocí [toku autorizačního kódu](openid-connect.md#get-a-token), který tento token udržuje v prohlížeči skrytý.
 

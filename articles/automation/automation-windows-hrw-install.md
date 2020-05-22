@@ -1,16 +1,16 @@
 ---
-title: Funkce Hybrid Runbook Worker služby Azure Automation ve Windows
-description: Tento článek poskytuje informace o instalaci Hybrid Runbook Worker Azure Automation, které můžete použít ke spouštění Runbooků v počítačích se systémem Windows v místním datovém centru nebo cloudovém prostředí.
+title: Nasazení Windows Hybrid Runbook Worker v Azure Automation
+description: V tomto článku se dozvíte, jak nasadit Hybrid Runbook Worker, které můžete použít ke spouštění Runbooků v počítačích se systémem Windows v místním datovém centru nebo cloudovém prostředí.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 163650a05bf47e6cb8a8832bb85477740d88b0cd
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3a27cee7a94ee6f33c399d10f90e47ec574e7380
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787358"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744179"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -19,9 +19,6 @@ Pomocí funkce Hybrid Runbook Worker služby Azure Automation můžete spouště
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Instalace a konfigurace Windows Hybrid Runbook Worker
 
@@ -51,11 +48,11 @@ Minimální požadavky pro Windows Hybrid Runbook Worker jsou:
 
 Další požadavky na síť pro Hybrid Runbook Worker najdete v tématu [Konfigurace sítě](automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="server-onboarding-for-management-with-state-configuration-dsc"></a>Připojování serveru pro správu s konfigurací stavu (DSC)
+### <a name="enabling-servers-for-management-with-azure-automation-state-configuration"></a>Povolování serverů pro správu pomocí konfigurace stavu Azure Automation
 
-Informace o připojování serverů pro správu s konfigurací stavu (DSC) najdete v tématu [zprovoznění počítačů pro správu podle konfigurace stavu (DSC)](automation-dsc-onboarding.md).
+Informace o povolování serverů pro správu pomocí konfigurace stavu Azure Automation najdete v tématu [Povolení počítačů pro správu pomocí konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
 
-Povolením [Update Management](automation-update-management.md) se automaticky nakonfiguruje jakýkoli počítač s Windows, který je připojený k vašemu pracovnímu prostoru Log Analytics jako Hybrid Runbook Worker pro podporu aktualizací sady Runbook. Tento pracovní proces ale není zaregistrovaný u žádné Hybrid Runbook Worker skupiny, které už jsou ve vašem účtu Automation definované.
+Povolením Azure Automation [Update Management](automation-update-management.md) se automaticky nakonfiguruje jakýkoli počítač s Windows, který je připojený k vašemu Log Analytics pracovnímu prostoru jako Hybrid Runbook Worker pro podporu aktualizací sady Runbook. Tento pracovní proces ale není zaregistrovaný u žádné Hybrid Runbook Worker skupiny, které už jsou ve vašem účtu Automation definované.
 
 ### <a name="addition-of-the-computer-to-a-hybrid-runbook-worker-group"></a>Přidání počítače do skupiny Hybrid Runbook Worker
 
@@ -73,12 +70,12 @@ Stáhněte si skript **New-OnPremiseHybridWorker. ps1** z [Galerie prostředí P
 | --------- | ------ | ----------- |
 | `AAResourceGroupName` | Povinné | Název skupiny prostředků, která je přidružená k vašemu účtu Automation. |
 | `AutomationAccountName` | Povinné | Název vašeho účtu Automation.
-| `Credential` | Nepovinné | Přihlašovací údaje, které se mají použít při přihlašování do prostředí Azure. |
+| `Credential` | Volitelné | Přihlašovací údaje, které se mají použít při přihlašování do prostředí Azure. |
 | `HybridGroupName` | Povinné | Název skupiny Hybrid Runbook Worker, kterou zadáte jako cíl pro Runbooky, které podporují tento scénář. |
-| `OMSResourceGroupName` | Nepovinné | Název skupiny prostředků pro pracovní prostor Log Analytics. Pokud není tato skupina prostředků zadaná, použije se hodnota `AAResourceGroupName` . |
+| `OMSResourceGroupName` | Volitelné | Název skupiny prostředků pro pracovní prostor Log Analytics. Pokud není tato skupina prostředků zadaná, použije se hodnota `AAResourceGroupName` . |
 | `SubscriptionID` | Povinné | Identifikátor předplatného Azure přidruženého k vašemu účtu Automation. |
-| `TenantID` | Nepovinné | Identifikátor organizace tenanta přidružené k vašemu účtu Automation. |
-| `WorkspaceName` | Nepovinné | Název Log Analytics pracovního prostoru. Pokud nemáte pracovní prostor Log Analytics, skript ho vytvoří a nakonfiguruje. |
+| `TenantID` | Volitelné | Identifikátor organizace tenanta přidružené k vašemu účtu Automation. |
+| `WorkspaceName` | Volitelné | Název Log Analytics pracovního prostoru. Pokud nemáte pracovní prostor Log Analytics, skript ho vytvoří a nakonfiguruje. |
 
 > [!NOTE]
 > Při povolování funkcí Azure Automation podporuje jenom určité oblasti pro propojení pracovního prostoru Log Analytics a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
@@ -89,7 +86,7 @@ Spusťte **prostředí Windows PowerShell** z obrazovky **Start** v režimu spr�
 
 ### <a name="step-3---run-the-powershell-script"></a>Krok 3 – spuštění skriptu PowerShellu
 
-V prostředí příkazového řádku PowerShellu přejděte do složky, která obsahuje skript, který jste stáhli. `AutomationAccountName`Změňte hodnoty parametrů, `AAResourceGroupName`, `OMSResourceGroupName` `HybridGroupName` `SubscriptionID`,, a. `WorkspaceName` Potom spusťte skript.
+V prostředí příkazového řádku PowerShellu přejděte do složky, která obsahuje skript, který jste stáhli. Změňte hodnoty parametrů `AutomationAccountName` ,,,, `AAResourceGroupName` `OMSResourceGroupName` `HybridGroupName` `SubscriptionID` a `WorkspaceName` . Potom spusťte skript.
 
 Po spuštění skriptu budete vyzváni k ověření pomocí Azure. Musíte se přihlásit pomocí účtu, který je členem role správců předplatného a spolusprávcem předplatného.
 
@@ -117,9 +114,9 @@ Pokud ještě nemáte pracovní prostor Log Analytics, přečtěte si [pokyny k 
 
 ### <a name="step-2---add-an-azure-automation-feature-to-the-log-analytics-workspace"></a>Krok 2 – Přidání funkce Azure Automation do pracovního prostoru Log Analytics
 
-Funkce automatizace přidává funkce pro Azure Automation, včetně podpory Hybrid Runbook Worker. Když přidáte řešení do svého pracovního prostoru Log Analytics, automaticky se přehraje do počítače agenta komponenty pracovního procesu, které nainstalujete, jak je popsáno v dalším kroku.
+Funkce automatizace přidává funkce pro Azure Automation, včetně podpory Hybrid Runbook Worker. Pokud povolíte funkci Azure Automation v pracovním prostoru Log Analytics, automaticky se do počítače agenta přiřadí komponenty pracovního procesu.
 
-Pokud chcete přidat řešení automatizace do svého pracovního prostoru, spusťte následující rutinu prostředí PowerShell.
+Pokud chcete do svého pracovního prostoru přidat funkci Azure Automation, například Update Management, spusťte následující rutinu prostředí PowerShell:
 
 ```powershell-interactive
 Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true -DefaultProfile <IAzureContextContainer>
@@ -139,17 +136,15 @@ Heartbeat
 | where TimeGenerated > ago(30m)
 ```
 
-Ve výsledcích hledání byste měli zobrazit záznamy prezenčního signálu pro daný počítač, což znamená, že je připojený a oznamuje službě zprávy. Ve výchozím nastavení každý Agent přepošle záznam prezenčního signálu do přiřazeného pracovního prostoru. 
+Ve výsledcích hledání byste měli zobrazit záznamy prezenčního signálu pro daný počítač, což znamená, že je připojený a oznamuje službě zprávy. Ve výchozím nastavení každý Agent přepošle záznam prezenčního signálu do přiřazeného pracovního prostoru. Pomocí následujících kroků dokončete instalaci a instalaci agenta.
 
-Pomocí následujících kroků dokončete instalaci a instalaci agenta.
-
-1. Povolte řešení, aby se připojil počítač agenta. Viz část [zprovoznění počítačů v pracovním prostoru](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace).
-2. Ověřte, že agent správně stáhl řešení automatizace. 
+1. Povolením funkce přidejte počítač agenta. Viz [Povolení počítačů v pracovním prostoru](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace).
+2. Ověřte, že agent správně stáhl funkci Azure Automation. 
 3. Verzi Hybrid Runbook Worker ověříte tak, že přejdete do složky **C:\Program Files\Microsoft monitoring Agent\Agent\AzureAutomation** a poznamenejte si podsložku **verze** .
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>Krok 4 – instalace prostředí Runbooku a připojení k Azure Automation
 
-Když nakonfigurujete agenta tak, aby nahlásil do Log Analytics pracovního prostoru, řešení automatizace vloží modul `HybridRegistration` PowerShellu, který obsahuje `Add-HybridRunbookWorker` rutinu. Pomocí této rutiny nainstalujete do počítače prostředí Runbooku a zaregistrujete ho do Azure Automation.
+Když nakonfigurujete agenta tak, aby nahlásil do Log Analytics pracovního prostoru, funkce Azure Automation vloží `HybridRegistration` modul PowerShellu, který obsahuje `Add-HybridRunbookWorker` rutinu. Pomocí této rutiny nainstalujete do počítače prostředí Runbooku a zaregistrujete ho do Azure Automation.
 
 Otevřete relaci PowerShellu v režimu správce a spuštěním následujících příkazů Importujte modul.
 
@@ -209,6 +204,5 @@ Chcete-li odebrat skupinu Hybrid Runbook Worker, musíte nejprve odebrat Hybrid 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o tom, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí, najdete v tématu [spouštění Runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
-* Informace o řešení potíží s procesy Hybrid Runbook Worker najdete v tématu [řešení potíží s Windows Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#windows).
-
+* [Spouštění runbooků ve funkci Hybrid Runbook Worker](automation-hrw-run-runbooks.md)
+* [Řešení potíží s Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#windows)

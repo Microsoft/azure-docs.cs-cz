@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 039fdda4ab8fe636c1eab926c477aea420b59de8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f4919bb6856703c5bb5f1c798a8bcf5b2a108cc7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647479"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747669"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Vytvoření a použití externích tabulek v SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
 
@@ -112,7 +112,7 @@ CREATE EXTERNAL TABLE Taxi (
 
 [Externí tabulky](develop-tables-external-tables.md) v dotazech můžete použít stejným způsobem jako v SQL Server dotazy.
 
-Následující dotaz demonstruje to pomocí externí tabulky *obyvatel* , kterou jsme vytvořili v předchozí části. V sestupném pořadí vrátí názvy zemí se svými populacemi v 2019.
+Následující dotaz demonstruje to pomocí externí tabulky *obyvatel* , kterou jsme vytvořili v předchozí části. Vrátí názvy zemí nebo oblastí se svými populacemi v 2019 v sestupném pořadí.
 
 > [!NOTE]
 > Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili.

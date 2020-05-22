@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168646"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747010"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Emulátor Azure Cosmos – poznámky k verzi a informace ke stažení
 
@@ -24,7 +24,16 @@ Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem ak
 |**Stažení MSI**|[Stažení softwaru společnosti Microsoft](https://aka.ms/cosmosdb-emulator)|
 |**Začínáme**|[Místní vývoj pomocí emulátoru Azure Cosmos](local-emulator.md)|
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Zpráva k vydání verze
+
+### <a name="2110"></a>2.11.0
+
+- Tato verze zavádí podporu pro zajištění propustnosti s podporou automatického škálování. Tyto nové funkce zahrnují možnost nastavit vlastní maximální stanovenou úroveň propustnosti v jednotkách žádosti (RU/s), povolit automatické škálování u stávajících databází a kontejnerů a programovou podporu prostřednictvím Azure Cosmos DB SDK.
+- Oprava problému při dotazování velkého množství dokumentů (více než 1 GB): emulátor selže s kódem stavu vnitřní chyby 500.
+
+### <a name="292"></a>2.9.2
+
+- Tato verze opravuje chybu při povolování podpory pro koncový bod MongoDb verze 3,2. Také přidává podporu pro generování trasování ETL pro účely řešení potíží pomocí WPR namísto programu LOGMAN.
 
 ### <a name="291"></a>2.9.1
 

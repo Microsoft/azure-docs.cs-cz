@@ -3,12 +3,12 @@ title: Instalace Azure Backup Serveru v Azure Stacku
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chránit nebo zálohovat úlohy v Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77583431"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747441"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -57,7 +57,7 @@ Pokud sdílíte s jinými virtuálními počítači, omezení velikosti a IOPS �
 
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Konfigurace Azure Backup dočasného diskového úložiště
 
-Každý Azure Stack virtuální počítač obsahuje dočasné diskové úložiště, které je k dispozici uživateli jako svazek `D:\`. Místní pracovní oblast, kterou vyžaduje Azure Backup, se dá nakonfigurovat tak, aby `D:\`se nacházela v a umístění mezipaměti se `C:\`dá umístit na. Tímto způsobem není potřeba žádné úložiště Carved z datových disků připojených k Azure Backup Servermu virtuálnímu počítači.
+Každý Azure Stack virtuální počítač obsahuje dočasné diskové úložiště, které je k dispozici uživateli jako svazek `D:\` . Místní pracovní oblast, kterou vyžaduje Azure Backup, se dá nakonfigurovat tak, aby se nacházela v `D:\` a umístění mezipaměti se dá umístit na `C:\` . Tímto způsobem není potřeba žádné úložiště Carved z datových disků připojených k Azure Backup Servermu virtuálnímu počítači.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Ukládání zálohovaných dat na místní disk a v Azure
 
@@ -91,7 +91,7 @@ Azure Backup Server virtuální počítač musí být připojený k doméně. Na
 
 Při volbě serveru pro Azure Backup Server začněte s imagí Windows Server 2012 R2 Datacenter nebo Windows Server 2016 Datacenter. [V tomto článku vytvořte svůj první virtuální počítač s Windows ve službě Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), který poskytuje kurz, jak začít s doporučeným virtuálním počítačem. Doporučené minimální požadavky pro virtuální počítač serveru (VM) by měly být: a2 Standard se dvěma jádry a 3,5-GB RAM.
 
-Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tento článek vám pomůže vysvětlit tyto drobné odlišnostiy, [nainstalovat DPM jako virtuální počítač Azure](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12)). Než počítač nasadíte, přečtěte si tento článek kompletně.
+Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tato drobné odlišnosti je popsána v [matrici ochrany pro MABS](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) . Než počítač nasadíte, přečtěte si tento článek kompletně.
 
 > [!NOTE]
 > Azure Backup Server je navržená tak, aby běžela na vyhrazeném virtuálním počítači s jedním účelem. Nemůžete nainstalovat Azure Backup Server na:
@@ -112,7 +112,7 @@ Možnost replikace úložiště Recovery Services trezoru umožňuje výběr mez
 Chcete-li upravit nastavení replikace úložiště:
 
 1. Vyberte svůj trezor a otevřete tak řídicí panel trezoru a nabídku nastavení. Pokud se nabídka **Nastavení** neotevře, klikněte na **všechna nastavení** na řídicím panelu trezoru.
-2. V nabídce **Nastavení** klikněte na **zálohovat** > **Konfigurace zálohování** infrastruktury a otevřete nabídku **Konfigurace zálohování** . V nabídce **Konfigurace zálohování** vyberte pro svůj trezor možnost replikace úložiště.
+2. V nabídce **Nastavení** klikněte na **zálohovat**  >  **Konfigurace zálohování** infrastruktury a otevřete nabídku **Konfigurace zálohování** . V nabídce **Konfigurace zálohování** vyberte pro svůj trezor možnost replikace úložiště.
 
     ![Seznam trezorů záloh](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -243,7 +243,7 @@ Azure Backup Server sdílí kód s Data Protection Manager. V instalačním prog
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    K zálohování do Azure se vyžaduje pomocné umístění. Zajistěte, aby velikost pravého umístění byla stejná jako aspoň 5% dat, která se mají zálohovat do Azure. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Konfigurace fondů úložiště a diskového úložiště](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
+    K zálohování do Azure se vyžaduje pomocné umístění. Zajistěte, aby velikost pravého umístění byla stejná jako aspoň 5% dat, která se mají zálohovat do Azure. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Příprava úložiště dat](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
 
 6. Na obrazovce **nastavení zabezpečení** zadejte silné heslo pro omezené místní uživatelské účty a klikněte na **Další**.
 

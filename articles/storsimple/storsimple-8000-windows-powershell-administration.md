@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7d59f00d655bc7b2395c46713a56f52c61ffa42c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35be2e0b7b5a24261cd8ee15b1964b953c1a3327
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277111"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747708"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Správa zařízení pomocí rozhraní Windows PowerShell pro StorSimple
 
@@ -105,7 +105,7 @@ Můžete si vybrat z následujících nastavení:
      > [!NOTE]
      > Tato možnost je upřednostňovaná, pokud jste zapomněli heslo správce zařízení a nemůžete se připojit prostřednictvím možnosti 1 nebo 2.
 
-4. **Změnit jazyk** Tato možnost umožňuje změnit jazyk zobrazení v rozhraní Windows PowerShell. Podporované jazyky jsou angličtina, japonština, ruština, francouzština, Jižní korejština, španělština, italština, němčina, čínština a Brazílie.
+4. **Změnit jazyk** Tato možnost umožňuje změnit jazyk zobrazení v rozhraní Windows PowerShell. Podporované jazyky jsou angličtina, japonština, ruština, francouzština, Jižní korejština, španělština, italština, němčina, čínština a portugalština.
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>Vzdálené připojení k StorSimple pomocí Windows PowerShell pro StorSimple
 
@@ -158,7 +158,7 @@ Následuje stručný popis typů nápovědu pro toto rozhraní Windows PowerShel
 ### <a name="to-get-help-for-a-cmdlet"></a>Získání nápovědu pro rutinu
 
 * Nápovědu k jakékoli rutině nebo funkci získáte pomocí následujícího příkazu:`Get-Help <cmdlet-name>`
-* Pokud chcete získat online nápovědu pro libovolnou rutinu, použijte předchozí rutinu `-Online` s parametrem:`Get-Help <cmdlet-name> -Online`
+* Pokud chcete získat online nápovědu pro libovolnou rutinu, použijte předchozí rutinu s `-Online` parametrem:`Get-Help <cmdlet-name> -Online`
 * Pro úplnou nápovědu můžete použít `–Full` parametr a příklady použít `–Examples` parametr.
 
 ### <a name="to-update-help"></a>Aktualizace pomocníka
@@ -169,7 +169,7 @@ V rozhraní Windows PowerShell můžete snadno aktualizovat tuto nápovědě. Ch
 1. Spusťte prostředí Windows PowerShell s možností **Spustit jako správce** .
 2. Do příkazového řádku zadejte:`Update-Help`
 3. Dojde k instalaci aktualizovaných souborů help.
-4. Po instalaci souborů s příponou Help zadejte: `Get-Help Get-Command`. Zobrazí se seznam rutin, pro které je k dispozici nápovědu.
+4. Po instalaci souborů s příponou Help zadejte: `Get-Help Get-Command` . Zobrazí se seznam rutin, pro které je k dispozici nápovědu.
 
 > [!NOTE]
 > Pokud chcete získat seznam všech dostupných rutin v prostředí runspace, přihlaste se k odpovídající možnosti nabídky a spusťte `Get-Command` rutinu.

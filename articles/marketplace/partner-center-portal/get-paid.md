@@ -6,12 +6,12 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 678c47fc345838f6d1e93ac397a4e54d1c61391f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: bdef440fb8273dbbc5053d1c4eb6607fba0cdab3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780493"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744557"
 ---
 # <a name="getting-paid-in-commercial-marketplace"></a>Platba na komerční Marketplace
 
@@ -30,7 +30,7 @@ Poplatek za Store se použije na všechny prodejní nabídky shromážděné kom
 
 ## <a name="price-tiers"></a>Cenové úrovně
 
-Cenové úrovně, které vyberete, nastaví prodejní cenu ve všech zemích, kde se rozhodnete distribuovat svou nabídku. Můžete také využít další cenové funkce, jako je například výběr různých cen pro různé trhy.
+Cenové úrovně, které vyberete, nastaví prodejní cenu ve všech zemích nebo oblastech, kde se rozhodnete distribuovat svou nabídku. Můžete také využít další cenové funkce, jako je například výběr různých cen pro různé trhy.
 
 Svou aplikaci můžete nabízet zdarma nebo si můžete vybrat cenu, kterou si zákazníci musí zaplatit za získání vaší nabídky. Cenové úrovně začínají na. 99 USD, s dalšími přírůstky (1,09 USD, 1,19 USD atd.). Zvýšení ceny mezi cenové úrovně se zvyšuje, protože cena je vyšší.
 

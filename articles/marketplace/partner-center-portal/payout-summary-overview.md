@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 48644f2f8148a7aa1974be0d7f761e9b3a55612d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a872331238946de0d57e6d42164f1ce7fb1c7357
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783510"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746208"
 ---
 # <a name="payout-summary-overview"></a>Souhrnný přehled plateb
 
@@ -70,7 +70,7 @@ Tato možnost poskytuje stažení každé položky řádku s možností přijet�
 | participantId | Primární identita partnera v rámci programu |
 | participantIdType | ID programu pro pobídkové programy a prodejce, pokud je program určen pro aplikace ze Storu a Azure Marketplace |
 | účastník | Název partnerského partnera |
-| partnerCountryCode | Umístění/země pro partnerský partner |
+| partnerCountryCode | Umístění/země/oblast pro partnerský partner |
 | programName | Motivace/uložení názvu programu |
 | transactionId | Jedinečný identifikátor pro transakci |
 | transactionCurrency | Měna, ve které došlo k původní transakci zákazníka (nejedná se o měnu partnerského umístění) |
@@ -89,7 +89,7 @@ Tato možnost poskytuje stažení každé položky řádku s možností přijet�
 | calculationDate | Datum výpočtu v systému |
 | earningExchangeRate | Směnný kurz použitý k zobrazení odpovídajících částek v USD |
 | exchangeRateDate | Datum směnného kurzu použité k výpočtu EarningAmount USD |
-| paymentAmountWOTax | Peněžní částka (bez daně) v platbě k měně &quot;za&quot; odeslané platby |
+| paymentAmountWOTax | Peněžní částka (bez daně) v platbě k měně za &quot; odeslané &quot; platby |
 | paymentCurrency | Platíte do měny zvolené partnerem v platebním profilu. Zobrazuje se jenom pro odeslané platby. |
 | paymentExchangeRate | Směnný kurz používaný k výpočtu paymentAmountWOTax v měně platby pomocí ExchangeRateDate |
 | paymentId | Jedinečný identifikátor pro platbu Toto číslo je viditelné ve výpisu bank. |
@@ -113,15 +113,15 @@ Tato možnost poskytuje stažení každé položky řádku s možností přijet�
 | storeFee | Množství, které Microsoft zachovává jako poplatek za zpřístupnění aplikace nebo doplňku na komerčním webu Marketplace. |
 | transactionPaymentMethod | Platební nástroj zákazníka, který se používá pro transakci (například karta, fakturaci mobilního dopravce a PayPal) |
 | tpan | Síť AD třetí strany |
-| customerCountry | Země zákazníka |
+| customerCountry | Země nebo oblast zákazníka |
 | customerCity | Město zákazníka |
 | customerState | Stav zákazníka |
 | customerZip | PSČ zákazníka, PSČ |
 | TenantID | ID tenanta |
 | externalReferenceId | Jedinečný identifikátor programu |
 | externalReferenceIdLabel | Popisek jedinečného identifikátoru |
-| transactionCountryCode | Kód země, ve kterém se transakce stala |
-| taxCountry | Země zákazníka |
+| transactionCountryCode | Kód země/oblasti, ve kterém se transakce stala |
+| taxCountry | Země nebo oblast zákazníka |
 | taxState | Stav zákazníka |
 | taxCity | Město zákazníka |
 | taxZipCode | Poštovní směrovací číslo zákazníka |
@@ -132,7 +132,7 @@ Tato možnost poskytuje stažení každé položky řádku s možností přijet�
 | AssetId | Jedinečný identifikátor objednávek zákazníků pro vaši službu Marketplace Představuje položky nákupních řádků. Může existovat více prostředků. |
 | OrderId | Má vztah k faktuře zákazníka. |
 | LineItemId | Jednotlivý řádek na faktuře zákazníka |
-| Země zákazníka | Název země, kterou zadal zákazník. To může být jiné než země v předplatném Azure zákazníka. |
+| Země nebo oblast zákazníka | Název země nebo oblasti, kterou zadal zákazník. To může být jiné než země nebo oblast v předplatném Azure zákazníka. |
 | Zákaznická EmailAddress | E-mailová adresa zadaná zákazníkem Může se lišit od e-mailové adresy v předplatném Azure zákazníka. |
 | SkuId | ID skladové položky, jak je definováno během publikování. Nabídka může mít mnoho SKU, ale SKU může být přidruženo pouze k jedné nabídce. |
 

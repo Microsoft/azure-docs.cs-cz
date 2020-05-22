@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 02b88ae0fa0473ad3d11346f0443582d80e75f5d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 90ceb2b716df429eaf4541f13cfa96cb9e0eac7d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691128"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745217"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Kopírování dat ze seznamu SharePointu Online pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,8 +55,8 @@ Konektor online seznamu SharePointu používá pro připojení k SharePointu ov�
     1. Otevřete odkaz na web SharePointu Online, např. `https://[your_site_url]/_layouts/15/appinv.aspx` (nahradit tenanta a název lokality).
     2. Vyhledejte ID aplikace, které jste zaregistrovali, vyplňte prázdná pole a klikněte na vytvořit.
 
-        - Doména aplikace: localhost.com
-        - Adresa URL pro přesměrování:https://www.localhost.com
+        - Doména aplikace:`localhost.com`
+        - Adresa URL pro přesměrování:`https://www.localhost.com`
         - XML žádosti o oprávnění:
 
         ```xml
@@ -86,7 +86,7 @@ Pro propojenou službu seznamu SharePointu Online jsou podporovány následujíc
 | servicePrincipalId  | ID aplikace (klienta) aplikace zaregistrované v Azure Active Directory. | Ano          |
 | servicePrincipalKey | Klíč aplikace Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano          |
 | tenantId            | ID tenanta, pod kterým se vaše aplikace nachází.          | Ano          |
-| connectVia          | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace o [požadavcích](#prerequisites)najdete výše v tomto článku. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne           |
+| connectVia          | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace o [požadavcích](#prerequisites)najdete výše v tomto článku. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No           |
 
 **Případě**
 
@@ -148,8 +148,8 @@ Pro kopírování dat ze seznamu SharePointu Online jsou v části **zdroje** ak
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SharePointOnlineListSource**. | Ano |
-| query | Vlastní možnosti dotazů OData pro filtrování dat Příklad: `"$top=10&$select=Title,Number"`. | Ne |
-| httpRequestTimeout | Časový limit (v sekundách), po který má požadavek HTTP získat odpověď. Výchozí hodnota je 300 (5 minut). | Ne |
+| query | Vlastní možnosti dotazů OData pro filtrování dat Příklad: `"$top=10&$select=Title,Number"`. | No |
+| httpRequestTimeout | Časový limit (v sekundách), po který má požadavek HTTP získat odpověď. Výchozí hodnota je 300 (5 minut). | No |
 
 **Příklad**
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 7e4ec8a5772f0fbc1c0e67ba07a172daeac9b91b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5abb373d4b3f9c66b2dc2f103e4a89ef0dc5af89
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657888"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744836"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -40,7 +40,7 @@ Komerční tržiště je výchozím bodem pro spolupráci na trhu a s prodejním
 
 Obchod na komerčním webu je k dispozici v oblastech 141, a to na základě jednotlivých plánů. 
 
-Platbu za daň spravujeme v mnoha zemích a poskytujeme přístup k naší globální síti pro prodejce. Můžete použít zákaznickou smlouvu Microsoftu nebo smlouva Enterprise k prodeji organizacím, aniž byste museli vytvářet novou nákupní relaci.
+Daňová platba se spravuje v mnoha zemích nebo oblastech a poskytujeme přístup k naší globální síti pro prodejce. Můžete použít zákaznickou smlouvu Microsoftu nebo smlouva Enterprise k prodeji organizacím, aniž byste museli vytvářet novou nákupní relaci.
 
 Pokud se chcete dozvědět víc, podívejte se na video při [prodeji přes web Marketplace](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace).
 
@@ -225,7 +225,7 @@ Microsoft AppSource podporuje platby platebními kartami. Azure Marketplace podp
 
 Uživatelský účet musí mít oprávnění *vlastníka* nebo *přispěvatele* v předplatném Azure.
 
-### <a name="in-what-countries-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>V jakých zemích můžou zákazníci nakupovat z Microsoft AppSource a Azure Marketplace?
+### <a name="in-what-countriesregions-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>V jakých zemích nebo oblastech si zákazníci můžou koupit Microsoft AppSource a Azure Marketplace?
 
 Zákazníci mohou získat řešení z komerčního tržiště v 141 místech po celém světě.
 
@@ -262,7 +262,7 @@ Pokud se plán změní pro existující předplatné, termín zůstane beze změ
 
 ### <a name="what-could-block-a-customer-from-completing-a-purchase"></a>Co by mohlo zabránit zákazníkovi v dokončení nákupu?
 
-Pro Microsoft AppSource zákazník musí mít platební kartu s fakturační adresou ve stejné zemi jako její instance Azure AD a správce Azure AD pro zákazníka musí zajistit, aby systém nebránil ověřování Microsoft AppSource.
+Pro Microsoft AppSource zákazník musí mít platební kartu s fakturační adresou ve stejné zemi nebo oblasti jako svou instancí Azure AD a správce Azure AD pro zákazníka musí zajistit, aby systém nebránil ověřování Microsoft AppSource.
 
 Pro Azure Marketplace musí mít zákazník aktivní předplatné Azure a uživatelský účet s oprávněním *vlastníka* nebo *přispěvatele* v tomto předplatném. Správce Azure pro zákazníka musí zajistit, aby Azure Policy nekoliduje s použitou nabídkou a aby se Správa nákladů nemohla zakázat Azure Marketplace.
 

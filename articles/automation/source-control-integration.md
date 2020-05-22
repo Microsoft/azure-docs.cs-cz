@@ -1,31 +1,28 @@
 ---
-title: Integrace správy zdrojového kódu ve službě Azure Automation
-description: Tento článek popisuje integraci správy zdrojového kódu pomocí GitHubu v Azure Automation.
+title: Použití integrace správy zdrojového kódu v Azure Automation
+description: Tento článek obsahuje informace o tom, jak synchronizovat Azure Automation správy zdrojového kódu s jinými úložišti.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 166902978d1641458f18aeee6269c8d819e85233
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248cbd42d86371742ad4985b515d70d022722385
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132932"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744925"
 ---
-# <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
+# <a name="use-source-control-integration"></a>Použití integrace správy zdrojového kódu
 
  Integrace správy zdrojového kódu v Azure Automation podporuje synchronizaci v jednom směru z úložiště správy zdrojového kódu. Správa zdrojového kódu vám umožňuje udržovat vaše Runbooky v účtu Automation v aktuálním stavu pomocí skriptů ve vašem GitHubu nebo Azure Repos úložiště správy zdrojového kódu. Tato funkce usnadňuje zvýšení úrovně kódu, který byl testován ve vašem vývojovém prostředí, do vašeho účtu služby Automation.
  
  Integrace správy zdrojového kódu umožňuje snadnou spolupráci se svým týmem, sledovat změny a vracet se zpět k předchozím verzím runbooků. Například Správa zdrojového kódu umožňuje synchronizovat různé větve ve správě zdrojového kódu pomocí účtů pro vývoj, testování a produkční automatizaci. 
 
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
-
 ## <a name="source-control-types"></a>Typy správy zdrojového kódu
 
 Azure Automation podporuje tři typy správy zdrojového kódu:
 
-* GitHubu
+* GitHub
 * Azure Repos (Git)
 * Azure Repos (TFVC)
 
@@ -33,12 +30,12 @@ Azure Automation podporuje tři typy správy zdrojového kódu:
 
 * Úložiště správy zdrojového kódu (GitHub nebo Azure Repos)
 * [Účet Spustit jako](manage-runas-account.md)
-* [Nejnovější moduly Azure](automation-update-azure-modules.md) v účtu Automation, včetně `Az.Accounts` modulu (AZ Module ekvivalent of) `AzureRM.Profile`
+* [Nejnovější moduly Azure](automation-update-azure-modules.md) v účtu Automation, včetně `Az.Accounts` modulu (AZ Module ekvivalent of `AzureRM.Profile` )
 
 > [!NOTE]
 > Úlohy synchronizace správy zdrojového kódu se spouštějí v účtu Automation uživatele a účtují se stejnou sazbou jako ostatní úlohy automatizace.
 
-## <a name="configuring-source-control"></a>Konfigurace správy zdrojového kódu
+## <a name="configure-source-control"></a>Konfigurovat správu zdrojového kódu
 
 V této části se dozvíte, jak nakonfigurovat správu zdrojového kódu pro váš účet Automation. Můžete použít buď Azure Portal, nebo PowerShell.
 
@@ -90,7 +87,7 @@ New-AzAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accoun
 #### <a name="create-source-control-connection-for-azure-repos-git"></a>Vytvořit připojení správy zdrojového kódu pro Azure Repos (Git)
 
 > [!NOTE]
-> Azure Repos (Git) používá adresu URL, která přistupuje k **dev.Azure.com** místo **VisualStudio.com**, a používá se v dřívějších formátech. Starší formát `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` adresy URL je zastaralý, ale je stále podporován. Doporučuje se nový formát.
+> Azure Repos (Git) používá adresu URL, která přistupuje k **dev.Azure.com** místo **VisualStudio.com**, a používá se v dřívějších formátech. Starší formát adresy URL `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` je zastaralý, ale je stále podporován. Doporučuje se nový formát.
 
 
 ```powershell-interactive
@@ -100,7 +97,7 @@ New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://dev.azure.com/<a
 #### <a name="create-source-control-connection-for-azure-repos-tfvc"></a>Vytvořit připojení správy zdrojového kódu pro Azure Repos (TFVC)
 
 > [!NOTE]
-> Azure Repos (TFVC) používá adresu URL, která přistupuje k **dev.Azure.com** místo **VisualStudio.com**, které se používá v dřívějších formátech. Starší formát `https://<accountname>.visualstudio.com/<projectname>/_versionControl` adresy URL je zastaralý, ale je stále podporován. Doporučuje se nový formát.
+> Azure Repos (TFVC) používá adresu URL, která přistupuje k **dev.Azure.com** místo **VisualStudio.com**, které se používá v dřívějších formátech. Starší formát adresy URL `https://<accountname>.visualstudio.com/<projectname>/_versionControl` je zastaralý, ale je stále podporován. Doporučuje se nový formát.
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
@@ -137,9 +134,9 @@ Následující seznam definuje minimální oprávnění PAT potřebná pro Azure
 | `Work items` | Čtení    |
 | `Service connections` | Číst, dotazovat, spravovat<sup>1</sup>    |
 
-<sup>1</sup> oprávnění `Service connections` je požadováno pouze v případě, že jste povolili automatickou synchronizaci.
+<sup>1</sup> `Service connections` oprávnění je požadováno pouze v případě, že jste povolili automatickou synchronizaci.
 
-## <a name="synchronizing"></a>Synchroniz
+## <a name="synchronize-with-source-control"></a>Synchronizovat se správou zdrojových kódů
 
 Pomocí těchto kroků proveďte synchronizaci se správou zdrojových kódů. 
 
@@ -161,7 +158,7 @@ Pomocí těchto kroků proveďte synchronizaci se správou zdrojových kódů.
     Azure Automation Source Control.
     Supported runbooks to sync: PowerShell Workflow, PowerShell Scripts, DSC Configurations, Graphical, and Python 2.
 
-    Setting AzureRmEnvironment.
+    Setting AzEnvironment.
 
     Getting AzureRunAsConnection.
 
@@ -187,7 +184,7 @@ Pomocí těchto kroků proveďte synchronizaci se správou zdrojových kódů.
 
 6. Další protokolování je k dispozici výběrem možnosti **všechny protokoly** na stránce Souhrn úlohy synchronizace správy zdrojového kódu. Tyto další položky protokolu vám mohou pomoci při řešení problémů, které mohou nastat při použití správy zdrojového kódu.
 
-## <a name="disconnecting-source-control"></a>Odpojuje se Správa zdrojového kódu.
+## <a name="disconnect-source-control"></a>Odpojit správu zdrojového kódu
 
 Odpojení od úložiště správy zdrojového kódu:
 
@@ -197,11 +194,11 @@ Odpojení od úložiště správy zdrojového kódu:
 
 3. Na stránce Souhrn správy zdrojového kódu klikněte na **Odstranit**.
 
-## <a name="handling-encoding-issues"></a>Zpracování potíží s kódováním
+## <a name="handle-encoding-issues"></a>Zpracování potíží s kódováním
 
 Pokud více lidí upravuje Runbooky v úložišti správy zdrojového kódu pomocí různých editorů, může dojít k problémům s kódováním. Další informace o této situaci najdete v tématu [běžné příčiny potíží s kódováním](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
 
-## <a name="updating-the-pat"></a>Aktualizace PAT
+## <a name="update-the-pat"></a>Aktualizace PAT
 
 V současné době nemůžete použít Azure Portal k aktualizaci PAT ve správě zdrojového kódu. Pokud vaše PAT vypršela nebo odvolala, můžete v jednom z těchto způsobů aktualizovat správu zdrojového kódu pomocí nového přístupového tokenu:
 
@@ -210,4 +207,5 @@ V současné době nemůžete použít Azure Portal k aktualizaci PAT ve správ�
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o typech runbooků a jejich výhodách a omezeních najdete v tématu [Azure Automation typy runbooků](automation-runbook-types.md).
+* [Azure Automation: integrace správy zdrojového kódu v Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
+* [Azure Automation: integrace správy zdrojového kódu sady Runbook pomocí Azure DevOps](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  

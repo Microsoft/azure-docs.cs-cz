@@ -9,16 +9,16 @@ ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
 ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 08/13/2019
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 5f81181ac3107307a352cdbcd0b5cc4a555deacb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62723e56bf78a4d80a6e026185d50537fdfa847f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253218"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738888"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Správa hesel aplikací pro dvoustupňové ověřování
 
@@ -42,11 +42,11 @@ Během vašeho počátečního procesu registrace dvou faktorů jste zadali jedn
 
 Můžete vytvářet a odstraňovat hesla aplikací podle toho, jak se používá dvojúrovňové ověřování:
 
-- **Vaše organizace používá dvojúrovňové ověřování a stránku další ověření zabezpečení.** Pokud používáte svůj pracovní nebo školní účet (například, alain@contoso.com) se dvojúrovňovém ověřováním ve vaší organizaci, můžete heslo aplikace spravovat na [stránce další ověření zabezpečení](https://account.activedirectory.windowsazure.com/Proofup.aspx). Podrobné pokyny najdete v tématu [vytváření a odstraňování hesel aplikací pomocí stránky další ověření zabezpečení](#create-and-delete-app-passwords-from-the-additional-security-verification-page) v tomto článku.
+- **Vaše organizace používá dvojúrovňové ověřování a stránku další ověření zabezpečení.** Pokud používáte svůj pracovní nebo školní účet (například, alain@contoso.com ) se dvojúrovňovém ověřováním ve vaší organizaci, můžete heslo aplikace spravovat na [stránce další ověření zabezpečení](https://account.activedirectory.windowsazure.com/Proofup.aspx). Podrobné pokyny najdete v tématu [vytváření a odstraňování hesel aplikací pomocí stránky další ověření zabezpečení](#create-and-delete-app-passwords-from-the-additional-security-verification-page) v tomto článku.
 
-- **Vaše organizace používá dvojúrovňové ověřování a portál Office 365.** Pokud používáte svůj pracovní nebo školní účet (například, alain@contoso.com), dvojúrovňové ověřování a aplikace Office 365 ve vaší organizaci, můžete spravovat hesla aplikací ze [stránky portálu Office 365](https://www.office.com). Podrobné pokyny najdete v tématu [vytváření a odstraňování hesel aplikací pomocí portálu Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) v tomto článku.
+- **Vaše organizace používá dvojúrovňové ověřování a portál Office 365.** Pokud používáte svůj pracovní nebo školní účet (například, alain@contoso.com ), dvojúrovňové ověřování a aplikace Office 365 ve vaší organizaci, můžete spravovat hesla aplikací ze [stránky portálu Office 365](https://www.office.com). Podrobné pokyny najdete v tématu [vytváření a odstraňování hesel aplikací pomocí portálu Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) v tomto článku.
 
-- **Používáte dvojúrovňové ověřování s osobní účet Microsoft.** Pokud používáte osobní účet Microsoft (například, alain@outlook.com) se dvojúrovňovém ověřováním, můžete na [stránce základy zabezpečení](https://account.microsoft.com/security/)spravovat hesla aplikací. Podrobné pokyny najdete v tématu [používání hesel aplikací s aplikacemi, které nepodporují dvoustupňové ověřování](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
+- **Používáte dvojúrovňové ověřování s osobní účet Microsoft.** Pokud používáte osobní účet Microsoft (například, alain@outlook.com ) se dvojúrovňovém ověřováním, můžete na [stránce základy zabezpečení](https://account.microsoft.com/security/)spravovat hesla aplikací. Podrobné pokyny najdete v tématu [používání hesel aplikací s aplikacemi, které nepodporují dvoustupňové ověřování](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
 
 ## <a name="create-and-delete-app-passwords-from-the-additional-security-verification-page"></a>Vytváření a odstraňování hesel aplikací ze stránky další ověření zabezpečení
 

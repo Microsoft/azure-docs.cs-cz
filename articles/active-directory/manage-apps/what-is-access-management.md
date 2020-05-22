@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489b15423add03d69070bc32057af97396a85309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a694c9f6fc9d3a0b7e73c1565501915aa1470bc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409062"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739821"
 ---
 # <a name="managing-access-to-apps"></a>Správa přístupu k aplikacím
 
@@ -78,7 +78,7 @@ S Azure AD je možné předem nakonfigurovat aplikace, jako je Salesforce, jedno
 
 V tomto případě se všichni přiřazení uživatelé automaticky zřídí do Salesforce, protože se přidají do různých skupin. jejich přiřazení role by se v Salesforce aktualizovala. Uživatelé by mohli zjišťovat a přistupovat k Salesforce prostřednictvím panelu pro přístup k aplikacím Microsoftu, webových klientů Office, nebo dokonce přechodem na přihlašovací stránku organizace Salesforce. Správci by mohli snadno zobrazit využití a stav přiřazení pomocí generování sestav Azure AD.
 
-Správci můžou využít [podmíněný přístup Azure AD](../active-directory-conditional-access-azure-portal.md) k nastavení zásad přístupu pro konkrétní role. Tyto zásady můžou zahrnovat, jestli je povolený přístup mimo podnikové prostředí, a dokonce i Multi-Factor Authentication nebo požadavky na zařízení pro zajištění přístupu v různých případech.
+Správci můžou využít [podmíněný přístup Azure AD](../conditional-access/concept-conditional-access-users-groups.md) k nastavení zásad přístupu pro konkrétní role. Tyto zásady můžou zahrnovat, jestli je povolený přístup mimo podnikové prostředí, a dokonce i Multi-Factor Authentication nebo požadavky na zařízení pro zajištění přístupu v různých případech.
 
 ## <a name="access-to-microsoft-applications"></a>Přístup k aplikacím Microsoftu
 
@@ -97,5 +97,5 @@ Uživatelé můžou k aplikacím Office 365 přistupovat prostřednictvím svýc
 Stejně jako u podnikových aplikací můžete [přiřadit uživatele](assign-user-or-group-access-portal.md) k určitým aplikacím microsoftu prostřednictvím Azure Portal nebo, pokud možnost portálu není dostupná, pomocí PowerShellu.
 
 ## <a name="next-steps"></a>Další kroky
-* [Ochrana aplikací pomocí podmíněného přístupu](../active-directory-conditional-access-azure-portal.md)
+* [Ochrana aplikací pomocí podmíněného přístupu](../conditional-access/concept-conditional-access-cloud-apps.md)
 * [Samoobslužná správa skupin/SSAA](../users-groups-roles/groups-self-service-management.md)

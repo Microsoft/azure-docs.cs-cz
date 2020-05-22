@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: eb91e498fa757c5cec7bd466c60aaf7e8758304c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791472"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744566"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Terminologie a běžné otázky ke komerčním analýzám na webu Marketplace
 
@@ -48,20 +48,20 @@ Pokud obdržíte tuto zprávu, znamená to, že máte analytická data, ale pro 
 | Název cloudové instance| Objednání| Microsoft Cloud, ve kterém došlo k nasazení virtuálního počítače.||
 | Název instance cloudu: globální Azure| Objednání| Veřejný globální Cloud Microsoftu.|| |
 | Název instance cloudu: Azure Government | Objednání| Cloudy Microsoftu pro konkrétní státní správu pro jednu z následujících vlád: Čína, Německo nebo USA v Americe.| |
-| Město zákazníka| Zákazník| Název města, který zadal zákazník. Město může být jiné než město v předplatném Azure zákazníka.||
-| Jazyk zákaznické komunikace  | Zákazník| Jazyk upřednostňovaný zákazníkem pro komunikaci.||
+| Město zákazníka| Customer (Zákazník)| Název města, který zadal zákazník. Město může být jiné než město v předplatném Azure zákazníka.||
+| Jazyk zákaznické komunikace  | Customer (Zákazník)| Jazyk upřednostňovaný zákazníkem pro komunikaci.||
 | Název společnosti zákazníka | Zákazník, objednávka | Název společnosti poskytnutý zákazníkem Název může být jiný než město v předplatném Azure zákazníka.|  |
-| Země zákazníka | Zákazník, objednávka | Název země, kterou zadal zákazník. Země by mohla být jiná než země v předplatném Azure zákazníka.|  |
-| E-mail zákazníka| Zákazník| E-mailová adresa poskytnutá koncovým zákazníkem E-mail může být jiný než e-mailová adresa v předplatném Azure zákazníka.||
-| Křestní jméno zákazníka| Zákazník| Název zadaný zákazníkem Název může být jiný než název uvedený v předplatném Azure zákazníka.| |
+| Země nebo oblast zákazníka | Zákazník, objednávka | Název země nebo oblasti, kterou zadal zákazník. Země nebo oblast se může lišit od země nebo oblasti v předplatném Azure zákazníka.|  |
+| E-mail zákazníka| Customer (Zákazník)| E-mailová adresa poskytnutá koncovým zákazníkem E-mail může být jiný než e-mailová adresa v předplatném Azure zákazníka.||
+| Křestní jméno zákazníka| Customer (Zákazník)| Název zadaný zákazníkem Název může být jiný než název uvedený v předplatném Azure zákazníka.| |
 | ID zákazníka | Zákazník, objednávka | Jedinečný identifikátor přiřazený k zákazníkovi. Zákazník může mít nula nebo více Azure Marketplace předplatných.|  |
-| Poštovní směrovací číslo zákazníka  | Zákazník| Poštovní směrovací číslo poskytnuté zákazníkem Kód může být jiný než poštovní směrovací číslo poskytované v rámci předplatného Azure zákazníka.| |
-| Stav zákazníka| Zákazník| Stav (adresa) poskytovaný zákazníkem. Stav může být jiný než stav uvedený v předplatném Azure zákazníka.| |
-| Datum získání| Zákazník| První datum, kdy si zákazník koupil jakoukoli nabídku publikovanou vámi| |
-| Datum ztráty| Zákazník| Poslední datum, kdy zákazník zrušil poslední z předchozích nabídek, byl zakoupen.||
+| Poštovní směrovací číslo zákazníka  | Customer (Zákazník)| Poštovní směrovací číslo poskytnuté zákazníkem Kód může být jiný než poštovní směrovací číslo poskytované v rámci předplatného Azure zákazníka.| |
+| Stav zákazníka| Customer (Zákazník)| Stav (adresa) poskytovaný zákazníkem. Stav může být jiný než stav uvedený v předplatném Azure zákazníka.| |
+| Datum získání| Customer (Zákazník)| První datum, kdy si zákazník koupil jakoukoli nabídku publikovanou vámi| |
+| Datum ztráty| Customer (Zákazník)| Poslední datum, kdy zákazník zrušil poslední z předchozích nabídek, byl zakoupen.||
 | Je nový zákazník  | Objednání| Tato hodnota identifikuje nového zákazníka, který získá jednu nebo více nabídek poprvé (nebo ne). Hodnota bude "Ano", pokud se nachází ve stejném kalendářním měsíci pro "datum získání". Pokud zákazník zakoupil nějaké nabídky před nahlášeným kalendářním měsícem, bude hodnota "ne". |
 | Je verze Preview SKU| Objednání| Tato hodnota vám umožní zjistit, jestli jste SKU označili jako "Preview". Hodnota bude "Ano", pokud je odpovídajícím způsobem označena skladová jednotka a pouze předplatná Azure, která jsou autorizována, můžete nasadit a použít tuto bitovou kopii. Pokud nebyla položka SKU identifikována jako "Preview", bude hodnota "ne".  |
-| Je propagační kontaktní osoba v| Zákazník| Tato hodnota vám umožní zjistit, jestli se zákazník aktivně přihlásil k propagačnímu kontaktu od vydavatelů. V tuto chvíli Neprezentujeme možnost pro zákazníky, takže jsme na vývěsce uvedli "ne". Po nasazení této funkce se odpovídajícím způsobem spustí aktualizace.|
+| Je propagační kontaktní osoba v| Customer (Zákazník)| Tato hodnota vám umožní zjistit, jestli se zákazník aktivně přihlásil k propagačnímu kontaktu od vydavatelů. V tuto chvíli Neprezentujeme možnost pro zákazníky, takže jsme na vývěsce uvedli "ne". Po nasazení této funkce se odpovídajícím způsobem spustí aktualizace.|
 | Typ licence Marketplace| Objednání| Způsob fakturace nabídky Marketplace||
 | Typ licence Marketplace: účtuje se přes Azure.| Objednání| Microsoft je vaším agentem pro tuto nabídku na webu Marketplace a účtuje zákazníky vaším jménem. (Buď platební karta PAYG, nebo faktura na podnikové straně)||
 | Typ licence Marketplace: Přineste si vlastní licenci | Objednání| Virtuální počítač vyžaduje k nasazení licenční klíč poskytnutý zákazníkem. Společnost Microsoft si neúčtuje zákazníky, kteří si tyto nabídky na webu Marketplace dostanou.||
@@ -87,8 +87,8 @@ Pokud obdržíte tuto zprávu, znamená to, že máte analytická data, ale pro 
 | Order Status| Objednání| Stav objednávky Marketplace v době poslední aktualizace dat.|     |
 | Stav objednávky: aktivní  | Objednání| Zákazník zakoupil objednávku a nezrušil jejich pořadí.|         |
 | Stav objednávky: zrušeno | Objednání| Zákazník si předtím koupil objednávku a následně zrušil jejich pořadí.||
-| E-mail poskytovatele| Zákazník| E-mailová adresa poskytovatele zapojená v relaci mezi společností Microsoft a koncovým zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP.|
-| Název zprostředkovatele| Zákazník| Název zprostředkovatele zapojeného v relaci mezi společností Microsoft a koncovým zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP.|
+| E-mail poskytovatele| Customer (Zákazník)| E-mailová adresa poskytovatele zapojená v relaci mezi společností Microsoft a koncovým zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP.|
+| Název zprostředkovatele| Customer (Zákazník)| Název zprostředkovatele zapojeného v relaci mezi společností Microsoft a koncovým zákazníkem. Pokud zákazník je podnikem prostřednictvím prodejce, bude to prodejce. Pokud se jedná o poskytovatele Cloud Solution Provider (CSP), bude to CSP.|
 | Skladová jednotka (SKU)| Objednání| Název SKU, jak je definovaný během publikování. Nabídka může mít mnoho SKU, ale SKU může být přidruženo pouze k jedné nabídce.||
 | Datum ukončení zkušební verze| Objednání| Datum ukončení zkušebního období pro tuto objednávku skončí nebo skončí.||
 

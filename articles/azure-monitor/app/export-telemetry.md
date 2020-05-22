@@ -2,16 +2,20 @@
 title: Průběžný export telemetrie z Application Insights | Microsoft Docs
 description: Exportujte data o využití a diagnostiku do úložiště v Microsoft Azure a Stáhněte si z něj.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: f6afe42e483ab7ad5810169fc301946c75308c29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298290"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744863"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chcete udržet telemetrii déle než standardní doba uchovávání? Nebo ji zpracujete specializovaným způsobem? Pro tuto dobu je ideální pro průběžný export. Události, které vidíte na portálu Application Insights, se dají exportovat do úložiště v Microsoft Azure ve formátu JSON. Odtud si můžete stáhnout svá data a napsat kód, který budete potřebovat k jeho zpracování.  
+
+> [!NOTE]
+> Průběžný export se podporuje jenom pro klasické prostředky Application Insights. [Prostředky Application Insights založené na pracovním prostoru](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource) musí používat [nastavení diagnostiky](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry).
+>
 
 Před nastavením průběžného exportu je možné zvážit několik možností:
 
@@ -55,10 +59,10 @@ Může to trvat přibližně hodinu, než se data objeví v úložišti.
 
 Po dokončení prvního exportu najdete v kontejneru úložiště objektů BLOB v Azure strukturu podobnou následující: (Tato operace se bude lišit v závislosti na shromažďovaných datech.)
 
-|Název | Popis |
+|Name | Popis |
 |:----|:------|
 | [Dostupnost](export-data-model.md#availability) | Oznamuje [webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).  |
-| [Událostí](export-data-model.md#events) | Vlastní události generované [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent). 
+| [Událost](export-data-model.md#events) | Vlastní události generované [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent). 
 | [Výjimky](export-data-model.md#exceptions) |Oznamuje [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na serveru a v prohlížeči.
 | [Zprávy](export-data-model.md#trace-messages) | Odesílá [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)a [adaptéry protokolování](../../azure-monitor/app/asp-net-trace-logs.md).
 | [Metriky](export-data-model.md#metrics) | Vygenerováno voláními rozhraní API metriky.
@@ -128,7 +132,7 @@ Doba trvání se nachází v taktech, kde 10 000 taktes = 1 ms. Například tyto
 [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Zpracování dat
-V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Příklad:
+V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Například:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -181,7 +185,7 @@ V případě větších škálování zvažte clustery [HDInsight](https://azure
     Ne, je nám líto. Náš Exportní modul v tuto chvíli funguje jenom s Azure Storage.  
 * *Existuje nějaké omezení množství dat, které jste umístili do Storu?*
 
-    Ne. Data budeme uchovávat, dokud neodstraníte export. Zastavíme se, pokud máme vnější omezení pro úložiště objektů blob, ale to je poměrně velké. Můžete určit, kolik úložiště používáte.  
+    No. Data budeme uchovávat, dokud neodstraníte export. Zastavíme se, pokud máme vnější omezení pro úložiště objektů blob, ale to je poměrně velké. Můžete určit, kolik úložiště používáte.  
 * *Kolik objektů BLOB se má v úložišti zobrazit?*
 
   * Pro každý datový typ, který jste vybrali k exportu, se vytvoří nový objekt BLOB každou minutu (pokud jsou k dispozici data).
@@ -191,7 +195,7 @@ V případě větších škálování zvažte clustery [HDInsight](https://azure
     Upravte export a otevřete kartu exportovat cíl. ponechte stejné úložiště jako předtím a kliknutím na OK potvrďte. Export se restartuje. Pokud byla změna během posledních několika dní, ztratíte data.
 * *Můžu pozastavit export?*
 
-    Ano. Klikněte na Zakázat.
+    Yes. Klikněte na Zakázat.
 
 ## <a name="code-samples"></a>Ukázky kódů
 

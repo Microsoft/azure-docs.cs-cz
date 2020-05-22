@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7de57c9a69e60e8c342e067ff1e95a0f2cfadec8
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: f975abcd05b92dd57eb736f076b63c88b4bf6769
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699318"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747263"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
 
@@ -258,9 +258,14 @@ Zadejte adresu URL webové stránky konfigurace, která umožňuje zákazníkovi
 
 ### <a name="crm-package"></a>Balíček CRM
 
-Do pole **Adresa URL umístění balíčku** zadejte adresu URL Azure Storage účtu, který obsahuje nahraný soubor. zip balíčku CRM. Tato adresa URL by měla obsahovat klíč SAS s oprávněními jen pro čtení, který umožňuje Microsoftu vyzvednutí balíčku pro ověření.
+V poli **URL umístění balíčku** zadejte adresu URL účtu Azure Blob Storage, který obsahuje nahraný soubor. zip balíčku CRM. Zahrňte do adresy URL klíč SAS, který je jen pro čtení, aby Microsoft mohl vyzvednutí vašeho balíčku na ověření.
 
-Zaškrtněte políčko s názvem **v souboru balíčku je více než jeden balíček CRM, pokud je k**dispozici. Pokud ano, nezapomeňte zahrnout všechny balíčky v souboru. zip.
+> [!IMPORTANT]
+> Aby se zabránilo publikačnímu bloku, ujistěte se, že platnost data vypršení platnosti v adrese URL úložiště objektů BLOB vypršela. Datum můžete upravit přístupem k zásadám. **Doba vypršení platnosti** doporučujeme v budoucnu aspoň jeden měsíc.
+
+Zaškrtněte políčko s označením **v souboru balíčku je více než jeden balíček CRM, pokud je k**dispozici. Pokud ano, nezapomeňte zahrnout všechny balíčky v souboru. zip.
+
+Podrobné informace o tom, jak sestavit balíček a aktualizovat jeho strukturu, najdete v [kroku 3: vytvoření balíčku AppSource pro vaši aplikaci](https://docs.microsoft.com/powerapps/developer/common-data-service/create-package-app-appsource).
 
 ### <a name="crm-package-availability"></a>Dostupnost balíčku CRM
 

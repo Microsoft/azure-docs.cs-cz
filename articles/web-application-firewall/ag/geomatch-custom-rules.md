@@ -7,27 +7,27 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdb115cf6d0f0aa2c55f6143015a323df6faa114
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76961085"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744307"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Vlastní pravidla pro neshodu (Preview)
 
 Vlastní pravidla umožňují vytvářet přizpůsobená pravidla tak, aby vyhovovala přesným potřebám vašich aplikací a zásad zabezpečení. Nyní můžete omezit přístup k vašim webovým aplikacím podle země nebo oblasti. Stejně jako u všech vlastních pravidel může být tato logika složená s jinými pravidly, aby vyhovovala potřebám vaší aplikace.
 
-Pokud chcete vytvořit vlastní pravidlo geografického filtrování, stačí jako typ shody vybrat *geografickou polohu* a pak vybrat země nebo země, které chcete v aplikaci zablokovat/blokovat. Další informace najdete [v tématu Vytvoření vlastních pravidel v PowerShellu](configure-waf-custom-rules.md) a více příkladů vlastních pravidel (Create-Custom-waf-Rules.MD).
+Pokud chcete vytvořit vlastní pravidlo geografického filtrování, stačí jako typ shody vybrat *geografickou polohu* a pak vybrat zemi/oblast nebo země/oblasti, které chcete v aplikaci zablokovat nebo blokovat. Další informace najdete [v tématu Vytvoření vlastních pravidel v PowerShellu](configure-waf-custom-rules.md) a více příkladů vlastních pravidel (Create-Custom-waf-Rules.MD).
 
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="country-codes"></a>Kódy zemí
+## <a name="countryregion-codes"></a>Kódy zemí a oblastí
 
-Pokud používáte operátor geografického porovnávání, mohou být selektory libovolné z následujících dvoumístné kódů zemí. 
+Pokud používáte operátor geografického porovnávání, selektory můžou být libovolnými dvěma číslicemi kódů země/oblasti. 
 
-|Kód země | Název země |
+|Kód země/oblasti | Název země nebo oblasti |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Spojené arabské emiráty|
@@ -95,7 +95,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | GR | Řecko|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hongkong – zvláštní správní oblast|
+| HK | Hongkong – zvláštní administrativní oblast|
 | HN | Honduras|
 | HR | Chorvatsko|
 | HT | Haiti|
@@ -147,7 +147,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | MX | Mexiko|
 | MY | Malajsie|
 | MZ | Mosambik|
-| Není k dispozici | Namibie|
+| NA | Namibie|
 | NE | Niger|
 | NG | Nigérie|
 | NI | Nikaragua|
@@ -185,7 +185,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | SV | Salvador|
 | SY | Syrská arabská republika|
 | SZ | Svazijsko|
-| TC | Turks a Caicos|
+| TC | Ostrovy Turks a Caicos|
 | TG | Togo|
 | TH | Thajsko|
 | TN | Tunisko|
@@ -195,7 +195,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | TZ | Sjednocená tanzanská republika|
 | UA | Ukrajina|
 | UG | Uganda|
-| USA | Spojené státy|
+| USA | USA|
 | UY | Uruguay|
 | UZ | Uzbekistán|
 | VC | Svatý Vincenc a Grenadiny|

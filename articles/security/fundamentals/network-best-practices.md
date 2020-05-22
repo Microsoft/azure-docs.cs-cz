@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e64873cc2e7779c4d931018fd16bdca08596aa2
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548306"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757819"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Osvědčené postupy pro Azure pro zabezpečení sítě
 Tento článek popisuje shromažďování osvědčených postupů Azure pro vylepšení zabezpečení sítě. Tyto osvědčené postupy se odvozují z našich zkušeností s používáním sítí Azure a zkušeností zákazníků, jako je sami.
@@ -74,7 +74,7 @@ Sítě se musí vyvíjet z tradičních obran, protože sítě mohou být zranit
 Osvědčené postupy:
 
 **Osvědčený postup**: Poskytněte podmíněný přístup k prostředkům na základě zařízení, identity, záruky, umístění v síti a dalších.  
-**Podrobnosti**: [podmíněný přístup Azure AD](/azure/active-directory/conditional-access/overview) umožňuje použít správný ovládací prvky přístupu implementací automatického rozhodování o řízení přístupu na základě požadovaných podmínek. Další informace najdete v tématu [Správa přístupu ke správě Azure pomocí podmíněného přístupu](../../role-based-access-control/conditional-access-azure-management.md).
+**Podrobnosti**: [podmíněný přístup Azure AD](../../active-directory/conditional-access/overview.md) umožňuje použít správný ovládací prvky přístupu implementací automatického rozhodování o řízení přístupu na základě požadovaných podmínek. Další informace najdete v tématu [Správa přístupu ke správě Azure pomocí podmíněného přístupu](../../active-directory/conditional-access/howto-conditional-access-policy-azure-management.md).
 
 **Osvědčený postup**: Povolte přístup k portu jenom po schválení pracovního postupu.  
 **Podrobnosti**: k uzamknutí příchozího provozu do virtuálních počítačů Azure můžete použít [přístup k virtuálnímu počítači za běhu v Azure Security Center](../../security-center/security-center-just-in-time.md) . tím se sníží vystavení útokům a zároveň se vám umožní snadný přístup k virtuálním počítačům v případě potřeby.

@@ -3,12 +3,12 @@ title: Přehled zálohování offline
 description: Přečtěte si informace o komponentách offline zálohování. Zahrnují zálohování offline na základě Azure Data Box a offline zálohování založeného na službě Azure import/export.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: a33810c633d8c7ca79c559355935d3c11853bc0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160917"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744645"
 ---
 # <a name="overview-of-offline-backup"></a>Přehled zálohování offline
 
@@ -73,11 +73,11 @@ Následující tabulka porovnává dvě dostupné možnosti, abyste mohli vhodn�
 | Zabezpečení (data, zařízení a služba)                           | [Data](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) -AES 256-bit šifrováno <br> [Zařízení](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) – robustní – proprietární, rozhraní založené na přihlašovacích údajích ke kopírování dat <br> Funkce zabezpečení Azure, které jsou chráněné [službou](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) | Data – šifrovaný BitLocker                                 |
 | Dočasné zřízení pracovního umístění                     | Není požadováno                                                | Větší než nebo rovna odhadované velikosti zálohovaných dat        |
 | Podporované oblasti                                           | [Azure Data Box oblasti disku](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box oblasti](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Oblasti služeb importu a exportu v Azure](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
-| Expedice mezi země                                     | Nepodporuje se  <br>    Zdrojová adresa a cílové datacentrum Azure musí být ve stejné zemi *. | Podporuje se                                                    |
+| Expedice mezi země                                     | Nepodporuje se  <br>    Zdrojová adresa a cílové datacentrum Azure musí být ve stejné zemi nebo oblasti *. | Podporuje se                                                    |
 | Logistika přenosů (doručení, přeprava, vyzvednutí)           | Plně spravované Microsoftem                                     | Spravované zákazníkem                                            |
 | Ceny                                                      | [Ceny Azure Data Box](https://azure.microsoft.com/pricing/details/databox/) <br> [Ceny Azure Data Box disku](https://azure.microsoft.com/pricing/details/databox/disk/) | [Ceny za službu import/export v Azure](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 
-* Pokud vaše země nemá datové centrum Azure, musíte disky dodávat do datacentra Azure v jiné zemi.
+* Pokud vaše země nebo oblast nemá datové centrum Azure, musíte disky dodávat do datacentra Azure v jiné zemi nebo oblasti.
 
 ## <a name="next-steps"></a>Další kroky
 

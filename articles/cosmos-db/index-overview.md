@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 921a11d8846c868436365fe400852eac0f7dcd3e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: fb3467e60ada92c90a84d8e89f6b5f5e94ca42e8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712090"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746428"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – Přehled
 
@@ -179,7 +179,7 @@ Pokud jeden predikát filtru používá jeden z druhů indexů, nástroj pro dot
 
 Cesty extrahované při indexování dat usnadňují vyhledání indexu při zpracování dotazu. Porovnáním `WHERE` klauzule dotazu se seznamem indexovaných cest je možné identifikovat položky, které odpovídají predikátu dotazu velmi rychle.
 
-Zvažte například následující dotaz: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Predikát dotazu (filtrování položek, kde jakékoli umístění má "France" jako země), by odpovídala cestě zvýrazněné červeně:
+Zvažte například následující dotaz: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Predikát dotazu (filtrování položek, kde jakékoli umístění má "Francie" jako země nebo oblast) by odpovídala cestě zvýrazněné červeně:
 
 ![Odpovídá konkrétní cestě v rámci stromu.](./media/index-overview/matching-path.png)
 

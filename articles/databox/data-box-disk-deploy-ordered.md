@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 91177c67c9d24f73934381704bca8259af31adca
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e7ab15749ccd4ef2808e9cbb362196e38e3d7f4b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858635"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746083"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Kurz: seřazení Azure Data Box Disk
 
@@ -23,6 +23,7 @@ Azure Data Box Disk je řešení hybridního cloudu, které vám umožňuje rych
 Tento kurz popisuje, jak Azure Data Box Disk objednat. V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
+>
 > * Objednání služby Data Box Disk
 > * Sledování objednávky
 > * Zrušení objednávky
@@ -38,21 +39,22 @@ Před nasazením nástroje dokončete následující požadavky na konfiguraci p
 ### <a name="for-device"></a>Zařízení
 
 Než začnete, ujistěte se, že:
-- Máte k dispozici klientský počítač, ze kterého můžete kopírovat data. Klientský počítač musí splňovat tyto požadavky:
-    - Spusťte [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
-    - Musí na něm být nainstalovaný [požadovaný software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients), pokud jde o klienta pro Windows.  
+
+* Máte k dispozici klientský počítač, ze kterého můžete kopírovat data. Klientský počítač musí splňovat tyto požadavky:
+  * Spusťte [podporovaný operační systém](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+  * Musí na něm být nainstalovaný [požadovaný software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients), pokud jde o klienta pro Windows.  
 
 ## <a name="order-data-box-disk"></a>Objednání služby Data Box Disk
 
 Přihlásit se k:
 
-- Azure Portal na této adrese URL: https://portal.azure.com pro objednání data box disk.
-- Nebo Azure Government portál na této adrese URL: https://portal.azure.us. Další podrobnosti najdete na webu [připojení k Azure Government pomocí portálu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+* Azure Portal na této adrese URL: https://portal.azure.com pro objednání data box disk.
+* Nebo Azure Government portál na této adrese URL: https://portal.azure.us . Další podrobnosti najdete na webu [připojení k Azure Government pomocí portálu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 Pro objednání Data Box Disk proveďte následující kroky.
 
 1. V levém horním rohu portálu klikněte na **+ Vytvořit prostředek** a vyhledejte *Azure Data Box*. Klikněte na **Azure Data Box**.
-    
+
    ![Vyhledání Azure Data Box 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
 2. Klikněte na **Vytvořit**.
@@ -65,15 +67,14 @@ Pro objednání Data Box Disk proveďte následující kroky.
     |---|---|
     |Předplatné|Vyberte předplatné, pro které je služba Data Box povolena.<br> Předplatné je propojeno s vaším fakturačním účtem. |
     |Typ přenosu| Import do Azure|
-    |Zdrojová země | Vyberte zemi nebo oblast, ve které jsou data aktuálně umístěná.|
+    |Zdrojová země/oblast | Vyberte zemi nebo oblast, ve které jsou data aktuálně umístěná.|
     |Cílová oblast Azure|Vyberte oblast Azure, do které chcete data přenést.|
-
   
-5.  Vyberte **Data Box Disk**. Maximální kapacita řešení u jedné objednávky 5 disků je 35 TB. V případě větších objemů dat můžete vytvořit více objednávek.
+4. Vyberte **Data Box Disk**. Maximální kapacita řešení u jedné objednávky 5 disků je 35 TB. V případě větších objemů dat můžete vytvořit více objednávek.
 
      ![Možnost výběru služby Data Box Disk](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
-6.  V části **Objednávka** zadejte **Podrobnosti objednávky**. Zadejte nebo vyberte následující informace.
+5. V části **Objednávka** zadejte **Podrobnosti objednávky**. Zadejte nebo vyberte následující informace.
 
     |Nastavení|Hodnota|
     |---|---|
@@ -98,33 +99,34 @@ Pro objednání Data Box Disk proveďte následující kroky.
 
     Účet úložiště zadaný pro spravované disky slouží jako přípravný účet úložiště. Služba Data Box nahrává virtuální pevné disky do přípravného účtu úložiště a pak je převede na spravované disky a přesune se do skupin prostředků. Další informace najdete v tématu popisujícím [ověření nahrání dat do Azure](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure).
 
-13. Klikněte na **Další**.
+6. Klikněte na **Další**.
 
     ![Zadání podrobností objednávky](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
-14. Na kartě **Dodací adresa** zadejte jméno a příjmení, název a poštovní adresu společnosti a platné telefonní číslo. Klikněte na **Ověřit adresu**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení. Zákazníci, kteří používají službu v Japonsku, Singapuru, Koreji a Západní Evropa mají možnost při umisťování objednávky vybrat samostatně spravovanou expedici. Po úspěšném dokončení objednávky obdržíte e-mail s pokyny, jak zařízení vybrat z určeného datacentra Azure.
+7. Na kartě **Dodací adresa** zadejte jméno a příjmení, název a poštovní adresu společnosti a platné telefonní číslo. Klikněte na **Ověřit adresu**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení.
+
+   Po zpracování objednávky obdržíte e-mailové oznámení. Další informace o samoobslužném expedici najdete v tématu [použití samostatně spravovaného expedice](data-box-disk-portal-customer-managed-shipping.md).
 
     ![Zadání dodací adresy](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
-15. Na kartě **Podrobnosti o oznámení** zadejte e-mailové adresy. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky. 
+8. Na kartě **Podrobnosti o oznámení** zadejte e-mailové adresy. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
 
     Doporučujeme použít skupinový e-mail, abyste oznámení mohli dostávat i tehdy, když odejde správce skupiny.
 
-16. Na kartě **Souhrn** zkontrolujte informace týkající se objednávky, kontaktu, oznámení a podmínkách ochrany osobních údajů. Zaškrtněte políčko, že souhlasíte s podmínkami ochrany osobních údajů.
+9. Na kartě **Souhrn** zkontrolujte informace týkající se objednávky, kontaktu, oznámení a podmínkách ochrany osobních údajů. Zaškrtněte políčko, že souhlasíte s podmínkami ochrany osobních údajů.
 
-17. Klikněte na **Objednat**. Vytvoření objednávky trvá několik minut.
+10. Klikněte na **Objednat**. Vytvoření objednávky trvá několik minut.
 
- 
 ## <a name="track-the-order"></a>Sledování objednávky
 
 Po odeslání objednávky můžete její stav sledovat na webu Azure Portal. Přejděte na objednávku a potom do části **Přehled**, kde se můžete podívat na stav. Na portálu se úloha zobrazuje ve stavu **Objednáno**.
 
-![Služba Data Box Disk ve stavu Objednáno](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
+![Služba Data Box Disk ve stavu Objednáno](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png)
 
 Pokud disky nejsou k dispozici, obdržíte oznámení. Pokud jsou disky k dispozici, Microsoft určí disky k odeslání a připraví balíček s disky. Při přípravě disků dojde k těmto akcím:
 
-- Disky se zašifrují pomocí šifrování AES-128 nástrojem BitLocker.  
-- Disky jsou uzamknuty, aby se zabránilo neoprávněnému přístupu k nim.
-- Během tohoto procesu se vygeneruje klíč k odemknutí disků.
+* Disky se zašifrují pomocí šifrování AES-128 nástrojem BitLocker.  
+* Disky jsou uzamknuty, aby se zabránilo neoprávněnému přístupu k nim.
+* Během tohoto procesu se vygeneruje klíč k odemknutí disků.
 
 Jakmile budou disky připraveny, stav objednávky na portálu se změní na **Zpracováno**.
 
@@ -134,18 +136,18 @@ Microsoft potom připraví a odešle disky přes místní přepravní službu. P
 
 Pokud chcete tuto objednávku zrušit, přejděte na webu Azure Portal do části **Přehled** a na panelu příkazů klikněte na **Zrušit**.
 
-Objednávku můžete zrušit pouze při objednávání disků a při zpracování objednávky k odeslání. Jakmile je objednávka zpracována, už ji nelze zrušit.
+Zrušit můžete pouze v případě, že jsou disky objednány a objednávka je zpracovávána pro expedici. Jakmile je objednávka zpracována, už ji nelze zrušit.
 
 ![Zrušení objednávky](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
 Pokud chcete odstranit zrušenou objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
-
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
+>
 > * Objednání služby Data Box Disk
 > * Sledování objednávky
 > * Zrušení objednávky

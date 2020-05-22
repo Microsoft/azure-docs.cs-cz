@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 5a7f0e10b23bf1a541fe83c3112962c38f7e1331
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47220bc721092005c7e4d65a00eb933cd5c49a8c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062553"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746763"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Co je stránka pro dodatečné ověření?
 
@@ -24,18 +24,18 @@ Od někoho z IT nebo od šéfa jste dostali e-mail s informací, že k vašemu �
 Dvojúrovňové ověřování je bezpečnější než heslo, protože spoléhá na dvě formy ověřování: něco, co znáte, a něco, co s vámi máte. Něco, co znáte, je vaše heslo. Něco, co máte u sebe, je telefon nebo zařízení, které běžně nosíte. Dvojúrovňové ověřování může přispět k zastavení škodlivého hackera před tím, než budete mít v úmyslu, protože i když mají heslo, lichá, že nemají vaše zařízení.
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí použít dvojúrovňové ověřování pomocí pracovního nebo školního účtu (například, alain@contoso.com). Pokud jste správcem a hledáte informace o tom, jak zapnout dvojúrovňové ověřování pro zaměstnance nebo jiné uživatele, přečtěte si [dokumentaci k ověřování Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/).
+>Tento článek je určený pro uživatele, kteří se pokoušejí použít dvojúrovňové ověřování pomocí pracovního nebo školního účtu (například, alain@contoso.com ). Pokud jste správcem a hledáte informace o tom, jak zapnout dvojúrovňové ověřování pro zaměstnance nebo jiné uživatele, přečtěte si [dokumentaci k ověřování Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/).
 
 ## <a name="who-decides-if-you-use-this-feature"></a>Kdo se rozhodne, jestli tuto funkci používáte?
 
 V závislosti na typu účtu může vaše organizace rozhodnout, že je nutné použít dvojúrovňové ověřování, nebo se můžete rozhodnout sami.
 
-- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (například alain@contoso.com), je to až do vaší organizace bez ohledu na to, jestli musíte použít dvojúrovňové ověřování společně s konkrétními metodami ověřování. Vzhledem k tomu, že vaše organizace rozhodla použít tuto funkci, neexistuje způsob, jak ji individuálně vypnout.
+- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (například alain@contoso.com ), je to až do vaší organizace bez ohledu na to, jestli musíte použít dvojúrovňové ověřování společně s konkrétními metodami ověřování. Vzhledem k tomu, že vaše organizace rozhodla použít tuto funkci, neexistuje způsob, jak ji individuálně vypnout.
 
-- **Osobní účet Microsoft.** Pro osobní účty Microsoft (například alain@outlook.com) si můžete nastavit dvojúrovňové ověřování. Pokud máte problémy se dvojúrovňovém ověřováním a osobním účet Microsoft, přečtěte si téma [Zapnutí a vypnutí dvojúrovňového ověřování pro účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off). Vzhledem k tomu, že se rozhodnete, jestli chcete tuto funkci používat, můžete ji zapnout nebo vypnout, kdykoli budete chtít.
+- **Osobní účet Microsoft.** Pro osobní účty Microsoft (například) si můžete nastavit dvojúrovňové ověřování alain@outlook.com . Pokud máte problémy se dvojúrovňovém ověřováním a osobním účet Microsoft, přečtěte si téma [Zapnutí a vypnutí dvojúrovňového ověřování pro účet Microsoft](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off). Vzhledem k tomu, že se rozhodnete, jestli chcete tuto funkci používat, můžete ji zapnout nebo vypnout, kdykoli budete chtít.
 
     >[!Note]
-    >Pokud máte problémy se dvojúrovňovém ověřováním a jedním z vašich osobních účtů Microsoft (například danielle@outlook.com), můžete vyzkoušet návrhy, [jak použít dvoustupňové ověřování s vaším účet Microsoft](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification).
+    >Pokud máte problémy se dvojúrovňovém ověřováním a jedním z vašich osobních účtů Microsoft (například danielle@outlook.com ), můžete vyzkoušet návrhy, [jak použít dvoustupňové ověřování s vaším účet Microsoft](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification).
 
 ## <a name="access-the-additional-security-verification-page"></a>Přístup k další stránce ověření zabezpečení
 

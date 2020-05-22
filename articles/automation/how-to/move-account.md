@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 62291505aae35b6fe334e2bdb53335a1ea3fe20b
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3cfc63b29b51b70cb41c476c49bc17f5e9cbd308
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714538"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746621"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Přesunutí účtu Azure Automation do jiného předplatného
 
@@ -157,4 +157,4 @@ Po dokončení přesunu ověřte, že jsou povolené níže uvedené možnosti.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přesunutí prostředků v Azure](../../azure-resource-manager/management/move-support-resources.md)
+Další informace o přesouvání prostředků v Azure najdete v tématu [Přesunutí prostředků v Azure](../../azure-resource-manager/management/move-support-resources.md).

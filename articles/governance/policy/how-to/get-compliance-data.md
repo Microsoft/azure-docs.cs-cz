@@ -3,12 +3,12 @@ title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 1c75f078cb80d5e2dbc00a69817d223d4818d55b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 55f0b471eff15140de0a586fd5d326d9cd913b1a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684523"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747088"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -191,7 +191,7 @@ Použijte ARMClient nebo podobný nástroj pro zpracování ověřování v Azur
 Díky REST API je souhrn možné provádět pomocí kontejneru, definice nebo přiřazení. Tady je příklad sumarizace na úrovni předplatného, který používá Shrnutí Azure Policyho přehledu [pro předplatné](/rest/api/policy-insights/policystates/summarizeforsubscription):
 
 ```http
-POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
+POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
 ```
 
 Výstup shrnuje předplatné. V následujícím příkladu výstupu jsou shrnuty dodržování předpisů v **hodnotě Value. Results. nonCompliantResources** a **Value. Results. nonCompliantPolicies**. Tato žádost obsahuje další podrobnosti, včetně každého přiřazení, které tvoří nekompatibilní čísla, a informace o definici pro každé přiřazení. Každý objekt zásad v hierarchii poskytuje **queryResultsUri** , který se dá použít k získání dalších podrobností na této úrovni.
@@ -204,7 +204,7 @@ Výstup shrnuje předplatné. V následujícím příkladu výstupu jsou shrnuty
         "@odata.id": null,
         "@odata.context": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#summary/$entity",
         "results": {
-            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false",
+            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false",
             "nonCompliantResources": 15,
             "nonCompliantPolicies": 1
         },
@@ -212,7 +212,7 @@ Výstup shrnuje předplatné. V následujícím příkladu výstupu jsou shrnuty
             "policyAssignmentId": "/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77",
             "policySetDefinitionId": "",
             "results": {
-                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
+                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
                 "nonCompliantResources": 15,
                 "nonCompliantPolicies": 1
             },
@@ -221,7 +221,7 @@ Výstup shrnuje předplatné. V následujícím příkladu výstupu jsou shrnuty
                 "policyDefinitionId": "/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
                 "effect": "deny",
                 "results": {
-                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
+                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
                     "nonCompliantResources": 15
                 }
             }]
@@ -235,7 +235,7 @@ Výstup shrnuje předplatné. V následujícím příkladu výstupu jsou shrnuty
 V předchozím příkladu **Value. policyAssignments. policyDefinitions. Results. queryResultsUri** poskytuje ukázkový identifikátor URI pro všechny prostředky, které nedodržují předpisy pro konkrétní definici zásad. Při zobrazení hodnoty **$Filter** se hodnota PolicyAssignmentId rovná (EQ) na false, pro definici zásady se zadá a pak se PolicyDefinitionId sám. Důvodem zahrnutí PolicyAssignmentId do filtru je, že PolicyDefinitionId může existovat v několika zásadách nebo přiřazeních iniciativ s různými obory. Když zadáte jak PolicyAssignmentId, tak PolicyDefinitionId, můžeme být ve výsledcích hledání explicitní. Dříve jsme pro PolicyStates používali **nejnovější**, což automaticky nastaví časové období **z** a **do** za posledních 24 hodin.
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
 ```
 
 Ukázková odezva níže byla oříznuta na jeden nekompatibilní prostředek pro zkrácení. Podrobná odpověď má několik částí dat týkajících se prostředku, zásady nebo iniciativy a přiřazení. Všimněte si, že můžete také zjistit, jaké parametry přiřazení byly předány do definice zásady.
@@ -281,7 +281,7 @@ Ukázková odezva níže byla oříznuta na jeden nekompatibilní prostředek pr
 Při vytvoření nebo aktualizaci prostředku se vygeneruje výsledek vyhodnocení zásad. Výsledky se nazývají _události zásad_. K zobrazení posledních událostí zásad přidružených k předplatnému použijte následující identifikátor URI.
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2018-04-04
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2019-10-01
 ```
 
 Vaše výsledky budou vypadat přibližně jako v následujícím příkladu:

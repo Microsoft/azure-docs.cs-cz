@@ -5,17 +5,17 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 04/30/2020
-ms.openlocfilehash: 7ed01a57a4c2a55d777907a6cc14b111fb2086e3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 05/19/2020
+ms.openlocfilehash: 5ab71ee67b66cacbcd1b23fa35d6f424021fa9cc
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731896"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757505"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru Azure Log Analytics
 
-Tento článek vysvětluje koncept obnovitelného odstranění pracovního prostoru Azure Log Analytics a postup obnovení odstraněného pracovního prostoru. 
+Tento článek vysvětluje koncept obnovitelného odstranění pracovního prostoru Azure Log Analytics a postup obnovení odstraněného pracovního prostoru.
 
 ## <a name="considerations-when-deleting-a-workspace"></a>Předpoklady při odstraňování pracovního prostoru
 
@@ -45,12 +45,12 @@ Pracovní prostor můžete odstranit pomocí [PowerShellu](https://docs.microsof
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Pokud se chcete přihlásit, otevřete [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor a pak v horní části prostředního podokna klikněte na **Odstranit** .
-   ![Odstranit možnost z podokna vlastností pracovního prostoru](media/delete-workspace/log-analytics-delete-workspace.png)
-4. Až se zobrazí okno potvrzovací zpráva s výzvou, abyste potvrdili odstranění pracovního prostoru, klikněte na **Ano**.
-   ![Potvrdit odstranění pracovního prostoru](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+4. Zobrazí se stránka s potvrzením, která zobrazuje příjem dat do pracovního prostoru za minulý týden. Zadejte název pracovního prostoru, který chcete potvrdit, a pak klikněte na **Odstranit**.
+
+   ![Potvrdit odstranění pracovního prostoru](media/delete-workspace/workspace-delete.png)
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell
@@ -92,10 +92,27 @@ Pokud chcete trvale odstranit pracovní prostor, použijte [pracovní prostory �
 Kde ' eyJ0eXAiOiJKV1Qi... ' představuje úplný autorizační token.
 
 ## <a name="recover-workspace"></a>Obnovit pracovní prostor
+Když pracovní prostor odstraníte Log Analytics omylem nebo záměrně, služba ho umístí do stavu obnovitelného odstranění, takže nebude mít přístup k žádné operaci. Název odstraněného pracovního prostoru se zachová během období obnovitelného odstranění a nedá se použít k vytvoření nového pracovního prostoru. Po období obnovitelného odstranění je pracovní prostor neobnovitelný, je naplánován na trvalé odstranění a jeho název, který lze použít k vytvoření nového pracovního prostoru.
 
-Pokud máte oprávnění přispěvatele u předplatného a skupiny prostředků, ve které byl pracovní prostor přidružený před operací obnovitelného odstranění, můžete ho obnovit během období obnovitelného odstranění, včetně jeho dat, konfigurace a připojených agentů. Po období obnovitelného odstranění je pracovní prostor neobnovitelná a přiřazený k trvalému odstranění. Názvy odstraněných pracovních prostorů se během období obnovitelného odstranění uchovávají a nedají se použít při pokusu o vytvoření nového pracovního prostoru.  
+Během období obnovitelného odstranění si můžete pracovní prostor obnovit, včetně jeho dat, konfigurace a připojených agentů. Musíte mít oprávnění přispěvatele k předplatnému a skupině prostředků, ve které byl pracovní prostor umístěn před operací obnovitelného odstranění. Obnovení pracovního prostoru se provádí vytvořením pracovního prostoru Log Analytics s podrobnostmi o odstraněném pracovním prostoru, včetně:
 
-Pracovní prostor můžete obnovit vytvořením pracovního prostoru s podrobnostmi o odstraněném pracovním prostoru, včetně *ID předplatného*, *názvu skupiny prostředků*, *názvu pracovního prostoru* a *oblasti*. Pokud se vaše skupina prostředků odstranila a neexistuje, vytvořte skupinu prostředků se stejným názvem, která se použila před odstraněním, a pak vytvořte pracovní prostor pomocí kterékoli z těchto metod: [Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace), [powershellu](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) nebo [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate).
+- ID předplatného
+- Název skupiny prostředků
+- Název pracovního prostoru
+- Oblast
+
+### <a name="azure-portal"></a>portál Azure
+
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**. Zobrazí se seznam pracovních prostorů, které máte ve vybraném oboru.
+3. Kliknutím na tlačítko **obnovit** v levém horním rohu otevřete stránku s pracovními prostory ve stavu obnovitelného odstranění, který je možné obnovit.
+
+   ![Obnovit pracovní prostor](media/delete-workspace/recover-menu.png)
+
+4. Vyberte pracovní prostor a kliknutím na **obnovit** tento pracovní prostor obnovte.
+
+   ![Obnovit pracovní prostor](media/delete-workspace/recover-workspace.png)
+
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

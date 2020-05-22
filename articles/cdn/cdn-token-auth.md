@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 491f413f9bf189b1a46d04042fd7223a47af1f24
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3539c101b8bf146e9feee6dfc4e90f859f0ef142
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929124"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745449"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpečení Azure CDN prostředků pomocí ověřování tokenů
 
@@ -33,7 +33,7 @@ Ověřování tokenu je mechanismus, který umožňuje zabránit službě Azure 
 
 Ověřování tokenu ověřuje, že požadavky jsou vygenerovány důvěryhodnou lokalitou, protože vyžadují, aby žádosti obsahovaly hodnotu tokenu, která obsahuje kódované informace o žadateli. Obsah je obsluhován žadateli pouze v případě, že kódované informace splňují požadavky. v opačném případě jsou požadavky zamítnuty. Požadavky můžete nastavit pomocí jednoho nebo několika následujících parametrů:
 
-- Země: povoluje nebo zamítá žádosti, které pocházejí ze zemí nebo oblastí určených jejich [kódem země](/previous-versions/azure/mt761717(v=azure.100)).
+- Země/oblast: povoluje nebo zakazuje žádosti, které pocházejí ze zemí nebo oblastí určených jejich [kódem země/oblasti](/previous-versions/azure/mt761717(v=azure.100)).
 - Adresa URL: povoluje pouze požadavky, které odpovídají zadanému prostředku nebo cestě.
 - Hostitel: povoluje nebo zamítá žádosti, které používají zadané hostitele v hlavičce požadavku.
 - Odkazující na adresu: povoluje nebo zakazuje požadavek ze zadaného odkazujícího serveru.
@@ -72,7 +72,7 @@ Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek k
 
       ```rand -hex <key length>```
 
-      Příklad:
+      Například:
 
       ```OpenSSL> rand -hex 32``` 
 
@@ -100,31 +100,31 @@ Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek k
       > </tr>
       > <tr>
       >    <td><b>ec_expire</b></td>
-      >    <td>Přiřadí k tokenu čas vypršení platnosti, po jehož uplynutí vyprší platnost tokenu. Žádosti odeslané po uplynutí doby platnosti jsou zamítnuté. Tento parametr používá časové razítko systému UNIX, které vychází z počtu sekund od standardní epocha systému UNIX `1/1/1970 00:00:00 GMT`. (Můžete použít online nástroje k převodu mezi standardním časem a časem v systému UNIX.)> 
-      >    Například pokud chcete, aby vyprší platnost tokenu v `12/31/2016 12:00:00 GMT`, zadejte hodnotu časového razítka systému UNIX `1483185600`,. 
+      >    <td>Přiřadí k tokenu čas vypršení platnosti, po jehož uplynutí vyprší platnost tokenu. Žádosti odeslané po uplynutí doby platnosti jsou zamítnuté. Tento parametr používá časové razítko systému UNIX, které vychází z počtu sekund od standardní epocha systému UNIX `1/1/1970 00:00:00 GMT` . (Můžete použít online nástroje k převodu mezi standardním časem a časem v systému UNIX.)> 
+      >    Například pokud chcete, aby vyprší platnost tokenu v `12/31/2016 12:00:00 GMT` , zadejte hodnotu časového razítka systému UNIX, `1483185600` . 
       > </tr>
       > <tr>
       >    <td><b>ec_url_allow</b></td> 
       >    <td>Umožňuje přizpůsobit tokeny konkrétnímu prostředku nebo cestě. Omezuje přístup k žádostem, jejichž adresa URL začíná konkrétní relativní cestou. V adresách URL se rozlišují malá a velká písmena. Zadáním více cest oddělte každou cestu čárkou. Nepřidávat mezery V závislosti na vašich požadavcích můžete nastavit různé hodnoty tak, aby poskytovaly různé úrovně přístupu.> 
-      >    Například pro adresu URL `http://www.mydomain.com/pictures/city/strasbourg.png`jsou povoleny tyto požadavky pro následující vstupní hodnoty: 
+      >    Například pro adresu URL `http://www.mydomain.com/pictures/city/strasbourg.png` jsou povoleny tyto požadavky pro následující vstupní hodnoty: 
       >    <ul>
-      >       <li>Vstupní hodnota `/`: jsou povoleny všechny požadavky.</li>
-      >       <li>Vstupní hodnota `/pictures`: jsou povoleny následující požadavky: <ul>
+      >       <li>Vstupní hodnota `/` : jsou povoleny všechny požadavky.</li>
+      >       <li>Vstupní hodnota `/pictures` : jsou povoleny následující požadavky: <ul>
       >          <li>`http://www.mydomain.com/pictures.png`</li>
       >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
       >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
       >       </ul></li>
-      >       <li>Vstupní hodnota `/pictures/`: jsou povoleny pouze požadavky `/pictures/` obsahující cestu. Například, `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
-      >       <li>Vstupní hodnota `/pictures/city/strasbourg.png`: jsou povoleny pouze žádosti pro tuto konkrétní cestu a prostředek.</li>
+      >       <li>Vstupní hodnota `/pictures/` : jsou povoleny pouze požadavky obsahující `/pictures/` cestu. Například, `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
+      >       <li>Vstupní hodnota `/pictures/city/strasbourg.png` : jsou povoleny pouze žádosti pro tuto konkrétní cestu a prostředek.</li>
       >    </ul>
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Povoluje pouze žádosti, které pocházejí z jedné nebo více zadaných zemí nebo oblastí. Žádosti, které pocházejí ze všech ostatních zemí nebo oblastí, jsou odepřeny. Pro každou zemi použijte dvoumístné [číslo země ISO 3166](/previous-versions/azure/mt761717(v=azure.100)) a každou z nich oddělte čárkou. Nepřidávejte mezeru. Pokud například chcete přístup udělit jenom z USA a Francie, zadejte `US,FR`.</td>
+      >    <td>Povoluje pouze žádosti, které pocházejí z jedné nebo více zadaných zemí nebo oblastí. Žádosti, které pocházejí ze všech ostatních zemí nebo oblastí, jsou odepřeny. Pro každou zemi nebo oblast použijte dvoumístné [číslo země/oblasti ISO 3166](/previous-versions/azure/mt761717(v=azure.100)) a každou z nich oddělte čárkou. Nepřidávejte mezeru. Pokud například chcete přístup udělit jenom z USA a Francie, zadejte `US,FR` .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Odmítá žádosti, které pocházejí z jedné nebo více zadaných zemí nebo oblastí. Žádosti, které pocházejí ze všech ostatních zemí nebo oblastí, jsou povoleny. Implementace je stejná jako parametr <b>ec_country_allow</b> . Pokud je v parametrech <b>ec_country_allow</b> i <b>ec_country_deny</b> přítomen kód země, má parametr <b>ec_country_allow</b> přednost.</td>
+      >    <td>Odmítá žádosti, které pocházejí z jedné nebo více zadaných zemí nebo oblastí. Žádosti, které pocházejí ze všech ostatních zemí nebo oblastí, jsou povoleny. Implementace je stejná jako parametr <b>ec_country_allow</b> . Pokud je kód země nebo oblasti přítomen jak v parametrech <b>ec_country_allow</b> , tak <b>ec_country_deny</b> , má parametr <b>ec_country_allow</b> přednost.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
@@ -134,9 +134,9 @@ Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek k
       >       <li>Název hostitele nebo název hostitele a cesta.</li>
       >       <li>Více odkazujících. Chcete-li přidat více odkazujících serverů, oddělte každý odkazující znak čárkou. Nepřidávejte mezeru. Pokud zadáte hodnotu odkazujícího serveru, ale informace o odkazujícím serveru se v požadavku z důvodu konfigurace prohlížeče neodesílají, ve výchozím nastavení je požadavek odepřen.</li> 
       >       <li>Žádosti s informacemi o chybějících nebo prázdných odkazujících prodaných. Ve výchozím nastavení parametr <b>ec_ref_allow</b> zablokuje tyto typy požadavků. Pokud chcete tyto požadavky použít, zadejte text, "chybějící", nebo zadejte prázdnou hodnotu (pomocí koncové čárky).</li> 
-      >       <li>Subdomén. Chcete-li, aby byly subdomény povoleny,\*zadejte hvězdičku (). Například pro povolení všech subdomén v `contoso.com`zadejte. `*.contoso.com`</li>
+      >       <li>Subdomén. Chcete-li, aby byly subdomény povoleny, zadejte hvězdičku ( \* ). Například pro povolení všech subdomén v `contoso.com` Zadejte `*.contoso.com` .</li>
       >    </ul> 
-      >    Chcete-li například udělit přístup pro požadavky z `www.contoso.com`, všechny subdomény v rámci `contoso2.com`a požadavky s prázdnými nebo chybějícími odkazujícími servery, `www.contoso.com,*.contoso.com,missing`zadejte.</td>
+      >    Chcete-li například udělit přístup pro požadavky z `www.contoso.com` , všechny subdomény v rámci `contoso2.com` a požadavky s prázdnými nebo chybějícími odkazujícími servery, zadejte `www.contoso.com,*.contoso.com,missing` .</td>
       > </tr>
       > <tr> 
       >    <td><b>ec_ref_deny</b></td>
@@ -144,7 +144,7 @@ Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek k
       > </tr>
       > <tr> 
       >    <td><b>ec_proto_allow</b></td> 
-      >    <td>Povoluje pouze požadavky ze zadaného protokolu. Platné hodnoty jsou `http`, `https`nebo `http,https`.</td>
+      >    <td>Povoluje pouze požadavky ze zadaného protokolu. Platné hodnoty jsou `http` , `https` nebo `http,https` .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_proto_deny</b></td>
@@ -195,7 +195,7 @@ Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek k
    - PHP
    - Perl
    - Java
-   - Python 
+   - Python    
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN funkce a ceny zprostředkovatele
 

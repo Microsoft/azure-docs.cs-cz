@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 08dcee28c234183aa2b125d82d046d31d4b50e47
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e74acd3cdb0a0d2e0fbb37d022ff40e1f5798b18
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788849"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744607"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Co je Video Indexer služby Azure Media Services?
 
@@ -70,8 +70,8 @@ Následující seznam obsahuje přehledy, které můžete z videí načíst pomo
 
 ### <a name="audio-insights"></a>Přehledy zvuku
 
-* **Přepis zvuku**: převede řeč na text v 12 jazycích a povoluje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, finština, japonština, japonština, ruština, portugalština, Brazílie a korejština.
-* **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, finština, japonština, japonština, ruština a brazilská portugalština. Pokud jazyk nemůžete identifikovat s jistotou, Video Indexer předpokládá, že mluvený jazyk je angličtina. Další informace najdete v tématu [model identifikace jazyka](language-identification-model.md).
+* **Přepis zvuku**: převede řeč na text v 12 jazycích a povoluje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, finština, japonština, japonština, ruština, portugalština a korejština.
+* **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, finština, japonština, japonština, ruština a portugalština. Pokud jazyk nemůžete identifikovat s jistotou, Video Indexer předpokládá, že mluvený jazyk je angličtina. Další informace najdete v tématu [model identifikace jazyka](language-identification-model.md).
 * **Identifikace a přepis mluveného slova ve více jazycích** (Preview): automaticky identifikuje mluvený jazyk v různých segmentech ze zvuku. Pošle každý segment mediálního souboru, který se má přepisu, a pak ho zkombinuje zpátky do jednoho sjednoceného přepisu. Další informace najdete v tématu [Automatické určení a přepisovat vícejazyčného obsahu](multi-language-identification-transcription.md).
 * **Tvorba titulků**: Vytvoří titulky ve třech formátech: VTT, TTML, SRT.
 * **Zpracování dvou kanálů**: automaticky detekuje samostatný přepis a sloučení s jednou časovou osou.
@@ -114,7 +114,7 @@ Pokud web používáte, přehledy se přidávají jako metadata a zobrazují se 
 
 ## <a name="next-steps"></a>Další kroky
 
-Jste připraveni začít pracovat s Video Indexerem. Další informace najdete v těchto článcích:
+Jste připraveni začít pracovat s Video Indexerem. Další informace najdete v následujících článcích:
 
 - Začněte [s webem video indexer](video-indexer-get-started.md).
 - [Zpracování obsahu pomocí Video Indexer REST API](video-indexer-use-apis.md).

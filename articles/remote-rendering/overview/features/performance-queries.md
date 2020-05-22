@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 9a28dee2d1e6d1355b729a56e8eeb8447e4ed8c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e843216bf973033868e75c027b11d27ddfe2e93
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80682023"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757462"
 ---
 # <a name="server-side-performance-queries"></a>Dotazy na výkon na straně serveru
 
@@ -37,7 +37,7 @@ Obrázek ukazuje, jak:
 
 Statistiky snímků poskytují některé informace vysoké úrovně pro poslední rámec, například latenci. Data zadaná ve `FrameStatistics` struktuře se měří na straně klienta, takže rozhraní API je synchronní volání:
 
-````c#
+```cs
 void QueryFrameData(AzureSession session)
 {
     FrameStatistics frameStatistics;
@@ -46,7 +46,18 @@ void QueryFrameData(AzureSession session)
         // do something with the result
     }
 }
-````
+```
+
+```cpp
+void QueryFrameData(ApiHandle<AzureSession> session)
+{
+    FrameStatistics frameStatistics;
+    if (*session->GetGraphicsBinding()->GetLastFrameStatistics(&frameStatistics) == Result::Success)
+    {
+        // do something with the result
+    }
+}
+```
 
 Načtený `FrameStatistics` objekt obsahuje následující členy:
 
@@ -65,17 +76,17 @@ Načtený `FrameStatistics` objekt obsahuje následující členy:
 
 Součet všech hodnot latence je obvykle mnohem větší než dostupný čas snímku v 60 Hz. To je v pořádku, protože více snímků je současně souběžně a nové žádosti o snímek jsou v požadované snímkové sazbě aktivní, jak je znázorněno na obrázku. Pokud je latence příliš velká, ovlivňuje kvalitu [reprojekce za fáze v pozdní fázi](../../overview/features/late-stage-reprojection.md)a může ohrozit celkové prostředí.
 
-`videoFramesReceived`, `videoFrameReusedCount`a `videoFramesDiscarded` lze je použít k měření výkonu sítě a serveru. Pokud `videoFramesReceived` je nízká a `videoFrameReusedCount` vysoká, může to znamenat zahlcení sítě nebo nedostatečný výkon serveru. Vysoká `videoFramesDiscarded` hodnota také označuje zahlcení sítě.
+`videoFramesReceived`, `videoFrameReusedCount` a `videoFramesDiscarded` lze je použít k měření výkonu sítě a serveru. Pokud `videoFramesReceived` je nízká a `videoFrameReusedCount` vysoká, může to znamenat zahlcení sítě nebo nedostatečný výkon serveru. Vysoká `videoFramesDiscarded` hodnota také označuje zahlcení sítě.
 
-Nakonec, a `videoFrameMaxDelta` Podělte se o odchylku příchozích snímků videa a místních současných volání.`timeSinceLastPresent` `videoFrameMinDelta` Vysoká odchylka znamená nestabilní snímkovou sazbu.
+Nakonec, `timeSinceLastPresent` `videoFrameMinDelta` a `videoFrameMaxDelta` Podělte se o odchylku příchozích snímků videa a místních současných volání. Vysoká odchylka znamená nestabilní snímkovou sazbu.
 
-Žádná z výše uvedených hodnot neposkytuje jasné označení čisté latence sítě (červené šipky na obrázku), protože přesný čas, kdy je server zaneprázdněný vykreslováním, je nutné odečíst od hodnoty `latencyPoseToReceive`zpětného převodu. Na straně serveru celkové latence jsou informace, které nejsou pro klienta k dispozici. Další odstavec ale vysvětluje, jak se tato hodnota blíží k dalšímu vstupu ze serveru a je `networkLatency` vystavená prostřednictvím hodnoty.
+Žádná z výše uvedených hodnot neposkytuje jasné označení čisté latence sítě (červené šipky na obrázku), protože přesný čas, kdy je server zaneprázdněný vykreslováním, je nutné odečíst od hodnoty zpětného převodu `latencyPoseToReceive` . Na straně serveru celkové latence jsou informace, které nejsou pro klienta k dispozici. Další odstavec ale vysvětluje, jak se tato hodnota blíží k dalšímu vstupu ze serveru a je vystavená prostřednictvím `networkLatency` hodnoty.
 
 ## <a name="performance-assessment-queries"></a>Dotazy na vyhodnocení výkonu
 
 *Dotazy na vyhodnocení výkonu* poskytují podrobné informace o procesoru a úlohách GPU na serveru. Vzhledem k tomu, že data jsou požadována ze serveru, dotazování snímku výkonu následuje po běžném asynchronním vzoru:
 
-``` cs
+```cs
 PerformanceAssessmentAsync _assessmentQuery = null;
 
 void QueryPerformanceAssessment(AzureSession session)
@@ -92,7 +103,21 @@ void QueryPerformanceAssessment(AzureSession session)
 }
 ```
 
-V rozporu s `FrameStatistics` objektem obsahuje `PerformanceAssessment` objekt informace na straně serveru:
+```cpp
+void QueryPerformanceAssessment(ApiHandle<AzureSession> session)
+{
+    ApiHandle<PerformanceAssessmentAsync> assessmentQuery = *session->Actions()->QueryServerPerformanceAssessmentAsync();
+    assessmentQuery->Completed([] (ApiHandle<PerformanceAssessmentAsync> res)
+    {
+        // do something with the result:
+        PerformanceAssessment result = *res->Result();
+        // ...
+
+    });
+}
+```
+
+V rozporu s `FrameStatistics` objektem `PerformanceAssessment` obsahuje objekt informace na straně serveru:
 
 | Člen | Vysvětlení |
 |:-|:-|
@@ -102,7 +127,7 @@ V rozporu s `FrameStatistics` objektem obsahuje `PerformanceAssessment` objekt i
 | utilizationGPU | Celkové využití GPU serveru v procentech |
 | memoryCPU | Celkové využití hlavní paměti serveru v procentech |
 | memoryGPU | Celkové využití vyhrazené paměti pro video v procentech GPU serveru |
-| networkLatency | Přibližná Průměrná doba odezvy sítě v milisekundách Na ilustraci výše to odpovídá součtu červené šipky. Hodnota je vypočítána odečtením skutečného času vykreslování serveru od `latencyPoseToReceive` hodnoty. `FrameStatistics` I když tato aproximace není přesná, poskytuje určitou indikaci latence sítě, která je izolovaná od hodnot latence vypočítaných v klientovi. |
+| networkLatency | Přibližná Průměrná doba odezvy sítě v milisekundách Na ilustraci výše to odpovídá součtu červené šipky. Hodnota je vypočítána odečtením skutečného času vykreslování serveru od `latencyPoseToReceive` hodnoty `FrameStatistics` . I když tato aproximace není přesná, poskytuje určitou indikaci latence sítě, která je izolovaná od hodnot latence vypočítaných v klientovi. |
 | polygonsRendered | Počet trojúhelníků vykreslených v jednom snímku. Toto číslo zahrnuje také trojúhelníky, které byly po vygenerování později poraženy. To znamená, že toto číslo se neliší v různých polohách kamery, ale výkon se může výrazně lišit v závislosti na sazbě pro odstranení trojúhelníku.|
 
 Pro lepší vyhodnocení hodnot zahrnuje každá část klasifikaci kvality, jako je **Skvělé**, **dobrá**, **Mediocre**nebo **špatná**.
@@ -110,9 +135,9 @@ Tato metrika posouzení poskytuje přibližnou indikaci stavu serveru, ale nemě
 
 ## <a name="statistics-debug-output"></a>Statistika ladění výstupu
 
-Třída `ARRServiceStats` se zalomí kolem statistik rámců a dotazů na vyhodnocení výkonu a poskytuje pohodlný funkce pro vracení statistik jako agregovaných hodnot nebo jako předem sestavený řetězec. Následující kód představuje nejjednodušší způsob, jak zobrazit statistiky na straně serveru v klientské aplikaci.
+Třída `ARRServiceStats` je třída jazyka C#, která se zalomí kolem testů rámce a dotazů na vyhodnocení výkonu a poskytuje pohodlný funkce pro vracení statistik jako agregovaných hodnot nebo jako předem sestavený řetězec. Následující kód představuje nejjednodušší způsob, jak zobrazit statistiky na straně serveru v klientské aplikaci.
 
-``` cs
+```cs
 ARRServiceStats _stats = null;
 
 void OnConnect()
@@ -142,9 +167,9 @@ Výše uvedený kód naplní textový popisek následujícím textem:
 
 ![Výstup řetězce ArrServiceStats](./media/arr-service-stats.png)
 
-`GetStatsString` Rozhraní API formátuje řetězec všech hodnot, ale každá jediná hodnota může být z `ARRServiceStats` instance také dotazována prostřednictvím kódu programu.
+`GetStatsString`Rozhraní API formátuje řetězec všech hodnot, ale každá jediná hodnota může být z instance také dotazována prostřednictvím kódu programu `ARRServiceStats` .
 
-Existují také varianty členů, které hodnoty agreguje v průběhu času. Viz členy s `*Avg`příponou `*Max`, nebo `*Total`. Člen `FramesUsedForAverage` indikuje, kolik snímků bylo pro tuto agregaci použito.
+Existují také varianty členů, které hodnoty agreguje v průběhu času. Viz členy s příponou `*Avg` , `*Max` nebo `*Total` . Člen indikuje, kolik `FramesUsedForAverage` snímků bylo pro tuto agregaci použito.
 
 ## <a name="next-steps"></a>Další kroky
 

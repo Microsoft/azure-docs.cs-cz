@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e5973ed505a43ca56a0f11e3603e05eeed0952fd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7a54d1d644d1069957db7f94d6f5e261e1a8dfb2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657750"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747552"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Ladění výkonu s využitím materializovaných zobrazení
 
@@ -159,7 +159,7 @@ Materializovaná zobrazení povolují změny dat v základních tabulkách.  Dat
 
 ## <a name="example"></a>Příklad
 
-V tomto příkladu se používá dotaz podobné TPCDS, který vyhledává zákazníky, kteří tráví více peněz prostřednictvím katalogu než v obchodech, identifikujte preferované zákazníky a jejich zemi původu.   Dotaz zahrnuje výběr prvních 100 záznamů ze SJEDNOCENí tří příkazů dílčího výběru zahrnujících SUM () a GROUP BY.
+V tomto příkladu se používá dotaz podobné TPCDS, který vyhledává zákazníky, kteří tráví více peněz prostřednictvím katalogu než v obchodech, identifikujte preferované zákazníky a jejich zemi nebo oblast původu.   Dotaz zahrnuje výběr prvních 100 záznamů ze SJEDNOCENí tří příkazů dílčího výběru zahrnujících SUM () a GROUP BY.
 
 ```sql
 WITH year_total AS (

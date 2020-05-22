@@ -1,28 +1,28 @@
 ---
-title: Použití Azure Automation grafické sady Runbook SDK
-description: Tento článek popisuje, jak použít sadu Azure Automation grafické sady Runbook SDK.
+title: Použití Azure Automation grafické sady Runbook SDK (Preview)
+description: V tomto článku se dozvíte, jak používat sadu Azure Automation grafické sady Runbook SDK (Preview).
 services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 886ce03b6e107d871879ff40bdc5de9ceb97c7c3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b0733cd4f71a734511d5085473047eb7a6d030d3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690741"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744337"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Použití Azure Automation grafické sady Runbook SDK
+# <a name="use-the-azure-automation-graphical-runbook-sdk-preview"></a>Použití Azure Automation grafické sady Runbook SDK (Preview)
 
 [Grafické Runbooky](automation-graphical-authoring-intro.md) vám pomůžou spravovat složitosti základního kódu pracovního postupu prostředí Windows PowerShell nebo PowerShell. Sada SDK pro grafické vytváření Microsoft Azure Automation umožňuje vývojářům vytvářet a upravovat grafické Runbooky pro použití s Azure Automation. Tento článek popisuje základní kroky při vytváření grafického Runbooku z vašeho kódu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Importujte `Orchestrator.GraphRunbook.Model.dll` balíček do svého projektu.
+Importujte `Orchestrator.GraphRunbook.Model.dll` balíček stažením [sady SDK](https://www.microsoft.com/download/details.aspx?id=50734).
 
 ## <a name="create-a-runbook-object-instance"></a>Vytvoření instance objektu sady Runbook
 
-Odkázat `Orchestrator.GraphRunbook.Model` na sestavení a vytvořit instanci `Orchestrator.GraphRunbook.Model.GraphRunbook` třídy:
+Odkázat na `Orchestrator.GraphRunbook.Model` sestavení a vytvořit instanci `Orchestrator.GraphRunbook.Model.GraphRunbook` třídy:
 
 ```csharp
 using Orchestrator.GraphRunbook.Model;
@@ -137,8 +137,8 @@ var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
 Tento řetězec můžete uložit do souboru s příponou **. graphrunbook** . Odpovídající sadu Runbook lze importovat do Azure Automation.
-Serializovaný formát se může v budoucích verzích nástroje změnit `Orchestrator.GraphRunbook.Model.dll`. Proslibuje zpětnou kompatibilitu: Jakákoli sada Runbook serializovaná `Orchestrator.GraphRunbook.Model.dll` se starší verzí sady může být deserializována jakoukoli novější verzí. Dopředná kompatibilita není zaručena: sadu Runbook serializovanou s novější verzí nelze deserializovat staršími verzemi.
+Serializovaný formát se může v budoucích verzích nástroje změnit `Orchestrator.GraphRunbook.Model.dll` . Proslibuje zpětnou kompatibilitu: Jakákoli sada Runbook serializovaná se starší verzí sady `Orchestrator.GraphRunbook.Model.dll` může být deserializována jakoukoli novější verzí. Dopředná kompatibilita není zaručena: sadu Runbook serializovanou s novější verzí nelze deserializovat staršími verzemi.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o grafických sadách Runbook v Azure Automation najdete v tématu [Úvod do grafického vytváření](automation-graphical-authoring-intro.md).
+[Vytváření grafických runbooků v Azure Automation](automation-graphical-authoring-intro.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: b9ced5d4a81effcd73e0243d09bb83ed0fe7667c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253692"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747652"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Proměnné HTTP pro modul pravidel Azure CDN
 Proměnné HTTP poskytují prostředky, pomocí kterých můžete načíst metadata žádosti a odpovědi HTTP. Tato metadata pak můžete použít k dynamické změně žádosti nebo odpovědi. Použití proměnných HTTP je omezeno na následující funkce stroje pravidel:
@@ -34,13 +34,13 @@ Proměnné HTTP poskytují prostředky, pomocí kterých můžete načíst metad
 Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GEOGRAFICKá metadata (například PSČ) nejsou pro konkrétní požadavek k dispozici, vrátí se prázdná hodnota.
 
 
-| Název | Proměnná | Popis | Ukázková hodnota |
+| Name | Proměnná | Popis | Ukázková hodnota |
 | ---- | -------- | ----------- | ------------ |
 | ASN (žadatel) | % {geo_asnum} | Označuje žadatele jako číslo. <br /><br />**Zastaralé:** % {virt_dst_asnum}. <br />Tato proměnná se už nepoužívá namísto% {geo_asnum}. I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou. | AS15133 |
 | Město (žadatel) | % {geo_city} | Označuje město žadatele. | Los Angeles |
 | Kontinent (žadatel) | % {geo_continent} | Označuje kontinenta žadatele prostřednictvím zkratky. <br />Platné hodnoty jsou: <br />AF: Afrika<br />JAKO: Asie<br />EU: Evropa<br />NA: Severní Amerika<br />°C: Oceánie a<br />SA: Jižní Amerika<br /><br />**Zastaralé:** % {virt_dst_continent}. <br />Tato proměnná se už nepoužívá namísto% {geo_continent}. <br />I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou.| – |
 | Hodnota souboru cookie | % {cookie_Cookie} | Vrátí hodnotu odpovídající klíči souboru cookie identifikovanému termínem souboru cookie. | Ukázka použití: <br />% {cookie__utma}<br /><br />Ukázková hodnota:<br />111662281.2.10.1222100123 |
-| Země (žadatel) | % {geo_country} | Určuje zemi žadatele o původu prostřednictvím kódu země. <br />**Zastaralé:** % {virt_dst_country}. <br /><br />Tato proměnná se už nepoužívá namísto% {geo_country}. I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou. | USA |
+| Země/oblast (žadatel) | % {geo_country} | Určuje zemi nebo oblast původu žadatele prostřednictvím kódu země nebo oblasti. <br />**Zastaralé:** % {virt_dst_country}. <br /><br />Tato proměnná se už nepoužívá namísto% {geo_country}. I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou. | USA |
 | Vymezená oblast trhu (žadatel) | % {geo_dma_code} |Označuje mediální trh žadatele podle kódu oblasti. <br /><br />Toto pole se vztahuje pouze na žádosti, které pocházejí z USA.| 745 |
 | Metoda požadavku HTTP | % {request_method} | Označuje metodu požadavku HTTP. | GET |
 | Stavový kód HTTP | % {status} | Určuje stavový kód protokolu HTTP pro odpověď. | 200 |
@@ -52,7 +52,7 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GE
 | Poštovní směrovací číslo (žadatel) | % {geo_postal_code} | Označuje poštovní směrovací číslo žadatele. | 90210 |
 | Našel se řetězec dotazu. | % {is_args} | Hodnota této proměnné se liší v závislosti na tom, zda požadavek obsahuje řetězec dotazu.<br /><br />-Nalezen řetězec dotazu:?<br />-Žádný řetězec dotazu: NULL | ? |
 | Našel se parametr řetězce dotazu. | % {is_amp} | Hodnota této proměnné se liší v závislosti na tom, zda požadavek obsahuje alespoň jeden parametr řetězce dotazu.<br /><br />-Nalezen parametr: &<br />-Žádné parametry: NULL | & |
-| Hodnota parametru řetězce dotazu | % {arg_&lt;parametr&gt;} | Vrátí hodnotu odpovídající parametru řetězce dotazu identifikovaného termínem &lt;parametru.&gt; | Ukázka použití: <br />% {arg_language}<br /><br />Vzorový parametr řetězce dotazu: <br />? Language = EN<br /><br />Ukázková hodnota: EN |
+| Hodnota parametru řetězce dotazu | % {arg_ &lt; parametr &gt; } | Vrátí hodnotu odpovídající parametru řetězce dotazu identifikovaného &lt; &gt; termínem parametru. | Ukázka použití: <br />% {arg_language}<br /><br />Vzorový parametr řetězce dotazu: <br />? Language = EN<br /><br />Ukázková hodnota: EN |
 | Hodnota řetězce dotazu | % {query_string} | Označuje celou hodnotu řetězce dotazu definovanou v adrese URL požadavku. |klíč1 = Val1&key2 = Val2&key3 = Val3 |
 | Doména odkazujícího serveru | % {referring_domain} | Určuje doménu definovanou v záhlaví požadavku odkazujícího serveru. | <www.google.com> |
 | Oblast (žadatele) | % {geo_region} | Označuje oblast žadatele (například stát nebo provincie) prostřednictvím alfanumerické zkratky. | CA |
@@ -62,8 +62,8 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GE
 | Schéma žádosti | % {schéma} | Určuje schéma požadavků. |HTTP |
 | Identifikátor URI žádosti (relativní) | % {request_uri} | Určuje relativní cestu, včetně řetězce dotazu definovaného v identifikátoru URI požadavku. | /Marketing/foo.js? LoggedIn = true |
 | Identifikátor URI žádosti (relativní bez řetězce dotazu) | % {URI} | Určuje relativní cestu k požadovanému obsahu. <br /><br/>Informace o klíči:<br />– Tato relativní cesta vyloučí řetězec dotazu.<br />– Tato relativní cesta odráží přepsání adresy URL. Adresa URL bude přepsána za následující podmínky:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Funkce přepisu adresy URL: Tato funkce přepíše relativní cestu definovanou v identifikátoru URI požadavku.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Adresa URL CNAME Edge: Tento typ požadavku se přepíše na odpovídající adresu URL CDN. |/800001/corigin/rewrittendir/foo.js |
-| Identifikátor URI žádosti | % {Request} | Popisuje požadavek. <br />Syntaxe: &lt;protokol HTTP&gt; &lt;relativní cesty&gt; &lt;k metodě http&gt; | ZÍSKAT/marketing/foo.js? LoggedIn = true HTTP/1.1 |
-| Hodnota hlavičky odpovědi | % {resp_&lt;ResponseHeader&gt;} | Vrátí hodnotu odpovídající hlavičce Response identifikovaného termínem &lt;ResponseHeader.&gt; <br /><br />Pokud název hlavičky odpovědi obsahuje pomlčku (například User-Agent), nahraďte ji podtržítkem (například User_Agent). | Ukázkové použití:% {resp_Content_Length}<br /><br />Ukázková hodnota: 100 |
+| Identifikátor URI žádosti | % {Request} | Popisuje požadavek. <br />Syntaxe: &lt; protokol HTTP &gt; &lt; relativní cesty &gt; k metodě &lt; http&gt; | ZÍSKAT/marketing/foo.js? LoggedIn = true HTTP/1.1 |
+| Hodnota hlavičky odpovědi | % {resp_ &lt; ResponseHeader &gt; } | Vrátí hodnotu odpovídající hlavičce Response identifikovaného &lt; &gt; termínem ResponseHeader. <br /><br />Pokud název hlavičky odpovědi obsahuje pomlčku (například User-Agent), nahraďte ji podtržítkem (například User_Agent). | Ukázkové použití:% {resp_Content_Length}<br /><br />Ukázková hodnota: 100 |
 
 ## <a name="usage"></a>Využití
 V následující tabulce jsou popsány správné syntaxe pro určení proměnné HTTP.
@@ -71,9 +71,9 @@ V následující tabulce jsou popsány správné syntaxe pro určení proměnné
 
 | Syntaxe | Příklad | Popis |
 | ------ | -------- | ---------- |
-| % {&lt;HTTPVariable&gt;} | % {Host} | Tuto syntaxi použijte k získání celé hodnoty odpovídající zadanému &lt;HTTPVariable.&gt; |
-| % {&lt;HTTPVariableDelimiter&gt;} | % {Host,} | Tuto syntaxi použijte k nastavení velikosti písmen pro celou hodnotu odpovídající zadanému &lt;HTTPVariableDelimiter.&gt; |
-| % {&lt;HTTPVariableDelimiterExpression&gt;} | % {Host/= ^ www\.([^\.] +)\.([^\.:] +)/CDN. $2. $3:80} | Použijte regulární výraz pro &lt;HTTPVariableDelimiterExpression&gt; k nahrazení, odstranění nebo manipulaci s hodnotou proměnné http. |
+| % { &lt; HTTPVariable &gt; } | % {Host} | Tuto syntaxi použijte k získání celé hodnoty odpovídající zadanému &lt; HTTPVariable &gt; . |
+| % { &lt; HTTPVariableDelimiter &gt; } | % {Host,} | Tuto syntaxi použijte k nastavení velikosti písmen pro celou hodnotu odpovídající zadanému &lt; HTTPVariableDelimiter &gt; . |
+| % { &lt; HTTPVariableDelimiterExpression &gt; } | % {Host/= ^ www \. ([^ \. ] +) \. ([^ \. :] +)/CDN. $2. $3:80} | Použijte regulární výraz pro &lt; HTTPVariableDelimiterExpression &gt; k nahrazení, odstranění nebo manipulaci s hodnotou proměnné http. |
 
 Názvy proměnných HTTP podporují jenom abecední znaky a podtržítka. Převede nepodporované znaky na podtržítka.
 
@@ -160,15 +160,15 @@ Informace o klíči:
 
 Následující příklad spoléhá na následující ukázkovou adresu URL požadavku:
 
-https:\//CDN.mydomain.com/Folder/marketing/myconsultant/Proposal.html
+https: \/ /CDN.mydomain.com/Folder/marketing/myconsultant/Proposal.html
 
 Následující řetězec ukazuje různé metody pro manipulaci s proměnnými:
 
-https:\//www%{HTTP_HOST: 3}/Mobile/%{REQUEST_URI: 7:10}/% {REQUEST_URI:-5:-8}. htm
+https: \/ /www%{HTTP_HOST: 3}/mobile/%{REQUEST_URI: 7:10}/% {REQUEST_URI:-5:-8}. htm
 
 Na základě ukázkové adresy URL požadavku vyprodukuje výše uvedená manipulace proměnnou následující hodnotu:
 
-https:\//www.mydomain.com/Mobile/marketing/Proposal.htm
+https: \/ /www.mydomain.com/Mobile/marketing/Proposal.htm
 
 
 ### <a name="pattern-removal"></a>Odebrání vzorku

@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: bdbf2a975cbdc3d06745b9375c1e6f8e751ddfd6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: df23226adfa8caa86b7ad91dd28a9352381f4170
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77914072"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747567"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Migrace webové aplikace z Map Google
 
 Většina webových aplikací, které používají mapy Google, používá sadu SDK pro Google Maps V3 JavaScript. Azure Maps Web SDK je vhodná sada SDK založená na Azure, na kterou se má migrovat. Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy pomocí vlastního obsahu a snímků. Svou aplikaci můžete spustit na webových nebo mobilních aplikacích. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Pomocí JavaScriptu nebo TypeScript se budete vyvíjet pomocí této sady SDK.
 
-Pokud migrujete existující webovou aplikaci, zkontrolujte, zda je použita knihovna Open Source ovládacího prvku mapy. Příklady knihovny open source ovládacího prvku mapa jsou: cesium, leták a OpenLayers. Stále můžete migrovat aplikaci i v případě, že používá open source knihovnu ovládacího prvku mapy a nechcete používat Azure Maps Web SDK. V takovém případě připojte svoji aplikaci ke službám Azure Maps dlaždic ( [satelitní](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)dlaždice[cest](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| ). Následující body jsou podrobně popsány v tématu použití Azure Maps v některých běžně používaných knihovench ovládacích prvků pro mapování open source.
+Pokud migrujete existující webovou aplikaci, zkontrolujte, zda je použita knihovna Open Source ovládacího prvku mapy. Příklady knihovny open source ovládacího prvku mapa jsou: cesium, leták a OpenLayers. Stále můžete migrovat aplikaci i v případě, že používá open source knihovnu ovládacího prvku mapy a nechcete používat Azure Maps Web SDK. V takovém případě připojte svoji aplikaci ke službám Azure Maps dlaždic (satelitní dlaždice[cest](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [satellite tiles](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)). Následující body jsou podrobně popsány v tématu použití Azure Maps v některých běžně používaných knihovench ovládacích prvků pro mapování open source.
 
-- Cesium – ovládací prvek 3D mapy pro web. [Dokumentace k](https://cesiumjs.org/) [ukázce kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \|
-- Leták – zjednodušený 2D mapový ovládací prvek pro web. [Dokumentace k](https://leafletjs.com/) [ukázce kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \|
-- OpenLayers – 2D ovládací prvek mapy pro web, který podporuje projekce. [Dokumentace k](https://openlayers.org/) [ukázce kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \|
+- Cesium – ovládací prvek 3D mapy pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentace](https://cesiumjs.org/)
+- Leták – zjednodušený 2D mapový ovládací prvek pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentace](https://leafletjs.com/)
+- OpenLayers – 2D ovládací prvek mapy pro web, který podporuje projekce. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentace](https://openlayers.org/)
 
 ## <a name="key-features-support"></a>Podpora klíčových funkcí
 
@@ -51,11 +51,11 @@ V tabulce jsou uvedeny klíčové funkce rozhraní API v sadě Google Maps V3 Ja
 Níže jsou uvedeny některé klíčové rozdíly mezi službami Google Maps a Azure Maps Web SDK, které mají být v potaz:
 
 - Kromě poskytování hostovaného koncového bodu pro přístup k Azure Maps webové sadě SDK je k dispozici balíček NPM. Vložte balíček Web SDK do aplikace. Další informace najdete v této [dokumentaci](how-to-use-map-control.md). Tento balíček obsahuje také definice TypeScript.
-- Nejprve musíte vytvořit instanci třídy map v Azure Maps. Počkejte, než se `ready` mapy `load` nebo událost aktivují předtím, než programově spolupracuje s mapou. Tato objednávka zajistí, že se načetly všechny prostředky mapy a že jsou připravené k jejímu použití.
+- Nejprve musíte vytvořit instanci třídy map v Azure Maps. Počkejte, než se mapy `ready` nebo `load` událost aktivují předtím, než programově spolupracuje s mapou. Tato objednávka zajistí, že se načetly všechny prostředky mapy a že jsou připravené k jejímu použití.
 - Obě platformy pro základní mapy používají podobný systém dlaždic. Dlaždice v Google Maps jsou v dimenzi 256 pixelů. dlaždice v Azure Maps jsou však v dimenzi 512 pixelů. Chcete-li získat stejné zobrazení mapy jako v Azure Maps jako Google Maps, odečtěte úroveň přiblížení Google Maps o číslo 1 v Azure Maps.
-- Souřadnice v Google Maps se označují jako zeměpisná šířka, zeměpisná délka, zatímco Azure Maps používá zeměpisnou délku, zeměpisnou šířku. Formát Azure Maps je zarovnán se standardem `[x, y]`, který následuje po většině platforem GIS.
+- Souřadnice v Google Maps se označují jako zeměpisná šířka, zeměpisná délka, zatímco Azure Maps používá zeměpisnou délku, zeměpisnou šířku. Formát Azure Maps je zarovnán se standardem `[x, y]` , který následuje po většině platforem GIS.
 - Tvary v sadě Azure Maps Web SDK jsou založené na schématu geometrického kódu. Pomocné třídy jsou zpřístupněny prostřednictvím [oboru názvů *Atlas. data* ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest). Je to také [*Atlas. Třída Shape*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) Tato třída se používá ke zalamování objektů. JSON, aby bylo možné snadno aktualizovat a udržovat datovou vazby.
-- Souřadnice v Azure Maps jsou definovány jako objekty pozice. Souřadnice se zadává jako číslo pole ve formátu `[longitude,latitude]`. Nebo je zadaný pomocí New Atlas. data. Position (zeměpisná délka, zeměpisná šířka).
+- Souřadnice v Azure Maps jsou definovány jako objekty pozice. Souřadnice se zadává jako číslo pole ve formátu `[longitude,latitude]` . Nebo je zadaný pomocí New Atlas. data. Position (zeměpisná délka, zeměpisná šířka).
     > [!TIP]
     > Třída Position má statickou pomocnou metodu pro import souřadnic, které jsou ve formátu "Zeměpisná délka". Metoda [Atlas. data. Position. fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) se často dá nahradit `new google.maps.LatLng` metodou v kódu Google Maps.
 - Namísto zadání informací o stylech na každém obrazci, který je přidán k mapě, Azure Maps odděluje styly od dat. Data jsou uložena ve zdrojích dat a jsou propojena s vrstvami vykreslování. Azure Maps kód používá zdroje dat k vykreslování dat. Tento přístup poskytuje vyšší výhody výkonu. Kromě toho mnoho vrstev podporuje styly řízené daty, kde obchodní logika může být přidána do možností stylu vrstvy. Tato podpora mění způsob vykreslování jednotlivých tvarů v rámci vrstvy na základě vlastností definovaných v obrazci.
@@ -77,11 +77,11 @@ Obě sady SDK mají stejný postup pro načtení mapy:
 
 - Google Maps vyžaduje zadání klíče účtu v odkazu na skript rozhraní API. Pověření ověřování pro Azure Maps jsou zadána jako možnosti třídy map. Tímto pověřením může být klíč předplatného nebo informace Azure Active Directory.
 - Google Maps akceptuje funkci zpětného volání v odkazu na skript rozhraní API, který se používá k volání funkce inicializace pro načtení mapy. V Azure Maps by se měla použít událost při načtení stránky.
-- Při odkazování na `div` prvek, ve kterém bude mapa vykreslena, `Map` třída v Azure Maps vyžaduje pouze `id` hodnotu, zatímco Google Maps vyžaduje `HTMLElement` objekt.
-- Souřadnice v Azure Maps jsou definovány jako objekty pozice, které lze zadat jako jednoduché pole čísel ve formátu `[longitude, latitude]`.
+- Při odkazování na `div` prvek, ve kterém bude mapa vykreslena, `Map` třída v Azure Maps vyžaduje pouze hodnotu, `id` zatímco Google Maps vyžaduje `HTMLElement` objekt.
+- Souřadnice v Azure Maps jsou definovány jako objekty pozice, které lze zadat jako jednoduché pole čísel ve formátu `[longitude, latitude]` .
 - Úroveň přiblížení v Azure Maps je jedna úroveň nižší než úroveň přiblížení v Mapách Google Maps. Tato nesrovnalost je způsobená rozdílem velikosti systému dlaždic dvou platforem.
 - Azure Maps nepřidá žádné navigační ovládací prvky do plátna mapy. Takže ve výchozím nastavení nemá mapa tlačítka lupy a tlačítka pro mapování stylů. Existují však možnosti ovládacího prvku pro přidání výběru stylu mapy, tlačítek lupy, kompasu nebo ovládacího prvku otáčení a ovládacího prvku sklonu.
-- Do Azure Maps se přidá obslužná rutina události, která `ready` monitoruje událost instance mapy. Tato událost se aktivuje, jakmile mapa dokončí načtení kontextu WebGL a všech potřebných prostředků. Přidejte veškerý kód, který chcete spustit po dokončení načítání mapy, do této obslužné rutiny události.
+- Do Azure Maps se přidá obslužná rutina události, která monitoruje `ready` událost instance mapy. Tato událost se aktivuje, jakmile mapa dokončí načtení kontextu WebGL a všech potřebných prostředků. Přidejte veškerý kód, který chcete spustit po dokončení načítání mapy, do této obslužné rutiny události.
 
 Základní příklady níže využívají Google Maps k načtení mapy uprostřed v New Yorku v souřadnicích. Zeměpisná délka:-73,985, zeměpisná šířka: 40,747 a mapa jsou na úrovni přiblížení 12.
 
@@ -194,7 +194,7 @@ Přečtěte si podrobnou dokumentaci k nastavení a použití ovládacího prvku
 
 ### <a name="localizing-the-map"></a>Lokalizace mapy
 
-Pokud jsou vaše cílová skupina rozdělená do několika zemí nebo komunikují s různými jazyky, je lokalizace důležitá.
+Pokud je vaše cílová skupina rozdělená do několika zemí nebo oblastí nebo hovoří o různých jazycích, je lokalizace důležitá.
 
 **Před: Google Maps**
 
@@ -289,7 +289,7 @@ map.setStyle({
 **Další zdroje informací:**
 
 - [Výběr stylu mapy](choose-map-style.md)
-- [Podporované styly mapy](supported-map-styles.md)
+- [Podporované styly map](supported-map-styles.md)
 
 ### <a name="adding-a-marker"></a>Přidání značky
 
@@ -299,7 +299,7 @@ V Azure Maps existuje více způsobů, jak lze na mapě vykreslovat data z těch
 - **Vrstva symbolu** – vykreslí body s ikonou nebo textem v rámci WebGL kontextu.
 - **Bublinová vrstva** – vykreslí body jako kružnice na mapě. Poloměry kroužků se dají škálovat na základě vlastností v datech.
 
-Vykreslení vrstev symbolů a bublinových vrstev v kontextu WebGL. Obě vrstvy mohou vykreslovat velké sady bodů na mapě. Tyto vrstvy vyžadují, aby data byla uložená ve zdroji dat. Zdroje dat a vrstvy vykreslování by měly být přidány do mapy po vyvolání `ready` události. Značky HTML jsou vykresleny jako elementy DOM v rámci stránky a nepoužívají zdroj dat. Čím více elementů modelu DOM má stránku, tím pomalejší stránka bude. Pokud je vykreslování více než několik stovek bodů na mapě, doporučuje se místo toho použít jednu z vrstev vykreslování.
+Vykreslení vrstev symbolů a bublinových vrstev v kontextu WebGL. Obě vrstvy mohou vykreslovat velké sady bodů na mapě. Tyto vrstvy vyžadují, aby data byla uložená ve zdroji dat. Zdroje dat a vrstvy vykreslování by měly být přidány do mapy po `ready` vyvolání události. Značky HTML jsou vykresleny jako elementy DOM v rámci stránky a nepoužívají zdroj dat. Čím více elementů modelu DOM má stránku, tím pomalejší stránka bude. Pokud je vykreslování více než několik stovek bodů na mapě, doporučuje se místo toho použít jednu z vrstev vykreslování.
 
 Pojďme přidat značku na mapu s číslem 10 překrytí jako popisek. Použijte zeměpisnou délku:-0,2 a zeměpisnou šířku: 51,5.
 
@@ -338,7 +338,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 **Po: Azure Maps používání vrstvy symbolů**
 
-Pro vrstvu symbolů přidejte data do zdroje dat. Připojte zdroj dat ke vrstvě. Kromě toho by měl být zdroj dat a vrstva po vyvyvolání `ready` události přidány do mapy. Chcete-li vykreslit jedinečnou textovou hodnotu nad symbolem, musí být textové informace uloženy jako vlastnost datového bodu. Vlastnost musí být odkazována v `textField` možnosti vrstvy. Tento přístup je trochu větší práce než použití značek HTML, ale lepší výkon.
+Pro vrstvu symbolů přidejte data do zdroje dat. Připojte zdroj dat ke vrstvě. Kromě toho by měl být zdroj dat a vrstva po `ready` vyvyvolání události přidány do mapy. Chcete-li vykreslit jedinečnou textovou hodnotu nad symbolem, musí být textové informace uloženy jako vlastnost datového bodu. Vlastnost musí být odkazována v `textField` Možnosti vrstvy. Tento přístup je trochu větší práce než použití značek HTML, ale lepší výkon.
 
 ```html
 <!DOCTYPE html>
@@ -422,7 +422,7 @@ Vlastní obrázky můžete použít k reprezentaci bodů na mapě. Níže uveden
 <center>
 
 ![Obrázek žlutého připínáčku](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
-YLW\_připínáček. png</center>
+YLW \_ připínáček. png</center>
 
 **Před: Google Maps**
 
@@ -445,7 +445,7 @@ var marker = new google.maps.Marker({
 
 **Po: Azure Maps použití značek HTML**
 
-Chcete-li přizpůsobit značku HTML, předejte `string` kód `HTMLElement` HTML nebo `htmlContent` možnost značky. Pomocí `anchor` možnosti zadejte relativní pozici značky vzhledem k souřadnici pozice. Přiřaďte k `anchor` možnosti jeden z devíti definovaných referenčních bodů. Mezi tyto definované body patří: "Center", "Top", "Bottom", "Left", "Right", "Top-left", "top-right", "Bottom-left", "Bottom-Right". Ve výchozím nastavení je obsah ukotven ke spodnímu středu obsahu HTML. Aby bylo snazší migrovat kód z Google Maps, nastavte `anchor` na "Left-left" a pak použijte `pixelOffset` možnost se stejným posunem použitým v Mapách Google. Posuny Azure Maps v opačném směru posunu v Mapách Google. Vynásobit tak posuny znaménkem minus jedna.
+Chcete-li přizpůsobit značku HTML, předejte kód HTML `string` nebo `HTMLElement` `htmlContent` možnost značky. Pomocí `anchor` Možnosti zadejte relativní pozici značky vzhledem k souřadnici pozice. Přiřaďte k možnosti jeden z devíti definovaných referenčních bodů `anchor` . Mezi tyto definované body patří: "Center", "Top", "Bottom", "Left", "Right", "Top-left", "top-right", "Bottom-left", "Bottom-Right". Ve výchozím nastavení je obsah ukotven ke spodnímu středu obsahu HTML. Aby bylo snazší migrovat kód z Google Maps, nastavte na `anchor` "Left-left" a pak použijte `pixelOffset` možnost se stejným posunem použitým v Mapách Google. Posuny Azure Maps v opačném směru posunu v Mapách Google. Vynásobit tak posuny znaménkem minus jedna.
 
 > [!TIP]
 > Přidejte `pointer-events:none` jako styl obsahu HTML, abyste zakázali výchozí chování při přetahování v Microsoft Edge. tím se zobrazí nežádoucí ikona.
@@ -465,7 +465,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 **Po: Azure Maps používání vrstvy symbolů**
 
-Vrstvy symbolů v Azure Maps podporují také vlastní image. Nejdřív načtěte obrázek do prostředků mapy a přiřaďte ho k jedinečnému ID. Odkázat na obrázek ve vrstvě symbolů. Pomocí `offset` možnosti zarovnejte obrázek se správným bodem na mapě. Použijte `anchor` možnost k určení relativní pozice symbolu vzhledem k souřadnicím pozice. Použijte jeden z devíti definovaných referenčních bodů. Jsou to tyto body: "Center", "Top", "Bottom", "Left", "Right", "Top-left", "top-right", "Bottom-left", "Bottom-Right". Ve výchozím nastavení je obsah ukotven ke spodnímu středu obsahu HTML. Aby bylo snazší migrovat kód z Google Maps, nastavte `anchor` na "Left-left" a pak použijte `offset` možnost se stejným posunem použitým v Mapách Google. Posuny Azure Maps v opačném směru posunu v Mapách Google. Vynásobit tak posuny znaménkem minus jedna.
+Vrstvy symbolů v Azure Maps podporují také vlastní image. Nejdřív načtěte obrázek do prostředků mapy a přiřaďte ho k jedinečnému ID. Odkázat na obrázek ve vrstvě symbolů. Pomocí `offset` Možnosti zarovnejte obrázek se správným bodem na mapě. Použijte `anchor` možnost k určení relativní pozice symbolu vzhledem k souřadnicím pozice. Použijte jeden z devíti definovaných referenčních bodů. Jsou to tyto body: "Center", "Top", "Bottom", "Left", "Right", "Top-left", "top-right", "Bottom-left", "Bottom-Right". Ve výchozím nastavení je obsah ukotven ke spodnímu středu obsahu HTML. Aby bylo snazší migrovat kód z Google Maps, nastavte na `anchor` "Left-left" a pak použijte `offset` možnost se stejným posunem použitým v Mapách Google. Posuny Azure Maps v opačném směru posunu v Mapách Google. Vynásobit tak posuny znaménkem minus jedna.
 
 ```html
 <!DOCTYPE html>
@@ -550,7 +550,7 @@ Použijte lomené čáry k vyjádření čáry nebo cesty na mapě. Pojďme na m
 
 **Před: Google Maps**
 
-Třída lomené čáry přijímá sadu možností. Předat pole souřadnic v `path` možnosti lomené čáry.
+Třída lomené čáry přijímá sadu možností. Předat pole souřadnic v `path` Možnosti lomené čáry.
 
 ```javascript
 //Get the center of the map.
@@ -590,7 +590,7 @@ line.setMap(map);
 
 **Po: Azure Maps**
 
-Jsou volány `LineString` čárové čáry nebo `MultiLineString` objekty. Tyto objekty lze přidat do zdroje dat a vykresleny pomocí spojnicové vrstvy. Přidejte `LineString` do zdroje dat a potom přidejte zdroj dat do a `LineLayer` vykreslete ho.
+Jsou volány čárové čáry `LineString` nebo `MultiLineString` objekty. Tyto objekty lze přidat do zdroje dat a vykresleny pomocí spojnicové vrstvy. Přidejte `LineString` do zdroje dat a potom přidejte zdroj dat do a `LineLayer` vykreslete ho.
 
 ```javascript
 //Get the center of the map.
@@ -631,7 +631,7 @@ Mapy Azure Maps a Google poskytují podobnou podporu pro mnohoúhelníky. Mnoho�
 
 **Před: Google Maps**
 
-Třída mnohoúhelníku přijímá sadu možností. Předejte pole souřadnic k `paths` možnosti mnohoúhelníku.
+Třída mnohoúhelníku přijímá sadu možností. Předejte pole souřadnic k `paths` Možnosti mnohoúhelníku.
 
 ```javascript
 //Get the center of the map.
@@ -660,7 +660,7 @@ polygon.setMap(map);
 
 **Po: Azure Maps**
 
-Přidejte `MultiPolygon` objekty `Polygon` nebo do zdroje dat. Vykreslete objekt na mapě pomocí vrstev. Vykreslí oblast mnohoúhelníku pomocí mnohoúhelníkové vrstvy. A vykreslete obrys mnohoúhelníku pomocí vrstvy čáry.
+Přidejte `Polygon` objekty nebo do `MultiPolygon` zdroje dat. Vykreslete objekt na mapě pomocí vrstev. Vykreslí oblast mnohoúhelníku pomocí mnohoúhelníkové vrstvy. A vykreslete obrys mnohoúhelníku pomocí vrstvy čáry.
 
 ```javascript
 //Get the center of the map.
@@ -704,7 +704,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 ### <a name="display-an-info-window"></a>Zobrazit informační okno
 
-Další informace o entitě se dají zobrazit na mapě jako `google.maps.InfoWindow` třída v Mapách Google Maps. V Azure Maps lze tuto funkci dosáhnout pomocí `atlas.Popup` třídy. Další příklady přidávají na mapu značku. Po kliknutí na značku se zobrazí informační okno nebo místní nabídka.
+Další informace o entitě se dají zobrazit na mapě jako `google.maps.InfoWindow` Třída v Mapách Google Maps. V Azure Maps lze tuto funkci dosáhnout pomocí `atlas.Popup` třídy. Další příklady přidávají na mapu značku. Po kliknutí na značku se zobrazí informační okno nebo místní nabídka.
 
 **Před: Google Maps**
 
@@ -734,7 +734,7 @@ marker.addListener('click', function () {
 
 **Po: Azure Maps**
 
-Pomocí automaticky otevíraného okna můžete zobrazit další informace o umístění. Předat HTML `string` nebo `HTMLElement` objekt do `content` možnosti automaticky otevírané okno. V případě potřeby lze automaticky otevíraná okna zobrazit nezávisle na jakémkoli tvaru. Proto budou automaticky otevíraná okna vyžadovat `position` zadání hodnoty. Zadejte `position` hodnotu. Chcete-li zobrazit místní nabídku, `open` zavolejte metodu a předejte jí, `map` ve které se má automaticky otevíraná okna zobrazovat.
+Pomocí automaticky otevíraného okna můžete zobrazit další informace o umístění. Předat HTML `string` nebo `HTMLElement` objekt do `content` Možnosti automaticky otevírané okno. V případě potřeby lze automaticky otevíraná okna zobrazit nezávisle na jakémkoli tvaru. Proto budou automaticky otevíraná okna vyžadovat `position` zadání hodnoty. Zadejte `position` hodnotu. Chcete-li zobrazit místní nabídku, zavolejte `open` metodu a předejte jí, `map` ve které se má automaticky otevíraná okna zobrazovat.
 
 ```javascript
 //Add a marker to the map in which to display a popup for.
@@ -777,13 +777,13 @@ map.events.add('click', marker, function () {
 
 ### <a name="import-a-geojson-file"></a>Importovat soubor. JSON
 
-Google Maps podporuje načítání a dynamické stylování dat typu data v `google.maps.Data` angličtině prostřednictvím třídy. Funkce této třídy zarovnává mnohem více se stylem založeným na datech Azure Maps. Ale existuje nějaký klíčový rozdíl. Pomocí Map Google zadáte funkci zpětného volání. Obchodní logika pro stylování každé funkce, která se zpracovává jednotlivě ve vlákně uživatelského rozhraní. Ale v Azure Maps vrstvy podporují určení výrazů řízených daty jako možnosti stylu. Tyto výrazy jsou zpracovávány v době vykreslování v samostatném vlákně. Azure Maps přístup zvyšuje výkon při vykreslování. Tato výhoda se zaznamená, když je potřeba rychle vykreslovat větší datové sady.
+Google Maps podporuje načítání a dynamické stylování dat typu data v angličtině prostřednictvím `google.maps.Data` třídy. Funkce této třídy zarovnává mnohem více se stylem založeným na datech Azure Maps. Ale existuje nějaký klíčový rozdíl. Pomocí Map Google zadáte funkci zpětného volání. Obchodní logika pro stylování každé funkce, která se zpracovává jednotlivě ve vlákně uživatelského rozhraní. Ale v Azure Maps vrstvy podporují určení výrazů řízených daty jako možnosti stylu. Tyto výrazy jsou zpracovávány v době vykreslování v samostatném vlákně. Azure Maps přístup zvyšuje výkon při vykreslování. Tato výhoda se zaznamená, když je potřeba rychle vykreslovat větší datové sady.
 
-Následující příklady načtou v rámci sadě USGS informační kanál pro zemětřesení za posledních sedm dní. Data zemětřesení se vykreslují jako kružnice škálované na mapě. Barva a měřítko jednotlivých kruhů jsou založené na velikosti každého zemětřesení, který je uložený ve `"mag"` vlastnosti každé funkce v sadě dat. Pokud je velikost větší než nebo rovna pěti, bude kroužek červeně. Pokud je větší nebo rovno třem, ale menší než pět, kruh bude oranžová. Pokud je menší než tři, bude kroužek zelený. Poloměr každého kruhu bude exponenciálně vynásobený z rozsahu, který vynásobí 0,1.
+Následující příklady načtou v rámci sadě USGS informační kanál pro zemětřesení za posledních sedm dní. Data zemětřesení se vykreslují jako kružnice škálované na mapě. Barva a měřítko jednotlivých kruhů jsou založené na velikosti každého zemětřesení, který je uložený ve `"mag"` Vlastnosti každé funkce v sadě dat. Pokud je velikost větší než nebo rovna pěti, bude kroužek červeně. Pokud je větší nebo rovno třem, ale menší než pět, kruh bude oranžová. Pokud je menší než tři, bude kroužek zelený. Poloměr každého kruhu bude exponenciálně vynásobený z rozsahu, který vynásobí 0,1.
 
 **Před: Google Maps**
 
-Zadejte v `map.data.setStyle` metodě jednu funkci zpětného volání. Uvnitř funkce zpětného volání použijte obchodní logiku pro každou funkci. Načtěte informační kanál pro injson `map.data.loadGeoJson` pomocí metody.
+Zadejte v metodě jednu funkci zpětného volání `map.data.setStyle` . Uvnitř funkce zpětného volání použijte obchodní logiku pro každou funkci. Načtěte informační kanál pro injson pomocí `map.data.loadGeoJson` metody.
 
 ```html
 <!DOCTYPE html>
@@ -1014,7 +1014,7 @@ Použijte knihovnu MarkerCluster ke značkám clusteru. Ikony clusteru jsou omez
 
 **Po: Azure Maps**
 
-Přidejte a spravujte data ve zdroji dat. Připojte zdroje dat a vrstvy a potom data vykreslete. `DataSource` Třída v Azure Maps poskytuje několik možností clusteringu.
+Přidejte a spravujte data ve zdroji dat. Připojte zdroje dat a vrstvy a potom data vykreslete. `DataSource`Třída v Azure Maps poskytuje několik možností clusteringu.
 
 - `cluster`– Instruuje zdroj dat na data bodu clusteru.
 - `clusterRadius`-Mezi protokolem RADIUS a propojenými body clusteru.
@@ -1026,17 +1026,17 @@ Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskup
 | Název vlastnosti             | Typ    | Popis   |
 |---------------------------|---------|---------------|
 | `cluster`                 | Boolean | Indikuje, že funkce představuje cluster. |
-| `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít s metodami DataSource `getClusterExpansionZoom`, `getClusterChildren`a. `getClusterLeaves` |
+| `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít s `getClusterExpansionZoom` `getClusterChildren` metodami DataSource, a `getClusterLeaves` . |
 | `point_count`             | číslo  | Počet bodů, které cluster obsahuje.  |
-| `point_count_abbreviated` | řetězec  | Řetězec, který zkracuje `point_count` hodnotu, pokud je Long. (například 4 000 se bude 4K)  |
+| `point_count_abbreviated` | řetězec  | Řetězec, který zkracuje hodnotu, `point_count` Pokud je Long. (například 4 000 se bude 4K)  |
 
-`DataSource` Třída má následující pomocnou funkci pro přístup k dalším informacím o clusteru pomocí `cluster_id`.
+`DataSource`Třída má následující pomocnou funkci pro přístup k dalším informacím o clusteru pomocí `cluster_id` .
 
 | Metoda | Návratový typ | Popis |
 |--------|-------------|-------------|
-| `getClusterChildren(clusterId: number)` | Geometrie&lt;funkce&lt;&lt;pole Promise,&gt; \| libovolný tvar&gt;&gt; | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené položky mohou být kombinací tvarů a podclusterů. Podclustery budou funkcemi s vlastnostmi, které odpovídají ClusteredProperties. |
-| `getClusterExpansionZoom(clusterId: number)` | Číslo&lt;Promise&gt; | Vypočítá úroveň přiblížení, při které se cluster začne zvětšovat nebo rozdělovat. |
-| `getClusterLeaves(clusterId: number, limit: number, offset: number)` | Geometrie&lt;funkce&lt;&lt;pole Promise,&gt; \| libovolný tvar&gt;&gt; | Načte všechny body v clusteru. Nastavte, `limit` aby se vracela podmnožina bodů, a použijte `offset` stránku k v bodech. |
+| `getClusterChildren(clusterId: number)` | &lt;Geometrie funkce pole promise &lt; &lt; , libovolný &gt; \| tvar&gt;&gt; | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené položky mohou být kombinací tvarů a podclusterů. Podclustery budou funkcemi s vlastnostmi, které odpovídají ClusteredProperties. |
+| `getClusterExpansionZoom(clusterId: number)` | Číslo promise &lt;&gt; | Vypočítá úroveň přiblížení, při které se cluster začne zvětšovat nebo rozdělovat. |
+| `getClusterLeaves(clusterId: number, limit: number, offset: number)` | &lt;Geometrie funkce pole promise &lt; &lt; , libovolný &gt; \| tvar&gt;&gt; | Načte všechny body v clusteru. Nastavte, `limit` aby se vracela podmnožina bodů, a použijte `offset` stránku k v bodech. |
 
 Při vykreslování clusterovaných dat na mapě je často vhodné použít dvě nebo více vrstev. Následující příklad používá tři vrstvy. Bublinová vrstva pro kreslení barevných kruhů škálované podle velikosti clusterů. Vrstva symbolů pro vykreslení velikosti clusteru jako textu. A používá druhou vrstvu symbolů pro vykreslování neclusterovaných bodů. Existuje mnoho dalších způsobů, jak vykreslovat data v clusteru. Další informace najdete v dokumentaci k [datům bodu clusteru](clustering-point-data-web-sdk.md) .
 
@@ -1151,7 +1151,7 @@ Přímo importujte data typu injson pomocí `importDataFromUrl` funkce `DataSour
 
 Heat mapy, označované také jako mapy hustoty bodů, jsou typem vizualizace dat. Slouží k reprezentaci hustoty dat pomocí rozsahu barev. A často se používají k zobrazení dat "aktivních bodů" na mapě. Tepelné mapy jsou skvělým způsobem, jak vykreslovat sady velkých bodů dat.
 
-V následujících příkladech je načten informační kanál zemětřesení pro všechny za minulý měsíc, z sadě USGS a vykresluje se jako vážená Heat mapa. `"mag"` Vlastnost se používá jako váha.
+V následujících příkladech je načten informační kanál zemětřesení pro všechny za minulý měsíc, z sadě USGS a vykresluje se jako vážená Heat mapa. `"mag"`Vlastnost se používá jako váha.
 
 **Před: Google Maps**
 
@@ -1224,7 +1224,7 @@ Pokud chcete vytvořit Heat mapu, načtěte knihovnu vizualizace přidáním `&l
 
 **Po: Azure Maps**
 
-Načtěte data o úrovni injson do zdroje dat a propojte zdroj dat s vrstvou Heat mapy. Vlastnost, která bude použita pro váhu, lze předat do `weight` možnosti pomocí výrazu. Přímo importujte data typu injson do Azure Maps pomocí `importDataFromUrl` funkce `DataSource` třídy.
+Načtěte data o úrovni injson do zdroje dat a propojte zdroj dat s vrstvou Heat mapy. Vlastnost, která bude použita pro váhu, lze předat do `weight` Možnosti pomocí výrazu. Přímo importujte data typu injson do Azure Maps pomocí `importDataFromUrl` funkce `DataSource` třídy.
 
 ```html
 <!DOCTYPE html>
@@ -1321,10 +1321,10 @@ map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
 
 **Po: Azure Maps**
 
-Přidejte vrstvu dlaždic do mapy podobně jako jakoukoli jinou vrstvu. Použijte formátovanou adresu URL, která má ve x, y, zástupné symboly lupy; `{x}`, `{y}`, `{z}` Pokud chcete sdělit vrstvu, kde má být přístup k dlaždicím. Vrstvy dlaždic Azure Maps také podporují `{quadkey}`, `{bbox-epsg-3857}`a `{subdomain}` zástupné symboly.
+Přidejte vrstvu dlaždic do mapy podobně jako jakoukoli jinou vrstvu. Použijte formátovanou adresu URL, která má ve x, y, zástupné symboly lupy; `{x}`, `{y}` , `{z}` Pokud chcete sdělit vrstvu, kde má být přístup k dlaždicím. Vrstvy dlaždic Azure Maps také podporují `{quadkey}` , `{bbox-epsg-3857}` a `{subdomain}` zástupné symboly.
 
 > [!TIP]
-> V Azure Maps vrstev lze snadno vykreslovat pod jinými vrstvami, včetně základních vrstev mapy. Často je žádoucí vykreslovat vrstvy dlaždice pod popisky map, aby byly snadno čitelné. `map.layers.add` Metoda přebírá druhý parametr, který je identifikátorem vrstvy, do které chcete vložit novou vrstvu. Chcete-li vložit vrstvu dlaždice pod popisky mapy, použijte tento kód:`map.layers.add(myTileLayer, "labels");`
+> V Azure Maps vrstev lze snadno vykreslovat pod jinými vrstvami, včetně základních vrstev mapy. Často je žádoucí vykreslovat vrstvy dlaždice pod popisky map, aby byly snadno čitelné. `map.layers.add`Metoda přebírá druhý parametr, který je identifikátorem vrstvy, do které chcete vložit novou vrstvu. Chcete-li vložit vrstvu dlaždice pod popisky mapy, použijte tento kód:`map.layers.add(myTileLayer, "labels");`
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.
@@ -1340,7 +1340,7 @@ map.layers.add(new atlas.layer.TileLayer({
 ![Vrstva Azure Maps dlaždice](media/migrate-google-maps-web-app/azure-maps-tile-layer.png)</center>
 
 > [!TIP]
-> Žádosti o dlaždici se dají zachytit `transformRequest` pomocí možnosti mapy. V případě potřeby vám umožní upravit nebo přidat hlavičky do žádosti.
+> Žádosti o dlaždici se dají zachytit pomocí `transformRequest` Možnosti mapy. V případě potřeby vám umožní upravit nebo přidat hlavičky do žádosti.
 
 **Další zdroje informací:**
 
@@ -1369,7 +1369,7 @@ trafficLayer.setMap(map);
 
 Azure Maps poskytuje několik různých možností pro zobrazení provozu. Zobrazit incidenty provozu, jako jsou například uzávěry provozu a nehody jako ikony na mapě. Překrytí toku přenosů a barevně kódovaných cest na mapě Barvy lze upravovat na základě odeslaného limitu rychlosti, relativně k normálnímu očekávanému zpoždění nebo absolutnímu zpoždění. Data incidentu v Azure Maps aktualizace každou minutu a data toků se aktualizují každé dvě minuty.
 
-Přiřaďte požadovaným hodnotám `setTraffic` možnosti.
+Přiřaďte požadovaným hodnotám `setTraffic` Možnosti.
 
 ```javascript
 map.setTraffic({
@@ -1565,7 +1565,7 @@ Spuštění tohoto kódu v prohlížeči zobrazí mapu, která vypadá jako na n
 
 **Po: Azure Maps**
 
-V Azure Maps je pro informating data ve webové sadě v angličtině hlavní formát dat, další formáty prostorových dat je možné snadno integrovat pomocí [modulu pro prostorové vstupně-výstupní operace](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/). Tento modul obsahuje funkce pro čtení i zápis prostorových dat a také obsahuje jednoduchou datovou vrstvu, která může snadno vykreslovat data z libovolného z těchto formátů prostorových dat. Chcete-li číst data v prostorovém datovém souboru, jednoduše předejte adresu URL nebo nezpracovaná data jako řetězec nebo `atlas.io.read` objekt blob do funkce. Tato akce vrátí všechna Analyzovaná data ze souboru, který lze přidat do mapy. KML je trochu složitější než většina formátů prostorových dat, protože obsahuje mnoho dalších informací o stylu. `SpatialDataLayer` Třída podporuje vykreslování většiny těchto stylů, ale před načtením dat funkce musí být obrázky napřed načteny do mapy a základní překrytí musí být přidány jako vrstvy do mapy samostatně. Při načítání dat prostřednictvím adresy URL by se měla hostovat na koncovém bodu s povoleným CORs nebo by měla být proxy služba předána jako možnost funkce Read. 
+V Azure Maps je pro informating data ve webové sadě v angličtině hlavní formát dat, další formáty prostorových dat je možné snadno integrovat pomocí [modulu pro prostorové vstupně-výstupní operace](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/). Tento modul obsahuje funkce pro čtení i zápis prostorových dat a také obsahuje jednoduchou datovou vrstvu, která může snadno vykreslovat data z libovolného z těchto formátů prostorových dat. Chcete-li číst data v prostorovém datovém souboru, jednoduše předejte adresu URL nebo nezpracovaná data jako řetězec nebo objekt blob do `atlas.io.read` funkce. Tato akce vrátí všechna Analyzovaná data ze souboru, který lze přidat do mapy. KML je trochu složitější než většina formátů prostorových dat, protože obsahuje mnoho dalších informací o stylu. `SpatialDataLayer`Třída podporuje vykreslování většiny těchto stylů, ale před načtením dat funkce musí být obrázky napřed načteny do mapy a základní překrytí musí být přidány jako vrstvy do mapy samostatně. Při načítání dat prostřednictvím adresy URL by se měla hostovat na koncovém bodu s povoleným CORs nebo by měla být proxy služba předána jako možnost funkce Read. 
 
 ```javascript
 <!DOCTYPE html>

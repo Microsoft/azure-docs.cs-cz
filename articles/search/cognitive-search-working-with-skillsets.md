@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2b336451bde559ce773a9b611bc98b4de3f11871
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e8e263d29bc71ac76c374eeda78e5250a0af2095
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652748"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744792"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Dovednosti koncepty a kompozice v Azure Kognitivní hledání
 
@@ -26,9 +26,9 @@ Dovednosti je opakovaně použitelný prostředek ve službě Azure Kognitivní 
 
 Dovednosti má tři vlastnosti:
 
-+   ```skills```, neuspořádaná kolekce dovedností, pro kterou platforma Určuje sekvenci provádění na základě vstupů vyžadovaných pro každou dovednost
-+   ```cognitiveServices```, klíč služeb rozpoznávání požadovaných k fakturaci vyvolalo vnímání odbornosti.
-+   ```knowledgeStore```, účet úložiště, ve kterém se budou obohacené dokumenty promítnout
++    ```skills```, neuspořádaná kolekce dovedností, pro kterou platforma Určuje sekvenci provádění na základě vstupů vyžadovaných pro každou dovednost
++    ```cognitiveServices```, klíč služeb rozpoznávání požadovaných k fakturaci vyvolalo vnímání odbornosti.
++    ```knowledgeStore```, účet úložiště, ve kterém se budou obohacené dokumenty promítnout
 
 
 
@@ -54,14 +54,14 @@ Ve zbývající části tohoto dokumentu budeme předpokládat, že pracujeme s 
 
 ### <a name="context"></a>Kontext
 Každá dovednost vyžaduje kontext. Kontext určuje:
-+   Počet, kolikrát se dovednost spustí na základě vybraných uzlů. V případě hodnot kontextu typu kolekce je přidání ```/*``` na konci výsledkem uplatnění dovednosti u každé instance v kolekci. 
-+   Ve stromu obohacení se přidávají výstupy dovedností. Výstupy jsou vždy přidány do stromu jako podřízené objekty uzlu kontextu. 
-+   Tvar vstupů. U kolekcí s více úrovněmi ovlivní nastavení kontextu pro nadřazenou kolekci tvar vstupu pro dovednost. Například pokud máte strom obohacení se seznamem zemí, každý obohacený seznamem stavů, které obsahují seznam PSČ.
++    Počet, kolikrát se dovednost spustí na základě vybraných uzlů. V případě hodnot kontextu typu kolekce je přidání ```/*``` na konci výsledkem uplatnění dovednosti u každé instance v kolekci. 
++    Ve stromu obohacení se přidávají výstupy dovedností. Výstupy jsou vždy přidány do stromu jako podřízené objekty uzlu kontextu. 
++    Tvar vstupů. U kolekcí s více úrovněmi ovlivní nastavení kontextu pro nadřazenou kolekci tvar vstupu pro dovednost. Například pokud máte strom pro obohacení se seznamem zemí nebo oblastí, každý obohacený seznamem stavů, které obsahují seznam PSČ.
 
 |Kontext|Vstup|Tvar vstupu|Vyvolání dovedností|
 |---|---|---|---|
-|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Seznam všech PSČ v zemi |Jednou za zemi |
-|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Seznam PSČ ve stavu | Jednou za kombinaci země a státu|
+|```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Seznam všech PSČ v zemi nebo oblasti |Jednou za zemi nebo oblast |
+|```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Seznam PSČ ve stavu | Jednou za kombinaci země/oblasti a státu|
 
 ### <a name="sourcecontext"></a>SourceContext
 

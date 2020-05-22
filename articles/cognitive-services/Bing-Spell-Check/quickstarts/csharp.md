@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: aa76a5773a20a103ceec075a58c79fac691eec6f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382944"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747327"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a C #
 
@@ -62,7 +62,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
     }
     ```
 
-3. Vytvořte proměnnou pro parametry hledání. Přidejte svůj kód na trhu `mkt=`po. Kód na trhu je země, ze které provedete požadavek. Také přidejte svůj režim kontroly pravopisu po `&mode=`. Režim je buď `proof` (catch nejvíc pravopisné/gramatické chyby `spell` ), nebo (catch nejvíc pravopisu, ale ne tolik gramatických chyb).
+3. Vytvořte proměnnou pro parametry hledání. Přidejte svůj kód na trhu po `mkt=` . Kód na trhu je země nebo oblast, ze které tuto žádost provedete. Také přidejte svůj režim kontroly pravopisu po `&mode=` . Režim je buď `proof` (catch nejvíc pravopisné/gramatické chyby), nebo `spell` (catch nejvíc pravopisu, ale ne tolik gramatických chyb).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -70,7 +70,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 ## <a name="create-and-send-a-spell-check-request"></a>Vytvoření a odeslání žádosti o kontrolu pravopisu
 
-1. Vytvořte asynchronní funkci volanou `SpellCheck()` k odeslání žádosti do rozhraní API. `HttpClient`Vytvořte a přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného. Pak proveďte následující kroky v rámci této funkce.
+1. Vytvořte asynchronní funkci volanou `SpellCheck()` k odeslání žádosti do rozhraní API. Vytvořte `HttpClient` a přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` . Pak proveďte následující kroky v rámci této funkce.
 
     ```csharp
     async static void SpellCheck()
@@ -127,7 +127,7 @@ Console.WriteLine(jsonObj);
 
 ## <a name="call-the-spell-check-function"></a>Volání funkce kontroly pravopisu
 
-V hlavní funkci projektu volejte `SpellCheck()`.
+V hlavní funkci projektu volejte `SpellCheck()` .
 
 ```csharp
 static void Main(string[] args)

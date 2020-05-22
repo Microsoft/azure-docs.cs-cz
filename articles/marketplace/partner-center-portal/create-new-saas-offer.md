@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 81b36532d09985d1e50fb3d0394d054d9a5e8250
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: eb7f527885d1d49fe09407c3cbce109a098056f9
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701171"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744656"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Vytvoření nové nabídky SaaS na komerčním webu Marketplace
 
@@ -340,7 +340,7 @@ Tato stránka vám umožní nakonfigurovat trhy, které tento plán bude k dispo
 
 #### <a name="markets-optional"></a>Trhy (volitelné)
 
-Každý plán musí být k dispozici alespoň v jednom trhu. Vyberte **Upravit trhy** a zaškrtněte políčko pro jakékoli místo na trhu, kde byste chtěli tento plán zpřístupnit. Tato stránka obsahuje vyhledávací pole a možnost výběru zemí "daňového přiznání", ve kterých společnost Microsoft za vás zavazuje prodej a používání daně.
+Každý plán musí být k dispozici alespoň v jednom trhu. Vyberte **Upravit trhy** a zaškrtněte políčko pro jakékoli místo na trhu, kde byste chtěli tento plán zpřístupnit. Tato stránka obsahuje vyhledávací pole a možnost výběru "vypoukázaného" země/oblastí, kde společnost Microsoft za vás zavazuje prodej a používání daně.
 
 Pokud jste už pro svůj plán nastavili ceny v USA dolary (USD) a přidáte další místo na trhu, cena za nový trh se vypočítá podle aktuálních směnných kurzů. Před publikováním si přečtěte cenu za každý trh. Prohlédněte si ceny pomocí odkazu exportovat ceny (XLSX) po uložení změn.
 

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: e3061b1c8650f24775a1e9ea8f328a5270263476
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3cd5db3736d5eda88e7cad7bda1966efb2b00977
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714521"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744744"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Kurz: Vytvoření grafického Runbooku
 
@@ -351,7 +351,8 @@ Nyní můžete sadu Runbook upravit tak, aby se pokusila spustit virtuální po�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Grafické vytváření v Azure Automation](../automation-graphical-authoring-intro.md)
-* [Vytvoření runbooku v PowerShellu](automation-tutorial-runbook-textual-powershell.md)
-* [Vytvoření runbooku pracovního postupu v PowerShellu](automation-tutorial-runbook-textual.md)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Další informace o vytváření grafického obsahu najdete [v tématu Vytvoření grafického Runbooku v Azure Automation](../automation-graphical-authoring-intro.md).
+* Pokud chcete začít pracovat s Runbooky PowerShellu, přečtěte si téma [Vytvoření Runbooku PowerShellu](automation-tutorial-runbook-textual-powershell.md).
+* Informace o tom, jak začít s Runbooky pracovních postupů PowerShellu, najdete v tématu [Vytvoření Runbooku pracovního postupu PowerShellu](automation-tutorial-runbook-textual.md).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

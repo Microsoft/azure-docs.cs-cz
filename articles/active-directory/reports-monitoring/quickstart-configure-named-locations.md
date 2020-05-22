@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df45ab0a7b1729ae6c1602c9769cd5b6da26f6ac
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 897762e523a2d20445c3a25e612cf138e021f633
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74014344"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739715"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Rychlý start: Konfigurace pojmenovaných umístění ve službě Azure Active Directory
 
@@ -41,7 +41,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
 ## <a name="configure-named-locations"></a>Konfigurace pojmenovaných umístění
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. V levém podokně vyberte **Azure Active Directory**a potom v části **zabezpečení** vyberte **podmíněný přístup** .
 
@@ -63,6 +63,5 @@ K dokončení tohoto rychlého startu je potřeba:
 
 Další informace naleznete v tématu:
 
-- [Podmíněný přístup Azure AD](../active-directory-conditional-access-azure-portal.md).
-- [Podmínky umístění ve službě Azure AD podmíněný přístup](../conditional-access/location-condition.md)
+- [Umístění jako podmínka v podmíněném přístupu](../conditional-access/concept-conditional-access-conditions.md#locations).
 - [Sestava rizikových přihlášení](concept-risky-sign-ins.md).  

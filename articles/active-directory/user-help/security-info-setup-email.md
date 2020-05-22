@@ -8,15 +8,15 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 4c3dd3e7e0bc899b87a16f66dc4d049a2876dbb4
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 4f0ea55149fc8cfeeb6ef719d67346019b81078a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628363"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744475"
 ---
 # <a name="set-up-an-email-address-as-your-verification-method"></a>Nastavení e-mailové adresy jako metody ověřování
 
@@ -49,7 +49,7 @@ V závislosti na nastaveních vaší organizace možná budete moci používat v
 
 ### <a name="to-set-up-your-email-address"></a>Nastavení e-mailové adresy
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myaccount.microsoft.com/ pak přejít na stránku.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na https://myaccount.microsoft.com/ stránku.
 
     ![Stránka můj profil zobrazující odkazy na zvýrazněné informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
 
@@ -61,7 +61,7 @@ V závislosti na nastaveních vaší organizace možná budete moci používat v
 
     ![Pole přidat metodu s vybraným e-mailem](media/security-info/securityinfo-myprofile-addemail.png)
 
-4. Na stránce **e-mail** zadejte svou e-mailovou adresu (například alain@gmail.com) a pak vyberte **Další**.
+4. Na stránce **e-mail** zadejte svou e-mailovou adresu (například alain@gmail.com ) a pak vyberte **Další**.
 
     ![Přidat telefonní číslo a vybrat telefonní hovory](media/security-info/securityinfo-myprofile-emailaddress.png)
 

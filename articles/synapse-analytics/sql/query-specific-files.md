@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 40a8e2c153ec3d8e7b4007340b9433a38f9ccc89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8d7301799bfb4af9a0f5a6f242be929e8253d7c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431550"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744216"
 ---
 # <a name="using-file-metadata-in-queries"></a>Použití metadat souboru v dotazech
 
@@ -22,14 +22,11 @@ Dotazovací služba SQL na vyžádání může adresovat více souborů a slože
 
 V některých případech možná budete muset zjistit, který zdroj souborů nebo složek je v sadě výsledků v souvislosti s konkrétním řádkem.
 
-Pomocí funkce `filepath` a `filename` můžete vracet názvy souborů nebo cestu v sadě výsledků dotazu. Můžete je také použít k filtrování dat na základě názvu souboru nebo cesty ke složce. Tyto funkce jsou popsány v oddílu syntaxe [filename](develop-storage-files-overview.md#filename-function) a funkce [FilePath](develop-storage-files-overview.md#filepath-function). Níže najdete krátké popisy v rámci ukázek.
+Pomocí funkce a můžete `filepath` `filename` vracet názvy souborů nebo cestu v sadě výsledků dotazu. Můžete je také použít k filtrování dat na základě názvu souboru nebo cesty ke složce. Tyto funkce jsou popsány v oddílu syntaxe [filename](develop-storage-files-overview.md#filename-function) a funkce [FilePath](develop-storage-files-overview.md#filepath-function). Níže najdete krátké popisy v rámci ukázek.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než si přečtete zbytek tohoto článku, přečtěte si následující požadavky:
-
-- [Nastavení při prvním spuštění](query-data-storage.md#first-time-setup)
-- [Požadavky](query-data-storage.md#prerequisites)
+Prvním krokem je **Vytvoření databáze** se zdrojem dat, který odkazuje na účet úložiště. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
 ## <a name="functions"></a>Functions
 
@@ -41,15 +38,15 @@ Následující příklad přečte NYC žluté taxislužby datové soubory za pos
 
 ```sql
 SELECT
-    r.filename() AS [filename]
+    nyc.filename() AS [filename]
     ,COUNT_BIG(*) AS [rows]
-FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet',
-        FORMAT='PARQUET') AS [r]
-GROUP BY
-    r.filename()
-ORDER BY
-    [filename];
+FROM  
+    OPENROWSET(
+        BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT='PARQUET'
+    ) nyc
+GROUP BY nyc.filename();
 ```
 
 Následující příklad ukazuje, jak *filename ()* lze použít v klauzuli WHERE pro filtrování souborů, které mají být čteny. Přistupuje k celé složce v části OPENROWSET dotazu a filtruje soubory v klauzuli WHERE.
@@ -61,10 +58,14 @@ SELECT
     r.filename() AS [filename]
     ,COUNT_BIG(*) AS [rows]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet',
-    FORMAT='PARQUET') AS [r]
+    BULK 'csv/taxi/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
+        PARSER_VERSION = '2.0',
+        FIRSTROW = 2) 
+        WITH (C1 varchar(200) ) AS [r]
 WHERE
-    r.filename() IN ('yellow_tripdata_2017-10.parquet', 'yellow_tripdata_2017-11.parquet', 'yellow_tripdata_2017-12.parquet')
+    r.filename() IN ('yellow_tripdata_2017-10.csv', 'yellow_tripdata_2017-11.csv', 'yellow_tripdata_2017-12.csv')
 GROUP BY
     r.filename()
 ORDER BY
@@ -85,28 +86,14 @@ SELECT
     r.filepath() AS filepath
     ,COUNT_BIG(*) AS [rows]
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/yellow_tripdata_2017-1*.csv',
+        BULK 'csv/taxi/yellow_tripdata_2017-1*.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
+        PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id INT,
-        pickup_datetime DATETIME2,
-        dropoff_datetime DATETIME2,
-        passenger_count SMALLINT,
-        trip_distance FLOAT,
-        rate_code SMALLINT,
-        store_and_fwd_flag SMALLINT,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-        payment_type SMALLINT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        vendor_id INT
     ) AS [r]
 GROUP BY
     r.filepath()
@@ -125,28 +112,14 @@ SELECT
     ,r.filepath(2) AS [month]
     ,COUNT_BIG(*) AS [rows]
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/yellow_tripdata_*-*.csv',
+        BULK 'csv/taxi/yellow_tripdata_*-*.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
+        PARSER_VERSION = '2.0',        
         FIRSTROW = 2
     )
 WITH (
-    vendor_id INT,
-    pickup_datetime DATETIME2,
-    dropoff_datetime DATETIME2,
-    passenger_count SMALLINT,
-    trip_distance FLOAT,
-    rate_code SMALLINT,
-    store_and_fwd_flag SMALLINT,
-    pickup_location_id INT,
-    dropoff_location_id INT,
-    payment_type SMALLINT,
-    fare_amount FLOAT,
-    extra FLOAT,
-    mta_tax FLOAT,
-    tip_amount FLOAT,
-    tolls_amount FLOAT,
-    improvement_surcharge FLOAT,
-    total_amount FLOAT
+    vendor_id INT
 ) AS [r]
 WHERE
     r.filepath(1) IN ('2017')

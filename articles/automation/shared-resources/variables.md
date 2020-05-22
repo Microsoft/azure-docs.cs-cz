@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cb89caa0a2fe5cde5bcea92e08c0df117215d916
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 28f69d3ef8301e00b470ce09353be6ae3259bbe3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713297"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744961"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
 
@@ -194,6 +194,6 @@ Následující obrázek ukazuje ukázkové aktivity pro aktualizaci proměnné s
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa modulů ve službě Azure Automation](modules.md)
-* [Spouštění runbooků ve službě Azure Automation](../automation-runbook-execution.md)
-* [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md) 
+* Další informace o rutinách, které se používají pro přístup k proměnným, najdete v tématu [Správa modulů v Azure Automation](modules.md).
+* Obecné informace o sadách Runbook naleznete [v tématu Spuštění Runbooku v Azure Automation](../automation-runbook-execution.md).
+* Podrobnosti o konfiguracích DSC najdete v tématu [Přehled konfigurace stavu Azure Automation](../automation-dsc-overview.md).

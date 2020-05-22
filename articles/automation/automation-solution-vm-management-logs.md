@@ -1,18 +1,18 @@
 ---
-title: Dotazování protokolů z Start/Stop VMs during off-hours
-description: Tento článek popisuje, jak z Azure Monitor dotazovat data protokolu generovaná Start/Stop VMs during off-hoursm řešením.
+title: Dotazování protokolů z Azure Automation Start/Stop VMs during off-hours
+description: V tomto článku se dozvíte, jak používat Azure Monitor k dotazování na data protokolu generovaná pomocí Start/Stop VMs during off-hours.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472baa3f4b3cbb970a8f365ccc94929ad565c421
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 49b573c5cd0125ba378f01db05b925f8e5eef3eb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864228"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743726"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-during-off-hours"></a>Dotazování protokolů z Start/Stop VMs during off-hours
+# <a name="query-logs-from-startstop-vms-during-off-hours"></a>Dotazování protokolů z Start/Stop VMs during off-hours
 
 Azure Automation přepošle dva typy záznamů do propojeného pracovního prostoru Log Analytics: protokoly úloh a datové proudy úloh. Tento článek kontroluje data, která jsou k dispozici pro [dotazy](../azure-monitor/log-query/log-query-overview.md) v Azure monitor.
 
@@ -60,7 +60,7 @@ Když provedete jakékoli prohledávání protokolů, které vrátí záznamy ka
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 
-V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy úloh shromážděné tímto řešením.
+V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy úloh shromážděné nástrojem Start/Stop VMs during off-hours.
 
 |Dotaz | Popis|
 |----------|----------|
@@ -71,4 +71,6 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 ## <a name="next-steps"></a>Další kroky
 
-Řešení **Start/Stop VMS during off-hours** nezahrnuje předdefinovanou sadu výstrah. Přečtěte si téma [vytvoření výstrah protokolu](../azure-monitor/platform/alerts-log.md) s Azure monitor, kde se dozvíte, jak vytvořit úlohy s neúspěšnými výstrahami pro podporu vašich DevOpsch a provozních procesů a postupů.
+* [Vytváření výstrah protokolu pomocí Azure Monitor](../azure-monitor/platform/alerts-log.md)
+* [Konfigurace virtuálních počítačů zastavit/spustit v době mimo špičku](automation-solution-vm-management-config.md)
+* [Řešení potíží s Start/Stop VMs during off-hours](troubleshoot/start-stop-vm.md)

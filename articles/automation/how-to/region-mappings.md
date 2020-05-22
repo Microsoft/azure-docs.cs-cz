@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e637aec3c5105bb9628a854b0d4c73988e60daaf
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 24ff69e76736ffa93cecb795be563f172c422355
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714504"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744752"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Podporované oblasti pro propojený pracovní prostor Log Analytics
 
@@ -80,6 +80,6 @@ Alternativně můžete zrušit propojení pracovního prostoru s účtem Automat
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled Update Managementu](../automation-update-management.md)
-* [Přehled Change Tracking a inventáře](../change-tracking.md)
-* [Přehled Start/Stop VMs during off-hours](../automation-solution-vm-management.md)
+* Přečtěte si o Update Management v článku [Update Management přehled](../automation-update-management.md).
+* Přečtěte si o Change Tracking a inventáři v [přehledu Change Tracking a inventáře](../change-tracking.md).
+* Přečtěte si o Start/Stop VMs during off-hours v článku [Start/Stop VMS during off-hours přehled](../automation-solution-vm-management.md).

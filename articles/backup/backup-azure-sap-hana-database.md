@@ -3,12 +3,12 @@ title: Zálohování databáze SAP HANA do Azure s využitím Azure Backup
 description: V tomto článku se dozvíte, jak zálohovat databázi SAP HANA do virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: d0b002c4043bacb451d5d837c48f8bdf33949e86
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 4183c1eca6b1149c5c61ed77c0ca1101c86f8f4f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714623"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745414"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -130,6 +130,11 @@ Zásady zálohování definují, kdy se zálohují zálohy a jak dlouho se uchov
 
 * Zásada se vytvoří na úrovni trezoru.
 * Několik trezorů může používat stejné zásady zálohování, ale je nutné použít zásady zálohování pro každý trezor.
+
+>[!NOTE]
+>Azure Backup se při zálohování databáze SAP HANA běžící na virtuálním počítači Azure automaticky neupraví na letní čas při ukládání.
+>
+>Zásadu podle potřeby upravte ručně.
 
 Nastavení zásad určete následujícím způsobem:
 

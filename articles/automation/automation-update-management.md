@@ -1,22 +1,22 @@
 ---
 title: Přehled Azure Automation Update Management
-description: Přehled funkce Update Management, která spravuje aktualizace pro počítače se systémem Windows a Linux.
+description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 05/20/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba4ce84dca85ea1e3f2385ac280bd82c16aa8fb3
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b064e22b56d63055cede400fa2b06cee96d21664
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714759"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745302"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
 Update Management v Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače s Windows a Linux v Azure, v místních prostředích a v dalších cloudových prostředích. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
 
-Update Management pro virtuální počítače můžete povolit pomocí následujících metod:
+Update Management pro virtuální počítače můžete povolit následujícími způsoby:
 
 * Z [účtu Azure Automation](automation-onboard-solutions-from-automation-account.md) pro jeden nebo více počítačů Azure.
 * Ručně pro počítače mimo Azure.
@@ -31,7 +31,7 @@ K dispozici je [šablona Azure Resource Manager](automation-update-management-de
 > [!NOTE]
 > Počítač nakonfigurovaný s Update Management nemůžete použít ke spouštění vlastních skriptů z Azure Automation. Tento počítač může spustit pouze skript pro aktualizaci podepsaný společností Microsoft. 
 
-## <a name="update-management-overview"></a>Přehled Update Managementu
+## <a name="about-update-management"></a>O Update Management
 
 Počítače spravované pomocí Update Management pro vyhodnocení a nasazení aktualizací používají následující konfigurace:
 
@@ -44,7 +44,7 @@ Následující diagram znázorňuje, jak Update Management vyhodnocuje a aplikuj
 
 ![Pracovní postup Update Management](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Update Management můžete nativně nasadit na počítače v různých předplatných stejného tenanta.
+Update Management lze použít k nativně nasazení počítačů ve více předplatných ve stejném tenantovi.
 
 Po uvolnění balíčku trvá tato oprava 2 až 3 hodiny, než se oprava zobrazí pro počítače se systémem Linux pro posouzení. U počítačů s Windows trvá 12 až 15 hodin, než se oprava zobrazí po jejím vydání.
 
@@ -89,8 +89,7 @@ Následující tabulka uvádí podporované operační systémy pro posouzení a
 |Ubuntu 14,04 LTS, 16,04 LTS a 18,04 (x86/x64)      |Agenti Linux vyžadují přístup k úložišti aktualizací.         |
 
 > [!NOTE]
-> Sady škálování virtuálních počítačů Azure je možné spravovat prostřednictvím Update Management. Update Management pracuje na samotných instancích a nikoli na základní imagi. Aktualizace budete muset naplánovat přírůstkově, takže se neaktualizují všechny instance virtuálních počítačů najednou.
-> Uzly pro sadu škálování virtuálního počítače můžete přidat pomocí postupu v části připojení [počítače mimo Azure](automation-tutorial-installed-software.md#onboard-a-non-azure-machine).
+> Sady škálování virtuálních počítačů Azure je možné spravovat prostřednictvím Update Management. Update Management pracuje na samotných instancích a nikoli na základní imagi. Aktualizace budete muset naplánovat přírůstkově, takže se neaktualizují všechny instance virtuálních počítačů najednou. Uzly pro sadu škálování virtuálních počítačů můžete přidat pomocí postupu v části [Přidání počítače mimo Azure do Change Tracking a inventáře](automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory).
 
 ### <a name="unsupported-client-types"></a>Nepodporované typy klientů
 
@@ -98,11 +97,9 @@ V následující tabulce jsou uvedeny nepodporované operační systémy:
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Klient Windows     | Klientské operační systémy (například Windows 7 a Windows 10) se nepodporují.<br> Pro virtuální počítače Azure s Windows (WVD) se doporučuje metoda.<br> pro správu aktualizací je [web Windows Update pro firmy](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) pro správu oprav klientských počítačů s Windows 10. |
+|Klient Windows     | Klientské operační systémy (například Windows 7 a Windows 10) se nepodporují.        |
 |Windows Server 2016 Nano Server     | Není podporováno.       |
 |Uzly služby Azure Kubernetes | Není podporováno. Použijte proces opravy popsaný v tématu [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md) .|
-
-
 
 ### <a name="client-requirements"></a>Požadavky na klienty
 
@@ -112,7 +109,7 @@ Následující informace popisují požadavky klienta specifické pro operační
 
 Agenti systému Windows musí být nakonfigurováni pro komunikaci se serverem WSUS nebo vyžadují přístup k Microsoft Update. Informace o tom, jak nainstalovat agenta Log Analytics pro Windows, najdete v tématu [připojení počítačů s Windows k Azure monitor](../log-analytics/log-analytics-windows-agent.md).
 
-Update Management můžete použít s Microsoft Endpoint Configuration Manager. Další informace o integračních scénářích najdete v tématu věnovaném [integraci Configuration Manager s Update Management](updatemgmt-mecmintegration.md#configuration). Pro Windows servery spravované lokalitami ve vašem Configuration Manager prostředí se vyžaduje [agent Log Analytics pro Windows](../azure-monitor/platform/agent-windows.md) . 
+Update Management můžete použít s Microsoft Endpoint Configuration Manager. Další informace o integračních scénářích najdete v tématu věnovaném [integraci Update Management s Windows Endpoint Configuration Manager](updatemgmt-mecmintegration.md). Pro Windows servery spravované lokalitami ve vašem Configuration Manager prostředí se vyžaduje [agent Log Analytics pro Windows](../azure-monitor/platform/agent-windows.md) . 
 
 Ve výchozím nastavení jsou virtuální počítače s Windows, které jsou nasazené z Azure Marketplace, nastavené na příjem automatických aktualizací ze služby web Windows Update. Toto chování se nemění při přidávání virtuálních počítačů s Windows do pracovního prostoru. Pokud nespravujete aktivně aktualizace pomocí Update Management, použije se výchozí chování (pro automatické použití aktualizací).
 
@@ -217,7 +214,7 @@ Následující tabulka definuje klasifikace, které Update Management podporuje 
 |Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
+|Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
 |Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 Následující tabulka definuje podporované klasifikace aktualizací pro Linux.
@@ -239,7 +236,7 @@ Chcete-li klasifikovat aktualizace na Red Hat Enterprise verze 6, je nutné nain
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>Integrace Update Management s Configuration Manager
 
-Zákazníci, kteří investovali do služby Microsoft Endpoint Configuration Manager pro správu počítačů, serverů a mobilních zařízení, spoléhají také na sílu a splatnost Configuration Manager, které vám pomůžou se správou aktualizací softwaru. Informace o tom, jak integrovat Update Management s Configuration Manager, najdete v tématu [integrace Configuration Manager s Update Management](updatemgmt-mecmintegration.md).
+Zákazníci, kteří investovali do služby Microsoft Endpoint Configuration Manager pro správu počítačů, serverů a mobilních zařízení, spoléhají také na sílu a splatnost Configuration Manager, které vám pomůžou se správou aktualizací softwaru. Informace o tom, jak integrovat Update Management s Configuration Manager, najdete v tématu věnovaném [integraci Update Management s Configuration Manager Windows Endpoint](updatemgmt-mecmintegration.md).
 
 ## <a name="third-party-updates-on-windows"></a>Aktualizace třetích stran ve Windows
 
@@ -251,10 +248,10 @@ K dispozici je [Šablona Azure správce prostředků](automation-update-manageme
 
 Tady jsou způsoby, jak můžete povolit Update Management a vybrat počítače, které se mají spravovat:
 
-* [Z virtuálního počítače](automation-onboard-solutions-from-vm.md).
-* [Z prohlížení více počítačů](automation-onboard-solutions-from-browse.md).
-* [Z účtu Azure Automation](automation-onboard-solutions.md).
+* [Z virtuálního počítače](automation-onboard-solutions-from-vm.md)
+* [Z prohlížení více počítačů](automation-onboard-solutions-from-browse.md)
+* [Z účtu Azure Automation](automation-onboard-solutions.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si [Nejčastější](automation-faq.md) dotazy k Azure Automation, kde najdete nejčastější dotazy týkající se Update Management.
+[Azure Automation nejčastějších dotazech](automation-faq.md)

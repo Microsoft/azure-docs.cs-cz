@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a1e3d3c7494aa75b3f6d481d12135316791772d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82edee84317b5d542bf65e29514286f96c18bbcc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431654"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744226"
 ---
 # <a name="query-parquet-nested-types-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazy Parquet vnořené typy pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -22,10 +22,7 @@ V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (ve v
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než si přečtete zbytek tohoto článku, přečtěte si následující články:
-
-- [Nastavení při prvním spuštění](query-data-storage.md#first-time-setup)
-- [Požadavky](query-data-storage.md#prerequisites)
+Prvním krokem je **Vytvoření databáze** se zdrojem dat, který odkazuje na. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
 ## <a name="project-nested-or-repeated-data"></a>Vnořená nebo opakující se data projektu
 
@@ -36,7 +33,8 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/nested/justSimpleArray.parquet',
+        BULK 'parquet/nested/justSimpleArray.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT='PARQUET'
     ) AS [r];
 ```
@@ -50,7 +48,8 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/nested/structExample.parquet',
+        BULK 'parquet/nested/structExample.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT='PARQUET'
     )
     WITH (
@@ -80,7 +79,8 @@ SELECT
     JSON_VALUE(SimpleArray, '$[2]') AS ThirdElement
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/nested/justSimpleArray.parquet',
+        BULK 'parquet/nested/justSimpleArray.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT='PARQUET'
     ) AS [r];
 ```
@@ -93,7 +93,8 @@ SELECT
     JSON_QUERY(MapOfPersons, '$."John Doe"') AS [John]
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/nested/mapExample.parquet',
+        BULK 'parquet/nested/mapExample.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT='PARQUET'
     ) AS [r];
 ```

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 586e560f25d12ed8076fcc76810c5a5fb84736dc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1ee6920d1870b7449f4b77394aaf918947f57ea5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680906"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744315"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Řešení potíží s Runbook
 
@@ -45,7 +45,7 @@ Když při spuštění sady Runbook v Azure Automation dojde k chybám, můžete
     * [Obnovte certifikát](../manage-runas-account.md#cert-renewal) , pokud vypršela platnost účtu Spustit jako.
     * [Obnovte Webhook](../automation-webhooks.md#renew-a-webhook) , pokud se pokoušíte použít Webhook, jehož platnost vypršela, aby se Runbook spustil.
     * [Zkontrolujte stav úlohy](../automation-runbook-execution.md#job-statuses) a určete aktuální stavy Runbooku a některé možné příčiny problému.
-    * [Přidejte do Runbooku další výstup](../automation-runbook-output-and-messages.md#message-streams) , abyste mohli zjistit, co se stane, než se Runbook pozastaví.
+    * [Přidejte do Runbooku další výstup](../automation-runbook-output-and-messages.md#monitor-message-streams) , abyste mohli zjistit, co se stane, než se Runbook pozastaví.
     * [Zpracujte všechny výjimky](../automation-runbook-execution.md#exceptions) , které jsou vyvolány vaší úlohou.
 
 1. Tento krok proveďte, pokud úloha sady Runbook nebo prostředí na Hybrid Runbook Worker nereaguje.
@@ -479,7 +479,7 @@ Při spuštění rutiny se zobrazí následující chybová zpráva `Get-AzAutom
 
 ### <a name="cause"></a>Příčina
 
-K této chybě může dojít při načítání výstupu úlohy z Runbooku, který má mnoho [podrobných streamů](../automation-runbook-output-and-messages.md#verbose-stream).
+K této chybě může dojít při načítání výstupu úlohy z Runbooku, který má mnoho [podrobných streamů](../automation-runbook-output-and-messages.md#monitor-verbose-stream).
 
 ### <a name="resolution"></a>Řešení
 

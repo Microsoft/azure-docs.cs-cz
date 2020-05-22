@@ -3,12 +3,12 @@ title: Jak pracovat se skupinami pro správu – zásady správného řízení A
 description: Naučte se zobrazovat, udržovat, aktualizovat a odstraňovat hierarchii skupin pro správu.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 423d1837c3d5710e24abb94f5411200319e8a8aa
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: e3d92e0785e54c0999b8cc0f055b7de355a4c4f5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "81381667"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747476"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa prostředků pomocí skupin pro správu
 
@@ -29,7 +29,7 @@ Název skupiny pro správu můžete změnit pomocí portálu, PowerShellu nebo r
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **všechny** > **skupiny pro správu**služeb.
+1. Vyberte **všechny**  >  **skupiny pro správu**služeb.
 
 1. Vyberte skupinu pro správu, kterou chcete přejmenovat.
 
@@ -76,7 +76,7 @@ Chcete-li odstranit skupinu pro správu, musí být splněny následující pož
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **všechny** > **skupiny pro správu**služeb.
+1. Vyberte **všechny**  >  **skupiny pro správu**služeb.
 
 1. Vyberte skupinu pro správu, kterou chcete odstranit.
 
@@ -119,7 +119,7 @@ Můžete zobrazit jakoukoli skupinu pro správu, na které máte přímo nebo zd
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **všechny** > **skupiny pro správu**služeb.
+1. Vyberte **všechny**  >  **skupiny pro správu**služeb.
 
 1. Načte se stránka hierarchie skupiny pro správu. Na této stránce můžete prozkoumat všechny skupiny pro správu a odběry, ke kterým máte přístup. Výběr názvu skupiny vám převezme úroveň v hierarchii. Navigace funguje stejně jako Průzkumník souborů.
 
@@ -223,7 +223,7 @@ Chcete-li zjistit, jaká oprávnění máte v Azure Portal, vyberte skupinu pro 
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **všechny** > **skupiny pro správu**služeb.
+1. Vyberte **všechny**  >  **skupiny pro správu**služeb.
 
 1. Vyberte skupinu pro správu, které plánujete mít jako nadřazenou.
 
@@ -239,7 +239,7 @@ Chcete-li zjistit, jaká oprávnění máte v Azure Portal, vyberte skupinu pro 
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **všechny** > **skupiny pro správu**služeb.
+1. Vyberte **všechny**  >  **skupiny pro správu**služeb.
 
 1. Vyberte skupinu pro správu, kterou plánujete, která je aktuální nadřazenou položkou.  
 
@@ -289,7 +289,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **všechny** > **skupiny pro správu**služeb.
+1. Vyberte **všechny**  >  **skupiny pro správu**služeb.
 
 1. Vyberte skupinu pro správu, které plánujete mít jako nadřazenou.
 
@@ -344,7 +344,7 @@ New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Co
 Stejná cesta oboru se používá při načítání definice zásady ve skupině pro správu.
 
 ```http
-GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2018-05-01
+GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2019-09-01
 ```
 
 ## <a name="next-steps"></a>Další kroky

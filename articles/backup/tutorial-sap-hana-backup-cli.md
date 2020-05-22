@@ -3,12 +3,12 @@ title: Kurz – zálohování služby SAP HANA DB v Azure pomocí rozhraní př�
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services pomocí Azure CLI.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: cdc8a8fb09a086a2b9212c21d071f267991fa275
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d1c52a846b837d47aa40c8f6a68010a8e7f1137
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78206618"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747290"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure pomocí Azure CLI
 
@@ -141,6 +141,11 @@ e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2
 ```
 
 Rutina [seznam úloh AZ Backup](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) obsahuje seznam všech úloh zálohování (plánovaných i na vyžádání), které jsou v současné době spuštěny nebo aktuálně spuštěné v chráněné databázi. Kromě dalších operací, jako je registrace, konfigurace zálohování, odstraňování zálohovaných dat atd.
+
+>[!NOTE]
+>Azure Backup se při zálohování databáze SAP HANA běžící na virtuálním počítači Azure automaticky neupraví na letní čas při ukládání.
+>
+>Zásadu podle potřeby upravte ručně.
 
 ## <a name="trigger-an-on-demand-backup"></a>Aktivace zálohování na vyžádání
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: ab6be101e33fb29f96e2e5ea0fd2e79aa1cf0d09
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582905"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744689"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -54,7 +54,7 @@ Další podrobné pokyny najdete v tématu [Vytvoření nebo aktualizace dynamic
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Syntaxe pravidla pro jeden výraz
 
-Jediným výrazem je nejjednodušší forma pravidla členství a má jenom tři části uvedené výše. Pravidlo s jedním výrazem vypadá podobně jako v tomto příkladu `Property Operator Value`:, kde syntaxe pro vlastnost je název Object. Property.
+Jediným výrazem je nejjednodušší forma pravidla členství a má jenom tři části uvedené výše. Pravidlo s jedním výrazem vypadá podobně jako v tomto příkladu: `Property Operator Value` , kde syntaxe pro vlastnost je název Object. Property.
 
 Následuje příklad správného vytvořeného pravidla členství s jedním výrazem:
 
@@ -79,7 +79,7 @@ Pořadí částí v rámci výrazu je důležité, aby nedocházelo k chybám sy
 Existují tři typy vlastností, které lze použít k vytvoření pravidla členství.
 
 - Logická hodnota
-- Řetězec
+- String
 - Kolekce řetězců
 
 Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvoření jednoho výrazu.
@@ -118,16 +118,16 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | streetAddress |Libovolná hodnota řetězce nebo hodnota *null* |(User. streetAddress-EQ "value") |
 | surname |Libovolná hodnota řetězce nebo hodnota *null* |(User. příjmení-EQ "hodnota") |
 | telephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. telephoneNumber-EQ "value") |
-| usageLocation |Dva směrové číslo země |(User. usageLocation-EQ "US") |
-| userPrincipalName (Hlavní název uživatele) |Libovolná hodnota řetězce |(User. userPrincipalName-EQ "alias@domain") |
+| usageLocation |Dva směrové číslo země/oblasti |(User. usageLocation-EQ "US") |
+| userPrincipalName (Hlavní název uživatele) |Libovolná hodnota řetězce |(User. userPrincipalName-EQ " alias@domain ") |
 | userType |člen typu host *null* |(User. userType-EQ "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce řetězců typu
 
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
-| otherMails |Libovolná hodnota řetězce |(User. otherMails-Contains "alias@domain") |
-| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-obsahuje "SMTP: alias@domain") |
+| otherMails |Libovolná hodnota řetězce |(User. otherMails-Contains " alias@domain ") |
+| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-obsahuje "SMTP: alias@domain ") |
 
 Vlastnosti používané pro pravidla zařízení najdete v tématu [pravidla pro zařízení](#rules-for-devices).
 
@@ -185,8 +185,8 @@ Při zadávání hodnoty v rámci výrazu je důležité použít správnou synt
 
 * Dvojité uvozovky jsou volitelné, pokud hodnota není řetězec.
 * Operace s řetězci String a Regex nerozlišují velká a malá písmena.
-* Pokud řetězcová hodnota obsahuje dvojité uvozovky, obě nabídky by měly být uvozeny \` znakem, například User. Department-EQ \`"Sales\`", jedná se o správnou syntaxi, pokud je hodnota "Sales".
-* Můžete také provádět kontroly null a jako hodnotu použít null, například `user.department -eq null`.
+* Pokud řetězcová hodnota obsahuje dvojité uvozovky, obě nabídky by měly být uvozeny \` znakem, například User. Department-EQ \` "Sales \` ", jedná se o správnou syntaxi, pokud je hodnota "Sales".
+* Můžete také provádět kontroly null a jako hodnotu použít null, například `user.department -eq null` .
 
 ### <a name="use-of-null-values"></a>Použití hodnot null
 
@@ -252,7 +252,7 @@ Vlastnosti s více hodnotami jsou kolekce objektů stejného typu. Je možné je
 | Vlastnosti | Hodnoty | Využití |
 | --- | --- | --- |
 | assignedPlans | Každý objekt v kolekci zpřístupňuje následující řetězcové vlastnosti: capabilityStatus, Service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-any (.-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-a assignedPlan. capabilityStatus-EQ "Enabled") |
-| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any (\_ -obsahuje "contoso")) |
+| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any ( \_ -obsahuje "contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>Použití operátorů-any a-All
 
@@ -279,11 +279,11 @@ Následující výraz vybere všechny uživatele, kteří mají libovolný plán
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore-_-syntax"></a>Použití syntaxe podtržítka (\_)
+### <a name="using-the-underscore-_-syntax"></a>Použití syntaxe podtržítka ( \_ )
 
-Syntaxe podtržítka (\_) se shoduje s výskytem konkrétní hodnoty v jedné z vlastností kolekce řetězců s více hodnotami, aby bylo možné přidat uživatele nebo zařízení do dynamické skupiny. Používá se u operátorů-any nebo-ALL.
+Syntaxe podtržítka ( \_ ) se shoduje s výskytem konkrétní hodnoty v jedné z vlastností kolekce řetězců s více hodnotami, aby bylo možné přidat uživatele nebo zařízení do dynamické skupiny. Používá se u operátorů-any nebo-ALL.
 
-Tady je příklad použití podtržítka (\_) v pravidle pro přidání členů na základě User. ProxyAddress (to funguje stejně pro User. otherMails). Toto pravidlo přidá libovolného uživatele s adresou proxy, který ve skupině obsahuje "contoso".
+Tady je příklad použití podtržítka ( \_ ) v pravidle pro přidání členů na základě User. ProxyAddress (to funguje stejně pro User. otherMails). Toto pravidlo přidá libovolného uživatele s adresou proxy, který ve skupině obsahuje "contoso".
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
@@ -347,7 +347,7 @@ Atributy rozšíření a vlastnosti vlastního rozšíření jsou podporovány j
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-[Vlastní vlastnosti rozšíření](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) se synchronizují z místní služby Windows Server AD nebo z připojené aplikace SaaS a mají formát `user.extension_[GUID]_[Attribute]`, kde:
+[Vlastní vlastnosti rozšíření](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) se synchronizují z místní služby Windows Server AD nebo z připojené aplikace SaaS a mají formát `user.extension_[GUID]_[Attribute]` , kde:
 
 * [GUID] je jedinečný identifikátor ve službě Azure AD pro aplikaci, která vytvořila vlastnost ve službě Azure AD.
 * [Attribute] je název vlastnosti, jak byla vytvořena.

@@ -1,20 +1,20 @@
 ---
 title: Azure Automation typy runbooků
-description: Popisuje různé typy sad Runbook, které lze použít v Azure Automation a důležitých informací pro určení typu, který se má použít.
+description: Tento článek popisuje typy sad Runbook, které lze použít v Azure Automation a požadavky na určení typu, který se má použít.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 390f14e8369f206b2f5ffce74f0775b33e313021
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c7b036e7adca1fe92425659ebd099feaa3891556
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714980"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743827"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typy runbooků
 
-Služba Automatizace procesu Azure Automation podporuje několik typů sad Runbook, jak je definováno v následující tabulce. Další informace o prostředí automatizace procesu naleznete v tématu [Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).
+Funkce automatizace procesu Azure Automation podporuje několik typů sad Runbook, jak je definováno v následující tabulce. Další informace o prostředí automatizace procesu naleznete v tématu [Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).
 
 | Typ | Popis |
 |:--- |:--- |
@@ -28,9 +28,6 @@ Při určování typu, který se má použít pro konkrétní Runbook, vezměte 
 
 * Runbooky nemůžete převést z grafického na textový typ nebo jiným způsobem.
 * Existují omezení při použití sad Runbook různých typů jako podřízených runbooků. Další informace naleznete v tématu [podřízené Runbooky v Azure Automation](automation-child-runbooks.md).
-
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="graphical-runbooks"></a>Grafické Runbooky
 
@@ -118,7 +115,7 @@ Runbooky Pythonu se zkompiluje v Pythonu 2. Můžete přímo upravit kód sady R
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o vytváření grafického Runbooku najdete v tématu věnovaném [vytváření grafických postupů v Azure Automation](automation-graphical-authoring-intro.md).
-* Další informace o rozdílech mezi pracovními postupy PowerShellu a PowerShellem pro Runbooky najdete v tématu [výuka pracovního postupu prostředí Windows PowerShell](automation-powershell-workflow.md).
-* Další informace o tom, jak vytvořit nebo importovat sadu Runbook, najdete v tématu [Správa runbooků v Azure Automation](manage-runbooks.md).
-* Další informace o PowerShellu, včetně referenčních modulů jazyka a výukových modulů, najdete v [dokumentaci k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview).
+* [Správa runbooků v Azure Automation](manage-runbooks.md)
+* [Informace o pracovním postupu PowerShellu pro Azure Automation](automation-powershell-workflow.md)
+* [Vytváření grafických runbooků v Azure Automation](automation-graphical-authoring-intro.md)
+* [Dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview)

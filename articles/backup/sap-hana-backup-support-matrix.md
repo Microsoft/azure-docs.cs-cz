@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování SAP HANA
 description: V tomto článku se dozvíte o podporovaných scénářích a omezeních při zálohování SAP HANA databází na virtuálních počítačích Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 20519562151a70c9fd8e8fe5d86ce912e615b460
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5dcbfa67ce69a3dad1c263427ea3a0e34e8cef18
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660134"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747336"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Matice podpory pro zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -35,6 +35,12 @@ Azure Backup podporuje zálohování databází SAP HANA do Azure. Tento článe
 | **Speciální konfigurace** |                                                              | SAP HANA + dynamické vrstvení <br>  Klonování prostřednictvím LaMa        |
 
 ------
+
+>[!NOTE]
+>Azure Backup se při zálohování databáze SAP HANA běžící na virtuálním počítači Azure automaticky neupraví na letní čas při ukládání.
+>
+>Zásadu podle potřeby upravte ručně.
+
 
 > [!NOTE]
 > Nyní můžete [monitorovat úlohy zálohování a obnovení](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) (do stejného počítače) aktivované z nativních klientů Hana (řídicí panel SAP HANA Studio/řídicí panel/DBA) v Azure Portal.

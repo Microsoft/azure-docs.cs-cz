@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: f9fafc4b03d5ce18fcfedcffaf2d81f847537865
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0efaf593725fd676ae8e85ff9c190c8b850fef1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598637"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744675"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Odkaz na Azure synapse pro Azure Cosmos DB: prakticky v reálném čase použití analytických případů
 
@@ -106,7 +106,7 @@ Připojení Azure synapse Azure Cosmos DB umožňuje, aby neprováděly pouze ú
 
 Následující obrázek ukazuje vzory úloh pomocí Azure Cosmos DB: ![ odkaz na Azure synapse pro Azure Cosmos DB vzory úloh](./media/synapse-link-use-cases/synapse-link-workload-patterns.png)
 
-Podíváme se na příklad společnosti elektronického obchodování CompanyXYZ s globálními operacemi v 20 zemích, abyste se vyhlédli výhodami výběru Azure Cosmos DB jako jedna databáze v reálném čase jak na to, tak jak transakční, tak i analytické požadavky na platformě pro správu inventáře.
+Podíváme se na příklad společnosti elektronického obchodování CompanyXYZ s globálními operacemi v 20 zemích nebo oblastech, abyste se vyhlédli výhodami výběru Azure Cosmos DB jako jedna databáze v reálném čase jak v rámci transakčního, tak i analytického požadavku platformy pro správu inventáře.
 
 * Základní firmy CompanyXYZ závisí na systému správy inventáře, takže dostupnost & spolehlivosti jsou požadavky na základní pilíř. Výhody použití Azure Cosmos DB:
 

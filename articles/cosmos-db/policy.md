@@ -1,17 +1,17 @@
 ---
 title: Použití Azure Policy k implementaci zásad správného řízení a řízení prostředků Azure Cosmos DB
-description: Naučte se používat Azure Policy k implementaci zásad správného řízení a řízení prostředků Cosmos DB.
+description: Naučte se používat Azure Policy k implementaci zásad správného řízení a řízení prostředků Azure Cosmos DB.
 author: plzm
 ms.author: paelaz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 6b8823b586ae0d0d9f6a2c50286aa754a9ab8025
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2249dbdebecc52a8f5d6decccb83d3b1fc0777f7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665156"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747378"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Použití Azure Policy k implementaci zásad správného řízení a řízení prostředků Azure Cosmos DB
 
@@ -32,7 +32,7 @@ V kroku vyberte definici zásady, `Cosmos DB` do vyhledávacího pole zadejte a 
 > [!TIP]
 > Pomocí předdefinovaných názvů definic zásad, které jsou uvedené v podokně **dostupné definice** pomocí Azure PowerShell, Azure CLI nebo šablon ARM, můžete také vytvořit přiřazení zásad.
 
-:::image type="content" source="./media/policy/available-definitions.png" alt-text="Vyhledat Cosmos DB předdefinované definice zásad":::
+:::image type="content" source="./media/policy/available-definitions.png" alt-text="Vyhledat Azure Cosmos DB předdefinované definice zásad":::
 
 ## <a name="create-a-custom-policy-definition"></a>Vytvoření vlastní definice zásad
 
@@ -115,7 +115,7 @@ Snímek obrazovky ukazuje následující výsledky vyhodnocení dodržování p�
 - Nula z jednoho Azure Cosmos DB účtů v zadaném oboru jsou kompatibilní s přiřazením zásad, aby bylo možné ověřit, že se prostředky nasadily do povolených oblastí.
 - Jeden ze dvou Azure Cosmos DB databází nebo prostředků kolekce v zadaném oboru odpovídá přiřazení zásady, které by kontrolovaly stanovenou propustnost překračující stanovený maximální limit.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Vyhledat Cosmos DB předdefinované definice zásad":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Vyhledat Azure Cosmos DB předdefinované definice zásad":::
 
 Chcete-li opravit prostředky, které nedodržují předpisy, přečtěte si článek [napravo od Azure Policy](../governance/policy/how-to/remediate-resources.md) .
 

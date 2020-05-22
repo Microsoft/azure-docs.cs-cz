@@ -12,12 +12,12 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca73fac06649f801461e53130a67aa9ec0ad0d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ee9a9d404e9a08d8b795a3d73907e84d25b73107
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77063318"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739749"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Správa aplikací pomocí Azure Active Directory
 
@@ -43,7 +43,7 @@ Existují čtyři hlavní typy aplikací, které můžete přidat do **podnikov�
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>Řízení rizik pomocí zásad podmíněného přístupu
 
-Přihlašování služby Azure AD jednotného přihlašování (SSO) s [podmíněným přístupem](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) poskytuje vysoké úrovně zabezpečení pro přístup k aplikacím. Mezi možnosti zabezpečení patří ochrana identity v cloudovém měřítku, řízení přístupu na základě rizika, nativní vícefaktorové ověřování a zásady podmíněného přístupu. Tyto funkce umožňují podrobné zásady řízení přístupu na základě aplikací nebo skupin, které potřebují vyšší úroveň zabezpečení.
+Přihlašování služby Azure AD jednotného přihlašování (SSO) s [podmíněným přístupem](../conditional-access/concept-conditional-access-cloud-apps.md) poskytuje vysoké úrovně zabezpečení pro přístup k aplikacím. Mezi možnosti zabezpečení patří ochrana identity v cloudovém měřítku, řízení přístupu na základě rizika, nativní vícefaktorové ověřování a zásady podmíněného přístupu. Tyto funkce umožňují podrobné zásady řízení přístupu na základě aplikací nebo skupin, které potřebují vyšší úroveň zabezpečení.
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Vyšší produktivita pomocí jednotného přihlašování
 

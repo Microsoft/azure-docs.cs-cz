@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: de3f553fd001b06d56663f63402da2489f35877d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ceaa44429d105c2a6a1d0883ab29ed11b63ad497
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649173"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736071"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Základní hodnoty zabezpečení Azure pro API Management
 
@@ -1096,7 +1096,7 @@ Spravované identity lze použít k získání certifikátů z Azure Key Vault p
 
 **Doprovodné**materiály: Ověřte zálohy pomocí testu obnovení služby a certifikátů ze záloh.
 
-* [Jak volat operaci obnovení API Management](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+* [Jak volat operaci obnovení API Management](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 * [Postup obnovení certifikátů Azure Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 

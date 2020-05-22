@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 2fc2a32c47991b9b3615417dfb8f50ca3e7c988f
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 8101f00f4ffc3735becbad2ecde26f5a208ff4a1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983495"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744823"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -20,10 +20,10 @@ Tento článek shrnuje podporu a předpoklady pro zotavení po havárii virtuál
 
 **Nasazení** |  **Podpora**
 --- | ---
-**Azure Portal** | Podporuje se.
+**portál Azure** | Podporuje se.
 **PowerShell** | Podporuje se. [Další informace](azure-to-azure-powershell.md)
 **REST API** | Podporuje se.
-**CLI** | Aktuálně se nepodporuje.
+**Rozhraní příkazového řádku** | Aktuálně se nepodporuje.
 
 
 ## <a name="resource-support"></a>Podpora prostředků
@@ -273,6 +273,8 @@ Připojení VPN typu Site-to-site k místnímu prostředí<br/><br/>(s ExpressRo
 Připojení virtuální sítě k virtuální síti    | Podporuje se | [Další informace](site-recovery-azure-to-azure-networking-guidance.md)
 Koncové body služby pro virtuální síť | Podporuje se | Pokud omezíte přístup k virtuální síti k účtům úložiště, ujistěte se, že důvěryhodné služby Microsoftu mají povolený přístup k účtu úložiště.
 Urychlení sítě | Podporuje se | Na zdrojovém virtuálním počítači musí být povolené urychlené síťové služby. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Síťové zařízení Palo Alto | Nepodporuje se | U zařízení třetích stran se v rámci virtuálního počítače často ukládají omezení poskytovatele. Azure Site Recovery potřebuje k dispozici agenta, rozšíření a odchozí připojení. Zařízení ale neumožňuje konfigurovat žádné odchozí aktivity uvnitř virtuálního počítače.
+IPv6  | Nepodporuje se | Současně se nepodporují i smíšené konfigurace, které zahrnují IPv4 i IPv6. Před jakoukoli operací Site Recovery Prosím uvolněte podsíť rozsahu IPv6.
 
 
 

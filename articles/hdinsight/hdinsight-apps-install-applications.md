@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 22d27d50a7d2c304e5d1a04a9a5eaa03d2f0bfa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8c0644a84b917acff60060a0c48f8e9aac30e16
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366338"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746217"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací Apache Hadoop třetích stran v Azure HDInsight
 
@@ -31,7 +31,7 @@ Publikované aplikace jsou uvedeny v následujícím seznamu:
 |[Dataiku DSS ve službě HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Dataiku DSS pro podnikovou datovou vědeckou platformu, která umožňuje odborníkům přes data a analytikům v oblasti IT efektivněji navrhovat a spouštět nové datové produkty a služby a přepínat nezpracovaná data na ovlivněné předpovědi. |
 |[Aplikace HDI pro WANdisco Fusion](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop, Spark, HBA, více Kafka |Udržování dat konzistentních v distribuovaném prostředí je náročné na zpracování datových operací. WANdisco fúze, softwarová platforma na podnikové úrovni, řeší tento problém tím, že umožňuje nestrukturovaná konzistenci dat napříč jakýmkoli prostředím. |
 |[SparklingWater pro HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |Sparková voda podporuje následující distribuované algoritmy: GLM, Naive Bayes, distribuovaná náhodná doménová struktura, počítač s hloubkovou neuronové sítí, obsáhlý Learning, K-znamená, DPS, zobecněné modely nízké klasifikace, detekce anomálií, autoencoders. |
-|[Striim pro integraci dat v reálném čase do HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/striim.hdinsightintegration) |Hadoop, HBA, Kafka, Spark, |Striim ("Stream") je ucelená platforma pro integraci dat a datovou sadu, která umožňuje průběžné přijímání, zpracování a analýzu různorodých datových proudů. |
+|[Striim pro integraci dat v reálném čase do HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/striim.striimbyol) |Hadoop, HBA, Kafka, Spark, |Striim ("Stream") je ucelená platforma pro integraci dat a datovou sadu, která umožňuje průběžné přijímání, zpracování a analýzu různorodých datových proudů. |
 |[Jumbune Enterprise – zrychlení BigData Analytics](https://azuremarketplace.microsoft.com/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Jumbune pomáhá podnikům na vysoké úrovni – 1. Urychlení tez, MapReduce &ý podregistr založená na modulech Spark, Java a Scala úlohy. 2. Proaktivní monitorování clusteru Hadoop, 3. Vytváření správy kvality dat v systému souborů DFS. |
 |[Kyligence Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence) |Hadoop, HBA, Spark |Kyligence Enterprise, který využívá Apache Kylin, umožňuje BI na velkých objemech dat. Jako podnikový modul OLAP v systému Hadoop Kyligence Enterprise umožňuje obchodním analytikům architekt BI v systému Hadoop pomocí standardních datových skladů a metodologie BI. |
 |[Hvězdicový Presto pro Azure HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto je rychlý a Škálovatelný modul SQL pro distribuované dotazy. Presto je ideální pro oddělení úložiště a výpočetních prostředků, které slouží k dotazování na data v Azure Data Lake Storage, databázích Azure Blob Storage, SQL a NoSQL a dalších zdrojích dat. |
@@ -51,8 +51,8 @@ Následující postup ukazuje, jak můžete instalovat aplikace HDInsight do exi
 
 **Instalace aplikace HDInsight**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce vlevo přejděte na **všechny služby** > **Analytics** > **clustery HDInsight**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight**.
 3. Ze seznamu vyberte cluster HDInsight.  Pokud ho ještě nemáte, vytvořte ho.  Viz článek [Vytvoření clusterů](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 
    
@@ -75,8 +75,8 @@ Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlas
 
 **Výpis vlastností aplikace a zobrazení HDInsight**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce vlevo přejděte na **všechny služby** > **Analytics** > **clustery HDInsight**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight**.
 3. Ze seznamu vyberte cluster HDInsight.
 4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 
    
@@ -98,7 +98,7 @@ K hraničnímu uzlu se můžete připojit pomocí protokolu HTTP a SSH. Informac
 
 Přihlašovací údaje koncového bodu protokolu HTTP jsou přihlašovací údaje uživatele protokolu HTTP, které jste nakonfigurovali pro cluster HDInsight. Přihlašovací údaje koncového bodu SSH jsou přihlašovací údaje SSH, které jste nakonfigurovali pro cluster HDInsight.
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Odstranit potíže
 Viz článek [Řešení potíží instalace](hdinsight-apps-install-custom-applications.md#troubleshoot-the-installation).
 
 ## <a name="next-steps"></a>Další kroky

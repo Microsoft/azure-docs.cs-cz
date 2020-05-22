@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: a265278652c16b4682707470d183a02a55b9a0ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c9e203d7e8be7b24c711f73e2152a7745a57dac
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77069213"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745465"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Řešení potíží s Azure Internet Analyzer
 
@@ -25,7 +25,7 @@ Tento článek obsahuje postup pro řešení běžných problémů s Internet An
 ## <a name="azure-portal"></a>portál Azure
 **"Pro vybranou kombinaci filtru v části přehledy výkonnostních metrik nebyla vygenerována Scorecard**
 - Scorecardy se generují každý den (na konci každého dne, čas UTC).
-- Scorecardy se generují jenom v případě, že se pro vybranou kombinaci filtrů shromáždilo více než 100 měření (test, časové období, země atd.).
+- Scorecardy se generují jenom v případě, že se pro vybranou kombinaci filtrů shromáždila více než 100 měření (test, časové období, země/oblast atd.).
 
 **"Celkový počet měření" je nula pro jeden nebo oba koncové body v testu.**
 - Časová řada a počty měření se vypočítávají jednou za hodinu, takže budete muset počkat aspoň tuto dobu, než se data nových měření zobrazí.

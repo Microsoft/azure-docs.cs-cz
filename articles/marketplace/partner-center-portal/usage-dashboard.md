@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 89a0a782b4a18b71f7be8bcdd3728fd008c24d5a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b60475c56b18e81b082e7552fec789b06adeff27
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793002"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746668"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Řídicí panel využití v Microsoft Commercial Marketplace Analytics
 
@@ -54,7 +54,7 @@ Tabulka Souhrn využití zobrazuje hodiny používání zákazníka pro všechny
 
 ### <a name="usage-by-geography"></a>Využití podle geografie
 
-**Normalizované využití podle geografických** heatmapu zobrazuje hodiny používání mapované podle země zákazníka. Variace barvy země představuje normalizovanou koncentraci využití. Kliknutím na tlačítko **Domů** na mapě se vraťte k původnímu zobrazení.
+**Normalizované využití podle geografických** heatmapu zobrazuje hodiny využití mapované v závislosti na zemi nebo oblasti zákazníka. Barevná variace země/oblasti představuje normalizovanou koncentraci využití. Kliknutím na tlačítko **Domů** na mapě se vraťte k původnímu zobrazení.
 
 ### <a name="usage-by-offers"></a>Využití podle nabídek
 
@@ -92,7 +92,7 @@ Tabulek výsledků zobrazuje nejvyšší 50 velikosti virtuálních počítačů
 - Každý sloupec v mřížce lze seřadit.
 - Data je možné extrahovat do souboru CSV, pokud je počet záznamů menší než 1000.
 - Pokud počet záznamů překročí 1000, exportují se data asynchronně na stránce ke stažení, která bude k dispozici po dobu následujících 30 dnů.
-- Filtry lze použít na **podrobná data o využití** k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle země, prodejního kanálu, typu licence Marketplace, typu použití, názvu nabídky, typu nabídky, bezplatných zkušebních verzí, ID předplatného Marketplace, ID zákazníka a názvu společnosti.
+- Filtry lze použít na **podrobná data o využití** k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle země/oblasti, prodejního kanálu, typu licence Marketplace, typu použití, názvu nabídky, typu nabídky, bezplatných zkušebních verzí, ID předplatného Marketplace, ID zákazníka a názvu společnosti.
 
 > [!NOTE]
 > Vyberte **typ použití** ve filtru stránky pro zobrazení grafů na stránce v zobrazení "normalizované zobrazení" nebo "raw". Výchozím zobrazením pro tyto grafy je "normalizované zobrazení".

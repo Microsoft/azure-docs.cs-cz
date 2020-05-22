@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 7ae8a21d4ea9216bea13d47ad5ae41f3bc1c2089
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 80efee18ff7cc927ea9029c11aadcf13ad75781a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82630171"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747601"
 ---
 # <a name="webhook-event-delivery"></a>Doručení události Webhooku
 Webhooky jsou jedním z mnoha způsobů, jak přijímat události z Azure Event Grid. Když je nová událost připravena, Služba Event Grid odešle požadavek HTTP do nakonfigurovaného koncového bodu s událostí v textu požadavku.
@@ -33,19 +33,19 @@ Pokud používáte jiný typ koncového bodu, jako je Azure Functions založený
 
    Počínaje verzí 2018-05-01-Preview Event Grid podporuje manuální ověřování metodou handshake. Pokud vytváříte odběr událostí pomocí sady SDK nebo nástroje, který používá rozhraní API verze 2018-05-01-Preview nebo novější, Event Grid odešle `validationUrl` vlastnost v datové části události ověření předplatného. K dokončení metody handshake Najděte tuto adresu URL v datech události a proveďte do ní požadavek GET. Můžete použít buď klienta REST, nebo webový prohlížeč.
 
-   Zadaná adresa URL je platná **5 minut**. Během této doby je `AwaitingManualAction`stav zřizování odběru události. Pokud nedokončíte ruční ověření během 5 minut, stav zřizování je nastaven na `Failed`. Než začnete s ručním ověřováním, budete muset vytvořit odběr událostí znovu.
+   Zadaná adresa URL je platná **5 minut**. Během této doby je stav zřizování odběru události `AwaitingManualAction` . Pokud nedokončíte ruční ověření během 5 minut, stav zřizování je nastaven na `Failed` . Než začnete s ručním ověřováním, budete muset vytvořit odběr událostí znovu.
 
    Tento mechanismus ověřování také vyžaduje, aby koncový bod Webhooku vrátil stavový kód HTTP 200, aby věděl, že příspěvek pro událost ověření byl přijat předtím, než mohl být vložen do režimu ručního ověření. Jinými slovy, pokud koncový bod vrátí 200, ale nevrátí zpět odpověď ověření synchronně, režim se převede do režimu ručního ověření. Pokud se v ověřovací adrese URL objeví během 5 minut, považuje se ověřovací metoda handshake za úspěšnou.
 
 > [!NOTE]
-> Použití certifikátů podepsaných svým držitelem k ověření se nepodporuje. Místo toho použijte podepsaný certifikát od certifikační autority (CA).
+> Použití certifikátů podepsaných svým držitelem k ověření se nepodporuje. Místo toho použijte podepsaný certifikát od Komerční certifikační autority (CA).
 
 ### <a name="validation-details"></a>Podrobnosti ověření
 
 - V okamžiku vytvoření nebo aktualizace odběru události Event Grid účtuje událost ověření předplatného do cílového koncového bodu.
 - Událost obsahuje hodnotu hlavičky "AEG-Event-Type: SubscriptionValidation".
 - Tělo události má stejné schéma jako jiné události Event Grid.
-- Vlastnost eventType události je `Microsoft.EventGrid.SubscriptionValidationEvent`.
+- Vlastnost eventType události je `Microsoft.EventGrid.SubscriptionValidationEvent` .
 - Vlastnost dat události obsahuje `validationCode` vlastnost s náhodně generovaným řetězcem. Například "validationCode: acb13...".
 - Data události také obsahují `validationUrl` vlastnost s adresou URL pro ruční ověření předplatného.
 - Pole obsahuje pouze událost ověření. Další události se odesílají v samostatném požadavku po návratu zpět ověřovacího kódu.

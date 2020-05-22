@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 93dc831fa631a28b918ef5015a3c9ff107d41541
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 423d65cc77cb06a6084ad9ad56f3d7274e057ffb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726073"
+ms.locfileid: "83746512"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -140,7 +140,7 @@ Více než 75 standardních hlasů je k dispozici ve více než 45 jazycích a n
 | <sup>první</sup>`ar-EG` | Arabština (Egypt) | Female | ar-EG-Hoda |
 | `ar-SA` | Arabština (Saúdská Arábie) | Male | ar-SA-Naayf " |
 | `bg-BG` | Bulharština | Male |  BG-BG-Ivan |
-| `ca-ES` | katalánština (Španělsko) | Female |  "Ca-ES-HerenaRUS" |
+| `ca-ES` | Katalánština | Female |  "Ca-ES-HerenaRUS" |
 | `cs-CZ` | Čeština | Male | cs-CZ-Jakub " |
 | `da-DK` | Dánština | Female |  "da-DK-HelleRUS" |
 | `de-AT` | Němčina (Rakousko) | Male | de-AT-Michael |

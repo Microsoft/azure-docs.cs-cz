@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34b29ceadaaf85e69d1214039fa1b563ed21a77d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10b0f86447436b8bf08874daf472b1223bff7d0a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295186"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737652"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Podmíněný přístup: blokovat přístup podle umístění
 
-Pomocí podmínky umístění v podmíněném přístupu můžete řídit přístup k vašim cloudovým aplikacím na základě umístění uživatele v síti. Podmínka umístění se běžně používá k blokování přístupu ze zemí, ve kterých vaše organizace ví, že by přenos dat neměl pocházet.
+Pomocí podmínky umístění v podmíněném přístupu můžete řídit přístup k vašim cloudovým aplikacím na základě umístění uživatele v síti. Podmínka umístění se běžně používá k blokování přístupu ze zemí nebo oblastí, ve kterých vaše organizace ví, že by přenos dat neměl pocházet.
 
 ## <a name="define-locations"></a>Definovat umístění
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory** > **zabezpečení** > **podmíněný přístup** > **s názvem umístění**.
+1. Vyhledejte **Azure Active Directory**  >  **zabezpečení**  >  **podmíněný přístup**  >  **s názvem umístění**.
 1. Vyberte **nové umístění**.
 1. Zadejte název svého umístění.
 1. **Rozsahy IP** adres vyberte, pokud znáte konkrétní externě přístupné rozsahy IPv4 adres, které tvoří dané umístění nebo **země nebo oblasti**.
@@ -38,20 +38,20 @@ Další informace o podmínkách umístění v podmíněném přístupu najdete 
 ## <a name="create-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory** > **Security** > **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. Vyberte **Done** (Hotovo).
-1. V části **cloudové aplikace nebo akce** > **Include**vyberte **všechny cloudové aplikace**a vyberte **Hotovo**.
-1. V části**umístění** **podmínek** > .
+1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **všechny cloudové aplikace**a vyberte **Hotovo**.
+1. V **Conditions**části  >  **umístění**podmínek.
    1. Nastavte **Konfigurovat** na **Ano** .
    1. **Zahrnout** výběr **vybraných umístění**
    1. Vyberte blokované umístění, které jste vytvořili pro vaši organizaci.
-   1. Klikněte na **Vybrat** > **Hotovo** > **.**
-1. V části **podmínky** > **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**.
-1. V části **řízení** > přístupu**blokovat**a vyberte **Vybrat**.
+   1. Klikněte na **Vybrat**  >  **Hotovo**  >  **Done**.
+1. V části **podmínky**  >  **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**.
+1. V části **řízení přístupu**  >  **blokovat**a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 

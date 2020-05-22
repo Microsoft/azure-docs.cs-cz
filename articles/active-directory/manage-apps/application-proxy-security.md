@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd6794bafc3c209032f32626e8c46b51769d05e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74e0faf8ac776c043f2407e509c936d21f227664
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481224"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739964"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Otázky zabezpečení při vzdáleném přístupu k aplikacím pomocí Azure Proxy aplikací služby AD
 
@@ -47,7 +47,7 @@ Pokud jako metodu předběžného ověření zvolíte možnost Passthrough, tato
 
 Než se naváže připojení k vaší síti, použijte rozšířené ovládací prvky zásad.
 
-S [podmíněným přístupem](../conditional-access/overview.md)můžete definovat omezení pro přístup k vašim back-end aplikacím, které mají povolený provoz. Můžete vytvářet zásady, které omezují přihlášení na základě umístění, síly ověřování a profilu rizika uživatele.
+Pomocí [podmíněného přístupu](../conditional-access/concept-conditional-access-cloud-apps.md)můžete definovat omezení způsobu, jakým uživatelé mají povolený přístup k vašim aplikacím. Můžete vytvářet zásady, které omezují přihlášení na základě umístění, síly ověřování a profilu rizika uživatele.
 
 Podmíněný přístup můžete také použít ke konfiguraci zásad Multi-Factor Authentication a přidání další vrstvy zabezpečení do ověřování uživatelů. Kromě toho je možné vaše aplikace směrovat také na Microsoft Cloud App Security prostřednictvím podmíněného přístupu Azure AD k poskytování monitorování a řízení v reálném čase prostřednictvím zásad [přístupu](https://docs.microsoft.com/cloud-app-security/access-policy-aad) a [relací](https://docs.microsoft.com/cloud-app-security/session-policy-aad) .
 
@@ -79,7 +79,7 @@ Nemusíte si dělat starosti s údržbou a opravou místních serverů.
 
 Neopravný software je stále pro velký počet útoků. Azure Proxy aplikací služby AD je služba internetového škálování, kterou Microsoft vlastní, takže vždycky získáte nejnovější opravy a upgrady zabezpečení.
 
-Abychom vylepšili zabezpečení aplikací publikovaných v Azure Proxy aplikací služby AD, zablokovali jsme roboty webového prohledávacího modulu z indexování a archivace vašich aplikací. Pokaždé, když se robot webového prohledávacího programu pokusí načíst nastavení robota pro publikovanou aplikaci, proxy aplikací aplikace odpoví souborem robots. txt, který obsahuje `User-agent: * Disallow: /`.
+Abychom vylepšili zabezpečení aplikací publikovaných v Azure Proxy aplikací služby AD, zablokovali jsme roboty webového prohledávacího modulu z indexování a archivace vašich aplikací. Pokaždé, když se robot webového prohledávacího programu pokusí načíst nastavení robota pro publikovanou aplikaci, proxy aplikací aplikace odpoví souborem robots. txt, který obsahuje `User-agent: * Disallow: /` .
 
 #### <a name="azure-ddos-protection-service"></a>Služba Azure DDoS Protection
 

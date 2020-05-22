@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81451121"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757595"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Plánování nasazení služby Azure Multi-Factor Authentication
 
@@ -51,11 +51,11 @@ Plán zavedení MFA by měl zahrnovat pilotní nasazení, po kterém následují
 
 Je důležité informovat uživatele, v plánované komunikaci, o nadcházejících změnách, požadavcích na registraci Azure MFA a všech nezbytných akcích uživatele. Doporučujeme, abyste komunikaci vyvinuli společně se zástupci z vaší organizace, jako je komunikace, Správa změn nebo oddělení lidských zdrojů.
 
-Společnost Microsoft poskytuje [komunikační šablony](https://aka.ms/mfatemplates) a [dokumentaci pro koncové uživatele](../user-help/security-info-setup-signin.md) , které vám pomůžou při vypracovávání komunikace. Můžete odeslat uživatele do [https://myprofile.microsoft.com](https://myprofile.microsoft.com) , aby se zaregistrovali přímo, a to tak, že na této stránce vyberete odkazy na **informace o zabezpečení** .
+Společnost Microsoft poskytuje [komunikační šablony](https://aka.ms/mfatemplates) a [dokumentaci pro koncové uživatele](../user-help/security-info-setup-signin.md) , které vám pomůžou při vypracovávání komunikace. Můžete odeslat uživatele do, [https://myprofile.microsoft.com](https://myprofile.microsoft.com) aby se zaregistrovali přímo, a to tak, že na této stránce vyberete odkazy na **informace o zabezpečení** .
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
-Azure Multi-Factor Authentication se nasazuje vynucenými zásadami s podmíněným přístupem. [Zásada podmíněného přístupu](../conditional-access/overview.md) může vyžadovat, aby uživatelé při splnění určitých kritérií prováděli vícefaktorové ověřování, například:
+Azure Multi-Factor Authentication se nasazuje vynucenými zásadami s podmíněným přístupem. Zásada podmíněného přístupu může vyžadovat, aby uživatelé při splnění určitých kritérií prováděli vícefaktorové ověřování, například:
 
 * Všichni uživatelé, konkrétní uživatel, člen skupiny nebo přiřazená role
 * Konkrétní cloudová aplikace, ke které se přistupoval
@@ -114,7 +114,7 @@ Správci mohou zvolit [metody ověřování](../authentication/concept-authentic
 Do aplikace Microsoft Authenticator na vašem mobilním zařízení se pošle nabízené oznámení. Uživatel zobrazí oznámení a vybere **schválit** k dokončení ověření. Nabízená oznámení prostřednictvím mobilní aplikace poskytují uživatelům nejméně rušivou možnost. Jsou také nejspolehlivější a zabezpečený způsob, protože místo telefonního subsystému používá datové připojení.
 
 > [!NOTE]
-> Pokud má vaše organizace zaměstnanci pracující v nebo na cestách na Čínu, **oznámení prostřednictvím metody mobilní aplikace** v **zařízeních s Androidem** v dané zemi nefunguje. Pro tyto uživatele by měly být k dispozici alternativní metody.
+> Pokud má vaše organizace zaměstnanci pracující v nebo na cestách na Čínu, **oznámení prostřednictvím metody mobilní aplikace** v **zařízeních s Androidem** nefunguje v dané zemi nebo oblasti. Pro tyto uživatele by měly být k dispozici alternativní metody.
 
 ### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
 
@@ -221,14 +221,14 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 ## <a name="plan-conditional-access-policies"></a>Plánování zásad podmíněného přístupu
 
-Pokud chcete naplánovat strategii zásad podmíněného přístupu, která určí, kdy se vyžadují MFA a jiné ovládací prvky, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md).
+Pokud chcete naplánovat strategii zásad podmíněného přístupu, která určí, kdy se vyžadují MFA a jiné ovládací prvky, přečtěte si téma [společné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md).
 
 Je důležité, abyste zabránili neúmyslnému uzamčení vašeho tenanta Azure AD. Dopad tohoto neúmyslného přístupu správce můžete zmírnit tím, že [ve svém tenantovi vytvoříte dva nebo víc účtů pro nouzový přístup](../users-groups-roles/directory-emergency-access.md) a vyloučíte je ze zásad podmíněného přístupu.
 
 ### <a name="create-conditional-access-policy"></a>Vytvořit zásady podmíněného přístupu
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce.
-1. Vyhledejte **Azure Active Directory** > **Security** > **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
 1. Vyberte **nové zásady**.
    ![Vytvoření zásady podmíněného přístupu pro povolení MFA pro uživatele Azure Portal v pilotní skupině](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Zadejte smysluplný název pro zásady.
@@ -282,9 +282,9 @@ Pokud máte nasazenou instanci serveru NPS a používáte ji již v provozu, odk
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>Příprava serveru NPS pro uživatele, kteří nejsou zaregistrovaní pro MFA
 
-Vyberte, co se stane, když se uživatelé, kteří nejsou zaregistrovaní pomocí MFA, pokoušejí ověřit. Pro řízení chování funkcí `REQUIRE_USER_MATCH` použijte nastavení registru v `HKLM\Software\Microsoft\AzureMFA` cestě k registru. Toto nastavení má jedinou možnost konfigurace.
+Vyberte, co se stane, když se uživatelé, kteří nejsou zaregistrovaní pomocí MFA, pokoušejí ověřit. `REQUIRE_USER_MATCH`Pro řízení chování funkcí použijte nastavení registru v cestě `HKLM\Software\Microsoft\AzureMFA` k registru. Toto nastavení má jedinou možnost konfigurace.
 
-| Key | Hodnota | Výchozí |
+| Klíč | Hodnota | Výchozí |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | TRUE NEBO FALSE | Nenastaveno (ekvivalent hodnoty TRUE) |
 
@@ -324,7 +324,7 @@ Na každém AD FSovém serveru bude v místním počítači moje úložiště k 
 
 Pokud se doba platnosti vašich certifikátů blíží k vypršení platnosti, [vygenerujte a ověřte nový certifikát MFA na každém serveru AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
-Následující pokyny vám podrobně poradí, jak spravovat certifikáty Azure MFA na serverech AD FS. Když nakonfigurujete AD FS s využitím Azure MFA, certifikáty vygenerované pomocí rutiny `New-AdfsAzureMfaTenantCertificate` PowerShellu jsou platné po dobu dvou let. Obnovte a nainstalujte obnovené certifikáty před vypršením platnosti ovoid výpadků ve službě MFA.
+Následující pokyny vám podrobně poradí, jak spravovat certifikáty Azure MFA na serverech AD FS. Když nakonfigurujete AD FS s využitím Azure MFA, certifikáty vygenerované pomocí `New-AdfsAzureMfaTenantCertificate` rutiny PowerShellu jsou platné po dobu dvou let. Obnovte a nainstalujte obnovené certifikáty před vypršením platnosti ovoid výpadků ve službě MFA.
 
 ## <a name="implement-your-plan"></a>Implementace plánu
 

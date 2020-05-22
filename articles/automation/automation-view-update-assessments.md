@@ -1,18 +1,18 @@
 ---
-title: Zobrazit Azure Automation Update Management posouzení aktualizací
-description: Tento článek popisuje, jak zobrazit posouzení aktualizací pro nasazení aktualizací.
+title: Zobrazit Azure Automation posouzení aktualizací
+description: V tomto článku se dozvíte, jak zobrazit posouzení aktualizací pro nasazení Update Management.
 services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 75762afc9ae69da81e89ce320f454d9764f82914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c66f54b8b01b5131defce6e709af52f9b2732d1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617389"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745239"
 ---
-# <a name="view-azure-automation-update-management-update-assessments"></a>Zobrazit Azure Automation Update Management posouzení aktualizací
+# <a name="view-update-assessments"></a>Zobrazení posouzení aktualizací
 
 V Azure Automation účtu vyberte **Update Management** a zobrazte stav vašich počítačů.
 
@@ -28,7 +28,7 @@ Vyberte **chybějící aktualizace** a zobrazte tak seznam aktualizací, které 
 
 ![Chybějící aktualizace](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
-## <a name="update-classifications"></a>Update classifications
+## <a name="work-with-update-classifications"></a>Práce s klasifikací aktualizací
 
 V následujících tabulkách jsou uvedeny podporované klasifikace aktualizací v Update Management s definicí pro každou klasifikaci.
 
@@ -64,4 +64,4 @@ Chcete-li klasifikovat aktualizace na Red Hat Enterprise verze 6, je nutné nain
 
 ## <a name="next-steps"></a>Další kroky
 
-Po zobrazení všech posouzení aktualizací můžete naplánovat nasazení aktualizací podle kroků v části [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
+[Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md)

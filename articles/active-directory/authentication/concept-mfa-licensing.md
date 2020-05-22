@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e74a7ab0c003aaf9d90211484b39f8322cd9c329
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 165b84ee6b124d3f6a04c8db177ef17e32784ff9
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77647998"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83757411"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Funkce a licence pro Azure Multi-Factor Authentication
 
@@ -32,9 +32,9 @@ V závislosti na potřebách vaší organizace se dá Azure Multi-Factor Authent
 | Pokud jste uživatelem | Možnosti a případy použití |
 | --- | --- |
 | EMS nebo Microsoft 365 E3 a E5 | EMS E3 nebo Microsoft 365 E3 (včetně EMS a Office 365), zahrnuje Azure AD Premium P1. EMS E5 nebo Microsoft 365 E5 zahrnuje Azure AD Premium P2. Pomocí stejných funkcí podmíněného přístupu uvedených v následujících částech můžete uživatelům poskytnout službu Multi-Factor Authentication. |
-| Azure AD Premium P1 | [Podmíněný přístup Azure AD](../conditional-access/overview.md) můžete použít k zobrazení výzvy uživatelům k ověřování službou Multi-Factor Authentication během určitých scénářů nebo událostí, aby vyhovovaly vašim obchodním požadavkům. |
+| Azure AD Premium P1 | [Podmíněný přístup Azure AD](../conditional-access/howto-conditional-access-policy-all-users-mfa.md) můžete použít k zobrazení výzvy uživatelům k ověřování službou Multi-Factor Authentication během určitých scénářů nebo událostí, aby vyhovovaly vašim obchodním požadavkům. |
 | Azure AD Premium P2 | Poskytuje nejsilnější umístění zabezpečení a vylepšené uživatelské prostředí. Přidá [podmíněný přístup založený na rizikech](../conditional-access/howto-conditional-access-policy-risk.md) k funkcím Azure AD Premium P1, které se přizpůsobí uživatelským vzorům a minimalizuje výzvy k ověření službou Multi-Factor Authentication. |
-| Office 365 Business Premium, E3 nebo E5 | Pro všechny přihlašovací události je Azure Multi-Factor Authentication buď povolený, nebo zakázaný pro všechny uživatele. Pro podmnožinu uživatelů není možné povolit ověřování pomocí služby Multi-Factor Authentication nebo jenom v některých případech. Správa je prostřednictvím portálu Office 365. Pro lepší uživatelské prostředí upgradujte na Azure AD Premium P1 nebo P2 a použijte podmíněný přístup. Další informace najdete v tématu [zabezpečení prostředků Office 365 pomocí služby Multi-Factor Authentication](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). |
+| Office 365 Business Premium, E3 nebo E5 | Azure Multi-Factor Authentication můžete [Povolit pro jednotlivé uživatele](howto-mfa-userstates.md)nebo povolit nebo zakázat pro všechny přihlašovací události pomocí výchozích hodnot zabezpečení. Správa Azure Multi-Factor Authentication je prostřednictvím portálu Office 365. Pro lepší uživatelské prostředí upgradujte na Azure AD Premium P1 nebo P2 a použijte podmíněný přístup. Další informace najdete v tématu [zabezpečení prostředků Office 365 pomocí služby Multi-Factor Authentication](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). |
 | Azure AD Free | [Výchozí nastavení zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md) můžete použít k povolení služby Multi-Factor Authentication pro všechny uživatele při každém provedení žádosti o ověření. Nemáte podrobnější kontrolu nad povolenými uživateli nebo scénáři, ale poskytuje další krok zabezpečení.<br /> I když se výchozí nastavení zabezpečení nepoužívá k povolení služby Multi-Factor Authentication pro všechny uživatele, můžou být uživatelé přiřazení role *globálního správce služby Azure AD* nakonfigurováni tak, aby používali službu Multi-Factor Authentication. Tato funkce úrovně Free zajišťuje, aby byly důležité účty správců chráněné službou Multi-Factor Authentication. |
 
 ## <a name="feature-comparison-of-versions"></a>Porovnání funkcí verzí
@@ -86,4 +86,6 @@ Pokud nechcete povolit službu Azure Multi-Factor Authentication pro všechny u�
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o cenách najdete v tématu [ceny služby Azure Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+* Další informace o cenách najdete v tématu [ceny služby Azure Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+* [Co je podmíněný přístup](../conditional-access/overview.md)
+

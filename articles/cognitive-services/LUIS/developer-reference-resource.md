@@ -3,12 +3,12 @@ title: Prostředky pro vývojáře – Language Understanding
 description: Sady SDK, rozhraní REST API a CLI vám pomůžou vyvíjet aplikace Language Understanding (LUIS) ve vašem programovacím jazyce. Spravujte své prostředky Azure a LUIS předpovědi.
 ms.topic: reference
 ms.date: 05/19/2020
-ms.openlocfilehash: c86dad46b09c2f761e73f38187b4824c0a17406f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c712a81e5b786ac980a0c48d358fef4caf2e7597
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655560"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758057"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Materiály pro vývojáře sady SDK, REST a CLI pro Language Understanding (LUIS)
 
@@ -73,13 +73,13 @@ Následující tabulka popisuje parametry, které jsou označeny složenými zá
 |`version`|10 název verze znaku|
 |`slot`| `production` nebo `staging`|
 
-## <a name="app-schema"></a>Schéma aplikace
+## <a name="app-schema"></a>Aplikační schéma
 
 [Schéma aplikace](app-schema-definition.md) je importováno a exportováno ve `.json` `.lu` formátu nebo.
 
 ### <a name="language-based-sdks"></a>Sady SDK založené na jazyce
 
-|Jazyk |Referenční dokumentace|Balíček|ukázky|Rychlý start|
+|Jazyk |Referenční dokumentace|Balíček|Ukázky|Rychlé starty|
 |--|--|--|--|--|
 |C#|[Vytváření obsahu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Předpovědi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[Vytváření balíčků NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[Předpověď NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Ukázky .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Vytvoření a správa aplikace](sdk-authoring.md?pivots=programming-language-csharp)<br>[Koncový bod předpovědi dotazů](sdk-query-prediction-endpoint.md)|
 |Přejít|[Vytváření a předpověď](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[Sada SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Vytváření obsahu](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Předpovědi](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[Vytváření a předpověď pomocí REST](luis-get-started-get-intent-from-rest.md)|
@@ -119,7 +119,7 @@ Robot Framework nabízí [několik nástrojů](https://github.com/microsoft/botb
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) – automatické generování záložních tříd C#/TypeScript pro vaše Luis záměry a entity.
 * [Emulátor rozhraní robot](https://github.com/Microsoft/BotFramework-Emulator/releases) – desktopová aplikace umožňující vývojářům robotům testovat a ladit roboty sestavené pomocí sady robot Framework SDK
 * [Robot Framework robot](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) – integrovaný vývojový nástroj pro vývojáře a týmy pro více týmů k sestavování roboty a konverzací v prostředí Microsoft bot Framework
-
+* [Ukázky rozhraní bot](https://github.com/microsoft/botbuilder-samples) – v #C, JavaScriptu, TypeScriptu a Pythonu
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o běžných [kódech chyb HTTP](luis-reference-response-codes.md)

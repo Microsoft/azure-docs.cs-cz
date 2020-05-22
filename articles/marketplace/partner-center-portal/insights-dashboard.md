@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: cecff7347189c5e5b964e10439297bce405810b7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 2d9691279b987f9d45f755ab340ff70671d350c0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857919"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745660"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Řídicí panel přehledů Marketplace v partnerském centru
 
@@ -89,7 +89,7 @@ Heatmapu dole zobrazuje počet **návštěv stránek**, **volání akce**a **jed
 Heatmapu obsahuje následující funkce:
 
 - Heatmapu má doplňkovou mřížku pro zobrazení podrobností o **návštěvě stránky**, **volání akce** a **jedinečných návštěvníků** v určitém umístění. Pokud upřednostňujete, můžete zvětšit konkrétní umístění.  
-- Počet **zemí** , ze kterých si vaši zákazníci nahlásili stránky, v průběhu vybraného rozsahu kalendářních dat.
+- Rozmístění **zemí nebo oblastí** je počet všech zemí nebo oblastí, od kterých vaši zákazníci oznámili návštěvy stránky během vybraného rozsahu kalendářních dat.
 - Můžete vyhledat a vybrat zemi v mřížce pro přiblížení do umístění v mapě. Vraťte se k původnímu zobrazení výběrem možnosti **Domů** na mapě.
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>Návštěvy stránky versus trend jedinečných návštěvníků

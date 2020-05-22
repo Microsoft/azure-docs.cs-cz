@@ -1,16 +1,16 @@
 ---
 title: Správa balíčků Python 2 v Azure Automation
-description: Tento článek popisuje, jak spravovat balíčky Python 2 v Azure Automation.
+description: V tomto článku se dozvíte, jak spravovat balíčky Python 2 v Azure Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: 701a5aab7a0061f8b5abfaac1b699034db2671b9
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: cc709be7a7f0d46d105e73b0a105a3dec8cc793c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508985"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746709"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Správa balíčků Python 2 v Azure Automation
 
@@ -48,10 +48,10 @@ Po stažení balíčků je můžete importovat do svého účtu Automation.
 
  Pokud chcete sadu Runbook získat, [importujte balíčky Python 2 z PyPI do účtu Azure Automation](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) z Galerie do svého účtu Automation. Ujistěte se, že jsou nastavení spuštění nastavená na **Azure** , a spusťte Runbook pomocí parametrů. Sada Runbook vyžaduje účet Spustit jako, aby mohl účet služby Automation fungovat. U každého parametru se ujistěte, že ho spustíte s přepínačem, jak je vidět v následujícím seznamu a obrázku:
 
-* -s \<SubscriptionId\>
-* – g \<– zdrojová zdrojová\>
-* – a \<automationAccount\>
-* -m \<modulePackage\>
+* -s \< SubscriptionId\>
+* – g – \< zdrojová zdrojová\>
+* – a \< automationAccount\>
+* -m \< modulePackage\>
 
 ![Seznam balíčků](media/python-packages/import-python-runbook.png)
 
@@ -89,4 +89,4 @@ Chcete-li vyvíjet a testovat Runbooky v Pythonu 2 v režimu offline, můžete p
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li začít s Runbooky Python 2, přečtěte si [můj první Runbook sady Python 2](automation-first-runbook-textual-python2.md).
+[Vytvoření runbooku v Pythonu](learn/automation-tutorial-runbook-textual-python2.md)

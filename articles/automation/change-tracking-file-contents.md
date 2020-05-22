@@ -1,41 +1,41 @@
 ---
 title: Správa Change Tracking a inventáře v Azure Automation
-description: V tomto článku se dozvíte, jak pomocí Change Tracking a inventáře sledovat změny softwaru a služeb Microsoftu, ke kterým dochází ve vašem prostředí.
+description: V tomto článku se dozvíte, jak pomocí Change Tracking a inventáře sledovat změny softwaru a služeb Microsoftu ve vašem prostředí.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 8e5ee8df1dfd250a6713d832bf176daecdaef7ea
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779293"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744408"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Správa řešení Change Tracking a Inventory
 
-Když přidáte nový soubor nebo klíč registru, který se má sledovat, Azure Automation ho povolí pro funkci [Change Tracking a inventáře](change-tracking.md) . Tento článek obsahuje postupy pro práci s touto funkcí.
+Azure Automation povoluje funkci [Change Tracking a inventáře](change-tracking.md) pro počítače ve vašem prostředí. Funkce sleduje a zpřístupňuje dostupné změny v klíčích registru, souborech, obsahech a podobně. Tento článek obsahuje postupy pro práci s touto funkcí.
 
 ## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>Povolení úplné funkce Change Tracking a inventáře
 
-Pokud jste povolili [Azure Security Center Monitoring integrity souborů (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring), můžete použít úplnou funkci Change Tracking a inventáře, jak je popsáno níže. Vaše nastavení tento proces neodstraní.
+Pokud jste povolili [Azure Security Center Monitoring integrity souborů (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring), můžete pro počítače použít úplnou funkci Change Tracking a inventáře, jak je popsáno níže. Vaše nastavení tento proces neodstraní.
 
 > [!NOTE]
 > Povolení úplných funkcí Change Tracking a inventáře může způsobit další poplatky. Podívejte se na téma [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
 
 1. Odstraňte řešení monitorování tak, že přejdete do pracovního prostoru a vyhledáte ho v [seznamu nainstalovaných řešení monitorování](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
 2. Kliknutím na název řešení otevřete jeho stránku Shrnutí a pak klikněte na **Odstranit**, jak je popsáno v části [Odebrání řešení monitorování](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
-3. Pokud chcete znovu povolit Change Tracking a inventáře, přejděte do účtu Automation a v části **Správa konfigurace**vyberte **Change Tracking (sledování změn** ).
+3. Pokud chcete znovu povolit Change Tracking a inventáře, přejděte do účtu Automation a v části **Správa konfigurace**vyberte **změnit sledování** nebo **inventář** .
 4. Vyberte pracovní prostor Log Analytics a účet Automation, potvrďte nastavení pracovního prostoru a klikněte na **Povolit**.
 
-## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>Zprovoznění počítačů do Change Tracking a inventáře
+## <a name="enable-machines-for-change-tracking-and-inventory"></a><a name="onboard"></a>Povolit počítače pro Change Tracking a inventář
 
-Chcete-li začít sledovat změny, je nutné povolit Change Tracking a inventář v Azure Automation. Tady jsou doporučené a podporované způsoby připojení počítačů k této funkci: 
+Chcete-li začít sledovat změny, je nutné povolit Change Tracking a inventář v Azure Automation. Tady jsou doporučené a podporované způsoby povolení této funkce pro vaše počítače: 
 
-* [Zprovoznění z virtuálního počítače](automation-onboard-solutions-from-vm.md)
-* [Připojování z prohlížení více počítačů](automation-onboard-solutions-from-browse.md)
-* [Zprovoznění z účtu Automation](automation-onboard-solutions-from-automation-account.md)
-* [Zprovoznění v sadě Azure Automation Runbook](automation-onboard-solutions.md)
+* [Povolit z virtuálního počítače](automation-onboard-solutions-from-vm.md)
+* [Povolit z prohlížení více počítačů](automation-onboard-solutions-from-browse.md)
+* [Povolení z účtu Automation](automation-onboard-solutions-from-automation-account.md)
+* [Povolení v sadě Azure Automation Runbook](automation-onboard-solutions.md)
 
 ## <a name="track-files"></a>Sledování souborů
 
@@ -53,7 +53,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Windows použ
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
     |Skupina     | Název skupiny pro logicky seskupené soubory.        |
-    |Zadat cestu     | Cesta pro kontrolu souboru, například **\\\*c:\Temp. txt**. Můžete také použít proměnné prostředí, například `%winDir%\System32\\\*.*`.       |
+    |Zadat cestu     | Cesta pro kontrolu souboru, například **c:\Temp \\ \* . txt**. Můžete také použít proměnné prostředí, například `%winDir%\System32\\\*.*` .       |
     |Typ cesty     | Typ cesty Možné hodnoty jsou soubor a adresář.        |    
     |Rekurze     | True, pokud se používá rekurze při hledání položky, která se má sledovat, a v opačném případě false.        |    
     |Nahrát obsah souboru | True pro nahrání obsahu souboru při sledovaných změnách a v opačném případě false.|
@@ -164,7 +164,7 @@ Následující příklad ukazuje, že soubor **C:\Windows\System32\drivers\etc\h
 Pomocí tohoto příkladu se podíváme na postup, jak na změnu vytvořit výstrahy.
 
 1. Ve svém účtu Automation v části **Správa konfigurace**vyberte možnost **sledování změn** a pak vyberte **Log Analytics**. 
-2. V hledání v protokolech vyhledejte změny obsahu v souboru **hosts** pomocí dotazu `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Tento dotaz vyhledá změnu obsahu pro soubory s plně kvalifikovanou cestou obsahující slovo "hostitelé". Můžete také požádat o konkrétní soubor tak, že změníte část cesty na jeho plně kvalifikovaný tvar, například pomocí `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`.
+2. V hledání v protokolech vyhledejte změny obsahu v souboru **hosts** pomocí dotazu `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` . Tento dotaz vyhledá změnu obsahu pro soubory s plně kvalifikovanou cestou obsahující slovo "hostitelé". Můžete také požádat o konkrétní soubor tak, že změníte část cesty na jeho plně kvalifikovaný tvar, například pomocí `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"` .
 
 3. Jakmile dotaz vrátí požadované výsledky, kliknutím na **nové pravidlo výstrahy** v hledání protokolu otevřete stránku pro vytvoření výstrahy. Na tuto stránku můžete přejít také pomocí **Azure monitor** v Azure Portal. 
 
@@ -178,6 +178,6 @@ Pomocí tohoto příkladu se podíváme na postup, jak na změnu vytvořit výst
 
 ## <a name="next-steps"></a>Další kroky
 
-* Základní informace o Change Tracking a inventáři najdete v tématu [přehled Change Tracking a inventáře](change-tracking.md).
-* Řešení potíží se změnami pro virtuální počítače Azure najdete v tématu [řešení potíží s Change Tracking a inventářem](troubleshoot/change-tracking.md).
-* K zobrazení podrobných dat sledování změn použijte [prohledávání protokolů v protokolu Azure monitor](../log-analytics/log-analytics-log-searches.md) .
+* [Přehled Change Tracking a inventáře](change-tracking.md)
+* [Řešení problémů s Change Tracking a inventářem](troubleshoot/change-tracking.md)
+* [Hledání v protokolech v Azure Monitorch protokolech](../log-analytics/log-analytics-log-searches.md)

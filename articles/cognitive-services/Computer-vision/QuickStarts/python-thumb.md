@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 05/20/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9f80d9be8966d1e2d8350f7fbc3c34182cb7b63e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 38fb7f3b0f2d85762161c384f4e5564078c9a63c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684129"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745179"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Rychlý Start: vygenerování miniatury pomocí Počítačové zpracování obrazu REST API a Pythonu
 
-V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Pomocí metody [získat miniatury](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) můžete určit požadovanou výšku a šířku a počítačové zpracování obrazu používat inteligentní ořezávání k inteligentně identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
+V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Pomocí metody [získat miniatury](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20c) můžete určit požadovanou výšku a šířku a počítačové zpracování obrazu používat inteligentní ořezávání k inteligentně identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/try/cognitive-services/), ještě než začnete.
 
@@ -47,7 +47,7 @@ from io import BytesIO
 subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
 endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-thumbnail_url = endpoint + "vision/v2.1/generateThumbnail"
+thumbnail_url = endpoint + "vision/v3.0/generateThumbnail"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
@@ -101,4 +101,4 @@ Dále Prozkoumejte aplikaci Python, která používá Počítačové zpracován�
 > [!div class="nextstepaction"]
 > [Kurz k rozhraní API pro počítačové zpracování obrazu a Pythonu](../Tutorials/PythonTutorial.md)
 
-* Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+* Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f20c).

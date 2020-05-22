@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/10/2020
 ms.author: robinsh
-ms.openlocfilehash: b71b86c14c55c312ef420a4d8517140fdded4072
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5551655843b8d3ed5b6d70f5d6ed3a0eb4d0e92f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77122162"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746964"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Předpověď počasí pomocí dat ze senzorů ze služby IoT Hub v Azure Machine Learning
 
@@ -102,7 +102,7 @@ V této části ověříte model, nastavíte prediktivní webovou službu založ
 
    ![Spusťte experiment a ověřte postup.](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
 
-1. Klikněte na nastavit**prediktivní webovou službu** **webové služby** > . Otevře se diagram prediktivního experimentu.
+1. Klikněte na **nastavit**  >  **prediktivní webovou službu**webové služby. Otevře se diagram prediktivního experimentu.
 
    ![Nasazení modelu předpovědi počasí v Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
 
@@ -181,10 +181,10 @@ V této části ověříte model, nastavíte prediktivní webovou službu založ
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Přidání funkce do úlohy Stream Analytics pro volání webové služby, kterou jste nasadili
 
-1. V části **topologie úlohy**klikněte na **funkce** > **Přidat**.
+1. V části **topologie úlohy**klikněte na **funkce**  >  **Přidat**.
 1. Zadejte následující informace:
 
-   **Alias funkce**: zadejte `machinelearning`.
+   **Alias funkce**: zadejte `machinelearning` .
 
    **Typ funkce**: vyberte **Azure ml**.
 
@@ -207,7 +207,7 @@ V této části ověříte model, nastavíte prediktivní webovou službu založ
    WITH machinelearning AS (
       SELECT EventEnqueuedUtcTime, temperature, humidity, machinelearning(temperature, humidity) as result from [YourInputAlias]
    )
-   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[Scored Probabilities] AS FLOAT ) AS 'probabalities of rain'
+   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[scored probabilities] AS FLOAT ) AS 'probabalities of rain'
    Into [YourOutputAlias]
    From machinelearning
    ```
@@ -220,7 +220,7 @@ V této části ověříte model, nastavíte prediktivní webovou službu založ
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
-V úloze Stream Analytics klikněte na **Spustit** > **Now** > **.** Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
+V úloze Stream Analytics klikněte na **Spustit**  >  **Now**  >  **Start**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
 
 ![Spuštění úlohy Stream Analytics](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 

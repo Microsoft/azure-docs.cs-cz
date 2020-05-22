@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 37569eba0d351fdedcd68042af2e33b0e3947faa
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b8492a6740eb9acfa20fbbe5dd5beed5e985fafc
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701498"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744591"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Zákazníci v analýzách komerčního marketplace
 
@@ -52,9 +52,9 @@ Existují tři **typy zákazníků**: nový, existující a změněný.
 
 ### <a name="customer-by-geography"></a>Zákazník podle geografie
 
-Tabulka **Zákazník podle geografického** grafu zobrazuje počty všech zákazníků a zákazníků získaných během vybraného časového období a jsou namapovány na základě země zákazníka. Světlá barva světla na mapě představuje nízkou a vysokou hodnotu počtu zákazníků. Kliknutím na záznam v tabulce se přiblížíte k zemi.
+Graf **zákazníka podle geografického** grafu zobrazuje počty všech zákazníků a zákazníků získaných během vybraného časového období a jsou mapovány na základě země nebo oblasti zákazníka. Světlá barva světla na mapě představuje nízkou a vysokou hodnotu počtu zákazníků. Kliknutím na záznam v tabulce se přiblížíte k zemi nebo oblasti.
 
-Heatmapu zobrazuje počet zákazníků a% podle země zákazníka. Mapu můžete přesunout tak, aby se zobrazilo přesné umístění a přiblížení do konkrétního umístění. Tato mapa má doplňkovou mřížku, která vám umožní zobrazit% zákazníků podle umístění a také nově přidaných zákazníků do tohoto umístění.
+Heatmapu zobrazuje počet zákazníků a% podle země/oblasti zákazníka. Mapu můžete přesunout tak, aby se zobrazilo přesné umístění a přiblížení do konkrétního umístění. Tato mapa má doplňkovou mřížku, která vám umožní zobrazit% zákazníků podle umístění a také nově přidaných zákazníků do tohoto umístění.
 
 ### <a name="customer-trends"></a>Trendy zákazníků
 
@@ -97,7 +97,7 @@ Tabulka **Podrobnosti o zákazníkovi** zobrazuje číslovaný seznam prvních 1
 - Každý sloupec v mřížce lze seřadit.
 - Data je možné extrahovat do souboru TSV, pokud je počet záznamů menší než 1000.
 - Pokud je počet záznamů větší než 1000, exportovaná data se asynchronně nasadí na stránku ke stažení na následujících 30 dnů.
-- Filtry lze v tabulce použít k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle názvu společnosti, ID zákazníka, ID předplatného Marketplace, typu licence Azure, data získání, data ztráty, e-mailu zákazníka, země zákazníka/státu/města/PSČ, zákaznického jazyka atd.
+- Filtry lze v tabulce použít k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle názvu společnosti, ID zákazníka, ID předplatného Marketplace, typu licence Azure, data získání, data ztráty, e-mailu zákazníka, země zákazníka/oblasti/státu/města/PSČ, jazyka zákazníka atd.
 - Když je nabídka koupena chráněným zákazníkem, informace v **podrobnostech o zákazníkovi** budou maskovány (* * * * * * * * * * * *).
 
 ### <a name="customer-page-filters"></a>Filtry stránek zákazníka

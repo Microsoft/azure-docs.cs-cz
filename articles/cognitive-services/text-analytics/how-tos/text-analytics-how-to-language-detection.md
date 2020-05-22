@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 58f2dc39c185e158a2b4b1b5e73b6b7d589c8c03
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70387790"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745573"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Příklad: zjištění jazyka pomocí Analýza textu
 
@@ -25,7 +25,7 @@ Tato schopnost je užitečná pro úložiště obsahu, která shromažďují lib
 
 Funkce Rozpoznávání jazyka dokáže detekovat široké spektrum jazyků, variant, dialektů a některých oblastí a regionů. Přesný seznam jazyků pro tuto funkci není publikovaný.
 
-Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete vyzkoušet funkci Rozpoznávání jazyka, abyste viděli, jestli vrátí kód. Odpověď pro jazyky, které se nedají detekovat `unknown`, je.
+Pokud máte obsah vyjádřený v méně často používaném jazyce, můžete vyzkoušet funkci Rozpoznávání jazyka, abyste viděli, jestli vrátí kód. Odpověď pro jazyky, které se nedají detekovat, je `unknown` .
 
 > [!TIP]
 > Analýza textu také poskytuje image kontejneru Docker pro systém Linux pro detekci jazyka, takže můžete [nainstalovat a spustit kontejner analýza textu](text-analytics-how-to-install-containers.md) zavřít do vašich dat.
@@ -69,7 +69,7 @@ Další informace o definici žádosti naleznete v tématu [Call the rozhraní A
 
 + Vytvořte žádost POST. Dokumentaci k rozhraní API pro tento požadavek najdete v tématu [rozhraní API pro rozpoznávání jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-+ Nastavte koncový bod HTTP pro rozpoznávání jazyka. Použijte buď prostředek Analýza textu v Azure, nebo [kontejner analýza textu](text-analytics-how-to-install-containers.md)s instancemi. Do adresy URL `/text/analytics/v2.1/languages` musíte zahrnout. Například: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
++ Nastavte koncový bod HTTP pro rozpoznávání jazyka. Použijte buď prostředek Analýza textu v Azure, nebo [kontejner analýza textu](text-analytics-how-to-install-containers.md)s instancemi. `/text/analytics/v2.1/languages`Do adresy URL musíte zahrnout. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 
@@ -155,9 +155,9 @@ Kladné skóre 1.0 vyjadřuje nejvyšší možnou úroveň spolehlivosti analýz
 
 ### <a name="ambiguous-content"></a>Nejednoznačný obsah
 
-V některých případech může být obtížné nejednoznačnost jazyků na základě vstupu. Pomocí `countryHint` parametru můžete zadat kód země se dvěma písmeny. Rozhraní API ve výchozím nastavení používá "US" jako výchozí countryHint. Chcete-li toto chování odebrat, můžete tento parametr obnovit nastavením této hodnoty na prázdný řetězec `countryHint = ""` .
+V některých případech může být obtížné nejednoznačnost jazyků na základě vstupu. Pomocí `countryHint` parametru můžete zadat kód země nebo oblasti ve dvou písmenech. Rozhraní API ve výchozím nastavení používá "US" jako výchozí countryHint. Chcete-li toto chování odebrat, můžete tento parametr obnovit nastavením této hodnoty na prázdný řetězec `countryHint = ""` .
 
-Například "nemožné" je běžné pro angličtinu i francouzštinu a pokud jsou uvedené s omezeným kontextem, bude odpověď vycházet z doporučení země "US". Pokud se ví, že text pochází z Francie, může být tato informace uvedena jako tip.
+Například "nemožné" je běžné pro angličtinu i francouzštinu a v případě omezeného kontextu bude odezva založena na pomocném parametru země/oblasti USA. Pokud se ví, že text pochází z Francie, může být tato informace uvedena jako tip.
 
 **Vstup**
 
@@ -209,7 +209,7 @@ Služba teď má další kontext, aby se zajistilo lepší rozhodnutí:
     }
 ```
 
-Pokud analyzátor nemůže analyzovat vstup, vrátí `(Unknown)`. Příkladem je, že odešlete textový blok, který se skládá pouze z arabských číslic.
+Pokud analyzátor nemůže analyzovat vstup, vrátí `(Unknown)` . Příkladem je, že odešlete textový blok, který se skládá pouze z arabských číslic.
 
 ```json
     {

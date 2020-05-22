@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2020
 ms.author: sohamnc
-ms.openlocfilehash: c6e8570746ae3dd0051dbec084c89d90580d28b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4693cdac2d5d3a57987cc692797756314ded11e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371630"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747303"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>Azure CDN nezpracovaných protokolů HTTP
 Nezpracované protokoly poskytují obsáhlé informace o operacích a chybách, které jsou důležité pro auditování a řešení potíží. Nezpracované protokoly se liší od protokolů aktivit. Protokoly aktivit poskytují přehled o operacích provedených v prostředcích Azure. Nezpracované protokoly poskytují záznam o operacích s vaším prostředkem.
@@ -23,7 +23,7 @@ Nezpracované protokoly poskytují obsáhlé informace o operacích a chybách, 
 > [!IMPORTANT]
 > Pro Azure CDN od Microsoftu je k dispozici funkce HTTP holých protokolů.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -33,7 +33,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 Konfigurace nezpracovaných protokolů pro Azure CDN z profilu Microsoftu: 
 
-1. V nabídce Azure Portal vyberte **všechny prostředky** >> **\<profil-CDN-Profile>**.
+1. V nabídce Azure Portal vyberte **všechny prostředky**  >>  ** \< profil-CDN-Profile>**.
 
 2. V části **monitorování**vyberte **nastavení diagnostiky**.
 
@@ -84,7 +84,7 @@ Azure CDN ze služby společnosti Microsoft aktuálně poskytuje nezpracované p
 | Výstrah                   | Bod POP hraničního zobrazení, který odpověděl na žádost uživatele Zkratky pro body POP jsou kódy letišť příslušných METROS.                                                                                   |
 | Stav mezipaměti          | Označuje, zda byl objekt vrácen z mezipaměti nebo pochází od počátku.                                                                                                             |
 > [!IMPORTANT]
-> Funkce HTTP RAW logs je k dispozici automaticky pro všechny profily vytvořené nebo aktualizované po **25. únoru 2020**. Pro profily CDN, které jste vytvořili dřív, by se měl po nastavení protokolování aktualizovat koncový bod CDN. Například jedna může přejít na geografická filtrování v rámci koncových bodů CDN a zablokovat všechny země, které nesouvisí s jejich úlohou a klikněte na Uložit. 
+> Funkce HTTP RAW logs je k dispozici automaticky pro všechny profily vytvořené nebo aktualizované po **25. únoru 2020**. Pro profily CDN, které jste vytvořili dřív, by se měl po nastavení protokolování aktualizovat koncový bod CDN. Například jedna může přejít na geografická filtrování v rámci koncových bodů CDN a blokovat každou zemi nebo oblast, která není relevantní pro své úlohy, a pak klikněte na Uložit. 
 
 > [!NOTE]
 > Protokoly lze zobrazit v rámci profilu Log Analytics spuštěním dotazu. Vzorový dotaz by vypadal jako AzureDiagnostics | WHERE kategorie = = "AzureCdnAccessLog"

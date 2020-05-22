@@ -1,24 +1,21 @@
 ---
 title: Použití Azure AD ve službě Azure Automation pro ověření do Azure
-description: Naučte se používat Azure AD v rámci Azure Automation jako poskytovatele pro ověřování do Azure.
+description: V tomto článku se dozvíte, jak používat Azure AD v rámci Azure Automation jako poskytovatele pro ověřování do Azure.
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 90338a1ffa79e6c2347832cb2e74633db02ec72d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1361ecf3ab7b726310df9e3b1040e0726d7658e2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548341"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745255"
 ---
-# <a name="use-azure-ad-in-azure-automation-to-authenticate-to-azure"></a>Použití Azure AD ve službě Azure Automation pro ověření do Azure
+# <a name="use-azure-ad-to-authenticate-to-azure"></a>Použití Azure AD k ověření v Azure
 
 Služba [Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) umožňuje řadu úloh správy, jako je Správa uživatelů, Správa domén a konfigurace jednotného přihlašování. Tento článek popisuje, jak používat Azure AD v rámci Azure Automation jako poskytovatele pro ověřování do Azure. 
 
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
-
-## <a name="installing-azure-ad-modules"></a>Instalace modulů služby Azure AD
+## <a name="install-azure-ad-modules"></a>Nainstalovat moduly Azure AD
 
 Službu Azure AD můžete povolit prostřednictvím následujících modulů PowerShellu:
 
@@ -67,11 +64,11 @@ Předtím, než na svém počítači nainstalujete moduly Azure AD:
 
 Azure Automation používá třídu [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) k reprezentaci assetu přihlašovacích údajů. Vaše skripty načítají `PSCredential` objekty pomocí `Get-AutomationPSCredential` rutiny. Další informace najdete v tématu [assety přihlašovacích údajů v Azure Automation](shared-resources/credentials.md).
 
-## <a name="assigning-a-subscription-administrator"></a>Přiřazení Správce předplatného
+## <a name="assign-a-subscription-administrator"></a>Přiřazení správce předplatného
 
 Musíte přiřadit správce k předplatnému Azure. Tato osoba má roli vlastníka oboru předplatného. Viz [řízení přístupu na základě role v Azure Automation](automation-role-based-access-control.md). 
 
-## <a name="changing-the-azure-ad-users-password"></a>Změna hesla uživatele Azure AD
+## <a name="change-the-azure-ad-users-password"></a>Změna hesla uživatele Azure AD
 
 Změna hesla uživatele Azure AD:
 
@@ -81,11 +78,11 @@ Změna hesla uživatele Azure AD:
 
 3. Požádejte správce, aby po zobrazení výzvy změnil heslo.
 
-## <a name="configuring-azure-automation-to-use-the-azure-ad-user-to-manage-the-azure-subscription"></a>Konfigurace Azure Automation pro použití uživatele Azure AD ke správě předplatného Azure
+## <a name="configure-azure-automation-to-manage-the-azure-subscription"></a>Konfigurace Azure Automation pro správu předplatného Azure
 
 Aby Azure Automation komunikovala se službou Azure AD, musíte načíst přihlašovací údaje spojené s připojením Azure ke službě Azure AD. Příklady těchto přihlašovacích údajů jsou ID tenanta, ID předplatného a podobným způsobem. Další informace o připojení mezi Azure a Azure AD najdete v článku [připojení vaší organizace k Azure Active Directory](https://docs.microsoft.com/azure/devops/organizations/accounts/connect-organization-to-azure-ad?view=azure-devops).
 
-## <a name="creating-a-credential-asset"></a>Vytvoření assetu přihlašovacích údajů
+## <a name="create-a-credential-asset"></a>Vytvoření assetu přihlašovacích údajů
 
 Když máte k dispozici přihlašovací údaje Azure pro Azure AD, je čas vytvořit Azure Automation Asset přihlašovacích údajů pro bezpečné uložení přihlašovacích údajů Azure AD tak, aby k nim měly přístup Runbooky a konfigurační skripty pro konfiguraci stavu dostupnosti (DSC). Můžete to udělat pomocí rutin Azure Portal nebo PowerShellu.
 
@@ -97,9 +94,9 @@ K vytvoření assetu přihlašovacích údajů můžete použít Azure Portal. T
 
 Při přípravě nového assetu přihlašovacích údajů v prostředí Windows PowerShell skript nejprve vytvoří `PSCredential` objekt pomocí přiřazeného uživatelského jména a hesla. Skript pak pomocí tohoto objektu vytvoří Asset prostřednictvím volání rutiny [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) . Případně skript může zavolat rutinu [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) , aby vyzvat uživatele k zadání jména a hesla. Viz [přihlašovací údaje prostředků v Azure Automation](shared-resources/credentials.md). 
 
-## <a name="managing-azure-resources-from-an-azure-automation-runbook"></a>Správa prostředků Azure z Azure Automation sady Runbook
+## <a name="manage-azure-resources-from-an-azure-automation-runbook"></a>Správa prostředků Azure z Azure Automation sady Runbook
 
-Prostředky Azure můžete spravovat z Azure Automation sad Runbook pomocí assetu přihlašovacích údajů. Níže je příklad Runbooku PowerShellu, který shromažďuje přihlašovací údaje pro použití při zastavování a spouštění virtuálních počítačů v rámci předplatného Azure. Tato sada Runbook nejdřív `Get-AutomationPSCredential` používá k načtení přihlašovacích údajů, které se mají použít k ověření v Azure. Pak zavolá rutinu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) pro připojení k Azure pomocí přihlašovacích údajů. Skript pomocí rutiny [Select-AzureSubscription](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) vyberte předplatné, se kterým chcete pracovat. 
+Prostředky Azure můžete spravovat z Azure Automation sad Runbook pomocí assetu přihlašovacích údajů. Níže je příklad Runbooku PowerShellu, který shromažďuje přihlašovací údaje pro použití při zastavování a spouštění virtuálních počítačů v rámci předplatného Azure. Tato sada Runbook nejdřív používá `Get-AutomationPSCredential` k načtení přihlašovacích údajů, které se mají použít k ověření v Azure. Pak zavolá rutinu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) pro připojení k Azure pomocí přihlašovacích údajů. Skript pomocí rutiny [Select-AzureSubscription](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) vyberte předplatné, se kterým chcete pracovat. 
 
 ```azurepowershell
 Workflow Stop-Start-AzureVM 
@@ -162,7 +159,7 @@ Workflow Stop-Start-AzureVM
 
 ## <a name="next-steps"></a>Další kroky
 
-* V Azure Automation najdete informace o prostředcích přihlašovacích údajů automatizace v [prostředcích přihlašovacích údajů](shared-resources/credentials.md).
-* Informace o tom, jak pracovat s moduly automatizace, najdete v tématu [Správa modulů v Azure Automation](shared-resources/modules.md) .
-* Další informace o metodách, které lze použít ke spuštění sady Runbook v Azure Automation, najdete v tématu [spuštění sady Runbook v Azure Automation](automation-starting-a-runbook.md).
-* Další informace o PowerShellu, včetně referenčních modulů jazyka a výukových modulů, najdete v [dokumentaci k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview).
+* [Spravovat přihlašovací údaje v Azure Automation](shared-resources/credentials.md)
+* [Správa modulů ve službě Azure Automation](shared-resources/modules.md)
+* [Spuštění runbooku ve službě Azure Automation](start-runbooks.md)
+* [Dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview)

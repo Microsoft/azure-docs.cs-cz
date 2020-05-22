@@ -1,18 +1,18 @@
 ---
-title: Přehled Change Tracking a inventáře v Azure Automation
-description: Change Tracking a inventář vám pomůže identifikovat software a změny služeb Microsoftu, ke kterým dochází ve vašem prostředí.
+title: Přehled Azure Automation Change Tracking a inventáře
+description: Tento článek popisuje funkci Change Tracking a inventáře, která vám pomůže identifikovat změny softwaru a služeb Microsoftu, ke kterým dochází ve vašem prostředí.
 services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ab091ba413a8429a8fea131c643cceee7007f927
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787171"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744367"
 ---
-# <a name="overview-of-change-tracking-and-inventory"></a>Přehled Change Tracking a inventáře
+# <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
 Tento článek vás seznámí s Change Tracking a inventarizací v Azure Automation. Tato funkce sleduje změny ve virtuálních počítačích a serverové infrastruktuře, které vám pomůžou identifikovat problémy v provozu a v okolním prostředí pomocí softwaru spravovaného správcem distribuce balíčků. Položky, které jsou sledovány pomocí Change Tracking a inventáře, zahrnují: 
 
@@ -50,13 +50,13 @@ Další omezení:
 Change Tracking a inventarizace v současné době dochází k následujícím problémům:
 
 * Aktualizace oprav hotfix nejsou shromažďovány na počítačích s Windows serverem 2016 Core RS3.
-* Procesy démon systému Linux mohou zobrazovat změněný stav, i když nedošlo k žádné změně. K tomuto problému dochází kvůli způsobu, `SvcRunLevels` jakým jsou zachycena data v protokolu Azure monitor [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) .
+* Procesy démon systému Linux mohou zobrazovat změněný stav, i když nedošlo k žádné změně. K tomuto problému dochází kvůli způsobu, jakým `SvcRunLevels` jsou zachycena data v protokolu Azure monitor [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) .
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
 Change Tracking a inventář se podporují ve všech operačních systémech, které splňují požadavky agenta Log Analytics. Verze operačního systému Windows, které jsou podporované oficiálně, jsou Windows Server 2008 SP1 nebo novější a Windows 7 SP1 nebo novější. Podporuje se taky řada operačních systémů Linux. Viz [Přehled agenta Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
 
-## <a name="network-requirements"></a>Síťové požadavky
+## <a name="network-requirements"></a>Požadavky sítě
 
 Change Tracking a inventář konkrétně vyžadují síťové adresy uvedené v další tabulce. Komunikace s těmito adresami používá port 443.
 
@@ -136,7 +136,7 @@ Change Tracking a inventář využívá [Azure Security Center sledování integ
 Change Tracking a inventář podporuje rekurzi, která umožňuje určit zástupné znaky, aby bylo možné zjednodušit sledování v adresářích. Rekurze také poskytuje proměnné prostředí, které umožňují sledovat soubory v různých prostředích s více nebo dynamickými názvy jednotek. Následující seznam obsahuje běžné informace, které byste měli znát při konfiguraci rekurze:
 
 * Pro sledování více souborů jsou vyžadovány zástupné znaky.
-* Zástupné znaky se dají použít jenom v posledním segmentu cesty, například **\\c:\folder File*** nebo **/etc/*. conf**.
+* Zástupné znaky se dají použít jenom v posledním segmentu cesty, například **c:\folder \\ File*** nebo **/etc/*. conf**.
 * Pokud proměnná prostředí má neplatnou cestu, ověřování je úspěšné, ale cesta během provádění selže.
 * Při nastavování cesty nepoužívejte obecné názvy cest, protože tento typ nastavení může způsobit procházení příliš velkého počtu složek.
 
@@ -184,17 +184,18 @@ Klíčovou funkcí Change Tracking a inventáře jsou výstrahy týkající se z
 
 |Dotaz  |Popis  |
 |---------|---------|
-|ConfigurationChange <br>&#124;, kde ConfigChangeType = = "Files" a FileSystemPath obsahuje "c\\:\\ovladače\\\\Windows system32"|Hodí se ke sledování změn souborů důležitých pro systém.|
-|ConfigurationChange <br>&#124;, kde FieldsChanged obsahuje "FileContentChecksum" a FileSystemPath = = "c\\:\\ovladače\\\\systému Windows\\system32 atd."|Hodí se ke sledování úprav konfiguračních souborů klíčů.|
+|ConfigurationChange <br>&#124;, kde ConfigChangeType = = "Files" a FileSystemPath obsahuje "c \\ : \\ ovladače Windows system32 \\ \\ "|Hodí se ke sledování změn souborů důležitých pro systém.|
+|ConfigurationChange <br>&#124;, kde FieldsChanged obsahuje "FileContentChecksum" a FileSystemPath = = "c \\ : \\ ovladače systému Windows system32 atd. \\ \\ \\ "|Hodí se ke sledování úprav konfiguračních souborů klíčů.|
 |ConfigurationChange <br>&#124; WHERE ConfigChangeType = = "Microsoft Services" a SvcName obsahuje "W3SVC" and SvcState = = "Stopped"|Hodí se ke sledování změn pro důležité systémové služby.|
 |ConfigurationChange <br>&#124;, kde ConfigChangeType = = "démoni" a SvcName obsahuje "SSH" a SvcState! = "Running"|Hodí se ke sledování změn pro důležité systémové služby.|
 |ConfigurationChange <br>&#124; WHERE ConfigChangeType = = "software" a ChangeCategory = = "přidáno"|Užitečné pro prostředí, která potřebují uzamčené softwarové konfigurace.|
 |ConfigurationData <br>&#124;, kde software obsahuje "agent monitorování" a CurrentVersion! = "8.0.11081.0"|Užitečné pro zobrazení, které počítače mají nainstalovanou zastaralou nebo nekompatibilní verzi softwaru. Tento dotaz oznamuje poslední nahlášený stav konfigurace, ale neoznamuje změny.|
-|ConfigurationChange <br>&#124; WHERE RegistryKey = = @ "HKEY_LOCAL_MACHINE\\software\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Hodí se ke sledování změn v důležitých antivirových klíčích.|
-|ConfigurationChange <br>&#124;, kde RegistryKey obsahuje @ "\\HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\SharedAccess\\Parameters FirewallPolicy"| Hodí se ke sledování změn nastavení brány firewall.|
+|ConfigurationChange <br>&#124; WHERE RegistryKey = = @ "HKEY_LOCAL_MACHINE \\ software \\ Microsoft \\ Windows \\ CurrentVersion \\ QualityCompat"| Hodí se ke sledování změn v důležitých antivirových klíčích.|
+|ConfigurationChange <br>&#124;, kde RegistryKey obsahuje @ "HKEY_LOCAL_MACHINE \\ System \\ CurrentControlSet \\ Services \\ SharedAccess \\ Parameters \\ FirewallPolicy"| Hodí se ke sledování změn nastavení brány firewall.|
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete pracovat s Change Tracking a inventářem v sadách Runbook, přečtěte si téma [správa Change Tracking a inventáře](change-tracking-file-contents.md).
-* Informace o řešení chyb pomocí Change Tracking a inventáře najdete v tématu [řešení potíží s Change Tracking a inventářem](automation-tutorial-troubleshoot-changes.md).
-* K zobrazení podrobných dat sledování změn použijte [prohledávání protokolů v protokolu Azure monitor](../log-analytics/log-analytics-log-searches.md) .
+* [Správa Change Tracking a inventáře](change-tracking-file-contents.md)
+* [Hledání v protokolech v Azure Monitorch protokolech](../log-analytics/log-analytics-log-searches.md)
+* [Řešení problémů s Change Tracking a inventářem](troubleshoot/change-tracking.md)
+* [Řešení potíží se změnami na virtuálním počítači Azure](automation-tutorial-troubleshoot-changes.md)

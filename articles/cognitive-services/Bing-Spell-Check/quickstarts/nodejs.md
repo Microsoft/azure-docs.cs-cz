@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 69c391e6c3f93a998ade7c5721a528d895f8df76
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 72afc4f6e03b24e545ad18948119d418970cddf3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382846"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747582"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Node. js
 
@@ -30,7 +30,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nový soubor JavaScriptu v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru. Nastavte striktní a vyžadovat `https`. Pak vytvořte proměnné pro hostitele, cestu a klíč předplatného koncového bodu rozhraní API. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+1. Vytvořte nový soubor JavaScriptu v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru. Nastavte striktní a vyžadovat `https` . Pak vytvořte proměnné pro hostitele, cestu a klíč předplatného koncového bodu rozhraní API. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```javascript
     'use strict';
@@ -41,7 +41,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Vytvořte proměnné pro parametry vyhledávání a text, který chcete kontrolovat. Přidejte svůj kód na trhu `mkt=`po. Kód na trhu je země, ze které provedete požadavek. Také přidejte svůj režim kontroly pravopisu po `&mode=`. Režim je buď `proof` (catch nejvíc pravopisné/gramatické chyby `spell` ), nebo (catch nejvíc pravopisu, ale ne tolik gramatických chyb).
+2. Vytvořte proměnné pro parametry vyhledávání a text, který chcete kontrolovat. Přidejte svůj kód na trhu po `mkt=` . Kód na trhu je země nebo oblast, ze které tuto žádost provedete. Také přidejte svůj režim kontroly pravopisu po `&mode=` . Režim je buď `proof` (catch nejvíc pravopisné/gramatické chyby), nebo `spell` (catch nejvíc pravopisu, ale ne tolik gramatických chyb).
 
     ```javascript
     let mkt = "en-US";
@@ -52,7 +52,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 ## <a name="create-the-request-parameters"></a>Vytvoření parametrů žádosti
 
-Vytvořte parametry žádosti vytvořením nového objektu s `POST` metodou. Přidejte cestu tak, že připojíte cestu ke koncovému bodu a řetězec dotazu. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného.
+Vytvořte parametry žádosti vytvořením nového objektu s `POST` metodou. Přidejte cestu tak, že připojíte cestu ke koncovému bodu a řetězec dotazu. Přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` .
 
 ```javascript
 let request_params = {
@@ -69,7 +69,7 @@ let request_params = {
 
 ## <a name="create-a-response-handler"></a>Vytvoření obslužné rutiny odpovědi
 
-Vytvořte funkci volanou `response_handler` k přijetí odpovědi JSON z rozhraní API a vytiskněte ji. Vytvořte proměnnou pro tělo odpovědi. Připojit odpověď, když je `data` přijat příznak, pomocí `response.on()`. Když se `end` přijme příznak, vytiskněte tělo JSON do konzoly.
+Vytvořte funkci volanou `response_handler` k přijetí odpovědi JSON z rozhraní API a vytiskněte ji. Vytvořte proměnnou pro tělo odpovědi. Připojit odpověď `data` , když je přijat příznak, pomocí `response.on()` . Když `end` se přijme příznak, vytiskněte tělo JSON do konzoly.
 
 ```javascript
 let response_handler = function (response) {

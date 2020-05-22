@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: cb016ec490dc14cbde1a1cb3f34caf39e4740961
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: c55d81db848dcb1aebe9dacb03387565b3d8db48
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732367"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745602"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -104,7 +104,7 @@ Pomocí těchto pokynů vytvořte prostředek řeči:
 
 V tomto okamžiku ověřte, že skupina prostředků (**SpeechEchoBotTutorial-resourceName**) má prostředek řeči:
 
-| Název | Typ  | Umístění |
+| Name | Typ  | Umístění |
 |------|-------|----------|
 | SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
 
@@ -125,7 +125,7 @@ Dalším krokem je vytvoření plánu App Service. Plán služby App Service def
 
 V tomto okamžiku ověřte, že vaše skupina prostředků (**SpeechEchoBotTutorial-resourceName**) má dva prostředky:
 
-| Název | Typ  | Umístění |
+| Name | Typ  | Umístění |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
 | SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
@@ -146,7 +146,7 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
    ```
 
 2. Spusťte Visual Studio.
-3. Na panelu nástrojů vyberte **soubor** > **otevřít** > **projekt/řešení**a otevřete řešení pro odezvu na aplikaci echo bot:
+3. Na panelu nástrojů vyberte **soubor**  >  **otevřít**  >  **projekt/řešení**a otevřete řešení pro odezvu na aplikaci echo bot:
 
    ```
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
@@ -163,8 +163,8 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
 
 1. Nainstalujte [emulátor systému bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) verze 4.3.0 nebo novější.
 2. Spusťte emulátor rozhraní bot Framework a otevřete robota:
-   * **Otevřete soubor** -> **robot**.
-3. Zadejte adresu URL pro robota. Příklad:
+   * **Soubor**  ->  **Otevřete robot**.
+3. Zadejte adresu URL pro robota. Například:
 
    ```
    http://localhost:3978/api/messages
@@ -178,7 +178,7 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
 Dalším krokem je nasazení nástroje echo bot do Azure. Existuje několik způsobů, jak nasadit robot, ale v tomto kurzu se zaměříme na publikování přímo ze sady Visual Studio.
 
 > [!NOTE]
-> Alternativně můžete nasadit robota pomocí [Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) a [šablon nasazení](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore/04.core-bot/deploymentTemplates).
+> Alternativně můžete nasadit robota pomocí [Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) a [šablon nasazení](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/adaptive-dialog/03.core-bot).
 
 1. V aplikaci Visual Studio otevřete robota s odezvou, která je nakonfigurovaná pro použití s přímým linkovým kanálem řeči:
 
@@ -207,7 +207,7 @@ Dalším krokem je nasazení nástroje echo bot do Azure. Existuje několik způ
 1. Výchozí prohlížeč by měl otevřít a zobrazit stránku, která čte: "vaše robot je připravený!".
 1. V tomto okamžiku zkontrolujte skupinu prostředků **SpeechEchoBotTutorial-source** ve Azure Portal a potvrďte, že existují tři prostředky:
 
-| Název | Typ  | Umístění |
+| Name | Typ  | Umístění |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA – západ |
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
@@ -241,14 +241,14 @@ Teď, když jste vytvořili Azure App Service pro hostování robota, je další
    * V případě **skupiny prostředků**vyberte **SpeechEchoBotTutorial-Resource**.
    * V **oblasti umístění**vyberte **západní USA**.
      * V případě **cenové úrovně**vyberte **F0**.
-     * Do pole **koncový bod pro zasílání zpráv**zadejte adresu URL webové aplikace `/api/messages` s cestou, která je připojena na konci. Příklad: Pokud byl váš globálně jedinečný název aplikace **EchoBot20190805125647**, koncový bod pro zasílání zpráv by `https://EchoBot20190805125647.azurewebsites.net/api/messages/`byl:.
+     * Do pole **koncový bod pro zasílání zpráv**zadejte adresu URL webové aplikace s cestou, která je `/api/messages` připojena na konci. Příklad: Pokud byl váš globálně jedinečný název aplikace **EchoBot20190805125647**, koncový bod pro zasílání zpráv by byl: `https://EchoBot20190805125647.azurewebsites.net/api/messages/` .
      * V případě služby **Application Insights**můžete tuto možnost nastavit na **vypnuto**. Další informace najdete v tématu věnovaném [analýze robotů](https://docs.microsoft.com/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0).
      * Ignoruje **Automatické vytvoření ID a heslo aplikace**.
 5. V dolní části okna **registrace kanálů robota** klikněte na **vytvořit**.
 
 V tomto okamžiku ověřte skupinu prostředků **SpeechEchoBotTutorial-Resource** v Azure Portal. Teď by se měly zobrazit čtyři prostředky:
 
-| Název | Typ  | Umístění |
+| Name | Typ  | Umístění |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA – západ |
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
@@ -351,7 +351,7 @@ Další informace o tom, co se vrátilo ve výstupu JSON, najdete v tématu [pol
 
 ### <a name="view-client-source-code-for-calls-to-the-speech-sdk"></a>Zobrazit zdrojový kód klienta pro volání sady Speech SDK
 
-Klient Windows Voice Assistant používá balíček NuGet [Microsoft. cognitiveservices Account. Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/), který obsahuje sadu Speech SDK. Dobrým místem, kde začít kontrolovat vzorový kód, je metoda InitSpeechConnector () v souboru [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs), která vytváří tyto dva objekty sady Speech SDK:
+Klient Windows Voice Assistant používá balíček NuGet [Microsoft. cognitiveservices Account. Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/), který obsahuje sadu Speech SDK. Dobrým místem, kde začít kontrolovat vzorový kód, je metoda InitSpeechConnector () v souboru [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) , která vytváří tyto dva objekty sady Speech SDK:
 - [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig)– Pro konfigurační nastavení (například klíč předplatného pro rozpoznávání řeči, klíčová oblast)
 - [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor)– Ke správě připojení kanálu a událostí odběru klienta pro zpracování rozpoznaných odpovědí na řeč a robotů.
 
@@ -367,7 +367,7 @@ Rozpoznávání klíčových slov se provádí v klientské aplikaci. Při použ
 Pomocí těchto kroků můžete vytvořit model klíčových slov, nakonfigurovat klienta Windows Voice Assistant tak, aby používal tento model, a nakonec ho otestovat pomocí robota.
 
 1. Podle těchto pokynů [vytvořte vlastní klíčové slovo pomocí služby Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws).
-2. Rozbalte soubor modelu, který jste stáhli v předchozím kroku. Měla by být pojmenována pro vaše klíčové slovo. Hledáte soubor s názvem `kws.table`.
+2. Rozbalte soubor modelu, který jste stáhli v předchozím kroku. Měla by být pojmenována pro vaše klíčové slovo. Hledáte soubor s názvem `kws.table` .
 3. V klientovi pomocníka pro Windows hlas Vyhledejte nabídku **Nastavení** (v pravém horním rohu vyhledejte ikonu ozubeného kolečka). Vyhledejte **cestu k souboru modelu** a zadejte úplný název cesty k `kws.table` souboru z kroku 2.
 4. Nezapomeňte zaškrtnout políčko označený jako **povolené**. Tato zpráva by se měla zobrazit vedle zaškrtávacího políčka: "při dalším připojení naslouchat klíčové slovo." Pokud jste zadali nesprávný soubor nebo neplatnou cestu, měla by se zobrazit chybová zpráva.
 5. Zadejte **klíč předplatného**pro rozpoznávání řeči, **oblast klíče předplatného**a potom kliknutím na tlačítko **OK** zavřete nabídku **Nastavení** .
@@ -384,18 +384,18 @@ Pomocí těchto kroků můžete vytvořit model klíčových slov, nakonfigurova
 
 Ve zdrojovém kódu klienta Windows Voice Assistant si prohlédněte tyto soubory a zkontrolujte kód, který se používá k povolení rozpoznávání klíčových slov:
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs)obsahuje volání metody [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-)sady Speech SDK, která se používá k vytvoření instance modelu z místního souboru na disku.
-1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs)obsahuje volání metody [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync)sady Speech SDK, které aktivuje funkci zjišťování nepřetržitého klíčového slova.
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs)obsahuje volání metody sady Speech SDK [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) , která se používá k vytvoření instance modelu z místního souboru na disku.
+1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs)obsahuje volání metody sady Speech SDK [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) , které aktivuje funkci zjišťování nepřetržitého klíčového slova.
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>Volitelné Změna jazyka a hlasu robota
 
-Robot, který jste vytvořili, bude naslouchat a reagovat v angličtině s výchozím hlasovým hlasem pro americkou angličtinu. Nejste však omezeni na použití angličtiny nebo výchozího hlasu. V této části se dozvíte, jak změnit jazyk, ve kterém bude robot naslouchat a reagovat. Naučíte se také, jak vybrat jiný hlas pro daný jazyk.
+Robot, který jste vytvořili, bude naslouchat a reagovat v angličtině s výchozím hlasem pro AMERICKou angličtinu pro text na řeč. Nejste však omezeni na použití angličtiny nebo výchozího hlasu. V této části se dozvíte, jak změnit jazyk, ve kterém bude robot naslouchat a reagovat. Naučíte se také, jak vybrat jiný hlas pro daný jazyk.
 
 ### <a name="change-the-language"></a>Změnit jazyk
 
 Můžete zvolit některý z jazyků uvedených v tabulce [Převod řeči na text](language-support.md#speech-to-text) . V níže uvedeném příkladu změníme jazyk na němčina.
 
-1. Otevřete klientskou aplikaci pro Windows Voice Assistant, klikněte na tlačítko nastavení (ikona vpravo nahoře) a zadejte `de-de` hodnotu do pole jazyk (Toto je hodnota národního prostředí uvedená v tabulce [Převod řeči na text](language-support.md#speech-to-text) ). Tím se nastaví mluvený jazyk, který se má rozpoznat, přepsání `en-us`výchozího. Tato funkce také dává přímým linkovým kanálům pro odpověď robota použít výchozí německý hlas.
+1. Otevřete klientskou aplikaci pro Windows Voice Assistant, klikněte na tlačítko nastavení (ikona vpravo nahoře) a zadejte `de-de` hodnotu do pole jazyk (Toto je hodnota národního prostředí uvedená v tabulce [Převod řeči na text](language-support.md#speech-to-text) ). Tím se nastaví mluvený jazyk, který se má rozpoznat, přepsání výchozího `en-us` . Tato funkce také dává přímým linkovým kanálům pro odpověď robota použít výchozí německý hlas.
 2. Zavřete stránku nastavení a klikněte na tlačítko znovu připojit a vytvořte nové připojení k robotovi ozvěny.
 3. Klikněte na tlačítko mikrofon a vyslovením fráze v němčině. Zobrazí se rozpoznaný text a odpověď robota pro ozvěnu s výchozím německým hlasem.
 
@@ -403,7 +403,7 @@ Můžete zvolit některý z jazyků uvedených v tabulce [Převod řeči na text
 
 Výběr hlasu pro převod textu na řeč a řízení výslovnosti je možné provést v případě, že robot určí odpověď ve formě jazyka SSML ( [Speech syntézy Language](speech-synthesis-markup.md) ) místo jednoduchého textu. Robot ozvěny nepoužívá SSML, ale můžeme kód snadno upravit. V následujícím příkladu přidáme SSML do odpovědi robota echo, aby se místo výchozího ženského hlasu použil německý hlas Stefan Apollo (kolík hlasu). Seznamte se se [standardními hlasy](language-support.md#standard-voices) a [neuronové hlasy](language-support.md#neural-voices) , které podporuje váš jazyk.
 
-1. Pojďme začít otevřením `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`.
+1. Pojďme začít otevřením `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs` .
 2. Vyhledejte tyto dva řádky:
     ```csharp
     var replyText = $"Echo: {turnContext.Activity.Text}";
@@ -428,7 +428,7 @@ Teď, když jste udělali potřebnou změnu robota, je dalším krokem jeho opě
 1. V okně Průzkumník řešení klikněte pravým tlačítkem na projekt **EchoBot** a vyberte **publikovat**.
 2. Předchozí konfigurace nasazení již byla načtena jako výchozí. Jednoduše klikněte na **publikovat** vedle **EchoBot20190805125647-nasazení webu**.
 3. Zpráva o **úspěšném publikování** se zobrazí v okně výstupu sady Visual Studio a otevře se webová stránka se zprávou "robot je připravený!".
-4. Otevřete klientskou aplikaci pro Windows Voice Assistant, klikněte na tlačítko nastavení (ikona pravého ozubeného kolečka) a ujistěte se, že `de-de` máte stále v poli jazyk.
+4. Otevřete klientskou aplikaci pro Windows Voice Assistant, klikněte na tlačítko nastavení (ikona pravého ozubeného kolečka) a ujistěte se, že máte stále `de-de` v poli jazyk.
 5. Postupujte podle pokynů v části [spuštění klienta hlasového pomocníka Windows](#run-the-windows-voice-assistant-client) pro opětovné připojení k nově nasazenému robotovi, mluvte v novém jazyce a uslyšíte v tomto jazyce reakci robota s novým hlasem.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

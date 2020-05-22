@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8650d0170e8ff910140e2b432dd1c998d19e72d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6bda6d35391543e416c377557e34de317e293eb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063947"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741574"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Přidání jiných účtů než do aplikace Microsoft Authenticator
 
@@ -44,7 +44,7 @@ Přidejte svůj účet Google tím, že zapnete dvojúrovňové ověřování a 
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnout dvojúrovňové ověřování
 
-1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome **, vyberte Začínáme a pak**ověřte svoji identitu.
+1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome , vyberte Začínáme a **Get Started**pak ověřte svoji identitu.
 
 2. Postupujte podle pokynů na stránce, abyste zapnuli dvoustupňové ověřování pro váš osobní účet Google.
 
@@ -80,7 +80,7 @@ Přidejte svůj účet Facebook tím, že zapnete dvojúrovňové ověřování 
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnout dvojúrovňové ověřování
 
-1. V počítači otevřete Facebook, v pravém horním rohu vyberte rozevírací nabídku a pak přejděte na **Nastavení** > **zabezpečení a přihlášení**.
+1. V počítači otevřete Facebook, v pravém horním rohu vyberte rozevírací nabídku a pak přejděte na **Nastavení**  >  **zabezpečení a přihlášení**.
 
     Zobrazí se stránka **zabezpečení a přihlášení** .
 

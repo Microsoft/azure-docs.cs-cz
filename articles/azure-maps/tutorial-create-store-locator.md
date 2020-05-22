@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 49b57b213a452d6c594bbc1ca537e68bd7a83864
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 050f95ac98ce1ab36dc4ca537db458e133581925
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333845"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746045"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
 
-Tento kurz vás provede procesem vytvoření jednoduchého lokátoru úložiště pomocí Azure Maps. Lokátory úložiště jsou běžné. Mnohé z konceptů, které se používají v tomto typu aplikace, platí i pro mnoho dalších typů aplikací. Nabídka lokátoru úložiště zákazníkům je potřeba pro většinu firem, které prodávají přímo zákazníkům. V tomto kurzu se naučíte:
+Tento kurz vás provede procesem vytvoření jednoduchého lokátoru úložiště pomocí Azure Maps. Lokátory úložiště jsou běžné. Mnohé z konceptů, které se používají v tomto typu aplikace, platí i pro mnoho dalších typů aplikací. Nabídka lokátoru úložiště zákazníkům je potřeba pro většinu firem, které prodávají přímo zákazníkům. V tomto kurzu:
     
 > [!div class="checklist"]
 > * Vytvořte novou webovou stránku pomocí rozhraní Azure Ovládací prvek Mapa API.
@@ -58,7 +58,7 @@ Drátěné diagramy znázorňují poměrně jasné aplikace. Aplikace má vyhled
 * Rozložení stránky se přizpůsobí v závislosti na šířce obrazovky zařízení.  
 * V záhlaví se zobrazuje logo Storu.  
 * Uživatel může pomocí vyhledávacího pole a tlačítka pro hledání vyhledat umístění, jako je adresa, PSČ nebo město. 
-* `keypress` Událost přidaná do vyhledávacího pole spustí hledání, pokud uživatel stiskne klávesu ENTER. Tato funkce je často přehlédnutíná, ale vytváří lepší uživatelské prostředí.
+* `keypress`Událost přidaná do vyhledávacího pole spustí hledání, pokud uživatel stiskne klávesu ENTER. Tato funkce je často přehlédnutíná, ale vytváří lepší uživatelské prostředí.
 * Když se mapa přesune, vypočítá se vzdálenost do každého umístění od středu mapy. Seznam výsledků se aktualizuje tak, aby zobrazoval nejbližší umístění v horní části mapy.  
 * Když vyberete výsledek v seznamu výsledků, mapa bude zarovnána na střed vybraného umístění a informace o umístění se zobrazí v překryvném okně.  
 * Výběr konkrétního umístění na mapě také aktivuje automaticky otevírané okno.
@@ -115,7 +115,7 @@ Chcete-li vytvořit projekt, můžete použít [aplikaci Visual Studio](https://
 
 Chcete-li vytvořit uživatelské rozhraní, přidejte kód do souboru *index. html*:
 
-1. Přidejte následující `meta` značky do `head` souboru *index. html*. `charset` Značka definuje znakovou sadu (UTF-8). Hodnota `http-equiv` oznamuje aplikaci Internet Explorer a Microsoft Edge, aby používala nejnovější verze prohlížeče. A poslední `meta` značka Určuje zobrazení, které funguje dobře pro reakce na uspořádání.
+1. Přidejte následující `meta` značky do `head` souboru *index. html*. `charset`Značka definuje znakovou sadu (UTF-8). Hodnota `http-equiv` oznamuje aplikaci Internet Explorer a Microsoft Edge, aby používala nejnovější verze prohlížeče. A poslední `meta` značka Určuje zobrazení, které funguje dobře pro reakce na uspořádání.
 
     ```HTML
     <meta charset="utf-8">
@@ -152,7 +152,7 @@ Chcete-li vytvořit uživatelské rozhraní, přidejte kód do souboru *index. h
     </header>
     ```
 
-1. Přidejte `main` značku a vytvořte panel hledání, který obsahuje textové pole a tlačítko Hledat. Přidejte `div` také odkazy pro mapu, panel seznamu a tlačítko GPS.
+1. Přidejte `main` značku a vytvořte panel hledání, který obsahuje textové pole a tlačítko Hledat. Přidejte také `div` odkazy pro mapu, panel seznamu a tlačítko GPS.
 
     ```HTML
     <main>
@@ -170,7 +170,7 @@ Chcete-li vytvořit uživatelské rozhraní, přidejte kód do souboru *index. h
 
 Až skončíte, *index. html* by měl vypadat jako v [tomto ukázkovém souboru index. html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html).
 
-Dalším krokem je definování stylů CSS. Styly CSS definují způsob, jakým jsou komponenty aplikace vymezeny, a vzhled aplikace. Otevřete *index. CSS* a přidejte do něj následující kód. `@media` Styl definuje alternativní možnosti stylu, které se použijí, pokud je šířka obrazovky menší než 700 pixelů.  
+Dalším krokem je definování stylů CSS. Styly CSS definují způsob, jakým jsou komponenty aplikace vymezeny, a vzhled aplikace. Otevřete *index. CSS* a přidejte do něj následující kód. `@media`Styl definuje alternativní možnosti stylu, které se použijí, pokud je šířka obrazovky menší než 700 pixelů.  
 
    ```CSS
     html, body {
@@ -397,12 +397,12 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
 
 1. Přidejte kód do *indexu. js*. Následující kód inicializuje mapu. Přidali jsme [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , který bude počkat na dokončení načítání stránky. Pak se v případě, že se budou monitorovat načítající mapy, zadávají události a na tlačítko Hledat a na tlačítko "umístění" získáte funkce.
 
-   Když uživatel vybere tlačítko hledání nebo zadá umístění do vyhledávacího pole, pak stiskne klávesu ENTER, bude zahájeno přibližné vyhledávání proti dotazu uživatele. Předejte pole hodnot 2 země 2 k `countrySet` možnosti omezení výsledků hledání na tyto země nebo oblasti. Omezení zemí nebo oblastí pro hledání pomáhá zvýšit přesnost vrácených výsledků. 
+   Když uživatel vybere tlačítko hledání nebo zadá umístění do vyhledávacího pole, pak stiskne klávesu ENTER, bude zahájeno přibližné vyhledávání proti dotazu uživatele. Předejte pole hodnot ISO 2 země nebo oblasti do `countrySet` Možnosti pro omezení výsledků hledání na tyto země nebo oblasti. Omezení zemí nebo oblastí pro hledání pomáhá zvýšit přesnost vrácených výsledků. 
   
    Po dokončení hledání Vezměte v úvahu první výsledek a nastavte kameru mapy přes tuto oblast. Když uživatel vybere tlačítko pro umístění uživatele, načtěte jeho umístění pomocí rozhraní API geografického umístění HTML5. Toto rozhraní API je integrováno do prohlížeče. Pak vycentrovat mapu na jejich umístění.  
 
    > [!Tip]
-   > Při použití automaticky otevíraných oken je vhodné vytvořit jedinou `Popup` instanci a opětovně použít instanci aktualizací jejího obsahu a pozice. Pro každou `Popup`instanci, kterou přidáte do kódu, je na stránku přidáno více elementů DOM. Další prvky modelu DOM, na kterých se nachází, jsou na stránce mnohem více věcí, které prohlížeč musí sledovat. Pokud je příliš mnoho položek, může se stát, že prohlížeč bude pomalý.
+   > Při použití automaticky otevíraných oken je vhodné vytvořit jedinou `Popup` instanci a opětovně použít instanci aktualizací jejího obsahu a pozice. Pro každou `Popup` instanci, kterou přidáte do kódu, je na stránku přidáno více elementů DOM. Další prvky modelu DOM, na kterých se nachází, jsou na stránce mnohem více věcí, které prohlížeč musí sledovat. Pokud je příliš mnoho položek, může se stát, že prohlížeč bude pomalý.
 
     ```JavaScript
     function initialize() {
@@ -453,7 +453,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
         });
     }
 
-    //Create an array of country ISO 2 values to limit searches to. 
+    //Create an array of country/region ISO 2 values to limit searches to. 
     var countrySet = ['US', 'CA', 'GB', 'FR','DE','IT','ES','NL','DK'];
 
     function performSearch() {
@@ -461,7 +461,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
 
         //Perform a fuzzy search on the users query.
         searchURL.searchFuzzy(atlas.service.Aborter.timeout(3000), query, {
-            //Pass in the array of country ISO2 for which we want to limit the search to.
+            //Pass in the array of country/region ISO2 for which we want to limit the search to.
             countrySet: countrySet
         }).then(results => {
             //Parse the response into GeoJSON so that the map can understand.
@@ -510,7 +510,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
     window.onload = initialize;
     ```
 
-1. V naslouchací službě `ready` událostí v mapě přidejte ovládací prvek zvětšení a značku HTML pro zobrazení středu oblasti hledání.
+1. V `ready` naslouchací službě událostí v mapě přidejte ovládací prvek zvětšení a značku HTML pro zobrazení středu oblasti hledání.
 
     ```JavaScript
     //Add a zoom control to the map.
@@ -527,7 +527,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
     map.markers.add(centerMarker);
     ```
 
-1. V naslouchací službě `ready` událostí v mapě přidejte zdroj dat. Pak zavolejte na načíst a analyzujte datovou sadu. Povolte clusteringu ve zdroji dat. Clustering ve skupinách zdrojů dat překrývá body dohromady v clusteru. Clustery se v jednotlivých bodech oddělují jako přiblížení uživatele. Toto chování nabízí lepší uživatelské prostředí a zvyšuje výkon.
+1. V naslouchací službě událostí v mapě `ready` přidejte zdroj dat. Pak zavolejte na načíst a analyzujte datovou sadu. Povolte clusteringu ve zdroji dat. Clustering ve skupinách zdrojů dat překrývá body dohromady v clusteru. Clustery se v jednotlivých bodech oddělují jako přiblížení uživatele. Toto chování nabízí lepší uživatelské prostředí a zvyšuje výkon.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -542,9 +542,9 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
     loadStoreData();
     ```
 
-1. Po načtení datové sady v naslouchací službě `ready` událostí mapy Definujte sadu vrstev pro vykreslování dat. Bublinová vrstva se používá k vykreslování clusterovaných datových bodů. Vrstva symbolů se používá k vykreslení počtu bodů v každém clusteru nad bublinovou vrstvou. Druhá vrstva symbolu vykresluje vlastní ikonu pro jednotlivá umístění na mapě.
+1. Po načtení datové sady v `ready` naslouchací službě událostí mapy Definujte sadu vrstev pro vykreslování dat. Bublinová vrstva se používá k vykreslování clusterovaných datových bodů. Vrstva symbolů se používá k vykreslení počtu bodů v každém clusteru nad bublinovou vrstvou. Druhá vrstva symbolu vykresluje vlastní ikonu pro jednotlivá umístění na mapě.
 
-   Přidejte `mouseover` události `mouseout` a do vrstev bublin a ikon, abyste změnili ukazatel myši, když uživatel najede myší na cluster nebo ikonu na mapě. Přidejte `click` událost do bublinové vrstvy clusteru. Tato `click` událost se zvětší na mapě dvou úrovní a porovná mapu s clusterem, když uživatel vybere libovolný cluster. Přidejte `click` událost do vrstvy ikon. Tato `click` událost zobrazí automaticky otevírané okno, ve kterém se zobrazí podrobnosti o kavárně, když uživatel vybere ikonu jednotlivého umístění. Přidejte událost do mapy, která se monitoruje po dokončení přesunutí mapy. Když se tato událost aktivuje, aktualizujte položky na panelu seznamu.  
+   Přidejte `mouseover` `mouseout` události a do vrstev bublin a ikon, abyste změnili ukazatel myši, když uživatel najede myší na cluster nebo ikonu na mapě. Přidejte `click` událost do bublinové vrstvy clusteru. Tato `click` událost se zvětší na mapě dvou úrovní a porovná mapu s clusterem, když uživatel vybere libovolný cluster. Přidejte `click` událost do vrstvy ikon. Tato `click` událost zobrazí automaticky otevírané okno, ve kterém se zobrazí podrobnosti o kavárně, když uživatel vybere ikonu jednotlivého umístění. Přidejte událost do mapy, která se monitoruje po dokončení přesunutí mapy. Když se tato událost aktivuje, aktualizujte položky na panelu seznamu.  
 
     ```JavaScript
     //Create a bubble layer to render clustered data points.
