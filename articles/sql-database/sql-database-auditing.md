@@ -1,5 +1,5 @@
 ---
-title: Auditování Azure SQL
+title: Auditování Azure SQL pro Azure SQL Database a Azure synapse Analytics
 description: Pomocí auditování Azure SQL Database můžete sledovat události databáze v protokolu auditu.
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 57c4b22dfe6ef6cf44be64a4b5c042403f64ccf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ff888cb1a2f2486fec7b387d9f9f02029b03aab
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096652"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779070"
 ---
-# <a name="azure-sql-auditing"></a>Auditování Azure SQL
+# <a name="azure-sql-auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování Azure SQL pro Azure SQL Database a Azure synapse Analytics
 
 Auditování pro Azure [SQL Database](sql-database-technical-overview.md) a [Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage, Log Analytics pracovním prostoru nebo Event Hubs. 
 
@@ -174,7 +174,7 @@ Pokud jste se rozhodli zapsat protokoly auditu do účtu služby Azure Storage, 
 - Pomocí systémové funkce **Sys. fn_get_audit_file** (T-SQL) Vraťte data protokolu auditu v tabulkovém formátu. Další informace o použití této funkce naleznete v tématu [Sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - Použít **soubory pro sloučení auditu** v SQL Server Management Studio (počínaje SSMS 17):
-    1. V nabídce SSMS vyberte **soubor** > **otevřít** > **Sloučit soubory auditu**.
+    1. V nabídce SSMS vyberte **soubor**  >  **otevřít**  >  **Sloučit soubory auditu**.
 
         ![Navigační podokno](./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png)
     2. Otevře se dialogové okno **Přidat soubory auditu** . Vyberte jednu z možností **Přidání** a zvolte, jestli chcete soubory auditu sloučit z místního disku, nebo je naimportujte z Azure Storage. Je nutné zadat podrobnosti Azure Storage a klíč účtu.

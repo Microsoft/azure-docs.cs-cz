@@ -3,12 +3,12 @@ title: Sdílená složka Azure pro fondy Azure Batch
 description: Jak připojit sdílenou složku služby soubory Azure z výpočetních uzlů ve fondu Linux nebo Windows ve službě Azure Batch.
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 0aa8c8f6dcf1114688e6abaf1a17f2e8af6fa4fe
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723489"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780272"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Použití sdílené složky Azure s fondem služby Batch
 
@@ -172,6 +172,5 @@ batch_service_client.task.add(job_id, task)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další možnosti čtení a zápisu dat ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md) a [trvalý výstup úloh a úkolů](batch-task-output.md).
-
+* Další možnosti čtení a zápisu dat do služby Batch najdete v tématu [zachování úlohy a výstupu úlohy](batch-task-output.md).
 * Viz také sada [Batch pro dávkové](https://github.com/Azure/batch-shipyard) zpracování, která zahrnuje [recepty v loděnicích](https://github.com/Azure/batch-shipyard/tree/master/recipes) pro nasazení systémů souborů pro úlohy kontejnerů služby Batch.

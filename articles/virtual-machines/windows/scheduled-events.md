@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: mimckitt
-ms.openlocfilehash: b688341b8814c52523821851bef4d7600105cafd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c8b0d83be0ae464563a06c9307303ee7a5af527f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675871"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779785"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače s Windows
 
@@ -134,10 +134,10 @@ Každé události je naplánováno minimální množství času v budoucnu na z�
 
 ### <a name="event-scope"></a>Rozsah události     
 Naplánované události jsou doručovány do:
- - Samostatné Virtual Machines
- - Všechny Virtual Machines v cloudové službě      
- - Všechny Virtual Machines ve skupině dostupnosti      
- - Všechny Virtual Machines ve skupině umístění sady škálování (včetně dávky)        
+ - Samostatné Virtual Machines.
+ - Všechny Virtual Machines v cloudové službě.     
+ - Všechny Virtual Machines ve skupině dostupnosti.     
+ - Všechny Virtual Machines ve skupině umístění sady škálování (včetně Batch).       
 
 V důsledku toho byste měli zaškrtnout `Resources` pole v události a určit, které virtuální počítače budou mít vliv na to. 
 

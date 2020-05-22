@@ -3,12 +3,12 @@ title: Zřízení vlastního fondu ze spravované image
 description: Vytvořte fond služby Batch z prostředku spravovaného obrazu a zřídíte výpočetní uzly se softwarem a daty pro vaši aplikaci.
 ms.topic: article
 ms.date: 09/16/2019
-ms.openlocfilehash: 10e3932bc6006e1d91fbc7e4cf58a5d98c043520
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b08c6a609516bcebaca64cf1c186d75887b098e3
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117314"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780211"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Vytvoření fondu virtuálních počítačů pomocí spravované image
 
@@ -21,7 +21,7 @@ Pokud chcete vytvořit vlastní image pro virtuální počítače (VM) fondu slu
 
 - **Prostředek spravované image** Pokud chcete vytvořit fond virtuálních počítačů s použitím vlastní image, musíte mít nebo vytvořit prostředek spravované image ve stejném předplatném Azure a oblasti jako účet Batch. Image by se měla vytvořit ze snímků disku s operačním systémem virtuálního počítače a volitelně z připojených datových disků. Další informace a kroky pro přípravu spravované image najdete v následující části.
   - Pro každý vytvořený fond použijte jedinečnou vlastní image.
-  - Pokud chcete vytvořit fond s imagí pomocí rozhraní API pro Batch, zadejte **ID prostředku** obrázku, který je ve formátu `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`. Chcete-li použít portál, použijte **název** bitové kopie.  
+  - Pokud chcete vytvořit fond s imagí pomocí rozhraní API pro Batch, zadejte **ID prostředku** obrázku, který je ve formátu `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` . Chcete-li použít portál, použijte **název** bitové kopie.  
   - Prostředek spravované Image by měl existovat po dobu života fondu, aby bylo možné provést horizontální navýšení kapacity a po odstranění fondu je možné ho odebrat.
 
 - **Ověřování Azure Active Directory (AAD)**. Rozhraní API pro klienta Batch musí používat ověřování AAD. Podpora Azure Batch pro AAD je popsaná v dokumentaci k [ověřování řešení služby Batch pomocí služby Active Directory](batch-aad-auth.md).
@@ -107,10 +107,10 @@ Vytvoření prostředku spravované image přímo pomocí balíčku se dá prov�
 
 Zajistěte, aby prostředek použitý k vytvoření spravované image existoval pro životnost všech fondů odkazujících na vlastní image. V takovém případě může dojít k selhání alokace fondu nebo selhání velikosti.
 
-Pokud je bitová kopie nebo podkladový prostředek odebrána, může se zobrazit chyba podobná této: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`. Pokud se zobrazí tato chyba, ujistěte se, že se původní prostředek neodebral.
+Pokud je bitová kopie nebo podkladový prostředek odebrána, může se zobrazit chyba podobná této: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed` . Pokud se zobrazí tato chyba, ujistěte se, že se původní prostředek neodebral.
 
 Další informace o použití balíčku k vytvoření virtuálního počítače najdete v tématu [Vytvoření image pro Linux pomocí balíčku](../virtual-machines/linux/build-image-with-packer.md) nebo [Vytvoření image Windows s balíčkem](../virtual-machines/windows/build-image-with-packer.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobný přehled služby Batch najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).
+- Podrobný přehled služby Batch najdete v tématu [pracovní postup služby Batch a prostředky](batch-service-workflow-features.md).

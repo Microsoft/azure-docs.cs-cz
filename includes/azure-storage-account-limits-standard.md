@@ -5,21 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/13/2020
+ms.date: 05/20/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 6cd883289513091ff1a57a130b12e25e012c1160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72afa8ebea4cb9bf07cb3ce56583cbdf1849be9e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334953"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778286"
 ---
-Následující tabulka popisuje výchozí omezení pro Azure pro obecné účely V1, v2, BLOB Storage, Block BLOB Storage a Data Lake Storage Gen2 povolené účty úložiště. Limit *ingress* příchozího přenosu dat odkazuje na všechna data, která se odesílají do účtu úložiště. Limit *odchozího* přenosu dat odkazuje na všechna data přijatá z účtu úložiště.
+V následující tabulce jsou popsány výchozí limity pro účty úložiště Azure pro obecné účely V1, v2, BLOB Storage a Block. Limit *ingress* příchozího přenosu dat odkazuje na všechna data, která se odesílají do účtu úložiště. Limit *odchozího* přenosu dat odkazuje na všechna data přijatá z účtu úložiště.
 
 | Prostředek | Omezení |
 | --- | --- |
-| Počet účtů úložiště podle jednotlivých oblastí a předplatných, včetně účtů úložiště s povolenou úrovní Standard, Premium a Data Lake Storage Gen2 <sup>3</sup> . | 250 |
+| Počet účtů úložiště podle jednotlivých oblastí a předplatných, včetně účtů úložiště Standard a Premium.| 250 |
 | Maximální kapacita účtu úložiště | 5 PiB <sup>1</sup>|
 | Maximální počet kontejnerů objektů blob, objektů blob, sdílených složek, tabulek, front, entit nebo zpráv na účet úložiště | Bez omezení |
 | Maximální počet požadavků<sup>1</sup> na účet úložiště | počet požadavků 20 000 za sekundu |
@@ -37,7 +37,7 @@ Následující tabulka popisuje výchozí omezení pro Azure pro obecné účely
 
 [!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
 
-<sup>3</sup> [Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) je sada funkcí vyhrazených pro analýzy velkých objemů dat, která je založená na službě Azure Blob Storage. Omezení služby Azure Storage a BLOB Storage se vztahují na Data Lake Storage Gen2.
+<sup>3</sup> [Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) je sada funkcí vyhrazených pro analýzy velkých objemů dat, která je založená na službě Azure Blob Storage.
 
 > [!NOTE]
 > Microsoft doporučuje, abyste pro většinu scénářů používali účet úložiště pro obecné účely v2. Účet Azure Blob Storage pro obecné účely v1 nebo Azure můžete snadno upgradovat na účet pro obecné účely v2 bez výpadků a bez nutnosti kopírovat data. Další informace najdete v tématu [upgrade na účet úložiště pro obecné účely v2](../articles/storage/common/storage-account-upgrade.md).

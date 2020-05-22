@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 05/04/2020
-ms.openlocfilehash: 1dfb1b43eadebbfc7128c5a2451668be8a99329f
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.date: 05/23/2020
+ms.openlocfilehash: 29c5cdf418c4b7acfc7c3c510c3e76d956268fdf
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402541"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780369"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -207,7 +207,7 @@ Tady jsou limity pro vlastní konektory, které můžete vytvořit z webových r
 | Name | Omezení |
 |------|-------|
 | Spravované identity na aplikaci logiky | Buď identita přiřazená systémem, nebo 1 uživatelem přiřazená identita |
-| Počet aplikací logiky, které mají spravovanou identitu v předplatném Azure pro jednotlivé oblasti | 250 |
+| Počet aplikací logiky, které mají spravovanou identitu v předplatném Azure pro jednotlivé oblasti | 500 |
 |||
 
 <a name="integration-account-limits"></a>
@@ -244,7 +244,7 @@ Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pr
 |----------|------|-------|----------|
 | Obchodní smlouvy EDI | 10 | 1 | 1 000 |
 | Obchodní partneři EDI | 25 | 2 | 1 000 |
-| Mapy | 25 | 500 | 1 000 |
+| Maps | 25 | 500 | 1 000 |
 | Schémata | 25 | 500 | 1 000 |
 | Sestavení | 10 | 25 | 1 000 |
 | Certifikáty | 25 | 2 | 1 000 |
@@ -257,7 +257,7 @@ Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pr
 
 | Artefakt | Omezení | Poznámky |
 | -------- | ----- | ----- |
-| Assembly | 8 MB | Pokud chcete nahrávat soubory větší než 2 MB, použijte [účet úložiště Azure a kontejner objektů BLOB](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
+| Sestavení | 8 MB | Pokud chcete nahrávat soubory větší než 2 MB, použijte [účet úložiště Azure a kontejner objektů BLOB](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 | Map (soubor XSLT) | 8 MB | Chcete-li odeslat soubory větší než 2 MB, použijte [mapování Azure Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/maps/createorupdate). <p><p>**Poznámka**: objem dat nebo záznamů, které může mapa úspěšně zpracovat, vychází z omezení velikost zprávy a časový limit akcí v Azure Logic Apps. Pokud například použijete akci HTTP na základě [velikosti zprávy HTTP a omezení časového limitu](#request-limits), může mapa zpracovat data až do limitu velikosti zprávy HTTP, pokud se operace dokončí v rámci limitu časového limitu protokolu HTTP. |
 | Schéma | 8 MB | Pokud chcete nahrávat soubory větší než 2 MB, použijte [účet úložiště Azure a kontejner objektů BLOB](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 ||||

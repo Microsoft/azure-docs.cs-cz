@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: c13ace67f18b619d5ad86106ecb648db722be9fa
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792441"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779344"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -54,7 +54,7 @@ Toto je základní formát šablony:
 
 ## <a name="type-and-api-version"></a>Typ a verze rozhraní API
 
-`type` Je typ prostředku, který musí být `"Microsoft.VirtualMachineImages/imageTemplates"`. V `apiVersion` průběhu času se změny rozhraní API změní, ale měla by být `"2019-05-01-preview"` pro verzi Preview.
+`type`Je typ prostředku, který musí být `"Microsoft.VirtualMachineImages/imageTemplates"` . V `apiVersion` průběhu času se změny rozhraní API změní, ale měla by být `"2019-05-01-preview"` pro verzi Preview.
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -144,7 +144,7 @@ Další informace o nasazení této funkce najdete v tématu [Konfigurace spravo
 
 ## <a name="properties-source"></a>Vlastnosti: zdroj
 
-`source` Část obsahuje informace o zdrojové imagi, kterou bude používat Tvůrce imagí.
+`source`Část obsahuje informace o zdrojové imagi, kterou bude používat Tvůrce imagí.
 
 Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení image, v současné době existují tři typy:
 - PlatformImage – indikuje, že zdrojová Image je image na webu Marketplace.
@@ -189,7 +189,7 @@ Nastaví zdrojovou Image jako existující spravovanou bitovou kopii zobecněné
         }
 ```
 
-`imageId` By měl být ResourceID spravované image. Slouží `az image list` k vypsání dostupných imagí.
+`imageId`By měl být ResourceID spravované image. Slouží `az image list` k vypsání dostupných imagí.
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion zdroj
@@ -202,7 +202,7 @@ Nastaví zdrojovou bitovou kopii existující verze image v galerii sdílených 
    } 
 ```
 
-`imageVersionId` Měla by být ResourceID verze image. K vypsání verzí imagí použijte příkaz [AZ SIG Image-Version list](/cli/azure/sig/image-version#az-sig-image-version-list) .
+`imageVersionId`Měla by být ResourceID verze image. K vypsání verzí imagí použijte příkaz [AZ SIG Image-Version list](/cli/azure/sig/image-version#az-sig-image-version-list) .
 
 ## <a name="properties-buildtimeoutinminutes"></a>Vlastnosti: buildTimeoutInMinutes
 
@@ -222,8 +222,8 @@ Pokud zjistíte, že k dokončení úprav potřebujete víc času, nastavte to p
 
 Image Builder podporuje několik "úprav". Vlastníci jsou funkce, které se používají k přizpůsobení image, jako je spouštění skriptů nebo restartování serverů. 
 
-Při použití `customize`: 
-- Můžete použít více úprav, ale musí mít jedinečné `name`.
+Při použití `customize` : 
+- Můžete použít více úprav, ale musí mít jedinečné `name` .
 - Úpravci provádějí v pořadí zadaném v šabloně.
 - Pokud jeden z úprav selže, celá komponenta přizpůsobení selže a ohlásí chybu.
 - Důrazně doporučujeme skript před jeho použitím v šabloně důkladně otestovat. Ladění skriptu na vlastním VIRTUÁLNÍm počítači bude snazší.
@@ -287,7 +287,7 @@ Přizpůsobení vlastností:
     * K vygenerování sha256Checksum pomocí terminálu pro Mac/Linux spusťte:`sha256sum <fileName>`
 
 
-Příkazy, které se mají spustit s oprávněními superuživatele, musí mít předponu `sudo`.
+Příkazy, které se mají spustit s oprávněními superuživatele, musí mít předponu `sudo` .
 
 > [!NOTE]
 > Když spustíte úpravce prostředí se zdrojem RHEL ISO, musíte zajistit, aby vaše první prostředí pro přizpůsobení způsobilo registraci na serveru s Red Hat nárokem, a to ještě před tím, než dojde k přizpůsobení. Po dokončení přizpůsobení by se měl skript na serveru nároků zrušit.
@@ -385,7 +385,7 @@ To je podporováno v adresářích systému Windows a cestách pro Linux, ale ex
 Pokud při pokusu o stažení souboru nebo jeho umístění do zadaného adresáře dojde k chybě, krok přizpůsobení selže a bude v souboru Customization. log.
 
 > [!NOTE]
-> Soubor úprav souborů je vhodný jenom pro stahování malých souborů, < 20MB. U větších souborů ke stažení použijte skript nebo vložený příkaz, ke stažení souborů, jako je Linux `wget` nebo `curl`Windows, `Invoke-WebRequest`použijte kód.
+> Soubor úprav souborů je vhodný jenom pro stahování malých souborů, < 20MB. U větších souborů ke stažení použijte skript nebo vložený příkaz, ke stažení souborů, jako je Linux `wget` nebo Windows, použijte kód `curl` `Invoke-WebRequest` .
 
 Soubory v úpravách souborů je možné stáhnout z Azure Storage pomocí [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
@@ -425,13 +425,24 @@ Pokud Azure image Builder úspěšně vytvoří vlastní image Windows a vy z n�
 
 #### <a name="default-sysprep-command"></a>Výchozí příkaz Sysprep
 ```powershell
-echo '>>> Waiting for GA to start ...'
+Write-Output '>>> Waiting for GA Service (RdAgent) to start ...'
 while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }
-while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }
+Write-Output '>>> Waiting for GA Service (WindowsAzureTelemetryService) to start ...'
+while ((Get-Service WindowsAzureTelemetryService) -and ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running')) { Start-Sleep -s 5 }
+Write-Output '>>> Waiting for GA Service (WindowsAzureGuestAgent) to start ...'
 while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }
-echo '>>> Sysprepping VM ...'
-if( Test-Path $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml -Force} & $Env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit
-while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 5  } else { break } }
+Write-Output '>>> Sysprepping VM ...'
+if( Test-Path $Env:SystemRoot\system32\Sysprep\unattend.xml ) {
+  Remove-Item $Env:SystemRoot\system32\Sysprep\unattend.xml -Force
+}
+& $Env:SystemRoot\System32\Sysprep\Sysprep.exe /oobe /generalize /quiet /quit
+while($true) {
+  $imageState = (Get-ItemProperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\State).ImageState
+  Write-Output $imageState
+  if ($imageState -eq 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { break }
+  Start-Sleep -s 5
+}
+Write-Output '>>> Sysprep complete ...'
 ```
 #### <a name="default-linux-deprovision-command"></a>Výchozí příkaz pro zrušení zřízení pro Linux
 
@@ -457,7 +468,7 @@ Azure image Builder podporuje tři cíle distribuce:
 
 Můžete distribuovat obrázek do obou cílových typů ve stejné konfiguraci, viz [Příklady](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
 
-Vzhledem k tomu, že můžete mít více než jeden cíl pro distribuci do nástroje, nástroj image Builder udržuje stav pro každý cíl distribuce, ke kterému lze `runOutputName`přistup pomocí dotazování na.  `runOutputName` Je objekt, který můžete odeslat dotazem na distribuci pro informace o této distribuci. Můžete například zadat dotaz na umístění virtuálního pevného disku nebo oblasti, ve kterých byla verze bitové kopie replikována, nebo vytvořená verze image SIG. Toto je vlastnost všech cílů distribuce. `runOutputName` Musí být jedinečný pro každý cíl distribuce. Tady je příklad, který se dotazuje na distribuci Galerie sdílených imagí:
+Vzhledem k tomu, že můžete mít více než jeden cíl pro distribuci do nástroje, nástroj image Builder udržuje stav pro každý cíl distribuce, ke kterému lze přistup pomocí dotazování na `runOutputName` .  `runOutputName`Je objekt, který můžete odeslat dotazem na distribuci pro informace o této distribuci. Můžete například zadat dotaz na umístění virtuálního pevného disku nebo oblasti, ve kterých byla verze bitové kopie replikována, nebo vytvořená verze image SIG. Toto je vlastnost všech cílů distribuce. `runOutputName`Musí být jedinečný pro každý cíl distribuce. Tady je příklad, který se dotazuje na distribuci Galerie sdílených imagí:
 
 ```bash
 subscriptionID=<subcriptionID>
@@ -510,7 +521,7 @@ Výstupem obrázku bude prostředek spravované image.
  
 Vlastnosti distribuce:
 - **typ** – managedImage 
-- **imageId** – ID prostředku cílového obrázku, očekávaný formát:/subscriptions/\<subscriptionId>/ResourceGroups/\<destinationResourceGroupName>/Providers/Microsoft.COMPUTE/images/\<ImageName>
+- **imageId** – ID prostředku cílového obrázku, očekávaný formát:/subscriptions/ \< SubscriptionId>/ResourceGroups/ \< destinationResourceGroupName>/Providers/Microsoft.COMPUTE/images/ImageName \<>
 - **umístění** – umístění spravované image.  
 - **runOutputName** – jedinečný název pro identifikaci distribuce.  
 - **artifactTags** – volitelné uživatelsky definované páry klíč-hodnota.
@@ -550,7 +561,7 @@ Než budete moct distribuovat do galerie imagí, musíte vytvořit galerii a def
 Distribuovat vlastnosti pro galerie sdílených imagí:
 
 - **typ** – sharedImage  
-- **galleryImageId** – ID Galerie sdílených imagí Formát\<je:/subscriptions/SubscriptionId>/resourcegroups/\<resourceGroupName>/Providers/Microsoft.COMPUTE/Galleries/\<sharedImageGalleryName>/images/\<imageGalleryName>.
+- **galleryImageId** – ID Galerie sdílených imagí Formát je:/subscriptions/ \< subscriptionId>/ResourceGroups/ \< resourceGroupName>/providers/microsoft.compute/galleries/ \< sharedImageGalleryName>/images/ \< imageGalleryName>.
 - **runOutputName** – jedinečný název pro identifikaci distribuce.  
 - **artifactTags** – volitelné uživatelsky definované páry klíč-hodnota.
 - **replicationRegions** – pole oblastí pro replikaci. Jedna z oblastí musí být oblast, ve které je galerie nasazena.

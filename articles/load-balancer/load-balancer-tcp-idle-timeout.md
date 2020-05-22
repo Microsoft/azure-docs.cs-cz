@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: d0bb73b58aa23e5f7eb784772acf37b05df463ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09d15877088fb6356419a9d31f8bef3164e76029
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79456824"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780603"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Nakonfigurujte nastavení časového limitu nečinnosti protokolu TCP pro Azure Load Balancer
 
@@ -43,6 +43,10 @@ Udržování připojení TCP funguje ve scénářích, kdy životnost baterie ne
 
 Následující části popisují, jak změnit nastavení časového limitu nečinnosti pro prostředky veřejné IP adresy a nástroje pro vyrovnávání zatížení.
 
+>[!NOTE]
+> Časový limit nečinnosti protokolu TCP nemá vliv na pravidla vyrovnávání zatížení na protokolu UDP.
+
+
 ## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Nakonfigurujte časový limit TCP pro veřejnou IP adresu na úrovni instance na 15 minut.
 
 ```azurepowershell-interactive
@@ -55,7 +59,7 @@ Parametr `IdleTimeoutInMinutes` je volitelný. Pokud není nastavené, výchozí
 
 ## <a name="set-the-tcp-timeout-on-a-load-balanced-rule-to-15-minutes"></a>Nastavte časový limit TCP pro pravidlo vyrovnávání zatížení na 15 minut.
 
-Chcete-li nastavit časový limit nečinnosti pro nástroj pro vyrovnávání zatížení, je v pravidle vyrovnávání zatížení nastaven atribut ' IdleTimeoutInMinutes '. Příklad:
+Chcete-li nastavit časový limit nečinnosti pro nástroj pro vyrovnávání zatížení, je v pravidle vyrovnávání zatížení nastaven atribut ' IdleTimeoutInMinutes '. Například:
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroup "MyResourceGroup"

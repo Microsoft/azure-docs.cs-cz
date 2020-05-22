@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: 64be872e4e76545c015378417410cbbfad95ebfd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c017e9422733069ffd93f6dff72ecb884da057c4
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680657"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779949"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku (Preview)
 
@@ -64,4 +64,4 @@ Po vytvoření přiřazení zásady se použije pro všechny nové `connectedClu
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Řízení konfigurace clusteru pomocí Azure Policy](./use-azure-policy.md)
+* [Nastavení Azure Monitor pro kontejnery s povolenými clustery Kubernetes s obloukem](./deploy-azure-monitor-for-containers.md)

@@ -5,21 +5,21 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39c4674da2ddf63c5fab8b39e16a0cc0d9f299ac
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 90cd6476992eed30abbe9faca5cc66405aa40079
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726583"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780185"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Použití virtuálních počítačů s nízkou prioritou se službou Batch
 
 Azure Batch nabízí virtuálním počítačům s nízkou prioritou snížit náklady na úlohy Batch. Virtuální počítače s nízkou prioritou vytvářejí nové typy úloh služby Batch, a to díky tomu, že umožňují použití velkého množství výpočetního výkonu pro velmi nízké náklady.
- 
+
 Virtuální počítače s nízkou prioritou využívají nadbytečné kapacity v Azure. Když ve fondech zadáte virtuální počítače s nízkou prioritou, Azure Batch můžou tento přebytečný přístup použít, pokud je k dispozici.
- 
+
 Kompromisy pro použití virtuálních počítačů s nízkou prioritou je, že tyto virtuální počítače nemusí být k dispozici, aby je bylo možné přidělit nebo kdykoli zrušit v závislosti na dostupné kapacitě. Z tohoto důvodu jsou virtuální počítače s nízkou prioritou vhodné pro určité typy úloh. Používejte virtuální počítače s nízkou prioritou pro úlohy dávkového a asynchronního zpracování, kde je čas dokončení úlohy flexibilní a práce se distribuuje napříč mnoha virtuálními počítači.
- 
+
 Virtuální počítače s nízkou prioritou se v porovnání s vyhrazenými virtuálními počítači nabízejí výrazně snížené ceny. Podrobnosti o cenách najdete v tématu [ceny služby Batch](https://azure.microsoft.com/pricing/details/batch/).
 
 > [!NOTE]
@@ -28,7 +28,6 @@ Virtuální počítače s nízkou prioritou se v porovnání s vyhrazenými virt
 > Fondy Azure Batch začnou podporovat virtuální počítače s plochou během několika měsíců, které jsou všeobecně dostupné, s novými verzemi [rozhraní API a nástrojů služby Batch](https://docs.microsoft.com/azure/batch/batch-apis-tools). Jakmile bude k dispozici podpora virtuálních počítačů, virtuální počítače s nízkou prioritou budou zastaralé – budou i nadále podporovány pomocí současných rozhraní API a verzí nástrojů po dobu nejméně 12 měsíců, aby bylo umožněno dostatek času pro migraci na virtuální počítače. 
 >
 > Virtuální počítače s přímým odkazem se pro fondy [konfigurací cloudových služeb](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) nepodporují. Pokud chcete použít virtuální počítače s plochou, bude nutné, aby fondy cloudových služeb byly migrovány do fondů [Konfigurace virtuálních počítačů](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) .
-
 
 ## <a name="use-cases-for-low-priority-vms"></a>Případy použití pro virtuální počítače s nízkou prioritou
 
@@ -72,8 +71,7 @@ Azure Batch poskytuje několik funkcí, které usnadňují využívání virtuá
     Kvóta pro virtuální počítače s nízkou prioritou je vyšší než kvóta vyhrazených virtuálních počítačů, protože virtuální počítače s nízkou prioritou jsou levnější. Další informace najdete v tématu [kvóty a omezení služby Batch](batch-quota-limit.md#resource-quotas).    
 
 > [!NOTE]
-> Virtuální počítače s nízkou prioritou se v současné době nepodporují pro účty Batch vytvořené v [režimu předplatného uživatele](batch-api-basics.md#account).
->
+> Virtuální počítače s nízkou prioritou se v současné době nepodporují pro účty Batch vytvořené v [režimu předplatného uživatele](accounts.md).
 
 ## <a name="create-and-update-pools"></a>Vytváření a aktualizace fondů
 
@@ -183,6 +181,6 @@ Chcete-li zobrazit metriky v Azure Portal:
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si téma [Přehled funkcí Batch pro vývojáře](batch-api-basics.md), kde jsou základní informace pro každého, kdo se připravuje použít Batch. Článek obsahuje podrobné informace o prostředcích služby Batch, jako jsou fondy, uzly a úlohy, a mnoha funkcích rozhraní API, které můžete použít při vytváření aplikace Batch.
+* Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
 * Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.
 * Začněte naplánování přesunu z virtuálních počítačů s nízkou prioritou na místo virtuálních počítačů. Pokud používáte virtuální počítače s nízkou prioritou s fondy **konfigurace cloudové služby** , naplánujte přesun na fondy **Konfigurace virtuálních počítačů** .

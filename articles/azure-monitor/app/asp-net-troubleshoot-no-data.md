@@ -2,13 +2,13 @@
 title: Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím tady.
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: 2770888c6cfacedcf186ed1612718133cc1ba363
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80802582"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778680"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -127,13 +127,13 @@ Opravit
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Na portálu Application Insights otevřete [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md). Data se obvykle zobrazují jako první.
 * Klikněte na tlačítko Aktualizovat. Okno se pravidelně aktualizuje, ale můžete ho také provést ručně. Interval aktualizace je delší pro větší časové rozsahy.
-* Ověřte, zda se klíče instrumentace shodují. V hlavním okně aplikace na portále Application Insights v rozevíracím seznamu **základy** vyhledejte **klíč instrumentace**. Potom v projektu v aplikaci Visual Studio otevřete soubor ApplicationInsights. config a vyhledejte `<instrumentationkey>`. Ověřte, zda jsou oba klíče stejné. Pokud ne:  
+* Ověřte, zda se klíče instrumentace shodují. V hlavním okně aplikace na portále Application Insights v rozevíracím seznamu **základy** vyhledejte **klíč instrumentace**. Potom v projektu v aplikaci Visual Studio otevřete soubor ApplicationInsights. config a vyhledejte `<instrumentationkey>` . Ověřte, zda jsou oba klíče stejné. Pokud ne:  
   * Na portálu klikněte na Application Insights a vyhledejte prostředek aplikace se správným klíčem. ani
   * V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost Application Insights, konfigurovat. Resetujte aplikaci, aby odesílala telemetrii do správného prostředku.
   * Pokud nemůžete najít odpovídající klíče, ověřte, že používáte stejné přihlašovací údaje pro přihlášení v aplikaci Visual Studio jako v portálu.
 * Na [řídicím panelu domů Microsoft Azure](https://portal.azure.com)se podívejte na mapu Service Health. Pokud se zobrazí upozornění, počkejte, až se vrátí do OK, a pak zavřete a znovu otevřete okno aplikace Application Insights.
 * Projděte si také [náš stavový blog](https://blogs.msdn.microsoft.com/servicemap-status/).
-* Napsali jste jakýkoliv kód pro [sadu SDK na straně serveru](../../azure-monitor/app/api-custom-events-metrics.md) , která by mohla změnit klíč instrumentace v `TelemetryClient` instancích nebo v? `TelemetryContext` Nebo jste napsali [konfiguraci filtru nebo vzorkování](../../azure-monitor/app/api-filtering-sampling.md) , které by mohly vyfiltrovat příliš mnoho?
+* Napsali jste jakýkoliv kód pro [sadu SDK na straně serveru](../../azure-monitor/app/api-custom-events-metrics.md) , která by mohla změnit klíč instrumentace v `TelemetryClient` instancích nebo v `TelemetryContext` ? Nebo jste napsali [konfiguraci filtru nebo vzorkování](../../azure-monitor/app/api-filtering-sampling.md) , které by mohly vyfiltrovat příliš mnoho?
 * Pokud jste upravovali ApplicationInsights. config, pečlivě zkontrolujte konfiguraci [TelemetryInitializers a TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md). Nesprávně pojmenovaný typ nebo parametr může způsobit, že sada SDK neposílá žádná data.
 
 ## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>Žádná data v zobrazeních stránky, v prohlížečích, použití
@@ -143,7 +143,7 @@ Data pocházejí ze skriptů na webových stránkách.
 
 * Pokud jste přidali Application Insights k existujícímu webovému projektu, [je nutné přidat skripty ručně](../../azure-monitor/app/javascript.md).
 * Ujistěte se, že aplikace Internet Explorer nezobrazuje web v režimu kompatibility.
-* Použijte funkci ladění v prohlížeči (F12 na některých prohlížečích a pak zvolte síť), abyste ověřili, že se data `dc.services.visualstudio.com`odesílají do.
+* Použijte funkci ladění v prohlížeči (F12 na některých prohlížečích a pak zvolte síť), abyste ověřili, že se data odesílají do `dc.services.visualstudio.com` .
 
 ## <a name="no-dependency-or-exception-data"></a>Žádná data o závislostech nebo výjimkách
 Viz [telemetrie závislostí](../../azure-monitor/app/asp-net-dependencies.md) a [telemetrie výjimek](asp-net-exceptions.md).
@@ -247,6 +247,14 @@ Tyto parametry můžete upravit podle potřeby:
 Další informace
 - [Zaznamenávání trasování výkonu pomocí PerfView](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
 - [Application Insights zdroje událostí](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="collect-logs-with-dotnet-trace"></a>Shromažďování protokolů pomocí dotnet – trasování
+
+Alternativním způsobem shromažďování protokolů pro řešení potíží, které mohou být zvláště užitečné pro prostředí založená na systému Linux, je[`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace)
+
+```bash
+dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
+```
 
 ## <a name="how-to-remove-application-insights"></a>Jak odebrat Application Insights
 

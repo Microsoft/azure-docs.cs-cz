@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3e5beaef7fcc9d407103834e2040957ff32984c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57b6bf06e34068b5560829838eb9ee1315df6cde
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008512"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778220"
 ---
 Sdílené disky Azure (Preview) je nová funkce pro služby Azure Managed disks, která umožňuje připojení spravovaného disku k několika virtuálním počítačům současně. Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace.
 
@@ -50,6 +50,10 @@ Mezi oblíbené aplikace běžící v WSFC patří:
 ### <a name="linux"></a>Linux
 
 Clustery se systémem Linux můžou využívat Správce clusterů, jako je [Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker). Pacemaker se vytváří na [Corosync](http://corosync.github.io/corosync/)a povoluje komunikaci clusteru pro aplikace nasazené v prostředích s vysokou dostupností. Mezi běžné Clusterové systémy souborů patří [OCFS2](https://oss.oracle.com/projects/ocfs2/) a [GFS2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2). Pomocí nástrojů, jako jsou [fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) a [sg_persist](https://linux.die.net/man/8/sg_persist), můžete manipulovat s rezervacemi a registrací.
+
+#### <a name="ubuntu"></a>Ubuntu
+
+Informace o tom, jak nastavit vysokou dostupnost Ubuntu pomocí Corosync a Pacemaker na sdílených discích Azure, najdete v tématu věnovaném [Ubuntu komunitě](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874).
 
 ## <a name="persistent-reservation-flow"></a>Trvalý tok rezervace
 

@@ -4,12 +4,12 @@ description: Spočítejte stav úloh Azure Batch a výpočetních uzlů, které 
 ms.date: 09/07/2018
 ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: e063ef56deeb7fa0f2a217f48b1c23a810a9d890
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d75ff1806f61b54bd058926f95c7c53b66aaf243
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726685"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780158"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Monitorování řešení Batch pomocí počítání úkolů a uzlů podle stavu
 
@@ -111,12 +111,12 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
     Console.WriteLine("Low-priority node count in Preempted state: {0}", nodeCounts.LowPriority.Preempted);
 }
 ```
+
 Podobný vzor můžete použít pro REST a jiné podporované jazyky a získat tak počty uzlů pro fondy.
  
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o koncepcích a funkcích služby Batch najdete v článku [Přehled funkcí Batch](batch-api-basics.md). Článek popisuje primární prostředky služby Batch, jako jsou fondy, výpočetní uzly, úlohy a úkoly, a poskytuje přehled funkcí služby.
-
+* Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
 * Informace o použití filtrů na dotazy, které uvádějí prostředky služby Batch, najdete v tématu [efektivní vytváření dotazů pro vypsání prostředků služby Batch](batch-efficient-list-queries.md).
 
 

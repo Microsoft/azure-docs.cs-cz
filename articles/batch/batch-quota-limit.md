@@ -4,12 +4,12 @@ description: Přečtěte si o výchozích Azure Batch kvótách, omezeních a om
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: f47f2df38a601c6359ed257a9787130ea95d2ac8
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b172800e6ed2a28315da3b45eb39f2207f8f1c16
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726566"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780007"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -132,10 +132,10 @@ Fondy služby Batch v konfiguraci virtuálního počítače nasazené ve virtuá
 Tyto prostředky se přidělují v rámci předplatného, které obsahuje virtuální síť, která se zadala při vytváření fondu Batch. Pro tyto prostředky platí omezení [kvót prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. Pokud plánujete nasazení rozsáhlých fondů ve virtuální síti, Prohlédněte si kvóty předplatného pro tyto prostředky. V případě potřeby požádejte o zvýšení Azure Portal tím, že vyberete **help + podpora**.
 
 
-## <a name="related-topics"></a>Související témata
-* [Vytvoření účtu Azure Batch na webu Azure Portal](batch-account-create-portal.md)
-* [Přehled funkcí Azure Batch](batch-api-basics.md)
-* [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md)
+## <a name="next-steps"></a>Další kroky
+* [Vytvořte účet Azure Batch pomocí Azure Portal](batch-account-create-portal.md).
+* Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
+* Přečtěte si o [omezeních, kvótách a omezeních předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/

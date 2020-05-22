@@ -5,14 +5,14 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 05/21/2020
 ms.author: charwen
-ms.openlocfilehash: 6bf80be4868295145fa79ae29d5322181b6131d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 617ec30fc9b97e89b6ccd0de6255d65da94d7b63
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619180"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780452"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Monitorování a Správa relací pro Azure bastionu
 
@@ -30,9 +30,6 @@ Jakmile se služba bastionu zřídí a nasadí ve vaší virtuální síti, mů�
 
    ![refresh](./media/session-monitoring/refresh.png)
 
->[!IMPORTANT]
-> Povolte port 4443 pro příchozí provoz z Správce brány, aby monitorování relace fungovalo.
->
 
 ## <a name="delete-or-force-disconnect-an-ongoing-remote-session"></a><a name="view"></a>Odstranění nebo vynucení odpojení probíhající vzdálené relace
 

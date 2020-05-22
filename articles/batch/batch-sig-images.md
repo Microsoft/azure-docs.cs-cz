@@ -3,12 +3,12 @@ title: Vytvoření vlastního fondu pomocí Galerie sdílených imagí
 description: Vytvořte fond služby Batch pomocí Galerie sdílených imagí a zřiďte vlastní image pro výpočetní uzly, které obsahují software a data, která pro vaši aplikaci potřebujete. Vlastní image představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
 ms.topic: article
 ms.date: 08/28/2019
-ms.openlocfilehash: 1a26aaecc5da0ef348b720919b04d86f8fcfbc70
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 1f03d637ffc6e443fdd429ca7fd647603b668cc1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743578"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780502"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Vytvoření vlastního fondu pomocí Galerie sdílených imagí
 
@@ -83,7 +83,7 @@ Po úspěšném vytvoření spravované image musíte vytvořit sdílenou galeri
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Vytvoření fondu ze sdílené Image pomocí Azure CLI
 
-Pokud chcete vytvořit fond ze sdílené Image pomocí Azure CLI, použijte `az batch pool create` příkaz. V `--image` poli zadejte ID sdílené bitové kopie. Zajistěte, aby typ operačního systému a SKU odpovídaly verzím, které určuje.`--node-agent-sku-id`
+Pokud chcete vytvořit fond ze sdílené Image pomocí Azure CLI, použijte `az batch pool create` příkaz. V poli zadejte ID sdílené bitové kopie `--image` . Zajistěte, aby typ operačního systému a SKU odpovídaly verzím, které určuje.`--node-agent-sku-id`
 
 > [!NOTE]
 > Musíte se ověřit pomocí Azure AD. Pokud používáte ověřování Shared-Key-Authentication, zobrazí se chyba ověřování.  
@@ -218,4 +218,4 @@ Pokud máte v úmyslu vytvořit fond se stovkami nebo tisíci virtuálních poč
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobný přehled služby Batch najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).
+* Podrobný přehled služby Batch najdete v tématu [pracovní postup služby Batch a prostředky](batch-service-workflow-features.md).

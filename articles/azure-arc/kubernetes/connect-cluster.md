@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: dd4e03ac6bdf2e4554f07f2aa5ffca78b1ed1230
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 690955f0e7d18f9a784b4c9a2fa1733442cb70dc
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725614"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780023"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
@@ -25,7 +25,7 @@ Ověřte, že máte připravené tyto požadavky:
 
 * Cluster Kubernetes, který je v provozu
 * Budete potřebovat přístup s kubeconfig a přístupem správce clusteru. 
-* Uživatel nebo instanční objekt použitý s `az login` příkazy a `az connectedk8s connect` musí mít oprávnění číst a zapsat pro typ prostředku Microsoft. Kubernetes/connectedclusters.
+* Uživatel nebo instanční objekt použitý s `az login` příkazy a `az connectedk8s connect` musí mít oprávnění číst a zapsat pro typ prostředku Microsoft. Kubernetes/connectedclusters. Roli "připojení Azure ARC pro Kubernetes s těmito oprávněními" lze použít pro přiřazení rolí pro uživatele nebo instanční objekt používaný s Azure CLI pro registraci.
 * Nejnovější verze rozšíření *connectedk8s* a *k8sconfiguration*
 
 ## <a name="supported-regions"></a>Podporované oblasti

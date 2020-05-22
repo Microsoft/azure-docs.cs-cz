@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596b47ecc0cf42e8cf1e7001c1462f55d34ff9c3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4bfe55c4ebe722e98f0816078b64c0131a30d03
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680287"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778723"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -549,16 +549,71 @@ Pokud chcete registrovat zařízení s Windows nižší úrovně, musíte si z w
 
 ## <a name="verify-joined-devices"></a>Ověření připojených zařízení
 
-Úspěšně připojená zařízení ve vaší organizaci můžete vyhledat pomocí rutiny [Get-MsolDevice](/powershell/msonline/v1/get-msoldevice) v [modulu Azure Active Directory PowerShellu](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+Tady jsou tři způsoby, jak vyhledat a ověřit stav zařízení:
 
-Výstup této rutiny ukazuje zařízení zaregistrovaná a připojená k Azure AD. Pokud chcete získat všechna zařízení, použijte parametr **-All** a pak je filtrujte pomocí vlastnosti **deviceTrustType** . Zařízení připojená k doméně mají hodnotu **připojeno k doméně**.
+### <a name="locally-on-the-device"></a>Místně na zařízení
+
+1. Otevřete Windows PowerShell.
+2. Zadejte `dsregcmd /status`.
+3. Ověřte, že jsou **AzureAdJoined** i **DomainJoined** nastavené na **Ano**.
+4. Můžete použít **DeviceID** a porovnat stav služby pomocí Azure Portal nebo PowerShellu.
+
+### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
+
+1. V případě, že přejdete na stránku zařízení, použijte [přímý odkaz](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
+2. Informace o tom, jak najít zařízení, najdete v tématu [Správa identit zařízení pomocí Azure Portal](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices).
+3. Pokud **zaregistrovaný** sloupec **čeká na vyřízení**, připojení k hybridní službě Azure AD se nedokončilo. Ve federovaném prostředí se to může stát jenom v případě, že se nepovedlo zaregistrovat a AAD Connect je nakonfigurované k synchronizaci zařízení.
+4. Pokud **zaregistrovaný** sloupec obsahuje **Datum a čas**, připojení k hybridní službě Azure AD se dokončilo.
+
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
+
+Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+
+Při kontrole podrobností služby použijte rutinu **Get-MSolDevice** :
+
+- Musí existovat objekt s **ID zařízení** , které odpovídá ID na klientském počítači se systémem Windows.
+- Hodnota pro **DeviceTrustType** je **připojená k doméně**. Toto nastavení se rovná stavu **připojenému k hybridní službě Azure AD** na stránce **zařízení** na portálu Azure AD.
+- U zařízení, která se používají v podmíněném přístupu, je **povolená** hodnota **true** a **DeviceTrustLevel** je **spravovaná**.
+
+1. Spusťte Windows PowerShell jako správce.
+2. Zadejte `Connect-MsolService` , abyste se připojili k vašemu Tenantovi Azure.
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Spočítat všechna hybridní zařízení připojená k Azure AD (s výjimkou stavu **čekání** )
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Spočítat všechna zařízení připojená k hybridní službě Azure AD ve stavu **čekání**
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Zobrazit všechna zařízení připojená k hybridní službě Azure AD
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Vypsat všechna zařízení připojená k hybridní službě Azure AD s **probíhajícím** stavem
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>Seznam podrobností o jednom zařízení:
+
+1. Zadejte `get-msoldevice -deviceId <deviceId>` (Jedná se o **DeviceID** získanou místně na zařízení).
+2. Ověřte, že je hodnota **Enabled** (Povoleno) nastavená na **True** (Pravda).
 
 ## <a name="troubleshoot-your-implementation"></a>Řešení potíží s implementací
 
-Pokud máte problémy s dokončením hybridního připojení ke službě Azure AD pro zařízení s Windows připojená k doméně, přečtěte si téma:
+Pokud dochází k problémům s dokončováním hybridního připojení služby Azure AD pro zařízení s Windows připojená k doméně, přečtěte si téma:
 
-* [Řešení potíží s hybridním připojením aktuálních zařízení s Windows k Azure AD](troubleshoot-hybrid-join-windows-current.md)
-* [Řešení potíží s hybridním připojením zařízení s Windows nižší úrovně k Azure AD](troubleshoot-hybrid-join-windows-legacy.md)
+- [Řešení potíží se zařízeními pomocí příkazu dsregcmd](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Řešení potíží s hybridními Azure Active Directory připojenými zařízeními](troubleshoot-hybrid-join-windows-current.md)
+- [Řešení potíží s modulem hybridní Azure Active Directory připojená zařízení nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>Další kroky
 

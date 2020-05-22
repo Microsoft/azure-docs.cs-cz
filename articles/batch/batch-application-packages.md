@@ -4,12 +4,12 @@ description: Pomocí funkce balíčky aplikací Azure Batch můžete snadno spra
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61e94ade21d8dd6fad2ba10dff87d4ba10333e3a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: fd5821a7876cc99be41fbb2c5b095b931653c345
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726872"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780311"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -68,7 +68,7 @@ U balíčků aplikací nemusí spouštěcí úkol fondu určovat dlouhý seznam 
 Pomocí [Azure Portal][portal] nebo rozhraní API pro správu služby Batch můžete spravovat balíčky aplikací v účtu Batch. V následujících částech jsme nejdřív ukázali, jak propojit účet úložiště, a pak diskutovat o přidávání aplikací a balíčků a jejich správě s portálem.
 
 ### <a name="link-a-storage-account"></a>Propojení účtu úložiště
-Chcete-li použít balíčky aplikací, musíte nejprve propojit [účet Azure Storage](batch-api-basics.md#azure-storage-account) s účtem Batch. Pokud jste ještě nenakonfigurovali účet úložiště, Azure Portal zobrazí upozornění při prvním kliknutí na **aplikace** v účtu Batch.
+Chcete-li použít balíčky aplikací, musíte nejprve propojit [účet Azure Storage](accounts.md#azure-storage-accounts) s účtem Batch. Pokud jste ještě nenakonfigurovali účet úložiště, Azure Portal zobrazí upozornění při prvním kliknutí na **aplikace** v účtu Batch.
 
 
 
@@ -285,9 +285,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> Další informace o nastavení prostředí výpočetních uzlů najdete v tématu [nastavení prostředí pro úlohy](batch-api-basics.md#environment-settings-for-tasks) v [přehledu funkcí služby Batch](batch-api-basics.md) .
-> 
-> 
+> Další informace o nastavení prostředí výpočetních uzlů najdete v tématu [nastavení prostředí pro úlohy](jobs-and-tasks.md#environment-settings-for-tasks). 
 
 ## <a name="update-a-pools-application-packages"></a>Aktualizace balíčků aplikací fondu
 Pokud je už existující fond nakonfigurovaný pomocí balíčku aplikace, můžete pro tento fond zadat nový balíček. Pokud zadáte nový odkaz na balíček pro fond, platí následující:

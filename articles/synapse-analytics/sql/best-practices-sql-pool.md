@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b3dc111fe62cbae857f3369165ba29cf40e90342
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6af79a37369fe5775c402af011f4ba59807595d
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427793"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780434"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Osvědčené postupy pro fondy SQL ve službě Azure synapse Analytics
 
@@ -44,7 +44,7 @@ Další informace o statistice najdete v článcích [Správa statistik tabulek]
 
 ## <a name="group-insert-statements-into-batches"></a>Seskupujte příkazy INSERT do dávek
 
-Jednorázové zatížení malé tabulky s příkazem INSERT, jako je například `INSERT INTO MyLookup VALUES (1, 'Type 1')`, může být nejlepším řešením v závislosti na vašich potřebách. Pokud však v průběhu dne potřebujete načíst tisíce nebo miliony řádků, je pravděpodobně vkládání typu Singleton neoptimální.
+Jednorázové zatížení malé tabulky s příkazem INSERT, jako je například `INSERT INTO MyLookup VALUES (1, 'Type 1')` , může být nejlepším řešením v závislosti na vašich potřebách. Pokud však v průběhu dne potřebujete načíst tisíce nebo miliony řádků, je pravděpodobně vkládání typu Singleton neoptimální.
 
 Jedním ze způsobů, jak tento problém vyřešit, je vyvinout jeden proces, který zapisuje do souboru, a pak jiný proces, který tento soubor pravidelně načítá. Další informace najdete v článku věnovaném [vložení](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
@@ -59,7 +59,7 @@ Fond SQL podporuje načítání a export dat prostřednictvím několika nástro
 
 Chcete-li maximalizovat propustnost při použití textových souborů gzip, rozdělte soubory do 60 nebo více souborů, čímž maximalizujete paralelismus zátěže. Pro rychlejší celkovou propustnost zvažte souběžné načítání dat. Další informace o tématech souvisejících s touto částí najdete v následujících článcích:
 
-- [Načíst data](data-loading-overview.md)
+- [Načtení dat](data-loading-overview.md)
 - [Průvodce používáním funkce PolyBase](data-loading-best-practices.md)
 - [Modely a strategie načítání Azure SQL fondu](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
 - [Načtení dat pomocí Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
@@ -180,7 +180,7 @@ Fondy SQL mají několik zobrazení dynamické správyů, které se dají použ�
 - [Monitorování vaší úlohy pomocí DMV](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 - [POPISEK](develop-label.md)
-- [NASTAVENÍ](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [OPTION](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -193,7 +193,7 @@ Fondy SQL mají několik zobrazení dynamické správyů, které se dají použ�
 
 Běžné problémy a řešení najdete také v článku [věnovaném řešení potíží](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
-Pokud potřebujete informace, které nejsou k dispozici v tomto článku, vyhledejte pomocí hledání dokumentů na levé straně této stránky všechny dokumenty fondu SQL.  [Fórum fondu SQL](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) je místo, kde můžete klást otázky ostatním uživatelům a skupině produktů fondu SQL.  
+Pokud potřebujete informace, které nejsou uvedené v tomto článku, pomocí **funkce filtrovat podle názvu** na levé straně této stránky Prohledejte všechny dokumenty fondu SQL.  [Fórum fondu SQL](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) je místo, kde můžete klást otázky ostatním uživatelům a skupině produktů fondu SQL.  
 
 Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  Pokud dáváte přednost dotazování na Stack Overflow, máme také [Fórum Azure SQL pool Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
 

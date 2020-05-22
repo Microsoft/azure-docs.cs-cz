@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: e3af10e5e9b56b537fedf0af7ffa7ddb37030c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca5ba8d7b2d78440401e29344361538c3650ba48
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189177"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779164"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Ukládání dat a příchozí přenosy v Azure Time Series Insights ve verzi Preview
 
@@ -58,7 +58,7 @@ Podporované datové typy jsou:
 
 | Datový typ | Popis |
 |---|---|
-| **bool** | Datový typ, který má jeden ze dvou `true` stavů `false`: nebo. |
+| **bool** | Datový typ, který má jeden ze dvou stavů: `true` nebo `false` . |
 | **Hodnotu** | Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu. Vyjádřeno ve formátu [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) . |
 | **double** | 64 desetinná čárka [IEEE 754](https://ieeexplore.ieee.org/document/8766229) s dvojitou přesností. |
 | **řetězec** | Textové hodnoty sestávající ze znaků Unicode.          |
@@ -78,6 +78,17 @@ Doporučujeme, abyste využívali následující osvědčené postupy:
 * Vypočítejte [požadavky na škálování](time-series-insights-update-plan.md) tak, že vypočítáte očekávanou rychlost příjmu a ověříte, že spadá do podporované sazby uvedené níže.
 
 * Seznamte se s tím, jak optimalizovat a natvarovat data JSON, jakož i aktuální omezení ve verzi Preview. Přečtěte si, jak můžete naformátovat [JSON pro příchozí a dotaz](./time-series-insights-update-how-to-shape-events.md).
+
+* Ingestování streamování se dá použít jenom pro téměř v reálném čase i pro poslední data. data streamovaná v historických datech se nepodporují.
+
+#### <a name="historical-data-ingestion"></a>Ingestování historických dat
+
+Použití kanálu streamování k importu historických dat není v současnosti ve verzi Preview podporováno Azure Time Series Insights. Pokud potřebujete importovat minulá data do svého prostředí, postupujte podle následujících pokynů:
+
+* Nepoužívejte paralelní streamování živých a historických dat. Ingestování dat z pořadí bude mít za následek snížení výkonu dotazů.
+* Ingestovat historická data v časově uspořádaném čase pro dosažení nejlepšího výkonu.
+* Zajistěte si omezení rychlosti propustnosti příjmu níže.
+* Pokud jsou data starší než doba uchovávání teplého obchodu, zakažte úložiště.
 
 ### <a name="ingress-scale-and-preview-limitations"></a>Omezení příchozího přenosu dat a verze Preview
 
@@ -101,7 +112,7 @@ Ve výchozím nastavení může Time Series Insights Preview ingestovat přícho
  
 * **Příklad 1:**
 
-    Při expedici společnosti Contoso je 100 000 zařízení, která generují události třikrát za minutu. Velikost události je 200 bajtů. Používají centrum IoT se čtyřmi oddíly jako zdroj události Time Series Insights.
+    Při expedici společnosti Contoso je 100 000 zařízení, která generují události třikrát za minutu. Velikost události je 200 bajtů. Používají IoT Hub se čtyřmi oddíly jako zdroj události Time Series Insights.
 
     * Rychlost příjmu pro své Time Series Insights prostředí by byla: **100 000 zařízení * 200 bajtů/událost * (3/60 události/s) = 1 MB/s**.
     * Frekvence přijímání zpráv na oddíl by byla 0,25 MB/s.
@@ -215,7 +226,7 @@ Další informace o typu souboru Parquet najdete v [dokumentaci k Parquet](https
 
 Time Series Insights Preview ukládá kopie vašich dat následujícím způsobem:
 
-* První, počáteční kopie je dělená časem ingestování a ukládá data přibližně v pořadí doručení. Tato data se `PT=Time` nachází ve složce:
+* První, počáteční kopie je dělená časem ingestování a ukládá data přibližně v pořadí doručení. Tato data se nachází ve `PT=Time` složce:
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
@@ -229,14 +240,14 @@ V obou případech vlastnost Time souboru Parquet odpovídá času vytvoření o
 >
 > * `<YYYY>`provede mapování na vyjádření roku se čtyřmi číslicemi.
 > * `<MM>`provede mapování na vyjádření měsíčních číslic.
-> * `<YYYYMMDDHHMMSSfff>`mapuje se na časovou reprezentaci se čtyřmi číslicemi (`YYYY`), měsíčním`MM`číslem (), dvěma číslicemi (`DD`), dvěma číslicemi`HH``MM`(), dvěma číslicemi (), dvěma číslicemi (`SS`) a třemi číslicemi milisekund (`fff`).
+> * `<YYYYMMDDHHMMSSfff>`mapuje se na časovou reprezentaci se čtyřmi číslicemi (), měsíčním číslem (), dvěma číslicemi `YYYY` (), dvěma číslicemi (), dvěma číslicemi (), dvěma číslicemi `MM` `DD` () a třemi číslicemi `HH` `MM` `SS` milisekund ( `fff` ).
 
 Události ve verzi Preview Time Series Insights jsou namapovány na obsah souboru Parquet následujícím způsobem:
 
 * Každá událost je mapována na jeden řádek.
 * Každý řádek obsahuje sloupec **časového razítka** s časovým razítkem události. Vlastnost časového razítka není nikdy null. Ve výchozím nastavení je čas zařazený do **fronty události** , pokud ve zdroji událostí není zadaná vlastnost časového razítka. Uložené časové razítko je vždy ve formátu UTC.
 * Každý řádek obsahuje sloupce s ID časové řady (TSID), jak je definováno při vytváření prostředí Time Series Insights. Název vlastnosti TSID zahrnuje `_string` příponu.
-* Všechny ostatní vlastnosti odeslané jako data telemetrie jsou mapovány na názvy sloupců, které `_string` končí (String) `_bool` , (Boolean) `_datetime` , (DateTime) nebo `_double` (Double), v závislosti na typu vlastnosti.
+* Všechny ostatní vlastnosti odeslané jako data telemetrie jsou mapovány na názvy sloupců, které končí `_string` (String), `_bool` (Boolean), `_datetime` (DateTime) nebo `_double` (Double), v závislosti na typu vlastnosti.
 * Toto mapování schématu se vztahuje na první verzi formátu souboru, na kterou odkazuje **v = 1** a je uloženo v základní složce se stejným názvem. Vzhledem k tomu, že se tato funkce vyvíjí, může se toto mapování schématu změnit a zvýší se název odkazu.
 
 ## <a name="next-steps"></a>Další kroky

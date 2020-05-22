@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 25d11d2cf41f8653c5a54007f121c1251bb24b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2e1dbba61399ee3a4435f4f287b47f4bfd6f872
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096295"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774440"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
@@ -54,7 +54,7 @@ V následujících krocích vyvíjíte model, který předpovídá, jestli konkr
     import matplotlib.pyplot as plt
     from datetime import datetime
     from dateutil import parser
-    from pyspark.sql.functions import unix_timestamp
+    from pyspark.sql.functions import unix_timestamp, date_format, col, when
     from pyspark.ml import Pipeline
     from pyspark.ml import PipelineModel
     from pyspark.ml.feature import RFormula
@@ -159,9 +159,9 @@ plt.suptitle('')
 plt.show()
 ```
 
-![Graf](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
-![histogramu krabicového](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
-![grafu](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
+![Graf histogramu ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
+ ![ krabicového ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
+ ![ grafu](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
 ## <a name="preparing-the-data"></a>Příprava dat
 
@@ -208,7 +208,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Vytvoření modelu logistické regrese
 
-Posledním úkolem je převést označené údaje do formátu, který lze analyzovat logistickou regresí. Vstup do algoritmu logistické regrese musí být sada *vektorových dvojic popisků*, kde je *vektor funkce* vektor čísel reprezentujících vstupní bod. Proto musíme sloupce kategorií převést na čísla. Sloupce `trafficTimeBins` a `weekdayString` je nutné převést na celočíselné reprezentace. K převodu je k dispozici několik přístupů, ale přístup v tomto příkladu je *OneHotEncoding*, což je běžný přístup.
+Posledním úkolem je převést označené údaje do formátu, který lze analyzovat logistickou regresí. Vstup do algoritmu logistické regrese musí být sada *vektorových dvojic popisků*, kde je *vektor funkce* vektor čísel reprezentujících vstupní bod. Proto musíme sloupce kategorií převést na čísla. `trafficTimeBins`Sloupce a je `weekdayString` nutné převést na celočíselné reprezentace. K převodu je k dispozici několik přístupů, ale přístup v tomto příkladu je *OneHotEncoding*, což je běžný přístup.
 
 ```python
 # The sample uses an algorithm that only works with numeric features convert them so they can be consumed
@@ -238,6 +238,9 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 ```
 
 Teď, když existují dva datarámce, je dalším úkolem vytvořit vzor modelu a spustit ho v rámci školení dataframe a pak ověřit proti testovacímu datasnímku. Měli byste experimentovat s různými verzemi vzorce modelu, abyste viděli dopad různých kombinací.
+
+> [!Note]
+> Pokud chcete model uložit, budete potřebovat roli Azure Storage Blob role RBAC přispěvatele dat. V části účet úložiště přejděte na Access Control (IAM) a vyberte přidat přiřazení role. Přiřazení role RBAC Přispěvatel dat objektů BLOB úložiště k vašemu serveru SQL Database. Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích pro prostředky Azure najdete v tomto [Průvodci](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```python
 ## Create a new LR object for the model

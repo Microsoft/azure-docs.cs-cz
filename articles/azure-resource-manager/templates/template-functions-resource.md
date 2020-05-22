@@ -2,13 +2,13 @@
 title: Funkce šablon – prostředky
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot o prostředcích.
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: d6d98062e2228c22302b250ab3c7bb9683bff232
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 05/21/2020
+ms.openlocfilehash: aea3f654551f66390afa207ac5ce682d23e5bfe9
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715915"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780564"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -129,7 +129,7 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Typ prostředku | Název funkce |
 | ------------- | ------------- |
 | Microsoft. AnalysisServices/servery | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft. AppConfiguration] | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
+| Microsoft. AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
 | Microsoft. AppConfiguration/configurationStores | Klíče listkey |
 | Microsoft. Automation/automationAccounts | [Klíče listkey](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft. Batch/batchAccounts | [klíče listkey](/rest/api/batchmanagement/batchaccount/getkeys) |
@@ -202,7 +202,7 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. Network/applicationSecurityGroups | listIpConfigurations |
 | Microsoft. NotificationHubs/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft. NotificationHubs/obory názvů/NotificationHubs/autorizačních pravidel | [klíče listkey](/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Microsoft. OperationalInsights/pracovní prostory | [Klíče listkey](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
+| Microsoft. OperationalInsights/pracovní prostory | [list](/rest/api/loganalytics/workspaces/list) |
 | Microsoft. PolicyInsights/nápravy | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
 | Microsoft. Relay/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/relay/namespaces/listkeys) |
 | Microsoft. Relay/obory názvů/disasterRecoveryConfigs/autorizačních pravidel | klíče listkey |
@@ -228,15 +228,15 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. Web/umístění | listwsdlinterfaces |
 | Microsoft. Web/apimanagementaccounts/API/Connections | listconnectionkeys |
 | Microsoft. Web/apimanagementaccounts/API/Connections | listsecrets |
-| Microsoft. Web/weby/zálohy | [seznamu](/rest/api/appservice/webapps/listbackups) |
-| Microsoft. Web/weby/konfigurace | [seznamu](/rest/api/appservice/webapps/listconfigurations) |
+| Microsoft. Web/weby/zálohy | [list](/rest/api/appservice/webapps/listbackups) |
+| Microsoft. Web/weby/konfigurace | [list](/rest/api/appservice/webapps/listconfigurations) |
 | Microsoft. Web/weby/funkce | [klíče listkey](/rest/api/appservice/webapps/listfunctionkeys)
 | Microsoft. Web/weby/funkce | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
 | Microsoft. Web/weby/hybridconnectionnamespaces/Relay | [klíče listkey](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | Microsoft. Web/weby | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
 | Microsoft. Web/weby/sloty/funkce | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
-| Microsoft. Web/weby/sloty/zálohy | [seznamu](/rest/api/appservice/webapps/listbackupsslot) |
-| Microsoft. Web/weby/sloty/config | [seznamu](/rest/api/appservice/webapps/listconfigurationsslot) |
+| Microsoft. Web/weby/sloty/zálohy | [list](/rest/api/appservice/webapps/listbackupsslot) |
+| Microsoft. Web/weby/sloty/config | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
 | Microsoft. Web/weby/sloty/funkce | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
 Chcete-li zjistit, které typy prostředků mají operaci seznamu, máte následující možnosti:
@@ -350,6 +350,8 @@ Chcete-li získat token SAS, předejte objekt pro čas vypršení platnosti. Ča
     }
 }
 ```
+
+ListKeyValue příklad najdete v tématu [rychlý Start: automatizované nasazení virtuálních počítačů s konfigurací aplikace a šablonou správce prostředků](../../azure-app-configuration/quickstart-resource-manager.md#deploy-vm-using-stored-key-values).
 
 ## <a name="providers"></a>dodavateli
 

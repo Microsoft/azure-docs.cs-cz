@@ -4,21 +4,19 @@ description: Přečtěte si, jak vám šablony projektů sady Visual Studio pom�
 ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0dac39d1ff463dc4ba5efae50c7fc1ea9d36c829
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 9332684008b45aea39e07d8225bae6450ba57de5
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725818"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779511"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Použití šablon projektů sady Visual Studio ke skoku na zahájení dávkového řešení
 
 Šablony **úloh** a **procesorů sady Visual Studio** pro Batch poskytují kód, který vám umožňuje implementovat a spouštět úlohy náročné na výpočetní výkon v dávce s minimálním úsilím. Tento dokument popisuje tyto šablony a poskytuje pokyny k jejich použití.
 
 > [!IMPORTANT]
-> Tento článek popisuje pouze informace týkající se těchto dvou šablon a předpokládá, že jste obeznámeni se službou Batch a s klíčovými koncepty, které se týkají: fondy, výpočetní uzly, úlohy a úkoly, úlohy Správce úloh, proměnné prostředí a další relevantní informace. Další informace najdete v článku [základy Azure Batch](batch-technical-overview.md) a [Batch – přehled funkcí pro vývojáře](batch-api-basics.md).
-> 
-> 
+> Tento článek popisuje pouze informace týkající se těchto dvou šablon a předpokládá, že jste obeznámeni se službou Batch a s klíčovými koncepty, které se týkají: fondy, výpočetní uzly, úlohy a úkoly, úlohy Správce úloh, proměnné prostředí a další relevantní informace. Další informace najdete v základních informacích [o Azure Batch](batch-technical-overview.md) a [pracovních postupech a prostředcích služby Batch](batch-service-workflow-features.md). 
 
 ## <a name="high-level-overview"></a>Podrobný přehled
 Šablony úlohy Správce úloh a procesoru úloh lze použít k vytvoření dvou užitečných komponent:
@@ -69,7 +67,7 @@ Doporučujeme vytvořit řešení, které může obsahovat Správce úloh i proc
 * Odešlete tyto úlohy ke spuštění v dávce.
 
 > [!NOTE]
-> Další informace o úlohách Správce úloh najdete v tématu [Přehled funkcí Batch pro vývojáře](batch-api-basics.md#job-manager-task).
+> Další informace o úlohách Správce úloh najdete v tématu [úlohy a úlohy](jobs-and-tasks.md#job-manager-task).
 > 
 > 
 
@@ -188,7 +186,7 @@ Ukončovací kódy a výjimky poskytují mechanismus pro určení výsledku spu�
 
 V případě selhání úlohy Správce úloh může být do služby ještě před tím, než došlo k chybě, stále přidány některé úlohy. Tyto úlohy budou spouštěny normálním způsobem. Projděte si část "selhání rozdělení úlohy" výše pro diskuzi o této cestě k kódu.
 
-Všechny informace vrácené výjimkami se zapisují do souborů STDOUT. txt a stderr. txt. Další informace najdete v tématu [zpracování chyb](batch-api-basics.md#error-handling).
+Všechny informace vrácené výjimkami se zapisují do souborů STDOUT. txt a stderr. txt. Další informace najdete v tématu [zpracování chyb](error-handling.md).
 
 ### <a name="client-considerations"></a>Klientské požadavky
 Tato část popisuje některé požadavky implementace klienta při vyvolání Správce úloh na základě této šablony. Podrobnosti o předávání parametrů a nastavení prostředí najdete v tématu [postup předání parametrů a proměnných prostředí z klientského kódu](#pass-environment-settings) .

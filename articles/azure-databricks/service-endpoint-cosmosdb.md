@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
-ms.openlocfilehash: 4ac8c01e986cf1f3158c615a0791ba476e5bf1bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e18c2b0f03f9ac2155c441580d62d6085581de12
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74706163"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779601"
 ---
 # <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>Kurz: implementace Azure Databricks s koncovým bodem Cosmos DB
 
@@ -58,12 +58,12 @@ Než začnete, udělejte toto:
    |Nastavení|Hodnota|
    |-------|-----|
    |Předplatné|*Vaše předplatné*|
-   |Skupina prostředků|*vaše skupina prostředků*|
-   |Název účtu|DB-VNet-Service-Endpoint|
+   |Resource Group|*vaše skupina prostředků*|
+   |Account Name|DB-VNet-Service-Endpoint|
    |Rozhraní API|Core (SQL)|
    |Umístění|USA – západ|
    |Geografická redundance|Zakázat|
-   |Zápisy pro více oblastí|Povolení|
+   |Zápisy pro více oblastí|Povolit|
 
    ![Přidání koncového bodu služby Cosmos DB](./media/service-endpoint-cosmosdb/create-cosmosdb-account-basics.png)
 
@@ -98,7 +98,7 @@ Než začnete, udělejte toto:
 
     ![Cosmos DB informace o zdroji nástroje pro migraci dat](./media/service-endpoint-cosmosdb/cosmos-source-information.png)
 
-3. Na kartě **cílové informace** zadejte připojovací řetězec. Formát připojovacího řetězce je `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>`. AccountEndpoint a AccountKey jsou součástí primárního připojovacího řetězce, který jste uložili v předchozí části. Přidejte `Database=<your database name>` na konec připojovacího řetězce a vyberte **ověřit**. Pak přidejte název kolekce a klíč oddílu.
+3. Na kartě **cílové informace** zadejte připojovací řetězec. Formát připojovacího řetězce je `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>` . AccountEndpoint a AccountKey jsou součástí primárního připojovacího řetězce, který jste uložili v předchozí části. Přidejte `Database=<your database name>` na konec připojovacího řetězce a vyberte **ověřit**. Pak přidejte název kolekce a klíč oddílu.
 
     ![Cosmos DB informace o cíli nástroje pro migraci dat](./media/service-endpoint-cosmosdb/cosmos-target-information.png)
 
@@ -107,8 +107,6 @@ Než začnete, udělejte toto:
 ## <a name="create-a-cluster-and-add-library"></a>Vytvoření clusteru a přidání knihovny
 
 1. Přejděte ke službě Azure Databricks v [Azure Portal](https://portal.azure.com) a vyberte **Spustit pracovní prostor**.
-
-   ![Spustit pracovní prostor datacihly](./media/service-endpoint-cosmosdb/launch-workspace.png)
 
 2. Vytvořte nový cluster. Vyberte název clusteru a potvrďte zbývající výchozí nastavení.
 

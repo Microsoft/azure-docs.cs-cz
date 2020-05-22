@@ -1,15 +1,15 @@
 ---
 title: Spouštění úloh v rámci uživatelských účtů
-description: Je užitečné, abyste mohli nakonfigurovat uživatelský účet, pod kterým chcete úlohu spustit. Přečtěte si o typech uživatelských účtů a o tom, jak je nakonfigurovat.
+description: Přečtěte si o typech uživatelských účtů a o tom, jak je nakonfigurovat.
 ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1bd31f9d4881bdc489988d3f955e7143eaf7759
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 14ee675b80e0d9dd24993d7e3ecd255b5568e9cc
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726260"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779501"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Spouštění úloh v rámci uživatelských účtů ve Batch
 
@@ -40,7 +40,7 @@ Azure Batch poskytuje dva typy uživatelských účtů pro spuštěné úlohy:
 
 Pokud úloha běží pod stejným účtem, který se použil pro spuštění spouštěcího úkolu, má úloha přístup pro čtení a zápis do adresáře spouštěcího úkolu. Podobně platí, že pokud úloha běží pod stejným účtem, který se použil pro spuštění úlohy přípravy úlohy, má úloha přístup pro čtení i zápis do adresáře úkolů přípravy úlohy. Pokud je úloha spuštěna pod jiným účtem než úlohou spustit úlohu nebo úkol přípravy úlohy, má úloha přístup jen pro čtení k příslušnému adresáři.
 
-Další informace o přístupu k souborům a adresářům z úlohy najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md#files-and-directories).
+Další informace o přístupu k souborům a adresářům z úlohy najdete v tématu [soubory a adresáře](files-and-directories.md).
 
 ## <a name="elevated-access-for-tasks"></a>Zvýšený přístup pro úlohy 
 
@@ -322,4 +322,5 @@ Služba Batch verze 2017 -01-01.4.0 zavádí zásadní změnu a nahrazuje vlastn
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobný přehled služby Batch najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).
+* Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
+* Seznamte se se [soubory a adresáři](files-and-directories.md) v Azure Batch.

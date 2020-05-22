@@ -2,19 +2,18 @@
 title: Nastavení ovladače GPU řady Azure N-Series pro Linux
 description: Postup nastavení ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux v Azure
 services: virtual-machines-linux
-author: cynthn
-ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
+author: vikancha
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
-ms.author: cynthn
-ms.openlocfilehash: cb2d5c43b8c04829dd6830126b7bc01bee07133b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.author: vikancha
+ms.openlocfilehash: e4ee760acb441cdf70e588004d2f380ead07cd34
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628188"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779363"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux
 
@@ -184,7 +183,7 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
    
    sudo apt-get install linux-azure -y
    ```
-3. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NVv2.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` s `nouveau.conf` názvem s následujícím obsahem:
+3. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NVv2.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` `nouveau.conf` s názvem s následujícím obsahem:
 
    ```
    blacklist nouveau
@@ -217,14 +216,14 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
 
-8. Přidejte následující `/etc/nvidia/gridd.conf`:
+8. Přidejte následující `/etc/nvidia/gridd.conf` :
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE
    ```
    
-9. Z tohoto pole odeberte `/etc/nvidia/gridd.conf` následující z, pokud je k dispozici:
+9. Z tohoto pole odeberte následující z `/etc/nvidia/gridd.conf` , pokud je k dispozici:
  
    ```
    FeatureType=0
@@ -248,7 +247,7 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
    sudo yum install hyperv-daemons
    ```
 
-2. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NV2.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` s `nouveau.conf` názvem s následujícím obsahem:
+2. Zakažte ovladač jádra Nouveau, který je nekompatibilní s ovladačem NVIDIA. (Použijte pouze ovladač NVIDIA na virtuálních počítačích NV nebo NV2.) Chcete-li to provést, vytvořte soubor `/etc/modprobe.d` `nouveau.conf` s názvem s následujícím obsahem:
 
    ```
    blacklist nouveau
@@ -271,7 +270,7 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
 
    ```
  
-4. Znovu se připojte k virtuálnímu počítači a `lspci` spusťte příkaz. Ověřte, že karta nebo karty NVIDIA M60 jsou viditelné jako zařízení PCI.
+4. Znovu se připojte k virtuálnímu počítači a spusťte `lspci` příkaz. Ověřte, že karta nebo karty NVIDIA M60 jsou viditelné jako zařízení PCI.
  
 5. Stažení a instalace ovladače mřížky:
 
@@ -290,13 +289,13 @@ Chcete-li nainstalovat ovladače pro rozhraní NVIDIA GRID na virtuální počí
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
   
-8. Přidejte následující `/etc/nvidia/gridd.conf`:
+8. Přidejte následující `/etc/nvidia/gridd.conf` :
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE 
    ```
-9. Z tohoto pole odeberte `/etc/nvidia/gridd.conf` následující z, pokud je k dispozici:
+9. Z tohoto pole odeberte následující z `/etc/nvidia/gridd.conf` , pokud je k dispozici:
  
    ```
    FeatureType=0
@@ -315,7 +314,7 @@ Pokud je ovladač nainstalovaný, zobrazí se výstup podobný následujícímu.
  
 
 ### <a name="x11-server"></a>Server X11
-Pokud potřebujete server X11 pro vzdálené připojení k virtuálnímu počítači NV nebo NVv2, doporučuje se [x11vnc](http://www.karlrunge.com/x11vnc/) , protože umožňuje hardwarovou akceleraci grafiky. BusID zařízení M60 musí být ručně přidáno do konfiguračního souboru X11 (obvykle `etc/X11/xorg.conf`). Přidejte `"Device"` oddíl podobný následujícímu:
+Pokud potřebujete server X11 pro vzdálené připojení k virtuálnímu počítači NV nebo NVv2, doporučuje se [x11vnc](http://www.karlrunge.com/x11vnc/) , protože umožňuje hardwarovou akceleraci grafiky. BusID zařízení M60 musí být ručně přidáno do konfiguračního souboru X11 (obvykle `etc/X11/xorg.conf` ). Přidejte `"Device"` oddíl podobný následujícímu:
  
 ```
 Section "Device"
@@ -351,11 +350,11 @@ else
 fi
 ```
 
-Pak vytvořte záznam pro skript pro aktualizaci v `/etc/rc.d/rc3.d` nástroji, aby se skript vyvolal jako kořenový při spuštění.
+Pak vytvořte záznam pro skript pro aktualizaci v nástroji, `/etc/rc.d/rc3.d` aby se skript vyvolal jako kořenový při spuštění.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-* Můžete nastavit režim trvalosti pomocí `nvidia-smi` , takže výstup příkazu je rychlejší, když potřebujete zadat dotaz na karty. Chcete-li nastavit režim trvalosti, spusťte `nvidia-smi -pm 1`příkaz. Všimněte si, že pokud se virtuální počítač restartuje, nastavení režimu zmizí. Vždy můžete skriptovat nastavení režimu, které se spustí při spuštění.
+* Můžete nastavit režim trvalosti pomocí `nvidia-smi` , takže výstup příkazu je rychlejší, když potřebujete zadat dotaz na karty. Chcete-li nastavit režim trvalosti, spusťte příkaz `nvidia-smi -pm 1` . Všimněte si, že pokud se virtuální počítač restartuje, nastavení režimu zmizí. Vždy můžete skriptovat nastavení režimu, které se spustí při spuštění.
 * Pokud jste ovladače NVIDIA CUDA aktualizovali na nejnovější verzi a zjistíte, že připojení RDMA už nefunguje, [přeinstalujte ovladače RDMA pro opětovné](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) vytvoření tohoto připojení. 
 
 ## <a name="next-steps"></a>Další kroky

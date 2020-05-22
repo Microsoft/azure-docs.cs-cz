@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 3c9cc96af42c6cfb83b43e3a0c56f16bdb917025
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0bb17ab98dc17bbe7623467451acc65a126bcaf1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649081"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779969"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -39,6 +39,11 @@ Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte apli
 4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto**. Klikněte na **Uložit**.
 
     ![Spravovaná identita v App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
+
+
+> [!NOTE] 
+> Pokud chcete najít spravovanou identitu pro vaši webovou aplikaci nebo aplikaci slotu v Azure Portal, v části podnikové aplikace otevřete oddíl uživatelská nastavení.
+
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
 

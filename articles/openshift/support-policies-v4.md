@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 593cca5fbf0aa6e4c162e541560763c50cbc067e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ec27d054055866c72148ad6eb024d4324f063ce8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711410"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774395"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Zásady podpory Azure Red Hat OpenShift
 
@@ -29,6 +29,8 @@ Některé konfigurace pro clustery Azure Red Hat OpenShift 4 můžou ovlivnit mo
 * Neodstraňujte ani neměňte protokolování služby Azure Red Hat OpenShift (MDSD lusky).
 * Neodstraňujte ani neupravujte tajný klíč pro vyžádání obsahu clusteru arosvc.azurecr.io.
 * Všechny virtuální počítače s clustery musí mít přímý odchozí přístup k Internetu, přinejmenším k koncovým bodům Azure Resource Manager (ARM) a Service Logging (Ženeva).  Není podporována žádná forma proxy serveru HTTPS.
+* Neměňte konfiguraci DNS pro virtuální síť clusteru. Je nutné použít výchozí překladač Azure DNS.
+* Nepřepisujte žádné objekty MachineConfig clusteru (například konfigurace kubelet) jakýmkoli způsobem.
 * Služba Azure Red Hat OpenShift přistupuje ke clusteru prostřednictvím služby privátního propojení.  Neodstraňujte ani neměňte přístup k službě.
 * Výpočetní uzly, které nejsou RHCOS, se nepodporují. Například nemůžete použít výpočetní uzel RHEL.
 
@@ -66,3 +68,11 @@ Azure Red Hat OpenShift 4 podporuje instance pracovních uzlů na následující
 |Fsv2|Standard_F8s_v2|8|16|
 |Fsv2|Standard_F16s_v2|16|32|
 |Fsv2|Standard_F32s_v2|32|64|
+
+### <a name="master-nodes"></a>Hlavní uzly
+
+|Řada|Velikost|Virtuální procesory|Paměť: GiB|
+|-|-|-|-|
+|Dsv3|Standard_D8s_v3|8|32|
+|Dsv3|Standard_D16s_v3|16|64|
+|Dsv3|Standard_D32s_v3|32|128|

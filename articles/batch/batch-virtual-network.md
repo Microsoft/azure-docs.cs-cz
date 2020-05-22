@@ -4,12 +4,12 @@ description: Vytvoření fondu služby Batch ve službě Azure Virtual Network, 
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ca9a8bb60ecbea38da7dfdb44123d7201d6a112
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 5e973968e3396fbe714be5540244b867b7092e00
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726277"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779588"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu Azure Batch ve virtuální síti
 
@@ -64,5 +64,5 @@ Když přidáte trasu definovanou uživatelem, definujte trasu pro každou souvi
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podrobný přehled služby Batch najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).
-- Další informace o vytváření tras definovaných uživatelem najdete v tématu [vytvoření trasy definované uživatelem Azure Portal](../virtual-network/tutorial-create-route-table-portal.md).
+- Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
+- Informace o vytvoření trasy definované uživatelem najdete v tématu [vytvoření trasy definované uživatelem Azure Portal](../virtual-network/tutorial-create-route-table-portal.md).

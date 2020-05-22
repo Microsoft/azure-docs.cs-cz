@@ -8,18 +8,18 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 71d47c83586f7e5e31b148714e2804686422326a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588254"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774311"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Ověřování přístupu k prostředkům Azure Event Grid
 Tento článek poskytuje informace o následujících scénářích:  
 
 - Ověřování klientů, kteří publikují události pro Azure Event Grid témat pomocí sdíleného přístupového podpisu (SAS) nebo klíče. 
-- Zabezpečte svůj koncový bod Webhooku pomocí Azure Active Directory (Azure AD) k ověřování Event Grid k **doručování** událostí do koncového bodu.
+- Zabezpečte koncový bod Webhooku, který se používá k přijímání událostí z Event Grid pomocí Azure Active Directory (Azure AD) nebo sdíleného tajného klíče.
 
 ## <a name="authenticate-publishing-clients-using-sas-or-key"></a>Ověřování klientů publikování pomocí SAS nebo klíče
 Vlastní témata používají buď sdílený přístupový podpis (SAS), nebo ověřování pomocí klíče. Doporučujeme použít SAS, ale ověřování pomocí klíče poskytuje jednoduché programování a je kompatibilní s mnoha existujícími vydavateli webhooků.
@@ -89,12 +89,12 @@ Všechny události nebo data zapsaná na disk službou Event Grid službou jsou 
 Následující části popisují, jak ověřit doručování událostí do koncových bodů Webhooku. Je nutné použít ověřovací mechanismus handshake bez ohledu na použitou metodu. Podrobnosti najdete v tématu věnovaném [doručování událostí Webhooku](webhook-event-delivery.md) . 
 
 ### <a name="using-azure-active-directory-azure-ad"></a>Použití Azure Active Directory (Azure AD)
-Svůj koncový bod Webhooku můžete zabezpečit pomocí Azure Active Directory (Azure AD) k ověřování a autorizaci Event Grid k doručování událostí do koncových bodů. Budete muset vytvořit aplikaci Azure AD, vytvořit zásadu role a služby v aplikaci pro autorizaci Event Grid a nakonfigurovat odběr událostí tak, aby používal aplikaci Azure AD. [Naučte se, jak nakonfigurovat Azure Active Directory s využitím Event Grid](secure-webhook-delivery.md).
+Koncový bod Webhooku, který se používá k přijímání událostí z Event Grid, můžete zabezpečit pomocí Azure AD. Budete muset vytvořit aplikaci Azure AD, vytvořit roli a instanční objekt v aplikaci s autorizací Event Grid a nakonfigurovat odběr událostí tak, aby používal aplikaci Azure AD. Naučte se, jak [nakonfigurovat Azure Active Directory s](secure-webhook-delivery.md)využitím Event Grid.
 
 ### <a name="using-client-secret-as-a-query-parameter"></a>Použití tajného klíče klienta jako parametru dotazu
-Můžete zabezpečit koncový bod Webhooku přidáním parametrů dotazu k adrese URL Webhooku při vytváření odběru události. Nastavte jeden z těchto parametrů dotazu jako tajný klíč klienta, jako je [přístupový token](https://en.wikipedia.org/wiki/Access_token) nebo sdílený tajný klíč. Webhook může pomocí tajného klíče rozpoznat, že událost pochází z Event Grid s platnými oprávněními. Event Grid budou tyto parametry dotazu zahrnovat při každém doručování události do Webhooku. Pokud se tajný klíč klienta aktualizuje, musí se taky aktualizovat předplatné událostí. Aby se předešlo chybám při obnově tajného klíče, zajistěte, aby Webhook přijal staré i nové tajné klíče po omezené trvání. 
+Koncový bod Webhooku můžete také zabezpečit přidáním parametrů dotazu do cílové adresy URL Webhooku zadané jako součást vytvoření odběru události. Nastavte jeden z parametrů dotazu na tajný klíč klienta, jako je [přístupový token](https://en.wikipedia.org/wiki/Access_token) nebo sdílený tajný klíč. Služba Event Grid zahrnuje všechny parametry dotazu v každé žádosti o doručení události Webhooku. Služba Webhooku může načíst a ověřit tajný klíč. Pokud se tajný klíč klienta aktualizuje, musí se taky aktualizovat předplatné událostí. Aby nedocházelo k chybám při obnově v tajnosti, zajistěte, aby Webhook přijal staré i nové tajné klíče po omezené době před aktualizací odběru událostí novým tajným klíčem. 
 
-Vzhledem k tomu, že parametry dotazu můžou obsahovat klientské tajné klíče, jsou zpracovávány s mimořádnou opatrností. Jsou uložené jako šifrované a nepřístupné k operátorům služeb. Neprotokolují se jako součást protokolů/trasování služby. Při úpravách odběru události se parametry dotazu nezobrazí ani nevrátí, pokud se v rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)používá parametr [--include-Full-Endpoint-URL](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) .
+Vzhledem k tomu, že parametry dotazu můžou obsahovat klientské tajné klíče, jsou zpracovávány s mimořádnou opatrností. Jsou uložené jako šifrované a nejsou k dispozici pro obsluhu služeb. Neprotokolují se jako součást protokolů/trasování služby. Při načítání vlastností odběru událostí nejsou ve výchozím nastavení vráceny cílové parametry dotazu. Příklad: parametr [--include-Full-Endpoint-URL](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) se používá v rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 
 Další informace o doručování událostí do webhooků najdete v tématu [doručování událostí Webhooku](webhook-event-delivery.md) .
 

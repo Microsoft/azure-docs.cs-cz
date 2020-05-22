@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a61c89199c89f09b5cc0e553dbbf48655ad1b6a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 46bb3517af31e328efae89afef8f3e83ccbc8bfa
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79239095"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778751"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro federované domény
 
@@ -26,7 +26,7 @@ Podobně jako uživatel ve vaší organizaci je zařízení základní identitou
 - Hybridní připojení k Azure AD
 - Registrace v Azure AD
 
-Uvedení zařízení do Azure AD maximalizuje produktivitu uživatelů prostřednictvím jednotného přihlašování (SSO) napříč vaším cloudem a místními prostředky. Přístup k vašim cloudovým a místním prostředkům můžete zabezpečit současně pomocí [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) .
+Uvedení zařízení do Azure AD maximalizuje produktivitu uživatelů prostřednictvím jednotného přihlašování (SSO) napříč vaším cloudem a místními prostředky. Přístup k vašim cloudovým a místním prostředkům můžete zabezpečit současně pomocí [podmíněného přístupu](../conditional-access/howto-conditional-access-policy-compliant-device.md) .
 
 Federované prostředí by mělo mít poskytovatele identity, který podporuje následující požadavky. Pokud máte federované prostředí pomocí Active Directory Federation Services (AD FS) (AD FS), jsou již podporovány níže uvedené požadavky.
 
@@ -40,7 +40,7 @@ Federované prostředí by mělo mít poskytovatele identity, který podporuje n
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části**koncové body** **služby** > můžete zjistit, jaké koncové body jsou povolené.
+> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části **Service**  >  **koncové body**služby můžete zjistit, jaké koncové body jsou povolené.
 
 V tomto kurzu se naučíte konfigurovat hybridní připojení služby Azure AD pro počítače připojené k doméně služby Active Directory ve federovaném prostředí pomocí AD FS.
 
@@ -50,7 +50,7 @@ Získáte informace o těchto tématech:
 > * Konfigurace hybridního připojení k Azure AD
 > * Povolit zařízení se starší verzí Windows
 > * Ověření registrace
-> * Řešení potíží
+> * Odstranit potíže
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -178,25 +178,69 @@ Instalační program vytvoří v systému naplánovanou úlohu, která běží v
 
 ## <a name="verify-the-registration"></a>Ověření registrace
 
-K ověření stavu registrace zařízení v tenantovi Azure můžete použít rutinu **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** v [modulu Azure Active Directory PowerShell](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+Tady jsou tři způsoby, jak vyhledat a ověřit stav zařízení:
+
+### <a name="locally-on-the-device"></a>Místně na zařízení
+
+1. Otevřete Windows PowerShell.
+2. Zadejte `dsregcmd /status`.
+3. Ověřte, že jsou **AzureAdJoined** i **DomainJoined** nastavené na **Ano**.
+4. Můžete použít **DeviceID** a porovnat stav služby pomocí Azure Portal nebo PowerShellu.
+
+### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
+
+1. V případě, že přejdete na stránku zařízení, použijte [přímý odkaz](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
+2. Informace o tom, jak najít zařízení, najdete v tématu [Správa identit zařízení pomocí Azure Portal](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices).
+3. Pokud **zaregistrovaný** sloupec **čeká na vyřízení**, připojení k hybridní službě Azure AD se nedokončilo. Ve federovaném prostředí se to může stát jenom v případě, že se nepovedlo zaregistrovat a AAD Connect je nakonfigurované k synchronizaci zařízení.
+4. Pokud **zaregistrovaný** sloupec obsahuje **Datum a čas**, připojení k hybridní službě Azure AD se dokončilo.
+
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
+
+Ověřte stav registrace zařízení v tenantovi Azure pomocí **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)**. Tato rutina je v [modulu Azure Active Directory PowerShellu](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
 
 Při kontrole podrobností služby použijte rutinu **Get-MSolDevice** :
 
 - Musí existovat objekt s **ID zařízení** , které odpovídá ID na klientském počítači se systémem Windows.
-- Hodnota **DeviceTrustType** (Stav důvěryhodnosti zařízení) musí být nastavená na **Domain Joined** (Připojeno k doméně). Toto nastavení se rovná stavu **připojenému k hybridní službě Azure AD** v části **zařízení** na portálu Azure AD.
-- U zařízení, která se používají v podmíněném přístupu, musí být **povolená** hodnota **true** a musí se **DeviceTrustLevel** **Spravovat**.
-
-**Postup kontroly podrobností služby**:
+- Hodnota pro **DeviceTrustType** je **připojená k doméně**. Toto nastavení se rovná stavu **připojenému k hybridní službě Azure AD** na stránce **zařízení** na portálu Azure AD.
+- U zařízení, která se používají v podmíněném přístupu, je **povolená** hodnota **true** a **DeviceTrustLevel** je **spravovaná**.
 
 1. Spusťte Windows PowerShell jako správce.
-1. Zadejte `Connect-MsolService` , abyste se připojili k vašemu tenantovi Azure.  
-1. Zadejte `get-msoldevice -deviceId <deviceId>`.
-1. Ověřte, že je hodnota **Enabled** (Povoleno) nastavená na **True** (Pravda).
+2. Zadejte `Connect-MsolService` , abyste se připojili k vašemu Tenantovi Azure.
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Spočítat všechna hybridní zařízení připojená k Azure AD (s výjimkou stavu **čekání** )
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Spočítat všechna zařízení připojená k hybridní službě Azure AD ve stavu **čekání**
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Zobrazit všechna zařízení připojená k hybridní službě Azure AD
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Vypsat všechna zařízení připojená k hybridní službě Azure AD s **probíhajícím** stavem
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>Seznam podrobností o jednom zařízení:
+
+1. Zadejte `get-msoldevice -deviceId <deviceId>` (Jedná se o **DeviceID** získanou místně na zařízení).
+2. Ověřte, že je hodnota **Enabled** (Povoleno) nastavená na **True** (Pravda).
 
 ## <a name="troubleshoot-your-implementation"></a>Řešení potíží s implementací
 
 Pokud dochází k problémům s dokončením hybridního připojení služby Azure AD pro zařízení s Windows připojená k doméně, přečtěte si téma:
 
+- [Řešení potíží se zařízeními pomocí příkazu dsregcmd](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
 - [Řešení potíží s hybridním připojením ke službě Azure AD pro aktuální zařízení s Windows](troubleshoot-hybrid-join-windows-current.md)
 - [Řešení potíží s hybridním připojením ke službě Azure AD pro zařízení se starší verzí Windows](troubleshoot-hybrid-join-windows-legacy.md)
 

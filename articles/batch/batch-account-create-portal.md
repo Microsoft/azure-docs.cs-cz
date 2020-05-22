@@ -4,18 +4,18 @@ description: Naučte se vytvořit účet Azure Batch na portálu Azure, abyste m
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e01c62270fc0195c430150a534df2a141808ffa6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: adc333498e0b3074aaa40d40e076ae62c1759524
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726923"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778593"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
 Naučte se vytvořit účet Azure Batch na webu [Azure Portal][azure_portal] a zvolit vlastnosti účtu odpovídající výpočetnímu scénáři. Zjistěte, kde najít důležité vlastnosti účtu, jako jsou přístupové klíče a adresy URL účtu.
 
-Informace o scénářích a účtech Batch najdete v [přehledu funkcí](batch-api-basics.md).
+Základní informace o účtech a scénářích služby Batch najdete v tématu [pracovní postupy a prostředky služby Batch](batch-service-workflow-features.md).
 
 ## <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
@@ -39,7 +39,7 @@ Informace o scénářích a účtech Batch najdete v [přehledu funkcí](batch-a
 
     d. **Umístění**: Oblast Azure, ve které chcete účet Batch vytvořit. Jako možnosti se zobrazí jenom oblasti, které podporuje vaše předplatné a skupina prostředků.
 
-    e. **Účet úložiště**: volitelný účet Azure Storage, který přidružíte k účtu Batch. Pro zajištění nejlepšího výkonu se doporučuje účet úložiště pro obecné účely v2. Všechny možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account). Na portálu vyberte existující účet úložiště nebo vytvořte nový.
+    e. **Účet úložiště**: volitelný účet Azure Storage, který přidružíte k účtu Batch. Pro zajištění nejlepšího výkonu se doporučuje účet úložiště pro obecné účely v2. Všechny možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](accounts.md#azure-storage-accounts). Na portálu vyberte existující účet úložiště nebo vytvořte nový.
 
       ![vytvořit účet úložiště][storage_account]
 
@@ -136,7 +136,7 @@ K vytváření a správě účtů Batch můžete kromě webu Azure Portal použ�
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o koncepcích a funkcích služby Batch najdete v článku [Přehled funkcí Batch](batch-api-basics.md). Článek popisuje primární prostředky služby Batch, například fondy, výpočetní uzly a úlohy, a nabízí přehled funkcí služby pro velké výpočetní úlohy.
+* Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
 * Seznamte se se základy vývoje aplikací s podporou služby Batch pomocí [klientské knihovny Batch .NET](quick-run-dotnet.md) nebo [Pythonu](quick-run-python.md). Tyto rychlé starty vás provedou ukázkovou aplikací, která používá službu Batch ke spouštění úlohy na několika výpočetních uzlech, a představí vám použití služby Azure Storage k přípravě a načítání souborů úloh.
 
 [azure_portal]: https://portal.azure.com

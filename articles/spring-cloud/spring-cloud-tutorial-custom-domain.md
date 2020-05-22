@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.openlocfilehash: 19ccdf85e1753bea202c5c157919ab4e8ff96d06
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ff38f923f7b33c4bc893246970c1e47d33e59269
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660253"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780407"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Mapování stávající vlastní domény na jarní cloud Azure
 Služba DNS (Distributed Name Service) je technika pro ukládání názvů síťových uzlů v síti. Tento kurz namapuje doménu, například www.contoso.com, pomocí záznamu CNAME. Zabezpečuje vlastní doménu s certifikátem a ukazuje, jak vymáhat protokol TLS (Transport Layer Security), označovaný také jako SSL (Secure Sockets Layer) (SSL). 
@@ -37,6 +37,30 @@ Postup nahrání certifikátu do trezoru klíčů:
 1. Klikněte na **Vytvořit**.
 
     ![Importovat certifikát 1](./media/custom-dns-tutorial/import-certificate-a.png)
+
+Pokud chcete vašemu trezoru klíčů udělit přístup k Azure jaře cloudu před importem certifikátu:
+1. Přejít do instance trezoru klíčů.
+1. V levém navigačním podokně klikněte na **přístup k zásadám**.
+1. V horní nabídce klikněte na **Přidat zásady přístupu**.
+1. Vyplňte informace a klikněte na tlačítko **Přidat** a pak na **Uložit** zásady přístupu.
+
+| Oprávnění tajného kódu | Oprávnění certifikátu | Vybrat objekt zabezpečení |
+|--|--|--|
+| Získat, seznam | Získat, seznam | Azure pružinová cloudová správa domén – Správa |
+
+![Importovat certifikát 2](./media/custom-dns-tutorial/import-certificate-b.png)
+
+Nebo můžete pomocí Azure CLI udělit přístup k trezoru klíčů v cloudu Azure.
+
+Získejte ID objektu pomocí následujícího příkazu.
+```
+az ad sp show --id 03b39d0f-4213-4864-a245-b1476ec03169 --query objectId
+```
+
+Udělte Azure jaře přístup pro čtení k trezoru klíčů, nahraďte ID objektu v následujícím příkazu.
+```
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list --secret-permissions get list
+``` 
 
 Import certifikátu do jarního cloudu Azure:
 1. Přejít na instanci služby. 

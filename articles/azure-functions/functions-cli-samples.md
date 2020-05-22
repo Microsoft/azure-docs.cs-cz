@@ -1,17 +1,16 @@
 ---
 title: Ukázky Azure CLI – Azure Functions
 description: Ukázky Azure CLI – Azure Functions
-author: syntaxc4
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
 ms.topic: sample
 ms.date: 01/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 365275d291244d3c08f856d2d919c7ee7d79161a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61ac1b95055b8ec9e65c3009d76f79581721f594
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239641"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779543"
 ---
 # <a name="azure-cli-samples"></a>Ukázky Azure CLI
 
@@ -21,9 +20,9 @@ Následující tabulka obsahuje odkazy na skripty Bash pro službu Azure Functio
 
 | Vytvoření aplikace | Popis |
 |---|---|
-| [Vytvoření aplikace funkcí pro provádění bez serveru](scripts/functions-cli-create-serverless.md) | Vytvoří aplikaci funkcí v plánu Consumption.  |
-| [Vytvoření aplikace funkcí Python bez serveru](scripts/functions-cli-create-serverless-python.md) | Vytvoří aplikaci funkcí ve vyhrazeném plánu služby App Service. |
-| [Vytvoření aplikace Function App v rámci škálovatelného plánu Premium](scripts/functions-cli-create-premium-plan.md) | Vytvoří aplikaci funkcí ve vyhrazeném plánu služby App Service. |
+| [Vytvoření aplikace funkcí pro provádění bez serveru](scripts/functions-cli-create-serverless.md) | Vytvořte aplikaci Function App v plánu spotřeby.  |
+| [Vytvoření aplikace funkcí Python bez serveru](scripts/functions-cli-create-serverless-python.md) | Vytvořte aplikaci funkcí Pythonu v plánu spotřeby. |
+| [Vytvoření aplikace Function App v rámci škálovatelného plánu Premium](scripts/functions-cli-create-premium-plan.md) | Vytvořte aplikaci Function App v plánu Premium. |
 | [Vytvoření aplikace Function App ve vyhrazeném (App Service) plánu](scripts/functions-cli-create-app-service-plan.md) | Vytvoří aplikaci funkcí ve vyhrazeném plánu služby App Service. |
 
 | Integrace | Popis|

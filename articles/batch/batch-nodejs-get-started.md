@@ -1,15 +1,14 @@
 ---
 title: Kurz – použití klientské knihovny Azure Batch pro Node. js
 description: Informace o základních konceptech služby Azure Batch a vytvoření jednoduchého řešení pomocí Node.js.
-ms.assetid: ''
 ms.topic: tutorial
 ms.date: 05/22/2017
-ms.openlocfilehash: 57b411e3c9c96aab31e85c4022a5954f7215cf02
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724203"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780180"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Začínáme se sadou SDK služby Batch pro Node.js
 
@@ -346,6 +345,6 @@ Na portálu jsou podrobná zobrazení stavů úkolů a úloh. Můžete také pou
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si článek [Přehled funkcí Azure Batch](batch-api-basics.md), který doporučujeme všem novým uživatelům služby.
+- Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
 - Pokud chcete prozkoumat rozhraní API služby Batch, přečtěte si článek [Reference k Batch Node.js](/javascript/api/overview/azure/batch).
 

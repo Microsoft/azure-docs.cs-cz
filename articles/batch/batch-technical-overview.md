@@ -1,14 +1,14 @@
 ---
 title: Azure Batch spouští velké Paralelní úlohy v cloudu
 description: Další informace o používání služby Azure Batch pro rozsáhlé paralelní úlohy a úlohy v prostředí HPC.
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116345"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779567"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
 
@@ -74,7 +74,7 @@ Následující diagram znázorňuje kroky v běžném pracovním postupu služby
 
 Mějte na paměti, že toto je jenom jeden ze způsobů použití služby Batch a že tento scénář popisuje jen některé z jejích funkcí. Například můžete v každém výpočetním uzlu [paralelně provádět několik úkolů](batch-parallel-node-tasks.md). Nebo můžete pomocí [úkolů přípravy a dokončení úlohy](batch-job-prep-release.md) připravit uzly na úlohy a potom je zase vyčistit. 
 
-Podrobnější informace o prostředcích služby fondech, uzlech a úlohách a mnoha funkcích rozhraní API, které můžete používat při sestavování aplikace služby Batch, najdete v článku [Přehled funkcí Batch pro vývojáře](batch-api-basics.md). Prohlédněte si také nejnovější [aktualizace služby Batch](https://azure.microsoft.com/updates/?product=batch).
+Přehled funkcí, jako jsou fondy, uzly, úlohy a úkoly, najdete v tématu [pracovní postup služby Batch a primární prostředky](batch-service-workflow-features.md) . Prohlédněte si také nejnovější [aktualizace služby Batch](https://azure.microsoft.com/updates/?product=batch).
 
 ## <a name="next-steps"></a>Další kroky
 

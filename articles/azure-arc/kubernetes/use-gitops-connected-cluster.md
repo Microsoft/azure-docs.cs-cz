@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps pro konfiguraci clusteru s podporou ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, Containers
-ms.openlocfilehash: e945a1d39edb6dad43e66ac492eb1e5c36ff58e1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 954c77503e8adacc4cd27b25b68b50cac1f80458
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684197"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779715"
 ---
 # <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>Použití GitOps pro konfiguraci s podporou ARC Azure (Preview)
 
@@ -31,7 +31,7 @@ Tato úvodní příručka vás provede použitím sady konfigurací s oborem Spr
 
 ## <a name="create-a-configuration"></a>Vytvořit konfiguraci
 
-- Příklad úložiště:<https://github.com/slack/cluster-config>
+- Příklad úložiště:<https://github.com/Azure/arc-k8s-demo>
 
 Ukázkové úložiště je členěné kolem uživatele operátora clusteru, který by chtěl zřídit několik oborů názvů, nasadit společnou úlohu a poskytnout konfiguraci specifickou pro tým. Pomocí tohoto úložiště se ve vašem clusteru vytvoří následující prostředky:
 
@@ -40,7 +40,7 @@ Ukázkové úložiště je členěné kolem uživatele operátora clusteru, kter
  **ConfigMap:**`team-a/endpoints`
 
 `config-agent`Dotazování Azure na nové nebo aktualizované dotazy `sourceControlConfiguration` každých 30 sekund.  Toto je maximální doba, kterou bude trvat, než se vybere `config-agent` Nová nebo aktualizovaná konfigurace.
-Pokud přiřazujete soukromé úložiště, zajistěte, abyste provedli také kroky v části [použití konfigurace z privátního úložiště Git](https://github.com/Azure/azure-arc-kubernetes-preview/blob/master/docs/use-gitops-in-connected-cluster.md#apply-configuration-from-a-private-git-repository) .
+Pokud přiřazujete soukromé úložiště, zajistěte, abyste provedli také kroky v části [použití konfigurace z privátního úložiště Git](#apply-configuration-from-a-private-git-repository) .
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 
@@ -145,9 +145,9 @@ Možnosti podporované v--operator-params
 
 * Pokud má enableHelmOperator hodnotu true, pak operatorInstanceName + operatorNamespace řetězce nesmí být v kombinaci 47 znaků.  Pokud se tomuto limitu nebudete řídit, zobrazí se tato chyba:
 
-```console
-{"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
-```
+   ```console
+   {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
+   ```
 
 Další informace najdete v [dokumentaci k toku](https://aka.ms/FluxcdReadme).
 

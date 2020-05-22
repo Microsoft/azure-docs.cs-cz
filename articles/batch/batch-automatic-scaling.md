@@ -4,12 +4,12 @@ description: Povolte automatické škálování v cloudovém fondu, abyste mohli
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 786bd594b3344ce144893161ade9d53d1bddf358
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726804"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780250"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -22,7 +22,7 @@ Automatické škálování můžete povolit buď při vytvoření fondu, nebo v 
 Tento článek popisuje různé entity, které tvoří vzorce automatického škálování, včetně proměnných, operátorů, operací a funkcí. Probereme, jak v rámci služby Batch získat různé výpočetní prostředky a metriky úloh. Tyto metriky můžete použít k úpravě počtu uzlů fondu na základě využití prostředků a stavu úlohy. Pak popíšeme, jak vytvořit vzorec a povolit automatické škálování pro fond pomocí rozhraní API dávky i rozhraní .NET. Nakonec jsme dokončili několik vzorových vzorců.
 
 > [!IMPORTANT]
-> Při vytváření účtu Batch můžete zadat [konfiguraci účtu](batch-api-basics.md#account), která určuje, jestli se fondy přiřazují v předplatném služby Batch (výchozí), nebo v předplatném uživatele. Pokud jste vytvořili účet Batch s výchozí konfigurací služby Batch, je účet omezený na maximální počet jader, které se dají použít ke zpracování. Služba Batch škáluje výpočetní uzly až do limitu jader. Z tohoto důvodu služba Batch nedosáhne cílového počtu výpočetních uzlů určených vzorcem automatického škálování. Informace o zobrazení a zvýšení kvót účtu najdete v tématu [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md) .
+> Při vytváření účtu Batch můžete zadat [konfiguraci účtu](accounts.md), která určuje, jestli se fondy přiřazují v předplatném služby Batch (výchozí), nebo v předplatném uživatele. Pokud jste vytvořili účet Batch s výchozí konfigurací služby Batch, je účet omezený na maximální počet jader, které se dají použít ke zpracování. Služba Batch škáluje výpočetní uzly až do limitu jader. Z tohoto důvodu služba Batch nedosáhne cílového počtu výpočetních uzlů určených vzorcem automatického škálování. Informace o zobrazení a zvýšení kvót účtu najdete v tématu [kvóty a omezení pro službu Azure Batch](batch-quota-limit.md) .
 >
 >Pokud jste vytvořili účet s konfigurací předplatného uživatele, pak váš účet sdílí v rámci kvóty základní pro předplatné. Další informace najdete v tématu [Omezení virtuálních počítačů](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits) v tématu [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 >
@@ -237,7 +237,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Ukázky, procentuální vzorek a metoda *getsample ()*
 Základní operací vzorce automatického škálování je získat data metrik úlohy a prostředku a pak upravit velikost fondu na základě těchto dat. V takovém případě je důležité mít jasné informace o tom, jak vzorce automatického škálování pracují s daty metrik (ukázky).
 
-**ukázky**
+**Ukázky**
 
 Služba Batch pravidelně přebírá ukázky metrik úloh a prostředků a zpřístupňuje je pro vzorce automatického škálování. Tyto ukázky se zaznamenávají každých 30 sekund službou Batch. Je však obvykle prodleva mezi tím, kdy byly tyto ukázky zaznamenány, a když jsou zpřístupněny pro (a lze je číst) ve vzorcích automatického škálování. Vzhledem k různým faktorům, jako jsou například síťové nebo jiné problémy s infrastrukturou, nemusí být vzorky pro určitý interval zaznamenávány.
 

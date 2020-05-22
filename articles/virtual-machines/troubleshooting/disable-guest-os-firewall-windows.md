@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422367"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774341"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Zakázání brány firewall hostovaného operačního systému na virtuálním počítači Azure
 
@@ -49,7 +49,7 @@ Pokud máte funkčního agenta Azure, můžete použít [rozšíření vlastníc
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
 >   Jakmile se ale zásada znovu použije, stane se Vzdálená relace. Trvalá oprava tohoto problému je úprava zásad, které se na tomto počítači aplikují.
@@ -90,7 +90,7 @@ Pokud máte funkčního agenta Azure, můžete použít [rozšíření vlastníc
 
 Při použití [vzdáleného registru](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)použijte následující postup.
 
-1.  Na virtuálním počítači pro řešení potíží spusťte Editor registru a pak klikněte na **soubor** > **připojit k síťovému registru**.
+1.  Na virtuálním počítači pro řešení potíží spusťte Editor registru a pak klikněte na **soubor**  >  **připojit k síťovému registru**.
 
 2.  Otevřete cílovou větev *počítače*\System a zadejte následující hodnoty:
 

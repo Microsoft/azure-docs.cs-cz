@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e93d4b3f1880f2ac56a32a7b85aa6801fb7c14e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78205095"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780515"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Kurz: Konfigurace ServiceNow pro Automatické zřizování uživatelů
 
@@ -80,7 +80,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro ServiceNow ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -141,7 +141,6 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 * **InvalidLookupReference:** Při zřizování určitých atributů, jako je například oddělení a umístění v ServiceNow, musí hodnoty již existovat v referenční tabulce v ServiceNow. V tabulce **název tabulky** v ServiceNow můžete mít například dvě umístění (Praha, Los Angeles) a tři oddělení (prodej, finance, marketing). Pokud se pokusíte zřídit uživatele, kde má oddělení "prodej" a umístění je "Praha", bude zřízené úspěšně. Pokud se pokusíte zřídit uživatele s oddělením prodej a umístěním "LA", uživatel se nezřídí. Umístění LA musí být buď přidáno do referenční tabulky v ServiceNow, nebo musí být atribut uživatele v Azure AD aktualizovaný tak, aby odpovídal formátu v ServiceNow. 
 * **EntryJoiningPropertyValueIsMissing:** Zkontrolujte [mapování atributů](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) k identifikaci odpovídajícího atributu. Tato hodnota musí být k dispozici u uživatele nebo skupiny, které se pokoušíte zřídit. 
 * Přečtěte si [rozhraní SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) , abyste pochopili všechny požadavky nebo omezení (například formát pro určení kódu země pro uživatele).
-* Některá nasazení ServiceNow vyžadují povolení rozsahů IP adres pro službu Azure AD Provisioning. Rezervované rozsahy IP adres pro službu Azure AD Provisioning [najdete v části](https://www.microsoft.com/download/details.aspx?id=56519) "AzureActiveDirectoryDomainServices".
 * Požadavky zřizování se ve výchozím nastavení odesílají do https://{název-instance}. Service-Now. com/{Table-Name}. Pokud potřebujete vlastní adresu URL tenanta, můžete v poli název instance zadat celou adresu URL.
 
 ## <a name="additional-resources"></a>Další zdroje

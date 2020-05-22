@@ -3,12 +3,12 @@ title: Konfigurace koncových bodů uzlu ve fondu Azure Batch
 description: Jak nakonfigurovat nebo zakázat přístup k portům SSH nebo RDP na výpočetních uzlech ve fondu Azure Batch.
 ms.topic: how-to
 ms.date: 02/13/2018
-ms.openlocfilehash: 4b990e4223f37f71d453cd91b9b3a20bd70d0bbb
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723506"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780297"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurace nebo zakázání vzdáleného přístupu k výpočetním uzlům ve fondu Azure Batch
 
@@ -120,7 +120,5 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>Další kroky
 
+- Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
 - Další informace o pravidlech NSG v Azure najdete v tématu [filtrování síťového provozu pomocí skupin zabezpečení sítě](../virtual-network/security-overview.md).
-
-- Podrobný přehled služby Batch najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).
-

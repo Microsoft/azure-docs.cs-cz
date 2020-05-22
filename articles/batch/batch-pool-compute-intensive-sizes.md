@@ -3,12 +3,12 @@ title: Použití virtuálních počítačů Azure náročných na výpočetní v
 description: Jak využít výhod velikosti virtuálních počítačů HPC a GPU v fondech Azure Batch. Seznamte se se závislostmi operačních systémů a podívejte se na několik příkladů scénářů.
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 04e39678c77604bca4194bebc7968c5c43fb019c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 7abe3c9bd689b20f608ad40105c1bb4d7108dbc6
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724084"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779747"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Použití instancí RDMA nebo GPU ve fondech Batch
 
@@ -79,7 +79,7 @@ Pokud chcete pro fond Batch nakonfigurovat specializovanou velikost virtuálníh
 
 * Vytvořte [vlastní image virtuálního počítače se systémem Windows nebo Linux](batch-sig-images.md) , na které máte nainstalované ovladače, software nebo jiná nastavení potřebná pro velikost virtuálního počítače. 
 
-* Vytvořte [balíček aplikace](batch-application-packages.md) Batch z ovladače zip nebo instalačního programu aplikace a nakonfigurujte dávku pro nasazení balíčku do fondu uzlů a nainstalujte se jednou při vytvoření každého uzlu. Například pokud je balíček aplikace instalačním programem, vytvořte příkazový řádek [spouštěcího úkolu](batch-api-basics.md#start-task) , který bude tiše instalovat aplikaci na všechny uzly fondu. Pokud vaše zatížení závisí na konkrétní verzi ovladače, zvažte použití balíčku aplikace a spouštěcího úkolu fondu.
+* Vytvořte [balíček aplikace](batch-application-packages.md) Batch z ovladače zip nebo instalačního programu aplikace a nakonfigurujte dávku pro nasazení balíčku do fondu uzlů a nainstalujte se jednou při vytvoření každého uzlu. Například pokud je balíček aplikace instalačním programem, vytvořte příkazový řádek [spouštěcího úkolu](jobs-and-tasks.md#start-task) , který bude tiše instalovat aplikaci na všechny uzly fondu. Pokud vaše zatížení závisí na konkrétní verzi ovladače, zvažte použití balíčku aplikace a spouštěcího úkolu fondu.
 
   > [!NOTE] 
   > Spouštěcí úkol musí běžet se zvýšenými oprávněními (správce) a musí čekat na úspěch. Dlouhotrvající úlohy prodlouží dobu zřízení fondu služby Batch.

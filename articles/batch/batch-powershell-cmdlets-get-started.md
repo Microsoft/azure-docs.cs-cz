@@ -4,12 +4,12 @@ description: Rychlý úvod do rutin prostředí Azure PowerShell, jejichž pomoc
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3baa69f7ad51be59390a12c62797ff78250db9c0
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726549"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779606"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Správa prostředků služby Batch pomocí rutin PowerShellu
 
@@ -114,7 +114,7 @@ Při použití řady těchto rutin musíte kromě předání objektu BatchContex
 
 ### <a name="create-a-batch-pool"></a>Vytvoření fondu služby Batch
 
-Při vytváření nebo aktualizaci fondu Batch vyberete buď konfiguraci cloudových služeb, nebo konfiguraci virtuálního počítače pro operační systém výpočetních uzlů (viz [Přehled funkcí služby Batch](batch-api-basics.md#pool)). Pokud zadáte konfiguraci cloudových služeb, vaše výpočetní uzly obdrží image některé z [vydaných verzí hostovaného operačního systému Azure](../cloud-services/cloud-services-guestos-update-matrix.md#releases). Pokud zadáte konfiguraci virtuálního počítače, můžete zadat některou z imagí podporovaných virtuálních počítačů s Linuxem nebo Windows uvedených na webu [Azure Virtual Machines Marketplace][vm_marketplace] nebo vlastní image, kterou jste si připravili.
+Při vytváření nebo aktualizaci fondu služby Batch vyberete buď konfiguraci Cloud Services, nebo konfiguraci virtuálního počítače pro operační systém na výpočetních uzlech (viz [uzly a fondy](nodes-and-pools.md#configurations)). Pokud zadáte konfiguraci cloudových služeb, vaše výpočetní uzly obdrží image některé z [vydaných verzí hostovaného operačního systému Azure](../cloud-services/cloud-services-guestos-update-matrix.md#releases). Pokud zadáte konfiguraci virtuálního počítače, můžete zadat některou z imagí podporovaných virtuálních počítačů s Linuxem nebo Windows uvedených na webu [Azure Virtual Machines Marketplace][vm_marketplace] nebo vlastní image, kterou jste si připravili.
 
 Když spustíte rutinu **New-AzBatchPool**, předejte nastavení operačního systému v objektu PSCloudServiceConfiguration nebo PSVirtualMachineConfiguration. Například následující fragment kódu vytvoří fond služby Batch s velikostí Standard_A1 výpočetních uzlů v konfiguraci virtuálního počítače s imagí s Ubuntu serverem 18,04-LTS. Parametr **VirtualMachineConfiguration** tady určuje proměnnou *$configuration* jako objekt PSVirtualMachineConfiguration. Parametr **BatchContext** určuje jako objekt BatchAccountContext dříve definovanou proměnnou *$context*.
 

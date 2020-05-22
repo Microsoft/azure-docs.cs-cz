@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 296c8e2dfe99e3b0aea66f364ac6f6d9b2f60a1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 440f46cbeebee1b552e64eba4ebc8787a47edf56
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272487"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779214"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Obnovení odstraněné aplikace App Service pomocí PowerShellu
 
@@ -29,7 +29,7 @@ Někteří zákazníci se můžou setkat v rámci problému, při kterém se nep
 
 ## <a name="list-deleted-apps"></a>Vypsat odstraněné aplikace
 
-Pokud chcete získat kolekci odstraněných aplikací, můžete použít `Get-AzDeletedWebApp`.
+Pokud chcete získat kolekci odstraněných aplikací, můžete použít `Get-AzDeletedWebApp` .
 
 Podrobnosti o konkrétní odstraněné aplikaci můžete použít:
 
@@ -48,8 +48,10 @@ Podrobné informace zahrnují:
 - **Čas odstranění**: kdy se aplikace odstranila  
 
 ## <a name="restore-deleted-app"></a>Obnovit odstraněnou aplikaci
+>[!NOTE]
+> `Restore-AzDeletedWebApp`nepodporuje se pro aplikace Function App.
 
-Po identifikaci aplikace, kterou chcete obnovit, ji můžete obnovit pomocí `Restore-AzDeletedWebApp`.
+Po identifikaci aplikace, kterou chcete obnovit, ji můžete obnovit pomocí `Restore-AzDeletedWebApp` .
 
 ```powershell
 Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
@@ -64,7 +66,7 @@ Vstupy pro příkaz jsou:
 - **Název**: název aplikace by měl být globálně jedinečný.
 - **TargetAppServicePlanName**: App Service plán propojený s aplikací
 
-Ve výchozím `Restore-AzDeletedWebApp` nastavení se obnoví i konfigurace aplikace i obsah. Chcete-li obnovit pouze obsah, použijte `-RestoreContentOnly` příznak s tímto rutiny.
+Ve výchozím nastavení `Restore-AzDeletedWebApp` se obnoví i konfigurace aplikace i obsah. Chcete-li obnovit pouze obsah, použijte `-RestoreContentOnly` příznak s tímto rutiny.
 
 > [!NOTE]
 > Pokud byla aplikace hostována a poté odstraněna z App Service Environment pak ji lze obnovit pouze v případě, že odpovídající App Service Environment stále existují.

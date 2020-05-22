@@ -4,12 +4,12 @@ description: Rychlý úvod k příkazům Batch v rozhraní příkazového řádk
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9aa9a43dd036b4a547d1bff85b4431afcf74e23
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2bb3dd2e67c3c3bf9139a25935ab0dd074799c6f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726787"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780232"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Správa prostředků služby Batch pomocí Azure CLI
 
@@ -162,9 +162,9 @@ Následující tipy mohou pomoci při řešení potíží s rozhraním příkazo
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o rozhraní příkazového řádku Azure CLI najdete v [dokumentaci k rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure).
-* Další informace o prostředcích služby Batch najdete v článku [Přehled služby Azure Batch pro vývojáře](batch-api-basics.md).
-* Další informace o použití šablon služby Batch k vytvoření fondů, úloh a úkolů bez psaní kódu najdete v tématu [Použití šablon rozhraní příkazového řádku služby Azure Batch a přenos souborů](batch-cli-templates.md).
+* Viz [dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure).
+* Přečtěte si o [pracovních postupech služby Batch a primárních prostředcích](batch-service-workflow-features.md) , jako jsou fondy, uzly, úlohy a úkoly.
+* Přečtěte si o používání šablon Batch k vytváření fondů, úloh a úkolů bez psaní kódu, který se [používá Azure Batch šablon CLI a přenosu souborů](batch-cli-templates.md).
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx

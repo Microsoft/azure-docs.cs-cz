@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60cd6b8ba2cbfca497ae1b92113b12e85a34bf26
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77211382"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778224"
 ---
 ## <a name="general-entity-types"></a>Obecné typy entit:
 
@@ -22,11 +22,11 @@ ms.locfileid: "77211382"
 Rozpoznat jména osob v textu.
 
 Jazyky:
-* Public Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian` `Spanish` `Swedish` , a`Turkish`
+* Public Preview: `Arabic` , `Czech` , `Chinese-Simplified` , `Danish` , `Dutch` , `English` , `Finnish` , `French` , `German` , `Hungarian` , `Italian` , `Japanese` , `Korean` , `Norwegian (Bokmål)` , `Polish` , `Portuguese (Portugal)` , `Portuguese (Brazil)` , `Russian` `Spanish` `Swedish` , a`Turkish`
 
 | Název podtypu | Popis                                                      | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------------------------------|---------------------------------------|
-| –          | Jména rozpoznaných osob, například `Bill Gates``Marie Curie` | `2019-10-01`                          | 
+| –          | Jména rozpoznaných osob `Bill Gates` , například`Marie Curie` | `2019-10-01`                          | 
 
 ### <a name="persontype"></a>PersonType
 Typ úlohy nebo role držené osobou.
@@ -36,7 +36,7 @@ Jazyky:
 
 | Název podtypu | Popis                                                                                | K dispozici počínaje verzí modelu |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| –          | Typy úloh, například `civil engineer` `salesperson` `chef`,, `librarian`,`nursing aide` | `2020-02-01`                           |
+| –          | Typy úloh, například,, `civil engineer` `salesperson` `chef` `librarian` ,`nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>Umístění
 
@@ -44,24 +44,24 @@ Přirozené a uživatelsky vytvořené orientačních bodů, struktur, geografic
 
 Jazyky:
 
-* Public Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian` `Spanish` `Swedish` , a`Turkish`
+* Public Preview: `Arabic` , `Czech` , `Chinese-Simplified` , `Danish` , `Dutch` , `English` , `Finnish` , `French` , `German` , `Hungarian` , `Italian` , `Japanese` , `Korean` , `Norwegian (Bokmål)` , `Polish` , `Portuguese (Portugal)` , `Portuguese (Brazil)` , `Russian` `Spanish` `Swedish` , a`Turkish`
 
 | Název podtypu              | Popis                                                                              | K dispozici počínaje verzí modelu |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| –                       | umístění, například `Atlantic Ocean` `library`, `Eiffel Tower`,`Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitická entita (GPE) – pouze anglicky| Města, země, stavy `Seattle` `Pennsylvania` `South Africa`, například,,`Tokyo` | `2020-02-01`                           |
+| –                       | umístění, například, `Atlantic Ocean` `library` `Eiffel Tower` ,`Statue of Liberty`  | `2019-10-01`                           |
+| Geopolitická entita (GPE) – pouze anglicky| Města, země nebo oblasti, stavy, například `Seattle` , `Pennsylvania` , `South Africa``Tokyo` | `2020-02-01`                           |
 
-### <a name="organization"></a>Organizace  
+### <a name="organization"></a>Má organizace  
 
 Uznávané organizace, společnosti, organizace a další skupiny lidí. Například: společnosti, politické skupiny, hudební pásma, sportovní klub, státní orgány a veřejné organizace. Státní příslušníky a náboženství nejsou zahrnuté do tohoto typu entity. 
 
 Jazyky: 
 
-* Public Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian` `Spanish` `Swedish` , a`Turkish`
+* Public Preview: `Arabic` , `Czech` , `Chinese-Simplified` , `Danish` , `Dutch` , `English` , `Finnish` , `French` , `German` , `Hungarian` , `Italian` , `Japanese` , `Korean` , `Norwegian (Bokmål)` , `Polish` , `Portuguese (Portugal)` , `Portuguese (Brazil)` , `Russian` `Spanish` `Swedish` , a`Turkish`
 
 | Název podtypu | Popis                                                                                             | K dispozici počínaje verzí modelu |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| –          | organizace, například `Microsoft` `NASA`, `National Oceanic and Atmospheric Administration`,`VOA` | `2019-10-01`                           |
+| –          | organizace, například, `Microsoft` `NASA` `National Oceanic and Atmospheric Administration` ,`VOA` | `2019-10-01`                           |
 
 ### <a name="event"></a>Událost  
 
@@ -73,9 +73,9 @@ Jazyky:
 
 | Název podtypu | Popis                                                            | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------------------------------------|----------------------------------------|
-| –          | Události jako `wedding`, `hurricane`, `car accident`,, `solar eclipse``American Revolution` | `2020-02-01`                           |
+| –          | Události jako `wedding` , `hurricane` , `car accident` , `solar eclipse` ,`American Revolution` | `2020-02-01`                           |
 
-### <a name="product"></a>Produkt  
+### <a name="product"></a>Product  
 
 Fyzické objekty různých kategorií.  
 
@@ -85,7 +85,7 @@ Jazyky:
 
 | Název podtypu | Popis                                                                        | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| –          | Například `Microsoft Surface laptop` `sunglasses`,,, `bag` `motorcycle``Xbox` | `2020-02-01`                           |
+| –          | Například,, `Microsoft Surface laptop` , `sunglasses` `motorcycle` `bag` ,`Xbox` | `2020-02-01`                           |
 | Výpočetní operace    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
 
 ### <a name="skill"></a>Tuhle  
@@ -124,7 +124,7 @@ Jazyky:
 |--------------|--------------------------------------------------|----------------------------------------|
 | –          | E-mailová adresa, například`support@contoso.com` | `2019-10-01`                           |
 
-### <a name="url"></a>zprostředkovatele identity
+### <a name="url"></a>URL
 
 Internetové adresy URL.
 
@@ -156,7 +156,7 @@ Entity data a času.
 
 Jazyky:
 
-* Verze Public Preview `Chinese-Simplified`: `English`, `French`, `German` a`Spanish`
+* Verze Public Preview `Chinese-Simplified` : `English` , `French` , `German` a`Spanish`
 
 | Název podtypu    | Příklady                     |
 |-------------|------------------------------|
@@ -176,7 +176,7 @@ Jazyky:
 
 Jazyky:
 
-* Verze Public Preview `Chinese-Simplified`: `English`, `French`, `German` a`Spanish`
+* Verze Public Preview `Chinese-Simplified` : `English` , `French` , `German` a`Spanish`
 
 | Název podtypu    | Příklady                     |
 |-------------|------------------------------|
@@ -184,6 +184,6 @@ Jazyky:
 | Procento  | `50%`, `fifty percent`       |
 | Řadový     | `2nd`, `second`              |
 | Věk         | `90 day old`, `30 years old` |
-| Měna    | `$10.99`, `€30.00`           |
+| Měna    | `$10.99`, `&euro;30.00`           |
 | Dimenze   | `10 miles`, `40 cm`          |
 | Teplota | `32 degrees`, `10°C`         |

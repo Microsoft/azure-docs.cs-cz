@@ -3,20 +3,20 @@ title: Rychlý Start – spravovaná instance SQL
 description: Naučte se, jak rychle začít s Azure SQL Databaseem – spravovaná instance
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein, carlr
+author: davidtrigano
+ms.author: datrigan
+ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 602de3e23eb5419958f84b071e2220550d1d04d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b873588393ed765fa21b30dfb3a71486d055373b
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73821724"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780466"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Začínáme se spravovanou instancí Azure SQL Database
 
@@ -37,7 +37,8 @@ Jako první krok byste museli vytvořit svou první spravovanou instanci v síť
   - Nastavte [připojení VPN typu Point-to-site ke spravované instanci](sql-database-managed-instance-configure-p2s.md) z klientského počítače, na kterém máte SQL Server Management Studio a další aplikace pro připojení klienta. Jedná se o další dvě možnosti připojení ke spravované instanci a její virtuální síti.
 
   > [!NOTE]
-  > Z místní sítě můžete také použít expresní směrování nebo připojení typu Site-to-site, ale tyto přístupy jsou z rozsahu těchto rychlých startů.
+  > - Z místní sítě můžete také použít expresní směrování nebo připojení typu Site-to-site, ale tyto přístupy jsou z rozsahu těchto rychlých startů.
+  > - Pokud změníte dobu uchování z 0 (neomezené uchovávání) na jakoukoli jinou hodnotu, pamatujte na to, že doba uchovávání se bude vztahovat jenom na protokoly zapsané po změně hodnoty uchování (protokoly zapsané během období, kdy byla doba uchování nastavená na neomezený, se zachovají i po povolení uchování).
 
 Jako alternativu k ručnímu vytvoření spravované instance můžete použít [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md), [PowerShell s správce prostředků šablonou](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)nebo [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) pro vytvoření skriptu a automatizaci tohoto procesu.
 
