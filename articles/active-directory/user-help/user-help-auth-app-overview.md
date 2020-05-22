@@ -8,15 +8,15 @@ ms.reviewer: sahenry
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: c95ae2e48a7d5a3b9e9e28b1d4e14b670205c043
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60c2b3ed1f367dc5c501a51ed52440f7d9d3ed6b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062281"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741177"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Co je aplikace Microsoft Authenticator?
 
@@ -37,12 +37,12 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
 
 ## <a name="terminology"></a>Terminologie
 
-| Označení|Popis|
+| Pojem|Popis|
 | ----|-----------|
 | Dvojúrovňové ověřování | Proces ověření, který vyžaduje, abyste konkrétně použili jenom dvě části ověřovacích informací, jako je heslo a PIN kód. Aplikace Microsoft Authenticator podporuje standardní dvojúrovňové ověřování a přihlašování se všemi hesly. |
 | Multi-Factor Authentication (MFA) | Každé dvojúrovňové ověřování je Multi-Factor Authentication a vyžaduje, abyste v závislosti na požadavcích vaší organizace používali *aspoň* dvě části ověřovacích informací. |
 | Účet Microsoft (označovaný také jako MSA) | Vytvoříte si vlastní osobní účty, abyste získali přístup k vašim zákaznickým produktům a cloudovým službám Microsoftu, jako je například Outlook, OneDrive, Xbox LIVE nebo Office 365. Vaše účet Microsoft je vytvořená a uložená v systému účtu Microsoft Consumer identity, který je spuštěný Microsoftem. |
-| Pracovní nebo školní účet | Vaše organizace vytvoří svůj pracovní nebo školní účet (například alain@contoso.com), aby vám umožnil přístup k internímu a potenciálně omezenému zdroji, jako jsou Microsoft Azure, Windows Intune a Office 365. |
+| Pracovní nebo školní účet | Vaše organizace vytvoří svůj pracovní nebo školní účet (například alain@contoso.com ), aby vám umožnil přístup k internímu a potenciálně omezenému zdroji, jako jsou Microsoft Azure, Windows Intune a Office 365. |
 | Ověřovací kód | Osmimístný kód, který se zobrazí v ověřovací aplikaci v rámci každého přidaného účtu. Ověřovací kód se změní každých 30 sekund, což někomu brání v použití kódu několikrát. Tato verze se označuje také jako JEDNORÁZOVé heslo. |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>Jak dvojúrovňové ověřování funguje s aplikací
@@ -63,11 +63,11 @@ Pokud k dokončení procesu ověřování použijete PIN kód, můžete nastavit
 
 V závislosti na typu účtu může vaše organizace rozhodnout, že je nutné použít dvojúrovňové ověřování, nebo se můžete rozhodnout sami.
 
-- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (například alain@contoso.com), je to až do vaší organizace bez ohledu na to, jestli musíte použít dvojúrovňové ověřování společně s konkrétními metodami ověřování. Další informace o tom, jak do aplikace Microsoft Authenticator přidat svůj pracovní nebo školní účet, najdete v tématu [Přidání pracovních nebo školních účtů](user-help-auth-app-add-work-school-account.md).
+- **Pracovní nebo školní účet.** Pokud používáte pracovní nebo školní účet (například alain@contoso.com ), je to až do vaší organizace bez ohledu na to, jestli musíte použít dvojúrovňové ověřování společně s konkrétními metodami ověřování. Další informace o tom, jak do aplikace Microsoft Authenticator přidat svůj pracovní nebo školní účet, najdete v tématu [Přidání pracovních nebo školních účtů](user-help-auth-app-add-work-school-account.md).
 
-- **Osobní účet Microsoft.** Pro osobní účty Microsoft (například alain@outlook.com) si můžete nastavit dvojúrovňové ověřování. Další informace o přidání osobních účet Microsoft najdete v tématu [Přidání osobních účtů](user-help-auth-app-add-personal-ms-account.md).
+- **Osobní účet Microsoft.** Pro osobní účty Microsoft (například) si můžete nastavit dvojúrovňové ověřování alain@outlook.com . Další informace o přidání osobních účet Microsoft najdete v tématu [Přidání osobních účtů](user-help-auth-app-add-personal-ms-account.md).
 
-- **Bez účet Microsoft.** Můžete nastavit dvojúrovňové ověřování pro účty jiných společností než Microsoft (například alain@gmail.com). Vaše účty jiných společností než Microsoft nemůžou použít termín, dvojúrovňové ověřování, ale měli byste být schopni najít funkci v rámci **zabezpečení** nebo nastavení **přihlášení** . Microsoft Authenticator aplikace funguje se všemi účty, které podporují standardy TOTP. Další informace o přidání účtů jiných společností než Microsoft najdete v tématu [Přidání účtů jiných společností než Microsoft](user-help-auth-app-add-non-ms-account.md).
+- **Bez účet Microsoft.** Můžete nastavit dvojúrovňové ověřování pro účty jiných společností než Microsoft (například alain@gmail.com ). Vaše účty jiných společností než Microsoft nemůžou použít termín, dvojúrovňové ověřování, ale měli byste být schopni najít funkci v rámci **zabezpečení** nebo nastavení **přihlášení** . Microsoft Authenticator aplikace funguje se všemi účty, které podporují standardy TOTP. Další informace o přidání účtů jiných společností než Microsoft najdete v tématu [Přidání účtů jiných společností než Microsoft](user-help-auth-app-add-non-ms-account.md).
 
 ## <a name="in-this-section"></a>V tomto oddílu
 

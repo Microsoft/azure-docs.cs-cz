@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8d62d7d278323baa0ae49b9e12f46468efb067a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea44355795f0685f42de1306e979707f34d8f142
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335303"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742759"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Osvědčené postupy pro Azure Maps Search Service
 
@@ -39,7 +39,7 @@ Informace o ověřování v Azure Maps najdete v tématu [Správa ověřování 
 
 Když vyhledáte úplnou nebo částečnou adresu pomocí Azure Maps Search Service, rozhraní API přečte klíčová slova z vyhledávacího dotazu. Pak vrátí souřadnice délky a zeměpisné šířky adresy. Tento proces se nazývá *geografické kódování*. 
 
-Schopnost geografického kódu v zemi závisí na dostupnosti pozemních dat a přesnosti služby geografického kódování. Další informace o Azure Maps možností geografického kódování podle země nebo oblasti najdete v tématu [pokrytí geografického kódování](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage).
+Schopnost geografického kódu v zemi nebo oblasti závisí na dostupnosti dat o provozu a přesnosti služby geografického kódování. Další informace o Azure Maps možností geografického kódování podle země nebo oblasti najdete v tématu [pokrytí geografického kódování](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage).
 
 ### <a name="limit-search-results"></a>Omezení výsledků hledání
 
@@ -52,25 +52,25 @@ Schopnost geografického kódu v zemi závisí na dostupnosti pozemních dat a p
 
 Chcete-li výsledky geografického posunu do příslušné oblasti pro uživatele, vždy přidejte tolik podrobností umístění, kolik je možné. Můžete chtít výsledky hledání omezit zadáním některých typů vstupu:
 
-* Nastavte `countrySet` parametr. Můžete ho nastavit například na `US,FR`. Rozhraní API standardně prohledává celý svět, takže může vracet zbytečné výsledky. Pokud dotaz nemá žádný `countrySet` parametr, hledání může vracet nepřesné výsledky. Například hledání města s názvem *Bellevue* vrátí výsledky z USA a Francie, protože obě země obsahují město s názvem *Bellevue*.
+* Nastavte `countrySet` parametr. Můžete ho nastavit například na `US,FR` . Rozhraní API standardně prohledává celý svět, takže může vracet zbytečné výsledky. Pokud dotaz nemá žádný `countrySet` parametr, hledání může vracet nepřesné výsledky. Například hledání města s názvem *Bellevue* vrátí výsledky z USA a Francie, protože země nebo oblasti obsahují město s názvem *Bellevue*.
 
-* Pomocí parametrů `btmRight` a `topleft` můžete nastavit ohraničovací rámeček. Tyto parametry omezují hledání na konkrétní oblast na mapě.
+* Pomocí `btmRight` parametrů a můžete `topleft` nastavit ohraničovací rámeček. Tyto parametry omezují hledání na konkrétní oblast na mapě.
 
-* Pro ovlivnění oblasti relevance pro výsledky definujte parametry `lat` a `lon` souřadnice. Pomocí `radius` parametru nastavte poloměr oblasti hledání.
+* Pro ovlivnění oblasti relevance pro výsledky definujte `lat` `lon` parametry a souřadnice. Pomocí `radius` parametru nastavte poloměr oblasti hledání.
 
 
 #### <a name="fuzzy-search-parameters"></a>Parametry hledání přibližné vyhledávání
 
 Doporučujeme, abyste používali Azure Maps [hledání přibližného rozhraní API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) , pokud neznáte vstupy uživatelů pro vyhledávací dotaz. Rozhraní API kombinuje POI vyhledávání a geografické kódování do kanonického *víceřádkového vyhledávání*: 
 
-* Parametry `minFuzzyLevel` a `maxFuzzyLevel` vrátí relevantní shody i v případě, že parametry dotazu se přesně neshodují s informacemi, které uživatel chce. Pro maximalizaci výkonu a omezení neobvyklých výsledků nastavte vyhledávací dotazy na `minFuzzyLevel=1` výchozí `maxFuzzyLevel=2`hodnoty a. 
+* `minFuzzyLevel`Parametry a `maxFuzzyLevel` vrátí relevantní shody i v případě, že parametry dotazu se přesně neshodují s informacemi, které uživatel chce. Pro maximalizaci výkonu a omezení neobvyklých výsledků nastavte vyhledávací dotazy na výchozí hodnoty `minFuzzyLevel=1` a `maxFuzzyLevel=2` . 
 
-    Například pokud je `maxFuzzyLevel` parametr nastaven na hodnotu 2, hledaný výraz *restrant* odpovídá *restauraci*. Výchozí přibližné úrovně můžete přepsat, pokud potřebujete. 
+    Například pokud `maxFuzzyLevel` je parametr nastaven na hodnotu 2, hledaný výraz *restrant* odpovídá *restauraci*. Výchozí přibližné úrovně můžete přepsat, pokud potřebujete. 
 
 * Použijte `idxSet` parametr k určení priorit přesné sady typů výsledků. Chcete-li určit prioritu přesné sady výsledků, můžete odeslat seznam indexů oddělených čárkami. V seznamu nezáleží na pořadí položek. Azure Maps podporuje následující indexy:
 
 * `Addr` - **Rozsahy adres**: adresní body, které se interpolují od začátku a konce ulice. Tyto body jsou reprezentovány jako rozsahy adres.
-* `Geo` - Geografické **oblasti: správní**rozdělení půdy. Zeměpisná oblast může být například země, kraj nebo město.
+* `Geo` - Geografické **oblasti: správní**rozdělení půdy. Zeměpisná oblast může být například země/oblast, stát nebo město.
 * `PAD` - **Adresy bodů**: adresy, které obsahují název a číslo ulice. Adresy bodů najdete v indexu. Příkladem je *Soquel Dr 2501*. Adresa bodu poskytuje nejvyšší úroveň přesnosti, která je k dispozici pro adresy.  
 * `POI` - **Body zájmu**: body na mapě, které se považují za pozornost nebo které mohou být zajímavé. [Rozhraní API pro vyhledávání adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) nevrací zájmu.  
 * `Str` - **Ulice**: ulic na mapě.
@@ -85,7 +85,7 @@ Doporučujeme, abyste používali Azure Maps [hledání přibližného rozhraní
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Inverzní a filtr pro typ geografických entit
 
-Když provedete zpětné vyhledávání v [rozhraní API pro reverzní vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), může služba vracet mnohoúhelníky pro oblasti správy.Chcete-li zúžit hledání na konkrétní typy geografických entit, `entityType` zahrňte parametr do svých požadavků. 
+Když provedete zpětné vyhledávání v [rozhraní API pro reverzní vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), může služba vracet mnohoúhelníky pro oblasti správy.Chcete-li zúžit hledání na konkrétní typy geografických entit, zahrňte `entityType` parametr do svých požadavků. 
 
 Výsledná odpověď obsahuje geografické ID a typ entity, které se shodovaly. Pokud zadáte více než jednu entitu, vrátí koncový bod *nejnižší dostupnou entitu*. Pomocí vráceného ID geometrie můžete získat geometrii geograficky prostřednictvím [služby mnohoúhelníku hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon).
 
@@ -130,16 +130,16 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 
 ### <a name="set-the-results-language"></a>Nastavení jazyka výsledků
 
-Pro nastavení `language` jazyka pro vrácené výsledky hledání použijte parametr. Pokud požadavek nenastaví jazyk, pak ve výchozím nastavení Search Service používá nejběžnější jazyk v zemi nebo oblasti. Pokud v zadaném jazyce nejsou k dispozici žádná data, použije se výchozí jazyk. 
+`language`Pro nastavení jazyka pro vrácené výsledky hledání použijte parametr. Pokud požadavek nenastaví jazyk, pak ve výchozím nastavení Search Service používá nejběžnější jazyk v zemi nebo oblasti. Pokud v zadaném jazyce nejsou k dispozici žádná data, použije se výchozí jazyk. 
 
 Další informace najdete v tématu [Azure Maps podporovaných jazycích](https://docs.microsoft.com/azure/azure-maps/supported-languages).
 
 
 ### <a name="use-predictive-mode-automatic-suggestions"></a>Použít prediktivní režim (automatické návrhy)
 
-Chcete-li najít další shody pro částečné dotazy, `typeahead` nastavte parametr `true`na. Tento dotaz je interpretován jako částečný vstup a hledání do prediktivního režimu. Pokud nenastavíte `typeahead` parametr na `true`, služba předpokládá, že byly předány všechny příslušné informace.
+Chcete-li najít další shody pro částečné dotazy, nastavte `typeahead` parametr na `true` . Tento dotaz je interpretován jako částečný vstup a hledání do prediktivního režimu. Pokud nenastavíte `typeahead` parametr na `true` , služba předpokládá, že byly předány všechny příslušné informace.
 
-V následujícím ukázkovém dotazu se pro *Microso*používá dotaz na vyhledávací adresu služby. Zde je `typeahead` parametr nastaven na `true`hodnotu. Odpověď ukazuje, že vyhledávací služba interpretuje dotaz jako částečný dotaz. Odpověď obsahuje výsledky pro automaticky navrhovaný dotaz.
+V následujícím ukázkovém dotazu se pro *Microso*používá dotaz na vyhledávací adresu služby. Zde je `typeahead` parametr nastaven na hodnotu `true` . Odpověď ukazuje, že vyhledávací služba interpretuje dotaz jako částečný dotaz. Odpověď obsahuje výsledky pro automaticky navrhovaný dotaz.
 
 #### <a name="sample-query"></a>Ukázkový dotaz
 
@@ -407,9 +407,9 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="encode-a-uri-to-handle-special-characters"></a>Kódování identifikátoru URI pro zpracování speciálních znaků 
 
-Chcete-li najít adresy mezi adresami, je nutné zakódovat identifikátor URI pro zpracování speciálních znaků v adrese. Vezměte v úvahu příklad této adresy: *1. způsob & Union Street, Seattle*. Zde zakódovat znak ampersand (`&`) před odesláním žádosti. 
+Chcete-li najít adresy mezi adresami, je nutné zakódovat identifikátor URI pro zpracování speciálních znaků v adrese. Vezměte v úvahu příklad této adresy: *1. způsob & Union Street, Seattle*. Zde zakódovat znak ampersand ( `&` ) před odesláním žádosti. 
 
-Doporučujeme kódovat znaková data v identifikátoru URI. V identifikátoru URI zakódujete všechny znaky pomocí znaku procenta (`%`) a šestnáctkové hodnoty se dvěma znaky, které odpovídají kódu UTF-8.
+Doporučujeme kódovat znaková data v identifikátoru URI. V identifikátoru URI zakódujete všechny znaky pomocí znaku procenta ( `%` ) a šestnáctkové hodnoty se dvěma znaky, které odpovídají kódu UTF-8.
 
 #### <a name="usage-examples"></a>Příklady použití
 
@@ -480,7 +480,7 @@ url.QueryEscape(query)
 
 Ve POI hledání můžete vyžádat POI výsledky podle názvu. Můžete například vyhledat firmu podle názvu. 
 
-Důrazně doporučujeme použít `countrySet` parametr k určení zemí, ve kterých vaše aplikace potřebuje pokrytí. Výchozím chováním je hledání celého světa. Toto široké hledání může vracet zbytečné výsledky a hledání může trvat dlouhou dobu.
+Důrazně doporučujeme použít `countrySet` parametr k určení zemí nebo oblastí, kde vaše aplikace potřebuje pokrytí. Výchozím chováním je hledání celého světa. Toto široké hledání může vracet zbytečné výsledky a hledání může trvat dlouhou dobu.
 
 ### <a name="brand-search"></a>Hledání značky
 
@@ -755,7 +755,7 @@ Chcete-li omezit výsledky, doporučujeme nastavit protokol RADIUS.
 
 ## <a name="understanding-the-responses"></a>Porozumění odpovědím
 
-Pojďme najít adresu v Seattlu tím, že na Azure Maps Search Service provedete požadavek na hledání adres. V následující adrese URL požadavku nastavíme `countrySet` parametr tak `US` , aby se vyhledala adresa v USA.
+Pojďme najít adresu v Seattlu tím, že na Azure Maps Search Service provedete požadavek na hledání adres. V následující adrese URL požadavku nastavíme parametr tak, aby se `countrySet` `US` vyhledala adresa v USA.
 
 ### <a name="sample-query"></a>Ukázkový dotaz
 
@@ -769,7 +769,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 * **Rozsah adres**: rozsah adresních bodů, které se interpolují od začátku a konce ulice.  
 
-* **Geografie**: oblasti na mapě, které reprezentují správní rozdělení půdy, například země, stát nebo město. 
+* **Geografie**: oblasti na mapě, které reprezentují správní rozdělení půdy, například země/oblast, stát nebo město. 
 
 * **POI**: body na mapě, které stojí za pozornost a které mohou být zajímavé.
 
@@ -787,7 +787,7 @@ Pojďme se podívat na strukturu odpovědi. V následující reakci se typy obje
 
 Všimněte si, že vyhledávání adres nevrátí zájmu.  
 
-`Score` Parametr pro každý objekt Response indikuje, jak se shodující skóre vztahuje na skóre ostatních objektů ve stejné odpovědi. Další informace o parametrech objektu Response najdete v tématu [získání adresy hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress).
+`Score`Parametr pro každý objekt Response indikuje, jak se shodující skóre vztahuje na skóre ostatních objektů ve stejné odpovědi. Další informace o parametrech objektu Response najdete v tématu [získání adresy hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress).
 
 ```JSON
 {
@@ -951,10 +951,10 @@ Všimněte si, že vyhledávání adres nevrátí zájmu.
 
 ### <a name="geometry"></a>Geometrie
 
-Typ odpovědi *geometrie* může zahrnovat ID geometrie, které je vráceno v `dataSources` objektu v `geometry` a. `id` Můžete například použít [službu mnohoúhelníku hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) k vyžádání dat geometrie ve formátu "GEOMETRICKé JSON". Pomocí tohoto formátu můžete získat osnovu města nebo letiště pro sadu entit. Pak můžete pomocí těchto dat hranice [nastavit geografickou](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence) nebo [vyhledávací zájmuou v geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry).
+Typ odpovědi *geometrie* může zahrnovat ID geometrie, které je vráceno v `dataSources` objektu v `geometry` a `id` . Můžete například použít [službu mnohoúhelníku hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) k vyžádání dat geometrie ve formátu "GEOMETRICKé JSON". Pomocí tohoto formátu můžete získat osnovu města nebo letiště pro sadu entit. Pak můžete pomocí těchto dat hranice [nastavit geografickou](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence) nebo [vyhledávací zájmuou v geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry).
 
 
-Odpovědi pro rozhraní API pro [vyhledávání adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) nebo rozhraní API pro [přibližné vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) můžou zahrnovat ID geometrie, které se vrátí `dataSources` do objektu `geometry` v `id`rámci a:
+Odpovědi pro rozhraní API pro [vyhledávání adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) nebo rozhraní API pro [přibližné vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) můžou zahrnovat ID geometrie, které se vrátí do `dataSources` objektu v rámci `geometry` a `id` :
 
 
 ```JSON 

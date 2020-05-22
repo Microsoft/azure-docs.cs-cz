@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e921f0a40f53b1d08831047d1cb89ca26de41402
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80057294"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738553"
 ---
 # <a name="user-profile-attributes"></a>Atributy profilu uživatele
 
@@ -33,55 +33,55 @@ Následující tabulka uvádí atributy [typu prostředku uživatele](https://do
 - Popis atributu
 - Pokud je atribut k dispozici v Azure Portal
 - Pokud se atribut dá použít v toku uživatele
-- Pokud se atribut dá použít ve vlastní zásadě [Azure AD Technical Profile](active-directory-technical-profile.md) &lt;a v jaké části (InputClaims&gt;, &lt;OutputClaims&gt;nebo &lt;PersistedClaims)&gt;
+- Pokud se atribut dá použít ve vlastní zásadě [Azure AD Technical Profile](active-directory-technical-profile.md) a v jaké části ( &lt; InputClaims &gt; , &lt; OutputClaims &gt; nebo &lt; PersistedClaims &gt; )
 
-|Název     |Typ     |Popis|portál Azure|Toky uživatele|Vlastní zásady|
+|Name     |Typ     |Popis|portál Azure|Toky uživatele|Vlastní zásady|
 |---------|---------|----------|------------|----------|-------------|
-|accountEnabled  |Logická hodnota|Zda je uživatelský účet povolený nebo zakázaný: **true** , pokud je účet povolený, v opačném případě **false**.|Ano|Ne|Trvalý výstup|
-|ageGroup        |Řetězec|Věková skupina uživatele. Možné hodnoty: null, undefined, nezletilý, dospělý, NotAdult.|Ano|Ne|Trvalý výstup|
-|alternativeSecurityId ([identity](manage-user-accounts-graph-api.md#identities-property))|Řetězec|Jediná identita uživatele od externího zprostředkovatele identity.|Ne|Ne|Vstup, trvalý výstup|
+|accountEnabled  |Logická hodnota|Zda je uživatelský účet povolený nebo zakázaný: **true** , pokud je účet povolený, v opačném případě **false**.|Ano|No|Trvalý výstup|
+|ageGroup        |String|Věková skupina uživatele. Možné hodnoty: null, undefined, nezletilý, dospělý, NotAdult.|Ano|No|Trvalý výstup|
+|alternativeSecurityId ([identity](manage-user-accounts-graph-api.md#identities-property))|String|Jediná identita uživatele od externího zprostředkovatele identity.|Ne|Ne|Vstup, trvalý výstup|
 |alternativeSecurityIds ([identity](manage-user-accounts-graph-api.md#identities-property))|alternativní kolekce securityId|Kolekce uživatelských identit od externích zprostředkovatelů identity.|Ne|Ne|Trvalý výstup|
-|city            |Řetězec|Město, ve kterém se uživatel nachází Maximální délka 128.|Ano|Ano|Trvalý výstup|
-|consentProvidedForMinor|Řetězec|Zda byl souhlas poskytnut pro méně závažná. Povolené hodnoty: null, uděleno, zamítnuto nebo notRequired.|Ano|Ne|Trvalý výstup|
-|country         |Řetězec|Země nebo oblast, ve které se uživatel nachází. Příklad: "US" nebo "UK". Maximální délka 128.|Ano|Ano|Trvalý výstup|
+|city            |String|Město, ve kterém se uživatel nachází Maximální délka 128.|Ano|Ano|Trvalý výstup|
+|consentProvidedForMinor|String|Zda byl souhlas poskytnut pro méně závažná. Povolené hodnoty: null, uděleno, zamítnuto nebo notRequired.|Ano|No|Trvalý výstup|
+|country         |String|Země nebo oblast, ve které se uživatel nachází. Příklad: "US" nebo "UK". Maximální délka 128.|Ano|Ano|Trvalý výstup|
 |createdDateTime|DateTime|Datum vytvoření objektu uživatele. Jen pro čtení.|Ne|Ne|Trvalý výstup|
-|creationType    |Řetězec|Pokud byl uživatelský účet vytvořen jako místní účet pro klienta Azure Active Directory B2C, hodnota je LocalAccount nebo nameCoexistence. Jen pro čtení.|Ne|Ne|Trvalý výstup|
+|creationType    |String|Pokud byl uživatelský účet vytvořen jako místní účet pro klienta Azure Active Directory B2C, hodnota je LocalAccount nebo nameCoexistence. Jen pro čtení.|Ne|Ne|Trvalý výstup|
 |dateOfBirth     |Datum|Datum narození.|Ne|Ne|Trvalý výstup|
-|Oddělení      |Řetězec|Název oddělení, ve kterém uživatel pracuje. Maximální délka 64.|Ano|Ne|Trvalý výstup|
-|displayName     |Řetězec|Zobrazované jméno uživatele Maximální délka 256.|Ano|Ano|Trvalý výstup|
-|facsimileTelephoneNumber<sup>1</sup>|Řetězec|Telefonní číslo počítačového faxu uživatele podniku.|Ano|Ne|Trvalý výstup|
-|givenName       |Řetězec|Křestní jméno (křestní jméno) uživatele. Maximální délka 64.|Ano|Ano|Trvalý výstup|
-|jobTitle        |Řetězec|Pracovní pozice uživatele Maximální délka 128.|Ano|Ano|Trvalý výstup|
-|immutableId     |Řetězec|Identifikátor, který se obvykle používá pro uživatele migrované z místní služby Active Directory.|Ne|Ne|Trvalý výstup|
-|legalAgeGroupClassification|Řetězec|Právní klasifikace věkové skupiny. Je určena jen pro čtení a vypočítáno na základě vlastností ageGroup a consentProvidedForMinor. Povolené hodnoty: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult a dospělý.|Ano|Ne|Trvalý výstup|
-|legalCountry<sup>1</sup>  |Řetězec|Země pro zákonné účely.|Ne|Ne|Trvalý výstup|
-|pošta            |Řetězec|Adresa SMTP pro uživatele, například "bob@contoso.com". Jen pro čtení.|Ne|Ne|Trvalý výstup|
-|mailNickName    |Řetězec|Alias e-mailu pro uživatele Maximální délka 64.|Ne|Ne|Trvalý výstup|
-|mobilní zařízení (mobilePhone) |Řetězec|Primární mobilní telefonní číslo uživatele Maximální délka 64.|Ano|Ne|Trvalý výstup|
-|netId           |Řetězec|ID sítě|Ne|Ne|Trvalý výstup|
-|Objektu        |Řetězec|Globálně jedinečný identifikátor (GUID), který je jedinečným identifikátorem pro uživatele. Příklad: 12345678-9ABC-def0-1234-56789abcde. Jen pro čtení, neměnný.|Jen pro čtení|Ano|Vstup, trvalý výstup|
-|otherMails      |Kolekce řetězců|Seznam dalších e-mailových adres pro uživatele Příklad: ["bob@contoso.com", "Robert@fabrikam.com"].|Ano (alternativní e-mail)|Ne|Trvalý výstup|
-|heslo        |Řetězec|Heslo pro místní účet během vytváření uživatele.|Ne|Ne|Trvalé|
-|passwordPolicies     |Řetězec|Zásady hesla Jedná se o řetězec skládající se z názvu jiné zásady oddělené čárkou. například "DisablePasswordExpiration, DisableStrongPassword".|Ne|Ne|Trvalý výstup|
-|physicalDeliveryOfficeName (officeLocation)|Řetězec|Umístění kanceláře v místě podnikání uživatele. Maximální délka 128.|Ano|Ne|Trvalý výstup|
-|Ovládacím      |Řetězec|Poštovní směrovací číslo pro poštovní adresu uživatele Poštovní směrovací číslo je specifické pro zemi nebo oblast uživatele. V USA systému America tento atribut obsahuje PSČ. Maximální délka 40.|Ano|Ne|Trvalý výstup|
-|preferredLanguage    |Řetězec|Preferovaný jazyk pro uživatele. By měl dodržovat kód ISO 639-1. Příklad: "en-US".|Ne|Ne|Trvalý výstup|
+|Oddělení      |String|Název oddělení, ve kterém uživatel pracuje. Maximální délka 64.|Ano|No|Trvalý výstup|
+|displayName     |String|Zobrazované jméno uživatele Maximální délka 256.|Ano|Ano|Trvalý výstup|
+|facsimileTelephoneNumber<sup>1</sup>|String|Telefonní číslo počítačového faxu uživatele podniku.|Ano|No|Trvalý výstup|
+|givenName       |String|Křestní jméno (křestní jméno) uživatele. Maximální délka 64.|Ano|Ano|Trvalý výstup|
+|jobTitle        |String|Pracovní pozice uživatele Maximální délka 128.|Ano|Ano|Trvalý výstup|
+|immutableId     |String|Identifikátor, který se obvykle používá pro uživatele migrované z místní služby Active Directory.|Ne|Ne|Trvalý výstup|
+|legalAgeGroupClassification|String|Právní klasifikace věkové skupiny. Je určena jen pro čtení a vypočítáno na základě vlastností ageGroup a consentProvidedForMinor. Povolené hodnoty: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult a dospělý.|Ano|No|Trvalý výstup|
+|legalCountry<sup>1</sup>  |String|Země/oblast pro zákonné účely.|Ne|Ne|Trvalý výstup|
+|pošta            |String|Adresa SMTP pro uživatele, například " bob@contoso.com ". Jen pro čtení.|Ne|Ne|Trvalý výstup|
+|mailNickName    |String|Alias e-mailu pro uživatele Maximální délka 64.|Ne|Ne|Trvalý výstup|
+|mobilní zařízení (mobilePhone) |String|Primární mobilní telefonní číslo uživatele Maximální délka 64.|Ano|No|Trvalý výstup|
+|netId           |String|ID sítě|Ne|Ne|Trvalý výstup|
+|Objektu        |String|Globálně jedinečný identifikátor (GUID), který je jedinečným identifikátorem pro uživatele. Příklad: 12345678-9ABC-def0-1234-56789abcde. Jen pro čtení, neměnný.|Jen pro čtení|Ano|Vstup, trvalý výstup|
+|otherMails      |Kolekce řetězců|Seznam dalších e-mailových adres pro uživatele Příklad: [" bob@contoso.com ", " Robert@fabrikam.com "].|Ano (alternativní e-mail)|No|Trvalý výstup|
+|heslo        |String|Heslo pro místní účet během vytváření uživatele.|Ne|Ne|Trvalé|
+|passwordPolicies     |String|Zásady hesla Jedná se o řetězec skládající se z názvu jiné zásady oddělené čárkou. například "DisablePasswordExpiration, DisableStrongPassword".|Ne|Ne|Trvalý výstup|
+|physicalDeliveryOfficeName (officeLocation)|String|Umístění kanceláře v místě podnikání uživatele. Maximální délka 128.|Ano|No|Trvalý výstup|
+|Ovládacím      |String|Poštovní směrovací číslo pro poštovní adresu uživatele Poštovní směrovací číslo je specifické pro zemi nebo oblast uživatele. V USA systému America tento atribut obsahuje PSČ. Maximální délka 40.|Ano|No|Trvalý výstup|
+|preferredLanguage    |String|Preferovaný jazyk pro uživatele. By měl dodržovat kód ISO 639-1. Příklad: "en-US".|Ne|Ne|Trvalý výstup|
 |refreshTokensValidFromDateTime|DateTime|Všechny obnovovací tokeny vydané před tímto časem jsou neplatné a aplikace při použití neplatného obnovovacího tokenu k získání nového přístupového tokenu zobrazí chybu. Pokud k tomu dojde, aplikace bude muset získat nový obnovovací token tím, že odešle požadavek na koncový bod autorizace. Jen pro čtení.|Ne|Ne|Výstup|
-|signInNames ([identity](manage-user-accounts-graph-api.md#identities-property)) |Řetězec|Jedinečný přihlašovací jméno uživatele místního účtu libovolného typu v adresáři. Tuto hodnotu použijte k získání uživatele s hodnotou přihlášení bez zadání typu místního účtu.|Ne|Ne|Vstup|
-|signInNames. userName ([identity](manage-user-accounts-graph-api.md#identities-property)) |Řetězec|Jedinečné uživatelské jméno uživatele místního účtu v adresáři. Tuto hodnotu použijte k vytvoření nebo získání uživatele s konkrétním přihlašovacím jménem. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
-|signInNames. phoneNumber ([identity](manage-user-accounts-graph-api.md#identities-property)) |Řetězec|Jedinečné telefonní číslo uživatele místního účtu v adresáři. Tuto hodnotu použijte k vytvoření nebo získání uživatele s konkrétním telefonním číslem přihlášení. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
-|signInNames. emailAddress ([identity](manage-user-accounts-graph-api.md#identities-property))|Řetězec|Jedinečná e-mailová adresa uživatele místního účtu v adresáři Toto použijte k vytvoření nebo získání uživatele s konkrétní přihlašovací e-mailovou adresou. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
-|state           |Řetězec|Kraj v adrese uživatele Maximální délka 128.|Ano|Ano|Trvalý výstup|
-|streetAddress   |Řetězec|Ulice na adrese uživatele místo podnikání. Maximální délka 1024.|Ano|Ano|Trvalý výstup|
-|strongAuthentication AlternativePhoneNumber<sup>1</sup>|Řetězec|Sekundární telefonní číslo uživatele, které se používá pro službu Multi-Factor Authentication.|Ano|Ne|Trvalý výstup|
-|strongAuthenticationEmailAddress<sup>1</sup>|Řetězec|Adresa SMTP pro uživatele Příklad: "bob@contoso.com" Tento atribut se používá pro přihlášení pomocí zásad uživatelského jména, aby se uložila e-mailová adresa uživatele. E-mailová adresa se pak použije v toku resetování hesla.|Ano|Ne|Trvalý výstup|
-|strongAuthenticationPhoneNumber<sup>1</sup>|Řetězec|Primární telefonní číslo uživatele, které se používá pro službu Multi-Factor Authentication.|Ano|Ne|Trvalý výstup|
-|surname         |Řetězec|Příjmení uživatele (název rodiny nebo příjmení). Maximální délka 64.|Ano|Ano|Trvalý výstup|
-|telephoneNumber (první položka businessPhones)|Řetězec|Primární telefonní číslo místa podnikání uživatele|Ano|Ne|Trvalý výstup|
-|userPrincipalName (Hlavní název uživatele)    |Řetězec|Hlavní název uživatele (UPN) Hlavní název uživatele (UPN) je přihlašovací jméno pro uživatele ve stylu internetu na základě standardu RFC 822 pro Internet. Doména musí být přítomna v kolekci ověřených domén klienta. Tato vlastnost je při vytvoření účtu povinná. Neměnný|Ne|Ne|Vstup, trvalý výstup|
-|usageLocation   |Řetězec|Vyžadováno pro uživatele, kterým budou přiřazeny licence z důvodu zákonného požadavku na kontrolu dostupnosti služeb v zemích. Nelze nabývat hodnoty null. Dvoumístné číslo země (ISO standard 3166). Příklady: "US", "JP" a "GB".|Ano|Ne|Trvalý výstup|
-|userType        |Řetězec|Řetězcová hodnota, která se dá použít ke klasifikaci uživatelských typů v adresáři. Hodnota musí být členem. Jen pro čtení.|Jen pro čtení|Ne|Trvalý výstup|
-|userState (externalUserState)<sup>2</sup>|Řetězec|Pouze pro účet Azure AD B2B označuje, zda je pozvánka PendingAcceptance nebo přijata.|Ne|Ne|Trvalý výstup|
+|signInNames ([identity](manage-user-accounts-graph-api.md#identities-property)) |String|Jedinečný přihlašovací jméno uživatele místního účtu libovolného typu v adresáři. Tuto hodnotu použijte k získání uživatele s hodnotou přihlášení bez zadání typu místního účtu.|Ne|Ne|Vstup|
+|signInNames. userName ([identity](manage-user-accounts-graph-api.md#identities-property)) |String|Jedinečné uživatelské jméno uživatele místního účtu v adresáři. Tuto hodnotu použijte k vytvoření nebo získání uživatele s konkrétním přihlašovacím jménem. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
+|signInNames. phoneNumber ([identity](manage-user-accounts-graph-api.md#identities-property)) |String|Jedinečné telefonní číslo uživatele místního účtu v adresáři. Tuto hodnotu použijte k vytvoření nebo získání uživatele s konkrétním telefonním číslem přihlášení. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
+|signInNames. emailAddress ([identity](manage-user-accounts-graph-api.md#identities-property))|String|Jedinečná e-mailová adresa uživatele místního účtu v adresáři Toto použijte k vytvoření nebo získání uživatele s konkrétní přihlašovací e-mailovou adresou. Zadání tohoto parametru v PersistedClaims samostatně během operace patch odstraní další typy signInNames. Pokud chcete přidat nový typ signInNames, musíte také zachovat existující signInNames.|Ne|Ne|Vstup, trvalý výstup|
+|state           |String|Kraj v adrese uživatele Maximální délka 128.|Ano|Ano|Trvalý výstup|
+|streetAddress   |String|Ulice na adrese uživatele místo podnikání. Maximální délka 1024.|Ano|Ano|Trvalý výstup|
+|strongAuthentication AlternativePhoneNumber<sup>1</sup>|String|Sekundární telefonní číslo uživatele, které se používá pro službu Multi-Factor Authentication.|Ano|No|Trvalý výstup|
+|strongAuthenticationEmailAddress<sup>1</sup>|String|Adresa SMTP pro uživatele Příklad: " bob@contoso.com " Tento atribut se používá pro přihlášení pomocí zásad uživatelského jména, aby se uložila e-mailová adresa uživatele. E-mailová adresa se pak použije v toku resetování hesla.|Ano|No|Trvalý výstup|
+|strongAuthenticationPhoneNumber<sup>1</sup>|String|Primární telefonní číslo uživatele, které se používá pro službu Multi-Factor Authentication.|Ano|No|Trvalý výstup|
+|surname         |String|Příjmení uživatele (název rodiny nebo příjmení). Maximální délka 64.|Ano|Ano|Trvalý výstup|
+|telephoneNumber (první položka businessPhones)|String|Primární telefonní číslo místa podnikání uživatele|Ano|No|Trvalý výstup|
+|userPrincipalName (Hlavní název uživatele)    |String|Hlavní název uživatele (UPN) Hlavní název uživatele (UPN) je přihlašovací jméno pro uživatele ve stylu internetu na základě standardu RFC 822 pro Internet. Doména musí být přítomna v kolekci ověřených domén klienta. Tato vlastnost je při vytvoření účtu povinná. Neměnný|Ne|Ne|Vstup, trvalý výstup|
+|usageLocation   |String|Vyžadováno pro uživatele, kteří budou mít přiřazené licence z důvodu právního požadavku na kontrolu dostupnosti služeb v zemích nebo oblastech. Nelze nabývat hodnoty null. Dvoumístné označení země/oblasti (ISO standard 3166). Příklady: "US", "JP" a "GB".|Ano|No|Trvalý výstup|
+|userType        |String|Řetězcová hodnota, která se dá použít ke klasifikaci uživatelských typů v adresáři. Hodnota musí být členem. Jen pro čtení.|Jen pro čtení|No|Trvalý výstup|
+|userState (externalUserState)<sup>2</sup>|String|Pouze pro účet Azure AD B2B označuje, zda je pozvánka PendingAcceptance nebo přijata.|Ne|Ne|Trvalý výstup|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|Zobrazuje časové razítko poslední změny vlastnosti UserState.|Ne|Ne|Trvalý výstup|
 |<sup>1</sup> Nepodporováno Microsoft Graph<br><sup>2</sup> . Neměl by se používat s Azure AD B2C||||||
 
@@ -109,7 +109,7 @@ Následující datové typy jsou podporovány při definování vlastnosti v roz
 |Logická hodnota    | Možné hodnoty: **true** nebo **false**. |
 |DateTime   | Musí být zadáno ve formátu ISO 8601. Bude uloženo v UTC.   |
 |Integer    | 32-bitová hodnota.               |
-|Řetězec     | maximálně 256 znaků.     |
+|String     | maximálně 256 znaků.     |
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o atributech rozšíření:

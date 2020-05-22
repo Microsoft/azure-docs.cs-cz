@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 022c6360b97c7c27887ff5d2f6460f69cb8126c6
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: d6cf00fab14f91b151327b435068d689edab32b2
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778460"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737720"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: cloudové aplikace nebo akce
 
@@ -117,6 +117,10 @@ Kromě aplikací Microsoftu můžou správci přidat do zásad podmíněného p�
 - [Aplikace přidané z Galerie](../manage-apps/add-application-portal.md)
 - [Vlastní aplikace, které nejsou v galerii](../manage-apps/add-non-gallery-app.md)
 - [Starší verze aplikací publikované prostřednictvím řadičů pro doručování aplikací a sítí](../manage-apps/secure-hybrid-access.md)
+
+> [!NOTE]
+> Vzhledem k tomu, že zásada podmíněného přístupu nastavuje požadavky pro přístup ke službě, nemůžete ji použít pro klientskou (veřejnou/nativní) aplikaci. Jiná slova zásada není nastavena přímo v klientské (veřejné nebo nativní) aplikaci, ale je použita, když klient zavolá službu. Například zásada nastavená ve službě SharePoint se vztahuje na klienty, kteří volají službu SharePoint. Pro přístup k e-mailu pomocí klienta aplikace Outlook se použije zásada nastavená na Exchangi. Proto nejsou aplikace klienta (veřejné/nativní) k dispozici pro výběr v nastaveních pro výběr cloudových aplikací a možnost podmíněný přístup není k dispozici v nastavení aplikace pro klientskou (veřejnou/nativní) aplikaci registrovanou ve vašem tenantovi. 
+
 
 ## <a name="user-actions"></a>Akce uživatele
 

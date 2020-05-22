@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: aa2931440b538346d9f1aa9d0ec967f1a812d56b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6eec99594ca748fa0610c60c83fd58e388f7923
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241016"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742895"
 ---
 # <a name="geospatial-apis-to-add-maps-spatial-analytics-and-mobility-solutions-with-azure-maps"></a>Geoprostorové rozhraní API pro přidání map, prostorových analýz a řešení mobility pomocí Azure Maps
 
@@ -25,7 +25,7 @@ ms.locfileid: "80241016"
 - **Směrování**: prezentuje nejkratší nebo nejrychlejší trasy dostupné více cílům v určitou dobu. Směrování také poskytuje specializované trasy a fakta pro průvodce, cyklisty a komerční vozidla.
 - **Časová pásma**: usnadňuje vám zobrazení času, který je kdekoli na světě.
 - **Prostorové operace**: Vylepšete inteligentní informace o poloze.
-- **Zeměpisná poloha**: NAJDE zemi IP adresy.
+- **Zeměpisná poloha**: najde zemi nebo oblast v IP adrese.
 - **Datová služba**: nahrává a ukládá geoprostorové data pro použití s prostorovou operací nebo kompozicí imagí.
 - **Mobilita**: poskytuje informace o umístění v reálném čase na nejbližších veřejných tranzitních službách. Zastavování, informace o trasách a odhadech doby cesty jsou zahrnuté.
 

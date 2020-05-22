@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd76a0556ff22890aff9f4b623e7688064192558
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 98456f26fbc7ca3955883eb283b54084bd86d503
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712192"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737754"
 ---
 # <a name="self-service-sign-up-preview"></a>Samoobslužná registrace (Preview)
 |     |
@@ -35,7 +35,7 @@ Uživatelský tok pro samoobslužné zápisy vytváří pro externí uživatele 
 Nastavení toku uživatele můžete nakonfigurovat, abyste mohli řídit, jak se uživatel zaregistruje do aplikace:
 
 - Typy účtů používané pro přihlašování, jako jsou účty na Facebooku nebo účty Azure AD
-- Atributy, které se mají shromáždit od uživatele, který se registruje, jako je jméno, PSČ nebo země sídla
+- Atributy, které se mají shromáždit od uživatele, který se registruje, jako je jméno, PSČ nebo země/oblast, kde sídlo
 
 Když se uživatel chce přihlásit ke svojí aplikaci, ať už se jedná o webovou, mobilní, desktopovou nebo jednostránkovou aplikaci (SPA), zahájí žádost o autorizaci koncovému bodu zadaného uživatelem. Tok uživatele definuje a řídí uživatelské prostředí. Když uživatel dokončí uživatelský tok registrace, Azure AD vygeneruje token a přesměruje ho uživatele zpátky do vaší aplikace. Po dokončení registrace se účet hosta zřídí pro uživatele v adresáři. Stejný tok uživatelů může používat více aplikací.
 

@@ -1,50 +1,48 @@
 ---
-title: Správa aktualizací pro několik virtuálních počítačů Azure
-description: Tento článek popisuje, jak spravovat aktualizace pro virtuální počítače Azure a mimo Azure.
+title: Správa aktualizací pro více virtuálních počítačů v Azure Automation
+description: V tomto článku se dozvíte, jak spravovat aktualizace pro víc virtuálních počítačů.
 services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a878ecf4519a852a9798b320bda26cd490487a4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 864b6793f65c69c83c0e26d01a10e156b1094889
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731964"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741029"
 ---
-# <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Správa aktualizací pro několik virtuálních počítačů Azure
+# <a name="manage-updates-for-multiple-vms"></a>Správa aktualizací pro několik virtuálních počítačů
 
 Pomocí Azure Automation Update Management můžete spravovat aktualizace a opravy pro virtuální počítače s Windows a Linux. Z účtu [Azure Automation](automation-offering-get-started.md) můžete:
 
-- Připojit virtuální počítače
+- Povolte virtuální počítače pro správu aktualizací.
 - Vyhodnotit stav dostupných aktualizací
 - Naplánovat instalaci požadovaných aktualizací
-- Zkontrolujte výsledky nasazení a ověřte, zda byly aktualizace úspěšně aplikovány na všechny virtuální počítače, pro které je povoleno Update Management.
+- Zkontrolujte výsledky nasazení a ověřte, jestli se aktualizace úspěšně nastavily na všechny virtuální počítače, pro které je povolená Update Management.
 
 Další informace o požadavcích na systém pro Update Management najdete v tématu [Update Management požadavky klienta](automation-update-management.md#client-requirements).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Virtuální počítač nebo počítač s nainstalovaným jedním z podporovaných operačních systémů.
-* Přístup k úložišti aktualizací pro virtuální počítače se systémem Linux na Update Management.
+* VIRTUÁLNÍ počítač nebo počítač s některým z podporovaných operačních systémů.
+* Přístup k úložišti aktualizací pro virtuální počítače se systémem Linux povolených pro Update Management.
 
-## <a name="enable-update-management-for-azure-virtual-machines"></a>Povolit Update Management pro virtuální počítače Azure
+## <a name="enable-update-management-for-azure-vms"></a>Povolení Update Management pro virtuální počítače Azure
 
-V Azure Portal otevřete svůj účet Automation a pak vyberte **Update Management**.
+1. V Azure Portal otevřete svůj účet Automation a pak vyberte **Update Management**.
 
-Vyberte **Přidat virtuální počítače Azure**.
+2. Vyberte **Přidat virtuální počítače Azure**.
 
-![Karta Přidat virtuální počítač Azure](./media/manage-update-multi/update-onboard-vm.png)
+    ![Karta Přidat virtuální počítač Azure](./media/manage-update-multi/update-onboard-vm.png)
 
-Vyberte virtuální počítač, který chcete připojit.
+3. Vyberte virtuální počítač, který chcete povolit, a vyberte **Povolit** v části **Povolit Update Management**.
 
-V části **povolit Update Management**vyberte **Povolit** , aby se virtuální počítač připojil.
+    ![Dialogové okno Povolit správu aktualizací](./media/manage-update-multi/update-enable.png)
 
-![Dialogové okno Povolit správu aktualizací](./media/manage-update-multi/update-enable.png)
+    Po dokončení operace se ve vašem VIRTUÁLNÍm počítači povolí Update Management.
 
-Po dokončení registrace je Update Management pro váš virtuální počítač povolené.
-
-## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Povolení Update Management pro virtuální počítače a počítače mimo Azure
+## <a name="enable-update-management-for-non-azure-vms-and-computers"></a>Povolit Update Management pro virtuální počítače a počítače mimo Azure
 
 Agent Log Analytics pro systém Windows a Linux musí být nainstalován na virtuálních počítačích, které jsou spuštěny ve vaší podnikové síti nebo jiném cloudovém prostředí, aby je bylo možné povolit s Update Management. Informace o požadavcích na systém a podporovaných metodách nasazení agenta do počítačů hostovaných mimo Azure najdete v tématu [Přehled agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md).
 
@@ -54,7 +52,7 @@ Po povolení Update Management pro vaše počítače můžete zobrazit informace
 
   ![Zobrazení karty Počítače](./media/manage-update-multi/update-computers-tab.png)
 
-Počítače, které byly nedávno povolené pro Update Management, možná ještě nebyly vyhodnoceny. Stav dodržování předpisů pro tyto počítače je `Not assessed`. Tady je seznam možných hodnot pro stav dodržování předpisů:
+Počítače, které byly nedávno povolené pro Update Management, možná ještě nebyly vyhodnoceny. Stav dodržování předpisů pro tyto počítače je `Not assessed` . Tady je seznam možných hodnot pro stav dodržování předpisů:
 
 - `Compliant`: Počítače, ve kterých chybí důležité aktualizace nebo aktualizace zabezpečení.
 - `Non-compliant`: Počítače, ve kterých chybí alespoň jedna kritická aktualizace nebo aktualizace zabezpečení.
@@ -74,7 +72,7 @@ Agenti, kteří jsou nainstalováni na virtuálních počítačích a počítač
 
 ### <a name="supported-agents"></a>Podporovaní agenti
 
-Následující tabulka popisuje připojené zdroje, které toto řešení podporuje:
+Následující tabulka popisuje připojené zdroje, které Update Management podporuje:
 
 | Připojený zdroj | Podporuje se | Popis |
 | --- | --- | --- |
@@ -117,7 +115,7 @@ V podokně **nové nasazení aktualizací** zadejte následující informace:
 
   ![Podokno nasazení nové aktualizace](./media/manage-update-multi/update-select-computers.png)
 
-- **Klasifikace aktualizace**: Vyberte typy softwaru, které se mají zahrnout do nasazení aktualizace. Popis typů klasifikace najdete v tématu [klasifikace aktualizací](automation-view-update-assessments.md#update-classifications). Typy klasifikace jsou:
+- **Klasifikace aktualizace**: Vyberte typy softwaru, které se mají zahrnout do nasazení aktualizace. Popis typů klasifikace najdete v tématu [klasifikace aktualizací](automation-view-update-assessments.md#work-with-update-classifications). Typy klasifikace jsou:
   - Důležité aktualizace
   - Aktualizace zabezpečení
   - Kumulativní aktualizace
@@ -130,11 +128,10 @@ V podokně **nové nasazení aktualizací** zadejte následující informace:
 - **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku Zahrnout nebo vyloučit. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o způsobu zpracování zařazení najdete v tématu [Naplánování nasazení aktualizací](automation-tutorial-update-management.md#schedule-an-update-deployment).
 
 > [!NOTE]
-> Je důležité, abyste věděli, že vyloučení přepisují. Pokud například definujete pravidlo vyloučení `*`, nebudou nainstalovány žádné opravy ani balíčky, protože všechny jsou vyloučené. Vyloučené opravy se pořád na počítači zobrazují jako chybějící. Pro počítače se systémem Linux, pokud je zahrnut balíček, ale obsahuje závislý balíček, který byl vyloučen, není balíček nainstalován.
+> Je důležité, abyste věděli, že vyloučení přepisují. Pokud například definujete pravidlo vyloučení `*` , nebudou nainstalovány žádné opravy ani balíčky, protože všechny jsou vyloučené. Vyloučené opravy se pořád na počítači zobrazují jako chybějící. Pro počítače se systémem Linux, pokud je zahrnut balíček, ale obsahuje závislý balíček, který byl vyloučen, není balíček nainstalován.
 
 > [!NOTE]
 > Aktualizace, které byly nahrazeny pro zahrnutí do nasazení aktualizace, nelze zadat.
->
 
 - **Nastavení plánu:** Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času. Můžete také zadat jiný čas.
 
@@ -171,7 +168,7 @@ Pokud u jedné nebo více aktualizací v nasazení dojde k chybě, stav je **Č�
 
 Pokud chcete zobrazit řídicí panel pro nasazení aktualizace, vyberte dokončené nasazení.
 
-V podokně aktualizovat výsledky se zobrazuje celkový počet aktualizací a výsledky nasazení pro virtuální počítač. Tabulka na pravé straně poskytuje podrobný rozpis každé aktualizace a výsledky instalace. Výsledkem instalace může být jedna z následujících hodnot:
+V podokně Aktualizace výsledků se zobrazuje celkový počet aktualizací a výsledky nasazení pro virtuální počítač. Tabulka na pravé straně poskytuje podrobný rozpis každé aktualizace a výsledky instalace. Výsledkem instalace může být jedna z následujících hodnot:
 
 - `Not attempted`: Aktualizace nebyla nainstalována, protože na základě definovaného časového období údržby byla k dispozici dostatek času.
 - `Succeeded`: Aktualizace byla úspěšná.
@@ -179,10 +176,10 @@ V podokně aktualizovat výsledky se zobrazuje celkový počet aktualizací a v�
 
 Výběrem možnosti **Všechny protokoly** zobrazíte všechny položky protokolu, které toto nasazení vytvořilo.
 
-Chcete-li zobrazit datový proud úlohy Runbooku, který spravuje nasazení aktualizace na cílovém virtuálním počítači, vyberte dlaždici výstup.
+Pokud chcete zobrazit datový proud úlohy Runbooku, který spravuje nasazení aktualizace na cílovém virtuálním počítači, vyberte dlaždici výstup.
 
 Kliknutím na **Chyby** zobrazíte podrobné informace o případných chybách tohoto nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o protokolech, výstupech a chybách Update Management najdete v tématu [aktualizace záznamů dotazů pro Update Management](automation-update-management-query-logs.md).
+[Dotazování na protokoly Update Managementu](automation-update-management-query-logs.md)

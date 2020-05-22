@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 04/08/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: cef4f83881aed67c46477110de530bbf191ee39f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff83a9a4e4bfd4c27dd3f8d3f212e489c3772eb4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984733"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741631"
 ---
 # <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Přidání osobních účtů Microsoft do aplikace Microsoft Authenticator
 
@@ -59,7 +59,7 @@ Vlastní účet Microsoft můžete přidat tak, že nejprve zapnete dvojúrovňo
 
     ![Vyberte buď účet Microsoft, nebo naskenujte kód QR, pokud je k dispozici.](media/user-help-auth-app-add-personal-ms-account/add-account-android.png)
 
-1. Přihlaste se k osobnímu účtu pomocí příslušné e-mailové adresy alain@outlook.com(například) a pak vyberte **Další**.
+1. Přihlaste se k osobnímu účtu pomocí příslušné e-mailové adresy (například alain@outlook.com ) a pak vyberte **Další**.
 
     >[!Note]
     >Pokud nemáte osobní účet Microsoft, [můžete si ho vytvořit](https://account.microsoft.com/account/Account?refd=www.bing.com&ru=https%3A%2F%2Faccount.microsoft.com%2F%3Frefd%3Dwww.bing.com&destrt=home-index).

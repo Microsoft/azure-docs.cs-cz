@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fd854691203361847ae9a6c873121c9b66820a90
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195135"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743373"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>Nastavení modulu PowerShell pro virtuální plochu Windows
 
@@ -63,7 +63,12 @@ Tím se vás pošle přímo do předplatného, které je ve výchozím nastaven�
 Pokud chcete po přihlášení změnit výchozí předplatné, spusťte tuto rutinu:
 
 ```powershell
-Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -Subscription <preferredsubscriptionname>
+```
+
+Můžete také vybrat ze seznamu pomocí rutiny out-GridView:
+```powershell
+Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription
 ```
 
 Když vyberete nové předplatné, které se má použít, nemusíte v rutinách, které spustíte později, zadávat ID tohoto předplatného. Například následující rutina načte konkrétního hostitele relace bez nutnosti ID předplatného:

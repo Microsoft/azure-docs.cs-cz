@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 64df2e0f17322f8e650ede9d4453d90c36252135
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680023"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735884"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení potíží s Update Management
 
@@ -50,7 +50,7 @@ K této chybě může dojít z následujících důvodů:
 
 * V části [Konfigurace sítě](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) zjistíte, které adresy a porty musí být povolené, aby mohl agent Log Analytics fungovat.
 
-* Vyhledejte problémy s konfigurací oboru. [Konfigurace oboru](../automation-onboard-solutions-from-automation-account.md#scope-configuration) určuje, které počítače jsou nakonfigurovány pro Update Management. Pokud se Váš počítač zobrazuje v pracovním prostoru, ale ne na portálu Update Management, musíte nastavit konfiguraci oboru pro cílení na počítače. Další informace o konfiguraci oboru najdete v tématu [Povolení počítačů v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+* Vyhledejte problémy s konfigurací oboru. [Konfigurace oboru](../automation-onboard-solutions-from-automation-account.md#scope-configuration) určuje, které počítače jsou nakonfigurovány pro Update Management. Pokud se Váš počítač zobrazuje v pracovním prostoru, ale ne na portálu Update Management, musíte nastavit konfiguraci oboru pro cílení na počítače. Další informace o konfiguraci oboru najdete v tématu [Povolení počítačů v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 * Odeberte konfiguraci pracovního procesu podle kroků v části [odebrání Hybrid Runbook Worker z místního počítače s Windows](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) nebo [Odebrání Hybrid Runbook Worker z místního počítače se systémem Linux](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker). 
 
@@ -119,9 +119,9 @@ K tomuto problému může dojít při potížích s místními konfiguracemi neb
 
 4. Pokud počítač ve výsledcích dotazu nevidíte, nebude nedávno vrácen se změnami. Pravděpodobně došlo k potížím s místní konfigurací a je třeba [agenta přeinstalovat](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
 
-5. Pokud se Váš počítač zobrazí ve výsledcích dotazu, vyhledejte problémy s konfigurací rozsahu. [Konfigurace oboru](../automation-onboard-solutions-from-automation-account.md#scope-configuration) určuje, které počítače jsou nakonfigurovány pro Update Management. 
+5. Pokud se Váš počítač zobrazí ve výsledcích dotazu, vyhledejte problémy s konfigurací rozsahu. [Konfigurace oboru](../automation-scope-configurations-update-management.md) určuje, které počítače jsou nakonfigurovány pro Update Management. 
 
-6. Pokud se Váš počítač zobrazuje v pracovním prostoru, ale ne v Update Management, musíte nakonfigurovat konfiguraci oboru, aby se na počítač nastavil cíl. Další informace o tom, jak to udělat, najdete v tématu [Povolení počítačů v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+6. Pokud se Váš počítač zobrazuje v pracovním prostoru, ale ne v Update Management, musíte nakonfigurovat konfiguraci oboru, aby se na počítač nastavil cíl. Další informace o tom, jak to udělat, najdete v tématu [Povolení počítačů v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 7. V pracovním prostoru spusťte tento dotaz.
 

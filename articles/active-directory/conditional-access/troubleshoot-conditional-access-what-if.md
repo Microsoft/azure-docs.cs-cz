@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73175796"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737635"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Řešení potíží s podmíněným přístupem pomocí nástroje What If
 
 [Nástroj what if](what-if-tool.md) v podmíněném přístupu je výkonný, když se snažíte pochopit, proč zásada byla nebo nebyla pro uživatele v konkrétní situaci použita, nebo pokud by se zásada použila ve známém stavu.
 
-Nástroj what if se nachází v**What If** **Azure Portal** > **Azure Active Directory** > **podmíněného přístupu** > .
+Nástroj what if se nachází v what if **Azure Portal**  >  **Azure Active Directory**  >  **podmíněného přístupu**  >  **What If**.
 
 ![Nástroj pro What If podmíněného přístupu ve výchozím stavu](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
 
@@ -37,7 +37,7 @@ Následující další informace jsou volitelné, ale pomůžou vám zúžit roz
 
 * Cloudové aplikace nebo akce
 * IP adresa 
-* Země
+* Země/oblast
 * Platforma zařízení
 * Klientské aplikace (Preview)
 * Stav zařízení (Preview) 

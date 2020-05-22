@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56622ee2c014bd8dbca7c61ec00b927c56f63a40
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617207"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740395"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Podpora vysokého provozu služby Application Gateway
 
@@ -51,7 +51,7 @@ V tomto příkladu se dozvíte, jak použít Azure Portal k nastavení upozorně
 > V závislosti na tom, jakým způsobem chcete mít k dispozici možnosti provozu, můžete nastavit, aby se tato výstraha nastavila na nižší nebo vyšší procento využití.
 
 ## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>Nastavení WAF s využitím pro infiltrování a ochranu robota k zastavení útoků
-Pokud chcete před aplikací použít další vrstvu zabezpečení, použijte Application Gateway WAF_v2 SKU pro funkce WAF. SKLADOVOU položku v2 můžete nakonfigurovat tak, aby povolovala přístup pouze k vašim aplikacím z dané země nebo země. Nastavili jste vlastní pravidlo WAF k explicitnímu povolení nebo blokování provozu na základě geografického umístění. Další informace najdete v tématu věnovaném [infiltrování vlastních pravidel](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) a [způsobu konfigurace vlastních pravidel pro Application Gateway WAF_v2 SKU prostřednictvím PowerShellu](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
+Pokud chcete před aplikací použít další vrstvu zabezpečení, použijte Application Gateway WAF_v2 SKU pro funkce WAF. SKLADOVOU položku v2 můžete nakonfigurovat tak, aby povolovala přístup pouze k vašim aplikacím z dané země nebo oblasti nebo zemí/oblastí. Nastavili jste vlastní pravidlo WAF k explicitnímu povolení nebo blokování provozu na základě geografického umístění. Další informace najdete v tématu věnovaném [infiltrování vlastních pravidel](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) a [způsobu konfigurace vlastních pravidel pro Application Gateway WAF_v2 SKU prostřednictvím PowerShellu](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 
 Povolí ochranu robotů blokující známé chybné roboty. To by mělo snížit objem provozu, který se bude připravovat do vaší aplikace. Další informace najdete v tématu [ochrana robota s pokyny k instalaci](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
 

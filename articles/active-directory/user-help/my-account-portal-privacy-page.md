@@ -8,15 +8,15 @@ ms.reviewer: jpettere
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: a97b79f7927c56a737723060cd9cb3218b12bf55
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 0e74ea4a3204efb35fa6113504356e87c85aa0dd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82625489"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742098"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Podívejte se, jak vaše organizace používá data týkající se ochrany osobních údajů.
 
@@ -24,7 +24,7 @@ To, jak vaše organizace používá vaše data, můžete zobrazit na stránce **
 
 ## <a name="view-your-privacy-related-info"></a>Zobrazení informací souvisejících s ochranou osobních údajů
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myaccount.microsoft.com/ pak přejít na stránku.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na https://myaccount.microsoft.com/ stránku.
 
 2. V levém navigačním podokně vyberte **Ochrana osobních** údajů nebo vyberte odkaz **zkontrolovat soukromí** z bloku **osobních údajů** .
 

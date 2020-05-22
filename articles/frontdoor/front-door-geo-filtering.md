@@ -13,24 +13,24 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 2cdde705d0e9f0905d4c33648b5415758d838b06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98c86d839868eb0714c7106d5267d1c55e6e99d5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411170"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739307"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co je geografické filtrování na doméně pro službu Azure Front Door?
 
 Ve výchozím nastavení reagují přední dveře Azure na požadavky uživatelů bez ohledu na umístění uživatele, který požadavek odeslal. V některých případech však můžete chtít omezit přístup k vašim webovým aplikacím podle země nebo oblasti. Služba WAF (Web Application firewall) ve front-dveřích umožňuje definovat zásadu s použitím pravidel vlastního přístupu pro konkrétní cestu ke koncovému bodu a povolit nebo blokovat přístup ze zadaných zemí nebo oblastí. 
 
-Zásada WAF obvykle zahrnuje sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete proměnnou shody, operátor a hodnotu shody.  V případě pravidla geografického filtrování je proměnná shody REMOTE_ADDR, operátor je GeoMatch a hodnota je dvoupísmenný kód požadované země. Kombinací podmínky GeoMatch a podmínky shody řetězce REQUEST_URI můžete vytvořit pravidlo geografického filtrování na základě cesty.
+Zásada WAF obvykle zahrnuje sadu vlastních pravidel. Pravidlo se skládá z podmínek shody, akce a priority. V podmínce shody definujete proměnnou shody, operátor a hodnotu shody.  Pro pravidlo geografického filtrování, které odpovídá proměnné, je REMOTE_ADDR, je operátor geograficky shodný, hodnota je dvě písmena v kódu země/oblasti, kterou je důležité. Kombinací podmínky GeoMatch a podmínky shody řetězce REQUEST_URI můžete vytvořit pravidlo geografického filtrování na základě cesty.
 
 Zásady geografického filtrování pro vaše přední dveře můžete nakonfigurovat buď pomocí [Azure PowerShell](front-door-tutorial-geo-filtering.md) , nebo pomocí naší [šablony pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
-## <a name="country-code-reference"></a>Odkaz na kód země
+## <a name="countryregion-code-reference"></a>Odkaz na kód země/oblasti
 
-|Kód země | Název země |
+|Kód země/oblasti | Název země nebo oblasti |
 | ----- | ----- |
 | AD | Andorra |
 | AE | Spojené arabské emiráty|
@@ -98,7 +98,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | GR | Řecko|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hongkong – zvláštní správní oblast|
+| HK | Hongkong – zvláštní administrativní oblast|
 | HN | Honduras|
 | HR | Chorvatsko|
 | HT | Haiti|
@@ -150,7 +150,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | MX | Mexiko|
 | MY | Malajsie|
 | MZ | Mosambik|
-| Není k dispozici | Namibie|
+| NA | Namibie|
 | NE | Niger|
 | NG | Nigérie|
 | NI | Nikaragua|
@@ -188,7 +188,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | SV | Salvador|
 | SY | Syrská arabská republika|
 | SZ | Svazijsko|
-| TC | Turks a Caicos|
+| TC | Ostrovy Turks a Caicos|
 | TG | Togo|
 | TH | Thajsko|
 | TN | Tunisko|
@@ -198,7 +198,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | TZ | Sjednocená tanzanská republika|
 | UA | Ukrajina|
 | UG | Uganda|
-| USA | Spojené státy|
+| USA | USA|
 | UY | Uruguay|
 | UZ | Uzbekistán|
 | VC | Svatý Vincenc a Grenadiny|

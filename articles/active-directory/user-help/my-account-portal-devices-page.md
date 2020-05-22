@@ -8,15 +8,15 @@ ms.reviewer: jpettere
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: d43b2bd5912375c3bb2010f0f2ae75a119512f03
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 9badda1663947587b078c6bb808f4efdf2e10579
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82625829"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83735952"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Správa připojených zařízení ze stránky zařízení
 
@@ -31,7 +31,7 @@ Stránka **zařízení** na portálu **můj účet** vám pomůže se správou z
 
 ## <a name="view-your-connected-devices"></a>Zobrazit připojená zařízení
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak na stránce **můj účet** (https://myaccount.microsoft.com/) .
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak na stránce **můj účet** ( https://myaccount.microsoft.com/) .
 
 2. V levém navigačním podokně vyberte **zařízení** nebo vyberte odkaz **spravovat zařízení** z bloku **zařízení** .
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ab41d3619150ace8e55702792d5974060133d5c1
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 7ecd68023c5c48a82c07d98615807a895cdd0cae
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726175"
+ms.locfileid: "83743109"
 ---
 # <a name="create-an-azure-virtual-machine-offer-in-azure-marketplace"></a>Vytvoření nabídky virtuálního počítače Azure v Azure Marketplace
 
@@ -39,7 +39,7 @@ Pokud jste to ještě neudělali, Projděte si [příručku pro publikování na
 - Kurzy
   - [Virtuální počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
   - [Virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
-- ukázky
+- Ukázky
   - [Ukázky v Azure CLI pro virtuální počítače se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
   - [Azure PowerShell pro virtuální počítače se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
   - [Ukázky v Azure CLI pro virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
@@ -223,7 +223,7 @@ Poskytněte web podpory, kde se zákazníci můžou připojit k vašemu týmu po
 Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístek podpory. Tato akce nebude uvedena na webu Marketplace.
 
 - Name
-- E-mail
+- E-mailu
 - Telefon
 
 ### <a name="engineering-contact"></a>Technický kontakt
@@ -231,7 +231,7 @@ Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, kd
 Poskytněte kontaktní informace Microsoftu pro použití v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tato akce nebude uvedena na webu Marketplace.
 
 - Name
-- E-mail
+- E-mailu
 - Telefon
 
 ### <a name="marketplace-media"></a>Média Marketplace
@@ -370,7 +370,7 @@ Na této kartě nakonfigurujete následující:
 
 #### <a name="markets"></a>Trhy
 
-Každý plán musí být k dispozici alespoň v jednom trhu. Zaškrtněte políčko pro každé místo na trhu, kde by měl být tento plán k dispozici pro nákup (uživatelé na těchto trzích si můžou nabídku nasadit do všech oblastí Azure vybraných v **[Nastavení plánu](#plan-setup)**). Tlačítko **daň k dani** zobrazuje země, ve kterých Microsoft prochází prodej a používání daně vaším jménem. Publikování v Číně je omezené na plány, které jsou buď **bezplatné** , nebo mají **vlastní licenci** (BYOL).
+Každý plán musí být k dispozici alespoň v jednom trhu. Zaškrtněte políčko pro každé místo na trhu, kde by měl být tento plán k dispozici pro nákup (uživatelé na těchto trzích si můžou nabídku nasadit do všech oblastí Azure vybraných v **[Nastavení plánu](#plan-setup)**). Tlačítko **daň k dani** zobrazuje země nebo oblasti, ve kterých společnost Microsoft prochází prodej a používání daně vaším jménem. Publikování v Číně je omezené na plány, které jsou buď **bezplatné** , nebo mají **vlastní licenci** (BYOL).
 
 Pokud jste už pro svůj plán nastavili ceny v USA dolary (USD) a přidáte další místo na trhu, cena za nový trh se vypočítá podle aktuálních směnných kurzů. Před publikováním si vždycky Projděte cenu za každý trh. Zkontrolujte ceny pomocí odkazu **exportovat ceny (XLSX)** po uložení změn.
 

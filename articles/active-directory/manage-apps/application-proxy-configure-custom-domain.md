@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f35658a75adb4d4c6c279e45087e741b8117e65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481377"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736479"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurace vlastních domén pomocí Azure Proxy aplikací služby AD
 
-Když publikujete aplikaci prostřednictvím Proxy aplikací služby Azure Active Directory, vytvoříte externí adresu URL pro uživatele. Tato adresa URL získá výchozí *yourtenant.msappproxy.NET*domény. Například pokud publikujete aplikaci s názvem *výdaje* ve vašem tenantovi s názvem *Contoso*, externí adresa URL je *https\/:/Expenses-contoso.msappproxy.NET*. Pokud chcete místo *msappproxy.NET*použít vlastní název domény, můžete pro svou aplikaci nakonfigurovat vlastní doménu. 
+Když publikujete aplikaci prostřednictvím Proxy aplikací služby Azure Active Directory, vytvoříte externí adresu URL pro uživatele. Tato adresa URL získá výchozí *yourtenant.msappproxy.NET*domény. Například pokud publikujete aplikaci s názvem *výdaje* ve vašem tenantovi s názvem *Contoso*, externí adresa URL je *https: \/ /Expenses-contoso.msappproxy.NET*. Pokud chcete místo *msappproxy.NET*použít vlastní název domény, můžete pro svou aplikaci nakonfigurovat vlastní doménu. 
 
 ## <a name="benefits-of-custom-domains"></a>Výhody vlastních domén
 
@@ -128,7 +128,7 @@ Abyste měli jistotu, že jsou zahrnuté všechny požadované zprostředkujíc�
 
 Neexistuje žádné omezení metod podpisu certifikátu. Podporuje se typ ECC (Cryptography Curve Cryptography), alternativní název předmětu (SAN) a další typy běžných certifikátů. 
 
-Můžete použít certifikáty se zástupnými znaky, pokud se zástupný znak shoduje s externí adresou URL. Pro [aplikace se zástupnými znaky](application-proxy-wildcard.md)musíte použít certifikáty se zástupnými znaky. Chcete-li použít certifikát k přístupu k subdoménám, je nutné přidat zástupné znaky subdomény jako alternativní názvy předmětu do stejného certifikátu. Například certifikát pro * \*. Adventure-Works.com* nebude fungovat pro * \*. Apps.Adventure-Works.com* , pokud nepřidáte * \*. Apps.Adventure-Works.com* jako alternativní název subjektu. 
+Můžete použít certifikáty se zástupnými znaky, pokud se zástupný znak shoduje s externí adresou URL. Pro [aplikace se zástupnými znaky](application-proxy-wildcard.md)musíte použít certifikáty se zástupnými znaky. Chcete-li použít certifikát k přístupu k subdoménám, je nutné přidat zástupné znaky subdomény jako alternativní názvy předmětu do stejného certifikátu. Například certifikát pro * \* . Adventure-Works.com* nebude fungovat pro * \* . Apps.Adventure-Works.com* , pokud nepřidáte * \* . Apps.Adventure-Works.com* jako alternativní název subjektu. 
 
 Pokud je v klientských zařízeních nainstalovaný řetěz certifikátů, můžete použít certifikáty vydané vlastní infrastrukturou veřejných klíčů (PKI). Intune může tyto certifikáty nasadit na spravovaná zařízení. U nespravovaných zařízení musíte tyto certifikáty nainstalovat ručně. 
 
@@ -143,6 +143,6 @@ Stejný certifikát můžete použít pro více aplikací. Pokud nahraný certif
 Po vypršení platnosti certifikátu se zobrazí upozornění, abyste si nahráli jiný certifikát. Pokud je certifikát odvolaný, můžou se uživatelům při přístupu k aplikaci zobrazit upozornění zabezpečení. Pokud chcete aktualizovat certifikát pro aplikaci, přejděte na stránku **proxy aplikace** pro aplikaci, vyberte **certifikát**a nahrajte nový certifikát. Pokud starý certifikát nepoužívá jiné aplikace, automaticky se odstraní. 
 
 ## <a name="next-steps"></a>Další kroky
-* [Povolte jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md) k publikovaným aplikacím pomocí ověřování Azure AD.
-* [Povolte podmíněný přístup](../conditional-access/overview.md) k publikovaným aplikacím.
 
+* [Povolte jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md) k publikovaným aplikacím pomocí ověřování Azure AD.
+* [Podmíněný přístup](../conditional-access/concept-conditional-access-cloud-apps.md) pro vaše publikované cloudové aplikace.

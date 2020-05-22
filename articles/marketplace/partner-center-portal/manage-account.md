@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 54b45825f2322dc127d5db818b7abe52e4a98967
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f5e4515cfbacb656f60492613b5379c0bde60244
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208393"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736020"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Správa účtu komerčního tržiště v partnerském centru
 
@@ -64,7 +64,7 @@ V části kontaktní údaje uvidíte **zobrazované jméno vydavatele**, **konta
 
 #### <a name="payout-account"></a>Účet pro výběr
 
-Účet pro výběr je bankovní účet, na který se z prodeje posílají výnosy. Tento bankovní účet musí být ve stejné zemi, ve které jste zaregistrovali účet partnerského centra.
+Účet pro výběr je bankovní účet, na který se z prodeje posílají výnosy. Tento bankovní účet musí být ve stejné zemi nebo oblasti, kde jste zaregistrovali účet partnerského centra.
 
 Postup nastavení účtu výběr:
 
@@ -80,21 +80,21 @@ Postup nastavení účtu výběr:
 
 Zkontrolujte aktuální stav daňového profilu a zobrazí se správné informace o **typu entity** a **daňovém certifikátu** . Vyberte **Upravit** , pokud chcete aktualizovat nebo dokončit všechny požadované formuláře.
 
-Aby bylo možné stanovit svůj daňový stav, musíte určit svou zemi bydliště a občanství a dokončit příslušné daňové formuláře spojené s vaší zemí nebo oblastí.
+Aby bylo možné stanovit svůj daňový stav, musíte určit svou zemi/oblast pobytu a občanství a dokončit příslušné daňové formuláře spojené s vaší zemí nebo oblastí.
 
-Bez ohledu na zemi bydliště nebo občanství musíte vyplnit USA daňové formuláře a prodávat jakékoli nabídky prostřednictvím Microsoftu. Partneři, kteří splňují určité USA požadavky na zaplňování, musí vyplnit formulář finančního úřadu W-9. Jiní partneři mimo USA musí vyplnit formulář finančního úřadu W-8. Tyto formuláře můžete po dokončení finančního profilu vyplnit online.
+Bez ohledu na vaši zemi nebo oblast pobytu nebo občanství musíte vyplnit USA daňové formuláře a prodávat jakékoli nabídky prostřednictvím Microsoftu. Partneři, kteří splňují určité USA požadavky na zaplňování, musí vyplnit formulář finančního úřadu W-9. Jiní partneři mimo USA musí vyplnit formulář finančního úřadu W-8. Tyto formuláře můžete po dokončení finančního profilu vyplnit online.
 
 USA jednotlivé daňové identifikační číslo (nebo ITIN) se nevyžaduje pro příjem plateb od společnosti Microsoft nebo nárokování na výhody daňové smlouvy.
 
 Daňové formuláře můžete v partnerském centru doplňovat a odesílat elektronicky. ve většině případů nemusíte tisknout ani tisknout žádné formuláře.
 
-Různé země a oblasti mají různé daňové požadavky. Přesná částka, kterou musíte zaplatit za daně, závisí na zemích a oblastech, kde prodáváte své nabídky. Společnost Microsoft se zakládá za prodej a v některých zemích používá daň za vás. Tyto země budou identifikovány v procesu výpisu vaší nabídky. V jiných zemích v závislosti na tom, kde jste zaregistrovali, může být nutné uhradit prodej a daň z prodeje přímo k místní autoritě zdanění. Tržby, které obdržíte, se navíc můžou zdanitelně vyvažovat za příjem. Důrazně doporučujeme, abyste se obrátili na příslušné oprávnění pro vaši zemi nebo oblast, která vám nejlépe pomůže určit správné daňové informace pro prodejní transakce od společnosti Microsoft.
+Různé země a oblasti mají různé daňové požadavky. Přesná částka, kterou musíte zaplatit za daně, závisí na zemích a oblastech, kde prodáváte své nabídky. Společnost Microsoft se zakládá za prodej a v některých zemích nebo oblastech používá daň za vás. Tyto země nebo oblasti budou identifikovány v procesu výpisu vaší nabídky. V jiných zemích nebo oblastech, v závislosti na tom, kde jste registrováni, může být nutné uhradit prodej a daň z prodeje přímo k místní autoritě zdanění. Tržby, které obdržíte, se navíc můžou zdanitelně vyvažovat za příjem. Důrazně doporučujeme, abyste se obrátili na příslušné oprávnění pro vaši zemi nebo oblast, která vám nejlépe pomůže určit správné daňové informace pro prodejní transakce od společnosti Microsoft.
 
 ##### <a name="withholding-rates"></a>Míry odmítnutí
-Informace, které odesíláte v daňovém formuláři, určují odpovídající míru srážkové srážky. Míra odmítnutí se vztahuje pouze na prodej, který provedete do USA; prodej uskutečněný v jiných umístěních než USA nezávisí na odmítnutí. Sazby pro srážka se liší, ale u většiny vývojářů, kteří registrují mimo USA, je výchozí sazba 30%. Tuto sazbu máte možnost snížit, pokud vaše země souhlasila se smlouvou o dani ze zisku s USA.
+Informace, které odesíláte v daňovém formuláři, určují odpovídající míru srážkové srážky. Míra odmítnutí se vztahuje pouze na prodej, který provedete do USA; prodej uskutečněný v jiných umístěních než USA nezávisí na odmítnutí. Sazby pro srážka se liší, ale u většiny vývojářů, kteří registrují mimo USA, je výchozí sazba 30%. Tuto sazbu máte možnost snížit, pokud se země nebo oblast dohodla se smlouvou o dani ze zisku s USA.
 
 ##### <a name="tax-treaty-benefits"></a>Výhody daňové smlouvy
-Pokud nejste mimo USA, možná budete moct využít výhody daňové smlouvy. Tyto výhody se liší od země až po zemi a umožňují snížit množství daní, které společnost Microsoft odpírá. Výhody daňové smlouvy můžete uplatnit vyplněním části II formuláře W-8BEN. Doporučujeme, abyste komunikovali s příslušnými prostředky ve vaší zemi nebo oblasti, abyste zjistili, jestli se vám tyto výhody vztahují.
+Pokud nejste mimo USA, možná budete moct využít výhody daňové smlouvy. Tyto výhody se liší od zemí/oblastí až po zemi nebo oblast a můžou snížit množství daní, které společnost Microsoft zakazuje. Výhody daňové smlouvy můžete uplatnit vyplněním části II formuláře W-8BEN. Doporučujeme, abyste komunikovali s příslušnými prostředky ve vaší zemi nebo oblasti, abyste zjistili, jestli se vám tyto výhody vztahují.
 
 [Přečtěte si další informace o daňových detailech pro vývojáře aplikací a her pro Windows a Azure Marketplace vydavatelům](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps).
 
@@ -134,7 +134,7 @@ Další informace najdete v tématu [sledování zákaznického využití Azure 
 
 Pokud publikujete [dynamics 365 pro zákaznickou zapojení & Power Apps](./create-new-customer-engagement-offer.md) nebo [Dynamics 365 for Operations](./create-new-operations-offer.md) nabídka, musíte dokončit svůj **Fakturační profil**.
 
-Fakturační adresa je předem vyplněná z vaší právnické osoby a tuto adresu můžete později aktualizovat. Pole DPH a ID DPH jsou volitelná.  Název země a název společnosti nelze upravovat.
+Fakturační adresa je předem vyplněná z vaší právnické osoby a tuto adresu můžete později aktualizovat. Pole DPH a ID DPH jsou volitelná.  Název země nebo oblasti a název společnosti nelze upravovat.
 
 ## <a name="multi-user-account-management"></a>Správa účtů s více uživateli
 

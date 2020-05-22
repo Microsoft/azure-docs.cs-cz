@@ -3,12 +3,12 @@ title: Vyloučení disků z replikace pomocí Azure Site Recovery
 description: Postup vyloučení disků z replikace do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: abecc19cac57a4a95d01b7a7ec076259088b101b
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900286"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740514"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Vyloučení disků z zotavení po havárii
 
@@ -24,9 +24,9 @@ Tento článek popisuje, jak vyloučit disky z replikace během zotavení po hav
 
 Z replikace můžete vyloučit disky, které jsou shrnuté v tabulce.
 
-**Z Azure do Azure** | **Z VMware do Azure** | **Z Hyper-V do Azure** 
---- | --- | ---
-Ano | Ano | Ano 
+**Z Azure do Azure** | **Z VMware do Azure** | **Z Hyper-V do Azure** | **Fyzický server do Azure**
+--- | --- | --- | ---
+Ano | Ano | Ano | Ano
 
 ## <a name="exclude-limitations"></a>Vyloučit omezení
 
@@ -179,7 +179,7 @@ Po plánovaném převzetí služeb při selhání (navrácení služeb po obnove
 DB-Disk0-OS | Disk0 |   C:\ | Disk s operačním systémem.
 DB-Disk1 | Disk1 | D:\ | Systémová databáze SQL a uživatel Databáze1.
 DB-Disk2 (vyloučený disk) | Disk2 | E:\ | Dočasné soubory.
-DB-Disk3 (vyloučený disk) | Disk3 | F:\ | Databáze tempdb SQL<br/><br/> Cesta ke složce (\)F:\MSSQL\Data)
+DB-Disk3 (vyloučený disk) | Disk3 | F:\ | Databáze tempdb SQL<br/><br/> Cesta ke složce ( \) F:\MSSQL\Data)
 DB Disk4 | Disk4 | G:\ | Uživatelská databáze 2
 
 

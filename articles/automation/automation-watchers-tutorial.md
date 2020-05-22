@@ -1,20 +1,26 @@
 ---
-title: Vytvoření úlohy sledovacího procesu v účtu Azure Automation
-description: Naučte se, jak vytvořit úlohu sledovacího procesu v účtu Azure Automation ke sledování nových souborů vytvořených ve složce.
+title: Sledování aktualizovaných souborů pomocí úlohy sledovacího procesu Azure Automation
+description: V tomto článku se dozvíte, jak vytvořit úlohu sledovacího procesu v účtu Azure Automation ke sledování nových souborů vytvořených ve složce.
 services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 1175350e7f9f4db92d7d59eba0cc66ac4bb49f5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c41437773cf45e51e90dc55ad37e198c77f4373
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617357"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744151"
 ---
-# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Vytvoření úloh sledovacího procesu Azure Automation ke sledování změn souborů v místním počítači
+# <a name="track-updated-files-with-a-watcher-task"></a>Sledování aktualizovaných souborů pomocí úlohy sledovacího procesu
 
 Azure Automation používá úlohu sledovacího procesu k vyhledání událostí a triggeru akcí pomocí PowerShellových runbooků. Úloha sledovacího procesu obsahuje dvě části, sledovací proces a akci. Sada Runbook sledovacího procesu se spouští v intervalu definovaném v úloze sledovacího procesu a výstupy dat do sady Runbook akce. 
+
+> [!NOTE]
+> Úlohy sledovacího procesu nejsou podporované v Azure Čína Vianet 21.
+
+> [!IMPORTANT]
+> Od května 2020 je pro použití Azure Logic Apps podporovaný způsob, jak monitorovat události, plánovat opakující se úlohy a aktivovat akce. Přečtěte si téma [plánování a spouštění opakujících se automatizovaných úloh, procesů a pracovních postupů s Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows).
 
 V tomto kurzu se seznámíte s vytvořením úlohy sledovacího procesu, který se bude monitorovat při přidání nového souboru do adresáře. Získáte informace o těchto tématech:
 
@@ -34,9 +40,6 @@ K dokončení tohoto kurzu potřebujete následující:
 * [Účet služby Automation](automation-offering-get-started.md) , který bude obsahovat sledovací proces a runbooky akcí a úlohu sledovacího procesu.
 * [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) , ve kterém je spuštěna úloha sledovacího procesu.
 * PowerShellové Runbooky. Úlohy sledovacích procesů nepodporují Runbooky pracovního postupu PowerShellu.
-
-> [!NOTE]
-> Úlohy sledovacího procesu se v Azure Čína nepodporují.
 
 ## <a name="import-a-watcher-runbook"></a>Import Runbooku sledovacího procesu
 
@@ -166,5 +169,5 @@ V tomto kurzu jste se naučili:
 Pomocí tohoto odkazu se dozvíte více o vytváření vlastních sad Runbook.
 
 > [!div class="nextstepaction"]
-> [Můj první powershellový Runbook](automation-first-runbook-textual-powershell.md)
+> [Vytvoření runbooku v PowerShellu](learn/automation-tutorial-runbook-textual-powershell.md)
 

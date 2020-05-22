@@ -12,12 +12,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3338c71d37a176206ff106a8229c3b583209ddd4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450873"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737329"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory manifest aplikace
 
@@ -43,9 +43,9 @@ Tato část popisuje atributy nalezené v manifestu aplikace.
 
 ### <a name="id-attribute"></a>atribut ID
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| id | Řetězec |
+| id | String |
 
 Jedinečný identifikátor aplikace v adresáři Toto ID není identifikátor používaný k identifikaci aplikace v jakékoli transakci protokolu. Používá se pro odkazování na objekt v dotazech adresářů.
 
@@ -57,7 +57,7 @@ Příklad:
 
 ### <a name="accesstokenacceptedversion-attribute"></a>accessTokenAcceptedVersion – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | accessTokenAcceptedVersion | Hodnota Int32 s možnou hodnotou null |
 
@@ -67,7 +67,7 @@ Koncový bod použitý v 1.0 nebo v 2.0 je vybraný klientem a má vliv jenom na
 
 Možné hodnoty pro `accesstokenAcceptedVersion` jsou 1, 2 nebo null. Pokud je hodnota null, tento parametr se nastaví na hodnotu 1, která odpovídá koncovému bodu v 1.0.
 
-Pokud `signInAudience` má `AzureADandPersonalMicrosoftAccount`hodnotu, musí být `2`hodnota.
+Pokud `signInAudience` má `AzureADandPersonalMicrosoftAccount` hodnotu, musí být hodnota `2` .
 
 Příklad:
 
@@ -77,11 +77,11 @@ Příklad:
 
 ### <a name="addins-attribute"></a>addIns – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | addIns | Kolekce |
 
-Definuje vlastní chování, které může přijímající služba použít k volání aplikace v konkrétních kontextech. Například aplikace, které mohou vykreslovat datové proudy souborů, `addIns` mohou nastavit vlastnost pro její funkci "handlerer". Tento parametr umožní službám, jako je Office 365, volat aplikaci v kontextu dokumentu, na kterém uživatel pracuje.
+Definuje vlastní chování, které může přijímající služba použít k volání aplikace v konkrétních kontextech. Například aplikace, které mohou vykreslovat datové proudy souborů, mohou nastavit `addIns` vlastnost pro její funkci "handlerer". Tento parametr umožní službám, jako je Office 365, volat aplikaci v kontextu dokumentu, na kterém uživatel pracuje.
 
 Příklad:
 
@@ -102,7 +102,7 @@ Příklad:
 
 ### <a name="allowpublicclient-attribute"></a>allowPublicClient – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | allowPublicClient | Logická hodnota |
 
@@ -116,7 +116,7 @@ Příklad:
 
 ### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | availableToOtherTenants | Logická hodnota |
 
@@ -127,9 +127,9 @@ Nastavte na hodnotu true, pokud je aplikace sdílená s ostatními klienty. v op
 
 ### <a name="appid-attribute"></a>atribut appId
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| appId | Řetězec |
+| appId | String |
 
 Určuje jedinečný identifikátor pro aplikaci, která je přiřazená aplikaci pomocí Azure AD.
 
@@ -141,7 +141,7 @@ Příklad:
 
 ### <a name="approles-attribute"></a>appRoles – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | appRoles | Kolekce |
 
@@ -166,9 +166,9 @@ Příklad:
 
 ### <a name="displayname-attribute"></a>DisplayName – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| displayName | Řetězec |
+| displayName | String |
 
 Zobrazovaný název aplikace
 
@@ -177,17 +177,17 @@ Zobrazovaný název aplikace
 
 ### <a name="errorurl-attribute"></a>errorUrl – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| errorUrl | Řetězec |
+| errorUrl | String |
 
 Neplatné.
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-|groupMembershipClaims | Řetězec |
+|groupMembershipClaims | String |
 
 Nakonfiguruje `groups` deklaraci identity vydanou v uživatelském nebo přístupovém tokenu OAuth 2,0, který očekává aplikace. Chcete-li nastavit tento atribut, použijte jednu z následujících platných řetězcových hodnot:
 
@@ -203,9 +203,9 @@ Příklad:
 
 ### <a name="homepage-attribute"></a>atribut domovské stránky
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| domovské stránky |Řetězec |
+| domovské stránky |String |
 
 Adresa URL domovské stránky aplikace
 
@@ -214,9 +214,9 @@ Adresa URL domovské stránky aplikace
 
 ### <a name="objectid-attribute"></a>objectId – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-|Objektu | Řetězec |
+|Objektu | String |
 
 Jedinečný identifikátor aplikace v adresáři
 
@@ -230,9 +230,9 @@ Příklad:
 
 ### <a name="optionalclaims-attribute"></a>optionalClaims – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| optionalClaims | Řetězec |
+| optionalClaims | String |
 
 Volitelné deklarace identity vrácené v tokenu službou tokenu zabezpečení pro tuto konkrétní aplikaci.
 
@@ -248,7 +248,7 @@ Příklad:
 
 ### <a name="identifieruris-attribute"></a>identifierUris – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | identifierUris | Pole řetězců |
 
@@ -262,9 +262,9 @@ Příklad:
 
 ### <a name="informationalurls-attribute"></a>informationalUrls – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| informationalUrls | Řetězec |
+| informationalUrls | String |
 
 Určuje odkazy na podmínku služby a prohlášení o zásadách ochrany osobních údajů aplikace. Podmínky služby a prohlášení o zásadách ochrany osobních údajů jsou v souladu s uživatelským prostředím týkajícím se souhlasu uživatele. Další informace najdete v tématu [Postup: Přidání podmínek služby a prohlášení o zásadách ochrany osobních údajů pro registrované aplikace služby Azure AD](howto-add-terms-of-service-privacy-statement.md).
 
@@ -281,7 +281,7 @@ Příklad:
 
 ### <a name="keycredentials-attribute"></a>Přihlašovací údaje atributu
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | keyCredentials | Kolekce |
 
@@ -305,7 +305,7 @@ Příklad:
 
 ### <a name="knownclientapplications-attribute"></a>knownClientApplications – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | knownClientApplications | Pole řetězců |
 
@@ -319,9 +319,9 @@ Příklad:
 
 ### <a name="logourl-attribute"></a>logoUrl – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| logoUrl | Řetězec |
+| logoUrl | String |
 
 Hodnota jen pro čtení, která odkazuje na adresu URL CDN na logo, které se nahrálo na portálu.
 
@@ -333,9 +333,9 @@ Příklad:
 
 ### <a name="logouturl-attribute"></a>logoutUrl – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| logoutUrl | Řetězec |
+| logoutUrl | String |
 
 Adresa URL pro odhlášení z aplikace
 
@@ -347,9 +347,9 @@ Příklad:
 
 ### <a name="name-attribute"></a>atribut Name
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| jméno | Řetězec |
+| name | String |
 
 Zobrazovaný název aplikace
 
@@ -361,11 +361,11 @@ Příklad:
 
 ### <a name="oauth2allowimplicitflow-attribute"></a>oauth2AllowImplicitFlow – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | oauth2AllowImplicitFlow | Logická hodnota |
 
-Určuje, jestli tato webová aplikace může vyžádat tokeny přístupu implicitního toku OAuth 2.0. Výchozí hodnotou je hodnota false. Tento příznak se používá pro aplikace založené na prohlížeči, jako jsou například jednostránkové aplikace JavaScriptu. Pokud se chcete dozvědět víc `OAuth 2.0 implicit grant flow` , zadejte do obsahu obsah a podívejte se na témata popisující implicitní tok.
+Určuje, jestli tato webová aplikace může vyžádat tokeny přístupu implicitního toku OAuth 2.0. Výchozí hodnotou je hodnota false. Tento příznak se používá pro aplikace založené na prohlížeči, jako jsou například jednostránkové aplikace JavaScriptu. Pokud se chcete dozvědět víc, zadejte `OAuth 2.0 implicit grant flow` do obsahu obsah a podívejte se na témata popisující implicitní tok.
 
 Příklad:
 
@@ -375,7 +375,7 @@ Příklad:
 
 ### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | oauth2AllowIdTokenImplicitFlow | Logická hodnota |
 
@@ -389,7 +389,7 @@ Příklad:
 
 ### <a name="oauth2permissions-attribute"></a>oauth2Permissions – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | oauth2Permissions | Kolekce |
 
@@ -414,7 +414,7 @@ Příklad:
 
 ### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | oauth2RequiredPostResponse | Logická hodnota |
 
@@ -428,12 +428,12 @@ Příklad:
 
 ### <a name="parentalcontrolsettings-attribute"></a>parentalControlSettings – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| parentalControlSettings | Řetězec |
+| parentalControlSettings | String |
 
-- `countriesBlockedForMinors`Určuje země, ve kterých je aplikace blokovaná pro nezletilé.
-- `legalAgeGroupRule`Určuje pravidlo pro věkovou skupinu platné pro uživatele aplikace. Lze nastavit na `Allow`, `RequireConsentForPrivacyServices`, `RequireConsentForMinors` `RequireConsentForKids`, nebo. `BlockMinors`  
+- `countriesBlockedForMinors`Určuje země nebo oblasti, ve kterých je aplikace blokovaná pro nezletilé.
+- `legalAgeGroupRule`Určuje pravidlo pro věkovou skupinu platné pro uživatele aplikace. Lze nastavit na `Allow` , `RequireConsentForPrivacyServices` ,, `RequireConsentForMinors` `RequireConsentForKids` nebo `BlockMinors` .  
 
 Příklad:
 
@@ -446,11 +446,11 @@ Příklad:
 
 ### <a name="passwordcredentials-attribute"></a>passwordCredentials – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | passwordCredentials | Kolekce |
 
-Podívejte se na popis `keyCredentials` vlastnosti.
+Podívejte se na popis `keyCredentials` Vlastnosti.
 
 Příklad:
 
@@ -468,7 +468,7 @@ Příklad:
 
 ### <a name="preauthorizedapplications-attribute"></a>preAuthorizedApplications – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | preAuthorizedApplications | Kolekce |
 
@@ -489,7 +489,7 @@ Příklad:
 
 ### <a name="publicclient-attribute"></a>publicClient – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | publicClient | Logická hodnota|
 
@@ -499,9 +499,9 @@ Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starš
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| publisherDomain | Řetězec |
+| publisherDomain | String |
 
 Ověřená doména vydavatele pro aplikaci. Jen pro čtení.
 
@@ -513,7 +513,7 @@ Příklad:
 
 ### <a name="replyurls-attribute"></a>replyUrls – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | replyUrls | Pole řetězců |
 
@@ -523,7 +523,7 @@ Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starš
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | replyUrlsWithType | Kolekce |
 
@@ -547,14 +547,14 @@ Příklad:
 
 ### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | requiredResourceAccess | Kolekce |
 
-S dynamickým souhlasem se pro uživatele, kteří používají statický souhlas, `requiredResourceAccess` řídí prostředí pro vyjádření souhlasu správce a uživatelské prostředí pro vyjádření souhlasu uživatele. Tento parametr ale neřídí uživatelské prostředí pro vyjádření souhlasu uživatele pro obecný případ.
+S dynamickým souhlasem se `requiredResourceAccess` pro uživatele, kteří používají statický souhlas, řídí prostředí pro vyjádření souhlasu správce a uživatelské prostředí pro vyjádření souhlasu uživatele. Tento parametr ale neřídí uživatelské prostředí pro vyjádření souhlasu uživatele pro obecný případ.
 
 - `resourceAppId`je jedinečný identifikátor pro prostředek, ke kterému aplikace vyžaduje přístup. Tato hodnota by měla být stejná jako appId deklarované v cílové aplikaci prostředků.
-- `resourceAccess`je pole, ve kterém jsou uvedené obory oprávnění OAuth 2.0 a aplikační role, které aplikace vyžaduje ze zadaného prostředku. Obsahuje hodnoty `id` a `type` pro zadané prostředky.
+- `resourceAccess`je pole, ve kterém jsou uvedené obory oprávnění OAuth 2.0 a aplikační role, které aplikace vyžaduje ze zadaného prostředku. Obsahuje `id` hodnoty a pro `type` zadané prostředky.
 
 Příklad:
 
@@ -574,9 +574,9 @@ Příklad:
 
 ### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| samlMetadataUrl | Řetězec |
+| samlMetadataUrl | String |
 
 Adresa URL metadat SAML pro aplikaci
 
@@ -588,9 +588,9 @@ Příklad:
 
 ### <a name="signinurl-attribute"></a>signInUrl – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| signInUrl | Řetězec |
+| signInUrl | String |
 
 Určuje adresu URL domovské stránky aplikace.
 
@@ -602,9 +602,9 @@ Příklad:
 
 ### <a name="signinaudience-attribute"></a>signInAudience – atribut
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
-| signInAudience | Řetězec |
+| signInAudience | String |
 
 Určuje, jaké účty Microsoft se pro aktuální aplikaci podporují. Podporované hodnoty jsou:
 - `AzureADMyOrg`– Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například jeden tenant)
@@ -620,7 +620,7 @@ Příklad:
 
 ### <a name="tags-attribute"></a>atribut Tags
 
-| Key | Typ hodnoty |
+| Klíč | Typ hodnoty |
 | :--- | :--- |
 | tags | Pole řetězců  |
 

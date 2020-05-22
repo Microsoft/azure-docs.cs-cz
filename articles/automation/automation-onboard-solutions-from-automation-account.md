@@ -1,163 +1,88 @@
 ---
-title: Naučte se integrovat řešení Update Management, Change Tracking a inventáře v Azure Automation
-description: Naučte se, jak připojit virtuální počítač Azure pomocí Update Management, Change Tracking a řešení inventáře, která jsou součástí Azure Automation
+title: Povolit Azure Automation Update Management z účtu Automation
+description: V tomto článku se dozvíte, jak povolit Update Management z účtu Automation.
 services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 57378005bd668fa9c0f2aea70c411bbf911130db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a521ff690f59b6beafd1113b177b43193dc7447e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457650"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743993"
 ---
-# <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Zprovoznění řešení Update Management, Change Tracking a inventáře
+# <a name="enable-update-management-from-an-automation-account"></a>Povolení Update Management z účtu Automation
 
-Azure Automation poskytuje řešení pro správu aktualizací zabezpečení operačního systému, sledování změn a inventarizaci toho, co je na vašich počítačích nainstalované. Existuje mnoho způsobů, jak připojit počítače, můžete připojit řešení [z virtuálního počítače](automation-onboard-solutions-from-vm.md), [Procházet více počítačů](automation-onboard-solutions-from-browse.md), z účtu Automation nebo pomocí [Runbooku](automation-onboard-solutions.md). Tento článek popisuje připojování těchto řešení z vašeho účtu Automation.
+Tento článek popisuje, jak můžete účet Automation použít k povolení funkce [Update Management](automation-update-management.md) pro virtuální počítače ve vašem prostředí. Pokud chcete povolit virtuální počítače Azure ve velkém měřítku, musíte povolit existující virtuální počítač pomocí Update Management. 
+
+> [!NOTE]
+> Při povolování Update Management jsou podporovány pouze určité oblasti pro propojení pracovního prostoru Log Analytics a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
+
+## <a name="prerequisites"></a>Požadavky
+
+* Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [Účet Automation](automation-offering-get-started.md) pro správu počítačů.
+* [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k https://portal.azure.comAzure na adrese.
+Přihlaste se k Azure na adrese https://portal.azure.com .
 
-## <a name="enable-solutions"></a>Povolení řešení
+## <a name="enable-update-management"></a>Povolení řešení Update Management
 
-Přejděte do svého účtu Automation a v části **Správa konfigurace**vyberte buď **inventarizaci** , nebo **sledování změn** .
+1. Ve svém účtu Automation v části **Správa aktualizací**vyberte **Správa aktualizací** .
 
-Vyberte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
+2. Vyberte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte Update Management. Dokončení instalace trvá až 15 minut.
 
-![Řešení inventáře k zprovoznění](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
+    ![Povolení řešení Update Management](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
-> [!NOTE]
-> Při povolování řešení se podporuje propojení pracovního prostoru služby Log Analytics a účtu Automation pouze v určitých oblastech.
->
-> Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
+## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>Ověřit konfiguraci oboru
 
-Řešení Change Tracking a Inventory poskytují možnost na virtuálních počítačích [sledovat změny](automation-vm-change-tracking.md) a [inventář](automation-vm-inventory.md). V tomto kroku povolíte řešení na virtuálním počítači.
+Update Management používá v rámci pracovního prostoru konfiguraci oboru pro cílení na počítače, které mají být pro funkci povoleny. Konfigurace oboru je skupina jednoho nebo více uložených hledání, která slouží k omezení rozsahu funkce na konkrétní počítače. Další informace najdete v tématu [práce s konfiguracemi oboru pro Update Management](automation-scope-configurations-update-management.md).
 
-Až se dokončí oznámení o registraci řešení Change Tracking a Inventory, vyberte v části **Správa aktualizací**možnost **Správa aktualizací** .
+## <a name="enable-azure-vms"></a>Povolení virtuálních počítačů Azure
 
-Řešení Update Management umožňuje spravovat aktualizace a opravy pro Azure a hybridní virtuální počítače. Můžete posoudit stav dostupných aktualizací, naplánovat instalaci požadovaných aktualizací a zkontrolovat výsledky nasazení, abyste ověřili, že aktualizace byly do nich úspěšně aplikovány.
+1. Ve svém účtu Automation v části **Správa aktualizací**vyberte **Správa aktualizací** .
 
-Na stránce povolit řešení je vybraný pracovní prostor Log Analytics stejným pracovním prostorem použitým v předchozím kroku. Klikněte na **Povolit** , aby se připojilo řešení Update Management. Povolení řešení trvá přibližně 15 minut.
+2. Klikněte na **+ Přidat virtuální počítače Azure** a ze seznamu vyberte jeden nebo víc virtuálních počítačů. Virtuální počítače, které se nedají povolit, jsou zobrazené šedě a nejde je vybrat. Virtuální počítače Azure můžou existovat v libovolné oblasti bez ohledu na umístění vašeho účtu Automation. 
 
-![Připojení řešení Update](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
+3. Kliknutím na **Povolit** přidejte vybrané virtuální počítače do skupiny počítačů uloženého hledání této funkce.
 
-## <a name="scope-configuration"></a>Konfigurace oboru
+    ![Povolení virtuálních počítačů Azure](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
-Každé řešení používá v rámci pracovního prostoru konfiguraci oboru pro cílení na počítače, které řešení obdrží. Konfigurace oboru je skupina jednoho nebo více uložených hledání, která slouží k omezení rozsahu řešení na konkrétní počítače. Pokud chcete získat přístup k konfiguracím oboru, vyberte v účtu Automation v části **související prostředky**možnost **pracovní prostor**. Pak v pracovním prostoru v části **zdroje dat pracovního prostoru**vyberte **Konfigurace oboru**.
+## <a name="enable-non-azure-vms"></a>Povolení virtuálních počítačů mimo Azure
 
-Pokud vybraný pracovní prostor nemá zatím Update Management nebo Change Tracking řešení, vytvoří se následující konfigurace oboru:
+Počítače, které nejsou v Azure, se musí přidat ručně. 
 
-* **MicrosoftDefaultScopeConfig – sledování změn ve**
+1. Z účtu Automation v části **Správa aktualizací**vyberte **Správa aktualizací** .
 
-* **MicrosoftDefaultScopeConfig – aktualizace**
+2. Klikněte na **Přidat jiný počítač než Azure**. Tato akce otevře nové okno prohlížeče s [pokyny k instalaci a konfiguraci agenta Log Analytics pro systém Windows](../azure-monitor/platform/log-analytics-agent.md) , aby počítač mohl začít vytvářet sestavy Update Management operace. Pokud povolujete počítač, který je aktuálně spravován nástrojem Operations Manager, není vyžadován nový agent a informace o pracovním prostoru jsou zadány do stávajícího agenta.
 
-Pokud vybraný pracovní prostor už toto řešení obsahuje, řešení se znovu nenasadit a do něj se nepřidá konfigurace oboru.
+## <a name="enable-machines-in-the-workspace"></a>Povolit počítače v pracovním prostoru
 
-## <a name="saved-searches"></a>Uložená hledání
+Ručně nainstalované počítače nebo počítače, které už hlásí do vašeho pracovního prostoru, se musí přidat do Azure Automation, aby Update Management povolené. 
 
-Když se počítač přidá do Update Management nebo řešení Change Tracking a inventáře, přidají se do jednoho ze dvou uložených hledání ve vašem pracovním prostoru. Tato uložená hledání jsou dotazy, které obsahují počítače cílené na tato řešení.
+1. Z účtu Automation v části **Správa aktualizací**vyberte **Správa aktualizací** .
 
-Přejděte do pracovního prostoru Log Analytics a v části **Obecné**vyberte **uložená hledání** . Dvě uložená hledání, která používají tato řešení, se dají zobrazit v následující tabulce:
+2. Vyberte **spravovat počítače**. Tlačítko **spravovat počítače** může být zobrazeno šedě, pokud jste předtím zvolili možnost **Povolit na všech dostupných a budoucích počítačích** .
 
-|Název     |Kategorie  |Alias  |
-|---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  Sledování změn ve       | ChangeTracking__MicrosoftDefaultComputerGroup        |
-|MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
+    ![Uložená hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
-Pokud chcete zobrazit dotaz, který jste použili k naplnění skupiny, vyberte buď uložená hledání. Následující obrázek znázorňuje dotaz a jeho výsledky:
+4. Pokud chcete povolit Update Management pro všechny dostupné počítače, vyberte **Povolit na všech dostupných počítačích** na stránce Správa počítačů. Tato akce zakáže ovládacímu prvku přidat počítače jednotlivě. Tato úloha přidá všechny názvy počítačů, které nahlásí do pracovního prostoru, do uloženého vyhledávacího dotazu skupiny počítačů. Když se tato akce vybere, zakáže se tlačítko **spravovat počítače** .
 
-![Uložená hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
+5. Pokud chcete funkci povolit pro všechny dostupné počítače a budoucí počítače, vyberte **Povolit na všech dostupných a budoucích počítačích**. Tato možnost odstraní uložená hledání a konfigurace oboru z pracovního prostoru a otevře funkci pro všechny počítače Azure a mimo Azure, které vytvářejí sestavy do pracovního prostoru. Když se tato akce vybere, zakáže se trvale tlačítko **spravovat počítače** , protože není k dispozici žádná konfigurace oboru.
 
-## <a name="onboard-azure-vms"></a>Zprovoznění virtuálních počítačů Azure
+6. V případě potřeby můžete konfigurace oboru přidat zpátky tak, že znovu přidáte počáteční uložená hledání. Další informace najdete v tématu [práce s konfiguracemi oboru pro Update Management](automation-scope-configurations-update-management.md).
 
-V účtu Automation vyberte v části **Správa konfigurace** **inventarizaci** nebo **sledování změn** , nebo **Správa aktualizací** pod **správou aktualizací**.
-
-Klikněte na **+ Přidat virtuální počítače Azure**, v seznamu vyberte jeden nebo víc virtuálních počítačů. Virtuální počítače, které není možné povolit, jsou šedé a nelze je vybrat. Virtuální počítače Azure můžou existovat v libovolné oblasti bez ohledu na umístění vašeho účtu Automation. Na stránce **povolit Update Management** klikněte na **Povolit**. Tato akce přidá vybrané virtuální počítače do skupiny počítačů uloženého hledání řešení.
-
-![Povolení virtuálních počítačů Azure](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
-
-## <a name="onboard-a-non-azure-machine"></a>Připojení počítače mimo Azure
-
-Počítače, které nejsou v Azure, se musí přidat ručně. V účtu Automation vyberte v části **Správa konfigurace** **inventarizaci** nebo **sledování změn** , nebo **Správa aktualizací** pod **správou aktualizací**.
-
-Klikněte na **Přidat jiný počítač než Azure**. Tato akce otevře nové okno prohlížeče s [pokyny k instalaci a konfiguraci agenta Log Analytics pro systém Windows](../azure-monitor/platform/log-analytics-agent.md) , aby počítač mohl začít vytvářet sestavy do řešení. Pokud se připojujete k počítači, který je aktuálně spravovaný pomocí System Center Operations Manager, není vyžadován nový agent a informace o pracovním prostoru jsou zadány do stávajícího agenta.
-
-## <a name="onboard-machines-in-the-workspace"></a>Zprovoznění počítačů v pracovním prostoru
-
-Ručně nainstalované počítače nebo počítače, které už hlásí do vašeho pracovního prostoru, se musí přidat do Azure Automation, aby bylo řešení povolené. V účtu Automation vyberte v části **Správa konfigurace** **inventarizaci** nebo **sledování změn** , nebo **Správa aktualizací** pod **správou aktualizací**.
-
-Vyberte **spravovat počítače**. Tato akce otevře stránku **Správa počítačů** . Tato stránka umožňuje povolit řešení na vybrané sadě počítačů, všech dostupných počítačích nebo povolit řešení pro všechny aktuální počítače a povolit ho na všech budoucích počítačích. Tlačítko **spravovat počítače** může být šedé, pokud jste předtím zvolili možnost **Povolit u všech dostupných a budoucích počítačů**.
-
-![Uložená hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
-
-### <a name="all-available-machines"></a>Všechny dostupné počítače
-
-Pokud chcete řešení povolit pro všechny dostupné počítače, vyberte **Povolit na všech dostupných počítačích**. Tato akce zakáže ovládacímu prvku přidat počítače jednotlivě. Tato úloha přidá všechny názvy počítačů, které nahlásí do pracovního prostoru, do uloženého vyhledávacího dotazu skupiny počítačů. Když se tato akce vybere, zakáže se tlačítko **spravovat počítače** .
-
-### <a name="all-available-and-future-machines"></a>Všechny dostupné a budoucí počítače
-
-Pokud chcete řešení povolit pro všechny dostupné počítače a budoucí počítače, vyberte **Povolit na všech dostupných a budoucích počítačích**. Tato možnost odstraní uložená hledání a konfigurace oboru z pracovního prostoru. Tato akce otevře řešení pro všechny počítače Azure a mimo Azure, které vytvářejí sestavy do pracovního prostoru. Když se tato akce vybere, zakáže se tlačítko **spravovat počítače** trvale, protože není k dispozici žádná konfigurace oboru.
-
-Konfiguraci oboru můžete přidat zpátky přidáním počátečních uložených hledání zpět. Další informace najdete v tématu [uložená hledání](#saved-searches).
-
-### <a name="selected-machines"></a>Vybrané počítače
-
-Pokud chcete řešení povolit pro jeden nebo více počítačů, vyberte **Povolit na vybraných počítačích** a klikněte na **Přidat** vedle každého počítače, který chcete přidat do řešení. Tato úloha přidá vybrané názvy počítačů do uloženého vyhledávacího dotazu skupiny počítačů pro dané řešení.
-
-## <a name="unlink-workspace"></a>Zrušení propojení s pracovním prostorem
-
-Následující řešení jsou závislá na Log Analytics pracovním prostoru:
-
-* [Update Management](automation-update-management.md)
-* [Change Tracking](automation-change-tracking.md)
-* [Spuštění/zastavení virtuálních počítačů mimo špičku](automation-solution-vm-management.md)
-
-Pokud se rozhodnete, že už nechcete integrovat svůj účet Automation s pracovním prostorem Log Analytics, můžete zrušit propojení svého účtu přímo s Azure Portal.  Než budete pokračovat, musíte nejprve odebrat dříve uvedená řešení. v opačném případě bude znemožněno pokračovat v tomto procesu. Projděte si článek pro konkrétní řešení, které jste naimportovali, abyste pochopili kroky potřebné k jeho odebrání.
-
-Až tato řešení odeberete, můžete provést následující kroky a zrušit propojení svého účtu Automation.
-
-> [!NOTE]
-> Některá řešení, včetně dřívějších verzí řešení Azure SQL monitoring, mohla vytvořit automatizační prostředky a možná je budete muset před odpojením pracovního prostoru odebrat.
-
-1. V Azure Portal otevřete svůj účet Automation a na stránce účet Automation vyberte **propojený pracovní prostor** v části označené **příbuzné prostředky** vlevo.
-
-2. Na stránce zrušit propojení pracovního prostoru klikněte na **Zrušit propojení pracovního prostoru**.
-
-   ![Zrušit propojení stránky pracovního prostoru](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
-
-   Zobrazí se výzva s dotazem, zda chcete pokračovat.
-
-3. I když se Azure Automation pokusí zrušit propojení účtu s Log Analytics pracovním prostorem, můžete sledovat průběh v nabídce **oznámení** .
-
-Pokud jste použili řešení Update Management, možná budete chtít po odebrání řešení odebrat následující položky, které už nepotřebujete.
-
-* Aktualizace plánů – každá bude mít názvy, které odpovídají vytvořeným nasazením aktualizací.
-
-* Skupiny hybridních pracovních procesů vytvořené pro řešení – každá bude pojmenována podobně jako machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
-
-Pokud jste v době mimo špičku použili virtuální počítače spustit a zastavit, budete možná chtít po odebrání řešení odebrat následující položky, které už nepotřebujete.
-
-* Spuštění a zastavení plánů Runbook VM
-* Spuštění a zastavení runbooků virtuálních počítačů
-* Proměnné
-
-Alternativně můžete také zrušit propojení pracovního prostoru s účtem Automation z pracovního prostoru Log Analytics. V pracovním prostoru vyberte **účet Automation** v části **související prostředky**. Na stránce účet Automation vyberte zrušit **propojení účtu**.
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Odebrání virtuálního počítače z Update Management:
-
-* Ve vašem pracovním prostoru Log Analytics odeberte virtuální počítač z uloženého hledání pro konfiguraci `MicrosoftDefaultScopeConfig-Updates`oboru. Uložená hledání najdete v části **Obecné** v pracovním prostoru.
-* Odeberte [agenta Log Analytics pro Windows](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) nebo [agenta Log Analytics pro Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+7. Pokud chcete tuto funkci povolit pro jeden nebo víc počítačů, vyberte **Povolit na vybraných počítačích** a klikněte na **Přidat** vedle každého počítače, abyste funkci povolili. Tato úloha přidá vybrané názvy počítačů do uloženého vyhledávacího dotazu skupiny počítačů pro danou funkci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět, jak je používat, přejděte k kurzům řešení.
-
-* [Kurz – Správa aktualizací pro virtuální počítač](automation-tutorial-update-management.md)
-
-* [Kurz – určení softwaru na virtuálním počítači](automation-tutorial-installed-software.md)
-
-* [Kurz – řešení potíží se změnami na virtuálním počítači](automation-tutorial-troubleshoot-changes.md)
+* Pokud chcete použít Update Management pro virtuální počítače, přečtěte si téma [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
+* Informace o konfiguracích oboru najdete v tématu [práce s konfiguracemi oboru pro Update Management](automation-scope-configurations-update-management.md).
+* Pokud už nepotřebujete pracovní prostor Log Analytics, přečtěte si pokyny v tématu [zrušení propojení pracovního prostoru s účtem Automation pro Update Management](automation-unlink-workspace-update-management.md).
+* Postup odstranění virtuálních počítačů z Update Management najdete v tématu [Odebrání virtuálních počítačů z Update Management](automation-remove-vms-from-update-management.md).
+* Pokud chcete řešit obecné chyby Update Management, přečtěte si téma [řešení potíží s Update Management](troubleshoot/update-management.md).
+* Informace o řešení problémů s agentem Windows Update najdete v tématu řešení potíží s [agentem pro Windows Update](troubleshoot/update-agent-issues.md).
+* Informace o řešení problémů s agentem aktualizací pro Linux najdete v tématu[řešení potíží s agentem aktualizace pro Linux](troubleshoot/update-agent-issues-linux.md).

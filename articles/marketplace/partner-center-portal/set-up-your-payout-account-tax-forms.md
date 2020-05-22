@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 627f6f01a17fc8cabb4f1883306baeb0e2d77e70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0256e5c60a417cec47f90cd6ec30fe9208f47f7f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792883"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738281"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Nastavení platebního účtu a daňových formulářů
 
@@ -36,13 +36,13 @@ Po nastavení účtu je třeba provést dvě věci, abyste mohli prodávat nabí
 
 Nejdřív budete muset vytvořit daňový profil a přiřadit ho k programům, které se účastníte. Pro komerční tržiště můžete vytvořit svůj *daňový profil* , a to provedením následujících kroků:
 
-- Určete zemi bydliště a občanství.
+- Zadejte zemi nebo oblast pobytu a občanství.
 - Vyplňte příslušné daňové formuláře.
 
 Daňové formuláře můžete v partnerském centru doplňovat a odesílat elektronicky. ve většině případů nemusíte tisknout ani tisknout žádné formuláře.
 
 > [!IMPORTANT]
-> Různé země a oblasti mají různé daňové požadavky. Přesná částka, kterou musíte zaplatit za daně, závisí na zemích a oblastech, kde prodáváte nabídku. Informace o tom, které země společnost Microsoft zavazuje k prodeji a používání daní vaším jménem, najdete v článku o [smlouvě Microsoft Azure Marketplace Publisher](https://go.microsoft.com/fwlink/p/?LinkID=699560) . V jiných zemích v závislosti na tom, kde jste zaregistrováni, může být nutné uhradit prodej a daň za spotřebu přímo do místní autority zdanění. Kromě toho prodejní příjem aplikace může být zdanitelný jako příjem. Důrazně doporučujeme, abyste se obrátili na příslušné oprávnění pro vaši zemi nebo oblast, která vám nejlépe pomůže určit správné daňové informace pro vaše komerční aktivity na webu Marketplace.
+> Různé země a oblasti mají různé daňové požadavky. Přesná částka, kterou musíte zaplatit za daně, závisí na zemích a oblastech, kde prodáváte nabídku. Informace o tom, které země nebo oblasti společnost Microsoft zavazuje k prodeji a používání daní vaším jménem, najdete v článku o [smlouvě Microsoft Azure Marketplace Publisher](https://go.microsoft.com/fwlink/p/?LinkID=699560) . V jiných zemích nebo oblastech, v závislosti na tom, kde jste registrováni, může být nutné uhradit prodej a daň z prodeje za vaše nabídky přímo do místní autority zdanění. Kromě toho prodejní příjem aplikace může být zdanitelný jako příjem. Důrazně doporučujeme, abyste se obrátili na příslušné oprávnění pro vaši zemi nebo oblast, která vám nejlépe pomůže určit správné daňové informace pro vaše komerční aktivity na webu Marketplace.
 
 1. V [partnerském centru](https://partner.microsoft.com/dashboard)vyberte v pravém horním rohu ikonu **Nastavení účtu** a pak vyberte **Nastavení vývojáře**.
 
@@ -54,20 +54,20 @@ Daňové formuláře můžete v partnerském centru doplňovat a odesílat elekt
 
 5. Kliknutím na tlačítko **Upravit** upravte daňové informace.
 
-6. Vyberte příslušný přepínač a pokud se zobrazí výzva, vyberte svou zemi. Tento krok určuje obchodní entitu Microsoftu, která se bude používat k vyvýběru vašeho účtu.
+6. Vyberte příslušný přepínač a pokud se zobrazí výzva, vyberte svou zemi/oblast. Tento krok určuje obchodní entitu Microsoftu, která se bude používat k vyvýběru vašeho účtu.
 
-7. V závislosti na výběru v kroku 6 se zobrazí výzva, abyste zadali daňové informace vyžadované pro vaši zemi.
+7. V závislosti na výběru v kroku 6 se zobrazí výzva, abyste zadali daňové informace požadované pro vaši zemi nebo oblast.
 
    > [!NOTE]
-   > Bez ohledu na zemi pobytu nebo občanství musíte vyplnit USA daňové formuláře k prodeji jakékoli nabídky nebo doplňků prostřednictvím komerčního tržiště. Vydavatelé, kteří splňují určité USA požadavky na zaplňování, musí vyplnit formulář finančního úřadu W-9. Jiní vydavatelé mimo USA musí vyplnit formulář finančního úřadu W-8. Tyto formuláře můžete po dokončení finančního profilu vyplnit online.
+   > Bez ohledu na vaši zemi nebo oblast pobytu nebo občanství musíte vyplnit USA daňové formuláře k prodeji jakékoli nabídky nebo doplňků prostřednictvím komerčního tržiště. Vydavatelé, kteří splňují určité USA požadavky na zaplňování, musí vyplnit formulář finančního úřadu W-9. Jiní vydavatelé mimo USA musí vyplnit formulář finančního úřadu W-8. Tyto formuláře můžete po dokončení finančního profilu vyplnit online.
 
 ### <a name="withholding-rates"></a>Míry odmítnutí
 
-Informace, které odesíláte v daňovém formuláři, určují odpovídající míru srážkové srážky. Míra odmítnutí se vztahuje pouze na prodej, který provedete do USA; prodej uskutečněný v jiných umístěních než USA nezávisí na odmítnutí. Sazby pro srážka se liší, ale u většiny vydavatelů, které registrují mimo USA, je výchozí sazba 30%. Tuto sazbu máte možnost snížit, pokud vaše země souhlasila se smlouvou o dani ze zisku s USA.
+Informace, které odesíláte v daňovém formuláři, určují odpovídající míru srážkové srážky. Míra odmítnutí se vztahuje pouze na prodej, který provedete do USA; prodej uskutečněný v jiných umístěních než USA nezávisí na odmítnutí. Sazby pro srážka se liší, ale u většiny vydavatelů, které registrují mimo USA, je výchozí sazba 30%. Tuto sazbu máte možnost snížit, pokud se země nebo oblast dohodla se smlouvou o dani ze zisku s USA.
 
 ### <a name="tax-treaty-benefits"></a>Výhody daňové smlouvy
 
-Pokud nejste mimo USA, možná budete moct využít výhody daňové smlouvy. Tyto výhody se liší od země až po zemi a umožňují snížit množství daní, které si komerční tržiště odpírá. Výhody daňové smlouvy můžete uplatnit vyplněním části II formuláře W-8BEN. Doporučujeme, abyste komunikovali s příslušnými prostředky ve vaší zemi nebo oblasti, abyste zjistili, jestli se vám tyto výhody vztahují.
+Pokud nejste mimo USA, možná budete moct využít výhody daňové smlouvy. Tyto výhody se liší od zemí/oblastí až po zemi nebo oblast a umožňují snížit množství daní, které si komerční Marketplace odpírá. Výhody daňové smlouvy můžete uplatnit vyplněním části II formuláře W-8BEN. Doporučujeme, abyste komunikovali s příslušnými prostředky ve vaší zemi nebo oblasti, abyste zjistili, jestli se vám tyto výhody vztahují.
 
 > [!NOTE]
 > USA jednotlivé daňové identifikační číslo (nebo ITIN) se nevyžaduje pro příjem plateb od společnosti Microsoft nebo nárokování na výhody daňové smlouvy.
@@ -146,9 +146,9 @@ Běžné dotazy týkající se používání služby PayPal jako způsobu platby
 
 - **Je moje země/oblast podporovaná?** V tématu [prahové hodnoty plateb, metody a časové rámce](payment-thresholds-methods-timeframes.md) zjistíte, kde je PayPal podporovaným způsobem platby.
 
-- **Musí se můj účet PayPal zaregistrovat ve stejné zemi nebo oblasti jako účet partnerského centra?** Ne. Při nastavování účtu PayPal můžete přijmout výchozí konfiguraci. Pokud jste v některých měnách neblokovali platbu, neměli byste mít žádné problémy s jinými zeměmi nebo oblastmi a měnami. Toto nastavení se spravuje na stránce předvolby pro příjem plateb v PayPal.
+- **Musí se můj účet PayPal zaregistrovat ve stejné zemi nebo oblasti jako účet partnerského centra?** No. Při nastavování účtu PayPal můžete přijmout výchozí konfiguraci. Pokud jste v některých měnách neblokovali platbu, neměli byste mít žádné problémy s jinými zeměmi nebo oblastmi a měnami. Toto nastavení se spravuje na stránce předvolby pro příjem plateb v PayPal.
 
-- **Musím platby přes PayPal akceptovat ručně?** Ne. Účty PayPal se ve výchozím nastavení nastavují tak, aby uživatelé mohli platby přijmout ručně. to znamená, že platbu nepřijmete do 30 dnů, která se vrátí. Toto nastavení můžete změnit vypnutím možnosti zeptat se na stránce další nastavení PayPal.
+- **Musím platby přes PayPal akceptovat ručně?** No. Účty PayPal se ve výchozím nastavení nastavují tak, aby uživatelé mohli platby přijmout ručně. to znamená, že platbu nepřijmete do 30 dnů, která se vrátí. Toto nastavení můžete změnit vypnutím možnosti zeptat se na stránce další nastavení PayPal.
 
 - **Jaké měny podporuje PayPal?** Aktuální seznam najdete na [stránce podpory pro PayPal](https://developer.paypal.com/docs/classic/api/currency-codes/#paypal) .
 

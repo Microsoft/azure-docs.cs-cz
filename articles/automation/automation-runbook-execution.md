@@ -1,16 +1,16 @@
 ---
 title: Spouštění runbooků ve službě Azure Automation
-description: Popisuje podrobnosti o zpracování sady Runbook ve Azure Automation.
+description: Tento článek obsahuje informace o zpracování runbooků v Azure Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1933688459cd02ee4da448d2e83b0a7a92a1d2c8
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 5785377830f7e2cfb159a3090d19b1cd35b07a61
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994741"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743915"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spouštění runbooků ve službě Azure Automation
 
@@ -29,9 +29,6 @@ Následující diagram znázorňuje životní cyklus úlohy Runbooku pro [Runboo
 ![Stavy úlohy – workflow PowerShellu](./media/automation-runbook-execution/job-statuses.png)
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
-
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="runbook-execution-environment"></a>Prostředí pro spuštění sady Runbook
 
@@ -62,7 +59,7 @@ V následující tabulce jsou uvedeny některé úlohy spuštění sady Runbook 
 |Spouštění skriptů vyžadujících zvýšení oprávnění|Hybrid Runbook Worker|Izolované prostory neumožňují zvýšení oprávnění. Pomocí Hybrid Runbook Worker můžete vypnout nástroj řízení uživatelských účtů a použít příkaz [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) při spuštění příkazu, který vyžaduje zvýšení úrovně oprávnění.|
 |Spustit skripty, které vyžadují přístup k rozhraní WMI (Windows Management Instrumentation) (WMI)|Hybrid Runbook Worker|Úlohy spuštěné v izolovaných prostorech v cloudu nemůžou získat přístup k poskytovateli rozhraní WMI. |
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 Vaše Runbooky musí zahrnovat logiku pro práci s [prostředky](https://docs.microsoft.com/rest/api/resources/resources), například virtuální počítače, síť a prostředky v síti. Prostředky jsou vázané na předplatné Azure a runbooky vyžadují odpovídající přihlašovací údaje pro přístup k jakémukoli prostředku. Příklad zpracování prostředků v sadě Runbook najdete v tématu [zpracování prostředků](manage-runbooks.md#handle-resources). 
 
@@ -103,7 +100,7 @@ K dispozici jsou protokoly pro agenta Log Analytics a účet **nxautomation** :
 * /var/opt/Microsoft/omsagent/Run/automationworker/Worker.log – protokol pracovních procesů služby Automation
 
 >[!NOTE]
->Uživatel **nxautomation** , který se připojil jako součást Update Management spustí pouze podepsané Runbooky.
+>Uživatel **nxautomation** povolený jako součást Update Management provádí pouze podepsané Runbooky.
 
 ## <a name="runbook-permissions"></a>Oprávnění runbooků
 
@@ -144,7 +141,7 @@ Následující tabulka popisuje stavy, které jsou pro úlohu možné. Můžete 
 | Spouštění |Úloha byla přiřazena k pracovnímu procesu a systém ho spouští. |
 | Zastaveno |Úlohu uživatel zastavil před tím, než se dokončila. |
 | Zastavování |Systém zastavuje úlohu. |
-| Dočasně blokován. |Platí jenom pro [Runbooky grafických a powershellového pracovního postupu](automation-runbook-types.md) . Úlohu pozastavil uživatel, systém nebo příkaz v Runbooku. Pokud sada Runbook nemá kontrolní bod, začne od začátku. Pokud má kontrolní bod, může se znovu spustit a obnovit z posledního kontrolního bodu. Systém zastaví sadu Runbook pouze v případě, že dojde k výjimce. Ve výchozím nastavení je `ErrorActionPreference` proměnná nastavena na pokračovat, což znamená, že úloha je spuštěná na chybu. Pokud je proměnná preference nastavená na hodnotu zastavit, úloha se při chybě pozastaví.  |
+| Dočasně blokován. |Platí jenom pro [Runbooky grafických a powershellového pracovního postupu](automation-runbook-types.md) . Úlohu pozastavil uživatel, systém nebo příkaz v Runbooku. Pokud sada Runbook nemá kontrolní bod, začne od začátku. Pokud má kontrolní bod, může se znovu spustit a obnovit z posledního kontrolního bodu. Systém zastaví sadu Runbook pouze v případě, že dojde k výjimce. Ve výchozím nastavení `ErrorActionPreference` je proměnná nastavena na pokračovat, což znamená, že úloha je spuštěná na chybu. Pokud je proměnná preference nastavená na hodnotu zastavit, úloha se při chybě pozastaví.  |
 | Pozastavování |Platí jenom pro [Runbooky grafických a powershellového pracovního postupu](automation-runbook-types.md) . Systém se pokouší pozastavit úlohu na žádost uživatele. Runbook se může pozastavit až po dosažení následujícího kontrolního bodu. Pokud již prošl poslední kontrolní bod, byl dokončen před tím, než bude možné ho pozastavit. |
 
 ## <a name="activity-logging"></a>Protokolování aktivit
@@ -157,9 +154,9 @@ Tato část popisuje některé způsoby, jak zpracovávat výjimky nebo přeruš
 
 ### <a name="erroractionpreference"></a>ErrorActionPreference
 
-Proměnná [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) určuje, jak prostředí PowerShell reaguje na neukončující chybu. Ukončení chyb vždy končí a nejsou ovlivněny `ErrorActionPreference`.
+Proměnná [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) určuje, jak prostředí PowerShell reaguje na neukončující chybu. Ukončení chyb vždy končí a nejsou ovlivněny `ErrorActionPreference` .
 
-Pokud sada Runbook používá `ErrorActionPreference`, je obvykle neukončující chyba, například `PathNotFound` z rutiny [GET-ChildItem](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) zastaví dokončení sady Runbook. Následující příklad ukazuje použití `ErrorActionPreference`. Konečný příkaz [pro zápis do výstupu](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) se nikdy nespustí, protože se skript zastaví.
+Pokud sada Runbook používá `ErrorActionPreference` , je obvykle neukončující chyba, například `PathNotFound` z rutiny [GET-ChildItem](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7) zastaví dokončení sady Runbook. Následující příklad ukazuje použití `ErrorActionPreference` . Konečný příkaz [pro zápis do výstupu](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/write-output?view=powershell-7) se nikdy nespustí, protože se skript zastaví.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -169,7 +166,7 @@ Write-Output "This message will not show"
 
 ### <a name="try-catch-finally"></a>Vyzkoušet catch finally
 
-[Try catch finally](/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) se ve skriptech PowerShellu používá ke zpracování ukončujících chyb. Skript může pomocí tohoto mechanismu zachytit konkrétní výjimky nebo obecné výjimky. `catch` Příkaz by měl být použit ke sledování nebo pokusu o zpracování chyb. Následující příklad se pokusí stáhnout soubor, který neexistuje. Zachytí `System.Net.WebException` výjimku a vrátí poslední hodnotu pro jakoukoliv jinou výjimku.
+[Try catch finally](/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) se ve skriptech PowerShellu používá ke zpracování ukončujících chyb. Skript může pomocí tohoto mechanismu zachytit konkrétní výjimky nebo obecné výjimky. `catch`Příkaz by měl být použit ke sledování nebo pokusu o zpracování chyb. Následující příklad se pokusí stáhnout soubor, který neexistuje. Zachytí `System.Net.WebException` výjimku a vrátí poslední hodnotu pro jakoukoliv jinou výjimku.
 
 ```powershell-interactive
 try
@@ -217,7 +214,7 @@ Runbooky, které běží v izolovaném prostoru (sandbox) Azure, nepodporují vo
 
 ## <a name="webhooks"></a>Webhooky
 
-Externí služby, například Azure DevOps Services a GitHub, mohou spustit sadu Runbook v Azure Automation. K provedení tohoto typu spuštění služba používá [Webhook](automation-webhooks.md) prostřednictvím jediné žádosti HTTP. Použití Webhooku umožňuje spouštět Runbooky bez implementace úplného Azure Automationho řešení. 
+Externí služby, například Azure DevOps Services a GitHub, mohou spustit sadu Runbook v Azure Automation. K provedení tohoto typu spuštění služba používá [Webhook](automation-webhooks.md) prostřednictvím jediné žádosti HTTP. Použití Webhooku umožňuje spouštět Runbooky bez implementace úplné Azure Automation funkce. 
 
 ## <a name="shared-resources"></a><a name="fair-share"></a>Sdílené prostředky
 
@@ -231,7 +228,6 @@ Použití podřízených runbooků zkrátí celkovou dobu, po kterou se nadřaze
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete začít pracovat se sadou Runbook, přečtěte si téma [Správa runbooků v Azure Automation](manage-runbooks.md).
-* Další informace o PowerShellu, včetně referenčních modulů jazyka a výukových modulů, najdete v [dokumentaci k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* [Správa runbooků v Azure Automation](manage-runbooks.md)
+* [Dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview)
+* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: febdb708c637ac322c0ca884eae627da9bd5904c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1db133f52a99bd716c2228add0573e8d44255c9e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530389"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736513"
 ---
 # <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Přehled služby Azure Multi-Factor Authentication pro vaši organizaci
 
@@ -43,7 +43,7 @@ Pro zákazníky se sadou Office 365 jsou k dispozici dvě možnosti:
 
 Pro zákazníky s Azure AD Premium P1 nebo podobnými licencemi, které zahrnují tuto funkci, jako je Enterprise Mobility + Security E3, Microsoft 365 F1 nebo Microsoft 365 E3: 
 
-Pomocí [podmíněného přístupu Azure AD](../conditional-access/overview.md) můžete vyzvat uživatele k ověřování službou Multi-Factor Authentication během určitých scénářů nebo událostí, aby vyhovovaly vašim obchodním požadavkům.
+Pomocí [podmíněného přístupu Azure AD](../authentication/tutorial-enable-azure-mfa.md) můžete vyzvat uživatele k ověřování službou Multi-Factor Authentication během určitých scénářů nebo událostí, aby vyhovovaly vašim obchodním požadavkům.
 
 ## <a name="azure-ad-premium-p2"></a>Azure AD Premium P2
 

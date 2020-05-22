@@ -13,12 +13,12 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 92acb1a475fbd41bfb7351d73c61db866ce2bbc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c1c03a407315fc4f1b3eb967531e2800fc7497f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154929"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738043"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře pro Azure Active Directory podmíněný přístup
 
@@ -26,11 +26,11 @@ ms.locfileid: "80154929"
 
 Funkce podmíněného přístupu v Azure Active Directory (Azure AD) nabízí jeden z několika způsobů, jak můžete použít k zabezpečení aplikace a ochraně služby. Podmíněný přístup umožňuje vývojářům a podnikovým zákazníkům chránit služby mnoha různými způsoby, včetně těchto:
 
-* Ověřování pomocí služby Multi-Factor Authentication
+* Vícefaktorové ověřování
 * Povoluje přístup ke konkrétním službám jenom zařízením zaregistrovaným v Intune.
 * Omezení umístění uživatelů a rozsahů IP adres
 
-Další informace o úplných funkcích podmíněného přístupu najdete v tématu [podmíněný přístup v Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
+Další informace o úplných funkcích podmíněného přístupu najdete v tématu [co je podmíněný přístup](../conditional-access/overview.md).
 
 Pro vývojáře, kteří sestavují aplikace pro Azure AD, Tento článek ukazuje, jak můžete použít podmíněný přístup, a Vy se dozvíte o dopadu na přístup k prostředkům, u kterých nemáte kontrolu nad tím, že je možné použít zásady podmíněného přístupu. Tento článek také zkoumá důsledky podmíněného přístupu v toku, Web Apps, přístup k Microsoft Graph a volání rozhraní API.
 
@@ -49,7 +49,7 @@ Konkrétně následující scénáře vyžadují kód pro zpracování výzev po
 * Jednostránkové aplikace používající ADAL. js
 * Web Apps volání prostředku
 
-Zásady podmíněného přístupu se dají použít pro aplikaci, ale dají se použít i pro webové rozhraní API, ke kterému přistupuje aplikace. Další informace o tom, jak nakonfigurovat zásady podmíněného přístupu, najdete v tématu [rychlý Start: vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](../conditional-access/app-based-mfa.md).
+Zásady podmíněného přístupu se dají použít pro aplikaci, ale dají se použít i pro webové rozhraní API, ke kterému přistupuje aplikace. Další informace o tom, jak nakonfigurovat zásady podmíněného přístupu, najdete v tématu [běžné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md).
 
 V závislosti na scénáři může podnikový zákazník kdykoli použít a odebrat zásady podmíněného přístupu. Aby vaše aplikace pokračovala v provozu při použití nové zásady, je nutné implementovat zpracování výzvy. Následující příklady ilustrují zpracování výzvy.
 
@@ -122,7 +122,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 ```
 
-Ve webovém rozhraní API 1 se chyba `error=interaction_required`zachytí a pošle se zpět `claims` výzva do desktopové aplikace. V tomto okamžiku aplikace klasické pracovní plochy může vytvořit nové `acquireToken()` volání a připojit `claims`výzvu jako další parametr řetězce dotazu. Tato nová žádost vyžaduje, aby uživatel prováděl vícefaktorové ověřování, a pak tento nový token poslal zpátky do webového rozhraní API 1 a dokončil tok.
+Ve webovém rozhraní API 1 se chyba zachytí `error=interaction_required` a pošle se zpět `claims` výzva do desktopové aplikace. V tomto okamžiku aplikace klasické pracovní plochy může vytvořit nové `acquireToken()` volání a připojit `claims` výzvu jako další parametr řetězce dotazu. Tato nová žádost vyžaduje, aby uživatel prováděl vícefaktorové ověřování, a pak tento nový token poslal zpátky do webového rozhraní API 1 a dokončil tok.
 
 Chcete-li tento scénář vyzkoušet, podívejte se na náš [ukázkový kód .NET](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Ukazuje, jak předat výzvy deklarací identity zpátky z webového rozhraní API 1 do nativní aplikace a vytvořit novou žádost v klientské aplikaci.
 
@@ -134,7 +134,7 @@ Předpokládejme, že máme webové služby a a B a webové služby B, které po
 
 ![Aplikace, která přistupuje k vývojovému diagramu více služeb](./media/conditional-access-dev-guide/app-accessing-multiple-services-scenario.png)
 
-Případně, pokud aplikace poprvé požaduje token webové služby A, koncový uživatel nespustí zásadu podmíněného přístupu. Díky tomu může vývojář aplikace řídit činnost koncového uživatele a nenutí, aby se zásady podmíněného přístupu vyvolaly ve všech případech. Velká písmena jsou v případě, že aplikace následně požaduje token pro webovou službu B. V tomto okamžiku musí koncový uživatel dodržovat zásady podmíněného přístupu. Když se aplikace pokusí `acquireToken`, může generovat následující chybu (znázorněné v následujícím diagramu):
+Případně, pokud aplikace poprvé požaduje token webové služby A, koncový uživatel nespustí zásadu podmíněného přístupu. Díky tomu může vývojář aplikace řídit činnost koncového uživatele a nenutí, aby se zásady podmíněného přístupu vyvolaly ve všech případech. Velká písmena jsou v případě, že aplikace následně požaduje token pro webovou službu B. V tomto okamžiku musí koncový uživatel dodržovat zásady podmíněného přístupu. Když se aplikace pokusí `acquireToken` , může generovat následující chybu (znázorněné v následujícím diagramu):
 
 ```
 HTTP 400; Bad Request
@@ -145,19 +145,19 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![Aplikace přistupující k více službám požadujícím nový token](./media/conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-Pokud aplikace používá knihovnu ADAL, neúspěšné opakované pokus o získání tokenu se vždy provádí interaktivně. Když dojde k tomuto interaktivnímu požadavku, má koncový uživatel možnost dodržovat podmíněný přístup. To platí, pokud se jedná o žádost `AcquireTokenSilentAsync` nebo `PromptBehavior.Never` v takovém případě aplikace potřebuje provést interaktivní ```AcquireToken``` požadavek, aby koncovému uživateli bylo umožněno dodržovat tyto zásady.
+Pokud aplikace používá knihovnu ADAL, neúspěšné opakované pokus o získání tokenu se vždy provádí interaktivně. Když dojde k tomuto interaktivnímu požadavku, má koncový uživatel možnost dodržovat podmíněný přístup. To platí, pokud se jedná o žádost `AcquireTokenSilentAsync` nebo `PromptBehavior.Never` v takovém případě aplikace potřebuje provést interaktivní požadavek, ```AcquireToken``` aby koncovému uživateli bylo umožněno dodržovat tyto zásady.
 
 ## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scénář: jednostránkové aplikace (SPA) využívající ADAL. js
 
 V tomto scénáři Vás provedeme v případě, že máme jednostránkovou aplikaci (SPA), pomocí knihovny ADAL. js zavoláme webové rozhraní API pro podmíněný přístup. Toto je jednoduchá architektura, ale má několik drobné odlišnosti, které je potřeba vzít v úvahu při vývoji podmíněného přístupu.
 
-V ADAL. js existuje několik funkcí, které získají tokeny `login()`:, `acquireToken(...)`, `acquireTokenPopup(…)`a. `acquireTokenRedirect(…)`
+V ADAL. js existuje několik funkcí, které získají tokeny: `login()` , `acquireToken(...)` , a `acquireTokenPopup(…)` `acquireTokenRedirect(…)` .
 
 * `login()`Získá token ID prostřednictvím interaktivní žádosti o přihlášení, ale nezíská přístupové tokeny žádné služby (včetně webového rozhraní API pro podmíněný přístup).
 * `acquireToken(…)`dá se pak použít k tichému získání přístupového tokenu, což znamená, že v žádném případě nezobrazuje uživatelské rozhraní.
 * `acquireTokenPopup(…)`a `acquireTokenRedirect(…)` jsou použity k interaktivnímu vyžádání tokenu pro prostředek, což znamená, že vždy zobrazují uživatelské rozhraní pro přihlašování.
 
-Když aplikace potřebuje přístupový token pro volání webového rozhraní API, pokusí se `acquireToken(…)`. Pokud vypršela platnost relace tokenu nebo je potřeba splnit zásady podmíněného přístupu, funkce *acquireToken* se nezdařila a aplikace používá `acquireTokenPopup()` nebo. `acquireTokenRedirect()`
+Když aplikace potřebuje přístupový token pro volání webového rozhraní API, pokusí se `acquireToken(…)` . Pokud vypršela platnost relace tokenu nebo je potřeba splnit zásady podmíněného přístupu, funkce *acquireToken* se nezdařila a aplikace používá `acquireTokenPopup()` nebo `acquireTokenRedirect()` .
 
 ![Jednostránkové aplikace s využitím flowového diagramu ADAL](./media/conditional-access-dev-guide/spa-using-adal-scenario.png)
 
@@ -171,7 +171,7 @@ error=interaction_required
 error_description=AADSTS50076: Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to access '<Web API App/Client ID>'.
 ```
 
-Naše aplikace potřebuje zachytit `error=interaction_required`. Aplikace pak může použít buď `acquireTokenPopup()` nebo `acquireTokenRedirect()` u stejného prostředku. Uživatel je nucen provést službu Multi-Factor Authentication. Jakmile uživatel dokončí službu Multi-Factor Authentication, aplikace vydá nový přístupový token pro požadovaný prostředek.
+Naše aplikace potřebuje zachytit `error=interaction_required` . Aplikace pak může použít buď `acquireTokenPopup()` nebo `acquireTokenRedirect()` u stejného prostředku. Uživatel je nucen provést službu Multi-Factor Authentication. Jakmile uživatel dokončí službu Multi-Factor Authentication, aplikace vydá nový přístupový token pro požadovaný prostředek.
 
 Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukázku kódu v tématu js Spa](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). V tomto příkladu kódu se k předvedení tohoto scénáře používá zásada podmíněného přístupu a webové rozhraní API, které jste zaregistrovali dříve pomocí zabezpečeného hesla. Ukazuje, jak správně zpracovat výzvu deklarací identity a získat přístupový token, který se dá použít pro vaše webové rozhraní API. Alternativně můžete v případě, že si vyrezervujete [vzorový kód pro obecné úhlové. js](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) , najdete pokyny k úhlů
 

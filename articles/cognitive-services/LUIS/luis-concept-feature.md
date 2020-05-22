@@ -3,12 +3,12 @@ title: Funkce – LUIS
 description: Přidáním funkcí do jazykového modelu poskytněte nápovědu týkající se rozpoznávání vstupu, který chcete označit nebo klasifikovat.
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4f19ceed2e48f3f6ec2ed0958bccb7a85cff44f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682156"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742716"
 ---
 # <a name="machine-learning-ml-features"></a>Funkce strojového učení (ML)
 
@@ -85,7 +85,7 @@ Pokud například entita adresa pro expedici obsahovala subentitu ulice, pak hle
     * Ulice (subentity)
     * Město (subentity)
     * Okres (subentity)
-    * Země (subentity)
+    * Země/oblast (subentita)
     * Poštovní směrovací číslo (subentity)
 
 ## <a name="nested-subentities-with-features"></a>Vnořené subentity s funkcemi
@@ -118,14 +118,14 @@ Pokračuje se v příkladu adresy pro expedici:
     * Název ulice (subentity)
     * Město (subentity)
     * Okres (subentity)
-    * Země (subentity)
+    * Země/oblast (subentita)
     * Poštovní směrovací číslo (subentity)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Požadovaná funkce s využitím předem připravených entit
 
-Město, stát a země jsou obecně uzavřenou sadou seznamů, což znamená, že se v průběhu času nemění. Tyto entity mohou mít relevantní doporučené funkce a tyto funkce mohou být označeny jako povinné. To znamená, že se nevrátí celá dodací adresa, protože se nenašly entity s požadovanými funkcemi.
+Město, stát a země/oblast jsou všeobecně uzavřenou sadou seznamů, což znamená, že se v průběhu času nemění. Tyto entity mohou mít relevantní doporučené funkce a tyto funkce mohou být označeny jako povinné. To znamená, že se nevrátí celá dodací adresa, protože se nenašly entity s požadovanými funkcemi.
 
-Co když se město, stát nebo země nacházejí v utterance, ale buď v umístění, nebo slangem, které LUIS neočekává? Pokud chcete poskytnout nějakému následnému zpracování, aby bylo možné entitu vyřešit, z důvodu nízkého skóre spolehlivosti z LUIS, neoznačujte funkci jako povinnou.
+Co když se město, stát nebo země/oblast nacházejí v utterance, ale buď v umístění, nebo v slangem, které LUIS neočekává? Pokud chcete poskytnout nějakému následnému zpracování, aby bylo možné entitu vyřešit, z důvodu nízkého skóre spolehlivosti z LUIS, neoznačujte funkci jako povinnou.
 
 Dalším příkladem požadované funkce pro doručovací adresu je vytvoření [předem připraveného](luis-reference-prebuilt-entities.md) čísla. Uživatel tak může zadat "1 Microsoft Way" nebo "One Microsoft". Obě budou přeloženy na číslo "1" pro subentity čísla ulice.
 
@@ -133,19 +133,19 @@ Dalším příkladem požadované funkce pro doručovací adresu je vytvoření 
 
 [Entita seznamu](reference-entity-list.md) se používá jako seznam kanonických názvů spolu s jejich synonymy. Pokud utterance neobsahuje kanonický název nebo synonymum, jako požadovaná funkce se entita nevrátí jako součást koncového bodu předpovědi.
 
-S příkladem dodací adresy uvažujte o tom, že vaše společnost je dodávána pouze do omezené skupiny zemí. Můžete vytvořit entitu seznamu, která zahrnuje několik způsobů, kterými se zákazník může na zemi odkázat. Pokud LUIS nenajde přesnou shodu v textu utterance, pak se v předpovědi nevrátí entita (která má požadovanou funkci entity seznam).
+S příkladem dodací adresy uvažujte o tom, že vaše společnost je dodávána pouze do omezené skupiny zemí nebo oblastí. Můžete vytvořit entitu seznamu, která zahrnuje několik způsobů, kterými se zákazník může na zemi odkázat. Pokud LUIS nenajde přesnou shodu v textu utterance, pak se v předpovědi nevrátí entita (která má požadovanou funkci entity seznam).
 
 |Kanonický název|Synonyma|
 |--|--|
 |USA|USA:<br>U. S. A<br>USA<br>USA<br>0|
 
-Klientská aplikace, jako je například robot, může požádat o následnou otázku, takže zákazník chápe, že výběr země je omezený a je _povinný_.
+Klientská aplikace, jako je například robot, může požádat o následnou otázku, takže zákazník chápe, že výběr země nebo oblasti je omezený a je _povinný_.
 
 ### <a name="required-feature-using-regular-expression-entities"></a>Požadovaná funkce využívající entity regulárních výrazů
 
 [Entita regulárního výrazu](reference-entity-regular-expression.md) použitá jako požadovaná funkce poskytuje funkce pro přizpůsobení textu.
 
-V případě pokračování v dodací adrese můžete vytvořit regulární výraz, který zachycuje pravidla syntaxe poštovních kódů země.
+V případě pokračování v dodací adrese můžete vytvořit regulární výraz, který zachycuje pravidla syntaxe poštovních směrovacích čísel země nebo oblasti.
 
 ## <a name="global-features"></a>Globální funkce
 

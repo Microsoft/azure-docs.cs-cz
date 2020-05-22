@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23b7205e63c7991368efe421d5c067e980314611
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77022292"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741984"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualizace informací o skupinách na portálu moje aplikace
 
@@ -40,7 +40,7 @@ Pokud vám správce udělil oprávnění k zobrazení dlaždice **skupiny** , m�
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu.
 
-2. Otevřete webový prohlížeč a pokračujte na https://myapps.microsoft.comnebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, jako je například https://myapps.microsoft.com/contoso.com.
+2. Otevřete webový prohlížeč a pokračujte na https://myapps.microsoft.com nebo použijte odkaz poskytovaný vaší organizací. Například můžete být přesměrováni na přizpůsobenou stránku vaší organizace, jako je například https://myapps.microsoft.com/contoso.com .
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
@@ -98,7 +98,7 @@ Pokud vám správce udělil oprávnění k zobrazení dlaždice **skupiny** , m�
 
 Po vytvoření skupiny můžete upravit její podrobnosti, včetně aktualizace jakýchkoli stávajících informací.
 
-1. Na stránce **skupiny** vyberte skupinu, kterou chcete upravit, a pak na stránce * &lt;&gt; group_name* vyberte **Upravit podrobnosti** .
+1. Na stránce **skupiny** vyberte skupinu, kterou chcete upravit, a pak na stránce * &lt; group_name &gt; * vyberte **Upravit podrobnosti** .
 
     Zobrazí se okno **Upravit podrobnosti** , ve kterém můžete aktualizovat informace, které jste přidali při počátečním vytvoření skupiny.
 
@@ -108,7 +108,7 @@ Po vytvoření skupiny můžete upravit její podrobnosti, včetně aktualizace 
 
 Můžete přidat nebo odebrat členy pro všechny skupiny, které vlastníte.
 
-1. Vyberte skupinu, do které chcete přidat členy, a pak vyberte **+** na stránce * &lt;group_name&gt; * .
+1. Vyberte skupinu, do které chcete přidat členy, a pak vyberte **+** na stránce * &lt; group_name &gt; * .
 
     ![Přidat člena skupiny se zvýrazněným znaménkem +](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
@@ -118,7 +118,7 @@ Můžete přidat nebo odebrat členy pro všechny skupiny, které vlastníte.
 
     Novému členovi se pošle pozvánka, aby bylo možné začít přistupovat k aplikacím organizace.
 
-3. Pokud jste člena přidali omylem nebo pokud člen opustil vaši organizaci, můžete člena odebrat výběrem možnosti **odebrat člena** vedle názvu člena na stránce * &lt;group_name&gt; * .
+3. Pokud jste člena přidali omylem nebo pokud člen opustil vaši organizaci, můžete člena odebrat výběrem možnosti **odebrat člena** vedle názvu člena na stránce * &lt; group_name &gt; * .
 
     ![Odebrání člena s zvýrazněným odkazem na odebrání](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -138,7 +138,7 @@ Pokud to vaše organizace umožňuje, můžete obnovit skupinu Office 365 a prod
 
 Jakékoli vlastní skupiny můžete kdykoli odstranit. Pokud však odstraníte skupinu omylem, budete ji muset vytvořit a znovu přidat členy.
 
-1. Vyberte skupinu, kterou chcete trvale odstranit, a pak na stránce * &lt;&gt; group_name* vyberte **Odstranit skupinu** .
+1. Vyberte skupinu, kterou chcete trvale odstranit, a pak na stránce * &lt; Group_name &gt; * vyberte **Odstranit skupinu** .
 
     ![Stránka <Group_name> s zvýrazněným odkazem odstranit skupinu](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 

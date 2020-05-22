@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd26b2b475e293a1fda1b007289ba7c3eef35136
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8052f94755019d8ad3fe818d979d2eb7f8ba0a5e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183923"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738757"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Definovat transformace deklarací telefonního čísla v Azure AD B2C
 
@@ -35,7 +35,7 @@ Převede `phoneNumber` datový typ na `string` datový typ.
 | InputClaim | phoneNumber | phoneNumber |  Deklarace ClaimType pro převod na řetězec. |
 | OutputClaim | phoneNumberString | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
-V tomto příkladu `phoneNumber` je deklarace identity cellPhoneNumber s typem hodnoty převedena na deklaraci cellPhone s hodnotou typu `string`.
+V tomto příkladu je deklarace identity cellPhoneNumber s typem hodnoty `phoneNumber` převedena na deklaraci cellPhone s hodnotou typu `string` .
 
 ```XML
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
@@ -62,8 +62,8 @@ Tato transformace deklarace identity ověřuje formát telefonního čísla. Pok
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumberString | řetězec |  Deklarace řetězce pro telefonní číslo Telefonní číslo musí být v mezinárodním formátu a musí obsahovat úvodní znak "+" a země. Pokud je zadaná `country` vstupní deklarace identity, telefonní číslo je v místním formátu (bez kódu země). |
-| InputClaim | country | řetězec | Volitelné Deklarace řetězce pro kód země telefonního čísla ve formátu ISO3166 (dvoumístné číslo země ISO-3166). |
+| InputClaim | phoneNumberString | řetězec |  Deklarace řetězce pro telefonní číslo Telefonní číslo musí být v mezinárodním formátu a musí se zadat úvodní znak "+" a země/oblasti. Pokud je zadaná vstupní deklarace identity `country` , telefonní číslo je v místním formátu (bez kódu země nebo oblasti). |
+| InputClaim | country | řetězec | Volitelné Deklarace řetězce pro kód země nebo oblasti telefonního čísla ve formátu ISO3166 (kód země/oblasti o dvou písmenech ISO-3166). |
 | OutputClaim | outputClaim | phoneNumber | Výsledek této transformace deklarací identity. |
 
 Transformace deklarací **ConvertStringToPhoneNumberClaim** je vždy prováděna z [technického profilu ověření](validation-technical-profile.md) , který je volán [vlastním technickým profilem](self-asserted-technical-profile.md) nebo [ovládacím prvkem zobrazení](display-controls.md). Metadata technického profilu **UserMessageIfClaimsTransformationInvalidPhoneNumber** s vlastním uplatněním řídí chybovou zprávu, která se zobrazí uživateli.
@@ -113,24 +113,24 @@ Technický profil s vlastním uplatněním, který volá technický profil ově�
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 
-Tím se extrahuje kód země a národní číslo ze vstupní deklarace a volitelně vyvolá výjimku, pokud zadané telefonní číslo není platné.
+Tím se extrahuje kód země nebo oblasti a národní číslo ze vstupní deklarace identity a volitelně vyvolá výjimku, pokud zadané telefonní číslo není platné.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumber | řetězec | Deklarace řetězce telefonního čísla. Telefonní číslo musí být v mezinárodním formátu a musí obsahovat úvodní znak "+" a země. |
+| InputClaim | phoneNumber | řetězec | Deklarace řetězce telefonního čísla. Telefonní číslo musí být v mezinárodním formátu a musí se zadat úvodní znak "+" a země/oblasti. |
 | InputParameter | throwExceptionOnFailure | Boolean | Volitelné Parametr, který označuje, zda je vyvolána výjimka, pokud telefonní číslo není platné. Výchozí hodnota je false. |
-| InputParameter | countryCodeType | řetězec | Volitelné Parametr, který označuje typ kódu země ve výstupní deklaraci. Dostupné hodnoty jsou **CallingCode** (mezinárodní volající kód pro zemi, například + 1) nebo **ISO3166** (se dvěma písmeny kód země ISO-3166). |
+| InputParameter | countryCodeType | řetězec | Volitelné Parametr označující typ kódu země/oblasti ve výstupní deklaraci identity. Dostupné hodnoty jsou **CallingCode** (mezinárodní volající kód pro zemi nebo oblast, například + 1) nebo **ISO3166** (kód země/oblasti o dvou písmenech ISO-3166). |
 | OutputClaim | nationalNumber | řetězec | Deklarace řetězce pro národní číslo telefonního čísla. |
-| OutputClaim | countryCode | řetězec | Deklarace řetězce pro kód země telefonního čísla. |
+| OutputClaim | countryCode | řetězec | Deklarace řetězce pro kód země nebo oblasti telefonního čísla. |
 
 
 Pokud se transformace deklarací **GetNationalNumberAndCountryCodeFromPhoneNumberString** spustí z [technického profilu ověření](validation-technical-profile.md) , který je volán pomocí [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md) nebo pomocí [akce ovládacího prvku zobrazení](display-controls.md#display-control-actions), pak **UserMessageIfPhoneNumberParseFailure** metadata technického profilu s vlastním uplatněním řídí chybovou zprávu, která se zobrazí uživateli.
 
 ![Diagram cesty spuštění chybové zprávy](./media/phone-authentication/assert-execution.png)
 
-Tuto transformaci deklarací identity můžete použít k rozdělení celého telefonního čísla na kód země a národní číslo. Pokud telefonní číslo není platné, můžete zvolit, aby se chybová zpráva vyvolala.
+Pomocí této transformace deklarací identity můžete rozdělit celé telefonní číslo do kódu země nebo oblasti a do národního čísla. Pokud telefonní číslo není platné, můžete zvolit, aby se chybová zpráva vyvolala.
 
-Následující příklad se pokusí rozdělit telefonní číslo na národní číslo a kód země. Pokud je telefonní číslo platné, telefonní číslo bude přepsáno národním číslem. Pokud telefonní číslo není platné, výjimka nebude vyvolána a telefonní číslo má nadále původní hodnotu.
+Následující příklad se pokusí rozdělit telefonní číslo na národní číslo a kód země/oblasti. Pokud je telefonní číslo platné, telefonní číslo bude přepsáno národním číslem. Pokud telefonní číslo není platné, výjimka nebude vyvolána a telefonní číslo má nadále původní hodnotu.
 
 ```XML
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f04a3fea3801f917a3ae4aced04ef3824d1cfa82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad681f4996f713b8bb0c85b07a3f38f0dcb6708a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184515"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738230"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 
@@ -66,19 +66,19 @@ Přizpůsobený tok uživatele může shromažďovat informace o DOB a zemi/obla
 
 Následující kroky ukazují logiku, která se používá k výpočtu **ageGroup** z data narození uživatele:
 
-1. Zkuste v seznamu najít zemi podle kódu země. Pokud se země nenajde, vraťte se k **výchozímu**.
+1. Zkuste najít zemi nebo oblast podle kódu země nebo oblasti v seznamu. Pokud se země nebo oblast nenajde, vraťte se k **výchozímu**.
 
-2. Pokud se uzel **MinorConsent** nachází v prvku země:
+2. Pokud je uzel **MinorConsent** přítomný v prvku země/oblasti:
 
     a. Vypočítat datum, kdy uživatel musí být ve stavu, aby byl považován za dospělé. Pokud je aktuální datum například 14. března 2015 a **MinorConsent** je 18, datum narození nesmí být pozdější než 14. března 2000.
 
     b. Porovnejte minimální datum narození s aktuálním datem narození. Pokud je minimální datum narození před datem narození uživatele, vrátí tento výpočet jako výpočet věkové skupiny **vedlejší** hodnotu.
 
-3. Pokud se uzel **MinorNoConsentRequired** nachází v prvku Country, opakujte kroky 2a a 2b pomocí hodnoty z **MinorNoConsentRequired**. Výstupem programu 2b vrátí **MinorNoConsentRequired** , pokud je minimální datum narození před datem narození uživatele.
+3. Pokud se uzel **MinorNoConsentRequired** nachází v prvku země/oblast, opakujte kroky 2a a 2b pomocí hodnoty z **MinorNoConsentRequired**. Výstupem programu 2b vrátí **MinorNoConsentRequired** , pokud je minimální datum narození před datem narození uživatele.
 
 4. Pokud žádný výpočet nevrátí hodnotu true, výpočet vrátí **dospělý**.
 
-Pokud aplikace spolehlivě shromáždila data DOB nebo země nebo oblasti jinými metodami, aplikace může použít Graph API k aktualizaci záznamu uživatele s těmito informacemi. Příklad:
+Pokud aplikace spolehlivě shromáždila data DOB nebo země nebo oblasti jinými metodami, aplikace může použít Graph API k aktualizaci záznamu uživatele s těmito informacemi. Například:
 
 - Pokud je uživatel známý jako dospělý, aktualizujte atribut adresáře **ageGroup** hodnotou **dospělé**.
 - Je-li uživatel znám jako nepatrný, aktualizujte atribut adresáře **ageGroup** hodnotou **podverze** a podle potřeby nastavte **consentProvidedForMinor**.

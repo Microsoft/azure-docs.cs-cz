@@ -1,18 +1,18 @@
 ---
-title: Galerie runbooků a modulů pro Azure Automation
-description: Runbooky a moduly od Microsoftu a komunity jsou k dispozici pro instalaci a použití v prostředí Azure Automation.  Tento článek popisuje, jak můžete přistupovat k těmto prostředkům a přispívat do galerie.
+title: Použití Azure Automation runbooků a modulů v Galerie prostředí PowerShell
+description: V tomto článku se dozvíte, jak používat Runbooky a moduly od Microsoftu a komunitě v Galerie prostředí PowerShell.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 90b475e275598363314c8f131911fe12650cd3df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1d60c19b05de218ab985b2087071733602c7f2c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535549"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743892"
 ---
-# <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie runbooků a modulů pro Azure Automation
+# <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Použití runbooků a modulů v Galerie prostředí PowerShell
 
 Místo vytváření vlastních runbooků a modulů v Azure Automation máte přístup ke scénářům, které už jsou sestavené Microsoftem a komunitou. Runbooky a [moduly](#modules-in-powershell-gallery) PowerShellu můžete z Galerie služby Script Center získat z Galerie prostředí PowerShell a [runbooků v Pythonu](#use-python-runbooks) . Můžete také přispět do komunity tím, že nasdílíte [scénáře, které vyvíjíte](#add-a-powershell-runbook-to-the-gallery). 
 
@@ -32,9 +32,9 @@ Přímo z Galerie prostředí PowerShell můžete importovat jenom pomocí Azure
 
 Moduly prostředí PowerShell obsahují rutiny, které lze použít v sadách Runbook, a existující moduly, které lze instalovat v nástroji Azure Automation jsou k dispozici v [Galerie prostředí PowerShell](https://www.powershellgallery.com). Tuto galerii můžete spustit z Azure Portal a nainstalovat z nich přímo do Azure Automation. Můžete je také stáhnout a nainstalovat ručně.
 
-## <a name="common-solutions-available-in-powershell-gallery"></a>Běžná řešení dostupná v Galerie prostředí PowerShell
+## <a name="common-scenarios-available-in-powershell-gallery"></a>Běžné scénáře dostupné v Galerie prostředí PowerShell
 
-Níže uvedený seznam obsahuje několik sad Runbook, které poskytují řešení pro běžné scénáře. Úplný seznam runbooků vytvořených Azure Automation týmem naleznete v tématu [profil AzureAutomationTeam](https://www.powershellgallery.com/profiles/AzureAutomationTeam).
+Níže uvedený seznam obsahuje několik sad Runbook, které podporují běžné scénáře. Úplný seznam runbooků vytvořených Azure Automation týmem naleznete v tématu [profil AzureAutomationTeam](https://www.powershellgallery.com/profiles/AzureAutomationTeam).
 
    * [Update-ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) -importuje nejnovější verzi všech modulů v účtu Automation z Galerie prostředí PowerShell.
    * [Enable-AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) – konfiguruje Azure Diagnostics a Log Analytics, aby přijímaly protokoly Azure Automation, které obsahují stav úloh a proudy úloh.
@@ -94,7 +94,7 @@ Microsoft doporučuje přidat Runbooky do Galerie prostředí PowerShell, které
 
 ## <a name="use-python-runbooks"></a>Použití runbooků v Pythonu
 
-Runbooky Python jsou k dispozici v [galerii centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Kliknutím na **Odeslat příspěvek**můžete přispívat sady Runbook Runbooky do galerie Center skriptů. Když to uděláte, nezapomeňte při nahrávání vašeho příspěvku přidat `Python` značku.
+Runbooky Python jsou k dispozici v [galerii centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Kliknutím na **Odeslat příspěvek**můžete přispívat sady Runbook Runbooky do galerie Center skriptů. Když to uděláte, nezapomeňte při `Python` nahrávání vašeho příspěvku přidat značku.
 
 > [!NOTE]
 > Pokud chcete nahrát obsah do [centra skriptů](https://gallery.technet.microsoft.com/scriptcenter), potřebujete minimálně 100 bodů.
@@ -105,6 +105,6 @@ Můžete odesílat požadavky na [uživatelský hlas](https://feedback.azure.com
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o tom, jak začít se sadami Runbook, najdete [v tématu Správa sady Runbook v Azure Automation](manage-runbooks.md).
-* Další informace o rozdílech mezi PowerShellem a pracovním postupem PowerShellu se sadami Runbook najdete v tématu [výuka powershellového pracovního postupu](automation-powershell-workflow.md).
-* Další informace o PowerShellu, včetně referenčních modulů jazyka a výukových modulů, najdete v [dokumentaci k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview).
+* [Správa runbooků v Azure Automation](manage-runbooks.md)
+* [Informace o pracovním postupu PowerShellu pro Azure Automation](automation-powershell-workflow.md)
+* [Dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview)

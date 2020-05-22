@@ -1,37 +1,34 @@
 ---
-title: Použití šablon Azure Resource Manager k zprovoznění Update Management | Microsoft Docs
-description: K připojení Update Management řešení Azure Automation můžete použít šablonu Azure Resource Manager.
+title: Povolit Update Management pomocí šablony Azure Resource Manager | Microsoft Docs
+description: V tomto článku se dozvíte, jak používat šablonu Azure Resource Manager k povolení Update Management.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: dd8706c1e95e6b1e4ca4a38d4a336f6186464696
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 9e4396a1def5b032077c1c15c2d10b7f3452853f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872202"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743464"
 ---
-# <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Připojení Update Management řešení pomocí šablony Azure Resource Manager
+# <a name="enable-update-management-using-azure-resource-manager-template"></a>Povolit Update Management pomocí šablony Azure Resource Manager
 
-K povolení řešení Azure Automation Update Management ve vaší skupině prostředků můžete použít [šablony Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md) . Tento článek poskytuje ukázkovou šablonu, která automatizuje následující:
+K povolení funkce Update Management Azure Automation ve vaší skupině prostředků můžete použít [šablonu Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md) . Tento článek poskytuje ukázkovou šablonu, která automatizuje následující:
 
 * Vytváření pracovního prostoru Azure Monitor Log Analytics
 * Vytvoření účtu Azure Automation.
 * Propojení účtu Automation s pracovním prostorem Log Analytics, pokud ještě není propojené.
-* Připojování řešení Azure Automation Update Management
+* Povolování Update Management.
 
-Šablona neautomatizuje připojování jednoho nebo více virtuálních počítačů Azure nebo mimo Azure.
+Šablona neautomatizuje povolení jednoho nebo více virtuálních počítačů Azure nebo mimo Azure.
 
-Pokud už máte pracovní prostor Log Analytics a účet Automation je nasazený v podporované oblasti v rámci vašeho předplatného, nejsou propojené. Pracovní prostor ještě nemá nasazené řešení Update Management. Pomocí této šablony se úspěšně vytvoří odkaz a nasadí se Update Management řešení. 
-
->[!NOTE]
->Přihlášený uživatel **nxautomation** jako součást Update Management v systému Linux provede pouze podepsané Runbooky.
+Pokud už máte pracovní prostor Log Analytics a účet Automation je nasazený v podporované oblasti v rámci vašeho předplatného, nejsou propojené. Pracovní prostor už nemá povolený Update Management. Pomocí této šablony se úspěšně vytvoří odkaz a nasadí Update Management pro vaše virtuální počítače. 
 
 >[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
+>Uživatel **nxautomation** povolený jako součást Update Management v systému Linux provádí pouze podepsané Runbooky.
 
 ## <a name="api-versions"></a>Verze rozhraní API
 
@@ -244,10 +241,10 @@ Pokud se Azure Automation a Azure Monitor, je důležité pochopit následujíc�
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte nasazené řešení Update Management, můžete povolit virtuální počítače pro správu, zkontrolovat posouzení aktualizací a nasadit aktualizace, aby byly v souladu s předpisy.
+Teď, když máte povolený Update Management, můžete povolit virtuální počítače pro správu, zkontrolovat posouzení aktualizací a nasadit aktualizace, aby byly v souladu s předpisy.
 
-- Z [účtu Azure Automation](automation-onboard-solutions-from-automation-account.md) pro jeden nebo více počítačů Azure a ručně pro počítače mimo Azure.
+- Z [účtu Azure Automation](automation-onboard-solutions-from-automation-account.md) pro jeden nebo více počítačů Azure a ručně pro počítače mimo Azure
 
 - Pro jeden virtuální počítač Azure ze stránky virtuálního počítače v Azure Portal. Tento scénář je k dispozici pro virtuální počítače se systémy [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) a [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) .
 
-- Pro [více virtuálních počítačů Azure](manage-update-multi.md) je můžete vybrat ze stránky **virtuální počítače** v Azure Portal. 
+- Pro [více virtuálních počítačů Azure](manage-update-multi.md) , a to tak, že je vyberete na stránce **virtuální počítače** v Azure Portal 

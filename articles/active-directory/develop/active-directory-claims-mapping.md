@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d8be2c8cc70db963252054a39cad558c4c1b5bd2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871219"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737499"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -319,16 +319,16 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | extensionattribute14 | Atribut rozšíření 14 |
 | Uživatel | extensionattribute15 | Atribut rozšíření 15 |
 | Uživatel | othermail | Jiná pošta |
-| Uživatel | country | Země |
+| Uživatel | country | Země/oblast |
 | Uživatel | city | Město |
-| Uživatel | state | Stav |
+| Uživatel | state | State |
 | Uživatel | jobtitle | Název pozice |
 | Uživatel | zaměstnance | Identifikační číslo zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
 | aplikace, prostředek, cílová skupina | DisplayName | Zobrazovaný název |
 | aplikace, prostředek, cílová skupina | s objekty | ObjectId |
 | aplikace, prostředek, cílová skupina | tags | Značka objektu služby |
-| Společnost | tenantcountry | Země tenanta |
+| Společnost | tenantcountry | Země/oblast tenanta |
 
 **TransformationID:** Element TransformationID se musí poskytnout jenom v případě, že je zdrojový element nastavený na transformaci.
 
@@ -360,8 +360,8 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
-|Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: "foo@bar.com", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|pošta|outputClaim|Extrahuje místní část e-mailové adresy. Například: mail: "foo@bar.com" má za následek outputClaim: "foo". Pokud není \@ k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
+|Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: " foo@bar.com ", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: " foo@bar.com.sandbox "|
+|ExtractMailPrefix|pošta|outputClaim|Extrahuje místní část e-mailové adresy. Například: mail: " foo@bar.com " má za následek outputClaim: "foo". Pokud \@ není k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
 
 **InputClaims:** Pomocí elementu InputClaims předejte data ze záznamu schématu deklarace do transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
@@ -415,7 +415,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč
 
-Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor. Chcete-li přidat vlastní podpisový klíč, můžete pomocí rutiny `new-azureadapplicationkeycredential` Azure PowerShell vytvořit pověření symetrického klíče pro objekt aplikace. Další informace o této rutině Azure PowerShell najdete v článku [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor. Chcete-li přidat vlastní podpisový klíč, můžete pomocí rutiny Azure PowerShell `new-azureadapplicationkeycredential` vytvořit pověření symetrického klíče pro objekt aplikace. Další informace o této rutině Azure PowerShell najdete v článku [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
 Aplikace, které mají povolené mapování deklarací, musí ověřit své podpisové klíče tokenu připojením `appid={client_id}` ke svým [žádostem o metadata OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Níže je uvedený formát dokumentu metadat OpenID Connect, který byste měli použít: 
 
@@ -478,7 +478,7 @@ V tomto příkladu vytvoříte zásadu, která odebere základní sadu deklarac�
 
 #### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Příklad: Vytvořte a přiřaďte zásady, které budou zahrnovat ČísloZaměstnance a TenantCountry jako deklarace identity v tokenech vydaných pro instanční objekt.
 
-V tomto příkladu vytvoříte zásadu, která přidá ČísloZaměstnance a TenantCountry k tokenům vydaným pro propojené objekty služby. Pole ČísloZaměstnance je vygenerováno jako název deklarace identity v tokenech SAML a v JWTs. TenantCountry je vygenerován jako typ deklarace země v tokenech SAML a v JWTs. V tomto příkladu budeme v tokenech dál zahrnovat základní sady deklarací identity.
+V tomto příkladu vytvoříte zásadu, která přidá ČísloZaměstnance a TenantCountry k tokenům vydaným pro propojené objekty služby. Pole ČísloZaměstnance je vygenerováno jako název deklarace identity v tokenech SAML a v JWTs. TenantCountry je vygenerován jako typ deklarace země nebo oblasti v tokenech SAML a v JWTs. V tomto příkladu budeme v tokenech dál zahrnovat základní sady deklarací identity.
 
 1. Vytvořte zásadu mapování deklarací identity. Tato zásada propojená s konkrétními instančními objekty přidá deklarace ČísloZaměstnance a TenantCountry do tokenů.
    1. Chcete-li vytvořit zásadu, spusťte následující příkaz:  

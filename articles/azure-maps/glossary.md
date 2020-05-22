@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657040"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742218"
 ---
 # <a name="glossary"></a>Glosář
 
@@ -31,7 +31,7 @@ Následující seznam popisuje běžná slova používaná s Azure Maps službam
 
 <a name="altitude"></a>**Nadmořská**Výška: výška nebo svislé zvýšení úrovně bodu nad referenční plochu. Měření nadmořského nadlimitního množství vychází z konkrétního referenčního údaje, jako je například střední úroveň moře. Viz také zvýšení úrovně oprávnění.
 
-<a name="ambiguous"></a>**Dvojznačný**: stav nejistoty v klasifikaci dat, která existuje v případě, že může být objekt vhodně přiřazen dvěma nebo více hodnotám pro daný atribut. Například při geografickém kódování "CA" jsou vraceny dva dvojznačné výsledky: "Kanada" a "Kalifornie". "CA" je země a kód stavu, v uvedeném pořadí "Kanada" a "Kalifornie". 
+<a name="ambiguous"></a>**Dvojznačný**: stav nejistoty v klasifikaci dat, která existuje v případě, že může být objekt vhodně přiřazen dvěma nebo více hodnotám pro daný atribut. Například při geografickém kódování "CA" jsou vraceny dva dvojznačné výsledky: "Kanada" a "Kalifornie". "CA" je země nebo oblast a kód stavu, v uvedeném pořadí pro "Kanada" a "Kalifornie". 
 
 <a name="annotation"></a>**Anotace**: text nebo grafika zobrazená na mapě k poskytnutí informací uživateli. Poznámka může identifikovat nebo popsat konkrétní mapovou entitu, zadat obecné informace o oblasti na mapě nebo zadat informace o samotné mapě.
 
@@ -93,7 +93,7 @@ Následující seznam popisuje běžná slova používaná s Azure Maps službam
 
 <a name="coordinate-system"></a>**Souřadnicový systém**: referenční rozhraní, pomocí něhož lze definovat pozice bodů v prostoru ve dvou nebo třech dimenzích.
 
-<a name="country-code"></a>**Kód země**: jedinečný identifikátor země nebo oblasti na základě standardu ISO. ISO2 je kód se dvěma znaky pro zemi (například US), která ISO3 představuje kód o třech znacích (například USA).
+<a name="country-code"></a>**Kód země**: jedinečný identifikátor země nebo oblasti na základě standardu ISO. ISO2 je kód o dvou znacích pro zemi nebo oblast (například US), která ISO3 představuje kód se třemi znaky (například USA).
 
 <a name="country-subdivision"></a>**Dělení země**: rozdělení země nebo oblasti první úrovně, obvykle označované jako stát nebo provincie.
 

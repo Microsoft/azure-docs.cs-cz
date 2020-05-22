@@ -1,38 +1,28 @@
 ---
-title: Správa aktualizací a oprav pro virtuální počítače Azure
-description: Tento článek poskytuje přehled o tom, jak pomocí Azure Automation Update Management spravovat aktualizace a opravy pro virtuální počítače Azure a mimo Azure.
+title: Správa aktualizací a oprav pro virtuální počítače Azure v Azure Automation
+description: V tomto článku se dozvíte, jak pomocí Update Management spravovat aktualizace a opravy pro virtuální počítače Azure.
 services: automation
 ms.subservice: update-management
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 52158fe78262b5b2b3d006fb3a543ca743f4e417
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4b47fa873df88bf85c4c56c9f2ac94fce16c63be
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683829"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743651"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
-Řešení Update Management umožňuje spravovat aktualizace a opravy pro virtuální počítače. V tomto kurzu se naučíte rychle vyhodnotit stav dostupných aktualizací, plánovat instalaci požadovaných aktualizací, kontrolovat výsledky nasazení a vytvořit upozornění za účelem ověření správného použití aktualizací.
+Tento článek popisuje, jak můžete pomocí funkce Azure Automation [Update Management](automation-update-management.md) spravovat aktualizace a opravy pro virtuální počítače Azure. 
 
 Informace o cenách najdete v tématu [ceny služby Automation pro Update Management](https://azure.microsoft.com/pricing/details/automation/).
 
-V tomto kurzu:
-
-> [!div class="checklist"]
-> * Zobrazení posouzení aktualizací
-> * Konfigurace upozorňování
-> * Naplánování nasazení aktualizace
-> * Zobrazení výsledků nasazení
-
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
-
-* Řešení [Update Management](automation-update-management.md) povolené pro jeden nebo více vašich virtuálních počítačů.
-* [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md) pro připojení.
+* Funkce [Update Management](automation-update-management.md) povolená pro jeden nebo více vašich virtuálních počítačů. 
+* [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md) je povolený pro Update Management.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -95,7 +85,7 @@ Chcete-li přizpůsobit předmět e-mailu s výstrahou, v části **vytvořit pr
 
 ## <a name="schedule-an-update-deployment"></a>Naplánování nasazení aktualizace
 
-Dále naplánujte nasazení odpovídající vašemu plánu vydávání a časovému intervalu pro instalaci aktualizací. Můžete zvolit typy aktualizací, které chcete zahrnout do nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
+Naplánujte nasazení, které následuje po plánu vydání a okně služby pro instalaci aktualizací. Můžete zvolit typy aktualizací, které chcete zahrnout do nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
 
 >[!NOTE]
 >Při plánování nasazení aktualizace se vytvoří prostředek [plánu](shared-resources/schedules.md) propojený s runbookm **patch-MicrosoftOMSComputers** , který zpracovává nasazení aktualizace na cílových počítačích. Pokud odstraníte prostředek plánu z Azure Portal nebo pomocí PowerShellu po vytvoření nasazení dojde k přerušení naplánovaného nasazení aktualizace a při pokusu o překonfigurování prostředků plánu z portálu se zobrazí chyba. Zdroj plánu lze odstranit pouze odstraněním odpovídajícího plánu nasazení.  
@@ -112,18 +102,9 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
 * **Počítače, které se mají aktualizovat**: v rozevírací nabídce vyberte uložené hledání, importovanou skupinu nebo vyberte **počítače** . pak vyberte jednotlivé počítače. Pokud zvolíte možnost **počítače**, připravenost jednotlivých počítačů se zobrazí ve sloupci **připravenosti agenta aktualizace** . Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md).
 
-* **Klasifikace aktualizace**: pro každý produkt zrušte výběr všech podporovaných klasifikací aktualizací, ale těch, které se mají zahrnout do nasazení aktualizace. Pro tento kurz ponechte všechny typy vybrané pro všechny produkty.
+* **Klasifikace aktualizace**: pro každý produkt zrušte výběr všech podporovaných klasifikací aktualizací, ale těch, které se mají zahrnout do nasazení aktualizace. Popisy typů klasifikace najdete v tématu [klasifikace aktualizací](automation-view-update-assessments.md#work-with-update-classifications).
 
-  Typy klasifikace jsou:
-
-   |Operační systém  |Typ  |
-   |---------|---------|
-   |Windows     | Důležité aktualizace</br>Aktualizace zabezpečení</br>Kumulativní aktualizace</br>Balíčky funkcí</br>Aktualizace Service Pack</br>Aktualizace definic</br>nástroje</br>Aktualizace<br>Ovladač        |
-   |Linux     | Důležité aktualizace a aktualizace zabezpečení</br>Další aktualizace       |
-
-   Popisy typů klasifikace najdete v tématu [klasifikace aktualizací](automation-view-update-assessments.md#update-classifications).
-
-* **Zahrnutí a vyloučení aktualizací** – otevře stránku zahrnutí/vyloučení. Aktualizace, které mají být zahrnuty nebo vyloučeny, jsou na různých kartách zadáním čísel ID článků znalostní báze. Při zadávání jednoho nebo více čísel ID je nutné odebrat nebo zrušit kontrolu všech klasifikací v nasazení aktualizace. Tím se zajistí, že balíček aktualizace nebude zahrnovat žádné další aktualizace při zadávání ID aktualizací.
+* **Aktualizace k zahrnutí/vyloučení** – otevře stránku zahrnutí/vyloučení. Aktualizace, které mají být zahrnuty nebo vyloučeny, jsou na různých kartách zadáním čísel ID článků znalostní báze. Při zadávání jednoho nebo více čísel ID je nutné odebrat nebo zrušit kontrolu všech klasifikací v nasazení aktualizace. Tím se zajistí, že balíček aktualizace nebude zahrnovat žádné další aktualizace při zadávání ID aktualizací.
 
 > [!NOTE]
 > Je důležité, abyste věděli, že vyloučení přepisují. Například pokud definujete pravidlo vyloučení `*` , Update Management nainstaluje žádné opravy ani balíčky, protože jsou všechny vyloučené. Vyloučené opravy se pořád na počítači zobrazují jako chybějící. U počítačů se systémem Linux, pokud zahrnete balíček, který má vyloučený závislý balíček, Update Management nenainstaluje hlavní balíček.
@@ -131,7 +112,6 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 > [!NOTE]
 > Aktualizace, které byly nahrazeny pro zahrnutí do nasazení aktualizace, nelze zadat.
 >
-
 * **Nastavení plánu:** Otevře se podokno Nastavení plánu. Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
 
    Můžete také určit, jestli nasazení proběhne jednou, nebo nastavit plán opakování. V části **Opakování** vyberte **Jednou**. Ponechte výchozí hodnotu 1 den a klikněte na **OK**. Tyto položky nastaví plán opakování.
@@ -149,7 +129,7 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
   > Pokud nechcete, aby se aktualizace používaly mimo časové období údržby v Ubuntu, překonfigurujte balíček bezobslužné aktualizace tak, aby nedocházelo k automatickým aktualizacím. Informace o tom, jak nakonfigurovat balíček, najdete [v tématu věnovaném automatickým aktualizacím v příručce k serveru Ubuntu](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
 * **Možnosti restartování**: slouží k zadání možností pro zpracování restartování. K dispozici jsou následující možnosti:
-  * Restartovat v případě potřeby (výchozí)
+  * V případě potřeby restartování (výchozí)
   * Vždy restartovat
   * Nikdy nerestartovat
   * Jenom restartovat – neinstaluje aktualizace
@@ -196,16 +176,4 @@ Po úspěšném nasazení aktualizace obdržíte e-mail s potvrzením, který bu
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Připojení virtuálního počítače k řešení Update Management
-> * Zobrazení posouzení aktualizací
-> * Konfigurace upozorňování
-> * Naplánování nasazení aktualizace
-> * Zobrazení výsledků nasazení
-
-Pokračujte k přehledu řešení Update Management.
-
-> [!div class="nextstepaction"]
-> [Řešení Update Management](automation-update-management.md)
+* [Přehled Update Managementu](automation-update-management.md)

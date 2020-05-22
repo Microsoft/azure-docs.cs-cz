@@ -13,16 +13,16 @@ ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 12f5df9b644246092f0a5da2b30dc5a7187ca827
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0bb7812d75fa3276b52a182f9184e28a21a910ae
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926812"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737482"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>Protokoly OAuth 2,0 a OpenID Connect na platformě Microsoft Identity Platform
 
-Koncový bod Microsoft Identity Platform pro identitu jako službu s oborovými standardními protokoly OpenID Connect (OIDC) a OAuth 2,0. I když je služba kompatibilní se standardy, můžou být mezi dvěma implementacemi těchto protokolů malé rozdíly. Informace zde budou užitečné, pokud se rozhodnete napsat kód přímým odesíláním a zpracováním požadavků HTTP nebo použitím open source knihovny od jiného výrobce namísto použití jedné z našich [Open Source knihoven](reference-v2-libraries.md).
+Koncový bod Microsoft Identity Platform pro identitu identity jako službu implementuje ověřování a autorizaci s oborovým standardem protokolů OpenID Connect (OIDC) a OAuth 2,0, v uvedeném pořadí. I když je služba kompatibilní se standardy, můžou být mezi dvěma implementacemi těchto protokolů malé rozdíly. Informace zde budou užitečné, pokud se rozhodnete napsat kód přímým odesíláním a zpracováním požadavků HTTP nebo použitím open source knihovny od jiného výrobce namísto použití jedné z našich [Open Source knihoven](reference-v2-libraries.md).
 
 ## <a name="the-basics"></a>Základy
 

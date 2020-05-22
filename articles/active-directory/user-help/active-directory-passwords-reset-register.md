@@ -9,15 +9,15 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 397e1fd7695fd7e74e1f22959d0f9f24af7d1ea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3deb59b04f3c0ba90e270bc064e3ece3c21229b3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062638"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739600"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Registrace informací o metodě ověřování pro resetování vlastního hesla
 
@@ -26,7 +26,7 @@ Pokud jste zapomněli své pracovní nebo školní heslo, nikdy nebudete mít he
 Správce musí tuto funkci zapnout, aby bylo možné zaregistrovat vaše informace a resetovat vlastní heslo. Pokud nevidíte možnost **zapomenuté heslo** , znamená to, že správce tuto funkci pro vaši organizaci nezapnul. Pokud se domníváte, že to není správné, obraťte se na helpdesk, kde najdete pomoc.
 
 >[!Important]
->Tento článek je určený pro uživatele, kteří se pokoušejí použít k registraci samoobslužného resetování hesla. To znamená, že budete moct resetovat svoje vlastní pracovní nebo školní heslo (například, alain@contoso.com), aniž byste museli pomáhat správce. Pokud jste správcem a hledáte informace o tom, jak zapnout Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [nasazení samoobslužného resetování hesla Azure AD a dalších článků](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
+>Tento článek je určený pro uživatele, kteří se pokoušejí použít k registraci samoobslužného resetování hesla. To znamená, že budete moct resetovat svoje vlastní pracovní nebo školní heslo (například, alain@contoso.com ), aniž byste museli pomáhat správce. Pokud jste správcem a hledáte informace o tom, jak zapnout Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [nasazení samoobslužného resetování hesla Azure AD a dalších článků](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
 
 ## <a name="set-up-your-password-reset-verification-method"></a>Nastavení metody ověřování pro resetování hesla
 
@@ -57,7 +57,7 @@ Správce musí tuto funkci zapnout, aby bylo možné zaregistrovat vaše informa
 
 | Chybová zpráva |  Možné řešení |
 | --- | --- | --- |
-| Kontaktujte správce.<br>Zjistili jsme, že heslo ke svému uživatelskému účtu nespravuje Microsoft. V důsledku toho nemůžeme automaticky resetovat vaše heslo.<br>Další pomoc vám poskytne váš personál oddělení IT.| Pokud se tato chybová zpráva zobrazí po zadání ID uživatele, znamená to, že vaše organizace interně spravuje vaše heslo a nechce, abyste heslo obnovili z připojení k **vašemu účtu** . Pokud chcete v této situaci resetovat heslo, musíte se obrátit na helpdesk nebo správce vaší organizace, který vám pomůže. |
+| Obraťte se prosím na správce.<br>Zjistili jsme, že heslo ke svému uživatelskému účtu nespravuje Microsoft. V důsledku toho nemůžeme automaticky resetovat vaše heslo.<br>Další pomoc vám poskytne váš personál oddělení IT.| Pokud se tato chybová zpráva zobrazí po zadání ID uživatele, znamená to, že vaše organizace interně spravuje vaše heslo a nechce, abyste heslo obnovili z připojení k **vašemu účtu** . Pokud chcete v této situaci resetovat heslo, musíte se obrátit na helpdesk nebo správce vaší organizace, který vám pomůže. |
 | Váš účet není pro resetování hesla povolený.<br>Je nám líto, ale vaši zaměstnanci IT nevytvořili účet pro použití s touto službou.<br>Pokud byste chtěli, můžeme kontaktovat správce ve vaší organizaci, aby vám heslo resetoval. | Pokud se tato chybová zpráva zobrazí po zadání ID uživatele, znamená to, že vaše organizace nemá zapnutou funkci resetování hesla, nebo ji nemůžete používat. Pokud chcete v této situaci resetovat heslo, musíte vybrat odkaz **kontaktujte správce** . Po kliknutí na odkaz se na helpdesk nebo správce vaší organizace pošle e-mail s oznámením, že si chcete resetovat heslo. |
 | Nepovedlo se nám ověřit váš účet.<br>Pokud byste chtěli, můžeme kontaktovat správce ve vaší organizaci, aby vám heslo resetoval. | Pokud se tato chybová zpráva zobrazí po zadání ID uživatele, znamená to, že vaše organizace zapnula resetování hesla a že ji můžete použít, ale nezaregistrovali jste ji pro službu. V takovém případě musíte požádat o resetování hesla oddělení technické podpory nebo správce vaší organizace. Informace o tom, jak se zaregistrovat pro resetování hesla po návratu do zařízení, najdete v části v tomto článku postup. |
 

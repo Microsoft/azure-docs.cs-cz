@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a1ff8e0aedce5d3a6acc9a39084cf0839efdd88e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97e8a34f3b8639990f8de736a8f1f7429ebfd448
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678441"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739137"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
@@ -27,7 +27,7 @@ Než budete moci použít vkládání závislostí, je nutné nainstalovat násl
 
 - [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-- [Balíček Microsoft. NET. SDK. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) verze 1.0.28 nebo novější
+- Balíček [Microsoft. NET. SDK. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) verze 1.0.28 nebo novější
 
 ## <a name="register-services"></a>Registrovat služby
 
@@ -66,15 +66,15 @@ namespace MyNamespace
 
 Série kroků registrace se spouští před a po zpracování spouštěcí třídy. Proto Pamatujte na následující položky:
 
-- *Spouštěcí třída je určena pouze pro instalaci a registraci.* Vyhněte se používání služeb zaregistrovaných při spuštění během procesu spuštění. Nesnažte se třeba protokolovat zprávu do protokolovacího nástroje, který se registruje při spuštění. Tento bod procesu registrace je příliš brzy, aby byly vaše služby k dispozici pro použití. Po spuštění `Configure` metody bude modul runtime funkcí nadále registrovat další závislosti, což může ovlivnit fungování služeb.
+- *Spouštěcí třída je určena pouze pro instalaci a registraci.* Vyhněte se používání služeb zaregistrovaných při spuštění během procesu spuštění. Nesnažte se třeba protokolovat zprávu do protokolovacího nástroje, který se registruje při spuštění. Tento bod procesu registrace je příliš brzy, aby byly vaše služby k dispozici pro použití. Po `Configure` spuštění metody bude modul runtime funkcí nadále registrovat další závislosti, což může ovlivnit fungování služeb.
 
-- *Kontejner pro vkládání závislostí obsahuje pouze explicitně registrované typy*. Jediné služby, které jsou k dispozici jako vložené typy, jsou to `Configure` , co je nastaveno v metodě. V důsledku toho typy specifické pro funkce, jako `BindingContext` a `ExecutionContext` nejsou k dispozici během instalace nebo jako vložené typy.
+- *Kontejner pro vkládání závislostí obsahuje pouze explicitně registrované typy*. Jediné služby, které jsou k dispozici jako vložené typy, jsou to, co je nastaveno v `Configure` metodě. V důsledku toho typy specifické pro funkce, jako `BindingContext` a `ExecutionContext` nejsou k dispozici během instalace nebo jako vložené typy.
 
 ## <a name="use-injected-dependencies"></a>Použít vložené závislosti
 
 K dispozici jsou závislosti pomocí injektáže konstruktoru ve funkci. Použití injektáže konstruktoru vyžaduje, abyste nepoužívali statické třídy.
 
-Následující příklad ukazuje, jak jsou `IMyService` tyto `HttpClient` závislosti vloženy do funkce aktivované protokolem HTTP. V tomto příkladu se používá balíček [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) vyžadovaný k registraci při spuštění. `HttpClient`
+Následující příklad ukazuje, jak `IMyService` jsou tyto `HttpClient` závislosti vloženy do funkce aktivované protokolem HTTP. V tomto příkladu se používá balíček [Microsoft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) vyžadovaný k registraci `HttpClient` při spuštění.
 
 ```csharp
 using System;
@@ -131,11 +131,11 @@ Pokud potřebujete vlastního zprostředkovatele protokolování, zaregistrujte 
 
 > [!WARNING]
 > - Nepřidávat `AddApplicationInsightsTelemetry()` do kolekce služeb při registraci služeb, které jsou v konfliktu se službami poskytovanými prostředím.
-> - Neregistrujte si vlastní `TelemetryConfiguration` , `TelemetryClient` nebo pokud používáte integrovanou funkci Application Insights. Pokud potřebujete nakonfigurovat vlastní `TelemetryClient` instanci, vytvořte ji pomocí vloženého, `TelemetryConfiguration` jak je znázorněno v [Azure Functions monitorování](./functions-monitoring.md#version-2x-and-later-2).
+> - Neregistrujte si vlastní `TelemetryConfiguration` , nebo `TelemetryClient` Pokud používáte integrovanou funkci Application Insights. Pokud potřebujete nakonfigurovat vlastní `TelemetryClient` instanci, vytvořte ji pomocí vloženého, `TelemetryConfiguration` jak je znázorněno v [Azure Functions monitorování](./functions-monitoring.md#version-2x-and-later-2).
 
-### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> a ILoggerFactory
+### <a name="iloggert-and-iloggerfactory"></a>ILogger <T> a ILoggerFactory
 
-Hostitel vloží `ILogger<T>` a `ILoggerFactory` nasadí služby do konstruktorů.  Ve výchozím nastavení se ale tyto nové filtry protokolování odfiltrují z protokolů funkcí.  Budete muset upravit `host.json` soubor, aby se mohl vyjádřit další filtry a kategorie.  Následující ukázka demonstruje přidání `ILogger<HttpTrigger>` s protokoly, které bude zveřejnit hostitel.
+Hostitel vloží `ILogger<T>` a nasadí `ILoggerFactory` služby do konstruktorů.  Ve výchozím nastavení se ale tyto nové filtry protokolování odfiltrují z protokolů funkcí.  Budete muset upravit `host.json` soubor, aby se mohl vyjádřit další filtry a kategorie.  Následující ukázka demonstruje přidání `ILogger<HttpTrigger>` s protokoly, které bude zveřejnit hostitel.
 
 ```csharp
 namespace MyNamespace
@@ -196,9 +196,9 @@ Přepsání služeb poskytovaných hostitelem není aktuálně podporováno.  Po
 
 ## <a name="working-with-options-and-settings"></a>Práce s možnostmi a nastaveními
 
-Hodnoty definované v [nastavení aplikace](./functions-how-to-use-azure-function-app-settings.md#settings) jsou k dispozici `IConfiguration` v instanci, která umožňuje číst hodnoty nastavení aplikace ve třídě Startup.
+Hodnoty definované v [nastavení aplikace](./functions-how-to-use-azure-function-app-settings.md#settings) jsou k dispozici v `IConfiguration` instanci, která umožňuje číst hodnoty nastavení aplikace ve třídě Startup.
 
-Hodnoty z `IConfiguration` instance můžete extrahovat do vlastního typu. Kopírování hodnot nastavení aplikace do vlastního typu usnadňuje testování služeb tím, že se tyto hodnoty vloží. Nastavení číst do instance konfigurace musí být jednoduché páry klíč-hodnota.
+Hodnoty z instance můžete extrahovat `IConfiguration` do vlastního typu. Kopírování hodnot nastavení aplikace do vlastního typu usnadňuje testování služeb tím, že se tyto hodnoty vloží. Nastavení číst do instance konfigurace musí být jednoduché páry klíč-hodnota.
 
 Vezměte v úvahu následující třídu, která obsahuje vlastnost s názvem konzistentní s nastavením aplikace:
 
@@ -231,7 +231,7 @@ builder.Services.AddOptions<MyOptions>()
 
 Volání `Bind` kopíruje hodnoty, které mají odpovídající názvy vlastností z konfigurace do vlastní instance. Instance Options je teď k dispozici v kontejneru IoC pro vkládání do funkce.
 
-Objekt Options je vložen do funkce jako instance obecného `IOptions` rozhraní. Pro přístup `Value` k hodnotám nalezeným ve vaší konfiguraci použijte vlastnost.
+Objekt Options je vložen do funkce jako instance obecného `IOptions` rozhraní. `Value`Pro přístup k hodnotám nalezeným ve vaší konfiguraci použijte vlastnost.
 
 ```csharp
 using System;

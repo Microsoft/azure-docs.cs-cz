@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/06/2020
+ms.date: 05/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 227f4a804c466af81707eca79e9d8cf6c00e52be
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: c37850d2188f560b8eb8d0b16f5a1b2880a8b32e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984360"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740559"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EasySSO pro Bamboo
 
@@ -99,7 +99,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     ![image](common/default-attributes.png)
 
 1. Kromě toho očekává aplikace EasySSO for Bamboo u odpovědi SAML méně dalších atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
-    
+
     | Name | Zdrojový atribut |
     | ---------------|  --------- |
     | urn: OID: 2.16.840.1.113730.3.1.241 | User. DisplayName |
@@ -120,7 +120,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -144,13 +144,50 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-easysso-for-bamboo-sso"></a>Konfigurace EasySSO pro jednotné přihlašování Bamboo
 
-Pokud chcete nakonfigurovat jednotné přihlašování na **EasySSO pro Bamboo** stranu, musíte poslat **adresu URL federačních metadat aplikace** do [EasySSO pro tým podpory Bamboo](mailto:support@techtime.co.nz). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+1. Přihlaste se k EasySSO pro instanci Bamboo s oprávněními správce a přejděte do části **Správa aplikací** .
+
+    ![Konfigurace EasySSO pro Bamboo](./media/easysso-for-bamboo-tutorial/jira-admin-1.png)
+
+1. Klikněte na **EasySSO**.
+
+    ![Konfigurace EasySSO pro Bamboo](./media/easysso-for-bamboo-tutorial/jira-admin-2.png)
+
+1. Vyberte možnost **SAML** . Tím přejdete do konfiguračního oddílu SAML.
+
+    ![Konfigurace EasySSO pro Bamboo](./media/easysso-for-bamboo-tutorial/jira-admin-3.png)
+
+1. V horní části karty vybrat **certifikáty** a zobrazí se vám následující obrazovka, kde najdete **certifikát (Base64)** nebo **soubor metadat** , který jste uložili v předchozích krocích konfigurace **jednotného přihlašování služby Azure AD** . Máte následující možnosti, jak pokračovat:
+
+    ![Konfigurace EasySSO pro Bamboo](./media/easysso-for-bamboo-tutorial/jira-admin-4.png)
+
+    a. Použijte soubor federačních **metadat** aplikace, který jste stáhli do místního souboru v počítači. Vyberte možnost **nahrát** přepínač a postupujte podle dialogového okna pro nahrání souboru, které je specifické pro váš operační systém.
+
+    **ANI**
+
+    b. Otevřete soubor federačních **metadat** aplikace a zobrazte obsah (v libovolném textovém editoru) souboru a zkopírujte ho do schránky. Vyberte možnost **vstup** a vložte obsah schránky do textového pole.
+
+    **ANI**
+
+    c. Plně ruční konfigurace. Otevřete certifikát federační aplikace **(Base64)** , abyste zobrazili obsah (v libovolném textovém editoru) souboru a zkopírovali ho do schránky. Vložte ho do textového pole **IDP tokeny podepisování certifikátů** . Pak přejděte na kartu **Obecné** a vyplňte **pole Adresa URL příspěvku** a **ID entity** příslušnými hodnotami pro **přihlašovací adresu URL** a **identifikátor služby Azure AD** , který jste předtím uložili.
+
+1. V dolní části stránky klikněte na tlačítko **Uložit** . Zobrazí se obsah metadat nebo souborů certifikátů, které se analyzují do polí konfigurace. Konfigurace EasySSO pro Bamboo se dokončila.
+
+1. Pro účely nejlepšího testování přejděte na kartu **vzhled &** a zkontrolujte možnost tlačítko pro **přihlášení SAML** na. Tím se povolí samostatné tlačítko na obrazovce pro přihlášení k EasySSO pro Bamboo přihlašovací obrazovky, které vám konkrétně umožní otestovat Azure AD SAML Integration end. Toto tlačítko můžete ponechat zapnuté a nakonfigurovat jeho umístění, barvu a překlad pro režim výroby.
+
+    ![Konfigurace EasySSO pro Bamboo](./media/easysso-for-bamboo-tutorial/jira-admin-5.png)
+
+    > [!NOTE]
+    > Pokud máte nějaké problémy, obraťte se prosím na [tým podpory EasySSO](mailto:support@techtime.co.nz).
 
 ### <a name="create-easysso-for-bamboo-test-user"></a>Vytvořit EasySSO pro testovacího uživatele Bamboo
 
-V této části se v EasySSO pro Bamboo vytvoří uživatel s názvem Britta Simon. EasySSO for Bamboo podporuje zřizování uživatelů za běhu, které je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v EasySSO pro Bamboo neexistuje, vytvoří se po ověření nový.
+V této části se v EasySSO pro Bamboo vytvoří uživatel s názvem B. Simon. EasySSO for Bamboo podporuje zřizování uživatelů za běhu, které je ve výchozím nastavení **zakázáno** . Pokud chcete povolit zřizování uživatelů, musíte explicitně zaškrtnout možnost **vytvořit uživatele při úspěšném přihlášení** v části Obecné v konfiguraci modulu plug-in EasySSO. Pokud uživatel ještě v EasySSO pro Bamboo neexistuje, vytvoří se po ověření nový.
 
-## <a name="test-sso"></a>Test SSO 
+Pokud však nechcete povolit Automatické zřizování uživatelů při prvním přihlášení uživatele, musí existovat uživatelé v adresářích uživatelů back-endu, který používá instance EasySSO for Bamboo, jako je například LDAP nebo Atlassian.
+
+![Zřizování uživatelů](./media/easysso-for-bamboo-tutorial/jira-admin-6.png)
+
+## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 

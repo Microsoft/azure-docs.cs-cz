@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 5c8808450f8baa6d395ee9c24dbc59dfa919b66d
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 8075574556375b7c07de2abd6c5aff792880b497
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801004"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738814"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -88,8 +88,8 @@ E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
-### <a name="email-azure-resource-manager-role"></a>Role e-mailové Azure Resource Manager
-Odešlete e-mail členům role předplatného. E-mail se pošle jenom do členů této role pro **uživatele Azure AD** . E-mail se neposílá do skupin Azure AD nebo instančních objektů.
+### <a name="email-azure-resource-manager-role"></a>Poslání e-mailu roli Azure Resource Manageru
+Odešlete e-mail členům role předplatného. E-mail se pošle jenom do členů této role pro **uživatele Azure AD** . E-mail se nepošle skupinám ani instančním objektům Azure AD.
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
@@ -201,9 +201,9 @@ Další důležité informace najdete v tématu [omezení přenosové rychlosti]
 Ve skupině akcí můžete mít omezený počet akcí serveru SMS.
 
 > [!NOTE]
-> Pokud uživatelské rozhraní skupiny akcí Azure Portal neumožní vybrat kód země, pak se pro vaši zemi nepodporuje SMS.  Pokud váš kód země není k dispozici, můžete hlasovat, aby se vaše země přidala na [uživatelský hlas](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice). Do té doby je možné, že vaše skupina akcí volá Webhook k poskytovateli serveru SMS třetí strany s podporou ve vaší zemi.  
+> Pokud uživatelské rozhraní skupiny akcí Azure Portal neumožní vybrat kód země nebo oblasti, pak není pro vaši zemi nebo oblast podporován server SMS.  Pokud kód země nebo oblasti není k dispozici, můžete hlasovat, že jste přidali zemi nebo oblast v [uživatelském hlasu](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice). Do té doby je možné, že vaše skupina akcí volá Webhook k poskytovateli serveru SMS třetí strany s podporou ve vaší zemi nebo oblasti.  
 
-Ceny pro podporované země najdete na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
+Ceny pro podporované země nebo oblasti najdete na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
   
 
 ### <a name="voice"></a>Hlas
@@ -212,9 +212,9 @@ Další důležité chování najdete v článku [o omezení rychlosti](./../../
 Ve skupině akcí můžete mít omezený počet hlasových akcí.
 
 > [!NOTE]
-> Pokud uživatelské rozhraní skupiny akcí Azure Portal neumožňuje výběr kódu země, pak se pro vaši zemi nepodporují hlasové hovory. Pokud váš kód země není k dispozici, můžete hlasovat, aby se vaše země přidala na [uživatelský hlas](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice).  Do té doby je možné, že vaše skupina akcí volá Webhook poskytovateli hlasových volání třetí strany s podporou ve vaší zemi.  
+> Pokud uživatelské rozhraní skupiny akcí Azure Portal neumožní vybrat kód země nebo oblasti, pak se hlasové hovory pro vaši zemi nebo oblast nepodporují. Pokud kód země nebo oblasti není k dispozici, můžete hlasovat, že jste přidali zemi nebo oblast v [uživatelském hlasu](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice).  Do té doby je možné, že vaše skupina akcí volá Webhook poskytovateli hlasových volání třetí strany s podporou ve vaší zemi nebo oblasti.  
 
-Ceny pro podporované země najdete na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
+Ceny pro podporované země nebo oblasti najdete na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="webhook"></a>Webhook
 Webhooky se zopakují pomocí následujících pravidel. Volání Webhooku se v případě vrácení následujících stavových kódů HTTP znovu pokusí o maximum 2 časy: 408, 429, 503, 504 nebo koncový bod HTTP nereaguje. První opakování se provede po 10 sekundách. Druhý pokus proběhne po 100 sekundách. Po dvou selháních nebude žádná skupina akcí volat koncový bod na 30 minut. 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 41f68ead6f985d6cc2c8120091c36783d074b066
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659148"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743578"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Kurz: vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
 
@@ -141,7 +141,7 @@ df_cosmos.head(10)
 
 V této části budete spouštět některé dotazy na načtená data.
 
-* **Dotaz1:** Spusťte v dataframe dotaz na skupinu, abyste získali součet celkových tržeb za jednotlivé země a zobrazili 5 položek z výsledků. V nové buňce poznámkového bloku spusťte následující kód:
+* **Dotaz1:** Spusťte v dataframe dotaz na skupinu, abyste získali součet celkových tržeb za jednotlivé země nebo oblasti a zobrazili 5 položek z výsledků. V nové buňce poznámkového bloku spusťte následující kód:
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
@@ -170,16 +170,16 @@ V této části budete spouštět některé dotazy na načtená data.
    !{sys.executable} -m pip install bokeh --user
    ```
 
-1. Další příprava na vykreslení dat na mapě. Připojte data v Azure Cosmos DB s informacemi o zemi umístěnými ve službě Azure Blob Storage a převeďte výsledek na formát geografického formátu JSON. Zkopírujte následující kód do nové buňky pro Poznámkový blok a spusťte ji.
+1. Další příprava na vykreslení dat na mapě. Připojte data v Azure Cosmos DB s informacemi o zemi nebo oblasti nacházející se ve službě Azure Blob Storage a převeďte výsledek na formát geografického formátu JSON. Zkopírujte následující kód do nové buňky pro Poznámkový blok a spusťte ji.
 
    ```python
    import urllib.request, json
    import geopandas as gpd
 
-   # Load country information for mapping
+   # Load country/region information for mapping
    countries = gpd.read_file("https://cosmosnotebooksdata.blob.core.windows.net/notebookdata/countries.json")
 
-   # Merge the countries dataframe with our data in Azure Cosmos DB, joining on country code
+   # Merge the countries/regions dataframe with our data in Azure Cosmos DB, joining on country/region code
    df_merged = countries.merge(df_revenue, left_on = 'admin', right_on = 'Country', how='left')
 
    # Convert to GeoJSON so bokeh can plot it
@@ -187,7 +187,7 @@ V této části budete spouštět některé dotazy na načtená data.
    json_data = json.dumps(merged_json)
    ```
 
-1. Vizualizace tržeb v různých zemích na světové mapě spuštěním následujícího kódu v nové buňce pro Poznámkový blok:
+1. Vizualizace tržeb v různých zemích nebo oblastech na světové mapě spuštěním následujícího kódu v nové buňce s poznámkovým blokem:
 
    ```python
    from bokeh.io import output_notebook, show
@@ -233,9 +233,9 @@ V této části budete spouštět některé dotazy na načtená data.
    show(p)
    ```
 
-   Výstup zobrazuje mapu světa s různými barvami. Barvy tmavší pro světlejší reprezentují země s nejvyšším výnosem nejnižším výnosem.
+   Výstup zobrazuje mapu světa s různými barvami. Barvy tmavší pro světlejší reprezentují země nebo oblasti s nejvyšším výnosem nejnižším výnosem.
 
-   ![Vizualizace map pro země – tržby](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   ![Vizualizace rozvržení výnosů zemí/oblastí](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
 
 1. Pojďme se podívat na další případ vizualizace dat. Kontejner WebsiteData obsahuje záznam o uživatelích, kteří si prohlíželi položku, přidali do svého košíku a koupili položku. Pojďme vykreslit míru konverze položek, které byly koupeny. Spusťte následující kód v nové buňce pro vizualizaci míry převodu pro každou položku:
 

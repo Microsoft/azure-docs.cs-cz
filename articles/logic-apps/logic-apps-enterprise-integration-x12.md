@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 8ec20e03544ba54b83130ae41244dcdb186252d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613024"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739528"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange X12 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
@@ -31,7 +31,7 @@ Pokud chcete pracovat se X12 zprávami v Azure Logic Apps, můžete použít kon
 
 * [Schémata](../logic-apps/logic-apps-enterprise-integration-schemas.md) , která se mají použít pro ověření XML, které jste už přidali do účtu pro integraci. Pokud pracujete se schématy přenositelnosti zdravotního pojištění a jednáním Act (HIPAA), přečtěte si téma [schémata HIPAA](#hipaa-schemas).
 
-* Než budete moct použít konektor X12, musíte vytvořit X12 [smlouvu](../logic-apps/logic-apps-enterprise-integration-agreements.md) mezi vašimi obchodními partnery a uložit tuto smlouvu na účet pro integraci. Pokud pracujete se schématy přenositelnosti zdravotního pojištění a HIPAA (dodržování zodpovědnosti), musíte do `schemaReferences` smlouvy přidat oddíl. Další informace najdete v tématu [schémata HIPAA](#hipaa-schemas).
+* Než budete moct použít konektor X12, musíte vytvořit X12 [smlouvu](../logic-apps/logic-apps-enterprise-integration-agreements.md) mezi vašimi obchodními partnery a uložit tuto smlouvu na účet pro integraci. Pokud pracujete se schématy přenositelnosti zdravotního pojištění a HIPAA (dodržování zodpovědnosti), musíte `schemaReferences` do smlouvy přidat oddíl. Další informace najdete v tématu [schémata HIPAA](#hipaa-schemas).
 
 <a name="receive-settings"></a>
 
@@ -319,8 +319,8 @@ Tato tabulka uvádí seznam ovlivněných zpráv, všechny varianty a čísla ve
 | Typ nebo varianta zprávy |  Popis | Číslo verze dokumentu (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Oznámení o stavu informací o zdravotní péči | 005010X212 |
-| 837_I | Deklarace identity zdravotnictví zubního lékaře | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
-| 837_D | Institucionální deklarace identity zdravotnictví | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
+| 837_I | Institucionální deklarace identity zdravotnictví | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
+| 837_D | Deklarace identity zdravotnictví zubního lékaře | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
 | 837_P | Specialista na nárok na zdravotní péči | 004010X098A1 <br>005010X222 <br>005010X222A1 |
 |||
 
@@ -330,7 +330,7 @@ Chcete-li zadat tato čísla verzí dokumentů a typy zpráv, postupujte podle n
 
 1. V HIPAA schématu nahraďte typ aktuální zprávy typem zprávy variant pro číslo verze dokumentu, který chcete použít.
 
-   Předpokládejme například, že chcete použít číslo `005010X222A1` verze dokumentu s typem `837` zprávy. Ve schématu nahraďte všechny `"X12_00501_837"` hodnoty `"X12_00501_837_P"` hodnotou místo toho.
+   Předpokládejme například, že chcete použít číslo verze dokumentu `005010X222A1` s `837` typem zprávy. Ve schématu nahraďte všechny `"X12_00501_837"` hodnoty `"X12_00501_837_P"` hodnotou místo toho.
 
    K aktualizaci schématu použijte následující postup:
 
@@ -338,9 +338,9 @@ Chcete-li zadat tato čísla verzí dokumentů a typy zpráv, postupujte podle n
 
    1. V části nastavení zprávy vaší smlouvy vyberte revidované schéma.
 
-1. Do `schemaReferences` objektu vaší smlouvy přidejte další položku, která určuje typ zprávy variant odpovídající vašemu číslu verze dokumentu.
+1. Do objektu vaší smlouvy `schemaReferences` přidejte další položku, která určuje typ zprávy variant odpovídající vašemu číslu verze dokumentu.
 
-   Předpokládejme například, že chcete použít číslo `005010X222A1` verze dokumentu pro typ `837` zprávy. Vaše smlouva obsahuje `schemaReferences` oddíl s těmito vlastnostmi a hodnotami:
+   Předpokládejme například, že chcete použít číslo verze dokumentu `005010X222A1` pro `837` typ zprávy. Vaše smlouva obsahuje `schemaReferences` oddíl s těmito vlastnostmi a hodnotami:
 
    ```json
    "schemaReferences": [

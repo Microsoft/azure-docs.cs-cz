@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672669"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737023"
 ---
 # <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
 
@@ -27,7 +27,7 @@ Služba Azure AD JOIN je určena pro organizace, které chtějí být pouze clou
 | **Definice** | Připojeno pouze k Azure AD vyžadování účtu organizace pro přihlášení k zařízení |
 | **Primární cílová skupina** | Vhodné pro cloudové i hybridní organizace. |
 |   | Platí pro všechny uživatele v organizaci. |
-| **Vlastnictví zařízení** | Organizace |
+| **Vlastnictví zařízení** | Má organizace |
 | **Operační systémy** | Všechna zařízení s Windows 10 |
 | **Zřizování** | Samoobslužná služba: Windows OOBE nebo nastavení |
 |   | Hromadný zápis |
@@ -43,7 +43,7 @@ Služba Azure AD JOIN je určena pro organizace, které chtějí být pouze clou
 |   | Samoobslužné resetování hesla a Resetování PIN kódu Windows Hello na zamykací obrazovce |
 |   | Enterprise State Roaming napříč zařízeními |
 
-Zařízení připojená k Azure AD jsou přihlášená k používání účtu Azure AD organizace. Přístup k prostředkům v organizaci je možné dál omezit na základě účtu Azure AD a [zásad podmíněného přístupu](../conditional-access/overview.md) , které se používají pro identitu zařízení.
+Zařízení připojená k Azure AD jsou přihlášená k používání účtu Azure AD organizace. Přístup k prostředkům v organizaci je možné dál omezit na základě účtu Azure AD a [zásad podmíněného přístupu](../conditional-access/howto-conditional-access-policy-compliant-device.md) , které se používají pro identitu zařízení.
 
 Správci můžou zabezpečit a dále řídit zařízení připojená k Azure AD pomocí nástrojů pro správu mobilních zařízení (MDM), jako je Microsoft Intune nebo ve scénářích spolusprávy pomocí služby Microsoft Endpoint Configuration Manager. Tyto nástroje poskytují způsob, jak vyhovět konfiguracím vyžadovaným v organizaci, jako je třeba šifrování úložiště, složitost hesla, instalace softwaru a aktualizace softwaru. Správci můžou k dispozici pro zařízení připojená k Azure AD pomocí Configuration Manager ke [správě aplikací ze Microsoft Store pro firmy a vzdělávání](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
 

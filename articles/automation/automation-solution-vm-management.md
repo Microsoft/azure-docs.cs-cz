@@ -1,82 +1,80 @@
 ---
-title: Spuštění/zastavení virtuálních počítačů během nepracovních řešení
-description: Toto řešení pro správu virtuálních počítačů spustí a zastaví vaše virtuální počítače Azure na základě plánu a proaktivně monitoruje z protokolů Azure Monitor.
+title: Přehled Azure Automation Start/Stop VMs during off-hours
+description: Tento článek popisuje funkci Start/Stop VMs during off-hours, která spouští nebo zastavuje virtuální počítače v plánu a aktivně je monitoruje z protokolů Azure Monitor.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 760c56ad6179a7bf94f19e004e2fbbece3908198
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e2f23f4045f0326ffea14ddeb4d588261872188f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683508"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743709"
 ---
-# <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v řešení mimo špičku v Azure Automation
+# <a name="startstop-vms-during-off-hours-overview"></a>Přehled Start/Stop VMs during off-hours
 
-**Spuštění nebo zastavení virtuálních počítačů v době mimo** špičku spouští nebo zastavuje vaše virtuální počítače Azure. Spouští nebo zastavuje počítače na uživatelem definovaných plánech, poskytuje přehledy prostřednictvím protokolů Azure Monitor a odesílá volitelné e-maily pomocí [skupin akcí](../azure-monitor/platform/action-groups.md). Řešení podporuje pro většinu scénářů Azure Resource Manager i klasické virtuální počítače. 
+Funkce Start/Stop VMs during off-hours spustí nebo zastaví povolený virtuální počítač Azure. Spouští nebo zastavuje počítače na uživatelem definovaných plánech, poskytuje přehledy prostřednictvím protokolů Azure Monitor a odesílá volitelné e-maily pomocí [skupin akcí](../azure-monitor/platform/action-groups.md). Tuto funkci můžete pro většinu scénářů povolit na obou Azure Resource Manager i v klasických virtuálních počítačích. 
 
-Toto řešení spustí virtuální počítače pomocí rutiny [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) . Pro zastavování virtuálních počítačů používá [stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) .
+Tato funkce používá ke spuštění virtuálních počítačů rutinu [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) . Pro zastavování virtuálních počítačů používá [stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) .
 
 > [!NOTE]
-> **Virtuální počítače spustit/zastavit v době mimo špičku** byly aktualizovány tak, aby podporovaly nejnovější verze modulů Azure, které jsou k dispozici. Aktualizovaná verze tohoto řešení, která je dostupná na webu Marketplace, nepodporuje AzureRM moduly, protože jsme migrovali z AzureRM na az Modules.
+> Start/Stop VMs during off-hours se aktualizovala tak, aby podporovala nejnovější verze modulů Azure, které jsou k dispozici. Aktualizovaná verze této funkce, která je k dispozici na webu Marketplace, nepodporuje moduly AzureRM, protože jsme migrovali z AzureRM na az Modules.
 
-Řešení poskytuje decentralizovanou možnost automatizace s nízkými náklady pro uživatele, kteří chtějí optimalizovat náklady na virtuální počítače. V tomto řešení můžete:
+Tato funkce poskytuje decentralizovanou možnost automatizace s nízkými náklady pro uživatele, kteří chtějí optimalizovat náklady na virtuální počítače. Tuto funkci můžete použít k těmto akcím:
 
 - [Naplánujte spouštění a zastavování virtuálních počítačů](automation-solution-vm-management-config.md#schedule).
-- Naplánování spouštění a zastavování virtuálních počítačů ve vzestupném pořadí [pomocí značek Azure](automation-solution-vm-management-config.md#tags) (není podporováno pro klasické virtuální počítače).
+- Naplánujte spouštění a zastavování virtuálních počítačů ve vzestupném pořadí [pomocí značek Azure](automation-solution-vm-management-config.md#tags). Tato aktivita není pro klasické virtuální počítače podporována.
 - Zastavovat virtuální počítače na základě [nízkého využití procesoru](automation-solution-vm-management-config.md#cpuutil).
 
-Toto jsou omezení s aktuálním řešením:
+U aktuální funkce platí následující omezení:
 
 - Spravuje virtuální počítače v jakékoli oblasti, ale dá se použít jenom ve stejném předplatném jako váš účet Azure Automation.
-- Je k dispozici v Azure a Azure Government do jakékoli oblasti, která podporuje pracovní prostor Log Analytics, Azure Automation účet a výstrahy. Azure Government oblasti momentálně nepodporují funkce e-mailu.
+- Je k dispozici v Azure a Azure Government pro libovolnou oblast, která podporuje pracovní prostor Log Analytics, Azure Automation účet a výstrahy. Azure Government oblasti momentálně nepodporují funkce e-mailu.
 
-## <a name="solution-prerequisites"></a>Požadavky na řešení
+## <a name="prerequisites"></a>Požadavky
 
-Runbooky pro toto řešení fungují s [účtem spustit jako pro Azure](automation-create-runas-account.md). Účet Spustit jako je upřednostňovanou metodou ověřování, protože místo hesla, jehož platnost může vypršet nebo často se mění, používá ověřování certifikátů.
+Sady Runbook pro spouštění/zastavování virtuálních počítačů v době mimo špičku fungují s [účtem spustit jako pro Azure](automation-create-runas-account.md). Účet Spustit jako je upřednostňovanou metodou ověřování, protože místo hesla, jehož platnost může vypršet nebo často se mění, používá ověřování certifikátů.
 
-Pro **spuštění nebo zastavení virtuálních počítačů v době mimo** špičku doporučujeme použít samostatný účet Automation. Verze modulů Azure se často upgradují a jejich parametry se můžou změnit. Řešení není upgradované na stejném tempo a nemusí fungovat s novějšími verzemi rutin, které používá. Doporučuje se před importem na účet služby Automation v produkčním účtu služby test Automation otestovat aktualizace modulu.
+Pro práci s virtuálními počítači povolenými pro funkci Start/Stop VMs during off-hours doporučujeme použít samostatný účet Automation. Verze modulů Azure se často upgradují a jejich parametry se můžou změnit. Tato funkce není upgradována na stejném tempo a nemusí fungovat s novějšími verzemi rutin, které používá. Doporučuje se testovat aktualizace modulu v účtu testovací automatizace před jejich importem do vašich provozních účtů služby Automation.
 
-## <a name="solution-permissions"></a>Oprávnění řešení
+## <a name="permissions"></a>Oprávnění
 
-K nasazení **virtuálních počítačů spustit/zastavit během nepracovních** řešení je potřeba mít určitá oprávnění. Tato oprávnění se liší, pokud řešení používá předem vytvořený účet Automation a Log Analytics pracovní prostor z oprávnění potřebných, pokud řešení vytvoří během nasazování nový účet a pracovní prostor. 
+Musíte mít určitá oprávnění k povolení virtuálních počítačů pro funkci Start/Stop VMs during off-hours. Tato oprávnění se liší v závislosti na tom, jestli funkce používá předem vytvořený účet Automation a Log Analytics pracovní prostor, nebo vytvoří nový účet a pracovní prostor. 
 
-Pokud jste přispěvatelem předplatného a globálním správcem ve vašem tenantovi Azure Active Directory, nemusíte oprávnění konfigurovat. Pokud tato oprávnění nemáte nebo potřebujete nakonfigurovat vlastní roli, ujistěte se, že máte oprávnění popsaná níže.
+Pokud jste přispěvatelem předplatného a globálním správcem v tenantovi Azure Active Directory (AD), nemusíte oprávnění konfigurovat. Pokud tato oprávnění nemáte nebo potřebujete nakonfigurovat vlastní roli, ujistěte se, že máte oprávnění popsaná níže.
 
 ### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>Oprávnění pro již existující účet služby Automation a pracovní prostor Log Analytics
 
-Pokud chcete nasadit **virtuální počítače spustit/zastavit v době mimo** špičku na existující účet Automation a Log Analytics pracovní prostor, uživatel nasazení řešení vyžaduje následující oprávnění pro rozsah skupiny prostředků. Další informace o rolích najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
+Pokud chcete povolit virtuální počítače pro funkci Start/Stop VMs during off-hours pomocí existujícího účtu Automation a pracovního prostoru Log Analytics, budete potřebovat následující oprávnění pro rozsah skupiny prostředků. Další informace o rolích najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
 
 | Oprávnění | Rozsah|
 | --- | --- |
-| Microsoft. Automation/automationAccounts/Read | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Variables/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Schedules/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Runbooky/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Connections/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Certificates/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/modules/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Module/Read | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/jobSchedules/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Jobs/Write | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Jobs/Read | Skupina prostředků |
-| Microsoft. OperationsManagement/Solutions/Write | Skupina prostředků |
-| Microsoft. OperationalInsights/pracovní prostory/* | Skupina prostředků |
-| Microsoft. Insights/diagnosticSettings/Write | Skupina prostředků |
-| Microsoft. Insights/ActionGroups/Write | Skupina prostředků |
-| Microsoft. Insights/ActionGroups/Read | Skupina prostředků |
-| Microsoft. Resources/Subscriptions/resourceGroups/Read | Skupina prostředků |
-| Microsoft. Resources/nasazení/* | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Read | Resource Group |
+| Microsoft. Automation/automationAccounts/Variables/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Schedules/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Runbooky/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Connections/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Certificates/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/modules/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Module/Read | Resource Group |
+| Microsoft. Automation/automationAccounts/jobSchedules/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Jobs/Write | Resource Group |
+| Microsoft. Automation/automationAccounts/Jobs/Read | Resource Group |
+| Microsoft. OperationsManagement/Solutions/Write | Resource Group |
+| Microsoft. OperationalInsights/pracovní prostory/* | Resource Group |
+| Microsoft. Insights/diagnosticSettings/Write | Resource Group |
+| Microsoft. Insights/ActionGroups/Write | Resource Group |
+| Microsoft. Insights/ActionGroups/Read | Resource Group |
+| Microsoft. Resources/Subscriptions/resourceGroups/Read | Resource Group |
+| Microsoft. Resources/nasazení/* | Resource Group |
 
 ### <a name="permissions-for-new-automation-account-and-new-log-analytics-workspace"></a>Oprávnění k novému účtu Automation a novému pracovnímu prostoru Log Analytics
 
-Můžete nasadit **virtuální počítače spustit/zastavit v době mimo špičku** do nového účtu Automation a Log Analytics pracovního prostoru. V takovém případě uživatel, který řešení nasazuje, potřebuje oprávnění definovaná v předchozí části i oprávnění definovaná v této části. 
-
-Uživatel, který řešení nasazuje, potřebuje následující role:
+Virtuální počítače pro funkci Start/Stop VMs during off-hours můžete povolit pomocí nového účtu Automation a pracovního prostoru Log Analytics. V takovém případě potřebujete oprávnění definovaná v předchozí části i oprávnění definovaná v této části. Vyžadujete také následující role:
 
 - Spolusprávce předplatného. Tato role se vyžaduje k vytvoření účtu Spustit jako pro Classic, pokud budete spravovat klasické virtuální počítače. [Účty Spustit jako pro Classic](automation-create-standalone-account.md#create-a-classic-run-as-account) se už ve výchozím nastavení nevytvářejí.
-- Členství v roli vývojář aplikace [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) . Další informace o konfiguraci účtů spustit jako najdete v tématu [oprávnění ke konfiguraci účtů spustit jako](manage-runas-account.md#permissions).
+- Členství v roli vývojář aplikace [služby Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) . Další informace o konfiguraci účtů spustit jako najdete v tématu [oprávnění ke konfiguraci účtů spustit jako](manage-runas-account.md#permissions).
 - Přispěvatel v rámci předplatného nebo následujících oprávnění
 
 | Oprávnění |Rozsah|
@@ -85,19 +83,18 @@ Uživatel, který řešení nasazuje, potřebuje následující role:
 | Microsoft. Authorization/oprávnění/čtení |Předplatné|
 | Microsoft. Authorization/roleAssignments/Read | Předplatné |
 | Microsoft.Authorization/roleAssignments/write | Předplatné |
-| Microsoft. Authorization/roleAssignments/DELETE | Předplatné |
-| Microsoft. Automation/automationAccounts/Connections/Read | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Certificates/Read | Skupina prostředků |
-| Microsoft. Automation/automationAccounts/Write | Skupina prostředků |
-| Microsoft. OperationalInsights/pracovní prostory/zápis | Skupina prostředků |
+| Microsoft. Authorization/roleAssignments/DELETE | Předplatné || Microsoft. Automation/automationAccounts/Connections/Read | Resource Group |
+| Microsoft. Automation/automationAccounts/Certificates/Read | Resource Group |
+| Microsoft. Automation/automationAccounts/Write | Resource Group |
+| Microsoft. OperationalInsights/pracovní prostory/zápis | Resource Group |
 
-## <a name="solution-components"></a>Součásti řešení
+## <a name="components"></a>Komponenty
 
-**Spuštění/zastavení virtuálních počítačů v době mimo špičku** zahrnuje předkonfigurované Runbooky, plány a integraci s protokoly Azure monitor. Tyto prvky můžete použít k přizpůsobení spouštění a vypínání virtuálních počítačů tak, aby vyhovovaly vašim obchodním potřebám.
+Funkce Start/Stop VMs during off-hours zahrnuje předkonfigurované Runbooky, plány a integraci s protokoly Azure Monitor. Tyto prvky můžete použít k přizpůsobení spouštění a vypínání virtuálních počítačů tak, aby vyhovovaly vašim obchodním potřebám.
 
 ### <a name="runbooks"></a>Runbooky
 
-V následující tabulce jsou uvedeny Runbooky, které se řešení nasadí do vašeho účtu Automation. Neprovádějte změny v kódu Runbooku. Místo toho napište vlastní Runbook pro nové funkce.
+V následující tabulce jsou uvedeny Runbooky, které funkce nasadí do vašeho účtu Automation. Neprovádějte změny v kódu Runbooku. Místo toho napište vlastní Runbook pro nové funkce.
 
 > [!IMPORTANT]
 > Nespouštějte přímo žádnou sadu Runbook s **podřízenou položkou** , která je připojena k jejímu názvu.
@@ -134,7 +131,7 @@ V následující tabulce jsou uvedeny proměnné vytvořené v účtu Automation
 |External_AutoStop_Threshold | Prahová hodnota pro pravidlo upozornění Azure zadané v proměnné `External_AutoStop_MetricName` . Procentuální hodnoty v rozsahu od 1 do 100.|
 |External_AutoStop_TimeAggregationOperator | Operátor časové agregace aplikovaný na velikost vybraného okna pro vyhodnocení podmínky. Přijatelné hodnoty jsou `Average` , `Minimum` ,, a `Maximum` `Total` `Last` .|
 |External_AutoStop_TimeWindow | Velikost okna, během kterého Azure analyzuje vybrané metriky pro aktivaci výstrahy. Tento parametr akceptuje vstup ve formátu TimeSpan. Možné hodnoty jsou 5 minut až 6 hodin.|
-|External_EnableClassicVMs| Hodnota, která určuje, jestli je na klasických virtuálních počítačích cíleno řešení. Výchozí hodnota je true (pravda). Pro předplatná Azure Cloud Solution Provider (CSP) nastavte tuto proměnnou na false. Klasické virtuální počítače vyžadují [účet Spustit jako pro Classic](automation-create-standalone-account.md#create-a-classic-run-as-account).|
+|External_EnableClassicVMs| Hodnota, která určuje, jestli jsou na klasických virtuálních počítačích cílem funkce. Výchozí hodnota je true (pravda). Pro předplatná Azure Cloud Solution Provider (CSP) nastavte tuto proměnnou na false. Klasické virtuální počítače vyžadují [účet Spustit jako pro Classic](automation-create-standalone-account.md#create-a-classic-run-as-account).|
 |External_ExcludeVMNames | Čárkami oddělený seznam názvů virtuálních počítačů, které se mají vyloučit, jsou omezené na 140 virtuálních počítačů. Pokud do seznamu přidáte více než 140 virtuálních počítačů, virtuální počítače, které mají být vyloučeny, mohou být neúmyslně spuštěny nebo zastaveny.|
 |External_Start_ResourceGroupNames | Čárkami oddělený seznam jedné nebo více skupin prostředků, které jsou zaměřeny na počáteční akce.|
 |External_Stop_ResourceGroupNames | Čárkami oddělený seznam jedné nebo více skupin prostředků, které jsou zaměřeny na operace zastavení.|
@@ -164,50 +161,50 @@ Nepovolujte všechny plány, protože se tak můžou vytvořit překrývající 
 |Sequenced – StopVM | 1:00 dop. (UTC), každý pátek | Spustí **Sequenced_StopStop_Parent** sadu Runbook s hodnotou parametru v `Stop` každém pátek v zadaném čase.Sekvenčně (vzestupně) zastaví všechny virtuální počítače s tagem **SequenceStop** definovanými příslušnými proměnnými. Další informace o hodnotách značek a proměnných prostředků naleznete v tématu [Runbooky](#runbooks).Povolí související plán, **Sequenced-StartVM**.|
 |Sequenced – StartVM | 1:00 PM (UTC), každé pondělí | Spustí sadu **SequencedStopStart_Parent** Runbook s hodnotou parametru `Start` každé pondělí v zadanou dobu. Sekvenčně (sestupně) spustí všechny virtuální počítače se značkou **SequenceStart** definovanou příslušnými proměnnými. Další informace o hodnotách značek a proměnných prostředků naleznete v tématu [Runbooky](#runbooks). Povolí související plán, **Sequenced-StopVM**.
 
-## <a name="use-of-the-solution-with-classic-vms"></a>Použití řešení s klasickými virtuálními počítači
+## <a name="use-the-feature-with-classic-vms"></a>Použití funkce u klasických virtuálních počítačů
 
-Pokud používáte **virtuální počítače spustit/zastavit** v době mimo špičku u klasických virtuálních počítačů, pak automatizace zpracuje všechny virtuální počítače postupně na cloudovou službu. Virtuální počítače jsou pořád zpracovávány paralelně napříč různými Cloud Services. 
+Pokud používáte funkci Start/Stop VMs during off-hours pro klasické virtuální počítače, Automation zpracuje všechny virtuální počítače postupně na cloudovou službu. Virtuální počítače jsou pořád zpracovávány paralelně napříč různými Cloud Services. 
 
-Pro použití řešení s klasickými virtuálními počítači potřebujete účet Spustit jako pro Classic, který se ve výchozím nastavení nevytvoří. Pokyny k vytvoření účtu Spustit jako pro Azure Classic najdete v tématu [Vytvoření účtu Spustit jako pro Azure Classic](automation-create-standalone-account.md#create-a-classic-run-as-account).
+Pro použití funkce s klasickými virtuálními počítači potřebujete účet Spustit jako pro Classic, který se ve výchozím nastavení nevytvoří. Pokyny k vytvoření účtu Spustit jako pro Azure Classic najdete v tématu [Vytvoření účtu Spustit jako pro Azure Classic](automation-create-standalone-account.md#create-a-classic-run-as-account).
 
 Pokud máte více než 20 virtuálních počítačů na cloudovou službu, tady je několik doporučení:
 
 * Vytvořte více plánů s nadřazeným runbookm **ScheduledStartStop_Parent** a určete 20 virtuálních počítačů na jeden plán. 
 * Ve vlastnostech plánu použijte `VMList` parametr a zadejte názvy virtuálních počítačů jako seznam oddělený čárkami. 
 
-Jinak, pokud se úloha automatizace pro toto řešení spouští déle než tři hodiny, dočasně se uvolní nebo zastaví na základě [spravedlivého](automation-runbook-execution.md#fair-share) limitu sdílení.
+V opačném případě, pokud se úloha automatizace pro tuto funkci spustí déle než tři hodiny, dočasně se uvolní nebo zastaví na základě [spravedlivého](automation-runbook-execution.md#fair-share) limitu sdílení.
 
-Předplatné služby Azure CSP podporuje pouze model Azure Resource Manager. V programu nejsou k dispozici služby, které nejsou Azure Resource Manager. Když se spouští **nebo zastavují virtuální počítače v době mimo** špičku, může docházet k chybám, protože mají rutiny pro správu klasických prostředků. Další informace o CSP najdete v tématu [dostupné služby v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services). Pokud používáte předplatné CSP, měli byste nastavit [External_EnableClassicVMs](#variables) proměnnou na hodnotu false po nasazení.
+Předplatné služby Azure CSP podporuje pouze model Azure Resource Manager. V programu nejsou k dispozici služby, které nejsou Azure Resource Manager. Když se spustí funkce Start/Stop VMs during off-hours, může docházet k chybám, protože mají rutiny pro správu klasických prostředků. Další informace o CSP najdete v tématu [dostupné služby v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services). Pokud používáte předplatné CSP, měli byste nastavit [External_EnableClassicVMs](#variables) proměnnou na hodnotu false po nasazení.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="enable-the-solution"></a>Povolení řešení
+## <a name="enable-the-feature"></a>Povolit funkci
 
-Pokud chcete začít používat řešení, postupujte podle kroků v části [Povolení řešení spuštění/zastavení virtuálních počítačů](automation-solution-vm-management-enable.md).
+Chcete-li začít funkci používat, postupujte podle kroků v části [Enable Start/Stop VMS during off-hours](automation-solution-vm-management-enable.md).
 
-## <a name="view-the-solution"></a>Zobrazení řešení
+## <a name="view-the-feature"></a>Zobrazit funkci
 
-Pro přístup k řešení po jeho povolení použijte jeden z následujících mechanismů:
+Pro přístup k povolené funkci použijte jeden z následujících mechanismů:
 
-* V účtu Automation vyberte **Spustit/zastavit virtuální počítač** v části **související prostředky**. Na stránce Spustit/zastavit virtuální počítač vyberte **Spravovat řešení** na pravé straně stránky v části **Spravovat spuštění/zastavení řešení virtuálních počítačů**.
+* V účtu Automation vyberte **Spustit/zastavit virtuální počítač** v části **související prostředky**. Na stránce Spustit/zastavit virtuální počítač vyberte **Spravovat řešení** v části **Spravovat spustit/zastavit řešení virtuálních počítačů**.
 
-* Přejděte do pracovního prostoru Log Analytics, který je propojený s vaším účtem Automation. Po výběru pracovního prostoru zvolte **řešení** v levém podokně. Na stránce řešení v seznamu vyberte řešení **Start-Stop-VM [pracovní prostor]** .  
+* Přejděte do pracovního prostoru Log Analytics, který je propojený s vaším účtem Automation. Po výběru pracovního prostoru zvolte **řešení** v levém podokně. Na stránce řešení vyberte v seznamu **Start-Stop-VM [pracovní prostor]** .  
 
-Výběrem řešení se zobrazí stránka řešení **Start-Stop-VM [pracovní prostor]** . Tady si můžete prohlédnout důležité podrobnosti, například informace na dlaždici **StartStopVM** . Stejně jako ve vašem pracovním prostoru Log Analytics tato dlaždice zobrazuje počet a grafické znázornění úloh sady Runbook pro řešení, které bylo spuštěno a úspěšně skončilo.
+Výběrem této funkce se zobrazí stránka Start-Stop-VM [pracovní prostor]. Tady si můžete prohlédnout důležité podrobnosti, například informace na dlaždici **StartStopVM** . Stejně jako v pracovním prostoru Log Analytics tato dlaždice zobrazuje počet a grafické znázornění úloh sady Runbook pro funkci, která byla spuštěna a úspěšně skončila.
 
-![Stránka řešení Update Management pro automatizaci](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
+![Stránka Update Management Automation](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
-Kliknutím na dlaždici prstence můžete provádět další analýzu záznamů úloh. Řídicí panel řešení zobrazuje historii úloh a předdefinované vyhledávací dotazy protokolů. Přepněte na rozšířený portál Log Analytics, abyste mohli vyhledávat na základě vyhledávacích dotazů.
+Kliknutím na dlaždici prstence můžete provádět další analýzu záznamů úloh. Řídicí panel zobrazuje historii úloh a předdefinované vyhledávací dotazy protokolů. Přepněte na rozšířený portál Log Analytics, abyste mohli vyhledávat na základě vyhledávacích dotazů.
 
 ## <a name="update-the-feature"></a>Aktualizace funkce
 
-Pokud jste nasadili předchozí verzi tohoto řešení, před nasazením aktualizované verze ho odstraňte z účtu. Postupujte podle kroků pro [Odebrání řešení](#remove-the-feature) a pak postupujte podle kroků k [nasazení řešení](automation-solution-vm-management-enable.md).
+Pokud jste nasadili předchozí verzi Start/Stop VMs during off-hours, před nasazením aktualizované verze ji odstraňte z účtu. Použijte postup [odebrání této funkce](#remove-the-feature) a pak postupujte podle pokynů k [jejímu povolení](automation-solution-vm-management-enable.md).
 
 ## <a name="remove-the-feature"></a>Odebrání funkce
 
-Pokud už řešení použít nechcete, můžete ho odstranit z účtu Automation. Odstraněním řešení se odstraní jenom Runbooky. Neodstraní plány nebo proměnné, které byly vytvořeny při přidání řešení. Tyto prostředky odeberte ručně, pokud je nepoužíváte s jinými sadami Runbook.
+Pokud už funkci používat nepotřebujete, můžete ji odstranit z účtu Automation. Odstraněním této funkce se odebere jenom přidružené Runbooky. Neodstraní plány nebo proměnné, které byly vytvořeny při přidání funkce. 
 
-Odstranění řešení:
+Odstranění Start/Stop VMs during off-hours:
 
 1. V účtu Automation vyberte v části **související prostředky**možnost **propojený pracovní prostor** .
 
@@ -215,24 +212,24 @@ Odstranění řešení:
 
 3. V části **Obecné**klikněte na **řešení** . 
 
-4. Na stránce řešení vyberte řešení **Start-Stop-VM [pracovní prostor]**. 
+4. Na stránce řešení vyberte **Start-Stop-VM [pracovní prostor]**. 
 
-5. Na stránce **VMManagementSolution [pracovní prostor]** v nabídce vyberte **Odstranit** .<br><br> ![Odstranit řešení pro správu virtuálních počítačů](media/automation-solution-vm-management/vm-management-solution-delete.png)
+5. Na stránce VMManagementSolution [pracovní prostor] v nabídce vyberte **Odstranit** .<br><br> ![Odstranit funkci správy virtuálních počítačů](media/automation-solution-vm-management/vm-management-solution-delete.png)
 
-6. V okně **Odstranit řešení** potvrďte, že chcete odstranit řešení.
+6. V okně Odstranit řešení potvrďte, že chcete tuto funkci odstranit.
 
-7. I když jsou informace ověřené a řešení se odstraní, můžete sledovat průběh v části **oznámení**, kterou zvolíte v nabídce. Až se spustí proces odebrání řešení, vrátíte se na stránku řešení.
+7. I když jsou informace ověřené a funkce se odstraní, můžete sledovat průběh v části **oznámení**, kterou zvolíte v nabídce. Po odebrání se vrátíte na stránku řešení.
 
-Účet služby Automation a Log Analytics pracovní prostor se v rámci tohoto procesu neodstraní. Pokud nechcete zachovat Log Analytics pracovní prostor, musíte ho ručně odstranit z Azure Portal:
+8. Účet služby Automation a Log Analytics pracovní prostor se v rámci tohoto procesu neodstraní. Pokud nechcete zachovat Log Analytics pracovní prostor, musíte ho ručně odstranit z Azure Portal:
 
-1. Vyhledejte a vyberte **Log Analytics pracovní prostory**.
+    1. Vyhledejte a vyberte **Log Analytics pracovní prostory**.
 
-2. Na stránce Log Analytics pracovní prostor vyberte pracovní prostor.
+    2. Na stránce Log Analytics pracovní prostor vyberte pracovní prostor.
 
-3. V nabídce na stránce nastavení pracovního prostoru vyberte **Odstranit** .
+    3. V nabídce vyberte **Odstranit** .
 
-4. Pokud nechcete zachovat [komponenty řešení](#solution-components)Azure Automation účtu, můžete je ručně odstranit.
+    4. Pokud nechcete, aby [komponenty funkcí](#components)účtu Azure Automation byly, můžete je ručně odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Povolte](automation-solution-vm-management-enable.md) **spouštění a zastavování virtuálních počítačů v době mimo špičku** pro vaše virtuální počítače Azure.
+Pokud chcete funkci na virtuálních počítačích ve vašem prostředí povolit, přečtěte si téma [povolení Start/Stop VMS during off-hours](automation-solution-vm-management-enable.md).

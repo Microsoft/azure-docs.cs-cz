@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: dfd9c949767d3dc8e63e3f15ba12641f27d46b80
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569352"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743636"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Vrácení nebo nahrazení Azure Stack hraničního zařízení
 
@@ -74,7 +74,7 @@ Chcete-li zahájit proces návratu, proveďte následující kroky.
 5. Připevněte expediční štítek, který jste dostali z Azure v balíčku.
 6. Naplánujte vyzvednutí místní přepravní službou. Pokud se zařízení v nám vrátí, může být váš dopravce zdrojem nebo FedEx. Naplánování vyzvednutí pomocí zdroje UPS:
 
-    1. Zavolejte místní zdroje UPS (bezplatné číslo pro telefonní číslo pro konkrétní zemi).
+    1. Zavolejte do místní pobočky UPS (bezplatné číslo pro příslušnou zemi/oblast).
     2. Ve svém volání citujete číslo sledování zpětné dodávky, jak je znázorněno na vytištěném popisku.
     3. Pokud číslo sledování není v uvozovkách, bude zdroj napájení vyžadovat, abyste během vyzvednutí zaplatili dodatečné poplatky.
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: bf2c4ff1afbf3558d6c49cf7bec90cd37e17929b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 33effe0bbc566880b147c377b3bb130cd81999c8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658018"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740769"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
@@ -22,7 +22,7 @@ Tento článek obsahuje návrhy pro vytváření a poutavé komerční nabídky 
 
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
-| Název nabídky | Zadejte silný název:<br> <ul> <li> Název vaší aplikace by měl sdělit základní hodnotu vašim zákazníkům. </li> <li> V názvu aplikace zahrňte klíčová slova pro hledání, abyste získali vyšší hodnocení ve výsledcích vyhledávacího stroje. </li> </ul> Pro servisní výpisy konzultační služby použijte nastavený formát názvu:<br>[Název nabídky: [Duration] [typ nabídky] (například *Contoso: implementace 2-Week*) <br><br> Dodržování pokynů pro značky:<br>Podle pokynů [Microsoftu a pokynů pro značky](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx) a dalších relevantních pokynů pro produkty, které jsou specifické pro daný produkt, se můžete podívat na ochranné známky společnosti Microsoft a názvy softwaru, produktů a služeb společnosti Microsoft. |
+| Název nabídky | Zadejte silný název:<br> <ul> <li> Název vaší aplikace by měl sdělit základní hodnotu vašim zákazníkům. </li> <li> V názvu aplikace zahrňte klíčová slova pro hledání, abyste získali vyšší hodnocení ve výsledcích vyhledávacího stroje. </li> </ul> Pro servisní výpisy konzultační služby použijte nastavený formát názvu:<br>[Název nabídky: [Duration] [typ nabídky] (například *Contoso: implementace 2-Week*) <br><br> Dodržování pokynů pro značky:<br>Podle pokynů [Microsoftu a pokynů pro značky](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) a dalších relevantních pokynů pro produkty, které jsou specifické pro daný produkt, se můžete podívat na ochranné známky společnosti Microsoft a názvy softwaru, produktů a služeb společnosti Microsoft. |
 | Popis nabídky | Zadejte jasný popis nabídky:<br> <ul> <li> Jasně popište, jak se má v prvních několika větách popisu v této nabídce vyhodnotit. </li> <li> Mějte na paměti, že ve výsledcích vyhledávacího modulu se může zobrazit několik prvních vět. </li> <li> Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou doručujete. </li> <li> Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami.</li> <li> Konzultační služby, které poskytnete, navíc musí mít jasně stav služby Professional. </li></ul> Základní komponenty pro vaši polohu hodnoty by měly obsahovat následující informace:<ul><li>Popis produktu</li><li>Typ uživatele, který je z produktu přínosný</li><li>Potřeby zákazníků nebo bolesti adres produktů.</li></ul> |
 
 Tabulky v této části obsahují návrhy na vytváření a poutavé nabídky Marketplace. Pokud chcete napsat a nakonfigurovat svoje marketingové materiály, navštivte [centrum partnerů](https://partner.microsoft.com/dashboard/commercial-marketplace/). 

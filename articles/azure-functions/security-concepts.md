@@ -3,12 +3,12 @@ title: Zabezpečení Azure Functions
 description: Přečtěte si, jak zajistit, aby byl kód vaší funkce běžící v Azure lépe zabezpečený před běžnými útoky.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7336974a0f982f2dd2394f16d7f6d520ecb8571d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 07d099ae3ce8a544994208436770674e6674e6f0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664414"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744066"
 ---
 # <a name="securing-azure-functions"></a>Zabezpečení Azure Functions
 
@@ -181,7 +181,7 @@ Když máte samostatný koncový bod SCM, můžete řídit nasazení a další p
 
 ### <a name="continuous-security-validation"></a>Průběžné ověřování zabezpečení
 
-Vzhledem k tomu, že je potřeba zabezpečení považovat za každý krok v procesu vývoje, má smysl taky implementovat ověřování zabezpečení v prostředí průběžného nasazování. To se někdy označuje jako DevSecOps. Použití Azure DevOps pro váš kanál nasazení vám umožní integrovat ověřování do procesu nasazení. Další informace najdete v tématu [informace o tom, jak přidat průběžné ověřování zabezpečení do kanálu CI/CD](/devops/migrate/security-validation-cicd-pipeline).  
+Vzhledem k tomu, že je potřeba zabezpečení považovat za každý krok v procesu vývoje, má smysl taky implementovat ověřování zabezpečení v prostředí průběžného nasazování. To se někdy označuje jako DevSecOps. Použití Azure DevOps pro váš kanál nasazení vám umožní integrovat ověřování do procesu nasazení. Další informace najdete v tématu [informace o tom, jak přidat průběžné ověřování zabezpečení do kanálu CI/CD](/azure/devops/migrate/security-validation-cicd-pipeline).  
 
 ## <a name="network-security"></a>Zabezpečení sítě
 

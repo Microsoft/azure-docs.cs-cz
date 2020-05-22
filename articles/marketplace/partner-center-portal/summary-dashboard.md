@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 86bce85c6ec273b4ab5f9f00cbae68fc054f53f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7f1700cb386a197b33427e2ea615de019284d96
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262396"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83738315"
 ---
-# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Souhrnný řídicí panel v analytickém obchodě na komerčním webu
+# <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Souhrn v analýzách komerčního marketplace
 
 Tento článek poskytuje informace o řídicím panelu souhrnu v partnerském centru. Tento řídicí panel zobrazuje grafy, trendy a hodnoty agregovaných dat, která shrnují aktivity Marketplace pro vaše nabídky.
 
@@ -70,7 +70,7 @@ V části Souhrn se zobrazuje počet všech vytvořených objednávek, zákazní
 - Mapu můžete přesunout tak, aby se zobrazilo přesné umístění.
 - Můžete přiblížit konkrétní umístění.
 - Heatmapu má doplňkovou mřížku pro zobrazení podrobností o počtu zákazníků, počtu objednávek, normalizovaných hodinách využití v určitém umístění.
-- Můžete vyhledat a vybrat zemi v mřížce pro přiblížení do umístění v mapě. Kliknutím na tlačítko **Domů** na mapě se vraťte k původnímu zobrazení.
+- V mřížce můžete vyhledat a vybrat zemi nebo oblast, která se přiblíží umístění na mapě. Kliknutím na tlačítko **Domů** na mapě se vraťte k původnímu zobrazení.
 - **Novému** zákazníkovi si koupili jednu z vašich nabídek poprvé během měsíce v rámci vybraného rozsahu kalendářních dat.
 
 ### <a name="growth-trend-charts"></a>Grafy geometrického trendu
