@@ -30,6 +30,8 @@
   items:
     - name: Prostředky Azure
       href: Concepts/azure-resources.md
+    - name: Spolupráce s ostatními
+      href: Concepts/role-based-access-control.md
     - name: Návrh znalostní báze
       items:
         - name: Pro jazyky
@@ -107,10 +109,6 @@
     - name: Znalostní báze dotazů
       href: How-To/metadata-generateanswer-usage.md
       displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-    - name: Použití s klientskou aplikací
-      items:
-        - name: LUIS a QnA Maker
-          href: Tutorials/integrate-qnamaker-luis.md
     - name: Analýzy a telemetrie
       href: How-To/get-analytics-knowledge-base.md
     - name: S využitím REST API
@@ -155,6 +153,8 @@
       href: Overview/language-support.md
     - name: Omezení
       href: limits.md
+    - name: Řízení přístupu na základě role (RBAC)
+      href: reference-role-based-access-control.md
     - name: Řešení potíží
       href: troubleshooting.md
     - name: Konfigurace služeb

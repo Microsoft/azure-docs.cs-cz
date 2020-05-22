@@ -1,0 +1,28 @@
+- name: Kubernetes s podporou Azure Arc
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o protokolu Kubernetes s podporou Azure Arc
+      href: overview.md
+- name: Návody
+  items:
+    - name: Operace clusteru
+      items:
+        - name: Připojení clusteru
+          href: connect-cluster.md
+        - name: Použití GitOps pro připojené clustery
+          href: use-gitops-connected-cluster.md
+        - name: Použití GitOps s Helmem
+          href: use-gitops-with-helm.md
+        - name: Azure Monitor pro kontejnery
+          href: deploy-azure-monitor-for-containers.md
+        - name: Instalace doplňku Azure Policy
+          href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
+        - name: Použití Azure Policy
+          href: use-azure-policy.md
+        - name: Nasazení úloh IoT
+          href: deploy-azure-iot-edge-workloads.md
+        - name: Instanční objekt pro onboarding
+          href: create-onboarding-service-principal.md
+        - name: Řešení potíží
+          href: Troubleshooting.md

@@ -25,9 +25,13 @@
         - name: Vytvoření poznámkového bloku Apache Sparku pomocí webových nástrojů
           href: quickstart-apache-spark-notebook.md
         - name: Vytvoření fondu úloh Apache Sparku pomocí webu Azure Portal
-          href: quickstart-create-apache-spark-pool.md
-        - name: Vytvoření fondu SQL
-          href: quickstart-create-sql-pool.md
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Vytvoření fondu úloh Apache Sparku s využitím sady Synapse Studio
+          href: quickstart-create-apache-spark-pool-studio.md
+        - name: Vytvoření fondu SQL s využitím webu Azure Portal
+          href: quickstart-create-sql-pool-portal.md
+        - name: Vytvoření fondu SQL s využitím sady Synapse Studio
+          href: quickstart-create-sql-pool-studio.md
     - name: Načtení dat s využitím fondů SQL
       items:
         - name: Příkaz COPY
@@ -308,7 +312,7 @@
                   href: sql/develop-storage-files-overview.md
                 - name: Řízení přístupu k úložišti
                   href: sql/develop-storage-files-storage-access-control.md
-                - name: Tabulky Spark
+                - name: Externí tabulky Apache Sparku pro Azure Synapse
                   href: sql/develop-storage-files-spark-tables.md
         - name: Správa úloh
           items:
@@ -328,8 +332,16 @@
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Synapse Link
       items:
+        - name: Synapse Link pro Azure Cosmos DB
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Přehled analytického úložiště
+          href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Podporované funkce Synapse Linku
           href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
+        - name: Nejčastější dotazy k Synapse Linku
+          href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Případy použití Synapse Linku
+          href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 'Integrace nástrojů (AI, ETL, BI)'
       items:
         - name: Řešení potíží s nástrojem Synapse Analytics Studio
@@ -414,6 +426,8 @@
       items:
         - name: Synapse Link
           items:
+            - name: Konfigurace Synapse Linku
+              href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Připojení k Azure Synapse Linku pro Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Dotazování analytického úložiště Azure Cosmos DB s využitím Apache Sparku pro Azure Synapse Analytics
@@ -860,14 +874,16 @@
   items:
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: Žádosti o funkce
+      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
     - name: Fórum
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/synapse-analytics/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Žádosti o funkce
-      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
+    - name: Otázky a odpovědi
+      href: 'https://docs.microsoft.com/en-us/answers/questions/topics/single/25423.html'
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
     - name: Stack Overflow

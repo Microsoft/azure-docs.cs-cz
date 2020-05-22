@@ -259,6 +259,20 @@
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
         - name: Služba Weather
           href: 'https://docs.microsoft.com/rest/api/maps/weather'
+        - name: Služba Maps Creator
+          items:
+            - name: Služba Alias
+              href: 'https://docs.microsoft.com/rest/api/maps/alias'
+            - name: Převodní služba
+              href: 'https://docs.microsoft.com/rest/api/maps/conversion'
+            - name: Služba datových sad
+              href: 'https://docs.microsoft.com/rest/api/maps/dataset'
+            - name: Služba Feature State
+              href: 'https://docs.microsoft.com/rest/api/maps/featurestate'
+            - name: Služba sad dlaždic
+              href: 'https://docs.microsoft.com/rest/api/maps/tileset'
+            - name: Služba WFS
+              href: 'https://docs.microsoft.com/rest/api/maps/wfs'
         - name: Správa účtů služby Maps
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript

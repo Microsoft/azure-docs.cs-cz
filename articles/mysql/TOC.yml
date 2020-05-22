@@ -276,6 +276,8 @@
       items:
         - name: Konfigurace integrace Azure AD
           href: howto-configure-sign-in-azure-ad-authentication.md
+        - name: Připojení s využitím spravované identity
+          href: howto-connect-with-managed-identity.md
     - name: Odepření přístupu k veřejné síti
       items:
         - name: portál Azure

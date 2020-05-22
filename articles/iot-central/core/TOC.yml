@@ -6,8 +6,14 @@
       href: overview-iot-central.md
     - name: Prohlídka uživatelského rozhraní
       href: overview-iot-central-tour.md
+    - name: Vývoj zařízení
+      href: overview-iot-central-developer.md
     - name: Nejnovější aktualizace
       items:
+        - name: Nové funkce z dubna 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
+        - name: Aktualizace z dubna 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-updates/'
         - name: Březen 2020
           href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
 - name: Rychlé starty
@@ -81,6 +87,8 @@
           href: howto-manage-devices.md
         - name: Konfigurace pravidel
           href: howto-configure-rules.md
+        - name: Použití pracovních postupů pro integraci s ostatními službami
+          href: howto-configure-rules-advanced.md
         - name: Analýza dat zařízení
           href: howto-create-analytics.md
         - name: Přidání dlaždic na řídicí panel

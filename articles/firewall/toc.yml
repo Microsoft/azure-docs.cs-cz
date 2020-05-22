@@ -17,13 +17,13 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Nasazení s využitím skupin IP adres
+    - name: Nasazení s využitím skupin IP adres – šablona ARM
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
-    - name: Nasazení s využitím několika adres
+    - name: Nasazení s využitím několika adres – šablona ARM
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
-    - name: Nasazení s využitím Zón dostupnosti
+    - name: Nasazení s využitím Zón dostupnosti – šablona ARM
       displayName: Resource Manager
       href: deploy-template.md
 - name: ukázky

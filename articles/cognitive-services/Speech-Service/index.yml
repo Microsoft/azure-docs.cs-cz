@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: c065f3d12f98be85f45ed6233593d9ccab1cefa1
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: 50252d0a308c4232b84bffddd905d8a84e1be0d8
+  ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83201654"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83707968"
 highlightedContent:
   items:
   - title: Co je služba Speech?
@@ -47,7 +47,7 @@ conceptualContent:
       text: Základy rozpoznávání řeči
       url: speech-to-text-basics.md
     footerLink:
-      text: Další informace
+      text: Víc
       url: index-speech-to-text.yml
   - title: Převod textu na řeč
     links:
@@ -61,7 +61,7 @@ conceptualContent:
       text: Základy syntézy řeči
       url: text-to-speech-basics.md
     footerLink:
-      text: Další informace
+      text: Víc
       url: index-text-to-speech.yml
   - title: Překlad řeči
     links:
@@ -75,7 +75,7 @@ conceptualContent:
       text: Základy překladu řeči
       url: speech-translation-basics.md
     footerLink:
-      text: Další informace
+      text: Víc
       url: index-speech-translation.yml
   - title: Rozpoznávání záměru
     links:
@@ -89,7 +89,7 @@ conceptualContent:
       text: Portál služby Language Understanding (LUIS)
       url: https://www.luis.ai
     footerLink:
-      text: Další informace
+      text: Víc
       url: index-intent-recognition.yml
   - title: Scénáře konverzace
     links:
@@ -103,7 +103,7 @@ conceptualContent:
       text: Přepis nahrávek z call centra
       url: call-center-transcription.md
     footerLink:
-      text: Další informace
+      text: Víc
       url: index-conversation-scenarios.yml
   - title: Hlasoví asistenti
     links:
@@ -117,8 +117,16 @@ conceptualContent:
       text: Vytvoření hlasového asistenta pomocí služby Bot Framework
       url: direct-line-speech.md
     footerLink:
-      text: Další informace
+      text: Víc
       url: index-voice-assistants.yml
+  - title: Rozpoznávání mluvčího
+    links:
+    - itemType: how-to-guide
+      text: Informace o rozpoznávání mluvčího
+      url: ../Speaker-recognition/Home.md
+    - itemType: how-to-guide
+      text: Referenční informace rozhraní API pro rozpoznávání mluvčího
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797
   - title: nástroje
     links:
     - itemType: overview
@@ -142,7 +150,7 @@ conceptualContent:
       text: Kontejnery služby Speech ve službě Azure Container Instances
       url: deploy-speech-on-container-instances.md
     footerLink:
-      text: Další informace
+      text: Víc
       url: index-hosting.yml
   - title: Zařízení
     links:
@@ -156,7 +164,7 @@ conceptualContent:
       text: Použití sady Speech Devices SDK
       url: speech-devices-sdk-quickstart.md
     footerLink:
-      text: Další informace
+      text: Víc
       url: index-devices.yml
   - title: Migrace
     links:

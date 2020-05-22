@@ -278,6 +278,8 @@
           href: how-to-connect-sync-feature-scheduler.md
         - name: Vytvoření a přizpůsobení synchronizačního pravidla
           href: how-to-connect-create-custom-sync-rule.md
+        - name: Rozhraní API koncového bodu synchronizace služby Azure AD Connect v2
+          href: how-to-connect-sync-endpoint-api-v2.md
         - name: Správce služeb synchronizace Azure AD Connect
           items:
             - name: Správa pomocí karty operací správce služeb

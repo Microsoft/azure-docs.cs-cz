@@ -31,7 +31,7 @@
           href: data-box-gateway-use-cases.md
     - name: Postup
       items:
-        - name: Správa
+        - name: Spravovat
           items:
             - name: Sdílené složky
               href: data-box-gateway-manage-shares.md
@@ -88,12 +88,16 @@
         - name: Přehled zabezpečení
           href: azure-stack-edge-security.md
         - name: Kontrola specifikací
-          href: azure-stack-edge-technical-specifications-compliance.md
+          items:
+            - name: Specifikace zařízení
+              href: azure-stack-edge-technical-specifications-compliance.md
+            - name: Specifikace napájecího kabelu
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
     - name: Postup
       items:
         - name: 'Vývoj modulu jazyka C#'
           href: azure-stack-edge-create-iot-edge-module.md
-        - name: Správa
+        - name: Spravovat
           items:
             - name: Výpočetní funkce Edge
               href: azure-stack-edge-manage-compute.md
@@ -127,7 +131,7 @@
           href: data-box-gateway-1905-release-notes.md
         - name: Všeobecná dostupnost (GA)
           href: data-box-gateway-release-notes.md
-- name: Zdroje
+- name: Zdroje a prostředky
   items:
     - name: 'Ukázky modulů Azure Stack Edge v C# (.NET)'
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'

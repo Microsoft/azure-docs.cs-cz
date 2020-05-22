@@ -42,8 +42,6 @@
         - name: 2. Extrakce dat uživatelů
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
-        - name: 3. Zjištění mínění z projevů uživatele
-          href: tutorial-publish-settings.md
     - name: Vylepšení aplikace
       items:
         - name: Oprava nejistých předpovědí
@@ -379,7 +377,7 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Referenční informace k vlastním entitám
       items:
-        - name: Strojově naučená entita
+        - name: Entita strojového učení
           href: reference-entity-machine-learned-entity.md
         - name: Složená entita
           href: reference-entity-composite.md

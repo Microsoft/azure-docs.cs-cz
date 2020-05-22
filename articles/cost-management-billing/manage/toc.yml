@@ -87,18 +87,26 @@
           href: understand-ea-roles.md
         - name: Správa portálu Azure EA
           href: ea-portal-administration.md
+        - name: Správa portálu Azure EA pro partnery
+          href: ea-partner-portal-administration.md
+        - name: Převody Azure Enterprise
+          href: ea-transfers.md
         - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
           href: mca-enterprise-operations.md
         - name: Smlouvy k Azure EA a jejich změny
           href: ea-portal-agreements.md
         - name: Faktury za smlouvy Enterprise
           href: ea-portal-enrollment-invoices.md
+        - name: Ceny Azure EA
+          href: ea-pricing-overview.md
         - name: Rozhraní Azure Enterprise REST API
           href: ea-portal-rest-apis.md
         - name: Rezervované instance virtuálních počítačů Azure EA
           href: ea-portal-vm-reservations.md
         - name: Řešení potíží s přístupem k portálu Azure EA
           href: ea-portal-troubleshoot.md
+        - name: Azure Marketplace
+          href: ea-azure-marketplace.md
 - name: Řešení potíží
   items:
     - name: Nenalezena žádná předplatná

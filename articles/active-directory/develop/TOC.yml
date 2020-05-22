@@ -28,7 +28,9 @@
       items:
         - name: Úhlová
           href: quickstart-v2-angular.md
-        - name: JavaScript
+        - name: JavaScript – tok ověřovacího kódu
+          href: quickstart-v2-javascript-auth-code.md
+        - name: JavaScript – implicitní tok
           href: quickstart-v2-javascript.md
     - name: Webové aplikace
       items:
@@ -73,7 +75,9 @@
       items:
         - name: Úhlová
           href: tutorial-v2-angular.md
-        - name: JavaScript
+        - name: JavaScript – tok ověřovacího kódu
+          href: tutorial-v2-javascript-auth-code.md
+        - name: JavaScript – implicitní tok
           href: tutorial-v2-javascript-spa.md
     - name: Webové aplikace
       items:
@@ -479,6 +483,10 @@
           href: active-directory-optional-claims.md
         - name: Konfigurace životnosti tokenů
           href: active-directory-configurable-token-lifetimes.md
+        - name: Zpracování změn souborů cookie SameSite v prohlížeči Chrome
+          href: howto-handle-samesite-cookie-changes-chrome-browser.md
+        - name: Zpracování ITP v Safari
+          href: reference-third-party-cookies-spas.md
     - name: Konfigurace aplikací
       displayName: App configuration
       items:
@@ -576,7 +584,7 @@
           href: vs-active-directory-webapi-what-happened.md
         - name: Diagnostika chyb při ověřování
           href: vs-active-directory-error.md
-- name: Odkazy
+- name: Referenční informace
   items:
     - name: Manifest aplikace
       href: reference-app-manifest.md

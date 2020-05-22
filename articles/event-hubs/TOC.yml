@@ -133,6 +133,8 @@
   items:
     - name: Přesun mezi oblastmi
       href: move-across-regions.md
+    - name: Dynamické přidávání oddílů
+      href: dynamically-add-partitions.md
     - name: Použití služby Blob Storage jako úložiště kontrolních bodů v Azure Stack Hubu
       href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
@@ -205,7 +207,7 @@
           href: event-hubs-ip-filtering.md
         - name: Konfigurace koncových bodů služby pro virtuální síť
           href: event-hubs-service-endpoints.md
-        - name: Konfigurace privátních koncových bodů (Preview)
+        - name: Konfigurace privátních koncových bodů
           href: private-link-service.md
         - name: Konfigurace klíčů spravovaných zákazníkem
           href: configure-customer-managed-key.md

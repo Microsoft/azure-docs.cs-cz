@@ -184,6 +184,8 @@
           href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: Spravovat
       items:
+        - name: Automatická aktualizace jednotek zasílání zpráv
+          href: automate-update-messaging-units.md
         - name: Použití Azure PowerShellu ke zřizování entit
           href: service-bus-manage-with-ps.md
         - name: Monitorování služby Service Bus s využitím Azure Monitoru
@@ -209,7 +211,7 @@
           href: service-bus-ip-filtering.md
         - name: Konfigurace koncových bodů služby pro virtuální síť
           href: service-bus-service-endpoints.md
-        - name: Konfigurace privátních koncových bodů (Preview)
+        - name: Konfigurace privátních koncových bodů
           href: private-link-service.md
         - name: Konfigurace klíčů spravovaných zákazníkem
           href: configure-customer-managed-key.md

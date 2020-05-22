@@ -77,6 +77,10 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: Selhání klíčových služeb
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: Řešení potíží s chybou spuštění – stav nenalezen
+          href: boot-error-status-not-found.md
+        - name: Řešení potíží s kapacitou instalace služby Windows Update
+          href: windows-update-installation-capacity.md
         - name: Virtuální počítač nereaguje při použití zásad místních uživatelů a skupin
           href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: Nejde o spustitelný disk

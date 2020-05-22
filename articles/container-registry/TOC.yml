@@ -91,7 +91,7 @@
           items:
             - name: Omezení přístupu s využitím privátního koncového bodu
               href: container-registry-private-link.md
-            - name: Konfigurace pravidel brány firewall pro služby
+            - name: Konfigurace přístupu k veřejnému registru
               href: container-registry-access-selected-networks.md
             - name: Omezení přístupu s využitím koncového bodu služby (Preview)
               href: container-registry-vnet.md

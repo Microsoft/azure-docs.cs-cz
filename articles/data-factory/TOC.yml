@@ -25,8 +25,6 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Vytvoření datové továrny – šablona Resource Manageru
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: Zabezpečení – povolení šifrování klíčů spravovaných zákazníkem
-      href: quickstart-enable-customer-managed-key.md
     - name: Vytvoření toku dat
       href: data-flow-create.md
 - name: Kurzy
@@ -188,8 +186,6 @@
               href: wrangling-data-flow-functions.md
     - name: Role a oprávnění
       href: concepts-roles-permissions.md
-    - name: Vysvětlení cen
-      href: pricing-concepts.md
     - name: Pravidla pojmenování
       href: naming-rules.md
 - name: Návody
@@ -370,6 +366,8 @@
           href: connector-servicenow.md
         - name: SFTP
           href: connector-sftp.md
+        - name: Seznam služby SharePoint Online
+          href: connector-sharepoint-online-list.md
         - name: Shopify
           href: connector-shopify.md
         - name: Spark
@@ -416,6 +414,8 @@
           href: copy-activity-schema-and-type-mapping.md
         - name: Odolnost proti chybám
           href: copy-activity-fault-tolerance.md
+        - name: Ověření konzistence dat
+          href: copy-activity-data-consistency.md
         - name: Podpora formátů a komprese (starší verze)
           href: supported-file-formats-and-compression-codecs-legacy.md
     - name: Transformace dat
@@ -553,8 +553,12 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Spravovaná identita pro Data Factory
           href: data-factory-service-identity.md
+        - name: Šifrování s využitím klíčů spravovaných zákazníkem
+          href: quickstart-enable-customer-managed-key.md
     - name: Monitorování a správa
       items:
+        - name: Vizuální monitorování
+          href: monitor-visually.md
         - name: Monitorování pomocí služby Azure Monitor
           href: monitor-using-azure-monitor.md
         - name: Monitorování pomocí sad SDK
@@ -577,6 +581,8 @@
           href: create-azure-ssis-integration-runtime.md
         - name: Sdílené místní prostředí Integration Runtime
           href: create-shared-self-hosted-integration-runtime-powershell.md
+        - name: Skripty pro automatizaci místního prostředí Integration Runtime
+          href: self-hosted-integration-runtime-automation-scripts.md
     - name: Spouštění balíčků služby SSIS v Azure
       items:
         - name: Spouštění balíčků služby SSIS v Azure z SSDT
@@ -597,12 +603,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Povolení ověřování Azure AD pro Azure-SSIS IR
           href: enable-aad-authentication-azure-ssis-ir.md
-        - name: "Připojení k datům s\_ověřováním systému Windows"
-          href: ssis-azure-connect-with-windows-auth.md
-        - name: Ukládání souborů a připojení ke sdíleným složkám
-          href: ssis-azure-files-file-shares.md
         - name: Zřízení Enterprise Edition pro Azure-SSIS IR
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Integrované a předinstalované komponenty v Azure-SSIS IR
+          href: built-in-preinstalled-components-ssis-integration-runtime.md
         - name: Přizpůsobení nastavení pro Azure-SSIS IR
           href: how-to-configure-azure-ssis-ir-custom-setup.md
         - name: Instalace licencovaných komponent pro Azure-SSIS IR
@@ -613,6 +617,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Vyčištění protokolů SSISDB s využitím úloh Elastic Database
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: Použití spravované instance Azure SQL s Azure-SSIS IR
+          href: how-to-use-sql-managed-instance-with-ir.md
         - name: Migrace úloh SSIS s využitím SSMS
           href: how-to-migrate-ssis-job-ssms.md
     - name: Vytvoření aktivačních událostí
@@ -645,6 +651,12 @@
           href: solution-template-move-files.md
         - name: Transformace se službou Azure Databricks
           href: solution-template-databricks-notebook.md
+    - name: Vysvětlení cen
+      items:
+        - name: Plánování a správa nákladů
+          href: plan-manage-costs.md
+        - name: Příklady cen
+          href: pricing-concepts.md
     - name: Průvodci odstraňováním potíží
       items:
         - name: Aktivity

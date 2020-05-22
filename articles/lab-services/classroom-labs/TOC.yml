@@ -118,10 +118,12 @@
       items:
         - name: Přístup k testovacím prostředím v učebnách
           href: how-to-use-classroom-lab.md
-        - name: Použití připojení ke vzdálené ploše pro linuxové virtuální počítače
+        - name: Připojení k virtuálním počítačům s Linuxem
           href: how-to-use-remote-desktop-linux-student.md
         - name: Připojení k virtuálnímu počítači z počítače Mac s využitím protokolu RDP
-          href: connect-virtual-machine-mac-rdp.md
+          href: connect-virtual-machine-mac-remote-desktop.md
+        - name: Připojení k virtuálnímu počítači z Chromebooku s využitím RDP
+          href: connect-virtual-machine-chromebook-remote-desktop.md
         - name: Nastavení nebo resetování hesel pro virtuální počítače
           href: how-to-set-virtual-machine-passwords-student.md
         - name: Zobrazení informací o podpoře (student)

@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Rozpoznávání řeči uložené v úložišti objektů blob
           href: quickstarts/from-blob.md
+        - name: Posouzení výslovnosti s využitím referenčního vstupu
+          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: Návody
       items:
         - name: Volba režimu rozpoznávání řeči
@@ -61,6 +63,8 @@
           href: how-to-custom-speech-inspect-data.md
         - name: Vyhodnocení přesnosti služby Custom Speech
           href: how-to-custom-speech-evaluate-data.md
+        - name: Vylepšení přesnosti služby Custom Speech
+          href: how-to-custom-speech-improve-accuracy.md
         - name: Trénování modelu pro Custom Speech
           href: how-to-custom-speech-train-model.md
         - name: Nasazení vlastního modelu

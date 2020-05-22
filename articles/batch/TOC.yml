@@ -15,6 +15,9 @@
       href: quick-run-dotnet.md
     - name: Spuštění dávkové úlohy – Python
       href: quick-run-python.md
+    - name: Vytvoření účtu Batch – šablona ARM
+      href: quick-create-template.md
+      displayName: Resource Manager
 - name: Kurzy
   items:
     - name: Paralelní zpracování souborů – .NET
@@ -169,32 +172,32 @@
               href: batch-cli-templates.md
     - name: Použití Batch Node.js SDK
       href: batch-nodejs-get-started.md
-- name: Spouštění úloh
-  items:
-    - name: Úlohy MPI
-      href: batch-mpi.md
-    - name: Úlohy kontejneru
-      href: batch-docker-container-workloads.md
-    - name: Vykreslování
+    - name: Spouštění úloh
       items:
-        - name: Vykreslování s využitím Azure
-          href: batch-rendering-service.md
-        - name: Image virtuálních počítačů pro vykreslování
-          href: batch-rendering-applications.md
-        - name: Možnosti vykreslování služby Batch
-          href: batch-rendering-functionality.md
-        - name: Použití vykreslování služby Batch
-          href: batch-rendering-using.md
-        - name: Použití manažerů vykreslování
-          href: batch-rendering-render-managers.md
-        - name: Reference k aplikacím pro vykreslování
-          href: batch-rendering-application-reference.md
-        - name: Úložiště a přesun dat
-          href: batch-rendering-storage-data-movement.md
-        - name: Architektury vykreslování
-          href: batch-rendering-architectures.md
-    - name: Zpracování dat pomocí služeb Batch a Data Factory
-      href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
+        - name: Úlohy MPI
+          href: batch-mpi.md
+        - name: Úlohy kontejneru
+          href: batch-docker-container-workloads.md
+        - name: Vykreslování
+          items:
+            - name: Vykreslování s využitím Azure
+              href: batch-rendering-service.md
+            - name: Image virtuálních počítačů pro vykreslování
+              href: batch-rendering-applications.md
+            - name: Možnosti vykreslování služby Batch
+              href: batch-rendering-functionality.md
+            - name: Použití vykreslování služby Batch
+              href: batch-rendering-using.md
+            - name: Použití manažerů vykreslování
+              href: batch-rendering-render-managers.md
+            - name: Reference k aplikacím pro vykreslování
+              href: batch-rendering-application-reference.md
+            - name: Úložiště a přesun dat
+              href: batch-rendering-storage-data-movement.md
+            - name: Architektury vykreslování
+              href: batch-rendering-architectures.md
+        - name: Zpracování dat pomocí služeb Batch a Data Factory
+          href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Referenční informace
   items:
     - name: Azure CLI

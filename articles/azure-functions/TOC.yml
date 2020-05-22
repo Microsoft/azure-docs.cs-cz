@@ -127,6 +127,9 @@
           href: 'functions-reference-node.md#typescript'
     - name: Zabezpečení
       items:
+        - name: Přehled zabezpečení
+          href: security-concepts.md
+          displayName: 'secure, ssl'
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
     - name: Diagnostika
@@ -332,6 +335,8 @@
       items:
         - name: Řešení potíží s úložištěm
           href: functions-recover-storage-account.md
+        - name: Řešení potíží se závislostmi Pythonu
+          href: recover-module-not-found.md
 - name: Referenční informace
   items:
     - name: Referenční informace k rozhraní API
@@ -347,12 +352,16 @@
         - name: Blob Storage
           items:
             - name: Přehled
+              displayName: Blob storage
               href: functions-bindings-storage-blob.md
             - name: Trigger
+              displayName: Blob storage
               href: functions-bindings-storage-blob-trigger.md
             - name: Vstup
+              displayName: Blob storage
               href: functions-bindings-storage-blob-input.md
             - name: Výstup
+              displayName: Blob storage
               href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
           items:
@@ -378,10 +387,13 @@
           items:
             - name: Přehled
               href: functions-bindings-event-grid.md
+              displayName: Event Grid
             - name: Trigger
               href: functions-bindings-event-grid-trigger.md
+              displayName: Event Grid
             - name: Výstup
               href: functions-bindings-event-grid-output.md
+              displayName: Event Grid
         - name: Event Hubs
           items:
             - name: Přehled
@@ -408,10 +420,13 @@
           items:
             - name: Přehled
               href: functions-bindings-http-webhook.md
+              displayName: HTTP
             - name: Trigger
               href: functions-bindings-http-webhook-trigger.md
+              displayName: HTTP
             - name: Výstup
               href: functions-bindings-http-webhook-output.md
+              displayName: HTTP
         - name: Microsoft Graph
           href: functions-bindings-microsoft-graph.md
         - name: Mobile Apps
@@ -422,20 +437,26 @@
           items:
             - name: Přehled
               href: functions-bindings-storage-queue.md
+              displayName: Queue storage
             - name: Trigger
               href: functions-bindings-storage-queue-trigger.md
+              displayName: Queue storage
             - name: Výstup
               href: functions-bindings-storage-queue-output.md
+              displayName: Queue storage
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: Service Bus
           items:
             - name: Přehled
               href: functions-bindings-service-bus.md
+              displayName: Service Bus
             - name: Trigger
               href: functions-bindings-service-bus-trigger.md
+              displayName: Service Bus
             - name: Výstup
               href: functions-bindings-service-bus-output.md
+              displayName: Service Bus
         - name: Služba SignalR
           items:
             - name: Přehled

@@ -59,6 +59,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: Plánování kapacity clusteru
           href: ./hdinsight-capacity-planning.md
+        - name: Žádost o navýšení kvóty jader procesoru
+          href: ./quota-increase-request.md
         - name: Osvědčené postupy správy clusterů
           href: ./cluster-management-best-practices.md
         - name: Dostupnost a spolehlivost
@@ -243,6 +245,8 @@
               href: ./troubleshoot-resource-creation-fails.md
             - name: Řešení potíží s Apache Oozie
               href: ./troubleshoot-oozie.md
+            - name: Vysvětlení a řešení chyb WebHCat
+              href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
     - name: Referenční informace
       items:
         - name: Azure PowerShell
@@ -285,8 +289,6 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: Povolení výpisů paměti haldy pro služby Apache Hadoop
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: Vysvětlení a řešení chyb WebHCat
-          href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
         - name: Získejte pomoc na fóru
           href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
         - name: Cenová kalkulačka
@@ -330,6 +332,8 @@
           href: ./spark/apache-spark-settings.md
         - name: Optimalizace úloh Apache Spark
           href: ./spark/apache-spark-perf.md
+        - name: Migrace na Spark 2.3 nebo 2.4
+          href: ./spark/migrate-versions.md
     - name: Postup
       items:
         - name: Použití nástrojů
@@ -736,6 +740,8 @@
       items:
         - name: Osvědčené postupy pro brány
           href: ./interactive-query/gateway-best-practices.md
+        - name: Pokyny pro změnu velikosti
+          href: ./interactive-query/sizing-guidelines.md
     - name: Postup
       items:
         - name: Vývoj
@@ -780,6 +786,8 @@
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
             - name: Aplikace Apache Tez se zablokuje
               href: ./interactive-query/interactive-query-troubleshoot-tez-hangs.md
+            - name: Pokyny pro změnu velikosti Apache Hive LLAP
+              href: ./interactive-query/hive-llap-sizing-guide.md
             - name: Výkon dotazů Apache Hive LLAP
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: Pomalá redukční funkce

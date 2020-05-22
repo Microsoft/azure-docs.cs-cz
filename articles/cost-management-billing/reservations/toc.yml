@@ -6,7 +6,6 @@
     - name: Co jsou rezervace Azure?
       href: save-compute-costs-reservations.md
 - name: Návody
-  expanded: true
   items:
     - name: 'Určení, co koupit'
       items:
@@ -56,12 +55,17 @@
           href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
         - name: Výměna a refundace rezervací
           href: exchange-and-refund-azure-reservations.md
+    - name: Vytvoření sestavy nákladů
+      items:
+        - name: Zobrazení transakcí rezervací
+          href: view-purchase-refunds.md
+        - name: Zpětné vyúčtování nákladů na rezervace
+          href: charge-back-usage.md
     - name: Obnovení rezervací
       items:
         - name: Obnovení rezervace
           href: reservation-renew.md
 - name: Koncepty
-  expanded: true
   items:
     - name: Jak se vytvářejí doporučení pro rezervace
       href: reserved-instance-purchase-recommendations.md

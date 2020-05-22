@@ -71,10 +71,8 @@
       href: sql-api-dotnet-samples.md
     - name: Ukázky .NET V3 SDK
       href: sql-api-dotnet-v3sdk-samples.md
-    - name: Ukázky Java
-      href: sql-api-java-samples.md
-    - name: Ukázky Async Java
-      href: sql-api-async-java-samples.md
+    - name: Ukázky Java SDK v4
+      href: sql-api-java-sdk-samples.md
     - name: Ukázky Node.js
       href: sql-api-nodejs-samples.md
     - name: Ukázky Pythonu
@@ -132,11 +130,13 @@
         - name: Jednotky žádostí
           displayName: 'RUs, RU'
           href: request-units.md
-        - name: Zřízení propustnosti u kontejnerů a databází
+        - name: Úvod ke zřízené propustnosti
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: Zřízení propustnosti – automatické škálování
+        - name: Zřízení propustnosti s automatickým škálováním
           href: provision-throughput-autoscale.md
+        - name: Volba mezi standardní (ruční) propustností a propustností s automatickým škálováním
+          href: how-to-choose-offer.md
         - name: Nejčastější dotazy k automatickému škálování
           href: autoscale-faq.md
     - name: Dotaz SQL
@@ -492,12 +492,14 @@
           href: change-feed-functions.md
         - name: Model vyžádání kanálu změn
           href: change-feed-pull-model.md
-    - name: Analýzy s využitím Synapse Linku
+    - name: Analýzy s využitím Azure Synapse Linku
       items:
-        - name: Synapse Link pro Azure Cosmos DB
+        - name: Azure Synapse Link pro Cosmos DB
           href: synapse-link.md
         - name: Analytické úložiště – přehled
           href: analytical-store-introduction.md
+        - name: Podporované funkce Synapse Linku
+          href: ../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Nejčastější dotazy k Synapse Linku
           href: synapse-link-frequently-asked-questions.md
         - name: Případy použití Synapse Linku
@@ -568,6 +570,8 @@
           href: online-backup-and-restore.md
         - name: Dodržování předpisů
           href: compliance.md
+        - name: Podpora služby Azure Policy
+          href: policy.md
     - name: Kvóty služeb
       href: concepts-limits.md
 - name: 'Cassandra, MongoDB a další rozhraní API'
@@ -664,8 +668,6 @@
             - name: Xamarin
               href: create-mongodb-xamarin.md
             - name: Golang
-              href: create-mongodb-golang.md
-            - name: Přejít
               href: create-mongodb-go.md
         - name: Kurzy
           items:
@@ -922,12 +924,15 @@
           href: how-to-convert-session-token.md
     - name: Zřízená propustnost
       items:
-        - name: Zřízení propustnosti pro kontejner
+        - name: Zřízení standardní (ruční) propustnosti v kontejneru
           displayName: 'request units, RUs, RU, collection level'
           href: how-to-provision-container-throughput.md
-        - name: Zřízení propustnosti pro databázi
+        - name: Zřízení standardní (ruční) propustnosti v databázi
           displayName: 'request units, RUs, RU, shared throughput, database level'
           href: how-to-provision-database-throughput.md
+        - name: Zřízení propustnosti s automatickým škálováním v databázi nebo kontejneru
+          displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+          href: how-to-provision-autoscale-throughput.md
         - name: Odhad RU/s s využitím nástroje pro plánování kapacity Cosmos
           displayName: 'request units, RUs, RU, capacity'
           href: estimate-ru-with-capacity-planner.md
@@ -1020,10 +1025,14 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: Kanál změn – ukázka Async Javy
           href: create-sql-api-java-changefeed.md
-    - name: Analýzy s využitím Synapse Linku
+    - name: Analýzy s využitím Azure Synapse Linku
       items:
-        - name: Konfigurace Synapse Linku
+        - name: Konfigurace Azure Synapse Linku
           href: configure-synapse-link.md
+        - name: Připojení k Azure Synapse Linku
+          href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Dotazování pomocí Azure Synapse Sparku
+          href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: Integrované analýzy s využitím Apache Sparku
       items:
         - name: Konektor Spark pro Azure Databricks
@@ -1034,8 +1043,12 @@
       items:
         - name: Povolení poznámkových bloků
           href: enable-notebooks.md
-        - name: Použití integrovaných příkazů poznámkového bloku
-          href: use-notebook-features-and-commands.md
+        - name: Import poznámkových bloků z GitHubu
+          href: import-github-notebooks.md
+        - name: Použití integrovaných příkazů poznámkového bloku v Pythonu
+          href: use-python-notebook-features-and-commands.md
+        - name: 'Použití integrovaných příkazů poznámkového bloku v C#'
+          href: use-csharp-notebook-features-and-commands.md
     - name: Programování na straně serveru
       items:
         - name: 'Zápis uložených procedur, triggerů a uživatelsky definovaných funkcí'
@@ -1160,6 +1173,8 @@
           href: migrate-relational-to-cosmos-db-sql-api.md
         - name: Migrate – Couchbase do SQL API
           href: couchbase-cosmos-migration.md
+        - name: Migrace – DynamoDB do SQL API
+          href: dynamo-to-cosmos.md
     - name: Knihovna Bulk Executor
       items:
         - name: Informace o knihovně Bulk Executoru
@@ -1182,12 +1197,16 @@
       href: sql-api-sdk-dotnet-changefeed.md
     - name: Knihovna Bulk Executoru .v NET
       href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java
-      href: sql-api-sdk-java.md
     - name: Knihovna Bulk Executoru v Javě
       href: sql-api-sdk-bulk-executor-java.md
-    - name: Async Java
-      href: sql-api-sdk-async-java.md
+    - name: Java SDK v4 pro Core
+      href: sql-api-sdk-java-v4.md
+    - name: Starší verze sad Java SDK pro Core
+      items:
+        - name: Sada Async Java SDK v2
+          href: sql-api-sdk-async-java.md
+        - name: Sada Sync Java SDK v2
+          href: sql-api-sdk-java.md
     - name: Node.js
       href: sql-api-sdk-node.md
     - name: Python

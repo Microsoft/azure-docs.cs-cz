@@ -9,12 +9,12 @@ metadata:
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 04/09/2020
-  ms.openlocfilehash: 8dd4f7420c4b58d621312f361beede1e48bc17b5
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: db4bccbc2b366cbd2997542b3b10068b0f5941a2
+  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83593065"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83701849"
 landingContent:
 - title: Informace o službě Static Web Apps
   linkLists:
@@ -38,18 +38,10 @@ landingContent:
     links:
     - text: Publikování rozhraní API a javascriptové aplikace v Angularu, Reactu, Svelte nebo Vue
       url: /learn/modules/publish-app-service-static-web-app-api
-- title: Klíčové koncepty
-  linkLists:
-  - linkListType: concept
+  - linkListType: video
     links:
-    - text: Trasy
-      url: routes.md
-    - text: Veřejná rozhraní API
-      url: apis.md
-    - text: Příprava
-      url: review-publish-pull-requests.md
-    - text: Omezení přístupu
-      url: authentication-authorization.md
+    - text: Sestavení a nasazení statické webové aplikace
+      url: https://channel9.msdn.com/Shows/Docs-Azure/Building-and-Deploying-a-Static-Web-App/
 - title: Scénáře publikování
   linkLists:
   - linkListType: tutorial
@@ -68,3 +60,15 @@ landingContent:
     links:
     - text: Publikování statické webové aplikace s využitím Gatsby
       url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+- title: Klíčové koncepty
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Trasy
+      url: routes.md
+    - text: Veřejná rozhraní API
+      url: apis.md
+    - text: Příprava
+      url: review-publish-pull-requests.md
+    - text: Omezení přístupu
+      url: authentication-authorization.md

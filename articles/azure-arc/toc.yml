@@ -4,15 +4,12 @@
   items:
     - name: Co je Azure Arc pro servery?
       href: ./servers/overview.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./servers/policy-samples.md
 - name: Návody
   items:
     - name: Připojení ke službě Azure Arc
       items:
+        - name: Přehled agenta připojeného počítače
+          href: ./servers/agent-overview.md
         - name: Připojení počítačů ke službě Azure Arc z webu Azure Portal
           href: ./servers/onboard-portal.md
         - name: Připojení počítačů ve velkém měřítku s využitím instančního objektu
@@ -23,3 +20,8 @@
       items:
         - name: Správa agenta
           href: ./servers/manage-agent.md
+- name: ukázky
+  items:
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./servers/policy-samples.md

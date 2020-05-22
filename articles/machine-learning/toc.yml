@@ -79,9 +79,8 @@
     - name: Poznámkové bloky Jupyter
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Datové sady designeru
-      href: sample-designer-datasets.md
-    - name: Ukázkové kanály designeru
+    - name: Datové sady a ukázky designeru
+      displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
     - name: Kompletní příklady MLOps
       href: 'https://github.com/microsoft/MLOps'
@@ -261,6 +260,9 @@
             - name: Správa verzí a sledování datových sad
               displayName: 'data, data set'
               href: how-to-version-track-datasets.md
+            - name: Zachování ochrany osobních údajů v datech
+              displayName: 'data,privacy,differential privacy'
+              href: how-to-differential-privacy.md
     - name: Trénování modelů
       items:
         - name: Použití nástrojů pro odhady pro ML
@@ -376,6 +378,9 @@
               href: how-to-monitor-data-drift.md
             - name: Monitorování pomocí Application Insights
               href: how-to-enable-app-insights.md
+        - name: Nasazení šifrované služby odvozování
+          displayName: 'homomorhic,encryption,deployment'
+          href: how-to-homomorphic-encryption-seal.md
     - name: Vytváření a použití kanálů ML
       displayName: pipelines
       items:
@@ -393,9 +398,6 @@
         - name: Ladění kanálů ve službě Application Insights
           displayname: 'pipelines, log, monitor'
           href: how-to-debug-pipelines-application-insights.md
-        - name: Azure Pipelines pro CI/CD
-          displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
         - name: Transformace dat designeru
           displayName: pipeline
           href: how-to-designer-transform-data.md
@@ -417,6 +419,9 @@
         - name: Iterace a vývoj kanálů strojového učení
           displayName: modularizing testing
           href: concept-pipeline-practices-tips.md
+    - name: Azure Pipelines pro CI/CD
+      displayName: 'continuous, integration, delivery'
+      href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
     - name: Správa kvót prostředků
       displayName: limits
       href: how-to-manage-quotas.md

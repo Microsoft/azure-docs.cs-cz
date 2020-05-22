@@ -132,6 +132,14 @@
               href: event-schema-azure-signalr.md
             - name: Předplatná Azure
               href: event-schema-subscriptions.md
+    - name: Témata pro partnery
+      items:
+        - name: Přehled témat pro partnery
+          href: partner-topics-overview.md
+        - name: Auth0
+          href: auth0-overview.md
+        - name: Jak se stát partnerem pro Event Grid
+          href: partner-onboarding-overview.md
     - name: Domény událostí
       href: event-domains.md
     - name: Formáty schématu událostí
@@ -186,6 +194,8 @@
   items:
     - name: Publikování ve vlastním tématu
       href: post-to-custom-topic.md
+    - name: Přihlášení k odběru událostí Auth0
+      href: auth0-how-to.md
     - name: Příjem událostí v koncovém bodu HTTP
       href: receive-events.md
     - name: Nedoručené zprávy a opakovaný pokus
@@ -214,6 +224,8 @@
           href: configure-firewall.md
         - name: Zabezpečený webhook s AAD
           href: secure-webhook-delivery.md
+        - name: Doručování událostí s využitím spravované identity
+          href: managed-service-identity.md
     - name: Řešení potíží
       items:
         - name: Povolení diagnostických protokolů

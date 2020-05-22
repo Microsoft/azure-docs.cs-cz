@@ -1,7 +1,7 @@
 - name: Dokumentace ke komerčnímu marketplace
   href: index.yml
   items:
-    - name: Plán nasazení komerčního marketplace
+    - name: Aktualizace komerčního marketplace
       href: ./marketplace-roadmap.md
     - name: Podmínky a zásady komerčního marketplace
       href: ./policies-terms.md
@@ -76,10 +76,6 @@
 - name: Portál Cloud Partner
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
-    - name: Migrace portálu partnerů cloudu do Partnerského centra
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
-    - name: Nejčastější dotazy k migraci
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: Prohlídka portálu
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -134,8 +130,6 @@
           items:
             - name: začínáme
               href: ./cloud-partner-portal-orig/si-getting-started.md
-            - name: Co je nového
-              href: ./cloud-partner-portal-orig/si-changes.md
             - name: Webové analýzy
               href: ./cloud-partner-portal-orig/web-analytics.md
             - name: Definice
@@ -264,67 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Nabídka virtuálních počítačů
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-          items:
-            - name: Požadavky
-              href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
-            - name: Vytvoření nabídky virtuálních počítačů
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
-              items:
-                - name: Karta nastavení nabídky
-                  href: ./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md
-                - name: Karta Skladové položky
-                  href: ./cloud-partner-portal/virtual-machine/cpp-skus-tab.md
-                - name: Karta Testovací verze
-                  href: ./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md
-                - name: Karta Marketplace
-                  href: ./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md
-                - name: Karta Podpora
-                  href: ./cloud-partner-portal/virtual-machine/cpp-support-tab.md
-            - name: Vytvoření technických prostředků virtuálního počítače
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md
-              items:
-                - name: Vytvoření VHD
-                  href: ./cloud-partner-portal/virtual-machine/cpp-create-vhd.md
-                - name: Běžné problémy při vytváření VHD
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md
-                - name: Připojení k virtuálnímu počítači
-                  href: ./cloud-partner-portal/virtual-machine/cpp-connect-vm.md
-                - name: Konfigurace virtuálního počítače
-                  href: ./cloud-partner-portal/virtual-machine/cpp-configure-vm.md
-                - name: Vzdálená správa systému Windows
-                  href: ./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md
-                  items:
-                    - name: Konfigurace WinRM po vytvoření virtuálních počítačů
-                      href: ./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md
-                - name: Nasazení virtuálního počítače
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md
-                  items:
-                    - name: Vytvoření uživatelské image virtuálního počítače
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-user-image.md
-                    - name: Vytvoření certifikátu trezoru klíčů
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md
-                      items:
-                        - name: Šablona nasazení trezoru klíčů
-                          href: ./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md
-                - name: Nasazení virtuálního počítače z virtuálního pevného disku uživatele
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md
-                  items:
-                    - name: Šablona nasazení VHD
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md
-                    - name: Nasazení virtuálního počítače z marketplace
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md
-                - name: Certifikace image virtuálního počítače
-                  href: ./cloud-partner-portal/virtual-machine/cpp-certify-vm.md
-                - name: Klient samočinného testování virtuálního počítače
-                  href: ./cloud-partner-portal/virtual-machine/cpp-selftest-client.md
-                - name: Získání identifikátoru URI sdíleného přístupového podpisu
-                  href: ./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md
-                - name: Běžné problémy s adresou URL sdíleného přístupového podpisu
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md
-            - name: Publikování nabídky virtuálních počítačů
-              href: ./cloud-partner-portal/virtual-machine/cpp-publish-offer.md
-            - name: Aktualizace stávající nabídky
-              href: ./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md
     - name: Referenční materiály k rozhraní API
       items:
         - name: Přehled
@@ -361,6 +294,8 @@
   items:
     - name: Přehled komerčního marketplace
       href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Nejčastější dotazy k migraci
+      href: ./cloud-partner-portal-migration-faq.md
     - name: Správa účtů
       items:
         - name: Vytvoření nového účtu v partnerském centru

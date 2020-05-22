@@ -366,7 +366,7 @@
         - name: Sestavování řídicích panelů a sestav
           items:
             - name: Vizualizace pomocí Power BI
-              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect.md
+              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect
     - name: Řešení potíží
       items:
         - name: Připojení
@@ -417,3 +417,5 @@
           href: sql-data-warehouse-partner-data-integration.md
         - name: Správa dat
           href: sql-data-warehouse-partner-data-management.md
+        - name: Partneři pro Public Preview
+          href: sql-data-warehouse-partner-launch.md

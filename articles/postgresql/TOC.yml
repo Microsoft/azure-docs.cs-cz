@@ -200,6 +200,8 @@
               href: howto-create-users.md
             - name: Konfigurace integrace Azure AD
               href: howto-configure-sign-in-aad-authentication.md
+            - name: Připojení s využitím spravované identity
+              href: howto-connect-with-managed-identity.md
         - name: Optimalizace
           items:
             - name: Hromadné vkládání

@@ -4,8 +4,13 @@
   items:
     - name: Co je Azure Firewall Manager?
       href: overview.md
-- name: Kurzy
+- name: Rychlé starty
   expanded: true
+  items:
+    - name: Zabezpečené virtuální centrum
+      displayName: Resource Manager
+      href: quick-secure-virtual-hub.md
+- name: Kurzy
   items:
     - name: Zabezpečení virtuální sítě WAN – portál
       href: secure-cloud-network.md
@@ -35,7 +40,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/azure-firewall/network/firewall
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
     - name: .NET
       href: /dotnet/api

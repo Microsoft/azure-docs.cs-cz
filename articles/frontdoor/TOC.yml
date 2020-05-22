@@ -21,6 +21,8 @@
       href: front-door-tutorial-geo-filtering.md
     - name: Nastavení stroje pravidel
       href: front-door-tutorial-rules-engine.md
+    - name: Firewall webových aplikací a Front Door
+      href: front-door-waf.md
 - name: ukázky
   items:
     - name: Šablony Resource Manageru
