@@ -7,12 +7,12 @@ ms.date: 08/08/2019
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 6fe0e39584cbaa001e11f712bb2f60b45dba6914
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203484"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772832"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení k účtu Microsoft
 
@@ -28,11 +28,11 @@ V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service nebo Azure Fun
 1. V Azure Portal přejít na [**Registrace aplikací**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) . V případě potřeby se přihlaste pomocí účet Microsoft.
 1. Vyberte **Nová registrace**a pak zadejte název aplikace.
 1. V části **podporované typy účtů**vyberte **účty v jakémkoli adresáři organizace (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (např. Skype, Xbox)** .
-1. V v **identifikátorech URI pro přesměrování**vyberte **Web**a `https://<app-domain-name>/.auth/login/aad/callback`potom zadejte. * \<>App-Domain-Name* nahraďte názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
+1. V v **identifikátorech URI pro přesměrování**vyberte **Web**a potom zadejte `https://<app-domain-name>/.auth/login/aad/callback` . * \<>App-Domain-Name* nahraďte názvem domény vaší aplikace.  Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Nezapomeňte použít schéma HTTPS v adrese URL.
 
 1. Vyberte **Zaregistrovat**.
 1. Zkopírujte **ID aplikace (klienta)**. Budete ho potřebovat později.
-1. V levém podokně vyberte **certifikáty & tajných klíčů** > **nový tajný klíč klienta**. Zadejte popis, vyberte dobu platnosti a vyberte **Přidat**.
+1. V levém podokně vyberte **certifikáty & tajných klíčů**  >  **nový tajný klíč klienta**. Zadejte popis, vyberte dobu platnosti a vyberte **Přidat**.
 1. Zkopírujte hodnotu, která se zobrazí na stránce **certifikáty & tajných** kódů. Po opuštění stránky se znovu nezobrazí.
 
     > [!IMPORTANT]
@@ -41,7 +41,7 @@ V tomto tématu se dozvíte, jak nakonfigurovat Azure App Service nebo Azure Fun
 ## <a name="add-microsoft-account-information-to-your-app-service-application"></a><a name="secrets"> </a>Přidání informací o účtu Microsoft do aplikace App Service
 
 1. V [Azure Portal]přejdete do své aplikace.
-1. Vyberte **Nastavení** > **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
+1. Vyberte **Nastavení**  >  **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
 1. V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**. V části **režim správy**vyberte **Upřesnit** . Vložte do ID aplikace (klienta) a tajného klíče klienta, který jste získali dříve. Použijte **`https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0`** pro pole **Adresa URL vystavitele** .
 1. Vyberte **OK**.
 

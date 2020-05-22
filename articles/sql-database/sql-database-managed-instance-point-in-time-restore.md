@@ -3,7 +3,7 @@ title: Spravovaná instance – obnovení bodu v čase (PITR)
 description: Obnovte databázi SQL ve spravované instanci k předchozímu bodu v čase.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 27f465e6864d0ff639e825c8a816d86648bd8853
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21af96e8527bb3fc18666c0353ab3bdbe2a010f1
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268805"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773817"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Obnovení databáze SQL ve spravované instanci k předchozímu bodu v čase
 
@@ -44,7 +44,7 @@ Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravovan
 
 |           |Obnovit existující databázi do stejné spravované instance| Obnovit existující databázi do jiné spravované instance|Obnovit vyřazenou databázi do stejné spravované instance|Obnovit vyřazenou databázi do jiné spravované instance|
 |:----------|:----------|:----------|:----------|:----------|
-|**portál Azure**| Ano|Ne |Ano|Ne|
+|**portál Azure**| Ano|No |Ano|No|
 |**Azure CLI**|Ano |Ano |Ne|Ne|
 |**PowerShell**| Ano|Ano |Ano|Ano|
 
@@ -52,9 +52,9 @@ Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravovan
 
 Obnovte stávající databázi do stejné instance pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI. K obnovení databáze do jiné instance použijte PowerShell nebo Azure CLI, abyste mohli zadat vlastnosti cílové spravované instance a skupiny prostředků. Pokud tyto parametry nezadáte, databáze bude ve výchozím nastavení obnovena do existující instance. Azure Portal v současné době nepodporuje obnovení do jiné instance.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. Přejít do spravované instance a vybrat databázi, kterou chcete obnovit.
 3. Na stránce databáze vyberte **obnovit** :
 
@@ -205,7 +205,7 @@ Pro připojení k databázi ve spravované instanci použijte jednu z následuj�
 - [Point-to-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [Veřejný koncový bod](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 V Azure Portal vyberte databázi ze spravované instance a pak vyberte **Odstranit**.
 

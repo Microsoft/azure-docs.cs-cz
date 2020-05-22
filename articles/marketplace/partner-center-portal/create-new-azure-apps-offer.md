@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 55d544ecf6c96335ca65255e1af695f7757b818c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 2885df9e64bdbfa21eaaa38f423b90554f767cd7
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699524"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773266"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -354,7 +354,7 @@ Každý plán můžete nakonfigurovat tak, aby byl viditelný pro všechny uživ
 
 Vyberte **Toto je soukromý plán** , aby byl váš plán soukromý a viditelný jenom pro omezený počet uživatelů, kteří si zvolíte. Po zveřejnění jako soukromého plánu můžete cílovou skupinu aktualizovat nebo si vybrat, že plán bude dostupný všem. Jakmile je plán publikován jako viditelný pro všechny, musí zůstat viditelný pro všechny uživatele. nedá se překonfigurovat jako soukromý plán.
 
-Pokud zařízení nastavíte jako soukromé, zadejte **ID předplatného Azure** a jeho popis. Každé je cílová skupina, která bude mít přístup k tomuto privátnímu plánu. Přístup se přiřazuje pomocí ID předplatných Azure s možností zahrnout popis každého přiřazeného ID předplatného Azure. Přidejte až 10 ID předplatných zákazníků jednotlivě, nebo 20 000 importem souboru CSV. ID předplatných Azure jsou reprezentovaná jako identifikátory GUID a písmena musí být malá.
+Pokud nastavíte plán jako soukromý, zadejte **ID předplatného Azure** a jeho popis. Každé je cílová skupina, která bude mít přístup k tomuto privátnímu plánu. Přístup se přiřazuje pomocí ID předplatných Azure s možností zahrnout popis každého přiřazeného ID předplatného Azure. Přidejte až 10 ID předplatných zákazníků jednotlivě, nebo 20 000 importem souboru CSV. ID předplatných Azure jsou reprezentovaná jako identifikátory GUID a písmena musí být malá.
 
 >[!Note]
 >Soukromá nebo omezená skupina je odlišná od cílové skupiny Preview, kterou jste definovali na kartě **Preview** . Cílová skupina Preview má přístup k vaší nabídce _před tím, než_ se zveřejní na webu Marketplace. I když se soukromá skupina zvolí jenom pro konkrétní plán, cílová skupina Preview může pro účely ověřování Zobrazit všechny plány (soukromě nebo ne).
@@ -373,7 +373,7 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 
 #### <a name="markets"></a>Trhy
 
-Každý plán musí být k dispozici alespoň v jednom trhu. Zaškrtněte políčko pro jakékoli místo na trhu, kde byste chtěli tento plán zpřístupnit. K nápovědě jsou k dispozici vyhledávací pole a tlačítko pro výběr zemí "daňového přiznání", ve kterých společnost Microsoft provádí prodej a používání daně vaším jménem.
+Každý plán musí být k dispozici alespoň v jednom trhu. Zaškrtněte políčko pro jakékoli místo na trhu, kde byste chtěli tento plán zpřístupnit. Seznam vyhledávacího pole a tlačítka pro výběr "vypoukázaného" země/oblastí, kde společnost Microsoft za vás vybírá prodej a používání daně, jsou součástí této služby.
 
 Pokud jste už pro svůj plán nastavili ceny v USA dolary (USD) a přidáte další místo na trhu, cena za nový trh se vypočítá podle aktuálních směnných kurzů. Před publikováním si vždycky Projděte cenu za každý trh. Po uložení změn můžete pomocí odkazu exportovat ceny (XLSX) zkontrolovat ceny.
 
@@ -399,7 +399,7 @@ Každý plán můžete nakonfigurovat tak, aby byl viditelný pro všechny uživ
 
 Vyberte **Toto je soukromý plán** , aby byl váš plán soukromý a viditelný jenom pro omezený počet uživatelů, kteří si zvolíte. Po zveřejnění jako soukromého plánu můžete cílovou skupinu aktualizovat nebo si vybrat, že plán bude dostupný všem. Jakmile je plán publikován jako viditelný pro všechny, musí zůstat viditelný pro všechny uživatele. nedá se překonfigurovat jako soukromý plán.
 
-Pokud zařízení nastavíte jako soukromé, zadejte **ID předplatného Azure** a jeho popis. Každé je cílová skupina, která bude mít přístup k tomuto privátnímu plánu. Přístup se přiřazuje pomocí ID předplatných Azure s možností zahrnout popis každého přiřazeného ID předplatného Azure. Přidejte až 10 ID předplatných zákazníků jednotlivě, nebo 20 000 importem souboru CSV. ID předplatných Azure jsou reprezentovaná jako identifikátory GUID a písmena musí být malá.
+Pokud nastavíte plán jako soukromý, zadejte **ID předplatného Azure** a jeho popis. Každé je cílová skupina, která bude mít přístup k tomuto privátnímu plánu. Přístup se přiřazuje pomocí ID předplatných Azure s možností zahrnout popis každého přiřazeného ID předplatného Azure. Přidejte až 10 ID předplatných zákazníků jednotlivě, nebo 20 000 importem souboru CSV. ID předplatných Azure jsou reprezentovaná jako identifikátory GUID a písmena musí být malá.
 
 >[!Note]
 >Soukromá nebo omezená skupina je odlišná od cílové skupiny Preview, kterou jste definovali na kartě **Preview** . Cílová skupina Preview má přístup k vaší nabídce _před tím, než_ se zveřejní na webu Marketplace. I když se soukromá skupina zvolí jenom pro konkrétní plán, cílová skupina Preview může pro účely ověřování Zobrazit všechny plány (soukromě nebo ne).

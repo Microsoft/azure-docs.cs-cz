@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ea52474f3b352fabf19050f20012438e9d0c19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c020bb70dc26945b013321b2d75cc2e231c39a4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76120551"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772909"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Confluence SAML SSO Microsoftu
 
@@ -65,7 +65,7 @@ Od této chvíle jsou podporovány následující verze Confluence:
 
 - Confluence: 5,0 až 5,10
 - Confluence: 6.0.1 na 6.15.9
-- Confluence: 7.0.1 na 7.1.0
+- Confluence: 7.0.1 na 7.4.0
 
 > [!NOTE]
 > Upozorňujeme, že náš modul plug-in Confluence funguje taky na Ubuntu verze 16,04.
@@ -133,7 +133,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -245,7 +245,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Confluence místním serveru, 
 
     b. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele jako B. Simon.
 
-    c. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele B.Simon@contoso.com.
+    c. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele B.Simon@contoso.com .
 
     d. Do textového pole **heslo** zadejte heslo pro B. Simon.
 
@@ -259,7 +259,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Confluence SSO SSO Microsoft, měli byste se automaticky přihlásit k Confluence SAML SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

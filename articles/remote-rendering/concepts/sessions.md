@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91a59e1398bf5e68799ad16a20dfb824904edc8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681685"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758856"
 ---
 # <a name="remote-rendering-sessions"></a>Relace Remote Renderingu
 
@@ -24,7 +24,7 @@ To znamená, že když používáte vzdálené vykreslování Azure, musí být 
 
 ## <a name="managing-sessions"></a>Správa relací
 
-Existuje několik způsobů, jak spravovat relace a pracovat s nimi. Nezávisle na způsobu vytváření, aktualizace a vypínání relací jsou prostřednictvím [REST API správy relací](../how-tos/session-rest-api.md). V jazyce C# a C++ se tyto operace zveřejňují prostřednictvím tříd `AzureFrontend` a `AzureSession`. Pro aplikace Unity existují další obslužné funkce poskytované `ARRServiceUnity` komponentou.
+Existuje několik způsobů, jak spravovat relace a pracovat s nimi. Nezávisle na způsobu vytváření, aktualizace a vypínání relací jsou prostřednictvím [REST API správy relací](../how-tos/session-rest-api.md). V jazyce C# a C++ se tyto operace zveřejňují prostřednictvím tříd `AzureFrontend` a `AzureSession` . Pro aplikace Unity existují další obslužné funkce poskytované `ARRServiceUnity` komponentou.
 
 Jakmile budete *připojeni* k aktivní relaci, operace jako [načítání modelů](models.md) a interakce s scénou jsou zpřístupněny prostřednictvím `AzureSession` třídy.
 
@@ -82,7 +82,7 @@ Ve všech případech se po zastavení relace neúčtují další poplatky.
 
 Následující kód ukazuje jednoduchou implementaci spuštění relace, čekání na stav *připraveno* , připojení a odpojení a opětovné ukončení.
 
-``` cs
+```cs
 RemoteRenderingInitialization init = new RemoteRenderingInitialization();
 // fill out RemoteRenderingInitialization parameters...
 
@@ -136,13 +136,13 @@ await session.StopAsync().AsTask();
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Více `AzureFrontend` instancí `AzureSession` a lze spravovat, manipulovat a dotazovat z kódu. `AzureSession` V jednom okamžiku se ale může připojit jenom jedno zařízení.
+Více `AzureFrontend` `AzureSession` instancí a lze spravovat, manipulovat a dotazovat z kódu. V jednom okamžiku se ale může připojit jenom jedno zařízení `AzureSession` .
 
 Životnost virtuálního počítače není vázaná na `AzureFrontend` instanci nebo `AzureSession` instanci. `AzureSession.StopAsync`se musí volat, aby se zastavila relace.
 
-Na ID trvalé relace se dá dotazovat místně `AzureSession.SessionUUID()` pomocí mezipaměti. S tímto ID může aplikace volat `AzureFrontend.OpenSession` , aby se k této relaci navázala.
+Na ID trvalé relace se dá dotazovat `AzureSession.SessionUUID()` místně pomocí mezipaměti. S tímto ID může aplikace volat `AzureFrontend.OpenSession` , aby se k této relaci navázala.
 
-Pokud `AzureSession.IsConnected` je hodnota true `AzureSession.Actions` , vrátí `RemoteManager`instanci, která obsahuje funkce pro [načtení modelů](models.md), manipulaci s [entitami](entities.md)a dotazy na [informace](../overview/features/spatial-queries.md) o vykreslené scéně.
+Pokud `AzureSession.IsConnected` je hodnota true, `AzureSession.Actions` vrátí instanci `RemoteManager` , která obsahuje funkce pro [načtení modelů](models.md), manipulaci s [entitami](entities.md)a dotazy na [informace](../overview/features/spatial-queries.md) o vykreslené scéně.
 
 ## <a name="next-steps"></a>Další kroky
 

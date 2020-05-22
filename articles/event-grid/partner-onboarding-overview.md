@@ -7,14 +7,14 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: 3c2c2e3d5a2ef48ddc212fc0df4906c91071d803
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2a1f35b86e21099c9fdd0397ae8a3b20aed3cd5d
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725917"
+ms.locfileid: "83758822"
 ---
-# <a name="become-and-event-grid-partner"></a>Staňte se Event Grid partnerem
+# <a name="onboard-as-an-azure-event-grid-partner"></a>Připojení jako Azure Event Grid partner
 
 Tento článek popisuje, jak soukromě používat Event Grid prostředky partnerů a jak se stát veřejně dostupným typem partnerského tématu.
 
@@ -38,7 +38,7 @@ Témata o partnerovi umožňují publikovat události pro Azure Event Grid pro v
 
     ![Vytvořit partnerský předmět](./media/partner-onboarding-how-to/create-partner-registration.png)
 
-1. `partnerNamespaces`V každé oblasti, kterou chcete publikovat události, vytvořte jednu nebo více. V rámci této služby Event Grid služba zřídit koncový bod publikování (například https://contoso.westus-1.eventgrid.azure.net/api/events) přístup k klíčům).
+1. `partnerNamespaces`V každé oblasti, kterou chcete publikovat události, vytvořte jednu nebo více. V rámci této služby Event Grid služba zřídit koncový bod publikování (například `https://contoso.westus-1.eventgrid.azure.net/api/events` ) a přístupové klíče.
 
     ![Vytvořit obor názvů partnera](./media/partner-onboarding-how-to/create-partner-namespace.png)
 
@@ -105,7 +105,7 @@ Publikování událostí pro Azure Event Grid pomocí schématu CloudEvents 1,0.
 
 ### <a name="example-flow"></a>Ukázkový tok
 
-1.  Služba publikování provede příspěvek HTTP na https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01 .
+1.  Služba publikování provede příspěvek HTTP na `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 2.  V žádosti zahrňte hodnotu hlavičky s názvem AEG-SAS-Key obsahující klíč pro ověření. Tento klíč se zřídí během vytváření partnerNamespace. Platná hodnota hlavičky je například AEG-SAS-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = =.
 3.  Nastavte hlavičku Content-Type na "Application/cloudevents-Batch + JSON; charset = UTF-8.
 4.  Proveďte příspěvek HTTP na výše uvedenou adresu URL pro publikování s dávkou událostí odpovídajících této oblasti. Například:
@@ -153,12 +153,12 @@ Po odeslání do koncového bodu partnerNamespace obdržíte odpověď. Odpově�
 | Nesprávný koncový bod                 | 404 Nenalezeno         |
 | Pole nebo událost překračuje omezení velikosti. | datová část 413 je moc velká. |
 
-## <a name="reference"></a>Referenční informace
+## <a name="reference"></a>Odkaz
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [Šablona ARM](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
   * [Schéma šablony ARM](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [Rozhraní REST API](https://docs.microsoft.com/rest/api/eventgrid/partnernamespaces)
+  * [Rozhraní REST API](https://docs.microsoft.com/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
   * [Rozšíření CLI](https://docs.microsoft.com/cli/azure/ext/eventgrid/?view=azure-cli-latest)
 
 ### <a name="sdks"></a>Sady SDK

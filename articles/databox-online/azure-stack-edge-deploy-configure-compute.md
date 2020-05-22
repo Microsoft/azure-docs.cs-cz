@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 29967c5f8d452fbf66d9a121357415176139b39d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ab9c93dc029498c70a828f38f297c1e02dcb29ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570668"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774095"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge"></a>Kurz: transformace dat pomocí Azure Stack Edge
 
@@ -22,7 +22,7 @@ V tomto kurzu se dozvíte, jak na zařízení Azure Stack Edge nakonfigurovat v�
 
 Dokončení této procedury může trvat přibližně 10 až 15 minut.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Konfigurace COMPUTE
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat výpočetní výkon na Azure Stack hraničních zař
     |Pole  |Hodnota  |
     |---------|---------|
     |IoT Hub     | Vyberte z **nových** nebo **existujících**. <br> Ve výchozím nastavení se k vytvoření prostředku IoT používá standardní vrstva (S1). Pokud chcete použít prostředek IoT úrovně Free, vytvořte ho a pak vyberte existující prostředek. <br> V každém případě IoT Hub prostředek používá stejné předplatné a skupinu prostředků, kterou používá prostředek Azure Stack Edge.     |
-    |Název     |Zadejte název prostředku IoT Hub.         |
+    |Name     |Zadejte název prostředku IoT Hub.         |
 
     ![Začínáme se službou COMPUTE](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
 
@@ -136,11 +136,11 @@ Pokud chcete ověřit, že je modul spuštěný, udělejte toto:
 
     ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute/verify-data-1.png)
  
-1.    V Průzkumníku souborů se připojte ke sdíleným složkám Edge i k okrajům, které jste vytvořili dříve.
+1. V Průzkumníku souborů se připojte ke sdíleným složkám Edge i k okrajům, které jste vytvořili dříve.
 
     ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute/verify-data-2.png) 
  
-1.    Přidejte data do místní sdílené složky.
+1. Přidejte data do místní sdílené složky.
 
     ![Ověření transformace dat](./media/azure-stack-edge-deploy-configure-compute/verify-data-3.png) 
  

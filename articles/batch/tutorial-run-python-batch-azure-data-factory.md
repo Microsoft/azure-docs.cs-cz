@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
-ms.openlocfilehash: 49f675a56247433ce92763a69045fb214c7c37dc
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 433a652ffa3fa3ae5a570fac6160ef8a04ee11c8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723064"
+ms.locfileid: "83773181"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Kurz: spouštění skriptů Pythonu pomocí Azure Data Factory pomocí Azure Batch
 
@@ -34,6 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Nainstalovaná distribuce [Pythonu](https://www.python.org/downloads/) pro místní testování.
 * Balíček [Azure](https://pypi.org/project/azure/) `pip` .
+* [Sada dat Iris. csv](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
 * Účet Azure Batch a propojený účet Azure Storage. Další informace o tom, jak vytvořit a propojit účty Batch s účty úložiště, najdete v tématu [Vytvoření účtu Batch](quick-create-portal.md#create-a-batch-account) .
 * Účet Azure Data Factory. Další informace o tom, jak vytvořit datovou továrnu pomocí Azure Portal, najdete v tématu [Vytvoření datové továrny](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) .
 * [Batch Explorer](https://azure.github.io/BatchExplorer/).
@@ -66,7 +67,7 @@ Tady vytvoříte kontejnery objektů blob, které budou ukládat vstupní a výs
 1. Přihlaste se k Průzkumník služby Storage pomocí svých přihlašovacích údajů Azure.
 1. Pomocí účtu úložiště propojeného s účtem Batch vytvořte dva kontejnery objektů BLOB (jeden pro vstupní soubory, jeden pro výstupní soubory) podle kroků v části [vytvoření kontejneru objektů BLOB](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container).
     * V tomto příkladu budeme volat náš vstupní kontejner `input` a náš výstupní kontejner `output` .
-1. Nahrajte `main.py` a `iris.csv` do svého vstupního kontejneru `input` pomocí Průzkumník služby Storage podle kroků v části [Správa objektů BLOB v kontejneru objektů BLOB](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) .
+1. Nahrajte `main.py` a [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) do svého vstupního kontejneru `input` pomocí Průzkumník služby Storage podle kroků v části [Správa objektů BLOB v kontejneru objektů BLOB](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) .
 
 
 ## <a name="develop-a-script-in-python"></a>Vývoj skriptu v Pythonu

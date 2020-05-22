@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 28f57c5657ce2f8537a654a7f67ed4481fab2c91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882688"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771736"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Volání webového rozhraní API z mobilní aplikace
 
@@ -35,7 +35,7 @@ MSAL poskytuje následující hodnoty:
 - `TenantId`je identifikátor tenanta, ke kterému se uživatel přihlásil. Pro uživatele typu Host ve službě Azure Active Directory (Azure AD) B2B tato hodnota identifikuje tenanta, ke kterému se uživatel přihlásil. Hodnota neidentifikuje svého domovského tenanta uživatele.  
 - `Scopes`označuje rozsahy, které byly uděleny s tokenem. Udělené obory můžou být podmnožinou požadovaných oborů.
 
-MSAL také poskytuje abstrakci pro `Account` hodnotu. `Account` Hodnota představuje účet přihlášeného aktuálního uživatele:
+MSAL také poskytuje abstrakci pro `Account` hodnotu. `Account`Hodnota představuje účet přihlášeného aktuálního uživatele:
 
 - `HomeAccountIdentifier`Identifikuje svého domovského tenanta uživatele.
 - `UserName`je preferované uživatelské jméno uživatele. Tato hodnota může být pro Azure AD B2C uživatele prázdná.
@@ -125,7 +125,7 @@ Pokud potřebujete volat stejné rozhraní API několikrát nebo pokud potřebuj
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Volání několika rozhraní API pomocí přírůstkového souhlasu a podmíněného přístupu
 
-Pokud pro stejného uživatele potřebujete zavolat několik rozhraní API, můžete po získání tokenu pro uživatele vyhnout se opakovanému vyžádání přihlašovacích údajů uživatelem, a to tak, že se `AcquireTokenSilent` následně zavolají k získání tokenu:
+Pokud pro stejného uživatele potřebujete zavolat několik rozhraní API, můžete po získání tokenu pro uživatele vyhnout se opakovanému vyžádání přihlašovacích údajů uživatelem, a to tak, že se následně zavolají `AcquireTokenSilent` k získání tokenu:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -138,7 +138,7 @@ result = await app.AcquireTokenSilent("scopeApi2")
 Interakce je povinná v těchto případech:
 
 - Uživatel souhlasil s prvním rozhraním API, ale teď musí souhlasit s více obory. V takovém případě použijete přírůstkový souhlas.
-- První rozhraní API nevyžaduje vícenásobné ověřování, ale další rozhraní API.
+- První rozhraní API nevyžaduje [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md), ale další rozhraní API.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

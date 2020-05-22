@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 3947bf0dcad598bf52a742c790a2f99538d6facb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116371"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770955"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování a ověřování jsou k dispozici v Azure Active Directory?
 
@@ -31,19 +31,20 @@ Uživatel ve službě Azure AD se může rozhodnout ověřit pomocí jedné z n�
 
 Řada účtů ve službě Azure AD je povolená pro Samoobslužné resetování hesla (SSPR) nebo Azure Multi-Factor Authentication. Mezi tyto funkce patří další metody ověřování, například telefonní hovor nebo bezpečnostní otázky. Doporučuje se, abyste uživatelům vyžadovali registraci více metod ověřování. Když pro uživatele není k dispozici jedna metoda, můžou se rozhodnout ověřit jinou metodu.
 
-Následující tabulka popisuje, jaké metody ověřování a ověřování jsou k dispozici pro různé scénáře:
+Následující tabulka popisuje, jaké metody jsou k dispozici pro primární nebo sekundární ověřování:
 
-| Metoda | Použít při přihlášení | Použít při ověřování |
+| Metoda | Primární ověření | Sekundární ověřování |
 | --- | --- | --- |
-| [Heslo](#password) | Ano | MFA a SSPR |
+| [Heslo](#password) | Ano | |
 | [Aplikace Microsoft Authenticator](#microsoft-authenticator-app) | Ano (Preview) | MFA a SSPR |
 | [FIDO2 klíče zabezpečení (Preview)](#fido2-security-keys) | Ano | Jenom MFA |
-| [Hardwarové tokeny OATH (Preview)](#oath-hardware-tokens) | Ano | SSPR a MFA |
+| [Tokeny softwaru OATH](#oath-software-tokens) | No | VÍCEFAKTOROVÉHO |
+| [Hardwarové tokeny OATH (Preview)](#oath-hardware-tokens-preview) | Ano | VÍCEFAKTOROVÉHO |
 | [SMS](#phone-options) | Ano (Preview) | MFA a SSPR |
-| [Hlasový hovor](#phone-options) | Ne | MFA a SSPR |
-| [Bezpečnostní otázky](#security-questions) | Ne | Jenom SSPR |
-| [E-mailová adresa](#email-address) | Ne | Jenom SSPR |
-| [Hesla aplikací](#app-passwords) | Ne | Vícefaktorové ověřování pouze v určitých případech |
+| [Hlasový hovor](#phone-options) | No | MFA a SSPR |
+| [Bezpečnostní otázky](#security-questions) | No | Jenom SSPR |
+| [E-mailová adresa](#email-address) | No | Jenom SSPR |
+| [Hesla aplikací](#app-passwords) | No | Vícefaktorové ověřování pouze v určitých případech |
 
 Tento článek popisuje tyto různé metody ověřování a ověření dostupné ve službě Azure AD a veškerá konkrétní omezení nebo omezení.
 
@@ -73,7 +74,7 @@ Ověřovací aplikace může pomáhat zabránit neoprávněnému přístupu k ú
 ![Snímek obrazovky s ukázkovým dotazem na přihlašovací aplikaci webového prohlížeče pro dokončení procesu přihlašování](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> Pokud má vaše organizace zaměstnanci pracující v nebo na cestách na Čínu, *oznámení prostřednictvím metody mobilní aplikace* na zařízeních s Androidem nefungují v této zemi. Pro tyto uživatele by měly být k dispozici alternativní metody ověřování.
+> Pokud má vaše organizace zaměstnanci pracující v nebo na cestách na Čínu, *oznámení prostřednictvím metody mobilní aplikace* na zařízeních s Androidem nefunguje v dané zemi nebo oblasti. Pro tyto uživatele by měly být k dispozici alternativní metody ověřování.
 
 ### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
 
@@ -96,13 +97,27 @@ Uživatelé můžou zaregistrovat a pak vybrat FIDO2 klíč zabezpečení v při
 
 Klíče zabezpečení FIDO2 ve službě Azure AD jsou momentálně ve verzi Preview. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-## <a name="oath-hardware-tokens"></a>Hardwarové tokeny OATH
+## <a name="oath-tokens"></a>Tokeny OATH
 
-OATH je otevřený standard, který určuje, jak jsou generovány kódy jednorázového hesla (jednorázového hesla). Azure AD podporuje použití tokenů SHA-1 typu OATH-TOTP s odrůdou 30 sekund nebo 60. Zákazníci si můžou tyto tokeny koupit od dodavatele dle svého výběru.
+OATH TOTP (jednorázové heslo založené na čase) je otevřený standard, který určuje, jak se generují kódy jednorázového hesla (jednorázového hesla). TOTP OATH lze implementovat pomocí softwaru nebo hardwaru pro generování kódů. Azure AD nepodporuje HOTP OATH, což je jiný standard pro generování kódu.
 
-Tajné klíče jsou omezené na 128 znaků, které nemusí být kompatibilní se všemi tokeny. Tajný klíč může obsahovat pouze znaky *a-z* nebo *a-z* a číslice *1-7*a musí být kódovány v *Base32*.
+### <a name="oath-software-tokens"></a>Tokeny softwaru OATH
 
-Hardwarové tokeny OATH ve službě Azure AD jsou momentálně ve verzi Preview. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
+Tokeny OATH softwaru jsou obvykle aplikace, jako je Microsoft Authenticator aplikace a další ověřovací aplikace. Azure AD vygeneruje tajný klíč neboli počáteční hodnotu, která je vstupem do aplikace a používá se ke generování každého jednorázového hesla.
+
+Aplikace ověřovatele automaticky generuje kódy při nastavení nabízených oznámení, takže uživatel bude mít zálohu, i když jejich zařízení nemá připojení. Je také možné použít aplikace třetích stran, které používají OATH TOTP k vytváření kódů.
+
+Některé hardwarové tokeny OATH TOTP jsou programovatelné, což znamená, že nepocházejí s tajným klíčem nebo předinstalovaným předplatným. Tyto programovatelné hardwarové tokeny je možné nastavit pomocí tajného klíče nebo počáteční hodnoty získané z toku nastavení softwarového tokenu. Zákazníci si můžou tyto tokeny koupit od dodavatele podle svého výběru a použít tajný klíč nebo osivo v procesu instalace jeho dodavatele.
+
+### <a name="oath-hardware-tokens-preview"></a>Hardwarové tokeny OATH (Preview)
+
+Azure AD podporuje použití tokenů SHA-1 TOTP OATH, které aktualizují kódy každých 30 nebo 60 sekund. Zákazníci si můžou tyto tokeny koupit od dodavatele dle svého výběru.
+
+Tokeny OATH TOTP jsou obvykle dodávány s tajným klíčem neboli osivem předem naprogramované v tokenu. Tyto klíče musí být zadané ve službě Azure AD, jak je popsáno v následujících krocích. Tajné klíče jsou omezené na 128 znaků, které nemusí být kompatibilní se všemi tokeny. Tajný klíč může obsahovat pouze znaky *a-z* nebo *a-z* a číslice *1-7*a musí být kódovány v *Base32*.
+
+Programovatelné hardwarové tokeny OATH TOTP, které je možné znovu vyhodnotit, můžete nastavit pomocí Azure AD v toku nastavení softwarového tokenu.
+
+Hardwarové tokeny OATH jsou podporovány v rámci verze Public Preview. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.
 
 ![Nahrávají se tokeny OATH do okna tokeny OATH MFA.](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
@@ -116,7 +131,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 > [!NOTE]
 > Ujistěte se, že jste do souboru CSV zahrnuli řádek záhlaví.
 
-Po správném formátování jako souboru CSV se správce může přihlásit k Azure Portal, přejít na **Azure Active Directory**  >  **Security**  >  **MFA**  >  **tokeny Oath**Azure Active Directory zabezpečení MFA a nahrát výsledný soubor CSV.
+Po správném formátování jako souboru CSV se správce může přihlásit k Azure Portal, přejít k **Azure Active Directory > tokeny Oath zabezpečení > MFA >** a nahrát výsledný soubor CSV.
 
 V závislosti na velikosti souboru CSV může zpracování trvat několik minut. Kliknutím na tlačítko **aktualizovat** zobrazíte aktuální stav. Pokud v souboru dojde k chybám, můžete si stáhnout soubor CSV se seznamem případných chyb, které můžete vyřešit. Názvy polí ve staženém souboru CSV se liší od nahrané verze.
 
@@ -133,7 +148,7 @@ Uživatelé se také můžou sami ověřit pomocí mobilního telefonu nebo tele
 Aby telefonní čísla fungovala správně, musí být ve formátu *+ CountryCode PhoneNumber*, například *+ 1 4251234567*.
 
 > [!NOTE]
-> Musí existovat mezera mezi kódem země a telefonním číslem.
+> Musí existovat mezera mezi kódem země/oblasti a telefonním číslem.
 >
 > Resetování hesla nepodporuje telefonní linky. I ve formátu *+ 1 4251234567X12345* jsou rozšíření odebrána před tím, než je volání umístěno.
 
@@ -167,7 +182,7 @@ Pokud máte problémy s ověřováním pomocí telefonu pro Azure AD, přečtět
 
 * Blokované ID volajícího na jednom zařízení.
    * Zkontrolujte všechna blokovaná čísla nakonfigurovaná na zařízení.
-* Chybné telefonní číslo nebo nesprávný kód země nebo nejasnost mezi osobním telefonním číslem a pracovním telefonním číslem.
+* Chybné telefonní číslo nebo nesprávné číslo země/oblasti nebo nejasnost mezi osobním telefonním číslem a pracovním telefonním číslem.
    * Řešení potíží s uživatelským objektem a nakonfigurovanými metodami ověřování. Ujistěte se, že jsou registrována správná telefonní čísla.
 * Byl zadán nesprávný kód PIN.
    * Potvrďte, že uživatel použil pro svůj účet správný PIN kód.

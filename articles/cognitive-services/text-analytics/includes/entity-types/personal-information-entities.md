@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57be24142a8504347f420e5780e9621cd2eac91d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77086907"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778153"
 ---
 ## <a name="personal-information-entity-types"></a>Typy entit osobních informací:
 
@@ -25,9 +25,9 @@ Jazyky:
 
 | Název podtypu | Popis                                               | K dispozici počínaje verzí modelu |
 |--------------|-----------------------------------------------------------|----------------------------------------|
-| –          | Rozpoznané názvy, například `Bill Gates``Marie Curie` | `2020-02-01`                           |
+| –          | Rozpoznané názvy `Bill Gates` , například`Marie Curie` | `2020-02-01`                           |
 
-### <a name="organization"></a>Organizace  
+### <a name="organization"></a>Má organizace  
 
 Rozpoznávání organizací, firem, organizací, společností, klubů a dalších skupin lidí
 
@@ -37,7 +37,7 @@ Jazyky:
 
 | Název podtypu | Popis                                                                                       | K dispozici počínaje verzí modelu|
 |--------------|---------------------------------------------------------------------------------------------------|--------------|
-| –          | organizace, například `Microsoft` `NASA`,`National Oceanic and Atmospheric Administration` | `2020-02-01` |
+| –          | organizace, například `Microsoft` `NASA` ,`National Oceanic and Atmospheric Administration` | `2020-02-01` |
 
 ### <a name="phone-number"></a>Telefonní číslo
 
@@ -63,7 +63,7 @@ Jazyky:
 |--------------|--------------------------------------------------|----------------------------------------|
 | –          | E-mailová adresa, například`support@contoso.com` | `2020-02-01`                           |
 
-### <a name="url"></a>zprostředkovatele identity
+### <a name="url"></a>URL
 
 Internetové adresy URL.
 
@@ -127,7 +127,7 @@ Jazyky:
 
 Identifikovatelné informace Azure včetně ověřovacích informací a připojovacích řetězců. 
 
-* K dispozici počínaje verzí `2019-10-01`modelu.
+* K dispozici počínaje verzí modelu `2019-10-01` .
 
 Jazyky:
 
@@ -149,7 +149,7 @@ Jazyky:
 
 ### <a name="identification"></a>Identifikace
 
-* K dispozici počínaje verzí `2019-10-01`modelu.
+* K dispozici počínaje verzí modelu `2019-10-01` .
 
 Jazyky:
 
@@ -164,9 +164,9 @@ Jazyky:
 | Platební karta                | Čísla platebních karet                                                       |
 | Kód IBAN                  | Kódy IBAN pro informace o platebních pokynech.                            |
 
-#### <a name="government-and-country-specific-identification"></a>Identifikace specifická pro státní správu a zemi
+#### <a name="government-and-countryregion-specific-identification"></a>Identifikace specifická pro státní správu a zemi/oblast
 
-Níže uvedené entity jsou seskupené podle země:
+Níže uvedené entity jsou seskupené podle země nebo oblasti:
 
 Argentina
 * Číslo národní identity (DNI)
@@ -322,7 +322,7 @@ Spojené království
 * Národní pojišťovací číslo (NINO)
 * Národní číslo Health Service (NHS)
 
-Spojené státy
+USA
 * Rodné číslo (sociální zabezpečení)
 * ID licence ovladače
 * ID služby Passport

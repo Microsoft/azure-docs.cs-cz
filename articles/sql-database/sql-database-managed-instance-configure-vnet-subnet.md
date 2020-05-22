@@ -3,7 +3,7 @@ title: Konfigurace existující virtuální sítě pro spravovanou instanci
 description: Tento článek popisuje, jak nakonfigurovat existující virtuální síť a podsíť, kde můžete nasadit Azure SQL Database spravovanou instanci.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,16 +11,16 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 50b832baa9253f47b5f10980ae1764c9425ed4d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e678edad2c59205e76598991b36d296404a3163
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476945"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773626"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurace stávající virtuální sítě pro spravovanou instanci Azure SQL Database
 
-Azure SQL Database spravovaná instance musí být nasazená v rámci [virtuální sítě](../virtual-network/virtual-networks-overview.md) Azure a podsíť vyhrazená jenom pro spravované instance. Existující virtuální síť a podsíť můžete použít, pokud je nakonfigurovaná podle [požadavků virtuální sítě spravované instance](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+Spravovanou instanci Azure SQL Database je potřeba nasadit v rámci [virtuální sítě](../virtual-network/virtual-networks-overview.md) Azure a podsítě vyhrazené pouze pro spravované instance. Můžete použít existující virtuální síť a podsíť, pokud jsou nakonfigurované v souladu s [požadavky na virtuální síť spravované instance](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
 Pokud se vám na vás vztahuje jeden z následujících případů, můžete ověřit a upravit síť pomocí skriptu, který je vysvětlen v tomto článku:
 
@@ -35,7 +35,7 @@ Pokud se vám na vás vztahuje jeden z následujících případů, můžete ov�
 
 ## <a name="validate-and-modify-an-existing-virtual-network"></a>Ověření a úprava existující virtuální sítě
 
-Pokud chcete vytvořit spravovanou instanci v rámci existující podsítě, doporučujeme pro přípravu podsítě použít následující skript prostředí PowerShell:
+Pokud chcete vytvořit spravovanou instanci v existující podsíti, doporučujeme danou podsíť připravit pomocí následujícího skriptu PowerShellu:
 
 ```powershell
 $scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/delegate-subnet'
@@ -50,7 +50,7 @@ $parameters = @{
 Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/delegateSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
 
-Skript připraví podsíť ve třech krocích:
+Tento skript připraví podsíť ve třech krocích:
 
 1. Ověřit: ověřuje vybranou virtuální síť a podsíť pro požadavky na síť spravované instance.
 2. Potvrdit: zobrazuje uživatele sady změn, které je třeba provést pro přípravu podsítě pro nasazení spravované instance. Také si vyžádá souhlas.

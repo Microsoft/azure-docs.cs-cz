@@ -10,14 +10,14 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: a8136f8fe6431187884a180925234d6aab36983f
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f880f189b19b4909268b6e0b24654fc4682ab7c8
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725512"
+ms.locfileid: "83759179"
 ---
-# <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem pro klasifikaci imagí ve více třídách 
+# <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem (Preview) pro klasifikaci imagí ve více třídách 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto kurzu se dozvíte, jak spravovat proces označování (označované také jako označování) obrázků, které se použijí jako data pro sestavování modelů strojového učení. Popisky dat v Azure Machine Learning jsou ve verzi Public Preview.

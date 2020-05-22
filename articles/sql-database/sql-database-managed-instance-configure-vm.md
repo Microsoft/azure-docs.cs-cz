@@ -3,7 +3,7 @@ title: Připojit klientský virtuální počítač – spravovaná instance
 description: Připojte se k Azure SQL Database spravované instanci pomocí SQL Server Management Studio z virtuálního počítače Azure.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 8b5dce0b43fac7cfd0e974f26451338ca1541f8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2787756da048de0a4354d88feb8445c03fb3ef74
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80528422"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773671"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Rychlý Start: konfigurace virtuálního počítače Azure pro připojení k spravované instanci Azure SQL Database
 
@@ -28,7 +28,7 @@ Tento rychlý Start používá prostředky vytvořené v části [Vytvoření sp
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>Vytvoří novou podsíť ve virtuální síti spravované instance.
 
@@ -48,10 +48,10 @@ Následující kroky vytvoří novou podsíť ve virtuální síti spravované i
    | ---------------- | ----------------- | ----------- |
    | **Název** | Libovolné platné jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
    | **Rozsah adres (blok CIDR)** | Platný rozsah | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Skupina zabezpečení sítě** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Tabulka směrování** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Skupina zabezpečení sítě** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Tabulka směrování** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
    | **Koncové body služby** | Vybráno: 0 | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Delegování podsítě** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Delegování podsítě** | Žádné | Výchozí hodnota je pro tento rychlý Start vhodná.|
 
    ![Nová podsíť spravované instance pro virtuální počítač klienta](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
 
@@ -76,7 +76,7 @@ Nejjednodušší způsob, jak vytvořit klientský virtuální počítač se vš
    | Nastavení| Navrhovaná hodnota | Popis |
    | ---------------- | ----------------- | ----------- |
    | **Předplatné** | Platné předplatné | Musí se jednat o předplatné, ve kterém máte oprávnění k vytváření nových prostředků. |
-   | **Skupina prostředků** |Skupina prostředků, kterou jste zadali v rychlém startu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md) .|Tato skupina prostředků musí být ta, ve které virtuální síť existuje.|
+   | **Resource Group** |Skupina prostředků, kterou jste zadali v rychlém startu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md) .|Tato skupina prostředků musí být ta, ve které virtuální síť existuje.|
    | **Umístění** | Umístění pro skupinu prostředků | Tato hodnota se naplní na základě vybrané skupiny prostředků. |
    | **Název virtuálního počítače**  | Libovolné platné jméno | Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
    |**Uživatelské jméno správce**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). Nepoužívejte "serveradmin", protože to je vyhrazená role na úrovni serveru.<br>Toto uživatelské jméno použijete při každém [připojení k virtuálnímu počítači](#connect-to-virtual-machine).|
@@ -107,7 +107,7 @@ Následující kroky ukazují, jak se k nově vytvořenému virtuálnímu počí
 
     ![Virtuální počítač](./media/sql-database-managed-instance-configure-vm/vm.png)  
 
-2. Vyberte **Connect** (Připojit).
+2. Vyberte **Připojit**.
 
    Zobrazí se formulář soubor protokol RDP (Remote Desktop Protocol) (soubor. RDP) s veřejnou IP adresou a číslem portu pro virtuální počítač.
 

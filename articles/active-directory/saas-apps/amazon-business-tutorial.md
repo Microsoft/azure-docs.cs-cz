@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7ac085beaa85a7ddf3a6c3bfc61820e8e5a63ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8218b3dbe09e5ce7e6c28e1084b26c6eec4a16ca
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68496907"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772986"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Kurz: integrace Amazon Business s Azure Active Directory
 
@@ -87,24 +87,22 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     
        | | |
        |-|-|
-       | `https://www.amazon.com`|
-       | `https://www.amazon.co.jp`|
-       | `https://www.amazon.de`|
+       | `https://www.amazon.com`| Severní Amerika |
+       | `https://www.amazon.co.jp`| Východní Asie |
+       | `https://www.amazon.de`| Evropa |
 
     1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí jednoho z následujících vzorů:
     
        | | |
        |-|-|
-       | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
-       | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
-       | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`|
+       | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Severní Amerika |
+       | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Východní Asie |
+       | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Evropa |
 
        > [!NOTE]
-       > Hodnota adresy URL odpovědi není reálné číslo. Aktualizujte tuto hodnotu skutečnou adresou URL odpovědi. `<idpid>` Hodnotu získáte z oddílu Amazon Business SSO Configuration, který je vysvětlen dále v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+       > Hodnota adresy URL odpovědi není reálné číslo. Aktualizujte tuto hodnotu skutečnou adresou URL odpovědi. `<idpid>`Hodnotu získáte z oddílu Amazon Business SSO Configuration, který je vysvětlen dále v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
-
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://www.amazon.com/`
+1. Pokud chcete nakonfigurovat aplikaci v režimu **SP** iniciované, budete muset do **přihlašovací adresy URL** v části **nastavit další adresy** URL přidat úplnou adresu URL poskytnutou v konfiguraci Amazon Business.
 
 1. Následující snímek obrazovky ukazuje seznam výchozích atributů. Upravte atributy kliknutím na ikonu **Upravit** v části **atributy uživatele & deklarace identity** .
 
@@ -153,6 +151,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. V průvodci **nastavením jednotného přihlašování** vyberte poskytovatele podle požadavků vaší organizace a klikněte na **Další**.
 
     ![Výchozí skupina](media/amazon-business-tutorial/default-group1.png)
+    
+    > [!NOTE]
+    > I když je uvedená možnost Microsoft ADFS, nebude fungovat s přihlašováním pomocí Azure AD.
 
 1. V Průvodci vytvořením **nového uživatelského účtu** vyberte **výchozí skupinu** a pak v závislosti na roli uživatele ve vaší organizaci vyberte **výchozí nákupní roli** a klikněte na **Další**.
 
@@ -197,7 +198,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Nakonec v části **Podrobnosti připojení SSO** se **stav** zobrazuje jako **aktivní**.
 
     ![Připojení](media/amazon-business-tutorial/sso-connection5.png)
-
+    
+    > [!NOTE]
+    > Pokud chcete nakonfigurovat aplikaci v režimu **SP** iniciované, proveďte následující krok a vložte adresu URL pro přihlášení z obrazovky výše v textovém poli **Adresa URL pro přihlášení** v části **nastavit další adresy URL** v Azure Portal. Použijte tento formát:
+    >
+    > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
+    
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
@@ -209,7 +215,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 

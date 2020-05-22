@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3e63063b3ea4e7fba3997ddd645aa59fe857488
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252517"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758567"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Připojení dat z protokolů Office 365
 
@@ -36,6 +36,9 @@ Protokoly auditu ze [sady Office 365](https://docs.microsoft.com/office365/admin
 - Váš tenant musí mít povolený jednotný audit. Klienti s licencemi Office 365 E3 nebo E5 mají ve výchozím nastavení povolené jednotné auditování. <br>Pokud váš tenant nemá jednu z těchto licencí, je nutné ve svém tenantovi povolit jednotné auditování pomocí jedné z těchto metod:
     - [Pomocí rutiny Set-AdminAuditLogConfig](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) a povolte parametr "UnifiedAuditLogIngestionEnabled").
     - [Pomocí uživatelského rozhraní centra dodržování předpisů & Security](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
+   
+   > [!NOTE]
+   > V současné době datový konektor O365 zachytí pouze Exchange a SharePoint aktivity, jak je uvedeno na stránce konektoru v části datové typy. Doporučujeme, abyste [v tomto článku v případě, že budete vyžadovat, aby týmy ověřovaly data a chránili týmy pomocí Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761). 
 
 ## <a name="connect-to-office-365"></a>Připojení k Office 365
 

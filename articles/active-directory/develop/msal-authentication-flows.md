@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/30/2020
+ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: db9937d87692a1221d72bd27cfd653d803b9a1c6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: ce81af90baeeda519f1b56d1e10a46923ebd22c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883239"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772127"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -49,7 +49,7 @@ V závislosti na tom, jak je váš klient sestavený, může použít jeden (neb
 |[Tok kódu zařízení](v2-oauth2-device-code.md) | | x| x| x| |
 |[Přihlašovací údaje klienta](v2-oauth2-client-creds-grant-flow.md) | | | x (jenom aplikace)| | |
  
-Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment`).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nejsou `groups` ani `wids` deklarace identity.
+Tokeny vydané prostřednictvím implicitního režimu mají omezení délky, protože se předává zpátky do prohlížeče přes adresu URL (kde `response_mode` je `query` nebo `fragment` ).  Některé prohlížeče mají omezení velikosti adresy URL, kterou lze umístit do panelu prohlížeče, a selhání, pokud je příliš dlouhé.  Proto tyto tokeny nejsou `groups` ani `wids` deklarace identity.
 
 ## <a name="interactive"></a>Interaktivní
 
@@ -78,7 +78,7 @@ Tento tok ověřování neobsahuje scénáře aplikací, které používají roz
 
 MSAL podporuje [udělení autorizačního kódu OAuth 2](v2-oauth2-auth-code-flow.md). Tento grant se dá použít v aplikacích, které jsou nainstalované na zařízení, aby získal přístup k chráněným prostředkům, například k webovým rozhraním API. Díky tomu můžete přidat přihlašování a přístup k rozhraní API pro mobilní a desktopové aplikace. 
 
-Když se uživatelé přihlásí k webovým aplikacím (websites), obdrží webová aplikace autorizační kód.  Autorizační kód se považuje za získání tokenu pro volání webových rozhraní API. V ASP.NET a ASP.NET Core Web Apps jediným cílem `AcquireTokenByAuthorizationCode` je přidat token do mezipaměti tokenů. Token pak může aplikace použít (obvykle v řadičích, které pouze získají token pro rozhraní API pomocí `AcquireTokenSilent`).
+Když se uživatelé přihlásí k webovým aplikacím (websites), obdrží webová aplikace autorizační kód.  Autorizační kód se považuje za získání tokenu pro volání webových rozhraní API. V ASP.NET a ASP.NET Core Web Apps jediným cílem `AcquireTokenByAuthorizationCode` je přidat token do mezipaměti tokenů. Token pak může aplikace použít (obvykle v řadičích, které pouze získají token pro rozhraní API pomocí `AcquireTokenSilent` ).
 
 ![Diagram toku autorizačního kódu](media/msal-authentication-flows/authorization-code.png)
 
@@ -91,7 +91,7 @@ V předchozím diagramu aplikace:
 
 - Autorizační kód můžete použít jenom jednou pro uplatnění tokenu. Nepokoušejte se získat token několikrát se stejným autorizačním kódem (výslovně ho zakázal standardní specifikace protokolu). Pokud kód přiřadíte několikrát, nebo protože si nejste vědomi, že pro vás to architektura provede, zobrazí se následující chyba:`AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 
-- Pokud zapisujete ASP.NET nebo ASP.NET Core aplikaci, může to nastat, pokud neznáte rozhraní, pro které jste už tento autorizační kód nepovažovali. V tomto případě je třeba volat `context.HandleCodeRedemption()` metodu obslužné rutiny `AuthorizationCodeReceived` události.
+- Pokud zapisujete ASP.NET nebo ASP.NET Core aplikaci, může to nastat, pokud neznáte rozhraní, pro které jste už tento autorizační kód nepovažovali. V tomto případě je třeba volat `context.HandleCodeRedemption()` metodu `AuthorizationCodeReceived` obslužné rutiny události.
 
 - Nepoužívejte sdílení přístupového tokenu s ASP.NET, což by mohlo zabránit správnému vykonání přírůstkového souhlasu. Další informace najdete v tématu věnovaném [vydávání #693](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/693).
 
@@ -151,7 +151,7 @@ Pomocí toku kódu zařízení aplikace získá tokeny prostřednictvím procesu
 
 V předchozím schématu:
 
-1. Kdykoli se vyžaduje ověření uživatele, aplikace poskytne kód a vyzve uživatele k použití jiného zařízení (například smartphone připojeného k Internetu) k přechodu na adresu URL (například `https://microsoft.com/devicelogin`). Uživatel se pak vyzve k zadání kódu a pokračuje v běžném prostředí ověřování, včetně výzev k vyjádření souhlasu a vícefaktorového ověřování v případě potřeby.
+1. Kdykoli se vyžaduje ověření uživatele, aplikace poskytne kód a vyzve uživatele k použití jiného zařízení (například smartphone připojeného k Internetu) k přechodu na adresu URL (například `https://microsoft.com/devicelogin` ). Uživatel se pak vyzve k zadání kódu a pokračuje v běžném prostředí ověřování, včetně výzev k vyjádření souhlasu a [vícefaktorového ověřování](../authentication/concept-mfa-howitworks.md) v případě potřeby.
 
 2. Po úspěšném ověření obdrží aplikace příkazového řádku požadované tokeny prostřednictvím zpětného kanálu a použije je k provedení volání webového rozhraní API.
 
@@ -159,9 +159,9 @@ V předchozím schématu:
 
 - Tok kódu zařízení je k dispozici pouze pro veřejné klientské aplikace.
 - Autorita předaná při sestavování veřejné klientské aplikace musí být jedna z následujících:
-  - Tenant (z formuláře `https://login.microsoftonline.com/{tenant}/` , kde `{tenant}` je buď identifikátor GUID představující ID tenanta nebo doména přidružená k tenantovi).
-  - Pro všechny pracovní a školní účty (`https://login.microsoftonline.com/organizations/`).
-- Osobní účty Microsoft ještě nejsou podporované koncovým bodem Azure AD v 2.0 (nemůžete použít `/common` klienty `/consumers` ani).
+  - Tenant (z formuláře, `https://login.microsoftonline.com/{tenant}/` kde `{tenant}` je buď identifikátor GUID představující ID tenanta nebo doména přidružená k tenantovi).
+  - Pro všechny pracovní a školní účty ( `https://login.microsoftonline.com/organizations/` ).
+- Osobní účty Microsoft ještě nejsou podporované koncovým bodem Azure AD v 2.0 (nemůžete použít `/common` `/consumers` klienty ani).
 
 ## <a name="integrated-windows-authentication"></a>Integrované ověřování systému Windows
 
@@ -182,11 +182,11 @@ IWA je pro aplikace napsané pro .NET Framework, .NET Core a Univerzální platf
 
 IWA neobejde službu Multi-Factor Authentication. Pokud je nakonfigurováno Multi-Factor Authentication, může IWA selhat, pokud je vyžadována výzva služby Multi-Factor Authentication. Multi-Factor Authentication vyžaduje zásah uživatele.
 
-Neřídíte, kdy zprostředkovatel identity požaduje provedení dvojúrovňového ověřování. Správce tenanta. Při přihlášení z jiné země se obvykle vyžaduje dvojúrovňové ověřování, když nejste připojení přes síť VPN k podnikové síti a někdy i když jste připojení přes VPN. Azure AD používá AI k nepřetržitému učení, jestli je potřeba dvojúrovňové ověřování. Pokud IWA neproběhne úspěšně, měli byste se vrátit na [interaktivní uživatelské výzvy] (#interactive).
+Neřídíte, kdy zprostředkovatel identity požaduje provedení dvojúrovňového ověřování. Správce tenanta. Při přihlášení z jiné země nebo oblasti se obvykle vyžaduje dvojúrovňové ověřování, když nejste připojení přes síť VPN k podnikové síti a někdy i když jste připojení přes VPN. Azure AD používá AI k nepřetržitému učení, jestli je potřeba dvojúrovňové ověřování. Pokud IWA neproběhne úspěšně, měli byste se vrátit na [interaktivní uživatelské výzvy] (#interactive).
 
 Autorita předaná při sestavování veřejné klientské aplikace musí být jedna z následujících:
-- Tenant (z formuláře `https://login.microsoftonline.com/{tenant}/` , kde `tenant` je buď identifikátor GUID představující ID tenanta nebo doména přidružená k tenantovi).
-- Pro všechny pracovní a školní účty (`https://login.microsoftonline.com/organizations/`). Osobní účty Microsoft nejsou podporované (nemůžete použít `/common` ani `/consumers` tenanta).
+- Tenant (z formuláře, `https://login.microsoftonline.com/{tenant}/` kde `tenant` je buď identifikátor GUID představující ID tenanta nebo doména přidružená k tenantovi).
+- Pro všechny pracovní a školní účty ( `https://login.microsoftonline.com/organizations/` ). Osobní účty Microsoft nejsou podporované (nemůžete použít `/common` ani `/consumers` tenanta).
 
 Vzhledem k tomu, že IWA je tichý tok, musí být jedna z následujících podmínek:
 - Uživatel vaší aplikace musí mít dřív souhlas s používáním aplikace. 

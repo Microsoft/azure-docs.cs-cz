@@ -1,5 +1,6 @@
 ---
 title: Microsoft Identity Platform a OAuth 2.0 s tokem za chodu | Azure
+titleSuffix: Microsoft identity platform
 description: Tento článek popisuje, jak pomocí zpráv HTTP implementovat ověřování Service to Service over pomocí toku OAuth 2.0 za běhu.
 services: active-directory
 author: hpsin
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 1/3/2020
+ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9e1711bbb859d855d2490e49c21db5c654eca7f5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bcf971b56aa0dc343fdfaf34b329e49a82bba9a8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643371"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771516"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform a OAuth 2,0 s tokem za chodu
 
@@ -156,7 +157,7 @@ Následující příklad ukazuje odpověď na úspěch na žádost o přístupov
 
 ### <a name="error-response-example"></a>Příklad chybové odpovědi
 
-Koncový bod tokenu vrátí chybovou odpověď při pokusu o získání přístupového tokenu pro rozhraní API pro příjem dat, pokud pro podřízené rozhraní API existuje zásada podmíněného přístupu (například Multi-Factor Authentication) nastavená na něm. Služba střední vrstvy by tuto chybu měla obit klientské aplikaci, aby mohla klientská aplikace poskytnout interakci uživatele, aby splnila zásady podmíněného přístupu.
+Koncový bod tokenu vrátí chybovou odpověď při pokusu o získání přístupového tokenu pro rozhraní API pro příjem dat, pokud pro podřízené rozhraní API existuje zásada podmíněného přístupu (například [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)) nastavená na něm. Služba střední vrstvy by tuto chybu měla obit klientské aplikaci, aby mohla klientská aplikace poskytnout interakci uživatele, aby splnila zásady podmíněného přístupu.
 
 ```json
 {

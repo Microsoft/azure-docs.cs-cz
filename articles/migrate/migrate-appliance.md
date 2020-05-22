@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: bd5686b30b07c0f7fb8961f8d1f71035cb2688a4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656425"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758941"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -105,7 +105,7 @@ Zařízení Azure Migrate potřebuje připojení k Internetu.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Vytvořte Azure Active Directory (AD) aplikace pro zařízení, které budou komunikovat s Azure Migrate.
 management.azure.com | Vytvořte aplikace služby Azure AD, aby zařízení komunikovalo se službou Azure Migrate.
 *.services.visualstudio.com | Nahrávat protokoly aplikací používané pro interní monitorování
-*.vault.azure.net | Správa tajných kódů v Azure Key Vault.
+*.vault.azure.net | Správa tajných kódů v Azure Key Vault. Poznámka: Zajistěte, aby k nim měli přístup počítače, ke kterým mají replikace.
 aka.ms/* | Povolí přístup k odkazům. Používá se k aktualizaci Azure Migrate zařízení.
 download.microsoft.com/download | Povolí stahování ze služby Stažení softwaru společnosti Microsoft.
 *.servicebus.windows.net | Komunikace mezi zařízením a službou Azure Migrate.
@@ -440,12 +440,12 @@ Chcete-li se vrátit do ovládacích panelů, postupujte takto:
 Pokud používáte starší verzi nějaké součásti, musíte službu odinstalovat a ručně aktualizovat na nejnovější verzi.
 
 1. Pokud chcete vyhledat nejnovější verze služby zařízení, [Stáhněte](https://aka.ms/latestapplianceservices) si soubor LatestComponents. JSON.
-2.  Po stažení otevřete soubor LatestComponents. JSON v programu Poznámkový blok.
+2.    Po stažení otevřete soubor LatestComponents. JSON v programu Poznámkový blok.
 3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Například:
 
     "Name": "ASRMigrationWebApp"; "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
-4.  Stáhněte si nejnovější verzi zastaralé služby pomocí odkazu ke stažení v souboru.
+4.    Stáhněte si nejnovější verzi zastaralé služby pomocí odkazu ke stažení v souboru.
 5. Po stažení spusťte následující příkaz v okně příkazového řádku správce, abyste ověřili integritu staženého souboru MSI.
 
     ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Příklad: C: \> certutil-HashFile C:\USERS\PUBLIC\DOWNLOADS\MICROSOFTAZUREAPPLIANCECONFIGURATIONMANAGER.msi MD5

@@ -3,12 +3,12 @@ title: Uspořádání prostředků pomocí skupin pro správu – zásady správ
 description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
 ms.date: 04/15/2020
 ms.topic: overview
-ms.openlocfilehash: cc60e4555f0fb2b920b8061fb044ce5dde990d38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381545"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773147"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -108,7 +108,7 @@ Vlastní podpora rolí RBAC pro skupiny pro správu je momentálně ve verzi Pre
 
 [Definování a vytvoření vlastní role](../../role-based-access-control/custom-roles.md) se nemění se zahrnutím skupin pro správu. Pomocí úplné cesty definujte skupinu pro správu **/providers/Microsoft.Management/managementgroups/{GroupID}**.
 
-Použijte ID skupiny pro správu, nikoli zobrazovaný název skupiny pro správu. Tato Obvyklá chyba je způsobená tím, že při vytváření skupiny pro správu jsou obě definovaná pole.
+Použijte ID skupiny pro správu, nikoli zobrazovaný název skupiny pro správu. K této běžné chybě dochází, protože při vytváření skupiny pro správu jsou obě pole definovaná vlastním polem.
 
 ```json
 ...
@@ -163,13 +163,14 @@ Tento scénář můžete vyřešit několika různými možnostmi:
 
 Existují určitá omezení, která existují při použití vlastních rolí ve skupinách pro správu. 
 
- - V oborech přiřazení nové role můžete definovat jenom jednu skupinu pro správu. Toto omezení je zavedeno, aby se snížil počet situací, kdy se odpojí definice rolí a přiřazení rolí. K tomu dojde, když je předplatné nebo skupina pro správu s přiřazením role přesunuta na jiný nadřazený prvek, který nemá definici role.  
- - Akce roviny dat RBAC nemůžou být definované ve vlastních rolích skupiny pro správu. Toto omezení je nastavené tak, že dochází k potížím s latencí s aktualizacemi poskytovatelů prostředků datové roviny pomocí akcí RBAC. Tato latence se právě zpracovává a tyto akce budou z definice role zakázané, aby se snížila rizika.
- - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role. Pokud je v seznamu překlep nebo nesprávné ID skupiny pro správu, bude definice role stále vytvořena.  
+ - V oborech přiřazení nové role můžete definovat jenom jednu skupinu pro správu. Toto omezení je zavedeno, aby se snížil počet situací, kdy se odpojí definice rolí a přiřazení rolí. K této situaci dochází, když je předplatné nebo skupina pro správu s přiřazením role přesunuta na jinou nadřazenou položku, která nemá definici role.  
+ - Akce roviny dat RBAC nelze definovat ve vlastních rolích skupiny pro správu. Toto omezení je v platnosti, protože došlo k potížím s latencí s aktualizacemi poskytovatelů prostředků datové roviny pomocí akcí RBAC.
+   Tato latence se právě zpracovává a tyto akce budou z definice role zakázané, aby se snížila rizika.
+ - Azure Resource Manager neověřuje existenci skupiny pro správu v oboru přiřazení definice role. Pokud je v seznamu uvedeno překlep nebo nesprávné ID skupiny pro správu, bude definice role stále vytvořena.  
 
 ## <a name="moving-management-groups-and-subscriptions"></a>Přesun skupin pro správu a předplatných 
 
-Do skupiny pro správu nebo předplatného, které mají být podřízeny jiné skupině pro správu, je třeba vyhodnotit tři pravidla jako true.
+Chcete-li přesunout skupinu pro správu nebo odběr jako podřízenou položku jiné skupiny pro správu, je třeba vyhodnotit tři pravidla jako true.
 
 Pokud provádíte akci přesunutí, budete potřebovat: 
 

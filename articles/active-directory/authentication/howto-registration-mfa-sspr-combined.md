@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466b063253ee49ab58c2685f359b4bb8a4079532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb77c2bc1d229ae75da89caae3d8613b27e70b96
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639674"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771328"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Povolit registraci kombinovaných informací o zabezpečení v Azure Active Directory
 
@@ -31,13 +31,13 @@ Než začnete s novým prostředím, přečtěte si článek [Kombinovaná regis
 Pokud chcete povolit kombinovanou registraci, proveďte tyto kroky:
 
 1. Přihlaste se k Azure Portal jako správce uživatele nebo globální správce.
-2. Přejít na **Azure Active Directory** > **uživatelská nastavení** > **Spravovat nastavení funkce User Preview**.
-3. V části **Uživatelé můžou používat funkce verze Preview k registraci a správě informací o zabezpečení**. Vyberte možnost Povolit pro **vybranou** skupinu uživatelů nebo pro **všechny** uživatele.
+2. Přejít na **Azure Active Directory**  >  **uživatelská nastavení**  >  **Spravovat nastavení funkce User Preview**.
+3. V části **Uživatelé můžou použít kombinované prostředí pro registraci informací o zabezpečení**a vybrat možnost Povolit pro **vybranou** skupinu uživatelů nebo pro **všechny** uživatele.
 
    ![Povolit prostředí Preview pro všechny uživatele v kombinaci s informacemi o zabezpečení](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!NOTE]
-> Po povolení kombinované registrace si uživatelé, kteří si zaregistrují nebo potvrdí jejich telefonní číslo nebo mobilní aplikaci prostřednictvím nového prostředí, můžou použít pro Multi-Factor Authentication a SSPR, pokud jsou tyto metody povolené v zásadách Multi-Factor Authentication a SSPR. Pokud pak toto prostředí zakážete, `https://aka.ms/ssprsetup` budou se uživatelé, kteří na předchozí registrační stránce SSPR, napřed k přístupu k této stránce vyzváni, aby provedli službu Multi-Factor Authentication.
+> Po povolení kombinované registrace si uživatelé, kteří si zaregistrují nebo potvrdí jejich telefonní číslo nebo mobilní aplikaci prostřednictvím nového prostředí, můžou použít pro Multi-Factor Authentication a SSPR, pokud jsou tyto metody povolené v zásadách Multi-Factor Authentication a SSPR. Pokud pak toto prostředí zakážete, budou se uživatelé, kteří na předchozí registrační stránce SSPR, `https://aka.ms/ssprsetup` napřed k přístupu k této stránce vyzváni, aby provedli službu Multi-Factor Authentication.
 
 Pokud jste v Internet Exploreru nakonfigurovali seznam přiřazení lokality k zóně, musí být tyto lokality ve stejné zóně:
 
@@ -55,7 +55,7 @@ Další informace o vytváření důvěryhodných umístění v podmíněném p�
 
 Následující zásady platí pro všechny vybrané uživatele, kteří se pokoušejí zaregistrovat pomocí kombinovaného prostředí pro registraci, a zablokují přístup, pokud se nepřipojují z umístění označeného jako důvěryhodná síť.
 
-1. V **Azure Portal**přejděte na **Azure Active Directory** > **zabezpečení** > **podmíněný přístup** .
+1. V **Azure Portal**přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **podmíněný přístup** .
 1. Vybrat **+ Nová zásada**
 1. Zadejte název pro tuto zásadu, jako je například *Kombinovaná registrace informací o zabezpečení v důvěryhodných sítích*.
 1. V části **Přiřazení** vyberte **Uživatelé a skupiny**. Zvolte uživatele a skupiny, pro které chcete tuto zásadu použít, a potom vyberte **Hotovo**.
@@ -67,12 +67,12 @@ Následující zásady platí pro všechny vybrané uživatele, kteří se pokou
 
     ![Vytvoření zásady podmíněného přístupu pro řízení registrace bezpečnostních údajů](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. V části**umístění** **podmínek** > nakonfigurujte následující možnosti:
+1. V **Conditions**části  >  **umístění**podmínek nakonfigurujte následující možnosti:
    1. Konfigurovat **Ano**
    1. Zahrnout **libovolné umístění**
    1. Vyloučit **všechna důvěryhodná umístění**
 1. V okně *umístění* vyberte **Hotovo** a pak v okně *podmínky* vyberte **Hotovo** .
-1. V části **řízení** > přístupu**udělení**vyberte možnost **blokovat přístup**a pak **Vyberte**
+1. V části **řízení přístupu**  >  **udělení**vyberte možnost **blokovat přístup**a pak **Vyberte**
 1. Nastavte **Povolit zásadu** na **zapnuto** .
 1. Pokud chcete zásadu dokončit, vyberte **vytvořit** .
 

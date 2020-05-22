@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 634f89b3123902d981ad07dd1404315387104322
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19fd257e76cdf811343f1c1c772fb3646933bb86
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68726728"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774050"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Zařízení, místní a fyzické zabezpečení Azure
 Tento článek popisuje, co Microsoft dělá k zabezpečení infrastruktury Azure.
@@ -28,7 +28,7 @@ Tento článek popisuje, co Microsoft dělá k zabezpečení infrastruktury Azur
 ## <a name="datacenter-infrastructure"></a>Infrastruktura Datacenter
 Azure se skládá z [globálně distribuované infrastruktury Datacenter](https://azure.microsoft.com/global-infrastructure/), podporuje tisíce online služby a pokrývá více než 100 vysoce zabezpečených zařízení po celém světě.
 
-Infrastruktura je navržená tak, aby přiblížila aplikace uživatelům po celém světě, zachovává zaregistrování dat a nabízela zákazníkům komplexní možnosti dodržování předpisů a odolnosti proti chybám. Azure má 52 oblastí po celém světě a je k dispozici ve 140 zemích nebo oblastech.
+Infrastruktura je navržená tak, aby přiblížila aplikace uživatelům po celém světě, zachovává zaregistrování dat a nabízela zákazníkům komplexní možnosti dodržování předpisů a odolnosti proti chybám. Azure má 58 oblastí po celém světě a je k dispozici ve 140 zemích nebo oblastech.
 
 Oblast je sada datových center, která je propojená pomocí obrovské a odolné sítě. Síť zahrnuje distribuci obsahu, Vyrovnávání zatížení, redundanci a šifrování ve výchozím nastavení. V případě více globálních oblastí než jakýkoli jiný poskytovatel cloudu vám Azure poskytne flexibilitu při nasazování aplikací tam, kde je potřebujete.
 

@@ -3,7 +3,7 @@ title: Aplikace spravované instance Connect
 description: Tento článek popisuje, jak připojit aplikaci k Azure SQL Database spravované instance.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 8d920fb7815e5a9fe30d8f3b4e40f36133d83222
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc945dec20a15b02287e50bcbef4be0d860c892f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538082"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773667"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojení aplikace ke spravované instanci Azure SQL Database
 
@@ -101,7 +101,7 @@ Pokud chcete řešit potíže s připojením, přečtěte si následující tém
 
    ![vstupní/výstupní čísla](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
-- Ověřte, zda má klientský počítač (se spuštěným klientem sítě VPN) položky směrování pro všechny virtuální sítě, ke kterým potřebujete získat přístup. Trasy jsou uloženy v `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt`.
+- Ověřte, zda má klientský počítač (se spuštěným klientem sítě VPN) položky směrování pro všechny virtuální sítě, ke kterým potřebujete získat přístup. Trasy jsou uloženy v `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` .
 
    ![Route. txt](./media/sql-database-managed-instance-connect-app/route-txt.png)
 
@@ -139,7 +139,7 @@ Pokud chcete řešit potíže s připojením, přečtěte si následující tém
 
 Pokud se chcete připojit ke spravované instanci, doporučuje se používat následující minimální verze nástrojů a ovladačů:
 
-| Ovladač/nástroj | Version |
+| Ovladač/nástroj | Verze |
 | --- | --- |
 |.NET Framework | 4.6.1 (nebo .NET Core) |
 |Ovladač ODBC| v17 |

@@ -3,7 +3,7 @@ title: Obnovení databáze ze zálohy
 description: Přečtěte si o obnovení k bodu v čase, které vám umožní vrátit databázi SQL Azure do 35 dnů.
 services: sql-database
 ms.service: sql-database
-ms.subservice: backup-restore
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: b98331a9cdb359aeefac5db1546f3a15b54010ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da841c2f1280bc0dc126e43a9f618e170d0d2553
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268740"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770669"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Obnovení databáze SQL Azure pomocí automatických záloh databáze
 
@@ -147,7 +147,7 @@ Z Azure Portal vytvoříte novou databázi jedné nebo spravované instance a vy
 
 Pokud chcete geograficky obnovit jednu databázi SQL z Azure Portal v oblasti a na zvoleném serveru, postupujte takto:
 
-1. Z **řídicího panelu**vyberte **Přidat** > **vytvořit SQL Database**. Na kartě **základy** zadejte požadované informace.
+1. Z **řídicího panelu**vyberte **Přidat**  >  **vytvořit SQL Database**. Na kartě **základy** zadejte požadované informace.
 2. Vyberte **Další nastavení**.
 3. Pro možnost **použít existující data**vyberte **zálohování**.
 4. V části **zálohování**vyberte zálohu ze seznamu dostupných záloh geografického obnovení.

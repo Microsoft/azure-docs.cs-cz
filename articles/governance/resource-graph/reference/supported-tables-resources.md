@@ -1,14 +1,14 @@
 ---
 title: Podporované typy prostředků Správce prostředků
 description: Poskytněte seznam Správce prostředků typů prostředků, které podporuje Azure Resource Graph, a historii změn.
-ms.date: 05/16/2020
+ms.date: 05/21/2020
 ms.topic: reference
-ms.openlocfilehash: 61b4865f695fbee7bd425429fde03bc7161043db
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ccf8cc58ce19746958f89ff9d9207906aad16bd
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655870"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770580"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
 
@@ -217,11 +217,10 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. hardwaresecuritymodules/dedicatedhsms
 - Microsoft. HDInsight/clustery
 - Microsoft. healthcareapis/Services
+- Microsoft. healthcareapis/Services/privateendpointconnections
 - Microsoft. hybridcompute/počítače
 - Microsoft. hybridcompute/počítače/rozšíření
 - Microsoft. hybriddata/datamanagers
-- Microsoft. Hydra/– komponenty
-- Microsoft. Hydra/networkscopes
 - Microsoft. importexport/Jobs
 - Microsoft. industrydatalifecycle/derivedmodels
 - Microsoft. Insights/actiongroups
@@ -361,9 +360,6 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. portalsdk/rootresources
 - Microsoft. PowerBI/workspacecollections
 - Microsoft. powerbidedicated/– kapacity
-- Microsoft. projectarcadia/pracovní prostory
-- Microsoft. projectarcadia/pracovní prostory/sparkcomputes
-- Microsoft. projectarcadia/pracovní prostory/sqlcomputes
 - Microsoft. projectbabylon/účty
 - Microsoft. doby/pracovní prostory
 - Microsoft. recoveryservices/trezory
@@ -440,8 +436,6 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. vmwarecloudsimple/VirtualMachines
 - Microsoft. vmwareonazure/privateclouds
 - Microsoft. vmwarevirtustream/privateclouds
-- Microsoft. vnfmanager/zařízení
-- Microsoft. vnfmanager/vnfs
 - Microsoft. VSOnline/účty
 - Microsoft. VSOnline/– plány
 - Microsoft. Web/apimanagementaccounts/rozhraní API

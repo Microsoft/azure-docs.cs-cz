@@ -1,19 +1,19 @@
 ---
 title: Konfigurace vlastních pravidel v2 pomocí PowerShellu
 titleSuffix: Azure Web Application Firewall
-description: Naučte se konfigurovat vlastní pravidla WAF v2 pomocí Azure PowerShell. Můžete vytvořit vlastní pravidla vyhodnocená pro každý požadavek, který projde přes bránu firewall.
+description: Přečtěte si, jak nakonfigurovat vlastní pravidla firewallu webových aplikací (WAF) v2 pomocí Azure PowerShell. Můžete vytvořit vlastní pravidla vyhodnocená pro každý požadavek, který projde přes bránu firewall.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 11/16/2019
+ms.date: 05/21/2020
 ms.author: victorh
-ms.openlocfilehash: 4c50c4ce344a51a70f6849beb7c5d9d18a2b401d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471631"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758958"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Konfigurace firewallu webových aplikací v2 na Application Gateway s vlastním pravidlem pomocí Azure PowerShell
 
@@ -34,7 +34,7 @@ Pokud chcete spustit Azure PowerShell v tomto článku v jednom souvislém skrip
 Pokud se rozhodnete nainstalovat a používat Azure PowerShell místně, vyžaduje tento skript verzi modulu Azure PowerShell 2.1.0 nebo novější.
 
 1. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
-2. Pokud chcete vytvořit připojení k Azure, spusťte `Connect-AzAccount`.
+2. Pokud chcete vytvořit připojení k Azure, spusťte `Connect-AzAccount` .
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -136,6 +136,19 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
   -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig `
   -WebApplicationFirewallConfig $wafConfig `
   -FirewallPolicy $wafPolicy
+```
+
+## <a name="update-your-waf"></a>Aktualizace WAF
+
+Po vytvoření WAF můžete aktualizovat pomocí procedury podobné následujícímu kódu:
+
+```azurepowershell
+# Get the existing policy
+$policy = Get-AzApplicationGatewayFirewallPolicy -Name $policyName -ResourceGroupName $RGname
+# Add an existing rule named $rule
+$policy.CustomRules.Add($rule)
+# Update the policy
+Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
 ```
 
 ## <a name="next-steps"></a>Další kroky

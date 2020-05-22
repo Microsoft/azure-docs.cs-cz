@@ -5,14 +5,14 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/01/2020
-ms.openlocfilehash: bd0ed9db9723af9015d15429d632712d63e249c1
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: f6b35551af61c50a3db2d15b47d8f3910024b527
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652743"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773725"
 ---
-# <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy, které používá Application Insights a Log Analytics
+# <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy používané službami Application Insights a Log Analytics
 Služba [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) používá několik IP adres. Pokud je aplikace, kterou sledujete, hostovaná za bránou firewall, může být potřeba tyto adresy znát.
 
 > [!NOTE]
@@ -28,9 +28,9 @@ Alternativně se můžete přihlásit k odběru této stránky jako informační
 ## <a name="outgoing-ports"></a>Odchozí porty
 Musíte otevřít některé Odchozí porty v bráně firewall serveru, aby sada SDK Application Insights a/nebo Monitorování stavu mohla odesílat data na portál:
 
-| Účel | zprostředkovatele identity | IP adresa | Porty |
+| Účel | URL | IP adresa | Porty |
 | --- | --- | --- | --- |
-| Telemetrie |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170 | 443 |
+| Telemetrie |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23 | 443 |
 | Live Metrics Stream (Východní USA) |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
 | Live Metrics Stream (Střed USA – jih) |ussc.rt.prod.applicationinsights.trafficmanager.net |157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113 |443 |
 | Live Metrics Stream (Severní Evropa) |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
@@ -41,7 +41,7 @@ Musíte otevřít některé Odchozí porty v bráně firewall serveru, aby sada 
 ## <a name="status-monitor"></a>Monitorování stavu
 Monitorování stavu konfigurace – vyžaduje se jenom při provádění změn.
 
-| Účel | zprostředkovatele identity | IP adresa | Porty |
+| Účel | URL | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Konfigurace |`management.core.windows.net` | |`443` |
 | Konfigurace |`management.azure.com` | |`443` |
@@ -70,7 +70,7 @@ Otevřete porty 80 (http) a 443 (https) pro příchozí provoz z těchto adres (
 ### <a name="addresses-grouped-by-location"></a>Adresy seskupené podle umístění
 
 > [!NOTE]
-> Tyto adresy jsou uvedené v seznamu použití zápisu CIDR (Classless Inter-Domain Routing). To znamená, že položka jako `51.144.56.112/28` je rovnocenná 16 IP adres počínaje `51.144.56.112` a končící na `51.144.56.127`.
+> Tyto adresy jsou uvedené v seznamu použití zápisu CIDR (Classless Inter-Domain Routing). To znamená, že položka jako `51.144.56.112/28` je rovnocenná 16 IP adres počínaje `51.144.56.112` a končící na `51.144.56.127` .
 
 ```
 Australia East

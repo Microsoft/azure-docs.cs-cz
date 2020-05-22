@@ -3,7 +3,7 @@ title: Příklad rozhraní příkazového řádku – obnovení zálohy – Azur
 description: Ukázkový skript Azure CLI pro obnovení izolované databáze SQL Azure do dřívějšího bodu v čase z automatického zálohování
 services: sql-database
 ms.service: sql-database
-ms.subservice: backup-restore
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 36c565837b95ce2f391d38b9934b7cf19c613897
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: efb73bc04e3c79740651fecdd98258b8101f84b1
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067382"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774282"
 ---
 # <a name="use-cli-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Obnovení izolované databáze SQL Azure do dřívějšího bodu v čase pomocí rozhraní příkazového řádku
 

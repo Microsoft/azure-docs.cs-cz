@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9605d20fa6a1480b24d7b64963aa9579ed3b5a11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e393b653ecb9e9d7b8eff277b91215ccc5bf6342
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81115177"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770818"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování synapse fondu SQL pomocí Azure Portal
 
@@ -33,7 +33,7 @@ Rychle vytvářejte a Dotazujte synapse fond SQL (datový sklad) ve službě Azu
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
 
@@ -66,7 +66,11 @@ Pomocí těchto kroků vytvořte fond SQL, který obsahuje ukázková data **Adv
 
    Další informace o úrovních výkonu najdete v tématu [Správa výpočetních prostředků v Azure SQL Data Warehouse](sql-data-warehouse-manage-compute-overview.md).
 
-5. Teď, když jste dokončili kartu základy formuláře Azure synapse Analytics, vyberte **zkontrolovat + vytvořit** a pak **vytvořit** a vytvořte fond SQL. Zřizování trvá několik minut.
+5. Vyberte **Další nastavení**, v části **použít existující data**zvolte možnost **Ukázka** , aby se AdventureWorksDW vytvořil jako ukázková databáze.
+
+    ![Vyberte možnost použít existující data.](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
+
+6. Teď, když jste dokončili kartu základy formuláře Azure synapse Analytics, vyberte **zkontrolovat + vytvořit** a pak **vytvořit** a vytvořte fond SQL. Zřizování trvá několik minut.
 
    ![vybrat kontrolu + vytvořit](./media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -114,7 +118,7 @@ Nyní se můžete připojit k SQL serveru a jeho fondům SQL pomocí této IP ad
 
 Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. V nabídce na levé straně vyberte **Azure synapse Analytics** a na stránce **Azure synapse Analytics** vyberte svůj.
 
@@ -148,6 +152,8 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    ![databázové objekty](./media/create-data-warehouse-portal/connected-ssms.png)
 
 ## <a name="run-some-queries"></a>Spuštění nějakých dotazů
+
+Nedoporučujeme spouštět velké dotazy, když se přihlásíte jako správce serveru, protože používá [třídu omezeného prostředku](resource-classes-for-workload-management.md). Místo toho nakonfigurujte [izolaci úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql) , jak [je znázorněno v kurzech](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data).
 
 SQL Data Warehouse jako dotazovací jazyk používá T-SQL. Pokud chcete otevřít okno dotazu a spustit nějaké dotazy T-SQL, použijte následující postup:
 

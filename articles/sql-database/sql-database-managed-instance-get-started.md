@@ -3,7 +3,7 @@ title: 'Azure Portal: vytvoření spravované instance'
 description: Vytvořte SQL Database spravovanou instanci, síťové prostředí a klientský virtuální počítač pro přístup.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: 25128442cd922f6b9130586e245695b6880f661c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8a0b27f055f39186371e23e46c8b41679e05dea
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80257610"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770104"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rychlý Start: vytvoření spravované instance Azure SQL Database
 

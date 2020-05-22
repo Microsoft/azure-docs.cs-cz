@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 26b3cb343aba2d45d5a14944a7f8856715bca100
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: bfc6b6fa6a2af8750c868aaacb289d39306ce06e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690101"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770972"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Přihlašovací údaje pro heslo vlastníka prostředku Microsoft Identity Platform a OAuth 2,0
 
@@ -29,10 +29,10 @@ Platforma Microsoft Identity Platform podporuje [udělení přihlašovacích úd
 
 > [!IMPORTANT]
 >
-> * Koncový bod Microsoft Identity Platform podporuje jenom ROPC pro klienty Azure AD, ne pro osobní účty. To znamená, že musíte použít koncový bod (`https://login.microsoftonline.com/{TenantId_or_Name}`) nebo `organizations` koncový bod specifický pro klienta.
+> * Koncový bod Microsoft Identity Platform podporuje jenom ROPC pro klienty Azure AD, ne pro osobní účty. To znamená, že musíte použít koncový bod ( `https://login.microsoftonline.com/{TenantId_or_Name}` ) nebo koncový bod specifický pro klienta `organizations` .
 > * Osobní účty, které jsou pozvány klientovi služby Azure AD, nemůžou používat ROPC.
 > * Účty, které nemají hesla, se nemůžou přihlásit přes ROPC. Pro tento scénář doporučujeme místo toho použít jiný tok pro aplikaci.
-> * Pokud uživatelé potřebují k přihlášení k aplikaci použít vícefaktorové ověřování (MFA), místo toho se zablokují.
+> * Pokud uživatelé potřebují k přihlášení k aplikaci použít [vícefaktorové ověřování (MFA)](../authentication/concept-mfa-howitworks.md) , místo toho se zablokují.
 > * ROPC se ve scénářích [federace hybridních identit](/azure/active-directory/hybrid/whatis-fed) nepodporují (například Azure AD a ADFS používané k ověřování místních účtů). Pokud jsou uživatelé na celé stránce přesměrováni na místní zprostředkovatele identity, Azure AD nemůže testovat uživatelské jméno a heslo proti tomuto zprostředkovateli identity. [Předávací ověřování](/azure/active-directory/hybrid/how-to-connect-pta) je však podporováno v ROPC.
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
@@ -66,14 +66,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Požaduje se | Tenant adresáře, do kterého chcete uživatele přihlašovat. Může se jednat o formát GUID nebo popisný název. Tento parametr nemůže být nastaven na `common` hodnotu `consumers`nebo, ale může být nastaven `organizations`na hodnotu. |
-| `client_id` | Požaduje se | ID aplikace (klienta), ke které se stránka [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená vaší aplikaci. |
-| `grant_type` | Požaduje se | Musí být nastaven na `password`hodnotu. |
-| `username` | Požaduje se | E-mailová adresa uživatele. |
-| `password` | Požaduje se | Heslo uživatele. |
+| `tenant` | Vyžadováno | Tenant adresáře, do kterého chcete uživatele přihlašovat. Může se jednat o formát GUID nebo popisný název. Tento parametr nemůže být nastaven na hodnotu `common` nebo `consumers` , ale může být nastaven na hodnotu `organizations` . |
+| `client_id` | Vyžadováno | ID aplikace (klienta), ke které se stránka [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená vaší aplikaci. |
+| `grant_type` | Vyžadováno | Musí být nastaven na hodnotu `password` . |
+| `username` | Vyžadováno | E-mailová adresa uživatele. |
+| `password` | Vyžadováno | Heslo uživatele. |
 | `scope` | Doporučené | Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md)nebo oprávnění, které aplikace vyžaduje. V interaktivním toku musí správce nebo uživatel na tyto obory vyjádřit svůj souhlas předem. |
-| `client_secret`| Někdy vyžadováno | Pokud je vaše aplikace veřejným klientem, nelze ji `client_secret` zahrnout `client_assertion` nebo.  Pokud je aplikace důvěrného klienta, musí být součástí. |
-| `client_assertion` | Někdy vyžadováno | Jiná forma `client_secret`, generovaná pomocí certifikátu.  Další podrobnosti najdete v tématu [přihlašovací údaje k certifikátu](active-directory-certificate-credentials.md) . |
+| `client_secret`| Někdy vyžadováno | Pokud je vaše aplikace veřejným klientem, nelze ji `client_secret` `client_assertion` zahrnout nebo.  Pokud je aplikace důvěrného klienta, musí být součástí. |
+| `client_assertion` | Někdy vyžadováno | Jiná forma `client_secret` , generovaná pomocí certifikátu.  Další podrobnosti najdete v tématu [přihlašovací údaje k certifikátu](active-directory-certificate-credentials.md) . |
 
 ### <a name="successful-authentication-response"></a>Úspěšná ověřovací odpověď
 
@@ -92,12 +92,12 @@ Následující příklad ukazuje úspěšnou odpověď tokenu:
 
 | Parametr | Formát | Popis |
 | --------- | ------ | ----------- |
-| `token_type` | Řetězec | Vždy nastavte na `Bearer`. |
+| `token_type` | String | Vždy nastavte na `Bearer` . |
 | `scope` | Řetězce oddělené mezerami | Pokud byl vrácen přístupový token, tento parametr vypíše obory, pro které je přístupový token platný. |
 | `expires_in`| int | Počet sekund, po který je zahrnutý přístupový token platný |
 | `access_token`| Neprůhledný řetězec | Vydány pro požadované [obory](v2-permissions-and-consent.md) . |
 | `id_token` | TOKEN | Vydáno, pokud původní `scope` parametr zahrnoval `openid` obor. |
-| `refresh_token` | Neprůhledný řetězec | Vydáno, pokud je `scope` zahrnut `offline_access`původní parametr. |
+| `refresh_token` | Neprůhledný řetězec | Vydáno, pokud je `scope` zahrnut původní parametr `offline_access` . |
 
 Pomocí obnovovacího tokenu můžete získat nové přístupové tokeny a aktualizovat tokeny pomocí stejného toku popsaného v [dokumentaci ke službě Flow Code OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
 
@@ -108,7 +108,7 @@ Pokud uživatel nezadal správné uživatelské jméno nebo heslo nebo pokud kli
 | Chyba | Popis | Akce klienta |
 |------ | ----------- | -------------|
 | `invalid_grant` | Ověřování se nezdařilo. | Přihlašovací údaje byly nesprávné nebo klient nemá souhlas pro požadované obory. Pokud nejsou obory uděleny, `consent_required` bude vrácena chyba. Pokud k tomu dojde, klient by měl odeslat uživateli interaktivní výzvu pomocí webového zobrazení nebo prohlížeče. |
-| `invalid_request` | Požadavek byl nesprávně vytvořen. | Typ grantu není podporován u `/common` kontextů `/consumers` ověřování nebo.  Místo `/organizations` toho použijte nebo ID tenanta. |
+| `invalid_request` | Požadavek byl nesprávně vytvořen. | Typ grantu není podporován u `/common` `/consumers` kontextů ověřování nebo.  `/organizations`Místo toho použijte nebo ID tenanta. |
 
 ## <a name="learn-more"></a>Další informace
 

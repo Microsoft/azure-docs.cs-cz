@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 05/20/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a5026fa055307a3a37031dbf64128e4622fc2b8
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 738a5bd76cc15b9356275707aed0d0a695aa6367
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713926"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770920"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Jaké jsou spravované identity prostředků Azure?
 
@@ -54,9 +54,6 @@ Spravované identity jsou interně instančními objekty speciálního typu, kte
 I když je vytvořena uživatelem přiřazená identita nebo identita přiřazená systémem, poskytovatel spravovaných prostředků identity (MSRP) vystaví certifikát pro danou identitu interně. 
 
 Váš kód může spravovanou identitu použít k vyžádání přístupových tokenů pro služby, které podporují ověřování Azure AD. Azure zajistí vracení přístupových údajů, které instance služby používá. 
-
-## <a name="credential-rotation"></a>Rotace přihlašovacích údajů
-Rotace přihlašovacích údajů se řídí poskytovatelem prostředků, který je hostitelem prostředku Azure. K výchozímu rotaci přihlašovacích údajů dojde každých 46 dní. Je až poskytovatele prostředků pro volání nových přihlašovacích údajů, takže poskytovatel prostředků může počkat déle než 46 dní.
 
 Následující diagram ukazuje fungování identit spravovaných služeb s virtuálními počítači Azure:
 
@@ -107,6 +104,9 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 
 6. Zavolá se služba Azure AD s požadavkem na přístupový token (jak je popsáno v kroku 5) s použitím ID klienta a certifikátu nakonfigurovaných v kroku 3. Azure AD vrátí přístupový token JSON Web Token (JWT).
 7. Váš kód odešle přístupový token prostřednictvím volání do služby, která podporuje ověřování Azure AD.
+
+## <a name="credential-rotation"></a>Rotace přihlašovacích údajů
+Rotace přihlašovacích údajů se řídí poskytovatelem prostředků, který je hostitelem prostředku Azure. K výchozímu rotaci přihlašovacích údajů dojde každých 46 dní. Je až poskytovatele prostředků pro volání nových přihlašovacích údajů, takže poskytovatel prostředků může počkat déle než 46 dní.
 
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Jak mám použít spravované identity prostředků Azure?
 

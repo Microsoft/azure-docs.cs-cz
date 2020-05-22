@@ -8,20 +8,20 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: e574ac33e5f7da814c4bd813fc1c083c7cb4c2c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187881"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773130"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Řešení na virtuálních počítačích Azure
 
 Tento článek obsahuje informace o nasazení virtuálních počítačů Azure s důvěrnými výpočetními platformami, které používají procesory Intel zajištěné [rozšířením Intel software Guard](https://software.intel.com/sgx) (Intel SGX). 
 
-## <a name="azure-confidential-computing-vm-sizes"></a>Velikosti virtuálních počítačů pro důvěrné výpočetní služby Azure
+## <a name="azure-confidential-computing-vm-sizes"></a>Velikosti virtuálních počítačů pro důvěrné výpočetní operace Azure
 
-Důvěrné výpočetní virtuální počítače Azure jsou navržené tak, aby chránily tajnou a integritu vašich dat a kódu během zpracování v cloudu. 
+Důvěrné výpočetní virtuální počítače Azure jsou navržené tak, aby chránily důvěrnost a integritu vašich dat a kódu během zpracování v cloudu. 
 
 [DCsv2-Series](../virtual-machines/dcv2-series.md) Virtuální počítače jsou nejnovější a nejaktuálnější rodina velikosti důvěrného zpracování. Tyto virtuální počítače podporují větší rozsah možností nasazení, mají dvojnásobnou velikost mezipaměti enklávy Page (EPC) a větší výběr velikostí v porovnání s našimi virtuálními počítači DC-Series. Virtuální počítače [DC-Series](../virtual-machines/sizes-previous-gen.md#preview-dc-series) jsou momentálně ve verzi Preview a budou zastaralé a nejsou zahrnuté do všeobecné dostupnosti.
 
@@ -39,7 +39,7 @@ az vm list-skus
     --output table
 ```
 
-Od dubna 2020 jsou tyto SKU dostupné v následujících oblastech a zónách dostupnosti:
+Od května 2020 jsou tyto SKU dostupné v následujících oblastech a zónách dostupnosti:
 
 ```output
 Name              Locations      AZ_a
@@ -86,7 +86,7 @@ Postupujte podle kurzu rychlý Start a nasaďte virtuální počítač DCsv2-Ser
   
 - **Změna velikosti** – z důvodu jejich specializovaného hardwaru můžete měnit velikost důvěrných výpočetních instancí v rámci stejné řady velikostí. Například můžete změnit velikost virtuálního počítače DCsv2-Series jenom z jedné velikosti řady DCsv2-Series na jinou. Změna velikosti nedůvěrného výpočetního prostředí na velikost důvěrného zpracování není podporovaná.  
 
-- **Image** – pro zajištění podpory rozšíření Intel SGX (software Guard Extension) na důvěrných výpočetních instancích musí být všechna nasazení spuštěná na imagí 2. generace. Důvěrné výpočetní prostředí Azure podporuje úlohy běžící na Ubuntu 18,04 Gen 2, Ubuntu 16,04 Gen 2 a Windows Server 2016 Gen 2. Přečtěte si o [podpoře pro virtuální počítače 2. generace v Azure](../virtual-machines/linux/generation-2.md) , kde najdete další informace o podporovaných a nepodporovaných scénářích. 
+- **Image** – pro zajištění podpory rozšíření Intel SGX (software Guard Extension) na důvěrných výpočetních instancích musí být všechna nasazení spuštěná na imagí 2. generace. Důvěrné výpočetní prostředí Azure podporuje úlohy běžící na Ubuntu 18,04 Gen 2, Ubuntu 16,04 Gen 2, Windows Server 2019 Gen2 a Windows Server 2016 Gen 2. Přečtěte si o [podpoře pro virtuální počítače 2. generace v Azure](../virtual-machines/linux/generation-2.md) , kde najdete další informace o podporovaných a nepodporovaných scénářích. 
 
 - **Storage** – datové disky s důvěrnými výpočetními virtuálními počítači Azure a naše dočasné disky s operačním systémem jsou na discích NVMe. Instance podporují pouze SSD úrovně Premium a SSD úrovně Standard disky, nikoli SSD úrovně Ultra nebo HDD úrovně Standard. Velikost virtuálního počítače **DC8_v2** nepodporuje Prémiové úložiště. 
 
@@ -100,15 +100,15 @@ Důvěrné výpočetní prostředí Azure v tuto chvíli nepodporuje redundanci 
 
 ## <a name="deploying-via-an-azure-resource-manager-template"></a>Nasazení prostřednictvím šablony Azure Resource Manager 
 
-Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje vrstvu pro správu, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky v předplatném Azure. Pomocí funkcí správy, jako jsou řízení přístupu, zámky a značky, můžete zabezpečit a organizovat prostředky po nasazení.
+Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje vrstvu pro správu, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky v předplatném Azure. K zabezpečení a uspořádání prostředků po nasazení můžete použít funkce správy, jako je řízení přístupu, zámky a značky.
 
 Další informace o šablonách Azure Resource Manager najdete v tématu [template Deployment Overview](../azure-resource-manager/templates/overview.md).
 
-Pokud chcete nasadit virtuální počítač DCsv2-Series v šabloně ARM, budete používat [prostředek virtuálního počítače](../virtual-machines/windows/template-description.md). Je potřeba zajistit, abyste zadali správné vlastnosti pro **vmSize** a pro **element imagereference**.
+Pokud chcete nasadit virtuální počítač DCsv2-Series do šablony Azure Resource Manager, budete používat [prostředek virtuálního počítače](../virtual-machines/windows/template-description.md). Ujistěte se, že jste zadali správné vlastnosti pro **vmSize** a pro **element imagereference**.
 
 ### <a name="vm-size"></a>Velikost virtuálního počítače
 
-Zadejte jednu z následujících velikostí v šabloně ARM v prostředku virtuálního počítače. Tento řetězec je vložen jako **vmSize** ve **vlastnostech**.
+Zadejte jednu z následujících velikostí v šabloně Azure Resource Manager v prostředku virtuálního počítače. Tento řetězec je vložen jako **vmSize** ve **vlastnostech**.
 
 ```json
   [
@@ -124,6 +124,12 @@ Zadejte jednu z následujících velikostí v šabloně ARM v prostředku virtu�
 V části **vlastnosti**bude také nutné odkazovat na obrázek v rámci **storageProfile**. Pro **element imagereference**použijte *jenom jednu* z následujících imagí.
 
 ```json
+      "2019-datacenter-gensecond": {
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2019-datacenter-gensecond",
+        "version": "latest"
+      },
       "2016-datacenter-gensecond": {
         "offer": "WindowsServer",
         "publisher": "MicrosoftWindowsServer",
@@ -146,7 +152,7 @@ V části **vlastnosti**bude také nutné odkazovat na obrázek v rámci **stora
 
 ## <a name="next-steps"></a>Další kroky 
 
-V tomto článku jste se dozvěděli o kvalifikaci a konfiguracích potřebných při vytváření důvěrného výpočetního virtuálního počítače. Nyní můžete Azure Marketplace k nasazení virtuálního počítače řady DCsv2-Series.
+V tomto článku jste se dozvěděli o kvalifikaci a konfiguracích potřebných při vytváření důvěrného výpočetního virtuálního počítače. Nyní můžete Microsoft Azure Marketplace k nasazení virtuálního počítače řady DCsv2-Series.
 
 > [!div class="nextstepaction"]
 > [Nasazení virtuálního počítače s DCsv2-Series v Azure Marketplace](quick-create-marketplace.md)

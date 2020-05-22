@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 7b326e17611b5f4b9520d8218a28a67afe9a851a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584347"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772195"
 ---
 # <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>Postup přihlášení aplikace s platformou Microsoft identity
 
@@ -29,7 +29,7 @@ Toto téma popisuje základní postup přihlášení pro webové, desktopové a 
 Když uživatel přejde v prohlížeči do webové aplikace, dojde k následujícímu:
 
 * Webová aplikace určuje, jestli je uživatel ověřený.
-* Pokud se uživatel neověřuje, Webová aplikace se přihlásí k Azure AD, aby se přihlásili uživateli. Toto přihlášení bude vyhovovat zásadám organizace, což může znamenat, že uživatel musí zadat své přihlašovací údaje, použít vícefaktorové ověřování nebo vůbec nepoužívat heslo (například Windows Hello).
+* Pokud se uživatel neověřuje, Webová aplikace se přihlásí k Azure AD, aby se přihlásili uživateli. Toto přihlášení bude vyhovovat zásadám organizace, což může znamenat, že uživatel musí zadat své přihlašovací údaje pomocí služby [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) (někdy se mu říká dvojúrovňové ověřování nebo 2FA) nebo vůbec nepoužívat heslo (například Windows Hello).
 * Uživateli se zobrazí výzva k vyjádření souhlasu s přístupem, který klientská aplikace potřebuje. Důvodem je, že klientské aplikace musí být zaregistrované ve službě Azure AD, aby platforma Microsoft Identity Platform mohla poskytovat tokeny představující přístup, ke kterému se uživatel poslal.
 
 Po úspěšném ověření uživatele:
@@ -46,7 +46,7 @@ Následující sekvenční diagram shrnuje tuto interakci:
 
 Vývojáři webové aplikace mohou určit, zda některé stránky vyžadují ověření. Například v ASP.NET/ASP.NET Core je to provedeno přidáním `[Authorize]` atributu k akcím kontroleru.
 
-Tento atribut způsobí, že ASP.NET zkontroluje přítomnost souboru cookie relace, který obsahuje identitu uživatele. Pokud soubor cookie přítomen není, ASP.NET přesměruje ověřování na zadaného zprostředkovatele identity. Pokud je poskytovatel identity Azure AD, přesměruje Tato webová aplikace ověřování na `https://login.microsoftonline.com`, které zobrazuje přihlašovací dialog.
+Tento atribut způsobí, že ASP.NET zkontroluje přítomnost souboru cookie relace, který obsahuje identitu uživatele. Pokud soubor cookie přítomen není, ASP.NET přesměruje ověřování na zadaného zprostředkovatele identity. Pokud je poskytovatel identity Azure AD, přesměruje Tato webová aplikace ověřování na `https://login.microsoftonline.com` , které zobrazuje přihlašovací dialog.
 
 ### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>Způsob, jakým webová aplikace deleguje přihlášení k platformě Microsoft identity a získá token
 

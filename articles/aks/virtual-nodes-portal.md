@@ -4,12 +4,12 @@ description: Naučte se, jak pomocí Azure Portal vytvořit cluster Azure Kubern
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 5f7bf75598c09c5c8c0654f7db863068f9e7be7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7fa547ca8a3907669c9e7671b11fe3a6307d97f4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128864"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773419"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Vytvoření a konfigurace clusteru Azure Kubernetes Services (AKS) pro použití virtuálních uzlů v Azure Portal
 
@@ -74,7 +74,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-V levém horním rohu Azure Portal vyberte **vytvořit** > **službu Kubernetes**prostředku.
+V levém horním rohu Azure Portal vyberte **vytvořit**  >  **službu Kubernetes**prostředku.
 
 Na stránce **základy** nakonfigurujte následující možnosti:
 
@@ -101,7 +101,7 @@ Vytvoření clusteru AKS a jeho příprava k použití trvá několik minut.
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Ke správě clusteru Kubernetes použijte klienta příkazového řádku Kubernetes [kubectl][kubectl]. Klient `kubectl` je předinstalovaný ve službě Azure Cloud Shell.
 
-Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/bash](https://shell.azure.com/bash)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 Pomocí příkazu [az aks get-credentials][az-aks-get-credentials] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad získá přihlašovací údaje pro název clusteru *myAKSCluster* ve skupině prostředků *myResourceGroup*:
 
@@ -125,7 +125,7 @@ aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Nasazení ukázkové aplikace
 
-V Azure Cloud Shell vytvořte soubor s názvem `virtual-node.yaml` a ZKOPÍRUJTE následující YAML. Pro naplánování kontejneru na uzlu jsou definovány [nodeSelector][node-selector] a [tolerování][toleration] . Tato nastavení umožňují, aby se uzel v poli naplánoval na virtuálním uzlu a zkontroloval, jestli je funkce úspěšně povolená.
+V Azure Cloud Shell vytvořte soubor s názvem `virtual-node.yaml` a zkopírujte následující YAML. Pro naplánování kontejneru na uzlu jsou definovány [nodeSelector][node-selector] a [tolerování][toleration] . Tato nastavení umožňují, aby se uzel v poli naplánoval na virtuálním uzlu a zkontroloval, jestli je funkce úspěšně povolená.
 
 ```yaml
 apiVersion: apps/v1
@@ -154,8 +154,6 @@ spec:
       tolerations:
       - key: virtual-kubelet.io/provider
         operator: Exists
-      - key: azure.com/aci
-        effect: NoSchedule
 ```
 
 Spusťte aplikaci pomocí příkazu [kubectl Apply][kubectl-apply] .
@@ -164,7 +162,7 @@ Spusťte aplikaci pomocí příkazu [kubectl Apply][kubectl-apply] .
 kubectl apply -f virtual-node.yaml
 ```
 
-Použijte příkaz [kubectl Get lusks][kubectl-get] s `-o wide` argumentem pro výstup seznamu lusků a naplánovaného uzlu. Všimněte si, `virtual-node-helloworld` že `virtual-node-linux` uzel pod byl naplánován na uzlu.
+Použijte příkaz [kubectl Get lusks][kubectl-get] s `-o wide` argumentem pro výstup seznamu lusků a naplánovaného uzlu. Všimněte si, že `virtual-node-helloworld` uzel pod byl naplánován na `virtual-node-linux` uzlu.
 
 ```console
 kubectl get pods -o wide
@@ -178,7 +176,7 @@ virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m      
 Pod ní je přiřazena interní IP adresa z podsítě virtuální sítě Azure delegované pro použití s virtuálními uzly.
 
 > [!NOTE]
-> Pokud používáte Image uložené v Azure Container Registry, [nakonfigurujte a používejte tajný kód Kubernetes][acr-aks-secrets]. Aktuálním omezením virtuálních uzlů je, že nemůžete použít integrované ověřování instančního objektu služby Azure AD. Pokud nepoužíváte tajný kód, nespustí se u nich naplánované na virtuálních uzlech a nahlásí se chyba `HTTP response status code 400 error code "InaccessibleImage"`.
+> Pokud používáte Image uložené v Azure Container Registry, [nakonfigurujte a používejte tajný kód Kubernetes][acr-aks-secrets]. Aktuálním omezením virtuálních uzlů je, že nemůžete použít integrované ověřování instančního objektu služby Azure AD. Pokud nepoužíváte tajný kód, nespustí se u nich naplánované na virtuálních uzlech a nahlásí se chyba `HTTP response status code 400 error code "InaccessibleImage"` .
 
 ## <a name="test-the-virtual-node-pod"></a>Test virtuálního uzlu pod
 
@@ -188,13 +186,13 @@ Chcete-li otestovat běžící na virtuálním uzlu, přejděte k ukázkové apl
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
-Nainstalujte `curl` v části pod pomocí `apt-get`:
+Nainstalujte `curl` v části pod pomocí `apt-get` :
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Teď dostanete přístup k adrese vašeho pod pomocí `curl`, jako je *http://10.241.0.4*například. Zadejte vlastní interní IP adresu zobrazenou v předchozím `kubectl get pods` příkazu:
+Teď dostanete přístup k adrese vašeho pod pomocí, jako je například `curl` *http://10.241.0.4* . Zadejte vlastní interní IP adresu zobrazenou v předchozím `kubectl get pods` příkazu:
 
 ```console
 curl -L http://10.241.0.4
@@ -210,7 +208,7 @@ Zobrazí se ukázková aplikace, jak je znázorněno v následujícím zhuštěn
 [...]
 ```
 
-Zavřete relaci Terminálové služby k vašemu testu pod `exit`. Po ukončení relace je pod odstraněnou.
+Zavřete relaci Terminálové služby k vašemu testu pod `exit` . Po ukončení relace je pod odstraněnou.
 
 ## <a name="next-steps"></a>Další kroky
 

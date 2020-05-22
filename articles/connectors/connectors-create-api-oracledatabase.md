@@ -3,16 +3,16 @@ title: Připojení k Oracle Database
 description: Vkládání a Správa záznamů pomocí Oracle Database rozhraní REST API a Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: fdbf7fd7dded2fc0026e5c819ca579eeddc5cdb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b4f016b53c6c42831d5f5ae08a30ec8ac176e6e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147814"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773368"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem Oracle Database
 
@@ -20,6 +20,13 @@ Pomocí konektoru Oracle Database vytvoříte organizační pracovní postupy, k
 
 * Sestavte pracovní postup přidáním nového zákazníka do databáze zákazníků nebo aktualizací objednávky v databázi objednávek.
 * Použijte akce pro získání řádku dat, vložení nového řádku a dokonce i odstranění. Například když se v Dynamics CRM Online vytvoří záznam (trigger), vloží se řádek do Oracle Database (akce). 
+
+Tento konektor nepodporuje následující položky:
+
+* Zobrazení 
+* Libovolná tabulka se složenými klíči
+* Typy vnořených objektů v tabulkách
+* Funkce databáze bez skalárních hodnot
 
 V tomto článku se dozvíte, jak používat konektor Oracle Database v aplikaci logiky.
 
@@ -55,18 +62,18 @@ V tomto článku se dozvíte, jak používat konektor Oracle Database v aplikaci
 
 3. Vyberte **Uložit**. Při uložení se automaticky vygeneruje adresa URL požadavku. 
 
-4. Vyberte **Nový krok** a potom **Přidat akci**. `oracle` Zadáním možnosti zobrazíte dostupné akce: 
+4. Vyberte **Nový krok** a potom **Přidat akci**. Zadáním `oracle` možnosti zobrazíte dostupné akce: 
 
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
-    > To je také nejrychlejší způsob, jak zobrazit triggery a akce, které jsou k dispozici pro libovolný konektor. Zadejte část názvu konektoru, například `oracle`. Návrhář zobrazí seznam všech triggerů a akcí. 
+    > To je také nejrychlejší způsob, jak zobrazit triggery a akce, které jsou k dispozici pro libovolný konektor. Zadejte část názvu konektoru, například `oracle` . Návrhář zobrazí seznam všech triggerů a akcí. 
 
 5. Vyberte jednu z akcí, například **Oracle Database-získat řádek**. Vyberte **připojit přes místní bránu dat**. Zadejte název serveru Oracle, metodu ověřování, uživatelské jméno, heslo a vyberte bránu:
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
-6. Po připojení vyberte v seznamu tabulku a zadejte ID řádku do tabulky. Musíte znát identifikátor v tabulce. Pokud to neznáte, obraťte se na správce Oracle DB a získejte výstup z `select * from yourTableName`. Získáte tak identifikovatelné informace, které potřebujete k tomu, abyste mohli pokračovat.
+6. Po připojení vyberte v seznamu tabulku a zadejte ID řádku do tabulky. Musíte znát identifikátor v tabulce. Pokud to neznáte, obraťte se na správce Oracle DB a získejte výstup z `select * from yourTableName` . Získáte tak identifikovatelné informace, které potřebujete k tomu, abyste mohli pokračovat.
 
     V následujícím příkladu se data úlohy vracejí z databáze lidských zdrojů: 
 
@@ -97,7 +104,7 @@ V tomto článku se dozvíte, jak používat konektor Oracle Database v aplikaci
 
 **Zmírnění**: Ujistěte se, že je brána spuštěná na místním počítači, na kterém je nainstalovaná, a že se může připojit k Internetu.Doporučujeme neinstalovat bránu na počítač, který může být vypnutý nebo v režimu spánku.Můžete také restartovat službu místní brány dat (PBIEgwService).
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Chyba**: použitý zprostředkovatel je zastaralý: System. data. OracleClient vyžaduje, aby byl klientský software Oracle verze 8.1.7 nebo vyšší. Informace [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) najdete v tématu instalace oficiálního poskytovatele.
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Chyba**: použitý zprostředkovatel je zastaralý: System. data. OracleClient vyžaduje, aby byl klientský software Oracle verze 8.1.7 nebo vyšší. Informace najdete v tématu [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) instalace oficiálního poskytovatele.
 
 **Příčina**: sada SDK klienta Oracle není nainstalovaná na počítači, na kterém je spuštěná místní brána dat.  
 
@@ -108,12 +115,6 @@ V tomto článku se dozvíte, jak používat konektor Oracle Database v aplikaci
 **Příčina**: tabulka neobsahuje žádný primární klíč.  
 
 **Řešení**: konektor Oracle Database vyžaduje, aby se použila tabulka se sloupcem primárního klíče.
-
-#### <a name="currently-not-supported"></a>Aktuálně není podporováno
-
-* Zobrazení 
-* Libovolná tabulka se složenými klíči
-* Typy vnořených objektů v tabulkách
  
 ## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 
@@ -123,7 +124,7 @@ Zobrazit všechny triggery a akce definované v Swagger a také zobrazit omezen�
 
 [Fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) je skvělé místo, kde můžete klást otázky, odpovídat na otázky a zjistit, co dělají jiní uživatelé Logic Apps. 
 
-Můžete pomoci vylepšit Logic Apps a konektory hlasováním a odesláním nápadů na [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish). 
+Můžete pomoci vylepšit Logic Apps a konektory hlasováním a odesláním nápadů na [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: ae98325d98df1ac8a06e0c0bc950d89cc6b77eda
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82192259"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773275"
 ---
 # <a name="confidential-computing-on-azure"></a>Důvěrné výpočetní prostředí v Azure
 
@@ -42,13 +42,13 @@ Microsoft Azure pomáhá minimalizovat plochu útoku a získat tak silnější o
 
 ## <a name="introduction-to-confidential-computing"></a>Úvod do důvěrného výpočetního prostředí<a id="intro to acc"></a>
 
-Důvěrné výpočetní prostředí je obor, který je definovaný [konsorciem důvěrného výpočetního](https://confidentialcomputing.io/) prostředí (CCC), základem vyhrazeným pro definování a urychlení přijetí důvěrného výpočetního prostředí. Důvěrné výpočetní operace je ochrana dat, která se používají při provádění výpočtů. K výpočtům dochází v prostředí pro důvěryhodné spuštění hardwaru (TEE).
+Důvěrné výpočetní prostředí je obor, který je definovaný [konsorciem důvěrného computingu](https://confidentialcomputing.io/) (CCC) – základ vyhrazený pro definování a urychlení přijetí důvěrného výpočetního prostředí. CCC definuje důvěrné výpočetní prostředky jako ochranu dat používaných při provádění výpočtů v prostředí TEE (hardwarového důvěryhodného spuštění).
 
 TEE je prostředí, které vynutilo provádění pouze autorizovaného kódu. Žádná data v TEE nemůžou číst ani úmyslně poškodit žádný kód mimo toto prostředí.
 
-### <a name="enclaves-and-trusted-execution-environments"></a>Prostředí Enclaves a důvěryhodných spuštění
+### <a name="enclaves"></a>Enclaves
 
-V kontextu důvěrného výpočetního prostředí se TEEs obvykle označuje jako *enclaves* nebo *zabezpečení enclaves*. Enclaves jsou zabezpečené části procesoru a paměti hardwaru. Neexistuje žádný způsob, jak zobrazit data nebo kód uvnitř enklávy, a to ani pomocí ladicího programu. Pokud se nedůvěryhodný kód pokusí změnit obsah v enklávy paměti, prostředí se zakáže a operace se odmítne.
+Enclaves jsou zabezpečené části procesoru a paměti hardwaru. Neexistuje žádný způsob, jak zobrazit data nebo kód uvnitř enklávy, a to ani pomocí ladicího programu. Pokud se nedůvěryhodný kód pokusí změnit obsah v enklávy paměti, prostředí se zakáže a operace se odmítne.
 
 Při vývoji aplikací můžete použít [softwarové nástroje](#oe-sdk) k ochraně částí kódu a dat v rámci enklávy. Tyto nástroje zajistí, že váš kód a data nebude moci zobrazit ani upravovat nikdo mimo důvěryhodné prostředí. 
 
@@ -96,11 +96,11 @@ Aplikace sestavená pomocí enclaves je rozdělená dvěma způsoby:
 1. Nedůvěryhodná součást (hostitel)
 1. "Důvěryhodná" komponenta (enklávy)
 
-**Hostitel** je vaše aplikace enklávy spuštěná v nedůvěryhodném prostředí. Kód v hostiteli nemá přístup k kódu načtenému do enklávy. 
+**Hostitel** je, kde vaše aplikace enklávy běží na začátku a je nedůvěryhodné prostředí. K enklávy kódu nasazenému v hostiteli nelze použít hostitele. 
 
-**Enklávy** je místo, kde se kód a data spouštějí v rámci implementace Tee. K zajištění ochrany tajných kódů a citlivých dat by se měla v enklávy provádět zabezpečená výpočty. 
+**Enklávy** je místo, kde se spouští kód aplikace a jeho data/paměť v mezipaměti. K zabezpečeným výpočtům by mělo dojít v enclaves, aby se zajistila ochrana tajných kódů a citlivých dat. 
 
-Při zahájení vývoje aplikace enklávy je potřeba určit, co kód a data potřebují chránit. Kód, který se rozhodnete vložit do důvěryhodné součásti, je izolovaný od zbytku vaší aplikace. Jakmile se enklávy Inicializuje a kód se načte do paměti, tento kód se nedá přečíst nebo změnit z vnějšího chráněného prostředí.
+Během návrhu aplikace je důležité identifikovat a určit, jaká část aplikace musí běžet v enclaves. Kód, který se rozhodnete vložit do důvěryhodné součásti, je izolovaný od zbytku vaší aplikace. Jakmile je enklávy inicializován a kód je načten do paměti, tento kód nelze číst nebo změnit z nedůvěryhodných komponent. 
 
 ### <a name="open-enclave-software-development-kit-oe-sdk"></a>Otevřete enklávy Software Development Kit (OE SDK).<a id="oe-sdk"></a>
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 87776c14e45ff4bb3cce6661323d74a1315c8ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf674170ff49f55fc7997a87d07f9069306fc0cd
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757101"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774154"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytváření virtuálních počítačů se systémem Linux je snadné z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit, že jste ho nastavili tak, aby optimalizoval jeho výkon na platformě Microsoft Azure. V tomto tématu se používá virtuální počítač s Ubuntu serverem, ale můžete také vytvořit virtuální počítač se systémem Linux pomocí [vlastních imagí jako šablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -29,9 +29,9 @@ Na základě velikosti virtuálního počítače můžete připojit až 16 dalš
 
 Aby bylo možné získat nejvyšší IOps na Premium Storage discích, kde nastavení mezipaměti bylo nastaveno na hodnotu **jen pro čtení** nebo **žádné**, je nutné zakázat **bariéry** při připojování systému souborů v systému Linux. Nepotřebujete překážky, protože zápisy do Premium Storage zálohovaných disků jsou pro tato nastavení mezipaměti trvalé.
 
-* Pokud používáte **reiserFS**, zakažte bariéry pomocí možnosti `barrier=none` připojení (Pokud chcete povolit bariéry `barrier=flush`, použijte).
-* Pokud používáte **ext3/ext4**, zakažte bariéry pomocí možnosti `barrier=0` připojení (pro povolení bariéry použijte `barrier=1`).
-* Pokud používáte **XFS**, zakažte bariéry pomocí možnosti `nobarrier` připojení (pro povolení bariéry použijte možnost `barrier`).
+* Pokud používáte **reiserFS**, zakažte bariéry pomocí možnosti připojení `barrier=none` (Pokud chcete povolit bariéry, použijte `barrier=flush` ).
+* Pokud používáte **ext3/ext4**, zakažte bariéry pomocí možnosti připojení `barrier=0` (pro povolení bariéry použijte `barrier=1` ).
+* Pokud používáte **XFS**, zakažte bariéry pomocí možnosti připojení `nobarrier` (pro povolení bariéry použijte možnost `barrier` ).
 
 ## <a name="unmanaged-storage-account-considerations"></a>Požadavky na účet nespravovaného úložiště
 Výchozí akcí při vytváření virtuálního počítače pomocí Azure CLI je použití Azure Managed Disks.  Tyto disky jsou zpracovávány platformou Azure a nevyžadují žádnou přípravu ani umístění k jejich uložení.  Nespravované disky vyžadují účet úložiště a mají nějaké další požadavky na výkon.  Další informace o spravovaných discích najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md).  V následující části jsou popsány požadavky na výkon pouze v případě, že používáte nespravované disky.  Výchozím a doporučeným řešením úložiště je znovu použít Managed disks.
@@ -115,6 +115,8 @@ Pro skupinu distribuce Red Hat budete potřebovat jenom tento příkaz:
 ```bash
 echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
+
+Ubuntu 18,04 s jádrem optimalizovaným pro Azure používá vstupně-výstupní plánovače s více frontami. V tomto scénáři `none` je místo toho vhodný výběr `noop` . Další informace najdete v tématu [Ubuntu v/v plánovače](https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers).
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Použití softwarového pole RAID k dosažení vyššího vstupně-funkční operace
 Pokud vaše úlohy vyžadují víc IOps než jeden disk, budete muset použít softwarovou konfiguraci RAID o více discích. Vzhledem k tomu, že Azure už provádí odolnost disku v místní vrstvě prostředků infrastruktury, dosahuje nejvyšší úrovně výkonu z konfigurace prokládání RAID-0.  Zřizování a vytváření disků v prostředí Azure a jejich připojení k VIRTUÁLNÍmu počítači se systémem Linux před vytvořením oddílů, formátování a připojení jednotek.  Další podrobnosti o konfiguraci nastavení RAID softwaru na VIRTUÁLNÍm počítači Linux v Azure najdete v dokumentu **[Konfigurace softwarového pole RAID v systému Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** .

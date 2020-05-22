@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: fca794d51e06c72f157dc063445d1cab09d92d28
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cfc2a7d161619efcd9eee2c32a4dabc2e3a2e6ed
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115859"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772059"
 ---
 # <a name="authentication-vs-authorization"></a>Ověřování vs. autorizace
 
@@ -36,9 +36,9 @@ Tento článek definuje ověřování a autorizaci a stručně popisuje, jak mů
 
 Místo vytváření aplikací, které každý z nich zachovávají vlastní uživatelské jméno a heslo, což má za následek vysokou administrativní zátěž, když potřebujete přidat nebo odebrat uživatele napříč více aplikacemi, můžou aplikace delegovat tuto odpovědnost na centralizovaného zprostředkovatele identity.
 
-Azure Active Directory (Azure AD) je centralizovaný poskytovatel identity v cloudu. Delegování ověřování a autorizace do IT umožňuje scénáře, jako jsou zásady podmíněného přístupu, které vyžadují, aby uživatel byl v konkrétním umístění, použití služby Multi-Factor Authentication a aby se uživatel mohl přihlásit a pak se automaticky přihlásil ke všem webovým aplikacím, které sdílejí stejný centralizovaný adresář. Tato funkce se označuje jako **jednotné přihlašování (SSO)**.
+Azure Active Directory (Azure AD) je centralizovaný poskytovatel identity v cloudu. Delegování ověřování a autorizace do IT umožňuje scénáře, jako jsou zásady podmíněného přístupu, které vyžadují, aby uživatel byl v určitém umístění, použití služby [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) (někdy označované jako dvojúrovňové ověřování nebo 2FA) a taky umožnit uživateli, aby se přihlásili jednou a pak se automaticky přihlásil ke všem webovým aplikacím, které sdílejí stejný centralizovaný adresář. Tato funkce se označuje jako **jednotné přihlašování (SSO)**.
 
-Microsoft Identity Platform usnadňuje ověřování a autorizaci pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect a také open source knihovny pro různé platformy, které vám pomůžou rychle začít vytvářet kódování. Umožňuje vývojářům sestavovat aplikace, které přihlásí všechny identity Microsoftu, získat tokeny pro volání [Microsoft Graph](https://developer.microsoft.com/graph/), jiná rozhraní API Microsoftu nebo rozhraní API, která vývojáři sestavili. Další informace najdete v tématu [vývoj platformy Microsoft Identity Platform](about-microsoft-identity-platform.md).
+Microsoft Identity Platform usnadňuje autorizaci a ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect a také open source knihovny pro různé platformy, které vám pomůžou rychle začít vytvářet kódování. Umožňuje vývojářům sestavovat aplikace, které přihlásí všechny identity Microsoftu, získat tokeny pro volání [Microsoft Graph](https://developer.microsoft.com/graph/), jiná rozhraní API Microsoftu nebo rozhraní API, která vývojáři sestavili. Další informace najdete v tématu [vývoj platformy Microsoft Identity Platform](about-microsoft-identity-platform.md).
 
 Následuje krátké porovnání různých protokolů používaných platformami Microsoft Identity Platform:
 
@@ -50,11 +50,10 @@ Následuje krátké porovnání různých protokolů používaných platformami 
 
 Další témata týkající se ověřování a základů autorizace:
 
-* V tématu [tokeny zabezpečení](security-tokens.md) se dozvíte, jak se v ověřování a autorizaci používají přístupové tokeny, aktualizují tokeny a tokeny ID.
+* V tématu [tokeny zabezpečení](security-tokens.md) se dozvíte, jak se v autorizaci a ověřování používají přístupové tokeny, aktualizují tokeny a tokeny ID.
 * V článku [aplikační model](application-model.md) se dozvíte o procesu registrace aplikace, aby se mohla integrovat s platformou Microsoft identity.
 * V tématu [Flow pro přihlášení k aplikaci](app-sign-in-flow.md) se dozvíte o procesu přihlašování webových, desktopových a mobilních aplikací na platformě Microsoft identity.
 
-Další informace o protokolech, které Microsoft Identity Platform implementuje:
-
-* Další informace o standardech OpenID Connect a OAuth 2,0 najdete v tématu [protokoly oauth 2,0 a OpenID Connect na platformě Microsoft Identity](active-directory-v2-protocols.md) .
+* Další informace o protokolech, které Microsoft Identity Platform implementuje, najdete v tématu [protokoly OAuth 2,0 a OpenID Connect na platformě Microsoft Identity Platform](active-directory-v2-protocols.md).
 * Další informace o tom, jak platforma Microsoft identity podporuje jednotné přihlašování, najdete v tématu [protokol SAML jednotného přihlašování](single-sign-on-saml-protocol.md) .
+* Další informace o různých způsobech, jak můžete v aplikaci implementovat jednotné přihlašování, najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md) .

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 78ec45f5e6c354644e4303db53f276343225eff9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 86e1bc088c3e4327fbd0b9ad4a05e7c42c3fb776
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858831"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773494"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -24,8 +24,18 @@ V tomto kurzu, který je první částí tři, připravíte své prostředí, ab
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.75 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
+### <a name="verify-your-permissions"></a>Ověření oprávnění
+
+Pokud chcete vytvořit cluster Azure Red Hat OpenShift, ověřte následující oprávnění pro svůj účet Azure a uživatele:
+
+[!div class="mx-tdBreakAll"]
+|Oprávnění|Skupina prostředků, která obsahuje virtuální síť|Provádění uživatelem`az aro create`|Instanční objekt se předal jako`–client-id`|
+|----|:----:|:----:|:----:|
+|**Správce uživatelského přístupu**|×|×| |
+|**Přispěvatel**|×|×|×|
+
 ### <a name="install-the-az-aro-extension"></a>Nainstalovat `az aro` rozšíření
-`az aro` Rozšíření umožňuje vytvořit, otevřít a odstranit clustery Azure Red Hat OpenShift přímo z příkazového řádku pomocí Azure CLI.
+`az aro`Rozšíření umožňuje vytvořit, otevřít a odstranit clustery Azure Red Hat OpenShift přímo z příkazového řádku pomocí Azure CLI.
 
 Spusťte následující příkaz pro instalaci `az aro` rozšíření.
 
@@ -41,7 +51,7 @@ az extension update -n aro --index https://az.aroapp.io/stable
 
 ### <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 
-Dál je potřeba zaregistrovat poskytovatele `Microsoft.RedHatOpenShift` prostředků ve vašem předplatném.
+Dál je potřeba zaregistrovat `Microsoft.RedHatOpenShift` poskytovatele prostředků ve vašem předplatném.
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
@@ -74,7 +84,7 @@ Tajný kód pro stažení Red Hat umožňuje vašemu clusteru přístup k regist
 
 Uložte si uložený `pull-secret.txt` soubor na bezpečném místě, bude se používat při každém vytváření clusteru.
 
-Při spuštění `az aro create` příkazu můžete na svůj tajný kód pro `--pull-secret @pull-secret.txt` vyžádání obsahu odkazovat pomocí parametru. Spusťte `az aro create` z adresáře, kam jste uložili `pull-secret.txt` soubor. V opačném `@pull-secret.txt` případě `@<path-to-my-pull-secret-file>`nahraďte parametrem.
+Při spuštění `az aro create` příkazu můžete na svůj tajný kód pro vyžádání obsahu odkazovat pomocí `--pull-secret @pull-secret.txt` parametru. Spusťte `az aro create` z adresáře, kam jste uložili `pull-secret.txt` soubor. V opačném případě nahraďte parametrem `@pull-secret.txt` `@<path-to-my-pull-secret-file>` .
 
 Pokud kopírujete tajný kód pro vyžádání obsahu nebo na něj odkazujete v jiných skriptech, měl by váš tajný klíč pro vyžádání formátu obsahovat platný řetězec JSON.
 
@@ -199,9 +209,9 @@ az aro create \
 Po provedení `az aro create` příkazu bude normálně trvat přibližně 35 minut, než se cluster vytvoří.
 
 >[!IMPORTANT]
-> Pokud se rozhodnete zadat vlastní doménu, například **foo.example.com**, konzola OpenShift bude k dispozici na adrese URL `https://console-openshift-console.apps.foo.example.com`, jako je místo v předdefinované doméně. `https://console-openshift-console.apps.<random>.<location>.aroapp.io`
+> Pokud se rozhodnete zadat vlastní doménu, například **foo.example.com**, konzola OpenShift bude k dispozici na adrese URL `https://console-openshift-console.apps.foo.example.com` , jako je místo v předdefinované doméně `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 >
-> Ve výchozím nastavení používá OpenShift certifikáty podepsané svým držitelem pro všechny trasy vytvořené v `*.apps.<random>.<location>.aroapp.io`nástroji.  Pokud se po připojení ke clusteru rozhodnete použít vlastní DNS, budete muset postupovat podle dokumentace OpenShift a [nakonfigurovat vlastní CA pro váš kontroler](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) příchozího přístupu a [vlastní CA pro váš Server API](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
+> Ve výchozím nastavení používá OpenShift certifikáty podepsané svým držitelem pro všechny trasy vytvořené v nástroji `*.apps.<random>.<location>.aroapp.io` .  Pokud se po připojení ke clusteru rozhodnete použít vlastní DNS, budete muset postupovat podle dokumentace OpenShift a [nakonfigurovat vlastní CA pro váš kontroler](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) příchozího přístupu a [vlastní CA pro váš Server API](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
 >
 
 ## <a name="next-steps"></a>Další kroky

@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: cc040fe2c9e0686844c8609b9682d757595b9dbf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: a0d3c23f8f53b8ddfbd3fbd1cb1744a47664ce08
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981064"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774022"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace na jaře Boot
 
@@ -29,12 +29,12 @@ Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou p
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **správce** > funkcí **+ Přidat** a přidejte příznak funkce s názvem `Beta`.
+6. Vyberte **správce funkcí**  >  **+ Přidat** a přidejte příznak funkce s názvem `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![Povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
 
-    Pro `label` teď nechte nedefinovaného.
+    `label`Pro teď nechte nedefinovaného.
 
 ## <a name="create-a-spring-boot-app"></a>Vytvoření aplikace pro spouštění pružiny
 
@@ -46,7 +46,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
    * Vygenerujte projekt **Maven** v **Javě**.
    * Zadejte verzi pro **jarní spuštění** , která je rovna nebo větší než 2,0.
-   * Zadejte názvy skupiny (**Group**) a artefaktu (**Artifact**) pro vaši aplikaci.  Tento článek používá `com.example` a `demo`.
+   * Zadejte názvy skupiny (**Group**) a artefaktu (**Artifact**) pro vaši aplikaci.  Tento článek používá `com.example` a `demo` .
    * Přidejte **webovou závislost pružiny** .
 
 1. Po zadání předchozích možností vyberte **generovat projekt**. Po zobrazení výzvy Stáhněte projekt do svého místního počítače.
@@ -55,7 +55,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 1. Po extrahování souborů v místním systému je vaše aplikace pro spouštění pružiny připravená k úpravám. V kořenovém adresáři vaší aplikace vyhledejte *pom. XML* .
 
-1. V textovém editoru otevřete soubor *pom. XML* a přidejte následující text do seznamu `<dependencies>`:
+1. V textovém editoru otevřete soubor *pom. XML* a přidejte následující text do seznamu `<dependencies>` :
 
     **Jarní Cloud 1.1. x**
 
@@ -100,7 +100,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Přejděte do `resources` adresáře aplikace a otevřete `bootstrap.properties`.  Pokud soubor neexistuje, vytvořte ho. Do souboru přidejte následující řádek.
+1. Přejděte do `resources` adresáře aplikace a otevřete `bootstrap.properties` .  Pokud soubor neexistuje, vytvořte ho. Do souboru přidejte následující řádek.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
@@ -108,7 +108,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 1. Na portálu konfigurace aplikace pro úložiště konfigurace vyberte `Access keys` z tohoto bočního panelu. Vyberte kartu klíče jen pro čtení. Zkopírujte hodnotu primárního připojovacího řetězce.
 
-1. Přidejte primární připojovací řetězec jako proměnnou prostředí pomocí názvu `APP_CONFIGURATION_CONNECTION_STRING`proměnné.
+1. Přidejte primární připojovací řetězec jako proměnnou prostředí pomocí názvu proměnné `APP_CONFIGURATION_CONNECTION_STRING` .
 
 1. Otevřete soubor hlavní aplikace v jazyce Java a přidejte `@EnableConfigurationProperties` ho a povolte tuto funkci.
 
@@ -178,7 +178,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
         @GetMapping("/welcome")
         public String mainWithParam(Model model) {
-            model.addAttribute("Beta", featureManager.isEnabledAsync("Beta").block());
+            model.addAttribute("Beta", featureManager.isEnabledAsync("featureManagement.Beta").block());
             return "welcome";
         }
     }
@@ -283,15 +283,15 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     mvn spring-boot:run
     ```
 
-1. Otevřete okno prohlížeče a použijte adresu URL: `http://localhost:8080/welcome`.
+1. Otevřete okno prohlížeče a použijte adresu URL: `http://localhost:8080/welcome` .
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
 1. Na portálu konfigurace aplikace vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**:
 
-    | Key | Stav |
+    | Klíč | State |
     |---|---|
-    | Beta | Zapnuto |
+    | Beta | Zapnout |
 
 1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace.
 

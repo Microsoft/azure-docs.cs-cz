@@ -3,7 +3,7 @@ title: Architektura připojení pro spravovanou instanci
 description: Přečtěte si o Azure SQL Database komunikaci spravované instance a architektuře připojení a také o tom, jak komponenty směrují provoz do spravované instance.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f341c3c2c299ca358b2a42210f04c6399fe2892
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677175"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773606"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci v Azure SQL Database
 
@@ -66,7 +66,7 @@ Pojďme se na architekturu připojení pro spravované instance pořizovat hlub�
 
 ![Architektura připojení virtuálního clusteru](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Klienti se připojují ke spravované instanci pomocí názvu hostitele, který má formu `<mi_name>.<dns_zone>.database.windows.net`. Tento název hostitele se překládá na privátní IP adresu, i když je zaregistrovaný ve veřejné zóně DNS (Domain Name System) a je veřejně přeložitelný. Při `zone-id` vytváření clusteru se automaticky vygeneruje. Pokud je nově vytvořený cluster hostitelem sekundární spravované instance, sdílí své ID zóny s primárním clusterem. Další informace najdete v tématu [použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
+Klienti se připojují ke spravované instanci pomocí názvu hostitele, který má formu `<mi_name>.<dns_zone>.database.windows.net` . Tento název hostitele se překládá na privátní IP adresu, i když je zaregistrovaný ve veřejné zóně DNS (Domain Name System) a je veřejně přeložitelný. `zone-id`Při vytváření clusteru se automaticky vygeneruje. Pokud je nově vytvořený cluster hostitelem sekundární spravované instance, sdílí své ID zóny s primárním clusterem. Další informace najdete v tématu [použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Tato privátní IP adresa patří do interního nástroje pro vyrovnávání zatížení spravované instance. Nástroj pro vyrovnávání zatížení směruje provoz do brány spravované instance. Vzhledem k tomu, že je možné spustit více spravovaných instancí v rámci stejného clusteru, brána používá název hostitele spravované instance pro přesměrování provozu do správné služby SQL Engine.
 
@@ -83,28 +83,28 @@ Když se připojení spouštějí v rámci spravované instance (stejně jako u 
 
 ## <a name="service-aided-subnet-configuration"></a>Konfigurace podsítě s podporou služeb
 
-Aby bylo možné řešit požadavky na zabezpečení zákazníků a možnosti spravovatelnosti, je přechod z ruční na konfiguraci podsítě s podporou služby.
+V reakci na požadavky zákazníků na zabezpečení a možnosti správy přecházejí spravované instance z ruční konfigurace na konfiguraci podsítě s podporou služeb.
 
-Uživatel s konfigurací podsítě s podporou služeb má úplnou kontrolu nad provozem dat (TDS), zatímco spravovaná instance vezme zodpovědnost za zajištění nepřerušovaného toku provozu správy za účelem splnění smlouvy SLA.
+V případě konfigurace podsítě s podporou služeb má uživatel úplnou kontrolu nad přenosem dat (TDS), zatímco spravovaná instance zodpovídá za zajištění nepřerušovaného toku provozu správy za účelem splnění podmínek smlouvy SLA.
 
-Konfigurace podsítě s podporou služby je založena na funkci [delegování podsítě](../virtual-network/subnet-delegation-overview.md) virtuální sítě, která poskytuje automatickou správu konfigurace sítě a povoluje koncové body služby. Koncové body služby se daly použít ke konfiguraci pravidel brány firewall virtuální sítě pro účty úložiště, které udržují protokoly zálohování a auditu.
+Konfigurace podsítě s podporou služeb vychází z funkce [delegování podsítě](../virtual-network/subnet-delegation-overview.md) virtuální sítě a díky tomu zajišťuje automatickou správu konfigurace sítě a umožňuje používání koncových bodů služeb. Koncové body služeb je možné použít ke konfiguraci pravidel firewallu virtuální sítě pro účty úložiště, které uchovávají zálohy nebo protokoly auditu.
 
 ### <a name="network-requirements"></a>Síťové požadavky 
 
-Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě. Podsíť musí mít tyto vlastnosti:
+Nasaďte spravovanou instanci ve vyhrazené podsíti v rámci virtuální sítě. Podsíť musí mít tyto charakteristiky:
 
-- **Vyhrazená podsíť:** Podsíť spravované instance nemůže obsahovat žádnou jinou cloudovou službu, která je k ní přidružená, a nemůže to být podsíť brány. Podsíť nemůže obsahovat žádný prostředek, ale spravovanou instanci a nelze později přidat další typy prostředků v podsíti.
+- **Vyhrazená podsíť:** Podsíť spravované instance nesmí obsahovat žádnou jinou přidruženou cloudovou službu a nemůže se jednat o podsíť brány. Podsíť kromě spravované instance nesmí obsahovat žádné jiné prostředky a ani později nemůžete do podsítě přidat další typy prostředků.
 - **Delegování podsítě:** Podsíť spravované instance musí být delegovaná na `Microsoft.Sql/managedInstances` poskytovatele prostředků.
-- **Skupina zabezpečení sítě (NSG):** NSG musí být přidružený k podsíti spravované instance. Pomocí NSG můžete řídit přístup ke koncovému bodu dat spravované instance pomocí filtrování provozu na portech 1433 a porty 11000-11999, pokud je spravovaná instance nakonfigurovaná pro připojení přesměrování. Služba automaticky zřídí a zachová aktuální [pravidla](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) nutná k tomu, aby umožňovala nepřetržitý tok provozu správy.
-- **Tabulka uživatelsky definované trasy (udr):** Tabulka UDR musí být přidružena k podsíti spravované instance. Do směrovací tabulky můžete přidat položky, které budou směrovat provoz s místními rozsahy privátních IP adres jako cíl prostřednictvím brány virtuální sítě nebo zařízení virtuální sítě (síťové virtuální zařízení). Služba automaticky zřídí a zachová aktuální [položky](#user-defined-routes-with-service-aided-subnet-configuration) , které jsou potřeba k tomu, aby umožňovaly nepřerušovaný tok provozu správy.
-- **Dostatečná IP adresa:** Podsíť spravované instance musí mít aspoň 16 IP adres. Doporučené minimum jsou 32 IP adresy. Další informace najdete v tématu [Určení velikosti podsítě pro spravované instance](sql-database-managed-instance-determine-size-vnet-subnet.md). Spravované instance můžete nasadit v [existující síti](sql-database-managed-instance-configure-vnet-subnet.md) poté, co ji nakonfigurujete tak, aby splňovala [požadavky na síť pro spravované instance](#network-requirements). V opačném případě vytvořte [novou síť a podsíť](sql-database-managed-instance-create-vnet-subnet.md).
+- **Skupina zabezpečení sítě (NSG):** K podsíti spravované instance musí být přidružená skupina zabezpečení sítě. Pomocí skupiny zabezpečení sítě můžete řídit přístup k datovému koncovému bodu spravované instance tím, že budete filtrovat provoz na portu 1433 a portech 11000–⁠11999 v případě, že je pro spravovanou instanci nakonfigurované přesměrování připojení. Služba bude automaticky zřizovat a udržovat aktuální [pravidla](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) požadovaná k umožnění nepřerušovaného toku provozu správy.
+- **Tabulka tras definovaných uživatelem (UDR):** K podsíti spravované instance musí být přidružená tabulka tras definovaných uživatelem. Prostřednictvím brány virtuální sítě nebo síťového virtuálního zařízení můžete do směrovací tabulky přidat záznamy pro směrování provozu, který má jako cíl místní rozsahy privátních IP adres. Služba bude automaticky zřizovat a udržovat aktuální [záznamy](#user-defined-routes-with-service-aided-subnet-configuration) požadované k umožnění nepřerušovaného toku provozu správy.
+- **Dostatek IP adres:** Podsíť spravované instance musí mít alespoň 16 IP adres. Doporučené minimum je 32 IP adres. Další informace najdete v tématu [Určení velikosti podsítě pro spravované instance](sql-database-managed-instance-determine-size-vnet-subnet.md). Spravované instance můžete nasadit v [existující síti](sql-database-managed-instance-configure-vnet-subnet.md), pokud jste ji nakonfigurovali tak, aby splňovala [požadavky na síť pro spravované instance](#network-requirements). Jinak vytvořte [novou síť a podsíť](sql-database-managed-instance-create-vnet-subnet.md).
 
 > [!IMPORTANT]
 > Při vytváření spravované instance se v podsíti použije zásada záměru sítě, aby se zabránilo nekompatibilním změnám nastavení sítě. Po odebrání poslední instance z podsítě se odstraní také zásada záměru sítě.
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Povinná příchozí pravidla zabezpečení s konfigurací podsítě s podporou služby 
 
-| Název       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Name       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |správa  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |PODSÍŤ MI  |Povolit |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |PODSÍŤ MI  |Povolit |
@@ -114,14 +114,14 @@ Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě.
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Povinná odchozí pravidla zabezpečení s konfigurací podsítě s podporou služby 
 
-| Název       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Name       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
 |správa  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
 |mi_subnet   |Všechny           |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Uživatelem definované trasy s konfigurací podsítě s podporou služby 
 
-|Název|Předpona adresy|Další segment směrování|
+|Name|Předpona adresy|Další segment směrování|
 |----|--------------|-------|
 |podsíť do vnetlocal|PODSÍŤ MI|Virtuální síť|
 |mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -310,20 +310,20 @@ Pro spravovanou instanci nejsou aktuálně podporovány následující funkce vi
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>Zastaralé Požadavky na síť bez konfigurace podsítě pro službu
 
-Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě. Podsíť musí mít tyto vlastnosti:
+Nasaďte spravovanou instanci ve vyhrazené podsíti v rámci virtuální sítě. Podsíť musí mít tyto charakteristiky:
 
-- **Vyhrazená podsíť:** Podsíť spravované instance nemůže obsahovat žádnou jinou cloudovou službu, která je k ní přidružená, a nemůže to být podsíť brány. Podsíť nemůže obsahovat žádný prostředek, ale spravovanou instanci a nelze později přidat další typy prostředků v podsíti.
-- **Skupina zabezpečení sítě (NSG):** NSG, která je přidružená k virtuální síti, musí definovat [příchozí pravidla zabezpečení](#mandatory-inbound-security-rules) a [odchozí pravidla zabezpečení](#mandatory-outbound-security-rules) před všemi ostatními pravidly. Pomocí NSG můžete řídit přístup ke koncovému bodu dat spravované instance pomocí filtrování provozu na portech 1433 a porty 11000-11999, pokud je spravovaná instance nakonfigurovaná pro připojení přesměrování.
+- **Vyhrazená podsíť:** Podsíť spravované instance nesmí obsahovat žádnou jinou přidruženou cloudovou službu a nemůže se jednat o podsíť brány. Podsíť kromě spravované instance nesmí obsahovat žádné jiné prostředky a ani později nemůžete do podsítě přidat další typy prostředků.
+- **Skupina zabezpečení sítě (NSG):** NSG, která je přidružená k virtuální síti, musí definovat [příchozí pravidla zabezpečení](#mandatory-inbound-security-rules) a [odchozí pravidla zabezpečení](#mandatory-outbound-security-rules) před všemi ostatními pravidly. Pomocí skupiny zabezpečení sítě můžete řídit přístup k datovému koncovému bodu spravované instance tím, že budete filtrovat provoz na portu 1433 a portech 11000–⁠11999 v případě, že je pro spravovanou instanci nakonfigurované přesměrování připojení.
 - **Tabulka uživatelsky definované trasy (udr):** Tabulka UDR, která je přidružená k virtuální síti, musí zahrnovat konkrétní [položky](#user-defined-routes).
 - **Žádné koncové body služby:** K podsíti spravované instance by neměl být přidružen žádný koncový bod služby. Ujistěte se, že je při vytváření virtuální sítě možnost koncové body služby zakázaná.
-- **Dostatečná IP adresa:** Podsíť spravované instance musí mít aspoň 16 IP adres. Doporučené minimum jsou 32 IP adresy. Další informace najdete v tématu [Určení velikosti podsítě pro spravované instance](sql-database-managed-instance-determine-size-vnet-subnet.md). Spravované instance můžete nasadit v [existující síti](sql-database-managed-instance-configure-vnet-subnet.md) poté, co ji nakonfigurujete tak, aby splňovala [požadavky na síť pro spravované instance](#network-requirements). V opačném případě vytvořte [novou síť a podsíť](sql-database-managed-instance-create-vnet-subnet.md).
+- **Dostatek IP adres:** Podsíť spravované instance musí mít alespoň 16 IP adres. Doporučené minimum je 32 IP adres. Další informace najdete v tématu [Určení velikosti podsítě pro spravované instance](sql-database-managed-instance-determine-size-vnet-subnet.md). Spravované instance můžete nasadit v [existující síti](sql-database-managed-instance-configure-vnet-subnet.md), pokud jste ji nakonfigurovali tak, aby splňovala [požadavky na síť pro spravované instance](#network-requirements). Jinak vytvořte [novou síť a podsíť](sql-database-managed-instance-create-vnet-subnet.md).
 
 > [!IMPORTANT]
 > Nemůžete nasadit novou spravovanou instanci, pokud v cílové podsíti chybí tyto vlastnosti. Při vytváření spravované instance se v podsíti použije zásada záměru sítě, aby se zabránilo nekompatibilním změnám nastavení sítě. Po odebrání poslední instance z podsítě se odstraní také zásada záměru sítě.
 
 ### <a name="mandatory-inbound-security-rules"></a>Povinná příchozí pravidla zabezpečení
 
-| Název       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Name       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |správa  |9000, 9003, 1438, 1440, 1452|TCP     |Všechny              |PODSÍŤ MI  |Povolit |
 |mi_subnet   |Všechny                         |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
@@ -331,7 +331,7 @@ Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě.
 
 ### <a name="mandatory-outbound-security-rules"></a>Povinná odchozí pravidla zabezpečení
 
-| Název       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+| Name       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
 |správa  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
 |mi_subnet   |Všechny           |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
@@ -349,7 +349,7 @@ Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě.
 
 ### <a name="user-defined-routes"></a>Trasy definované uživatelem
 
-|Název|Předpona adresy|Další segment směrování|
+|Name|Předpona adresy|Další segment směrování|
 |----|--------------|-------|
 |subnet_to_vnetlocal|PODSÍŤ MI|Virtuální síť|
 |mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|

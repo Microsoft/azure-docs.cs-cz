@@ -2,14 +2,14 @@
 title: Azure Application Insights pro konzolové aplikace | Microsoft Docs
 description: Monitorujte webové aplikace pro účely dostupnosti, výkonu a využití.
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe34b2b48de8ef4f6c2cdd61623b885878bad2b4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655425"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774041"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro konzolové aplikace .NET
 
@@ -18,7 +18,7 @@ ms.locfileid: "77655425"
 K [Microsoft Azure](https://azure.com)potřebujete předplatné. Přihlaste se pomocí účet Microsoft, kterou můžete potřebovat pro Windows, Xbox Live nebo jiné cloudové služby Microsoftu. Váš tým může mít k Azure předplatné organizace: Požádejte vlastníka, aby vás do něho přidal pomocí účet Microsoft.
 
 > [!NOTE]
-> K dispozici je nová Application Insights SDK označovaná jako [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , která se dá použít k povolení Application Insights pro jakékoli konzolové aplikace. Doporučuje se použít tento balíček a související pokyny [odsud.](../../azure-monitor/app/worker-service.md) Tento balíček cílí [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard), a proto se dá použít v .net Core 2,0 nebo vyšší a .NET Framework 4.7.2 nebo novější.
+> K dispozici je nová Application Insights SDK označovaná jako [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , která se dá použít k povolení Application Insights pro jakékoli konzolové aplikace. Doporučuje se použít tento balíček a související pokyny [odsud.](../../azure-monitor/app/worker-service.md) Tento balíček cílí [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) , a proto se dá použít v .NET Core 2,0 nebo vyšší a .NET Framework 4.7.2 nebo novější.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -36,7 +36,7 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> Telemetrii se neposílá okamžitě. Položky telemetrie jsou v sadě ApplicationInsights SDK a posílány pomocí dávek. V konzolových aplikacích, které se ukončí hned po `Track()` volání metod, telemetrie nemůžete odeslat `Flush()` , `Sleep` Pokud a není provedeno před ukončením aplikace, jak je uvedeno v [úplném příkladu](#full-example) dále v tomto článku.
+> Telemetrii se neposílá okamžitě. Položky telemetrie jsou v sadě ApplicationInsights SDK a posílány pomocí dávek. V konzolových aplikacích, které se ukončí hned po volání `Track()` metod, telemetrie nemůžete odeslat, pokud `Flush()` a `Sleep` / `Delay` není provedeno před ukončením aplikace, jak je uvedeno v [úplném příkladu](#full-example) dále v tomto článku. `Sleep`není vyžadováno, pokud používáte `InMemoryChannel` . Existuje aktivní problém týkající se potřeby, `Sleep` které tady sledujeme: [ApplicationInsights-dotnet/problémy/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
 
 * Nainstalovat nejnovější verzi balíčku [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) – automaticky sleduje http, SQL nebo některá další volání vnějších závislostí.
@@ -48,7 +48,7 @@ Můžete inicializovat a konfigurovat Application Insights z kódu nebo pomocí 
 
 ### <a name="using-config-file"></a>Použití konfiguračního souboru
 
-Ve výchozím nastavení Application Insights SDK při `ApplicationInsights.config` `TelemetryConfiguration` vytváření v pracovním adresáři vyhledá soubor.
+Ve výchozím nastavení Application Insights SDK `ApplicationInsights.config` při vytváření v pracovním adresáři vyhledá soubor `TelemetryConfiguration` .
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
@@ -125,7 +125,7 @@ module.Initialize(configuration);
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-Pokud jste vytvořili konfiguraci pomocí jednoduchého `TelemetryConfiguration()` konstruktoru, je nutné povolit podporu korelace navíc. Není **nutné** , pokud si přečtete konfiguraci ze souboru, používá `TelemetryConfiguration.CreateDefault()` se `TelemetryConfiguration.Active`nebo.
+Pokud jste vytvořili konfiguraci pomocí jednoduchého `TelemetryConfiguration()` konstruktoru, je nutné povolit podporu korelace navíc. Není **nutné** , pokud si přečtete konfiguraci ze souboru, používá se `TelemetryConfiguration.CreateDefault()` nebo `TelemetryConfiguration.Active` .
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
@@ -172,7 +172,8 @@ namespace ConsoleApp
             // before exit, flush the remaining data
             telemetryClient.Flush();
 
-            // flush is not blocking so wait a bit
+            // flush is not blocking when not using InMemoryChannel so wait a bit. There is an active issue regarding the need for `Sleep`/`Delay`
+            // which is tracked here: https://github.com/microsoft/ApplicationInsights-dotnet/issues/407
             Task.Delay(5000).Wait();
 
         }

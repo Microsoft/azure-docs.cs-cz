@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 24567461ee8a87fc9dbd1c5fb4eba5e34d458f7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c439c118e242f3561593aa0c8fe9a88b3b07a4a9
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097757"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771838"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -25,10 +25,10 @@ Po vytvoření instance veřejné klientské aplikace ji použijete k získání
 
 ## <a name="recommended-pattern"></a>Doporučený vzor
 
-Webové rozhraní API je definováno pomocí `scopes`. Bez ohledu na možnosti, které zadáte ve své aplikaci, je použit vzor:
+Webové rozhraní API je definováno pomocí `scopes` . Bez ohledu na možnosti, které zadáte ve své aplikaci, je použit vzor:
 
-- Systematicky se pokusí získat token z mezipaměti tokenu voláním `AcquireTokenSilent`.
-- Pokud se toto volání nezdařilo `AcquireToken` , použijte tok, který chcete použít, který je reprezentován zde `AcquireTokenXX`.
+- Systematicky se pokusí získat token z mezipaměti tokenu voláním `AcquireTokenSilent` .
+- Pokud se toto volání nezdařilo, použijte `AcquireToken` tok, který chcete použít, který je reprezentován zde `AcquireTokenXX` .
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -105,7 +105,7 @@ if not result:
     result = app.acquire_token_by_xxx(scopes=config["scope"])
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>V MSAL pro iOS a macOS
 
@@ -175,9 +175,9 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Povinné parametry
 
-`AcquireTokenInteractive`má pouze jeden povinný parametr, ``scopes``, který obsahuje výčet řetězců definujících obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, požadované obory najdete v referenčních informacích k rozhraní API každého Microsoft Graph API v části s názvem "oprávnění". Pokud například chcete [Zobrazit seznam kontaktů uživatele](https://docs.microsoft.com/graph/api/user-list-contacts), je nutné použít rozsah "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive`má pouze jeden povinný parametr, ``scopes`` , který obsahuje výčet řetězců definujících obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, požadované obory najdete v referenčních informacích k rozhraní API každého Microsoft Graph API v části s názvem "oprávnění". Pokud například chcete [Zobrazit seznam kontaktů uživatele](https://docs.microsoft.com/graph/api/user-list-contacts), je nutné použít rozsah "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
-V systému Android je také nutné zadat nadřazenou aktivitu pomocí `.WithParentActivityOrWindow`, jak je znázorněno, aby se token vrátil zpět k této nadřazené aktivitě po interakci. Pokud ho nezadáte, vyvolá se při volání `.ExecuteAsync()`výjimka.
+V systému Android je také nutné zadat nadřazenou aktivitu pomocí `.WithParentActivityOrWindow` , jak je znázorněno, aby se token vrátil zpět k této nadřazené aktivitě po interakci. Pokud ho nezadáte, vyvolá se při volání výjimka `.ExecuteAsync()` .
 
 ### <a name="specific-optional-parameters-in-msalnet"></a>Konkrétní volitelné parametry v MSAL.NET
 
@@ -199,9 +199,9 @@ WithParentActivityOrWindow(object parent).
 
 Mark
 
-- V .NET Standard se `object` očekává, že `Activity` se nachází v `UIViewController` Androidu, `NSWindow` v iOS, na `IWin32Window` Macu `IntPr` a v systému Windows.
-- V systému Windows je nutné volat `AcquireTokenInteractive` z vlákna uživatelského rozhraní, aby vložený prohlížeč dostal příslušný kontext synchronizace uživatelského rozhraní. Nevolání z vlákna uživatelského rozhraní může způsobit, že se v uživatelském rozhraní nemusejí správně vygenerovat zprávy o scénářích a zablokování. Jedním ze způsobů, jak volat knihovny MSALs (Microsoft Authentication Library) z vlákna uživatelského rozhraní, pokud nejste ve vlákně uživatelského `Dispatcher` rozhraní, je použití v WPF.
-- Pokud používáte WPF, chcete-li získat okno z ovládacího prvku WPF, můžete použít `WindowInteropHelper.Handle` třídu. Pak je volání z ovládacího prvku WPF (`this`):
+- V .NET Standard se očekává, že `object` se nachází `Activity` v Androidu, v `UIViewController` iOS, `NSWindow` na Macu a `IWin32Window` `IntPr` v systému Windows.
+- V systému Windows je nutné volat `AcquireTokenInteractive` z vlákna uživatelského rozhraní, aby vložený prohlížeč dostal příslušný kontext synchronizace uživatelského rozhraní. Nevolání z vlákna uživatelského rozhraní může způsobit, že se v uživatelském rozhraní nemusejí správně vygenerovat zprávy o scénářích a zablokování. Jedním ze způsobů, jak volat knihovny MSALs (Microsoft Authentication Library) z vlákna uživatelského rozhraní, pokud nejste ve vlákně uživatelského rozhraní, je použití `Dispatcher` v WPF.
+- Pokud používáte WPF, chcete-li získat okno z ovládacího prvku WPF, můžete použít `WindowInteropHelper.Handle` třídu. Pak je volání z ovládacího prvku WPF ( `this` ):
 
   ```csharp
   result = await app.AcquireTokenInteractive(scopes)
@@ -217,7 +217,7 @@ Mark
 
 Třída definuje následující konstanty:
 
-- ``SelectAccount``vynutí, aby služba STS obsahovala dialogové okno Výběr účtu, které obsahuje účty, pro které má uživatel relaci. Tato možnost je užitečná, když vývojáři aplikací chtějí umožnit uživatelům výběr mezi různými identitami. Tato možnost Drives MSAL se ``prompt=select_account`` pošle poskytovateli identity. Tato možnost je výchozí. Na základě dostupných informací, jako je například účet a přítomnost relace pro uživatele, je vhodné zajistit nejlepší možné prostředí. Neměňte ho, pokud nemáte dobrý důvod to udělat.
+- ``SelectAccount``vynutí, aby služba STS obsahovala dialogové okno Výběr účtu, které obsahuje účty, pro které má uživatel relaci. Tato možnost je užitečná, když vývojáři aplikací chtějí umožnit uživatelům výběr mezi různými identitami. Tato možnost Drives MSAL se pošle ``prompt=select_account`` poskytovateli identity. Tato možnost je výchozí. Na základě dostupných informací, jako je například účet a přítomnost relace pro uživatele, je vhodné zajistit nejlepší možné prostředí. Neměňte ho, pokud nemáte dobrý důvod to udělat.
 - ``Consent``umožňuje vývojáři aplikace vynutit, aby se uživateli zobrazila výzva k vyjádření souhlasu, a to i v případě, že byl souhlas udělen dříve. V takovém případě MSAL odesílá `prompt=consent` poskytovateli identity. Tato možnost se dá použít v některých aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se uživateli zobrazovalo dialogové okno souhlasu při každém použití aplikace.
 - ``ForceLogin``umožňuje, aby vývojář aplikace uživateli zobrazil výzvu k zadání přihlašovacích údajů, a to i v případě, že se tato výzva uživateli nemusí potřebovat. Tato možnost může být užitečná, pokud chcete, aby se uživatel znovu přihlásil, pokud se nepovede k získání tokenu. V takovém případě MSAL odesílá `prompt=login` poskytovateli identity. Někdy se používá v aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se uživatel znovu přihlásí při každém přístupu k určitým částem aplikace.
 - ``Never``(jenom pro .NET 4,5 a WinRT) se uživatel nevyzve, ale pokusí se použít soubor cookie uložený v skrytém vloženém webovém zobrazení. Další informace najdete v tématu věnovaném webovým zobrazením v MSAL.NET. Použití této možnosti může selhat. V takovém případě `AcquireTokenInteractive` vyvolá výjimku, která oznamuje, že je potřeba interakce uživatelského rozhraní. Budete muset použít jiný `Prompt` parametr.
@@ -244,11 +244,11 @@ MSAL poskytuje implementace webového uživatelského rozhraní pro většinu pl
 
 ##### <a name="at-a-glance"></a>Na první pohled
 
-K dosažení tohoto cíle přiřadíte MSAL `start Url`, který se musí zobrazit v prohlížeči podle volby, aby koncový uživatel mohl zadávat položky, jako je například uživatelské jméno.
-Po dokončení ověřování se aplikace musí předat zpátky do MSAL `end Url`, která obsahuje kód poskytovaný službou Azure AD.
-Hostitel `end Url` je vždy `redirectUri`. K zachycení `end Url`proveďte jednu z následujících akcí:
+K dosažení tohoto cíle přiřadíte MSAL `start Url` , který se musí zobrazit v prohlížeči podle volby, aby koncový uživatel mohl zadávat položky, jako je například uživatelské jméno.
+Po dokončení ověřování se aplikace musí předat zpátky do MSAL `end Url` , která obsahuje kód poskytovaný službou Azure AD.
+Hostitel `end Url` je vždy `redirectUri` . K zachycení `end Url` proveďte jednu z následujících akcí:
 
-- Sledujte přesměrování prohlížeče, dokud `redirect Url` není dosaženo.
+- Sledujte přesměrování prohlížeče `redirect Url` , dokud není dosaženo.
 - Přesměrujte prohlížeč na adresu URL, kterou sledujete.
 
 ##### <a name="withcustomwebui-is-an-extensibility-point"></a>WithCustomWebUi je bod rozšiřitelnosti.
@@ -261,10 +261,10 @@ Hostitel `end Url` je vždy `redirectUri`. K zachycení `end Url`proveďte jednu
 
 ##### <a name="use-withcustomwebui"></a>Použití WithCustomWebUi
 
-Chcete- `.WithCustomWebUI`li použít, postupujte podle těchto kroků.
+Chcete-li použít `.WithCustomWebUI` , postupujte podle těchto kroků.
 
-  1. Implementujte rozhraní `ICustomWebUi`. Další informace najdete na [tomto webu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). Implementujte `AcquireAuthorizationCodeAsync`jednu metodu a PŘIJMĚTE adresu URL autorizačního kódu vypočítanou pomocí MSAL.NET. Potom umožníte uživateli projít interakci se zprostředkovatelem identity a vrátit zpět adresu URL, kterou by zprostředkovatel identity volal jako vaši implementaci zpátky spolu s autorizačním kódem. Pokud máte problémy, vaše implementace by měla vyvolat `MsalExtensionException` výjimku, která bude s MSAL úzce spolupracovat.
-  2. Ve svém `AcquireTokenInteractive` volání použijte `.WithCustomUI()` modifikátor předání instance vlastního webového uživatelského rozhraní.
+  1. Implementujte rozhraní `ICustomWebUi`. Další informace najdete na [tomto webu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). Implementujte jednu `AcquireAuthorizationCodeAsync` metodu a přijměte adresu URL autorizačního kódu vypočítanou pomocí MSAL.NET. Potom umožníte uživateli projít interakci se zprostředkovatelem identity a vrátit zpět adresu URL, kterou by zprostředkovatel identity volal jako vaši implementaci zpátky spolu s autorizačním kódem. Pokud máte problémy, vaše implementace by měla vyvolat `MsalExtensionException` výjimku, která bude s MSAL úzce spolupracovat.
+  2. Ve svém `AcquireTokenInteractive` volání použijte `.WithCustomUI()` Modifikátor předání instance vlastního webového uživatelského rozhraní.
 
      ```csharp
      result = await app.AcquireTokenInteractive(scopes)
@@ -278,10 +278,10 @@ Tým MSAL.NET přepsal testy uživatelského rozhraní pro použití tohoto mech
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>Zajištění skvělých zkušeností s SystemWebViewOptions
 
-Z MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet)můžete zadat:
+Z MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) můžete zadat:
 
-- Identifikátor URI, který má jít`BrowserRedirectError`na () nebo fragment HTML pro zobrazení`HtmlMessageError`() v případě chyb přihlášení nebo souhlasu v systémovém webovém prohlížeči.
-- Identifikátor URI`BrowserRedirectSuccess`, který se má v případě úspěšného přihlášení nebo vyjádření souhlasu`HtmlMessageSuccess`zobrazit () nebo fragmentu HTML
+- Identifikátor URI, který má jít na ( `BrowserRedirectError` ) nebo fragment HTML pro zobrazení ( `HtmlMessageError` ) v případě chyb přihlášení nebo souhlasu v systémovém webovém prohlížeči.
+- Identifikátor URI, který se má `BrowserRedirectSuccess` `HtmlMessageSuccess` v případě úspěšného přihlášení nebo vyjádření souhlasu zobrazit () nebo FRAGMENTu HTML
 - Akce, která se má spustit pro spuštění prohlížeče systému. Můžete zadat vlastní implementaci nastavením `OpenBrowserAsync` delegáta. Třída také poskytuje výchozí implementaci pro dva prohlížeče: `OpenWithEdgeBrowserAsync` a `OpenWithChromeEdgeBrowserAsync` pro Microsoft Edge a [Microsoft Edge na Chromu v](https://www.windowscentral.com/faq-edge-chromium)uvedeném pořadí.
 
 Chcete-li použít tuto strukturu, napište něco jako v následujícím příkladu:
@@ -304,7 +304,7 @@ var result = app.AcquireTokenInteractive(scopes)
 
 #### <a name="other-optional-parameters"></a>Další nepovinné parametry
 
-Další informace o všech dalších volitelných parametrech pro `AcquireTokenInteractive`najdete v tématu [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
+Další informace o všech dalších volitelných parametrech pro `AcquireTokenInteractive` najdete v tématu [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -374,7 +374,7 @@ if not result:
 
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 ### <a name="in-msal-for-ios-and-macos"></a>V MSAL pro iOS a macOS
 
@@ -419,13 +419,13 @@ Pokud se chcete přihlásit k doméně uživatele v doméně nebo počítači p�
 
 - Integrované ověřování systému Windows lze použít pouze pro *federované a* uživatele, tedy pro uživatele vytvořené ve službě Active Directory a na základě služby Azure AD. Uživatelé, kteří vytvořili přímo ve službě Azure AD bez zálohování služby Active Directory, se nazývají *spravované* uživatele, nemůžou tento tok ověřování používat. Toto omezení neovlivňuje tok uživatelského jména a hesla.
 - IWA je pro aplikace napsané pro platformy .NET Framework, .NET Core a Univerzální platforma Windows (UWP).
-- IWA neobejde vícefaktorové ověřování (MFA). Pokud je nakonfigurované vícefaktorové ověřování, může IWA selhat, pokud se vyžaduje výzva MFA, protože MFA vyžaduje zásah uživatele.
+- IWA neobejde službu [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md). Pokud je nakonfigurované vícefaktorové ověřování, může IWA selhat, pokud se vyžaduje výzva MFA, protože MFA vyžaduje zásah uživatele.
   > [!NOTE]
-  > Tato jedna z nich je obtížné. IWA je neinteraktivní, ale MFA vyžaduje interaktivitu uživatele. Nebudete ovládat, kdy zprostředkovatel identity požaduje, aby bylo provedeno MFA, správce tenanta. Vícefaktorové ověřování se vyžaduje, když se přihlašujete z jiné země, pokud se nepřipojí přes síť VPN k podnikové síti, a někdy i při připojení přes VPN. Neočekává se deterministické sady pravidel. Azure AD používá AI k nepřetržitému učení, jestli je potřeba MFA. Přejít zpět na výzvu uživatele, jako je interaktivní ověřování nebo tok kódu zařízení, pokud IWA dojde k chybě.
+  > Tato jedna z nich je obtížné. IWA je neinteraktivní, ale MFA vyžaduje interaktivitu uživatele. Nebudete ovládat, kdy zprostředkovatel identity požaduje, aby bylo provedeno MFA, správce tenanta. Vícefaktorové ověřování se vyžaduje v případě, že se přihlašujete z jiné země nebo oblasti, když se nepřipojí přes síť VPN k podnikové síti, a někdy i při připojení přes VPN. Neočekává se deterministické sady pravidel. Azure AD používá AI k nepřetržitému učení, jestli je potřeba MFA. Přejít zpět na výzvu uživatele, jako je interaktivní ověřování nebo tok kódu zařízení, pokud IWA dojde k chybě.
 
 - Předaná autorita `PublicClientApplicationBuilder` musí být:
-  - Tenant ve formuláři `https://login.microsoftonline.com/{tenant}/`, kde `tenant` je buď identifikátor GUID, který představuje ID tenanta nebo doménu přidruženou k tenantovi.
-  - Pro všechny pracovní a školní účty: `https://login.microsoftonline.com/organizations/`.
+  - Tenant ve formuláři `https://login.microsoftonline.com/{tenant}/` , kde `tenant` je buď identifikátor GUID, který představuje ID tenanta nebo doménu přidruženou k tenantovi.
+  - Pro všechny pracovní a školní účty: `https://login.microsoftonline.com/organizations/` .
   - Osobní účty Microsoft nejsou podporované. Nemůžete použít klienty/běžné nebo/consumers.
 
 - Protože integrované ověřování systému Windows je tichý tok:
@@ -451,7 +451,7 @@ V MSAL.NET je nutné použít:
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-Obvykle potřebujete pouze jeden parametr (`scopes`). V závislosti na tom, jak správce Windows zásady nastavil, nemusí mít aplikace na počítači s Windows povoleno vyhledávání přihlášeného uživatele. V takovém případě použijte druhou metodu `.WithUsername()`a předejte uživatelské jméno přihlášeného uživatele jako formát hlavního názvu uživatele (UPN), například. `joe@contoso.com` V .NET Core je k dispozici pouze přetížení přebírající uživatelské jméno, protože platforma .NET Core nemůže požádat o uživatelské jméno na operační systém.
+Obvykle potřebujete pouze jeden parametr ( `scopes` ). V závislosti na tom, jak správce Windows zásady nastavil, nemusí mít aplikace na počítači s Windows povoleno vyhledávání přihlášeného uživatele. V takovém případě použijte druhou metodu `.WithUsername()` a předejte uživatelské jméno přihlášeného uživatele jako formát hlavního názvu uživatele (UPN), například `joe@contoso.com` . V .NET Core je k dispozici pouze přetížení přebírající uživatelské jméno, protože platforma .NET Core nemůže požádat o uživatelské jméno na operační systém.
 
 Následující příklad prezentuje nejaktuálnější případ s vysvětlením druhu výjimek, které můžete získat a jejich zmírnění.
 
@@ -590,9 +590,9 @@ private static IAuthenticationResult acquireTokenIwa() throws Exception {
 
 Tento tok se ještě v MSAL Pythonu nepodporuje.
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
-Tento tok se nevztahuje na MacOS.
+Tento tok se nevztahuje na macOS.
 
 ---
 
@@ -615,7 +615,7 @@ Tento tok se *nedoporučuje* , protože aplikace požádá uživatele o heslo, p
 
 Platí taky následující omezení:
 
-- Tok uživatelského jména a hesla není kompatibilní s podmíněným přístupem a vícefaktorového ověřováním. Pokud je vaše aplikace spuštěná v tenantovi Azure AD, kde správce tenanta vyžaduje vícefaktorové ověřování, nemůžete tento tok použít. Mnoho organizací to udělat.
+- Tok uživatelského jména a hesla není kompatibilní s podmíněným přístupem a službou Multi-Factor Authentication. V důsledku toho, pokud vaše aplikace běží v tenantovi Azure AD, kde správce tenanta vyžaduje vícefaktorové ověřování, nemůžete tento tok použít. Mnoho organizací to udělat.
 - Funguje jenom pro pracovní a školní účty (ne MSA).
 - Tok je dostupný na platformě .NET Desktop a .NET Core, ale ne na UWP.
 
@@ -627,7 +627,7 @@ Další informace najdete v tématu [přihlašovací údaje pro heslo vlastníka
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-`IPublicClientApplication`obsahuje metodu `AcquireTokenByUsernamePassword`.
+`IPublicClientApplication`obsahuje metodu `AcquireTokenByUsernamePassword` .
 
 Následující příklad představuje zjednodušený případ.
 
@@ -832,7 +832,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-Další informace o všech modifikátorech, které lze použít pro `AcquireTokenByUsernamePassword`, naleznete v tématu [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods).
+Další informace o všech modifikátorech, které lze použít pro `AcquireTokenByUsernamePassword` , naleznete v tématu [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -913,7 +913,7 @@ if not result:
         config["username"], config["password"], scopes=config["scope"])
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 Tento tok není podporován v MSAL pro macOS.
 
@@ -927,7 +927,7 @@ Pokud píšete nástroj příkazového řádku, který nemá webové ovládací 
 
 Interaktivní ověřování pomocí Azure AD vyžaduje webový prohlížeč. Další informace najdete v tématu [použití webových prohlížečů](https://aka.ms/msal-net-uses-web-browser). K ověřování uživatelů v zařízeních nebo operačních systémech, které neposkytují webový prohlížeč, tok kódu zařízení umožňuje uživateli používat k interaktivnímu přihlášení jiné zařízení, jako je například počítač nebo mobilní telefon. Pomocí toku kódu zařízení aplikace získá tokeny prostřednictvím procesu se dvěma kroky, který je navržený pro tato zařízení nebo operačních systémech. Příklady takových aplikací jsou aplikace, které běží na iOT nebo nástrojích příkazového řádku (CLI). Nápad je následující:
 
-1. Vždy, když je vyžadováno ověření uživatele, aplikace poskytuje kód pro uživatele. Uživatel se vyzve k použití jiného zařízení, jako je například smartphone připojeného k Internetu, k přechodu na adresu URL, například `https://microsoft.com/devicelogin`. Pak se uživateli zobrazí výzva k zadání kódu. To se provede, když webová stránka provede uživatele normálním prostředím ověřování, které zahrnuje výzvy k vyjádření souhlasu a vícefaktorové ověřování (v případě potřeby).
+1. Vždy, když je vyžadováno ověření uživatele, aplikace poskytuje kód pro uživatele. Uživatel se vyzve k použití jiného zařízení, jako je například smartphone připojeného k Internetu, k přechodu na adresu URL, například `https://microsoft.com/devicelogin` . Pak se uživateli zobrazí výzva k zadání kódu. To se provede, když webová stránka provede uživatele normálním prostředím ověřování, které zahrnuje výzvy k vyjádření souhlasu a službu Multi-Factor Authentication (v případě potřeby).
 
 2. Po úspěšném ověření obdrží aplikace příkazového řádku požadované tokeny prostřednictvím back-Channel a použije je k provedení volání webového rozhraní API.
 
@@ -935,7 +935,7 @@ Interaktivní ověřování pomocí Azure AD vyžaduje webový prohlížeč. Dal
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-`IPublicClientApplication`obsahuje metodu s názvem `AcquireTokenWithDeviceCode`.
+`IPublicClientApplication`obsahuje metodu s názvem `AcquireTokenWithDeviceCode` .
 
 ```csharp
  AcquireTokenWithDeviceCode(IEnumerable<string> scopes,
@@ -944,8 +944,8 @@ Interaktivní ověřování pomocí Azure AD vyžaduje webový prohlížeč. Dal
 
 Tato metoda přijímá jako parametry:
 
-- `scopes` Pro vyžádání přístupového tokenu pro.
-- Zpětné volání, které přijímá `DeviceCodeResult`.
+- `scopes`Pro vyžádání přístupového tokenu pro.
+- Zpětné volání, které přijímá `DeviceCodeResult` .
 
   ![Vlastnosti DeviceCodeResult](https://user-images.githubusercontent.com/13203188/56024968-7af1b980-5d11-11e9-84c2-5be2ef306dc5.png)
 
@@ -1144,9 +1144,9 @@ if not result:
         # and then keep calling acquire_token_by_device_flow(flow) in your own customized loop
 ```
 
-# <a name="macos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
-Tento tok se nevztahuje na MacOS.
+Tento tok se nevztahuje na macOS.
 
 ---
 
@@ -1161,15 +1161,15 @@ V případě .NET Framework a .NET Core neuděláte nic dalšího, mezipaměť t
 Třídy a rozhraní, které jsou součástí serializace mezipaměti tokenů, jsou následující typy:
 
 - ``ITokenCache``, který definuje události pro přihlášení k odběru požadavků na serializaci mezipaměti tokenů, a metody pro serializaci nebo deserializaci mezipaměti v různých formátech (ADAL v 3.0, MSAL 2. x a MSAL 3. x = ADAL v 5.0).
-- ``TokenCacheCallback``je zpětné volání předané do událostí, aby bylo možné zpracovat serializaci. Budou volány s argumenty typu ``TokenCacheNotificationArgs``.
+- ``TokenCacheCallback``je zpětné volání předané do událostí, aby bylo možné zpracovat serializaci. Budou volány s argumenty typu ``TokenCacheNotificationArgs`` .
 - ``TokenCacheNotificationArgs``poskytuje pouze aplikaci ``ClientId`` a odkaz na uživatele, pro který je token k dispozici.
 
   ![Diagram serializace mezipaměti tokenů](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 
 > [!IMPORTANT]
-> MSAL.NET vytvoří mezipaměť tokenů za vás a poskytne `IToken` mezipaměť při volání vlastností aplikace `UserTokenCache` a. `AppTokenCache` Nechcete implementovat rozhraní sami. Vaše zodpovědnost při implementaci serializace mezipaměti vlastního tokenu je následující:
+> MSAL.NET vytvoří mezipaměť tokenů za vás a poskytne `IToken` mezipaměť při volání `UserTokenCache` vlastností aplikace a `AppTokenCache` . Nechcete implementovat rozhraní sami. Vaše zodpovědnost při implementaci serializace mezipaměti vlastního tokenu je následující:
 >
-> - Reakce na `BeforeAccess` události `AfterAccess` a nebo jejich *asynchronní* protějšky. `BeforeAccess` Delegát zodpovídá za deserializaci mezipaměti. `AfterAccess` Delegát zodpovídá za serializaci mezipaměti.
+> - Reakce na `BeforeAccess` `AfterAccess` události a nebo jejich *asynchronní* protějšky. `BeforeAccess`Delegát zodpovídá za deserializaci mezipaměti. `AfterAccess`Delegát zodpovídá za serializaci mezipaměti.
 > - Pochopení, že součást těchto událostí ukládá nebo načítá objekty blob, které jsou předány argumentem události do libovolného úložiště, které chcete.
 
 Strategie se liší v závislosti na tom, jestli píšete serializaci mezipaměti tokenů pro veřejnou klientskou aplikaci, jako je stolní počítač nebo důvěrná klientská aplikace, jako je webová aplikace nebo webové rozhraní API nebo aplikace typu démon.
@@ -1182,7 +1182,7 @@ Přizpůsobení serializace mezipaměti tokenů pro sdílení stavu jednotného 
 
 Následující příklad je Naive implementace vlastního serializace mezipaměti tokenů pro aplikace klasické pracovní plochy. V tomto případě je mezipaměť tokenu uživatele v souboru ve stejné složce jako aplikace.
 
-Po sestavení aplikace povolte serializaci voláním ``TokenCacheHelper.EnableSerialization()`` a předáním aplikace. `UserTokenCache`
+Po sestavení aplikace povolte serializaci voláním ``TokenCacheHelper.EnableSerialization()`` a předáním aplikace `UserTokenCache` .
 
 ```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)

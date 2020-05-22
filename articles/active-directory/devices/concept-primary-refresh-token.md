@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ccd51bd69c982aeae25dbf52d1e5d076542cf35
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672636"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771192"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co je primární obnovovací token?
 
@@ -39,7 +39,7 @@ Následující součásti systému Windows hrají klíčovou roli při vyžádá
 
 PRT obsahuje deklarace, které se obecně nacházejí v jakémkoli obnovovacím tokenu Azure AD. Kromě toho jsou součástí PRT některé deklarace identity specifické pro zařízení. Jsou to tyto:
 
-* **ID zařízení**: PRT se vydá uživateli na konkrétním zařízení. Deklarace `deviceID` ID zařízení určuje zařízení, na kterém se PRT uživateli vystavil. Tato deklarace identity se později vydává tokeny získanými prostřednictvím PRT. Deklarace ID zařízení se používá k určení autorizace podmíněného přístupu na základě stavu zařízení nebo dodržování předpisů.
+* **ID zařízení**: PRT se vydá uživateli na konkrétním zařízení. Deklarace ID zařízení `deviceID` určuje zařízení, na kterém se PRT uživateli vystavil. Tato deklarace identity se později vydává tokeny získanými prostřednictvím PRT. Deklarace ID zařízení se používá k určení autorizace podmíněného přístupu na základě stavu zařízení nebo dodržování předpisů.
 * **Klíč relace**: klíč relace je šifrovaný symetrický klíč generovaný službou ověřování Azure AD vydaný jako součást PRT. Klíč relace funguje jako důkaz o vlastnictví, když se PRT používá k získání tokenů pro ostatní aplikace.
 
 ### <a name="can-i-see-whats-in-a-prt"></a>Můžu se podívat, co je v PRT?
@@ -60,7 +60,7 @@ PRT se vydává během ověřování uživatelů na zařízení s Windows 10 ve 
 * Připojené ke službě **Azure AD** nebo k **hybridní službě Azure AD připojené**: během přihlašování uživatele pomocí přihlašovacích údajů organizace se vydává PRT při přihlášení k systému Windows. PRT se vydá se všemi podporovanými přihlašovacími údaji Windows 10, třeba heslem a Windows Hello pro firmy. V tomto scénáři je modulem plug-in Azure AD CloudAP primární autoritou pro PRT.
 * **Zařízení registrovaná v Azure AD**: PRT se vydá, když uživatel přidá sekundární pracovní účet do svého zařízení s Windows 10. Uživatelé můžou přidat účet do Windows 10 dvěma různými způsoby –  
    * Přidání účtu prostřednictvím tohoto účtu po přihlášení k aplikaci (například Outlook) prostřednictvím výzvy **použít tento účet všude v tomto zařízení**
-   * Přidání účtu z **Nastavení** > **účty** > **přístup do práce nebo do školy** > **připojit**
+   * Přidání účtu z **Nastavení**  >  **účty**  >  **přístup do práce nebo do školy**  >  **připojit**
 
 Ve scénářích zařízení registrovaných v Azure AD je modul plug-in Azure AD WAM primární autoritou pro PRT, protože k tomuto účtu Azure AD neprobíhá přihlášení k Windows.
 
@@ -76,7 +76,7 @@ Po vydání je PRT platný po dobu 14 dnů a průběžně se prodlouží, dokud 
 PRT používá dvě klíčové komponenty v systému Windows:
 
 * **Modul plug-in Azure AD CloudAP**: během přihlašování Windows vyžádá modul plug-in Azure AD CloudAP PRT z Azure AD s použitím přihlašovacích údajů poskytnutých uživatelem. Také ukládá do mezipaměti PRT, aby povoloval přihlášení do mezipaměti, když uživatel nemá přístup k Internetu.
-* **Modul plug-in Azure AD WAM**: když se uživatelé pokusí získat přístup k aplikacím, modul plug-in Azure AD služby WAM použije PRT k povolení jednotného přihlašování ve Windows 10. Modul plug-in Azure AD WAM používá PRT k vyžádání aktualizací a přístupových tokenů pro aplikace, které využívají WAM pro žádosti o tokeny. Umožňuje také jednotné přihlašování v prohlížečích vložením PRT do požadavků prohlížeče. Jednotné přihlašování prohlížeče ve Windows 10 je podporované v Microsoft Edge (nativně) a Chrome (prostřednictvím účtů Windows 10 nebo rozšíření Office Online).
+* **Modul plug-in Azure AD WAM**: když se uživatelé pokusí získat přístup k aplikacím, modul plug-in Azure AD služby WAM použije PRT k povolení jednotného přihlašování ve Windows 10. Modul plug-in Azure AD WAM používá PRT k vyžádání aktualizací a přístupových tokenů pro aplikace, které využívají WAM pro žádosti o tokeny. Umožňuje také jednotné přihlašování v prohlížečích vložením PRT do požadavků prohlížeče. Jednotné přihlašování prohlížeče ve Windows 10 je podporované v Microsoft Edge (nativně) a Chrome (prostřednictvím [účtů Windows 10](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) nebo rozšíření [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) ).
 
 ## <a name="how-is-a-prt-renewed"></a>Jak se PRT obnoví?
 

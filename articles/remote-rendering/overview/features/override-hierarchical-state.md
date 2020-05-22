@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: f3be073857cc8583669ab26f306760478479e2ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40857e83457222365e61a224ead19bd1d1d31ae7
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680788"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758975"
 ---
 # <a name="hierarchical-state-override"></a>Přepsání hierarchického stavu
 
 V mnoha případech je nutné dynamicky měnit vzhled částí [modelu](../../concepts/models.md), například skrýt Podgrafy nebo přepínat části na transparentní vykreslování. Změna materiálů jednotlivých zúčastněných částí není praktická, protože vyžaduje iteraci v celém grafu scény a správu klonování a přiřazování materiálů na jednotlivých uzlech.
 
-K dosažení tohoto případu použití s minimální možnou režií použijte `HierarchicalStateOverrideComponent`. Tato součást implementuje hierarchické aktualizace stavu na libovolných větvích grafu scény. To znamená, že stav může být definován na libovolné úrovni grafu scény a trickles hierarchii, dokud není přepsána novým stavem nebo použit pro objekt typu list.
+K dosažení tohoto případu použití s minimální možnou režií použijte `HierarchicalStateOverrideComponent` . Tato součást implementuje hierarchické aktualizace stavu na libovolných větvích grafu scény. To znamená, že stav může být definován na libovolné úrovni grafu scény a trickles hierarchii, dokud není přepsána novým stavem nebo použit pro objekt typu list.
 
 Můžete například zvážit model automobilu a chcete přepnout celý automobil tak, aby byl průhledný, s výjimkou součásti vnitřního modulu. Tento případ použití zahrnuje jenom dvě instance komponenty:
 
@@ -47,7 +47,7 @@ Pevná sada stavů, které lze přepsat, jsou následující:
 
 ## <a name="hierarchical-overrides"></a>Hierarchická přepsání
 
-`HierarchicalStateOverrideComponent` Lze připojit na více úrovních hierarchie objektů. Vzhledem k tomu, že v entitě může existovat pouze jedna součást každého typu `HierarchicalStateOverrideComponent` , každá spravuje stavy pro skryté, předané, vybrané, barevný nádech a kolizí.
+`HierarchicalStateOverrideComponent`Lze připojit na více úrovních hierarchie objektů. Vzhledem k tomu, že v entitě může existovat pouze jedna součást každého typu, každá `HierarchicalStateOverrideComponent` spravuje stavy pro skryté, předané, vybrané, barevný nádech a kolizí.
 
 Proto je možné každý stav nastavit na jednu z těchto:
 
@@ -68,6 +68,21 @@ component.SetState(HierarchicalStates.SeeThrough, HierarchicalEnableState.Inheri
 
 // set multiple states at once with the SetState function
 component.SetState(HierarchicalStates.Hidden | HierarchicalStates.DisableCollision, HierarchicalEnableState.ForceOff);
+```
+
+```cpp
+ApiHandle<HierarchicalStateOverrideComponent> component = ...;
+
+// set one state directly
+component->HiddenState(HierarchicalEnableState::ForceOn);
+
+// set a state with the SetState function
+component->SetState(HierarchicalStates::SeeThrough, HierarchicalEnableState::InheritFromParent);
+
+// set multiple states at once with the SetState function
+component->SetState(
+    (HierarchicalStates)((int32_t)HierarchicalStates::Hidden | (int32_t)HierarchicalStates::DisableCollision), HierarchicalEnableState::ForceOff);
+
 ```
 
 ### <a name="tint-color"></a>Barevný nádech

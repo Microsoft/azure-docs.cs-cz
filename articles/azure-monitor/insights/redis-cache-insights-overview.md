@@ -4,13 +4,13 @@ description: Tento článek popisuje funkci Azure Monitor for Azure Redis Cache,
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/07/2020
-ms.openlocfilehash: a6a8499a13e5c14869f9c9063528cea4ee82f419
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/21/2020
+ms.openlocfilehash: 8c8265242e09938126bfdb28900b64f2c0e7970a
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650427"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773893"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Prozkoumejte Azure Monitor pro Azure cache pro Redis (Preview)
 
@@ -123,6 +123,38 @@ Když v horní části stránky vyberete **selhání** , otevře se tabulka **se
 ### <a name="metric-definitions"></a>Definice metriky
 
 Úplný seznam definic metrik, které tvoří tyto sešity, najdete v [článku o dostupných metrikách a intervalech generování sestav](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals).
+
+## <a name="view-from-an-azure-cache-for-redis-resource"></a>Zobrazení z mezipaměti Azure pro prostředek Redis
+
+Přístup k Azure Monitor pro Azure cache pro Redis přímo z jednotlivého prostředku:
+
+1. V Azure Portal vyberte mezipaměť Azure pro Redis.
+
+2. V seznamu vyberte jednotlivou mezipaměť Azure pro prostředek Redis. V části monitorování vyberte přehledy (Preview).
+
+    ![Snímek obrazovky s možnostmi "Insights" (Preview) ", který se zvýrazní v červeném poli](./media/redis-cache-insights-overview/insights.png)
+
+Tato zobrazení jsou přístupná taky tak, že v sešitu na úrovni Azure Monitor vyberete název prostředku mezipaměti Azure pro prostředek Redis.
+
+### <a name="resource-level-overview"></a>Přehled na úrovni prostředků
+
+V sešitě s **přehledem** pro Azure Redis Cache se zobrazuje několik metrik výkonu, které vám umožní přístup k:
+
+- Interaktivní grafy výkonu zobrazující nejdůležitější podrobnosti týkající se Azure cache pro Redis výkon.
+
+- Metriky a stavové dlaždice zvýrazňují horizontálních oddílů výkon, celkový počet připojených klientů a celkovou latenci.
+
+![Snímek obrazovky s přehledem řídicího panelu, který zobrazuje informace o výkonu procesoru, využité paměti, připojených klientech, chybách, klíčích s prošlými klíči](./media/redis-cache-insights-overview/resource-overview.png)
+
+Výběr kterékoli z ostatních karet pro **výkon** nebo **operace** otevře příslušné sešity.
+
+### <a name="resource-level-performance"></a>Výkon na úrovni prostředku
+
+![Snímek obrazovky s grafy výkonu prostředků](./media/redis-cache-insights-overview/resource-performance.png)
+
+### <a name="resource-level-operations"></a>Operace na úrovni prostředku
+
+![Snímek obrazovky s grafy operací prostředků](./media/redis-cache-insights-overview/resource-operations.png)
 
 ## <a name="pin-export-and-expand"></a>Připnout, exportovat a rozbalit
 

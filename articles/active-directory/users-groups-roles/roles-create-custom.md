@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2682a85f88a537630fbca86dd55541a152d8f37e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025271"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758635"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Vytvoření a přiřazení vlastní role v Azure Active Directory
 
@@ -30,8 +30,8 @@ Vlastní role se dají vytvořit na kartě [role a správci](https://portal.azur
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Vytvoření nové vlastní role pro udělení přístupu pro správu registrací aplikací
 
-1. Přihlaste se do  [centra pro správu Azure AD](https://aad.portal.azure.com)pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
-1. Vyberte **Azure Active Directory** > **role a správci** > **novou vlastní roli**.
+1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com)   pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
+1. Vyberte **Azure Active Directory**  >  **role a správci**  >  **novou vlastní roli**.
 
    ![Vytvoření nebo úprava rolí na stránce role a správci](./media/roles-create-custom/new-custom-role.png)
 
@@ -122,7 +122,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
     ```
 
-    Tělo
+    Text
 
     ``` HTTP
    {
@@ -141,6 +141,9 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
    }
     ```
 
+  > [!Note]
+  > "TemplateId": "GUID" je volitelný parametr, který je odesílán v těle v závislosti na požadavku. Pokud máte požadavek na vytvoření více různých vlastních rolí se společnými parametry, je nejlepší vytvořit šablonu a definovat templateId. Pomocí rutiny PowerShellu (New-GUID) můžete vygenerovat templateId předem. Hlavních. 
+
 1. Vytvořte přiřazení role.
 
     Požadavek HTTP na vytvoření vlastní definice role.
@@ -151,7 +154,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
     ```
 
-    Tělo
+    Text
 
     ``` HTTP
    {
@@ -160,6 +163,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
+
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Přiřazení vlastní role v oboru k prostředku
 

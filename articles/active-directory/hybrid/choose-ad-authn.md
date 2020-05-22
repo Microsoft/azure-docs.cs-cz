@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 600f19a6fc0b44fa8cb4b3ba6d37fcc601605dc5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3abd93e1699a701140e8b3558dcdf0161110ff6f
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206727"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758125"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity.
 
@@ -92,7 +92,7 @@ Podrobnosti o rozhodovacích otázkách:
 
 * **Pokročilé scénáře**. Pokud organizace zvolí, je možné využít přehledy z identit a Azure AD Identity Protection sestav pomocí Azure AD Premium P2. Příkladem je nevrácená sestava přihlašovacích údajů. Windows Hello pro firmy má [specifické požadavky, pokud používáte synchronizaci hodnot hash hesel](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) vyžaduje synchronizaci hodnot hash hesel, aby bylo možné zřídit uživatele se svými podnikovými přihlašovacími údaji ve spravované doméně.
 
-    Organizace, které vyžadují vícefaktorové ověřování pomocí synchronizace hodnot hash hesel, musí používat vícefaktorové ověřování Azure AD nebo [vlastní ovládací prvky podmíněného přístupu](../../active-directory/conditional-access/controls.md#custom-controls-preview). Tyto organizace nemůžou používat jiné metody ověřování, které se spoléhají na federace.
+    Organizace, které vyžadují vícefaktorové ověřování pomocí synchronizace hodnot hash hesel, musí používat Azure Multi-Factor Authentication nebo [vlastní ovládací prvky podmíněného přístupu](../../active-directory/conditional-access/controls.md#custom-controls-preview). Tyto organizace nemůžou používat jiné metody ověřování, které se spoléhají na federace.
 
 > [!NOTE]
 > Podmíněný přístup Azure AD vyžaduje licence [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) .
@@ -139,7 +139,7 @@ Postup nasazení najdete v tématu [implementace předávacího ověřování](.
   * Ověřování, které vyžaduje čipové karty nebo certifikáty.
   * Místní MFA servery nebo poskytovatelé vícefaktorového ověřování od jiných výrobců vyžadují federovaného poskytovatele identity.
   * Ověřování pomocí řešení ověřování třetích stran. Podívejte se na [seznam kompatibility federace Azure AD](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
-  * Přihlaste se, který vyžaduje jako hlavní název uživatele (UPN), třeba doména \ uživatelské jméno (UPN), user@domain.comjako například.
+  * Přihlaste se, který vyžaduje jako hlavní název uživatele (UPN), třeba doména \ uživatelské jméno (UPN), jako například user@domain.com .
 
 * **Provozní kontinuita**. Federované systémy obvykle vyžadují pole serverů s vyrovnáváním zatížení, označované jako farma. Tato farma je nakonfigurovaná v interní síti a topologii hraniční sítě, aby se zajistila vysoká dostupnost požadavků na ověření.
 
@@ -175,8 +175,8 @@ Následující diagramy popisují komponenty architektury nejvyšší úrovně, 
 |Aspekty|Synchronizace hodnot hash hesel + bezproblémové jednotné přihlašování|Předávací ověřování + bezproblémové jednotné přihlašování|Federace se službou AD FS|
 |:-----|:-----|:-----|:-----|
 |Kde k ověřování dochází?|V cloudu|V cloudu po výměně zabezpečeného ověřování hesla pomocí místního ověřovacího agenta|Lokálně|
-|Jaké jsou požadavky na místní server nad rámec zřizovacího systému: Azure AD Connect?|Žádná|Jeden server pro každého dalšího ověřovacího agenta|Dva nebo více AD FS serverů<br><br>Dva nebo více serverů WAP v hraniční/DMZ síti|
-|Jaké jsou požadavky na místní Internet a sítě mimo zřizovací systém?|Žádná|[Odchozí internetový přístup](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) ze serverů používajících ověřovací agenty|[Příchozí internetový přístup](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) k serverům WAP v hraniční síti<br><br>Příchozí síťový přístup k serverům AD FS ze serverů WAP v hraniční síti<br><br>Vyrovnávání zatížení sítě|
+|Jaké jsou požadavky na místní server nad rámec zřizovacího systému: Azure AD Connect?|Žádné|Jeden server pro každého dalšího ověřovacího agenta|Dva nebo více AD FS serverů<br><br>Dva nebo více serverů WAP v hraniční/DMZ síti|
+|Jaké jsou požadavky na místní Internet a sítě mimo zřizovací systém?|Žádné|[Odchozí internetový přístup](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) ze serverů používajících ověřovací agenty|[Příchozí internetový přístup](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) k serverům WAP v hraniční síti<br><br>Příchozí síťový přístup k serverům AD FS ze serverů WAP v hraniční síti<br><br>Vyrovnávání zatížení sítě|
 |Existuje požadavek na certifikát TLS/SSL?|Ne|Ne|Ano|
 |Existuje nějaké řešení pro monitorování stavu?|Není požadováno|Stav agenta poskytnutý [centrem pro správu Azure Active Directory](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md)|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |Přihlašuje uživatelé k prostředkům cloudu jednotné přihlašování ze zařízení připojených k doméně v podnikové síti?|Ano, [bez problémů s jednotným PŘIhlašováním](../../active-directory/hybrid/how-to-connect-sso.md)|Ano, [bez problémů s jednotným PŘIhlašováním](../../active-directory/hybrid/how-to-connect-sso.md)|Ano|

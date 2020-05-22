@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 539154135c35e034c889294d911fb53b3d45daa4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970100"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771005"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak pomocí Azure Portal, PowerShellu nebo rozhraní p�
 
 ## <a name="set-retention-policies-and-legal-holds"></a>Nastavit zásady uchovávání informací a právní blokování
 
-### <a name="portal"></a>[Portál](#tab/azure-portal)
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Vytvořte nový kontejner nebo vyberte stávající kontejner pro uložení objektů blob, které je potřeba zachovat v neměnném stavu. Kontejner musí být v účtu úložiště pro obecné účely v2 nebo BLOB.
 
@@ -61,7 +61,7 @@ Tento článek popisuje, jak pomocí Azure Portal, PowerShellu nebo rozhraní p�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Tato funkce je zahrnutá v následujících skupinách příkazů: `az storage container immutability-policy` a `az storage container legal-hold`. Spusťte `-h` na nich, aby se zobrazily příkazy.
+Tato funkce je zahrnutá v následujících skupinách příkazů: `az storage container immutability-policy` a `az storage container legal-hold` . Spusťte `-h` na nich, aby se zobrazily příkazy.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -69,9 +69,9 @@ Tato funkce je zahrnutá v následujících skupinách příkazů: `az storage c
 
 Modul AZ. Storage podporuje neměnné úložiště.  Pokud chcete tuto funkci povolit, postupujte takto:
 
-1. Ujistěte se, že máte nainstalovanou nejnovější verzi PowerShellGet: `Install-Module PowerShellGet –Repository PSGallery –Force`.
+1. Ujistěte se, že máte nainstalovanou nejnovější verzi PowerShellGet: `Install-Module PowerShellGet –Repository PSGallery –Force` .
 2. Odeberte všechny předchozí instalace Azure PowerShell.
-3. Nainstalovat Azure PowerShell: `Install-Module Az –Repository PSGallery –AllowClobber`.
+3. Nainstalovat Azure PowerShell: `Install-Module Az –Repository PSGallery –AllowClobber` .
 
 Následující vzorový skript PowerShellu je určen pro referenci. Tento skript vytvoří nový účet úložiště a kontejner. Pak se dozvíte, jak nastavit a vymazat právní omezení, vytvořit a uzamknout zásady uchovávání informací založené na čase (označované také jako zásady neměnnosti) a rozšíří interval uchovávání informací.
 
@@ -91,7 +91,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 
 # Create your Azure storage account
-$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup -StorageAccountName `
+$account = New-AzStorageAccount -ResourceGroupName $resourceGroup -StorageAccountName `
     $storageAccount -SkuName Standard_ZRS -Location $location -Kind StorageV2
 
 # Create a new container using the context
@@ -119,7 +119,7 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
 Vytvořit nebo aktualizovat zásady neměnnosti založené na čase:
 
 ```powershell
-# Create a time-based immutablity policy
+# Create a time-based immutability policy
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
@@ -168,18 +168,18 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ## <a name="enabling-allow-protected-append-blobs-writes"></a>Povoluje se povolit zápisy chráněných objektů BLOB
 
-### <a name="portal"></a>[Portál](#tab/azure-portal)
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 ![Povolení dalších připojovat zápisů](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Tato funkce je zahrnutá v následujících skupinách příkazů: `az storage container immutability-policy` a `az storage container legal-hold`. Spusťte `-h` na nich, aby se zobrazily příkazy.
+Tato funkce je zahrnutá v následujících skupinách příkazů: `az storage container immutability-policy` a `az storage container legal-hold` . Spusťte `-h` na nich, aby se zobrazily příkazy.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
-# Create an immutablity policy with appends allowed
+# Create an immutability policy with appends allowed
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10 -AllowProtectedAppendWrite $true
 ```

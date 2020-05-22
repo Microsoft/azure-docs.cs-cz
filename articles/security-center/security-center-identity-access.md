@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 152168bbadd5815659bc5f70c91bd2a28f5e049d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57e13f3ed619fa88f29397fe44b783bd3650f636
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481955"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759162"
 ---
 # <a name="monitor-identity-and-access"></a>Monitorování identity a přístupu
 
@@ -58,7 +58,7 @@ Všechna doporučení pro identitu a přístup jsou k dispozici ve dvou ovládac
 
 Povolení MFA vyžaduje [oprávnění klienta Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles). 
 
-- Pokud máte edici Premium ve službě AD, povolte vícefaktorové ověřování pomocí [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+- Pokud máte edici Premium ve službě AD, povolte vícefaktorové ověřování pomocí [podmíněného přístupu](../active-directory/conditional-access/concept-conditional-access-policy-common.md).
 
 - Uživatelé edice Free můžou povolit **výchozí hodnoty zabezpečení** v Azure Active Directory, jak je popsáno v [dokumentaci AD](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) , ale doporučení pro Security Center povolení vícefaktorového ověřování se pořád projeví.
 

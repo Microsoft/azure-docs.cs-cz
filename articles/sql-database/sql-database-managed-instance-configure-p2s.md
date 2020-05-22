@@ -3,7 +3,7 @@ title: Konfigurace spravované instance P2S
 description: Připojte se k Azure SQL Database spravované instanci pomocí SQL Server Management Studio pomocí připojení typu Point-to-Site z místního klientského počítače.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 434b3d46d19138b494c9e29add3affb2eecc9c45
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268883"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773753"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Rychlý Start: Konfigurace připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí
 
@@ -54,7 +54,7 @@ Tento rychlý start:
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
 
-3. Vložte skript do okna PowerShellu a zadejte požadované parametry. Hodnoty pro `<subscriptionId>`, `<resourceGroup>`a `<virtualNetworkName>` by měly odpovídat těm, které jste použili v rychlém startu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md) . Hodnota pro `<certificateNamePrefix>` může být zvoleným řetězcem.
+3. Vložte skript do okna PowerShellu a zadejte požadované parametry. Hodnoty pro `<subscriptionId>` , `<resourceGroup>` a `<virtualNetworkName>` by měly odpovídat těm, které jste použili v rychlém startu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md) . Hodnota pro `<certificateNamePrefix>` může být zvoleným řetězcem.
 
 4. Spusťte skript prostředí PowerShell.
 
@@ -63,7 +63,7 @@ Tento rychlý start:
 
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>Vytvoření připojení VPN ke spravované instanci
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Otevřete skupinu prostředků, ve které jste vytvořili bránu virtuální sítě, a pak otevřete prostředek brány virtuální sítě.
 3. Vyberte **Konfigurace Point-to-site** a pak vyberte **stáhnout klienta VPN**.
 
@@ -81,7 +81,7 @@ Tento rychlý start:
 1. Pokud chcete navázat připojení k této virtuální síti, klikněte na síť **VPN** v **síti & Internetu** na místním klientském počítači a vyberte svou virtuální síť spravované instance. Na následujícím obrázku je virtuální síť s názvem **MyNewVNet**.
 
     ![Připojení VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
-2. Vyberte **Connect** (Připojit).
+2. Vyberte **Připojit**.
 3. V dialogovém okně vyberte **připojit**.
 
     ![Připojení VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  

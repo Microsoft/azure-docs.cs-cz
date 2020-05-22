@@ -3,7 +3,7 @@ title: Fondy instancí (Preview)
 description: Tento článek popisuje Azure SQL Database fondy instancí (Preview).
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a418972b78750dbed90f0148aac45dbcc2617f8e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878149"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773079"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Co jsou fondy SQL Database instancí (Preview)?
 
@@ -31,7 +31,7 @@ Fondy instancí navíc podporují nativní integraci virtuální sítě, takže 
 
 Fondy instancí poskytují následující výhody:
 
-1. Možnost hostovat 2 instance vCore *Pouze pro instance ve fondech instancí. \**
+1. Možnost hostovat 2 instance vCore * \* Pouze pro instance ve fondech instancí*.
 2. Předvídatelný a rychlý čas nasazení instance (až 5 minut).
 3. Minimální přidělení IP adresy.
 
@@ -59,7 +59,7 @@ Následující seznam poskytuje hlavní případy použití, ve kterých by se m
 
 ## <a name="architecture-of-instance-pools"></a>Architektura fondů instancí
 
-Fondy instancí mají podobnou architekturu s běžnými spravovanými instancemi (*jedné instance*). Aby se podporovaly [nasazení v rámci virtuálních sítí Azure (virtuální sítě)](../virtual-network/virtual-network-for-azure-services.md) a poskytovaly izolaci a zabezpečení pro zákazníky, využívají fondy instancí také [virtuální clustery](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuální clustery reprezentují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v podsíti virtuální sítě zákazníka.
+Fondy instancí mají podobnou architekturu s běžnými spravovanými instancemi (*jedné instance*). Aby se podporovaly [nasazení v rámci virtuálních sítí Azure (virtuální sítě)](../virtual-network/virtual-network-for-azure-services.md)   a poskytovaly izolaci a zabezpečení pro zákazníky, využívají fondy instancí také [virtuální clustery](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuální clustery reprezentují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v podsíti virtuální sítě zákazníka.
 
 Hlavním rozdílem mezi těmito dvěma modely nasazení je, že fondy instancí povolují nasazení více SQL Server procesů ve stejném uzlu virtuálního počítače, který je prostředkem, který se řídí pomocí [objektů úloh systému Windows](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), zatímco jednotlivé instance jsou vždy pouze v uzlu virtuálního počítače.
 
@@ -112,7 +112,7 @@ Volitelné funkce nebo funkce, které vyžadují, abyste zvolili konkrétní hod
 
 I když spravované instance v rámci fondů mají vyhrazené vCore a RAM, sdílí místní disk (pro použití databáze tempdb) a síťové prostředky. Není pravděpodobné, ale je možné vyzkoušet *sousední* efekt v případě vysokého počtu instancí, pokud má více instancí ve fondu současně stejnou spotřebu prostředků. Pokud toto chování provedete, zvažte nasazení těchto instancí do většího fondu nebo jako jedné instance.
 
-## <a name="security-considerations"></a>Důležité informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
 Vzhledem k tomu, že instance nasazené ve fondu sdílejí stejný virtuální počítač, možná budete chtít vzít v úvahu, že jsou zakázané funkce, které vedou k vyšším bezpečnostním rizikům, nebo abyste k těmto funkcím měli oprávnění Například integrace modulu CLR, nativní zálohování a obnovení, databázový e-mail atd.
 

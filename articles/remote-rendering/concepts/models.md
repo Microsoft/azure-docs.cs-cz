@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5d737b1e85a28661a7491b8d2822e6472538c7a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7832f999de2f6f16cfe816c061925e371f90662e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617943"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758686"
 ---
 # <a name="models"></a>Modely
 
@@ -36,8 +36,8 @@ Po převodu modelu je možné ho načíst z Azure Blob Storage do modulu runtime
 
 Existují dvě odlišné funkce načítání, které se liší podle způsobu, jakým se prostředek řeší v úložišti objektů BLOB:
 
-* Model může být adresován identifikátorem URI SAS. Relevantní funkce načítání je `LoadModelFromSASAsync` s parametrem `LoadModelFromSASParams`. Tuto variantu použijte také při načítání [předdefinovaných modelů](../samples/sample-model.md).
-* Model je možné adresovat přímo pomocí parametrů služby Blob Storage, pokud [je úložiště objektů BLOB propojené s účtem](../how-tos/create-an-account.md#link-storage-accounts). Relevantní funkce načítání v tomto případě je `LoadModelAsync` s parametrem `LoadModelParams`.
+* Model může být adresován identifikátorem URI SAS. Relevantní funkce načítání je `LoadModelFromSASAsync` s parametrem `LoadModelFromSASParams` . Tuto variantu použijte také při načítání [předdefinovaných modelů](../samples/sample-model.md).
+* Model je možné adresovat přímo pomocí parametrů služby Blob Storage, pokud [je úložiště objektů BLOB propojené s účtem](../how-tos/create-an-account.md#link-storage-accounts). Relevantní funkce načítání v tomto případě je `LoadModelAsync` s parametrem `LoadModelParams` .
 
 Následující fragmenty kódu ukazují, jak načíst modely pomocí kterékoli funkce. Chcete-li načíst model pomocí identifikátoru URI SAS, použijte kód podobný následujícímu:
 
@@ -58,6 +58,28 @@ async void LoadModel(AzureSession session, Entity modelParent, string modelUri)
 }
 ```
 
+```cpp
+ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string modelUri)
+{
+    LoadModelFromSASParams modelParams;
+    modelParams.ModelUrl = modelUri;
+    modelParams.Parent = modelParent;
+
+    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelFromSASAsync(modelParams);
+
+    loadOp->Completed([](const ApiHandle<LoadModelAsync>& async)
+    {
+        printf("Loading: finished.");
+    });
+    loadOp->ProgressUpdated([](float progress)
+    {
+        printf("Loading: %.1f%%", progress*100.f);
+    });
+
+    return loadOp;
+}
+```
+
 Chcete-li načíst model přímo pomocí jeho parametrů úložiště objektů blob, použijte kód podobný následujícímu fragmentu kódu:
 
 ```csharp
@@ -73,6 +95,20 @@ async void LoadModel(AzureSession session, Entity modelParent, string storageAcc
 
     var loadOp = session.Actions.LoadModelAsync(modelParams);
 
+    // ... (identical to the SAS URI snippet above)
+}
+```
+
+```cpp
+ApiHandle<LoadModelAsync> LoadModel(ApiHandle<AzureSession> session, ApiHandle<Entity> modelParent, std::string storageAccount, std::string containerName, std::string assetFilePath)
+{
+    LoadModelParams modelParams;
+    modelParams.Parent = modelParent;
+    modelParams.Blob.StorageAccountName = std::move(storageAccount);
+    modelParams.Blob.BlobContainerName = std::move(containerName);
+    modelParams.Blob.AssetPath = std::move(assetFilePath);
+
+    ApiHandle<LoadModelAsync> loadOp = *session->Actions()->LoadModelAsync(modelParams);
     // ... (identical to the SAS URI snippet above)
 }
 ```

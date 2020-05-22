@@ -3,7 +3,7 @@ title: Příklad PowerShellu – vytvoření spravované instance v Azure SQL Da
 description: Azure PowerShell ukázkový skript pro vytvoření spravované instance v Azure SQL Database
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: a4ba4d69b560307e52c277f5c695bbba718cd1d3
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: e8df39b5bd6c2948fa0f4392b7417a9ffb10a03f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005830"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772552"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>Použití PowerShellu k vytvoření spravované instance Azure SQL Database
 

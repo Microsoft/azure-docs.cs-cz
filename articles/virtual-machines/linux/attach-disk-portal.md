@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c485c1612df526e813119239fd2202b7657db9c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969358"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774183"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu 
 V tomto článku se dozvíte, jak připojit nové i stávající disky k virtuálnímu počítači se systémem Linux prostřednictvím Azure Portal. [Datový disk můžete také připojit k virtuálnímu počítači s Windows v Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -179,18 +179,19 @@ Writing superblocks and filesystem accounting information: done
 Nástroj Fdisk potřebuje interaktivní vstup, a proto není ideální pro použití v rámci skriptů automatizace. [Nástroj, který se dá](https://www.gnu.org/software/parted/) využít, ale může být skriptovaná, takže se ve scénářích automatizace lépe zahodí. Částečný nástroj lze použít k rozdělení na oddíly a naformátování datového disku. V tomto návodu použijeme nový datový disk/dev/sdc a naformátujeme ho pomocí systému souborů [XFS](https://xfs.wiki.kernel.org/) .
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo mkfs.xfs /dev/sdc1
 partprobe /dev/sdc1
 ```
 Jak vidíte výše, používáme nástroj [partprobe](https://linux.die.net/man/8/partprobe) k tomu, abyste se ujistili, že jádro okamžitě ví o novém oddílu a systému souborů. Neúspěšné použití partprobe může způsobit, že blkid nebo lslbk příkazy nevrátí UUID pro nový systém souborů hned.
 
 ### <a name="mount-the-disk"></a>Připojit disk
-Vytvořte adresář pro připojení systému souborů pomocí `mkdir`. Následující příklad vytvoří adresář na adrese */datadrive*:
+Vytvořte adresář pro připojení systému souborů pomocí `mkdir` . Následující příklad vytvoří adresář na adrese */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-K `mount` následnému připojení systému souborů použijte. Následující příklad připojí oddíl */dev/sdc1* k přípojnému bodu */datadrive* :
+`mount`K následnému připojení systému souborů použijte. Následující příklad připojí oddíl */dev/sdc1* k přípojnému bodu */datadrive* :
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
@@ -235,12 +236,12 @@ Některé jádro systému Linux podporují operace OŘEZÁVÁNÍ a odmapování,
 
 Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux povolit podporu OŘEZÁVÁNÍ. V obvyklých případech si prostudujte doporučený postup:
 
-* Použijte možnost `discard` Mount v */etc/fstab*, například:
+* Použijte `discard` možnost Mount v */etc/fstab*, například:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* V některých případech může mít `discard` možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
+* V některých případech `discard` může mít možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
   
     **Ubuntu**
   

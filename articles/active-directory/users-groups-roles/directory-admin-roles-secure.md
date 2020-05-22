@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c580a39db97e1ce50c3d244db3023bf422bca08
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 16c87eabec8f09f082c258a439a17b9f3aa79336
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837188"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759026"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -82,7 +82,7 @@ Po zapnutí Azure AD Privileged Identity Management:
 
 4. V seznamu **všechny služby** otevřete Privileged Identity Management a připněte ho na řídicí panel.
 
-První osoba, která ve vaší organizaci používá PIM, je přiřazená rolím Správce **zabezpečení** a **správcům privilegovaných rolí** . Pouze správci privilegovaných rolí můžou spravovat přiřazení rolí uživatelů adresáře služby Azure AD. Průvodce zabezpečením PIM vás provede počátečním zjišťováním a přiřazením. Průvodce můžete ukončit bez provedení jakýchkoli dalších změn.
+Ujistěte se, že je první osoba, která ve vaší organizaci používá PIM, přiřazená k rolím Správce **zabezpečení** a **správcům privilegovaných rolí** . Pouze správci privilegovaných rolí můžou spravovat přiřazení rolí uživatelů adresáře služby Azure AD. Průvodce zabezpečením PIM vás provede počátečním zjišťováním a přiřazením. Průvodce můžete ukončit bez provedení jakýchkoli dalších změn.
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Identifikace a kategorizace účtů, které jsou ve vysoce privilegovaných rolích
 
@@ -110,11 +110,11 @@ Je možné, že se uživatel náhodně zamkne od své role. Pokud například ne
 
 Účty pro nouzový přístup umožňují omezit privilegovaný přístup v rámci organizace Azure AD. Tyto účty jsou vysoce privilegované a nepřiřazují se konkrétním jednotlivcům. Účty pro nouzový přístup jsou omezené na stav nouze pro scénáře "break sklo", kde nelze použít běžné účty pro správu. Ujistěte se, že máte kontrolu a omezení využití účtu v nouzi jenom na dobu, kdy je to nezbytné.
 
-Vyhodnoťte účty, které jsou přiřazeny nebo mají nárok na roli globálního správce. Pokud nevidíte žádné účty pouze cloudu pomocí domény \*. onmicrosoft.com (pro nouzový přístup "break sklo"), vytvořte je. Další informace najdete v tématu [Správa účtů pro správu pro nouzový přístup ve službě Azure AD](directory-emergency-access.md).
+Vyhodnoťte účty, které jsou přiřazeny nebo mají nárok na roli globálního správce. Pokud nevidíte žádné účty pouze cloudu pomocí \* domény. onmicrosoft.com (pro nouzový přístup "break sklo"), vytvořte je. Další informace najdete v tématu [Správa účtů pro správu pro nouzový přístup ve službě Azure AD](directory-emergency-access.md).
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Zapnutí vícefaktorového ověřování a registrace všech dalších vysoce privilegovaných účtů pro jednoho uživatele, kteří nejsou federované
 
-Vyžadovat Azure Multi-Factor Authentication (MFA) při přihlašování pro všechny uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, správce privilegovaných rolí, správce Exchange Online a správce SharePointu Online. Pomocí průvodce povolte [vícefaktorové ověřování (MFA) pro účty správců](../authentication/howto-mfa-userstates.md) a zajistěte, aby všichni uživatelé byli zaregistrovaní v [https://aka.ms/mfasetup](https://aka.ms/mfasetup). Další informace najdete v části Krok 2 a 3. krok příručky průvodce [chránit přístup k datům a službám v Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Vyžadovat Azure Multi-Factor Authentication (MFA) při přihlašování pro všechny uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, správce privilegovaných rolí, správce Exchange Online a správce SharePointu Online. Pomocí průvodce povolte [vícefaktorové ověřování (MFA) pro účty správců](../authentication/howto-mfa-userstates.md) a zajistěte, aby všichni uživatelé byli zaregistrovaní v [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Další informace najdete v části Krok 2 a 3. krok příručky průvodce [chránit přístup k datům a službám v Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>Fáze 2: zmírnění často používaných útoků
 
@@ -177,7 +177,7 @@ Azure AD Identity Protection je nástroj pro monitorování a vytváření sesta
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Získání zabezpečeného skóre Office 365 (při použití Office 365)
 
-Služba Secure skore vyhledává vaše nastavení a aktivity pro služby Office 365, které používáte, a porovnává je se směrným plánem vytvořeným Microsoftem. Získáte skóre na základě toho, jak jste se zarovnali s postupy zabezpečení. Každý, kdo má oprávnění správce pro předplatné Office 365 Business Premium nebo Enterprise, má přístup k zabezpečenému skóre [https://securescore.office.com](https://securescore.office.com/)na adrese.
+Služba Secure skore vyhledává vaše nastavení a aktivity pro služby Office 365, které používáte, a porovnává je se směrným plánem vytvořeným Microsoftem. Získáte skóre na základě toho, jak jste se zarovnali s postupy zabezpečení. Každý, kdo má oprávnění správce pro předplatné Office 365 Business Premium nebo Enterprise, má přístup k zabezpečenému skóre na adrese [https://securescore.office.com](https://securescore.office.com/) .
 
 #### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Přečtěte si pokyny pro zabezpečení a dodržování předpisů Office 365 (Pokud používáte Office 365).
 
@@ -207,7 +207,7 @@ Použijte portál Enterprise a Azure Portal k identifikaci předplatných ve va�
 
 #### <a name="remove-microsoft-accounts-from-admin-roles"></a>Odebrání účtů Microsoft z rolí správce
 
-Účty Microsoft z jiných programů, například Xbox, Live a Outlook, by se neměly používat jako účty správců pro předplatná vaší organizace. Odeberte stav správce ze všech účtů Microsoft a nahraďte ho pracovními nebo školními účty chris@contoso.comAzure AD (například). Pro účely správy závisí na účtech, které jsou ověřené ve službě Azure AD, nikoli v jiných službách.
+Účty Microsoft z jiných programů, například Xbox, Live a Outlook, by se neměly používat jako účty správců pro předplatná vaší organizace. Odeberte stav správce ze všech účtů Microsoft a nahraďte ho chris@contoso.com pracovními nebo školními účty Azure AD (například). Pro účely správy závisí na účtech, které jsou ověřené ve službě Azure AD, nikoli v jiných službách.
 
 #### <a name="monitor-azure-activity"></a>Monitorování aktivity Azure
 

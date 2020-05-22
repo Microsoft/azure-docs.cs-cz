@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d6212692465270182db541889bed5f03a08a345
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa952e0a237ca30a3bd109f51ee45c2f4dafa533
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74008274"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758261"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analýza protokolů aktivit Azure AD pomocí protokolů Azure Monitor
 
@@ -47,7 +47,7 @@ Pokud chcete postup sledovat, potřebujete:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Přejděte do pracovního prostoru Log Analytics.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 
 2. Vyberte **Azure Active Directory**a potom v části **monitorování** vyberte **protokoly** . tím otevřete pracovní prostor Log Analytics. Pracovní prostor se otevře s výchozím dotazem.
 
@@ -60,8 +60,8 @@ Protokoly jsou vloženy do tabulek **AuditLogs** a **SigninLogs** v pracovním p
 
 1. V zobrazení výchozí dotaz v předchozí části vyberte **schéma** a rozbalte pracovní prostor. 
 
-2. Rozbalte část **Správa protokolů** a potom rozbalte buď **AuditLogs** nebo **SignInLogs** , a zobrazte schéma protokolu.
-    ![](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
+2. Rozbalte část **Správa protokolů** a potom rozbalte buď **AuditLogs** nebo **SigninLogs** , a zobrazte schéma protokolu.
+    ![Protokoly auditu přihlášení ](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![ protokoly](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>Dotazování protokolů aktivit služby Azure AD
 

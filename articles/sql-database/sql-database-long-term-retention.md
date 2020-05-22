@@ -3,7 +3,7 @@ title: Dlouhodobé uchovávání záloh
 description: Přečtěte si, jak Azure SQL Database podporuje ukládání úplných záloh databáze po dobu až 10 let prostřednictvím dlouhodobých zásad uchovávání informací.
 services: sql-database
 ms.service: sql-database
-ms.subservice: backup-restore
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: e85c8c0990a2659dba1f254a8f1aa7c7be7852eb
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 6fc5fab9ae61c8c8ade9260b32078ffa430b077f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508084"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771396"
 ---
 # <a name="azure-sql-database-long-term-retention"></a>Azure SQL Database dlouhodobé uchovávání
 

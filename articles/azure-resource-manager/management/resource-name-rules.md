@@ -2,13 +2,13 @@
 title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 7ab012c5363de643c4cb5de8777de56fad5a9711
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/21/2020
+ms.openlocfilehash: 553d0e33c4b9bc1aa238cf582f37be1e148eea5e
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653703"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758890"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -696,6 +696,9 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | serverových farem | skupina prostředků | 1-40 | Alfanumerické znaky a spojovníky. |
 > | místa | global | 2-60 | Obsahuje alfanumerické znaky a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
 > | lokality/sloty | webovém | 2-59 | Alfanumerické znaky a spojovníky. |
+
+> [!NOTE]
+> Azure Functions mají stejná pravidla a omezení pro pojmenování jako Microsoft. Web/Web.
 
 ## <a name="next-steps"></a>Další kroky
 

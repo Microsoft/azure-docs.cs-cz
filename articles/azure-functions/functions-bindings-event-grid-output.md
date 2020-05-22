@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0237bcbf98578d9f83f3c9652661c786df54e73a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627683"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773951"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid výstupní vazba pro Azure Functions
 
@@ -162,7 +162,53 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Vazba Event Grid Output není pro Python k dispozici.
+Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu. Pak pošle v události vlastnímu Event Gridmu tématu, jak je uvedeno v `topicEndpointUri` .
+
+Tady jsou data vazby v souboru *Function. JSON* :
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    },
+    {
+      "type": "eventGrid",
+      "name": "outputEvent",
+      "topicEndpointUri": "MyEventGridTopicUriSetting",
+      "topicKeySetting": "MyEventGridTopicKeySetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Zde je ukázka Pythonu pro odeslání události do vlastního tématu Event Grid nastavením `EventGridOutputEvent` :
+
+```python
+import logging
+import azure.functions as func
+import datetime
+
+
+def main(eventGridEvent: func.EventGridEvent, 
+         outputEvent: func.Out[func.EventGridOutputEvent]) -> None:
+
+    logging.log("eventGridEvent: ", eventGridEvent)
+
+    outputEvent.set(
+        func.EventGridOutputEvent(
+            id="test-id",
+            data={"tag1": "value1", "tag2": "value2"},
+            subject="test-subject",
+            event_type="test-event-1",
+            event_time=datetime.datetime.utcnow(),
+            data_version="1.0"))
+```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -176,7 +222,7 @@ Vazba Event Grid Output není pro jazyk Java k dispozici.
 
 Pro [knihovny tříd jazyka C#](functions-dotnet-class-library.md)použijte atribut [EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) .
 
-Konstruktor atributu přebírá název nastavení aplikace, které obsahuje název vlastního tématu, a název nastavení aplikace, které obsahuje klíč tématu. Další informace o těchto nastaveních naleznete v tématu [Output-Configuration](#configuration). Tady je příklad `EventGrid` atributu:
+Konstruktor atributu přebírá název nastavení aplikace, které obsahuje název vlastního tématu, a název nastavení aplikace, které obsahuje klíč tématu. Další informace o těchto nastaveních naleznete v tématu [Output-Configuration](#configuration). Tady je `EventGrid` příklad atributu:
 
 ```csharp
 [FunctionName("EventGridOutput")]
@@ -213,30 +259,30 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**textový** | neuvedeno | Musí být nastavené na "eventGrid". |
-|**direction** | neuvedeno | Musí být nastavené na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje událost. |
-|**topicEndpointUri** |**TopicEndpointUri** | Název nastavení aplikace, které obsahuje identifikátor URI vlastního tématu, například `MyTopicEndpointUri`. |
+|**textový** | Není k dispozici | Musí být nastavené na "eventGrid". |
+|**direction** | Není k dispozici | Musí být nastavené na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
+|**Jméno** | Není k dispozici | Název proměnné použitý v kódu funkce, který představuje událost. |
+|**topicEndpointUri** |**TopicEndpointUri** | Název nastavení aplikace, které obsahuje identifikátor URI vlastního tématu, například `MyTopicEndpointUri` . |
 |**topicKeySetting** |**TopicKeySetting** | Název nastavení aplikace, které obsahuje přístupový klíč pro vlastní téma. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> Ujistěte se, že jste nastavili `TopicEndpointUri` hodnotu vlastnosti konfigurace na název nastavení aplikace, které obsahuje identifikátor URI vlastního tématu. Nezadávejte identifikátor URI vlastního tématu přímo v této vlastnosti.
+> Ujistěte se, že jste nastavili hodnotu `TopicEndpointUri` Vlastnosti konfigurace na název nastavení aplikace, které obsahuje identifikátor URI vlastního tématu. Nezadávejte identifikátor URI vlastního tématu přímo v této vlastnosti.
 
 ## <a name="usage"></a>Využití
 
 # <a name="c"></a>[R #](#tab/csharp)
 
-Odesílat zprávy pomocí parametru metody, jako je `out EventGridEvent paramName`například. Chcete-li zapsat více zpráv, můžete `ICollector<EventGridEvent>` použít `IAsyncCollector<EventGridEvent>` nebo místo `out EventGridEvent`.
+Odesílat zprávy pomocí parametru metody, jako je například `out EventGridEvent paramName` . Chcete-li zapsat více zpráv, můžete použít `ICollector<EventGridEvent>` nebo `IAsyncCollector<EventGridEvent>` místo `out EventGridEvent` .
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Odesílat zprávy pomocí parametru metody, jako je `out EventGridEvent paramName`například. Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *Function. JSON*. Chcete-li zapsat více zpráv, můžete `ICollector<EventGridEvent>` použít `IAsyncCollector<EventGridEvent>` nebo místo `out EventGridEvent`.
+Odesílat zprávy pomocí parametru metody, jako je například `out EventGridEvent paramName` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *Function. JSON*. Chcete-li zapsat více zpráv, můžete použít `ICollector<EventGridEvent>` nebo `IAsyncCollector<EventGridEvent>` místo `out EventGridEvent` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Přístup k události výstupu `context.bindings.<name>` pomocí Where `<name>` je hodnota zadaná ve `name` vlastnosti *Function. JSON*.
+Přístup k události výstupu pomocí `context.bindings.<name>` Where `<name>` je hodnota zadaná ve `name` vlastnosti *Function. JSON*.
 
 # <a name="python"></a>[Python](#tab/python)
 

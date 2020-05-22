@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: e50534639f5f46b1675ba5c074fb8fdd843ac87e
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744898"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770053"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>Rozhraní API pro odeslání partnerského centra pro zprovoznění aplikací Azure v partnerském centru
 
@@ -63,7 +63,7 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-V případě *tenant_id* hodnoty v parametrech `POST URI` a *client_id* a *client_secret* zadejte ID tenanta, ID klienta a klíč vaší aplikace, které jste získali z partnerského centra v předchozí části. Pro parametr *prostředku* je nutné zadat `https://api.partner.microsoft.com`.
+V případě *tenant_id* hodnoty v `POST URI` parametrech a *CLIENT_ID* a *client_secret* zadejte ID tenanta, ID klienta a klíč vaší aplikace, které jste získali z partnerského centra v předchozí části. Pro parametr *prostředku* je nutné zadat `https://api.partner.microsoft.com` .
 
 ### <a name="step-3-use-the-microsoft-store-submission-api"></a>Krok 3: použití rozhraní API pro odeslání Microsoft Store
 
@@ -74,4 +74,4 @@ https://apidocs.microsoft.com/services/partneringestion/
 ## <a name="next-steps"></a>Další kroky
 
 * Naučte se vytvořit [technický Asset virtuálního počítače Azure](create-azure-container-technical-assets.md)
-* Naučte se Hoe vytvořit [nabídku kontejneru Azure](create-azure-container-offer.md)
+* Zjistěte, jak vytvořit [nabídku kontejneru Azure](create-azure-container-offer.md) .

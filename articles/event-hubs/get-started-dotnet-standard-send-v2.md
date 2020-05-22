@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2020
 ms.author: spelluru
-ms.openlocfilehash: fd4b41cc2fe97ad0c2f075884e21f4f2ffc01561
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44e77330e6a651a93b1f88fa6b20450ebc2b1455
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159450"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773989"
 ---
-# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Odesílání událostí do a příjem událostí z Azure Event Hubs – .NET Core (Azure. Messaging. EventHubs) 
-V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny .NET Core **Azure. Messaging. EventHubs** . 
+# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Odesílání událostí do a příjem událostí z Azure Event Hubs – .NET (Azure. Messaging. EventHubs) 
+V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny .NET **Azure. Messaging. EventHubs** . 
 
 > [!IMPORTANT]
 > V tomto rychlém startu se používá nová knihovna **Azure. Messaging. EventHubs** . Pro rychlý Start, který používá starou knihovnu **Microsoft. Azure. EventHubs** , najdete informace v tématu [posílání a přijímání událostí pomocí Microsoft. Azure. EventHubs Library](event-hubs-dotnet-standard-getstarted-send.md). 
@@ -34,7 +34,7 @@ Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Even
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
 
 - **Microsoft Azure předplatné**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo využít výhody pro předplatitele MSDN při [vytváření účtu](https://azure.microsoft.com).
-- **Microsoft Visual Studio 2019**. Klientská knihovna Azure Event Hubs využívá nové funkce, které byly představeny v C# 8,0.  Knihovnu můžete stále používat se staršími verzemi jazyka C#, ale některé z jejích funkcí nebudou k dispozici.  Pokud chcete tyto funkce povolit, musíte [cílit na .NET Core 3,0](/dotnet/standard/frameworks#how-to-specify-target-frameworks) nebo [zadat jazykovou verzi](/dotnet/csharp/language-reference/configure-language-version#override-a-default) , kterou chcete použít (8,0 nebo vyšší). Pokud používáte Visual Studio, verze před sadou Visual Studio 2019 nejsou kompatibilní s nástroji potřebnými pro sestavení projektů v jazyce C# 8,0. Visual Studio 2019, včetně bezplatné komunity, si můžete stáhnout [tady](https://visualstudio.microsoft.com/vs/) .
+- **Microsoft Visual Studio 2019**. Klientská knihovna Azure Event Hubs využívá nové funkce, které byly představeny v C# 8,0.  Knihovnu můžete dál používat s předchozími jazykovými verzemi jazyka C#, ale nová syntaxe nebude k dispozici. Chcete-li použít úplnou syntaxi, je doporučeno kompilovat s [.NET Core SDK](https://dotnet.microsoft.com/download) 3,0 nebo vyšší a [jazykové verze](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#override-a-default) nastavenou na `latest` . Pokud používáte Visual Studio, verze před sadou Visual Studio 2019 nejsou kompatibilní s nástroji potřebnými pro sestavení projektů v jazyce C# 8,0. Do [této](https://visualstudio.microsoft.com/vs/)části si můžete stáhnout Visual Studio 2019, včetně bezplatné edice Community.
 - **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů Event Hubs** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto rychlém startu.
 
 ## <a name="send-events"></a>Odesílání událostí 
@@ -57,7 +57,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro ode
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
 
-1. V nabídce vyberte **nástroje** > **správce** > balíčků NuGet**Konzola správce balíčků** . 
+1. V nabídce vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** . 
 1. Spuštěním následujícího příkazu nainstalujte balíček NuGet **Azure. Messaging. EventHubs** :
 
     ```cmd
@@ -67,7 +67,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro ode
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Napsání kódu pro odesílání zpráv do centra událostí
 
-1. Do horní části `using` souboru **program.cs** přidejte následující příkazy:
+1. `using`Do horní části souboru **program.cs** přidejte následující příkazy:
 
     ```csharp
     using System.Text;
@@ -76,7 +76,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro ode
     using Azure.Messaging.EventHubs.Producer;
     ```
 
-2. Do `Program` třídy přidejte konstanty pro připojovací řetězec Event Hubs a název centra událostí. Zástupné symboly v závorkách nahraďte odpovídajícími hodnotami, které jste získali při vytváření centra událostí. Ujistěte se, že `{Event Hubs namespace connection string}` je připojovací řetězec na úrovni oboru názvů, a ne řetězec centra událostí. 
+2. Do třídy přidejte konstanty `Program` pro připojovací řetězec Event Hubs a název centra událostí. Zástupné symboly v závorkách nahraďte odpovídajícími hodnotami, které jste získali při vytváření centra událostí. Ujistěte se, že `{Event Hubs namespace connection string}` je připojovací řetězec na úrovni oboru názvů, a ne řetězec centra událostí. 
 
     ```csharp
     private const string connectionString = "<EVENT HUBS NAMESPACE - CONNECTION STRING>";
@@ -139,7 +139,7 @@ V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
 
-1. V nabídce vyberte **nástroje** > **správce** > balíčků NuGet**Konzola správce balíčků** . 
+1. V nabídce vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** . 
 1. Spuštěním následujícího příkazu nainstalujte balíček NuGet **Azure. Messaging. EventHubs** :
 
     ```cmd
@@ -153,7 +153,7 @@ V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního 
 
 ### <a name="update-the-main-method"></a>Aktualizace metody Main 
 
-1. Do horní části `using` souboru **program.cs** přidejte následující příkazy.
+1. Do `using` horní části souboru **program.cs** přidejte následující příkazy.
 
     ```csharp
     using System.Text;
@@ -163,7 +163,7 @@ V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního 
     using Azure.Messaging.EventHubs.Consumer;
     using Azure.Messaging.EventHubs.Processor;
     ```
-1. Do `Program` třídy přidejte konstanty pro připojovací řetězec Event Hubs a název centra událostí. Zástupné symboly v závorkách nahraďte odpovídajícími hodnotami, které jste získali při vytváření centra událostí. Zástupné symboly v závorkách nahraďte odpovídajícími hodnotami, které jste získali při vytváření centra událostí a účtu úložiště (přístupové klíče – primární připojovací řetězec). Ujistěte se, že `{Event Hubs namespace connection string}` je připojovací řetězec na úrovni oboru názvů, a ne řetězec centra událostí.
+1. Do třídy přidejte konstanty `Program` pro připojovací řetězec Event Hubs a název centra událostí. Zástupné symboly v závorkách nahraďte odpovídajícími hodnotami, které jste získali při vytváření centra událostí. Zástupné symboly v závorkách nahraďte odpovídajícími hodnotami, které jste získali při vytváření centra událostí a účtu úložiště (přístupové klíče – primární připojovací řetězec). Ujistěte se, že `{Event Hubs namespace connection string}` je připojovací řetězec na úrovni oboru názvů, a ne řetězec centra událostí.
 
     ```csharp
         private const string ehubNamespaceConnectionString = "<EVENT HUBS NAMESPACE - CONNECTION STRING>";

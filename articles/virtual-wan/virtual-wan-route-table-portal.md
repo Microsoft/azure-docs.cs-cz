@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 740a2174933e37e2737de0daa56e4b1670ecf55f
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78402950"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773164"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Vytvoření směrovací tabulky pro virtuální síť WAN pro síťová virtuální zařízení: Azure Portal
 
@@ -76,6 +76,9 @@ Aktualizujte centrum s tabulkou směrování na rozbočovači. Použijte násled
 3. Klikněte na **...** a pak klikněte na **Upravit virtuální rozbočovač**.
 4. Na stránce **Upravit virtuální rozbočovač** přejděte dolů a zaškrtněte políčko **použít tabulku pro směrování**.
 5. Do sloupce **předpona cílového umístění** přidejte adresní prostory. Do sloupce **Odeslat do dalšího směrování** přidejte privátní IP adresu síťového rozhraní DMZ síťové virtuální zařízení.
+>[!NOTE]
+>Síť síťové virtuální zařízení DMZ se vztahuje na místní centrum.
+>
 6. Kliknutím na **Potvrdit** aktualizujte prostředek centra pomocí nastavení směrovací tabulky.
 
 ## <a name="5-create-the-vnet-connections"></a><a name="connections"></a>5. vytvoření připojení virtuální sítě

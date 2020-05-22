@@ -3,7 +3,7 @@ title: Příklad rozhraní příkazového řádku – vytvoření spravované in
 description: Ukázkový skript Azure CLI pro vytvoření spravované instance v Azure SQL Database
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 998bd8e39863dd9520d1a05e7fff52095c3be6c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f52a460be33b23da3da0cb32075ab5f75bb8d129
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067450"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772620"
 ---
 # <a name="use-cli-to-create-an-azure-sql-database-managed-instance"></a>Vytvoření spravované instance Azure SQL Database pomocí rozhraní příkazového řádku
 

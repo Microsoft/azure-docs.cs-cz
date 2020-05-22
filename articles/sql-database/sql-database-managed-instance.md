@@ -3,7 +3,7 @@ title: Přehled spravované instance SQL
 description: Tento článek popisuje Azure SQL Database spravovanou instanci.
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: cce871d2f38d7871bd1ba9c5cb7b086e514a6913
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 55e56d918b1e0c16887f069713203a7e4701baaf
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120789"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772314"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je Azure SQL Database spravovaná instance?
 
@@ -63,7 +63,7 @@ Klíčové funkce spravovaných instancí jsou uvedené v následující tabulce
 | Počet datových souborů (řádků) na databázi | Několik |
 | Počet souborů protokolu (protokol) na databázi | 1 |
 | Nasazení VNet-Azure Resource Manager | Ano |
-| Model nasazení sítě VNet – klasický | Ne |
+| Model nasazení sítě VNet – klasický | No |
 | Podpora portálu | Ano|
 | Integrovaná integrační služba (SSIS) | No-SSIS je součástí [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrovaná služba Analysis Service (SSAS) | No-SSAS je samostatný [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
@@ -199,14 +199,14 @@ Následující tabulka shrnuje možnosti zrušení konkrétních operací správ
 
 Kategorie  |Operace  |Zrušitelný  |Odhadovaná doba trvání zrušení  |
 |---------|---------|---------|---------|
-|Nasazení |Vytvoření instance |Ne |  |
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |Ne |  |
+|Nasazení |Vytvoření instance |No |  |
+|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |No |  |
 |Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut |
 |Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely) |Ano |90% dokončených operací za 5 minut |
 |Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut |
 |Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak) |Ano |90% dokončených operací za 5 minut |
-|Odstranit |Odstranění instance |Ne |  |
-|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |Ne |  |
+|Odstranit |Odstranění instance |No |  |
+|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |No |  |
 
 Chcete-li zrušit operaci správy, přejděte do okna Přehled a klikněte na oznamovací políčko probíhající operace. Na pravé straně se zobrazí obrazovka s probíhající operací a zobrazí se tlačítko pro zrušení operace. Po prvním kliknutí se zobrazí výzva, abyste znovu klikněte na tlačítko a potvrďte, že chcete operaci zrušit.
 
@@ -332,7 +332,7 @@ Možnost nasazení spravované instance umožňuje správcům systému strávit 
 
 V následující tabulce je uvedeno několik vlastností, které jsou přístupné prostřednictvím jazyka Transact SQL, které můžete použít k detekci, že aplikace pracuje se spravovanou instancí a načetla důležité vlastnosti.
 
-|Vlastnost|Hodnota|Poznámka|
+|Vlastnost|Hodnota|Komentář|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejná jako v SQL Database. To neznamená, **že** modul SQL verze 12 (SQL Server 2014). Spravovaná instance vždy spouští nejnovější stabilní verzi modulu SQL, která je stejná nebo vyšší než nejnovější dostupná verze RTM SQL Server.  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejná jako v SQL Database.|

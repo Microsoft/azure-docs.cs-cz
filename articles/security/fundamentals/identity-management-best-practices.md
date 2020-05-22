@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548462"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758618"
 ---
-# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy správy identit a zabezpečení řízení přístupu v Azure
+# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
 
 V tomto článku se podíváme na shromažďování osvědčených postupů zabezpečení Azure Identity Management a Access Control. Tyto osvědčené postupy se odvozují z našich zkušeností s [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) a zkušenostmi se zákazníky, jako je sami.
 
@@ -126,10 +126,10 @@ Uživatelé mají přístup k prostředkům vaší organizace pomocí nejrůzně
 Aby bylo možné zajistit rovnováhu mezi zabezpečením a produktivitou, je třeba zvážit, jak je prostředek přístupný, než můžete učinit rozhodnutí o řízení přístupu. Pomocí podmíněného přístupu Azure AD můžete tento požadavek vyřešit. S podmíněným přístupem můžete provádět automatizované rozhodování o řízení přístupu na základě podmínek pro přístup k vašim cloudovým aplikacím.
 
 **Osvědčený postup**: Správa a řízení přístupu k podnikovým prostředkům.  
-**Podrobnosti**: konfigurace [podmíněného přístupu](/azure/active-directory/active-directory-conditional-access-azure-portal) Azure AD na základě skupiny, umístění a citlivosti aplikace pro aplikace SaaS a připojené aplikace služby Azure AD.
+**Podrobnosti**: Konfigurace běžných [zásad podmíněného přístupu](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) Azure AD na základě skupin, umístění a citlivosti aplikací pro aplikace SaaS a aplikace připojené k Azure AD.
 
 **Osvědčený postup**: blokování starších protokolů ověřování.
-**Podrobnosti**: útočníci zneužije slabé stránky ve starších protokolech každý den, zejména pro útoky prostřednictvím spreje hesla. Nakonfigurujte podmíněný přístup k blokování starších protokolů. Další informace najdete v tématu video [Azure AD: do a Don'ts](https://www.youtube.com/watch?v=wGk0J4z90GI) .
+**Podrobnosti**: útočníci zneužije slabé stránky ve starších protokolech každý den, zejména pro útoky prostřednictvím spreje hesla. Nakonfigurujte podmíněný přístup k [blokování starších protokolů](../../active-directory/conditional-access/howto-conditional-access-policy-block-legacy.md).
 
 ## <a name="plan-for-routine-security-improvements"></a>Plánování běžných vylepšení zabezpečení
 
@@ -175,11 +175,11 @@ Tato metoda je dostupná pro všechny úrovně licencování, ale nemůže být 
 Pokud chcete zjistit, kde Multi-Factor Authentication musí být povolená, podívejte [se, jakou verzi Azure MFA je pro moji organizaci nejvhodnější?](/azure/active-directory/authentication/concept-mfa-whichversion).
 
 **Možnost 3**: [Povolení Multi-Factor Authentication s využitím zásad podmíněného přístupu](/azure/active-directory/authentication/howto-mfa-getstarted)
-**Zvýhodnění**: Tato možnost vám umožní zobrazit dotaz na dvoustupňové ověřování za určitých podmínek pomocí [podmíněného přístupu](/azure/active-directory/active-directory-conditional-access-azure-portal). Konkrétní podmínky se můžou přihlašovat uživateli z různých umístění, nedůvěryhodných zařízení nebo aplikací, které považujete za rizikové. Definování specifických podmínek, které vyžadují dvoustupňové ověřování, vám umožní vyhnout se tak neustálým dotazům pro uživatele, což může být nepříjemný zážitek uživatele.
+**Zvýhodnění**: Tato možnost vám umožní zobrazit dotaz na dvoustupňové ověřování za určitých podmínek pomocí [podmíněného přístupu](../../active-directory/conditional-access/concept-conditional-access-policy-common.md). Konkrétní podmínky se můžou přihlašovat uživateli z různých umístění, nedůvěryhodných zařízení nebo aplikací, které považujete za rizikové. Definování specifických podmínek, které vyžadují dvoustupňové ověřování, vám umožní vyhnout se tak neustálým dotazům pro uživatele, což může být nepříjemný zážitek uživatele.
 
 Toto je nejpružnější způsob, jak povolit dvoustupňové ověřování pro vaše uživatele. Povolení zásad podmíněného přístupu funguje jenom pro Azure Multi-Factor Authentication v cloudu a je funkcí Premium služby Azure AD. Další informace o této metodě najdete v [nasazení cloudové Multi-Factor Authentication Azure](/azure/active-directory/authentication/howto-mfa-getstarted).
 
-**Možnost 4**: povolení Multi-Factor Authentication se zásadami podmíněného přístupu vyhodnocením rizika pro uživatele a přihlašování [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa).   
+**Možnost 4**: povolení Multi-Factor Authentication se zásadami podmíněného přístupu vyhodnocením [zásad podmíněného přístupu na základě rizika](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md).   
 **Výhody**: Tato možnost umožňuje:
 
 * Detekuje potenciální ohrožení zabezpečení, která ovlivňují identity vaší organizace.

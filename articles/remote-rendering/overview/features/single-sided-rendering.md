@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 34ee5d4978c6476da407cde33598a5713177078e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97e0456e274adee7d678e373cfd92b5003f3d801
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80682010"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83759094"
 ---
 # <a name="single-sided-rendering"></a>Jednostranné vykreslování
 
@@ -25,13 +25,13 @@ Nastavení *jednoduchého vykreslování* umožňuje přizpůsobit toto chován�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Nastavení vykreslování s jednou stranou má pouze efekt pro sítě, které byly [převedeny](../../how-tos/conversion/configure-model-conversion.md) s `opaqueMaterialDefaultSidedness` možností nastavenou na `SingleSided`. Ve výchozím nastavení je tato možnost nastavena `DoubleSided`na hodnotu.
+Nastavení vykreslování s jednou stranou má pouze efekt pro sítě, které byly [převedeny](../../how-tos/conversion/configure-model-conversion.md) s `opaqueMaterialDefaultSidedness` možností nastavenou na `SingleSided` . Ve výchozím nastavení je tato možnost nastavena na hodnotu `DoubleSided` .
 
 ## <a name="single-sided-rendering-setting"></a>Nastavení vykreslování s jednou stranou
 
 Existují tři různé režimy:
 
-**Normální:** V tomto režimu jsou sítě vždy vykresleny při jejich převodu. To znamená, že sítě `opaqueMaterialDefaultSidedness` převedené `SingleSided` pomocí nastavené na se vždycky vykreslí s povoleným odstraněním na pozadí, i když se překrývají vyjmuté plochy.
+**Normální:** V tomto režimu jsou sítě vždy vykresleny při jejich převodu. To znamená, že sítě převedené pomocí `opaqueMaterialDefaultSidedness` nastavené na `SingleSided` se vždycky vykreslí s povoleným odstraněním na pozadí, i když se překrývají vyjmuté plochy.
 
 **DynamicDoubleSiding:** V tomto režimu, když vyjmutá rovina protíná síť, je automaticky přepnuta na dvojité vykreslování. Tento režim je výchozím režimem.
 
@@ -39,7 +39,7 @@ Existují tři různé režimy:
 
 Změna nastavení s jedním jednostranným vykreslováním se dá udělat takto:
 
-``` cs
+```cs
 void ChangeSingleSidedRendering(AzureSession session)
 {
     SingleSidedSettings settings = session.Actions.SingleSidedSettings;
@@ -49,6 +49,19 @@ void ChangeSingleSidedRendering(AzureSession session)
 
     // Single-sided geometry is always rendered double-sided
     settings.Mode = SingleSidedMode.AlwaysDoubleSided;
+}
+```
+
+```cpp
+void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
+{
+    ApiHandle<SingleSidedSettings> settings = *session->Actions()->SingleSidedSettings();
+
+    // Single-sided geometry is rendered as is
+    settings->Mode(SingleSidedMode::Normal);
+
+    // Single-sided geometry is always rendered double-sided
+    settings->Mode(SingleSidedMode::AlwaysDoubleSided);
 }
 ```
 

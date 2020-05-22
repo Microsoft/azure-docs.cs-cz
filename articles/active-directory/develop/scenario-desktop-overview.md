@@ -1,5 +1,6 @@
 ---
-title: Sestavení desktopové aplikace, která volá webová rozhraní API – Microsoft Identity Platform | Azure
+title: Sestavení desktopové aplikace, která volá webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Informace o tom, jak vytvořit desktopovou aplikaci, která volá webová rozhraní API (přehled)
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 09cc43dec2eff48754f5a6e693badd6bb1907cce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92f0909660427e414264442523dba3ed2abe0142
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882996"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771855"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scénář: desktopová aplikace, která volá webová rozhraní API
 
@@ -50,7 +51,7 @@ Napíšete desktopovou aplikaci a chcete se přihlašovat do vaší aplikace a v
   - Nebo, pokud se jedná o aplikaci .NET Core a souhlasíte s tím, že je interakce ověřování s Azure Active Directory (Azure AD) provedena v prohlížeči systému.
 
 - U hostovaných aplikací pro Windows je také možné, že aplikace běžící na počítačích připojených k doméně systému Windows nebo službě Azure AD byly připojeny k tichému získání tokenu pomocí integrovaného ověřování systému Windows.
-- A konečně, i když se to nedoporučuje, můžete použít uživatelské jméno a heslo ve veřejných klientských aplikacích. Je stále potřeba v některých scénářích, jako je DevOps. Použití omezení pro vaši aplikaci. Například se nemůže přihlásit uživatel, který potřebuje provést vícefaktorové ověřování (podmíněný přístup). Vaše aplikace navíc nebude využívat jednotné přihlašování (SSO).
+- A konečně, i když se to nedoporučuje, můžete použít uživatelské jméno a heslo ve veřejných klientských aplikacích. Je stále potřeba v některých scénářích, jako je DevOps. Použití omezení pro vaši aplikaci. Například se nemůže přihlásit uživatel, který potřebuje službu [Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) (podmíněný přístup). Vaše aplikace navíc nebude využívat jednotné přihlašování (SSO).
 
   Je také na principech moderního ověřování a je poskytována pouze z původních důvodů.
 

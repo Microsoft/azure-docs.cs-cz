@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 186e36e4625a60362c54972b16b53f0f3e6753fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b52bc45287e0e3a8f4908630cb6e57130c1725df
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409188"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772416"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory
 
@@ -38,7 +38,7 @@ S následujícími typy aplikací máte možnost vyžadovat, aby se uživatelé 
 - Aplikace proxy aplikací, které používají předběžné ověření Azure Active Directory
 - Aplikace založené na platformě aplikace Azure AD, které používají ověřování OAuth 2,0/OpenID Connect po tom, co uživatel nebo správce souhlasí s touto aplikací.
 
-Když se vyžaduje přiřazení uživatele, budou se moct přihlásit jenom uživatelé, které explicitně přiřadíte do aplikace. Mají přístup k aplikaci na stránce Moje aplikace nebo pomocí přímého odkazu. 
+Když se vyžaduje přiřazení uživatele, bude se moct přihlásit jenom uživatelé, které explicitně přiřadíte k aplikaci (ať už prostřednictvím přímého přiřazení uživatelů nebo podle členství ve skupině). Mají přístup k aplikaci na stránce Moje aplikace nebo pomocí přímého odkazu. 
 
 Pokud přiřazení není *vyžadováno*, protože jste tuto možnost nastavili na hodnotu **ne** nebo protože aplikace používá jiný režim jednotného přihlašování, bude mít každý uživatel přístup k aplikaci, pokud má přímý odkaz na aplikaci nebo **adresu URL přístupu uživatele** na stránce **vlastností** aplikace. 
 
@@ -90,7 +90,7 @@ Vyžadování přiřazení uživatele pro aplikaci:
 1. Otevřete příkazový řádek Windows PowerShellu se zvýšenými oprávněními.
 
    > [!NOTE]
-   > Je potřeba nainstalovat modul AzureAD (použijte příkaz `Install-Module -Name AzureAD`). Pokud se zobrazí výzva k instalaci modulu NuGet nebo nového modulu Azure Active Directory v2 PowerShell, zadejte Y a stiskněte ENTER.
+   > Je potřeba nainstalovat modul AzureAD (použijte příkaz `Install-Module -Name AzureAD` ). Pokud se zobrazí výzva k instalaci modulu NuGet nebo nového modulu Azure Active Directory v2 PowerShell, zadejte Y a stiskněte ENTER.
 
 1. Spusťte `Connect-AzureAD` a přihlaste se pomocí uživatelského účtu globálního správce.
 1. K přiřazení uživatele a role k aplikaci použijte následující skript:
@@ -110,9 +110,11 @@ Vyžadování přiřazení uživatele pro aplikaci:
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-Další informace o tom, jak přiřadit uživatele k roli aplikace, najdete v dokumentaci pro [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0) .
+Další informace o tom, jak přiřadit uživatele k roli aplikace, najdete v dokumentaci k [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0).
 
-Pokud chcete přiřadit skupinu k podnikové aplikaci, musíte ji nahradit `Get-AzureADUser` `Get-AzureADGroup`.
+Chcete-li přiřadit skupinu k podnikové aplikaci, je nutné nahradit `Get-AzureADUser` `Get-AzureADGroup` a nahradit `New-AzureADUserAppRoleAssignment` `New-AzureADGroupAppRoleAssignment` .
+
+Další informace o tom, jak přiřadit skupinu k roli aplikace, najdete v dokumentaci k [New-AzureADGroupAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureadgroupapproleassignment?view=azureadps-2.0).
 
 ### <a name="example"></a>Příklad
 
@@ -138,7 +140,7 @@ Tento příklad přiřadí uživatele Britta Simon k aplikaci [Microsoft Workpla
 
    ![Zobrazuje role dostupné uživateli pomocí role Analytics na pracovišti.](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
-1. Přiřaďte k `$app_role_name` proměnné název role.
+1. Přiřaďte k proměnné název role `$app_role_name` .
 
     ```powershell
     # Assign the values to the variables
