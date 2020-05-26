@@ -7,16 +7,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663534"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798130"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitorování skupin prostředků pomocí Azure Monitor (Preview)
 
-Moderní aplikace jsou často složité a vysoce distribuované s mnoha diskrétními částmi, které dohromady spolupracují za účelem poskytování služby. Při rozpoznávání této složitosti Azure Monitor poskytuje přehledy monitorování pro skupiny prostředků. To usnadňuje třídění a diagnostikování všech problémů, které jednotlivé prostředky narazí, a přitom nabízí kontext jako stav a výkon skupiny&mdash;prostředků a aplikace&mdash;jako celku.
+Moderní aplikace jsou často složité a vysoce distribuované s mnoha diskrétními částmi, které dohromady spolupracují za účelem poskytování služby. Při rozpoznávání této složitosti Azure Monitor poskytuje přehledy monitorování pro skupiny prostředků. To usnadňuje třídění a diagnostikování všech problémů, které jednotlivé prostředky narazí, a přitom nabízí kontext jako stav a výkon skupiny prostředků &mdash; a aplikace &mdash; jako celku.
 
 ## <a name="access-insights-for-resource-groups"></a>Přístup k přehledům pro skupiny prostředků
 
@@ -117,6 +117,6 @@ Azure Monitor pro skupiny prostředků spoléhá na to, že systém pro správu 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Monitor sešity](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Azure Monitor sešity](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 - [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Výstrahy Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

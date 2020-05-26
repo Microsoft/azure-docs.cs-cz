@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3f19c77d5e2a943ca6c3c9d081cddedd0769c934
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bfd5d1bfed89d069cbdb74c4df723409ec1f1e77
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736054"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797999"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -50,7 +50,7 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Oceánie** | Austrálie – jihovýchod, Austrálie – východ |Auckland, Melbourne, Perth, Sydney, Sydney2 | 
 | **Jižní Korea** | Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
 | **Spojené arabské emiráty** | Spojené arabské emiráty Central, Spojené arabské emiráty sever | Dubaj, Dubai2 |
-| **Jižní Afrika** | Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
+| **Jihoafrická republika** | Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
 | **Jižní Amerika** | Brazílie – jih |Sao Paulo |
 
 ## <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Oblasti Azure a geopolitické hranice pro národní cloudy
@@ -99,14 +99,14 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Frankfurtu** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Německo – středozápad | 10G, 100G | V&T NetBond, CenturyLink Cloud Connect, Colt, DE-CIX, Equinix, GEANT, Interxion, Megaport, oranžová, Telia Carrier |
 | **Ženevě** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | Švýcarsko – západ | 10G, 100G | Equinix, Megaport |
 | **Hongkong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Východní Asie | Není k dispozici | Aryaka Networks sítě, British Telecom, CenturyLink Cloud Connect, generální Telecom, Čína Telecom Global, Equinix, Cloud, Megaport, NTT Communications, oranžová, PCCW s globálním omezením, Tata Communications, Telia Carrier, Verizon |
-| **Hongkong Kong2** | [MEGABAJTŮ-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | Není k dispozici | 10G | China Telecom Global |
+| **Hongkong Kong2** | [MEGABAJTŮ-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | Není k dispozici | 10G | Čína, globální PCCW, globální omezení |
 | **Jakarta** | Telkom Indonésie | 4 | Není k dispozici | 10G | |
 | **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Jižní Afrika – sever | 10G | BCX, British Telecom, Internet Solutions – Cloud Connect, Liquid Telecom, oranžová, teraco |
 | **Kuala Lumpur** | [DotCom cíle Menara na čas](https://www.time.com.my/enterprise/connectivity/direct-cloud) | 2 | Není k dispozici | Není k dispozici | TIME dotCom |
 | **Las Vegas** | [Přepínač LV](https://www.switch.com/las-vegas) | 1 | Není k dispozici | Není k dispozici | CenturyLink Cloud Connect, Megaport |
 | **London** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | Spojené království – jih | 10G, 100G | V&T NetBond, British Telecom, Colt, Equinix, euNetworks, spolucloudu, Internet Solutions – Cloud Connect, Interxion, JISC, Level 3 Communications, Megaport, MTN, NTT Communications, pomeranče, PCCW, Tata, KDDI, Telenor |
 | **London2** | [Pokojová USA – 2](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | Spojené království – jih | 10G, 100G | CenturyLink Cloud Connect, Colt, IX dosáhnou, Equinix, Megaport, House-KDDI |
-| **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | Není k dispozici | Není k dispozici | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Transtelco, Zayo |
+| **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | Není k dispozici | 10G | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Transtelco, Zayo |
 | **Marseille** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Francie – jih | Není k dispozici | DE-CIX, GEANT, Interxion, Jaguar Network, Ooredoo Cloud Connect |
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Austrálie – jihovýchod | 10G, 100G | Equinix, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | Není k dispozici | 10G | Claro, C3ntro, Equinix, Megaport, sítě pro Neutrona |

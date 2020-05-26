@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: 6d9b88e997f211fd5b13a4ccb92d17a32ca7eaab
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b339749a5c09bd1ddcdd4226e507ce3e01eee200
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696455"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806485"
 ---
 V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Pythonem k sestavení modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Pythonu.
 
@@ -40,7 +40,7 @@ V upřednostňovaném adresáři projektu vytvořte nový soubor *sample.py*.
 
 Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Adresu URL koncového bodu si také můžete stáhnout ze stránky nastavení na webu Custom Vision.
 
-Chcete-li určit další možnosti při vytváření projektu, podívejte se do metody [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) (vysvětleno v průvodci [vytvořením webového portálu detektoru](../../get-started-build-detector.md) ).  
+Chcete-li určit další možnosti při vytváření projektu, podívejte se do metody [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-) (vysvětleno v průvodci [vytvořením webového portálu detektoru](../../get-started-build-detector.md) ).  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient

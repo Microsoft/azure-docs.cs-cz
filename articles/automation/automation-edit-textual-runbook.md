@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2b30b807764159378c594f82ae6cfc55cfa4f7e4
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: d388162738930030ba311a04a0dce1db15590c79
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712906"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836834"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Upravit textové Runbooky v Azure Automation
 
@@ -91,14 +91,14 @@ Import-AzAutomationRunbook -Path "$scriptfolder\Hello-World.ps1" -Name $runbookN
 Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automationAccountName -ResourceGroupName $resourceGroupName
 ```
 
-## <a name="related-articles"></a>Související články
+## <a name="next-steps"></a>Další kroky
 
-* [Správa runbooků v Azure Automation](manage-runbooks.md)
-* [Pracovní postup prostředí PowerShell pro učení](automation-powershell-workflow.md)
-* [Grafické vytváření v Azure Automation](automation-graphical-authoring-intro.md)
-* [Certifikáty](automation-certificates.md)
-* [Připojení](automation-connections.md)
-* [Přihlašovací údaje](automation-credentials.md)
-* [Plány](automation-schedules.md)
-* [Proměnné](automation-variables.md)
-* [Reference k rutinám prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* [Umožňuje spravovat Runbooky v Azure Automation](manage-runbooks.md).
+* [Školicí pracovní postup prostředí PowerShell](automation-powershell-workflow.md).
+* [Grafické vytváření v Azure Automation](automation-graphical-authoring-intro.md).
+* [Certifikáty](automation-certificates.md).
+* [Připojení](automation-connections.md).
+* [Přihlašovací údaje](automation-credentials.md).
+* [Plány](automation-schedules.md).
+* [Proměnné](automation-variables.md).
+* [Reference k rutinám prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

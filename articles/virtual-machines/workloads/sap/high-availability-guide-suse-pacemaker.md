@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/07/2020
+ms.date: 05/21/2020
 ms.author: radeltch
-ms.openlocfilehash: 06ee1b6184e69ace68adcbfa36ad2384dc9fdd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dc5cf055e6fee72cb6d73b3c4c5c76eefb037d6
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811575"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800189"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -538,7 +538,7 @@ Zařízení STONITH používá instanční objekt k autorizaci proti Microsoft A
 1. Klikněte na Registrace aplikací
 1. Klikněte na nová registrace.
 1. Zadejte název, vyberte účty pouze v tomto adresáři organizace. 
-2. Vyberte typ aplikace "Web", zadejte adresu URL pro přihlášení (například http:\//localhost) a klikněte na Přidat.  
+2. Vyberte typ aplikace "Web", zadejte adresu URL pro přihlášení (například http: \/ /localhost) a klikněte na Přidat.  
    Přihlašovací adresa URL se nepoužívá a může to být libovolná platná adresa URL.
 1. Vyberte certifikáty a tajné klíče a pak klikněte na nový tajný klíč klienta.
 1. Zadejte popis nového klíče, vyberte možnost "nikdy vyprší platnost" a klikněte na tlačítko Přidat.
@@ -598,6 +598,9 @@ sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
 sudo crm configure property stonith-timeout=900
 sudo crm configure property stonith-enabled=true
 </code></pre>
+
+> [!TIP]
+>Agent Azure plotu vyžaduje odchozí připojení k veřejným koncovým bodům, jak je popsáno, spolu s možnými řešeními ve veřejných koncových bodech [pro virtuální počítače s využitím Standard interního nástroje](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
 ## <a name="default-pacemaker-configuration-for-sbd"></a>Výchozí konfigurace Pacemaker pro SBD
 

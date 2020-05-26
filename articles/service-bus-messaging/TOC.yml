@@ -196,6 +196,8 @@
           href: service-bus-diagnostic-logs.md
         - name: Pozastavení a opětovná aktivace entit zasílání zpráv
           href: entity-suspend.md
+        - name: Použití Service Bus Exploreru k provádění operací s daty ve službě Service Bus
+          href: explorer.md
         - name: Použití šablon ARM
           href: service-bus-resource-manager-overview.md
           items:

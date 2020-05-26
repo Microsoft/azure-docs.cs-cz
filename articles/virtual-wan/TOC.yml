@@ -48,6 +48,8 @@
       href: upgrade-virtual-wan.md
     - name: Konfigurace vlastních zásad IPsec
       href: virtual-wan-custom-ipsec-portal.md
+    - name: Instalace Azure Firewallu do centra
+      href: howto-firewall.md
     - name: ExpressRoute
       items:
         - name: Vytvoření připojení ExpressRoute
@@ -84,6 +86,8 @@
           href: openvpn-azure-ad-client.md
         - name: Konfigurace víceaplikačního ověřování Azure AD
           href: openvpn-azure-ad-tenant-multi-app.md
+        - name: Instalace Azure Firewallu do centra
+          href: howto-firewall.md
     - name: Směrování
       items:
         - name: Směrování provozu z virtuálního rozbočovače do síťového virtuálního zařízení
@@ -94,6 +98,10 @@
               href: virtual-wan-route-table.md
         - name: Zobrazení efektivních tras virtuálního centra
           href: effective-routes-virtual-hub.md
+    - name: Zabezpečení
+      items:
+        - name: Instalace Azure Firewallu do centra
+          href: howto-firewall.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

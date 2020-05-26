@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 05/11/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 771f6dd265b2df686d00642d2063915dfab17a86
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 17c6e10b213cb1f3d2b20433a5511c27960cdb06
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722741"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816297"
 ---
 # <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>Zabezpečení životního cyklu služby Machine Learning pomocí privátních virtuálních sítí
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -87,6 +87,7 @@ Pokud chcete ve virtuální síti použít [spravovaný Azure Machine Learning *
 > * Zkontrolujte, jestli zásady zabezpečení nebo zámky v předplatném virtuální sítě nebo skupině prostředků omezují oprávnění ke správě virtuální sítě. Pokud máte v úmyslu zabezpečit virtuální síť omezením provozu, nechte některé porty pro výpočetní službu otevřené. Další informace najdete v části [požadované porty](#mlcports) .
 > * Pokud hodláte do jedné virtuální sítě umístit víc výpočetních instancí nebo clusterů, možná budete muset požádat o zvýšení kvóty pro jeden nebo víc vašich prostředků.
 > * Pokud jsou účty Azure Storage v pracovním prostoru zabezpečeny i ve virtuální síti, musí být ve stejné virtuální síti jako Azure Machine Learning výpočetní instance nebo cluster. 
+> * Aby funkce COMPUTE instance Jupyter fungovala, ujistěte se, že komunikace webového soketu není zakázána.
 
 > [!TIP]
 > Instance Machine Learning COMPUTE nebo cluster automaticky přiděluje další síťové prostředky __ve skupině prostředků, která obsahuje virtuální síť__. Pro každou výpočetní instanci nebo cluster přiděluje služba následující prostředky:

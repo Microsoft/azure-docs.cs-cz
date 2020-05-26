@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407165"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826464"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Nejčastější dotazy ke správě hesel
 
 Tady jsou uvedené některé nejčastější dotazy týkající se resetování hesla.
 
-Pokud máte obecnou otázku týkající se Azure Active Directory (Azure AD) a samoobslužného resetování hesla (SSPR), na které tady neodpovíte, můžete požádat o pomoc komunitě [Azure AD](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). Mezi členy komunity patří inženýri, správci produktů, odborníky MVP a odborníci na IT.
+Pokud máte obecné otázky týkající se Azure Active Directory (Azure AD) a samoobslužného resetování hesla (SSPR), na které se tady neodkazuje, můžete požádat o pomoc komunitou na [stránce s dotazem Microsoft Q&na Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html). Mezi členy komunity patří inženýri, správci produktů, odborníky MVP a odborníci na IT.
 
 Tyto nejčastější dotazy jsou rozdělené do následujících částí:
 
@@ -36,7 +36,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
 
 * **Otázka: můžou moji uživatelé registrovat vlastní data pro resetování hesla?**
 
-  > **Odpověď:** Ano. Pokud je povolené resetování hesla a jsou licencované, můžou uživatelé přejít na registrační portál pro resetování hesla (https://aka.ms/ssprsetup) k registraci ověřovacích informací). Uživatelé se také mohou registrovat prostřednictvím přístupového paneluhttps://myapps.microsoft.com)(. Chcete-li provést registraci prostřednictvím přístupového panelu, je nutné vybrat profilový obrázek, vybrat **profil**a pak vybrat možnost **registrovat pro resetování hesla** .
+  > **Odpověď:** Ano. Pokud je povolené resetování hesla a jsou licencované, můžou uživatelé přejít na registrační portál pro resetování hesla ( https://aka.ms/ssprsetup) k registraci ověřovacích informací). Uživatelé se také mohou registrovat prostřednictvím přístupového panelu ( https://myapps.microsoft.com) . Chcete-li provést registraci prostřednictvím přístupového panelu, je nutné vybrat profilový obrázek, vybrat **profil**a pak vybrat možnost **registrovat pro resetování hesla** .
   >
   >
 * **Otázka: Pokud povolím resetování hesla pro skupinu a potom se rozhodnete ji povolit pro všechny, je nutné znovu zaregistrovat své uživatele?**
@@ -101,7 +101,7 @@ Tyto nejčastější dotazy jsou rozdělené do následujících částí:
   > Pokud v tomto časovém rámci nedostanete oznámení, postupujte takto:
   > * Ověřte složku s nevyžádanou poštou.
   > * Ověřte, že číslo nebo e-mail, který je kontaktován, je ten, který jste očekávali.
-  > * Ověřte, zda jsou ověřovací data v adresáři správně formátována, například + 1 4255551234 nebo *contoso.com uživatele\@*. 
+  > * Ověřte, zda jsou ověřovací data v adresáři správně formátována, například + 1 4255551234 nebo * \@ contoso.com uživatele*. 
 * **Otázka: Jaké jazyky podporuje resetování hesla?**
 
   > **A:** Uživatelské rozhraní pro resetování hesla, zprávy SMS a hlasové hovory jsou lokalizovány do stejných jazyků, které jsou podporovány v systému Office 365.

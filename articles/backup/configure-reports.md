@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cd6e0e55f471da83d15e26252b0730ab00f20d3c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e0c7418d7141a3b12f367f1b12ee740eaac64703
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713824"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797533"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -18,7 +18,7 @@ Běžným požadavkem pro správce zálohování je získat přehled o zálohác
 - Auditování záloh a obnovení.
 - Identifikujte klíčové trendy v různých úrovních členitosti.
 
-Dnes Azure Backup poskytuje řešení pro vytváření sestav, které používá [protokoly Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) a [sešity Azure](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks). Tyto prostředky vám pomůžou získat přehled o vašich zálohách napříč celou záloze. Tento článek vysvětluje, jak konfigurovat a zobrazovat sestavy Azure Backup.
+Dnes Azure Backup poskytuje řešení pro vytváření sestav, které používá [protokoly Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) a [sešity Azure](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview). Tyto prostředky vám pomůžou získat přehled o vašich zálohách napříč celou záloze. Tento článek vysvětluje, jak konfigurovat a zobrazovat sestavy Azure Backup.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 

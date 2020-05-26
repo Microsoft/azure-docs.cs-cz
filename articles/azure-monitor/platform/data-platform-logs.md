@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 0b288bf6d987b9db682c8d1439879cf6b499f213
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae72454cd9c0b3cb7370873619595840b770ed3
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457327"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799980"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokoly v Azure Monitoru
 
@@ -42,7 +42,7 @@ V následující tabulce jsou uvedeny různé způsoby, jak můžete použít pr
 |  |  |
 |:---|:---|
 | Analýza | Pomocí [Log Analytics](../log-query/get-started-portal.md) v Azure Portal můžete zapisovat [dotazy protokolu](../log-query/log-query-overview.md) a interaktivně analyzovat data protokolu pomocí výkonného analytického modulu Průzkumník dat.<br>Pomocí [konzoly Application Insights Analytics](../app/analytics.md) v Azure Portal můžete zapisovat dotazy protokolu a interaktivně analyzovat data protokolu z Application Insights. |
-| Vizualizace | Připněte výsledky dotazu vykreslené jako tabulky nebo grafy na [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).<br>Vytvoří [sešit](../app/usage-workbooks.md) pro kombinování s více sadami dat v interaktivní sestavě. <br>Exportujte výsledky dotazu do [Power BI](powerbi.md) , abyste mohli používat různé vizualizace a sdílet s uživateli mimo Azure.<br>Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat.|
+| Vizualizace | Připněte výsledky dotazu vykreslené jako tabulky nebo grafy na [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).<br>Vytvoří [sešit](../platform/workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. <br>Exportujte výsledky dotazu do [Power BI](powerbi.md) , abyste mohli používat různé vizualizace a sdílet s uživateli mimo Azure.<br>Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat.|
 | Výstrahy | Nakonfigurujte [pravidlo upozornění protokolu](alerts-log.md) , které pošle oznámení, nebo provede [automatizovanou akci](action-groups.md) , když výsledky dotazu odpovídají konkrétnímu výsledku.<br>Nakonfigurujte [pravidlo upozornění metriky](alerts-metric-logs.md) pro některé protokoly dat protokolů extrahované jako metriky. |
 | Stahovat | Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Přístup k výsledkům dotazu protokolu z vlastní aplikace pomocí [REST API](https://dev.loganalytics.io/). |
 | Export | Sestavte pracovní postup, který načte data protokolu a zkopíruje ho do externího umístění pomocí [Logic Apps](~/articles/logic-apps/index.yml). |
@@ -88,7 +88,7 @@ Azure Monitor může shromažďovat data protokolu z nejrůznějších zdrojů v
 | Metriky | Pošlete metriky platforem pro Azure Monitor prostředky do pracovního prostoru Log Analytics, abyste zachovali data protokolu pro delší období a prováděli složitou analýzu s jinými datovými typy pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/). Další Log Analytics najdete v tématu [streamování protokolů prostředků Azure](resource-logs-collect-storage.md). |
 | Azure Table Storage | Shromažďovat data ze služby Azure Storage, kde některé prostředky Azure napisují data monitorování. Další informace najdete v tématu [použití úložiště objektů BLOB v Azure pro službu IIS a úložiště tabulek Azure pro události s Log Analytics](diagnostics-extension-logs.md). |
 
-### <a name="virtual-machines"></a>Virtuální počítače
+### <a name="virtual-machines"></a>Virtual Machines
 
 | Data | Popis |
 |:---|:---|

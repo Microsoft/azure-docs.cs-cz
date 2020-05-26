@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 7d0f246a96072a6e433b0762256467f1c20a45fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 517bdc0846ae56e0db41631f1dc5411471c6c2bd
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77581714"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800130"
 ---
 # <a name="what-is-azure-sentinel"></a>Co je Azure Sentinel?
 
@@ -51,7 +51,7 @@ Aby bylo možné připojit se ke službě Azure Sentinel, musíte se nejdřív [
 
 ## <a name="workbooks"></a>Workbooks
 
-Po [připojení zdrojů](quickstart-onboard.md) dat ke službě Azure Sentinel můžete monitorovat data pomocí integrace služby Azure Sentinel s Azure monitor sešity, které poskytují univerzálnost při vytváření vlastních sešitů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/app/usage-workbooks.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
+Po [připojení zdrojů dat](quickstart-onboard.md)   ke službě Azure Sentinel můžete monitorovat data pomocí integrace služby azure Sentinel s Azure monitor sešity, které poskytují univerzálnost při vytváření vlastních sešitů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/platform/workbooks-overview.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
 
 ![Řídicí panely](./media/tutorial-monitor-data/access-workbooks.png)
 

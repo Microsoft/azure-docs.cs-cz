@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: f91ec2fb004ed3745afafd59f4e64e08c11f76a9
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 70f90026e4a67fe1f8b1d5f790aed87652975045
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402269"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798620"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -40,7 +40,7 @@ Pokud jste připojení k aspoň jednomu umístění ExpressRoute v rámci geopol
 ## <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a><a name="locations"></a>Mapování oblastí Azure na umístění ExpressRoute v rámci geopolitické oblasti.
 Následující tabulka obsahuje mapování oblastí Azure na umístění ExpressRoute v rámci geopolitické oblasti.
 
-| **Geopolitická oblast** | **Oblasti Azure** | **Umístění ExpressRoute** |
+| **Geopolitická oblast** | **Oblast Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
 | **Australská vláda** |Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
 | **Evropa** | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – západ, Velká Británie – jih, Západní Evropa |Amsterdam, Amsterdam2, Berlín, Kodaň, Dublin, Frankfurt, Ženeva, Londýn, London2, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych |
@@ -51,14 +51,14 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Oceánie** | Austrálie – jihovýchod, Austrálie – východ |Auckland, Melbourne, Perth, Sydney, Sydney2 |
 | **Jižní Korea** | Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
 | **Spojené arabské emiráty** | Spojené arabské emiráty Central, Spojené arabské emiráty sever | Dubaj, Dubai2 |
-| **Jižní Afrika** | Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
+| **Jihoafrická republika** | Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
 | **Jižní Amerika** | Brazílie – jih |Sao Paulo |
 
 
 ## <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Oblasti a geopolitické hranice pro národní cloudy
 Následující tabulka obsahuje informace o oblastech a geopolitických hranicích pro národní cloudy.
 
-| **Geopolitická oblast** | **Oblasti Azure** | **Umístění ExpressRoute** |
+| **Geopolitická oblast** | **Oblast Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
 | **Cloud vlády USA** |US Gov – Arizona, US Gov – Iowa, US Gov – Texas, US Gov – Virginie, US DoD – střed, US DoD – východ  |Brno, Chicago, Praha, New York, Phoenix, San Antonio, Seattle, Silicon sedl, Washington DC |
 | **Čína – východ** |Čína – východ, Čína – východ 2 |Shanghai, Shanghai2 |
@@ -141,7 +141,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |Podporuje se |Podporuje se |Amsterdam, Amsterdam2, Dubai2, Frankfurt, Hongkong – zvláštní správní oblast, Johannesburg, Londýn, Paříž, Svatý Paulo, Silicon sedl, Singapur, Sydney, Tokio, Washington DC |
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | Podporuje se | Podporuje se | Dubai2 |
 | **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |Podporuje se |Podporuje se |Chicago, Silicon Valley, Washington DC |
-| **[PCCW globální omezení](https://consoleconnect.com/clouds/#azureRegions)** |Podporuje se |Podporuje se |Chicago, Hongkong – zvláštní správní oblast, Londýn, Singapur2 |
+| **[PCCW globální omezení](https://consoleconnect.com/clouds/#azureRegions)** |Podporuje se |Podporuje se |Chicago, Hongkong, Hongkong, Kong2, Londýn, Singapur2 |
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Podporuje se |Podporuje se |Soul |
 | **[ŠETŘENÍ](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | Podporuje se |Podporuje se | Washington DC |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Podporuje se |Podporuje se |Čennaj, Bombaj2 |
@@ -250,7 +250,7 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 | **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | Amsterdam, Frankfurt, Londýn, Singapur, Washington DC |
 | **[BroadBand Tower, Inc.](https://www.bbtower.co.jp/product-service/data-center/network/dcconnect-for-azure/)** | Equinix | Tokio |
 | **[C3ntro Telecom](https://www.c3ntro.com/data/express-route)** | Equinix, Megaport | Dallas |
-| **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | Hongkong – zvláštní správní oblast |
+| **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | Hongkong – zvláštní administrativní oblast |
 | **[Cinia](https://www.cinia.fi/en/services/connectivity-services/direct-public-cloud-connection.html)** | Equinix, Megaport | Frankfurt, Hamburk |
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | Amsterdam | 
 | **[CMC Telecom](https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | Singapur | 
@@ -270,7 +270,7 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 | **[IVedha Inc](http://www.ivedha.com/cloud/manage-azure-cloud/express-route-4/)**| Equinix | Toronto |
 | **[Kaalam Telecom Bahrajn B. S. C](http://www.kalaam-telecom.com/azure/)**| Level 3 Communications |Amsterdam |
 | **LGA Telecom** |Equinix |Singapur|
-| **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |Hongkong – zvláštní správní oblast 
+| **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |Hongkong – zvláštní administrativní oblast 
 | **[Macquarie Telecom Group](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | Sydney |
 | **[MainOne](https://www.mainone.net/services/connectivity/cloud-connect/)** |Equinix | Amsterdam |
 | **[Masergy](https://www.masergy.com/solutions/hybrid-networking/cloud-marketplace/microsoft-azure)** | Equinix | Washington DC |

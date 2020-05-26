@@ -1,7 +1,7 @@
 ---
-title: SPX – Speech Service
+title: Rozhraní příkazového řádku Azure Speech
 titleSuffix: Azure Cognitive Services
-description: SPX je nástroj příkazového řádku pro používání služby Speech bez psaní kódu. Protokol SPX vyžaduje minimální nastavení a je snadné začít experimentovat se základními funkcemi služby Speech Service, aby bylo možné zjistit, jestli vaše případy použití můžou být splněné.
+description: Rozpoznávání řeči je nástroj příkazového řádku pro používání služby Speech bez psaní kódu. Rozhraní příkazového řádku pro rozpoznávání řeči vyžaduje minimální nastavení a je snadné začít experimentovat se základními funkcemi služby Speech Service, aby bylo možné zjistit, jestli se vaše případy použití můžou splnit.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: trbye
-ms.openlocfilehash: b473bdc516c59b55eeb44f227352497142a4383b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3fb0b71cbb82b3b9acad1d1ce093baa86c700a51
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202279"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800342"
 ---
-# <a name="what-is-spx"></a>Co je SPX?
+# <a name="what-is-the-speech-cli"></a>Co je to funkce Speech CLI?
 
-SPX je nástroj příkazového řádku pro používání služby Speech bez psaní kódu. SPX vyžaduje minimální nastavení a je snadné začít experimentovat se základními funkcemi služby Speech Service, abyste viděli, jestli se můžou vaše případy použití splnit. Během několika minut můžete spustit jednoduché testovací pracovní postupy, jako je rozpoznávání řeči Batch z adresáře souborů, nebo převod textu na řeč pro kolekci řetězců ze souboru. Kromě jednoduchých pracovních postupů je SPX připravené k provozu a dá se škálovat tak, aby se spouštěly větší procesy pomocí automatizovaných `.bat` skriptů nebo skriptů prostředí.
+Rozpoznávání řeči je nástroj příkazového řádku pro používání služby Speech bez psaní kódu. Rozhraní příkazového řádku pro rozpoznávání řeči vyžaduje minimální nastavení a je snadné začít experimentovat se základními funkcemi služby Speech Service, abyste viděli, jestli se můžou vaše případy použití splnit. Během několika minut můžete spustit jednoduché testovací pracovní postupy, jako je rozpoznávání řeči Batch z adresáře souborů, nebo převod textu na řeč pro kolekci řetězců ze souboru. Mimo jednoduché pracovní postupy je rozpoznávání řeči pro rozpoznávání řeči připravené k provozu a dá se škálovat až ke spouštění větších procesů pomocí automatizovaných `.bat` skriptů nebo skriptů prostředí.
 
-Většina primárních funkcí v sadě Speech SDK je dostupná v SPX, ale některé pokročilé funkce a přizpůsobení se v SPX zjednodušují. Při rozhodování o použití SPX nebo sady SDK Vezměte v úvahu následující pokyny.
+Většina primárních funkcí v sadě Speech SDK je k dispozici v rozhraní příkazového řádku, ale v rozhraní příkazového řádku je zjednodušeno několik pokročilých funkcí a úprav. Při rozhodování, kdy používat rozpoznávání řeči nebo sadu Speech SDK, vezměte v úvahu následující pokyny.
 
-Použijte SPX v těchto případech:
+Rozhraní příkazového řádku pro rozpoznávání řeči použijte v těchto případech:
 * Chcete experimentovat s funkcemi služby Speech s minimálním nastavením a bez kódu
 * Používání služby Speech je poměrně jednoduché požadavky na produkční aplikaci.
 
-SDK použijte v těchto případech:
+Sadu Speech SDK použijte v těchto případech:
 * Chcete integrovat funkce hlasové služby v konkrétním jazyce nebo platformě (např. C#, Python, C++)
 * Máte složité požadavky, které mohou vyžadovat pokročilé žádosti o služby nebo vývoj vlastního chování včetně streamování odpovědí.
 
@@ -43,9 +43,9 @@ SDK použijte v těchto případech:
 
 ## <a name="get-started"></a>Začínáme
 
-Pokud chcete začít s SPX, přečtěte si [článek Základy](spx-basics.md). V tomto článku se dozvíte, jak spustit některé základní příkazy v SPX, a taky se zobrazuje ještě mírně pokročilejší příkazy pro spouštění operací Batch pro převod řeči na text a převod textu na řeč. Po přečtení článku Základy byste měli mít dost znalostí syntaxe SPX, aby bylo možné začít psát některé vlastní příkazy nebo automatizovat jednoduché operace řeči.
+Pokud chcete začít pracovat s rozhraním příkazového řádku, přečtěte si [článek Základy](spx-basics.md). V tomto článku se dozvíte, jak spustit některé základní příkazy s protokolem SPX, a navíc se zobrazuje ještě mírně pokročilejší příkazy pro spouštění operací Batch pro převod řeči na text a převod textu na řeč. Po přečtení článku Základy byste měli mít dost znalostí syntaxe SPX, aby bylo možné začít psát některé vlastní příkazy nebo automatizovat jednoduché operace řeči.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Základy SPX](spx-basics.md)
+- [Základy rozpoznávání řeči pro rozhraní příkazového řádku](spx-basics.md)
 - Pokud je váš případ použití složitější, [Získejte sadu Speech SDK](speech-sdk.md) .

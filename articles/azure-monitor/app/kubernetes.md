@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 95c7205116808650c09f8b6fdd24844d9c0a6dbe
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a5e73039db541023b1fd4a9b75e7c14030c8e219
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647882"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797890"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Nula monitorování aplikace instrumentace pro aplikace hostované v Kubernetes s Istio – zastaralé
 
@@ -18,7 +18,7 @@ ms.locfileid: "83647882"
 > Tato funkce je aktuálně zastaralá a již nebude podporována po 1. srpnu 2020.
 > V současné době se monitorování bez kódu dá povolit jenom pro [Java prostřednictvím samostatného agenta](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent). Pro jiné jazyky použijte sady SDK k monitorování aplikací na AKS: [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node. js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)a [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
-Azure Monitor teď využívá síť pro pracovní plochu v clusteru Kubernetes k tomu, aby poskytovala monitorování aplikací pro všechny hostované aplikace Kubernetes. Pomocí výchozích funkcí Application Insights, jako je [Mapa aplikací](../../azure-monitor/app/app-map.md) , můžete modelovat závislosti [Live Metrics Stream](../../azure-monitor/app/live-stream.md) pro monitorování v reálném čase, výkonné vizualizace s [výchozím řídicím panelem](../../azure-monitor/app/overview-dashboard.md), [průzkumníkem](../../azure-monitor/platform/metrics-getting-started.md)a [sešity](../../azure-monitor/app/usage-workbooks.md). Tato funkce pomůže uživatelům, aby na všech svých Kubernetes úlohách v rámci vybraného oboru názvů Kubernetes zavedli slabá místa ve výkonu a hotspoty selhání. Díky tomu, že vaše stávající investice do sítě na síti s technologiemi, jako je Istio Azure Monitor, umožňují monitorování automaticky instrumentované aplikace bez jakýchkoli úprav kódu vaší aplikace.
+Azure Monitor teď využívá síť pro pracovní plochu v clusteru Kubernetes k tomu, aby poskytovala monitorování aplikací pro všechny hostované aplikace Kubernetes. Pomocí výchozích funkcí Application Insights, jako je [Mapa aplikací](../../azure-monitor/app/app-map.md) , můžete modelovat závislosti [Live Metrics Stream](../../azure-monitor/app/live-stream.md) pro monitorování v reálném čase, výkonné vizualizace s [výchozím řídicím panelem](../../azure-monitor/app/overview-dashboard.md), [průzkumníkem](../../azure-monitor/platform/metrics-getting-started.md)a [sešity](../../azure-monitor/platform/workbooks-overview.md). Tato funkce pomůže uživatelům, aby na všech svých Kubernetes úlohách v rámci vybraného oboru názvů Kubernetes zavedli slabá místa ve výkonu a hotspoty selhání. Díky tomu, že vaše stávající investice do sítě na síti s technologiemi, jako je Istio Azure Monitor, umožňují monitorování automaticky instrumentované aplikace bez jakýchkoli úprav kódu vaší aplikace.
 
 > [!NOTE]
 > Toto je jeden z mnoha způsobů, jak provádět monitorování aplikací v Kubernetes.Jakoukoli aplikaci hostovanou v Kubernetes můžete také instrumentovat pomocí [sady SDK Application Insights](../../azure-monitor/azure-monitor-app-hub.yml) bez nutnosti použití sítě. Pokud chcete monitorovat Kubernetes bez instrumentace aplikace pomocí sady SDK, můžete použít níže uvedenou metodu.
@@ -126,7 +126,7 @@ Níže je uvedený postup řešení potíží, který se použije v případě, 
    ```
    Vyhledejte případné chyby, zejména související s komunikací s *applicationinsightsadapter* adaptérem.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 Nejnovější informace o průběhu tohoto projektu najdete na [githubu Application Insights Adapter pro projekt mixer Istio](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 

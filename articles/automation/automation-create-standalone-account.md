@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ffe7edd5faf5ae4f88f9f3e0c40256bee32395d7
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0734ac0843eec164ad2207020da9dd1a7e9fa429
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714861"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837089"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -101,8 +101,9 @@ Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Grafické vytváření v Azure Automation](automation-graphical-authoring-intro.md)
-* [Můj první powershellový runbook](automation-first-runbook-textual-powershell.md)
-* [Můj první Runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md)
-* [Můj první Runbook Python2](automation-first-runbook-textual-python2.md)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Další informace o vytváření grafického obsahu najdete [v tématu vytváření grafických runbooků v Azure Automation](automation-graphical-authoring-intro.md).
+* Informace o tom, jak začít se sadami Runbook PowerShellu, najdete v tématu [kurz: vytvoření Runbooku PowerShellu](learn/automation-tutorial-runbook-textual-powershell.md).
+* Pokud chcete začít s Runbooky pracovních postupů PowerShellu, přečtěte si [kurz: vytvoření Runbooku pracovního postupu PowerShellu](learn/automation-tutorial-runbook-textual.md).
+* Chcete-li začít s Runbooky Python 2, přečtěte si [kurz: vytvoření Runbooku Python 2](learn/automation-tutorial-runbook-textual-python2.md).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

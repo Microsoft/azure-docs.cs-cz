@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 9dacbbac1caad33a6ab2f5f09d3f6c9d31c32bb7
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 624bce67e01a0d7dbee382ed77a833705ecd5c89
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871548"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800363"
 ---
 # <a name="support-for-microsoft-commercial-marketplace"></a>Podpora komerčního tržiště Microsoftu
 
@@ -20,13 +20,13 @@ Máte dotazy týkající se zahájení práce s vydavatelem komerčního obchodu
 
 ## <a name="onboarding"></a>Onboarding
 
-Otevřete lístek s [podporou vydavatele na webu Microsoft Marketplace](https://partner.microsoft.com/support/v2/?stage=1) pro problémy s připojováním a zahájením práce.
+Otevřete lístek s [podporou vydavatele na webu Microsoft Marketplace](https://aka.ms/marketplacepublishersupport) pro problémy s připojováním a zahájením práce.
 
-## <a name="partner-center"></a>Partnerské centrum   
+## <a name="partner-center"></a>Partnerské centrum
 
 | Kanál podpory | Popis | Dostupnost |  
 |:--- |:--- |:--- |  
-| Pomoc najdete na stránce vytvoření incidentu, která se nachází na [webu podpora Marketplace](https://partner.microsoft.com/support/v2/?stage=1) .</li> </ul> | Podpora pro partnerské Centrum. | Podpora je poskytována 24x5. |  
+| Pomoc najdete na stránce vytvoření incidentu, která se nachází na [webu podpora Marketplace](https://aka.ms/marketplacepublishersupport) .</li> </ul> | Podpora pro partnerské Centrum. | Podpora je poskytována 24x5. |  
 
 ## <a name="technical"></a>Technické  
 

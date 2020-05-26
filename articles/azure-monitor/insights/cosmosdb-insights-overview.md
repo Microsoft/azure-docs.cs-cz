@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 68b1b8c92b5119da400b0ada0fe792c855dd1f33
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 05000f4c670860be249d80b0e695a8a8760510be
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195399"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797575"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Prozkoumejte Azure Monitor pro Azure Cosmos DB
 
@@ -124,4 +124,4 @@ Sešity se ukládají v rámci skupiny prostředků, a to buď v části **Mé s
 
 * Nakonfigurujte [Upozornění metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications.md) , abyste nastavili automatizované upozorňování na pomoc při zjišťování problémů.
 
-* Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../app/usage-workbooks.md).
+* Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).

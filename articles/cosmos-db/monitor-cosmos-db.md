@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: fcdc80e73d11bbc6d94e921548d346ee436b69ac
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 5056762dab18ae23980c7d3b3ebfbb3c3014fa56
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715677"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798702"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB monitorování
 
@@ -34,7 +34,7 @@ Následující části jsou uvedené v tomto článku, které popisují konkrét
 
 ## <a name="azure-monitor-for-azure-cosmos-db"></a>Azure Monitor pro Azure Cosmos DB
 
-Azure Monitor pro Azure Cosmos DB je založen na [funkci sešitů Azure monitor](../azure-monitor/app/usage-workbooks.md) a používá stejná data monitorování shromážděná pro Cosmos DB popsané v následujících částech. Pomocí Azure Monitor můžete zobrazit celkový výkon, selhání, kapacitu a provozní stav všech vašich prostředků Azure Cosmos DB ve sjednoceném interaktivním prostředí a využít další funkce Azure Monitor pro účely podrobné analýzy a upozorňování. Další informace najdete v článku [prozkoumání Azure Monitor Azure Cosmos DB](../azure-monitor/insights/cosmosdb-insights-overview.md) .
+Azure Monitor pro Azure Cosmos DB je založen na [funkci sešitů Azure monitor](../azure-monitor/platform/workbooks-overview.md) a používá stejná data monitorování shromážděná pro Cosmos DB popsané v následujících částech. Pomocí Azure Monitor můžete zobrazit celkový výkon, selhání, kapacitu a provozní stav všech vašich prostředků Azure Cosmos DB ve sjednoceném interaktivním prostředí a využít další funkce Azure Monitor pro účely podrobné analýzy a upozorňování. Další informace najdete v článku [prozkoumání Azure Monitor Azure Cosmos DB](../azure-monitor/insights/cosmosdb-insights-overview.md) .
 
 > [!NOTE]
 > Při vytváření kontejnerů se ujistěte, že nevytvoříte dva kontejnery se stejným názvem, ale s různou velikostí písmen. Důvodem je to, že některé části platformy Azure nerozlišují velká a malá písmena a to může vést k nejasnostem/kolizi telemetrie a akcí na kontejnerech s takovými názvy.

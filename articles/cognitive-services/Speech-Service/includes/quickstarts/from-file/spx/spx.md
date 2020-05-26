@@ -4,32 +4,32 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/13/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 9ff21105e61be59b0000d86455ee19ba6f0d1aeb
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 398dfe36314f86614515168986023146d695e69b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714653"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806340"
 ---
 ## <a name="find-a-file-that-contains-speech"></a>Vyhledání souboru, který obsahuje řeč
 
-Nástroj SPX dokáže rozpoznávat řeč v mnoha formátech souborů a přirozených jazycích. V tomto rychlém startu můžete použít soubor WAV (16kHz nebo 8kHz, 16 bitů a mono PCM), který obsahuje anglický hlas.
+Rozhraní příkazového řádku pro rozpoznávání řeči dokáže rozpoznávat řeč v mnoha formátech souborů a přirozených jazycích. V tomto rychlém startu můžete použít soubor WAV (16kHz nebo 8kHz, 16 bitů a mono PCM), který obsahuje anglický hlas.
 
 1. Stáhněte si soubor <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">whatstheweatherlike. <span class="docon docon-download x-hidden-focus"></span> WAV </a>.
-2. Zkopírujte `whatstheweatherlike.wav` soubor do stejného adresáře jako binární soubor nástroje SPX.
+2. Zkopírujte `whatstheweatherlike.wav` soubor do stejného adresáře jako binární soubor CLI rozpoznávání řeči.
 
-## <a name="run-the-spx-tool"></a>Spusťte nástroj SPX.
+## <a name="run-the-speech-cli"></a>Spuštění funkce CLI pro rozpoznávání řeči
 
-Teď jste připraveni spustit nástroj SPX pro rozpoznávání řeči nalezené ve zvukovém souboru.
+Teď jste připraveni spustit rozhraní příkazového řádku pro rozpoznávání řeči nalezené ve zvukovém souboru.
 
-V příkazovém řádku přejděte do adresáře, který obsahuje binární soubor nástroje SPX, a zadejte:
+V příkazovém řádku přejděte do adresáře, který obsahuje binární soubor CLI rozpoznávání řeči, a zadejte:
 
 ```bash
 spx recognize --file whatstheweatherlike.wav
 ```
 
 > [!NOTE]
-> Nástroj SPX je ve výchozím nastavení English. [V tabulce převod řeči na text](../../../../language-support.md)můžete zvolit jiný jazyk.
+> Rozpoznávání řeči je výchozím nastavením angličtiny. [V tabulce převod řeči na text](../../../../language-support.md)můžete zvolit jiný jazyk.
 > Přidejte například `--source de-DE` pro rozpoznávání rozpoznávání řeči v němčině.
 
-Nástroj SPX zobrazí na obrazovce text přepisu řeči. Pak se nástroj SPX zavře.
+Rozhraní příkazového řádku pro rozpoznávání řeči zobrazí text na obrazovce. Pak bude rozhraní příkazového řádku pro rozpoznávání řeči zavřeno.

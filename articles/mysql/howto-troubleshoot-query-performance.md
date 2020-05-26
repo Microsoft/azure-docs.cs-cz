@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 6b27e47339b80cc46290065c4d17150a301f2534
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec926bf6065e11e1b6ca2e3f6df22c4b5ee2c2c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067836"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836120"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>Jak používat vysvětlení k profilování výkonu dotazů v Azure Database for MySQL
 **Vysvětlujeme** užitečný nástroj pro optimalizaci dotazů. Příkaz vysvětlit lze použít k získání informací o tom, jak jsou příkazy jazyka SQL provedeny. Následující výstup ukazuje příklad provedení VYSVĚTLUJÍCÍho příkazu.
@@ -167,4 +167,4 @@ Použití vysvětlení a různých typů indexů může výrazně zvýšit výko
 
 
 ## <a name="next-steps"></a>Další kroky
-- Pokud chcete najít rovnocenné odpovědi na příslušné otázky nebo Odeslat novou otázku či odpověď, navštivte [Fórum MSDN](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- Pokud chcete najít rovnocenné odpovědi na příslušné otázky nebo Odeslat novou otázku či odpověď, přejděte na [stránku Microsoft Q&na stránku s otázkou](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

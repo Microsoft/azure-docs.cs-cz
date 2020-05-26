@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: a02b3df02d455db8a7dfd21f63d659f75a66e446
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23e4d104697b5b688330c6ab3a93beebf62f3c6a
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457310"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799966"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metriky na platformě Azure Monitor
 
@@ -32,7 +32,7 @@ Následující tabulka uvádí různé způsoby, jak můžete použít data metr
 |  |  |
 |:---|:---|
 | Analýza | Pomocí [Průzkumníka metrik](metrics-charts.md) můžete analyzovat shromážděné metriky v grafu a porovnat metriky z různých prostředků. |
-| Vizualizace | Připněte graf z Průzkumníka metrik na [řídicí panel Azure](../learn/tutorial-app-dashboards.md).<br>Vytvoří [sešit](../app/usage-workbooks.md) pro kombinování s více sadami dat v interaktivní sestavě. Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat. |
+| Vizualizace | Připněte graf z Průzkumníka metrik na [řídicí panel Azure](../learn/tutorial-app-dashboards.md).<br>Vytvoří [sešit](../platform/workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat. |
 | Výstrahy | Nakonfigurujte [pravidlo upozornění metriky](alerts-metric.md) , které pošle oznámení nebo provede [automatizovanou akci](action-groups.md) , když hodnota metriky přechází ze prahové hodnoty. |
 | Automatizace |  Pomocí [automatického škálování](autoscale-overview.md) můžete zvýšit nebo snížit prostředky na základě hodnoty metriky, která překračuje prahovou hodnotu. |
 | Export | [Směrování metriky do protokolů](resource-logs-collect-storage.md) pro analýzu dat v Azure monitor metriky spolu s daty v protokolech Azure monitor a ukládání hodnot metriky po dobu delší než 93 dní.<br>Streamujte metriky do [centra událostí](stream-monitoring-data-event-hubs.md) , abyste je mohli směrovat do externích systémů. |

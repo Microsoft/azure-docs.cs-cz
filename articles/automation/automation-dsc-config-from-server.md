@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d783ce7193faed4110d07988d3f3f05951c80a45
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 775fae09c4d618551327669362cd28a0ae2cc801
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711393"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837004"
 ---
-# <a name="create-configurations-from-existing-servers-for-azure-automation-state-configuration"></a>Vytvoří konfigurace z existujících serverů pro konfiguraci stavu Azure Automation.
+# <a name="create-configurations-from-existing-servers"></a>Vytvoření konfigurací z existujících serverů
 
 > Platí pro: Windows PowerShell 5,1
 
@@ -45,6 +45,6 @@ Pokud si chcete vyzkoušet ReverseDSC, navštivte [Galerie prostředí PowerShel
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview)
-- [Prostředky DSC](/powershell/scripting/dsc/resources/resources)
-- [Konfigurace místní Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- Informace o prostředí PowerShell DSC najdete v tématu [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview).
+- Přečtěte si o prostředcích PowerShellu v [prostředcích DSC](/powershell/scripting/dsc/resources/resources).
+- Podrobnosti o konfiguraci místních Configuration Manager najdete v tématu [Konfigurace místní Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig).

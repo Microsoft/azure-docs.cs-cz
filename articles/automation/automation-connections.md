@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2bd4a59ee1b82b8f6eb3bf172b11239af1a9f4c5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714266"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837123"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Správa připojení v Azure Automation
 
@@ -192,6 +192,6 @@ azure_credential = get_automation_runas_credential(runas_connection)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa modulů ve službě Azure Automation](shared-resources/modules.md)
-* [Spouštění runbooků ve službě Azure Automation](automation-runbook-execution.md)
-* [Přehled konfigurace stavu](automation-dsc-overview.md)
+* Další informace o rutinách používaných pro přístup k připojení najdete v tématu [Správa modulů v Azure Automation](shared-resources/modules.md).
+* Obecné informace o sadách Runbook naleznete [v tématu Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).
+* Podrobnosti o konfiguracích DSC najdete v tématu [Přehled konfigurace stavu](automation-dsc-overview.md).

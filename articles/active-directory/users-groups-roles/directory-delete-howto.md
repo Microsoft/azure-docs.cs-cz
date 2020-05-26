@@ -1,6 +1,6 @@
 ---
-title: Odstranění adresáře služby Azure AD – Azure Active Directory | Microsoft Docs
-description: Vysvětluje, jak připravit adresář služby Azure AD k odstranění, včetně samoobslužných adresářů.
+title: Odstranění organizace Azure AD (tenant) – Azure Active Directory | Microsoft Docs
+description: Vysvětluje, jak připravit organizaci Azure AD (tenant) k odstranění, včetně organizací samoobslužných služeb.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,50 +9,50 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 05/21/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5ea42f5196b2c4ffe06c139e595dd4641752d35
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73961819"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816195"
 ---
-# <a name="delete-a-directory-in-azure-active-directory"></a>Odstranění adresáře v Azure Active Directory
+# <a name="delete-a-tenant-in-azure-active-directory"></a>Odstranění tenanta v Azure Active Directory
 
-Při odstranění adresáře služby Azure AD se odstraní také všechny prostředky, které jsou obsaženy v adresáři. Připraví svoji organizaci minimalizací svých přidružených prostředků, než je odstraníte. Pouze globální správce služby Azure Active Directory (Azure AD) může z portálu odstranit adresář služby Azure AD.
+Když se odstraní organizace Azure AD (tenant), odstraní se také všechny prostředky, které jsou v organizaci obsažené. Připraví svoji organizaci minimalizací svých přidružených prostředků, než je odstraníte. Pouze globální správce Azure Active Directory (Azure AD) může z portálu odstranit organizaci Azure AD.
 
-## <a name="prepare-the-directory"></a>Příprava adresáře
+## <a name="prepare-the-organization"></a>Příprava organizace
 
-Nemůžete odstranit adresář v Azure AD, dokud ho neprojde několik kontrol. Tato kontrola snižuje riziko, že odstranění adresáře Azure AD negativně ovlivní přístup uživatelů, jako je třeba možnost přihlásit se k Office 365 nebo získat přístup k prostředkům v Azure. Pokud se například adresář přidružený k předplatnému neúmyslně odstraní, uživatelé nebudou mít přístup k prostředkům Azure pro toto předplatné. Kontrolují se následující podmínky:
+Nemůžete odstranit organizaci ve službě Azure AD, dokud ji neprojde několik kontrol. Tato kontrola snižuje riziko, že odstranění organizace Azure AD negativně ovlivní přístup uživatelů, jako je třeba možnost přihlásit se k Office 365 nebo získat přístup k prostředkům v Azure. Pokud je například organizace přidružená k předplatnému neúmyslně odstraněna, uživatelé nebudou mít přístup k prostředkům Azure pro toto předplatné. Kontrolují se následující podmínky:
 
-* V adresáři nesmí být žádní uživatelé s výjimkou jednoho globálního správce, který má odstranit adresář. Všichni ostatní uživatelé musí být před odstraněním adresáře odstraněni. Pokud jsou uživatelé synchronizováni z místního prostředí, musí být nejprve vypnuta synchronizace a uživatelé musí být odstraněni v adresáři cloudu pomocí rutin Azure Portal nebo Azure PowerShell.
-* V adresáři nesmí být žádné aplikace. Aby bylo možné odstranit adresář, musí být všechny aplikace odebrány.
-* K adresáři nemůžou být připojeni žádní zprostředkovatelé služby Multi-Factor Authentication.
-* K adresáři nesmí být přidruženo žádné předplatné online služby Microsoft, jako jsou Microsoft Azure, Office 365 nebo Azure AD Premium. Například pokud byl váš výchozí adresář vytvořený v Azure, nemůžete ho odstranit, pokud stále slouží k ověřování přihlášení k předplatnému služby Azure. Podobně nelze odstranit adresář, pokud k němu má přidružené předplatné jiný uživatel.
+* V organizaci Azure AD (tenant) nemůžou být žádní uživatelé s výjimkou jednoho globálního správce, který má organizaci odstranit. Než bude možné organizaci odstranit, je nutné odstranit všechny ostatní uživatele. Pokud jsou uživatelé synchronizováni z místního prostředí, musí být nejprve vypnutá synchronizace a uživatelé musí být v cloudové organizaci smazáni pomocí rutin Azure Portal nebo Azure PowerShell.
+* V organizaci nemůžou být žádné aplikace. Aby bylo možné organizaci odstranit, je nutné odebrat všechny aplikace.
+* Nemůžete mít žádného poskytovatele služeb Multi-Factor Authentication propojeného s organizací.
+* Pro žádné online služby Microsoftu, jako jsou Microsoft Azure, Office 365 nebo Azure AD Premium přidružené k organizaci, nemůžete mít žádná předplatná. Pokud se například pro vás v Azure vytvořila výchozí organizace Azure AD, nemůžete tuto organizaci odstranit, pokud se vaše předplatné Azure pořád spoléhá na tuto organizaci na ověřování. Obdobně nemůžete odstranit organizaci, pokud k ní přidružit jiný uživatel předplatné.
 
-## <a name="delete-the-directory"></a>Odstranit adresář
+## <a name="delete-the-organization"></a>Odstranit organizaci
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globálním správcem vaší organizace.
 
 2. Vyberte **Azure Active Directory**.
 
-3. Přejděte do adresáře, který chcete odstranit.
+3. Přepněte na organizaci, kterou chcete odstranit.
   
    ![Před odstraněním potvrdit organizaci](./media/directory-delete-howto/delete-directory-command.png)
 
-4. Vyberte **odstranit adresář**.
+4. Vyberte **Odstranit tenanta**.
   
    ![Vyberte příkaz pro odstranění organizace.](./media/directory-delete-howto/delete-directory-list.png)
 
-5. Pokud váš adresář neprojde jednou nebo více kontrolami, máte k dispozici odkaz na Další informace o tom, jak předat. Po předání všech kontrol vyberte **Odstranit** a proces dokončete.
+5. Pokud vaše organizace neprojde jednou nebo více kontrolami, máte k dispozici odkaz na Další informace o tom, jak předat. Po předání všech kontrol vyberte **Odstranit** a proces dokončete.
 
-## <a name="if-you-cant-delete-the-directory"></a>Pokud adresář nemůžete odstranit
+## <a name="if-you-cant-delete-the-organization"></a>Pokud nemůžete organizaci odstranit
 
-Když jste nakonfigurovali adresář služby Azure AD, mohli jste taky aktivovat odběry na základě licencí pro vaši organizaci, jako je Azure AD Premium P2, Office 365 Business Premium nebo Enterprise Mobility + Security E5. Aby nedocházelo k náhodné ztrátě dat, nemůžete odstranit adresář, dokud nebudou předplatná zcela odstraněna. Aby bylo možné odběry adresáře odstranit, musí být odběry v **nezřízeném** stavu. Předplatné, **jehož platnost vypršela** nebo **zrušila** , se přesune do stavu **zakázáno** a závěrečná fáze je stav **zrušeno** .
+Když jste nakonfigurovali organizaci Azure AD, mohli jste taky aktivovat předplatné na základě licencí pro vaši organizaci, jako je Azure AD Premium P2, Office 365 Business Premium nebo Enterprise Mobility + Security E5. Aby nedocházelo k náhodné ztrátě dat, nemůžete organizaci odstranit, dokud nebudou předplatná zcela odstraněna. Aby bylo možné odstranit organizaci, musí být odběry v **nezřízeném** stavu. Předplatné, **jehož platnost vypršela** nebo **zrušila** , se přesune do stavu **zakázáno** a závěrečná fáze je stav **zrušeno** .
 
 V následující tabulce najdete informace o tom, co očekávat, když vyprší platnost zkušební verze předplatného Office 365 (včetně placeného partnera/CSP, smlouva Enterprise nebo multilicenčního programu). Další informace o uchovávání dat a životní cyklus předplatného Office 365 najdete v tématu [co se stane s daty a přístup, když předplatné Office 365 pro firmy skončí?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
@@ -67,7 +67,7 @@ Zrušeno zřízení (30 dní po zakázání) | Odstraněná data (automaticky sm
 
 Předplatné můžete vložit do stavu **zrušeno zřízení** , který bude odstraněn během tří dnů pomocí centra pro správu Microsoft 365.
 
-1. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com) pomocí účtu, který je globálním správcem vaší organizace. Pokud se pokoušíte odstranit adresář contoso, který má počáteční výchozí doménu contoso.onmicrosoft.com, přihlaste se pomocí hlavního názvu uživatele (UPN) admin@contoso.onmicrosoft.com, jako je například.
+1. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com) pomocí účtu, který je globálním správcem vaší organizace. Pokud se pokoušíte odstranit organizaci "contoso", která má počáteční výchozí doménu contoso.onmicrosoft.com, přihlaste se pomocí hlavního názvu uživatele (UPN), jako je například admin@contoso.onmicrosoft.com .
 
 2. Zobrazte si náhled nového centra pro správu Microsoft 365 tím, že zajistěte, aby byl povolený přepínač **vyzkoušení nového centra pro správu** .
 
@@ -91,18 +91,18 @@ Předplatné můžete vložit do stavu **zrušeno zřízení** , který bude ods
 
 7. Nyní došlo ke změně stavu předplatného a odběr je označený k odstranění. Předplatné vstoupí v platnost **po 72** hodin později.
 
-8. Po odstranění odběru v adresáři a uplynutí 72 hodin se můžete znovu přihlásit do centra pro správu Azure AD a nemusíte mít žádnou akci, která by neblokovala odstranění vašeho adresáře. Měli byste být schopni úspěšně odstranit adresář služby Azure AD.
+8. Jakmile odstraníte předplatné ve vaší organizaci a 72 hodin, můžete se znovu přihlásit do centra pro správu Azure AD a nemusíte mít žádnou akci, která by neblokovala odstranění vaší organizace. Měli byste být schopni úspěšně odstranit vaši organizaci Azure AD.
   
    ![obrazovka předat kontrolu předplatného](./media/directory-delete-howto/delete-checks-passed.png)
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Mám zkušební předplatné, které blokuje odstranění
 
-K dispozici jsou [samoobslužné produkty pro registraci](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , jako je Microsoft Power BI, Rights Management Services, Microsoft Power apps nebo Dynamics 365, které se můžou zaregistrovat pomocí Office 365. tím se také vytvoří uživatel typu Host pro ověřování v adresáři služby Azure AD. Tyto samoobslužné produkty blokují odstranění adresáře, dokud nebudou zcela odstraněny z adresáře, aby nedošlo ke ztrátě dat. Můžou je odstranit jenom správce Azure AD, ať už se uživatel zaregistroval individuálně nebo mu byl přiřazený produkt.
+K dispozici jsou [samoobslužné produkty pro registraci](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , jako je Microsoft Power BI, Rights Management Services, Microsoft Power apps nebo Dynamics 365, se můžou zaregistrovat jednotliví uživatelé pomocí Office 365, který taky vytvoří uživatele typu Host pro ověřování ve vaší organizaci Azure AD. Tyto samoobslužné produkty blokují odstranění adresáře, dokud se produkty z organizace zcela neodstraní, aby se předešlo ztrátě dat. Můžou je odstranit jenom správce Azure AD, ať už se uživatel zaregistroval individuálně nebo mu byl přiřazený produkt.
 
 Existují dva typy samoobslužných registračních produktů ve způsobu jejich přiřazení: 
 
 * Přiřazení na úrovni organizace: správce Azure AD přiřadí produkt celé organizaci a uživatel může tuto službu aktivně používat s tímto přiřazením na úrovni organizace, i když nejsou samostatně licencované.
-* Přiřazení na úrovni uživatele: jednotliví uživatelé během přihlašování k samoobslužné službě v podstatě přiřadí produkt sami sobě bez správce. Jakmile bude organizace spravována správcem (viz [převzetí správce nespravovaného adresáře](domains-admin-takeover.md), může správce přímo přiřadit produkt uživatelům bez samoobslužné registrace.  
+* Přiřazení na úrovni uživatele: jednotliví uživatelé během přihlašování k samoobslužné službě v podstatě přiřadí produkt sami sobě bez správce. Jakmile bude organizace spravována správcem (viz [převzetí správce nespravované organizace](domains-admin-takeover.md)), může správce přímo přiřadit produkt uživatelům bez samoobslužné registrace.  
 
 Když zahájíte odstranění samoobslužného registračního produktu, akce trvale odstraní data a odebere veškerý přístup uživatelů ke službě. Každému uživateli, kterému byla nabídka přiřazena individuálně nebo na úrovni organizace, se pak zablokuje přihlášení nebo přístup k žádným existujícím datům. Pokud chcete zabránit ztrátě dat pomocí samoobslužného registračního produktu, jako jsou například [řídicí panely Microsoft Power BI](https://docs.microsoft.com/power-bi/service-export-to-pbix) nebo [konfigurace zásad služby Rights Management Services](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy), zajistěte, aby byla data zálohována a ukládána jinde.
 
@@ -113,13 +113,13 @@ V následující tabulce najdete informace o tom, co očekávat, když vyprší 
 Stav produktu | Data | Přístup k datům
 ------------- | ---- | --------------
 Aktivní (30 dní pro zkušební období) | Data přístupná všem | Uživatelé mají normální přístup k samoobslužnému registračnímu produktu, souborům nebo aplikacím.<br>Správci mají normální přístup k Microsoft 365 centrum pro správu a prostředky.
-Odstranění | Data odstraněna | Uživatelé nemají přístup k samoobslužnému registračnímu produktu, souborům nebo aplikacím.<br>Správci mají přístup k centru pro správu Microsoft 365 k nákupu a správě dalších předplatných.
+Odstraněné | Data odstraněna | Uživatelé nemají přístup k samoobslužnému registračnímu produktu, souborům nebo aplikacím.<br>Správci mají přístup k centru pro správu Microsoft 365 k nákupu a správě dalších předplatných.
 
 ## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Jak mohu v Azure Portal odstranit samoobslužný produkt pro registraci?
 
 Můžete vložit samoobslužný produkt pro registraci, jako je Microsoft Power BI nebo Azure Rights Management Services, do stavu **odstranění** , který se okamžitě odstraní na portálu Azure AD.
 
-1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který je globálním správcem v organizaci. Pokud se pokoušíte odstranit adresář contoso, který má počáteční výchozí doménu contoso.onmicrosoft.com, přihlaste se pomocí hlavního názvu uživatele (UPN) admin@contoso.onmicrosoft.com, jako je například.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který je globálním správcem v organizaci. Pokud se pokoušíte odstranit organizaci "contoso", která má počáteční výchozí doménu contoso.onmicrosoft.com, přihlaste se pomocí hlavního názvu uživatele (UPN), jako je například admin@contoso.onmicrosoft.com .
 
 2. Vyberte **licence**a pak vyberte **samoobslužné registrace produktů**. Všechny samoobslužné produkty pro registraci se zobrazí odděleně od předplatných založených na pracovních stanicích. Vyberte produkt, který chcete trvale odstranit. Tady je příklad v Microsoft Power BI:
 
@@ -137,7 +137,7 @@ Můžete vložit samoobslužný produkt pro registraci, jako je Microsoft Power 
 
     ![uživatelské jméno je netypové nebo se nenašlo.](./media/directory-delete-howto/product-deleted.png)
 
-6. Po odstranění všech produktů se můžete znovu přihlásit do centra pro správu Azure AD a nemusíte nic dělat a žádné produkty neblokují odstranění adresáře. Měli byste být schopni úspěšně odstranit adresář služby Azure AD.
+6. Po odstranění všech produktů se můžete znovu přihlásit do centra pro správu Azure AD a nemusíte nic dělat a žádné produkty neblokují odstranění vaší organizace. Měli byste být schopni úspěšně odstranit vaši organizaci Azure AD.
 
     ![uživatelské jméno je netypové nebo se nenašlo.](./media/directory-delete-howto/delete-organization.png)
 

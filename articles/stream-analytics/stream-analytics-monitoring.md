@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 54bff88e9650240a3703e18d583f603cafeb3022
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 11cb598420b4cecf803b17a78f14f9268e1c8be2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611887"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831275"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Pochopení Stream Analytics monitorování úloh a postup monitorování dotazů
 
@@ -58,8 +58,8 @@ V nastavení úprav grafu můžete upravit typ grafu, zobrazené metriky a časo
 Další zajímavou datovou bodem pro monitorování vaší úlohy je čas posledního výstupu, který je zobrazený na stránce Přehled.
 Tentokrát je čas aplikace (tj. čas použití časového razítka z dat události) posledního výstupu úlohy.
 
-## <a name="get-help"></a>Podpora
-Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+## <a name="get-help"></a>Získání pomoci
+Pokud potřebujete další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)

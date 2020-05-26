@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: fc0a82617346f60b90de34b379b4a0a114faf804
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658081"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799858"
 ---
 # <a name="consulting-service-offers"></a>Konzultační nabídky služeb
 
@@ -74,7 +74,7 @@ V případě AppSource jsou způsobilé kompetence uvedené v následující tab
 
 Další zdroje informací a podpora:
 
-* [Microsoft cloudation](https://partner.microsoft.com/campaigns/ced-nomination-form/)Center: dokončete formu partnerského plánování pro prostředí s asistencí pro cloudový program pro připojení k odborníkovi na cloudový program, který může vyjadřují Microsoft Partner Network výhod a slouží jako vodítko pro dosažení kompetence.  
+* [Microsoft cloudation](https://aka.ms/CEDnominate)Center: dokončete formu partnerského plánování pro prostředí s asistencí pro cloudový program pro připojení k odborníkovi na cloudový program, který může vyjadřují Microsoft Partner Network výhod a slouží jako vodítko pro dosažení kompetence.  
 * [Staňte se Power BI partnerem](https://powerbi.microsoft.com/become-a-partner/): odešlete žádost, která vám ukáže seznam Power BI prezentace.
 
 Další informace o kompetencích najdete na stránce [Microsoft Partner Network kompetence](https://partner.microsoft.com/membership/competencies) .

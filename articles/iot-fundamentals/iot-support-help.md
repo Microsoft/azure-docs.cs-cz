@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 1/23/2020
-ms.openlocfilehash: c40aa9b0a94940f48a8edbd046a744678f02cbd2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e5dfdd41d3770cc49ed7a1e40ad6fbb12e5b10ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76775393"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827231"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Možnosti pomoci a podpory Azure IoT
 
@@ -53,11 +53,11 @@ Diskuze o technologiích a službách Azure pro vytváření řešení IoT MSDN 
 
 Pokud nemůžete najít odpověď na váš problém pomocí hledání, odešlete novou otázku do MSDN ve fóru týkajícím se služby:
 
-- [Azure Digital Twins](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredigitaltwins)
-- [Azure IoT Hub](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azureiothub)
-- [Azure IoT Edge](https://social.msdn.microsoft.com/Forums/en-US/home?forum=iotedge)
-- [Azure Maps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelbs)
-- [Azure Time Series Insights](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights)
+- [Microsoft Q&Stránka s otázkou pro digitální vlákna Azure](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
+- [Stránka s otázkou pro Azure&Microsoft Q IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
+- [Microsoft Q&Stránka s otázkou pro Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
+- [Microsoft Q&Stránka s otázkou pro Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html)
+- [Microsoft Q&Stránka s otázkou pro Azure Time Series Insights](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
 
 ## <a name="submit-feedback-on-azure-feedback"></a>Odeslání názoru na zpětnou vazbu k Azure
 

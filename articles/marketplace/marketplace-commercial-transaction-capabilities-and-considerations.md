@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: ce1c134c1940abecd7ecc6329b48802e02e74dc9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657903"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800051"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
@@ -165,7 +165,7 @@ Zákazníci se obvykle kupují pomocí smlouva Enterprise nebo smlouvy s povolen
 
 Další informace a právní zásady najdete v tématu [smlouva vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (k dispozici v partnerském centru).
 
-Pokud chcete získat nápovědu k fakturaci, kontaktujte [podporu pro komerčního vydavatele na webu Marketplace](https://partner.microsoft.com/support/v2/?stage=1).
+Pokud chcete získat nápovědu k fakturaci, kontaktujte [podporu pro komerčního vydavatele na webu Marketplace](https://aka.ms/marketplacepublishersupport).
 
 ## <a name="transact-requirements"></a>Požadavky Transact
 

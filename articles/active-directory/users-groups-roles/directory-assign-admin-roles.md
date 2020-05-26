@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef321e82f1737df4b13d259824acd943a7eea440
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a15de41dc2dce4cae0a6155bfce8a8a2001b9a8b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649352"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798804"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -82,7 +82,7 @@ Uživatelé s touto rolí můžou pro některé uživatele nastavit nebo resetov
 Role [správce privilegovaného ověřování](#privileged-authentication-administrator) má oprávnění k vynucení opakované registrace a ověřování Multi-Factor Authentication pro všechny uživatele.
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
+> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům ověřování. Prostřednictvím této cesty může správce ověřování předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -99,14 +99,6 @@ Všechny zásady Enterprise Azure DevOps můžou spravovat uživatelé v této r
 ### <a name="azure-information-protection-administrator"></a>[Správce Azure Information Protection](#azure-information-protection-administrator-permissions)
 
 Uživatelé s touto rolí mají všechna oprávnění ve službě Azure Information Protection. Tato role umožňuje konfigurovat popisky pro zásady Azure Information Protection, spravovat šablony ochrany a aktivovat ochranu. Tato role neuděluje žádná oprávnění v centru pro ochranu identit, Privileged Identity Management, monitorování Service Health Office 365 nebo v centru pro dodržování předpisů Office 365 Security &.
-
-### <a name="b2c-user-flow-administrator"></a>[Správce toku B2C uživatele](#b2c-user-flow-administrator-permissions)
-
-Uživatelé s touto rolí můžou v Azure Portal vytvářet a spravovat Toky uživatelů B2C (označované taky jako předdefinované zásady).Vytvořením nebo úpravou toků uživatelů mohou tito uživatelé měnit obsah HTML/CSS/JavaScript uživatelského prostředí, měnit požadavky MFA na tok uživatelů, měnit deklarace identity v tokenu a upravovat nastavení relace pro všechny zásady v organizaci Azure AD. Na druhé straně tato role nezahrnuje možnost kontrolovat data uživatelů ani měnit atributy, které jsou součástí schématu organizace.Změny architektury rozhraní identity Experience Framework (označované také jako vlastní) jsou také mimo rámec této role.
-
-### <a name="b2c-user-flow-attribute-administrator"></a>[Správce atributů toku uživatele B2C](#b2c-user-flow-attribute-administrator-permissions)
-
-Uživatelé s touto rolí můžou přidávat nebo odstraňovat vlastní atributy dostupné všem uživatelským tokům v organizaci Azure AD.Uživatelé s touto rolí mohou například měnit nebo přidávat nové prvky do schématu koncového uživatele a ovlivnit chování všech toků uživatelů a nepřímo způsobit změny v tom, jaká data mohou být požádána o koncové uživatele a která jsou nakonec odeslána jako deklarace do aplikací.Tato role nemůže upravovat toky uživatelů.
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C IEF, správce sady klíčů](#b2c-ief-keyset-administrator-permissions)
 
@@ -214,6 +206,15 @@ Uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Excha
 > [!NOTE]
 > V rozhraní Microsoft Graph API a Azure AD PowerShell je tato role označená jako "Správce služby Exchange". Je to "správce Exchange" v [Azure Portal](https://portal.azure.com). Je to "Exchange Online Administrator" v [centru pro správu Exchange](https://go.microsoft.com/fwlink/p/?LinkID=529144).
 
+
+### <a name="external-id-user-flow-administrator"></a>[Správce toku externího ID uživatele](#external-id-user-flow-administrator-permissions)
+
+Uživatelé s touto rolí můžou v Azure Portal vytvářet a spravovat Toky uživatelů B2C (označované taky jako předdefinované zásady).Vytvořením nebo úpravou toků uživatelů mohou tito uživatelé měnit obsah HTML/CSS/JavaScript uživatelského prostředí, měnit požadavky MFA na tok uživatelů, měnit deklarace identity v tokenu a upravovat nastavení relace pro všechny zásady v organizaci Azure AD. Na druhé straně tato role nezahrnuje možnost kontrolovat data uživatelů ani měnit atributy, které jsou součástí schématu organizace.Změny architektury rozhraní identity Experience Framework (označované také jako vlastní) jsou také mimo rámec této role.
+
+### <a name="external-id-user-flow-attribute-administrator"></a>[Správce atributů toku uživatele externího ID](#external-id-user-flow-attribute-administrator-permissions)
+
+Uživatelé s touto rolí můžou přidávat nebo odstraňovat vlastní atributy dostupné všem uživatelským tokům v organizaci Azure AD.Uživatelé s touto rolí mohou například měnit nebo přidávat nové prvky do schématu koncového uživatele a ovlivnit chování všech toků uživatelů a nepřímo způsobit změny v tom, jaká data mohou být požádána o koncové uživatele a která jsou nakonec odeslána jako deklarace do aplikací.Tato role nemůže upravovat toky uživatelů.
+
 ### <a name="external-identity-provider-administrator"></a>[Správce externích zprostředkovatelů identity](#external-identity-provider-administrator-permissions)
 
 Tento správce spravuje federace mezi organizacemi Azure AD a externími zprostředkovateli identity.S touto rolí můžou uživatelé přidávat nové zprostředkovatele identity a konfigurovat všechna dostupná nastavení (například cestu pro ověřování, ID služby, přiřazené kontejnery klíčů).Tento uživatel může organizaci Azure AD povolit, aby důvěřoval ověřování od externích zprostředkovatelů identity.Výsledný dopad na činnost koncového uživatele závisí na typu organizace:
@@ -237,8 +238,6 @@ Uživatelé v této roli můžou číst nastavení a informace pro správu např
 > [!NOTE]
 > Role globálního čtecího modulu teď má v současné době několik omezení –
 >
->- [Centrum pro správu OneDrivu](https://admin.onedrive.com/) – centrum pro správu OneDrive nepodporuje roli globálního čtecího modulu.
->- [Portál Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) – globální Čtenář nemůže přečíst režim zřizování podnikové aplikace.
 >- [Centrum pro správu M365](https://admin.microsoft.com/Adminportal/Home#/homepage) – globální Čtenář nemůže přečíst žádosti o bezpečnostní modul zákazníka. V levém podokně centra pro správu M365 nenajdete kartu **žádosti o bezpečnostní modul pro zákazníky** v části **Podpora** .
 >- [Office Security & – centrum dodržování předpisů](https://sip.protection.office.com/homepage) – globální Čtenář nemůže číst protokoly auditu SCC, provádět hledání obsahu nebo se podívat na zabezpečené skóre.
 >- [Centrum pro správu týmů](https://admin.teams.microsoft.com) – globální Čtenář nemůže přečíst **životní cyklus týmů**, **analýzu & sestav**, **správu IP adres zařízení** a **Katalog aplikací**.
@@ -267,7 +266,7 @@ Uživatelé s touto rolí můžou měnit hesla, zrušit platnost tokenů aktuali
 * Čtečka sestav
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům helpdesku. Prostřednictvím této cesty může správce helpdesku předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -478,7 +477,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 |Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatelů|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům uživatelů. Prostřednictvím této cesty může správce uživatelů předpokládat identitu vlastníka aplikace a pak dále předpokládat identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -599,22 +598,6 @@ Může spravovat všechny aspekty služby Azure Information Protection.
 | Microsoft. Azure. supportTickets/allEntities/allTasks | Vytvářejte a spravujte lístky podpory Azure. |
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Přečtěte si a nakonfigurujte Office 365 Service Health. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
-
-### <a name="b2c-user-flow-administrator-permissions"></a>Oprávnění správce toku B2C uživatele
-
-Vytvářejte a spravujte všechny aspekty toků uživatelů.
-
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. aad. B2C/userFlows/allTasks | Čtení a konfigurace toků uživatelů v Azure Active Directory B2C. |
-
-### <a name="b2c-user-flow-attribute-administrator-permissions"></a>Oprávnění správce toku B2C uživatele
-
-Vytvořte a spravujte schéma atributů dostupné pro všechny toky uživatelů.
-
-| **Akce** | **Popis** |
-| --- | --- |
-| Microsoft. aad. B2C/userAttributes/allTasks | Čtení a konfigurace uživatelských atributů v Azure Active Directory B2C. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>B2C IEF, oprávnění správce sady klíčů
 
@@ -1030,6 +1013,22 @@ Může spravovat všechny aspekty produktu Exchange.
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
 | Microsoft. Office 365. usageReports/allEntities/Read | Přečtěte si sestavy o využití Office 365. |
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+### <a name="external-id-user-flow-administrator-permissions"></a>Oprávnění správce toku externích ID uživatele
+
+Vytvářejte a spravujte všechny aspekty toků uživatelů.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| Microsoft. aad. B2C/userFlows/allTasks | Čtení a konfigurace toků uživatelů v Azure Active Directory B2C. |
+
+### <a name="external-id-user-flow-attribute-administrator-permissions"></a>Oprávnění správce atributu toku uživatele externího ID
+
+Vytvořte a spravujte schéma atributů dostupné pro všechny toky uživatelů.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| Microsoft. aad. B2C/userAttributes/allTasks | Čtení a konfigurace uživatelských atributů v Azure Active Directory B2C. |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>Oprávnění správce externího zprostředkovatele identity
 
@@ -1809,8 +1808,6 @@ Vývojář aplikace | Vývojář aplikace | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Správce ověřování | Správce ověřování | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Správce Azure DevOps | Správce Azure DevOps | e3973bdf-4987-49ae-837a-ba8e231c7286
 Správce Azure Information Protection | Správce Azure Information Protection | 7495fdc4-34c4-4d15-a289-98788ce399fd
-Správce toku B2C uživatele | Správce toku B2C uživatele | 6e591065-9bad-43ed-90f3-e9424366d2f0
-Správce atributů toku uživatele B2C | Správce atributů toku uživatele B2C | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 B2C IEF, správce sady klíčů | B2C IEF, správce sady klíčů | aaf43236-0c0d-4d5f-883a-6955382ac081
 Správce zásad IEF B2C | Správce zásad IEF B2C | 3edaf663-341e-4475-9f94-5c398ef6c070
 Správce fakturace | Správce fakturace | b0f54661-2d74-4c50-afa3-1ec803f12efe
@@ -1831,6 +1828,8 @@ Uživatelé zařízení | Zastaralé | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Účty synchronizace adresářů | Nezobrazeno, protože by neměl být použit | d29b2b05-8046-44ba-8758-1e26182fcf32
 Zapisovače adresářů | Nezobrazeno, protože by neměl být použit | 9360feb5-f418-4baa-8175-e2a00bac4301
 Správce služby Exchange | Správce Exchange | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Správce toku externího ID uživatele | Správce toku externího ID uživatele | 6e591065-9bad-43ed-90f3-e9424366d2f0
+Správce atributů toku uživatele externího ID | Správce atributů toku uživatele externího ID | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 Správce externích zprostředkovatelů identity | Správce externích zprostředkovatelů identity | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Globální čtenář | Globální čtenář | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Správce skupin | Správce skupin | fdd7a751-b60b-444a-984c-02652fe8fa1c 

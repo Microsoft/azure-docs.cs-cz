@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 8697c7a82e271919f8d5aaa48160aa93c833809b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: c5e5437db480646275a8bbe34e1a64c005a32a16
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996903"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827722"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé z nejběžnějších otázek o Azure DevTest Labs.
@@ -47,7 +47,7 @@ Váš popisovač Twitteru:[@azlabservices](https://twitter.com/azlabservices)
 Pokud tady uvedený dotaz není, sdělte nám, abychom vám pomohli najít odpověď.
 
 - Na konci těchto nejčastějších dotazů si vystavte otázku.
-- Pokud chcete oslovit širší cílovou skupinu, odešlete na [Azure DevTest Labs Fórum MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)otázku. Zapojte se do týmu Azure DevTest Labs a dalších členů komunity.
+- Pokud chcete oslovit širší cílovou skupinu, pošlete dotaz na [stránku s dotazem na Microsoft Q&Azure DevTest Labs](https://docs.microsoft.com/answers/topics/azure-devtestlabs.html). Zapojte se do týmu Azure DevTest Labs a dalších členů komunity.
 - V případě žádostí o funkce odešlete žádosti a nápady [Azure DevTest Labs uživatelského hlasu](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Co je účet Microsoft?
@@ -211,7 +211,7 @@ Zkopírování stávajících virtuálních počítačů do DevTest Labs:
 Ano, k virtuálním počítačům můžete připojit několik disků.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Jsou pro DevTest Labs podporované image Gen 2?
-Ne. Služba DevTest Labs nepodporuje [Image Gen 2](../virtual-machines/windows/generation-2.md). Pokud je pro Image k dispozici jak 1, tak i Gen 2, při vytváření virtuálního počítače se v DevTest Labs zobrazí jenom verze 1. generace. Obrázek se nezobrazí, pokud je k dispozici pouze obecná verze 2. 
+No. Služba DevTest Labs nepodporuje [Image Gen 2](../virtual-machines/windows/generation-2.md). Pokud je pro Image k dispozici jak 1, tak i Gen 2, při vytváření virtuálního počítače se v DevTest Labs zobrazí jenom verze 1. generace. Obrázek se nezobrazí, pokud je k dispozici pouze obecná verze 2. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Pokud chci pro svoje testování použít bitovou kopii operačního systému Windows, musím si koupit předplatné MSDN?
 Pokud chcete pro vývoj nebo testování v Azure použít image operačního systému Windows Client (Windows 7 nebo novější), proveďte jeden z následujících kroků:
@@ -288,7 +288,7 @@ K automatickému nahrávání souborů VHD pro vytváření vlastních imagí m�
 
 Pokud chcete najít cílový účet úložiště, který je přidružený k vašemu testovacímu prostředí:
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1.  Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2.  V nabídce vlevo vyberte **skupiny prostředků**.
 3.  Vyhledejte a vyberte skupinu prostředků, která je přidružená k vašemu testovacímu prostředí.
 4.  V části **Přehled**vyberte jeden z účtů úložiště.
@@ -307,7 +307,7 @@ Azure Marketplace by se měla používat ve výchozím nastavení, pokud nemáte
 - Podmínky dodržování předpisů nebo regulativní podmínky (například zásady zabezpečení), které musí být na místě pro všechny počítače.
 - Použití vlastních imagí by nemělo být považováno za lehce. Představují velmi složitost, protože teď musíte spravovat soubory VHD pro základní základní image. Také je potřeba rutinním pomocí aktualizací softwaru rutiny opravit. Tyto aktualizace zahrnují nové aktualizace operačního systému (OS) a všechny aktualizace nebo změny konfigurace, které jsou potřeba pro samotný softwarový balíček.
 
-## <a name="artifacts"></a>Artefakty
+## <a name="artifacts"></a>Artifacts
 
 ### <a name="what-are-artifacts"></a>Co jsou artefakty?
 Artefakty jsou přizpůsobitelné prvky, které můžete použít k nasazení nejnovějších bitů nebo nasazení vývojových nástrojů do virtuálního počítače. Když vytváříte virtuální počítač, připojte ke svému VIRTUÁLNÍmu počítači artefakty. Po zřízení virtuálního počítače nasadí artefakty a nakonfigurují váš virtuální počítač. V našem [veřejném úložišti GitHubu](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)jsou k dispozici různé již existující artefakty. Můžete také [vytvářet vlastní artefakty](devtest-lab-artifact-author.md).
@@ -368,7 +368,7 @@ Při použití sdílených veřejných IP adres sdílí virtuální počítače 
 
 ### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>Návody zajistěte, aby vývojové a testovací virtuální počítače nedokázaly získat přístup k veřejnému Internetu? Existují nějaké Doporučené vzory pro nastavení konfigurace sítě?
 
-Ano. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
+Yes. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
 
 - **Příchozí provoz** – Pokud virtuální počítač nemá veřejnou IP adresu, nepůjde k němu získat Internet. Běžným přístupem je zajistit, že jsou nastavené zásady na úrovni předplatného, takže žádný uživatel nemůže vytvořit veřejnou IP adresu.
 - **Odchozí provoz** – Pokud chcete zabránit tomu, aby virtuální počítače přistupovaly k veřejnému Internetu a vynutily provoz přes podnikovou bránu firewall, můžete směrovat provoz místně přes Express Route nebo VPN pomocí vynuceného směrování.

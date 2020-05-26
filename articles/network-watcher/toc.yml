@@ -182,8 +182,8 @@
       href: frequently-asked-questions.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: Aktualizace služeb

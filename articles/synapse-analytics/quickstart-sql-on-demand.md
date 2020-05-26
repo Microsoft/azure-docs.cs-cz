@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8c87b059d94d6b3be1a4b5cf2f83007b746f4156
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6d107dcbdc31a0049c7685e6dd8223bda694a526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658588"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836800"
 ---
 # <a name="quickstart-use-sql-on-demand"></a>Rychlý Start: použití SQL na vyžádání
 
@@ -60,33 +60,21 @@ Použijte následující dotaz, který se změní `mydbname` na libovolný náze
 CREATE DATABASE mydbname
 ```
 
-### <a name="create-credentials"></a>Vytvořit pověření
+### <a name="create-data-source"></a>Vytvořit zdroj dat
 
-Pokud chcete spouštět dotazy pomocí SQL na vyžádání, vytvořte přihlašovací údaje pro SQL na vyžádání, abyste je mohli použít pro přístup k souborům v úložišti.
-
-> [!NOTE]
-> Aby bylo možné úspěšně spustit ukázky v této části, je nutné použít token SAS.
->
-> Chcete-li začít používat tokeny SAS, je třeba vyřadit UserIdentity, který je vysvětlen v následujícím [článku](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through).
->
-> SQL na vyžádání ve výchozím nastavení vždy používá předávací průchozí služba AAD.
-
-Další informace o tom, jak spravovat řízení přístupu k úložišti, najdete v článku[řízení přístupu k účtu úložiště pro SQL na vyžádání](sql/develop-storage-files-storage-access-control.md) .
-
-Spusťte následující fragment kódu pro vytvoření přihlašovacích údajů použitých v ukázkách v této části:
+Pokud chcete spouštět dotazy pomocí SQL na vyžádání, vytvořte zdroj dat, který může SQL na vyžádání použít k přístupu k souborům v úložišti.
+Spusťte následující fragment kódu pro vytvoření zdroje dat používaného v ukázkách v této části:
 
 ```sql
 -- create credentials for containers in our demo storage account
-IF EXISTS
-   (SELECT * FROM sys.credentials
-   WHERE name = 'https://sqlondemandstorage.blob.core.windows.net')
-   DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
+CREATE DATABASE SCOPED CREDENTIAL sqlondemand
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
 GO
+CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
+    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+    CREDENTIAL = sqlondemand
+);
 ```
 
 ## <a name="query-csv-files"></a>Dotazování na soubory CSV
@@ -101,8 +89,9 @@ Následující dotaz ukazuje, jak číst soubor CSV, který neobsahuje řádek z
 SELECT TOP 10 *
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/*.csv'
-    , FORMAT = 'CSV'
+      BULK 'csv/population/*.csv',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT = 'CSV', PARSER_VERSION = '2.0'
   )
 WITH
   (
@@ -129,8 +118,9 @@ Následující příklad ukazuje schopnosti automatického odvození schématu p
 SELECT COUNT_BIG(*)
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet'
-    , FORMAT='PARQUET'
+      BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT='PARQUET'
   ) AS nyc
 ```
 
@@ -169,7 +159,8 @@ SELECT
   , jsonContent
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/json/books/*.json'
+      BULK 'json/books/*.json',
+      DATA_SOURCE = 'SqlOnDemandDemo'
     , FORMAT='CSV'
     , FIELDTERMINATOR ='0x0b'
     , FIELDQUOTE = '0x0b'

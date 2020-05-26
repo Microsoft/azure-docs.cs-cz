@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 30ef3e0ccef859ec183d8aad18c0b9910a5d3c9f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 1feadeaf2a905abee396c09829dab5e06c46d99c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712498"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837106"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Aktivace sady Runbook Azure Automation pomocí výstrahy
 
@@ -191,8 +191,8 @@ Výstrahy používají skupiny akcí, což jsou kolekce akcí, které výstraha 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Spuštění runbooku z webhooku](automation-webhooks.md)
-* [Spuštění runbooku](automation-starting-a-runbook.md)
-* [Vytvoření upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)
-* [Vytvoření pravidla výstrahy v Azure Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Pokud chcete spustit Runbook pomocí Webhooku, přečtěte si téma [Spuštění runbooku z Webhooku](automation-webhooks.md).
+* Další způsoby, jak spustit sadu Runbook, najdete v tématu [Spuštění Runbooku](automation-starting-a-runbook.md).
+* Pokud chcete vytvořit upozornění protokolu aktivit, přečtěte si téma [vytvoření výstrah protokolu](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)aktivit.
+* Informace o tom, jak vytvořit upozornění téměř v reálném čase, najdete [v tématu Vytvoření pravidla výstrahy v Azure Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

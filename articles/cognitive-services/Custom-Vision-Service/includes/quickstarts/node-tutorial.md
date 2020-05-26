@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: 860bfbd69de7999bc57c3080925bbcc89d42ef14
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0546645bc496f6e8918f937305ac6cad6a4428ed
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134121"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837908"
 ---
 V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Node. js k sestavení modelu klasifikace imagí. Po vytvoření můžete přidat značky, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro sestavení vlastní aplikace Node. js. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](../../getting-started-build-a-classifier.md).
 
@@ -44,6 +44,7 @@ const util = require('util');
 const fs = require('fs');
 const TrainingApi = require("@azure/cognitiveservices-customvision-training");
 const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");
+const msRest = require("@azure/ms-rest-js");
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
@@ -56,7 +57,8 @@ const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
 
 const publishIterationName = "classifyModel";
 
-const trainer = new TrainingApi.TrainingAPIClient(trainingKey, endPoint);
+const credentials = new msRest.ApiKeyCredentials({ inHeader: { "Training-key": trainingKey } });
+const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
 
 (async () => {
     console.log("Creating project...");
@@ -124,7 +126,8 @@ await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIt
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
 ```javascript
-    const predictor = new PredictionApi.PredictionAPIClient(predictionKey, endPoint);
+    const predictor_credentials = new msRest.ApiKeyCredentials({ inHeader: { "Prediction-key": predictionKey } });
+    const predictor = new PredictionApi.PredictionAPIClient(predictor_credentials, endPoint);
     const testFile = fs.readFileSync(`${sampleDataRoot}/Test/test_image.jpg`);
 
     const results = await predictor.classifyImage(sampleProject.id, publishIterationName, testFile);

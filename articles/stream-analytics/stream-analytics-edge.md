@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bb1bd018866bda9270b78507f0462b6c4d4ea17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d4df4efc6dbee88e80e620860487636cc9210dd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79475888"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837208"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na hraničních zařízeních IoT
  
@@ -188,7 +188,7 @@ Vytvoření úlohy s referenčními daty na hraničních zařízeních:
 
 3. V zařízení musí být připravený referenční datový soubor. V případě kontejneru Windows umístěte soubor referenčních dat na místní disk a sdílejte místní disk s kontejnerem Docker. V případě kontejneru pro Linux vytvořte svazek Docker a naplňte do něj datový soubor.
 
-4. Nastavte cestu k souboru. V případě hostitelského operačního systému Windows a kontejneru Windows použijte absolutní cestu `E:\<PathToFile>\v1.csv`:. V případě hostitelského operačního systému Windows a kontejneru Linux nebo kontejneru se systémem Linux a Linux použijte cestu ve svazku: `<VolumeName>/file1.txt`.
+4. Nastavte cestu k souboru. V případě hostitelského operačního systému Windows a kontejneru Windows použijte absolutní cestu: `E:\<PathToFile>\v1.csv` . V případě hostitelského operačního systému Windows a kontejneru Linux nebo kontejneru se systémem Linux a Linux použijte cestu ve svazku: `<VolumeName>/file1.txt` .
 
 ![Nový vstup referenčních dat pro úlohu Azure Stream Analytics v IoT Edge](./media/stream-analytics-edge/Reference-Data-New-Input.png)
 
@@ -225,8 +225,8 @@ Informace o této verzi byly naposledy aktualizovány v 2019-06-27:
       - operační systém: Windows
       
       
-## <a name="get-help"></a>Podpora
-Pokud potřebujete další pomoc, zkuste [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Získání pomoci
+Pokud chcete získat další pomoc, zkuste [Azure Stream Analytics na stránce s dotazem pro Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 

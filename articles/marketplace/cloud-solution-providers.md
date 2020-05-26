@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: a932f4ec37eda66c353df2c865bb4036ddcc59fa
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741085"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798138"
 ---
 # <a name="cloud-solution-provider-program"></a>Program Cloud Solution Provider
 
@@ -105,7 +105,7 @@ Pokud jste partner v programu CSP povolili a Tento partner už svůj produkt zno
 
 Pokud partner v programu CSP neprodal váš produkt svým zákazníkům a chcete poskytovatele CSP odebrat po publikování vaší nabídky, postupujte podle následujících pokynů:
 
-1. Přejít na [stránku support Request](https://partner.microsoft.com/support/v2/?stage=1). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
+1. Přejít na [stránku support Request](https://aka.ms/marketplacepublishersupport). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
 
    > [!NOTE]
    > Neměňte výběry předem vyplněných rozevíracích nabídek.
@@ -127,7 +127,7 @@ V této části můžete přecházet mezi třemi možnostmi prodejců CSP.
 
 Pokud je vaše nabídka momentálně **možnost 1: všichni partneři v programu CSP** a chcete přejít na kteroukoli z dalších dvou možností, vytvořte žádost pomocí následujících pokynů:
 
-1. Přejít na [stránku support Request](https://partner.microsoft.com/support/v2/?stage=1). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
+1. Přejít na [stránku support Request](https://aka.ms/marketplacepublishersupport). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
 
    > [!NOTE]
    > Neměňte výběry předem vyplněných rozevíracích nabídek.
@@ -145,7 +145,7 @@ Pokud je vaše nabídka momentálně **možnost 1: všichni partneři v programu
 
 Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v programu CSP, který jsem vybral** a chcete přejít k **Možnosti jedna: všichni partneři v programu CSP**, vytvořte žádost pomocí následujících pokynů:
 
-1. Přejít na [stránku support Request](https://partner.microsoft.com/support/v2/?stage=1). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
+1. Přejít na [stránku support Request](https://aka.ms/marketplacepublishersupport). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
 
    > [!NOTE]
    > Neměňte výběry předem vyplněných rozevíracích nabídek.
@@ -158,7 +158,7 @@ Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v
 
  Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v programu CSP** , který je vybrán a chcete přejít k **Možnosti 3: žádní partneři v programu CSP**, budete moci přejít na tuto možnost pouze v případě, že partneři v programu CSP, který jste předtím povolili, neprodali vaši nabídku koncovým zákazníkům. K vytvoření žádosti prosím použijte následující pokyny:
 
-1. Přejít na [stránku support Request](https://partner.microsoft.com/support/v2/?stage=1). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
+1. Přejít na [stránku support Request](https://aka.ms/marketplacepublishersupport). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
 
    > [!NOTE]
    > Neměňte výběry předem vyplněných rozevíracích nabídek.

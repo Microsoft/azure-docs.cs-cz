@@ -5,14 +5,14 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 63fd65f6a80dec582b9cecc8483bc3425d08c551
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ec954c2da317e2e4b332b959b9627cf96792da84
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714181"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837055"
 ---
-# <a name="set-up-continuous-deployment-with-chocolatey"></a>Nastavení průběžného nasazování pomocí čokolády
+# <a name="set-up-continuous-deployment-with-chocolatey"></a>Nastavení průběžného nasazování s využitím Chocolatey
 
 V DevOps světě existuje mnoho nástrojů, které vám pomůžou s různými body v kanálu průběžné integrace. [Konfigurace stavu](automation-dsc-overview.md) Azure Automation je dobrým novým doplňkem k možnostem, které mohou týmy DevOps využívat. 
 
@@ -209,10 +209,9 @@ Od tohoto okamžiku se nachází na virtuálních počítačích, které na tét
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled najdete v tématu [Konfigurace stavu Azure Automation](automation-dsc-overview.md).
-- Informace o tom, jak začít, najdete v tématu [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
-- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
+- Přehled najdete v tématu [Přehled konfigurace stavu Azure Automation](automation-dsc-overview.md).
+- Pokud chcete začít používat tuto funkci, přečtěte si téma Začínáme [s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
+- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
 - Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
-- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [průběžné nasazování pomocí konfigurace Azure Automation stavu a čokolády](automation-dsc-cd-chocolatey.md).

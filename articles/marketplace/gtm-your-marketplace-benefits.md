@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: abc71d644b44b432d0ebf2a8c849554fe8db0256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25753ce4c313a60b06147ab06dbf0b5e3e05865f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190329"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800503"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -36,7 +36,7 @@ Minimálním požadavkem pro publikování v prodejní místa je MPNID, takže t
 
 Získáte podporu při porozumění dostupných zdrojích a implementaci osvědčených postupů, které můžete také [zkontrolovat sami](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
-Podrobné popisy všech výhod programu najdete na [webu Marketplace](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)– výhody programu.
+Podrobné popisy všech výhod programu najdete na [webu Marketplace](https://aka.ms/marketplacerewards)– výhody programu.
 
 Postup, jak začít, je snadné:
 
@@ -56,7 +56,7 @@ Postup, jak začít, je snadné:
 2. Používání výhod sponzorství Azure bude při odemčení těchto výhod sdíleno prostřednictvím e-mailu.
 
 >[!Note]
->Pokud byla nabídka živá po dobu více než čtyř týdnů a neobdrželi jste zprávu, zkontrolujte v partnerském centru v organizaci, která je vlastníkem příslušné nabídky. Měly by mít komunikaci a další kroky. <br> <br> Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na stránce [pomoc a podpora](https://partner.microsoft.com/support/v2/?stage=1).
+>Pokud byla nabídka živá po dobu více než čtyř týdnů a neobdrželi jste zprávu, zkontrolujte v partnerském centru v organizaci, která je vlastníkem příslušné nabídky. Měly by mít komunikaci a další kroky. <br> <br> Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na stránce [pomoc a podpora](https://aka.ms/marketplacepublishersupport).
 
 Rozsah aktivit, které jsou k dispozici, se rozšíří při zvětšování nabídek na webu Marketplace. Všechny výpisy obdrží základní úroveň doporučení optimalizace a povýšení v rámci samoobslužného e-mailu s prostředky a osvědčenými postupy.
 
@@ -68,7 +68,7 @@ Následující tabulka shrnuje požadavky na způsobilost pro nabídky seznamů 
 
 ![Výhody pro uvedení na trh](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
-Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)– výhody programu.
+Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://aka.ms/marketplacerewards)– výhody programu.
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Ceny na webu Marketplace pro partnery Transact
 
@@ -89,7 +89,7 @@ Všem partnerům, kteří mají živou nabídku, se dostanou pracovat s vyhrazen
 
 \*Prahová hodnota počtu vydaných míst se vztahuje jenom na Microsoft 365 aplikace (SaaS aplikace, které mají integrace s Microsoft teams, Office, Outlookem nebo SharePointem) a výhody se musí dokončit 30. června 2020.
 
-Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://onedrive.live.com/view.aspx?resid=6C423AE231DA44BB!356&ithint=file%2cpptx&authkey=!ANmCupRE4iK9S2c)– výhody programu.
+Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://aka.ms/marketplacerewards)– výhody programu.
 
 Kromě výhod nevýhod je, že partneři podnikových aplikací s nabídkami Dynamics publikovaná na Microsoft AppSource mají k dispozici další programování prostřednictvím [ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview). To zahrnuje technickou, marketingovou a prodejní podporu, která je specializovaná na potřeby partnerů obchodních aplikací.
 
@@ -97,7 +97,7 @@ Kromě výhod nevýhod je, že partneři podnikových aplikací s nabídkami Dyn
 
 ### <a name="publisher-agreement"></a>Smlouva vydavatele
 
-Všechny aktivity popsané na této stránce jsou pokryté [smlouvou vydavatele na webu Marketplace](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) a jsou v souladu s doplňkem programu komerčních výhod.
+Všechny aktivity popsané na této stránce jsou pokryté [smlouvou vydavatele na webu Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) a jsou v souladu s doplňkem programu komerčních výhod.
 
 ### <a name="cancellation-policy"></a>Zásady zrušení
 
@@ -122,6 +122,6 @@ Pokud jste nabídku vytvořili v [partnerském centru](https://partner.microsoft
 
 Prohlédněte si [samoobslužné prostředky, které máte k dispozici](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
-Zaregistrujte se na [Microsoft AppSource a Azure Marketplace Komunitní fórum](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222) a seznamte se s příslušnými tématy nebo se připojte k diskuzi.
+Zaregistrujte se na [Microsoft AppSource a Azure Marketplace Komunitní fórum](https://aka.ms/MarketplaceCommunity) a seznamte se s příslušnými tématy nebo se připojte k diskuzi.
 
 ---

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: c7b036e7adca1fe92425659ebd099feaa3891556
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743827"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836562"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typy runbooků
 
@@ -115,7 +115,7 @@ Runbooky Pythonu se zkompiluje v Pythonu 2. Můžete přímo upravit kód sady R
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa runbooků v Azure Automation](manage-runbooks.md)
-* [Informace o pracovním postupu PowerShellu pro Azure Automation](automation-powershell-workflow.md)
-* [Vytváření grafických runbooků v Azure Automation](automation-graphical-authoring-intro.md)
-* [Dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview)
+* Další informace o runbooků PowerShellu najdete v tématu [kurz: vytvoření Runbooku PowerShellu](learn/automation-tutorial-runbook-textual-powershell.md).
+* Další informace o Runbooky pracovních postupů PowerShellu najdete v tématu [kurz: vytvoření Runbooku pracovního postupu PowerShellu](learn/automation-tutorial-runbook-textual.md).
+* Další informace o grafických sadách Runbook najdete v tématu [kurz: Vytvoření grafického Runbooku](learn/automation-tutorial-runbook-graphical.md).
+* Další informace o runbooků Pythonu najdete v tématu [kurz: vytvoření Runbooku v Pythonu](learn/automation-tutorial-runbook-textual-python2.md).

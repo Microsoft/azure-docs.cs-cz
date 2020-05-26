@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c243c6ded4057c9e4ac63345f300f3b3b690b363
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161881"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798946"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurace průchodu bránou VPN pro partnerský vztah virtuální sítě
 
@@ -30,6 +30,11 @@ V tomto dokumentu jsou popsány dva scénáře:
 
 1. Obě virtuální sítě používají model nasazení Resource Manager.
 2. Koncová virtuální síť je klasická a centrální virtuální síť s bránou je v Resource Manageru.
+
+
+>[!NOTE]
+> Pokud provedete změnu topologie sítě a máte klienty VPN se systémem Windows, musí se balíček klienta VPN pro klienty se systémem Windows stáhnout a nainstalovat znovu, aby se změny projevily u klienta.
+>
 
 ## <a name="requirements"></a>Požadavky
 
@@ -55,9 +60,9 @@ Pokyny najdete v následujících dokumentech, které se týkají:
 |Virtuální síť|Model nasazení|Role|Oprávnění|
 |---|---|---|---|
 |Hub-RM|Resource Manager|[Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |Classic|[Přispěvatel klasických sítí](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|–|
+| |Klasický|[Přispěvatel klasických sítí](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|–|
 |Spoke-Classic|Resource Manager|[Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
-||Classic|[Přispěvatel klasických sítí](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
+||Klasický|[Přispěvatel klasických sítí](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
 Přečtěte si další informace o [integrovaných rolích](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) a přiřazení konkrétních oprávnění k [vlastním rolím](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (platí pouze pro Resource Manager).
 

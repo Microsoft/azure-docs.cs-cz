@@ -56,7 +56,7 @@
       href: ../sql/virtual-machines-windows-sql-server-app-patterns-dev-strategies.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json
 - name: Referenční informace
   items:
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/azure/overview?view=azuresmps-3.7.0
     - name: Azure CLI
       href: /cli/azure/
@@ -68,8 +68,8 @@
       href: /rest/api/
 - name: Zdroje a prostředky
   items:
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: SQL Server Data Tools (SSDT)

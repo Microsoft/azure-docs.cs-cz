@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: f5e4515cfbacb656f60492613b5379c0bde60244
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 76eb0638d2b67e7859b25cdda8a6f4cbda285920
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736020"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800226"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Správa účtu komerčního tržiště v partnerském centru
 
@@ -117,7 +117,7 @@ Nastavení správy zařízení se vztahuje pouze na publikování UWP. [Další 
 
 Globálně jedinečné identifikátory (GUID) jsou jedinečná referenční čísla (s 32 hexadecimálními číslicemi), která se dají použít ke sledování využití Azure. 
 
-Chcete-li vytvořit identifikátory GUID pro sledování, měli byste použít generátor GUID. Tým Azure Storage vytvořil [formulář generátoru GUID](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUMVRVVFFLTDFLS0E2QzNYSkFZR1U3WVJCTSQlQCN0PWcu) , který pošle e-mailem identifikátor GUID správného formátu a bude možné ho znovu použít v různých sledovacích systémech.
+Chcete-li vytvořit identifikátory GUID pro sledování, měli byste použít generátor GUID. Tým Azure Storage vytvořil [formulář generátoru GUID](https://aka.ms/StoragePartners) , který pošle e-mailem identifikátor GUID správného formátu a bude možné ho znovu použít v různých sledovacích systémech.
 
 Pro každou nabídku a distribuční kanál pro každý produkt doporučujeme vytvořit jedinečný identifikátor GUID. Pokud nechcete, aby vytváření sestav bylo rozděleno, můžete použít jeden identifikátor GUID pro více distribučních kanálů produktu.
 

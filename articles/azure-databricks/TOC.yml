@@ -1623,20 +1623,6 @@
                     - name: Přehled ověřování pomocí tokenů Azure AD
                       href: /azure/databricks/dev-tools/api/latest/aad/index
                       maintainContext: true
-                    - name: Získání tokenu Azure AD s využitím Azure AD Authentication Library
-                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
-                      maintainContext: true
-                    - name: Získání tokenu Azure AD s využitím instančního objektu
-                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
-                      maintainContext: true
-                    - name: Řešení potíží s přístupovými tokeny Azure AD
-                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
-                  maintainContext: true
-                - name: Tokeny služby Azure Active Directory
-                  items:
-                    - name: Přehled ověřování pomocí tokenů Azure AD
-                      href: /azure/databricks/dev-tools/api/latest/aad/index
-                      maintainContext: true
                     - name: Získání tokenu Azure AD s využitím AAD Authentication Library
                       href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
                       maintainContext: true
@@ -1996,8 +1982,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/databricks/'
-    - name: Zeptejte se – fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabricks'
+    - name: Zeptejte se – stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-databricks.html'
     - name: Zeptejte se – Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
     - name: Dostupnost v oblastech

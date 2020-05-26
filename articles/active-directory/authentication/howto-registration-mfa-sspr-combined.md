@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb77c2bc1d229ae75da89caae3d8613b27e70b96
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 40266f1b340ebe0ab665c576ff3be0e62ba7c705
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771328"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798278"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Povolit registraci kombinovaných informací o zabezpečení v Azure Active Directory
 
-Před kombinovanou registrací uživatelé zaregistrovali metody ověřování pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) samostatně. Lidem se zaznamenalo, že podobné metody byly použity pro Multi-Factor Authentication a SSPR, ale musely se zaregistrovat pro obě funkce. Teď se při kombinované registraci můžou uživatelé zaregistrovat jednou a získat výhody Multi-Factor Authentication i SSPR.
+Před kombinovanou registrací uživatelé zaregistrovali metody ověřování pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) samostatně. Lidé si zaznamenali, že podobné metody byly použity pro Azure Multi-Factor Authentication a SSPR, ale musely se zaregistrovat pro obě funkce. Teď se při kombinované registraci můžou uživatelé zaregistrovat jednou a získat výhody pro Azure Multi-Factor Authentication i SSPR.
 
 Než začnete s novým prostředím, přečtěte si článek [Kombinovaná registrace informací o zabezpečení](concept-registration-mfa-sspr-combined.md) , která vám pomůže pochopit funkčnost této funkce a jejich vliv.
 
@@ -34,10 +34,10 @@ Pokud chcete povolit kombinovanou registraci, proveďte tyto kroky:
 2. Přejít na **Azure Active Directory**  >  **uživatelská nastavení**  >  **Spravovat nastavení funkce User Preview**.
 3. V části **Uživatelé můžou použít kombinované prostředí pro registraci informací o zabezpečení**a vybrat možnost Povolit pro **vybranou** skupinu uživatelů nebo pro **všechny** uživatele.
 
-   ![Povolit prostředí Preview pro všechny uživatele v kombinaci s informacemi o zabezpečení](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
+   ![Povolit pro uživatele kombinované prostředí informací o zabezpečení](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info.png)
 
 > [!NOTE]
-> Po povolení kombinované registrace si uživatelé, kteří si zaregistrují nebo potvrdí jejich telefonní číslo nebo mobilní aplikaci prostřednictvím nového prostředí, můžou použít pro Multi-Factor Authentication a SSPR, pokud jsou tyto metody povolené v zásadách Multi-Factor Authentication a SSPR. Pokud pak toto prostředí zakážete, budou se uživatelé, kteří na předchozí registrační stránce SSPR, `https://aka.ms/ssprsetup` napřed k přístupu k této stránce vyzváni, aby provedli službu Multi-Factor Authentication.
+> Po povolení kombinované registrace si uživatelé, kteří si zaregistrují nebo potvrdí jejich telefonní číslo nebo mobilní aplikaci prostřednictvím nového prostředí, můžou použít pro Azure Multi-Factor Authentication a SSPR, pokud jsou tyto metody povolené v zásadách Azure Multi-Factor Authentication a SSPR. Pokud pak toto prostředí zakážete, budou se uživatelé, kteří na předchozí registrační stránce SSPR, `https://aka.ms/ssprsetup` napřed k přístupu k této stránce vyzváni, aby provedli službu Multi-Factor Authentication.
 
 Pokud jste v Internet Exploreru nakonfigurovali seznam přiřazení lokality k zóně, musí být tyto lokality ve stejné zóně:
 
@@ -55,8 +55,8 @@ Další informace o vytváření důvěryhodných umístění v podmíněném p�
 
 Následující zásady platí pro všechny vybrané uživatele, kteří se pokoušejí zaregistrovat pomocí kombinovaného prostředí pro registraci, a zablokují přístup, pokud se nepřipojují z umístění označeného jako důvěryhodná síť.
 
-1. V **Azure Portal**přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **podmíněný přístup** .
-1. Vybrat **+ Nová zásada**
+1. V **Azure Portal**přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **podmíněný přístup**.
+1. Vyberte **+ Nová zásada**.
 1. Zadejte název pro tuto zásadu, jako je například *Kombinovaná registrace informací o zabezpečení v důvěryhodných sítích*.
 1. V části **Přiřazení** vyberte **Uživatelé a skupiny**. Zvolte uživatele a skupiny, pro které chcete tuto zásadu použít, a potom vyberte **Hotovo**.
 
@@ -68,13 +68,13 @@ Následující zásady platí pro všechny vybrané uživatele, kteří se pokou
     ![Vytvoření zásady podmíněného přístupu pro řízení registrace bezpečnostních údajů](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
 1. V **Conditions**části  >  **umístění**podmínek nakonfigurujte následující možnosti:
-   1. Konfigurovat **Ano**
-   1. Zahrnout **libovolné umístění**
-   1. Vyloučit **všechna důvěryhodná umístění**
+   1. Nakonfigurujte **Ano**.
+   1. Uveďte **libovolné umístění**.
+   1. Vylučte **všechna důvěryhodná umístění**.
 1. V okně *umístění* vyberte **Hotovo** a pak v okně *podmínky* vyberte **Hotovo** .
-1. V části **řízení přístupu**  >  **udělení**vyberte možnost **blokovat přístup**a pak **Vyberte**
-1. Nastavte **Povolit zásadu** na **zapnuto** .
-1. Pokud chcete zásadu dokončit, vyberte **vytvořit** .
+1. V části **řízení přístupu**  >  **udělení**přístupu zvolte **blokovat přístup**a pak **Vyberte**.
+1. Nastavte **Povolit zásadu** na **Zapnuté**.
+1. Pokud chcete zásadu dokončit, vyberte **vytvořit**.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -82,6 +82,6 @@ Pokud potřebujete pomoct, přečtěte si téma Jak [řešit problémy s registr
 
 Pokud chcete povolit funkce ve vašem tenantovi Azure AD, přečtěte si kurzy, jak [Povolit Samoobslužné resetování hesla](tutorial-enable-sspr.md) a [Povolit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 
-Naučte se, jak [Povolit kombinovanou registraci ve vašem tenantovi](howto-registration-mfa-sspr-combined.md) nebo [přinutit uživatele, aby znovu zaregistrovali metody ověřování](howto-mfa-userdevicesettings.md#manage-user-authentication-options).
+Naučte se, jak [vynutit, aby uživatelé znovu zaregistrovali metody ověřování](howto-mfa-userdevicesettings.md#manage-user-authentication-options).
 
 Můžete si také projít [dostupné metody pro Azure Multi-Factor Authentication a SSPR](concept-authentication-methods.md).

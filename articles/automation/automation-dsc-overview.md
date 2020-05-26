@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: be0da641a67d532851b8d295065213016c795f01
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 9880915061c0639aebe30bdb33258d7c79e155d7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713178"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836885"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
 
@@ -107,7 +107,7 @@ Při definování výjimek doporučujeme použít níže uvedené adresy. Pro IP
 
 Pokud máte účet Automation, který je definovaný pro konkrétní oblast, můžete omezit komunikaci s tímto oblastním datacentrem. Následující tabulka uvádí záznam DNS pro jednotlivé oblasti:
 
-| **Oblast** | **Záznam DNS** |
+| **Věřitel** | **Záznam DNS** |
 | --- | --- |
 | USA – středozápad | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | USA – středojih |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
@@ -134,10 +134,10 @@ Uživatelé Azure ExpressRoute by si měli všimnout, že se tento soubor použ�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete začít používat DSC v konfiguraci stavu Azure Automation, přečtěte si téma [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
-- Další informace o povolení uzlů najdete v tématu [Povolení počítačů pro správu podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
-- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
+- Informace o tom, jak začít, najdete v tématu Začínáme [s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
+- Další informace o povolení uzlů najdete v tématu [povolení konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
+- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
+- Příklad použití konfigurace stavu Azure Automation v kanálu nepřetržitého nasazení najdete v tématu [Nastavení průběžného nasazování s čokoládou](automation-dsc-cd-chocolatey.md).
+- Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
 - Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
-- Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
-- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [průběžné nasazování pomocí konfigurace Azure Automation stavu a čokolády](automation-dsc-cd-chocolatey.md).

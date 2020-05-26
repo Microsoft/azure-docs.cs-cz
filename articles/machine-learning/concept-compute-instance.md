@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 9f10825d8f22a7ddd9858e86dc2083ae47da9a69
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 8c03df8fb0cd8f5f092450ebe4c66266d2ff4293
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712753"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816348"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je výpočetní instance služby Azure Machine Learning?
 
@@ -67,7 +67,7 @@ Tyto nástroje a prostředí se nainstalují do výpočetní instance:
 |Anaconda Python||
 |Jupyter a rozšíření||
 |Jupyterlab a rozšíření||
-[Sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>z PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
+[Sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>z PyPI|Zahrnuje většinu dalších balíčků AzureML.  Pokud chcete zobrazit úplný seznam, [otevřete okno terminálu na instanci služby COMPUTE](how-to-run-jupyter-notebooks.md#terminal) a spusťte příkaz. <br/> `conda list -n azureml_py36 azureml*` |
 |Další balíčky PyPI|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Balíčky conda|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Balíčky pro hloubkové učení|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|

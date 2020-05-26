@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: a2693803603e053f06c8b6886c6f6639f0859461
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: f30d15615e4f3c738d969d068bf2864df23e7cdb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713144"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836902"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Povolit konfiguraci stavu Azure Automation
 
@@ -22,7 +22,7 @@ V tomto tématu se dozvíte, jak můžete nastavit počítače pro správu pomoc
 
 ## <a name="enable-azure-vms"></a>Povolení virtuálních počítačů Azure
 
-Konfigurace stavu Azure Automation umožňuje snadno povolit virtuální počítače Azure pro správu konfigurace pomocí Azure Portal, Azure Resource Manager šablon nebo PowerShellu. V digestoři a bez správce, který se musí vzdáleně přidružit k virtuálnímu počítači, registruje rozšíření konfigurace požadovaného stavu virtuálního počítače Azure konfiguraci stavu Azure Automation. Vzhledem k tomu, že se rozšíření Azure spouští asynchronně, postup sledování jeho průběhu nebo odstraňování potíží je k dispozici v tématu [řešení potíží s nastavením virtuálních počítačů pro konfiguraci stavu](#troubleshoot-vm-setup-for-state-configuration).
+Konfigurace stavu Azure Automation umožňuje snadno povolit virtuální počítače Azure pro správu konfigurace pomocí Azure Portal, Azure Resource Manager šablon nebo PowerShellu. V digestoři a bez správce, který se musí vzdáleně přidružit k virtuálnímu počítači, registruje rozšíření konfigurace požadovaného stavu virtuálního počítače Azure konfiguraci stavu Azure Automation. Vzhledem k tomu, že se rozšíření Azure spouští asynchronně, postup sledování jeho průběhu je k dispozici v [části stav kontroly nastavení virtuálního počítače](#check-status-of-vm-setup).
 
 > [!NOTE]
 >Nasazení DSC na uzel Linux používá složku **adresáře/TMP** . Moduly, jako `nxautomation` jsou dočasně staženy k ověření před jejich instalací do příslušných umístění. Aby se zajistilo, že se moduly správně nainstalují, musí mít agent Log Analytics pro Linux oprávnění ke čtení a zápisu ve složce **adresáře/TMP** .<br><br>
@@ -307,27 +307,26 @@ Po registraci počítače jako uzlu DSC v konfiguraci stavu Azure Automation exi
 
 Uzel můžete znovu zaregistrovat stejně, jako jste předtím zaregistrovali uzel, a to pomocí kterékoli z metod popsaných v tomto dokumentu. Před opětovnou registrací není nutné zrušit registraci uzlu v konfiguraci stavu Azure Automation.
 
-## <a name="troubleshoot-vm-setup-for-state-configuration"></a>Řešení potíží s nastavením virtuálních počítačů pro konfiguraci stavu
+## <a name="check-status-of-vm-setup"></a>Stav kontroly nastavení virtuálního počítače
 
 Konfigurace stavu umožňuje snadno povolit virtuální počítače Azure s Windows pro správu konfigurace. V digestoři se k registraci virtuálního počítače s konfigurací stavu Azure Automation používá rozšíření konfigurace požadovaného stavu virtuálního počítače Azure. Vzhledem k tomu, že se rozšíření konfigurace požadovaného stavu virtuálního počítače Azure spouští asynchronně, sledování průběhu a řešení potíží s jeho spuštěním může být důležité.
 
 > [!NOTE]
 > Jakákoli metoda povolení virtuálních počítačů Azure s Windows pro konfiguraci stavu, která používá rozšíření konfigurace požadovaného stavu virtuálního počítače Azure, může trvat až hodinu, než Azure Automation zobrazí virtuální počítače jako zaregistrované. Tato prodleva je způsobená instalací WMF 5 na VIRTUÁLNÍm počítači pomocí rozšíření konfigurace požadovaného stavu virtuálního počítače Azure, které je nutné k povolení konfigurace virtuálních počítačů.
 
-Postup při odstraňování potíží nebo zobrazení stavu rozšíření konfigurace požadovaného stavu virtuálního počítače Azure:
+Zobrazení stavu rozšíření konfigurace požadovaného stavu virtuálního počítače Azure:
 
 1. V Azure Portal přejděte na virtuální počítač, který je povolený.
 2. V části **Nastavení**klikněte na **rozšíření** . 
 3. V závislosti na vašem operačním systému teď vyberte **DSC** nebo **DSCForLinux**. 
 4. Pro další podrobnosti můžete kliknout na **zobrazit podrobný stav**.
 
-Další informace o řešení potíží najdete v tématu [řešení potíží s konfigurací stavu Azure Automation](./troubleshoot/desired-state-configuration.md).
-
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak začít, najdete v tématu [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
-- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
+- Informace o tom, jak začít, najdete v tématu Začínáme [s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
+- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
 - Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
-- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [Příklad použití: průběžné nasazování do virtuálních počítačů pomocí konfigurace stavu Azure Automation a čokolády](automation-dsc-cd-chocolatey.md).
+- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [Nastavení průběžného nasazování pomocí čokolády](automation-dsc-cd-chocolatey.md).
+- Informace o řešení potíží najdete v tématu [řešení potíží s konfigurací stavu Azure Automation](./troubleshoot/desired-state-configuration.md).

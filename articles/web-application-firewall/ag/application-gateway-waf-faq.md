@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 57081cd948bcee1261415eae31f91b3c61f08c9f
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3bc71e10167b21b65616dd20f8edb9a1d902527e
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82842848"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798352"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Nejčastější dotazy k firewallu webových aplikací Azure na Application Gateway
 
@@ -34,11 +34,11 @@ Monitorujte WAF prostřednictvím diagnostického protokolování. Další infor
 
 ## <a name="does-detection-mode-block-traffic"></a>Blokuje režim detekce přenos dat?
 
-Ne. V režimu detekce se protokoluje pouze provoz, který aktivuje pravidlo WAF.
+No. V režimu detekce se protokoluje pouze provoz, který aktivuje pravidlo WAF.
 
 ## <a name="can-i-customize-waf-rules"></a>Můžu přizpůsobit pravidla WAF?
 
-Ano. Další informace najdete v tématu [přizpůsobení skupin pravidel a pravidel pro WAF](application-gateway-customize-waf-rules-portal.md).
+Yes. Další informace najdete v tématu [přizpůsobení skupin pravidel a pravidel pro WAF](application-gateway-customize-waf-rules-portal.md).
 
 ## <a name="what-rules-are-currently-available-for-waf"></a>Jaká pravidla jsou aktuálně k dispozici pro WAF?
 
@@ -52,11 +52,11 @@ WAF v současné době podporuje počítačový [2.2.9](application-gateway-crs-
 * Ochrana před roboty, prohledávacími moduly a skenery.
 * Detekce běžných neobvyklých konfigurací aplikací (tj. Apache, IIS atd.)
 
-Další informace najdete v tématu [OWASP chyby zabezpečení nejvyšší úrovně 10](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013).
+Další informace najdete v tématu [OWASP chyby zabezpečení nejvyšší úrovně 10](https://owasp.org/www-project-top-ten/).
 
 ## <a name="does-waf-support-ddos-protection"></a>Podporuje WAF ochranu DDoS?
 
-Ano. Můžete povolit DDoS Protection ve virtuální síti, ve které je nasazená Aplikační brána. Toto nastavení zajišťuje, že služba Azure DDoS Protection také chrání virtuální IP adresu služby Application Gateway.
+Yes. Můžete povolit DDoS Protection ve virtuální síti, ve které je nasazená Aplikační brána. Toto nastavení zajišťuje, že služba Azure DDoS Protection také chrání virtuální IP adresu služby Application Gateway.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: cfdd0beac7d257a424d327df71602b4612c3da3b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dbace6b93e07571693b221bb3d2a947010b1e476
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79536849"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800002"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -23,7 +23,7 @@ Jedním z příkladů toho, co můžete s Azure Monitor udělat, je:
 - Korelujte problémy infrastruktury s [Azure monitor pro virtuální počítače](insights/vminsights-overview.md) a [Azure monitor pro kontejnery](insights/container-insights-overview.md).
 - Přejděte k datům monitorování pomocí [Log Analytics](log-query/log-query-overview.md) pro řešení potíží a hloubkovou diagnostiku.
 - Podpora operací se škálováním pomocí [inteligentních výstrah](platform/alerts-smartgroups-overview.md) a [automatizovaných akcí](platform/alerts-action-rules.md).
-- Vytvářejte vizualizace pomocí [řídicích panelů](learn/tutorial-logs-dashboards.md) a [sešitů](app/usage-workbooks.md)Azure.
+- Vytvářejte vizualizace pomocí [řídicích panelů](learn/tutorial-logs-dashboards.md) a [sešitů](platform/workbooks-overview.md)Azure.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
 

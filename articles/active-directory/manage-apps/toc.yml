@@ -159,6 +159,8 @@
               href: manage-self-service-access.md
             - name: Zjišťování domovské sféry
               href: configure-authentication-for-federated-users-portal.md
+        - name: Automatizace jednotného přihlašování založeného na SAML s využitím MS Graph API
+          href: application-saml-sso-configure-api.md
         - name: Migrace aplikací do Azure AD
           items:
             - name: Prostředky migrace

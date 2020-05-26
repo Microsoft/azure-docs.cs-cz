@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 76d078d564125db7b6b8ae10909340a52b220407
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b39fbdf19703d8b4b2f8683577701dcb23900616
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713212"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836953"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Začínáme s konfigurací stavu Azure Automation
 
@@ -231,10 +231,10 @@ Pokud už nechcete, aby se uzel spravoval konfigurací stavu, můžete ho zruši
 
     ![Snímek obrazovky se stránkou podrobností uzlu zvýrazněním tlačítka zrušit registraci](./media/automation-dsc-getting-started/UnregisterNode.png)
 
-## <a name="related-articles"></a>Související články
+## <a name="next-steps"></a>Další kroky
 
-- [Přehled konfigurace stavu Azure Automation](automation-dsc-overview.md)
-- [Připojování počítačů pro správu podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md)
-- [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview)
-- [Ceny konfigurace Azure Automation stavu](https://azure.microsoft.com/pricing/details/automation/)
-- [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+- Přehled najdete v tématu [Přehled konfigurace stavu Azure Automation](automation-dsc-overview.md).
+- Pokud chcete funkci pro virtuální počítače ve vašem prostředí povolit, přečtěte si téma [povolení konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
+- Informace o prostředí PowerShell DSC najdete v tématu [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview).
+- Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 094939ee62046c72f07ac46f0781e687034f731f
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3c6b8ef04e44a68290f61ed4688e3379130231ef
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690616"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799372"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Použití Azure Monitorch sešitů pro sestavy Azure Active Directory
 
@@ -42,13 +42,13 @@ Chcete:
 
 - Získejte podrobnější přehled o dotazech na přihlášení. Tento sešit oznamuje, kolik uživatelů bylo uděleno nebo odepřeno přístupu, a kolik uživatelů při přístupu k prostředkům nepoužívá zásady podmíněného přístupu.
 
-- Abychom vám pomohli vyřešit tyto otázky, Azure Active Directory poskytuje sešity pro monitorování. [Azure monitor sešity](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinují text, analytické dotazy, metriky a parametry do propracovaných interaktivních sestav.
+- Abychom vám pomohli vyřešit tyto otázky, Azure Active Directory poskytuje sešity pro monitorování. [Azure monitor sešity](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) kombinují text, analytické dotazy, metriky a parametry do propracovaných interaktivních sestav.
 
 
 
 Tento článek:
 
-- Předpokládá, že máte zkušenosti s [vytvářením interaktivních sestav pomocí monitorování sešitů](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+- Předpokládá, že máte zkušenosti s [vytvářením interaktivních sestav pomocí monitorování sešitů](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).
 
 - Vysvětluje, jak pomocí monitorovat sešity pochopit účinek zásad podmíněného přístupu, vyřešit problémy s přihlášením a identifikovat starší verze ověřování.
  
@@ -81,9 +81,9 @@ Musíte být v jedné z následujících rolí a mít [přístup k podkladovým 
 
 Přístup k sešitům:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
-1. Přejděte na **Azure Active Directory** > **monitorování** > **sešitů**. 
+1. Přejděte na **Azure Active Directory**  >  **monitorování**  >  **sešitů**. 
 
 1. Vyberte sestavu nebo šablonu nebo na panelu nástrojů vyberte **otevřít**. 
 
@@ -231,7 +231,7 @@ Tento sešit obsahuje následující zakázané trendy přihlašování:
 
 - Vyžadovat prohlášení o zásadách ochrany osobních údajů
 
-- Ostatní
+- Jiné
 
 
 Jednotlivé trendy můžete filtrovat podle následujících kategorií:
@@ -302,4 +302,4 @@ Při řešení potíží s přihlášením vám Azure Monitor poskytuje rozpis p
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytváření interaktivních sestav pomocí sledování sešitů](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+[Vytváření interaktivních sestav pomocí sledování sešitů](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).

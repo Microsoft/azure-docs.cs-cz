@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0677c7a0521fe1f63c9c2c9fce65d8dbd8e6d5c4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248980"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826906"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Volání Webhooku s klasickou výstrahou metriky v Azure Monitor
 
@@ -26,7 +26,7 @@ Pokud chcete přidat nebo aktualizovat identifikátor URI Webhooku, klikněte na
 
 ![Přidat podokno pravidla výstrahy](./media/alerts-webhooks/Alertwebhook.png)
 
-Můžete také nakonfigurovat upozornění pro odeslání na identifikátor URI Webhooku pomocí [rutin Azure PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), rozhraní příkazového [řádku pro více platforem](../../azure-monitor/platform/cli-samples.md#work-with-alerts)nebo [rozhraní API REST Azure monitor](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Můžete také nakonfigurovat upozornění pro odeslání na identifikátor URI Webhooku pomocí [rutin Azure PowerShell](../samples/powershell-samples.md#create-metric-alerts), rozhraní příkazového [řádku pro více platforem](../samples/cli-samples.md#work-with-alerts)nebo [rozhraní API REST Azure monitor](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="authenticate-the-webhook"></a>Ověření Webhooku
 Webhook se může ověřit pomocí ověřování na základě tokenu. Identifikátor URI Webhooku se uloží s ID tokenu. Příklad: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
@@ -74,7 +74,7 @@ Operace POST obsahuje následující datovou část a schéma JSON pro všechny 
 | kontext |Ano | |Kontext výstrahy. |
 | časové razítko |Ano | |Čas, kdy byla výstraha aktivována. |
 | id |Ano | |Každé pravidlo výstrahy má jedinečné ID. |
-| jméno |Ano | |Název výstrahy |
+| name |Ano | |Název výstrahy |
 | description |Ano | |Popis výstrahy |
 | conditionType |Ano |Metrika, událost |Podporují se dva typy výstrah: metrika a událost. Výstrahy metriky jsou založené na podmínce metriky. Výstrahy událostí jsou založené na události v protokolu aktivit. Tuto hodnotu použijte, chcete-li ověřit, zda je výstraha založena na metrikě nebo události. |
 | pomocné |Ano | |Konkrétní pole, která se mají kontrolovat v závislosti na hodnotě **conditionType** |
@@ -92,7 +92,7 @@ Operace POST obsahuje následující datovou část a schéma JSON pro všechny 
 | resourceId |Ano | |ID prostředku ovlivněného prostředku. |
 | resourceRegion |Ano | |Oblast nebo umístění ovlivněného prostředku. |
 | portalLink |Ano | |Přímý odkaz na stránku souhrnu prostředků na portálu. |
-| properties |Ne |Nepovinné |Sada párů klíč/hodnota, která obsahuje podrobnosti o události. Například, `Dictionary<String, String>`. Pole vlastností je volitelné. Ve vlastním uživatelském rozhraní nebo pracovním postupu založeném na aplikaci logiky mohou uživatelé zadat páry klíč/hodnota, které lze předat prostřednictvím datové části. Alternativní způsob, jak předat vlastní vlastnosti zpátky Webhooku, je prostřednictvím samotného identifikátoru URI Webhooku (jako parametr dotazů). |
+| properties |Ne |Volitelné |Sada párů klíč/hodnota, která obsahuje podrobnosti o události. Například, `Dictionary<String, String>`. Pole vlastností je volitelné. Ve vlastním uživatelském rozhraní nebo pracovním postupu založeném na aplikaci logiky mohou uživatelé zadat páry klíč/hodnota, které lze předat prostřednictvím datové části. Alternativní způsob, jak předat vlastní vlastnosti zpátky Webhooku, je prostřednictvím samotného identifikátoru URI Webhooku (jako parametr dotazů). |
 
 > [!NOTE]
 > Pole **vlastnosti** můžete nastavit jenom pomocí [Azure monitor rozhraní REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx).

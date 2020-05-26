@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 5d1bf859968c7b7a889abe635c917d0da11bf6e1
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837324"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800932"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Potenciální zákazníci z komerční nabídky na webu Marketplace
 
@@ -48,9 +48,9 @@ Tady jsou místa, kde se vygeneruje zájemce:
 
 ## <a name="understand-lead-data"></a>Pochopení údajů o potenciálních datech
 
-Každý zájemce, kterého obdržíte během procesu pořízení zákazníka, má data v konkrétních polích. První pole, pro které se má zjistit, `LeadSource` je pole, které následuje po tomto formátu:**Nabídka** **zdroje a akce** | .
+Každý zájemce, kterého obdržíte během procesu pořízení zákazníka, má data v konkrétních polích. První pole, pro které se má zjistit `LeadSource` , je pole, které následuje po tomto formátu: nabídka **zdroje a akce**  |  **Offer**.
 
-**Zdroje**: hodnota pro toto pole je naplněná na základě tržiště, který vygeneroval zájemce. Možné hodnoty jsou `"AzureMarketplace"`, `"AzurePortal"`a `"AppSource (SPZA)"`.
+**Zdroje**: hodnota pro toto pole je naplněná na základě tržiště, který vygeneroval zájemce. Možné hodnoty jsou `"AzureMarketplace"` , `"AzurePortal"` a `"AppSource (SPZA)"` .
 
 **Akce**: hodnota pro toto pole je naplněná na základě akce, kterou zákazník zavedl na webu Marketplace, který zájemce vygeneroval.
 
@@ -64,7 +64,7 @@ Možné hodnoty:
 
 **Nabídky**: na komerčním webu Marketplace můžete mít několik nabídek. Hodnota tohoto pole je vyplněna na základě nabídky, která zájemce vygenerovala. ID vydavatele a ID nabídky jsou odesílány v tomto poli a jsou to hodnoty, které jste zadali při publikování nabídky na webu Marketplace.
 
-Následující příklady znázorňují hodnoty v očekávaném formátu `publisherid.offerid`: 
+Následující příklady znázorňují hodnoty v očekávaném formátu `publisherid.offerid` : 
 
 - `checkpoint.check-point-r77-10sg-byol`
 - `bitnami.openedxcypress`
@@ -76,7 +76,7 @@ Informace o zákazníkovi se odesílají prostřednictvím několika polí. Nás
 
 - FirstName: Jan
 - LastName: Smith
-- E-mail: JSmith\@Microsoft.com
+- E-mail: JSmith \@ Microsoft.com
 - Telefon: 1234567890
 - Země: US
 - Společnost: Microsoft
@@ -96,7 +96,7 @@ Informace o zákazníkovi se odesílají prostřednictvím několika polí. Nás
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Kde můžu získat pomoc při nastavování cíle realizace?
 
-Postupujte podle kroků v části [připojení k systému CRM](#connect-to-your-crm-system)nebo odešlete lístek podpory prostřednictvím [podpory a podpory partnerského centra](https://partner.microsoft.com/support/v2/?stage=1). Pak vyberte **Nabídka vytvořit** > **váš typ** > pro**správu správy potenciálních zákazníků**.
+Postupujte podle kroků v části [připojení k systému CRM](#connect-to-your-crm-system)nebo odešlete lístek podpory prostřednictvím [podpory a podpory partnerského centra](https://aka.ms/marketplacepublishersupport). Pak vyberte **Nabídka vytvořit**  >  **váš typ**pro  >  **správu správy potenciálních zákazníků**.
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Je nutné nakonfigurovat cíl zájemce, aby bylo možné publikovat nabídku na komerčním webu Marketplace?
 
@@ -133,7 +133,7 @@ Azure Blob Storage už není podporovaný jako cíl pro realizace, takže nebude
 
 ### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Dostal jsem e-mail z komerčního tržiště, ale proč nemůžu v mém CRM najít potenciálního zákazníka?
 
-Je možné, že e-mailová doména koncového uživatele pochází z. edu. Z důvodů ochrany osobních údajů nemusíme předávat osobní údaje z domény. edu. Odešlete lístek podpory prostřednictvím [odborné pomoci a podpory pro partnerským centru](https://partner.microsoft.com/support/v2/?stage=1).
+Je možné, že e-mailová doména koncového uživatele pochází z. edu. Z důvodů ochrany osobních údajů nemusíme předávat osobní údaje z domény. edu. Odešlete lístek podpory prostřednictvím [odborné pomoci a podpory pro partnerským centru](https://aka.ms/marketplacepublishersupport).
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Jak si můžu zobrazit potenciální zákazníky?
 
@@ -141,7 +141,7 @@ K datům zájemce uloženým v tabulce Azure můžete přistupovat z Azure Porta
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-commercial-marketplace-lead-is-sent"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Můžu dostávat oznámení při každém odeslání nového potenciálního zákazníka z obchodu Marketplace?
 
-Ano. Postupujte podle pokynů v tématu [Konfigurace řízení zájemců pomocí tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) k nastavení služby Microsoft flow, která odešle e-mail, když se do tabulky Azure přidá zájemce.
+Yes. Postupujte podle pokynů v tématu [Konfigurace řízení zájemců pomocí tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) k nastavení služby Microsoft flow, která odešle e-mail, když se do tabulky Azure přidá zájemce.
 
 ### <a name="i-configured-salesforce-as-my-lead-destination-but-why-cant-i-find-the-leads"></a>Nakonfigurovali jste Salesforce jako cíl pro zájem, ale proč nemůžu najít potenciální zákazníky?
 
@@ -155,11 +155,11 @@ V důsledku zásad osobních informací nemůžeme sdílet informace o potenciá
 
 Data generování zájemců jsou nízká. Téměř všem vydavatelům je méně než 1 GB. Náklady závisí na počtu přijatých zájemců. Například pokud 1 000 potenciální zákazníci obdrží za měsíc, náklady jsou přibližně 50 centů. Další informace o cenách služby Storage najdete v tématu [Azure Storage přehledu cen](https://azure.microsoft.com/pricing/details/storage/).
 
-Pokud na vaši otázku neodpovíte, kontaktujte podpora Microsoftu prostřednictvím [centra pro partnery a pomoc a podporu](https://aka.ms/marketplacepublishersupport). Pak vyberte **Nabídka vytvořit** > **váš typ** > pro**správu správy potenciálních zákazníků**.
+Pokud na vaši otázku neodpovíte, kontaktujte podpora Microsoftu prostřednictvím [centra pro partnery a pomoc a podporu](https://aka.ms/marketplacepublishersupport). Pak vyberte **Nabídka vytvořit**  >  **váš typ**pro  >  **správu správy potenciálních zákazníků**.
 
 ### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Přijímám e-mailová oznámení, když se přijímají Noví zájemci zákazníků. Jak můžu nakonfigurovat někoho jiného, aby přijímal tyto e-maily?
 
-Přihlaste se k nabídce v partnerském centru a přejděte na stránku **nastavení nabídky**  > > **Správa zájemců****Upravit**. Aktualizujte e-mailové adresy v poli **kontaktní e-mail** .
+Přihlaste se k nabídce v partnerském centru a přejděte na stránku **nastavení nabídky** > **Správa zájemců**  >  **Upravit**. Aktualizujte e-mailové adresy v poli **kontaktní e-mail** .
 
 ## <a name="next-steps"></a>Další kroky
 

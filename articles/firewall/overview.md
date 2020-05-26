@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 05/22/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: b54e8efc4f5f22a89526bb5d529805b33371529f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2f466c71673c9239f6f984f838d050af8bf52182
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655120"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816059"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -61,15 +61,15 @@ Můžete centrálně vytvořit pravidla pro *povolení* nebo *blokování* podle
 
 ## <a name="fqdn-tags"></a>Značky plně kvalifikovaných názvů domén
 
-Plně kvalifikovaný název domény usnadňuje povolení známého síťového provozu služby Azure přes bránu firewall. Řekněme například, že chcete povolit síťové přenosy z webu Windows Update přes bránu firewall. Můžete vytvořit pravidlo aplikace a zahrnout značku webu Windows Update. Teď je možný síťový přenos z webu Windows Update přes vaši bránu firewall.
+[Plně kvalifikovaný název domény](fqdn-tags.md) usnadňuje povolení známého síťového provozu služby Azure přes bránu firewall. Řekněme například, že chcete povolit síťové přenosy z webu Windows Update přes bránu firewall. Můžete vytvořit pravidlo aplikace a zahrnout značku webu Windows Update. Teď je možný síťový přenos z webu Windows Update přes vaši bránu firewall.
 
 ## <a name="service-tags"></a>Značky služeb
 
-Značka služby představuje skupinu předpon IP adres a tím pomáhá minimalizovat složitost vytváření pravidla zabezpečení. Nemůžete vytvořit vlastní značku služby ani určit, které IP adresy jsou zahrnuty v rámci značky. Předpony adres zahrnuté ve značce služby spravuje Microsoft, a pokud se adresy změní, automaticky značku služby aktualizuje.
+[Značka služby](service-tags.md) představuje skupinu předpon IP adres, které vám pomůžou minimalizovat složitost vytváření pravidel zabezpečení. Nemůžete vytvořit vlastní značku služby ani určit, které IP adresy jsou zahrnuty v rámci značky. Předpony adres zahrnuté ve značce služby spravuje Microsoft, a pokud se adresy změní, automaticky značku služby aktualizuje.
 
 ## <a name="threat-intelligence"></a>Analýza hrozeb
 
-Filtrování na základě logiky hrozeb lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence.
+Filtrování na základě [logiky hrozeb](threat-intel.md)lze povolit pro bránu firewall pro upozornění a zamítnutí provozu z/do známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence.
 
 ## <a name="outbound-snat-support"></a>Podpora pro odchozí SNAT
 
@@ -83,7 +83,7 @@ Příchozí internetový síťový provoz na veřejnou IP adresu brány firewall
 
 ## <a name="multiple-public-ip-addresses"></a>Několik veřejných IP adres
 
-Pomocí brány firewall můžete přidružit několik veřejných IP adres (až 250).
+Pomocí brány firewall můžete přidružit [několik veřejných IP adres](deploy-multi-public-ip-powershell.md) (až 250).
 
 To umožňuje následující scénáře:
 
@@ -92,7 +92,7 @@ To umožňuje následující scénáře:
 
 ## <a name="azure-monitor-logging"></a>Protokolování Azure Monitor
 
-Všechny události jsou integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor.
+Všechny události jsou integrované s Azure Monitor, což umožňuje archivaci protokolů do účtu úložiště, streamování událostí do centra událostí nebo jejich odeslání do protokolů Azure Monitor. Další informace najdete v tématu [kurz: monitorování Azure firewall protokolů a metrik](tutorial-diagnostics.md).
 
 ## <a name="forced-tunneling"></a>Vynucené tunelování
 

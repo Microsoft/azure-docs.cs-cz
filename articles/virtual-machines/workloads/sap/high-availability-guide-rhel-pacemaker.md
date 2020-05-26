@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/17/2018
+ms.date: 05/21/2020
 ms.author: radeltch
-ms.openlocfilehash: 21c551721815847eea4cb1435298ea6f7bf37966
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b65422a9baf33a2b55de9f1bdfcc85918616d65
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264476"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800749"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -206,7 +206,7 @@ Zařízení STONITH používá instanční objekt k autorizaci proti Microsoft A
 1. Klikněte na Registrace aplikací
 1. Klikněte na nová registrace.
 1. Zadejte název, vyberte účty pouze v tomto adresáři organizace. 
-2. Vyberte typ aplikace "Web", zadejte adresu URL pro přihlášení (například http:\//localhost) a klikněte na Přidat.  
+2. Vyberte typ aplikace "Web", zadejte adresu URL pro přihlášení (například http: \/ /localhost) a klikněte na Přidat.  
    Přihlašovací adresa URL se nepoužívá a může to být libovolná platná adresa URL.
 1. Vyberte certifikáty a tajné klíče a pak klikněte na nový tajný klíč klienta.
 1. Zadejte popis nového klíče, vyberte možnost "nikdy vyprší platnost" a klikněte na tlačítko Přidat.
@@ -273,6 +273,9 @@ K nakonfigurování ochranného zařízení použijte následující příkaz.
 
 <pre><code>sudo pcs property set stonith-enabled=true
 </code></pre>
+
+> [!TIP]
+>Agent Azure plotu vyžaduje odchozí připojení k veřejným koncovým bodům, jak je popsáno, spolu s možnými řešeními ve veřejných koncových bodech [pro virtuální počítače s využitím Standard interního nástroje](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
 ## <a name="next-steps"></a>Další kroky
 

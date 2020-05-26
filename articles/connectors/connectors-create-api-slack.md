@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 5f61009ee7b43be618e37acb4a783a54dbf11e55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 194f75fbb486d5c53a8e650631c16fcf2649f277
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789167"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826022"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Monitorování a Správa časové rezervy pomocí Azure Logic Apps
 
@@ -52,7 +52,7 @@ Můžete použít triggery, které získávají odpovědi z účtu časové reze
    V seznamu akce vyberte akci, kterou chcete.
 
    Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-   Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Pokud budete vyzváni k přihlášení k časové rezervě, přihlaste se k pracovnímu prostoru časové rezervy. 
 
@@ -68,9 +68,9 @@ Můžete použít triggery, které získávají odpovědi z účtu časové reze
 
 Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/slack/)konektoru.
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: aa27ba30c7a403cf70396e219b0619e2e84b0d4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6603985df39afaa2fa2871977d6e577c04f7b569
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747740"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800030"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor klíč spravovaný zákazníkem 
 
@@ -28,8 +28,6 @@ Azure Monitor zajistí, aby byla všechna data v klidovém stavu zašifrovaná p
 Azure Monitor použití šifrování je stejné jako způsob, jakým [Azure Storage šifrování](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)   funguje.
 
 CMK vám umožňuje řídit přístup k vašim datům a kdykoli je kdykoli odvolat. Azure Monitor Storage vždy respektuje změny v klíčových oprávněních během hodiny. Data ingestovaná za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato data zůstávají šifrovaná pomocí klíčů Microsoftu bez ohledu na konfiguraci CMK, ale vaše kontrola nad daty SSD dodržuje [odvolávání klíčů](#cmk-kek-revocation). Pracujeme na tom, aby data SSD zašifrovaná pomocí CMK byla v druhé polovině 2020.
-
-Data ingestovaná za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato data zůstávají šifrovaná pomocí klíčů Microsoftu bez ohledu na konfiguraci CMK, ale vaše kontrola nad daty SSD dodržuje [odvolávání klíčů](#cmk-kek-revocation). Pracujeme na tom, aby data SSD zašifrovaná pomocí CMK byla v druhé polovině 2020.
 
 Funkce CMK se doručuje na vyhrazené Log Analytics clustery. Abychom ověřili, že ve vaší oblasti máme požadovanou kapacitu, vyžadujeme, aby vaše předplatné bylo předem na seznamu povolených. Než začnete konfigurovat CMK, použijte kontakt od Microsoftu, abyste získali předplatné na seznamu povolených.
 
@@ -80,7 +78,7 @@ Procedura není momentálně v uživatelském rozhraní podporovaná a proces z�
 > [!IMPORTANT]
 > Jakýkoli požadavek rozhraní API musí v hlavičce požadavku zahrnovat autorizační token nosiče.
 
-Například:
+Příklad:
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview

@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: c30bd8a3bb4fa1085e56dd93c66c016c3612e352
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4fac94cc2f8f378b7e9d8e9485baed6a0ffa838b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749134"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832159"
 ---
 # <a name="work-with-scope-configurations-for-change-tracking-and-inventory"></a>Práce s konfiguracemi oboru pro Change Tracking a inventář
 
@@ -52,11 +52,5 @@ Když se do Change Tracking a inventáře přidá počítač, přidá se taky do
 
 ## <a name="next-steps"></a>Další kroky
 
-* Obecné informace o této funkci najdete v tématu [přehled Change Tracking a inventáře](change-tracking.md).
-* Informace o práci s touto funkcí najdete v tématu [správa Change Tracking a inventáře](change-tracking-file-contents.md).
-* Pokud chcete funkci povolit pomocí účtu Automation, přečtěte si téma [povolení Change Tracking a inventáře z účtu Automation](automation-enable-changes-from-auto-acct.md).
-* Pokud chcete funkci povolit pomocí Azure Portal, přečtěte si téma [povolení Change Tracking a inventáře z Azure Portal](automation-enable-changes-from-browse.md).
-* Chcete-li použít sadu Runbook k povolení této funkce, přečtěte si téma [povolení Change Tracking a inventáře ze sady Runbook](automation-enable-changes-from-runbook.md).
-* Pokud chcete použít virtuální počítač Azure k povolení této funkce, přečtěte si téma [povolení Change Tracking a inventáře z virtuálního počítače Azure](automation-enable-changes-from-vm.md).
-* Informace o řešení problémů se sledováním změn a inventáře na VIRTUÁLNÍm počítači najdete v tématu [řešení potíží se změnami na virtuálním počítači Azure](automation-tutorial-troubleshoot-changes.md).
-* Řešení chyb funkcí najdete v tématu [řešení potíží s Change Tracking a inventářem](troubleshoot/change-tracking.md).
+* Pokud chcete pracovat s Change Tracking a inventářem, přečtěte si téma [správa Change Tracking a inventáře](change-tracking-file-contents.md).
+* Řešení obecných potíží s funkcemi najdete v tématu [řešení potíží s Change Tracking a inventářem](troubleshoot/change-tracking.md).

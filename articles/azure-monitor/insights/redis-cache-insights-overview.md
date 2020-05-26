@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 8c8265242e09938126bfdb28900b64f2c0e7970a
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 0e1bb015025c2ea9c720aca5d72faef01926cc33
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773893"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800006"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Prozkoumejte Azure Monitor pro Azure cache pro Redis (Preview)
 
@@ -186,4 +186,4 @@ Až uložíte vlastní sešit, otevřete ho tak, že přejdete do galerie sešit
 
 * Nakonfigurujte [výstrahy metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications.md) , abyste nastavili automatizované výstrahy, které pomáhají při zjišťování problémů.
 
-* Přečtěte si o scénářích, které sešit podporuje, jak vytvářet a přizpůsobovat sestavy, a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../app/usage-workbooks.md).
+* Přečtěte si o scénářích, které sešit podporuje, jak vytvářet a přizpůsobovat sestavy, a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).

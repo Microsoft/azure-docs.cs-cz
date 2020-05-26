@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 95dcc135593c566eb1319ed52df3df6c1ada6609
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4bd01b737c4a80ff286458c122f3b0ab9573a40b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067687"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798677"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý Start: Začínáme s Sentinel Azure
 
@@ -53,7 +53,7 @@ Hlavní část stránky s přehledem poskytuje rychlý přehled o stavu zabezpe�
 
 ## <a name="use-built-in-workbooks"></a>Použití vestavěných sešitů<a name="dashboards"></a>
 
-Předdefinované sešity poskytují integrovaná data z připojených zdrojů dat a umožňují vám tak podrobně události vygenerované v těchto službách. Předdefinované sešity zahrnují Azure AD, události aktivit Azure a místní, což může být data z událostí systému Windows ze serverů, výstrahy od první strany, od jakékoli třetí strany, včetně protokolů přenosů z brány firewall, sady Office 365 a nezabezpečené protokoly založené na událostech systému Windows. Sešity jsou založené na Azure Monitor sešity, které vám poskytnou rozšířenou možnost úprav a flexibility při navrhování vlastního sešitu. Další informace najdete v tématu [sešity](../azure-monitor/app/usage-workbooks.md).
+Předdefinované sešity poskytují integrovaná data z připojených zdrojů dat a umožňují vám tak podrobně události vygenerované v těchto službách. Předdefinované sešity zahrnují Azure AD, události aktivit Azure a místní, což může být data z událostí systému Windows ze serverů, výstrahy od první strany, od jakékoli třetí strany, včetně protokolů přenosů z brány firewall, sady Office 365 a nezabezpečené protokoly založené na událostech systému Windows. Sešity jsou založené na Azure Monitor sešity, které vám poskytnou rozšířenou možnost úprav a flexibility při navrhování vlastního sešitu. Další informace najdete v tématu [sešity](../azure-monitor/platform/workbooks-overview.md).
 
 1. V části **Nastavení**vyberte **sešity**. V části **nainstalováno**uvidíte všechny nainstalované sešity. V části **vše**můžete zobrazit celou galerii vestavěných sešitů, které jsou k dispozici pro instalaci. 
 2. Vyhledáním konkrétního sešitu zobrazíte celý seznam a popis toho, co jednotlivé nabídky nabízí. 
@@ -67,7 +67,7 @@ Předdefinované sešity poskytují integrovaná data z připojených zdrojů da
       ![Řídicí panel PAL Alto](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Sešity můžete přizpůsobit úpravou tlačítka ![](./media/qs-get-visibility/edit-query-button.png)hlavní dotaz. Kliknutím ![na tlačítko tlačítka](./media/qs-get-visibility/go-to-la-button.png) můžete přejít na Log Analytics a [Upravit dotaz tam](../azure-monitor/log-query/get-started-portal.md). můžete také vybrat tři tečky (...) a vybrat **přizpůsobit data dlaždice**, což umožňuje upravit hlavní filtr času nebo odebrat konkrétní dlaždice ze sešitu.
+Sešity můžete přizpůsobit úpravou tlačítka hlavní dotaz ![ ](./media/qs-get-visibility/edit-query-button.png) . Kliknutím na tlačítko tlačítka můžete ![ ](./media/qs-get-visibility/go-to-la-button.png) přejít na Log Analytics a [Upravit dotaz tam](../azure-monitor/log-query/get-started-portal.md). můžete také vybrat tři tečky (...) a vybrat **přizpůsobit data dlaždice**, což umožňuje upravit hlavní filtr času nebo odebrat konkrétní dlaždice ze sešitu.
 
 Další informace o práci s dotazy najdete v tématu [kurz: vizuální data v Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

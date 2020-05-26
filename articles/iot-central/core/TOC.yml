@@ -131,6 +131,8 @@
               href: howto-manage-iot-central-from-cli.md
             - name: Správa z Azure PowerShellu
               href: howto-manage-iot-central-from-powershell.md
+            - name: Programová správa
+              href: howto-manage-iot-central-programmatically.md
             - name: Správa z portálu CSP
               href: howto-create-and-manage-applications-csp.md
         - name: Přizpůsobení aplikace

@@ -32,8 +32,6 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Rozpoznávání řeči uložené v úložišti objektů blob
           href: quickstarts/from-blob.md
-        - name: Posouzení výslovnosti s využitím referenčního vstupu
-          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: Návody
       items:
         - name: Volba režimu rozpoznávání řeči
@@ -563,11 +561,14 @@
           href: devices-sdk-release-notes.md
 - name: nástroje
   items:
-    - name: SPX
+    - name: CLI služby Speech
+      displayName: SPX
       items:
-        - name: Co je SPX?
+        - name: Co je CLI služby Speech?
+          displayName: What is SPX?
           href: spx-overview.md
-        - name: Základy SPX
+        - name: Základy CLI služby Speech
+          displayName: SPX basics
           href: spx-basics.md
     - name: Speech Studio
       items:

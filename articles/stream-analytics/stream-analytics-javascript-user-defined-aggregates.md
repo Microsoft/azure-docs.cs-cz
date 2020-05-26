@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: c509d174787a58abeee33e039eb7bbbcbcb43f38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d33cc14612b5c00c8102bd035e7331bef670a4dd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79531730"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836443"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics uživatelsky definovaných agregací jazyka JavaScript
  
@@ -223,9 +223,9 @@ Vytvořte místní soubor JSON s níže uvedeným obsahem, nahrajte soubor do St
 ]
 ```
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
-Pokud potřebujete další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud chcete získat další nápovědu, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 

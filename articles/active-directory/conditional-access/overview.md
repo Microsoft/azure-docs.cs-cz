@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 05/20/2020
+ms.date: 05/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c3082fbd7c02cbb075fd118f8e6021ac951e8e3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.custom: contperfq4
+ms.openlocfilehash: 0e13fcba4b961efb6a839f95ad0e8100382619c0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737669"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798248"
 ---
 # <a name="what-is-conditional-access"></a>Co je podmíněný přístup?
 
@@ -71,7 +72,7 @@ Běžné signály, které může podmíněný přístup vzít v úvahu při rozh
 
 ## <a name="commonly-applied-policies"></a>Běžně používané zásady
 
-Mnoho organizací má společný přístup, ke kterým může pomáhat zásada podmíněného přístupu, například:
+Mnoho organizací má [společný přístup, ke kterým může pomáhat zásada podmíněného přístupu,](concept-conditional-access-policy-common.md) například:
 
 - Vyžadování služby Multi-Factor Authentication pro uživatele s administrativními rolemi
 - Vyžadování služby Multi-Factor Authentication pro úlohy správy Azure
@@ -96,12 +97,8 @@ Zákazníci s [licencemi Microsoft 365 Business](/office365/servicedescriptions/
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvoření zásad podmíněného přístupu podle kusu](concept-conditional-access-policies.md)
-
-Informace o tom, jak implementovat podmíněný přístup ve vašem prostředí, najdete v tématu [Plánování nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md).
-
-[Další informace o Identity Protection](../identity-protection/overview-v2.md)
-
-[Informace o Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
-
-[Informace o Microsoft Intune](/intune/index)
+- [Vytvoření zásad podmíněného přístupu podle kusu](concept-conditional-access-policies.md)
+- [Plánování nasazení podmíněného přístupu](plan-conditional-access.md)
+- [Další informace o Identity Protection](../identity-protection/overview-v2.md)
+- [Informace o Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
+- [Informace o Microsoft Intune](/intune/index)

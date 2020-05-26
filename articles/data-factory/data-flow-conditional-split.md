@@ -7,19 +7,21 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/16/2019
-ms.openlocfilehash: bd9241e526d7cf42f0697afb8635c085a08c80d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: eece6f97e82f3800d4f59ac1849b34c2a1e4635b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606486"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800089"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Podmíněné transformace rozdělení v toku dat mapování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Podmíněná transformace rozdělení směruje řádky dat do různých datových proudů na základě vyhovujících podmínek. Podmíněná transformace rozdělení je podobná struktuře PŘÍPADných rozhodnutí v programovacím jazyce. Transformace vyhodnocuje výrazy a na základě výsledků směruje datový řádek na zadaný datový proud.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4wKCX]
 
 ## <a name="configuration"></a>Konfigurace
 
@@ -45,7 +47,7 @@ Pomocí Tvůrce výrazů toku dat zadejte výraz pro podmínku rozdělení. Chce
 
 ### <a name="example"></a>Příklad
 
-V následujícím příkladu je podmíněná transformace rozdělení s názvem `SplitByYear` , která přijímá příchozí datový `CleanData`proud. Tato transformace má dvě podmínky `year < 1960` rozdělení a `year > 1980`. `disjoint`hodnota je false, protože data přecházejí na první podmínku porovnání. Každý řádek, který odpovídá první podmínce, přejde `moviesBefore1960`do výstupního proudu. Všechny zbývající řádky, které odpovídají druhé podmínce, přešly do výstupního datového proudu `moviesAFter1980`. Všechny ostatní řádky přecházejí přes výchozí datový `AllOtherMovies`proud.
+V následujícím příkladu je podmíněná transformace rozdělení s názvem `SplitByYear` , která přijímá příchozí datový proud `CleanData` . Tato transformace má dvě podmínky rozdělení `year < 1960` a `year > 1980` . `disjoint`hodnota je false, protože data přecházejí na první podmínku porovnání. Každý řádek, který odpovídá první podmínce, přejde do výstupního proudu `moviesBefore1960` . Všechny zbývající řádky, které odpovídají druhé podmínce, přešly do výstupního datového proudu `moviesAFter1980` . Všechny ostatní řádky přecházejí přes výchozí datový proud `AllOtherMovies` .
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

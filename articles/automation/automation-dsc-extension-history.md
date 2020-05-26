@@ -9,12 +9,12 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 4578e3bff7951293c5ec2f1992e597face84b716
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713195"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836919"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Práce s historií verze rozšíření pro konfiguraci požadovaného stavu Azure
 
@@ -251,5 +251,5 @@ Tento článek obsahuje informace o jednotlivých verzích rozšíření virtuá
 
 - Další informace o prostředí PowerShell DSC najdete v tématu [PowerShell Documentation Center](/powershell/scripting/dsc/overview/overview).
 - Projděte si [šablonu správce prostředků pro rozšíření DSC](/azure/virtual-machines/extensions/dsc-template).
-- Další funkce, které můžete spravovat pomocí prostředí PowerShell DSC a další prostředky DSC, najdete v [galerii prostředí PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
+- Další funkce a prostředky, které můžete spravovat pomocí prostředí PowerShell DSC, najdete v [galerii prostředí PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
 - Podrobnosti o předávání citlivých parametrů do konfigurací najdete v tématu [Zabezpečená Správa přihlašovacích údajů s obslužným rutinou rozšíření DSC](/azure/virtual-machines/extensions/dsc-credentials).

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 11/16/2017
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 2ef50704d96cc51881594c778d1a4b109a1eae82
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 624f9bf512a28657808d9e2838149601c0bd2f99
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125141"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837225"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Řešení potíží s automatickým škálováním se škálovacími sadami virtuálních počítačů
 **Problém** – pomocí služby Virtual Machine Scale Sets jste v Azure Resource Manager vytvořili infrastrukturu automatického škálování – například nasazením šablony, jako je tato: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – máte definovaná pravidla škálování a funguje Skvělé, ale bez ohledu na to, kolik dat jste do virtuálních počítačů umístili, nefunguje automatické škálování.
@@ -73,7 +73,7 @@ Mezi ty, které je potřeba vzít v úvahu, patří:
     Pokud tato data nejsou k dispozici, znamená to, že se jedná o problém s diagnostickým rozšířením spuštěným ve virtuálních počítačích. Pokud jsou tam tato data, znamená to, že došlo k potížím s pravidly škálování nebo se službou Insights. Ověřte [stav Azure](https://azure.microsoft.com/status/).
     
     Pokud máte i nadále problémy s automatickém škálováním, můžete po provedení těchto kroků vyzkoušet následující zdroje: 
-    * Přečtěte si fóra na [webu MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows)nebo [přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure) 
+    * Přečtěte si fóra na [stránce s dotazem&Microsoft Q](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)nebo [přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure) . 
     * Protokoluje volání podpory. Připravte se na sdílení šablony a zobrazení údajů o výkonu.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

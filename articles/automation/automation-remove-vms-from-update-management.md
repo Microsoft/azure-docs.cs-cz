@@ -5,14 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 29d6edd5463de78bba039e4ed6219575d924ac10
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 26a38c0851643fbd6446acddd99a05abf8d5b26c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749141"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836647"
 ---
-# <a name="remove-vms-from-update-management"></a>Odebrat virtuální počítače z Update Management
+# <a name="remove-vms-from-update-management"></a>Odebrání virtuálních počítačů z Update Managementu
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -40,12 +40,7 @@ Až skončíte s nasazováním aktualizací do virtuálních počítačů ve va�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md)
-* [Zrušit propojení pracovního prostoru s účtem služby Automation pro Update Management](automation-unlink-workspace-update-management.md)
-* [Povolení Update Management z účtu Automation](automation-onboard-solutions-from-automation-account.md)
-* [Povolit Update Management z Azure Portal](automation-onboard-solutions-from-browse.md)
-* [Povolení Update Management ze sady Runbook](automation-onboard-solutions.md)
-* [Povolení Update Management z virtuálního počítače Azure](automation-onboard-solutions-from-vm.md)
-* [Řešení potíží s Update Management](troubleshoot/update-management.md)
-* [Řešení potíží s agentem Windows Update](troubleshoot/update-agent-issues.md)
-* [Řešení potíží s agentem aktualizace pro Linux](troubleshoot/update-agent-issues-linux.md)
+* Pokud chcete pokračovat v práci s Update Management, přečtěte si téma [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
+* Řešení obecných problémů s funkcemi najdete v tématu [řešení potíží s Update Management](troubleshoot/update-management.md).
+* Problémy s nástrojem Windows Update Agent najdete v tématu [řešení potíží s agentem služby Windows Update](troubleshoot/update-agent-issues.md).
+* Problémy s agentem aktualizace pro Linux najdete v tématu [řešení potíží s agentem aktualizací pro Linux](troubleshoot/update-agent-issues-linux.md).

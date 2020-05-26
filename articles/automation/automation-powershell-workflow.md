@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6156b28a3baa51e84e2c46b74e63a6c8e81491cc
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 741569740713fef72f714f7cbce38a3c6f075684
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715473"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836681"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Informace o pracovním postupu PowerShellu pro Azure Automation
 
@@ -296,4 +296,4 @@ Další informace o kontrolních bodech najdete v tématu [Přidání kontrolní
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Můj první Runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md)
+* Další informace o Runbooky pracovních postupů PowerShellu najdete v tématu [kurz: vytvoření Runbooku pracovního postupu PowerShellu](learn/automation-tutorial-runbook-textual.md).

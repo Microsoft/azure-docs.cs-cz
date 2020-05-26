@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de84f2aee5f59d14ab70cb1687968643c4cdb31e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec1818fe4fa0a7ea2f57732a4230fd3c2732ba91
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79136376"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799256"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s pracovištěm na Facebooku
 
@@ -113,7 +113,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -150,7 +150,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     > [!NOTE]
     > V rámci procesu ověřování SAML může pracovní plocha využívat řetězce dotazů o velikosti až 2,5 kilobajtů, aby bylo možné předat parametry do služby Azure AD.
 
-1. V levém navigačním panelu přejděte na kartu ověřování **zabezpečení** > **Authentication** .
+1. V levém navigačním panelu přejděte na kartu ověřování **zabezpečení**  >  **Authentication** .
 
     ![Panel pro správu](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
@@ -206,7 +206,7 @@ V této části se na pracovišti na Facebooku vytvoří uživatel s názvem B. 
 V této části není žádná akce. Pokud uživatel na pracovišti neexistuje na Facebooku, vytvoří se nový, když se pokusíte o přístup k pracovní ploše z Facebooku.
 
 >[!Note]
->Pokud potřebujete ručně vytvořit uživatele, kontaktujte [pracovní plochu podle týmu podpory pro klienty Facebooku](https://workplace.fb.com/faq/) .
+>Pokud potřebujete ručně vytvořit uživatele, kontaktujte [pracovní plochu podle týmu podpory pro klienty Facebooku](https://www.workplace.com/help/work/) .
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -228,7 +228,7 @@ Když na přístupovém panelu kliknete na dlaždici pracovní plocha na Faceboo
 
     ![Jednou](./media/workplacebyfacebook-tutorial/test04.png)
 
-4. Klikněte na **Povolit**.
+4. Klikněte na tlačítko **povoleno**.
 
     ![Povolení](./media/workplacebyfacebook-tutorial/test03.png)
 
@@ -236,7 +236,7 @@ Když na přístupovém panelu kliknete na dlaždici pracovní plocha na Faceboo
 
     ![Domovská stránka](./media/workplacebyfacebook-tutorial/test01.png)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -5,12 +5,12 @@ ms.date: 05/15/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9bbf2288ac92c33c2b24af4e6a97882013a4ff1d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673454"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83821492"
 ---
 Standardizované image virtuálních počítačů umožňují organizacím migrovat do cloudu a zajistit konzistenci nasazení. Obrázky obvykle zahrnují předdefinovaná nastavení zabezpečení a konfigurace a potřebný software. Nastavení vlastního kanálu pro vytváření imagí vyžaduje čas, infrastrukturu a instalaci, ale s nástrojem Azure VM Image Builder stačí jednoduše zadat jednoduchou konfiguraci popisující vaši image, odeslat ji do služby a image se sestaví a distribuuje.
  
@@ -55,7 +55,7 @@ AIB bude podporovat image základního operačního systému Azure Marketplace:
 - Systém Windows 2016
 - Systém Windows 2019
 
-Podpora RHEL soubory ISO se už nepodporuje.
+Podpora RHEL soubory ISO už není podporovaná.
 ## <a name="how-it-works"></a>Jak to funguje
 
 
@@ -72,7 +72,7 @@ Azure image Builder je plně spravovaná služba Azure, která je přístupná p
 1. Vytvořte šablonu obrázku jako soubor. JSON. Tento soubor. JSON obsahuje informace o zdroji, přizpůsobení a distribuci obrázku. V [úložišti GitHub Azure image Builder](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)je několik příkladů.
 1. Odešlete ji do služby. tím se vytvoří artefakt šablony obrázku ve skupině prostředků, kterou zadáte. Na pozadí bude tvůrce imagí stahovat zdrojové Image nebo ISO a skripty podle potřeby. Ukládají se do samostatné skupiny prostředků, která se automaticky vytvoří v rámci vašeho předplatného, ve formátu: IT_ \< DestinationResourceGroup>_ \< template>. 
 1. Po vytvoření šablony image pak můžete vytvořit image. V Tvůrci imagí na pozadí se pomocí šablony a zdrojových souborů vytvoří virtuální počítač (výchozí velikost: Standard_D1_v2), síť, veřejná IP adresa, NSG a úložiště v IT_ \< DestinationResourceGroup>_ \< šablony prostředků>.
-1. V rámci vytváření image tvůrce imagí distribuuje image podle šablony a pak odstraní další prostředky IT_ ve \< \< skupině prostředků DestinationResourceGroup>_ Template>, která se vytvořila pro tento proces.
+1. V rámci vytváření image tvůrce imagí distribuuje image podle šablony a pak odstraní další prostředky ve \< skupině prostředků IT_ DestinationResourceGroup>_ \< template>, která se vytvořila pro tento proces.
 
 
 ## <a name="permissions"></a>Oprávnění
@@ -80,7 +80,7 @@ Při registraci pro (AIB) udělí služba AIB oprávnění vytvořit, spravovat 
 
 Pokud chcete, aby tvůrce imagí virtuálních počítačů Azure mohl distribuovat image do spravovaných imagí nebo do sdílené Galerie imagí, budete muset vytvořit uživatelem přiřazenou identitu Azure, která má oprávnění ke čtení a zápisu imagí. Pokud přistupujete k Azure Storage, budete potřebovat oprávnění ke čtení privátních kontejnerů.
 
-Nejdřív musíte [vytvořit dokumentaci spravované identity přiřazené uživatelem Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli) , která vám umožní vytvořit identitu.
+Nejdřív je nutné dodržet dokumentaci k [Vytvoření spravované identity přiřazené uživatelem Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli) , jak vytvořit identitu.
 
 Jakmile budete mít identitu, kterou potřebujete udělit, můžete k tomu použít definici vlastní role Azure a potom přiřadit spravovanou identitu přiřazenou uživateli, aby používala vlastní definici role.
 

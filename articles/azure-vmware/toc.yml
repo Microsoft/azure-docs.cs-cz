@@ -30,6 +30,8 @@
       href: concepts-upgrades.md
 - name: Návody
   items:
+    - name: Nastavení HCX
+      href: hybrid-cloud-extension-installation.md
     - name: Správa DHCP
       href: manage-dhcp.md
     - name: Zotavení po havárii

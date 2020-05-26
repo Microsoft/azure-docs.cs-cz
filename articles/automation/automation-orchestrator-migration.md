@@ -1,18 +1,18 @@
 ---
-title: Migrace z nástroje Orchestrator na Azure Automation (beta verze)
+title: Migrace z Orchestratoru na Azure Automation (beta verze)
 description: V tomto článku se dozvíte, jak migrovat Runbooky a integrační balíčky z nástroje Orchestrator na Azure Automation.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e8bb448e88d7aaa3d59ec9392a3b3ac69373c4d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b6778c4eab4dee382ec38d6218aa647e8aedc4cc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715490"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836749"
 ---
-# <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrace z nástroje Orchestrator na Azure Automation (beta verze)
+# <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrace z Orchestratoru na Azure Automation (beta verze)
 
 Sady Runbook v [produktu System Center 2012 – Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) jsou založené na aktivitách z integračních balíčků, které jsou napsané speciálně pro nástroj Orchestrator, zatímco sady runbook v Azure Automation jsou založené na prostředí Windows PowerShell. [Grafické Runbooky](automation-runbook-types.md#graphical-runbooks) v Azure Automation mají podobný vzhled pro Runbooky se systémem Orchestrator a jejich aktivity, které představují rutiny prostředí PowerShell, podřízené Runbooky a prostředky. Kromě převádění sad Runbook, je nutné převést integrační balíčky s aktivitami, které Runbooky používají pro moduly integrace s rutinami prostředí Windows PowerShell. 
 
@@ -130,8 +130,8 @@ Produkt Orchestrator ukládá Runbooky na databázový server a spouští je na 
 
 ## <a name="related-articles"></a>Související články
 
-* [System Center 2012 - Orchestrator](https://technet.microsoft.com/library/hh237242.aspx)
-* [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx)
-* [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)
-* [Standardní aktivity nástroje Orchestrator](https://technet.microsoft.com/library/hh403832.aspx)
-* [Stáhnout nástroj System Center Orchestrator Migration Toolkit](https://www.microsoft.com/download/details.aspx?id=47323)
+* Podrobnosti o nástroji Orchestrator najdete v tématu [System Center 2012 – Orchestrator](https://technet.microsoft.com/library/hh237242.aspx).
+* Přečtěte si další informace o automatizaci správy služeb v [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx).
+* Podrobnosti o aktivitách nástroje Orchestrator najdete v části [Standardní aktivity nástroje Orchestrator](https://technet.microsoft.com/library/hh403832.aspx).
+* Chcete-li získat sadu nástrojů pro migraci nástroje Orchestrator, přečtěte si téma [Stažení sady System Center Orchestrator Migration Toolkit](https://www.microsoft.com/download/details.aspx?id=47323).
+* Přehled Hybrid Runbook Worker Azure Automation najdete v tématu [přehled Hybrid Runbook Worker](automation-hybrid-runbook-worker.md).

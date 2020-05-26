@@ -48,8 +48,8 @@
       href: 'https://azure.microsoft.com/updates/?product=scheduler'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/updates/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-scheduler.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-scheduler'
     - name: Ceny

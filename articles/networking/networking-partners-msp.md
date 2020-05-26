@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 270afa70ca281762d9efabcd7663bf7504a469bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0db3d46edf1b6bb0b425235654824e26293eb4a9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654988"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800495"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informace o sítích Azure pro síťové služby MSP
 
@@ -42,6 +42,7 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 |[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Posouzení sítě Azure – 5 dní](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
 |[Liquid Telecom](https://liquidcloud.africa/azure-networking)|[Připravenost na Cloud – hodnocení 2 hodin](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
 |[Macquarie Telecom](https://macquariecloudservices.com/azure-managed-services/)|[Spravované služby Azure podle Macquarie cloudu](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.managed_services?tab=Overview)||[SD – instalace virtuální hraniční sítě WAN pomocí Macquarie cloudu](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
+|[Megaport](https://www.megaport.com/services/microsoft-expressroute/)||[mcr](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/megaport1582290752989.megaport_mcr?tab=Overview)||||
 |[Cloud Services v jádru]( https://www.oncore.cloud/services/ue-for-expressroute/)|[Podnikové cloudové základy: Workshop (~ 10 dní)](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/oncore_cloud_services-4944214.oncore_cloud_onboard_201810)|[UniversalEdge pro Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
 |[Orixcom]( https://www.orixcom.com/cloud-solutions/)||[Orixcom spravované ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_managed_expressroute?tab=Overview)|[Orixcom SD – WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_sd_wan?tab=Overview)|||
 |[SoftBank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Konzultační služba sítě Azure: 1 – posouzení týden](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure); [Služba posouzení Azure: 1Week](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
@@ -50,7 +51,7 @@ Odkazy v této části použijte, pokud chcete získat další informace o služ
 |[Ostražití](https://vigilant.it/manage-cloud-service/)|[Kontroly stavu Azure: 5 dní posouzení](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 dní implementace](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis spravované ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Vandis spravované VWAN využívající Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis spravované VWAN využívající Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-K dispozici jsou tyto Azure Marketplace, včetně nových spravovaných služeb zabezpečení a spravovaných služeb MEC od následujících partnerů Azure Networking MSP, které jsou v naší mapě: [Amdocs](https://www.amdocs.com/); [AXESDN](https://www.axesdn.com/en/azure-msp.html); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);  [Německý Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX dosáhnou](https://www.ixreach.com/services/sdn-cloud-connect/);  Pro [Cloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [Megaport](https://www.megaport.com/services/microsoft-expressroute/);  [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx); [Federované bezdrátové sítě](https://www.federatedwireless.com/caas/)
+K dispozici jsou tyto Azure Marketplace, včetně nových spravovaných služeb zabezpečení a spravovaných služeb MEC od následujících partnerů Azure Networking MSP, které jsou v naší mapě: [Amdocs](https://www.amdocs.com/); [AXESDN](https://www.axesdn.com/en/azure-msp.html); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);  [Německý Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX dosáhnou](https://www.ixreach.com/services/sdn-cloud-connect/);  Pro [Cloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx); [Federované bezdrátové sítě](https://www.federatedwireless.com/caas/)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>Partneři ExpressRoute
 

@@ -6,7 +6,7 @@
       href: dns-overview.md
     - name: Co je Privátní DNS v Azure?
       href: private-dns-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Veřejná služba DNS
@@ -79,17 +79,17 @@
           href: dns-alias-appservice.md
         - name: Správa zón DNS
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: dns-operations-dnszones-portal.md
-            - name: Azure Powershell
+            - name: Azure PowerShell
               href: dns-operations-dnszones.md
             - name: Azure CLI
               href: dns-operations-dnszones-cli.md
         - name: Správa záznamů DNS
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: dns-operations-recordsets-portal.md
-            - name: Azure Powershell
+            - name: Azure PowerShell
               href: dns-operations-recordsets.md
             - name: Azure CLI
               href: dns-operations-recordsets-cli.md
@@ -129,7 +129,7 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=dns'
         - name: Ukázky rozhraní příkazového řádku
           href: cli-samples.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: /powershell/module/az.dns
         - name: Azure CLI
           href: /cli/azure/network/dns
@@ -151,7 +151,7 @@
       items:
         - name: Azure CLI
           href: /cli/azure/network/private-dns
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: /powershell/module/az.PrivateDns
         - name: .NET
           href: /dotnet/api/overview/azure/privatedns/management
@@ -163,8 +163,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Žádosti o funkce
       href: 'https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-virtual-network.html'
     - name: Blog o sítích
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Ceny

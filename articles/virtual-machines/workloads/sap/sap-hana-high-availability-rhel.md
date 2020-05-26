@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/31/2020
+ms.date: 05/21/2020
 ms.author: radeltch
-ms.openlocfilehash: f1ae2c3c949e8bdbf30c8bef496177d56cd2dcbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed53b77587e307926689b2c20d7223212f3394d4
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521396"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800261"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux
 
@@ -108,7 +108,7 @@ K nasazení šablony použijte následující postup:
     * **Velikost systému SAP**: zadejte počet SAP, který bude nový systém poskytovat. Pokud si nejste jistí, kolik SAP systém vyžaduje, požádejte svého partnera technologie SAP nebo systémový integrátor.
     * **Dostupnost systému**: vyberte **ha**.
     * **Uživatelské jméno správce, heslo správce nebo klíč SSH**: vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
-    * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako **\<ID předplatného/Subscriptions/>\</ResourceGroups/název skupiny prostředků>\</Providers/Microsoft.Network/virtualnetworks/název virtuální sítě>\</subnets/název podsítě>**. Pokud chcete vytvořit novou virtuální síť, ponechejte tuto položku prázdnou.
+    * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako ** \< ID předplatného/Subscriptions/>/ResourceGroups/název \< skupiny prostředků>/Providers/Microsoft.Network/virtualnetworks/název \< virtuální sítě>/subnets/ \< název podsítě>**. Pokud chcete vytvořit novou virtuální síť, ponechejte tuto položku prázdnou.
 
 ### <a name="manual-deployment"></a>Ruční nasazení
 
@@ -119,9 +119,9 @@ K nasazení šablony použijte následující postup:
 1. Vytvořte Nástroj pro vyrovnávání zatížení (interní). Doporučujeme [standardní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
    * Vyberte virtuální síť vytvořenou v kroku 2.
 1. Vytvořte virtuální počítač 1.  
-   Pro SAP HANA použijte minimálně Red Hat Enterprise Linux 7,4. V tomto příkladu se používá Red Hat Enterprise Linux 7,4 pro SAP HANA <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> image vyberte skupinu dostupnosti vytvořenou v kroku 3.
+   Pro SAP HANA použijte minimálně Red Hat Enterprise Linux 7,4. V tomto příkladu se používá Red Hat Enterprise Linux 7,4 pro SAP HANA image <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> Vyberte skupinu dostupnosti vytvořenou v kroku 3.
 1. Vytvořte virtuální počítač 2.  
-   Pro SAP HANA použijte minimálně Red Hat Enterprise Linux 7,4. V tomto příkladu se používá Red Hat Enterprise Linux 7,4 pro SAP HANA <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> image vyberte skupinu dostupnosti vytvořenou v kroku 3.
+   Pro SAP HANA použijte minimálně Red Hat Enterprise Linux 7,4. V tomto příkladu se používá Red Hat Enterprise Linux 7,4 pro SAP HANA image <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> Vyberte skupinu dostupnosti vytvořenou v kroku 3.
 1. Přidejte datové disky.
 1. Pokud používáte standardní nástroj pro vyrovnávání zatížení, postupujte podle těchto kroků konfigurace:
    1. Nejprve vytvořte front-end fond IP adres:
@@ -263,10 +263,10 @@ Kroky v této části používají následující předpony:
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Vytvořte logické svazky. Při použití `lvcreate` bez `-i` přepínače se vytvoří lineární svazek. Doporučujeme vytvořit prokládaný svazek pro lepší vstupně-výstupní výkon a zarovnat velikosti pruhů k hodnotám popsaným v [SAP HANA konfiguracích úložiště virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage). `-i` Argument by měl být počet základních fyzických svazků a `-I` argumentem je velikost pruhu. V tomto dokumentu se pro datový svazek používají dva fyzické svazky, takže je argument `-i` přepínače nastavený na **2**. Velikost pruhu pro datový svazek je **256KiB**. Pro svazek protokolu se používá jeden fyzický svazek, takže žádné `-i` nebo `-I` přepínače nejsou explicitně použity pro příkazy svazků protokolu.  
+   Vytvořte logické svazky. Při použití bez přepínače se vytvoří lineární svazek `lvcreate` `-i` . Doporučujeme vytvořit prokládaný svazek pro lepší vstupně-výstupní výkon a zarovnat velikosti pruhů k hodnotám popsaným v [SAP HANA konfiguracích úložiště virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage). `-i`Argument by měl být počet základních fyzických svazků a `-I` argumentem je velikost pruhu. V tomto dokumentu se pro datový svazek používají dva fyzické svazky, takže `-i` je argument přepínače nastavený na **2**. Velikost pruhu pro datový svazek je **256KiB**. Pro svazek protokolu se používá jeden fyzický svazek, takže žádné `-i` nebo `-I` přepínače nejsou explicitně použity pro příkazy svazků protokolu.  
 
    > [!IMPORTANT]
-   > Použijte `-i` přepínač a nastavte jej na číslo základního fyzického svazku, pokud pro každé z nich používáte více než jeden fyzický svazek. Při vytváření `-I` prokládaného svazku použijte přepínač k určení velikosti pruhu.  
+   > Použijte `-i` přepínač a nastavte jej na číslo základního fyzického svazku, pokud pro každé z nich používáte více než jeden fyzický svazek. `-I`Při vytváření prokládaného svazku použijte přepínač k určení velikosti pruhu.  
    > Doporučené konfigurace úložiště, včetně velikosti pruhů a počtu disků, najdete v tématu [SAP HANA konfigurace úložiště virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) .  
 
    <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
@@ -291,7 +291,7 @@ Kroky v této části používají následující předpony:
    <pre><code>sudo vi /etc/fstab
    </code></pre>
 
-   Do `/etc/fstab` souboru vložte následující řádek:
+   Do souboru vložte následující řádek `/etc/fstab` :
 
    <pre><code>/dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_data_<b>HN1</b>-hana_data&gt;</b> /hana/data/<b>HN1</b> xfs  defaults,nofail  0  2
    /dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_log_<b>HN1</b>-hana_log&gt;</b> /hana/log/<b>HN1</b> xfs  defaults,nofail  0  2
@@ -342,11 +342,11 @@ Kroky v této části používají následující předpony:
 
 1. **[A]** RHEL pro konfiguraci Hana
 
-   Nakonfigurujte RHEL podle popisu v tématu SAP Note [2292690] a [2455582] a <https://access.redhat.com/solutions/2447641>.
+   Nakonfigurujte RHEL podle popisu v tématu SAP Note [2292690] a [2455582] a <https://access.redhat.com/solutions/2447641> .
 
 1. **[A]** instalace SAP HANA
 
-   Pro instalaci replikace systému SAP HANA postupujte podle <https://access.redhat.com/articles/3004101>pokynů.
+   Pro instalaci replikace systému SAP HANA postupujte podle pokynů <https://access.redhat.com/articles/3004101> .
 
    * Spusťte program **hdblcm** z disku DVD Hana. Na příkazovém řádku zadejte následující hodnoty:
    * Vyberte možnost instalace: zadejte **1**.
@@ -424,14 +424,14 @@ Kroky v této části používají následující předpony:
 
    Pokud používáte SAP HANA 2,0 nebo MDC, vytvořte databázi tenanta pro systém SAP NetWeaver. Nahraďte **NW1** identifikátorem SID vašeho systému SAP.
 
-   Provést jako <hanasid\>ADM následující příkaz:
+   Provést jako <hanasid \> ADM následující příkaz:
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** nakonfigurujte replikaci systému na prvním uzlu:
 
-   Zálohujte databáze jako <hanasid\>ADM:
+   Zálohujte databáze jako <hanasid \> ADM:
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -451,7 +451,7 @@ Kroky v této části používají následující předpony:
 
 1. **[2]** nakonfigurujte replikaci systému na druhém uzlu:
     
-   Zaregistrujte druhý uzel pro spuštění replikace systému. Spusťte následující příkaz <hanasid\>ADM:
+   Zaregistrujte druhý uzel pro spuštění replikace systému. Spusťte následující příkaz <hanasid \> ADM:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
@@ -530,7 +530,7 @@ Kroky v této části používají následující předpony:
 
 1. **[1]** nakonfigurujte replikaci systému na prvním uzlu.
 
-   Vytvořte primární lokalitu jako <hanasid\>ADM:
+   Vytvořte primární lokalitu jako <hanasid \> ADM:
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -538,7 +538,7 @@ Kroky v této části používají následující předpony:
 
 1. **[2]** nakonfigurujte replikaci systému na sekundárním uzlu.
 
-   Zaregistrujte sekundární lokalitu jako\><hanasid ADM:
+   Zaregistrujte sekundární lokalitu jako <hanasid \> ADM:
 
    <pre><code>HDB stop
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
@@ -641,7 +641,7 @@ SAP HANA hlavní uzel můžete migrovat spuštěním následujícího příkazu:
 <pre><code>[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
 </code></pre>
 
-Pokud nastavíte `AUTOMATED_REGISTER="false"`, tento příkaz by měl migrovat SAP HANA hlavní uzel a skupinu obsahující virtuální IP adresu na HN1-DB-1.
+Pokud nastavíte `AUTOMATED_REGISTER="false"` , tento příkaz by měl migrovat SAP HANA hlavní uzel a skupinu obsahující virtuální IP adresu na HN1-DB-1.
 
 Po dokončení migrace bude výstup "sudo PC status" vypadat takto
 
@@ -707,10 +707,7 @@ Popis způsobu simulace selhání sítě najdete v [článku znalostní báze Re
 V závislosti na konfiguraci clusteru by se teď měl virtuální počítač restartovat nebo zastavit.
 Pokud nastavíte `stonith-action` nastavení na vypnuto, virtuální počítač se zastaví a prostředky se migrují na běžící virtuální počítač.
 
-> [!NOTE]
-> Může trvat až 15 minut, než se virtuální počítače znovu online.
-
-Po opětovném spuštění virtuálního počítače se prostředek SAP HANA nepovede spustit jako sekundární, pokud jste nastavili `AUTOMATED_REGISTER="false"`. V takovém případě Nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
+Po opětovném spuštění virtuálního počítače se prostředek SAP HANA nepovede spustit jako sekundární, pokud jste nastavili `AUTOMATED_REGISTER="false"` . V takovém případě Nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
 
 <pre><code>su - <b>hn1</b>adm
 
@@ -754,7 +751,7 @@ Ruční převzetí služeb při selhání můžete otestovat zastavením cluster
 <pre><code>[root@hn1-db-0 ~]# pcs cluster stop
 </code></pre>
 
-Po převzetí služeb při selhání můžete cluster znovu spustit. Pokud nastavíte `AUTOMATED_REGISTER="false"`, SAP HANA prostředku na uzlu HN1-DB-0 se nepovede spustit jako sekundární. V takovém případě Nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
+Po převzetí služeb při selhání můžete cluster znovu spustit. Pokud nastavíte `AUTOMATED_REGISTER="false"` , SAP HANA prostředku na uzlu HN1-DB-0 se nepovede spustit jako sekundární. V takovém případě Nakonfigurujte instanci HANA jako sekundární spuštěním tohoto příkazu:
 
 <pre><code>[root@hn1-db-0 ~]# pcs cluster start
 [root@hn1-db-0 ~]# su - hn1adm
@@ -780,9 +777,29 @@ Resource Group: g_ip_HN1_03
     vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-1
 </code></pre>
 
+### <a name="test-a-manual-failover"></a>Test ručního převzetí služeb při selhání
+
+Stav prostředku před spuštěním testu:
+
+<pre><code>Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]
+    Started: [ hn1-db-0 hn1-db-1 ]
+Master/Slave Set: SAPHana_HN1_03-master [SAPHana_HN1_03]
+    Masters: [ hn1-db-0 ]
+    Slaves: [ hn1-db-1 ]
+Resource Group: g_ip_HN1_03
+    nc_HN1_03  (ocf::heartbeat:azure-lb):      Started hn1-db-0
+    vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
+</code></pre>
+
+Ruční převzetí služeb při selhání můžete otestovat zastavením clusteru na uzlu HN1-DB-0:
+
+<pre><code>[root@hn1-db-0 ~]# pcs cluster stop
+</code></pre>
+
+
 ## <a name="next-steps"></a>Další kroky
 
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]
-* Informace o tom, jak vytvořit vysokou dostupnost a naplánovat zotavení po havárii SAP HANA v Azure (velké instance), najdete v tématu [SAP Hana (velké instance) vysoká dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md) .
+* [SAP HANA konfigurace úložiště virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)

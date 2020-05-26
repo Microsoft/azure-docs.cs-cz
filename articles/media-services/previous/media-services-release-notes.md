@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: a3893c8d19c89b639e0584f203cbcd1adf7e2dee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: edea04e15fe5b844654f250a22a05a753f0df123
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474846"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836392"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -27,7 +27,7 @@ Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích 
 > [!NOTE]
 > Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy problémů, které vás zaovlivňují. Pokud chcete ohlásit problém nebo položit otázky, odešlete příspěvek na [Azure Media Services Fórum MSDN]. 
+Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy problémů, které vás zaovlivňují. Chcete-li nahlásit problém nebo položit otázky, odešlete příspěvek na webu [Azure Media Services Fórum MSDN]. 
 
 ## <a name="known-issues"></a><a id="issues"/>Známé problémy
 ### <a name="media-services-general-issues"></a><a id="general_issues"/>Media Services Obecné problémy
@@ -35,7 +35,7 @@ Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy pro
 | Problém | Popis |
 | --- | --- |
 | V REST API není k dispozici několik běžných hlaviček protokolu HTTP. |Pokud vyvíjíte Media Services aplikace pomocí REST API, zjistíte, že některá společná pole hlaviček protokolu HTTP (včetně klienta-požadavek-ID, požadavek-ID a RETURN-CLIENT-REQUEST-ID) se nepodporují. Hlavičky budou přidány v budoucí aktualizaci. |
-| Procento – kódování není povoleno. |Media Services používá hodnotu vlastnosti IAssetFile.Name při vytváření adres URL pro obsah streamování (například `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Z tohoto důvodu není povolena procentuální kódování. Hodnota vlastnosti Name nemůže obsahovat žádný z následujících [znaků rezervovaných v procentech](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * ' ();: @ &= + $,/?% # [] ". Přípona názvu souboru může taky obsahovat jenom jeden znak ".". |
+| Procento – kódování není povoleno. |Media Services používá hodnotu vlastnosti IAssetFile.Name při vytváření adres URL pro obsah streamování (například `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters` ). Z tohoto důvodu není povolena procentuální kódování. Hodnota vlastnosti Name nemůže obsahovat žádný z následujících [znaků rezervovaných v procentech](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * ' ();: @ &= + $,/?% # [] ". Přípona názvu souboru může taky obsahovat jenom jeden znak ".". |
 | Metoda ListBlobs, která je součástí sady Azure Storage SDK verze 3. x, se nezdařila. |Media Services generuje adresy URL SAS na základě verze [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) . Pokud chcete použít sadu SDK úložiště k vypsání objektů BLOB v kontejneru objektů blob, použijte metodu [CloudBlobContainer. ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) , která je součástí sady Storage SDK verze 2. x. |
 | Mechanismus omezování Media Services omezuje využití prostředků u aplikací, které provedou nadměrné požadavky na službu. Služba může vrátit stav "služba není k dispozici" 503 HTTP kód stavu. |Další informace najdete v popisu stavového kódu HTTP 503 v tématu [Media Services kódy chyb](media-services-encoding-error-codes.md). |
 | Při dotazování entit se vrátí limit 1 000 entit najednou, protože veřejná verze REST 2 omezuje výsledky dotazu na 1 000 výsledků. |Použijte Skip a/Top (rozhraní .NET) (REST), jak je popsáno v [tomto příkladu .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) a v [tomto příkladu REST API](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
@@ -573,7 +573,7 @@ Následující funkce byly v listopadu vydání sady SDK nové:
 <!-- Images. -->
 
 <!--- URLs. --->
-[Azure Media Services Fórum MSDN]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
+[Microsoft Q&A question page for Azure Media Services]: https://docs.microsoft.com/answers/topics/azure-media-services.html
 [Odkaz na Azure Media Services REST API]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [Vstupní metadata]: https://msdn.microsoft.com/library/azure/dn783120.aspx
@@ -601,7 +601,7 @@ Následující funkce byly v listopadu vydání sady SDK nové:
 [Connect to Media Services with the Media Services SDK for .NET]: https://msdn.microsoft.com/library/azure/jj129571.aspx
 [Media Services .NET SDK extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [Azure SDK tools]: https://github.com/Azure/azure-sdk-tools
-[GitHubu]: https://github.com/Azure/azure-sdk-for-media-services
+[GitHub]: https://github.com/Azure/azure-sdk-for-media-services
 [Manage Media Services assets across multiple Storage accounts]: https://msdn.microsoft.com/library/azure/dn271889.aspx
 [Handle Media Services job notifications]: https://msdn.microsoft.com/library/azure/dn261241.aspx
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: ce3313f2e96dacff95ed1587e2e979c4628ec022
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4be2f61cb0a45f30f0201d1ecca0efc2d8cbd9ae
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674313"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836222"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API pro tabulky v Azure Cosmos DB
 
@@ -278,7 +278,7 @@ Azure Cosmos DB je systém založený na smlouvě SLA, který poskytuje neomezen
 
 ### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>Takže PartitionKey a RowKey se pořád vyžadují s rozhraní API pro tabulky?
 
-Ano. Vzhledem k tomu, že plocha oblasti rozhraní API pro tabulky je podobná sadě SDK služby Azure Table Storage, klíč oddílu poskytuje efektivní způsob, jak distribuovat data. Klíč řádku je v rámci tohoto oddílu jedinečný. Klíč řádku musí být přítomen a nemůže být null jako v rámci standardní sady SDK. Délka RowKey je 255 bajtů a délka PartitionKey je 1 KB.
+Yes. Vzhledem k tomu, že plocha oblasti rozhraní API pro tabulky je podobná sadě SDK služby Azure Table Storage, klíč oddílu poskytuje efektivní způsob, jak distribuovat data. Klíč řádku je v rámci tohoto oddílu jedinečný. Klíč řádku musí být přítomen a nemůže být null jako v rámci standardní sady SDK. Délka RowKey je 255 bajtů a délka PartitionKey je 1 KB.
 
 ### <a name="what-are-the-error-messages-for-the-table-api"></a>Jaké jsou chybové zprávy pro rozhraní API pro tabulky?
 
@@ -293,7 +293,7 @@ Azure Cosmos DB je systém založený na smlouvě SLA, který poskytuje latenci,
 Svůj názor můžete sdílet některým z následujících způsobů:
 
 * [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [Fórum MSDN](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow je nejvhodnější pro otázky týkající se programování. Ujistěte se, že je váš dotaz [v rámci vašeho tématu](https://stackoverflow.com/help/on-topic) [, a uveďte co nejvíce podrobností a vymažte otázku a odpovězte na](https://stackoverflow.com/help/how-to-ask)ně.
 
 ## <a name="next-steps"></a>Další kroky

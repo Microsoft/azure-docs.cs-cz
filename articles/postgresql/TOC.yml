@@ -15,6 +15,9 @@
           href: quickstart-create-server-database-azure-cli.md
         - name: Vytvoření databáze – příkaz up Azure CLI
           href: quickstart-create-server-up-azure-cli.md
+        - name: Vytvoření databáze – šablona ARM
+          href: quickstart-create-postgresql-server-database-using-arm-template.md
+          displayName: deploy azure resource manager template
         - name: Připojení a dotazování
           items:
             - name: Python
@@ -338,8 +341,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/postgresql/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-database-postgresql.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: Videa

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: f91ee5654b4add37d3cce4f875be1f9c2b398ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a3d8ee1d0c1625c9e7d3d83b590f38dcd8847fe
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259489"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836409"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení potíží s replikací pro virtuální počítače VMware a fyzické servery
 
@@ -132,7 +132,7 @@ Problém vyřešíte tak, že pomocí následujícího postupu ověříte stav s
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>ID chyby 78144 – pro virtuální počítač není k dispozici žádný bod obnovení konzistentní vzhledem k aplikacím během posledních ' XXX ' minut
 
-Vylepšení byla provedena v agentech mobility [9,23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher) & [9,27](site-recovery-whats-new.md#update-rollup-39) verzí pro zpracování chování při selhání instalace VSS. Při řešení potíží se selháním služby VSS se ujistěte, že používáte nejnovější verze.
+Vylepšení byla provedena v agentech mobility [9,23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher)  &  [9,27](site-recovery-whats-new.md#update-rollup-39) verzí pro zpracování chování při selhání instalace VSS. Při řešení potíží se selháním služby VSS se ujistěte, že používáte nejnovější verze.
 
 Níže jsou uvedené některé z nejběžnějších problémů.
 
@@ -193,4 +193,4 @@ Ověřte, zda je typ spouštění služby VSS Provider nastaven na hodnotu **aut
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete další informace, pošlete svůj dotaz do [fóra Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). Máme aktivní komunitu a jeden z našich technik vám může pomoct.
+Pokud potřebujete další nápovědu, vystavte svůj dotaz na [stránce s dotazem Microsoft Q&Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). Máme aktivní komunitu a jeden z našich technik vám může pomoct.

@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: PowerShell, Runbook, JSON, Azure Automation
-ms.openlocfilehash: dcb1f5919db71bb233f59cc5b5ba92648b8476d9
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 921d878c585b811700b1c112524e314f0af53c24
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714283"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837072"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>Nasazení šablony Azure Resource Manager v Runbooku PowerShellu
 
@@ -229,8 +229,8 @@ Get-AzStorageAccount
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled Azure Resource Manager](../azure-resource-manager/management/overview.md)
-* [Seznámení se službou Azure Storage](../storage/common/storage-introduction.md)
-* [Galerie runbooků a modulů pro Azure Automation](automation-runbook-gallery.md)
-* [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Další informace o šablonách Správce prostředků najdete v tématu [Azure Resource Manager Overview](../azure-resource-manager/management/overview.md).
+* Pokud chcete začít s Azure Storage, přečtěte si téma [Úvod do Azure Storage](../storage/common/storage-introduction.md).
+* Další užitečné sady Runbook Azure Automation najdete v tématu [použití runbooků a modulů v Azure Automation](automation-runbook-gallery.md).
+* Další užitečné šablony Správce prostředků najdete v tématu [šablony rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

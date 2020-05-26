@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: bd1449501cdc9483621a5408a3a4926afe90212f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 611ab503dfea44e8287e95cf607ce6af3b447d1f
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702151"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815787"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Instalace a spuštění kontejnerů obličeje (Preview)
 
@@ -38,7 +38,7 @@ Než začnete používat kontejnery služby Face, musíte splnit následující 
 
 ## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k privátnímu registru kontejnerů
 
-Vyplňte a odešlete [formulář žádosti](https://aka.ms/VisionContainersPreview) pro vyžádání přístupu ke kontejneru. 
+Vyplňte a odešlete [formulář žádosti](https://aka.ms/cognitivegate) pro vyžádání přístupu ke kontejneru. 
 
 [!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 

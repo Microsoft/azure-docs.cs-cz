@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 04/27/2020
-ms.openlocfilehash: 8ea26fc041f3fa6194ced65b3e3b9055848ead49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.openlocfilehash: 327fffd807d93fda67ff650954ece65e5db58e63
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188755"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798115"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -41,7 +41,7 @@ Při návrhu toků mapování dat můžete každou transformaci otestovat tak, �
 
 Integration Runtime s více jádry zvyšuje počet uzlů ve výpočetním prostředí Spark a poskytuje větší výpočetní výkon pro čtení, zápis a transformaci dat. Datové proudy ADF využívají Spark pro výpočetní modul. Prostředí Spark funguje velmi dobře pro paměťově optimalizované prostředky.
 * Vyzkoušejte **výpočetní cluster COMPUTE** , pokud chcete, aby byl rychlost zpracování vyšší než zadaná sazba.
-* Vyzkoušení **paměťově optimalizovaného** clusteru, pokud chcete uložit do mezipaměti více dat v paměti. Optimalizovaná paměť má vyšší cenový bod na jádro než výpočetní výkon, ale bude nejspíš mít za následek rychlejší rychlost transformace.
+* Vyzkoušení **paměťově optimalizovaného** clusteru, pokud chcete uložit do mezipaměti více dat v paměti. Optimalizovaná paměť má vyšší cenový bod na jádro než výpočetní výkon, ale bude nejspíš mít za následek rychlejší rychlost transformace. Pokud dojde k chybám při provádění toků dat z paměti, přepněte na konfiguraci optimalizované pro paměť Azure IR.
 
 ![Nový IR](media/data-flow/ir-new.png "Nový IR")
 
@@ -140,6 +140,10 @@ Pokud máte například seznam datových souborů z července 2019, které chcet
 ```DateFiles/*_201907*.txt```
 
 Když použijete zástupné znaky, kanál bude obsahovat jenom jednu aktivitu toku dat. To bude mít lepší výkon než vyhledávání v úložišti objektů blob, které pak projde všemi odpovídajícími soubory pomocí příkazu ForEach s aktivitou spustit tok dat uvnitř.
+
+Kanál každého v paralelním režimu spustí více clusterů, a to tak, že clustery úloh rozcházejí na každou spuštěnou aktivitu toku dat. To může způsobit omezení služby Azure s vysokým počtem souběžných spuštění. Nicméně použití toku dat spouštění uvnitř a pro každý s sekvenčním nastavením v kanálu se vyhne omezení a vyčerpání prostředků. Tím vynutíte Data Factory, aby se jednotlivé soubory v toku dat prováděly postupně.
+
+Doporučuje se, abyste při použití pro každý z nich s tokem dat využívali nastavení TTL v Azure Integration Runtime. Důvodem je to, že každý soubor bude v rámci vašeho iterátoru zabývat celým časem spuštění clusteru za 5 minut.
 
 ### <a name="optimizing-for-cosmosdb"></a>Optimalizace pro CosmosDB
 

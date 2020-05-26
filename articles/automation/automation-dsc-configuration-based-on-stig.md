@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e17ae51addce2bb156b6f1c54e29fd777699516f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: d1b05f9e77d3530f3e883aa3f9d98de09c8f54c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711376"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836987"
 ---
-# <a name="configure-data-based-on-stig-for-azure-automation-state-configuration"></a>Konfigurace dat na základě STIG pro konfiguraci stavu Azure Automation
+# <a name="configure-data-based-on-stig"></a>Konfigurace dat na základě STIG
 
 > Platí pro: Windows PowerShell 5,1
 
@@ -43,6 +43,6 @@ Pokud si chcete vyzkoušet PowerSTIG, navštivte [Galerie prostředí PowerShell
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview)
-- [Prostředky DSC](/powershell/scripting/dsc/resources/resources)
-- [Konfigurace místní Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- Informace o prostředí PowerShell DSC najdete v tématu [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview).
+- Přečtěte si o prostředcích PowerShellu v [prostředcích DSC](/powershell/scripting/dsc/resources/resources).
+- Podrobnosti o konfiguraci místních Configuration Manager najdete v tématu [Konfigurace místní Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig).

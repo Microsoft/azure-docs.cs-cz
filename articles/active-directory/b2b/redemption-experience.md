@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585891"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826090"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory uplatnění pozvánky B2B pro spolupráci
 
@@ -42,9 +42,9 @@ Jako alternativu k e-mailu s pozvánkou můžete hostům poskytnout přímý odk
 
 > [!IMPORTANT]
 > Přímý odkaz musí být specifický pro tenanta. Jinými slovy, musí obsahovat ID tenanta nebo ověřenou doménu, aby bylo možné hosta ověřit ve vašem tenantovi, kde se nachází sdílená aplikace. Společná adresa URL, jako https://myapps.microsoft.com by se u hosta nefunguje, protože se přesměruje na svého domovského tenanta pro ověřování. Tady je několik příkladů přímých odkazů s kontextem tenanta:
- > - Přístupový panel aplikací: https://myapps.microsoft.com/?tenantid=&lt ; ID tenanta&gt; 
- > - Přístupový panel aplikací pro ověřenou doménu: https://myapps.microsoft.com/&lt ; ověřená doména&gt;
- > - Azure Portal: https://portal.azure.com/&lt ; ID tenanta&gt;
+ > - Přístupový panel aplikací:`https://myapps.microsoft.com/?tenantid=<tenant id>`
+ > - Přístupový panel aplikací pro ověřenou doménu:`https://myapps.microsoft.com/<;verified domain>`
+ > - Azure Portal:`https://portal.azure.com/<tenant id>`
  > - Individuální aplikace: viz jak použít [přímý odkaz na přihlášení](../manage-apps/end-user-experiences.md#direct-sign-on-links) .
 
 V některých případech se doporučuje e-mailem pozvánky používat přímý odkaz. Pokud jsou tyto zvláštní případy pro vaši organizaci důležité, doporučujeme, abyste uživatele pozvali pomocí metod, které pořád odesílají e-mail s pozvánkami:

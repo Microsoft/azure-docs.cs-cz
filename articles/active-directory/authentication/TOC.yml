@@ -138,6 +138,8 @@
           href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Použití ověření na základě SMS (Preview)
       href: howto-authentication-sms-signin.md
+    - name: Použití přihlášení s e-mailovou adresou (Preview)
+      href: howto-authentication-use-email-signin.md
     - name: Inteligentní uzamykání Azure AD
       href: howto-password-smart-lockout.md
     - name: Ověřování pomocí certifikátů
@@ -223,8 +225,8 @@
   items:
     - name: Fórum Azure pro názory
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Aktualizace služeb

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
-ms.openlocfilehash: c9ce4e7da51005dcb06c9df420d80f4d2c7b93e9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f46b17fdffc870e6afc5f3b0711169db8270a540
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598364"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800442"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Centrum událostí jako obslužná rutina události pro Azure Event Grid události
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede akci zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovávala události a **Azure Event Hubs** je jednou z nich. 
@@ -39,6 +39,52 @@ Pokud používáte **centrum událostí** jako obslužnou rutinu události pro u
 | AEG-data-verze | <p>Verze dat události</p><p>Příklad: "1".</p><p>Pro **Event Grid schéma událostí**Tato vlastnost představuje verzi dat a pro **schéma cloudových událostí**se nepoužije.</p> |
 | AEG-Output-Event-ID | ID události Event Grid |
 
+## <a name="rest-examples-for-put"></a>Příklady REST (pro PUT)
+
+
+### <a name="event-hub"></a>Centrum událostí
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "EventHub",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="event-hub---delivery-with-managed-identity"></a>Centrum událostí – doručení pomocí spravované identity
+
+```json
+{
+    "properties": {
+        "deliveryWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "destination": 
+            {
+                "endpointType": "EventHub",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
+                }
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 Seznam podporovaných obslužných rutin událostí naleznete v článku [obslužné rutiny událostí](event-handlers.md) . 

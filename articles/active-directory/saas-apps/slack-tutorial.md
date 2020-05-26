@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 05/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c80963976783321d05fc6f32bb24daed36fa105
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a125637bd155ac11a544afeee1d371d080bb72eb
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76985529"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799094"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s časovou rezervou
 
@@ -39,6 +39,9 @@ Chcete-li začít, potřebujete následující položky:
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * Předplatné s povoleným jednotným přihlašováním (SSO).
 
+> [!NOTE]
+> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
@@ -47,9 +50,6 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Časová rezerva podporuje zřizování uživatelů **jenom v čase**
 * Časová rezerva podporuje [ **automatizované** zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial)
 * Jakmile nakonfigurujete časovou rezervu, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
-
-> [!NOTE]
-> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
 
 ## <a name="adding-slack-from-the-gallery"></a>Přidání časové rezervy z Galerie
 
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.slack.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://< DOMAIN NAME>.slack.com/sso/saml/start`
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`https://slack.com`
 
@@ -100,7 +100,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace s časovou rezervou v odpovědi SAML několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků. Pokud uživatelé nemají e-mailovou adresu, namapujte **EmailAddress** na **User. userPrincipalName**.
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | -----|---------|
     | EmailAddress | User. userPrincipalName |
     | | |
@@ -121,7 +121,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -149,15 +149,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Přejděte na **Microsoft Azure AD** a pak přejděte na **Nastavení týmu**.
 
-     ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial_slack_001.png)
+     ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-001.png)
 
 3. V části **Nastavení týmu** klikněte na kartu **ověřování** a pak klikněte na **změnit nastavení**.
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial_slack_002.png)
+    ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-002.png)
 
 4. V dialogovém okně **nastavení ověřování SAML** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial_slack_003.png)
+    ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-003.png)
 
     a.  Do textového pole **koncového bodu SAML 2,0 (http)** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
@@ -167,7 +167,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     d. Nakonfigurujte výše uvedená tři nastavení podle potřeby pro váš tým časové rezervy. Další informace o nastavení najdete tady v **příručce pro konfiguraci jednotného přihlašování k Zárezervám** . `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    e.  Klikněte na **Uložit konfiguraci**.
+    ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-004.png)
+
+    e. Klikněte na **Rozbalit** a zadejte `https://slack.com` do textového pole **vystavitele zprostředkovatele identity** .
+
+    f.  Klikněte na **Uložit konfiguraci**.
 
 ### <a name="create-slack-test-user"></a>Vytvořit testovacího uživatele pro časovou rezervu
 

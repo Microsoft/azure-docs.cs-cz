@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1827d44f4d4ac812a33aee4791c2103a10328ba7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: dba0dd4e52913e0998b088fb2ccf90c98f0a89c2
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204546"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83821490"
 ---
 ## <a name="application-performance-indicators"></a>Indikátory výkonu aplikace
 
@@ -140,9 +140,9 @@ Vstupně-výstupní operace je jednotka vstupně-výstupních operací, kterou b
 Velikost v/v je jedním z důležitějších faktorů. Velikost vstupně-výstupních operací je velikost žádosti o vstupně-výstupní operace vygenerované vaší aplikací. Velikost vstupně-výstupních operací má významný dopad na výkon hlavně na základě IOPS a šířky pásma, které aplikace dokáže dosáhnout. Následující vzorec znázorňuje vztah mezi vstupně-výstupními operacemi, velikostí vstupně-výstupních operací a šířkou pásma a propustností  
     ![](media/premium-storage-performance/image1.png)
 
-Některé aplikace umožňují změnit jejich vstupně-výstupní operace, zatímco některé aplikace ne. SQL Server například určuje optimální velikost vstupně-výstupních operací a neposkytuje uživatelům žádné ovladače ke změně. Na druhé straně Oracle poskytuje parametr s názvem [velikost bloku\_DB\_](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , pomocí kterého můžete nakonfigurovat velikost vstupně-výstupních požadavků databáze.
+Některé aplikace umožňují změnit jejich vstupně-výstupní operace, zatímco některé aplikace ne. SQL Server například určuje optimální velikost vstupně-výstupních operací a neposkytuje uživatelům žádné ovladače ke změně. Na druhé straně Oracle poskytuje parametr s názvem [ \_ \_ velikost bloku DB](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , pomocí kterého můžete nakonfigurovat velikost vstupně-výstupních požadavků databáze.
 
-Pokud používáte aplikaci, která vám neumožňuje změnit velikost vstupně-výstupních operací, použijte pokyny v tomto článku k optimalizaci klíčového ukazatele výkonu, který je pro vaši aplikaci nejrelevantnější. Například:
+Pokud používáte aplikaci, která vám neumožňuje změnit velikost vstupně-výstupních operací, použijte pokyny v tomto článku k optimalizaci klíčového ukazatele výkonu, který je pro vaši aplikaci nejrelevantnější. Třeba
 
 * Aplikace OLTP generuje miliony malých a náhodných vstupně-výstupních požadavků. Chcete-li tyto typy požadavků na vstupně-výstupní operace zpracovat, je nutné navrhnout infrastrukturu aplikace a získat vyšší IOPS.  
 * Aplikace datového skladu generuje velké a sekvenční vstupně-výstupní požadavky. Chcete-li tyto typy požadavků na vstupně-výstupní operace zpracovat, je nutné navrhnout infrastrukturu vaší aplikace, abyste dosáhli vyšší šířky pásma nebo propustnosti.
@@ -189,15 +189,15 @@ Předpokládejme například, že požadavek na aplikaci je maximálně 4 000 IO
 *Náklady na operaci*  
 V mnoha případech je možné, že celkové náklady na provoz pomocí Premium Storage jsou nižší než používání služby Storage úrovně Standard.
 
-Představte si třeba aplikaci vyžadující 16 000 IOPS. K dosažení tohoto výkonu budete potřebovat standardní\_virtuální počítač Azure IaaS s D14, který může poskytnout maximální IOPS 16 000 s použitím disků 32 úrovně Standard úložiště 1 TB. Každý standardní disk úložiště o velikosti 1 TB může dosáhnout maximálně 500 IOPS. Odhadované náklady na tento virtuální počítač za měsíc budou $1 570. Měsíční náklady na disky úložiště úrovně Standard 32 budou $1 638. Odhadované celkové měsíční náklady budou $3 208.
+Představte si třeba aplikaci vyžadující 16 000 IOPS. K dosažení tohoto výkonu budete potřebovat standardní \_ virtuální počítač Azure IaaS s D14, který může poskytnout maximální IOPS 16 000 s použitím disků 32 úrovně Standard úložiště 1 TB. Každý standardní disk úložiště o velikosti 1 TB může dosáhnout maximálně 500 IOPS. Odhadované náklady na tento virtuální počítač za měsíc budou $1 570. Měsíční náklady na disky úložiště úrovně Standard 32 budou $1 638. Odhadované celkové měsíční náklady budou $3 208.
 
-Pokud však používáte stejnou aplikaci na Premium Storage, budete potřebovat menší velikost virtuálního počítače a méně disků služby Premium Storage, čímž se sníží celkové náklady. Standardní\_virtuální počítač DS13 může splňovat požadavky 16 000 IOPS pomocí čtyř disků P30. Virtuální počítač DS13 má maximální IOPS 25 600 a každý disk P30 má maximální počet IOPS 5 000. Celková Tato konfigurace může dosáhnout 5 000 x 4 = 20 000 IOPS. Odhadované náklady na tento virtuální počítač za měsíc budou $1 003. Měsíční náklady na čtyři disky P30 Premium Storage budou $544,34. Odhadované celkové měsíční náklady budou $1 544.
+Pokud však používáte stejnou aplikaci na Premium Storage, budete potřebovat menší velikost virtuálního počítače a méně disků služby Premium Storage, čímž se sníží celkové náklady. Standardní \_ virtuální počítač DS13 může splňovat požadavky 16 000 IOPS pomocí čtyř disků P30. Virtuální počítač DS13 má maximální IOPS 25 600 a každý disk P30 má maximální počet IOPS 5 000. Celková Tato konfigurace může dosáhnout 5 000 x 4 = 20 000 IOPS. Odhadované náklady na tento virtuální počítač za měsíc budou $1 003. Měsíční náklady na čtyři disky P30 Premium Storage budou $544,34. Odhadované celkové měsíční náklady budou $1 544.
 
 Následující tabulka shrnuje rozpis nákladů tohoto scénáře pro Standard a Premium Storage.
 
 | &nbsp; | **Standard** | **Premium** |
 | --- | --- | --- |
-| **Náklady na virtuální počítač za měsíc** |$1 570,58 (standardní\_D14) |$1 003,66 (standardní\_DS13) |
+| **Náklady na virtuální počítač za měsíc** |$1 570,58 (standardní \_ D14) |$1 003,66 (standardní \_ DS13) |
 | **Náklady na disky za měsíc** |$1 638,40 (32 × 1 TB disků) |$544,34 (4 x P30 disky) |
 | **Celkové náklady za měsíc** |$3 208,98 |$1 544,34 |
 
@@ -237,7 +237,7 @@ Vysoce škálovatelné virtuální počítače, které využívají Azure Premiu
 > [!WARNING]
 > Disková mezipaměť není podporovaná pro disky 4 TiB a větší. Pokud je k VIRTUÁLNÍmu počítači připojeno více disků, bude každý disk, který je menší než 4 TiB, podporovat ukládání do mezipaměti.
 >
-> Při změně nastavení mezipaměti disku Azure se cílový disk odpojí a znovu připojí. Pokud se jedná o disk s operačním systémem, virtuální počítač se restartuje. Před změnou nastavení mezipaměti disku zastavte všechny aplikace nebo služby, které by mohly být tímto přerušením ovlivněny.
+> Při změně nastavení mezipaměti disku Azure se cílový disk odpojí a znovu připojí. Pokud se jedná o disk s operačním systémem, virtuální počítač se restartuje. Před změnou nastavení mezipaměti disku zastavte všechny aplikace nebo služby, které by mohly být tímto přerušením ovlivněny. Žádná z těchto doporučení by mohla vést k poškození dat.
 
 Další informace o tom, jak BlobCache funguje, najdete v blogovém příspěvku v rámci služby [Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) .
 
@@ -252,7 +252,7 @@ Pro datové disky se doporučuje nastavení pro diskovou mezipaměť:
 
 | **Nastavení ukládání do mezipaměti disku** | **doporučení, kdy použít toto nastavení** |
 | --- | --- |
-| Žádná |Nakonfigurujte mezipaměť hosta jako žádná pro disky jen pro zápis a zápis s velkým množstvím. |
+| Žádné |Nakonfigurujte mezipaměť hosta jako žádná pro disky jen pro zápis a zápis s velkým množstvím. |
 | ReadOnly |Nakonfigurujte mezipaměť hosta jako ReadOnly pro disky jen pro čtení a pro čtení i zápis. |
 | ReadWrite |Nakonfigurujte mezipaměť hosta jako jen pro čtení, pokud vaše aplikace správně zpracovává zápis dat uložených v mezipaměti na trvalé disky v případě potřeby. |
 
@@ -280,9 +280,9 @@ V takovém případě můžete tyto pokyny použít k SQL Server spuštění na 
 
 U všech disků úrovně Premium SSD nebo Ultra s mezipamětí nastavenou na **ReadOnly** nebo **žádné**je při připojování systému souborů nutné zakázat "překážky". V tomto scénáři nepotřebujete překážky, protože zápisy na disky Premium Storage jsou pro tato nastavení mezipaměti trvalé. Po úspěšném dokončení žádosti o zápis se data zapisují do trvalého úložiště. Pokud chcete zakázat "překážky", použijte jednu z následujících metod. Vyberte jednu z těchto souborů v systému souborů:
   
-* Pro **reiserFS**zakažte překážky pomocí možnosti `barrier=none` připojit. (Pokud chcete povolit bariéry `barrier=flush`, použijte.)
-* V případě **ext3/ext4**zakažte překážky pomocí možnosti `barrier=0` připojit. (Pokud chcete povolit bariéry `barrier=1`, použijte.)
-* Pro **XFS**zakažte překážky pomocí možnosti `nobarrier` připojit. (Pokud chcete povolit bariéry `barrier`, použijte.)
+* Pro **reiserFS**zakažte překážky pomocí `barrier=none` Možnosti připojit. (Pokud chcete povolit bariéry, použijte `barrier=flush` .)
+* V případě **ext3/ext4**zakažte překážky pomocí `barrier=0` Možnosti připojit. (Pokud chcete povolit bariéry, použijte `barrier=1` .)
+* Pro **XFS**zakažte překážky pomocí `nobarrier` Možnosti připojit. (Pokud chcete povolit bariéry, použijte `barrier` .)
 * U disků služby Premium Storage s mezipamětí nastavenou **na hodnotu**nepoužívat jako mezipaměť povolte překážky při zápisu.
 * Aby jmenovky svazků po restartování virtuálního počítače zůstaly zachované, je nutné aktualizovat/etc/fstab s použitím univerzálně jedinečného identifikátoru (UUID) na disky. Další informace najdete v tématu [Přidání spravovaného disku do virtuálního počítače se systémem Linux](../articles/virtual-machines/linux/add-disk.md).
 
@@ -290,7 +290,7 @@ Pro prémiové SSD byly ověřeny následující distribuce systému Linux. Pro 
 
 Některé verze vyžadují nejnovější služby Linux Integration Services (LIS), v 4.0 pro Azure. Chcete-li stáhnout a nainstalovat distribuci, postupujte podle odkazu uvedeného v následující tabulce. Do seznamu přidáme obrázky, protože jsme dokončili ověřování. Naše ověřování ukazují, že se výkon u jednotlivých imagí liší. Výkon závisí na charakteristikách úloh a na nastaveních imagí. Různé obrázky jsou vyladěny pro různé druhy úloh.
 
-| Distribuce | Version | Podporované jádro | Podrobnosti |
+| Distribuce | Verze | Podporované jádro | Podrobnosti |
 | --- | --- | --- | --- |
 | Ubuntu | 12,04 nebo novější| 3.2.0 – 75.110 + | &nbsp; |
 | Ubuntu | 14,04 nebo novější| 3.13.0 – 44.73 +  | &nbsp; |
@@ -384,3 +384,4 @@ U prokládaného svazku Udržujte dostatečně velkou hloubku fronty, takže ka�
 Azure Premium Storage zřídí zadaný počet vstupně-výstupních operací za sekundu v závislosti na velikosti virtuálních počítačů a velikosti disků, které si zvolíte. Kdykoli se vaše aplikace pokusí o zpracování IOPS nebo propustnosti nad rámec těchto limitů, které může virtuální počítač nebo disk zvládnout, Premium Storage ho omezí. Tyto manifesty ve formě sníženého výkonu ve vaší aplikaci. To může znamenat vyšší latenci, nižší propustnost nebo nižší IOPS. Pokud Premium Storage neomezuje, vaše aplikace by mohla být zcela neúspěšná, protože by se překročilo, jaké prostředky je možné dosáhnout. Aby se zabránilo problémům s výkonem kvůli omezení, vždy pro vaši aplikaci zajistěte dostatek prostředků. Vezměte v úvahu, co jsme probrali v oddílech velikosti virtuálních počítačů a velikosti disků výše. Srovnávací testy je nejlepším způsobem, jak zjistit, jaké prostředky budete potřebovat k hostování vaší aplikace.
 
 ## <a name="next-steps"></a>Další kroky
+

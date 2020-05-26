@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
-ms.author: b-juche
-ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/21/2020
+ms.author: ramakk
+ms.openlocfilehash: d81ae835fa62c5188c8d71a5ae0563259ab027f3
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667865"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797437"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
 
@@ -36,10 +36,12 @@ Při plánování Azure NetApp Files sítě byste měli pochopit několik důle�
 Následující funkce jsou aktuálně pro Azure NetApp Files nepodporované: 
 
 * Skupiny zabezpečení sítě (skupin zabezpečení sítě) použité pro delegovanou podsíť
-* Trasy definované uživatelem (udr) s předponou adresy jako podsíť souborů Azure NetApp
+* Trasy definované uživatelem (udr) použité pro delegovanou podsíť
 * Zásady Azure (například vlastní zásady pojmenování) na rozhraní Azure NetApp Files
 * Nástroje pro vyrovnávání zatížení pro Azure NetApp Files provoz
-* Azure NetApp Files se u Azure Virtual WAN nepodporuje.
+* Azure Virtual WAN 
+* Zóny redundantní Virtual Network Branch (SKU brány pomocí AZ) 
+* Aktivní/aktivní Virtual Network GWs 
 
 Následující omezení sítě platí pro Azure NetApp Files:
 
@@ -53,13 +55,13 @@ Následující tabulka popisuje síťové topologie podporované nástrojem Azur
 
 |    Topologie    |    Je podporováno    |     Alternativní řešení    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Připojení ke svazku v místní síti VNet    |    Ano    |         |
-|    Připojení ke svazku ve virtuální síti s partnerským vztahem (stejná oblast)    |    Ano    |         |
-|    Připojení ke svazku ve virtuální síti s partnerským vztahem (mezi oblastí nebo globálním partnerským vztahem)    |    Ne    |    Žádná    |
-|    Připojení ke svazku přes ExpressRoute bránu    |    Ano    |         |
-|    Připojení z místního prostředí ke svazku ve virtuální síti rozbočovače prostřednictvím brány ExpressRoute a partnerského vztahu virtuálních sítí s přenosem brány    |    Ano    |        |
-|    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače přes bránu VPN    |    Ano    |         |
-|    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače prostřednictvím brány VPN a partnerského vztahu virtuálních sítí s přenosem brány    |    Ano    |         |
+|    Připojení ke svazku v místní síti VNet    |    Yes    |         |
+|    Připojení ke svazku ve virtuální síti s partnerským vztahem (stejná oblast)    |    Yes    |         |
+|    Připojení ke svazku ve virtuální síti s partnerským vztahem (mezi oblastí nebo globálním partnerským vztahem)    |    No    |    Žádné    |
+|    Připojení ke svazku přes ExpressRoute bránu    |    Yes    |         |
+|    Připojení z místního prostředí ke svazku ve virtuální síti rozbočovače prostřednictvím brány ExpressRoute a partnerského vztahu virtuálních sítí s přenosem brány    |    Yes    |        |
+|    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače přes bránu VPN    |    Yes    |         |
+|    Připojení z místního prostředí k svazku ve virtuální síti rozbočovače prostřednictvím brány VPN a partnerského vztahu virtuálních sítí s přenosem brány    |    Yes    |         |
 
 
 ## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Virtuální síť pro Azure NetApp Files svazky
@@ -82,9 +84,10 @@ Pokud je virtuální síť v partnerském vztahu s jinou virtuální sítí, nem
 
 ### <a name="udrs-and-nsgs"></a>Udr a skupin zabezpečení sítě
 
-Trasy definované uživatelem (udr) a skupiny zabezpečení sítě (skupin zabezpečení sítě) nejsou podporovány v delegovaných podsítích pro Azure NetApp Files.
+Trasy definované uživatelem (udr) a skupiny zabezpečení sítě (skupin zabezpečení sítě) nejsou podporovány v delegovaných podsítích pro Azure NetApp Files. Udr a skupin zabezpečení sítě ale můžete použít i v jiných podsítích, a to i v rámci stejné virtuální sítě jako podsíť delegované pro Azure NetApp Files.
 
-Alternativním řešením je, že skupin zabezpečení sítě můžete použít u jiných podsítí, které povolují nebo zakazují provoz do a z Azure NetApp Files delegované podsítě.  
+* Udr pak nadefinujte toky přenosů z ostatních podsítí do Azure NetApp Files delegované podsítě. To pomáhá zajistit, aby se tento tok zarovnal do přenosu dat zpět od Azure NetApp Files k ostatním podsítím pomocí systémových tras.  
+* Skupin zabezpečení sítě pak buď povolte, nebo zakažte provoz do a z Azure NetApp Files delegované podsítě. 
 
 ## <a name="azure-native-environments"></a>Nativní prostředí Azure
 

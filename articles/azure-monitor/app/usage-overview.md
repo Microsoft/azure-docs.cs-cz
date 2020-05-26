@@ -3,12 +3,12 @@ title: Analýza využití pomocí Azure Application Insights | Dokumentace Micro
 description: Pochopte uživatele a to, co dělají s vaší aplikací.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: e964b1b5b9d5500f2d9f24ed765299389e6dbbb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283952"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797780"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
@@ -22,7 +22,7 @@ Nejlepší prostředí získáte instalací Application Insights jak v kódu apl
 
     * *Nechcete instalovat kód serveru? Stačí [vytvořit prostředek služby Azure Application Insights](../../azure-monitor/app/create-new-resource.md ).*
 
-2. **Kód webové stránky:** Před zavřením ``</head>``přidejte na svou webovou stránku následující skript. Nahraďte klíč instrumentace příslušnou hodnotou pro váš Application Insights prostředek:
+2. **Kód webové stránky:** Před zavřením přidejte na svou webovou stránku následující skript ``</head>`` . Nahraďte klíč instrumentace příslušnou hodnotou pro váš Application Insights prostředek:
     
     ```html
     <script type="text/javascript">
@@ -155,7 +155,7 @@ V inicializátoru webové aplikace, jako je například Global.asax.cs:
 **Aplikace ASP.NET Core**
 
 > [!NOTE]
-> Přidání inicializátoru `ApplicationInsights.config` pomocí nebo `TelemetryConfiguration.Active` použití není pro ASP.NET Core aplikace platné. 
+> Přidání inicializátoru pomocí `ApplicationInsights.config` nebo použití `TelemetryConfiguration.Active` není pro ASP.NET Core aplikace platné. 
 
 U [ASP.NET Corech](asp-net-core.md#adding-telemetryinitializers) aplikací je přidání nového `TelemetryInitializer` provedeno přidáním do kontejneru vkládání závislostí, jak je znázorněno níže. To se provádí v `ConfigureServices` metodě vaší `Startup.cs` třídy.
 
@@ -175,5 +175,5 @@ Všechny nové TelemetryClients automaticky přidají hodnotu vlastnosti, kterou
    - [Trychtýře](usage-funnels.md)
    - [Uchovávání](usage-retention.md)
    - [Toky uživatele](usage-flows.md)
-   - [Workbooks](../../azure-monitor/app/usage-workbooks.md)
+   - [Workbooks](../../azure-monitor/platform/workbooks-overview.md)
    - [Přidat kontext uživatele](usage-send-user-context.md)

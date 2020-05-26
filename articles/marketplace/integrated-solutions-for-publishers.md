@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: f0a3ea3aebeb9c96d7ccfba9c883ae208d93a44e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a2bce05288d0085306a59f3ff5ee62939941bbaf
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657982"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800603"
 ---
 # <a name="publish-an-integrated-solution"></a>Publikování integrovaného řešení
 
@@ -52,7 +52,7 @@ Přehled programu integrovaných řešení najdete v části [video s přehledem
 
 ## <a name="submit-a-nomination"></a>Vyplňte nominační formulář.
 
-Partneři, kteří chtějí účast v programu, by měli identifikovat jiné partnery, se kterými chtějí pracovat. Měly by vyplnit [formulář pro pojmenování integrovaných řešení](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx). Tým programu integrovaných řešení kontroluje jeho jmenování a následuje během 10 pracovních dnů. Tým poskytuje schválení a další kroky.
+Partneři, kteří chtějí účast v programu, by měli identifikovat jiné partnery, se kterými chtějí pracovat. Měly by vyplnit [formulář pro pojmenování integrovaných řešení](https://aka.ms/AA5qicu). Tým programu integrovaných řešení kontroluje jeho jmenování a následuje během 10 pracovních dnů. Tým poskytuje schválení a další kroky.
 
 ## <a name="develop-an-integrated-solution"></a>Vývoj integrovaného řešení
 
@@ -84,8 +84,8 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
 
     Tyto prostředky použijte pro proces vývoje:
 
-    * [Diskuzní příručka pro obchodní rozhodnutí dílny](https://assetsprod.microsoft.com/mpn/integrated-solutions-discussion-guide-for-business-workshop.pptx)
-    * [Diskuze o technickém rozhodnutí dílny](https://assetsprod.microsoft.com/mpn/integrated-solutions-discussion-guide-for-technical-workshop.pptx)
+    * [Diskuzní příručka pro obchodní rozhodnutí dílny](https://aka.ms/AA5qicx)
+    * [Diskuze o technickém rozhodnutí dílny](https://aka.ms/AA5qid1)
     * [Video o rychlém startu: semináře integrovaných řešení](https://partner.microsoft.com/asset/detail/integrated-solutions-workshop-quickstart-guide-mp4)
 
 1. Identifikujte správce projektu pro různé partnery, který bude řídit plán projektu a časovou osu, kterou jste vyvinuli v obchodních a technických konferencích.
@@ -98,8 +98,8 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
 
     * Název kombinovaného řešení.
     * Seznam popisů integrovaného řešení. Dodržujte [Doporučené postupy pro výpis nabídky](./gtm-offer-listing-best-practices.md).
-    * Rozteč na jedné stránce pro zákazníky. Použijte [šablonu s jedním stránkováním](https://assetsprod.microsoft.com/mpn/integrated-solutions-customer-one-pager-template.pptx).
-    * Prezentace zákazníka. Použijte [šablonu prezentace](https://assetsprod.microsoft.com/mpn/customer-presentation-template.pptx).
+    * Rozteč na jedné stránce pro zákazníky. Použijte [šablonu s jedním stránkováním](https://aka.ms/AA5s08a).
+    * Prezentace zákazníka. Použijte [šablonu prezentace](https://aka.ms/AA5s7ql).
     * Logo pro kombinované řešení
 
 ## <a name="publish-your-integrated-solution"></a>Publikování integrovaného řešení

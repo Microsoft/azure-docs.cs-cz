@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/11/2020
-ms.openlocfilehash: b0fd0343e7a072c0da0a5af0fa2d39eb2284cb06
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e69e00eb9db43a76af1d6e541f44f750452cf858
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199961"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800060"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště
 
@@ -46,7 +46,7 @@ Z Azure Monitor můžete zobrazit podrobnosti o transakcích, latencích a kapac
 
 Pokud chcete zobrazit využití a dostupnost účtů úložiště ve všech předplatných, proveďte následující kroky.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal v levém podokně vyberte **monitor** a v části **přehledy** vyberte **účty úložiště**.
 
@@ -226,7 +226,7 @@ V tomto příkladu pracujeme se sešitem kapacity účtu úložiště a demonstr
 
 7. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při používání Azure Monitor pro úložiště. K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
 
@@ -318,6 +318,6 @@ Pokud chcete změnit název kroku v uloženém sešitu, vyberte Upravit v kroku 
 
 * Nakonfigurujte [Upozornění metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications.md) , abyste nastavili automatizované upozorňování na pomoc při zjišťování problémů.
 
-* Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../app/usage-workbooks.md).
+* Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).
 
 * Podrobný návod k používání Analýza úložiště a dalších nástrojů k identifikaci, diagnostice a odstraňování potíží souvisejících s Azure Storage najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md).

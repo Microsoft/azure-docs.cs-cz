@@ -6,12 +6,12 @@ ms.date: 04/04/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 8d4cdb87302e12c024e15f8e0a7e3854d6f707a7
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: a07c6ac524aa213519ace1ae204ac2d76db802aa
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715456"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836698"
 ---
 # <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
 
@@ -70,5 +70,5 @@ Spusťte některý z runbooků pro tento kurz.
 V rámci tohoto rychlého startu jste nasadili účet Automation, spustili úlohu runbooku a zobrazili výsledky úlohy. Další informace o službě Azure Automation najdete v rychlém startu k vytvoření prvního runbooku.
 
 > [!div class="nextstepaction"]
-> [Rychlý start se službou Automation – Vytvoření runbooku](./automation-quickstart-create-runbook.md)
+> [Rychlý Start pro automatizaci – vytvoření sady Runbook Azure Automation](./automation-quickstart-create-runbook.md)
 

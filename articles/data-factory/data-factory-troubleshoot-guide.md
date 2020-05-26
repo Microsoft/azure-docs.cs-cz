@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: f07cc109b21010df89b105576cb9afcf93df774a
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744775"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836154"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Řešení potíží s Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,7 +56,7 @@ Problémy s konektorem, jako je chyba při použití aktivity kopírování, naj
 
 - **Příčina**:`Bad authoring.`
 
-- **Doporučení**: Zadejte buď absolutní cesty pro schémata adresování pracovních prostorů `dbfs:/folder/subfolder/foo.py` , nebo soubory uložené v systému souborů DFS (datacihly).
+- **Doporučení**: Zadejte buď absolutní cesty pro schémata adresování pracovních prostorů, nebo `dbfs:/folder/subfolder/foo.py` soubory uložené v systému souborů DFS (datacihly).
 
 <br/> 
 
@@ -102,7 +102,7 @@ Problémy s konektorem, jako je chyba při použití aktivity kopírování, naj
 
 <br/> 
 
-- **Zpráva**: `User: `SimpleUserContext {userId =..., název =user@company.com, OrgID =...}` is not authorized to access cluster.`
+- **Zpráva**: `User: ` SimpleUserContext {userId =..., název = user@company.com , OrgID =...}` is not authorized to access cluster.`
 
 - **Příčina**: uživatel, který vygeneroval přístupový token, nemá oprávnění k přístupu ke clusteru datacihlům, který je zadaný v propojené službě.
 
@@ -226,7 +226,7 @@ Následující tabulka platí pro U-SQL.
 
 - **Příčina**: definice aktivity funkce Azure není dokončená.
 
-- **Doporučení**: Ověřte, jestli má vstupní definice JSON aktivity funkce Azure vlastnost s názvem `functionKey`.
+- **Doporučení**: Ověřte, jestli má vstupní definice JSON aktivity funkce Azure vlastnost s názvem `functionKey` .
 
 ### <a name="error-code-3607"></a>Kód chyby: 3607
 
@@ -234,7 +234,7 @@ Následující tabulka platí pro U-SQL.
 
 - **Příčina**: definice aktivity funkce Azure není dokončená.
 
-- **Doporučení**: Ověřte, jestli má vstupní definice JSON aktivity funkce Azure vlastnost s názvem `functionName`.
+- **Doporučení**: Ověřte, jestli má vstupní definice JSON aktivity funkce Azure vlastnost s názvem `functionName` .
 
 ### <a name="error-code-3608"></a>Kód chyby: 3608
 
@@ -250,7 +250,7 @@ Následující tabulka platí pro U-SQL.
 
 - **Příčina**: definice aktivity funkce Azure není dokončená.
 
-- **Doporučení**: Ověřte, jestli má vstupní definice JSON aktivity funkce Azure vlastnost s názvem `functionAppUrl`.
+- **Doporučení**: Ověřte, jestli má vstupní definice JSON aktivity funkce Azure vlastnost s názvem `functionAppUrl` .
 
 ### <a name="error-code-3610"></a>Kód chyby: 3610
 
@@ -266,7 +266,7 @@ Následující tabulka platí pro U-SQL.
 
 - **Příčina**: definice aktivity funkce Azure není dokončená.
 
-- **Doporučení**: Ověřte, jestli má vstupní definice JSON aktivity funkce Azure vlastnost s názvem `method`.
+- **Doporučení**: Ověřte, jestli má vstupní definice JSON aktivity funkce Azure vlastnost s názvem `method` .
 
 ### <a name="error-code-3612"></a>Kód chyby: 3612
 
@@ -282,9 +282,9 @@ Následující tabulka platí pro U-SQL.
 
 - **Zpráva**:`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
 
-- **Příčina**: chybný formát nebo chybí definice vlastnosti `%propertyName;`.
+- **Příčina**: chybný formát nebo chybí definice vlastnosti `%propertyName;` .
 
-- **Doporučení**: Ověřte, jestli je `%activityName;` u aktivity definovaná `%propertyName;` Tato vlastnost se správnými daty.
+- **Doporučení**: Ověřte, jestli je u aktivity `%activityName;` definovaná Tato vlastnost `%propertyName;` se správnými daty.
 
 ### <a name="error-code-4110"></a>Kód chyby: 4110
 
@@ -308,7 +308,7 @@ Následující tabulka platí pro U-SQL.
 
 - **Příčina**: chybný formát nebo chybějící definice vlastnosti% PropertyName;.
 
-- **Doporučení**: Ověřte, jestli je u propojené služby definovaná `%propertyName;` vlastnost se správnými daty.
+- **Doporučení**: Ověřte, jestli je u propojené služby `%propertyName;` definovaná vlastnost se správnými daty.
 
 ### <a name="error-code-4121"></a>Kód chyby: 4121
 
@@ -464,7 +464,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Zpráva**:`Operation returned an invalid status code 'BadRequest'.`
 
-- **Příčina**: v rámci vlastní aktivity je `folderPath` moc velký počet souborů. Celková velikost `resourceFiles` nemůže být delší než 32 768 znaků.
+- **Příčina**: v rámci vlastní aktivity je moc velký počet souborů `folderPath` . Celková velikost `resourceFiles` nemůže být delší než 32 768 znaků.
 
 - **Doporučení**: Odstraňte nepotřebné soubory nebo je zip a přidejte příkaz k extrakci.
    
@@ -592,7 +592,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Zpráva**:`Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
 
-- **Příčina**: chybová zpráva obsahuje zprávu podobnou této `The remote name could not be resolved.`. Poskytnutý identifikátor URI clusteru může být neplatný.
+- **Příčina**: chybová zpráva obsahuje zprávu podobnou této `The remote name could not be resolved.` . Poskytnutý identifikátor URI clusteru může být neplatný.
 
 - **Doporučení**: Ověřte, že se cluster neodstranil a že je zadaný identifikátor URI správný. Po otevření identifikátoru URI v prohlížeči by se mělo zobrazit uživatelské rozhraní Ambari. Pokud je cluster ve virtuální síti, identifikátor URI by měl být privátním identifikátorem URI. Pokud ho chcete otevřít, použijte virtuální počítač (VM), který je součástí stejné virtuální sítě.
 
@@ -600,7 +600,7 @@ Následující tabulka se vztahuje na Azure Batch.
  
  </br>
 
-- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou této zprávě `A task was canceled.`, vypršel časový limit pro odeslání úlohy.
+- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou této zprávě `A task was canceled.` , vypršel časový limit pro odeslání úlohy.
 
 - **Doporučení**: Tento problém může být buď obecným připojením HDInsight, nebo připojením k síti. Nejdřív potvrďte, že je uživatelské rozhraní HDInsight Ambari dostupné z libovolného prohlížeče. Potom zkontrolujte, zda jsou vaše přihlašovací údaje stále platné.
    
@@ -610,7 +610,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
  </br>
 
-- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou `User admin is locked out in Ambari` nebo `Unauthorized: Ambari user name or password is incorrect`, přihlašovací údaje pro HDInsight jsou nesprávné nebo vypršela jejich platnost.
+- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou `User admin is locked out in Ambari` nebo `Unauthorized: Ambari user name or password is incorrect` , přihlašovací údaje pro HDInsight jsou nesprávné nebo vypršela jejich platnost.
 
 - **Doporučení**: Opravte přihlašovací údaje a znovu nasaďte propojenou službu. Nejdřív ověřte, že přihlašovací údaje fungují v HDInsight tím, že otevřete identifikátor URI clusteru v jakémkoli prohlížeči a zkusíte se přihlásit. Pokud přihlašovací údaje nefungují, můžete je resetovat z Azure Portal.
 
@@ -618,12 +618,12 @@ Následující tabulka se vztahuje na Azure Batch.
 
  </br>
 
-- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou této `502 - Web server received an invalid response while acting as a gateway or proxy server`, služba HDInsight tuto chybu vrátí.
+- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou `502 - Web server received an invalid response while acting as a gateway or proxy server` této, služba HDInsight tuto chybu vrátí.
 
 - **Doporučení**: při vypnutí procesu serveru Ambari často dochází k chybě 502. Služby Ambari můžete restartovat restartováním hlavního uzlu.
 
     1. Připojte se k jednomu z vašich uzlů v HDInsight pomocí SSH.
-    1. Identifikujte aktivního hostitele hlavního uzlu spuštěním `ping headnodehost`.
+    1. Identifikujte aktivního hostitele hlavního uzlu spuštěním `ping headnodehost` .
     1. Připojte se k aktivnímu hlavnímu uzlu jako server Ambari umístěný na aktivním hlavním uzlu pomocí SSH. 
     1. Restartujte aktivní hlavní uzel.
 
@@ -635,11 +635,11 @@ Následující tabulka se vztahuje na Azure Batch.
 
  </br>
 
-- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou `Unable to service the submit job request as templeton service is busy with too many submit job requests` nebo `Queue root.joblauncher already has 500 applications, cannot accept submission of application`, je příliš mnoho úloh odesíláno do HDInsight současně.
+- **Příčina**: Pokud chybová zpráva obsahuje zprávu podobnou `Unable to service the submit job request as templeton service is busy with too many submit job requests` nebo, je `Queue root.joblauncher already has 500 applications, cannot accept submission of application` příliš mnoho úloh odesíláno do HDInsight současně.
 
 - **Doporučení**: Omezte počet souběžných úloh odeslaných do HDInsight. Pokud jsou úlohy odesílány stejnou aktivitou, přečtěte si téma Data Factory souběžnosti aktivity. Změna aktivačních událostí, aby souběžné běhy byly rozloženy v průběhu času.
 
-   Informace o [HDInsight documentation](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors) tom, `templeton.parallellism.job.submit` jak Chyba naznačuje, najdete v dokumentaci k HDInsight.
+   Informace o tom, jak Chyba naznačuje, najdete v [dokumentaci k HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors) `templeton.parallellism.job.submit` .
 
 ### <a name="error-code-2301"></a>Kód chyby: 2301
 
@@ -649,7 +649,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Doporučení**: k této chybě dochází, když ADF neobdrží odpověď z clusteru HDInsight při pokusu o vystavení stavu spuštěné úlohy. Tento problém může být v samotném clusteru nebo služba HDInsight může mít výpadek.
 
-   Další pomoc najdete v dokumentaci pro https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guideřešení potíží s HDInsight na adrese nebo kontaktujte podporu.
+   Další pomoc najdete v dokumentaci pro řešení potíží s HDInsight na adrese https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide nebo kontaktujte podporu.
 
 ### <a name="error-code-2302"></a>Kód chyby: 2302
 
@@ -667,9 +667,9 @@ Následující tabulka se vztahuje na Azure Batch.
  1. Spusťte ukázkovou úlohu testování.
     1. Pokud spustíte stejnou úlohu v back-endu HDInsight, ověřte, že je úspěšná. Příklady spuštění ukázek najdete v tématu [spuštění příkladů MapReduce obsažených v HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux) . 
  1. Pokud se úloha ve službě HDInsight stále nezdařila, podívejte se do protokolů a informací o aplikacích, které vám poskytnou podporu:
-    1. Ověřte, zda byla úloha odeslána do PŘÍZe. Pokud se úloha neodeslala do příze `--master yarn`, použijte.
+    1. Ověřte, zda byla úloha odeslána do PŘÍZe. Pokud se úloha neodeslala do příze, použijte `--master yarn` .
     1. Pokud aplikace dokončila provádění, shromážděte čas spuštění a čas ukončení aplikace PŘÍZe. Pokud aplikace nedokončila provádění, shromážděte čas spuštění/čas spuštění.
-    1. Kontrolovat a shromažďovat protokol aplikace pomocí `yarn logs -applicationId <Insert_Your_Application_ID>`.
+    1. Kontrolovat a shromažďovat protokol aplikace pomocí `yarn logs -applicationId <Insert_Your_Application_ID>` .
     1. Zaškrtněte a Shromážděte protokoly příz Správce prostředků v `/var/log/hadoop-yarn/yarn` adresáři.
     1. Pokud tyto kroky nestačí k vyřešení problému, obraťte se na tým Azure HDInsight pro podporu a poskytněte výše uvedené protokoly a časová razítka.
 
@@ -689,9 +689,9 @@ Následující tabulka se vztahuje na Azure Batch.
  1. Spusťte ukázkovou úlohu testování.
     1. Pokud spustíte stejnou úlohu v back-endu HDInsight, ověřte, že je úspěšná. Příklady spuštění ukázek najdete v tématu [spuštění příkladů MapReduce obsažených v HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-run-samples-linux) . 
  1. Pokud se úloha ve službě HDInsight stále nezdařila, podívejte se do protokolů a informací o aplikacích, které vám poskytnou podporu:
-    1. Ověřte, zda byla úloha odeslána do PŘÍZe. Pokud se úloha neodeslala do příze `--master yarn`, použijte.
+    1. Ověřte, zda byla úloha odeslána do PŘÍZe. Pokud se úloha neodeslala do příze, použijte `--master yarn` .
     1. Pokud aplikace dokončila provádění, shromážděte čas spuštění a čas ukončení aplikace PŘÍZe. Pokud aplikace nedokončila provádění, shromážděte čas spuštění/čas spuštění.
-    1. Kontrolovat a shromažďovat protokol aplikace pomocí `yarn logs -applicationId <Insert_Your_Application_ID>`.
+    1. Kontrolovat a shromažďovat protokol aplikace pomocí `yarn logs -applicationId <Insert_Your_Application_ID>` .
     1. Zaškrtněte a Shromážděte protokoly příz Správce prostředků v `/var/log/hadoop-yarn/yarn` adresáři.
     1. Pokud tyto kroky nestačí k vyřešení problému, obraťte se na tým Azure HDInsight pro podporu a poskytněte výše uvedené protokoly a časová razítka.
 
@@ -801,7 +801,7 @@ Následující tabulka se vztahuje na Azure Batch.
     1. Otevřete uživatelské rozhraní Ambari clusteru HDInsight v prohlížeči a ověřte, jestli jsou přihlašovací údaje správné.
     1. Pokud je cluster v Virtual Network (VNet) a používá se místní prostředí IR, adresa URL HDI musí být privátní adresa URL v virtuální sítě a měla by obsahovat znak-int, který je uvedený za názvem clusteru.
     
-       Například změňte `https://mycluster.azurehdinsight.net/` na `https://mycluster-int.azurehdinsight.net/`. `-int` Všimněte si `mycluster`, ale před`.azurehdinsight.net`
+       Například změňte `https://mycluster.azurehdinsight.net/` na `https://mycluster-int.azurehdinsight.net/` . Všimněte si `-int` `mycluster` , ale před`.azurehdinsight.net`
     1. Pokud je cluster ve virtuální síti, používá se v místním prostředí IR a privátní adresa URL se použila a připojení se ještě nezdařilo, virtuální počítač, na kterém je tento IR nainstalovaný, měl problémy s připojením k HDI. 
     
        Připojte se k virtuálnímu počítači, kde je nainstalováno INFRAČERVENé prostředí, a otevřete uživatelské rozhraní Ambari v prohlížeči. Pro cluster použijte soukromou adresu URL. Toto připojení by mělo fungovat z prohlížeče. Pokud ne, požádejte o další pomoc tým podpory HDInsight.
@@ -1016,7 +1016,7 @@ Použití **Fiddler** k vytvoření relace HTTP monitorované webové aplikace:
 
 1. Stáhněte, nainstalujte a otevřete [Fiddler](https://www.telerik.com/download/fiddler).
 
-1. Pokud vaše webová aplikace používá protokol HTTPS, použijte **možnost nástroje** > **Fiddler možnosti** > **https**.
+1. Pokud vaše webová aplikace používá protokol HTTPS, použijte **Tools**  >  **možnost nástroje Fiddler možnosti**  >  **https**.
 
    1. Na kartě HTTPS vyberte obě **zachytávání https připojení** i **dešifrování přenosu HTTPS**.
 
@@ -1024,9 +1024,9 @@ Použití **Fiddler** k vytvoření relace HTTP monitorované webové aplikace:
 
 1. Pokud vaše aplikace používá certifikáty TLS/SSL, přidejte do svého zařízení certifikát Fiddler.
 
-   Přejít na: **nástroje** > **Fiddler možnosti** > **https** > **Akce** > **exportovat kořenový certifikát do počítače**.
+   Přejít na: **nástroje**  >  **Fiddler možnosti**  >  **https**  >  **Akce**  >  **exportovat kořenový certifikát do počítače**.
 
-1. Vypněte zachytávání pomocí přechodu na **File** > **přenos**souborů. Nebo stiskněte klávesu **F12**.
+1. Vypněte zachytávání pomocí přechodu na **File**  >  **přenos**souborů. Nebo stiskněte klávesu **F12**.
 
 1. Vymažte mezipaměť prohlížeče, aby se odstranily všechny položky v mezipaměti, a je nutné je znovu stáhnout.
 
@@ -1042,7 +1042,7 @@ Použití **Fiddler** k vytvoření relace HTTP monitorované webové aplikace:
 
 1. Zapněte znovu zachytávání provozu a dokončete problematickou transakci na stránce.
 
-1. Přejít na: **soubor** > **Uložit** > **všechny relace**.
+1. Přejít na: **soubor**  >  **Uložit**  >  **všechny relace**.
 
 Další informace najdete v tématu [Začínáme s Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler).
 
@@ -1055,4 +1055,4 @@ Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 * [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
 * [Videa Azure](https://azure.microsoft.com/resources/videos/index/)
-* [Fórum MSDN](https://social.msdn.microsoft.com/Forums/home)
+* [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)

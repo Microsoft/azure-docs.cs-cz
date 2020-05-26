@@ -7,12 +7,12 @@ keywords: dsc, configuration, automation
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: ab9210042439e2199d633577c77429573b71d1be
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 28e8f921fa7620d1fec7dec1788ed769026624d7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711852"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836715"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Konfigurace virtuálního počítače s požadovanou konfigurací stavu
 
@@ -131,7 +131,4 @@ Stav všech uzlů spravovaných konfigurací stavu můžete zobrazit ve svém ú
 V tomto rychlém startu jste povolili virtuální počítač Linux pro konfiguraci stavu, vytvořili konfiguraci pro sadu LAMP a nasadili konfiguraci do virtuálního počítače. Pokud chcete zjistit, jak můžete použít konfiguraci stavu Azure Automation k povolení průběžného nasazování, přejděte k článku:
 
 > [!div class="nextstepaction"]
-> [Průběžné nasazování do virtuálního počítače pomocí DSC a Chocolatey](./automation-dsc-cd-chocolatey.md)
-
-* Další informace o prostředí PowerShell DSC najdete v tématu [Přehled konfigurace požadovaného stavu prostředí PowerShell](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview).
-* Informace o předávání sestav DSC do Azure Monitor protokolů pro vytváření sestav a upozorňování najdete v tématu [předávání sestav DSC do protokolů Azure monitor](automation-dsc-diagnostics.md).
+> [Nastavení průběžného nasazování s využitím Chocolatey](./automation-dsc-cd-chocolatey.md)

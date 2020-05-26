@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261161"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827291"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizace: proveďte změnu ve výchozí konfiguraci.
 Tento článek vás seznámí s postupem, jak provést změny ve výchozí konfiguraci v Azure Active Directory (Azure AD) Connect Sync. Poskytuje kroky pro některé běžné scénáře. S tímto vědomím byste měli být schopni provádět jednoduché změny vlastní konfigurace na základě vašich vlastních obchodních pravidel.
@@ -48,7 +48,7 @@ V dolní části jsou tlačítka pro práci na vybraném pravidle synchronizace.
 Nejběžnějšími změnami jsou toky atributů. Data ve zdrojovém adresáři nemusejí být stejná jako v Azure AD. V příkladu v této části se ujistěte, že zadaný název uživatele je vždy ve *správném případě*.
 
 ### <a name="disable-the-scheduler"></a>Zakázat Plánovač
-[Plánovač](how-to-connect-sync-feature-scheduler.md) se ve výchozím nastavení spouští každých 30 minut. Ujistěte se, že se nespouští při provádění změn a odstraňování potíží s novými pravidly. K dočasnému zakázání plánovače spusťte PowerShell a spusťte `Set-ADSyncScheduler -SyncCycleEnabled $false`příkaz.
+[Plánovač](how-to-connect-sync-feature-scheduler.md) se ve výchozím nastavení spouští každých 30 minut. Ujistěte se, že se nespouští při provádění změn a odstraňování potíží s novými pravidly. K dočasnému zakázání plánovače spusťte PowerShell a spusťte příkaz `Set-ADSyncScheduler -SyncCycleEnabled $false` .
 
 ![Zakázat Plánovač](./media/how-to-connect-sync-change-the-configuration/schedulerdisable.png)  
 
@@ -107,7 +107,7 @@ Z nabídky **Start** otevřete **synchronizační službu** . Kroky v této čá
 ![Vyhledávání Metaverse](./media/how-to-connect-sync-change-the-configuration/mvsearch.png)  
 
 ### <a name="enable-the-scheduler"></a>Povolit Plánovač
-Pokud je vše podle očekávání, můžete znovu povolit Plánovač. Z PowerShellu spusťte `Set-ADSyncScheduler -SyncCycleEnabled $true`.
+Pokud je vše podle očekávání, můžete znovu povolit Plánovač. Z PowerShellu spusťte `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 ## <a name="other-common-attribute-flow-changes"></a>Další běžné změny toku atributů
 Předchozí část popisuje, jak provést změny toku atributů. V této části jsou k dispozici některé další příklady. Postup vytvoření pravidla synchronizace je zkrácený, ale můžete najít kompletní kroky v předchozí části.
@@ -200,7 +200,7 @@ Ve výchozím nastavení není atribut UserType povolen pro synchronizaci, proto
 
 - Azure AD přijímá jenom dvě hodnoty atributu UserType: **Member** a **Host**.
 - Pokud atribut UserType není povolený pro synchronizaci v Azure AD Connect, budou uživatelé Azure AD, kteří vytvořili prostřednictvím synchronizace adresářů, mít atribut UserType nastavený na **Member**.
-- Azure AD nepovoluje, aby byl atribut UserType u stávajících uživatelů služby Azure AD změněn pomocí Azure AD Connect. Dá se nastavit jenom během vytváření uživatelů Azure AD a jejich [změny prostřednictvím PowerShellu](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
+- Před verzí 1.5.30.0 služba Azure AD nepovolila změnu atributu UserType u stávajících uživatelů Azure AD pomocí Azure AD Connect. Ve starších verzích je možné ji nastavit jenom během vytváření uživatelů Azure AD a [měnit přes PowerShell](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0).
 
 Než povolíte synchronizaci atributu UserType, musíte se nejdřív rozhodnout, jak je atribut odvozený z místní služby Active Directory. Níže jsou uvedené nejběžnější přístupy:
 
@@ -208,9 +208,9 @@ Než povolíte synchronizaci atributu UserType, musíte se nejdřív rozhodnout,
 
     Pokud zvolíte tento přístup, musíte zajistit, aby byl označený atribut vyplněný správnou hodnotou pro všechny existující uživatelské objekty v místní službě Active Directory, které jsou synchronizované se službou Azure AD před povolením synchronizace atributu UserType.
 
-- Alternativně můžete odvodit hodnotu atributu UserType z jiných vlastností. Například chcete synchronizovat všechny uživatele jako **hosta** , pokud jejich místní atribut AD userPrincipalName končí částí <em>@partners.fabrikam123.org</em>domény. 
+- Alternativně můžete odvodit hodnotu atributu UserType z jiných vlastností. Například chcete synchronizovat všechny uživatele jako **hosta** , pokud jejich místní atribut AD userPrincipalName končí částí domény <em>@partners.fabrikam123.org</em> . 
 
-    Jak už bylo uvedeno výše, Azure AD Connect nepovoluje změnu atributu UserType u stávajících uživatelů Azure AD pomocí Azure AD Connect. Proto je nutné zajistit, aby byla logika, kterou jste určili, konzistentní s tím, jak je atribut UserType již nakonfigurován pro všechny existující uživatele Azure AD ve vašem tenantovi.
+    Jak již bylo zmíněno dříve, starší verze Azure AD Connect nepovolují, aby byl atribut UserType u stávajících uživatelů služby Azure AD změněn pomocí Azure AD Connect. Proto je nutné zajistit, aby byla logika, kterou jste určili, konzistentní s tím, jak je atribut UserType již nakonfigurován pro všechny existující uživatele Azure AD ve vašem tenantovi.
 
 Postup, jak povolit synchronizaci atributu UserType, může být shrnut jako:
 
@@ -229,8 +229,8 @@ Postup, jak povolit synchronizaci atributu UserType, může být shrnut jako:
 Abyste se vyhnuli exportu nezamýšlených změn do služby Azure AD, zajistěte, aby během aktualizace synchronizačních pravidel probíhala žádná synchronizace. Zakázání integrovaného plánovače synchronizace:
 
  1. Spusťte relaci PowerShellu na Azure AD Connectovém serveru.
- 2. Zakažte naplánovanou synchronizaci spuštěním rutiny `Set-ADSyncScheduler -SyncCycleEnabled $false`.
- 3. Otevřete Synchronization Service Manager kliknutím na **Spustit** > **synchronizační službu**.
+ 2. Zakažte naplánovanou synchronizaci spuštěním rutiny `Set-ADSyncScheduler -SyncCycleEnabled $false` .
+ 3. Otevřete Synchronization Service Manager kliknutím na **Spustit**  >  **synchronizační službu**.
  4. Přejít na kartu **operace** a potvrďte, že neexistuje žádná operace se stavem *probíhá.*
 
 ### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Krok 2: Přidání zdrojového atributu do schématu místního AD Connector
@@ -257,14 +257,14 @@ Ve výchozím nastavení atribut UserType není importován do Azure AD Connecth
 ### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>Krok 4: vytvoření pravidla příchozí synchronizace pro tok hodnoty atributu z místní služby Active Directory
 Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přecházet ze zdrojového atributu z místní služby Active Directory do úložiště metaverse:
 
-1. Kliknutím na **Spustit** > **Editor pravidel synchronizace**otevřete Editor pravidel synchronizace.
+1. Kliknutím na **Spustit**  >  **Editor pravidel synchronizace**otevřete Editor pravidel synchronizace.
 2. Nastavte **směr** vyhledávacího filtru na **příchozí**.
 3. Kliknutím na tlačítko **Přidat nové pravidlo** vytvoříte nové příchozí pravidlo.
 4. Na kartě **Popis** zadejte následující konfiguraci:
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Název | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
+    | Name | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
     | Popis | *Zadejte popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby AD* |  |
     | Typ připojeného systémového objektu | **Uživatel** |  |
@@ -276,7 +276,7 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
-    | adminDescription | NOTSTARTWITH | Uživatelský\_ |
+    | adminDescription | NOTSTARTWITH | Uživatel\_ |
 
     Filtr oboru určuje, které místní objekty služby AD toto pravidlo příchozí synchronizace používá. V tomto příkladu používáme stejný filtr pro vytváření oborů, který se používá v nástroji *ve službě AD – společné* pravidlo pro synchronizaci předem, které brání použití synchronizačního pravidla pro uživatelské objekty vytvořené prostřednictvím funkce zpětného zápisu uživatelů Azure AD. Je možné, že budete muset upravit filtr oboru podle nasazení Azure AD Connect.
 
@@ -286,11 +286,11 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
     | --- | --- | --- | --- | --- |
     | Direct | UserType | extensionAttribute1 | Není zaškrtnuto | Aktualizace |
 
-    V jiném příkladu chcete odvodit hodnotu atributu UserType z jiných vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut AD userPrincipalName končí částí <em>@partners.fabrikam123.org</em>domény. Můžete implementovat výraz podobný tomuto:
+    V jiném příkladu chcete odvodit hodnotu atributu UserType z jiných vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut AD userPrincipalName končí částí domény <em>@partners.fabrikam123.org</em> . Můžete implementovat výraz podobný tomuto:
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Typ sloučení |
     | --- | --- | --- | --- | --- |
-    | Expression | UserType | IIF (nepřítomné ([userPrincipalName]), IIF (CBool (InStr ([userPrincipalName]), "@partners.fabrikam123.org") = 0), "Member", "Guest"), chyba ("userPrincipalName není k dispozici pro určení usertype")) | Není zaškrtnuto | Aktualizace |
+    | Výraz | UserType | IIF (nepřítomné ([userPrincipalName]), IIF (CBool (InStr ([userPrincipalName]), " @partners.fabrikam123.org ") = 0), "Member", "Guest"), chyba ("userPrincipalName není k dispozici pro určení usertype")) | Není zaškrtnuto | Aktualizace |
 
 7. Kliknutím na tlačítko **Přidat** vytvořte pravidlo pro příchozí spojení.
 
@@ -306,7 +306,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
-    | Název | *Zadat název* | Například pro *AAD – uživatel – usertype* |
+    | Name | *Zadat název* | Například pro *AAD – uživatel – usertype* |
     | Popis | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor AAD.* ||
     | Typ připojeného systémového objektu | **Uživatel** ||
@@ -389,7 +389,7 @@ Pomocí následujících kroků můžete ověřit změny, a to ručním spuště
 Opětovné povolení integrovaného plánovače synchronizace:
 
 1. Spusťte relaci PowerShellu.
-2. Spusťte rutinu `Set-ADSyncScheduler -SyncCycleEnabled $true`opětovným povolením naplánované synchronizace.
+2. Spusťte rutinu opětovným povolením naplánované synchronizace `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
 
 ## <a name="next-steps"></a>Další kroky

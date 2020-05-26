@@ -5,13 +5,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/18/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 2c2d08cc17d041e85f28f32b37171daa503422b9
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: dbc984b02272dfc2685974728177a9cd0231e934
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715090"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806463"
 ---
-V tomto rychlém startu použijete nástroj SPX z příkazového řádku k převedení řeči ze vstupu mikrofonu na text ve více dalších jazycích.
-Po jednorázové konfiguraci vám nástroj SPX umožní přeložit řeč pomocí příkazů z příkazového řádku.
+V tomto rychlém startu použijete rozhraní příkazového řádku (CLI) z příkazového řádku k převedení řeči ze vstupu mikrofonu na text ve více dalších jazycích.
+Po jednorázové konfiguraci vám funkce rozpoznávání řeči umožní přeložit řeč pomocí příkazů z příkazového řádku.
 
