@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11902e363428a45bc158a99d251343e13b62540d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72598326"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836426"
 ---
 # <a name="azure-media-services-community"></a>Komunita Azure Media Services  
 
@@ -40,7 +40,7 @@ Tato Azure Media Servicesová stránka komunity (AMS) popisuje různé způsoby,
 
 ### <a name="twitter"></a>Twitter
 
-Pomocí popisovače [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitteru kontaktujte nás nebo sledujte aktualizace na Twitteru. Pomocí popisovače [@AzureSupport](https://twitter.com/azuresupport) Twitteru můžete požádat o podporu na Twitteru.  
+Pomocí [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) popisovače Twitteru kontaktujte nás nebo sledujte aktualizace na Twitteru. Pomocí [@AzureSupport](https://twitter.com/azuresupport) popisovače Twitteru můžete požádat o podporu na Twitteru.  
 
 ### <a name="online-forums"></a>Online fóra
 
@@ -48,7 +48,7 @@ Následující fóra se dají použít k dotazování otázek týkajících se a
 
 V současné době je MSDN Media Servicesm hlavním komunitním fóru týmu.
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
 
 Tým také sleduje otázky označené Stack Overflow pomocí Azure-Media-Services.
 

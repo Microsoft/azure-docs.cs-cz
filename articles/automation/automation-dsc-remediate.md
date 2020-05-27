@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: 29322ae244491e58b783745b42323455fa2752b2
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ff785bf3ace7c65f83fe8e505f0544edd24776d8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712957"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836851"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>Napravit servery konfigurace stavu nesplňujících požadavky Azure Automation
 
@@ -43,6 +43,5 @@ U hybridních uzlů můžete opravit posun pomocí skriptů Pythonu. Viz [prová
 
 ## <a name="next-steps"></a>Další kroky
 
-- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
-- Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [průběžné nasazování pomocí konfigurace Azure Automation stavu a čokolády](automation-dsc-cd-chocolatey.md).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- Příklad použití konfigurace stavu Azure Automation v kanálu nepřetržitého nasazení najdete v tématu [Nastavení průběžného nasazování s čokoládou](automation-dsc-cd-chocolatey.md).

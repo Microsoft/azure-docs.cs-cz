@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: a09f995f4d022c47b573281183d07b7973215494
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ef7208596ead8f7d3903bb614ccb980df782e581
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778268"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837892"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Přihlášení k portálu LUIS
 
 Nový uživatel, který má LUIS, musí provést tento postup:
 
-1. Přihlaste se k [portálu Luis](https://www.luis.ai), vyberte svou zemi/oblast a vyjádřete souhlas s podmínkami použití. Pokud se místo toho zobrazí **Moje aplikace** , prostředek Luis už existuje a před vytvořením aplikace byste ho měli přeskočit.
+1. Přihlaste se k [portálu Luis](https://www.luis.ai), vyberte svou zemi/oblast a vyjádřete souhlas s podmínkami použití. Pokud se místo toho zobrazí **Moje aplikace** , prostředek Luis už existuje a před vytvořením aplikace byste ho měli přeskočit. Podporované oblasti najdete v [oblastech pro vytváření a publikování a v přidružených klíčích](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions).
 
 1. Vyberte **vytvořit prostředek Azure** a pak vyberte **vytvořit prostředek pro vytváření obsahu, do kterého chcete své aplikace migrovat.**
 

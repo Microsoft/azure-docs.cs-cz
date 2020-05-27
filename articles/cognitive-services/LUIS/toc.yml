@@ -181,6 +181,8 @@
       href: luis-get-started-get-intent-from-browser.md
     - name: Migrace
       items:
+        - name: Přehled
+          href: migration.md
         - name: Migrace ze složené entity
           href: migrate-from-composite-entity.md
         - name: Migrace na prostředek vytváření

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a55515be478781a2f2448924c209a3348ae462c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd2440ecf04bb4481b5497317e0acd2641710ccf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133313"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836868"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s Azure Stream Analytics dotazy
 
@@ -77,11 +77,11 @@ Pak můžete tento dotaz přepsat tímto způsobem:
 
 Nyní spusťte úlohu znovu a nechte ji běžet po dobu několika minut. Pak proveďte dotazování temp1 a Temp2 pomocí Průzkumníka cloudu sady Visual Studio a vytvořte následující tabulky:
 
-**Tabulka temp1 se**
-vybere do tabulky temp1![Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+**tabulka temp1** 
+ ![ VYBRAT do tabulky temp1 Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
-**Tabulka Temp2 se**
-vybere do tabulky Temp2![Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+**tabulka Temp2** 
+ ![ VYBRAT do tabulky Temp2 Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
 Jak vidíte, temp1 a Temp2 obojí mají data a sloupec Name se v Temp2 vyplní správně. Protože však ve výstupu stále nejsou žádná data, je něco špatného:
 
@@ -101,9 +101,9 @@ Tentokrát se data ve výstupu naformátují a vyplní podle očekávání.
 
 ![VYBRAT do konečné tabulky Stream Analytics dotaz](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
-Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 

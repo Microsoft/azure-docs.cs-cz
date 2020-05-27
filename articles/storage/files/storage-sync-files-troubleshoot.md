@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 062fa867115ea90dd129cac9c71ac6d9df6f3de2
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 39106f863352061cdaa583bde96f50d3f91a07e9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725852"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836511"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
 
 Tento článek je navržený tak, aby pomohl řešit problémy, se kterými se můžete setkat s nasazením Azure File Sync. Popisujeme také, jak shromažďovat důležité protokoly ze systému, pokud je potřeba hlubší zkoumání problému. Pokud nevidíte odpověď na svoji otázku, můžete nás kontaktovat prostřednictvím následujících kanálů (v pořadí eskalace):
 
-1. [Azure Storage Fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
+1. [Microsoft Q&stránku s otázkou pro Azure Storage](https://docs.microsoft.com/answers/products/azure?product=storage).
 2. [Soubory Azure ve službě UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
 3. podpora Microsoftu. Chcete-li vytvořit novou žádost o podporu, v Azure Portal na kartě **help** klikněte na tlačítko **pomoc a podpora** a pak vyberte **Nová žádost o podporu**.
 
@@ -357,7 +357,7 @@ Následující tabulka obsahuje všechny znaky Unicode, které Azure File Sync j
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (desetinné číslo)** | -2147023673 | 
 | **Text chyby** | ERROR_CANCELLED |
-| **Požadována náprava** | No |
+| **Požadována náprava** | Ne |
 
 Relace synchronizace mohou selhat z různých důvodů, včetně restartování nebo aktualizace serveru, snímků služby VSS atd. I když se tato chyba zdá, že vyžaduje následnou instalaci, je bezpečné tuto chybu ignorovat, pokud netrvá v průběhu několika hodin.
 
@@ -379,7 +379,7 @@ Relace synchronizace mohou selhat z různých důvodů, včetně restartování 
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (desetinné číslo)** | -2134376372 |
 | **Text chyby** | ECS_E_USER_REQUEST_THROTTLED |
-| **Požadována náprava** | No |
+| **Požadována náprava** | Ne |
 
 Není vyžadována žádná akce; Server se znovu pokusí. Pokud tato chyba trvá několik hodin, vytvořte žádost o podporu.
 
@@ -390,7 +390,7 @@ Není vyžadována žádná akce; Server se znovu pokusí. Pokud tato chyba trv�
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (desetinné číslo)** | -2134364043 |
 | **Text chyby** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
-| **Požadována náprava** | No |
+| **Požadována náprava** | Ne |
 
 Nevyžaduje se žádná akce. Když se soubor nebo sdílená složka (koncový bod cloudu) obnoví pomocí Azure Backup, synchronizace se zablokuje, dokud se zjišťování změn nedokončí ve sdílené složce Azure. Detekce změn se spustí okamžitě po dokončení obnovení a délka jejího trvání závisí na počtu souborů ve sdílené složce.
 
@@ -401,7 +401,7 @@ Nevyžaduje se žádná akce. Když se soubor nebo sdílená složka (koncový b
 | **HRESULT** | 0x80041295 |
 | **HRESULT (desetinné číslo)** | -2147216747 |
 | **Text chyby** | SYNC_E_METADATA_INVALID_OPERATION |
-| **Požadována náprava** | No |
+| **Požadována náprava** | Ne |
 
 K této chybě obvykle dochází v případě, že aplikace zálohování vytvoří snímek VSS a databáze synchronizace se uvolní. Pokud tato chyba trvá několik hodin, vytvořte žádost o podporu.
 
@@ -570,7 +570,7 @@ K této chybě dochází v případě, že je sdílená složka Azure nepřístu
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (desetinné číslo)** | -2134375911 |
 | **Text chyby** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **Požadována náprava** | No |
+| **Požadována náprava** | Ne |
 
 Tato chyba se obvykle vyřeší sama a může k ní dojít v následujících případech:
 
@@ -704,7 +704,7 @@ K této chybě dochází kvůli zaplnění svazku. K této chybě obvykle dochá
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (desetinné číslo)** | -2134364145 |
 | **Text chyby** | ECS_E_REPLICA_NOT_READY |
-| **Požadována náprava** | No |
+| **Požadována náprava** | Ne |
 
 K této chybě dochází, protože koncový bod cloudu byl vytvořen s obsahem již existujícím ve sdílené složce Azure. Než povolíte, aby koncový bod serveru mohl pokračovat v počáteční synchronizaci, Azure File Sync musí zkontrolovat sdílenou složku Azure pro veškerý obsah.
 
@@ -761,7 +761,7 @@ K této chybě dochází, protože načtená verze ovladače filtru vrstvení cl
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (desetinné číslo)** | -2134376373 |
 | **Text chyby** | ECS_E_SERVICE_UNAVAILABLE |
-| **Požadována náprava** | No |
+| **Požadována náprava** | Ne |
 
 K této chybě dochází kvůli nedostupnosti služby Synchronizace souborů Azure. Tato chyba se automaticky vyřeší, jakmile bude služba Synchronizace souborů Azure opět dostupná.
 
@@ -772,7 +772,7 @@ K této chybě dochází kvůli nedostupnosti služby Synchronizace souborů Azu
 | **HRESULT** | 0x80131500 |
 | **HRESULT (desetinné číslo)** | -2146233088 |
 | **Text chyby** | COR_E_EXCEPTION |
-| **Požadována náprava** | No |
+| **Požadována náprava** | Ne |
 
 K této chybě dochází, protože synchronizace selhala kvůli výjimce. Pokud chyba trvá několik hodin, vytvořte prosím žádost o podporu.
 
@@ -794,7 +794,7 @@ K této chybě dochází, protože došlo k převzetí služeb účtu úložišt
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (desetinné číslo)** | -2134375922 |
 | **Text chyby** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **Požadována náprava** | No |
+| **Požadována náprava** | Ne |
 
 K této chybě dochází kvůli internímu problému s databází synchronizace. Tato chyba se automaticky vyřeší při opakování synchronizace. Pokud tato chyba trvá déle, vytvořte žádost o podporu a budeme vás kontaktovat, abychom vám pomohli tento problém vyřešit.
 
@@ -878,7 +878,7 @@ K této chybě dochází, protože Azure File Sync nepodporuje přesměrování 
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (desetinné číslo)** | -2134364027 |
 | **Text chyby** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
-| **Požadována náprava** | No |
+| **Požadována náprava** | Ne |
 
 K této chybě dojde, když operace přijímání dat překročí časový limit. Tuto chybu je možné ignorovat, pokud probíhá synchronizace (AppliedItemCount je větší než 0). Přečtěte si téma [návody sledování průběhu aktuální relace synchronizace?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 

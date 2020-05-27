@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/24/2020
-ms.openlocfilehash: 10b53da1ef277d7a3d6ab7c850192ce8f08ded68
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 05/22/2020
+ms.openlocfilehash: 1418b26a2a498c43ff61f42b2761c59cbca5d0f4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712668"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837140"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Vytvoření účtu Automation pomocí šablony Azure Resource Manager
 
@@ -26,6 +26,8 @@ Pomocí [Azure Resource Manager šablon](../azure-resource-manager/templates/tem
 
 >[!NOTE]
 >Vytvoření účtu Automation spustit jako není podporované, když používáte šablonu Azure Resource Manager. Pokud chcete vytvořit účet Spustit jako ručně z portálu nebo pomocí PowerShellu, přečtěte si téma [Správa účtů spustit jako](manage-runas-account.md).
+
+Po dokončení těchto kroků je potřeba [nakonfigurovat nastavení diagnostiky](automation-manage-send-joblogs-log-analytics.md) pro váš účet Automation, aby se odesílaly datové proudy úloh Runbooku do propojeného Log Analytics pracovního prostoru. 
 
 ## <a name="api-versions"></a>Verze rozhraní API
 
@@ -310,6 +312,4 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření runbooku v PowerShellu](automation-first-runbook-textual-powershell.md)
-* [Vytvoření Runbooku pracovního postupu PowerShellu](automation-first-runbook-textual.md)
-* [Vytvoření runbooku v Pythonu](automation-first-runbook-textual-python2.md)
+Pokud chcete dopředt streamování stavu a úloh Runbooku do propojeného pracovního prostoru Log Analytics, přečtěte si [data o úlohách přeposlání Azure Automation na Azure monitor protokoly](automation-manage-send-joblogs-log-analytics.md). Tím se nakonfiguruje nastavení diagnostiky účtu Automation pomocí příkazů Azure PowerShell, aby se dokončila integrace pro odesílání protokolů do pracovního prostoru pro účely analýzy. 

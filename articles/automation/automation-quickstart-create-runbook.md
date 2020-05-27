@@ -6,12 +6,12 @@ ms.date: 02/05/2019
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: a784ddbc2ab1298bec3e2dc21469785163d7a228
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0717a7ac3cc663ff68ba96864aa5d37732337ca5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711988"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836732"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Vytvoření runbooku Azure Automation
 
@@ -98,4 +98,4 @@ Pokud už runbook nepotřebujete, odstraňte ho. Provedete to tak, že v seznamu
 V rámci tohoto rychlého startu jste vytvořili, upravili, otestovali a publikovali runbook a spustili úlohu runbooku. Další informace o runboocích Automation najdete v článku věnovaném různým typům runbooků, které můžete vytvářet a používat ve službě Automation.
 
 > [!div class="nextstepaction"]
-> [Návod pro službu Automation – Typy runbooků](./automation-runbook-types.md)
+> [Azure Automation typy runbooků](./automation-runbook-types.md)

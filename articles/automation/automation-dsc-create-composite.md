@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 99fd7b2d0581b3eda97ec6fadeb43b55a3ad2bf0
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: b3a49fac5600e6338d5fb56281a3360f0abaa39a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711325"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836970"
 ---
-# <a name="convert-configurations-to-composite-resources-for-azure-automation-state-configuration"></a>Převést konfigurace na složené prostředky pro konfiguraci stavu Azure Automation
+# <a name="convert-configurations-to-composite-resources"></a>Převod konfigurací na složené prostředky
 
 > Platí pro: Windows PowerShell 5,1
 
@@ -57,6 +57,6 @@ Chcete-li se pokusit automatizovat vytváření složených prostředků pro DSC
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview)
-- [Prostředky DSC](/powershell/scripting/dsc/resources/resources)
-- [Konfigurace místní Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- Informace o prostředí PowerShell DSC najdete v tématu [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview).
+- Přečtěte si o prostředcích PowerShellu v [prostředcích DSC](/powershell/scripting/dsc/resources/resources).
+- Podrobnosti o konfiguraci místních Configuration Manager najdete v tématu [Konfigurace místní Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig).

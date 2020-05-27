@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f6773d9f2210fd1b0342c9586d89155082bf8ff
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: fbd721bc54ce2de6b7923b0f582c53ffc7da1a73
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711444"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837021"
 ---
 # <a name="configure-data-at-scale-for-azure-automation-state-configuration"></a>Konfigurace škálovatelných dat pro konfiguraci stavu Azure Automation
 
@@ -51,6 +51,6 @@ Pokud si chcete vyzkoušet datum, navštivte [Galerie prostředí PowerShell](ht
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview)
-- [Prostředky DSC](/powershell/scripting/dsc/resources/resources)
-- [Konfigurace místní Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- Informace o prostředí PowerShell DSC najdete v tématu [Přehled konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview).
+- Přečtěte si o prostředcích PowerShellu v [prostředcích DSC](/powershell/scripting/dsc/resources/resources).
+- Podrobnosti o konfiguraci místních Configuration Manager najdete v tématu [Konfigurace místní Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig).

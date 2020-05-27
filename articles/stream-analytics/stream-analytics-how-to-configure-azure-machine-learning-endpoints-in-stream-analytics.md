@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 239955025f21d8679cbcf0bbfe68f9070f0217c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5357397817b9c6712bdb2e35490e2cdd403d13c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426202"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836460"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Integrace Azure Machine Learning Studio (Classic) v Stream Analytics (Preview)
 Stream Analytics podporuje uživatelsky definované funkce, které volají koncové body Azure Machine Learning Studio (Classic). Podpora REST API pro tuto funkci je podrobně popsána v [knihovně Stream Analytics REST API](https://msdn.microsoft.com/library/azure/dn835031.aspx). Tento článek poskytuje dodatečné informace potřebné k úspěšné implementaci této funkce v Stream Analytics. V [tomto](stream-analytics-machine-learning-integration-tutorial.md)kurzu je také publikovaný a dostupný.
@@ -187,8 +187,8 @@ Nyní se v případě každé události vstupu do systému souborů UDF (zde naz
 ```
 
 
-## <a name="get-help"></a>Podpora
-Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+## <a name="get-help"></a>Získání pomoci
+Pokud potřebujete další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)

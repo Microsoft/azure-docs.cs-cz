@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 5b4f016b53c6c42831d5f5ae08a30ec8ac176e6e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773368"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836273"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem Oracle Database
 
@@ -122,7 +122,7 @@ Zobrazit všechny triggery a akce definované v Swagger a také zobrazit omezen�
 
 ## <a name="get-some-help"></a>Získat nápovědu
 
-[Fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) je skvělé místo, kde můžete klást otázky, odpovídat na otázky a zjistit, co dělají jiní uživatelé Logic Apps. 
+[Microsoft Q&Stránka s otázkou pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html) je skvělé místo pro pokladení otázek, odpovědi na dotazy a informace o tom, co dělají jiní uživatelé Logic Apps. 
 
 Můžete pomoci vylepšit Logic Apps a konektory hlasováním a odesláním nápadů na [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 
