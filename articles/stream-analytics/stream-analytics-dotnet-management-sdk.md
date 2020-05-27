@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52800f52e72e4aabcc8f6ebc733443615607f3a3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426262"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835491"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: nastavení a spuštění analytických úloh pomocí rozhraní Azure Stream Analytics API pro .NET
 Naučte se, jak nastavit a spustit analytické úlohy pomocí rozhraní Stream Analytics API pro .NET pomocí sady Management .NET SDK. Nastavte projekt, vytvořte vstupní a výstupní zdroje, transformace a spusťte a zastavte úlohy. Pro úlohy analýzy můžete streamovat data z úložiště objektů BLOB nebo z centra událostí.
@@ -284,8 +284,8 @@ Metoda **Delete** Odstraní úlohu i podkladové dílčí prostředky, včetně 
    streamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, streamingJobName);
    ```
 
-## <a name="get-support"></a>Získání podpory
-Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="get-support"></a>Získat podporu
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 Seznámili jste se se základy používání sady .NET SDK pro vytváření a spouštění analytických úloh. Další informace najdete v následujících článcích:

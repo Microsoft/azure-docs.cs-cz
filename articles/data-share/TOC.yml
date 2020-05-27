@@ -21,7 +21,7 @@
       href: concepts-roles-permissions.md
     - name: Zotavení po havárii
       href: disaster-recovery.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
@@ -53,8 +53,8 @@
       href: /rest/api/datashare
 - name: Zdroje a prostředky
   items:
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataShare'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-share.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: Blog

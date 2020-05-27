@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 4b265bb574895e4728ad93ee25c9dad0da226ea4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60fde4ca1d8aaf47367fcdb4b5dc7c73753b7496
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240303"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834760"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analýza subjektivního hodnocení na Twitteru v reálném čase v Azure Stream Analytics
 
@@ -56,7 +56,7 @@ V této části vytvoříte obor názvů centra událostí a přidáte do tohoto
  
 4. Až se dokončí nasazení oboru názvů, přejděte do skupiny prostředků a v seznamu prostředků Azure Najděte obor názvů centra událostí. 
 
-5. Z nového oboru názvů vyberte ** + &nbsp;centrum událostí**. 
+5. Z nového oboru názvů vyberte ** + &nbsp; centrum událostí**. 
 
 6. Pojmenujte nové centrum událostí *socialtwitter-eh*. Můžete použít jiný název. Pokud to uděláte, poznamenejte si ho, protože ho budete potřebovat později. Pro centrum událostí není nutné nastavovat žádné jiné možnosti.
  
@@ -89,7 +89,7 @@ Než může proces odesílat data do centra událostí, centrum událostí potř
    Endpoint=sb://EVENTHUBS-NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=;EntityPath=socialtwitter-eh
    ```
 
-   Všimněte si, že připojovací řetězec obsahuje několik párů klíč-hodnota oddělených středníky: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey`a `EntityPath`.  
+   Všimněte si, že připojovací řetězec obsahuje několik párů klíč-hodnota oddělených středníky: `Endpoint` , `SharedAccessKeyName` , `SharedAccessKey` a `EntityPath` .  
 
    > [!NOTE]
    > Z důvodu zabezpečení byly části připojovacího řetězce v příkladu odebrány.
@@ -144,7 +144,7 @@ Teď, když jsou události ve službě Twitter streamované v reálném čase, m
 
 1. V Azure Portal přejděte do skupiny prostředků a vyberte **+ Přidat**. Pak vyhledejte **Stream Analytics úlohu** a vyberte **vytvořit**.
 
-2. Pojmenujte `socialtwitter-sa-job` úlohu a zadejte předplatné, skupinu prostředků a umístění.
+2. Pojmenujte úlohu `socialtwitter-sa-job` a zadejte předplatné, skupinu prostředků a umístění.
 
     Je vhodné umístit úlohu a centrum událostí ve stejné oblasti, aby se co nejlépe vyzpůsobilo, a nebudete platit za přenos dat mezi oblastmi.
 
@@ -154,7 +154,7 @@ Teď, když jsou události ve službě Twitter streamované v reálném čase, m
 
 1. V úloze Stream Analytics v nabídce vlevo v části **topologie úlohy**vyberte **vstupy** .
 
-2. ** +Vyberte &nbsp;přidat datový proud** > **centrum událostí**vstupu. Vyplňte **nový vstupní** formulář s následujícími informacemi:
+2. Vyberte ** + &nbsp; přidat datový proud**  >  **centrum událostí**vstupu. Vyplňte **nový vstupní** formulář s následujícími informacemi:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
@@ -205,12 +205,12 @@ V této příručce se naučíte zapisovat agregované události se změnami z d
 
 1. V části **topologie úlohy** v levé navigační nabídce vyberte **výstupy**. 
 
-2. Na stránce **výstupy** klikněte na ** + &nbsp;přidat** a **BLOB Storage/Data Lake Storage Gen2**:
+2. Na stránce **výstupy** klikněte na ** + &nbsp; Přidat** a **BLOB Storage/Data Lake Storage Gen2**:
 
-   * **Alias pro výstup**: použijte název `TwitterStream-Output`. 
+   * **Alias pro výstup**: použijte název `TwitterStream-Output` . 
    * **Možnosti importu**: vyberte **ze svých předplatných možnost vybrat úložiště**.
    * **Účet úložiště**. Vyberte svůj účet úložiště.
-   * **Kontejner**. Vyberte **vytvořit nové** a zadejte `socialtwitter`.
+   * **Kontejner**. Vyberte **vytvořit nové** a zadejte `socialtwitter` .
    
 4. Vyberte **Uložit**.   
 
@@ -224,8 +224,8 @@ Je určen vstup, dotaz a výstup úlohy. Jste připraveni začít úlohu Stream 
 
 3. Na stránce **Spustit úlohu** pro **čas spuštění výstupu úlohy**vyberte **nyní** a pak vyberte **Spustit**.
 
-## <a name="get-support"></a>Získání podpory
-Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="get-support"></a>Získat podporu
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)

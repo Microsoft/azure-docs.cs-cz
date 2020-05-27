@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a5dbdc4baea0973797427672c9171b4bf841086f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a5ef03689a6374dc1cf945a787f9f82b9979a1e0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701385"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834902"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy k různým rozhraním API ve službě Azure Cosmos DB
 
@@ -70,7 +70,7 @@ Pokud s Azure začínáte, můžete si zaregistrovat [bezplatný účet Azure](h
 
 Pokud se chcete zeptat na technický dotaz, můžete publikovat na jedno z těchto dvou fór otázek a odpovědí:
 
-* [Fórum MSDN](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow je nejvhodnější pro otázky týkající se programování. Ujistěte se, že je váš dotaz [v rámci vašeho tématu](https://stackoverflow.com/help/on-topic) [, a uveďte co nejvíce podrobností a vymažte otázku a odpovězte na](https://stackoverflow.com/help/how-to-ask)ně.
 
 Pokud chcete požádat o nové funkce, vytvořte nový požadavek na [uživatelský hlas](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -199,7 +199,7 @@ Ano, protože Azure Cosmos DB je služba RESTful, odkazy na prostředky jsou nem
 
 ### <a name="is-a-local-instance-of-sql-api-available"></a>Je k dispozici místní instance rozhraní SQL API?
 
-Ano. [Emulátor Azure Cosmos DB](local-emulator.md) zajišťuje emulaci služby Cosmos DB s vysokou přesností. Podporuje funkce, které jsou stejné jako Azure Cosmos DB, včetně podpory pro vytváření a dotazování dokumentů JSON, zřizování a škálování kolekcí a spouštění uložených procedur a triggerů. Můžete vyvíjet a testovat aplikace pomocí emulátoru Azure Cosmos DB a nasadit je do Azure v globálním měřítku, a to tak, že pro Azure Cosmos DB provedete jednu změnu konfigurace koncového bodu připojení.
+Yes. [Emulátor Azure Cosmos DB](local-emulator.md) zajišťuje emulaci služby Cosmos DB s vysokou přesností. Podporuje funkce, které jsou stejné jako Azure Cosmos DB, včetně podpory pro vytváření a dotazování dokumentů JSON, zřizování a škálování kolekcí a spouštění uložených procedur a triggerů. Můžete vyvíjet a testovat aplikace pomocí emulátoru Azure Cosmos DB a nasadit je do Azure v globálním měřítku, a to tak, že pro Azure Cosmos DB provedete jednu změnu konfigurace koncového bodu připojení.
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Proč jsou při zobrazení v Průzkumníku dat na portálu dlouhé hodnoty s plovoucí desetinnou čárkou v dokumentu zaokrouhlené.
 

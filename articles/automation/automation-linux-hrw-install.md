@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 599eb527a349278caf2e4e22e9458a9cd2d08d24
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: a6cf348142d694a03da24f32793fc72325701931
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712447"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835219"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -131,4 +131,4 @@ Chcete-li odebrat Hybrid Runbook Worker skupinu počítačů se systémem Linux,
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o tom, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí, najdete v tématu [spouštění Runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
-* Informace o tom, jak řešit potíže s vašimi procesy Hybrid Runbook Worker, najdete v tématu [řešení potíží s hybridními procesy](troubleshoot/hybrid-runbook-worker.md#linux)
+* Informace o tom, jak řešit potíže s procesy Hybrid Runbook Worker, najdete v tématu [řešení potíží s Hybrid Runbook Worker problémy – Linux](troubleshoot/hybrid-runbook-worker.md#linux).

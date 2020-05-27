@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, konfigurace stavu, Správa aktualiz
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 5e9d680e2f7d4a0ed3439d5acb6106fa1415aec1
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712770"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835270"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 
@@ -31,13 +31,13 @@ Automatizace procesů podporuje integraci služeb Azure a dalších veřejných 
 Správa konfigurace v Azure Automation umožňuje přístup ke dvěma funkcím:
 
 * Change Tracking a Inventory
-* Azure Automation State Configuration
+* Služba Azure Automation State Configuration
 
 ### <a name="change-tracking-and-inventory"></a>Change Tracking a Inventory
 
 Change Tracking a inventář kombinuje funkce Change Tracking a Inventory, které vám umožní sledovat změny infrastruktury virtuálních počítačů a serverů. Služba podporuje sledování změn napříč službami, démony, softwarem, Registry a soubory ve vašem prostředí, které vám pomůžou diagnostikovat nechtěné změny a vyvolat výstrahy. Podpora inventáře vám umožní dotazovat se na prostředky v hostovi pro přehlednost v nainstalovaných aplikacích a dalších položkách konfigurace. Podrobnosti o této funkci najdete v tématu [Change Tracking a inventář](change-tracking.md).
 
-### <a name="azure-automation-state-configuration"></a>Azure Automation State Configuration
+### <a name="azure-automation-state-configuration"></a>Služba Azure Automation State Configuration
 
 [Konfigurace stavu Azure Automation](automation-dsc-overview.md) je cloudová funkce pro konfiguraci požadovaného stavu PowerShellu (DSC), která poskytuje služby pro podniková prostředí. Pomocí této funkce můžete spravovat prostředky DSC v Azure Automation a aplikovat konfigurace na virtuální nebo fyzické počítače ze serveru vyžádané replikace DSC v cloudu Azure. 
 
@@ -98,4 +98,3 @@ Ceny spojené s Azure Automation můžete zkontrolovat na stránce s [cenami](ht
 
 > [!div class="nextstepaction"]
 > [Vytvoření účtu Automation](automation-quickstart-create-account.md)
-

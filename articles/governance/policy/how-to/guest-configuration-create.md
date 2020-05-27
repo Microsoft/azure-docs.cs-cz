@@ -3,12 +3,12 @@ title: Postup vytvoření zásad konfigurace hostů pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: d72b9b2dbf4c9f88f94fcfea2a99e6b27fd1fccd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a8231840cc20f03da44d489ae5226e7a0b4e0d48
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647777"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835950"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytvoření zásad konfigurace hostů pro Windows
 
@@ -171,6 +171,9 @@ Můžete také implementovat [koncový bod služby](../../../storage/common/stor
 Vytvořte konfiguraci DSC pro auditování nastavení. Následující příklad skriptu PowerShellu vytvoří konfiguraci s názvem **AuditBitLocker**, importuje modul prostředků **PsDscResources** a použije `Service` prostředek k auditování spuštěné služby. Konfigurační skript se dá spustit z počítače s Windows nebo macOS.
 
 ```powershell
+# Add PSDscResources module to environment
+Install-Module 'PSDscResources'
+
 # Define the DSC configuration and import GuestConfiguration
 Configuration AuditBitLocker
 {

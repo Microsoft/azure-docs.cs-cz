@@ -4,18 +4,18 @@ description: Tento článek obsahuje odpovědi na nejčastější dotazy týkaj�
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 79cee94a0f04cb89aa65f65cde63e48b6f078d2c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592844"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834998"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Language Understanding
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Novinky
+## <a name="whats-new"></a>Co je nového
 
 [Přečtěte si další](whats-new.md) informace o novinkách v Language UNDERSTANDING (Luis).
 
@@ -333,4 +333,4 @@ Videa:
 
 Další informace o LUIS najdete v následujících zdrojích informací:
 * [Stack Overflow dotazy označené pomocí LUIS](https://stackoverflow.com/questions/tagged/luis)
-* [Fórum služby MSDN Language Understanding Intelligent Services (LUIS)](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)
+* [Microsoft Q&Stránka s otázkou pro MSDN Language Understanding Intelligent Services (LUIS)](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)

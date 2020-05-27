@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: d892dc75d4e745912ceaf444b56494a2e0ed2a19
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005253"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834488"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytváření vlastních rozhraní API, která můžete volat z Azure Logic Apps
 
@@ -96,13 +96,13 @@ Pojďme tedy tento vzor cyklického dotazování namapovat zpátky. Pekař před
 
 Tady jsou konkrétní kroky, které má vaše rozhraní API sledovat, a to popsaných v perspektivě rozhraní API:
 
-1. Když rozhraní API vrátí požadavek HTTP na spuštění práce, okamžitě vrátí odpověď HTTP `202 ACCEPTED` s `location` hlavičkou popsanou níže v tomto kroku. Tato odpověď umožňuje, aby modul Logic Apps ví, že vaše rozhraní API získalo požadavek, přijalo datovou část požadavku (vstup dat) a právě zpracovává. 
+1. Když rozhraní API vrátí požadavek HTTP na spuštění práce, okamžitě vrátí `202 ACCEPTED` odpověď HTTP s `location` hlavičkou popsanou níže v tomto kroku. Tato odpověď umožňuje, aby modul Logic Apps ví, že vaše rozhraní API získalo požadavek, přijalo datovou část požadavku (vstup dat) a právě zpracovává. 
    
-   `202 ACCEPTED` Odpověď by měla obsahovat tyto hlavičky:
+   `202 ACCEPTED`Odpověď by měla obsahovat tyto hlavičky:
    
    * *Požadováno*: `location` záhlaví, které určuje absolutní cestu k adrese URL, kde Logic Apps modul může kontrolovat stav úlohy rozhraní API.
 
-   * *Volitelné*: `retry-after` hlavička, která určuje počet sekund, po které má modul čekat před kontrolou `location` adresy URL pro stav úlohy. 
+   * *Volitelné*: `retry-after` Hlavička, která určuje počet sekund, po které má modul čekat před kontrolou `location` adresy URL pro stav úlohy. 
 
      Ve výchozím nastavení modul kontroluje každých 20 sekund. Pokud chcete zadat jiný interval, zahrňte `retry-after` hlavičku a počet sekund do dalšího cyklického dotazování.
 
@@ -112,7 +112,7 @@ Tady jsou konkrétní kroky, které má vaše rozhraní API sledovat, a to popsa
 
    * Pokud se úloha stále zpracovává, vraťte jinou odpověď HTTP `202 ACCEPTED` , ale se stejnými hlavičkami jako původní odpověď.
 
-Když je tento model rozhraní API, nemusíte dělat nic v definici pracovního postupu aplikace logiky, aby bylo možné pokračovat v kontrole stavu úlohy. Když modul získá odpověď HTTP `202 ACCEPTED` a platnou `location` hlavičku, modul respektuje asynchronní vzor a zkontroluje `location` hlavičku, dokud rozhraní API nevrátí odpověď, která není 202.
+Když je tento model rozhraní API, nemusíte dělat nic v definici pracovního postupu aplikace logiky, aby bylo možné pokračovat v kontrole stavu úlohy. Když modul získá `202 ACCEPTED` odpověď HTTP a platnou `location` hlavičku, modul respektuje asynchronní vzor a zkontroluje `location` hlavičku, dokud rozhraní API nevrátí odpověď, která není 202.
 
 > [!TIP]
 > Příklad asynchronního vzoru najdete [v této ukázce asynchronního řadiče v GitHubu](https://github.com/logicappsio/LogicAppsAsyncResponseSample).
@@ -140,7 +140,7 @@ Návrhář aplikace logiky v současné době nepodporuje zjišťování koncov�
 
 Tady jsou některé další tipy a poznámky:
 
-* Chcete-li předat adresu URL zpětného volání, můžete `@listCallbackUrl()` v případě potřeby použít funkci pracovního postupu v libovolném z předchozích polí.
+* Chcete-li předat adresu URL zpětného volání, můžete v případě `@listCallbackUrl()` potřeby použít funkci pracovního postupu v libovolném z předchozích polí.
 
 * Pokud vlastníte aplikaci logiky i předplacenou službu, nemusíte volat `unsubscribe` koncový bod po volání adresy URL zpětného volání. V opačném případě musí modul runtime Logic Apps volat `unsubscribe` koncový bod k signalizaci, že nejsou očekávána žádná další volání a aby bylo možné vyčistit prostředky na straně serveru.
 
@@ -166,22 +166,22 @@ Tady jsou konkrétní kroky pro aktivační událost cyklického dotazování, k
 | Našla se nová data nebo událost?  | Odpověď rozhraní API | 
 | ------------------------- | ------------ |
 | Found | Vrátí stav HTTP `200 OK` s datovou částí Response (vstup pro další krok). <br/>Tato odpověď vytvoří instanci aplikace logiky a spustí pracovní postup. | 
-| Nenalezeno | Vrátí stav HTTP `202 ACCEPTED` s `location` hlavičkou a `retry-after` hlavičkou. <br/>V `location` případě aktivačních událostí by záhlaví mělo obsahovat `triggerState` také parametr dotazu, což je obvykle "časové razítko". Rozhraní API může pomocí tohoto identifikátoru sledovat čas poslední aktivace aplikace logiky. | 
+| Nenalezeno | Vrátí stav HTTP `202 ACCEPTED` s `location` hlavičkou a `retry-after` hlavičkou. <br/>V případě aktivačních událostí `location` by záhlaví mělo obsahovat také `triggerState` parametr dotazu, což je obvykle "časové razítko". Rozhraní API může pomocí tohoto identifikátoru sledovat čas poslední aktivace aplikace logiky. | 
 ||| 
 
 Pokud třeba chcete pravidelně kontrolovat službu pro nové soubory, můžete vytvořit Trigger cyklického dotazování s tímto chováním:
 
-| Obsahuje `triggerState`požadavek? | Odpověď rozhraní API | 
+| Obsahuje požadavek `triggerState` ? | Odpověď rozhraní API | 
 | -------------------------------- | -------------| 
-| No | Vrátí stav HTTP `202 ACCEPTED` a `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
-| Ano | Ověřte službu pro soubory přidané po `DateTime` pro. `triggerState` | 
+| Ne | Vrátí stav HTTP a `202 ACCEPTED` `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
+| Ano | Ověřte službu pro soubory přidané po `DateTime` pro `triggerState` . | 
 ||| 
 
 | Počet nalezených souborů | Odpověď rozhraní API | 
 | --------------------- | -------------| 
-| Jeden soubor | Vraťte stav HTTP `200 OK` a datovou část obsahu, aktualizujte `triggerState` hodnotu `DateTime` pro vrácený soubor a nastavte `retry-after` interval na 15 sekund. | 
-| Více souborů | V jednom okamžiku vraťte soubor a stav HTTP `200 OK` , aktualizujte `triggerState`a nastavte `retry-after` interval na 0 sekund. </br>Pomocí těchto kroků stroj ví, že jsou k dispozici další data a že by měl modul hned požádat o data z adresy URL v `location` hlavičce. | 
-| Žádné soubory | Vrátí stav HTTP `202 ACCEPTED` , neměňte `triggerState`a nastavte `retry-after` interval na 15 sekund. | 
+| Jeden soubor | Vraťte stav HTTP `200 OK` a datovou část obsahu, aktualizujte `triggerState` `DateTime` hodnotu pro vrácený soubor a nastavte `retry-after` interval na 15 sekund. | 
+| Více souborů | V jednom okamžiku vraťte soubor a `200 OK` stav HTTP, aktualizujte `triggerState` a nastavte `retry-after` interval na 0 sekund. </br>Pomocí těchto kroků stroj ví, že jsou k dispozici další data a že by měl modul hned požádat o data z adresy URL v `location` hlavičce. | 
+| Žádné soubory | Vrátí stav HTTP `202 ACCEPTED` , neměňte `triggerState` a nastavte `retry-after` interval na 15 sekund. | 
 ||| 
 
 > [!TIP]
@@ -204,7 +204,7 @@ Návrhář aplikace logiky v současné době nepodporuje zjišťování koncov�
 
 Tady jsou některé další tipy a poznámky:
 
-* Chcete-li předat adresu URL zpětného volání, můžete `@listCallbackUrl()` v případě potřeby použít funkci pracovního postupu v libovolném z předchozích polí.
+* Chcete-li předat adresu URL zpětného volání, můžete v případě `@listCallbackUrl()` potřeby použít funkci pracovního postupu v libovolném z předchozích polí.
 
 * Aby se zabránilo tomu, že se stejná data zpracovávají víckrát, měla by aktivační událost vyčistit data, která již byla přečtena a předána do aplikace logiky.
 
@@ -224,11 +224,11 @@ Aby vaše vlastní rozhraní API byla dostupná pro ostatní Logic Apps uživate
 
 Pokud chcete, aby vaše vlastní rozhraní API byla dostupná pro všechny uživatele v Logic Apps, automatizaci a aplikacích Microsoft Power, musíte přidat zabezpečení, zaregistrovat vaše rozhraní API jako konektory aplikací logiky a pojmenovat konektory pro [program Microsoft Azure Certified](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
-* Pro konkrétní nápovědu k vlastním rozhraním API [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)kontaktujte.
+* Pro konkrétní nápovědu k vlastním rozhraním API kontaktujte [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 
 * Pokud chcete pomoci při vylepšování Logic Apps, hlasujte nebo zanechte své nápady na [webu zpětné vazby uživatelů Logic Apps](https://aka.ms/logicapps-wish). 
 

@@ -4,7 +4,7 @@
   href: ../introduction.md
 - name: Přehled
   items:
-    - name: Úvod do Azure Data Factory
+    - name: Úvod do služby Azure Data Factory
       href: data-factory-introduction.md
     - name: Koncepty
       items:
@@ -24,7 +24,7 @@
           href: data-factory-copy-data-wizard-tutorial.md
         - name: Visual Studio
           href: data-factory-copy-activity-tutorial-using-visual-studio.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: data-factory-copy-activity-tutorial-using-powershell.md
         - name: REST API
           href: data-factory-copy-activity-tutorial-using-rest-api.md
@@ -33,11 +33,11 @@
     - name: Vytvoření kanálu pro transformaci dat
       href: data-factory-build-your-first-pipeline.md
       items:
-        - name: Azure Portal
+        - name: portál Azure
           href: data-factory-build-your-first-pipeline-using-editor.md
         - name: Visual Studio
           href: data-factory-build-your-first-pipeline-using-vs.md
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: data-factory-build-your-first-pipeline-using-powershell.md
         - name: Šablona Azure Resource Manageru
           href: data-factory-build-your-first-pipeline-using-arm.md
@@ -72,7 +72,7 @@
               href: data-factory-amazon-simple-storage-service-connector.md
             - name: Azure Blob Storage
               href: data-factory-azure-blob-connector.md
-            - name: Databáze Azure Cosmos
+            - name: Azure Cosmos DB
               href: data-factory-azure-documentdb-connector.md
             - name: Azure Data Lake Storage Gen1
               href: data-factory-azure-datalake-connector.md
@@ -159,7 +159,7 @@
       items:
         - name: Šablona Azure Resource Manageru
           href: data-factory-how-to-use-resource-manager-templates.md
-        - name: Ukázky
+        - name: ukázky
           href: data-factory-samples.md
         - name: Funkce a systémové proměnné
           href: data-factory-functions-variables.md
@@ -185,7 +185,7 @@
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?service=data-factory'
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/az.datafactory
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactories.models
@@ -201,8 +201,8 @@
       href: data-factory-customer-case-studies.md
     - name: Postup výuky
       href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Cenová kalkulačka

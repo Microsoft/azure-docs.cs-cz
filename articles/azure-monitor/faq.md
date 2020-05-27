@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: df3e107b111161284c697aa8f619eed96443a893
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4cf851022a2b2b0c9a9781f4d41b40982bf2ad57
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651841"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835338"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -36,7 +36,7 @@ Azure Monitor je povolený okamžik, kdy vytvoříte nové předplatné Azure, a
 Přístup ke všem funkcím Azure Monitor a datům z nabídky **monitor** v Azure Portal. Část **monitorování** v nabídce různých služeb Azure poskytuje přístup ke stejným nástrojům, které obsahují data filtrovaná pro konkrétní prostředek. Data Azure Monitor jsou také přístupná pro celou řadu scénářů pomocí rozhraní příkazového řádku, PowerShellu a REST API.
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Existuje místní verze Azure Monitor?
-Ne. Azure Monitor je škálovatelná cloudová služba, která zpracovává a ukládá velké objemy dat, i když Azure Monitor může monitorovat místní a jiné cloudové prostředky.
+No. Azure Monitor je škálovatelná cloudová služba, která zpracovává a ukládá velké objemy dat, i když Azure Monitor může monitorovat místní a jiné cloudové prostředky.
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Může Azure Monitor monitorovat místní prostředky?
 Ano, kromě shromažďování dat monitorování z prostředků Azure Azure Monitor můžou shromažďovat data z virtuálních počítačů a aplikací v jiných cloudech i v místním prostředí. Další informace najdete v tématu [zdroje dat monitorování pro Azure monitor](platform/data-sources.md).
@@ -102,7 +102,7 @@ Chcete-li zobrazit protokoly virtuálních počítačů, je třeba udělit oprá
 ### <a name="why-are-metrics-from-the-guest-os-of-my-azure-virtual-machine-not-showing-up-in-metrics-explorer"></a>Proč se v Průzkumníkovi metrik nezobrazuje metriky z hostovaného operačního systému virtuálního počítače Azure?
 [Metriky platformy](insights/monitor-azure-resource.md#monitoring-data) se shromažďují automaticky pro prostředky Azure. Abyste mohli shromažďovat metriky z hostovaného operačního systému virtuálního počítače, musíte udělat nějakou konfiguraci. Pro virtuální počítač s Windows nainstalujte diagnostické rozšíření a nakonfigurujte Azure Monitor jímku, jak je popsáno v tématu [instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](platform/diagnostics-extension-windows-install.md). Pro Linux nainstalujte agenta telegraf, jak je popsáno v tématu [shromáždění vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta telegraf InfluxData](platform/collect-custom-metrics-linux-telegraf.md).
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 
 ### <a name="what-is-an-alert-in-azure-monitor"></a>Co je výstraha v Azure Monitor?
 Výstrahy proaktivně upozorňují na skutečnost, že jsou ve vašich datech monitorování zjištěny důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete. Existuje několik typů výstrah:
@@ -735,7 +735,7 @@ V rámci této podmínky budete po otevření virtuálního počítače vyzváni
 ## <a name="next-steps"></a>Další kroky
 Pokud tady na váš dotaz neodpovíte, můžete na následující fóra najít další otázky a odpovědi.
 
-- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
-- [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+- [Log Analytics](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+- [Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
 
 Pokud chcete získat obecnou zpětnou vazbu na Azure Monitor, navštivte [fórum pro názory](https://feedback.azure.com/forums/34192--general-feedback).

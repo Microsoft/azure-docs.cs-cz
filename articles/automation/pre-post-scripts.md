@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: df7a544601d723170b43b3fbf8466daa6a98be6e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: fd37ccc5850baf1cfb778b6706a76c91bd178922
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745120"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835168"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Správa předzálohovacích a pozálohovacích skriptů
 
@@ -170,7 +170,7 @@ if (<My custom error logic>)
 }
 ```
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>ukázky
 
 Ukázky pro předzálohovací skripty a pozálohovací skripty najdete v [galerii centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) a v [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22), nebo je můžete importovat prostřednictvím Azure Portal. Uděláte to tak, že v účtu Automation v části **Automatizace procesu**vyberete **Galerie runbooků**. Pro filtr použijte **Update Management** .
 
@@ -245,4 +245,4 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md)
+* Podrobnosti o správě aktualizací najdete v tématu [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).

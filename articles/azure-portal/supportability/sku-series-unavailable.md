@@ -7,12 +7,12 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: b0f0762ded6804c0b0d90a19223c082f0fb8fd49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a88cb4ff2385edd3c867c84774df1d0e21422be
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843620"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835984"
 ---
 # <a name="region-or-sku-unavailable"></a>Oblast nebo skladová položka není k dispozici
 
@@ -68,7 +68,7 @@ Pokud nemůžete najít vhodnou oblast nebo SKU, vytvořte [žádost o podporu](
 
 1. Jako **typ problému**zvolte **Vybrat typ problému**.
 
-1. Pro **možnost vybrat typ problému**zvolte možnost, například **nemůžete získat přístup k předplatnému nebo prostředek** > **můj problém není uveden výše**. Vyberte **Uložit**.
+1. Pro **možnost vybrat typ problému**zvolte možnost, například **nemůžete získat přístup k předplatnému nebo prostředek**  >  **můj problém není uveden výše**. Vyberte **Uložit**.
 
    ![Zadejte problém pro požadavek.](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
@@ -80,7 +80,7 @@ Pokud nemůžete najít vhodnou oblast nebo SKU, vytvořte [žádost o podporu](
 
 ## <a name="send-us-your-suggestions"></a>Pošlete nám svoje návrhy
 
-Vždycky jsme si otevřeli názory a návrhy! Pošlete nám svoje [návrhy](https://feedback.azure.com/forums/266794-support-feedback). Kromě toho můžete s námi spolupracovat na [Twitteru](https://twitter.com/azuresupport) nebo na [fórech MSDN](https://social.msdn.microsoft.com/Forums/azure).
+Vždycky jsme si otevřeli názory a návrhy! Pošlete nám svoje [návrhy](https://feedback.azure.com/forums/266794-support-feedback). Kromě toho můžete s námi spolupracovat na [Twitteru](https://twitter.com/azuresupport) nebo na [stránce s dotazem na Microsoft Q&](https://docs.microsoft.com/answers/products/azure).
 
 ## <a name="learn-more"></a>Další informace
 

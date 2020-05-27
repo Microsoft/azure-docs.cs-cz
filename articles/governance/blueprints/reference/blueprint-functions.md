@@ -1,14 +1,14 @@
 ---
 title: Funkce Azure modrotisky
 description: Popisuje funkce, které jsou k dispozici pro použití s artefakty podrobného plánu v definicích a přiřazeních Azure modrotisky.
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280674"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834777"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkce pro použití s plány Azure
 
@@ -30,7 +30,7 @@ Podporovány jsou následující funkce:
 Vrátí objekt vlastností naplněný pomocí tohoto výstupu artefaktů podrobného plánu.
 
 > [!NOTE]
-> `artifacts()` Funkci nelze použít v rámci šablony Správce prostředků. Funkci lze použít pouze v kódu JSON definice podrobného plánu nebo v kódu JSON artefaktu při správě [podrobného](https://github.com/Azure/azure-blueprints/blob/master/README.md)plánu pomocí Azure PowerShell nebo REST API jako součást podrobných plánů kódu.
+> `artifacts()`Funkci nelze použít v rámci šablony Správce prostředků. Funkci lze použít pouze v kódu JSON definice podrobného plánu nebo v kódu JSON artefaktu při správě [podrobného](https://github.com/Azure/azure-blueprints/blob/master/README.md)plánu pomocí Azure PowerShell nebo REST API jako součást podrobných plánů kódu.
 
 ### <a name="parameters"></a>Parametry
 
@@ -38,7 +38,7 @@ Vrátí objekt vlastností naplněný pomocí tohoto výstupu artefaktů podrobn
 |:--- |:--- |:--- |:--- |
 | artefakt |Ano |řetězec |Název artefaktu podrobného plánu |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Objekt vlastností výstupu. Vlastnosti **výstupy** jsou závislé na typu odkazovaného artefaktu podrobného plánu. Všechny typy mají následující formát:
 
@@ -106,13 +106,13 @@ Artefakt šablony Správce prostředků s ID _myTemplateArtifact_ obsahující n
 
 Některé příklady načítání dat z ukázky _myTemplateArtifact_ jsou:
 
-| Expression | Typ | Hodnota |
+| Výraz | Typ | Hodnota |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Pole | \["First"; "Second"\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Řetězec | první |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | Řetězec | "moje hodnota řetězce" |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | první |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "moje hodnota řetězce" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Objekt | {"MyProperty": "moje hodnota", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Řetězec | "moje hodnota" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "moje hodnota" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Logická hodnota | True |
 
 ## <a name="concat"></a>concat
@@ -128,7 +128,7 @@ Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec.
 | řetězec1 |Ano |řetězec |První hodnota pro zřetězení |
 | Další argumenty |Ne |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Řetězec zřetězených hodnot.
 
@@ -152,7 +152,7 @@ Vrátí hodnotu parametru podrobného plánu. Zadaný název parametru musí bý
 |:--- |:--- |:--- |:--- |
 | parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Hodnota zadaného parametru artefaktu podrobného plánu nebo podrobného plánu
 
@@ -184,7 +184,7 @@ Definujte parametr _principalIds_ v definici podrobného plánu:
 }
 ```
 
-Pak použijte _principalIds_ jako argument pro artefakt `parameters()` podrobného plánu:
+Pak použijte _principalIds_ jako argument pro artefakt podrobného plánu `parameters()` :
 
 ```json
 {
@@ -205,7 +205,7 @@ Pak použijte _principalIds_ jako argument pro artefakt `parameters()` podrobné
 
 Vrátí objekt, který představuje aktuální skupinu prostředků.
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrácený objekt je v následujícím formátu:
 
@@ -218,7 +218,7 @@ Vrácený objekt je v následujícím formátu:
 
 ### <a name="remarks"></a>Poznámky
 
-Funkce Azure Blueprint se liší od Azure Resource Manager funkce šablony. `resourceGroup()` Funkci nelze použít v artefaktu na úrovni předplatného nebo v definici podrobného plánu. Dá se použít jenom v artefaktech podrobného plánu, které jsou součástí artefaktu skupiny prostředků.
+Funkce Azure Blueprint se liší od Azure Resource Manager funkce šablony. `resourceGroup()`Funkci nelze použít v artefaktu na úrovni předplatného nebo v definici podrobného plánu. Dá se použít jenom v artefaktech podrobného plánu, které jsou součástí artefaktu skupiny prostředků.
 
 Běžným použitím `resourceGroup()` funkce je vytvořit prostředky ve stejném umístění jako artefakt skupiny prostředků.
 
@@ -265,7 +265,7 @@ Pak použijte `resourceGroup()` funkci v kontextu artefaktu podrobného plánu, 
 
 `resourceGroups(placeholderName)`
 
-Vrátí objekt, který představuje zadaný artefakt skupiny prostředků. Na rozdíl `resourceGroup()`od, který vyžaduje kontext artefaktu, se tato funkce používá k získání vlastností zástupného znaku konkrétní skupiny prostředků, pokud není v kontextu této skupiny prostředků.
+Vrátí objekt, který představuje zadaný artefakt skupiny prostředků. Na rozdíl od `resourceGroup()` , který vyžaduje kontext artefaktu, se tato funkce používá k získání vlastností zástupného znaku konkrétní skupiny prostředků, pokud není v kontextu této skupiny prostředků.
 
 ### <a name="parameters"></a>Parametry
 
@@ -273,7 +273,7 @@ Vrátí objekt, který představuje zadaný artefakt skupiny prostředků. Na ro
 |:--- |:--- |:--- |:--- |
 | zástupný znak |Ano |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrácený objekt je v následujícím formátu:
 
@@ -329,7 +329,7 @@ Pak použijte `resourceGroups()` funkci z kontextu jakéhokoli artefaktu podrobn
 
 Vrátí podrobnosti o předplatném pro aktuální přiřazení podrobného plánu.
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrácený objekt je v následujícím formátu:
 

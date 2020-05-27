@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: c0b2943e1f0d7f2386ec09da03d297a570eede7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e2ba749b64a6d44c9aa6b03352910ab24771084
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80276474"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835644"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začínáme používat Azure Stream Analytics: zjišťování podvodů v reálném čase
 
@@ -57,7 +57,7 @@ V tomto postupu nejprve vytvoříte obor názvů centra událostí a pak přidá
 
 1. Přihlaste se k Azure Portal a v levém horním rohu obrazovky klikněte na **vytvořit prostředek** .
 
-2. V nabídce vlevo vyberte **všechny služby** a v kategorii **Analýza** vyberte **`*`hvězdičku ()** vedle **Event Hubs** . Potvrďte, že je do **oblíbených položek** v levé navigační nabídce přidáno **Event Hubs** . 
+2. V nabídce vlevo vyberte **všechny služby** a v kategorii **Analýza** vyberte **hvězdičku ( `*` )** vedle **Event Hubs** . Potvrďte, že je do **oblíbených položek** v levé navigační nabídce přidáno **Event Hubs** . 
 
    ![Hledat Event Hubs](./media/stream-analytics-real-time-fraud-detection/select-event-hubs-menu.png)
 
@@ -65,7 +65,7 @@ V tomto postupu nejprve vytvoříte obor názvů centra událostí a pak přidá
 
    ![Tlačítko Přidat](./media/stream-analytics-real-time-fraud-detection/event-hubs-add-toolbar.png)
 
-4. V podokně **vytvořit obor názvů** zadejte název oboru názvů, jako je `<yourname>-eh-ns-demo`například. Můžete použít libovolný název oboru názvů, ale název musí být platný pro adresu URL a musí být jedinečný v rámci Azure. 
+4. V podokně **vytvořit obor názvů** zadejte název oboru názvů, jako je například `<yourname>-eh-ns-demo` . Můžete použít libovolný název oboru názvů, ale název musí být platný pro adresu URL a musí být jedinečný v rámci Azure. 
     
 5. Vyberte předplatné a vytvořte nebo zvolte skupinu prostředků a pak klikněte na **vytvořit**.
 
@@ -77,7 +77,7 @@ V tomto postupu nejprve vytvoříte obor názvů centra událostí a pak přidá
 
    ![Tlačítko Přidat centrum událostí pro vytvoření nového centra událostí](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-8. Pojmenujte nové centrum `asa-eh-frauddetection-demo`událostí. Můžete použít jiný název. Pokud to uděláte, poznamenejte si ho, protože ho budete potřebovat později. Pro centrum událostí teď nemusíte nastavovat žádné další možnosti.
+8. Pojmenujte nové centrum událostí `asa-eh-frauddetection-demo` . Můžete použít jiný název. Pokud to uděláte, poznamenejte si ho, protože ho budete potřebovat později. Pro centrum událostí teď nemusíte nastavovat žádné další možnosti.
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
@@ -89,7 +89,7 @@ Předtím, než může proces odesílat data do centra událostí, musí mít ce
 
 1. V podokně obor názvů událostí klikněte na **Event Hubs** a pak klikněte na název nového centra událostí.
 
-2. V podokně centra událostí klikněte na **zásady sdíleného přístupu** a pak klikněte na ** + &nbsp;přidat**.
+2. V podokně centra událostí klikněte na **zásady sdíleného přístupu** a pak klikněte na ** + &nbsp; Přidat**.
 
     > [!NOTE]
     > Ujistěte se, že pracujete s centrem událostí, nikoli s oborem názvů centra událostí.
@@ -112,7 +112,7 @@ Předtím, než může proces odesílat data do centra událostí, musí mít ce
 
     `Endpoint=sb://YOURNAME-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=asa-policy-manage-demo;SharedAccessKey=Gw2NFZwU1Di+rxA2T+6hJYAtFExKRXaC2oSQa0ZsPkI=;EntityPath=asa-eh-frauddetection-demo`
 
-    Všimněte si, že připojovací řetězec obsahuje několik párů klíč-hodnota oddělených středníky: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey`a `EntityPath`.  
+    Všimněte si, že připojovací řetězec obsahuje několik párů klíč-hodnota oddělených středníky: `Endpoint` , `SharedAccessKeyName` , `SharedAccessKey` a `EntityPath` .  
 
 
 ## <a name="configure-and-start-the-event-generator-application"></a>Konfigurace a spuštění aplikace generátoru událostí
@@ -130,7 +130,7 @@ Před spuštěním aplikace TelcoGenerator je nutné ji nakonfigurovat tak, aby 
    * Nastavte hodnotu `EventHubName` klíče na název centra událostí (tj. na hodnotu cesty k entitě).
    * Nastavte hodnotu `Microsoft.ServiceBus.ConnectionString` klíče na připojovací řetězec. 
 
-   `<appSettings>` Oddíl bude vypadat jako v následujícím příkladu:
+   `<appSettings>`Oddíl bude vypadat jako v následujícím příkladu:
 
     ```xml
     <appSettings>
@@ -162,7 +162,7 @@ Před spuštěním aplikace TelcoGenerator je nutné ji nakonfigurovat tak, aby 
 
 Některá klíčová pole, která budete používat v této aplikaci pro detekci podvodů v reálném čase, jsou následující:
 
-|**Záznam**|**Definice**|
+|**Zapisovací**|**Definice**|
 |----------|--------------|
 |`CallrecTime`|Časové razítko pro počáteční čas volání. |
 |`SwitchNum`|Telefonní ústředna použitá pro spojení volání. V tomto příkladu jsou přepínače řetězce reprezentující zemi nebo oblast původu (USA, Čína, Spojené království, Německo nebo Austrálie). |
@@ -178,9 +178,9 @@ Teď, když máte proud událostí volání, můžete nastavit Stream Analytics 
 
 ### <a name="create-the-job"></a>Vytvoření úlohy 
 
-1. V Azure Portal klikněte na **vytvořit prostředek** > **Internet věcí** > **Stream Analytics úlohu**.
+1. V Azure Portal klikněte na **vytvořit prostředek**  >  **Internet věcí**  >  **Stream Analytics úlohu**.
 
-2. Pojmenujte `asa_frauddetection_job_demo`úlohu, zadejte předplatné, skupinu prostředků a umístění.
+2. Pojmenujte úlohu `asa_frauddetection_job_demo` , zadejte předplatné, skupinu prostředků a umístění.
 
     Je vhodné umístit úlohu a centrum událostí ve stejné oblasti, aby se co nejlépe vyzpůsobilo, a nebudete platit za přenos dat mezi oblastmi.
 
@@ -192,7 +192,7 @@ Teď, když máte proud událostí volání, můžete nastavit Stream Analytics 
 
 ### <a name="configure-job-input"></a>Konfigurace vstupu úlohy
 
-1. Na řídicím panelu nebo v podokně **všechny prostředky** vyhledejte a vyberte úlohu `asa_frauddetection_job_demo` Stream Analytics. 
+1. Na řídicím panelu nebo v podokně **všechny prostředky** vyhledejte a vyberte `asa_frauddetection_job_demo` úlohu Stream Analytics. 
 2. V části **Přehled** v podokně Stream Analytics úlohy klikněte na **vstupní** pole.
 
    ![Vstupní pole pod topologií v podokně úlohy Stream Analytics](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-input-box-new-portal.png)
@@ -291,7 +291,7 @@ V mnoha případech vaše analýza nepotřebuje všechny sloupce ze vstupního s
 
 Předpokládejme, že chcete spočítat počet příchozích volání na oblast. V případě streamování dat, pokud chcete provádět agregační funkce, jako je počítání, potřebujete segmentovat datový proud na dočasné jednotky (protože samotný datový proud je efektivně nekonečný). Provedete to pomocí [funkce okna](stream-analytics-window-functions.md)Stream Analytics. Pak můžete pracovat s daty v tomto okně jako s jednotkou.
 
-Pro tuto transformaci budete chtít sekvenci dočasných oken, která se nepřekrývají – každé okno bude mít diskrétní sadu dat, která můžete seskupit a agregovat. Tento typ okna se označuje jako *bubnové okno*. V rámci okna bubnu můžete získat počet příchozích volání seskupených podle `SwitchNum`, který představuje zemi nebo oblast, ve které volání vzniklo. 
+Pro tuto transformaci budete chtít sekvenci dočasných oken, která se nepřekrývají – každé okno bude mít diskrétní sadu dat, která můžete seskupit a agregovat. Tento typ okna se označuje jako *bubnové okno*. V rámci okna bubnu můžete získat počet příchozích volání seskupených podle `SwitchNum` , který představuje zemi nebo oblast, ve které volání vzniklo. 
 
 1. Změňte dotaz v editoru kódu na následující:
 
@@ -305,7 +305,7 @@ Pro tuto transformaci budete chtít sekvenci dočasných oken, která se nepřek
 
     Tento dotaz používá `Timestamp By` klíčové slovo v `FROM` klauzuli k určení pole timestamp ve vstupním streamu, které se má použít k definování bubnového okna. V tomto případě okno rozdělí data do segmentů podle `CallRecTime` pole v každém záznamu. (Pokud není zadané žádné pole, bude operace oken používat čas, kdy každá událost dorazí do centra událostí. Viz část "doba doručení vs – čas použití aplikace" v tématu [referenční informace k jazyku pro dotaz Stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). 
 
-    Projekce obsahuje `System.Timestamp`, který vrací časové razítko pro konec každého okna. 
+    Projekce obsahuje `System.Timestamp` , který vrací časové razítko pro konec každého okna. 
 
     Chcete-li určit, že chcete použít bubnové okno, použijte funkci [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) v `GROUP BY` klauzuli. Ve funkci zadáte časovou jednotku (kdekoliv od sekundy do dne) a velikost okna (počet jednotek). V tomto příkladu se bubnové okno skládá z 5 sekund, takže pro každé 5 sekund se získá počet podle země/oblasti.
 
@@ -317,7 +317,7 @@ Pro tuto transformaci budete chtít sekvenci dočasných oken, která se nepřek
 
 V tomto příkladu zvažte podvodné použití volání, která pocházejí od stejného uživatele, ale v různých umístěních do 5 sekund od sebe. Například stejný uživatel nemůže legitimně uskutečnit volání z USA a Austrálie současně. 
 
-Chcete-li tyto případy vyhledat, můžete k připojení ke streamu na základě `CallRecTime` hodnoty použít samoobslužné spojení dat streamování. Pak můžete vyhledat záznamy volání, kde `CallingIMSI` hodnota (původní číslo) je stejná, ale `SwitchNum` hodnota (země/oblast původu) není shodná.
+Chcete-li tyto případy vyhledat, můžete k připojení ke streamu na základě hodnoty použít samoobslužné spojení dat streamování `CallRecTime` . Pak můžete vyhledat záznamy volání `CallingIMSI` , kde hodnota (původní číslo) je stejná, ale `SwitchNum` hodnota (země/oblast původu) není shodná.
 
 Použijete-li spojení s datovými proudy, je nutné, aby spojení poskytovalo určité meze, jak daleko může být srovnávací řádky odděleny v čase. (Jak bylo uvedeno dříve, streamovaná data jsou efektivně nekonečna.) Časové meze pro relaci jsou zadány uvnitř `ON` klauzule JOIN pomocí `DATEDIFF` funkce. V takovém případě se spojení vychází z intervalu 5 sekund volání dat.
 
@@ -339,7 +339,7 @@ Použijete-li spojení s datovými proudy, je nutné, aby spojení poskytovalo u
 
     Tento dotaz je stejný jako jakékoli spojení SQL s výjimkou `DATEDIFF` funkce ve spojení. Tato verze `DATEDIFF` je specifická pro Stream Analytics a musí se objevit v `ON...BETWEEN` klauzuli. Parametry jsou časovou jednotkou (sekundy v tomto příkladu) a aliasy dvou zdrojů pro spojení. To se liší od standardní funkce SQL `DATEDIFF` .
 
-    `WHERE` Klauzule zahrnuje podmínku, která označuje podvodný hovor: původní přepínače nejsou stejné. 
+    `WHERE`Klauzule zahrnuje podmínku, která označuje podvodný hovor: původní přepínače nejsou stejné. 
 
 2. Znovu klikněte na tlačítko **test** . 
 
@@ -359,7 +359,7 @@ Pokud máte existující účet Blob Storage, můžete ho použít. V tomto kurz
 
 ### <a name="create-an-azure-blob-storage-account"></a>Vytvoření účtu Azure Blob Storage
 
-1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** > **Storage** > úložiště**účet**úložiště. Vyplňte stránku úlohy účtu úložiště s **názvem** nastaveným na "asaehstorage", **umístění** nastaveným na "východní USA", **skupinu prostředků** nastavenou na "ASA-eh-NS-RG" (jako hostitele účtu úložiště ve stejné skupině prostředků jako úlohu streamování pro vyšší výkon). Ostatní nastavení můžou zůstat na výchozích hodnotách.  
+1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek**úložiště  >  **Storage**  >  **účet**úložiště. Vyplňte stránku úlohy účtu úložiště s **názvem** nastaveným na "asaehstorage", **umístění** nastaveným na "východní USA", **skupinu prostředků** nastavenou na "ASA-eh-NS-RG" (jako hostitele účtu úložiště ve stejné skupině prostředků jako úlohu streamování pro vyšší výkon). Ostatní nastavení můžou zůstat na výchozích hodnotách.  
 
    ![Vytvořit účet úložiště v Azure Portal](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
@@ -418,9 +418,9 @@ Pokud jste ale hotovi a nepotřebujete prostředky, které jste vytvořili, mů�
 5. Odstraňte centrum událostí.
 6. Odstraňte obor názvů centra událostí.
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
-Pokud potřebujete další pomoc, zkuste [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud chcete získat další pomoc, zkuste [Azure Stream Analytics na stránce s dotazem pro Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 

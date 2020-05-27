@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 864b6793f65c69c83c0e26d01a10e156b1094889
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741029"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834624"
 ---
 # <a name="manage-updates-for-multiple-vms"></a>Správa aktualizací pro několik virtuálních počítačů
 
@@ -79,7 +79,7 @@ Následující tabulka popisuje připojené zdroje, které Update Management pod
 | Agenti systému Windows |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a pak inicializuje instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Ano |Update Management shromažďuje informace o aktualizacích systému od agentů systému Linux a následně inicializuje instalaci požadovaných aktualizací v podporovaných distribucích. |
 | Skupina pro správu Operations Manageru |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu. |
-| Účet služby Azure Storage |No |Azure Storage neobsahují informace o aktualizacích systému. |
+| Účet služby Azure Storage |Ne |Azure Storage neobsahují informace o aktualizacích systému. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
@@ -122,7 +122,7 @@ V podokně **nové nasazení aktualizací** zadejte následující informace:
   - Balíčky funkcí
   - Aktualizace Service Pack
   - Aktualizace definic
-  - Nástroje
+  - nástroje
   - Aktualizace
 
 - **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku Zahrnout nebo vyloučit. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o způsobu zpracování zařazení najdete v tématu [Naplánování nasazení aktualizací](automation-tutorial-update-management.md#schedule-an-update-deployment).
@@ -182,4 +182,4 @@ Kliknutím na **Chyby** zobrazíte podrobné informace o případných chybách 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Dotazování na protokoly Update Managementu](automation-update-management-query-logs.md)
+* Pokud potřebujete vyhledat protokoly aktualizace, přečtěte si téma [dotazy Update Management protokoly](automation-update-management-query-logs.md).

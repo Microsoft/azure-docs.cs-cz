@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 4261b3c3fa7aab830f5f57e86ee25f8ba5894849
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9129d10071a4c8da0376cbad3d64c10cbaceb8b9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749064"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835780"
 ---
 # <a name="unlink-workspace-from-automation-account-for-update-management"></a>Zrušit propojení pracovního prostoru s účtem služby Automation pro Update Management
 
@@ -40,6 +40,7 @@ Případně můžete zrušit propojení pracovního prostoru Log Analytics z ú�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md)
-* [Odebrat virtuální počítače z Update Management](automation-remove-vms-from-update-management.md)
-* [Řešení potíží s Update Management](troubleshoot/update-management.md)
+* Informace o tom, jak používat tuto funkci, najdete v tématu [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
+* Informace o řešení chyb funkcí najdete v tématu [řešení potíží s Update Management](troubleshoot/update-management.md).
+* Problémy s chybami agenta Windows Update najdete v tématu řešení potíží s [agentem pro Windows Update](troubleshoot/update-agent-issues.md).
+* Problémy s chybami agenta aktualizací pro Linux najdete v tématu [řešení potíží s aktualizacemi agenta pro Linux](troubleshoot/update-agent-issues-linux.md).

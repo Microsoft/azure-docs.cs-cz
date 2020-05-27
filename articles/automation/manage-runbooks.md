@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 28ddd2a2d75ab8a57dfc3176eefd703f6c43d0b6
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 93b34af0baed89fd312948aeffe8ea4ac8ef806c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745070"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834692"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
 
@@ -338,6 +338,8 @@ foreach($item in $output)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Spouštění runbooků ve službě Azure Automation](automation-runbook-execution.md)
-* [Upravit textové Runbooky v Azure Automation](automation-edit-textual-runbook.md)
-* [Vytváření grafických runbooků v Azure Automation](automation-graphical-authoring-intro.md)
+* Další informace o správě sad Runbook naleznete [v tématu Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).
+* Postup přípravy Runbooku PowerShellu najdete [v tématu Úprava textových runbooků v Azure Automation](automation-edit-textual-runbook.md).
+* Nápovědu k psaní Runbooku pracovního postupu PowerShellu najdete v tématu [informace o pracovním postupu PowerShellu pro Azure Automation](automation-powershell-workflow.md).
+* Podrobnosti o psaní grafických sad Runbook naleznete [v tématu Authoring Graphics Runbooky v Azure Automation](automation-graphical-authoring-intro.md).
+* Řešení potíží se spouštěním sady Runbook najdete v tématu [řešení potíží](troubleshoot/runbooks.md)se sadou Runbook.

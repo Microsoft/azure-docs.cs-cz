@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: kfollis
-ms.openlocfilehash: 2b68b6ddf19d6b07475e7009b47e162bfb2d0d2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0bd1191c0b92203b100b1713971119ec828352ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478985"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835542"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Jak vytvořit žádost o podporu Azure
 
@@ -53,7 +53,7 @@ Spuštění žádosti o podporu odkudkoli v Azure Portal:
 
    ![Nápověda a podpora](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-2. Vyberte **novou žádost o podporu**. Postupujte podle pokynů a poskytněte nám informace o vašem problému. Navrhneme některá možná řešení, shromáždíme podrobnosti o problému a pomůžeme vám odeslat a sledovat žádost o podporu.
+2. Vyberte **Nová žádost o podporu**. Postupujte podle pokynů a poskytněte nám informace o vašem problému. Navrhneme některá možná řešení, shromáždíme podrobnosti o problému a pomůžeme vám odeslat a sledovat žádost o podporu.
 
    ![Nová žádost o podporu](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
 
@@ -106,7 +106,7 @@ Agent podpory vás bude kontaktovat pomocí vámi zadané metody. Informace o po
 
 ## <a name="all-support-requests"></a>Všechny žádosti o podporu
 
-Podrobnosti a stav žádostí o podporu můžete zobrazit tak, že přejdete na **help + podpora** >  **všech žádostí o podporu**.
+Podrobnosti a stav žádostí o podporu můžete zobrazit tak, že přejdete na **help + podpora**  >   **všech žádostí o podporu**.
 
 ![Všechny žádosti o podporu](./media/how-to-create-azure-support-request/allrequestslower.png)
 
@@ -128,5 +128,5 @@ Další informace o možnostech samoobslužné pomoci v Azure najdete v tomto vi
 
 * [Pošlete nám svůj názor a návrhy.](https://feedback.azure.com/forums/266794-support-feedback)
 * Zaujmout nás na [Twitteru](https://twitter.com/azuresupport)
-* Získejte pomoc od svých partnerů ve [fórech MSDN](https://social.msdn.microsoft.com/Forums/azure) .
+* Získejte pomoc od svých partnerů na stránce s [otázkou Microsoft Q&](https://docs.microsoft.com/answers/products/azure) .
 * Další informace najdete v tématu [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq) .

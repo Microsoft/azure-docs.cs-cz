@@ -393,8 +393,8 @@
   items:
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: Fórum
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/sql-data-warehouse/'
     - name: Cenová kalkulačka

@@ -67,8 +67,6 @@
           href: cdn-restrict-access-by-country.md
         - name: Vylepšení výkonu prostřednictvím komprimace souborů
           href: cdn-improve-performance.md
-        - name: Více zdrojů koncových bodů
-          href: endpoint-multiorigin.md
         - name: Řízení chování při ukládání do mezipaměti
           items:
             - name: Řízení chování při ukládání do mezipaměti pomocí pravidel ukládání do mezipaměti
@@ -185,8 +183,8 @@
       href: cdn-billing.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurecdn'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-cdn.html'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cdn/'
     - name: Cenová kalkulačka

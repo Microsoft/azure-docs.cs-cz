@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: cc7babdb7b64b12ecc9ef4590a91c7a3683a6558
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: a92f65bd88a5aec79a179a6e2d53de15c274add4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799785"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834556"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Odeslání e-mailu z runbooku
 
@@ -138,7 +138,7 @@ Chcete-li ověřit, zda se sada Runbook úspěšně spustí, můžete postupovat
 
 Pokud se vám na zkušebním e-mailu nezobrazuje e-mail, zkontrolujte složky **nevyžádanou** **poštou a spam** .
 
-## <a name="clean-up-after-the-email-operation"></a>Vyčistit po operaci e-mailu
+## <a name="clean-up-resources-after-the-email-operation"></a>Vyčištění prostředků po operaci e-mailu
 
 1. Pokud již sada Runbook není potřebná, vyberte ji v seznamu sady Runbook a klikněte na tlačítko **Odstranit**.
 
@@ -152,7 +152,6 @@ Remove-AzKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Aktualizace modulů Azure PowerShellu](automation-update-azure-modules.md)
-* [Předávání dat úloh Azure Automation do protokolů Azure Monitoru](automation-manage-send-joblogs-log-analytics.md)
-* [Aktivace sady Runbook Azure Automation pomocí výstrahy](automation-create-alert-triggered-runbook.md)
-* [Řešení potíží s Runbook](./troubleshoot/runbooks.md)
+* Chcete-li odesílat data úloh sady Runbook do pracovního prostoru Log Analytics, přečtěte si téma [Dopředné Azure Automation data úloh do protokolů Azure monitor](automation-manage-send-joblogs-log-analytics.md).
+* Pokud chcete monitorovat metriky a protokoly základní úrovně, přečtěte si téma [použití výstrahy ke spuštění sady runbook Azure Automation](automation-create-alert-triggered-runbook.md).
+* Chcete-li opravit problémy vznikající během operací sady Runbook, přečtěte si téma [řešení potíží](./troubleshoot/runbooks.md)se sadou Runbook.

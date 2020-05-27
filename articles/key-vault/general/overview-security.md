@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: dbe13b2d1291f212af7da9d1176bc3d90997978b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd8557a33971be9fd0913bfdf84397d344901581
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428963"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834374"
 ---
 # <a name="azure-key-vault-security"></a>Zabezpečení služby Azure Key Vault
 
@@ -42,7 +42,7 @@ Model jednoho mechanismu ověřování do obou rovin má několik výhod:
 
 - Organizace můžou centrálně řídit přístup ke všem trezorům klíčů ve své organizaci.
 - Pokud uživatel opustí, okamžitě ztratí přístup ke všem trezorům klíčů v organizaci.
-- Organizace můžou ověřování přizpůsobit pomocí možností ve službě Azure AD, jako je například povolení služby Multi-Factor Authentication pro zvýšení zabezpečení.
+- Organizace můžou přizpůsobit ověřování pomocí možností ve službě Azure AD, jako je například povolení služby Multi-Factor Authentication pro zvýšení zabezpečení.
 
 ### <a name="managing-administrative-access-to-key-vault"></a>Správa přístupu pro správu k Key Vault
 
@@ -55,7 +55,7 @@ Při vytváření trezoru klíčů ve skupině prostředků můžete spravovat p
 Existuje několik předdefinovaných rolí. Pokud předdefinovaná role nevyhovuje vašim potřebám, můžete definovat vlastní roli. Další informace naleznete v části [RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md).
 
 > [!IMPORTANT]
-> Pokud má `Contributor` uživatel oprávnění k rovině správy trezoru klíčů, uživatel může udělit přístup k rovině dat nastavením zásad přístupu Key Vault. Měli byste přesně řídit, kdo má `Contributor` roli přístup k vašim trezorům klíčů. Ujistěte se, že k vašim trezorům klíčů, klíčům, tajným klíčům a certifikátům mají přístup jenom autorizovaní uživatelé.
+> Pokud má uživatel `Contributor` oprávnění k rovině správy trezoru klíčů, uživatel může udělit přístup k rovině dat nastavením zásad přístupu Key Vault. Měli byste přesně řídit, kdo má `Contributor` roli přístup k vašim trezorům klíčů. Ujistěte se, že k vašim trezorům klíčů, klíčům, tajným klíčům a certifikátům mají přístup jenom autorizovaní uživatelé.
 
 <a id="data-plane-access-control"></a>
 ### <a name="controlling-access-to-key-vault-data"></a>Řízení přístupu k datům Key Vault
@@ -97,6 +97,6 @@ Doporučení na bezpečné správě účtů úložiště najdete v [Průvodci za
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Koncové body služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md))
+- [Koncové body služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md)
 - [RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md)
-- [koncové body služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md))
+- [koncové body služby virtuální sítě pro Azure Key Vault](overview-vnet-service-endpoints.md)

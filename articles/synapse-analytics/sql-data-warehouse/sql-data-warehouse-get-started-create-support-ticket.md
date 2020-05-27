@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: eaa6ceded9893b278b28d517cbddb303f8469e10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0788f978fd25356b230a7923def6cbbea3dc305
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80350898"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835457"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>Zvýšení kvóty žádostí a získání podpory pro Azure synapse Analytics
 
@@ -95,9 +95,9 @@ Pokud vaše předplatné potřebuje přístup v konkrétní oblasti, požádejte
 
 ![Podrobnosti o jiné kvótě](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
-## <a name="submit-your-request"></a>Odeslat žádost
+## <a name="submit-your-request"></a>Odeslání žádosti
 
-Posledním krokem je vyplnit zbývající podrobnosti žádosti o podporu SQL Database. Pak vyberte **Další: zkontrolovat + vytvořit>>** a po kontrole podrobností žádosti klikněte na **vytvořit** , aby se žádost odeslala.
+Posledním krokem je vyplnit zbývající podrobnosti žádosti o podporu SQL Database. Pak vyberte **Další: Zkontrolovat a vytvořit >>** a po zkontrolování podrobností o žádosti kliknutím na **Vytvořit** žádost odešlete.
 
 ## <a name="monitor-a-support-ticket"></a>Monitorování lístku podpory
 
@@ -107,5 +107,5 @@ Po odeslání žádosti o podporu vás tým podpory Azure vás bude kontaktovat.
 
 ## <a name="other-resources"></a>Další prostředky
 
-Můžete se také připojit k komunitě Azure synapse Analytics na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) nebo prostřednictvím [Azure SQL Data Warehouse fóra MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/).
+Můžete se také připojit k komunitě Azure synapse Analytics na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) nebo na [stránce s dotazem Microsoft Q&na Azure SQL Data Warehouse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html).
 

@@ -1,16 +1,16 @@
 ---
-title: Pracovní postup služby Batch a prostředky
+title: Prostředky a pracovní postup služby Batch
 description: Přečtěte si o funkcích služby Batch a její pracovní postup na vysoké úrovni z hlediska vývoje.
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: 8112f6059a14bb18bf1fbf4011ceb074d71b5837
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 5084ae222d0a9da0d8aa171bc89dba48377a9dd4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791131"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835916"
 ---
-# <a name="batch-service-workflow-and-resources"></a>Pracovní postup služby Batch a prostředky
+# <a name="batch-service-workflow-and-resources"></a>Prostředky a pracovní postup služby Batch
 
 V tomto přehledu základních součástí služby Azure Batch probereme pracovní postup vysoké úrovně, který mohou vývojáři služby Batch použít k tvorbě rozsáhlých paralelních výpočetních řešení společně s primárními prostředky služby, které se používají.
 
@@ -39,7 +39,7 @@ Následující témata popisují prostředky služby Batch, které umožňují v
 
 - [Účty Batch a účty úložiště](accounts.md)
 - [Uzly a fondy](nodes-and-pools.md)
-- [Úlohy a úlohy](jobs-and-tasks.md)
+- [Úlohy a úkoly](jobs-and-tasks.md)
 - [Soubory a adresáře](files-and-directories.md)
 
 ## <a name="next-steps"></a>Další kroky
@@ -47,4 +47,4 @@ Následující témata popisují prostředky služby Batch, které umožňují v
 - Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.
 - Seznamte se se základy vývoje aplikací s podporou služby Batch pomocí [klientské knihovny Batch .NET](quick-run-dotnet.md) nebo [Pythonu](quick-run-python.md). Tyto rychlé starty vás provedou ukázkovou aplikací, která používá službu Batch ke spouštění úlohy na několika výpočetních uzlech, a představí vám použití služby Azure Storage k přípravě a načítání souborů úloh.
 - Stáhněte a nainstalujte nástroj [Batch Explorer](https://azure.github.io/BatchExplorer/), který můžete používat při vývoji řešení Batch. Nástroj Batch Explorer vám pomůže vytvářet, ladit a monitorovat aplikace Azure Batch.
-- Prohlédněte si komunitní materiály, včetně [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch), [úložiště komunity Batch](https://github.com/Azure/Batch)a [Azure Batch fóra](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebatch).
+- Prohlédněte si komunitní materiály, včetně [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch), [úložiště komunity Batch](https://github.com/Azure/Batch)a [Azure Batch fóra](https://docs.microsoft.com/answers/topics/azure-batch.html).

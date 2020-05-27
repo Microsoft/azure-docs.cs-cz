@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 35d3146c0ca5571e6e16793c97378de1e2db362e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 6f7335b92d7c26b33f9b156d434d895a1bca40c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83711716"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835389"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Vytváření grafických runbooků v Azure Automation
 
@@ -432,9 +432,7 @@ Máte možnost vrátit se k publikované verzi Runbooku. Tato operace vyvolává
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o tom, jak začít s Runbooky pracovních postupů PowerShellu najdete v tématu [můj první Runbook pracovního postupu PowerShellu](automation-first-runbook-textual.md).
-* Informace o tom, jak začít s grafickými Runbooky, najdete v tématu [můj první grafický Runbook](automation-first-runbook-graphical.md).
+* Informace o tom, jak začít s grafickými Runbooky, najdete v tématu [kurz: Vytvoření grafického Runbooku](learn/automation-tutorial-runbook-graphical.md).
 * Další informace o typech runbooků a jejich výhodách a omezeních najdete v tématu [Azure Automation typy runbooků](automation-runbook-types.md).
-* Informace o tom, jak ověřit pomocí účtu Automation spustit jako, najdete v tématu [Konfigurace účtu spustit v Azure jako](automation-sec-configure-azure-runas-account.md).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* Informace o ověřování pomocí účtu Spustit jako pro automatizaci najdete v tématu [účet Spustit jako](automation-security-overview.md#run-as-account).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).

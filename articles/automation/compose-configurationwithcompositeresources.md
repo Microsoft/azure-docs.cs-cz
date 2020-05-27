@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 04e32a88dcfb9f069e51b2f18207155b95da37d6
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e7a190792714e1dd1a54da7e674e63d4453c548e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744355"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835066"
 ---
 # <a name="compose-dsc-configurations"></a>Sestavování konfigurací DSC
 
@@ -42,8 +42,9 @@ Po úspěšném dokončení kompilace se nová konfigurace zobrazí na kartě **
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md)
-- [Povolit konfiguraci stavu Azure Automation](automation-dsc-onboarding.md)
-- [Kompilovat konfigurace DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md)
-- [Nastavení průběžného nasazování pomocí čokolády](automation-dsc-cd-chocolatey.md)
-- [Ceny konfigurace Azure Automation stavu](https://azure.microsoft.com/pricing/details/automation/)
+- Další informace o povolení uzlů najdete v tématu [povolení konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
+- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
+- Příklad použití konfigurace stavu Azure Automation v kanálu nepřetržitého nasazení najdete v tématu [Nastavení průběžného nasazování s čokoládou](automation-dsc-cd-chocolatey.md).
+- Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

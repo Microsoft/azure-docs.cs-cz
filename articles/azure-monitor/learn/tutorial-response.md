@@ -7,23 +7,23 @@ author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8af1acb67961de105e5bf5900d7b10c437cb30d8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77670368"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835865"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Reakce na události s upozorněními služby Azure Monitor
 Upozornění služby Azure Monitor zjišťují důležité informace v úložišti Log Analytics. Vytvářejí se na základě pravidel upozornění, která automaticky v pravidelných intervalech spouští prohledávání protokolů. Pokud výsledky prohledávání protokolů odpovídají určitým kritériím, vytvoří se záznam upozornění, který je možné nakonfigurovat, aby reagoval automaticky.  Tento kurz je pokračováním kurzu [Vytváření a sdílení řídicích panelů s daty Log Analytics](tutorial-logs-dashboards.md).   
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvoření pravidla upozornění
 > * Konfigurace skupiny akcí na posílání e-mailového oznámení
 
-K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru služby Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
+K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru služby Log Analytics](quick-collect-azurevm.md).  
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
@@ -69,4 +69,4 @@ V tomto kurzu jste zjistili, jak můžou pravidla upozornění proaktivně ident
 Na tomto odkazu najdete předem připravené ukázky skriptů pro Log Analytics.  
 
 > [!div class="nextstepaction"]
-> [Ukázky skriptů pro Log Analytics](../../azure-monitor/platform/powershell-samples.md)
+> [Ukázky skriptů pro Log Analytics](../samples/powershell-samples.md)

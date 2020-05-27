@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c03b9fbd06b0a9bc4a70b0fb3a78bc9ce136b704
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929039"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835576"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Škálování Stream Analytics úlohy pomocí funkcí Azure Machine Learning Studio (Classic)
 
@@ -140,7 +140,7 @@ Pokud chcete škálovat úlohu Stream Analytics pomocí funkcí Machine Learning
 2. Tolerováná latence pro spuštěnou úlohu Stream Analytics (a tím i velikost dávky požadavků webové služby Machine Learning).
 3. Zřízené Stream Analytics služby SUs a počet požadavků webové služby Machine Learning (další náklady související s funkcí).
 
-Jako příklad se použil plně rozdělený Stream Analytics dotaz. Pokud je potřeba složitější dotaz, je [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics) skvělým prostředkem pro získání další užitečné sady Stream Analytics týmu.
+Jako příklad se použil plně rozdělený Stream Analytics dotaz. Pokud je potřeba složitější dotaz, je [stránka Microsoft Q&otázka pro Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) skvělým prostředkem pro získání další užitečné informace od týmu Stream Analytics.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o Stream Analytics najdete v těchto tématech:

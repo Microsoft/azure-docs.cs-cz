@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: dea7e8d5679c8c5a14d6a4253b8a4b36343e6ed8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fabc8b7b2a97b75959eb7d82723d6af6bc55bbe5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887091"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835474"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalace a použití odstínu v clusterech HDInsight Hadoop
 
@@ -33,7 +33,7 @@ Odstín je sada webových aplikací používaných pro interakci s clusterem Apa
 > [!WARNING]  
 > Komponenty dodávané s clusterem HDInsight jsou plně podporované a podpora Microsoftu vám pomůžou izolovat a řešit problémy související s těmito součástmi.
 >
-> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. To může vést k vyřešení problému nebo požádá vás o zapojení dostupných kanálů pro technologie Open Source, ve kterých se najde hlubokou odbornost pro danou technologii. Například existuje mnoho webů komunity, které lze použít jako: [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Projekty Apache také obsahují projektové weby [https://apache.org](https://apache.org), například: [Hadoop](https://hadoop.apache.org/).
+> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. To může vést k vyřešení problému nebo požádá vás o zapojení dostupných kanálů pro technologie Open Source, ve kterých se najde hlubokou odbornost pro danou technologii. Například existuje mnoho webů komunity, které lze použít, například: [Microsoft Q&stránku s otázkou pro HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html), [https://stackoverflow.com](https://stackoverflow.com) . Projekty Apache také obsahují projektové weby [https://apache.org](https://apache.org) , například: [Hadoop](https://hadoop.apache.org/).
 
 ## <a name="install-hue-using-script-actions"></a>Instalace odstínu pomocí akcí skriptů
 
@@ -45,7 +45,7 @@ Pro akci skriptu použijte informace v následující tabulce. Konkrétní pokyn
 |Vlastnost |Hodnota |
 |---|---|
 |Typ skriptu:|– Vlastní|
-|Název|Nainstalovat odstín|
+|Name|Nainstalovat odstín|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
 |Typ (typy) uzlů:|Head|
 
@@ -76,7 +76,7 @@ V pravidelných clusterech můžete mít jenom jeden uživatelský účet s odst
 
     Toto je název hostitele primární hlavnímu uzlu, kde se nachází web odstín.
 
-1. Pomocí prohlížeče otevřete portál odstínů na adrese `http://HOSTNAME:8888`. Nahraďte název hostitele názvem, který jste získali v předchozím kroku.
+1. Pomocí prohlížeče otevřete portál odstínů na adrese `http://HOSTNAME:8888` . Nahraďte název hostitele názvem, který jste získali v předchozím kroku.
 
    > [!NOTE]  
    > Při prvním přihlášení se zobrazí výzva k vytvoření účtu pro přihlášení k portálu odstínování. Přihlašovací údaje, které tady zadáte, budou omezené na portál a nesouvisejí s přihlašovacími údaji uživatele správce nebo SSH, které jste zadali při zřizování clusteru.
@@ -123,7 +123,7 @@ V pravidelných clusterech můžete mít jenom jeden uživatelský účet s odst
 
    Důvodem je známý problém. Jako alternativní řešení upravte Ambari tak, aby se aktivní Správce prostředků taky spouštěla na primárním hlavnímu uzlu.
 
-1. Odstín rozumí WebHDFS, zatímco clustery HDInsight používají Azure Storage `wasbs://`pomocí. Vlastní skript, který se používá pro akci skriptu, nainstaluje WebWasb, což je služba kompatibilní s WebHDFS pro komunikaci s WASB. Takže i když se na portálu pro odstíny říká HDFS (například když přesunete myš přes **Prohlížeč souborů**), mělo by se interpretovat jako WASB.
+1. Odstín rozumí WebHDFS, zatímco clustery HDInsight používají Azure Storage pomocí `wasbs://` . Vlastní skript, který se používá pro akci skriptu, nainstaluje WebWasb, což je služba kompatibilní s WebHDFS pro komunikaci s WASB. Takže i když se na portálu pro odstíny říká HDFS (například když přesunete myš přes **Prohlížeč souborů**), mělo by se interpretovat jako WASB.
 
 ## <a name="next-steps"></a>Další kroky
 

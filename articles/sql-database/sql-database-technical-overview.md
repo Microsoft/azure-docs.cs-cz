@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 4cb2159b02635e659a8ca7236523e899bf01550c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cace4bdc1b8558fb7186f6300189c22753cc8bf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133246"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834845"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co je služba Azure SQL Database?
 
@@ -119,7 +119,7 @@ Zóny dostupnosti Azure se snaží chránit před výpadkem jednoho datového ce
 
 Smlouva o úrovni služeb [(SLA)](https://azure.microsoft.com/support/legal/sla/) Azure, která využívá globální síť datacenter spravovaných Microsoftem, pomáhá zajistit, aby vaše aplikace běžela 24/7. Platforma Azure plně spravuje každou databázi a zaručuje žádnou ztrátu dat a vysoké procento dostupnosti dat. Azure automaticky zpracovává opravy, zálohy, replikaci, detekci selhání, základní potenciální hardware, software nebo síť, nasazování oprav chyb, převzetí služeb při selhání, upgrady databáze a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Dostupnost Premium se dosahuje integrací výpočetních prostředků a úložiště v jednom uzlu pro výkon a následnou implementací technologie podobně jako u skupin dostupnosti Always On. Úplnou diskuzi o funkcích Azure SQL Database vysoké dostupnosti najdete v článku [dostupnost SQL Database](sql-database-high-availability.md). 
 
-Kromě toho SQL Database poskytuje integrovanou funkci pro [provozní kontinuitu a globální škálovatelnost](sql-database-business-continuity.md) . Mezi ně patří:
+Kromě toho SQL Database poskytuje integrovanou funkci pro [provozní kontinuitu a globální škálovatelnost](sql-database-business-continuity.md) . Tady jsou některé z nich:
 
 - [Automatické zálohování](sql-database-automated-backups.md):
 
@@ -223,7 +223,7 @@ Aktuální verze SQL Database je V12. V11 verze je vyřazená.
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>Můžu řídit, kdy dochází k výpadkům při opravování?
 
-Ne. Pokud ve své aplikaci použijete [logiku opakování](sql-database-develop-overview.md#resiliency) , nemusíte mít dopad na opravy. Další informace najdete v tématu [plánování událostí údržby Azure v Azure SQL Database](sql-database-planned-maintenance.md).
+No. Pokud ve své aplikaci použijete [logiku opakování](sql-database-develop-overview.md#resiliency) , nemusíte mít dopad na opravy. Další informace najdete v tématu [plánování událostí údržby Azure v Azure SQL Database](sql-database-planned-maintenance.md).
 
 ### <a name="azure-hybrid-benefit-questions"></a>Zvýhodněné hybridní využití Azure dotazy
 
@@ -254,7 +254,7 @@ Zákazníci SQL Database mají pro SQL Server k Zvýhodněné hybridní využit�
 
 - [Výměna z stacku DBA](https://dba.stackexchange.com/questions/tagged/sql-server): Položte otázky týkající se správy databáze.
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): Položte otázky pro vývoj.
-- [Fóra MSDN](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Položte technické dotazy.
+- [Microsoft Q&Stránka s otázkou](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html): Položte technické dotazy.
 - [Zpětná vazba](https://aka.ms/sqlfeedback): nahlásit chyby a funkci žádosti.
 - [Reddit](https://www.reddit.com/r/SQLServer/): diskuze o SQL Server.
 

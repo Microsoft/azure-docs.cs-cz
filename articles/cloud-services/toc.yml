@@ -115,7 +115,7 @@
               href: cloud-services-performance-testing-visual-studio-profiler.md
         - name: Povolení diagnostiky
           items:
-            - name: Azure Powershell
+            - name: Azure PowerShell
               href: cloud-services-diagnostics-powershell.md
             - name: .NET
               href: cloud-services-dotnet-diagnostics.md
@@ -191,8 +191,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Postup výuky
       href: 'https://azure.microsoft.com/documentation/learning-paths/cloud-services/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: Cenová kalkulačka

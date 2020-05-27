@@ -4,12 +4,12 @@ description: Přehled služby Azure blockchain Workbench Preview a jejích možn
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 47e03e4498a6ff0c672b059ad50143c4017b865b
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 65eea1b87daf31908d96e95bff0c12b72e4791c6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714912"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835899"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Co je Azure Blockchain Workbench?
 
@@ -55,7 +55,7 @@ Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce,
 
 Spolupracujte s odborníky z Microsoftu a komunitou Azure blockchain.
 
-* [Azure blockchain Q –&Fórum](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
+* [Microsoft Q&Stránka s otázkou pro Azure blockchain](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
 * [Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 

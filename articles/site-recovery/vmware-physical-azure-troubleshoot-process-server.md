@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79256858"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835797"
 ---
 # <a name="troubleshoot-the-process-server"></a>Řešení potíží s procesovým serverem
 
@@ -32,9 +32,9 @@ Než začnete řešit potíže:
 
 Pro optimální výkon procesových serverů jsme shromáždili řadu obecných osvědčených postupů.
 
-**Osvědčené postupy** | **Zobrazí**
+**Osvědčené postupy** | **Podrobnosti**
 --- |---
-**Využívání** | Ujistěte se, že se konfigurační server/samostatný procesový Server používá pouze k zamýšlenému účelu. Nespouštějte na počítači nic jiného.
+**Využití** | Ujistěte se, že se konfigurační server/samostatný procesový Server používá pouze k zamýšlenému účelu. Nespouštějte na počítači nic jiného.
 **IP adresa** | Ujistěte se, že procesový Server má statickou adresu IPv4 a nemá nakonfigurován překlad adres (NAT).
 **Řízení paměti a využití CPU** |Ponechte využití CPU a paměti pod 70%.
 **Zajistěte volné místo** | Volné místo označuje místo na disku mezipaměti na procesovém serveru. Data replikace se ukládají do mezipaměti, než se nahrají do Azure.<br/><br/> Nechte volné místo nad 25%. Pokud překročíte 20%, replikace se omezí pro replikované počítače, které jsou přidružené k procesu serveru.
@@ -51,15 +51,15 @@ Procesový Server vygeneruje množství upozornění na stav. Tyto výstrahy a d
 
 **Typ upozornění** | **Chyba** | **Řešení potíží**
 --- | --- | --- 
-![V pořádku][green] | Žádná  | Procesový Server je připojený a v pořádku.
+![V pořádku][green] | Žádné  | Procesový Server je připojený a v pořádku.
 ![Upozornění][yellow] | Zadané služby nejsou spuštěny. | 1. Ověřte, zda jsou služby spuštěny.<br/> 2. Pokud služby běží podle očekávání, postupujte podle pokynů níže a odstraňte potíže s [připojením a replikací](#check-connectivity-and-replication).
 ![Upozornění][yellow]  | Využití CPU > 80% za posledních 15 minut. | 1. nepřidávejte nové počítače.<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, se zarovnají k [definovaným limitům](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.
-![Kritická][red] |  Využití CPU > 95% za posledních 15 minut. | 1. nepřidávejte nové počítače.<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, se zarovnají k [definovaným limitům](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.<br/> 4. Pokud potíže potrvají, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzického serveru.
+![Kritické][red] |  Využití CPU > 95% za posledních 15 minut. | 1. nepřidávejte nové počítače.<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, se zarovnají k [definovaným limitům](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.<br/> 4. Pokud potíže potrvají, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzického serveru.
 ![Upozornění][yellow] | Využití paměti > 80% za posledních 15 minut. |  1. nepřidávejte nové počítače.<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, se zarovnají k [definovaným limitům](site-recovery-plan-capacity-vmware.md#capacity-considerations)a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>3. postupujte podle pokynů souvisejících s upozorněním.<br/> 4. Pokud potíže potrvají, postupujte podle pokynů níže, abyste vyřešili [problémy s připojením a replikací](#check-connectivity-and-replication).
-![Kritická][red] | Využití paměti > 95% za posledních 15 minut. | 1. nepřidávejte nové počítače a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/> 2. postupujte podle pokynů souvisejících s upozorněním.<br/> 3.4. Pokud se problém opakuje, postupujte podle pokynů níže, abyste vyřešili [problémy s připojením a replikací](#check-connectivity-and-replication).<br/> 4. Pokud potíže potrvají, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro potíže s replikací VMware/fyzického serveru.
+![Kritické][red] | Využití paměti > 95% za posledních 15 minut. | 1. nepřidávejte nové počítače a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/> 2. postupujte podle pokynů souvisejících s upozorněním.<br/> 3.4. Pokud se problém opakuje, postupujte podle pokynů níže, abyste vyřešili [problémy s připojením a replikací](#check-connectivity-and-replication).<br/> 4. Pokud potíže potrvají, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro potíže s replikací VMware/fyzického serveru.
 ![Upozornění][yellow] | Místo pro složku mezipaměti < 30% za posledních 15 minut. | 1. nepřidávejte nové počítače a zvažte nastavení [dalšího procesového serveru](vmware-azure-set-up-process-server-scale.md).<br/>2. Ověřte, že počet virtuálních počítačů, které používají procesový Server, jsou zarovnané na [pokyny](site-recovery-plan-capacity-vmware.md#capacity-considerations).<br/> 3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.
-![Kritická][red] |  Volné místo < 25% za posledních 15 minut | 1. postupujte podle pokynů souvisejících s upozorněním pro tento problém.<br/> 2.3. [Při řešení potíží s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.<br/> 3. Pokud potíže potrvají, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzického serveru.
-![Kritická][red] | Žádný prezenční signál od procesového serveru po dobu 15 minut nebo déle. Služba tmansvs nekomunikuje s konfiguračním serverem. | 1) ověřte, že je procesový Server v provozu.<br/> 2. Ověřte, že je na procesovém serveru spuštěný tmassvc.<br/> 3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.
+![Kritické][red] |  Volné místo < 25% za posledních 15 minut | 1. postupujte podle pokynů souvisejících s upozorněním pro tento problém.<br/> 2.3. [Při řešení potíží s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.<br/> 3. Pokud potíže potrvají, spusťte [Plánovač nasazení](https://aka.ms/asr-v2a-deployment-planner) pro replikaci VMware/fyzického serveru.
+![Kritické][red] | Žádný prezenční signál od procesového serveru po dobu 15 minut nebo déle. Služba tmansvs nekomunikuje s konfiguračním serverem. | 1) ověřte, že je procesový Server v provozu.<br/> 2. Ověřte, že je na procesovém serveru spuštěný tmassvc.<br/> 3. [při řešení problémů s připojením a replikací](#check-connectivity-and-replication)postupujte podle následujících pokynů.
 
 
 ![Klíč tabulky](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
@@ -113,7 +113,7 @@ Ověřte, že Site Recovery žádný antivirový software na replikovaném poč�
 3. Ověřte, zda připojení proběhlo úspěšně.
 
 
-**Připojení** | **Zobrazí** | **Akce**
+**Možnosti připojení** | **Podrobnosti** | **Akce**
 --- | --- | ---
 **Úspěšnou** | Telnet zobrazí prázdnou obrazovku a procesový Server je dostupný. | Není vyžadována žádná další akce.
 **Neúspěšné** | Nemůžete se připojit | Ujistěte se, že na procesovém serveru je povolený příchozí port 9443. Například pokud máte hraniční síť nebo monitorovaná podsíť. Znovu ověřte připojení.
@@ -235,7 +235,7 @@ Ověřte, jestli brána firewall na procesovém serveru blokuje přístup na zá
 
     a) vyhledejte **Microsoft Azure Backup**.
 
-    b) otevřete **Microsoft Azure Backup**a vyberte **Akce** > **vlastnosti změny**.
+    b) otevřete **Microsoft Azure Backup**a vyberte **Akce**  >  **vlastnosti změny**.
 
     c) na kartě **konfigurace proxy** serveru musí být adresa proxy shodná s adresou proxy serveru, která je uvedena v nastavení registru. Pokud ne, změňte ji na stejnou adresu.
 
@@ -246,7 +246,7 @@ Zvyšte šířku pásma mezi procesovým serverem a Azure a potom zkontrolujte, 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete další informace, pošlete svůj dotaz do [fóra Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
+Pokud potřebujete další nápovědu, vystavte svůj dotaz na [stránce s dotazem Microsoft Q&Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

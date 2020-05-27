@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 54e44a12f593d2074eefe5b2ff890863db3199f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ef38829a18f9e43f38cbdb291a799110d710cd7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478951"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834726"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při převzetí služeb při selhání virtuálního počítače VMware nebo fyzického počítače do Azure
 
@@ -76,10 +76,10 @@ Chcete-li ručně změnit typ spouštění ovladačů pro **hostovaný operačn�
 
 Pokud se tlačítko **připojit** na virtuálním počítači služby převzít služby při selhání v Azure zobrazuje šedě a nejste k Azure připojeni přes Express Route nebo připojení VPN typu Site-to-site,
 
-1. Přejděte na**síť** **virtuálních počítačů** > , klikněte na název požadovaného síťového rozhraní.  ![síťové rozhraní](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+1. Přejděte na **síť virtuálních počítačů**  >  **Networking**, klikněte na název požadovaného síťového rozhraní.  ![síťové rozhraní](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
 2. Přejděte do části **Konfigurace protokolu IP**a potom klikněte na pole název požadované konfigurace protokolu IP. ![IPConfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Pokud chcete povolit veřejnou IP adresu, klikněte na **Povolit**. ![Povolit IP adresu](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Klikněte na **konfigurovat požadovaná nastavení** > **vytvořit nový**. ![Vytvořit nový](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+4. Klikněte na **konfigurovat požadovaná nastavení**  >  **vytvořit nový**. ![Vytvořit nový](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. Zadejte název veřejné adresy, zvolte výchozí možnosti pro položku **SKU** a **přiřazení**a pak klikněte na **OK**.
 6. Nyní uložte provedené změny kliknutím na **Uložit**.
 7. Zavřete panely a přejděte do části **Přehled** virtuálního počítače pro připojení/RDP.
@@ -173,4 +173,4 @@ Problém vyřešíte takto:
 - Řešení potíží s [připojením RDP k virtuálnímu počítači s Windows](../virtual-machines/windows/troubleshoot-rdp-connection.md)
 - Řešení potíží s [připojením SSH k virtuálnímu počítači se systémem Linux](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)
 
-Pokud potřebujete další informace, odešlete dotaz na [Site Recovery Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) nebo ponechte komentář na konci tohoto dokumentu. Máme aktivní komunitu, která vám může pomoct.
+Pokud potřebujete další nápovědu, odešlete dotaz do souboru [Microsoft Q&stránku s otázkou pro Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html) nebo ponechte komentář na konci tohoto dokumentu. Máme aktivní komunitu, která vám může pomoct.

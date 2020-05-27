@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 2bd1f59d5cf33ae7f1f2e33e6c3f1312b5a13e61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8219fba44be608a9fd31139a89c8dac2cc3e3082
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127590"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835406"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro Azure Stream Analytics úlohy
 
@@ -64,11 +64,11 @@ Následující výstrahy jsou doporučeny pro sledování výkonu Stream Analyti
 |Zpoždění vodoznaku|Větší než|Maximum|V případě, že průměrná hodnota této metriky za posledních 15 minut je větší než pozdě tolerance doručení (v sekundách). Pokud jste nezměnili toleranci pozdního doručení, je výchozí hodnota nastavená na 5 sekund.|Zkuste zvýšit počet služby SUs nebo virtuálního dotazu. Další informace o službě SUs najdete v tématu [pochopení a úprava jednotek streamování](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Další informace o virtuálního dotazu naleznete v tématu [využití paralelismu dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
 |Chyby při deserializaci vstupu|Větší než|Celkem|0|Zkontrolujte aktivity nebo protokoly prostředků a proveďte příslušné změny ve vstupu. Další informace o protokolech prostředků najdete v tématu [řešení potíží s Azure Stream Analytics pomocí protokolů prostředků](stream-analytics-job-diagnostic-logs.md) .|
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
 Další podrobnosti o konfiguraci výstrah v Azure Portal najdete v tématu [přijímání oznámení o výstrahách](../azure-monitor/platform/alerts-overview.md).  
 
-Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)

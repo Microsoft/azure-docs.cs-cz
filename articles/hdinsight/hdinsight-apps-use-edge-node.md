@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: f6dea00bf3b3e8a58f42da8fd8ad59ccec2dea72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17c73866a11aae23efea90073f64b61808c13a35
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537793"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834709"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDInsight
 
@@ -61,17 +61,18 @@ Po vytvoření hraničního uzlu se můžete připojit k hraničnímu uzlu pomoc
 > [!WARNING]
 > Vlastní komponenty, které jsou nainstalované na hraničním uzlu, přijímají komerčně přiměřenou podporu od Microsoftu. To může vést k řešení problémů, ke kterým dochází. Nebo můžete být odkazováni na prostředky komunity, které vám pomohou další pomoc. Níže jsou uvedeny některé z nejaktivnějších webů, které vám pomůžou získat nápovědu od komunity:
 >
-> * [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
+> * [Microsoft Q&Stránka s otázkou pro HDInsight] (https://docs.microsoft.com/answers/topics/azure-hdinsight.html
+
 > * [https://stackoverflow.com](https://stackoverflow.com).
 >
-> Pokud používáte technologii Apache, může být možné najít pomoc prostřednictvím webů Apache v systému [https://apache.org](https://apache.org), jako je například web [Apache Hadoop](https://hadoop.apache.org/) .
+> Pokud používáte technologii Apache, může být možné najít pomoc prostřednictvím webů Apache v systému [https://apache.org](https://apache.org) , jako je například web [Apache Hadoop](https://hadoop.apache.org/) .
 
 > [!IMPORTANT]
 > Ubuntu images budou k dispozici pro nové vytvoření clusteru HDInsight do 3 měsíců od publikování. Od ledna 2019 **se automaticky** neopravují spuštěné clustery (včetně hraničních uzlů). Pokud chtějí zákazníci opravit běžící cluster, musí použít akce skriptu nebo jiné mechanismy.  Další informace najdete v tématu [opravy operačního systému pro HDInsight](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Přidání hraničního uzlu do existujícího clusteru
 
-V této části použijete šablonu Správce prostředků k přidání hraničního uzlu do stávajícího clusteru HDInsight.  Šablonu Správce prostředků můžete najít na [GitHubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Šablona Správce prostředků volá akci skriptu umístěnou na adrese https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skript neprovede žádné akce.  Je k tomu předvedení volání akce skriptu z Správce prostředků šablony.
+V této části použijete šablonu Správce prostředků k přidání hraničního uzlu do stávajícího clusteru HDInsight.  Šablonu Správce prostředků můžete najít na [GitHubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Šablona Správce prostředků volá akci skriptu umístěnou na adrese https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh . Skript neprovede žádné akce.  Je k tomu předvedení volání akce skriptu z Správce prostředků šablony.
 
 1. Vyberte následující obrázek pro přihlášení do Azure a otevřete šablonu Azure Resource Manager v Azure Portal.
 
@@ -89,11 +90,11 @@ V této části použijete šablonu Správce prostředků k přidání hraničn�
 1. Zaškrtněte možnost **Souhlasím s podmínkami a ujednáními uvedenými nahoře**a potom výběrem **koupit** vytvořte hraniční uzel.
 
 > [!IMPORTANT]  
-> Ujistěte se, že jste vybrali skupinu prostředků Azure pro existující cluster HDInsight.  V opačném případě se zobrazí chybová zpráva "u vnořeného prostředku nelze provést požadovanou operaci. Nenašel se nadřazený&lt;prostředek> název_clusteru.
+> Ujistěte se, že jste vybrali skupinu prostředků Azure pro existující cluster HDInsight.  V opačném případě se zobrazí chybová zpráva "u vnořeného prostředku nelze provést požadovanou operaci. &lt;Nenašel se nadřazený prostředek> název_clusteru.
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Přidat hraniční uzel při vytváření clusteru
 
-V této části použijete šablonu Správce prostředků k vytvoření clusteru HDInsight s hraničním uzlem.  Šablonu Správce prostředků najdete v [galerii šablon pro rychlý Start Azure](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Šablona Správce prostředků volá akci skriptu umístěnou na adrese https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh. Skript neprovede žádné akce.  Je k tomu předvedení volání akce skriptu z Správce prostředků šablony.
+V této části použijete šablonu Správce prostředků k vytvoření clusteru HDInsight s hraničním uzlem.  Šablonu Správce prostředků najdete v [galerii šablon pro rychlý Start Azure](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Šablona Správce prostředků volá akci skriptu umístěnou na adrese https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh . Skript neprovede žádné akce.  Je k tomu předvedení volání akce skriptu z Správce prostředků šablony.
 
 1. Vytvořte cluster HDInsight, pokud ho ještě nemáte.  Viz Začínáme [používat Hadoop ve službě HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -125,7 +126,7 @@ Do clusteru HDInsight můžete přidat několik hraničních uzlů.  Konfiguraci
 
 ## <a name="access-an-edge-node"></a>Přístup k hraničnímu uzlu
 
-Koncový bod SSH na hraničním &lt;uzlu je EdgeNodeName>. &lt;Název_clusteru> – SSH.azurehdinsight.NET:22.  Například new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22.
+Koncový bod SSH na hraničním uzlu je &lt; EdgeNodeName>. &lt; Název_clusteru> – ssh.azurehdinsight.net:22.  Například new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22.
 
 Hraniční uzel se zobrazí jako aplikace na Azure Portal.  Portál poskytuje informace pro přístup k hraničnímu uzlu pomocí protokolu SSH.
 

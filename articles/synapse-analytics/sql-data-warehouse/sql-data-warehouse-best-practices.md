@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4462bf0fc2057922340eb01cb8c786dbc63ce290
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce1121a4a006e4208c76193a38262d4309e67584
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745352"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834437"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Osvědčené postupy pro synapse fond SQL ve službě Azure synapse Analytics (dřív SQL DW)
 
@@ -54,7 +54,7 @@ Viz také [Monitorování úloh pomocí zobrazení dynamické správy](sql-data-
 
 ## <a name="group-insert-statements-into-batches"></a>Seskupujte příkazy INSERT do dávek
 
-Jednorázové načtení do malé tabulky s příkazem INSERT nebo dokonce pravidelným načtením vyhledávacího objektu se může ve vašich potřebách vykonat i v příkazu jako `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  
+Jednorázové načtení do malé tabulky s příkazem INSERT nebo dokonce pravidelným načtením vyhledávacího objektu se může ve vašich potřebách vykonat i v příkazu jako `INSERT INTO MyLookup VALUES (1, 'Type 1')` .  
 
 Pokud však v průběhu dne potřebujete načíst tisíce nebo miliony řádků, můžete zjistit, že vám příkazy INSERT s jedním prvkem jednoduše nestačí.  Místo toho vyvíjejte své procesy tak, aby zapisovaly do souboru, který bude pravidelně kontrolovat a načítat další proces.
 
@@ -180,7 +180,7 @@ Viz také [třídy prostředků pro správu úloh](resource-classes-for-workload
 
 Přečtěte si také článek [Řešení potíží](sql-data-warehouse-troubleshoot.md), ve kterém najdete běžné problémy a jejich řešení.
 
-Pokud jste v tomto článku nenašli, co jste hledali, zkuste vyhledat všechny dokumenty Azure synapse pomocí hledání dokumentů na levé straně této stránky.  [Fórum Azure synapse](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse. Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
+Pokud jste v tomto článku nenašli, co jste hledali, zkuste vyhledat všechny dokumenty Azure synapse pomocí hledání dokumentů na levé straně této stránky.  [Microsoft Q&Stránka s otázkou pro Azure synapse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) je místo, kde můžete klást otázky ostatním uživatelům a do skupiny produktů Azure synapse. Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  
 
 Pokud dáváte přednost dotazování na Stack Overflow, máme také [fórum služby Azure Synapse Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
 

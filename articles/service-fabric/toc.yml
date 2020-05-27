@@ -892,8 +892,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Časté dotazy
       href: service-fabric-common-questions.md
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
     - name: Ochranné mantinely nasazení Azure Resource Manageru
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: Ceny

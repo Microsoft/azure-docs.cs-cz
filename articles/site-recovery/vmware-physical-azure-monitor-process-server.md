@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 296254db83a065623b692d7947c130dfd71cd413
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257066"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835049"
 ---
 # <a name="monitor-the-process-server"></a>Monitorování procesového serveru
 
@@ -51,7 +51,7 @@ Aby se zabránilo problémům s procesovým serverem, je důležité:
 
 Procesový Server vygeneruje množství upozornění na stav, shrnuté v následující tabulce.
 
-**Typ upozornění** | **Zobrazí**
+**Typ upozornění** | **Podrobnosti**
 --- | ---
 ![V pořádku][green] | Procesový Server je připojený a v pořádku.
 ![Upozornění][yellow] | Využití CPU > 80% za posledních 15 minut
@@ -59,11 +59,11 @@ Procesový Server vygeneruje množství upozornění na stav, shrnuté v násled
 ![Upozornění][yellow] | Volné místo ve složce mezipaměti < 30% za posledních 15 minut
 ![Upozornění][yellow] | Site Recovery monitorovat nevyřízená nebo odchozí data každých pět minut a odhadne, že data v mezipaměti procesového serveru nejde do 30 minut nahrát do Azure.
 ![Upozornění][yellow] | Služby procesového serveru nejsou spuštěné za posledních 15 minut.
-![Kritická][red] | Využití CPU > 95% za posledních 15 minut
-![Kritická][red] | Využití paměti > 95% za posledních 15 minut.
-![Kritická][red] | Volné místo ve složce mezipaměti < 25% za posledních 15 minut
-![Kritická][red] | Site Recovery monitorovat nevyřízená nebo odchozí data každých pět minut a odhadne, že data v mezipaměti procesového serveru nejde do Azure nahrávat během 45 minut.
-![Kritická][red] | Žádný prezenční signál od procesového serveru po dobu 15 minut.
+![Kritické][red] | Využití CPU > 95% za posledních 15 minut
+![Kritické][red] | Využití paměti > 95% za posledních 15 minut.
+![Kritické][red] | Volné místo ve složce mezipaměti < 25% za posledních 15 minut
+![Kritické][red] | Site Recovery monitorovat nevyřízená nebo odchozí data každých pět minut a odhadne, že data v mezipaměti procesového serveru nejde do Azure nahrávat během 45 minut.
+![Kritické][red] | Žádný prezenční signál od procesového serveru po dobu 15 minut.
 
 ![Klíč tabulky](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 
@@ -96,7 +96,7 @@ Můžete také monitorovat procesní servery v trezoru v části **Site Recovery
 ## <a name="next-steps"></a>Další kroky
 
 - Pokud máte nějaké problémy s procesovým serverem, postupujte podle pokynů pro [řešení potíží](vmware-physical-azure-troubleshoot-process-server.md) .
-- Pokud potřebujete další informace, pošlete svůj dotaz do [fóra Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr). 
+- Pokud potřebujete další nápovědu, vystavte svůj dotaz na [stránce s dotazem Microsoft Q&Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

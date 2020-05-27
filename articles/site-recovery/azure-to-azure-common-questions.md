@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bc2acc4303a270a2bf71f0c9ff249b60a0328a09
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983274"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834573"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné otázky: zotavení po havárii z Azure do Azure
 
@@ -28,7 +28,7 @@ Každá instance, která je chráněná pomocí Azure Site Recovery, je pro prvn
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Během prvních 31 dnů se mi účtují nějaké další poplatky za Azure?
 
-Ano. I když je během prvních 31 dní chráněné instance Azure Site Recovery volná, můžou se vám účtovat poplatky za Azure Storage, transakce úložiště a datové přenosy. U obnoveného virtuálního počítače můžou být účtovány i poplatky za výpočetní výkon Azure. Získejte podrobné informace o cenách za [Azure Site Recovery ceny](https://azure.microsoft.com/pricing/details/site-recovery).
+Yes. I když je během prvních 31 dní chráněné instance Azure Site Recovery volná, můžou se vám účtovat poplatky za Azure Storage, transakce úložiště a datové přenosy. U obnoveného virtuálního počítače můžou být účtovány i poplatky za výpočetní výkon Azure. Získejte podrobné informace o cenách za [Azure Site Recovery ceny](https://azure.microsoft.com/pricing/details/site-recovery).
 
 ### <a name="what-are-the-best-practices-for-azure-virtual-machines-disaster-recovery"></a>Jaké jsou osvědčené postupy pro zotavení po havárii Azure Virtual Machines?
 
@@ -46,7 +46,7 @@ Tým Site Recovery týmu a Azure Capacity Management plánuje dostatečnou kapac
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Můžu replikovat virtuální počítače povolené prostřednictvím služby Azure Disk Encryption?
 
-Ano. Site Recovery podporuje zotavení po havárii virtuálních počítačů, které mají povolený Azure Disk Encryption. Když povolíte replikaci, Azure zkopíruje všechny požadované šifrovací klíče disku a tajné klíče ze zdrojové oblasti do cílové oblasti v kontextu uživatele. Pokud nemáte příslušná oprávnění, správce zabezpečení může ke kopírování klíčů a tajných kódů použít skript.
+Yes. Site Recovery podporuje zotavení po havárii virtuálních počítačů, které mají povolený Azure Disk Encryption. Když povolíte replikaci, Azure zkopíruje všechny požadované šifrovací klíče disku a tajné klíče ze zdrojové oblasti do cílové oblasti v kontextu uživatele. Pokud nemáte příslušná oprávnění, správce zabezpečení může ke kopírování klíčů a tajných kódů použít skript.
 
 - Site Recovery podporuje Azure Disk Encryption pro virtuální počítače Azure s Windows.
 - Site Recovery podporuje Azure Disk Encryption verze 0,1, která má schéma, které vyžaduje Azure Active Directory (Azure AD). Site Recovery také podporuje verzi 1,1, která nevyžaduje službu Azure AD. [Přečtěte si další informace o schématu rozšíření pro Azure Disk Encryption](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema).
@@ -163,7 +163,7 @@ Ne, Site Recovery bude uchovávat všechny předchozí body obnovení. V závisl
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Jak se po replikaci na virtuálním počítači povolí replikace, jak změním zásady replikace?
 
-Přejít na **Site Recovery trezor** > **Site Recovery** > **Zásady replikace**infrastruktury. Vyberte zásadu, kterou chcete upravit, a uložte změny. Všechny změny se projeví i u všech stávajících replikací.
+Přejít na **Site Recovery trezor**  >  **Site Recovery**  >  **Zásady replikace**infrastruktury. Vyberte zásadu, kterou chcete upravit, a uložte změny. Všechny změny se projeví i u všech stávajících replikací.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Má všechny body obnovení úplnou kopii virtuálního počítače nebo rozdílu?
 
@@ -234,7 +234,7 @@ Možnost **nejnovější (nejnižší RPO)** nejprve zpracuje všechna data, kte
 
 ### <a name="do-latest-lowest-rpo-recovery-points-have-an-impact-on-failover-rto"></a>Mají dopad na RTO pro převzetí služeb při selhání **nejnovější (nejnižší RPO)** body obnovení?
 
-Ano. Site Recovery zpracovává všechna nevyřízená data před převzetím služeb při selhání, takže tato možnost má vyšší cíl času obnovení (RTO) ve srovnání s jinými možnostmi.
+Yes. Site Recovery zpracovává všechna nevyřízená data před převzetím služeb při selhání, takže tato možnost má vyšší cíl času obnovení (RTO) ve srovnání s jinými možnostmi.
 
 ### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>Co znamená **poslední zpracovaná** možnost v bodech obnovení?
 
@@ -279,7 +279,7 @@ Ano, do svého plánu obnovení můžete integrovat Azure Automation Runbooky. P
 
 ### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>Převzetí služeb při selhání z primární oblasti do oblasti zotavení po havárii. Jsou virtuální počítače v oblasti DR chráněné automaticky?
 
-Ne. Při [převzetí služeb při selhání](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) virtuálních počítačů Azure z jedné oblasti do druhé se virtuální počítače spustí v oblasti zotavení po havárii v nechráněném stavu. K navrácení služeb virtuálních počítačů do primární oblasti je potřeba znovu nastavit [ochranu](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect) virtuálních počítačů v sekundární oblasti.
+No. Při [převzetí služeb při selhání](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) virtuálních počítačů Azure z jedné oblasti do druhé se virtuální počítače spustí v oblasti zotavení po havárii v nechráněném stavu. K navrácení služeb virtuálních počítačů do primární oblasti je potřeba znovu nastavit [ochranu](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect) virtuálních počítačů v sekundární oblasti.
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>V době ochrany Site Recovery replikuje úplná data ze sekundární oblasti do primární oblasti?
 
@@ -315,4 +315,4 @@ Ano, podporuje se jak šifrování, tak [šifrování v klidovém režimu v Azur
 
 - [Projděte si požadavky na podporu pro Azure do Azure](azure-to-azure-support-matrix.md).
 - [Nastavte replikaci z Azure do Azure](azure-to-azure-tutorial-enable-replication.md).
-- Pokud máte dotazy i po přečtení tohoto článku, publikujte je na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
+- Pokud máte dotazy i po přečtení tohoto článku, pošlete je na [stránce s dotazem na Microsoft Q&pro Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).

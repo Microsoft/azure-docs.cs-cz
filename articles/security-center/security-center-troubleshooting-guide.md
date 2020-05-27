@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e26744c2003bd55b33b638b15775c52abbe1dc32
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585328"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836001"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro službu Azure Security Center
 
@@ -132,7 +132,7 @@ Pokud dochází k problémům s načtením řídicího panelu služby Security C
 
 ## <a name="contacting-microsoft-support"></a>Kontaktování oddělení podpory společnosti Microsoft
 
-Některé potíže lze identifikovat podle pokynů v tomto článku, některé další jsou také dokumentovány ve veřejném [fóru](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) služby Security Center. Pokud však potřebujete další řešení potíží, můžete otevřít novou žádost o podporu pomocí **Azure Portal** , jak je znázorněno níže:
+Některé problémy je možné identifikovat pomocí pokynů uvedených v tomto článku, další informace najdete také na stránce s otázkou Security Center Public [&Microsoft Q](https://docs.microsoft.com/answers/topics/azure-security-center.html). Pokud však potřebujete další řešení potíží, můžete otevřít novou žádost o podporu pomocí **Azure Portal** , jak je znázorněno níže:
 
 ![Podpora společnosti Microsoft](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

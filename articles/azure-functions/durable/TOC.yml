@@ -131,8 +131,8 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Videa
       href: 'https://www.youtube.com/c/AzureFunctions'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-functions.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter

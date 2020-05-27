@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 94f11e306f866496d4ae03dad03b070d26d616e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1857d3ee8b607d91b6fdd13b4499518d06fb9913
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438995"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834539"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí prostředí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -25,8 +25,6 @@ ms.locfileid: "75438995"
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Šablona Správce prostředků](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
->
->
 
 
 > [!NOTE]
@@ -117,7 +115,7 @@ V tomto kroku propojíte se svým objektem pro vytváření dat svůj účet slu
         }
     }
     ```
-    Nahraďte **název účtu** názvem účtu služby Azure Storage a **klíč účtu** přístupovým klíčem k účtu Azure Storage. Informace o tom, jak získat přístupový klíč k úložišti, najdete v tématu [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
+    Nahraďte **název účtu** názvem svého účtu Azure Storage a **klíčem účtu** pomocí přístupového klíče účtu Azure Storage. Informace o tom, jak získat přístupový klíč k úložišti, najdete v tématu [Správa přístupových klíčů účtu úložiště](../../storage/common/storage-account-keys-manage.md).
 2. V prostředí Azure PowerShell přejděte do složky ADFGetStarted.
 3. Můžete použít rutinu **New-AzDataFactoryLinkedService** , která vytvoří propojenou službu. Tato rutina a další rutiny Data Factory používané v tomto kurzu vyžadují, abyste předávali hodnoty pro parametry *ResourceGroupName* a *DataFactory* . Alternativně můžete použít rutinu **Get-AzDataFactory** k získání objektu **DataFactory** a předání objektu bez zadání *ResourceGroupName* a *DataFactory* při každém spuštění rutiny. Spuštěním následujícího příkazu přiřaďte výstup rutiny **Get-AzDataFactory** k proměnné **$DF** .
 
@@ -170,7 +168,7 @@ V tomto kroku propojíte se svým objektem pro vytváření dat cluster HDInsigh
    * Místo používání clusteru HDInsight na vyžádání můžete použít **vlastní cluster HDInsight** . Podrobnosti najdete v tématu [Propojená služba HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
    * Cluster HDInsight vytvoří **výchozí kontejner** v úložišti objektů blob, které jste zadali ve formátu JSON (**linkedServiceName**). Při odstranění clusteru HDInsight neprovede odstranění tohoto kontejneru. Toto chování je záměrné. V případě propojené služby HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když se zpracuje řez, pokud neexistuje aktivní cluster (**TimeToLive**). Po dokončení zpracování se cluster automaticky odstraní.
 
-       Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: "ADF**yourdatafactoryname**-**linkedservicename**-DateTimeStamp". K odstranění kontejnerů ze služby Azure Blob Storage můžete použít nástroje, jako je třeba [Průzkumník úložišť od Microsoftu](https://storageexplorer.com/).
+       Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: "ADF**yourdatafactoryname** - **linkedservicename**-DateTimeStamp". K odstranění kontejnerů ze služby Azure Blob Storage můžete použít nástroje, jako je třeba [Průzkumník úložišť od Microsoftu](https://storageexplorer.com/).
 
      Podrobnosti najdete v tématu [Propojená služba HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 2. Spusťte rutinu **New-AzDataFactoryLinkedService** , která vytvoří propojenou službu s názvem HDInsightOnDemandLinkedService.
@@ -214,10 +212,10 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
 
    | Vlastnost | Popis |
    |:--- |:--- |
-   | type |Vlastnost type je nastavená na hodnotu AzureBlob, protože se data nachází ve službě Azure Blob Storage. |
+   | typ |Vlastnost type je nastavená na hodnotu AzureBlob, protože se data nachází ve službě Azure Blob Storage. |
    | linkedServiceName |Odkazuje na službu StorageLinkedService, kterou jste vytvořili předtím. |
    | fileName |Tato vlastnost je nepovinná. Pokud ji vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto případě se zpracovává jenom soubor input.log. |
-   | type |Soubory protokolů jsou v textovém formátu, takže použijeme hodnotu TextFormat. |
+   | typ |Soubory protokolů jsou v textovém formátu, takže použijeme hodnotu TextFormat. |
    | columnDelimiter |Sloupce v souborech protokolu jsou oddělené znakem čárky (,). |
    | frequency/interval |Frekvence je nastavená na hodnotu Month (Měsíc) a interval je 1, takže vstupní řezy jsou dostupné jednou za měsíc. |
    | external |Pokud vstupní data nevygenerovala služba Data Factory, je tato vlastnost nastavená na hodnotu true. |
@@ -315,7 +313,7 @@ V tomto kroku vytvoříte svůj první kanál s aktivitou **HDInsightHive**. Vst
     ```
     V tomto fragmentu kódu JSON vytváříte kanál sestávající z jediné aktivity, která zpracovává data v clusteru HDInsight pomocí skriptu Hive.
 
-    Soubor skriptu Hive **partitionweblogs.hql** je uložený v účtu služby Azure Storage (který určuje služba scriptLinkedService s názvem **StorageLinkedService**) a ve složce **script** v kontejneru **adfgetstarted**.
+    Soubor skriptu podregistru **partitionweblogs. HQL**je uložený v účtu Azure Storage (určený parametrem scriptLinkedService, nazvaným **StorageLinkedService**) a ve složce **Script** v kontejneru **adfgetstarted**.
 
     Oddíl **defines** určuje nastavení běhového prostředí, které se předá skriptu Hive jako konfigurační hodnoty Hive (např. ${hiveconf:inputtable}, ${hiveconf:partitionedtable}).
 
@@ -416,7 +414,7 @@ V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDIns
 | Téma | Popis |
 |:--- |:--- |
 | [Referenční informace o rutinách služby Data Factory](/powershell/module/az.datafactory) |Tady najdete rozsáhlou dokumentaci o rutinách služby Data Factory. |
-| [Kanály](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |
+| [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |
 | [Datové sady](data-factory-create-datasets.md) |Tento článek vám pomůže pochopit datové sady ve službě Azure Data Factory. |
 | [Plánování a provádění](data-factory-scheduling-and-execution.md) |Tento článek vysvětluje aspekty plánování a provádění aplikačního modelu služby Azure Data Factory. |
 | [Monitorování a správa kanálů pomocí monitorovací aplikace](data-factory-monitor-manage-app.md) |Tento článek popisuje, jak monitorovat, spravovat a ladit kanály pomocí aplikace pro monitorování a správu. |

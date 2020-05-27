@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: f555d603756159dd108345260d71233c23c01ce5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 9305d0d6443c923c680af0d5fafc58887dadb902
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715711"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835287"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Přehled funkce Hybrid Runbook Worker
 
@@ -61,7 +61,7 @@ Doporučujeme používat adresy uvedené při definování [výjimek](automation
 
 Pokud máte účet Automation, který je definovaný pro konkrétní oblast, můžete Hybrid Runbook Worker komunikaci omezit na příslušné oblastní datové centrum. Následující tabulka uvádí záznam DNS pro každou oblast.
 
-| **Oblast** | **Záznam DNS** |
+| **Věřitel** | **Záznam DNS** |
 | --- | --- |
 | Austrálie – střed |ac-jobruntimedata-prod-su1.azure-automation.net</br>ac-agentservice-prod-1.azure-automation.net |
 | Austrálie – východ |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
@@ -133,4 +133,4 @@ Protože mají přístup k prostředkům mimo Azure, Runbooky spouštěné v Hyb
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o tom, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí, najdete v tématu [spouštění Runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
-* Informace o řešení potíží s procesy Hybrid Runbook Worker najdete v tématu [řešení potíží s Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#general).
+* Informace o tom, jak řešit potíže s procesy Hybrid Runbook Worker, najdete v tématu [řešení potíží s Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#general).

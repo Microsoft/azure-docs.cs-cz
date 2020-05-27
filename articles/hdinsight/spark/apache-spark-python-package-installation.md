@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 13ea1043d05c9f349e25623086c2908e176772a8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: ec914db1e26e6f052715440c3e418df09fe8a361
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583947"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835967"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
@@ -41,7 +41,7 @@ Existují dva typy open source komponent, které jsou k dispozici ve službě HD
 > [!IMPORTANT]
 > Součásti dodávané s clusterem HDInsight jsou plně podporované. Podpora Microsoftu pomáhá izolovat a řešit problémy související s těmito součástmi.
 >
-> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. Tato podpora může být schopná vyřešit problém nebo může požádat o zapojení dostupných kanálů pro technologie Open Source, kde se nachází hloubkové odbornosti pro danou technologii. Například existuje mnoho webů komunity, které lze použít jako: [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) `https://stackoverflow.com`. Projekty Apache také obsahují projektové weby `https://apache.org`.
+> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. Tato podpora může být schopná vyřešit problém nebo může požádat o zapojení dostupných kanálů pro technologie Open Source, kde se nachází hloubkové odbornosti pro danou technologii. Například existuje mnoho webů komunity, které lze použít, například: [Microsoft Q&stránku s otázkou pro HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html), `https://stackoverflow.com` . Projekty Apache také obsahují projektové weby `https://apache.org` .
 
 ## <a name="understand-default-python-installation"></a>Principy výchozí instalace Pythonu
 
@@ -146,9 +146,9 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
 
 ## <a name="known-issue"></a>Známý problém
 
-K dispozici je známá chyba pro Anaconda `4.7.11`verze `4.7.12`, a `4.8.0`. Pokud vidíte, že se akce skriptu přeruší `"Collecting package metadata (repodata.json): ...working..."` a dojde k `"Python script has been killed due to timeout after waiting 3600 secs"`selhání. [Tento skript](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) si můžete stáhnout a spustit jako akce skriptu na všech uzlech, aby se problém vyřešil.
+K dispozici je známá chyba pro Anaconda verze `4.7.11` , `4.7.12` a `4.8.0` . Pokud vidíte, že se akce skriptu přeruší `"Collecting package metadata (repodata.json): ...working..."` a dojde k selhání `"Python script has been killed due to timeout after waiting 3600 secs"` . [Tento skript](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) si můžete stáhnout a spustit jako akce skriptu na všech uzlech, aby se problém vyřešil.
 
-Ke kontrole verze Anaconda můžete použít SSH pro uzel záhlaví clusteru a spustit `/usr/bin/anaconda/bin/conda --v`.
+Ke kontrole verze Anaconda můžete použít SSH pro uzel záhlaví clusteru a spustit `/usr/bin/anaconda/bin/conda --v` .
 
 ## <a name="next-steps"></a>Další kroky
 

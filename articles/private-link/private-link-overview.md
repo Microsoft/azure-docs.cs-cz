@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48ce72ee501252e35388f958b5c2e166edc2678f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 21289874792987e35fa1cc5731a63e3f55fedc35
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196169"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835763"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -65,6 +65,8 @@ Privátní propojení Azure přináší následující výhody:
 |Azure Machine Learning | VÝCHODNÍ USA, ZÁPADNÍ USA 2, STŘED USA – JIH      |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | IoT Hub | Všechny veřejné oblasti    |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | VÝCHODNÍ USA, ZÁPADNÍ USA 2, STŘED USA – JIH      |   Preview   <br/> [Další informace](https://aka.ms/asrs/privatelink)   |
+| Azure Monitor <br/>(Log Analytics & Application Insights) | Všechny veřejné oblasti      |   GA   <br/> [Další informace](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   |
+
 
 Nejaktuálnější oznámení najdete na [stránce s aktualizacemi služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
