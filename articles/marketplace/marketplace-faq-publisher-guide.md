@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 5abb373d4b3f9c66b2dc2f103e4a89ef0dc5af89
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1eae45eea35a118be51dc1e2f95055238212560d
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744836"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800656"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -71,7 +71,7 @@ Další informace najdete v tématu [Vítejte na komerčním webu Marketplace](h
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Návody získat pomoc s pracovníky na komerčním webu Marketplace?
 
-Pokud chcete kontaktovat tým podpory pro vydavatele na webu Marketplace, můžete [Odeslat lístek podpory](https://partner.microsoft.com/support/v2/?stage=1) v rámci partnerského centra. 
+Pokud chcete kontaktovat tým podpory pro vydavatele na webu Marketplace, můžete [Odeslat lístek podpory](https://aka.ms/marketplacepublishersupport) v rámci partnerského centra. 
 
 Pokud se chcete dozvědět o osvědčených postupech a sdílet informace, můžete se také [připojit k našemu komunitnímu fóru komunity](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222) .
 
@@ -302,7 +302,7 @@ Další informace najdete na webu [Výběr účtu a daňové formuláře](https:
 
 Zákazníci můžou v rámci určeného časového období zrušit odběry, aby mohli získat refundaci. U měsíčních předplatných je to 24 hodin a pro roční předplatné je 14 dní. Nabídky, které se účtují podle spotřeby po použití řešení, nejsou způsobilé k refundaci.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 ### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Kde můžu najít další informace o komerčním tržišti?
 

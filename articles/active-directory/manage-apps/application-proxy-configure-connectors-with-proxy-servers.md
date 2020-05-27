@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28915967dc7697c08b2bbd7118f7e2377418045d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 088a87f4c4eb200cfeecff1d2513fefdb0088a38
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647241"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827043"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
@@ -204,4 +204,4 @@ Pokud vidíte další kódy odpovědí, například 407 nebo 502, znamená to, �
 ## <a name="next-steps"></a>Další kroky
 
 * [Vysvětlení konektorů Azure Proxy aplikací služby AD](application-proxy-connectors.md)
-* Pokud máte problémy s problémy s připojením konektoru, položte svůj dotaz ve [fóru Azure Active Directory](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD) nebo vytvořte lístek s naším týmem podpory.
+* Pokud máte problémy s připojením konektoru, zeptejte se na stránku s [dotazem na Microsoft Q&pro Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html) nebo vytvořte lístek s týmem podpory.

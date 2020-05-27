@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 9133a7087285aa6e01a2431bf1a65dfa3c6f8857
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189092"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827960"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření samostatného clusteru běžícího na Windows Serveru
 Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server. To znamená, že můžete nasadit a spouštět aplikace Service Fabric v jakémkoli prostředí, které obsahuje sadu propojených počítačů se systémem Windows Server, je místní nebo s jakýmkoli poskytovatelem cloudu. Service Fabric poskytuje instalační balíček pro vytváření clusterů Service Fabric s názvem samostatný balíček Windows serveru. Tradiční Service Fabric clustery v Azure jsou k dispozici jako spravovaná služba, zatímco samostatné clustery Service Fabric jsou samoobslužné. Další informace o rozdílech najdete v tématu [porovnání clusterů Azure a samostatných Service Fabric](./service-fabric-deploy-anywhere.md).
@@ -25,7 +25,7 @@ Tento článek vás provede kroky pro vytvoření samostatného clusteru Service
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Získání podpory pro balíček Service Fabric pro Windows Server
-* Zeptejte se komunity Service Fabric samostatný balíček pro Windows Server ve [fóru Azure Service Fabric](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?).
+* Zeptejte se komunity na balíček Service Fabric Standalone pro Windows Server na [stránce s dotazem na Microsoft Q&pro Azure Service Fabric](https://docs.microsoft.com/answers/topics/azure-service-fabric.html).
 * Otevřete lístek pro [profesionální podporu pro Service Fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  Další informace o odborné podpoře od Microsoftu [najdete tady](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 * Podporu tohoto balíčku můžete také získat jako součást [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
 * Další podrobnosti najdete v tématu [Možnosti podpory pro Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
@@ -144,7 +144,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>Krok 3: Vizualizujte cluster pomocí Service Fabric Exploreru
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je nástroj vhodný pro vizualizaci clusteru a správu aplikací.  Service Fabric Explorer je služba, která běží v clusteru, ke kterému přistupujete pomocí prohlížeče, a to tak `http://localhost:19080/Explorer`, že přejdete na.
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je nástroj vhodný pro vizualizaci clusteru a správu aplikací.  Service Fabric Explorer je služba, která běží v clusteru, ke kterému přistupujete pomocí prohlížeče, a to tak, že přejdete na `http://localhost:19080/Explorer` .
 
 Řídicí panel clusteru poskytuje přehled o clusteru včetně souhrnu stavu aplikací a uzlů. Zobrazení uzlu obsahuje fyzické rozložení clusteru. Pro daný uzel můžete zjistit, které aplikace mají v uzlu nasazený kód.
 
@@ -172,7 +172,7 @@ Tento skript se dá spustit na jakémkoli počítači, který má oprávnění s
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Shromážděná data telemetrie a její odhlášení
-Ve výchozím nastavení produkt shromažďuje telemetrii o využití Service Fabric k vylepšení produktu. Analyzátor osvědčených postupů, který je spuštěn jako součást instalačního programu, kontroluje dostupnost [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)připojení. Pokud není dosažitelný, instalace se nezdařila, pokud nebudete odhlásit z telemetrie.
+Ve výchozím nastavení produkt shromažďuje telemetrii o využití Service Fabric k vylepšení produktu. Analyzátor osvědčených postupů, který je spuštěn jako součást instalačního programu, kontroluje dostupnost připojení [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) . Pokud není dosažitelný, instalace se nezdařila, pokud nebudete odhlásit z telemetrie.
 
 1. Kanál telemetrie se pokusí odeslat následující data do [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) každého dne. Je to nejlepší nahrávání a nemá žádný vliv na funkce clusteru. Telemetrie se odesílá jenom z uzlu, na kterém běží primární správce převzetí služeb při selhání. Žádné další uzly neodesílají telemetrii.
 2. Telemetrii se skládá z těchto možností:
@@ -203,7 +203,7 @@ Pro vypnutí telemetrie přidejte do *vlastností* konfigurace clusteru následu
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
 ## <a name="preview-features-included-in-this-package"></a>Funkce ve verzi Preview, které jsou součástí tohoto balíčku
-Žádné.
+Žádné
 
 
 > [!NOTE]

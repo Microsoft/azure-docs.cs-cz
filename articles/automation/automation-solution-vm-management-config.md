@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: dd3d48b358c41868f4d433f7fcc8301dbba98621
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 127c924da44c7e596d93b21d89ff4591a90ba7cf
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743744"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827671"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurace Start/Stop VMs during off-hours
 
@@ -177,6 +177,5 @@ Konfigurace funkce tak, aby se v určitou dobu zastavily jenom virtuální poč�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Povolit Start/Stop VMs during off-hours](automation-solution-vm-management.md)
-* [Dotazování protokolů z Start/Stop VMs during off-hours](automation-solution-vm-management-logs.md)
-* [Řešení potíží s Start/Stop VMs during off-hours](troubleshoot/start-stop-vm.md)
+* Chcete-li monitorovat funkci během operace, přečtěte si téma [protokoly dotazů z Start/Stop VMS during off-hours](automation-solution-vm-management-logs.md).
+* Pokud chcete řešit problémy při správě virtuálních počítačů, přečtěte si téma [řešení potíží s Start/Stop VMS during off-hours](troubleshoot/start-stop-vm.md).

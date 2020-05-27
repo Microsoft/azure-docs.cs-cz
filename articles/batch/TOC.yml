@@ -53,12 +53,26 @@
       items:
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
-    - name: Funkce pro vývojáře
-      href: batch-api-basics.md
+    - name: Prostředky a pracovní postup služby Batch
+      displayName: developer features
+      href: batch-service-workflow-features.md
+      items:
+        - name: Účty služby Batch
+          displayName: storage account
+          href: accounts.md
+        - name: Uzly a fondy
+          displayName: 'compute node, application package, scaling, schedule, os'
+          href: nodes-and-pools.md
+        - name: Úlohy a úkoly
+          displayName: Batch job
+          href: jobs-and-tasks.md
+        - name: Soubory a adresáře
+          displayName: Batch file
+          href: files-and-directories.md
     - name: Rozhraní API a nástroje
       href: batch-apis-tools.md
-    - name: Zjišťování a zpracování chyb služby Batch
-      href: batch-retry-after-errors.md
+    - name: Zpracování a detekce chyb
+      href: error-handling.md
     - name: Osvědčené postupy
       href: best-practices.md
     - name: Kvóty a omezení
@@ -91,6 +105,10 @@
           href: batch-aad-auth-management.md
         - name: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
           href: credential-access-key-vault.md
+        - name: Použití certifikátů se službou Batch
+          href: batch-certificates.md
+    - name: Použití balíčků aplikací
+      href: batch-application-packages.md
     - name: Kopírování souborů a aplikací do uzlů fondu
       items:
         - name: Kopírování aplikací a dat do uzlů fondu
