@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 87a9632ec2433b8698e3ae3761ba733aa6bc63a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd99934ca74736c1f80bd47d701120398437e27a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885680"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845317"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -66,11 +66,11 @@ Dočasná NameID je také podporována, ale v rozevíracím seznamu není k disp
 
 ### <a name="attributes"></a>Atributy
 
-Vyberte požadovaný zdroj pro deklaraci `NameIdentifier` (nebo NameId). Můžete vybrat z následujících možností.
+Vyberte požadovaný zdroj pro `NameIdentifier` deklaraci (nebo NameId). Můžete vybrat z následujících možností.
 
-| Název | Popis |
+| Name | Popis |
 |------|-------------|
-| E-mailu | E-mailová adresa uživatele |
+| E-mail | E-mailová adresa uživatele |
 | Třídy | Hlavní název uživatele (UPN) uživatele |
 | onpremisessamaccount | Název účtu SAM, který byl synchronizovaný z místní služby Azure AD |
 | objektu | ObjectID uživatele v Azure AD |
@@ -100,8 +100,8 @@ Můžete také použít funkce transformace deklarací identity.
 
 | Funkce | Popis |
 |----------|-------------|
-| **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com). |
-| **Join ()** | Připojí k atributu ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například jako hodnotu identifikátoru uživatele vyberete e-mailjoe_smith@contoso.com() a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com. |
+| **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com ). |
+| **Join ()** | Připojí k atributu ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například joe_smith@contoso.com jako hodnotu identifikátoru uživatele vyberete e-mail () a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com . |
 | **ToLower ()** | Převede znaky vybraného atributu na malá písmena. |
 | **ToUpper ()** | Převede znaky vybraného atributu na velká písmena. |
 
@@ -119,7 +119,7 @@ Chcete-li použít transformaci na atribut uživatele:
 
 1. V části **Spravovat deklaraci identity**vyberte *transformovat* jako zdroj deklarace a otevřete stránku **Spravovat transformaci** .
 2. Vyberte funkci z rozevíracího seznamu transformace. V závislosti na vybrané funkci budete muset zadat parametry a konstantní hodnotu pro vyhodnocení v transformaci. Další informace o dostupných funkcích najdete v následující tabulce.
-3. Chcete-li použít více transformací, klikněte na tlačítko **Přidat transformaci**. Můžete použít maximálně dvě transformace na deklaraci identity. Například můžete nejprve extrahovat předponu e-mailu `user.mail`. Pak zadejte řetězec na velká písmena.
+3. Chcete-li použít více transformací, klikněte na tlačítko **Přidat transformaci**. Můžete použít maximálně dvě transformace na deklaraci identity. Například můžete nejprve extrahovat předponu e-mailu `user.mail` . Pak zadejte řetězec na velká písmena.
 
    ![Upravit hodnotu NameID (identifikátor názvu)](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
@@ -127,11 +127,11 @@ K transformaci deklarací lze použít následující funkce.
 
 | Funkce | Popis |
 |----------|-------------|
-| **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com). |
-| **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. Pro transformaci deklarace NameID je spojení omezené na ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například jako hodnotu identifikátoru uživatele vyberete e-mailjoe_smith@contoso.com() a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com. |
+| **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com ). |
+| **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. Pro transformaci deklarace NameID je spojení omezené na ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například joe_smith@contoso.com jako hodnotu identifikátoru uživatele vyberete e-mail () a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com . |
 | **ToLower ()** | Převede znaky vybraného atributu na malá písmena. |
 | **ToUpper ()** | Převede znaky vybraného atributu na velká písmena. |
-| **Obsahuje ()** | Vytvoří výstup atributu nebo konstanty, pokud vstup odpovídá zadané hodnotě. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota e-mailová adresa uživatele, pokud obsahuje doménu "@contoso.com", jinak chcete vytvořit výstup hlavního názvu uživatele. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User. email<br/>*Hodnota*: "@contoso.com"<br/>Parametr 2 (výstup): User. email<br/>Parametr 3 (výstup, pokud se neshoduje): User. userPrincipalName |
+| **Obsahuje ()** | Vytvoří výstup atributu nebo konstanty, pokud vstup odpovídá zadané hodnotě. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota e-mailová adresa uživatele, pokud obsahuje doménu " @contoso.com ", jinak chcete vytvořit výstup hlavního názvu uživatele. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User. email<br/>*Hodnota*: " @contoso.com "<br/>Parametr 2 (výstup): User. email<br/>Parametr 3 (výstup, pokud se neshoduje): User. userPrincipalName |
 | **EndWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstupní hodnota končí zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ID zaměstnance uživatele, pokud ID zaměstnance končí na "000", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User. ČísloZaměstnance<br/>*Hodnota*: "000"<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
 | **StartWith()** | Vytvoří výstup atributu nebo konstanty, pokud vstup začíná zadanou hodnotou. Jinak můžete zadat jiný výstup, pokud se neshodují.<br/>Například pokud chcete vygenerovat deklaraci identity, kde je hodnota ID zaměstnance uživatele, pokud země nebo oblast začíná řetězcem "US", jinak chcete vytvořit výstup atributu rozšíření. Uděláte to tak, že nakonfigurujete následující hodnoty:<br/>*Parametr 1 (vstup)*: User. Country<br/>*Hodnota*: US<br/>Parametr 2 (výstup): User. ČísloZaměstnance<br/>Parametr 3 (výstup, pokud se neshoduje): User. extensionAttribute1 |
 | **Extract () – po porovnání** | Vrátí podřetězec poté, co odpovídá zadané hodnotě.<br/>Pokud je například hodnota vstupu "Finance_BSimon", odpovídá hodnota "Finance_", takže výstup deklarace identity je "BSimon". |
@@ -169,9 +169,9 @@ Přidání podmínky deklarace identity:
 
 Pořadí, ve kterém přidáte podmínky, je důležité. Azure AD vyhodnotí podmínky shora dolů a určí, která hodnota se má v deklaracích generovat. 
 
-Například Brita Simon je uživatel typu Host v tenantovi contoso. Patří do jiné organizace, která používá taky Azure AD. Když se Brita pokusí přihlásit k společnosti Fabrikam níže uvedená konfigurace, služba Azure AD bude podmínky vyhodnotit podle následujících pokynů.
+Například Britta Simon je uživatel typu Host v tenantovi contoso. Patří do jiné organizace, která používá taky Azure AD. Když se Britta pokusí přihlásit k společnosti Fabrikam níže uvedená konfigurace, služba Azure AD bude podmínky vyhodnotit podle následujících pokynů.
 
-Služba Azure AD nejprve ověří, jestli je `All guests`typ uživatele Brita. Od toho je tato hodnota true, ale Azure AD přiřadí zdroji deklarace identity `user.extensionattribute1`. Za druhé Azure AD ověří, jestli je `AAD guests`typ uživatele Brita, protože to má taky hodnotu true, pak Azure AD přiřadí zdroji deklarace identity. `user.mail` Nakonec se deklarace identity vydává s hodnotou `user.email` pro Brita.
+Služba Azure AD nejprve ověří, jestli je typ uživatele Britta `All guests` . Od toho je tato hodnota true, ale Azure AD přiřadí zdroji deklarace identity `user.extensionattribute1` . Za druhé Azure AD ověří, jestli je typ uživatele Britta `AAD guests` , protože to má taky hodnotu true, pak Azure AD přiřadí zdroji deklarace identity `user.mail` . Nakonec se deklarace identity vydává s hodnotou `user.mail` pro Britta.
 
 ![Podmíněné konfigurace deklarací identity](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

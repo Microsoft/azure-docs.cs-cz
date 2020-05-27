@@ -1,5 +1,5 @@
 ---
-title: ENDSWITH v Azure Cosmos DB dotazovací jazyk
+title: EndsWith v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o funkci ENDSWITH SQL System v Azure Cosmos DB a vrátí logickou hodnotu, která označuje, jestli první řetězcový výraz končí druhým.
 author: ginamr
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d7e7f3e33389d4a201ec3281829cb9f0415978e6
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0cd927af50eca04aa8162d9d8f292077d9e4165c
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713552"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844960"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
 
@@ -24,7 +24,7 @@ ms.locfileid: "83713552"
 ENDSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])
 ```  
   
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Argumenty
   
 *str_expr1*  
    Je řetězcový výraz.  
@@ -40,21 +40,41 @@ ENDSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad vrátí "ABC" končí "b" a "BC".  
+Následující příklad zkontroluje, zda řetězec "ABC" končí řetězcem "b" a "bC".  
   
 ```sql
-SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2 
+SELECT ENDSWITH("abc", "b", false) AS e1, ENDSWITH("abc", "bC", false) AS e2, ENDSWITH("abc", "bC", true) AS e3
 ```  
   
  Zde je sada výsledků.  
   
 ```json
-[{"e1": false, "e2": true}]  
+[
+    {
+        "e1": false,
+        "e2": false,
+        "e3": true
+    }
+]
 ```  
 
 ## <a name="remarks"></a>Poznámky
 
 Tato systémová funkce bude využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy).
+
+Využití RU pro EndsWith se zvýší, protože se zvýší mohutnost vlastnosti v systémové funkci. Jinými slovy, Pokud kontrolujete, zda hodnota vlastnosti končí určitým řetězcem, poplatek za dotaz na RU bude záviset na počtu možných hodnot pro danou vlastnost.
+
+Zvažte například dvě vlastnosti: město a země. Mohutnost města je 5 000 a mohutnost země je 200. Tady jsou dva příklady dotazů:
+
+```sql
+    SELECT * FROM c WHERE ENDSWITH(c.town, "York", false)
+```
+
+```sql
+    SELECT * FROM c WHERE ENDSWITH(c.country, "States", false)
+```
+
+První dotaz bude pravděpodobně používat více ru než druhý dotaz, protože mohutnost města je vyšší než země.
 
 ## <a name="next-steps"></a>Další kroky
 

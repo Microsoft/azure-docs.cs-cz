@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev
-ms.openlocfilehash: 20a053369149dc29d6485c49bb091a75bb9fb591
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a8d9c5c0a24e59c8f6345666f8838aa4c41d0f9
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262994"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845181"
 ---
 # <a name="national-clouds"></a>Národní cloudy
 
@@ -60,8 +60,8 @@ V následující tabulce jsou uvedené základní adresy URL pro koncové body s
 
 Pomocí základní adresy URL specifické pro danou oblast můžete vymezit požadavky na ověřování Azure AD nebo koncové body tokenu. Například pro Azure Německo:
 
-  - Běžný koncový bod autorizace `https://login.microsoftonline.de/common/oauth2/authorize`je.
-  - Společný koncový bod tokenu je `https://login.microsoftonline.de/common/oauth2/token`.
+  - Běžný koncový bod autorizace je `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` .
+  - Společný koncový bod tokenu je `https://login.microsoftonline.de/common/oauth2/v2.0/token` .
 
 U aplikací pro jednoho tenanta nahraďte "Common" v předchozích adresách URL ID tenanta nebo názvem. Příklad: `https://login.microsoftonline.de/contoso.com`.
 

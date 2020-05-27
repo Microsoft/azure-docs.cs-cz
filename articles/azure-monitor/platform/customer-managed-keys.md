@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: 6603985df39afaa2fa2871977d6e577c04f7b569
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 037edb8af6e04a2ff65977a92a66482c9f4f880f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800030"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845094"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor klíč spravovaný zákazníkem 
 
@@ -35,8 +35,10 @@ Funkce CMK se doručuje na vyhrazené Log Analytics clustery. Abychom ověřili,
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Jak CMK funguje v Azure Monitor
 
-Azure Monitor využívá spravovanou identitu přiřazenou systémem k udělení přístupu k vašemu Azure Key Vault.Spravovaná identita přiřazená systémem se dá přidružit jenom k jednomu prostředku Azure, zatímco identita Log Analyticsho clusteru je na úrovni clusteru podporovaná.Tím se určí, že funkce CMK se doručí na vyhrazený Log Analytics cluster.Aby bylo možné podporovat CMK ve více pracovních prostorech, vytvoří nový prostředek *clusteru*Log Analytics   jako zprostředkující připojení identity mezi Key Vault a vašimi pracovními prostory Log Analytics.Log Analytics úložiště clusteru používá spravovanou identitu, která je \' přidružená k prostředku *clusteru*   k ověření ve vaší Azure Key Vault prostřednictvím Azure Active Directory. 
-Po konfiguraci CMK se všechna data ingestovaná do pracovních prostorů přidružených k vašemu prostředku *clusteru*   šifrují pomocí vašeho klíče v Key Vault. Kdykoli můžete zrušit přidružení pracovních prostorů ke zdroji *clusteru*   .Nová data se ingestují do Log Analytics úložiště a šifrují pomocí klíče Microsoft Key, zatímco můžete bez problémů zadávat dotazy na nová a stará data.
+Azure Monitor využívá spravovanou identitu přiřazenou systémem k udělení přístupu k vašemu Azure Key Vault. Spravovaná identita přiřazená systémem se dá přidružit jenom k jednomu prostředku Azure, zatímco identita Log Analyticsho clusteru je na úrovni clusteru podporovaná. to znamená, že funkce CMK se doručí ve vyhrazeném Log Analytics clusteru. Aby bylo možné podporovat CMK ve více pracovních prostorech, vytvoří nový prostředek *clusteru* Log Analytics jako zprostředkující připojení identity mezi Key Vault a vašimi pracovními prostory Log Analytics. Log Analytics úložiště clusteru používá spravovanou identitu, která je \' přidružená k prostředku *clusteru* k ověření ve vaší Azure Key Vault prostřednictvím Azure Active Directory. 
+
+Po konfiguraci CMK se všechna data ingestovaná do pracovních prostorů přidružených k vašemu prostředku *clusteru* šifrují pomocí vašeho klíče v Key Vault. Kdykoli můžete zrušit přidružení pracovních prostorů ke zdroji *clusteru* . Nová data se ingestují do Log Analytics úložiště a šifrují pomocí klíče Microsoft Key, zatímco můžete bez problémů zadávat dotazy na nová a stará data.
+
 
 ![CMK – přehled](media/customer-managed-keys/cmk-overview-8bit.png)
 
@@ -118,6 +120,29 @@ Probíhá operace.
     "name": "operation-id", 
     "status" : "InProgress", 
     "startTime": "2017-01-06T20:56:36.002812+00:00",
+}
+```
+
+Probíhá operace aktualizace identifikátoru klíče.
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Updating", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
+
+Probíhá odstraňování prostředku *clusteru* – při odstraňování prostředku *clusteru* , který obsahuje pracovní prostory přidružené k pracovním prostorům, je operace zrušení přidružení provedena u každého pracovního prostoru v asynchronních operacích, které mohou chvíli trvat.
+Tato funkce není relevantní při odstranění *clusteru* bez přidruženého pracovního prostoru – v tomto případě se prostředek *clusteru* okamžitě odstraní.
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Deleting", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
 }
 ```
 

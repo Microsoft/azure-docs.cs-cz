@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8081bb8145a6654c168fb2d664e1666b32dc18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d9eb3c8f34308271eb216cad25a5db4a62d03cb
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457905"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845369"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Podmíněný přístup: zabezpečení registrace informací o zabezpečení
 
@@ -26,7 +26,7 @@ Zabezpečení, kdy a jak se uživatelé registrují pro Azure Multi-Factor Authe
 
 Následující zásady platí pro všechny vybrané uživatele, kteří se pokoušejí zaregistrovat pomocí kombinovaného prostředí pro registraci, a zablokují přístup, pokud se nepřipojují z umístění označeného jako důvěryhodná síť.
 
-1. V **Azure Portal**přejděte na **Azure Active Directory** > **zabezpečení** > **podmíněný přístup**.
+1. V **Azure Portal**přejděte na **Azure Active Directory**  >  **zabezpečení**  >  **podmíněný přístup**.
 1. Vyberte **nové zásady**.
 1. Do název zadejte název pro tuto zásadu. Například **Kombinovaná registrace informací o zabezpečení v důvěryhodných sítích**.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny**a vyberte uživatele a skupiny, pro které chcete tuto zásadu použít.
@@ -35,14 +35,14 @@ Následující zásady platí pro všechny vybrané uživatele, kteří se pokou
    > Pro [kombinovanou registraci](../authentication/howto-registration-mfa-sspr-combined.md)je nutné povolit uživatele.
 
 1. V části **cloudové aplikace nebo akce**vyberte **akce uživatele**a zaškrtněte políčko **zaregistrovat informace o zabezpečení**.
-1. V části**umístění** **podmínek** > .
+1. V **Conditions**části  >  **umístění**podmínek.
    1. Nakonfigurujte **Ano**.
    1. Uveďte **libovolné umístění**.
    1. Vylučte **všechna důvěryhodná umístění**.
    1. V okně umístění vyberte **Hotovo** .
    1. V okně podmínky vyberte **Hotovo** .
-1. V části **podmínky** > **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**.
-1. V části **řízení** > přístupu**udělení oprávnění**.
+1. V části **podmínky**  >  **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**.
+1. V části **řízení přístupu**  >  **udělení oprávnění**.
    1. Vyberte **blokovat přístup**.
    1. Pak klikněte na **Vybrat**.
 1. Nastavte **Povolit zásadu** na **Zapnuté**.
@@ -52,7 +52,7 @@ V kroku 6 v této zásadě mají organizace volby, které můžou dělat. Výše
 
 Některé můžou místo umístění v kroku 6 použít stav zařízení:
 
-6. V části **podmínky** > **stav zařízení (Preview)**.
+6. V části **podmínky**  >  **stav zařízení (Preview)**.
    1. Nakonfigurujte **Ano**.
    1. Zahrnout **všechny stavy zařízení**
    1. Vyloučit **zařízení připojené k hybridní službě Azure AD** nebo **zařízení označené jako vyhovující**
@@ -61,6 +61,7 @@ Některé můžou místo umístění v kroku 6 použít stav zařízení:
 
 > [!WARNING]
 > Pokud v zásadě použijete jako podmínku stav zařízení, může to mít vliv na uživatele typu Host v adresáři. [Režim pouze pro sestavy](concept-conditional-access-report-only.md) vám pomůže určit dopad rozhodnutí o zásadách.
+> Režim pouze pro sestavy nelze použít pro zásady certifikační autority s oborem "akce uživatele".
 
 ## <a name="next-steps"></a>Další kroky
 
