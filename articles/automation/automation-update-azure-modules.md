@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6b3832662d2d03c7218da20d414a43a99a9bac8e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 892197c79285495f49a870bbe79eb75229af2940
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744195"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831020"
 ---
 # <a name="update-azure-powershell-modules"></a>Aktualizace modulů Azure PowerShellu
 
@@ -50,5 +50,5 @@ Pokud chcete použít konkrétní verzi modulu Azure PowerShell místo nejnověj
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa modulů ve službě Azure Automation](shared-resources/modules.md)
-* [Aktualizovat Runbook modulů Azure](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)
+* Podrobnosti o používání modulů najdete v tématu [Správa modulů v Azure Automation](shared-resources/modules.md).
+* Informace o sadě Runbook aktualizace najdete v tématu [aktualizace Runbooku modulů Azure](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update).

@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 9e4396a1def5b032077c1c15c2d10b7f3452853f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743464"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830987"
 ---
-# <a name="enable-update-management-using-azure-resource-manager-template"></a>Povolit Update Management pomocí šablony Azure Resource Manager
+# <a name="enable-update-management-using-azure-resource-manager-template"></a>Povolení Update Managementu s využitím šablony Azure Resource Manageru
 
 K povolení funkce Update Management Azure Automation ve vaší skupině prostředků můžete použít [šablonu Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md) . Tento článek poskytuje ukázkovou šablonu, která automatizuje následující:
 
@@ -241,10 +241,9 @@ Pokud se Azure Automation a Azure Monitor, je důležité pochopit následujíc�
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte povolený Update Management, můžete povolit virtuální počítače pro správu, zkontrolovat posouzení aktualizací a nasadit aktualizace, aby byly v souladu s předpisy.
-
-- Z [účtu Azure Automation](automation-onboard-solutions-from-automation-account.md) pro jeden nebo více počítačů Azure a ručně pro počítače mimo Azure
-
-- Pro jeden virtuální počítač Azure ze stránky virtuálního počítače v Azure Portal. Tento scénář je k dispozici pro virtuální počítače se systémy [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) a [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) .
-
-- Pro [více virtuálních počítačů Azure](manage-update-multi.md) , a to tak, že je vyberete na stránce **virtuální počítače** v Azure Portal 
+* Pokud chcete použít Update Management pro virtuální počítače, přečtěte si téma [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
+* Pokud už nepotřebujete pracovní prostor Log Analytics, přečtěte si pokyny v tématu [zrušení propojení pracovního prostoru s účtem Automation pro Update Management](automation-unlink-workspace-update-management.md).
+* Postup odstranění virtuálních počítačů z Update Management najdete v tématu [Odebrání virtuálních počítačů z Update Management](automation-remove-vms-from-update-management.md).
+* Pokud chcete řešit obecné chyby Update Management, přečtěte si téma [řešení potíží s Update Management](troubleshoot/update-management.md).
+* Informace o řešení problémů s agentem Windows Update najdete v tématu řešení potíží s [agentem pro Windows Update](troubleshoot/update-agent-issues.md).
+* Informace o řešení problémů s agentem aktualizací pro Linux najdete v tématu[řešení potíží s agentem aktualizace pro Linux](troubleshoot/update-agent-issues-linux.md).

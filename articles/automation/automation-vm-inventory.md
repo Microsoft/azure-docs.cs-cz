@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: inventory, automation, change, tracking
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5142286bc50620d5a12a0722b3c4f9b8b75f5b73
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745269"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830612"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Správa shromažďování dat pro inventarizaci z virtuálních počítačů
 
@@ -112,7 +112,7 @@ Pokud chcete vytvořit novou skupinu počítačů, klikněte na **+ vytvořit sk
 
 ## <a name="disconnect-your-vm-from-management"></a>Odpojení virtuálního počítače od správy
 
-Odebrání virtuálního počítače ze správy inventáře:
+Odebrání virtuálního počítače ze správy Change Tracking a inventáře:
 
 1. V levém podokně Azure Portal vyberte **Log Analytics**a pak vyberte pracovní prostor, který jste použili při povolování virtuálního počítače pro Change Tracking a inventář.
 2. Na stránce Log Analytics otevřete nabídku **prostředků** .
@@ -127,6 +127,6 @@ Odebrání virtuálního počítače ze správy inventáře:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa Change Tracking a inventáře](change-tracking-file-contents.md)
-* [Sledujte změny softwaru ve vašem prostředí pomocí Change Tracking](../log-analytics/log-analytics-change-tracking.md).
-* [Update Management v Azure](../operations-management-suite/oms-solution-update-management.md).
+* Podrobnosti o práci s funkcí najdete v tématu [správa Change Tracking a inventáře](change-tracking-file-contents.md).
+* Další informace o sledování změn softwaru najdete v tématu [sledování změn softwaru ve vašem prostředí pomocí Change Tracking](../log-analytics/log-analytics-change-tracking.md).
+* Řešení obecných problémů s funkcí najdete v tématu [řešení potíží s Change Tracking a inventářem](troubleshoot/change-tracking.md).
