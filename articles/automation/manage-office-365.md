@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak pomocí Azure Automation spravova
 services: automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: cbd01f3868f44d975e0822a7812262d9e15ca299
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 322e2a3679ed29ab9ecc4cdc3c6e1fe4d0f20276
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745359"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831159"
 ---
 # <a name="manage-office-365-services"></a>Správa služeb Office 365
 
@@ -21,7 +21,7 @@ Ke správě předplatných služeb Office 365 v Azure Automation potřebujete n�
 
 * Předplatné Azure. Viz [Průvodce rozhodnutím předplatného](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/subscriptions/).
 * Automatizační objekt v Azure, který bude uchovávat přihlašovací údaje uživatelského účtu a runbooky. Další informace najdete v [úvodu k Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro).
-* Služba Azure AD. Projděte si téma [použití Azure AD v Azure Automation k ověření v Azure](automation-use-azure-ad.md).
+* Azure AD . Projděte si téma [použití Azure AD v Azure Automation k ověření v Azure](automation-use-azure-ad.md).
 * Tenant Office 365 s účtem. Viz [Nastavení tenanta Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant).
 
 ## <a name="install-the-msonline-and-msonlineext-modules"></a>Instalace modulů MSOnline a MSOnlineExt
@@ -111,7 +111,7 @@ Pokud chcete publikovat a potom naplánovat Runbook, přečtěte si téma [Sprá
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa runbooků v Azure Automation](https://docs.microsoft.com/azure/automation/manage-runbooks)
-* [Správa modulů ve službě Azure Automation](shared-resources/modules.md)
-* [Spravovat přihlašovací údaje v Azure Automation](shared-resources/credentials.md)
-* [Dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview)
+* Podrobnosti o použití přihlašovacích údajů najdete [v tématu Správa přihlašovacích údajů v Azure Automation](shared-resources/credentials.md).
+* Informace o modulech najdete v tématu [Správa modulů v Azure Automation](shared-resources/modules.md).
+* Pokud potřebujete Runbook spustit, přečtěte si téma [Spuštění Runbooku v Azure Automation](start-runbooks.md).
+* Podrobnosti o PowerShellu najdete v tématu [dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview).

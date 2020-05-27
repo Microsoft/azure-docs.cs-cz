@@ -11,12 +11,12 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417976"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832777"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Nastavit aktivitu proměnné v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -25,13 +25,13 @@ Aktivitu nastavit proměnnou použijte k nastavení hodnoty existující proměn
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Požaduje se
+Vlastnost | Popis | Vyžadováno
 -------- | ----------- | --------
-jméno | Název aktivity v kanálu | ano
+name | Název aktivity v kanálu | ano
 description | Text popisující, co aktivita dělá | ne
-type | Musí být nastavené na **SetVariable** | ano
-value | Hodnota řetězcového literálu nebo objektu výrazu, ke kterému se proměnná přiřadí | ano
-variableName | Název proměnné, která bude nastavena touto aktivitou | ano
+typ | Musí být nastavené na **SetVariable** | ano
+hodnota | Hodnota řetězcového literálu nebo objektu výrazu, ke kterému je přiřazena proměnná | ano
+variableName | Název proměnné, která je nastavená touto aktivitou | ano
 
 ## <a name="incrementing-a-variable"></a>Zvýšení proměnné
 

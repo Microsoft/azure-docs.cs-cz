@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 07ae08f87c9a3e788944a48f6d5a24e2b076d16f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: db5c35db271f84a88fdc03f4f0178ee1c35f727e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732321"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834318"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Přístup ke službě Azure Key Vault za bránou firewall
 
@@ -31,16 +31,16 @@ V závislosti na vaší konfiguraci a prostředí existuje několik variant.
 
 ## <a name="ports"></a>Porty
 
-Veškerý provoz směřující do trezoru klíčů pro všechny tři funkce (ověřování, správa a přístup k rovině dat) prochází přes protokol HTTPS: port 443. Nicméně u seznamu CRL může občas docházet k provozu přes protokol HTTP (na portu 80). Klienti, kteří podporují protokol OCSP, by neměli mít přístup k [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl)seznamu CRL, ale můžou se k nim občas  
+Veškerý provoz směřující do trezoru klíčů pro všechny tři funkce (ověřování, správa a přístup k rovině dat) prochází přes protokol HTTPS: port 443. Nicméně u seznamu CRL může občas docházet k provozu přes protokol HTTP (na portu 80). Klienti, kteří podporují protokol OCSP, by neměli mít přístup k seznamu CRL, ale můžou se [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl) k nim občas  
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Klientské aplikace trezoru klíčů budou kvůli ověřování potřebovat přístup ke koncovým bodům Azure Active Directory. Použitý koncový bod závisí na konfiguraci tenanta Azure AD, typu objektu zabezpečení (uživatel nebo instanční objekt) a na typu účtu (například účet Microsoft nebo pracovní nebo školní účet).  
 
 | Typ objektu zabezpečení | Koncový bod:port |
 | --- | --- |
-| Uživatel používající účet Microsoft<br> (například user@hotmail.com) |**Globální**<br> login.microsoftonline.com:443<br><br> **Azure Čína:**<br> login.chinacloudapi.cn:443<br><br>**Azure USA – vláda:**<br> login.microsoftonline.us:443<br><br>**Azure Německo:**<br> login.microsoftonline.de:443<br><br> a <br>login.live.com:443 |
-| Uživatel nebo instanční objekt používající pracovní nebo školní účet s Azure AD (například user@contoso.com) |**Globální**<br> login.microsoftonline.com:443<br><br> **Azure Čína:**<br> login.chinacloudapi.cn:443<br><br>**Azure USA – vláda:**<br> login.microsoftonline.us:443<br><br>**Azure Německo:**<br> login.microsoftonline.de:443 |
+| Uživatel používající účet Microsoft<br> (například user@hotmail.com) |**Globální**<br> login.microsoftonline.com:443<br><br> **Azure Čína:**<br> login.chinacloudapi.cn:443<br><br>**Státní správa USA Azure:**<br> login.microsoftonline.us:443<br><br>**Azure Německo:**<br> login.microsoftonline.de:443<br><br> a <br>login.live.com:443 |
+| Uživatel nebo instanční objekt používající pracovní nebo školní účet s Azure AD (například user@contoso.com) |**Globální**<br> login.microsoftonline.com:443<br><br> **Azure Čína:**<br> login.chinacloudapi.cn:443<br><br>**Státní správa USA Azure:**<br> login.microsoftonline.us:443<br><br>**Azure Německo:**<br> login.microsoftonline.de:443 |
 | Uživatel nebo instanční objekt používající pracovní nebo školní účet a službu Active Directory Federation Services (AD FS) nebo jiný federovaný koncový bod (například user@contoso.com) |Všechny koncové body pro pracovní nebo školní účet a AD FS nebo jiné federované koncové body |
 
 Existují i další možné komplexní scénáře. Další informace najdete v tématech [Azure Active Directory Authentication Flow](../../active-directory/develop/authentication-scenarios.md) (Tok ověřování Azure Active Directory), [Integrating Applications with Azure Active Directory](../../active-directory/develop/active-directory-how-to-integrate.md) (Integrace aplikací s Azure Active Directory) a [Active Directory Authentication Protocols](https://msdn.microsoft.com/library/azure/dn151124.aspx) (Ověřovací protokoly Active Directory).  
@@ -51,8 +51,8 @@ Pro správu služby Key Vault (CRUD a nastavení zásad přístupu) je nutné, a
 
 | Typ operace | Koncový bod:port |
 | --- | --- |
-| Operace roviny řízení služby Key Vault<br> prostřednictvím Azure Resource Manageru |**Globální**<br> management.azure.com:443<br><br> **Azure Čína:**<br> management.chinacloudapi.cn:443<br><br> **Azure USA – vláda:**<br> management.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> management.microsoftazure.de:443 |
-| Microsoft Graph API |**Globální**<br> graph.microsoft.com:443<br><br> **Azure Čína:**<br> graph.chinacloudapi.cn:443<br><br> **Azure USA – vláda:**<br> graph.microsoft.com:443<br><br> **Azure Německo:**<br> graph.cloudapi.de:443 |
+| Operace roviny řízení služby Key Vault<br> prostřednictvím Azure Resource Manageru |**Globální**<br> management.azure.com:443<br><br> **Azure Čína:**<br> management.chinacloudapi.cn:443<br><br> **Státní správa USA Azure:**<br> management.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> management.microsoftazure.de:443 |
+| Microsoft Graph API |**Globální**<br> graph.microsoft.com:443<br><br> **Azure Čína:**<br> graph.chinacloudapi.cn:443<br><br> **Státní správa USA Azure:**<br> graph.microsoft.com:443<br><br> **Azure Německo:**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>Operace služby Key Vault
 
@@ -60,7 +60,7 @@ Pro všechny operace správy objektů trezoru klíčů (klíče a tajné kódy) 
 
 | Typ operace | Koncový bod:port |
 | --- | --- |
-| Operace, včetně kryptografických operací na klíčích; vytváření, čtení, aktualizace nebo odstraňování klíčů a tajných kódů; nastavování nebo získávání značek a jiných atributů objektů trezoru klíčů (klíče a tajné kódy) |**Globální**<br> &lt;název_trezoru&gt;.vault.azure.net:443<br><br> **Azure Čína:**<br> &lt;název_trezoru&gt;.vault.azure.cn:443<br><br> **Azure USA – vláda:**<br> &lt;název_trezoru&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> &lt;název_trezoru&gt;.vault.microsoftazure.de:443 |
+| Operace, včetně kryptografických operací na klíčích; vytváření, čtení, aktualizace nebo odstraňování klíčů a tajných kódů; nastavování nebo získávání značek a jiných atributů objektů trezoru klíčů (klíče a tajné kódy) |**Globální**<br> &lt;název_trezoru&gt;.vault.azure.net:443<br><br> **Azure Čína:**<br> &lt;název_trezoru&gt;.vault.azure.cn:443<br><br> **Státní správa USA Azure:**<br> &lt;název_trezoru&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> &lt;název_trezoru&gt;.vault.microsoftazure.de:443 |
 
 ## <a name="ip-address-ranges"></a>Rozsahy IP adres
 
@@ -68,10 +68,10 @@ Služba Key Vault používá jiné prostředky Azure, například infrastrukturu
 * [Republik](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
 * [US Gov](https://www.microsoft.com/en-us/download/details.aspx?id=57063)
 * [Německo](https://www.microsoft.com/en-us/download/details.aspx?id=57064)
-* [Čína](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
+* [Lidov](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
 
 Ověřování a identita (Azure Active Directory) je globální služba a může v případě selhání převzít služby v jiné oblasti nebo může bez předchozího upozornění dojít k přesunu provozu. V tomto scénáři by měly být všechny rozsahy IP adres uvedené v seznamu [IP adres pro ověřování a identitu](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) přidány do brány firewall.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte dotazy týkající se Key Vault, navštivte [fóra Azure Key Vault](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+Pokud máte dotazy týkající se Key Vault, přejděte na [stránku s dotazem Microsoft Q&Azure Key Vault](https://docs.microsoft.com/answers/topics/azure-key-vault.html).

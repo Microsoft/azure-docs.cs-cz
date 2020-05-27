@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: e517516715871f3fbcdcab6383e6452523773363
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 26a4a3dbd54256fbc193fba299d0f7504f407254
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743880"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832261"
 ---
 # <a name="handle-errors-in-graphical-runbooks"></a>Zpracování chyb v grafických runboocích
 
@@ -65,6 +65,4 @@ Chyby odkazují z těchto aktivit na aktivitu jediného `error management` kódu
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytváření grafických runbooků v Azure Automation](automation-graphical-authoring-intro.md#use-links-for-workflow)
-* [Spouštění runbooků ve službě Azure Automation](automation-runbook-execution.md)
-* [Správa runbooků v Azure Automation](manage-runbooks.md)
+* Informace o řešení chyb grafického Runbooku najdete v tématu [řešení potíží](troubleshoot/runbooks.md)se sadou Runbook.

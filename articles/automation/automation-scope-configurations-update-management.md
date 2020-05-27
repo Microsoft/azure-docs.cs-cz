@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 95563e816fa4f0931e547b6bd163dce23c338a44
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 23ec49f2d68cf376ef0beb118d8bf69ada7bc0de
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749120"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832023"
 ---
 # <a name="work-with-scope-configurations-for-update-management"></a>Práce s konfiguracemi oboru pro Update Management
 
@@ -52,12 +52,7 @@ Když se do Update Management přidá počítač, přidá se taky do uloženého
 
 ## <a name="next-steps"></a>Další kroky
 
-* Obecné informace o této funkci najdete v tématu [přehled Update Management](automation-update-management.md).
 * Informace o tom, jak používat tuto funkci, najdete v tématu [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
-* Pokud chcete funkci povolit pomocí účtu Automation, přečtěte si téma [povolení Update Management z účtu Automation](automation-onboard-solutions-from-automation-account.md).
-* Pokud chcete tuto funkci povolit, přejděte na Azure Portal [povolení Update Management z Azure Portal](automation-onboard-solutions-from-browse.md).
-* Chcete-li použít sadu Runbook k povolení této funkce, přečtěte si téma [povolení Update Management ze sady Runbook](automation-onboard-solutions.md).
-* Pokud chcete funkci povolit pomocí virtuálního počítače Azure, přečtěte si téma [povolení Update Management z virtuálního počítače Azure](automation-onboard-solutions-from-vm.md).
 * Informace o řešení chyb funkcí najdete v tématu [řešení potíží s Update Management](troubleshoot/update-management.md).
 * Problémy s chybami agenta Windows Update najdete v tématu řešení potíží s [agentem pro Windows Update](troubleshoot/update-agent-issues.md).
 * Problémy s chybami agenta aktualizací pro Linux najdete v tématu [řešení potíží s aktualizacemi agenta pro Linux](troubleshoot/update-agent-issues-linux.md).

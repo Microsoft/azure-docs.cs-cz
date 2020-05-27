@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3eedfb1e9ec59fbe12ee94a65d3702a7ef8ca95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b83dbdb928b7b5810864a9202134dee30f9582df
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73823645"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834237"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Nejčastější dotazy k nástrojům elastické databáze (FAQ)
 
@@ -34,7 +34,7 @@ Pomocí klientské knihovny elastické databáze se neúčtují žádné náklad
 
 ## <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Proč moje přihlašovací údaje nefungují při přidávání horizontálních oddílů z jiného serveru
 
-Nepoužívejte přihlašovací údaje ve formátu "User ID =username@servername", místo toho stačí použít "User ID = username".  Ujistěte se také, že přihlašovací jméno uživatele má oprávnění k horizontálních oddílů.
+Nepoužívejte přihlašovací údaje ve formátu "User ID = username@servername ", místo toho stačí použít "User ID = username".  Ujistěte se také, že přihlašovací jméno uživatele má oprávnění k horizontálních oddílů.
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Potřebuji vytvořit správce map horizontálních oddílů a naplnit horizontálních oddílů při každém spuštění aplikací
 
@@ -42,7 +42,7 @@ Ne – vytvoření správce map horizontálních oddílů (například [ShardMap
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Mám dotazy týkající se používání nástrojů elastické databáze, jak se jim zobrazí odpovědi
 
-Obraťte se na nás na [SQL Database Fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
+Pokud chcete SQL Database, obraťte se na nás na [stránce s dotazem na Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Když získám připojení k databázi pomocí horizontálního dělení klíče, pořád se dají dotazovat na data dalších klíčů horizontálního dělení na stejném horizontálních oddílů.  Je to záměrné
 
@@ -54,6 +54,6 @@ Ano, horizontálních oddílů je samostatná databáze a proto jedna horizontá
 
 ## <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>Poskytuje nástroj rozdělit sloučení (nebo odstraní) databázi během operace rozdělení nebo sloučení.
 
-Ne. Pro **rozdělené** operace musí cílová databáze existovat s příslušným schématem a musí být zaregistrovaná ve Správci map horizontálních oddílů.  Pro operace **sloučení** je nutné odstranit horizontálních oddílů ze Správce map horizontálních oddílů a pak odstranit databázi.
+No. Pro **rozdělené** operace musí cílová databáze existovat s příslušným schématem a musí být zaregistrovaná ve Správci map horizontálních oddílů.  Pro operace **sloučení** je nutné odstranit horizontálních oddílů ze Správce map horizontálních oddílů a pak odstranit databázi.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

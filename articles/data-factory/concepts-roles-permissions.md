@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 8b7791c5c04e986b30959d2fcae17142fdd8b7ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3955d3b9370a1cd2ee88c27e42b107f5ae0f87c2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418316"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833502"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro službu Azure Data Factory
 
@@ -84,7 +84,7 @@ Tady je několik příkladů, které ukazují, co můžete dosáhnout s vlastní
 
 - Dovolit uživateli, aby mohl testovat připojení pouze v propojené službě
 
-    Vytvořte vlastní roli role s oprávněními pro následující akce: **Microsoft. DataFactory/Factory/getFeatureValue/Read** a **Microsoft. DataFactory/Factory/getDataPlaneAccess/Read**. Přiřaďte tuto vlastní roli k prostředku datové továrny pro uživatele.
+    Vytvořte vlastní roli s oprávněními pro následující akce: **Microsoft. DataFactory/Factory/getFeatureValue/Read** a **Microsoft. DataFactory/Factory/getDataPlaneAccess/Read**. Přiřaďte tuto vlastní roli k prostředku datové továrny pro uživatele.
 
 - Umožněte uživateli aktualizovat datovou továrnu z PowerShellu nebo sady SDK, ale ne v Azure Portal.
 

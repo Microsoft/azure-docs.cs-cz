@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Azure Digital Twins
       href: about-digital-twins.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Zjištění dostupných místností
@@ -98,14 +98,14 @@
           href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-digital-twins'
-        - name: Fórum MSDN
-          href: 'https://social.msdn.microsoft.com/Forums/home?category=&forum=&filter=&sort=relevancedesc&brandIgnore=true&searchTerm=Azure+Digital+Twins'
+        - name: Stránka s dotazy na Microsoft Q&A
+          href: 'https://docs.microsoft.com/answers/topics/azure-digital-twins.html'
         - name: Ukázky kódu Azure IoT
           href: 'https://docs.microsoft.com/samples/browse/?term=iot'
     - name: Zpětná vazba a fóra
       items:
-        - name: Fórum MSDN
-          href: 'https://social.msdn.microsoft.com/Forums/home?category=&forum=&filter=&sort=relevancedesc&brandIgnore=true&searchTerm=Azure+Digital+Twins'
+        - name: Stránka s dotazy na Microsoft Q&A
+          href: 'https://docs.microsoft.com/answers/topics/azure-digital-twins.html'
         - name: Návrhy a požadavky k produktům
           href: 'https://feedback.azure.com/forums/916621-azure-digital-twins'
     - name: Příběhy zákazníků

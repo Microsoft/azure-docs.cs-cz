@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: b34fdc36bd0b1ce294a92b2ae8fa5da01568e5a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74787365"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831921"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Volání koncových bodů REST pomocí Azure Logic Apps
 
@@ -42,7 +42,7 @@ Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrovanému 
 
 Tato integrovaná aktivační událost pošle požadavek HTTP na adresu URL pro soubor Swagger, který popisuje REST API a vrátí odpověď obsahující obsah tohoto souboru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V návrháři do vyhledávacího pole zadejte "Swagger" jako filtr. V seznamu **triggery** vyberte aktivační událost **http + Swagger** .
 
@@ -78,11 +78,11 @@ Tato integrovaná aktivační událost pošle požadavek HTTP na adresu URL pro 
 
 Tato Vestavěná akce vytvoří požadavek HTTP na adresu URL pro soubor Swagger, který popisuje REST API a vrátí odpověď obsahující obsah tohoto souboru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
 1. V kroku, kam chcete přidat akci HTTP + Swagger, vyberte **Nový krok**.
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. V návrháři do vyhledávacího pole zadejte "Swagger" jako filtr. V seznamu **Akce** vyberte akci **http + Swagger** .
 
@@ -137,9 +137,9 @@ Můžete odkazovat na soubor Swagger, který není hostovaný nebo který nespl�
 
 1. [Nahrajte soubor Swagger do kontejneru objektů BLOB](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), a to buď pomocí [Azure Portal](https://portal.azure.com) , nebo [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 
-1. Chcete-li odkazovat na soubor v kontejneru objektů blob, použijte propojení HTTPS, které následuje po tomto formátu, což rozlišuje malá a velká písmena:
+1. Pokud chcete odkazovat na soubor v kontejneru objektů blob, Získejte adresu URL HTTPS, která následuje tento formát, což rozlišuje velká a malá písmena, od Průzkumník služby Azure Storage:
 
-   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
+   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<complete-swagger-file-name>?<query-parameters>`
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
@@ -147,15 +147,15 @@ Zde jsou další informace o výstupech z triggeru HTTP + Swagger nebo akce. Vol
 
 | Název vlastnosti | Typ | Popis |
 |---------------|------|-------------|
-| záhlaví | objekt | Hlavičky z požadavku |
-| text | objekt | Objekt JSON | Objekt s obsahem textu z požadavku |
+| záhlaví | odkazy objektů | Hlavičky z požadavku |
+| text | odkazy objektů | Objekt JSON | Objekt s obsahem textu z požadavku |
 | stavový kód | int | Stavový kód z požadavku |
 |||
 
-| Kód stavu | Popis |
+| Stavový kód | Description |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Accepted |
+| 202 | Přijato |
 | 400 | Chybný požadavek |
 | 401 | Neautorizováno |
 | 403 | Forbidden |

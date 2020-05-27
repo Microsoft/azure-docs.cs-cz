@@ -16,20 +16,20 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1a657a7d57b3e725b0ae92b5110935c0aecf73f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec59aa830fe314332d17091f17ef81d4a1d65470
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75533850"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833383"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Kurz: Azure Active Directory integrace jednotného přihlašování pomocí softwaru správce Maxient
 
 V tomto kurzu se dozvíte, jak integrovat software správce Maxient pomocí služby Azure Active Directory (Azure AD). Když integrujete software správce Maxient pomocí služby Azure AD, můžete provádět tyto akce:
 
-* Řízení ve službě Azure AD, která má přístup k Maxientmu softwaru správce chování.
+* Využijte Azure AD k ověřování uživatelů pro software Maxient reorganizovat.
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Maxienti softwaru správce pomocí svých účtů Azure AD.
-* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
+
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
@@ -42,8 +42,7 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
-
+V tomto kurzu nakonfigurujete službu Azure AD pro použití se softwarem Maxient a nástrojem.
 
 
 * Software správce Maxiente podporuje **aktualizace SP a IDP,** iniciované jednotné přihlašování
@@ -65,16 +64,13 @@ Pokud chcete nakonfigurovat integraci Maxientho softwaru správce do služby Azu
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-maxient-conduct-manager-software"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Maxient software Manager
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Maxient softwaru správce pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Maxient softwaru správce.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Maxientho softwaru správce. Aby jednotné přihlašování fungovalo, musíte navázat spojení mezi službou Azure AD a softwarem Maxientu pro správu.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Maxient softwaru správce, dokončete následující stavební bloky:
 
-1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[NAKONFIGURUJTE jednotné přihlašování k softwaru Maxientu pro správce](#configure-maxient-conduct-manager-software-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte uživatele testovacího softwaru Maxient](#create-maxient-conduct-manager-software-test-user)** , který bude mít protějšek B. Simon ve Maxient softwaru, který se odkazuje na reprezentaci uživatele v Azure AD.
-1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům ověřování pro použití se softwarem Maxient a software Manager
+    1. **[Přiřaďte všem uživatelům, aby používali Maxient](#assign-all-users-to-be-able-to-authenticate-for-the-Maxient-Conduct-Manager-Software)** – k tomu, aby mohli všichni pracovníci vaší instituce ověřovat.
+1. **[Otestujte nastavení Azure AD pomocí Maxient](#test-with-maxient)** – ověřte, jestli konfigurace funguje a že se uvolňují správné atributy.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
@@ -86,34 +82,22 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V **základním oddílu konfigurace** SAML je aplikace předem nakonfigurovaná v režimu iniciované **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
+1. V **základním oddílu konfigurace SAML**je   aplikace předem nakonfigurovaná v režimu iniciované **IDP**   a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit**   .
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://cm.maxient.com/<SCHOOLCODE>`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory pro správce softwaru Maxient](mailto:support@maxient.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, spolupracujte se svým Maxient implementací nebo podporou.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.  K této adrese URL budete muset zadat Maxient implementaci/zástupce podpory.
 
     ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
+### <a name="assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software"></a>Přiřazení všech uživatelů, kteří budou moci ověřit software správce Maxient
 
-V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
-
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. V horní části obrazovky vyberte **Nový uživatel** .
-1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k softwaru správce Maxient.
+V této části udělíte přístup pro všechny účty k ověřování pomocí systému Azure pro Maxient software Manager.  Je důležité si uvědomit, že tento krok je **nutný** , aby Maxient správně fungoval.  Maxient využívá váš systém Azure AD k *ověřování* uživatelů. *Autorizace* uživatelů se provádí v systému Maxient pro konkrétní funkci, kterou se pokouší provést. Maxient nepoužívá k provedení těchto rozhodnutí atributy z vašeho adresáře.
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Maxient software správce**.
@@ -125,25 +109,13 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+1. V dialogovém okně **Uživatelé a skupiny** vyberte všichni uživatelé (nebo příslušné skupiny) a **přiřaďte** je, abyste je mohli ověřit pomocí Maxient.
 
-## <a name="configure-maxient-conduct-manager-software-sso"></a>Konfigurace jednotného přihlašování k softwaru Maxient Manager
+## <a name="test-with-maxient"></a>Testování pomocí Maxient 
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **softwaru Maxient** Restore, je třeba odeslat **adresu URL federačních metadat aplikace** [týmu podpory Maxient správce](mailto:support@maxient.com)IT. Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
-
-### <a name="create-maxient-conduct-manager-software-test-user"></a>Vytvořit uživatele testu softwaru Maxient
-
-V této části vytvoříte uživatele s názvem Britta Simon v Maxient software správce. Pokud chcete přidat uživatele na softwarovou platformu Maxient reMaxients Manager, pracujte s [týmem podpory softwaru správce](mailto:support@maxient.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
-
-## <a name="test-sso"></a>Test SSO 
-
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
-
-Po kliknutí na dlaždici software Maxiente správce na přístupovém panelu byste měli být automaticky přihlášeni ke Maxient softwaru správce chování, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
-
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+Pokud se lístek podpory ještě neotevřel s Maxient implementací nebo pracovníkem podpory, pošlete e-mail na [support@maxient.com](mailto:support@maxient.com) téma "ověřování na základě areálu/nastavení Azure – \< \< školní název \> \> ". Do těla e-mailu zadejte **adresu URL federačních metadat aplikace**. Maxient zaměstnanci budou reagovat s odkazem na testování a ověřit, jestli jsou vydávány správné atributy.  
+    
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

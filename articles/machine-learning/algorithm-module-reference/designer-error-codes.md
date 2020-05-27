@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bfb70aaa092cc62fbff87e9e3e327ee7364f8701
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684700"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833809"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Výjimky a kódy chyb pro návrháře (Preview)
 
@@ -628,7 +628,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 ## <a name="error-0033"></a>Chyba 0033  
  K výjimce dojde, pokud je argumentem nekonečno.  
 
- K této chybě v Azure Machine Learning dojde, pokud je argument nekonečný. Tato chyba se zobrazí, pokud je argument buď `double.NegativeInfinity` nebo. `double.PositiveInfinity`  
+ K této chybě v Azure Machine Learning dojde, pokud je argument nekonečný. Tato chyba se zobrazí, pokud je argument buď `double.NegativeInfinity` nebo `double.PositiveInfinity` .  
 
 **Řešení:** Upravte zadaný argument tak, aby byl platnou hodnotou.  
 
@@ -712,7 +712,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **Řešení:** Tato chyba je způsobená mnoha podmínkami a neexistuje žádná zvláštní náprava.  
  Následující tabulka obsahuje obecné zprávy pro tuto chybu, za kterými následuje konkrétní popis podmínky. 
 
- Pokud nejsou k dispozici žádné podrobnosti, [pošlete nám svůj názor](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) a poskytněte informace o modulech, které generovaly chybu a související podmínky.
+ Pokud nejsou k dispozici žádné podrobnosti, [aplikace Microsoft Q&stránku s otázkou pro odeslání zpětné vazby](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html) a poskytuje informace o modulech, které generovaly chybu a související podmínky.
 
 |Zprávy výjimek|
 |------------------------|
@@ -1106,7 +1106,7 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
 
  Pokud dojde k vygenerování zprávy generované modulem SQL, proveďte akci na základě hlášené chyby. Chybové zprávy například někdy obsahují konkrétní pokyny o pravděpodobnou chybu:
 + *Neexistuje žádný takový sloupec nebo chybějící databáze*, což značí, že je možné, že jste zadali nesprávný název sloupce. Pokud jste si jisti, že je název sloupce správný, zkuste použít hranaté závorky nebo uvozovky k uzavření identifikátoru sloupce.
-+ *Chyba logiky SQL \<v blízkosti\>klíčového slova SQL*, což značí, že před zadaným klíčovým slovem může být chyba syntaxe.
++ *Chyba logice SQL poblíž \< Klíčové slovo \> SQL*, což znamená, že před zadaným klíčovým slovem může být chyba syntaxe
 
   
 |Zprávy výjimek|
@@ -1163,7 +1163,7 @@ K této chybě v Azure Machine Learning dochází při pokusu o data z přihrád
 
 Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azure Machine Learning, která umožňovala další přizpůsobení metod binningu. Všechny metody binningu jsou v současné době založené na výběru z rozevíracího seznamu, a proto by tato chyba neměla být možná.
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Azure Machine Learning forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=MachineLearning), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |Zprávy výjimek|
 |------------------------|
@@ -1326,7 +1326,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|  
 |------------------------|  
 |Nepodporovaný typ parametru.|  
-|{0}Byl zadán nepodporovaný typ parametru.|  
+|Byl zadán nepodporovaný typ parametru {0} .|  
 
 
 ## <a name="error-0107"></a>Chyba 0107  
