@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 94bcba80e5768d57e3dc97bed1a74a8369ac60b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e35f5c9288860056a910f54f9601b2178a628bb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422890"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828079"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Změna ID tenanta trezoru klíčů po přesunu předplatného
 
@@ -61,4 +61,4 @@ Pokud používáte MSI, budete muset aktualizovat taky identitu MSI, protože st
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte dotazy ke službě Azure Key Vault, navštivte [fóra služby Azure Key Vault](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+Pokud máte dotazy týkající se Azure Key Vault, přejděte na [stránku s dotazem Microsoft Q&Azure Key Vault](https://docs.microsoft.com/answers/topics/azure-key-vault.html).

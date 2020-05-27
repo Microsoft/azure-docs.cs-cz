@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 6a838455bfda47dee55e8726e5eab071d2dfe4f7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 348ddb0fa8bd973a7e8ebcf5ae14de1eee57d5a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121146"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827510"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Zabezpečený přístup k trezoru klíčů
 
@@ -54,8 +54,8 @@ V následující tabulce jsou uvedeny koncové body pro řídicí a datové rovi
 
 | &nbsp;Rovina přístupu | Koncové body přístupu | Operace | &nbsp;Mechanismus řízení přístupu |
 | --- | --- | --- | --- |
-| Rovina správy | **Globální**<br> management.azure.com:443<br><br> **Azure Čína 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure USA – vláda:**<br> management.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> management.microsoftazure.de:443 | Vytváření, čtení, aktualizace a odstraňování trezorů klíčů<br><br>Nastavení zásad přístupu Key Vault<br><br>Nastavení značek Key Vault | Azure Resource Manager RBAC |
-| Rovina dat | **Globální**<br> &lt;název_trezoru&gt;.vault.azure.net:443<br><br> **Azure Čína 21Vianet:**<br> &lt;název_trezoru&gt;.vault.azure.cn:443<br><br> **Azure USA – vláda:**<br> &lt;název_trezoru&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> &lt;název_trezoru&gt;.vault.microsoftazure.de:443 | Klíče: dešifrování, šifrování,<br> rozbalení, zalomení, ověření, podepsání,<br> získat, vypsat, aktualizovat, vytvořit,<br> Import, odstranění, zálohování, obnovení<br><br> Tajné kódy: získat, vypsat, nastavit, odstranit | Zásada přístupu Key Vault |
+| Rovina správy | **Globální**<br> management.azure.com:443<br><br> **Azure Čína 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Státní správa USA Azure:**<br> management.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> management.microsoftazure.de:443 | Vytváření, čtení, aktualizace a odstraňování trezorů klíčů<br><br>Nastavení zásad přístupu Key Vault<br><br>Nastavení značek Key Vault | Azure Resource Manager RBAC |
+| Rovina dat | **Globální**<br> &lt;název_trezoru&gt;.vault.azure.net:443<br><br> **Azure Čína 21Vianet:**<br> &lt;název_trezoru&gt;.vault.azure.cn:443<br><br> **Státní správa USA Azure:**<br> &lt;název_trezoru&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Německo:**<br> &lt;název_trezoru&gt;.vault.microsoftazure.de:443 | Klíče: dešifrování, šifrování,<br> rozbalení, zalomení, ověření, podepsání,<br> získat, vypsat, aktualizovat, vytvořit,<br> Import, odstranění, zálohování, obnovení<br><br> Tajné kódy: získat, vypsat, nastavit, odstranit | Zásada přístupu Key Vault |
 
 ## <a name="management-plane-and-rbac"></a>Rovina správy a RBAC
 
@@ -193,7 +193,7 @@ Náš příklad popisuje jednoduchý scénář. Scénáře reálného života m�
 
 Pro Trezor klíčů doporučujeme nastavit další zabezpečený přístup [konfigurací Key Vault bran firewall a virtuálních sítí](network-security.md).
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 * [Azure AD RBAC](../../role-based-access-control/role-assignments-portal.md)
 
@@ -233,4 +233,4 @@ Další informace o protokolování využití pro Key Vault najdete v tématu [A
 
 Další informace o používání klíčů a tajných kódů s Azure Key Vault najdete v tématu [o klíčích a tajných](https://msdn.microsoft.com/library/azure/dn903623.aspx)klíčích.
 
-Pokud máte dotazy týkající se Key Vault, navštivte [fóra](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
+Pokud máte dotazy týkající se Key Vault, navštivte [stránku s dotazem na Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-key-vault.html).

@@ -10,7 +10,7 @@
       items:
         - name: Začínáme s analýzou nákladů
           href: quick-acm-cost-analysis.md
-        - name: Vytvoření rozpočtu pomocí šablony
+        - name: Vytvoření rozpočtu – šablona ARM
           href: quick-create-budget-template.md
           displayName: 'ARM template, resource manager template'
     - name: Kurzy

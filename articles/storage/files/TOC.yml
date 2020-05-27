@@ -266,7 +266,7 @@
     - name: Poznámky k verzi Synchronizace souborů Azure
       href: storage-files-release-notes.md
     - name: Fórum Azure Storage
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+      href: 'https://docs.microsoft.com/answers/products/azure?product=storage'
     - name: Azure Storage na webu Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
     - name: Ceny služby Azure Storage

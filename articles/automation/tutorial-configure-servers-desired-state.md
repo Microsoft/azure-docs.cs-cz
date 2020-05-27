@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 93fb896dfc373a7402bbb3d1a38a655088d27fdf
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a45aa8299d61e89f2a21bc9c53de3a88f88cbb93
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735902"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827892"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>Konfigurace počítačů do požadovaného stavu
 
@@ -26,8 +26,6 @@ Konfigurace stavu Azure Automation umožňuje zadat konfigurace pro vaše server
 Pro tento kurz používáme jednoduchou [konfiguraci DSC](/powershell/scripting/dsc/configurations/configurations) , která zajišťuje, že se na virtuálním počítači nainstaluje služba IIS.
 
 ## <a name="prerequisites"></a>Požadavky
-
-Pro absolvování tohoto kurzu potřebujete:
 
 - Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](automation-sec-configure-azure-runas-account.md).
 - Azure Resource Manager virtuální počítač (ne Classic) se systémem Windows Server 2008 R2 nebo novějším. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření prvního virtuálního počítače s Windows v Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
@@ -163,9 +161,10 @@ Pokud chcete zrušit registraci uzlu ze služby konfigurace stavu Azure Automati
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme s konfigurací stavu Azure Automation](automation-dsc-getting-started.md)
-* [Povolit konfiguraci stavu Azure Automation](automation-dsc-onboarding.md)
-* [Kompilovat konfigurace v konfiguraci stavu Azure Automation](automation-dsc-compile.md)
-* [Rutiny konfigurace stavu Azure Automation](/powershell/module/azurerm.automation/#automation)
-* [Ceny konfigurace Azure Automation stavu](https://azure.microsoft.com/pricing/details/automation/)
-- [Nastavení průběžného nasazování pomocí čokolády](automation-dsc-cd-chocolatey.md)
+- Informace o tom, jak začít, najdete v tématu Začínáme [s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
+- Další informace o povolení uzlů najdete v tématu [povolení konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
+- Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
+- Příklad použití konfigurace stavu Azure Automation v kanálu nepřetržitého nasazení najdete v tématu [Nastavení průběžného nasazování s čokoládou](automation-dsc-cd-chocolatey.md).
+- Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

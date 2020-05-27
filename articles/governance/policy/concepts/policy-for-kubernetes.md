@@ -3,12 +3,12 @@ title: Preview – informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí. Tato funkce je ve verzi Preview.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb66510b55f9d3f08ab8e058bb8f67fb1954db6f
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 0d663d7bf7ce70c605551422f600258943d1efd7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800361"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828623"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Vysvětlení Azure Policy pro clustery Kubernetes (Preview)
 
@@ -403,7 +403,7 @@ V následujících krocích najdete předdefinované definice zásad pro správu
 
 1. Nastavení **hodnot parametrů** 
 
-   - Pokud chcete vyloučit obory názvů Kubernetes ze vyhodnocení zásad, zadejte seznam oborů názvů v **vyloučeních oboru názvů**parametrů. Doporučuje se vyloučit: _Kube-System_ 
+   - Pokud chcete vyloučit obory názvů Kubernetes ze vyhodnocení zásad, zadejte seznam oborů názvů v **vyloučeních oboru názvů**parametrů. Doporučuje se vyloučit: _Kube-System_, _gatekeeper-System_a _Azure-ARC_.
 
 1. Vyberte **Zkontrolovat a vytvořit**.
 

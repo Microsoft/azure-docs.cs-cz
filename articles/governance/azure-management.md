@@ -1,14 +1,14 @@
 ---
 title: Přehled správy Azure – zásady správného řízení Azure
 description: Přehled oblastí správy pro aplikace a prostředky Azure s odkazy na obsah v nástrojích pro správu Azure.
-ms.date: 12/06/2018
+ms.date: 05/22/2020
 ms.topic: overview
-ms.openlocfilehash: 644f4fc3a04f86426c2eb04b02c29882fa39fb88
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75980903"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828143"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Přehled služeb správy v Azure
 
@@ -18,7 +18,7 @@ Termín správa označuje úlohy a procesy nezbytné pro udržování obchodníc
 
 Následující diagram ukazuje různé oblasti správy, které jsou nutné k údržbě libovolné aplikace nebo prostředku. Tyto různé oblasti si můžete představit jako životní cyklus. Každá oblast je požadována při nepřetržitém pokusům o životnosti prostředku. Tento životní cyklus prostředků začíná počátečním nasazením, prostřednictvím pokračování operace a nakonec po vyřazení.
 
-![Disciplíny správy v Azure](../monitoring/media/management-overview/management-capabilities.png)
+:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Disciplíny správy v Azure" border="false":::
 
 Žádná jediná služba Azure zcela neplní požadavky určité oblasti správy. Místo toho jsou všechny realizovány několika službami současně. Některé služby, například Application Insights, poskytují cílené funkce monitorování webových aplikací. Ostatní, jako jsou protokoly Azure Monitor, ukládají data správy pro další služby. Tato funkce umožňuje analyzovat data různých typů shromažďovaných různými službami.
 
@@ -36,7 +36,9 @@ Automatizace těchto úloh vám umožní eliminovat redundanci, minimalizovat č
 ## <a name="govern"></a>Řízení
 
 Zásady správného řízení poskytují mechanismy a postupy pro zajištění kontroly nad vašimi aplikacemi a prostředky v Azure. Zahrnují plánování iniciativ a nastavení strategických priorit.
-Zásady správného řízení v Azure jsou primárně implementované pomocí dvou služeb. [Azure Policy](./policy/overview.md) umožňuje vytvářet, přiřazovat a spravovat definice zásad pro vymáhání vašich prostředků. Tato funkce udržuje tyto prostředky v souladu s vašimi podnikovými standardy. [Azure cost management](../cost-management-billing/cost-management-billing-overview.md) vám umožňuje sledovat využití cloudu a výdaje za prostředky Azure a další cloudové poskytovatele.
+Zásady správného řízení v Azure jsou primárně implementované pomocí dvou služeb. [Azure Policy](./policy/overview.md) umožňuje vytvářet, přiřazovat a spravovat definice zásad pro vymáhání vašich prostředků.
+Tato funkce udržuje tyto prostředky v souladu s vašimi podnikovými standardy.
+[Azure cost management](../cost-management-billing/cost-management-billing-overview.md) vám umožňuje sledovat využití cloudu a výdaje za prostředky Azure a další cloudové poskytovatele.
 
 ## <a name="secure"></a>Zabezpečení
 

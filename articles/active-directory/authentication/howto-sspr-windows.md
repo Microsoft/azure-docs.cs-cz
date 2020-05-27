@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95d1ffec6a849cb97a6151717c3e30dc362b1403
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743340"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826600"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Postupy: povolení resetování hesla z přihlašovací obrazovky Windows
 
@@ -30,7 +30,7 @@ V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete uživatelům povol
 - Je známo, že někteří poskytovatelé přihlašovacích údajů třetích stran způsobují problémy s touto funkcí.
 - Vypnutí řízení uživatelských účtů prostřednictvím změny [klíče registru EnableLUA](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) je známo, že způsobují problémy.
 - Tato funkce nefunguje pro sítě s nasazeným ověřováním sítě 802.1 x a možnost provést těsně před přihlášením uživatele. Pro povolení této funkce doporučujeme, aby se sítě s nasazeným ověřováním pomocí sítě 802.1 x používaly ověřování počítače.
-- Počítače připojené k hybridní službě Azure AD musí mít na řadiči domény linku připojení k síti, aby bylo možné použít nové heslo a aktualizovat přihlašovací údaje uložené v mezipaměti.
+- Počítače připojené k hybridní službě Azure AD musí mít na řadiči domény linku připojení k síti, aby bylo možné použít nové heslo a aktualizovat přihlašovací údaje uložené v mezipaměti. To znamená, že zařízení musí být buď v interní síti organizace, nebo na síti VPN se síťovým přístupem k místnímu řadiči domény. 
 - Pokud použijete image, před provedením kroku CopyProfile zajistěte, aby byla mezipaměť webu pro předdefinovaný správce vymazána. Další informace o tomto kroku najdete v článku o [výkonu nekvalitního výkonu při používání vlastního výchozího uživatelského profilu](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - U následujících nastavení je známo, že se bude rušit možnost používat a resetovat hesla na zařízeních s Windows 10.
     - Pokud zásady ve verzích Windows 10 před v1809 vyžadují CTRL + ALT + DEL, **resetování hesla** nebude fungovat.
@@ -66,7 +66,7 @@ Nasazení změny konfigurace, která umožní resetování hesla z přihlašovac
 #### <a name="create-a-device-configuration-policy-in-intune"></a>Vytvoření zásad konfigurace zařízení v Intune
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a klikněte na **Intune**.
-1. Vytvoření nového profilu konfigurace zařízení kliknutím na > **profily** >  **Konfigurace zařízení****vytvořit profil**
+1. Vytvoření nového profilu konfigurace zařízení kliknutím na profily **Konfigurace zařízení**  >  **Profiles**  >  **vytvořit profil**
    - Zadejte výstižný název profilu.
    - Volitelně zadejte výstižný popis profilu.
    - Jako platformu vyberte **Windows 10 a novější**.
@@ -97,7 +97,7 @@ Protokol auditu služby Azure AD bude obsahovat informace o IP adrese a typu kli
 
 ![Příklad resetování hesla systému Windows 7 v protokolu auditu Azure AD](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Když uživatelé resetují heslo na přihlašovací obrazovce zařízení s Windows 10, vytvoří se dočasný účet s nízkou úrovní oprávnění s `defaultuser1` názvem. Tento účet se používá k zabezpečení procesu resetování hesla. Samotný účet má náhodně generované heslo, nezobrazuje se pro přihlášení k zařízení a automaticky se odebere po resetování hesla uživatelem. Může `defaultuser` existovat více profilů, ale lze je bezpečně ignorovat.
+Když uživatelé resetují heslo na přihlašovací obrazovce zařízení s Windows 10, vytvoří se dočasný účet s nízkou úrovní oprávnění s názvem `defaultuser1` . Tento účet se používá k zabezpečení procesu resetování hesla. Samotný účet má náhodně generované heslo, nezobrazuje se pro přihlášení k zařízení a automaticky se odebere po resetování hesla uživatelem. `defaultuser`Může existovat více profilů, ale lze je bezpečně ignorovat.
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Resetování hesla Windows 7, 8 a 8,1
 
@@ -141,7 +141,7 @@ Pokud se vyžaduje další protokolování, můžete změnit klíč registru v p
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Chcete-li povolit podrobné protokolování, vytvořte `REG_DWORD: "EnableLogging"`a nastavte jej na hodnotu 1.
+- Chcete-li povolit podrobné protokolování, vytvořte `REG_DWORD: "EnableLogging"` a nastavte jej na hodnotu 1.
 - Chcete-li zakázat podrobné protokolování, změňte `REG_DWORD: "EnableLogging"` hodnotu na 0.
 
 ## <a name="what-do-users-see"></a>Co vidí uživatelé

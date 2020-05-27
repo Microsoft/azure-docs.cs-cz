@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7568a8a80550677e1608e1a8a52ebeacce765c81
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68568291"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826413"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Distribuované transakce v cloudových databázích
 
@@ -143,9 +143,9 @@ Pomocí zobrazení dynamické správy (zobrazení dynamické správy) ve služb�
 
 Tyto zobrazení dynamické správy jsou zvláště užitečné:
 
-* **Sys.DM\_Tran\_Active\_Transactions**: vypíše aktuálně aktivní transakce a jejich stav. Sloupec UOW (jednotka práce) může identifikovat různé podřízené transakce, které patří do stejné distribuované transakce. Všechny transakce v rámci stejné distribuované transakce mají stejnou hodnotu UOW. Další informace najdete v [dokumentaci k DMV](https://msdn.microsoft.com/library/ms174302.aspx) .
-* **transakce\_sys.DM\_Tran\_Database**: poskytuje další informace o transakcích, jako je umístění transakce v protokolu. Další informace najdete v [dokumentaci k DMV](https://msdn.microsoft.com/library/ms186957.aspx) .
-* **Sys.DM\_Tran\_zámky**: poskytuje informace o zámkech, které jsou aktuálně uchovávány v probíhajících transakcích. Další informace najdete v [dokumentaci k DMV](https://msdn.microsoft.com/library/ms190345.aspx) .
+* **Sys.DM \_ Tran \_ Active \_ Transactions**: vypíše aktuálně aktivní transakce a jejich stav. Sloupec UOW (jednotka práce) může identifikovat různé podřízené transakce, které patří do stejné distribuované transakce. Všechny transakce v rámci stejné distribuované transakce mají stejnou hodnotu UOW. Další informace najdete v [dokumentaci k DMV](https://msdn.microsoft.com/library/ms174302.aspx) .
+* ** \_ \_ \_ transakce sys.DM Tran Database**: poskytuje další informace o transakcích, jako je umístění transakce v protokolu. Další informace najdete v [dokumentaci k DMV](https://msdn.microsoft.com/library/ms186957.aspx) .
+* **Sys.DM \_ Tran \_ zámky**: poskytuje informace o zámkech, které jsou aktuálně uchovávány v probíhajících transakcích. Další informace najdete v [dokumentaci k DMV](https://msdn.microsoft.com/library/ms190345.aspx) .
 
 ## <a name="limitations"></a>Omezení
 
@@ -157,7 +157,7 @@ Následující omezení se aktuálně vztahují na transakce elastické databáz
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte otázky, obraťte se na nás na [fóru SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) a žádosti o funkce, přidejte je do [fóra SQL Database Feedback](https://feedback.azure.com/forums/217321-sql-database/).
+Pokud máte otázky, obraťte se na nás na [stránce s dotazem na Microsoft Q&pro SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) a žádosti o funkce, přidejte je do [fóra SQL Database Feedback](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

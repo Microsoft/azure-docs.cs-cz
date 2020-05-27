@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 34ed6d043f713aa55bfe464c48d4332364df805d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f1897a4f58276bbac2a7de673544e592a562562
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680384"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826668"
 ---
 # <a name="secure-your-restful-services"></a>Zabezpečení služeb RESTful 
 
@@ -43,7 +43,7 @@ Základní ověřování HTTP je definované v [dokumentu RFC 2617](https://tool
 
 Pokud chcete nakonfigurovat REST API technický profil s ověřováním HTTP Basic, vytvořte si uživatelské jméno a heslo pomocí následujících kryptografických klíčů:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
@@ -68,10 +68,10 @@ Pokud chcete nakonfigurovat REST API technický profil s ověřováním HTTP Bas
 Po vytvoření potřebných klíčů Nakonfigurujte metadata profilu REST API Technical profil, aby odkazovala na přihlašovací údaje.
 
 1. V pracovním adresáři otevřete soubor zásad rozšíření (TrustFrameworkExtensions. XML).
-1. Vyhledejte REST API Technical Profile. Například `REST-ValidateProfile`nebo `REST-GetProfile`.
+1. Vyhledejte REST API Technical Profile. Například `REST-ValidateProfile` nebo `REST-GetProfile` .
 1. Vyhledejte element `<Metadata>`.
-1. Změňte *AuthenticationType* na `Basic`.
-1. Změňte *AllowInsecureAuthInProduction* na `false`.
+1. Změňte *AuthenticationType* na `Basic` .
+1. Změňte *AllowInsecureAuthInProduction* na `false` .
 1. Hned za uzavírací `</Metadata>` element přidejte následující fragment kódu XML:
     ```xml
     <CryptographicKeys>
@@ -113,7 +113,7 @@ Ověřování klientským certifikátem je vzájemné ověřování založené n
 
 V případě neprodukčních prostředí můžete použít certifikát podepsaný svým držitelem (samo-signed certificate) i v případě, že ještě nemáte certifikát. Ve Windows můžete k vygenerování certifikátu použít rutinu [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) prostředí PowerShell.
 
-1. Spuštěním tohoto příkazu PowerShellu Vygenerujte certifikát podepsaný svým držitelem. Upravte `-Subject` argument podle potřeby pro vaši aplikaci a Azure AD B2C název tenanta. Můžete také upravit `-NotAfter` datum a zadat jiné vypršení platnosti certifikátu.
+1. Spuštěním tohoto příkazu PowerShellu Vygenerujte certifikát podepsaný svým držitelem. Upravte `-Subject` argument podle potřeby pro vaši aplikaci a Azure AD B2C název tenanta. Můžete také upravit `-NotAfter` Datum a zadat jiné vypršení platnosti certifikátu.
     ```PowerShell
     New-SelfSignedCertificate `
         -KeyExportPolicy Exportable `
@@ -124,15 +124,15 @@ V případě neprodukčních prostředí můžete použít certifikát podepsan�
         -NotAfter (Get-Date).AddMonths(12) `
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```    
-1. Otevřete **Spravovat uživatelské certifikáty** > **aktuální uživatelé** > **osobní** > **certifikáty** > *YourAppName.yourtenant.onmicrosoft.com*.
-1. Vyberte certifikát > **akci** > **všechny úkoly** > **exportovat**.
-1. Vyberte **Ano** >  > **, další Ano, exportovat privátní klíč** > **.****Next**
+1. Otevřete **Spravovat uživatelské certifikáty**  >  **aktuální uživatelé**  >  **osobní**  >  **certifikáty**  >  *YourAppName.yourtenant.onmicrosoft.com*.
+1. Vyberte certifikát > **akci**  >  **všechny úkoly**  >  **exportovat**.
+1. Vyberte **Ano**  >  **Next**  >  **, další Ano, exportovat privátní klíč**  >  **Next**.
 1. Přijměte výchozí hodnoty pro **Formát souboru pro export**.
 1. Zadejte heslo pro certifikát.
 
 ### <a name="add-a-client-certificate-policy-key"></a>Přidat klíč zásad certifikátu klienta
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
@@ -149,10 +149,10 @@ V případě neprodukčních prostředí můžete použít certifikát podepsan�
 Po vytvoření potřebného klíče nakonfigurujte REST API metadata technického profilu tak, aby odkazovala na klientský certifikát.
 
 1. V pracovním adresáři otevřete soubor zásad rozšíření (TrustFrameworkExtensions. XML).
-1. Vyhledejte REST API Technical Profile. Například `REST-ValidateProfile`nebo `REST-GetProfile`.
+1. Vyhledejte REST API Technical Profile. Například `REST-ValidateProfile` nebo `REST-GetProfile` .
 1. Vyhledejte element `<Metadata>`.
-1. Změňte *AuthenticationType* na `ClientCertificate`.
-1. Změňte *AllowInsecureAuthInProduction* na `false`.
+1. Změňte *AuthenticationType* na `ClientCertificate` .
+1. Změňte *AllowInsecureAuthInProduction* na `false` .
 1. Hned za uzavírací `</Metadata>` element přidejte následující fragment kódu XML:
     ```xml
     <CryptographicKeys>
@@ -208,7 +208,7 @@ Následující kroky ukazují, jak pomocí přihlašovacích údajů klienta zí
 
 Deklarace identity poskytuje dočasné úložiště dat během provádění zásad Azure AD B2C. [Schéma deklarací identity](claimsschema.md) je místo, kde deklarujete deklarace identity. Přístupový token musí být uložený v deklaraci, která se má použít později. 
 
-1. Otevřete soubor rozšíření vaší zásady. Například <em> `SocialAndLocalAccounts/` </em>.
+1. Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Vyhledejte element [BuildingBlocks](buildingblocks.md) . Pokud element neexistuje, přidejte jej.
 1. Vyhledejte element [ClaimsSchema](claimsschema.md) . Pokud element neexistuje, přidejte jej.
 1. Do prvku **ClaimsSchema** přidejte následující deklarace identity.  
@@ -241,7 +241,7 @@ Pro ServiceUrl nahraďte název-tenanta názvem vašeho tenanta Azure AD. Všech
   <DisplayName></DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
-    <Item Key="ServiceUrl">https://login.microsoftonline.com/your-tenant-name.microsoft.com/oauth2/v2.0/token</Item>
+    <Item Key="ServiceUrl">https://login.microsoftonline.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token</Item>
     <Item Key="AuthenticationType">Basic</Item>
      <Item Key="SendClaimsIn">Form</Item>
   </Metadata>
@@ -265,13 +265,13 @@ Pro ServiceUrl nahraďte název-tenanta názvem vašeho tenanta Azure AD. Všech
 Pokud chcete ve vlastních zásadách podporovat ověřování nosných tokenů, upravte REST API technický profil následujícím způsobem:
 
 1. V pracovním adresáři otevřete soubor zásad rozšíření *TrustFrameworkExtensions. XML* .
-1. Vyhledejte `<TechnicalProfile>` uzel, který obsahuje `Id="REST-API-SignUp"`.
+1. Vyhledejte `<TechnicalProfile>` uzel, který obsahuje `Id="REST-API-SignUp"` .
 1. Vyhledejte element `<Metadata>`.
 1. Změňte *AuthenticationType* na *nosiče*následujícím způsobem:
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
     ```
-1. Změňte nebo přidejte *UseClaimAsBearerToken* do *bearerToken*, a to následujícím způsobem. *BearerToken* je název deklarace identity, ze které se načte token nosiče (výstupní deklarace identity z `SecureREST-AccessToken`).
+1. Změňte nebo přidejte *UseClaimAsBearerToken* do *bearerToken*, a to následujícím způsobem. *BearerToken* je název deklarace identity, ze které se načte token nosiče (výstupní deklarace identity z `SecureREST-AccessToken` ).
 
     ```xml
     <Item Key="UseClaimAsBearerToken">bearerToken</Item>
@@ -314,15 +314,15 @@ Po přidání výše uvedených fragmentů kódu by váš technický profil měl
 
 Vytvořte klíč zásad pro uložení hodnoty nosných tokenů.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 1. Vyberte **klíče zásad**a pak vyberte **Přidat**.
-1. Pro **Možnosti**vyberte `Manual`možnost.
+1. Pro **Možnosti**vyberte možnost `Manual` .
 1. Zadejte **název** klíče zásad. Například, `RestApiBearerToken`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 1. Do **tajného klíče**zadejte tajný klíč klienta, který jste předtím nahráli.
-1. Pro **použití klíče**vyberte `Encryption`.
+1. Pro **použití klíče**vyberte `Encryption` .
 1. Vyberte **Vytvořit**.
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-the-bearer-token-policy-key"></a>Nakonfigurujte svůj REST API technický profil pro použití klíče zásad nosných tokenů.
@@ -330,10 +330,10 @@ Vytvořte klíč zásad pro uložení hodnoty nosných tokenů.
 Po vytvoření potřebného klíče nakonfigurujte REST API metadata technického profilu tak, aby odkazovala na token nosiče.
 
 1. V pracovním adresáři otevřete soubor zásad rozšíření (TrustFrameworkExtensions. XML).
-1. Vyhledejte REST API Technical Profile. Například `REST-ValidateProfile`nebo `REST-GetProfile`.
+1. Vyhledejte REST API Technical Profile. Například `REST-ValidateProfile` nebo `REST-GetProfile` .
 1. Vyhledejte element `<Metadata>`.
-1. Změňte *AuthenticationType* na `Bearer`.
-1. Změňte *AllowInsecureAuthInProduction* na `false`.
+1. Změňte *AuthenticationType* na `Bearer` .
+1. Změňte *AllowInsecureAuthInProduction* na `false` .
 1. Hned za uzavírací `</Metadata>` element přidejte následující fragment kódu XML:
     ```xml
     <CryptographicKeys>

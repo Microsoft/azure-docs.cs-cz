@@ -388,6 +388,8 @@
               href: service-updates-how-to.md
             - name: Odstranění trezoru
               href: delete-vault.md
+    - name: Podpora Site Recovery pro skupiny umístění bezkontaktní komunikace
+      href: how-to-enable-replication-proximity-placement-groups.md
     - name: Zotavení po havárii pro aplikace
       items:
         - name: Informace o zotavení po havárii pro místní aplikace
@@ -514,8 +516,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/tag/azure-site-recovery/'
-    - name: Fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-site-recovery.html'
     - name: Postup výuky
       href: /learn/azure/
     - name: Ceny

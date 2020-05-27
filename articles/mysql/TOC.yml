@@ -308,8 +308,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMySQL'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-database-mysql.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: Videa

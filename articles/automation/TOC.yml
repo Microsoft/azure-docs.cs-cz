@@ -299,8 +299,8 @@
       href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-automation.html'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: Cenová kalkulačka

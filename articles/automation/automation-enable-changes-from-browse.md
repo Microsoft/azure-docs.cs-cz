@@ -5,14 +5,14 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: b53c63fc1a14c456e0bca0725ca29b311301ce66
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0491f10f22e35c81e5bc35d537546001f136be50
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749078"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826821"
 ---
-# <a name="enable-change-tracking-and-inventory-from-the-azure-portal"></a>Povolit Change Tracking a inventář z Azure Portal
+# <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Povolit Change Tracking a inventář z Azure Portal
 
 Tento článek popisuje, jak můžete povolit funkci [Change Tracking a inventáře](change-tracking.md) pro virtuální počítače procházením Azure Portal. Pokud chcete povolit virtuální počítače Azure ve velkém měřítku, musíte povolit existující virtuální počítač pomocí Change Tracking a inventáře. 
 
@@ -60,10 +60,9 @@ Přihlaste se k Azure na adrese https://portal.azure.com .
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa Change Tracking a inventáře](change-tracking-file-contents.md)
-* [Práce s konfiguracemi oboru pro Change Tracking a inventář](automation-scope-configurations-change-tracking.md)
-* [Identifikace softwaru na virtuálním počítači](automation-tutorial-installed-software.md)
-* [Zrušení propojení pracovního prostoru s účtem služby Automation pro Change Tracking a inventář](automation-unlink-workspace-change-tracking.md)
-* [Odebrání virtuálních počítačů z Change Tracking a inventáře](automation-remove-vms-from-change-tracking.md)
-* [Řešení potíží se změnami na virtuálním počítači Azure](automation-tutorial-troubleshoot-changes.md)
-* [Řešení problémů s Change Tracking a inventářem](troubleshoot/change-tracking.md)
+* Podrobnosti o práci s funkcí najdete v tématu [správa Change Tracking a inventáře](change-tracking-file-contents.md).
+* Informace o konfiguracích oboru najdete v tématu [práce s konfiguracemi oboru pro Change Tracking a inventář](automation-scope-configurations-change-tracking.md).
+* Informace o použití funkce k identifikaci softwaru nainstalovaného ve vašem prostředí najdete v tématu [zjištění, jaký software je nainstalovaný na vašich virtuálních počítačích](automation-tutorial-installed-software.md).
+* Pokud účet Automation nechcete při povolování této funkce integrovat do pracovního prostoru Log Analytics, přečtěte si téma [zrušení propojení pracovního prostoru s účtem Automation](automation-unlink-workspace-change-tracking.md).
+* Po dokončení nasazování změn do virtuálních počítačů je můžete odebrat, jak je popsáno v tématu [Odebrání virtuálních počítačů z Change Tracking a inventáře](automation-remove-vms-from-change-tracking.md).
+* Řešení obecných problémů s funkcí najdete v tématu [řešení potíží s Change Tracking a inventářem](troubleshoot/change-tracking.md).
