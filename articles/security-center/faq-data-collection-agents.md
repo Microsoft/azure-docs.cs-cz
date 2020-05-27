@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbad1a94479430426dae47df7ca3a3ecd9dc980
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436203"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849038"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -27,7 +27,7 @@ Security Center shromažďuje data z virtuálních počítačů Azure, sady šk�
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Účtují se mi Azure Monitor protokoly v pracovních prostorech vytvořených pomocí Security Center?
 
-Ne. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
+No. Pracovní prostory vytvořené pomocí Security Center, i když jsou nakonfigurované pro Azure Monitor protokolů za uzel, se neúčtují Azure Monitor poplatky. Security Center fakturace je vždycky založená na vašich Security Center zásadách zabezpečení a řešeních, která jsou nainstalovaná v pracovním prostoru:
 
 - **Úroveň Free** – Security Center ve výchozím pracovním prostoru povolí řešení ' SecurityCenterFree '. Za bezplatnou úroveň se vám nebude účtovat.
 
@@ -49,6 +49,22 @@ Virtuální počítače s Windows nebo Linux IaaS mají nárok v těchto přípa
 - Virtuální počítač je ve spuštěném stavu.
 - Je nainstalovaný [Agent virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) se systémem Windows nebo Linux.
 - Virtuální počítač se nepoužívá jako zařízení, jako je třeba brána firewall webových aplikací nebo brána firewall nové generace.
+
+
+## <a name="where-is-the-default-log-analytics-workspace-created"></a>Kde je vytvořen výchozí pracovní prostor Log Analytics?
+
+Umístění výchozího pracovního prostoru závisí na vaší oblasti Azure:
+
+- Pro virtuální počítače v USA a Brazílie je umístění pracovního prostoru USA
+- Pro virtuální počítače v Kanadě je umístění pracovního prostoru Kanada.
+- Pro virtuální počítače v Evropě je umístění pracovního prostoru Evropa.
+- V případě virtuálních počítačů ve Spojeném království je umístění pracovního prostoru Velká Británie.
+- Pro virtuální počítače v Východní Asie a jihovýchodní Asie je umístění pracovního prostoru Asie.
+- V případě virtuálních počítačů v Koreji je umístění pracovního prostoru Korea.
+- Pro virtuální počítače v Indii je umístění pracovního prostoru Indie.
+- Pro virtuální počítače v Japonsku je umístění pracovního prostoru Japonsko.
+- Pro virtuální počítače v Číně je umístění pracovního prostoru Čína.
+- Pro virtuální počítače v Austrálii je umístění pracovního prostoru Austrálie.
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Můžu odstranit výchozí pracovní prostory vytvořené pomocí Security Center?
@@ -208,7 +224,7 @@ Když Security Center detekuje podezřelou aktivitu na virtuálním počítači,
 
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>Bude Security Center pracovat s bránou OMS?
 
-Ano. Azure Security Center využívá Azure Monitor ke shromažďování dat z virtuálních počítačů a serverů Azure pomocí agenta Log Analytics.
+Yes. Azure Security Center využívá Azure Monitor ke shromažďování dat z virtuálních počítačů a serverů Azure pomocí agenta Log Analytics.
 Ke shromáždění dat se musí každý virtuální počítač a Server připojit k Internetu pomocí protokolu HTTPS. Připojení může být přímo, pomocí proxy serveru nebo pomocí [brány OMS](../azure-monitor/platform/gateway.md).
 
 

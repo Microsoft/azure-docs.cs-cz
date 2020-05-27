@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 8f6022f03d28362e85fba3fd75e60c4d7032b41b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cd02a0ea51faa7dae14e0f9d61c446aae55dcbe1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448378"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849565"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a Ruby
 
-Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhraní API Bingu pro vyhledávání videí a zobrazit výsledky hledání z odpovědi JSON. Tato jednoduchá aplikace v Ruby pošle do rozhraní API dotaz pro vyhledávání videí HTTP a zobrazí odpověď. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) s dalším ošetřením chyb a poznámkami ke kódu.
+V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání videí. Tato jednoduchá aplikace v Ruby pošle do rozhraní API dotaz pro vyhledávání videí HTTP a zobrazí odpověď JSON. I když je tato aplikace napsaná v Pythonu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. 
+
+Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) s dalším ošetřením chyb a poznámkami ke kódu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,7 +31,7 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Importujte následující balíčky do souboru s kódem.
+1. Importujte následující balíčky do souboru kódu:
 
     ```ruby
     require 'net/https'
@@ -37,7 +39,7 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
     require 'json'
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, cestu pro vyhledávání rozhraní API pro video, klíč předplatného a hledaný termín. `uri`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro koncový bod rozhraní API, cestu pro vyhledávání rozhraní API pro video, klíč předplatného a hledaný termín. Pro tuto `url` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -48,13 +50,13 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
 
 ## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání žádosti rozhraní API
 
-1. Pomocí proměnných z posledního kroku naformátujte adresu URL hledání pro požadavek. Zkombinujte identifikátor URI a cestu a potom URL zakódováním hledaného výrazu před jeho připojením k `?q=` parametru.
+1. Pomocí proměnných z předchozího kroku naformátujte adresu URL hledání pro požadavek. Zkombinujte identifikátor URI a cestu a potom URL zakódováním hledaného termínu před připojením k `?q=` parametru.
 
     ```ruby
     uri = URI(uri + path + "?q=" + URI.escape(term))
     ```
 
-2. Přidejte k žádosti úplnou adresu URL hledání a přidejte do `Ocp-Apim-Subscription-Key` hlavičky klíč předplatného.
+2. Přidejte k žádosti úplnou adresu URL hledání a přidejte do hlavičky klíč předplatného `Ocp-Apim-Subscription-Key` .
     
     ``` ruby
     request = Net::HTTP::Get.new(uri)
@@ -71,11 +73,11 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
 
 ## <a name="process-and-view-the-response"></a>Zpracování a zobrazení odpovědi
 
-1. Po přijetí odpovědi můžete vytisknout odpověď JSON.
+Po přijetí odpovědi vytiskněte odpověď JSON.
 
-    ```ruby
-    puts JSON::pretty_generate(JSON(response.body))
-    ```
+```ruby
+puts JSON::pretty_generate(JSON(response.body))
+```
 
 ## <a name="json-response"></a>Odpověď JSON
 
@@ -191,7 +193,7 @@ Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhr
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace s jednou stránkou](../tutorial-bing-video-search-single-page-app.md)
+> [Vytvoření jednostránkové webové aplikace](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Viz také 
 

@@ -6,14 +6,14 @@ ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: bdef440fb8273dbbc5053d1c4eb6607fba0cdab3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744557"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849021"
 ---
-# <a name="getting-paid-in-commercial-marketplace"></a>Platba na komerční Marketplace
+# <a name="getting-paid-in-the-commercial-marketplace"></a>Platba na komerčním webu Marketplace
 
 Zde jsou některé důležité informace o tom, jak přijímat platby za vaše nabídky, doplňky a příjmy za reklamu.
 
@@ -43,17 +43,15 @@ Máte také možnost zadat cenu z volné formy, kterou zvolíte v místní měn�
 
 Mějte na paměti, že vybraná cena může zahrnovat daň z prodeje nebo přidané hodnoty, kterou musí vaši zákazníci platit. Podrobnosti najdete v tématu [daňové detaily pro placené nabídky](tax-details-paid-transactions.md).
 
-
 ## <a name="payout-reporting"></a>Generování sestav plateb
 
 K podrobnostem o svých platebních údajích a ke stažení sestav můžete získat informace v **přehledu výběrů** [partnerského centra](https://partner.microsoft.com/dashboard). Podrobnosti o zde zobrazených informacích a způsobu kategorizace peníze, které získáte, najdete v tématu [Přehled souhrnu výběrů](payout-summary-overview.md).
-
 
 ## <a name="payout-time-frame"></a>Časový rámec výběr
 
 Platby se účtují měsíčně (za předpokladu, že byla splněna platná prahová hodnota platby a neuvedli jste svůj výběr, jak je popsáno níže). Obvykle budeme v daném měsíci zasílat platbu za 15. den tohoto měsíce. Všimněte si, že platby obvykle mezi 3 až 10 dalšími pracovními dny dosáhnou, abyste dosáhli svého účtu na výběr. Podrobnosti najdete v tématu [prahové hodnoty pro platby, metody a časové rámce](payment-thresholds-methods-timeframes.md).
 
-##  <a name="payout-hold-status"></a>Stav blokování ve výběr
+## <a name="payout-hold-status"></a>Stav blokování ve výběr
 
 Ve výchozím nastavení pošleme platby měsíčně, jak je popsáno výše. Máte ale možnost umístit své výběry do pozastaveného programu, což nám zabrání v posílání plateb na váš účet. Pokud se rozhodnete, že se vaše výběry zablokují, budeme nahrávat všechny výnosy, které získáte, a poskytnout podrobné údaje v **souhrnu**výběru. Do vašeho účtu ale nepošleme žádné platby, dokud ho neodeberete.
 

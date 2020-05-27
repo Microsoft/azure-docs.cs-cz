@@ -7,19 +7,19 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bfae8c7afbfdc6e73dd8bb17b94e6543361e9ce
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367563"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848224"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub IP adresy
 
 Předpony IP adres IoT Hub veřejných koncových bodů se pravidelně publikují v rámci [značky služby](../virtual-network/service-tags-overview.md) _AzureIoTHub_ .
 
 > [!NOTE]
-> Pro zařízení nasazená v místních sítích Azure IoT Hub podporuje integraci připojení virtuální sítě s privátními koncovými body. Další informace najdete v tématu věnovaném [podpoře sítě VNET IoT Hub](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints) .
+> Pro zařízení nasazená v místních sítích Azure IoT Hub podporuje integraci připojení virtuální sítě s privátními koncovými body. Další informace najdete v tématu [Podpora pro virtuální síť IoT Hub](./virtual-network-support.md) .
 
 
 Tyto předpony IP adres můžete použít k řízení připojení mezi IoT Hub a zařízeními nebo síťovými prostředky za účelem implementace nejrůznějších cílů izolace sítě:

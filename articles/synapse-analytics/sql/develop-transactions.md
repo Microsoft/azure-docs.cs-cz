@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9b9ce5110a03ec4d67b3e8af6d9b18e5ad6836af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c921b05dd98c55c8e7db8beac93d1b724de1cd7
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428716"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869298"
 ---
 # <a name="using-transactions-in-sql-pool"></a>Používání transakcí ve fondu SQL
 
@@ -46,7 +46,7 @@ V tabulce níže byly provedeny následující předpoklady:
 | [DWU](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Cap na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | Počet řádků na distribuci | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4 000 000 |240 000 000 |
-| DW200c |1,5 |60 |90 |6 000 000 |360 000 000 |
+| DW200c |1.5 |60 |90 |6 000 000 |360 000 000 |
 | DW300c |2.25 |60 |135 |9 000 000 |540 000 000 |
 | DW400c |3 |60 |180 |12 000 000 |720 000 000 |
 | DW500c. |3,75 |60 |225 |15 000 000 |900 000 000 |
@@ -67,7 +67,7 @@ V tabulce níže byly provedeny následující předpoklady:
 | [DWU](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Cap na distribuci (GB) | Počet distribucí | MAXIMÁLNÍ velikost transakce (GB) | Počet řádků na distribuci | Maximální počet řádků na transakci |
 | --- | --- | --- | --- | --- | --- |
 | OD DW100 |1 |60 |60 |4 000 000 |240 000 000 |
-| DW200 |1,5 |60 |90 |6 000 000 |360 000 000 |
+| DW200 |1.5 |60 |90 |6 000 000 |360 000 000 |
 | DW300 |2.25 |60 |135 |9 000 000 |540 000 000 |
 | DW400 |3 |60 |180 |12 000 000 |720 000 000 |
 | DW500 |3,75 |60 |225 |15 000 000 |900 000 000 |
@@ -206,4 +206,4 @@ Jsou to tyto:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o optimalizaci transakcí naleznete v tématu [osvědčené postupy pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). K dispozici jsou i další Příručky k osvědčeným postupům pro [fond SQL](best-practices-sql-pool.md) a [SQL na vyžádání (Preview)](on-demand-workspace-overview.md).
+Další informace o optimalizaci transakcí naleznete v tématu [osvědčené postupy pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). K dispozici jsou i další Příručky k osvědčeným postupům pro [fond SQL](best-practices-sql-pool.md) a [SQL na vyžádání (Preview)](best-practices-sql-on-demand.md).

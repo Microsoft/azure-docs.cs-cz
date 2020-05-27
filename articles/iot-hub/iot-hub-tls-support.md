@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
-ms.openlocfilehash: 7ab3b48d22f116a707f68cbf6284928c7d2557e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b9f6b993b0d0f527d041b4ee055bf51fefa1253
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409491"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848241"
 ---
 # <a name="tls-support-in-iot-hub"></a>Podpora TLS v IoT Hub
 
@@ -24,7 +24,7 @@ TLS 1,0 a 1,1 se považují za starší verze a plánuje se jejich vyřazení. D
 
 Pro zvýšení zabezpečení doporučujeme nakonfigurovat vaše centra IoT tak, aby povolovala *jenom* připojení klientů, která používají protokol TLS verze 1,2, a vynutili používání [doporučených šifr](#recommended-ciphers).
 
-Pro tento účel zřiďte novou IoT Hub v některé z [podporovaných oblastí](#supported-regions) a nastavte `minTlsVersion` vlastnost na specifikaci prostředků služby IoT `1.2` hub pro Azure Resource Manager Template:
+Pro tento účel zřiďte novou IoT Hub v některé z [podporovaných oblastí](#supported-regions) a nastavte `minTlsVersion` vlastnost na `1.2` specifikaci prostředků služby IoT Hub pro Azure Resource Manager Template:
 
 ```json
 {
@@ -52,9 +52,9 @@ Pro tento účel zřiďte novou IoT Hub v některé z [podporovaných oblastí](
 Vytvořený prostředek IoT Hub pomocí této konfigurace odmítne klienty zařízení a služeb, kteří se pokusí připojit pomocí protokolu TLS verze 1,0 a 1,1. Podobně platí, že pokud zpráva HELLo klienta neuvádí žádné [Doporučené šifry](#recommended-ciphers), dojde k odmítnutí handshake TLS.
 
 > [!NOTE]
-> `minTlsVersion` Vlastnost je určena jen pro čtení a nelze ji změnit po vytvoření prostředku IoT Hub. Proto je důležité, abyste správně otestovali a ověřili, že *všechna* vaše zařízení a služby IoT jsou kompatibilní s TLS 1,2 a předem [doporučenými šiframi](#recommended-ciphers) .
+> `minTlsVersion`Vlastnost je určena jen pro čtení a nelze ji změnit po vytvoření prostředku IoT Hub. Proto je důležité, abyste správně otestovali a ověřili, že *všechna* vaše zařízení a služby IoT jsou kompatibilní s TLS 1,2 a předem [doporučenými šiframi](#recommended-ciphers) .
 
-### <a name="supported-regions"></a>Podporované oblasti
+## <a name="supported-regions"></a>Podporované oblasti
 
 Centra IoT, která vyžadují použití protokolu TLS 1,2, se dají vytvořit v následujících oblastech:
 
@@ -65,9 +65,9 @@ Centra IoT, která vyžadují použití protokolu TLS 1,2, se dají vytvořit v 
 * USA (Gov) – Virginia
 
 > [!NOTE]
-> Po převzetí služeb při `minTlsVersion` selhání bude vlastnost IoT Hub v rámci převzetí služeb při selhání v geograficky spárovaném regionu platit.
+> Po převzetí služeb při selhání `minTlsVersion` bude vlastnost IoT Hub v rámci převzetí služeb při selhání v geograficky spárovaném regionu platit.
 
-### <a name="recommended-ciphers"></a>Doporučené šifry
+## <a name="recommended-ciphers"></a>Doporučené šifry
 
 Centra IoT, která jsou nakonfigurovaná tak, aby přijímala jenom TLS 1,2, taky vynutila použití následujících doporučených šifr:
 
@@ -76,19 +76,34 @@ Centra IoT, která jsou nakonfigurovaná tak, aby přijímala jenom TLS 1,2, tak
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
 
-### <a name="use-tls-12-in-your-iot-hub-sdks"></a>Použití TLS 1,2 v sadách IoT Hub SDK
+Pro služby IoT Hub, které nejsou nakonfigurované pro vynucování TLS 1,2, bude TLS 1,2 dál fungovat s následujícími šiframi:
+
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
+* `TLS_DHE_RSA_WITH_AES_256_GCM_SHA384`
+* `TLS_DHE_RSA_WITH_AES_128_GCM_SHA256`
+* `TLS_RSA_WITH_AES_256_GCM_SHA384`
+* `TLS_RSA_WITH_AES_128_GCM_SHA256`
+* `TLS_RSA_WITH_AES_256_CBC_SHA256`
+* `TLS_RSA_WITH_AES_128_CBC_SHA256`
+* `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA`
+* `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_AES_256_CBC_SHA`
+* `TLS_RSA_WITH_AES_128_CBC_SHA`
+* `TLS_RSA_WITH_3DES_EDE_CBC_SHA`
+
+## <a name="use-tls-12-in-your-iot-hub-sdks"></a>Použití TLS 1,2 v sadách IoT Hub SDK
 
 Pomocí níže uvedených odkazů nakonfigurujte TLS 1,2 a povolená šifra v IoT Hub klientských sadách SDK.
 
 | Jazyk | Verze podporující TLS 1,2 | Dokumentace |
 |----------|------------------------------------|---------------|
-| C        | Tag 2019-12-11 nebo novější            | [Odkaz](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Verze 2.0.0 nebo novější             | [Odkaz](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Verze 1.21.4 nebo novější            | [Odkaz](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Verze 1.19.0 nebo novější            | [Odkaz](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Verze 1.12.2 nebo novější            | [Odkaz](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | Tag 2019-12-11 nebo novější            | [Propojit](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Verze 2.0.0 nebo novější             | [Propojit](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Verze 1.21.4 nebo novější            | [Propojit](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Verze 1.19.0 nebo novější            | [Propojit](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Verze 1.12.2 nebo novější            | [Propojit](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
-### <a name="use-tls-12-in-your-iot-edge-setup"></a>Použití TLS 1,2 v nastavení IoT Edge
+## <a name="use-tls-12-in-your-iot-edge-setup"></a>Použití TLS 1,2 v nastavení IoT Edge
 
 IoT Edge zařízení je možné nakonfigurovat tak, aby při komunikaci s IoT Hub používala TLS 1,2. Pro účely tohoto účelu použijte [stránku dokumentace IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).

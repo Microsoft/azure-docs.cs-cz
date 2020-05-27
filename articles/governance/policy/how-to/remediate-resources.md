@@ -3,12 +3,12 @@ title: Oprava prostředků, které nevyhovují předpisům
 description: Tato příručka vás provede opravou prostředků, které nedodržují zásady v Azure Policy.
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: f4846b6eb1ea03c6706a610cab16ec376d19b060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acdb067e888ecbe68e3221944568b202f2510c41
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195226"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849956"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Napravit nekompatibilní prostředky pomocí Azure Policy
 
@@ -72,11 +72,11 @@ $resourceGroup = Get-AzResourceGroup -Name 'MyResourceGroup'
 $assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
 ```
 
-`$assignment` Proměnná nyní obsahuje ID objektu zabezpečení spravované identity společně se standardními hodnotami vrácenými při vytváření přiřazení zásady. Dá se k němu dostat `$assignment.Identity.PrincipalId`prostřednictvím.
+`$assignment`Proměnná nyní obsahuje ID objektu zabezpečení spravované identity společně se standardními hodnotami vrácenými při vytváření přiřazení zásady. Dá se k němu dostat prostřednictvím `$assignment.Identity.PrincipalId` .
 
 ### <a name="grant-defined-roles-with-powershell"></a>Udělení definovaných rolí pomocí PowerShellu
 
-Nová spravovaná identita musí dokončit replikaci prostřednictvím Azure Active Directory před tím, než bude možné udělit potřebné role. Po dokončení replikace následující příklad provede iteraci definice zásady v `$policyDef` pro **RoleDefinitionIds** a pomocí [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) udělí nové spravované identitě role.
+Nová spravovaná identita musí dokončit replikaci prostřednictvím Azure Active Directory před tím, než bude možné udělit potřebné role. Po dokončení replikace následující příklad provede iteraci definice zásady v `$policyDef` pro **roleDefinitionIds** a pomocí [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) udělí nové spravované identitě role.
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -157,7 +157,7 @@ Prostředky nasazené prostřednictvím **nápravné úlohy** se přidají na ka
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Vytvoření úlohy nápravy pomocí Azure CLI
 
-Pokud chcete vytvořit **úlohu nápravy** pomocí Azure CLI, použijte `az policy remediation` příkazy. Nahraďte `{subscriptionId}` ID předplatného `{myAssignmentId}` a **deployIfNotExists** nebo **upravte** ID přiřazení zásad.
+Pokud chcete vytvořit **úlohu nápravy** pomocí Azure CLI, použijte `az policy remediation` příkazy. Nahraďte `{subscriptionId}` ID předplatného a `{myAssignmentId}` **DEPLOYIFNOTEXISTS** nebo **upravte** ID přiřazení zásad.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -170,7 +170,7 @@ Další příkazy a příklady pro nápravu najdete v tématu [AZ Policy reoprav
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Vytvoření úlohy nápravy pomocí Azure PowerShell
 
-Chcete-li vytvořit **úlohu nápravy** pomocí Azure PowerShell, použijte `Start-AzPolicyRemediation` příkazy. Nahraďte `{subscriptionId}` ID předplatného `{myAssignmentId}` a **deployIfNotExists** nebo **upravte** ID přiřazení zásad.
+Chcete-li vytvořit **úlohu nápravy** pomocí Azure PowerShell, použijte `Start-AzPolicyRemediation` příkazy. Nahraďte `{subscriptionId}` ID předplatného a `{myAssignmentId}` **DEPLOYIFNOTEXISTS** nebo **upravte** ID přiřazení zásad.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -180,6 +180,10 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 ```
 
 Další rutiny a příklady pro nápravu najdete v tématu [AZ. PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) Module.
+
+### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>Vytvoření úlohy nápravy během přiřazování zásad v Azure Portal
+
+Jednodušší způsob, jak vytvořit úlohu nápravy, je provést z Azure Portal během přiřazování zásad. Pokud je definice zásady, která má být přiřazena, **deployIfNotExists** nebo **modifikací** , průvodce na kartě **náprava** nabízí možnost _vytvořit úlohu remedation_ . Pokud je vybrána tato možnost, je vytvořen úkol remedation ve stejnou dobu jako přiřazení zásady.
 
 ## <a name="next-steps"></a>Další kroky
 

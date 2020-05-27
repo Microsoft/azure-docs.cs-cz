@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a875cee7e6796a2c865bde4a62f2f0463eb12130
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f66a5ba491a5afed4007f73b88a38719ec71fb63
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78967737"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849157"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se službou Salesforce
 
@@ -93,8 +93,14 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Podnikový účet:`https://<subdomain>.my.salesforce.com`
 
     Vývojářský účet:`https://<subdomain>-dev-ed.my.salesforce.com`
+    
+    b. Do textového pole **Adresa URL odpovědi** zadejte hodnotu pomocí následujícího vzoru:
 
-    b. Do textového pole **identifikátor** zadejte hodnotu pomocí následujícího vzoru:
+    Podnikový účet:`https://<subdomain>.my.salesforce.com`
+
+    Vývojářský účet:`https://<subdomain>-dev-ed.my.salesforce.com`
+
+    c. Do textového pole **identifikátor** zadejte hodnotu pomocí následujícího vzoru:
 
     Podnikový účet:`https://<subdomain>.my.salesforce.com`
 
@@ -119,7 +125,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -229,9 +235,9 @@ Když kliknete na dlaždici Salesforce na přístupovém panelu, měli byste bý
 
 1. Nakonec po úspěšném přihlášení se zobrazí domovská stránka aplikace.
 
-    ![Mobilní aplikace Salesforce](media/salesforce-tutorial/mobile-app5.png) ![mobilní aplikace Salesforce](media/salesforce-tutorial/mobile-app6.png)
+    ![](media/salesforce-tutorial/mobile-app5.png) ![ Mobilní aplikace Salesforce mobilní aplikace Salesforce](media/salesforce-tutorial/mobile-app6.png)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování virtuálních počítačů Azure
 description: Poskytuje souhrn nastavení podpory a omezení při zálohování virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 01c81257ab2cc9882ec1d388702a00f58694a7e4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b331fe757fc18029aa270f805c72150161a38f47
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724254"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849412"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -172,7 +172,7 @@ Sdílené úložiště| Zálohování virtuálních počítačů pomocí sdílen
 
 ### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>Zálohování virtuálních počítačů Azure s až 32 disky
 
-Azure Backup teď podporuje zálohování virtuálních počítačů Azure s až 32 připojenými disky.  Tato funkce je ve verzi Public Preview v Středozápadní USA.  Pokud vás zajímá Tato funkce v jiných oblastech, zaregistrujte se do verze s omezeným náhledem zapsáním do nás na adrese AskAzureBackupTeam@microsoft.com .  
+Azure Backup teď podporuje zálohování virtuálních počítačů Azure s až 32 připojenými disky.  Tato funkce je ve verzi Public Preview v Středozápadní USA, Kanadě Central, Asie – jihovýchod, Brazílie – jih, Kanada – východ, východní oblast, Francie – jih, Indie – jih, Indie – jih, Japonsko – východ, Japonsko – západ, Korea – jih, Jižní Afrika – sever, Velká Británie – jih, Velká Británie – západ, Austrálie – východ.  Pokud vás zajímá Tato funkce v jiných oblastech, zaregistrujte se do verze s omezeným náhledem zapsáním do nás na adrese AskAzureBackupTeam@microsoft.com .  
 
 >[!NOTE]
 >Azure Backup podporuje až 16 disků pro virtuální počítače Azure s nespravovanými disky nebo klasickými virtuálními počítači.

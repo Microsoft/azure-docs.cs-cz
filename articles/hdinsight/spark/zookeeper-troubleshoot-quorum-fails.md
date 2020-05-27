@@ -6,54 +6,124 @@ ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/20/2019
-ms.openlocfilehash: 41ac109e5c5379e6085dd57a3fcd8119915558fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: dc93121d7565b95b9bd604160028659f3a741b0c
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133269"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860490"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper Server nemůže vytvořit kvorum ve službě Azure HDInsight.
 
-Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
+Tento článek popisuje postup řešení potíží a možná řešení problémů souvisejících s uzly Zookeeper v clusterech Azure HDInsight.
 
-## <a name="issue"></a>Problém
+## <a name="symptoms"></a>Příznaky
 
-Apache ZooKeeper Server není v pořádku, příznaky by mohly zahrnovat: Správce prostředků/názvové uzly jsou v pohotovostním režimu, jednoduché operace HDFS nefungují, `zkFailoverController` je zastaveno a nelze je spustit, úlohy příz/Spark/Livy selžou z důvodu chyb Zookeeper. V rámci zabezpečených clusterů Sparku nebo interaktivních podregistrů se můžou spustit i procesy démona LLAP. Může se zobrazit chybová zpráva podobná této:
+* Oba správci prostředků přejdou do úsporného režimu.
+* Namenodes jsou v pohotovostním režimu.
+* Spark, podregistr a přízové úlohy nebo dotazy na podregistr selžou kvůli chybám připojení Zookeeper.
+* LLAP démony se nepodařilo spustit v zabezpečených clusterech Spark nebo zabezpečených interaktivních podregistrcích.
 
+## <a name="sample-log"></a>Ukázkový protokol
+
+Může se zobrazit chybová zpráva podobná této:
+
+```output
+2020-05-05 03:17:18.3916720|Lost contact with Zookeeper. Transitioning to standby in 10000 ms if connection is not reestablished.
+Message
+2020-05-05 03:17:07.7924490|Received RMFatalEvent of type STATE_STORE_FENCED, caused by org.apache.zookeeper.KeeperException$NoAuthException: KeeperErrorCode = NoAuth
+...
+2020-05-05 03:17:08.3890350|State store operation failed 
+2020-05-05 03:17:08.3890350|Transitioning to standby state
 ```
-19/06/19 08:27:08 ERROR ZooKeeperStateStore: Fatal Zookeeper error. Shutting down Livy server.
-19/06/19 08:27:08 INFO LivyServer: Shutting down Livy server.
+
+## <a name="related-issues"></a>Související problémy
+
+* Služby vysoké dostupnosti, jako je příz, NameNode a Livy, se můžou z mnoha důvodů rozpínat.
+* Potvrzení z protokolů, které souvisí s Zookeeper připojeními
+* Ujistěte se, že se problém opakuje (nepoužívejte Tato řešení v jednom z případů).
+* Úlohy mohou být dočasně neúspěšné kvůli problémům s připojením Zookeeper
+
+## <a name="common-causes-for-zookeeper-failure"></a>Běžné příčiny selhání Zookeeper
+
+* Vysoké využití procesoru na serverech Zookeeper
+  * Pokud v uživatelském rozhraní Ambari vidíte téměř 100% využívání CPU na serverech Zookeeper, můžou relace Zookeeper otevřené během této doby vypršet a vypršení časového limitu.
+* Zookeeper klienti mají časté časové limity generování sestav.
+  * V protokolech pro Správce prostředků Namenode a dalších se zobrazí časté časový limit připojení klientů.
+  * To může vést ke ztrátě kvora, častému převzetí služeb při selhání a dalším problémům.
+
+## <a name="check-for-zookeeper-status"></a>Zjistit stav Zookeeper
+
+* Vyhledání serverů Zookeeper ze souboru/etc/hosts nebo z uživatelského rozhraní Ambari
+* Spusťte následující příkaz
+  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181`(nebo 2182)  
+  * Port 2181 je instance Apache Zookeeper
+  * Port 2182 se používá v Zookeeper HDInsight (k poskytování HA pro služby, které nejsou nativně HA).
+  * Pokud příkaz nezobrazuje žádný výstup, znamená to, že servery Zookeeper nejsou spuštěné.
+  * Pokud servery běží, bude výsledek zahrnovat statické připojení klientů a další statistiky.
+
+```output
+Zookeeper version: 3.4.6-8--1, built on 12/05/2019 12:55 GMT
+Clients:
+ /10.2.0.57:50988[1](queued=0,recved=715,sent=715)
+ /10.2.0.57:46632[1](queued=0,recved=138340,sent=138347)
+ /10.2.0.34:14688[1](queued=0,recved=264653,sent=353420)
+ /10.2.0.52:49680[1](queued=0,recved=134812,sent=134814)
+ /10.2.0.57:50614[1](queued=0,recved=19812,sent=19812)
+ /10.2.0.56:35034[1](queued=0,recved=2586,sent=2586)
+ /10.2.0.52:63982[1](queued=0,recved=72215,sent=72217)
+ /10.2.0.57:53024[1](queued=0,recved=19805,sent=19805)
+ /10.2.0.57:45126[1](queued=0,recved=19621,sent=19621)
+ /10.2.0.56:41270[1](queued=0,recved=1348743,sent=1348788)
+ /10.2.0.53:59097[1](queued=0,recved=72215,sent=72217)
+ /10.2.0.56:41088[1](queued=0,recved=788,sent=802)
+ /10.2.0.34:10246[1](queued=0,recved=19575,sent=19575)
+ /10.2.0.56:40944[1](queued=0,recved=717,sent=717)
+ /10.2.0.57:45466[1](queued=0,recved=19861,sent=19861)
+ /10.2.0.57:59634[0](queued=0,recved=1,sent=0)
+ /10.2.0.34:14704[1](queued=0,recved=264622,sent=353355)
+ /10.2.0.57:42244[1](queued=0,recved=49245,sent=49248)
+
+Latency min/avg/max: 0/3/14865
+Received: 238606078
+Sent: 239139381
+Connections: 18
+Outstanding: 0
+Zxid: 0x1004f99be
+Mode: follower
+Node count: 133212
 ```
 
-V protokolu serveru Zookeeper na jakémkoli hostiteli Zookeeper na adrese/var/log/Zookeeper/Zookeeper-Zookeeper-server-\*. out se může zobrazit také následující chyba:
+## <a name="cpu-load-peaks-up-every-hour"></a>Zatížení procesoru je každé hodiny špičkou.
 
-```
-2020-02-12 00:31:52,513 - ERROR [CommitProcessor:1:NIOServerCnxn@178] - Unexpected Exception:
-java.nio.channels.CancelledKeyException
-```
+* Přihlaste se k serveru Zookeeper a podívejte se na/etc/crontab.
+* Pokud v tuto chvíli běží nějaké hodinové úlohy, náhodně se spustí v různých Zookeeper serverech.
+  
+## <a name="purging-old-snapshots"></a>Vyprazdňování starých snímků
 
-## <a name="cause"></a>Příčina
+* Uzly Zookeeper jsou nakonfigurované tak, aby automaticky vymazaly staré snímky.
+* Ve výchozím nastavení se zachovají posledních 30 snímků.
+* Počet uchovávaných snímků je řízen konfiguračním klíčem `autopurge.snapRetainCount` . Tato vlastnost je k dispozici v následujících souborech:
+  * `/etc/zookeeper/conf/zoo.cfg`pro Hadoop Zookeeper
+  * `/etc/hdinsight-zookeeper/conf/zoo.cfg`pro HDInsight Zookeeper
+* Nastavte `autopurge.snapRetainCount` na hodnotu 3 a restartujte Zookeeper servery.
+  * Konfiguraci Hadoop Zookeeper můžete aktualizovat a službu je možné restartovat prostřednictvím Ambari.
+  * Ruční zastavení a restartování HDInsight Zookeeper
+    * `sudo lsof -i :2182`vám poskytne ID procesu, který se má ukončit.
+    * `sudo python /opt/startup_scripts/startup_hdinsight_zookeeper.py`
+* Nemazat snímky ručně – ruční odstranění snímků by mohlo způsobit ztrátu dat.
 
-Když je objem souborů snímků velký nebo jsou soubory snímků poškozené, ZooKeeper Server nevytvoří kvorum, což způsobí, že ZooKeeper související služby nejsou v pořádku. ZooKeeper Server neodstraní staré soubory snímků z jeho datového adresáře, ale jedná se o pravidelný úkol, který budou provádět uživatelé, aby zachoval healthiness ZooKeeper. Další informace najdete v tématu [silné Zookeeper a omezení](https://zookeeper.apache.org/doc/r3.3.5/zookeeperAdmin.html#sc_strengthsAndLimitations).
+## <a name="cancelledkeyexception-in-the-zookeeper-server-log-doesnt-require-snapshot-cleanup"></a>CancelledKeyException v protokolu serveru Zookeeper nevyžaduje vyčištění snímků.
 
-## <a name="resolution"></a>Řešení
-
-Ověřte datový adresář `/hadoop/zookeeper/version-2` Zookeeper a `/hadoop/hdinsight-zookeeper/version-2` Zjistěte, jestli je velikost souboru snímků velká. Pokud existují velké snímky, proveďte následující kroky:
-
-1. Zkontrolujte stav jiných serverů ZooKeeper ve stejném kvoru a ujistěte se, že fungují dobře s příkazem "`echo stat | nc {zk_host_ip} 2181 (or 2182)`".  
-
-1. Přihlaste problematického hostitele ZooKeeper, záložní snímky a protokoly `/hadoop/zookeeper/version-2` transakcí `/hadoop/hdinsight-zookeeper/version-2`v a a pak tyto soubory vyčistěte v těchto dvou adresářích. 
-
-1. Restartujte problematický server ZooKeeper v Ambari nebo hostiteli ZooKeeper. Pak restartujte službu, která má problémy.
+* Tato výjimka obvykle znamená, že klient již není aktivní a Server nemůže odeslat zprávu.
+* Tato výjimka také indikuje, že klient Zookeeper ukončí relace předčasně.
+* Vyhledejte další příznaky popsané v tomto dokumentu.
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 - Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-- Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
+- Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 - Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8ee9ddbd8a2d0ecbe8e2f13e6421cec177c7ce69
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 4695164e7bcbc63b852f2f4364cdccbc8ea7d8c4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594198"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849310"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurace koncových bodů sítě služby soubory Azure
 Soubory Azure poskytují dva hlavní typy koncových bodů pro přístup ke sdíleným složkám Azure: 
@@ -39,9 +39,9 @@ Vytvořením privátního koncového bodu pro účet úložiště dojde k nasaze
 - **Privátní zóna DNS**: Pokud jste ještě nikdy nasadili privátní koncový bod pro tuto virtuální síť, bude pro vaši virtuální síť nasazená nová privátní zóna DNS. Pro účet úložiště v této zóně DNS se vytvoří i záznam DNS. Pokud jste již v této virtuální síti nasadili privátní koncový bod, bude do existující zóny DNS přidán záznam nového záznamu pro účet úložiště. Nasazení zóny DNS je volitelné, ale důrazně se doporučuje a vyžaduje se, pokud připojujete sdílené složky Azure k instančnímu objektu služby AD nebo pomocí rozhraní REST API.
 
 > [!Note]  
-> Tento článek používá příponu DNS účtu úložiště pro veřejné oblasti Azure, `core.windows.net`. Tento komentář platí také pro cloudy Azure, jako je Cloud pro státní správu USA a Azure Čína, stačí nahradit příslušné přípony vašeho prostředí. 
+> Tento článek používá příponu DNS účtu úložiště pro veřejné oblasti Azure, `core.windows.net` . Tento komentář platí také pro cloudy Azure, jako je Cloud pro státní správu USA a Azure Čína, stačí nahradit příslušné přípony vašeho prostředí. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Přejděte do účtu úložiště, pro který chcete vytvořit privátní koncový bod. V obsahu pro účet úložiště vyberte **připojení privátního koncového bodu**a potom **+ privátní koncový bod** pro vytvoření nového privátního koncového bodu. 
 
 ![Snímek obrazovky s položkou připojení privátního koncového bodu v obsahu účtu úložiště](media/storage-files-networking-endpoints/create-private-endpoint-0.png)
@@ -79,7 +79,7 @@ Aliases:  storageaccount.file.core.windows.net
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Pokud chcete pro svůj účet úložiště vytvořit privátní koncový bod, musíte nejdřív získat odkaz na svůj účet úložiště a podsíť virtuální sítě, ke které chcete privátní koncový bod přidat. `<storage-account-resource-group-name>`Nahraďte `<storage-account-name>`, `<vnet-resource-group-name>` `<vnet-name>`,, a `<vnet-subnet-name>` níže:
+Pokud chcete pro svůj účet úložiště vytvořit privátní koncový bod, musíte nejdřív získat odkaz na svůj účet úložiště a podsíť virtuální sítě, ke které chcete privátní koncový bod přidat. Nahraďte,,, `<storage-account-resource-group-name>` `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` a `<vnet-subnet-name>` níže:
 
 ```PowerShell
 $storageAccountResourceGroupName = "<storage-account-resource-group-name>"
@@ -240,7 +240,7 @@ IP4Address : 192.168.0.5
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Pokud chcete pro svůj účet úložiště vytvořit privátní koncový bod, musíte nejdřív získat odkaz na svůj účet úložiště a podsíť virtuální sítě, ke které chcete privátní koncový bod přidat. `<storage-account-resource-group-name>`Nahraďte `<storage-account-name>`, `<vnet-resource-group-name>` `<vnet-name>`,, a `<vnet-subnet-name>` níže:
+Pokud chcete pro svůj účet úložiště vytvořit privátní koncový bod, musíte nejdřív získat odkaz na svůj účet úložiště a podsíť virtuální sítě, ke které chcete privátní koncový bod přidat. Nahraďte,,, `<storage-account-resource-group-name>` `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` a `<vnet-subnet-name>` níže:
 
 ```bash
 storageAccountResourceGroupName="<storage-account-resource-group-name>"
@@ -400,7 +400,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-Pokud vše úspěšně fungovalo, měl by se zobrazit následující výstup, kde `192.168.0.5` je privátní IP adresa privátního koncového bodu ve vaší virtuální síti:
+Pokud vše úspěšně fungovalo, měl by se zobrazit následující výstup, kde `192.168.0.5` je privátní IP adresa privátního koncového bodu ve vaší virtuální síti. Všimněte si, že ke sdílení souborů insread v cestě privatelink byste měli dál používat storageaccount.file.core.windows.net.
 
 ```Output
 Server:         127.0.0.53
@@ -423,7 +423,7 @@ Přístup k veřejnému koncovému bodu můžete omezit pomocí nastavení brán
 ### <a name="restrict-all-access-to-the-public-endpoint"></a>Omezit veškerý přístup k veřejnému koncovému bodu
 Když je veškerý přístup k veřejnému koncovému bodu omezený, k účtu úložiště se dá přistupovat přes soukromé koncové body. Jinak budou požadavky na veřejný koncový bod účtu úložiště odmítnuty. 
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Přejděte do účtu úložiště, pro který chcete omezit veškerý přístup k veřejnému koncovému bodu. V obsahu účtu úložiště vyberte **brány firewall a virtuální sítě**.
 
 V horní části stránky vyberte přepínač **vybrané sítě** . Tím se zruší počet nastavení pro kontrolu omezení veřejného koncového bodu. Ověřte, zda **mají důvěryhodné služby Microsoftu přístup k tomuto účtu služby** , aby mohly být pro přístup k účtu úložiště důvěryhodné služby Microsoft, například Azure File Sync.
@@ -431,7 +431,7 @@ V horní části stránky vyberte přepínač **vybrané sítě** . Tím se zru�
 ![Snímek obrazovky okna brány firewall a virtuální sítě s příslušnými omezeními](media/storage-files-networking-endpoints/restrict-public-endpoint-0.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Následující příkaz PowerShellu odmítne veškerý provoz do veřejného koncového bodu účtu úložiště. Všimněte si, že tento příkaz `-Bypass` má parametr nastavený `AzureServices`na. Tím umožníte důvěryhodným službám, jako je například Azure File Sync, získat přístup k účtu úložiště prostřednictvím veřejného koncového bodu.
+Následující příkaz PowerShellu odmítne veškerý provoz do veřejného koncového bodu účtu úložiště. Všimněte si, že tento příkaz má `-Bypass` Parametr nastavený na `AzureServices` . Tím umožníte důvěryhodným službám, jako je například Azure File Sync, získat přístup k účtu úložiště prostřednictvím veřejného koncového bodu.
 
 ```PowerShell
 # This assumes $storageAccount is still defined from the beginning of this of this guide.
@@ -444,7 +444,7 @@ $storageAccount | Update-AzStorageAccountNetworkRuleSet `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Následující příkaz rozhraní příkazového řádku zakáže veškerý provoz do veřejného koncového bodu účtu úložiště. Všimněte si, že tento příkaz `-bypass` má parametr nastavený `AzureServices`na. Tím umožníte důvěryhodným službám, jako je například Azure File Sync, získat přístup k účtu úložiště prostřednictvím veřejného koncového bodu.
+Následující příkaz rozhraní příkazového řádku zakáže veškerý provoz do veřejného koncového bodu účtu úložiště. Všimněte si, že tento příkaz má `-bypass` Parametr nastavený na `AzureServices` . Tím umožníte důvěryhodným službám, jako je například Azure File Sync, získat přístup k účtu úložiště prostřednictvím veřejného koncového bodu.
 
 ```bash
 # This assumes $storageAccountResourceGroupName and $storageAccountName 
@@ -461,7 +461,7 @@ az storage account update \
 ### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Omezení přístupu k veřejnému koncovému bodu na konkrétní virtuální sítě
 Když omezíte účet úložiště na konkrétní virtuální sítě, povolujete požadavky na veřejný koncový bod v rámci zadaných virtuálních sítí. To funguje pomocí funkce virtuální sítě s názvem *koncové body služby*. Tato možnost se dá použít s privátními koncovými body nebo bez nich.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Přejděte do účtu úložiště, pro který chcete omezit veřejný koncový bod na konkrétní virtuální sítě. V obsahu účtu úložiště vyberte **brány firewall a virtuální sítě**. 
 
 V horní části stránky vyberte přepínač **vybrané sítě** . Tím se zruší počet nastavení pro kontrolu omezení veřejného koncového bodu. Kliknutím na **+ Přidat existující virtuální síť** vyberte konkrétní virtuální síť, která by měla mít povolený přístup k účtu úložiště prostřednictvím veřejného koncového bodu. To bude vyžadovat výběr virtuální sítě a podsítě pro tuto virtuální síť. 
@@ -471,7 +471,7 @@ Ověřte, zda **mají důvěryhodné služby Microsoftu přístup k tomuto účt
 ![Snímek obrazovky okna brány firewall a virtuální sítě s konkrétní virtuální sítí s povoleným přístupem k účtu úložiště prostřednictvím veřejného koncového bodu](media/storage-files-networking-endpoints/restrict-public-endpoint-1.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Abychom omezili přístup k veřejnému koncovému bodu účtu úložiště na konkrétní virtuální sítě pomocí koncových bodů služby, musíme nejdřív shromáždit informace o účtu úložiště a virtuální síti. K získání `<storage-account-resource-group>`těchto `<storage-account-name>`informací `<vnet-resource-group-name>`vyplňte `<vnet-name>`,, `<subnet-name>` , a.
+Abychom omezili přístup k veřejnému koncovému bodu účtu úložiště na konkrétní virtuální sítě pomocí koncových bodů služby, musíme nejdřív shromáždit informace o účtu úložiště a virtuální síti. `<storage-account-resource-group>` `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` K získání těchto informací vyplňte,,, a `<subnet-name>` .
 
 ```PowerShell
 $storageAccountResourceGroupName = "<storage-account-resource-group>"
@@ -501,7 +501,7 @@ if ($null -eq $subnet) {
 }
 ```
 
-Aby bylo možné provoz z virtuální sítě povolit síťovým prostředkům Azure v rámci veřejného koncového bodu účtu úložiště, musí mít podsíť virtuální sítě vystavený koncový bod `Microsoft.Storage` služby. Následující příkazy prostředí PowerShell přidají koncový bod `Microsoft.Storage` služby do podsítě, pokud tam ještě není.
+Aby bylo možné provoz z virtuální sítě povolit síťovým prostředkům Azure v rámci veřejného koncového bodu účtu úložiště, musí mít podsíť virtuální sítě `Microsoft.Storage` vystavený koncový bod služby. Následující příkazy prostředí PowerShell přidají `Microsoft.Storage` koncový bod služby do podsítě, pokud tam ještě není.
 
 ```PowerShell
 $serviceEndpoints = $subnet | `
@@ -545,7 +545,7 @@ $storageAccount | Update-AzStorageAccountNetworkRuleSet `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Abychom omezili přístup k veřejnému koncovému bodu účtu úložiště na konkrétní virtuální sítě pomocí koncových bodů služby, musíme nejdřív shromáždit informace o účtu úložiště a virtuální síti. K získání `<storage-account-resource-group>`těchto `<storage-account-name>`informací `<vnet-resource-group-name>`vyplňte `<vnet-name>`,, `<subnet-name>` , a.
+Abychom omezili přístup k veřejnému koncovému bodu účtu úložiště na konkrétní virtuální sítě pomocí koncových bodů služby, musíme nejdřív shromáždit informace o účtu úložiště a virtuální síti. `<storage-account-resource-group>` `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` K získání těchto informací vyplňte,,, a `<subnet-name>` .
 
 ```bash
 storageAccountResourceGroupName="<storage-account-resource-group>"
@@ -574,7 +574,7 @@ subnet=$(az network vnet subnet show \
     tr -d '"')
 ```
 
-Aby bylo možné provoz z virtuální sítě povolit síťovým prostředkům Azure v rámci veřejného koncového bodu účtu úložiště, musí mít podsíť virtuální sítě vystavený koncový bod `Microsoft.Storage` služby. V následujících příkazech rozhraní příkazového řádku `Microsoft.Storage` se koncový bod služby přidá do podsítě, pokud tam ještě není.
+Aby bylo možné provoz z virtuální sítě povolit síťovým prostředkům Azure v rámci veřejného koncového bodu účtu úložiště, musí mít podsíť virtuální sítě `Microsoft.Storage` vystavený koncový bod služby. V následujících příkazech rozhraní příkazového řádku se `Microsoft.Storage` koncový bod služby přidá do podsítě, pokud tam ještě není.
 
 ```bash
 serviceEndpoints=$(az network vnet subnet show \

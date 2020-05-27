@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4f467e061ad52fdcc6d1e8706bb902088b237c24
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68943448"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Kurz: Azure Active Directory integrace s PolicyStat
 
@@ -80,10 +80,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
 2. **[Nakonfigurujte jednotné přihlašování PolicyStat](#configure-policystat-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvoření PolicyStat Test User](#create-policystat-test-user)** – pro Britta Simon v PolicyStat, který je propojený s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+3. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+4. **[Vytvoření PolicyStat Test User](#create-policystat-test-user)** – pro Britta Simon v PolicyStat, který je propojený s reprezentací uživatele Azure AD.
+5. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
@@ -124,7 +123,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí PolicySt
 
 6. Kromě výše očekává aplikace PolicyStat několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     |------------------- | -------------------- |
     | UID | ExtractMailPrefix ([pošta]) |
 
@@ -164,25 +163,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí PolicySt
    
     ![Nabídka správce](./media/policystat-tutorial/ic808633.png "Nabídka správce")
 
-3. V části **Nastavení** vyberte **Povolit integraci jednotného přihlašování**.
-   
-    ![Konfigurace jednotného přihlašování](./media/policystat-tutorial/ic808634.png "Konfigurace jednotného přihlašování")
-
-4. Klikněte na **Konfigurovat atributy**a potom v části **konfigurace atributů** proveďte následující kroky:
-   
-    ![Konfigurace jednotného přihlašování](./media/policystat-tutorial/ic808635.png "Konfigurace jednotného přihlašování")
-   
-    a. Do textového pole **atributu username** zadejte **UID**.
-
-    b. Do textového pole **název atributu jméno** zadejte **FirstName** uživatele **Britta**.
-
-    c. Do textového pole **atributu Last Name** (příjmení) zadejte **LastName** uživatele **Simon**.
-
-    d. Do textového pole **atribut e-mailu** zadejte **EmailAddress** uživatele `BrittaSimon@contoso.com`.
-
-    e. Klikněte na **Save Changes** (Uložit změny).
-
-5. Klikněte na **vaše metadata IDP**a potom v části **metadata IDP** proveďte následující kroky:
+3. Klikněte na **vaše metadata IDP**a potom v části **metadata IDP** proveďte následující kroky:
    
     ![Konfigurace jednotného přihlašování](./media/policystat-tutorial/ic808636.png "Konfigurace jednotného přihlašování")
    
@@ -190,33 +171,26 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí PolicySt
 
     b. Klikněte na **Save Changes** (Uložit změny).
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
+4. Klikněte na **Konfigurovat atributy**a potom v části **konfigurace atributů** proveďte následující kroky:
+   
+    a. Do textového pole **atributu username** zadejte **UID**.
 
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
+    b. Do textového pole **název atributu first name** (křestní jméno) zadejte název deklarace identity z Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+    c. Do textového pole **atributu Last Name (příjmení** ) zadejte název deklarace identity z Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .
 
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    d. Do textového pole **atribut e-mailu** zadejte název deklarace identity e-mailu z Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
 
-2. V horní části obrazovky vyberte **Nový uživatel** .
+    e. Klikněte na **Save Changes** (Uložit změny).
 
-    ![Tlačítko pro nového uživatele](common/new-user.png)
+5. V části **Nastavení** vyberte **Povolit integraci jednotného přihlašování**.
+   
+    ![Konfigurace jednotného přihlašování](./media/policystat-tutorial/ic808634.png "Konfigurace jednotného přihlašování")
 
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k PolicyStat.
+V této části povolíte použití jednotného přihlašování v Azure pomocí jednotného přihlašování, a to tím, že udělíte přístup k PolicyStat.
 
 1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **PolicyStat**.
 
@@ -234,7 +208,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé svůj účet a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
 6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
@@ -260,4 +234,3 @@ Když na přístupovém panelu kliknete na dlaždici PolicyStat, měli byste se 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

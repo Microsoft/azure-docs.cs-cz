@@ -9,13 +9,13 @@ author: nabhishek
 ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
-ms.date: 05/31/2018
-ms.openlocfilehash: c39575e8ea60a091124c633f8958ec36e8a61885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: bc8fd73b18e197c42e4750612320c1b15a6db020
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418843"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849208"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity Sparku v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -59,13 +59,13 @@ Tady je ukázka definice JSON aktivity Spark:
 
 Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
 
-| Vlastnost              | Popis                              | Požaduje se |
+| Vlastnost              | Popis                              | Vyžadováno |
 | --------------------- | ---------------------------------------- | -------- |
-| jméno                  | Název aktivity v kanálu.    | Ano      |
+| name                  | Název aktivity v kanálu.    | Ano      |
 | description           | Text popisující, co aktivita dělá.  | Ne       |
-| type                  | Pro aktivitu Spark je typ aktivity HDInsightSpark. | Ano      |
+| typ                  | Pro aktivitu Spark je typ aktivity HDInsightSpark. | Ano      |
 | linkedServiceName     | Název propojené služby HDInsight Spark, na které běží program Spark Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
-| SparkJobLinkedService | Propojená služba Azure Storage, která obsahuje soubor úlohy Spark, závislosti a protokoly.  Pokud pro tuto vlastnost nezadáte hodnotu, použije se úložiště přidružené ke clusteru HDInsight. Hodnota této vlastnosti může být pouze propojená služba Azure Storage. | Ne       |
+| SparkJobLinkedService | Propojená služba Azure Storage, která obsahuje soubor úlohy Spark, závislosti a protokoly. Tady se podporují jenom propojené služby **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** a **[adls Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** . Pokud pro tuto vlastnost nezadáte hodnotu, použije se úložiště přidružené ke clusteru HDInsight. Hodnota této vlastnosti může být pouze propojená služba Azure Storage. | Ne       |
 | rootPath              | Kontejner a složka Azure Blob, které obsahují soubor Spark. V názvu souboru se rozlišují malá a velká písmena. Podrobnosti o struktuře této složky najdete v části struktura složky (další oddíl). | Ano      |
 | entryFilePath         | Relativní cesta ke kořenové složce kódu nebo balíčku Spark Vstupní soubor musí být buď soubor Pythonu, nebo soubor. jar. | Ano      |
 | NázevTřídy             | Hlavní třída Java/Spark aplikace      | Ne       |

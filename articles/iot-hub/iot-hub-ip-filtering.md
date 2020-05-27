@@ -5,14 +5,14 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/25/2020
 ms.author: robinsh
-ms.openlocfilehash: 74ee9506d7b21e5f0654c8a46976b4d5c63b5197
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 742706f4daa518faf06e5c8b735e679f345f1279
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649372"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849822"
 ---
 # <a name="use-ip-filters"></a>Použití filtrů IP adres
 
@@ -39,17 +39,19 @@ Jakýkoli pokus o připojení z IP adresy, která odpovídá pravidlu odmítnut�
 
 Ve výchozím nastavení je mřížka **filtru IP** na portálu pro Centrum IoT prázdná. Toto výchozí nastavení znamená, že vaše centrum akceptuje připojení z libovolné IP adresy. Toto výchozí nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0.
 
-![Výchozí nastavení filtru IP IoT Hub](./media/iot-hub-ip-filtering/ip-filter-default.png)
+Pokud se chcete dostat na stránku nastavení filtru IP adres, vyberte **sítě**, **veřejný přístup**a pak zvolte **vybrané rozsahy IP adres**:
+
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="Výchozí nastavení filtru IP IoT Hub":::
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>Přidat nebo upravit pravidlo filtru IP
 
 Pokud chcete přidat pravidlo filtru IP, vyberte **+ Přidat pravidlo filtru IP**.
 
-![Přidání pravidla filtru IP do služby IoT Hub](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="Přidání pravidla filtru IP do služby IoT Hub":::
 
 Po výběru možnosti **Přidat pravidlo filtru protokolu IP**zadejte pole.
 
-![Po výběru možnosti Přidat pravidlo filtru IP](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Po výběru možnosti Přidat pravidlo filtru IP":::
 
 * Zadejte **název** pravidla filtru IP. Musí se jednat o jedinečný řetězec bez rozlišení velkých a malých písmen, který je dlouhý až 128 znaků. Jsou přijímány pouze alfanumerické znaky ASCII a 7 `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` .
 
@@ -59,7 +61,7 @@ Po výběru možnosti **Přidat pravidlo filtru protokolu IP**zadejte pole.
 
 Po vyplnění polí vyberte **Uložit** a uložte pravidlo. Zobrazí se upozornění oznamující, že probíhá aktualizace.
 
-![Oznámení o uložení pravidla filtru IP](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png" alt-text="Oznámení o uložení pravidla filtru IP":::
 
 Možnost **Přidat** je zakázaná, když dosáhnete maximálního počtu 10 pravidel filtru IP.
 
@@ -69,7 +71,7 @@ Pokud chcete upravit stávající pravidlo, vyberte data, která chcete změnit,
 
 Pokud chcete odstranit pravidlo filtru IP, vyberte na tomto řádku ikonu odpadkového koše a pak vyberte **Uložit**. Pravidlo se odebere a změna se uloží.
 
-![Odstraní pravidlo filtru IP IoT Hub.](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
+:::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="Odstraní pravidlo filtru IP IoT Hub.":::
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Načtení a aktualizace filtrů IP adres pomocí Azure CLI
 
@@ -159,11 +161,10 @@ Pořadí pravidel filtru IP v mřížce můžete změnit kliknutím na tři svis
 
 Pokud chcete uložit nové pořadí pravidel filtru IP, klikněte na **Uložit**.
 
-![Změna pořadí pravidel filtru IP IoT Hub](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-rule-order.png" alt-text="Změna pořadí pravidel filtru IP adres služby IoT HUb":::
 
 ## <a name="next-steps"></a>Další kroky
 
 Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Monitorování operací](iot-hub-operations-monitoring.md)
 * [IoT Hub metriky](iot-hub-metrics.md)

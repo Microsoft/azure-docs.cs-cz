@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791013"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848006"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Použití služby Azure Table Storage ke správě zájemců komerčních webů na webu Marketplace
 
@@ -151,7 +151,7 @@ Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení p
 
     1. **Komu**: Zadejte e-mailovou adresu pro všechny uživatele, kteří obdrží toto oznámení.
     1. **Předmět**: Zadejte předmět e-mailu. Jedná se například o **nové zájemce.**
-    1. **Tělo**: přidejte text, který chcete zahrnout do každého e-mailu (volitelné) a vložte ho do `body('Get_entities')?['value']`.
+    1. **Tělo**: přidejte text, který chcete zahrnout do každého e-mailu (volitelné) a vložte ho do `body('Get_entities')?['value']` .
 
     >[!NOTE]
     >Do těla tohoto e-mailu můžete vložit další statické nebo dynamické datové body.
@@ -182,8 +182,9 @@ Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši 
 
 1. Pro vaši nabídku přejdete na stránku **nastavení nabídek** .
 
-1. V části **Správa zájemců** vyberte **připojit** .
-     ![Správa potenciálních zákazníků](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+1. V části **zájemci pro zákazníky** vyberte **připojit**.
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-table/customer-leads.png" alt-text="Potenciální zákazníci":::
 
 1. V místním okně **Podrobnosti připojení** vyberte pro **cíl zájemce**možnost **tabulka Azure** . 
      ![Řízení vedoucích, podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)

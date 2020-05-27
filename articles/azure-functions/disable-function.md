@@ -3,12 +3,12 @@ title: Postup zakázání funkcí v Azure Functions
 description: Naučte se, jak zakázat a povolit funkce v Azure Functions.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 8922edb7aaa41bcf50dcce5257b6600f1bde224a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ee701e8df8faddef9bbdb16e7a1048c4dc2e40a5
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115557"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848735"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Postup zakázání funkcí v Azure Functions
 
@@ -111,7 +111,7 @@ Ve verzi 1. x můžete také použít `disabled` vlastnost souboru *Function. JS
     "disabled": true
 }
 ```
-or 
+nebo 
 
 ```json
     "bindings": [
@@ -122,7 +122,8 @@ or
 
 V druhém příkladu je funkce zakázána, pokud existuje nastavení aplikace s názvem IS_DISABLED a je nastaveno na `true` nebo 1.
 
-Soubor můžete upravit v Azure Portal nebo použijte tlačítka **Povolit** a **Zakázat** na stránce **Přehled** funkce. Přepínač portálu funguje změnou souboru *Function. JSON* .
+>[!IMPORTANT]  
+>Portál teď používá nastavení aplikace k zakázání funkcí v1. x. Když je nastavení aplikace v konfliktu se souborem Function. JSON, může dojít k chybě. Odstraňte `disabled` vlastnost ze souboru Function. JSON, aby nedocházelo k chybám. 
 
 
 ## <a name="next-steps"></a>Další kroky

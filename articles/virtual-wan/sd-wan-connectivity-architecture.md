@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: sukishen
-ms.openlocfilehash: 17db9d615dcdd78ca50f88b5dad72d596bf29276
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 9b935c1f612e7634bad86818cd8331fba0078a9d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402481"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860575"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Architektura připojení SD-WAN s Azure Virtual WAN
 
@@ -39,7 +39,7 @@ SD-WAN CPE pokračuje v místě, kde se implementuje a vynutila optimalizace pro
 
 V tomto modelu nemusí být některé z optimalizace provozu spravovaného dodavatelem na základě charakteristik provozu v reálném čase podporované, protože připojení k virtuální síti WAN je nad protokolem IPsec a síť VPN s protokolem IPsec je ve virtuální síti VPN Gateway ukončena. Například volba dynamické cesty ve větvi CPE je proveditelná v důsledku toho, že zařízení vyměňuje různé informace o síťovém paketu s jiným uzlem SD-WAN, a proto identifikuje nejlepší odkaz na použití pro různé prioritní přenosy dynamicky ve větvi. Tato funkce může být užitečná v oblastech, kde je potřeba optimalizace poslední kilometry (větev k nejbližšímu programu Microsoft POP).
 
-Pomocí virtuální sítě WAN můžou uživatelé získat výběr cest Azure, což je výběr cesty založený na zásadách mezi více odkazy poskytovatele internetových služeb od větve CPE ke branám VPN od společnosti WAN. Virtuální síť WAN umožňuje nastavení více odkazů (cest) ze stejné větve SD-WAN CPE; každé propojení představuje připojení s duálním tunelem z jedinečné veřejné IP adresy SD-WAN CPE do dvou různých instancí služby Azure Virtual WAN VPN Gateway. Dodavatelé SD-WAN můžou implementovat optimální cestu k Azure, a to na základě zásad provozu stanovených jejich modulem zásad na odkazech CPE.
+Pomocí virtuální sítě WAN můžou uživatelé získat výběr cest Azure, což je výběr cesty založený na zásadách mezi více odkazy poskytovatele internetových služeb od větve CPE ke branám VPN od společnosti WAN. Virtuální síť WAN umožňuje nastavení více odkazů (cest) ze stejné větve SD-WAN CPE; každé propojení představuje připojení s duálním tunelem z jedinečné veřejné IP adresy SD-WAN CPE do dvou různých instancí služby Azure Virtual WAN VPN Gateway. Dodavatelé SD-WAN můžou implementovat optimální cestu k Azure, a to na základě zásad provozu stanovených jejich modulem zásad na odkazech CPE. Na konci Azure se všechna připojení, která přicházejí v systému, považují za stejnou.
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Model nepřímých propojení
 

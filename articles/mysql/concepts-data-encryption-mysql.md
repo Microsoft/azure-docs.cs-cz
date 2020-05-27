@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: a97fee619858aa024ff208b72d3b2594c30d2fd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 24b52042e037e998069550599ca006eded70d1c4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299120"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849721"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem
 
 > [!NOTE]
-> V tuto chvíli musíte požádat o přístup k používání této možnosti. Pokud to chcete udělat, AskAzureDBforMySQL@service.microsoft.comkontaktujte.
+> V tuto chvíli musíte požádat o přístup k používání této možnosti. Pokud to chcete udělat, kontaktujte AskAzureDBforMySQL@service.microsoft.com .
 
-Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for MySQL vám umožní přinést si vlastní klíč (BYOK) pro ochranu dat v klidovém prostředí. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. Pomocí šifrování spravovaného zákazníkem zodpovídáte za vás a plně řídíte životní cyklus klíčů, oprávnění k použití klíče a auditování operací s klíči.
+Šifrování dat pomocí klíčů spravovaných zákazníkem pro službu Azure Database for MySQL umožňuje šifrovat neaktivní uložená data s použitím vlastního klíče. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. V případě šifrování spravovaného zákazníkem máte úplnou kontrolu nad životním cyklem klíčů, oprávněními k používání klíčů a auditováním operací s klíči, za které také zodpovídáte.
 
 Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for MySQL je nastaveno na úrovni serveru. Pro daný server se k zašifrování datového šifrovacího klíče (klíč DEK) používaného službou používá klíč spravovaný zákazníkem (KEK), který se nazývá klíč šifrovací klíč (). KEK je asymetrický klíč uložený v instanci [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) spravované zákazníkem a zákazníkem. Klíč šifrování klíče (KEK) a šifrovací klíč (klíč DEK) jsou podrobněji popsány dále v tomto článku.
 
@@ -45,7 +45,7 @@ Klíč **šifrovacího klíče (KEK)**: šifrovací klíč používaný k šifro
 
 DEKs šifrované pomocí KEK se ukládají samostatně. Pouze entita s přístupem k KEK může dešifrovat tyto DEKs. Další informace najdete v tématu [zabezpečení v šifrování v klidovém umístění](../security/fundamentals/encryption-atrest.md).
 
-## <a name="how-data-encryption-with-a-customer-managed-key-works"></a>Jak funguje šifrování dat pomocí klíče spravovaného zákazníkem
+## <a name="how-data-encryption-with-a-customer-managed-key-work"></a>Jak funguje šifrování dat pomocí klíče spravovaného zákazníkem
 
 ![Diagram, který zobrazuje přehled Bring Your Own Key](media/concepts-data-access-and-security-data-encryption/mysqloverview.png)
 
@@ -64,17 +64,15 @@ Když je server nakonfigurovaný tak, aby používal klíč spravovaný zákazn�
 Níže jsou uvedené požadavky na konfiguraci Key Vault:
 
 * Key Vault a Azure Database for MySQL musí patřit do stejného tenanta Azure Active Directory (Azure AD). Interakce mezi Key Vault klienty a servery nejsou podporovány. Přesunutí prostředků poté vyžaduje překonfigurování šifrování dat.
-* Pokud dojde k odstranění náhodného klíče (nebo Key Vault), je nutné povolit funkci obnovitelného odstranění v trezoru klíčů, aby se chránila před ztrátou dat. Obnovitelné odstraněné prostředky se uchovávají po dobu 90 dnů, pokud je uživatel neobnoví nebo neodstraní. Akce obnovit a odstranit mají vlastní oprávnění přidružená v zásadách přístupu Key Vault. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá, ale můžete ji povolit prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI (Všimněte si, že ji nemůžete povolit prostřednictvím Azure Portal).
+* Povolí funkci obnovitelného odstranění v trezoru klíčů, aby se chránila před ztrátou dat v případě, že dojde k odstranění náhodného klíče (nebo Key Vault). Obnovitelné odstraněné prostředky se uchovávají po dobu 90 dnů, pokud je uživatel neobnoví nebo neodstraní. Akce obnovit a odstranit mají vlastní oprávnění přidružená v zásadách přístupu Key Vault. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá, ale můžete ji povolit prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI (Všimněte si, že ji nemůžete povolit prostřednictvím Azure Portal).
 * Udělte Azure Database for MySQL přístup k trezoru klíčů pomocí oprávnění Get, wrapKey a unwrapKey pomocí jeho jedinečné spravované identity. V Azure Portal se jedinečná identita automaticky vytvoří, když je v MySQL povolené šifrování dat. Podrobné pokyny najdete v tématu [Konfigurace šifrování dat pro MySQL](howto-data-encryption-portal.md) , podrobné pokyny, pokud používáte Azure Portal.
-
-* Pokud používáte bránu firewall s Key Vault, musíte povolit možnost **Povolit důvěryhodným službám Microsoftu obejít bránu firewall**.
 
 Níže jsou uvedené požadavky na konfiguraci klíče spravovaného zákazníkem:
 
-* Klíč spravovaný zákazníkem, který se má použít k šifrování klíč DEK, může být jenom asymetrická, RSA 2028.
+* Klíč spravovaný zákazníkem, který se má použít k šifrování klíč DEK, může být jenom asymetrická, RSA 2048.
 * Datum aktivace klíče (Pokud je nastaveno) musí být datum a čas v minulosti. Datum vypršení platnosti (Pokud je nastaveno) musí být budoucí datum a čas.
 * Klíč musí být v *povoleném* stavu.
-* Pokud importujete existující klíč do trezoru klíčů, nezapomeňte ho zadat v podporovaných formátech souborů (`.pfx`, `.byok`, `.backup`).
+* Pokud importujete existující klíč do trezoru klíčů, nezapomeňte ho zadat v podporovaných formátech souborů ( `.pfx` , `.byok` , `.backup` ).
 
 ## <a name="recommendations"></a>Doporučení
 
@@ -82,8 +80,10 @@ Pokud používáte šifrování dat pomocí klíče spravovaného zákazníkem, 
 
 * Nastavte zámek prostředků na Key Vault, abyste měli kontrolu nad tím, kdo může tento kritický prostředek odstranit a zabránit náhodnému nebo neoprávněnému odstranění.
 * Povolte auditování a vytváření sestav u všech šifrovacích klíčů. Key Vault poskytuje protokoly, které se dají snadno vložit do dalších nástrojů pro správu událostí a informací o zabezpečení. Azure Monitor Log Analytics je jedním z příkladů služby, která je už integrovaná.
+* Zajistěte, aby se Key Vault a Azure Database for MySQL nacházejí ve stejné oblasti, aby se zajistil rychlejší přístup k zabalení klíč DEK a rozbalení operací.
+* Trezor klíčů Azure můžete zamknout jenom na **privátní koncový bod a vybrané sítě** a povolit zabezpečení prostředků jenom *důvěryhodným službám Microsoftu* .
 
-* Ujistěte se, že Key Vault a Azure Database for MySQL nacházejí ve stejné oblasti, abyste zajistili rychlejší přístup k klíč DEK zabalení a rozbalení operací.
+    ![Trusted-Service-with-integrace](media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png)
 
 Tady jsou doporučení pro konfiguraci klíče spravovaného zákazníkem:
 
@@ -93,7 +93,13 @@ Tady jsou doporučení pro konfiguraci klíče spravovaného zákazníkem:
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>Nepřístupná podmínka pro klíč spravovaný zákazníkem
 
-Když nakonfigurujete šifrování dat pomocí klíče spravovaného zákazníkem v Key Vault, musí server zůstat v online režimu nepřetržitý přístup k tomuto klíči. Pokud server ztratí přístup k klíči spravovanému zákazníkem v Key Vault, server zahájí odepření všech připojení během 10 minut. Server vydá odpovídající chybovou zprávu a změní stav serveru na *nepřístupný*. Jediná akce povolená u databáze v tomto stavu ji odstraňuje.
+Když nakonfigurujete šifrování dat pomocí klíče spravovaného zákazníkem v Key Vault, musí server zůstat v online režimu nepřetržitý přístup k tomuto klíči. Pokud server ztratí přístup k klíči spravovanému zákazníkem v Key Vault, server zahájí odepření všech připojení během 10 minut. Server vydá odpovídající chybovou zprávu a změní stav serveru na *nepřístupný*. Některé z důvodů, proč Server může dosáhnout tohoto stavu:
+
+* Když vytvoříme bod v čase obnovení serveru pro váš Azure Database for MySQL, u kterého je povolené šifrování dat, nově vytvořený server bude v *nedostupném* stavu. Tuto chybu můžete vyřešit pomocí [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) nebo rozhraní příkazového [řádku](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers).
+* Pokud pro váš Azure Database for MySQL vytvoříme repliku pro čtení, která má povolené šifrování dat, server repliky bude v *nepřístupovém* stavu. Tuto chybu můžete vyřešit pomocí [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) nebo rozhraní příkazového [řádku](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers).
+* Pokud odstraníte Trezor klíčů, Azure Database for MySQL nebude moci získat přístup k tomuto klíči a bude přesunut do *nedostupného* stavu. Obnovte [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) a znovu ověřte šifrování dat, aby byl server *dostupný*.
+* Pokud klíč odstraníme z trezoru klíčů, Azure Database for MySQL nebude moct získat přístup k tomuto klíči a přesune se do *nedostupného* stavu. Obnovte [klíč](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) a znovu ověřte šifrování dat *pro zpřístupnění serveru.*
+* Pokud klíč uložený ve službě Azure webrecovery vyprší, klíč se stane neplatným a Azure Database for MySQL přejde do *nedostupného* stavu. Rozšíříte datum vypršení platnosti klíče pomocí rozhraní příkazového [řádku](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-set-attributes) a pak znovu ověříte šifrování dat, aby byl server *dostupný*.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Odvolání přístupu k náhodnému klíči z Key Vault
 
@@ -103,7 +109,6 @@ Může dojít k tomu, že někdo, který má dostatečná přístupová práva k
 * Klíč se odstraňuje.
 * Odstraňuje se Trezor klíčů.
 * Mění se pravidla brány firewall trezoru klíčů.
-
 * Odstraňuje se spravovaná identita serveru v Azure AD.
 
 ## <a name="monitor-the-customer-managed-key-in-key-vault"></a>Monitorovat klíč spravovaný zákazníkem v Key Vault
@@ -113,7 +118,7 @@ Pokud chcete monitorovat stav databáze a povolit upozorňování na ztrátu tra
 * [Azure Resource Health](../service-health/resource-health-overview.md): nepřístupná databáze, která ztratila přístup k klíči zákazníka, v případě zamítnutí prvního připojení k databázi zobrazuje "nepřístupný".
 * [Protokol aktivit](../service-health/alerts-activity-log-service-notifications.md): když se přístup k klíči zákazníka v Key Vault spravovaném zákazníkem nezdařil, přidají se do protokolu aktivit položky. Pokud vytvoříte výstrahy pro tyto události, můžete co nejdřív obnovit přístup.
 
-* [Skupiny akcí](../azure-monitor/platform/action-groups.md): Definujte tyto možnosti, abyste vám poslali oznámení a výstrahy na základě vašich předvoleb.
+* [Skupiny akcí](../azure-monitor/platform/action-groups.md): Definujte tyto skupiny, abyste vám poslali oznámení a výstrahy na základě vašich předvoleb.
 
 ## <a name="restore-and-replicate-with-a-customers-managed-key-in-key-vault"></a>Obnovení a replikace pomocí spravovaného klíče zákazníka v Key Vault
 
@@ -123,7 +128,7 @@ Aby nedocházelo k problémům při nastavování šifrování dat spravovaného
 
 * Zahajte proces vytváření repliky obnovení nebo čtení z hlavního Azure Database for MySQL.
 * Nechejte nově vytvořený server (Obnovený nebo repliku) v nepřístupovém stavu, protože jeho jedinečná identita ještě nemá udělená oprávnění Key Vault.
-* Na serveru obnoveného nebo repliky znovu ověřte klíč spravovaný zákazníkem v nastavení šifrování dat. Tím se zajistí, že nově vytvořenému serveru budou udělena oprávnění k zalamování a odbalení klíče uloženého v Key Vault.
+* Na obnoveném serveru repliky znovu ověřte klíč spravovaný zákazníkem v nastavení šifrování dat, abyste zajistili, že nově vytvořenému serveru budou udělena oprávnění k zalamování a odbalení klíče uloženého v Key Vault.
 
 ## <a name="next-steps"></a>Další kroky
 

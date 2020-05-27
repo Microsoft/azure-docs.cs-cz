@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6f7335b92d7c26b33f9b156d434d895a1bca40c2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835389"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849752"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Vytváření grafických runbooků v Azure Automation
 
@@ -268,7 +268,7 @@ Vytváření grafického obsahu ukládá data vytvořená aktivitou, která nem�
 
 ## <a name="work-with-powershell-expressions"></a>Práce s výrazy PowerShellu
 
-Jednou z výhod grafického vytváření je to, že vám umožní vytvořit Runbook s minimálními znalostmi prostředí PowerShell. V současné době ale potřebujete znát bitovou kopii PowerShellu pro naplnění určitých [hodnot parametrů](#use-activities) a pro nastavení [podmínek propojení](#use-links-for-workflow). V této části najdete stručný úvod do PowerShellových výrazů. Úplné podrobnosti o PowerShellu jsou k dispozici v skriptování v prostředí [Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx).
+Jednou z výhod grafického vytváření je to, že vám umožní vytvořit Runbook s minimálními znalostmi prostředí PowerShell. V současné době ale potřebujete znát bitovou kopii PowerShellu pro naplnění určitých [hodnot parametrů](#use-activities) a pro nastavení [podmínek propojení](#use-links-for-workflow). V této části najdete stručný úvod do PowerShellových výrazů. Úplné podrobnosti o PowerShellu jsou k dispozici v skriptování v prostředí [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/overview).
 
 ### <a name="use-a-powershell-expression-as-a-data-source"></a>Použití výrazu PowerShellu jako zdroje dat
 

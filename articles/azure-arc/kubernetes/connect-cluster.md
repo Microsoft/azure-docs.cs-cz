@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: 690955f0e7d18f9a784b4c9a2fa1733442cb70dc
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 962b6a17743ea2beed1e16503739c55c83babbce
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780023"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860541"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
@@ -154,7 +154,7 @@ Helm release deployment succeeded
 Uveďte připojené clustery:
 
 ```console
-az connectedk8s list -g AzureArcTest
+az connectedk8s list -g AzureArcTest -o table
 ```
 
 **Výkonem**

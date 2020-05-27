@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 04/17/2020
-ms.openlocfilehash: 58f74ab060fef32de31cb91653a1bd38ad946934
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 05/25/2020
+ms.openlocfilehash: 87bfd505edcb394bafd70a975b5b3d6bde341cb9
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725631"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848868"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
@@ -51,6 +51,8 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 
 [Transformace vyhledávání](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 
+[Tipy & aktualizace transformace vyhledávání](https://youtu.be/MBskWoeuTLw)
+
 [Transformace pivotu](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
 
 [Transformace pivotu: mapování sloupců se sloupci](https://youtu.be/5MygzCX0wnM)
@@ -58,6 +60,8 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 [Vybrat transformaci](http://youtu.be/F9VjQ_YyRyU?hd=1)
 
 [Výběr transformace: mapování na základě pravidel](https://youtu.be/5lf1lh1qMwU)
+
+[Vyberte transformaci: velké datové sady](https://www.youtube.com/watch?v=R5ea2_R0ouc)
 
 [Transformace náhradního klíče](https://www.youtube.com/watch?v=ISpegL9CbTM)
 

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/19/2020
-ms.openlocfilehash: 5ab71ee67b66cacbcd1b23fa35d6f424021fa9cc
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.date: 05/26/2020
+ms.openlocfilehash: 3784eda2db5f375f04cdde84108a78ae277baf60
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757505"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860660"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru Azure Log Analytics
 
@@ -57,16 +57,6 @@ Pracovní prostor můžete odstranit pomocí [PowerShellu](https://docs.microsof
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
 
-### <a name="troubleshooting"></a>Řešení potíží
-
-K odstranění pracovního prostoru musíte mít aspoň *Log Analytics oprávnění přispěvatele* .<br>
-Pokud se zobrazí chybová zpráva *Tento název pracovního prostoru se už používá nebo je v* *konfliktu* při vytváření pracovního prostoru, může to být od:
-* Název pracovního prostoru není dostupný a používá ho někdo ve vaší organizaci, nebo jiný zákazník.
-* Pracovní prostor se odstranil za posledních 14 dní a jeho název se zachová rezervovaný pro období obnovitelného odstranění. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:<br>
-   1. [Obnovte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) pracovní prostor.
-   2. [Trvale odstraňte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) pracovní prostor.
-   3. Vytvoří nový pracovní prostor s použitím stejného názvu pracovního prostoru.
-
 ## <a name="permanent-workspace-delete"></a>Odstranění trvalého pracovního prostoru
 Metoda obnovitelného odstranění se nemusí vejít do některých scénářů, jako je například vývoj a testování, kde je třeba opakovat nasazení se stejným nastavením a názvem pracovního prostoru. V takových případech můžete pracovní prostor trvale odstranit a "přepsat" období obnovitelného odstranění. Operace odstranění trvalého pracovního prostoru uvolní název pracovního prostoru a nový pracovní prostor můžete vytvořit pomocí stejného názvu.
 
@@ -74,22 +64,21 @@ Metoda obnovitelného odstranění se nemusí vejít do některých scénářů,
 > [!IMPORTANT]
 > Používejte trvalou operaci odstranění pracovního prostoru s opatrností, protože ji nejde vrátit zpět a nebudete moct obnovit pracovní prostor a jeho data.
 
-Trvalé odstranění pracovního prostoru lze nyní provést prostřednictvím REST API.
+Pokud chcete trvale odstranit pracovní prostor, použijte [pracovní prostory – odstranit](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) žádost REST s příznakem vynucení:
 
-> [!NOTE]
-> Jakýkoli požadavek rozhraní API musí v hlavičce požadavku zahrnovat autorizační token nosiče.
->
-> Token můžete získat pomocí:
-> - [Registrace aplikací](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
-> - V prohlížeči přejděte na Azure Portal pomocí konzoly pro vývojáře (F12). Podívejte se do jedné z **dávek?** instance pro řetězec ověřování v části **záhlaví požadavků**. K tomu dojde v *autorizačním vzoru: nosič <token> *. Zkopírujte a přidejte to do volání rozhraní API, jak je znázorněno v příkladech.
-> - Přejděte na stránku dokumentace k Azure REST. stiskněte **vyzkoušet** na jakémkoli rozhraní API, zkopírujte token nosiče a přidejte ho do volání rozhraní API.
-Pokud chcete trvale odstranit pracovní prostor, použijte [pracovní prostory – odstranit]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) volání rozhraní REST API pomocí značky Force:
->
-> ```rst
-> DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
-> Authorization: Bearer eyJ0eXAiOiJKV1Qi….
-> ```
-Kde ' eyJ0eXAiOiJKV1Qi... ' představuje úplný autorizační token.
+```rst
+DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
+Authorization: Bearer <token>
+```
+
+Alternativně můžete provést operaci z webu dokumentace k Azure REST:
+1.  Přejděte k [pracovním prostorům – odstraňte](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) REST API a klikněte na **vyzkoušet**. 
+2.  Zadejte podrobnosti pracovního prostoru, který chcete trvale odstranit.
+3.  Ender nové *vynucení* parametru s hodnotou *true*
+4.  Klikněte na ikonu ' + ' vpravo k hodnotě. V žádosti se přidá *hodnota Force = true* k identifikátoru URI.
+5.  Klikněte na tlačítko *Spustit* .
+
+Odpověď by měla být 200 OK.
 
 ## <a name="recover-workspace"></a>Obnovit pracovní prostor
 Když pracovní prostor odstraníte Log Analytics omylem nebo záměrně, služba ho umístí do stavu obnovitelného odstranění, takže nebude mít přístup k žádné operaci. Název odstraněného pracovního prostoru se zachová během období obnovitelného odstranění a nedá se použít k vytvoření nového pracovního prostoru. Po období obnovitelného odstranění je pracovní prostor neobnovitelný, je naplánován na trvalé odstranění a jeho název, který lze použít k vytvoření nového pracovního prostoru.
@@ -123,6 +112,13 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 Pracovní prostor a všechna jeho data se po operaci obnovení vrátí zpět. Řešení a propojené služby byly při odstranění trvale odebrány z pracovního prostoru a měly by být překonfigurovány, aby byl pracovní prostor nastaven do dříve nakonfigurovaného stavu. Některá data nemusí být k dispozici pro dotaz po obnovení pracovního prostoru, dokud nebudou přidružená řešení znovu nainstalována a jejich schémata jsou přidána do pracovního prostoru.
 
 > [!NOTE]
-> * Obnovení pracovního prostoru není v [Azure Portal](https://portal.azure.com)podporováno. 
 > * Po opětovném vytvoření pracovního prostoru během období obnovitelného odstranění se zobrazí informace o tom, že tento název pracovního prostoru se už používá. 
-> 
+ 
+### <a name="troubleshooting"></a>Řešení potíží
+K odstranění pracovního prostoru musíte mít aspoň *Log Analytics oprávnění přispěvatele* .<br>
+Pokud se zobrazí chybová zpráva *Tento název pracovního prostoru se už používá nebo je v* *konfliktu* při vytváření pracovního prostoru, může to být od:
+* Název pracovního prostoru není dostupný a používá ho někdo ve vaší organizaci, nebo jiný zákazník.
+* Pracovní prostor se odstranil za posledních 14 dní a jeho název se zachová rezervovaný pro období obnovitelného odstranění. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:<br>
+   1. [Obnovte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) pracovní prostor.
+   2. [Trvale odstraňte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) pracovní prostor.
+   3. Vytvoří nový pracovní prostor s použitím stejného názvu pracovního prostoru.

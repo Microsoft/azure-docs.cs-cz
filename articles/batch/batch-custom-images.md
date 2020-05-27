@@ -1,30 +1,30 @@
 ---
 title: Zřízení vlastního fondu ze spravované image
 description: Vytvořte fond služby Batch z prostředku spravovaného obrazu a zřídíte výpočetní uzly se softwarem a daty pro vaši aplikaci.
-ms.topic: article
-ms.date: 09/16/2019
-ms.openlocfilehash: b08c6a609516bcebaca64cf1c186d75887b098e3
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.topic: conceptual
+ms.date: 05/22/2020
+ms.openlocfilehash: fbb336ff9d3d53cc53004c577e291afdba7702f6
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780211"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847986"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Vytvoření fondu virtuálních počítačů pomocí spravované image
 
-Pokud chcete vytvořit vlastní image pro virtuální počítače (VM) fondu služby Batch, můžete použít buď [galerii sdílených imagí](batch-sig-images.md), nebo prostředek *spravované image* .
+Pokud chcete vytvořit vlastní image pro virtuální počítače (VM) fondu služby Batch, můžete k vytvoření [Galerie sdílených imagí](batch-sig-images.md)použít spravovanou bitovou kopii. Podporuje se taky jenom spravovaná image, ale jenom pro verze rozhraní API, a to včetně 2019-08-01.
 
-> [!TIP]
+> [!IMPORTANT]
 > Ve většině případů byste měli vytvořit vlastní image pomocí Galerie sdílených imagí. Pomocí Galerie sdílených imagí můžete vytvořit fondy rychleji, škálovat větší množství virtuálních počítačů a zvýšit spolehlivost při zřizování virtuálních počítačů. Další informace najdete v tématu [použití Galerie sdílených imagí k vytvoření vlastního fondu](batch-sig-images.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Prostředek spravované image** Pokud chcete vytvořit fond virtuálních počítačů s použitím vlastní image, musíte mít nebo vytvořit prostředek spravované image ve stejném předplatném Azure a oblasti jako účet Batch. Image by se měla vytvořit ze snímků disku s operačním systémem virtuálního počítače a volitelně z připojených datových disků. Další informace a kroky pro přípravu spravované image najdete v následující části.
+- **Prostředek spravované image** Pokud chcete vytvořit fond virtuálních počítačů s použitím vlastní image, musíte mít nebo vytvořit prostředek spravované image ve stejném předplatném Azure a oblasti jako účet Batch. Image by se měla vytvořit ze snímků disku s operačním systémem virtuálního počítače a volitelně z připojených datových disků.
   - Pro každý vytvořený fond použijte jedinečnou vlastní image.
-  - Pokud chcete vytvořit fond s imagí pomocí rozhraní API pro Batch, zadejte **ID prostředku** obrázku, který je ve formátu `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` . Chcete-li použít portál, použijte **název** bitové kopie.  
+  - Pokud chcete vytvořit fond s imagí pomocí rozhraní API pro Batch, zadejte **ID prostředku** obrázku, který je ve formátu `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` .
   - Prostředek spravované Image by měl existovat po dobu života fondu, aby bylo možné provést horizontální navýšení kapacity a po odstranění fondu je možné ho odebrat.
 
-- **Ověřování Azure Active Directory (AAD)**. Rozhraní API pro klienta Batch musí používat ověřování AAD. Podpora Azure Batch pro AAD je popsaná v dokumentaci k [ověřování řešení služby Batch pomocí služby Active Directory](batch-aad-auth.md).
+- **Ověřování Azure Active Directory (Azure AD)**. Klientské rozhraní API služby Batch musí používat ověřování Azure AD. Podpora služby Azure AD ve službě Azure Batch je zdokumentovaná v tématu [Ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md).
 
 ## <a name="prepare-a-custom-image"></a>Příprava vlastní image
 
@@ -34,16 +34,14 @@ V Azure můžete připravit spravovanou bitovou kopii z těchto:
 - Zobecněný virtuální počítač Azure se spravovanými disky
 - Zobecněný místní virtuální pevný disk nahraný do cloudu
 
-Abyste mohli škálovat fondy dávek spolehlivě s použitím vlastní image, doporučujeme vytvořit spravovanou image *jenom* pomocí první metody: použití snímků disků virtuálního počítače. Pokud chcete připravit virtuální počítač, pořídit snímek a vytvořit z snímku obrázek.
+Aby bylo možné škálovat fondy dávek spolehlivě pomocí spravované image, doporučujeme vytvořit spravovanou bitovou kopii *pouze* pomocí první metody: použití snímků disků virtuálního počítače. Následující kroky ukazují, jak připravit virtuální počítač, pořídit snímek a vytvořit spravovanou bitovou kopii ze snímku.
 
 ### <a name="prepare-a-vm"></a>Příprava virtuálního počítače
 
 Pokud vytváříte nový virtuální počítač pro bitovou kopii, použijte jako základní image pro spravovanou bitovou kopii Azure Marketplace image, kterou služba Batch podporuje. Jako základní image se dají použít jenom image ze strany First stran. Úplný seznam Azure Marketplacech odkazů na Image podporovaných v Azure Batch najdete v tématu operace [výpisu SKU agenta uzlu](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) .
 
 > [!NOTE]
-> Nemůžete použít image třetí strany, která má další licenci a jako základní image. Informace o těchto obrázcích na webu Marketplace najdete v tématu pokyny pro virtuální počítače se systémem [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) nebo [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) .
+> Nemůžete použít image třetí strany, která má další licenci a jako základní image. Informace o těchto obrázcích na webu Marketplace najdete v tématu pokyny pro virtuální počítače se systémem [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) nebo [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms) .
 
 - Ujistěte se, že je virtuální počítač vytvořený pomocí spravovaného disku. Toto je výchozí nastavení úložiště při vytváření virtuálního počítače.
 - Do virtuálního počítače neinstalujte rozšíření Azure, jako je například rozšíření vlastních skriptů. Pokud image obsahuje předem nainstalovanou příponu, může Azure narazit na problémy při nasazování fondu služby Batch.
@@ -59,29 +57,70 @@ Snímek je plná kopie VHD, která je jen pro čtení. Pokud chcete vytvořit sn
 
 Pokud chcete vytvořit spravovanou image ze snímku, použijte nástroje příkazového řádku Azure, jako je příkaz [AZ image Create](/cli/azure/image) . Můžete vytvořit image zadáním snímku disku s operačním systémem a volitelně jednoho nebo více snímků datových disků.
 
-## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>Vytvoření fondu z vlastní image na portálu
+## <a name="create-a-pool-from-a-custom-image"></a>Vytvoření fondu z vlastní image
 
-Po uložení vlastní image a zjištění jejího ID nebo názvu prostředku vytvořte z této image fond služby Batch. Následující kroky ukazují, jak vytvořit fond z Azure Portal.
+Po nalezení ID prostředku spravované image vytvořte z této image vlastní fond imagí. Následující kroky ukazují, jak vytvořit vlastní fond imagí pomocí služby Batch nebo služby Batch Management.
 
 > [!NOTE]
-> Pokud vytváříte fond pomocí jednoho z rozhraní API služby Batch, ujistěte se, že identita, kterou používáte pro ověřování AAD, má oprávnění k prostředku image. Viz [ověřování řešení služby Batch pomocí služby Active Directory](batch-aad-auth.md).
+> Ujistěte se, že identita, kterou používáte pro ověřování Azure AD, má oprávnění k prostředku image. Viz [ověřování řešení služby Batch pomocí služby Active Directory](batch-aad-auth.md).
 >
 > Pro dobu života fondu musí existovat prostředek pro spravovanou bitovou kopii. Pokud se základní prostředek odstraní, nelze škálovat fond.
 
-1. Na webu Azure Portal přejděte ke svému účtu Batch. Tento účet musí být ve stejném předplatném a oblasti jako skupina prostředků obsahující vlastní image.
-2. V okně **Nastavení** na levé straně vyberte položku nabídky **fondy** .
-3. V okně **fondy** vyberte příkaz **Přidat** .
-4. V okně **Přidat fond** vyberte v rozevíracím seznamu **typ obrázku** **vlastní image (Linux/Windows)** . V rozevíracím seznamu **vlastní image virtuálního počítače** vyberte název Image (krátký tvar ID prostředku).
-5. Vyberte pro vlastní image správného **vydavatele/nabídku/SKU** .
-6. Zadejte zbývající požadovaná nastavení, včetně **velikosti uzlu**, **cílových vyhrazených uzlů**a **uzlů s nízkou prioritou**, a také všech požadovaných volitelných nastavení.
+### <a name="batch-service-net-sdk"></a>Sada .NET SDK služby Batch
 
-    Například pro vlastní image Microsoft Windows Server Datacenter 2016 se zobrazí okno **Přidat fond** , jak je znázorněno níže:
+```csharp
+private static VirtualMachineConfiguration CreateVirtualMachineConfiguration(ImageReference imageReference)
+{
+    return new VirtualMachineConfiguration(
+        imageReference: imageReference,
+        nodeAgentSkuId: "batch.node.windows amd64");
+}
 
-    ![Přidat fond z vlastní image Windows](media/batch-custom-images/add-pool-custom-image.png)
-  
-Pokud chcete zjistit, jestli je existující fond založený na vlastní imagi, podívejte se do vlastnosti **operačního systému** v části Souhrn prostředků okna **fondu** . Pokud byl fond vytvořen z vlastní image, je nastaven na **vlastní image virtuálního počítače**.
+private static ImageReference CreateImageReference()
+{
+    return new ImageReference(
+        virtualMachineImageId: "/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/images/{image definition name}");
+}
 
-Všechny vlastní image přidružené k fondu se zobrazí v okně **vlastností** fondu.
+private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfiguration vmConfiguration)
+{
+    try
+    {
+        CloudPool pool = batchClient.PoolOperations.CreatePool(
+            poolId: PoolId,
+            targetDedicatedComputeNodes: PoolNodeCount,
+            virtualMachineSize: PoolVMSize,
+            virtualMachineConfiguration: vmConfiguration);
+
+        pool.Commit();
+    }
+```
+
+### <a name="batch-management-rest-api"></a>Rozhraní REST API pro správu služby Batch
+
+Identifikátor URI v REST API
+
+```http
+ PUT https://management.azure.com/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Batch/batchAccounts/{account name}/pools/{pool name}?api-version=2020-03-01
+```
+
+Text požadavku
+
+```json
+ {
+   "properties": {
+     "vmSize": "{VM size}",
+     "deploymentConfiguration": {
+       "virtualMachineConfiguration": {
+         "imageReference": {
+           "id": "/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/images/{image name}"
+         },
+         "nodeAgentSkuId": "{Node Agent SKU ID}"
+       }
+     }
+   }
+ }
+```
 
 ## <a name="considerations-for-large-pools"></a>Předpoklady pro velké fondy
 
@@ -113,4 +152,5 @@ Další informace o použití balíčku k vytvoření virtuálního počítače 
 
 ## <a name="next-steps"></a>Další kroky
 
+- Naučte se používat [galerii sdílených imagí](batch-sig-images.md) k vytvoření vlastního fondu.
 - Podrobný přehled služby Batch najdete v tématu [pracovní postup služby Batch a prostředky](batch-service-workflow-features.md).

@@ -8,33 +8,39 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: aa76a5773a20a103ceec075a58c79fac691eec6f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3bb126dc31620515c54a653ef595bfc017aaac73
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747327"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869589"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a C #
 
-V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace v jazyce C# pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace v jazyce C# pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. 
+
+I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
-* Instalace `Newtonsoft.Json` jako balíčku NuGet v aplikaci Visual Studio:
-    1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na soubor řešení.
-    1. Vyberte **Spravovat balíčky NuGet pro řešení**.
-    1. Vyhledejte `Newtonsoft.Json` a nainstalujte balíček.
+* Balíček NuGet Newtonsoft. JSON. 
+     
+   Instalace tohoto balíčku v aplikaci Visual Studio:
+
+     1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na soubor řešení.
+     1. Vyberte **Spravovat balíčky NuGet pro řešení**.
+     1. Vyhledejte *Newtonsoft. JSON* a nainstalujte balíček.
+
 * Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nové řešení konzoly s názvem `SpellCheckSample` v aplikaci Visual Studio. Pak přidejte následující obory názvů do souboru hlavního kódu.
+1. Vytvořte nové řešení konzoly s názvem SpellCheckSample v aplikaci Visual Studio. Pak přidejte následující obory názvů do hlavního souboru kódu:
     
     ```csharp
     using System;
@@ -46,7 +52,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
     using Newtonsoft.Json;
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a text, který se má zkontrolovat pravopis. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro koncový bod rozhraní API, klíč předplatného a text, který se má zkontrolovat pravopis. Můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```csharp
     namespace SpellCheckSample
@@ -62,7 +68,11 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
     }
     ```
 
-3. Vytvořte proměnnou pro parametry hledání. Přidejte svůj kód na trhu po `mkt=` . Kód na trhu je země nebo oblast, ze které tuto žádost provedete. Také přidejte svůj režim kontroly pravopisu po `&mode=` . Režim je buď `proof` (catch nejvíc pravopisné/gramatické chyby), nebo `spell` (catch nejvíc pravopisu, ale ne tolik gramatických chyb).
+3. Vytvořte řetězec pro parametry hledání: 
+
+   a. Přiřaďte svůj kód na trhu k `mkt` parametru pomocí `=` operátoru. Kód trhu je kód země nebo oblasti, ze které provedete požadavek. 
+
+   b. Přidejte `mode` parametr s `&` operátorem a potom přiřaďte režim kontroly pravopisu. Režim může být buď `proof` (catch nejvíc pravopisné/gramatické chyby) `spell` , nebo (catch nejvíc pravopisných chyb, ale ne tolik gramatických chyb).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -70,7 +80,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 ## <a name="create-and-send-a-spell-check-request"></a>Vytvoření a odeslání žádosti o kontrolu pravopisu
 
-1. Vytvořte asynchronní funkci volanou `SpellCheck()` k odeslání žádosti do rozhraní API. Vytvořte `HttpClient` a přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` . Pak proveďte následující kroky v rámci této funkce.
+1. Vytvořte asynchronní funkci volanou `SpellCheck()` k odeslání žádosti do rozhraní API. Vytvořte `HttpClient` a přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` . V rámci funkce postupujte podle následujících kroků.
 
     ```csharp
     async static void SpellCheck()
@@ -127,7 +137,7 @@ Console.WriteLine(jsonObj);
 
 ## <a name="call-the-spell-check-function"></a>Volání funkce kontroly pravopisu
 
-V hlavní funkci projektu volejte `SpellCheck()` .
+Ve `Main()` funkci projektu volejte `SpellCheck()` .
 
 ```csharp
 static void Main(string[] args)
@@ -189,4 +199,4 @@ Sestavte a spusťte projekt. Pokud používáte Visual Studio, můžete soubor l
 > [Vytvoření jednostránkové webové aplikace](../tutorials/spellcheck.md)
 
 - [Co je rozhraní API pro kontrolu pravopisu Bingu?](../overview.md)
-- [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Odkaz na rozhraní API Bingu pro kontrolu pravopisu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

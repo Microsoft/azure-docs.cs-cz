@@ -12,17 +12,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 4b6a2481c18314a44470a020033ffdc4ba1d7259
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81380017"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860048"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v úhlové aplikaci s jednou stránkou
-
-> [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před všeobecnou dostupností změnit (GA).
 
 V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplikaci (SPA) může přihlašovat uživatel, který má osobní účty Microsoft, pracovní účty nebo školní účty. K volání rozhraní API Microsoft Graph nebo jakéhokoli webového rozhraní API může získat přístupový token.
 
@@ -38,7 +35,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Možnost 1 (Express): registrace a Automatická konfigurace aplikace a stažení ukázky kódu
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 > 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure Active Directory (Azure AD), který chcete použít.
 > 1. Otevřete nové podokno [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) v Azure Portal.
 > 1. Zadejte název aplikace a pak vyberte **Registrovat**.
@@ -48,10 +45,10 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >
 > #### <a name="step-1-register-the-application"></a>Krok 1: registrace aplikace
 >
-> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+> 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 > 1. Pokud má váš účet přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 > 1. Postupujte podle pokynů k [registraci jednostránkové aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) v Azure Portal.
-> 1. Přidejte novou platformu do podokna **ověřování** registrace vaší aplikace a zaregistrujte identifikátor URI přesměrování: `http://localhost:4200/`.
+> 1. Přidejte novou platformu do podokna **ověřování** registrace vaší aplikace a zaregistrujte identifikátor URI přesměrování: `http://localhost:4200/` .
 > 1. V tomto rychlém startu se používá [implicitní tok udělení](v2-oauth2-implicit-grant-flow.md). Vyberte nastavení **implicitního udělení** pro **tokeny ID** a **přístupové tokeny**. Tokeny ID a přístupové tokeny jsou povinné, protože se tato aplikace přihlásí uživatelům a volá rozhraní API.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -73,7 +70,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 > [!div renderon="docs"]
 >#### <a name="step-3-configure-the-javascript-app"></a>Krok 3: Konfigurace aplikace JavaScriptu
 >
-> Ve složce *Src/App* upravte *App. Module. TS* a nastavte hodnoty `clientId` a `authority` `MsalModule.forRoot`.
+> Ve složce *Src/App* upravte *App. Module. TS* a nastavte `clientId` `authority` hodnoty a `MsalModule.forRoot` .
 >
 >```javascript
 >MsalModule.forRoot({
@@ -102,9 +99,9 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se v úhlové aplik
 >|Název hodnoty|Popis|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Na stránce **Přehled** registrace vaší aplikace se jedná o hodnotu ID vaší **aplikace (klienta)** . |
->|Enter_the_Cloud_Instance_Id_Here|Toto je instance cloudu Azure. V případě hlavního nebo globálního cloudu Azure zadejte **https://login.microsoftonline.com**. Pro národní cloudy (například Čína) si přečtěte téma [národní cloudy](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
+>|Enter_the_Cloud_Instance_Id_Here|Toto je instance cloudu Azure. V případě hlavního nebo globálního cloudu Azure zadejte **https://login.microsoftonline.com** . Pro národní cloudy (například Čína) si přečtěte téma [národní cloudy](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
 >|Enter_the_Tenant_Info_Here| Nastavte na jednu z následujících možností: Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu ID adresáře (tenant) nebo názvem tenanta (například **contoso.Microsoft.com**). Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu **organizacemi**. Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu **běžnými**. Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu **příjemci**. |
->|Enter_the_Redirect_Uri_Here|Nahraďte **http://localhost:4200**parametrem.|
+>|Enter_the_Redirect_Uri_Here|Nahraďte parametrem **http://localhost:4200** .|
 >|cacheLocation  | Volitelné Nastavte úložiště prohlížeče pro stav ověřování. Výchozí hodnota je **SessionStorage**.   |
 >|storeAuthStateInCookie  | Volitelné Identifikujte knihovnu, ve které je uložený stav žádosti o ověření. Tento stav je nutný k ověření toků ověřování v souborech cookie prohlížeče. Tento soubor cookie je nastaven pro Internet Explorer a Edge tak, aby se vešel na tyto dva prohlížeče. Další podrobnosti najdete v tématu [známé problémy](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
 > > [!TIP]
@@ -129,7 +126,7 @@ Pokud používáte Node. js:
    npm start
    ```
 
-1. Přejděte na **http://localhost:4200/**.
+1. Přejděte na **http://localhost:4200/** .
 1. Vyberte **Přihlásit**se.
 1. Vyberte **profil** , který chcete volat Microsoft Graph.
 

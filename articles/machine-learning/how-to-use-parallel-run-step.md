@@ -6,112 +6,63 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr, vaidyas
-ms.author: vaidyas
-author: vaidya-s
-ms.date: 01/15/2020
-ms.custom: Ignite2019
-ms.openlocfilehash: 3d283d1094336b928869aa281b4a640d7a62dd94
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: trbye, jmartens, larryfr
+ms.author: tracych
+author: tracychms
+ms.date: 04/15/2020
+ms.custom: Build2020
+ms.openlocfilehash: 058cdaa77a38dcb45164e01a54e73218b469940b
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79477183"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860949"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Naučte se, jak zpracovávat velké objemy dat asynchronně a paralelně pomocí Azure Machine Learning. Funkce ParallelRunStep popsané tady je ve verzi Public Preview. Je to vysoce výkonná a vysoká propustnost pro generování odvození a zpracování dat. Poskytuje asynchronní možnosti mimo pole.
+Naučte se, jak spustit dávku dávkového odvozování velkých objemů dat asynchronně a paralelně pomocí Azure Machine Learning. ParallelRunStep poskytuje možnosti paralelního zpracování v poli.
 
-S ParallelRunStep je jednoduché škálovat offline oddělení na velké clustery počítačů na terabajtech produkčních dat, což vede k lepší produktivitě a optimalizaci nákladů.
+S ParallelRunStep je jednoduché škálovat offline oddělení na velké clustery počítačů na terabajtech strukturovaných nebo nestrukturovaných dat s vyšší produktivitou a optimalizovanými náklady.
 
 V tomto článku se seznámíte s následujícími úlohami:
 
-> * Vytvořte vzdálený výpočetní prostředek.
-> * Zapište vlastní skript pro odvození.
-> * Vytvořte [kanál machine learningu](concept-ml-pipelines.md) , který zaregistruje předem vyškolený model klasifikace imagí na základě datové sady [mnist ručně zapsaných](https://publicdataset.azurewebsites.net/dataDetail/mnist/) . 
-> * Pomocí modelu spusťte odvozování dávky na ukázkových imagí dostupných v účtu úložiště Azure Blob. 
+> * Nastavte prostředky strojového učení.
+> * Nakonfigurujte vstupy a výstupy dat o odvození dávky.
+> * Připravte předem vyškolený model klasifikace imagí na základě datové sady [mnist ručně zapsaných](https://publicdataset.azurewebsites.net/dataDetail/mnist/) . 
+> * Napište svůj skript pro odvození.
+> * Vytvořte [kanál strojového učení](concept-ml-pipelines.md) obsahující ParallelRunStep a spusťte odvození dávky na mnist ručně zapsaných testovacích imagí. 
+> * Opětovné odeslání odvozeného odvození dávky s novým vstupem a parametry dat 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+* Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Průvodce rychlým startem vám umožní absolvovat [kurz instalace](tutorial-1st-experiment-sdk-setup.md) , pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem. 
+* Průvodce rychlým startem vám umožní absolvovat [kurz instalace](tutorial-1st-experiment-sdk-setup.md) , pokud ještě nemáte pracovní prostor Azure Machine Learning. 
 
-* Informace o [tom, jak](how-to-configure-environment.md) spravovat vlastní prostředí a závislosti, najdete v tématu Průvodce konfigurací vlastního prostředí. Spusťte `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` ve svém prostředí, aby se stáhly nezbytné závislosti.
+* Pokud chcete spravovat vlastní prostředí a závislosti, přečtěte si návod, [jak](how-to-configure-environment.md) nakonfigurovat vlastní místní prostředí.
 
 ## <a name="set-up-machine-learning-resources"></a>Nastavení prostředků strojového učení
 
-Následující akce nastaví prostředky, které potřebujete ke spuštění kanálu odvození dávky:
+Následující akce nastaví prostředky strojového učení, které potřebujete ke spuštění kanálu odvození dávky:
 
-- Vytvořte úložiště dat, které odkazuje na kontejner objektů BLOB s obrázky, které mají být odvozeny.
-- Nastavte odkazy na data jako vstupy a výstupy pro krok kanálu pro odvození dávky.
-- Nastavte výpočetní cluster tak, aby spouštěl krok odvození dávky.
+- Připojte se k pracovnímu prostoru.
+- Vytvořte nebo připojte stávající výpočetní prostředek.
 
-### <a name="create-a-datastore-with-sample-images"></a>Vytvoření úložiště dat s ukázkovými obrázky
+### <a name="configure-workspace"></a>Konfigurace pracovního prostoru
 
-Získejte zkušební sadu MNIST ručně zapsaných z veřejného kontejneru `sampledata` objektů BLOB v účtu s názvem. `pipelinedata` Vytvořte úložiště dat s názvem `mnist_datastore`, které odkazuje na tento kontejner. V následujícím volání do `register_azure_blob_container`nastavte `overwrite` příznak pro `True` přepsání libovolného úložiště dat, které bylo dříve vytvořeno s tímto názvem. 
-
-Tento krok můžete změnit tak, aby odkazoval na kontejner objektů BLOB tím, že poskytuje vaše `datastore_name`vlastní `container_name`hodnoty pro `account_name`, a.
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. `Workspace.from_config()`přečte soubor config. JSON a načte podrobnosti do objektu s názvem WS.
 
 ```python
-from azureml.core import Datastore
 from azureml.core import Workspace
 
-# Load workspace authorization details from config.json
 ws = Workspace.from_config()
-
-mnist_blob = Datastore.register_azure_blob_container(ws, 
-                      datastore_name="mnist_datastore", 
-                      container_name="sampledata", 
-                      account_name="pipelinedata",
-                      overwrite=True)
 ```
 
-Potom zadejte výchozí úložiště dat pracovního prostoru jako výstupní úložiště dat. Použijete ho k odvození výstupu.
+> [!IMPORTANT]
+> Tento fragment kódu očekává uložení konfigurace pracovního prostoru do aktuálního adresáře nebo jeho nadřazeného objektu. Další informace o vytváření pracovního prostoru najdete v tématu [Vytvoření a Správa pracovních prostorů Azure Machine Learning](how-to-manage-workspace.md). Další informace o ukládání konfigurace do souboru najdete v tématu [vytvoření konfiguračního souboru pracovního prostoru](how-to-configure-environment.md#workspace).
 
-Při vytváření pracovního prostoru jsou [soubory](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) Azure a [BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) ve výchozím nastavení připojené k pracovnímu prostoru. Služba soubory Azure je výchozím úložištěm dat pro pracovní prostor, ale můžete také použít úložiště objektů BLOB jako úložiště dat. Další informace najdete v tématu [Možnosti služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
-
-```python
-def_data_store = ws.get_default_datastore()
-```
-
-### <a name="configure-data-inputs-and-outputs"></a>Konfigurace vstupů a výstupů dat
-
-Nyní potřebujete nakonfigurovat vstupy a výstupy dat, včetně:
-
-- Adresář, který obsahuje vstupní obrázky.
-- Adresář, ve kterém je uložen předučený model.
-- Adresář, který obsahuje popisky.
-- Adresář pro výstup.
-
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)je třída pro zkoumání, transformaci a správu dat v Azure Machine Learning. Tato třída má dva typy: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). V tomto příkladu použijete `FileDataset` jako vstupy pro krok kanálu odvození dávky. 
-
-> [!NOTE] 
-> `FileDataset`podpora ve službě Batch pro odvození se teď omezuje na úložiště objektů BLOB v Azure. 
-
-Můžete také odkazovat na jiné datové sady ve vlastním skriptu pro odvození. Můžete ho například použít pro přístup k popiskům ve skriptu pro označování obrázků pomocí `Dataset.register` a. `Dataset.get_by_name`
-
-Další informace o Azure Machine Learning datových sadách najdete v tématu [Vytvoření a přístup k datovým sadám (Preview)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
-
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)objekty se používají k přenosu mezilehlých dat mezi jednotlivými kroky kanálu. V tomto příkladu je použit pro odvození výstupů.
-
-```python
-from azureml.core.dataset import Dataset
-
-mnist_ds_name = 'mnist_sample_data'
-
-path_on_datastore = mnist_blob.path('mnist/')
-input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
-registered_mnist_ds = input_mnist_ds.register(ws, mnist_ds_name, create_new_version=True)
-named_mnist_ds = registered_mnist_ds.as_named_input(mnist_ds_name)
-
-output_dir = PipelineData(name="inferences", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="mnist/results")
-```
-
-### <a name="set-up-a-compute-target"></a>Nastavení cíle výpočtů
+### <a name="create-a-compute-target"></a>Vytvořit cíl výpočtů
 
 V Azure Machine Learning *výpočetní* prostředí (nebo *target COMPUTE*) odkazuje na počítače nebo clustery, které provádějí výpočetní kroky v kanálu Machine Learning. Spusťte následující kód, který vytvoří [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) cíl na základě procesoru.
 
@@ -120,7 +71,7 @@ from azureml.core.compute import AmlCompute, ComputeTarget
 from azureml.core.compute_target import ComputeTargetException
 
 # choose a name for your cluster
-compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
 compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
 compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
@@ -149,6 +100,75 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
+## <a name="configure-inputs-and-output"></a>Konfigurace vstupů a výstupů
+
+### <a name="create-a-datastore-with-sample-images"></a>Vytvoření úložiště dat s ukázkovými obrázky
+
+Získejte zkušební sadu MNIST ručně zapsaných z veřejného kontejneru objektů BLOB `sampledata` v účtu s názvem `pipelinedata` . Vytvořte úložiště dat s názvem `mnist_datastore` , které odkazuje na tento kontejner. V následujícím volání do `register_azure_blob_container` nastavte `overwrite` příznak pro `True` přepsání libovolného úložiště dat, které bylo dříve vytvořeno s tímto názvem. 
+
+Tento krok můžete změnit tak, aby odkazoval na kontejner objektů BLOB tím, že poskytuje vaše vlastní hodnoty pro `datastore_name` , `container_name` a `account_name` .
+
+```python
+from azureml.core import Datastore
+from azureml.core import Workspace
+
+# Load workspace authorization details from config.json
+ws = Workspace.from_config()
+
+mnist_blob = Datastore.register_azure_blob_container(ws, 
+                      datastore_name="mnist_datastore", 
+                      container_name="sampledata", 
+                      account_name="pipelinedata",
+                      overwrite=True)
+```
+
+Potom zadejte výchozí úložiště dat pracovního prostoru jako výstupní úložiště dat. Použijete ho k odvození výstupu.
+
+Při vytváření pracovního prostoru jsou [soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)   a [BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)   ve výchozím nastavení připojené k pracovnímu prostoru. Služba soubory Azure je výchozím úložištěm dat pro pracovní prostor, ale můžete také použít úložiště objektů BLOB jako úložiště dat. Další informace najdete v tématu [Možnosti služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+
+```python
+def_data_store = ws.get_default_datastore()
+```
+
+### <a name="create-the-data-inputs"></a>Vytvoření vstupních dat
+
+Vstupy pro odvození dávky jsou data, která chcete rozdělit na oddíly pro paralelní zpracování. Kanál odvození dávky přijímá datové vstupy prostřednictvím [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) .
+
+`Dataset`slouží k prozkoumávání, transformaci a správě dat v Azure Machine Learning. Existují dva typy: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) . V tomto příkladu použijete `FileDataset` jako vstupy. `FileDataset`poskytuje možnost stahovat soubory nebo je připojit k výpočetnímu prostředí. Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat. Pokud jste pro datovou sadu použili jakékoli transformace podNastavení, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště.
+
+Další informace o Azure Machine Learning datových sadách najdete v tématu [Vytvoření a přístup k datovým sadám (Preview)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
+
+```python
+from azureml.core.dataset import Dataset
+
+mnist_ds_name = 'mnist_sample_data'
+
+path_on_datastore = mnist_blob.path('mnist/')
+input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
+```
+
+Aby bylo možné používat dynamické datové vstupy při spuštění kanálu odvození dávky, můžete zadat vstupy `Dataset` jako [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) . Můžete zadat datovou sadu vstupů pokaždé, když znovu odešlete běh kanálu pro odvození dávky.
+
+```python
+from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
+from azureml.pipeline.core import PipelineParameter
+
+pipeline_param = PipelineParameter(name="mnist_param", default_value=input_mnist_ds)
+input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pipeline_param).as_mount()
+```
+
+### <a name="create-the-output"></a>Vytvoření výstupu
+
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)objekty se používají k přenosu mezilehlých dat mezi jednotlivými kroky kanálu. V tomto příkladu je použit pro výstup odvození.
+
+```python
+from azureml.pipeline.core import Pipeline, PipelineData
+
+output_dir = PipelineData(name="inferences", 
+                          datastore=def_data_store, 
+                          output_path_on_compute="mnist/results")
+```
+
 ## <a name="prepare-the-model"></a>Příprava modelu
 
 [Stáhněte si předem vyškolený model klasifikace imagí](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)a pak ho rozbalte do `models` adresáře.
@@ -168,7 +188,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-Pak model zaregistrujte do svého pracovního prostoru, aby byl dostupný pro váš vzdálený výpočetní prostředek.
+Pak model zaregistrujte do svého pracovního prostoru, abyste ho mohli použít pro výpočetní prostředky.
 
 ```python
 from azureml.core.model import Model
@@ -189,8 +209,8 @@ model = Model.register(model_path="models/",
 Skript *musí obsahovat* dvě funkce:
 - `init()`: Tuto funkci použijte pro veškerou nákladný nebo běžnou přípravu pro pozdější odvození. Můžete ji například použít k načtení modelu do globálního objektu. Tato funkce bude volána pouze jednou na začátku procesu.
 -  `run(mini_batch)`: Funkce se spustí pro každou `mini_batch` instanci.
-    -  `mini_batch`: Krok paralelního spuštění vyvolá metodu Run a předá jako argument metody metodu list nebo PANDAS dataframe. Každá položka v min_batch bude – cesta k souboru, pokud je vstupem datová sada, PANDAS dataframe, pokud je vstupem TabularDataset.
-    -  `response`: metoda Run () by měla vracet PANDAS dataframe nebo Array. Pro append_row output_action jsou tyto vrácené prvky připojeny do společného výstupního souboru. V případě summary_only se obsah prvků ignoruje. U všech výstupních akcí každý vrácený element Output označuje jedno úspěšné spuštění vstupního prvku ve vstupní Mini-Batch. Měli byste se ujistit, že je ve výsledku spuštění k dispozici dostatek dat pro mapování vstupu na výsledek spuštění. Výstup spuštění se zapíše do výstupního souboru a nebude zaručit, že bude v pořádku, abyste ho namapovali na vstup, měli byste použít nějaký klíč ve výstupu.
+    -  `mini_batch`: ParallelRunStep vyvolá metodu Run a předá buď seznam, nebo PANDAS datový rámec jako argument metody. Každá položka v mini_batch bude – cesta k souboru, pokud je vstupem datová sada, PANDAS dataframe, pokud je vstupem TabularDataset.
+    -  `response`: metoda Run () by měla vracet PANDAS dataframe nebo Array. Pro append_row output_action jsou tyto vrácené prvky připojeny do společného výstupního souboru. V případě summary_only se obsah prvků ignoruje. U všech výstupních akcí každý vrácený element Output označuje jedno úspěšné spuštění vstupního prvku ve vstupní Mini-Batch. Měli byste se ujistit, že je ve výsledku spuštění k dispozici dostatek dat pro mapování vstupu na výsledek výstupu. Výstup spuštění se zapíše do výstupního souboru a nebude zaručit, že bude v pořádku, abyste ho namapovali na vstup, měli byste použít nějaký klíč ve výstupu.
 
 ```python
 # Snippets from a sample script.
@@ -237,9 +257,7 @@ def run(mini_batch):
     return resultList
 ```
 
-### <a name="how-to-access-other-files-in-source-directory-in-entry_script"></a>Přístup k jiným souborům ve zdrojovém adresáři v entry_script
-
-Pokud máte ve stejném adresáři jako svůj vstupní skript jiný soubor nebo složku, můžete na něj odkazovat pomocí hledání aktuálního pracovního adresáře.
+Pokud máte jiný soubor nebo složku ve stejném adresáři jako skript pro odvození, můžete na něj odkazovat pomocí hledání aktuálního pracovního adresáře.
 
 ```python
 script_dir = os.path.realpath(os.path.join(__file__, '..',))
@@ -248,90 +266,93 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>Sestavování a spouštění kanálu obsahujícího ParallelRunStep
 
-Teď máte všechno, co potřebujete k vytvoření kanálu.
+Teď máte všechno, co potřebujete: vstupy dat, model, výstup a skript pro odvození. Pojďme sestavit kanál odvození dávky obsahující ParallelRunStep.
 
-### <a name="prepare-the-run-environment"></a>Příprava prostředí pro spuštění
+### <a name="prepare-the-environment"></a>Příprava prostředí
 
-Nejdřív zadejte závislosti pro váš skript. Tento objekt použijete později při vytváření kroku kanálu.
+Nejdřív zadejte závislosti pro váš skript. To vám umožní instalovat balíčky PIP i nakonfigurovat prostředí. Vždy prosím zahrňte balíčky **AzureML-Core** a **AzureML-dataprep [PANDAS, zapékací]** .
+
+Pokud používáte vlastní image Docker (user_managed_dependencies = true), měli byste také mít nainstalované conda.
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
+                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
 batch_env.docker.enabled = True
 batch_env.docker.base_image = DEFAULT_GPU_IMAGE
-batch_env.spark.precache_packages = False
 ```
 
-### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Zadejte parametry pro krok kanálu odvození dávky.
+### <a name="specify-the-parameters-using-parallelrunconfig"></a>Zadejte parametry pomocí ParallelRunConfig
 
-`ParallelRunConfig`je hlavní konfigurací nově zavedené instance odvození `ParallelRunStep` dávky v rámci kanálu Azure Machine Learning. Použijete ho k zabalení skriptu a ke konfiguraci nezbytných parametrů, včetně všech následujících parametrů:
+`ParallelRunConfig`je hlavní konfigurací `ParallelRunStep` instance v rámci Azure Machine Learning kanálu. Použijete ho k zabalení skriptu a ke konfiguraci nezbytných parametrů, včetně všech těchto:
 - `entry_script`: Uživatelský skript jako cesta k místnímu souboru, který bude spuštěn paralelně na více uzlech. Pokud `source_directory` je k dispozici, použijte relativní cestu. V opačném případě použijte jakoukoli cestu, která je přístupná v počítači.
-- `mini_batch_size`: Velikost malé dávky předaná jednomu `run()` volání. (volitelné; výchozí hodnota je `10` soubory pro datovou sadu souborů `1MB` a pro TabularDataset.)
-    - `FileDataset`V případě je to počet souborů s minimální hodnotou `1`. Můžete zkombinovat více souborů do jedné Mini-dávky.
-    - Pro `TabularDataset`je to velikost dat. Příklady hodnot jsou `1024`, `1024KB`, `10MB`a `1GB`. Doporučená hodnota je `1MB`. Ze `TabularDataset` zkrácené dávky nebude nikdy mezi hranicemi souborů. Například pokud máte soubory. csv s různými velikostmi, nejmenší soubor je 100 KB a největší je 10 MB. Pokud nastavíte `mini_batch_size = 1MB`, budou se soubory s velikostí menší než 1 MB považovat za jednu miniickou dávku. Soubory o velikosti větší než 1 MB budou rozděleny do několika Mini-dávek.
-- `error_threshold`: Počet selhání záznamu `TabularDataset` a selhání souborů pro `FileDataset` , které by měly být během zpracování ignorovány. Pokud se počet chyb pro celý vstup překročí k této hodnotě, bude úloha přerušena. Prahová hodnota chyby je pro celý vstup a nikoli pro jednotlivé Mini-dávky odeslané do `run()` metody. Rozsah je `[-1, int.max]`. `-1` Část indikuje ignorování všech selhání během zpracování.
+- `mini_batch_size`: Velikost malé dávky předaná jednomu `run()` volání. (volitelné; výchozí hodnota je `10` soubory pro datovou sadu souborů a `1MB` pro TabularDataset.)
+    - V případě je `FileDataset` to počet souborů s minimální hodnotou `1` . Můžete zkombinovat více souborů do jedné Mini-dávky.
+    - Pro `TabularDataset` je to velikost dat. Příklady hodnot jsou `1024` , `1024KB` , `10MB` a `1GB` . Doporučená hodnota je `1MB` . Ze zkrácené dávky `TabularDataset` nebude nikdy mezi hranicemi souborů. Například pokud máte soubory. csv s různými velikostmi, nejmenší soubor je 100 KB a největší je 10 MB. Pokud nastavíte `mini_batch_size = 1MB` , budou se soubory s velikostí menší než 1 MB považovat za jednu miniickou dávku. Soubory o velikosti větší než 1 MB budou rozděleny do několika Mini-dávek.
+- `error_threshold`: Počet selhání záznamu `TabularDataset` a selhání souborů pro `FileDataset` , které by měly být během zpracování ignorovány. Pokud se počet chyb pro celý vstup překročí k této hodnotě, bude úloha přerušena. Prahová hodnota chyby je pro celý vstup a nikoli pro jednotlivé Mini-dávky odeslané do `run()` metody. Rozsah je `[-1, int.max]` . `-1`Část indikuje ignorování všech selhání během zpracování.
 - `output_action`: Jedna z následujících hodnot indikuje, jak bude uspořádán výstup:
     - `summary_only`: Uživatelský skript uloží výstup. `ParallelRunStep`použije výstup pouze pro výpočet prahové hodnoty chyby.
-    - `append_row`: Pro všechny vstupní soubory se ve výstupní složce vytvoří pouze jeden soubor pro připojení všech výstupů oddělených čárou. Název souboru bude `parallel_run_step.txt`.
+    - `append_row`: Pro všechny vstupy se ve výstupní složce vytvoří pouze jeden soubor pro připojení všech výstupů oddělených čárou.
+- `append_row_file_name`: Chcete-li přizpůsobit název výstupního souboru pro append_row output_action (volitelné; výchozí hodnota je `parallel_run_step.txt` ).
 - `source_directory`: Cesty ke složkám, které obsahují všechny soubory, které mají být spuštěny na cílovém výpočetním cíli (volitelné).
-- `compute_target`: Podporuje `AmlCompute` se jenom.
+- `compute_target`: `AmlCompute` Podporuje se jenom.
 - `node_count`: Počet výpočetních uzlů, které se mají použít ke spuštění skriptu uživatele.
-- `process_count_per_node`: Počet procesů na uzel.
-- `environment`: Definice prostředí Pythonu. Můžete ji nakonfigurovat tak, aby používala existující prostředí Pythonu, nebo nastavit dočasné prostředí pro experiment. Definice je také zodpovědná za nastavení požadovaných závislostí aplikace (volitelné).
-- `logging_level`: Podrobnosti protokolu. Hodnoty při zvyšování podrobností jsou: `WARNING`, `INFO`a. `DEBUG` (volitelné; výchozí hodnota je `INFO`)
-- `run_invocation_timeout`: Časový `run()` limit volání metody v sekundách. (volitelné; výchozí hodnota je `60`)
+- `process_count_per_node`: Počet procesů na uzel. Osvědčeným postupem je nastavit počet GPU nebo PROCESORového jednoho uzlu (volitelné; výchozí hodnota je `1` ).
+- `environment`: Definice prostředí Pythonu. Můžete ji nakonfigurovat tak, aby používala existující prostředí Pythonu, nebo nastavit dočasné prostředí. Definice je také zodpovědná za nastavení požadovaných závislostí aplikace (volitelné).
+- `logging_level`: Podrobnosti protokolu. Hodnoty při zvyšování podrobností jsou: `WARNING` , `INFO` a `DEBUG` . (volitelné; výchozí hodnota je `INFO` )
+- `run_invocation_timeout`: `run()` Časový limit volání metody v sekundách. (volitelné; výchozí hodnota je `60` )
+- `run_max_try`: Maximální počet testovaných položek `run()` pro Mini-Batch. V `run()` případě, že dojde k výjimce, se nezdařila nebo není vrácena žádná hodnota, pokud `run_invocation_timeout` je dosaženo (volitelné; výchozí hodnota je `3` ). 
+
+Můžete zadat `mini_batch_size` , `node_count` ,, `process_count_per_node` `logging_level` `run_invocation_timeout` a jako, aby při opětovném `run_max_try` `PipelineParameter` odeslání běhu kanálu mohli doladit hodnoty parametrů. V tomto příkladu použijete PipelineParameter pro `mini_batch_size` a `Process_count_per_node` a pak změníte tyto hodnoty, když znovu odešlete spustit později. 
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunConfig
+from azureml.pipeline.core import PipelineParameter
+from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
     source_directory=scripts_folder,
     entry_script="digit_identification.py",
-    mini_batch_size="5",
+    mini_batch_size=PipelineParameter(name="batch_size_param", default_value="5"),
     error_threshold=10,
     output_action="append_row",
+    append_row_file_name="mnist_outputs.txt",
     environment=batch_env,
     compute_target=compute_target,
-    node_count=4)
+    process_count_per_node=PipelineParameter(name="process_count_param", default_value=2),
+    node_count=2)
 ```
 
-### <a name="create-the-pipeline-step"></a>Vytvoření kroku kanálu
+### <a name="create-the-parallelrunstep"></a>Vytvoření ParallelRunStep
 
-Vytvořte krok kanálu pomocí skriptu, konfigurace prostředí a parametrů. Určete výpočetní cíl, který jste už ke svému pracovnímu prostoru připojili jako cíl provádění skriptu. Použijte `ParallelRunStep` k vytvoření kroku kanálu odvození dávky, který převezme všechny následující parametry:
-- `name`: Název kroku s následujícími omezeními pro pojmenovávání: jedinečné, 3-32 znaky a Regex ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.
-- `models`: Nula nebo více názvů modelů, které jsou již registrovány v registru Azure Machine Learningho modelu.
+Vytvořte ParallelRunStep pomocí skriptu, konfigurace prostředí a parametrů. Určete výpočetní cíl, který jste už připojili k pracovnímu prostoru jako cíl provádění pro váš skript pro odvození. Použijte `ParallelRunStep` k vytvoření kroku kanálu odvození dávky, který převezme všechny následující parametry:
+- `name`: Název kroku s následujícími omezeními pro pojmenovávání: jedinečné, 3-32 znaky a Regex ^ \[ a-z \] ([-a-Z0-9] * [a-Z0-9])? $.
 - `parallel_run_config`: `ParallelRunConfig` Objekt, jak je definováno výše.
-- `inputs`: Jedna nebo více Azure Machine Learning datových sad s jedním typem.
+- `inputs`: Jedna nebo více Azure Machine Learning datových sad s jedním typem, které mají být rozděleny na oddíly pro paralelní zpracování.
+- `side_inputs`: Jedno nebo více referenčních dat nebo datových sad, které se používají jako vstupy na straně, není nutné rozdělit na oddíly.
 - `output`: `PipelineData` Objekt, který odpovídá výstupnímu adresáři.
-- `arguments`: Seznam argumentů předaných uživatelskému skriptu (volitelné).
-- `allow_reuse`: Zda by měl krok při spuštění se stejnými nastaveními nebo vstupy znovu použít předchozí výsledky. Pokud je `False`tento parametr, nové spuštění bude pro tento krok vždy vygenerováno během provádění kanálu. (volitelné; výchozí hodnota je `True`.)
+- `arguments`: Seznam argumentů předaných uživatelskému skriptu. Pomocí unknown_args je načtěte v vstupním skriptu (volitelné).
+- `allow_reuse`: Zda by měl krok při spuštění se stejnými nastaveními nebo vstupy znovu použít předchozí výsledky. Pokud je tento parametr `False` , nové spuštění bude pro tento krok vždy vygenerováno během provádění kanálu. (volitelné; výchozí hodnota je `True` .)
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunStep
+from azureml.pipeline.steps import ParallelRunStep
 
 parallelrun_step = ParallelRunStep(
-    name="batch-mnist",
-    models=[model],
+    name="predict-digits-mnist",
     parallel_run_config=parallel_run_config,
-    inputs=[named_mnist_ds],
+    inputs=[input_mnist_ds_consumption],
     output=output_dir,
-    arguments=[],
     allow_reuse=True
 )
 ```
+### <a name="create-and-run-the-pipeline"></a>Vytvoření a spuštění kanálu
 
->[!Note]
-> Výše uvedený krok závisí na `azureml-contrib-pipeline-steps`tom, jak je popsáno v části [požadavky](#prerequisites). 
-
-### <a name="submit-the-pipeline"></a>Odeslat kanál
-
-Teď kanál spusťte. Nejprve vytvořte [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) objekt pomocí odkazu na pracovní prostor a kroku kanálu, který jste vytvořili. `steps` Parametr je pole kroků. V tomto případě je pro dávkové vyhodnocování k dispozici pouze jeden krok. Chcete-li vytvořit kanály, které mají více kroků, umístěte kroky v tomto poli do pořadí.
+Teď kanál spusťte. Nejprve vytvořte [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) objekt pomocí odkazu na pracovní prostor a kroku kanálu, který jste vytvořili. `steps`Parametr je pole kroků. V tomto případě existuje pouze jeden krok pro odvození dávky. Chcete-li vytvořit kanály, které mají více kroků, umístěte kroky v tomto poli do pořadí.
 
 Dále pomocí `Experiment.submit()` funkce odešlete kanál ke spuštění.
 
@@ -340,21 +361,40 @@ from azureml.pipeline.core import Pipeline
 from azureml.core.experiment import Experiment
 
 pipeline = Pipeline(workspace=ws, steps=[parallelrun_step])
-pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
+experiment = Experiment(ws, 'digit_identification')
+pipeline_run = experiment.submit(pipeline)
 ```
 
-## <a name="monitor-the-parallel-run-job"></a>Monitorování úlohy paralelního spuštění
+## <a name="monitor-the-batch-inference-job"></a>Monitorování úlohy odvození dávky
 
-Dokončení úlohy odvození dávky může trvat dlouhou dobu. Tento příklad sleduje průběh pomocí widgetu Jupyter. Průběh úlohy můžete také spravovat pomocí:
+Dokončení úlohy odvození dávky může trvat dlouhou dobu. Tento příklad sleduje průběh pomocí widgetu Jupyter. Průběh úlohy můžete také monitorovat pomocí:
 
 * Azure Machine Learning Studio. 
-* Výstup z [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) objektu Console
+* Výstup z objektu Console [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py)
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(pipeline_run).show()
 
 pipeline_run.wait_for_completion(show_output=True)
+```
+
+## <a name="resubmit-a-run-with-new-data-inputs-and-parameters"></a>Opětovné odeslání běhu s novými vstupy a parametry dat
+
+Vzhledem k tomu, že jste provedli vstupy a několik nakonfigurujících jako `PipelineParameter` , můžete znovu odeslat spuštění odvození dávky s jiným vstupem datové sady a doladit parametry bez nutnosti vytvářet zcela nový kanál. Použijete stejné úložiště dat, ale použijete pouze jeden obrázek jako vstup dat.
+
+```python
+path_on_datastore = mnist_data.path('mnist/0.png')
+single_image_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
+single_image_ds._ensure_saved(ws)
+
+pipeline_run_2 = experiment.submit(pipeline, 
+                                   pipeline_parameters={"mnist_param": single_image_ds, 
+                                                        "batch_size_param": "1",
+                                                        "process_count_param": 1}
+)
+
+pipeline_run_2.wait_for_completion(show_output=True)
 ```
 
 ## <a name="next-steps"></a>Další kroky

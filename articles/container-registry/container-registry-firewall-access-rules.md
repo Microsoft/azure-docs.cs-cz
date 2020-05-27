@@ -3,12 +3,12 @@ title: Pravidla přístupu brány firewall
 description: Nakonfigurujte pravidla pro přístup ke službě Azure Container Registry za bránou firewall tím, že povolíte přístup k REST APIům a názvům domén koncového bodu dat nebo rozsahům IP adres závislým na službě.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 109764a5697920547230530de41a3e5acfe0117d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4774191087b3e88e657e8dc9bc6a9f9c406153e2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701907"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849977"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall
 
@@ -137,7 +137,7 @@ Postup povolení koncových bodů dat pomocí portálu:
 
 Koncový bod dat nebo koncové body se zobrazí na portálu.
 
-![Vyhrazené koncové body dat na portálu](./media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png)
+:::image type="content" source="media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png" alt-text="Vyhrazené koncové body dat na portálu":::
 
 ### <a name="azure-cli"></a>Azure CLI
 

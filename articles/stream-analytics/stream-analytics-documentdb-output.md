@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5a0f7517d2649ceac45e68c2e7a5d574a7c25d1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254440"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848037"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics výstup do Azure Cosmos DB  
 Azure Stream Analytics může cílit [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) na výstup JSON, povolit archivaci dat a dotazy s nízkou latencí na nestrukturovaná data JSON. Tento dokument popisuje některé osvědčené postupy pro implementaci této konfigurace.
@@ -64,7 +64,7 @@ Pokud chcete uložit *všechny* dokumenty včetně těch, které mají duplicitn
 Azure Cosmos DB automaticky škálují oddíly na základě vašich úloh. Proto doporučujeme [neomezeným](../cosmos-db/partition-data.md) kontejnerům jako metodu pro dělení dat. Když Stream Analytics zapisuje do neomezených kontejnerů, používá jako předchozí krok dotazu nebo vstupní schéma dělení tolik paralelních zapisovačů.
 
 > [!NOTE]
-> Azure Stream Analytics podporuje v nejvyšší úrovni pouze neomezený počet kontejnerů s klíči oddílů. Například `/region` je podporován. Vnořené klíče oddílů (například `/region/name`) nejsou podporovány. 
+> Azure Stream Analytics podporuje v nejvyšší úrovni pouze neomezený počet kontejnerů s klíči oddílů. Například `/region` je podporován. Vnořené klíče oddílů (například `/region/name` ) nejsou podporovány. 
 
 V závislosti na zvoleném klíči oddílu se může zobrazit toto _Upozornění_:
 
@@ -72,7 +72,7 @@ V závislosti na zvoleném klíči oddílu se může zobrazit toto _Upozornění
 
 Je důležité zvolit vlastnost klíče oddílu, která má několik různých hodnot a která umožňuje rovnoměrně distribuovat úlohy napříč těmito hodnotami. V rámci přirozeného artefaktu dělení jsou požadavky, které zahrnují stejný klíč oddílu, omezené maximální propustností jednoho oddílu. 
 
-Velikost úložiště pro dokumenty, které patří do stejného klíče oddílu, je omezená na 10 GB. Ideální klíč oddílu je takový, který se často objevuje jako filtr ve vašich dotazech a má dostatečnou mohutnost pro zajištění škálovatelnosti vašeho řešení.
+Velikost úložiště pro dokumenty, které patří do stejného klíče oddílu, je omezená na 20 GB. Ideální klíč oddílu je takový, který se často objevuje jako filtr ve vašich dotazech a má dostatečnou mohutnost pro zajištění škálovatelnosti vašeho řešení.
 
 Klíč oddílu je také hranice pro transakce v uložených procedurách a triggerech pro Azure Cosmos DB. Měli byste zvolit klíč oddílu, aby dokumenty, ke kterým dojde společně v transakcích, sdílely stejnou hodnotu klíče oddílu. Článek [dělení Azure Cosmos DB](../cosmos-db/partitioning-overview.md) obsahuje další podrobnosti o výběru klíče oddílu.
 
@@ -112,7 +112,7 @@ Použití Azure Cosmos DB jako výstupu v Stream Analytics generuje následujíc
 |Account ID      | Název nebo identifikátor URI koncového bodu účtu Azure Cosmos DB.|
 |Klíč účtu     | Sdílený přístupový klíč pro účet Azure Cosmos DB.|
 |databáze        | Azure Cosmos DB název databáze.|
-|Název kontejneru | Název kontejneru, například `MyContainer`. Musí existovat jeden `MyContainer` kontejner s názvem.  |
+|Název kontejneru | Název kontejneru, například `MyContainer` . Musí existovat jeden kontejner s názvem `MyContainer` .  |
 |ID dokumentu     | Nepovinný parametr. Název sloupce ve výstupních událostech použitý jako jedinečný klíč, na kterém musí být operace INSERT nebo Update založená. Pokud necháte pole prázdné, budou vloženy všechny události bez možnosti aktualizace.|
 
 Jakmile nakonfigurujete Azure Cosmos DB výstup, můžete ho použít v dotazu jako cíl [příkazu into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). Pokud používáte výstup Azure Cosmos DB, je [třeba nastavit klíč oddílu explicitně](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks). 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a6748ef520b3d03727aca045660f7563f75b200d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d9374f83110176e6705e2c6cca6c7794738a8c6e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828334"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848834"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Nejčastější dotazy k Azure Disk Encryption pro virtuální počítače s Windows
 
@@ -48,8 +48,6 @@ V článku [přehled Azure Disk Encryption](disk-encryption-overview.md) jsou uv
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Můžu pomocí Azure Disk Encryption šifrovat spouštěcí i datové svazky?
 
 Můžete šifrovat spouštěcí i datové svazky, ale nemůžete data šifrovat, aniž byste nejdřív našifroval svazek operačního systému.
-
-Po zašifrování svazku operačního systému se zakazování šifrování na svazku operačního systému nepodporuje.
 
 ## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Můžu pomocí Azure Disk Encryption zašifrovat nepřipojený svazek?
 

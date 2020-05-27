@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 429a342fcc5dd69e1ae8d0be5611e908e216b2d1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 51afa118be75c7e9ea2cb6e394d27cc39a58de0b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659689"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849650"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -63,6 +63,7 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Azure Database for PostgreSQL – jeden server** | Microsoft. DBforPostgreSQL/servery    | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft. DBforMySQL/servery    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft. DBforMariaDB/servery    | mariadbServer |
+|**Azure IoT Hub** | Microsoft. Devices/IotHubs    | iotHub |
 |**Azure Key Vault** | Trezory a trezory Microsoft.    | Trezor |
 |**Azure Kubernetes Service – rozhraní API pro Kubernetes** | Microsoft. ContainerService/managedClusters    | managedCluster |
 |**Azure Search** | Microsoft. Search/searchService| searchService|  

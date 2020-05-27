@@ -3,17 +3,17 @@ title: Internet peering vs. peering Service
 titleSuffix: Azure
 description: Internet peering vs. peering Service
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: overview
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 6c1205fcacd3d7228f1aecf1e603b66d9e1fcee5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/22/2020
+ms.author: derekol
+ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75775702"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849378"
 ---
 # <a name="internet-peering-vs-peering-service"></a>Internet peering vs. peering Service
 
@@ -38,13 +38,13 @@ Na obrázku, který se nachází na každé pobočce globálního podniku, se p�
 
 **Výhody pro zákazníky služby peering Service:**
 * Nejlepší veřejné směrování přes Internet na Microsoft Cloud služby za účelem optimálního výkonu a spolehlivosti.
-* Možnost výběru upřednostňované aktualizace SP pro připojení k Microsoft Cloud.
+* Možnost výběru preferovaného poskytovatele služeb pro připojení k Microsoft Cloud.
 * Přehledy provozu, jako je generování sestav latence, a monitorování předpon.
 * Optimální směrování sítě (jako směrování) od Microsoft Cloud.
 * Směrování a statistika – události týkající se anomálií tras Border Gateway Protocol ([BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)) (detekce vrácených a napadení) a neoptimální směrování.
 
 ## <a name="peering-service-partnership-requirements"></a>Požadavky na partnerství služby peering Service
-* Připojení k Microsoft Cloud v místě nejbližším zákazníkovi. Poskytovatel partnerské služby bude směrovat uživatelský provoz na Microsoft Edge co nejblíže k uživateli. Podobně platí, že při přenosu směrem k uživateli Microsoft bude směrovat provoz (pomocí značky BGP) do hraničního umístění, které je nejblíže uživateli a aktualizace SP bude uživatelům poskytovat data.
+* Připojení k Microsoft Cloud v místě nejbližším zákazníkovi. Poskytovatel partnerské služby bude směrovat uživatelský provoz na Microsoft Edge co nejblíže k uživateli. Podobně platí, že při přenosu směrem k uživateli bude Microsoft směrovat přenosy (pomocí značky BGP) do hraničního umístění, které je nejblíže poskytovateli uživatelů a služeb, aby tento provoz poskytoval uživateli.
 * Partner bude udržovat vysokou dostupnou, vysokou propustnost a geograficky redundantní připojení pomocí globální sítě Microsoft.
 * Partner může využít stávající partnerský vztah pro podporu služby partnerského vztahu, pokud splňuje požadavky.
 

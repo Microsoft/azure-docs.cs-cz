@@ -1,5 +1,5 @@
 ---
-title: Vizuálně monitorovat Azure Data Factory
+title: Vizuální monitorování služby Azure Data Factory
 description: Naučte se vizuálně monitorovat datové továrny Azure.
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 9a81ab58335e968e5ce4816de85ed1b63bc93455
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 44a95430ece9c55bb088ae5b968c33691f25b4c5
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699603"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860756"
 ---
-# <a name="visually-monitor-azure-data-factory"></a>Vizuálně monitorovat Azure Data Factory
+# <a name="visually-monitor-azure-data-factory"></a>Vizuální monitorování služby Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -142,7 +142,7 @@ Kliknutím na ikonu otevřete sestavu využití prostředků používaných tím
 
 ![Monitorovat spotřebu](media/monitor-visually/monitor-consumption-2.png)
 
-Tyto hodnoty můžete připojit do [cenové kalkulačky Azure]. ( https://azure.microsoft.com/pricing/details/data-factory/) k odhadu nákladů na spuštění kanálu. Další informace o cenách Azure Data Factory najdete v tématu [Principy cen](pricing-concepts.md).
+Tyto hodnoty můžete připojit do [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/details/data-factory/) a odhadnout náklady na spuštění kanálu. Další informace o cenách Azure Data Factory najdete v tématu [Principy cen](pricing-concepts.md).
 
 > [!NOTE]
 > Tyto hodnoty vracené cenové kalkulačkou jsou odhad. Neodráží přesnou částku, kterou se vám bude účtovat Azure Data Factory 
@@ -166,11 +166,11 @@ Vyberte ikonu **informace** v levém dolním rohu. Pak vyberte **prohlídky s as
 
 ![Řízená prohlídky](media/monitor-visually/guided-tours.png)
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 
 Upozornění na podporované metriky můžete vyvolávat v Data Factory. Začněte tím, že vyberete **monitorovat**  >  **výstrahy & metriky** na stránce monitorování Data Factory.
 
-![Stránka monitorování objektu pro vytváření dat](media/monitor-visually/alerts01.png)
+![Stránka monitorování objektu pro vytváření dat](media/monitor-visually/start-page.png)
 
 Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na následující video:
 
@@ -180,31 +180,31 @@ Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na
 
 1.  Vyberte **nové pravidlo výstrahy** a vytvořte novou výstrahu.
 
-    ![Tlačítko nové pravidlo upozornění](media/monitor-visually/alerts02.png)
+    ![Tlačítko nové pravidlo upozornění](media/monitor-visually/new-alerts.png)
 
 1.  Zadejte název pravidla a vyberte Závažnost výstrahy.
 
-    ![Pole pro název pravidla a závažnost](media/monitor-visually/alerts03.png)
+    ![Pole pro název pravidla a závažnost](media/monitor-visually/name-and-severity.png)
 
 1.  Vyberte kritéria výstrahy.
 
-    ![Box pro kritéria cíle](media/monitor-visually/alerts04.png)
+    ![Box pro kritéria cíle](media/monitor-visually/add-criteria-1.png)
 
-    ![Seznam kritérií](media/monitor-visually/alerts05.png)
+    ![Seznam kritérií](media/monitor-visually/add-criteria-2.png)
 
 1.  Nakonfigurujte logiku výstrah. Pro vybranou metriku můžete vytvořit výstrahu pro všechny kanály a odpovídající aktivity. Můžete také vybrat konkrétní typ aktivity, název aktivity, název kanálu nebo typ selhání.
 
-    ![Možnosti konfigurace logiky výstrah](media/monitor-visually/alerts06.png)
+    ![Možnosti konfigurace logiky výstrah](media/monitor-visually/alert-logic.png)
 
 1.  Konfigurace e-mailu, SMS, nabízených oznámení a hlasových oznámení pro výstrahu. Vytvořte skupinu akcí nebo pro oznámení výstrah vyberte některou z existujících.
 
-    ![Možnosti konfigurace oznámení](media/monitor-visually/alerts07.png)
+    ![Možnosti konfigurace oznámení](media/monitor-visually/configure-notification-1.png)
 
-    ![Možnosti pro přidání oznámení](media/monitor-visually/alerts08.png)
+    ![Možnosti pro přidání oznámení](media/monitor-visually/configure-notification-2.png)
 
 1.  Vytvořte pravidlo výstrahy.
 
-    ![Možnosti pro vytvoření pravidla výstrahy](media/monitor-visually/alerts09.png)
+    ![Možnosti pro vytvoření pravidla výstrahy](media/monitor-visually/create-alert-rule.png)
 
 ## <a name="next-steps"></a>Další kroky
 

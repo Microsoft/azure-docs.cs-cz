@@ -3,26 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/08/2018
-ms.openlocfilehash: d8615d118421a4b8918738f8901307c4d0a917c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/19/2020
+ms.openlocfilehash: eeecea99072ff1e113e44c9991d40784db447216
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75383080"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869266"
 ---
 ## <a name="create-an-azure-resource"></a>Vytvoření prostředku Azure
 
-Začněte používat rozhraní API Bingu pro vyhledávání zpráv vytvořením jednoho z níže uvedených prostředků Azure.
+Začněte používat rozhraní API Bingu pro vyhledávání zpráv tím, že vytvoříte jeden z následujících prostředků Azure:
 
-* [Vytvořte prostředek zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
-    * Není potřeba žádné předplatné Azure.
-    * Platí po dobu sedmi dnů zdarma. Po registraci bude na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/)dostupný zkušební klíč a koncový bod.
+[Prostředek zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
+   * Není potřeba žádné předplatné Azure.
+   * Platí po dobu sedmi dnů zdarma. Po registraci se na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/)zpřístupní zkušební klíč a koncový bod.
 
-* [Vytvořit prostředek vyhledávání Bingu v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
-    * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.
-    * Pomocí cenové úrovně Free můžete službu vyzkoušet a upgradovat ji později na placenou úroveň pro produkční prostředí.
+[Prostředek Vyhledávání Bingu v7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)
+   * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.
+   * Pomocí cenové úrovně Free můžete službu vyzkoušet a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
-* [Vytvoření prostředku s více službami](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
-    * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.  
-    * Používejte stejný klíč a koncový bod pro vaše aplikace, a to napříč více Cognitive Services.
+[Prostředek s více službami](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
+   * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.  
+   * Používejte stejný klíč a koncový bod pro vaše aplikace, a to napříč více Cognitive Services.

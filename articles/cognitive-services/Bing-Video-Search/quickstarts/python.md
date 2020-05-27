@@ -8,20 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: fbf20c2d54506b0f314697d6df34f9a430e7c016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 28d9726bfa1e195fa87b41914841083c56dbc844
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382680"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849582"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a Pythonu
 
-Pomocí tohoto rychlého startu můžete provést vaše první volání na rozhraní API Bingu pro vyhledávání videí a zobrazit výsledky hledání z odpovědi JSON. Tato jednoduchá aplikace v Pythonu pošle dotaz na hledání videa HTTP do rozhraní API a zobrazí odpověď. Aplikace je sice napsaná v Pythonu, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) s dalším ošetřením chyb a poznámkami ke kódu.
+V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání videí. Tato jednoduchá aplikace v Pythonu pošle dotaz na hledání videa HTTP do rozhraní API a zobrazí odpověď JSON. I když je tato aplikace napsaná v Pythonu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. 
 
-Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https://mybinder.org) tak, že kliknete na odznáček pro spuštění Binderu: 
+Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) s dalším ošetřením chyb a poznámkami ke kódu.
+
+Tento příklad můžete spustit jako Poznámkový blok Jupyter v [MyBinder](https://mybinder.org) výběrem **spouštěcího znaku pořadače** : 
 
 [![Vazba](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
@@ -40,7 +42,7 @@ Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https
     import requests
     from IPython.display import HTML
     ```
-2.  Vytvořte proměnné pro klíč předplatného, koncový bod hledání a hledaný termín. `search_url`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2.  Vytvořte proměnné pro klíč předplatného, koncový bod hledání a hledaný termín. Pro tuto `search_url` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
     
     ```python
     subscription_key = None
@@ -57,13 +59,13 @@ Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https
 
 ## <a name="send-your-request"></a>Odeslat žádost
 
-1. Přidejte parametry do žádosti vytvořením slovníku s názvem `params`. Přidejte hledaný výraz do `q` parametru, počet videí 5, `free` pro ceny vrácených videí a `short` délku videa.
+1. Přidejte parametry do žádosti vytvořením slovníku s názvem `params` . Přidejte hledané výrazy do `q` parametru: počet videí o 5, `free` pro ceny vrácených videí a `short` délku videa.
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}
     ```
 
-2. Použijte `requests` knihovnu v Pythonu k volání rozhraní API Bingu pro vyhledávání videí. Předejte klíč rozhraní API a parametry vyhledávání pomocí slovníku `headers` a `params` .
+2. Použijte `requests` knihovnu v Pythonu k volání rozhraní API Bingu pro vyhledávání videí. Předejte klíč rozhraní API a parametry vyhledávání pomocí `headers` slovníku a `params` .
     
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -71,7 +73,7 @@ Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https
     search_results = response.json()
     ```
 
-3. Chcete-li zobrazit jedno ze vrácených videí, Získejte výsledek hledání z `search_results` objektu. Vložte `embedHtml` vlastnost výsledek do objektu `IFrame`.  
+3. Chcete-li zobrazit jedno ze vrácených videí, Získejte výsledek hledání z `search_results` objektu. Vložte `embedHtml` vlastnost výsledek do objektu `IFrame` .  
     
     ```python
     HTML(search_results["value"][0]["embedHtml"].replace("autoplay=1","autoplay=0"))

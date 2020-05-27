@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 57b6bf06e34068b5560829838eb9ee1315df6cde
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778220"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83868098"
 ---
 Sdílené disky Azure (Preview) je nová funkce pro služby Azure Managed disks, která umožňuje připojení spravovaného disku k několika virtuálním počítačům současně. Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace.
 
@@ -37,14 +37,14 @@ Sdílené spravované disky nativně nenabízejí plně spravovaný systém soub
 
 ### <a name="windows"></a>Windows
 
-Většina sestavení clusteringu založeného na systému Windows ve službě WSFC, která zpracovává veškerou základní infrastrukturu pro komunikaci uzlu clusteru, umožňuje vašim aplikacím využívat vzorce paralelního přístupu. WSFC povoluje v závislosti na vaší verzi Windows serveru i možnosti, které nejsou založené na CSV. Podrobnosti najdete v tématu [Vytvoření clusteru s podporou převzetí služeb při selhání](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster).
+Většina clusterů založených na Windows využívá službu WSFC, která zajišťuje veškerou základní infrastrukturu pro komunikaci mezi uzly clusteru a umožňuje aplikacím využívat vzory paralelního přístupu. Služba WSFC v závislosti na vaší verzi Windows Serveru umožňuje variantu založenou na sdílených svazcích clusteru i variantu bez nich. Podrobnosti najdete v tématu [Vytvoření clusteru s podporou převzetí služeb při selhání](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster).
 
-Mezi oblíbené aplikace běžící v WSFC patří:
+Mezi některé oblíbené aplikace využívající službu WSFC patří:
 
-- SQL Server instancí clusteru s podporou převzetí služeb při selhání (FCI)
-- Souborový server se škálováním na více instancí (SoFS)
-- Souborový server pro obecné použití (IW úlohy)
-- Disk profilu uživatele serveru vzdálené plochy (RDS UPD)
+- Instance clusteru s podporou převzetí služeb při selhání (FCI) SQL Serveru
+- Souborový server se škálováním na více systémů (SoFS)
+- Souborový server pro obecné použití (úloha IW)
+- Disk profilu uživatele na serveru vzdálené plochy (RDS UPD)
 - SAP ASCS/SCS
 
 ### <a name="linux"></a>Linux
@@ -85,7 +85,7 @@ Tok je následující:
 
 Disky Ultra nabízejí dodatečné omezení pro celkový počet dvou omezení. Z tohoto důvodu může tok rezervací Ultra discích fungovat jak je popsáno v předchozí části, nebo může lépe omezit a distribuovat výkon.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text=" ":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Obrázek tabulky, která znázorňuje přístup jen pro čtení nebo čtení/zápis pro rezervovaného držitele, registraci a další.":::
 
 ## <a name="ultra-disk-performance-throttles"></a>Omezení výkonu Ultra disk
 
@@ -119,22 +119,16 @@ V následujících příkladech je znázorněno několik scénářů, které uka
 
 Následuje příklad dvou uzlů služby WSFC pomocí clusterovaných sdílených svazků. V této konfiguraci mají oba virtuální počítače souběžný přístup pro zápis na disk, což vede k rozdělení omezení pro čtení do dvou virtuálních počítačů a omezení jen pro čtení, které se nepoužívá.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Ultra example v CSV – dva uzly":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Ultra example v CSV – dva uzly":::
 
 #### <a name="two-node-cluster-without-cluster-share-volumes"></a>Cluster se dvěma uzly bez sdílených svazků clusteru
 
 Níže je uveden příklad služby WSFC se dvěma uzly, který nepoužívá clusterované sdílené svazky. V této konfiguraci má disk přístup pro zápis jenom na jednom virtuálním počítači. Výsledkem je omezení pro čtení a použití výhradně pro primární virtuální počítač a omezení jen pro čtení, které používá sekundární.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="Sdílený svazek clusteru – dva uzly žádný příklad CSV Ultra disk":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="Sdílený svazek clusteru – dva uzly žádný příklad CSV Ultra disk":::
 
 #### <a name="four-node-linux-cluster"></a>Cluster se čtyřmi uzly Linux
 
 Následuje příklad clusteru se čtyřmi uzly v systému Linux s jedním zapisovačem a třemi čtecími nástroji pro horizontální navýšení kapacity. V této konfiguraci má disk přístup pro zápis jenom na jednom virtuálním počítači. To vede k tomu, že se omezení pro čtení a čtení používá výhradně pro primární virtuální počítač a omezení jen pro čtení, které jsou rozdělené do sekundárních virtuálních počítačů.
 
-:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Příklad omezení míry Ultra na čtyři uzly":::
-
-:::image-end:::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Příklad omezení míry Ultra na čtyři uzly":::

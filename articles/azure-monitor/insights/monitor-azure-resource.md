@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 01d188e0e39888297ff8d6a57129a3a17e1654fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8072dec6b5f5dbd35c86573dd43d3925a271bc43
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249266"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849667"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorování prostředků Azure pomocí Azure Monitor
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná prostředky Azure a o tom, jak můžete pomocí funkcí Azure Monitor analyzovat tato data a upozorňovat na ně.
@@ -49,7 +49,7 @@ K následujícím akcím mohou být spojeny Azure Monitor náklady. Viz [ceny Az
 - Přístup k metrikám prostřednictvím rozhraní API.
 
 ## <a name="monitoring-data"></a>Data monitorování
-Prostředky v Azure generují [protokoly](../platform/data-platform-logs.md) a [metriky](../platform/data-platform-metrics.md) zobrazené v následujícím diagramu. Konkrétní data, která generují, a veškerá další řešení nebo přehledy, které poskytují, najdete v dokumentaci ke každé službě Azure.
+Prostředky v Azure generují [protokoly](../platform/data-platform-logs.md) a [metriky](../platform/data-platform-metrics.md) , které jsou uvedené v následujícím diagramu. Konkrétní data, která generují, a veškerá další řešení nebo přehledy, které poskytují, najdete v dokumentaci ke každé službě Azure.
 
 ![Přehled](media/monitor-azure-resource/logs-metrics.png)
 

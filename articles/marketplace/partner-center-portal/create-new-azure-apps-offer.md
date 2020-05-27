@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 2885df9e64bdbfa21eaaa38f423b90554f767cd7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ace85727680ecf6d62860ac2239a8c0b68ae6e0e
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773266"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848783"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -128,7 +128,7 @@ Další informace o požadavcích na publikování pro každý plán aplikace na
 
 ## <a name="offer-setup"></a>Nastavení nabídky
 
-Stránka pro **nastavení nabídky** je místo, kde můžete nakonfigurovat testovací jednotku a správu vedoucích služeb pro vaši nabídku. 
+Stránka pro **nastavení nabídky** je místo, kde můžete nakonfigurovat testovací jednotku a správu vedoucích služeb pro vaši nabídku.
 
 ### <a name="test-drive"></a>Testovací jednotka
 
@@ -141,7 +141,7 @@ Další informace najdete v tématu [Test Drive vaší nabídky na komerčním w
 >[!Note]
 >Vzhledem k tomu, že všechny aplikace Azure jsou implementované pomocí šablony Azure Resource Manager, jediný typ testovacího disku, který je k dispozici pro aplikaci Azure, je [Azure Resource Manager testovacího disku](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive).
 
-## <a name="lead-management"></a>Správa potenciálních zákazníků
+### <a name="customer-leads"></a>Potenciální zákazníci
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 

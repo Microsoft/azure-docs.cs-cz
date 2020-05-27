@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
-ms.date: 08/01/2019
-ms.openlocfilehash: 854760ea0158d356cc5449c9f1fdab6161588640
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/26/2020
+ms.openlocfilehash: e37bd22e0bd0f750ef7b4ae9cc8465ed5292883e
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68976859"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860983"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Rychlý Start: vytvoření Azure Data Catalog
 
@@ -22,6 +22,9 @@ Tento rychlý Start vám pomůže začít s vytvářením Azure Data Catalog.
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
+
+> [!Note]
+> Z důvodu požadavků na zabezpečení Azure Azure Data Catalog má protokol TLS (enfored Transport Layer Security) 1,2. TLS 1,0 a TLS 1,1 jsou zakázané. Pokud počítač není aktualizovaný pro TLS 1,2, může dojít k chybám při spuštění registračního nástroje. Pokud chcete aktualizovat počítač pro TLS 1,2, přečtěte si téma [Povolení zabezpečení transportní vrstvy (1,2)](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2) .
 
 Abyste mohli začít, musíte mít:
 
@@ -34,7 +37,7 @@ Pokud chcete nastavit Data Catalog, musíte být vlastníkem nebo spoluvlastník
 
 Můžete zřídit pouze jeden katalog dat na organizaci (doména Azure Active Directory). Proto pokud vlastník nebo Spoluvlastník předplatného Azure, který patří do této Azure Active Directory domény, vytvořil katalog, nemůžete vytvořit katalog znovu ani v případě, že máte více předplatných Azure. Pokud chcete otestovat, jestli byl ve vaší doméně Azure Active Directory uživatelem vytvořen katalog dat, přejděte na [domovskou stránku Azure Data Catalog ](http://azuredatacatalog.com) a podívejte, jestli se vám tu katalog zobrazuje. Pokud byl pro vás už katalog vytvořen, přeskočte následující postup a přejděte do další sekce.
 
-1. Přejít na [Azure Portal](https://portal.azure.com) > **vytvořit prostředek** a vybrat **Data Catalog**.
+1. Přejít na [Azure Portal](https://portal.azure.com)  >  **vytvořit prostředek** a vybrat **Data Catalog**.
 
     ![Azure Data Catalog tlačítko vytvořit](media/data-catalog-get-started/data-catalog-create.png)
 

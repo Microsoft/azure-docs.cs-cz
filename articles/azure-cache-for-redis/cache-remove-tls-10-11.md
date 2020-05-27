@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: efb9e8b8abdcb442e2c5c4d8bfd1b2e1e60865ce
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b7b3556896f2d8bb8fea7ffc4543356e248df60d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197853"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848817"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Odeberte TLS 1,0 a 1,1 pro použití s Azure cache pro Redis.
 
@@ -31,12 +31,12 @@ Tento článek poskytuje obecné pokyny k detekci závislostí na těchto starš
 
 Datum, kdy se tyto změny projeví:
 
-| Cloud               | Počáteční datum fáze 1 | Počáteční datum fáze 2      |
-|---------------------|--------------------|-------------------------|
-| Azure (Global)      |  13. ledna 2020  | 11. května 2020            |
-| Azure Government    |  13. března 2020    | 11. května 2020            |
-| Azure Germany       |  13. března 2020    | 11. května 2020            |
-| Azure (Čína)         |  13. března 2020    | 11. května 2020            |
+| Cloud                | Počáteční datum fáze 1 | Počáteční datum fáze 2      |
+|----------------------|--------------------|-------------------------|
+| Azure (Global)       |  13. ledna 2020  | 11. května 2020            |
+| Azure Government     |  13. března 2020    | 11. května 2020            |
+| Azure Germany        |  13. března 2020    | 11. května 2020            |
+| Azure China 21Vianet |  13. března 2020    | 11. května 2020            |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Ověřte, zda je aplikace již kompatibilní.
 
@@ -55,7 +55,12 @@ Redis klienti .NET standardně používají nejstarší verzi TLS ve výchozím 
 
 ### <a name="net-core"></a>.NET Core
 
-Redis klienti .NET Core používají ve výchozím nastavení nejnovější verzi TLS.
+Redis klienti .NET Core mají výchozí verzi protokolu TLS nastavenou na operační systém, což zjevně závisí na samotném operačním systému. 
+
+V závislosti na tom, kdy byl operační systém vydán a v případě, že některé jiné opravy změnily výchozí verzi protokolu TLS, může být verze TLS operačního systému poměrně proměnlivá. I když nejsou k dispozici žádné úplné informace pro operační systém Windows, konkrétně můžete najít další informace [zde](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12). 
+
+Pokud ale používáte starý operační systém nebo jste chtěli, abyste měli jistotu, že doporučujeme nakonfigurovat upřednostňovanou verzi TLS ručně prostřednictvím klienta.
+
 
 ### <a name="java"></a>Java
 

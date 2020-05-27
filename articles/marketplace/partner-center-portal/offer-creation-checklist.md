@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 60111b6a23c76314383c5f95be3eb4b38f90d3e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec276c765c2a574dbbc2fc14b7b23507b4cc4798
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80281336"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83850007"
 ---
 # <a name="saas-offer-creation-checklist"></a>Kontrolní seznam k vytváření nabídek SaaS
 
@@ -58,7 +58,7 @@ Stránka pro nastavení nabídek je místo, kde se můžete přihlásit k různ�
 | Kanály  | Nepovinný parametr. Výchozí: nesouhlasí se do kanálu CSP (prodejce).  |
 | Testovací verze | Nepovinný parametr. Výchozí: není povolená žádná testovací jednotka.  |
 | Typ testovací jednotky | Vyžaduje se, pokud je povolená testovací jednotka. Výchozí: není vybráno. Možnosti: Azure Resource Manager, Dynamics 365 pro firmy Business Central, Dynamics 365 for Customer Engagement, Dynamics 365 for Operations, Logic App, Power BI.  |
-| Správa potenciálních zákazníků – připojení k systému CRM | Požaduje se při prodeji prostřednictvím Microsoftu nebo při výpisu nabídek "kontaktujte mě". Výchozí: není připojený žádný systém CRM. Možnosti CRM: tabulka Azure, Azure Blob, Dynamics CRM Online, HTTPs ' Endpoint, Marketo, Salesforce  |
+| Potenciální zákazníci – připojení k systému CRM | Požaduje se při prodeji prostřednictvím Microsoftu nebo při výpisu nabídek "kontaktujte mě". Výchozí: není připojený žádný systém CRM. Možnosti CRM: tabulka Azure, Azure Blob, Dynamics CRM Online, HTTPs ' Endpoint, Marketo, Salesforce  |
 
 ## <a name="properties-page"></a>Stránka Vlastnosti
 
@@ -78,7 +78,7 @@ Stránka výpisu je místo, kde můžete zadat text a obrázky, které se zákaz
 
 | **Název pole**    | **Poznámky**   |
 | :---------------- | :-----------| 
-| Název  | Požadováno, max. 50 znaků. |
+| Name  | Požadováno, max. 50 znaků. |
 | Souhrn  | Požadováno, max. 100 znaků. | 
 | Popis  | Požadováno, max. 3000 znaků. |
 | Pokyny pro Začínáme  | Požadováno, max. 3000 znaků. |
@@ -88,7 +88,7 @@ Stránka výpisu je místo, kde můžete zadat text a obrázky, které se zákaz
 | Adresa URL marketingových materiálů programu CSP  | Nepovinný parametr. |
 | Název užitečného odkazu + adresa URL  | Nepovinný parametr. |
 | Název doprovodnéch dokumentů + soubor  | Požadováno, minimum 1 a max 3. Musí se jednat o formát souboru PDF. |
-| Snímky obrazovek  | Požadováno, minimální počet 1 snímek obrazovky a maximální 5; doporučuje se čtyři nebo více. Ve formátu PNG musí být 1280 X 720. |
+| Screenshoty  | Požadováno, minimální počet 1 snímek obrazovky a maximální 5; doporučuje se čtyři nebo více. Ve formátu PNG musí být 1280 X 720. |
 | Ukládat loga (malá, střední, Velká, rozsáhlá, Hero)  | Malá (48 × 48) a velká (216 × 216); jiné velikosti volitelné, ale doporučené: střední (90 x 90), roztažitelné (255 x 115), Hero (815 x 290). Musí být ve formátu PNG. |
 | Název videa + adresa URL + Miniatura  | Volitelné, doporučené, maximální 4 videa. Miniatura musí být ve formátu PNG 1280 x 720. Video musí být hostované na YouTube nebo Vimeo. |
 | Kontakty (program CSP, strojírenství, podpora)  | Technické a podpůrné kontaktní požadavky (jméno, e-mail a telefonní číslo); Program CSP kontaktuje volitelnou, ale doporučuje se. |

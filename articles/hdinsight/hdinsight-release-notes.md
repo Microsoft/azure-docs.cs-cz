@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 458925dd9f7f7386a9159256fdb024d027f7016c
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 05/12/2020
+ms.openlocfilehash: b7489c49b7469feacfd5b982615419741d286998
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929311"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849701"
 ---
-# <a name="release-notes"></a>Zpráva k vydání verze
+# <a name="release-notes"></a>Poznámky k verzi
 
 Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných** verzí Azure HDInsight. Informace o dřívějších verzích najdete v tématu [archiv zpráv k vydání verze HDInsight](hdinsight-release-notes-archive.md).
 
@@ -48,13 +48,13 @@ V této verzi nejsou žádné změny chování. Příprava na nadcházející zm
 ## <a name="upcoming-changes"></a>Nadcházející změny
 V nadcházejících verzích dojde k následujícím změnám. 
 
-### <a name="deprecate-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Vyřazení Spark 2,1 a 2,2 v HDInsight 3,6 cluster Spark
+### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Vyřazení Spark 2,1 a 2,2 v HDInsight 3,6 clusteru Spark
 Od července 1 2020 nebudou zákazníci moci vytvářet nové clustery Spark pomocí Spark 2,1 a 2,2 ve službě HDInsight 3,6. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Spark 2,3 ve službě HDInsight 3,6 pomocí června 30 2020, aby se předešlo potenciálnímu přerušení systému/podpory.
 
-### <a name="deprecate-spark-23-in-hdinsight-40-spark-cluster"></a>Zastaralá Spark 2,3 v clusteru HDInsight 4,0 Spark
+### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>Vyřazení Spark 2,3 v clusteru HDInsight 4,0 Spark
 Od července 1 2020 nebudou zákazníci moci vytvářet nové clustery Spark pomocí Spark 2,3 ve službě HDInsight 4,0. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Spark 2,4 ve službě HDInsight 4,0 pomocí června 30 2020, aby se předešlo potenciálnímu přerušení systému/podpory.
 
-### <a name="deprecate-kafka-11-in-hdinsight-40-kafka-cluster"></a>Zastaralá Kafka 1,1 v clusteru HDInsight 4,0 Kafka
+### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Vyřazení Kafka 1,1 v clusteru HDInsight 4,0 Kafka
 Od července 1 2020 nebudou zákazníci moci vytvářet nové clustery Kafka s Kafka 1,1 ve službě HDInsight 4,0. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod do Kafka 2,1 ve službě HDInsight 4,0 pomocí června 30 2020, aby se předešlo potenciálnímu přerušení systému/podpory.
 
 ### <a name="hbase-20-to-216"></a>HBA 2,0 až 2.1.6
@@ -62,6 +62,9 @@ V nadcházející verzi HDInsight 4,0 bude verze HBA upgradována z verze 2,0 na
 
 ### <a name="spark-240-to-244"></a>Spark 2.4.0 na 2.4.4
 V nadcházející verzi HDInsight 4,0 bude verze Spark upgradována z verze 2.4.0 na 2.4.4
+
+### <a name="kafka-210-to-211"></a>Kafka 2.1.0 na 2.1.1
+V nadcházející verzi HDInsight 4,0 bude verze Kafka upgradována z verze 2.1.0 na verzi 2.1.1.
 
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>Pro hlavní uzel se vyžaduje minimální virtuální počítač se 4 jádry. 
 Hlavní uzel vyžaduje minimálně 4 jádro virtuálního počítače, aby se zajistila vysoká dostupnost a spolehlivost clusterů HDInsight. Od dubna 6 2020 můžou zákazníci jako hlavní uzel pro nové clustery HDInsight vybrat jenom 4 Core nebo novější virtuální počítač. Existující clustery budou i nadále fungovat podle očekávání. 

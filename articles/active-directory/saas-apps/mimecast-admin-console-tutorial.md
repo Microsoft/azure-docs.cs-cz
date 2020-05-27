@@ -11,251 +11,217 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 05/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9edadd6462052f82f92c05c1678f845ece856cfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 276a1acb5735e3490f331000799d57c329e7fca0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160665"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848404"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Kurz: Integrace Azure Active Directory s konzolou správce Mimecast
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s konzolou správce Mimecast
 
-V tomto kurzu se dozvíte, jak integrovat konzolu pro správu Mimecast s Azure Active Directory (Azure AD).
-Integrace konzoly pro správu Mimecast s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat konzolu pro správu Mimecast s Azure Active Directory (Azure AD). Když integrujete konzolu správce Mimecast s Azure AD, můžete:
 
-* Můžete řídit v Azure AD, kteří mají přístup ke konzole pro správu Mimecast.
-* Uživatelům můžete povolit, aby se automaticky přihlásili do konzoly pro správu Mimecast (jednotné přihlašování) se svými účty Azure AD.
-* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
+* Řízení ve službě Azure AD, která má přístup ke konzole správce Mimecast.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Mimecast konzole pro správu pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD s konzolou pro správu Mimecast potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
-* Odběr povoleného jednotného přihlašování konzoly správce Mimecast
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné Mimecast pro správu jednotného přihlašování (SSO) s povoleným jednotným přihlašováním.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Konzola pro správu Mimecast podporuje jednotné přihlašování na více **aktualizacích**
+* Konzola pro správu Mimecast podporuje **aktualizace SP a IDP,** iniciované jednotné přihlašování
+* Po nakonfigurování konzoly správce Mimecast můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-mimecast-admin-console-from-the-gallery"></a>Přidání konzoly správce Mimecast z Galerie
 
 Pokud chcete nakonfigurovat integraci konzoly správce Mimecast do služby Azure AD, musíte přidat konzolu správce Mimecast z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat konzolu správce Mimecast z Galerie, proveďte následující kroky:**
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Mimecast Console admin** .
+1. Z panelu výsledků vyberte **Konzola pro správu Mimecast** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
+## <a name="configure-and-test-azure-ad-single-sign-on-for-mimecast-admin-console"></a>Konfigurace a testování jednotného přihlašování Azure AD pro konzolu pro správu Mimecast
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí konzoly pro správu Mimecast pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte v konzole pro správu Mimecast vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem.
 
-2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí konzoly pro správu Mimecast, dokončete následující stavební bloky:
 
-    ![Okno podnikové aplikace](common/enterprise-applications.png)
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte jednotné přihlašování konzoly pro správu Mimecast](#configure-mimecast-admin-console-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte testovacího uživatele konzoly pro správu Mimecast](#create-mimecast-admin-console-test-user)** , abyste měli protějšek B. Simon v konzole pro správu Mimecast, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-    ![Tlačítko Nová aplikace](common/add-new-app.png)
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-4. Do vyhledávacího pole zadejte **Mimecast Console admin**, vyberte **konzolu pro správu Mimecast** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **konzolových aplikací Správce Mimecast** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-     ![Konzola pro správu Mimecast v seznamu výsledků](common/search-new-app.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované IDP, proveďte v **základní části Konfigurace SAML** následující kroky:
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí konzoly pro správu Mimecast na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah odkazu mezi uživatelem služby Azure AD a souvisejícím uživatelem v konzole pro správu Mimecast.
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí konzoly pro správu Mimecast, musíte dokončit tyto stavební bloky:
+    | Oblast  |  Hodnota | 
+    | --------------- | --------------- |
+    | Evropa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
+    | USA   | `https://us-api.mimecast.com/sso/<accountcode>`|
+    | Jižní Afrika    | `https://za-api.mimecast.com/sso/<accountcode>`|
+    | Austrálie       | `https://au-api.mimecast.com/sso/<accountcode>`|
+    | Prací        | `https://jer-api.mimecast.com/sso/<accountcode>`|
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
-2. **[Nakonfigurujte jednotné přihlašování konzoly správce Mimecast](#configure-mimecast-admin-console-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
-4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
-5. **[Vytvořte testovacího uživatele konzoly pro správu Mimecast](#create-mimecast-admin-console-test-user)** , abyste měli protějšek Britta Simon v konzole pro správu Mimecast, která je propojená s reprezentací uživatele v Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
+    > [!NOTE]
+    > Tuto `accountcode` hodnotu najdete v konzole pro správu Mimecast v části **Account**  >  **Settings**  >  **Kód účtu**nastavení účtu. Připojí `accountcode` k identifikátoru.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL: 
 
-V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
+    | Oblast  |  Hodnota | 
+    | --------------- | --------------- | 
+    | Evropa          | `https://eu-api.mimecast.com/login/saml`|
+    | USA   | `https://us-api.mimecast.com/login/saml`|
+    | Jižní Afrika    | `https://za-api.mimecast.com/login/saml`|
+    | Austrálie       | `https://au-api.mimecast.com/login/saml`|
+    | Prací        | `https://jer-api.mimecast.com/login/saml`|
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí konzoly pro správu Mimecast, proveďte následující kroky:
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **konzolových aplikací Správce Mimecast** vyberte **jednotné přihlašování**.
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL: 
 
-    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
+    | Oblast  |  Hodnota | 
+    | --------------- | --------------- | 
+    | Evropa          | `https://login-eu.mimecast.com/administration/app/#/administration-dashboard`|
+    | USA   | `https://login-us.mimecast.com/administration/app/#/administration-dashboard`|
+    | Jižní Afrika    | `https://login-za.mimecast.com/administration/app/#/administration-dashboard`|
+    | Austrálie       | `https://login-au.mimecast.com/administration/app/#/administration-dashboard`|
+    | Prací        | `https://login-jer.mimecast.com/administration/app/#/administration-dashboard`|
 
-2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
+1. Klikněte na **Uložit**.
 
-    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
+    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-4. V části **základní konfigurace SAML** proveďte následující kroky:
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    ![Informace o jednotném přihlašování domény a adresy URL konzoly správce Mimecast](common/sp-signonurl.png)
-
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:
-    
-    | |
-    | -- |
-    | `https://webmail-uk.mimecast.com`|
-    | `https://webmail-us.mimecast.com`|
-
-    > [!NOTE] 
-    > Adresa URL pro přihlášení je specifická pro oblast.
-
-4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
-
-    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
-
-6. V části **nastavení konzoly pro správu Mimecast** zkopírujte příslušné adresy URL podle vašich požadavků.
-
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
-
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Odhlašovací adresa URL
-
-### <a name="configure-mimecast-admin-console-single-sign-on"></a>Konfigurace jednotného přihlašování konzoly správce Mimecast
-
-1. V jiném okně webového prohlížeče se do konzoly správce Mimecast přihlaste jako správce.
-
-2. Přejít na **aplikaci \> služby**.
-
-    ![Služby](./media/mimecast-admin-console-tutorial/ic794998.png "Služby")
-
-3. Klikněte na **profily ověřování**.
-
-    ![Profily ověřování](./media/mimecast-admin-console-tutorial/ic794999.png "Profily ověřování")
-    
-4. Klikněte na **Nový profil ověřování**.
-
-    ![Nové profily ověřování](./media/mimecast-admin-console-tutorial/ic795000.png "Nové profily ověřování")
-
-5. V části **profil ověřování** proveďte následující kroky:
-
-    ![Ověřovací profil](./media/mimecast-admin-console-tutorial/ic795015.png "Ověřovací profil")
-    
-    a. Do textového pole **Popis** zadejte název konfigurace.
-    
-    b. Vyberte možnost **vyhovět ověřování SAML pro konzolu správce Mimecast**.
-    
-    c. Jako **zprostředkovatel**vyberte **Azure Active Directory**.
-    
-    d. Do textového pole **Adresa URL vystavitele** vložte **identifikátor Azure AD**, který jste zkopírovali z Azure Portal.
-    
-    e. Vložte **adresu URL pro přihlášení**, kterou jste zkopírovali z Azure Portal do textového pole **Adresa URL pro přihlášení** .
-
-    f. Vložte **adresu URL pro přihlášení**, kterou jste zkopírovali z Azure Portal do TEXTOVÉHO pole **URL pro odhlášení** .
-    
-    >[!NOTE]
-    >Hodnota adresy URL pro přihlášení a hodnota adresy URL pro odhlášení jsou pro konzolu správce Mimecast stejné.
-    
-    g. Otevřete certifikát základní-64 stažený z Azure Portal v poznámkovém bloku, odeberte první řádek (*--*"") a poslední řádek ("*--*"), zkopírujte zbývající obsah do schránky a vložte ho do textového pole **certifikát poskytovatele identity (metadata)** .
-    
-    h. Vyberte možnost **povolení jednotného přihlašování**.
-    
-    i. Klikněte na **Uložit**.
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
-
-Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
-
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-
-    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
-
-2. V horní části obrazovky vyberte **Nový uživatel** .
-
-    ![Tlačítko pro nového uživatele](common/new-user.png)
-
-3. Ve vlastnostech uživatele proveďte následující kroky.
-
-    ![Uživatelský dialog](common/user-properties.png)
-
-    a. Do pole **název** zadejte **BrittaSimon**.
-  
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
-    Například BrittaSimon@contoso.com.
-
-    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na **Vytvořit**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure udělením přístupu ke konzole pro správu Mimecast.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup ke konzole pro správu Mimecast.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **Konzola pro správu Mimecast**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **Konzola pro správu Mimecast**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-    ![Okno podnikových aplikací](common/enterprise-applications.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-2. V seznamu aplikace zadejte a vyberte **konzolu pro správu Mimecast**.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Odkaz na konzolu správce Mimecast v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+## <a name="configure-mimecast-admin-console-sso"></a>Konfigurace jednotného přihlašování konzoly pro správu Mimecast
 
-4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V jiném okně webového prohlížeče se přihlaste ke konzole pro správu Mimecast.
 
-    ![Podokno přidat přiřazení](common/add-assign-user.png)
+1. Přejděte na **aplikace pro správu**  >  **Services**  >  **Applications**.
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/services.png)
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Klikněte na kartu **profily ověřování** .
+    
+    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/authentication-profiles.png)
 
-7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+1. Klikněte na **Nová karta profil ověřování** .
+
+    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/new-authenticatio-profile.png)
+
+1. Do textového pole **Popis** zadejte platný popis a zaškrtněte políčko **vyhovět ověřování SAML pro konzolu pro správu** .
+
+    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/selecting-admin-consle.png)
+
+1. Na stránce **konzoly Konfigurace SAML pro správu** proveďte následující kroky:
+
+    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/sso-settings.png)
+
+    a. V rozevíracím seznamu **poskytovatel**vyberte **Azure Active Directory** .
+
+    b. Do textového pole **Adresa URL metadat** vložte hodnotu **adresy URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
+
+    c. Klikněte na **importovat**. Po importu adresy URL metadat budou pole naplněna automaticky, takže v těchto polích není nutné provádět žádné akce.
+
+    d. Ujistěte se, že jste zaškrtli políčko **použít kontext chráněný heslem** a **použijete kontexty integrovaného ověřování** .
+
+    e. Klikněte na **Uložit**.
 
 ### <a name="create-mimecast-admin-console-test-user"></a>Vytvořit testovacího uživatele konzoly pro správu Mimecast
 
-Aby se uživatelé Azure AD mohli přihlašovat do konzoly pro správu Mimecast, musí se zřídit v konzole pro správu Mimecast. V případě konzoly pro správu Mimecast je zřizování ručním úkolem.
+1. V jiném okně webového prohlížeče se přihlaste ke konzole pro správu Mimecast.
 
-* Než budete moct vytvořit uživatele, musíte zaregistrovat doménu.
+1. Přejděte do **složky pro správu**  >  **Directories**  >  **interní adresáře**.
 
-**Při konfiguraci zřizování uživatelů proveďte následující kroky:**
+    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/internal-directories.png)
 
-1. Přihlaste se ke **konzole správce Mimecast** jako správce.
+1. Pokud je doména uvedená níže, vyberte v doméně. v opačném případě vytvořte novou doménu kliknutím na **novou doménu**.
 
-2. Přejít na **interní \> adresáře**.
-   
-    ![Adresáře](./media/mimecast-admin-console-tutorial/ic795003.png "Adresáře")
+    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/domain-name.png)
 
-3. Klikněte na **zaregistrovat novou doménu**.
-   
-    ![Zaregistrovat novou doménu](./media/mimecast-admin-console-tutorial/ic795004.png "Zaregistrovat novou doménu")
+1. Klikněte na kartu **Nová adresa** .
 
-4. Po vytvoření nové domény klikněte na **Nová adresa**.
-   
-    ![Nová adresa](./media/mimecast-admin-console-tutorial/ic795005.png "Nová adresa")
+    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/new-address.png)
 
-5. V dialogovém okně Nová adresa proveďte následující kroky:
-   
-    ![Uložit](./media/mimecast-admin-console-tutorial/ic795006.png "Uložit")
-   
-    a. Zadejte **e-mailovou adresu**, **globální název**, **heslo**a **POTVRĎte atributy hesla** platného účtu Azure AD, který chcete zřídit v souvisejících textových polích.
+1. Zadejte požadované informace o uživateli na následující stránce:
 
-    b. Klikněte na **Uložit**.
+    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/user-information.png)
 
->[!NOTE]
->K zřizování uživatelských účtů Azure AD můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů nebo rozhraní API konzoly pro správu Mimecast, které poskytuje konzola pro správu Mimecast. 
+    a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele, jako je `B.Simon@yourdomainname.com` .
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+    b. Do textového pole **globální název** zadejte jméno a **příjmení** uživatele.
+
+    c. Do textových polí **heslo** a **potvrzení hesla** zadejte heslo uživatele.
+
+    d. Zaškrtněte políčko **Vynutit změnu při přihlášení** .
+
+    e. Klikněte na **Uložit**.
+
+    f. Pokud chcete přiřadit role uživateli, klikněte na **Upravit roli** a přiřaďte požadovanou roli uživateli podle požadavků vaší organizace.
+
+    ![Konfigurace konzoly správce Mimecast](./media/mimecast-admin-console-tutorial/assign-role.png)
+
+## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
@@ -265,7 +231,12 @@ Po kliknutí na dlaždici konzoly pro správu Mimecast na přístupovém panelu 
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Vyzkoušejte si konzolu pro správu Mimecast s Azure AD](https://aad.portal.azure.com/)
+
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chránit konzolu správce Mimecast s pokročilými viditelnostmi a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

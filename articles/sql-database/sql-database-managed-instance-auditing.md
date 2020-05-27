@@ -12,15 +12,15 @@ f1_keywords:
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/27/2020
-ms.openlocfilehash: 7656944af16db650ec1fea36f0bdefc81b99922e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/26/2020
+ms.openlocfilehash: 66c2c5e52ef81f74f7177af897f33eec4ae1779e
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654623"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860639"
 ---
-# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s auditováním spravované instance Azure SQL Database
+# <a name="azure-sql-database-managed-instance-auditing"></a>Azure SQL Database auditování spravované instance
 
 Auditování [spravované instance](sql-database-managed-instance.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage. Auditování také:
 
@@ -37,7 +37,9 @@ V následující části je popsána konfigurace auditování na spravované ins
    1. Přejděte do Azure Storage, kam chcete ukládat protokoly auditu.
 
       > [!IMPORTANT]
-      > Použijte účet úložiště ve stejné oblasti jako spravovanou instanci, aby nedocházelo ke čtení a zápisu mezi jednotlivými oblastmi. Pokud je váš účet úložiště za Virtual Network nebo bránou firewall, přečtěte si téma [udělení přístupu z virtuální sítě](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network).
+      > - Použijte účet úložiště ve stejné oblasti jako spravovanou instanci, aby nedocházelo ke čtení a zápisu mezi jednotlivými oblastmi. 
+      > - Pokud je váš účet úložiště za Virtual Network nebo bránou firewall, přečtěte si téma [udělení přístupu z virtuální sítě](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network).
+      > - Pokud změníte dobu uchování z 0 (neomezené uchovávání) na jakoukoli jinou hodnotu, pamatujte na to, že doba uchovávání se bude vztahovat jenom na protokoly zapsané po změně hodnoty uchování (protokoly zapsané během období, kdy byla doba uchování nastavená na neomezený, se zachovají i po povolení uchování).
 
    1. V účtu úložiště přejděte na **Přehled** a klikněte na **objekty blob**.
 

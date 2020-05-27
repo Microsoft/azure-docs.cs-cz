@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f1db7cc34a77c342a3d11e4b509d45a745a200db
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789874"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849169"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>Použití Marketo ke správě potenciálních zákazníků z obchodu na webu Marketplace
 
@@ -59,8 +59,8 @@ Tento článek popisuje, jak nastavit systém Marketo pro CRM na zpracování po
 
     Další způsob, jak zjistit tyto hodnoty:
 
-    - ID serveru najdete v adrese URL vaší instance Marketo, například `serverID.marketo.com`.
-    - Pořiďte si Munchkin ID vašeho předplatného tak, že v poli **ID účtu Munchkin** zobrazíte nabídku **správce** > **Munchkin** , nebo z první části vaší REST API domény hostitele Marketo `https://{Munchkin ID}.mktorest.com`:.
+    - ID serveru najdete v adrese URL vaší instance Marketo, například `serverID.marketo.com` .
+    - Pořiďte si Munchkin ID vašeho předplatného tak **Admin**  >  , že v poli **ID účtu Munchkin** zobrazíte nabídku správce**Munchkin** , nebo z první části vaší REST API domény hostitele Marketo: `https://{Munchkin ID}.mktorest.com` .
     - ID formuláře je ID formuláře pro vložení kódu, který jste vytvořili v kroku 7 ke směrování potenciálních zákazníků z webu Marketplace.
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Konfigurace nabídky pro odesílání zájemců do markety
@@ -71,9 +71,9 @@ Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši 
 
 1. Vyberte svou nabídku a pak navštivte kartu **nastavení nabídky** .
 
-1. V části **Správa zájemců** vyberte **připojit**. 
+1. V části **zájemci pro zákazníky** vyberte **připojit**.
 
-    ![Tlačítko připojit k části Správa zájemců](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-marketo/customer-leads.png" alt-text="Potenciální zákazníci":::
 
 1. V místním okně **Podrobnosti připojení** vyberte **Marketo** pro **cíl zájemce**.
 

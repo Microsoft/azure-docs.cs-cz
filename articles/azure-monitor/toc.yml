@@ -60,6 +60,32 @@
           href: learn/tutorial-app-dashboards.md
 - name: ukázky
   items:
+    - name: Šablony Resource Manageru
+      items:
+        - name: Přehled
+          href: samples/resource-manager-samples.md
+        - name: Agenti
+          href: samples/resource-manager-agent.md
+        - name: Výstrahy
+          items:
+            - name: Pravidla upozornění protokolu
+              href: samples/resource-manager-alerts-log.md
+            - name: Pravidla upozornění metrik
+              href: samples/resource-manager-alerts-metric.md
+            - name: Skupiny akcí
+              href: samples/resource-manager-action-groups.md
+        - name: Nastavení diagnostiky
+          href: samples/resource-manager-diagnostic-settings.md
+        - name: Pracovní prostory služby Log Analytics
+          href: samples/resource-manager-workspace.md
+        - name: Dotazy na protokoly
+          href: samples/resource-manager-log-queries.md
+        - name: Workbooks
+          href: samples/resource-manager-workbooks.md
+        - name: Azure Monitor pro kontejnery
+          href: samples/resource-manager-container-insights.md
+        - name: Azure Monitor pro virtuální počítače
+          href: samples/resource-manager-vminsights.md
     - name: Azure CLI
       href: samples/cli-samples.md
     - name: Azure PowerShell

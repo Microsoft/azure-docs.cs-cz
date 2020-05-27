@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a079f42f63e232c21a52bd108b34c3b022dcee5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176086"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869715"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -60,12 +60,12 @@ Při nasazování Azure File Sync doporučujeme:
 - Při nasazování sdílených složek Azure věnujte pozornost omezením IOPS účtu úložiště. V ideálním případě byste namapovali sdílené složky 1:1 s účty úložiště. to ale nemusí být vždycky možné kvůli různým omezením a omezením, a to jak z vaší organizace, tak z Azure. Pokud není možné mít v jednom účtu úložiště nasazenou jenom jednu sdílenou složku, zvažte, které sdílené složky budou vysoce aktivní a které akcie budou méně aktivní, aby se zajistilo, že sdílené složky nejžhavějších se nebudou ukládat do stejného účtu úložiště společně.
 
 ## <a name="windows-file-server-considerations"></a>Požadavky na souborový server systému Windows
-Pokud chcete povolit funkci synchronizace na Windows serveru, musíte nainstalovat Azure File Sync agenta ke stažení. Agent Azure File Sync poskytuje dvě hlavní součásti: `FileSyncSvc.exe`, službu systému Windows na pozadí, která je odpovědná za sledování změn v koncových bodech serveru a zahájení synchronizace `StorageSync.sys`relací, a, filtr systému souborů, který umožňuje vytvoření vrstvy cloudu a rychlé zotavení po havárii.  
+Pokud chcete povolit funkci synchronizace na Windows serveru, musíte nainstalovat Azure File Sync agenta ke stažení. Agent Azure File Sync poskytuje dvě hlavní součásti: `FileSyncSvc.exe` , službu systému Windows na pozadí, která je odpovědná za sledování změn v koncových bodech serveru a zahájení synchronizace relací, a `StorageSync.sys` , filtr systému souborů, který umožňuje vytvoření vrstvy cloudu a rychlé zotavení po havárii.  
 
 ### <a name="operating-system-requirements"></a>Požadavky na operační systém
 Azure File Sync se podporuje s následujícími verzemi Windows serveru:
 
-| Version | Podporované SKU | Podporované možnosti nasazení |
+| Verze | Podporované SKU | Podporované možnosti nasazení |
 |---------|----------------|------------------------------|
 | Windows Server 2019 | Datacenter, Standard a IoT | Úplné a základní |
 | Windows Server 2016 | Datacenter, Standard a Storage Server | Úplné a základní |
@@ -275,7 +275,7 @@ Azure File Sync spolupracuje se systémem souborů NTFS (EFS Encrypted File Syst
 ### <a name="encryption-in-transit"></a>Šifrování během přenosu
 
 > [!NOTE]
-> Služba Azure File Sync odebere podporu TLS 1.0 a 1,1 v srpnu 2020. Všechny podporované verze agenta Azure File Sync již ve výchozím nastavení používají protokol TLS 1.2. Pokud je na vašem serveru zakázaný protokol TLS 1.2 nebo se používá proxy server, může dojít k použití starší verze protokolu TLS. Pokud používáte proxy server, doporučujeme, abyste zkontrolovali konfiguraci proxy serveru. Azure File Sync oblasti služeb přidané po 5/1/2020 budou podporovat pouze TLS 1.2 a podpora protokolu TLS 1.0 a 1,1 bude odebrána z existujících oblastí v srpnu 2020.  Další informace najdete v [Průvodci odstraňováním potíží](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync).
+> Služba Azure File Sync odstraní podporu TLS 1.0 a 1,1 na 1. srpna 2020. Všechny podporované verze agenta Azure File Sync již ve výchozím nastavení používají protokol TLS 1.2. Pokud je na vašem serveru zakázaný protokol TLS 1.2 nebo se používá proxy server, může dojít k použití starší verze protokolu TLS. Pokud používáte proxy server, doporučujeme, abyste zkontrolovali konfiguraci proxy serveru. Azure File Sync oblasti služeb přidané po 5/1/2020 budou podporovat pouze TLS 1.2 a podpora protokolu TLS 1.0 a 1,1 bude odebrána z existujících oblastí od 1. srpna 2020.  Další informace najdete v [Průvodci odstraňováním potíží](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync).
 
 Agent Azure File Sync komunikuje se službou synchronizace úložiště a sdílenou složkou Azure pomocí protokolu Azure File Sync REST a protokolu REST, přičemž oba vždy používají protokol HTTPS přes port 443. Azure File Sync neodesílá nešifrované požadavky přes HTTP. 
 
@@ -354,7 +354,7 @@ Máte-li existující souborový server systému Windows, Azure File Sync lze p�
 
 - Vytvořte koncové body serveru pro starou sdílenou složku a novou sdílenou složku a umožněte Azure File Sync synchronizovat data mezi koncovými body serveru. Výhodou tohoto přístupu je, že se velmi snadno přestává odebírat úložiště na novém souborovém serveru, protože Azure File Sync podporuje tvorbu cloudových vrstev. Až budete připraveni, můžete koncové uživatele vyjmout do sdílené složky na novém serveru a odebrat koncový bod serveru staré sdílené složky.
 
-- Vytvořte koncový bod serveru pouze na novém souborovém serveru a zkopírujte data do původní sdílené složky pomocí `robocopy`. V závislosti na topologii sdílených složek na novém serveru (kolik sdílených složek máte na každém svazku, jak uvolnit jednotlivé svazky atd.) možná budete muset dočasně zřídit další úložiště, protože se očekává, že `robocopy` z původního serveru na váš nový server v místním datovém centru se dokončí rychleji než Azure File Sync přesunou data do Azure.
+- Vytvořte koncový bod serveru pouze na novém souborovém serveru a zkopírujte data do původní sdílené složky pomocí `robocopy` . V závislosti na topologii sdílených složek na novém serveru (kolik sdílených složek máte na každém svazku, jak uvolnit jednotlivé svazky atd.) možná budete muset dočasně zřídit další úložiště, protože se očekává, že `robocopy` z původního serveru na váš nový server v místním datovém centru se dokončí rychleji než Azure File Sync přesunou data do Azure.
 
 K migraci dat do nasazení Azure File Sync je taky možné použít Data Box. Ve většině případů zákazníci chtějí použít Data Box k ingestování dat, protože mají za to, že budou zvyšovat rychlost nasazení, nebo protože bude pomáhat s omezeními s omezenou šířkou pásma. I když použití Data Box k ingestování dat do nasazení Azure File Sync sníží využití šířky pásma, bude pravděpodobně rychlejší pro většinu scénářů, abyste mohli provádět online nahrávání dat prostřednictvím jedné z výše popsaných metod. Další informace o tom, jak pomocí Data Box ingestovat data do nasazení Azure File Sync, najdete v tématu [migrace dat do Azure File Sync s Azure Data box](storage-sync-offline-data-transfer.md).
 

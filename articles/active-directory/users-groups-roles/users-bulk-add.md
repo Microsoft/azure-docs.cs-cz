@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03f6e3d6edde51598b1d148469aceb1ff3b3d636
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: ed8c3563f9a17a30e0d5df5f00c35f34510d6029
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203388"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848919"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Hromadné vytvoření uživatelů v Azure Active Directory
 
@@ -39,7 +39,7 @@ Stáhněte si a vyplňte šablonu CSV hromadného nahrání, která vám umožn�
 Řádky ve stažené šabloně CSV jsou následující:
 
 - **Číslo verze**: první řádek obsahující číslo verze musí být zahrnut do souboru CSV pro nahrávání.
-- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název* &gt; položky [PropertyName] &lt; *povinný nebo prázdný*&gt;. Například, `Name [displayName] Required`. Některé starší verze šablony mohou mít drobné variace.
+- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název položky* &gt; [PropertyName] &lt; *povinný nebo prázdný* &gt; . Například, `Name [displayName] Required`. Některé starší verze šablony mohou mít drobné variace.
 - **Řádek příklady**: v šabloně jsme zahrnuli řádek příkladů přípustných hodnot pro každý sloupec. Řádek příklady musíte odebrat a nahradit ho vlastními položkami.
 
 ### <a name="additional-guidance"></a>Další doprovodné materiály
@@ -52,7 +52,7 @@ Stáhněte si a vyplňte šablonu CSV hromadného nahrání, která vám umožn�
 ## <a name="to-create-users-in-bulk"></a>Hromadné vytváření uživatelů
 
 1. [Přihlaste se ke svojí organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
-1. V Azure AD vyberte **Uživatelé** > **hromadně vytvořit**.
+1. V Azure AD vyberte **Uživatelé**  >  **hromadně vytvořit**.
 1. Na stránce **hromadně vytvořit uživatele** vyberte **Stáhnout** pro příjem platných souborů s hodnotami oddělenými čárkou (CSV) vlastností uživatele a pak přidejte přidat uživatele, které chcete vytvořit.
 
    ![Vyberte místní soubor CSV, ve kterém chcete zobrazit seznam uživatelů, které chcete přidat.](./media/users-bulk-add/upload-button.png)
@@ -66,7 +66,7 @@ Stáhněte si a vyplňte šablonu CSV hromadného nahrání, která vám umožn�
 1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která importuje nové uživatele.
 1. Po dokončení operace importu se zobrazí oznámení o stavu úlohy hromadné operace.
 
-Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s **výsledky hromadné operace** . Soubor obsahuje důvod každé chyby.
+Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s **výsledky hromadné operace** . Soubor obsahuje důvod každé chyby. Odeslání souboru se musí shodovat s poskytnutou šablonou a zahrnout přesné názvy sloupců.
 
 ## <a name="check-status"></a>Zkontrolování stavu
 

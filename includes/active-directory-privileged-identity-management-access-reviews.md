@@ -5,15 +5,15 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 04/29/2019
-ms.author: rolyon
+ms.date: 05/26/2020
+ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee02200f1fb32d430a858d218e27534561ebc24a
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67476254"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83868013"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Vytvoření jedné nebo více kontrol přístupu
 
@@ -36,13 +36,14 @@ ms.locfileid: "67476254"
     ![Obor uživatelů pro kontrolu členství v rolích](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
-    > Když vyberete víc než jednu roli, vytvoří se víc kontrol přístupu. Když například vyberete pět rolí, vytvoří se pět samostatných revizí přístupu.
+    > - Role, které tady vyberete, zahrnují [trvalé i oprávněné role](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md).
+    > - Když vyberete víc než jednu roli, vytvoří se víc kontrol přístupu. Když například vyberete pět rolí, vytvoří se pět samostatných revizí přístupu.
 
-    Pokud vytváříte kontrolu přístupu pro role Azure AD, následující příklad uvádí seznam kontrol členství.
+    Pokud vytváříte kontrolu přístupu pro **role Azure AD**, následující příklad uvádí seznam kontrol členství.
 
     ![V podokně členství zobrazit seznam rolí Azure AD můžete vybrat](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
-    Pokud vytváříte kontrolu přístupu pro role prostředků Azure, následující příklad znázorňuje seznam členů kontroly.
+    Pokud vytváříte kontrolu přístupu pro **role prostředků Azure**, zobrazí se na následujícím obrázku příklad seznamu členů kontroly.
 
     ![V podokně členství zobrazit seznam rolí prostředků Azure, které můžete vybrat](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 

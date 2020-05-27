@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a15de41dc2dce4cae0a6155bfce8a8a2001b9a8b
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3abf7b4acfae5e90d0b3f6781b8fbbf0f6f1427d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798804"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860592"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -306,6 +306,21 @@ Uživatelé v této roli můžou monitorovat všechna oznámení v centru zpráv
 ### <a name="message-center-reader"></a>[Čtenář centra zpráv](#message-center-reader-permissions)
 
 Uživatelé v této roli můžou monitorovat oznámení a poradenské aktualizace stavu v [centru zpráv Office 365](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) pro jejich organizaci na konfigurovaných službách, jako je Exchange, Intune a Microsoft Teams. Čtečky centra zpráv obdrží týdenní e-mailové zprávy o příspěvcích, aktualizacích a můžou sdílet příspěvky centra zpráv v Office 365. Uživatelé přiřazení k této roli ve službě Azure AD budou mít přístup jen pro čtení ke službám Azure AD, jako jsou uživatelé a skupiny. Tato role nemá přístup k zobrazení, vytvoření nebo správě lístků podpory.
+
+### <a name="modern-commerce-administrator"></a>[Moderní obchodní správce](#modern-commerce-administrator-permissions)
+Nepoužívat. Tato role se automaticky přiřadí z obchodu a není určená ani podporovaná pro jiné použití. Níže najdete podrobnosti.
+
+Role moderního správce obchodu poskytuje určitým uživatelům oprávnění k přístupu k centru pro správu Microsoft 365 a zobrazení levého navigačního panelu pro **domovskou stránku**, **fakturaci**a **podporu**. Obsah, který je dostupný v těchto oblastech, se řídí [rolemi specifickými pro obchod](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles) , které jsou přiřazené uživatelům pro správu produktů, které si koupili pro sebe nebo vaši organizaci. To může zahrnovat úkoly, jako jsou platby za účty, nebo přístup k fakturačním účtům a profilům fakturace. 
+
+Uživatelé s rolí moderního správce obchodu mají obvykle oprávnění správce v dalších nákupních systémech Microsoftu, ale nemají role globálního správce nebo správce fakturace používané pro přístup do centra pro správu. 
+
+**Kdy je přiřazena role moderního správce obchodu?**
+* **Nákup samoobslužných služeb v centru pro správu Microsoft 365** – nákup samoobslužných služeb dává uživatelům možnost vyzkoušet si nové produkty, a to tak, že si je zakoupí nebo zaregistrují sami. Tyto produkty se spravují v centru pro správu. Uživatelům, kteří si přidávají samoobslužné nákupy, se přiřadí role v systému pro obchodování a moderní role správce obchodování, aby mohli spravovat své nákupy v centru pro správu. Správci můžou blokovat nákupy samoobslužných služeb (pro Power BI, Power Apps, Power Automate) prostřednictvím [PowerShellu](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide). Další informace najdete v tématu [Nejčastější dotazy k nákupu samoobslužných služeb](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
+* **Nákupy od komerčního tržiště Microsoftu** – podobně jako při nákupu samoobslužných služeb, když uživatel koupí produkt nebo službu z Microsoft AppSource nebo Azure Marketplace, bude role moderního správce obchodu přiřazená, pokud nemá roli globálního správce nebo správce fakturace. V některých případech je možné, že uživatelé můžou tyto nákupy zablokovat. Další informace najdete v tématu [komerční tržiště Microsoftu](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase).   
+* **Návrhy od Microsoftu** – návrh je formální nabídka Microsoftu, která vaší organizaci koupí produkty a služby Microsoftu. Když osoba, která přijímá návrh, nemá roli globálního správce nebo správce fakturace ve službě Azure AD, přiřadí se mu role specifická pro obchod pro dokončení návrhu a role moderního správce obchodu pro přístup k centru pro správu. Když přistupují k centru pro správu, můžou používat jenom funkce, které jsou autorizované v rámci své obchodní role. 
+* **Role specifické pro obchod** – někteří uživatelé mají přiřazeny role specifické pro obchod. Pokud uživatel není globálním správcem nebo správcem fakturace, získá moderní roli správce obchodu, aby mohli získat přístup k centru pro správu.  
+
+Pokud je role moderního správce obchodu Nepřiřazená uživateli, ztratí přístup k centru pro správu Microsoft 365. Pokud by nějaké produkty spravovaly buď pro sebe, nebo pro vaši organizaci, nebudou je moct spravovat. To může zahrnovat přiřazení licencí, změnu způsobů platby, placení účtů nebo jiné úlohy pro správu předplatných. 
 
 ### <a name="network-administrator"></a>[Správce sítě](#network-administrator-permissions)
 
@@ -1318,6 +1333,23 @@ Může číst zprávy a aktualizace pro svou organizaci jenom v centru zpráv Of
 | Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 | Microsoft. Office 365. messageCenter/Messages/Read | Přečte zprávy v Microsoft. Office 365. messageCenter. |
 
+### <a name="modern-commerce-administrator-permissions"></a>Moderní oprávnění pro správce obchodování
+Může spravovat komerční nákupy pro firmu, oddělení nebo tým. 
+
+> [!NOTE]
+> Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
+>
+>
+
+| **Akce** | **Popis** |
+| --- | --- |
+| Microsoft. obchod. fakturace/partneři/čtení | Přečtěte si vlastnost partner pro fakturaci O365. |
+| Microsoft. Commerce. volumeLicenseServiceCenter/allEntities/allTasks | Spravujte všechny aspekty služby Volume Licensing Service Center. |
+| Microsoft. Directory/Organization/Basic/Update | Aktualizuje základní vlastnosti v organizaci v Azure Active Directory. |
+| Microsoft. Office 365. supportTickets/allEntities/allTasks | Vytváření a Správa lístků podpory Office 365. |
+| Microsoft. Office 365. WebPort/allEntities/Basic/Read | Přečte základní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
+
+
 ### <a name="network-administrator-permissions"></a>Oprávnění správce sítě
 Může spravovat síťová umístění a prohlížet informace o návrhu podnikové sítě, které Microsoft 365 software jako aplikace služby.
 
@@ -1842,6 +1874,7 @@ Správce licencí | Správce licencí | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Správce služby Lync | Správce Skypu pro firmy | 75941009-915a-4869-abe7-691bff18279e
 Čtenář ochrany osobních údajů centra zpráv | Čtenář ochrany osobních údajů centra zpráv | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Čtenář centra zpráv | Čtenář centra zpráv | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Moderní obchodní správce | Moderní obchodní správce | d24aef57-1500-4070-84db-2666f29cf966
 Správce sítě | Správce sítě | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Správce aplikací Office | Správce aplikací Office | 2b745bdf-0803-4d80-aa65-822c4493daac
 Podpora partnerů Tier1 | Nezobrazeno, protože by neměl být použit | 4ba39ca4-527c-499a-b93d-d9b492c50246

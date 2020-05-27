@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2020
+ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: f71bffd1db023ece19071bb8f71ec49a855e828b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6909bcbc67680f9205af8a79782907d4671d668b
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654662"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860711"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -45,12 +45,12 @@ Pravidla potlačení definují kritéria, pro která se mají automaticky odklá
 
 - potlačit výstrahy, které se spouštějí příliš často, aby byly užitečné
 
-[Přečtěte si další informace o potlačení výstrah z ochrany před hrozbami v Azure Security Center](alerts-suppression-rules.md).
+Přečtěte si další informace o [potlačení výstrah z ochrany před hrozbami v Azure Security Center](alerts-suppression-rules.md).
 
 
 ### <a name="virtual-machine-vulnerability-assessment-is-now-generally-available"></a>Posouzení ohrožení zabezpečení virtuálního počítače je teď všeobecně dostupné
 
-Úroveň Standard Security Center nyní obsahuje integrované posouzení ohrožení zabezpečení pro virtuální počítače bez dalších poplatků. Toto rozšíření používá Qualys, ale oznamuje své závěry přímo zpátky do Security Center. Nepotřebujete licenci Qualys ani účet Qualys – všechno se bez problémů zpracovává v Security Center.
+Úroveň Standard Security Center nyní zahrnuje integrované posouzení ohrožení zabezpečení pro virtuální počítače bez dalších poplatků. Toto rozšíření používá Qualys, ale oznamuje své závěry přímo zpátky do Security Center. Nepotřebujete licenci Qualys ani účet Qualys – všechno se bez problémů zpracovává v Security Center.
 
 Nové řešení může průběžně kontrolovat vaše virtuální počítače a odhalit tak ohrožení zabezpečení a prezentovat zjištění v Security Center. 
 
@@ -58,7 +58,7 @@ K nasazení řešení použijte nové doporučení zabezpečení:
 
 "Povolte integrované řešení posouzení ohrožení zabezpečení na virtuálních počítačích (s technologií Qualys)."
 
-[Další informace](built-in-vulnerability-assessment.md).
+Přečtěte si další informace o [integrovaném posouzení ohrožení zabezpečení Security Center pro virtuální počítače](built-in-vulnerability-assessment.md).
 
 
 
@@ -72,7 +72,7 @@ Tato aktualizace přináší následující změny této funkce:
 
 - Doporučení je nastavené tak, aby se aktivovalo jenom v případě, že existují otevřené porty pro správu.
 
-[Přečtěte si další informace o funkci přístupu JIT](security-center-just-in-time.md).
+Přečtěte si další informace o [funkci přístupu JIT](security-center-just-in-time.md).
 
 
 ### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>Vlastní doporučení se přesunula do samostatného řízení zabezpečení.
@@ -122,14 +122,6 @@ Další informace o systému Windows Defender zneužití Guard v [vytváření a
 Přečtěte si další informace o ovládacích prvcích zabezpečení v [rozšířeném zabezpečeném skóre (Preview) v Azure Security Center](secure-score-security-controls.md).
 
 
-
-
-
-
-
-
-
-
 ### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Vlastní zásady s vlastními metadaty jsou teď všeobecně dostupné.
 
 Vlastní zásady jsou teď součástí prostředí Security Center doporučení, bezpečného skóre a řídicího panelu standardů dodržování předpisů regulativních předpisů. Tato funkce je teď všeobecně dostupná a umožňuje rozšíření pokrytí posouzení zabezpečení vaší organizace v Security Center. 
@@ -138,7 +130,23 @@ Vytvořte vlastní iniciativu v zásadách Azure, přidejte do ní zásady a př
 
 Nyní jsme také přidali možnost Upravit metadata vlastního doporučení. Mezi možnosti metadat patří závažnost, nápravný postup, informace o hrozbách a další.  
 
-[Přečtěte si další informace o vylepšení vlastních doporučení s podrobnými informacemi](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information).
+Přečtěte si další [informace o vylepšení vlastních doporučení s podrobnými informacemi](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information).
+
+
+### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Funkce analýzy výpisu stavu systému při migraci na detekci útoku typu soubor 
+
+Do [detekce útoku typu soubor](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless)se integruje možnosti detekce CDA (Windows Crash Analysis). Analýza detekce útoků bez souborů přináší vylepšené verze těchto výstrah zabezpečení pro počítače s Windows: zjištěné injektáže kódu, zjištěná maskující modul Windows, zjištěná skrytý spustitelný kód a zjištěn podezřelý segment kódu.
+
+Některé z výhod tohoto přechodu:
+
+- **Proaktivní a včasné zjištění malwaru** – přístup k CDA se při čekání na selhání a následné spuštění analýzy, aby našel aktivní malware. Při použití detekce útoků pomocí souborů dojde k proaktivní identifikaci hrozeb v paměti, které jsou spuštěny. 
+
+- **Obohacené výstrahy** – výstrahy zabezpečení z detekce útoků bez souborů zahrnují rozšíření, která nejsou k dispozici ze služby CDA, například informace o aktivních síťových připojeních. 
+
+- **Agregace výstrah** – Pokud disk CDA zjistil více vzorů útoku v rámci jednoho výpisu stavu systému, aktivovalo se několik výstrah zabezpečení. Detekce útoků bez souborů kombinuje všechny identifikované vzory útoků ze stejného procesu do jediné výstrahy. tím se eliminuje nutnost korelace více výstrah.
+
+- **Omezené požadavky na pracovní prostor Log Analytics** – výpisy stavu systému obsahující potenciálně citlivá data se už nebudou nahrávat do vašeho pracovního prostoru Log Analytics.
+
 
 
 ## <a name="april-2020"></a>Duben 2020
@@ -159,7 +167,7 @@ Nyní můžete přidat standardy jako:
 
 Kromě toho jsme nedávno přidali **srovnávací testy zabezpečení Azure**, které jsou určené pro zabezpečení a osvědčené postupy pro dodržování předpisů v závislosti na běžných architekturách dodržování předpisů, a pokyny specifické pro Azure. Další standardy budou na řídicím panelu podporovány, jakmile budou k dispozici.  
  
-[Přečtěte si další informace o přizpůsobení sady standardů na řídicím panelu dodržování legislativních předpisů](update-regulatory-compliance-packages.md).
+Přečtěte si další informace o [přizpůsobení sady standardů na řídicím panelu dodržování legislativních předpisů](update-regulatory-compliance-packages.md).
 
 
 ### <a name="identity-recommendations-now-included-in-azure-security-center-free-tier"></a>Doporučení identity teď jsou součástí Azure Security Center úrovně Free.
@@ -174,8 +182,9 @@ Příklady doporučení pro identitu a přístup zahrnují:
 
 Pokud máte předplatné na cenové úrovni Free, jejich zabezpečená skóre budou ovlivněna touto změnou, protože nebyly nikdy posuzovány pro jejich identitu a zabezpečení přístupu.
 
-[Další informace o identitě a doporučeních pro přístup](recommendations-reference.md#recs-identity).
-[Přečtěte si další informace o identitě a přístupu k monitorování](security-center-identity-access.md).
+Další informace o [identitě a doporučeních pro přístup](recommendations-reference.md#recs-identity).
+
+Přečtěte si další informace o [identitě a přístupu k monitorování](security-center-identity-access.md).
 
 
 ## <a name="march-2020"></a>Březen 2020
@@ -188,7 +197,7 @@ Každý program zabezpečení zahrnuje několik pracovních postupů pro reakci 
 
 Další informace o funkcích automatických a ručních Security Center pro spouštění pracovních postupů najdete v tématu [automatizace pracovních postupů](workflow-automation.md).
 
-Další informace o vytváření Logic Apps najdete v tématu [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+Přečtěte si další informace o [vytváření Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 
 ### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Integrace Azure Security Center s centrem pro správu Windows
@@ -200,7 +209,7 @@ Po přesunutí serveru z centra pro správu Windows na Azure Security Center bud
 - Zobrazení výstrah zabezpečení a doporučení v rozšíření Security Center centra pro správu systému Windows.
 - Prohlédněte si stav zabezpečení a načtěte další podrobné informace o spravovaných serverech centra pro správu Windows v Security Center v rámci Azure Portal (nebo přes rozhraní API).
 
-Přečtěte si další informace o tom, jak [integrovat Azure Security Center s centrem pro správu Windows](windows-admin-center-integration.md).
+Přečtěte si další informace o [tom, jak integrovat Azure Security Center s centrem pro správu Windows](windows-admin-center-integration.md).
 
 
 ### <a name="protection-for-azure-kubernetes-service"></a>Ochrana pro službu Azure Kubernetes
@@ -215,8 +224,9 @@ Security Center obrany zahrnuje:
 - **Doporučení zabezpečení** – doporučení pro dodržování předpisů, která vám pomůžou dodržovat osvědčené postupy zabezpečení pro AKS. Tato doporučení jsou zahrnutá ve vašem zabezpečeném skóre, abyste se ujistili, že se zobrazují jako součást stav zabezpečení vaší organizace. Příklad doporučení týkající se AKS najdete v tématu řízení přístupu na základě role by mělo sloužit k omezení přístupu ke clusteru služby Kubernetes.
 - **Ochrana před hrozbami** – prostřednictvím průběžné analýzy nasazení AKS vás Security Center vás upozorní na hrozby a škodlivou aktivitu zjištěnou na úrovni clusteru host a AKS.
 
-[Přečtěte si další informace o integraci Azure Kubernetes Services s Security Center](azure-kubernetes-service-integration.md).
-[Přečtěte si další informace o funkcích zabezpečení kontejnerů v Security Center](container-security.md).
+Přečtěte si další informace o [integraci služeb Azure Kubernetes Services s Security Center](azure-kubernetes-service-integration.md).
+
+Přečtěte si další informace o [funkcích zabezpečení kontejnerů v Security Center](container-security.md).
 
 
 ### <a name="improved-just-in-time-experience"></a>Vylepšené prostředí za běhu
@@ -226,7 +236,7 @@ Funkce, operace a uživatelské rozhraní pro nástroje Azure Security Center za
 - **Pole odůvodnění** – při žádosti o přístup k virtuálnímu počítači (VM) na stránce Azure Portal za běhu je k dispozici nové volitelné pole, ve kterém můžete zadat odůvodnění žádosti. Informace zadané do tohoto pole lze sledovat v protokolu aktivit. 
 - **Automatické čištění redundantních pravidel JIT (just-in-time)** – při každé aktualizaci zásad JIT se automaticky spustí nástroj pro vyčištění, který kontroluje platnost celého RuleSet. Nástroj vyhledá neshody mezi pravidly v zásadách a pravidly v NSG. Pokud nástroj pro vyčištění najde neshodu, určí příčinu a v případě, že je to bezpečné, odstraní předdefinovaná pravidla, která už nepotřebujete. Čisticí nikdy neodstraní pravidla, která jste vytvořili. 
 
-[Přečtěte si další informace o funkci přístupu JIT](security-center-just-in-time.md).
+Přečtěte si další informace o [funkci přístupu JIT](security-center-just-in-time.md).
 
 
 ### <a name="two-security-recommendations-for-web-applications-deprecated"></a>Dvě bezpečnostní doporučení pro webové aplikace, které jsou zastaralé
@@ -241,7 +251,9 @@ Nepoužívá se dvě doporučení zabezpečení související s webovými aplika
 
 Tato doporučení se už nebudou zobrazovat v seznamu Security Centerch doporučení. Související zásady již nebudou zahrnuty v iniciativě s názvem "Security Center výchozí".
 
-[Přečtěte si další informace o doporučeních zabezpečení](recommendations-reference.md).
+Přečtěte si další informace o [doporučeních zabezpečení](recommendations-reference.md).
+
+
 
 ## <a name="february-2020"></a>Únor 2020
 
@@ -263,4 +275,4 @@ Vylepšená verze funkce zabezpečeného skóre Azure Security Center je teď do
 
 Seznamte se se změnami se zabezpečeným skóre ve fázi Preview a zjistěte další nápravy, které vám pomůžou lépe zabezpečit vaše prostředí.
 
-Další informace najdete v [rozšířeném zabezpečeném skóre (Preview) v Azure Security Center](secure-score-security-controls.md).
+Přečtěte si další informace o [rozšířeném zabezpečení skóre (Preview) v Azure Security Center](secure-score-security-controls.md).
