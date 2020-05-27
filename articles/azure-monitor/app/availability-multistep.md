@@ -2,14 +2,13 @@
 title: Monitorování pomocí multi-step web Tests – Azure Application Insights
 description: Nastavení webových testů s více kroky pro monitorování webových aplikací s využitím Azure Application Insights
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.reviewer: sdash
-ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655936"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873347"
 ---
 # <a name="multi-step-web-tests"></a>Vícekrokové webové testy
 
@@ -17,13 +16,16 @@ Zaznamenanou posloupnost adres URL a interakcí můžete sledovat na webu prost�
 
 > [!NOTE]
 > Webové testy s více kroky závisejí na souborech WebTest sady Visual Studio. Bylo [oznámeno](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , že Visual Studio 2019 bude poslední verzí s funkcí webového testu. Je důležité si uvědomit, že i když nebudou přidány žádné nové funkce, funkce webového testu v aplikaci Visual Studio 2019 je stále nadále podporována a bude nadále podporována během životního cyklu podpory produktu. Tento Azure Monitor produktový tým se zabývá otázkami ohledně [budoucích testů dostupnosti](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)s více kroky.  
+> </br>
+> Webové testy s více kroky **nejsou podporovány** v cloudu [Azure Government](https://docs.microsoft.com/azure/azure-government/) .
+
 
 ## <a name="pre-requisites"></a>Požadavky
 
 * Visual Studio 2017 Enterprise nebo vyšší.
 * Nástroje pro testování výkonu a zátěže webu sady Visual Studio.
 
-Pro vyhledání požadovaných testovacích nástrojů. Spusťte **instalační program pro Visual Studio** > **jednotlivé komponenty** > **ladění a testování** > **webového výkonu a zátěžového testování**.
+Pro vyhledání požadovaných testovacích nástrojů. Spusťte **instalační program pro Visual Studio**  >  **jednotlivé komponenty**  >  **ladění a testování**  >  **webového výkonu a zátěžového testování**.
 
 ![Snímek obrazovky s uživatelským rozhraním instalačního programu sady Visual Studio s jednotlivými součástmi vybranými vedle položky pro nástroje pro testování výkonu webu a zátěžové testování](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -39,7 +41,7 @@ Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální
 
 ## <a name="upload-the-web-test"></a>Nahrát webový test
 
-1. Na portálu Application Insights v podokně dostupnost vyberte **vytvořit test** > test**typu** > **multi-step Web test**.
+1. Na portálu Application Insights v podokně dostupnost vyberte **vytvořit test**test  >  **typu**  >  **multi-step Web test**.
 
 2. Nastavte umístění testu, četnost a parametry výstrahy.
 
@@ -63,8 +65,8 @@ Pokyny k vytváření webových testů sady Visual Studio najdete v [oficiální
 |Nastavení| Vysvětlení
 |----|----|----|
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
-|**Classic** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
-|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota** = pro umístění upozornění v umístění**testovacích umístění – 2, minimálně pět umístění testu.**|
+|**Klasický** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
+|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota pro umístění upozornění**  =  **v umístění testovacích umístění – 2, minimálně pět umístění testu.**|
 
 ## <a name="configuration"></a>Konfigurace
 

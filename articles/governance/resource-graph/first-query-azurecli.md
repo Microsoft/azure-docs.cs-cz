@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: váš první dotaz rozhraní příkazového řádku Azure'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení rozšíření grafu prostředků pro Azure CLI a spuštění prvního dotazu.
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c7c3a37c2fc5b6aebaa42cacba71897684b2207
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240664"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871989"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Azure CLI
 
@@ -69,7 +69,7 @@ Když se rozšíření Azure CLI přidal do vašeho vybraného prostředí, mů�
    ```
 
    > [!NOTE]
-   > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Tak se nejdřív omezí rozsah výsledků dotazu a ty se pak seřadí.
+   > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Toto pořadí příkazů nejprve omezí výsledky dotazu a pak je vyřadí.
 
 1. Aktualizujte dotaz tak, aby se nejprve výsledky seřadily podle názvu (nastavte `order by` na **Name**) a pak nastavte omezení (`limit`) na prvních pět výsledků:
 
@@ -78,7 +78,7 @@ Když se rozšíření Azure CLI přidal do vašeho vybraného prostředí, mů�
    az graph query -q 'Resources | project name, type | order by name asc | limit 5'
    ```
 
-Pokud se konečný dotaz spustí několikrát, za předpokladu, že se ve vašem prostředí nic nemění, budou vrácené výsledky konzistentní a podle očekávání – seřazené podle vlastnosti **Name**, ale stále s omezením na prvních pět výsledků.
+Když se konečný dotaz několikrát spustí, předpokládá se, že se nic ve vašem prostředí nemění, vrácené výsledky jsou konzistentní a seřazené podle vlastnosti **Name** , ale pořád se omezí na pět nejlepších výsledků.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

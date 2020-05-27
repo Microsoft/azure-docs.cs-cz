@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bec28b98a8d2640b5a8034569d49077ce6b4177
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6151bbd9f056ef95c0875b83c7b6fccb732aebfe
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450985"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870960"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Plánování nasazení samoobslužného resetování hesla Azure Active Directory
 

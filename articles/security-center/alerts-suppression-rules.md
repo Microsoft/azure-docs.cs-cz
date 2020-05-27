@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 83ee59ca4353cd1af6c613e7624ee15f21b0a27e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 84b5cd8a59103f60249da861238acb45f8aa2fd5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650919"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871703"
 ---
 # <a name="suppressing-alerts-from-azure-security-centers-threat-protection"></a>Potlačení výstrah z ochrany před hrozbami Azure Security Center
 
@@ -22,8 +22,10 @@ Tato stránka vysvětluje, jak můžete pomocí pravidel potlačení výstrah po
 ## <a name="availability"></a>Dostupnost
 
 - Stav verze: verze **Preview**
-- Požadované role: Správce zabezpečení a vlastník můžou pravidla vytvořit nebo odstranit. Čtenáři zabezpečení a čtenáři můžou zobrazit pravidla.
-- Cloudy: vše (globální, národní, státní správa a Svrchovan)
+- Požadované role: **Správce zabezpečení** a **vlastník** můžou pravidla vytvořit nebo odstranit. **Čtenáři zabezpečení** a **čtenáři** můžou zobrazit pravidla.
+- Cloud 
+    - ✔ Komerční cloudy
+    - ✔ National/Svrchovan (US Gov, Čína gov, ostatní gov)
 
 
 ## <a name="introduction-to-suppression-rules"></a>Seznámení s pravidly potlačení

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691344"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871375"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -143,6 +143,7 @@ V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky
     > * Hodnoty popisků tak, jak se zobrazí ve formuláři; Nepokoušejte se rozdělit hodnotu do dvou částí se dvěma různými značkami. Například pole adresa musí být označeno s jednou značkou, i když pokrývá více řádků.
     > * Nezahrnujte klíče do polí s příznakem &mdash; pouze hodnoty.
     > * Data tabulky by měla být zjištěna automaticky a budou k dispozici v konečném výstupním souboru JSON. Pokud však model nerozpozná všechna data tabulky, můžete tato pole také označit ručně. Označte každou buňku v tabulce jiným popiskem. Pokud mají vaše formuláře tabulky s různými počty řádků, ujistěte se, že jste si vystavili alespoň jednu formu s největší možnou tabulkou.
+    > * Chcete-li odstranit použitou značku, vyberte obdélník v zobrazení dokumentu a stiskněte klávesu DELETE.
 
 ![Okno hlavního editoru nástroje pro ukázkové označování](../media/label-tool/main-editor.png)
 
@@ -164,6 +165,27 @@ V současné době jsou podporovány následující typy hodnot a variace:
     * výchozí, `dmy` , `mdy` ,`ymd`
 * `time`
 * `integer`
+
+> [!NOTE]
+> Tato pravidla se zobrazují pro formátování data:
+> 
+> Jako oddělovače data DMY lze použít následující znaky: `, - / . \` . Prázdný znak nelze použít jako oddělovač. Příklad:
+> * 01, 01, 2020
+> * 01-01-2020
+> * 01/01/2020
+>
+> Každý den a měsíc lze zapsat jako jednu nebo dvě číslice a rok může být dvě nebo čtyři číslice:
+> * 1-1-2020
+> * 1-01-20
+>
+> Pokud má řetězec DMY data osm číslic, je oddělovač volitelný:
+> * 01012020
+> * 01 01 2020
+>
+> Měsíc může být také zapsán jako úplný nebo krátký název. Pokud se název používá, jsou znaky oddělovače volitelné:
+> * 01/leden/2020
+> * 01Jan2020
+> * 01 1. ledna 2020
 
 ## <a name="train-a-custom-model"></a>Trénování vlastního modelu
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 90ceb2b716df429eaf4541f13cfa96cb9e0eac7d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745217"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871913"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Kopírování dat ze seznamu SharePointu Online pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,7 +52,7 @@ Konektor online seznamu SharePointu používá pro připojení k SharePointu ov�
     > [!NOTE]
     > Tato operace vyžaduje oprávnění vlastníka webu SharePointu Online. Vlastníka můžete najít tak, že kliknete na domovskou stránku webu – > klikněte na "X" v pravém horním rohu a > ověřte, kdo má roli Owner (Vlastník).
 
-    1. Otevřete odkaz na web SharePointu Online, např. `https://[your_site_url]/_layouts/15/appinv.aspx` (nahradit tenanta a název lokality).
+    1. Otevřete odkaz na web SharePointu Online `https://[your_site_url]/_layouts/15/appinv.aspx` , např. (nahraďte adresu URL webu).
     2. Vyhledejte ID aplikace, které jste zaregistrovali, vyplňte prázdná pole a klikněte na vytvořit.
 
         - Doména aplikace:`localhost.com`
@@ -86,7 +86,7 @@ Pro propojenou službu seznamu SharePointu Online jsou podporovány následujíc
 | servicePrincipalId  | ID aplikace (klienta) aplikace zaregistrované v Azure Active Directory. | Ano          |
 | servicePrincipalKey | Klíč aplikace Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano          |
 | tenantId            | ID tenanta, pod kterým se vaše aplikace nachází.          | Ano          |
-| connectVia          | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace o [požadavcích](#prerequisites)najdete výše v tomto článku. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No           |
+| connectVia          | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace o [požadavcích](#prerequisites)najdete výše v tomto článku. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne           |
 
 **Případě**
 
@@ -117,7 +117,7 @@ Pro propojenou službu seznamu SharePointu Online jsou podporovány následujíc
 | typ | Vlastnost **Type** datové sady musí být nastavená na **SharePointOnlineLResource**. | Ano |
 | listName | Název seznamu SharePointu Online | Ano |
 
-**Příklad**
+**Případě**
 
 ```json
 {
@@ -148,10 +148,10 @@ Pro kopírování dat ze seznamu SharePointu Online jsou v části **zdroje** ak
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SharePointOnlineListSource**. | Ano |
-| query | Vlastní možnosti dotazů OData pro filtrování dat Příklad: `"$top=10&$select=Title,Number"`. | No |
-| httpRequestTimeout | Časový limit (v sekundách), po který má požadavek HTTP získat odpověď. Výchozí hodnota je 300 (5 minut). | No |
+| query | Vlastní možnosti dotazů OData pro filtrování dat Příklad: `"$top=10&$select=Title,Number"`. | Ne |
+| httpRequestTimeout | Časový limit (v sekundách), po který má požadavek HTTP získat odpověď. Výchozí hodnota je 300 (5 minut). | Ne |
 
-**Příklad**
+**Případě**
 
 ```json
 "activities":[
@@ -189,16 +189,16 @@ Při kopírování dat ze seznamu SharePointu Online se používají následují
 
 | **Datový typ SharePointu Online**                 | **Datový typ OData**                                  | **Azure Data Factory pomocný datový typ** |
 | ----------------------------------------------- | ---------------------------------------------------- | ---------------------------------------- |
-| Jeden řádek textu                             | Edm.String                                           | String                                   |
-| Více řádků textu                          | Edm.String                                           | String                                   |
-| Volba (nabídka pro výběr)                    | Edm.String                                           | String                                   |
+| Jeden řádek textu                             | Edm.String                                           | Řetězec                                   |
+| Více řádků textu                          | Edm.String                                           | Řetězec                                   |
+| Volba (nabídka pro výběr)                    | Edm.String                                           | Řetězec                                   |
 | Číslo (1, 1,0, 100)                            | Edm.Double                                           | Double                                   |
 | Měna ($, y, €)                              | Edm.Double                                           | Double                                   |
-| Datum a čas                                   | EDM. DateTime                                         | DateTime                                 |
+| Datum a čas                                   | EDM. DateTime                                         | Datum a čas                                 |
 | Vyhledávání (informace již na tomto webu)       | Edm.Int32                                            | Int32                                    |
 | Ano/ne (zaškrtávací políčko)                              | Edm.Boolean                                          | Logická hodnota                                  |
 | Osoba nebo Skupina                                 | Edm.Int32                                            | Int32                                    |
-| Hypertextový odkaz nebo obrázek                            | Edm.String                                           | String                                   |
+| Hypertextový odkaz nebo obrázek                            | Edm.String                                           | Řetězec                                   |
 | Počítané (výpočet na základě jiných sloupců) | EDM. String/EDM. Double/EDM. DateTime/EDM. Boolean | String, Double/DateTime/Boolean     |
 | Příloha                                      | Nepodporuje se                                        |                                          |
 | Výsledek úkolu                                    | Nepodporuje se                                        |                                          |

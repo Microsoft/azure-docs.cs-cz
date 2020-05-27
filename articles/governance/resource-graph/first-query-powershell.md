@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: váš první dotaz na PowerShell'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení modulu Resource Graph pro Azure PowerShell a spuštění prvního dotazu.
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e98ca5974ba46d4d908cfe6dd8c04d3f6ba33a2a
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240657"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872003"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell
 
@@ -54,7 +54,7 @@ Modul Resource Graph pro PowerShell je **AZ. ResourceGraph**.
 
 ## <a name="run-your-first-resource-graph-query"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
 
-Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můžete vyzkoušet jednoduchý dotaz na službu Resource Graph. Dotaz vrátí prvních pět zdrojů Azure pomocí ** Názvem ** a ** Typem zdroje ** každého zdroje.
+Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můžete vyzkoušet jednoduchý dotaz na službu Resource Graph. Dotaz vrátí prvních pět prostředků Azure s **názvem** a **typem prostředku** každého prostředku.
 
 1. Spusťte první dotaz Azure Resource Graph použitím `Search-AzGraph` cmdlet:
 
@@ -76,7 +76,7 @@ Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můž
    ```
 
    > [!NOTE]
-   > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Tak se nejdřív omezí rozsah výsledků dotazu a ty se pak seřadí.
+   > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Toto pořadí příkazů nejprve omezí výsledky dotazu a pak je vyřadí.
 
 1. Aktualizujte dotaz tak, aby se nejprve výsledky seřadily podle názvu (nastavte `order by` na **Name**) a pak nastavte omezení (`limit`) na prvních pět výsledků:
 
@@ -85,10 +85,10 @@ Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můž
    Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
    ```
 
-Pokud se konečný dotaz spustí několikrát, za předpokladu, že se ve vašem prostředí nic nemění, budou vrácené výsledky konzistentní a podle očekávání – seřazené podle vlastnosti **Name**, ale stále s omezením na prvních pět výsledků.
+Když se konečný dotaz několikrát spustí, předpokládá se, že se nic ve vašem prostředí nemění, vrácené výsledky jsou konzistentní a seřazené podle vlastnosti **Name** , ale pořád se omezí na pět nejlepších výsledků.
 
 > [!NOTE]
-> Pokud dotaz nevrátí výsledky z předplatného, ke kterému už máte přístup, a pak si `Search-AzGraph` Všimněte, že se výchozí nastavení rutiny ve výchozím kontextu předplatným. Pokud chcete zobrazit seznam ID předplatných, která jsou součástí výchozího kontextu, spusťte `(Get-AzContext).Account.ExtendedProperties.Subscriptions` tuto možnost, pokud chcete hledat ve všech předplatných, ke kterým máte přístup, a jeden z `Search-AzGraph` nich může nastavit PSDefaultParameterValues pro rutinu spuštěním.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Pokud dotaz nevrátí výsledky z předplatného, ke kterému už máte přístup, a pak si všimněte, že se `Search-AzGraph` výchozí nastavení rutiny ve výchozím kontextu předplatným. Pokud chcete zobrazit seznam ID předplatných, která jsou součástí výchozího kontextu, spusťte tuto možnost `(Get-AzContext).Account.ExtendedProperties.Subscriptions` , pokud chcete hledat ve všech předplatných, ke kterým máte přístup, a jeden z nich může nastavit PSDefaultParameterValues pro `Search-AzGraph` rutinu spuštěním.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

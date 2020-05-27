@@ -13,13 +13,13 @@ ms.custom:
 - seo-java-august2019
 - seo-java-september2019
 - mqtt
-ms.date: 06/21/2019
-ms.openlocfilehash: 954fe6f92b68d011aaff0fff7925b3409ee628cb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/26/2020
+ms.openlocfilehash: 225b9407bff4294288bb4834cbb0d919698b78c6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769114"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873168"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Rychlý Start: odeslání telemetrie do služby Azure IoT Hub a její čtení pomocí aplikace Java
 
@@ -133,7 +133,7 @@ Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho cent
 
     Následující snímek obrazovky ukazuje výstup, zatímco aplikace simulovaného zařízení odesílá telemetrická data do vašeho centra IoT:
 
-    ![Výstup ze telemetrie odesílané zařízením do služby IoT Hub](media/quickstart-send-telemetry-java/iot-hub-simulated-device.png)
+    ![Výstup ze telemetrie odesílané zařízením do služby IoT Hub](media/quickstart-send-telemetry-java/simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
@@ -145,9 +145,9 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
     | Proměnná | Hodnota |
     | -------- | ----------- |
-    | `eventHubsCompatibleEndpoint` | Nahraďte hodnotu proměnné pomocí koncového bodu kompatibilního s Event Hubs, který jste si poznamenali dříve. |
-    | `eventHubsCompatiblePath`     | Nahraďte hodnotu proměnné cestou kompatibilní s Event Hubs, kterou jste si poznamenali dříve. |
-    | `iotHubSasKey`                | Nahraďte hodnotu proměnné primárním klíčem služby, který jste si poznamenali dříve. |
+    | `EVENT_HUBS_COMPATIBLE_ENDPOINT` | Nahraďte hodnotu proměnné pomocí koncového bodu kompatibilního s Event Hubs, který jste si poznamenali dříve. |
+    | `EVENT_HUBS_COMPATIBLE_PATH`     | Nahraďte hodnotu proměnné cestou kompatibilní s Event Hubs, kterou jste si poznamenali dříve. |
+    | `IOT_HUB_SAS_KEY`                | Nahraďte hodnotu proměnné primárním klíčem služby, který jste si poznamenali dříve. |
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a sestavte back-endovou aplikaci:
 
@@ -163,7 +163,7 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
     Následující snímek obrazovky ukazuje výstup, zatímco back-endová aplikace přijímá telemetrická data odeslaná simulovaným zařízením do centra:
 
-    ![Výstupem do back-endové aplikace je příjem telemetrie odeslaných do služby IoT Hub.](media/quickstart-send-telemetry-java/iot-hub-read-device-to-cloud.png)
+    ![Výstupem do back-endové aplikace je příjem telemetrie odeslaných do služby IoT Hub.](media/quickstart-send-telemetry-java/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

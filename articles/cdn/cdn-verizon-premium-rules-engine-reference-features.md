@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2d4090934a940809fe75ad70e0650eb1c9353f1
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253488"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872720"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN z funkcí modulu pravidel Premium Verizon
 
@@ -20,150 +20,9 @@ V tomto článku jsou uvedené podrobné popisy dostupných funkcí pro [modul p
 
 Třetí část pravidla je funkce. Funkce definuje typ akce, která je použita na typ požadavku, který je identifikován sadou podmínek shody.
 
-## <a name="access-features"></a>Funkce přístupu
 
-Tyto funkce jsou navržené pro řízení přístupu k obsahu.
+Nejnovější funkce najdete v [dokumentaci k modulům Verizon Rules](https://docs.vdms.com/cdn/index.html#Quick_References/HRE_QR.htm#Actions).
 
-Název | Účel
------|--------
-[Odepřít přístup (403)](#deny-access-403) | Určuje, zda jsou všechny požadavky odmítnuty pomocí odpovědi 403 Forbidden.
-[Ověření tokenu](#token-auth) | Určuje, zda je pro požadavek použito ověřování založené na tokenech.
-[Kód pro odepření ověření tokenu](#token-auth-denial-code) | Určuje typ odpovědi, která se vrátí uživateli, pokud je žádost zamítnuta z důvodu ověřování založeného na tokenech.
-[Ignorovat velikost písmen URL pro ověření tokenu](#token-auth-ignore-url-case) | Určuje, zda porovnávání adres URL prováděné ověřováním na základě tokenu rozlišuje velká a malá písmena.
-[Parametr ověření tokenu](#token-auth-parameter) | Určuje, zda má být přejmenován parametr řetězce dotazu ověřování založeného na tokenu.
-
-## <a name="caching-features"></a>Funkce pro ukládání do mezipaměti
-
-Tyto funkce jsou navržené tak, aby se přizpůsobily, kdy a jak se obsah ukládá do mezipaměti.
-
-Název | Účel
------|--------
-[Parametry šířky pásma](#bandwidth-parameters) | Určuje, zda jsou aktivní parametry omezení šířky pásma (například ec_rate a ec_prebuf).
-[Omezení šířky pásma](#bandwidth-throttling) | Omezuje šířku pásma pro odpověď poskytovanou bodem POP (Point-of-Presence).
-[Vynechat mezipaměť](#bypass-cache) | Určuje, zda by požadavek měl obejít ukládání do mezipaměti.
-[Zpracování hlaviček Cache-Control](#cache-control-header-treatment) | Řídí generování `Cache-Control` záhlaví pomocí bodu POP, pokud je aktivní externí funkce Max-stáří.
-[Řetězec dotazu na klíč v mezipaměti](#cache-key-query-string) | Určuje, jestli mezipaměť-Key zahrnuje nebo vylučuje parametry řetězce dotazu přidružené k žádosti.
-[Přepsání klíče do mezipaměti](#cache-key-rewrite) | Přepíše klíč mezipaměti přidružený k žádosti.
-[Vyplnit celou mezipaměť](#complete-cache-fill) | Určuje, co se stane, když požadavek způsobí chybějící částečnou mezipaměť na bodu POP.
-[Komprimovat typy souborů](#compress-file-types) | Definuje formáty souborů pro soubory, které jsou komprimovány na serveru.
-[Výchozí interní maximální stáří](#default-internal-max-age) | Určuje výchozí interval maximálního stáří pro revalidovou mezipaměť serveru POP na původní server.
-[Konec platnosti hlaviček](#expires-header-treatment) | Řídí generování `Expires` záhlaví pomocí ovládacího prvku pop, pokud je aktivní externí funkce Max-stáří.
-[Externí maximum – stáří](#external-max-age) | Určuje interval maximálního stáří pro revalidování mezipaměti POP v prohlížeči.
-[Vynutit interní maximum – stáří](#force-internal-max-age) | Určuje interval maximálního stáří pro revalidu mezipaměti serveru POP na původní server.
-[H. 264 podpora (progresivní stahování HTTP)](#h264-support-http-progressive-download) | Určuje typy formátů souborů H. 264, které mohou být použity pro streamování obsahu.
-[Akceptovat požadavek bez mezipaměti](#honor-no-cache-request) | Určuje, zda jsou požadavky na ukládání do mezipaměti klienta HTTP předány na zdrojový server.
-[Ignorovat původ – mezipaměť](#ignore-origin-no-cache) | Určuje, jestli CDN ignoruje některé direktivy poskytované ze zdrojového serveru.
-[Ignorovat nevyhovující rozsahy](#ignore-unsatisfiable-ranges) | Určuje odpověď, která se vrátí klientům, když požadavek vygeneruje 416 požadovaný rozsah, který nesplňuje stavový kód.
-[Interní Max – zastaralé](#internal-max-stale) | Určuje, jak dlouho po normální době vypršení platnosti může být prostředek uložený v mezipaměti obsluhován z bodu POP, pokud se POP nemůže znovu ověřit prostředek uložený v mezipaměti se zdrojovým serverem.
-[Částečné sdílení mezipaměti](#partial-cache-sharing) | Určuje, zda může požadavek vygenerovat částečně uložený obsah v mezipaměti.
-[Předběžně ověřit obsah v mezipaměti](#prevalidate-cached-content) | Určuje, zda je obsah uložený v mezipaměti způsobilý k předčasnému revalidu před vypršením hodnoty TTL.
-[Aktualizovat soubory mezipaměti s nulovou bajtů](#refresh-zero-byte-cache-files) | Určuje, jakým způsobem se v rozhraních pop zpracovávají požadavky klienta HTTP na prostředek mezipaměti o velikosti 0 bajtů.
-[Nastavit stavové kódy pro ukládání do mezipaměti](#set-cacheable-status-codes) | Definuje sadu stavových kódů, které mohou mít za následek obsah uložený v mezipaměti.
-[Zastaralé doručování obsahu při chybě](#stale-content-delivery-on-error) | Určuje, zda se doručí obsah v mezipaměti s vypršenou platností, když dojde k chybě během revalidu mezipaměti nebo při načítání požadovaného obsahu ze serveru zákazníka.
-[Zastaralé během Revalidace](#stale-while-revalidate) | Zlepšuje výkon tím, že umožňuje bodům POP zajišťovat zastaralého klienta žadateli, zatímco probíhá resynchronizace.
-
-## <a name="comment-feature"></a>Funkce Comment
-
-Tato funkce je navržená tak, aby v rámci pravidla poskytovala Další informace.
-
-Název | Účel
------|--------
-[Vytvořena](#comment) | Umožňuje přidat poznámku v rámci pravidla.
-
-## <a name="header-features"></a>Funkce hlaviček
-
-Tyto funkce jsou navržené tak, aby je bylo možné přidat, upravit nebo odstranit v žádosti nebo odpovědi.
-
-Název | Účel
------|--------
-[Hlavička doby odezvy](#age-response-header) | Určuje, zda je v odpovědi odesílané žadateli obsažena hlavička věkové odpovědi.
-[Hlavičky odpovědí mezipaměti ladění](#debug-cache-response-headers) | Určuje, zda odpověď může obsahovat hlavičku odpovědi X-EC-Debug, která poskytuje informace o zásadách mezipaměti pro požadovaný prostředek.
-[Upravit hlavičku žádosti klienta](#modify-client-request-header) | Přepíše, připojí nebo odstraní hlavičku z požadavku.
-[Upravit hlavičku odpovědi klienta](#modify-client-response-header) | Přepíše, připojí nebo odstraní hlavičku z odpovědi.
-[Nastavit vlastní hlavičku IP adresy klienta](#set-client-ip-custom-header) | Umožňuje přidat IP adresu žádajícího klienta do žádosti jako vlastní hlavičku požadavku.
-
-## <a name="logging-features"></a>Funkce protokolování
-
-Tyto funkce jsou navržené k přizpůsobení dat uložených v nezpracovaných souborech protokolů.
-
-Název | Účel
------|--------
-[Vlastní pole protokolu 1](#custom-log-field-1) | Určuje formát a obsah, který je přiřazený k vlastnímu poli protokolu v nezpracovaném souboru protokolu.
-[Řetězec dotazu protokolu](#log-query-string) | Určuje, zda je řetězec dotazu uložen spolu s adresou URL v protokolech přístupu.
-
-
-<!---
-## Optimize
-
-These features determine whether a request will undergo the optimizations provided by Edge Optimizer.
-
-Name | Purpose
------|--------
-Edge Optimizer | Determines whether Edge Optimizer can be applied to a request.
-Edge Optimizer – Instantiate Configuration | Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-### Edge Optimizer
-**Purpose:** Determines whether Edge Optimizer can be applied to a request.
-
-If this feature has been enabled, then the following criteria must also be met before the request will be processed by Edge Optimizer:
-
-- The requested content must use an edge CNAME URL.
-- The edge CNAME referenced in the URL must correspond to a site whose configuration has been activated in a rule.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Value|Result
--|-
-Enabled|Indicates that the request is eligible for Edge Optimizer processing.
-Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
-
-**Default Behavior:** Disabled
-
-
-### Edge Optimizer - Instantiate Configuration
-**Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
-
-This feature requires the ADN platform and the Edge Optimizer feature.
-
-Key information:
-
-- Instantiation of a site configuration is required before requests to the corresponding edge CNAME can be processed by Edge Optimizer.
-- This instantiation only needs to be performed a single time per site configuration. A site configuration that has been instantiated will remain in that state until the Edge Optimizer – Instantiate Configuration feature that references it is removed from the rule.
-- The instantiation of a site configuration does not mean that all requests to the corresponding edge CNAME will automatically be processed by Edge Optimizer. The Edge Optimizer feature determines whether an individual request will be processed.
-
-If the desired site does not appear in the list, then you should edit its configuration and verify that the Active option has been marked.
-
-**Default Behavior:** Site configurations are inactive by default.
---->
-
-## <a name="origin-features"></a>Funkce zdroje
-
-Tyto funkce jsou navržené tak, aby bylo možné řídit, jak CDN komunikuje se zdrojovým serverem.
-
-Název | Účel
------|--------
-[Maximální počet požadavků Keep-Alive](#maximum-keep-alive-requests) | Definuje maximální počet požadavků na připojení Keep-Alive před jeho zavřením.
-[Speciální hlavičky proxy serveru](#proxy-special-headers) | Definuje sadu hlaviček žádostí specifických pro CDN, které se předávají z POP na zdrojový server.
-
-## <a name="specialty-features"></a>Specializované funkce
-
-Tyto funkce poskytují pokročilé funkce pro pokročilé uživatele.
-
-Název | Účel
------|--------
-[Metody HTTP, které je možné ukládat do mezipaměti](#cacheable-http-methods) | Určuje sadu dalších metod HTTP, které lze uložit do mezipaměti v síti.
-[Velikost textu žádosti v mezipaměti](#cacheable-request-body-size) | Definuje prahovou hodnotu pro určení, zda lze odpověď POST ukládat do mezipaměti.
-[Uživatelská proměnná](#user-variable) | Pouze pro interní použití.
-
-## <a name="url-features"></a>Funkce adresy URL
-
-Tyto funkce umožňují přesměrování nebo přepsání požadavku na jinou adresu URL.
-
-Název | Účel
------|--------
-[Sledovat přesměrování](#follow-redirects) | Určuje, zda mohou být požadavky přesměrovány na název hostitele definovaný v hlavičce umístění, kterou vrátí server původu zákazníka.
-[Přesměrování adresy URL](#url-redirect) | Přesměruje požadavky přes hlavičku umístění.
-[Přepsání adresy URL](#url-rewrite)  | Přepíše adresu URL požadavku.
 
 ## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a>Referenční informace o funkcích stroje Verizon Premium Rules Azure CDN
 
@@ -255,7 +114,7 @@ Zakázáno|Způsobí, že body POP budou ukládat prostředky do mezipaměti pod
 Informace o klíči:
 
 - Tato funkce předpokládá, že odpovědi GET by měly být vždy uloženy do mezipaměti. V důsledku toho by během nastavování této funkce neměla být zahrnutá metoda GET HTTP.
-- Tato funkce podporuje pouze metodu POST HTTP. Nastavením této funkce na můžete `POST`povolit ukládání do mezipaměti po odeslání odpovědi.
+- Tato funkce podporuje pouze metodu POST HTTP. Nastavením této funkce na můžete povolit ukládání do mezipaměti po odeslání odpovědi `POST` .
 - Ve výchozím nastavení jsou uloženy do mezipaměti pouze požadavky, jejichž tělo je menší než 14 KB. Chcete-li nastavit maximální velikost textu požadavku, použijte funkci velikost textu požadavků do mezipaměti.
 
 **Výchozí chování:** Pouze odpovědi jsou ukládány do mezipaměti.
@@ -299,9 +158,9 @@ Nejjednodušším způsobem, jak dosáhnout tohoto typu konfigurace, je umístit
 Hodnota|Výsledek
 --|--
 Přepsat|Zajistí, že dojde k následujícím akcím:<br/> – Přepíše `Cache-Control` hlavičku vygenerovanou počátečním serverem. <br/>– Přidá `Cache-Control` hlavičku vytvořenou externí funkcí maximálního stáří pro odpověď.
-Předávací|Zajistí, aby `Cache-Control` se záhlaví vytvořená externí funkcí pro maximální stáří nikdy nepřidalo do odpovědi. <br/> Pokud zdrojový server vytvoří `Cache-Control` hlavičku, projde koncovým uživatelem. <br/> Pokud zdrojový Server nevytváří `Cache-Control` hlavičku, může tato možnost způsobit, že hlavička odpovědi nebude obsahovat `Cache-Control` hlavičku.
-Přidat, pokud chybí|Pokud se `Cache-Control` ze zdrojového serveru nepřijala hlavička, tato možnost přidá `Cache-Control` hlavičku vytvořenou externí funkcí pro maximální stáří. Tato možnost je užitečná pro zajištění, že všechny assety mají `Cache-Control` přiřazenou hlavičku.
-Odebrat| Tato možnost zajistí, že `Cache-Control` hlavička není zahrnuta v odpovědi hlavičky. Pokud byla `Cache-Control` hlavička již přiřazena, je odebrána z odpovědi záhlaví.
+Předávací|Zajistí, aby se `Cache-Control` záhlaví vytvořená externí funkcí pro maximální stáří nikdy nepřidalo do odpovědi. <br/> Pokud zdrojový server vytvoří `Cache-Control` hlavičku, projde koncovým uživatelem. <br/> Pokud zdrojový Server nevytváří `Cache-Control` hlavičku, může tato možnost způsobit, že hlavička odpovědi nebude obsahovat `Cache-Control` hlavičku.
+Přidat, pokud chybí|Pokud se `Cache-Control` ze zdrojového serveru nepřijala hlavička, tato možnost přidá `Cache-Control` hlavičku vytvořenou externí funkcí pro maximální stáří. Tato možnost je užitečná pro zajištění, že všechny assety mají přiřazenou `Cache-Control` hlavičku.
+Odebrat| Tato možnost zajistí, že `Cache-Control` Hlavička není zahrnuta v odpovědi hlavičky. Pokud byla `Cache-Control` Hlavička již přiřazena, je odebrána z odpovědi záhlaví.
 
 **Výchozí chování:** Přepsat.
 
@@ -338,7 +197,7 @@ Pokud chcete duplikovat chování při ukládání řetězce dotazu "no-cache" n
 
 Následující ukázkové použití této funkce poskytuje ukázkový požadavek a výchozí klíč mezipaměti:
 
-- **Vzorový požadavek:** http://wpc.0001.&lt;D omain&gt;/800001/Origin/Folder/Asset.htm? SessionID = 1234&Language = EN&UserID = 01
+- **Vzorový požadavek:** http://wpc.0001.&lt ;D omain &gt; /800001/Origin/Folder/Asset.htm? SessionID = 1234&Language = EN&UserID = 01
 - **Výchozí mezipaměť-klíč:** /800001/Origin/Folder/Asset.htm
 
 ##### <a name="include"></a>Zařadit členy
@@ -410,7 +269,7 @@ Nová cesta|Zadejte relativní cestu pro nový klíč mezipaměti. Relativní ce
 
 ---
 
-### <a name="comment"></a>Poznámka
+### <a name="comment"></a>Komentář
 
 **Účel:** Umožňuje přidat poznámku v rámci pravidla.
 
@@ -569,15 +428,15 @@ Zakázáno|Hlavička odpovědi X-EC-Debug se z odpovědi vyloučí.
 
 Informace o klíči:
 
-- Tato akce bude probíhat pouze pro odpovědi ze zdrojového serveru, který nepřiřadil údaje o maximálním stáří v hlavičce `Cache-Control` nebo. `Expires`
+- Tato akce bude probíhat pouze pro odpovědi ze zdrojového serveru, který nepřiřadil údaje o maximálním stáří v `Cache-Control` `Expires` hlavičce nebo.
 - Tato akce nebude provedena u prostředků, které nejsou považovány za mezipaměť.
-- Tato akce nemá vliv na revalidy mezipaměti POP v prohlížeči. Tyto typy replatných jsou určeny hlavičkou `Cache-Control` nebo `Expires` odeslanými do prohlížeče, které lze přizpůsobit pomocí externí funkce pro maximální stáří.
+- Tato akce nemá vliv na revalidy mezipaměti POP v prohlížeči. Tyto typy replatných jsou určeny `Cache-Control` `Expires` hlavičkou nebo odeslanými do prohlížeče, které lze přizpůsobit pomocí externí funkce pro maximální stáří.
 - Výsledky této akce nemají pozorovatelný účinek na hlavičky odpovědí a obsah vrácený z bodů POP pro váš obsah, ale může to mít vliv na množství replatných přenosů odeslaných z bodů POP na zdrojový server.
 - Tuto funkci konfigurujete pomocí:
     - Výběr stavového kódu, pro který lze použít výchozí interní maximální stáří.
     - Zadáním celočíselné hodnoty a následným výběrem požadované časové jednotky (například sekund, minut, hodin atd.). Tato hodnota definuje výchozí interní interval pro maximální stáří.
 
-- Když se časová jednotka nastaví na off, přiřadí se výchozí interní interval max. 7 dní pro žádosti, u kterých se nepřiřadilo označení maximálního stáří v hlavičce `Cache-Control` nebo `Expires` .
+- Když se časová jednotka nastaví na off, přiřadí se výchozí interní interval max. 7 dní pro žádosti, u kterých se nepřiřadilo označení maximálního stáří v `Cache-Control` hlavičce nebo `Expires` .
 
 **Výchozí hodnota:** 7 dní
 
@@ -637,9 +496,9 @@ Nejjednodušším způsobem, jak dosáhnout tohoto typu konfigurace, je umístit
 Hodnota|Výsledek
 --|--
 Přepsat|Zajistí, že budou provedeny následující akce:<br/>– Přepíše `Expires` hlavičku vygenerovanou počátečním serverem.<br/>– Přidá `Expires` hlavičku vytvořenou externí funkcí maximálního stáří pro odpověď.
-Předávací|Zajistí, aby `Expires` se záhlaví vytvořená externí funkcí pro maximální stáří nikdy nepřidalo do odpovědi. <br/> Pokud zdrojový server vytvoří `Expires` hlavičku, předává se koncovému uživateli. <br/>Pokud zdrojový Server nevytváří `Expires` hlavičku, může tato možnost způsobit, že hlavička odpovědi nebude obsahovat `Expires` hlavičku.
+Předávací|Zajistí, aby se `Expires` záhlaví vytvořená externí funkcí pro maximální stáří nikdy nepřidalo do odpovědi. <br/> Pokud zdrojový server vytvoří `Expires` hlavičku, předává se koncovému uživateli. <br/>Pokud zdrojový Server nevytváří `Expires` hlavičku, může tato možnost způsobit, že hlavička odpovědi nebude obsahovat `Expires` hlavičku.
 Přidat, pokud chybí| Pokud se `Expires` ze zdrojového serveru nepřijala hlavička, tato možnost přidá `Expires` hlavičku vytvořenou externí funkcí pro maximální stáří. Tato možnost je užitečná pro zajištění, že se všem assetům přiřadí `Expires` záhlaví.
-Odebrat| Zajistí, že `Expires` hlavička není zahrnuta v hlavičce odpovědi. Pokud byla `Expires` hlavička již přiřazena, je odebrána z odpovědi záhlaví.
+Odebrat| Zajistí, že `Expires` Hlavička není zahrnuta v hlavičce odpovědi. Pokud byla `Expires` Hlavička již přiřazena, je odebrána z odpovědi záhlaví.
 
 **Výchozí chování:** Přepsat
 
@@ -657,10 +516,10 @@ Povolení této funkce bude generovat `Cache-Control: max-age` a `Expires` hlavi
 
 Informace o klíči:
 
-- Tato akce nemá vliv na opětovné ověření v mezipaměti serveru POP na původní server. Tyto typy replatných jsou určeny hlavičkou `Cache-Control` a `Expires` přijatými ze zdrojového serveru a lze je přizpůsobit pomocí výchozích vnitřních funkcí maximálního stáří a vynutit interní funkce maximálního stáří.
+- Tato akce nemá vliv na opětovné ověření v mezipaměti serveru POP na původní server. Tyto typy replatných jsou určeny `Cache-Control` `Expires` hlavičkou a přijatými ze zdrojového serveru a lze je přizpůsobit pomocí výchozích vnitřních funkcí maximálního stáří a vynutit interní funkce maximálního stáří.
 - Tuto funkci můžete nakonfigurovat zadáním celočíselné hodnoty a výběrem požadované časové jednotky (například sekundy, minuty, hodiny atd.).
-- Nastavení této funkce na zápornou hodnotu způsobí, že body POP `Cache-Control: no-cache` odesílají a `Expires` čas, který je v minulosti nastaven s každou odpovědí do prohlížeče. I když klient protokolu HTTP nebude odpověď ukládat do mezipaměti, nebude mít toto nastavení vliv na schopnost bodů POP ukládat odpověď ze zdrojového serveru do mezipaměti.
-- Když se časová jednotka nastaví na off, tato funkce se zakáže. Hlavičky `Cache-Control` a `Expires` se uloží do mezipaměti s odpovědí zdrojového serveru do prohlížeče.
+- Nastavení této funkce na zápornou hodnotu způsobí, že body POP odesílají `Cache-Control: no-cache` a `Expires` čas, který je v minulosti nastaven s každou odpovědí do prohlížeče. I když klient protokolu HTTP nebude odpověď ukládat do mezipaměti, nebude mít toto nastavení vliv na schopnost bodů POP ukládat odpověď ze zdrojového serveru do mezipaměti.
+- Když se časová jednotka nastaví na off, tato funkce se zakáže. `Cache-Control`Hlavičky a se `Expires` uloží do mezipaměti s odpovědí zdrojového serveru do prohlížeče.
 
 **Výchozí chování:** Zaokrouhl
 
@@ -698,7 +557,7 @@ Zakázáno|Žádosti nebudou přesměrovány.
 Informace o klíči:
 
 - Tato funkce přepíše interval maximálního stáří definovaný v `Cache-Control` nebo `Expires` hlavičkách vygenerovaných ze zdrojového serveru.
-- Tato funkce nemá vliv na revalidy mezipaměti POP v prohlížeči. Tyto typy replatných jsou určeny hlavičkou `Cache-Control` nebo `Expires` odeslanými do prohlížeče.
+- Tato funkce nemá vliv na revalidy mezipaměti POP v prohlížeči. Tyto typy replatných jsou určeny `Cache-Control` `Expires` hlavičkou nebo odeslanými do prohlížeče.
 - Tato funkce nemá pozorovatelný účinek na odpověď doručenou prostřednictvím bodu POP žadateli. Může to ale mít vliv na množství replatných přenosů odeslaných z bodů POP na zdrojový server.
 - Tuto funkci konfigurujete pomocí:
     - Výběr stavového kódu, pro který bude použito interní maximum – stáří.
@@ -756,7 +615,7 @@ Informace o klíči:
 
 **Účel:** Určuje, zda budou do zdrojového serveru předány požadavky na ukládání do mezipaměti klienta HTTP.
 
-V případě, že klient HTTP odešle hlavičku `Cache-Control: no-cache` a/nebo `Pragma: no-cache` v požadavku HTTP, dojde k žádosti bez mezipaměti.
+V případě, že klient HTTP odešle `Cache-Control: no-cache` hlavičku a/nebo `Pragma: no-cache` v požadavku HTTP, dojde k žádosti bez mezipaměti.
 
 Hodnota|Výsledek
 --|--
@@ -765,7 +624,7 @@ Zakázáno|Obnoví výchozí chování. Výchozím chováním je zabránit přep
 
 U všech produkčních přenosů se důrazně doporučuje ponechat tuto funkci ve svém výchozím zakázaném stavu. Jinak se zdrojové servery nebudou chránit před koncovými uživateli, kteří můžou nechtěně aktivovat spoustu požadavků bez mezipaměti při obnovení webových stránek nebo z mnoha oblíbených přehrávačů médií, které jsou kódované tak, aby odesílali hlavičku bez mezipaměti s každou žádostí o video. Tato funkce ale může být užitečná pro použití v některých neprodukčních nebo testovacích adresářích, aby bylo možné na vyžádání začít s čerstvým obsahem ze zdrojového serveru.
 
-Stav mezipaměti, který se oznamuje pro požadavek, který se dá přeslat na zdrojový server, protože tato funkce je `TCP_Client_Refresh_Miss`. Sestava stavů mezipaměti, která je k dispozici v základním modulu vytváření sestav, poskytuje statistické informace podle stavu mezipaměti. Tato sestava umožňuje sledovat počet a procento požadavků, které jsou předávány na zdrojovém serveru z důvodu této funkce.
+Stav mezipaměti, který se oznamuje pro požadavek, který se dá přeslat na zdrojový server, protože tato funkce je `TCP_Client_Refresh_Miss` . Sestava stavů mezipaměti, která je k dispozici v základním modulu vytváření sestav, poskytuje statistické informace podle stavu mezipaměti. Tato sestava umožňuje sledovat počet a procento požadavků, které jsou předávány na zdrojovém serveru z důvodu této funkce.
 
 **Výchozí chování:** Zabezpečen.
 
@@ -943,7 +802,7 @@ Odstranit|Odstraní určenou hlavičku požadavku.|**Hodnota hlavičky žádosti
 Informace o klíči:
 
 - Zajistěte, aby hodnota zadaná v parametru název byla přesnou shodou pro požadovanou hlavičku požadavku.
-- Případ se nebere v úvahu pro účely identifikace hlavičky. K identifikaci můžete například použít kteroukoli z následujících variant názvu `Cache-Control` záhlaví:
+- Případ se nebere v úvahu pro účely identifikace hlavičky. K identifikaci můžete například použít kteroukoli z následujících variant `Cache-Control` názvu záhlaví:
     - řízení mezipaměti
     - ŘÍZENÍ MEZIPAMĚTI
     - Řízení mezipaměti
@@ -983,7 +842,7 @@ Odstranit|Odstraní určenou hlavičku odpovědi.|**Hodnota hlavičky odpovědi 
 Informace o klíči:
 
 - Zajistěte, aby hodnota zadaná v parametru název byla přesnou shodou pro požadovanou hlavičku odpovědi.
-- Případ se nebere v úvahu pro účely identifikace hlavičky. K identifikaci můžete například použít kteroukoli z následujících variant názvu `Cache-Control` záhlaví:
+- Případ se nebere v úvahu pro účely identifikace hlavičky. K identifikaci můžete například použít kteroukoli z následujících variant `Cache-Control` názvu záhlaví:
     - řízení mezipaměti
     - ŘÍZENÍ MEZIPAMĚTI
     - Řízení mezipaměti
@@ -1168,7 +1027,7 @@ Zakázáno|Žadateli se přepošle chyba zdrojového serveru.
 Informace o klíči:
 
 - Chování této funkce se liší v závislosti na zvolené časové jednotce.
-    - **Časová jednotka:** Zadejte dobu a vyberte časovou jednotku (například sekundy, minuty, hodiny atd.), aby bylo možné doručování zastaralých obsahu. Tento typ instalace umožňuje CDN zvětšit dobu, po kterou může doručovat obsah, než se ověří podle následujícího vzorce: **hodnota TTL** + **zastaralá při revalidaci** .
+    - **Časová jednotka:** Zadejte dobu a vyberte časovou jednotku (například sekundy, minuty, hodiny atd.), aby bylo možné doručování zastaralých obsahu. Tento typ instalace umožňuje CDN zvětšit dobu, po kterou může doručovat obsah, než se ověří podle následujícího vzorce: **hodnota TTL**  +  **zastaralá při revalidaci** .
     - **Vypnuto:** Pokud chcete před odesláním žádosti o zastaralý obsah vyžádat opětovné ověření, vyberte vypnuto.
         - Nezadávejte časovou prodlevu, protože je neplatná a bude ignorována.
 
@@ -1314,7 +1173,7 @@ Konfigurace této funkce vyžaduje nastavení následujících možností:
 
 Možnost|Popis
 -|-
-kód|Vyberte kód odpovědi, který se vrátí žadateli.
+Kód|Vyberte kód odpovědi, který se vrátí žadateli.
 Zdrojový & – vzor| Tato nastavení definují vzor identifikátoru URI požadavku, který identifikuje typ požadavků, které mohou být přesměrovány. Budou přesměrovány pouze požadavky, jejichž adresa URL splňuje obě následující kritéria: <br/> <br/> **Zdroj (nebo přístupový bod obsahu):** Vyberte relativní cestu, která identifikuje zdrojový server. Tato cesta je oddílem _/xxxx/_ a názvem vašeho koncového bodu. <br/><br/> **Zdroj (vzorek):** Je nutné definovat vzor, který identifikuje požadavky podle relativní cesty. Tento vzor regulárního výrazu musí definovat cestu, která začíná přímo za dříve vybraným přístupovým bodem obsahu (viz výše). <br/> – Ujistěte se, že kritéria identifikátoru URI požadavku (tj. vzor zdrojové &), která byla dříve definovaná, nejsou v konfliktu se všemi podmínkami shody definovanými pro tuto funkci. <br/> -Zadat vzor; Použijete-li jako vzor prázdnou hodnotu, budou všechny řetězce spárovány.
 Cíl| Zadejte adresu URL, na kterou budou přesměrovány výše uvedené požadavky. <br/><br/> Tuto adresu URL dynamicky Sestavte pomocí: <br/> – Vzor regulárního výrazu <br/>- [Proměnné HTTP](cdn-http-variables.md) <br/><br/> Nahraďte hodnoty zachycené ve zdrojovém vzoru do cílového vzoru pomocí $_n_ , kde _n_ identifikuje hodnotu v pořadí, v jakém byla zachycena. Například $1 představuje první hodnotu zachycenou ve zdrojovém vzoru, zatímco $2 představuje druhou hodnotu. <br/>
 
@@ -1322,25 +1181,25 @@ Důrazně doporučujeme použít absolutní adresu URL. Použití relativní adr
 
 **Ukázkový scénář**
 
-Tento příklad ukazuje, jak přesměrovat adresu URL hraničního CNAME, která se překládá na tuto základní\/adresu URL CDN: http:/marketing.azureedge.NET/brochures
+Tento příklad ukazuje, jak přesměrovat adresu URL hraničního CNAME, která se překládá na tuto základní adresu URL CDN: http: \/ /marketing.azureedge.NET/brochures
 
-Opravňující požadavky budou přesměrovány na tuto adresu URL CNAME základní hrany: http\/:/CDN.mydomain.com/resources
+Opravňující požadavky budou přesměrovány na tuto adresu URL CNAME základní hrany: http: \/ /CDN.mydomain.com/resources
 
-Přesměrování adresy URL můžete dosáhnout pomocí následující konfigurace: ![přesměrování adresy URL](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
+Přesměrování adresy URL můžete dosáhnout pomocí následující konfigurace: ![ přesměrování adresy URL](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
 **Klíčové body:**
 
 - Funkce přesměrování adresy URL definuje adresy URL požadavků, které budou přesměrovány. V důsledku toho nejsou vyžadovány další podmínky shody. I když je podmínka shody definovaná jako "Always", pouze požadavky, které odkazují na složku "brožury" na zdroji zákazníka "marketing", budou přesměrovány.
 - Všechny vyhovující požadavky budou přesměrovány na adresu URL CNAME Edge definovanou v možnosti cíl.
     - Ukázkový scénář #1:
-        - Vzorový požadavek (adresa URL CDN): http\/:/marketing.azureedge.NET/brochures/widgets.PDF
-        - Adresa URL požadavku (po přesměrování): http\/:/CDN.mydomain.com/resources/widgets.PDF  
+        - Vzorový požadavek (adresa URL CDN): http: \/ /marketing.azureedge.NET/brochures/widgets.PDF
+        - Adresa URL požadavku (po přesměrování): http: \/ /CDN.mydomain.com/resources/widgets.PDF  
     - Ukázkový scénář #2:
-        - Ukázková žádost (adresa URL hraničního CNAME)\/: http:/marketing.mydomain.com/brochures/widgets.PDF
-        - Adresa URL požadavku (po přesměrování): ukázkový\/scénář http:/CDN.mydomain.com/resources/widgets.PDF
+        - Ukázková žádost (adresa URL hraničního CNAME): http: \/ /marketing.mydomain.com/brochures/widgets.PDF
+        - Adresa URL požadavku (po přesměrování): \/ ukázkový scénář http:/CDN.mydomain.com/resources/widgets.PDF
     - Ukázkový scénář #3:
-        - Ukázková žádost (adresa URL hraničního CNAME)\/: http:/brochures.mydomain.com/campaignA/Final/productC.ppt
-        - Adresa URL požadavku (po přesměrování): http\/:/CDN.mydomain.com/resources/campaignA/Final/productC.ppt 
+        - Ukázková žádost (adresa URL hraničního CNAME): http: \/ /brochures.mydomain.com/campaignA/Final/productC.ppt
+        - Adresa URL požadavku (po přesměrování): http: \/ /CDN.mydomain.com/resources/campaignA/Final/productC.ppt 
 - Proměnná schéma požadavků (% {schéma}) se využívá v možnosti cíle, která zajišťuje, že schéma žádosti zůstane po přesměrování beze změn.
 - Segmenty adres URL zachycené z požadavku se připojí k nové adrese URL prostřednictvím "$1".
 
@@ -1367,17 +1226,17 @@ Možnost|Popis
 
 **Vzorový scénář 1**
 
-Tento příklad ukazuje, jak přesměrovat adresu URL hraničního CNAME, která se překládá na tuto\/základní adresu URL CDN: http:/marketing.azureedge.NET/brochures/
+Tento příklad ukazuje, jak přesměrovat adresu URL hraničního CNAME, která se překládá na tuto základní adresu URL CDN: http: \/ /marketing.azureedge.NET/brochures/
 
-Opravňující požadavky budou přesměrovány na tuto adresu URL CNAME základní hrany: http\/:/MyOrigin.azureedge.NET/Resources/
+Opravňující požadavky budou přesměrovány na tuto adresu URL CNAME základní hrany: http: \/ /MyOrigin.azureedge.NET/Resources/
 
-Přesměrování adresy URL můžete dosáhnout pomocí následující konfigurace: ![přesměrování adresy URL](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+Přesměrování adresy URL můžete dosáhnout pomocí následující konfigurace: ![ přesměrování adresy URL](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
 **Vzorový scénář 2**
 
 Tento příklad ukazuje, jak přesměrovat adresu URL CNAME Edge z velkých a malých písmen pomocí regulárních výrazů.
 
-Přesměrování adresy URL můžete dosáhnout pomocí následující konfigurace: ![přesměrování adresy URL](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+Přesměrování adresy URL můžete dosáhnout pomocí následující konfigurace: ![ přesměrování adresy URL](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
 **Klíčové body:**
 
@@ -1416,9 +1275,6 @@ Tato funkce zahrnuje kritéria porovnání, která musí být splněna, aby bylo
 **Účel:** Pouze pro interní použití.
 
 [Zpět na začátek](#azure-cdn-from-verizon-premium-rules-engine-features)
-
-</br>
-
 ## <a name="next-steps"></a>Další kroky
 
 - [Odkazy na modul pravidel](cdn-verizon-premium-rules-engine-reference.md)

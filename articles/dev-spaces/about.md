@@ -6,12 +6,12 @@ ms.topic: overview
 description: Přečtěte si, jak Azure Dev Spaces poskytuje rychlé a iterativní vývojové prostředí Kubernetes pro týmy ve clusterech služby Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8b22181bcddda9e4156c0e0dbe61d7d813498d96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd757d5392a7cefcacdd1d77807beb72e34c8f89
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80529730"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873368"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Co je služba Azure Dev Spaces?
 
@@ -38,7 +38,7 @@ Další informace o tom, jak Azure Dev Spaces funguje, najdete v tématu [Jak fu
 
 ## <a name="supported-regions-and-configurations"></a>Podporované oblasti a konfigurace
 
-Azure Dev Spaces podporuje jenom clustery AKS v [některých oblastech][supported-regions]. Azure Dev Spaces podporuje použití [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Visual Studio Code](https://code.visualstudio.com/download) s [rozšířením Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) nainstalovaným v systémech Linux, MacOS nebo Windows 8 nebo novějším pro sestavování a spouštění aplikací na AKS. Podporuje také používání sady [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) nainstalované ve Windows 8 nebo novějším. V případě sady Visual Studio 2019 budete potřebovat úlohu vývoj pro Azure. V případě sady Visual Studio 2017 budete potřebovat úlohu vývoje webu a [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
+Azure Dev Spaces podporuje jenom clustery AKS v [některých oblastech][supported-regions]. Azure Dev Spaces podporuje použití [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Visual Studio Code](https://code.visualstudio.com/download) s [rozšířením Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) nainstalovaným v systémech Linux, MacOS nebo Windows 8 nebo novějším pro sestavování a spouštění aplikací na AKS. Podporuje také použití sady [Visual Studio 2019](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) nainstalované v systému Windows s úlohou vývoj pro Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

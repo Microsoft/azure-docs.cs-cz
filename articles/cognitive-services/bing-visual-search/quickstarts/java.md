@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: fe323fc27062ad1bee9abdfaf3408430e28523a9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3d52a58e3e890ff3baff31322096038d06a1bee6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446619"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872587"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Rychlý Start: Získání přehledů obrázků pomocí Vizuální vyhledávání Bingu REST API a Java
 
-V tomto rychlém startu můžete provést první volání rozhraní API pro vizuální vyhledávání Bingu a zobrazit výsledky. Tato aplikace Java nahraje obrázek do rozhraní API a zobrazí informace, které vrátí. I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API pro vizuální vyhledávání Bingu. Tato aplikace Java nahraje obrázek do rozhraní API a zobrazí informace, které vrátí. I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -52,7 +52,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. Vytvořte proměnné pro svůj koncový bod rozhraní API, klíč předplatného a cestu k vašemu obrázku. `endpoint`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek:
+2. Vytvořte proměnné pro svůj koncový bod rozhraní API, klíč předplatného a cestu k vašemu obrázku. Pro tuto `endpoint` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -61,7 +61,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
     ```
 
     
-    Když nahrajete místní obrázek, data formuláře musí obsahovat `Content-Disposition` hlavičku. Je nutné nastavit jeho `name` parametr na hodnotu "image" a můžete nastavit `filename` parametr na libovolný řetězec. Obsah formuláře zahrnuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
+3. Když nahrajete místní obrázek, data formuláře musí obsahovat `Content-Disposition` hlavičku. Nastavte jeho `name` parametr na "image" a nastavte `filename` parametr na název souboru obrázku. Obsah formuláře zahrnuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
     
     ```
     --boundary_1234-abcd
@@ -74,7 +74,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
 
 ## <a name="create-the-json-parser"></a>Vytvoření analyzátoru JSON
 
-Vytvořte metodu, aby odpověď JSON z rozhraní API byla čitelnější pomocí `JsonParser`:
+Vytvořte metodu, aby odpověď JSON z rozhraní API mohla být čitelnější pomocí `JsonParser` .
 
 ```java
 public static String prettify(String json_text) {
@@ -87,13 +87,13 @@ public static String prettify(String json_text) {
 
 ## <a name="construct-the-search-request-and-query"></a>Sestavení žádosti o vyhledávání a dotazu
 
-1. V metodě Main aplikace vytvořte klienta HTTP pomocí `HttpClientBuilder.create().build();`:
+1. V metodě Main aplikace vytvořte klienta HTTP pomocí nástroje `HttpClientBuilder.create().build();` .
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Vytvořte `HttpEntity` objekt pro nahrání image do rozhraní API:
+2. Vytvořte `HttpEntity` objekt pro nahrání image do rozhraní API.
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -102,7 +102,7 @@ public static String prettify(String json_text) {
         .build();
     ```
 
-3. Vytvořte `httpPost` objekt s vaším koncovým bodem a nastavte hlavičku pro použití klíče předplatného:
+3. Vytvořte `httpPost` objekt s vaším koncovým bodem a nastavte hlavičku pro použití klíče předplatného.
 
     ```java
     HttpPost httpPost = new HttpPost(endpoint);
@@ -112,14 +112,14 @@ public static String prettify(String json_text) {
 
 ## <a name="receive-and-process-the-json-response"></a>Příjem a zpracování odpovědi JSON
 
-1. Použijte `HttpClient.execute()` metodu k odeslání požadavku do rozhraní API a uložte odpověď do `InputStream` objektu:
+1. Použijte `HttpClient.execute()` metodu k odeslání požadavku do rozhraní API a uložte odpověď do `InputStream` objektu.
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. Uložte řetězec JSON a vytiskněte odpověď:
+2. Uložte řetězec JSON a vytiskněte odpověď.
 
     ```java
     String json = new Scanner(stream).useDelimiter("\\A").next();

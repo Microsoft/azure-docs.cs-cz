@@ -3,12 +3,12 @@ title: Vytvoření souboru parametrů
 description: Vytvoří soubor parametrů pro předávání hodnot během nasazování šablony Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: a1a1f703594f8eaa572ea38ecef88b4cd6ba5a4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9845bbb9e14288a01fb7836db260a2baf484395
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682898"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873100"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Vytvořit soubor Správce prostředků parametrů
 
@@ -193,7 +193,7 @@ Chcete-li nasadit do různých prostředí, vytvořte více než jeden soubor pa
 
 Můžete použít vložené parametry a místní soubor parametrů ve stejné operaci nasazení. Můžete například zadat některé hodnoty v souboru s místním parametrem a přidat další hodnoty vložené během nasazování. Zadáte-li hodnoty pro parametr v místním souboru parametrů i v poli inline, má hodnota inline přednost.
 
-Pokud však použijete externí soubor parametrů, nelze předat jiné hodnoty buď vložené, nebo z místního souboru. Všechny vložené parametry jsou ignorovány. Zadejte všechny hodnoty parametrů v externím souboru.
+Je možné použít externí soubor parametrů poskytnutím identifikátoru URI souboru. Když to uděláte, nebudete moci předat jiné hodnoty buď vložené, nebo z místního souboru. Všechny vložené parametry jsou ignorovány. Zadejte všechny hodnoty parametrů v externím souboru.
 
 ## <a name="parameter-name-conflicts"></a>Konflikty názvů parametrů
 

@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: c09327e208719d31b1ae1587c14d0223269abfa9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: a8c922912cae72e1b4344d4d970ec9f3b4949d9f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80062584"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871514"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí konektoru Connector/C++
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL s použitím aplikace v C++. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí jazyka C++ a začínáte pracovat s Azure Database for MySQL.
@@ -29,6 +29,9 @@ Budete také muset:
 - Nainstalovat [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) 
 - Nainstalovat [Boost](https://www.boost.org/)
 
+> [!IMPORTANT] 
+> Ujistěte se, že IP adresa, ze které se připojujete, přidala pravidla brány firewall serveru pomocí [Azure Portal](./howto-manage-firewall-using-portal.md) nebo rozhraní příkazového [řádku Azure CLI](./howto-manage-firewall-using-cli.md) .
+
 ## <a name="install-visual-studio-and-net"></a>Instalace sady Visual Studio a .NET
 V krocích v této části se předpokládá, že máte zkušenosti s vývojem pomocí rozhraní .NET.
 
@@ -40,15 +43,15 @@ V krocích v této části se předpokládá, že máte zkušenosti s vývojem p
 ### <a name="configure-visual-studio"></a>**Konfigurace sady Visual Studio**
 1. V aplikaci Visual Studio, vlastnosti projektu >-> linker-> obecné > další adresáře knihoven, přidejte adresář "\lib\opt" (například C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ lib\opt) konektoru C++.
 2. V sadě Visual Studio v části Projekt -> Vlastnosti -> C/C++ > Obecné -> Další adresáře k zahrnutí:
-   - Přidejte adresář "\include" konektoru c++ (například: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ include\).
-   - Přidejte kořenový adresář knihovny pro zvýšení úrovně (například: C:\ boost_1_64_0\).
+   - Přidejte adresář "\include" konektoru c++ (například: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ include \) .
+   - Přidejte kořenový adresář knihovny pro zvýšení úrovně (například: C:\ boost_1_64_0 \) .
 3. V sadě Visual Studio v části Projekt -> Vlastnosti -> Linker -> Vstup -> Další závislosti přidejte do textového pole **mysqlcppconn.lib**.
 4. Zkopírujte soubor **mysqlcppconn.dll** ze složky knihovny konektoru C++ z kroku 3 do stejného adresáře jako spustitelný soubor aplikace nebo ho přidejte do proměnné prostředí, aby ho vaše aplikace mohla najít.
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.

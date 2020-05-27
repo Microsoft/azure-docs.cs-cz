@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: dc8c7352856b11cb6cc4c9c404eb567cb72b720d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: b069a9ba0e2c56ff027e351789177f8bfe0b2ff4
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74770641"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869986"
 ---
 # <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí Ruby
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace v [Ruby](https://www.ruby-lang.org) a gemu [mysql2](https://rubygems.org/gems/mysql2) z platforem Windows, Ubuntu Linux a Mac. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Ruby a teprve začínáte pracovat se službou Azure Database for MySQL.
@@ -22,6 +22,9 @@ Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MyS
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
+
+> [!IMPORTANT] 
+> Ujistěte se, že IP adresa, ze které se připojujete, přidala pravidla brány firewall serveru pomocí [Azure Portal](./howto-manage-firewall-using-portal.md) nebo rozhraní příkazového [řádku Azure CLI](./howto-manage-firewall-using-cli.md) .
 
 ## <a name="install-ruby"></a>Instalace Ruby
 Nainstalujte na svém počítači Ruby, nástroj Gem a knihovnu MySQL2. 

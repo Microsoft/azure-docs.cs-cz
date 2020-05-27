@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 9fcf14bf42fc843a126fea269038087ee7fb0c6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1242aa0e6c8255d778da55b0e574f3d12f61c381
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382044"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872014"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
 
@@ -22,11 +22,11 @@ Pokud máte problém s použitím Azure Dev Spaces, vytvořte [problém v úlož
 
 Pokud chcete řešit problémy efektivněji, může vám pomoct vytvořit podrobnější protokoly pro kontrolu.
 
-Pro rozšíření sady Visual Studio nastavte proměnnou `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` prostředí na 1. Nezapomeňte restartovat Visual Studio, aby se proměnná prostředí projevila. Po povolení budou do vašeho `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` adresáře zapsány podrobné protokoly.
+V sadě Visual Studio nastavte `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` proměnnou prostředí na 1. Nezapomeňte restartovat Visual Studio, aby se proměnná prostředí projevila. Po povolení budou do vašeho adresáře zapsány podrobné protokoly `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` .
 
-V rozhraní příkazového řádku můžete při provádění příkazu pomocí `--verbose` přepínače vymezit výstup dalších informací. Můžete také procházet podrobnější protokoly v `%TEMP%\Azure Dev Spaces`nástroji. V počítači Mac můžete *dočasný* adresář najít spuštěním `echo $TMPDIR` z okna terminálu. V počítači se systémem Linux je *dočasný* adresář obvykle `/tmp`. Dále ověřte, že je v [konfiguračním souboru Azure CLI](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)povolené protokolování.
+V rozhraní příkazového řádku můžete při provádění příkazu pomocí přepínače vymezit výstup dalších informací `--verbose` . Můžete také procházet podrobnější protokoly v nástroji `%TEMP%\Azure Dev Spaces` . V počítači Mac můžete *dočasný* adresář najít spuštěním `echo $TMPDIR` z okna terminálu. V počítači se systémem Linux je *dočasný* adresář obvykle `/tmp` . Dále ověřte, že je v [konfiguračním souboru Azure CLI](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)povolené protokolování.
 
-Azure Dev Spaces také funguje nejlépe při ladění jedné instance nebo pod. `azds.yaml` Soubor obsahuje nastavení *replicaCount*, které označuje počet lusků, které Kubernetes pro vaši službu spustí. Změníte-li *replicaCount* pro konfiguraci aplikace tak, aby spouštěla více lusků pro danou službu, ladicí program se připojí k prvnímu pod, pokud je uveden abecedně. Ladicí program se připojí k jinému pod při recyklování původní pod, což může vést k neočekávanému chování.
+Azure Dev Spaces také funguje nejlépe při ladění jedné instance nebo pod. `azds.yaml`Soubor obsahuje nastavení *replicaCount*, které označuje počet lusků, které Kubernetes pro vaši službu spustí. Změníte-li *replicaCount* pro konfiguraci aplikace tak, aby spouštěla více lusků pro danou službu, ladicí program se připojí k prvnímu pod, pokud je uveden abecedně. Ladicí program se připojí k jinému pod při recyklování původní pod, což může vést k neočekávanému chování.
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Běžné problémy při povolování Azure Dev Spaces
 
@@ -78,7 +78,7 @@ Pokud chcete tento problém vyřešit, aktualizujte v clusteru AKS [konfiguraci 
 
 ### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Chyba "Azure Dev Spaces rozhraní příkazového řádku není správně nainstalováno" při spuštění příkazu AZ AKS use-dev-Spaces
 
-Aktualizace rozhraní příkazového řádku Azure Dev Spaces změnila jeho cestu instalace. Pokud používáte verzi Azure CLI starší než 2.0.63, může se zobrazit tato chyba. Pokud chcete zobrazit verzi rozhraní příkazového řádku Azure CLI `az --version`, použijte.
+Aktualizace rozhraní příkazového řádku Azure Dev Spaces změnila jeho cestu instalace. Pokud používáte verzi Azure CLI starší než 2.0.63, může se zobrazit tato chyba. Pokud chcete zobrazit verzi rozhraní příkazového řádku Azure CLI, použijte `az --version` .
 
 ```azurecli
 az --version
@@ -89,9 +89,9 @@ azure-cli                         2.0.60 *
 ...
 ```
 
-Bez ohledu na chybovou zprávu `az aks use-dev-spaces` při použití verze Azure CLI před 2.0.63 instalace proběhne úspěšně. Bez problémů můžete pokračovat v `azds` používání.
+Bez ohledu na chybovou zprávu při použití `az aks use-dev-spaces` verze Azure CLI před 2.0.63 instalace proběhne úspěšně. Bez problémů můžete pokračovat v používání `azds` .
 
-Pokud chcete tento problém vyřešit, aktualizujte instalaci [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) na 2.0.63 nebo novější. Tato aktualizace vyřeší chybovou zprávu, která se zobrazí při `az aks use-dev-spaces`spuštění. Případně můžete dál používat aktuální verzi rozhraní příkazového řádku Azure CLI a Azure Dev Spaces CLI.
+Pokud chcete tento problém vyřešit, aktualizujte instalaci [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) na 2.0.63 nebo novější. Tato aktualizace vyřeší chybovou zprávu, která se zobrazí při spuštění `az aks use-dev-spaces` . Případně můžete dál používat aktuální verzi rozhraní příkazového řádku Azure CLI a Azure Dev Spaces CLI.
 
 ### <a name="error-unable-to-reach-kube-apiserver"></a>Chyba "nepovedlo se kontaktovat Kube-apiserver".
 
@@ -106,17 +106,17 @@ Zajistěte, aby byl server rozhraní API dostupný spuštěním příkazů kubec
 ### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Upozornění "souboru Dockerfile nebylo možné vygenerovat z důvodu nepodporovaného jazyka"
 Azure Dev Spaces poskytuje nativní podporu pro C# a Node. js. Když pracujete `azds prep` v adresáři s kódem napsaným v jednom z těchto jazyků, Azure dev Spaces pro vás automaticky vytvoří odpovídající souboru Dockerfile.
 
-Azure Dev Spaces můžete dál používat s kódem napsaným v jiných jazycích, ale před prvním spuštěním `azds up` musíte ručně vytvořit souboru Dockerfile.
+Azure Dev Spaces můžete dál používat s kódem napsaným v jiných jazycích, ale před prvním spuštěním musíte ručně vytvořit souboru Dockerfile `azds up` .
 
 Pokud je vaše aplikace napsána v jazyce, který Azure Dev Spaces netivně podporuje, je nutné poskytnout odpovídající souboru Dockerfile k vytvoření image kontejneru, ve které je spuštěn váš kód. Docker poskytuje [seznam osvědčených postupů pro psaní fázemi](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) a [souboru Dockerfile odkaz](https://docs.docker.com/engine/reference/builder/) , který vám může poznamenat psaní souboru Dockerfile, které vyhovuje vašim potřebám.
 
-Jakmile budete mít vhodný souboru Dockerfile, spustíte `azds up` program, který spustí aplikaci v Azure dev Spaces.
+Jakmile budete mít vhodný souboru Dockerfile, spustíte program, který spustí `azds up` aplikaci v Azure dev Spaces.
 
 ## <a name="common-issues-when-starting-or-stopping-services-with-azure-dev-spaces"></a>Běžné problémy při spouštění nebo zastavování služeb pomocí Azure Dev Spaces
 
 ### <a name="error-config-file-not-found"></a>Chyba "konfigurační soubor nebyl nalezen:"
 
-Při spuštění `azds up`se může zobrazit tato chyba. Obojí `azds up` a `azds prep` musí být spuštěny z kořenového adresáře projektu, který chcete spustit ve vývojovém prostoru.
+Při spuštění `azds up` se může zobrazit tato chyba. Obojí `azds up` a `azds prep` musí být spuštěny z kořenového adresáře projektu, který chcete spustit ve vývojovém prostoru.
 
 Pokud chcete tento problém vyřešit:
 1. Změňte aktuální adresář na kořenovou složku, která obsahuje váš kód služby. 
@@ -150,9 +150,9 @@ K této chybě dochází, pokud klient Helm již nemůže komunikovat s pokladno
 
 Chcete-li tento problém vyřešit, restartujte uzly agenta v clusteru.
 
-### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Chyba "Release azds-\<identifikátor\>-\<\>-\<\> Space ServiceName se nezdařil: služby\<"\>ServiceName "již existují" nebo "přístup pro přístup \<k\>přístupu byl odepřen pro ServiceName, úložiště neexistuje nebo může vyžadovat" Docker login ".
+### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Chyba "Release azds- \< identifikátor \> - \< Space \> - \< ServiceName \> se nezdařil: služby" \< ServiceName " \> již existují" nebo "přístup pro přístup k přístupu byl odepřen pro \< ServiceName \> , úložiště neexistuje nebo může vyžadovat" Docker login ".
 
-K těmto chybám může docházet `helm install`v případě, že ve stejném vývojovém `helm upgrade`prostoru budete `helm delete`kombinovat spuštěné příkazy Helm (například, nebo `azds up` ) `azds down`s příkazy pro vývoj prostorů (například a). K nim dochází, protože vývojové prostory mají svou vlastní instanci pokladny, která je v konfliktu s vaší vlastní instancí pokladny spuštěnou ve stejném vývojovém prostoru.
+K těmto chybám může docházet v případě, že ve stejném vývojovém prostoru budete kombinovat spuštěné příkazy Helm (například `helm install` , `helm upgrade` nebo `helm delete` ) s příkazy pro vývoj prostorů (například `azds up` a `azds down` ). K nim dochází, protože vývojové prostory mají svou vlastní instanci pokladny, která je v konfliktu s vaší vlastní instancí pokladny spuštěnou ve stejném vývojovém prostoru.
 
 Je možné použít příkazy Helm i příkazy pro vývoj v rámci stejného clusteru AKS, ale každý obor názvů s povoleným místem pro vývoj by měl použít buď jednu, nebo druhou.
 
@@ -176,9 +176,9 @@ configurations:
 
 Používáte image Docker z privátního registru, který vyžaduje ověření.
 
-Pokud chcete tento problém vyřešit, můžete vývojářům dovolit, aby k ověřování a vyžádání imagí z tohoto privátního registru používali [imagePullSecrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets). Pokud chcete použít imagePullSecrets, vytvořte v oboru názvů, kde používáte image, [tajný klíč Kubernetes](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) . Pak zadejte tajný klíč jako imagePullSecret v `azds.yaml`.
+Pokud chcete tento problém vyřešit, můžete vývojářům dovolit, aby k ověřování a vyžádání imagí z tohoto privátního registru používali [imagePullSecrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets). Pokud chcete použít imagePullSecrets, vytvořte v oboru názvů, kde používáte image, [tajný klíč Kubernetes](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod) . Pak zadejte tajný klíč jako imagePullSecret v `azds.yaml` .
 
-Níže je uveden příklad zadání imagePullSecrets v `azds.yaml`.
+Níže je uveden příklad zadání imagePullSecrets v `azds.yaml` .
 
 ```yaml
 kind: helm-release
@@ -203,13 +203,13 @@ install:
 ```
 
 > [!IMPORTANT]
-> Nastavení imagePullSecrets v `azds.yaml` přepíše imagePullSecrets zadané v `values.yaml`.
+> Nastavení imagePullSecrets v přepíše `azds.yaml` imagePullSecrets zadané v `values.yaml` .
 
 ### <a name="error-service-cannot-be-started"></a>Chyba "službu nelze spustit."
 
 Tato chyba se může zobrazit, když se kód služby nepovede spustit. Příčinou je často v uživatelském kódu. Pokud chcete získat další diagnostické informace, při spouštění služby povolte podrobnější protokolování.
 
-Z příkazového řádku, použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output`. Příklad:
+Z příkazového řádku, použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output` . Příklad:
 
 ```cmd
 azds up --verbose --output json
@@ -261,7 +261,7 @@ K této chybě dochází, protože Azure Dev Spaces v současné době nepodporu
 
 Při použití [Azure dev Spaces k připojení clusteru AKS k vývojovému počítači](how-to/connect.md)se může vyskytnout problém, kdy se síťový provoz nepředává mezi vaším vývojovým počítačem a clusterem AKS.
 
-Při připojování vývojového počítače ke clusteru AKS Azure Dev Spaces předávány síťový provoz mezi clusterem AKS a vývojovým počítačem úpravou `hosts` souboru vývojového počítače. Azure Dev Spaces vytvoří položku `hosts` s adresou služby Kubernetes, kterou nahrazujete jako název hostitele. Tato položka se používá s předáváním portů pro přímý přenos síťového provozu mezi vývojovým počítačem a clusterem AKS. Je-li služba na vašem vývojovém počítači v konfliktu s portem služby Kubernetes, kterou nahrazujete, Azure Dev Spaces nemůže dopředt síťový provoz pro službu Kubernetes. Například služba *BranchCache systému Windows* je obvykle svázaná s *hodnotou 0.0.0.0:80*, což může způsobit konflikt pro port 80 na všech místních IP adresách.
+Při připojování vývojového počítače ke clusteru AKS Azure Dev Spaces předávány síťový provoz mezi clusterem AKS a vývojovým počítačem úpravou souboru vývojového počítače `hosts` . Azure Dev Spaces vytvoří položku `hosts` s adresou služby Kubernetes, kterou nahrazujete jako název hostitele. Tato položka se používá s předáváním portů pro přímý přenos síťového provozu mezi vývojovým počítačem a clusterem AKS. Je-li služba na vašem vývojovém počítači v konfliktu s portem služby Kubernetes, kterou nahrazujete, Azure Dev Spaces nemůže dopředt síťový provoz pro službu Kubernetes. Například služba *BranchCache systému Windows* je obvykle svázaná s *hodnotou 0.0.0.0:80*, což může způsobit konflikt pro port 80 na všech místních IP adresách.
 
 Chcete-li tento problém vyřešit, je třeba zastavit všechny služby nebo procesy, které jsou v konfliktu s portem služby Kubernetes, kterou se pokoušíte nahradit. Pomocí nástrojů, jako je například *netstat*, můžete zkontrolovat, které služby nebo procesy ve vývojovém počítači jsou v konfliktu.
 
@@ -272,7 +272,7 @@ Chcete-li například zastavit a zakázat službu *Windows BranchCache* :
 * Volitelně ho můžete zakázat nastavením *Typ spuštění* na *zakázáno*.
 * Klikněte na tlačítko *OK*.
 
-### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Chyba "nenašel se žádný AzureAssignedIdentity pro pod: azds/azds-Webhook-Deployment\<-\> ID v přiřazeném stavu".
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Chyba "nenašel se žádný AzureAssignedIdentity pro pod: azds/azds-Webhook-Deployment- \< ID \> v přiřazeném stavu".
 
 Když spustíte službu s Azure Dev Spaces v clusteru AKS s nainstalovanou spravovanými [identitami spravované identity](../aks/use-managed-identity.md) a [pod](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) , proces se může po kroku *instalace grafu* zablokovat. Pokud provedete kontrolu *azds-injektor-Webhooku* v prostoru názvů *azds* , může se zobrazit tato chyba.
 
@@ -293,13 +293,13 @@ spec:
     azds.io/uses-cluster-identity: "true"
 ```
 
-Výše uvedený soubor vytvoří objekt *AzurePodIdentityException* pro azds- *injektor – Webhook*. K nasazení tohoto objektu použijte `kubectl`:
+Výše uvedený soubor vytvoří objekt *AzurePodIdentityException* pro azds- *injektor – Webhook*. K nasazení tohoto objektu použijte `kubectl` :
 
 ```cmd
 kubectl apply -f webhookException.yaml
 ```
 
-Pokud chcete aktualizovat lusky instrumentované pomocí Azure Dev Spaces pro přístup ke spravované identitě, aktualizujte *obor názvů* v níže uvedené `kubectl` definici YAML a použijte ho k použití pro každé vývojové místo.
+Pokud chcete aktualizovat lusky instrumentované pomocí Azure Dev Spaces pro přístup ke spravované identitě, aktualizujte *obor názvů* v níže uvedené definici YAML a použijte `kubectl` ho k použití pro každé vývojové místo.
 
 ```yaml
 apiVersion: "aadpodidentity.k8s.io/v1"
@@ -354,7 +354,7 @@ spec:
   Selector: my-label-value
 ```
 
-Chcete-li nasadit objekty *AzureIdentity* a *AzureIdentityBinding* , `kubectl`použijte:
+Chcete-li nasadit objekty *AzureIdentity* a *AzureIdentityBinding* , použijte `kubectl` :
 
 ```cmd
 kubectl apply -f clusteridentity.yaml
@@ -412,9 +412,9 @@ Chcete-li tento problém vyřešit, nainstalujte [rozšíření vs Code pro Azur
 
 ### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Chyba "neplatná" hodnota "CWD"/src ". Systém nemůže najít zadaný soubor. nebo "Launch: program"/src/[cesta k binárnímu souboru projektu] "neexistuje"
 
-Tato chyba se může zobrazit při spuštění ladicího programu Visual Studio Code. Ve výchozím nastavení používá `src` rozšíření vs Code jako pracovní adresář pro projekt na kontejneru. Pokud jste aktualizovali, `Dockerfile` abyste určili jiný pracovní adresář, může se zobrazit tato chyba.
+Tato chyba se může zobrazit při spuštění ladicího programu Visual Studio Code. Ve výchozím nastavení používá rozšíření VS Code `src` jako pracovní adresář pro projekt na kontejneru. Pokud jste aktualizovali `Dockerfile` , abyste určili jiný pracovní adresář, může se zobrazit tato chyba.
 
-Chcete-li tento problém vyřešit, `launch.json` aktualizujte soubor `.vscode` v podadresáři složky projektu. Změňte `configurations->cwd` direktivu tak, aby odkazovala na stejný adresář `WORKDIR` jako definovaný v projektu `Dockerfile`. Také je možné, že `configurations->program` budete muset taky aktualizovat direktivu.
+Chcete-li tento problém vyřešit, aktualizujte `launch.json` soubor v `.vscode` podadresáři složky projektu. Změňte `configurations->cwd` direktivu tak, aby odkazovala na stejný adresář jako `WORKDIR` definovaný v projektu `Dockerfile` . Také je možné, že budete muset taky aktualizovat `configurations->program` direktivu.
 
 ### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Chyba "program kanálu ' azds ' se neočekávaně ukončil s kódem 126."
 
@@ -436,7 +436,7 @@ K této chybě může dojít `azds.exe` , pokud není správně nainstalovaná n
 
 Pokud chcete tento problém vyřešit:
 
-1. Ověřte umístění% ProgramFiles%/Microsoft SDKs\Azure\Azure dev Spaces CLI pro `azds.exe`. Pokud tam tam je, přidejte toto umístění do proměnné prostředí PATH.
+1. Ověřte umístění% ProgramFiles%/Microsoft SDKs\Azure\Azure dev Spaces CLI pro `azds.exe` . Pokud tam tam je, přidejte toto umístění do proměnné prostředí PATH.
 2. Pokud `azds.exe` není nainstalován, spusťte následující příkaz:
 
     ```azurecli
@@ -459,7 +459,7 @@ az provider register --namespace Microsoft.DevSpaces
 
 ### <a name="new-pods-arent-starting"></a>Nová Luska se nespouští.
 
-Inicializátor Kubernetes nemůže použít PodSpec pro nové lusky z důvodu změn oprávnění RBAC do role *Správce clusteru* v clusteru. Nový objekt pod může mít také neplatnou PodSpec, například účet služby spojený s objektem pod již neexistuje. Chcete-li zobrazit lusky, které jsou ve stavu *čekání* v důsledku problému s inicializátorem `kubectl get pods` , použijte příkaz:
+Inicializátor Kubernetes nemůže použít PodSpec pro nové lusky z důvodu změn oprávnění RBAC do role *Správce clusteru* v clusteru. Nový objekt pod může mít také neplatnou PodSpec, například účet služby spojený s objektem pod již neexistuje. Chcete-li zobrazit lusky, které jsou ve stavu *čekání* v důsledku problému s inicializátorem, použijte `kubectl get pods` příkaz:
 
 ```bash
 kubectl get pods --all-namespaces --include-uninitialized
@@ -477,9 +477,9 @@ az aks get-credentials --resource-group <resource group name> --name <cluster na
 kubectl delete InitializerConfiguration azds
 ```
 
-Po odebrání *Azds InitializerConfiguration* z kontroleru Azure dev Spaces použijte `kubectl delete` k odebrání všech lusků ve stavu čekání na *vyřízení* . Po odebrání všech probíhajících lusků znovu nasaďte své lusky.
+Po odebrání *Azds InitializerConfiguration* z kontroleru Azure dev Spaces použijte `kubectl delete` k odebrání všech lusků ve stavu *čekání na vyřízení* . Po odebrání všech probíhajících lusků znovu nasaďte své lusky.
 
-Pokud se nové lusky po opětovném *Pending* nasazení stále zablokují ve stavu čekání `kubectl delete` , použijte k odebrání všech lusků ve stavu *čekání na vyřízení* . Po odebrání všech probíhajících lusků odstraňte řadič z clusteru a znovu ho nainstalujte:
+Pokud se nové lusky po opětovném nasazení stále zablokují ve stavu *čekání* , použijte `kubectl delete` k odebrání všech lusků ve stavu *čekání na vyřízení* . Po odebrání všech probíhajících lusků odstraňte řadič z clusteru a znovu ho nainstalujte:
 
 ```bash
 azds remove -g <resource group name> -n <cluster name>
@@ -529,14 +529,14 @@ Pokud chcete tento problém vyřešit:
 
 Tato chyba se může zobrazit při pokusu o přístup ke službě. Například když v prohlížeči přejdete na adresu URL služby. Tato chyba znamená, že port kontejneru není k dispozici. To může být z následujících důvodů:
 
-* Kontejner se stále vytváří a nasazuje. K tomuto problému může dojít, pokud `azds up` spustíte nebo spustíte ladicí program a potom se pokusíte o přístup k kontejneru předtím, než se úspěšně nasadí.
+* Kontejner se stále vytváří a nasazuje. K tomuto problému může dojít, pokud spustíte `azds up` nebo spustíte ladicí program a potom se pokusíte o přístup k kontejneru předtím, než se úspěšně nasadí.
 * Konfigurace portů není konzistentní v rámci _souboru Dockerfile_, grafu Helm a libovolného kódu serveru, který otevírá port.
 
 Pokud chcete tento problém vyřešit:
 
 1. Pokud je kontejner v procesu sestavení/nasazení, můžete počkat 2-3 sekund a pokusit se o přístup ke službě znovu. 
 1. Ověřte konfiguraci portů v následujících zdrojích:
-    * **[Helm graf](https://docs.helm.sh):** určený hodnotami `service.port` a `deployment.containerPort` v hodnotách. yaml vygenerované pomocí `azds prep` příkazu.
+    * ** [Graf Helm](https://docs.helm.sh):** Určené `service.port` `deployment.containerPort` hodnotami a v hodnotách. yaml vygenerované pomocí `azds prep` příkazu.
     * Jakékoli porty, které jsou otevřeny v kódu aplikace, například v Node. js:`var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Název typu nebo oboru názvů "MyLibrary" se nenašel.
@@ -546,9 +546,9 @@ Projekt knihovny, který používáte, se nenašel. Pomocí vývojových prostor
 Pokud chcete tento problém vyřešit:
 
 1. Upravte `azds.yaml` soubor a nastavte kontext sestavení na úroveň řešení.
-2. Upravte soubory `Dockerfile` a `Dockerfile.develop` tak, aby odkazovaly na soubory projektu, například `.csproj`správně vzhledem k novému kontextu sestavení.
-3. `.dockerignore` Přidejte do stejného adresáře jako `.sln` soubor.
-4. `.dockerignore` Aktualizujte podle potřeby další položky.
+2. Upravte `Dockerfile` soubory a `Dockerfile.develop` tak, aby odkazovaly na soubory projektu, například `.csproj` správně vzhledem k novému kontextu sestavení.
+3. Přidejte do `.dockerignore` stejného adresáře jako `.sln` soubor.
+4. Aktualizujte podle `.dockerignore` potřeby další položky.
 
 Příklad najdete [tady](https://github.com/sgreenmsft/buildcontextsample).
 
@@ -567,7 +567,7 @@ azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"}
 
 Je možné, že máte existující cluster AKS a obor názvů se spuštěnými lusky, kde chcete povolit Azure Dev Spaces.
 
-Pokud chcete povolit Azure Dev Spaces v existujícím oboru názvů v clusteru AKS, `use-dev-spaces` spusťte a `kubectl` použijte k restartování všech lusků v daném oboru názvů.
+Pokud chcete povolit Azure Dev Spaces v existujícím oboru názvů v clusteru AKS, spusťte `use-dev-spaces` a použijte `kubectl` k restartování všech lusků v daném oboru názvů.
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -589,22 +589,22 @@ Pokud chcete povolit Azure Dev Spaces v clusteru AKS, pro který je omezený pro
 | cloudflare.docker.com | HTTPS: 443 | Vyžádat si Linux Alpine a jiné Azure Dev Spaces image |
 | gcr.io | HTTP: 443 | Načtení imagí Helm/překladen|
 | storage.googleapis.com | HTTP: 443 | Načtení imagí Helm/překladen|
-| azds –<guid>. <location>. azds.IO | HTTPS: 443 | Pro komunikaci se službou Azure Dev Spaces back-end pro váš kontroler. Přesný plně kvalifikovaný název domény najdete v části "dataplaneFqdn" v% USERPROFILE%\.azds\settings.JSON|
+| azds- <guid> . <location> . azds.io | HTTPS: 443 | Pro komunikaci se službou Azure Dev Spaces back-end pro váš kontroler. Přesný plně kvalifikovaný název domény najdete v části "dataplaneFqdn" v% USERPROFILE% \. azds\settings.JSON|
 
-### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Chyba: nepovedlo se najít \<cluster\> clusteru v \<předplatném SubscriptionId\>.
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Chyba: nepovedlo se najít \< cluster clusteru \> v předplatném \< SubscriptionId \> .
 
 Tato chyba se může zobrazit v případě, že váš soubor kubeconfig cílí na jiný cluster nebo předplatné, než se snažíte použít s Azure Dev Spaces nástrojů na straně klienta. Nástroje Azure Dev Spaces na straně klienta replikují chování *kubectl*, které používá [jeden nebo více souborů kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) k výběru a komunikaci s clusterem.
 
 Pokud chcete tento problém vyřešit:
 
 * Použijte `az aks use-dev-spaces -g <resource group name> -n <cluster name>` k aktualizaci aktuálního kontextu. Tento příkaz také umožňuje Azure Dev Spaces v clusteru AKS, pokud ještě není povolený. Alternativně můžete použít `kubectl config use-context <cluster name>` k aktualizaci aktuálního kontextu.
-* Použijte `az account show` k zobrazení aktuálního předplatného Azure, které cílíte, a ověřte, jestli je to správné. Předplatné, které cílíte, můžete změnit pomocí `az account set`.
+* Použijte `az account show` k zobrazení aktuálního předplatného Azure, které cílíte, a ověřte, jestli je to správné. Předplatné, které cílíte, můžete změnit pomocí `az account set` .
 
 ### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>Chyba při použití vývojových prostorů po otočení AKS certifikátů
 
-Po [otočení certifikátů v clusteru AKS](../aks/certificate-rotation.md)se některé operace, například `azds space list` a `azds up` , nezdaří. Po otočení certifikátů v clusteru je také potřeba aktualizovat certifikáty na řadiči Azure Dev Spaces.
+Po [otočení certifikátů v clusteru AKS](../aks/certificate-rotation.md)se některé operace, například `azds space list` a, `azds up` nezdaří. Po otočení certifikátů v clusteru je také potřeba aktualizovat certifikáty na řadiči Azure Dev Spaces.
 
-Pokud chcete tento problém vyřešit, ujistěte se, že vaše *kubeconfig* má `az aks get-credentials` aktualizované certifikáty, `azds controller refresh-credentials` a pak příkaz spusťte. Příklad:
+Pokud chcete tento problém vyřešit, ujistěte se, že vaše *kubeconfig* má aktualizované certifikáty, a `az aks get-credentials` pak `azds controller refresh-credentials` příkaz spusťte. Příklad:
 
 ```azurecli
 az aks get-credentials -g <resource group name> -n <cluster name>

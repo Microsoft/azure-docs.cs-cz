@@ -7,38 +7,18 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: 820005bca008ea3bdb59659c815da3ec36beb0d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a20ec1039dc8fc477410891495762395b408f2d6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241039"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870578"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>Přidání ověřování a Správa identit uživatelů v mobilních aplikacích
 
 Zobrazení uživatele a jejich chování v rámci vaší aplikace umožňuje vývojářům lépe zapojit uživatele tím, že pro ně vytvoří přizpůsobená prostředí. Bez ohledu na to, jestli jste vývojář aplikace, který vytváří aplikaci pro spolupráci pro uživatele v rámci vaší organizace, nebo vytváříte další platformu sociální sítě, potřebujete způsob, jak ověřovat uživatele a spravovat identity uživatelů. Služba správy identit je jednou z nejdůležitějších funkcí mobilní back-endové služby.
 
 Pomocí následujících služeb můžete v mobilních aplikacích povolit ověřování uživatelů.
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center auth](/appcenter/auth/) je cloudová služba pro správu identit, kterou můžou vývojáři použít k ověřování uživatelů a správě identit uživatelů. App Center ověřování se taky integruje s jinými částmi Visual Studio App Center. Vývojáři mohou pomocí identity uživatele [zobrazovat uživatelská data](/appcenter/data/index) v jiných službách a dokonce i [odesílat nabízená oznámení uživatelům, nikoli jednotlivým zařízením](/appcenter/push/push-to-user#setting-user-identity). 
-
-**Klíčové funkce**
-- Používá se Azure Active Directory B2C (Azure AD B2C). 
-    - Podniková známka.
-    - Vysoce dostupné.
-    - Zabezpečená a globální služba.
-- Využijte vlastní identitu a možnost používat další oblíbené poskytovatele pro správu identit a přístupu, jako je Auth0 a Firebase.
-- Podpora Azure Active Directory.
-    - Propojte stávající klienty Azure AD. 
-    - Povolte ověřování proti podnikové doméně.
-    - Spravujte přístup k citlivým datům.
-- Jednoduché prostředí pro uživatele a prostředí Magical SDK tím, že zabalíte Microsoft Authentication Library se sadou Visual Studio App Center SDK.
-- Podpora platforem pro iOS, Android, Xamarin a reakci na nativní.
-
-**Odkazy**
-- [Zaregistrujte se Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
-- [Začínáme s ověřováním App Center](/appcenter/auth/)
 
 ## <a name="azure-active-directory-b2c"></a>Azure Active Directory B2C
 [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/) je služba správy identit B2C (Business-to-Consumer), kterou můžou vývojáři použít k ověřování svých zákazníků. Tato služba White-Label umožňuje vývojářům přizpůsobit a řídit, jak budou uživatelé zabezpečeně pracovat s webovými, stolními, mobilními nebo jednostránkovémi aplikacemi. Pomocí Azure AD B2C se uživatelé můžou zaregistrovat, přihlašovat, resetovat hesla a upravovat profily. Azure AD B2C implementuje formulář protokolů OpenID Connect a OAuth 2,0. 

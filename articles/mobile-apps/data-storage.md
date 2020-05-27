@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
-ms.openlocfilehash: 166847325fa9094136f1c2a143f1751420f05f66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb76151a3f952f932cc533b771283b5d45382366
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240915"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873452"
 ---
 # <a name="store-sync-and-query-mobile-application-data-from-the-cloud"></a>Ukládání, synchronizace a dotazování dat mobilní aplikace z cloudu
 Bez ohledu na to, jaký druh aplikace sestavíte, budete pravděpodobně generovat a zpracovávat data. Uživatelé vaší aplikace mají vysoké očekávání. Chtějí, aby aplikace fungovala rychle a hladce, a to za všech okolností. Většina aplikací funguje i napříč více zařízeními. K aplikaci můžete přistupovat z počítače nebo mobilního zařízení. Tuto aplikaci může používat více uživatelů současně a sdílet data se očekáváním, že budou mít přístup k datům v reálném čase.
@@ -22,21 +22,6 @@ Uživatelé vaší aplikace nebudou mít vždycky připojení k Internetu. Aplik
 Společnost Microsoft poskytuje celou řadu služeb, které eliminují nutnost vystavovat servery, vybírat svou databázi nebo si dělat starosti se škálováním a zabezpečením, aby poskytovala co možná hodně možností. Tyto služby poskytují skvělé vývojové prostředí, které umožňuje ukládat data aplikací do cloudu pomocí rozhraní API SQL nebo NoSQL. Můžete také synchronizovat data na všech zařízeních a povolit aplikaci, aby fungovala s nebo bez síťového připojení, která vám pomůžou vytvářet škálovatelné a robustní aplikace.
 
 Pomocí následujících služeb můžete spravovat a ukládat data mobilní aplikace v cloudu.
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center Data](/appcenter/data/) jsou služba pro správu dat. Umožňuje aplikacím spravovat, uchovávat a synchronizovat data aplikací v cloudu napříč různými zařízeními a platformami v online a offline scénářích. Data, která jsou postavená na Azure Cosmos DB, App Center škálují jako vaši uživatelskou základnu a rozroste počet aplikací. Zajišťuje nízkou latenci, vysokou dostupnost a vysokou škálovatelnost pro všechna vaše data.
-
-**Klíčové funkce**
-- Snadné zřizování nové databáze Azure Cosmos DB nebo existující databáze Azure Cosmos DB z portálu Visual Studio App Center.
-- Podpora databáze NoSQL, která umožňuje snadno ukládat, synchronizovat a dotazovat data aplikací.
-- Tato služba je postavená na Azure Cosmos DB, která poskytuje většinu klíčových funkcí nabízených v rámci Azure Cosmos DB a umožňuje globálně škálovat, aby splňovaly vaše obchodní potřeby.
-- Možnosti online a offline synchronizace pro synchronizaci dat napříč zařízeními.
-- Sady SDK mobilních klientů, pomocí kterých lze snadno spravovat data privátních aplikací.
-- Podpora platforem pro iOS, Android, Xamarin a reakci na nativní.
-
-**Odkazy**
-- [Zaregistrujte se Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-- [Začínáme s App Centermi daty](/appcenter/data/getting-started)
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je globálně distribuovaná databázová služba pro více modelů. Můžete ji použít k sestavování aplikací globálním-Scale. Díky Azure Cosmos DB můžete elasticky a nezávisle škálovat propustnost a úložiště napříč libovolným počtem oblastí Azure po celém světě. Pomocí vašich oblíbených ploch rozhraní API můžete využít rychlý přístup k datům s jedním číslem a milisekundami. Mezi tyto povrchy patří SQL, MongoDB, Cassandra, Tables nebo Gremlin. Azure Cosmos DB jednoznačně poskytuje kompletní smlouvy o úrovni služeb (SLA) pro propustnost, latenci, dostupnost a konzistenci.

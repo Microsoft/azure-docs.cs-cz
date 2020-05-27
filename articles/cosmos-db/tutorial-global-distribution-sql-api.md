@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9fbd42b6f4ef1afd0dfb4c47b6807105ff3810ca
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ee648efde22e6bbef045b9d89b8d016e2e489f20
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677630"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872972"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Kurz: nastavení globální distribuce Azure Cosmos DB pomocí rozhraní SQL API
 
-V tomto článku si ukážeme, jak pomocí webu Azure Portal nastavit globální distribuci služby Azure Cosmos DB a pak se k ní připojit pomocí rozhraní SQL API.
+V tomto článku se dozvíte, jak pomocí Azure Portal nastavit globální distribuci Azure Cosmos DB a pak se připojit pomocí rozhraní SQL API.
 
 Tento článek se zabývá následujícími úkony: 
 
@@ -110,21 +110,24 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v2-sdk"></a>Sada Java v2 SDK
+## <a name="java-v4-sdk"></a>Sada Java v4 SDK
 
 Následující kód ukazuje, jak nastavit Upřednostňovaná umístění pomocí sady Java SDK:
 
-```java
-ConnectionPolicy policy = new ConnectionPolicy();
-policy.setUsingMultipleWriteLocations(true);
-policy.setPreferredLocations(Arrays.asList("East US", "West US", "Canada Central"));
-AsyncDocumentClient client =
-        new AsyncDocumentClient.Builder()
-                .withMasterKeyOrResourceToken(this.accountKey)
-                .withServiceEndpoint(this.accountEndpoint)
-                .withConnectionPolicy(policy)
-                .build();
-```
+### <a id="java4-preferred-locations"></a>
+#### <a name="async"></a>[Async](#tab/api-async)
+
+   [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Async API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
+
+#### <a name="sync"></a>[Synchronizovat](#tab/api-sync)
+
+   [Sada Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Sync API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=TutorialGlobalDistributionPreferredLocationSync)]
+
+--- 
 
 ## <a name="rest"></a>REST
 Po zpřístupnění účtu databáze ve více oblastech můžou klienti dotazovat její dostupnost provedením požadavku GET na následující identifikátor URI.

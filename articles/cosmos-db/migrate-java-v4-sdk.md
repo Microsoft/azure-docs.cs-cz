@@ -5,22 +5,22 @@ author: anfeldma-ms
 ms.author: anfeldma
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/26/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 929fa936cdb864fd9b84f8feba55ef01ae6fed9c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: d7028018501c5e6580d7345938a739ccc983ff48
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984704"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873258"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Migrace aplikace na používání sady Azure Cosmos DB Java SDK v4
 
 > [!IMPORTANT]  
-> Další informace o této sadě SDK najdete v Azure Cosmos DB zpráva k vydání verze Java SDK v4, [úložiště služby Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB tipy k [výkonu](performance-tips-java-sdk-v4-sql.md)Java SDK v4 Azure Cosmos DB a příručka pro [odstraňování potíží s](troubleshoot-java-sdk-v4-sql.md)rozhraním Java SDK v4.
+> Další informace o této sadě SDK najdete v Azure Cosmos DB zpráva k [vydání verze](sql-api-sdk-java-v4.md)Java SDK v4, [úložiště služby Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB tipy k [výkonu](performance-tips-java-sdk-v4-sql.md)Java SDK v4 Azure Cosmos DB a příručka pro [odstraňování potíží s](troubleshoot-java-sdk-v4-sql.md)rozhraním Java SDK v4.
 >
 
-Tento článek vysvětluje, jak upgradovat stávající aplikaci Java, která používá starší sadu Azure Cosmos DB Java SDK, na novější Azure Cosmos DB Java SDK 4,0 for Core (SQL) API. `com.azure.cosmos` Balíček Azure Cosmos DB Java SDK v4 odpovídá balíčku. Pokyny v tomto dokumentu můžete použít při migraci aplikace z některé z následujících Azure Cosmos DB sad Java SDK: 
+Tento článek vysvětluje, jak upgradovat stávající aplikaci Java, která používá starší sadu Azure Cosmos DB Java SDK, na novější Azure Cosmos DB Java SDK 4,0 for Core (SQL) API. Balíček Azure Cosmos DB Java SDK v4 odpovídá `com.azure.cosmos` balíčku. Pokyny v tomto dokumentu můžete použít při migraci aplikace z některé z následujících Azure Cosmos DB sad Java SDK: 
 
 * Synchronizace sady Java SDK 2. x. x
 * Async Java SDK 2. x. x
@@ -32,8 +32,8 @@ V následující tabulce jsou uvedeny různé Azure Cosmos DB Java SDK, název b
 
 | Java SDK| Datum vydání | Sada rozhraní API   | Maven jar  | Název balíčku Java  |Referenční materiály k rozhraní API   | Poznámky k verzi  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
-| Async 2. x. x  | Červen 2018    | Asynchronní (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Poznámky k verzi](sql-api-sdk-async-java.md) |
-| Synchronizace 2. x. x     | Září 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Poznámky k verzi](sql-api-sdk-java.md)  |
+| Async 2. x. x  | Červen 2018    | Asynchronní (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Zpráva k vydání verze](sql-api-sdk-async-java.md) |
+| Synchronizace 2. x. x     | Září 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Zpráva k vydání verze](sql-api-sdk-java.md)  |
 | 3. x. x    | Červenec 2019    | Async (Reactor) –/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - |
 | 4.0   | Duben 2020   | Async (Reactor) –/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | -  |
 
@@ -57,13 +57,13 @@ Níže jsou uvedené změny úrovně rozhraní API v Azure Cosmos DB Java SDK 4.
 
 ![Azure Cosmos DB konvence vytváření názvů pro Java SDK](./media/migrate-java-v4-sdk/java-sdk-naming-conventions.png)
 
-* Azure Cosmos DB Java SDK 3. x. x a 4,0 odkazuje na prostředky klienta jako `Cosmos<resourceName>`. Například `CosmosClient` `CosmosDatabase`,, `CosmosContainer`. Vzhledem k tomu, že verze 2. x. x, Azure Cosmos DB Java SDK, nemají jednotné schéma pojmenování.
+* Azure Cosmos DB Java SDK 3. x. x a 4,0 odkazuje na prostředky klienta jako `Cosmos<resourceName>` . Například,, `CosmosClient` `CosmosDatabase` `CosmosContainer` . Vzhledem k tomu, že verze 2. x. x, Azure Cosmos DB Java SDK, nemají jednotné schéma pojmenování.
 
 * Azure Cosmos DB Java SDK 3. x. x a 4,0 nabízí jak synchronizační, tak asynchronní rozhraní API.
 
-  * **Java SDK 4,0** : všechny třídy patří do rozhraní API pro synchronizaci, pokud není název třídy připojen pomocí `Async` After. `Cosmos`
+  * **Java SDK 4,0** : všechny třídy patří do rozhraní API pro synchronizaci, pokud není název třídy připojen pomocí `Async` After `Cosmos` .
 
-  * **Java SDK 3. x. x**: všechny třídy patří do ASYNCHRONNÍHO rozhraní API, pokud není název třídy připojen pomocí `Async` After. `Cosmos`
+  * **Java SDK 3. x. x**: všechny třídy patří do ASYNCHRONNÍHO rozhraní API, pokud není název třídy připojen pomocí `Async` After `Cosmos` .
 
   * **Async Java SDK 2. x. x**: názvy tříd jsou podobné synchronizaci sady Java SDK 2. x. x, ale název začíná na *Async*.
 
@@ -81,14 +81,14 @@ Ve verzi 2. x. x sady Azure Cosmos DB Java SDK jsou všechny operace s prostřed
 
 V Azure Cosmos DB Java SDK 4,0, Custom POJO 's a `JsonNodes` jsou dvě možnosti čtení a zápisu dokumentů z Azure Cosmos DB.
 
-V sadě Azure Cosmos DB Java SDK 3. x. x je `CosmosItemProperties` objekt zpřístupněn VEŘEJNÝm rozhraním API a obsluhován jako reprezentace dokumentu. Tato třída již není veřejně vystavena ve verzi 4,0.
+V sadě Azure Cosmos DB Java SDK 3. x. x `CosmosItemProperties` je objekt zpřístupněn veřejným rozhraním API a obsluhován jako reprezentace dokumentu. Tato třída již není veřejně vystavena ve verzi 4,0.
 
 ### <a name="imports"></a>Objem
 
 * Balíčky Azure Cosmos DB Java SDK 4,0 začínají na`com.azure.cosmos`
   * Azure Cosmos DB balíčky Java SDK 3. x. x začínají na`com.azure.data.cosmos`
 
-* Azure Cosmos DB Java SDK 4,0 umístí do vnořeného balíčku `com.azure.cosmos.models`několik tříd. Mezi tyto balíčky patří:
+* Azure Cosmos DB Java SDK 4,0 umístí do vnořeného balíčku několik tříd `com.azure.cosmos.models` . Mezi tyto balíčky patří:
 
   * `CosmosContainerResponse`
   * `CosmosDatabaseResponse`
@@ -102,7 +102,7 @@ V sadě Azure Cosmos DB Java SDK 3. x. x je `CosmosItemProperties` objekt zpří
 
 ### <a name="accessors"></a>Přístupové objekty
 
-Azure Cosmos DB sada Java SDK 4,0 `get` zpřístupňuje a `set` metody pro přístup ke členům instance. Například `CosmosContainer` instance `container.getId()` a `container.setId()` metody.
+Azure Cosmos DB sada Java SDK 4,0 zpřístupňuje `get` a `set` metody pro přístup ke členům instance. Například `CosmosContainer` instance `container.getId()` a `container.setId()` metody.
 
 To se liší od Azure Cosmos DB Java SDK 3. x. x, která zpřístupňuje rozhraní Fluent. Například `CosmosSyncContainer` instance má `container.id()` přetížení, aby získala nebo nastavila `id` hodnotu.
 

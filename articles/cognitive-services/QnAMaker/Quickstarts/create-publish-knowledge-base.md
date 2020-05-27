@@ -2,13 +2,13 @@
 title: 'Rychlý Start: vytvoření, výuka a publikování znalostní báze Knowledge Base – QnA Maker'
 description: Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního obsahu, jako jsou nejčastější dotazy nebo příručky k produktům. Tento článek obsahuje příklad vytvoření QnA Maker znalostní báze z jednoduché webové stránky s nejčastějšími dotazy pro odpovědi na otázky QnA Maker.
 ms.topic: conceptual
-ms.date: 02/08/2020
-ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/26/2020
+ms.openlocfilehash: a35cbdea2d40e4b0df0ce0f0b36f1b6bf60dd42e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756825"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871468"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -17,7 +17,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 ## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
-> * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+> * Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 > * QnA Maker [prostředek](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) vytvořený v Azure Portal. Mějte na paměti, že vaše Azure Active Directory ID, předplatné a název prostředku QnA jste zvolili při vytváření prostředku.
 
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>Vytvoření prvního QnA Maker znalostní báze Knowledge Base
@@ -34,8 +34,8 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
 1. V **kroku 3**vyberte službu Active Directory, předplatné, službu (prostředek) a jazyk pro všechny znalostní báze vytvořené ve službě.
 
-   ![Snímek obrazovky s výběrem znalostní báze služby QnA Maker](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
-
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="Snímek obrazovky s výběrem znalostní báze služby QnA Maker":::
+    
 1. V **kroku 3**pojmenujte svůj znalostní báze **Moje ukázková QnA KB**.
 
 1. V **kroku 4**nakonfigurujte nastavení pomocí následující tabulky:
@@ -64,9 +64,9 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    ![ Přidejte otázku jako text a odpověď formátovanou pomocí Markdownu.](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Přidejte otázku jako text a odpověď formátovanou pomocí Markdownu.":::
 
-    Symbol `*`Markdownu se používá pro body odrážek. `\n` Používá se pro nový řádek.
+    Symbol Markdownu se `*` používá pro body odrážek. `\n`Používá se pro nový řádek.
 
     Na stránce pro **Úpravy** se zobrazí Markdownu. Když použijete **testovací** panel později, zobrazí se Markdownu správně.
 
@@ -81,7 +81,7 @@ V pravém horním rohu vyberte **Uložit a výuka** a uložte úpravy a výukov�
 
     `How many Azure services are used by a knowledge base?`
 
-    ![ Do textového pole zadejte ukázkový dotaz uživatele. ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Do textového pole zadejte ukázkový dotaz uživatele.":::
 
 1. Pokud chcete odpověď prozkoumat podrobněji, vyberte **Inspect** (Prozkoumat). Testovací okno slouží k otestování změn ve znalostní bázi před publikováním znalostní báze.
 
@@ -131,7 +131,7 @@ Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robo
 
     Robotka chatu odpoví odpověď z vaší znalostní báze.
 
-    ![Zadejte uživatelský dotaz do testovacího webového chatu.](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Zadejte uživatelský dotaz do testovacího webového chatu.":::
 
 ## <a name="what-did-you-accomplish"></a>Co jste provedli?
 

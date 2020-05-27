@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 7a017f9485ec847c0a2c045e4c511b6a68db0cb2
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889919"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873325"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Přizpůsobení sady standardů na řídicím panelu dodržování předpisů
 
@@ -29,7 +29,7 @@ Azure Security Center průběžně porovnává konfiguraci vašich prostředků 
 
 Oborové standardy, regulativní normy a srovnávací testy jsou v Security Center jako *balíčky dodržování předpisů*.  Každý balíček je iniciativou určenou v Azure Policy. Pokud chcete zobrazit data o dodržování předpisů namapovaná jako posouzení na řídicím panelu, přidejte do skupiny pro správu nebo předplatného na stránce **zásady zabezpečení** balíček pro dodržování předpisů. (Další informace o Azure Policy a iniciativách při [práci se zásadami zabezpečení](tutorial-security-policy.md).)
 
-Pokud jste vybrali standardní nebo srovnávací test na vybraný rozsah, Standard se zobrazí na řídicím panelu dodržování předpisů, kde jsou všechna přidružená data o dodržování předpisů namapovaná jako posouzení. Můžete si také stáhnout souhrnné sestavy pro všechny standardy, které byly zaregistrované.
+Když jste zavedli standardní nebo srovnávací test na vybraný rozsah, přiřadí se iniciativa k oboru a Standard se zobrazí na řídicím panelu dodržování předpisů, kde jsou všechna přidružená data o dodržování předpisů mapovaná jako posouzení. Můžete si také stáhnout souhrnné sestavy pro všechny standardy, které byly zaregistrované.
 
 Microsoft také sleduje zákonné standardy a automaticky zlepšuje jejich pokrytí v některých balíčcích v průběhu času. Když společnost Microsoft vydává nový obsah pro iniciativu (nové zásady, které se mapují na více ovládacích prvků standardně), zobrazí se na řídicím panelu automaticky tento další obsah.
 

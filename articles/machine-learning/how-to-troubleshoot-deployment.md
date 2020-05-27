@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: d51fd5af5ce553bbe9325154e3f854cdf5410d4d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929243"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873388"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
 
@@ -102,7 +102,7 @@ Pokud narazíte na problémy s nasazením modelu do ACI nebo AKS, zkuste ho nasa
 > [!WARNING]
 > Nasazení místních webových služeb se v produkčních scénářích nepodporují.
 
-Chcete-li nasadit místně, upravte kód tak `LocalWebservice.deploy_configuration()` , aby se použil k vytvoření konfigurace nasazení. Pak použijte `Model.deploy()` k nasazení služby. Následující příklad nasadí model (obsažený v proměnné modelu) jako místní webovou službu:
+Chcete-li nasadit místně, upravte kód tak, aby se použil `LocalWebservice.deploy_configuration()` k vytvoření konfigurace nasazení. Pak použijte `Model.deploy()` k nasazení služby. Následující příklad nasadí model (obsažený v proměnné modelu) jako místní webovou službu:
 
 ```python
 from azureml.core.environment import Environment
@@ -146,10 +146,10 @@ Další informace o přizpůsobení prostředí Pythonu najdete v tématu [vytv�
 
 ### <a name="update-the-service"></a>Aktualizace služby
 
-Během místního testování možná budete muset `score.py` soubor aktualizovat, aby se přidalo protokolování nebo pokus o vyřešení všech zjištěných problémů. Chcete-li znovu načíst `score.py` změny v souboru `reload()`, použijte. Například následující kód znovu načte skript pro službu a poté do něj pošle data. Data jsou hodnocena pomocí aktualizovaného `score.py` souboru:
+Během místního testování možná budete muset soubor aktualizovat, `score.py` aby se přidalo protokolování nebo pokus o vyřešení všech zjištěných problémů. Chcete-li znovu načíst změny v `score.py` souboru, použijte `reload()` . Například následující kód znovu načte skript pro službu a poté do něj pošle data. Data jsou hodnocena pomocí aktualizovaného `score.py` souboru:
 
 > [!IMPORTANT]
-> `reload` Metoda je k dispozici pouze pro místní nasazení. Informace o aktualizaci nasazení na jiný cíl služby COMPUTE najdete v části aktualizace v tématu [nasazení modelů](how-to-deploy-and-where.md#update).
+> `reload`Metoda je k dispozici pouze pro místní nasazení. Informace o aktualizaci nasazení na jiný cíl služby COMPUTE najdete v části aktualizace v tématu [nasazení modelů](how-to-deploy-and-where.md#update).
 
 ```python
 service.reload()
@@ -180,16 +180,21 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
+## <a name="container-cannot-be-scheduled"></a>Kontejner nelze naplánovat.
+
+Když nasadíte službu do cíle výpočetního cíle služby Azure Kubernetes, Azure Machine Learning se pokusí naplánovat službu s požadovaným množstvím prostředků. Pokud po 5 minutách nejsou v clusteru k dispozici žádné uzly s příslušným množstvím dostupných prostředků, nasazení se nezdaří a zobrazí se zpráva `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` . Tuto chybu můžete vyřešit přidáním dalších uzlů, změnou SKU vašich uzlů nebo změnou požadavků na prostředky vaší služby. 
+
+Chybová zpráva obvykle indikuje, který prostředek potřebujete více, pokud se zobrazí chybová zpráva oznamující `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` , že služba vyžaduje GPU a v clusteru jsou tři uzly, které nemají k dispozici GPU. To se dá řešit přidáním dalších uzlů, pokud používáte SKU GPU, přechodem na SKU s povoleným GPU, pokud nechcete nebo neměníte prostředí, aby nevyžadovalo GPU.  
 
 ## <a name="service-launch-fails"></a>Spuštění služby se nezdařilo.
 
-Po úspěšném vytvoření image se systém pokusí spustit kontejner pomocí konfigurace nasazení. V rámci procesu spuštění kontejneru je `init()` funkce ve vašem skriptu bodování vyvolána systémem. Pokud ve `init()` funkci nejsou zachycené výjimky, může se zobrazit chyba **CrashLoopBackOff** v chybové zprávě.
+Po úspěšném vytvoření image se systém pokusí spustit kontejner pomocí konfigurace nasazení. V rámci procesu spuštění kontejneru `init()` je funkce ve vašem skriptu bodování vyvolána systémem. Pokud ve funkci nejsou zachycené výjimky `init()` , může se zobrazit chyba **CrashLoopBackOff** v chybové zprávě.
 
 Použijte informace v části Kontrola [protokolu Docker](#dockerlog) pro kontrolu protokolů.
 
 ## <a name="function-fails-get_model_path"></a>Funkce se nezdařila: get_model_path ()
 
-Často se ve `init()` funkci skriptu bodování volá funkce [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) pro vyhledání souboru modelu nebo složky souborů modelu v kontejneru. Pokud soubor modelu nebo složku nelze nalézt, funkce se nezdařila. Nejjednodušší způsob, jak tuto chybu ladit, je spuštění níže uvedeného kódu Pythonu v prostředí kontejneru:
+Často se ve `init()` funkci skriptu bodování volá funkce [Model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) pro vyhledání souboru modelu nebo složky souborů modelu v kontejneru. Pokud soubor modelu nebo složku nelze nalézt, funkce se nezdařila. Nejjednodušší způsob, jak tuto chybu ladit, je spuštění níže uvedeného kódu Pythonu v prostředí kontejneru:
 
 ```python
 from azureml.core.model import Model
@@ -198,13 +203,13 @@ logging.basicConfig(level=logging.DEBUG)
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-Tento příklad vytiskne místní cestu (vzhledem k `/var/azureml-app`) v kontejneru, ve kterém váš skript bodování očekává nalezení souboru modelu nebo složky. Pak můžete ověřit, jestli je soubor nebo složka skutečně tam, kde se očekává.
+Tento příklad vytiskne místní cestu (vzhledem k `/var/azureml-app` ) v kontejneru, ve kterém váš skript bodování očekává nalezení souboru modelu nebo složky. Pak můžete ověřit, jestli je soubor nebo složka skutečně tam, kde se očekává.
 
 Nastavení úrovně protokolování na ladění může způsobit, že budou protokolovány Další informace, které mohou být užitečné při identifikaci selhání.
 
 ## <a name="function-fails-runinput_data"></a>Neúspěšná funkce: Run (input_data)
 
-Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do `run(input_data)` funkce Přidat příkaz pro zachycení chyb, aby se místo toho vrátila podrobná chybová zpráva. Příklad:
+Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce Přidat příkaz pro zachycení chyb, `run(input_data)` aby se místo toho vrátila podrobná chybová zpráva. Příklad:
 
 ```python
 def run(input_data):
@@ -264,7 +269,7 @@ K dispozici jsou dvě věci, které vám pomůžou zabránit stavovým kódům 5
     > [!NOTE]
     > Pokud obdržíte špičky žádostí větší, než jsou nové minimální repliky schopné zpracovat, můžete se 503s znovu dostat. Například při zvyšování provozu na službu možná budete muset zvětšit minimální repliky.
 
-Další informace o `autoscale_target_utilization`nastavení, `autoscale_max_replicas`a `autoscale_min_replicas` pro naleznete v tématu Reference k modulu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) .
+Další informace o nastavení `autoscale_target_utilization` , `autoscale_max_replicas` a `autoscale_min_replicas` pro naleznete v tématu Reference k modulu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) .
 
 ## <a name="http-status-code-504"></a>Stavový kód HTTP 504
 
@@ -295,7 +300,7 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
 
     1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Otevře se soubor s názvem __Launch. JSON__ .
 
-    1. V souboru __Launch. JSON__ Najděte řádek, který obsahuje `"configurations": [`, a vložte za něj následující text:
+    1. V souboru __Launch. JSON__ Najděte řádek, který obsahuje `"configurations": [` , a vložte za něj následující text:
 
         ```json
         {
@@ -349,10 +354,10 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
     print("Debugger attached...")
     ```
 
-1. Vytvořte bitovou kopii založenou na definici prostředí a přetáhnout image do místního registru. Během ladění možná budete chtít provést změny v souborech v imagi, aniž byste je museli znovu vytvářet. Chcete-li nainstalovat textový editor (vim) v imagi Docker, použijte vlastnosti `Environment.docker.base_image` a `Environment.docker.base_dockerfile` :
+1. Vytvořte bitovou kopii založenou na definici prostředí a přetáhnout image do místního registru. Během ladění možná budete chtít provést změny v souborech v imagi, aniž byste je museli znovu vytvářet. Chcete-li nainstalovat textový editor (vim) v imagi Docker, použijte `Environment.docker.base_image` vlastnosti a `Environment.docker.base_dockerfile` :
 
     > [!NOTE]
-    > V tomto příkladu se `ws` předpokládá, že odkazuje na váš pracovní prostor `model` Azure Machine Learning a který je modelem, který je nasazený. `myenv.yml` Soubor obsahuje závislosti conda vytvořené v kroku 1.
+    > V tomto příkladu se předpokládá, že `ws` odkazuje na váš pracovní prostor Azure Machine Learning a který `model` je modelem, který je nasazený. `myenv.yml`Soubor obsahuje závislosti conda vytvořené v kroku 1.
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies
@@ -386,7 +391,7 @@ Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovac�
 ### <a name="debug-the-service"></a>Ladění služby
 
 > [!TIP]
-> Pokud nastavíte časový limit pro připojení PTVSD v `score.py` souboru, je nutné před vypršením časového limitu připojit vs Code k ladicí relaci. Spusťte VS Code, otevřete místní kopii `score.py`, nastavte zarážku a před použitím kroků v této části Připravte ji na přechod.
+> Pokud nastavíte časový limit pro připojení PTVSD v `score.py` souboru, je nutné před vypršením časového limitu připojit vs Code k ladicí relaci. Spusťte VS Code, otevřete místní kopii `score.py` , nastavte zarážku a před použitím kroků v této části Připravte ji na přechod.
 >
 > Další informace o ladění a nastavení zarážek naleznete v tématu [ladění](https://code.visualstudio.com/Docs/editor/debugging).
 
@@ -415,13 +420,13 @@ Chcete-li provést změny v souborech v imagi, můžete se připojit ke spuště
     docker exec -it debug /bin/bash
     ```
 
-1. Chcete-li najít soubory používané službou, použijte následující příkaz z prostředí bash v kontejneru, pokud je výchozí adresář jiný než `/var/azureml-app`:
+1. Chcete-li najít soubory používané službou, použijte následující příkaz z prostředí bash v kontejneru, pokud je výchozí adresář jiný než `/var/azureml-app` :
 
     ```bash
     cd /var/azureml-app
     ```
 
-    Odsud můžete `score.py` soubor upravit pomocí služby Vim. Další informace o používání systému vim najdete v tématu [použití Editoru systému vim](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
+    Odsud můžete soubor upravit pomocí služby vim `score.py` . Další informace o používání systému vim najdete v tématu [použití Editoru systému vim](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
 
 1. Změny v kontejneru nejsou obvykle trvalé. Pokud chcete uložit provedené změny, použijte následující příkaz před ukončením prostředí spuštěného v předchozím kroku (tj. v jiném prostředí):
 

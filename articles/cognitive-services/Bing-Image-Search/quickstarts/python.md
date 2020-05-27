@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: af3620770a4b608e162368c2432575d36e11e19f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6cdee6dd30c1af44b321b12c96f3e2ecdcd0d2b3
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118903"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871976"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API a Pythonu
 
 V tomto rychlém startu se dozvíte, jak odesílat rozhraní API Bingu pro vyhledávání obrázků žádosti o vyhledávání. Tato aplikace Python odešle vyhledávací dotaz do rozhraní API a zobrazí adresu URL prvního obrázku ve výsledcích. I když je tato aplikace napsaná v Pythonu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-Pokud chcete tento příklad spustit jako Jupyter Poznámkový blok v [MyBinder](https://mybinder.org), vyberte spouštěcí znak pořadače:
+Pokud chcete tento příklad spustit jako Jupyter Poznámkový blok v [MyBinder](https://mybinder.org), vyberte **spouštěcí znak pořadače** :
 
 [![Vazba](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 

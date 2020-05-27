@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9dce9e2f63afc50e367d650f93f293b974d912e9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f07efc8fd77f1c34ef96d31f55089726942d05df
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199550"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871228"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS se službou Multi-Factor Authentication
 
@@ -73,7 +73,7 @@ Když nainstalujete rozšíření, budete potřebovat ID adresáře a přihlašo
 
 ![V části vlastnosti Azure Active Directory Najděte ID vašeho adresáře.](./media/howto-mfa-nps-extension/properties-directory-id.png)
 
-### <a name="network-requirements"></a>Síťové požadavky
+### <a name="network-requirements"></a>Požadavky sítě
 
 Server NPS musí být schopný komunikovat s následujícími adresami URL přes porty 80 a 443.
 
@@ -205,9 +205,12 @@ Pokud uplynula platnost předchozího certifikátu počítače a vygeneroval se 
 
 ### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government dalších kroků
 
-Pro zákazníky, kteří používají Azure Government Cloud, jsou na každém serveru NPS potřeba tyto další kroky konfigurace:
+Pro zákazníky, kteří používají Azure Government Cloud, jsou na každém serveru NPS potřeba tyto další kroky konfigurace.
 
-1. Otevřete **Editor registru** na serveru NPS.
+> [!IMPORTANT]
+> Tato nastavení registru nakonfigurujte jenom v případě, že jste zákazníkem Azure Government.
+
+1. Pokud jste zákazník Azure Government, otevřete **Editor registru** na serveru NPS.
 1. Přejděte na adresu `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`. Nastavte následující hodnoty klíče:
 
     | Klíč registru       | Hodnota |
@@ -248,7 +251,7 @@ Jakmile povolíte MFA pro klienta RADIUS pomocí rozšíření serveru NPS, budo
 
 Pokud máte uživatele, kteří nejsou zaregistrovaní pro MFA, můžete určit, co se stane při pokusu o ověření. K řízení chování funkcí použijte *REQUIRE_USER_MATCH* nastavení registru v cestě registru *HKLM\Software\Microsoft\AzureMFA* . Toto nastavení má jedinou možnost konfigurace:
 
-| Key | Hodnota | Výchozí |
+| Klíč | Hodnota | Výchozí |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE NEBO FALSE | Nenastaveno (ekvivalent hodnoty TRUE) |
 
@@ -256,7 +259,7 @@ Pokud máte uživatele, kteří nejsou zaregistrovaní pro MFA, můžete určit,
 
 Můžete zvolit vytvoření tohoto klíče a jeho nastavení na hodnotu NEPRAVDA, pokud se vaši uživatelé chtějí zaregistrovat a nemusí se ještě registrovat pro Azure MFA. Vzhledem k tomu, že nastavení klíče umožňuje uživatelům, kteří nejsou zaregistrovaní pro MFA, přihlásit se, měli byste tento klíč před zahájením provozu odebrat.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="nps-extension-health-check-script"></a>Skript kontroly stavu rozšíření serveru NPS
 

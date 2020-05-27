@@ -8,40 +8,38 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: d366195f9cd72e6baa88c17203ae93cbbc6cbe6a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3bb31c36e8c614a72b86f95cb7e7d1c588692f97
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475535"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873087"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Rychlý Start: odeslání dotazu do rozhraní API Bingu pro vyhledávání v místním obchodu pomocí Node. js
 
-Tento rychlý Start vám umožní začít odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure. I když je tato jednoduchá aplikace napsaná v Node. js, je rozhraní API webová služba RESTful kompatibilní s jakýmkoli programovacím jazykem schopným vytvářet požadavky HTTP a analyzovat JSON.
+V tomto rychlém startu se dozvíte, jak odesílat požadavky do rozhraní API Bingu pro vyhledávání v místním obchodu, což je služba pro rozpoznávání Azure. I když je tato jednoduchá aplikace napsaná v Node. js, je rozhraní API webová služba RESTful, která je kompatibilní s jakýmkoli programovacím jazykem schopným vytvářet požadavky HTTP a analyzovat JSON.
 
-Tato ukázková aplikace získá data místní odpovědi z rozhraní API vyhledávacího dotazu `hotel in Bellevue`.
+Tato ukázková aplikace získá data místních odpovědí z rozhraní API pro vyhledávací dotaz.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/)
+* [Knihovna požadavků JavaScriptu](https://github.com/request/request)
+* [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraní API pro vyhledávání Bingu. Pro tento rychlý Start je [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) dostačující. Uložte klíč rozhraní API, který je k dispozici při aktivaci bezplatné zkušební verze. Další informace najdete v tématu [Cognitive Services ceny – vyhledávání BINGU API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-* [Knihovna žádostí JavaScriptu](https://github.com/request/request)
-
-Musíte mít [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Použijte přístupový klíč, který je k dispozici v bezplatné zkušební verzi.  Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="code-scenario"></a>Scénář kódu
 
-Následující kód získá definici a odešle požadavek. Implementuje se v následujících krocích:
+Následující kód definuje a odešle požadavek, který je implementován v následujících krocích:
 
 1. Deklarujte proměnné, které za použití hostitele a cesty určují koncový bod.
 2. Zadejte dotaz a přidejte parametr dotazu.
 3. Vytvořte pro odpověď funkci obslužné rutiny.
-4. Definujte funkci vyhledávání, která vytvoří požadavek a přidá hlavičku Ocp-Apim-Subscription-Key.
-5. Spusťte funkci vyhledávání.
+4. Definujte vyhledávací funkci, která vytvoří požadavek a přidá `Ocp-Apim-Subscription-Key` hlavičku.
+5. Spusťte vyhledávací funkci.
 
-Následuje celý kód pro tuto ukázku:
 
 ```javascript
 'use strict';
@@ -94,6 +92,6 @@ Search();
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlý start hledání místních obchodních obchodů](local-quickstart.md)
+* [Rychlé zprovoznění hledání v jazyce C# pro místní obchod](local-quickstart.md)
 * [Rychlý Start pro místní vyhledávání v jazyce Java](local-search-java-quickstart.md)
 * [Rychlý Start pro místní vyhledávání v Pythonu](local-search-python-quickstart.md)

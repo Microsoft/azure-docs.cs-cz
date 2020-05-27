@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 27471cad2dfcd7accdb6b43414f216f85552fab3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 582bb3e0f98535ccdc7be059de904e152db6ac77
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652488"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870989"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Rychlý Start: Vytvoření aplikace HoloLens pomocí prostorových kotev Azure v C++/WinRT a DirectX
 
@@ -54,7 +54,7 @@ Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem úč
 
 Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
 
-Vyhledejte `case DemoStep::ConfigSession:` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `configuration.AccountKey("MyAccountDomain");` .
+Vyhledejte `case DemoStep::ConfigSession:` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `configuration.AccountDomain("MyAccountDomain");` .
 
 ## <a name="deploy-the-app-to-your-hololens"></a>Nasazení aplikace do HoloLens
 

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1de2d647a6292467a5ac4cc333ccacdedfc3c9ea
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8c27a50f823dcda74d735e6314c9004ec36769d4
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638996"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870889"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro Xamarin Android pomocí prostorových kotev Azure
 
@@ -63,7 +63,9 @@ Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem úč
 
 Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
 
-Vyhledejte `AzureSpatialAnchorsManager(Session arCoreSession)` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `this.spatialAnchorsSession.Configuration.AccountId = "MyAccountDomain";` .
+Otevřete `Xamarin/SampleXamarin.Android/AzureSpatialAnchorsManager.cs`.
+
+Vyhledejte `AzureSpatialAnchorsManager(Session arCoreSession)` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `this.spatialAnchorsSession.Configuration.AccountDomain = "MyAccountDomain";` .
 
 ## <a name="deploy-the-app-to-your-android-device"></a>Nasazení aplikace na zařízení s Androidem
 

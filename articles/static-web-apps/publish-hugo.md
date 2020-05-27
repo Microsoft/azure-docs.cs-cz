@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: a6ea758de7f471cb15462d1ebadaecf24c851c70
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773458"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870690"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Hugo ve službě Azure static Web Apps Preview
 
@@ -153,12 +153,12 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
 1. Otevřete aplikaci Hugo v textovém editoru a otevřete soubor _. GitHub/Workflows/Azure-Pages-<WORKFLOW_NAME>. yml_ .
 
-1. Pokud `- uses: actions/checkout@v1` chcete sestavit aplikaci Hugo, nahraďte řádek (řádek 18) následujícím:.
+1. Pokud `- uses: actions/checkout@v2` chcete sestavit aplikaci Hugo, nahraďte řádek (řádek 18) následujícím:.
 
    ```yml
    - uses: actions/checkout@v2
-        with:
-          submodules: true
+     with:
+       submodules: true
 
    - name: Setup Hugo
      uses: peaceiris/actions-hugo@v2.4.8

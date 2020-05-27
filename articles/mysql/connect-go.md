@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: 3b9b18585aac4e31af05218ff732569912508ce9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: 1a6942364e6f77c97c93903b25bffa130222cd59
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81681877"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869873"
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí jazyka Go
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL z platforem Windows, Ubuntu Linux a Apple macOS pomocí kódu napsaného v jazyce [Go](https://golang.org/). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí jazyka Go a teprve začínáte pracovat se službou Azure Database for MySQL.
@@ -22,6 +22,9 @@ Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MyS
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
+
+> [!IMPORTANT] 
+> Ujistěte se, že IP adresa, ze které se připojujete, přidala pravidla brány firewall serveru pomocí [Azure Portal](./howto-manage-firewall-using-portal.md) nebo rozhraní příkazového [řádku Azure CLI](./howto-manage-firewall-using-cli.md) .
 
 ## <a name="install-go-and-mysql-connector"></a>Instalace jazyka Go a konektoru MySQL
 Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a ovladač [go-sql-driver for MySQL](https://github.com/go-sql-driver/mysql#installation). V závislosti na vaší platformě postupujte podle kroků v příslušné části:

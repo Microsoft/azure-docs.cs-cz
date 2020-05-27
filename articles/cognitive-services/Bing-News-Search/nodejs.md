@@ -8,42 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 42ac6cac972374dbd1db42b75742212046d2ce3e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 24dd1e719b9eb401038d47c4d1c42139258f36f9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383128"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872055"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Rychlý Start: Proveďte hledání zpráv pomocí Node. js a Vyhledávání zpráv Bingu REST API
 
-V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace JavaScriptu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
+V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání zpráv. Tato jednoduchá aplikace JavaScriptu pošle vyhledávací dotaz do rozhraní API a zobrazí odpověď JSON.
 
-I když je tato aplikace napsaná v JavaScriptu a běží v Node.js, jsou toto rozhraní API a webová služba RESTful kompatibilní s většinou programovacích jazyků.
+I když je tato aplikace napsaná v jazyce JavaScript a běží v Node. js, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingNewsSearchv7.js).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/)
-
-* [Knihovna žádostí JavaScriptu](https://github.com/request/request)
+* [Knihovna požadavků JavaScriptu](https://github.com/request/request)
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru nový soubor JavaScriptu a nastavte striktnost a požadavky protokolu HTTPS.
+1. Vytvořte nový soubor JavaScriptu v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru a nastavte požadavky na striktní a HTTPS.
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, cestu k rozhraní API pro vyhledávání obrázků, klíč předplatného a hledaný výraz. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. 
+2. Vytvořte proměnné pro koncový bod rozhraní API, cestu pro hledání rozhraní API News, klíč předplatného a hledaný termín. Můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. 
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -54,38 +53,42 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 
 ## <a name="handle-and-parse-the-response"></a>Zpracování a parsování odpovědi
 
-1. Definujte funkci s názvem `response_handler`, která jako parametr přijímá volání protokolu HTTP `response`. V rámci této funkce proveďte následující kroky:
+1. Definujte funkci s názvem `response_handler` , která přijímá volání http, `response` jako parametr. 
 
-    1. Definujte proměnnou, která bude obsahovat text odpovědi JSON.  
-        ```javascript
-        let response_handler = function (response) {
-            let body = '';
-        };
-        ```
+   Do této funkce přidejte kód v následujících krocích.
 
-    2. Uložte text odpovědi při volání příznaku **data**.
-        ```javascript
-        response.on('data', function (d) {
-            body += d;
-        });
-        ```
+2. Definujte proměnnou, která bude obsahovat text odpovědi JSON.  
 
-    3. Při signalizaci **koncového** příznaku se dají zobrazit JSON a hlavičky.
+    ```javascript
+    let response_handler = function (response) {
+        let body = '';
+    };
+    ```
 
-        ```javascript
-        response.on('end', function () {
-            console.log('\nRelevant Headers:\n');
-            for (var header in response.headers)
-                // header keys are lower-cased by Node.js
-                if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                     console.log(header + ": " + response.headers[header]);
-            body = JSON.stringify(JSON.parse(body), null, '  ');
-            console.log('\nJSON Response:\n');
-            console.log(body);
-         });
-        ```
+3. Uloží tělo odpovědi při `data` volání příznaku.
 
-## <a name="json-response"></a>Odpověď JSON
+    ```javascript
+    response.on('data', function (d) {
+        body += d;
+    });
+    ```
+
+3. Při `end` signalizaci příznaku se dají zobrazit JSON a hlavičky.
+
+    ```javascript
+    response.on('end', function () {
+        console.log('\nRelevant Headers:\n');
+        for (var header in response.headers)
+            // header keys are lower-cased by Node.js
+            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
+                 console.log(header + ": " + response.headers[header]);
+        body = JSON.stringify(JSON.parse(body), null, '  ');
+        console.log('\nJSON Response:\n');
+        console.log(body);
+     });
+    ```
+
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 

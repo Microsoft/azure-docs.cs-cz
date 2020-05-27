@@ -4,12 +4,12 @@ description: Poskytuje odpovědi na některé běžné dotazy týkající se ře
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 6d8e87dd52871b82109ccc794af04244efe95b06
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854597"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873315"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Nejčastější dotazy týkající se řešení Azure VMware (AVS) Preview
 
@@ -17,7 +17,7 @@ Odpovědi na nejčastější dotazy týkající se řešení Azure VMware (AVS).
 
 ## <a name="general"></a>Obecné
 
-**Co je Azure VMware Solution (AVS)?**
+**Co je řešení Azure VMware (AVS)?**
 
 Vzhledem k tomu, že podniky sledují strategie pro moderní účely, aby vylepšili flexibilitu, snížili náklady a urychlili inovace, hybridní cloudové platformy se vypracovaly jako klíčové aktivátory digitální transformace zákazníků. Služba AVS kombinuje software definovaného datového centra (SDDC) společnosti VMware s využitím ekosystému Microsoft Azure Global Cloud Service. Řešení AVS je spravované tak, aby splňovalo požadavky na výkon, dostupnost, zabezpečení a dodržování předpisů.
 
@@ -33,7 +33,7 @@ K dispozici jsou všechny služby Azure, které budou dostupné pro zákazníky 
 
 **Používají se stejné nástroje, které teď používám ke správě prostředků privátního cloudu?**
 
-Ano. Azure Portal se používá pro nasazení a řadu operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
+Yes. Azure Portal se používá pro nasazení a řadu operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
 
 **Můžu pomocí místního serveru vCenter spravovat privátní cloud?**
 
@@ -45,7 +45,7 @@ Konkrétní integrace a případy použití mohou být vyhodnoceny případ od p
 
 **Můžu migrovat virtuální počítače s vSphere z místního prostředí do služby AVS Private cloudy?**
 
-Ano. Migrace virtuálních počítačů a vMotion se dají použít k přesunu virtuálních počítačů do privátního cloudu, pokud jsou splněné standardníhttps://kb.vmware.com/s/article/210695systémy přes vCenter [požadavky] [].
+Yes. Migrace virtuálních počítačů a vMotion se dají použít k přesunu virtuálních počítačů do privátního cloudu, pokud jsou splněné standardní systémy přes vCenter [požadavky] [ https://kb.vmware.com/s/article/210695 ].
 
 **Vyžaduje se v místních prostředích konkrétní verze vSphere?**
 
@@ -66,6 +66,35 @@ Nedošlo k žádné změně stávajícího řešení Azure VMware pomocí CloudS
 **Můžu z řešení Azure VMware migrovat CloudSimple do tohoto nového řešení?**
 
 Ano, řešení Azure VMware podporuje migraci pomocí známých nástrojů VMware, jako je HCX. Pro zákazníky, kteří mají zájem o migraci na nové řešení, prosím Spolupracujte se svým týmem účet Microsoft a prozkoumejte možnosti a dostupnou podporu.
+
+<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**Návody požádat o zvýšení kvóty hostitele pro existující řešení Azure VMware?**
+
+Můžete požádat o zvýšení kvóty tím, že [odešlete žádost o podporu](..\azure-portal\supportability\how-to-create-azure-support-request.md). Tým správy kvót vyhodnocuje žádost a schválí ji do tří pracovních dnů.  
+
+> [!IMPORTANT]
+> Než budete moct požádat o zvýšení kvóty, nezapomeňte [zaregistrovat poskytovatele prostředků **Microsoft. AVS** ](tutorial-create-private-cloud.md) v Azure Portal.  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types).
+
+1. V Azure Portal v části **pomoc a podpora**vytvořte **novou žádost o podporu** a zadejte pro lístek následující informace:
+   - **Typ problému:** Odbornou
+   - **Předplatné:** ID vašeho předplatného
+   - **Služba:**  Řešení Azure VMware 
+   - **Shrnutí:** Zvýšení kvóty
+   - **Typ problému:** Problémy se správou kapacity
+   - **Podtyp problému:** Požadavek zákazníka na další kvótu/kapacitu hostitele
+
+1. V popisu lístku podpory zadejte na kartě Podrobnosti:
+   - Počet dalších uzlů   
+   - SKU uzlu
+   - Oblast
+
+   > [!NOTE] 
+   > Ve výchozím nastavení se udělí minimálně čtyři uzly.
+
+1. Žádost odešlete kliknutím na tlačítko **zkontrolovat + vytvořit** .
 
 ## <a name="compute-network-and-storage"></a>Výpočetní prostředky, sítě a úložiště
 
@@ -113,7 +142,7 @@ Clustery zkušební verze jsou tři hostitelské clustery, které se používaj�
 
 **Můžu pro zkušební clustery použít špičkové hostitele?**
 
-Ne. Vysoce koncoví hostitelé ESXi jsou rezervované pro použití v produkčních clusterech.
+No. Vysoce koncoví hostitelé ESXi jsou rezervované pro použití v produkčních clusterech.
 
 ## <a name="avs-and-vmware-software"></a>Software pro funkci AVS a VMware
 
@@ -127,7 +156,7 @@ Ano, NSX-T 2,5 se používá pro softwarově definované sítě v privátních c
 
 **Můžu použít VMware NSX-V v privátním cloudu?**
 
-Ne. NSX-T je jediná podporovaná verze NSX.
+No. NSX-T je jediná podporovaná verze NSX.
 
 **NSX se vyžaduje v místních prostředích nebo sítích, které se připojují k privátnímu cloudu.**
 
@@ -160,11 +189,11 @@ V Azure Portal povolte připojení k Internetu pro privátní cloud. Pomocí Spr
 
 **Potřebuji omezit přístup z Internetu k virtuálním počítačům v logických sítích v privátním cloudu?**
 
-Ne. Příchozí síťový provoz z Internetu přímo do privátních cloudů není povolený.
+No. Příchozí síťový provoz z Internetu přímo do privátních cloudů není povolený.
 
 **Je potřeba omezit přístup k Internetu z virtuálních počítačů v logických sítích na Internet?**
 
-Ano. Abyste mohli vytvořit bránu firewall, která omezuje přístup virtuálních počítačů k Internetu, budete muset použít Správce NSX-T.
+Yes. Abyste mohli vytvořit bránu firewall, která omezuje přístup virtuálních počítačů k Internetu, budete muset použít Správce NSX-T.
 
 ## <a name="accounts-and-privileges"></a>Účty a oprávnění
 

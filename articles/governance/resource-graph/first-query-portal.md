@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: váš první dotaz na portálu'
 description: V tomto rychlém startu budete postupovat podle pokynů ke spuštění prvního dotazu z Azure Portal pomocí Průzkumníka Azure Resource Graph.
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69fb1262de706185d8968e9381bb34dd0d84a3b7
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74406796"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872092"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu
 
@@ -29,25 +29,25 @@ Otevřete [Azure Portal](https://portal.azure.com) pro vyhledání a použití P
 1. V části **dotazu 1** v okně zadejte dotaz `Resources | project name, type | limit 5` a vyberte **Spustit dotaz**.
 
    > [!NOTE]
-   > Jelikož tento příklad dotazu neposkytuje modifikátor řazení `order by`, jako je spuštění tohoto dotazu vícekrát, je pravděpodobně výsledkem jiné sady prostředků na žádost.
+   > Jelikož tento příklad dotazu neposkytuje modifikátor řazení, jako je `order by` spuštění tohoto dotazu vícekrát, je pravděpodobně výsledkem jiné sady prostředků na žádost.
 
 1. Zkontrolujte odpověď na dotaz na kartě **výsledky** . výběrem karty **zprávy** zobrazíte podrobnosti o dotazu, včetně počtu výsledků a doby trvání dotazu. Případné chyby se zobrazí na této kartě.
 
-1. Aktualizujte dotaz na `order by` vlastnost **Name** : `Resources | project name, type | limit 5 | order by name asc`. Pak vyberte **Spustit dotaz**.
+1. Aktualizujte dotaz na `order by` vlastnost **Name** : `Resources | project name, type | limit 5 | order by name asc` . Pak vyberte **Spustit dotaz**.
 
    > [!NOTE]
-   > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Tak se nejdřív omezí rozsah výsledků dotazu a ty se pak seřadí.
+   > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Toto pořadí příkazů nejprve omezí výsledky dotazu a pak je vyřadí.
 
-1. Aktualizujte dotaz na první `order by` vlastnost **Name** a pak `limit` na horních pět výsledků: `Resources | project name, type | order by name asc | limit 5`. Pak vyberte **Spustit dotaz**.
+1. Aktualizujte dotaz na první `order by` vlastnost **Name** a pak `limit` na horních pět výsledků: `Resources | project name, type | order by name asc | limit 5` . Pak vyberte **Spustit dotaz**.
 
-Pokud se konečný dotaz několikrát spustí, za předpokladu, že se nic ve vašem prostředí nemění, vrácené výsledky jsou konzistentní a podle očekávání – seřazené podle vlastnosti **Name** , ale pořád se omezí na pět nejlepších výsledků.
+Když se konečný dotaz několikrát spustí, předpokládá se, že se nic ve vašem prostředí nemění, vrácené výsledky jsou konzistentní a seřazené podle vlastnosti **Name** , ale pořád se omezí na pět nejlepších výsledků.
 
 ### <a name="schema-browser"></a>Prohlížeč schémat
 
 Prohlížeč schématu je umístěný v levém podokně Průzkumníka grafu prostředků. Tento seznam prostředků zobrazuje všechny _typy_ prostředků Azure, které podporuje Azure Resource Graph a které existují v tenantovi, ke kterému máte přístup. Rozbalením typu prostředku nebo podvlastnostmi se zobrazí podřízené vlastnosti, které lze použít k vytvoření dotazu grafu prostředku.
 
 Výběr typu prostředku umístí `where type =="<resource type>"` do pole dotazu. Výběrem jedné z podřízených vlastností přidáte `where <propertyName> == "INSERT_VALUE_HERE"` do pole dotazu.
-Prohlížeč schémat je skvělým způsobem, jak zjistit vlastnosti pro použití v dotazech. Nezapomeňte nahradit _vloženou\_hodnotu\__ vlastní hodnotou, upravit dotaz pomocí podmínek, operátorů a funkcí, abyste dosáhli zamýšlených výsledků.
+Prohlížeč schémat je skvělým způsobem, jak zjistit vlastnosti pro použití v dotazech. Nezapomeňte nahradit _vloženou \_ hodnotu \_ _ vlastní hodnotou, upravit dotaz pomocí podmínek, operátorů a funkcí, abyste dosáhli zamýšlených výsledků.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Vytvoření grafu z dotazu na graf prostředků
 
@@ -97,7 +97,7 @@ Chcete-li poskytnout příklady dotazů na grafy prostředků a jak lze použít
   [![Příklad obrázku pro ukázkový řídicí panel #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
-> Počty a grafy ve výše uvedených ukázkových snímcích obrazovky řídicího panelu se budou lišit v závislosti na prostředí Azure.
+> Počty a grafy ve výše uvedených ukázkových snímcích obrazovky řídicího panelu se liší v závislosti na prostředí Azure.
 
 1. Vyberte a Stáhněte si ukázkový řídicí panel, který chcete vyhodnotit.
 

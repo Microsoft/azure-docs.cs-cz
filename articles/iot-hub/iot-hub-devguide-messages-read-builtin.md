@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.custom: amqp
-ms.openlocfilehash: bf7c4118e17727c6c8141570ab146026d5383059
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: fba22324a3c35b861d28ed9b84207ab3a6f9816b
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996934"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872707"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu
 
@@ -64,7 +64,7 @@ Sady SDK, které můžete použít pro připojení k integrovanému koncovému b
 | Jazyk | Sada SDK | Příklad |
 | -------- | --- | ------ |
 | .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Rychlý start](quickstart-send-telemetry-dotnet.md) |
- Java | https://github.com/Azure/azure-event-hubs-java | [Rychlý start](quickstart-send-telemetry-java.md) |
+ Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [Rychlý start](quickstart-send-telemetry-java.md) |
 | Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Rychlý start](quickstart-send-telemetry-node.md) |
 | Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
 

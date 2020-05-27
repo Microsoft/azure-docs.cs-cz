@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/26/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 631185c20b816191530158fab2b7cd1ed68c3092
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1e51c4e9d0c3da8b6ad76b4b45869ea8b2394008
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77372055"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871280"
 ---
 Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro Python:
 
@@ -24,57 +24,16 @@ Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro P
 * Přidejte funkce, jako je například seznam frází.
 * Výuka a publikování aplikace
 
-[Ukázky knihovny dokumentace k](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | vytváření balíčků[zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | v knihovně[(PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [Samples](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
+[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis)  |  [Vytváření balíčku (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Účet portálu Language Understanding (LUIS): [Vytvořte si ho zdarma](https://www.luis.ai).
-* [Python 3.x](https://www.python.org/)
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Aktuální verze [Pythonu 3. x](https://www.python.org/).
+* Jakmile budete mít předplatné Azure, vytvořte v Azure Portal [prostředek pro vytváření Language Understanding](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) , abyste získali svůj klíč a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+    * Pro připojení aplikace k Language Understanding vytváření obsahu budete potřebovat klíč a koncový bod z prostředku, který [vytvoříte](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) . Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu. Službu můžete vyzkoušet pomocí bezplatné cenové úrovně ( `F0` ).
 
 ## <a name="setting-up"></a>Nastavení
-
-### <a name="get-your-language-understanding-luis-starter-key"></a>Získání spouštěcího klíče pro Language Understanding (LUIS)
-
-Získejte [počáteční klíč](../luis-how-to-azure-subscription.md#starter-key) vytvořením prostředku pro vytváření Luis. Zachovejte klíč a oblast klíče pro další krok.
-
-### <a name="create-an-environment-variable"></a>Vytvoření proměnné prostředí
-
-Pomocí klíče a oblasti pro klíč vytvořte dvě proměnné prostředí pro ověřování:
-
-* `LUIS_AUTHORING_KEY`– Klíč prostředku pro ověření vašich požadavků.
-* `LUIS_REGION`– Oblast přidružená ke klíči. Například `westus`.
-
-Použijte pokyny pro váš operační systém.
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
-setx LUIS_REGION <replace-with-your-luis-region>
-```
-
-Po přidání proměnné prostředí restartujte okno konzoly.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změny projevily.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-`.bash_profile`Upravte a přidejte proměnnou prostředí:
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změny projevily.
-***
 
 ### <a name="install-the-python-library-for-luis"></a>Instalace knihovny Pythonu pro LUIS
 
@@ -146,7 +105,7 @@ Použijte metodu [model. add_intent](https://docs.microsoft.com/python/api/azure
 
 I když se entity nevyžadují, najdete je ve většině aplikací. Entita extrahuje informace z utterance uživatele, která je nutná k zaúmyslnému záměru uživatele. Existuje několik typů [předem sestavených](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-prebuilt-app-id--version-id--prebuilt-extractor-names--custom-headers-none--raw-false----operation-config-) a vlastních entit, z nichž každý má vlastní modely DTO (Data Transformation Object).  Mezi běžné předem připravené entity, které se mají přidat do vaší aplikace, patří [číslo](../luis-reference-prebuilt-number.md), [datetimeV2](../luis-reference-prebuilt-datetimev2.md), [geographyV2](../luis-reference-prebuilt-geographyv2.md)a [Ordinal](../luis-reference-prebuilt-ordinal.md).
 
-Tato metoda **add_entities** vytvořila `Location` jednoduchou entitu se dvěma rolemi `Class` , jednoduchou entitou `Flight` , složenou entitou a přidává několik předem sestavených entit.
+Tato metoda **add_entities** vytvořila `Location` jednoduchou entitu se dvěma rolemi, `Class` jednoduchou entitou, `Flight` složenou entitou a přidává několik předem sestavených entit.
 
 Je důležité, abyste věděli, že entity nejsou označené záměrem. Mohou a obvykle se vztahují na mnoho záměrů. Pouze ukázkový uživatel projevy je označen pro konkrétní, jednotlivý záměr.
 

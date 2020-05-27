@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: 07ecac46ab13058d308c17c5747701ee5ed577fc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b64a3e9d3e6f5393fb47c41ad34a9f1ed78cb44a
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446673"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872761"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Rychlý Start: Získání přehledů obrázků pomocí Vizuální vyhledávání Bingu REST API a C #
 
@@ -41,7 +41,7 @@ Tento rychlý Start ukazuje, jak nahrát obrázek do rozhraní API pro vizuáln�
     using System.Collections.Generic;
     ```
 
-2. Přidejte proměnné pro klíč předplatného, koncový bod a cestu k imagi, kterou chcete nahrát. `uriBase`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek:
+2. Přidejte proměnné pro klíč předplatného, koncový bod a cestu k imagi, kterou chcete nahrát. Pro tuto `uriBase` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```csharp
         const string accessKey = "<my_subscription_key>";
@@ -49,7 +49,7 @@ Tento rychlý Start ukazuje, jak nahrát obrázek do rozhraní API pro vizuáln�
         static string imagePath = @"<path_to_image>";
     ```
 
-3. Vytvořte metodu s názvem `GetImageFileName()` pro získání cesty k imagi:
+3. Vytvořte metodu s názvem `GetImageFileName()` pro získání cesty k imagi.
     
     ```csharp
     static string GetImageFileName(string path)
@@ -58,7 +58,7 @@ Tento rychlý Start ukazuje, jak nahrát obrázek do rozhraní API pro vizuáln�
             }
     ```
 
-4. Vytvořte metodu pro získání binárních dat obrázku:
+4. Vytvořte metodu pro získání binárních dat obrázku.
 
     ```csharp
     static byte[] GetImageBinary(string path)
@@ -69,7 +69,7 @@ Tento rychlý Start ukazuje, jak nahrát obrázek do rozhraní API pro vizuáln�
 
 ## <a name="build-the-form-data"></a>Sestavení dat formuláře
 
-Chcete-li nahrát místní obrázek, nejprve Sestavte data formuláře k odeslání do rozhraní API. Data formuláře musí obsahovat `Content-Disposition` hlavičku, její `name` parametr musí být nastaven na hodnotu "image" a `filename` parametr lze nastavit na libovolný řetězec. Obsah formuláře obsahuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
+1. Chcete-li nahrát místní obrázek, nejprve Sestavte data formuláře k odeslání do rozhraní API. Data formuláře zahrnují `Content-Disposition` hlavičku, `name` Parametr nastavený na "image" a `filename` parametr nastaven na název souboru obrázku. Obsah formuláře obsahuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
 
     ```
     --boundary_1234-abcd
@@ -80,7 +80,7 @@ Chcete-li nahrát místní obrázek, nejprve Sestavte data formuláře k odeslá
     --boundary_1234-abcd--
     ```
 
-1. Přidejte řetězce hranice pro formátování dat formuláře POST. Řetězce hranice určují znaky začátku, konce a nového řádku pro data:
+2. Přidejte řetězce hranice pro formátování dat formuláře POST. Řetězce hranice určují znaky začátku, konce a nového řádku pro data.
 
     ```csharp
     // Boundary strings for form data in body of POST.
@@ -90,14 +90,14 @@ Chcete-li nahrát místní obrázek, nejprve Sestavte data formuláře k odeslá
     static string EndBoundaryTemplate = "--{0}--";
     ```
 
-2. K přidání parametrů do dat formuláře použijte následující proměnné:
+3. K přidání parametrů do dat formuláře použijte následující proměnné:
 
     ```csharp
     const string CONTENT_TYPE_HEADER_PARAMS = "multipart/form-data; boundary={0}";
     const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
     ```
 
-3. Vytvořte funkci nazvanou `BuildFormDataStart()` , která vytvoří začátek dat formuláře pomocí řetězců hranic a cesty k obrázku:
+4. Vytvořte funkci nazvanou `BuildFormDataStart()` , která vytvoří začátek dat formuláře pomocí řetězců hranic a cesty k obrázku.
     
     ```csharp
         static string BuildFormDataStart(string boundary, string filename)
@@ -111,7 +111,7 @@ Chcete-li nahrát místní obrázek, nejprve Sestavte data formuláře k odeslá
         }
     ```
 
-4. Vytvořte funkci nazvanou `BuildFormDataEnd()` pro vytvoření konce dat formuláře pomocí řetězců hranic:
+5. Vytvořte funkci nazvanou `BuildFormDataEnd()` pro vytvoření konce dat formuláře pomocí řetězců hranic.
     
     ```csharp
         static string BuildFormDataEnd(string boundary)
@@ -126,7 +126,7 @@ Chcete-li nahrát místní obrázek, nejprve Sestavte data formuláře k odeslá
 
 2. Použijte `WebRequest` k uložení identifikátoru URI, hodnoty ContentType a záhlaví.  
 
-3. Použijte `request.GetRequestStream()` k zápisu dat formuláře a obrázku a pak Získejte odpověď. Vaše funkce by měla být podobná té následující:
+3. Použijte `request.GetRequestStream()` k zápisu dat formuláře a obrázku a pak Získejte odpověď. Funkce by měla být podobná následujícímu kódu:
         
     ```csharp
         static string BingImageSearch(string startFormData, string endFormData, byte[] image, string contentTypeValue)
@@ -158,14 +158,14 @@ Chcete-li nahrát místní obrázek, nejprve Sestavte data formuláře k odeslá
 
 ## <a name="create-the-main-method"></a>Vytvoření metody Main
 
-1. V `Main` metodě vaší aplikace Získejte název souboru a binární data vaší image:
+1. V `Main()` metodě vaší aplikace Získejte název souboru a binární data obrázku.
 
     ```csharp
     var filename = GetImageFileName(imagePath);
     var imageBinary = GetImageBinary(imagePath);
     ```
 
-2. Nastavte tělo příspěvku tak, že naformátujete jeho hranici. Pak zavolejte `startFormData()` a `endFormData` vytvořte data formuláře:
+2. Nastavte tělo příspěvku tak, že naformátujete jeho hranici. Potom zavolejte `BuildFormDataStart()` a `BuildFormDataEnd()` k vytvoření dat formuláře.
 
     ```csharp
     // Set up POST body.
@@ -174,13 +174,13 @@ Chcete-li nahrát místní obrázek, nejprve Sestavte data formuláře k odeslá
     var endFormData = BuildFormDataEnd(boundary);
     ```
 
-3. Vytvořte `ContentType` hodnotu formátováním `CONTENT_TYPE_HEADER_PARAMS` a hranicí dat formuláře:
+3. Vytvořte `ContentType` hodnotu formátováním `CONTENT_TYPE_HEADER_PARAMS` a ohraničením dat z formuláře.
 
     ```csharp
     var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
     ```
 
-4. Získání odpovědi rozhraní API voláním `BingImageSearch()` a vytištěním odpovědi:
+4. Získejte odpověď rozhraní API voláním `BingImageSearch()` a potom odpověď vytiskněte.
 
     ```csharp
     var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
@@ -191,81 +191,81 @@ Chcete-li nahrát místní obrázek, nejprve Sestavte data formuláře k odeslá
 
 ## <a name="using-httpclient"></a>Jak použít HTTPClient
 
-Pokud používáte `HttpClient`, můžete použít `MultipartFormDataContent` třídu k sestavení dat formuláře. Pouze pomocí následujících sekcí kódu nahraďte odpovídající metody v předchozím příkladu.
+Pokud používáte `HttpClient` , můžete použít `MultipartFormDataContent` třídu k sestavení dat formuláře. Pomocí následujících částí kódu nahraďte odpovídající metody v předchozím příkladu:
 
-Nahraďte `Main` metodu tímto kódem:
+1. Nahraďte metodu `Main()` následujícím kódem:
 
-```csharp
-        static void Main()
-        {
-            try
-            {
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
+   ```csharp
+           static void Main()
+           {
+               try
+               {
+                   Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-                if (accessKey.Length == 32)
-                {
-                    if (IsImagePathSet(imagePath))
-                    {
-                        var filename = GetImageFileName(imagePath);
-                        Console.WriteLine("Getting image insights for image: " + filename);
-                        var imageBinary = GetImageBinary(imagePath);
+                   if (accessKey.Length == 32)
+                   {
+                       if (IsImagePathSet(imagePath))
+                       {
+                           var filename = GetImageFileName(imagePath);
+                           Console.WriteLine("Getting image insights for image: " + filename);
+                           var imageBinary = GetImageBinary(imagePath);
 
-                        var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
-                        var json = BingImageSearch(imageBinary, boundary, uriBase, accessKey);
+                           var boundary = string.Format(BoundaryTemplate, Guid.NewGuid());
+                           var json = BingImageSearch(imageBinary, boundary, uriBase, accessKey);
 
-                        Console.WriteLine("\nJSON Response:\n");
-                        Console.WriteLine(JsonPrettyPrint(json));
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Bing Visual Search API subscription key!");
-                    Console.WriteLine("Please paste yours into the source code.");
-                }
+                           Console.WriteLine("\nJSON Response:\n");
+                           Console.WriteLine(JsonPrettyPrint(json));
+                       }
+                   }
+                   else
+                   {
+                       Console.WriteLine("Invalid Bing Visual Search API subscription key!");
+                       Console.WriteLine("Please paste yours into the source code.");
+                   }
 
-                Console.Write("\nPress Enter to exit ");
-                Console.ReadLine();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-```
+                   Console.Write("\nPress Enter to exit ");
+                   Console.ReadLine();
+               }
+               catch (Exception e)
+               {
+                   Console.WriteLine(e.Message);
+               }
+           }
+   ```
 
-Nahraďte `BingImageSearch` metodu tímto kódem:
+2. Nahraďte metodu `BingImageSearch()` následujícím kódem:
 
-```csharp
-        /// <summary>
-        /// Calls the Bing visual search endpoint and returns the JSON response.
-        /// </summary>
-        static string BingImageSearch(byte[] image, string boundary, string uri, string subscriptionKey)
-        {
-            var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
-            requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", accessKey);
+   ```csharp
+           /// <summary>
+           /// Calls the Bing visual search endpoint and returns the JSON response.
+           /// </summary>
+           static string BingImageSearch(byte[] image, string boundary, string uri, string subscriptionKey)
+           {
+               var requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+               requestMessage.Headers.Add("Ocp-Apim-Subscription-Key", accessKey);
 
-            var content = new MultipartFormDataContent(boundary);
-            content.Add(new ByteArrayContent(image), "image", "myimage");
-            requestMessage.Content = content;
+               var content = new MultipartFormDataContent(boundary);
+               content.Add(new ByteArrayContent(image), "image", "myimage");
+               requestMessage.Content = content;
 
-            var httpClient = new HttpClient();
+               var httpClient = new HttpClient();
 
-            Task<HttpResponseMessage> httpRequest = httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
-            HttpResponseMessage httpResponse = httpRequest.Result;
-            HttpStatusCode statusCode = httpResponse.StatusCode;
-            HttpContent responseContent = httpResponse.Content;
+               Task<HttpResponseMessage> httpRequest = httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
+               HttpResponseMessage httpResponse = httpRequest.Result;
+               HttpStatusCode statusCode = httpResponse.StatusCode;
+               HttpContent responseContent = httpResponse.Content;
 
-            string json = null;
+               string json = null;
 
-            if (responseContent != null)
-            {
-                Task<String> stringContentsTask = responseContent.ReadAsStringAsync();
-                json = stringContentsTask.Result;
-            }
+               if (responseContent != null)
+               {
+                   Task<String> stringContentsTask = responseContent.ReadAsStringAsync();
+                   json = stringContentsTask.Result;
+               }
 
-            return json;
-        }
-```
+               return json;
+           }
+   ```
 
 ## <a name="next-steps"></a>Další kroky
 

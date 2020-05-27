@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: e6fa490285582c827b8704496fb7a20a7eb9cfbc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1aa2545f3bd4e7558c99a31dca43f65510bab59e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166015"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872138"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Rychlý Start: ladění a iterace na Kubernetes: Visual Studio & .NET Core – Azure Dev Spaces
 
@@ -31,7 +31,7 @@ Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
-- Visual Studio 2019 ve Windows s nainstalovanou úlohou vývoj pro Azure Můžete také použít Visual Studio 2017 ve Windows s úlohou vývoje webu a [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) nainstalovanou. Pokud nemáte nainstalované Visual Studio, Stáhněte si ho [tady](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Visual Studio 2019 ve Windows s nainstalovanou úlohou vývoj pro Azure Pokud nemáte nainstalované Visual Studio, Stáhněte si ho [tady](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
 
@@ -94,7 +94,7 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-Ve výše uvedeném příkladu je `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/`veřejná adresa URL. 
+Ve výše uvedeném příkladu je veřejná adresa URL `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/` . 
 
 Vyberte **ladit** a potom **Spusťte ladění**. Po několika sekundách se vaše služba spustí a Visual Studio otevře prohlížeč s veřejnou adresou URL služby. Pokud se prohlížeč automaticky neotevře, přejděte v prohlížeči do veřejné adresy URL vaší služby a nahlaste se se službou spuštěnou ve vývojovém prostoru.
 
@@ -120,7 +120,7 @@ V prohlížeči otevřete službu a Všimněte si, že se nezobrazí žádná zp
 
 Při spouštění služby v Kubernetes s připojeným ladicím programem máte úplný přístup k ladicím informacím, jako je zásobník volání, místní proměnné a informace o výjimkách.
 
-Odstraňte zarážku tak, že umístíte kurzor na řádek 20 `Controllers/HomeController.cs` v a zapnete *F9*.
+Odstraňte zarážku tak, že umístíte kurzor na řádek 20 v a zapnete `Controllers/HomeController.cs` *F9*.
 
 ## <a name="clean-up-your-azure-resources"></a>Vyčištění prostředků Azure
 

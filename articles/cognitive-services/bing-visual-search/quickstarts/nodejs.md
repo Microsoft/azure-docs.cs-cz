@@ -8,24 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: 373d6fa5402ba703cbebe88ad562974ba97f3391
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7dfb3adb5d7bf5b005beb7e7b75fb339d456cd15
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75379704"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872620"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Rychlý Start: Získání přehledů imagí pomocí Vizuální vyhledávání Bingu REST API a Node. js
 
-V tomto rychlém startu můžete provést první volání rozhraní API pro vizuální vyhledávání Bingu a zobrazit výsledky hledání. Tato jednoduchá aplikace JavaScriptu nahraje obrázek do rozhraní API a zobrazí vrácené informace. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API pro vizuální vyhledávání Bingu. Tato jednoduchá aplikace JavaScriptu nahraje obrázek do rozhraní API a zobrazí vrácené informace. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * [Node.js](https://nodejs.org/en/download/)
-* Modul žádosti pro JavaScript K instalaci modulu `npm install request` můžete použít příkaz.
-* Modul dat formuláře. K instalaci modulu můžete `npm install form-data` použít příkaz. 
+* Modul žádosti pro JavaScript `npm install request`K instalaci modulu můžete použít příkaz.
+* Modul dat formuláře. `npm install form-data`K instalaci modulu můžete použít příkaz. 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
@@ -39,7 +39,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
     var fs = require('fs');
     ```
 
-2. Vytvořte proměnné pro svůj koncový bod rozhraní API, klíč předplatného a cestu k vašemu obrázku. `baseUri`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek:
+2. Vytvořte proměnné pro svůj koncový bod rozhraní API, klíč předplatného a cestu k vašemu obrázku. Pro tuto `baseUri` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```javascript
     var baseUri = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch';
@@ -47,7 +47,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
     var imagePath = "path-to-your-image";
     ```
 
-3. Vytvořte funkci nazvanou `requestCallback()` pro tisk odpovědi z rozhraní API:
+3. Vytvořte funkci nazvanou `requestCallback()` pro tisk odpovědi z rozhraní API.
 
     ```javascript
     function requestCallback(err, res, body) {
@@ -57,25 +57,25 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
 
 ## <a name="construct-and-send-the-search-request"></a>Sestavit a odeslat požadavek hledání
 
-Při nahrávání místní image musí data formuláře obsahovat `Content-Disposition` hlavičku. Je nutné nastavit jeho `name` parametr na hodnotu "image" a `filename` parametr lze nastavit na libovolný řetězec. Obsah formuláře zahrnuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
+1. Když nahrajete místní obrázek, data formuláře musí obsahovat `Content-Disposition` hlavičku. Nastavte jeho `name` parametr na "image" a nastavte `filename` parametr na název souboru vaší image. Obsah formuláře zahrnuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
 
-```
---boundary_1234-abcd
-Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
+   ```
+   --boundary_1234-abcd
+   Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+   ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
 
---boundary_1234-abcd--
-```
+   --boundary_1234-abcd--
+   ```
 
-1. Vytvořte nový objekt **FormData** pomocí `FormData()`a přidejte do něj cestu k imagi pomocí `fs.createReadStream()`:
+2. Vytvořte nový `FormData` objekt s `FormData()` a přidejte k němu cestu k imagi pomocí `fs.createReadStream()` .
     
     ```javascript
     var form = new FormData();
     form.append("image", fs.createReadStream(imagePath));
     ```
 
-2. Použijte knihovnu požadavků k nahrání obrázku a zavolejte `requestCallback()` k vytištění odpovědi. Nezapomeňte do hlavičky žádosti přidat svůj klíč předplatného:
+3. Použijte knihovnu požadavků k nahrání obrázku a zavolejte `requestCallback()` k vytištění odpovědi. Do hlavičky žádosti přidejte svůj klíč předplatného.
 
     ```javascript
     form.getLength(function(err, length){

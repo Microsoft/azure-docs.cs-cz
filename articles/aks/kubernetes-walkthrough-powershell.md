@@ -3,13 +3,13 @@ title: 'Rychlý Start: nasazení clusteru služby Azure Kubernetes'
 description: Naučte se rychle vytvořit cluster Kubernetes, nasadit aplikaci a monitorovat výkon ve službě Azure Kubernetes Service (AKS) pomocí prostředí PowerShell.
 services: container-service
 ms.topic: quickstart
-ms.date: 05/12/2020
-ms.openlocfilehash: 91a28b935e0972daa181ffc4eb4d6d9595e4b3e1
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 05/26/2020
+ms.openlocfilehash: a89f76344e48d5af8c71c5a674a94767795b41a9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83717973"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871473"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes pomocí prostředí PowerShell
 
@@ -26,9 +26,6 @@ Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Dal
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell][install-azure-powershell].
-
-> [!IMPORTANT]
-> Tento článek používá verzi Preview modulu PowerShellu AZ. AKS. Tuto aplikaci je nutné nainstalovat samostatně z modulu AZ PowerShell pomocí následujícího příkazu: `Install-Module -Name Az.AKS -AllowPrerelease -RequiredVersion 1.1.0-preview` . Jakmile je verze Preview pro modul PowerShellu AZ. AKS všeobecně dostupná, bude součástí budoucna k tomu, že vydává verze modulu PowerShell a jsou dostupné nativně z Azure Cloud Shell.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 

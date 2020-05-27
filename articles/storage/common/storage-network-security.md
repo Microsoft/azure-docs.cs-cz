@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 911172bd6ef9c08419e74828657c8bdb2f8d1b30
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4b72f94548a5222fcb950141e983007efde7fe4e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930637"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871184"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace Azure Storage bran firewall a virtuálních sítí
 
@@ -223,7 +223,7 @@ Pravidla virtuální sítě pro účty úložiště můžete spravovat prostřed
     ```
 
     > [!TIP]
-    > Pokud\<chcete přidat pravidlo pro podsíť ve virtuální síti, která patří do jiného TENANTA Azure AD, použijte plně kvalifikované ID podsítě ve formátu/Subscriptions/Subscription-ID\>/resourceGroups/\<\>/Providers/Microsoft.Network/virtualNetworks/\<VNet-name\>/subnets/\<podsíť-\>Name.
+    > Pokud chcete přidat pravidlo pro podsíť ve virtuální síti, která patří do jiného tenanta Azure AD, použijte plně kvalifikované ID podsítě ve formátu/Subscriptions/ \< Subscription-ID \> /ResourceGroups/ \< \> /providers/Microsoft.Network/virtualNetworks/ \< VNet-name \> /subnets/ \< podsíť-name \> .
     >
     > Pomocí parametru **Subscription** můžete načíst ID podsítě pro virtuální síť patřící jinému Tenantovi služby Azure AD.
 
@@ -237,7 +237,7 @@ Pravidla virtuální sítě pro účty úložiště můžete spravovat prostřed
 > [!IMPORTANT]
 > Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
 
-## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z internetového rozsahu IP adres
+## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z rozsahu internetových IP adres
 
 Účty úložiště můžete nakonfigurovat tak, aby povolovaly přístup z určitých rozsahů veřejných internetových IP adres. Tato konfigurace uděluje přístup ke konkrétním internetovým službám a místním sítím a blokuje obecný internetový provoz.
 
@@ -246,7 +246,7 @@ Zadejte povolené rozsahy internetových adres pomocí [zápisu CIDR](https://to
    > [!NOTE]
    > Malé rozsahy adres používající velikosti předpony "/31" nebo "/32" se nepodporují. Tyto rozsahy by měly být nakonfigurované pomocí jednotlivých pravidel IP adres.
 
-Pravidla sítě IP jsou povolená jenom pro **veřejné internetové** IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nejsou povolené v pravidlech protokolu IP. Soukromé sítě obsahují adresy, které začínají na _10. *_, _172,16. *_ - _172,31. *_ a _192,168. *_.
+Pravidla sítě IP jsou povolená jenom pro **veřejné internetové** IP adresy. Rozsahy IP adres rezervované pro privátní sítě (definované v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nejsou povolené v pravidlech protokolu IP. Soukromé sítě obsahují adresy, které začínají na _10. *_, _172,16. *_  -  _172,31. *_ a _192,168. *_.
 
    > [!NOTE]
    > Pravidla sítě IP neovlivňují požadavky pocházející ze stejné oblasti Azure jako účet úložiště. Použijte [pravidla virtuální sítě](#grant-access-from-a-virtual-network) a povolte tak požadavky stejné oblasti.
@@ -276,7 +276,7 @@ Pravidla sítě IP pro účty úložiště můžete spravovat pomocí Azure Port
 
 1. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
 
-1. Pokud chcete udělit přístup k rozsahu IP adres Internetu, zadejte v části**Rozsah adres** **firewallu** > IP adresu nebo rozsah adres (ve formátu CIDR).
+1. Pokud chcete udělit přístup k rozsahu IP adres Internetu, zadejte v části **Firewall**  >  **Rozsah adres**firewallu IP adresu nebo rozsah adres (ve formátu CIDR).
 
 1. Chcete-li odebrat pravidlo sítě protokolu IP, klikněte na ikonu koše vedle rozsahu adres.
 
@@ -392,6 +392,7 @@ Nastavení **Povolit důvěryhodné služby společnosti Microsoft...** umožňu
 | Úlohy Azure Container Registry | Microsoft. ContainerRegistry/Registry | ACR úlohy mají přístup k účtům úložiště při vytváření imagí kontejneru. |
 | Azure Data Factory             | Microsoft. DataFactory/továrny        | Umožňuje přístup k účtům úložiště pomocí modulu runtime ADF. |
 | Azure Data Share               | Microsoft. datashare/Accounts           | Umožňuje přístup k účtům úložiště prostřednictvím sdílení dat. |
+| Azure IoT Hub                  | Microsoft. Devices/IotHubs              | Umožňuje zapsat data z služby IoT Hub do úložiště objektů BLOB. [Další informace](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft. Logic/Workflows              | Povoluje Logic Apps přístup k účtům úložiště. [Další informace](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity). |
 | Služba Azure Machine Learning | Microsoft.MachineLearningServices      | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB a čtou data z experimentu. [Další informace](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Umožňuje importovat a exportovat data z konkrétních instancí SQL Database pomocí základu. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |

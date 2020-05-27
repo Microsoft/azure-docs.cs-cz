@@ -6,16 +6,16 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/27/2020
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c638004d209996e52b0e57b467bfa184a77779c
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457837"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873463"
 ---
-# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurace ukončení TLS pomocí Key Vault certifikátů pomocí Azure PowerShell
+# <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>Konfigurace ukončení TLS pomocí Key Vault certifikátů pomocí Azure PowerShell
 
 [Azure Key Vault](../key-vault/general/overview.md) je úložiště tajné databáze spravované platformou, které můžete použít k ochraně tajných klíčů, klíčů a certifikátů TLS/SSL. Azure Application Gateway podporuje integraci s Key Vault pro certifikáty serveru, které jsou připojené k naslouchacím procesům s povoleným protokolem HTTPS. Tato podpora je omezená na SKU Application Gateway v2.
 
@@ -23,9 +23,9 @@ Další informace najdete v tématu [ukončení protokolu TLS s certifikáty Key
 
 V tomto článku se dozvíte, jak pomocí skriptu Azure PowerShell integrovat Trezor klíčů s aplikační bránou pro certifikáty ukončení protokolu TLS/SSL.
 
-Tento článek vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud chcete spustit příkazy v tomto článku, musíte taky vytvořit připojení k Azure spuštěním `Connect-AzAccount`.
+Tento článek vyžaduje modul Azure PowerShell verze 1.0.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud chcete spustit příkazy v tomto článku, musíte taky vytvořit připojení k Azure spuštěním `Connect-AzAccount` .
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,9 +44,11 @@ Select-AzSubscription -Subscription <your subscription>
 ```azurepowershell
 $rgname = "KeyVaultTest"
 $location = "East US"
-$kv = "TestKeyVaultAppGw"
+$kv = "<your key vault name>"
 $appgwName = "AppGwKVIntegration"
 ```
+> [!IMPORTANT]
+> Název trezoru klíčů musí být univerzálně jedinečný.
 
 ### <a name="create-a-resource-group-and-a-user-managed-identity"></a>Vytvoření skupiny prostředků a uživatelsky spravované identity
 

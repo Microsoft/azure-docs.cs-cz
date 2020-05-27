@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: 58683cb6eb74fcc3bc2f90245d6f76ef65bdf2e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: ea1042d28102734429640c7e3c66fc6f1a70f950
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067927"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870134"
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí PHP
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace v [PHP](https://secure.php.net/manual/intro-whatis.php). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí PHP a teprve začínáte pracovat se službou Azure Database for MySQL.
@@ -21,6 +21,9 @@ Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MyS
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
+
+> [!IMPORTANT] 
+> Ujistěte se, že IP adresa, ze které se připojujete, přidala pravidla brány firewall serveru pomocí [Azure Portal](./howto-manage-firewall-using-portal.md) nebo rozhraní příkazového [řádku Azure CLI](./howto-manage-firewall-using-cli.md) .
 
 ## <a name="install-php"></a>Instalace PHP
 Nainstalujte PHP na vlastní server nebo vytvořte [webovou aplikaci](../app-service/overview.md) Azure, která zahrnuje PHP.

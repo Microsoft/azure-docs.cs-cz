@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b8492a6740eb9acfa20fbbe5dd5beed5e985fafc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dcb9f554b214813439ab8753cf21e7d11a0fba56
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744591"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872574"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Zákazníci v analýzách komerčního marketplace
 
@@ -99,6 +99,7 @@ Tabulka **Podrobnosti o zákazníkovi** zobrazuje číslovaný seznam prvních 1
 - Pokud je počet záznamů větší než 1000, exportovaná data se asynchronně nasadí na stránku ke stažení na následujících 30 dnů.
 - Filtry lze v tabulce použít k zobrazení pouze těch dat, která vás zajímají. Data je možné filtrovat podle názvu společnosti, ID zákazníka, ID předplatného Marketplace, typu licence Azure, data získání, data ztráty, e-mailu zákazníka, země zákazníka/oblasti/státu/města/PSČ, jazyka zákazníka atd.
 - Když je nabídka koupena chráněným zákazníkem, informace v **podrobnostech o zákazníkovi** budou maskovány (* * * * * * * * * * * *).
+- Podrobnosti o dimenzi zákazníka, jako je název společnosti, jméno zákazníka a E-mail zákazníka, jsou na úrovni ID organizace, nikoli na Azure Marketplace nebo na úrovni transakce AppSource.
 
 ### <a name="customer-page-filters"></a>Filtry stránek zákazníka
 

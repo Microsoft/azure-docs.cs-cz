@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 491481156f026e9887244064297d0790a965158e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735109"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869797"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Java
 
-V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace Java pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java).
+V tomto rychlém startu můžete provést první volání REST API Kontrola pravopisu Bingu. Tato jednoduchá aplikace Java pošle požadavek do rozhraní API a vrátí seznam navrhovaných oprav. 
+
+I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +33,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 ## <a name="create-and-initialize-an-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru s názvem třídy, který zvolíte, a pak importujte následující balíčky.
+1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (IDE) nebo editoru s názvem třídy, který zvolíte, a pak importujte tyto balíčky:
 
     ```java
     import java.io.*;
@@ -40,7 +42,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. Vytvořte proměnné pro hostitele koncového bodu rozhraní API, cestu a klíč předplatného. Pak vytvořte proměnné pro svůj trh, text, který chcete kontrolovat pravopis, a řetězec pro režim kontroly pravopisu. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro hostitele koncového bodu rozhraní API, cestu a klíč předplatného. Pak vytvořte proměnné pro svůj trh, text, který chcete kontrolovat pravopis, a řetězec pro režim kontroly pravopisu. Můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -55,7 +57,11 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 ## <a name="create-and-send-an-api-request"></a>Vytvoření a odeslání žádosti rozhraní API
 
-1. Vytvořte funkci volanou `check()` k vytvoření a odeslání požadavku rozhraní API. V takovém případě postupujte podle těchto kroků. Vytvořte řetězec pro parametry požadavku. přidejte `?mkt=` parametr do vašeho tržního řetězce a `&mode=` parametr do režimu kontroly pravopisu.  
+1. Vytvořte funkci volanou `check()` k vytvoření a odeslání požadavku rozhraní API. V rámci této funkce přidejte kód zadaný v následujících krocích. Vytvořte řetězec pro parametry žádosti:
+
+   a. Přiřaďte svůj kód na trhu k `mkt` parametru pomocí `=` operátoru. 
+
+   b. Přidejte `mode` parametr s `&` operátorem a potom přiřaďte režim kontroly pravopisu. 
 
    ```java
    public static void check () throws Exception {
@@ -71,7 +77,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. Otevřete připojení k adrese URL. Nastavte metodu Request na `POST` . Přidejte parametry žádosti. Nezapomeňte do hlavičky přidat svůj klíč předplatného `Ocp-Apim-Subscription-Key` .
+3. Otevřete připojení k adrese URL. Nastavte metodu Request na `POST` a přidejte parametry žádosti. Nezapomeňte do hlavičky přidat svůj klíč předplatného `Ocp-Apim-Subscription-Key` .
 
     ```java
     connection.setRequestMethod("POST");
@@ -91,7 +97,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 ## <a name="format-and-read-the-api-response"></a>Formátování a čtení odpovědi rozhraní API
 
-1. Přidejte tuto metodu do vaší třídy. Formátuje kód JSON pro čitelnější výstup.
+1. Přidejte `prettify()` do třídy metodu, která FORMÁTUJE JSON pro čitelnější výstup.
 
     ``` java
     // This function prettifies the json response.
@@ -117,7 +123,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 ## <a name="call-the-api"></a>Volání rozhraní API
 
-V hlavní funkci aplikace zavolejte metodu check (), kterou jste vytvořili výše.
+V hlavní funkci aplikace volejte metodu, kterou `check()` jste dříve vytvořili.
 ```java
         public static void main(String[] args) {
             try {
@@ -131,19 +137,19 @@ V hlavní funkci aplikace zavolejte metodu check (), kterou jste vytvořili vý�
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Sestavte a spusťte projekt.
+Sestavte a spusťte projekt. Pokud používáte příkazový řádek, sestavte a spusťte aplikaci pomocí následujících příkazů:
 
-Pokud používáte příkazový řádek, pomocí následujících příkazů Sestavte a spusťte aplikaci.
+1. Sestavte aplikaci:
 
-**Budování**
-```bash
-javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
-```
+   ```bash
+   javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
+   ```
 
-**Spouštěl**
-```bash
-java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
-```
+2. Spusťte aplikaci:
+
+   ```bash
+   java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
+   ```
 
 ## <a name="example-json-response"></a>Příklad odpovědi JSON
 
@@ -193,4 +199,4 @@ java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 > [Vytvoření jednostránkové webové aplikace](../tutorials/spellcheck.md)
 
 - [Co je rozhraní API pro kontrolu pravopisu Bingu?](../overview.md)
-- [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Odkaz na rozhraní API Bingu pro kontrolu pravopisu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

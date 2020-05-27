@@ -8,45 +8,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: e19f582084bec6915f95cf16fd8571b8d99da6fd
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 20c5ef930af8cc279f63432e9e3a14a0767ca592
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75379636"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870364"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Rychlý Start: Získání přehledů obrázků pomocí Vizuální vyhledávání Bingu REST API a Ruby
 
-V tomto rychlém startu se k volání Vizuální vyhledávání Bingu a zobrazení výsledků používá programovací jazyk Ruby. Požadavek POST nahraje obrázek do koncového bodu rozhraní API. Výsledky zahrnují adresy URL a popisné informace o obrázcích podobně jako nahraný obrázek.
+Tento rychlý Start použijte k provedení prvního volání rozhraní API pro vizuální vyhledávání Bingu pomocí programovacího jazyka Ruby. Požadavek POST nahraje obrázek do koncového bodu rozhraní API. Výsledky zahrnují adresy URL a popisné informace o obrázcích podobně jako nahraný obrázek.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Spuštění tohoto rychlého startu:
-
-* Nainstalujte [Ruby 2,4 nebo novější](https://www.ruby-lang.org/en/downloads/) .
-* Získat klíč předplatného:
+* Nainstalujte [Ruby 2,4 nebo novější](https://www.ruby-lang.org/en/downloads/).
+* Získejte klíč předplatného.
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-required-modules"></a>Projekt a požadované moduly
 
-Vytvořte nový projekt Ruby v integrovaném vývojovém prostředí nebo v editoru. Importujte `net/http`, `uri` a `json` pro zpracování textu JSON výsledků. `base64` Knihovna se používá ke kódování řetězce názvu souboru: 
+Vytvořte nový projekt Ruby v integrovaném vývojovém prostředí nebo v editoru. Importujte `net/http` , `uri` a `json` pro zpracování textu JSON výsledků. Importujte `base64` knihovnu, která kóduje řetězec názvu souboru. 
 
-```
+```ruby
 require 'net/https'
 require 'uri'
 require 'json'
 require 'base64'
-
 ```
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Následující kód přiřadí požadované proměnné. Potvrďte, že je koncový bod správný, `accessKey` a nahraďte hodnotu klíčem předplatného ze svého účtu Azure.  `batchNumber` Je identifikátor GUID vyžadovaný pro počáteční a koncové hranice dat post.  `fileName` Proměnná identifikuje soubor obrázku pro daný příspěvek.  `if` Blok testuje platný klíč předplatného.
+Následující kód deklaruje funkci main a přiřadí požadované proměnné: 
 
-```
+1. Ověřte správnost koncového bodu a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. 
+2. V případě `batchNumber` přiřaďte identifikátor GUID, který je požadován pro počáteční a koncové hranice dat post. 
+3. Pro `fileName` přiřaďte soubor obrázku, který se má použít pro příspěvek. 
+4. Pomocí `if` bloku otestujte platný klíč předplatného.
+
+```ruby
 accessKey = "ACCESS-KEY"
 uri  = "https://api.cognitive.microsoft.com"
 path = "/bing/v7.0/images/visualsearch"
@@ -63,40 +65,40 @@ end
 
 ## <a name="form-data-for-post-request"></a>Data formuláře pro požadavek POST
 
-Data obrázku k odeslání jsou ohraničená počátečními a koncovými hranicemi. Hranice nastaví následující funkce:
+1. Vložte data obrázku do vystavení pomocí počátečních a koncových hranic. Hranice nastaví následující funkce:
 
-```
-def BuildFormDataStart(batNum, fileName)
-    startBoundary = "--batch_" + batNum
-    return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"   
-end
+   ```ruby
+   def BuildFormDataStart(batNum, fileName)
+       startBoundary = "--batch_" + batNum
+       return startBoundary + "\r\n" + "Content-Disposition: form-data; name=\"image\"; filename=" + "\"" + fileName + "\"" + "\r\n\r\n"    
+   end
 
-def BuildFormDataEnd(batNum)
-    return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
-end
-```
+   def BuildFormDataEnd(batNum)
+       return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
+   end
+   ```
 
-Dále vytvořte identifikátor URI koncového bodu a pole tak, aby obsahovalo tělo příspěvku.  Pomocí funkce Previous načtěte hranici začátku do pole. Přečtěte si soubor obrázku do pole. Pak si přečtěte hranici end do pole:
+2. Sestavte identifikátor URI koncového bodu a pole obsahující tělo příspěvku. Pomocí funkce Previous načtěte hranici začátku do pole. Přečtěte si soubor obrázku do pole a potom v poli Přečtěte hranici end.
 
-```
-uri = URI(uri + path)
-print uri
-print "\r\n\r\n"
+   ```ruby
+   uri = URI(uri + path)
+   print uri
+   print "\r\n\r\n"
 
-post_body = []
+   post_body = []
 
-post_body << BuildFormDataStart(batchNumber, fileName)
+   post_body << BuildFormDataStart(batchNumber, fileName)
 
-post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
+   post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
-post_body << BuildFormDataEnd(batchNumber)
-```
+   post_body << BuildFormDataEnd(batchNumber)
+   ```
 
 ## <a name="create-the-http-request"></a>Vytvoření požadavku HTTP
 
-Nastavte `Ocp-Apim-Subscription-Key` hlavičku.  Vytvořte požadavek. Pak přiřaďte hlavičku a typ obsahu. Připojte dříve vytvořený text příspěvku k žádosti:
+Nastavte `Ocp-Apim-Subscription-Key` hlavičku. Vytvořte požadavek a potom přiřaďte hlavičku a typ obsahu. Připojte text příspěvku, který jste vytvořili dříve, k žádosti.
 
-```
+```ruby
 header = {'Ocp-Apim-Subscription-Key': accessKey}
 request = Net::HTTP::Post.new(uri)  # , 'ImageKnowledge' => 'ImageKnowledge'
 
@@ -108,9 +110,9 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>Žádost a odpověď
 
-Ruby pošle požadavek a získá odpověď s následujícím řádkem kódu:
+Ruby pošle požadavek a získá odpověď s následujícím kódem:
 
-```
+```ruby
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
    http.request(request)
 end
@@ -121,7 +123,7 @@ end
 
 Vytiskněte hlavičky odpovědi a pomocí knihovny JSON naformátujte výstup:
 
-```
+```ruby
 puts "\nRelevant Headers:\n\n"
 response.each_header do |key, value|
     if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
@@ -134,11 +136,11 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ```
 
-## <a name="results"></a>Výsledky
+## <a name="json-response"></a>Odpověď JSON
 
 Následující kód JSON je segment výstupu:
 
-```
+```JSON
 Relevant Headers:
 
 bingapis-traceid: 6E19E78D4FEC4A61AB4F85977EEDB8E6
@@ -284,5 +286,5 @@ JSON Response:
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přehled vizuální vyhledávání Bingu sestavení](../overview.md)
-> [webové aplikace vizuální vyhledávání jednostránkového stránkování](../tutorial-bing-visual-search-single-page-app.md)
+> [Co je rozhraní API pro vizuální vyhledávání Bingu?](../overview.md) 
+>  [Vytvoření webové aplikace vizuální vyhledávání jednostránkového stránkování](../tutorial-bing-visual-search-single-page-app.md)

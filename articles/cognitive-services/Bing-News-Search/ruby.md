@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ad52116e11f9d89bf55a23692ae4e27f53b51319
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448554"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873422"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení vyhledávání zpráv pomocí Ruby a Vyhledávání zpráv Bingu REST API
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání zpráv a přijetí odpovědi JSON. Tato jednoduchá aplikace JavaScriptu pošle vyhledávací dotaz do rozhraní API a zpracuje výsledky.
+V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání zpráv. Tato jednoduchá aplikace v rámci Ruby pošle vyhledávací dotaz do rozhraní API a zpracuje odpověď JSON.
 
-I když je tato aplikace napsaná v Pythonu, je rozhraní API webovou službou RESTful, která je kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
+I když je tato aplikace napsaná v Ruby, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků. 
+
+Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingNewsSearchv7.rb).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,7 +34,7 @@ I když je tato aplikace napsaná v Pythonu, je rozhraní API webovou službou R
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Importujte následující balíčky do souboru s kódem.
+1. Importujte následující balíčky do souboru kódu:
 
     ```ruby
     require 'net/https'
@@ -40,7 +42,7 @@ I když je tato aplikace napsaná v Pythonu, je rozhraní API webovou službou R
     require 'json'
     ```
 
-2. Vytvořte proměnné pro koncový bod rozhraní API, adresu URL pro vyhledávání zpráv, klíč předplatného a hledaný termín. Můžete použít globální koncový bod nebo vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
+2. Vytvořte proměnné pro koncový bod rozhraní API, adresu URL pro vyhledávání zpráv, klíč předplatného a hledaný termín. Můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```ruby
     accessKey = "enter key here"
@@ -51,7 +53,7 @@ I když je tato aplikace napsaná v Pythonu, je rozhraní API webovou službou R
 
 ## <a name="format-and-make-an-api-request"></a>Formátování a provedení požadavku rozhraní API
 
-Pomocí proměnných z posledního kroku naformátujte vyhledávací adresu URL pro požadavek rozhraní API. Poté odešlete požadavek.
+Pomocí proměnných z předchozího kroku naformátujte adresu URL hledání pro požadavek rozhraní API. Pak odešlete žádost.
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -64,7 +66,7 @@ end
 
 ## <a name="process-and-print-the-json-response"></a>Zpracování a tisk odpovědi JSON
 
-Po přijetí odpovědi můžete analyzovat JSON a vytisknout text odpovědi i jeho hlavičky:
+Po přijetí odpovědi Analyzujte JSON a potom vytiskněte text odpovědi i jeho záhlaví.
 
 ```ruby
 puts "\nRelevant Headers:\n\n"
@@ -78,7 +80,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="json-response"></a>Odpověď JSON
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
@@ -177,4 +179,4 @@ puts JSON::pretty_generate(JSON(response.body))
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření jednotné aplikace](tutorial-bing-news-search-single-page-app.md)
+> [Vytvoření jednostránkové webové aplikace](tutorial-bing-news-search-single-page-app.md)

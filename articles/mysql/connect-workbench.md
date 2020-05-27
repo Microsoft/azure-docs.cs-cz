@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: 9572a8ca3d42288099482245d1fc7800cebd1ea3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 5/26/2020
+ms.openlocfilehash: 1e2dd26e2b954bebd7bac15991b2b5aef9def88d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652262"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870049"
 ---
 # <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí aplikace MySQL Workbench
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench. 
@@ -21,6 +21,9 @@ Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MyS
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
+
+> [!IMPORTANT] 
+> Ujistěte se, že IP adresa, ze které se připojujete, přidala pravidla brány firewall serveru pomocí [Azure Portal](./howto-manage-firewall-using-portal.md) nebo rozhraní příkazového [řádku Azure CLI](./howto-manage-firewall-using-cli.md) .
 
 ## <a name="install-mysql-workbench"></a>Instalace aplikace MySQL Workbench
 Stáhněte aplikaci MySQL Workbench z [webu MySQL](https://dev.mysql.com/downloads/workbench/) a nainstalujte ji na svém počítači.

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 5cde80bf3205557884dfe8f2b8f5e79031bbca69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: b7994754d3ca9c43fe7935b2b52c42f2f113b1d3
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612057"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873047"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Čtení vstupu v jakémkoli formátu pomocí vlastních deserializátorů .NET
 
@@ -20,9 +20,9 @@ Vlastní deserializace rozhraní .NET umožňují, aby vaše úloha Azure Stream
 
 ## <a name="net-custom-deserializer"></a>Vlastní deserializace rozhraní .NET
 
-Následující ukázky kódu jsou rozhraní, která definují vlastní deserializaci a implementují `StreamDeserializer<T>`.
+Následující ukázky kódu jsou rozhraní, která definují vlastní deserializaci a implementují `StreamDeserializer<T>` .
 
-`UserDefinedOperator`je základní třídou pro všechny vlastní operátory streamování. Inicializuje `StreamingContext`, což poskytuje kontext, který zahrnuje mechanismus pro publikování diagnostiky, pro který budete potřebovat ladit jakékoli problémy s deserializací.
+`UserDefinedOperator`je základní třídou pro všechny vlastní operátory streamování. Inicializuje `StreamingContext` , což poskytuje kontext, který zahrnuje mechanismus pro publikování diagnostiky, pro který budete potřebovat ladit jakékoli problémy s deserializací.
 
 ```csharp
     public abstract class UserDefinedOperator
@@ -33,16 +33,16 @@ Následující ukázky kódu jsou rozhraní, která definují vlastní deseriali
 
 Následující fragment kódu je deserializace pro streamovaná data. 
 
-Přeskočené chyby by měly být generovány `IStreamingDiagnostics` pomocí inicializační `UserDefinedOperator`metody předané prostřednictvím metody Initialize. Všechny výjimky budou považovány za chyby a deserializátor bude znovu vytvořen. Po určitém počtu chyb bude úloha přejít na stav selhání.
+Přeskočené chyby by měly být generovány pomocí `IStreamingDiagnostics` inicializační metody předané prostřednictvím `UserDefinedOperator` metody Initialize. Všechny výjimky budou považovány za chyby a deserializátor bude znovu vytvořen. Po určitém počtu chyb bude úloha přejít na stav selhání.
 
-`StreamDeserializer<T>`deserializace Stream do objektu typu `T`. Musí být splněny následující podmínky:
+`StreamDeserializer<T>`deserializace Stream do objektu typu `T` . Musí být splněny následující podmínky:
 
 1. T je třída nebo struktura.
 1. Všechna veřejná pole v T jsou buď
     1. Jedna z hodnot [SByte, Byte, Short, UShort, int, uint, Long, DateTime, String, float, Double] nebo jejich ekvivalentů s možnou hodnotou null.
     1. Jiná struktura nebo třída za stejnými pravidly.
     1. Pole typu `T2` , které se řídí stejnými pravidly
-    1. IList`T2` , kde T2 dodržuje stejná pravidla.
+    1. IList `T2` , kde T2 dodržuje stejná pravidla.
     1. Nemá žádné rekurzivní typy.
 
 Parametr `stream` je datový proud obsahující serializovaný objekt. `Deserialize`Vrátí kolekci `T` instancí.
@@ -112,7 +112,7 @@ message MessageBodyProto {
 }
 ```
 
-Spuštění `protoc.exe` z rozhraní NuGet **Google. Protobuf. Tools** vygeneruje soubor. cs s definicí. Vygenerovaný soubor zde není zobrazen.
+Spuštění `protoc.exe` z rozhraní NuGet **Google. Protobuf. Tools** vygeneruje soubor. cs s definicí. Vygenerovaný soubor zde není zobrazen. Musíte zajistit, aby verze Protobuf NuGet, kterou použijete v projektu Stream Analytics, odpovídala verzi Protobuf, která byla použita k vygenerování vstupu. 
 
 Následující fragment kódu je implementace deserializace za předpokladu, že vygenerovaný soubor je zahrnutý v projektu. Tato implementace je pouze tenkou obálkou pro vygenerovaný soubor.
 
@@ -219,7 +219,7 @@ Následující kód jazyka JavaScript je příkladem formátu serializace deseri
 }  
 ```
 
-`serializationClassName`měla by být třída, která `StreamDeserializer<T>`implementuje. Tento postup je popsaný v následující části.
+`serializationClassName`měla by být třída, která implementuje `StreamDeserializer<T>` . Tento postup je popsaný v následující části.
 
 ## <a name="region-support"></a>Podpora oblastí
 

@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553ecc971235b5ba7d55a2dcb6963200919a3480
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 55f2167552e21973d304f98693be022683fdf661
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853460"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870934"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Předpoklady pro zřizování cloudu Azure AD Connect
 Tento článek poskytuje pokyny k výběru a používání Azure Active Directory (Azure AD) připojení cloudového zřizování jako řešení identity.
@@ -60,18 +60,13 @@ Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](
         | **8080** (volitelné) | Agenti hlásí svůj stav každých 10 minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. |
      
    - Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
-   - Pokud vaše brána firewall nebo proxy server umožňují zadat bezpečné přípony, přidejte připojení k \*příponám. msappproxy.NET \*a. ServiceBus.Windows.NET. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
+   - Pokud vaše brána firewall nebo proxy server umožňují zadat bezpečné přípony, přidejte připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
    - Vaši agenti potřebují přístup k login.windows.net a login.microsoftonline.com pro počáteční registraci. Otevřete taky bránu firewall pro tyto adresy URL.
-   - Pro ověření certifikátu Odblokujte následující adresy URL: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 a www\.Microsoft.com:80. Tyto adresy URL se používají pro ověřování certifikátů s jinými produkty Microsoftu, takže je možné, že už tyto adresy URL máte odblokované.
+   - Pro ověření certifikátu Odblokujte následující adresy URL: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 a www \. Microsoft.com:80. Tyto adresy URL se používají pro ověřování certifikátů s jinými produkty Microsoftu, takže je možné, že už tyto adresy URL máte odblokované.
 
-### <a name="verify-the-port"></a>Ověření portu
-Pokud chcete ověřit, že Azure naslouchá na portu 443 a že s ním může agent komunikovat, použijte následující adresu URL:
+>[!NOTE]
+> Instalace agenta zřizování cloudu na Windows serveru Core není podporovaná.
 
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
-
-Tento test ověřuje, jestli můžou vaši agenti komunikovat s Azure přes port 443. Otevřete prohlížeč a na serveru, na kterém je nainstalovaný agent, se dostanete na předchozí adresu URL.
-
-![Ověření dostupnosti portů](media/how-to-install/verify2.png)
 
 ### <a name="additional-requirements"></a>Další požadavky
 - [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56116) 

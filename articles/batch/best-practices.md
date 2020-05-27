@@ -1,30 +1,22 @@
 ---
 title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
-ms.date: 04/03/2020
+ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: f7d2add5fb30e3efdfb761364babf2211c3c254f
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 0fa6c5e1d7e770468a14c66af9b99b32a7827eb1
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725801"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871360"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
-Tento článek popisuje shromažďování osvědčených postupů pro efektivní a efektivní používání služby Azure Batch. Tyto osvědčené postupy jsou odvozeny z našeho prostředí s využitím služby Batch a zkušeností zákazníků služby Batch. Tento článek je důležité porozumět tomu, abyste se vyhnuli nástrah návrhu, potenciálním problémům s výkonem a antipatternům při vývoji pro a používání služby Batch.
-
-V tomto článku se naučíte:
-
-> [!div class="checklist"]
-> - Jaké jsou osvědčené postupy
-> - Proč byste měli používat osvědčené postupy
-> - Co se může stát v případě, že se nedaří postupovat podle osvědčených postupů
-> - Postup podle osvědčených postupů
+Tento článek pojednává o shromažďování osvědčených postupů pro efektivní a efektivní používání služby Azure Batch, a to na základě reálného prostředí ve službě Batch. Přečtěte si tento článek, abyste předešli nástrah návrhu, potenciálním problémům s výkonem a antipatternům při vývoji pro a používání služby Batch.
 
 ## <a name="pools"></a>Fondy
 
-Fondy služby Batch jsou výpočetní prostředky pro provádění úloh ve službě Batch. V následujících částech najdete pokyny k tomu, co nejlepší osvědčené postupy při práci s fondy Batch dodržujte.
+[Fondy](nodes-and-pools.md#pools) jsou výpočetní prostředky pro provádění úloh ve službě Batch. V následujících částech jsou uvedeny doporučení pro práci s fondy služby Batch.
 
 ### <a name="pool-configuration-and-naming"></a>Konfigurace fondu a názvy
 
@@ -61,98 +53,121 @@ Selhání přidělení fondu může probíhat kdykoli během prvního přidělen
 
 ### <a name="unplanned-downtime"></a>Neplánovaný výpadek
 
-Fondy služby Batch můžou při výpadku událostí v Azure vyskytnout. To je důležité vzít v úvahu při plánování a vývoji vašeho scénáře nebo pracovního postupu pro dávku.
+Fondy služby Batch můžou při výpadku událostí v Azure vyskytnout. Mějte na paměti, že při plánování a vývoji vašeho scénáře nebo pracovního postupu pro dávku budete mít na paměti.
 
-V případě, že uzel selhává, pokusí se Batch automaticky obnovit tyto výpočetní uzly vaším jménem. To může aktivovat přeplánování všech spuštěných úloh na uzlu, který se obnovil. Další informace o přerušených úlohách najdete v tématu [navrhování pro opakování](#designing-for-retries-and-re-execution) .
+V případě, že uzel selhává, pokusí se Batch automaticky obnovit tyto výpočetní uzly vaším jménem. To může aktivovat přeplánování všech spuštěných úloh na uzlu, který se obnovil. Další informace o přerušených úlohách najdete v tématu [navrhování pro opakování](#design-for-retries-and-re-execution) .
 
-- **Závislost oblasti Azure** Doporučujeme, abyste nezávislí na jedné oblasti Azure v případě, že máte časově citlivou nebo produkční úlohu. V některých případech dochází k problémům, které mohou ovlivnit celou oblast. Například pokud vaše zpracování potřebuje spustit v určitou dobu, zvažte možnost škálovat fond v hlavní oblasti *dobře před časem zahájení*. Pokud se škálování fondu nepovede, můžete se vrátit k vertikálnímu navýšení kapacity fondu v oblasti zálohování (nebo oblastech). Fondy napříč několika účty v různých oblastech poskytují připravenou a snadno dostupnou zálohu, pokud se něco pokazilo s jiným fondem. Další informace najdete v tématu [Návrh aplikace pro zajištění vysoké dostupnosti](high-availability-disaster-recovery.md).
+### <a name="azure-region-dependency"></a>Závislost oblasti Azure
+
+Doporučujeme, abyste nezávislí na jedné oblasti Azure v případě, že máte časově citlivou nebo produkční úlohu. V některých případech dochází k problémům, které mohou ovlivnit celou oblast. Například pokud vaše zpracování potřebuje spustit v určitou dobu, zvažte možnost škálovat fond v hlavní oblasti *dobře před časem zahájení*. Pokud se škálování fondu nepovede, můžete se vrátit k vertikálnímu navýšení kapacity fondu v oblasti zálohování (nebo oblastech). Fondy napříč několika účty v různých oblastech poskytují připravenou a snadno dostupnou zálohu, pokud se něco pokazilo s jiným fondem. Další informace najdete v tématu [Návrh aplikace pro zajištění vysoké dostupnosti](high-availability-disaster-recovery.md).
 
 ## <a name="jobs"></a>Úlohy
 
-Úloha je kontejner navržený tak, aby obsahoval stovky, tisíce nebo dokonce miliony úloh.
+[Úloha](jobs-and-tasks.md#jobs) je kontejner navržený tak, aby obsahoval stovky, tisíce nebo dokonce miliony úloh. Při vytváření úloh postupujte podle těchto pokynů.
 
-- **Vložení řady úkolů do úlohy** Použití úlohy ke spuštění jedné úlohy je neefektivní. Například je efektivnější používat jednu úlohu obsahující 1000 úkoly místo vytváření 100 úloh, které obsahují 10 úkolů. Spouštění 1000 úloh, z nichž každá má jeden úkol, by představovalo nejméně efektivní, nejpomalejší a nejdražšího přístupu, které je potřeba provést.
+### <a name="fewer-jobs-more-tasks"></a>Méně úloh, další úlohy
 
-    Nevytvářejte návrh řešení Batch, který vyžaduje tisíce současně z aktivních úloh. Pro úlohy není k dispozici žádná kvóta, takže spuštění tolika úkolů v rámci co nejmenšího počtu úloh může efektivně využívat [kvóty úloh a plánu úloh](batch-quota-limit.md#resource-quotas).
+Použití úlohy ke spuštění jedné úlohy je neefektivní. Například je efektivnější používat jednu úlohu obsahující 1000 úkoly místo vytváření 100 úloh, které obsahují 10 úkolů. Spouštění 1000 úloh, z nichž každá má jeden úkol, by představovalo nejméně efektivní, nejpomalejší a nejdražšího přístupu, které je potřeba provést.
 
-- **Doba života úlohy** Úloha služby Batch má neomezenou dobu života, dokud se neodstraní ze systému. Stav úlohy Určuje, zda může přijmout více úloh pro plánování nebo nikoli. Úloha se automaticky nepřesouvá do dokončeného stavu, pokud se explicitně neukončí. Tato možnost se dá automaticky aktivovat prostřednictvím vlastnosti [onAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) nebo [proměnné maxwallclocktime](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints).
+Proto se ujistěte, že nenavrhnete řešení Batch, které vyžaduje tisíce současně aktivních úloh. Pro úlohy není k dispozici žádná kvóta, takže spuštění mnoha úkolů v rámci co nejmenšího počtu úloh může efektivně využívat [kvóty úloh a plánu úloh](batch-quota-limit.md#resource-quotas).
+
+### <a name="job-lifetime"></a>Doba života úlohy
+
+Úloha služby Batch má neomezenou dobu života, dokud se neodstraní ze systému. Jeho stav určuje, zda může přijmout více úloh pro plánování nebo nikoli.
+
+Úloha se automaticky nepřesouvá do dokončeného stavu, pokud se explicitně neukončí. Tato možnost se dá automaticky aktivovat prostřednictvím vlastnosti [onAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) nebo [proměnné maxwallclocktime](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints).
 
 Existuje výchozí [kvóta pro aktivní úlohu a plán úlohy](batch-quota-limit.md#resource-quotas). Úlohy a plány úloh v dokončeném stavu se nepočítají k této kvótě.
 
 ## <a name="tasks"></a>Úlohy
 
-Úkoly jsou jednotlivé pracovní jednotky, které tvoří úlohu. Úkoly jsou odesílány uživatelem a naplánovaly se službou Batch na výpočetní uzly. Při vytváření a spouštění úloh je potřeba provést několik otázek při návrhu. V následujících částech jsou vysvětlené běžné scénáře a postupy návrhu úloh pro zpracování problémů a efektivní provádění.
+[Úkoly](jobs-and-tasks.md#tasks) jsou jednotlivé pracovní jednotky, které tvoří úlohu. Úkoly jsou odesílány uživatelem a naplánovaly se službou Batch na výpočetní uzly. Při vytváření a spouštění úloh je potřeba provést několik otázek při návrhu. V následujících částech jsou vysvětlené běžné scénáře a postupy návrhu úloh pro zpracování problémů a efektivní provádění.
 
-- **Uložit data úkolu v rámci úlohy.**
-    Výpočetní uzly jsou podle jejich povahy dočasný. V dávce je mnoho funkcí, jako je například automatické fondy a automatické škálování, které usnadňují uzlům zmizení. Když uzly opustí fond (z důvodu změny velikosti nebo odstranění fondu), odstraní se také všechny soubory na těchto uzlech. Z tohoto důvodu se doporučuje, aby před dokončením úkolu přesunul výstup mimo uzel, na kterém je spuštěný, a do trvalého úložiště, podobně Pokud úloha selže, měla by přesunout protokoly potřebné k diagnostice selhání trvalého úložiště. Batch má integrovanou podporu Azure Storage pro nahrávání dat prostřednictvím [OutputFiles](batch-task-output-files.md)a také pro celou řadu sdílených systémů souborů, nebo můžete nahrát sami sebe ve svých úlohách.
+### <a name="save-task-data"></a>Uložit data úkolu
 
-### <a name="task-lifetime"></a>Doba života úlohy
+Výpočetní uzly jsou podle jejich povahy dočasný. V dávce je mnoho funkcí, jako je například automatické fondy a automatické škálování, které usnadňují uzlům zmizení. Když uzly opustí fond (z důvodu změny velikosti nebo odstranění fondu), odstraní se také všechny soubory na těchto uzlech. Z tohoto důvodu by úloha měla přesunout výstup mimo uzel, na kterém je spuštěný, a až do trvalého úložiště, než se dokončí. Podobně platí, že pokud úloha selže, měl by přesunout protokoly potřebné k diagnostice selhání do trvalého úložiště.
 
-- **Po dokončení úlohy odstraňte.**
-    Odstraňte úkoly, které už nepotřebujete, nebo nastavte omezení úlohy [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) . Pokud `retentionTime` je nastavená, služba Batch automaticky vyčistí místo na disku, které úloha využívala při `retentionTime` vypršení platnosti.
+Batch má integrovanou podporu Azure Storage pro nahrávání dat prostřednictvím [OutputFiles](batch-task-output-files.md)a také pro celou řadu sdílených systémů souborů, nebo můžete nahrát sami sebe ve svých úlohách.
 
-    Odstranění úloh provede dvě věci. Zajišťuje, abyste v úloze nemuseli sestavovat úlohy, dělat dotazování nebo hledání úlohy, které vás zajímá (protože budete muset filtrovat přes dokončené úkoly). Vyčistí také odpovídající data úkolu v uzlu (v případě, že ještě `retentionTime` není dosaženo). Tím se zajistí, že se vaše uzly neplní daty úlohy a nebudou mít dostatek místa na disku.
+### <a name="manage-task-lifetime"></a>Správa životnosti úlohy
 
-### <a name="task-submission"></a>Odeslání úkolu
+Odstraňte úkoly, které už nepotřebujete, nebo nastavte omezení úlohy [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) . Pokud `retentionTime` je nastavená, služba Batch automaticky vyčistí místo na disku, které úloha využívala při `retentionTime` vypršení platnosti.
 
-- **Odešlete do kolekce velký počet úkolů.**
-    Úkoly lze odesílat na základě individuálních nebo v kolekcích. Odesílat úlohy v [kolekcích](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) až 100 v době, kdy se hromadně odesílají úkoly, které snižují náklady na režii a dobu odeslání.
+Odstranění úloh provede dvě věci. Zajišťuje, abyste v úloze nemuseli sestavovat úlohy, což by mohlo ztížit dotazování a hledání úkolů, které vás zajímají (protože budete muset filtrovat přes dokončené úkoly). Vyčistí také odpovídající data úkolu v uzlu (v případě, že ještě `retentionTime` není dosaženo). To pomáhá zajistit, aby se uzly neplnily daty úlohy a aby nedostatek místa na disku.
 
-### <a name="task-execution"></a>Provádění úlohy
+### <a name="submit-large-numbers-of-tasks-in-collection"></a>Odeslání velkého počtu úkolů v kolekci
 
-- **Výběr maximálního počtu úkolů na uzel** Batch podporuje přepočet úkolů na uzlech (spouštění více úloh, než má uzel obsahuje jádra). Je to na vás, abyste se ujistili, že se vaše úkoly vejdou do uzlů ve fondu. Například můžete mít zhoršené prostředí, pokud se pokusíte naplánovat osm úloh, které každý využívá 25% využití CPU na jeden uzel (ve fondu s `maxTasksPerNode = 8` ).
+Úkoly lze odesílat na základě individuálních nebo v kolekcích. Odesílat úlohy v [kolekcích](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) až 100 v době, kdy se hromadně odesílají úkoly, které snižují náklady na režii a dobu odeslání.
 
-### <a name="designing-for-retries-and-re-execution"></a>Návrh pro opakování a opětovné spuštění
+### <a name="set-max-tasks-per-node-appropriately"></a>Nastavit maximální počet úkolů na uzel správně
+
+Batch podporuje přepočet úkolů na uzlech (spouštění více úloh, než má uzel obsahuje jádra). Je to na vás, abyste se ujistili, že se vaše úkoly vejdou do uzlů ve fondu. Například můžete mít zhoršené prostředí, pokud se pokusíte naplánovat osm úloh, které každý využívá 25% využití CPU na jeden uzel (ve fondu s `maxTasksPerNode = 8` ).
+
+### <a name="design-for-retries-and-re-execution"></a>Návrh pro opakování a opakované spuštění
 
 Úlohy mohou být automaticky opakovány službou Batch. Existují dva typy opakování: uživatel byl řízen a interní. Opakované pokusy řízené uživatelem jsou určeny [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)úlohy. Když se program zadaný v úloze ukončí s nenulovým ukončovacím kódem, úloha se znovu vyzkouší do hodnoty `maxTaskRetryCount` .
 
 I když je to zřídka, může se úloha opakovat interně z důvodu selhání ve výpočetním uzlu, jako je například neschopnost aktualizovat vnitřní stav nebo selhání uzlu v době, kdy je úloha spuštěná. Tato úloha se zopakuje na stejném výpočetním uzlu, pokud je to možné, až do interního limitu před tím, než se vrátíte k úloze a oddělíte úlohu, která má být přeplánována službou Batch, případně na jiném výpočetním uzlu.
 
-- **Sestavení trvalých úloh** Úkoly by měly být navržené tak, aby vydržely selhání a vyhovovaly opakování. To je důležité hlavně při dlouhotrvajících úlohách. Chcete-li to provést, zajistěte, aby úkoly generovaly stejný výsledek, i když jsou spouštěny více než jednou. Jedním ze způsobů, jak toho dosáhnout, je udělat si úkoly "hledání cílů". Další možností je zajistit, aby se vaše úkoly idempotentní (úlohy budou mít stejný výsledek bez ohledu na to, kolikrát se spouštějí).
+Při provádění úloh na vyhrazených uzlech nebo s nízkou prioritou nejsou k dispozici žádné rozdíly v návrhu. Bez ohledu na to, jestli je úloha přerušená, když běží na uzlu s nízkou prioritou nebo je přerušená kvůli selhání na vyhrazeném uzlu, se obě situace zmírnit tím, že se úloha vyvinou chyby vyodolat.
 
-    Běžným příkladem je úloha kopírování souborů do výpočetního uzlu. Jednoduchý přístup je úkol, který kopíruje všechny zadané soubory pokaždé, když běží, což je neefektivní a není sestavené k vystavení selhání. Místo toho vytvořte úkol, abyste zajistili, že jsou soubory ve výpočetním uzlu. úloha, která nekopíruje soubory, které jsou již k dispozici. Tímto způsobem se úkol ponechá tam, kde byl přerušený.
+### <a name="build-durable-tasks"></a>Sestavení trvalých úloh
 
-- **Uzly s nízkou prioritou** Při provádění úloh na vyhrazených uzlech nebo s nízkou prioritou nejsou k dispozici žádné rozdíly v návrhu. Bez ohledu na to, jestli je úloha přerušená, když běží na uzlu s nízkou prioritou nebo je přerušená kvůli selhání na vyhrazeném uzlu, se obě situace zmírnit tím, že se úloha vyvinou chyby vyodolat.
+Úkoly by měly být navržené tak, aby vydržely selhání a vyhovovaly opakování. To je důležité hlavně při dlouhotrvajících úlohách. Chcete-li to provést, zajistěte, aby úkoly generovaly stejný výsledek, i když jsou spouštěny více než jednou. Jedním ze způsobů, jak toho dosáhnout, je udělat si úkoly "hledání cílů". Další možností je zajistit, aby se vaše úkoly idempotentní (úlohy budou mít stejný výsledek bez ohledu na to, kolikrát se spouštějí).
 
-- **Čas spuštění úlohy** Vyhněte se úlohám s krátkodobým časem spuštění. Úlohy, které se spouštějí jenom po dobu jedné až dvou sekund, nejsou ideální. Měli byste se pokusit o významné množství práce v jednotlivých úkolech (minimálně 10 sekund, což je víc než hodiny nebo dny). Pokud je každý úkol spuštěný na jednu minutu (nebo více), pak se režijní náklady na plánování za zlomek celkového výpočetního času budou malé.
+Běžným příkladem je úloha kopírování souborů do výpočetního uzlu. Jednoduchý přístup je úkol, který kopíruje všechny zadané soubory pokaždé, když běží, což je neefektivní a není sestavené k vystavení selhání. Místo toho vytvořte úkol, abyste zajistili, že jsou soubory ve výpočetním uzlu. úloha, která nekopíruje soubory, které jsou již k dispozici. Tímto způsobem se úkol ponechá tam, kde byl přerušený.
+
+### <a name="avoid-short-execution-time"></a>Vyhnout se krátké době provádění
+
+Úlohy, které se spouštějí jenom po dobu jedné až dvou sekund, nejsou ideální. Měli byste se pokusit o významné množství práce v jednotlivých úkolech (minimálně 10 sekund, což je víc než hodiny nebo dny). Pokud je každý úkol spuštěný na jednu minutu (nebo více), pak se režijní náklady na plánování za zlomek celkového výpočetního času budou malé.
+
 
 ## <a name="nodes"></a>Uzly
 
-- **Počáteční úlohy by měly být idempotentní** Podobně jako u jiných úloh by měl být spouštěcí úkol uzlu idempotentní, protože se znovu spustí při každém spuštění uzlu. Úkol idempotentní je jednoduše ten, který při spuštění několikrát vytvoří konzistentní výsledek.
+[Výpočetní uzel](nodes-and-pools.md#nodes) je virtuální počítač Azure (VM) nebo virtuální počítač cloudové služby, který je vyhrazený pro zpracování části úlohy vaší aplikace. Při práci s uzly postupujte podle těchto pokynů.
 
-- **Spravujte dlouhodobě běžící služby prostřednictvím rozhraní služeb operačního systému.**
-    Někdy je potřeba spustit jiného agenta společně s agentem služby Batch v uzlu, například pro shromáždění dat z uzlu a hlášení. Doporučujeme, aby tyto agenty byly nasazeny jako služby operačního systému, například služba systému Windows nebo `systemd` Služba Linux.
+### <a name="idempotent-start-tasks"></a>Idempotentní počáteční úlohy
 
-    Pokud tyto služby spouštíte, nesmí přebírat zámky souborů u všech souborů v adresářích spravovaných službou Batch v uzlu, protože jinak služba Batch nebude moci odstranit tyto adresáře z důvodu zámků souborů. Pokud například instalujete službu systému Windows do spouštěcího úkolu, místo spuštění služby přímo z pracovního adresáře spouštěcího úkolu zkopírujte soubory jinam (Pokud soubory existují pouze k přeskočení kopie). Nainstalujte službu z tohoto umístění. Když Batch znovu spustí spouštěcí úkol, odstraní pracovní adresář spouštěcí úlohy a znovu ho vytvoří. Tato operace funguje, protože služba má zámky souborů v jiném adresáři jako pracovní adresář spouštěcího úkolu.
+Stejně jako u jiných úloh by měl být [spouštěcí úkol](jobs-and-tasks.md#start-task) uzlu idempotentní, protože bude znovu spuštěn při každém spuštění uzlu. Úkol idempotentní je jednoduše ten, který při spuštění několikrát vytvoří konzistentní výsledek.
 
-- **Vyhněte se vytváření spojení adresářů ve Windows** Spojení adresářů, někdy označované jako pevné odkazy v adresáři, se obtížně zabývají při čištění úloh a úloh. Místo pevných odkazů používejte symbolických odkazů (Soft-Links).
+### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>Správa dlouhotrvajících služeb prostřednictvím rozhraní služeb operačního systému
 
-- **Shromažďovat protokoly služby Batch agent v případě potíží** Pokud si všimnete problému s chováním uzlu nebo úloh, které jsou spuštěny v uzlu, doporučujeme shromáždit protokoly služby Batch Agent před tím, než dojde k zrušení přidělení příslušných uzlů. Protokoly služby Batch Agent se dají shromáždit pomocí rozhraní API pro nahrání protokolů služby Batch. Tyto protokoly je možné dodávat jako součást lístku podpory společnosti Microsoft a pomohou vám při řešení potíží a řešení problémů.
+Někdy je potřeba spustit jiného agenta společně s agentem dávky v uzlu. Například můžete chtít shromažďovat data z uzlu a nahlásit ho. Doporučujeme, aby tyto agenty byly nasazeny jako služby operačního systému, například služba systému Windows nebo `systemd` Služba Linux.
 
-## <a name="security"></a>Zabezpečení
+Pokud tyto služby spouštíte, nesmí přebírat zámky souborů u všech souborů v adresářích spravovaných službou Batch v uzlu, protože jinak služba Batch nebude moci odstranit tyto adresáře z důvodu zámků souborů. Pokud například nainstalujete službu systému Windows do spouštěcí úlohy, místo spuštění služby přímo z pracovního adresáře spouštěcího úkolu zkopírujte soubory jinam (nebo pokud soubory existují pouze k přeskočení kopie). Pak z tohoto umístění nainstalujte službu. Když Batch znovu spustí spouštěcí úkol, odstraní pracovní adresář spouštěcí úlohy a znovu ho vytvoří. Tato operace funguje, protože služba má zámky souborů v jiném adresáři, nikoli pracovní adresář spouštěcího úkolu.
 
-### <a name="security-isolation"></a>Izolace zabezpečení
+### <a name="avoid-creating-directory-junctions-in-windows"></a>Vyhněte se vytváření spojení adresářů ve Windows
 
-Pro účely izolace platí, že pokud váš scénář vyžaduje izolované úlohy od sebe navzájem, měli byste tyto úlohy izolovat v samostatných fondech. Fond je hranice izolace zabezpečení ve službě Batch a ve výchozím nastavení nejsou dva fondy viditelné ani vzájemně vzájemně komunikují. Vyhněte se použití samostatných účtů Batch jako izolačního prostředku.
+Spojení adresářů, někdy označované jako pevné odkazy v adresáři, se obtížně zabývají při čištění úloh a úloh. Místo pevných odkazů používejte symbolických odkazů (Soft-Links).
 
-## <a name="moving"></a>Přesunul
+### <a name="collect-the-batch-agent-logs"></a>Shromáždění protokolů agenta Batch
 
-### <a name="move-batch-account-across-regions"></a>Přesunutí účtu Batch mezi oblasti
+Pokud si všimnete problému s chováním uzlu nebo úloh, které jsou spuštěné na uzlu, Shromážděte protokoly služby Batch Agent před tím, než dojde k jejich navýšení na příslušné uzly. Protokoly služby Batch Agent se dají shromáždit pomocí rozhraní API pro nahrání protokolů služby Batch. Tyto protokoly je možné dodávat jako součást lístku podpory společnosti Microsoft a pomohou vám při řešení potíží a řešení problémů.
 
-Existují různé scénáře, ve kterých byste chtěli přesunout existující účet Batch z jedné oblasti do druhé. Například můžete chtít přesunout do jiné oblasti v rámci plánování zotavení po havárii.
+## <a name="isolation-security"></a>Zabezpečení izolace
 
-Účty Azure Batch nejde přesunout z jedné oblasti do druhé. K exportu existující konfigurace účtu Batch ale můžete použít šablonu Azure Resource Manager.  Potom můžete prostředek vytvořit v jiné oblasti tak, že účet Batch exportujete do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti. Po nahrání šablony do nové oblasti bude nutné znovu vytvořit certifikáty, plány úloh a balíčky aplikací. Chcete-li potvrdit změny a dokončit přesunutí účtu Batch, nezapomeňte odstranit původní účet Batch nebo skupinu prostředků.
+Pro účely izolace, pokud váš scénář vyžaduje izolované úlohy od sebe navzájem, udělejte to tak, že je budete mít v samostatných fondech. Fond je hranice izolace zabezpečení ve službě Batch a ve výchozím nastavení nejsou dva fondy viditelné ani vzájemně vzájemně komunikují. Vyhněte se použití samostatných účtů Batch jako izolačního prostředku.
+
+## <a name="moving-batch-accounts-across-regions"></a>Přesun účtů Batch napříč oblastmi
+
+Existují scénáře, ve kterých může být užitečné přesunout existující účet Batch z jedné oblasti do druhé. Například můžete chtít přesunout do jiné oblasti v rámci plánování zotavení po havárii.
+
+Účty Azure Batch nelze přímo přesunout z jedné oblasti do druhé. K exportu existující konfigurace účtu Batch ale můžete použít šablonu Azure Resource Manager. Potom můžete prostředek vytvořit v jiné oblasti tak, že účet Batch exportujete do šablony, upravíte parametry tak, aby odpovídaly cílové oblasti, a pak šablonu nasadíte do nové oblasti.
+
+Po nahrání šablony do nové oblasti bude nutné znovu vytvořit certifikáty, plány úloh a balíčky aplikací. Chcete-li potvrdit změny a dokončit přesunutí účtu Batch, nezapomeňte odstranit původní účet Batch nebo skupinu prostředků.
 
 Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-## <a name="connectivity-to-the-batch-service"></a>Připojení ke službě Batch
+## <a name="connectivity"></a>Připojení
+
+Při zvažování připojení ve vašich řešeních služby Batch si přečtěte následující pokyny.
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>Skupiny zabezpečení sítě (skupin zabezpečení sítě) a uživatelsky definované trasy (udr)
 
 Při zřizování [fondů služby Batch ve virtuální síti](batch-virtual-network.md)se ujistěte, že jste úzce využívali pokyny týkající se použití `BatchNodeManagement` značky služby, portů, protokolů a směru pravidla.
-Použití značky služby se důrazně doporučuje, a ne základní IP adresy služby Batch, protože se můžou v průběhu času měnit. Použití IP adres služby Batch můžete přímo narušit jako nestabilitu, přerušení nebo výpadky fondů služby Batch, protože služba Batch aktualizuje IP adresy používané v průběhu času. Pokud v pravidlech NSG aktuálně používáte IP adresy služby Batch, doporučuje se přepnout na používání značky služby.
+Místo používání základních IP adres služby Batch se doporučuje použít značku služby. Důvodem je to, že IP adresy se můžou v průběhu času měnit. Přímé použití IP adres služby Batch může způsobit nestabilitu, přerušení nebo výpadky pro fondy služby Batch.
 
-V případě uživatelem definovaných tras se ujistěte, že máte zavedený proces, který bude pravidelně aktualizovat IP adresy služby Batch v tabulce směrování, protože se tato změna v průběhu času provádí. Informace o tom, jak získat seznam IP adres služby Batch, najdete v tématu věnovaném místním [značkám služby](../virtual-network/service-tags-overview.md). IP adresy služby Batch budou přidruženy k `BatchNodeManagement` značce služby (nebo k místní variantě, která odpovídá vaší oblasti účtu Batch).
+Pro trasy definované uživatelem (udr) se ujistěte, že máte zavedený proces, který bude pravidelně aktualizovat IP adresy služby Batch v tabulce směrování, protože se tyto adresy mění v průběhu času. Informace o tom, jak získat seznam IP adres služby Batch, najdete v tématu věnovaném místním [značkám služby](../virtual-network/service-tags-overview.md). IP adresy služby Batch budou přidruženy k `BatchNodeManagement` značce služby (nebo k místní variantě, která odpovídá vaší oblasti účtu Batch).
 
 ### <a name="honoring-dns"></a>Respektování DNS
 
@@ -164,3 +179,25 @@ Pokud vaše žádosti dostanou odezvy HTTP na úrovni 5xx a v odpovědi se nach�
 
 Ujistěte se, že klienti služby Batch mají k dispozici vhodné zásady opakování, aby automaticky opakovaly vaše požadavky, a to i během normálního provozu, a ne výhradně během časových období údržby služby. Tyto zásady opakování by měly zahrnovat interval minimálně 5 minut. Automatické možnosti opakování jsou k dispozici s různými sadami SDK pro Batch, jako je například [Třída .NET RetryPolicyProvider](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet).
 
+## <a name="batch-node-underlying-dependencies"></a>Základní závislosti uzlu Batch
+
+Při navrhování řešení Batch Vezměte v úvahu následující závislosti a omezení.
+
+### <a name="system-created-resources"></a>Prostředky vytvořené systémem
+
+Azure Batch vytvoří a spravuje skupinu uživatelů a skupin na virtuálním počítači, které by se neměly měnit. Jsou to tyto:
+
+#### <a name="windows"></a>Windows
+
+- Uživatel s názvem **PoolNonAdmin**
+- Skupina uživatelů s názvem **WATaskCommon**
+
+#### <a name="linux"></a>Linux
+
+- Uživatel s názvem **_azbatch**
+
+### <a name="file-cleanup"></a>Vyčištění souboru
+
+Batch se aktivně snaží vyčistit pracovní adresář, ve kterém jsou spuštěné úlohy, jakmile doba uchování vyprší. Všechny soubory napsané mimo tento adresář jsou [vaší zodpovědností na vyčištění](#manage-task-lifetime) , aby nedošlo k zaplnění místa na disku. 
+
+Automatizované vyčištění pro pracovní adresář se zablokuje, pokud spustíte službu ve Windows z pracovního adresáře startTask, protože se tato složka pořád používá. Výsledkem bude snížení výkonu. Chcete-li tento problém vyřešit, změňte adresář této služby na samostatný adresář, který není spravován službou Batch.

@@ -8,29 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 836012c11d16810172c27fb948e1185f99f7de83
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a0fb6bc96441fe36713d931e561c6d1e272b7819
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446644"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872606"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Rychlý Start: Získání přehledů o imagí pomocí Vizuální vyhledávání Bingu REST API a jít
 
-V tomto rychlém startu se používá programovací jazyk na cestách pro volání rozhraní API pro vizuální vyhledávání Bingu a zobrazení výsledků. Požadavek POST nahraje obrázek do koncového bodu rozhraní API. Výsledky zahrnují adresy URL a popisné informace o obrázcích podobně jako nahraný obrázek.
+Pomocí tohoto rychlého startu můžete provést vaše první volání do rozhraní API pro vizuální vyhledávání Bingu pomocí programovacího jazyka na cestách. Požadavek POST nahraje obrázek do koncového bodu rozhraní API. Výsledky zahrnují adresy URL a popisné informace o obrázcích podobně jako nahraný obrázek.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [binární soubory přejít](https://golang.org/dl/).
-* K zobrazení výsledků se používá rozsáhlá tiskárna v cestách Spew. `$ go get -u https://github.com/davecgh/go-spew` Příkaz Přejít-Spew můžete nainstalovat pomocí příkazu.
+* Nainstalujte tiskárnu s přímým použitím Spew, která se používá k zobrazení výsledků. K instalaci příkazu Přejít-Spew použijte `$ go get -u https://github.com/davecgh/go-spew` příkaz.
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-libraries"></a>Projekt a knihovny
 
-Vytvořte projekt přejít v integrovaném vývojovém prostředí nebo v editoru. Pak importujte `net/http` požadavky, `ioutil` Přečtěte si odpověď a `encoding/json` zpracujte text JSON výsledků. `go-spew` Knihovna slouží k analýze výsledků JSON.
+Vytvořte projekt přejít v integrovaném vývojovém prostředí nebo v editoru. Pak importujte `net/http` požadavky, `ioutil` Přečtěte si odpověď a `encoding/json` zpracujte text JSON výsledků. Použijte `go-spew` knihovnu k analýze výsledků JSON.
 
 ```go
 package main
@@ -52,7 +52,7 @@ import (
 
 ## <a name="struct-to-format-results"></a>Struktura pro formátování výsledků
 
-`BingAnswer` Struktura formátuje data vrácená v odpovědi JSON, což je víceúrovňové a komplexní. Následující implementace se zabývá některými základy:
+`BingAnswer`Struktura formátuje data vrácená v odpovědi JSON, což je víceúrovňové a komplexní. Následující implementace se zabývá některými základy:
 
 ```go
 type BingAnswer struct {
@@ -109,7 +109,12 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>Main – funkce a proměnné  
 
-Následující kód deklaruje funkci main a přiřadí požadované proměnné. Ověřte správnost koncového bodu a nahraďte hodnotu `token` platným klíčem předplatného ze svého účtu Azure. `batchNumber` Je identifikátor GUID vyžadovaný pro počáteční a koncové hranice dat post. `fileName` Proměnná identifikuje soubor obrázku pro daný příspěvek. `endpoint`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek:
+Následující kód deklaruje funkci main a přiřadí požadované proměnné: 
+
+1. Ověřte správnost koncového bodu a nahraďte hodnotu `token` platným klíčem předplatného ze svého účtu Azure. 
+2. V případě `batchNumber` přiřaďte identifikátor GUID, který je požadován pro počáteční a koncové hranice dat post. 
+3. Pro `fileName` přiřaďte soubor obrázku, který se má použít pro příspěvek. 
+4. V případě `endpoint` můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
 ```go
 func main() {
@@ -159,7 +164,12 @@ func main() {
 
 ## <a name="boundaries-of-post-body"></a>Hranice textu příspěvku
 
-Požadavek POST na koncový bod Vizuální vyhledávání vyžaduje úvodní a koncové hranice ohraničující data POST. Přední hranice zahrnuje číslo dávky, identifikátor `Content-Disposition: form-data; name="image"; filename=`typu obsahu a název souboru obrázku, který se má publikovat. Koncová hranice je jednoduše číslo dávky. Tyto funkce nejsou zahrnuté do `main` bloku:
+Požadavek POST na koncový bod Vizuální vyhledávání vyžaduje počáteční a koncové hranice pro uzavření dat POST. Tyto funkce nejsou zahrnuté do `main()` bloku.
+
+Přední hranice zahrnuje číslo dávky, identifikátor typu obsahu `Content-Disposition: form-data; name="image"; filename=` a název souboru obrázku, který se má publikovat. 
+
+Koncová hranice zahrnuje pouze číslo dávky. 
+
 
 ```go
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -178,7 +188,7 @@ func BuildFormDataEnd(batNum string) string{
 ```
 ## <a name="add-image-bytes-to-post-body"></a>Přidat obrázkové bajty pro tělo příspěvku
 
-Tento segment kódu vytvoří požadavek POST obsahující data obrázku:
+Následující kód vytvoří požadavek POST obsahující data obrázku:
 
 ```go
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
@@ -226,7 +236,7 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>Zpracování odpovědi
 
-`Unmarshall` Funkce extrahuje informace z textu JSON VRÁCENého rozhraním vizuální vyhledávání API. V `go-spew` tiskárně s hodně se zobrazí výsledky:
+`Unmarshall`Funkce extrahuje informace z textu JSON vráceného rozhraním vizuální vyhledávání API. V `go-spew` tiskárně s hodně se zobrazí výsledky.
 
 ```go
     // Create a new answer.  
@@ -249,7 +259,7 @@ resp, err := client.Do(req)
 
 ## <a name="results"></a>Výsledky
 
-Výsledky identifikují obrázky podobné obrázku obsaženému v těle příspěvku. Užitečná pole jsou `WebSearchUrl` a `Name`:
+Výsledky identifikují obrázky podobné obrázku obsaženému v těle příspěvku. Užitečná pole jsou `WebSearchUrl` a `Name` .
 
 ```go
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
@@ -288,4 +298,4 @@ Výsledky identifikují obrázky podobné obrázku obsaženému v těle přísp�
 
 > [!div class="nextstepaction"]
 > [Co je rozhraní API pro vizuální vyhledávání Bingu?](../overview.md) 
->  [Rychlý Start vyhledávání na webu Bingu v prostředí přejít](../../Bing-Web-Search/quickstarts/go.md)
+>  [Rychlý start vyhledávání na webu Bingu v prostředí přejít](../../Bing-Web-Search/quickstarts/go.md)

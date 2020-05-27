@@ -1,18 +1,18 @@
 ---
 title: Nasazení zákazníků do správy delegovaných prostředků Azure
 description: Naučte se, jak začlenit správu delegovaných prostředků do Azure, aby k nim bylo možné získat a spravovat jejich prostředky prostřednictvím vašeho vlastního tenanta.
-ms.date: 04/24/2020
+ms.date: 05/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2b8bf3125dd97397f83a2a2cbf23090bce41ad40
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: a6cdfea7e0520aa704e70a12784f7a7ba5d6aa6d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82161104"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871120"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
-V tomto článku se dozvíte, jak můžete jako poskytovatel služeb připojit zákazníka k delegované správě prostředků Azure a povolit, aby jejich delegované prostředky (předplatná a/nebo skupiny prostředků) byly dostupné a spravované prostřednictvím vašeho vlastního tenanta Azure Active Directory (Azure AD). V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které [spravují víc tenantů](../concepts/enterprise.md) , můžou stejný postup využít k konsolidaci prostředí pro správu.
+V tomto článku se dozvíte, jak můžete jako poskytovatel služeb připojit zákazníka k delegované správě prostředků Azure a povolit, aby jejich delegované prostředky (předplatná a/nebo skupiny prostředků) byly dostupné a spravované prostřednictvím vašeho vlastního tenanta Azure Active Directory (Azure AD). V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které [spravují víc tenantů](../concepts/enterprise.md) , můžou stejný postup použít k nastavení Azure Lighthouse a konsolidaci prostředí pro správu.
 
 Tento postup můžete opakovat, pokud spravujete prostředky pro více zákazníků. Když se pak ověřený uživatel přihlásí k vašemu tenantovi, může být tento uživatel autorizovaný v rámci oborů zákaznických tenantů, aby mohl provádět operace správy, aniž by se musel přihlašovat ke každému tenantovi zákazníka.
 
