@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 22bec66467dc7a42470c3660b8505c4aa13557d4
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ea05e75c0d1db1ef27ae2e8e9364327528a7c8ed
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715773"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837157"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Konfigurace nastavení web Windows Update pro Azure Automation Update Management
 
@@ -62,4 +62,4 @@ Chcete-li omezit počítače na službu interní aktualizace, nastavte [Nepřipo
 
 ## <a name="next-steps"></a>Další kroky
 
-[Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md)
+Naplánujte nasazení aktualizací podle pokynů v tématu [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).

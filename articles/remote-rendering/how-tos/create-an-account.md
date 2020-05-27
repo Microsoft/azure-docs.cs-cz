@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: b9b72fb9e80c588eb3e6642d0228bffa50b35c6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681295"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844501"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Vytvoření účtu Azure Remote Renderingu
 
@@ -48,7 +48,7 @@ Projděte si [seznam dostupných oblastí](../reference/regions.md) pro vyplňov
 
 Hodnoty pro **`arrAccountId`** a **`arrAccountKey`** lze nalézt na portálu, jak je popsáno v následujícím postupu:
 
-* Přejděte na web [Azure Portal](https://www.portal.azure.com).
+* Přejít na [Azure Portal](https://www.portal.azure.com)
 * Najít **účet vzdáleného vykreslování** – měl by být v seznamu **Poslední prostředky** . Můžete ji také vyhledat na panelu hledání v horní části. V takovém případě se ujistěte, že odběr, který chcete použít, je vybraný ve výchozím filtru předplatného (ikona filtru vedle panelu hledání):
 
 ![Filtr předplatných](./media/azure-subscription-filter.png)
@@ -81,9 +81,12 @@ Nyní se předpokládá, že máte účet úložiště. Přejděte na portál na
 
 ![Úložiště IAM účtu úložiště](./media/azure-add-role-assignment.png)
 
-* První role, která se má přiřadit, je **vlastník** , jak je znázorněno na snímku obrazovky výše. 
-* V rozevíracím seznamu ***přiřadit přístup k** vyberte **účet vzdáleného vykreslování** .
+* První role, která se má přiřadit, je **vlastník** , jak je znázorněno na snímku obrazovky výše.
+* V rozevíracím seznamu **přiřadit přístup k** vyberte **účet vzdáleného vykreslování** .
 * V posledních rozevíracích seznamech vyberte své předplatné a účet vzdáleného vykreslování.
+
+> [!WARNING]
+> V případě, že váš účet vzdáleného vykreslování není uveden, přečtěte si [téma věnované tomuto problému](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
 Pro odpovídající výběry v rozevírací nabídce **role** znovu přidejte další nové role:
 * **Přispěvatel účtů úložiště**
@@ -95,6 +98,6 @@ Pokud jste přidali všechny tři role, má účet vzdáleného vykreslování A
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Authentication](authentication.md)
+* [Přihlašovací](authentication.md)
 * [Použití rozhraní API Azure front-endu k ověřování](frontend-apis.md)
 * [Ukázkové skripty PowerShellu](../samples/powershell-example-scripts.md)

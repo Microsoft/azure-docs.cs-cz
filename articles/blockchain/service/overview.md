@@ -1,15 +1,15 @@
 ---
 title: Přehled služby Azure blockchain
 description: Přehled služby Azure blockchain
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 4319257f1259637306f5a51d56707b149decbad4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 38d0a5564e1e7a28168ac95826cc527d47ef093b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835525"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844586"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Co je Azure Blockchain Service?
 
@@ -75,7 +75,7 @@ Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce,
 
 Spolupracujte s odborníky z Microsoftu a komunitou Azure blockchain.
 
-* [Microsoft Q&Stránka s otázkou pro Azure blockchain](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
+* [Stránka s otázkou pro službu Azure blockchain&Microsoft Q](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
 * [Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 

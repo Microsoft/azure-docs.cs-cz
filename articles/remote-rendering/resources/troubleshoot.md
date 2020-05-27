@@ -5,16 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b518b2b92ba6d2529ffdefce754a3b29b74fb21b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b6cb9c70de27e40c62d6a7adeece5cb39554c090
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674286"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83844556"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
 Tato stránka obsahuje seznam běžných problémů, které mají vliv na vzdálené vykreslování Azure, a způsoby, jak je vyřešit.
+
+## <a name="cant-link-storage-account-to-arr-account"></a>Nejde propojit účet úložiště s účtem ARR.
+
+V některých případech se během [propojování účtu úložiště](../how-tos/create-an-account.md#link-storage-accounts) v seznamu nenachází účet vzdáleného vykreslování. Pokud chcete tento problém vyřešit, v Azure Portal klikněte na účet ARR a ve skupině **Nastavení** na levé straně vyberte **Identita** . Ujistěte se, že **stav** je **zapnuto**.
+![Ladicí program rámce Unity](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>Klient se nemůže připojit k serveru.
 
