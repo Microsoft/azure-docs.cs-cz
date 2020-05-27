@@ -3,34 +3,20 @@ title: Správa portálu Azure EA
 description: V tomto článku jsou vysvětlené nejčastější úkoly, které provádí správce portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 2b2ec7a5954649c36cf9da5d7933c83eec67faa3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a3551b4f09202b33cee768a69f31a6c5d5d36777
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692646"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648197"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
 V tomto článku jsou vysvětlené nejčastější úkoly, které provádí správce portálu Azure EA Portal (https://ea.azure.com). Portál Azure EA je online portál pro správu, kde můžou zákazníci spravovat náklady na služby Azure EA. Úvodní informace o portálu Azure EA najdete v článku [Začínáme s portálem Azure EA](ea-portal-get-started.md).
-
-## <a name="add-a-new-enterprise-administrator"></a>Přidání nového podnikového správce
-
-Podnikoví správci mají při správě registrace do Azure EA největší oprávnění. Úvodní správce Azure EA byl vytvořen při nastavení smlouvy EA. Nové správce můžete kdykoliv přidat nebo odebrat. Nové správce přidávají jenom stávající správci. Další informace o přidání dalších podnikových správců najdete v tématu [Vytvoření dalšího podnikového správce](ea-portal-get-started.md#create-another-enterprise-administrator). Další informace o rolích a úlohách fakturačního profilu najdete v tématu [Role a úlohy fakturačního profilu](understand-mca-roles.md#billing-profile-roles-and-tasks).
-
-## <a name="update-user-state-from-pending-to-active"></a>Aktualizace stavu uživatele z Čeká na vyřízení na Aktivní
-
-Při prvním přidání nových vlastníků účtů do registrace Azure EA se u nových vlastníků zobrazí stav _Čeká na vyřízení_. Jakmile noví vlastníci účtu dostanou úvodní aktivační e-mail, můžou se přihlásit a aktivovat si účet. Jakmile si účet aktivují, stav účtu se aktualizuje z _Čeká na vyřízení_ na _Aktivní_. Vlastník účtu si musí přečíst zprávu upozornění a pak vybrat **Pokračovat**. Při vytvoření komerčního účtu se může novým uživatelům zobrazit výzva k zadání jména a příjmení. Pokud se zobrazí, musí zadat požadované informace, aby mohli pokračovat, a pak se účet aktivuje.
-
-## <a name="add-a-department-admin"></a>Přidání správce oddělení
-
-Jakmile správce Azure EA vytvoří oddělení, může přidat správce oddělení a přidružit je k oddělením. Správce oddělení může vytvářet nové účty. Nové účty jsou potřeba pro vytvářená předplatná Azure EA.
-
-Další informace o přidání správce oddělení najdete v tématu věnovaném [vytvoření správce oddělení Azure EA](ea-portal-get-started.md#add-a-department-administrator).
 
 ## <a name="associate-an-account-to-a-department"></a>Přidružit účet k oddělení
 
@@ -114,108 +100,6 @@ Když se uživatel přidá jako vlastník účtu přes portál Azure EA, všechn
 
 Nabídka Vývoj/testování se v současné době nevztahuje na zákazníky Azure Government.
 
-## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Převod podnikového účtu do nové registrace
-
-Při převodu účtu se jeho vlastník přenese z jedné registrace do druhé. Do cílové registrace se přesunou všechna související předplatná pod tímto vlastníkem. Převod účtu využijte v případě, že máte více aktivních registrací a chcete přesunout jenom vybrané vlastníky účtů.
-
-Tato část je určená jenom k informativním účelům, protože tuto akci nemůže provést podnikový správce. Pro převod podnikového účtu na novou registraci se vyžaduje žádost o podporu.
-
-Při převodu podnikového účtu do nové registrace mějte na paměti následující body:
-
-- Převádějí se jenom účty, které jsou zadané v požadavku. Pokud zvolíte všechny účty, převedou se všechny.
-- Zdrojová registrace zůstane v aktivním nebo prodlouženém stavu. Registraci můžete používat dál, dokud jí nevyprší platnost.
-
-### <a name="prerequisites"></a>Požadavky
-
-K žádosti o převod účtu je potřeba sdělit následující informace:
-
-- Číslo cílové registrace, název účtu a e-mail vlastníka účtu, který se má převést
-- U zdrojové registrace uveďte její číslo a převáděný účet.
-
-Další body, na které je potřeba myslet před převodem účtu:
-
-- Cílovou a zdrojovou registraci musí schválit správce EA.
-- Pokud převod účtu vašim požadavkům nevyhovuje, můžete zvážit převod registrace.
-- Převod účtů přenese všechny služby a předplatná související s konkrétními účty.
-- Po dokončení převodu se převedený účet v rámci zdrojové registrace zobrazí jako neaktivní a v cílové registraci naopak jako aktivní.
-- Účet zobrazuje koncové datum odpovídající efektivnímu datu převodu zdrojové registrace jako počáteční datum cílové registrace.
-- Jakékoliv použití účtu před efektivním datem převodu zůstane v rámci zdrojové registrace.
-
-
-## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Převod podnikové registrace do nové registrace
-
-Převod registrace se bere v úvahu v těchto případech:
-
-- Skončilo období závazku aktuální registrace.
-- Registrace je ve stavu vypršení platnosti nebo prodloužení a dojednává se nová smlouva.
-- Máte více registrací a chcete zkombinovat všechny účty a fakturaci v rámci jediné registrace.
-
-Tato část je určená jenom k informativním účelům, protože tuto akci nemůže provést podnikový správce. Pro převod podnikové registrace na novou se vyžaduje žádost o podporu.
-
-Pokud požádáte o převod celé podnikové registrace do jiné registrace, provedou se následující akce:
-
-- Na novou registraci se převedou všechny služby Azure, všechna předplatná, účty, oddělení a celá struktura registrace, včetně všech správců oddělení EA.
-- U registrace se nastaví stav _Přenesené_. Přenesená registrace bude k dispozici jenom pro sestavy, které se týkají historie použití.
-- Do přenesené registrace už nemůžete přidávat role ani předplatná. Přenesený stav brání dalšímu použití této registrace.
-- Zbývající zůstatek peněžního závazku ve smlouvě se ruší, včetně budoucích podmínek.
--    Pokud registrace, ze které provádíte převod, obsahuje zakoupené rezervované instance, kupní cena rezervovaných instancí zůstane ve zdrojové registraci, ale všechny výhody rezervovaných instancí se převedou do nové registrace.
--    Jednorázový poplatek za nákup na marketplace ani žádné měsíční paušální poplatky již vzniklé ve staré registraci se do nové registrace nepřevedou. Poplatky za marketplace na základě spotřeby se převedou.
-
-### <a name="effective-transfer-date"></a>Platné datum převodu
-
-Platným datem převodu může být datum, které je stejné nebo následuje po počátečním datu cílové registrace.
-
-Využití zdrojové registrace se odečte z peněžního závazku nebo se účtuje jako nadlimitní využití. Využití, ke kterému dojde po platném datu převodu, se přenese do nové registrace, kde se odpovídajícím způsobem odúčtuje.
-
-### <a name="prerequisites"></a>Požadavky
-
-K žádosti o převod registrace je potřeba sdělit následující informace:
-
-- U zdrojové registrace uveďte její číslo.
-- U cílové registrace uveďte číslo registrace, do které probíhá převod.
-- Platné datum převodu registrace může být stejné datum, jako je počáteční datum cílové registrace, nebo datum pozdější. Vybrané datum neovlivňuje použití u již vydaných faktur za nadlimitní využití.
-
-Další body, na které je potřeba myslet před převodem registrace:
-
-- Cílovou a zdrojovou registraci musí schválit správci EA.
-- Pokud převod registrace vašim požadavkům nevyhovuje, zvažte možnost převodu účtu.
-- Stav zdrojové registrace se změní na Převedeno nesený a bude k dispozici jenom pro účely generování sestav historie využití.
-
-### <a name="monetary-commitment"></a>Peněžní závazek
-
-Peněžní závazek nejde mezi registracemi převést. Zůstatky peněžních závazků jsou smluvně vázány na registraci, kde byly objednány. V rámci převodu účtu nebo registrace se peněžní závazek nepřevádí.
-
-### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Převody účtů a registrací nemají vliv na služby
-
-Při převodu účtu nebo registrace nedochází k výpadkům. Pokud jsou poskytnuté všechny požadované informace, může převod proběhnout tentýž den jako požadavek.
-
-## <a name="change-account-owner"></a>Změna vlastníka účtu
-
-Na portálu Azure EA můžete převádět předplatná od jednoho vlastníka účtu k jinému. Další informace najdete v tématu o [změně vlastníka účtu](ea-portal-get-started.md#change-account-owner).
-
-## <a name="subscription-transfer-effects"></a>Účinek převodu předplatného
-
-Pokud se předplatné Azure převádí do účtu ve stejném tenantovi Azure Active Directory, zachovají si všichni uživatelé, skupiny a instanční objekty, které ke správě prostředků používaly [přístup na základě role (RBAC)](../../role-based-access-control/overview.md), stále svůj přístup.
-
-Zobrazení uživatelů s přístupem RBAC k předplatnému:
-
-1. Na webu Azure Portal otevřete **Předplatná**.
-2. Vyberte předplatné, které chcete zobrazit, a pak vyberte **Řízení přístupu (IAM)** .
-3. Vyberte **Přiřazení rolí**. Na stránce Přiřazení rolí se zobrazí seznam všech uživatelů, kteří mají k předplatnému přístup RBAC.
-
-Pokud se předplatné převede do účtu jiného tenanta Azure AD, tak všichni uživatelé, skupiny a instanční objekty, které měly ke správě prostředků přístup [RBAC](../../role-based-access-control/overview.md), tento přístup _ztratí_. I když neexistuje přístup RBAC, může být přístup k předplatnému dostupný prostřednictvím bezpečnostních mechanismů, jako je například:
-
-- Certifikáty pro správu, které udělují uživateli oprávnění správce prostředků předplatného. Další informace najdete v tématu o [vytvoření a nahrání certifikátu pro správu Azure](../../cloud-services/cloud-services-certs-create.md).
-- Přístupové klíče pro služby, jako je Storage. Další informace najdete v tématu [Přehled účtu Azure Storage](../../storage/common/storage-account-overview.md).
-- Oprávnění pro vzdálený přístup ke službám, jako je Azure Virtual Machines.
-
-Pokud příjemce potřebuje omezit přístup k prostředkům Azure, měl by zvážit aktualizaci tajných klíčů přidružených k dané službě. Většinu prostředků můžete aktualizovat takto:
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. V nabídce centra vyberte **Všechny prostředky**.
-3. Vyberte prostředek.
-4. Na stránce prostředku vyberte **Nastavení**. Tady se můžete podívat na stávající tajné klíče nebo je můžete aktualizovat.
-
 ## <a name="delete-subscription"></a>Odstranění předplatného
 
 Odstranění předplatného, ve kterém jste vlastníkem účtu:
@@ -260,60 +144,6 @@ Přidání kontaktu:
 Nový kontakt pro oznámení se zobrazí v oddílu **Kontakt pro oznámení**. Pokud chcete změnit frekvenci oznamování, vyberte kontakt pro oznámení a pak vyberte symbol tužky, který je napravo od vybraného řádku. Nastavte **denní**, **týdenní**, **měsíční** nebo **žádnou** frekvenci.
 
 Můžete také potlačit _blížící se koncové datum pokrytého období_ a _vypnout a zrušit zřízené blížící se datum_ u oznámení o životním cyklu. Pokud vypnete oznámení o životním cyklu, potlačíte tím oznámení o pokrytém období a o datu ukončení smlouvy.
-
-## <a name="manage-partner-administrators"></a>Správa správců partnerů
-
-Každý správce partnera na portálu Azure EA může přidat nebo odebrat ostatní správce partnerů. Správci partnerů jsou přidružení k partnerským organizacím nepřímých registrací, a ne přímo k registracím.
-
-### <a name="add-a-partner-administrator"></a>Přidání správce partnera
-
-Pokud chcete zobrazit seznam všech registrací přidružených ke stejné partnerské organizaci jako aktuální uživatel, vyberte kartu **Registrace** a zaškrtněte políčko požadované registrace.
-
-1. Přihlaste se jako správce partnera.
-1. V levém navigačním panelu vyberte **Manage** (Spravovat).
-1. Vyberte kartu **Partner**.
-1. Vyberte **+ Přidat správce** a vyplňte e-mailovou adresu, kontakt pro oznámení a podrobnosti o oznámení.
-1. Vyberte **Přidat**.
-
-### <a name="remove-a-partner-administrator"></a>Odebrání správce partnera
-
-Pokud chcete zobrazit seznam všech registrací přidružených ke stejné partnerské organizaci jako aktuální uživatel, vyberte kartu **Registrace** a zaškrtněte políčko požadované registrace.
-
-1. Přihlaste se jako správce partnera.
-1. V levém navigačním panelu vyberte **Manage** (Spravovat).
-1. Vyberte kartu **Partner**.
-1. V části Správce vyberte odpovídající řádek správce, kterého chcete odebrat.
-1. Vyberte symbol X na pravé straně.
-1. Potvrďte, že skutečně chcete provést odstranění.
-
-## <a name="manage-partner-notifications"></a>Správa oznámení pro partnery
-
-Správci partnerů můžou spravovat frekvenci, s jakou budou u svých registrací dostávat oznámení o jejich využití. Oznámení o nefakturovaném zůstatku dostávají automaticky jednou týdně. Frekvenci jednotlivých oznámení můžou změnit na měsíční, týdenní, denní nebo můžou oznámení úplně vypnout.
-
-Pokud uživatel nedostává oznámení, zkontrolujte, jestli jsou správně nastavená. Použijte k tomu následující postup.
-
-1. Přihlaste se na portál Azure EA jako správce partnera.
-2. Vyberte **Spravovat** a pak vyberte kartu **Partner**.
-3. V části Správce si prohlédněte seznam správců.
-4. Pokud chcete upravit předvolby oznámení, najeďte myší na příslušného správce a vyberte symbol tužky.
-5. Podle potřeby zvyšte frekvenci a aktualizujte životní cyklus oznámení.
-6. Pokud potřebujete přidat kontakt, vyberte **Přidat**.
-7. Vyberte **Uložit**.
-
-![Příklad ukazující pole pro přidání kontaktu ](./media/ea-portal-administration/create-ea-manage-partner-notification.png)
-
-## <a name="view-enrollments-for-partner-administrators"></a>Zobrazení registrací pro správce partnerů
-
-Správci partnerů můžou zobrazit seznam všech svých přímých i nepřímých registrací na portálu Azure EA. U jednotlivých registrací se společně s číslem registrace, názvem registrace, zůstatkem a nadlimitním využitím zobrazí pole obsahující přehled registrace.
-
-### <a name="view-a-list-of-enrollments"></a>Zobrazení seznamu registrací
-
-1. Přihlaste se jako správce partnera.
-1. V navigačním panelu na levé straně stránky vyberte **Spravovat**.
-1. Klikněte na kartu **Enrollment** (Registrace).
-1. Zaškrtněte políčko u požadované registrace.
-
-V horní části stránky zůstane zobrazení všech registrací, včetně polí pro jednotlivé registrace. Mezi registracemi můžete přecházet také výběrem čísla aktuální registrace v navigačním panelu na levé straně stránky. Zobrazí se automaticky otevírané okno, ve kterém můžete vyhledávat registrace nebo zaškrtnutím odpovídajícího políčka vybrat jinou registraci.
 
 ## <a name="azure-sponsorship-offer"></a>Nabídka Azure Sponsorship
 
