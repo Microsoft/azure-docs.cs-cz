@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74028129"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816178"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Správa účtů pro nouzový přístup v Azure AD
 
@@ -39,12 +39,12 @@ Organizace může potřebovat účet pro nouzový přístup v následujících s
 
 ## <a name="create-emergency-access-accounts"></a>Vytvoření účtů pro nouzový přístup
 
-Vytvořte dva nebo více účtů pro nouzový přístup. Tyto účty by měly být pouze cloudové účty, které \*používají doménu. onmicrosoft.com a které nejsou federované nebo synchronizované z místního prostředí.
+Vytvořte dva nebo více účtů pro nouzový přístup. Tyto účty by měly být pouze cloudové účty, které používají \* doménu. onmicrosoft.com a které nejsou federované nebo synchronizované z místního prostředí.
 
 Při konfiguraci těchto účtů je potřeba splnit tyto požadavky:
 
 - Účty pro nouzový přístup by neměly být přidruženy k žádnému individuálnímu uživateli v organizaci. Ujistěte se, že vaše účty nejsou propojené s žádnými mobilními telefony dodanými zaměstnanci, hardwarovými tokeny, které se cestují s jednotlivými zaměstnanci, nebo s jinými přihlašovacími údaji určenými zaměstnanci Tato preventivní opatření zahrnují případy, kdy je individuální zaměstnanec nedosažitelný, když je potřeba přihlašovací údaje. Je důležité zajistit, aby všechna registrovaná zařízení byla udržována ve známém a zabezpečeném umístění, které má více prostředků komunikace se službou Azure AD.
-- Mechanismus ověřování, který se používá pro účet pro nouzový přístup, by měl být odlišný od těch, které používá ostatní účty pro správu, včetně dalších účtů pro nouzový přístup.  Pokud například vaše normální přihlášení správce je prostřednictvím místního ověřování MFA, Azure MFA by byl jiný mechanismus.  Pokud je ale Azure MFA vaší primární součástí ověřování pro účty správců, zvažte pro ně jiný přístup, jako je například použití podmíněného přístupu se zprostředkovatelem VÍCEFAKTOROVÉHO ověřování od jiného výrobce.
+- Mechanismus ověřování, který se používá pro účet pro nouzový přístup, by měl být odlišný od těch, které používá ostatní účty pro správu, včetně dalších účtů pro nouzový přístup.  Pokud například vaše normální přihlášení správce je prostřednictvím místního ověřování MFA, Azure MFA by byl jiný mechanismus.  Pokud je ale Azure MFA vaší primární součástí ověřování pro účty správců, zvažte pro ně jiný přístup, jako je například použití podmíněného přístupu se zprostředkovatelem MFA třetí strany prostřednictvím [vlastních ovládacích prvků](https://docs.microsoft.com/azure/active-directory/conditional-access/controls).
 - Zařízení nebo přihlašovací údaje nesmí vypršet nebo být v oboru automatického čištění z důvodu nedostatku použití.  
 - Měli byste nastavit trvalé přiřazení role globálního správce pro účty pro nouzový přístup. 
 
@@ -79,7 +79,7 @@ Organizace by měly monitorovat aktivitu přihlášení a auditu z mimořádnýc
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>Získat ID objektů pro účty skla
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přiřazeného k roli správce uživatele.
-1. Vyberte **Azure Active Directory** > **Uživatelé**.
+1. Vyberte **Azure Active Directory**  >  **Uživatelé**.
 1. Vyhledejte účet Break a vyberte jméno uživatele.
 1. Zkopírujte a uložte atribut ID objektu, abyste jej mohli použít později.
 1. Opakujte předchozí kroky pro druhý účet Break.
@@ -89,7 +89,7 @@ Organizace by měly monitorovat aktivitu přihlášení a auditu z mimořádnýc
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přiřazeného k roli Přispěvatel monitorování v Azure monitor.
 1. Vyberte **všechny služby**, do Hledat zadejte Log Analytics a pak vyberte **Log Analytics pracovní prostory**.
 1. Vyberte pracovní prostor.
-1. V pracovním prostoru vyberte **výstrahy** > **nové pravidlo výstrahy**.
+1. V pracovním prostoru vyberte **výstrahy**  >  **nové pravidlo výstrahy**.
     1. V části **prostředek**ověřte, že se jedná o předplatné, se kterým chcete pravidlo výstrahy přidružit.
     1. V části **Podmínka**vyberte **Přidat**.
     1. V části **Název signálu**vyberte **vlastní prohledávání protokolu** .

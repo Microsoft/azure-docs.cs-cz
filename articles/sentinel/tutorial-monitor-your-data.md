@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: f145b75ba351121bf750f90dbc0a7df382ca04b1
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 8d8f1343d92f66dc464ab7064949bbabb813268e
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739156"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798535"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Kurz: vizualizace a monitorování dat
 
 
 
-Po [připojení zdrojů](quickstart-onboard.md) dat ke službě Azure Sentinel můžete vizualizovat a monitorovat data pomocí přijetí Azure Monitorch sešitů pomocí Azure Sentinel, což zajišťuje univerzálnost při vytváření vlastních řídicích panelů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/app/usage-workbooks.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
+Po [připojení zdrojů dat](quickstart-onboard.md)   ke službě Azure Sentinel můžete vizualizovat a monitorovat data pomocí přijetí Azure Monitorch sešitů pomocí Azure Sentinel, což zajišťuje univerzálnost při vytváření vlastních řídicích panelů. Přestože se sešity ve službě Azure Sentinel zobrazují odlišně, může být užitečné, abyste viděli, jak [vytvářet interaktivní sestavy pomocí Azure monitor sešity](../azure-monitor/platform/workbooks-overview.md). Azure Sentinel umožňuje vytvářet vlastní sešity napříč vašimi daty a také nabízí předdefinované šablony sešitu, které vám umožní rychle získat přehled o vašich datech, jakmile připojíte zdroj dat.
 
 
 Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
@@ -52,7 +52,7 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
    > Tím se vytvoří prostředek Azure založený na příslušné šabloně a uloží samotný soubor JSON šablony a ne data.
 
 
-1. Vyberte **Zobrazit sešit**. Pak klikněte na tlačítko **Upravit** v horní části. Teď můžete sešit upravit a přizpůsobit ho podle svých potřeb. Další informace o tom, jak sešit přizpůsobit, najdete v tématu [vytváření interaktivních sestav pomocí Azure monitor sešitů](../azure-monitor/app/usage-workbooks.md).
+1. Vyberte **Zobrazit sešit**. Pak klikněte na tlačítko **Upravit** v horní části. Teď můžete sešit upravit a přizpůsobit ho podle svých potřeb. Další informace o tom, jak sešit přizpůsobit, najdete v tématu [vytváření interaktivních sestav pomocí Azure monitor sešitů](../azure-monitor/platform/workbooks-overview.md).
 ![Zobrazit sešity](./media/tutorial-monitor-data/workbook-graph.png)
 1. Až změny provedete, můžete sešit uložit. 
 
@@ -64,7 +64,7 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
 1. Chcete-li vytvořit nový sešit od začátku, klikněte na **sešity** a pak vyberte **Přidat sešit** .
   ![Přejít na sešity](./media/tutorial-monitor-data/create-workbook.png)
 
-1. Chcete-li upravit sešit, vyberte možnost **Upravit**a pak podle potřeby přidejte text, dotazy a parametry. Další informace o tom, jak sešit přizpůsobit, najdete v tématu [vytváření interaktivních sestav pomocí Azure monitor sešitů](../azure-monitor/app/usage-workbooks.md). 
+1. Chcete-li upravit sešit, vyberte možnost **Upravit**a pak podle potřeby přidejte text, dotazy a parametry. Další informace o tom, jak sešit přizpůsobit, najdete v tématu [vytváření interaktivních sestav pomocí Azure monitor sešitů](../azure-monitor/platform/workbooks-overview.md). 
 
 1. Při sestavování dotazu nastavte **zdroj dat** na **protokoly**, **typ prostředku** je nastaven na **Log Analytics** a pak zvolte relevantní pracovní prostor (y). 
 
@@ -72,7 +72,7 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
 
 1. Pokud chcete ostatním uživatelům ve vaší organizaci umožnit používání sešitu, v části **Uložit na** výběr **sdílených sestav**. Pokud chcete, aby byl tento sešit dostupný jenom pro vás, vyberte **Moje sestavy**.
 
-1. Chcete-li přepínat mezi sešity v pracovním prostoru, můžete v](./media/tutorial-monitor-data/switch.png)horním podokně libovolného sešitu vybrat možnost **otevřít** ![sešity Switch. V okně, které se otevře vpravo, přepínejte mezi sešity.
+1. Chcete-li přepínat mezi sešity v pracovním prostoru **Open** , můžete ![ ](./media/tutorial-monitor-data/switch.png) v horním podokně libovolného sešitu vybrat možnost otevřít sešity Switch. V okně, které se otevře vpravo, přepínejte mezi sešity.
 
    ![Přepnout sešity](./media/tutorial-monitor-data/switch-workbooks.png)
 

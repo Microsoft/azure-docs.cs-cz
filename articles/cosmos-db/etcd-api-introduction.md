@@ -4,23 +4,23 @@ description: Tento článek poskytuje přehled a klíčové výhody rozhraní et
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/21/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16aac5c765c36c49919685ee58e8034786ddf1ae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79498595"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797361"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Úvod do rozhraní API pro Azure Cosmos DB etcd (Preview)
 
 Azure Cosmos DB je databázová služba Microsoftu s více modely pro klíčové aplikace použitelná v celosvětovém měřítku. Nabízí globální distribuci klíč, elastické škálování propustnosti a úložiště, latence v řádu milisekund na 99 percentilu a zaručenou vysokou dostupnost, která je zajištěná v oboru špičkové smlouvy SLA.
 
-[Etcd](https://github.com/etcd-io/etcd) je distribuované úložiště klíčů a hodnot. V [Kubernetes](https://kubernetes.io/)se k uložení stavu a konfigurace clusterů Kubernetes používá etcd. Zajištění dostupnosti, spolehlivosti a výkonu etcd je klíčové pro celkový stav clusteru, škálovatelnost, dostupnost pružnosti a výkon clusteru Kubernetes. 
+[Etcd](https://github.com/etcd-io/etcd) je distribuované úložiště klíčů a hodnot. V [Kubernetes](https://kubernetes.io/)se k uložení stavu a konfigurace clusterů Kubernetes používá etcd. Zajištění dostupnosti, spolehlivosti a výkonu etcd je klíčové pro celkový stav clusteru, škálovatelnost, dostupnost pružnosti a výkon clusteru Kubernetes.
 
-Rozhraní etcd API v Azure Cosmos DB umožňuje používat Azure Cosmos DB jako úložiště back-endu pro [Azure Kubernetes](../aks/index.yml). rozhraní etcd API v Azure Cosmos DB je aktuálně ve verzi Preview. Azure Cosmos DB implementuje etcd přenosový protokol. Díky rozhraní etcd API v Azure Cosmos DB budou vývojáři automaticky získávat vysoce spolehlivá, [dostupná](high-availability.md), [globálně distribuovaná](distribute-data-globally.md) Kubernetes. Toto rozhraní API umožňuje vývojářům škálovat správu stavu Kubernetes na plně spravovanou cloudovou nativní službu PaaS. 
+Rozhraní etcd API v Azure Cosmos DB umožňuje používat Azure Cosmos DB jako úložiště back-endu pro Azure Kubernetes. rozhraní etcd API v Azure Cosmos DB je aktuálně ve verzi Preview. Azure Cosmos DB implementuje etcd přenosový protokol. Díky rozhraní etcd API v Azure Cosmos DB budou vývojáři automaticky získávat vysoce spolehlivá, [dostupná](high-availability.md), [globálně distribuovaná](distribute-data-globally.md) Kubernetes. Toto rozhraní API umožňuje vývojářům škálovat správu stavu Kubernetes na plně spravovanou cloudovou nativní službu PaaS. 
 
 > [!NOTE]
 > Na rozdíl od jiných rozhraní API v Azure Cosmos DB nemůžete zřídit účet rozhraní API etcd prostřednictvím Azure Portal, CLI nebo sad SDK. Účet rozhraní etcd API můžete zřídit jenom nasazením šablony Správce prostředků. Podrobný postup najdete v článku [jak zřídit Azure Kubernetes s Azure Cosmos DB](bootstrap-kubernetes-cluster.md) článkem. Rozhraní API pro Azure Cosmos DB etcd je aktuálně ve verzi omezené verze Preview. Můžete se [zaregistrovat ve verzi Preview](https://aka.ms/cosmosetcdapi-signup)tak, že vyplníte formulář pro registraci.

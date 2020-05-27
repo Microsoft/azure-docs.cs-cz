@@ -16,12 +16,12 @@ ms.date: 04/14/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87bb08e08bca3a9f715590098cfaa22ce7da8017
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380201"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799508"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivace protokolů a vytváření sestav o správě nároků Azure AD v Azure Monitor
 
@@ -158,10 +158,10 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-Můžete znovu ověřit a přidružit relaci PowerShellu k tomuto předplatnému pomocí příkazu, `Connect-AzAccount –Subscription $subs[0].id`jako je. Další informace o tom, jak ověřit službu Azure z PowerShellu, včetně neinteraktivního, najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
+Můžete znovu ověřit a přidružit relaci PowerShellu k tomuto předplatnému pomocí příkazu, jako je `Connect-AzAccount –Subscription $subs[0].id` . Další informace o tom, jak ověřit službu Azure z PowerShellu, včetně neinteraktivního, najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
 ).
 
-Pokud máte v tomto předplatném více Log Analytics pracovních prostorů, rutina [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) vrátí seznam pracovních prostorů. Pak můžete najít tu, která má protokoly služby Azure AD. `CustomerId` Pole vrácené touto rutinou je stejné jako hodnota "ID pracovního prostoru", která se zobrazuje v Azure Portal v tématu Přehled pracovního prostoru Log Analytics.
+Pokud máte v tomto předplatném více Log Analytics pracovních prostorů, rutina [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) vrátí seznam pracovních prostorů. Pak můžete najít tu, která má protokoly služby Azure AD. `CustomerId`Pole vrácené touto rutinou je stejné jako hodnota "ID pracovního prostoru", která se zobrazuje v Azure Portal v tématu Přehled pracovního prostoru Log Analytics.
  
 ```powershell
 $wks = Get-AzOperationalInsightsWorkspace
@@ -189,5 +189,5 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Další kroky:
-- [Vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../../azure-monitor/app/usage-workbooks.md) 
+- [Vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../../azure-monitor/platform/workbooks-overview.md) 
 

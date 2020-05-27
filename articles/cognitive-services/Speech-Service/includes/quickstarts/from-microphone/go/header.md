@@ -4,11 +4,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: travisw
-ms.openlocfilehash: 80987bdf3b1f038e741e3c224ee0d1382ac5437c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: b1faeb56e10ecdaad34cf2e1890bf8ed9fd38501
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979550"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806560"
 ---
-Pokud si přejete přejít přímo v, můžete si prohlédnout nebo stáhnout všechny [ukázky sady Speech SDK na webu](https://aka.ms/speech/github-go) GitHub. V opačném případě můžeme začít.
+Pokud si přejete přejít přímo v, můžete si prohlédnout nebo stáhnout všechny [ukázky sady Speech SDK na webu](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples) GitHub. V opačném případě můžeme začít.

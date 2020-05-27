@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789840"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798593"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Správa zájemců pro komerční tržiště
 
@@ -86,7 +86,7 @@ Zájemci jsou zákazníci, kteří nasazují vaše produkty z webu Marketplace. 
 
 **Kde můžu získat pomoc při nastavování cíle realizace?** 
 
-Dokumentaci můžete najít na adrese [získat zájemce zákazníka](./partner-center-portal/commercial-marketplace-get-customer-leads.md) nebo odeslat lístek podpory v [nápovědě a podpoře](https://partner.microsoft.com/support/v2/?stage=1). Vyberte nabídku typ a Správa potenciálních zákazníků. 
+Dokumentaci můžete najít na adrese [získat zájemce zákazníka](./partner-center-portal/commercial-marketplace-get-customer-leads.md) nebo odeslat lístek podpory v [nápovědě a podpoře](https://aka.ms/marketplacepublishersupport). Vyberte nabídku typ a Správa potenciálních zákazníků. 
 
 **Je nutné nakonfigurovat cíl zájemce, aby bylo možné publikovat nabídku na webu Marketplace?**
 
@@ -116,7 +116,7 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \<Název nabídky> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 | \< Název nabídky> 
 
 OID = 00Do0000000ZHog 
 
@@ -183,7 +183,7 @@ Zájemce se napíše jenom v případě, že jako cíl pro zájemce vyberete úl
 
 **Obdržel jsem e-mail z webu Marketplace, proč nemůžu v mém CRM najít potenciálního zákazníka?**  
 
-Je možné, že e-mailová doména koncového uživatele pochází z. edu. Z důvodu ochrany osobních údajů nemusíme z domény. edu předávat osobní identifikovatelné údaje. Odešlete lístek podpory na [pomoc a podporu](https://partner.microsoft.com/support/v2/?stage=1).
+Je možné, že e-mailová doména koncového uživatele pochází z. edu. Z důvodu ochrany osobních údajů nemusíme z domény. edu předávat osobní identifikovatelné údaje. Odešlete lístek podpory na [pomoc a podporu](https://aka.ms/marketplacepublishersupport).
 
 **Jak mám nakonfigurované Azure Table/Azure BLOB jako cíl pro zájem, jak si můžu zobrazit potenciální zákazníky?** 
 
@@ -193,7 +193,7 @@ K objektu BLOB nebo tabulce můžete přistupovat z Azure Portal, nebo můžete 
 
 Ano, postupujte podle pokynů pro nastavení funkce Azure Table + v dokumentaci [zde](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md). 
 
-**Mám nakonfigurované Salesforce jako cíl pro zájem, proč nemůžu najít potenciální zákazníky?** 
+**Mám nakonfigurované Salesforce jako cíl pro zájem, proč nemůžu najít potenciální zákazníky?**
 
 Zkontroluje, jestli je formulář Web to zájemce povinným polem na základě rozevíracího seznamu. Pokud ano, přepněte pole na nepovinné textové pole.  
  

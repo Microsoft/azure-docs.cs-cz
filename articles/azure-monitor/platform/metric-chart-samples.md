@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 1aaeb853a67b36a21a09db57e015029d10cd0c36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00935762a5e19ec47074021aff59992fd3b801bf
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77660866"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797451"
 ---
 # <a name="metric-chart-examples"></a>Příklady grafu metriky 
 
@@ -52,5 +52,5 @@ V okně pro výběr metriky vyberte svůj účet úložiště a metriku **transa
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o Azure Monitor [sešitech](../../azure-monitor/app/usage-workbooks.md)
+* Další informace o Azure Monitor [sešitech](../../azure-monitor/platform/workbooks-overview.md)
 * Další informace o [Průzkumníkovi metrik](metrics-charts.md)

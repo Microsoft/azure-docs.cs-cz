@@ -1,16 +1,16 @@
 ---
-title: Další informace Azure Policy Kubernetes
-description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí.
+title: Preview – informace Azure Policy Kubernetes
+description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí. Tato funkce je ve verzi Preview.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 738b6ae0a2482d1229fdbfe89d0c3dd99a33ec6e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: fb66510b55f9d3f08ab8e058bb8f67fb1954db6f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772756"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800361"
 ---
-# <a name="understand-azure-policy-for-kubernetes-clusters"></a>Principy Azure Policy pro clustery Kubernetes
+# <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Vysvětlení Azure Policy pro clustery Kubernetes (Preview)
 
 Azure Policy rozšiřuje [Server Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3, _Webhook kontroleru pro přístup_ k [otevřenému agentu zásad](https://www.openpolicyagent.org/) (neprů), který se použije při vynuceném škálování a ochraně vašich clusterů v centralizovaném, konzistentním způsobem. Azure Policy umožňuje spravovat a nahlásit stav dodržování předpisů clusterů Kubernetes z jednoho místa. Doplněk doplňuje následující funkce:
 
@@ -21,7 +21,7 @@ Azure Policy rozšiřuje [Server Gatekeeper](https://github.com/open-policy-agen
 Azure Policy pro Kubernetes podporuje následující Clusterová prostředí:
 
 - [Azure Kubernetes Service (AKS)](../../../aks/intro-kubernetes.md)
-- [Kubernetes povoleného ARC Azure](../../../azure-arc/kubernetes/overview.md)
+- [Kubernetes s podporou Azure Arc](../../../azure-arc/kubernetes/overview.md)
 - [Modul AKS](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
@@ -33,7 +33,7 @@ Pokud chcete povolit a používat Azure Policy s clusterem Kubernetes, proveďte
 
 1. Nakonfigurujte cluster Kubernetes a nainstalujte doplněk:
    - [Azure Kubernetes Service (AKS)](#install-azure-policy-add-on-for-aks)
-   - [Kubernetes povoleného ARC Azure](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
+   - [Kubernetes s podporou Azure Arc](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
    - [Modul AKS](#install-azure-policy-add-on-for-aks-engine)
 
 1. [Principy Azure Policyho jazyka pro Kubernetes](#policy-language)
@@ -49,6 +49,9 @@ Před instalací doplňku Azure Policy nebo povolením jakékoli funkce služby 
 1. Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.62 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 1. Zaregistrujte poskytovatele prostředků a funkce ve verzi Preview.
+
+   > [!CAUTION]
+   > Když zaregistrujete funkci v předplatném, nemůžete tuto funkci zrušit. Po povolení některých funkcí verze Preview se můžou použít výchozí hodnoty pro všechny clustery AKS vytvořené v rámci předplatného. Nepovolujte funkce ve verzi Preview u produkčních předplatných. Použijte samostatné předplatné k testování funkcí ve verzi Preview a získejte zpětnou vazbu.
 
    - Azure Portal:
 

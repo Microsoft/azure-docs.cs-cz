@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c23360360f97babebe9efe8afecc6a27052faad5
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f633c1816e9e2e977c52ab99b66a26f7d2c4d8e2
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758417"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800768"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Replikace objektů pro objekty blob bloku (Preview)
 
@@ -54,7 +54,7 @@ Když vytvoříte pravidlo replikace, zkopírují se ve výchozím nastavení je
 
 Můžete také zadat jeden nebo více filtrů jako součást pravidla replikace pro filtrování objektů blob bloku podle předpony. Když zadáte předponu, zkopírují se do cílového kontejneru jenom objekty blob odpovídající této předponě ve zdrojovém kontejneru.
 
-Zdrojové a cílové kontejnery musí existovat, aby bylo možné je zadat v pravidle. Po vytvoření zásady replikace bude cílový kontejner jen pro čtení. Jakékoli pokusy o zápis do cílového kontejneru selžou s kódem chyby 409 (konflikt). Můžete ale zavolat operaci [nastavit úroveň objektu BLOB](/rest/api/storageservices/set-blob-tier.md) u objektu BLOB v cílovém kontejneru a přesunout ho do jiné vrstvy přístupu. Můžete například přesunout objekty BLOB v cílovém kontejneru do archivní úrovně a ušetřit tak náklady.
+Zdrojové a cílové kontejnery musí existovat, aby bylo možné je zadat v pravidle. Po vytvoření zásady replikace bude cílový kontejner jen pro čtení. Jakékoli pokusy o zápis do cílového kontejneru selžou s kódem chyby 409 (konflikt). Můžete ale zavolat operaci [nastavit úroveň objektu BLOB](/rest/api/storageservices/set-blob-tier) u objektu BLOB v cílovém kontejneru a přesunout ho do jiné vrstvy přístupu. Můžete například přesunout objekty BLOB v cílovém kontejneru do archivní úrovně a ušetřit tak náklady.
 
 ## <a name="about-the-preview"></a>O verzi Preview
 

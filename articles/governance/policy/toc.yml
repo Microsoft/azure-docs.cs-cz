@@ -77,7 +77,7 @@
     - name: Návrh pracovních postupů pro zásady jako kód
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
-    - name: Azure Policy pro Kubernetes
+    - name: Azure Policy pro Kubernetes (Preview)
       displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
       href: ./concepts/policy-for-kubernetes.md
     - name: Auditování virtuálních počítačů s konfigurací hosta

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 89440a6385bab5b917a866b686e8d2ba828c92e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77671048"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797830"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Zjistěte, jak zákazníci používají vaši aplikaci s Application Insights trychtýři.
 
@@ -46,7 +46,7 @@ Předchozí snímek obrazovky obsahuje pět zvýrazněných oblastí. Jedná se 
   * [Přehled využití](usage-overview.md)
   * [Uživatelé, relace a události](usage-segmentation.md)
   * [Uchovávání](usage-retention.md)
-  * [Workbooks](../../azure-monitor/app/usage-workbooks.md)
+  * [Workbooks](../../azure-monitor/platform/workbooks-overview.md)
   * [Přidat kontext uživatele](usage-send-user-context.md)
   * [Export do Power BI](../../azure-monitor/app/export-power-bi.md )
 

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: beb5a0f7ad3733aaf12b0880af4fba23a705a7e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670929"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797686"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Odeslání ID kontextů uživatele pro povolení prostředí využití v Azure Application Insights
 
@@ -22,7 +22,7 @@ Application Insights vám umožní monitorovat a sledovat uživatele pomocí sad
 - [Uživatelé, relace, události](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [Trychtýře](https://docs.microsoft.com/azure/application-insights/usage-funnels)
 - [Uchovávání informací](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Kohorty
-- [Workbooks](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Workbooks](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 
 Aby bylo možné sledovat, co uživatel pracuje v průběhu času, Application Insights potřebovat ID pro každého uživatele nebo relaci. Do každé vlastní události nebo zobrazení stránky zahrňte následující ID.
 
@@ -134,4 +134,4 @@ namespace MvcWebRole.Telemetry
     - [Uživatelé, relace a události](usage-segmentation.md)
     - [Trychtýře](usage-funnels.md)
     - [Uchovávání](usage-retention.md)
-    - [Workbooks](../../azure-monitor/app/usage-workbooks.md)
+    - [Workbooks](../../azure-monitor/platform/workbooks-overview.md)

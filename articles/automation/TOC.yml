@@ -57,6 +57,8 @@
           href: automation-create-account-template.md
         - name: Konfigurace ověřování s využitím Amazon Web Services
           href: automation-config-aws-account.md
+        - name: Konfigurace ověřování s využitím Azure AD
+          href: automation-use-azure-ad.md
         - name: Správa účtu Spustit jako služby Automation
           href: manage-runas-account.md
         - name: Správa oprávnění rolí a zabezpečení

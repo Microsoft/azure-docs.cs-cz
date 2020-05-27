@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: b9ca8a703ed8a84148abd23e90114402d8806bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667189"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797602"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování pomocí Azure Monitor
 
@@ -74,7 +74,7 @@ Důležitý aspekt monitorování je proaktivní informování správců všech 
 Zajistěte, aby měl váš vývoj a operace přístup ke stejné telemetrie a nástrojům, aby mohli zobrazit vzory napříč celým prostředím a minimalizovat střední čas ke zjištění (MTTD) a průměrný čas obnovení (MTTR).
 
 - Připravte si [vlastní řídicí panely](../azure-monitor/learn/tutorial-app-dashboards.md) založené na běžných metrikách a protokolech pro různé role ve vaší organizaci. Řídicí panely můžou kombinovat data ze všech prostředků Azure.
-- Připravte [sešity](../azure-monitor/app/usage-workbooks.md) , abyste zajistili sdílení znalostí mezi vývojem a provozem. Ty by se daly připravit jako dynamické sestavy s metrickými grafy a dotazy protokolů, nebo i když Průvodci odstraňováním potíží připravené vývojáři, kteří pomáhají se zákaznickou podporou nebo operacím zvládnout základní problémy.
+- Připravte [sešity](../azure-monitor/platform/workbooks-overview.md) , abyste zajistili sdílení znalostí mezi vývojem a provozem. Ty by se daly připravit jako dynamické sestavy s metrickými grafy a dotazy protokolů, nebo i když Průvodci odstraňováním potíží připravené vývojáři, kteří pomáhají se zákaznickou podporou nebo operacím zvládnout základní problémy.
 
 ## <a name="continuously-optimize"></a>Neustálé optimalizace
  Monitorování je jedním ze základních aspektů oblíbených filozofie sestavení a měření, které doporučuje nepřetržitě sledovat metriky klíčových ukazatelů výkonu a chování uživatelů a pak se snaží jejich optimalizaci prostřednictvím iterací plánování. Azure Monitor vám pomůže shromáždit metriky a protokoly, které jsou relevantní pro vaši firmu, a v případě potřeby přidat nové datové body do dalšího nasazení.

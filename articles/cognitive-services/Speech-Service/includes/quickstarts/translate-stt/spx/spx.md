@@ -5,26 +5,26 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/18/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 57383668ef025b46d0bae1f98c5ed5cd75417c63
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 4d548c1b7614503919de2725acb02d7f808ceb93
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715005"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806481"
 ---
-## <a name="run-the-spx-tool"></a>Spusťte nástroj SPX.
+## <a name="run-the-speech-cli"></a>Spuštění funkce CLI pro rozpoznávání řeči
 
-Teď jste připraveni spustit nástroj SPX pro převod řeči na text v jiném jazyce.
+Teď jste připraveni spustit rozhraní příkazového řádku pro rozpoznávání řeči na text v jiném jazyce.
 
-V příkazovém řádku přejděte do adresáře, který obsahuje binární soubor nástroje SPX, a zadejte:
+V příkazovém řádku přejděte do adresáře, který obsahuje binární soubor CLI rozpoznávání řeči, a zadejte:
 
 ```bash
 spx translate --microphone --target de-DE
 ```
 
-Nástroj SPX převede přirozený jazyk mluveného slova na text vytištěný v němčině.
+Rozhraní příkazového řádku pro rozpoznávání řeči převede přirozený jazyk mluveného slova na text vytištěný v němčině.
 Stiskněte klávesu ENTER a nástroj se zastaví.
 
 > [!NOTE]
-> Nástroj SPX je ve výchozím nastavení English. [V tabulce převod řeči na text](../../../../language-support.md)můžete zvolit jiný jazyk.
+> Rozpoznávání řeči je výchozím nastavením angličtiny. [V tabulce převod řeči na text](../../../../language-support.md)můžete zvolit jiný jazyk.
 > Přidejte například `--source ja-JP` pro rozpoznávání řeči v japonštině.

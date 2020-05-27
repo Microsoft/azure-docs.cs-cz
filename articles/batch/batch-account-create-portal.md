@@ -4,12 +4,12 @@ description: Naučte se vytvořit účet Azure Batch na portálu Azure, abyste m
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: adc333498e0b3074aaa40d40e076ae62c1759524
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 6cccef176e3e5ba0f4774a5897f082c4847a4005
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778593"
+ms.locfileid: "83800257"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
@@ -52,6 +52,9 @@ Základní informace o účtech a scénářích služby Batch najdete v tématu 
 ## <a name="view-batch-account-properties"></a>Zobrazení vlastností účtu Batch
 
 Po vytvoření účtu ho vyberte pro přístup k jeho nastavením a vlastnostem. Všechna nastavení a vlastnosti účtu jsou přístupná pomocí nabídky vlevo.
+
+> [!NOTE]
+> Název účtu Batch je jeho ID a nedá se změnit. Pokud potřebujete změnit název účtu Batch, budete muset účet odstranit a vytvořit nový s požadovaným názvem.
 
 ![Stránka účtu Batch na webu Azure Portal][account_blade]
 

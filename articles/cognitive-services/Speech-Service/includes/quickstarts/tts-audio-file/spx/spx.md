@@ -5,22 +5,22 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/18/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 161138ba09baacdd2a3d18d35c930c645ee78103
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: bd48618a520f547c72bfba7ff04ae6a249d0a673
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715157"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806430"
 ---
-## <a name="run-the-spx-tool"></a>Spusťte nástroj SPX.
+## <a name="run-the-speech-cli"></a>Spuštění funkce CLI pro rozpoznávání řeči
 
-Nyní jste připraveni spustit nástroj SPX pro syntetizaci řeči z textu do nového zvukového souboru.
+Teď jste připraveni spustit rozhraní příkazového řádku pro rozpoznávání řeči z textu do nového zvukového souboru.
 
-Z příkazového řádku přejděte do adresáře, který obsahuje binární soubor nástroje SPX, a zadejte:
+V příkazovém řádku přejděte do adresáře, který obsahuje binární soubor CLI rozpoznávání řeči, a zadejte:
 
 ```bash
 spx synthesize --text "The speech synthesizer greets you!" --audio output greetings.wav
 ```
 
-Nástroj SPX vygeneruje do zvukového souboru přirozený jazyk v angličtině `greetings.wav` .
+Rozhraní příkazového řádku pro rozpoznávání řeči vytvoří v angličtině přirozený jazyk `greetings.wav` .
 V systému Windows můžete přehrát zvukový soubor zadáním `start greetings.wav` .

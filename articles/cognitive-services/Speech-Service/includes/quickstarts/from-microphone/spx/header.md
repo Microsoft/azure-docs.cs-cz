@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 5/13/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 20c09c6bedec0ca2e7a45aaf9872732b0e4c1517
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 4a86959f99ed990d40220aaa2ec2ef506c8583a7
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715294"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806350"
 ---
-V tomto rychlém startu použijete nástroj SPX z příkazového řádku k interaktivnímu rozpoznávání řeči od vstupu mikrofonu a k získání textu ze zachyceného zvukového přepisu. Pomocí nástroje SPX je snadné provádět běžné úlohy rozpoznávání, například zdlouhavého přepisování konverzace. Po jednorázové konfiguraci vám nástroj SPX umožní interaktivně přepisovat zvuk do textu pomocí mikrofonu nebo ze souborů pomocí dávkového skriptu.
+V tomto rychlém startu použijete rozhraní příkazového řádku (CLI) z příkazového řádku k interaktivnímu rozpoznávání řeči od vstupu mikrofonu a získáte text z zaznamenaného zvukového přepisu. Pomocí rozhraní příkazového řádku pro rozpoznávání řeči můžete snadno provádět běžné úlohy, jako jsou zdlouhavého přepisování konverzace. Po jednorázové konfiguraci vám funkce rozpoznávání řeči umožní interaktivní přepisovat zvuk do textu pomocí mikrofonu nebo ze souborů pomocí dávkového skriptu.
