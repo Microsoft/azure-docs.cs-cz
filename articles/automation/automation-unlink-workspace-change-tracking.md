@@ -5,14 +5,14 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: df2de44c2c8831fa4319b80484a119052434f8fb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2be702ec6e820fe71dd8d2da7aa4cf831b52402e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749106"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828249"
 ---
-# <a name="unlink-workspace-from-automation-account-for-change-tracking-and-inventory"></a>Zrušení propojení pracovního prostoru s účtem služby Automation pro Change Tracking a inventář
+# <a name="unlink-workspace-from-automation-account"></a>Odpojení pracovního prostoru od účtu Automation
 
 Při povolování operací [Change Tracking a inventarizace](change-tracking.md) se můžete rozhodnout, že váš účet Automation nebudete integrovat s Log Analytics pracovním prostorem. V tomto článku se dozvíte, jak zrušit propojení pracovního prostoru s vaším účtem.
 
@@ -37,7 +37,5 @@ Případně můžete zrušit propojení pracovního prostoru Log Analytics z ú�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa Change Tracking a inventáře](change-tracking-file-contents.md)
-* [Odebrání virtuálních počítačů z Change Tracking a inventáře](automation-remove-vms-from-change-tracking.md)
-* [Řešení potíží se změnami na virtuálním počítači Azure](automation-tutorial-troubleshoot-changes.md)
-* [Řešení problémů s Change Tracking a inventářem](troubleshoot/change-tracking.md)
+* Pokud chcete pracovat s Change Tracking a inventářem, přečtěte si téma [správa Change Tracking a inventáře](change-tracking-file-contents.md).
+* Řešení obecných potíží s funkcemi najdete v tématu [řešení potíží s Change Tracking a inventářem](troubleshoot/change-tracking.md).

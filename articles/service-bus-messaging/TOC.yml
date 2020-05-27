@@ -267,8 +267,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
     - name: Blog
       href: 'https://blogs.msdn.microsoft.com/servicebus/'
-    - name: Fóra MSDN
-      href: 'https://social.msdn.microsoft.com/forums/home?forum=servbus'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-service-bus.html'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: Cenová kalkulačka

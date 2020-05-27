@@ -5,15 +5,15 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2541e9e10103d66c6c2fb6978c3029d61b813eab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ddfd9346f4a72ceb2e8bf5c336fb3de9b5c8c5c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614964"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827467"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurace typu přiřazení fondu hostitelů osobní plochy
 
@@ -75,6 +75,18 @@ Pokud chcete přiřadit uživatele ke konkrétnímu hostiteli relace, spusťte n
 ```powershell
 Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -AssignedUser <userupn>
 ```
+
+## <a name="remove-a-user-assignment"></a>Odebrání přiřazení uživatele
+
+Je možné odebrat přiřazení uživatele, protože uživatel již nepotřebuje osobní plochu, uživatel opustil společnost nebo chcete použít pracovní plochu pro někoho jiného.
+
+V současné době je jediným způsobem, jak můžete odebrat přiřazení uživatelů pro osobní plochu, úplné odebrání hostitele relace. Chcete-li odebrat hostitele relace, spusťte tuto rutinu:
+
+```powershell
+Remove-RdsSessionHost
+```
+
+Pokud potřebujete přidat hostitele relace zpátky do fondu hostitelů osobní plochy, odinstalujte na tomto počítači virtuální plochu Windows a pak postupujte podle kroků v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell-2019.md) pro opětovné zaregistrování hostitele relace.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 4b47fa873df88bf85c4c56c9f2ac94fce16c63be
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5b5172df6ed6993742a08d5ac08cf700681dfc6a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743651"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829150"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -176,4 +176,4 @@ Po úspěšném nasazení aktualizace obdržíte e-mail s potvrzením, který bu
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled Update Managementu](automation-update-management.md)
+* Podrobnosti o Update Management najdete v tématu [Update Management Overview](automation-update-management.md).

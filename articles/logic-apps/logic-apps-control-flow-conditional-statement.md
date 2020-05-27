@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793248"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831496"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Vytvořte podmíněné příkazy, které řídí akce pracovního postupu v Azure Logic Apps
 
@@ -36,7 +36,7 @@ Předpokládejme například, že máte aplikaci logiky, která posílá příli
 
 1. Přidejte podmínku do umístění, které chcete. 
 
-   Chcete-li přidat podmínku mezi kroky, přesuňte ukazatel myši na šipku, kam chcete podmínku přidat. Zvolte **symbol plus** (**+**), který se zobrazí, a pak zvolte **přidat akci**. Příklad:
+   Chcete-li přidat podmínku mezi kroky, přesuňte ukazatel myši na šipku, kam chcete podmínku přidat. Zvolte **symbol plus** ( **+** ), který se zobrazí, a pak zvolte **přidat akci**. Příklad:
 
    ![Přidat akci mezi kroky](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
@@ -65,8 +65,8 @@ Předpokládejme například, že máte aplikaci logiky, která posílá příli
 
    ![Dokončená podmínka](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   Pokud chcete do podmínky přidat další řádek, vyberte **Přidat** > **Přidat řádek**. 
-   Pokud chcete přidat skupinu s podstavy, vyberte **Přidat** > **Přidat skupinu**. 
+   Pokud chcete do podmínky přidat další řádek, vyberte **Přidat**  >  **Přidat řádek**. 
+   Pokud chcete přidat skupinu s podstavy, vyberte **Přidat**  >  **Přidat skupinu**. 
    Pokud chcete seskupit existující řádky, zaškrtněte políčka pro tyto řádky, klikněte na tlačítko se třemi tečkami (...) pro libovolný řádek a pak zvolte **vytvořit skupinu**.
 
 1. V části Pokud je nastaveno na **hodnotu true** a **Pokud má hodnotu false**, přidejte kroky k provedení na základě toho, zda je podmínka splněna. Příklad:
@@ -108,9 +108,9 @@ Tady je definice kódu vysoké úrovně za podmíněným příkazem:
 },
 ```
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky

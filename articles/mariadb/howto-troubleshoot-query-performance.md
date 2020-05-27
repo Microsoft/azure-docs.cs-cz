@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: b06fe37b63494eb4ee0ca680733a801c26415d67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca9a74763715c5c68526ff3213a14d2148f5ad30
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530049"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834301"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Jak používat vysvětlení k profilování výkonu dotazů v Azure Database for MariaDB
 **Vysvětlujeme** užitečný nástroj pro optimalizaci dotazů. Příkaz vysvětlit lze použít k získání informací o tom, jak jsou příkazy jazyka SQL provedeny. Následující výstup ukazuje příklad provedení VYSVĚTLUJÍCÍho příkazu.
@@ -166,4 +166,4 @@ VYSVĚTLUJE nyní ukazuje, že MariaDB může použít kombinovaný index, aby s
 Použití vysvětlení a různých typů indexů může výrazně zvýšit výkon. Index v tabulce nemusí nutně znamenat, že by MariaDB mohl použít pro vaše dotazy. Vysvětlete a Optimalizujte své dotazy pomocí indexů.
 
 ## <a name="next-steps"></a>Další kroky
-- Pokud chcete najít rovnocenné odpovědi na příslušné otázky nebo Odeslat novou otázku či odpověď, navštivte [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).
+- Pokud chcete najít rovnocenné odpovědi na příslušné otázky nebo Odeslat novou otázku či odpověď, přejděte na [stránku Microsoft Q&na stránku s otázkou](https://docs.microsoft.com/answers/topics/azure-database-mariadb.html) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).

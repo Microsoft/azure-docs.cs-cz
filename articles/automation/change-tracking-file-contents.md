@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8e5ee8df1dfd250a6713d832bf176daecdaef7ea
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4b8bf6a3f583e4c17f61e0a46911990ac5cc827c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744408"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830476"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Správa řešení Change Tracking a Inventory
 
@@ -178,6 +178,5 @@ Pomocí tohoto příkladu se podíváme na postup, jak na změnu vytvořit výst
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled Change Tracking a inventáře](change-tracking.md)
-* [Řešení problémů s Change Tracking a inventářem](troubleshoot/change-tracking.md)
-* [Hledání v protokolech v Azure Monitorch protokolech](../log-analytics/log-analytics-log-searches.md)
+* Pokud potřebujete hledat v protokolech uložených v pracovním prostoru Log Analytics, přečtěte si téma [prohledávání protokolů v](../log-analytics/log-analytics-log-searches.md)protokolech Azure monitor.
+* Řešení chyb funkcí najdete v tématu [řešení potíží s Change Tracking a inventářem](troubleshoot/change-tracking.md).

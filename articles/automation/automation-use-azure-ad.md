@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak používat Azure AD v rámci Azur
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1361ecf3ab7b726310df9e3b1040e0726d7658e2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 017341fd72329d0538a3cf2a6ec20d03ee6152cc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745255"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830561"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Použití Azure AD k ověření v Azure
 
@@ -159,7 +159,7 @@ Workflow Stop-Start-AzureVM
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Spravovat přihlašovací údaje v Azure Automation](shared-resources/credentials.md)
-* [Správa modulů ve službě Azure Automation](shared-resources/modules.md)
-* [Spuštění runbooku ve službě Azure Automation](start-runbooks.md)
-* [Dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview)
+* Podrobnosti o použití přihlašovacích údajů najdete [v tématu Správa přihlašovacích údajů v Azure Automation](shared-resources/credentials.md).
+* Informace o modulech najdete v tématu [Správa modulů v Azure Automation](shared-resources/modules.md).
+* Pokud potřebujete Runbook spustit, přečtěte si téma [Spuštění Runbooku v Azure Automation](start-runbooks.md).
+* Podrobnosti o PowerShellu najdete v tématu [dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview).

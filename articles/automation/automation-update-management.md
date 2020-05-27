@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: b064e22b56d63055cede400fa2b06cee96d21664
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4a48841a1c1f5225e5ce53c46c69bd3d29f6fe59
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745302"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830697"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -214,7 +214,7 @@ Následující tabulka definuje klasifikace, které Update Management podporuje 
 |Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
+|nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
 |Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 Následující tabulka definuje podporované klasifikace aktualizací pro Linux.
@@ -254,4 +254,14 @@ Tady jsou způsoby, jak můžete povolit Update Management a vybrat počítače,
 
 ## <a name="next-steps"></a>Další kroky
 
-[Azure Automation nejčastějších dotazech](automation-faq.md)
+* Podrobnosti o práci s Update Management najdete v tématu [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
+* Pokud pro aktualizace potřebujete cílit na dynamickou skupinu virtuálních počítačů, přečtěte si téma [použití dynamických skupin s Update Management](automation-update-management-groups.md).
+* Pokud chcete funkci povolit pomocí šablony Azure Resource Manager, přečtěte si téma [povolení Update Management pomocí šablony Azure Resource Manager](automation-update-management-deploy-template.md).
+* Pokud chcete tuto funkci povolit ze sady Runbook, přečtěte si téma [povolení Update Management ze sady Runbook](automation-onboard-solutions.md).
+* Pokud chcete tuto funkci povolit z účtu Automation, přečtěte si téma [povolení Update Management z účtu Automation](automation-onboard-solutions-from-automation-account.md).
+* Pokud chcete funkci povolit procházením Azure Portal, přečtěte si téma [povolení Update Management z Azure Portal](automation-onboard-solutions-from-browse.md).
+* Pokud chcete tuto funkci povolit z virtuálního počítače Azure, přečtěte si téma [povolení Update Management z virtuálního počítače Azure](automation-onboard-solutions-from-vm.md).
+* Pokud potřebujete hledat v protokolech uložených v pracovním prostoru Log Analytics, přečtěte si téma [dotazy Update Management protokoly](automation-update-management-query-logs.md).
+* Informace o řešení chyb funkcí najdete v tématu [řešení potíží s Update Management](troubleshoot/update-management.md).
+* Problémy s chybami agenta Windows Update najdete v tématu řešení potíží s [agentem pro Windows Update](troubleshoot/update-agent-issues.md).
+* Problémy s chybami agenta aktualizací pro Linux najdete v tématu [řešení potíží s aktualizacemi agenta pro Linux](troubleshoot/update-agent-issues-linux.md).

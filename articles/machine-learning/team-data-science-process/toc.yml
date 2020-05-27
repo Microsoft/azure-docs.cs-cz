@@ -103,7 +103,7 @@
           href: plan-your-environment.md
     - name: Získání dat a jejich pochopení
       items:
-        - name: Příjem dat
+        - name: Ingestace dat
           displayName: 'move data, manage data logistics'
           items:
             - name: Přehled
@@ -194,7 +194,7 @@
   items:
     - name: Azure Machine Learning
       href: ../
-    - name: Kognitivní služby
+    - name: Cognitive Services
       href: 'https://docs.microsoft.com/azure/cognitive-services/'
     - name: Detekce anomálií
       href: apps-anomaly-detection-api.md
@@ -216,8 +216,8 @@
           href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
     - name: Související prostředky Microsoftu
       items:
-        - name: Fórum MSDN
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
+        - name: Stránka s dotazy na Microsoft Q&A
+          href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html'
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
         - name: Videa

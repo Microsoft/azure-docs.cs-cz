@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: edc2b1d7d6a97dd7d7ec35dadf946b5b8581bd06
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78851149"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833128"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data
 
@@ -35,11 +35,11 @@ Než začnete, ujistěte se, že jste provedli následující akce:
 ## <a name="add-power-bi-output"></a>Přidat výstup Power BI
 V kurzu zjišťování podvodů v reálném čase se výstup pošle do úložiště objektů BLOB v Azure. V této části přidáte výstup, který odesílá informace do Power BI.
 
-1. V Azure Portal otevřete úlohu Stream Analytics, kterou jste vytvořili dříve. Pokud jste použili navrhovaný název, úloha se jmenuje `sa_frauddetection_job_demo`.
+1. V Azure Portal otevřete úlohu Stream Analytics, kterou jste vytvořili dříve. Pokud jste použili navrhovaný název, úloha se jmenuje `sa_frauddetection_job_demo` .
 
 2. V nabídce vlevo vyberte v části **topologie úlohy**možnost **výstupy** . Pak vyberte **+ Přidat** a v rozevírací nabídce vyberte **Power BI** .
 
-3. Vyberte **+ Přidat** > **Power BI**. Potom ve formuláři vyplňte následující podrobnosti a vyberte **Autorizovat**:
+3. Vyberte **+ Přidat**  >  **Power BI**. Potom ve formuláři vyplňte následující podrobnosti a vyberte **Autorizovat**:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
@@ -74,10 +74,10 @@ Další informace o Power BI datových sadách naleznete v tématu [Power BI RES
 
 2. Klikněte na pole **dotazu** . 
 
-3. Zadejte následující dotaz. Tento dotaz je podobný dotazu, který jste vytvořili v kurzu pro detekci podvodů. Rozdílem je, že tento dotaz odesílá výsledky do nového výstupu, který jste`CallStream-PowerBI`vytvořili (). 
+3. Zadejte následující dotaz. Tento dotaz je podobný dotazu, který jste vytvořili v kurzu pro detekci podvodů. Rozdílem je, že tento dotaz odesílá výsledky do nového výstupu, který jste vytvořili ( `CallStream-PowerBI` ). 
 
     >[!NOTE]
-    >Pokud `CallStream` jste nezaznamenali vstup v kurzu pro detekci podvodů, nahraďte své jméno `CallStream` v klauzulích **from** a **Join** v dotazu.
+    >Pokud jste nezaznamenali vstup `CallStream` v kurzu pro detekci podvodů, nahraďte své jméno `CallStream` v klauzulích **from** a **Join** v dotazu.
 
    ```SQL
    /* Our criteria for fraud:
@@ -137,11 +137,11 @@ Vaše úloha Stream Analytics začne hledat falešná volání v příchozím da
 
     ![Umístění datové sady streamování v Power BI](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
-2. V pracovním prostoru klikněte na ** + &nbsp;vytvořit**.
+2. V pracovním prostoru klikněte na ** + &nbsp; vytvořit**.
 
     ![Tlačítko vytvořit v pracovním prostoru Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
 
-3. Vytvořte nový řídicí panel a pojmenujte ho `Fraudulent Calls`.
+3. Vytvořte nový řídicí panel a pojmenujte ho `Fraudulent Calls` .
 
     ![Vytvořte řídicí panel a pojmenujte ho v Power BI pracovním prostoru.](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
 
@@ -228,14 +228,14 @@ Tato konfigurace umožňuje změnit původní dotaz na následující:
 ```
 
 ### <a name="renew-authorization"></a>Obnovit autorizaci
-Pokud se heslo od vytvoření nebo posledního ověření úlohy změnilo, budete muset účet Power BI znovu ověřit. Pokud je Azure Multi-Factor Authentication nakonfigurovaný v tenantovi Azure Active Directory (Azure AD), musíte také obnovit Power BI autorizaci každé dva týdny. Pokud obnovení neprovedete, můžete se podívat na příznaky, jako je například nedostatek výstupu úlohy `Authenticate user error` nebo v protokolech operací.
+Pokud se heslo od vytvoření nebo posledního ověření úlohy změnilo, budete muset účet Power BI znovu ověřit. Pokud je Azure Multi-Factor Authentication nakonfigurovaný v tenantovi Azure Active Directory (Azure AD), musíte také obnovit Power BI autorizaci každé dva týdny. Pokud obnovení neprovedete, můžete se podívat na příznaky, jako je například nedostatek výstupu úlohy nebo `Authenticate user error` v protokolech operací.
 
 Podobně platí, že pokud se úloha spustí po vypršení platnosti tokenu, dojde k chybě a úloha se nezdařila. Pokud chcete tento problém vyřešit, zastavte úlohu, která běží, a přejít na výstup Power BI. Aby nedošlo ke ztrátě dat, vyberte odkaz **obnovit autorizaci** a potom restartujte úlohu z **posledního pozastaveného času**.
 
 Po obnovení autorizace pomocí Power BI se v oblasti autorizace zobrazí Zelená výstraha, která odráží, že byl problém vyřešen.
 
-## <a name="get-help"></a>Podpora
-Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Získání pomoci
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)

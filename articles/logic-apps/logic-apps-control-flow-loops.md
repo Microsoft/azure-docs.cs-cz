@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270573"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831615"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytváření smyček opakujících akce pracovních postupů nebo zpracovávajících pole v Azure Logic Apps
 
@@ -50,7 +50,7 @@ Tato ukázková aplikace logiky pošle denní souhrn informačního kanálu RSS 
 2. Mezi akcí aktivace a odeslání e-mailu RSS přidejte smyčku foreach. 
 
    1. Chcete-li přidat smyčku mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. 
-   Vyberte symbol **plus** (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Vyberte symbol **plus** ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
       ![Vyberte přidat akci.](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
@@ -81,7 +81,7 @@ Tato ukázková aplikace logiky pošle denní souhrn informačního kanálu RSS 
 
 ## <a name="foreach-loop-definition-json"></a>Foreach – definice smyčky (JSON)
 
-Pokud pracujete v zobrazení kódu aplikace logiky, můžete místo toho definovat `Foreach` smyčku v definici JSON vaší aplikace logiky, například:
+Pokud pracujete v zobrazení kódu aplikace logiky, můžete `Foreach` místo toho definovat smyčku v definici JSON vaší aplikace logiky, například:
 
 ``` json
 "actions": {
@@ -193,7 +193,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
    | -------- | ----- | ----------- |
    | **Název** | Omezení | Název vaší proměnné | 
    | **Typ** | Integer | Datový typ proměnné | 
-   | **Osa** | 0 | Počáteční hodnota vaší proměnné | 
+   | **Hodnota** | 0 | Počáteční hodnota vaší proměnné | 
    |||| 
 
 1. V akci **inicializovat proměnnou** klikněte na možnost **Nový krok**. 
@@ -232,7 +232,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
       | Vlastnost | Hodnota | Popis |
       | -------- | ----- | ----------- | 
-      | **Akce** | *\<adresa\@>domény e-mailu* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
+      | **Akce** | *\<adresa>domény e-mailu \@* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
       | **Subjekt** | Aktuální hodnota pro omezení je **limit** . | Zadejte předmět e-mailu. V tomto příkladu se ujistěte, že jste zahrnuli **mezní** proměnnou. | 
       | **Text** | <*e-mail – obsah*> | Zadejte obsah e-mailové zprávy, kterou chcete odeslat. V tomto příkladu zadejte libovolný text, který chcete. | 
       |||| 
@@ -259,7 +259,7 @@ Chcete-li změnit tato výchozí omezení, vyberte možnost **Zobrazit upřesňu
 
 ## <a name="until-definition-json"></a>"Do" definice (JSON)
 
-Pokud pracujete v zobrazení kódu aplikace logiky, můžete místo toho definovat `Until` smyčku v definici JSON vaší aplikace logiky, například:
+Pokud pracujete v zobrazení kódu aplikace logiky, můžete `Until` místo toho definovat smyčku v definici JSON vaší aplikace logiky, například:
 
 ``` json
 "actions": {
@@ -297,11 +297,11 @@ Pokud pracujete v zobrazení kódu aplikace logiky, můžete místo toho definov
 }
 ```
 
-V tomto příkladu "dokud" smyčka volá koncový bod HTTP, který vytvoří prostředek. Smyčka se zastaví, když tělo odpovědi HTTP vrátí `Completed` se stavem. Aby nedocházelo k nekonečné smyčce, smyčka se také zastaví, pokud nastane kterákoli z těchto podmínek:
+V tomto příkladu "dokud" smyčka volá koncový bod HTTP, který vytvoří prostředek. Smyčka se zastaví, když tělo odpovědi HTTP vrátí se `Completed` stavem. Aby nedocházelo k nekonečné smyčce, smyčka se také zastaví, pokud nastane kterákoli z těchto podmínek:
 
-* Smyčka běžela desetkrát, jak je `count` určeno atributem. Výchozí hodnota je 60 časů. 
+* Smyčka běžela desetkrát, jak je určeno `count` atributem. Výchozí hodnota je 60 časů. 
 
-* Smyčka běžela po dobu dvou hodin, jak `timeout` je určeno atributem ve formátu ISO 8601. Výchozí hodnota je jedna hodina.
+* Smyčka běžela po dobu dvou hodin, jak je určeno `timeout` atributem ve formátu ISO 8601. Výchozí hodnota je jedna hodina.
   
 ``` json
 "actions": {
@@ -333,9 +333,9 @@ V tomto příkladu "dokud" smyčka volá koncový bod HTTP, který vytvoří pro
 }
 ```
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, [Azure Logic Apps Web zpětné vazby uživatelů](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky

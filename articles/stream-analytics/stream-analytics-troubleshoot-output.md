@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: bee40bc30a0ffbdacf8cc7bf88d1512c4fc43fa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb01bf613ef007be6eafa98e12f4c5f4b5c607ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147953"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831160"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s výstupy Azure Stream Analytics
 
@@ -87,9 +87,9 @@ Při konfiguraci IGNORE_DUP_KEY pro několik typů indexů Pamatujte na následu
 
 Při použití původní úrovně kompatibility (1,0) Azure Stream Analytics změny názvů sloupců na malá písmena. Toto chování bylo opraveno v novějších úrovních kompatibility. Pokud chcete zachovat případ, přejděte na úroveň kompatibility 1,1 nebo novější. Další informace najdete v tématu [úroveň kompatibility pro úlohy Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
-Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: e5b218efd9c8cfaad99d76d8118d181390a977c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb7be1815364b3def9b22e50454dceabd17e6150
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789099"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829643"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Správa zpráv v Twilio pomocí Azure Logic Apps
 
@@ -50,7 +50,7 @@ Pomocí Azure Logic Apps a konektoru Twilio můžete vytvářet automatizované 
        -nebo-
 
      * Mezi kroky, do kterých chcete přidat akci, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. 
-     Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+     Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
      
        Do vyhledávacího pole zadejte "Twilio" jako filtr. 
        V seznamu akce vyberte akci, kterou chcete.
@@ -67,9 +67,9 @@ Pomocí Azure Logic Apps a konektoru Twilio můžete vytvářet automatizované 
 
 Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/twilio/)konektoru.
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky

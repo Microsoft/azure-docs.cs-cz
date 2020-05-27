@@ -4,12 +4,12 @@ description: Správa výkonu aplikací a monitorování využití živých webov
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 96ac0d81e477f4ac45208971282b3be982bf4fa5
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6630de971dd9cc7ece2e0f87821db5fd62c39af0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698223"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828725"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights, funkce [Azure monitor](../overview.md), je rozšiřitelná služba pro správu výkonu aplikací (APM) pro vývojáře a odborníky v oblasti DevOps. Použijte ho k monitorování svých živých aplikací. Automaticky detekuje anomálie výkonu a obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací skutečně dělají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node. js, Java a Python hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
@@ -126,8 +126,8 @@ Začínáme při vývoji:
 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 * Otázky a problémy:
-  * [Odstraňování potíží][qna]
-  * [Fórum MSDN](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+  * [Řešení potíží][qna]
+  * [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-monitor.html)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * Vaše návrhy:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)

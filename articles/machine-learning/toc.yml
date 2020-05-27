@@ -74,6 +74,8 @@
           href: tutorial-setup-vscode-extension.md
         - name: Trénování a nasazení modelu klasifikace obrázků TensorFlow
           href: tutorial-train-deploy-image-classification-model-vscode.md
+    - name: Vytvoření pracovního prostoru s využitím šablony Resource Manageru
+      href: tutorial-resource-manager-workspace.md
 - name: ukázky
   items:
     - name: Poznámkové bloky Jupyter

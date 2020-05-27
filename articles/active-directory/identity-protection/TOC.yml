@@ -50,8 +50,8 @@
   items:
     - name: Fórum Azure pro názory
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: Aktualizace služeb

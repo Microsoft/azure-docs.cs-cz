@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: d6ea604446cb9d56bb699685d24c81992bcac3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79d7bd57ff4ba5533caba1927703ea545e077f2c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382891"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830425"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží s funkcí Synchronizace dat SQL
 
@@ -39,7 +39,7 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 - [Zobrazuje se významné snížení výkonu.](#sync-perf)
 
-- [Zobrazuje se tato zpráva: "do sloupce sloupce \<nelze vložit hodnotu null>. Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit?](#sync-nulls)
+- [Zobrazuje se tato zpráva: "do sloupce sloupce nelze vložit hodnotu NULL \<>. Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit?](#sync-nulls)
 
 - [Jak zpracovává cyklické odkazy v synchronizaci dat? To znamená, že když jsou stejná data synchronizovaná ve více skupinách synchronizace a mění se v důsledku změny?](#sync-circ)
 
@@ -78,7 +78,7 @@ Některá z následujících podmínek může způsobit zablokování skupiny sy
     1. Pokud je stav služby **Zastaveno**, klikněte pravým tlačítkem myši na název služby a vyberte možnost **Spustit**.
 
 > [!NOTE]
-> Pokud předchozí informace nepřesunou skupinu synchronizace ze stavu zpracování, podpora Microsoftu může obnovit stav skupiny synchronizace. Pokud chcete mít resetování stavu skupiny synchronizace, ve [fóru Azure SQL Database](https://social.msdn.microsoft.com/Forums/azure/home?forum=ssdsgetstarted)vytvořte příspěvek. V příspěvku zadejte ID předplatného a ID skupiny synchronizace pro skupinu, kterou je nutné resetovat. Podpora Microsoftu inženýr odpoví na váš příspěvek a pošle vám informace o tom, kdy byl stav resetován.
+> Pokud předchozí informace nepřesunou skupinu synchronizace ze stavu zpracování, podpora Microsoftu může obnovit stav skupiny synchronizace. Pokud chcete mít resetování stavu skupiny synchronizace, vytvořte na [stránce s dotazem Microsoft Q&na Azure SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html)vytvořit příspěvek. V příspěvku zadejte ID předplatného a ID skupiny synchronizace pro skupinu, kterou je nutné resetovat. Podpora Microsoftu inženýr odpoví na váš příspěvek a pošle vám informace o tom, kdy byl stav resetován.
 
 ### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a>Zobrazuje se v tabulkách chybná data
 
@@ -104,7 +104,7 @@ Výkon se výrazně snižuje, což může být bod, ve kterém nemůžete ani ot
 
 - **Řešení**. Nejlepším řešením je prevence. Ujistěte se, že ve skupinách synchronizace nemáte cyklické odkazy. Každý řádek, který je synchronizovaný jednou skupinou synchronizace, nejde synchronizovat s jinou skupinou synchronizace.
 
-### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>Zobrazuje se tato zpráva: "do sloupce sloupce \<nelze vložit hodnotu null>. Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit? 
+### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>Zobrazuje se tato zpráva: "do sloupce sloupce nelze vložit hodnotu NULL \<>. Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit? 
 Tato chybová zpráva znamená, že došlo k jedné ze dvou následujících problémů:
 -  Tabulka neobsahuje primární klíč. Chcete-li tento problém vyřešit, přidejte primární klíč ke všem tabulkám, které synchronizujete.
 -  V příkazu CREATE INDEX je klauzule WHERE. Synchronizace dat nezpracovává tuto podmínku. Chcete-li tento problém vyřešit, odeberte klauzuli WHERE nebo ručně proveďte změny ve všech databázích. 
@@ -138,7 +138,7 @@ Informace o řešení problémů s agentem klienta najdete v tématu řešení p
 
 - **Příčina**: Pokud je potřeba odstranit soubory zbylé, může se zobrazit zpráva nedostatek místa na disku. To může být způsobeno antivirovým softwarem nebo soubory, které jsou otevřeny při pokusu o odstranění operací.
 
-- **Řešení**. Ručně odstraňte soubory synchronizace, které jsou ve složce% Temp% (`del \*sync\* /s`). Pak odstraňte podadresáře ve složce% Temp%.
+- **Řešení**. Ručně odstraňte soubory synchronizace, které jsou ve složce% Temp% ( `del \*sync\* /s` ). Pak odstraňte podadresáře ve složce% Temp%.
 
 > [!IMPORTANT]
 > V průběhu synchronizace neodstraňujte žádné soubory.
@@ -193,7 +193,7 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupi
 
 - **Řešení**. Udělte uživatelskému účtu přihlašovací údaje přihlášení jako služby:
 
-  1. V nabídce **Start** > **ovládacích panelů** > **nástroje** > pro správu**místní zásady zabezpečení** > **Rights Management uživatel****místní zásady** > zabezpečení.
+  1. V nabídce **Start**  >  **ovládacích panelů**  >  **Nástroje pro správu**  >  **místní zásady zabezpečení**  >  **Local Policy**  >  **Rights Management uživatel**místní zásady zabezpečení.
   1. Vyberte možnost **Přihlásit se jako služba**.
   1. V dialogovém okně **vlastnosti** přidejte uživatelský účet.
   1. Vyberte **Apply** (Použít) a pak vyberte **OK**.
