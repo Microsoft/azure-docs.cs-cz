@@ -3,13 +3,13 @@ title: Historie nasazení
 description: Popisuje postup zobrazení Azure Resource Manager operací nasazení pomocí portálu, PowerShellu, rozhraní příkazového řádku Azure a REST API.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 11/26/2019
-ms.openlocfilehash: b0f196f86bed05094b04bfc20c7cef2248a91c65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/22/2020
+ms.openlocfilehash: 1f22bdfac5eb12688a5b5778d4da1505e36ef6bf
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460292"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816280"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Zobrazit historii nasazení pomocí Azure Resource Manager
 
@@ -21,7 +21,7 @@ Nápovědu k řešení konkrétních chyb nasazení najdete v tématu [řešení
 
 Podrobnosti o nasazení můžete zobrazit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure nebo REST API. Každé nasazení má ID korelace, které se používá ke sledování souvisejících událostí. Může být užitečné při práci s technickou podporou pro řešení potíží s nasazením.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Vyberte skupinu prostředků, kterou chcete prošetřit.
 
@@ -37,7 +37,7 @@ Podrobnosti o nasazení můžete zobrazit pomocí Azure Portal, PowerShellu, roz
 
     ![Souhrn nasazení](./media/deployment-history/show-correlation-id.png)
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Pokud chcete zobrazit seznam všech nasazení pro skupinu prostředků, použijte příkaz [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment) .
 
@@ -113,7 +113,7 @@ Odpověď obsahuje ID korelace.
 
 Každé nasazení může zahrnovat více operací. Pokud chcete zobrazit další podrobnosti o nasazení, Prohlédněte si operace nasazení. V případě neúspěšného nasazení budou operace nasazení zahrnovat chybovou zprávu.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V souhrnu pro nasazení vyberte **Podrobnosti operace**.
 
@@ -123,7 +123,7 @@ Každé nasazení může zahrnovat více operací. Pokud chcete zobrazit další
 
     ![Zobrazit podrobnosti o operaci](./media/deployment-history/see-operation-details.png)
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Pokud chcete zobrazit operace nasazení pro nasazení do skupiny prostředků, použijte příkaz [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation) .
 
@@ -145,22 +145,22 @@ Stavovou zprávu o neúspěšných operacích získáte pomocí následujícího
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Chcete-li zobrazit operace nasazení pro nasazení do skupiny prostředků, použijte příkaz [AZ Deployment Group operace list](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-deployment-group-operation-list) .
+Pokud chcete zobrazit operace nasazení pro nasazení do skupiny prostředků, použijte příkaz [AZ Deployment Operation Group list](/cli/azure/deployment/operation/group#az-deployment-operation-group-list) . Musíte mít Azure CLI 2.6.0 nebo novější.
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeployment
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
 Chcete-li zobrazit neúspěšné operace, vyfiltrujte operace se stavem **selhání** .
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
 ```
 
 Stavovou zprávu o neúspěšných operacích získáte pomocí následujícího příkazu:
 
 ```azurecli-interactive
-az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
+az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
 # <a name="http"></a>[HTTP](#tab/http)
