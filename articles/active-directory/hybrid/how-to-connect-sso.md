@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 401f8239cded04b6342b706242e970e39118d73d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77483750"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827161"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -36,7 +36,7 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 ![Bezproblémové jednotné přihlašování](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Bezproblémové jednotné přihlašování vyžaduje, aby zařízení uživatele bylo jenom **připojené k doméně** , ale nepoužívá se pro zařízení připojená k [Azure AD](../devices/concept-azure-ad-join.md) nebo pro zařízení [připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) . Jednotné přihlašování pro službu Azure AD připojené a hybridní připojení ke službě Azure AD funguje na základě [primárního obnovovacího tokenu](../devices/concept-primary-refresh-token.md).
+>Bezproblémové jednotné přihlašování vyžaduje, aby zařízení uživatele bylo jenom **připojené k doméně** , ale nepoužívá se pro zařízení připojená k [Azure AD](../devices/concept-azure-ad-join.md) nebo pro zařízení [připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) . Jednotné přihlašování k Azure AD, připojené k hybridní službě Azure AD a zařízení registrovaná službou Azure AD funguje na základě [primárního obnovovacího tokenu](../devices/concept-primary-refresh-token.md).
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
@@ -51,10 +51,10 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 ## <a name="feature-highlights"></a>Zvýraznění funkcí
 
-- Přihlašovací uživatelské jméno může být buď místní výchozí uživatelské jméno (`userPrincipalName`), nebo jiný atribut nakonfigurovaný v Azure AD Connect (`Alternate ID`). Jak fungují případy použití, protože bezproblémová `securityIdentifier` služba jednotného přihlašování používá deklaraci identity v lístku protokolu Kerberos k vyhledání odpovídajícího objektu uživatele v Azure AD.
+- Přihlašovací uživatelské jméno může být buď místní výchozí uživatelské jméno ( `userPrincipalName` ), nebo jiný atribut nakonfigurovaný v Azure AD Connect ( `Alternate ID` ). Jak fungují případy použití, protože bezproblémová služba jednotného přihlašování používá `securityIdentifier` deklaraci identity v lístku protokolu Kerberos k vyhledání odpovídajícího objektu uživatele v Azure AD.
 - Bezproblémové jednotné přihlašování je příležitostné funkce. Pokud z nějakého důvodu dojde k chybě, přihlašovací prostředí uživatele se vrátí k běžnému chování – tzn. uživatel musí na přihlašovací stránce zadat heslo.
-- Pokud aplikace `https://myapps.microsoft.com/contoso.com`(například) předá parametr (OpenID Connect `domain_hint` ) nebo `whr` (SAML), který identifikuje vašeho tenanta, nebo `login_hint` parametr-identifikuje uživatele, v jeho žádosti o přihlášení k Azure AD se uživatelé automaticky přihlásí, aniž by museli zadávat uživatelská jména nebo hesla.
-- Uživatelé také získají tiché přihlašování, pokud aplikace ( `https://contoso.sharepoint.com`například) odesílá žádosti o přihlášení koncovým bodům služby Azure AD nastaveným jako klienti – to znamená `https://login.microsoftonline.com/contoso.com/<..>` nebo `https://login.microsoftonline.com/<tenant_ID>/<..>` – místo společného koncového bodu služby Azure AD – to znamená. `https://login.microsoftonline.com/common/<...>`
+- Pokud aplikace (například `https://myapps.microsoft.com/contoso.com` ) předá `domain_hint` parametr (OpenID Connect) nebo `whr` (SAML), který identifikuje vašeho tenanta, nebo `login_hint` Parametr-identifikuje uživatele, v jeho žádosti o přihlášení k Azure AD se uživatelé automaticky přihlásí, aniž by museli zadávat uživatelská jména nebo hesla.
+- Uživatelé také získají tiché přihlašování, pokud aplikace (například `https://contoso.sharepoint.com` ) odesílá žádosti o přihlášení koncovým bodům služby Azure AD nastaveným jako klienti – to znamená `https://login.microsoftonline.com/contoso.com/<..>` nebo `https://login.microsoftonline.com/<tenant_ID>/<..>` – místo společného koncového bodu služby Azure AD – to znamená `https://login.microsoftonline.com/common/<...>` .
 - Odhlášení se podporuje. To umožňuje uživatelům zvolit si jiný účet služby Azure AD pro přihlášení, místo aby se automaticky přihlásili pomocí bezproblémového jednotného přihlašování automaticky.
 - Klienti Win32 Office 365 (Outlook, Word, Excel a další) s verzemi 16.0.8730. xxxx a novější se podporují pomocí neinteraktivního toku. Pro OneDrive budete muset pro tiché přihlašování aktivovat [funkci bezobslužné konfigurace OneDrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
 - Dá se povolit prostřednictvím Azure AD Connect.

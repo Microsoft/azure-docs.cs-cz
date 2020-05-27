@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793230"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834522"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Vytvořte příkazy Switch, které spouštějí akce pracovního postupu na základě konkrétních hodnot v Azure Logic Apps
 
@@ -42,7 +42,7 @@ Předpokládejme například, že chcete, aby aplikace logiky, která provede r�
 
 1. V tomto příkladu přidejte příkaz switch na konci ukázkového pracovního postupu. Po posledním kroku vyberte **Nový krok**.
 
-   Chcete-li přidat příkaz switch mezi kroky, přesuňte ukazatel myši na šipku, kam chcete přidat příkaz switch. Zvolte **symbol plus** (**+**), který se zobrazí, a pak zvolte **přidat akci**.
+   Chcete-li přidat příkaz switch mezi kroky, přesuňte ukazatel myši na šipku, kam chcete přidat příkaz switch. Zvolte **symbol plus** ( **+** ), který se zobrazí, a pak zvolte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte jako filtr "Switch". Vyberte tuto akci: **ovládací prvek Switch**
 
@@ -57,7 +57,7 @@ Předpokládejme například, že chcete, aby aplikace logiky, která provede r�
 
    ![Vyberte "SelectedOption"](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-1. Chcete-li zpracovat případy, kde schvalovatel `Approve` vybere `Reject`nebo, přidejte jiný případ mezi **případ** a **výchozí**. 
+1. Chcete-li zpracovat případy, kde schvalovatel vybere `Approve` nebo `Reject` , přidejte jiný případ mezi **případ** a **výchozí**. 
 
    ![Přidat další případ](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
@@ -67,7 +67,7 @@ Předpokládejme například, že chcete, aby aplikace logiky, která provede r�
    |--------|--------------------|--------|
    | Případ 1 | **Schválení** | Přidání **e-mailové akce Odeslat e-mail** pro odeslání podrobností o položce RSS pouze v případě, že schvalovatel zvolil **schválení**. |
    | Případ 2 | **Odmítnout** | Přidání **e-mailové akce Odeslat e-mail** pro upozorňování dalších schvalovatelů, že položka RSS byla odmítnuta. |
-   | Výchozí | Žádná | Žádná akce není nutná. V tomto příkladu je **výchozí** případ prázdný, protože **SelectedOption** má jenom dvě možnosti. |
+   | Výchozí | Žádné | Žádná akce není nutná. V tomto příkladu je **výchozí** případ prázdný, protože **SelectedOption** má jenom dvě možnosti. |
    |||
 
    ![Dokončený příkaz switch](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
@@ -116,12 +116,12 @@ Teď, když jste vytvořili aplikaci logiky pomocí příkazu switch, se podíve
 | `"type": "Switch"` | Určuje, že akce je příkaz switch. |
 | `"expression"`     | V tomto příkladu určuje možnost schvalovatele, která se vyhodnocuje pro každý případ deklarovaný později v definici. |
 | `"cases"` | Definuje libovolný počet případů. U každého případu `"Case_*"` je výchozím názvem pro tento případ, který můžete přejmenovat pro čitelnost. |
-| `"case"` | Určuje hodnotu případu, která musí být konstantou a jedinečnou hodnotou, kterou příkaz switch používá pro porovnání. Pokud se ve výsledku výrazu Switch neshodují žádné případy, akce `"default"` v části se spustí. | 
+| `"case"` | Určuje hodnotu případu, která musí být konstantou a jedinečnou hodnotou, kterou příkaz switch používá pro porovnání. Pokud se ve výsledku výrazu Switch neshodují žádné případy, akce v `"default"` části se spustí. | 
 | | | 
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Chcete-li odeslat nebo hlasovat o funkcích nebo návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: f2e9a97dac4d69ea4e470a932cb446d83b425dde
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745292"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830765"
 ---
 # <a name="query-update-management-logs"></a>Dotazování na protokoly Update Managementu
 
@@ -31,7 +31,7 @@ Vytvoří se záznam s typem `RequiredUpdate` , který představuje aktualizace 
 | Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
 | KBID | ID článku znalostní báze pro Windows Update |
 | ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. | 
-| Product | Produkty, pro které je aktualizace platná. | 
+| Produkt | Produkty, pro které je aktualizace platná. | 
 | PublishDate | Datum, kdy je aktualizace připravena ke stažení a instalaci z web Windows Update. |
 | Server | | 
 | SourceHealthServiceId | Jedinečný identifikátor představující Log Analytics ID agenta Windows. |
@@ -73,7 +73,7 @@ Vytvoří se záznam s typem `Update` , který představuje dostupné aktualizac
 | Nadpis | Název aktualizace |
 | PublishedDate (UTC) | Datum, kdy je aktualizace připravena ke stažení a instalaci z web Windows Update.  |
 | UpdateState | Aktuální stav aktualizace. | 
-| Product | Produkty, pro které je aktualizace platná. |
+| Produkt | Produkty, pro které je aktualizace platná. |
 | SubscriptionId | Jedinečný identifikátor předplatného Azure. | 
 | ResourceGroup | Název skupiny prostředků, do které prostředek patří | 
 | ResourceProvider | Poskytovatel prostředků. | 
@@ -116,7 +116,7 @@ Vytvoří se záznam s typem `UpdateRunProgress` , který poskytuje stav nasazen
 | KBID | ID článku znalostní báze pro Windows Update | 
 | ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
 | OSType | Typ operačního systému. Hodnoty jsou Windows nebo Linux. | 
-| Product | Produkty, pro které je aktualizace platná. |
+| Produkt | Produkty, pro které je aktualizace platná. |
 | Prostředek | Název prostředku. | 
 | ResourceId | Jedinečný identifikátor prostředku přidruženého k záznamu |
 | ResourceProvider | Poskytovatel prostředků. | 
@@ -409,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Protokoly služby Azure Monitor](../log-analytics/log-analytics-log-searches.md)
-* [Konfigurace upozornění](automation-tutorial-update-management.md#configure-alerts)
+* Podrobnosti o protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../log-analytics/log-analytics-log-searches.md).
+* Nápovědu k výstrahám najdete v tématu [Konfigurace výstrah](automation-tutorial-update-management.md#configure-alerts).

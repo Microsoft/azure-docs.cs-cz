@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: d8a6f1b290786a8f23e81587d22b5fd605a52d86
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 9e16c1907a2196627456f45491402df86e3eac43
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714654"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83806243"
 ---
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o dalších funkcích nástroje SPX najdete dál v prozkoumání základních informací.
+Další informace o dalších funkcích rozhraní příkazového řádku najdete dál v prozkoumání základních informací.
 
 > [!div class="nextstepaction"]
-> [Prozkoumejte základy nástrojů SPX](../../spx-basics.md)
+> [Základy rozpoznávání řeči pro rozhraní příkazového řádku](../../spx-basics.md)

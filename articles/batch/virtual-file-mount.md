@@ -3,12 +3,12 @@ title: Připojení virtuálního systému souborů ve fondu
 description: Přečtěte si, jak připojit virtuální systém souborů ve fondu Batch.
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 4a9ea7d9ecd65ab55c2420015f82e863e45cbd5d
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4e51e8a1f11d670515893a83398a0c6d7c6e9a46
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722656"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816025"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Připojení virtuálního systému souborů ve fondu Batch
 
@@ -64,10 +64,10 @@ new PoolAddParameter
         {
             AzureFileShareConfiguration = new AzureFileShareConfiguration
             {
-                AccountName = "AccountName",
-                AzureFileUrl = "AzureFileShareUrl",
-                AccountKey = "StorageAccountKey",
-                RelativeMountPath = "RelativeMountPath",
+                AccountName = "{storage-account-name}",
+                AzureFileUrl = "https://{storage-account-name}.file.core.windows.net/{file-share-name}",
+                AccountKey = "{storage-account-key}",
+                RelativeMountPath = "S",
                 MountOptions = "-o vers=3.0,dir_mode=0777,file_mode=0777,sec=ntlmssp"
             },
         }

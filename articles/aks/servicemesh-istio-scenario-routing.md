@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 01a7764eb0a353e6842441093f70ad29c9316bbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 871a764c549de75d5a9e1449ba2e0737d38a4094
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668270"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799948"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Použití inteligentního směrování a Kanárských verzí s Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="before-you-begin"></a>Před zahájením
 
 > [!NOTE]
-> Tento scénář byl testován proti verzi `1.3.2`Istio.
+> Tento scénář byl testován proti verzi Istio `1.3.2` .
 
 Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a vyšší s povoleným RBAC) a navázali jste `kubectl` připojení ke clusteru. Ve svém clusteru budete taky muset nainstalovat Istio.
 
@@ -41,13 +41,13 @@ Pokud potřebujete pomoc s kteroukoli z těchto položek, přečtěte si [rychl�
 
 Ukázková hlasovací aplikace AKS poskytuje uživatelům dvě možnosti hlasování (**kočky** nebo **psi**). Existuje součást úložiště, která uchovává počet hlasů pro jednotlivé možnosti. Kromě toho existuje analytická komponenta, která poskytuje podrobné informace o přetypování hlasů pro jednotlivé možnosti.
 
-V tomto scénáři aplikace začnete nasazením verze `1.0` hlasovací aplikace a verze `1.0` součásti Analytics. Komponenta Analytics poskytuje pro počet hlasů jednoduché počty. Komponenta pro hlasovací aplikace a analýzy spolupracuje s `1.0` verzí komponenty úložiště, která je zajištěná Redis.
+V tomto scénáři aplikace začnete nasazením verze `1.0` hlasovací aplikace a verze `1.0` součásti Analytics. Komponenta Analytics poskytuje pro počet hlasů jednoduché počty. Komponenta pro hlasovací aplikace a analýzy spolupracuje s verzí `1.0` komponenty úložiště, která je zajištěná Redis.
 
-Provedete upgrade součásti Analytics na `1.1`verzi, která poskytuje počty a nyní celkové a procentuální hodnoty.
+Provedete upgrade součásti Analytics na verzi `1.1` , která poskytuje počty a nyní celkové a procentuální hodnoty.
 
 Podskupina uživatelů testuje verzi `2.0` aplikace přes zkušební verzi. Tato nová verze používá komponentu úložiště, která je zálohovaná databází MySQL.
 
-Jakmile si nejste jistí `2.0` , že verze funguje podle očekávání u vaší podmnožiny uživatelů, `2.0` zavedete si verzi pro všechny uživatele.
+Jakmile si nejste jistí, že verze `2.0` funguje podle očekávání u vaší podmnožiny uživatelů, zavedete si verzi `2.0` pro všechny uživatele.
 
 ## <a name="deploy-the-application"></a>Nasazení aplikace
 
@@ -67,13 +67,13 @@ Přejděte do následující složky ve staženém/klonovaném úložišti a spu
 cd aks-voting-app/scenarios/intelligent-routing-with-istio
 ```
 
-Nejprve v clusteru AKS vytvořte obor názvů pro ukázkovou hlasovací aplikaci AKS s názvem `voting` , která je následující:
+Nejprve v clusteru AKS vytvořte obor názvů pro ukázkovou hlasovací aplikaci AKS s názvem, která je `voting` následující:
 
 ```console
 kubectl create namespace voting
 ```
 
-Označte obor názvů pomocí `istio-injection=enabled`. Tento popisek instruuje Istio, aby automaticky vložil Istio-proxy jako sajdkáry do všech lusků v tomto oboru názvů.
+Označte obor názvů pomocí `istio-injection=enabled` . Tento popisek instruuje Istio, aby automaticky vložil Istio-proxy jako sajdkáry do všech lusků v tomto oboru názvů.
 
 ```console
 kubectl label namespace voting istio-injection=enabled
@@ -105,7 +105,7 @@ V případě, že byly vytvořeny lusky, použijte příkaz [kubectl Get lusks][
 kubectl get pods -n voting --show-labels
 ```
 
-Následující příklad výstupu ukazuje tři instance `voting-app` a a jednu instanci obou `voting-analytics` a `voting-storage` lusků. Každé lusky má dva kontejnery. Jeden z těchto kontejnerů je komponenta a druhá je `istio-proxy`:
+Následující příklad výstupu ukazuje tři instance a `voting-app` a jednu instanci obou `voting-analytics` a `voting-storage` lusků. Každé lusky má dva kontejnery. Jeden z těchto kontejnerů je komponenta a druhá je `istio-proxy` :
 
 ```output
 NAME                                    READY     STATUS    RESTARTS   AGE   LABELS
@@ -116,7 +116,7 @@ voting-app-1-0-956756fd-wsxvt           2/2       Running   0          39s   app
 voting-storage-1-0-5d8fcc89c4-2jhms     2/2       Running   0          39s   app=voting-storage,pod-template-hash=5d8fcc89c4,version=1.0
 ```
 
-Chcete-li zobrazit informace o poli pod, použijeme příkaz [kubectl popsat pod][kubectl-describe] s selektory popisků k `voting-analytics` výběru pod. Výstup vyfiltrujeme, aby se zobrazily podrobnosti o dvou kontejnerech v poli pod:
+Chcete-li zobrazit informace o poli pod, použijeme příkaz [kubectl popsat pod][kubectl-describe] s selektory popisků k výběru `voting-analytics` pod. Výstup vyfiltrujeme, aby se zobrazily podrobnosti o dvou kontejnerech v poli pod:
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -172,7 +172,7 @@ Otevřete prohlížeč a vložte IP adresu. Zobrazí se ukázková hlasovací ap
 
 ![Hlasovací aplikace AKS spuštěná v našem Istio clusteru AKS.](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
 
-Informace v dolní části obrazovky ukazují, že aplikace `1.0` používá verzi verze `voting-app` a `1.0` `voting-storage` (Redis).
+Informace v dolní části obrazovky ukazují, že aplikace používá verzi verze `1.0` `voting-app` a `1.0` `voting-storage` (Redis).
 
 ## <a name="update-the-application"></a>Aktualizace aplikace
 
@@ -196,7 +196,7 @@ deployment.apps/voting-analytics-1-1 created
 
 Otevřete znovu ukázkovou hlasovací aplikaci AKS v prohlížeči a použijte IP adresu Istio brány příchozího přenosu dat získaná v předchozím kroku.
 
-Mezi dvěma zobrazeními, které jsou uvedeny níže, se Váš prohlížeč liší. Vzhledem k tomu, že používáte [službu][kubernetes-service] Kubernetes pro `voting-analytics` komponentu jenom s jedním selektorm popisku (`app: voting-analytics`), Kubernetes použije výchozí chování kruhového dotazování mezi lusky, které odpovídají tomuto selektoru. V tomto případě je to jak verze `1.0` , tak `1.1` i vaše `voting-analytics` lusky.
+Mezi dvěma zobrazeními, které jsou uvedeny níže, se Váš prohlížeč liší. Vzhledem k tomu, že používáte [službu][kubernetes-service] Kubernetes pro `voting-analytics` komponentu jenom s jedním selektorm popisku ( `app: voting-analytics` ), Kubernetes použije výchozí chování kruhového dotazování mezi lusky, které odpovídají tomuto selektoru. V tomto případě je to jak verze, `1.0` tak i `1.1` vaše `voting-analytics` lusky.
 
 ![Verze 1,0 analytické komponenty běžící v naší hlasovací aplikaci AKS](media/servicemesh/istio/scenario-routing-deploy-app-01.png)
 
@@ -234,16 +234,16 @@ Následující příklad výstupu ukazuje relevantní část vráceného webu ja
 
 ### <a name="lock-down-traffic-to-version-11-of-the-application"></a>Uzamčení provozu do verze 1,1 aplikace
 
-Teď tento provoz zamkneme `1.1` jenom na verzi `voting-analytics` komponenty a na verzi `1.0` `voting-storage` komponenty. Pak definujete pravidla směrování pro všechny ostatní komponenty.
+Teď tento provoz zamkneme jenom na verzi `1.1` `voting-analytics` komponenty a na verzi `1.0` `voting-storage` komponenty. Pak definujete pravidla směrování pro všechny ostatní komponenty.
 
 > * **Virtuální služba** definuje sadu pravidel směrování pro jednu nebo více cílových služeb.
 > * **Cílové pravidlo** definuje zásady provozu a zásady pro konkrétní verzi.
 > * **Zásady** definují, jaké metody ověřování se dají přijmout pro úlohy.
 
-Pomocí `kubectl apply` příkazu nahraďte definici virtuální služby na vaše `voting-app` a přidejte [cílová pravidla][istio-reference-destinationrule] a [virtuální služby][istio-reference-virtualservice] pro ostatní komponenty. Do `voting` oboru názvů přidáte [zásadu][istio-reference-policy] , která zajistí, že všechny komunikace mezi službami budou zabezpečené pomocí vzájemného protokolu TLS a klientských certifikátů.
+Pomocí `kubectl apply` příkazu nahraďte definici virtuální služby na vaše `voting-app` a přidejte [cílová pravidla][istio-reference-destinationrule] a [virtuální služby][istio-reference-virtualservice] pro ostatní komponenty. Do oboru názvů přidáte [zásadu][istio-reference-policy] , která `voting` zajistí, že všechny komunikace mezi službami budou zabezpečené pomocí vzájemného protokolu TLS a klientských certifikátů.
 
-* Zásada je `peers.mtls.mode` nastavená tak `STRICT` , aby se zajistilo, že se mezi vašimi službami v `voting` rámci oboru názvů bude vykonat oboustranný protokol TLS.
-* Také jsme na všechna `trafficPolicy.tls.mode` naše `ISTIO_MUTUAL` cílová pravidla nastavili na. Istio poskytuje služby se silnými identitami a zabezpečuje komunikaci mezi službami pomocí vzájemného protokolu TLS a klientských certifikátů, které Istio transparentně spravuje.
+* Zásada je `peers.mtls.mode` nastavená tak `STRICT` , aby se zajistilo, že se mezi vašimi službami v rámci oboru názvů bude vykonat oboustranný protokol TLS `voting` .
+* Také jsme na `trafficPolicy.tls.mode` `ISTIO_MUTUAL` všechna naše cílová pravidla nastavili na. Istio poskytuje služby se silnými identitami a zabezpečuje komunikaci mezi službami pomocí vzájemného protokolu TLS a klientských certifikátů, které Istio transparentně spravuje.
 
 ```console
 kubectl apply -f istio/step-2-update-and-add-routing-for-all-components.yaml --namespace voting
@@ -261,11 +261,11 @@ destinationrule.networking.istio.io/voting-storage created
 virtualservice.networking.istio.io/voting-storage created
 ```
 
-Pokud znovu otevřete hlasovací aplikaci AKS v prohlížeči, bude `1.1` `voting-analytics` `voting-app` součást používat pouze novou verzi součásti.
+Pokud znovu otevřete hlasovací aplikaci AKS v prohlížeči, bude součást používat pouze novou verzi `1.1` `voting-analytics` součásti `voting-app` .
 
 ![Verze 1,1 analytické komponenty běžící v naší hlasovací aplikaci AKS](media/servicemesh/istio/scenario-routing-update-app-01.png)
 
-Můžete vizualizovat, že jste nyní směrováni pouze do verze `1.1` vaší `voting-analytics` komponenty, a to následujícím způsobem. Nezapomeňte použít IP adresu vlastní brány Istio příchozího přenosu dat:
+Můžete vizualizovat, že jste nyní směrováni pouze do verze vaší komponenty, a to následujícím `1.1` `voting-analytics` způsobem. Nezapomeňte použít IP adresu vlastní brány Istio příchozího přenosu dat:
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -295,7 +295,7 @@ Následující příklad výstupu ukazuje relevantní část vráceného webu:
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
 ```
 
-Pojďme teď potvrdit, že Istio používá oboustranný protokol TLS k zabezpečení komunikace mezi našimi službami. Pro tuto adresu použijeme příkaz [Authn TLS-check][istioctl-authn-tls-check] v binárním `istioctl` souboru klienta, který má následující formu.
+Pojďme teď potvrdit, že Istio používá oboustranný protokol TLS k zabezpečení komunikace mezi našimi službami. Pro tuto adresu použijeme příkaz [Authn TLS-check][istioctl-authn-tls-check] v `istioctl` binárním souboru klienta, který má následující formu.
 
 ```console
 istioctl authn tls-check <pod-name[.namespace]> [<service>]
@@ -351,14 +351,14 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 
 ## <a name="roll-out-a-canary-release-of-the-application"></a>Zavedení Kanárské verze aplikace
 
-Teď nasadíme novou `2.0` verzi komponent `voting-app`, `voting-analytics`a. `voting-storage` Nová `voting-storage` komponenta používá MySQL místo Redis a součásti `voting-app` a `voting-analytics` jsou aktualizovány, aby mohly používat tuto novou `voting-storage` komponentu.
+Teď nasadíme novou verzi `2.0` `voting-app` `voting-analytics` komponent, a `voting-storage` . Nová `voting-storage` komponenta používá MySQL místo Redis a `voting-app` `voting-analytics` součásti a jsou aktualizovány, aby mohly používat tuto novou `voting-storage` komponentu.
 
-`voting-app` Komponenta nyní podporuje funkce příznaku funkcí. Tento příznak funkce umožňuje otestovat možnost Istio vydání pro skupinu uživatelů.
+`voting-app`Komponenta nyní podporuje funkce příznaku funkcí. Tento příznak funkce umožňuje otestovat možnost Istio vydání pro skupinu uživatelů.
 
 Následující diagram znázorňuje, co budete spouštět na konci této části.
 
-* `voting-app` Verze `1.0` součásti, verze `1.1` `voting-analytics` součásti a verze `1.0` `voting-storage` součásti, mezi sebou může komunikovat.
-* `voting-app` Verze `2.0` součásti, verze `2.0` `voting-analytics` součásti a verze `2.0` `voting-storage` součásti, mezi sebou může komunikovat.
+* Verze součásti `1.0` `voting-app` , verze součásti `1.1` `voting-analytics` a verze součásti, mezi sebou `1.0` `voting-storage` může komunikovat.
+* Verze součásti `2.0` `voting-app` , verze součásti `2.0` `voting-analytics` a verze součásti, mezi sebou `2.0` `voting-storage` může komunikovat.
 * Verze `2.0` `voting-app` komponenty je dostupná jenom pro uživatele, kteří mají nastavenou konkrétní příznak funkce. Tato změna se spravuje pomocí příznaku funkce prostřednictvím souboru cookie.
 
 ![Komponenty hlasovacích aplikací AKS a směrování.](media/servicemesh/istio/scenario-routing-components-03.png)
@@ -380,7 +380,7 @@ destinationrule.networking.istio.io/voting-storage configured
 virtualservice.networking.istio.io/voting-storage configured
 ```
 
-Nyní přidáme objekty Kubernetes pro nové součásti verze `2.0` . `voting-storage` Službu aktualizujete také tak, aby obsahovala `3306` port pro MySQL:
+Nyní přidáme objekty Kubernetes pro nové `2.0` součásti verze. Službu aktualizujete také `voting-storage` tak, aby obsahovala `3306` port pro MySQL:
 
 ```console
 kubectl apply -f kubernetes/step-3-update-voting-app-with-new-storage.yaml --namespace voting
@@ -397,13 +397,13 @@ deployment.apps/voting-analytics-2-0 created
 deployment.apps/voting-app-2-0 created
 ```
 
-Počkejte, než se spustí `2.0` všechny lusky verze. Pomocí příkazu [kubectl Get lusky][kubectl-get] s přepínačem `-w` Watch Sledujte změny všech lusků v `voting` oboru názvů:
+Počkejte, než `2.0` se spustí všechny lusky verze. Pomocí příkazu [kubectl Get lusky][kubectl-get] s `-w` přepínačem Watch Sledujte změny všech lusků v `voting` oboru názvů:
 
 ```console
 kubectl get pods --namespace voting -w
 ```
 
-Nyní byste měli být schopni přepínat mezi verzí `1.0` a verzí `2.0` (Kanárské) hlasovací aplikace. Přepínač příznak funkce v dolní části obrazovky nastaví soubor cookie. Tento soubor cookie používá `voting-app` virtuální služba ke směrování uživatelů na novou verzi. `2.0`
+Nyní byste měli být schopni přepínat mezi verzí `1.0` a verzí `2.0` (Kanárské) hlasovací aplikace. Přepínač příznak funkce v dolní části obrazovky nastaví soubor cookie. Tento soubor cookie používá `voting-app` virtuální služba ke směrování uživatelů na novou verzi `2.0` .
 
 ![Verze 1,0 AKS hlasovací aplikace – příznak funkce není nastaven.](media/servicemesh/istio/scenario-routing-canary-release-01.png)
 
@@ -413,7 +413,7 @@ Počty hlasů se v různých verzích aplikace liší. Tento rozdíl zvýrazní,
 
 ## <a name="finalize-the-rollout"></a>Finalizace zavedení
 
-Po úspěšném otestování zkušební verze aktualizujte `voting-app` virtuální službu tak, aby směrovala veškerý provoz na `2.0` verzi `voting-app` součásti. Všichni uživatelé pak uvidí verzi `2.0` aplikace bez ohledu na to, jestli je nastavený příznak funkce, nebo ne:
+Po úspěšném otestování zkušební verze aktualizujte `voting-app` virtuální službu tak, aby směrovala veškerý provoz na verzi `2.0` `voting-app` součásti. Všichni uživatelé pak uvidí verzi `2.0` aplikace bez ohledu na to, jestli je nastavený příznak funkce, nebo ne:
 
 ![Komponenty hlasovacích aplikací AKS a směrování.](media/servicemesh/istio/scenario-routing-components-04.png)
 
@@ -451,7 +451,7 @@ Další scénáře můžete prozkoumat pomocí [příkladu aplikace Istio Bookin
 [istio-docs-concepts]: https://istio.io/docs/concepts/what-is-istio/
 [istio-requirements-pods-and-services]: https://istio.io/docs/setup/kubernetes/prepare/requirements/
 [istio-reference-gateway]: https://istio.io/docs/reference/config/networking/v1alpha3/gateway/
-[istio-reference-policy]: https://istio.io/docs/reference/config/istio.authentication.v1alpha1/#Policy
+[istio-reference-policy]: https://istio.io/docs/reference/config/istio.mesh.v1alpha1/#AuthenticationPolicy
 [istio-reference-virtualservice]: https://istio.io/docs/reference/config/networking/v1alpha3/virtual-service/
 [istio-reference-destinationrule]: https://istio.io/docs/reference/config/networking/v1alpha3/destination-rule/
 [istio-bookinfo-example]: https://istio.io/docs/examples/bookinfo/

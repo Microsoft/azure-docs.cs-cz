@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 94fed6f4aa62c7e649cf7d644e571b30561e0da4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80050246"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826855"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Rychlý Start: Změna účtů podporovaných aplikací
 
@@ -69,6 +69,8 @@ Ve výchozím nastavení je implicitní udělení OAuth 2.0 u aplikací zakázan
 
 ### <a name="to-enable-oauth-20-implicit-grant"></a>Povolení implicitního udělení OAuth 2.0
 
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací**.
+1. Vyhledejte a vyberte aplikaci, kterou chcete nakonfigurovat. Jakmile vyberete aplikaci, zobrazí se stránka **Přehled** neboli hlavní stránka registrace dané aplikace.
 1. Na stránce **Přehled** aplikace vyberte část **Ověřování**.
 1. V části **Upřesnit nastavení** vyhledejte část **Implicitní udělení**.
 1. Vyberte **Tokeny ID**, **Přístupové tokeny** nebo obojí.

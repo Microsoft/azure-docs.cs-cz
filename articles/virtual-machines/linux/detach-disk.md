@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c827a19fd2b3e946154a3ee0acf6dddc6ad45a0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74036367"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830000"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Jak odpojit datový disk od virtuálního počítače s Linuxem
 
@@ -82,7 +82,7 @@ V tomto příkladu je nutné odstranit následující řádek ze souboru */etc/f
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-K `umount` odpojení disku použijte. Následující příklad odpojí oddíl */dev/sdc1* z přípojného bodu */datadrive* :
+`umount`K odpojení disku použijte. Následující příklad odpojí oddíl */dev/sdc1* z přípojného bodu */datadrive* :
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
@@ -106,12 +106,10 @@ Disk zůstává v úložišti, ale už není připojený k virtuálnímu počít
 ## <a name="detach-a-data-disk-using-the-portal"></a>Odpojení datového disku pomocí portálu
 
 1. V nabídce vlevo vyberte **Virtual Machines**.
-2. Vyberte virtuální počítač s datovým diskem, který chcete odpojit, a kliknutím na tlačítko **zastavit** nasaďte virtuální počítač.
-3. V podokně virtuální počítač vyberte **disky**.
-4. V horní části podokna **disky** vyberte **Upravit**.
-5. V podokně **disky** klikněte na úplně vpravo od datového disku, který chcete odpojit, a klikněte ![na tlačítko Odpojit obrázek](./media/detach-disk/detach.png) tlačítka odpojit.
-5. Po odebrání disku klikněte na Uložit v horní části podokna.
-6. V podokně virtuální počítač klikněte na **Přehled** a potom kliknutím na tlačítko **Start** v horní části podokna restartujte virtuální počítač.
+1. V okně virtuálního počítače vyberte **disky**.
+1. V horní části okna **disky** vyberte **Upravit**.
+1. V okně **disky** v pravém dolním rohu datového disku, který chcete odpojit, klikněte na tlačítko Odpojit ![ Obrázek tlačítka odpojit ](./media/detach-disk/detach.png) .
+1. Po odebrání disku klikněte na **Uložit** v horní části okna.
 
 Disk zůstává v úložišti, ale už není připojený k virtuálnímu počítači.
 

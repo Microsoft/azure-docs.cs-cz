@@ -4,18 +4,21 @@ description: Když máte jenom příkazy rozhraní příkazového řádku, můž
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2b1a28c817e0b0aa8047cdd9952065862bda9b73
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1029d2e156d219c88100a035f2ed4a51afa6ba36
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726770"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815991"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Použití Azure Batch šablon CLI a přenosu souborů
 
-Pomocí rozšíření Azure Batch v Azure CLI je možné spouštět dávkové úlohy bez psaní kódu.
+Pomocí rozšíření služby Batch v Azure CLI je možné spouštět dávkové úlohy bez psaní kódu.
 
 Vytvořte a použijte soubory šablon JSON pomocí Azure CLI a vytvořte tak fondy, úlohy a úkoly služby Batch. Pomocí příkazů rozšíření CLI snadno nahrajte vstupní soubory úlohy do účtu úložiště přidruženého k účtu Batch a stáhněte výstupní soubory úlohy.
+
+> [!NOTE]
+> Soubory JSON nepodporují stejné funkce jako [šablony Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Jsou určeny k formátování jako nezpracovaný text žádosti REST. Rozšíření CLI nemění žádné existující příkazy, ale má podobnou možnost šablony, která přidává funkce částečného Azure Resource Manager šablony. Viz rozšíření rozhraní příkazového [řádku Azure Batch pro Windows, Mac a Linux](https://github.com/Azure/azure-batch-cli-extensions).
 
 ## <a name="overview"></a>Přehled
 
@@ -136,7 +139,7 @@ Pokud se soubor šablony jmenoval jako _Pool-ffmpeg. JSON_, pak tuto šablonu vy
 az batch pool create --template pool-ffmpeg.json
 ```
 
-Rozhraní příkazového řádku vás vyzve k zadání hodnot `poolId` `nodeCount` parametrů a. Parametry můžete také dodat v souboru JSON. Například:
+Rozhraní příkazového řádku vás vyzve k zadání hodnot `poolId` `nodeCount` parametrů a. Parametry můžete také dodat v souboru JSON. Příklad:
 
 ```json
 {

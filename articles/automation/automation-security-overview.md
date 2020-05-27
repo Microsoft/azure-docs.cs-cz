@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: f78161590c897e6337e8694acb9f8a6b34258246
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d2b9f705c73e667f34e46fdeed3c80af1e65fb12
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743808"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830102"
 ---
 # <a name="automation-account-authentication-overview"></a>Přehled ověřování účtů služby Automation
 
@@ -47,6 +47,6 @@ Runbooky běžící na Hybrid Runbook Worker ve vašem datovém centru nebo na v
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření účtu Automation na webu Azure Portal](automation-create-standalone-account.md)
-* [Vytvoření účtu Automation pomocí šablony Azure Resource Manager](automation-create-account-template.md)
-* [Ověřování pomocí Amazon Web Services (AWS)](automation-config-aws-account.md)
+* Pokud chcete vytvořit účet Automation z Azure Portal, přečtěte si téma [vytvoření samostatného účtu Azure Automation](automation-create-standalone-account.md).
+* Pokud dáváte přednost vytvoření účtu pomocí šablony, přečtěte si téma [Vytvoření účtu Automation pomocí šablony Azure Resource Manager](automation-create-account-template.md).
+* Ověřování pomocí Amazon Web Services najdete v tématu [ověřování runbooků pomocí Amazon Web Services](automation-config-aws-account.md).

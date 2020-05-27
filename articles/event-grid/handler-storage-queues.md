@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 9b767caa1041f865d8e15cd57796b186f7a4a6bb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f62f2b5bc01518af29bd1deb17a38e9fe105a4ed
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598539"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800554"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>Fronta úložiště jako obslužná rutina události pro Azure Event Grid události
 Obslužná rutina události je místo, kam se událost posílá. Obslužná rutina provede několik dalších akcí zpracování události. Několik služeb Azure se automaticky nakonfiguruje tak, aby zpracovávala události a **Azure Queue Storage** je jednou z nich. 
@@ -25,6 +25,121 @@ V následujícím kurzu najdete příklad použití úložiště Queue jako obsl
 |Nadpis  |Popis  |
 |---------|---------|
 | [Rychlý Start: směrování vlastních událostí do Azure Queue Storage pomocí rozhraní příkazového řádku Azure a Event Grid](custom-event-to-queue-storage.md) | Popisuje, jak odesílat vlastní události do úložiště fronty. |
+
+## <a name="rest-examples-for-put"></a>Příklady REST (pro PUT)
+
+### <a name="storage-queue-as-the-event-handler"></a>Fronta úložiště jako obslužná rutina události
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>",
+                "queueName": "<QUEUE NAME>"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="storage-queue-as-the-event-handler---delivery-with-managed-identity"></a>Fronta úložiště jako obslužná rutina události – doručení se spravovanou identitou
+
+```json
+{
+    "properties": 
+    {
+        "deliveryWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "destination": 
+            {
+                "endpointType": "StorageQueue",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>",
+                    "queueName": "<QUEUE NAME>"
+                }
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="storage-queue-as-a-deadletter-destination"></a>Fronta úložiště jako cíl nedoručených zpráv
+
+```json
+{
+    "name": "",
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DESTINATION STORAGE>",
+                "queueName": "queue1"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema",
+        "deadLetterDestination": 
+        {
+            "endpointType": "StorageBlob",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DEADLETTER STORAGE>",
+                "blobContainerName": "test"
+            }
+        }
+    }
+}
+```
+
+### <a name="storage-queue-as-a-deadletter-destination---managed-identity"></a>Fronta úložiště jako nedoručená cílová identita – spravovaná
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DESTINATION STORAGE>",
+                "queueName": "queue1"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema",
+        "deadLetterWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "deadLetterDestination": 
+            {
+                "endpointType": "StorageBlob",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DEADLETTER STORAGE>",
+                    "blobContainerName": "test"
+                }
+            }
+        }
+    }
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 Seznam podporovaných obslužných rutin událostí naleznete v článku [obslužné rutiny událostí](event-handlers.md) . 

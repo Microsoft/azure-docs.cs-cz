@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: cda803c886a3db9099a8c47bb70a582b6a1f6d52
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c996c51583d81905e7853323166407e38ae79225
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745044"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830034"
 ---
 # <a name="configure-runbook-input-parameters"></a>Vstupní parametry runbooku
 
@@ -357,5 +357,5 @@ Nyní můžete sadu Runbook volat z místního počítače pomocí Azure PowerSh
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Upravit textové Runbooky v Azure Automation](automation-edit-textual-runbook.md)
-* [Vytváření grafických runbooků v Azure Automation](automation-graphical-authoring-intro.md)
+* Pokud chcete připravit textový Runbook, přečtěte si téma [Úprava textových runbooků v Azure Automation](automation-edit-textual-runbook.md).
+* Informace o přípravě grafického Runbooku najdete [v tématu vytváření grafických runbooků v Azure Automation](automation-graphical-authoring-intro.md).

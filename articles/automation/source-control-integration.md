@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 248cbd42d86371742ad4985b515d70d022722385
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744925"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828878"
 ---
 # <a name="use-source-control-integration"></a>Použití integrace správy zdrojového kódu
 
@@ -123,7 +123,7 @@ Následující tabulka definuje minimální oprávnění PAT potřebná pro GitH
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Minimální oprávnění PAT pro Azure Repos
 
-Následující seznam definuje minimální oprávnění PAT potřebná pro Azure Repos. Další informace o vytvoření PAT v Azure Repos najdete v tématu [ověření přístupu pomocí tokenů osobního přístupu](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
+Následující seznam definuje minimální oprávnění PAT potřebná pro Azure Repos. Další informace o vytvoření PAT v Azure Repos najdete v tématu [ověření přístupu pomocí tokenů osobního přístupu](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).
 
 | Rozsah  |  Typ přístupu  |
 |---------| ----------|
@@ -196,16 +196,16 @@ Odpojení od úložiště správy zdrojového kódu:
 
 ## <a name="handle-encoding-issues"></a>Zpracování potíží s kódováním
 
-Pokud více lidí upravuje Runbooky v úložišti správy zdrojového kódu pomocí různých editorů, může dojít k problémům s kódováním. Další informace o této situaci najdete v tématu [běžné příčiny potíží s kódováním](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
+Pokud více lidí upravuje Runbooky v úložišti správy zdrojového kódu pomocí různých editorů, může dojít k problémům s kódováním. Další informace o této situaci najdete v tématu [běžné příčiny potíží s kódováním](https://docs.microsoft.com/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
 
 ## <a name="update-the-pat"></a>Aktualizace PAT
 
 V současné době nemůžete použít Azure Portal k aktualizaci PAT ve správě zdrojového kódu. Pokud vaše PAT vypršela nebo odvolala, můžete v jednom z těchto způsobů aktualizovat správu zdrojového kódu pomocí nového přístupového tokenu:
 
 * Použijte [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update).
-* Použijte rutinu [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) .
+* Použijte rutinu [Update-AzAutomationSourceControl](https://docs.microsoft.com//powershell/module/az.automation/update-azautomationsourcecontrol) .
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Azure Automation: integrace správy zdrojového kódu v Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
-* [Azure Automation: integrace správy zdrojového kódu sady Runbook pomocí Azure DevOps](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
+* Pro integraci správy zdrojového kódu v Azure Automation naleznete v tématu [Azure Automation: integrace správy zdrojového kódu v Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/).  
+* Informace o integraci správy zdrojového kódu sady Runbook ve službě Visual Studio Online naleznete v tématu [Azure Automation: integrování správy zdrojového kódu sady Runbook pomocí služby Visual Studio Online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/).

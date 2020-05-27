@@ -3,12 +3,12 @@ title: Podporované typy prostředků prostřednictvím Azure Resource Health | 
 description: Podporované typy prostředků prostřednictvím služby Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478898"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816094"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu v Azure Resource Health
 Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím stavu prostředků podle typů prostředků.
@@ -204,7 +204,7 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 |---|
 |<ul><li>Je databáze spuštěná a spuštěná?</li></ul>|
 
-## <a name="microsoftsqlserverdatabases"></a>Microsoft. SQL/Server/databáze
+## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/servery/databáze
 |Provedené kontroly|
 |---|
 |<ul><li>Přihlásili jste se k databázi s přihlášením?</li></ul>|

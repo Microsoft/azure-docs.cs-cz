@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 65bbb35d041a48e68d01a50e88e42fbeb73f2ea6
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 2fbdf947eb36e1591cc9da52a85e389be63c8535
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864279"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826651"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -149,21 +149,21 @@ V rámci [specifikace protokolu SCIM 2,0](http://www.simplecloud.info/#Specifica
 * Podporuje vytváření uživatelů a volitelně také skupiny podle oddílu [3,3 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.3).  
 * Podporuje úpravu uživatelů nebo skupin s požadavky na opravy podle [oddílu 3.5.2 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.5.2).  
 * Podporuje načítání známého prostředku pro uživatele nebo skupinu vytvořené dříve, podle [oddílu 3.4.1 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.1).  
-* Podporuje dotazování uživatelů nebo skupin podle části [3.4.2 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Ve výchozím nastavení jsou uživatelé načítáni pomocí `id` a dotazováni jejich `username` a `externalid`a skupiny jsou dotazovány nástrojem. `displayName`  
+* Podporuje dotazování uživatelů nebo skupin podle části [3.4.2 protokolu SCIM](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Ve výchozím nastavení jsou uživatelé načítáni pomocí `id` a dotazováni jejich `username` a a `externalid` skupiny jsou dotazovány nástrojem `displayName` .  
 * Podporuje dotazování uživatele podle ID a podle manažera podle části 3.4.2 protokolu SCIM.  
 * Podporuje dotazování skupin podle ID a členu podle části 3.4.2 protokolu SCIM.  
 * Přijme jeden nosný token pro ověřování a autorizaci služby Azure AD pro vaši aplikaci.
 
 Při implementaci SCIM koncového bodu, který zajistí kompatibilitu s Azure AD, postupujte podle těchto obecných pokynů:
 
-* `id`je požadovaná vlastnost pro všechny prostředky. Každá odpověď, která vrací prostředek, by měla mít jistotu, že každý prostředek má `ListResponse` tuto vlastnost, s výjimkou členů s nulovými členy.
-* Odpověď na požadavek na dotaz nebo filtr by měla být vždy `ListResponse`typu.
+* `id`je požadovaná vlastnost pro všechny prostředky. Každá odpověď, která vrací prostředek, by měla mít jistotu, že každý prostředek má tuto vlastnost, s výjimkou `ListResponse` členů s nulovými členy.
+* Odpověď na požadavek na dotaz nebo filtr by měla být vždy typu `ListResponse` .
 * Skupiny jsou volitelné, ale podporují se jenom v případě, že implementace SCIM podporuje žádosti o opravu.
 * V reakci na opravu není nutné zahrnout celý prostředek.
 * Microsoft Azure AD používá pouze následující operátory:  
     - `eq`
     - `and`
-* Pro strukturální prvky v SCIM nemusíte rozlišovat velká a malá písmena, zejména hodnoty `op` operace opravy, jak je definováno https://tools.ietf.org/html/rfc7644#section-3.5.2v. Azure AD vygeneruje hodnoty "op" jako `Add`, `Replace`a. `Remove`
+* Pro strukturální prvky v SCIM nemusíte rozlišovat velká a malá písmena, zejména `op` hodnoty operace opravy, jak je definováno v https://tools.ietf.org/html/rfc7644#section-3.5.2 . Azure AD vygeneruje hodnoty "op" jako `Add` , `Replace` a `Remove` .
 * Microsoft Azure AD vytváří požadavky na načtení náhodného uživatele a skupiny, aby bylo zajištěno, že koncový bod a přihlašovací údaje jsou platné. Také se provádí jako součást toku **testu připojení** v [Azure Portal](https://portal.azure.com). 
 * Atribut, na kterém mohou být prostředky odesílány, by měl být nastaven jako odpovídající atribut v aplikaci v [Azure Portal](https://portal.azure.com). Další informace najdete v tématu [Přizpůsobení mapování atributů zřizování uživatelů](customize-application-attributes.md) .
 
@@ -191,36 +191,36 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 > Pokud chcete zjistit, jak a kdy služba zřizování uživatelů Azure AD vysílá níže popsané operace, přečtěte si část [zřizovací cykly: počáteční a přírůstkové](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) , [jak zřizování funguje](how-provisioning-works.md).
 
 [Uživatelské operace](#user-operations)
-  - [Vytvořit uživatele](#create-user) ([žádost o](#request) / [odpověď](#response))
-  - [Získat uživatele](#get-user) ([žádost o](#request-1) / [odpověď](#response-1))
-  - [Získat uživatele dotazem](#get-user-by-query) ([žádost o](#request-2) / [odpověď](#response-2))
-  - [Získat uživatele podle dotazů – žádné výsledky](#get-user-by-query---zero-results) ([Request](#request-3)
-/ [odpověď](#response-3)na žádost)
-  - [Aktualizace uživatele [vlastnosti s více hodnotami]](#update-user-multi-valued-properties) ([Request](#request-4) /  [odpověď](#response-4)na žádost)
-  - [Aktualizace uživatele [vlastnosti s jednou hodnotou]](#update-user-single-valued-properties) ([Request](#request-5)
-/ [odpověď](#response-5)na žádost) 
-  - [Zakázat uživatele](#disable-user) ([žádost o](#request-14) / 
-[odpověď](#response-14))
-  - [Odstranit uživatele](#delete-user) ([žádost o](#request-6) / 
-[odpověď](#response-6))
+  - [Vytvořit uživatele](#create-user) ([žádost o](#request)  /  [odpověď](#response))
+  - [Získat uživatele](#get-user) ([žádost o](#request-1)  /  [odpověď](#response-1))
+  - [Získat uživatele dotazem](#get-user-by-query) ([žádost o](#request-2)  /  [odpověď](#response-2))
+  - [Získat uživatele podle dotazů – žádné výsledky](#get-user-by-query---zero-results) ([Request](#request-3) 
+/  [odpověď](#response-3)na žádost)
+  - [Aktualizace uživatele [vlastnosti s více hodnotami]](#update-user-multi-valued-properties) ([Request](#request-4)  /   [odpověď](#response-4)na žádost)
+  - [Aktualizace uživatele [vlastnosti s jednou hodnotou]](#update-user-single-valued-properties) ([Request](#request-5) 
+/  [odpověď](#response-5)na žádost) 
+  - [Zakázat uživatele](#disable-user) ([žádost o](#request-14)  / 
+ [odpověď](#response-14))
+  - [Odstranit uživatele](#delete-user) ([žádost o](#request-6)  / 
+ [odpověď](#response-6))
 
 
 [Operace skupiny](#group-operations)
-  - [Vytvořit skupinu](#create-group) ( [Request](#request-7) / [odpověď](#response-7)na žádost)
-  - [Získat skupinu](#get-group) ( [Request](#request-8) / [odpověď](#response-8)na žádost)
-  - [Získat skupinu podle DisplayName](#get-group-by-displayname) ([odpověď](#response-9)na[žádost](#request-9) / )
+  - [Vytvořit skupinu](#create-group) ( [Request](#request-7)  /  [odpověď](#response-7)na žádost)
+  - [Získat skupinu](#get-group) ( [Request](#request-8)  /  [odpověď](#response-8)na žádost)
+  - [Získat skupinu podle DisplayName](#get-group-by-displayname) (odpověď na[žádost](#request-9)  /  [Response](#response-9))
   - [Update Group [atributy nečlenu]](#update-group-non-member-attributes) ([Request](#request-10) /
   [odpověď](#response-10)na žádost)
-  - [Aktualizace skupiny [přidat členy]](#update-group-add-members) ( [Request](#request-11) /
-[odpověď](#response-11)na žádost)
-  - [Aktualizace skupiny [odebrat členy]](#update-group-remove-members) ( [Request](#request-12) /
-[odpověď](#response-12)na žádost)
-  - [Odstranit skupinu](#delete-group) ([Request](#request-13) /
-[odpověď](#response-13)na žádost)
+  - [Aktualizace skupiny [přidat členy]](#update-group-add-members) ( [Request](#request-11)  /
+ [odpověď](#response-11)na žádost)
+  - [Aktualizace skupiny [odebrat členy]](#update-group-remove-members) ( [Request](#request-12)  /
+ [odpověď](#response-12)na žádost)
+  - [Odstranit skupinu](#delete-group) ([Request](#request-13)  /
+ [odpověď](#response-13)na žádost)
 
 ### <a name="user-operations"></a>Uživatelské operace
 
-* Na uživatele lze zadat dotaz pomocí `userName` atributů `email[type eq "work"]` nebo.  
+* Na uživatele lze zadat dotaz pomocí `userName` `email[type eq "work"]` atributů nebo.  
 
 #### <a name="create-user"></a>Vytvořit uživatele
 
@@ -551,7 +551,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 ### <a name="group-operations"></a>Operace skupiny
 
 * Skupiny se vždy vytvoří s prázdným seznamem členů.
-* Do `displayName` skupin lze zadat dotaz pomocí atributu.
+* Do skupin lze zadat dotaz pomocí `displayName` atributu.
 * Aktualizace žádosti o opravu skupiny by měla v odpovědi vracet *HTTP 204 bez obsahu* . Vrácení textu se seznamem všech členů není vhodné.
 * Není nutné podporovat vrácení všech členů skupiny.
 
@@ -803,7 +803,7 @@ Další informace o protokolu HTTPS v ASP.NET Core použijte následující odka
 
 Žádosti od Azure Active Directory zahrnují nosný token OAuth 2,0. Každá služba, která požadavek obdrží, by měla ověřit vystavitele jako Azure Active Directory pro očekávaného tenanta Azure Active Directory.
 
-V tokenu je Vystavitel identifikovaný deklarací ISS, jako `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`je. V tomto příkladu základní adresa hodnoty `https://sts.windows.net`deklarace identity identifikuje Azure Active Directory jako Vystavitel, zatímco relativní segment adres _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_jedinečný identifikátor Azure Active Directory tenanta, pro který byl token vydán.
+V tokenu je Vystavitel identifikovaný deklarací ISS, jako je `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` . V tomto příkladu základní adresa hodnoty deklarace identity `https://sts.windows.net` identifikuje Azure Active Directory jako Vystavitel, zatímco relativní segment adres _cbb1a5ac-f33b-45fa-9BF5-f37db0fed422_jedinečný identifikátor Azure Active Directory tenanta, pro který byl token vydán.
 
 Cílovou skupinou pro token bude ID šablony aplikace pro aplikaci v galerii, takže každá z aplikací zaregistrovaných v jednom tenantovi může obdržet stejnou `iss` deklaraci požadavků SCIM. ID šablony aplikace pro všechny vlastní aplikace je _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_. Token vygenerovaný službou Azure AD Provisioning by se měl použít jenom pro testování. Neměl by se používat v produkčním prostředí.
 
@@ -1127,7 +1127,7 @@ Aplikace, které podporují profil SCIM popsané v tomto článku, se dají při
 
 1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com). Všimněte si, že můžete získat přístup k bezplatné zkušební verzi pro Azure Active Directory s licencemi P2, a to tak, že si zaregistrujete [program pro vývojáře](https://developer.microsoft.com/office/dev-program) .
 2. V levém podokně vyberte **podnikové aplikace** . Zobrazí se seznam všech nakonfigurovaných aplikací, včetně aplikací přidaných z galerie.
-3. Vyberte **+ Nová aplikace** > **všechny** > **aplikace mimo galerii**.
+3. Vyberte **+ Nová aplikace**  >  **všechny**  >  **aplikace mimo galerii**.
 4. Zadejte název vaší aplikace a vyberte **Přidat** a vytvořte objekt aplikace. Nová aplikace se přidá do seznamu podnikových aplikací a otevře se na obrazovce správy aplikací.
 
    ![Snímek obrazovky se zobrazením Galerie aplikací Azure AD](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
@@ -1220,10 +1220,6 @@ Abychom vám pomohli při zvyšování povědomí a vyžádání naší společn
 * **Technickou dokumentaci.** Vytvořte článek centra pro nápovědu nebo technickou dokumentaci, jak mohou zákazníci začít. [Příklad: integrace zástupné + Microsoft Azure Active Directory.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
 ) 
 * **Komunikace se zákazníky.** Upozorní zákazníky na novou integraci prostřednictvím zákaznické komunikace (měsíční bulletiny, e-mailové kampaně, poznámky k verzi produktu). 
-
-### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Povolte IP adresy, které používá služba zřizování Azure AD k provádění požadavků SCIM.
-
-Některé aplikace umožňují příchozí provoz do své aplikace. Aby služba zřizování služby Azure AD fungovala podle očekávání, musí být povolené IP adresy. Seznam IP adres pro jednotlivé značky nebo oblasti služby najdete v souboru JSON – [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519). Tyto IP adresy můžete podle potřeby stáhnout a programovat do brány firewall. Rezervované rozsahy IP adres pro zřizování Azure AD najdete v části "AzureActiveDirectoryDomainServices".
 
 ## <a name="related-articles"></a>Související články
 

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: 90c3cc2e096b9b58465987bc53f718c5d06c6203
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78899104"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826056"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrace úloh Azure Scheduleru do Azure Logic Apps
 
@@ -114,9 +114,9 @@ Pokud chcete ručně spustit nebo aktivovat jednorázovou úlohu, odešlete vol�
 
 Například pomocí aplikace pro publikování můžete vytvořit požadavek POST s nastavením podobným této ukázce a pak vybrat **Odeslat** pro vytvoření žádosti.
 
-| Request – metoda | zprostředkovatele identity | Tělo | Hlavičky |
+| Request – metoda | URL | Text | Hlavičky |
 |----------------|-----|------|---------|
-| **POST** | <*koncový bod – adresa URL*> | **získání** <p>**JSON (Application/JSON)** <p>Do pole **nezpracované** zadejte datovou část, kterou chcete v žádosti odeslat. <p>**Poznámka**: Toto nastavení automaticky nakonfiguruje hodnoty **hlaviček** . | **Klíč**: Content-Type <br>**Hodnota**: Application/JSON |
+| **SPUŠTĚNÍ** | <*koncový bod – adresa URL*> | **získání** <p>**JSON (Application/JSON)** <p>Do pole **nezpracované** zadejte datovou část, kterou chcete v žádosti odeslat. <p>**Poznámka**: Toto nastavení automaticky nakonfiguruje hodnoty **hlaviček** . | **Klíč**: Content-Type <br>**Hodnota**: Application/JSON |
 |||||
 
 ![Poslat požadavek na ruční aktivaci vaší aplikace logiky](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -239,7 +239,7 @@ Pokud má vaše předplatné Azure placený plán podpory, můžete v Azure Port
 
 **Komunita**
 
-* [Fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
+* [Microsoft Q&Stránka s otázkou pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
 ## <a name="next-steps"></a>Další kroky

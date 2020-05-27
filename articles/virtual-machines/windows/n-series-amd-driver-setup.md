@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 1bcc13db3f503c80fda71a2104d0ff8d99e67df6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 745ec7ebf792fe1165022516be4c83fb9e864cc9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197998"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799885"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů AMD GPU pro virtuální počítače řady N-Series s Windows
 
@@ -38,13 +38,9 @@ Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v
 
 1. Připojte se pomocí vzdálené plochy ke každému virtuálnímu počítači NVv4-Series.
 
-2. Pokud jste zákazník ve verzi Preview NVv4, zastavte prosím virtuální počítač a počkejte, než se přesune do stavu Zastaveno (přidělení zrušeno).
+2. Stáhněte si a nainstalujte nejnovější ovladač.
 
-3. Spusťte prosím virtuální počítač a Stáhněte si nejnovější [Nástroj AMD Cleanup](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Existující ovladač odinstalujte spuštěním příkazu "amdcleanuputility-x64. exe". Nepoužívejte prosím žádný existující Nástroj pro čištění, který byl nainstalovaný s předchozím ovladačem.  
-
-4. Stáhněte si a nainstalujte nejnovější ovladač.
-
-5. Restartujte virtuální počítač.
+3. Restartujte virtuální počítač.
 
 ## <a name="verify-driver-installation"></a>Ověřit instalaci ovladače
 

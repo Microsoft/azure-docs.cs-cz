@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954383"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829779"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro účely navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure můžete navrátit služby virtuálních počítačů na místní lokalitu. Pro navrácení služeb po obnovení musíte virtuální počítač znovu ochránit z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server pro příjem provozu. 
@@ -27,7 +27,7 @@ Pokud je váš chráněný virtuální počítač virtuálním počítačem s Wi
 ## <a name="overview"></a>Přehled
 Tento článek poskytuje pokyny k instalaci hlavního cíle systému Linux.
 
-Komentáře nebo dotazy vystavte na konci tohoto článku nebo na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Komentáře nebo dotazy můžete vystavit na konci tohoto článku nebo na [stránce s dotazy k Microsoft Q&pro Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -160,7 +160,7 @@ Chcete-li získat ID pro každý pevný disk SCSI ve virtuálním počítači se
 
 3. Vyberte kartu **Možnosti** .
 
-4. V levém podokně vyberte možnost **Upřesnit** > **Obecné**a potom v pravé dolní části obrazovky vyberte tlačítko **parametry konfigurace** .
+4. V levém podokně vyberte možnost **Upřesnit**  >  **Obecné**a potom v pravé dolní části obrazovky vyberte tlačítko **parametry konfigurace** .
 
     ![Otevřít konfigurační parametr](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
@@ -244,7 +244,7 @@ K vytvoření disku pro uchovávání informací použijte následující postup
 
     ![ID více cest](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Naformátujte jednotku a pak na nové jednotce vytvořte systém souborů: **mkfs. ext4/dev/Mapper/\<s více>. **
+3. Naformátujte jednotku a pak na nové jednotce vytvořte systém souborů: **mkfs. ext4/dev/Mapper/s \< více>. **
     
     ![Systém souborů](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +261,7 @@ K vytvoření disku pro uchovávání informací použijte následující postup
     
     Vyberte **Vložit** a začněte upravovat soubor. Vytvořte nový řádek a vložte následující text. Upravte na základě zvýrazněného IDENTIFIKÁTORu Multipath z předchozího příkazu více než na disku.
 
-    **/dev/Mapper/\<pro uchovávání informací – multipath ID>/mnt/retention ext4 RW 0 0**
+    **/dev/Mapper/pro \< uchovávání informací – Multipath id>/mnt/retention ext4 rw 0 0**
 
     Vyberte **ESC**a potom zadejte **: WQ** (Write and quit), čímž zavřete okno editoru.
 

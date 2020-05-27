@@ -44,6 +44,8 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Kurzy
   items:
+    - name: Začínáme
+      href: get-started.md
     - name: Spouštění aplikací Apache Spark pro fondy úloh Sparku
       href: ./spark/intellij-tool-synapse.md
     - name: Definice úloh Sparku

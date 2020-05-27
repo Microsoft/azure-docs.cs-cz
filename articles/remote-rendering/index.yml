@@ -9,12 +9,12 @@ metadata:
   author: florianborn71
   ms.author: flborn
   ms.date: 03/26/2020
-  ms.openlocfilehash: a257b294c105ca153a57afe90db95a1bd1b753e8
-  ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+  ms.openlocfilehash: e379515ea34206e21f80ceb23a465858d6d4da81
+  ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80678310"
+  ms.lasthandoff: 05/21/2020
+  ms.locfileid: "83773215"
 landingContent:
 - title: Informace o službě Azure Remote Rendering
   linkLists:
@@ -58,9 +58,11 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Nastavení projektu Unity od začátku
+    - text: 'Unity: Nastavení projektu od začátku'
       url: tutorials/unity/project-setup.md
-    - text: Práce se vzdálenými entitami v Unity
+    - text: 'Unity: Práce se vzdálenými entitami'
       url: tutorials/unity/working-with-remote-entities.md
-    - text: Změna prostředí a materiálů
+    - text: 'Unity: Změna prostředí a materiálů'
       url: tutorials/unity/changing-environment-and-materials.md
+    - text: 'Nativní C++: Integrace služby Remote Rendering do holografické aplikace HoloLens'
+      url: tutorials/native-cpp/hololens/integrate-remote-rendering-into-holographic-app.md

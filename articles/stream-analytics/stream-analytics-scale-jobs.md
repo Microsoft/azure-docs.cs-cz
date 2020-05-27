@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: d828103bef8e57f5d0cdfe6c243c52e2d0526663
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d982cc94a9ab0517d6453a30371635c1e3100676
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80257542"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835593"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Škálování Azure Stream Analytics úlohy za účelem zvýšení propustnosti
 V tomto článku se dozvíte, jak vyladit Stream Analytics dotaz, abyste zvýšili propustnost pro úlohy Stream Analytics. Následující průvodce vám umožní škálovat úlohy tak, aby zpracovávala větší zátěž a využila více systémových prostředků (například větší šířku pásma, více prostředků procesoru, více paměti).
@@ -77,8 +77,8 @@ V některých případech použití nezávislého výrobce softwaru, kde je ceno
 
 
 
-## <a name="get-help"></a>Podpora
-Pokud potřebujete další pomoc, vyzkoušejte naši [Azure Stream Analytics Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+## <a name="get-help"></a>Získání pomoci
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)

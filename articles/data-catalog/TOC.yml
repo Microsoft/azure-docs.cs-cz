@@ -4,7 +4,7 @@
   items:
     - name: Co je služba Data Catalog?
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Vytvoření Azure Data Catalogu
       href: data-catalog-get-started.md
@@ -20,7 +20,7 @@
       href: data-catalog-dsr.md
     - name: Přijmutí služby Azure Data Catalog
       href: data-catalog-adopting-data-catalog.md
-    - name: Předpoklady
+    - name: Požadavky
       href: data-catalog-prerequisites.md
     - name: Nejčastější dotazy
       href: data-catalog-frequently-asked-questions.md
@@ -68,8 +68,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Klávesové zkratky pro Azure Data Catalog
       href: data-catalog-keyboard-shortcuts.md
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-catalog.html'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
     - name: Cenová kalkulačka

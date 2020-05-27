@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: e61c8b9af04ce9157179d464c1a49ce685c6913f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2578e15a60b2021d9e599018043c4834d0c07d34
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744728"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830493"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Spuštění runbooku z webhooku
 
@@ -237,4 +237,4 @@ Následující obrázek ukazuje požadavek odesílaný z Windows PowerShellu a v
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Aktivace sady Runbook Azure Automation pomocí výstrahy](automation-create-alert-triggered-runbook.md)
+* Chcete-li spustit sadu Runbook z výstrahy, přečtěte si téma [použití výstrahy ke spuštění sady runbook Azure Automation](automation-create-alert-triggered-runbook.md).

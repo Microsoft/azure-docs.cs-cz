@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a125637bd155ac11a544afeee1d371d080bb72eb
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 395aa82d47f4f84070af557c2c3b741776fb51ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799094"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834403"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s časovou rezervou
 
@@ -104,6 +104,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | -----|---------|
     | EmailAddress | User. userPrincipalName |
     | | |
+
+> [!NOTE]
+    > Aby bylo možné nastavit konfiguraci poskytovatele služeb (SP), je nutné na stránce konfigurace SAML kliknout na **Rozbalit** vedle **Možnosti Pokročilá nastavení** . Do pole **Vystavitel poskytovatele služeb** zadejte adresu URL pracovního prostoru. Výchozí hodnota je slack.com. 
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
