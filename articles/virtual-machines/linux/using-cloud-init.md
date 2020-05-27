@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/19/2019
 ms.author: danis
-ms.openlocfilehash: 989e265c83cb2a71d93453b0c3bcbc3e41079447
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9e42229b08d7817b64c66c4ab23877c837339475
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701597"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827314"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora Cloud-init pro virtuální počítače v Azure
 V tomto článku se dozvíte, jak podpora pro [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat virtuální počítač (VM) nebo službu Virtual Machine Scale Sets v době zřizování v Azure. Tyto konfigurace Cloud-init se po prvním spuštění spustí, jakmile se prostředky zřídí v Azure.  
@@ -53,11 +53,12 @@ K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v 
 | Vydavatel/verze | Nabídka | Skladová jednotka (SKU) | Verze | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ano | Ano – podpora z verze balíčku: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Poznámka: Toto je náhled image a jakmile všechny image RHEL 7,7 podporují Cloud-init, odstraní se 1. září 2020). | Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL |7 – LVM | Není k dispozici| žádné aktualizace obrazu k dokončení konce května| Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL |7.7 | Není k dispozici| žádné aktualizace obrazu k dokončení konce května | Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 (Gen1) |RHEL – BYOS | RHEL – lvm77 | 7.7.2020051912 | žádné aktualizace obrazu v letu, k dokončení konce května  | Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 (Gen2) |RHEL – BYOS | RHEL – lvm77 | 7.7.2020051913 |žádné aktualizace obrazu v letu, k dokončení konce května  | Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Poznámka: Toto je náhled image a jakmile všechny image RHEL 7,7 podporují Cloud-init, odstraní se 1. září 2020). | Ano – podpora z verze balíčku: *18.5 -6. el7*|
+|RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | žádné aktualizace obrazu v letu, k dokončení konce května | Ano – podpora z verze balíčku: *18.5 -6. el7*|
+|RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | žádné aktualizace obrazu v letu, k dokončení konce května | Ano – podpora z verze balíčku: *18.5 -6. el7*|
+|RedHat 7,7 (Gen1)|RHEL |7 – LVM | 7.7.2020051921 | žádné aktualizace obrazu v letu, k dokončení konce května | Ano – podpora z verze balíčku: *18.5 -6. el7*|
+|RedHat 7,7 (Gen2)|RHEL | 7lvm – Gen2 | 7.7.2020051922  | žádné aktualizace obrazu v letu, k dokončení konce května | Ano – podpora z verze balíčku: *18.5 -6. el7*|
+|RedHat 7,7 (Gen1) |RHEL – BYOS | RHEL – lvm77 | 7.7.20200416 | žádné aktualizace obrazu v letu, k dokončení konce května  | Ano – podpora z verze balíčku: *18.5 -6. el7*|
 |RedHat 8,1 (Gen1) |RHEL |8,1 – CI |8.1.2020042511 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020|
 |RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 8,1 podporují Cloud-init, odstraní se 1. srpna 2020). | Ne, ETA pro plnou podporu červen 2020 |
 

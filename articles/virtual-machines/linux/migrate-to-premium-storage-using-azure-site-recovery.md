@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03e26c344284541116a5b98bc330804b71a64e28
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944834"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833771"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Premium Storage pomocí Azure Site Recovery
 
@@ -74,13 +74,13 @@ K migraci virtuálních počítačů Azure IaaS mezi oblastmi nebo ve stejné ob
 ### <a name="step-1-create-a-recovery-services-vault"></a>Krok 1: vytvoření trezoru Recovery Services
 
 1. Otevřete [Azure Portal](https://portal.azure.com).
-2. Vyberte **vytvořit** > **správce** > prostředků**zálohování** a **Site Recovery (OMS)**. Případně můžete vybrat **Procházet** > **Recovery Services trezor** > **Přidat**. 
+2. Vyberte **vytvořit**  >  **správce**prostředků  >  **zálohování** a **Site Recovery (OMS)**. Případně můžete vybrat **Procházet**  >  **Recovery Services trezor**  >  **Přidat**. 
 3. Zadejte oblast, do které se budou virtuální počítače replikovat. Pro účely migrace ve stejné oblasti vyberte oblast, ve které jsou zdrojové virtuální počítače a účty zdrojového úložiště. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Krok 2: výběr cílů ochrany 
 
 1. Na virtuálním počítači, kam chcete nainstalovat konfigurační server, otevřete [Azure Portal](https://portal.azure.com).
-2.  > V**Nastavení** **Recovery Services trezory** > **Site Recovery** > **Krok 1: Příprava** > na**cíl ochrany**infrastruktury.
+2. V nastavení **Recovery Services trezory**  >  **Settings**  >  **Site Recovery**  >  **Krok 1: Příprava**na  >  **cíl ochrany**infrastruktury.
 
    ![Procházení k podoknu cíle ochrany][2]
 
@@ -90,7 +90,7 @@ K migraci virtuálních počítačů Azure IaaS mezi oblastmi nebo ve stejné ob
 
 ### <a name="step-3-set-up-the-source-environment-configuration-server"></a>Krok 3: nastavení zdrojového prostředí (konfigurační server)
 
-1. Stáhněte si **Azure Site Recovery Unified Setup** a registrační klíč trezoru, a to tak, že se vrátíte do podoken **připravit infrastrukturu** > **připravit zdroj** > **Přidat server** . 
+1. Stáhněte si **Azure Site Recovery Unified Setup** a registrační klíč trezoru, a to tak, že se vrátíte do podoken **připravit infrastrukturu**  >  **připravit zdroj**  >  **Přidat server** . 
  
    Abyste mohli spustit sjednocenou instalaci, budete potřebovat registrační klíč trezoru. Klíč je platný pět dní od jeho vygenerování.
 
@@ -123,7 +123,7 @@ K migraci virtuálních počítačů Azure IaaS mezi oblastmi nebo ve stejné ob
 
 ### <a name="step-4-set-up-the-target-environment"></a>Krok 4: nastavení cílového prostředí
 
-Vyberte **připravit** > **cíl**infrastruktury a zadejte model nasazení, který chcete použít pro virtuální počítače po převzetí služeb při selhání. V závislosti na vašem scénáři můžete zvolit možnost **Classic** nebo **Správce prostředků**.
+Vyberte **připravit**  >  **cíl**infrastruktury a zadejte model nasazení, který chcete použít pro virtuální počítače po převzetí služeb při selhání. V závislosti na vašem scénáři můžete zvolit možnost **Classic** nebo **Správce prostředků**.
 
 ![Cílové podokno][10]
 
@@ -152,7 +152,7 @@ Pokud chcete ověřit, jestli je konfigurační server úspěšně přidružený
    Virtuální počítač s podporou převzetí služeb při selhání bude mít dva dočasné disky: jednu z primárního virtuálního počítače a druhou vytvořenou během zřizování virtuálního počítače v oblasti obnovení. Pokud chcete dočasný disk před replikací vyloučit, nainstalujte před povolením replikace službu mobility. Další informace o tom, jak vyloučit dočasný disk, najdete v tématu [vyloučení disků z replikace](../../site-recovery/vmware-walkthrough-overview.md).
 
 2. Replikaci povolte následujícím způsobem:
-   1. Vyberte **replikovat** > **zdroj**aplikace. Po prvním povolení replikace výběrem **+ replikovat** v trezoru Povolte replikaci pro další počítače.
+   1. Vyberte **replikovat**  >  **zdroj**aplikace. Po prvním povolení replikace výběrem **+ replikovat** v trezoru Povolte replikaci pro další počítače.
    2. V kroku 1 nastavte **zdroj** jako procesový Server.
    3. V kroku 2 určete model nasazení po převzetí služeb při selhání, účet Premium Storage, který se má migrovat na, standardní účet úložiště pro ukládání protokolů a virtuální síť, která se nezdařila.
    4. V kroku 3 přidejte chráněné virtuální počítače podle IP adresy. (K jejich vyhledání možná budete potřebovat interní IP adresu.)
@@ -173,14 +173,14 @@ Podle potřeby můžete zvolit model nasazení po převzetí služeb při selhá
 
 ### <a name="step-8-run-a-test-failover"></a>Krok 8: spuštění testovacího převzetí služeb při selhání
 
-Pokud chcete zjistit, jestli je vaše replikace dokončená, vyberte instanci Site Recovery a pak vyberte **Nastavení** > **replikované položky**. Zobrazí se stav a procento procesu replikace. 
+Pokud chcete zjistit, jestli je vaše replikace dokončená, vyberte instanci Site Recovery a pak vyberte **Nastavení**  >  **replikované položky**. Zobrazí se stav a procento procesu replikace. 
 
 Po dokončení počáteční replikace spusťte testovací převzetí služeb při selhání, abyste ověřili strategii replikace. Podrobné kroky testovacího převzetí služeb při selhání najdete v tématu [spuštění testovacího převzetí služeb při selhání v Site Recovery](../../site-recovery/vmware-walkthrough-overview.md). 
 
 > [!NOTE]
 > Před spuštěním převzetí služeb při selhání se ujistěte, že vaše virtuální počítače a strategie replikace splňují požadavky. Další informace o spuštění testovacího převzetí služeb při selhání najdete v tématu [Test převzetí služeb při selhání do Azure v Site Recovery](../../site-recovery/site-recovery-test-failover-to-azure.md).
 
-Stav testovacího převzetí služeb při selhání můžete zobrazit v **Nastavení** > **úlohy** > *YOUR_FAILOVER_PLAN_NAME*. V podokně uvidíte rozpis kroků a výsledků úspěch/selhání. Pokud se testovací převzetí služeb při selhání v jakémkoli kroku nepovede, vyberte krok a zkontrolujte chybovou zprávu. 
+Stav testovacího převzetí služeb při selhání můžete zobrazit v **Nastavení**  >  **úlohy**  >  *YOUR_FAILOVER_PLAN_NAME*. V podokně uvidíte rozpis kroků a výsledků úspěch/selhání. Pokud se testovací převzetí služeb při selhání v jakémkoli kroku nepovede, vyberte krok a zkontrolujte chybovou zprávu. 
 
 ### <a name="step-9-run-a-failover"></a>Krok 9: spuštění převzetí služeb při selhání
 
@@ -203,7 +203,7 @@ Site Recovery vytvoří instanci virtuálního počítače, jejíž typ je stejn
 ## <a name="troubleshooting"></a>Řešení potíží
 
 * [Monitorování a odstraňování potíží s ochranou pro virtuální počítače a fyzické servery](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
-* [Fórum Microsoft Azure Site Recovery](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
+* [Microsoft Q&stránku s otázkou pro Microsoft Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)
 
 ## <a name="next-steps"></a>Další kroky
 

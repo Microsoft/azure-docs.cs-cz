@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3a27cee7a94ee6f33c399d10f90e47ec574e7380
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e4b8bcf2b6ed5ab9c1160df49b1a6082aaf02f65
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744179"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830459"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -204,5 +204,5 @@ Chcete-li odebrat skupinu Hybrid Runbook Worker, musíte nejprve odebrat Hybrid 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Spouštění runbooků ve funkci Hybrid Runbook Worker](automation-hrw-run-runbooks.md)
-* [Řešení potíží s Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#windows)
+* Informace o tom, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí, najdete v tématu [spouštění Runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
+* Informace o tom, jak řešit potíže s procesy Hybrid Runbook Worker, najdete v tématu [řešení potíží s Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#general).

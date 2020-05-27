@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74791489"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831569"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Spouštění akcí na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
@@ -77,12 +77,12 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
       | ------- | ----- | ----------- |
       | **Bod na trase 1** | <*Čína*> | Zadejte původ trasy. | 
       | **Bod na trase 2** | <*účelu*> | Zadejte cíl trasy. | 
-      | **Vyloučit** | Žádná | Zadejte položky, které vám zabrání v trasách, jako jsou například dálnice, mýtné atd. Možné hodnoty najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
-      | **Zvýšit** | timeWithTraffic | Vyberte parametr pro optimalizaci trasy, například vzdálenost, čas s aktuálními informacemi o provozu a tak dále. V tomto příkladu se používá tato hodnota: "timeWithTraffic" | 
+      | **Vyloučit** | Žádné | Zadejte položky, které vám zabrání v trasách, jako jsou například dálnice, mýtné atd. Možné hodnoty najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Optimalizace** | timeWithTraffic | Vyberte parametr pro optimalizaci trasy, například vzdálenost, čas s aktuálními informacemi o provozu a tak dále. V tomto příkladu se používá tato hodnota: "timeWithTraffic" | 
       | **Jednotka vzdálenosti** | <*vaše preference*> | Zadejte jednotku ke vzdálenosti pro výpočet trasy. V tomto příkladu se používá tato hodnota: km. | 
       | **Způsob cestování** | Autem | Zadejte režim cesty pro trasu. V tomto příkladu se používá tato hodnota "jízda". | 
-      | **Datum a čas přejezdu** | Žádná | Platí jenom pro režim přenosu. | 
-      | **Typ data přenosu – typ typu** | Žádná | Platí jenom pro režim přenosu. | 
+      | **Datum a čas přejezdu** | Žádné | Platí jenom pro režim přenosu. | 
+      | **Typ data přenosu – typ typu** | Žádné | Platí jenom pro režim přenosu. | 
       ||||  
 
 1. [Přidejte podmínku](../logic-apps/logic-apps-control-flow-conditional-statement.md) , která zkontroluje, jestli aktuální doba trvání cesty s provozem přesáhne zadaný čas. 
@@ -130,7 +130,7 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
 
       ![Vyberte provoz trvání provozu.](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. Až se pole přeloží na formát JSON, přidejte **čárku** (```,```) následovaný číslem ```60``` , abyste převedli hodnotu v provozu provozního **provozu** z sekund na minuty. 
+   1. Až se pole přeloží na formát JSON, přidejte **čárku** ( ```,``` ) následovaný číslem, ```60``` abyste převedli hodnotu v provozu provozního **provozu** z sekund na minuty. 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -161,7 +161,7 @@ Dále přidejte obor, abyste mohli seskupit konkrétní akce a vyhodnotit jejich
 1. Přidejte obor do umístění pracovního postupu, které chcete. Pokud například chcete přidat rozsah mezi existujícími kroky v pracovním postupu aplikace logiky, postupujte takto: 
 
    1. Přesuňte ukazatel myši na šipku, kam chcete přidat obor. 
-   Vyberte znaménko **plus** (**+**) > **přidat akci**.
+   Vyberte znaménko **plus** ( **+** ) > **přidat akci**.
 
       ![Přidání oboru](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
@@ -196,14 +196,14 @@ Dále přidejte obor, abyste mohli seskupit konkrétní akce a vyhodnotit jejich
 
    1. Pro oba řádky vyberte **je rovno** jako operátor. 
    
-   1. Pro hodnoty porovnání zadejte `Failed`do prvního řádku. 
-   Do druhého řádku zadejte `Aborted`. 
+   1. Pro hodnoty porovnání zadejte do prvního řádku `Failed` . 
+   Do druhého řádku zadejte `Aborted` . 
 
       Jakmile budete hotovi, vaše podmínka bude vypadat jako v tomto příkladu:
 
       ![Přidat výraz, který kontroluje stav oboru](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status-finished.png)
 
-      Nyní nastavte `runAfter` vlastnost podmínky tak, aby podmínka vyhledá stav oboru a spustí odpovídající akci, kterou definujete v pozdějších krocích.
+      Nyní nastavte vlastnost podmínky tak, `runAfter` aby podmínka vyhledá stav oboru a spustí odpovídající akci, kterou definujete v pozdějších krocích.
 
    1. V **případě selhání oboru if** klikněte na tlačítko se **třemi tečkami** (...) a pak zvolte **Konfigurovat spustit po**.
 
@@ -386,9 +386,9 @@ Pokud pracujete v zobrazení kódu, můžete místo toho definovat strukturu obo
 },
 ```
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky

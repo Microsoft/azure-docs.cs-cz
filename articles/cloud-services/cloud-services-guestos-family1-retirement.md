@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: ae2df6f47d99fc5d452a6d3ea70f2dd2e4e7416b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68359582"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835627"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Oznámení o vyřazení hostovaného operačního systému řady 1 z provozu
 Vyřazení řady operačních systémů 1 bylo poprvé oznámeno 1. června 2013.
@@ -23,7 +23,7 @@ Vyřazení řady operačních systémů 1 bylo poprvé oznámeno 1. června 2013
 
 **3. listopadu 2014** Rozšířená podpora pro rodinu hostovaného operačního systému 1 skončila a je plně vyřazená. Budou to mít vliv na všechny služby, které jsou pořád v rodině 1. Tyto služby můžeme kdykoli zastavit. Není zaručena žádná záruka, že vaše služby budou nadále spuštěny, dokud je ručně NEUPGRADUJTE sami.
 
-Pokud máte další otázky, navštivte [fórum Cloud Services](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc) nebo se [obraťte na podporu Azure](https://azure.microsoft.com/support/options/).
+Pokud máte další otázky, přejděte na [stránku s dotazem na Microsoft Q&pro Cloud Services](https://docs.microsoft.com/answers/topics/azure-cloud-services.html) nebo se [obraťte na podporu Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="are-you-affected"></a>Jste to ovlivnili?
 Vaše Cloud Services jsou ovlivněny, pokud platí některá z následujících možností:

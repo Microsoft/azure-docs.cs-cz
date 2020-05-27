@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: ab091ba413a8429a8fea131c643cceee7007f927
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4f6ae1ad5b0f3904b84d47316c11aa1a67531a28
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744367"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835100"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
@@ -195,7 +195,10 @@ Klíčovou funkcí Change Tracking a inventáře jsou výstrahy týkající se z
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa Change Tracking a inventáře](change-tracking-file-contents.md)
-* [Hledání v protokolech v Azure Monitorch protokolech](../log-analytics/log-analytics-log-searches.md)
-* [Řešení problémů s Change Tracking a inventářem](troubleshoot/change-tracking.md)
-* [Řešení potíží se změnami na virtuálním počítači Azure](automation-tutorial-troubleshoot-changes.md)
+* Podrobnosti o práci s Change Tracking a inventářem najdete v tématu [správa Change Tracking a inventáře](change-tracking-file-contents.md).
+* Pokud chcete tuto funkci povolit ze sady Runbook, přečtěte si téma [povolení Change Tracking a inventáře ze sady Runbook](automation-enable-changes-from-runbook.md).
+* Pokud chcete tuto funkci povolit z účtu Automation, přečtěte si téma [povolení Change Tracking a inventáře z účtu Automation](automation-enable-changes-from-auto-acct.md).
+* Pokud chcete funkci povolit procházením Azure Portal, přečtěte si téma [povolení Change Tracking a inventáře z Azure Portal](automation-onboard-solutions-from-browse.md).
+* Pokud chcete tuto funkci povolit z virtuálního počítače Azure, přečtěte si téma [povolení Change Tracking a inventáře z virtuálního počítače Azure](automation-enable-changes-from-vm.md).
+* Pokud potřebujete hledat v protokolech uložených v pracovním prostoru Log Analytics, přečtěte si téma [prohledávání protokolů v](../log-analytics/log-analytics-log-searches.md)protokolech Azure monitor.
+* Řešení chyb funkcí najdete v tématu [řešení potíží s Change Tracking a inventářem](troubleshoot/change-tracking.md).

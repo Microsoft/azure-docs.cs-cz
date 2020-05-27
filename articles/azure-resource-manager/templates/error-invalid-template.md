@@ -2,13 +2,13 @@
 title: Neplatné chyby šablony
 description: Popisuje způsob řešení neplatných chyb šablon při nasazení Azure Resource Manager šablon.
 ms.topic: troubleshooting
-ms.date: 03/08/2018
-ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/22/2020
+ms.openlocfilehash: bb053f59c417827a7c07ca193ccea0b8509244d6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76154053"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832517"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Řešení chyb kvůli neplatné šabloně
 
@@ -130,7 +130,7 @@ Ověřte, že jsou v šabloně povolené hodnoty, a během nasazování ho zadej
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>Řešení 4 – moc velký počet cílových skupin prostředků
 
-Pokud zadáte více než pět cílových skupin prostředků v jednom nasazení, zobrazí se tato chyba. Zvažte buď konsolidaci počtu skupin prostředků ve vašem nasazení, nebo nasazování některých šablon jako samostatných nasazení. Další informace najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](cross-resource-group-deployment.md).
+Tato chyba se může zobrazit v dřívějších nasazeních, protože jste v jednom nasazení omezili na pět cílových skupin prostředků. V květnu 2020 se toto omezení zvýšilo na 800 skupin prostředků. Další informace najdete v tématu [nasazení prostředků Azure do více než jednoho předplatného nebo skupiny prostředků](cross-resource-group-deployment.md).
 
 <a id="circular-dependency" />
 
@@ -143,7 +143,7 @@ Postup při řešení kruhové závislosti:
 1. V šabloně vyhledejte prostředek identifikovaný v cyklické závislosti.
 2. Pro tento prostředek Zkontrolujte vlastnost **dependsOn** a jakékoli použití **referenční** funkce k zobrazení prostředků, na kterých závisí.
 3. Prohlédněte si tyto prostředky, abyste viděli, na kterých prostředcích závisí. Sledujte závislosti, dokud si nevšimnete zdroje, který závisí na původním prostředku.
-5. U prostředků, které jsou součástí cyklické závislosti, pečlivě prověřte všechna použití vlastnosti **dependsOn** a Identifikujte závislosti, které nejsou potřeba. Odeberte tyto závislosti. Pokud si nejste jistí, že je potřeba závislost, zkuste ji odebrat.
+5. U prostředků, které jsou součástí cyklické závislosti, pečlivě prověřte všechna použití vlastnosti **dependsOn** a Identifikujte závislosti, které nepotřebujete. Odeberte tyto závislosti. Pokud si nejste jistí, že je potřeba závislost, zkuste ji odebrat.
 6. Znovu nasaďte šablonu.
 
 Odebrání hodnot z vlastnosti **dependsOn** může způsobit chyby při nasazení šablony. Pokud se zobrazí chyba, přidejte závislost zpátky do šablony.

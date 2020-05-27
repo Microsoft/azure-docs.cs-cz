@@ -14,6 +14,8 @@
       href: ./create.md
     - name: Správa vašich prostředků
       href: ./manage.md
+    - name: Ochrana hierarchie prostředků
+      href: ./how-to/protect-resource-hierarchy.md
 - name: Referenční informace
   items:
     - name: Azure CLI

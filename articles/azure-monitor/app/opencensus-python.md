@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bbc9fe8d53f231f590dba7e2bd493633c39a1383
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6b8343d08962d8ce749e1160b0226b68571571f8
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701521"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815719"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
@@ -39,7 +39,7 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
    | Nastavení        | Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
-   | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování Application Insightsch dat |
+   | **Resource Group**     | myResourceGroup      | Název nové skupiny prostředků pro hostování Application Insightsch dat |
    | **Umístění** | USA – východ | Umístění poblíž vaší oblasti nebo poblíž místa, kde je vaše aplikace hostována |
 
 1. Vyberte **Vytvořit**.
@@ -254,13 +254,13 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
 
 Ve výchozím nastavení odešle Exportér metrik sadu standardních metrik, která bude Azure Monitor. Tuto možnost můžete zakázat nastavením `enable_standard_metrics` příznaku na `False` v konstruktoru pro exportéra metrik.
 
-    ```python
-    ...
-    exporter = metrics_exporter.new_metrics_exporter(
-      enable_standard_metrics=False,
-      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
-    ...
-    ```
+```python
+...
+exporter = metrics_exporter.new_metrics_exporter(
+  enable_standard_metrics=False,
+  connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+...
+```
 Níže je uveden seznam standardních metrik, které jsou aktuálně odesílány:
 
 - Dostupná paměť (bajty)
@@ -338,8 +338,8 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
 
 4. Exportér odešle data protokolu do Azure Monitor. Data můžete najít v části `traces` . 
 
-> [!NOTE]
-> `traces`v tomto kontextu není stejný jako `Tracing` . `traces`odkazuje na typ telemetrie, který se zobrazí v Azure Monitor při použití `AzureLogHandler` . `Tracing`odkazuje na koncept v OpenCensus a má vztah k [distribuovanému trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
+    > [!NOTE]
+    > `traces`v tomto kontextu není stejný jako `Tracing` . `traces`odkazuje na typ telemetrie, který se zobrazí v Azure Monitor při použití `AzureLogHandler` . `Tracing`odkazuje na koncept v OpenCensus a má vztah k [distribuovanému trasování](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
 
 5. Pokud chcete naformátovat zprávy protokolu, můžete použít `formatters` v integrovaném [rozhraní API protokolování](https://docs.python.org/3/library/logging.html#formatter-objects)Pythonu.
 
@@ -371,8 +371,8 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
     ```
 
 6. Pomocí pole custom_dimensions můžete do zpráv protokolu přidat také vlastní vlastnosti v argumentu klíčového slova *extra* . Ty se zobrazí v v Azure Monitor jako páry klíč-hodnota `customDimensions` .
-> [!NOTE]
-> Aby tato funkce fungovala, musíte do pole custom_dimensions předat slovník. Pokud předáte argumenty jiného typu, protokolovací nástroj je bude ignorovat.
+    > [!NOTE]
+    > Aby tato funkce fungovala, musíte do pole custom_dimensions předat slovník. Pokud předáte argumenty jiného typu, protokolovací nástroj je bude ignorovat.
 
     ```python
     import logging
@@ -395,25 +395,25 @@ Podrobnosti o tom, jak upravit sledovanou telemetrii před odesláním do Azure 
 
 OpenCensus Python nesleduje a neodesílá automaticky `exception` telemetrii. Jsou odesílány prostřednictvím pomocí `AzureLogHandler` výjimek prostřednictvím knihovny protokolování Python. Vlastní vlastnosti můžete přidat stejně jako u normálního protokolování.
 
-    ```python
-    import logging
-    
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
-    # TODO: replace the all-zero GUID with your instrumentation key.
-    logger.addHandler(AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+```python
+import logging
 
-    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+from opencensus.ext.azure.log_exporter import AzureLogHandler
 
-    # Use properties in exception logs
-    try:
-        result = 1 / 0  # generate a ZeroDivisionError
-    except Exception:
-        logger.exception('Captured an exception.', extra=properties)
-    ```
+logger = logging.getLogger(__name__)
+# TODO: replace the all-zero GUID with your instrumentation key.
+logger.addHandler(AzureLogHandler(
+    connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+)
+
+properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+# Use properties in exception logs
+try:
+    result = 1 / 0  # generate a ZeroDivisionError
+except Exception:
+    logger.exception('Captured an exception.', extra=properties)
+```
 Vzhledem k tomu, že je nutné výjimky protokolovat explicitně, je až uživatelem v tom, jak chce protokolovat neošetřené výjimky. OpenCensus neumísťuje omezení na to, jak to uživatel chce udělat, pokud explicitně protokolují telemetrii výjimek.
 
 #### <a name="sampling"></a>Vzorkování
@@ -457,7 +457,7 @@ Podrobnější informace o používání dotazů a protokolů najdete [v tématu
 * [Mapa aplikace](./../../azure-monitor/app/app-map.md)
 * [Monitorování výkonu na konci](./../../azure-monitor/learn/tutorial-performance.md)
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 
 * [Testy dostupnosti:](../../azure-monitor/app/monitor-web-app-availability.md) Vytvářejte testy, abyste ověřili viditelnost svého webu na internetu.
 * [Inteligentní diagnostika:](../../azure-monitor/app/proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.

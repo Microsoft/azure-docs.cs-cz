@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: b99c1c9348f8442233eeee8fd4442736c78ee4e4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 82ea6a27d5bd75c180928f6a8b5c9742c54ea5a1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199045"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834420"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro službu Application Insights
 
@@ -20,7 +20,7 @@ ms.locfileid: "83199045"
 
 Application Insights je navržený tak, aby získal vše, co potřebujete k monitorování dostupnosti, výkonu a využití webových aplikací, ať už jsou hostované v Azure nebo místně. Application Insights podporuje oblíbené jazyky a architektury, jako je .NET, Java nebo Node. js, a integruje se s procesy a nástroji DevOps, jako je Azure DevOps, JIRA a PagerDuty. Je důležité porozumět tomu, co určuje náklady na monitorování vašich aplikací. V tomto článku si projdeme, jaké jednotky vaše aplikace sledují a jak je můžete aktivně monitorovat a řídit.
 
-Pokud máte dotazy ohledně toho, jak ceny fungují pro Application Insights, můžete na našem [fóru](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc)odeslat dotaz.
+Pokud máte dotazy ohledně toho, jak ceny fungují pro Application Insights, můžete odeslat dotaz na [stránce s dotazem pro Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-monitor.html).
 
 ## <a name="pricing-model"></a>Cenový model
 

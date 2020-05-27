@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f9513c3ac28b8f65d9023fc529927b208323ca1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76905110"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834454"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Vytváření pracovních postupů aplikací logiky z předem připravených šablon
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
 
 1. Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.azure.com "portál Azure").
 
-2. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **Podniková integrace** > **aplikaci logiky**.
+2. V hlavní nabídce Azure vyberte **vytvořit prostředek**  >  **Podniková integrace**  >  **aplikaci logiky**.
 
    ![Azure Portal, Nový, Podniková integrace, Aplikace logiky](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
@@ -144,9 +144,9 @@ Na panelu nástrojů návrháře zvolte **Uložit**.
 
 ![Uložení a publikování aplikace logiky](./media/logic-apps-create-logic-apps-from-templates/logic-app-save.png)  
 
-## <a name="get-support"></a>Získání podpory
+## <a name="get-support"></a>Získat podporu
 
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky

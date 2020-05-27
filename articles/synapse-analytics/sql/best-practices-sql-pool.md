@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f6af79a37369fe5775c402af011f4ba59807595d
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780434"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834981"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Osvědčené postupy pro fondy SQL ve službě Azure synapse Analytics
 
@@ -193,7 +193,7 @@ Fondy SQL mají několik zobrazení dynamické správyů, které se dají použ�
 
 Běžné problémy a řešení najdete také v článku [věnovaném řešení potíží](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
-Pokud potřebujete informace, které nejsou uvedené v tomto článku, pomocí **funkce filtrovat podle názvu** na levé straně této stránky Prohledejte všechny dokumenty fondu SQL.  [Fórum fondu SQL](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) je místo, kde můžete klást otázky ostatním uživatelům a skupině produktů fondu SQL.  
+Pokud potřebujete informace, které nejsou k dispozici v tomto článku, vyhledejte na [stránce s dotazem na Synapseu Microsoft&Q](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , kde můžete klást otázky ostatním uživatelům a skupině produktů fondu SQL.  
 
 Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  Pokud dáváte přednost dotazování na Stack Overflow, máme také [Fórum Azure SQL pool Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw).
 

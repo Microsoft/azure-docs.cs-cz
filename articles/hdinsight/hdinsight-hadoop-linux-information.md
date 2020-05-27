@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: e9f8fe17fa28cc5fcc4543bfb5e194bd3e7b837d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 252467a22ba37352cee4c3e7bffcf1ff910c86ba
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594093"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835440"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -24,7 +24,7 @@ Clustery Azure HDInsight poskytují Apache Hadoop v známém prostředí pro Lin
 Mnohé z kroků v tomto dokumentu používají následující nástroje, které může být potřeba nainstalovat do systému.
 
 * [oblý](https://curl.haxx.se/) – slouží ke komunikaci s webovými službami.
-* **JQ**, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* **JQ**, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) – slouží k vzdálené správě služeb Azure.
 * **Klient SSH**. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -36,7 +36,7 @@ Prostředí HDInsight připojené k doméně podporuje více uživatelů a přes
 
 ## <a name="domain-names"></a>Názvy domén
 
-Plně kvalifikovaný název domény (FQDN), který se má použít při připojování ke clusteru z Internetu, `CLUSTERNAME.azurehdinsight.net` je `CLUSTERNAME-ssh.azurehdinsight.net` nebo (jenom pro SSH).
+Plně kvalifikovaný název domény (FQDN), který se má použít při připojování ke clusteru z Internetu, je `CLUSTERNAME.azurehdinsight.net` nebo `CLUSTERNAME-ssh.azurehdinsight.net` (jenom pro SSH).
 
 Interně má každý uzel v clusteru název, který je přiřazený během konfigurace clusteru. Názvy clusterů najdete na stránce **hostitelé** ve webovém uživatelském rozhraní Ambari. K vrácení seznamu hostitelů z Ambari REST API můžete použít také následující:
 
@@ -86,12 +86,12 @@ Další informace najdete v tématu [porty používané službou Apache Hadoop S
 
 ## <a name="file-locations"></a>Umístění souborů
 
-Soubory související se systémem Hadoop lze nalézt na uzlech clusteru na `/usr/hdp`adrese. Tento adresář obsahuje následující podadresáře:
+Soubory související se systémem Hadoop lze nalézt na uzlech clusteru na adrese `/usr/hdp` . Tento adresář obsahuje následující podadresáře:
 
 * **2.6.5.3009-43**: název adresáře je verze platformy Hadoop, kterou používá HDInsight. Číslo v clusteru se může lišit od výše uvedeného.
 * **Current**: Tento adresář obsahuje odkazy na podadresáře v adresáři **2.6.5.3009-43** . Tento adresář existuje, takže si nemusíte pamatovat číslo verze.
 
-Příklady dat a souborů JAR najdete v systém souborů DFS (Distributed File System) Hadoop v `/example` a. `/HdiSamples`
+Příklady dat a souborů JAR najdete v systém souborů DFS (Distributed File System) Hadoop v `/example` a `/HdiSamples` .
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS, Azure Storage a Data Lake Storage
 
@@ -136,9 +136,9 @@ Při použití [**Azure Data Lake Storage Gen1**](./hdinsight-hadoop-use-data-la
 * `adl://<storage-name>.azuredatalakestore.net/`: Používá se při komunikaci s jiným než výchozím Data Lake Storage. Používá se také pro přístup k datům mimo kořenový adresář clusteru HDInsight.
 
 > [!IMPORTANT]  
-> Při použití Data Lake Storage jako výchozího úložiště pro HDInsight musíte zadat cestu v úložišti, která se má použít jako kořenový adresář úložiště HDInsight. Výchozí cesta je `/clusters/<cluster-name>/`.
+> Při použití Data Lake Storage jako výchozího úložiště pro HDInsight musíte zadat cestu v úložišti, která se má použít jako kořenový adresář úložiště HDInsight. Výchozí cesta je `/clusters/<cluster-name>/` .
 >
-> Při použití `/` nebo `adl:///` pro přístup k datům můžete přistupovat pouze k datům uloženým v kořenovém adresáři (například `/clusters/<cluster-name>/`) clusteru. Chcete-li získat přístup k datům kdekoli v úložišti `adl://<storage-name>.azuredatalakestore.net/` , použijte formát.
+> Při použití `/` nebo `adl:///` pro přístup k datům můžete přistupovat pouze k datům uloženým v kořenovém adresáři (například `/clusters/<cluster-name>/` ) clusteru. Chcete-li získat přístup k datům kdekoli v úložišti, použijte `adl://<storage-name>.azuredatalakestore.net/` formát.
 
 ### <a name="what-storage-is-the-cluster-using"></a>Jaké úložiště používá cluster
 
@@ -149,7 +149,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 ```
 
 > [!NOTE]  
-> Tento příkaz vrátí první konfiguraci použitou pro server (`service_config_version=1`), který obsahuje tyto informace. Možná budete muset zobrazit seznam všech verzí konfigurace, abyste našli nejnovější verzi.
+> Tento příkaz vrátí první konfiguraci použitou pro server ( `service_config_version=1` ), který obsahuje tyto informace. Možná budete muset zobrazit seznam všech verzí konfigurace, abyste našli nejnovější verzi.
 
 Tento příkaz vrátí hodnotu podobnou následujícím identifikátorům URI:
 
@@ -163,7 +163,7 @@ Tento příkaz vrátí hodnotu podobnou následujícím identifikátorům URI:
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
     ```
 
-    Tento příkaz vrátí následující název hostitele: `<data-lake-store-account-name>.azuredatalakestore.net`.
+    Tento příkaz vrátí následující název hostitele: `<data-lake-store-account-name>.azuredatalakestore.net` .
 
     Pokud chcete získat adresář v rámci úložiště, který je kořenem pro HDInsight, použijte následující volání REST:
 
@@ -171,7 +171,7 @@ Tento příkaz vrátí hodnotu podobnou následujícím identifikátorům URI:
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
     ```
 
-    Tento příkaz vrátí cestu podobnou následující cestě: `/clusters/<hdinsight-cluster-name>/`.
+    Tento příkaz vrátí cestu podobnou následující cestě: `/clusters/<hdinsight-cluster-name>/` .
 
 Informace o úložišti můžete také najít pomocí Azure Portal pomocí následujících kroků:
 
@@ -239,7 +239,7 @@ Pokud chcete použít jinou verzi komponenty, nahrajte potřebnou verzi a použi
 > [!IMPORTANT]
 > Komponenty dodávané s clusterem HDInsight jsou plně podporované a podpora Microsoftu pomáhají izolovat a řešit problémy související s těmito součástmi.
 >
-> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. To může vést k vyřešení problému nebo požádá vás o zapojení dostupných kanálů pro technologie Open Source, ve kterých se najde hlubokou odbornost pro danou technologii. Například existuje mnoho webů komunity, které lze použít jako: [Fórum MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Projekty Apache také obsahují projektové weby [https://apache.org](https://apache.org), například: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
+> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. To může vést k vyřešení problému nebo požádá vás o zapojení dostupných kanálů pro technologie Open Source, ve kterých se najde hlubokou odbornost pro danou technologii. Například existuje mnoho webů komunity, které lze použít, například: [Microsoft Q&stránku s otázkou pro HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html), [https://stackoverflow.com](https://stackoverflow.com) . Projekty Apache také obsahují projektové weby [https://apache.org](https://apache.org) , například: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
 ## <a name="next-steps"></a>Další kroky
 

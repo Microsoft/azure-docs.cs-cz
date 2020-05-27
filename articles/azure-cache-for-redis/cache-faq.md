@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b95ee80a7a99009918f4869b62a3e3768e6e58d3
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010218"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828266"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro službu Azure cache pro Redis.
@@ -20,7 +20,7 @@ Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro 
 Pokud tady uvedený dotaz není, dejte nám prosím jistotu a my vám pomůžeme najít odpověď.
 
 * V komentářích na konci těchto nejčastějších dotazů můžete poslat otázku a začít s týmem Azure cache a dalšími členy komunity o tomto článku.
-* Pokud chcete oslovit širší cílovou skupinu, můžete odeslat otázku do [fóra MSDN Azure cache](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) a zapojit se do týmu Azure cache a dalších členů komunity.
+* Pokud chcete oslovit širší cílovou skupinu, můžete odeslat otázku na stránce s [dotazem k Microsoft Q&pro Azure cache](https://docs.microsoft.com/answers/topics/azure-cache-redis.html) a spojit se s týmem Azure cache a dalšími členy komunity.
 * Pokud chcete vytvořit žádost o funkci, můžete odeslat své žádosti a nápady do [Azure cache pro Redis uživatelského hlasu](https://feedback.azure.com/forums/169382-cache).
 * Můžete také poslat e-mail na [externí zpětnou vazbu v mezipaměti Azure](mailto:azurecache@microsoft.com).
 
@@ -82,7 +82,7 @@ Existuje několik způsobů, jak můžete začít s Azure cache pro Redis.
 
 * Můžete se podívat na jeden z našich kurzů dostupných pro [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node. js](cache-nodejs-get-started.md)a [Python](cache-python-get-started.md).
 * Můžete sledovat, [jak vytvářet vysoce výkonné aplikace pomocí Microsoft Azure cache pro Redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* Pokud chcete zjistit, jak používat Redis, můžete se podívat na dokumentaci klienta pro klienty, kteří odpovídají vývojovému jazyku vašeho projektu. Existuje mnoho Redis klientů, které lze použít s Azure cache pro Redis. Seznam Redis klientů najdete v tématu [https://redis.io/clients](https://redis.io/clients).
+* Pokud chcete zjistit, jak používat Redis, můžete se podívat na dokumentaci klienta pro klienty, kteří odpovídají vývojovému jazyku vašeho projektu. Existuje mnoho Redis klientů, které lze použít s Azure cache pro Redis. Seznam Redis klientů najdete v tématu [https://redis.io/clients](https://redis.io/clients) .
 
 Pokud ještě nemáte účet Azure, můžete:
 
@@ -112,7 +112,7 @@ Níže jsou uvedeny požadavky pro výběr nabídky mezipaměti.
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure cache pro výkon Redis
-V následující tabulce jsou uvedeny maximální hodnoty šířky pásma zjištěné při testování různých velikostí mezipamětí Standard a `redis-benchmark.exe` Premium pomocí z virtuálního počítače s IaaS pro koncový bod Redis v mezipaměti Azure. V případě propustnosti TLS se Redis-test používá s stunnelu pro připojení ke koncovému bodu Azure cache pro Redis.
+V následující tabulce jsou uvedeny maximální hodnoty šířky pásma zjištěné při testování různých velikostí mezipamětí Standard a Premium pomocí `redis-benchmark.exe` z virtuálního počítače s IaaS pro koncový bod Redis v mezipaměti Azure. V případě propustnosti TLS se Redis-test používá s stunnelu pro připojení ke koncovému bodu Azure cache pro Redis.
 
 >[!NOTE] 
 >Tyto hodnoty nejsou zaručené a pro tato čísla nejsou k dispozici žádná smlouva SLA, ale měla by být typická. Pro určení správné velikosti mezipaměti pro aplikaci byste měli načíst vlastní aplikaci.
@@ -142,7 +142,7 @@ Z této tabulky můžeme vykreslit následující závěry:
 | P4 |  53 GB |  8 | 6 000/750   | 400 000 | 373 000 |
 | P5 | 120 GB | 20 | 6 000/750   | 400 000 | 373 000 |
 
-Pokyny k nastavení stunnelu nebo stažení nástrojů Redis `redis-benchmark.exe`, jako jsou, najdete v části [Jak můžu spustit příkazy Redis?](#cache-commands) .
+Pokyny k nastavení stunnelu nebo stažení nástrojů Redis, jako jsou `redis-benchmark.exe` , najdete v části [Jak můžu spustit příkazy Redis?](#cache-commands) .
 
 <a name="cache-region"></a>
 
@@ -194,14 +194,14 @@ Obvykle jsou výchozí hodnoty klienta dostatečné. Možnosti můžete vyladit 
   * Vezměte v úvahu svůj pracovní postup a nastavte hodnoty odpovídajícím způsobem. Pokud ukládáte velké hodnoty, nastavte časový limit na vyšší hodnotu.
   * Nastavte `AbortOnConnectFail` na false a umožněte vám stackexchange. Redis se znovu připojit.
   * Pro aplikaci použijte jednu instanci ConnectionMultiplexer. Pomocí LazyConnection můžete vytvořit jednu instanci, která je vrácena vlastností připojení, jak je znázorněno v [části připojení k mezipaměti pomocí třídy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
-  * Pro účely `ConnectionMultiplexer.ClientName` diagnostiky nastavte vlastnost na jedinečný název instance aplikace.
-  * Pro vlastní `ConnectionMultiplexer` úlohy použijte více instancí.
+  * `ConnectionMultiplexer.ClientName`Pro účely diagnostiky nastavte vlastnost na jedinečný název instance aplikace.
+  * `ConnectionMultiplexer`Pro vlastní úlohy použijte více instancí.
       * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Příklad:
       * Můžete mít jeden multiplexor pro zvládnutí velkých klíčů.
       * Můžete mít jeden multiplexor pro zvládnutí malých klíčů.
       * Pro každý ConnectionMultiplexer, který používáte, můžete nastavit různé hodnoty pro vypršení časového limitu připojení a logiku opakování.
-      * Nastavte u `ClientName` každého multiplexního multiplexoru vlastnost, která bude pomáhat s diagnostikou.
-      * Tento návod může vést k efektivnější latenci na `ConnectionMultiplexer`.
+      * Nastavte `ClientName` u každého multiplexního multiplexoru vlastnost, která bude pomáhat s diagnostikou.
+      * Tento návod může vést k efektivnější latenci na `ConnectionMultiplexer` .
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Jakou mezipaměť Azure pro klienty Redis můžu použít?
 Jednou z skvělých věcí o Redis je to, že mnoho klientů podporuje mnoho různých vývojových jazyků. Aktuální seznam klientů najdete v tématu [Redis klienti](https://redis.io/clients). Výukové kurzy, které pokrývají několik různých jazyků a klientů, najdete v článku [Jak používat Azure cache pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a na stejné úrovni jako v obsahu.
@@ -240,11 +240,11 @@ Můžete použít kterýkoli z příkazů uvedených v [Redis příkazech](https
 * Pokud máte mezipaměť úrovně Standard nebo Premium, můžete spustit příkazy Redis pomocí [konzoly Redis](cache-configure.md#redis-console). Konzola Redis poskytuje zabezpečený způsob, jak spouštět příkazy Redis v Azure Portal.
 * Můžete také použít nástroje příkazového řádku Redis. Pokud je chcete použít, proveďte následující kroky:
 * Stáhněte si [nástroje příkazového řádku Redis](https://github.com/MSOpenTech/redis/releases/).
-* Připojte se k mezipaměti pomocí `redis-cli.exe`. Předejte koncový bod mezipaměti pomocí přepínače-h a klíče pomocí-a, jak je znázorněno v následujícím příkladu:
+* Připojte se k mezipaměti pomocí `redis-cli.exe` . Předejte koncový bod mezipaměti pomocí přepínače-h a klíče pomocí-a, jak je znázorněno v následujícím příkladu:
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Nástroje příkazového řádku Redis nefungují s portem TLS, ale pomocí pokynů v článku `stunnel` [Jak používat nástroj příkazového řádku Redis s Azure cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) můžete použít nástroj, například k bezpečnému připojení nástrojů k portu TLS.
+> Nástroje příkazového řádku Redis nefungují s portem TLS, ale pomocí `stunnel` pokynů v článku [Jak používat nástroj příkazového řádku Redis s Azure cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) můžete použít nástroj, například k bezpečnému připojení nástrojů k portu TLS.
 >
 >
 
@@ -256,7 +256,7 @@ Microsoft Azure cache pro Redis je založená na oblíbené open source mezipam�
 Vzhledem k tomu, že každý klient je jiný, není na webu MSDN žádný odkaz na centralizované třídy a každý klient udržuje vlastní referenční dokumentaci. Kromě referenční dokumentace je k dispozici několik kurzů, které ukazují, jak začít s Azure cache pro Redis pomocí různých jazyků a klientů mezipaměti. Pokud chcete získat přístup k těmto kurzům, přečtěte si článek [Jak používat Azure cache pro Redis](cache-dotnet-how-to-use-azure-redis-cache.md) a na stejné úrovni jako v obsahu.
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Můžu použít Azure cache pro Redis jako mezipaměť relace PHP?
-Ano, pokud chcete použít mezipaměť Azure pro Redis jako mezipaměť relace PHP, zadejte připojovací řetězec do mezipaměti Azure pro instanci Redis v `session.save_path`.
+Ano, pokud chcete použít mezipaměť Azure pro Redis jako mezipaměť relace PHP, zadejte připojovací řetězec do mezipaměti Azure pro instanci Redis v `session.save_path` .
 
 > [!IMPORTANT]
 > Pokud používáte mezipaměť Azure pro Redis jako mezipaměť relace PHP, je nutné kódovat klíč zabezpečení, který se používá pro připojení k mezipaměti, jak je znázorněno v následujícím příkladu:
@@ -289,7 +289,7 @@ Redis Server neprovádí nativně podporu TLS, ale mezipaměť Azure pro Redis. 
 >
 >
 
-Nástroje `redis-cli` Redis, jako je například nefungují s portem TLS, ale můžete použít nástroj, jako je `stunnel` například k bezpečnému připojení nástrojů k portu TLS podle pokynů v tomto příspěvku na Blogový příspěvek [pro vydání služby ASP.NET pro Redis verze Preview](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) .
+Nástroje Redis, jako `redis-cli` je například nefungují s portem TLS, ale můžete použít nástroj, jako je například `stunnel` k bezpečnému připojení nástrojů k portu TLS podle pokynů v tomto příspěvku na Blogový příspěvek [pro vydání služby ASP.NET pro Redis verze Preview](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) .
 
 Pokyny ke stažení nástrojů Redis naleznete v části How to [Run Redis Commands?](#cache-commands)
 
@@ -300,11 +300,11 @@ Pokyny ke stažení nástrojů Redis naleznete v části How to [Run Redis Comma
 
 #### <a name="stackexchangeredis-best-practices"></a>Osvědčené postupy pro StackExchange. Redis
 * Nastavte `AbortConnect` na false, aby se ConnectionMultiplexer automaticky znovu připojil. [Podrobnosti najdete tady](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
-* Znovu použijte ConnectionMultiplexer – nevytvářejte nové pro každý požadavek. Je `Lazy<ConnectionMultiplexer>` doporučený vzor, který je [zde zobrazen](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) .
+* Znovu použijte ConnectionMultiplexer – nevytvářejte nové pro každý požadavek. `Lazy<ConnectionMultiplexer>`Je doporučený vzor, který je [zde zobrazen](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) .
 * Redis funguje nejlépe s menšími hodnotami, takže zvažte možnost roztrhané větší data do více klíčů. V [této diskuzi Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)se 100 KB považuje za velký. V [tomto článku](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) najdete příklad problému, který může být způsoben velkými objemy dat.
 * Nakonfigurujte [nastavení fondu vláken](#important-details-about-threadpool-growth) , aby nedocházelo k časovým limitům.
 * Použijte minimálně výchozí connectTimeout o 5 sekund. Tento interval poskytuje StackExchange. Redis dostatek času k opětovnému navázání spojení v případě Blip sítě.
-* Pamatujte na náklady na výkon spojené s různými operacemi, které používáte. Například příkaz je operace `KEYS` o (n), která by se měla vyhnout. [Web Redis.IO](https://redis.io/commands/) obsahuje podrobnosti o časové složitosti každé podporované operace. Pro zobrazení složitosti jednotlivých operací klikněte na jednotlivé příkazy.
+* Pamatujte na náklady na výkon spojené s různými operacemi, které používáte. Například `KEYS` příkaz je operace o (n), která by se měla vyhnout. [Web Redis.IO](https://redis.io/commands/) obsahuje podrobnosti o časové složitosti každé podporované operace. Pro zobrazení složitosti jednotlivých operací klikněte na jednotlivé příkazy.
 
 #### <a name="configuration-and-concepts"></a>Konfigurace a koncepty
 * Pro produkční systémy použijte úroveň Standard nebo Premium. Úroveň Basic odpovídá systému s jedním uzlem, bez replikace dat a smlouvy SLA. Jako mezipaměť použijte aspoň C1. Mezipaměti C0 jsou obvykle používány pro jednoduché scénáře vývoje a testování.
@@ -312,7 +312,7 @@ Pokyny ke stažení nástrojů Redis naleznete v části How to [Run Redis Comma
 * Vytvořte svůj systém tak, aby mohl zpracovávat připojení výkyvů [z důvodu oprav a převzetí služeb při selhání](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
 #### <a name="performance-testing"></a>Testování výkonu
-* Začněte tím, `redis-benchmark.exe` že použijete k dosažení možné propustnosti před zápisem vlastních testů výkonu. Protože `redis-benchmark` nepodporuje protokol TLS, je nutné [Povolit port bez TLS prostřednictvím Azure Portal](cache-configure.md#access-ports) před spuštěním testu. Příklady najdete v tématu [Jak mohu srovnávací testy a testovat výkon moje mezipaměti?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* Začněte tím, že použijete `redis-benchmark.exe` k dosažení možné propustnosti před zápisem vlastních testů výkonu. Protože nepodporuje protokol `redis-benchmark` TLS, je nutné [Povolit port bez TLS prostřednictvím Azure Portal](cache-configure.md#access-ports) před spuštěním testu. Příklady najdete v tématu [Jak mohu srovnávací testy a testovat výkon moje mezipaměti?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * Virtuální počítač klienta, který se používá pro testování, by měl být ve stejné oblasti jako instance Azure cache pro Redis.
 * Pro vašeho klienta doporučujeme používat pro Dv2 řadu virtuálních počítačů, protože mají lepší hardware a měli by poskytovat nejlepší výsledky.
 * Ujistěte se, že váš virtuální počítač klienta, který jste zvolili, má minimálně tolik možností výpočetního využití a šířky pásma jako mezipaměť, kterou testujete.
@@ -352,7 +352,7 @@ Následující příkazy poskytují příklad použití Redis-benchmark. exe. Pr
 ### <a name="important-details-about-threadpool-growth"></a>Důležité podrobnosti o růstu fondu vláken
 Podprocesy CLR mají dva typy vláken – "pracovní proces" a "vstupně-výstupní" port pro dokončení (IOCP).
 
-* Pracovní vlákna se používají pro věci `Task.Run(…)`, jako je zpracování nebo `ThreadPool.QueueUserWorkItem(…)` metody. Tato vlákna jsou používána také v různých komponentách CLR v případě, že je potřeba pracovat ve vlákně na pozadí.
+* Pracovní vlákna se používají pro věci, jako je zpracování `Task.Run(…)` nebo `ThreadPool.QueueUserWorkItem(…)` metody. Tato vlákna jsou používána také v různých komponentách CLR v případě, že je potřeba pracovat ve vlákně na pozadí.
 * Vlákna IOCP se používají, když dojde k asynchronní vstupně-výstupní situaci, například při čtení ze sítě.
 
 Fond vláken poskytuje nová pracovní vlákna nebo vstupně-výstupní vlákna na vyžádání (bez omezení), dokud nedosáhne minimálního nastavení pro každý typ vlákna. Ve výchozím nastavení je minimální počet vláken nastavený na počet procesorů v systému.
@@ -381,7 +381,7 @@ S těmito informacemi doporučujeme, aby zákazníci nastavili minimální hodno
 
 Jak nakonfigurovat toto nastavení:
 
-* Toto nastavení doporučujeme změnit programově pomocí metody [fondu vláken. SetMinThreads – (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) v `global.asax.cs`. Příklad:
+* Toto nastavení doporučujeme změnit programově pomocí metody [fondu vláken. SetMinThreads – (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) v `global.asax.cs` . Příklad:
 
 ```cs
 private readonly int minThreads = 200;
@@ -398,10 +398,10 @@ void Application_Start(object sender, EventArgs e)
   > [!NOTE]
   > Hodnota zadaná touto metodou je globální nastavení, které ovlivňuje celou doménu AppDomain. Pokud máte například počítač se 4 jádry a chcete nastavit *MinWorkerThreads* a *MINIOTHREADS* 50 na procesor za běhu za běhu, použijte auto. **SetMinThreads – (200, 200)**.
 
-* Je také možné zadat minimální nastavení vláken pomocí [nastavení konfigurace *MinIoThreads* nebo *MinWorkerThreads* ](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) v rámci `<processModel>` konfiguračního prvku v `Machine.config`, obvykle se nachází v. `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` **Nastavení počtu minimálních vláken tímto způsobem se obecně nedoporučuje, protože se jedná o nastavení v rámci systému.**
+* Je také možné zadat minimální nastavení vláken pomocí [nastavení konfigurace *MinIoThreads* nebo *MinWorkerThreads* ](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) v rámci `<processModel>` konfiguračního prvku v `Machine.config` , obvykle se nachází v `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Nastavení počtu minimálních vláken tímto způsobem se obecně nedoporučuje, protože se jedná o nastavení v rámci systému.**
 
   > [!NOTE]
-  > Hodnota zadaná v tomto konfiguračním elementu je nastavení *pro jádro* . Pokud máte například počítač se 4 jádry a chcete, aby nastavení *minIoThreads* bylo za běhu 200, použijte `<processModel minIoThreads="50"/>`.
+  > Hodnota zadaná v tomto konfiguračním elementu je nastavení *pro jádro* . Pokud máte například počítač se 4 jádry a chcete, aby nastavení *minIoThreads* bylo za běhu 200, použijte `<processModel minIoThreads="50"/>` .
   >
 
 <a name="server-gc"></a>

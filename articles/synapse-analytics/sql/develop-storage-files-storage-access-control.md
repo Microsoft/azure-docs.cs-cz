@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 83410d5945a7fe462afa86a9d217ee7e005550f4
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696918"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835831"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Řízení přístupu účtu úložiště pro SQL na vyžádání (Preview)
 
@@ -26,11 +26,7 @@ Tento článek popisuje typy přihlašovacích údajů, které můžete použít
 
 ## <a name="supported-storage-authorization-types"></a>Podporované typy autorizace úložiště
 
-Uživatel, který byl přihlášen k prostředku na vyžádání SQL, musí mít autorizaci pro přístup k souborům v Azure Storage, pokud nejsou soubory veřejně dostupné. Podporují se tři typy autorizace:
-
-- [Sdílený přístupový podpis](?tabs=shared-access-signature)
-- [Identita uživatele](?tabs=user-identity)
-- [Spravovaná identita](?tabs=managed-identity)
+Uživatel, který byl přihlášen k prostředku na vyžádání SQL, musí mít autorizaci pro přístup k souborům v Azure Storage, pokud nejsou soubory veřejně dostupné. Pro přístup k neveřejné [identitě uživatelů](?tabs=user-identity)úložiště, [sdílenému přístupovému podpisu](?tabs=shared-access-signature)a [spravované identitě](?tabs=managed-identity)můžete použít tři typy autorizace.
 
 > [!NOTE]
 > [Předávací služba Azure AD](#force-azure-ad-pass-through) je výchozím chováním při vytváření pracovního prostoru. Pokud ho použijete, nemusíte vytvářet přihlašovací údaje pro každý účet úložiště, ke kterému jste přistupovali pomocí přihlašovacích údajů Azure AD. [Toto chování můžete zakázat](#disable-forcing-azure-ad-pass-through).
@@ -42,7 +38,7 @@ Uživatel, který byl přihlášen k prostředku na vyžádání SQL, musí mít
 Token SAS můžete získat tak, že přejdete na **účet úložiště > Azure Portal – > sdílený přístup – > konfigurace oprávnění – > generovat SAS a připojovací řetězec.**
 
 > [!IMPORTANT]
-> Při vygenerování tokenu SAS obsahuje znak otazníku (?) na začátku tokenu. Pokud chcete použít token v SQL na vyžádání, musíte při vytváření přihlašovacích údajů odebrat otazník (?). Například:
+> Při vygenerování tokenu SAS obsahuje znak otazníku (?) na začátku tokenu. Pokud chcete použít token v SQL na vyžádání, musíte při vytváření přihlašovacích údajů odebrat otazník (?). Příklad:
 >
 > Token SAS:? sv = 2018-03-28&SS = bfqt&SRT aplikace = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 

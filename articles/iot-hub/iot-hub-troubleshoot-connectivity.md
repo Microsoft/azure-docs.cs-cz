@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abce9387d4c23cd6cb5ecf73e3d5c8428d83d459
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759606"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833655"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Monitorování, diagnostika a řešení potíží odpojení pomocí Azure IoT Hub
 
@@ -28,7 +28,7 @@ Pomocí Azure Monitor můžete získat výstrahy a zapsat protokoly, když se za
 
 Pokud chcete protokolovat události a chyby připojení zařízení, zapněte diagnostiku pro IoT Hub. Tyto protokoly doporučujeme co nejdříve zapnout, protože pokud nejsou povolené diagnostické protokoly a dojde k odpojení zařízení, nebudete mít k dispozici žádné informace k řešení problému se službou.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Přejděte do služby IoT Hub.
 
@@ -48,7 +48,7 @@ Další informace najdete v tématu [monitorování stavu Azure IoT Hub a rychl�
 
 Pokud chcete dostávat upozornění, když se zařízení odpojí, nakonfigurujte upozornění na metrikě **připojená zařízení (Preview)** .
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Přejděte do služby IoT Hub.
 
@@ -70,7 +70,7 @@ Chcete-li detekovat odpojení *podle zařízení* , například pokud potřebuje
 
 Když zapnete diagnostické protokoly a výstrahy pro připojená zařízení, zobrazí se upozornění, když dojde k chybám. Tato část popisuje, jak vyhledat běžné problémy, když obdržíte výstrahu. Následující postup předpokládá, že jste nastavili protokoly Azure Monitor pro diagnostické protokoly.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Přejděte do služby IoT Hub.
 
@@ -83,7 +83,7 @@ Když zapnete diagnostické protokoly a výstrahy pro připojená zařízení, z
     | where ( ResourceType == "IOTHUBS" and Category == "Connections" and Level == "Error")
     ```
 
-1. Pokud jsou k dispozici výsledky, `OperationName`vyhledejte `ResultType` , (kód chyby) a `ResultDescription` (chybová zpráva), abyste získali více podrobností o chybě.
+1. Pokud jsou k dispozici výsledky, vyhledejte `OperationName` , `ResultType` (kód chyby) a `ResultDescription` (chybová zpráva), abyste získali více podrobností o chybě.
 
    ![Příklad protokolu chyb](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
@@ -105,7 +105,7 @@ Pokud vám předchozí kroky neudělaly, zkuste:
 
 * Pokud zařízení používá protokol MQTT, ověřte, že je otevřený port 8883. Další informace najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-* Získejte pomoc od služby [azure IoT Hub Fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)nebo [podpory Azure](https://azure.microsoft.com/support/options/).
+* Získejte pomoc od [Microsoft Q&stránku s otázkou pro azure IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html), [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)nebo [podporu Azure](https://azure.microsoft.com/support/options/).
 
 Pokud vám tato příručka nepomohly vylepšit dokumentaci pro všechny uživatele, ponechte v části zpětná vazba komentář.
 

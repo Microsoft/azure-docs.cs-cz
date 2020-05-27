@@ -10,12 +10,12 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
-ms.openlocfilehash: bf0aeb3b73f2b12e723269a792d67d7f6185894f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674569"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832773"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vytváření vizuálů v Azure Data Factory
 
@@ -31,7 +31,7 @@ V současné době je Azure Data Factory UX podporován pouze v Microsoft Edge a
 
 ![Plátno pro vytváření obsahu](media/author-visually/authoring-canvas.png)
 
-Tady budete vytvářet kanály, aktivity, datové sady, propojené služby, toky dat, triggery a prostředí Integration runtime, které tvoří vaši továrnu. Pokud chcete začít vytvářet kanál pomocí plátna pro vytváření obsahu, přečtěte si téma [kopírování dat pomocí aktivity kopírování](tutorial-copy-data-portal.md). 
+Tady vytváříte kanály, aktivity, datové sady, propojené služby, toky dat, triggery a prostředí Integration runtime, které tvoří vaši továrnu. Pokud chcete začít vytvářet kanál pomocí plátna pro vytváření obsahu, přečtěte si téma [kopírování dat pomocí aktivity kopírování](tutorial-copy-data-portal.md). 
 
 Výchozí prostředí pro vytváření vizuálů funguje přímo s Data Factory službou. Integrace s Azure Repos Git nebo GitHubem je taky podporovaná tak, aby umožňovala správu zdrojového kódu a spolupráci pro práci na kanálech datové továrny. Další informace o rozdílech mezi těmito prostředími pro vytváření najdete [v tématu Správa zdrojového kódu v Azure Data Factory](source-control.md).
 
@@ -41,7 +41,7 @@ U prostředků nejvyšší úrovně, jako jsou kanály, datové sady a toky dat,
 
 ![Plátno pro vytváření obsahu](media/author-visually/properties-pane.png)
 
-Podokno vlastnosti bude ve výchozím nastavení otevřeno pouze při vytváření prostředku. Pokud ho chcete upravit, klikněte na ikonu podokna Vlastnosti umístěnou v pravém horním rohu plátna.
+V podokně vlastnosti se při vytváření prostředků otevírá pouze standardně. Pokud ho chcete upravit, klikněte na ikonu podokna Vlastnosti umístěnou v pravém horním rohu plátna.
 
 ## <a name="expressions-and-functions"></a>Výrazy a funkce
 

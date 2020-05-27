@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75965671"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833927"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Použití Azure Premium Storage s SQL Serverem na virtuálních počítačích
 
@@ -68,7 +68,7 @@ Pro virtuální počítače DS * musíte nakonfigurovat Virtual Network (VNET) h
 
 ![RegionalVNET][1]
 
-Můžete vyvolat lístek podpory Microsoftu pro migraci na oblastní virtuální síť. Microsoft pak provede změnu. Pokud chcete dokončit migraci do regionálního virtuální sítě, změňte vlastnost AffinityGroup v konfiguraci sítě. Napřed exportujte konfiguraci sítě v PowerShellu a pak v elementu **VirtualNetworkSite** nahraďte vlastnost **AffinityGroup** vlastností **Location** . Určete `Location = XXXX` , `XXXX` kde je oblast Azure. Pak importujte novou konfiguraci.
+Můžete vyvolat lístek podpory Microsoftu pro migraci na oblastní virtuální síť. Microsoft pak provede změnu. Pokud chcete dokončit migraci do regionálního virtuální sítě, změňte vlastnost AffinityGroup v konfiguraci sítě. Napřed exportujte konfiguraci sítě v PowerShellu a pak v elementu **VirtualNetworkSite** nahraďte vlastnost **AffinityGroup** vlastností **Location** . Určete `Location = XXXX` , kde `XXXX` je oblast Azure. Pak importujte novou konfiguraci.
 
 Například s ohledem na následující konfiguraci virtuální sítě:
 
@@ -142,7 +142,7 @@ Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 1. Poznamenejte si jednotky pevného disku a LUN.
 
     ![DisknameAndLUN][2]
-1. Vzdálená plocha do virtuálního počítače. Pak přejdete do **správy** | počítače**Device Manager** | **diskové jednotky**. Podívejte se na vlastnosti každého z virtuálních disků Microsoft.
+1. Vzdálená plocha do virtuálního počítače. Pak přejdete do **správy počítače**  |  **Device Manager**  |  **diskové jednotky**. Podívejte se na vlastnosti každého z virtuálních disků Microsoft.
 
     ![VirtualDiskProperties][3]
 1. Číslo logické jednotky (LUN): tady je odkaz na číslo logické jednotky, kterou zadáte při připojování virtuálního pevného disku k virtuálnímu počítači.
@@ -271,7 +271,7 @@ $pass = "mycomplexpwd4*"
 $vmConfigsl = New-AzureVMConfig -Name $vmName -InstanceSize $newInstanceSize -ImageName $image  -AvailabilitySetName $availabilitySet  ` | Add-AzureProvisioningConfig -Windows ` -AdminUserName $userName -Password $pass | Set-AzureSubnet -SubnetNames $subnet | Set-AzureStaticVNetIP -IPAddress $ipaddr
 
 #Add Data and Log Disks to VM Config
-#Note the size specified ‘-DiskSizeInGB 1023’, this attaches 2 x P30 Premium Storage Disk Type
+#Note the size specified '-DiskSizeInGB 1023', this attaches 2 x P30 Premium Storage Disk Type
 #Utilising the Premium Storage enabled Storage account
 
 $vmConfigsl | Add-AzureDataDisk -CreateNew -DiskSizeInGB 1023 -LUN 0 -HostCaching "ReadOnly"  -DiskLabel "DataDisk1" -MediaLocation "https://$newxiostorageaccountname.blob.core.windows.net/vhds/$vmName-data1.vhd"
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Krok 2: zvýšení povolených chyb na prostředky \<v případě potřeby>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Krok 2: zvýšení povolených chyb na prostředky v případě \< potřeby>
 
 U některých prostředků, které patří do vaší skupiny dostupnosti Always On, se omezuje počet selhání, ke kterým může dojít v určité době, kdy se Clusterová služba pokusí restartovat skupinu prostředků. Doporučuje se to zvýšit, i když procházíte tímto postupem, protože Pokud neprovedete ruční převzetí služeb při selhání a aktivaci převzetí služeb při selhání vypnutím počítačů, můžete toto omezení dosáhnout blízko.
 
@@ -691,7 +691,7 @@ Mělo by se považovat za nedodržení tohoto limitu, pokud to chcete udělat v 
 
 Změňte maximální počet selhání na 6.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Krok 3: Přidání prostředku IP adresy pro skupinu \<clusteru volitelné>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Krok 3: Přidání prostředku IP adresy pro skupinu clusteru \< volitelné>
 
 Pokud pro skupinu clusteru máte jenom jednu IP adresu a ta je zarovnaná na podsíť cloudu, mějte na pozor, že pokud omylem převezmete všechny uzly clusteru v cloudu v této síti, nebudete moct přejít do režimu online. V takovém případě zabrání aktualizace jiných prostředků clusteru.
 
@@ -1249,7 +1249,7 @@ Informace o přidání do IP adresy najdete v dodatku, krok 14.
 ## <a name="additional-resources"></a>Další zdroje
 
 * [Premium Storage Azure](../disks-types.md)
-* [Virtuální počítače](https://azure.microsoft.com/services/virtual-machines/)
+* [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
 * [SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 <!-- IMAGES -->

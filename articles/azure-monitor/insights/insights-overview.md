@@ -6,15 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 15ea7698c9e90fa8b0dfa20f71b552a2b0e9c7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ecd66500fdf968a773d3bc4f3d93363bfe86c763
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657244"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836035"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Přehled přehledů v Azure Monitor
 Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní aplikace a služby. Ukládají data na [Azure monitor datovou platformu](../platform/data-platform.md) a využívají jiné funkce Azure monitor k analýze a upozorňování, ale mohou shromažďovat další data a poskytovat jedinečné uživatelské prostředí v Azure Portal. Přístup k přehledům z části **Přehled** v nabídce Azure Monitor v Azure Portal.
+
 
 V následujících částech najdete stručný popis přehledů, které jsou aktuálně k dispozici v Azure Monitor. Podrobnosti najdete v podrobné dokumentaci.
 

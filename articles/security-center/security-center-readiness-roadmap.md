@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 9d74ea2b967112a794cda204cbbfcac707e1d7c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de14f334b2a68d820dbf80f194ac93430c452038
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879458"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833366"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Plán připravenosti služby Azure Security Center
 Tento dokument vám poskytne plány připravenosti, které vám pomůžou zahájit používání služby Azure Security Center.
@@ -119,7 +119,6 @@ Videa
 ## <a name="community-resources"></a>Komunitní zdroje
 
 * [UserVoice ke službě Security Center](https://feedback.azure.com/forums/347535-azure-security-center)
-* [Fórum komunity ke službě Security Center](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSecurityCenter)
-
+* [Microsoft Q&Stránka s otázkou pro Security Center](https://docs.microsoft.com/answers/topics/azure-security-center.html)
 
 

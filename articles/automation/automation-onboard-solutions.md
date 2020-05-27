@@ -5,14 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 8a3f2c231544d07d614e6175bf703f20e4a9d9b0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 39ebdb6937b03d72365e9d3785af9571ebb66186
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743949"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836052"
 ---
-# <a name="enable-update-management-from-a-runbook"></a>Povolení Update Management ze sady Runbook
+# <a name="enable-update-management-from-a-runbook"></a>Povolení Update Managementu z runbooku
 
 Tento článek popisuje, jak můžete pomocí Runbooku povolit funkci [Update Management](automation-update-management.md) pro virtuální počítače ve vašem prostředí. Pokud chcete povolit virtuální počítače Azure ve velkém měřítku, musíte povolit existující virtuální počítač pomocí Update Management. 
 
@@ -101,8 +101,9 @@ Abyste mohli spustit tuto sadu Runbook, musíte mít povolený Update Management
 
 ## <a name="next-steps"></a>Další kroky
 
+* Chcete-li naplánovat sadu Runbook, přečtěte si téma [Správa plánů v Azure Automation](shared-resources/schedules.md).
 * Pokud chcete použít Update Management pro virtuální počítače, přečtěte si téma [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
-* Informace o konfiguracích oboru najdete v tématu [práce s konfiguracemi oboru pro Update Management](automation-scope-configurations-update-management.md).
+* Informace o konfiguracích oboru najdete v tématu [práce s konfiguracemi oboru](automation-scope-configurations-update-management.md).
 * Pokud už nepotřebujete pracovní prostor Log Analytics, přečtěte si pokyny v tématu [zrušení propojení pracovního prostoru s účtem Automation pro Update Management](automation-unlink-workspace-update-management.md).
 * Postup odstranění virtuálních počítačů z Update Management najdete v tématu [Odebrání virtuálních počítačů z Update Management](automation-remove-vms-from-update-management.md).
 * Pokud chcete řešit obecné chyby Update Management, přečtěte si téma [řešení potíží s Update Management](troubleshoot/update-management.md).

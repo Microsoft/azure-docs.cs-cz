@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Time Series Insights
       href: time-series-insights-update-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Azure Time Series Insights verze GA
@@ -166,12 +166,12 @@
           href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: Fórum MSDN
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Stránka s dotazy na Microsoft Q&A
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
     - name: Zpětná vazba a fóra
       items:
-        - name: Fórum MSDN
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Stránka s dotazy na Microsoft Q&A
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
         - name: Návrhy a požadavky k produktům
           href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Videa Azure

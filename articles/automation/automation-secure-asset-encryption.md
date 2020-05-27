@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: b26498357db6b1bc006c27285546fd0f3ebe6c4a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743790"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830119"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Šifrování zabezpečených prostředků ve službě Azure Automation
 
@@ -189,8 +189,8 @@ K odvolání přístupu k klíčům spravovaným zákazníkem použijte PowerShe
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je Azure Key Vault?](../key-vault/general/overview.md)
-- [Správa certifikátů v Azure Automation](shared-resources/certificates.md)
-- [Spravovat přihlašovací údaje v Azure Automation](shared-resources/credentials.md)
-- [Správa proměnných v Azure Automation](shared-resources/variables.md)
-- [Správa připojení v Azure Automation](automation-connections.md)
+- Informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../key-vault/general/overview.md).
+- Informace o práci s certifikáty najdete v tématu [Správa certifikátů v Azure Automation](shared-resources/certificates.md).
+- Informace o zpracování přihlašovacích údajů najdete v tématu [Správa přihlašovacích údajů v Azure Automation](shared-resources/credentials.md).
+- Chcete-li použít proměnné automatizace, [spravujte proměnné v Azure Automation](shared-resources/variables.md).
+- Nápovědu k práci s připojeními najdete v tématu [Správa připojení v Azure Automation](automation-connections.md).

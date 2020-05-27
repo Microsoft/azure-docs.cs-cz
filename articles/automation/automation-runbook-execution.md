@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5785377830f7e2cfb159a3090d19b1cd35b07a61
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c9e602f9ed6a9132c78dbdf0ea3246cbeae80671
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743915"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832346"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spouštění runbooků ve službě Azure Automation
 
@@ -59,7 +59,7 @@ V následující tabulce jsou uvedeny některé úlohy spuštění sady Runbook 
 |Spouštění skriptů vyžadujících zvýšení oprávnění|Hybrid Runbook Worker|Izolované prostory neumožňují zvýšení oprávnění. Pomocí Hybrid Runbook Worker můžete vypnout nástroj řízení uživatelských účtů a použít příkaz [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) při spuštění příkazu, který vyžaduje zvýšení úrovně oprávnění.|
 |Spustit skripty, které vyžadují přístup k rozhraní WMI (Windows Management Instrumentation) (WMI)|Hybrid Runbook Worker|Úlohy spuštěné v izolovaných prostorech v cloudu nemůžou získat přístup k poskytovateli rozhraní WMI. |
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 Vaše Runbooky musí zahrnovat logiku pro práci s [prostředky](https://docs.microsoft.com/rest/api/resources/resources), například virtuální počítače, síť a prostředky v síti. Prostředky jsou vázané na předplatné Azure a runbooky vyžadují odpovídající přihlašovací údaje pro přístup k jakémukoli prostředku. Příklad zpracování prostředků v sadě Runbook najdete v tématu [zpracování prostředků](manage-runbooks.md#handle-resources). 
 
@@ -228,6 +228,8 @@ Použití podřízených runbooků zkrátí celkovou dobu, po kterou se nadřaze
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa runbooků v Azure Automation](manage-runbooks.md)
-* [Dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* Informace o tom, jak začít s PowerShellovým runbookm, najdete v tématu [kurz: vytvoření Runbooku PowerShellu](learn/automation-tutorial-runbook-textual-powershell.md).
+* Informace o práci se sadami Runbook najdete [v tématu Správa runbooků v Azure Automation](manage-runbooks.md).
+* Podrobnosti o PowerShellu najdete v tématu [dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview).
+* * Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

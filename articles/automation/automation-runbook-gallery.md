@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: f1d60c19b05de218ab985b2087071733602c7f2c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: bf2a60e1387ccdfb24ff5c5e166780c00506bac8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743892"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832295"
 ---
-# <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Použití runbooků a modulů v Galerie prostředí PowerShell
+# <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Použití runbooků a modulů v Galerii prostředí PowerShell
 
 Místo vytváření vlastních runbooků a modulů v Azure Automation máte přístup ke scénářům, které už jsou sestavené Microsoftem a komunitou. Runbooky a [moduly](#modules-in-powershell-gallery) PowerShellu můžete z Galerie služby Script Center získat z Galerie prostředí PowerShell a [runbooků v Pythonu](#use-python-runbooks) . Můžete také přispět do komunity tím, že nasdílíte [scénáře, které vyvíjíte](#add-a-powershell-runbook-to-the-gallery). 
 
@@ -101,10 +101,12 @@ Runbooky Python jsou k dispozici v [galerii centra skriptů](https://gallery.tec
 
 ## <a name="request-a-runbook-or-module"></a>Vyžádat Runbook nebo modul
 
-Můžete odesílat požadavky na [uživatelský hlas](https://feedback.azure.com/forums/246290-azure-automation/).  Pokud potřebujete nápovědu k zápisu Runbooku nebo máte dotaz týkající se PowerShellu, odešlete na náš [Fórum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)otázku.
+Můžete odesílat požadavky na [uživatelský hlas](https://feedback.azure.com/forums/246290-azure-automation/).  Pokud potřebujete nápovědu k zápisu Runbooku nebo máte dotaz týkající se PowerShellu, pošlete dotaz na [stránku s dotazem na Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-automation.html).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Správa runbooků v Azure Automation](manage-runbooks.md)
-* [Informace o pracovním postupu PowerShellu pro Azure Automation](automation-powershell-workflow.md)
-* [Dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview)
+* Informace o tom, jak začít s PowerShellovým runbookm, najdete v tématu [kurz: vytvoření Runbooku PowerShellu](learn/automation-tutorial-runbook-textual-powershell.md).
+* Informace o práci se sadami Runbook najdete [v tématu Správa runbooků v Azure Automation](manage-runbooks.md).
+* Podrobnosti o PowerShellu najdete v tématu [dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview).
+* * Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

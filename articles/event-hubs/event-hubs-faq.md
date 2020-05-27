@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 8d461652758dd1fe6bb90a703b7c3fa113c9bd3e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: e8ae3cbbca926a97bf90f4ac1104d4f082b332fd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726243"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835610"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -250,7 +250,7 @@ Event Hubs podporuje dva typy [diagnostických protokolů](event-hubs-diagnostic
 
 ### <a name="support-and-sla"></a>Podpora a smlouva SLA
 
-Technická podpora pro Event Hubs je dostupná prostřednictvím [komunitních fór](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus). Podpora fakturace a správy předplatného se poskytuje bez jakýchkoli nákladů.
+Technická podpora pro Event Hubs je k dispozici na [stránce s dotazem Microsoft Q&pro Azure Service Bus](https://docs.microsoft.com/answers/topics/azure-service-bus.html). Podpora fakturace a správy předplatného se poskytuje bez jakýchkoli nákladů.
 
 Další informace o naší smlouvě SLA najdete na stránce [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/) .
 
