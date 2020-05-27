@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e49e4d5debe63b99039bbafbc14f7788367314f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 159e15a6be59991fba574e72dcaf2ed740fb10c2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678826"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846119"
 ---
 # <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Převod starší verze přímého partnerského vztahu na prostředek Azure pomocí Azure Portal
 
@@ -32,7 +32,28 @@ Pokud budete chtít, můžete tuto příručku dokončit pomocí [PowerShellu](h
 
 ### <a name="convert-a-legacy-direct-peering"></a><a name=create></a>Převod starší verze přímého partnerského vztahu
 
-Starší připojení partnerských vztahů můžete převést pomocí prostředku **partnerského vztahu** .
+Jako poskytovatel internetových služeb můžete převádět starší verze přímých partnerských vztahů pomocí [vytvoření partnerského vztahu]( https://go.microsoft.com/fwlink/?linkid=2129593).
+
+1. Na stránce **vytvořit partnerský vztah** na kartě **základy** vyplňte pole, jak je znázorněno zde:
+
+    > [!div class="mx-imgBorder"] 
+    > ![Registrace služby Peering Service](./media/setup-basics-tab.png)
+
+*    Vyberte své předplatné Azure.
+
+* V případě skupiny prostředků můžete buď zvolit existující skupinu prostředků z rozevíracího seznamu, nebo vytvořit novou skupinu výběrem možnosti vytvořit nový. V tomto příkladu vytvoříme novou skupinu prostředků.
+
+* Název odpovídá názvu prostředku a může to být cokoli, co si zvolíte.
+
+* Oblast se vybere automaticky, pokud jste zvolili existující skupinu prostředků. Pokud se rozhodnete vytvořit novou skupinu prostředků, musíte taky zvolit oblast Azure, ve které chcete prostředek umístit.
+
+>[!NOTE]
+>Oblast, ve které se nachází skupina prostředků, je nezávislá na umístění, kde chcete vytvořit partnerský vztah s Microsoftem. Je ale osvědčeným postupem uspořádání prostředků partnerského vztahu do skupin prostředků, které se nacházejí v nejbližších oblastech Azure. Například pro partnerské vztahy v Ashburn můžete vytvořit skupinu prostředků v Východní USA nebo východní USA 2.
+
+* V poli **PeerASN** vyberte své ASN.
+
+>[!IMPORTANT] 
+>Před odesláním žádosti o vytvoření partnerského vztahu můžete zvolit jenom číslo ASN s ValidationState jako schválenou. Pokud jste právě odeslali žádost PeerAsn, počkejte 12 hodin, nebo tak, aby bylo možné schválit přidružení ASN. Pokud vybrané číslo ASN čeká na ověření, zobrazí se chybová zpráva. Pokud nevidíte ASN, které potřebujete vybrat, zkontrolujte, jestli jste vybrali správné předplatné. Pokud ano, ověřte, jestli jste už vytvořili PeerAsn pomocí **[přidružení partnerského čísla ASN k předplatnému Azure](https://go.microsoft.com/fwlink/?linkid=2129592)**.
 
 #### <a name="launch-the-resource-and-configure-basic-settings"></a>Spuštění prostředku a Konfigurace základního nastavení
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]

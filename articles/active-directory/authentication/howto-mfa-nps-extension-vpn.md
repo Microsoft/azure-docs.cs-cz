@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f90a6dd94a498b6de6b5e2ec8381180483d0ac8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113149"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845742"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrujte svoji infrastrukturu VPN s Azure MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Azure.
 
@@ -228,9 +228,9 @@ V této části nakonfigurujete server VPN tak, aby používal ověřování pom
 
 2. V Správce serveru vyberte **nástroje**a pak vyberte **Směrování a vzdálený přístup**.
 
-3. V okně **Směrování a vzdálený přístup** klikněte pravým tlačítkem na ** \<název serveru> (místní)** a pak vyberte **vlastnosti**.
+3. V okně **Směrování a vzdálený přístup** klikněte pravým tlačítkem na ** \< název serveru> (místní)** a pak vyberte **vlastnosti**.
 
-4. V okně ** \<název serveru> (místní) vlastnosti** vyberte kartu **zabezpečení** .
+4. V okně ** \< název serveru> (místní) vlastnosti** vyberte kartu **zabezpečení** .
 
 5. Na kartě **zabezpečení** v části **Zprostředkovatel ověřování**vyberte **ověřování RADIUS**a pak vyberte **Konfigurovat**.
 
@@ -245,9 +245,9 @@ V této části nakonfigurujete server VPN tak, aby používal ověřování pom
     b. Pro **sdílený tajný klíč**vyberte **změnit**a potom zadejte heslo sdíleného tajného klíče, které jste vytvořili a nahráli dříve.
 
     c. V poli **časový limit (sekundy)** zadejte hodnotu **30**.  
-    Hodnota časového limitu je nutná k tomu, aby byl dostatek času na dokončení druhého faktoru ověřování.
+    Hodnota časového limitu je nutná k tomu, aby byl dostatek času na dokončení druhého faktoru ověřování. Některé sítě VPN nebo oblasti vyžadují nastavení časového limitu delší než 30 sekund, aby uživatelé nemohli přijímat více telefonních hovorů. Pokud se tento problém vyskytne u uživatelů, zvyšte hodnotu **časového limitu (sekundy)** v přírůstcích po dobu 30 sekund, dokud nedojde k problému.
 
-    ![Nastavení časového limitu pro přidání okna serveru RADIUS](./media/howto-mfa-nps-extension-vpn/image16.png)
+    ![Nastavení časového limitu pro přidání okna serveru RADIUS](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
 8. Vyberte **OK**.
 

@@ -11,15 +11,15 @@
   items:
     - name: Zobrazení přístupu pro uživatele
       href: check-access.md
+    - name: Šablona ARM
+      displayName: Resource Manager
+      href: quickstart-role-assignments-template.md
 - name: Kurzy
   items:
     - name: Udělení přístupu pro uživatele – portál
       href: quickstart-assign-role-user-portal.md
     - name: Udělení přístupu pro uživatele – PowerShell
       href: tutorial-role-assignments-user-powershell.md
-    - name: Udělení přístupu pro uživatele – šablona Resource Manageru
-      displayName: 'ARM, resource manager template'
-      href: tutorial-role-assignments-user-template.md
     - name: Udělení přístupu pro skupinu – PowerShell
       href: tutorial-role-assignments-group-powershell.md
     - name: Vytvoření vlastní role – PowerShell
@@ -67,7 +67,8 @@
           href: role-assignments-cli.md
         - name: REST API
           href: role-assignments-rest.md
-        - name: Šablona
+        - name: Šablona ARM
+          displayName: Resource Manager
           href: role-assignments-template.md
     - name: Zobrazení seznamu zamítnutých přiřazení
       items:
@@ -113,8 +114,8 @@
       href: /cli/azure/role?view=azure-cli-latest
     - name: REST API
       href: /rest/api/authorization/
-    - name: Šablony Resource Manageru
-      displayName: ARM
+    - name: Šablony ARM
+      displayName: Resource Manager
       items:
         - name: Přiřazení rolí
           href: /azure/templates/microsoft.authorization/roleassignments

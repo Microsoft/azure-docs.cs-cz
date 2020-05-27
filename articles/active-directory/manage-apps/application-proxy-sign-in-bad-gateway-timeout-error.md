@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: bbb3743251f2818ab1e4255b3dc6e7f4f9cbbcba
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74275469"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846728"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Při použití aplikace proxy aplikací nejde získat přístup k této podnikové aplikaci.
 
@@ -50,7 +50,7 @@ K vypršení časového limitu brány dojde, když se služba pokusí spojit s k
 Chybná chyba brány indikuje, že konektor nemůže získat přístup k back-endové aplikaci. Ujistěte se, že jste publikovali správnou aplikaci. Běžné chyby, které způsobují tuto chybu:
 
 - Překlep nebo omyl v interní adrese URL
-- Nepublikuje se kořen aplikace. Například publikování <http://expenses/reimbursement> , ale pokus o přístup<http://expenses>
+- Nepublikuje se kořen aplikace. Například publikování, <http://expenses/reimbursement> ale pokus o přístup<http://expenses>
 - Problémy s konfigurací vynuceného delegování protokolu Kerberos (KCD)
 - Problémy s back-end aplikací
 
@@ -71,7 +71,7 @@ V prvním rychlém kroku dvakrát zkontrolujte a opravte interní adresu URL tak
 Chcete-li ověřit, zda je aplikace přiřazena ke skupině pracovních konektorů:
 
 1. Otevřete aplikaci na portálu tak, že přejdete na **Azure Active Directory**, kliknete na **podnikové aplikace**a pak na **všechny aplikace.** Otevřete aplikaci a v nabídce vlevo vyberte **proxy aplikace** .
-1. Podívejte se do pole Skupina konektoru. Pokud ve skupině nejsou žádné aktivní konektory, zobrazí se upozornění. Pokud se nezobrazí žádná upozornění, přejděte na a ověřte, jestli jsou povolené všechny požadované porty.
+1. Podívejte se do pole Skupina konektoru. Pokud ve skupině nejsou žádné aktivní konektory, zobrazí se upozornění. Pokud se nezobrazí žádná upozornění, přejděte na a ověřte, jestli jsou povolené všechny [požadované porty](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to) .
 1. Pokud se zobrazuje nesprávná skupina konektorů, vyberte v rozevíracím seznamu správnou skupinu a potvrďte, že se už nezobrazí žádná upozornění. Pokud se zobrazí zamýšlená skupina konektorů, klikněte na zprávu upozornění a otevřete stránku se správou konektoru.
 1. Tady je několik způsobů, jak podrobněji prozkoumat:
 
@@ -83,7 +83,7 @@ Po použití těchto kroků se ujistěte, že je aplikace přiřazena ke skupin�
 
 ## <a name="check-all-required-ports-are-open"></a>Ověřte, že jsou otevřené všechny požadované porty.
 
-Chcete-li ověřit, zda jsou všechny požadované porty otevřeny, přečtěte si dokumentaci k otevření portů. Pokud jsou všechny požadované porty otevřené, přejděte k další části.
+Chcete-li ověřit, zda jsou všechny požadované porty otevřeny, přečtěte si [dokumentaci k otevření portů](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to). Pokud jsou všechny požadované porty otevřené, přejděte k další části.
 
 ## <a name="check-for-other-connector-errors"></a>Vyhledat další chyby konektoru
 

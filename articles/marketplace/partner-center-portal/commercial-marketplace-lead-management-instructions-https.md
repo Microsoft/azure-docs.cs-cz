@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: a2be74f6c9178577f86e5522e37e7c210643dd07
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790979"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847805"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Použití koncového bodu HTTPS ke správě potenciálních zákazníků z obchodu na webu Marketplace
 
@@ -183,7 +183,7 @@ Tento článek vysvětluje, jak vytvořit nový tok v Power automatu pro generov
 
 Konfiguraci můžete otestovat pomocí [post](https://app.getpostman.com/app/download/win64). Pro Windows je k dispozici online stažení příspěvku. 
 
-1. Spusťte příkaz post a vyberte **Nový** > **požadavek** a nastavte si testovací nástroj. 
+1. Spusťte příkaz post a vyberte **Nový**  >  **požadavek** a nastavte si testovací nástroj. 
 
    ![Požadavek na nastavení testovacího nástroje](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 
@@ -229,8 +229,9 @@ Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši 
 
 1. Vyberte svou nabídku a pak navštivte kartu **nastavení nabídky** .
 
-1. V části **Správa zájemců** vyberte **připojit**. 
-    ![Tlačítko pro řízení připojení zájemce](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+1. V části **zájemci pro zákazníky** vyberte **připojit**.
+
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-https/customer-leads.png" alt-text="Potenciální zákazníci":::
 
 1. V místním okně **Podrobnosti připojení** vyberte pro **cíl zájemce** **koncový bod HTTPS** . Vložte adresu URL POST protokolu HTTP z toku, který jste vytvořili, pomocí předchozích kroků do pole **Adresa URL koncového bodu https** .
     ![Kontaktní e-mail s podrobnostmi připojení](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)

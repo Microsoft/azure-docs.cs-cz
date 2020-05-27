@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: ac5b7db6986afd260c5267bda83489b0ce8b606c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 204ac3be46ac7ba0e1ea96e50379ca417b1299ce
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837427"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847629"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replikace virtuálních počítačů Azure běžících ve skupinách umístění s blízkými změnami do jiné oblasti
 
@@ -187,5 +187,11 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
     ```
 8. Spusťte testovací [převzetí služeb při selhání](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-powershell-resource-manager#step-8-run-a-test-failover).
 
+
+## <a name="next-steps"></a>Další kroky
+
+Pokud chcete pro VMware do Azure provést znovu ochranu a navrácení služeb po obnovení, postupujte podle kroků popsaných [tady](https://docs.microsoft.com/azure/site-recovery/vmware-azure-prepare-failback).
+
+Pokud chcete provést převzetí služeb při selhání pro Hyper-V do Azure, postupujte podle kroků uvedených [tady](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover) a proveďte navrácení služeb po obnovení, postupujte podle kroků uvedených [tady](https://docs.microsoft.com/azure/site-recovery/hyper-v-azure-failback).
 
 Další informace najdete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).

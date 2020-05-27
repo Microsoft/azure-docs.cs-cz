@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 3d8806e34afe45e6cced3de4554b7dd365f4ddf9
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9ab2122fe1dd71a06127cad5ecc064fc42845390
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701784"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847715"
 ---
 # <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
@@ -49,7 +49,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 ## <a name="offer-setup"></a>Nastavení nabídky
 
-## <a name="connect-lead-management"></a>Připojit řízení zájemců
+### <a name="customer-leads"></a>Potenciální zákazníci
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 

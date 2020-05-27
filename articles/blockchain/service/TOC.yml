@@ -69,8 +69,8 @@
       href: 'https://github.com/Azure-Samples/blockchain'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
-    - name: Fórum podpory MSDN
-      href: 'https://aka.ms/workbenchforum'
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-service.html'
     - name: Podpora komunity
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Podpora webu Stack Overflow

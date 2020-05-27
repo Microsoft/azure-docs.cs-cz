@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: cb82b3223d50c66b4d6c176a274d5ccf8d510911
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: d9d600b4ac34e4608b7747bee0e0a704ad2ab3be
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792101"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846048"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -61,7 +61,7 @@ Je však třeba vzít v úvahu omezení:
 
 Pokud hlavní server nemá žádné existující servery repliky, hlavní server se nejprve restartuje a připraví se pro replikaci.
 
-Když spustíte pracovní postup vytvoření repliky, vytvoří se prázdný Azure Database for MySQL server. Nový server je vyplněn daty, která byla na hlavním serveru. Čas vytvoření závisí na množství dat v hlavní databázi a na čase od posledního týdenního úplného zálohování. Čas může být v rozsahu od několika minut až po několik hodin.
+Když spustíte pracovní postup vytvoření repliky, vytvoří se prázdný Azure Database for MySQL server. Nový server je vyplněn daty, která byla na hlavním serveru. Čas vytvoření závisí na množství dat v hlavní databázi a na čase od posledního týdenního úplného zálohování. Čas může být v rozsahu od několika minut až po několik hodin. Server repliky je vždy vytvořen ve stejné skupině prostředků a v rámci stejného předplatného, jako má hlavní server. Pokud chcete vytvořit server repliky pro jinou skupinu prostředků nebo jiné předplatné, můžete [server repliky](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) po vytvoření přesunout.
 
 U každé repliky je povoleno [Automatické zvětšování](concepts-pricing-tiers.md#storage-auto-grow)úložiště. Funkce automatického zvětšení umožňuje replice udržovat data, která jsou do ní replikována, a zabránit přerušení replikace v důsledku chyb způsobených nedostatkem úložiště.
 
@@ -144,11 +144,11 @@ Následující parametry serveru jsou uzamčené na hlavním serveru i na server
 - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) 
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) Parametr je uzamčen na serverech repliky. 
+[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametr je uzamčen na serverech repliky. 
 
 Pokud chcete aktualizovat jeden z výše uvedených parametrů na hlavním serveru, odstraňte prosím servery repliky, aktualizujte hodnotu parametru v hlavní větvi a znovu vytvořte repliky.
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 
 - Identifikátory globálních transakcí (GTID) se nepodporují.
 - Vytvoření repliky repliky není podporováno.

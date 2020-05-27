@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec59aa830fe314332d17091f17ef81d4a1d65470
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833383"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847170"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Kurz: Azure Active Directory integrace jednotného přihlašování pomocí softwaru správce Maxient
 
@@ -69,7 +69,7 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Maxientho
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Maxient softwaru správce, dokončete následující stavební bloky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům ověřování pro použití se softwarem Maxient a software Manager
-    1. **[Přiřaďte všem uživatelům, aby používali Maxient](#assign-all-users-to-be-able-to-authenticate-for-the-Maxient-Conduct-Manager-Software)** – k tomu, aby mohli všichni pracovníci vaší instituce ověřovat.
+    1. **[Přiřaďte všem uživatelům, aby používali Maxient](#assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software)** – k tomu, aby mohli všichni pracovníci vaší instituce ověřovat.
 1. **[Otestujte nastavení Azure AD pomocí Maxient](#test-with-maxient)** – ověřte, jestli konfigurace funguje a že se uvolňují správné atributy.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD

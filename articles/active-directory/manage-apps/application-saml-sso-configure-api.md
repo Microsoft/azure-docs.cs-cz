@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.reviewer: luleon
-ms.openlocfilehash: 4720da1c4bf49ba08a4bb207a85fc10402e1a3b0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fd59dcdd566110d1df02333f5701c0c206442d5d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801699"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846456"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>Automatizace konfigurace aplikace jednotného přihlašování založeného na SAML pomocí rozhraní Microsoft Graph API
 
@@ -334,11 +334,11 @@ Kromě základních deklarací identity nakonfigurujte následující deklarace 
 
 | Název deklarace identity | Zdroj  |
 |---------|---------|
-| https://aws.amazon.com/SAML/Attributes/Role | assignedroles| 
-| https://aws.amazon.com/SAML/Attributes/RoleSessionName | třídy |
-| https://aws.amazon.com/SAML/Attributes/SessionDuration | "900" |
+| `https://aws.amazon.com/SAML/Attributes/Role` | assignedroles| 
+| `https://aws.amazon.com/SAML/Attributes/RoleSessionName` | třídy |
+| `https://aws.amazon.com/SAML/Attributes/SessionDuration` | "900" |
 | role | assignedroles |
-| http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier | třídy |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | třídy |
 
 #### <a name="request"></a>Žádost
 

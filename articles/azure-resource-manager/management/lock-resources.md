@@ -3,12 +3,12 @@ title: Uzamknout prostředky, aby nedocházelo ke změnám
 description: Zabrání uživatelům aktualizovat nebo odstraňovat důležité prostředky Azure tím, že použije zámek pro všechny uživatele a role.
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6bd595e3c676c8521470a1f5a00fe782e83dc840
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2060a7ed2de4956eb15bc85fb1a905705e21f813
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683747"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847663"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -240,7 +240,7 @@ V žádosti zahrňte objekt JSON, který určuje vlastnosti zámku.
     } 
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o logické organizaci prostředků najdete v tématu [použití značek k uspořádání prostředků](tag-resources.md) .
+* Další informace o logické organizaci prostředků najdete v tématu [použití značek k uspořádání prostředků](tag-resources.md).
 * Můžete použít omezení a konvence v rámci předplatného pomocí přizpůsobených zásad. Další informace najdete v tématu [Co je Azure Policy?](../../governance/policy/overview.md).
 * Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 076edc62a467701eaf0de23f280cdaf2abd945de
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792713"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845781"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Použití úložiště objektů BLOB v Azure ke správě zájemců z komerčního tržiště
 
@@ -74,9 +74,9 @@ ms.locfileid: "82792713"
 Až budete připraveni ke konfiguraci informací o správě zájemce pro vaši nabídku na portálu pro publikování, postupujte podle následujících kroků:
 
 1. Přejděte na stránku **nastavení nabídky** pro vaši nabídku.
-2. V části Správa zájemců vyberte **připojit** .
+2. V části **zájemci pro zákazníky** vyberte **připojit**.
 
-    ![Připojit nabídku](./media/commercial-marketplace-lead-management-instructions-azure-blob/connect-offer.png)
+    :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-azure-blob/customer-leads.png" alt-text="Potenciální zákazníci":::
 
 3. V místním okně Podrobnosti připojení vyberte **Azure Blob** pro cíl zájemce.
 
@@ -85,7 +85,7 @@ Až budete připraveni ke konfiguraci informací o správě zájemce pro vaši n
 4. Zadejte **název kontejneru** a **připojovací řetězec účtu úložiště** , který jste získali z následujících pokynů.
 
     * Příklad názvu kontejneru:`marketplaceleadcontainer`
-    * Příklad připojovacího řetězce účtu úložiště `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![: podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
+    * Příklad připojovacího řetězce účtu úložiště: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![ Podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. Vyberte **Uložit**.
 

@@ -3,14 +3,14 @@ title: 'Rychlý Start: Vytvoření webové aplikace v PHP'
 description: Nasaďte první Hello World PHP do Azure App Service v řádu minut. Nasadíte pomocí Gitu, což je jedním z mnoha způsobů, jak nasadit do App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 05/25/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: de51df50995c47800a2084108973c3b009ae3462
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d9ee9ac3abd7dada8e87bdf5a4385185933fc4ae
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085936"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847842"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Vytvoření webové aplikace v PHP v Azure
 
@@ -68,25 +68,25 @@ V okně terminálu ukončete webový server stisknutím **Ctrl + C**.
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-V Cloud Shell v plánu `myAppServicePlan` App Service pomocí [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) příkazu vytvořte webovou aplikaci. 
+V Cloud Shell v `myAppServicePlan` plánu App Service pomocí příkazu vytvořte webovou aplikaci [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) . 
 
-V následujícím příkladu nahraďte `<app_name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `PHP|7.0`. Pokud chcete zobrazit všechny podporované moduly runtime, [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)spusťte příkaz. 
+V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `PHP|7.0`. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) . 
 
 
 ```azurecli-interactive
 # Bash
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.4" --deployment-local-git
 # PowerShell
-az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
+az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.4" --deployment-local-git
 ```
 > [!NOTE]
-> Symbol `(--%)`stop-analyze, představený v powershellu 3,0, směruje prostředí PowerShell na neinterpretaci vstupu jako příkazů nebo výrazů PowerShellu. 
+> Symbol stop-Analyze `(--%)` , představený v powershellu 3,0, směruje prostředí PowerShell na neinterpretaci vstupu jako příkazů nebo výrazů PowerShellu. 
 >
 
 Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujícímu příkladu:
 
 <pre>
-Local git is configured with url of 'https://&lt;username&gt;@&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git'
+Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -94,7 +94,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app_name&gt;.s
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "&lt;app_name&gt;.azurewebsites.net",
+  "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
   "enabled": true,
   &lt; JSON data removed for brevity. &gt;
 }
@@ -103,10 +103,10 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app_name&gt;.s
 Vytvořili jste prázdnou novou webovou aplikaci s povoleným nasazením Gitu.
 
 > [!NOTE]
-> Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Tuto adresu URL si uložte, protože ji budete potřebovat později.
+> Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Tuto adresu URL si uložte, protože ji budete potřebovat později.
 >
 
-Přejděte do vaší nově vytvořené webové aplikace. Nahraďte _ &lt;název aplikace>_ jedinečným názvem aplikace vytvořeným v předchozím kroku.
+Přejděte do vaší nově vytvořené webové aplikace. Nahraďte _ &lt; název aplikace>_ jedinečným názvem aplikace vytvořeným v předchozím kroku.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -118,7 +118,7 @@ Vaše nová webová aplikace by měla vypadat takto:
 
 [!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
-```bash
+<pre>
 Counting objects: 2, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
@@ -139,16 +139,16 @@ remote: Ignoring: .git
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
    cc39b1e..25f1805  master -> master
-```
+</pre>
 
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
 
 V prohlížeči zadejte adresu nasazené aplikace.
 
 ```
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 Vzorový kód PHP je spuštěný ve webové aplikaci služby Azure App Service.

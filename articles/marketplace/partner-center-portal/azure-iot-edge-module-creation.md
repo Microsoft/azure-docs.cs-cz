@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 21fc51aef664b2ea9360c4d8ca8e722bb7bbb349
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 5798e3c9c2a345c5cf9d8fd254130b4252a696d8
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701151"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847969"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Vytvoření, konfigurace a publikování nabídky modulu IoT Edge v Azure Marketplace
 
@@ -48,7 +48,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
+Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) .
@@ -59,7 +59,7 @@ Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na zák
 
 Pomocí těchto kroků můžete nastavit nabídku.
 
-### <a name="connect-lead-management"></a>Připojit řízení zájemců
+### <a name="customer-leads"></a>Potenciální zákazníci
 
 Když publikujete nabídku na Marketplace s partnerským centrem, můžete ji volitelně připojit k systému pro správu vztahů se zákazníky (CRM). To vám umožní získat kontaktní údaje zákazníka, jakmile někdo vyjádří zájem nebo použije váš produkt.
 

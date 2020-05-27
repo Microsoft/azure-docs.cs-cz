@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 4eb80f08db2fc8ceba434f1a4a31794d7b1d6d0d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 13e05a8771be162ebe37cc79fc93cfa404183d1d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698433"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846831"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Vytvoření nabídky Dynamics 365 for Operations
 
@@ -67,7 +67,7 @@ Seznamte se s vaší nabídkou pro zákazníky s odkazem na bezplatnou zkušebn�
 
 #### <a name="contact-me"></a>Kontaktujte mě
 
-Shromažďovat kontaktní údaje zákazníka propojením systému pro správu vztahů se zákazníky (CRM). Zákazník bude požádán o oprávnění ke sdílení svých informací. Tyto podrobnosti o zákaznících spolu s názvem nabídky, ID a zdrojem Marketplace, kde si vaši nabídku našli, budou odeslány do systému CRM, který jste nakonfigurovali. Další informace o konfiguraci CRM najdete v tématu [připojení správy zájemců](#connect-lead-management).
+Shromažďovat kontaktní údaje zákazníka propojením systému pro správu vztahů se zákazníky (CRM). Zákazník bude požádán o oprávnění ke sdílení svých informací. Tyto podrobnosti o zákaznících spolu s názvem nabídky, ID a zdrojem Marketplace, kde si vaši nabídku našli, budou odeslány do systému CRM, který jste nakonfigurovali. Další informace o konfiguraci CRM najdete v tématu [zájemci zákazníků](#customer-leads).
 
 ### <a name="test-drive"></a>Testovací jednotka
 
@@ -94,7 +94,7 @@ Vyberte z následujících možností:
 - [Technické osvědčené postupy](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Přehled](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; Ujistěte se, že je blokování automaticky otevíraných oken vypnuté)
 
-## <a name="connect-lead-management"></a>Připojit řízení zájemců
+### <a name="customer-leads"></a>Potenciální zákazníci
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 

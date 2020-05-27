@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: a02abd931dddd410882dd67a73a5b5fab6dc8cf9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f437205ae76feb36596b05ee0e320aaed0a37184
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82194886"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846661"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -41,7 +41,7 @@ Kvůli ochraně před těmito hrozbami poskytuje Security Center nástroje, kter
 
 -   **Ochrana před hrozbami**: Security Center posuzuje vaše úlohy a vyvolává doporučení prevence hrozeb a výstrahy zabezpečení.
 
--   **Rychlejší zabezpečení**: v Security Center se všechno provádí v rychlosti cloudu. Vzhledem k tomu, že je nativně integrovaná, nasazení Security Center je jednoduché a poskytuje vám možnost autozřizování a ochrana pomocí služeb Azure.
+-   **Rychlejší zabezpečení**: v Security Center se všechno provádí v rychlosti cloudu. Vzhledem k nativní integraci je nasazení služby Security Center jednoduché a poskytuje pro služby Azure automatické zřizování a ochranu.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

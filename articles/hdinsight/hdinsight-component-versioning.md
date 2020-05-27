@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 05/20/2020
-ms.openlocfilehash: 5f3b1fcb573358160707c0b29ad9e1806ea8e24c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 036548d61dbe6a6465ca28c72eacb48e61386577
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774290"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846218"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Součásti a verze Apache dostupné pro Azure HDInsight
 
@@ -43,21 +43,21 @@ Verze komponent spojené s verzemi clusterů HDInsight jsou uvedené v následuj
 | Apache Storm           | -             | 1.1.0                       |
 | Apache Mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2,4, 2.3.1 *   | 2.3.0, 2.2.0, 2.1.0         |
+| Apache Spark           | 2,4           | 2.3.0, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
-| Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (viz poznámka.)   |
+| Apache Kafka           | 2.1           | 1.1                        |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
-> Podpora pro Kafka verze 0,10 skončila v březnu 2019 z důvodu problémů s výkonem systému.
+> HDInsight 4,0: Spark 2,4 a Kafka 2,1 jsou plně podporované. Spark 2,3 a Kafka 1,1 však nejsou obsluhované. HDInsight 3,6: Spark 2,3 a Kafka 1,1 jsou plně podporované.  
 
 ## <a name="check-for-current-apache-component-version-information"></a>Vyhledat aktuální informace o verzi součásti Apache
 
 Verze komponent prostředí Hadoop spojené s verzemi clusterů HDInsight se můžou měnit s aktualizacemi služby HDInsight. Chcete-li zkontrolovat komponenty Hadoop a ověřit, které verze jsou používány pro cluster, použijte REST API Ambari. Příkaz **GetComponentInformation** načte informace o součástech služby. Další informace najdete v [dokumentaci k Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
-### <a name="release-notes"></a>Zpráva k vydání verze
+### <a name="release-notes"></a>Poznámky k verzi
 
 Další poznámky k verzi nástroje HDInsight najdete v [poznámkách k verzi HDInsight](hdinsight-release-notes.md).
 
@@ -91,14 +91,14 @@ Tato tabulka obsahuje seznam verzí HDInsight, které nejsou k dispozici v Azure
 
 | Verze HDInsight | Verze HDP | Operační systém virtuálního počítače | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  Dostupnost v Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30. září 2016 |5. září 2017 |28. června 2018 |Ano |No |
-| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29. března 2016 |29. prosince 2016 |9. ledna 2018 |Ano |No |
-| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2. prosince 2015 |Červen 27, 2016 |31. července 2018 |Ano |No |
-| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2. prosince 2015 |Červen 27, 2016 |31. července 2017 |Ano |No |
-| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS nebo Windows Server 2012 R2 |18. února 2015 |1. března 2016 |1. dubna 2017 |Ano |No |
-| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Ano |No |
-| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11. února 2014 |17. září 2014 |30. června 2015 |Ano |No |
-| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28. října 2013 |12. května 2014 |31. května 2015 |Ano |No |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30. září 2016 |5. září 2017 |28. června 2018 |Ano |Ne |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29. března 2016 |29. prosince 2016 |9. ledna 2018 |Ano |Ne |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2. prosince 2015 |Červen 27, 2016 |31. července 2018 |Ano |Ne |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2. prosince 2015 |Červen 27, 2016 |31. července 2017 |Ano |Ne |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS nebo Windows Server 2012 R2 |18. února 2015 |1. března 2016 |1. dubna 2017 |Ano |Ne |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24. června 2014 |18. května 2015 |30. června 2016 |Ano |Ne |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11. února 2014 |17. září 2014 |30. června 2015 |Ano |Ne |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28. října 2013 |12. května 2014 |31. května 2015 |Ano |Ne |
 | HDInsight 1,6 |HDP 1,1 | |28. října 2013 |26. dubna 2014 |31. května 2015 |Ne |Ne |
 
 > [!NOTE]

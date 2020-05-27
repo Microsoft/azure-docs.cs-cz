@@ -4,21 +4,22 @@ description: Připojení soukromě k webové aplikaci pomocí privátního konco
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 05/12/2020
+ms.date: 05/25/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6a95c021153a458a4e3f804e64724b73ea1f1937
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4c48a2fad927812cc45543243b48a2df81acf73b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198818"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846949"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Používání privátních koncových bodů pro webovou aplikaci Azure (Preview)
 
 > [!Note]
+> S aktualizací Preview jsme vydali funkci data exfiltrace Protection.
 > Verze Preview je dostupná v oblastech Východní USA a Západní USA 2 pro všechny PremiumV2 Windows a Linux Web Apps a elastické funkce Premium. 
 
 Pro webovou aplikaci Azure můžete použít privátní koncový bod, který umožňuje klientům umístěným ve vaší privátní síti zabezpečený přístup k aplikaci prostřednictvím privátního propojení. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě Azure. Síťový provoz mezi klientem v privátní síti a webovou aplikací prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
@@ -27,6 +28,7 @@ Použití privátního koncového bodu pro vaši webovou aplikaci vám umožní:
 
 - Zabezpečte svou webovou aplikaci konfigurací privátního koncového bodu, čímž Eliminujte veřejnou expozici.
 - Připojte se bezpečně k webové aplikaci z místních sítí, které se připojují k virtuální síti pomocí privátního partnerského vztahu VPN nebo ExpressRoute.
+- Vyhněte se jakýmkoli exfiltrace dat z vaší virtuální sítě. 
 
 Pokud potřebujete zabezpečené připojení mezi vaší virtuální sítí a vaší webovou aplikací, je koncový bod služby nejjednodušší řešení. Pokud budete také potřebovat připojit se k webové aplikaci z místního prostředí prostřednictvím brány Azure, místní sítě s partnerským vztahem nebo globálně připojenou sítí, soukromý koncový bod je řešením.  
 
@@ -52,7 +54,7 @@ Z hlediska zabezpečení:
 - K síťovému rozhraní privátního koncového bodu nelze přidružit NSG.
 - K podsíti, která je hostitelem privátního koncového bodu, může být přidruženo NSG, ale je nutné zakázat vynucování zásad sítě pro privátní koncový bod: viz [zakázání zásad sítě pro privátní koncové body][disablesecuritype]. V důsledku toho není možné filtrovat podle NSG přístup k vašemu privátnímu koncovému bodu.
 - Když pro webovou aplikaci povolíte privátní koncový bod, konfigurace [omezení přístupu][accessrestrictions] webové aplikace se nevyhodnotí.
-- Můžete snížit riziko exfiltrace dat z virtuální sítě tím, že odeberete všechna pravidla NSG, kde destination je tag Internet nebo služby Azure. Ale přidání privátního koncového bodu webové aplikace do vaší podsítě vám umožní dosáhnout libovolné webové aplikace hostované ve stejném razítku nasazení a zpřístupnit Internet.
+- Odstraněním všech pravidel NSG, kde destination je tag Internet nebo služby Azure, můžete eliminovat riziko exfiltrace dat z virtuální sítě. Při nasazení privátního koncového bodu pro webovou aplikaci můžete dosáhnout pouze této konkrétní webové aplikace prostřednictvím privátního koncového bodu. Pokud máte jinou webovou aplikaci, musíte pro tuto jinou webovou aplikaci nasadit jiný vyhrazený privátní koncový bod.
 
 V protokolech HTTP webové aplikace se nachází zdrojová IP adresa klienta. To je implementováno pomocí protokolu proxy protokolu TCP, který předává vlastnost IP klienta do webové aplikace. Další informace najdete v tématu [získání informací o připojení pomocí proxy serveru TCP v2][tcpproxy].
 
@@ -77,7 +79,7 @@ Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure][pr
 
 Když použijete funkci Azure v plánu elastické Premium s privátním koncovým bodem, spustíte nebo spustíte funkci na webovém portálu Azure, musíte mít přímý přístup k síti nebo se zobrazí chyba HTTP 403. Jinými slovy, váš prohlížeč musí být schopný spojit se s privátním koncovým bodem a spustit funkci z webového portálu Azure. 
 
-V rámci verze Preview je přístup k podnikovému slotu vystavený za soukromým koncovým bodem. další sloty jsou dosažitelné jenom pomocí veřejného koncového bodu.
+Během období Preview se za soukromým koncovým bodem zveřejňuje jenom produkční slot, ale v rámci veřejného koncového bodu musí být dostupné jiné sloty.
 
 Pravidelně vylepšujeme funkci privátního propojení a soukromý koncový bod. Další informace o omezeních najdete v [tomto článku][pllimitations] .
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 0e1bb015025c2ea9c720aca5d72faef01926cc33
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d892c58413803ff65fbd8ca8b25a61bc5ffeb26f
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800006"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847357"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Prozkoumejte Azure Monitor pro Azure cache pro Redis (Preview)
 
@@ -34,8 +34,6 @@ Poskytuje:
 - **Podrobná analýza** konkrétního prostředku Azure cache pro Redis. Můžete diagnostikovat problémy a zobrazit podrobnou analýzu využití, selhání, kapacity a operací. Výběrem libovolné z těchto kategorií zobrazíte podrobné zobrazení relevantních informací.  
 
 - **Přizpůsobení** tohoto prostředí, které je sestavené základem Azure monitor šablon sešitu. Díky tomu můžete měnit metriky, které se zobrazují, a upravit nebo nastavit prahové hodnoty, které odpovídají vašim limitům. Změny můžete uložit ve vlastním sešitu a potom připnout grafy sešitů do řídicích panelů Azure.
-
-- **Přizpůsobení** tohoto prostředí je tvořené základem Azure monitor šablonami sešitu. Prostředí umožňuje změnit, jaké metriky se zobrazí, a upravit nebo nastavit prahové hodnoty, které odpovídají vašim limitům. Změny můžete uložit ve vlastním sešitu a potom připnout grafy sešitů do řídicích panelů Azure.
 
 Tato funkce nevyžaduje, abyste povolili nebo nenakonfigurovali cokoli. Ve výchozím nastavení se shromažďují informace o službě Azure cache pro Redis.
 

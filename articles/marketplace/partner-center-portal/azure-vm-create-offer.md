@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 957d7911a1373504265c014e3ba141c150e60c2a
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: a64908eb639a44c6bc9d742e84ebb4d01082d49d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800600"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847918"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -73,7 +73,7 @@ Váš technický tým by měl mít základní znalosti a praktické znalosti ná
 Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku Azure Marketplace a v Azure PowerShell a v Azure CLI, pokud je to možné.
-- Použijte při tom jenom malá písmena a číslice. ID může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezeno na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude *https://azuremarketplace.microsoft.com/marketplace/../test-offer-1* .
+- Použijte při tom jenom malá písmena a číslice. ID může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezeno na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
 Zadejte **alias nabídky**. Alias nabídky je název, který se používá pro nabídku v partnerském centru.
@@ -96,7 +96,7 @@ Další zdroje testovacích jednotek:
 - [Marketingové osvědčené postupy](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Stažení testovací jednotky – přehled](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) Soubor PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken).
 
-### <a name="lead-management"></a>Správa potenciálních zákazníků
+### <a name="customer-leads"></a>Potenciální zákazníci
 
 Když publikujete nabídku na komerční Marketplace s partnerským centrem, připojte ji k systému pro správu vztahů se zákazníky (CRM). To vám umožní získat kontaktní údaje zákazníka, jakmile někdo vyjádří zájem nebo použije váš produkt. Pokud chcete povolit testovací jednotku (viz předchozí část), vyžaduje se připojení k CRM. V opačném případě je připojení k CRM volitelné.
 

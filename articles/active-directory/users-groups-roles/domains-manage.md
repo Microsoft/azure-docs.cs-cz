@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2619af2959aa7d475c3e6bab9c8db55212ed0af4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582964"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845946"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
 
@@ -49,6 +49,10 @@ Můžete přidat až 900 názvů spravovaných domén. Pokud konfigurujete všec
 
 Pokud chcete do adresáře přidat název domény třetí úrovně, například ' europe.contoso.com ', měli byste nejdřív přidat a ověřit doménu druhé úrovně, jako je například contoso.com. Subdoména je automaticky ověřena službou Azure AD. Chcete-li zjistit, zda je poddoménou, kterou jste přidali, ověřena, aktualizujte seznam domén v prohlížeči.
 
+Poznámka
+
+Pokud jste již přidali doménu contoso.com do tenanta služby Azure AD, můžete také přidat europe.contoso.com subdomény do druhého tenanta Azure AD. Při přidávání subdomény se zobrazí výzva k přidání záznamu TXT do poskytovatele hostingu DNS.
+
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Jak postupovat v případě, že změníte registrátora DNS pro vlastní název domény
 
 Pokud změníte registrátory DNS, neexistují žádné další konfigurační úlohy ve službě Azure AD. Název domény můžete dál používat s Azure AD bez přerušení. Pokud používáte vlastní název domény s Office 365, Intune nebo dalšími službami, které spoléhají na vlastní názvy domén v Azure AD, přečtěte si dokumentaci k těmto službám.
@@ -67,7 +71,7 @@ Než budete moct odstranit vlastní název domény, musíte změnit nebo odstran
 
 ### <a name="forcedelete-option"></a>ForceDelete – možnost
 
-Název domény můžete **ForceDelete** v [centru pro správu Azure AD](https://aad.portal.azure.com) nebo pomocí [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Tyto možnosti používají asynchronní operace a aktualizují všechny odkazy z vlastního názvu domény jakouser@contoso.comna počáteční výchozí název domény, například.user@contoso.onmicrosoft.com 
+Název domény můžete **ForceDelete** v [centru pro správu Azure AD](https://aad.portal.azure.com) nebo pomocí [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Tyto možnosti používají asynchronní operace a aktualizují všechny odkazy z vlastního názvu domény jako user@contoso.com na počáteční výchozí název domény, například user@contoso.onmicrosoft.com . 
 
 Chcete-li volat **ForceDelete** v Azure Portal, je nutné zajistit, aby bylo méně než 1000 odkazů na název domény a všechny odkazy, kde Exchange je služba zřizování, musí být aktualizována nebo odebrána v centru pro [správu serveru Exchange](https://outlook.office365.com/ecp/). To zahrnuje skupiny zabezpečení s povoleným e-mailem Exchange a distribuované seznamy. Další informace najdete v tématu [Odebrání skupin zabezpečení s povolenými e-maily](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Operace **ForceDelete** se taky nezdaří, pokud je splněná některá z následujících podmínek:
 
@@ -90,10 +94,10 @@ Vrátí se chyba, když:
 **Otázka: Proč se odstranění domény nepodaří s chybou, která uvádí, že mám v tomto názvu domény hlavní skupiny Exchange?** <br>
 **A:** V dnešní době jsou některé skupiny, jako jsou skupiny zabezpečení s povolenými poštou a distribuované seznamy, zřízené Exchangem a je potřeba je ručně vyčistit v [centru pro správu Exchange (EAC)](https://outlook.office365.com/ecp/). Může se jednat o záviset na ProxyAddresses, která spoléhá na vlastní název domény a bude nutné ji ručně aktualizovat na jiný název domény. 
 
-**Otázka: jsem přihlášen jako správce\@contoso.com, ale nemůžu odstranit název domény "contoso.com"?**<br>
-**A:** Nejde odkazovat na název vlastní domény, který se pokoušíte odstranit v názvu uživatelského účtu. Zajistěte, aby účet globálního správce používal počáteční výchozí název domény (. onmicrosoft.com), například admin@contoso.onmicrosoft.com. Přihlaste se pomocí jiného účtu globálního správce, jako admin@contoso.onmicrosoft.com je například nebo jiný vlastní název domény, například "fabrikam.com", admin@fabrikam.comkde je účet.
+**Otázka: jsem přihlášen jako správce contoso.com, \@ ale nemůžu odstranit název domény "contoso.com"?**<br>
+**A:** Nejde odkazovat na název vlastní domény, který se pokoušíte odstranit v názvu uživatelského účtu. Zajistěte, aby účet globálního správce používal počáteční výchozí název domény (. onmicrosoft.com), například admin@contoso.onmicrosoft.com . Přihlaste se pomocí jiného účtu globálního správce, jako admin@contoso.onmicrosoft.com je například nebo jiný vlastní název domény, například "fabrikam.com", kde je účet admin@fabrikam.com .
 
-**Otázka: kliknuli jste na tlačítko Odstranit doménu a `In Progress` zobrazí se stav operace odstranění. Jak dlouho to trvá? Co se stane, když dojde k chybě?**<br>
+**Otázka: kliknuli jste na tlačítko Odstranit doménu a zobrazí se `In Progress` stav operace odstranění. Jak dlouho to trvá? Co se stane, když dojde k chybě?**<br>
 **A:** Operace odstranit doménu je asynchronní úloha na pozadí, která přejmenuje všechny odkazy na název domény. Měla by být dokončena do jedné nebo dvou minut. Pokud dojde k odstranění domény, ujistěte se, že nemáte:
 
 * Aplikace nakonfigurované v názvu domény pomocí appIdentifierURI

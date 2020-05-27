@@ -3,14 +3,14 @@ title: Přehled Azure Automation Update Management
 description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 05/04/2020
+ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4a48841a1c1f5225e5ce53c46c69bd3d29f6fe59
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4c27fa26b19b870f90f2e7d6ecd34f1f3c083323
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830697"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847324"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -97,7 +97,7 @@ V následující tabulce jsou uvedeny nepodporované operační systémy:
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|Klient Windows     | Klientské operační systémy (například Windows 7 a Windows 10) se nepodporují.        |
+|Klient Windows     | Klientské operační systémy (například Windows 7 a Windows 10) se nepodporují.<br> Pro virtuální počítače Azure s Windows (WVD) se doporučuje metoda.<br> pro správu aktualizací je [web Windows Update pro firmy](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) pro správu oprav klientských počítačů s Windows 10. |
 |Windows Server 2016 Nano Server     | Není podporováno.       |
 |Uzly služby Azure Kubernetes | Není podporováno. Použijte proces opravy popsaný v tématu [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md) .|
 
@@ -255,13 +255,5 @@ Tady jsou způsoby, jak můžete povolit Update Management a vybrat počítače,
 ## <a name="next-steps"></a>Další kroky
 
 * Podrobnosti o práci s Update Management najdete v tématu [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
-* Pokud pro aktualizace potřebujete cílit na dynamickou skupinu virtuálních počítačů, přečtěte si téma [použití dynamických skupin s Update Management](automation-update-management-groups.md).
-* Pokud chcete funkci povolit pomocí šablony Azure Resource Manager, přečtěte si téma [povolení Update Management pomocí šablony Azure Resource Manager](automation-update-management-deploy-template.md).
-* Pokud chcete tuto funkci povolit ze sady Runbook, přečtěte si téma [povolení Update Management ze sady Runbook](automation-onboard-solutions.md).
-* Pokud chcete tuto funkci povolit z účtu Automation, přečtěte si téma [povolení Update Management z účtu Automation](automation-onboard-solutions-from-automation-account.md).
-* Pokud chcete funkci povolit procházením Azure Portal, přečtěte si téma [povolení Update Management z Azure Portal](automation-onboard-solutions-from-browse.md).
-* Pokud chcete tuto funkci povolit z virtuálního počítače Azure, přečtěte si téma [povolení Update Management z virtuálního počítače Azure](automation-onboard-solutions-from-vm.md).
-* Pokud potřebujete hledat v protokolech uložených v pracovním prostoru Log Analytics, přečtěte si téma [dotazy Update Management protokoly](automation-update-management-query-logs.md).
-* Informace o řešení chyb funkcí najdete v tématu [řešení potíží s Update Management](troubleshoot/update-management.md).
-* Problémy s chybami agenta Windows Update najdete v tématu řešení potíží s [agentem pro Windows Update](troubleshoot/update-agent-issues.md).
-* Problémy s chybami agenta aktualizací pro Linux najdete v tématu [řešení potíží s aktualizacemi agenta pro Linux](troubleshoot/update-agent-issues-linux.md).
+
+* Přečtěte si nejčastější dotazy týkající se Update Management v [Azure Automationch nejčastějších dotazech](automation-faq.md).

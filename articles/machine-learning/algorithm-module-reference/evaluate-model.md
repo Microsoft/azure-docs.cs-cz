@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: f69a3f61c288b320399d1b3abfc632c93261c540
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e522291bdf1982ff65a62f028107b15b3249898c
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983359"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847408"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
@@ -49,7 +49,7 @@ Tento modul použijte k měření přesnosti trained model. Poskytnete datovou s
 
 ## <a name="results"></a>Výsledky
 
-Po spuštění **modelu vyhodnocení**klikněte pravým tlačítkem myši na modul a výběrem **vizualizace výsledky vyhodnocení** zobrazte výsledky.
+Po spuštění **modelu vyhodnocení**vyberte modul a otevřete na pravé straně navigační panel **modelu hodnocení** .  Pak zvolte kartu **výstupy + protokoly** a na této kartě se v části **datové výstupy** zobrazí několik ikon.   Ikona **vizualizace** má pruhový graf s ikonou a je prvním způsobem, jak zobrazit výsledky.
 
 Pokud připojíte datové sady ke vstupům **modelu vyhodnocení**, budou výsledky obsahovat metriky pro sadu dat nebo oba modely.
 Model nebo data připojená k levému portu se zobrazí jako první v sestavě, za kterými následuje metrika pro datovou sadu nebo model připojený ke správnému portu.  

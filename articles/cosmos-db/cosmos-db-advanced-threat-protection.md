@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b37f9be5eb3313cc451e65f90d7f2713c68806d
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77614834"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845980"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)
 
@@ -36,11 +36,15 @@ Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB detekuje a
 
 - **Neobvyklé extrakce dat**: Tato výstraha se aktivuje, když klient extrahuje neobvyklé množství dat z Azure Cosmos DB účtu. Může to být příznak některých exfiltrace dat provedených k přenosu všech dat uložených v účtu do externího úložiště dat.
 
-## <a name="set-up-advanced-threat-protection"></a>Nastavení rozšířené ochrany před internetovými útoky
 
-### <a name="set-up-atp-using-the-portal"></a>Nastavení ATP pomocí portálu
 
-1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com/).
+## <a name="configure-advanced-threat-protection"></a>Konfigurace Rozšířené ochrany před internetovými útoky
+
+Rozšířenou ochranu před internetovými útoky můžete nakonfigurovat libovolným z několika způsobů popsaných v následujících částech.
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com/) .
 
 2. Z účtu Azure Cosmos DB v nabídce **Nastavení** vyberte **Rozšířené zabezpečení**.
 
@@ -51,14 +55,14 @@ Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB detekuje a
     * Klikněte na možnost **Rozšířená ochrana před internetovými útoky** a nastavte ji na **zapnuto**.
     * Klikněte na **Uložit** a uložte nové nebo aktualizované zásady Advanced Threat Protection.   
 
-### <a name="set-up-atp-using-rest-api"></a>Nastavení ATP pomocí REST API
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 Pomocí příkazů rozhraní REST API můžete vytvořit, aktualizovat nebo získat nastavení rozšířené ochrany před internetovými útoky pro určitý účet Azure Cosmos DB.
 
 * [Rozšířená ochrana před internetovými útoky – vytvořit](https://go.microsoft.com/fwlink/?linkid=2099745)
 * [Rozšířená ochrana před internetovými útoky – získání](https://go.microsoft.com/fwlink/?linkid=2099643)
 
-### <a name="set-up-atp-using-azure-powershell"></a>Nastavení ATP pomocí Azure PowerShell
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Použijte následující rutiny PowerShellu:
 
@@ -66,12 +70,12 @@ Použijte následující rutiny PowerShellu:
 * [Získat rozšířenou ochranu před internetovými útoky](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [Zakázat rozšířenou ochranu před internetovými útoky](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
 
-### <a name="using-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
+### <a name="arm-template"></a>[Šablona ARM](#tab/arm-template)
 
-Pomocí šablony Azure Resource Manager můžete nastavit Cosmos DB s povolenou rozšířenou ochranou hrozeb.
+Pomocí šablony Azure Resource Manager (ARM) nastavte Cosmos DB s povolenou rozšířenou ochranou hrozeb.
 Další informace najdete v tématu [Vytvoření účtu CosmosDB s využitím rozšířené ochrany před internetovými útoky](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
 
-### <a name="using-azure-policy"></a>Použití Azure Policy
+### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 K povolení rozšířené ochrany před internetovými útoky pro Cosmos DB použijte Azure Policy.
 
@@ -90,6 +94,9 @@ K povolení rozšířené ochrany před internetovými útoky pro Cosmos DB pou�
 
 
 1. Zadejte další parametry a klikněte na **přiřadit**.
+
+
+
 
 ## <a name="manage-atp-security-alerts"></a>Spravovat výstrahy zabezpečení ATP
 

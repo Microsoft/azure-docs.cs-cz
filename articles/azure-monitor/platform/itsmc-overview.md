@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0ae621791fb989fbb1fdab6a045bc8e9707bc74
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274538"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846524"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí konektoru pro správu služeb IT
+# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Propojení Azure s nástroji ITSM s využitím ITSM konektoru
 
 ![Symbol IT Service Management Connectoru](media/itsmc-overview/itsmc-symbol.png)
 
-Služba IT Service Management Connector (ITSMC) umožňuje připojit Azure a podporovaný produkt/službu IT Service Management (ITSM).
+ITSM konektor (ITSMC) umožňuje propojit Azure s podporovaným produktem nebo službou správy IT služeb (ITSM).
 
 Služby Azure, jako jsou Log Analytics a Azure Monitor poskytují nástroje pro detekci, analýzu a řešení potíží s prostředky Azure a mimo Azure. Pracovní položky týkající se problému se ale obvykle nacházejí v ITSMm produktu nebo službě. Konektor ITSM poskytuje obousměrné propojení mezi nástroji Azure a ITSM, které vám pomůžou rychleji řešit problémy.
 
@@ -57,7 +57,7 @@ Než budete moct vytvořit připojení, musíte přidat řešení konektoru ITSM
 3. V části **pracovní prostor OMS** vyberte pracovní prostor Azure Log Analytics, do kterého chcete řešení nainstalovat.
    >[!NOTE]
    > * V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako Log Analytics pracovní prostory.
-   > * Konektor ITSM se dá nainstalovat jenom v Log Analytics pracovních prostorech v následujících oblastech: Východní USA, západ USA 2, Střed USA – jih, Středozápadní USA, Central Canada, Západní Evropa, Jižní Británie, jihovýchodní Asie, Východní Japonsko, Střed Indie, jihovýchodní Austrálie.
+   > * Konektor ITSM se dá nainstalovat jenom do Log Analytics pracovních prostorů v následujících oblastech: Východní USA, západ USA 2, Střed USA – jih, Středozápadní USA, Fairfax, Central Canada, Západní Evropa, Jižní Británie, jihovýchodní Asie, Východní Japonsko, Střed Indie, jihovýchodní Austrálie.
 
 4. V části **Nastavení pracovního prostoru OMS** vyberte zdrojovou položku, kde chcete vytvořit prostředek řešení.
 
@@ -183,7 +183,7 @@ ServiceDeskWorkItemType_s = incident
 - Dopad
 - Priorita
 - Eskalace
-- Autor
+- Created By
 - Vyřešil
 - Uzavřel
 - Zdroj
@@ -205,7 +205,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 **Pole**
 - ServiceDeskConnectionName
 - ID oddělení služeb
-- Autor
+- Created By
 - Uzavřel
 - Zdroj
 - Přiřazený pro
@@ -290,7 +290,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 2. Pokud se data z ServiceNow nesynchronizují Log Analytics, ujistěte se, že instance ServiceNow není v režimu spánku. Instance pro vývoj v ServiceNow se někdy po dlouhou dobu nečinným přechodem do režimu spánku. Jinak nahlaste problém.
 3. Pokud se Log Analytics výstrahy aktivují, ale pracovní položky se nevytvoří v produktu ITSM nebo položky konfigurace nejsou vytvořené/propojené s pracovními položkami nebo pro jiné obecné informace, podívejte se do následujících umístění:
    -  ITSMC: řešení zobrazuje souhrn připojení/pracovních položek/počítačů atd. Klikněte na dlaždici se **stavem konektoru**, který vám umožní **Protokolovat hledání** pomocí příslušného dotazu. Další informace najdete v záznamech protokolu s LogType_S chybě.
-   - Stránka **prohledávání protokolu** : zobrazení chyb/souvisejících informací přímo pomocí ServiceDeskLog_CL `*``*`dotazů.
+   - Stránka **prohledávání protokolu** : zobrazení chyb/souvisejících informací přímo pomocí `*` ServiceDeskLog_CL dotazů `*` .
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Řešení potíží s nasazením Service Manager Web App
 1.  V případě jakýchkoli problémů s nasazením webové aplikace se ujistěte, že máte dostatečná oprávnění v předplatném, zmíněné pro vytváření a nasazování prostředků.
@@ -300,7 +300,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 
 ## <a name="contact-us"></a>Kontaktujte nás
 
-Pokud máte jakékoli dotazy nebo připomínky ke konektoru pro IT služby IT, kontaktujte [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)nás na adrese.
+Pokud máte jakékoli dotazy nebo připomínky ke konektoru pro IT služby IT, kontaktujte nás na adrese [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
 ## <a name="next-steps"></a>Další kroky
 [Přidejte ITSM produkty/služby do konektoru správy služeb IT](../../azure-monitor/platform/itsmc-connections.md).
