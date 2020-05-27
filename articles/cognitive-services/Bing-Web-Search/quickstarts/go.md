@@ -8,20 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0d0bd9dfa8dc115ae10831d997dccc8000a1ae25
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74978794"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873901"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a přejít
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace přechodu odešle do rozhraní API požadavek hledání a zobrazí odpověď. I když je tato aplikace napsaná v cestách, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato aplikace přejít odešle požadavek na hledání do rozhraní API a zobrazí odpověď JSON. I když je tato aplikace napsaná v cestách, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+
+ Příklady kódu v tomto rychlém startu vyžadují jenom základní knihovny. neexistují žádné externí závislosti.  
 
 ## <a name="prerequisites"></a>Požadavky
 Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
@@ -29,13 +31,11 @@ Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého sta
 * [Binární soubory Go](https://golang.org/dl/)
 * Klíč předplatného
 
-V tomto rychlém startu budete potřebovat jenom **hlavní** knihovny, protože v něm nejsou externí závislosti.  
-
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
 ## <a name="create-a-project-and-import-core-libraries"></a>Vytvoření projektu a import hlavních knihoven
 
-V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Go. Pak naimportujte `net/http` pro požadavky, `ioutil` ke čtení odpovědi, `time` a `encoding/json` ke zpracování objektu JSON a `fmt` k tisku výstupu.
+V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Go. Pak importujte `net/http` požadavky, `ioutil` Přečtěte si odpověď `time` a `encoding/json` zpracujte kód JSON a `fmt` vytiskněte výstup.
 
 ```go
 package main
@@ -111,7 +111,13 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Deklarace hlavní funkce a definování proměnných  
 
-Tento kód deklaruje hlavní funkci a nastaví potřebné proměnné. `endpoint`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte správnost koncového bodu a nahraďte hodnotu `token` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu.
+Tento kód deklaruje hlavní funkci a nastaví požadované proměnné: 
+
+1. Pro tuto `endpoint` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. 
+
+2. Ověřte správnost koncového bodu a nahraďte hodnotu `token` platným klíčem předplatného ze svého účtu Azure. 
+ 
+3. Volitelně můžete upravit vyhledávací dotaz nahrazením hodnoty pro `searchTerm` .
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -170,7 +176,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Zpracování odpovědi
 
-Pamatujete si, jak jsme vytvořili strukturu? Použijeme ji k formátování odpovědi a tisku výsledků hledání.
+Pomocí struktury, kterou jsme vytvořili dříve, naformátujte odpověď a vytiskněte výsledky hledání.
 
 ```go
 // Create a new answer.  
@@ -187,7 +193,7 @@ for _, result := range ans.WebPages.Value {
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Posledním krokem je ověření kódu a jeho spuštění. Pokud chcete porovnat svůj kód s naším, tady je celý program:
+Posledním krokem je ověřit kód a spustit ho. Pokud chcete porovnat svůj kód s naším, tady je celý program:
 
 ```go
 package main
@@ -305,9 +311,9 @@ func main() {
 }
 ```
 
-## <a name="sample-response"></a>Ukázková odpověď  
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
-Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Tato ukázková odpověď byla formátována pomocí `BingAnswer` struktury a ukazuje `result.Name` a `result.URL`.
+Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Tato ukázková odpověď byla formátována pomocí `BingAnswer` struktury a ukazuje `result.Name` a `result.URL` .
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services
@@ -324,6 +330,6 @@ Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/magazine/m
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
+> [Kurz rozhraní API Bingu pro vyhledávání na webu jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

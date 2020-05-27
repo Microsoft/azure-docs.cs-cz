@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b50407b3ea7389388577d229f67a4e4baca4296d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176137"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873577"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled snímků sdílené složky pro Soubory Azure 
 Azure Files nabízí možnost převzít snímky sdílení sdílených složek. Snímky sdílené složky zachytí stav sdílení v daném časovém okamžiku. V tomto článku jsme popsali, co poskytují snímky pro sdílení a jak je můžete využít ve svém vlastním případu použití.
@@ -37,7 +37,7 @@ Po vytvoření snímku sdílené složky ho můžete číst, kopírovat nebo ods
 
 Schopnost sdílet snímky je k dispozici na úrovni sdílené složky. Načtení je k dispozici na jednotlivých úrovních souborů, aby bylo možné obnovit jednotlivé soubory. Úplnou sdílenou složku můžete obnovit pomocí protokolu SMB, REST API, portálu, klientské knihovny nebo nástrojů PowerShellu a rozhraní příkazového řádku.
 
-Snímek sdílené složky sdíleného souboru je stejný jako základní sdílená složka. Jediným rozdílem je, že hodnota **DateTime** je připojená k identifikátoru URI sdílené složky, aby označovala čas, kdy byl snímek sdílené složky proveden. Pokud například identifikátor URI sdílené složky je http:\//storagesample.Core.File.Windows.NET/myshare, je identifikátor URI snímku sdílené složky podobný tomuto:
+Snímek sdílené složky sdíleného souboru je stejný jako základní sdílená složka. Jediným rozdílem je, že hodnota **DateTime** je připojená k identifikátoru URI sdílené složky, aby označovala čas, kdy byl snímek sdílené složky proveden. Pokud například identifikátor URI sdílené složky je http: \/ /storagesample.Core.File.Windows.NET/myshare, je identifikátor URI snímku sdílené složky podobný tomuto:
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -80,11 +80,11 @@ Když provozujete infrastrukturu v Azure, Automatizujte zálohování pro obnovu
 
 Než nasadíte Plánovač snímků sdílené složky, pečlivě zvažte četnost snímků snímků sdílené složky a nastavení uchovávání, aby nedocházelo k zbytečným poplatkům.
 
-Sdílet snímky poskytují pouze ochranu na úrovni souborů. Snímky sdílené složky nebrání odstranění prstů v systému souborů ve sdílené složce nebo účtu úložiště. Pro lepší ochranu účtu úložiště před náhodným odstraněním můžete uzamknout účet úložiště nebo skupinu prostředků.
+Sdílet snímky poskytují pouze ochranu na úrovni souborů. Snímky sdílené složky nebrání odstranění prstů v systému souborů ve sdílené složce nebo účtu úložiště. Pro lepší ochranu účtu úložiště před náhodným odstraněním můžete buď [Povolit obnovitelné odstranění](storage-files-prevent-file-share-deletion.md), nebo uzamknout účet úložiště nebo skupinu prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 - Práce s snímky sdílené složky v:
     - [PowerShell](storage-how-to-use-files-powershell.md)
-    - [CLI](storage-how-to-use-files-cli.md)
+    - [Rozhraní příkazového řádku](storage-how-to-use-files-cli.md)
     - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)
     - [Nejčastější dotazy ke sdílení snímků](storage-files-faq.md#share-snapshots)

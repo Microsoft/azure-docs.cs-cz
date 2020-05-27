@@ -1,21 +1,14 @@
 ---
 title: 'Rychlý Start: testování znalostní báze s dotazy služby Batch'
-titleSuffix: Azure Cognitive Services
-description: ''
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku QnA Maker pro očekávané odpovědi, hodnocení spolehlivosti a výzvy k vícenásobnému zapnutí.
 ms.topic: quickstart
-ms.date: 02/08/2020
-ms.author: diberry
-ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/26/2020
+ms.openlocfilehash: 9845b7c7cc19550c450a1eb00ec02731ef2d9d44
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756712"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873662"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Rychlý Start: testování znalostní báze s dotazy služby Batch a očekávanými odpověďmi
 
@@ -40,7 +33,7 @@ Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku
     * Název předplatného Azure
     * Název služby Azure QnA
     * Jazyk – anglický jazyk
-1. Jako název vaší `Multi-turn batch test quickstart` znalostní báze zadejte název.
+1. `Multi-turn batch test quickstart`Jako název vaší znalostní báze zadejte název.
 
 1. V **kroku 4**nakonfigurujte nastavení pomocí následující tabulky:
 
@@ -63,8 +56,8 @@ Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku
     |Požadovaná data| Příklad|
     |--|--|
     |Publikovaný hostitel|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
-    |Publikovaný klíč|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 řetězec znaků zobrazený `Endpoint` po)|
-    |ID aplikace|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 řetězec znaků zobrazený jako součást `POST`) |
+    |Publikovaný klíč|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 řetězec znaků zobrazený po `Endpoint` )|
+    |ID aplikace|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 řetězec znaků zobrazený jako součást `POST` ) |
 
 ## <a name="create-batch-test-file-with-question-ids"></a>Vytvořit soubor dávkového testu s ID dotazů
 
@@ -72,7 +65,7 @@ Chcete-li použít nástroj Batch test, vytvořte soubor s názvem `batch-test-d
 
 |Pole vstupního souboru TSV|Poznámky|Příklad|
 |--|--|--|
-|ID znalostní báze|ID vašeho znalostní báze bylo nalezeno na stránce publikování. Pomocí různých ID znalostní báze v jednom souboru otestujete několik znalostí ve stejné službě najednou v jednom souboru.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 řetězec znaků zobrazený jako součást `POST`) |
+|ID znalostní báze|ID vašeho znalostní báze bylo nalezeno na stránce publikování. Pomocí různých ID znalostní báze v jednom souboru otestujete několik znalostí ve stejné službě najednou v jednom souboru.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 řetězec znaků zobrazený jako součást `POST` ) |
 |Otázka|Text otázky, kterou uživatel zadal. maximální počet znaků: 1 000|`How do I sign out?`|
 |Značky metadat|optional|`topic:power`používá formát _klíč: hodnota_|
 |První parametr|optional|`25`|
@@ -108,7 +101,7 @@ Soubor dávkového testu, při otevření v aplikaci Excel, vypadá jako na nás
 
 Spusťte program Batch test pomocí následujícího formátu CLI na příkazovém řádku.
 
-`YOUR-RESOURCE-NAME` Nahraďte `ENDPOINT-KEY` a vlastními hodnotami pro název služby a klíč koncového bodu. Tyto hodnoty najdete na stránce **Nastavení** na portálu QnA maker.
+Nahraďte `YOUR-RESOURCE-NAME` a `ENDPOINT-KEY` vlastními hodnotami pro název služby a klíč koncového bodu. Tyto hodnoty najdete na stránce **Nastavení** na portálu QnA maker.
 
 ```console
 batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.net ENDPOINT-KEY out.tsv
@@ -137,7 +130,7 @@ Pomocí následujícího grafu pochopíte, jak najít hodnoty polí pro voliteln
 |Číslo sloupce|Volitelný sloupec|Umístění dat|
 |--|--|--|
 |3|zprostředkovatele identity|Exportujte stávající znalostní bázi pro existující _klíč: páry hodnot_ .|
-|4|top|Doporučuje `25` se výchozí hodnota.|
+|4|top|`25`Doporučuje se výchozí hodnota.|
 |5|ID sady otázek a odpovědí|Exportujte existující znalostní bázi pro hodnoty ID. Všimněte si také, že se ve výstupním souboru vrátila ID.|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Přidat metadata do znalostní báze
@@ -169,9 +162,9 @@ Pro dávkové testování existují dva hlavní scénáře:
 
 Následující postup předpokládá, že se jedná o zpracování protokolů chatu pomocí
 
-1. Vytvořte nový soubor dávkového testu, `batch-test-data-2.tsv`který bude zahrnovat volitelná data. Přidejte 6 řádků z původního vstupního souboru dávkového testu a pak přidejte ID páru metadata, Top a QnA pro každý řádek.
+1. Vytvořte nový soubor dávkového testu, který bude zahrnovat volitelná data `batch-test-data-2.tsv` . Přidejte 6 řádků z původního vstupního souboru dávkového testu a pak přidejte ID páru metadata, Top a QnA pro každý řádek.
 
-    Chcete-li simulovat automatizovaný proces kontroly nového textu v protokolech konverzace proti znalostní bázi, nastavte metadata pro každý sloupec na stejnou hodnotu: `topic:power`.
+    Chcete-li simulovat automatizovaný proces kontroly nového textu v protokolech konverzace proti znalostní bázi, nastavte metadata pro každý sloupec na stejnou hodnotu: `topic:power` .
 
     > [!div class="mx-imgBorder"]
     > ![Vstupní druhá verze souboru. TSV z dávkového testu](../media/batch-test/batch-test-2-input.png)

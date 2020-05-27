@@ -3,12 +3,12 @@ title: Kurz – informace o přístupu k privátnímu cloudu
 description: Přečtěte si, jak získat přístup k privátnímu cloudu řešení Azure VMware (AVS)
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: fcee332818c89d9c8b00795dca9e74f68260eefd
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 332b1b01f05ca97b03264201384ee38ac266470f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740189"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873605"
 ---
 # <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-avs-private-cloud"></a>Kurz: Naučte se získat přístup k privátnímu cloudu řešení Azure VMware (AVS)
 
@@ -16,7 +16,7 @@ Během období Preview vám neumožňuje vaše privátní cloud spravovat pomoc�
 
 V tomto kurzu vytvoříte virtuální počítač s Windows pro pole přechodu ve skupině prostředků, kterou jste vytvořili v předchozím kurzu kurzu [: konfigurace sítě pro privátní cloud VMware v Azure](tutorial-configure-networking.md) a přihlášení do vCenter. Toto je virtuální počítač ve stejné virtuální síti, kterou jste vytvořili, a poskytuje přístup k vCenter a NSX Manageru. 
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvořit virtuální počítač s Windows, který se má použít pro připojení k serveru vCenter
@@ -35,7 +35,7 @@ Zadejte požadované informace do polí a pak vyberte **zkontrolovat + vytvořit
 | **Předplatné** | Tato hodnota se už naplní předplatným, ke kterému patří skupina prostředků. |
 | **Skupina prostředků** | Tato hodnota je pro aktuální skupinu prostředků již vyplněna. Mělo by se jednat o skupinu prostředků, kterou jste vytvořili v předchozím kurzu. |
 | **Název virtuálního počítače** | Zadejte jedinečný název virtuálního počítače. |
-| **Oblast** | Vyberte zeměpisnou polohu virtuálního počítače. |
+| **Věřitel** | Vyberte zeměpisnou polohu virtuálního počítače. |
 | **Možnosti dostupnosti** | Ponechte vybranou výchozí hodnotu. |
 | **Image** | Vyberte image virtuálního počítače. |
 | **Velikost** | Ponechte výchozí hodnotu velikosti. |
@@ -59,7 +59,7 @@ V Azure Portal vyberte svůj privátní cloud a potom v zobrazení **Přehled** 
 
 Přejděte k virtuálnímu počítači, který jste vytvořili v předchozím kroku, a připojte se k virtuálnímu počítači. Podrobné pokyny, jak se připojit k virtuálnímu počítači, najdete v tématu [připojení k virtuálnímu počítači](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine) .
 
-Na virtuálním počítači s Windows otevřete prohlížeč a přejděte na adresu URL správce vCenter a NSX-T na dvou kartách. Na kartě vCenter zadejte přihlašovací údaje `cloudadmin@vmcp.local` uživatele z předchozího kroku.
+Na virtuálním počítači s Windows otevřete prohlížeč a přejděte na adresu URL správce vCenter a NSX-T na dvou kartách. Na kartě vCenter zadejte `cloudadmin@vmcp.local` přihlašovací údaje uživatele z předchozího kroku.
 
 :::image type="content" source="./media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="Přihlášení k serveru vCenter privátního cloudu" border="true":::
 

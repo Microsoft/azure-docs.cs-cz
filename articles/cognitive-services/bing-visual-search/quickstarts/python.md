@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 05/22/2020
 ms.author: scottwhi
-ms.openlocfilehash: b56f6743b642904349797ac5b6167194f7916b45
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7b33a857953b7f96180e306195dd0e8b21450556
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446589"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874003"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Rychlý Start: Získání přehledů obrázků pomocí Vizuální vyhledávání Bingu REST API a Pythonu
 
-V tomto rychlém startu můžete provést první volání rozhraní API pro vizuální vyhledávání Bingu a zobrazit výsledky. Tato aplikace v Pythonu nahraje obrázek do rozhraní API a zobrazí informace, které vrátí. I když je tato aplikace napsaná v Pythonu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API pro vizuální vyhledávání Bingu. Tato aplikace v Pythonu nahraje obrázek do rozhraní API a zobrazí informace, které vrátí. I když je tato aplikace napsaná v Pythonu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,7 +35,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
     import requests, json
     ```
 
-2. Vytvořte proměnné pro klíč předplatného, koncový bod a cestu k imagi, kterou právě nahráváte. `BASE_URI`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek:
+2. Vytvořte proměnné pro klíč předplatného, koncový bod a cestu k imagi, kterou právě nahráváte. Pro hodnotu `BASE_URI` můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 
     ```python
 
@@ -44,7 +44,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
     imagePath = 'your-image-path'
     ```
     
-    Když nahrajete místní obrázek, data formuláře musí obsahovat `Content-Disposition` hlavičku. Je nutné nastavit jeho `name` parametr na hodnotu "image" a můžete nastavit `filename` parametr na libovolný řetězec. Obsah formuláře zahrnuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
+3. Když nahrajete místní obrázek, data formuláře musí obsahovat `Content-Disposition` hlavičku. Nastavte jeho `name` parametr na "image" a nastavte `filename` parametr na název souboru vaší image. Obsah formuláře zahrnuje binární data obrázku. Maximální velikost obrázku, kterou můžete nahrát, je 1 MB.
     
     ```
     --boundary_1234-abcd
@@ -55,13 +55,13 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
     --boundary_1234-abcd--
     ```
 
-3. Vytvořte objekt Dictionary, který bude uchovávat informace v hlavičce vaší žádosti. Navažte klíč předplatného na `Ocp-Apim-Subscription-Key`řetězec, jak je znázorněno níže:
+4. Vytvořte objekt Dictionary, který bude uchovávat informace v hlavičce vaší žádosti. Navažte klíč předplatného na řetězec `Ocp-Apim-Subscription-Key` .
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. Vytvořte další slovník, který bude obsahovat image, která se otevře a nahraje při odeslání žádosti:
+5. Vytvořte další slovník, který bude obsahovat image, která se otevře a nahraje při odeslání žádosti.
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -69,27 +69,27 @@ V tomto rychlém startu můžete provést první volání rozhraní API pro vizu
 
 ## <a name="parse-the-json-response"></a>Analyzovat odpověď JSON
 
-1. Vytvořte metodu volanou `print_json()` v odpovědi rozhraní API a vytiskněte JSON:
+Vytvořte metodu volanou `print_json()` k přijetí odpovědi rozhraní API a vytiskněte JSON.
 
-    ```python
-    def print_json(obj):
-        """Print the object as json"""
-        print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
-    ```
+```python
+def print_json(obj):
+    """Print the object as json"""
+    print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
+```
 
 ## <a name="send-the-request"></a>Odeslat žádost
 
-1. Slouží `requests.post()` k odeslání žádosti do rozhraní API pro vizuální vyhledávání Bingu. Zadejte řetězec pro informace o koncovém bodu, hlavičce a souboru. Tisk `response.json()` pomocí `print_json()`:
+Slouží `requests.post()` k odeslání žádosti do rozhraní API pro vizuální vyhledávání Bingu. Zadejte řetězec pro informace o koncovém bodu, hlavičce a souboru. Tisknout `response.json()` pomocí `print_json()` .
 
-    ```python
-    try:
-        response = requests.post(BASE_URI, headers=HEADERS, files=file)
-        response.raise_for_status()
-        print_json(response.json())
+```python
+try:
+    response = requests.post(BASE_URI, headers=HEADERS, files=file)
+    response.raise_for_status()
+    print_json(response.json())
     
-    except Exception as ex:
-        raise ex
-    ```
+except Exception as ex:
+    raise ex
+```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: f3be10929a9a0df23529348f2c62e35f2ebaa850
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a807af3ffe14da943786051a3ece03b777a0edf5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75770709"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873614"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Vytvořte Kubernetes vývojového prostoru: Visual Studio a .NET Core s Azure Dev Spaces
 
@@ -50,7 +50,7 @@ V tomto průvodci se naučíte:
 1. Vyberte **Zkontrolovat a vytvořit** a po dokončení vyberte **Vytvořit**.
 
 ## <a name="get-the-visual-studio-tools"></a>Získání nástrojů sady Visual Studio
-Nainstalujte nejnovější verzi sady [Visual Studio](https://www.visualstudio.com/vs/). Pro Visual Studio 2019 ve Windows potřebujete nainstalovat úlohu vývoj pro Azure. Pro Visual Studio 2017 ve Windows je potřeba nainstalovat úlohu vývoje ASP.NET a webu a také [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio).
+Nainstalujte si nejnovější verzi sady [Visual Studio 2019](https://www.visualstudio.com/vs/) ve Windows s úlohou vývoj pro Azure.
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Vytvoření webové aplikace spuštěné v kontejneru
 

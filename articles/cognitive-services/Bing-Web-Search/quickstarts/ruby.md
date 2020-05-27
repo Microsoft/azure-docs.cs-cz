@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5f3e05752967be8872c0e6fd9008bfae05d950fa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 9400558f8ea26199a2f7ac406fd6d94647243e11
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169539"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873802"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Rychlý start: Použití Ruby k volání rozhraní API Bingu pro vyhledávání na webu  
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Ruby pošle do rozhraní API požadavek hledání a zobrazí odpověď. Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato aplikace Ruby pošle do rozhraní API požadavek hledání a zobrazí odpověď ve formátu JSON. I když je tato aplikace napsaná v Ruby, je rozhraní API webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +33,7 @@ Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého sta
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Vytvoření projektu a deklarace požadovaných modulů
 
-V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Ruby. Pak požádejte o `net/https` pro požadavky, `uri` pro zpracování identifikátorů URI a `json` k parsování odpovědi.
+V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Ruby. Pak vyžadovat `net/https` požadavky na `uri` zpracování identifikátorů URI a `json` analyzovat odpověď.
 
 ```ruby
 require 'net/https'
@@ -43,7 +43,13 @@ require 'json'
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Abychom mohli pokračovat, musíme nastavit několik proměnných. `uri`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte, že hodnoty `uri` a `path` jsou platné a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `term` zadat jinou hodnotu.
+Aby bylo možné pokračovat, je třeba nastavit několik proměnných:
+
+1. Pro tuto `uri` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. 
+
+2. Potvrďte, `uri` že `path` hodnoty a jsou platné, a nahraďte `accessKey` hodnotu klíčem předplatného ze svého účtu Azure. 
+
+3. Volitelně můžete upravit vyhledávací dotaz nahrazením hodnoty pro `term` .
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"
@@ -60,7 +66,7 @@ end
 
 ## <a name="make-a-request"></a>Vytvoření požadavku
 
-Tento kód použijte k vytvoření požadavku a zpracování odpovědi.
+Tento kód použijte k vytvoření žádosti a zpracování odpovědi:
 
 ```ruby
 # Construct the endpoint uri.
@@ -96,7 +102,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Posledním krokem je ověření kódu a jeho spuštění. Pokud chcete porovnat svůj kód s naším, tady je celý program:
+Posledním krokem je ověřit kód a spustit ho. Pokud chcete porovnat svůj kód s naším, tady je celý program:
 
 ```ruby
 require 'net/https'
@@ -135,7 +141,7 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="sample-response"></a>Ukázková odpověď
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
@@ -264,6 +270,6 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
+> [Kurz rozhraní API Bingu pro vyhledávání na webu jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

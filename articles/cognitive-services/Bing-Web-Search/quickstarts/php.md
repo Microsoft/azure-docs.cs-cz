@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bbb6acd4e976d345daa99cde7635febc3755963f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169726"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873822"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rychlý start: Použití PHP k volání rozhraní API Bingu pro vyhledávání na webu  
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Node. js odešle požadavek na hledání do rozhraní API a zobrazí odpověď. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato aplikace Node. js odešle požadavek na hledání do rozhraní API a zobrazí odpověď ve formátu JSON. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +33,7 @@ Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého sta
 
 ## <a name="enable-secure-http-support"></a>Povolení podpory zabezpečeného protokolu HTTP
 
-Než začneme, najděte soubor `php.ini` a zrušte komentář tohoto řádku:
+Než začneme, vyhledejte php. ini a odkomentujte tento řádek:
 
 ```php
 ; extension=php_openssl.dll
@@ -41,9 +41,13 @@ Než začneme, najděte soubor `php.ini` a zrušte komentář tohoto řádku:
 
 ## <a name="create-a-project-and-define-variables"></a>Vytvoření projektu a definování proměnných
 
-V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP. Nezapomeňte přidat počáteční a koncové značky `<?php` a `?>`.
+1. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP. Přidání počátečních a uzavíracích značek: `<?php` a `?>` .
 
-Abychom mohli pokračovat, musíme nastavit několik proměnných. `$endpoint`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte správnost hodnoty `$endpoint` a nahraďte hodnotu `$accesskey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `$term` zadat jinou hodnotu.
+2. Pro tuto `$endpoint` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. 
+
+3. Potvrďte, že `$endpoint` je hodnota správná, a nahraďte `$accesskey` hodnotu platným klíčem předplatného ze svého účtu Azure. 
+
+4. Volitelně můžete upravit vyhledávací dotaz nahrazením hodnoty pro `$term` .
 
 ```php
 $accessKey = 'enter key here';
@@ -53,7 +57,7 @@ $term = 'Microsoft Cognitive Services';
 
 ## <a name="construct-a-request"></a>Vytvoření požadavku
 
-Tento kód deklaruje funkci s názvem `BingWebSearch`, která se používá k vytvoření požadavků do rozhraní API Bingu pro vyhledávání na webu. Funkce má tři argumenty: `$url`, `$key` a `$query`.
+Tento kód deklaruje funkci nazvanou `BingWebSearch` , která se používá k sestavení požadavků na rozhraní API Bingu pro vyhledávání na webu. Funkce má tři argumenty: `$url`, `$key` a `$query`.
 
 ```php
 function BingWebSearch ($url, $key, $query) {
@@ -113,7 +117,7 @@ if (strlen($accessKey) == 32) {
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Posledním krokem je ověření kódu a jeho spuštění. Pokud chcete porovnat svůj kód s naším, tady je celý program:
+Posledním krokem je ověřit kód a spustit ho. Pokud chcete porovnat svůj kód s naším, tady je celý program:
 
 ```php
 <?php
@@ -155,7 +159,7 @@ if (strlen($accessKey) == 32) {
 ?>
 ```
 
-## <a name="sample-response"></a>Ukázková odpověď
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.  
 
@@ -284,6 +288,6 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
+> [Kurz rozhraní API Bingu pro vyhledávání na webu jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

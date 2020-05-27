@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/08/2020
-ms.openlocfilehash: efbf7d9db91b8c23151ca4337bd4d58f814a7096
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3b2a6566322f29870d2376007060acedac62692a
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78254980"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873528"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rychlý start: Vytvoření instance služby Azure Database Migration Service pomocí webu Azure Portal
 
-V tomto rychlém startu použijete Azure Portal k vytvoření instance Azure Database Migration Service.  Po vytvoření služby ji můžete použít k migraci dat z SQL Server místně do Azure SQL Database.
+V tomto rychlém startu použijete Azure Portal k vytvoření instance Azure Database Migration Service.  Po vytvoření instance ji můžete použít k migraci dat z SQL Server místně do Azure SQL Database.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 

@@ -7,19 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81481968"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874074"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrace Azure Stream Analytics s Azure Machine Learning (Preview)
 
 Modely strojového učení můžete implementovat jako uživatelsky definovanou funkci (UDF) ve svých úlohách Azure Stream Analytics, abyste v reálném čase provedli bodování a předpovědi se na vašich vstupních datech streamování. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) vám umožňuje používat libovolný oblíbený open source nástroj, jako je Tensorflow, scikit-učení nebo PyTorch, pro přípravu, výuku a nasazení modelů.
-
-> [!NOTE]
-> Tato funkce je ve verzi Public Preview. K této funkci můžete přistupovat jenom na Azure Portal pomocí [odkazu Stream Analytics Portal Preview](https://aka.ms/asaportalpreview). Tato funkce je také k dispozici v nejnovější verzi [Stream Analytics nástrojů pro sadu Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +28,7 @@ Před přidáním modelu Machine Learning jako funkce do Stream Analytics úlohy
 
 3. Ujistěte se, že webová služba přijímá a vrací Serializovaná data JSON.
 
-4. Nasazení modelu ve [službě Azure Kubernetes](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) pro vysoce škálovatelná produkční nasazení. Pokud webová služba nemůže zpracovat počet požadavků přicházejících z vaší úlohy, výkon vaší Stream Analytics úlohy se sníží, což má vliv na latenci. Modely nasazené v Azure Container Instances se dnes nepodporují, ale budou k dispozici v nadcházejících měsících.
+4. Nasazení modelu ve [službě Azure Kubernetes](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) pro vysoce škálovatelná produkční nasazení. Pokud webová služba nemůže zpracovat počet požadavků přicházejících z vaší úlohy, výkon vaší Stream Analytics úlohy se sníží, což má vliv na latenci. Modely nasazené v Azure Container Instances jsou podporovány pouze při použití Azure Portal.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Přidání modelu Machine Learning do úlohy
 
@@ -73,7 +70,7 @@ Stream Analytics podporuje pouze předávání jednoho parametru pro funkce Azur
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>Předání více vstupních parametrů do systému souborů UDF
 
-Nejběžnějšími příklady vstupů do modelů strojového učení jsou numpy pole a dataframes. Můžete vytvořit pole pomocí jazyka JavaScript UDF a vytvořit pomocí `WITH` klauzule datový rámec serializovaný ve formátu JSON.
+Nejběžnějšími příklady vstupů do modelů strojového učení jsou numpy pole a dataframes. Můžete vytvořit pole pomocí jazyka JavaScript UDF a vytvořit pomocí klauzule datový rámec serializovaný ve formátu JSON `WITH` .
 
 ### <a name="create-an-input-array"></a>Vytvoření vstupního pole
 

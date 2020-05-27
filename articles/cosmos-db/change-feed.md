@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e36e95aeb25c83ccd94f11e25bfe9f1b8f7bfdad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb3f7f3d641f33e4b4deb1775600595cc382f68e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984857"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873982"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Kanál změn ve službě Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Přečtěte si další informace o [vzorech návrhu kanálu změn](change-feed-d
 
 Tato funkce je v současnosti podporovaná následujícími Azure Cosmos DB rozhraní API a klientské sady SDK.
 
-| **Klientské ovladače** | **SQL API** | **Rozhraní API pro Cassandra Azure Cosmos DB** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Rozhraní Gremlin API**|**Rozhraní Table API** |
+| **Klientské ovladače** | **ROZHRANÍ SQL API** | **Rozhraní API pro Cassandra Azure Cosmos DB** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Rozhraní Gremlin API**|**Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | Ano | Ano | Ano | Ano | Ne |
 |Java|Ano|Ano|Ano|Ano|Ne|
@@ -34,7 +34,7 @@ Tato funkce je v současnosti podporovaná následujícími Azure Cosmos DB rozh
 
 ## <a name="change-feed-and-different-operations"></a>Změna kanálu a různých operací
 
-V dnešní době se v kanálu změn zobrazí všechna vložení a aktualizace. Pro určitý typ operace nelze filtrovat kanál změn pro. Jedním z možných alternativ je přidat "měkký Marker" na položku pro aktualizace a filtr na základě toho, že při zpracování položek v kanálu změn.
+V dnešní době se v kanálu změn zobrazí všechna vložení a aktualizace. Nelze filtrovat kanál změn pro určitý typ operace. Jedním z možných alternativ je přidat "měkký Marker" na položku pro aktualizace a filtr na základě toho, že při zpracování položek v kanálu změn.
 
 V současné době se změna kanálu neodstraní. Podobně jako v předchozím příkladu můžete přidat měkké označení pro položky, které se odstraňují. Můžete například přidat atribut do položky s názvem "Deleted" a nastavit ji na hodnotu "true" a nastavit hodnotu TTL pro položku, aby ji bylo možné automaticky odstranit. Můžete si přečíst kanál změn pro historické položky (Poslední změna odpovídající položce, nezahrnuje mezilehlé změny), například položky přidané před pěti lety. Kanál změn si můžete přečíst až zpátky jako počátek svého kontejneru, ale pokud se položka odstraní, odebere se z kanálu změn.
 

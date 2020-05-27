@@ -1,20 +1,14 @@
 ---
 title: 'Rychlý Start: Přidání otázek a odpovědí na portálu QnA Maker'
 description: V tomto rychlém startu se dozvíte, jak přidat sadu dotazů a odpovědí s metadaty, aby vaši uživatelé mohli najít správnou odpověď na jejich otázku.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/08/2020
-ms.author: diberry
-ms.openlocfilehash: f067bae55c38fc783c12bf9d0bc6fbcdf881e4e4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/26/2020
+ms.openlocfilehash: fc8bac425723e9194c447f1cf6ee13547c09d772
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756682"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873687"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Rychlý Start: Přidání otázek a odpovědí pomocí portálu QnA Maker
 
@@ -82,11 +76,11 @@ Přidání metadat do otázky a sady odpovědí umožňuje klientské aplikaci p
 
 1. Vyberte **Možnosti zobrazení**a pak vyberte **zobrazit metadata**.
 
-1. Pro pár QnA, který jste právě přidali, vyberte **Přidat značky metadat** `service` a pak přidejte název a hodnotu `search`. Vypadá to takto: `service:search`.
+1. Pro pár QnA, který jste právě přidali, vyberte **Přidat značky metadat**a pak přidejte název `service` a hodnotu `search` . Vypadá to takto: `service:search` .
 
-1. Přidejte další značku metadat s názvem `link_in_answer` a hodnotou. `false` Vypadá to takto: `link_in_answer:false`.
+1. Přidejte další značku metadat s názvem `link_in_answer` a hodnotou `false` . Vypadá to takto: `link_in_answer:false` .
 
-1. Vyhledá první odpověď v tabulce `How large a knowledge base can I create?`.
+1. Vyhledá první odpověď v tabulce `How large a knowledge base can I create?` .
 
 1. Přidejte páry metadat pro stejné dvě Tagy metadat:
 

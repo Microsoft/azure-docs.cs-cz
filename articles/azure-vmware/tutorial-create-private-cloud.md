@@ -3,12 +3,12 @@ title: Kurz – nasazení clusteru vSphere v Azure
 description: Naučte se nasadit cluster vSphere v Azure pomocí řešení Azure VMWare (AVS).
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 6a192454367f2e6ca071e9cfe0a9f1a94868cbdb
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: fc753f43563650357cf43c102e94f0057b62a406
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977691"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873740"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu služby AVS v Azure
 
@@ -16,7 +16,7 @@ ms.locfileid: "82977691"
 
 Protože možnost AVS vám neumožní spravovat privátní cloud s vaším místním systémem vCenter při spuštění, budete muset provést další konfiguraci a připojení k místní instanci vCenter, virtuální síti a dalším. V této sérii kurzů budou zahrnuty tyto postupy a související požadavky.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvoření privátního cloudu AVS
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 
-Aby bylo možné používat řešení Azure VMWare, musíte nejdřív zaregistrovat poskytovatele prostředků. Následující příklad registruje poskytovatele prostředků v rámci vašeho předplatného.
+Aby bylo možné používat řešení Azure VMware, musíte nejdřív zaregistrovat poskytovatele prostředků. Následující příklad registruje poskytovatele prostředků v rámci vašeho předplatného.
 
 ```azurecli-interactive
 az provider register -n Microsoft.AVS --subscription <your subscription ID>
@@ -40,7 +40,7 @@ Další způsoby registrace poskytovatele prostředků najdete v tématu [poskyt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-private-cloud"></a>Vytvoření privátního cloudu
 
@@ -48,7 +48,7 @@ Privátní cloud služby AVS můžete vytvořit pomocí [Azure Portal](#azure-po
 
 ### <a name="azure-portal"></a>portál Azure
 
-V Azure Portal vyberte **+ vytvořit nový prostředek**. Do textového pole **Hledat na Marketplace** zadejte `Azure VMware Solution`a ze seznamu vyberte **Řešení Azure VMware** . V okně **Řešení Azure VMware** vyberte **vytvořit** .
+V Azure Portal vyberte **+ vytvořit nový prostředek**. Do textového pole **Hledat na Marketplace** zadejte `Azure VMware Solution` a ze seznamu vyberte **Řešení Azure VMware** . V okně **Řešení Azure VMware** vyberte **vytvořit** .
 
 Na kartě **základy** zadejte hodnoty polí. V následující tabulce je uveden podrobný seznam vlastností.
 

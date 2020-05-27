@@ -3,13 +3,13 @@ title: Vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernete
 description: Naučte se rychle vytvořit cluster Kubernetes a nasadit aplikaci v kontejneru Windows serveru ve službě Azure Kubernetes Service (AKS) pomocí PowerShellu.
 services: container-service
 ms.topic: article
-ms.date: 05/12/2020
-ms.openlocfilehash: d488935a9f45d775578179cb58423d882a1cee27
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 05/26/2020
+ms.openlocfilehash: c0c4849d76676cf165dbb051fbd904c28a98fa3b
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724985"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873571"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí PowerShellu
 
@@ -24,9 +24,6 @@ V tomto článku se předpokládá základní znalost konceptů Kubernetes. Dal�
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell][install-azure-powershell].
-
-> [!IMPORTANT]
-> Tento článek používá verzi Preview modulu PowerShellu AZ. AKS. Tuto aplikaci je nutné nainstalovat samostatně z modulu AZ PowerShell pomocí následujícího příkazu: `Install-Module -Name Az.AKS -AllowPrerelease -RequiredVersion 1.1.0-preview` . Jakmile je verze Preview pro modul PowerShellu AZ. AKS všeobecně dostupná, bude součástí budoucna k tomu, že vydává verze modulu PowerShell a jsou dostupné nativně z Azure Cloud Shell.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 

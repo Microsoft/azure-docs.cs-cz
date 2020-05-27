@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: b33f9a11cee08ea8c4accb683d70960d7f98e776
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3c65ed7e5fa6bb1652791eee75d4caa4c9c5f1ca
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659567"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873636"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopírování dat z DB2 pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -36,7 +36,7 @@ Tento databázový konektor DB2 se podporuje pro následující činnosti:
 
 Data z databáze DB2 můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Konkrétně tento konektor DB2 podporuje následující platformy a verze IBM DB2 s architekturou Distributed relačních databází (DRDA) SQL Access Manager (SQLAM) verze 9, 10 a 11:
+Konkrétně tento konektor DB2 podporuje následující platformy a verze IBM DB2 s architekturou Distributed relačních databází (DRDA) SQL Access Manager (SQLAM) verze 9, 10 a 11.  Využívá protokol DDM/DRDA.
 
 * IBM DB2 pro z/OS 12,1
 * IBM DB2 pro z/OS 11,1
@@ -77,12 +77,12 @@ Typické vlastnosti v připojovacím řetězci:
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| server |Název serveru DB2. Můžete zadat číslo portu za názvem serveru oddělené dvojtečkou, např. `server:port` . |Ano |
+| server |Název serveru DB2. Můžete zadat číslo portu za názvem serveru oddělené dvojtečkou, např. `server:port` .<br>Konektor DB2 využívá protokol DDM/DRDA a ve výchozím nastavení používá port 50000, pokud není zadaný. Port, který vaše konkrétní databáze DB2 používá, se může lišit v závislosti na verzi a nastavení, např. pro DB2 LUW výchozí port je 50000, pro AS400 výchozí port je 446 nebo 448, pokud je povolený protokol TLS. V následujících dokumentech DB2 najdete informace o tom, jak je port nakonfigurovaný obvykle: [DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 ISERIES](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)a [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Ano |
 | database |Název databáze DB2 |Ano |
 | authenticationType |Typ ověřování, který se používá pro připojení k databázi DB2.<br/>Povolená hodnota je: **Basic**. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno pro připojení k databázi DB2. |Ano |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| balíček balíčkucollection | Určete, kde jsou potřebné balíčky automaticky vytvořeny pomocí ADF při dotazování databáze. | Ne |
+| balíček balíčkucollection | Určete, kde jsou potřebné balíčky automaticky vytvořeny pomocí ADF při dotazování databáze. Pokud tato hodnota není nastavená, používá Data Factory jako výchozí hodnotu {username}. | Ne |
 | certificateCommonName | Pokud používáte šifrování SSL (Secure Sockets Layer) (SSL) nebo TLS (Transport Layer Security), musíte zadat hodnotu pro běžný název certifikátu. | Ne |
 
 > [!TIP]
@@ -171,7 +171,7 @@ Chcete-li kopírovat data z DB2, jsou podporovány následující vlastnosti:
 | tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
 | tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. `schema` `table` Pro nové zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Příklad**
+**Případě**
 
 ```json
 {
@@ -245,30 +245,30 @@ Při kopírování dat z DB2 se z datových typů DB2 používají následujíc�
 | Typ databáze DB2 | Typ dat interim Data Factory |
 |:--- |:--- |
 | BigInt |Int64 |
-| binární |Byte [] |
+| Binární |Byte [] |
 | Objekt blob |Byte [] |
-| Char |String |
-| Datový typ CLOB |String |
+| Char |Řetězec |
+| Datový typ CLOB |Řetězec |
 | Datum |Datum a čas |
-| DB2DynArray |String |
-| DbClob |String |
+| DB2DynArray |Řetězec |
+| DbClob |Řetězec |
 | Desetinné číslo |Desetinné číslo |
 | DecimalFloat |Desetinné číslo |
 | Double |Double |
 | Float |Double |
-| Objekty |String |
+| Objekty |Řetězec |
 | Integer |Int32 |
 | LongVarBinary |Byte [] |
-| LongVarChar |String |
-| LongVarGraphic |String |
+| LongVarChar |Řetězec |
+| LongVarGraphic |Řetězec |
 | Numeric |Desetinné číslo |
 | Skutečné |Single |
 | SmallInt |Int16 |
-| Time |TimeSpan |
-| Časové razítko |DateTime |
+| Čas |TimeSpan |
+| Časové razítko |Datum a čas |
 | VarBinary |Byte [] |
-| VarChar |String |
-| VarGraphic |String |
+| VarChar |Řetězec |
+| VarGraphic |Řetězec |
 | XML |Byte [] |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání

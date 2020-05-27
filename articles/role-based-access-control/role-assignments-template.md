@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 777d11a129f02d1a2f5c796dea0af438ca81ba8c
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: baf309a93f8ba976cb6511c05ba5032ad07a0fc9
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735619"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83874036"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager
 
@@ -26,7 +26,7 @@ ms.locfileid: "82735619"
 
 ## <a name="get-object-ids"></a>Získat ID objektů
 
-Chcete-li přiřadit roli, je nutné zadat ID uživatele, skupiny nebo aplikace, ke které chcete přiřadit roli. ID má formát: `11111111-1111-1111-1111-111111111111`. ID můžete získat pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure.
+Chcete-li přiřadit roli, je nutné zadat ID uživatele, skupiny nebo aplikace, ke které chcete přiřadit roli. ID má formát: `11111111-1111-1111-1111-111111111111` . ID můžete získat pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
 ### <a name="user"></a>Uživatel
 
@@ -173,7 +173,7 @@ Chcete-li použít šablonu, je nutné zadat následující vstupy:
 ```
 
 > [!NOTE]
-> Tato šablona není idempotentní, pokud není stejná `roleNameGuid` hodnota zadána jako parametr pro každé nasazení šablony. Pokud se `roleNameGuid` nezadá žádný, ve výchozím nastavení se v každém nasazení vygeneruje nový identifikátor GUID a další nasazení se nezdaří `Conflict: RoleAssignmentExists` s chybou.
+> Tato šablona není idempotentní, pokud není stejná `roleNameGuid` hodnota zadána jako parametr pro každé nasazení šablony. Pokud se nezadá žádný `roleNameGuid` , ve výchozím nastavení se v každém nasazení vygeneruje nový identifikátor GUID a další nasazení se nezdaří s `Conflict: RoleAssignmentExists` chybou.
 
 Rozsah přiřazení role je určen z úrovně nasazení. Tady jsou příklady [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) Commands, jak spustit nasazení v oboru skupiny prostředků.
 
@@ -359,9 +359,18 @@ Následuje příklad přiřazení role přispěvatele k novému instančnímu ob
 
 ![Přiřazení role nového objektu spravované služby identity](./media/role-assignments-template/role-assignment-template-msi.png)
 
+## <a name="remove-a-role-assignment"></a>Odebrání přiřazení role
+
+Když ve službě Azure RBAC odeberete přístup k prostředku Azure, odeberete přiřazení role. Neexistuje způsob, jak odebrat přiřazení role pomocí šablony. Chcete-li odebrat přiřazení role, je nutné použít jiné nástroje, jako například:
+
+- [portál Azure](role-assignments-portal.md#remove-a-role-assignment)
+- [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
+- [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+- [REST API](role-assignments-rest.md#remove-a-role-assignment)
+
 ## <a name="next-steps"></a>Další kroky
 
 - [Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [Pochopení struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 - [Vytvoření skupin prostředků a prostředků na úrovni předplatného](../azure-resource-manager/templates/deploy-to-subscription.md)
-- [Šablony rychlého zprovoznění pro Azure](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/?term=rbac)

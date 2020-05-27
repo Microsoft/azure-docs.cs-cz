@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 54f4b38e01b51289319390779a140346befc6f0c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4a96f31588e199d5696e2d9eff351051d46c1f96
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76168810"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873965"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a Node. js
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace Node. js odešle požadavek na hledání do rozhraní API a zobrazí odpověď. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato aplikace Node. js odešle požadavek na hledání do rozhraní API a zobrazí odpověď ve formátu JSON. I když je tato aplikace napsaná v JavaScriptu, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,8 +33,7 @@ Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého sta
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Vytvoření projektu a deklarace požadovaných modulů
 
-Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Node.js.
-Pak do svého projektu, do souboru s názvem `search.js`, zkopírujte fragment kódu uvedený níže.
+Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Node.js. Pak zkopírujte následující fragment kódu do projektu v souboru s názvem Search. js:
 
 ```javascript
 // Use this simple app to query the Bing Web Search API and get a JSON response.
@@ -44,9 +43,9 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>Nastavení klíče předplatného
 
-Tento fragment kódu používá proměnnou prostředí `AZURE_SUBSCRIPTION_KEY`, pomocí které ukládá váš klíč předplatného. To je dobrý způsob, jak zabránit nechtěnému zveřejnění vašich klíčů, když se kód nasazuje. Pokud chcete vyhledat klíč předplatného, otevřete [stránku vašich rozhraní API](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) .
+Tento fragment kódu používá `AZURE_SUBSCRIPTION_KEY` proměnnou prostředí k uložení klíče předplatného, což je dobrý postup k tomu, abyste zabránili nechtěnému vystavení klíčů při nasazování kódu. Pokud chcete vyhledat klíč předplatného, podívejte se na [vaše rozhraní API](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7).
 
-Pokud používání proměnných prostředí neznáte nebo chcete spustit tuto aplikaci co nejdříve, můžete nahradit hodnotu `process.env['AZURE_SUBSCRIPTION_KEY']` svým klíčem předplatného nastaveným jako řetězec.
+Pokud nejste obeznámeni s používáním proměnných prostředí nebo chcete tuto aplikaci spustit co nejrychleji, nahraďte `process.env['AZURE_SUBSCRIPTION_KEY']` pomocí klíče předplatného nastaveného jako řetězec.
 
 ```javascript
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
@@ -57,7 +56,15 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>Vytvoření funkce k odeslání požadavku
 
-Tato funkce odešle zabezpečený požadavek GET a zároveň uloží vyhledávací dotaz jako parametr dotazu na dané cestě. `hostname`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.  `encodeURIComponent` se používá k uvození neplatných znaků a klíč předplatného se předává jako hlavička. Zpětné volání dostane [odpověď](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse), která provede registraci k události `data`, aby se agregoval text JSON, k události `error`, aby se protokolovaly veškeré problémy, a k události `end`, aby se vědělo, kdy se má zpráva považovat za šablonu. Až to bude hotové, aplikace vytiskne zajímavé hlavičky a text zprávy. Můžete libovolně upravovat barvy a nastavit hloubku tak, aby odpovídaly vašim představám. Hloubka `1` nabízí dobré shrnutí odpovědi.
+Tato funkce vytváří požadavek na zabezpečený přístup a ukládá vyhledávací dotaz jako parametr dotazu v cestě. 
+
+1. Pro tuto `hostname` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.  
+
+2. Použijte `encodeURIComponent` k úniku neplatných znaků. Klíč předplatného se předává v hlavičce. 
+
+3. Zpětné volání dostane [odpověď](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse), která provede registraci k události `data`, aby se agregoval text JSON, k události `error`, aby se protokolovaly veškeré problémy, a k události `end`, aby se vědělo, kdy se má zpráva považovat za šablonu. 
+
+4. Po dokončení aplikace budou vytištěny příslušné hlavičky a tělo zprávy. Barvy můžete upravit a nastavit hloubku tak, aby vyhovovaly vašemu předvolbě. Hloubka `1` obsahuje dobrý souhrn odpovědi.
 
 ```javascript
 function bingWebSearch(query) {
@@ -87,7 +94,7 @@ function bingWebSearch(query) {
 
 ## <a name="get-the-query"></a>Získání dotazu
 
-Podívejme se na argumenty programu, abychom našli daný dotaz. První argument je cesta k uzlu, druhý je náš název souboru a třetí je váš dotaz. Pokud dotaz chybí, použije se výchozí dotaz Microsoft Cognitive Services.
+Podívejme se na argumenty programu, abychom našli daný dotaz. První argument je cesta k uzlu, druhý název souboru a třetí je váš dotaz. Pokud dotaz chybí, použije se výchozí dotaz Microsoft Cognitive Services.
 
 ```javascript
 const query = process.argv[2] || 'Microsoft Cognitive Services'
@@ -95,7 +102,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 
 ## <a name="make-a-request-and-print-the-response"></a>Vytvoření požadavku a tisk výsledků
 
-A teď, když je všechno definované, zavoláme naši funkci!
+Teď, když je všechno definované, můžeme zavolat naši funkci.
 
 ```javascript
 bingWebSearch(query)
@@ -103,7 +110,7 @@ bingWebSearch(query)
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Posledním krokem je spustit kód: `node search.js "<your query>"`
+Posledním krokem je spuštění kódu pomocí příkazu: `node search.js "<your query>"` .
 
 Pokud chcete porovnat svůj kód s naším, tady je celý program:
 
@@ -140,7 +147,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 bingWebSearch(query)
 ```
 
-## <a name="sample-response"></a>Ukázková odpověď
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
@@ -269,6 +276,6 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
+> [Kurz rozhraní API Bingu pro vyhledávání na webu jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

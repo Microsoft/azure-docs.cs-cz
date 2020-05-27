@@ -1,20 +1,20 @@
 ---
-title: Kurz – konfigurace sítě pro privátní cloud VMWare v Azure
+title: Kurz – konfigurace sítě pro privátní cloud VMware v Azure
 description: Naučte se vytvářet a konfigurovat sítě potřebné k nasazení privátního cloudu v Azure.
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 41043b98a6e270d8d9f4373de7876b3fcae86747
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 5a8086f78f465f52d0f9107932c09c4690f505e8
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837613"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873853"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Kurz: konfigurace sítě pro privátní cloud VMWare v Azure
 
 Privátní cloud řešení Azure VMware (AVS) vyžaduje virtuální síť. Protože aplikace AVS v rámci verze Preview nepodporuje vaše místní vCenter, je potřeba provést další kroky pro integraci s místním prostředím. Nastavení okruhu ExpressRoute a Virtual Network brány jsou také potřeba a budou řešeny v tomto kurzu.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 

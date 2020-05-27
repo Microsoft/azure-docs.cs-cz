@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Popisuje, jak nastavovat cluster služby Azure Kubernetes pro Azure Dev Spaces funguje.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 00f8262f3008ce9ba82726960f78d18395458a2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241722"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873544"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Jak nastavovat cluster pro Azure Dev Spaces funguje
 
@@ -18,7 +18,7 @@ Azure Dev Spaces poskytuje několik způsobů, jak rychle iterovat a ladit aplik
 
 ## <a name="prepare-your-aks-cluster"></a>Příprava clusteru AKS
 
-Pokud chcete připravit cluster AKS pro vývojové prostory, ověřte, jestli je cluster AKS v oblasti [podporované Azure dev Spaces][supported-regions] a používáte Kubernetes 1.10.3 nebo novější. Pokud chcete povolit Azure Dev Spaces v clusteru z Azure Portal, přejděte do clusteru, klikněte na *vývojové prostory*, změňte možnost *použít vývojové prostory* na *Ano*a klikněte na *Uložit*. Můžete taky povolit Azure Dev Spaces z Azure CLI spuštěním `az aks use-dev-spaces`.
+Pokud chcete připravit cluster AKS pro vývojové prostory, ověřte, jestli je cluster AKS v oblasti [podporované Azure dev Spaces][supported-regions] a používáte Kubernetes 1.10.3 nebo novější. Pokud chcete povolit Azure Dev Spaces v clusteru z Azure Portal, přejděte do clusteru, klikněte na *vývojové prostory*, změňte možnost *použít vývojové prostory* na *Ano*a klikněte na *Uložit*. Můžete taky povolit Azure Dev Spaces z Azure CLI spuštěním `az aks use-dev-spaces` .
 
 Příklad nastavení clusteru AKS pro vývojové prostory najdete v tématu [rychlý Start pro vývoj týmu][quickstart-team].
 
@@ -50,7 +50,7 @@ Aby bylo možné použít Azure Dev Spaces, musí existovat alespoň jeden vývo
 
 Pokud je obor názvů určen jako místo pro vývoj, kontroler přidá k tomuto oboru názvů jmenovku *azds.IO/Space=true* , aby jej identifikoval jako místo pro vývoj. Počáteční prostor pro vývoj, který vytvoříte nebo označíte, se po přípravě clusteru vybere ve výchozím nastavení. Když je vybraná mezera, používá se Azure Dev Spaces k vytváření nových úloh.
 
-Pomocí nástrojů na straně klienta můžete vytvořit nové vývojové prostory a odebrat existující vývojové prostory. V důsledku omezení v Kubernetes nejde *výchozí* místo pro vývoj odebrat. Kontroler taky odebere všechny existující obory názvů Kubernetes s názvem *azds* , aby `azds` nedocházelo ke konfliktům s příkazem používaným nástroji na straně klienta.
+Pomocí nástrojů na straně klienta můžete vytvořit nové vývojové prostory a odebrat existující vývojové prostory. V důsledku omezení v Kubernetes nejde *výchozí* místo pro vývoj odebrat. Kontroler taky odebere všechny existující obory názvů Kubernetes s názvem *azds* , aby nedocházelo ke konfliktům s `azds` příkazem používaným nástroji na straně klienta.
 
 Přidaný server Webhooku Kubernetes se používá k vkládání lusků se třemi kontejnery během nasazování do instrumentace: kontejner devspaces-proxy, kontejner devspaces-proxy-init a kontejner devspaces-buildu. **Všechny tři tyto kontejnery se spouštějí s kořenovým přístupem v clusteru AKS.** Používají také stejný instanční objekt, který cluster AKS používá k tomu, aby vyvolaly služby na jiné součásti Azure Dev Spaces.
 
@@ -78,15 +78,15 @@ Nástroje na straně klienta umožňují uživateli:
 
 I když je vaše aplikace spuštěná, nástroje na straně klienta:
 * Přijímá a zobrazuje stdout a stderr z vaší aplikace spuštěné v AKS.
-* Pomocí [předávaného portu](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) umožní webovému přístupu k vaší aplikaci používat http\/:/localhost..
+* Pomocí [předávaného portu](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) umožní webovému přístupu k vaší aplikaci používat http: \/ /localhost..
 * Připojí ladicí program ke svojí spuštěné aplikaci v AKS.
 * Synchronizuje zdrojový kód s vývojovým místem, když je zjištěna změna přírůstkových sestavení, což umožňuje rychlou iteraci.
 * Umožňuje připojit počítač pro vývojáře přímo ke clusteru AKS.
 
-V rámci `azds` příkazu můžete použít nástroje na straně klienta z příkazového řádku. Můžete také použít nástroje na straně klienta s nástrojem:
+V rámci příkazu můžete použít nástroje na straně klienta z příkazového řádku `azds` . Můžete také použít nástroje na straně klienta s nástrojem:
 
 * Visual Studio Code pomocí [rozšíření Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
-* Visual Studio s [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
+* Visual Studio s úlohou vývoje Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

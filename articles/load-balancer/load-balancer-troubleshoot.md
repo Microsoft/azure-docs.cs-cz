@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 26a4ae7d1a2ef253c0cb62f6bb53f83152676595
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e7c5e00f2e5565393ff46dbb06b30991ebcfc01f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590260"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873708"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
 
@@ -127,6 +127,16 @@ Pokud se vaše aplikace hostovaná na virtuálním počítači back-endu Load Ba
 Pokud je interní Load Balancer nakonfigurovaný v rámci virtuální sítě a jeden z back-end účastníka se snaží získat přístup k internímu front-endu Load Balancer, můžou se selhání vyskytnout, když se tok namapuje na původní virtuální počítač. Takový scénář se nepodporuje. Přečtěte si [omezení](concepts.md#limitations) pro podrobnou diskuzi.
 
 **Řešení** Existuje několik způsobů, jak tento scénář odblokovat, včetně použití proxy serveru. Vyhodnoťte Application Gateway nebo jiné proxy servery třetích stran (například Nginx nebo HAProxy). Další informace o Application Gateway najdete v tématu [přehled Application Gateway](../application-gateway/application-gateway-introduction.md)
+
+**Podrobnosti o** Interní nástroje pro vyrovnávání zatížení nepřevádějí odchozí vytvořená připojení na front-end interního Load Balancer, protože obě jsou v privátním adresním prostoru IP adres. Veřejné nástroje pro vyrovnávání zatížení poskytují [odchozí připojení](load-balancer-outbound-connections.md) z privátních IP adres uvnitř virtuální sítě k veřejným IP adresám. U interních nástrojů pro vyrovnávání zatížení tento přístup zabraňuje možnému vyčerpání portů SNAT v rámci jedinečného interního adresního prostoru IP adres, kde není požadován překlad.
+
+Vedlejším účinkem je to, že pokud odchozí tok z virtuálního počítače v záložním fondu pokusy o tok do front-endu interního Load Balancer ve svém fondu _a_ namapuje se zpátky na sebe, dvě ramena toku se neshodují. Vzhledem k tomu, že se neshodují, tok se nezdařil. Tok se úspěšně dokončí, pokud tok nemapoval zpátky na stejný virtuální počítač ve fondu back-end, který vytvořil tok do front-endu.
+
+Když se tok mapuje zpátky na sebe samé, zdá se, že odchozí tok pochází z virtuálního počítače na front-end a odpovídající příchozí tok se zdá, že pochází z virtuálního počítače do sebe samé. Z pohledu hostovaného operačního systému se v rámci tohoto virtuálního počítače neshodují vstupní a výstupní části stejného toku. Zásobník TCP nerozpozná tyto poloviny stejného toku jako součást stejného toku. Zdroj a cíl se neshodují. Když se tok mapuje na jakýkoli jiný virtuální počítač ve fondu back-end, budou se tyto poloviny toku shodovat a virtuální počítač může na tento tok reagovat.
+
+Příznakem pro tento scénář je přerušovaná prodleva připojení, když se tok vrátí ke stejnému back-endu, který daný tok vytvořil. K běžným řešením patří vložení vrstvy proxy za interní Load Balancer a použití pravidel stylu "přímé vrácení serveru (DSR)". Další informace najdete v tématu [více front-endu pro Azure Load Balancer](load-balancer-multivip-overview.md).
+
+Interní Load Balancer můžete kombinovat s jakýmkoli proxy třetích stran nebo použít interní [Application Gateway](../application-gateway/application-gateway-introduction.md) pro scénáře proxy pomocí protokolu HTTP/HTTPS. I když můžete použít veřejný Load Balancer k zmírnění tohoto problému, je výsledný scénář náchylný k [vyčerpání SNAT](load-balancer-outbound-connections.md#snat). Vyhněte se tomuto druhému přístupu, pokud se pečlivě nespravuje.
 
 ## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>Příznak: nejde změnit back-end port pro stávající pravidlo pro vyrovnávání zatížení, které má ve fondu back-end nasazenou službu VM Scale set. 
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Příčina: port back-endu nejde upravit pro pravidlo vyrovnávání zatížení, které používá sonda stavu pro nástroj pro vyrovnávání zatížení, na který odkazuje sada škálování virtuálního počítače.

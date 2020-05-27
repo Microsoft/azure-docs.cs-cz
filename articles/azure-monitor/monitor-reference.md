@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 27503defa23b2a35e767156139228aa2e177652f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d154029e20ed952ca371685b00d5520f9d7850c8
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405185"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873845"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co je monitorované pomocí Azure Monitor?
 Tento článek popisuje různé aplikace a služby, které jsou monitorované pomocí Azure Monitor. 
@@ -27,11 +27,14 @@ Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní ap
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | Rozšiřitelná služba pro správu výkonu aplikací (APM) pro monitorování živé webové aplikace na libovolné platformě. |
 | [Azure Monitor pro kontejnery](insights/container-insights-overview.md) | Monitoruje výkon úloh kontejneru nasazených pro Azure Container Instances nebo spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). |
-| [Azure Monitor pro Cosmos DB (Preview)](insights/cosmosdb-insights-overview.md) | Poskytuje přehled o celkovém výkonu, selháních, kapacitě a provozním stavu všech vašich Azure Cosmos DBch prostředků v jednotném interaktivním prostředí. |
+| [Azure Monitor pro Cosmos DB](insights/cosmosdb-insights-overview.md) | Poskytuje přehled o celkovém výkonu, selháních, kapacitě a provozním stavu všech vašich Azure Cosmos DBch prostředků v jednotném interaktivním prostředí. |
 | [Azure Monitor pro sítě (Preview)](insights/network-insights-overview.md) | Poskytuje komplexní přehled o stavu a metrikách pro všechny síťové prostředky. Rozšířené možnosti vyhledávání vám pomůžou identifikovat závislosti prostředků a povolit scénáře jako identifikaci prostředků, které hostují váš web, jednoduše hledáním názvu vašeho webu. |
 [Azure Monitor pro skupiny prostředků (Preview)](insights/resource-group-insights.md) |  Roztřídit a diagnostikovat všechny problémy, které jednotlivé prostředky narazí, a současně nabídnout kontext jako stav a výkon skupiny prostředků jako celku. |
-| [Azure Monitor pro úložiště (Preview)](insights/storage-insights-overview.md) | Poskytuje ucelený přehled o vašich Azure Storagech účtech tím, že přináší jednotný přehled o výkonu, kapacitě a dostupnosti služby Azure Storage Services. |
+| [Azure Monitor pro Storage](insights/storage-insights-overview.md) | Poskytuje ucelený přehled o vašich Azure Storagech účtech tím, že přináší jednotný přehled o výkonu, kapacitě a dostupnosti služby Azure Storage Services. |
 | [Azure Monitor pro virtuální počítače](insights/container-insights-overview.md) | Monitoruje vaše virtuální počítače Azure a škálované sady virtuálních počítačů ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linuxem a monitoruje jejich procesy a závislosti na jiných prostředcích a externích procesech. |
+| [Azure Monitor pro Key Vault (Preview)](insights/key-vaults-insights-overview.md) | Povides komplexní monitorování vašich trezorů klíčů tím, že poskytujeme jednotný přehled o vašich Key Vaultch požadavcích, výkonu, selháních a latenci. |
+| [Azure Monitor pro Azure cache pro Redis (Preview)](insights/redis-cache-insights-overview.md) |  Poskytuje jednotný a interaktivní pohled na celkový výkon, selhání, kapacitu a provozní stav. |
+
 
 ### <a name="core-solutions"></a>Základní řešení
 
@@ -75,7 +78,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Batch | Ano | Ano | Ne |  |
 |Batch AI | Ne | Ne | Ne |  |
 |Služba Blockchain | Ne | Ano | Ne |  |
-|Blueprint | Ne | Ne | Ne |  |
+|Blueprints | Ne | Ne | Ne |  |
 |Bot Service | Ne | Ne | Ne |  |
 |Cloud Services | Ano | Ano | Ne | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů.  |
 |Cloud Shell | Ne | Ne | Ne |  |
@@ -111,15 +114,15 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Functions | Ano | Ano | Ne |  |
 |HDInsight | Ne | Ano | Ne |  |
 |HPC Cache | Ne | Ne | Ne |  |
-|Ochrana informací | Ne | Ano | Ne |  |
+|Information Protection | Ne | Ano | Ne |  |
 |Intune | Ne | Ano | Ne |  |
 |IoT Central | Ne | Ne | Ne |  |
 |IoT Hub | Ano | Ano | Ne |  |
-|Key Vault | Ano | Ano | Ne |  |
+|Key Vault | Ano | Ano | [Ano](insights/key-vaults-insights-overview.md) |  |
 |Kubernetes Service (AKS) | Ne | Ne | [Ano](insights/container-insights-overview.md)  |  |
 |Load Balancer | Ano | Ano | Ne |  |
 |Logic Apps | Ano | Ano | Ne |  |
-|Služba Machine Learning | Ne | Ne | Ne |  |
+|Machine Learning Service | Ne | Ne | Ne |  |
 |Managed Applications  | Ne | Ne | Ne |  |
 |Maps  | Ne | Ne | Ne |  |
 |Media Services | Ano | Ano | Ne |  |
@@ -132,14 +135,14 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Multi-Factor Authentication | Ne | Ano | Ne |  |
 |Network Watcher | Ano | Ano | Ne |  |
 |Notification Hubs | Ano | Ne | Ne |  |
-|Otevřené datové sady | Ne | Ne | Ne |  |
+|Open Datasets | Ne | Ne | Ne |  |
 |Zásada | Ne | Ne | Ne |  |
-|Power BI | Ano | Ano | Ne |  |
+|Power BI | Ano | Ano | No |  |
 |Power BI Embedded | Ne | Ne | Ne |  |
 |Privátní propojení | Ne | Ne | Ne |  |
 |Komunikační platforma pro zařazování projektu | Ne | Ne | Ne |  |
 |Red Hat OpenShift | Ne | Ne | Ne |  |
-|Redis Cache | Ano | Ano | Ne |  |
+|Redis Cache | Ano | Ano | [Ano](insights/redis-cache-insights-overview.md) | |
 |Resource Graph | Ne | Ne | Ne |  |
 |Resource Manager | Ne | Ne | Ne |  |
 |Maloobchodní vyhledávání – podle Bingu | Ne | Ne | Ne |  |
@@ -162,7 +165,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Traffic Manager | Ano | Ano | Ne |  |
 |Univerzální tisk | Ne | Ne | Ne |  |
 |Virtual Machine Scale Sets | Ne | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
-|Virtuální počítače | Ano | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
+|Virtual Machines | Ano | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
 |Virtual Network | Ano | Ano | [Ano](insights/network-insights-overview.md) |  |
 |Protokoly toku Virtual Network – NSG | Ne | Ano | Ne |  |
 |VPN Gateway | Ano | Ano | Ne |  |
@@ -210,7 +213,7 @@ Další řešení jsou k dispozici pro monitorování různých aplikací a slu�
 
 | Řešení | Popis |
 |:---|:---|
-| [ITSM](platform/itsmc-overview.md) | Služba IT Service Management Connector (ITSMC) umožňuje připojit Azure a podporovaný produkt/službu IT Service Management (ITSM).  |
+| [ITSM](platform/itsmc-overview.md) | ITSM konektor (ITSMC) umožňuje propojit Azure s podporovaným produktem nebo službou správy IT služeb (ITSM).  |
 
 
 ## <a name="resources-outside-of-azure"></a>Prostředky mimo Azure

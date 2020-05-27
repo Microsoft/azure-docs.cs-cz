@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Naučte se, jak povolit Azure Dev Spaces v clusteru AKS a nainstalovat nástroje na straně klienta.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: a6b3be5ceba5e60b99b2f75e060f3321cd3151f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3666eeb995c73615c522200a3619d785814ea0b5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898947"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873516"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Povolení Azure Dev Spaces v clusteru AKS a instalace nástrojů na straně klienta
 
@@ -47,7 +47,7 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-`use-dev-spaces` Příkaz také nainstaluje Azure dev Spaces CLI.
+`use-dev-spaces`Příkaz také nainstaluje Azure dev Spaces CLI.
 
 K odebrání Azure Dev Spaces z clusteru AKS použijte `azds remove` příkaz. Příklad:
 
@@ -67,7 +67,7 @@ Než budete moci povolit vývojářské prostory pomocí Azure Portal, budete po
 * [Cluster AKS][create-aks-portal] v [podporované oblasti][supported-regions].
 
 Povolení Azure Dev Spaces pomocí Azure Portal:
-1. Přihlaste se k webu [Azure Portal][az-portal].
+1. Přihlaste se k [portálu Azure Portal][az-portal].
 1. Přejděte do clusteru AKS.
 1. Vyberte položku nabídky *vývojové prostory* .
 1. Změňte *Povolit vývojové prostory* na *Ano* a klikněte na *Uložit*.
@@ -84,7 +84,6 @@ Pomocí Azure Dev Spaces nástrojů na straně klienta můžete pracovat s vývo
 
 * V [Visual Studio Code][vscode]nainstalujte [Azure dev Spaces rozšíření][vscode-extension].
 * V [aplikaci Visual Studio 2019][visual-studio]nainstalujte úlohu vývoj pro Azure.
-* V aplikaci Visual Studio 2017 nainstalujte úlohu vývoj pro web a [Visual Studio Tools for Kubernetes][visual-studio-k8s-tools].
 * Stáhněte a nainstalujte rozhraní příkazového řádku pro [Windows][cli-win], [Mac][cli-mac]nebo [Linux][cli-linux] .
 
 ## <a name="next-steps"></a>Další kroky

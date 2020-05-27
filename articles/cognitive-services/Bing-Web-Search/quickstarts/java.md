@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1fdeffb5ee5b1e2d66fbf5586d307cd8d8b78858
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0fa70cfb287cc4a68892ada1044283a996d8dd50
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166731"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873928"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>Rychlý Start: použití jazyka Java k vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API, Služba rozpoznávání Azure
 
-V tomto rychlém startu použijete aplikaci Java k tomu, aby se vaše první volání rozhraní API Bingu pro vyhledávání na webu a dostala odpověď JSON. Tato aplikace Java pošle do rozhraní API požadavek hledání a zobrazí odpověď. Aplikace je sice napsaná v Javě, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu použijete aplikaci Java k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu. Tato aplikace Java pošle do rozhraní API požadavek hledání a zobrazí odpověď JSON. I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -49,7 +49,7 @@ import com.google.gson.JsonParser;
 
 ### <a name="declare-gson-in-the-maven-pom-file"></a>Deklarace knihovny Gson v souboru Maven POM
 
-Pokud používáte Maven, deklarujte Gson v souboru `POM.xml`. Pokud jste knihovnu Gson nainstalovali lokálně, můžete tento krok přeskočit.
+Pokud používáte Maven, deklarujte gson v souboru POM. XML. Pokud jste knihovnu Gson nainstalovali lokálně, můžete tento krok přeskočit.
 
 ```xml
 <dependency>
@@ -61,7 +61,7 @@ Pokud používáte Maven, deklarujte Gson v souboru `POM.xml`. Pokud jste knihov
 
 ## <a name="declare-the-bingwebsearch-class"></a>Deklarace třídy BingWebSearch
 
-Deklarujte třídu `BingWebSearch`. Bude zahrnovat většinu kódu, se kterým jsme se v tomto rychlém startu setkali, včetně metody `main`.  
+Deklarujte třídu `BingWebSearch`. Zahrnuje většinu kódu, který si projdeme v tomto rychlém startu, včetně `main()` metody.  
 
 ```java
 public class BingWebSearch {
@@ -73,7 +73,13 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Tento kód nastaví `subscriptionKey`, `host`, `path` a `searchTerm`. `host`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Hodnotu `subscriptionKey` nahraďte platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu. Nezapomeňte přidat tento kód do `BingWebSearch` třídy, jak je uvedeno výše.
+Následující kód nastaví `subscriptionKey` , `host` , `path` a `searchTerm` . Přidejte tento kód do `BingWebSearch` třídy popsané v předchozí části:
+
+1. Pro tuto `host` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. 
+
+2. Hodnotu `subscriptionKey` nahraďte platným klíčem předplatného ze svého účtu Azure. 
+
+3. Volitelně můžete upravit vyhledávací dotaz nahrazením hodnoty pro `searchTerm` . 
 
 ```java
 // Enter a valid subscription key.
@@ -91,7 +97,7 @@ static String searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="construct-a-request"></a>Vytvoření požadavku
 
-Tato metoda žije ve třídě `BingWebSearch`, vytvoří `url`, přijme odpověď a parsuje ji a extrahuje hlavičky protokolu HTTP týkající se Bingu.  
+`SearchWeb()`Metoda, která je obsažena ve `BingWebSearch` třídě, sestaví `url` , přijímá a analyzuje odpověď a extrahuje hlavičky HTTP související s bingem.  
 
 ```java
 public static SearchResults SearchWeb (String searchQuery) throws Exception {
@@ -137,7 +143,7 @@ public static String prettify(String json_text) {
 
 ## <a name="declare-the-main-method"></a>Deklarace hlavní metody
 
-Tato metoda je povinná. Při spuštění programu se volá jako první. V této aplikaci obsahuje kód, který ověří hodnotu `subscriptionKey`, vytvoří požadavek a vytiskne odpověď JSON.
+`main()`Metoda je povinná a je první metodou vyvolanou při spuštění programu. V této aplikaci obsahuje kód, který ověřuje `subscriptionKey` , vytvoří požadavek a pak vytiskne odpověď JSON.
 
 ```java
 public static void main (String[] args) {
@@ -167,7 +173,7 @@ public static void main (String[] args) {
 
 ## <a name="create-a-container-class-for-search-results"></a>Vytvoření třídy kontejneru pro výsledky hledání
 
-Třída kontejneru `SearchResults` není ve třídě `BingWebSearch`. Obsahuje příslušné hlavičky a data JSON odpovědi.
+`SearchResults`Třída kontejneru je definována mimo `BingWebSearch` třídu. Obsahuje příslušné hlavičky a data JSON odpovědi.
 
 ```java
 class SearchResults{
@@ -182,7 +188,7 @@ class SearchResults{
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Posledním krokem je kompilace kódu a jeho spuštění. Tady jsou příkazy:
+Posledním krokem je kompilace kódu a jeho spuštění. Použijte následující příkazy:
 
 ```powershell
 javac BingWebSearch.java -classpath ./gson-2.8.5.jar -encoding UTF-8
@@ -191,7 +197,7 @@ java -cp ./gson-2.8.5.jar BingWebSearch
 
 Pokud chcete porovnat svůj kód s naším, najdete [ukázkový kód na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java).
 
-## <a name="sample-response"></a>Ukázková odpověď
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
@@ -320,6 +326,6 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
+> [Kurz rozhraní API Bingu pro vyhledávání na webu jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  

@@ -1,18 +1,18 @@
 ---
 title: Instalace hybridního cloudového rozšíření (HCX)
-description: Nastavení řešení HCX (VMWare Hybrid Cloud Extension) pro privátní cloud Azure VMWare Solution (AVS)
+description: Nastavení řešení HCX (VMware Hybrid Cloud Extension) pro privátní cloud Azure VMware Solution (AVS)
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 74bc0dece2fc565aebc6e5301ef7a36187d6a250
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: dc5f7f82b83c82538b2d5a7b4c87131afb3fcc20
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776472"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873651"
 ---
-# <a name="install-hcx-for-azure-vmware-solution"></a>Nainstalovat HCX pro řešení VMWare pro Azure
+# <a name="install-hcx-for-azure-vmware-solution"></a>Nainstalovat HCX pro řešení VMware pro Azure
 
-V tomto článku se seznámíme s postupy pro nastavení řešení HCX (VMWare Hybrid Cloud Extension) pro privátní cloud řešení Azure VMWare (AVS). HCX Advanced (výchozí instalace) podporuje až tři externí weby, kde každá externí lokalita vyžaduje, aby byl nainstalovaný a aktivovaný HCX Enterprise Manager nebo konektor.
+V tomto článku se seznámíme s postupy pro nastavení řešení HCX (VMware Hybrid Cloud Extension) pro privátní cloud řešení Azure VMware (AVS). HCX Advanced (výchozí instalace) podporuje až tři externí weby, kde každá externí lokalita vyžaduje, aby byl nainstalovaný a aktivovaný HCX Enterprise Manager nebo konektor.
 HCX umožňuje migrovat úlohy VMware do cloudu i do jiných připojených webů prostřednictvím různých integrovaných typů migrace HCX. Pokud potřebujete víc než tři lokality, zákazníci mají možnost povolit doplněk HCX Enterprise prostřednictvím podpory. HCX Enterprise přináší zákazníkům po obecné dostupnosti další poplatky (GA), ale poskytuje [Další funkce](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
 
 [Před zahájením, před začátkem](#before-you-begin), [požadavky na verzi softwaru](#software-version-requirements)a [požadavky nejprve důkladně](#prerequisites) prostudujte. 

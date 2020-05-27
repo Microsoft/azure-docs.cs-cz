@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cf12b279cf7bcb20aa655646ce34fb9df2bda016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c13931c7ab7c084b635abb7080f97de6d4bf4bb
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76167670"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873897"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Rychlý Start: vyhledávání na webu pomocí Vyhledávání na webu Bingu REST API a C #
 
-Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání na webu a přijetí odpovědi JSON. Tato aplikace v jazyce C# odešle požadavek na hledání do rozhraní API a zobrazí odpověď. Aplikace je sice napsaná v C#, ale rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+V tomto rychlém startu můžete provést první volání rozhraní API Bingu pro vyhledávání na webu. Tato aplikace v jazyce C# odešle požadavek na hledání do rozhraní API a zobrazí odpověď JSON. I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
+
+Tento ukázkový program v tomto rychlém startu používá pouze třídy .NET Core.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,13 +32,11 @@ Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého sta
 * Linux/macOS: [Mono](https://www.mono-project.com/)  
 * Klíč předplatného
 
-V tomto ukázkovém programu jsou použité jenom třídy .NET Core.
-
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>Vytvoření projektu a deklarace závislostí
 
-V sadě Visual Studio nebo Mono vytvořte nový projekt. Pak použijte tento kód k importu potřebných oborů názvů a typů.
+V sadě Visual Studio nebo Mono vytvořte nový projekt. Použijte následující kód k importu požadovaných oborů názvů a typů:
 
 ```csharp
 using System;
@@ -62,7 +62,13 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>Definování proměnných
 
-Abychom mohli pokračovat, musíme nastavit několik proměnných.  `uriBase`může to být globální koncový bod nebo vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. Ověřte, že hodnota `uriBase` je platná a nahraďte hodnotu `accessKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu. Nezapomeňte přidat tento kód do `Program` třídy, jak je uvedeno výše.
+Abychom mohli pokračovat, musíme nastavit několik proměnných. Přidejte tento kód do `Program` třídy, kterou jste vytvořili v předchozí části: 
+
+1. Pro tuto `uriBase` hodnotu můžete použít globální koncový bod v následujícím kódu nebo použít vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek. 
+
+2. Potvrďte, že `uriBase` je platná a nahraďte `accessKey` hodnotu klíčovým předplatným z vašeho účtu Azure. 
+
+3. Volitelně můžete upravit vyhledávací dotaz nahrazením hodnoty pro `searchTerm` . 
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,9 +84,9 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>Deklarace hlavní metody
 
-`Main()` Metoda je povinná a je první metodou vyvolanou při spuštění programu. V této aplikaci hlavní metoda ověří `accessKey`, vytvoří požadavek a vytiskne odpověď.
+`Main()`Metoda je povinná a je první metodou vyvolanou při spuštění programu. V této aplikaci hlavní metoda ověří `accessKey`, vytvoří požadavek a vytiskne odpověď.
 
-Nezapomeňte, že metoda `main()` závisí na metodách vytvořených v následujících několika oddílech.
+`main()`Metoda je závislá na metodách, které vytvoříte v dalších částech.
 
 ```csharp
 static void Main()
@@ -109,7 +115,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>Vytvoření struktury výsledků hledání
 
-Tato struktura vrátí výsledky hledání s příslušnými hlavičkami. Je volána při vytváření žádosti na rozhraní API Bingu pro vyhledávání na webu k vytvoření objektu výsledku.
+Vytvořte strukturu, která vrátí výsledky hledání s příslušnými záhlavími. Zavoláte ho při vytváření žádosti o rozhraní API Bingu pro vyhledávání na webu k vytvoření objektu výsledku.
 
 ```csharp
 // Returns search results with headers.
@@ -158,7 +164,7 @@ static SearchResult BingWebSearch(string searchQuery)
 
 ## <a name="format-the-response"></a>Formátování odpovědi
 
-Tato metoda naformátuje odpověď JSON, především doplní odsazení a přidá konce řádků.
+Tato metoda formátuje odpověď JSON primárně odčítáním a přidáním konců řádků.
 
 ```csharp
 /// <summary>
@@ -235,9 +241,9 @@ static string JsonPrettyPrint(string json)
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Posledním krokem je spuštění kódu. Pokud chcete porovnat svůj kód s naším, najdete [ukázkový kód na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs).
+Posledním krokem je spuštění kódu. Pokud byste chtěli porovnat kód s našich, přečtěte si [vzorový kód na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs).
 
-## <a name="sample-response"></a>Ukázková odpověď
+## <a name="example-json-response"></a>Příklad odpovědi JSON
 
 Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.  
 
@@ -366,6 +372,6 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
+> [Kurz rozhraní API Bingu pro vyhledávání na webu jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]
