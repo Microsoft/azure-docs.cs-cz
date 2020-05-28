@@ -29,7 +29,7 @@ Asset přihlašovacích údajů pro automatizaci obsahuje objekt, který obsahuj
 
 Rutiny v následující tabulce vytvářejí a spravují přihlašovací údaje automatizace pomocí PowerShellu. Dodávají se jako součást [AZ moduls](modules.md#az-modules).
 
-| Rutina | Description |
+| Rutina | Popis |
 |:--- |:--- |
 | [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Načte objekt [CredentialInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) obsahující metadata o přihlašovacích údajích. Rutina nenačte `PSCredential` samotný objekt.  |
 | [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |Vytvoří nové přihlašovací údaje automatizace. |
@@ -40,7 +40,7 @@ Rutiny v následující tabulce vytvářejí a spravují přihlašovací údaje 
 
 Rutiny v následující tabulce se používají pro přístup k přihlašovacím údajům v sadách Runbook a konfiguracích DSC. 
 
-| Rutina | Description |
+| Rutina | Popis |
 |:--- |:--- |
 | `Get-AutomationPSCredential` |Získá `PSCredential` objekt, který se má použít v sadě Runbook nebo konfiguraci DSC. Nejčastěji byste měli místo rutiny použít tuto [interní rutinu](modules.md#internal-cmdlets) `Get-AzAutomationCredential` , protože ta načte jenom informace o přihlašovacích údajích. Tyto informace nejsou obvykle užitečné k předání jiné rutině. |
 | [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Získá přihlašovací údaje s výzvou k zadání uživatelského jména a hesla. Tato rutina je součástí výchozího modulu Microsoft. PowerShell. Security. Viz [výchozí moduly](modules.md#default-modules).|

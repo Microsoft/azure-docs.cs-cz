@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: ab25b2e300f9fe9b0b1d077a42538c69fa543af2
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: acfe367033d1553f5ee408ad0f4170e5d981377e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982696"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021819"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>Ingestování dat do fondu SQL
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak ingestovat data z Azure Data Lake účtu úlo�
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet úložiště Azure**: Azure Data Lake Storage Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
-* **Azure synapse Analytics**: jako úložiště dat *jímky* použijete fond SQL. Pokud nemáte instanci Azure synapse Analytics, přečtěte si téma [Vytvoření fondu SQL](../../sql-database/sql-database-get-started-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
+* **Azure synapse Analytics**: jako úložiště dat *jímky* použijete fond SQL. Pokud nemáte instanci Azure synapse Analytics, přečtěte si téma [Vytvoření fondu SQL](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 

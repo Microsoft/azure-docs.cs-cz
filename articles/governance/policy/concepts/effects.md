@@ -491,7 +491,7 @@ Pole vlastností **Operations** umožňuje změnit několik značek různými zp
 
 Vlastnost **Operation** má následující možnosti:
 
-|Operace |Popis |
+|Operace |Description |
 |-|-|
 |addOrReplace |Přidá do prostředku definovanou značku a hodnotu, i když značka již existuje s jinou hodnotou. |
 |Přidat |Přidá do prostředku definovanou značku a hodnotu. |
@@ -547,7 +547,7 @@ Příklad 2: odebrání `env` značky a přidání `environment` značky nebo n�
 
 ## <a name="layering-policy-definitions"></a>Definice zásad vrstvení
 
-Prostředek může být ovlivněn několika přiřazeními. Tato přiřazení můžou být ve stejném oboru nebo v různých oborech. U každého z těchto přiřazení je také pravděpodobně definován jiný efekt. Podmínka a účinek pro jednotlivé zásady jsou nezávisle vyhodnoceny. Například:
+Prostředek může být ovlivněn několika přiřazeními. Tato přiřazení můžou být ve stejném oboru nebo v různých oborech. U každého z těchto přiřazení je také pravděpodobně definován jiný efekt. Podmínka a účinek pro jednotlivé zásady jsou nezávisle vyhodnoceny. Příklad:
 
 - Zásady 1
   - Omezí umístění prostředku na ' westus '.

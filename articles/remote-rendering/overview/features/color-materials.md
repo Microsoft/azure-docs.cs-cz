@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 7cbcaefcc087c9f1c7c09668a27fbdef9a4802d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681074"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021377"
 ---
 # <a name="color-materials"></a>Barevné materiály
 
@@ -22,7 +22,7 @@ Barevné materiály jsou efektivnější pro vykreslování než [PBR materiál�
 
 Tyto vlastnosti jsou společné pro všechny materiály:
 
-* **albedoColor:** Tato barva se vynásobí ostatními barvami, jako jsou *albedoMap* nebo *vrcholy*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, `1` že je plně neprůhledný a `0` má velmi transparentní význam. Výchozí hodnota je bílá.
+* **albedoColor:** Tato barva se vynásobí jinými barvami, jako je například *albedoMap* nebo * :::no-loc text="vertex"::: Colors*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, že je `1` plně neprůhledný a má velmi `0` transparentní význam. Výchozí hodnota je bílá.
 
   > [!NOTE]
   > Vzhledem k tomu, že barevné materiály neodrážejí prostředí, je plně transparentní barevný materiál neviditelný. To se u [materiálů PBR](pbr-materials.md)liší.
@@ -33,15 +33,15 @@ Tyto vlastnosti jsou společné pro všechny materiály:
 
 * **textureCoordinateScale** a **textureCoordinateOffset:** stupnice se vynásobí souřadnicemi textury UV, do které se přidá posun. Dá se použít k roztažení a posunutí textur. Výchozí měřítko je (1, 1) a posun je (0, 0).
 
-* **useVertexColor:** Pokud mřížka obsahuje barvy vrcholu a tato možnost je povolená, vynásobí se barvy vrcholů mřížek na *albedoColor* a *albedoMap*. Ve výchozím nastavení jsou barvy vrcholu zakázané.
+* **useVertexColor:** Pokud mřížka obsahuje :::no-loc text="vertex"::: barvy a tato možnost je povolená, :::no-loc text="vertex"::: vynásobí se barva ok v *albedoColor* a *albedoMap*. Ve výchozím nastavení je *useVertexColor* zakázaný.
 
-* **isDoubleSided:** Pokud je vlastnost sidedness nastavená na hodnotu true, budou se tyto trojúhelníky s tímto materiálem vykreslovat i v případě, že fotoaparát hledá své zadní plošky. Ve výchozím nastavení je tato možnost zakázána. Viz také [vykreslování na jednom straně](single-sided-rendering.md).
+* **isDoubleSided:** Pokud je vlastnost sidedness nastavená na hodnotu true, budou se tyto trojúhelníky s tímto materiálem vykreslovat i v případě, že fotoaparát hledá své zadní plošky. Ve výchozím nastavení je tato možnost zakázána. Viz také [ :::no-loc text="Single-sided"::: vykreslování](single-sided-rendering.md).
 
 ## <a name="color-material-properties"></a>Vlastnosti barevného materiálu
 
 Následující vlastnosti jsou specifické pro barevné materiály:
 
-* **vertexMix:** Tato hodnota mezi `0` a `1` určuje, jak silně se barva vrcholu v [mřížce](../../concepts/meshes.md) přispěje k konečné barvě. U výchozí hodnoty 1 je barva vrcholu vynásobena plnou barvou albedo. S hodnotou 0 se barvy vrcholu ignorují úplně.
+* **vertexMix:** Tato hodnota mezi `0` a `1` Určuje, jak silné je :::no-loc text="vertex"::: Barva v [mřížce](../../concepts/meshes.md) přispěje k konečné barvě. U výchozí hodnoty 1 :::no-loc text="vertex"::: je barva vynásobena plnou barvou albedo. S hodnotou 0 :::no-loc text="vertex"::: jsou barvy zcela ignorovány.
 
 * **transparencyMode:** V rozporu s [materiály PBR](pbr-materials.md)se barevné materiály liší v různých režimech průhlednosti:
 

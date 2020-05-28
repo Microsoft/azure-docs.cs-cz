@@ -60,7 +60,7 @@ Následující diagram znázorňuje kroky v běžném pracovním postupu služby
 ![Podrobný postup řešení Batch](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|Krok  |Popis  |
+|Krok  |Description  |
 |---------|---------|
 |1. nahrání **vstupních souborů** a **aplikací** pro zpracování těchto souborů na účet Azure Storage.     |Vstupní soubory mohou být jakákoli data, která vaše aplikace zpracuje, třeba data finančního modelování nebo videosoubory k převodu. Soubory aplikací můžou zahrnovat skripty nebo aplikace zpracovávající data, třeba převaděč médií.|
 |2. na účtu Batch vytvořte **fond** výpočetních uzlů služby Batch, **úlohu** pro spuštění úlohy ve fondu a **úkoly** v úloze.     | Uzly fondu jsou virtuální počítače, které budou provádět vaše úkoly. Zadejte vlastnosti, jako je počet a velikost uzlů, image virtuálních počítačů s Windows nebo Linuxem a aplikaci, která se má nainstalovat, když se uzly připojí k fondu. Náklady na fond a jeho velikost můžete omezit použitím [virtuálních počítačů s nízkou prioritou](batch-low-pri-vms.md) nebo [automatického škálování](batch-automatic-scaling.md) počtu uzlů v závislosti na změnách zatížení. <br/><br/>Když do úlohy přidáte úkoly, služba Batch automaticky naplánuje úkoly k provedení ve výpočetních uzlech ve fondu. Každý úkol používá aplikaci, kterou jste nahráli, ke zpracování vstupních souborů. |

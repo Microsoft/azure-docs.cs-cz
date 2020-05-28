@@ -22,5 +22,5 @@ K použití aktivity kopírování s kanálem můžete použít jeden z následu
 - [Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)
 - [REST API](../articles/data-factory/quickstart-create-data-factory-rest-api.md)
-- [Šablona Azure Resource Manageru](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
+- [Šablona Azure Resource Manager](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
 

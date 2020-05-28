@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 3be8ce241817b3b2fa03976eebe3147c1dc9c877
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 94a2398879007e7ecd6d2f1920157eb4627f33cb
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005157"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014923"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -32,6 +32,9 @@ Přečtěte si [seznam šablon pro rychlý start Azure Load Balancer](https://do
 
 ## <a name="how-are-inbound-nat-rules-different-from-load-balancing-rules"></a>Jak se liší pravidla příchozího překladu adres (NAT) od pravidel vyrovnávání zatížení?
 Pravidla překladu adres (NAT) slouží k určení prostředku back-end pro směrování provozu do. Například konfigurace konkrétního portu nástroje pro vyrovnávání zatížení pro odesílání provozu RDP na konkrétní virtuální počítač. Pravidla vyrovnávání zatížení se používají k určení fondu back-end prostředků ke směrování provozu, vyrovnání zatížení napříč jednotlivými instancemi. Například pravidlo nástroje pro vyrovnávání zatížení může směrovat pakety TCP na portu 80 nástroje pro vyrovnávání zatížení napříč fondem webových serverů.
+
+## <a name="what-is-ip-1686312916"></a>Co je IP 168.63.129.16?
+Virtuální IP adresa hostitele označeného jako infrastruktura Azure Load Balancer, kde se nacházely sondy stavu Azure. Při konfiguraci back-end instancí musí umožňovat provoz z této IP adresy úspěšné reakce na sondy stavu. Toto pravidlo nekomunikuje s přístupem k front-endu Load Balancer. Pokud Azure Load Balancer nepoužíváte, můžete toto pravidlo přepsat. Další informace o značkách služby najdete [tady](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags).
 
 ## <a name="next-steps"></a>Další kroky
 Pokud Váš dotaz není uvedený výše, pošlete nám prosím svůj názor na tuto stránku s vaším dotazem. Tím se vytvoří problém GitHubu pro produktový tým, aby se zajistila odpověď na všechny naše oceněné dotazy zákazníků.

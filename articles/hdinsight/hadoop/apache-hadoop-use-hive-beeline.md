@@ -105,7 +105,7 @@ Tento příklad je založený na použití klienta Beeline z připojení SSH.
 
     Tyto příkazy provedou následující akce:
 
-    |Příkaz |Description |
+    |Příkaz |Popis |
     |---|---|
     |ODKLÁDACÍ TABULKA|Pokud tabulka existuje, je odstraněna.|
     |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří **externí** tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění.|
@@ -168,7 +168,7 @@ Tento příklad je pokračování z předchozího příkladu. Pomocí následuj�
 
     Tyto příkazy provedou následující akce:
 
-    |Příkaz |Description |
+    |Příkaz |Popis |
     |---|---|
     |CREATE TABLE, POKUD NEEXISTUJE|Pokud tabulka ještě neexistuje, vytvoří se. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Interní tabulky jsou uložené v datovém skladu podregistru a jsou plně spravované podregistrem.|
     |ULOŽENO JAKO ORC|Ukládá data ve formátu optimalizovaného řádku (ORC). Formát ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.|

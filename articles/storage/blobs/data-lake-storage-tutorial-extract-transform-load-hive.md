@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74327564"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014906"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure HDInsight
 
@@ -50,7 +50,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 2. Na stránce vyberte následující hodnoty:
 
-   | Název | Hodnota |
+   | Name | Hodnota |
    | --- | --- |
    | Filter Year (Filtr roku) |2013 |
    | Filter Period (Filtr období) |January (Leden) |
@@ -70,9 +70,9 @@ V této části nahrajete data do clusteru HDInsight a pak tato data zkopírujet
    scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
    ```
 
-   * `<file-name>` Zástupný symbol nahraďte názvem souboru. zip.
-   * `<ssh-user-name>` Zástupný symbol nahraďte přihlašovacím jménem SSH pro cluster HDInsight.
-   * `<cluster-name>` Zástupný symbol nahraďte názvem clusteru HDInsight.
+   * `<file-name>`Zástupný symbol nahraďte názvem souboru. zip.
+   * `<ssh-user-name>`Zástupný symbol nahraďte přihlašovacím jménem SSH pro cluster HDInsight.
+   * `<cluster-name>`Zástupný symbol nahraďte názvem clusteru HDInsight.
 
    Pokud k ověření přihlášení SSH používáte heslo, zobrazí se výzva k zadání hesla.
 
@@ -98,9 +98,9 @@ V této části nahrajete data do clusteru HDInsight a pak tato data zkopírujet
    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   `<container-name>` Zástupný symbol nahraďte názvem, který chcete poskytnout kontejneru.
+   `<container-name>`Zástupný symbol nahraďte názvem, který chcete poskytnout kontejneru.
 
-   `<storage-account-name>` Zástupný symbol nahraďte názvem vašeho účtu úložiště.
+   `<storage-account-name>`Zástupný symbol nahraďte názvem vašeho účtu úložiště.
 
 5. Pomocí následujícího příkazu vytvořte adresář.
 
@@ -128,7 +128,7 @@ V rámci úlohy Apache Hive naimportujete data ze souboru. CSV do tabulky Apache
    nano flightdelays.hql
    ```
 
-2. Upravte následující text nahrazením `<container-name>` zástupných `<storage-account-name>` symbolů a názvem svého kontejneru a účtu úložiště. Pak tento text zkopírujte a vložte do konzoly nano pomocí klávesy SHIFT a kliknutím pravým tlačítkem myši na tlačítko.
+2. Upravte následující text nahrazením `<container-name>` `<storage-account-name>` zástupných symbolů a názvem svého kontejneru a účtu úložiště. Pak tento text zkopírujte a vložte do konzoly nano pomocí klávesy SHIFT a kliknutím pravým tlačítkem myši na tlačítko.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -192,7 +192,7 @@ V rámci úlohy Apache Hive naimportujete data ze souboru. CSV do tabulky Apache
     FROM delays_raw;
     ```
 
-3. Soubor uložte pomocí kombinace kláves CTRL + X a po zobrazení výzvy `Y` zadejte.
+3. Soubor uložte pomocí kombinace kláves CTRL + X a `Y` po zobrazení výzvy zadejte.
 
 4. Spusťte Hive a soubor **flightdelays.hql** pomocí následujícího příkazu:
 
@@ -244,16 +244,16 @@ Pro tuto operaci budete potřebovat název serveru z vaší databáze SQL. Pokud
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. Po dokončení instalace se připojte k SQL Database serveru pomocí následujícího příkazu.
+6. Po dokončení instalace se připojte k SQL Database pomocí následujícího příkazu.
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * `<server-name>` Zástupný text nahraďte názvem serveru SQL Database.
+   * `<server-name>`Zástupný text nahraďte názvem logického SQL serveru.
 
-   * `<admin-login>` Zástupný symbol nahraďte přihlašovacím jménem správce pro SQL Database.
+   * `<admin-login>`Zástupný symbol nahraďte přihlašovacím jménem správce pro SQL Database.
 
-   * `<database-name>` Zástupný text nahraďte názvem databáze.
+   * `<database-name>`Zástupný text nahraďte názvem databáze.
 
    Po zobrazení výzvy zadejte heslo pro přihlašovací jméno správce SQL Database.
 
@@ -300,7 +300,7 @@ Pro tuto operaci budete potřebovat název serveru z vaší databáze SQL. Pokud
 
 ## <a name="export-and-load-the-data"></a>Exportovat a načíst data
 
-V předchozích částech jste do umístění `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`zkopírovali transformovaná data. V této části použijete Sqoop k exportu dat z `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili ve službě Azure SQL Database.
+V předchozích částech jste do umístění zkopírovali transformovaná data `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` . V této části použijete Sqoop k exportu dat z `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` do tabulky, kterou jste vytvořili ve službě Azure SQL Database.
 
 1. Pomocí následujícího příkazu ověřte, že má Sqoop vhled do vaší databáze SQL:
 
@@ -318,7 +318,7 @@ V předchozích částech jste do umístění `abfs://<container-name>@<storage-
 
    Sqoop se připojí k databázi, která obsahuje tabulku **zpoždění** , a exportuje data z `/tutorials/flightdelays/output` adresáře do tabulky s **prodlevami** .
 
-3. Po dokončení `sqoop` příkazu se připojte k databázi pomocí nástroje TSQL:
+3. Po `sqoop` dokončení příkazu se připojte k databázi pomocí nástroje TSQL:
 
    ```bash
    TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>

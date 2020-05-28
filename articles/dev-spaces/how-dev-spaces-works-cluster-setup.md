@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Popisuje, jak nastavovat cluster služby Azure Kubernetes pro Azure Dev Spaces funguje.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873544"
+ms.locfileid: "83995883"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Jak nastavovat cluster pro Azure Dev Spaces funguje
 
@@ -18,7 +18,7 @@ Azure Dev Spaces poskytuje několik způsobů, jak rychle iterovat a ladit aplik
 
 ## <a name="prepare-your-aks-cluster"></a>Příprava clusteru AKS
 
-Pokud chcete připravit cluster AKS pro vývojové prostory, ověřte, jestli je cluster AKS v oblasti [podporované Azure dev Spaces][supported-regions] a používáte Kubernetes 1.10.3 nebo novější. Pokud chcete povolit Azure Dev Spaces v clusteru z Azure Portal, přejděte do clusteru, klikněte na *vývojové prostory*, změňte možnost *použít vývojové prostory* na *Ano*a klikněte na *Uložit*. Můžete taky povolit Azure Dev Spaces z Azure CLI spuštěním `az aks use-dev-spaces` .
+Pokud chcete připravit cluster AKS pro vývojové prostory, ověřte, jestli je cluster AKS v oblasti [podporované Azure dev Spaces][supported-regions] a používáte Kubernetes 1.10.3 nebo novější. Spuštěním nástroje můžete povolit Azure Dev Spaces z rozhraní příkazového řádku Azure `az aks use-dev-spaces` .
 
 Příklad nastavení clusteru AKS pro vývojové prostory najdete v tématu [rychlý Start pro vývoj týmu][quickstart-team].
 

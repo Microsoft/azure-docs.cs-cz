@@ -6,18 +6,18 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: e7a190792714e1dd1a54da7e674e63d4453c548e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef8145f0b447f24265ff4576884b0977190b063e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835066"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020349"
 ---
 # <a name="compose-dsc-configurations"></a>Sestavování konfigurací DSC
 
 Pokud potřebujete spravovat prostředek s více než jednou konfigurací požadovaného stavu (DSC), nejlepším postupem je použití [složených prostředků](/powershell/scripting/dsc/resources/authoringresourcecomposite). Složený prostředek je vnořená a Parametrizovaná konfigurace, která se používá jako prostředek DSC v rámci jiné konfigurace. Použití složených prostředků vám umožní vytvořit složitou konfiguraci a zároveň umožnit, aby se základní složené prostředky jednotlivě spravovaly a vytvořily.
 
-Azure Automation umožňuje [Import a kompilaci složených prostředků](automation-dsc-compile.md). Po importu složených prostředků do svého účtu Automation můžete použít konfiguraci Azure Automation stav prostřednictvím funkce **Konfigurace stavu (DSC** v Azure Portal.
+Azure Automation umožňuje [Import a kompilaci složených prostředků](automation-dsc-compile.md). Po importu složených prostředků do svého účtu Automation můžete použít konfiguraci Azure Automation stav prostřednictvím funkce **Konfigurace stavu (DSC)** v Azure Portal.
 
 ## <a name="compose-a-configuration"></a>Vytvoření konfigurace
 

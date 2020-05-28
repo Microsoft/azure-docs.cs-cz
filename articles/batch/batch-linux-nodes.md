@@ -33,7 +33,7 @@ Služba Batch používá k poskytování výpočetních uzlů v konfiguraci virt
 
 Když nakonfigurujete odkaz na image virtuálního počítače, zadáte vlastnosti image virtuálního počítače. Při vytváření odkazu na image virtuálního počítače se vyžadují tyto vlastnosti:
 
-| **Vlastnosti odkazu na obrázek** | **Příklad** |
+| **Vlastnosti odkazu na obrázek** | **Případě** |
 | --- | --- |
 | Publisher |Canonical |
 | Nabídka |UbuntuServer |

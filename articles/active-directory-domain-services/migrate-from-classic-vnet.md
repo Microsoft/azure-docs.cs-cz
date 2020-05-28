@@ -9,27 +9,27 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 6acf9301367ae2c6947f6935c43f420d3d7cac65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb9e12f29c148ea6854dde57456d8cf796cc8c34
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655023"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994064"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrace Azure AD Domain Services z modelu klasických virtuálních sítí do Správce prostředků
 
 Azure Active Directory Domain Services (služba AD DS) podporuje jednorázové přesunutí pro zákazníky, kteří aktuálně používají model klasických virtuálních sítí pro model Správce prostředků virtuální sítě. Azure služba AD DS spravované domény, které používají model nasazení Správce prostředků poskytují další funkce, jako jsou jemně odstupňované zásady pro hesla, protokoly auditu a ochrana před uzamčením účtu.
 
-V tomto článku najdete popis výhod a důležitých informací pro migraci a pak potřebné kroky k úspěšné migraci existující instance služby Azure služba AD DS.
+V tomto článku najdete pokyny k migraci a pak potřebné kroky k úspěšné migraci existující instance služby Azure služba AD DS. Některé výhody najdete v tématu [výhody migrace z modelu nasazení Classic na správce prostředků v Azure služba AD DS][migration-benefits].
 
 > [!NOTE]
 > V 2017 je Azure AD Domain Services k dispozici pro hostování v Azure Resource Manager síti. Od té doby jsme dokázali vytvořit bezpečnější službu pomocí moderních možností Azure Resource Manager. Vzhledem k tomu, že Azure Resource Manager nasazení plně nahrazují klasická nasazení, nasazení Azure služba AD DS Classic Virtual Network se vyřadí 1. března 2023.
 >
-> Další informace najdete v [oficiálním oznámení o zastarání](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/) .
+> Další informace najdete v [oficiálním oznámení o zastarání](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/).
 
 ## <a name="overview-of-the-migration-process"></a>Přehled procesu migrace
 
-Proces migrace převezme existující instanci služby Azure služba AD DS, která běží v klasické virtuální síti, a přesune ji do existující Správce prostředků virtuální sítě. Migrace se provádí pomocí prostředí PowerShell a má dvě hlavní fáze provádění – *Příprava* a *migrace*.
+Proces migrace převezme existující instanci služby Azure služba AD DS, která běží v klasické virtuální síti, a přesune ji do existující Správce prostředků virtuální sítě. Migrace se provádí pomocí prostředí PowerShell a má dvě hlavní fáze provádění: *Příprava* a *migrace*.
 
 ![Přehled procesu migrace pro Azure služba AD DS](media/migrate-from-classic-vnet/migration-overview.png)
 
@@ -40,21 +40,6 @@ Ve fázi *přípravy* Azure služba AD DS postará o zálohu domény, aby bylo m
 Ve fázi *migrace* se zkopírují základní virtuální disky pro řadiče domény z klasické domény spravované službou Azure služba AD DS, aby se vytvořily virtuální počítače pomocí modelu nasazení Správce prostředků. Pak se znovu vytvoří spravovaná doména Azure služba AD DS, která zahrnuje protokoly LDAP a DNS. Synchronizace do služby Azure AD se restartuje a obnoví se certifikáty LDAP. Není nutné znovu připojovat žádné počítače k spravované doméně Azure služba AD DS – budou se nadále připojovat ke spravované doméně a spouštět beze změn.
 
 ![Migrace služba AD DS Azure](media/migrate-from-classic-vnet/migration-process.png)
-
-## <a name="migration-benefits"></a>Výhody migrace
-
-Při přesunutí spravované domény Azure služba AD DS pomocí tohoto procesu migrace se vyhnete nutnosti znovu připojit počítače ke spravované doméně nebo odstranit instanci Azure služba AD DS a vytvořit ji úplně od začátku. Virtuální počítače jsou i nadále připojené k spravované doméně Azure služba AD DS na konci procesu migrace.
-
-Po migraci poskytuje Azure služba AD DS mnoho funkcí, které jsou k dispozici pouze pro domény využívající Správce prostředků virtuální sítě, jako například:
-
-* Podpora jemně odstupňovaných zásad hesel.
-* Ochrana při uzamčení účtu AD.
-* E-mailová oznámení výstrah ve spravované doméně Azure služba AD DS.
-* Protokoly auditu pomocí Azure Monitor.
-* Integrace souborů Azure
-* Integrace s HD Insights
-
-Azure služba AD DS spravované domény, které používají Správce prostředků virtuální sítě, vám pomůžou s nejnovějšími novými funkcemi. Podpora pro Azure služba AD DS s využitím klasických virtuálních sítí se v budoucnu už nepoužívá.
 
 ## <a name="example-scenarios-for-migration"></a>Příklady scénářů pro migraci
 
@@ -367,6 +352,7 @@ Po migraci spravované domény Azure služba AD DS do modelu nasazení Správce 
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [tshoot-ldaps]: tshoot-ldaps.md
 [get-credential]: /powershell/module/microsoft.powershell.security/get-credential
+[migration-benefits]: concepts-migration-benefits.md
 
 <!-- EXTERNAL LINKS -->
 [powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/

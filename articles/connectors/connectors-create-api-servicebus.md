@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76261615"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141989"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -45,7 +45,7 @@ Můžete použít triggery, které získávají odpovědi z Service Bus a zpří
 
 Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu oboru názvů Service Bus.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Přejít na *obor názvů*Service Bus. Na stránce obor názvů v části **Nastavení**vyberte **zásady sdíleného přístupu**. V části **deklarace identity**ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
 
@@ -60,7 +60,7 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
       ![Zkopírování připojovacího řetězce oboru názvů Service Bus](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Pokud chcete ověřit, jestli je připojovací řetězec přidružený k vašemu oboru názvů Service Bus nebo entitě zasílání zpráv, jako je například fronta, vyhledejte v `EntityPath`  připojovacím řetězci parametr. Pokud tento parametr vyhledáte, připojovací řetězec je pro konkrétní entitu a není správným řetězcem pro použití s vaší aplikací logiky.
+   > Pokud chcete ověřit, jestli je připojovací řetězec přidružený k vašemu oboru názvů Service Bus nebo entitě zasílání zpráv, jako je například fronta, vyhledejte v připojovacím řetězci `EntityPath`   parametr. Pokud tento parametr vyhledáte, připojovací řetězec je pro konkrétní entitu a není správným řetězcem pro použití s vaší aplikací logiky.
 
 ## <a name="add-service-bus-trigger"></a>Přidat aktivační událost Service Bus
 
@@ -114,7 +114,7 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
 
 1. V kroku, kam chcete přidat akci, vyberte **Nový krok**.
 
-   Nebo pokud chcete přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus (**+**), který se zobrazí, a vyberte **přidat akci**.
+   Nebo pokud chcete přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a vyberte **přidat akci**.
 
 1. V části **zvolit akci**zadejte do vyhledávacího pole "Azure Service Bus" jako filtr. V seznamu akce vyberte akci, kterou chcete. 
 
@@ -152,11 +152,21 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
 
 1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
+<a name="sequential-convoy"></a>
+
+## <a name="send-correlated-messages-in-order"></a>Odeslání korelačních zpráv v daném pořadí
+
+Pokud potřebujete odesílat související zprávy v určitém pořadí, můžete použít [ *sekvenční vzor convoy* ](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) pomocí [konektoru Azure Service Bus](../connectors/connectors-create-api-servicebus.md). Korelační zprávy mají vlastnost, která definuje vztah mezi těmito zprávami, jako je ID [relace](../service-bus-messaging/message-sessions.md) v Service Bus.
+
+Když vytvoříte aplikaci logiky, můžete vybrat **korelujované doručení v pořadí pomocí šablony relace služby Service Bus** , která implementuje sekvenční vzor convoy. Další informace najdete v tématu [odeslání souvisejících zpráv v daném pořadí](../logic-apps/send-related-messages-sequential-convoy.md).
+
+<a name="connector-reference"></a>
+
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
 Konektor Service Bus může současně ušetřit až 1 500 jedinečných relací ze sběrnice Service Bus do mezipaměti konektoru. Pokud počet relací překročí tento limit, staré relace budou odebrány z mezipaměti. Další informace najdete v tématu [relace zpráv](../service-bus-messaging/message-sessions.md).
 
-Další technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI (dříve Swagger) konektoru, najdete na [referenční stránce](/connectors/servicebus/)konektoru. Další informace o Azure Service Bus zasílání zpráv najdete v tématu [co je Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
+Další technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu Swagger tohoto konektoru, najdete na [referenční stránce konektoru](/connectors/servicebus/). Další informace o Azure Service Bus zasílání zpráv najdete v tématu [co je Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
 
 ## <a name="next-steps"></a>Další kroky
 

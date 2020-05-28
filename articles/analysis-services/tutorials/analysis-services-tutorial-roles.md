@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81454250"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016385"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
 
@@ -59,7 +59,7 @@ Pro zbývající úkoly použijete SQL Server Management Studio, které umožňu
     ![Připojení v SQL Server Management Studiu](./media/analysis-services-tutorial-roles/aas-connect-ssms-auth.png)
 
     > [!TIP]
-    > Doporučuje se použít možnost Active Directory Universal s podporou vícefaktorového ověřování. Tento typ ověřování podporuje [neinteraktivní a vícefaktorové ověřování](../../sql-database/sql-database-ssms-mfa-authentication.md). 
+    > Doporučuje se použít možnost Active Directory Universal s podporou vícefaktorového ověřování. Tento typ ověřování podporuje [neinteraktivní a vícefaktorové ověřování](../../azure-sql/database/authentication-mfa-ssms-overview.md). 
 
 3. Rozbalením **Průzkumníka objektů** zobrazte objekty serveru. Kliknutím pravým tlačítkem zobrazte vlastnosti serveru.
    
@@ -67,7 +67,7 @@ Pro zbývající úkoly použijete SQL Server Management Studio, které umožňu
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Přidání uživatelského účtu do role správce serveru
 
-V rámci tohoto úkolu přidáte do role správce serveru uživatelský nebo skupinový účet ze služby Azure AD. Pokud zadáváte skupinu zabezpečení, `obj:groupid@tenantid`použijte.
+V rámci tohoto úkolu přidáte do role správce serveru uživatelský nebo skupinový účet ze služby Azure AD. Pokud zadáváte skupinu zabezpečení, použijte `obj:groupid@tenantid` .
 
 1. V **Průzkumníku objektů** klikněte pravým tlačítkem na název serveru a pak klikněte na **Vlastnosti**. 
 2. V okně **Analysis Server – vlastnosti** klikněte na **Zabezpečení** > **Přidat**.
@@ -130,13 +130,13 @@ V rámci tohoto úkolu použijete příkaz [Create](https://docs.microsoft.com/a
 ## <a name="verify-your-changes"></a>Ověření změn
 
 1. V **Průzkumníku objektů** klikněte na název serveru a pak na **Aktualizovat**, nebo stiskněte klávesu **F5**.
-2. Rozbalte položku **databáze** > **AdventureWorks** > **role**. Ověřte, že se zobrazují změny uživatelského účtu a nové role, které jste provedli v předchozích úkolech.   
+2. Rozbalte položku **databáze**  >  **AdventureWorks**  >  **role**. Ověřte, že se zobrazují změny uživatelského účtu a nové role, které jste provedli v předchozích úkolech.   
 
     ![Ověření v Průzkumníku objektů](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete je odstranit. Provedete to tak, že pomocí > **členství ve** **vlastnostech role**odeberete uživatelské účty nebo kliknete pravým tlačítkem na roli a pak kliknete na **Odstranit**.
+Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete je odstranit. Provedete to tak **Role Properties**, že pomocí  >  **členství ve** vlastnostech role odeberete uživatelské účty nebo kliknete pravým tlačítkem na roli a pak kliknete na **Odstranit**.
 
 
 ## <a name="next-steps"></a>Další kroky

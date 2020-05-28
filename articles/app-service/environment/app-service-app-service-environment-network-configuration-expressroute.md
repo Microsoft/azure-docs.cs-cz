@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abe08da95416dd73035115361cb0d87822ad9239
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804431"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013393"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Podrobnosti o konfiguraci sítě pro App Service Environment pro PowerApps s Azure ExpressRoute
 
@@ -35,7 +35,7 @@ App Service Environment vyžaduje, aby následující nastavení připojení k s
 
 * Odchozí síťové připojení ke službě soubory Azure na portu 445.
 
-* Odchozí připojení k síti Azure SQL Database koncovým bodům, které se nacházejí ve stejné oblasti jako App Service Environment. SQL Database koncových bodů se vyhodnotí v doméně database.windows.net, která vyžaduje otevřený přístup k portům 1433, 11000-11999 a 14000-14999. Podrobnosti o využití portů SQL Database V12 najdete v tématu [porty nad 1433 pro ADO.NET 4,5](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
+* Odchozí připojení k síti Azure SQL Database koncovým bodům, které se nacházejí ve stejné oblasti jako App Service Environment. SQL Database koncových bodů se vyhodnotí v doméně database.windows.net, která vyžaduje otevřený přístup k portům 1433, 11000-11999 a 14000-14999. Podrobnosti o využití portů SQL Database V12 najdete v tématu [porty nad 1433 pro ADO.NET 4,5](../../azure-sql/database/adonet-v12-develop-direct-route-ports.md).
 
 * Odchozí síťové připojení k koncovým bodům roviny správy Azure (model nasazení Azure Classic a koncové body Azure Resource Manager). Připojení k těmto koncovým bodům zahrnuje domény management.core.windows.net a management.azure.com. 
 
@@ -87,7 +87,7 @@ Tato část ukazuje příklad konfigurace UDR pro App Service Environment.
 
 ### <a name="prerequisites"></a>Požadavky
 
-* Nainstalujte Azure PowerShell na [stránce soubory ke stažení pro Azure][AzureDownloads]. Vyberte soubor ke stažení s datem od června 2015 nebo novějším. V části >  **nástroje příkazového řádku****Windows PowerShell**vyberte **instalovat** a nainstalujte nejnovější rutiny PowerShellu.
+* Nainstalujte Azure PowerShell na [stránce soubory ke stažení pro Azure][AzureDownloads]. Vyberte soubor ke stažení s datem od června 2015 nebo novějším. V části **nástroje příkazového řádku**  >  **Windows PowerShell**vyberte **instalovat** a nainstalujte nejnovější rutiny PowerShellu.
 
 * Vytvořte jedinečnou podsíť pro výhradní použití pomocí App Service Environment. Jedinečná podsíť zajišťuje, že udr, který se použije pro podsíť, otevírá odchozí provoz jenom pro App Service Environment.
 

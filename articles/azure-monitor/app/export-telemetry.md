@@ -2,13 +2,13 @@
 title: Průběžný export telemetrie z Application Insights | Microsoft Docs
 description: Exportujte data o využití a diagnostiku do úložiště v Microsoft Azure a Stáhněte si z něj.
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 05/26/2020
+ms.openlocfilehash: 42a96cf014d7d02e440af03bc3a9c1d40e5f0cbc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744863"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017527"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chcete udržet telemetrii déle než standardní doba uchovávání? Nebo ji zpracujete specializovaným způsobem? Pro tuto dobu je ideální pro průběžný export. Události, které vidíte na portálu Application Insights, se dají exportovat do úložiště v Microsoft Azure ve formátu JSON. Odtud si můžete stáhnout svá data a napsat kód, který budete potřebovat k jeho zpracování.  
@@ -53,13 +53,14 @@ Průběžný export **nepodporuje** následující funkce a konfigurace služby 
 
 4. Vytvořte nebo vyberte kontejner v úložišti.
 
-Po vytvoření exportu začne pokračovat. Dostanete jenom data, která dorazí po vytvoření exportu.
+> [!NOTE]
+> Po vytvoření exportu začnou nově přijímaná data zacházet do služby Azure Blob Storage. Průběžný export bude přenášet jenom novou telemetrii, která se vytvoří nebo ingestuje po povolení průběžného exportu. Veškerá data, která existovala před povolením průběžného exportu, nebudou exportována a neexistuje žádný podporovaný způsob, jak zpětně exportovat dříve vytvořená data pomocí průběžného exportu.
 
 Může to trvat přibližně hodinu, než se data objeví v úložišti.
 
 Po dokončení prvního exportu najdete v kontejneru úložiště objektů BLOB v Azure strukturu podobnou následující: (Tato operace se bude lišit v závislosti na shromažďovaných datech.)
 
-|Name | Popis |
+|Name | Description |
 |:----|:------|
 | [Dostupnost](export-data-model.md#availability) | Oznamuje [webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).  |
 | [Událost](export-data-model.md#events) | Vlastní události generované [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent). 
@@ -132,7 +133,7 @@ Doba trvání se nachází v taktech, kde 10 000 taktes = 1 ms. Například tyto
 [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Zpracování dat
-V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Například:
+V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Příklad:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {

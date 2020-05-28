@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: fd11fd32c4c6901302d1f7960ad38ad426e6a3a6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 156d960571f4d5f28f64823ecbe8f0465739bb23
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664666"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141717"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Připojte se se spravovanou identitou pro Azure Database for MySQL
 
@@ -22,6 +22,9 @@ V tomto článku se dozvíte, jak použít uživatelem přiřazenou identitu pro
 > * Vytvoření uživatele v databázi, který reprezentuje identitu virtuálního počítače přiřazenou uživatelem
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k dotazování serveru Azure Database for MySQL
 > * Implementace Načtení tokenu v ukázkové aplikaci v jazyce C#
+
+> [!IMPORTANT]
+> Připojení ke spravované identitě je dostupné jenom pro MySQL 5,7 a novější.
 
 ## <a name="prerequisites"></a>Požadavky
 

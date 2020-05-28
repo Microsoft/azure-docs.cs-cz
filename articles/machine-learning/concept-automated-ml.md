@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f328b86d07a997ea761b4381f1d6a2f8a1dae269
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: dc40668ec7008042b5f1600214184cbf8bba4701
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683075"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119088"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -35,14 +35,15 @@ Odborníci na data, analytiké a vývojáři v různých oborech můžou použí
 
 ### <a name="classification"></a>Classification
 
-Klasifikace je běžný úkol strojového učení. Klasifikace je typ vzdělávání pod dohledem, ve kterém se modely učí pomocí školicích dat, a aplikujte tyto učení na nová data. Azure Machine Learning nabízí featurizations specificky pro tyto úlohy, jako je například hluboký neuronové Network text featurizers for Classification. Další informace o [možnostech featurization](how-to-use-automated-ml-for-ml-models.md#featurization) 
+Klasifikace je běžný úkol strojového učení. Klasifikace je typ vzdělávání pod dohledem, ve kterém se modely učí pomocí školicích dat, a aplikujte tyto učení na nová data. Azure Machine Learning nabízí featurizations specificky pro tyto úlohy, jako je například hluboký neuronové Network text featurizers for Classification. Další informace o [možnostech featurization](how-to-configure-auto-features.md#featurization) 
 
 Hlavním cílem modelů klasifikace je předpovědět, ke kterým kategoriím budou nová data zacházet v závislosti na studiu ze svých školicích dat. Mezi běžné klasifikace patří zjišťování podvodů, rozpoznávání rukopisu a detekce objektů.  Přečtěte si další informace a podívejte [se na příklad klasifikace pomocí automatizovaného strojového učení](tutorial-train-models-with-aml.md).
 
 Podívejte se na příklady klasifikace a automatizované strojové učení v těchto poznámkových blocích Pythonu: [zjišťování podvodů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [předpověď marketingu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)a [klasifikace dat diskusních skupin](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb) .
 
 ### <a name="regression"></a>Regrese
-Podobně jako u klasifikace jsou regresní úlohy také běžnou úlohou v dohledovém učení. Azure Machine Learning nabízí [featurizations specificky pro tyto úlohy](how-to-use-automated-ml-for-ml-models.md#featurization).
+
+Podobně jako u klasifikace jsou regresní úlohy také běžnou úlohou v dohledovém učení. Azure Machine Learning nabízí [featurizations specificky pro tyto úlohy](how-to-configure-auto-features.md#featurization).
 
 Liší se od klasifikace, kde jsou hodnoty předpokládaných výstupů kategorií, regresní modely odhadne číselné výstupní hodnoty na základě nezávislých prediktivních. V regresi je cílem přispět k navázání vztahu mezi těmito nezávislými proměnnými proměnných odhadem toho, jak jedna proměnná má vliv na ostatní. Například cena automobilu na základě funkcí, jako je plynová km, bezpečnostní hodnocení atd. Přečtěte si další informace a podívejte [se na příklad regrese pomocí automatizovaného strojového učení](tutorial-auto-train-models.md).
 
@@ -99,20 +100,21 @@ I když je vytváření modelů automatizované, můžete také zjistit, jak jso
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
-<a name="preprocess"></a>
 
-## <a name="preprocessing"></a>Předzpracování
+## <a name="feature-engineering"></a>Návrh funkcí
 
-V každém automatizovaném experimentu Machine Learning se vaše data předzpracovaná pomocí výchozích metod a volitelně prostřednictvím pokročilého předběžného zpracování.
+Inženýrské funkce je proces využití dat v doméně k vytváření funkcí, které pomůžou lépe zjistit algoritmy ML. V Azure Machine Learning se pro usnadnění metodologie funkcí používají způsoby škálování a normalizace. Souhrnně jsou tyto techniky a inženýry funkcí označovány jako featurization.
+
+Pro automatizované experimenty strojového učení se featurization aplikuje automaticky, ale dá se přizpůsobit i na základě vašich dat. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-configure-auto-features.md#featurization).  
 
 > [!NOTE]
-> Automatické kroky před zpracováním strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky před zpracováním během školení.
+> Automatické kroky featurization strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky featurization, jaké jste použili během školení.
 
-### <a name="automatic-preprocessing-standard"></a>Automatické předzpracování (Standard)
+### <a name="automatic-featurization-standard"></a>Automatický featurization (Standard)
 
-V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly.  Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace. Přečtěte si, jak autoML pomáhá [zabránit přebudování a nevyváženým datům](concept-manage-ml-pitfalls.md) ve vašich modelech.
+V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly. Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace. Přečtěte si, jak AutoML pomáhá [zabránit přebudování a nevyváženým datům](concept-manage-ml-pitfalls.md) ve vašich modelech.
 
-|&nbsp; & &nbsp; Normalizace škálování| Popis |
+|&nbsp; & &nbsp; Normalizace škálování| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardizace funkcí odebráním střední odchylky a měřítka jednotky  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformuje funkce změnou velikosti jednotlivých funkcí na minimum a maximum tohoto sloupce.  |
@@ -122,15 +124,15 @@ V každém automatizovaném experimentu Machine Learning se vaše data automatic
 | [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |Tento transformátor provádí snížení hodnoty lineárně pomocí zkrácené dekompozice hodnot v jednotném čísle (SVD). V rozporu s DPS, tato Estimator data necentruje před výpočetem dekompozice hodnot v jednotném prostředí, což znamená, že může pracovat s efektivně scipy. zhuštěnými matricemi. |
 | [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | Každý vzorek (to znamená, že každý řádek datové matice) s nejméně jednou nenulovou komponentou je znovu škálovat nezávisle na jiných vzorcích, takže jeho norma (L1 nebo L2) se rovná jedné |
 
-### <a name="advanced-preprocessing--featurization"></a>Rozšířené předzpracování & featurization
+### <a name="customize-featurization"></a>Přizpůsobení featurization
 
-K dispozici jsou také další rozšířené předzpracování a featurization, například data guardrails, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-use-automated-ml-for-ml-models.md#featurization). Povolit toto nastavení pomocí:
+K dispozici jsou také další techniky techniků, jako je například kódování a transformace. 
 
-+ Azure Machine Learning Studio: v části **Zobrazit další konfiguraci** povolte **Automatické featurization** [pomocí těchto kroků](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
+Povolit toto nastavení pomocí:
 
-+ Python SDK: určení `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` pro [ `AutoMLConfig` třídu](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
++ Azure Machine Learning Studio: v části **Zobrazit další konfiguraci** povolte **Automatické featurization** [pomocí těchto kroků](how-to-use-automated-ml-for-ml-models.md#customize-featurization).
 
-
++ Python SDK: zadejte `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` v objektu [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) . Přečtěte si další informace o [povolení featurization] ((postupy-konfigurace-auto-features.md). 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a>Modely kompletování
 
@@ -168,7 +170,7 @@ Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
 
  K dispozici jsou další funkce, pokud používáte vzdálené výpočty, jak je znázorněno v následující tabulce. Některé z těchto funkcí jsou k dispozici pouze v pracovním prostoru Enterprise.
 
-| Příznak                                                    | Remote | Local | Nutné <br>Pracovní prostor Enterprise |
+| Funkce                                                    | Remote | Local | Nutné <br>Pracovní prostor Enterprise |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Streamování dat (podpora velkých objemů dat, až 100 GB)          | ✓      |       | ✓                             |
 | Featurization a školení textu založeného na DNN-BERT             | ✓      |       | ✓                             |

@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 7f91d8eab2e7a29163dae5ae2a4d34792ddd0cb0
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 6c6191936f76431bd4e7b6f1d4eff2074ce4b04d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005512"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141785"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Volání, triggery nebo vnořování aplikací logiky pomocí koncových bodů HTTPS v Azure Logic Apps
 
@@ -36,7 +36,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
 ## <a name="create-a-callable-endpoint"></a>Vytvořit volatelné koncové body
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvořte a otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvořte a otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
    V tomto příkladu se používá aktivační událost žádosti, ale můžete použít libovolný Trigger, který může přijímat příchozí požadavky HTTPS. Všechny zásady se na tyto triggery vztahují stejně. Další informace o triggeru žádosti najdete v tématu [příjem a odpověď na příchozí volání HTTPS pomocí Azure Logic Apps](../connectors/connectors-native-reqres.md).
 
@@ -154,6 +154,9 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
   Tyto hodnoty se předávají pomocí relativní cesty v adrese URL koncového bodu. Musíte také explicitně [Vybrat metodu](#select-method) , kterou aktivační procedura očekává. V následné akci můžete získat hodnoty parametrů jako aktivační výstupy odkazem přímo na tyto výstupy.
 
+> [!NOTE]
+> Adresa URL povoluje použití symbolu "at" ( **@** ), ale nikoli symbolu hash ( **#** ).
+
 <a name="get-parameters"></a>
 
 ### <a name="accept-values-through-get-parameters"></a>Přijmout hodnoty prostřednictvím parametrů GET
@@ -164,11 +167,11 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
 1. V aktivační události žádosti přidejte akci, u které chcete použít hodnotu parametru. V tomto příkladu přidejte akci **odpovědi** .
 
-   1. V části Trigger žádosti vyberte **Nový krok** > **přidat akci**.
+   1. V části Trigger žádosti vyberte **Nový krok**  >  **přidat akci**.
    
-   1. V části **zvolit akci**zadejte `response` do vyhledávacího pole jako filtr. V seznamu akce vyberte akci **reakce** .
+   1. V části **zvolit akci**zadejte do vyhledávacího pole `response` jako filtr. V seznamu akce vyberte akci **reakce** .
 
-1. Chcete-li `triggerOutputs()` vytvořit výraz, který načte hodnotu parametru, postupujte takto:
+1. Chcete-li vytvořit `triggerOutputs()` výraz, který načte hodnotu parametru, postupujte takto:
 
    1. Klikněte do vlastnosti **tělo** akce odpovědi, aby se zobrazil seznam dynamického obsahu a **výraz**SELECT.
 
@@ -190,11 +193,11 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
       `"body": "@{triggerOutputs()['queries']['parameter-name']}",`
 
-      Předpokládejme například, že chcete předat hodnotu parametru s názvem `postalCode`. Vlastnost **body** určuje řetězec `Postal Code: ` s koncovým mezerou následovaný odpovídajícím výrazem:
+      Předpokládejme například, že chcete předat hodnotu parametru s názvem `postalCode` . Vlastnost **body** určuje řetězec `Postal Code: ` s koncovým mezerou následovaný odpovídajícím výrazem:
 
       ![Přidat vzorový výraz "triggerOutputs ()" k triggeru](./media/logic-apps-http-endpoint/trigger-outputs-expression-postal-code.png)
 
-1. Chcete-li otestovat vyvolaný koncový bod, zkopírujte adresu URL zpětného volání z triggeru žádosti a vložte adresu URL do jiného okna prohlížeče. Do adresy URL přidejte název parametru a hodnotu za otazníkem (`?`) k adrese URL v následujícím formátu a stiskněte klávesu ENTER.
+1. Chcete-li otestovat vyvolaný koncový bod, zkopírujte adresu URL zpětného volání z triggeru žádosti a vložte adresu URL do jiného okna prohlížeče. Do adresy URL přidejte název parametru a hodnotu za otazníkem ( `?` ) k adrese URL v následujícím formátu a stiskněte klávesu ENTER.
 
    `...?{parameter-name=parameter-value}&api-version=2016-10-01...`
 
@@ -204,11 +207,11 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
    ![Odpověď odeslání požadavku na adresu URL zpětného volání](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
-1. Chcete-li zadat název parametru a hodnotu do jiné pozice v rámci adresy URL, nezapomeňte použít ampersand (`&`) jako předponu, například:
+1. Chcete-li zadat název parametru a hodnotu do jiné pozice v rámci adresy URL, nezapomeňte použít ampersand ( `&` ) jako předponu, například:
 
    `...?api-version=2016-10-01&{parameter-name=parameter-value}&...`
 
-   Tento příklad ukazuje adresu URL zpětného volání s názvem a hodnotou `postalCode=123456` ukázkového parametru v rámci adresy URL v různých pozicích:
+   Tento příklad ukazuje adresu URL zpětného volání s názvem a hodnotou ukázkového parametru `postalCode=123456` v rámci adresy URL v různých pozicích:
 
    * 1. pozice:`https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
@@ -222,21 +225,21 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
    ![Přidat vlastnost relativní cesty k triggeru](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
-1. Do vlastnosti **relativní cesta** zadejte relativní cestu k parametru ve schématu JSON, který má vaše adresa URL přijmout, například `/address/{postalCode}`.
+1. Do vlastnosti **relativní cesta** zadejte relativní cestu k parametru ve schématu JSON, který má vaše adresa URL přijmout, například `/address/{postalCode}` .
 
    ![Zadejte relativní cestu pro parametr.](./media/logic-apps-http-endpoint/relative-path-url-value.png)
 
 1. V aktivační události žádosti přidejte akci, u které chcete použít hodnotu parametru. V tomto příkladu přidejte akci **odpovědi** .
 
-   1. V části Trigger žádosti vyberte **Nový krok** > **přidat akci**.
+   1. V části Trigger žádosti vyberte **Nový krok**  >  **přidat akci**.
 
-   1. V části **zvolit akci**zadejte `response` do vyhledávacího pole jako filtr. V seznamu akce vyberte akci **reakce** .
+   1. V části **zvolit akci**zadejte do vyhledávacího pole `response` jako filtr. V seznamu akce vyberte akci **reakce** .
 
 1. Do vlastnosti **tělo** akce odpovědi přidejte token, který představuje parametr, který jste zadali v relativní cestě triggeru.
 
-   Předpokládejme například, že chcete vrátit `Postal Code: {postalCode}`akci odpovědi.
+   Předpokládejme například, že chcete vrátit akci odpovědi `Postal Code: {postalCode}` .
 
-   1. Do vlastnosti **tělo** zadejte `Postal Code: ` mezeru. Umístěte kurzor do pole pro úpravy tak, aby seznam dynamického obsahu zůstal otevřený.
+   1. Do vlastnosti **tělo** zadejte mezeru `Postal Code: ` . Umístěte kurzor do pole pro úpravy tak, aby seznam dynamického obsahu zůstal otevřený.
 
    1. V seznamu dynamického obsahu vyberte v části **při přijetí požadavku HTTP** možnost token **PSČ** .
 
@@ -252,7 +255,7 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
    `https://prod-07.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-1. Pokud chcete otestovat vyvolaný koncový bod, zkopírujte aktualizovanou adresu URL zpětného volání z triggeru žádosti, vložte adresu URL `{postalCode}` do jiného okna prohlížeče `123456`, nahraďte adresu URL řetězcem a stiskněte klávesu ENTER.
+1. Pokud chcete otestovat vyvolaný koncový bod, zkopírujte aktualizovanou adresu URL zpětného volání z triggeru žádosti, vložte adresu URL do jiného okna prohlížeče, nahraďte adresu `{postalCode}` URL řetězcem `123456` a stiskněte klávesu ENTER.
 
    Prohlížeč vrátí odpověď s tímto textem:`Postal Code: 123456`
 
@@ -260,7 +263,7 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Volání aplikace logiky prostřednictvím adresy URL koncového bodu
 
-Po vytvoření koncového bodu můžete aktivovat aplikaci logiky odesláním požadavku HTTPS `POST` na úplnou adresu URL koncového bodu. Logic Apps mají integrovanou podporu koncových bodů s přímým přístupem.
+Po vytvoření koncového bodu můžete aktivovat aplikaci logiky odesláním `POST` požadavku https na úplnou adresu URL koncového bodu. Logic Apps mají integrovanou podporu koncových bodů s přímým přístupem.
 
 <a name="generated-tokens"></a>
 
@@ -268,7 +271,7 @@ Po vytvoření koncového bodu můžete aktivovat aplikaci logiky odesláním po
 
 Když v triggeru požadavku zadáte schéma JSON, návrhář aplikace logiky vygeneruje tokeny pro vlastnosti v tomto schématu. Tyto tokeny pak můžete použít k předávání dat prostřednictvím pracovního postupu aplikace logiky.
 
-Například pokud přidáte další vlastnosti, například `"suite"`, do schématu JSON, budou tokeny pro tyto vlastnosti k dispozici pro použití v pozdějších krocích pro vaši aplikaci logiky. Toto je kompletní schéma JSON:
+Například pokud přidáte další vlastnosti, například `"suite"` , do schématu JSON, budou tokeny pro tyto vlastnosti k dispozici pro použití v pozdějších krocích pro vaši aplikaci logiky. Toto je kompletní schéma JSON:
 
 ```json
    {
@@ -302,7 +305,7 @@ Například pokud přidáte další vlastnosti, například `"suite"`, do schém
 
 Pracovní postupy můžete v aplikaci logiky vnořovat přidáním dalších aplikací logiky, které můžou přijímat požadavky. Pokud chcete zahrnout tyto Logic Apps, postupujte takto:
 
-1. V kroku, kde chcete zavolat jinou aplikaci logiky, vyberte **Nový krok** > **přidat akci**.
+1. V kroku, kde chcete zavolat jinou aplikaci logiky, vyberte **Nový krok**  >  **přidat akci**.
 
 1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `logic apps` jako filtr. V seznamu akce vyberte **možnost zvolit pracovní postup Logic Apps**.
 
@@ -316,7 +319,7 @@ Pracovní postupy můžete v aplikaci logiky vnořovat přidáním dalších apl
 
 ## <a name="reference-content-from-an-incoming-request"></a>Odkazování na obsah z příchozího požadavku
 
-Pokud je `application/json`typ obsahu příchozího požadavku, můžete odkazovat na vlastnosti v příchozím požadavku. V opačném případě se tento obsah považuje za jednu binární jednotku, kterou můžete předat jiným rozhraním API. Chcete-li odkazovat na tento obsah v rámci pracovního postupu vaší aplikace logiky, je nutné nejprve tento obsah převést.
+Pokud je typ obsahu příchozího požadavku `application/json` , můžete odkazovat na vlastnosti v příchozím požadavku. V opačném případě se tento obsah považuje za jednu binární jednotku, kterou můžete předat jiným rozhraním API. Chcete-li odkazovat na tento obsah v rámci pracovního postupu vaší aplikace logiky, je nutné nejprve tento obsah převést.
 
 Například Pokud předáváte obsah, který je `application/xml` typu, můžete použít [ `@xpath()` výraz](../logic-apps/workflow-definition-language-functions-reference.md#xpath) k provedení extrakce XPath nebo použijte [ `@json()` výraz](../logic-apps/workflow-definition-language-functions-reference.md#json) pro převod XML na JSON. Přečtěte si další informace o práci s podporovanými [typy obsahu](../logic-apps/logic-apps-content-type.md).
 
@@ -345,7 +348,7 @@ U vnořených logických aplikací pokračuje nadřazená aplikace logiky na odp
 
 ### <a name="construct-the-response"></a>Sestavit odpověď
 
-V těle odpovědi můžete zahrnout více hlaviček a libovolného typu obsahu. Například hlavička této odpovědi určuje, že typ obsahu odpovědi je `application/json` a že tělo obsahuje hodnoty vlastností `town` a `postalCode` , které jsou založené na schématu JSON popsané dříve v tomto tématu pro aktivační událost požadavku.
+V těle odpovědi můžete zahrnout více hlaviček a libovolného typu obsahu. Například hlavička této odpovědi určuje, že typ obsahu odpovědi je `application/json` a že tělo obsahuje hodnoty `town` vlastností a, které jsou `postalCode` založené na schématu JSON popsané dříve v tomto tématu pro aktivační událost požadavku.
 
 ![Poskytnout obsah odpovědi pro akci odpovědi HTTPS](./media/logic-apps-http-endpoint/content-for-response-action.png)
 
@@ -354,7 +357,7 @@ Odpovědi mají tyto vlastnosti:
 | Property (zobrazení) | Property (JSON) | Popis |
 |--------------------|-----------------|-------------|
 | **Stavový kód** | `statusCode` | Stavový kód HTTPS, který se má použít v odpovědi na příchozí požadavek. Tento kód může být libovolný platný stavový kód, který začíná na 2xx, 4xx nebo 5xx. Nicméně stavové kódy 3xx nejsou povoleny. |
-| **Záhlaví** | `headers` | Jedna nebo více hlaviček, které mají být zahrnuty do odpovědi |
+| **Hlavičky** | `headers` | Jedna nebo více hlaviček, které mají být zahrnuty do odpovědi |
 | **Text** | `body` | Objekt textu, který může být řetězec, objekt JSON nebo i binární obsah, na který odkazuje předchozí krok |
 ||||
 

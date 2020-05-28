@@ -60,7 +60,7 @@ Když vytváříte nový cluster Spark, můžete jako výchozí úložiště clu
 | Azure Blob Storage (zabezpečení) | **wasbs:**//URL/ | **Standard** | Ano | Přechodný cluster |
 | Azure Data Lake Storage Gen2| **ABFS:**//URL/ | **Zrychlení** | Ano | Přechodný cluster |
 | Azure Data Lake Storage Gen 1| **ADL:**//URL/ | **Zrychlení** | Ano | Přechodný cluster |
-| Místní HDFS | **HDFS:**//URL/ | **Způsobem** | No | Interaktivní cluster 24/7 |
+| Místní HDFS | **HDFS:**//URL/ | **Způsobem** | Ne | Interaktivní cluster 24/7 |
 
 Úplný popis možností úložiště najdete v tématu [porovnání možností úložiště pro použití s clustery Azure HDInsight](../hdinsight-hadoop-compare-storage-options.md).
 

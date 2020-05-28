@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1f19d258531e5368238cba72c986aede3f4a64ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c22168aade11bbba66682efea0e2f5a1fcc2ac1f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80130842"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021496"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – požadavky na zabezpečení při přesunu dat
 
@@ -149,7 +149,7 @@ V podniku je **podniková brána firewall** provozována v centrálním směrova
 
 Následující tabulka obsahuje požadavky na **Odchozí porty** a domény pro **podnikovou bránu firewall**.
 
-| Názvy domén | Odchozí porty | Popis |
+| Názvy domén | Odchozí porty | Description |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Vyžadovaná bránou pro připojení k pohybovým službám dat v Data Factory |
 | `*.core.windows.net` | 443 | Používá se bránou k připojení k Azure Storage účtu při použití funkce [dvoufázové kopírování](data-factory-copy-activity-performance.md#staged-copy) . | 
@@ -162,7 +162,7 @@ Následující tabulka obsahuje požadavky na **Odchozí porty** a domény pro *
 
 Následující tabulka uvádí požadavky na **porty** pro **bránu Windows Firewall**.
 
-| Příchozí porty | Popis | 
+| Příchozí porty | Description | 
 | ------------- | ----------- | 
 | 8050 (TCP) | Vyžaduje aplikaci Správce přihlašovacích údajů k bezpečnému nastavení přihlašovacích údajů pro místní úložiště dat v bráně. | 
 
@@ -173,7 +173,7 @@ Některá úložiště dat v cloudu vyžadují také seznam povolených IP adres
 
 Následující cloudové úložiště dat vyžaduje seznam povolených IP adres počítače brány. Některá z těchto úložišť dat nemusí standardně vyžadovat povolenou IP adresu. 
 
-- [Azure SQL Database](../../sql-database/sql-database-firewall-configure.md) 
+- [Azure SQL Database](../../azure-sql/database/firewall-configure.md) 
 - [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)

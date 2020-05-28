@@ -43,9 +43,9 @@ Klíčovými součástmi transakční replikace jsou **Vydavatel**, **distributo
 
 | Role | Azure SQL Database | Spravovaná instance Azure SQL |
 | :----| :------------- | :--------------- |
-| **Publisher** | Ne | Ano |
-| **Rozdělovač** | Ne | Ano|
-| **Předplatitel pro vyžádání obsahu** | Ne | Ano|
+| **Publisher** | No | Ano |
+| **Rozdělovač** | No | Ano|
+| **Předplatitel pro vyžádání obsahu** | No | Ano|
 | **Předplatitel nabízených oznámení**| Ano | Ano|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -76,7 +76,7 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 | [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
 | [**Sloučit replikaci**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Ne | Ne|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Ne | Ne|
-| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Ne | Ano|
+| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Ano|
 | [**Odběry, které by možné aktualizovat**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Ne | Ne|
 | &nbsp; | &nbsp; | &nbsp; |
 

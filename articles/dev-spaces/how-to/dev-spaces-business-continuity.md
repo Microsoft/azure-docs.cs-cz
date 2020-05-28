@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Naučte se používat Azure Dev Spaces a služby Azure Kubernetes k zajištění kontinuity podnikových aplikací a příprava na zotavení po havárii.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78295823"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996920"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Provozní kontinuita a zotavení po havárii v Azure Dev Spaces
 
@@ -26,14 +26,6 @@ Azure Dev Spaces je funkce služby Azure Kubernetes Service (AKS). Měli byste s
 Povolením vývojových prostorů v clusterech AKS v různých oblastech můžete dál používat vývojové prostory hned po selhání oblasti Azure.
 
 Obecné informace o nasazeních AKS ve více oblastech najdete v tématu [Plánování nasazení ve více oblastech](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) .
-
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>Povolit vývojářské prostory prostřednictvím Azure Portal
-
-Vyberte položku nabídky **vývojové prostory** v části nastavení každého clusteru v Azure Portal. Pak zvolte možnost Povolit vývojové prostory a uložit.
-
-![Povolení vývojových prostorů prostřednictvím Azure Portal](../media/common/enable-dev-spaces.jpg)
-
-Tento postup opakujte pro každý cluster.
 
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>Povolit vývojářské prostory prostřednictvím Azure CLI
 
@@ -88,9 +80,9 @@ Opakujte tyto kroky pro všechny ostatní projekty nakonfigurované na použití
 
 ## <a name="access-a-service-on-a-backup-cluster"></a>Přístup ke službě na záložním clusteru
 
-Pokud jste službu nakonfigurovali tak, aby používala veřejný název DNS, bude mít služba jinou adresu URL, pokud ji spustíte na záložním clusteru. Veřejné názvy DNS jsou vždycky ve formátu `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. Pokud přepnete na jiný cluster, identifikátor GUID clusteru, případně se změna oblasti změní.
+Pokud jste službu nakonfigurovali tak, aby používala veřejný název DNS, bude mít služba jinou adresu URL, pokud ji spustíte na záložním clusteru. Veřejné názvy DNS jsou vždycky ve formátu `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io` . Pokud přepnete na jiný cluster, identifikátor GUID clusteru, případně se změna oblasti změní.
 
-Pro vývojové prostory se vždycky zobrazuje správná adresa URL pro službu, `azds up`Pokud je spuštěná, nebo v okně výstup v aplikaci Visual Studio v části **Azure dev Spaces**.
+Pro vývojové prostory se vždycky zobrazuje správná adresa URL pro službu, pokud je spuštěná `azds up` , nebo v okně výstup v aplikaci Visual Studio v části **Azure dev Spaces**.
 
 Adresu URL můžete najít také spuštěním `azds list-uris` příkazu:
 ```

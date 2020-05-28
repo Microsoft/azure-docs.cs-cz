@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bd6f04ca7e24e380ad657f967284704ad613375a
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856071"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996393"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -20,7 +20,7 @@ Azure Application Gateway se skládá z několika komponent, které můžete nak
 
 ![Graf Flow komponent Application Gateway](./media/configuration-overview/configuration-overview1.png)
 
-Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. První dva jsou naslouchací procesy pro více webů pro `http://acme.com/*` a `http://fabrikam.com/*`v uvedeném pořadí. Naslouchat na portu 80. Třetí je základní naslouchací proces, který má komplexní ukončení služby TLS (Transport Layer Security), dříve označované jako ukončení SSL (Secure Sockets Layer) (SSL).
+Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. První dva jsou naslouchací procesy pro více webů pro `http://acme.com/*` a v `http://fabrikam.com/*` uvedeném pořadí. Naslouchat na portu 80. Třetí je základní naslouchací proces, který má komplexní ukončení služby TLS (Transport Layer Security), dříve označované jako ukončení SSL (Secure Sockets Layer) (SSL).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -219,14 +219,12 @@ Když vytváříte Aplikační bránu pomocí Azure Portal, vytvoříte výchoz�
 
 Když vytvoříte pravidlo, zvolíte mezi [ *základními* a *založenými na cestách*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules).
 
-- Pokud chcete před všemi požadavky na přiřazený naslouchací proces (například *blog<i></i>. contoso.com/\*)* na jeden fond back-end, vyberte základní.
+- Pokud chcete před všemi požadavky na přiřazený naslouchací proces (například *blog <i></i> . contoso.com/ \* )* na jeden fond back-end, vyberte základní.
 - Pokud chcete směrovat požadavky od konkrétních cest URL ke konkrétním fondům back-endu, vyberte na základě cesty. Vzor cesty je použit pouze pro cestu k adrese URL, nikoli k parametrům dotazu.
 
 #### <a name="order-of-processing-rules"></a>Pořadí pravidel zpracování
 
-V případě SKU V1 se porovnávání vzorů příchozích požadavků zpracovává v pořadí, v jakém jsou cesty uvedeny v mapě cesty URL pravidla založeného na cestě. Pokud požadavek odpovídá vzoru ve dvou nebo více cestách v mapě cesty, cesta uvedená jako první je shodná. A požadavek se přepošle na back-end, který je přidružený k této cestě.
-
-V případě SKU v2 je přesnou shodou v mapě cesty URL přesná shoda vyšší Priorita než pořadí cest. Pokud požadavek odpovídá vzoru ve dvou nebo více cestách, požadavek se předá do back-endu přidruženého k cestě, která přesně odpovídá požadavku. Pokud cesta v příchozím požadavku neodpovídá přesně žádné cestě v mapě, zpracovává se porovnávání vzorů žádosti v seznamu pořadí mapy cest pro pravidlo na základě cesty.
+V případě SKU V1 a V2 se porovnávání vzorů příchozích požadavků zpracovává v pořadí, v jakém jsou cesty uvedeny v mapě cesty URL pravidla založeného na cestě. Pokud požadavek odpovídá vzoru ve dvou nebo více cestách v mapě cesty, cesta uvedená jako první je shodná. A požadavek se přepošle na back-end, který je přidružený k této cestě.
 
 ### <a name="associated-listener"></a>Přidružený naslouchací proces
 
@@ -250,7 +248,7 @@ Pro pravidlo založené na cestách přidejte více nastavení HTTP back-endu, k
 
 ### <a name="redirection-setting"></a>Nastavení přesměrování
 
-Pokud je přesměrování nakonfigurováno pro základní pravidlo, všechny požadavky na přidruženém naslouchací službě budou přesměrovány do cíle. Toto je *globální* přesměrování. Pokud je přesměrování nakonfigurováno pro pravidlo na základě cesty, budou přesměrovány pouze požadavky v určité oblasti lokality. Příkladem je oblast nákupního košíku, která se označuje *jako\*/Cart/*. Toto je přesměrování *na základě cest* .
+Pokud je přesměrování nakonfigurováno pro základní pravidlo, všechny požadavky na přidruženém naslouchací službě budou přesměrovány do cíle. Toto je *globální* přesměrování. Pokud je přesměrování nakonfigurováno pro pravidlo na základě cesty, budou přesměrovány pouze požadavky v určité oblasti lokality. Příkladem je oblast nákupního košíku, která se označuje *jako \* /Cart/*. Toto je přesměrování *na základě cest* .
 
 Další informace o přesměrování najdete v tématu [Přehled přesměrování Application Gateway](redirect-overview.md).
 
@@ -378,7 +376,7 @@ U vlastní domény, jejíž existující vlastní název DNS je namapovaný na s
 
 Tato funkce nahrazuje hlavičku *hostitele* v příchozím požadavku na aplikační bráně zadaným názvem hostitele.
 
-Pokud je například v nastavení **název hostitele** zadán parametr`https://appgw.eastus.cloudapp.azure.com/path1` *www.contoso.com* , původní požadavek * se změní na *`https://www.contoso.com/path1` při přeposílání požadavku na back-end Server.
+Pokud je například v nastavení **název hostitele** zadán parametr *www.contoso.com* , původní požadavek * `https://appgw.eastus.cloudapp.azure.com/path1` se změní na * `https://www.contoso.com/path1` při přeposílání požadavku na back-end Server.
 
 ## <a name="back-end-pool"></a>Back-endový fond
 
