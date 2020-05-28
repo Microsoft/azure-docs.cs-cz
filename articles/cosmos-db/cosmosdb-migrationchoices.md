@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 34698a215477abdd7d68c3dfe050657ecf049690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 281cdea42975172b7e2366ab5d3e1606f61d5025
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984891"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020536"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Možnosti migrace místních nebo cloudových dat na Azure Cosmos DB
 
@@ -22,7 +22,7 @@ Data z různých zdrojů dat můžete načítat do Azure Cosmos DB. Kromě toho,
 Následující faktory určují, jakým způsobem Nástroj pro migraci zvolíte:
 * **Online migrace z offline**režimu: mnoho nástrojů pro migraci poskytuje cestu jenom pro jednorázovou migraci. To znamená, že aplikace, které přistupují k databázi, můžou nastat po určitou dobu výpadku. Některá řešení migrace poskytují způsob, jak provést migraci za provozu, kde je nastaven kanál replikace mezi zdrojem a cílem.
 
-* **Zdroj dat**: existující data můžou být v různých zdrojích dat, jako je Oracle DB2, DataStax Cassanda, Azure SQL Server, PostgreSQL atd. Data mohou být také v existujícím účtu Azure Cosmos DB a cílem migrace je změnit datový model nebo znovu rozdělit data v kontejneru s jiným klíčem oddílu.
+* **Zdroj dat**: existující data můžou být v různých zdrojích dat, jako je Oracle DB2, DataStax Cassanda, Azure SQL Database, PostgreSQL atd. Data mohou být také v existujícím účtu Azure Cosmos DB a cílem migrace je změnit datový model nebo znovu rozdělit data v kontejneru s jiným klíčem oddílu.
 
 * **Rozhraní Azure Cosmos DB API**: pro rozhraní SQL api v Azure Cosmos DB existuje řada nástrojů vyvinutých týmem Azure Cosmos DB, které pomáhají v různých scénářích migrace. Všechna ostatní rozhraní API mají svou vlastní specializovanou sadu nástrojů vyvinutých a spravovaných komunitou. Vzhledem k tomu, že Azure Cosmos DB podporuje tato rozhraní API na úrovni přenosového protokolu, tyto nástroje by měly fungovat tak, jak jsou, při migraci dat do Azure Cosmos DB. Můžou ale vyžadovat vlastní zpracování omezení, protože tento koncept je specifický pro Azure Cosmos DB.
 

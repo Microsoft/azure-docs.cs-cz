@@ -11,16 +11,14 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 3275a372e496b79da2c9f31258f557389c5b1ee1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3da51d1e08676d2794c6e95e7ffb359aff26084a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209362"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118409"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webových služeb Azure Machine Learning Studio (Classic), které používají moduly importu a exportu dat
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Při vytváření prediktivní experimentu obvykle přidáte vstup a výstup webové služby. Při nasazení experimentu mohou uživatelé odesílat a přijímat data z webové služby prostřednictvím vstupů a výstupů. U některých aplikací mohou být data spotřebitele k dispozici z datového kanálu nebo již nacházejí v externím zdroji dat, jako je například úložiště objektů BLOB v Azure. V těchto případech nepotřebují číst a zapisovat data pomocí vstupů a výstupů webové služby. Můžou místo toho použít službu Batch Execution Service (BES) ke čtení dat ze zdroje dat pomocí modulu import dat a zápis výsledků bodování do jiného umístění dat pomocí modulu export dat.
 
@@ -101,7 +99,7 @@ Nasazení jako klasické webové služby a vytvoření aplikace pro její využ�
 2. Po dokončení běhu klikněte na **nasadit webovou službu** a vyberte **nasadit webovou službu [Classic]**.
 3. Na řídicím panelu webové služby Najděte svůj klíč rozhraní API. Zkopírujte a uložte ho pro pozdější použití.
 4. V tabulce **výchozích koncových bodů** klikněte na odkaz **spuštění dávky** a otevřete stránku s usnadněníem rozhraní API.
-5. V aplikaci Visual Studio vytvořte konzolovou aplikaci v jazyce c#: **Nový** > **projekt** > **Visual C#** > **Windows Classic Desktop** > **Konzolová aplikace (.NET Framework)**.
+5. V aplikaci Visual Studio vytvořte konzolovou aplikaci v jazyce c#: **Nový**  >  **projekt**  >  **Visual C#**  >  **Windows Classic Desktop**  >  **Konzolová aplikace (.NET Framework)**.
 6. Na stránce s nápovědě k rozhraní API vyhledejte část **vzorový kód** v dolní části stránky.
 7. Zkopírujte a vložte ukázkový kód C# do souboru Program.cs a odeberte všechny odkazy na úložiště objektů BLOB.
 8. Aktualizujte hodnotu proměnné *apiKey* pomocí klíče rozhraní API, který jste uložili dříve.
@@ -130,7 +128,7 @@ Nasazení jako nové webové služby a vytvoření aplikace pro její využívá
 3. Na stránce nasazení experimentu zadejte název vaší webové služby a vyberte cenový tarif a klikněte na **nasadit**.
 4. Na stránce **rychlý Start** klikněte na možnost **spotřebovat**.
 5. V části **vzorový kód** klikněte na **Batch**.
-6. V aplikaci Visual Studio vytvořte konzolovou aplikaci v jazyce c#: **Nový** > **projekt** > **Visual C#** > **Windows Classic Desktop** > **Konzolová aplikace (.NET Framework)**.
+6. V aplikaci Visual Studio vytvořte konzolovou aplikaci v jazyce c#: **Nový**  >  **projekt**  >  **Visual C#**  >  **Windows Classic Desktop**  >  **Konzolová aplikace (.NET Framework)**.
 7. Zkopírujte ukázkový kód C# a vložte ho do souboru Program.cs.
 8. Aktualizujte hodnotu proměnné *apiKey* pomocí **primárního klíče** , který je umístěný v části **informace o základní spotřebě** .
 9. Vyhledejte deklaraci *scoreRequest* a aktualizujte hodnoty parametrů webové služby, které jsou předány do datových modulů *Import dat* a *Export* . V takovém případě použijete původní dotaz, ale nadefinujete nový název tabulky.

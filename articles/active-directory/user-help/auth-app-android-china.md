@@ -50,12 +50,12 @@ Místo používání nabízených oznámení pro službu Multi-Factor Authentica
 
 Microsoft Authenticator funkce | Dostupnost v Číně
 ------------------------------- | ---------------------
-Registrace MFA pomocí nabízených oznámení | No
-Již existující účet MFA ověřování identity pomocí nabízených oznámení | No
+Registrace MFA pomocí nabízených oznámení | Ne
+Již existující účet MFA ověřování identity pomocí nabízených oznámení | Ne
 Již existující účet MFA, který provádí ruční kontrolu oznámení | Ano
 Registrace MFA/ověřování pouze pomocí ověřovacích kódů TOTP/ověřování | Ano
-Registrace přihlášení k telefonu | No
-Existující přihlášení k telefonu pomocí nabízených oznámení | No
+Registrace přihlášení k telefonu | Ne
+Existující přihlášení k telefonu pomocí nabízených oznámení | Ne
 Stávající ověřování přihlášení k telefonu pomocí ruční kontroly žádostí o ověření | Ano
 
 ## <a name="next-steps"></a>Další kroky

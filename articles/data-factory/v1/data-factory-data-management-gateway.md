@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1340c205477b256e3d96ff7ccacb64e575725c2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76f8b741eb49949bb59ab5e1a4b7279f84b77111
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065409"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021564"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -51,7 +51,7 @@ Brána pro správu dat nabízí následující možnosti:
 ### <a name="command-flow-and-data-flow"></a>Tok příkazů a tok dat
 Když použijete aktivitu kopírování ke kopírování dat mezi místním prostředím a cloudem, aktivita používá bránu k přenosu dat z místního zdroje dat do cloudu a naopak.
 
-Zde je tok dat vysoké úrovně pro a shrnutí kroků pro kopírování pomocí služby data Gateway: ![tok dat pomocí brány](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
+Zde je tok dat vysoké úrovně pro a shrnutí kroků pro kopírování pomocí služby data Gateway: ![ tok dat pomocí brány](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
 
 1. Vývojář dat vytvoří bránu pro Azure Data Factory pomocí rutiny [Azure Portal](https://portal.azure.com) nebo [PowerShellu](https://docs.microsoft.com/powershell/module/az.datafactory/).
 2. Vývojář dat vytvoří propojenou službu pro místní úložiště dat zadáním brány. V rámci nastavení propojené služby používá vývojář dat nastavení aplikace s přihlašovacími údaji k zadání typů ověřování a přihlašovacích údajů. Dialogové okno Nastavení přihlašovacích údajů komunikuje s úložištěm dat a otestuje připojení a bránu pro uložení přihlašovacích údajů.
@@ -103,7 +103,7 @@ Bránu pro správu dat je možné nainstalovat následujícími způsoby:
 10. Na stránce **zaregistrovat bránu** **Správa dat brány Configuration Manager** na vašem počítači spusťte následující kroky:
     1. Vložte klíč do textu.
     2. Volitelně můžete kliknutím na **Zobrazit klíč brány** zobrazit text klíče.
-    3. Klikněte na **zaregistrovat**.
+    3. Klikněte na **Zaregistrovat**.
 
 ### <a name="register-gateway-using-key"></a>Registrovat bránu pomocí klíče
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>Pokud jste na portálu ještě nevytvořili logickou bránu
@@ -140,7 +140,7 @@ Je potřeba vzít v úvahu dvě brány firewall: **podniková brána firewall** 
 
 Na úrovni podnikové brány firewall je potřeba nakonfigurovat následující domény a odchozí porty:
 
-| Názvy domén | Porty | Popis |
+| Názvy domén | Porty | Description |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Používá se pro komunikaci s back-end služby pro přesun dat. |
 | *.core.windows.net |443 |Používá se pro připravené kopírování pomocí objektu blob Azure (Pokud je nakonfigurované).|
@@ -161,7 +161,7 @@ Zajistěte, aby byla pravidla brány firewall správně povolená na podnikovém
 Pokud například chcete kopírovat z **místního úložiště dat do jímky Azure SQL Database nebo jímky Azure SQL Data Warehouse**, proveďte následující kroky:
 
 * Povolí odchozí komunikaci **TCP** na portu **1433** pro bránu firewall systému Windows i pro podnikovou bránu firewall.
-* Nakonfigurujte nastavení brány firewall serveru SQL Azure tak, aby se do seznamu povolených IP adres přidala IP adresa počítače brány.
+* Nakonfigurujte nastavení brány firewall logického SQL serveru tak, aby se do seznamu povolených IP adres přidala IP adresa počítače brány.
 
 > [!NOTE]
 > Pokud brána firewall nepovoluje odchozí port 1433, nemůže brána získat přímý přístup k Azure SQL. V takovém případě můžete použít [dvoufázové kopírování](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) pro SQL Azure Database/SQL Azure DW. V tomto scénáři budete pro přesun dat vyžadovat jenom HTTPS (port 443).
@@ -204,8 +204,8 @@ Proxy server HTTP můžete zobrazit a aktualizovat pomocí nástroje Configurati
 ### <a name="configure-proxy-server-settings"></a>Konfigurace nastavení proxy server
 Pokud pro proxy server HTTP vyberete možnost **použít systémové proxy** Server, brána použije nastavení proxy v souboru diahost. exe. config a diawp. exe. config. Pokud v souboru diahost. exe. config a diawp. exe. config není zadaný žádný proxy server, brána se připojí ke cloudové službě přímo bez přechodu přes proxy server. Následující postup poskytuje pokyny k aktualizaci souboru diahost. exe. config.
 
-1. V Průzkumníku souborů proveďte bezpečnou kopii *C\\\\\\: Program Files Microsoft Správa dat Gateway\\2,0\\Shared\\diahost. exe. config* , aby se zálohoval původní soubor.
-2. Spusťte program Notepad. exe spuštěný jako správce a otevřete textový *soubor C\\\\: program\\Files Microsoft Správa dat\\brána\\2,0\\Shared diahost. exe. config*. Najdete výchozí značku pro system.net, jak je znázorněno v následujícím kódu:
+1. V Průzkumníku souborů proveďte bezpečnou kopii *C: \\ \\ Program Files \\ Microsoft Správa dat Gateway \\ 2,0 \\ Shared \\ diahost. exe. config* , aby se zálohoval původní soubor.
+2. Spusťte program Notepad. exe spuštěný jako správce a otevřete textový soubor *C: \\ \\ Program Files \\ Microsoft Správa dat brána \\ 2,0 \\ Shared \\ diahost. exe. config*. Najdete výchozí značku pro system.net, jak je znázorněno v následujícím kódu:
 
     ```
     <system.net>
@@ -279,7 +279,7 @@ Funkci Automatické aktualizace můžete zakázat nebo povolit provedením násl
 
 [Pro bránu s jedním uzlem]
 1. Na počítači brány spusťte prostředí Windows PowerShell.
-2. Přepněte do složky *C:\\\\Program Files\\Microsoft Integration runtime\\3,0\\PowerShellScript\\ * .
+2. Přepněte do složky *C: \\ \\ Program Files \\ Microsoft Integration runtime \\ 3,0 \\ PowerShellScript \\ * .
 3. Spuštěním následujícího příkazu vypněte funkci Automatické aktualizace vypnuto (zakázat).
 
     ```powershell
@@ -292,7 +292,7 @@ Funkci Automatické aktualizace můžete zakázat nebo povolit provedením násl
     ```
    [Vysoce dostupná a škálovatelná brána s více uzly](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Na počítači brány spusťte prostředí Windows PowerShell.
-2. Přepněte do složky *C:\\\\Program Files\\Microsoft Integration runtime\\3,0\\PowerShellScript\\ * .
+2. Přepněte do složky *C: \\ \\ Program Files \\ Microsoft Integration runtime \\ 3,0 \\ PowerShellScript \\ * .
 3. Spuštěním následujícího příkazu vypněte funkci Automatické aktualizace vypnuto (zakázat).
 
     Pro bránu s funkcí vysoké dostupnosti se vyžaduje extra parametr AuthKey.
@@ -309,7 +309,7 @@ Funkci Automatické aktualizace můžete zakázat nebo povolit provedením násl
 Jakmile bránu nainstalujete, můžete spustit Správa dat Configuration Manager brány jedním z následujících způsobů:
 
 1. V okně **hledání** zadejte pro přístup k tomuto nástroji **Správa dat bránu** .
-2. Spusťte spustitelný soubor *ConfigManager. exe* ve složce: *\\\\C: Program Files\\Microsoft Správa dat Gateway\\2,0\\Shared*.
+2. Spusťte spustitelný soubor *ConfigManager. exe* ve složce: *C: \\ \\ Program Files \\ Microsoft Správa dat Gateway \\ 2,0 \\ Shared*.
 
 ### <a name="home-page"></a>Domovská stránka
 Domovská stránka vám umožní provést následující akce:
@@ -362,11 +362,11 @@ V Azure Portal můžete na počítači brány Zobrazit snímek využití prostř
 
 Následující tabulka uvádí popisy sloupců v seznamu **uzly brány** :
 
-Vlastnost monitorování | Popis
+Vlastnost monitorování | Description
 :------------------ | :----------
-Název | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
+Name | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
 Status | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) .
-Version | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila).
+Verze | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila).
 Dostupná paměť | Dostupná paměť v uzlu brány Tato hodnota je snímkem téměř v reálném čase.
 Využití procesoru | Využití procesoru uzlu brány Tato hodnota je snímkem téměř v reálném čase.
 Sítě (za sekundu) | Využití sítě uzlu brány. Tato hodnota je snímkem téměř v reálném čase.
@@ -510,7 +510,7 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin Azure P
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. V Azure PowerShell přepněte do složky: *C\\\\: Program Files\\\\Microsoft Integration runtime 3,0\\PowerShellScript\\*. Spusťte *RegisterGateway. ps1* přidružený k místní proměnné **$Key** , jak je znázorněno v následujícím příkazu. Tento skript zaregistruje klientského agenta nainstalovaného na vašem počítači pomocí logické brány, kterou jste vytvořili dříve.
+1. V Azure PowerShell přepněte do složky: *C: \\ \\ Program Files \\ Microsoft Integration runtime \\ 3,0 \\ PowerShellScript \\ *. Spusťte *RegisterGateway. ps1* přidružený k místní proměnné **$Key** , jak je znázorněno v následujícím příkazu. Tento skript zaregistruje klientského agenta nainstalovaného na vašem počítači pomocí logické brány, kterou jste vytvořili dříve.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

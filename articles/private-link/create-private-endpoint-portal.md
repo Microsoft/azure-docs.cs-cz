@@ -7,18 +7,18 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 1bdc089bb89a732e329bf7d3ffd3d5b5c09ba408
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ef6d49c9046ba04bbac40ec9bf555e12d2faa8f6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637248"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021700"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure Portal
 
-Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač v Virtual Network Azure, SQL Database Server s privátním koncovým bodem Azure pomocí Azure Portal. Pak můžete z virtuálního počítače bezpečně přistupovat k serveru SQL Database.
+Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač v Virtual Network Azure, což je logický SQL Server s privátním koncovým bodem Azure pomocí Azure Portal. Pak můžete bezpečně přistupovat k SQL Database z virtuálního počítače.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -36,18 +36,18 @@ V této části budete muset v krocích níže nahradit následující parametry
 
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
-| **\<Resource-Group-Name>**  | myResourceGroup |
-| **\<název virtuální sítě>** | myVirtualNetwork          |
-| **\<název oblasti>**          | USA – středozápad    |
-| **\<IPv4 –>adresního prostoru**   | 10.1.0.0/16          |
-| **\<>názvů podsítí**          | mySubnet        |
-| **\<podsíť-adresa>rozsahu** | 10.1.0.0/24          |
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | USA – středozápad    |
+| **\<IPv4-address-space>**   | 10.1.0.0/16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit** > **Compute** > **virtuální počítač**Compute.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač**Compute.
 
 1. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
 
@@ -93,10 +93,11 @@ V této části budete muset v krocích níže nahradit následující parametry
 
 1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
 
-## <a name="create-a-sql-database-server"></a>Vytvoření serveru databáze SQL
-V této části vytvoříte server služby SQL Database v Azure. 
+## <a name="create-a-logical-sql-server"></a>Vytvoření logického SQL serveru
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit databáze prostředků** > **Databases** > **SQL Database**.
+V této části vytvoříte v Azure logický SQL Server. 
+
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit databáze prostředků**  >  **Databases**  >  **SQL Database**.
 
 1. V nástroji **vytvořit SQL Database – základy**zadejte nebo vyberte tyto informace:
 
@@ -127,7 +128,7 @@ V této části vytvoříte server služby SQL Database v Azure.
 
 V této části vytvoříte SQL Server a přidáte do něj privátní koncový bod. 
 
-1. V levém horním rohu obrazovky Azure Portal vyberte **vytvořit prostředek** > **sítě** > **privátní Link Center (Preview)**.
+1. V levém horním rohu obrazovky Azure Portal vyberte **vytvořit prostředek**  >  **sítě**  >  **privátní Link Center (Preview)**.
 2. V části **centrum privátních odkazů – přehled**na možnost **vytvořit privátní připojení ke službě**vyberte možnost **Spustit**.
 1. V **Vytvoření privátního koncového bodu (Preview) – základy**zadejte nebo vyberte tyto informace:
 
@@ -137,7 +138,7 @@ V této části vytvoříte SQL Server a přidáte do něj privátní koncový b
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **PODROBNOSTI INSTANCE** |  |
-    | Název | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
+    | Name | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
     |Oblast|Vyberte **WestCentralUS**.|
     |||
 5. Vyberte **Další: prostředek**.
@@ -185,7 +186,7 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
     1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
-        > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
@@ -193,7 +194,7 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
 
 1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
 
-## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Přístup k serveru SQL Database soukromě z virtuálního počítače
+## <a name="access-sql-database-privately-from-the-vm"></a>Přístup k SQL Database soukromě z virtuálního počítače
 
 1. Ve vzdálené ploše *myVM*otevřete PowerShell.
 
@@ -216,11 +217,11 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
     | ------- | ----- |
     | Typ serveru| Vyberte **Databázový stroj**.|
     | Název serveru| Vybrat *MyServer.Database.Windows.NET* |
-    | Uživatelské jméno | Zadejte uživatelské jméno username@servername , které se poskytuje během vytváření SQL serveru. |
+    | Uživatelské jméno | Zadejte uživatelské jméno, username@servername které se poskytuje během vytváření SQL serveru. |
     |Heslo |Zadejte heslo, které jste zadali během vytváření SQL serveru. |
     |Zapamatovat heslo|Vyberte **Ano**.|
     |||
-1. Vyberte **Connect** (Připojit).
+1. Vyberte **Připojit**.
 2. Procházet databáze z levé nabídky
 3. Volitelně Vytvoření nebo dotazování informací z MyDatabase.
 4. Zavřete připojení ke vzdálené ploše pro *myVm*. 
@@ -233,4 +234,4 @@ Až budete s použitím privátního koncového bodu, SQL serveru a virtuálníh
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili virtuální počítač ve virtuální síti, serveru služby SQL Database a privátním koncovém bodu pro privátní přístup. Připojili jste se k jednomu virtuálnímu počítači z Internetu a bezpečně komunikovali na serveru SQL Database pomocí privátního odkazu. Další informace o privátních koncových bodech najdete v tématu [co je privátní koncový bod Azure](private-endpoint-overview.md).
+V tomto rychlém startu jste vytvořili virtuální počítač ve virtuální síti, logickém SQL serveru a privátním koncovém bodu pro privátní přístup. Připojili jste se k jednomu virtuálnímu počítači z Internetu a zabezpečeně komunikovali SQL Database pomocí privátního odkazu. Další informace o privátních koncových bodech najdete v tématu [co je privátní koncový bod Azure](private-endpoint-overview.md).

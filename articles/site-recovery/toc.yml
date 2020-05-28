@@ -388,7 +388,7 @@
               href: service-updates-how-to.md
             - name: Odstranění trezoru
               href: delete-vault.md
-    - name: Podpora Site Recovery pro skupiny umístění bezkontaktní komunikace
+    - name: Site Recovery pro skupiny umístění bezkontaktní komunikace
       href: how-to-enable-replication-proximity-placement-groups.md
     - name: Zotavení po havárii pro aplikace
       items:

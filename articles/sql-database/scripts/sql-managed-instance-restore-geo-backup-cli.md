@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 1a46cb537892d4255fd274b5754ab8e8c0278308
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c6ae8d79ee40729f47a906561d6c8ae586765f5d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774459"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019839"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>Obnovení databáze spravované instance do jiné geografické oblasti pomocí rozhraní příkazového řádku
 
@@ -28,7 +28,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ### <a name="prerequisites"></a>Požadavky
 
-Existující dvojici spravovaných instancí najdete v tématu [použití rozhraní příkazového řádku Azure k vytvoření spravované instance Azure SQL Database](sql-database-create-configure-managed-instance-cli.md).
+Existující dvojici spravovaných instancí najdete v tématu [Vytvoření spravované instance Azure SQL pomocí](sql-database-create-configure-managed-instance-cli.md)rozhraní příkazového řádku Azure.
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -64,4 +64,4 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další ukázkové skripty rozhraní příkazového řádku pro službu SQL Database najdete v [dokumentaci ke službě Azure SQL Database](../sql-database-cli-samples.md).
+Další ukázkové skripty rozhraní příkazového řádku pro službu SQL Database najdete v [dokumentaci ke službě Azure SQL Database](../../azure-sql/database/az-cli-script-samples-content-guide.md).

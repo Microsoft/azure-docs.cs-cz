@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: e078893b3bbe0ef5661cd87bad62b320f78ceb5d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b81f1e49b2209d0a236f1fb453bb7fe679bb3608
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424857"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112758"
 ---
 # <a name="azure-synapse-analytics-sql-resource-consumption"></a>Spotřeba prostředků SQL ve službě Azure synapse Analytics
 
@@ -37,7 +37,7 @@ Výkon pro jednotky datového skladu je založen na těchto metrikách úloh dat
 
 - Jak rychle standardní dotaz na datové sklady může kontrolovat velký počet řádků a pak provádět komplexní agregace. Tato operace je v/v a náročná na výkon procesoru.
 - Jak rychle může datový sklad ingestovat data z Azure Storage objektů BLOB nebo Azure Data Lake. Tato operace je náročná na síť a využití procesoru.
-- Jak rychle příkaz [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL může zkopírovat tabulku. Tato operace zahrnuje čtení dat z úložiště, jejich distribuci napříč uzly zařízení a zpětný zápis do úložiště. Tato operace je náročná na procesor, v/v a na síť.
+- Jak rychle [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) příkaz T-SQL může zkopírovat tabulku. Tato operace zahrnuje čtení dat z úložiště, jejich distribuci napříč uzly zařízení a zpětný zápis do úložiště. Tato operace je náročná na procesor, v/v a na síť.
 
 Zvyšování DWU:
 
@@ -77,7 +77,7 @@ Při zvyšování počtu jednotek datového skladu lineárně roste výpočetní
 
 #### <a name="capacity-limits"></a>Omezení kapacity
 
-Každý SQL Server (například myserver.database.windows.net) má kvótu pro [databázovou jednotku (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , která umožňuje určit počet jednotek datového skladu. Další informace najdete v tématu [omezení kapacity správy úloh](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
+Každý SQL Server (například myserver.database.windows.net) má kvótu pro [databázovou jednotku (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , která umožňuje určit počet jednotek datového skladu. Další informace najdete v tématu [omezení kapacity správy úloh](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
 
 ### <a name="how-many-data-warehouse-units-do-i-need"></a>Kolik jednotek datového skladu potřebuji
 
@@ -106,7 +106,7 @@ Předdefinované role pro prostředky Azure, jako je Přispěvatel databáze SQL
 Chcete-li zobrazit aktuální nastavení DWU:
 
 1. Otevřete Průzkumník objektů systému SQL Server v aplikaci Visual Studio.
-2. Připojte se k hlavní databázi přidružené k logickému SQL Database serveru.
+2. Připojte se k hlavní databázi přidružené k logickému SQL serveru.
 3. Vyberte ze zobrazení dynamické správy sys. database_service_objectives. Zde naleznete příklad:
 
 ```sql
@@ -148,7 +148,7 @@ Pomocí T-SQL můžete zobrazit aktuální DWUsettings, změnit nastavení a pod
 
 Postup změny DWU:
 
-1. Připojte se k hlavní databázi přidružené k vašemu logickému SQL Database serveru.
+1. Připojte se k hlavní databázi přidružené k vašemu serveru.
 2. Použijte příkaz [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL. Následující příklad nastaví cíl na úrovni služby tak, aby DW1000c pro MySQLDW databáze.
 
 ```Sql
@@ -184,7 +184,7 @@ Nelze kontrolovat stav databáze pro operace škálování na více instancí po
 
 Postup kontroly stavu DWU změn:
 
-1. Připojte se k hlavní databázi přidružené k vašemu logickému SQL Database serveru.
+1. Připojte se k hlavní databázi přidružené k vašemu serveru.
 2. Odešlete následující dotaz pro kontrolu stavu databáze.
 
 ```sql

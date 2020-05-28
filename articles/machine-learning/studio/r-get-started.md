@@ -9,16 +9,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 665bb12c91c8d6a5a60fd8f60216f30131f34915
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2c481fc2f435695b4b99b86411a2fcca27e97ab4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982186"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117864"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Začínáme s Azure Machine Learning Studio (Classic) v R
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
 V tomto kurzu se naučíte, jak pomocí ML Studio (Classic) vytvořit, otestovat a spustit kód R. Na konci budete mít kompletní řešení předpovědi.  
@@ -37,7 +35,7 @@ Prognózování je široce zaměstnaná a poměrně užitečná analytická meto
 
 V tomto kurzu použijete produkci dojnic a data o cenách v Kalifornii, což zahrnuje měsíční informace o produkci několika mléčných produktů a cenu mléčného tuku, srovnávací komodita.
 
-Data použitá v tomto článku spolu se skripty jazyka R lze stáhnout z [MachineLearningSamples-poznámkových bloků/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples). Data v souboru `cadairydata.csv` byla původně syntetizovaná z informací, které jsou k dispozici na University [https://dairymarkets.com](https://dairymarkets.com)of Wisconsin v.
+Data použitá v tomto článku spolu se skripty jazyka R lze stáhnout z [MachineLearningSamples-poznámkových bloků/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples). Data v souboru `cadairydata.csv` byla původně syntetizovaná z informací, které jsou k dispozici na University of Wisconsin v [https://dairymarkets.com](https://dairymarkets.com) .
 
 
 
@@ -125,9 +123,9 @@ Pokud v tuto chvíli nerozumíte poslednímu řádku tohoto kódu, přečtěte s
 
 RStudio je široce používané integrované vývojové prostředí (IDE) pro R. Používám RStudio pro úpravy, testování a ladění kódu R použitého v této příručce. Po otestování a přípravě kódu R můžete jednoduše vyjmout a vložit z editoru RStudio do Machine Learning Studio (Classic) [spustit modul skriptu R][execute-r-script] .  
 
-Pokud nemáte na stolním počítači nainstalovaný programovací jazyk R, doporučujeme to udělat teď. Bezplatné stahování Open Source jazyka R je k dispozici v komplexní síti archivu R (CRAN) na adrese [https://www.r-project.org/](https://www.r-project.org/). K dispozici jsou soubory ke stažení pro Windows, Mac OS a Linux/UNIX. Vyberte okolní zrcadlo a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje širokou spoustu užitečných analýz a datových sad pro manipulaci s daty.
+Pokud nemáte na stolním počítači nainstalovaný programovací jazyk R, doporučujeme to udělat teď. Bezplatné stahování Open Source jazyka R je k dispozici v komplexní síti archivu R (CRAN) na adrese [https://www.r-project.org/](https://www.r-project.org/) . K dispozici jsou soubory ke stažení pro Windows, Mac OS a Linux/UNIX. Vyberte okolní zrcadlo a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje širokou spoustu užitečných analýz a datových sad pro manipulaci s daty.
 
-Pokud s RStudio začínáte, měli byste si stáhnout a nainstalovat desktopovou verzi. Soubory ke stažení RStudio pro Windows, Mac OS a Linux/UNIX najdete na adrese http://www.rstudio.com/products/RStudio/. Postupujte podle pokynů uvedených k instalaci RStudio na stolní počítač.  
+Pokud s RStudio začínáte, měli byste si stáhnout a nainstalovat desktopovou verzi. Soubory ke stažení RStudio pro Windows, Mac OS a Linux/UNIX najdete na adrese http://www.rstudio.com/products/RStudio/ . Postupujte podle pokynů uvedených k instalaci RStudio na stolní počítač.  
 
 Kurz Úvod do RStudio je k dispozici v [části použití prostředí IDE RStudio](https://support.rstudio.com/hc/sections/200107586-Using-RStudio).
 
@@ -218,7 +216,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> Azure Machine Learning Studio (Classic) zpracovává soubory ve formátu zip, jako kdyby byly v souboru src/Directory, takže je nutné názvy souborů pro tento název adresáře předponovat. Například pokud zip `yourfile.R` obsahuje soubory a `yourData.rdata` v kořenovém adresáři zip, budete je řešit jako `src/yourfile.R` a `src/yourData.rdata` při použití `source` a. `load`
+> Azure Machine Learning Studio (Classic) zpracovává soubory ve formátu zip, jako kdyby byly v souboru src/Directory, takže je nutné názvy souborů pro tento název adresáře předponovat. Například pokud zip obsahuje soubory `yourfile.R` a `yourData.rdata` v kořenovém adresáři zip, budete je řešit jako `src/yourfile.R` a `src/yourData.rdata` při použití `source` a `load` .
 
 Již jsme probrali načítání datových sad v [načtení datové](#loading)sady. Jakmile vytvoříte a otestujete skript R zobrazený v předchozí části, udělejte toto:
 
@@ -245,7 +243,7 @@ Již jsme probrali načítání datových sad v [načtení datové](#loading)sad
 
 1. Připojte výstup ikony **dat zip** ke vstupu **sady prostředků skriptu** [spustit modul skriptu jazyka R][execute-r-script] .
 
-1. Zadejte `source()` funkci s názvem souboru zip do okna Code pro modul [spouštění skriptu jazyka R][execute-r-script] . V mém zadaném `source("src/simpleplot.R")`případu  
+1. Zadejte `source()` funkci s názvem souboru zip do okna Code pro modul [spouštění skriptu jazyka R][execute-r-script] . V `source("src/simpleplot.R")` mém zadaném případu  
 
 1. Ujistěte se, že jste vybrali **Uložit**.
 
@@ -305,7 +303,7 @@ Tyto výsledky jsou převážně podle očekávání, přičemž 228 pozorován�
 
 #### <a name="dataset2"></a>Dataset2
 
-Chování vstupu Dataset2 je stejné jako u DataSet1.. Pomocí tohoto vstupu můžete do kódu R předat druhou obdélníkovou tabulku dat. Funkce `maml.mapInputPort(2)`s argumentem 2 se používá k předání těchto dat.  
+Chování vstupu Dataset2 je stejné jako u DataSet1.. Pomocí tohoto vstupu můžete do kódu R předat druhou obdélníkovou tabulku dat. Funkce `maml.mapInputPort(2)` s argumentem 2 se používá k předání těchto dat.  
 
 ### <a name="execute-r-script-outputs"></a>Spouštění výstupů skriptů R
 
@@ -359,7 +357,7 @@ Když jsou tabulková data načítána z externího zdroje na R, je vždy vhodn�
 
 Naštěstí je snadné převést jeden typ na jiný, pokud je mapování možné. Například nelze převést ' Nevada ' na číselnou hodnotu, ale lze jej převést na faktor (kategorií proměnná). V jiném příkladu můžete převést číslo 1 na znak 1 nebo faktor.  
 
-Syntaxe pro některý z těchto převodů je jednoduchá: `as.datatype()`. Tyto funkce pro převod typů zahrnují následující.
+Syntaxe pro některý z těchto převodů je jednoduchá: `as.datatype()` . Tyto funkce pro převod typů zahrnují následující.
 
 * `as.numeric()`
 * `as.character()`
@@ -503,7 +501,7 @@ Máme pro vás dobré zprávy! Získáte očekávané výsledky.
 
 Aby bylo možné vytvářet modely časových řad, bude vhodné mít sloupec, který obsahuje měsíce od začátku časové řady. Vytvoří se nový sloupec Month. Count.
 
-Abychom vám usnadnili uspořádání kódu, `num.month()`vytvoříme naši první jednoduchou funkci. Pak tuto funkci použijeme k vytvoření nového sloupce v dataframe. Nový kód je následující.
+Abychom vám usnadnili uspořádání kódu, vytvoříme naši první jednoduchou funkci `num.month()` . Pak tuto funkci použijeme k vytvoření nového sloupce v dataframe. Nový kód je následující.
 
 ```R
 ## Create a new column with the month count
@@ -559,7 +557,7 @@ Pokud se podíváte na hodnoty v souhrnech našeho dataframe, měla by se tady z
 
 Pro náš model prognózy používáme model multiplikativní pro vývoj a sezónní úpravu těchto dat. Transformace protokolu nám umožňuje použít lineární model a zjednodušit tento proces. Transformaci protokolu můžeme použít ve stejné funkci, kde se aplikuje násobitel.
 
-V následujícím kódu definujeme novou funkci, `log.transform()`a použijete ji na řádky obsahující číselné hodnoty. Funkce jazyka `Map()` R se používá pro použití `log.transform()` funkce na vybrané sloupce datového rámce. `Map()`je podobná `apply()` , ale umožňuje více než jednomu seznamu argumentů funkce. Všimněte si, že seznam násobitelů poskytuje druhý argument `log.transform()` funkci. `na.omit()` Funkce se používá jako bitová kopie, aby nedošlo k chybějícím nebo nedefinovaným hodnotám v dataframe.
+V následujícím kódu definujeme novou funkci, `log.transform()` a použijete ji na řádky obsahující číselné hodnoty. Funkce jazyka R `Map()` se používá pro použití `log.transform()` funkce na vybrané sloupce datového rámce. `Map()`je podobná, `apply()` ale umožňuje více než jednomu seznamu argumentů funkce. Všimněte si, že seznam násobitelů poskytuje druhý argument `log.transform()` funkci. `na.omit()`Funkce se používá jako bitová kopie, aby nedošlo k chybějícím nebo nedefinovaným hodnotám v dataframe.
 
 ```R
 log.transform <- function(invec, multiplier = 1) {
@@ -594,7 +592,7 @@ cadairydata[, 4:7] <- Map(log.transform, cadairydata[, 4:7], multipliers)
 cadairydata <- na.omit(cadairydata)  
 ```
 
-Ve `log.transform()` funkci je něco nového. Většina tohoto kódu kontroluje možné problémy s argumenty nebo řešení potíží s výjimkami, které mohou být stále v průběhu výpočtů. Pouze pár řádků tohoto kódu ve skutečnosti provádí výpočty.
+Ve funkci je něco nového `log.transform()` . Většina tohoto kódu kontroluje možné problémy s argumenty nebo řešení potíží s výjimkami, které mohou být stále v průběhu výpočtů. Pouze pár řádků tohoto kódu ve skutečnosti provádí výpočty.
 
 Cílem programování v obrannou linií je zabránit selhání jedné funkce, která brání v pokračování zpracování. Náhlé selhání dlouhotrvající analýzy může být pro uživatele poměrně frustrující. Aby k této situaci nedocházelo, je nutné zvolit výchozí návratové hodnoty, které omezují škodu na zpracování pro příjem dat. Také se vytvoří zpráva upozorňující uživatele, že došlo k nějakému problému.
 
@@ -602,7 +600,7 @@ Pokud se nepoužíváte k obrannou linií programování v jazyce R, může se s
 
 1. Je definován vektor čtyř zpráv. Tyto zprávy slouží ke sdělování informací o některých možných chybách a výjimkách, které mohou s tímto kódem nastat.
 2. Vrátím hodnotu NEDEF pro každý případ. Existuje mnoho dalších možností, které mohou mít méně vedlejších účinků. Mohl by vracet vektor nul nebo původní vstupní vektor, například.
-3. Kontroly jsou spouštěny na argumentech funkce. V každém případě, pokud je zjištěna chyba, je vrácena výchozí hodnota a zpráva je vytvořena `warning()` funkcí. Používám `warning()` místo `stop()` toho, aby se ukončilo provádění, přesně to, co se mi snažím zabránit. Všimněte si, že jsem tento kód napsal ve stylu procedurální, protože v tomto případě se jedná o funkční přístup, který je složitý a zakrývá se.
+3. Kontroly jsou spouštěny na argumentech funkce. V každém případě, pokud je zjištěna chyba, je vrácena výchozí hodnota a zpráva je vytvořena `warning()` funkcí. Používám místo toho, aby se `warning()` `stop()` ukončilo provádění, přesně to, co se mi snažím zabránit. Všimněte si, že jsem tento kód napsal ve stylu procedurální, protože v tomto případě se jedná o funkční přístup, který je složitý a zakrývá se.
 4. Výpočty protokolu jsou zabaleny `tryCatch()` tak, aby výjimky nezpůsobily náhlé zastavení zpracování. Bez `tryCatch()` většiny chyb vyvolaných funkcí jazyka R má za následek signál stop, který to dělá pouze.
 
 Spusťte tento kód R v experimentu a podívejte se na vytištěný výstup v souboru Output. log. Nyní se zobrazí transformované hodnoty čtyř sloupců v protokolu, jak je znázorněno na obrázku 13.
@@ -752,9 +750,9 @@ Mezi těmito proměnnými jsou některé struktury s lichým vzhledem. To může
 
 ### <a name="correlation-analysis"></a>analýza korelací.
 
-Aby bylo možné provést analýzu korelace, musíme použít jak de-LINTREND, tak i standardizovat proměnné. Můžeme jednoduše použít funkci R `scale()` , která obě středy a škáluje proměnné. Tato funkce může být dobře spouštěna rychleji. Chci si ale zobrazit příklad programu obrannou linií v jazyce R.
+Aby bylo možné provést analýzu korelace, musíme použít jak de-LINTREND, tak i standardizovat proměnné. Můžeme jednoduše použít `scale()` funkci R, která obě středy a škáluje proměnné. Tato funkce může být dobře spouštěna rychleji. Chci si ale zobrazit příklad programu obrannou linií v jazyce R.
 
-Níže `ts.detrend()` uvedená funkce provádí obě tyto operace. Následující dva řádky kódu detrendují data a pak tyto hodnoty standardizovat.
+`ts.detrend()`Níže uvedená funkce provádí obě tyto operace. Následující dva řádky kódu detrendují data a pak tyto hodnoty standardizovat.
 
 ```R
 ts.detrend <- function(ts, Time, min.length = 3){
@@ -801,13 +799,13 @@ df.detrend <- data.frame(lapply(cadairydata[, 4:7], ts.detrend, cadairydata$Time
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = df.detrend, main = "Pairwise Scatterplots of detrended standardized time series")
 ```
 
-Ve `ts.detrend()` funkci je něco nového. Většina tohoto kódu kontroluje možné problémy s argumenty nebo řešení potíží s výjimkami, které mohou být stále v průběhu výpočtů. Pouze pár řádků tohoto kódu ve skutečnosti provádí výpočty.
+Ve funkci je něco nového `ts.detrend()` . Většina tohoto kódu kontroluje možné problémy s argumenty nebo řešení potíží s výjimkami, které mohou být stále v průběhu výpočtů. Pouze pár řádků tohoto kódu ve skutečnosti provádí výpočty.
 
-V transformacích hodnot jsme už probrali příklad programování v obrannou linií. Oba bloky výpočtů jsou zabaleny `tryCatch()`do. V případě některých chyb má smysl vrátit původní vstupní vektor a v ostatních případech vrátí Vektor nul.  
+V transformacích hodnot jsme už probrali příklad programování v obrannou linií. Oba bloky výpočtů jsou zabaleny do `tryCatch()` . V případě některých chyb má smysl vrátit původní vstupní vektor a v ostatních případech vrátí Vektor nul.  
 
 Všimněte si, že lineární regrese, která se používá pro detrendování, je regrese časové řady. Proměnná prediktivního je objekt časové řady.  
 
-Jakmile `ts.detrend()` je tato definice definovaná, použijeme ji pro proměnné zájmu v našem dataframe. Výsledný seznam vytvořený pomocí `lapply()` pro datový rámec data musí být převeden pomocí. `as.data.frame()` Kvůli obrannou linií aspektům pro `ts.detrend()`neúspěšné zpracování jedné z proměnných nebrání správnému zpracování ostatních.  
+Jakmile `ts.detrend()` je tato definice definovaná, použijeme ji pro proměnné zájmu v našem dataframe. Výsledný seznam vytvořený pomocí `lapply()` pro datový rámec data musí být převeden pomocí `as.data.frame()` . Kvůli obrannou linií aspektům pro `ts.detrend()` neúspěšné zpracování jedné z proměnných nebrání správnému zpracování ostatních.  
 
 Poslední řádek kódu vytvoří scatterplot. Po spuštění kódu R se výsledky scatterplot zobrazí na obrázku 17.
 
@@ -925,8 +923,8 @@ outframe
 První řádek kódu je trochu obtížné a některé vysvětlení vám může porozumět. Při práci z interního prostředí máme následující:
 
 1. Operátor '**[**' s argumentem '**1**' vybere vektor korelace na prodlevy z prvního prvku seznamu objektů CCF.
-2. `do.call()` Funkce aplikuje `rbind()` funkci na prvky seznamu, kterou `lapply()`vrátí.
-3. `data.frame()` Funkce převede výsledek vyprodukovaný `do.call()` pro datový rámec.
+2. `do.call()`Funkce aplikuje `rbind()` funkci na prvky seznamu, kterou vrátí `lapply()` .
+3. `data.frame()`Funkce převede výsledek vyprodukovaný `do.call()` pro datový rámec.
 
 Všimněte si, že názvy řádků jsou ve sloupci datového rámce. Tím se zachová názvy řádků při výstupu ze [skriptu Execute jazyka R][execute-r-script].
 
@@ -995,7 +993,7 @@ V důsledku toho jsme připraveni začít s analýzou.
 
 ### <a name="create-a-training-dataset"></a>Vytvoření datové sady školení
 
-S vytvořeným datovým rámcem musíme vytvořit školicí datovou sadu. Tato data budou zahrnovat všechna pozorování kromě posledních 12, roku 2013, což je naše testovací datová sada. Následující kód podmnožinou datového rámce a vytvoří parcely produkčních a cenových proměnných pro mléčné výrobky. Vytvořím zkusnou řadu čtyř produkčních a cenových proměnných. Anonymní funkce se používá k definování některých rozšíření pro vykreslení a pak iterování nad seznamem dalších dvou argumentů s `Map()`. Pokud si myslíte, že smyčka for by v tomto případě fungovala správně, je to správné. Ale vzhledem k tomu, že R je funkční jazyk, se mi zobrazuje funkční přístup.
+S vytvořeným datovým rámcem musíme vytvořit školicí datovou sadu. Tato data budou zahrnovat všechna pozorování kromě posledních 12, roku 2013, což je naše testovací datová sada. Následující kód podmnožinou datového rámce a vytvoří parcely produkčních a cenových proměnných pro mléčné výrobky. Vytvořím zkusnou řadu čtyř produkčních a cenových proměnných. Anonymní funkce se používá k definování některých rozšíření pro vykreslení a pak iterování nad seznamem dalších dvou argumentů s `Map()` . Pokud si myslíte, že smyčka for by v tomto případě fungovala správně, je to správné. Ale vzhledem k tomu, že R je funkční jazyk, se mi zobrazuje funkční přístup.
 
 ```R
 cadairytrain <- cadairydata[1:216, ]
@@ -1026,7 +1024,7 @@ Když jste vytvořili objekt časové řady a museli jste se podívat na data, z
 
 Vzhledem k malé škále dat sestavíme model pro vývoj v RStudio a pak vyjmete a vložíte výsledný model do Azure Machine Learning Studio (Classic). RStudio poskytuje interaktivní prostředí pro tento typ interaktivní analýzy.
 
-Při prvním pokusu se pokusíte o polynomickou regresi s pravomocemi až na 3. Existují reálné nebezpečí přebudování těchto druhů modelů. Proto je nejlepší vyhnout se podmínkám vysokého řádu. `I()` Funkce brání interpretaci obsahu (interpretuje obsah "tak, jak je") a umožňuje napsat doslova interpretovaná funkce v regresní rovnici.
+Při prvním pokusu se pokusíte o polynomickou regresi s pravomocemi až na 3. Existují reálné nebezpečí přebudování těchto druhů modelů. Proto je nejlepší vyhnout se podmínkám vysokého řádu. `I()`Funkce brání interpretaci obsahu (interpretuje obsah "tak, jak je") a umožňuje napsat doslova interpretovaná funkce v regresní rovnici.
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^2) + I(Month.Count^3), data = cadairytrain)
@@ -1057,7 +1055,7 @@ Tím vygenerujete následující.
     ## Multiple R-squared:  0.941,    Adjusted R-squared:  0.94
     ## F-statistic: 1.12e+03 on 3 and 212 DF,  p-value: <2e-16
 
-Na základě hodnot P`Pr(>|t|)`() v tomto výstupu zjistíme, že čtvercový termín nemusí být významný. Tuto `update()` funkci použijeme k úpravě tohoto modelu vyřazením čtvercového období.
+Na základě hodnot P ( `Pr(>|t|)` ) v tomto výstupu zjistíme, že čtvercový termín nemusí být významný. Tuto funkci použijeme `update()` k úpravě tohoto modelu vyřazením čtvercového období.
 
 ```R
 milk.lm <- update(milk.lm, . ~ . - I(Month.Count^2))
@@ -1107,7 +1105,7 @@ Vypadá to, že model trendu přesně odpovídá datům. Dále se zdá, že se n
 
 S modelem trendu je potřeba nasdílet a zahrnovat sezónní účinky. Měsíc v roce použijeme jako fiktivní proměnnou v lineárním modelu pro zachycení měsíčního efektu. Všimněte si, že při zavedení proměnných faktoru do modelu nesmí být zachytávání vypočítáno. Pokud to neuděláte, vzorec se zachová a R vynechá jeden z požadovaných faktorů, ale ponechá termín zachytávání.
 
-Vzhledem k tomu, že máme uspokojivý model trendů, `update()` můžeme k přidání nových podmínek do existujícího modelu použít funkci. Výraz-1 ve vzorci aktualizace zruší termín zachycení. Pokračuje se v RStudio a teď:
+Vzhledem k tomu, že máme uspokojivý model trendů, můžeme k `update()` Přidání nových podmínek do existujícího modelu použít funkci. Výraz-1 ve vzorci aktualizace zruší termín zachycení. Pokračuje se v RStudio a teď:
 
 ```R
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
@@ -1187,7 +1185,7 @@ Zbytkový graf je znázorněn na obrázku 25.
 
 Tyto zbytky vypadají rozumným způsobem. Neexistuje žádná konkrétní struktura, s výjimkou účinku 2008-2009 recesí, který náš model nepoužívá zejména k tomu.
 
-Vykreslení znázorněné na obrázku 25 je užitečné pro detekci všech vzorů závislých na čase ve zbytkech. Explicitní přístup k výpočetnímu prostředí a vykreslení zbytků, které jsem používá, umístí zbytky v časovém pořadí na vykreslení. Pokud na druhé straně jsem vykreslil `milk.lm$residuals`, vykreslení by nebylo v časovém pořadí.
+Vykreslení znázorněné na obrázku 25 je užitečné pro detekci všech vzorů závislých na čase ve zbytkech. Explicitní přístup k výpočetnímu prostředí a vykreslení zbytků, které jsem používá, umístí zbytky v časovém pořadí na vykreslení. Pokud na druhé straně jsem vykreslil `milk.lm$residuals` , vykreslení by nebylo v časovém pořadí.
 
 Můžete také použít `plot.lm()` k vytvoření řady diagnostických parcel.
 
@@ -1262,7 +1260,7 @@ predict2  <- predict(milk.lm2, cadairydata)
 }
 ```
 
-Stejně jako u `log.transform()` funkce, kterou jsme provedli v části "transformace hodnot", je v této funkci dost velký počet kontrol chyb a kód pro obnovení výjimek. Použité zásady jsou stejné. Práce se provádí na dvou místech zabalených do `tryCatch()`. Nejdřív se exponentiated časová řada, protože jsme pracovali s protokoly těchto hodnot. Za druhé se počítá skutečná Chyba služby RMS.  
+Stejně jako u `log.transform()` funkce, kterou jsme provedli v části "transformace hodnot", je v této funkci dost velký počet kontrol chyb a kód pro obnovení výjimek. Použité zásady jsou stejné. Práce se provádí na dvou místech zabalených do `tryCatch()` . Nejdřív se exponentiated časová řada, protože jsme pracovali s protokoly těchto hodnot. Za druhé se počítá skutečná Chyba služby RMS.  
 
 Je vybavená funkcí k měření chyby služby RMS a vytvoří a vytvoří výstup dataframe obsahující chyby RMS. Budeme zahrnovat výrazy pro model trendů a kompletní model s sezónními faktory. Následující kód provede úlohu pomocí dvou lineárních modelů, které jsme sestavili.
 
@@ -1315,7 +1313,7 @@ K dispozici je mnoho knih v jazyce R, které vám pomůžou začít. Tady je ně
 * **R kuchařka** podle Paul Teetor poskytuje přístup k problému a řešení pro použití R.  
 * **R v akci** Robert Kabacoff je další užitečnou úvodní knihou. Doprovodný [web s rychlým R](https://www.statmethods.net/) je užitečným prostředkem.
 * **R Inferno** by se překvapivěou poradním sloupkuou knihou, která se zabývá několika obtížemi a obtížnémi tématy, která se dají při programování v jazyce r setkat. Kniha je k dispozici zdarma na adrese [R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/).
-* Pokud chcete hluboko podrobně do pokročilých témat v jazyce R, podívejte se na příručku **Advanced R** by Hadley Wickham. Online verze této knihy je k dispozici zdarma na adrese [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/).
+* Pokud chcete hluboko podrobně do pokročilých témat v jazyce R, podívejte se na příručku **Advanced R** by Hadley Wickham. Online verze této knihy je k dispozici zdarma na adrese [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/) .
 
 Katalog balíčků časových řad R se dá najít v [zobrazení úloh Cran: analýza časových řad](https://cran.r-project.org/web/views/TimeSeries.html). Informace o konkrétních balíčcích objektů časových řad najdete v dokumentaci k tomuto balíčku.
 

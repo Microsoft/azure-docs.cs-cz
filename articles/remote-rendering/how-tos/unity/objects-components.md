@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f9f0e164f7ab0a6b146aad3a2809bf85e5aa4be
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409856"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020655"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Interakce s herními objekty a komponentami Unity
 
@@ -22,7 +22,7 @@ V důsledku toho je integrace Unity pro vzdálené vykreslování Azure dodává
 
 ## <a name="load-a-model-in-unity"></a>Načtení modelu v Unity
 
-Při načítání modelu získáte odkaz na kořenový objekt načteného modelu. Tento odkaz není objektem hry Unity, ale můžete ho převést na jednu pomocí metody `Entity.GetOrCreateGameObject()`rozšíření. Tato funkce očekává argument typu `UnityCreationMode`. Pokud předáte `CreateUnityComponents`, nově vytvořený objekt hry Unity se bude naplnit pomocí součástí proxy pro všechny součásti vzdáleného vykreslování, které existují na hostiteli. Doporučuje se to sice ale preferovat `DoNotCreateUnityComponents`, aby se režie vynechala minimální.
+Při načítání modelu získáte odkaz na kořenový objekt načteného modelu. Tento odkaz není objektem hry Unity, ale můžete ho převést na jednu pomocí metody rozšíření `Entity.GetOrCreateGameObject()` . Tato funkce očekává argument typu `UnityCreationMode` . Pokud předáte `CreateUnityComponents` , nově vytvořený objekt hry Unity se bude naplnit pomocí součástí proxy pro všechny součásti vzdáleného vykreslování, které existují na hostiteli. Doporučuje se to sice ale preferovat `DoNotCreateUnityComponents` , aby se režie vynechala minimální.
 
 ### <a name="load-model-with-task"></a>Načíst model s úkolem
 
@@ -82,21 +82,21 @@ async void LoadModelWithAwait()
 }
 ```
 
-Výše uvedené ukázky kódu používaly cestu načtení modelu prostřednictvím SAS, protože je načtený integrovaný model. Adresování modelu prostřednictvím kontejnerů objektů BLOB `LoadModelAsync` ( `LoadModelParams`pomocí a) funguje zcela obdobně.
+Výše uvedené ukázky kódu používaly cestu načtení modelu prostřednictvím SAS, protože je načtený integrovaný model. Adresování modelu prostřednictvím kontejnerů objektů BLOB (pomocí `LoadModelAsync` a `LoadModelParams` ) funguje zcela obdobně.
 
 ## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 
-Vytvoření objektu hry Unity implicitně přidá `RemoteEntitySyncObject` komponentu do objektu Game. Tato součást slouží k synchronizaci entit transformace na server. Ve výchozím `RemoteEntitySyncObject` nastavení vyžaduje, aby uživatel explicitně `SyncToRemote()` volal synchronizaci místního stavu Unity se serverem. Při `SyncEveryFrame` povolení se objekt automaticky synchronizuje.
+Vytvoření objektu hry Unity implicitně přidá `RemoteEntitySyncObject` komponentu do objektu Game. Tato součást slouží k synchronizaci entit transformace na server. Ve výchozím nastavení `RemoteEntitySyncObject` vyžaduje, aby uživatel explicitně volal `SyncToRemote()` synchronizaci místního stavu Unity se serverem. Při povolení `SyncEveryFrame` se objekt automaticky synchronizuje.
 
-Objekty s objektem `RemoteEntitySyncObject` můžou mít instance vzdálených podřízených objektů a zobrazují se v editoru Unity tlačítkem **Zobrazit podřízené** .
+Objekty s a `RemoteEntitySyncObject` můžou mít instance vzdálených podřízených objektů, které se zobrazí v editoru Unity přes **:::no-loc text="Show children":::** tlačítko.
 
 ![RemoteEntitySyncObject](media/remote-entity-sync-object.png)
 
 ## <a name="wrapper-components"></a>Komponenty obálky
 
-[Součásti](../../concepts/components.md) připojené k entitám vzdáleného vykreslování jsou zpřístupněny Unity prostřednictvím `MonoBehavior`proxy serveru. Tyto proxy servery reprezentují vzdálenou komponentu v Unity a předávají všechny úpravy hostitele.
+[Součásti](../../concepts/components.md) připojené k entitám vzdáleného vykreslování jsou zpřístupněny Unity prostřednictvím proxy serveru `MonoBehavior` . Tyto proxy servery reprezentují vzdálenou komponentu v Unity a předávají všechny úpravy hostitele.
 
-Chcete-li vytvořit komponenty vzdáleného vykreslování proxy, použijte metodu `GetOrCreateArrComponent`rozšíření:
+Chcete-li vytvořit komponenty vzdáleného vykreslování proxy, použijte metodu rozšíření `GetOrCreateArrComponent` :
 
 ```cs
 var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteManagerUnity.CurrentSession);
@@ -104,9 +104,9 @@ var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteMa
 
 ## <a name="coupled-lifetimes"></a>Spárované životnosti
 
-Doba životnosti vzdálené [entity](../../concepts/entities.md) a objektu hry Unity je spojená, pokud jsou svázané přes `RemoteEntitySyncObject`. Pokud voláte `UnityEngine.Object.Destroy(...)` pomocí takového herního objektu, bude odebrána i vzdálená entita.
+Doba životnosti vzdálené [entity](../../concepts/entities.md) a objektu hry Unity je spojená, pokud jsou svázané přes `RemoteEntitySyncObject` . Pokud voláte `UnityEngine.Object.Destroy(...)` pomocí takového herního objektu, bude odebrána i vzdálená entita.
 
-Chcete-li zničit objekt hry Unity, aniž by to ovlivnilo vzdálenou entitu, musíte `Unbind()` nejprve zavolat `RemoteEntitySyncObject`na.
+Chcete-li zničit objekt hry Unity, aniž by to ovlivnilo vzdálenou entitu, musíte nejprve zavolat `Unbind()` na `RemoteEntitySyncObject` .
 
 Totéž platí pro všechny součásti proxy serveru. Chcete-li zničit pouze reprezentaci na straně klienta, je třeba `Unbind()` nejprve zavolat na součást proxy:
 

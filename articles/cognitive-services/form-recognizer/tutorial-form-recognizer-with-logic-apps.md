@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: nitinme
-ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ff160c57b86e2269165f5fe1d2808684d2e6e86e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77118271"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118541"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Kurz: použití nástroje pro rozpoznávání formulářů s Azure Logic Apps k analýze faktur
 
@@ -58,7 +58,7 @@ Tento kontejner použijete k nahrání ukázkových dat, která jsou nutná pro 
 
 Stáhněte si ukázková data dostupná na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090451). Extrahujte data do místní složky a nahrajte obsah složky **/Train** do **formrecocontainer** , který jste vytvořili dříve. Podle pokynů v části [nahrání objektu blob bloku](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) nahrajte data do kontejneru.
 
-Zkopírujte adresu URL kontejneru. Tuto adresu URL budete potřebovat později v tomto kurzu. Pokud jste vytvořili účet úložiště a kontejner se stejnými názvy, jako jsou uvedené v tomto kurzu, adresa URL bude *https:\//formrecostorage.blob.Core.Windows.NET/formrecocontainer/*.
+Zkopírujte adresu URL kontejneru. Tuto adresu URL budete potřebovat později v tomto kurzu. Pokud jste vytvořili účet úložiště a kontejner se stejnými názvy, jako jsou uvedené v tomto kurzu, adresa URL bude *https: \/ /formrecostorage.blob.Core.Windows.NET/formrecocontainer/*.
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
@@ -73,20 +73,20 @@ Azure Logic Apps můžete použít k automatizaci a orchestraci úloh a pracovn�
 
 Pomocí těchto kroků nastavte pracovní postup.
 
-1. V hlavní nabídce Azure vyberte **vytvořit prostředek** > **Integration** > **Logic App**.
+1. V hlavní nabídce Azure vyberte **vytvořit prostředek**  >  **Integration**  >  **Logic App**.
 
 1. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je vidět zde. Až budete hotovi, vyberte **vytvořit**.
 
-   | Vlastnost | Hodnota | Popis |
+   | Vlastnost | Hodnota | Description |
    |----------|-------|-------------|
-   | **Název** | <*Logic-App-Name*> | Název aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka`_`(), kulaté závorky`(`( `)`,) a tečky`.`(). Tento příklad používá "moji-First-Logic-App". |
+   | **Název** | <*Logic-App-Name*> | Název aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). Tento příklad používá "moji-First-Logic-App". |
    | **Předplatné** | <*Azure – předplatné – název*> | Název vašeho předplatného Azure |
    | **Skupina prostředků** | <*Azure-Resource-Group-Name*> | Název [skupiny prostředků Azure](./../../azure-resource-manager/management/overview.md) , která slouží k uspořádání souvisejících prostředků. V tomto příkladu se používá "My-First-LA-RG". |
    | **Umístění** | <*Oblast Azure*> | Oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
-   | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
+   | **Log Analytics** | Vypnout | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 
-1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení** > **Přejít na prostředek** pro vaši nasazenou aplikaci logiky. Nebo můžete vyhledat a vybrat aplikaci logiky zadáním názvu do vyhledávacího pole.
+1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení**  >  **Přejít na prostředek** pro vaši nasazenou aplikaci logiky. Nebo můžete vyhledat a vybrat aplikaci logiky zadáním názvu do vyhledávacího pole.
 
    Otevře se Návrhář pro Logic Apps se zobrazenou stránkou s úvodním videem a běžně používanými triggery. V části **Šablony** vyberte **Prázdná aplikace logiky**.
 
@@ -377,7 +377,6 @@ K otestování aplikace logiky použijte ukázkové faktury ve složce **/test**
       }
     ]
     ```
-    Úspěšně jste dokončili tento kurz!
 
 ## <a name="next-steps"></a>Další kroky
 

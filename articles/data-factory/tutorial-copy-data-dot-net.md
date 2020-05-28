@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: a835e67b1091a55c832955d8dac8615289a6d99e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ad257d0bea38d03803bf2be44313a3e086e7654c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418690"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118170"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopírování dat z objektu blob Azure do Azure SQL Database pomocí Azure Data Factory
 
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 ## <a name="prerequisites"></a>Požadavky
 
 * *Účet Azure Storage*. Úložiště objektů blob použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště pro obecné účely](../storage/common/storage-account-create.md).
-* *Azure SQL Database*. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte Azure SQL Database, přečtěte si téma [Vytvoření databáze SQL Azure](../sql-database/sql-database-single-database-get-started.md).
+* *Azure SQL Database*. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte Azure SQL Database, přečtěte si téma [Vytvoření databáze SQL Azure](../azure-sql/database/single-database-create-quickstart.md).
 * *Visual Studio*. Návod v tomto článku používá Visual Studio 2019.
 * *[Sada Azure SDK pro .NET](/dotnet/azure/dotnet-tools)*
 * *Azure Active Directory aplikace* Pokud nemáte aplikaci Azure Active Directory, přečtěte si část [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) tématu [Postupy: použití portálu k vytvoření aplikace služby Azure AD](../active-directory/develop/howto-create-service-principal-portal.md). Zkopírujte následující hodnoty pro použití v pozdějších krocích: **ID aplikace (klienta)**, **ověřovací klíč**a **ID adresáře (tenant)**. Podle pokynů ve stejném článku přiřaďte aplikaci k roli **přispěvatele** .
@@ -81,7 +81,7 @@ Dále vytvořte tabulku jímky SQL:
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Povolte službám Azure přístup k SQL serveru. Ujistěte se, že máte ve svém serveru SQL Azure povolený přístup ke službám Azure, aby služba Data Factory mohla zapisovat data na váš server SQL Azure. Pokud chcete toto nastavení ověřit a zapnout, proveďte následující kroky:
+2. Umožněte službám Azure přístup k SQL Database. Ujistěte se, že ve svém serveru povolíte přístup ke službám Azure, aby služba Data Factory mohla zapisovat data do SQL Database. Pokud chcete toto nastavení ověřit a zapnout, proveďte následující kroky:
 
     1. Pro správu SQL serveru přejdete na [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **SQL servery**.
 
@@ -104,7 +104,7 @@ Pomocí sady Visual Studio vytvořte konzolovou aplikaci C# .NET.
 
 Dále nainstalujte požadované balíčky knihovny pomocí Správce balíčků NuGet.
 
-1. V řádku nabídek klikněte na **nástroje** > **správce** > balíčků NuGet**Konzola správce balíčků**.
+1. V řádku nabídek klikněte na **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
 2. V podokně **konzoly Správce balíčků** spusťte následující příkazy pro instalaci balíčků. Informace o Azure Data Factory balíčku NuGet najdete v tématu [Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```package manager console
@@ -133,7 +133,7 @@ Pomocí těchto kroků vytvořte klienta datové továrny.
 
 2. Do `Main` metody, která nastavuje proměnné, přidejte následující kód. Hodnoty 14 zástupných symbolů nahraďte vlastními hodnotami.
 
-    Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). V rozevíracím seznamu **produkty** vyberte možnost **Procházet** > **Analytics** > **Data Factory**. Pak v rozevíracím seznamu **oblasti** vyberte oblasti, které vás zajímají. Zobrazí se mřížka se stavem dostupnosti Data Factory produktů pro vybrané oblasti.
+    Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). V rozevíracím seznamu **produkty** vyberte možnost **Procházet**  >  **Analytics**  >  **Data Factory**. Pak v rozevíracím seznamu **oblasti** vyberte oblasti, které vás zajímají. Zobrazí se mřížka se stavem dostupnosti Data Factory produktů pro vybrané oblasti.
 
     > [!NOTE]
     > Úložiště dat, například Azure Storage a Azure SQL Database, a výpočetní služby, jako je HDInsight, které Data Factory používají, můžou být v jiných oblastech, než kolik zvolíte pro Data Factory.
@@ -171,7 +171,7 @@ Pomocí těchto kroků vytvořte klienta datové továrny.
     string pipelineName = "Adfv2TutorialBlobToSqlCopy";
     ```
 
-3. Do `Main` metody, která vytvoří instanci `DataFactoryManagementClient` třídy, přidejte následující kód. Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu.
+3. Do `Main` metody, která vytvoří instanci třídy, přidejte následující kód `DataFactoryManagementClient` . Tento objekt použijete k vytvoření datové továrny, propojené služby, datových sad a kanálu. Použijete ho také k monitorování podrobných informací o spuštění kanálu.
 
     ```csharp
     // Authenticate and create a data factory management client
@@ -275,8 +275,8 @@ Přidejte následující kód do `Main` metody, která vytvoří *datovou sadu o
 
 Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
 
-- Umístění objektu blob, ze kterého se má kopírovat `FolderPath` : a`FileName`
-- Formát objektu blob, který označuje, jak analyzovat obsah `TextFormat` : a jeho nastavení, například Oddělovač sloupců
+- Umístění objektu blob, ze kterého se má kopírovat: `FolderPath` a`FileName`
+- Formát objektu blob, který označuje, jak analyzovat obsah: `TextFormat` a jeho nastavení, například Oddělovač sloupců
 - Datová struktura, včetně názvů sloupců a datových typů, které jsou v tomto příkladu namapovány na tabulku SQL jímky
 
 ```csharp
@@ -337,7 +337,7 @@ Console.WriteLine(
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-Do `Main` metody, která vytvoří *kanál s aktivitou kopírování*, přidejte následující kód. V tomto kurzu tento kanál obsahuje jednu aktivitu: `CopyActivity`, která přebírá datovou sadu objektů BLOB jako zdroj a datovou sadu SQL jako jímku. Informace o podrobnostech o aktivitě kopírování najdete [v tématu aktivita kopírování v Azure Data Factory](copy-activity-overview.md).
+Do `Main` metody, která vytvoří *kanál s aktivitou kopírování*, přidejte následující kód. V tomto kurzu tento kanál obsahuje jednu aktivitu: `CopyActivity` , která přebírá datovou sadu objektů BLOB jako zdroj a datovou sadu SQL jako jímku. Informace o podrobnostech o aktivitě kopírování najdete [v tématu aktivita kopírování v Azure Data Factory](copy-activity-overview.md).
 
 ```csharp
 // Create a pipeline with copy activity
@@ -432,7 +432,7 @@ Nyní vložte kód pro kontrolu stavu běhu kanálu a Získejte podrobné inform
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Sestavte aplikaci tak, že kliknete na **sestavit** > sestavení**řešení**. Pak spusťte aplikaci výběrem **ladění** > **Spustit ladění**a ověřte spuštění kanálu.
+Sestavte aplikaci tak, že kliknete na **sestavit**sestavení  >  **řešení**. Pak spusťte aplikaci výběrem **ladění**  >  **Spustit ladění**a ověřte spuštění kanálu.
 
 Konzola vytiskne průběh vytváření datové továrny, propojené služby, datové sady, kanál a spuštění kanálu. Potom zkontroluje stav spuštění kanálu. Počkejte, dokud se nezobrazí podrobnosti o spuštění aktivity kopírování s velikostí přečtených a zapsaných dat. Pak můžete pomocí nástrojů, jako je SQL Server Management Studio (SSMS) nebo Visual Studio, připojit se k cíli Azure SQL Database a ověřit, zda cílová tabulka obsahuje zkopírovaná data.
 

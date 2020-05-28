@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0a508e52189938447ea6fc1928d441d81deab392
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 2bdb305e0342dc9b7807ad64de9b5d872237afcc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713989"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014328"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu souhlasu koncových uživatelů s aplikacemi
 
@@ -49,7 +49,7 @@ Konfigurace nastavení souhlasu uživatele prostřednictvím Azure Portal:
 1. V části **souhlas uživatele u aplikací**vyberte, které nastavení souhlasu se má nakonfigurovat pro všechny uživatele.
 1. Vyberte **Uložit** a uložte nastavení.
 
-![Nastavení souhlasu uživatele](./media/configure-user-consent/setting-for-all-users.png)
+:::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="Nastavení souhlasu uživatele":::
 
 > [!TIP]
 > Zvažte možnost povolit [pracovní postup souhlasu](configure-admin-consent-workflow.md) správce, aby uživatelé mohli požádat o revizi správce a schválení aplikace, které uživatel nemá oprávněně vyjádřit souhlas – například když je souhlas uživatele zakázán nebo když aplikace požaduje oprávnění, která uživatel nemá povoleno udělit.
@@ -102,7 +102,7 @@ Klasifikace oprávnění umožňují určit dopad, který mají různá oprávn�
 
 V tomto příkladu jsme klasifikováni s minimální sadou oprávnění vyžadovaných pro jednotné přihlašování:
 
-![Klasifikace oprávnění](./media/configure-user-consent/permission-classifications.png)
+:::image type="content" source="media/configure-user-consent/permission-classifications.png" alt-text="Klasifikace oprávnění":::
 
 > [!TIP]
 > Pro rozhraní Microsoft Graph API jsou minimální oprávnění potřebná k tomu, aby základní jednotné přihlašování `openid` , `profile` `User.Read` a `offline_access` . Pomocí těchto oprávnění může aplikace číst podrobnosti profilu přihlášeného uživatele a může tento přístup zachovat, i když uživatel už tuto aplikaci nepoužívá.
@@ -192,7 +192,7 @@ Můžete nakonfigurovat, kteří uživatelé můžou udělit souhlas aplikacím,
 
 V tomto příkladu můžou všichni vlastníci skupiny udělit souhlas s aplikacemi, které přistupují k datům jejich skupin:
 
-![Klasifikace oprávnění](./media/configure-user-consent/group-owner-consent.png)
+:::image type="content" source="media/configure-user-consent/group-owner-consent.png" alt-text="Nastavení souhlasu vlastníka skupiny":::
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>Konfigurace souhlasu vlastníka skupiny pomocí PowerShellu
 
@@ -228,7 +228,7 @@ Pomocí modulu Azure AD PowerShell Preview, [AzureADPreview](https://docs.micros
 
 1. Pochopení hodnot nastavení. K dispozici jsou dvě hodnoty nastavení, které definují, kteří uživatelé budou moci aplikaci umožnit přístup k datům svých skupin:
 
-    | Nastavení       | Typ         | Popis  |
+    | Nastavení       | Typ         | Description  |
     | ------------- | ------------ | ------------ |
     | _EnableGroupSpecificConsent_   | Logická hodnota | Příznak označující, zda mohou vlastníci skupiny udělit oprávnění pro konkrétní skupinu. |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Identifikátor GUID | Pokud je _EnableGroupSpecificConsent_ nastavené na hodnotu "true" a tato hodnota je nastavená na ID objektu skupiny, budou se členové identifikované skupiny oprávněni udělit skupinám, které vlastní, oprávnění pro skupiny, které vlastní. |
@@ -286,7 +286,7 @@ To můžete provést pomocí stejných kroků, jak je uvedeno výše pro [konfig
 
 1. Seznamte se s hodnotami nastavení pro udělení souhlasu na základě rizik:
 
-    | Nastavení       | Typ         | Popis  |
+    | Nastavení       | Typ         | Description  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Logická hodnota |  Příznak označující, zda bude při zjištění rizikové žádosti zablokován souhlas uživatele |
 
