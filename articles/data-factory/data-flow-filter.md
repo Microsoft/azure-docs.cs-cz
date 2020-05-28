@@ -7,19 +7,21 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/16/2019
-ms.openlocfilehash: 32a40f3d4da93318c6d2ec25295c89a7b53141e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 8189228d6707812fb943e9925dc2bbf1b6da4972
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606424"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112815"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Filtrovat transformaci v toku dat mapování
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Transformace filtru umožňují filtrování řádků na základě podmínky. Výstupní datový proud obsahuje všechny řádky, které odpovídají podmínkám filtrování. Transformace filtru je podobná klauzuli WHERE v SQL.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xnxN]
 
 ## <a name="configuration"></a>Konfigurace
 
@@ -40,7 +42,7 @@ Pomocí Tvůrce výrazů toku dat zadejte výraz pro podmínku filtru. Chcete-li
 
 ### <a name="example"></a>Příklad
 
-Níže uvedený příklad je transformace filtru s názvem `FilterBefore1960` , která přebírá příchozí `CleanData`datový proud. Podmínka filtru je výraz `year <= 1960`.
+Níže uvedený příklad je transformace filtru s názvem `FilterBefore1960` , která přebírá příchozí datový proud `CleanData` . Podmínka filtru je výraz `year <= 1960` .
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

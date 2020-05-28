@@ -35,8 +35,8 @@ Datum, kdy se tyto změny projeví:
 |----------------------|--------------------|-------------------------|
 | Azure (Global)       |  13. ledna 2020  | 11. května 2020            |
 | Azure Government     |  13. března 2020    | 11. května 2020            |
-| Azure Germany        |  13. března 2020    | 11. května 2020            |
-| Azure China 21Vianet |  13. března 2020    | 11. května 2020            |
+| Azure (Německo)        |  13. března 2020    | 11. května 2020            |
+| Azure (Čína) 21Vianet |  13. března 2020    | 11. května 2020            |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Ověřte, zda je aplikace již kompatibilní.
 

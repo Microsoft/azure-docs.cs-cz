@@ -30,7 +30,7 @@ Pokud chcete naplánovat spuštění Runbooku v Azure Automation v zadanou dobu,
 
 Rutiny v následující tabulce vytvářejí a spravují plány automatizace pomocí PowerShellu. Dodávají se jako součást [AZ moduls](modules.md#az-modules). 
 
-| Rutiny | Popis |
+| Rutiny | Description |
 |:--- |:--- |
 | [Get-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Načte plán. |
 | [Get-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Načte naplánované Runbooky. |

@@ -69,7 +69,7 @@ Pokud Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data
 
 ## <a name="syntax-details"></a>Podrobnosti syntaxe
 
-| Vlastnost          | Popis                              | Vyžadováno |
+| Vlastnost          | Description                              | Vyžadováno |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | Název aktivity                     | Ano      |
 | description       | Text popisující, k čemu se aktivita používá | Ne       |

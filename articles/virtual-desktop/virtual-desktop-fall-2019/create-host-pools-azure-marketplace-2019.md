@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 741bd94b290560bdc850cbf7bc24ec57104d8a66
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8afc8b70257f07c95b34c4e372e0e7425ae20fcd
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614351"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112670"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
@@ -46,7 +46,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů
 
@@ -148,7 +148,7 @@ Přiřazení uživatelů ke skupině desktopové aplikace:
    Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
    ```
 
-   Hlavní název uživatele (UPN) by měl odpovídat identitě uživatele ve službě Azure AD, *user1@contoso.com*například. Pokud chcete přidat více uživatelů, spusťte příkaz pro každého uživatele.
+   Hlavní název uživatele (UPN) by měl odpovídat identitě uživatele ve službě Azure AD, například *user1@contoso.com* . Pokud chcete přidat více uživatelů, spusťte příkaz pro každého uživatele.
 
 Uživatelé, které přidáte do skupiny aplikací pracovní plochy, se můžou přihlásit k virtuální ploše Windows pomocí podporovaných klientů vzdálené plochy a zobrazit prostředek pro plochu relace.
 
@@ -162,4 +162,4 @@ Tady jsou aktuálně Podporovaní klienti:
 Vytvořili jste fond hostitelů a přiřadili uživatelům přístup k jeho ploše. Fond hostitelů můžete naplnit pomocí aplikací RemoteApp. Další informace o správě aplikací ve virtuálním počítači s Windows najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> [Kurz správy skupin aplikací](../manage-app-groups.md)
+> [Kurz správy skupin aplikací](manage-app-groups-2019.md)

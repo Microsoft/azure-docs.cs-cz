@@ -63,7 +63,7 @@ Cluster An HDInsight se dodává s nástrojem DistCp, který se dá použít ke 
 
 Vzhledem k tomu, že je nejnižší členitost DistCp jediným souborem, je nastavení maximálního počtu souběžných kopií nejdůležitějším parametrem pro jejich optimalizaci proti Data Lake Storage. Počet souběžných kopií se rovná parametru počet mapovačů (**m**) na příkazovém řádku. Tento parametr určuje maximální počet mapovačů, které se použijí ke kopírování dat. Výchozí hodnota je 20.
 
-**Příklad**
+**Případě**
 
     hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
@@ -77,7 +77,7 @@ Tady je několik rad, kterými se můžete řídit.
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
-**Příklad**
+**Případě**
 
 Předpokládejme, že máte cluster s 4x D14v2s a snažíte se přenést 10 TB dat z 10 různých složek. Každá složka obsahuje různé objemy dat a velikosti souborů v jednotlivých složkách se liší.
 

@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 05/27/2020
 tags: connectors
-ms.openlocfilehash: 39ab222f64d964e95b16e043c9cdeccd8170ace3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36e22fd92d937271a3859d03367e2a7ef80ef3d2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77651011"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118667"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -49,23 +49,38 @@ Pokud chcete postupovat podle tohoto článku, budete potřebovat tyto položky:
 
 * [Aplikační Server SAP](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) nebo [Server zpráv SAP](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-* Stáhněte si a nainstalujte nejnovější místní [bránu dat](https://www.microsoft.com/download/details.aspx?id=53127) na libovolný místní počítač. Než budete pokračovat, ujistěte se, že jste si nastavili bránu v Azure Portal. Brána vám pomůže zabezpečený přístup k místním datům a prostředkům. Další informace najdete v tématu [instalace místní brány dat pro Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md).
+* [Stáhněte a nainstalujte místní bránu dat](../logic-apps/logic-apps-gateway-install.md) do místního počítače. Pak [vytvořte prostředek brány Azure](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) pro tuto bránu v Azure Portal. Brána vám pomůže zabezpečený přístup k místním datům a prostředkům. 
+
+  * V rámci osvědčeného postupu se ujistěte, že používáte podporovanou verzi místní brány dat. Společnost Microsoft každý měsíc vydává novou verzi. V současné době podporuje Microsoft poslední šest verzí. Pokud dojde k potížím s bránou, zkuste [upgradovat na nejnovější verzi](https://aka.ms/on-premises-data-gateway-installer), která může zahrnovat aktualizace pro vyřešení vašeho problému.
+
+* [Stáhněte, nainstalujte a nakonfigurujte nejnovější knihovnu klienta SAP](#sap-client-library-prerequisites) na stejném počítači, ve kterém je místní brána dat.
+
+* Obsah zprávy, který můžete odeslat na Server SAP, například vzorový soubor IDoc, musí být ve formátu XML a zahrnovat obor názvů pro akci SAP, kterou chcete použít.
+
+### <a name="sap-client-library-prerequisites"></a>Požadavky na knihovnu klienta SAP
+
+* Ve výchozím nastavení instalační program SAP umístí soubory sestavení do výchozí instalační složky. Zkopírujte soubory sestavení z výchozí instalační složky do instalační složky brány.
+
+    * Pokud se připojení SAP nezdaří s chybovou zprávou, zkontrolujte prosím informace účtu nebo oprávnění a zkuste to znovu. soubory sestavení můžou být v nesprávném umístění. Ujistěte se, že jste zkopírovali soubory sestavení do instalační složky brány. Pak [použijte prohlížeč protokolů vazby sestavení .NET pro řešení potíží](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), které vám umožní ověřit, zda jsou soubory sestavení ve správném umístění.
+
+    * Volitelně můžete vybrat možnost **registrace globální mezipaměti sestavení** při instalaci knihovny klienta SAP.
+
+* Nezapomeňte nainstalovat nejnovější verzi, [konektor SAP (NCo 3,0) pro Microsoft .NET 3.0.22.0 zkompilované pomocí .NET Framework 4,0-Windows 64-bit (x64)](https://softwaredownloads.sap.com/file/0020000001000932019)z těchto důvodů:
+
+    * Starší verze SAP NCo můžou být zablokované, když se současně pošle víc než jedna zpráva IDoc. Tento stav blokuje všechny pozdější zprávy, které se odesílají do cíle SAP, což způsobí vypršení časového limitu zpráv.
+    * Místní brána dat se spouští jenom v 64 systémech. V opačném případě se zobrazí chyba "chybná image", protože hostitelská služba brány dat nepodporuje 32 bitových sestavení.
+
+    * Hostitelská služba brány dat i adaptér Microsoft SAP používají .NET Framework 4,5. SAP NCo for .NET Framework 4,0 funguje s procesy, které používají .NET Runtime 4,0 až 4.7.1. SAP NCo for .NET Framework 2,0 funguje s procesy, které používají .NET runtime 2,0 na 3,5, ale už nefungují s nejnovější místní bránou dat.
+
+### <a name="snc-prerequisites"></a>Požadavky na SNC
+
+Pokud používáte SNC (volitelné), nakonfigurujte tato nastavení:
 
 * Pokud používáte SNC s SSO, ujistěte se, že je brána spuštěná jako uživatel, který je namapovaný na uživatele SAP. Chcete-li změnit výchozí účet, vyberte možnost **změnit účet**a zadejte přihlašovací údaje uživatele.
 
   ![Změnit účet brány](./media/logic-apps-using-sap-connector/gateway-account.png)
 
 * Pokud SNC povolíte s externím produktem zabezpečení, zkopírujte knihovnu SNC nebo soubory do stejného počítače, ve kterém je brána nainstalovaná. Mezi příklady SNC produktů patří [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos a NTLM.
-
-* Stáhněte a nainstalujte nejnovější knihovnu klienta SAP, která je aktuálně [konektorem SAP (NCo 3,0) pro Microsoft .NET 3.0.22.0 zkompilované pomocí .NET Framework 4,0-Windows 64-bit (x64)](https://softwaredownloads.sap.com/file/0020000001000932019)na stejném počítači jako místní brána dat. Nainstalujte tuto verzi nebo novější z těchto důvodů:
-
-  * Starší verze SAP NCo můžou být zablokované, když se současně pošle víc než jedna zpráva IDoc. Tento stav blokuje všechny pozdější zprávy, které se odesílají do cíle SAP, což způsobí vypršení časového limitu zpráv.
-  
-  * Místní brána dat se spouští jenom v 64 systémech. V opačném případě se zobrazí chyba "chybná image", protože hostitelská služba brány dat nepodporuje 32 bitových sestavení.
-  
-  * Hostitelská služba brány dat i adaptér Microsoft SAP používají .NET Framework 4,5. SAP NCo for .NET Framework 4,0 funguje s procesy, které používají .NET Runtime 4,0 až 4.7.1. SAP NCo for .NET Framework 2,0 funguje s procesy, které používají .NET runtime 2,0 na 3,5, ale už nefungují s nejnovější místní bránou dat.
-
-* Obsah zprávy, který můžete odeslat na Server SAP, například vzorový soubor IDoc, musí být ve formátu XML a zahrnovat obor názvů pro akci SAP, kterou chcete použít.
 
 <a name="migrate"></a>
 
@@ -88,6 +103,9 @@ V tomto příkladu se používá aplikace logiky, kterou můžete aktivovat pomo
 ### <a name="add-an-http-request-trigger"></a>Přidání triggeru požadavku HTTP
 
 V Azure Logic Apps musí každá aplikace logiky začínat [triggerem](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje, když dojde ke konkrétní události nebo když dojde ke splnění určité podmínky. Pokaždé, když se Trigger aktivuje, modul Logic Apps vytvoří instanci aplikace logiky a začne spouštět pracovní postup vaší aplikace.
+
+> [!NOTE]
+> Když aplikace logiky přijme IDoc pakety z SAP, [aktivační událost žádosti](https://docs.microsoft.com/azure/connectors/connectors-native-reqres) nepodporuje "jednoduché" schéma XML generované v dokumentaci ke službě SAP WE60 IDOC. Schéma XML "obyčejného" je však podporováno pro scénáře, které odesílají zprávy z Logic Apps *do* SAP. Můžete použít Trigger žádosti s IDoc XML SAP, ale ne s IDoc přes RFC. Nebo můžete transformovat XML na potřebný formát. 
 
 V tomto příkladu vytvoříte aplikaci logiky s koncovým bodem v Azure, abyste mohli odesílat *požadavky HTTP POST* do vaší aplikace logiky. Když aplikace logiky obdrží tyto požadavky HTTP, Trigger se aktivuje a spustí další krok v pracovním postupu.
 
@@ -259,7 +277,7 @@ V tomto příkladu se používá aplikace logiky, která se aktivuje, když apli
 
       Logic Apps nastaví a otestuje připojení, aby se zajistilo správné fungování připojení.
 
-1. Zadejte požadované parametry na základě konfigurace systému SAP.
+1. Zadejte [požadované parametry](#parameters) na základě konfigurace systému SAP.
 
    Volitelně můžete zadat jednu nebo více akcí SAP. Tento seznam akcí určuje zprávy, které aktivační událost přijme ze serveru SAP prostřednictvím brány dat. Prázdný seznam určuje, že Trigger obdrží všechny zprávy. Pokud má seznam více než jednu zprávu, aktivační událost přijímá pouze zprávy uvedené v seznamu. Všechny ostatní zprávy odeslané z vašeho serveru SAP jsou bránou odmítnuté.
 
@@ -284,6 +302,16 @@ Vaše aplikace logiky je teď připravená přijímat zprávy ze systému SAP.
 > [!NOTE]
 > Trigger SAP není Trigger cyklického dotazování, ale je místo toho Trigger založený na Webhooku. Trigger se volá z brány jenom v případě, že existuje zpráva, takže není potřeba žádné cyklické dotazování.
 
+<a name="parameters"></a>
+
+#### <a name="parameters"></a>Parametry
+
+Spolu s jednoduchým řetězcem a číselnými vstupy akceptuje konektor SAP následující parametry tabulky ( `Type=ITAB` vstupy):
+
+* Parametry směru tabulky, vstupní i výstupní pro starší verze SAP.
+* Změna parametrů, které nahradí parametry směru tabulky pro novější verze SAP.
+* Parametry hierarchické tabulky
+
 ### <a name="test-your-logic-app"></a>Testování aplikace logiky
 
 1. Pokud chcete aktivovat aplikaci logiky, odešlete zprávu ze systému SAP.
@@ -304,7 +332,7 @@ Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDOCs z paketu pom
 
    ![Přidání triggeru SAP do aplikace logiky](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. Získejte kořenový obor názvů z XML IDOC, který vaše aplikace logiky obdrží od SAP. Chcete-li tento obor názvů extrahovat z dokumentu XML, přidejte krok, který vytvoří místní řetězcovou proměnnou a uloží tento obor názvů `xpath()` pomocí výrazu:
+1. Získejte kořenový obor názvů z XML IDOC, který vaše aplikace logiky obdrží od SAP. Chcete-li tento obor názvů extrahovat z dokumentu XML, přidejte krok, který vytvoří místní řetězcovou proměnnou a uloží tento obor názvů pomocí `xpath()` výrazu:
 
    `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
 
@@ -464,9 +492,9 @@ Než začnete, ujistěte se, že jste splnili výše uvedené [požadavky](#pre-
 
    ![Konfigurace SAP SNC v souvislosti s připojením](media/logic-apps-using-sap-connector/configure-sapsnc.png)
 
-   | Vlastnost | Popis |
+   | Vlastnost | Description |
    |----------| ------------|
-   | **Cesta ke knihovně SNC** | Název knihovny SNC nebo cesta relativní k umístění instalace NCo nebo absolutní cesta. Příklady jsou `sapsnc.dll` nebo `.\security\sapsnc.dll` `c:\security\sapsnc.dll`. |
+   | **Cesta ke knihovně SNC** | Název knihovny SNC nebo cesta relativní k umístění instalace NCo nebo absolutní cesta. Příklady jsou `sapsnc.dll` nebo `.\security\sapsnc.dll` `c:\security\sapsnc.dll` . |
    | **JEDNOTNÉ PŘIHLAŠOVÁNÍ SNC** | Při připojení prostřednictvím SNC se obvykle používá identita SNC pro ověřování volajícího. Další možností je přepsat, aby se informace o uživateli a heslech mohly použít k ověřování volajícího, ale řádek je stále zašifrovaný. |
    | **SNC moje jméno** | Ve většině případů může být tato vlastnost vynechána. Nainstalované řešení SNC obvykle zná vlastní název SNC. Pouze pro řešení, která podporují více identit, bude pravděpodobně nutné zadat identitu, která se má použít pro tento konkrétní cíl nebo server. |
    | **Název partnera SNC** | Název back-endu SNC. |
@@ -480,7 +508,7 @@ Než začnete, ujistěte se, že jste splnili výše uvedené [požadavky](#pre-
 
 ## <a name="safe-typing"></a>Bezpečné zadání
 
-Ve výchozím nastavení se při vytváření připojení SAP používá silné psaní ke kontrole neplatných hodnot prováděním ověřování XML proti schématu. Toto chování vám může přispět k detekci problémů dříve. Možnost **bezpečného psaní** je k dispozici pro zpětnou kompatibilitu a kontroluje pouze délku řetězce. Pokud zvolíte možnost **bezpečného psaní**, typ dat a typ TIMS v SAP se považují za řetězce, nikoli jako jejich ekvivalenty XML `xs:date` , `xs:time`a, `xmlns:xs="http://www.w3.org/2001/XMLSchema"`kde. Bezpečné psaní má vliv na chování pro všechna generování schématu, zprávu Send pro datovou část "byla odeslána" a "přijatá" odpověď a Trigger. 
+Ve výchozím nastavení se při vytváření připojení SAP používá silné psaní ke kontrole neplatných hodnot prováděním ověřování XML proti schématu. Toto chování vám může přispět k detekci problémů dříve. Možnost **bezpečného psaní** je k dispozici pro zpětnou kompatibilitu a kontroluje pouze délku řetězce. Pokud zvolíte možnost **bezpečného psaní**, typ dat a typ TIMS v SAP se považují za řetězce, nikoli jako jejich ekvivalenty XML, `xs:date` a `xs:time` , kde `xmlns:xs="http://www.w3.org/2001/XMLSchema"` . Bezpečné psaní má vliv na chování pro všechna generování schématu, zprávu Send pro datovou část "byla odeslána" a "přijatá" odpověď a Trigger. 
 
 Když se použije silné zadání (**bezpečné zadání** není povolené), schéma MAPUJE typy dat a TIMS na POKROČILEJŠÍ typy XML:
 

@@ -24,7 +24,7 @@ Zařízení i moduly mají podobná data, například připojení, takže se hod
 
 Služba IoT Hub shromažďuje data hlášená nevlákenou zařízení a modulu a poskytuje počty různých stavů, které zařízení mohou mít. Služba IoT Hub uspořádá tato data do čtyř skupin metrik:
 
-| Typ | Popis |
+| Typ | Description |
 | --- | ---|
 | Targeted | Zobrazuje IoT Edge zařízení, která se shodují s podmínkou cílení nasazení. |
 | Použito | Zobrazuje cílené IoT Edge zařízení, na která necílí jiné nasazení s vyšší prioritou. |
@@ -42,7 +42,7 @@ Pokud chcete zobrazit podrobnosti o nasazení a monitorovat zařízení, která 
 1. Vyberte kartu **nasazení IoT Edge** .
 1. Zkontrolujte seznam nasazení.Pro každé nasazení si můžete zobrazit následující podrobnosti:
 
-    | Sloupec | Popis |
+    | Sloupec | Description |
     | --- | --- |
     | ID | Název nasazení. |
     | Typ | Typ **nasazení, nasazení nebo nasazení** v **vrstveném**prostředí. |

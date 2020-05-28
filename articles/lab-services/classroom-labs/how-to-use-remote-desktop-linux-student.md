@@ -34,7 +34,7 @@ Tento článek ukazuje, jak se můžou studenti připojit k virtuálnímu počí
    
 1. Na dlaždici přepněte tlačítko tak, aby se virtuální počítač spustil, pokud je v zastaveném stavu. 
 
-2. Vyberte **Connect** (Připojit). Zobrazí se dvě možnosti, jak se připojit k virtuálnímu počítači: **SSH** a **RDP**.
+2. Vyberte **Připojit**. Zobrazí se dvě možnosti, jak se připojit k virtuálnímu počítači: **SSH** a **RDP**.
 
     ![Virtuální počítač student – možnosti připojení](../media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
 

@@ -1,52 +1,44 @@
 ---
-title: Práce s konfiguracemi oboru pro Azure Automation Change Tracking a inventář
-description: Tento článek popisuje, jak pracovat s konfiguracemi oboru při použití Change Tracking a inventáře.
+title: Omezení Azure Automation Change Tracking a rozsahu nasazení inventáře
+description: Tento článek obsahuje informace o tom, jak pracovat s konfiguracemi oboru pro omezení rozsahu Change Tracking a nasazení inventáře.
 services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 4fac94cc2f8f378b7e9d8e9485baed6a0ffa838b
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 49655d11858086b16099a1864fd4d2dc5988f02a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832159"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117435"
 ---
-# <a name="work-with-scope-configurations-for-change-tracking-and-inventory"></a>Práce s konfiguracemi oboru pro Change Tracking a inventář
+# <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Omezení rozsahu nasazení Change Tracking a inventáře
 
-Tento článek popisuje, jak můžete pracovat s konfiguracemi oboru při povolování funkce [Update Management](automation-update-management.md) na virtuálních počítačích. 
+Tento článek popisuje, jak pracovat s konfiguracemi oboru při použití funkce [Change Tracking a inventáře](change-tracking.md) k nasazení změn do virtuálních počítačů. Další informace najdete v tématu [cílení řešení monitorování v Azure monitor (Preview)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="about-scope-configurations"></a>O konfiguracích oboru
 
-Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+Konfigurace oboru je skupina jednoho nebo několika uložených hledání (dotazů) používaných k omezení rozsahu Change Tracking a inventáře na konkrétní počítače. Konfigurace oboru se používá v pracovním prostoru Log Analytics pro cílení na počítače, které chcete povolit. Když přidáte počítač ke změnám z funkce, počítač je také přidán do uloženého hledání v pracovním prostoru.
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>Ověřit konfiguraci oboru
+## <a name="set-the-scope-limit"></a>Nastavení omezení rozsahu
 
-Update Management používá konfiguraci oboru v rámci pracovního prostoru Log Analytics pro cílení na počítače, které mají povolit Update Management. Konfigurace oboru je skupina jednoho nebo více uložených hledání, která slouží k omezení rozsahu funkce na konkrétní počítače. Přístup k konfiguracím oboru:
+Omezení rozsahu pro nasazení Change Tracking a inventáře:
 
-1. V účtu Automation v části **související prostředky**vyberte **pracovní prostor**. 
+1. V účtu Automation vyberte v části **související prostředky**možnost **propojený pracovní prostor** .
 
-2. Zvolte pracovní prostor v části **zdroje dat pracovního prostoru**a vyberte **Konfigurace oboru**.
+2. Klikněte na **Přejít k pracovnímu prostoru**.
 
-3. Pokud ve vybraném pracovním prostoru není ještě povolená funkce Update Management, vytvoří se `MicrosoftDefaultScopeConfig-ChangeTracking` Konfigurace oboru. 
+3. V části **zdroje dat pracovního prostoru**vyberte **Konfigurace oboru (Preview)** .
 
-4. Pokud má vybraný pracovní prostor již funkci povolenou, nebude znovu nasazena a do ní není přidána konfigurace oboru. 
+4. Vyberte tři tečky napravo od `MicrosoftDefaultScopeConfig-ChangeTracking` Konfigurace oboru a klikněte na **Upravit**. 
 
-5. V libovolné konfiguraci oboru vyberte tři tečky a pak klikněte na **Upravit**. 
-
-6. V podokně úpravy vyberte **Vybrat skupiny počítačů**. V podokně skupiny počítačů se zobrazí uložená hledání, která slouží k vytvoření konfigurace oboru.
-
-## <a name="view-a-saved-search"></a>Zobrazení uloženého hledání
-
-Když se do Change Tracking a inventáře přidá počítač, přidá se taky do uloženého hledání ve vašem pracovním prostoru. Uložené výsledky hledání je dotaz, který obsahuje cílové počítače.
-
-1. Přejděte do pracovního prostoru Log Analytics a v části **Obecné**vyberte **uložená hledání** . Uložené hledání, které používá Update Management, je:
+5. V podokně úpravy vyberte **Vybrat skupiny počítačů**. V podokně skupiny počítačů se zobrazí uložená hledání, která slouží k vytvoření konfigurace oboru. Uložené výsledky hledání, které používá Change Tracking a inventář:
 
     |Name     |Kategorie  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Sledování změn ve       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 
-2. Výběrem uloženého hledání Zobrazte dotaz, který jste použili k naplnění skupiny. Následující obrázek znázorňuje dotaz a jeho výsledky:
+6. Vyberte uložené hledání, které chcete zobrazit, a upravte dotaz, který jste použili k naplnění skupiny. Následující obrázek znázorňuje dotaz a jeho výsledky:
 
     ![Uložená hledání](media/automation-scope-configurations-change-tracking/logsearch.png)
 

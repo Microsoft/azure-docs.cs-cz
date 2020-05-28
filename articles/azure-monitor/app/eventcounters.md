@@ -123,7 +123,7 @@ customMetrics
 
 Podobně jako u jiné telemetrie má **customMetrics** také sloupec `cloud_RoleInstance` , který označuje identitu instance hostitelského serveru, na které je vaše aplikace spuštěná. Výše uvedený dotaz ukazuje hodnotu čítače na instanci a lze ji použít k porovnání výkonu různých instancí serveru.
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 Podobně jako u jiných metrik můžete [nastavit výstrahu](../../azure-monitor/platform/alerts-log.md) , která vás upozorní, pokud počítadlo události překročí zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy

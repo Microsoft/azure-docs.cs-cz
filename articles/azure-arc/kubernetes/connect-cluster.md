@@ -40,7 +40,7 @@ Agenti Azure ARC vyžadují, aby následující protokoly/porty/odchozí adresy 
 * TCP na portu 443 – >`https://:443`
 * TCP na portu 9418 – >`git://:9418`
 
-| Koncový bod (DNS)                                                                                               | Popis                                                                                                                 |
+| Koncový bod (DNS)                                                                                               | Description                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Vyžaduje se, aby se agent připojil k Azure a zaregistroval cluster.                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Koncový bod roviny dat pro agenta, aby načetl stav a načetl informace o konfiguraci                                      |

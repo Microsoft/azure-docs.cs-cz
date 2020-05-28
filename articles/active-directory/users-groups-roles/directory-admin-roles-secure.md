@@ -321,7 +321,7 @@ Využijte Privileged Identity Management s rolemi správce Azure AD ke správě,
 Integrace protokolů Azure umožňuje integrovat nezpracované protokoly z vašich prostředků Azure do stávajících systémů zabezpečení a SIEM (Security Information and Event Management) vaší organizace. [Integrace protokolu Azure](../../security/fundamentals/azure-log-integration-overview.md) shromažďuje události Windows z protokolů Windows Prohlížeč událostí a prostředků Azure z těchto zdrojů:
 
 * Protokoly aktivit Azure
-* Výstrahy Azure Security Center
+* Upozornění služby Azure Security Center
 * Protokoly prostředků Azure
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Další kroky pro organizace, které spravují přístup k jiným cloudovým aplikacím přes Azure AD
@@ -358,7 +358,7 @@ Fáze 4 plánu by se měla implementovat po dobu šesti měsíců a později. Do
 
 Zabezpečení privilegovaného přístupu je důležité pro zajištění bezpečnostních ujištění vašich obchodních prostředků. Měl by však být součástí kompletního programu zabezpečení, který poskytuje průběžné záruky zabezpečení. Tento program by měl obsahovat tyto prvky:
 
-* Zásada
+* Zásady
 * Operace
 * Zabezpečení informací
 * Servery

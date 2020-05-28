@@ -157,9 +157,9 @@ Typ operačního systému | síť. SummaryConfig.GuestFullName
 Typ spouštění | síť. Config. firmware
 Počet jader | síť. Config. hardware. NumCPU
 Paměť (MB) | síť. Config. hardware. MemoryMB
-Počet disků | síť. Config. hardware. Device. ToList – (). FindAll (x => je VirtualDisk). Count
-Seznam velikostí disků | síť. Config. hardware. Device. ToList – (). FindAll (x => je VirtualDisk)
-Seznam síťových adaptérů | síť. Config. hardware. Device. ToList – (). FindAll (x => je VirtualEthernet). Count
+Počet disků | síť. Config. hardware. Device. ToList – (). FindAll (x = > je VirtualDisk). Count
+Seznam velikostí disků | síť. Config. hardware. Device. ToList – (). FindAll (x = > je VirtualDisk)
+Seznam síťových adaptérů | síť. Config. hardware. Device. ToList – (). FindAll (x = > je VirtualEthernet). Count
 Využití procesoru | CPU. Usage. Average
 Využití paměti |mem. Usage. Average
 **Podrobnosti o jednotlivých discích** | 
@@ -441,7 +441,7 @@ Pokud používáte starší verzi nějaké součásti, musíte službu odinstalo
 
 1. Pokud chcete vyhledat nejnovější verze služby zařízení, [Stáhněte](https://aka.ms/latestapplianceservices) si soubor LatestComponents. JSON.
 2.    Po stažení otevřete soubor LatestComponents. JSON v programu Poznámkový blok.
-3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Například:
+3. Vyhledejte nejnovější verzi služby v souboru a odkaz pro stažení. Příklad:
 
     "Name": "ASRMigrationWebApp"; "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 

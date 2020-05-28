@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 7064101c21c11b48d8616dbeaa2fd9075660fd3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5814113906aadad01821f78863f5053b8082892
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80473469"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114829"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio (Classic) pomocí API Management
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 ## <a name="overview"></a>Přehled
 V této příručce se dozvíte, jak rychle začít používat API Management ke správě webových služeb Azure Machine Learning Studio (Classic).
@@ -38,7 +36,7 @@ K dokončení této příručky potřebujete:
 
 Webovou službu Azure Machine Learning můžete spravovat s instancí API Management.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vyberte **+ Vytvořit prostředek**.
 3. Do vyhledávacího pole zadejte "API Management" a pak vyberte prostředek API Management.
 4. Klikněte na **Vytvořit**.
@@ -65,7 +63,7 @@ Vytvoření rozhraní API:
 
 1. Klikněte na **Přidat rozhraní API**.
 2. Zadejte **název webového rozhraní API** (Tento příklad používá rozhraní API pro ukázku demo).
-3. Jako **adresu URL webové služby**zadejte "`https://ussouthcentral.services.azureml.net`".
+3. Jako **adresu URL webové služby**zadejte " `https://ussouthcentral.services.azureml.net` ".
 4. Zadejte * * příponu adresy URL webového rozhraní API. Tím se stane poslední část adresy URL, kterou zákazníci použijí pro odesílání požadavků do instance služby (v tomto příkladu se používá "AzureML-demo").
 5. V případě **schématu URL webového rozhraní API**vyberte **https**.
 6. V případě **produktů**vyberte **Starter**.
@@ -84,12 +82,12 @@ Zobrazí se **nové okno operace** a ve výchozím nastavení se vybere karta **
 Nejprve vytvořte operaci pro službu záznamy o prostředcích AzureML:
 
 1. Jako **příkaz HTTP**vyberte post ( **Odeslat**).
-2. Pro **šablonu adresa URL**zadejte "`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`".
+2. Pro **šablonu adresa URL**zadejte " `/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}` ".
 3. Zadejte **Zobrazovaný název** (v tomto příkladu se používá "záznamy k provedení").
 
    ![Přidání RR – operace – signatura](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
-4. Na levé straně klikněte na **odpovědi** > **Přidat** a vyberte **200 OK**.
+4. Na levé straně klikněte na **odpovědi**  >  **Přidat** a vyberte **200 OK**.
 5. Kliknutím na **Uložit** uložte tuto operaci.
 
    ![Přidání RR – operace – odpověď](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
@@ -103,36 +101,36 @@ Nejprve vytvořte operaci pro službu záznamy o prostředcích AzureML:
 
 1. Kliknutím na **přidat operaci** přidejte do rozhraní API operaci BES.
 2. Jako **příkaz HTTP**vyberte post ( **Odeslat**).
-3. Pro **šablonu adresa URL**zadejte "`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`".
+3. Pro **šablonu adresa URL**zadejte " `/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}` ".
 4. Zadejte **Zobrazovaný název** (v tomto příkladu se používá "BES Submit").
-5. Na levé straně klikněte na **odpovědi** > **Přidat** a vyberte **200 OK**.
+5. Na levé straně klikněte na **odpovědi**  >  **Přidat** a vyberte **200 OK**.
 6. Klikněte na **Uložit**.
 
 ### <a name="start-a-batch-execution-job"></a>Spustit úlohu spuštění dávky
 
 1. Kliknutím na **přidat operaci** přidejte do rozhraní API operaci BES.
 2. Jako **příkaz HTTP**vyberte post ( **Odeslat**).
-3. Pro **příkaz HTTP**zadejte "`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`".
+3. Pro **příkaz HTTP**zadejte " `/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}` ".
 4. Zadejte **Zobrazovaný název** (v tomto příkladu se používá "BES Start").
-6. Na levé straně klikněte na **odpovědi** > **Přidat** a vyberte **200 OK**.
+6. Na levé straně klikněte na **odpovědi**  >  **Přidat** a vyberte **200 OK**.
 7. Klikněte na **Uložit**.
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>Získání stavu nebo výsledku úlohy dávkového spuštění
 
 1. Kliknutím na **přidat operaci** přidejte do rozhraní API operaci BES.
 2. Pro **příkaz HTTP**vyberte **získat**.
-3. Pro **šablonu adresa URL**zadejte "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`".
+3. Pro **šablonu adresa URL**zadejte " `/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}` ".
 4. Zadejte **Zobrazovaný název** (v tomto příkladu se používá "BES status").
-6. Na levé straně klikněte na **odpovědi** > **Přidat** a vyberte **200 OK**.
+6. Na levé straně klikněte na **odpovědi**  >  **Přidat** a vyberte **200 OK**.
 7. Klikněte na **Uložit**.
 
 ### <a name="delete-a-batch-execution-job"></a>Odstranění úlohy spuštění dávky
 
 1. Kliknutím na **přidat operaci** přidejte do rozhraní API operaci BES.
 2. Pro **příkaz HTTP**vyberte **Odstranit**.
-3. Pro **šablonu adresa URL**zadejte "`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`".
+3. Pro **šablonu adresa URL**zadejte " `/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}` ".
 4. Zadejte **Zobrazovaný název** (v tomto příkladu se používá "BES Delete").
-5. Na levé straně klikněte na **odpovědi** > **Přidat** a vyberte **200 OK**.
+5. Na levé straně klikněte na **odpovědi**  >  **Přidat** a vyberte **200 OK**.
 6. Klikněte na **Uložit**.
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>Volání operace z portálu pro vývojáře
@@ -153,9 +151,9 @@ Operace se můžou volat přímo z portálu pro vývojáře, který nabízí poh
 
 4. V části **parametry žádosti**zadejte svůj **pracovní prostor** a **službu**, do pole **apiversion**zadejte "2,0" a "true" ( **Podrobnosti**). **Pracovní prostor** a **službu** můžete najít na řídicím panelu webové služby AzureML (viz **testování webové služby** v dodatku A).
 
-   V případě **hlaviček žádosti**klikněte na **Přidat hlavičku** a zadejte typ Content-Type a Application/JSON. Klikněte znovu na **Přidat hlavičku** a napište "Authorization" a " * \<klíč\>rozhraní API služby*". Svůj klíč API-KEY můžete najít na řídicím panelu webové služby AzureML (viz **Test webové služby** v dodatku A).
+   V případě **hlaviček žádosti**klikněte na **Přidat hlavičku** a zadejte typ Content-Type a Application/JSON. Klikněte znovu na **Přidat hlavičku** a zadejte "Authorization" a "nosič *\<your service API-KEY\>* ". Svůj klíč API-KEY můžete najít na řídicím panelu webové služby AzureML (viz **Test webové služby** v dodatku A).
 
-   V části **Text žádosti**zadejte `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`.
+   V části **Text žádosti**zadejte `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}` .
 
    ![AzureML – demo – rozhraní API](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 

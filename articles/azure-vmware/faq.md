@@ -4,12 +4,12 @@ description: Poskytuje odpovědi na některé běžné dotazy týkající se ře
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: c318a17e433f40b17e3dd9e3e95a655ecb48a160
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873315"
+ms.locfileid: "84112682"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Nejčastější dotazy týkající se řešení Azure VMware (AVS) Preview
 
@@ -67,34 +67,7 @@ Nedošlo k žádné změně stávajícího řešení Azure VMware pomocí CloudS
 
 Ano, řešení Azure VMware podporuje migraci pomocí známých nástrojů VMware, jako je HCX. Pro zákazníky, kteří mají zájem o migraci na nové řešení, prosím Spolupracujte se svým týmem účet Microsoft a prozkoumejte možnosti a dostupnou podporu.
 
-<a name="how-to-request-a-quota-increase-for-existing-avs"></a>**Návody požádat o zvýšení kvóty hostitele pro existující řešení Azure VMware?**
 
-Můžete požádat o zvýšení kvóty tím, že [odešlete žádost o podporu](..\azure-portal\supportability\how-to-create-azure-support-request.md). Tým správy kvót vyhodnocuje žádost a schválí ji do tří pracovních dnů.  
-
-> [!IMPORTANT]
-> Než budete moct požádat o zvýšení kvóty, nezapomeňte [zaregistrovat poskytovatele prostředků **Microsoft. AVS** ](tutorial-create-private-cloud.md) v Azure Portal.  
-> ```azurecli-interactive
-> az provider register -n Microsoft.AVS --subscription <your subscription ID>
-> ```
-> Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](https://review.docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types).
-
-1. V Azure Portal v části **pomoc a podpora**vytvořte **novou žádost o podporu** a zadejte pro lístek následující informace:
-   - **Typ problému:** Odbornou
-   - **Předplatné:** ID vašeho předplatného
-   - **Služba:**  Řešení Azure VMware 
-   - **Shrnutí:** Zvýšení kvóty
-   - **Typ problému:** Problémy se správou kapacity
-   - **Podtyp problému:** Požadavek zákazníka na další kvótu/kapacitu hostitele
-
-1. V popisu lístku podpory zadejte na kartě Podrobnosti:
-   - Počet dalších uzlů   
-   - SKU uzlu
-   - Oblast
-
-   > [!NOTE] 
-   > Ve výchozím nastavení se udělí minimálně čtyři uzly.
-
-1. Žádost odešlete kliknutím na tlačítko **zkontrolovat + vytvořit** .
 
 ## <a name="compute-network-and-storage"></a>Výpočetní prostředky, sítě a úložiště
 
@@ -156,7 +129,7 @@ Ano, NSX-T 2,5 se používá pro softwarově definované sítě v privátních c
 
 **Můžu použít VMware NSX-V v privátním cloudu?**
 
-No. NSX-T je jediná podporovaná verze NSX.
+Ne. NSX-T je jediná podporovaná verze NSX.
 
 **NSX se vyžaduje v místních prostředích nebo sítích, které se připojují k privátnímu cloudu.**
 
@@ -164,7 +137,7 @@ Ne, nemusíte používat NSX místně.
 
 **Jaký je plán upgradu a aktualizace softwaru VMware v privátním cloudu?**
 
-Upgrady sady prostředků privátního cloudu jsou hotové, aby software zůstal v rámci jedné verze nejnovější verze softwarové sady ve formě VMware. Verze privátního cloudového softwaru se mohou lišit od nejaktuálnější verze jednotlivých softwarových komponent (ESXi, NSX-T, vCenter, síti vSAN).
+Upgrady sady prostředků privátního cloudu jsou hotové, aby software zůstal v rámci jedné verze nejnovější verze softwarové sady od VMware. Verze privátního cloudového softwaru se mohou lišit od nejaktuálnější verze jednotlivých softwarových komponent (ESXi, NSX-T, vCenter, síti vSAN).
 
 **Jak často bude balíček softwaru pro privátní cloud aktualizovaný?**
 
@@ -233,6 +206,35 @@ Společnost Microsoft doručuje podporu služby AVS. Poznamenejte si prosím na�
 **Jaké účty potřebuji k vytvoření privátního cloudu služby AVS?**
 
 Budete potřebovat účet Azure v předplatném Azure.
+
+<a name="how-to-request-a-quota-increase-for-avs"></a>**Jak Návody požádat o zvýšení kvóty hostitele pro řešení Azure VMware?**
+
+Můžete požádat o zvýšení kvóty tím, že [odešlete žádost o podporu](..\azure-portal\supportability\how-to-create-azure-support-request.md). Tým správy kvót vyhodnocuje žádost a schválí ji do tří pracovních dnů.  
+
+> [!IMPORTANT]
+> Než budete moct požádat o zvýšení kvóty, nezapomeňte zaregistrovat poskytovatele prostředků **Microsoft. AVS** v Azure Portal.  
+> ```azurecli-interactive
+> az provider register -n Microsoft.AVS --subscription <your subscription ID>
+> ```
+> Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+
+1. V Azure Portal v části **pomoc a podpora**vytvořte **novou žádost o podporu** a zadejte pro lístek následující informace:
+   - **Typ problému:** Odbornou
+   - **Předplatné:** ID vašeho předplatného
+   - **Služba:**  Řešení Azure VMware 
+   - **Shrnutí:** Zvýšení kvóty
+   - **Typ problému:** Problémy se správou kapacity
+   - **Podtyp problému:** Požadavek zákazníka na další kvótu/kapacitu hostitele
+
+1. V popisu lístku podpory zadejte na kartě Podrobnosti:
+   - Počet dalších uzlů   
+   - SKU uzlu
+   - Oblast
+
+   > [!NOTE] 
+   > Ve výchozím nastavení se udělí minimálně čtyři uzly.
+
+1. Žádost odešlete kliknutím na tlačítko **zkontrolovat + vytvořit** .
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952

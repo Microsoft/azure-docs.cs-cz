@@ -74,7 +74,7 @@ Na rozdíl od uživatelsky přiřazených identit nemusíte ručně vytvářet i
 
    ![ID objektu pro identitu přiřazenou systémem](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
-   | Vlastnost | Hodnota | Popis |
+   | Vlastnost | Hodnota | Description |
    |----------|-------|-------------|
    | **ID objektu** | <*Identita-Resource-ID*> | Globálně jedinečný identifikátor (GUID), který představuje identitu přiřazenou systémem pro vaši aplikaci logiky v tenantovi Azure AD. |
    ||||
@@ -120,7 +120,7 @@ Když Azure vytvoří definici prostředků aplikace logiky, `identity` objekt z
 }
 ```
 
-| Property (JSON) | Hodnota | Popis |
+| Property (JSON) | Hodnota | Description |
 |-----------------|-------|-------------|
 | `principalId` | <*ID objektu zabezpečení*> | Globálně jedinečný identifikátor (GUID) instančního objektu služby pro spravovanou identitu, která představuje vaši aplikaci logiky v tenantovi Azure AD. Tento identifikátor GUID se někdy zobrazuje jako "ID objektu" nebo `objectID` . |
 | `tenantId` | <*Azure-AD-tenant-ID*> | Globálně jedinečný identifikátor (GUID), který představuje tenanta Azure AD, ve kterém je teď aplikace logiky členem. V tenantovi služby Azure AD má instanční objekt stejný název jako instance aplikace logiky. |
@@ -160,7 +160,7 @@ Pokud chcete pro vaši aplikaci logiky nastavit spravovanou identitu přiřazeno
 
    ![Vytvoření spravované identity přiřazené uživatelem](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
-   | Vlastnost | Požaduje se | Hodnota | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Description |
    |----------|----------|-------|-------------|
    | **Název prostředku** | Ano | <*uživatelsky přiřazené-identity-Name*> | Název, kterému chcete přiřadit identitu přiřazenou uživatelem. V tomto příkladu se používá "Fabrikam-User-Assign-identity". |
    | **Předplatné** | Ano | <*Azure – předplatné – název*> | Název předplatného Azure, které se má použít |
@@ -232,7 +232,7 @@ Tento příklad ukazuje definici prostředků aplikace logiky pro požadavek HTT
 }
 ```
 
-| Property (JSON) | Hodnota | Popis |
+| Property (JSON) | Hodnota | Description |
 |-----------------|-------|-------------|
 | `principalId` | <*ID objektu zabezpečení*> | Globálně jedinečný identifikátor (GUID) uživatelsky přiřazené spravované identity v tenantovi Azure AD |
 | `clientId` | <*ID klienta*> | Globálně jedinečný identifikátor (GUID) pro novou identitu vaší aplikace logiky, který se používá pro volání během běhu |
@@ -291,7 +291,7 @@ Pokud šablona obsahuje také definici prostředků spravované identity, může
 }
 ```
 
-| Property (JSON) | Hodnota | Popis |
+| Property (JSON) | Hodnota | Description |
 |-----------------|-------|-------------|
 | `tenantId` | <*Azure-AD-tenant-ID*> | Globálně jedinečný identifikátor (GUID), který představuje klienta služby Azure AD, kde je uživatelem přiřazená identita nyní členem. V tenantovi služby Azure AD má instanční objekt stejný název jako název identity přiřazené uživatelem. |
 | `principalId` | <*ID objektu zabezpečení*> | Globálně jedinečný identifikátor (GUID) uživatelsky přiřazené spravované identity v tenantovi Azure AD |
@@ -382,8 +382,8 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
    |----------|----------|-------------|
    | **Metoda** | Ano | Metoda HTTP, kterou používá operace, kterou chcete spustit |
    | **Identifikátor URI** | Ano | Adresa URL koncového bodu pro přístup k cílovému prostředku Azure nebo entitě. Syntaxe identifikátoru URI obvykle zahrnuje [ID prostředku](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) pro prostředek nebo službu Azure. |
-   | **Hlavičky** | No | Všechny hodnoty hlaviček, které potřebujete nebo chcete zahrnout do odchozího požadavku, jako je typ obsahu |
-   | **Dotazy** | No | Všechny parametry dotazů, které potřebujete nebo chcete zahrnout do žádosti, jako je například parametr konkrétní operace nebo verze rozhraní API pro operaci, kterou chcete spustit |
+   | **Hlavičky** | Ne | Všechny hodnoty hlaviček, které potřebujete nebo chcete zahrnout do odchozího požadavku, jako je typ obsahu |
+   | **Dotazy** | Ne | Všechny parametry dotazů, které potřebujete nebo chcete zahrnout do žádosti, jako je například parametr konkrétní operace nebo verze rozhraní API pro operaci, kterou chcete spustit |
    | **Authentication** | Ano | Typ ověřování, který se má použít pro ověřování přístupu k cílovému prostředku nebo entitě |
    ||||
 
@@ -394,7 +394,7 @@ Tyto kroky ukazují, jak používat spravovanou identitu s triggerem nebo akcí 
 
    Pokud chcete spustit [operaci objektu BLOB snímku](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob), akce http určuje tyto vlastnosti:
 
-   | Vlastnost | Požaduje se | Příklad hodnoty | Popis |
+   | Vlastnost | Požaduje se | Příklad hodnoty | Description |
    |----------|----------|---------------|-------------|
    | **Metoda** | Ano | `PUT`| Metoda HTTP, kterou používá operace objektu BLOB snímku |
    | **Identifikátor URI** | Ano | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | ID prostředku pro soubor Azure Blob Storage v globálním (veřejném) prostředí Azure, které používá tuto syntaxi |
