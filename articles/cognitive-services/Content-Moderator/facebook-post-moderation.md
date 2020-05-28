@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774270"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118641"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Kurz: střední příspěvky a příkazy Facebooku pomocí Azure Content Moderator
 
@@ -28,7 +28,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > * Vytvoření funkcí Azure Functions, které naslouchají událostem protokolu HTTP od Content Moderatoru a Facebooku.
 > * Propojte stránku Facebooku s Content Moderator pomocí aplikace Facebook.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 Tento diagram znázorňuje jednotlivé komponenty tohoto scénáře:
 
@@ -68,16 +68,16 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/) a proveďte následuj�
 1. Přejít na nově vytvořenou Function App.
 1. V aplikaci otevřete kartu **funkce platformy** a vyberte **Konfigurace**. V části **nastavení aplikace** na další stránce vyberte možnost **nové nastavení aplikace** a přidejte následující páry klíč/hodnota:
     
-    | Název nastavení aplikace | value   | 
+    | Název nastavení aplikace | hodnota   | 
     | -------------------- |-------------|
-    | cm:TeamId   | TeamId Content Moderatoru.  | 
-    | cm:SubscriptionKey | Klíč předplatného Content Moderatoru – viz [přihlašovací údaje](review-tool-user-guide/credentials.md). |
-    | cm:Region | Název oblasti Content Moderatoru bez mezer. Najdete ho v poli **umístění** na kartě **Přehled** prostředku Azure.|
-    | cm:ImageWorkflow | Název pracovního postupu ke spuštění na obrázcích. |
-    | cm:TextWorkflow | Název pracovního postupu pro spuštění na textu. |
-    | cm:CallbackEndpoint | Adresa URL Function App CMListener, kterou vytvoříte později v této příručce |
-    | fb:VerificationToken | Tajný token, který vytvoříte, který se používá k přihlášení k odběru událostí kanálu Facebooku |
-    | fb:PageAccessToken | Přístupovému tokenu Facebook Graph API nekončí platnost a povoluje se pomocí něho používání funkcí skrytí a odstranění příspěvků vaším jménem. Tento token se zobrazí v pozdějším kroku. |
+    | `cm:TeamId`   | TeamId Content Moderatoru.  | 
+    | `cm:SubscriptionKey` | Klíč předplatného Content Moderatoru – viz [přihlašovací údaje](review-tool-user-guide/credentials.md). |
+    | `cm:Region` | Název oblasti Content Moderatoru bez mezer. Tento název najdete v poli **umístění** na kartě **Přehled** prostředku Azure.|
+    | `cm:ImageWorkflow` | Název pracovního postupu ke spuštění na obrázcích. |
+    | `cm:TextWorkflow` | Název pracovního postupu pro spuštění na textu. |
+    | `cm:CallbackEndpoint` | Adresa URL Function App CMListener, kterou vytvoříte později v této příručce |
+    | `fb:VerificationToken` | Tajný token, který vytvoříte, který se používá k přihlášení k odběru událostí kanálu Facebooku |
+    | `fb:PageAccessToken` | Přístupovému tokenu Facebook Graph API nekončí platnost a povoluje se pomocí něho používání funkcí skrytí a odstranění příspěvků vaším jménem. Tento token se zobrazí v pozdějším kroku. |
 
     Klikněte na tlačítko **Uložit** v horní části stránky.
 
@@ -144,7 +144,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/) a proveďte následuj�
         2. [Postman Environment](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
     3. Aktualizujte tyto proměnné prostředí:
     
-        | Key | Hodnota   | 
+        | Klíč | Hodnota   | 
         | -------------------- |-------------|
         | appId   | Sem vložte identifikátor vaší aplikace pro Facebooku  | 
         | appSecret | Sem vložte tajný klíč vaší aplikace pro Facebooku | 

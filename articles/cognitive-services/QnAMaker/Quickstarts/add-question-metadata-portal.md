@@ -1,22 +1,22 @@
 ---
 title: 'Rychlý Start: Přidání otázek a odpovědí na portálu QnA Maker'
-description: V tomto rychlém startu se dozvíte, jak přidat sadu dotazů a odpovědí s metadaty, aby vaši uživatelé mohli najít správnou odpověď na jejich otázku.
+description: V tomto rychlém startu se dozvíte, jak přidat páry dotazů a odpovědí k metadatům, aby vaši uživatelé mohli najít správnou odpověď na jejich otázku.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: fc8bac425723e9194c447f1cf6ee13547c09d772
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: fc40c6a6e0543d4d558da2c8a17c155fbb7cbf1f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873687"
+ms.locfileid: "83994659"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Rychlý Start: Přidání otázek a odpovědí pomocí portálu QnA Maker
 
-Po vytvoření znalostní báze přidejte sadu otázek a odpovědí (QnA) s metadaty k filtrování odpovědi. Otázky v následující tabulce jsou o omezeních služeb Azure, ale každá z nich musí mít jinou službu Azure.
+Po vytvoření znalostní báze přidejte páry otázek a odpovědí (QnA) s metadaty k filtrování odpovědi. Otázky v následující tabulce jsou o omezeních služeb Azure, ale každá z nich musí mít jinou službu Azure.
 
 <a name="qna-table"></a>
 
-|Nastavit|Dotazy|Odpověď|Metadata|
+|Spojení|Dotazy|Odpověď|Metadata|
 |--|--|--|--|
 |1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -39,11 +39,11 @@ Po přidání metadat do páru QnA může klientská aplikace:
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>Přidat další otázky s alternativou fráze
 
-Aktuální znalostní báze má QnA Maker řešení potíží s páry QnA. Tyto sady byly vytvořeny při přidání adresy URL do znalostní báze během procesu vytváření.
+Aktuální znalostní báze má QnA Maker řešení potíží s páry QnA. Tyto páry byly vytvořeny při přidání adresy URL do znalostní báze během procesu vytváření.
 
 Při importu této adresy URL byla vytvořena pouze jedna otázka s jednou odpovědí. V tomto postupu přidejte další otázky.
 
-1. Na stránce **Upravit** použijte vyhledávací pole nad rámec otázek a odpovědí a vyhledejte otázku.`How large a knowledge base can I create?`
+1. Na stránce **Upravit** použijte vyhledávací pole nad páry otázka a odpověď, abyste zjistili otázku.`How large a knowledge base can I create?`
 
 1. Ve sloupci **otázka** vyberte **+ Přidat alternativní formulování** a potom přidejte každou novou formulaci, která je uvedená v následující tabulce.
 
@@ -70,9 +70,9 @@ Při importu této adresy URL byla vytvořena pouze jedna otázka s jednou odpov
 
 ## <a name="add-metadata-to-filter-the-answers"></a>Přidat metadata pro filtrování odpovědí
 
-Přidání metadat do otázky a sady odpovědí umožňuje klientské aplikaci požádat o filtrované odpovědi. Tento filtr se použije dřív, než se použije [první a druhý rozsah](../concepts/query-knowledge-base.md#ranker-process) .
+Přidání metadat do dvojice otázek a odpovědí umožňuje klientské aplikaci požádat o filtrované odpovědi. Tento filtr se použije dřív, než se použije [první a druhý rozsah](../concepts/query-knowledge-base.md#ranker-process) .
 
-1. Přidejte druhou otázku a sadu odpovědí, bez metadat, z [první tabulky v tomto rychlém](#qna-table)startu, a pak pokračujte následujícími kroky.
+1. Přidejte druhou dvojici otázek a odpovědí bez metadat z [první tabulky v tomto rychlém](#qna-table)startu a potom pokračujte následujícími kroky.
 
 1. Vyberte **Možnosti zobrazení**a pak vyberte **zobrazit metadata**.
 

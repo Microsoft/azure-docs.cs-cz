@@ -543,6 +543,8 @@
       items:
         - name: Aspekty zabezpečení přesunu dat
           href: data-movement-security-considerations.md
+        - name: Strategie přístupu k datům
+          href: data-access-strategies.md
         - name: ID adresy modulu Azure Integration Runtime
           href: azure-integration-runtime-ip-addresses.md
         - name: Uložení přihlašovacích údajů v Azure Key Vault

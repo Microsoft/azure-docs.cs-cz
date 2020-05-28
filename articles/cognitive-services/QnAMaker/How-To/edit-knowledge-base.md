@@ -3,12 +3,12 @@ title: Úprava znalostní báze – QnA Maker
 description: QnA Maker vám umožní spravovat obsah znalostní báze tím, že nabízí snadno použitelné prostředí pro úpravy.
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 018e733dda06b7785b0a87ea3e08009967213134
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650871"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993571"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Úprava párů QnA ve znalostní bázi
 
@@ -85,7 +85,7 @@ Jakékoli pole v jakémkoli páru QnA lze upravovat bez ohledu na původní zdro
 
 ## <a name="delete-a-qna-pair"></a>Odstranit pár QnA
 
-Pokud chcete odstranit QnA, klikněte na ikonu **Odstranit** na pravé straně řádku QnA. Toto je trvalá operace. Nedá se vrátit zpátky. Než budete odstraňovat sady, zvažte export znalostní báze ze stránky **publikování** .
+Pokud chcete odstranit QnA, klikněte na ikonu **Odstranit** na pravé straně řádku QnA. Toto je trvalá operace. Nedá se vrátit zpátky. Než budete páry odstranit, zvažte možnost exportovat si KB ze stránky **publikování** .
 
 ![Odstranit pár QnA](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -110,7 +110,7 @@ Nemůžete propojit páry QnA v metadatech odpovědi.
 
 ## <a name="add-metadata"></a>Přidat metadata
 
-Přidejte sady metadat pomocí prvního výběru **možností zobrazení**a pak vyberte **zobrazit metadata**. Tím se zobrazí sloupec metadata. Pak vyberte **+** znaménko a přidejte sadu metadat. Tato sada se skládá z jednoho klíče a jedné hodnoty.
+Přidejte páry metadat tak, že nejprve vyberete **Možnosti zobrazení**a pak vyberete **zobrazit metadata**. Tím se zobrazí sloupec metadata. Pak vyberte **+** znaménko a přidejte dvojici metadat. Tento pár se skládá z jednoho klíče a jedné hodnoty.
 
 ## <a name="save-changes-to-the-qna-pairs"></a>Uložení změn do párů QnA
 

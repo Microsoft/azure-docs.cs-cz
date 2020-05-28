@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 59f969a920c30bb017e10d2aa233df02d69918e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594164"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116910"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Výukový model pro rozpoznávání formulářů s popisky pomocí REST API a Pythonu
 
@@ -34,15 +34,15 @@ K dokončení tohoto rychlého startu musíte mít:
 
 ## <a name="set-up-training-data"></a>Nastavení školicích dat
 
-Dále budete muset nastavit požadovaná vstupní data. Funkce s popisky dat má speciální požadavky na vstup nad rámec těch, které jsou potřeba k učení vlastního modelu. 
+Dále budete muset nastavit požadovaná vstupní data. Funkce s popisky dat má speciální požadavky na vstup nad rámec toho, co je potřeba k učení vlastního modelu bez popisků.
 
 Ujistěte se, že všechny školicí dokumenty mají stejný formát. Pokud máte formuláře v několika formátech, uspořádejte je do podsložek v závislosti na společném formátu. Při učení budete muset rozhraní API nasměrovat do podsložky.
 
 Aby bylo možné vytvořit model pomocí popisků dat, budete potřebovat následující soubory jako vstupy v podsložce. Naučíte se, jak vytvořit tento soubor níže.
 
 * **Zdrojové formuláře** – formuláře pro extrakci dat. Podporované typy jsou JPEG, PNG, PDF nebo TIFF.
-* **Soubory rozložení OCR** – soubory JSON, které popisují velikosti a pozice veškerého čitelného textu v každém zdrojovém formuláři. K vygenerování těchto dat použijete rozhraní API pro rozložení pro rozpoznávání formuláře. 
-* **Soubory popisků** – soubory JSON, které popisují popisky dat, které uživatel zadal ručně.
+* **Soubory rozložení OCR** – jedná se o soubory JSON, které popisují velikosti a pozice veškerého čitelného textu v každém zdrojovém formuláři. K vygenerování těchto dat použijete rozhraní API pro rozložení pro rozpoznávání formuláře. 
+* **Soubory popisků** – jedná se o soubory JSON, které popisují popisky dat, které uživatel zadal ručně.
 
 Všechny tyto soubory by měly zabírat stejnou podsložku a musí být v následujícím formátu:
 
@@ -116,7 +116,7 @@ Chcete-li, aby služba mohla zvážit odpovídající vstupní soubory pro škol
 
 ### <a name="create-the-label-files"></a>Vytvoření souborů popisků
 
-Soubory popisků obsahují přidružení klíč-hodnota, která uživatel zadal ručně. Jsou nutné pro školení s popisky dat, ale ne každý zdrojový soubor musí mít odpovídající soubor popisku. Zdrojové soubory bez popisků se budou považovat za běžné školicí dokumenty. Pro spolehlivé školení doporučujeme pět nebo více označených souborů.
+Soubory popisků obsahují přidružení klíč-hodnota, která uživatel zadal ručně. Jsou nutné pro školení s popisky dat, ale ne každý zdrojový soubor musí mít odpovídající soubor popisku. Zdrojové soubory bez popisků se budou považovat za běžné školicí dokumenty. Pro spolehlivé školení doporučujeme pět nebo více označených souborů. K vygenerování těchto souborů můžete použít nástroj uživatelského rozhraní, jako je [ukázkový nástroj pro popisky](./label-tool.md) .
 
 Při vytváření souboru popisků můžete volitelně zadat oblasti s &mdash; přesným umístěním hodnot v dokumentu. Tím zajistíte i vyšší přesnost školení. Oblasti jsou formátovány jako sada osmi hodnot, které odpovídají čtyřm souřadnicím X, Y: vlevo nahoře, vpravo nahoře, dole vpravo a vlevo dole. Hodnoty souřadnic jsou mezi nulou a jednou škálované na rozměry stránky.
 
@@ -187,8 +187,8 @@ Pro každý zdrojový formulář by měl mít odpovídající soubor popisku př
                 ...
 ```
 
-> [!NOTE]
-> Můžete použít pouze jeden popisek na každý textový prvek a každý popisek lze použít pouze jednou na stránku. V tuto chvíli nemůžete použít popisek na více stránkách.
+> [!IMPORTANT]
+> Můžete použít pouze jeden popisek na každý textový prvek a každý popisek lze použít pouze jednou na stránku. Popisek nelze použít na více stránkách.
 
 
 ## <a name="train-a-model-using-labeled-data"></a>Výuka modelu pomocí popiskových dat
@@ -554,4 +554,7 @@ Chápeme, že tento scénář je pro naše zákazníky nezbytný a pracujeme na 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak pomocí nástroje pro rozpoznávání formulářů REST API s Pythonem naučit model s ručně označenými daty. Dále si přečtěte [referenční dokumentaci rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) a prozkoumejte rozhraní API pro rozpoznávání formulářů podrobněji.
+V tomto rychlém startu jste zjistili, jak pomocí nástroje pro rozpoznávání formulářů REST API s Pythonem naučit model s ručně označenými daty. Dále si přečtěte referenční dokumentaci rozhraní API a prozkoumejte rozhraní API pro rozpoznávání formulářů podrobněji.
+
+> [!div class="nextstepaction"]
+> [Referenční dokumentace REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e393b653ecb9e9d7b8eff277b91215ccc5bf6342
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 282222aad68df94ea9eff4151d31eb5e488bca81
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770818"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117015"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování synapse fondu SQL pomocí Azure Portal
 
@@ -37,7 +37,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
 
-Datové sklady se vytvářejí pomocí fondu SQL ve službě Azure synapse Analytics. Vytvoří se fond SQL s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a na [logickém serveru SQL Azure](../../sql-database/sql-database-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Datové sklady se vytvářejí pomocí fondu SQL ve službě Azure synapse Analytics. Vytvoří se fond SQL s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a na [logickém SQL serveru](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 Pomocí těchto kroků vytvořte fond SQL, který obsahuje ukázková data **AdventureWorksDW** .
 
@@ -51,7 +51,7 @@ Pomocí těchto kroků vytvořte fond SQL, který obsahuje ukázková data **Adv
 
 3. V oblasti **základy**zadejte své předplatné, skupinu prostředků, název fondu SQL a název serveru:
 
-   | Nastavení | Navrhovaná hodnota | Popis |
+   | Nastavení | Navrhovaná hodnota | Description |
    | :------ | :-------------- | :---------- |
    | **Předplatné** | Vaše předplatné | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
    | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
@@ -64,7 +64,7 @@ Pomocí těchto kroků vytvořte fond SQL, který obsahuje ukázková data **Adv
 
    ![změnit úroveň výkonu datového skladu](./media/create-data-warehouse-portal/create-sql-pool-performance-level.png)  
 
-   Další informace o úrovních výkonu najdete v tématu [Správa výpočetních prostředků v Azure SQL Data Warehouse](sql-data-warehouse-manage-compute-overview.md).
+   Další informace o úrovních výkonu najdete v tématu [Správa výpočetních prostředků ve službě Azure synapse Analytics](sql-data-warehouse-manage-compute-overview.md).
 
 5. Vyberte **Další nastavení**, v části **použít existující data**zvolte možnost **Ukázka** , aby se AdventureWorksDW vytvořil jako ukázková databáze.
 
@@ -76,16 +76,16 @@ Pomocí těchto kroků vytvořte fond SQL, který obsahuje ukázková data **Adv
 
    ![výběr možnosti Vytvořit](./media/create-data-warehouse-portal/create-sql-pool-create.png)
 
-6. Na panelu nástrojů vyberte **oznámení** pro monitorování procesu nasazení.
+7. Na panelu nástrojů vyberte **oznámení** pro monitorování procesu nasazení.
 
    ![oznámení](./media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
 
-Služba Azure synapse vytvoří bránu firewall na úrovni serveru. Tato brána firewall zabraňuje externím aplikacím a nástrojům v připojení k serveru nebo jakékoli databázi na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres. Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) pro IP adresu vašeho klienta.
+Služba Azure synapse vytvoří bránu firewall na úrovni serveru. Tato brána firewall zabraňuje externím aplikacím a nástrojům v připojení k serveru nebo jakékoli databázi na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres. Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) pro IP adresu vašeho klienta.
 
 > [!NOTE]
-> Azure synapse komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
+> Azure synapse komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k serveru, dokud vaše IT oddělení neotevře port 1433.
 
 1. Po dokončení nasazení vyberte v nabídce na levé straně **všechny služby** . Vyberte **databáze**, vyberte hvězdičku vedle položky **Azure synapse Analytics** a přidejte Azure synapse Analytics k oblíbeným položkám.
 
@@ -99,24 +99,24 @@ Služba Azure synapse vytvoří bránu firewall na úrovni serveru. Tato brána 
 
    ![nastavení serveru](./media/create-data-warehouse-portal/server-settings.png)
 
-5. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
+5. Otevře se stránka **nastavení brány firewall** pro server.
 
    ![pravidlo brány firewall serveru](./media/create-data-warehouse-portal/server-firewall-rule.png)
 
 6. Pokud chcete přidat aktuální IP adresu k novému pravidlu brány firewall, vyberte **Přidat IP adresu klienta** na panelu nástrojů. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-7. Vyberte **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
+7. Vyberte **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru.
 
 8. Vyberte **OK** a pak zavřete stránku **nastavení brány firewall** .
 
-Nyní se můžete připojit k SQL serveru a jeho fondům SQL pomocí této IP adresy. Připojení funguje z aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Při připojování použijte účet správce serveru, který jste předtím vytvořili.
+Nyní se můžete připojit k serveru a jeho fondům SQL pomocí této IP adresy. Připojení funguje z aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Při připojování použijte účet správce serveru, který jste předtím vytvořili.
 
 > [!IMPORTANT]
 > Standardně je přístup přes bránu firewall služby SQL Database povolený pro všechny služby Azure. na této stránce vyberte **vypnuto** a pak výběrem **Uložit** zakažte bránu firewall pro všechny služby Azure.
 
 ## <a name="get-the-fully-qualified-server-name"></a>Získání plně kvalifikovaného názvu serveru
 
-Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. Tento plně kvalifikovaný název použijete později při připojování k serveru.
+Získejte plně kvalifikovaný název serveru pro váš server v Azure Portal. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
@@ -128,13 +128,13 @@ Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Připojení k serveru jako správce serveru
 
-V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) naváže připojení k serveru SQL Azure.
+V této části se k navázání připojení k serveru používá [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS).
 
 1. Otevřete SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
-   | Nastavení | Navrhovaná hodnota | Popis |
+   | Nastavení | Navrhovaná hodnota | Description |
    | :------ | :-------------- | :---------- |
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
    | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **sqlpoolservername.Database.Windows.NET**. |
@@ -196,7 +196,7 @@ Pomocí těchto kroků vyčistěte prostředky, které už nepotřebujete.
 
 3. Pokud chcete odebrat fond SQL, aby se vám neúčtovaly výpočetní výkon nebo úložiště, vyberte **Odstranit**.
 
-4. Pokud chcete odebrat vytvořený SQL Server, vyberte na předchozím obrázku **sqlpoolservername.Database.Windows.NET** a pak vyberte **Odstranit**. S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
+4. Pokud chcete odebrat server, který jste vytvořili, vyberte na předchozím obrázku **sqlpoolservername.Database.Windows.NET** a pak vyberte **Odstranit**. S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
 5. Pokud chcete odebrat skupinu prostředků, vyberte **myResourceGroup**a pak vyberte **Odstranit skupinu prostředků**.
 

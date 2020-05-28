@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 70ed795032c3d6d46aa57afaf5b5ece94bc74ea9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869797"
+ms.locfileid: "83995969"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a Java
 
@@ -59,9 +59,9 @@ I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služb
 
 1. Vytvořte funkci volanou `check()` k vytvoření a odeslání požadavku rozhraní API. V rámci této funkce přidejte kód zadaný v následujících krocích. Vytvořte řetězec pro parametry žádosti:
 
-   a. Přiřaďte svůj kód na trhu k `mkt` parametru pomocí `=` operátoru. 
+   1. Přiřaďte svůj kód na trhu k `mkt` parametru pomocí `=` operátoru. 
 
-   b. Přidejte `mode` parametr s `&` operátorem a potom přiřaďte režim kontroly pravopisu. 
+   1. Přidejte `mode` parametr s `&` operátorem a potom přiřaďte režim kontroly pravopisu. 
 
    ```java
    public static void check () throws Exception {

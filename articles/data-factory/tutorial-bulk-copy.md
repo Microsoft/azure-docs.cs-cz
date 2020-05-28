@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 0f73095f72d07989cdfa309454a2b54efa8e5f95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a6a6aaedc1bb4abc5cf02ea1cd081ad48ec78d19
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418751"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118191"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 
@@ -59,7 +59,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 **Příprava zdrojové databáze Azure SQL Database**:
 
-Podle postupu v článku [Vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md) vytvořte Azure SQL Database s ukázkovými daty Adventure Works LT. V tomto kurzu se všechny tabulky z této ukázkové databáze zkopírují do datového skladu SQL.
+Podle postupu v článku [Vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md) vytvořte Azure SQL Database s ukázkovými daty Adventure Works LT. V tomto kurzu se všechny tabulky z této ukázkové databáze zkopírují do datového skladu SQL.
 
 **Příprava jímky Azure SQL Data Warehouse**:
 
@@ -69,7 +69,7 @@ Podle postupu v článku [Vytvoření databáze Azure SQL](../sql-database/sql-d
 
 ## <a name="azure-services-to-access-sql-server"></a>Služby Azure pro přístup k SQL serveru
 
-Pro SQL Database i SQL Data Warehouse povolte službám Azure přístup k SQL serveru. Ujistěte se, že nastavení **Povolit přístup ke službám Azure** je pro SQL server Azure **zapnuté**. Toto nastavení umožňuje službě Data Factory načítat data z Azure SQL Database a zapisovat data do Azure SQL Data Warehouse. Pokud chcete toto nastavení ověřit a zapnout, proveďte následující kroky:
+Pro SQL Database i SQL Data Warehouse povolte službám Azure přístup k SQL serveru. Ujistěte se, že nastavení **Povolit přístup ke službám Azure** je pro váš **Server zapnuté** . Toto nastavení umožňuje službě Data Factory načítat data z Azure SQL Database a zapisovat data do Azure SQL Data Warehouse. Pokud chcete toto nastavení ověřit a zapnout, proveďte následující kroky:
 
 1. Klikněte na **Všechny služby** na levé straně a pak klikněte na **Servery SQL**.
 2. Vyberte svůj server a v části **NASTAVENÍ** klikněte na **Brána firewall**.

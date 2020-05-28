@@ -1,52 +1,44 @@
 ---
-title: Práce s konfiguracemi oboru pro Azure Automation Update Management
-description: Tento článek popisuje, jak pracovat s konfiguracemi oboru při použití Update Management.
+title: Omezení rozsahu nasazení Update Management Azure Automation
+description: V tomto článku se dozvíte, jak používat konfigurace oboru k omezení rozsahu nasazení Update Management.
 services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 23ec49f2d68cf376ef0beb118d8bf69ada7bc0de
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 72065b388f348da1d268f875a10d5b13d2f8cf3b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832023"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117402"
 ---
-# <a name="work-with-scope-configurations-for-update-management"></a>Práce s konfiguracemi oboru pro Update Management
+# <a name="limit-update-management-deployment-scope"></a>Omezení rozsahu nasazení Update Management
 
-Tento článek popisuje, jak můžete pracovat s konfiguracemi oboru při použití funkce [Update Management](automation-update-management.md) na virtuálních počítačích. 
+Tento článek popisuje, jak pracovat s konfiguracemi oboru při použití funkce [Update Management](automation-update-management.md) k nasazení aktualizací a oprav do vašich virtuálních počítačů. Další informace najdete v tématu [cílení řešení monitorování v Azure monitor (Preview)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="about-scope-configurations"></a>O konfiguracích oboru
 
-Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+Konfigurace oboru je skupina jednoho nebo několika uložených hledání (dotazů) používaných k omezení rozsahu Update Management na konkrétní počítače. Konfigurace oboru se používá v pracovním prostoru Log Analytics pro cílení na počítače, které chcete povolit. Když přidáte počítač pro příjem aktualizací z Update Management, počítač se přidá i do uloženého hledání v pracovním prostoru.
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>Ověřit konfiguraci oboru
+## <a name="set-the-scope-limit"></a>Nastavení omezení rozsahu
 
-Update Management používá konfiguraci oboru v rámci pracovního prostoru Log Analytics pro cílení na počítače, které mají být pro funkci povoleny. Konfigurace oboru je skupina jednoho nebo více uložených hledání, která slouží k omezení rozsahu funkce na konkrétní počítače. Přístup k konfiguracím oboru:
+Omezení rozsahu nasazení Update Management:
 
-1. V účtu Automation v části **související prostředky**vyberte **pracovní prostor**. 
+1. V účtu Automation vyberte v části **související prostředky**možnost **propojený pracovní prostor** .
 
-2. Zvolte pracovní prostor v části **zdroje dat pracovního prostoru**a vyberte **Konfigurace oboru**.
+2. Klikněte na **Přejít k pracovnímu prostoru**.
 
-3. Pokud ve vybraném pracovním prostoru není ještě povolená funkce Update Management, vytvoří se `MicrosoftDefaultScopeConfig-Updates` Konfigurace oboru. 
+3. V části **zdroje dat pracovního prostoru**vyberte **Konfigurace oboru (Preview)** .
 
-4. Pokud má vybraný pracovní prostor již funkci povolenou, nebude znovu nasazena a do ní není přidána konfigurace oboru. 
+4. Vyberte tři tečky napravo od `MicrosoftDefaultScopeConfig-Updates` Konfigurace oboru a klikněte na **Upravit**. 
 
-5. V libovolné konfiguraci oboru vyberte tři tečky a pak klikněte na **Upravit**. 
+5. V podokně úpravy rozbalte položku **Vybrat skupiny počítačů**. V podokně skupiny počítačů se zobrazí uložená hledání, která slouží k vytvoření konfigurace oboru. Uložené hledání, které používá Update Management, je:
 
-6. V podokně úpravy vyberte **Vybrat skupiny počítačů**. V podokně skupiny počítačů se zobrazí uložená hledání, která slouží k vytvoření konfigurace oboru.
+    |Name     |Kategorie  |Alias  |
+    |---------|---------|---------|
+    |MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
 
-## <a name="view-a-saved-search"></a>Zobrazení uloženého hledání
-
-Když se do Update Management přidá počítač, přidá se taky do uloženého hledání ve vašem pracovním prostoru. Uložené výsledky hledání je dotaz, který obsahuje cílové počítače.
-
-1. Přejděte do pracovního prostoru Log Analytics a v části **Obecné**vyberte **uložená hledání** . Uložené hledání, které používá Update Management, je:
-
-|Name     |Kategorie  |Alias  |
-|---------|---------|---------|
-|MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
-
-2. Výběrem uloženého hledání Zobrazte dotaz, který jste použili k naplnění skupiny. Následující obrázek znázorňuje dotaz a jeho výsledky:
+6. Vyberte uložené hledání, které chcete zobrazit, a upravte dotaz, který jste použili k naplnění skupiny. Následující obrázek znázorňuje dotaz a jeho výsledky:
 
     ![Uložená hledání](media/automation-scope-configurations-update-management/logsearch.png)
 

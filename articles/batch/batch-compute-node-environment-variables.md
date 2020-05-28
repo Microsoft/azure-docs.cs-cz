@@ -36,7 +36,7 @@ Příkazové řádky spouštěné úkoly na výpočetních uzlech neběží v pr
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-| Název proměnné                     | Popis                                                              | Dostupnost | Příklad |
+| Název proměnné                     | Description                                                              | Dostupnost | Příklad |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Název účtu Batch, ke kterému úkol patří                  | Všechny úlohy.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Adresa URL účtu Batch. | Všechny úlohy. | `https://myaccount.westus.batch.azure.com` |

@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 22cb49c414e21e5c47330f2c67fc2cf30e3364b2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 23dfad844c17b0b8c8a35b6a94d6a96327afe19c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836664"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117458"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>Odebrání virtuálních počítačů z řešení Change Tracking a Inventory
 
@@ -24,7 +24,7 @@ Až skončíte s nasazováním změn do virtuálních počítačů ve vašem pro
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. V pracovním prostoru Log Analytics v části **Obecné**Získejte přístup k uloženým hledáním.
+3. V pracovním prostoru Log Analytics v části **Obecné**Získejte přístup k uloženým hledáním pro konfiguraci oboru `MicrosoftDefaultScopeConfig-ChangeTracking` .
 
 4. V případě uloženého hledání `MicrosoftDefaultComputerGroup` klikněte na tlačítko se třemi tečkami vpravo a vyberte **Upravit**. 
 

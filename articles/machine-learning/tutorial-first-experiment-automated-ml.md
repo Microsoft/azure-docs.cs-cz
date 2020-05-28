@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 03/04/2020
-ms.openlocfilehash: 8af412fb2660625ffb413052b06d4429d7844e70
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cca09f53f90b43713c2b9b764568fb0a6d157c5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656508"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118966"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -89,11 +89,11 @@ V rámci služby Azure Machine Learning na webu můžete provést následující
        
     1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Popis| Hodnota pro kurz
+        Pole|Description| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
-        Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
+        Encoding|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví.
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
 
@@ -114,7 +114,7 @@ V rámci služby Azure Machine Learning na webu můžete provést následující
     1. Jako cílový sloupec vyberte **y** , co chcete předpovědět. Tento sloupec indikuje, jestli se klient přihlásil k odběru termínu nebo ne.
     1. Vyberte **vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Výpočetní cíl je místní nebo cloudové prostředí, které se používá ke spuštění školicího skriptu nebo hostování nasazení služby. Pro tento experiment používáme cloudový výpočetní výkon. 
 
-        Pole | Popis | Hodnota pro kurz
+        Pole | Description | Hodnota pro kurz
         ----|---|---
         Název výpočtu |Jedinečný název, který identifikuje váš výpočetní kontext.|automl – COMPUTE
         &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
@@ -135,7 +135,7 @@ V rámci služby Azure Machine Learning na webu můžete provést následující
         >[!NOTE]
         > V tomto kurzu nenastavíte prahovou hodnotu metriky nebo maximální počet jader na iteraci. Ani nebudete blokovat testování algoritmů.
    
-        Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
+        Další &nbsp; Konfigurace|Description|Hodnota &nbsp; pro &nbsp; kurz
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
         Automaticky featurization| Umožňuje předzpracování. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolit
@@ -224,7 +224,7 @@ V tomto kurzu automatizovaného strojového učení jste pomocí automatizované
 
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
 + Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) .
-+ Přečtěte si další informace o [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
++ Přečtěte si další informace o [featurization](how-to-configure-auto-features.md#featurization).
 + Přečtěte si další informace o [profilování dat](how-to-use-automated-ml-for-ml-models.md#profile).
 
 

@@ -4,19 +4,19 @@ description: Vytvoření vlastních zásad podmíněného přístupu pro
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2834fd3d4901b6394eabe000f9efc572c2efd497
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3ee7287f2a5cf9491ae91d434caf2f653c853a3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755085"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995305"
 ---
 # <a name="conditional-access-block-access"></a>Podmíněný přístup: blokovat přístup
 
@@ -43,7 +43,7 @@ Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu,
 První zásada blokuje přístup ke všem aplikacím kromě aplikací Office 365, pokud se nepoužívá v důvěryhodném umístění.
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory** > **Security** > **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
@@ -54,13 +54,13 @@ První zásada blokuje přístup ke všem aplikacím kromě aplikací Office 365
    1. V části **Zahrnout**vyberte **všechny cloudové aplikace**.
    1. V části **vyloučit**vyberte **Office 365 (Preview)**, vyberte **Vybrat**a pak vyberte **Hotovo**.
 1. V části **podmínky**:
-   1. V části**umístění** **podmínek** > .
+   1. V **Conditions**části  >  **umístění**podmínek.
       1. Nastavte **Konfigurovat** na **Ano** .
       1. V části **Zahrnout**vyberte **libovolné umístění**.
       1. V části **vyloučit**vyberte **všechna důvěryhodná umístění**.
       1. Vyberte **Done** (Hotovo).
    1. V části **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**a **Hotovo**.
-1. V části **řízení** > přístupu**udělení**přístupu vyberte **blokovat přístup**a pak vyberte **Vybrat**.
+1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **blokovat přístup**a pak vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásady** na **pouze sestavy**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 
@@ -72,8 +72,8 @@ Níže je vytvořena druhá zásada, která pro uživatele Office 365 vyžaduje 
    1. V části **Zahrnout**vyberte **Všichni uživatelé**.
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Done** (Hotovo).
-1. V části **cloudové aplikace nebo akce** > **Include**vyberte **vybrat aplikace**, zvolte **Office 365 (Preview)**, vyberte **Vybrat**a pak **Hotovo**.
-1. V části **řízení** > přístupu**udělení**přístupu vyberte **udělit přístup**.
+1. V **části cloudové aplikace nebo akce**  >  **Include**vyberte **vybrat aplikace**, zvolte **Office 365 (Preview)**, vyberte **Vybrat**a pak **Hotovo**.
+1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**.
    1. Vyberte možnost **požadovat vícefaktorové ověřování** a **vyžadovat, aby zařízení byla označena jako vyhovující** vyberte vybrat. **Select**
    1. Ujistěte se, že je vybrána možnost **vyžadovat všechny vybrané ovládací prvky** .
    1. Vyberte **Vybrat**.

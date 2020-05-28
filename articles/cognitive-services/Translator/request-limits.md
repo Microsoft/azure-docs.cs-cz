@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 386f34e001457da4c5ae0e170ab2c090725ad5b7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592232"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995781"
 ---
 # <a name="request-limits-for-translator"></a>Omezení požadavků pro překladatele
 
@@ -27,14 +27,14 @@ Jednotlivé požadavky na překlad jsou omezeny na 5 000 znaků napříč všemi
 
 Následující tabulka uvádí prvky pole a omezení znaků pro každou operaci překladatele.
 
-| Operace | Maximální velikost elementu pole |   Maximální počet prvků pole |  Maximální velikost požadavku (ve znacích) |
+| Operace | Maximální velikost elementu pole |    Maximální počet prvků pole |    Maximální velikost požadavku (ve znacích) |
 |:----|:----|:----|:----|
-| Překlad | 5 000 | 100   | 5 000 |
-| Transliterace | 5 000 | 10    | 5 000 |
-| Zjišťování | 10 000 | 100 |   50 000 |
-| BreakSentence | 10 000    | 100 | 50 000 |
-| Slovníkové vyhledávání| 100 |  10  | 1 000 |
-| Příklady slovníku | 100 pro text a 100 pro překlad (200 celkem)| 10|   2 000 |
+| Překlad | 5 000    | 100    | 5 000 |
+| Transliterace | 5 000    | 10    | 5 000 |
+| Zjišťování | 10 000 |    100 |    50 000 |
+| BreakSentence | 10 000    | 100 |    50 000 |
+| Slovníkové vyhledávání| 100 |    10    | 1 000 |
+| Příklady slovníku | 100 pro text a 100 pro překlad (200 celkem)| 10|    2 000 |
 
 ## <a name="character-limits-per-hour"></a>Omezení počtu znaků za hodinu
 
@@ -82,4 +82,4 @@ Při použití funkce [BreakSentence](https://docs.microsoft.com/azure/cognitive
 
 * [Ceny](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [Regionální dostupnost](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [Reference k překladateli V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [Referenční informace ke službě Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

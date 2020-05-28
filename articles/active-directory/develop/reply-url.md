@@ -31,7 +31,7 @@ Identifikátor URI pro přesměrování nebo adresa URL odpovědi je umístění
 
 Následující tabulka uvádí maximální počet identifikátorů URI přesměrování, které můžete přidat při registraci aplikace.
 
-| Přihlášené účty | Maximální počet identifikátorů URI pro přesměrování | Popis |
+| Přihlášené účty | Maximální počet identifikátorů URI pro přesměrování | Description |
 |--------------------------|---------------------------------|-------------|
 | Pracovní nebo školní účty Microsoftu v tenantovi Azure Active Directory v organizaci (Azure AD) | 256 | `signInAudience`pole v manifestu aplikace je nastaveno na hodnotu *AzureADMyOrg* nebo *AzureADMultipleOrgs* |
 | Osobní účty Microsoft a pracovní a školní účty | 100 | `signInAudience`pole v manifestu aplikace je nastaveno na *AzureADandPersonalMicrosoftAccount* |

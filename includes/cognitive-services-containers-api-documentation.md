@@ -13,7 +13,7 @@ ms.locfileid: "70034433"
 ---
 ## <a name="validate-that-a-container-is-running"></a>Ověření, jestli je kontejner spuštěný 
 
-Existuje několik způsobů, jak ověřit, zda je kontejner spuštěn. Vyhledejte *externí IP* adresu a vystavený port příslušného kontejneru a otevřete svůj oblíbený webový prohlížeč. K ověření, že je kontejner spuštěný, použijte různé adresy URL žádostí níže. Níže uvedené příklady adres URL žádostí se `http://localhost:5000`můžou lišit, ale váš konkrétní kontejner se může lišit. Pamatujte na to, že budete spoléhat na *externí IP* adresu vašeho kontejneru a vystavený port.
+Existuje několik způsobů, jak ověřit, zda je kontejner spuštěn. Vyhledejte *externí IP* adresu a vystavený port příslušného kontejneru a otevřete svůj oblíbený webový prohlížeč. K ověření, že je kontejner spuštěný, použijte různé adresy URL žádostí níže. Níže uvedené příklady adres URL žádostí se `http://localhost:5000` můžou lišit, ale váš konkrétní kontejner se může lišit. Pamatujte na to, že budete spoléhat na *externí IP* adresu vašeho kontejneru a vystavený port.
 
 | Adresa URL požadavku | Účel |
 |--|--|

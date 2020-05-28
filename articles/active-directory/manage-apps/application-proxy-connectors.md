@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3737603360d3fce9d6e11e6c4ce9b2de58f76a6d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b80d20084f45dd2212cdc03f9c7417a67833d887
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583123"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116618"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Vysvětlení konektorů Azure Proxy aplikací služby AD
 
@@ -175,9 +175,9 @@ a čítače výkonu systému Windows.
 
 ![Přidání čítačů do konektoru pomocí nástroje sledování výkonu](./media/application-proxy-connectors/performance-monitor.png)
 
-Konektory mají protokoly správců i relací. Protokoly správců zahrnují klíčové události a jejich chyby. Protokoly relací zahrnují všechny transakce a jejich podrobnosti o zpracování.
+Konektory mají protokoly **správců** i **relací** . Protokol **správce** zahrnuje klíčové události a jejich chyby. Protokol **relace** zahrnuje všechny transakce a jejich podrobnosti o zpracování.
 
-Protokoly zobrazíte tak, že přejdete na Prohlížeč událostí, otevřete nabídku **zobrazení** a povolíte možnost **Zobrazit protokoly pro analýzu a ladění**. Pak jim umožněte, aby začali shromažďovat události. Tyto protokoly se nezobrazují ve službě proxy webových aplikací ve Windows Serveru 2012 R2, protože konektory jsou založené na novější verzi.
+Pokud chcete zobrazit protokoly, otevřete **Prohlížeč událostí** a přejděte do části **protokoly aplikací a služeb**  >  **Microsoft**  >  **AadApplicationProxy**  >  **Connector**. Chcete-li zobrazit protokol **relace** , vyberte v nabídce **zobrazení** možnost **Zobrazit protokoly o analýze a ladění**. Protokol **relace** se obvykle používá k odstraňování potíží a je ve výchozím nastavení zakázán. Umožněte, aby bylo možné zahájit shromažďování událostí a zakázat je, když už je nepotřebujete.
 
 Stav služby můžete prostudovat v okně služby. Konektor je tvořen dvěma službami systému Windows: skutečným konektorem a aktualizačním rozhraním. Oba z nich musí běžet po celou dobu.
 

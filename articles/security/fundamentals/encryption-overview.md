@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454641"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012972"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování Azure
 
@@ -28,7 +28,7 @@ Tento článek poskytuje přehled o tom, jak se šifrování používá v Micros
 
 ## <a name="encryption-of-data-at-rest"></a>Šifrování dat v klidovém umístění
 
-Uložená data obsahují informace, které se nacházejí v trvalém úložišti na fyzických médiích v libovolném digitálním formátu. Médium může zahrnovat soubory na magnetických nebo optických médiích, Archivovaná data a zálohy dat. Microsoft Azure nabízí nejrůznější řešení pro ukládání dat, která vyhovují různým potřebám, včetně souborů, disků, objektů BLOB a tabulkového úložiště. Microsoft taky poskytuje šifrování pro ochranu [Azure SQL Database](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md)a Azure Data Lake.
+Uložená data obsahují informace, které se nacházejí v trvalém úložišti na fyzických médiích v libovolném digitálním formátu. Médium může zahrnovat soubory na magnetických nebo optických médiích, Archivovaná data a zálohy dat. Microsoft Azure nabízí nejrůznější řešení pro ukládání dat, která vyhovují různým potřebám, včetně souborů, disků, objektů BLOB a tabulkového úložiště. Microsoft taky poskytuje šifrování pro ochranu [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md)a Azure Data Lake.
 
 Šifrování dat v klidovém formátu je k dispozici pro služby v cloudových modelech SaaS (software jako služba), platforma jako služba (PaaS) a infrastruktura jako služba (IaaS). Tento článek shrnuje a poskytuje prostředky, které vám pomůžou s používáním možností šifrování Azure.
 
@@ -85,11 +85,11 @@ Nakonec můžete použít také klientskou knihovnu Azure Storage pro jazyk Java
 
 ### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>Šifrování neaktivních dat pomocí Azure SQL Database
 
-[Azure SQL Database](../../sql-database/sql-database-technical-overview.md) je služba relační databáze pro obecné účely v Azure, která podporuje struktury, jako jsou relační data, JSON, prostor a XML. SQL Database podporuje šifrování na straně serveru prostřednictvím funkce transparentní šifrování dat (TDE) a šifrování na straně klienta prostřednictvím funkce Always Encrypted.
+[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) je služba relační databáze pro obecné účely v Azure, která podporuje struktury, jako jsou relační data, JSON, prostor a XML. SQL Database podporuje šifrování na straně serveru prostřednictvím funkce transparentní šifrování dat (TDE) a šifrování na straně klienta prostřednictvím funkce Always Encrypted.
 
 #### <a name="transparent-data-encryption"></a>Transparentní šifrování dat
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) se používá k šifrování datových souborů [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../sql-database/sql-database-technical-overview.md)a [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) v reálném čase pomocí šifrovacího klíče databáze (klíč DEK), který je uložený v záznamu spuštění databáze pro dostupnost během obnovení.
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) se používá k šifrování datových souborů [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)a [Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) v reálném čase pomocí šifrovacího klíče databáze (klíč DEK), který je uložený v záznamu spuštění databáze pro dostupnost během obnovení.
 
 TDE chrání data a soubory protokolů pomocí šifrovacích algoritmů AES a Triple Data Encryption Standard (3DES). Šifrování databázového souboru se provádí na úrovni stránky. Stránky v zašifrované databázi jsou před zápisem na disk zašifrované a při jejich čtení do paměti se dešifrují. TDE je teď ve výchozím nastavení povolená u nově vytvořených databází Azure SQL.
 

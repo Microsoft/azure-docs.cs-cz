@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f1a4d9af8a1b1095527078dd790e80ef45a5ee9a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3e5507069a3e1eeadfaf4c3eeee288b2651e88a1
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722892"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996036"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)
 
@@ -26,7 +26,7 @@ Index objektu BLOB umožňuje:
 - Určení podmíněného chování pro rozhraní API objektů blob na základě vyhodnocení značek indexu
 - Použití značek indexů k pokročilým kontrolám funkcí objektů blob, jako je [Správa životního cyklu](storage-lifecycle-management-concepts.md)
 
-Vezměte v úvahu scénář, ve kterém máte k dispozici miliony objektů BLOB v účtu úložiště, které jsou k dispozici v mnoha různých aplikacích. Chcete najít všechna související data z jednoho projektu, ale nejste si jisti, co je v oboru, protože data je možné rozložit mezi více kontejnerů s různými zásadami vytváření názvů objektů BLOB. Nicméně víte, že aplikace nahrávají všechna data pomocí značek na základě jejich příslušného projektu a identifikace popisu. Místo hledání v milionech objektů BLOB a porovnávání názvů a vlastností můžete jednoduše použít `Project = Contoso` jako kritéria vyhledávání. Index objektu BLOB filtruje všechny kontejnery napříč celým účtem úložiště, aby bylo možné rychle vyhledat a vrátit jenom sadu objektů BLOB `Project = Contoso`50 z. 
+Vezměte v úvahu scénář, ve kterém máte k dispozici miliony objektů BLOB v účtu úložiště, které jsou k dispozici v mnoha různých aplikacích. Chcete najít všechna související data z jednoho projektu, ale nejste si jisti, co je v oboru, protože data je možné rozložit mezi více kontejnerů s různými zásadami vytváření názvů objektů BLOB. Nicméně víte, že aplikace nahrávají všechna data pomocí značek na základě jejich příslušného projektu a identifikace popisu. Místo hledání v milionech objektů BLOB a porovnávání názvů a vlastností můžete jednoduše použít `Project = Contoso` jako kritéria vyhledávání. Index objektu BLOB filtruje všechny kontejnery napříč celým účtem úložiště, aby bylo možné rychle vyhledat a vrátit jenom sadu objektů BLOB 50 z `Project = Contoso` . 
 
 Pokud chcete začít s příklady použití indexu objektů blob, přečtěte si téma [využití indexu objektů BLOB ke správě a hledání dat](storage-blob-index-how-to.md).
 
@@ -70,7 +70,7 @@ Následující omezení se vztahují na značky indexu objektu BLOB:
 - Klíče značek musí být v rozmezí od 1 do 128 znaků.
 - Hodnoty značek musí být mezi 0 a 256 znaky.
 - V klíčích značek a hodnotách se rozlišují malá a velká písmena.
-- Klíče a hodnoty značek podporují pouze řetězcové typy dat; všechna čísla nebo speciální znaky budou uloženy jako řetězce.
+- Klíče a hodnoty značek podporují pouze řetězcové typy dat; všechna čísla, datum, čas nebo speciální znaky budou uloženy jako řetězce.
 - Klíče a hodnoty značek musí splňovat následující pravidla pojmenování:
   - Alfanumerické znaky: a – z, A-Z, 0-9
   - Speciální znaky: mezera, znaménko, mínus, tečka, dvojtečka, rovná se, podtržítko, lomítko
@@ -99,16 +99,23 @@ Následující tabulka uvádí všechny platné operátory pro FindBlobsByTags:
 
 |  Operátor  |  Popis  | Příklad |
 |------------|---------------|---------|
-|     =      |     Rovno     | "Stav" = probíhá " | 
+|     =      |     Je rovno     | "Stav" = probíhá " | 
 |     >      |  Větší než |  "Date" > ' 2018-06-18 ' |
-|     >=     |  Větší nebo rovno | "Priorita" >= "5" | 
+|     >=     |  Větší než nebo rovno | "Priorita" >= "5" | 
 |     <      |  Menší než    | "Stáří" < "32" |
-|     <=     |  Menší nebo rovno  | "Společnost" <= "contoso" |
+|     <=     |  Menší než nebo rovno  | "Společnost" <= "contoso" |
 |    AND     |  Logický operátor and  | "Rank" >= "010" a "Rank" < "100" |
 | @container |  Nastavit obor na konkrétní kontejner   | @container= "VideoFiles" a "status" = "Hotovo" |
 
+> [!NOTE]
+> Seznámení s lexicographical objednání při nastavení a dotazování na značky.
+> - Čísla jsou řazena před písmeny. Čísla jsou řazena podle první číslice.
+> - Velká písmena jsou řazena před malými písmeny.
+> - Symboly nejsou standardní. Některé symboly jsou řazeny před číselnými hodnotami. Další symboly jsou seřazené před nebo za písmeny.
+>
+
 ## <a name="conditional-blob-operations-with-blob-index-tags"></a>Podmíněné operace objektů BLOB pomocí značek indexu objektu BLOB
-V REST verze 2019-10-10 a novějších [rozhraní API služby BLOB Service](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs) teď podporuje podmíněné záhlaví x-MS-if-Tags, takže operace bude úspěšná jenom v případě, že je splněná zadaná podmínka indexu objektu BLOB. Pokud není podmínka splněná, zobrazí se `error 412: The condition specified using HTTP conditional header(s) is not met`.
+V REST verze 2019-10-10 a novějších [rozhraní API služby BLOB Service](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs) teď podporuje podmíněné záhlaví x-MS-if-Tags, takže operace bude úspěšná jenom v případě, že je splněná zadaná podmínka indexu objektu BLOB. Pokud není podmínka splněná, zobrazí se `error 412: The condition specified using HTTP conditional header(s) is not met` .
 
 Záhlaví x-MS-if-Tags se může kombinovat s ostatními existujícími podmíněnými hlavičkami HTTP (Pokud-Match, If-None-Match atd.).  Pokud je v požadavku k dispozici více podmíněných hlaviček, musí všechny vyhodnotit hodnotu true, aby operace proběhla úspěšně.  Všechny podmíněné hlavičky jsou efektivně kombinovány s logickými a. 
 
@@ -116,12 +123,12 @@ Následující tabulka uvádí všechny platné operátory pro podmíněné oper
 
 |  Operátor  |  Popis  | Příklad |
 |------------|---------------|---------|
-|     =      |     Rovno     | "Stav" = probíhá " |
-|     <>     |   Nerovná se   | "Status"  <>  "Hotovo"  | 
+|     =      |     Je rovno     | "Stav" = probíhá " |
+|     <>     |   Není rovno   | "Status"  <>  "Hotovo"  | 
 |     >      |  Větší než |  "Date" > ' 2018-06-18 ' |
-|     >=     |  Větší nebo rovno | "Priorita" >= "5" | 
+|     >=     |  Větší než nebo rovno | "Priorita" >= "5" | 
 |     <      |  Menší než    | "Stáří" < "32" |
-|     <=     |  Menší nebo rovno  | "Společnost" <= "contoso" |
+|     <=     |  Menší než nebo rovno  | "Společnost" <= "contoso" |
 |    AND     |  Logický operátor and  | "Rank" >= "010" a "Rank" < "100" |
 |     NEBO     |  Logický operátor OR   | "Stav" = "dokončeno" nebo "Priorita" >= "05" |
 
@@ -138,9 +145,9 @@ Pomocí nového blobIndexMatch jako filtru pravidla ve správě životního cykl
 
 V pravidle životního cyklu můžete nastavit, aby se index objektu BLOB shodoval jako samostatný filtr nastavený na základě akcí u tagovaných dat. Případně můžete kombinovat prefix a shodu indexu objektů blob, aby odpovídaly konkrétnějším datovým sadám. Použití více filtrů na pravidlo životního cyklu se považuje za logické a operace tak, že se akce uplatní pouze v případě, že se všechna kritéria filtru shodují. 
 
-Následující pravidlo správy životního cyklu se vztahuje na objekty blob bloku v kontejneru VideoFiles a objekty blob vrstev do úložiště archivu, jenom pokud data odpovídají kritériím značek indexu objektu BLOB ```"Status" = 'Processed' AND "Source" == 'RAW'```.
+Následující pravidlo správy životního cyklu se vztahuje na objekty blob bloku v kontejneru VideoFiles a objekty blob vrstev do úložiště archivu, jenom pokud data odpovídají kritériím značek indexu objektu BLOB ```"Status" = 'Processed' AND "Source" == 'RAW'``` .
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 ![Příklad pravidla shody indexu objektu BLOB pro správu životního cyklu v Azure Portal](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
    
 # <a name="json"></a>[JSON](#tab/json)
@@ -246,9 +253,11 @@ Ceny indexu objektů BLOB jsou momentálně ve verzi Public Preview a mohou se z
 
 ## <a name="regional-availability-and-storage-account-support"></a>Podpora regionální dostupnosti a účtu úložiště
 
-Index objektu BLOB je aktuálně k dispozici pouze s účty Pro obecné účely v2 (GPv2). V Azure Portal můžete upgradovat existující účet Pro obecné účely (GPv1) na účet GPv2. Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
+Index objektu BLOB je v tuto chvíli dostupný jenom u účtů Pro obecné účely v2 (GPv2) s nepovoleným hierarchickým oborem názvů (HNS). Účty Pro obecné účely (GPV1) nejsou podporovány, ale můžete upgradovat libovolný účet GPv1 na účet GPv2. Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
 Index objektů BLOB je ve verzi Public Preview dostupný jenom v následujících oblastech SELECT:
+- Střední Kanada
+- Kanada – východ
 - Francie – střed
 - Francie – jih
 
@@ -276,9 +285,9 @@ az provider register --namespace 'Microsoft.Storage'
 Tato část popisuje známé problémy a podmínky v aktuální verzi Public Preview indexu objektů BLOB. Stejně jako u většiny verzí Preview by se tato funkce neměla používat pro produkční úlohy, dokud nedosáhne GA, že se chování může změnit.
 
 -   Pro verzi Preview musíte nejdřív zaregistrovat předplatné, abyste mohli použít index objektu BLOB pro svůj účet úložiště v oblastech Preview.
--   Ve verzi Preview se aktuálně podporují jenom účty GPv2. U indexu objektu BLOB se v současné době nepodporují účty datalake Gen2 s povolenou službou blob, BlockBlobStorage a HNS.
+-   Ve verzi Preview se aktuálně podporují jenom účty GPv2. U indexu objektu BLOB se v současné době nepodporují účty datalake Gen2 s povolenou službou blob, BlockBlobStorage a HNS. Účty GPv1 se nepodporují.
 -   Nahrání objektů blob stránky pomocí indexových značek aktuálně neuchovává značky. Značky je nutné nastavit po nahrání objektu blob stránky.
--   Pokud je filtrování vymezeno na jeden kontejner, lze předat @container pouze v případě, že všechny značky indexu ve výrazu filtru jsou kontroly rovnosti (Key = hodnota). 
+-   Pokud je filtrování vymezeno na jeden kontejner, @container lze předat pouze v případě, že všechny značky indexu ve výrazu filtru jsou kontroly rovnosti (Key = hodnota). 
 -   Při použití operátoru Range s podmínkou a můžete zadat jenom stejný název klíče značky indexu (věk > 013 a Age < "100").
 -   Správa verzí a index objektů BLOB se v tuto chvíli nepodporuje. Značky indexu objektu BLOB jsou zachované pro verze, ale v tuto chvíli nejsou předávané do modulu indexu objektů BLOB.
 -   Převzetí služeb při selhání účtu se v tuto chvíli nepodporuje. Index objektu BLOB se po převzetí služeb při selhání nemusí správně aktualizovat.
@@ -290,6 +299,9 @@ Tato část popisuje známé problémy a podmínky v aktuální verzi Public Pre
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Může vám index objektu BLOB pomáhat při filtrování a dotazování obsahu uvnitř objektů BLOB? 
 Ne, značky indexu objektů BLOB vám pomůžou najít objekty blob, které hledáte. Pokud potřebujete hledat v rámci objektů blob, použijte akceleraci dotazu nebo Azure Search.
+
+### <a name="are-there-any-special-considerations-regarding-blob-index-tag-values"></a>Existují nějaké zvláštní okolnosti týkající se hodnot značek indexu objektů BLOB?
+Značky indexu objektů BLOB podporují pouze řetězcové typy a dotazování vrací výsledky pomocí řazení lexicographical. Pro čísla se doporučuje číslo bez panelu. V případě data a času se doporučuje ukládat jako formát kompatibilního s ISO 8601.
 
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>Jsou značky indexu objektů BLOB a Azure Resource Manager souvisejících značek?
 Ne, Azure Resource Manager značky usnadňují uspořádání prostředků řídicích rovin, jako jsou předplatná, skupiny prostředků a účty úložiště. Značky indexu objektů BLOB poskytují správu objektů a zjišťování prostředků roviny dat, jako jsou objekty BLOB v rámci účtu úložiště.

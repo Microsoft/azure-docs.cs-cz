@@ -1,29 +1,29 @@
 ---
 title: Návrh znalostní báze Knowledge Base – QnA Maker
-description: QnA Maker znalostní báze se skládá ze sady sad otázek a odpovědí (QnA) a volitelná Metadata přidružená ke každému páru QnA.
+description: QnA Maker znalostní báze se skládá ze sady párů otázek a odpovědí (QnA) a volitelných metadat přidružených ke každému páru QnA.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756785"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992993"
 ---
-# <a name="question-and-answer-set-concepts"></a>Koncepce sady otázek a odpovědí
+# <a name="question-and-answer-pair-concepts"></a>Koncepty dvojice otázek a odpovědí
 
-Znalostní báze se skládá ze sad otázek a odpovědí (QnA).  Každá sada má jednu odpověď a sada obsahuje všechny informace spojené s touto _odpovědí_. Odpověď může volně napodobovat řádek databáze nebo instanci datové struktury.
+Znalostní báze se skládá z párů otázek a odpovědí (QnA).  Každý pár má jednu odpověď a pár obsahuje všechny informace spojené s touto _odpovědí_. Odpověď může volně napodobovat řádek databáze nebo instanci datové struktury.
 
-## <a name="question-and-answer-sets"></a>Sady otázek a odpovědí
+## <a name="question-and-answer-pairs"></a>Páry otázek a odpovědí
 
-**Požadovaná** nastavení v sadě QnA (Question-and-Answer) jsou:
+**Požadovaná** nastavení dvojice otázek a odpovědí (QnA) jsou:
 
 * **dotazový** text dotazu, který se používá k QnA maker strojového učení, pro zarovnání textu otázky uživatele s různou formulací, ale stejná odpověď
-* odpověď **– odpověď** sady je odpověď, která se vrátí, když se dotaz uživatele shoduje s přidruženou otázkou.
+* **odpověď** – odpověď páru je odpověď, která se vrátí, když se dotaz uživatele shoduje s přidruženou otázkou.
 
-Každá sada je reprezentovaná **identifikátorem**.
+Každý pár je reprezentován **identifikátorem**.
 
-Mezi **volitelná** nastavení pro sadu patří:
+Mezi **volitelná** nastavení pro pár patří:
 
 * **Alternativní formy otázky** – to pomáhá QnA maker vrátit správnou odpověď na širší řadu otázek.
 * **Metadata**: metadata jsou značky přidružené k páru QnA a jsou reprezentovány jako páry klíč-hodnota. Značky metadat slouží k filtrování párů QnA a omezení sady, u které se provádí párování dotazů.

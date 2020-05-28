@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8f8af7fab7113e38b91c3f5f1bcc41b4e4fba2c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb5c01bac512504fc6bee52be7cf619f29bdf959
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457361"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117173"
 ---
 # <a name="query-folders-and-multiple-csv-files"></a>Složky dotazů a více souborů CSV  
 
@@ -24,25 +24,10 @@ SQL na vyžádání podporuje čtení více souborů nebo složek pomocí zástu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než si přečtete zbytek tohoto článku, Projděte si níže uvedené články:
+Prvním krokem je **Vytvoření databáze** , ve které budete spouštět dotazy. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
-- [Nastavení při prvním spuštění](query-data-storage.md#first-time-setup)
-- [Požadavky](query-data-storage.md#prerequisites)
-
-## <a name="read-multiple-files-in-folder"></a>Číst více souborů ve složce
-
-K provedení ukázkových dotazů použijete složku *CSV/taxislužby* . Obsahuje NYC taxislužby – žlutá Taxislužbyová cesta zaznamenává data z července 2016 do června 2018.
-
-Soubory ve *formátu CSV/taxislužby* jsou pojmenovány po rocích a měsících:
-
-- yellow_tripdata_2016 -07. csv
-- yellow_tripdata_2016 -08. csv
-- yellow_tripdata_2016 -09. csv
-- ...
-- yellow_tripdata_2018 -04. csv
-- yellow_tripdata_2018 -05. csv
-- yellow_tripdata_2018 -06. csv
-
+K provedení ukázkových dotazů použijete složku *CSV/taxislužby* . Obsahuje NYC taxislužby – žlutá Taxislužbyová cesta zaznamenává data z července 2016 do června 2018. Soubory ve *formátu CSV/taxislužby* se pojmenují po rocích a měsících pomocí následujícího vzoru: yellow_tripdata_ <year> - <month> . csv.
+        
 Každý soubor má následující strukturu:
         
     [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
@@ -57,28 +42,14 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/*.*',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-           trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-           payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        pickup_datetime DATETIME2 2, 
+        passenger_count INT 4
     ) AS nyc
 GROUP BY
     YEAR(pickup_datetime)
@@ -98,28 +69,14 @@ SELECT
     payment_type,  
     SUM(fare_amount) AS fare_total
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-        trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-        payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        payment_type INT 10,
+        fare_amount FLOAT 11
     ) AS nyc
 GROUP BY payment_type
 ORDER BY payment_type;
@@ -147,8 +104,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -184,7 +142,7 @@ ORDER BY
 Je možné číst soubory z více složek pomocí zástupného znaku. Následující dotaz načte všechny soubory ze všech složek umístěných ve složce *CSV* , jejichž názvy začínají na *t* a končí na *i*.
 
 > [!NOTE]
-> Všimněte si existence/na konci cesty v následujícím dotazu. Označuje složku. Pokud je hodnota/vynechána, dotaz bude místo toho cílen na soubory s názvem *t&ast;* .
+> Všimněte si existence/na konci cesty v následujícím dotazu. Označuje složku. Pokud je hodnota/vynechána, dotaz bude místo toho cílen na soubory s názvem *t &ast; * .
 
 ```sql
 SELECT
@@ -192,8 +150,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/', 
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -231,7 +190,7 @@ Vzhledem k tomu, že máte pouze jednu složku, která odpovídá kritériím, j
 Na různých úrovních cesty můžete použít více zástupných znaků. Můžete například rozšířit předchozí dotaz a číst soubory pouze s 2017 daty ze všech složek, jejichž názvy začínají na *t* a končí na *i*.
 
 > [!NOTE]
-> Všimněte si existence/na konci cesty v následujícím dotazu. Označuje složku. Pokud je hodnota/vynechána, dotaz bude místo toho cílen na soubory s názvem *t&ast;* .
+> Všimněte si existence/na konci cesty v následujícím dotazu. Označuje složku. Pokud je hodnota/vynechána, dotaz bude místo toho cílen na soubory s názvem *t &ast; * .
 > Maximální počet zástupných znaků na jeden dotaz je 10.
 
 ```sql
@@ -240,8 +199,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4649ac8bbef23711ed45baffa15bb9e8bff8daec
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419251"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119179"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Serveru do databáze Azure SQL
 
@@ -69,7 +69,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ## <a name="prerequisites"></a>Požadavky
 * **SQL Server**. V tomto kurzu použijete místní databázi SQL Serveru jako zdrojové úložiště dat. 
-* **Azure SQL Database**. Použijete databázi SQL jako úložiště dat jímky. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření. 
+* **Azure SQL Database**. Použijete databázi SQL jako úložiště dat jímky. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md), kde najdete kroky pro její vytvoření. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Vytvoření zdrojových tabulek v databázi SQL Serveru
 
@@ -116,7 +116,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 1. V **Průzkumníku serveru** klikněte pravým tlačítkem na databázi a zvolte **Nový dotaz**.
 
-1. Spusťte následující příkaz SQL pro databázi SQL Azure a vytvořte tabulky s názvem `customer_table` a: `project_table`  
+1. Spusťte následující příkaz SQL pro databázi SQL Azure a vytvořte tabulky s názvem `customer_table` a `project_table` :  
     
     ```sql
     create table customer_table
@@ -233,7 +233,7 @@ END
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte **vytvořit** > **Analytics** > **Data Factory**analýzy prostředků: 
+2. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků: 
    
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -310,7 +310,7 @@ V posledním kroku vytvoříte propojenou službu, která propojí vaši zdrojov
 1. V okně **Nová propojená služba** proveďte následující kroky:
 
     1. Jako **Název** zadejte **AzureSqlDatabaseLinkedService**. 
-    1. Jako **Název serveru** vyberte z rozevíracího seznamu název vašeho serveru SQL Azure. 
+    1. V rozevíracím seznamu **název serveru**vyberte název serveru. 
     1. Jako **Název databáze** vyberte databázi Azure SQL, ve které jste jako součást požadavků vytvořili tabulky customer_table a project_table. 
     1. Jako **Uživatelské jméno** zadejte jméno uživatele, který má přístup k této databázi Azure SQL. 
     1. Jako **Heslo** zadejte **heslo** pro tohoto uživatele. 
@@ -354,7 +354,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
     
 1. V okně **Přidat dynamický obsah** vyberte v části **parametry** možnost **SinkTableName** . 
  
-1. Po kliknutí na **Dokončit**se zobrazí zpráva@dataset(). SinkTableName jako název tabulky.
+1. Po kliknutí na **Dokončit**se zobrazí zpráva @dataset (). SinkTableName jako název tabulky.
 
    ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -450,10 +450,10 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
         
 1. Proveďte následující kroky:
 
-    1. V části **Vlastnosti datové sady**zadejte **SinkTableName** `@{item().TABLE_NAME}`do pole SinkTableName parametr.
-    1. Jako vlastnost **název uložené procedury** zadejte `@{item().StoredProcedureNameForMergeOperation}`.
-    1. Jako vlastnost **typ tabulky** zadejte `@{item().TableType}`.
-    1. Jako **název parametru typu tabulky**zadejte `@{item().TABLE_NAME}`.
+    1. V části **Vlastnosti datové sady**zadejte do pole **SinkTableName** parametr `@{item().TABLE_NAME}` .
+    1. Jako vlastnost **název uložené procedury** zadejte `@{item().StoredProcedureNameForMergeOperation}` .
+    1. Jako vlastnost **typ tabulky** zadejte `@{item().TableType}` .
+    1. Jako **název parametru typu tabulky**zadejte `@{item().TABLE_NAME}` .
 
     ![Aktivita kopírování – parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Přetáhněte aktivitu **Uložená procedura** z panelu nástrojů **Aktivity** na plochu návrháře kanálu. Propojte aktivitu **kopírování** s aktivitou **Uložená procedura**. 
@@ -469,9 +469,9 @@ Tento kanál dostává jako parametr seznam tabulek. Aktivita ForEach prochází
     1. Vyberte **Importovat parametr**. 
     1. Zadejte následující hodnoty parametrů: 
 
-        | Název | Typ | Hodnota | 
+        | Name | Typ | Hodnota | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | Datum a čas | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Řetězec | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)

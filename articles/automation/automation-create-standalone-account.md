@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0734ac0843eec164ad2207020da9dd1a7e9fa429
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3739f8691a144f183e72af19233f776a24066cbc
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837089"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118797"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -31,7 +31,7 @@ S tímto účtem vytvořeným pro vás můžete rychle začít sestavovat a nasa
 Pokud chcete vytvořit nebo aktualizovat účet Automation a dokončit úkoly popsané v tomto článku, musíte mít následující oprávnění a oprávnění:
 
 * Pokud chcete vytvořit účet Automation, musíte mít uživatelský účet Azure AD přidaný do role s oprávněním ekvivalentním roli vlastníka pro `Microsoft.Automation` prostředky. Další informace najdete v tématu [Access Control na základě rolí v Azure Automation](automation-role-based-access-control.md).
-* V Azure Portal v části **Azure Active Directory**  >  **Správa**  >  **uživatelských nastavení**, pokud je **Registrace aplikací** nastavená na **Ano**, uživatelé bez oprávnění správce v tenantovi Azure AD můžou [Registrovat aplikace Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Pokud je **Registrace aplikací** nastaveno na **ne**, uživatel, který tuto akci provede, musí být globální správce v Azure AD.
+* V Azure Portal v části **Azure Active Directory**  >  **Správa**  >  **uživatelských nastavení**, pokud je **Registrace aplikací** nastavená na **Ano**, uživatelé bez oprávnění správce v tenantovi Azure AD můžou [Registrovat aplikace Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Pokud je **Registrace aplikací** nastavená na **ne**, musí mít uživatel, který tuto akci provede, aspoň roli vývojáře aplikace v Azure AD.
 
 Pokud před přidáním do role globálního správce nebo správce předplatného nejste členem instance Active Directory předplatného, přidáte do služby Active Directory jako host. V tomto scénáři se tato zpráva zobrazí v podokně Přidat účet Automation:`You do not have permissions to create.`
 
@@ -83,7 +83,7 @@ Chcete-li vytvořit účet Azure Automation v Azure Portal, proveďte následuj�
 
 Po úspěšném vytvoření účtu Automation se pro vaší potřebu automaticky vytvoří několik prostředků. Po vytvoření můžete tyto Runbooky bezpečně odstranit, pokud je nechcete zachovat. Účty Spustit jako lze použít k ověření vašeho účtu v sadě Runbook a měli byste ji ponechat, pokud nevytvoříte jinou nebo ji nepotřebujete. Následující tabulka shrnuje prostředky pro účet Spustit jako.
 
-| Prostředek | Popis |
+| Prostředek | Description |
 | --- | --- |
 | Runbook AzureAutomationTutorial |Příklad grafického Runbooku, který ukazuje, jak ověřit pomocí účtu Spustit jako. Sada Runbook získá všechny prostředky Správce prostředků. |
 | Runbook AzureAutomationTutorialScript |Ukázkový Runbook PowerShellu, který ukazuje, jak ověřit pomocí účtu Spustit jako. Sada Runbook získá všechny prostředky Správce prostředků. |

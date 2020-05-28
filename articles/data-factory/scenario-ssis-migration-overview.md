@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 2b23ffec76de3fa644abe3b65876a60c65c05eb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eecf7ba1471e35e2d9ab26394c7295f324c4ca20
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686008"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116391"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Migrace místních SSIS úloh do SSIS v ADF
 
@@ -24,7 +24,7 @@ ms.locfileid: "81686008"
 
 ## <a name="overview"></a>Přehled
 
-Když migrujete databázové úlohy z SQL Server místně do služby Azure Database Services, konkrétně Azure SQL Database nebo Azure SQL Database spravované instance, bude nutné migrovat úlohy ETL na služba SSIS (SQL Server Integration Services) (SSIS) jako jednu z primárních služeb přidaných hodnot.
+Když migrujete databázové úlohy z SQL Server místně do služby Azure Database Services, konkrétně Azure SQL Database nebo Azure SQL Managed instance, bude nutné migrovat úlohy ETL na služba SSIS (SQL Server Integration Services) (SSIS) jako jednu z primárních služeb přidaných hodnot.
 
 Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF) podporuje spouštění balíčků SSIS. Po zřízení Azure-SSIS IR můžete pro nasazení a spouštění balíčků v Azure použít známé nástroje SQL Server, jako je například/SQL (SSDT) serveru Management Studio (SSMS) a nástroje příkazového řádku, jako je například dtinstall/dtutil/DTExec. Další informace najdete v tématu [Přehled služby Azure SSIS Rewind a Shift](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
@@ -57,14 +57,14 @@ Získejte [přímý přístup do paměti](https://docs.microsoft.com/sql/dma/dma
 
 V závislosti na [typech úložiště](#four-storage-types-for-ssis-packages) ZDROJOVÝCH balíčků SSIS a cíli migrace databázových úloh se může změnit postup migrace **balíčků SSIS** a **úloh agenta SQL Server** , které naplánují spouštění balíčků SSIS. Existují dva scénáře:
 
-- [**Azure SQL Database Managed instance** jako cíl pro databázovou úlohu](#azure-sql-database-managed-instance-as-database-workload-destination)
+- [**Spravovaná instance Azure SQL** jako cíl pro databázovou úlohu](#azure-sql-managed-instance-as-database-workload-destination)
 - [**Azure SQL Database** jako cíl pro databázovou úlohu](#azure-sql-database-as-database-workload-destination)
 
-### <a name="azure-sql-database-managed-instance-as-database-workload-destination"></a>**Azure SQL Database Managed instance** jako cíl pro databázovou úlohu
+### <a name="azure-sql-managed-instance-as-database-workload-destination"></a>**Spravovaná instance Azure SQL** jako cíl pro databázovou úlohu
 
 | **Typ úložiště balíčku** |Postup dávkové migrace balíčků SSIS|Postup dávkové migrace úloh SSIS|
 |-|-|-|
-|SSISDB|[Migrace **SSISDB**](scenario-ssis-migration-ssisdb-mi.md)|[Migrace úloh SSIS do Azure SQL Database agenta spravované instance](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-azure-sql-database-managed-instance-agent)|
+|SSISDB|[Migrace **SSISDB**](scenario-ssis-migration-ssisdb-mi.md)|[Migrace úloh SSIS do agenta spravované instance Azure SQL](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent)|
 |Systém souborů|Znovu je nasaďte do sdílených složek nebo souborů Azure prostřednictvím dtinstall/dtutil/ručního kopírování, nebo pokud chcete zachovat přístup k systémům souborů pro přístup přes prostředí IR VNet/Autohosted. Další informace najdete v tématu [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|<li> Migrace pomocí [Průvodce migrací úloh SSIS v SSMS](how-to-migrate-ssis-job-ssms.md) <li>Převeďte je na kanály ADF/aktivity/triggery přes skripty/SSMS/ADF Portal. Další informace najdete v tématu [funkce plánování SSMS](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |SQL Server (MSDB)|Exportujte je do systémů souborů/sdílených složek/souborů Azure prostřednictvím SSMS/dtutil. Další informace najdete v tématu [export balíčků SSIS](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service).|Převeďte je na kanály ADF/aktivity/triggery přes skripty/SSMS/ADF Portal. Další informace najdete v tématu [funkce plánování SSMS](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
 |Úložiště balíčků|Exportujte je do systémů souborů/sdílených složek/souborů Azure prostřednictvím SSMS/dtutil nebo je znovu nasaďte do sdílených složek/souborů Azure prostřednictvím dtinstall/dtutil/ruční kopie nebo je Zachovejte v systémech souborů pro přístup přes prostředí IR VNet/Autohosted. Další informace najdete v tématu dtutil Utility. Další informace najdete v tématu [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility).|Převeďte je na kanály ADF/aktivity/triggery přes skripty/SSMS/ADF Portal. Další informace najdete v tématu [funkce plánování SSMS](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).|
@@ -83,7 +83,7 @@ V závislosti na [typech úložiště](#four-storage-types-for-ssis-packages) ZD
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Pomocník s migrací databáze](https://docs.microsoft.com/sql/dma/dma-overview)
 - [Nazvednutí a posunutí úloh SSIS do cloudu](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview?view=sql-server-2017)
-- [Migrace balíčků SSIS do spravované instance Azure SQL Database](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
+- [Migrace balíčků SSIS do spravované instance Azure SQL](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)
 - [Znovu nasadit balíčky do Azure SQL Database](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)
 
 ## <a name="next-steps"></a>Další kroky

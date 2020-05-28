@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.custom: designer
-ms.openlocfilehash: 16f281cce70fb8d2a943b62c796c3037649c3c72
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f6d684829092d8be97785c46058186f3ca5542b2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656577"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119037"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -220,11 +220,9 @@ Vytvořte si model tak, že mu udělíte datovou sadu, která obsahuje cenu. Alg
 
 1. Vyberte **regresní**  >  **lineární regresi**a přetáhněte ji na plátno kanálu.
 
-1. Připojte výstup modulu **lineární regrese** k levému vstupu modulu **vlak model** .
-
 1. V paletě modulu rozbalte možnost **školení modulu**oddíl a přetáhněte modul **vlak model** na plátno.
 
-1. Vyberte modul **vlakového modelu** a přetáhněte ho na plátno kanálu.
+1. Připojte výstup modulu **lineární regrese** k levému vstupu modulu **vlak model** .
 
 1. Připojte výstup školicích dat (levý port) modulu **rozdělení dat** ke správnému vstupu modulu **vlak model** .
     

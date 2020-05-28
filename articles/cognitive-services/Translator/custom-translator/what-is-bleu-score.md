@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 85c4ee27a828a05c64ca6cbf84bff438535328be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b35dce5a2b572e5a3f11601d5e67efb2da02cdec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647358"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997056"
 ---
 # <a name="what-is-a-bleu-score"></a>Co je BLEU skóre?
 

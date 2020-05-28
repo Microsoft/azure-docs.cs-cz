@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: váš první dotaz na Python'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení knihovny grafu prostředků pro Python a spuštění prvního dotazu.
-ms.date: 05/26/2020
+ms.date: 05/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: 9d247f00bdfc5a5ac1642c853923dc8fc84d6e18
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: cbc545551c650ad3140cbd6a9b40ab7dee1c0f3f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83876618"
+ms.locfileid: "83996121"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Pythonu
 
@@ -53,15 +53,13 @@ Aby bylo možné povolit Python dotazování na Azure Resource Graph, musí být
    ```
 
    > [!NOTE]
-   > Pokud je Python nainstalovaný pro všechny uživatele, musíte tento příkaz spustit z konzoly se zvýšenými oprávněními.
+   > Pokud je Python nainstalovaný pro všechny uživatele, musí být tyto příkazy spuštěné z konzoly se zvýšenými oprávněními.
 
 1. Ověřte, zda byly knihovny nainstalovány. `azure-mgmt-resourcegraph`by měla být **2.0.0** nebo vyšší, `azure-mgmt-resource` měla by být **9.0.0** nebo vyšší a `azure-cli-core` měla by být **2.5.0** nebo vyšší.
 
    ```bash
    # Check each installed library
-   pip show azure-mgmt-resourcegraph
-   pip show azure-mgmt-resource
-   pip show azure-cli-core
+   pip show azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
    ```
 
 ## <a name="run-your-first-resource-graph-query"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
@@ -82,18 +80,20 @@ S knihovnami Python přidanými do vašeho prostředí podle vašeho výběru je
    # Wrap all the work in a function
    def getresources( strQuery ):
        # Get your credentials from Azure CLI (development only!) and get your subscription list
-       subClient = get_client_from_cli_profile(SubscriptionClient)
-       subsRaw = [sub.as_dict() for sub in subClient.subscriptions.list()]
-       subList = []
+       subsClient = get_client_from_cli_profile(SubscriptionClient)
+       subsRaw = []
+       for sub in subsClient.subscriptions.list():
+           subsRaw.append(sub.as_dict())
+       subsList = []
        for sub in subsRaw:
-           subList.append(sub.get('subscription_id'))
+           subsList.append(sub.get('subscription_id'))
        
        # Create Azure Resource Graph client and set options
        argClient = get_client_from_cli_profile(arg.ResourceGraphClient)
        argQueryOptions = arg.models.QueryRequestOptions(result_format="objectArray")
        
        # Create query
-       argQuery = arg.models.QueryRequest(subscriptions=subList, query=strQuery, options=argQueryOptions)
+       argQuery = arg.models.QueryRequest(subscriptions=subsList, query=strQuery, options=argQueryOptions)
        
        # Run query
        argResults = argClient.resources(argQuery)
@@ -130,9 +130,7 @@ Pokud chcete odebrat nainstalované knihovny z prostředí Pythonu, můžete k t
 
 ```bash
 # Remove the installed libraries from the Python environment
-pip uninstall azure-mgmt-resourcegraph
-pip uninstall azure-mgmt-resource
-pip uninstall azure-cli-core
+pip uninstall azure-mgmt-resourcegraph azure-mgmt-resource azure-cli-core
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -3,15 +3,15 @@ title: Konfigurace a čtení protokolů pomocí Azure Functions triggeru pro Cos
 description: Naučte se, jak vystavit protokoly do kanálu protokolování Azure Functions při použití triggeru Azure Functions pro Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 5ff747b225f8984bcaafd80015e85a9f014bdb50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8bd53eda7197c1083f5eca70bb8602137c9fb1a8
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441832"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117130"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>Jak nakonfigurovat a číst protokoly při použití triggeru Azure Functions pro Cosmos DB
 
@@ -25,7 +25,7 @@ Protokoly o stavu popisují, jak Azure Functions Trigger pro Cosmos DB při poku
 
 ## <a name="enabling-logging"></a>Povolení protokolování
 
-Pokud chcete povolit protokolování při použití triggeru Azure Functions pro Cosmos DB, `host.json` vyhledejte soubor v projektu Azure Functions nebo v aplikaci Azure functions a [nakonfigurujte úroveň požadovaného protokolování](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Je nutné povolit trasování pro `Host.Triggers.CosmosDB` , jak je znázorněno v následující ukázce:
+Pokud chcete povolit protokolování při použití triggeru Azure Functions pro Cosmos DB, vyhledejte `host.json` soubor v projektu Azure Functions nebo v aplikaci Azure functions a [nakonfigurujte úroveň požadovaného protokolování](../azure-functions/functions-monitoring.md#log-configuration-in-hostjson). Je nutné povolit trasování pro `Host.Triggers.CosmosDB` , jak je znázorněno v následující ukázce:
 
 ```js
 {
@@ -39,7 +39,7 @@ Pokud chcete povolit protokolování při použití triggeru Azure Functions pro
 }
 ```
 
-Po nasazení funkce Azure Functions s aktualizovanou konfigurací se v rámci trasování zobrazí Trigger Azure Functions pro Cosmos DB protokoly. Protokoly můžete zobrazit v nakonfigurovaném zprostředkovateli protokolování pod *kategorií* `Host.Triggers.CosmosDB`.
+Po nasazení funkce Azure Functions s aktualizovanou konfigurací se v rámci trasování zobrazí Trigger Azure Functions pro Cosmos DB protokoly. Protokoly můžete zobrazit v nakonfigurovaném zprostředkovateli protokolování pod *kategorií* `Host.Triggers.CosmosDB` .
 
 ## <a name="query-the-logs"></a>Dotazování protokolů
 

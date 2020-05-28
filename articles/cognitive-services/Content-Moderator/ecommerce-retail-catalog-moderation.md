@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5e74eda9e30c536c0eba4e847019344c87e10cce
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04418e39b1bd0a180a1f1130b2230e31050faa4b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774339"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118628"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Kurz: středně náročné image produktů elektronického obchodování s využitím Azure Content Moderator
 
@@ -32,7 +32,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Kompletní vzorový kód je k dispozici v [ukázkách úložiště moderování katalogu elektronického obchodování](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) na GitHubu.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -65,7 +65,7 @@ V tomto kurzu se používá tři služby pro rozpoznávání; proto vyžaduje t�
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
-Budete muset aktualizovat `___Key` pole hodnotami vašich klíčů předplatného a musíte změnit `___Uri` pole na správné adresy URL koncového bodu (později získáte Custom Vision klíč a koncový bod). Tyto hodnoty najdete na kartách **rychlý Start** každého prostředku Azure. Vyplňte `YOURTEAMID` část `ReviewUri` pole ID týmu revize, který jste vytvořili dříve. Poslední část `CustomVisionUri` pole vyplníte později.
+Budete muset aktualizovat `___Key` pole hodnotami vašich klíčů předplatného a musíte změnit `___Uri` pole na správné adresy URL koncového bodu (později získáte Custom Vision klíč a koncový bod). Tyto hodnoty najdete na kartách **rychlý Start** každého prostředku Azure. Vyplňte `YOURTEAMID` část `ReviewUri` pole ID týmu revize, který jste vytvořili dříve. Poslední část pole vyplníte `CustomVisionUri` později.
 
 [!INCLUDE [subdomains note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -89,11 +89,11 @@ Další metoda přebírá adresu URL obrázku a informace o Počítačové zprac
 
 ## <a name="evaluatecustomvisiontags-method"></a>Metoda EvaluateCustomVisionTags
 
-Dále si prohlédněte metodu **EvaluateCustomVisionTags** , která klasifikuje skutečné produkty&mdash;v tomto případě příznaky, hračky a pera. Postupujte podle pokynů v tématu [Postup vytvoření klasifikátoru](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) pro sestavování vlastního klasifikátoru imagí a rozpoznávání příznaků, hraček a per (nebo bez ohledu na to, co jste zvolili jako vlastní značky) na obrázcích. K rychlému učení některých kategorií v tomto příkladu můžete použít image ve složce **Sample-images** v [úložišti GitHub](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) .
+Dále si prohlédněte metodu **EvaluateCustomVisionTags** , která klasifikuje skutečné produkty &mdash; v tomto případě příznaky, hračky a pera. Postupujte podle pokynů v tématu [Postup vytvoření klasifikátoru](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) pro sestavování vlastního klasifikátoru imagí a rozpoznávání příznaků, hraček a per (nebo bez ohledu na to, co jste zvolili jako vlastní značky) na obrázcích. K rychlému učení některých kategorií v tomto příkladu můžete použít image ve složce **Sample-images** v [úložišti GitHub](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) .
 
 ![Custom Vision webové stránky s školicími snímky pro pera, hračky a příznaky](images/tutorial-ecommerce-custom-vision.PNG)
 
-Jakmile provedete klasifikátor, Získejte adresu URL koncového bodu a předpovědi předpovědi (viz [získat adresu URL a klíč předpovědi](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) , pokud potřebujete pomoc s jejich načtením) a přiřadit tyto hodnoty k polím `CustomVisionKey` a `CustomVisionUri` v uvedeném pořadí. Metoda používá tyto hodnoty k dotazování klasifikátoru. Pokud klasifikátor najde jednu nebo více vlastních značek v obrázku, tato metoda nastaví odpovídající hodnoty v poli **ReviewTags** na **hodnotu true**.
+Jakmile provedete klasifikátor, Získejte adresu URL koncového bodu a předpovědi předpovědi (viz [získat adresu URL a klíč předpovědi](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key) , pokud potřebujete pomoc s jejich načtením) a přiřadit tyto hodnoty k `CustomVisionKey` polím a v `CustomVisionUri` uvedeném pořadí. Metoda používá tyto hodnoty k dotazování klasifikátoru. Pokud klasifikátor najde jednu nebo více vlastních značek v obrázku, tato metoda nastaví odpovídající hodnoty v poli **ReviewTags** na **hodnotu true**.
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

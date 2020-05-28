@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab9a02efedb0e002ac13294429c06e39ea18019c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399014"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117468"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace vývojového prostředí pro Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -145,7 +145,7 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
     Spuštěním následujícího příkazu vytvořte prostředí.
 
     ```bash
-    conda create -n myenv python=3.6.5
+    conda create -n myenv python=3.7.7
     ```
 
     Pak aktivujte prostředí.
@@ -154,7 +154,7 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
     conda activate myenv
     ```
 
-    Tento příklad vytvoří prostředí pomocí Python 3.6.5, ale lze zvolit jakékoli konkrétní podverze. Kompatibilita sady SDK nemusí být zaručená u určitých hlavních verzí (doporučuje se 3,5 +) a při spuštění chyb se doporučuje vyzkoušet jinou verzi/podverzi v prostředí Anaconda. Vytvoření prostředí během stahování komponent a balíčků bude trvat několik minut.
+    Tento příklad vytvoří prostředí pomocí Python 3.7.7, ale lze zvolit jakékoli konkrétní podverze. Kompatibilita sady SDK nemusí být zaručená u určitých hlavních verzí (doporučuje se 3,5 +) a při spuštění chyb se doporučuje vyzkoušet jinou verzi/podverzi v prostředí Anaconda. Vytvoření prostředí během stahování komponent a balíčků bude trvat několik minut.
 
 1. Spuštěním následujících příkazů v novém prostředí povolíte jádra IPython pro konkrétní prostředí. Tím se zajistí očekávané chování při importu jádra a balíčku při práci s poznámkovým blokům Jupyter v prostředích Anaconda:
 
@@ -170,7 +170,7 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
 
 1. K instalaci balíčků použijte následující příkazy:
 
-    Tento příkaz nainstaluje základní sadu Azure Machine Learning SDK pomocí poznámkového bloku a `automl` dalších. `automl` Extra je velká instalace a je možné ji odebrat z závorek, pokud nechcete spouštět automatizované experimenty strojového učení. `automl` Navíc zahrnuje také Azure Machine Learning sadu SDK pro přípravu dat jako závislost.
+    Tento příkaz nainstaluje základní sadu Azure Machine Learning SDK pomocí poznámkového bloku a `automl` dalších. `automl`Extra je velká instalace a je možné ji odebrat z závorek, pokud nechcete spouštět automatizované experimenty strojového učení. `automl`Navíc zahrnuje také Azure Machine Learning sadu SDK pro přípravu dat jako závislost.
 
     ```bash
     pip install azureml-sdk[notebooks,automl]
@@ -181,7 +181,7 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
    >
    >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
    >
-   > * Počínaje macOS Catalina, zsh (prostředí Z) je výchozí prostředí pro přihlášení a interaktivní prostředí. V ZSH použijte následující příkaz, který řídí hranaté závorky "\\" (zpětné lomítko):
+   > * Počínaje macOS Catalina, zsh (prostředí Z) je výchozí prostředí pro přihlášení a interaktivní prostředí. V ZSH použijte následující příkaz, který řídí hranaté závorky " \\ " (zpětné lomítko):
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
@@ -189,13 +189,13 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
 
 1. Nainstalujte další balíčky pro experimentování ve službě Machine Learning.
 
-    Použijte některý z následujících příkazů a nahraďte * \<>nového balíčku* balíčkem, který chcete nainstalovat. Instalace balíčků přes `conda install` vyžaduje, aby byl balíček součástí současných kanálů (nové kanály je možné přidat do Anaconda cloudu).
+    Použijte některý z následujících příkazů a nahraďte *\<new package>* ho balíčkem, který chcete nainstalovat. Instalace balíčků přes `conda install` vyžaduje, aby byl balíček součástí současných kanálů (nové kanály je možné přidat do Anaconda cloudu).
 
     ```bash
     conda install <new package>
     ```
 
-    Alternativně můžete balíčky instalovat prostřednictvím `pip`nástroje.
+    Alternativně můžete balíčky instalovat prostřednictvím nástroje `pip` .
 
     ```bash
     pip install <new package>
@@ -234,7 +234,7 @@ Postup povolení těchto součástí v prostředí Jupyter Notebook:
     azureml.core.VERSION
     ```
 
-1. Pokud narazíte na problémy s importem modulů `ModuleNotFoundError`a přijmete, ujistěte se, že je váš Jupyter jádro připojený ke správné cestě pro vaše prostředí, a to spuštěním následujícího kódu v buňce poznámkového bloku.
+1. Pokud narazíte na problémy s importem modulů a přijmete `ModuleNotFoundError` , ujistěte se, že je váš Jupyter jádro připojený ke správné cestě pro vaše prostředí, a to spuštěním následujícího kódu v buňce poznámkového bloku.
 
     ```python
     import sys
@@ -299,11 +299,11 @@ Než budete pokračovat, počkejte, dokud cluster neběží.
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Nainstalujte správnou sadu SDK do knihovny datacihly.
 Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , která připojí příslušný balíček sady Azure Machine Learning SDK k vašemu clusteru.
 
-1. Klikněte pravým tlačítkem na složku aktuální pracovní prostor, kam chcete uložit knihovnu. Vyberte **vytvořit** > **knihovnu**.
+1. Klikněte pravým tlačítkem na složku aktuální pracovní prostor, kam chcete uložit knihovnu. Vyberte **vytvořit**  >  **knihovnu**.
 
 1. Zvolit **jenom jednu** možnost (žádná jiná instalace sady SDK není podporovaná)
 
-   |Doplňky&nbsp;balíčku&nbsp;sady SDK|Zdroj|Název&nbsp;PyPI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |&nbsp;Doplňky balíčku sady SDK &nbsp;|Zdroj|&nbsp;Název PyPI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Pro datacihly| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [datacihly]|
    |Pro datacihly – with-<br> Automatické možnosti ML| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [automl]|
@@ -329,17 +329,17 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
 
 Pokud byla instalace úspěšná, importovaná knihovna by měla vypadat jako jedna z následujících:
 
-Sada SDK pro datacihly **_bez_** automatizovaného ![strojového učení Azure Machine Learning SDK pro datacihly](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+Sada SDK pro datacihly **_bez_** automatizovaného strojového učení ![ Azure Machine Learning SDK pro datacihly](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Sada SDK pro datacihly **pomocí** automatizovaného ![strojového učení sady SDK s nainstalovanou službou Automated Machine Learning pro datacihly](./media/how-to-configure-environment/automlonadb.png)
+Sada SDK pro datacihly **pomocí** automatizovaného strojového učení ![ sady SDK s nainstalovanou službou Automated Machine Learning pro datacihly](./media/how-to-configure-environment/automlonadb.png)
 
 ### <a name="start-exploring"></a>Zahájení průzkumu
 
 Vyzkoušet:
 + I když je k dispozici mnoho ukázkových poznámkových bloků, **fungují pouze [Tyto ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) s Azure Databricks.**
 
-+ Tyto ukázky importujte přímo z pracovního prostoru. Viz níže: ![vyberte importovat](./media/how-to-configure-environment/azure-db-screenshot.png)
-![panel importu.](./media/how-to-configure-environment/azure-db-import.png)
++ Tyto ukázky importujte přímo z pracovního prostoru. Viz níže: ![ Vyberte importovat ](./media/how-to-configure-environment/azure-db-screenshot.png)
+ ![ panel importu.](./media/how-to-configure-environment/azure-db-import.png)
 
 + Naučte se [vytvářet kanály s datacihlami jako výpočetní](how-to-create-your-first-pipeline.md)prostředí.
 
@@ -357,7 +357,7 @@ Konfigurační soubor pracovního prostoru je soubor JSON, který oznamuje sadě
 
 Tento soubor JSON musí být ve struktuře adresáře, která obsahuje vaše skripty Pythonu nebo Jupyter Poznámkový blok. Může být ve stejném adresáři, v podadresáři s názvem *. AzureML*nebo v nadřazeném adresáři.
 
-Chcete-li použít tento soubor ze svého kódu `ws=Workspace.from_config()`, použijte. Tento kód načte informace ze souboru a připojí se k vašemu pracovnímu prostoru.
+Chcete-li použít tento soubor ze svého kódu, použijte `ws=Workspace.from_config()` . Tento kód načte informace ze souboru a připojí se k vašemu pracovnímu prostoru.
 
 Konfigurační soubor můžete vytvořit třemi způsoby:
 

@@ -108,7 +108,7 @@ Publikování událostí pro Azure Event Grid pomocí schématu CloudEvents 1,0.
 1.  Služba publikování provede příspěvek HTTP na `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 2.  V žádosti zahrňte hodnotu hlavičky s názvem AEG-SAS-Key obsahující klíč pro ověření. Tento klíč se zřídí během vytváření partnerNamespace. Platná hodnota hlavičky je například AEG-SAS-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = =.
 3.  Nastavte hlavičku Content-Type na "Application/cloudevents-Batch + JSON; charset = UTF-8.
-4.  Proveďte příspěvek HTTP na výše uvedenou adresu URL pro publikování s dávkou událostí odpovídajících této oblasti. Například:
+4.  Proveďte příspěvek HTTP na výše uvedenou adresu URL pro publikování s dávkou událostí odpovídajících této oblasti. Příklad:
 
 ``` json
 [
@@ -153,7 +153,7 @@ Po odeslání do koncového bodu partnerNamespace obdržíte odpověď. Odpově�
 | Nesprávný koncový bod                 | 404 Nenalezeno         |
 | Pole nebo událost překračuje omezení velikosti. | datová část 413 je moc velká. |
 
-## <a name="reference"></a>Odkaz
+## <a name="reference"></a>Referenční informace
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [Šablona ARM](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)

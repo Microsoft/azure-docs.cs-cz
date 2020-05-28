@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/10/2020
+ms.date: 05/26/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: ca53abdecfdabb4a49bb45880c0f6c4856b3ed1a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1f66da399ecd23f8db2a3989effd56ed98833dfd
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586490"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996835"
 ---
 # <a name="quickstart-use-the-translator-to-transliterate-text"></a>Rychlý Start: použití překladatele k přepisu textu
 

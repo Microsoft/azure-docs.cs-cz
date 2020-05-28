@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: dcad90713227e55437523c91997175242078e9e4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d5484f5725047201770e5b3cbab89847b27117f9
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836477"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116927"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Začínáme s využitím Azure synapse Analytics
 
@@ -22,23 +22,15 @@ Tento kurz vás provede všemi základními kroky potřebnými k instalaci a pou
 
 ## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>Příprava účtu úložiště pro použití v pracovním prostoru synapse
 
-1. Otevřete [Azure Portal](https://portal.azure.com)
-1. Vytvořte nový účet úložiště s následujícími nastaveními:
-    * Na kartě **základy**
-
-    |Nastavení | Navrhovaná hodnota | Popis |
-    |---|---|---|
-    |**Název účtu úložiště**| Můžete mu dát libovolný název.|V tomto dokumentu se na něj budeme odkazovat jako na `contosolake` .
-    |**Druh účtu**|Musí být nastavené na`StorageV2`||
-    |**Umístění**|Můžete vybrat libovolné umístění.| Doporučujeme, aby váš synapse pracovní prostor Azure Data Lake Storage a účet Gen2 (ADLS) byly ve stejné oblasti.|
-    ||||
-    
-    * Na kartě **Upřesnit**
-    
-    |Nastavení | Navrhovaná hodnota | Popis |
-    |---|---|---|
-    |**Data Lake Storage Gen2**|`Enabled`| Azure synapse funguje jenom s účty úložiště, kde je toto nastavení povolené.|
-    ||||
+* Otevřete [Azure Portal](https://portal.azure.com)
+* Vytvořte nový účet úložiště s následujícími nastaveními:
+    |Karta|Nastavení | Navrhovaná hodnota | Description |
+    |---|---|---|---|
+    |Základy|**Název účtu úložiště**| Můžete mu dát libovolný název.|V tomto dokumentu se na něj budeme odkazovat jako na `contosolake` .|
+    |Základy|**Druh účtu**|Musí být nastavené na`StorageV2`||
+    |Základy|**Umístění**|Můžete vybrat libovolné umístění.| Doporučujeme, aby váš synapse pracovní prostor Azure Data Lake Storage a účet Gen2 (ADLS) byly ve stejné oblasti.|
+    |Pokročilý|**Data Lake Storage Gen2**|`Enabled`| Azure synapse funguje jenom s účty úložiště, kde je toto nastavení povolené.|
+    |||||
 
 1. Po vytvoření účtu úložiště v levém navigačním panelu vyberte **řízení přístupu (IAM)** . Pak přiřaďte následující role nebo ověřte, zda jsou již přiřazeny. 
     a. * Přiřaďte sami sobě roli **vlastníka** v účtu úložiště b. * Přiřaďte se k roli **vlastníka dat objektu BLOB úložiště** v účtu úložiště.
@@ -46,16 +38,15 @@ Tento kurz vás provede všemi základními kroky potřebnými k instalaci a pou
 
 ## <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru synapse
 
-1. Otevřete [Azure Portal](https://portal.azure.com) a v horní části hledání `Synapse` .
-1. Ve výsledcích hledání v části **služby**vyberte **Azure synapse Analytics (pracovní prostory verze Preview)** .
-1. Vybrat **+ Přidat**
-1. Karta **základy** :
+* Otevřete [Azure Portal](https://portal.azure.com) a v horní části hledání `Synapse` .
+* Ve výsledcích hledání v části **služby**vyberte **Azure synapse Analytics (pracovní prostory verze Preview)** .
+* Vyberte **+ Přidat** a vytvořte nový pracovní prostor s těmito nastaveními.
 
-    |Nastavení | Navrhovaná hodnota | Popis |
-    |---|---|---|
-    |**Název pracovního prostoru**|Můžete ji volat cokoli.| V tomto dokumentu použijeme`myworkspace`
-    |**Věřitel**|Porovnává s oblastí účtu úložiště.||
-    |||
+    |Karta|Nastavení | Navrhovaná hodnota | Description |
+    |---|---|---|---|
+    |Základy|**Název pracovního prostoru**|Můžete ji volat cokoli.| V tomto dokumentu použijeme`myworkspace`|
+    |Základy|**Věřitel**|Porovnává s oblastí účtu úložiště.|
+    ||||
 
 1. V části **vybrat data Lake Storage Gen 2**vyberte účet a kontejner, který jste vytvořili dříve.
     > [!NOTE]

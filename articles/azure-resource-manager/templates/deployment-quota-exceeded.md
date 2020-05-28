@@ -2,17 +2,20 @@
 title: Překročila se kvóta nasazení.
 description: Popisuje, jak vyřešit chybu s více než 800 nasazeními v historii skupiny prostředků.
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 0fec8fa91ec79822115d83b15e8c8a839dc7fd69
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80245085"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117803"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Vyřešit chybu, pokud je počet nasazení vyšší než 800
 
 Každá skupina prostředků je v historii nasazení omezená na 800 nasazení. Tento článek popisuje chybu, která se zobrazí, když se nasazení nepovede, protože by překročilo povolené nasazení 800. Chcete-li tuto chybu vyřešit, odstraňte nasazení z historie skupiny prostředků. Odstranění nasazení z historie neovlivní žádné z nasazených prostředků.
+
+> [!NOTE]
+> Od června 2020 Azure Resource Manager automaticky odstraní nasazení z historie, protože se blížíte limitu. Tato chyba se může zobrazit i v případě, že jste se rozhodli automatické odstranění. Další informace najdete v tématu [Automatické odstraňování z historie nasazení](deployment-history-deletions.md).
 
 ## <a name="symptom"></a>Příznak
 

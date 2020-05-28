@@ -10,12 +10,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 05/19/2020
-ms.openlocfilehash: 07450f0c1ea85f22d19e59aaa27898cbf34a7978
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46c11ef3b3a1fa1a1861f9e944c93ffdf94f7c5a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656567"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118895"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Kurz: Předpověď poptávky pomocí automatizovaného strojového učení
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -75,11 +75,11 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
        
     1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
         
-        Pole|Popis| Hodnota pro kurz
+        Pole|Description| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
-        Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
+        Encoding|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Použít hlavičky z prvního souboru
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
 
@@ -110,7 +110,7 @@ Po načtení a konfiguraci dat nastavte vzdálený cíl výpočtů a vyberte, kt
 
     1. Vyberte **vytvořit nový výpočetní** výkon a nakonfigurujte svůj cíl služby Compute. Automatizovaná ML podporuje jenom Azure Machine Learning výpočetní výkon. 
 
-        Pole | Popis | Hodnota pro kurz
+        Pole | Description | Hodnota pro kurz
         ----|---|---
         Název výpočtu |Jedinečný název, který identifikuje váš výpočetní kontext.|kolo – COMPUTE
         &nbsp;Velikost virtuálního počítače &nbsp;| Vyberte velikost virtuálního počítače pro výpočetní výkon.|Standard_DS12_V2
@@ -135,7 +135,7 @@ Dokončete instalaci pro automatický experiment ML zadáním typu úlohy Machin
     1. Vyberte **Zobrazit další nastavení konfigurace** a vyplňte pole následujícím způsobem. Tato nastavení mají lepší kontrolu nad úlohou školení a určují nastavení prognózy. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat.
 
   
-        Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
+        Další &nbsp; Konfigurace|Description|Hodnota &nbsp; pro &nbsp; kurz
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|Normalizovaný průměrný střední znak – chyba
         Automaticky featurization| Umožňuje předzpracování. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolit
@@ -229,7 +229,7 @@ Postup vytvoření Power BI podporovaného schématu pro usnadnění spotřeby n
 
 + Přečtěte si další informace o [automatizovaném strojovém učení](concept-automated-ml.md).
 + Další informace o metrikách klasifikace a grafech najdete v článku [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md#classification) .
-+ Přečtěte si další informace o [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
++ Přečtěte si další informace o [featurization](how-to-configure-auto-features.md#featurization).
 + Přečtěte si další informace o [profilování dat](how-to-use-automated-ml-for-ml-models.md#profile).
 
 >[!NOTE]

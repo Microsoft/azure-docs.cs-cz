@@ -4,19 +4,19 @@ description: Vytvoření zásad podmíněného přístupu pro povolení vylepše
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/25/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8054d8985596095db32d9262322d7fb0f4aab8c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9cfba377aba30d4687bab4ba7c5a311c70c4905
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295155"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995152"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>Podmíněný přístup: podmíněný přístup na základě rizik
 
@@ -30,7 +30,7 @@ Organizace s Azure AD Premium licencemi P2 můžou vytvářet zásady podmíněn
 
 Povolení této zásady bude vyžadovat, aby se všichni uživatelé zaregistrovali pro Azure Multi-Factor Authentication do 14 dnů. 
 
-1. Přihlaste se k webu **Azure Portal**.
+1. Přihlaste se k **portálu Azure Portal**.
 1. Klikněte na **Všechny služby** a přejděte na **Azure AD Identity Protection**.
 1. Klikněte na **Registrace MFA**.
 1. V části **přiřazení**vyberte **Uživatelé**.
@@ -44,7 +44,7 @@ Povolení této zásady bude vyžadovat, aby se všichni uživatelé zaregistrov
 
 Microsoft spolupracuje při vyhledávání dvojic uživatelských jmen a hesel s výzkumnými pracovníky, orgány zajišťujícími vymáhání zákona, různými týmy zabezpečení v Microsoftu a dalšími důvěryhodnými zdroji. Když některá dvojice odpovídá účtu ve vašem prostředí, může se následující zásadou aktivovat změna hesla na základě rizikové události.
 
-1. Přihlaste se k webu **Azure Portal**.
+1. Přihlaste se k **portálu Azure Portal**.
 1. Klikněte na **Všechny služby** a přejděte na **Azure AD Identity Protection**.
 1. Klikněte na **zásady rizika pro uživatele**.
 1. V části **přiřazení**vyberte **Uživatelé** .
@@ -53,7 +53,7 @@ Microsoft spolupracuje při vyhledávání dvojic uživatelských jmen a hesel s
    1. Vyberte **Done** (Hotovo).
 1. V části **podmínky**vyberte **riziko pro uživatele**a pak zvolte **Vysoká**.
    1. Klikněte na **Vybrat** a potom na **Hotovo**.
-1. V části **ovládací prvky** > **přístup**zvolte možnost **povolený přístup**a pak vyberte **vyžadovat změnu hesla**.
+1. V části **ovládací prvky**  >  **přístup**zvolte možnost **povolený přístup**a pak vyberte **vyžadovat změnu hesla**.
    1. Klikněte na **Vybrat**.
 1. Nastavte **zásadu Vynutilit** na **zapnuto**.
 1. Klikněte na **Uložit**.
@@ -62,7 +62,7 @@ Microsoft spolupracuje při vyhledávání dvojic uživatelských jmen a hesel s
 
 Většina uživatelů se chová běžným způsobem, který je možné sledovat. Když se mimo tento běžný způsob vychýlí, může být nebezpečné jim povolit se normálně přihlásit. Je možné, že budete chtít tohoto uživatele zablokovat nebo ho můžete jednoduše požádat, aby provedl ověřování pomocí vícefaktorového ověřování, aby prokázal, že jsou ve skutečnosti, na kterých říkají. Vyžádání vícefaktorového ověření při zjištění rizikového přihlášení zapnete povolením následující zásady.
 
-1. Přihlaste se k webu **Azure Portal**.
+1. Přihlaste se k **portálu Azure Portal**.
 1. Klikněte na **Všechny služby** a přejděte na **Azure AD Identity Protection**.
 1. Klikněte na **zásady rizik přihlašování** .
 1. V části **přiřazení**vyberte **Uživatelé** .
@@ -71,7 +71,7 @@ Většina uživatelů se chová běžným způsobem, který je možné sledovat.
    1. Vyberte **Done** (Hotovo).
 1. V části **podmínky**vyberte možnost **riziko přihlášení**a pak zvolte **střední a vyšší**.
    1. Klikněte na **Vybrat** a potom na **Hotovo**.
-1. V části **ovládací prvky** > **přístup**zvolte možnost **povolený přístup**a pak vyberte **vyžadovat vícefaktorové ověřování**.
+1. V části **ovládací prvky**  >  **přístup**zvolte možnost **povolený přístup**a pak vyberte **vyžadovat vícefaktorové ověřování**.
    1. Klikněte na **Vybrat**.
 1. Nastavte **zásadu Vynutilit** na **zapnuto**.
 1. Klikněte na **Uložit**.

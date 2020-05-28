@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 890486214eb67be26479b122c88c7a6b640b8ade
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204178"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117790"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Analýza pomocí Azure Machine Learning Studio (Classic) pomocí místní databáze SQL Server
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Často by podniky, které pracují s místními daty, mohly využít výhod škály a flexibility cloudu pro úlohy strojového učení. Ale nechtějí přerušit své současné obchodní procesy a pracovní postupy přesunutím místních dat do cloudu. Azure Machine Learning Studio (Classic) teď podporuje čtení vašich dat z místní databáze SQL Server a následné školení a vyhodnocování modelu s těmito daty. Už nemusíte ručně kopírovat a synchronizovat data mezi cloudem a místním serverem. Místo toho se teď může modul **importu dat** v Azure Machine Learning Studio (Classic) přečíst přímo z místní databáze SQL Server pro vaše školicí a vyhodnocovací úlohy.
 
@@ -70,7 +68,7 @@ Podrobné informace o požadavcích na instalaci, krocích instalace a tipůch k
 V tomto návodu nastavíte Integration Runtime Azure Data Factory v pracovním prostoru Azure Machine Learning, nakonfigurujete ho a pak načtete data z místní databáze SQL Server.
 
 > [!TIP]
-> Než začnete, zakažte blokování automaticky otevíraných oken v prohlížeči `studio.azureml.net`. Pokud používáte prohlížeč Google Chrome, Stáhněte a nainstalujte jeden z několika modulů plug-in, které jsou k dispozici na webu Google Chrome webstore [klikněte jednou na rozšíření aplikace](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
+> Než začnete, zakažte blokování automaticky otevíraných oken v prohlížeči `studio.azureml.net` . Pokud používáte prohlížeč Google Chrome, Stáhněte a nainstalujte jeden z několika modulů plug-in, které jsou k dispozici na webu Google Chrome webstore [klikněte jednou na rozšíření aplikace](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
 >
 > [!NOTE]
 > Azure Data Factory Integration Runtime v místním prostředí se dřív jmenovala jako Správa dat brána. V tomto kurzu se v tomto kroku budou dál odkazovat jako na bránu.  
@@ -113,7 +111,7 @@ Prvním krokem je vytvoření a nastavení brány pro přístup k místní datab
 12. V bráně Microsoft Správa dat Configuration Manager přepněte na kartu **certifikát** . Certifikát zadaný na této kartě slouží k šifrování/dešifrování přihlašovacích údajů pro místní úložiště dat, které zadáte na portálu. Tento certifikát je výchozím certifikátem. Microsoft doporučuje tuto změnu na vlastní certifikát, který zálohujete v systému správy certifikátů. Pokud místo toho chcete použít vlastní certifikát, klikněte na **změnit** .
 
     ![Změnit certifikát brány](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
-13. volitelné Pokud chcete povolit podrobné protokolování, abyste mohli řešit problémy s bránou, přejděte v bráně Microsoft Správa dat Configuration Manager na kartu **Diagnostika** a zaškrtněte možnost **Povolit podrobné protokolování pro účely řešení potíží** . Informace o protokolování najdete v Prohlížeč událostí Windows pod uzlem - &gt; **protokoly aplikací a služeb** **Správa dat uzlu brány** . Kartu **Diagnostika** můžete také použít k otestování připojení k místnímu zdroji dat pomocí brány.
+13. volitelné Pokud chcete povolit podrobné protokolování, abyste mohli řešit problémy s bránou, přejděte v bráně Microsoft Správa dat Configuration Manager na kartu **Diagnostika** a zaškrtněte možnost **Povolit podrobné protokolování pro účely řešení potíží** . Informace o protokolování najdete v Prohlížeč událostí Windows pod uzlem **protokoly aplikací a služeb**  - &gt; **Správa dat uzlu brány** . Kartu **Diagnostika** můžete také použít k otestování připojení k místnímu zdroji dat pomocí brány.
 
     ![Zapnout podrobné protokolování](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 

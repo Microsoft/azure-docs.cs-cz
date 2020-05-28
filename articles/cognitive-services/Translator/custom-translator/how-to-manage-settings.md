@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 50bff8e55d1b125f56696ac485bc1e05193dea55
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587224"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992942"
 ---
 # <a name="how-to-manage-settings"></a>Správa nastavení
 
@@ -39,17 +39,17 @@ Pokud předplatné nemáte, postupujte podle následujících kroků:
 
 ### <a name="add-existing-key"></a>Přidat existující klíč
 
-1.  Přejděte na stránku nastavení pro váš pracovní prostor.
-2.  Klikněte na Přidat klíč.
+1.    Přejděte na stránku nastavení pro váš pracovní prostor.
+2.    Klikněte na Přidat klíč.
 
-    ![Jak přidat klíč předplatného](media/how-to/how-to-add-subscription-key.png)
+   ![Jak přidat klíč předplatného](media/how-to/how-to-add-subscription-key.png)
 
 3. V dialogovém okně zadejte klíč pro vaše předplatné překladatele a potom klikněte na tlačítko Přidat.
 
     ![Jak přidat klíč předplatného](media/how-to/how-to-add-subscription-key-dialog.png)
-4.  Po přidání klíče můžete klíč kdykoli upravit nebo odstranit.
+4.    Po přidání klíče můžete klíč kdykoli upravit nebo odstranit.
 
-    ![Klíč předplatného po přidání](media/how-to/subscription-key-after-add.png)
+   ![Klíč předplatného po přidání](media/how-to/subscription-key-after-add.png)
 
 ## <a name="manage-your-workspace"></a>Správa pracovního prostoru
 
@@ -59,47 +59,47 @@ Pokud je třeba jinou část práce sdílet s různými lidmi, může být užit
 
 ## <a name="create-a-new-workspace"></a>Vytvoření nového pracovního prostoru
 
-1.  Přejděte na stránku nastavení pracovního prostoru.
-2.  V části vytvořit nový pracovní prostor klikněte na tlačítko Nový pracovní prostor.
+1.    Přejděte na stránku nastavení pracovního prostoru.
+2.    V části vytvořit nový pracovní prostor klikněte na tlačítko Nový pracovní prostor.
 
-    ![Vytvořit nový pracovní prostor](media/how-to/create-new-workspace.png)
+   ![Vytvořit nový pracovní prostor](media/how-to/create-new-workspace.png)
 
-4.  V dialogovém okně zadejte název nového pracovního prostoru.
-5.  Klikněte na vytvořit.
+4.    V dialogovém okně zadejte název nového pracovního prostoru.
+5.    Klikněte na vytvořit.
 
-    ![Dialog vytvořit nový pracovní prostor](media/how-to/create-new-workspace-dialog.png)
+   ![Dialog vytvořit nový pracovní prostor](media/how-to/create-new-workspace-dialog.png)
 
 ## <a name="share-your-workspace"></a>Sdílení pracovního prostoru
 
 Ve vlastním překladateli můžete sdílet svůj pracovní prostor s ostatními, pokud je potřeba sdílet jinou část vaší práce s různými lidmi.
 
-1.  Přejděte na stránku nastavení pracovního prostoru.
-2.  V části nastavení sdílení klikněte na tlačítko sdílet.
+1.    Přejděte na stránku nastavení pracovního prostoru.
+2.    V části nastavení sdílení klikněte na tlačítko sdílet.
 
-    ![Sdílet pracovní prostor](media/how-to/share-workspace.png)
+   ![Sdílet pracovní prostor](media/how-to/share-workspace.png)
 
-3.  V dialogovém okně Zadejte čárkami oddělený seznam e-mailových adres, které chcete sdílet s tímto pracovním prostorem. Ujistěte se, že sdílíte s e-mailovou adresou, kterou osoba používá pro přihlášení k vlastnímu překladateli. Pak vyberte odpovídající úroveň oprávnění ke sdílení.
+3.    V dialogovém okně Zadejte čárkami oddělený seznam e-mailových adres, které chcete sdílet s tímto pracovním prostorem. Ujistěte se, že sdílíte s e-mailovou adresou, kterou osoba používá pro přihlášení k vlastnímu překladateli. Pak vyberte odpovídající úroveň oprávnění ke sdílení.
 
-4.  Pokud má váš pracovní prostor stále výchozí název "pracovní prostor", budete ho muset před sdílením pracovního prostoru změnit.
-5.  Klikněte na Uložit.
+4.    Pokud má váš pracovní prostor stále výchozí název "pracovní prostor", budete ho muset před sdílením pracovního prostoru změnit.
+5.    Klikněte na Uložit.
 
 ## <a name="sharing-permissions"></a>Oprávnění ke sdílení
 
-1.  **Čtecí modul:** Čtenář v pracovním prostoru bude moci zobrazit všechny informace v pracovním prostoru.
+1.    **Čtecí modul:** Čtenář v pracovním prostoru bude moci zobrazit všechny informace v pracovním prostoru.
 
-2.  **Editor:** Editor v pracovním prostoru bude moci přidávat dokumenty, naučit modely a odstraňovat dokumenty a projekty. Můžou přidat klíč předplatného, ale nemůžou upravovat, na koho se pracovní prostor sdílí, odstranit pracovní prostor nebo změnit název pracovního prostoru.
+2.    **Editor:** Editor v pracovním prostoru bude moci přidávat dokumenty, naučit modely a odstraňovat dokumenty a projekty. Můžou přidat klíč předplatného, ale nemůžou upravovat, na koho se pracovní prostor sdílí, odstranit pracovní prostor nebo změnit název pracovního prostoru.
 
-3.  **Vlastník:** Vlastník má k pracovnímu prostoru úplná oprávnění.
+3.    **Vlastník:** Vlastník má k pracovnímu prostoru úplná oprávnění.
 
 ## <a name="change-sharing-permission"></a>Změnit oprávnění ke sdílení
 
 Když se pracovní prostor sdílí, v části nastavení sdílení se zobrazí všechny e-mailové adresy, se kterými se tento pracovní prostor sdílí. Pokud máte přístup vlastníka k pracovnímu prostoru, můžete změnit stávající oprávnění ke sdílení pro každou e-mailovou adresu.
 
-1.  V části nastavení sdílení pro každý e-mail zobrazuje rozevírací nabídka aktuální úroveň oprávnění.
+1.    V části nastavení sdílení pro každý e-mail zobrazuje rozevírací nabídka aktuální úroveň oprávnění.
 
-2.  Klikněte na rozevírací nabídku a vyberte novou úroveň oprávnění, kterou chcete přiřadit k této e-mailové adrese.
+2.    Klikněte na rozevírací nabídku a vyberte novou úroveň oprávnění, kterou chcete přiřadit k této e-mailové adrese.
 
-    ![Sdílení nastavení oprávnění](media/how-to/sharing-permission-settings.png)
+   ![Sdílení nastavení oprávnění](media/how-to/sharing-permission-settings.png)
 
 ## <a name="next-steps"></a>Další kroky
 

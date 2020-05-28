@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 921a05c4dc6c1d5cfa663ac71b469573b8f1925b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80c03661970ec218dd8b36664ecb67623068ac5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275461"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116555"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -31,19 +31,19 @@ Praktické přehledy o používání řešení Azure SQL Analytics a typických 
 
 Azure SQL Analytics je pouze cloudové řešení monitorování, které podporuje streamování diagnostické telemetrie pro všechny vaše databáze SQL Azure. Vzhledem k tomu, že Azure SQL Analytics nepoužívá agenty pro připojení k Azure Monitor, nepodporuje monitorování SQL Server hostovaných místně nebo na virtuálních počítačích.
 
-| Připojený zdroj | Podporuje se | Popis |
+| Připojený zdroj | Podporuje se | Description |
 | --- | --- | --- |
 | [Nastavení diagnostiky](../platform/diagnostic-settings.md) | **Ano** | Data metriky a protokolu Azure se odesílají do protokolů Azure Monitor přímo pomocí Azure. |
-| [Účet služby Azure Storage](../platform/collect-azure-metrics-logs.md) | Ne | Azure Monitor nečtou data z účtu úložiště. |
+| [Účet úložiště Azure](../platform/collect-azure-metrics-logs.md) | Ne | Azure Monitor nečtou data z účtu úložiště. |
 | [Agenti systému Windows](../platform/agent-windows.md) | Ne | Přímo agenti Windows nepoužívají Azure SQL Analytics. |
 | [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Přímo agenti Linux nepoužívají Azure SQL Analytics. |
 | [Skupina pro správu nástroje System Center Operations Manager](../platform/om-agents.md) | Ne | Azure SQL Analytics nepoužívá přímé připojení od Operations Managerho agenta k Azure Monitor. |
 
 ## <a name="azure-sql-analytics-options"></a>Možnosti Azure SQL Analytics
 
-Níže uvedená tabulka obsahuje přehled podporovaných možností pro dvě verze řídicího panelu Azure SQL Analytics, jeden pro databáze s jedním a fondem a elastické fondy a druhý pro spravované instance a databáze instancí.
+Následující tabulka obsahuje přehled podporovaných možností pro dvě verze řídicího panelu Azure SQL Analytics, jeden pro Azure SQL Database a druhý pro databáze spravované instance Azure SQL.
 
-| Možnost Azure SQL Analytics | Popis | Podpora pro jednotlivé a sdružené databáze a elastické fondy | Podpora databáze spravované instance a instance |
+| Možnost Azure SQL Analytics | Description | Podpora SQL Database | Podpora spravované instance SQL |
 | --- | ------- | ----- | ----- |
 | Prostředek podle typu | Perspektiva, která počítá všechny monitorované prostředky. | Ano | Ano |
 | Insights | Poskytuje hierarchické procházení k podrobnostem Intelligent Insights do výkonu. | Ano | Ano |
@@ -62,7 +62,7 @@ Pomocí postupu popsaného v tématu [přidání Azure monitor řešení z galer
 
 Po vytvoření Azure SQL Analytics řešení ve vašem pracovním prostoru musíte **nakonfigurovat každý** prostředek, který chcete monitorovat, aby se jeho diagnostická telemetrie mohla Azure SQL Analytics vysílat. Postupujte podle podrobných pokynů na této stránce:
 
-- Povolte Azure Diagnostics služby Azure SQL Database, abyste mohli [streamovat diagnostiku diagnostiky do Azure SQL Analytics](../../sql-database/sql-database-metrics-diag-logging.md).
+- Povolte Azure Diagnostics služby Azure SQL Database, abyste mohli [streamovat diagnostiku diagnostiky do Azure SQL Analytics](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
 Na výše uvedené stránce najdete taky pokyny, jak povolit podporu monitorování více předplatných Azure z jednoho Azure SQL Analytics pracovního prostoru jako jediného podokna skla.
 
@@ -72,13 +72,13 @@ Když do svého pracovního prostoru přidáte Azure SQL Analytics, přidá se d
 
 ![Dlaždice souhrnu Azure SQL Analytics](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-Po načtení se na dlaždici zobrazí počet databází s jedním a fondem, elastické fondy, spravované instance a databáze spravované instance, ze kterých Azure SQL Analytics přijímá telemetrii diagnostiky.
+Po načtení se na dlaždici zobrazí počet databází a elastických fondů v SQL Database a ve spravovaných instancích a databázích instancí ve spravované instanci SQL, ze které Azure SQL Analytics přijímá telemetrii diagnostiky.
 
 ![Dlaždice Azure SQL Analytics](./media/azure-sql/azure-sql-sol-tile-02.png)
 
-Azure SQL Analytics poskytuje dvě samostatná zobrazení – jednu pro monitorování izolovaných databází a databáze ve fondu a elastických fondů a další zobrazení pro monitorování spravovaných instancí a databází instancí.
+Azure SQL Analytics poskytuje dvě samostatná zobrazení – jednu pro monitorování SQL Database a další zobrazení pro monitorování spravované instance SQL.
 
-Pokud chcete zobrazit řídicí panel monitorování Azure SQL Analytics pro jednu databázi a elastické fondy, klikněte na horní část dlaždice. Chcete-li zobrazit řídicí panel monitorování Azure SQL Analytics pro spravované instance a databáze instancí, klikněte na spodní část dlaždice.
+Chcete-li zobrazit řídicí panel monitorování Azure SQL Analytics pro SQL Database, klikněte na horní část dlaždice. Chcete-li zobrazit řídicí panel monitorování Azure SQL Analytics pro spravovanou instanci SQL, klikněte na spodní část dlaždice.
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Zobrazení Azure SQL Analytics dat
 
@@ -86,7 +86,7 @@ Pokud chcete zobrazit řídicí panel monitorování Azure SQL Analytics pro jed
 
 Pokud se některé metriky nebo protokoly nestreamují do Azure Monitor, dlaždice v Azure SQL Analytics nejsou naplněny informacemi o monitorování.
 
-### <a name="single-and-pooled-databases-and-elastic-pools-view"></a>Samostatné a sdružené databáze a zobrazení elastických fondů
+### <a name="sql-database-view"></a>Zobrazení SQL Database
 
 Po výběru dlaždice Azure SQL Analytics pro databázi se zobrazí řídicí panel monitorování.
 
@@ -98,7 +98,7 @@ Když vyberete některou dlaždici, otevře se v konkrétní perspektivě sestav
 
 Každá perspektiva v tomto zobrazení poskytuje souhrny na úrovni předplatného, serveru, elastického fondu a databáze. Kromě toho Každá perspektiva zobrazuje perspektivu specifickou pro sestavu na pravé straně. Výběr předplatného, serveru, fondu nebo databáze ze seznamu pokračuje v procházení podrobností.
 
-### <a name="managed-instance-and-instances-databases-view"></a>Zobrazení databáze spravované instance a instance
+### <a name="sql-managed-instance-view"></a>Zobrazení spravované instance SQL
 
 Po výběru dlaždice Azure SQL Analytics pro databáze se zobrazí řídicí panel monitorování.
 
@@ -106,13 +106,13 @@ Po výběru dlaždice Azure SQL Analytics pro databáze se zobrazí řídicí pa
 
 Když vyberete některou dlaždici, otevře se v konkrétní perspektivě sestava s podrobnostmi. Po výběru perspektivy se otevře sestava procházení sestav.
 
-Když vyberete zobrazení spravovaná instance, zobrazí se podrobnosti o využití spravované instance, databázích, které obsahuje, a telemetrie na dotazech spuštěných napříč instancí.
+Když vyberete zobrazení spravované instance SQL, zobrazí se podrobnosti o využití spravované instance, databázích, které obsahuje, a telemetrie na dotazech spuštěných napříč instancí.
 
 ![Azure SQL Analytics vypršení časových limitů](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
 ### <a name="intelligent-insights-report"></a>Sestava Intelligent Insights
 
-Azure SQL Database [Intelligent Insights](../../sql-database/sql-database-intelligent-insights.md) vám umožní zjistit, co se děje s výkonem všech databází SQL Azure. Všechny shromážděné Intelligent Insights lze vizuálně rozčlenit a získat z perspektivy Insights.
+Azure SQL Database [Intelligent Insights](../../azure-sql/database/intelligent-insights-overview.md) vám umožní zjistit, co se děje s výkonem všech databází SQL Azure. Všechny shromážděné Intelligent Insights lze vizuálně rozčlenit a získat z perspektivy Insights.
 
 ![Azure SQL Analytics přehledy](./media/azure-sql/azure-sql-sol-insights.png)
 
@@ -170,7 +170,7 @@ Jakmile je nová role vytvořená, přiřaďte tuto roli každému uživateli, k
 
 ## <a name="analyze-data-and-create-alerts"></a>Analýza dat a vytváření výstrah
 
-Analýza dat v Azure SQL Analytics vychází z [Log Analytics jazyka](../log-query/get-started-queries.md) pro vlastní dotazování a vytváření sestav. Vyhledejte popis dostupných dat shromážděných z databázového prostředku pro vlastní dotazování v [metrikách a protokolech, které jsou k dispozici](../../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available).
+Analýza dat v Azure SQL Analytics vychází z [Log Analytics jazyka](../log-query/get-started-queries.md) pro vlastní dotazování a vytváření sestav. Vyhledejte popis dostupných dat shromážděných z databázového prostředku pro vlastní dotazování v [metrikách a protokolech, které jsou k dispozici](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available).
 
 Automatizované upozorňování v Azure SQL Analytics jsou založené na zápisu Log Analytics dotazu, který aktivuje výstrahu při splnění podmínky. Níže naleznete několik příkladů Log Analytics dotazů, na kterých je možné nastavit upozorňování v Azure SQL Analytics.
 
@@ -178,7 +178,7 @@ Automatizované upozorňování v Azure SQL Analytics jsou založené na zápisu
 
 Můžete snadno [vytvářet výstrahy](../platform/alerts-metric.md) s daty, která přicházejí z Azure SQL Databasech prostředků. Tady jsou některé užitečné [dotazy k protokolům](../log-query/log-query-overview.md) , které můžete použít s výstrahou protokolu:
 
-#### <a name="high-cpu-on-azure-sql-database"></a>Vysoký procesor v Azure SQL Database
+#### <a name="high-cpu"></a>Vysoké využití procesoru
 
 ```
 AzureMetrics
@@ -194,7 +194,7 @@ AzureMetrics
 > - Představte si, že nastavení této výstrahy je v případě, že se pro monitorované databáze streamují základní metriky na Azure SQL Analytics.
 > - Nahraďte hodnotu hodnoty metric cpu_percent hodnotou dtu_consumption_percent, abyste místo toho získali vysoké výsledky DTU.
 
-#### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>Vysoký procesor v Azure SQL Database elastických fondech
+#### <a name="high-cpu-on-elastic-pools"></a>Vysoký procesor u elastických fondů
 
 ```
 AzureMetrics
@@ -210,7 +210,7 @@ AzureMetrics
 > - Představte si, že nastavení této výstrahy je v případě, že se pro monitorované databáze streamují základní metriky na Azure SQL Analytics.
 > - Nahraďte hodnotu hodnoty metric cpu_percent hodnotou dtu_consumption_percent, abyste místo toho získali vysoké výsledky DTU.
 
-#### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>Azure SQL Database úložiště v průměru nad 95% za poslední 1 hod.
+#### <a name="storage-in-average-above-95-in-the-last-1-hr"></a>Úložiště v průměru nad 95% za poslední 1 hod.
 
 ```
 let time_range = 1h;
@@ -254,9 +254,9 @@ AzureDiagnostics
 | distinct rootCauseAnalysis_s
 ```
 
-### <a name="creating-alerts-for-managed-instances"></a>Vytváření výstrah pro spravované instance
+### <a name="creating-alerts-for-sql-managed-instance"></a>Vytváření výstrah pro spravovanou instanci SQL
 
-#### <a name="managed-instance-storage-is-above-90"></a>Úložiště spravované instance je nad 90%.
+#### <a name="storage-is-above-90"></a>Úložiště je nad 90%
 
 ```
 let storage_percentage_threshold = 90;
@@ -272,7 +272,7 @@ AzureDiagnostics
 > - Představte si, že nastavení této výstrahy je, že monitorovaná spravovaná instance má k dispozici streamování protokolu ResourceUsageStats s povoleným Azure SQL Analytics.
 > - Tento dotaz vyžaduje nastavení pravidla výstrahy, aby se aktivovala výstraha v případě, že v dotazu existují výsledky (> 0 výsledků), a označuje, že podmínka ve spravované instanci existuje. Výstupem je procento využití úložiště na spravované instanci.
 
-#### <a name="managed-instance-cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Průměrná spotřeba procesoru spravované instance je nad 95% za poslední 1 hod.
+#### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>Průměrná spotřeba procesoru je nad 95% za poslední 1 hod.
 
 ```
 let cpu_percentage_threshold = 95;

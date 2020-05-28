@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 70fafa79c87d19d62ef936b286c82813d8e7fe17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a2f55798afe7b817ab366e8fa55f07078277352d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208512"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117300"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Vytvoření více koncových bodů webové služby z jednoho experimentu pomocí ML Studio (Classic) a PowerShellu
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Tady je běžný problém strojového učení: chcete vytvořit mnoho modelů, které mají stejný pracovní postup školení a používat stejný algoritmus. Ale chcete, aby jako vstup měly jiné školicí datové sady. V tomto článku se dozvíte, jak to udělat ve velkém měřítku Azure Machine Learning Studio (Classic), a to pouze pomocí jednoho experimentu.
 
@@ -96,7 +94,7 @@ Nyní jste vytvořili 10 koncových bodů a všechny obsahovaly stejný vycviče
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>Aktualizace koncových bodů pro použití samostatných školicích datových sad pomocí prostředí PowerShell
 Dalším krokem je aktualizace koncových bodů pomocí modelů jednoznačně vyškolených na jednotlivá data každého zákazníka. Ale nejdřív je potřeba tyto modely z webové služby pro **školení na nájemce** získat. Pojďme se vrátit k webové službě **školení na nájemce na kolo** . Abyste mohli vydávat 10 různých modelů, je potřeba zavolat svůj koncový bod BES na 10 s 10 různými školicími datovými sadami. K tomu použijte rutinu prostředí PowerShell **InovkeAmlWebServiceBESEndpoint** .
 
-Také budete muset zadat přihlašovací údaje pro účet úložiště objektů blob do `$configContent`služby. Konkrétně v polích `AccountName` `AccountKey`, a `RelativeLocation`. Může to být jeden z názvů vašich účtů, jak je vidět na **Azure Portal** (karta úložiště).*Storage* `AccountName` Jakmile kliknete na účet úložiště, najdete ho `AccountKey` tak, že v dolní části stisknete tlačítko **Správa přístupových klíčů** a zkopírujete *Primární přístupový klíč*. `RelativeLocation` Je cesta relativní k úložišti, kde bude uložen nový model. Například cesta `hai/retrain/bike_rental/` v následujícím skriptu odkazuje na kontejner s názvem `hai`a `/retrain/bike_rental/` jsou podsložky. V současné době nemůžete vytvářet podsložky prostřednictvím uživatelského rozhraní portálu, ale existuje [několik Azure Storage Explorer](../../storage/common/storage-explorers.md) , které vám to umožňují. Doporučujeme vytvořit v úložišti nový kontejner pro uložení nových proučených modelů (soubory. iLearner) následujícím způsobem: na stránce úložiště klikněte na tlačítko **Přidat** v dolní části a pojmenujte ho `retrain`. V souhrnu se potřebné změny následujícího skriptu `AccountName`týkají, `AccountKey`a `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
+Také budete muset zadat přihlašovací údaje pro účet úložiště objektů blob do služby `$configContent` . Konkrétně v polích, `AccountName` `AccountKey` a `RelativeLocation` . `AccountName`Může to být jeden z názvů vašich účtů, jak je vidět na **Azure Portal** (karta*úložiště* ). Jakmile kliknete na účet úložiště, najdete ho `AccountKey` tak, že v dolní části stisknete tlačítko **Správa přístupových klíčů** a zkopírujete *Primární přístupový klíč*. `RelativeLocation`Je cesta relativní k úložišti, kde bude uložen nový model. Například cesta `hai/retrain/bike_rental/` v následujícím skriptu odkazuje na kontejner s názvem `hai` a `/retrain/bike_rental/` jsou podsložky. V současné době nemůžete vytvářet podsložky prostřednictvím uživatelského rozhraní portálu, ale existuje [několik Azure Storage Explorer](../../storage/common/storage-explorers.md) , které vám to umožňují. Doporučujeme vytvořit v úložišti nový kontejner pro uložení nových proučených modelů (soubory. iLearner) následujícím způsobem: na stránce úložiště klikněte na tlačítko **Přidat** v dolní části a pojmenujte ho `retrain` . V souhrnu se potřebné změny následujícího skriptu týkají `AccountName` , `AccountKey` a `RelativeLocation` (: `"retrain/model' + $seq + '.ilearner"` ).
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service

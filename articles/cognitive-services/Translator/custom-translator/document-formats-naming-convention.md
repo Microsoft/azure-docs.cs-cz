@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 41b15cc998a7bacd033ef2fe083fc99f1bff0286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e976b59c0128adef6536e78985e7cf89d256062c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68595850"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992704"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Formáty dokumentů a pokyny k konvenci pojmenování
 
@@ -22,7 +22,7 @@ Každý soubor, který se používá pro vlastní překlad, musí mít délku al
 
 Tato tabulka obsahuje všechny podporované formáty souborů, které můžete použít k sestavení systému překladu:
 
-| Formát            | Rozšíření   | Popis                                                                                                                                                                                                                                                                    |
+| Formát            | Rozšíření   | Description                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | . XLF, . XLIFF | Formát paralelního dokumentu, který exportuje systémy překladu paměti. Používané jazyky jsou definovány v souboru.                                                                                                                                                              |
 | TMX               | . TMX         | Formát paralelního dokumentu, který exportuje systémy překladu paměti. Používané jazyky jsou definovány v souboru.                                                                                                                                                              |
@@ -45,7 +45,7 @@ Dokumenty mohou být seskupeny do jednoho souboru zip a nahrány. Vlastní Přek
 
 Každý dokument v souboru zip, který má příponu TXT, HTML, HTM, PDF, DOCX, musí být v souladu s těmito konvencemi vytváření názvů:
 
-{název dokumentu} \_{Code Language} kde {Document Name} je název vašeho dokumentu a {Language Code} je ISO LanguageID (dva znaky), což značí, že dokument obsahuje věty v tomto jazyce. Před kódem jazyka musí být znak podtržítka (_).
+{název dokumentu} \_ {Code Language} kde {Document Name} je název vašeho dokumentu a {Language Code} je ISO LanguageID (dva znaky), což značí, že dokument obsahuje věty v tomto jazyce. Před kódem jazyka musí být znak podtržítka (_).
 
 Například pro nahrání dvou paralelních dokumentů v rámci souboru zip pro angličtinu do španělštiny by měly být soubory pojmenované "data_en" a "data_es".
 

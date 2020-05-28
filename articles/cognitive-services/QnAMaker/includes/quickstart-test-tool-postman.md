@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 1f47b4532a009694d4167c08f6f04312f8020acc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 095f3396c483f4b8f80ab6c31ee369f2082f560c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673471"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83998123"
 ---
 Tento rychlý Start založený na držiteli vás provede tím, že získáte odpověď ze znalostní báze.
 
@@ -64,7 +64,7 @@ V předchozím rychlém startu se metadata přidaly do dvou párů QnA a rozliš
     }
     ```
 
-    Otázka je jenom jedno slovo, `size` které může vracet jednu ze dvou sad otázek a odpovědí. `strictFilters`Pole oznamuje odpověď, aby se snížila pouze na `qna_maker` odpovědi.
+    Otázka je jenom jedno slovo, `size` které může vracet jednu ze dvou párů otázek a odpovědí. `strictFilters`Pole oznamuje odpověď, aby se snížila pouze na `qna_maker` odpovědi.
 
 1. Odpověď obsahuje pouze odpověď, která splňuje kritéria filtru.
 
@@ -103,12 +103,12 @@ V předchozím rychlém startu se metadata přidaly do dvou párů QnA a rozliš
     }
     ```
 
-    Pokud je k dispozici sada otázek a odpovědí, která nevyhověla hledanému termínu, ale nesplnila tento filtr, nebude vrácena. Místo toho se vrátí obecná odpověď `No good match found in KB.` .
+    Pokud existuje pár otázek a odpovědí, které nevyhověly hledanému termínu, ale nesplnila tento filtr, nebude vrácen. Místo toho se vrátí obecná odpověď `No good match found in KB.` .
 
 ## <a name="use-debug-query-property"></a>Použít vlastnost dotazu pro ladění
 
 > [!NOTE]
->Pro žádnou závislost nedoporučujeme používat poreperty pro ladění. Tato vlastnost byla přidána pro pomoc s produktovým týmem při řešení potíží. 
+>Pro žádnou závislost nedoporučujeme používat poreperty pro ladění. Tato vlastnost byla přidána pro pomoc s produktovým týmem při řešení potíží.
 
 Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I když je to užitečné, není nutné. Pokud chcete vygenerovat odpověď s ladicími informacemi, přidejte `debug` vlastnost:
 

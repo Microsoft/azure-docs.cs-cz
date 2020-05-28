@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 9014d446b29b9a81a807c002cd7f83a2c3bdaa51
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 124aac96550b5d462c0794053452ed28dba27452
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231335"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013210"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Oblasti a Zóny dostupnosti v Azure
 
@@ -22,7 +22,7 @@ Služby Microsoft Azure Services jsou k dispozici globálně, aby bylo možné p
 
 Pro lepší pochopení oblastí a Zóny dostupnosti v Azure vám pomůže pochopit klíčové pojmy nebo koncepty.
 
-| Termín nebo koncept | Popis |
+| Termín nebo koncept | Description |
 | --- | --- |
 | oblast | Sada Datacenter nasazených v hraničním prostředí určeném pro latenci a připojená přes vyhrazenou síť s nízkou latencí. |
 | geografické | Oblast světa, která obsahuje alespoň jednu oblast Azure. Geografické oblasti definují diskrétní trh, který zachovává rozsahy dat a hranice dodržování předpisů. Zeměpisné oblasti umožňují zákazníkům se specifickými požadavky na rezidenci dat a dodržování předpisů, aby měli svoje data a aplikace blízko. Geografické oblasti jsou odolné proti chybám, které vydržely selhání celé oblasti prostřednictvím připojení k naší vyhrazené síťové infrastruktuře s vysokou kapacitou. |
@@ -112,7 +112,7 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > | Service Bus | Brána Azure Firewall | Data Box Heavy |
 > | Service Fabric | Azure Functions | Data Catalog |
 > | Virtual Machine Scale Sets | Azure HPC Cache | Data Factory: Data Factory v1 |
-> | Virtuální počítače | Azure IoT Hub | Data Lake Analytics |
+> | Virtual Machines | Azure IoT Hub | Data Lake Analytics |
 > | Virtual Machines: Av2-Series | Azure Kubernetes Service (AKS) | Machine Learning Studio |
 > | Virtual Machines: BS-Series | Azure Machine Learning | Microsoft Genomics |
 > | Virtual Machines: DSv2-Series | Azure Private Link | Remote Rendering |
@@ -148,7 +148,7 @@ Jak už bylo uvedeno výše, Azure klasifikuje služby do tří kategorií: zák
 > |  | Ultra Disk Storage |  |
 > |  | Virtual Machines: Fsv2-Series |  |
 > |  | Virtual Machines: řada M-Series |  |
-> |  | Virtuální síť WAN |  |
+> |  | Virtual WAN |  |
 
 ###  <a name="services-resiliency"></a>Odolnost služeb
 
@@ -166,7 +166,7 @@ Pro virtuální počítače nasazené v zóně dostupnosti se neúčtují žádn
 - [Vyrovnávání zatížení virtuálních počítačů napříč zónami pomocí Standard Load Balancer se zónou redundantního front-endu](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 - [Vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí Standard Load Balancer s oblastí front-endu](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [Zónově redundantní úložiště](../storage/common/storage-redundancy-zrs.md)
-- [SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
+- [SQL Database](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [Geografické zotavení po havárii služby Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Geografické zotavení po havárii služby Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [Vytvoření zónově redundantní brány virtuální sítě](../vpn-gateway/create-zone-redundant-vnet-gateway.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 022942778b714d5d66ce6eeb2c29351b11c66e40
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849038"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996240"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -65,6 +65,14 @@ Umístění výchozího pracovního prostoru závisí na vaší oblasti Azure:
 - Pro virtuální počítače v Japonsku je umístění pracovního prostoru Japonsko.
 - Pro virtuální počítače v Číně je umístění pracovního prostoru Čína.
 - Pro virtuální počítače v Austrálii je umístění pracovního prostoru Austrálie.
+
+
+## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Jaká data shromažďuje agent Log Analytics?
+
+Úplný seznam aplikací a služeb monitorovaných agentem najdete v tématu [co je monitorované pomocí Azure monitor?](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services).
+
+> [!IMPORTANT]
+> Pamatujte na to, že u některých služeb, jako je například Azure Firewall, pokud jste povolili protokolování a vybrali prostředek konverzace, které se mají protokolovat (například nastavením protokolu na *verbose*), může se stát, že se v Log Analytics potřebuje úložiště pracovních prostorů významné dopady. 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Můžu odstranit výchozí pracovní prostory vytvořené pomocí Security Center?
@@ -201,9 +209,17 @@ Ruční odebrání agenta:
 
 ## <a name="how-do-i-disable-data-collection"></a>Návody zakázat shromažďování dat?
 
-Automatické zřizování je ve výchozím nastavení vypnuté. Automatické zřizování z prostředků můžete kdykoli zakázat vypnutím tohoto nastavení v zásadách zabezpečení. Automatické zřizování se důrazně doporučuje, aby se získaly výstrahy zabezpečení a doporučení týkající se aktualizací systému, chyb zabezpečení operačního systému a ochrany koncových bodů.
+Automatické zřizování se důrazně doporučuje, aby se získaly výstrahy zabezpečení a doporučení týkající se aktualizací systému, chyb zabezpečení operačního systému a ochrany koncových bodů. Ve výchozím nastavení je Automatické zřizování zakázané.
 
-Chcete-li shromažďování dat zakázat, [Přihlaste se k Azure Portal](https://portal.azure.com), vyberte **procházet**, vyberte **Security Center**a vyberte **možnost vybrat zásadu**. Vyberte předplatné, pro které chcete vypnout automatické zřizování. Když vyberete zásadu zabezpečení předplatného, otevře se **kolekce dat** . V části **Automatické zřizování**vyberte **vypnuto**.
+Pokud jste ho povolili, ale teď ho chcete zakázat:
+
+1. Z [Azure Portal](https://portal.azure.com)otevřete **Security Center** a vyberte **zásady zabezpečení**.
+
+1. Vyberte předplatné, pro které chcete zakázat Automatické zřizování.
+
+    **Zásady zabezpečení – otevře se shromažďování dat** .
+
+1. V části **Automatické zřizování**vyberte **vypnuto**.
 
 
 ## <a name="how-do-i-enable-data-collection"></a>Návody Povolit shromažďování dat?
@@ -233,9 +249,6 @@ Ke shromáždění dat se musí každý virtuální počítač a Server připoji
 Agent spotřebovává jmenovité množství systémových prostředků a měl by mít malý dopad na výkon. Další informace o dopadu na výkon a o agentovi a rozšíření najdete v [Průvodci plánováním a provozem](security-center-planning-and-operations-guide.md#data-collection-and-storage).
 
 
-## <a name="where-is-my-data-stored"></a>Kde jsou moje data uložena?
-
-Data shromážděná z tohoto agenta se ukládají do existujícího pracovního prostoru Log Analytics přidruženého k vašemu předplatnému nebo novému pracovnímu prostoru. Další informace najdete v tématu [zabezpečení dat](security-center-data-security.md).
 
 
 <!--Image references-->

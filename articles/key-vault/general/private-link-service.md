@@ -7,12 +7,12 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: 678e91126c04d5b299d9234a1602580260c5aee6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aef8c026fad631396e58716e65640f5792ad07c8
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81425088"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116787"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrace Key Vault s privátním propojením Azure
 
@@ -73,12 +73,12 @@ Pokud už máte Trezor klíčů, můžete vytvořit připojení k privátnímu p
 1. Vyberte kartu připojení privátního koncového bodu v horní části stránky.
 1. V horní části stránky vyberte tlačítko + privátní koncový bod.
 
-    ![Obrázek](../media/private-link-service-3.png) ![obrázku](../media/private-link-service-4.png)
+    ![](../media/private-link-service-3.png) ![ Obrázek obrázku](../media/private-link-service-4.png)
 
 Pro libovolný prostředek Azure v tomto okně se můžete rozhodnout vytvořit privátní koncový bod. Pomocí rozevíracích nabídek můžete vybrat typ prostředku a vybrat prostředek ve vašem adresáři, nebo se můžete připojit k libovolnému prostředku Azure pomocí ID prostředku. Ponechte možnost integrace s DNS privátní zóny beze změny.  
 
-![Obrázek](../media/private-link-service-3.png)
-![obrázku](../media/private-link-service-4.png)
+![](../media/private-link-service-3.png)
+ ![ Obrázek obrázku](../media/private-link-service-4.png)
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>Navázání připojení privátního propojení k Key Vault pomocí rozhraní příkazového řádku
 
@@ -124,7 +124,7 @@ az network private-dns zone create --resource-group {RG} --name privatelink.vaul
 ```
 ### <a name="link-private-dns-zone-to-virtual-network"></a>Propojit zónu Privátní DNS s Virtual Network 
 ```console
-az network private-dns link vnet create --resoruce-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
+az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
 ```
 ### <a name="create-a-private-endpoint-automatically-approve"></a>Vytvoření privátního koncového bodu (automaticky schvalovat) 
 ```console
@@ -144,9 +144,9 @@ Při vytváření privátního koncového bodu musí být připojení schváleno
 
 Existují čtyři stavy zřizování:
 
-| Služba poskytuje akci | Stav privátního koncového bodu příjemce služby | Popis |
+| Služba poskytuje akci | Stav privátního koncového bodu příjemce služby | Description |
 |--|--|--|
-| Žádná | Čekající na vyřízení | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
+| Žádné | Čekající na vyřízení | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
 | Odmítnout | Rejected | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
 | Odebrat | Propojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |

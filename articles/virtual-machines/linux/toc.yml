@@ -1079,6 +1079,8 @@
       displayName: ARM
 - name: Zdroje a prostředky
   items:
+    - name: Otázky a odpovědi
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
     - name: Vytváření šablon ARM
       displayName: 'Azure Resource Manager, ARM'
       href: /azure/azure-resource-manager/

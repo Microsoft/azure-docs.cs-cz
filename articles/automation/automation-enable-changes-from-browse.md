@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 0491f10f22e35c81e5bc35d537546001f136be50
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d235b00e0939c07737639035f757f3f9d7254867
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826821"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117980"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Povolit Change Tracking a inventář z Azure Portal
 
@@ -61,7 +61,6 @@ Přihlaste se k Azure na adrese https://portal.azure.com .
 ## <a name="next-steps"></a>Další kroky
 
 * Podrobnosti o práci s funkcí najdete v tématu [správa Change Tracking a inventáře](change-tracking-file-contents.md).
-* Informace o konfiguracích oboru najdete v tématu [práce s konfiguracemi oboru pro Change Tracking a inventář](automation-scope-configurations-change-tracking.md).
 * Informace o použití funkce k identifikaci softwaru nainstalovaného ve vašem prostředí najdete v tématu [zjištění, jaký software je nainstalovaný na vašich virtuálních počítačích](automation-tutorial-installed-software.md).
 * Pokud účet Automation nechcete při povolování této funkce integrovat do pracovního prostoru Log Analytics, přečtěte si téma [zrušení propojení pracovního prostoru s účtem Automation](automation-unlink-workspace-change-tracking.md).
 * Po dokončení nasazování změn do virtuálních počítačů je můžete odebrat, jak je popsáno v tématu [Odebrání virtuálních počítačů z Change Tracking a inventáře](automation-remove-vms-from-change-tracking.md).

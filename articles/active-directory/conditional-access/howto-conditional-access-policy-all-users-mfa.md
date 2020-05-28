@@ -4,19 +4,19 @@ description: Vytvoření vlastních zásad podmíněného přístupu, které bud
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60d0ad0a1c0a1b4d13ce4d386df22406a8ab8e51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7af1347ac57e1a5c5ae99744924ea04fe9757581
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617620"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995340"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Podmíněný přístup: vyžadovat MFA pro všechny uživatele
 
@@ -44,17 +44,17 @@ Organizace můžou mít k dispozici mnoho cloudových aplikací. Ne všechny tyt
 Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu, která bude vyžadovat, aby všichni uživatelé prováděli službu Multi-Factor Authentication.
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory** > **Security** > **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
 1. Vyberte **nové zásady**.
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **Všichni uživatelé** .
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Done** (Hotovo).
-1. V části **cloudové aplikace nebo akce** > **Include**vyberte **všechny cloudové aplikace**.
+1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **všechny cloudové aplikace**.
    1. V části **vyloučit**vyberte všechny aplikace, které nevyžadují vícefaktorové ověřování.
-1. V části **podmínky** > **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**a vyberte **Hotovo**.
-1. V části **řízení** > přístupu**udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a vyberte **Vybrat**.
+1. V části **podmínky**  >  **klientské aplikace (Preview)** nastavte **Konfigurovat** na **Ano**. V části **Vyberte klientské aplikace bude tato zásada platit pro** všechny vybrané výchozí hodnoty a vyberte **Hotovo**.
+1. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 
@@ -64,7 +64,7 @@ Organizace se můžou rozhodnout zahrnout známá síťová umístění známá 
 
 V příkladech výše uvedených zásad se může organizace rozhodnout Nevyžadovat vícefaktorové ověřování, pokud přistupuje k cloudové aplikaci ze své podnikové sítě. V takovém případě by mohli do zásad přidat následující konfiguraci:
 
-1. V části **přiřazení**vyberte **Conditions** > **umístění**podmínek.
+1. V části **přiřazení**vyberte **Conditions**  >  **umístění**podmínek.
    1. Nakonfigurujte **Ano**.
    1. Uveďte **libovolné umístění**.
    1. Vylučte **všechna důvěryhodná umístění**.

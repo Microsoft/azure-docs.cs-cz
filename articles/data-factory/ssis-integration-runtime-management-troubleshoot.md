@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 0324044d93f12f6ac6ec96ff1a31be8ee02ada41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414700"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118819"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Řešení potíží se správou SSIS Integration Runtime v Azure Data Factory
 
@@ -30,27 +30,27 @@ Pokud narazíte na problém při zřizování nebo rušení zřizování SSIS IR
 
 Pokud kód chyby je Nenalezeno, služba obsahuje přechodné problémy a tuto operaci byste měli opakovat později. Pokud to nepomůže, obraťte se na tým podpory Azure Data Factory.
 
-Jinak tři hlavní závislosti můžou způsobit chyby: Azure SQL Database Server nebo spravovaná instance, vlastní instalační skript a konfigurace virtuální sítě.
+Jinak tři hlavní závislosti můžou způsobit chyby: Azure SQL Database nebo Azure SQL Managed instance, vlastní instalační skript a konfigurace virtuální sítě.
 
-## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Problémy Azure SQL Database serveru nebo spravované instance
+## <a name="sql-database-or-sql-managed-instance-issues"></a>Problémy s SQL Database nebo SQL Managed instance
 
-Pokud zřizujete prostředí SSIS IR s databází katalogu SSIS, vyžaduje se spravovaná instance nebo server služby Azure SQL Database. Prostředí SSIS IR musí mít přístup ke spravované instanci nebo serveru služby Azure SQL Database. Účet spravované instance nebo serveru služby Azure SQL Database by také měl mít oprávnění k vytvoření databáze katalogu SSIS (SSISDB). Pokud dojde k chybě, na portálu služby Data Factory se zobrazí kód chyby s podrobnou zprávou o výjimce SQL. Při řešení potíží s jednotlivými kódy chyb využijte informace v následujícím seznamu.
+Pokud vytváříte SSIS IR pomocí databáze katalogu SSIS, je vyžadována SQL Database nebo spravovaná instance SQL. SSIS IR musí být schopna získat přístup k SQL Database nebo ke spravované instanci SQL. Přihlašovací účet pro SQL Database nebo spravovanou instanci SQL musí mít také oprávnění k vytvoření databáze katalogu SSIS (SSISDB). Pokud dojde k chybě, na portálu služby Data Factory se zobrazí kód chyby s podrobnou zprávou o výjimce SQL. Při řešení potíží s jednotlivými kódy chyb využijte informace v následujícím seznamu.
 
 ### <a name="azuresqlconnectionfailure"></a>AzureSqlConnectionFailure
 
 K tomuto problému může dojít při zřizování nového prostředí SSIS IR nebo za běhu prostředí IR. Pokud k této chybě dojde při zřizování prostředí IR, můžete z chybové zprávy získat podrobnou zprávu o výjimce SQL, která značí jeden z následujících problémů:
 
-* Problém se síťovým připojením. Zkontrolujte, jestli je dostupný název hostitele SQL Serveru nebo spravované instance. Ověřte také, že žádná brána firewall ani skupina zabezpečení sítě (NSG) neblokuje přístup prostředí SSIS IR k serveru.
+* Problém se síťovým připojením. Ověřte, zda je název hostitele pro SQL Database nebo spravovanou instanci SQL přístupný. Ověřte také, že žádná brána firewall ani skupina zabezpečení sítě (NSG) neblokuje přístup prostředí SSIS IR k serveru.
 * Přihlášení selhalo během ověřování SQL. Zadaný účet se nemůže přihlásit k databázi SQL Serveru. Ujistěte se, že jste zadali správný uživatelský účet.
 * Přihlášení selhalo během ověřování Microsoft Azure Active Directory (Azure AD) (spravovaná identita). Přidejte spravovanou identitu vaší továrny do skupiny AAD a ujistěte se, že spravovaná identita má přístupová oprávnění k databázovému serveru katalogu.
 * Vypršení časového limitu připojení. Příčinou této chyby je vždy konfigurace související se zabezpečením. Doporučený postup:
   1. Vytvořte nový virtuální počítač.
   1. Připojte se k virtuálnímu počítači ke stejnému Microsoft Azure Virtual Network IR, pokud je IR ve virtuální síti.
-  1. Nainstalujte SSMS a ověřte stav Azure SQL Database serveru nebo spravované instance.
+  1. Nainstalujte SSMS a podívejte se na stav spravované instance SQL SQL Database nebo SQL.
 
-V případě jiných problémů opravte problém uvedený v podrobné chybové zprávě o výjimce SQL. Pokud stále máte problémy, kontaktujte tým podpory pro spravovanou instanci nebo server služby Azure SQL Database.
+V případě jiných problémů opravte problém uvedený v podrobné chybové zprávě o výjimce SQL. Pokud máte potíže i nadále, obraťte se na tým podpory spravované instance SQL SQL Database nebo SQL.
 
-Pokud k této chybě dojde za běhu prostředí IR, nějaké změny skupiny zabezpečení sítě nebo brány firewall pravděpodobně brání pracovnímu uzlu prostředí SSIS IR v přístupu ke spravované instanci nebo serveru služby Azure SQL Database. Odblokujte pracovní uzel prostředí SSIS IR, aby mohl získat přístup ke spravované instanci nebo serveru služby Azure SQL Database.
+Pokud se zobrazí chyba, když je spuštěný IR, Změna skupiny zabezpečení sítě nebo brány firewall pravděpodobně brání uzlu SSIS IR v přístupu k SQL Database nebo spravované instanci SQL. Odblokujte pracovní uzel SSIS IR, aby mohl přistupovat k SQL Database nebo spravované instanci SQL.
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
@@ -65,20 +65,20 @@ Mezi možná řešení patří:
 
 ### <a name="catalogdbbelongstoanotherir"></a>CatalogDbBelongsToAnotherIR
 
-Tato chyba znamená, že spravovaná instance nebo server služby Azure SQL Database již mají databázi SSISDB, kterou používá jiné prostředí IR. Musíte zadat jinou spravovanou instanci nebo server služby Azure SQL Database, nebo odstranit stávající databázi SSISDB a restartovat nové prostředí IR.
+Tato chyba znamená, SQL Database nebo spravovaná instance SQL již má SSISDB a že je používána jiným IR. Je nutné zadat jinou SQL Database nebo spravovanou instanci SQL nebo jinak odstranit existující SSISDB a restartovat nové prostředí IR.
 
 ### <a name="catalogdbcreationfailure"></a>CatalogDbCreationFailure
 
 K této chybě může dojít z některého z následujících důvodů:
 
 * Uživatelský účet nakonfigurovaný pro prostředí SSIS IR nemá oprávnění k vytvoření databáze. Můžete uživateli udělit oprávnění k vytvoření databáze.
-* Při vytváření databáze dojde k vypršení časového limitu například spuštění nebo databázové operace. Operaci byste měli zopakovat později. Pokud opakovaný pokus nepomůže, kontaktujte tým podpory pro spravovanou instanci nebo server služby Azure SQL Database.
+* Při vytváření databáze dojde k vypršení časového limitu například spuštění nebo databázové operace. Operaci byste měli zopakovat později. Pokud to nepomůže, obraťte se na tým podpory spravované instance SQL SQL Database nebo SQL.
 
-V případě jiných problémů zkontrolujte chybovou zprávu o výjimce SQL a opravte problém uvedený v podrobnostech o chybě. Pokud stále máte problémy, kontaktujte tým podpory pro spravovanou instanci nebo server služby Azure SQL Database.
+V případě jiných problémů zkontrolujte chybovou zprávu o výjimce SQL a opravte problém uvedený v podrobnostech o chybě. Pokud máte potíže i nadále, obraťte se na tým podpory spravované instance SQL SQL Database nebo SQL.
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Tento druh chybové zprávy vypadá takto: "neplatný název objektu" Catalog. catalog_properties. V této situaci už buď máte databázi s názvem SSISDB, ale ta se nevytvořila v SSIS IR, nebo se databáze nachází v neplatném stavu, který způsobuje chyby při posledním zřizování SSIS IR. Můžete odstranit stávající databázi s názvem SSISDB nebo pro prostředí IR můžete nakonfigurovat novou spravovanou instanci nebo server služby Azure SQL Database.
+Tento druh chybové zprávy vypadá takto: "neplatný název objektu" Catalog. catalog_properties. V této situaci už buď máte databázi s názvem SSISDB, ale ta se nevytvořila v SSIS IR, nebo se databáze nachází v neplatném stavu, který způsobuje chyby při posledním zřizování SSIS IR. Existující databázi můžete odstranit s názvem SSISDB nebo můžete nakonfigurovat novou SQL Database nebo spravovanou instanci SQL pro prostředí IR.
 
 ## <a name="custom-setup-issues"></a>Problémy s vlastním nastavením
 

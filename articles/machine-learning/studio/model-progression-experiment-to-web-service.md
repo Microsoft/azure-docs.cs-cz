@@ -10,16 +10,15 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 1618e64eba32e857ccd0ba4b5a7a656f1d954bf8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4d7ab5cada77ccebc214e09b43fbb70b3ad8bb59
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659910"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117187"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Způsob, jakým model Machine Learning Studio (klasický) postupuje z experimentu na webovou službu
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Azure Machine Learning Studio (Classic) poskytuje interaktivní plátno, které umožňuje vyvíjet, spouštět, testovat a iterovat ***experiment*** , který představuje model prediktivní analýzy. K dispozici je celá řada modulů, které mohou:
 
 * Zadávání dat do experimentu

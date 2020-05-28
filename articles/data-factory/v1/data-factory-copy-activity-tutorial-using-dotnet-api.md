@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b907663971e7a8a7c3b2c6cac95c38131e1ccb26
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47714be27cd4588b9bdf481750974394d3738985
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74931738"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119278"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí rozhraní .NET API
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "74931738"
 > * [Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Šablona Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Šablona Azure Resource Manageru](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
@@ -66,7 +66,7 @@ Vytvořte aplikaci Azure Active Directory, vytvořte pro ni instanční objekt a
     ```powershell
     Get-AzSubscription
     ```
-4. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte ** &lt;NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure.
+4. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte ** &lt; NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure.
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -134,7 +134,7 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
    2. Spusťte následující příkaz pro instalaci balíčku Azure Active Directory (v kódu použijete rozhraní API Active Directory): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. Do souboru **App.config** přidejte následující část **appSetttings**. Tyto nastavení používá pomocná metoda: **GetAuthorizationHeader**.
 
-    Hodnoty pro ** &lt;&gt;ID aplikace**, ** &lt;heslo&gt;**, ** &lt;&gt;ID předplatného**a ** &lt;&gt; ID tenanta** nahraďte vlastními hodnotami.
+    Hodnoty pro ** &lt; ID &gt; aplikace**, ** &lt; heslo &gt; **, ** &lt; ID &gt; předplatného**a ** &lt; ID &gt; tenanta** nahraďte vlastními hodnotami.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -240,7 +240,7 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
 9. Do metody **Main** přidejte následující kód, který vytvoří **propojenou službu Azure SQL**.
 
    > [!IMPORTANT]
-   > Položky **servername**, **databasename**, **username** a **password** nahraďte názvem serveru SQL Azure, názvem databáze, uživatelským jménem a heslem.
+   > Položku **servername**, **DatabaseName**, **username**a **Password** nahraďte názvem serveru, databáze, uživatele a heslem.
 
     ```csharp
     // create a linked service for output data store: Azure SQL Database
@@ -511,7 +511,7 @@ Z těchto kroků byste měli mít tyto čtyři hodnoty:
     John, Doe
     Jane, Doe
     ```
-18. Spusťte ukázku kliknutím na **ladění** -> **Spustit ladění** v nabídce. Když se zobrazí **Získávání běhových podrobností o datovém řezu**, počkejte několik minut a stiskněte **ENTER**.
+18. Spusťte ukázku kliknutím na **ladění**  ->  **Spustit ladění** v nabídce. Když se zobrazí **Získávání běhových podrobností o datovém řezu**, počkejte několik minut a stiskněte **ENTER**.
 19. Pomocí webu Azure Portal ověřte, že je objekt pro vytváření dat **APITutorialFactory** vytvořený s těmito artefakty:
     * Propojená služba: **LinkedService_AzureStorage**
     * Datová sada: **InputDataset** a **OutputDataset**.

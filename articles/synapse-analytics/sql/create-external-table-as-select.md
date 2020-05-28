@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cbf6d42f3b1d130a6bf89f07bd3a7009ff0e8fa8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d73e895371764d9dd28290648551d84181e022cd
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647517"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117580"
 ---
 # <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Uložení výsledků dotazu do úložiště pomocí SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
 
@@ -22,17 +22,16 @@ V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomo
 
 ## <a name="prerequisites"></a>Požadavky
 
-V prvním kroku si Projděte níže uvedené články a ujistěte se, že jste splnili požadavky:
+Prvním krokem je **Vytvoření databáze** , ve které budete spouštět dotazy. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které se použijí pro čtení dat v těchto ukázkách.
 
-- [Nastavení při prvním spuštění](query-data-storage.md#first-time-setup)
-- [Požadavky](query-data-storage.md#prerequisites)
+Při vytváření zdrojů dat, přihlašovacích údajů v oboru databáze a formátů externích souborů, které se používají k zápisu dat do výstupního úložiště, postupujte podle pokynů v tomto článku.
 
 ## <a name="create-external-table-as-select"></a>Vytvořit externí tabulku jako SELECT
 
 K uložení výsledků dotazu do úložiště můžete použít příkaz vytvořit externí tabulku jako SELECT (CETAS).
 
 > [!NOTE]
-> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili. Pokud jste databázi nevytvořili, přečtěte si prosím [nastavení při prvním spuštění](query-data-storage.md#first-time-setup). Je potřeba změnit umístění pro externí zdroj dat MyDataSource, aby odkazovalo na umístění, pro které máte oprávnění k zápisu. 
+> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili.
 
 ```sql
 USE [mydbname];
@@ -63,8 +62,9 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
-        FORMAT='CSV'
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
     ) WITH (
         CountryCode varchar(4),
         CountryName varchar(64),
@@ -79,7 +79,7 @@ FROM
 Můžete použít externí tabulku vytvořenou prostřednictvím CETAS jako normální externí tabulku.
 
 > [!NOTE]
-> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili. Pokud jste databázi nevytvořili, přečtěte si prosím [nastavení při prvním spuštění](query-data-storage.md#first-time-setup).
+> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili.
 
 ```sql
 USE [mydbname];

@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: ca88e42438c7cb48b062aa67d82053afbb9244bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86fa7da695b185f41d134f67eb7d8155a30e1376
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418282"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118933"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace Azure-SSIS Integration Runtime pro vysoký výkon
 
@@ -57,40 +57,40 @@ $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide SAS URI of blob container where your custom setup script and its associated files are stored
 # Virtual network info: Classic or Azure Resource Manager
-$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon
-$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use the same subnet as the one used with your Azure SQL Database with virtual network service endpoints or a different subnet than the one used for your Managed Instance
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/SQL Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use the same subnet as the one used with your Azure SQL Database with virtual network service endpoints or a different subnet than the one used for your SQL Managed Instance
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name or Managed Instance name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
+$SSISDBServerEndpoint = "[your server name or managed instance name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
 # Authentication info: SQL or Azure Active Directory (AAD)
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication or leave it empty for AAD authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication or leave it empty for AAD authentication]"
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for SQL Managed Instance]"
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-**AzureSSISLocation** je umístění pracovního uzlu modulu runtime integrace. Pracovní uzel udržuje konstantní připojení k databázi katalogu SSIS (SSISDB) ve službě Azure SQL Database. Nastavte **AzureSSISLocation** na stejné umístění jako server SQL Database, který hostuje SSISDB, což umožňuje prostředí Integration runtime co nejefektivněji fungovat co nejúčinnější.
+**AzureSSISLocation** je umístění pracovního uzlu modulu runtime integrace. Pracovní uzel udržuje konstantní připojení k databázi katalogu SSIS (SSISDB) v Azure SQL Database. Nastavte **AzureSSISLocation** na stejné umístění jako [logický SQL Server](../azure-sql/database/logical-servers.md) , který je hostitelem SSISDB, což umožňuje prostředí Integration runtime co nejefektivněji fungovat co nejúčinnější.
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 Data Factory, včetně Azure-SSIS IR, podporují následující možnosti:
--   A4\_\_v2 úrovně Standard
--   A8\_\_v2 úrovně Standard
--   D1\_\_v2 úrovně Standard
--   D2\_\_v2 úrovně Standard
--   D3\_\_v2 úrovně Standard
--   D4\_\_v2 úrovně Standard
--   D2\_\_V3 úrovně Standard
--   D4\_\_V3 úrovně Standard
--   D8\_\_V3 úrovně Standard
--   D16\_\_V3 úrovně Standard
--   D32\_\_V3 úrovně Standard
--   D64\_\_V3 úrovně Standard
--   Standard\_E2\_V3
--   E4\_\_V3 úrovně Standard
--   E8\_\_V3 úrovně Standard
--   E16\_\_V3 úrovně Standard
--   E32\_\_V3 úrovně Standard
--   E64\_\_V3 úrovně Standard
+-   \_A4 \_ v2 úrovně Standard
+-   \_A8 \_ v2 úrovně Standard
+-   \_D1 \_ v2 úrovně Standard
+-   \_D2 \_ v2 úrovně Standard
+-   \_D3 \_ v2 úrovně Standard
+-   \_D4 \_ v2 úrovně Standard
+-   \_D2 \_ V3 úrovně Standard
+-   \_D4 \_ V3 úrovně Standard
+-   \_D8 \_ V3 úrovně Standard
+-   \_D16 \_ V3 úrovně Standard
+-   \_D32 \_ V3 úrovně Standard
+-   \_D64 \_ V3 úrovně Standard
+-   Standard \_ E2 \_ V3
+-   \_E4 \_ V3 úrovně Standard
+-   \_E8 \_ V3 úrovně Standard
+-   \_E16 \_ V3 úrovně Standard
+-   \_E32 \_ V3 úrovně Standard
+-   \_E64 \_ V3 úrovně Standard
 
 V neoficiálním testování interního týmu SSIS technický tým je řada D vhodná pro spuštění balíčku SSIS než řada A.
 
@@ -123,24 +123,24 @@ Odpovídající hodnotu můžete odhadnout na základě nákladů na váš balí
 
 | Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Max. počet síťových karet / Očekávaný výkon sítě (Mb/s) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
-| D1\_\_v2 úrovně Standard | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2×500                         | 2 / 750                                        |
-| D2\_\_v2 úrovně Standard | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4×500                         | 2 / 1 500                                       |
-| D3\_\_v2 úrovně Standard | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8×500                         | 4 / 3 000                                       |
-| D4\_\_v2 úrovně Standard | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16×500                       | 8 / 6 000                                       |
-| A4\_\_v2 úrovně Standard | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8×500                         | 4 / 1 000                                       |
-| A8\_\_v2 úrovně Standard | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16×500                       | 8 / 2 000                                       |
-| D2\_\_V3 úrovně Standard | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1 000                                       |
-| D4\_\_V3 úrovně Standard | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2 000                                       |
-| D8\_\_V3 úrovně Standard | 8    | 32          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
-| D16\_\_V3 úrovně Standard| 16   | 64          | 400                    | 24000 / 375 / 187                                          | 32/48x500                        | 8 / 8000                                       |
-| D32\_\_V3 úrovně Standard| 32   | 128         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16 000                                      |
-| D64\_\_V3 úrovně Standard| 64   | 256         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
-| Standard\_E2\_V3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1 000                                       |
-| E4\_\_V3 úrovně Standard | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2 000                                       |
-| E8\_\_V3 úrovně Standard | 8    | 64          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
-| E16\_\_V3 úrovně Standard| 16   | 128         | 400                    | 24000 / 375 / 187                                          | 32/48x500                       | 8 / 8000                                       |
-| E32\_\_V3 úrovně Standard| 32   | 256         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16 000                                      |
-| E64\_\_V3 úrovně Standard| 64   | 432         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
+| \_D1 \_ v2 úrovně Standard | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2×500                         | 2 / 750                                        |
+| \_D2 \_ v2 úrovně Standard | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4×500                         | 2 / 1 500                                       |
+| \_D3 \_ v2 úrovně Standard | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8×500                         | 4 / 3 000                                       |
+| \_D4 \_ v2 úrovně Standard | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16×500                       | 8 / 6 000                                       |
+| \_A4 \_ v2 úrovně Standard | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8×500                         | 4 / 1 000                                       |
+| \_A8 \_ v2 úrovně Standard | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16×500                       | 8 / 2 000                                       |
+| \_D2 \_ V3 úrovně Standard | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1 000                                       |
+| \_D4 \_ V3 úrovně Standard | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2 000                                       |
+| \_D8 \_ V3 úrovně Standard | 8    | 32          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
+| \_D16 \_ V3 úrovně Standard| 16   | 64          | 400                    | 24000 / 375 / 187                                          | 32/48x500                        | 8 / 8000                                       |
+| \_D32 \_ V3 úrovně Standard| 32   | 128         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16 000                                      |
+| \_D64 \_ V3 úrovně Standard| 64   | 256         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
+| Standard \_ E2 \_ V3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1 000                                       |
+| \_E4 \_ V3 úrovně Standard | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2 000                                       |
+| \_E8 \_ V3 úrovně Standard | 8    | 64          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
+| \_E16 \_ V3 úrovně Standard| 16   | 128         | 400                    | 24000 / 375 / 187                                          | 32/48x500                       | 8 / 8000                                       |
+| \_E32 \_ V3 úrovně Standard| 32   | 256         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16 000                                      |
+| \_E64 \_ V3 úrovně Standard| 64   | 432         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
 
 Tady jsou pokyny pro nastavení správné hodnoty pro vlastnost **AzureSSISMaxParallelExecutionsPerNode** : 
 

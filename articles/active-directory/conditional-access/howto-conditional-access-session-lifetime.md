@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bba37b5d72bd9dca2e10c699f4ba259319a6c71
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263280"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995073"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relace ověřování pomocí podmíněného přístupu
 
@@ -50,6 +50,10 @@ Nastavení četnosti přihlašování funguje s aplikacemi, které implementoval
 - Webový klient pro týmy
 - Dynamics CRM Online
 - portál Azure
+
+### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Četnost přihlašování uživatelů a ověřování Multi-Factor Authentication
+
+Četnost přihlašování se dřív používala jenom pro první ověření na zařízeních, která byla připojená k Azure AD, připojení k hybridní službě Azure AD a zaregistrované službě Azure AD. Pro naše zákazníky neexistuje snadný způsob, jak na těchto zařízeních znovu vymáhat vícefaktorové ověřování (MFA). Na základě zpětné vazby od zákazníků se pro vícefaktorové ověřování použijí i četnost přihlášení.
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Četnost přihlašování uživatelů a identit zařízení
 
@@ -90,7 +94,7 @@ Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na pré
    > [!NOTE]
    > Pro klíčové systém Microsoft Office aplikace, jako je Exchange Online a SharePoint Online, se doporučuje nastavit četnost výzvy pro ověření, která se bude používat pro nejlepší uživatelské prostředí.
 
-1. Přejít do > **relace** **řízení přístupu**a kliknout na **četnost přihlášení**
+1. Přejít do **relace řízení přístupu**  >  **Session** a kliknout na **četnost přihlášení**
 1. Zadejte požadovanou hodnotu dnů a hodin do prvního textového pole.
 1. Vyberte v rozevíracím seznamu hodnotu **hodiny** nebo **dny** .
 1. Uložit zásadu
@@ -109,7 +113,7 @@ Pokud jste nakonfigurovali různou frekvenci přihlašování pro různé webov�
    > [!NOTE]
    > Upozorňujeme, že tento ovládací prvek vyžaduje jako podmínku možnost "všechny cloudové aplikace". Trvalost relace prohlížeče se řídí tokenem relace ověřování. Všechny karty v relaci prohlížeče sdílejí jeden token relace, takže všichni musí sdílet stav trvalosti.
 
-1. Přejděte na > **relaci** **řízení přístupu**a klikněte na **trvalá relace prohlížeče** .
+1. Přejděte na **relaci řízení přístupu**  >  **Session** a klikněte na **trvalá relace prohlížeče** .
 1. Vybrat hodnotu z rozevíracího seznamu
 1. Uložit zásady
 

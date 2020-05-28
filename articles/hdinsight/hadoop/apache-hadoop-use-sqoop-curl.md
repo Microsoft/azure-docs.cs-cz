@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: da29785547d1b6eb4b38d07f020ba885dc5137ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bd0afe4d0ea01671c996a0f536151d943e4fca7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767582"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013006"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Spouštění úloh Apache Sqoop v HDInsight pomocí kudrlinkou
 
@@ -26,7 +26,7 @@ Kudrlinkou se používá k předvedení, jak můžete s HDInsight pracovat pomoc
 
 * Dokončení [Nastavení testovacího prostředí](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [pro použití Apache Sqoop se systémem Hadoop ve službě HDInsight](./hdinsight-use-sqoop.md).
 
-* Klient pro dotaz na Azure SQL Database. Zvažte použití [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) nebo [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md).
+* Klient pro dotaz na Azure SQL Database. Zvažte použití [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) nebo [Visual Studio Code](../../azure-sql/database/connect-query-vscode.md).
 
 * [Kudrlinkou](https://curl.haxx.se/). Kudrlinkou je nástroj pro přenos dat z clusteru HDInsight nebo do něj.
 
@@ -77,7 +77,7 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
 
     Parametry použité v tomto příkazu jsou následující:
 
-   * **-d** – vzhledem `-G` k tomu, že se nepoužívá, je požadavek nastaven na výchozí metodu post. `-d`Určuje hodnoty dat, které se odesílají spolu s požadavkem.
+   * **-d** – vzhledem k tomu `-G` , že se nepoužívá, je požadavek nastaven na výchozí metodu post. `-d`Určuje hodnoty dat, které se odesílají spolu s požadavkem.
 
        * **User.Name** – uživatel, který spouští příkaz.
 
@@ -91,7 +91,7 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
        {"id":"job_1415651640909_0026"}
        ```
 
-1. Chcete-li zjistit stav úlohy, použijte následující příkaz. Nahraďte `JOBID` hodnotou vrácenou v předchozím kroku. Například Pokud vrácená hodnota byla `{"id":"job_1415651640909_0026"}`, pak `JOBID` by byla. `job_1415651640909_0026` `jq` Podle potřeby upravte umístění.
+1. Chcete-li zjistit stav úlohy, použijte následující příkaz. Nahraďte `JOBID` hodnotou vrácenou v předchozím kroku. Například Pokud vrácená hodnota byla `{"id":"job_1415651640909_0026"}` , pak `JOBID` by byla `job_1415651640909_0026` . Podle potřeby upravte umístění `jq` .
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -104,7 +104,7 @@ Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://
    > [!NOTE]  
    > Tato žádost o kudrlinkou vrátí dokument JavaScript Object Notation (JSON) s informacemi o úloze. JQ se používá k načtení pouze hodnoty stavu.
 
-1. Jakmile se stav úlohy změní na **úspěch**, můžete načíst výsledky úlohy z úložiště objektů BLOB v Azure. `statusdir` Parametr předaný dotazu obsahuje umístění výstupního souboru. v tomto případě `wasb:///example/data/sqoop/curl`. Tato adresa ukládá výstup úlohy do `example/data/sqoop/curl` adresáře ve výchozím kontejneru úložiště, který používá cluster HDInsight.
+1. Jakmile se stav úlohy změní na **úspěch**, můžete načíst výsledky úlohy z úložiště objektů BLOB v Azure. `statusdir`Parametr předaný dotazu obsahuje umístění výstupního souboru, v tomto případě `wasb:///example/data/sqoop/curl` . Tato adresa ukládá výstup úlohy do `example/data/sqoop/curl` adresáře ve výchozím kontejneru úložiště, který používá cluster HDInsight.
 
     Azure Portal můžete použít pro přístup k objektům blob stderr a STDOUT.
 

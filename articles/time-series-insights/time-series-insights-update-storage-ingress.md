@@ -56,7 +56,7 @@ Azure Time Series Insights podporuje JSON zakódovaný v kódování UTF-8, kter
 
 Podporované datové typy jsou:
 
-| Datový typ | Popis |
+| Datový typ | Description |
 |---|---|
 | **bool** | Datový typ, který má jeden ze dvou stavů: `true` nebo `false` . |
 | **Hodnotu** | Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu. Vyjádřeno ve formátu [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) . |

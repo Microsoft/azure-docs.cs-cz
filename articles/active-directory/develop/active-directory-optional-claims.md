@@ -12,12 +12,12 @@ ms.date: 04/22/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 59f42f7c1fcdfef29becfb4a046753650ae9d14f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 92b3e12cc078326e98df5f42e36fcaddd56bf0c6
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737550"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993691"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci Azure AD
 
@@ -49,7 +49,7 @@ Sada volitelných deklarací, které jsou ve výchozím nastavení k dispozici p
 
 **Tabulka 2: volitelná sada deklarací identity v 1.0 a v 2.0**
 
-| Name                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
+| Name                       |  Description   | Typ tokenu | Typ uživatele | Poznámky  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Čas posledního ověření uživatele Viz specifikace OpenID Connect.| TOKEN        |           |  |
 | `tenant_region_scope`      | Oblast tenanta prostředků | TOKEN        |           | |
@@ -78,14 +78,13 @@ Tyto deklarace jsou vždycky zahrnuté v tokenech Azure AD v 1.0, ale nejsou zah
 
 **Tabulka 3: v 2.0 – jenom volitelné deklarace identity**
 
-| Deklarace JWT     | Name                            | Popis                                | Poznámky |
+| Deklarace JWT     | Name                            | Description                                | Poznámky |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP adresa                      | IP adresa, ze které se klient přihlásil.   |       |
 | `onprem_sid`  | Místní identifikátor zabezpečení |                                             |       |
 | `pwd_exp`     | Čas vypršení platnosti hesla        | Datum a čas, kdy platnost hesla vyprší |       |
 | `pwd_url`     | Změnit adresu URL hesla             | Adresa URL, na kterou může uživatel přejít, aby změnila heslo.   |   |
 | `in_corp`     | Uvnitř podnikové sítě        | Signalizuje, že se klient přihlašuje z podnikové sítě. Pokud nejsou, deklarace identity není zahrnutá.   |  Vychází z nastavení [důvěryhodných IP adres](../authentication/howto-mfa-mfasettings.md#trusted-ips) v MFA.    |
-| `nickname`    | Zdívek                        | Další jméno uživatele. Přezdívka je oddělená od prvního nebo posledního jména. Vyžaduje `profile` obor.|
 | `family_name` | Příjmení                       | Poskytuje příjmení, příjmení nebo rodinné jméno uživatele, jak je definováno v objektu User. <br>"family_name": "Miller" | Podporováno v MSA a Azure AD. Vyžaduje `profile` obor.   |
 | `given_name`  | Jméno                      | Poskytuje první nebo "předané" jméno uživatele, jak je nastaveno u objektu User.<br>"given_name": "Josef"                   | Podporováno v MSA a Azure AD.  Vyžaduje `profile` obor. |
 | `upn`         | Hlavní název uživatele | Identifikátorem pro uživatele, který lze použít s parametrem username_hint.  Nejedná se o trvalý identifikátor pro uživatele a neměl by se používat k klíčovým datům. | Konfiguraci deklarace identity najdete níže v části [Další vlastnosti](#additional-properties-of-optional-claims) . Vyžaduje `profile` obor.|
@@ -96,7 +95,7 @@ Některé volitelné deklarace identity je možné nakonfigurovat tak, aby se zm
 
 **Tabulka 4: hodnoty pro konfiguraci volitelných deklarací identity**
 
-| Název vlastnosti  | Název další vlastnosti | Popis |
+| Název vlastnosti  | Název další vlastnosti | Description |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Lze použít pro odpovědi SAML i JWT i pro tokeny v 1.0 a v 2.0. |
 |                | `include_externally_authenticated_upn`  | Zahrnuje hlavní název uživatele (UPN), který je uložený v tenantovi prostředků. Například `foo_hometenant.com#EXT#@resourcetenant.com`. |
@@ -185,7 +184,7 @@ Deklaruje volitelné deklarace požadované aplikací. Aplikace může nakonfigu
 
 **Tabulka 5: vlastnosti OptionalClaims typu**
 
-| Name          | Typ                       | Popis                                           |
+| Name          | Typ                       | Description                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Kolekce (OptionalClaim) | Volitelné deklarace identity vrácené v tokenu JWT ID.     |
 | `accessToken` | Kolekce (OptionalClaim) | Volitelné deklarace identity vrácené v přístupovém tokenu JWT. |
@@ -198,7 +197,7 @@ Pokud je tato možnost podporovaná konkrétní deklarací identity, můžete ta
 
 **Tabulka 6: vlastnosti OptionalClaim typu**
 
-| Name                   | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
+| Name                   | Typ                    | Description                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Název volitelné deklarace identity.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Zdroj (objekt adresáře) deklarace identity. Z vlastností rozšíření jsou předdefinované deklarace identity a uživatelsky definované deklarace identity. Pokud má zdrojová hodnota hodnotu null, deklarace identity je předdefinovaná volitelná deklarace identity. Pokud je zdrojovou hodnotou uživatel, hodnota ve vlastnosti název je vlastnost rozšíření z objektu User. |
@@ -260,7 +259,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "Zabezpečení"
    - "DirectoryRole"
 
-   Například:
+   Příklad:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"

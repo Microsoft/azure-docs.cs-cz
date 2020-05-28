@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
+author: aniththa
+ms.author: anumamah
+ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 75e61ea3f4fa6c2b346f912a9effd66ad94e7e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 97b129bfaa1a8612040e59c6378aa1965c5c49cd
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77116446"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118880"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Kurz: Použití automatizovaného strojového učení k předvídání taxislužby tarifů
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Tento kurz je také k dispozici na [GitHubu](https://github.com/Azure/MachineLea
 
 ## <a name="download-and-prepare-data"></a>Stažení a Příprava dat
 
-Importujte potřebné balíčky. Balíček Open DataSets obsahuje třídu reprezentující jednotlivé zdroje dat (`NycTlcGreen` například), aby bylo možné před stažením snadno filtrovat parametry data.
+Importujte potřebné balíčky. Balíček Open DataSets obsahuje třídu reprezentující jednotlivé zdroje dat ( `NycTlcGreen` například), aby bylo možné před stažením snadno filtrovat parametry data.
 
 ```python
 from azureml.opendatasets import NycTlcGreen
@@ -51,7 +51,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 ```
 
-Začněte tím, že vytvoříte datový rámec, který bude uchovávat data taxislužby. Při práci v prostředí, které není Spark, mohou otevřené datové sady stahovat pouze jeden měsíc dat s určitými třídami, aby se předešlo `MemoryError` velkým datovým sadám.
+Začněte tím, že vytvoříte datový rámec, který bude uchovávat data taxislužby. Při práci v prostředí, které není Spark, mohou otevřené datové sady stahovat pouze jeden měsíc dat s určitými třídami, aby se předešlo velkým datovým `MemoryError` sadám.
 
 Aby bylo možné stahovat data taxislužby, iterativním načítání po jednom měsíci a před jejich připojením k `green_taxi_df` náhodnému vzorkování 2 000 záznamů z každého měsíce, aby se zabránilo bloatingí datového rámce. Pak zobrazte náhled dat.
 
@@ -115,8 +115,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -139,8 +139,8 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0,69</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
@@ -163,8 +163,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -187,8 +187,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0,00</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -211,8 +211,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0,50</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -235,8 +235,8 @@ green_taxi_df.head(10)
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1.10</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -259,8 +259,8 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
@@ -283,8 +283,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -307,8 +307,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
@@ -331,8 +331,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -416,8 +416,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -440,8 +440,8 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0,69</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
@@ -464,8 +464,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -488,8 +488,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0,00</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -512,8 +512,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0,50</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -536,8 +536,8 @@ green_taxi_df.head(10)
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1.10</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -560,8 +560,8 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
@@ -584,8 +584,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -608,8 +608,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
@@ -632,8 +632,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Žádná</td>
-      <td>Žádná</td>
+      <td>Žádné</td>
+      <td>Žádné</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -834,7 +834,7 @@ V souhrnných statistikách vidíte, že existuje několik polí, která mají m
 
 Kromě toho vyfiltrujte `tripDistance` pole tak, aby bylo větší než nula, ale menší než 31 mil. (vzdálenost Haversine mezi dvěma páry lat/Long). Tím se eliminují dlouhé izolované cesty, které mají nekonzistentní náklady na služební cestu.
 
-Nakonec má `totalAmount` pole záporné hodnoty pro taxislužby tarify, které nedávají smysl v kontextu našeho modelu, a `passengerCount` pole obsahuje chybná data s minimálními hodnotami nula.
+Nakonec `totalAmount` má pole záporné hodnoty pro taxislužby tarify, které nedávají smysl v kontextu našeho modelu, a `passengerCount` pole obsahuje chybná data s minimálními hodnotami nula.
 
 Vyfiltrujte tyto anomálie pomocí funkcí dotazů a pak odeberte poslední sloupce, které nejsou potřebné pro školení.
 
@@ -858,7 +858,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Konfigurace pracovního prostoru
 
-Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. [Pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) je třída, která přijímá vaše předplatné a informace o prostředcích Azure. Vytvoří také cloudový prostředek pro monitorování a sledování spuštění modelu. `Workspace.from_config()`přečte soubor **config. JSON** a načte podrobnosti ověřování do objektu s názvem `ws`. `ws` se používá ve zbývající části kódu v tomto kurzu.
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. [Pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) je třída, která přijímá vaše předplatné a informace o prostředcích Azure. Vytvoří také cloudový prostředek pro monitorování a sledování spuštění modelu. `Workspace.from_config()`přečte soubor **config. JSON** a načte podrobnosti ověřování do objektu s názvem `ws` . `ws` se používá ve zbývající části kódu v tomto kurzu.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -869,7 +869,7 @@ ws = Workspace.from_config()
 
 Data rozdělte do školicích a testovacích sad pomocí `train_test_split` funkce v `scikit-learn` knihovně. Tato funkce oddělí data do sady dat x (**Features**) pro školení modelů a datovou sadu y (**hodnoty pro předpověď**) pro testování.
 
-`test_size` Parametr určuje procentuální hodnotu dat, která se mají přidělit pro testování. `random_state` Parametr nastaví počáteční hodnotu pro náhodný generátor, aby vaše výukové testy byly deterministické.
+`test_size`Parametr určuje procentuální hodnotu dat, která se mají přidělit pro testování. `random_state`Parametr nastaví počáteční hodnotu pro náhodný generátor, aby vaše výukové testy byly deterministické.
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -894,7 +894,7 @@ K automatickému učení modelu proveďte následující kroky:
 
 Definujte parametr experimentu a nastavení modelu pro školení. Zobrazí úplný seznam [Nastavení](how-to-configure-auto-train.md). Odeslání experimentu s těmito výchozími nastaveními bude trvat přibližně 5-20 min, ale pokud budete chtít kratší dobu běhu, snižte `experiment_timeout_minutes` parametr.
 
-|Vlastnost| Hodnota v tomto kurzu |Popis|
+|Vlastnost| Hodnota v tomto kurzu |Description|
 |----|----|---|
 |**iteration_timeout_minutes**|2|Časový limit pro každou iteraci v minutách Snižte tuto hodnotu pro snížení celkové doby běhu.|
 |**experiment_timeout_minutes**|20|Maximální doba v minutách, po kterou můžou všechny iterace v kombinaci trvat, než se experiment ukončí.|
@@ -935,7 +935,7 @@ automl_config = AutoMLConfig(task='regression',
 
 ### <a name="train-the-automatic-regression-model"></a>Analýza automatického regresního modelu
 
-Vytvořte v pracovním prostoru objekt experiment. Experiment funguje jako kontejner pro vaše jednotlivá spuštění. Předejte definovaný `automl_config` objekt experimentu a nastavte výstup na `True` k zobrazení průběhu během běhu.
+Vytvořte v pracovním prostoru objekt experiment. Experiment funguje jako kontejner pro vaše jednotlivá spuštění. Předejte definovaný `automl_config` objekt experimentu a nastavte výstup na k `True` zobrazení průběhu během běhu.
 
 Po zahájení experimentu se výstup v rámci spuštění experimentu zobrazí jako živý. Pro každou iteraci vidíte typ modelu, dobu trvání běhu a přesnost školení. Pole `BEST` sleduje nejlepší průběžné školení na základě typu metriky.
 
@@ -993,12 +993,12 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-![Jupyter widget detail Run](./media/tutorial-auto-train-models/automl-dash-output.png)
-![Details Jupyter](./media/tutorial-auto-train-models/automl-chart-output.png)
+![Jupyter widget detail Run Details ](./media/tutorial-auto-train-models/automl-dash-output.png)
+ ![ Jupyter](./media/tutorial-auto-train-models/automl-chart-output.png)
 
 ### <a name="retrieve-the-best-model"></a>Načtení nejlepšího modelu
 
-Vyberte nejlepší model z vašich iterací. `get_output` Funkce vrátí nejlepší běh a namontovaný model pro poslední vyvolání. Pomocí přetížení `get_output`můžete načíst nejlepší běh a namontovaný model pro všechny protokolované metriky nebo konkrétní iterace.
+Vyberte nejlepší model z vašich iterací. `get_output`Funkce vrátí nejlepší běh a namontovaný model pro poslední vyvolání. Pomocí přetížení `get_output` můžete načíst nejlepší běh a namontovaný model pro všechny protokolované metriky nebo konkrétní iterace.
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1008,14 +1008,14 @@ print(fitted_model)
 
 ### <a name="test-the-best-model-accuracy"></a>Testování nejlepší přesnosti modelu
 
-Použijte nejlepší model pro spuštění předpovědi na testovacích datech sady pro předpověď taxislužby tarifů. Funkce `predict` využívá nejlepší model a předpovídá hodnoty y, **nákladů na cestu**ze sady `x_test` dat. Vytiskněte prvních 10 předpokládaných hodnot nákladů z `y_predict`.
+Použijte nejlepší model pro spuštění předpovědi na testovacích datech sady pro předpověď taxislužby tarifů. Funkce `predict` využívá nejlepší model a předpovídá hodnoty y, **nákladů na cestu**ze `x_test` sady dat. Vytiskněte prvních 10 předpokládaných hodnot nákladů z `y_predict` .
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-`root mean squared error` Vypočítá výsledky. `y_test` Převeďte datový rámec na seznam pro porovnání s předpokládanými hodnotami. Funkce `mean_squared_error` přebírá dvě pole hodnot a vypočítá průměrnou kvadratickou chybu mezi nimi. Výsledkem druhé odmocniny výsledku je chyba ve stejných jednotkách jako proměnná y, **náklady**. Uvádí zhruba, jak daleko se taxislužby tarif předpovědi ze skutečné tarify.
+Vypočítá `root mean squared error` výsledky. Převeďte `y_test` datový rámec na seznam pro porovnání s předpokládanými hodnotami. Funkce `mean_squared_error` přebírá dvě pole hodnot a vypočítá průměrnou kvadratickou chybu mezi nimi. Výsledkem druhé odmocniny výsledku je chyba ve stejných jednotkách jako proměnná y, **náklady**. Uvádí zhruba, jak daleko se taxislužby tarif předpovědi ze skutečné tarify.
 
 ```python
 from sklearn.metrics import mean_squared_error

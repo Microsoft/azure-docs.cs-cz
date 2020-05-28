@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním sdílených složek Azure
 description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 3d04a60b8bab5ba764818eab341ac08836b0dfd1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562079"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116735"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Řešení potíží při zálohování sdílených složek Azure
 
@@ -50,7 +50,7 @@ Zkuste registraci zopakovat. Pokud se problém opakuje, obraťte se na podporu.
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Po zrušení ochrany sdílené složky nejde odstranit Recovery Services trezor.
 
-V Azure Portal otevřete > **účty úložiště** **infrastruktury zálohování** **trezoru** > a kliknutím na **zrušit registraci** odeberte účty úložiště z trezoru Recovery Services.
+V Azure Portal otevřete **Vault**  >  **Backup Infrastructure**  >  **účty úložiště** infrastruktury zálohování trezoru a kliknutím na **zrušit registraci** odeberte účty úložiště z trezoru Recovery Services.
 
 >[!NOTE]
 >Trezor služby Recovery Services je možné odstranit až po zrušení registrace všech účtů úložiště zaregistrovaných v trezoru.
@@ -276,6 +276,45 @@ Kód chyby: BMSUserErrorObjectLocked
 Chybová zpráva: u vybrané položky probíhá jiná operace.
 
 Počkejte na dokončení jiné probíhající operace a zkuste to znovu později.
+
+Ze souboru: troubleshoot-azure-files.md
+
+## <a name="common-soft-delete-related-errors"></a>Běžné chyby související s tichým odstraněním
+
+### <a name="usererrorrestoreafsinsoftdeletestate--this-restore-point-is-not-available-as-the-snapshot-associated-with-this-point-is-in-a-file-share-that-is-in-soft-deleted-state"></a>UserErrorRestoreAFSInSoftDeleteState – tento bod obnovení není k dispozici, protože snímek přidružený k tomuto bodu je ve sdílené složce, která je v nepodmíněném stavu odstranění.
+
+Kód chyby: UserErrorRestoreAFSInSoftDeleteState
+
+Chybová zpráva: Tento bod obnovení není k dispozici, protože snímek přidružený k tomuto bodu je ve sdílené složce, která je ve stavu bez přístupného odstranění.
+
+Operaci obnovení nelze provést, pokud je sdílená složka ve stavu tichého odstranění. Obnovte sdílenou složku ze souboru portálu Files nebo pomocí [skriptu Undelete](scripts/backup-powershell-script-undelete-file-share.md) a zkuste provést obnovení.
+
+### <a name="usererrorrestoreafsindeletestate--listed-restore-points-are-not-available-as-the-associated-file-share-containing-the-restore-point-snapshots-has-been-deleted-permanently"></a>UserErrorRestoreAFSInDeleteState – uvedené body obnovení nejsou k dispozici, protože se trvale odstranila přidružená sdílená složka obsahující snímky bodu obnovení.
+
+Kód chyby: UserErrorRestoreAFSInDeleteState
+
+Chybová zpráva: uvedené body obnovení nejsou k dispozici, protože se trvale odstranila přidružená sdílená složka obsahující snímky bodu obnovení.
+
+Ověřte, zda je odstraněna zálohovaná sdílená složka. Pokud byl ve stavu undeleteded, ověřte, zda je doba uchování měkkého odstranění vyšší a nebyla obnovena zpět. V obou těchto případech ztratíte všechny snímky trvale a nebudete moct data obnovit.
+
+>[!NOTE]
+> Doporučujeme neodstraňovat zálohovanou sdílenou složku, nebo pokud je v nepodmíněném stavu odstranění, zrušit před uplynutím doby uchování krátkého odstranění, aby nedošlo ke ztrátě všech bodů obnovení.
+
+### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState – zálohování se nepovedlo, protože sdílená složka Azure je ve stavu nepodmíněného odstranění.
+
+Kód chyby: UserErrorBackupAFSInSoftDeleteState
+
+Chybová zpráva: zálohování se nepovedlo, protože sdílená složka Azure je ve stavu unsoft-Deleted.
+
+Pokud chcete pokračovat v zálohování a zabránit trvalému odstranění dat, odstraňte sdílenou složku z **portálu souborů** nebo pomocí [skriptu Undelete](scripts/backup-powershell-script-undelete-file-share.md) .
+
+### <a name="usererrorbackupafsindeletestate--backup-failed-as-the-associated-azure-file-share-is-permanently-deleted"></a>UserErrorBackupAFSInDeleteState – zálohování se nepovedlo, protože přidružená sdílená složka Azure je trvale Odstraněná.
+
+Kód chyby: UserErrorBackupAFSInDeleteState
+
+Chybová zpráva: zálohování se nepovedlo, protože přidružená sdílená složka Azure je trvale Odstraněná.
+
+Ověřte, jestli je zálohovaná sdílená složka trvale Odstraněná. Pokud ano, zastavte zálohování sdílené složky, aby se předešlo opakovaným chybám zálohování. Informace o zastavení ochrany najdete v tématu [zastavení ochrany sdílené složky Azure](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share) .
 
 ## <a name="next-steps"></a>Další kroky
 

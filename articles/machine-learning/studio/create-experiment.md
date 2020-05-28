@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: c4c50ba53bc40ad6ae6fc60b3992f9ab992eb268
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8ad945e20e1274025595620e08f264863297892
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79204558"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117361"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Rychlý Start: vytvoření prvního experimentu pro datové vědy v Azure Machine Learning Studio (Classic)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -55,7 +53,7 @@ Tato datová sada obsahuje záznamy řady různých automobilů, včetně inform
 
 Tuto datovou sadu dostanete do svého experimentu takto.
 
-1. Vytvořte nový experiment kliknutím na **+ Nový** ve spodní části okna Machine Learning Studio (Classic). Vyberte **experimentovat** >  **prázdný experiment**.
+1. Vytvořte nový experiment kliknutím na **+ Nový** ve spodní části okna Machine Learning Studio (Classic). Vyberte **experimentovat**  >   **prázdný experiment**.
 
 1. Experimentu se přiřadí výchozí název, který se zobrazí v horní části plátna. Vyberte tento text a přejmenujte jej na něco smysluplného, například **Predikce ceny automobilu**. Název nemusí být jedinečný.
 

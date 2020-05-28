@@ -3,12 +3,12 @@ title: Nejčastější dotazy k zálohování Souborů Azure
 description: V tomto článku najdete odpovědi na běžné otázky týkající se ochrany sdílených složek Azure pomocí služby Azure Backup.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1be509f3b82cece3afb1e728a19da4c4d9526195
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 70ed8594be09ab74478f4703aa632b9ce966b5ee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836103"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118009"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 
@@ -157,8 +157,4 @@ Tady je příklad toho, jak to funguje:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o dalších oblastech Azure Backup najdete v některých dalších nejčastějších dotazech k zálohování:
-
-- [Nejčastější dotazy k trezoru služby Recovery Services](backup-azure-backup-faq.md)
-- [Nejčastější dotazy k zálohování virtuálních počítačů Azure](backup-azure-vm-backup-faq.md)
-- [Nejčastější dotazy k agentovi Azure Backup](backup-azure-file-folder-backup-faq.md)
+- [Řešení potíží při zálohování sdílených složek Azure](troubleshoot-azure-files.md)

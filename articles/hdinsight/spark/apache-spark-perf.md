@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: f92a351087670ce0b37921a496eabfa883a3b1fc
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 0b152f7882c7d7a3bab762253da0febc0257ceae
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780114"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117968"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optimalizace úloh Apache Spark v HDInsight
 
@@ -22,16 +22,16 @@ Tento článek poskytuje přehled strategií pro optimalizaci Apache Spark úloh
 
 Výkon vašich Apache Spark úloh závisí na několika faktorech. Mezi tyto faktory výkonu patří: způsob ukládání dat, způsob konfigurace clusteru a operace, které se používají při zpracování dat.
 
-Mezi běžné problémy, které byste mohli dotýkat, patří omezení paměti z důvodu nesprávné velikosti prováděcích modulů, dlouhotrvajících operací a úloh, které způsobují kartézském operace.
+Mezi běžné problémy, které by se vám mohly vzniknout, patří: omezení paměti kvůli nesprávně změně velikosti prováděcích modulů, dlouhotrvajících operací a úloh, které způsobují kartézském operace.
 
-Existují také různé strategie, které vám pomůžou překonat tyto výzvy, jako je ukládání do mezipaměti a umožnění zešikmení dat.
+K dispozici je také mnoho optimalizací, které vám pomůžou překonat tyto výzvy, jako je ukládání do mezipaměti a umožnění zešikmení dat.
 
-V každém z následujících článků můžete najít běžné výzvy a řešení pro jiný aspekt optimalizace Sparku.
+V každém z následujících článků můžete najít informace o různých aspektech funkce pro optimalizaci Sparku.
 
-* [Optimalizace úložiště dat](optimize-data-storage.md)
-* [Optimalizace zpracování dat](optimize-data-processing.md)
-* [Optimalizace využití paměti](optimize-memory-usage.md)
-* [Optimalizace konfigurace clusteru](optimize-cluster-configuration.md)
+* [Optimalizace úložiště dat pro Apache Spark](optimize-data-storage.md)
+* [Optimalizujte zpracování dat pro Apache Spark](optimize-data-processing.md)
+* [Optimalizace využití paměti pro Apache Spark](optimize-memory-usage.md)
+* [Optimalizace konfigurace clusteru HDInsight pro Apache Spark](optimize-cluster-configuration.md)
 
 ## <a name="next-steps"></a>Další kroky
 

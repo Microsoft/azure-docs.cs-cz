@@ -14,22 +14,25 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: ada3762b6daae86033903f72ad9865ca66904ead
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b81e31fd552d71ed734e2172d13d685a473c6f1b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418639"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118186"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>Nastavení Azure-SSIS IR v Azure Data Factory pomocí prostředí PowerShell
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-V tomto kurzu se dozvíte, jak v Azure Data Factory vytvořit Azure-služba SSIS (SQL Server Integration Services) Integration Runtime (Azure-SSIS IR). Azure-SSIS IR podporuje spouštění balíčků, které jsou nasazeny na:
-* SSIS Catalog (SSISDB), který je hostovaný instancí Azure SQL Database serveru nebo spravovanou instancí (model nasazení projektu).
+V tomto kurzu najdete postup, jak pomocí PowerShellu zřídit v Azure Data Factory Azure-služba SSIS (SQL Server Integration Services) Integration Runtime (Azure-SSIS IR). Azure-SSIS IR podporuje spouštění balíčků, které jsou nasazeny na:
+
+* SSIS Catalog (SSISDB), který je hostovaný ve službě SQL Database nebo Managed instance SQL (model nasazení projektu).
 * Systémy souborů, sdílené složky nebo sdílená složka souborů Azure (model nasazení balíčku). 
 
-Po nastavení Azure-SSIS IR můžete k nasazení a spuštění balíčků v Azure používat známé nástroje, jako jsou například nástroje SQL Server Data Tools (SSDT) a SQL Server Management Studio (SSMS). Můžete také použít nástroje příkazového řádku, například `dtinstall`, `dtutil`a. `dtexec`  
+Po zřízení Azure-SSIS IR můžete pomocí známých nástrojů nasadit a spustit balíčky v Azure. Mezi tyto nástroje patří nástroje SQL Server Data Tools (SSDT), SQL Server Management Studio (SSMS) a nástroje příkazového řádku `dtinstall` , jako jsou, `dtutil` a `dtexec` .
+
+Informace o konceptu prostředí Azure-SSIS IR najdete v [přehledu prostředí Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 
 > [!NOTE]
 > Tento článek ukazuje použití Azure PowerShell k nastavení Azure-SSIS IR. Pokud chcete použít Azure Portal nebo Azure Data Factory aplikaci k nastavení Azure-SSIS IR, přečtěte si téma [kurz: nastavení Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md). 
@@ -46,16 +49,16 @@ V tomto kurzu provedete následující:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Koncepční informace o Azure-SSIS IR najdete v tématu [Azure-SSIS Integration runtime Overview](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Koncepční informace o Azure-SSIS IR najdete v tématu [Azure-SSIS Integration runtime Overview](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 
-- Volitelné Server Azure SQL Database. Pokud ještě nemáte databázový server, vytvořte si ho na webu Azure Portal před tím, než začnete. Azure Data Factory pak na tomto databázovém serveru vytvoří SSISDB. Doporučujeme vytvořit databázový server ve stejné oblasti Azure jako prostředí Integration Runtime. Tato konfigurace umožňuje prostředí Integration Runtime zapisovat protokoly spuštění do databáze SSISDB bez přecházení mezi oblastmi Azure. 
-    - V závislosti na vybraném databázovém serveru se SSISDB dá vytvořit vaším jménem jako jediná databáze, součást elastického fondu nebo ve spravované instanci a přístupná ve veřejné síti nebo prostřednictvím připojení k virtuální síti. Pokyny k výběru typu databázového serveru pro hostování SSISDB najdete v tématu [porovnání Azure SQL Database izolované databáze, elastického fondu a spravované instance](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). 
+- **SQL Database nebo spravované instance SQL**: Pokud ho ještě nemáte, vytvořte ho v Azure Portal předtím, než začnete. Azure Data Factory se v této SQL Database nebo spravované instanci SQL vytvoří SSISDB. Doporučujeme, abyste ve stejné oblasti Azure jako modul Integration runtime vytvořili SQL Database nebo spravovanou instanci SQL. Tato konfigurace umožňuje prostředí Integration Runtime zapisovat protokoly spuštění do databáze SSISDB bez přecházení mezi oblastmi Azure. 
+    - V závislosti na vybraném databázovém serveru se SSISDB dá vytvořit jménem jako jedna databáze nebo součást elastického fondu v SQL Database nebo ve spravované instanci SQL, která je dostupná ve veřejné síti nebo prostřednictvím připojení k virtuální síti. Pokyny k výběru typu databázového serveru pro hostování SSISDB najdete v tématu [porovnání SQL Database a spravované instance SQL](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).
     
-      Pokud používáte server Azure SQL Database s bránou firewall IP nebo koncovými body služby virtuální sítě nebo spravovanou instancí s privátním koncovým bodem hostitele SSISDB, nebo pokud požadujete přístup k místním datům bez konfigurace místního prostředí IR, připojte se k Azure-SSIS IR k virtuální síti. Další informace najdete v tématu [vytvoření Azure-SSIS IR ve virtuální síti](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
-    - Potvrďte, že nastavení **Povolit přístup ke službám Azure** je pro databázový server povolené. Toto nastavení se nevztahuje na použití serveru Azure SQL Database s pravidly brány firewall protokolu IP nebo koncovými body služby virtuální sítě nebo spravované instance s privátním koncovým bodem pro hostování SSISDB. Další informace najdete v tématu [Zabezpečení databáze Azure SQL](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). Pokud chcete toto nastavení povolit pomocí PowerShellu, přečtěte si článek [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
-    - Přidejte IP adresu klientského počítače nebo rozsah IP adres, včetně IP adresy klientského počítače, do seznamu IP adres klienta v nastavení brány firewall pro databázový server. Další informace najdete v tématu [Pravidla brány firewall na úrovni serveru a databáze služby Azure SQL Database](../sql-database/sql-database-firewall-configure.md).
-    - K databázovému serveru se můžete připojit pomocí ověřování SQL s přihlašovacími údaji správce serveru nebo Azure Active Directory (Azure AD) ověřování se spravovanými identitami pro vaši datovou továrnu. Pro ověřování Azure AD pro přidání spravované identity pro vaši datovou továrnu do skupiny Azure AD s oprávněním k přístupu k databázovému serveru, přečtěte si téma [vytvoření Azure-SSIS IR s ověřováním Azure AD](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
-    - Ověřte, že váš databázový server ještě nemá SSISDB. Nastavení Azure-SSIS IR nepodporuje používání existující SSISDB.
+      Pokud používáte SQL Database s bránou firewall protokolu IP nebo koncovými body služby virtuální sítě nebo spravovanou instancí SQL s privátním koncovým bodem hostitele SSISDB, nebo pokud požadujete přístup k místním datům bez konfigurace místního prostředí IR, připojte se k Azure-SSIS IR k virtuální síti. Další informace najdete v tématu [vytvoření Azure-SSIS IR ve virtuální síti](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+    - Potvrďte, že nastavení **Povolit přístup ke službám Azure** je povolené pro SQL Database. Toto nastavení se nedá použít, když používáte SQL Database s pravidly brány firewall protokolu IP nebo koncovými body služby virtuální sítě nebo se spravovanou instancí SQL s privátním koncovým bodem pro hostování SSISDB. Další informace najdete v tématu [Zabezpečení databáze Azure SQL](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules). Pokud chcete toto nastavení povolit pomocí PowerShellu, přečtěte si článek [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
+    - Přidejte IP adresu klientského počítače nebo rozsah IP adres, včetně IP adresy klientského počítače, do seznamu IP adres klienta v nastavení brány firewall pro SQL Database. Další informace najdete v tématu [pravidla brány firewall na úrovni serveru a databáze](../azure-sql/database/firewall-configure.md).
+    - K SQL Database nebo spravované instanci SQL se můžete připojit pomocí ověřování SQL s přihlašovacími údaji správce serveru nebo ověřováním Azure Active Directory (Azure AD) se spravovanou identitou pro vaši datovou továrnu. Pro ověřování Azure AD pro přidání spravované identity pro vaši datovou továrnu do skupiny Azure AD s oprávněním k přístupu k databázovému serveru, přečtěte si téma [vytvoření Azure-SSIS IR s ověřováním Azure AD](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+    - Potvrďte, že SQL Database nebo spravovaná instance SQL ještě nemá SSISDB. Nastavení Azure-SSIS IR nepodporuje používání existující SSISDB.
 
 - Azure Powershell Chcete-li spustit skript prostředí PowerShell pro nastavení Azure-SSIS IR, postupujte podle pokynů v tématu [install and configure Azure PowerShell](/powershell/azure/install-Az-ps).
 
@@ -100,11 +103,11 @@ $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob contain
 $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you use SSISDB, please ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
+$SSISDBServerEndpoint = "[your server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you use SSISDB, please ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication]"
 # For the basic pricing tier, specify "Basic", not "B" - For standard/premium/elastic pool tiers, specify "S0", "S1", "S2", "S3", etc., see https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database server or leave it empty for managed instance]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for SQL Database or leave it empty for SQL Managed Instance]"
 
 ### Self-hosted integration runtime info - This can be configured as a proxy for on-premises data access 
 $DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-premises data access 
@@ -123,7 +126,7 @@ Select-AzSubscription -SubscriptionName $SubscriptionName
 
 ## <a name="validate-the-connection-to-your-database-server"></a>Ověření připojení k databázovému serveru
 
-Pokud chcete ověřit server Azure SQL Database, přidejte následující skript: 
+Chcete-li ověřit připojení, přidejte následující skript: 
 
 ```powershell
 # Validate only if you're using SSISDB
@@ -137,7 +140,7 @@ if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
     }
     Catch [System.Data.SqlClient.SqlException]
     {
-        Write-Warning "Cannot connect to your Azure SQL Database server, exception: $_";
+        Write-Warning "Cannot connect, exception: $_";
         Write-Warning "Please make sure the server you specified has already been created. Do you want to proceed? [Y/N]"
         $yn = Read-Host
         if(!($yn -ieq "Y"))
@@ -365,11 +368,11 @@ $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob contain
 $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you want to use SSISDB, ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
+$SSISDBServerEndpoint = "[your server name.database.windows.net or managed instance name.public.DNS prefix.database.windows.net,3342 or leave it empty if you're not using SSISDB]" # WARNING: If you want to use SSISDB, ensure that there is no existing SSISDB on your database server, so we can prepare and manage one on your behalf    
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication]"
 # For the basic pricing tier, specify "Basic", not "B" - For standard/premium/elastic pool tiers, specify "S0", "S1", "S2", "S3", etc., see https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database server or leave it empty for managed instance]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for SQL Database or leave it empty for SQL Managed Instance]"
 
 ### Self-hosted integration runtime info - This can be configured as a proxy for on-premises data access 
 $DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-premises data access 
@@ -392,7 +395,7 @@ if(![string]::IsNullOrEmpty($SSISDBServerEndpoint))
     }
     Catch [System.Data.SqlClient.SqlException]
     {
-        Write-Warning "Cannot connect to your Azure SQL Database server, exception: $_";
+        Write-Warning "Cannot connect, exception: $_";
         Write-Warning "Please make sure the server you specified has already been created. Do you want to proceed? [Y/N]"
         $yn = Read-Host
         if(!($yn -ieq "Y"))
@@ -537,9 +540,9 @@ Informace o monitorování a správě Azure-SSIS IR najdete v tématech:
 
 ## <a name="deploy-ssis-packages"></a>Nasazení balíčků SSIS
 
-Pokud používáte SSISDB, můžete do něj nasadit balíčky a spouštět je v Azure-SSIS IR pomocí nástrojů SQL Server Data Tools (SSDT) nebo SQL Server Management Studio (SSMS), které se připojují k vašemu databázovému serveru prostřednictvím koncového bodu serveru. V případě instance serveru Azure SQL Database nebo spravované instance s veřejným koncovým bodem jsou * <server name>* formáty koncového bodu serveru. Database.Windows.NET a * <server name>. Public<dns prefix>.. Database. Windows. NET, 3342*, v uvedeném pořadí. 
+Pokud používáte SSISDB, můžete do něj nasadit balíčky a spouštět je v Azure-SSIS IR pomocí nástrojů SQL Server Data Tools (SSDT) nebo SQL Server Management Studio (SSMS), které se připojují k vašemu databázovému serveru prostřednictvím koncového bodu serveru. V případě SQL Database nebo SQL spravované instance s veřejným koncovým bodem jsou formáty koncového bodu serveru * <server name> . Database.Windows.NET* a * <server name> . Public. <dns prefix> . Database. Windows. NET, 3342*, v uvedeném pořadí. 
 
-Pokud nepoužíváte SSISDB, můžete balíčky nasadit do systémů souborů, sdílených složek nebo sdílené složky Azure a spouštět je v `dtinstall` / `dtutil` / `dtexec` Azure-SSIS IR pomocí nástrojů příkazového řádku. Další informace najdete v tématu [nasazení balíčků SSIS](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
+Pokud nepoužíváte SSISDB, můžete balíčky nasadit do systémů souborů, sdílených složek nebo sdílené složky Azure a spouštět je v Azure-SSIS IR pomocí `dtinstall` / `dtutil` / `dtexec` nástrojů příkazového řádku. Další informace najdete v tématu [nasazení balíčků SSIS](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). 
 
 V obou případech můžete také spouštět nasazené balíčky na Azure-SSIS IR pomocí aktivity spustit balíček SSIS v Azure Data Factorych kanálech. Další informace najdete v tématu [vyvolání spuštění balíčku SSIS jako aktivity první třídy Azure Data Factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 

@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 5379f2c46bbeaba4ee8509603b7b739b75d08f04
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7e87d5b3a4488dac05758e160b09f8fa8b393d09
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836783"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117950"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>Povolení řešení Change Tracking a Inventory z virtuálního počítače Azure
 
@@ -41,14 +41,14 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 5. Vyberte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte Change Tracking a inventář pro virtuální počítač. Dokončení instalace trvá až 15 minut. 
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>Ověřit konfiguraci oboru
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Omezení rozsahu nasazení
 
-Change Tracking a inventář používá v rámci pracovního prostoru konfiguraci oboru pro cílení na počítače, které mají funkci povolit. Konfigurace oboru je skupina jednoho nebo více uložených hledání, která slouží k omezení rozsahu funkce na konkrétní počítače. Další informace najdete v tématu [práce s konfiguracemi oboru pro Change Tracking a inventář](automation-scope-configurations-change-tracking.md).
+Change Tracking a inventář používá v rámci pracovního prostoru konfiguraci oboru pro cílení na počítače, aby přijímaly změny. Další informace najdete v tématu [omezení rozsahu nasazení Change Tracking a inventáře](automation-scope-configurations-change-tracking.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 * Podrobnosti o práci s funkcí najdete v tématu [správa Change Tracking a inventáře](change-tracking-file-contents.md).
-* Informace o konfiguracích oboru najdete v tématu [práce s konfiguracemi oboru pro Change Tracking a inventář](automation-scope-configurations-change-tracking.md).
+* Informace o konfiguracích oboru najdete v tématu [omezení Change Tracking a rozsahu nasazení inventáře](automation-scope-configurations-change-tracking.md).
 * Informace o použití funkce k identifikaci softwaru nainstalovaného ve vašem prostředí najdete v tématu [zjištění, jaký software je nainstalovaný na vašich virtuálních počítačích](automation-tutorial-installed-software.md).
 * Pokud účet Automation nechcete při povolování této funkce integrovat do pracovního prostoru Log Analytics, přečtěte si téma [zrušení propojení pracovního prostoru s účtem Automation](automation-unlink-workspace-change-tracking.md).
 * Po dokončení nasazování změn do virtuálních počítačů je můžete odebrat, jak je popsáno v tématu [Odebrání virtuálních počítačů z Change Tracking a inventáře](automation-remove-vms-from-change-tracking.md).

@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: 34333d4fe6e9b34a0c8b56cca8123f4ed93a917a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ce147ac6c9b21176c738c21114c331b56bf667f
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218116"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118476"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Nasazení pracovního prostoru Azure Machine Learning Studio (klasický) pomocí Azure Resource Manager
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Použití šablony nasazení Azure Resource Manager vám ušetří čas tím, že vám poskytne škálovatelný způsob, jak nasadit propojené komponenty pomocí mechanismu ověřování a opakování. Chcete-li nastavit pracovní prostory Azure Machine Learning Studio (klasické), například je třeba nejprve nakonfigurovat účet služby Azure Storage a potom tento pracovní prostor nasadit. Představte si to ručně pro stovky pracovních prostorů. Jednodušší alternativou je použití šablony Azure Resource Manager k nasazení pracovního prostoru studia (Classic) a všech jeho závislostí. Tento článek vás provede jednotlivými kroky tohoto postupu. Skvělé přehledy Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md).
 

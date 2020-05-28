@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c6e6d4a38c5ed2afc118b267f253ffc7533f9d82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6344f2c69e7b6407152e752c61c1928ab651a88c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438873"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119236"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Kurz: Použití rozhraní REST API k vytvoření kanálu Azure Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "75438873"
 > * [Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Šablona Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Šablona Azure Resource Manageru](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
@@ -70,7 +70,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
      ```PowerShell     
      Get-AzSubscription
      ``` 
-  3. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte ** &lt;NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure. 
+  3. Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte ** &lt; NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure. 
      
      ```PowerShell
      Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -121,7 +121,7 @@ Podrobné informace o vlastnostech JSON najdete v tématu [Propojená služba 
 
 ### <a name="azuresqllinkedservicejson"></a>azuresqllinkedservice. JSON
 > [!IMPORTANT]
-> Položky **servername**, **databasename**, **username** a **password** nahraďte názvem serveru SQL Azure, názvem databáze SQL, uživatelským účtem a heslem pro daný účet.  
+> Položku **servername**, **DatabaseName**, **username**a **Password** nahraďte názvem serveru, názvem databáze SQL, uživatelským účtem a heslem pro tento účet.  
 > 
 >
 
@@ -177,9 +177,9 @@ Podrobné informace o vlastnostech JSON najdete v tématu [Propojená služba 
 
 Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--- |:--- |
-| type | Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage. |
+| typ | Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage. |
 | linkedServiceName | Odkazuje na službu **AzureStorageLinkedService**, kterou jste vytvořili předtím. |
 | folderPath | Určuje **kontejner** objektů BLOB a **složku** , která obsahuje vstupní objekty blob. V tomto kurzu je adftutorial kontejnerem objektů blob a složka je kořenová složka. | 
 | fileName | Tato vlastnost je nepovinná. Pokud ji vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto kurzu má fileName hodnotu **emp.txt**, takže se zpracuje pouze tento soubor. |
@@ -220,9 +220,9 @@ Další informace o těchto vlastnostech JSON najdete v článku [konektor Azu
 ```
 Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--- |:--- |
-| type | Vlastnost type je nastavena na hodnotu **AzureSqlTable**, protože data se kopírují do tabulky v databázi Azure SQL. |
+| typ | Vlastnost type je nastavena na hodnotu **AzureSqlTable**, protože data se kopírují do tabulky v databázi Azure SQL. |
 | linkedServiceName | Odkazuje na službu **AzureSqlLinkedService**, kterou jste vytvořili předtím. |
 | tableName | Určuje **tabulku**, do které se kopírují data. | 
 | frequency/interval | Frekvence je nastavená na hodnotu **Hour** (hodina) a interval je **1**, což znamená, že výstupní řezy se tvoří **každou hodinu** mezi časy spuštění a ukončení, ne před nebo po této době.  |
@@ -403,7 +403,7 @@ V tomto kroku propojíte se svou datovou továrnou účet úložiště Azure. V
     ```
 
 ### <a name="create-azure-sql-linked-service"></a>Vytvoření propojené služby Azure SQL
-V tomto kroku se svým objektem pro vytváření dat propojíte svou databázi Azure SQL. V tomto oddílu zadáte název serveru Azure SQL, název databáze, uživatelské jméno a heslo. Podrobnosti o vlastnostech JSON sloužících k definování propojené služby Azure SQL najdete v oddílu [Propojená služba Azure SQL](data-factory-azure-sql-connector.md#linked-service-properties).
+V tomto kroku se svým objektem pro vytváření dat propojíte svou databázi Azure SQL. V této části zadáte název logického serveru SQL, název databáze, uživatelské jméno a heslo uživatele. Podrobnosti o vlastnostech JSON sloužících k definování propojené služby Azure SQL najdete v oddílu [Propojená služba Azure SQL](data-factory-azure-sql-connector.md#linked-service-properties).
 
 1. Přiřaďte příkaz k proměnné s názvem **cmd**. 
    
@@ -487,7 +487,7 @@ Výstupní datové sady v současné době řídí plán. V tomto kurzu je vý
     Write-Host $results
     ```
 
-**Blahopřejeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure s kanálem, který kopíruje data ze služby Azure Blob Storage do databáze Azure SQL.
+**Gratulujeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure s kanálem, který kopíruje data ze služby Azure Blob Storage do databáze Azure SQL.
 
 ## <a name="monitor-pipeline"></a>Monitorování kanálu
 V tomto kroku použijete rozhraní REST API služby Data Factory k monitorování řezů vytvářených kanálem.

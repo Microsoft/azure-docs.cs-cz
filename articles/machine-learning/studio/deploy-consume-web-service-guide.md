@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 29852eb0920f7bb32464d91e0be65c7dcb03325c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 9104470a2346052ed17c670ccc39215ff77ef51f
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627955"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118413"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Webové služby Azure Machine Learning Studio (Classic): nasazení a spotřeba
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 K nasazení pracovních postupů a modelů machine learningu jako webových služeb můžete použít Azure Machine Learning Studio (Classic). Tyto webové služby pak můžete použít k volání modelů strojového učení z aplikací přes Internet, aby se předpovědi v reálném čase nebo v režimu dávky. Vzhledem k tomu, že webové služby jsou RESTful, můžete je volat z různých programovacích jazyků a platforem, jako je například .NET a Java, a z aplikací, jako je například aplikace Excel.
 

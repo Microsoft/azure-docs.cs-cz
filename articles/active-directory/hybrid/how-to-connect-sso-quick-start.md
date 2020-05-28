@@ -16,14 +16,14 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef603141129be6a73e018fb3e3dcabf9c5d7961f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261200"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993486"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
+# <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý Start
 
 ## <a name="deploy-seamless-single-sign-on"></a>Nasazení bezproblémového jednotného přihlašování
 
@@ -37,7 +37,7 @@ Ujistěte se, že jsou splněné následující požadavky:
 
 * **Nastavení serveru Azure AD Connect**: Pokud jako metodu přihlašování použijete [předávací ověřování](how-to-connect-pta.md) , nevyžaduje se žádná další Kontrola požadavků. Pokud jako metodu přihlašování použijete [synchronizaci hodnot hash hesel](how-to-connect-password-hash-synchronization.md) , a pokud je mezi Azure AD Connect a službou Azure AD brána firewall, zajistěte, aby:
    - Použijete 1.1.644.0 nebo novější verzi Azure AD Connect. 
-   - Pokud brána firewall nebo proxy umožňuje přidávání do seznamu povolených serverů DNS, seznam povolených připojení k adresám URL ** \*. msappproxy.NET** přes port 443. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně. Tato požadovaná součást platí pouze v případě, že funkci povolíte. Nepožaduje se pro vlastní přihlášení uživatelů.
+   - Pokud vaše brána firewall nebo proxy server povolí, přidejte připojení do seznamu povolených adres URL ** \* . msappproxy.NET** přes port 443. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně. Tato požadovaná součást platí pouze v případě, že funkci povolíte. Nepožaduje se pro vlastní přihlášení uživatelů.
 
     >[!NOTE]
     >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 mají problém týkající se synchronizace hodnot hash hesel. Pokud nehodláte použít synchronizaci hodnot hash hesel ve spojení s předávacím ověřováním, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) , _kde najdete další_ informace.
@@ -93,15 +93,16 @@ Postupujte podle těchto pokynů a ověřte, zda jste správně povolili bezprob
 ![Azure Portal: podokno Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Bezproblémové jednotné přihlašování vytvoří účet počítače `AZUREADSSOACC` s názvem v místní službě Active Directory (AD) v každé doménové struktuře služby AD. Účet `AZUREADSSOACC` počítače musí být z bezpečnostních důvodů důrazně chráněn. Pouze správci domény by měli být schopni spravovat účet počítače. Zajistěte, aby delegování protokolu Kerberos na účtu počítače bylo zakázané a aby žádný jiný účet ve službě Active Directory nemá `AZUREADSSOACC` oprávnění k delegování na účtu počítače. Uložte účet počítače do organizační jednotky (OU), kde jsou bezpečné před náhodným odstraněním a k nimž mají přístup pouze správci domény.
+> Bezproblémové jednotné přihlašování vytvoří účet počítače s názvem `AZUREADSSOACC` v místní službě Active Directory (AD) v každé doménové struktuře služby AD. `AZUREADSSOACC`Účet počítače musí být z bezpečnostních důvodů důrazně chráněn. Pouze správci domény by měli být schopni spravovat účet počítače. Zajistěte, aby delegování protokolu Kerberos na účtu počítače bylo zakázané a aby žádný jiný účet ve službě Active Directory nemá oprávnění k delegování na `AZUREADSSOACC` účtu počítače. Uložte účet počítače do organizační jednotky (OU), kde jsou bezpečné před náhodným odstraněním a k nimž mají přístup pouze správci domény.
 
 >[!NOTE]
-> Pokud používáte architekturu pass-the-hash a krádeže přihlašovacích údajů v místním prostředí, proveďte příslušné změny, abyste zajistili, že účet `AZUREADSSOACC` počítače nekončí v kontejneru karantény. 
+> Pokud používáte architekturu pass-the-hash a krádeže přihlašovacích údajů v místním prostředí, proveďte příslušné změny, abyste zajistili, že `AZUREADSSOACC` účet počítače nekončí v kontejneru karantény. 
 
 ## <a name="step-3-roll-out-the-feature"></a>Krok 3: zavedení funkce
 
-Bezproblémovou přihlašování pro uživatele můžete postupně zavádět pomocí níže uvedených pokynů. Začnete přidáním následující adresy URL služby Azure AD do nastavení zóny intranetu pro všechny nebo vybrané uživatele pomocí Zásady skupiny ve službě Active Directory:
+Bezproblémovou přihlašování pro uživatele můžete postupně zavádět pomocí níže uvedených pokynů. Začnete tím, že přidáte následující adresy URL služby Azure AD do nastavení zóny intranetu pro všechny nebo vybrané uživatele pomocí Zásady skupiny ve službě Active Directory:
 
+- `https://aadg.windows.net.nsatc.net`
 - `https://autologon.microsoftazuread-sso.com`
 
 Kromě toho musíte povolit nastavení zásad zóny intranetu **s názvem povolit aktualizace stavového řádku prostřednictvím skriptu** prostřednictvím zásady skupiny. 
@@ -111,7 +112,7 @@ Kromě toho musíte povolit nastavení zásad zóny intranetu **s názvem povoli
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Proč je potřeba upravit nastavení intranetové zóny uživatelů?
 
-Prohlížeč standardně automaticky vypočítá správnou zónu, buď Internet, nebo intranet, z konkrétní adresy URL. Například se `http://contoso/` mapuje na zónu intranetu, zatímco `http://intranet.contoso.com/` je mapována k zóně Internet (protože adresa URL obsahuje tečku). Prohlížeče neodesílají lístky protokolu Kerberos do koncového bodu cloudu, jako je například adresa URL služby Azure AD, pokud explicitně nepřidáte adresu URL do intranetové zóny prohlížeče.
+Prohlížeč standardně automaticky vypočítá správnou zónu, buď Internet, nebo intranet, z konkrétní adresy URL. Například se `http://contoso/` mapuje na zónu intranetu, zatímco je `http://intranet.contoso.com/` mapována k zóně Internet (protože adresa URL obsahuje tečku). Prohlížeče neodesílají lístky protokolu Kerberos do koncového bodu cloudu, jako je například adresa URL služby Azure AD, pokud explicitně nepřidáte adresu URL do intranetové zóny prohlížeče.
 
 Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
@@ -124,7 +125,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
 1. Otevřete nástroj Editor pro správu zásad skupiny.
 2. Upravte zásady skupiny, které se aplikují na některé nebo všechny uživatele. V tomto příkladu se používá **výchozí zásada domény**.
-3. Přejděte do části**zásady** >  **Konfigurace** > uživatele**šablony pro správu** > **součásti** > systému Windows**Internet Explorer** >  > **Stránka zabezpečení****ovládacích panelů Internetu**. Pak vyberte **seznam přiřazení lokality k zóně**.
+3. Přejděte do části zásady **Konfigurace uživatele**  >  **Policy**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer**  >  Stránka zabezpečení**ovládacích panelů Internetu**  >  **Security Page**. Pak vyberte **seznam přiřazení lokality k zóně**.
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Povolte tuto zásadu a v dialogovém okně zadejte následující hodnoty:
    - **Název hodnoty**: adresa URL služby Azure AD, na které se předávají lístky protokolu Kerberos.
@@ -144,7 +145,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Přejděte do části**zásady** >  **Konfigurace** > uživatele**šablony pro správu** > **součásti** > systému Windows**Internet Explorer Internet Explorer** > **Stránka zabezpečení** > **ovládací panel** > stránky**intranetu**. Pak vyberte možnost **Povolení aktualizací stavového řádku prostřednictvím skriptu**.
+6. Přejděte do části zásady **Konfigurace uživatele**  >  **Policy**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer Internet Explorer**  >  Stránka zabezpečení**ovládací panel**  >  **stránky**  >  **intranetu**. Pak vyberte možnost **Povolení aktualizací stavového řádku prostřednictvím skriptu**.
 
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -156,7 +157,7 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 
 1. Otevřete nástroj Editor pro správu zásad skupiny.
 2. Upravte zásady skupiny, které se aplikují na některé nebo všechny uživatele. V tomto příkladu se používá **výchozí zásada domény**.
-3. Přejděte do okna**Předvolby** >  **Konfigurace** > uživatele**registr** >  > **nastavení systému Windows****Nová** > **položka registru**.
+3. Přejděte do okna Předvolby **Konfigurace uživatele**  >  **Preferences**  >  **registr nastavení systému Windows**  >  **Registry**  >  **Nová**  >  **položka registru**.
 
     ![Jednotné přihlašování](./media/how-to-connect-sso-quick-start/sso15.png)
 
@@ -175,10 +176,10 @@ Existují dva způsoby, jak upravit nastavení zóny intranetu uživatele:
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (všechny platformy)
 
 Mozilla Firefox nepoužívá automatické ověřování pomocí protokolu Kerberos. Každý uživatel musí do svého nastavení Firefox ručně přidat adresu URL služby Azure AD pomocí následujících kroků:
-1. Spusťte Firefox a do `about:config` adresního řádku zadejte. Zavřete všechna oznámení, která vidíte.
+1. Spusťte Firefox a `about:config` do adresního řádku zadejte. Zavřete všechna oznámení, která vidíte.
 2. Vyhledejte **síť. vyjednat-auth. Trusted-URI** preference. Tato předvolby obsahuje seznam důvěryhodných lokalit prohlížeče Firefox pro ověřování protokolem Kerberos.
 3. Klikněte pravým tlačítkem a vyberte **Upravit**.
-4. Do `https://autologon.microsoftazuread-sso.com` pole zadejte.
+4. `https://autologon.microsoftazuread-sso.com`Do pole zadejte.
 5. Vyberte **OK** a pak znovu otevřete prohlížeč.
 
 #### <a name="safari-macos"></a>Safari (macOS)
@@ -187,19 +188,19 @@ Ujistěte se, že počítač, na kterém běží macOS, je připojený ke služb
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Microsoft Edge na základě chromu (všechny platformy)
 
-Pokud jste ve svém prostředí přepsali nastavení zásad [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) nebo [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) , ujistěte se, že jste do nich přidali taky adresu`https://autologon.microsoftazuread-sso.com`URL služby Azure AD.
+Pokud jste ve svém prostředí přepsali nastavení zásad [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) nebo [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) , ujistěte se, že jste do nich přidali taky adresu URL služby Azure AD `https://autologon.microsoftazuread-sso.com` .
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Microsoft Edge na základě chromu (macOS a dalších platforem mimo systém Windows)
 
-Informace o tom, jak přidat adresu URL služby Azure AD pro integrované ověřování do seznamu povolených aplikací, najdete v tématu [Microsoft Edge na](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) základě Mac OS a dalších platforem jiných než Windows.
+Informace o tom, jak přidat adresu URL služby Azure AD pro integrované ověřování do seznamu povolených aplikací, najdete v tématu [Microsoft Edge na](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) bázi MacOS a dalších platformách jiných než Windows.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (všechny platformy)
 
-Pokud jste ve svém prostředí přepsali nastavení zásad [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) nebo [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) , ujistěte se, že jste do nich přidali taky adresu`https://autologon.microsoftazuread-sso.com`URL služby Azure AD.
+Pokud jste ve svém prostředí přepsali nastavení zásad [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) nebo [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) , ujistěte se, že jste do nich přidali taky adresu URL služby Azure AD `https://autologon.microsoftazuread-sso.com` .
 
 #### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome (macOS a jiné platformy než Windows)
 
-V případě Google Chrome na Mac OS a dalších platformách jiných než Windows najdete v [seznamu zásad projektu Chromu](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) informace o tom, jak povolit adresu URL služby Azure AD pro integrované ověřování.
+Informace o tom, jak řídit seznam povolených adres URL Azure AD pro integrované ověřování [najdete v tématu](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) Google Chrome na MacOS a dalších platformách jiných než Windows.
 
 Použití rozšíření služby Active Directory Zásady skupiny třetích stran k uvedení adresy URL služby Azure AD na Firefox a Google Chrome na uživatele Mac je mimo rámec tohoto článku.
 
@@ -216,11 +217,11 @@ Chcete-li otestovat funkci pro konkrétního uživatele, ujistěte se, že jsou 
   - Tuto [funkci](#step-3-roll-out-the-feature) jste do tohoto uživatele zavedli prostřednictvím zásady skupiny.
 
 Chcete-li otestovat scénář, ve kterém uživatel zadá pouze uživatelské jméno, ale ne heslo:
-   - Přihlaste `https://myapps.microsoft.com/` se k nové privátní relaci prohlížeče.
+   - Přihlaste se k `https://myapps.microsoft.com/` nové privátní relaci prohlížeče.
 
 Chcete-li otestovat situaci, kdy uživatel nemusí zadávat uživatelské jméno nebo heslo, použijte jeden z následujících kroků: 
-   - Přihlaste `https://myapps.microsoft.com/contoso.onmicrosoft.com` se k nové privátní relaci prohlížeče. Nahraďte *Contoso* názvem vašeho tenanta.
-   - Přihlaste `https://myapps.microsoft.com/contoso.com` se k nové privátní relaci prohlížeče. Nahraďte *contoso.com* ověřenou doménou (ne federované domény) ve vašem tenantovi.
+   - Přihlaste se k `https://myapps.microsoft.com/contoso.onmicrosoft.com` nové privátní relaci prohlížeče. Nahraďte *Contoso* názvem vašeho tenanta.
+   - Přihlaste se k `https://myapps.microsoft.com/contoso.com` nové privátní relaci prohlížeče. Nahraďte *contoso.com* ověřenou doménou (ne federované domény) ve vašem tenantovi.
 
 ## <a name="step-5-roll-over-keys"></a>Krok 5: Převeďte klíče
 

@@ -6,174 +6,200 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 5b5172df6ed6993742a08d5ac08cf700681dfc6a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5bc71c5462ed1c721d2c94f889146400a07dd19e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829150"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119199"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
-Tento článek popisuje, jak můžete pomocí funkce Azure Automation [Update Management](automation-update-management.md) spravovat aktualizace a opravy pro virtuální počítače Azure. 
+Tento článek popisuje, jak můžete pomocí funkce Azure Automation [Update Management](automation-update-management.md) spravovat aktualizace a opravy pro virtuální počítače Azure. Informace o cenách najdete v tématu [ceny služby Automation pro Update Management](https://azure.microsoft.com/pricing/details/automation/).
 
-Informace o cenách najdete v tématu [ceny služby Automation pro Update Management](https://azure.microsoft.com/pricing/details/automation/).
+> [!NOTE]
+> Update Management podporuje nasazení aktualizací od první strany a před stažením oprav. Tato podpora vyžaduje změny v systémech, které jsou opraveny. Informace o tom, jak nakonfigurovat tato nastavení v systémech, najdete v tématu [konfigurace web Windows Updateho nastavení Azure Automation Update Management](automation-configure-windows-update.md) .
 
-## <a name="prerequisites"></a>Požadavky
+Než začnete používat postupy v tomto článku, ujistěte se, že jste ve svých virtuálních počítačích povolili Update Management pomocí jednoho z následujících postupů:
 
-* Funkce [Update Management](automation-update-management.md) povolená pro jeden nebo více vašich virtuálních počítačů. 
-* [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md) je povolený pro Update Management.
-
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-
-Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+* [Povolení Update Managementu z účtu Automation](automation-onboard-solutions-from-automation-account.md)
+* [Povolení Update Management procházením Azure Portal](automation-onboard-solutions-from-browse.md)
+* [Povolení Update Managementu z runbooku](automation-onboard-solutions.md)
+* [Povolení Update Managementu z virtuálního počítače Azure](automation-onboard-solutions-from-vm.md)
 
 ## <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
-Po povolení Update Management se otevře stránka Správa aktualizací. Pokud se nějaké aktualizace identifikují jako chybějící, zobrazí se na kartě **chybějící aktualizace** seznam chybějících aktualizací.
+Zobrazení posouzení aktualizací:
 
-V části **informační odkaz**vyberte odkaz aktualizace a otevřete tak článek podpory pro aktualizaci. Důležité informace o této aktualizaci najdete v části.
+1. Ve svém účtu Automation v části **Správa aktualizací**vyberte **Správa aktualizací** . 
 
-![Zobrazení stavu aktualizace](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
+2. Aktualizace pro vaše prostředí jsou uvedené na stránce Správa aktualizací. Pokud se nějaké aktualizace identifikují jako chybějící, zobrazí se na kartě **chybějící aktualizace** seznam chybějících aktualizací.
 
-Kliknutím kamkoli jinde v aktualizaci otevřete podokno hledání protokolu pro vybranou aktualizaci. Dotaz pro prohledávání protokolu je předdefinovaný pro tuto konkrétní aktualizaci. Můžete upravit tento dotaz nebo vytvořit vlastní dotaz pro zobrazení podrobných informací o nasazených nebo chybějících aktualizacích ve vašem prostředí.
+3. V části **informační odkaz**vyberte odkaz pro aktualizaci, abyste otevřeli článek podpory, který vám poskytne důležité informace o této aktualizaci.
 
-![Zobrazení stavu aktualizace](./media/automation-tutorial-update-management/logsearch.png)
+    ![Zobrazení stavu aktualizace](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
+
+4. Kliknutím kamkoli jinde v aktualizaci otevřete podokno prohledávání protokolu. Dotaz pro prohledávání protokolu je předdefinovaný pro tuto konkrétní aktualizaci. Můžete upravit tento dotaz nebo vytvořit vlastní dotaz pro zobrazení podrobných informací.
+
+    ![Zobrazení stavu aktualizace](./media/automation-tutorial-update-management/logsearch.png)
 
 ## <a name="configure-alerts"></a>Konfigurace upozornění
 
-V tomto kroku se naučíte nastavit výstrahu, která vám umožní zjistit stav nasazení aktualizace.
+Pomocí následujících kroků nastavte výstrahy, které vám pomůžou zjistit stav nasazení aktualizace:
 
-### <a name="alert-conditions"></a>Podmínky upozornění
+1. V účtu Automation přejděte na **výstrahy** v části **monitorování**a pak klikněte na **nové pravidlo výstrahy**.
 
-V účtu Automation přejděte na **výstrahy** v části **monitorování**a pak klikněte na **nové pravidlo výstrahy**.
+2. Na stránce Vytvořit pravidlo výstrahy už je váš účet Automation vybraný jako prostředek. Pokud ho chcete změnit, klikněte na **Upravit prostředek**. 
 
-Váš účet Automation už je vybraný jako prostředek. Pokud ho chcete změnit, klikněte na **Vybrat**. Na stránce Vybrat prostředek zvolte **účty Automation** v rozevírací nabídce **filtrovat podle typu prostředku** . Vyberte svůj účet Automation a potom klikněte na **Hotovo**.
+3. Na stránce Vybrat prostředek zvolte **účty Automation** v rozevírací nabídce **filtrovat podle typu prostředku** . 
 
-Klikněte na **Přidat podmínku** a vyberte signál, který je vhodný pro nasazení aktualizace. V následující tabulce jsou uvedeny podrobnosti o dvou dostupných signálech.
+4. Vyberte účet Automation, který chcete použít, a potom klikněte na **Hotovo**.
 
-|Název signálu|Dimenze|Popis|
-|---|---|---|
-|`Total Update Deployment Runs`|– Název nasazení aktualizace<br>-Status|Tento signál se upozorní na celkový stav nasazení aktualizace.|
-|`Total Update Deployment Machine Runs`|– Název nasazení aktualizace</br>-Status</br>– Cílový počítač</br>– Aktualizovat ID běhu nasazení|Tento signál se upozorní na stav nasazení aktualizace zaměřeného na konkrétní počítače.|
+5. Klikněte na **Přidat podmínku** a vyberte signál, který je vhodný pro nasazení aktualizace. V následující tabulce jsou uvedeny podrobnosti o dvou dostupných signálech.
 
-V poli dimenze vyberte platnou hodnotu ze seznamu. Pokud hodnota, kterou chcete, není v seznamu, klikněte na **\+** znaménko vedle dimenze a zadejte vlastní název. Pak vyberte hodnotu, kterou chcete vyhledat. Pokud chcete vybrat všechny hodnoty pro dimenzi, klikněte na tlačítko **vybrat \* ** . Pokud nevyberete hodnotu dimenze, Update Management tuto dimenzi ignoruje.
+    |Název signálu|Dimenze|Description
+    |---|---|---|
+    |`Total Update Deployment Runs`|– Název nasazení aktualizace<br>-Status    |Upozorní na celkový stav nasazení aktualizace.|
+    |`Total Update Deployment Machine Runs`|– Název nasazení aktualizace</br>-Status</br>– Cílový počítač</br>– Aktualizovat ID běhu nasazení    |Upozorní na stav nasazení aktualizace zaměřeného na konkrétní počítače.|
 
-![Konfigurace logiky signálů](./media/automation-tutorial-update-management/signal-logic.png)
+6. V poli dimenze vyberte platnou hodnotu ze seznamu. Pokud hodnota, kterou chcete, není v seznamu, klikněte na tlačítko **\+** vedle dimenze a zadejte vlastní název. Pak vyberte hodnotu, kterou chcete vyhledat. Pokud chcete vybrat všechny hodnoty pro dimenzi, klikněte na tlačítko **vybrat \* ** . Pokud nevyberete hodnotu dimenze, Update Management tuto dimenzi ignoruje.
 
-V části **Logika upozornění** jako **Prahová hodnota** zadejte **1**. Jakmile budete hotovi, vyberte **Hotovo**.
+    ![Konfigurace logiky signálů](./media/automation-tutorial-update-management/signal-logic.png)
 
-### <a name="alert-details"></a>Podrobnosti upozornění
+7. V části **logika výstrahy**zadejte hodnoty do polí **Časová agregace** a **prahová hodnota** a potom klikněte na **Hotovo**.
 
-V části **2. Definujte podrobnosti výstrahy**, zadejte název a popis výstrahy. Nastavte **Závažnost** na **Informativní (záv. 2)** pro úspěšné spuštění a **Informativní (záv. 1)** pro neúspěšné spuštění.
+8. V dalším podokně zadejte název a popis výstrahy.
 
-![Konfigurace logiky signálů](./media/automation-tutorial-update-management/define-alert-details.png)
+9. Nastavte pole **závažnost** na **informativní (závažnost 2)** pro úspěšné spuštění nebo **informativní (závažnost 1)** pro neúspěšné spuštění.
 
-V části **skupiny akcí**vyberte **vytvořit novou**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Akce můžou zahrnovat e-mailová oznámení, Runbooky, Webhooky a spoustu dalších. Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../azure-monitor/platform/action-groups.md).
+    ![Konfigurace logiky signálů](./media/automation-tutorial-update-management/define-alert-details.png)
 
-Do pole **název skupiny akcí** zadejte název výstrahy a krátký název. Při odesílání oznámení pomocí zadané skupiny používá Update Management krátký název místo úplného názvu skupiny akcí.
+10. V závislosti na tom, jak chcete pravidlo výstrahy povolit, klikněte na **Ano** nebo **ne**.
 
-V části **Akce**zadejte název akce, například **e-mailové oznámení**. Jako **typ akce**vyberte **e-mail/SMS/Push/Voice**. Pokud chcete zobrazit **Podrobnosti**, vyberte **Upravit podrobnosti**.
+11. Pokud nechcete, aby se pro toto pravidlo zobrazovaly výstrahy, vyberte **potlačit výstrahy**.
 
-V podokně E-mailové/SMS/nabízené/hlasové oznámení zadejte název. Zaškrtněte políčko **e-mail** a zadejte platnou e-mailovou adresu.
+## <a name="configure-action-groups-for-your-alerts"></a>Konfigurace skupin akcí pro vaše výstrahy
 
-![Konfigurace e-mailové skupiny akcí](./media/automation-tutorial-update-management/configure-email-action-group.png)
+Jakmile budete mít nakonfigurovaná upozornění, můžete nastavit skupinu akcí, která je skupinou akcí pro použití v rámci více výstrah. Akce můžou zahrnovat e-mailová oznámení, Runbooky, Webhooky a spoustu dalších. Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups](../azure-monitor/platform/action-groups.md).
 
-V podokně E-mail/SMS/oznámení/hlas klikněte na tlačítko **OK**. V podokně Přidat skupinu akcí klikněte na tlačítko **OK**.
+1. Vyberte výstrahu a potom v části **skupiny akcí**vyberte **vytvořit novou** . 
 
-Chcete-li přizpůsobit předmět e-mailu s výstrahou, v části **vytvořit pravidlo**v části **Upravit akce**vyberte **Předmět e-mailu**. Jakmile budete hotovi, vyberte **Vytvořit pravidlo upozornění**. Výstraha vás upozorní, když se nasazení aktualizace zdaří a které počítače byly součástí běhu nasazení aktualizace.
+2. Zadejte celé jméno a krátký název skupiny akcí. Při odesílání oznámení pomocí zadané skupiny používá Update Management krátký název.
+
+3. V části **Akce**zadejte název, který určuje akci, například **e-mailové oznámení**. 
+
+4. Jako **typ akce**vyberte vhodný typ, například **e-mail/SMS/Push/Voice**. 
+
+5. Klikněte na **Upravit podrobnosti**.
+
+6. Vyplňte podokno pro typ akce. Pokud například používáte **e-mail/SMS/Push/Voice**, zadejte název akce, zaškrtněte políčko **e-mail** , zadejte platnou e-mailovou adresu a klikněte na **OK**.
+
+    ![Konfigurace e-mailové skupiny akcí](./media/automation-tutorial-update-management/configure-email-action-group.png)
+
+7. V podokně Přidat skupinu akcí klikněte na tlačítko **OK**.
+
+8. U e-mailu s výstrahou můžete přizpůsobit předmět e-mailu. V části **vytvořit pravidlo**vyberte **přizpůsobit akce** a pak vyberte **Předmět e-mailu**. 
+
+9. Až budete hotovi, klikněte na **vytvořit pravidlo výstrahy**. 
 
 ## <a name="schedule-an-update-deployment"></a>Naplánování nasazení aktualizace
 
-Naplánujte nasazení, které následuje po plánu vydání a okně služby pro instalaci aktualizací. Můžete zvolit typy aktualizací, které chcete zahrnout do nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
+Při plánování nasazení aktualizace se vytvoří prostředek [plánu](shared-resources/schedules.md) propojený s runbookm **patch-MicrosoftOMSComputers** , který zpracovává nasazení aktualizace na cílových počítačích. Pro instalaci aktualizací musíte naplánovat nasazení, které následuje po plánu vydání a okně služby. Můžete zvolit typy aktualizací, které chcete zahrnout do nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
 
 >[!NOTE]
->Při plánování nasazení aktualizace se vytvoří prostředek [plánu](shared-resources/schedules.md) propojený s runbookm **patch-MicrosoftOMSComputers** , který zpracovává nasazení aktualizace na cílových počítačích. Pokud odstraníte prostředek plánu z Azure Portal nebo pomocí PowerShellu po vytvoření nasazení dojde k přerušení naplánovaného nasazení aktualizace a při pokusu o překonfigurování prostředků plánu z portálu se zobrazí chyba. Zdroj plánu lze odstranit pouze odstraněním odpovídajícího plánu nasazení.  
+>Pokud odstraníte prostředek plánu z Azure Portal nebo pomocí PowerShellu po vytvoření nasazení dojde k přerušení naplánovaného nasazení aktualizace a při pokusu o překonfigurování prostředků plánu z portálu se zobrazí chyba. Zdroj plánu lze odstranit pouze odstraněním odpovídajícího plánu nasazení.  
 
-Pokud chcete pro virtuální počítač naplánovat nové nasazení aktualizací, přejděte do části **Správa aktualizací** a pak vyberte **Naplánovat nasazení aktualizací**.
+Naplánování nového nasazení aktualizace:
 
-V části **Nové nasazení aktualizací** zadejte následující informace:
+1. V účtu Automation v části **Správa aktualizací**klikněte na **Správa aktualizací** a pak vyberte **naplánovat nasazení aktualizací**.
 
-* **Název:** Zadejte jedinečný název nasazení aktualizací.
+2. V části **nové nasazení aktualizací**pomocí pole **název** zadejte jedinečný název pro vaše nasazení.
 
-* **Operační systém:** Vyberte cílový operační systém pro nasazení aktualizací.
+3. Vyberte operační systém, který má být cílem nasazení aktualizace.
 
-* **Skupiny, které se mají aktualizovat (Preview)**: Definujte dotaz, který kombinuje předplatné, skupiny prostředků, umístění a značky a vytvoří dynamickou skupinu virtuálních počítačů Azure, které se mají zahrnout do nasazení. Další informace najdete v tématu [dynamické skupiny](automation-update-management-groups.md).
+4. V oblasti **skupiny pro aktualizaci (Preview)** definujte dotaz, který kombinuje předplatné, skupiny prostředků, umístění a značky, abyste vytvořili dynamickou skupinu virtuálních počítačů Azure, které chcete zahrnout do nasazení. Další informace najdete v tématu [použití dynamických skupin s Update Management](automation-update-management-groups.md).
 
-* **Počítače, které se mají aktualizovat**: v rozevírací nabídce vyberte uložené hledání, importovanou skupinu nebo vyberte **počítače** . pak vyberte jednotlivé počítače. Pokud zvolíte možnost **počítače**, připravenost jednotlivých počítačů se zobrazí ve sloupci **připravenosti agenta aktualizace** . Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md).
+5. V rozevírací nabídce **počítače k aktualizaci** vyberte uložené výsledky hledání, importovanou skupinu nebo vyberte **počítače** a vyberte jednotlivé počítače. Pomocí této možnosti můžete zobrazit připravenost agenta Log Analytics pro každý počítač. Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md).
 
-* **Klasifikace aktualizace**: pro každý produkt zrušte výběr všech podporovaných klasifikací aktualizací, ale těch, které se mají zahrnout do nasazení aktualizace. Popisy typů klasifikace najdete v tématu [klasifikace aktualizací](automation-view-update-assessments.md#work-with-update-classifications).
+6. Pomocí oblasti **klasifikace aktualizací** můžete určit [klasifikace aktualizací](automation-view-update-assessments.md#work-with-update-classifications) pro produkty. U každého produktu zrušte výběr všech podporovaných klasifikací aktualizací, ale těch, které se mají zahrnout do nasazení aktualizace.
 
-* **Aktualizace k zahrnutí/vyloučení** – otevře stránku zahrnutí/vyloučení. Aktualizace, které mají být zahrnuty nebo vyloučeny, jsou na různých kartách zadáním čísel ID článků znalostní báze. Při zadávání jednoho nebo více čísel ID je nutné odebrat nebo zrušit kontrolu všech klasifikací v nasazení aktualizace. Tím se zajistí, že balíček aktualizace nebude zahrnovat žádné další aktualizace při zadávání ID aktualizací.
+7. Pomocí oblasti **zahrnutí/vyloučení aktualizací** můžete vybrat konkrétní aktualizace pro nasazení. Stránka zahrnutí/vyloučení zobrazuje aktualizace podle čísel ID článků znalostní báze, které mají být zahrnuty nebo vyloučeny. 
+    
+   > [!IMPORTANT]
+   > Zapamatujte si, že vyloučení přepisují. Například pokud definujete pravidlo vyloučení `*` , Update Management vyloučí všechny opravy nebo balíčky z instalace. Vyloučené opravy se pořád na počítačích zobrazují jako chybějící. U počítačů se systémem Linux, pokud zahrnete balíček, který má vyloučený závislý balíček, Update Management nenainstaluje hlavní balíček.
 
-> [!NOTE]
-> Je důležité, abyste věděli, že vyloučení přepisují. Například pokud definujete pravidlo vyloučení `*` , Update Management nainstaluje žádné opravy ani balíčky, protože jsou všechny vyloučené. Vyloučené opravy se pořád na počítači zobrazují jako chybějící. U počítačů se systémem Linux, pokud zahrnete balíček, který má vyloučený závislý balíček, Update Management nenainstaluje hlavní balíček.
+   > [!NOTE]
+   > Aktualizace, které se nahradily, se nedají zadat, aby se zahrnuly do nasazení aktualizace.
 
-> [!NOTE]
-> Aktualizace, které byly nahrazeny pro zahrnutí do nasazení aktualizace, nelze zadat.
->
-* **Nastavení plánu:** Otevře se podokno Nastavení plánu. Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
+8. Vyberte **Nastavení plánu**. Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
 
-   Můžete také určit, jestli nasazení proběhne jednou, nebo nastavit plán opakování. V části **Opakování** vyberte **Jednou**. Ponechte výchozí hodnotu 1 den a klikněte na **OK**. Tyto položky nastaví plán opakování.
+9. Pomocí pole **opakování** určete, jestli k nasazení dojde jednou, nebo použijte plán opakování a pak klikněte na **OK**.
 
-* **Předzálohovací a pozálohovací skripty**: Vyberte skripty, které se mají spustit před vaším nasazením a po něm. Další informace najdete v tématu týkajícím se [správy předzálohovacích a pozálohovacích skriptů](pre-post-scripts.md).
+10. V oblasti **pre-Scripts + post-Scripts (Preview)** vyberte skripty, které chcete spustit před a po nasazení. Další informace najdete v tématu [Správa předběžných skriptů a pozálohovacích skriptů](pre-post-scripts.md).
+    
+11. V poli časový **interval pro správu a údržbu** můžete zadat dobu, po kterou je možné nainstalovat aktualizace. Při určování časového období údržby Vezměte v úvahu následující podrobnosti:
 
-* **Časové období údržby (minuty):** Ponechte výchozí hodnotu. Časový interval pro správu a údržbu určuje dobu, po kterou je možné instalovat aktualizace. Při určování časového období údržby Vezměte v úvahu následující podrobnosti:
+    * Časové intervaly pro správu a údržbu určují, kolik aktualizací se instaluje.
+    * Update Management neukončí instalaci nových aktualizací, pokud se blíží konec okna údržby.
+    * Update Management neukončí probíhající aktualizace, pokud dojde k překročení časového období údržby.
+    * Pokud dojde k překročení časového intervalu pro správu a údržbu v systému Windows, je často k instalaci aktualizace Service Pack trvat delší dobu.
 
-  * Časové intervaly pro správu a údržbu určují, kolik aktualizací se instaluje.
-  * Update Management neukončí instalaci nových aktualizací, pokud se blíží konec okna údržby.
-  * Update Management neukončí probíhající aktualizace, pokud dojde k překročení časového období údržby.
-  * Pokud dojde k překročení časového intervalu pro správu a údržbu v systému Windows, je často k instalaci aktualizace Service Pack trvat delší dobu.
+    > [!NOTE]
+    > Aby se aktualizace nepoužívaly mimo časové období údržby v Ubuntu, překonfigurujte `Unattended-Upgrade` balíček pro zákaz automatických aktualizací. Informace o tom, jak nakonfigurovat balíček, najdete v tématu [věnovaném automatickým aktualizacím v příručce k serveru Ubuntu](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
-  > [!NOTE]
-  > Pokud nechcete, aby se aktualizace používaly mimo časové období údržby v Ubuntu, překonfigurujte balíček bezobslužné aktualizace tak, aby nedocházelo k automatickým aktualizacím. Informace o tom, jak nakonfigurovat balíček, najdete [v tématu věnovaném automatickým aktualizacím v příručce k serveru Ubuntu](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+12. V poli **Možnosti restartování** můžete určit způsob, jakým se má při nasazení zpracovávat restarty. K dispozici jsou následující možnosti: 
+    * V případě potřeby restartování (výchozí)
+    * Vždy restartovat
+    * Nikdy nerestartovat
+    * Pouze restart; Tato možnost neinstaluje aktualizace.
 
-* **Možnosti restartování**: slouží k zadání možností pro zpracování restartování. K dispozici jsou následující možnosti:
-  * V případě potřeby restartování (výchozí)
-  * Vždy restartovat
-  * Nikdy nerestartovat
-  * Jenom restartovat – neinstaluje aktualizace
+    > [!NOTE]
+    > Klíče registru uvedené v části [klíče registru používané ke správě restartování](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) můžou způsobit restart události, pokud jsou **Možnosti restartování** nastavené na **Nikdy nerestartovat**.
 
-> [!NOTE]
-> Klíče registru uvedené v části [klíče registru používané ke správě restartování](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) můžou způsobit restart události, pokud jsou **Možnosti restartování** nastavené na **Nikdy nerestartovat**.
+13. Až skončíte s konfigurací plánu nasazení, klikněte na **vytvořit**.
 
-Až skončíte s konfigurací plánu, klikněte na **vytvořit**.
+    ![Podokno nastavení plánu aktualizací](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
-![Podokno nastavení plánu aktualizací](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
+14. Vrátíte se na řídicí panel stavu. Vyberte **plánovaná nasazení aktualizací** , abyste zobrazili plán nasazení, který jste vytvořili.
 
-Vrátíte se na řídicí panel stavu. Vyberte **plánovaná nasazení aktualizací** , aby se zobrazil plán nasazení, který jste právě vytvořili.
+## <a name="schedule-an-update-deployment-programmatically"></a>Naplánování nasazení aktualizace prostřednictvím kódu programu
 
-> [!NOTE]
-> Update Management podporuje nasazení aktualizací First stran a předběžného stahování oprav. Tato podpora vyžaduje změny v systémech, které jsou opraveny. Další informace o tom, jak nakonfigurovat tato nastavení v systémech, najdete v části [First a podpora předběžného stažení](automation-configure-windows-update.md) .
+Informace o tom, jak vytvořit nasazení aktualizace pomocí REST API, najdete v tématu [Konfigurace aktualizací softwaru-vytvořit](/rest/api/automation/softwareupdateconfigurations/create). 
 
-Nasazení aktualizací můžete také vytvořit programově. Informace o tom, jak vytvořit nasazení aktualizace pomocí REST API, najdete v tématu [Konfigurace aktualizací softwaru-vytvořit](/rest/api/automation/softwareupdateconfigurations/create). K dispozici je také Ukázková sada Runbook, kterou můžete použít k vytvoření týdenního nasazení aktualizací. Další informace o této sadě Runbook najdete v tématu [Vytvoření týdenního nasazení aktualizací pro jeden nebo více virtuálních počítačů ve skupině prostředků](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+Pomocí ukázkové sady Runbook můžete vytvořit týdenní nasazení aktualizace. Další informace o této sadě Runbook najdete v tématu [Vytvoření týdenního nasazení aktualizací pro jeden nebo více virtuálních počítačů ve skupině prostředků](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
-## <a name="view-results-of-an-update-deployment"></a>Zobrazení výsledků nasazení aktualizací
+## <a name="check-deployment-status"></a>Zkontroluje stav nasazení.
 
-Po spuštění naplánovaného nasazení se stav tohoto nasazení zobrazí na kartě **Nasazení aktualizací** v části **Správa aktualizací**. Pokud je nasazení aktuálně spuštěné, jeho stav je **Probíhá**. Po úspěšném dokončení nasazení se stav změní na **úspěch**. Pokud dojde k chybám s jednou nebo více aktualizacemi v nasazení, stav je **částečně neúspěšný**.
+Po spuštění naplánovaného nasazení uvidíte jeho stav na kartě **nasazení aktualizací** v části **Správa aktualizací**. Pokud je nasazení aktuálně spuštěné, jeho stav je **Probíhá**. Po úspěšném dokončení nasazení se stav změní na **úspěch**. Pokud dojde k chybám s jednou nebo více aktualizacemi v nasazení, stav je **částečně neúspěšný**.
 
-Výběrem dokončeného nasazení aktualizace zobrazíte jeho řídicí panel.
+## <a name="view-results-of-a-completed-update-deployment"></a>Zobrazit výsledky dokončeného nasazení aktualizace
+
+Až se nasazení dokončí, můžete ho vybrat a zobrazit jeho řídicí panel.
 
 ![Řídicí panel stavu nasazení aktualizací pro konkrétní nasazení](./media/automation-tutorial-update-management/manageupdates-view-results.png)
 
-V části **Výsledky aktualizací** je souhrn celkového počtu aktualizací a výsledků nasazení na virtuálním počítači. V tabulce vpravo je podrobný rozpis všech aktualizací a výsledků instalace.
+V části **výsledky aktualizace**najdete souhrn celkového počtu aktualizací a výsledků nasazení na cílových virtuálních počítačích. V tabulce na pravé straně se zobrazuje podrobný rozpis aktualizací a výsledků instalace pro každou z nich.
 
 Dostupné hodnoty jsou:
 
-* **Nedošlo k pokusu**: aktualizace se nenainstalovala, protože na základě definovaného trvání časového období údržby nebylo k dispozici dostatek času.
-* **Úspěch**: aktualizace byla úspěšná.
-* **Chyba**: aktualizace se nezdařila.
+* **Nebyl proveden pokus** – aktualizace se nenainstalovala, protože na základě definovaného trvání časového období údržby nebylo k dispozici dostatek času.
+* **Nevybráno** – aktualizace není vybraná pro nasazení.
+* **Úspěch** – aktualizace byla úspěšná.
+* **Chyba** – aktualizace se nezdařila.
 
 Výběrem **všechny protokoly** zobrazíte všechny položky protokolu, které nasazení vytvořilo.
 
-Výběrem **Výstup** zobrazíte datový proud úlohy runbooku zodpovědného za správu nasazení aktualizací na cílovém virtuálním počítači.
+Vyberte **výstup** , abyste viděli datový proud úlohy Runbooku zodpovědného za správu nasazení aktualizace na cílových virtuálních počítačích.
 
 Výběrem možnosti **Chyby** zobrazíte podrobné informace o případných chybách tohoto nasazení.
 
-Po úspěšném nasazení aktualizace obdržíte e-mail s potvrzením, který bude vypadat nějak takto:
+## <a name="view-the-deployment-alert"></a>Zobrazit výstrahu nasazení
+
+Po dokončení nasazení aktualizace obdržíte výstrahu, kterou jste zadali během instalace pro nasazení. Tady je příklad e-mailu potvrzující opravu.
 
 ![Konfigurace e-mailové skupiny akcí](./media/automation-tutorial-update-management/email-notification.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobnosti o Update Management najdete v tématu [Update Management Overview](automation-update-management.md).
+* Pokud jste dokončili nasazení, přečtěte si téma [zrušení propojení pracovního prostoru s účtem Automation pro Update Management](automation-unlink-workspace-update-management.md).
+* Pokud chcete virtuální počítače odstranit z Update Management, přečtěte si téma [Odebrání virtuálních počítačů z Update Management](automation-remove-vms-from-update-management.md).

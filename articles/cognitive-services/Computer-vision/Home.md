@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131750"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117518"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Služba Počítačové zpracování obrazu v Azure poskytuje vývojářům přístup k pokročilým algoritmům, které zpracovávají obrázky a vracejí informace v závislosti na vizuálních funkcích, které vás zajímají. Počítačové zpracování obrazu například může určit, zda obrázek obsahuje obsah pro dospělé, nebo může najít všechny lidské obličeje v obrázku.
+Služba Počítačové zpracování obrazu v Azure poskytuje vývojářům přístup k pokročilým algoritmům, které zpracovávají obrázky a vracejí informace na základě vizuálních funkcí, které vás zajímají. Počítačové zpracování obrazu například může určit, jestli obrázek obsahuje obsah pro dospělé, najít konkrétní značky nebo objekty nebo najít lidské obličeje.
 
-V aplikaci můžete použít Počítačové zpracování obrazu prostřednictvím nativní sady SDK nebo vyvoláním REST API přímo. Tato stránka obsahuje širokou škálu toho, co můžete s Počítačové zpracování obrazu provádět.
+V aplikaci můžete použít Počítačové zpracování obrazu pomocí klientské knihovny SDK nebo přímo voláním REST API. Tato stránka obsahuje širokou škálu toho, co můžete s Počítačové zpracování obrazu provádět.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Počítačové zpracování obrazu pro správu digitálních prostředků
 
@@ -32,9 +32,9 @@ Počítačové zpracování obrazu může výkon mnoha scénářů správy digit
 
 ## <a name="analyze-images-for-insight"></a>Analýza obrázků za účelem získání přehledu
 
-Můžete analyzovat obrázky, abyste zjistili a poskytovali přehled o jejich vizuálních funkcích a vlastnostech. Všechny funkce v tabulce níže jsou poskytovány rozhraním API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
+Obrázky můžete analyzovat a poskytnout tak přehled o jejich vizuálních funkcích a vlastnostech. Všechny funkce v tabulce níže jsou poskytovány rozhraním API pro [analýzu imagí](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
 
-| Akce | Popis |
+| Akce | Description |
 | ------ | ----------- |
 |**[Označování vizuálních vlastností](concept-tagging-images.md)**|Identifikujte a označte vizuální funkce na obrázku ze sady tisíců rozpoznatelných objektů, živých věcí, krajin a akcí. Pokud jsou značky dvojznačné nebo nejsou běžné znalosti, poskytuje odpověď rozhraní API nápovědu k objasnění kontextu značky. Označování se neomezuje na hlavní předmět, například postavu v popředí, ale zahrnuje také prostředí (interiér nebo exteriér), nábytek, nástroje, rostliny, zvířata, příslušenství, pomůcky atd.|
 |**[Detekovat objekty](concept-object-detection.md)**| Detekce objektu je podobná označování, ale rozhraní API vrací souřadnice ohraničujícího pole pro každou použitou značku. Pokud například obrázek obsahuje pes, Cat a osobu, operace zjišťování zobrazí tyto objekty spolu s jejich souřadnicemi v obrázku. Tuto funkci můžete použít ke zpracování dalších vztahů mezi objekty v imagi. Také vám umožní zjistit, že je v obrázku více instancí stejné značky.|
@@ -45,12 +45,12 @@ Můžete analyzovat obrázky, abyste zjistili a poskytovali přehled o jejich vi
 |**[Rozpoznávání typů obrázků](concept-detecting-image-types.md)**|Rozpoznává charakteristiky obrázku, například jestli jde o perokresbu nebo s jakou pravděpodobností je obrázek klipart.|
 |**[Rozpoznávání obsahu specifického doménu](concept-detecting-domain-content.md)**|S využitím doménových modelů rozpoznává a identifikuje obsah obrázku specifický pro doménu, například celebrity a památky. Pokud například obrázek obsahuje lidi, Počítačové zpracování obrazu může použít doménový model pro celebrit k určení, jestli se lidem zjištěné v imagi říká celebrit.|
 |**[Rozpoznávání barevného schématu](concept-detecting-color-schemes.md)**|Analyzuje použité barvy na obrázku. Počítačové zpracování obrazu dokáže určit, jestli je obrázek černobílý nebo barevný, a u barevných obrázků identifikovat dominantní a doplňkové barvy.|
-|**[Vygenerovat miniaturu](concept-generating-thumbnails.md)**|Analyzuje obsah obrázku a vytvoří pro obrázek odpovídající miniaturu. Počítačové zpracování obrazu nejprve vygeneruje miniaturu s vysokou kvalitou a následně analyzuje objekty v rámci obrázku a určí *oblast zájmu*. Počítačové zpracování obrazu potom obrázek ořízne tak, aby odpovídal požadavkům oblasti zájmu. Vytvořená miniatura může mít podle vašich potřeb jiný poměr stran než původní obrázek.|
+|**[Vytvoření miniatury](concept-generating-thumbnails.md)**|Analyzuje obsah obrázku a vytvoří pro obrázek odpovídající miniaturu. Počítačové zpracování obrazu nejprve vygeneruje miniaturu s vysokou kvalitou a následně analyzuje objekty v rámci obrázku a určí *oblast zájmu*. Počítačové zpracování obrazu potom obrázek ořízne tak, aby odpovídal požadavkům oblasti zájmu. Vytvořená miniatura může mít podle vašich potřeb jiný poměr stran než původní obrázek.|
 |**[Získat oblast zájmu](concept-generating-thumbnails.md#area-of-interest)**|Analyzujte obsah obrázku a vraťte tak souřadnice *oblasti zájmu*. Místo oříznutí obrázku a vygenerování miniatury Počítačové zpracování obrazu vrátí souřadnice ohraničujícího pole oblasti, aby volající aplikace mohl původní obrázek upravit podle potřeby.|
 
 ## <a name="extract-text-from-images"></a>Extrakce textu z obrázků
 
-Pomocí rozhraní Počítačové zpracování obrazu [Read](concept-recognizing-text.md#read-api) API můžete extrahovat vytištěné a ručně psaný text z obrázků do datového proudu znaků, který je strojově čitelný. Rozhraní API pro čtení používá naše nejnovější modely a pracuje s textem na nejrůznějších površích a na pozadí, jako jsou například příjmy, plakáty, obchodní karty, dopisy a tabule. V současné době jsou podporovány pouze anglické a španělské jazyky.
+Pomocí rozhraní Počítačové zpracování obrazu [Read](concept-recognizing-text.md#read-api) API můžete extrahovat vytištěné a ručně psaný text z obrázků do datového proudu znaků, který je strojově čitelný. Rozhraní API pro čtení používá nejnovější modely a pracuje s textem na nejrůznějších površích a na pozadí, jako jsou například příjmy, plakáty, obchodní karty, dopisy a tabule. V současné době funguje pro sedm různých jazyků (viz [Podpora jazyků](./language-support.md)).
 
 Můžete také použít rozhraní API [optického rozpoznávání znaků (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) k extrakci vytištěného textu v několika jazycích. V případě potřeby optické rozpoznávání znaků opraví natočení rozpoznaného textu a poskytuje souřadnice rámce každého slova. Optické rozpoznávání znaků podporuje 25 jazyků a automaticky detekuje jazyk rozpoznaného textu.
 

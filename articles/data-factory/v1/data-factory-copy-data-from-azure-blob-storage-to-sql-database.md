@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c81c4cd72a34f69632c2b1264ba2d276ff03de4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75979724"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118586"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Kurz: kopírování dat z Blob Storage pro SQL Database pomocí Data Factory
 > [!div class="op_single_selector"]
 > * [Přehled a požadavky](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [Prostředí](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Šablona Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Šablona Azure Resource Manageru](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
@@ -66,7 +66,7 @@ K provedení tohoto kurzu potřebujete název účtu a klíč účtu účtu úlo
 7. Zavřete všechna okna kliknutím na **X**.
 
 ## <a name="collect-sql-server-database-user-names"></a>Shromažďování SQL serveru, databáze, uživatelských jmen
-K provedení tohoto kurzu potřebujete názvy Azure SQL serveru, databáze a uživatele. Poznamenejte si názvy **serverů**, **databází**a **uživatelů** pro vaši databázi SQL Azure.
+K provedení tohoto kurzu potřebujete názvy logického serveru SQL, databáze a uživatele. Poznamenejte si názvy **serverů**, **databází**a **uživatelů** pro vaši databázi SQL Azure.
 
 1. V **Azure Portal**klikněte na **všechny služby** na levé straně a vyberte **databáze SQL**.
 2. V okně **databáze SQL**vyberte **databázi** , kterou chcete v tomto kurzu použít. Poznamenejte si **název databáze**.  
@@ -75,7 +75,7 @@ K provedení tohoto kurzu potřebujete názvy Azure SQL serveru, databáze a už
 5. Zavřete všechna okna kliknutím na **X**.
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>Povolení přístupu služeb Azure k SQL serveru
-Ujistěte se, že nastavení **Povolit přístup ke službám Azure** **je pro server SQL Azure zapnuté** , aby služba Data Factory mohla získat přístup k vašemu serveru SQL Azure. Pokud chcete toto nastavení ověřit a zapnout, proveďte následující kroky:
+Ujistěte se, že nastavení **Povolit přístup ke službám Azure** je pro váš **Server zapnuté** , aby služba Data Factory mohla přistupovat k vašemu serveru. Pokud chcete toto nastavení ověřit a zapnout, proveďte následující kroky:
 
 1. Na levé straně klikněte na **všechny služby** centra a pak klikněte na **servery SQL**.
 2. Vyberte svůj server a v části **NASTAVENÍ** klikněte na **Brána firewall**.
@@ -107,17 +107,17 @@ Teď Připravte službu Azure Blob Storage a Azure SQL Database pro tento kurz p
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Pokud máte na počítači nainstalovanou SQL Server 2012/2014:** postupujte podle pokynů ke [správě Azure SQL Database pomocí SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md) pro připojení k vašemu serveru SQL Azure a spusťte skript SQL.
+    **Pokud máte na počítači nainstalovanou SQL Server 2012/2014:** postupujte podle pokynů ke [správě Azure SQL Database pomocí SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md) pro připojení k vašemu serveru a spuštění skriptu SQL.
 
-    Pokud klient nemá povolený přístup ke službě Azure SQL Server, budete muset nakonfigurovat bránu firewall pro Azure SQL Server tak, aby povolovala přístup z vašeho počítače (IP adresa). Postup konfigurace brány firewall pro server SQL Azure najdete v [tomto článku](../../sql-database/sql-database-configure-firewall-settings.md).
+    Pokud klient nemá povolený přístup k logickému serveru SQL, je nutné nakonfigurovat bránu firewall pro váš server, aby povolovala přístup z vašeho počítače (IP adresa). Postup konfigurace brány firewall pro Server najdete v [tomto článku](../../sql-database/sql-database-configure-firewall-settings.md) .
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 Dokončili jste požadavky. Datovou továrnu můžete vytvořit pomocí některého z následujících způsobů. Klikněte na jednu z možností v rozevíracím seznamu v horní části nebo na následující odkazy a proveďte tento kurz.     
 
 * [Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md)
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-* [Prostředí](data-factory-copy-activity-tutorial-using-powershell.md)
-* [Šablona Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+* [Šablona Azure Resource Manageru](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/27/2020
-ms.openlocfilehash: 04469fa1bd0473710d9fa0bf0190c6459f1f8a07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd14945069b2786fa4acb994c37c17d3b434893e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418775"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118291"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 
@@ -33,7 +33,7 @@ Tento kurz zahrnuje následující základní kroky:
 > * Vytvoření datové továrny
 > * Vytvoření Azure SQL Database, Azure synapse Analytics (dříve SQL DW) a Azure Storage propojených služeb.
 > * Vytváření Azure SQL Database a datových sad Azure synapse Analytics (dříve SQL DW)
-> * Vytvoření kanálu pro vyhledání tabulek ke zkopírování a dalšího kanálu pro provedení vlastní operace kopírování 
+> * Vytvořte kanál pro vyhledání tabulek ke zkopírování a dalšího kanálu k provedení skutečné operace kopírování. 
 > * Zahajte spuštění kanálu.
 > * Monitorování spuštění aktivit a kanálu
 
@@ -47,7 +47,7 @@ V tomto scénáři máte v Azure SQL Database několik tabulek, které chcete zk
 * První kanál vyhledá seznam tabulek, které je potřeba zkopírovat do úložišť dat jímky.  Další možností je udržovat tabulku metadat se seznamem všech tabulek, které je potřeba zkopírovat do úložišť dat jímky. Kanál potom aktivuje jiný kanál, který postupně prochází všechny tabulky v databázi a provádí operaci kopírování dat.
 * Tento druhý kanál provádí vlastní kopírování. Jako parametr používá seznam tabulek. Pro každou tabulku v seznamu zkopírujte příslušnou tabulku v Azure SQL Database do odpovídající tabulky ve službě Azure synapse Analytics (dřív SQL DW) pomocí [připravené kopie prostřednictvím služby Blob Storage a základu](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) pro nejlepší výkon. V tomto příkladu první kanál předá seznam tabulek jako hodnotu parametru. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 * **Účet Azure Storage**. Účet Azure Storage se v operaci hromadného kopírování používá jako pracovní úložiště objektů blob. 
@@ -58,7 +58,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 **Příprava zdrojové databáze Azure SQL Database**:
 
-Podle postupu v článku [Vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md) vytvořte Azure SQL Database s ukázkovými daty Adventure Works LT. V tomto kurzu se zkopírují všechny tabulky z této ukázkové databáze do Azure synapse Analytics (dřív SQL DW).
+Podle postupu v článku [Vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md) vytvořte Azure SQL Database s ukázkovými daty Adventure Works LT. V tomto kurzu se zkopírují všechny tabulky z této ukázkové databáze do Azure synapse Analytics (dřív SQL DW).
 
 **Příprava služby synapse Analytics pro službu Azure Data Sink (dříve SQL DW)**:
 
@@ -68,14 +68,15 @@ Podle postupu v článku [Vytvoření databáze Azure SQL](../sql-database/sql-d
 
 ## <a name="azure-services-to-access-sql-server"></a>Služby Azure pro přístup k SQL serveru
 
-Pro SQL Database a Azure synapse Analytics (dříve SQL DW) Umožněte službám Azure přístup k SQL serveru. Zajistěte, aby bylo pro Azure SQL **Server zapnuté** nastavení **Povolit službám a prostředkům Azure pro přístup k tomuto serveru** . Toto nastavení umožňuje službě Data Factory číst data z vašeho Azure SQL Database a zapisovat data do Azure synapse Analytics (dřív SQL DW). 
+Pro SQL Database a Azure synapse Analytics (dříve SQL DW) Umožněte službám Azure přístup k SQL serveru. Zajistěte, aby **byla pro váš** Server zapnutá možnost **Povolit službám a prostředkům Azure přístup k tomuto serveru** . Toto nastavení umožňuje službě Data Factory číst data z vašeho Azure SQL Database a zapisovat data do Azure synapse Analytics (dřív SQL DW). 
 
-Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > zabezpečení > brány firewall a virtuální sítě > nastavte **Povolit službám a prostředkům Azure přístup k tomuto serveru** na **zapnuto**.
+Pokud chcete toto nastavení ověřit a zapnout, přejděte na server > zabezpečení > brány firewall a virtuální sítě > nastavte **Povolit službám a prostředkům Azure přístup k tomuto serveru** na **zapnuto**.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
+
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
 1. Přejít na [Azure Portal](https://portal.azure.com). 
-1. Na levé straně nabídky Azure Portal vyberte vytvořit**Data Factory** **prostředků** > **Analytics** > . 
+1. Na levé straně nabídky Azure Portal vyberte **vytvořit data Factory prostředků**  >  **Analytics**  >  **Data Factory**. 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Na stránce **Nová datová továrna** jako **název**zadejte **ADFTutorialBulkCopyDF** . 
  
@@ -114,7 +115,7 @@ V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi Az
 
     a. Jako **Název** zadejte **AzureSqlDatabaseLinkedService**.
     
-    b. Jako **Název serveru** vyberte váš server SQL Azure.
+    b. Vyberte server pro **název serveru**
     
     c. Jako **Název databáze** vyberte vaši databázi Azure SQL. 
     
@@ -135,7 +136,7 @@ V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi Az
    
     a. Jako **Název** zadejte **AzureSqlDWLinkedService**.
      
-    b. Jako **Název serveru** vyberte váš server SQL Azure.
+    b. Vyberte server pro **název serveru**
      
     c. Jako **Název databáze** vyberte vaši databázi Azure SQL. 
      
@@ -193,7 +194,7 @@ V tomto kurzu nejsou zdrojová a cílová tabulka SQL pevně zakódované v defi
 
     ![Navázání spojení datové sady](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
 
-    b. Na stránce **Přidat dynamický obsah** klikněte v části **parametry**na `@dataset().DWTableName` **DWTAbleName** , který automaticky vyplní textové pole výrazu Top a pak klikněte na **Dokončit**. Vlastnost **tableName** datové sady je nastavená na hodnotu předávanou jako argument parametru **DWTableName**. Aktivita ForEach iteruje seznam tabulek a jednu po druhé je předává aktivitě kopírování. 
+    b. Na stránce **Přidat dynamický obsah** klikněte v části **parametry**na **DWTAbleName** , který automaticky vyplní textové pole výrazu Top `@dataset().DWTableName` a pak klikněte na **Dokončit**. Vlastnost **tableName** datové sady je nastavená na hodnotu předávanou jako argument parametru **DWTableName**. Aktivita ForEach iteruje seznam tabulek a jednu po druhé je předává aktivitě kopírování. 
 
     ![Tvůrce parametru datové sady](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
  
@@ -228,7 +229,7 @@ Kanál **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro 
 
     b. Přepněte na kartu **Nastavení** , klikněte na vstupní pole pro **položky**a pak klikněte na odkaz **Přidat dynamický obsah** níže. 
 
-    c. Na stránce **Přidat dynamický obsah** sbalte oddíly **systémové proměnné** a **funkce** klikněte na **tableList** v části **parametry** `@pipeline().parameter.tableList`. tím se automaticky naplní textové pole horního výrazu. Klikněte na **Dokončit**. 
+    c. Na stránce **Přidat dynamický obsah** sbalte oddíly **systémové proměnné** a **funkce** klikněte na **tableList** v části **parametry**. tím se automaticky naplní textové pole horního výrazu `@pipeline().parameter.tableList` . Klikněte na **Dokončit**. 
 
     ![Tvůrce parametru ForEach](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
@@ -253,7 +254,7 @@ Kanál **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro 
 1. Přepněte na kartu **Jímka** a proveďte následující kroky: 
 
     1. Jako **Datová sada jímky** vyberte **AzureSqlDWDataset**.
-    1. Klikněte na vstupní pole pro hodnotu parametru DWTableName-> vyberte níže **Přidat dynamický obsah** a jako skript zadejte `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` výraz-> vyberte **Dokončit**.
+    1. Klikněte na vstupní pole pro hodnotu parametru DWTableName-> vyberte níže **Přidat dynamický obsah** a `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` jako skript zadejte výraz-> vyberte **Dokončit**.
     1. V případě metody Copy vyberte **základnu**. 
     1. Zrušte zaškrtnutí možnosti **použít výchozí typ** . 
     1. Klikněte na vstupní pole **Skript před kopírováním**, vyberte dole **Přidat dynamický obsah**, zadejte následující výraz jako skript a vyberte **Dokončit**. 

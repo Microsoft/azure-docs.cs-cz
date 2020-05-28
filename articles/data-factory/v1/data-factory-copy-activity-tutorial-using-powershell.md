@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 215ed088b17125e7e41877e3c188a6bf3d77e8bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f34103bb42999f6d2e9bfe35dbc257db7cecd909
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73682854"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119270"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Kurz: Vytvoření kanálu Data Factory pro přesouvání dat pomocí Azure PowerShellu
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "73682854"
 > * [Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Šablona Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Šablona Azure Resource Manageru](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
@@ -90,7 +90,7 @@ Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál může 
     Get-AzSubscription
     ```
 
-    Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte ** &lt;NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure:
+    Spuštěním následujícího příkazu vyberte předplatné, se kterým chcete pracovat. Nahraďte ** &lt; NameOfAzureSubscription** &gt; názvem vašeho předplatného Azure:
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -189,7 +189,7 @@ V tomto kroku se svým objektem pro vytváření dat propojíte svou databázi A
 1. Ve složce C:\ADFGetStartedPSH vytvořte soubor JSON s názvem AzureSqlLinkedService.json s následujícím obsahem:
 
     > [!IMPORTANT]
-    > Položky &lt;název_serveru&gt;, &lt;název_databáze&gt;, &lt;username@servername&gt; a &lt;heslo&gt; nahraďte názvem serveru SQL Azure, názvem databáze, uživatelským účtem a heslem.
+    > Položku &lt; servername &gt; , &lt; DatabaseName &gt; , a heslo nahraďte názvem serveru &lt; username@servername &gt; &lt; &gt; , databáze, uživatelského účtu a heslem.
     
     ```json
     {
@@ -218,7 +218,7 @@ V tomto kroku se svým objektem pro vytváření dat propojíte svou databázi A
     ProvisioningState : Succeeded
     ```
 
-   Ujistěte se, že nastavení **Povolit přístup ke službám Azure** je pro server služby SQL Database zapnuté. Chcete-li to ověřit a zapnout ho, proveďte následující kroky:
+   Potvrďte, že nastavení **Povolit přístup ke službám Azure** je pro váš server zapnuté. Chcete-li to ověřit a zapnout ho, proveďte následující kroky:
 
     1. Přihlášení k [Azure Portal](https://portal.azure.com)
     1. Vlevo klikněte na možnost **Další služby** a potom na **Servery SQL** v kategorii **DATABÁZE**.
@@ -274,9 +274,9 @@ V tomto kroku vytvoříte datovou sadu s názvem InputDataset, která odkazuje
 
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-    | Vlastnost | Popis |
+    | Vlastnost | Description |
     |:--- |:--- |
-    | type | Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage. |
+    | typ | Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage. |
     | linkedServiceName | Odkazuje na službu **AzureStorageLinkedService**, kterou jste vytvořili předtím. |
     | folderPath | Určuje **kontejner** objektů BLOB a **složku** , která obsahuje vstupní objekty blob. V tomto kurzu je adftutorial kontejnerem objektů blob a složka je kořenová složka. | 
     | fileName | Tato vlastnost je nepovinná. Pokud ji vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto kurzu má fileName hodnotu **emp.txt**, takže se zpracuje pouze tento soubor. |
@@ -339,9 +339,9 @@ V této části kroku vytvoříte výstupní datovou sadu s názvem **OutputData
 
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-    | Vlastnost | Popis |
+    | Vlastnost | Description |
     |:--- |:--- |
-    | type | Vlastnost type je nastavena na hodnotu **AzureSqlTable**, protože data se kopírují do tabulky v databázi Azure SQL. |
+    | typ | Vlastnost type je nastavena na hodnotu **AzureSqlTable**, protože data se kopírují do tabulky v databázi Azure SQL. |
     | linkedServiceName | Odkazuje na službu **AzureSqlLinkedService**, kterou jste vytvořili předtím. |
     | tableName | Určuje **tabulku**, do které se kopírují data. | 
     | frequency/interval | Frekvence je nastavená na hodnotu **Hour** (hodina) a interval je **1**, což znamená, že výstupní řezy se tvoří **každou hodinu** mezi časy spuštění a ukončení, ne před nebo po této době.  |
@@ -450,12 +450,12 @@ Výstupní datové sady v současné době řídí plán. V tomto kurzu je vý
     ProvisioningState : Succeeded
     ```
 
-**Blahopřejeme!** Úspěšně jste vytvořili datovou továrnu Azure s kanálem, který kopíruje data z úložiště objektů blob v Azure do databáze Azure SQL. 
+**Gratulujeme!** Úspěšně jste vytvořili datovou továrnu Azure s kanálem, který kopíruje data z úložiště objektů blob v Azure do databáze Azure SQL. 
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se děje v objektu pro vytváření dat Azure.
 
-1. Nahraďte &lt;hodnotu DataFactory&gt; názvem vaší datové továrny a spusťte příkaz **Get-AzDataFactory**a přiřaďte výstup k proměnné $DF.
+1. Nahraďte hodnotu &lt; DataFactory &gt; názvem vaší datové továrny a spusťte příkaz **Get-AzDataFactory**a přiřaďte výstup k proměnné $DF.
 
     ```powershell  
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>

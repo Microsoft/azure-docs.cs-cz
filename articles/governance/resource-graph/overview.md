@@ -3,12 +3,12 @@ title: Přehled služby Azure Resource Graph
 description: Seznamte se s tím, jak služba Azure Resource Graph umožňuje složitý dotazování na prostředky ve velkém rozsahu napříč předplatnými a klienty.
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c3ac82c823df8cdde7b616b62ee409de500b5990
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381517"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995854"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph?
 
@@ -22,8 +22,8 @@ Azure Resource Graph je služba v Azure, která je navržená tak, aby rozšíř
 V této dokumentaci si podrobně projdete jednotlivé funkce.
 
 > [!NOTE]
-> Azure Resource Graph – pravomoci Azure Portal vyhledávací panel, nové možnosti procházet všechny prostředky a
-> _vizuální rozdíly_v [historii změn](../policy/how-to/determine-non-compliance.md#change-history-preview)Azure Policy. Je navržena tak, aby zákazníkům pomohla spravovat rozsáhlá prostředí.
+> Azure Resource Graph – pravomoci Azure Portal vyhledávací panel, nové možnosti procházet všechny prostředky a [Change history](../policy/how-to/determine-non-compliance.md#change-history-preview) 
+>  _vizuální rozdíly_v historii změn Azure Policy. Je navržena tak, aby zákazníkům pomohla spravovat rozsáhlá prostředí.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -79,16 +79,17 @@ Další informace najdete v tématu [doprovodné materiály k omezení požadavk
 
 ## <a name="running-your-first-query"></a>Spusťte váš první dotaz
 
-Průzkumník Azure Resource Graph, součást Azure Portal, umožňuje spouštět dotazy na grafy prostředků přímo v Azure Portal. Připnout výsledky jako dynamické grafy, aby poskytovaly dynamické informace v reálném čase vašemu pracovnímu postupu na portálu. Další informace najdete v tématu [první dotazování pomocí Průzkumníka Azure Resource Graph Exploreru](first-query-portal.md).
+Průzkumník Azure Resource Graph, součást Azure Portal, umožňuje spouštět dotazy na grafy prostředků přímo v Azure Portal. Připnout výsledky jako dynamické grafy, aby poskytovaly dynamické informace v reálném čase vašemu pracovnímu postupu na portálu. Další informace najdete v tématu [první dotazování pomocí Průzkumníka Azure Resource Graph Exploreru](./first-query-portal.md).
 
-Graf prostředků podporuje rozhraní příkazového řádku Azure CLI, Azure PowerShell, sadu Azure SDK pro .NET a další. Dotaz je strukturován pro každý jazyk stejný. Naučte se, jak povolit graf prostředků pomocí:
+Graf prostředků podporuje rozhraní příkazového řádku Azure CLI, Azure PowerShell, sadu Azure SDK pro Python a další. Dotaz je strukturován pro každý jazyk stejný. Naučte se, jak povolit graf prostředků pomocí:
 
-- [Azure Portal a Průzkumník diagramů prostředků](first-query-portal.md) 
-- [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
-- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
+- [Azure Portal a Průzkumník diagramů prostředků](./first-query-portal.md) 
+- [Azure CLI](./first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](./first-query-powershell.md#add-the-resource-graph-module)
+- [Python](./first-query-python.md#add-the-resource-graph-library)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Spusťte první dotaz pomocí [Azure Portal](first-query-portal.md).
-- Spusťte první dotaz pomocí [Azure CLI](first-query-azurecli.md).
-- Spusťte první dotaz pomocí [Azure PowerShell](first-query-powershell.md).
+- Přečtěte si další informace o [dotazovacím jazyce](./concepts/query-language.md).
+- Podívejte se na jazyk používaný v [počátečních dotazech](./samples/starter.md).
+- Viz rozšířená použití v [rozšířených dotazech](./samples/advanced.md).

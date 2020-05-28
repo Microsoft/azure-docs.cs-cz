@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 40e4fed9755edc2204c7b6b24a003995a14212d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfe7a88cd02b109124b9d35247aa2d4cbc5373c5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415429"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116602"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn
 
@@ -70,11 +70,11 @@ V tomto kurzu vytvoříte dva kanály, které provádějí následující dvě o
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-* **Azure SQL Database**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
+* **Azure SQL Database**. Tuto databázi použijete jako **zdrojové** úložiště dat. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md), kde najdete kroky pro její vytvoření.
 * **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat **jímky**. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit. Vytvořte kontejner s názvem **adftutorial**. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Vytvoření tabulky zdroje dat v databázi Azure SQL
-1. Spusťte **SQL Server Management Studio** a připojte se k serveru SQL Azure.
+1. Spusťte **SQL Server Management Studio**a připojte se k SQL Database.
 2. V **Průzkumníku serveru** klikněte pravým tlačítkem na **databázi** a potom zvolte **Nový dotaz**.
 3. Spuštěním následujícího příkazu SQL na vaší databázi Azure SQL vytvořte tabulku s názvem `data_source_table` jako úložiště zdroje dat.  
 
@@ -154,7 +154,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**:
+1. V nabídce vlevo vyberte **vytvořit prostředek**  >  **data a analýzy**  >  **Data Factory**:
 
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -216,8 +216,8 @@ V tomto kroku propojíte databázi Azure SQL s datovou továrnou.
 3. V okně **Nová propojená služba** proveďte následující kroky:
 
     1. Do pole **Název** zadejte **AzureSqlDatabaseLinkedService**.
-    2. V poli **Název serveru** vyberte váš server SQL Azure.
-    4. V poli **Název databáze** vyberte vaši databázi Azure SQL.
+    2. V poli **název serveru** vyberte svůj server.
+    4. V poli **název databáze** vyberte svou databázi.
     5. Do pole **Uživatelské jméno** zadejte jméno uživatele.
     6. Do pole **Heslo** zadejte heslo pro tohoto uživatele.
     7. Klikněte na **Test připojení** a otestujte připojení.
@@ -263,7 +263,7 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci dat, která se kopíruj�
 
     1. Jako **Propojená služba** vyberte **AzureStorageLinkedService**.
     2. Jako část **složka** v **cestě k souboru** zadejte **adftutorial/incchgtracking**.
-    3. Zadejte ** \@Concat (' incremental-', Pipeline (). RunId, '. txt ')** pro **soubor** , který je součástí **FilePath**.  
+    3. Zadejte ** \@ Concat (' incremental-', Pipeline (). RunId, '. txt ')** pro **soubor** , který je součástí **FilePath**.  
 
        ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -416,7 +416,7 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
     2. Vyberte **Importovat parametr**.
     3. V části **Parametry uložené procedury** zadejte následující hodnoty parametrů:
 
-        | Název | Typ | Hodnota |
+        | Name | Typ | Hodnota |
         | ---- | ---- | ----- |
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} |
         | TableName | Řetězec | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} |

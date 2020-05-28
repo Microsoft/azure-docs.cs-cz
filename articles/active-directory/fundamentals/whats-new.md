@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c58c99faa83d6f04ac37d03789202e111f1b06d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: f879ebd2f3628b8282342d730a5f3957cf2a615f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611156"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994983"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
->Přečtěte si informace o tom, kdy se má tato stránka na aktualizace znovu navštívit zkopírováním `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` a vložením této adresy URL: do čtečky informačního kanálu ![RSS](./media/whats-new/feed-icon-16x16.png) .
+>Přečtěte si informace o tom, kdy se má tato stránka na aktualizace znovu navštívit zkopírováním a vložením této adresy URL: `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Active+Directory%22&locale=en-us` do čtečky informačního kanálu ![ RSS ](./media/whats-new/feed-icon-16x16.png) .
 
 Služba Azure AD průběžně přijímá vylepšení. V tomto článku najdete informace o tom, jak se můžete seznámit s nejnovějším vývojem.
 
@@ -487,7 +487,7 @@ Azure Monitor integrace s protokoly služby Azure AD je teď k dispozici v Azure
 **Kategorie služby:** Ochrana identity  
 **Schopnost produktu:** Zabezpečení identity & ochrana
 
-S radostí sdílíme, že teď jsme na [Microsoft Azure Government portálu](https://portal.azure.us/)navedli aktualizované [Azure AD Identity Protection](https://aka.ms/IdentityProtectionDocs) prostředí. Další informace najdete v příspěvku na [blogu o oznámení](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667).
+S radostí sdílíme, že teď jsme na Microsoft Azure Government portálu navedli aktualizované [Azure AD Identity Protection](https://aka.ms/IdentityProtectionDocs)   prostředí [Microsoft Azure Government portal](https://portal.azure.us/). Další informace najdete v příspěvku na [blogu o oznámení](https://techcommunity.microsoft.com/t5/public-sector-blog/identity-protection-refresh-in-microsoft-azure-government/ba-p/1223667).
 
 ---
 
@@ -544,7 +544,7 @@ Od tohoto okamžiku můžou zákazníci, kteří mají bezplatné klienty, získ
 **Kategorie služby:** Správa skupin  
 **Schopnost produktu:** Prostřednictvím
 
-Abychom zákazníkům poskytli pružnější způsob vytváření skupin pro všechny adresáře, které nejlépe vyhovují jejich potřebám, nahradili jsme možnost **skupiny** pro všechny adresáře ze**obecných** nastavení **skupiny** > v Azure Portal s odkazem na dokumentaci k [dynamické skupině](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership). Vylepšili jsme naši dokumentaci, aby zahrnovala další pokyny, aby správci mohli vytvářet skupiny všech uživatelů, které zahrnují nebo vylučují uživatele typu Host.
+Abychom zákazníkům poskytli pružnější způsob vytváření skupin pro všechny adresáře, které nejlépe vyhovují jejich potřebám, nahradili jsme možnost **skupiny** pro všechny adresáře ze **Groups**  >  **obecných** nastavení skupiny v Azure Portal s odkazem na [dokumentaci k dynamické skupině](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership). Vylepšili jsme naši dokumentaci, aby zahrnovala další pokyny, aby správci mohli vytvářet skupiny všech uživatelů, které zahrnují nebo vylučují uživatele typu Host.
 
 ---
 
@@ -789,7 +789,7 @@ Další informace o novém výchozím nastavení zabezpečení najdete v tématu
 **Kategorie služby:** Ověřování (přihlášení)  
 **Schopnost produktu:** Ověřování uživatelů
 
-V rámci zabezpečeného modelu pro soubory cookie se v prohlížeči Chrome 80 mění způsob, jakým zpracovává soubory cookie bez `SameSite` atributu. Každý soubor cookie, který neurčuje `SameSite` atribut, bude zpracován, jako by byl nastaven `SameSite=Lax`na hodnotu, což bude mít za následek blokování určitých scénářů sdílení souborů cookie mezi doménami, na kterých vaše aplikace může záviset. Chcete-li zachovat starší chování aplikace Chrome, můžete použít `SameSite=None` atribut a přidat další `Secure` atribut, aby soubory cookie pro více webů byly dostupné pouze přes připojení HTTPS. Pro Chrome je naplánovaná Tato změna od 4. února 2020.
+V rámci zabezpečeného modelu pro soubory cookie se v prohlížeči Chrome 80 mění způsob, jakým zpracovává soubory cookie bez `SameSite` atributu. Každý soubor cookie, který neurčuje `SameSite` atribut, bude zpracován, jako by byl nastaven na hodnotu `SameSite=Lax` , což bude mít za následek blokování určitých scénářů sdílení souborů cookie mezi doménami, na kterých vaše aplikace může záviset. Chcete-li zachovat starší chování aplikace Chrome, můžete použít `SameSite=None` atribut a přidat další `Secure` atribut, aby soubory cookie pro více webů byly dostupné pouze přes připojení HTTPS. Pro Chrome je naplánovaná Tato změna od 4. února 2020.
 
 Doporučujeme, aby naši vývojáři otestovali své aplikace pomocí těchto pokynů:
 

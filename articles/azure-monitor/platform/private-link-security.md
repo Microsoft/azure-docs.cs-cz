@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: ddd34295bfe64fdd336d8b237482b45f02e30201
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: a1b111ddfc134d2ec51fb2d0e9787a6eac8648f2
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816714"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996444"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Monitor
 
@@ -188,7 +188,7 @@ Nejnovější verze agentů systému Windows a Linux musí být používány v p
 
 **Agent Log Analytics pro Windows**
 
-Použijte Log Analytics agenta verze 18.20.18038.0 nebo novější.
+Použijte Log Analytics agenta verze 10.20.18038.0 nebo novější.
 
 **Linuxový agent Log Analytics**
 
@@ -222,5 +222,5 @@ Pokud chcete, aby mohl agent Log Analytics stahovat balíčky řešení, přidej
 |:--|:--|:--|:--|
 |Veřejný partnerský vztah Azure     | scadvisor.blob.core.windows.net         | 443 | Odchozí
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Odchozí
-|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
+|Azure (Čína) 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
 
