@@ -1,5 +1,5 @@
 ---
-title: Použití autoML k vytvoření modelů & nasazení
+title: Použití AutoML k vytvoření modelů & nasazení
 titleSuffix: Azure Machine Learning
 description: Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning.
 services: machine-learning
@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: nibaccam
-author: tsikiksr
+author: aniththa
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 03/10/2020
-ms.openlocfilehash: 841d518c02dbc76a172890f6019d78d048f4e8bb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/20/2020
+ms.openlocfilehash: 20d98f8eb4971d2aba1ecfbf8abeaba261cde8c4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653847"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115863"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -66,7 +66,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
     1. Zkontrolujte správnost formuláře **nastavení a náhled** . Formulář se inteligentně vyplní podle typu souboru. 
 
-        Pole| Popis
+        Pole| Description
         ----|----
         Formát souboru| Definuje rozložení a typ dat uložených v souboru.
         Oddělovač| Jeden nebo více znaků pro určení hranice mezi oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech.
@@ -93,7 +93,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
 1. Vyberte **vytvořit novou výpočetní** prostředky a nakonfigurujte výpočetní kontext pro tento experiment.
 
-    Pole|Popis
+    Pole|Description
     ---|---
     Název výpočtu| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
@@ -117,17 +117,19 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
 1. Volitelné Zobrazit nastavení konfigurace Přidání: Další nastavení, která můžete použít k lepšímu řízení úlohy školení. V opačném případě se výchozí hodnoty aplikují na základě experimentů a výběrů dat. 
 
-    Další konfigurace|Popis
+    Další konfigurace|Description
     ------|------
     Primární metrika| Hlavní metrika použitá pro vyhodnocování modelu. [Přečtěte si další informace o metrikách modelů](how-to-configure-auto-train.md#explore-model-metrics).
-    Automaticky featurization| Tuto možnost vyberte, pokud chcete povolit nebo zakázat předzpracování prováděné automatizovaným strojovým učením. Předzpracování zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce. Není podporováno pro typ úkolu prognózy časových řad. [Přečtěte si další informace o předzpracování](#featurization). 
+    Automaticky featurization| Tuto možnost vyberte, pokud chcete povolit nebo zakázat featurization provedené automatizovaným strojovým učením. Automatický featurization zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce. Není podporováno pro typ úkolu prognózy časových řad. [Přečtěte si další informace o featurization](how-to-configure-auto-features.md#featurization). 
     Vysvětlete nejlepší model | Pokud chcete zobrazit vysvětlení doporučeného nejlepšího modelu, vyberte možnost povolit nebo zakázat.
     Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení.
     Výstupní kritérium| Při splnění kteréhokoli z těchto kritérií se školicí úloha zastaví. <br> *Čas úlohy školení (hodiny)*: dobu, po kterou je možné spustit úlohu školení. <br> *Prahová hodnota skóre metriky*: minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
     Ověřování| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. [Další informace o vzájemném ověřování](how-to-configure-auto-train.md).
     Souběžnost| *Maximální počet souběžných iterací*: maximální počet kanálů (iterací), které se mají testovat v úloze školení. Úloha nebude spouštět více než zadaný počet iterací.
 
-1. Volitelné Zobrazit nastavení featurization: Pokud se rozhodnete povolit **Automatické featurization** ve formuláři **Další nastavení konfigurace** , v tomto formuláři budete určovat, které sloupce mají tyto featurizationsy provádět, a vybrat, která statistická hodnota se má použít pro imputace chybějících hodnot.
+1. Volitelné Zobrazit nastavení featurization: Pokud se rozhodnete povolit **Automatické featurization** ve formuláři **Další nastavení konfigurace** , uplatní se výchozí techniky featurization. V **Nastavení zobrazení featurization** můžete změnit tyto výchozí hodnoty a odpovídajícím způsobem je přizpůsobit. Přečtěte si, jak [přizpůsobit featurizations](#customize-featurization). 
+
+    ![Formulář typu úkolu Azure Machine Learning Studio](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
 <a name="profile"></a>
 
@@ -138,9 +140,9 @@ V rámci datové sady můžete získat velké množství různých souhrnných s
 >[!NOTE]
 > Pro funkce s nepodstatnými typy se zobrazí prázdné položky.
 
-Údaj|Popis
+Údaj|Description
 ------|------
-Příznak| Název sloupce, který je sumarizován.
+Funkce| Název sloupce, který je sumarizován.
 Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
 Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
 Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
@@ -155,58 +157,19 @@ Rozptyl| Měření, jak daleko rozprostření dat tohoto sloupce z průměrné h
 Případné| Měření, jak se liší data tohoto sloupce od normálního rozdělení.
 Špičat| Měření, jak často se data tohoto sloupce v porovnání s normální distribucí.
 
-<a name="featurization"></a>
+## <a name="customize-featurization"></a>Přizpůsobení featurization
 
-## <a name="advanced-featurization-options"></a>Rozšířené možnosti featurization
+Ve formuláři **Featurization** můžete povolit nebo zakázat automatické Featurization a přizpůsobit automatické nastavení Featurization pro svůj experiment. Chcete-li otevřít tento formulář, přečtěte si krok 10 v oddílu [Vytvoření a spuštění experimentu](#create-and-run-experiment) . 
 
-Automatizované Machine Learning nabízí automatické zpracování a guardrails dat, které vám pomůžou identifikovat a spravovat potenciální problémy s daty, jako je třeba [přebudování a nevyvážená data](concept-manage-ml-pitfalls.md#prevent-over-fitting). 
+Následující tabulka shrnuje vlastní nastavení, která jsou aktuálně k dispozici prostřednictvím studia. 
 
-### <a name="preprocessing"></a>Předzpracování
+Sloupec| Přizpůsobení
+---|---
+Zahrnuje | Určuje, které sloupce se mají zahrnout do školení.
+Typ funkce| Změní typ hodnoty pro vybraný sloupec.
+Imputace s| Vyberte, která hodnota má ve vašich datech imputace chybějící hodnoty.
 
-> [!NOTE]
-> Pokud plánujete exportovat vytvořené modely automatického ML do [modelu ONNX](concept-onnx.md), ve formátu ONNX se podporují jenom možnosti featurization označené *. Přečtěte si další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx). 
-
-|Kroky předběžného zpracování &nbsp;| Popis |
-| ------------- | ------------- |
-|Přetáhnout vysokou mohutnost nebo žádné funkce odchylky * |Odřaďte je ze školicích a ověřovacích sad, včetně funkcí se všemi chybějícími hodnotami, stejné hodnoty ve všech řádcích nebo s extrémně vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
-|Imputace – chybějící hodnoty * |Pro numerické funkce, imputac s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastěji hodnotou.|
-|Generování dalších funkcí * |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, g-gramech a Tri-Character-gramech.|
-|Transformovat a kódovat *|Číselné funkce s malým počtem jedinečných hodnot jsou transformovány do funkcí kategorií.<br/><br/>Pro nízkou mohutnost se provádí kódování s jedním aktivním kategorií; v případě vysoké mohutnosti je kódování One-Hot-hash.|
-|Vkládání slov|Featurizer textu, který převede vektory textových tokenů na vektory vět pomocí předem připraveného modelu. Vektory vložení každého slova v dokumentu jsou agregovány dohromady, aby se vytvořil vektor funkce dokumentu.|
-|Cílová kódování|V případě funkcí kategorií mapuje každou kategorii s průměrnou cílovou hodnotou pro regresní problémy a pravděpodobností třídy pro jednotlivé třídy pro problémy s klasifikací. Pro snížení velikosti mapování a hluku způsobených kategoriemi zhuštěných dat se použije vyvážení na základě frekvencí a k přeložení.|
-|Kódování cílového textu|V případě textového vstupu se pro generování pravděpodobnosti každé třídy používá skládaný lineární model s použitím typu penalta-slova.|
-|Váha důkazů (WoE)|Vypočítá WoE jako míru korelace kategorií sloupců do cílového sloupce. Počítá se jako protokol poměru mezi třídou a pravděpodobnosti mimo třídu. Tento krok provede výstup jednoho sloupce číselné funkce na každou třídu a odstraní nutnost explicitně imputace chybějících hodnot a izolované zpracování.|
-|Vzdálenost clusteru|Vlaky a k – znamenají model clusteringu ve všech číselných sloupcích.  Výstupy k novým funkcím, jedna nová číselná funkce na cluster, která obsahuje vzdálenost jednotlivých vzorků k těžiště každého clusteru.|
-
-### <a name="data-guardrails"></a>Guardrails dat
-
-Data guardrails se aplikují, pokud je povolený automatický featurization, nebo je ověřování nastavené na auto. Data guardrails vám pomůžou identifikovat možné problémy s Vašimi daty (například chybějící hodnoty, nerovnováha tříd) a pomáhat provést opravné akce pro lepší výsledky. 
-
-Uživatelé můžou zkontrolovat data guardrails v studiu v rámci karty **data guardrails** automatizovaného běhu ml nebo nastavením ```show_output=True``` při odesílání experimentu pomocí sady Python SDK. 
-
-#### <a name="data-guardrail-states"></a>Stavy Guardrail dat
-
-Data guardrails se zobrazí v jednom ze tří stavů: **dokončeno**, **dokončeno**nebo **výstrahy**.
-
-State| Popis
-----|----
-Předaný| Nebyly zjištěny žádné problémy s daty a není třeba žádné akce uživatele. 
-Hotovo| Změny byly aplikovány na vaše data. Pro uživatele doporučujeme, aby zkontrolovali, že se u očekávaných výsledků prováděla automatizovaná opatření, aby se zajistilo, že změny budou zarovnané. 
-Upozorněni| Byl zjištěn problém s daty, který nebyl odstraněn. Doporučujeme uživatelům, aby tento problém opravili a vyřešili. 
-
->[!NOTE]
-> Předchozí verze automatizovaných experimentů ML zobrazily čtvrtý stav: **opraveno**. Novější experimenty tento stav **nebudou zobrazovat a**všechny guardrails, které zobrazují **pevný** stav, se nyní zobrazí.   
-
-Následující tabulka popisuje aktuálně podporované guardrails dat a související stavy, se kterými se uživatelé můžou setkat při odesílání jejich experimentu.
-
-Guardrail|Status|Podmínka &nbsp; pro &nbsp; aktivační událost
----|---|---
-Chybějící hodnoty funkcí imputace |**Předaný** <br><br><br> **hotovo**| Ve školicích datech se nezjistily žádné chybějící hodnoty funkcí. Přečtěte si další informace o [imputaci chybějících hodnot.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Ve vašich školicích datech se zjistily chybějící hodnoty funkcí a imputované.
-Zpracování funkcí vysoké mohutnosti |**Předaný** <br><br><br> **hotovo**| Vaše vstupy byly analyzovány a nebyly zjištěny žádné funkce vysoké mohutnosti. Přečtěte si další informace o [detekci funkcí vysoké mohutnosti.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Ve vašich vstupech se zjistily funkce vysoké mohutnosti a zpracovaly se.
-Zpracování děleného ověřování |**hotovo**| *Konfigurace ověření byla nastavena na hodnotu auto a školicí data obsahují **méně** než 20 000 řádků.* <br> Každá iterace proučeného modelu byla ověřena prostřednictvím křížového ověření. Přečtěte si další informace o [ověřovacích datech.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *Konfigurace ověření byla nastavena na hodnotu auto a školicí data obsahují **více** než 20 000 řádků.* <br> Vstupní data byla rozdělena na školicí datovou sadu a datovou sadu ověřování pro ověřování modelu.
-Detekce vyrovnávání tříd |**Předaný** <br><br><br><br> **Upozorněni** | Vaše vstupy byly analyzovány a všechny třídy jsou ve vašich školicích datech vyváženy. Datová sada je považována za vyváženou, pokud každá třída má v datové sadě dobrý reprezentace, měřená podle počtu a poměru vzorků. <br><br><br> Ve vašich vstupech se zjistily nevyvážené třídy. Pokud chcete opravit posun modelu, opravte problém vyvážení. Přečtěte si další informace o [vyrovnaných datech.](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)
-Detekce problémů paměti |**Předaný** <br><br><br><br> **hotovo** |<br> Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a nebyly zjištěny žádné potenciální problémy způsobené nedostatkem paměti. Přečtěte si další informace o [konfiguracích prognózování](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) časových řad. <br><br><br>Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a mohou způsobit nedostatek paměti experimentu. Konfigurace zpoždění nebo posuvných oken byla vypnuta.
-Detekce četnosti |**Předaný** <br><br><br><br> **hotovo** |<br> Časová řada byla analyzována a všechny datové body jsou zarovnány s zjištěnou frekvencí. <br> <br> Časové řady byly analyzovány a byly zjištěny datové body, které nebyly zarovnány se zjištěnou frekvencí. Tyto datové body byly z datové sady odebrány. Další informace o [přípravě dat pro prognózování časových řad.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+![Formulář typu úkolu Azure Machine Learning Studio](media/how-to-use-automated-ml-for-ml-models/custom-featurization.png)
 
 ## <a name="run-experiment-and-view-results"></a>Spuštění experimentu a zobrazení výsledků
 
@@ -243,7 +206,7 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
     Pole| Hodnota
     ----|----
     Název| Zadejte jedinečný název pro vaše nasazení.
-    Popis| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
+    Description| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
     Typ výpočtu| Vyberte typ koncového bodu, který chcete nasadit: *Azure Kubernetes Service (AKS)* nebo *Azure Container instance (ACI)*.
     Název výpočtu| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
     Povolit ověřování | Tuto možnost vyberte, pokud chcete povolení ověřování na základě tokenu nebo klíče.
@@ -255,6 +218,7 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
     Nabídka *Upřesnit* nabízí výchozí funkce pro nasazení, jako je například [shromažďování dat](how-to-enable-app-insights.md) a nastavení využití prostředků. Pokud si přejete přepsat tato výchozí nastavení, udělejte to v této nabídce.
 
 1. Vyberte **Nasadit**. Dokončení nasazení může trvat přibližně 20 minut.
+    Po zahájení nasazení se zobrazí karta **Podrobnosti modelu** . Postup nasazení najdete v části **stav** nasazení v podokně **vlastnosti** . 
 
 Nyní máte provozní webovou službu, která generuje předpovědi. Předpovědi můžete testovat pomocí dotazování služby z [integrované Azure Machine Learning podpory v Power BI](how-to-consume-web-service.md#consume-the-service-from-power-bi).
 

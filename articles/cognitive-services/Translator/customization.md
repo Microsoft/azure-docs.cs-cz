@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: c1928f9aa2c2b011e1cf54b4ef6cfc5cb8251904
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6db43300632ec5b2c4f6c18848442901a40561b0
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588645"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996994"
 ---
 # <a name="customize-your-text-translations"></a>Přizpůsobení překladů textu
 
@@ -49,12 +49,12 @@ Další podrobnosti o různých úrovních přizpůsobení na základě dostupn�
 
 |   | **Zdroj** | **Custom Translator**|
 |:-----|:----:|:----:|
-|Stav funkce přizpůsobení   | Obecná dostupnost  | Obecná dostupnost |
-| Verze textového rozhraní API  | Pouze v2   | Jenom V3 |
-| Přizpůsobení SMT | Yes   | Ne |
-| Přizpůsobení NMT | Ne    | Yes |
-| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči | Ne    | Yes |
-| [Žádné trasování](https://www.aka.ms/notrace) | Ano  | Ano |
+|Stav funkce přizpůsobení    | Obecná dostupnost    | Obecná dostupnost |
+| Verze textového rozhraní API    | Pouze v2    | Jenom V3 |
+| Přizpůsobení SMT    | Ano    | Ne |
+| Přizpůsobení NMT    | Ne    | Ano |
+| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči    | Ne    | Ano |
+| [Žádné trasování](https://www.aka.ms/notrace) | Ano    | Ano |
 
 ## <a name="collaborative-translations-framework"></a>Architektura pro spolupráci s překlady
 

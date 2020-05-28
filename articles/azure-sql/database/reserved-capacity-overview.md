@@ -49,7 +49,7 @@ Předpokládejme například, že máte spuštěný jeden z obecných účelů, 
 
 V následující tabulce jsou popsána povinná pole.
 
-| Pole      | Description|
+| Pole      | Popis|
 |------------|--------------|
 |Předplatné|Předplatné použité pro platbu za rezervaci kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervaci. Typ předplatného musí být smlouva Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.|
 |Rozsah       |Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: <br/><br/>**Shared**, SQL Database nebo spravovaná instance SQL běžící na všech předplatných v rámci vašeho fakturačního kontextu se používá sleva za rezervaci Vcore. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.<br/><br/>U **jednoho předplatného**se pro databáze SQL nebo spravované instance SQL v tomto předplatném použije sleva na Vcore rezervaci. <br/><br/>**Jedna skupina prostředků**, pro databáze SQL nebo spravované instance SQL ve vybraném předplatném a vybrané skupině prostředků v rámci tohoto předplatného se použije sleva rezervace.|

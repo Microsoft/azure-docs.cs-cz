@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/01/2020
 ms.topic: tutorial
-ms.openlocfilehash: db1f6a53121e05b29f7e3441af027985a141bc2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d995e9a5cdb6fc18532e0c3533959e9feece908
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310215"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021241"
 ---
 # <a name="tutorial-working-with-remote-entities-in-unity"></a>Kurz: práce se vzdálenými entitami v Unity
 
@@ -192,7 +192,7 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 > [!CAUTION]
-> Nepřiřazujte tento skript žádnému hernímu objektu, protože ho program přiřadí programově pomocí kódu uvedeného níže.
+> Nepřiřazujte tento skript žádnému objektu hry Unity, protože ho program přiřadí programově pomocí kódu uvedeného níže.
 
 V dalším kroku musíme prodloužit naše *RemoteRaycaster* a přidat komponentu *RemoteModelEntity* do objektu, který jsme právě vybrali.
 

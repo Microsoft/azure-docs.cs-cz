@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: d2ace48ff1b2027a95aef2100540edc10aebb4cc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fc0effa473109cd8d0e0d4fb50f6300ebf435206
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208410"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117624"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Správa experimentů v Azure Machine Learning Studio (Classic)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Vývoj modelu prediktivní analýzy je iterativní proces – při úpravě různých funkcí a parametrů experimentu se vaše výsledky konvergují, dokud nebudete přesvědčeni, že máte vyškolený a efektivní model. Klíč k tomuto procesu sleduje různé iterace parametrů experimentu a konfigurací.
 
@@ -44,7 +42,7 @@ Předpokládejme například, že vytvoříte experiment s modulem [lineární r
 | --- | --- |
 | 0.1 |9/11/2014 4:18:58 ODP. |
 | 0.2 |9/11/2014 4:24:33 ODP. |
-| 0,4 |9/11/2014 4:28:36 odp. |
+| 0.4 |9/11/2014 4:28:36 odp. |
 | 0,5 |9/11/2014 4:33:31 ODP. |
 
 Pokud kliknete na **Zobrazit historii spuštění**, zobrazí se seznam všech těchto spuštění:

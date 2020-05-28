@@ -3,12 +3,12 @@ title: Obnovení souborů a složek ze zálohy virtuálního počítače Azure
 description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu obnovení virtuálního počítače Azure.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 0cb3b588aadcda232d1a9a07fc6d9336448cb5a5
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757972"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118136"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -181,7 +181,7 @@ mount [RAID Disk Path] [/mountpath]
 
 Pokud je v disku RAID nakonfigurovaný jiný LVM, použijte předchozí postup pro oddíly LVM, ale místo názvu disku RAID použijte název svazku.
 
-## <a name="system-requirements"></a>Požadavky na systém
+## <a name="system-requirements"></a>Systémové požadavky
 
 ### <a name="for-windows-os"></a>OPERAČNÍ systém Windows
 
@@ -228,7 +228,7 @@ Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že
 
 - `download.microsoft.com`
 - Adresy URL služby obnovení (geografické názvy) odkazují na oblast, ve které se nachází trezor služby Recovery Services.
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Pro Azure Public zeměpisných oblastech)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Pro veřejné oblasti Azure)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn`(Pro Azure Čína 21Vianet)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us`(Pro státní správu USA Azure)
   - `https://pod01-rec2.geo-name.backup.windowsazure.de`(Pro Azure Německo)

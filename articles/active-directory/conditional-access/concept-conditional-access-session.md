@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671884"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993846"
 ---
 # <a name="conditional-access-session"></a>Podmíněný přístup: relace
 
@@ -48,7 +48,7 @@ Další informace o tom, jak používat a konfigurovat omezení pro uplatnění 
 
 Další informace najdete v článku [nasazení řízení podmíněného přístupu k aplikacím pro vybrané aplikace](/cloud-app-security/proxy-deployment-aad).
 
-## <a name="sign-in-frequency-preview"></a>Frekvence přihlašování (Preview)
+## <a name="sign-in-frequency"></a>Frekvence přihlášení
 
 Frekvence přihlášení definuje časový interval před tím, než se uživateli zobrazí výzva k opětovnému přihlášení při pokusu o přístup k prostředku.
 
@@ -66,7 +66,7 @@ Nastavení četnosti přihlašování funguje s aplikacemi, které implementoval
 
 Další informace najdete v článku [Konfigurace správy relace ověřování pomocí podmíněného přístupu](howto-conditional-access-session-lifetime.md#user-sign-in-frequency).
 
-## <a name="persistent-browser-session-preview"></a>Trvalá relace prohlížeče (Preview)
+## <a name="persistent-browser-session"></a>Trvalá relace prohlížeče
 
 Trvalá relace prohlížeče umožňuje uživatelům zůstat přihlášeni po zavření a opětovném otevření okna prohlížeče.
 

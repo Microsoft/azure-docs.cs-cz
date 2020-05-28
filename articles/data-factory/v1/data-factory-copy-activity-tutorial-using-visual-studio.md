@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d9059c9386af6fab6bb1068d6a9e64b763206f94
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69f63615d3c5f10bdcef071e18a7379ecf52338e
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74929205"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119307"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí sady Visual Studio
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "74929205"
 > * [Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Šablona Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Šablona Azure Resource Manageru](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
@@ -53,7 +53,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 3. Na počítači musíte mít nainstalované tyto položky: 
    * Visual Studio 2013 nebo Visual Studio 2015.
    * Stáhněte si sadu Azure SDK pro Visual Studio 2013 nebo Visual Studio 2015. Přejděte na [stránku položek ke stažení pro Azure](https://azure.microsoft.com/downloads/) a klikněte na **VS 2013** nebo **VS 2015** v části **.NET**.
-   * Stáhněte si nejnovější modul plug-in Azure Data Factory pro Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) nebo [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Modul plug-in můžete také aktualizovat pomocí následujících kroků: v nabídce klikněte na **nástroje** -> **rozšíření a aktualizace** -> **online** -> **Galerie** -> **sady Visual Studio Microsoft Azure Data Factory nástrojů pro Visual Studio** -> **Update**.
+   * Stáhněte si nejnovější modul plug-in Azure Data Factory pro Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) nebo [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Modul plug-in můžete také aktualizovat pomocí následujících kroků: v nabídce klikněte na **nástroje**  ->  **rozšíření a aktualizace**  ->  **online**  ->  **Galerie sady Visual Studio**  ->  **Microsoft Azure Data Factory nástrojů pro Visual Studio**  ->  **Update**.
 
 ## <a name="steps"></a>Kroky
 Zde jsou kroky, které provedete v rámci tohoto kurzu:
@@ -108,7 +108,7 @@ Propojené služby propojují úložiště dat nebo výpočetní služby s objek
 ### <a name="create-the-azure-sql-linked-service"></a>Vytvoření propojené služby Azure SQL
 1. V **Průzkumníku řešení** znovu klikněte pravým tlačítkem myši na uzel **Propojené služby**, přejděte na **Přidat** a klikněte na **Nová položka**. 
 2. Tentokrát vyberte **Propojená služba Azure SQL** a klikněte na **Přidat**. 
-3. V **souboru AzureSqlLinkedService1. JSON**nahraďte `<servername>` `<databasename>`,, `<username@servername>` `<password>` a názvy vašeho serveru SQL Azure, databáze, uživatelského účtu a hesla.    
+3. V **souboru AzureSqlLinkedService1. JSON**nahraďte `<servername>` ,, `<databasename>` a `<username@servername>` `<password>` názvy vašeho serveru, databáze, uživatelského účtu a hesla.    
 4. Uložte soubor **AzureSqlLinkedService1.json**. 
     
     Další informace o těchto vlastnostech JSON najdete v článku [Konektor služby Azure SQL Database](data-factory-azure-sql-connector.md#linked-service-properties).
@@ -163,9 +163,9 @@ Zde raději použijte termín „tabulky“ než „datové sady“. Tabulka je 
    ``` 
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-    | Vlastnost | Popis |
+    | Vlastnost | Description |
     |:--- |:--- |
-    | type | Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage. |
+    | typ | Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage. |
     | linkedServiceName | Odkazuje na službu **AzureStorageLinkedService**, kterou jste vytvořili předtím. |
     | folderPath | Určuje **kontejner** objektů BLOB a **složku** , která obsahuje vstupní objekty blob. V tomto kurzu je adftutorial kontejnerem objektů blob a složka je kořenová složka. | 
     | fileName | Tato vlastnost je nepovinná. Pokud ji vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto kurzu má fileName hodnotu **emp.txt**, takže se zpracuje pouze tento soubor. |
@@ -211,9 +211,9 @@ V tomto kroku vytvoříte výstupní datovou sadu s názvem **OutputDataset**. T
     ```
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-    | Vlastnost | Popis |
+    | Vlastnost | Description |
     |:--- |:--- |
-    | type | Vlastnost type je nastavena na hodnotu **AzureSqlTable**, protože data se kopírují do tabulky v databázi Azure SQL. |
+    | typ | Vlastnost type je nastavena na hodnotu **AzureSqlTable**, protože data se kopírují do tabulky v databázi Azure SQL. |
     | linkedServiceName | Odkazuje na službu **AzureSqlLinkedService**, kterou jste vytvořili předtím. |
     | tableName | Určuje **tabulku**, do které se kopírují data. | 
     | frequency/interval | Frekvence je nastavená na hodnotu **Hour** (hodina) a interval je **1**, což znamená, že výstupní řezy se tvoří **každou hodinu** mezi časy spuštění a ukončení, ne před nebo po této době.  |
@@ -436,7 +436,7 @@ Následující postup umožňuje přidat pro každé prostředí jiný konfigura
         "AzureSqlLinkedService1": [
             {
                 "name": "$.properties.typeProperties.connectionString",
-                "value":  "Server=tcp:<Azure SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         ]
     }
