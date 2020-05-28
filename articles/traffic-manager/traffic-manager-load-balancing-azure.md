@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 786b4141ed83121dce069b45ce7ddcd91bb3b00e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757200"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020791"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Použití služeb pro vyrovnávání zatížení v Azure
 
@@ -65,7 +65,7 @@ Následující diagram znázorňuje architekturu tohoto scénáře:
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>Krok 1: vytvoření profilu Traffic Manager
 
-1. V Azure Portal klikněte na **vytvořit prostředek** > **síť** > **Traffic Manager profil** > **vytvořit**.
+1. V Azure Portal klikněte na **vytvořit prostředek**  >  **síť**  >  **Traffic Manager profil**  >  **vytvořit**.
 2. Zadejte následující základní informace:
 
    * **Název**: zadejte profil Traffic Manager název předpony DNS.
@@ -80,7 +80,7 @@ Následující diagram znázorňuje architekturu tohoto scénáře:
 
 ### <a name="step-2-create-the-application-gateways"></a>Krok 2: vytvoření aplikačních bran
 
-1. V Azure Portal v levém podokně klikněte na **vytvořit prostředek** > **sítě** > **Application Gateway**.
+1. V Azure Portal v levém podokně klikněte na **vytvořit prostředek**  >  **sítě**  >  **Application Gateway**.
 2. Zadejte následující základní informace o aplikační bráně:
 
    * **Název**: název aplikační brány.
@@ -96,7 +96,7 @@ Následující diagram znázorňuje architekturu tohoto scénáře:
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Konfigurace směrování adres URL pro brány Application Gateway
 
-Když zvolíte fond back-end, aplikace služby Application Gateway nakonfigurovaná s pravidlem na základě cesty má kromě distribuce kruhové dotazování také vzor cesty adresy URL požadavku. V tomto scénáři přidáváme pravidlo na základě cesty, které bude směrovat každou adresu URL s názvem\*"/images/" do fondu imagí serveru. Další informace o konfiguraci směrování na základě cesty URL pro službu Application Gateway najdete v tématu [Vytvoření pravidla založeného na cestách pro službu Application Gateway](../application-gateway/application-gateway-create-url-route-portal.md).
+Když zvolíte fond back-end, aplikace služby Application Gateway nakonfigurovaná s pravidlem na základě cesty má kromě distribuce kruhové dotazování také vzor cesty adresy URL požadavku. V tomto scénáři přidáváme pravidlo na základě cesty, které bude směrovat každou adresu URL s názvem "/images/ \* " do fondu imagí serveru. Další informace o konfiguraci směrování na základě cesty URL pro službu Application Gateway najdete v tématu [Vytvoření pravidla založeného na cestách pro službu Application Gateway](../application-gateway/application-gateway-create-url-route-portal.md).
 
 ![Application Gateway diagram webové vrstvy](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -127,7 +127,7 @@ Když zvolíte fond back-end, aplikace služby Application Gateway nakonfigurova
    + **Nastavení http**: nastavení protokolu HTTP, které se má použít s tímto pravidlem.
 
    > [!IMPORTANT]
-   > Cesty: platné cesty musí začínat znakem "/". Zástupný znak "\*" je povolen pouze na konci. Platnými příklady jsou/XYZ,\*/XYZ nebo/XYZ/\*.
+   > Cesty: platné cesty musí začínat znakem "/". Zástupný znak " \* " je povolen pouze na konci. Platnými příklady jsou/XYZ,/XYZ \* nebo/XYZ/ \* .
 
    ![Application Gateway okno Přidat pravidlo na základě cesty](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
 
@@ -154,11 +154,11 @@ V tomto scénáři je Traffic Manager připojený k aplikačním branám (jak je
 
 V tomto scénáři Load Balancer distribuuje připojení z webové vrstvy k databázím v clusteru s vysokou dostupností.
 
-Pokud databázový cluster s vysokou dostupností používá SQL Server AlwaysOn, přečtěte si téma [konfigurace jednoho nebo více naslouchacího procesu skupiny dostupnosti Always On](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) pro podrobné pokyny.
+Pokud databázový cluster s vysokou dostupností používá SQL Server AlwaysOn, přečtěte si téma [konfigurace jednoho nebo více naslouchacího procesu skupiny dostupnosti Always On](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) pro podrobné pokyny.
 
 Další informace o konfiguraci interního nástroje pro vyrovnávání zatížení najdete [v tématu Vytvoření interního nástroje pro vyrovnávání zatížení v Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
 
-1. V Azure Portal v levém podokně klikněte na **vytvořit prostředek** > **síťový** > **Nástroj pro vyrovnávání zatížení**.
+1. V Azure Portal v levém podokně klikněte na **vytvořit prostředek**  >  **síťový**  >  **Nástroj pro vyrovnávání zatížení**.
 2. Vyberte název svého nástroje pro vyrovnávání zatížení.
 3. Nastavte **typ** na **interní**a vyberte odpovídající virtuální síť a podsíť, ve které se má nástroj pro vyrovnávání zatížení nacházet.
 4. V části **přiřazení IP adresy**vyberte možnost **Dynamická** nebo **statická**.

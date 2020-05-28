@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
-ms.openlocfilehash: 77a374a83c178639052e8db6fc85c31e366ac0e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 070477c638e5a625e0c03751a1778fa0a246cd77
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683641"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995815"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Vytvoření Oracle Database na virtuálním počítači Azure
 
 Tato příručka podrobně popisuje použití rozhraní příkazového řádku Azure k nasazení virtuálního počítače Azure z [Image Galerie Oracle Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) , aby bylo možné vytvořit databázi Oracle 12c. Po nasazení serveru se připojíte přes SSH, aby se nakonfigurovala databáze Oracle. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -55,7 +55,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu. Všimněte si hodnoty pro `publicIpAddress`. Tuto adresu použijete pro přístup k virtuálnímu počítači.
+Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu. Všimněte si hodnoty pro `publicIpAddress` . Tuto adresu použijete pro přístup k virtuálnímu počítači.
 
 ```output
 {
@@ -85,7 +85,7 @@ V imagi na webu Marketplace už je nainstalovaný software Oracle. Vytvořte uk�
 1.  Přepněte na uživatele *Oracle* a pak inicializujte naslouchací proces pro protokolování:
 
     ```bash
-    $ sudo su - oracle
+    $ sudo -su oracle
     $ lsnrctl start
     ```
 
@@ -150,7 +150,7 @@ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-Do souboru. bashrc můžete také přidat proměnné ORACLE_HOME a ORACLE_SID. Tím by se uložily proměnné prostředí pro budoucí přihlášení. Potvrďte, že se do `~/.bashrc` souboru přidaly následující příkazy pomocí editoru podle vašeho výběru.
+Do souboru. bashrc můžete také přidat proměnné ORACLE_HOME a ORACLE_SID. Tím by se uložily proměnné prostředí pro budoucí přihlášení. Potvrďte, že se do souboru přidaly následující příkazy `~/.bashrc` pomocí editoru podle vašeho výběru.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -197,7 +197,7 @@ Pro nástroj pro správu grafického uživatelského rozhraní, který můžete 
     alter database open;
    ```
 
-Musíte zadat `quit` , aby se ukončila relace sqlplus a typ `exit` odhlášení uživatele Oracle.
+Musíte zadat, `quit` aby se ukončila relace sqlplus a typ `exit` odhlášení uživatele Oracle.
 
 ## <a name="automate-database-startup-and-shutdown"></a>Automatizace spuštění a vypnutí databáze
 
@@ -209,7 +209,7 @@ Databáze Oracle se ve výchozím nastavení automaticky nespustí po restartov�
     sudo su -
     ```
 
-2.  Pomocí oblíbeného editoru upravte soubor `/etc/oratab` a změňte výchozí nastavení `N` na: `Y`
+2.  Pomocí oblíbeného editoru upravte soubor `/etc/oratab` a změňte výchozí nastavení `N` na `Y` :
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y

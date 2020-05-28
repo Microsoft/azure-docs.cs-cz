@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 5090d772be4f68c696e8dd4882a78ba6954b6058
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402600"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020723"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro SQL Server nebo Azure SQL Database pomocí Azure Logic Apps
 
@@ -26,7 +26,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* [Databáze SQL Server](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) nebo [databáze Azure SQL](../sql-database/sql-database-get-started-portal.md)
+* [Databáze SQL Server](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) nebo [databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md)
 
   Vaše tabulky musí mít data, aby vaše aplikace logiky mohla vracet výsledky při volání operací. Pokud vytvoříte Azure SQL Database, můžete použít ukázkové databáze, které jsou zahrnuty.
 

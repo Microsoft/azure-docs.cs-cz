@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9cf3d739054422d219bb6536129c5eb22a2994a
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 742e1b54499e51fc791a659baaf7072272ef43a6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594878"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021411"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure
 
@@ -411,7 +411,7 @@ ms.locfileid: "82594878"
 [virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:../../virtual-machines-windows-ps-create.md
 [virtual-machines-sizes]:../../virtual-machines-windows-sizes.md
 [virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
-[virtual-machines-windows-portal-sql-alwayson-int-listener]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
+[virtual-machines-windows-portal-sql-alwayson-int-listener]:../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
@@ -657,7 +657,7 @@ _**Obrázek 9:** Architektura architektury SAP pro vysokou dostupnost 2, s vyhra
 
 ### <a name="deployment-scenario-using-architectural-template-3"></a>Scénář nasazení pomocí šablony architektury 3
 
-Obrázek 10 ukazuje příklad architektury s vysokou dostupností SAP NetWeaver v Azure pro **dva** &lt;systémy SAP s&gt; SID1 a &lt;SID2.&gt; Tento scénář se nastaví takto:
+Obrázek 10 ukazuje příklad architektury s vysokou dostupností SAP NetWeaver v Azure pro **dva** systémy SAP s &lt; SID1 &gt; a &lt; SID2 &gt; . Tento scénář se nastaví takto:
 
 - Jeden vyhrazený **cluster se používá pro instanci** SID1 SAP ASCS/SCS *a* instanci SAP ASCS/SCS SID2 (jeden cluster).
 - Jeden vyhrazený cluster se používá pro DBMS SID1 a další vyhrazený cluster se používá pro DBMS SID2 (dva clustery).
@@ -902,7 +902,7 @@ Na serveru DNS můžete ručně vytvořit další dva názvy virtuálních hosti
 ### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Nastavení statických IP adres pro virtuální počítače SAP
 Po nasazení virtuálních počítačů, které se mají použít v clusteru, je potřeba nastavit statické IP adresy pro všechny virtuální počítače. Provedete to v konfiguraci Azure Virtual Network, a ne v hostovaném operačním systému.
 
-1. V Azure Portal vyberte možnost **Skupina** > prostředků**Síťová karta** > **Nastavení** > **IP adresa**.
+1. V Azure Portal vyberte možnost **Skupina prostředků**  >  **Síťová karta**  >  **Nastavení**  >  **IP adresa**.
 2. V okně **IP adresy** vyberte v části **přiřazení**možnost **statické**. Do pole **IP adresa** zadejte IP adresu, kterou chcete použít.
 
    > [!NOTE]
@@ -1013,7 +1013,7 @@ Nastavte IP adresu nástroje pro vyrovnávání zatížení **PR1-9,1-DBMS** na 
 
 Pokud chcete pro instance SAP ASCS nebo SCS používat odlišná čísla, musíte změnit názvy a hodnoty jejich portů z výchozích hodnot.
 
-1. V Azure Portal vyberte ** < *SID*>-disascs** > **pravidla vyrovnávání zatížení pro vyrovnávání**zatížení.
+1. V Azure Portal vyberte ** < *SID*>-disascs**  >  **pravidla vyrovnávání zatížení pro vyrovnávání**zatížení.
 2. Pro všechna pravidla vyrovnávání zatížení, která patří do instance SAP ASCS nebo SCS, změňte tyto hodnoty:
 
    * Name
@@ -1216,7 +1216,7 @@ Konfigurace určující sdílené složky clusteru zahrnuje tyto úlohy:
 
    _**Obrázek 36:** Vybrat určující sdílenou složku_
 
-4. Zadejte cestu UNC ke sdílené složce (v našem příkladu \\domcontr-0\FSW). Chcete-li zobrazit seznam změn, které lze provést, vyberte možnost **Další**.
+4. Zadejte cestu UNC ke sdílené složce (v našem příkladu \\ domcontr-0\FSW). Chcete-li zobrazit seznam změn, které lze provést, vyberte možnost **Další**.
 
    ![Obrázek 37: definování umístění sdílené složky pro sdílenou složku s kopií clusteru][sap-ha-guide-figure-3026]
 
@@ -1228,7 +1228,7 @@ Konfigurace určující sdílené složky clusteru zahrnuje tyto úlohy:
 
    _**Obrázek 38:** Potvrzení, že jste cluster znovu nakonfigurovali_
 
-Po úspěšné instalaci clusteru s podporou převzetí služeb při selhání v Azure je třeba provést změny v některých prahových hodnotách, aby bylo zjišťování převzetí služeb při selhání možné. Parametry, které se mají změnit, jsou popsány [https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834)v tomto blogu:. Za předpokladu, že vaše dva virtuální počítače, které vytvářejí konfiguraci clusteru Windows pro ASCS/SCS, jsou ve stejné podsíti, je potřeba změnit následující parametry na tyto hodnoty:  
+Po úspěšné instalaci clusteru s podporou převzetí služeb při selhání v Azure je třeba provést změny v některých prahových hodnotách, aby bylo zjišťování převzetí služeb při selhání možné. Parametry, které se mají změnit, jsou popsány v tomto blogu: [https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) . Za předpokladu, že vaše dva virtuální počítače, které vytvářejí konfiguraci clusteru Windows pro ASCS/SCS, jsou ve stejné podsíti, je potřeba změnit následující parametry na tyto hodnoty:  
 - SameSubNetDelay = 2000  
 - SameSubNetThreshold = 15  
 - RoutingHistoryLength = 30  
@@ -1409,7 +1409,7 @@ Instalace SAP s vysokou dostupností instance ASCS/SCS zahrnuje tyto úlohy:
 1. Ve Správci DNS systému Windows vytvořte záznam DNS pro název virtuálního hostitele instance ASCS/SCS.
 
    > [!IMPORTANT]
-   > IP adresa, kterou přiřadíte názvu virtuálního hostitele instance ASCS/SCS, musí být stejná jako IP adresa, kterou jste přiřadili Azure Load Balancer (**<*SID*>-** dis--ASCS).  
+   > IP adresa, kterou přiřadíte názvu virtuálního hostitele instance ASCS/SCS, musí být stejná jako IP adresa, kterou jste přiřadili Azure Load Balancer (** < *SID*>-** dis--ASCS).  
    >
    >
 
@@ -1419,7 +1419,7 @@ Instalace SAP s vysokou dostupností instance ASCS/SCS zahrnuje tyto úlohy:
 
    _**Obrázek 56:** Zadejte položku DNS pro virtuální název clusteru SAP ASCS/SCS a adresu TCP/IP._
 
-2. Pokud chcete definovat IP adresu přiřazenou k názvu virtuálního hostitele, vyberte > **doména** **Správce DNS**.
+2. Pokud chcete definovat IP adresu přiřazenou k názvu virtuálního hostitele, vyberte **doména Správce DNS**  >  **Domain**.
 
    ![Obrázek 57: nový virtuální název a adresa TCP/IP pro konfiguraci clusteru SAP ASCS/SCS][sap-ha-guide-figure-3047]
 
@@ -1569,7 +1569,7 @@ V obou uzlech clusteru musíte otevřít port sondy brány Windows Firewall. Pom
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-**ProbePort** je nastavená na **62000**. Nyní můžete přistupovat ke sdílené složce ** \\\ascsha-clsap\sapmnt** z jiných hostitelů, například z **ascsha-specializující**.
+**ProbePort** je nastavená na **62000**. Nyní můžete přistupovat ke sdílené složce ** \\ \ascsha-clsap\sapmnt** z jiných hostitelů, například z **ascsha-specializující**.
 
 ### <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Instalace instance databáze
 
@@ -1593,7 +1593,7 @@ Nainstalujte primární aplikační server (PAS) <*identifikátor SID*>-di-0 na 
 
 ### <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>Instalace dalšího aplikačního serveru SAP
 
-Nainstalujte další aplikační Server SAP (AAS) na všechny virtuální počítače, které jste určili pro hostování instance aplikačního serveru SAP. Například v <*sid*>-di-1 na <*SID*>-di-&lt;n.&gt;
+Nainstalujte další aplikační Server SAP (AAS) na všechny virtuální počítače, které jste určili pro hostování instance aplikačního serveru SAP. Například v <*sid*>-di-1 na <*SID*>-di- &lt; n &gt; .
 
 > [!NOTE]
 > Tím se dokončí instalace systému SAP NetWeaver s vysokou dostupností. Dále pokračujte v testování převzetí služeb při selhání.

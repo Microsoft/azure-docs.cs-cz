@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 40078d33d2b89c2fcf3b90cd8a19405b1a29c5d7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 894f3002e292466a460c8f96bb7f35b590cb9552
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660080"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015824"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview)
 
@@ -36,7 +36,7 @@ Pokud chcete zabezpečit pracovní prostor synapse (Preview), postupujte podle v
 
 Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďte je libovolnými názvy.
 
-|Nastavení | Příklad hodnoty | Popis |
+|Nastavení | Příklad hodnoty | Description |
 | :------ | :-------------- | :---------- |
 | **Pracovní prostor synapse** | WS1 |  Název, který bude mít pracovní prostor synapse. |
 | **Účet ADLSGEN2** | STG1 | Účet ADLS, který se má používat s vaším pracovním prostorem. |
@@ -130,7 +130,7 @@ Uživatelé v každé roli musí provést následující kroky:
 
 ## <a name="step-8-network-security"></a>Krok 8: zabezpečení sítě
 
-Konfigurace brány firewall pracovního prostoru, virtuální sítě a [privátního odkazu](../../sql-database/sql-database-private-endpoint-overview.md).
+Konfigurace brány firewall pracovního prostoru, virtuální sítě a [privátního odkazu](../../azure-sql/database/private-endpoint-overview.md).
 
 ## <a name="step-9-completion"></a>Krok 9: dokončení
 

@@ -6,12 +6,12 @@ ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: bb5fc8bcc99a4439276f53325c029635143c86c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e050675282d8a7784d31aaf45a564da991ff6e63
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74685388"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020026"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database"></a>Připojení aplikace App Service k databázi SQL
 
@@ -42,8 +42,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří aplikaci App Service. |
-| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server služby SQL Database. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro server služby SQL Database. |
+| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall na úrovni serveru. |
 | [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří databázi nebo elastickou databázi. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Upraví konfiguraci aplikace App Service. |
 

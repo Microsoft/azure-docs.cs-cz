@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77179056"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84124300"
 ---
 Tento článek vysvětluje, jak naplánovat zálohování a zotavení po havárii (DR) virtuálních počítačů s IaaS (VM) a disků v Azure. Tento dokument pokrývá spravované i nespravované disky.
 
@@ -146,7 +146,7 @@ Pomocí následujícího postupu můžete povolit zálohování virtuálních po
 
     b. V nabídce **Recovery Services trezory** klikněte na **Přidat** a postupujte podle pokynů pro vytvoření nového trezoru ve stejné oblasti jako virtuální počítač. Pokud je například váš virtuální počítač v oblasti Západní USA, vyberte pro trezor Západní USA.
 
-1.  Ověřte replikaci úložiště pro nově vytvořený trezor. Přístup k trezoru v části **Recovery Services trezory** a přejděte na **vlastnosti** > **záložní konfigurace** > **aktualizace**. Ujistěte se, že je ve výchozím nastavení vybraná možnost **geograficky redundantního úložiště** . Tato možnost zajistí, že se váš trezor automaticky replikuje do sekundárního datacentra. Například váš trezor v Západní USA je automaticky replikován do Východní USA.
+1.  Ověřte replikaci úložiště pro nově vytvořený trezor. Přístup k trezoru v části **Recovery Services trezory** a přejděte na **vlastnosti**  >  **záložní konfigurace**  >  **aktualizace**. Ujistěte se, že je ve výchozím nastavení vybraná možnost **geograficky redundantního úložiště** . Tato možnost zajistí, že se váš trezor automaticky replikuje do sekundárního datacentra. Například váš trezor v Západní USA je automaticky replikován do Východní USA.
 
 1.  Nakonfigurujte zásady zálohování a vyberte virtuální počítač ze stejného uživatelského rozhraní.
 
@@ -231,7 +231,7 @@ U virtuálních počítačů s více disky je nutné zkopírovat všechny snímk
 
 ### <a name="sql-server"></a>SQL Server
 
-SQL Server běžící na virtuálním počítači má své vlastní integrované funkce pro zálohování databáze SQL Server do úložiště objektů BLOB v Azure nebo do sdílené složky. Pokud je účet úložiště geograficky redundantní úložiště nebo geograficky redundantní úložiště s přístupem pro čtení, můžete k těmto zálohám přistupovat v sekundárním datovém centru účtu úložiště v případě havárie se stejnými omezeními, jak je popsáno výše. Další informace najdete v tématu [zálohování a obnovení pro SQL Server ve virtuálních počítačích Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md). Kromě zálohování a obnovení můžou [SQL Server skupiny dostupnosti AlwaysOn](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md) uchovávat sekundární repliky databází. Tato možnost značně zkracuje dobu zotavení po havárii.
+SQL Server běžící na virtuálním počítači má své vlastní integrované funkce pro zálohování databáze SQL Server do úložiště objektů BLOB v Azure nebo do sdílené složky. Pokud je účet úložiště geograficky redundantní úložiště nebo geograficky redundantní úložiště s přístupem pro čtení, můžete k těmto zálohám přistupovat v sekundárním datovém centru účtu úložiště v případě havárie se stejnými omezeními, jak je popsáno výše. Další informace najdete v tématu [zálohování a obnovení pro SQL Server ve virtuálních počítačích Azure](../articles/azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md). Kromě zálohování a obnovení můžou [SQL Server skupiny dostupnosti AlwaysOn](../articles/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md) uchovávat sekundární repliky databází. Tato možnost značně zkracuje dobu zotavení po havárii.
 
 ## <a name="other-considerations"></a>Další aspekty
 

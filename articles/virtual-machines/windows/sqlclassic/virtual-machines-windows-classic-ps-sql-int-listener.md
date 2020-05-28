@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f05e1d46485b337acbd9390441359e086067db74
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978172"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014807"
 ---
 # <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti na virtuálních počítačích Azure SQL Server
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "75978172"
 > [!IMPORTANT]
 > Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Azure Resource Manager a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Doporučujeme, aby většina nových nasazení používala model Správce prostředků.
 
-Pokud chcete nakonfigurovat naslouchací proces pro skupinu dostupnosti Always On v modelu Správce prostředků, přečtěte si téma [Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti Always On v Azure](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
+Pokud chcete nakonfigurovat naslouchací proces pro skupinu dostupnosti Always On v modelu Správce prostředků, přečtěte si téma [Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti Always On v Azure](../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md).
 
 Vaše skupina dostupnosti může obsahovat jenom repliky, které jsou jenom místní, nebo jenom Azure, nebo které se nacházejí v místním prostředí i v Azure pro hybridní konfigurace. Repliky Azure se můžou nacházet ve stejné oblasti nebo v několika oblastech, které používají víc virtuálních sítí. Postupy v tomto článku předpokládají, že jste již [nakonfigurovali skupinu dostupnosti](../classic/portal-sql-alwayson-availability-groups.md) , ale dosud jste nenakonfigurovali naslouchací proces.
 
@@ -105,7 +105,7 @@ Vytvořte koncový bod s vyrovnáváním zatížení pro každý virtuální po�
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Po nastavení proměnných zkopírujte skript z textového editoru do relace PowerShellu a spusťte ho. Pokud se výzva stále zobrazuje **>>**, stiskněte ENTER znovu a ujistěte se, že se skript začne spouštět.
+13. Po nastavení proměnných zkopírujte skript z textového editoru do relace PowerShellu a spusťte ho. Pokud se výzva stále zobrazuje **>>** , stiskněte ENTER znovu a ujistěte se, že se skript začne spouštět.
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Ověřte, jestli je v případě potřeby KB2854082 nainstalovaná.
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -151,7 +151,7 @@ Vytvořte naslouchací proces skupiny dostupnosti ve dvou krocích. Nejdřív vy
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Po nastavení proměnných otevřete okno Windows PowerShellu se zvýšenými oprávněními, vložte skript z textového editoru do relace PowerShellu a spusťte ho. Pokud se výzva stále zobrazuje **>>**, stiskněte ENTER znovu a ujistěte se, že se skript spustí.
+3. Po nastavení proměnných otevřete okno Windows PowerShellu se zvýšenými oprávněními, vložte skript z textového editoru do relace PowerShellu a spusťte ho. Pokud se výzva stále zobrazuje **>>** , stiskněte ENTER znovu a ujistěte se, že se skript spustí.
 
 4. Předchozí kroky opakujte pro každý virtuální počítač.  
     Tento skript nakonfiguruje prostředek IP adresy s IP adresou cloudové služby a nastaví další parametry, jako je například port testu. Když se prostředek IP adresy přepne do online režimu, může reagovat na cyklické dotazování na portu sondy z koncového bodu s vyrovnáváním zatížení, který jste vytvořili dříve.

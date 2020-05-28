@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c69d28d2be6b04286bb04a2ede6eebc69400c777
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631962"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014889"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Použití Azure Functions ke správě výpočetních prostředků ve fondu SQL Azure synapse Analytics
 
@@ -29,7 +29,7 @@ Aby bylo možné používat Azure Function App s fondem SQL, je nutné vytvořit
 K nasazení šablony potřebujete následující informace:
 
 - Název skupiny prostředků, ve které je vaše instance fondu SQL
-- Název logického serveru, ve kterém je vaše instance fondu SQL
+- Název serveru, ve kterém je instance fondu SQL
 - Název vaší instance fondu SQL
 - ID tenanta (ID adresáře) vaší služby Azure Active Directory
 - ID předplatného
@@ -101,7 +101,7 @@ Aktuálně jsou součástí šablony pouze dvě škálovací funkce. Pomocí tě
 
    ![Vytvoření nové funkce](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. Jako Jazyk vyberte *Javascript* a pak vyberte *TimerTrigger*.
+2. Z jazyka vyberte *JavaScript*a pak vyberte *TimerTrigger*.
 
    ![Vytvoření nové funkce](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -115,7 +115,7 @@ Aktuálně jsou součástí šablony pouze dvě škálovací funkce. Pomocí tě
 
 5. Nastavte proměnnou operace na požadované chování následujícím způsobem:
 
-   ```javascript
+   ```JavaScript
    // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"

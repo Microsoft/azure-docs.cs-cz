@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 9b1ee467abcbfb6d91a64abf4e9ad74d7b23e881
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d890fcb6a43b43e0be0df8e6f6ff0817bdd03115
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203950"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83998103"
 ---
 Tento rychlý Start založený na složeném startu vás provede tím, že získáte odpověď ze znalostní báze.
 
@@ -40,7 +40,7 @@ Použijte znalostní bázi z předchozího rychlého dotazu pro odpověď na zá
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Otázka je jenom jedno slovo, `size`které může vracet jednu z obou QnA párů. `strictFilters` Pole oznamuje odpověď, aby se snížila pouze na `qna_maker` odpovědi.
+    Otázka je jenom jedno slovo, `size` které může vracet jednu z obou QnA párů. `strictFilters`Pole oznamuje odpověď, aby se snížila pouze na `qna_maker` odpovědi.
 
 1. Odpověď obsahuje pouze odpověď, která splňuje kritéria filtru. Následující odpověď na kudrlinkou byla naformátována pro čitelnost:
 
@@ -77,11 +77,11 @@ Použijte znalostní bázi z předchozího rychlého dotazu pro odpověď na zá
     }
     ```
 
-    Pokud je k dispozici sada otázek a odpovědí, která nevyhověla hledanému termínu, ale nesplnila tento filtr, nebude vrácena. Místo toho se vrátí obecná `No good match found in KB.` odpověď.
+    Pokud existuje pár otázek a odpovědí, které nevyhověly hledanému termínu, ale nesplnila tento filtr, nebude vrácen. Místo toho se vrátí obecná odpověď `No good match found in KB.` .
 
 ## <a name="use-debug-query-property"></a>Použít vlastnost dotazu pro ladění
 
-Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I když je to užitečné, není nutné. Pokud chcete vygenerovat odpověď s ladicími informacemi, `debug` přidejte vlastnost:
+Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I když je to užitečné, není nutné. Pokud chcete vygenerovat odpověď s ladicími informacemi, přidejte `debug` vlastnost:
 
 ```json
 Debug: {Enable:true}
@@ -185,7 +185,7 @@ Debug: {Enable:true}
 
 ## <a name="use-test-knowledge-base"></a>Použít testovací znalostní bázi
 
-Pokud chcete získat odpověď ze zkušební znalostní báze, použijte vlastnost `isTest` text.
+Pokud chcete získat odpověď ze zkušební znalostní báze, použijte `isTest` vlastnost text.
 
 Vlastnost je logická hodnota.
 
@@ -300,7 +300,7 @@ Odpověď JSON používá stejné schéma jako publikovaný dotaz znalostní bá
 
 Pro odpověď můžete požádat o minimální prahovou hodnotu. Pokud není prahová hodnota splněna, je vrácena výchozí odpověď.
 
-1. Přidejte `threshold` vlastnost, která požaduje odpověď na `size` odpověď s prahovou hodnotou 80% nebo vyšší. Znalostní báze by neměl tuto odpověď najít, protože skóre otázky je 71%. Výsledek vrátí výchozí odpověď, kterou jste zadali při vytváření znalostní báze.
+1. Přidejte `threshold` vlastnost, která požaduje odpověď na odpověď `size` s prahovou hodnotou 80% nebo vyšší. Znalostní báze by neměl tuto odpověď najít, protože skóre otázky je 71%. Výsledek vrátí výchozí odpověď, kterou jste zadali při vytváření znalostní báze.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
@@ -325,7 +325,7 @@ Pro odpověď můžete požádat o minimální prahovou hodnotu. Pokud není pra
     }
     ```
 
-    QnA Maker vrátilo skóre `0`, což znamená bez obav. Vrátila se také výchozí odpověď.
+    QnA Maker vrátilo skóre `0` , což znamená bez obav. Vrátila se také výchozí odpověď.
 
 1. Změňte prahovou hodnotu na 60% a požádejte o dotaz znovu:
 

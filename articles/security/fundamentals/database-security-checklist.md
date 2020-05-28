@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: d9283a36d5f7ccb82b2cc211485487d5a3dcce7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc79d7204ba360696b8d9411cd56efd09d1678dc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79201021"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021836"
 ---
 # <a name="azure-database-security-checklist"></a>Kontrolní seznam zabezpečení Azure Database
 
 Pro lepší zabezpečení zahrnuje Azure Database řadu integrovaných ovládacích prvků zabezpečení, které můžete použít k omezení a řízení přístupu.
 
-Mezi ně patří:
+Tady jsou některé z nich:
 
--    Bránu firewall, která umožňuje vytvářet [pravidla brány firewall](../../sql-database/sql-database-firewall-configure.md) s omezením připojení podle IP adresy,
+-    Bránu firewall, která umožňuje vytvářet [pravidla brány firewall](../../azure-sql/database/firewall-configure.md) s omezením připojení podle IP adresy,
 -    Brána firewall na úrovni serveru dostupná z Azure Portal
 -    Pravidla brány firewall na úrovni databáze přístupná z SSMS
 -    Zabezpečené připojení k databázi pomocí připojovacích řetězců zabezpečení
@@ -44,16 +44,16 @@ Cloud computing vyžaduje nové paradigma zabezpečení, které neznají mnoho u
 Doporučujeme, abyste si před kontrolou tohoto kontrolního seznamu přečetli článek věnované [osvědčeným postupům zabezpečení Azure Database](database-best-practices.md) . Až porozumíte osvědčeným postupům, budete moct získat co nejvíc tohoto kontrolního seznamu. Tento kontrolní seznam pak můžete použít k tomu, abyste se ujistili, že byly vyřešeny důležité problémy v zabezpečení databáze Azure.
 
 
-|Kategorie kontrolního seznamu| Popis|
+|Kategorie kontrolního seznamu| Description|
 | ------------ | -------- |
 |**Ochrana dat**||
 | <br> Šifrování při pohybu nebo přenosu| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)pro šifrování dat při přesunu dat do sítí.</li><li>Databáze vyžaduje zabezpečenou komunikaci od klientů založenou na protokolu [TDS (Tabular data Stream)](https://msdn.microsoft.com/library/dd357628.aspx) přes protokol TLS (Transport Layer Security).</li></ul> |
 |<br>Šifrování v klidovém stavu| <ul><li>[Transparentní šifrování dat](https://go.microsoft.com/fwlink/?LinkId=526242), když se neaktivní data ukládají fyzicky do libovolné digitální formy.</li></ul>|
 |**Řízení přístupu**||  
-|<br> Přístup k databázi | <ul><li>[Ověřování (Azure Active Directory](../../sql-database/sql-database-manage-logins.md) ověřování) ověřování AD používá identity spravované pomocí Azure Active Directory.</li><li>[Autorizace](../../sql-database/sql-database-manage-logins.md) uděluje uživatelům nejnižší potřebná oprávnění.</li></ul> |
-|<br>Přístup k aplikaci| <ul><li>[Zabezpečení na úrovni řádků](https://msdn.microsoft.com/library/dn765131) (pomocí zásad zabezpečení zároveň omezuje přístup na úrovni řádků na základě identity, role nebo kontextu spuštění uživatele).</li><li>[Dynamické maskování dat](../../sql-database/sql-database-dynamic-data-masking-get-started.md) (pomocí zásad & oprávnění, omezování ohrožení citlivých dat jejich maskování pro uživatele bez oprávnění)</li></ul>|
+|<br> Přístup k databázi | <ul><li>[Ověřování (Azure Active Directory](../../azure-sql/database/logins-create-manage.md) ověřování) ověřování AD používá identity spravované pomocí Azure Active Directory.</li><li>[Autorizace](../../azure-sql/database/logins-create-manage.md) uděluje uživatelům nejnižší potřebná oprávnění.</li></ul> |
+|<br>Přístup k aplikaci| <ul><li>[Zabezpečení na úrovni řádků](https://msdn.microsoft.com/library/dn765131) (pomocí zásad zabezpečení zároveň omezuje přístup na úrovni řádků na základě identity, role nebo kontextu spuštění uživatele).</li><li>[Dynamické maskování dat](../../azure-sql/database/dynamic-data-masking-overview.md) (pomocí zásad & oprávnění, omezování ohrožení citlivých dat jejich maskování pro uživatele bez oprávnění)</li></ul>|
 |**Proaktivní monitorování**||  
-| <br>Sledování & zjišťování| <ul><li>[Auditování](../../sql-database/sql-database-auditing.md) sleduje události databáze a zapisuje je do protokolu auditu nebo protokolu aktivit v [účtu Azure Storage](../../storage/common/storage-create-storage-account.md).</li><li>Sledujte službu Azure Database Health pomocí [Azure monitor protokolů aktivit](../../azure-monitor/platform/platform-logs-overview.md).</li><li>[Detekce hrozeb](../../sql-database/sql-database-threat-detection.md) detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze. </li></ul> |
+| <br>Sledování & zjišťování| <ul><li>[Auditování](../../sql-database/sql-database-auditing.md) sleduje události databáze a zapisuje je do protokolu auditu nebo protokolu aktivit v [účtu Azure Storage](../../storage/common/storage-create-storage-account.md).</li><li>Sledujte službu Azure Database Health pomocí [Azure monitor protokolů aktivit](../../azure-monitor/platform/platform-logs-overview.md).</li><li>[Detekce hrozeb](../../azure-sql/database/threat-detection-configure.md) detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze. </li></ul> |
 |<br>Azure Security Center| <ul><li>[Monitorování dat](../../security-center/security-center-enable-auditing-on-sql-databases.md) Jako centralizované řešení pro monitorování zabezpečení pro SQL a další služby Azure použijte Azure Security Center.</li></ul>|        
 
 ## <a name="conclusion"></a>Závěr
@@ -62,7 +62,7 @@ Azure Database je robustní databázová platforma s plnou škálou funkcí zabe
 ## <a name="next-steps"></a>Další kroky
 Ochranu databáze před uživateli se zlými úmysly nebo neoprávněným přístupem můžete zlepšit v několika jednoduchých krocích. V tomto kurzu se naučíte:
 
-- Nastavte [pravidla brány firewall](../../sql-database/sql-database-firewall-configure.md) pro váš server a databázi.
+- Nastavte [pravidla brány firewall](../../azure-sql/database/firewall-configure.md) pro váš server a databázi.
 - Zabezpečte svá data pomocí [šifrování](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption).
 - Povolte [auditování SQL Database](../../sql-database/sql-database-auditing.md).
 

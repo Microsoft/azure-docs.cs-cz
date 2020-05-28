@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f780ad3d2c95f9d23ea9a0b675b59ba22e25016
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651946"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021683"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Použití referenčních dat z SQL Database pro úlohu Azure Stream Analytics
 
@@ -40,7 +40,7 @@ Pomocí následujících kroků přidejte Azure SQL Database jako vstupní zdroj
 
    ![Konfigurace odkazu na SQL Database](./media/sql-reference-data/sql-input-config.png)
 
-3. Otestujte dotaz na snímek v editoru dotazů SQL. Další informace najdete v tématu [použití Editoru dotazů SQL Azure Portal k připojení a dotazování dat](../sql-database/sql-database-connect-query-portal.md) .
+3. Otestujte dotaz na snímek v editoru dotazů SQL. Další informace najdete v tématu [použití Editoru dotazů SQL Azure Portal k připojení a dotazování dat](../azure-sql/database/connect-query-portal.md) .
 
 ### <a name="specify-storage-account-in-job-config"></a>Zadat účet úložiště v konfiguraci úlohy
 
@@ -69,7 +69,7 @@ Pomocí následujících kroků přidejte Azure SQL Database jako vstupní zdroj
 
 ### <a name="create-a-sql-database-table"></a>Vytvoření tabulky SQL Database
 
-Pomocí SQL Server Management Studio můžete vytvořit tabulku, do které se budou ukládat referenční data. Podrobnosti najdete v tématu [Návrh první databáze SQL Azure s využitím SSMS](../sql-database/sql-database-design-first-database.md) .
+Pomocí SQL Server Management Studio můžete vytvořit tabulku, do které se budou ukládat referenční data. Podrobnosti najdete v tématu [Návrh první databáze SQL Azure s využitím SSMS](../azure-sql/database/design-first-database-tutorial.md) .
 
 Ukázková tabulka použitá v následujícím příkladu se vytvořila z následujícího příkazu:
 
@@ -129,7 +129,7 @@ Před nasazením úlohy do Azure můžete testovat logiku dotazu místně proti 
 
 ## <a name="delta-query"></a>Rozdílový dotaz
 
-Při použití rozdílového dotazu jsou doporučeny [dočasné tabulky v Azure SQL Database](../sql-database/sql-database-temporal-tables.md) .
+Při použití rozdílového dotazu jsou doporučeny [dočasné tabulky v Azure SQL Database](../azure-sql/temporal-tables.md) .
 
 1. Vytvořte dočasnou tabulku v Azure SQL Database.
    

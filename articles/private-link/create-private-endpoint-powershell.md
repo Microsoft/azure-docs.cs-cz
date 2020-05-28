@@ -7,17 +7,17 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 7db3ac13cd4e2f2e2b712f9d53b86f9ccda5e736
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583767"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021717"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Vytvoření privátního koncového bodu pomocí Azure PowerShell
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. 
 
-V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač v Virtual Network Azure, SQL Database Server s privátním koncovým bodem Azure pomocí Azure PowerShell. Pak můžete z virtuálního počítače bezpečně přistupovat k serveru SQL Database.
+V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač v Virtual Network Azure, což je logický SQL Server s privátním koncovým bodem Azure pomocí Azure PowerShell. Pak můžete bezpečně přistupovat k SQL Database z virtuálního počítače.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -61,7 +61,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 ```
 
 > [!CAUTION]
-> Je snadné Zaměňujte `PrivateEndpointNetworkPoliciesFlag` parametr s jiným dostupným příznakem `PrivateLinkServiceNetworkPoliciesFlag`, protože jsou to dlouhá slova a mají podobný vzhled.  Ujistěte se, `PrivateEndpointNetworkPoliciesFlag`že používáte tu správnou.
+> Je snadné Zaměňujte `PrivateEndpointNetworkPoliciesFlag` parametr s jiným dostupným příznakem, `PrivateLinkServiceNetworkPoliciesFlag` protože jsou to dlouhá slova a mají podobný vzhled.  Ujistěte se, že používáte tu správnou `PrivateEndpointNetworkPoliciesFlag` .
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>Přidružte podsíť k Virtual Network
 
@@ -88,7 +88,7 @@ New-AzVm `
     -AsJob  
 ```
 
-`-AsJob` Možnost vytvoří virtuální počítač na pozadí. Můžete pokračovat k dalšímu kroku.
+`-AsJob`Možnost vytvoří virtuální počítač na pozadí. Můžete pokračovat k dalšímu kroku.
 
 Když Azure začne vytvářet virtuální počítač na pozadí, získáte něco podobného:
 
@@ -98,9 +98,9 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
-## <a name="create-a-sql-database-server"></a>Vytvoření serveru SQL Database 
+## <a name="create-a-logical-sql-server"></a>Vytvoření logického SQL serveru 
 
-Vytvořte SQL Database Server pomocí příkazu New-AzSqlServer. Pamatujte, že název vašeho serveru SQL Database musí být v rámci Azure jedinečný, proto nahraďte hodnotu zástupného symbolu v závorkách vlastní jedinečnou hodnotou:
+Pomocí příkazu New-AzSqlServer vytvořte logický SQL Server. Pamatujte, že název vašeho serveru musí být v rámci Azure jedinečný, proto nahraďte hodnotu zástupného symbolu v závorkách vlastní jedinečnou hodnotou:
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -120,7 +120,7 @@ New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
 
-Soukromý koncový bod pro server SQL Database v Virtual Network pomocí [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
+Privátní koncový bod pro server v Virtual Network pomocí [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
 
 ```azurepowershell
 
@@ -142,7 +142,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
 ``` 
 
 ## <a name="configure-the-private-dns-zone"></a>Konfigurovat zónu Privátní DNS 
-Vytvořte privátní zónu DNS pro doménu serveru SQL Database a vytvořte propojení přidružení s virtuální sítí: 
+Vytvořte privátní zónu DNS pro SQL Database doménu a vytvořte propojení přidružení s virtuální sítí: 
 
 ```azurepowershell
 
@@ -195,7 +195,7 @@ mstsc /v:<publicIpAddress>
 3. Vyberte **OK**. 
 4. Může se zobrazit upozornění certifikátu. Pokud ano, vyberte **Ano** nebo **pokračovat**. 
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>Přístup k serveru SQL Database soukromě z virtuálního počítače
+## <a name="access-sql-database-privately-from-the-vm"></a>Přístup k SQL Database soukromě z virtuálního počítače
 
 1. Ve vzdálené ploše myVM otevřete PowerShell.
 2. Zadejte `nslookup myserver.database.windows.net`. Nezapomeňte nahradit `myserver` názvem SQL serveru.
@@ -222,13 +222,13 @@ mstsc /v:<publicIpAddress>
     | Heslo | Zadejte heslo, které jste zadali při vytváření. |
     | Zapamatovat heslo | Ano |
     
-5. Vyberte **Connect** (Připojit).
+5. Vyberte **Připojit**.
 6. V nabídce vlevo vyberte **databáze** . 
 7. Volitelně Vytvoření nebo dotazování informací z MyDatabase.
 8. Zavřete připojení ke vzdálené ploše pro *myVM*. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
-Po dokončení používání privátního koncového bodu, SQL Database serveru a virtuálního počítače, použijte [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) a odeberte skupinu prostředků a všechny prostředky, které obsahuje:
+Až budete s použitím privátního koncového bodu SQL Database a virtuálního počítače, odeberte skupinu prostředků a všechny prostředky, které obsahuje, pomocí [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) :
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
