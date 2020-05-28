@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 8a69cb83492fabc692886fe6966a147de3bcbb04
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780840"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022210"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Nejčastější dotazy
 
@@ -44,11 +44,19 @@ Další informace najdete v tématu [plánování kapacity pro clustery HDInsigh
 
 Seznamte [se s typy prostředků v clusterech Azure HDInsight](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters).
 
+### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>Jaké jsou osvědčené postupy pro vytváření velkých clusterů HDInsight?
+
+1. Doporučuje se nastavit clustery HDInsight s [vlastní AMBARI DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db) pro zlepšení škálovatelnosti clusteru.
+2. Pomocí [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) můžete vytvořit clustery HDInsight, abyste mohli využívat větší šířku pásma a další výkonnostní charakteristiky Azure Data Lake Storage Gen2.
+3. Hlavních by měl být dostatečně velký, aby vyhovovalo více hlavním službám běžícím na těchto uzlech.
+4. Některé konkrétní úlohy, jako například interaktivní dotaz, budou také potřebovat větší Zookeeper uzly. Zvažte prosím minimálně 8 jader virtuálních počítačů.
+5. V případě podregistru a Sparku použijte [externí metastore Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores).
+
 ## <a name="individual-components"></a>Jednotlivé komponenty
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>Můžu do clusteru nainstalovat další součásti?
 
-Ano. K instalaci dalších součástí nebo přizpůsobení konfigurace clusteru použijte:
+Yes. K instalaci dalších součástí nebo přizpůsobení konfigurace clusteru použijte:
 
 - Skripty během nebo po vytvoření. Skripty jsou vyvolány pomocí [akce skriptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux). Akce skriptu je možnost konfigurace, kterou můžete použít z Azure Portal, rutin prostředí Windows PowerShell pro HDInsight nebo sady HDInsight .NET SDK. Tuto možnost konfigurace můžete použít z Azure Portal rutin prostředí Windows PowerShell nebo sady HDInsight .NET SDK.
 
@@ -68,7 +76,7 @@ Ne, Apache Kafka a Apache Spark na stejném clusteru HDInsight není možné spu
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Návody změnit časové pásmo v Ambari?
 
-1. Otevřete webové uživatelské rozhraní Ambari v `https://CLUSTERNAME.azurehdinsight.net`, kde název_clusteru je název vašeho clusteru.
+1. Otevřete webové uživatelské rozhraní Ambari v `https://CLUSTERNAME.azurehdinsight.net` , kde název_clusteru je název vašeho clusteru.
 2. V pravém horním rohu vyberte Správce | Možnost. 
 
    ![Nastavení Ambari](media/hdinsight-faq/ambari-settings.png)
@@ -79,9 +87,9 @@ Ne, Apache Kafka a Apache Spark na stejném clusteru HDInsight není možné spu
 
 ## <a name="metastore"></a>Metastore
 
-### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>Jak mohu migrovat ze stávajícího metastore do Azure SQL Server? 
+### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-database"></a>Jak mohu migrovat ze stávajícího metastore do Azure SQL Database? 
 
-Postup migrace z SQL Server do Azure SQL Server najdete v tématu [kurz: migrace SQL Server na izolovanou databázi nebo ve fondu databáze v Azure SQL Database offline pomocí DMS](../dms/tutorial-sql-server-to-azure-sql.md).
+Postup migrace z SQL Server na Azure SQL Database najdete v tématu [kurz: migrace SQL Server na izolovanou databázi nebo ve fondu databáze v Azure SQL Database offline pomocí DMS](../dms/tutorial-sql-server-to-azure-sql.md).
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>Odstraní se metastore Hive při odstranění clusteru?
 
@@ -133,7 +141,7 @@ Ano, můžete nasadit další virtuální počítač ve stejné podsíti jako cl
 
 - Hraniční uzly: do clusteru můžete přidat další hraniční uzel, jak je popsáno v tématu [použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDInsight](hdinsight-apps-use-edge-node.md).
 
-- Samostatné uzly: do stejné podsítě můžete přidat samostatný virtuální počítač a přistupovat ke clusteru z tohoto virtuálního počítače pomocí privátního koncového bodu `https://<CLUSTERNAME>-int.azurehdinsight.net`. Další informace najdete v tématu [řízení síťového provozu](./control-network-traffic.md).
+- Samostatné uzly: do stejné podsítě můžete přidat samostatný virtuální počítač a přistupovat ke clusteru z tohoto virtuálního počítače pomocí privátního koncového bodu `https://<CLUSTERNAME>-int.azurehdinsight.net` . Další informace najdete v tématu [řízení síťového provozu](./control-network-traffic.md).
 
 ### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>Mám ukládat data na místní disk hraničního uzlu?
 
@@ -180,9 +188,9 @@ Doporučuje se použít certifikát vydaný certifikační autoritou. Použití 
 
 V případě požadavků auditování doporučuje společnost Microsoft povolit protokoly Azure Monitor, jak je popsáno v tématu [použití protokolů Azure monitor k monitorování clusterů HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial).
 
-### <a name="can-i-disable-clamscan-on-my-cluster"></a>Můžu v clusteru `Clamscan` zakázat?
+### <a name="can-i-disable-clamscan-on-my-cluster"></a>Můžu `Clamscan` v clusteru zakázat?
 
-`Clamscan`je antivirový software, který běží na clusteru HDInsight a používá ho Azure Security (azsecd) k ochraně vašich clusterů před útoky z antivirového programu. Společnost Microsoft důrazně doporučuje, aby uživatelé neprováděli změny ve `Clamscan` výchozí konfiguraci.
+`Clamscan`je antivirový software, který běží na clusteru HDInsight a používá ho Azure Security (azsecd) k ochraně vašich clusterů před útoky z antivirového programu. Společnost Microsoft důrazně doporučuje, aby uživatelé neprováděli změny ve výchozí `Clamscan` konfiguraci.
 
 Tento proces není v konfliktu s jinými procesy nebo z nich nebere žádný cyklus. Bude vždycky vracet na jiný proces. Špičky procesoru od `Clamscan` by se měly zobrazit jenom v případě, že je systém nečinný.  
 
@@ -203,7 +211,7 @@ LLAP je povolen z bezpečnostních důvodů (Apache Ranger), nikoli z hlediska v
 
 ### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>Jak můžu přidat další skupiny AAD po vytvoření clusteru ESP?
 Existují dva způsoby, jak dosáhnout tohoto cíle: 1 – cluster můžete znovu vytvořit a přidat další skupinu v době vytváření clusteru. Pokud v AAD-DS používáte vymezenou synchronizaci, ujistěte se, že je skupina B zahrnutá v rámci synchronizace s vymezeným oborem.
-2 – přidejte skupinu jako vnořenou dílčí skupinu předchozí skupiny, která se použila k vytvoření clusteru ESP. Pokud jste například vytvořili cluster ESP se skupinou `A`, můžete později přidat skupinu `B` jako vnořenou podskupinu `A` a po přibližně jednu hodinu bude synchronizována a k dispozici v clusteru automaticky. 
+2 – přidejte skupinu jako vnořenou dílčí skupinu předchozí skupiny, která se použila k vytvoření clusteru ESP. Pokud jste například vytvořili cluster ESP se skupinou `A` , můžete později přidat skupinu `B` jako vnořenou podskupinu `A` a po přibližně jednu hodinu bude synchronizována a k dispozici v clusteru automaticky. 
 
 ## <a name="storage"></a>Storage
 
@@ -254,7 +262,7 @@ Zásady přístupu k datům můžete přiřadit ke skupinám zabezpečení vaši
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>Je možné zvýšit HDFS úložiště v clusteru bez zvýšení velikosti disku pracovních uzlů?
 
-Ne. Nemůžete zvětšit velikost disku žádného pracovního uzlu. Jediným způsobem, jak velikost disku zvýšit, je odpojit cluster a znovu ho vytvořit s většími pracovními počítači. Nepoužívejte HDFS pro uložení dat služby HDInsight, protože data se odstraní, když cluster odstraníte. Místo toho uložte data v Azure. Škálování clusteru taky může do clusteru HDInsight přidat další kapacitu.
+No. Nemůžete zvětšit velikost disku žádného pracovního uzlu. Jediným způsobem, jak velikost disku zvýšit, je odpojit cluster a znovu ho vytvořit s většími pracovními počítači. Nepoužívejte HDFS pro uložení dat služby HDInsight, protože data se odstraní, když cluster odstraníte. Místo toho uložte data v Azure. Škálování clusteru taky může do clusteru HDInsight přidat další kapacitu.
 
 ## <a name="edge-nodes"></a>Hraniční uzly
 
@@ -276,14 +284,14 @@ Trvalé skripty můžete použít k přizpůsobení nových pracovních uzlů p�
 
 Pomocí následujících koncových bodů REST můžete načíst informace potřebné ve formátu JSON. K provedení požadavků použijte hlavičky základního ověřování.
 
-- `Tez Query View`: *https:\//\<název clusteru>. azurehdinsight.NET/WS/v1/Timeline/HIVE_QUERY_ID/*
-- `Tez Dag View`: *https:\//\<název clusteru>. azurehdinsight.NET/WS/v1/Timeline/TEZ_DAG_ID/*
+- `Tez Query View`: *https: \/ / \<cluster name> . azurehdinsight.NET/WS/v1/Timeline/HIVE_QUERY_ID/*
+- `Tez Dag View`: *https: \/ / \<cluster name> . azurehdinsight.NET/WS/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Návody načíst podrobnosti o konfiguraci z clusteru HDI pomocí Azure Active Directoryho uživatele?
 
 Pokud chcete s vaším uživatelem AAD vyjednávat správné ověřovací tokeny, Projděte bránu pomocí následujícího formátu:
 
-* https://`<cluster dnsname>`. azurehdinsight.NET/API/v1/Clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https:// `<cluster dnsname>` . azurehdinsight.NET/API/v1/Clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Návody k monitorování výkonu PŘÍZu použít rozhraní RESTful API Ambari?
 

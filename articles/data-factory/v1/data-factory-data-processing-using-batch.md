@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2143546e10b413d1492b8734d2594de42fd37cf3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c6fb590cbb57e8798bf65d0aa30585ae3db3691d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684399"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021530"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a dávky
 > [!NOTE]
@@ -38,8 +38,8 @@ Pomocí služby Batch definujete výpočetní prostředky, které vaše aplikace
 
  Pokud nejste obeznámeni se službou Batch, následující články vám pomůžou pochopit architekturu a implementaci řešení popsaného v tomto článku:   
 
-* [Základy dávky](../../batch/batch-technical-overview.md)
-* [Přehled funkcí Batch](../../batch/batch-api-basics.md)
+* [Základy dávky](../../azure-sql/database/sql-database-paas-overview.md)
+* [Přehled funkcí Batch](../../batch/batch-service-workflow-features.md)
 
 Další informace o službě Batch najdete v [dokumentaci](https://docs.microsoft.com/azure/batch/)ke službě Batch.
 
@@ -560,7 +560,7 @@ Propojené služby propojují úložiště dat nebo výpočetní služby s datov
 
 1. Vyberte **Nasadit** na panelu příkazů a nasaďte propojenou službu.
 
-   ![Nasazení](./media/data-factory-data-processing-using-batch/image8.png)
+   ![Nasadit](./media/data-factory-data-processing-using-batch/image8.png)
 
 #### <a name="create-an-azure-batch-linked-service"></a>Vytvoření propojené služby Azure Batch
 V tomto kroku vytvoříte propojenou službu pro účet Batch, který se používá ke spuštění vlastní aktivity objektu pro vytváření dat.
@@ -578,7 +578,7 @@ V tomto kroku vytvoříte propojenou službu pro účet Batch, který se použí
    d. Zadejte identifikátor URI dávky pro vlastnost **batchUri** JSON.
 
       > [!IMPORTANT]
-      > Adresa URL z okna **účtu Batch** má tento formát: \< account \> . \< region \> . batch.Azure.com. Pro vlastnost **batchUri** ve skriptu JSON je nutné odebrat A88 "Account.". * * z adresy URL. Příklad: `"batchUri": "https://eastus.batch.azure.com"`.
+      > Adresa URL z okna **účtu Batch** má tento formát: \<accountname\> . \<region\> . batch.azure.com. Pro vlastnost **batchUri** ve skriptu JSON je nutné odebrat A88 "Account.". * * z adresy URL. Příklad: `"batchUri": "https://eastus.batch.azure.com"`.
       >
       >
 
@@ -793,9 +793,9 @@ V tomto kroku vytvoříte kanál s jednou aktivitou, vlastní aktivitou, kterou 
 
    * V kanálu je pouze jedna aktivita a jedná se o typ **DotNetActivity**.
    * **AssemblyName** je nastaven na název knihovny DLL **MyDotNetActivity. dll**.
-   * **Parametr entryPoint** je nastavený na **MyDotNetActivityNS. MyDotNetActivity**. Je to v podstatě \< obor názvů \> . \< ClassName \> ve vašem kódu.
+   * **Parametr entryPoint** je nastavený na **MyDotNetActivityNS. MyDotNetActivity**. Je v podstatě \<namespace\> .\<classname\> ve vašem kódu.
    * **PackageLinkedService** je nastavená na **StorageLinkedService**, která odkazuje na úložiště objektů blob, které obsahuje soubor zip vlastní aktivity. Pokud používáte jiné účty úložiště pro vstupní a výstupní soubory a vlastní soubor zip aktivity, musíte vytvořit další propojenou službu úložiště. V tomto článku se předpokládá, že používáte stejný účet úložiště.
-   * **PackageFile** je nastavená na **customactivitycontainer/MyDotNetActivity. zip**. Je ve formátu \< containerforthezip \> / \< nameofthezip. zip \> .
+   * **PackageFile** je nastavená na **customactivitycontainer/MyDotNetActivity. zip**. Je ve formátu \<containerforthezip\> / \<nameofthezip.zip\> .
    * Vlastní aktivita přijímá **InputDataset** jako vstup a **OutputDataset** jako výstup.
    * Vlastnost **linkedServiceName** vlastní aktivity odkazuje na **AzureBatchLinkedService**, která oznamuje Data Factory, že vlastní aktivita potřebuje spustit v dávce.
    * Nastavení **souběžnosti** je důležité. Pokud použijete výchozí hodnotu, která je 1, i když ve fondu dávek máte dva nebo více výpočetních uzlů, tyto řezy se zpracují po druhém. Proto nebudete využívat možnosti paralelního zpracování v dávce. Pokud nastavíte **souběžnost** na vyšší hodnotu, řekněme 2 znamená, že lze zpracovat dva řezy (odpovídající dvěma úkolům ve službě Batch). V takovém případě jsou využívány oba virtuální počítače ve fondu Batch. Nastavte vlastnost Concurrency odpovídajícím způsobem.
@@ -972,8 +972,8 @@ Po zpracování dat je můžete využívat s online nástroji, jako je Power BI.
   * [Použití vlastních aktivit v kanálu Data Factory](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
-  * [Základy dávky](../../batch/batch-technical-overview.md)
-  * [Přehled funkcí Batch](../../batch/batch-api-basics.md)
+  * [Základy dávky](../../azure-sql/database/sql-database-paas-overview.md)
+  * [Přehled funkcí Batch](../../batch/batch-service-workflow-features.md)
   * [Vytvoření a Správa účtu Batch v Azure Portal](../../batch/batch-account-create-portal.md)
   * [Začínáme s klientskou knihovnou Batch pro .NET](../../batch/quick-run-dotnet.md)
 

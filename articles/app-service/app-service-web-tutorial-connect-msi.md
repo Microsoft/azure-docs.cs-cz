@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: 142cd2611e0dcf3227474efadded7bac88a4390a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e38711cbb5ccd9fe4cc8584a9229a1c57550d618
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82207628"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021224"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
@@ -45,39 +45,39 @@ Co se naučíte:
 
 Tento článek pokračuje tam, kde jste skončili v [kurzu: sestavení aplikace v ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) nebo [kurzu: sestavení ASP.NET Core a SQL Database aplikace v Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md). Pokud jste to ještě neudělali, Projděte si jeden ze dvou kurzů jako první. Alternativně můžete upravit postup pro vlastní aplikaci .NET pomocí SQL Database.
 
-Pokud chcete aplikaci ladit pomocí SQL Database jako back-end, ujistěte se, že jste povolili připojení klienta z počítače. V takovém případě přidejte IP adresu klienta podle kroků v části [Správa pravidel brány firewall na úrovni serveru pomocí Azure Portal](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
+Pokud chcete aplikaci ladit pomocí SQL Database jako back-end, ujistěte se, že jste povolili připojení klienta z počítače. V takovém případě přidejte IP adresu klienta podle kroků v části [Správa pravidel brány firewall na úrovni serveru pomocí Azure Portal](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="grant-database-access-to-azure-ad-user"></a>Udělení přístupu k databázi uživateli Azure AD
 
-Nejdřív povolte ověřování Azure AD, které se SQL Database přiřazením uživatele Azure AD jako správce služby Active Directory serveru SQL Database. Tento uživatel se liší od účet Microsoft, které jste použili k registraci předplatného Azure. Musí se jednat o uživatele, kterého jste vytvořili, importovali, synchronizoval nebo pozvali do služby Azure AD. Další informace o povolených uživatelích Azure AD najdete v tématu [funkce a omezení služby Azure AD v SQL Database](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations).
+Nejdřív povolte ověřování Azure AD, které se SQL Database přiřazením uživatele Azure AD jako správce služby Active Directory serveru. Tento uživatel se liší od účet Microsoft, které jste použili k registraci předplatného Azure. Musí se jednat o uživatele, kterého jste vytvořili, importovali, synchronizoval nebo pozvali do služby Azure AD. Další informace o povolených uživatelích Azure AD najdete v tématu [funkce a omezení služby Azure AD v SQL Database](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations).
 
 Pokud váš tenant služby Azure AD ještě nemá uživatele, vytvořte ho podle kroků v části [Přidání nebo odstranění uživatelů pomocí Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
-Vyhledejte ID objektu uživatele Azure AD pomocí služby [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) a nahraďte * \<User-Principal-Name>*. Výsledek je uložen do proměnné.
+Vyhledejte ID objektu uživatele Azure AD pomocí [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) a nahraďte *\<user-principal-name>* . Výsledek je uložen do proměnné.
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
 ```
 > [!TIP]
-> Pokud chcete zobrazit seznam všech hlavních názvů uživatelů v Azure AD, spusťte `az ad user list --query [].userPrincipalName`.
+> Pokud chcete zobrazit seznam všech hlavních názvů uživatelů v Azure AD, spusťte `az ad user list --query [].userPrincipalName` .
 >
 
-Přidejte tohoto uživatele Azure AD jako správce služby Active Directory pomocí [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) příkazu ve Cloud Shell. V následujícím příkazu nahraďte * \<>název serveru* názvem SQL Database serveru (bez `.database.windows.net` přípony).
+Přidejte tohoto uživatele Azure AD jako správce služby Active Directory pomocí [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) příkazu ve Cloud Shell. V následujícím příkazu nahraďte *\<server-name>* názvem serveru (bez `.database.windows.net` přípony).
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
 ```
 
-Další informace o přidání správce služby Active Directory najdete v tématu [zřízení správce Azure Active Directory pro Server Azure SQL Database](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) .
+Další informace o přidání správce služby Active Directory najdete v tématu [zřízení správce Azure Active Directory pro váš server](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) .
 
 ## <a name="set-up-visual-studio"></a>Nastavit Visual Studio
 
 ### <a name="windows"></a>Windows
-Visual Studio pro Windows je integrované s ověřováním Azure AD. Pokud chcete povolit vývoj a ladění v aplikaci Visual Studio, přidejte uživatele služby Azure AD v aplikaci Visual Studio tak, že v nabídce vyberete**nastavení účet** **soubor** > a kliknete na **Přidat účet**.
+Visual Studio pro Windows je integrované s ověřováním Azure AD. Pokud chcete povolit vývoj a ladění v aplikaci Visual Studio, přidejte uživatele služby Azure AD v aplikaci Visual **File**Studio tak, že v nabídce vyberete  >  **nastavení účet** soubor a kliknete na **Přidat účet**.
 
-Pokud chcete nastavit uživatele Azure AD pro ověřování služby Azure, v nabídce vyberte**Možnosti** **nástrojů** > a pak vyberte**Výběr účtu** **ověřování** > služby Azure. Vyberte uživatele Azure AD, kterého jste přidali, a klikněte na **OK**.
+Pokud chcete nastavit uživatele Azure AD pro ověřování služby Azure, v **Tools**  >  nabídce vyberte**Možnosti** nástrojů a pak vyberte výběr **účtu ověřování služby Azure**  >  **Account Selection**. Vyberte uživatele Azure AD, kterého jste přidali, a klikněte na **OK**.
 
 Nyní jste připraveni vyvíjet a ladit svou aplikaci pomocí SQL Database jako back-endu pomocí ověřování Azure AD.
 
@@ -109,13 +109,13 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 
 V souboru *Web. config*pracujete v horní části souboru a proveďte následující změny:
 
-- V `<configSections>`přidejte do něj následující deklaraci oddílu:
+- V `<configSections>` přidejte do něj následující deklaraci oddílu:
 
     ```xml
     <section name="SqlAuthenticationProviders" type="System.Data.SqlClient.SqlAuthenticationProviderConfigurationSection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     ```
 
-- pod uzavírací `</configSections>` značku přidejte následující kód XML pro `<SqlAuthenticationProviders>`.
+- pod uzavírací `</configSections>` značku přidejte následující kód XML pro `<SqlAuthenticationProviders>` .
 
     ```xml
     <SqlAuthenticationProviders>
@@ -125,12 +125,12 @@ V souboru *Web. config*pracujete v horní části souboru a proveďte následuj�
     </SqlAuthenticationProviders>
     ```    
 
-- Vyhledejte připojovací řetězec s `MyDbConnection` `connectionString` `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`názvem a nahraďte jeho hodnotu hodnotou. Nahraďte _ \<název serveru>_ a _ \<DB-Name>_ názvem serveru a názvem databáze.
+- Vyhledejte připojovací řetězec s názvem `MyDbConnection` a nahraďte jeho `connectionString` hodnotu hodnotou `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"` . Nahraďte _\<server-name>_ a názvem _\<db-name>_ serveru a názvem databáze.
 
 > [!NOTE]
 > SqlAuthenticationProvider, který jste právě zaregistrovali, je založená na knihovně AppAuthentication, kterou jste nainstalovali dříve. Ve výchozím nastavení používá identitu přiřazenou systémem. K využití identity přiřazené uživatelem budete muset zadat další konfiguraci. Podívejte se prosím na [podporu připojovacích řetězců](../key-vault/general/service-to-service-authentication.md#connection-string-support) pro knihovnu AppAuthentication.
 
-To je vše, co potřebujete pro připojení k SQL Database. Při ladění v sadě Visual Studio váš kód používá uživatele Azure AD, kterého jste nakonfigurovali v [nastavení sady Visual Studio](#set-up-visual-studio). Server SQL Database později nastavíte, aby se povolilo připojení ze spravované identity vaší aplikace App Service.
+To je vše, co potřebujete pro připojení k SQL Database. Při ladění v sadě Visual Studio váš kód používá uživatele Azure AD, kterého jste nakonfigurovali v [nastavení sady Visual Studio](#set-up-visual-studio). SQL Database později nastavíte, aby se povolilo připojení ze spravované identity vaší aplikace App Service.
 
 Zadejte `Ctrl+F5` pro opětovné spuštění aplikace. Stejná aplikace CRUD v prohlížeči se teď připojuje k Azure SQL Database přímo pomocí ověřování Azure AD. Tato instalace umožňuje spustit migrace databáze ze sady Visual Studio.
 
@@ -158,10 +158,10 @@ conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceT
 > [!NOTE]
 > Tento ukázkový kód je synchronní pro přehlednost a jednoduchost.
 
-To je vše, co potřebujete pro připojení k SQL Database. Při ladění v sadě Visual Studio váš kód používá uživatele Azure AD, kterého jste nakonfigurovali v [nastavení sady Visual Studio](#set-up-visual-studio). Server SQL Database později nastavíte, aby se povolilo připojení ze spravované identity vaší aplikace App Service. `AzureServiceTokenProvider` Třída ukládá token do mezipaměti a načítá ho z Azure AD těsně před vypršením platnosti. K aktualizaci tokenu nepotřebujete žádný vlastní kód.
+To je vše, co potřebujete pro připojení k SQL Database. Při ladění v sadě Visual Studio váš kód používá uživatele Azure AD, kterého jste nakonfigurovali v [nastavení sady Visual Studio](#set-up-visual-studio). SQL Database později nastavíte, aby se povolilo připojení ze spravované identity vaší aplikace App Service. `AzureServiceTokenProvider`Třída ukládá token do mezipaměti a načítá ho z Azure AD těsně před vypršením platnosti. K aktualizaci tokenu nepotřebujete žádný vlastní kód.
 
 > [!TIP]
-> Pokud má uživatel Azure AD, kterého jste nakonfigurovali, přístup k více klientům `GetAccessTokenAsync("https://database.windows.net/", tenantid)` , zavolejte s požadovaným ID tenanta, aby se získal správný přístupový token.
+> Pokud má uživatel Azure AD, kterého jste nakonfigurovali, přístup k více klientům, zavolejte `GetAccessTokenAsync("https://database.windows.net/", tenantid)` s požadovaným ID tenanta, aby se získal správný přístupový token.
 
 Zadejte `Ctrl+F5` pro opětovné spuštění aplikace. Stejná aplikace CRUD v prohlížeči se teď připojuje k Azure SQL Database přímo pomocí ověřování Azure AD. Tato instalace umožňuje spustit migrace databáze ze sady Visual Studio.
 
@@ -174,7 +174,7 @@ Dále nakonfigurujete aplikaci App Service pro připojení k SQL Database se spr
 
 ### <a name="enable-managed-identity-on-app"></a>Povolit spravovanou identitu v aplikaci
 
-K povolení spravované identity u aplikace Azure použijte příkaz [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) v prostředí Cloud Shell. V následujícím příkazu nahraďte * \<>App-Name *.
+K povolení spravované identity u aplikace Azure použijte příkaz [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) v prostředí Cloud Shell. V následujícím příkazu nahraďte *\<app-name>* .
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>
@@ -204,13 +204,13 @@ Tady je příklad výstupu:
 > ```
 >
 
-Ve službě Cloud Shell se přihlaste ke službě SQL Database pomocí příkazu SQLCMD. Položku název _ \<serveru>_ nahraďte názvem serveru SQL Database, _ \<DB-Name>_ názvem databáze, kterou vaše aplikace používá, a _ \<_ s přihlašovacími údaji uživatele služby Azure AD>AAD-User-Name>a _ \<AAD-Password_ .
+Ve službě Cloud Shell se přihlaste ke službě SQL Database pomocí příkazu SQLCMD. Nahraďte _\<server-name>_ názvem vašeho serveru a _\<db-name>_ názvem databáze, který vaše aplikace používá, a _\<aad-user-name>_ _\<aad-password>_ s přihlašovacími údaji uživatele Azure AD.
 
 ```azurecli-interactive
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, abyste udělili oprávnění, která vaše aplikace potřebuje. Například: 
+V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, abyste udělili oprávnění, která vaše aplikace potřebuje. Třeba 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
@@ -220,7 +220,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-název identity>je název spravované identity ve službě Azure AD. * \<* Pokud je identita přiřazena systémem, název je vždy stejný jako název vaší aplikace App Service. Pokud chcete udělit oprávnění pro skupinu Azure AD, použijte místo toho zobrazované jméno skupiny (například *myAzureSQLDBAccessGroup*).
+*\<identity-name>* je název spravované identity ve službě Azure AD. Pokud je identita přiřazena systémem, název je vždy stejný jako název vaší aplikace App Service. Pokud chcete udělit oprávnění pro skupinu Azure AD, použijte místo toho zobrazované jméno skupiny (například *myAzureSQLDBAccessGroup*).
 
 Zadáním `EXIT` se vraťte do příkazového řádku služby Cloud Shell.
 
@@ -229,7 +229,7 @@ Zadáním `EXIT` se vraťte do příkazového řádku služby Cloud Shell.
 
 ### <a name="modify-connection-string"></a>Úprava připojovacího řetězce
 
-Pamatujte, že stejné změny, které jste provedli v *souboru Web. config* nebo *appSettings. JSON* , fungují se spravovanou identitou, takže jediným krokem je odebrání stávajícího připojovacího řetězce v App Service, který Visual Studio vytvořilo první nasazení vaší aplikace. Použijte následující příkaz, ale nahraďte * \<název aplikace>* názvem vaší aplikace.
+Pamatujte, že stejné změny, které jste provedli v *souboru Web. config* nebo *appSettings. JSON* , fungují se spravovanou identitou, takže jediným krokem je odebrání stávajícího připojovacího řetězce v App Service, který Visual Studio vytvořilo první nasazení vaší aplikace. Použijte následující příkaz, ale nahraďte *\<app-name>* názvem vaší aplikace.
 
 ```azurecli-interactive
 az webapp config connection-string delete --resource-group myResourceGroup --name <app-name> --setting-names MyDbConnection

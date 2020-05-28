@@ -8,18 +8,18 @@ ms.date: 05/26/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 96e3d5001d11455337ae092776a1a4c5c3738012
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 9ffc065cb877c7f87cd38671f586f0754a42b2b8
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83883069"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141581"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Zabránit náhodnému odstranění sdílených složek Azure
 
-Azure Storage teď nabízí obnovitelné odstranění pro sdílené složky. Obnovitelné odstranění umožňuje obnovit data v případě, že je omylem odstraněno aplikací nebo jiným uživatelem účtu úložiště.
+Azure Storage teď nabízí obnovitelné odstranění pro sdílené složky (Preview). Obnovitelné odstranění umožňuje obnovit data v případě, že je omylem odstraněno aplikací nebo jiným uživatelem účtu úložiště.
 
-## <a name="how-soft-delete-works"></a>Jak funguje obnovitelné odstranění
+## <a name="how-soft-delete-preview-works"></a>Jak funguje obnovitelné odstranění (Preview)
 
 Když se tato možnost povolí, obnovitelné odstranění vám umožní ukládat a obnovovat sdílené složky při jejich odstranění. Při odstranění dat se místo trvalého vymazání přepne na stav neodstraněno. Můžete nakonfigurovat dobu, po kterou se Odstraněná data budou moct obnovit, než se trvale odstraní.
 
@@ -29,7 +29,7 @@ U dočasně odstraněných souborů Premium se v celkovém výpočtu kvóty úč
 
 ### <a name="availability"></a>Dostupnost
 
-Obnovitelné odstranění sdílených složek Azure je k dispozici na všech úrovních úložiště, všech typech účtů úložiště a v každé oblasti, ve které jsou soubory Azure k dispozici.
+Obnovitelné odstranění pro sdílené složky Azure (Preview) je dostupné na všech úrovních úložiště, všech typech účtů úložiště a v každé oblasti, ve které jsou soubory Azure dostupné.
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 

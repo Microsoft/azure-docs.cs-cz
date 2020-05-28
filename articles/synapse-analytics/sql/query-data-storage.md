@@ -9,17 +9,17 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8501f9d07ffa2d04915d4d1a351317cc145f9844
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116243"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118266"
 ---
 # <a name="overview-query-data-in-storage"></a>Přehled: dotazování na data v úložišti
 
 Tato část obsahuje ukázkové dotazy, které můžete použít k vyzkoušení prostředku SQL na vyžádání (Preview) v rámci služby Azure synapse Analytics.
-Aktuálně podporované soubory jsou: 
+Aktuálně podporované formáty souborů:  
 - CSV
 - Parquet
 - JSON
@@ -35,7 +35,7 @@ Nástroje, které potřebujete k vydávání dotazů:
 
 Kromě toho parametry jsou následující:
 
-| Parametr                                 | Popis                                                   |
+| Parametr                                 | Description                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
 | Adresa koncového bodu služby SQL na vyžádání    | Bude použito jako název serveru.                                   |
 | Oblast koncového bodu služby SQL na vyžádání     | Použije se k určení úložiště používaného v ukázkách. |
@@ -44,67 +44,13 @@ Kromě toho parametry jsou následující:
 
 ## <a name="first-time-setup"></a>Nastavení při prvním spuštění
 
-Než začnete používat ukázky uvedené dále v tomto článku, máte dva kroky:
-
-- Vytvoření databáze pro zobrazení (pro případ, že chcete použít zobrazení)
-- Vytvoří přihlašovací údaje, které bude SQL na vyžádání používat pro přístup k souborům v úložišti.
-
-### <a name="create-database"></a>Vytvoření databáze
-
-Chcete-li vytvořit zobrazení, potřebujete databázi. Tuto databázi použijete pro některé z ukázkových dotazů v této dokumentaci.
+Prvním krokem je **Vytvoření databáze** , ve které budete spouštět dotazy. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které se použijí pro čtení dat v těchto ukázkách.
 
 > [!NOTE]
 > Databáze se používají jenom pro zobrazení metadat, nikoli pro skutečná data.  Poznamenejte si název databáze, který používáte, budete ho potřebovat později.
 
 ```sql
 CREATE DATABASE mydbname;
-```
-
-### <a name="create-credentials"></a>Vytvořit pověření
-
-Než budete moct spustit dotazy, musíte vytvořit přihlašovací údaje. Tento přihlašovací údaj bude používat služba SQL na vyžádání pro přístup k souborům v úložišti.
-
-> [!NOTE]
-> Aby bylo možné úspěšně spustit postup v této části, je nutné použít token SAS.
->
-> Chcete-li začít používat tokeny SAS, je třeba vyřadit UserIdentity, který je vysvětlen v následujícím [článku](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through).
->
-> SQL na vyžádání ve výchozím nastavení vždy používá předávací průchozí služba AAD.
-
-Další informace o tom, jak spravovat řízení přístupu k úložišti, najdete v tomto [odkazu](develop-storage-files-storage-access-control.md).
-
-Pokud chcete vytvořit přihlašovací údaje pro kontejnery CSV, JSON a Parquet, spusťte následující kód:
-
-```sql
--- create credentials for CSV container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/csv')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for JSON container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/json')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for PARQUET container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/parquet')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
 ```
 
 ## <a name="provided-demo-data"></a>Poskytnutá ukázková data
@@ -121,7 +67,7 @@ Ukázková data obsahují následující sady dat:
 - Kniha JSON
   - Formát JSON
 
-| Cesta ke složce                                                  | Popis                                                  |
+| Cesta ke složce                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Formát                                                        | Nadřazená složka pro data ve formátu CSV                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Složky s datovými soubory populace v různých formátech CSV. |
@@ -132,24 +78,6 @@ Ukázková data obsahují následující sady dat:
 | JSON                                                       | Nadřazená složka pro data ve formátu JSON                        |
 | /json/books/                                                 | Soubory JSON s daty z knih                                   |
 
-## <a name="validation"></a>Ověřování
-
-Spusťte následující tři dotazy a ověřte, zda jsou pověření vytvořena správně.
-
-> [!NOTE]
-> Všechny identifikátory URI v ukázkových dotazech používají účet úložiště umístěný v Severní Evropa oblasti Azure. Ujistěte se, že jste vytvořili příslušné přihlašovací údaje. Spusťte dotaz níže a ujistěte se, že je uvedený účet úložiště.
-
-```sql
-SELECT name
-FROM sys.credentials
-WHERE
-     name IN ( 'https://sqlondemandstorage.blob.core.windows.net/csv',
-     'https://sqlondemandstorage.blob.core.windows.net/parquet',
-     'https://sqlondemandstorage.blob.core.windows.net/json');
-```
-
-Pokud nemůžete najít příslušné přihlašovací údaje, ověřte si [nastavení prvního času](#first-time-setup).
-
 ### <a name="sample-query"></a>Ukázkový dotaz
 
 Posledním krokem ověření je spuštění následujícího dotazu:
@@ -159,7 +87,8 @@ SELECT
     COUNT_BIG(*)
 FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet',
+        BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+        DATA_SOURCE = 'sqlondemanddemo',
         FORMAT='PARQUET'
     ) AS nyc;
 ```

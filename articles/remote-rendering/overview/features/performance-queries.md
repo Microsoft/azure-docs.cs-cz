@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 2e843216bf973033868e75c027b11d27ddfe2e93
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3207ffca6fd0fbc943f4a2873b8b6c9029d565af
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757462"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022790"
 ---
 # <a name="server-side-performance-queries"></a>Dotazy na výkon na straně serveru
 
@@ -18,7 +18,7 @@ Dobrý výkon vykreslování na serveru je zásadní pro stabilní kmitočty sn�
 
 Největší dopad na výkon vykreslování je vstupní data modelu. Vstupní data můžete upravit, jak je popsáno v tématu [konfigurace převodu modelu](../../how-tos/conversion/configure-model-conversion.md).
 
-Výkon aplikace na straně klienta může být také kritickým bodem. Při podrobné analýze výkonu na straně klienta se doporučuje provést [trasování výkonu](../../how-tos/performance-tracing.md).
+Výkon aplikace na straně klienta může být také kritickým bodem. Pro důkladnou analýzu výkonu na straně klienta doporučujeme provést [:::no-loc text="performance trace":::](../../how-tos/performance-tracing.md) .
 
 ## <a name="clientserver-timeline"></a>Časová osa klienta/serveru
 

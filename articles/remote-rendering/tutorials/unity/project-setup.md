@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 33801316e4c0446865169560bb42f98052acba70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d68a3b1291d2e001c535a0c5a6b0c754c9d2b2e1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679594"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021343"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Kurz: vytvoření projektu Unity od začátku
 
@@ -44,7 +44,7 @@ Pro tento kurz potřebujete:
 ## <a name="create-a-new-unity-project"></a>Vytvořit nový projekt Unity
 
 V centru Unity vytvořte nový projekt.
-V tomto příkladu budeme předpokládat, že projekt se vytváří ve složce s názvem `RemoteRendering`.
+V tomto příkladu budeme předpokládat, že projekt se vytváří ve složce s názvem `RemoteRendering` .
 
 ![nové okno projektu](media/new-project.png)
 
@@ -77,9 +77,9 @@ Po úpravě a uložení manifestu se Unity automaticky aktualizuje. Potvrďte, �
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Ujistěte se, že máte nejnovější verzi balíčku.
 
 Následující kroky zajišťují, aby projekt používal nejnovější verzi balíčku vzdáleného vykreslování.
-1. V okně projektu vyberte balíček a klikněte na ikonu balíčku: ![výběr ikony balíčku](media/package-icons.png)
-1. V inspektoru klikněte na zobrazit ve Správci balíčků: Inspector balíčku ![.](media/package-properties.png)
-1. Na stránce Správce balíčků pro balíček vzdáleného vykreslování zkontrolujte, zda je k dispozici tlačítko Aktualizovat. Pokud je, pak se kliknutím na něj aktualizuje balíček na nejnovější dostupnou verzi: balíček ARR ![ve Správci balíčků.](media/package-manager.png)
+1. V okně projektu vyberte balíček a klikněte na :::no-loc text="package"::: ikonu: ![ Výběr ikony balíčku](media/package-icons.png)
+1. V inspektoru klikněte na zobrazit ve Správci balíčků: ![ Inspector balíčku.](media/package-properties.png)
+1. Na stránce Správce balíčků pro balíček vzdáleného vykreslování zkontrolujte, zda je k dispozici tlačítko Aktualizovat. Pokud je, pak se kliknutím na něj aktualizuje balíček na nejnovější dostupnou verzi: ![ balíček ARR ve Správci balíčků.](media/package-manager.png)
 1. Aktualizace balíčku někdy může vést k chybám v konzole nástroje. Pokud k tomu dojde, zkuste projekt zavřít a znovu otevřít.
 
 ## <a name="configure-the-camera"></a>Konfigurace kamery
@@ -90,11 +90,11 @@ Vyberte **hlavní uzel kamery** .
 
     ![resetovat transformaci kamery](media/camera-reset-transform.png)
 
-1. Nastavit **clear Flags** na *plnou barvu*
+1. Nastavit **:::no-loc text="Clear flags":::** na*:::no-loc text="Solid Color":::*
 
-1. Nastavit **pozadí** na *černou*
+1. Nastavit **:::no-loc text="Background":::** na*:::no-loc text="Black":::*
 
-1. Nastavte **roviny ořezu** na *poblíž = 0,3* a *daleko = 20*. To znamená, že vykreslování bude oříznout geometrii, která je větší než 30 cm nebo větší než 20 metrů.
+1. Nastavte na **:::no-loc text="Clipping Planes":::** *poblíž = 0,3* a *daleko = 20*. To znamená, že vykreslování bude oříznout geometrii, která je větší než 30 cm nebo větší než 20 metrů.
 
     ![Vlastnosti kamery Unity](media/camera-properties.png)
 
@@ -109,10 +109,10 @@ Vyberte **hlavní uzel kamery** .
 1. Vyberte **grafiku** vlevo.
 1. Změňte nastavení **kanálu vykreslování pomocí skriptů** na *HybridRenderingPipeline*. Tento krok přeskočte, pokud není použit kanál univerzálního vykreslování.
 
-    ![Změna nastavení](media/settings-graphics-lwrp.png) grafiky projektu někdy v uživatelském rozhraní nenačítá seznam dostupných typů kanálů z balíčků. v takovém případě musí být prostředek *HybridRenderingPipeline* přetažen do pole ručně: Změna nastavení grafiky projektu ![.](media/hybrid-rendering-pipeline.png)
+    ![Změna nastavení grafiky projektu ](media/settings-graphics-lwrp.png) někdy v uživatelském rozhraní nenačítá seznam dostupných typů kanálů z balíčků. v takovém případě musí být prostředek *HybridRenderingPipeline* přetažen do pole ručně: ![ Změna nastavení grafiky projektu.](media/hybrid-rendering-pipeline.png)
 1. Na levé straně vyberte **Player** .
 1. Vyberte kartu **nastavení Univerzální platforma Windows**
-1. Změna **Nastavení XR** pro podporu Windows Mixed reality: ![nastavení přehrávače](media/xr-player-settings.png)
+1. Změna **Nastavení XR** pro podporu Windows Mixed reality: ![ nastavení přehrávače](media/xr-player-settings.png)
 1. Vyberte nastavení jako na snímku obrazovky výše:
     1. Povolit **podporu virtuální realitu**
     1. Nastavit **Formát hloubky** na *16bitovou hloubku*
@@ -309,7 +309,7 @@ Pokud se to nepovede, ujistěte se, že jste správně zadali podrobnosti o úč
 
 ![Spuštění výstupu relace](media/create-session-output.png)
 
-V tomto okamžiku Azure zřídí server pro vás a spouští se virtuální počítač pro vzdálené vykreslování. To obvykle **trvá 3 až 5 minut**. Až bude virtuální počítač připravený, provede se `OnSessionStatusChanged` zpětné volání skriptu Unity a vytiskne se nový stav relace:
+V tomto okamžiku Azure zřídí server pro vás a spouští se virtuální počítač pro vzdálené vykreslování. To obvykle **trvá 3 až 5 minut**. Až bude virtuální počítač připravený, `OnSessionStatusChanged` provede se zpětné volání skriptu Unity a vytiskne se nový stav relace:
 
 ![Výstup připravený pro relaci](media/create-session-output-2.png)
 
@@ -420,7 +420,7 @@ Po stisknutí tlačítka *Přehrát*se teď v zobrazení zobrazí tři tlačítk
 Funkce **AutoStartSessionAsync** slouží k simulaci stisknutí tlačítek mimo editor.
 
 > [!TIP]
-> Je možné otevřít relace, které byly zastaveny, jejichž platnost vypršela, nebo jsou v chybovém stavu. I když již nelze použít pro vykreslování, můžete po otevření neaktivní relace zadat dotaz na jejich podrobnosti. Výše uvedený kód kontroluje stav relace v `ARRService_OnSessionStarted`, aby se automaticky zastavily, když se relace stane nepoužitelnou.
+> Je možné otevřít relace, které byly zastaveny, jejichž platnost vypršela, nebo jsou v chybovém stavu. I když již nelze použít pro vykreslování, můžete po otevření neaktivní relace zadat dotaz na jejich podrobnosti. Výše uvedený kód kontroluje stav relace v `ARRService_OnSessionStarted` , aby se automaticky zastavily, když se relace stane nepoužitelnou.
 
 Díky této funkci teď můžete vytvářet a opakovaně používat relace, které by měly významně zlepšit vývoj pracovního postupu.
 

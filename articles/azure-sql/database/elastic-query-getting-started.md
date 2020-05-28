@@ -116,7 +116,7 @@ Všimněte si, že dotaz agreguje výsledky ze všech horizontálních oddílů 
 3. Klikněte na **z jiných zdrojů** a klikněte na **z SQL Server**.
 
    ![Import z jiných zdrojů z Excelu][5]
-4. V **Průvodci datovým připojením** zadejte název serveru a přihlašovací údaje. Pak klikněte na **Další**.
+4. V **Průvodci datovým připojením** zadejte název serveru a přihlašovací údaje. Potom klikněte na **Další**.
 5. V dialogovém okně **Vyberte databázi**obsahující požadovaná data a vyberte databázi **ElasticDBQuery** .
 6. V zobrazení seznamu vyberte tabulku **zákazníci** a klikněte na **Další**. Klikněte na **Dokončit**.
 7. Ve formuláři **importovat data** v části **Vyberte, jakým způsobem chcete zobrazit tato data v sešitu**vyberte **tabulka** a klikněte na tlačítko **OK**.

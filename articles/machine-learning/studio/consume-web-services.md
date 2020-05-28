@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: b97fe6e55e2c36b6f101071e702952f529146281
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 537c7e70176d902c5bc7458b60de7a70ea040c85
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631660"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117340"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Jak využívat webovou službu Azure Machine Learning Studio (Classic)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Po nasazení prediktivního modelu Azure Machine Learning Studio (Classic) jako webové služby můžete použít REST API k odeslání dat IT a získání předpovědi. Data můžete odeslat v reálném čase nebo v dávkovém režimu.
 
@@ -99,7 +97,7 @@ Chcete-li se připojit k webové službě Machine Learning, musí být nainstalo
 **Instalace sady Microsoft. AspNet. WebApi. Client NuGet v aplikaci Visual Studio**
 
 1. Publikujte sadu stažení dat z Ski: webová služba třídy DataSet pro dospělé 2.
-2. Klikněte na **nástroje** > **správce** > balíčků NuGet**Konzola správce balíčků**.
+2. Klikněte na **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
 3. Vyberte **Install-Package Microsoft. ASPNET. WebApi. Client**.
 
 **Spuštění ukázky kódu**
@@ -306,7 +304,7 @@ print(fromJSON(result))
 
 ### <a name="javascript-sample"></a>Ukázka JavaScriptu
 
-Chcete-li se připojit k webové službě Machine Learning, použijte balíček **Request** npm v projektu. K formátování vstupu a analýze `JSON` výsledku použijete také objekt. V části `npm install request --save` `dependencies` a spusťte `npm install`instalaci `"request": "*"` pomocí nebo přidejte do balíčku. JSON.
+Chcete-li se připojit k webové službě Machine Learning, použijte balíček **Request** npm v projektu. `JSON`K formátování vstupu a analýze výsledku použijete také objekt. `npm install request --save` `"request": "*"` V části a spusťte instalaci pomocí nebo přidejte do balíčku. JSON `dependencies` `npm install` .
 
 **Tady je, jak bude vypadat kompletní požadavek.**
 ```js

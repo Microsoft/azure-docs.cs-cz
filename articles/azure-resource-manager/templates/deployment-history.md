@@ -3,17 +3,19 @@ title: Historie nasazení
 description: Popisuje postup zobrazení Azure Resource Manager operací nasazení pomocí portálu, PowerShellu, rozhraní příkazového řádku Azure a REST API.
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 1f22bdfac5eb12688a5b5778d4da1505e36ef6bf
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.date: 05/26/2020
+ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816280"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117833"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Zobrazit historii nasazení pomocí Azure Resource Manager
 
-Azure Resource Manager vám umožní zobrazit historii nasazení a prozkoumávat konkrétní operace v předchozích nasazeních. Můžete zobrazit nasazené prostředky a získat informace o případných chybách.
+Azure Resource Manager vám umožní zobrazit historii nasazení. Můžete kontrolovat konkrétní operace v předchozích nasazeních a zjistit, které prostředky byly nasazeny. Tato historie obsahuje informace o všech chybách.
+
+Historie nasazení pro skupinu prostředků je omezená na 800 nasazení. Po dosažení limitu se nasazení z historie automaticky odstraní. Další informace najdete v tématu [Automatické odstraňování z historie nasazení](deployment-history-deletions.md).
 
 Nápovědu k řešení konkrétních chyb nasazení najdete v tématu [řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manager](common-deployment-errors.md).
 
@@ -117,7 +119,7 @@ Každé nasazení může zahrnovat více operací. Pokud chcete zobrazit další
 
 1. V souhrnu pro nasazení vyberte **Podrobnosti operace**.
 
-    ![Vybrat operace nasazení](./media/deployment-history/get-operation-details.png)
+    ![Vybrat podrobnosti operace](./media/deployment-history/get-operation-details.png)
 
 1. Zobrazí se podrobnosti o tomto kroku nasazení. Pokud dojde k chybě, Podrobnosti obsahují chybovou zprávu.
 
@@ -210,6 +212,6 @@ Odpověď obsahuje chybovou zprávu.
 ## <a name="next-steps"></a>Další kroky
 
 * Nápovědu k řešení konkrétních chyb nasazení najdete v tématu [řešení běžných chyb při nasazování prostředků do Azure pomocí Azure Resource Manager](common-deployment-errors.md).
-* Další informace o používání protokolů aktivit k monitorování jiných typů akcí najdete v tématu [zobrazení protokolů aktivit pro správu prostředků Azure](../management/view-activity-logs.md).
+* Další informace o tom, jak se nasazení spravují v historii, najdete v tématu [Automatické odstraňování z historie nasazení](deployment-history-deletions.md).
 * Chcete-li před spuštěním ověřit nasazení, přečtěte si téma [nasazení skupiny prostředků pomocí šablony Azure Resource Manager](deploy-powershell.md).
 

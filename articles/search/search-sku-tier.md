@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: eb11a5cc2deef372ca91c23a8b9c82e17143c85b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617714"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119226"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
@@ -41,7 +41,7 @@ Následující tabulka popisuje omezení funkcí souvisejících s vrstvami.
 
 Vybraná úroveň určuje fakturovatelnou sazbu. Následující snímek obrazovky z Azure Portal zobrazuje dostupné úrovně minus ceny (které najdete na portálu a na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/). Nejběžnějšími úrovněmi jsou **bezplatné**, **základní**a **standardní** úrovně.
 
-**Free** vytvoří omezené vyhledávací služby pro menší projekty, včetně rychlých startů a kurzů. Interně jsou repliky a oddíly sdílené mezi více odběratelů. Nemůžete škálovat bezplatnou službu nebo spouštět významné úlohy.
+**Free** vytvoří omezené vyhledávací služby pro menší projekty, včetně rychlých startů a kurzů. Interně jsou repliky a oddíly sdíleny mezi více odběratelů. Nemůžete škálovat bezplatnou službu nebo spouštět významné úlohy.
 
 **Základní** a **standardní** jsou nejčastěji používané Fakturovatelné úrovně s výchozím nastavením **Standard** . Díky vyhrazeným prostředkům v rámci vašeho řízení můžete nasazovat větší projekty, optimalizovat výkon a nastavit kapacitu.
 

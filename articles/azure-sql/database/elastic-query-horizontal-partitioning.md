@@ -104,7 +104,7 @@ Syntaxe:
       [ OBJECT_NAME = N'nonescaped_object_name',]
       DISTRIBUTION = SHARDED(<sharding_column_name>) | REPLICATED |ROUND_ROBIN
 
-**Případě**
+**Příklad**
 
     CREATE EXTERNAL TABLE [dbo].[order_line](
          [ol_o_id] int NOT NULL,

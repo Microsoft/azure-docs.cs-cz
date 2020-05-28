@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8c8d6c1aca81d59b42ceca17ecfb071ee5f13bd
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185562"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014362"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování zabezpečení s hloubkovým podrobně
 
@@ -72,9 +72,12 @@ Následující části podrobněji popisují tyto fáze.
 
 ### <a name="authentication-agent-installation"></a>Instalace ověřovacího agenta
 
-Pouze globální Správci mohou nainstalovat ověřovacího agenta (pomocí Azure AD Connect nebo samostatné) na místním serveru. Instalace přidá dvě nové položky do **ovládacích panelů** > **programy** > programy**a seznam funkcí** :
+Pouze globální Správci mohou nainstalovat ověřovacího agenta (pomocí Azure AD Connect nebo samostatné) na místním serveru. Instalace přidá dvě nové položky do **ovládacích panelů**  >  **programy**programy  >  **a seznam funkcí** :
 - Aplikace ověřovacího agenta samotného. Tato aplikace se spouští s oprávněními [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) .
 - Aplikace aktualizace, která se používá k automatické aktualizaci ověřovacího agenta. Tato aplikace běží s oprávněními [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) .
+
+>[!IMPORTANT]
+>Z hlediska zabezpečení by správci měli zacházet se serverem, na kterém běží agent PTA, jako by šlo o řadič domény.  Servery agenta PTA by měly být posílené na stejném řádku, jak je uvedeno v části [zabezpečení řadičů domény před útoky](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) .
 
 ### <a name="authentication-agent-registration"></a>Registrace ověřovacího agenta
 

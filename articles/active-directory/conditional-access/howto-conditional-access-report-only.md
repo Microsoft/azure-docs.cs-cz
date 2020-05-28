@@ -4,19 +4,19 @@ description: Použití režimu pouze pro sestavy v podmíněném přístupu k po
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 05/01/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690372"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994965"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Konfigurace zásad podmíněného přístupu v režimu pouze sestavy
 
@@ -26,7 +26,7 @@ Konfigurace zásad podmíněného přístupu v režimu pouze pro sestavy:
 > Pokud vaše organizace ještě není, [nastavte Azure monitor integraci s Azure AD](#set-up-azure-monitor-integration-with-azure-ad). Tento proces musí proběhnout před tím, než budou data k dispozici ke kontrole.
 
 1. Přihlaste se k **Azure Portal** jako správce podmíněného přístupu, správce zabezpečení nebo globální správce.
-1. Vyhledejte **Azure Active Directory** > **Security** > **podmíněný přístup**zabezpečení.
+1. Vyhledejte **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
 1. Vyberte **nové zásady**.
 1. Podle potřeby konfigurujte podmínky zásad a požadované ovládací prvky pro udělení oprávnění.
 1. V části **Povolit zásadu** nastavte přepínač na režim **pouze pro sestavy** .
@@ -40,7 +40,7 @@ Zobrazit v protokolech přihlášení služby Azure AD výsledek jenom pro sesta
 Zobrazení výsledku zásad pouze pro sestavy pro konkrétní přihlášení:
 
 1. Přihlaste se k **Azure Portal** jako čtenář sestav, čtecí modul zabezpečení, správce zabezpečení nebo globální správce.
-1. Přejděte k **Azure Active Directory** > **přihlášení**.
+1. Přejděte k **Azure Active Directory**  >  **přihlášení**.
 1. Vyberte přihlášení nebo přidejte filtry pro zúžení výsledků.
 1. V zásuvce **podrobností** vyberte kartu **pouze sestava** a zobrazte tak zásady vyhodnocené během přihlašování.
 
@@ -61,7 +61,7 @@ Další informace o cenách Azure Monitor najdete na [stránce Azure monitor cen
 Po integraci protokolů služby Azure AD s Azure Monitor můžete sledovat dopad zásad podmíněného přístupu pomocí nových sešitů s přehledem podmíněného přístupu.
 
 1. Přihlaste se k **Azure Portal** jako správce zabezpečení nebo globální správce.
-1. Vyhledejte **Azure Active Directory** > **sešity**.
+1. Vyhledejte **Azure Active Directory**  >  **sešity**.
 1. Vyberte **přehledy podmíněného přístupu**.
 1. V rozevíracím seznamu **zásady podmíněného přístupu** vyberte jednu nebo víc zásad. Ve výchozím nastavení jsou vybrány všechny povolené zásady.
 1. Vyberte časový rozsah (Pokud časový rozsah překračuje dostupnou datovou sadu, sestava zobrazí všechna dostupná data). Jakmile nastavíte **zásady podmíněného přístupu** a parametry **časového rozsahu** , sestava se načte.

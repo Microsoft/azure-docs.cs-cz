@@ -60,7 +60,7 @@ Například následující obrázek představuje porovnání výsledků ze dvou 
 
 Vzhledem k tomu, že se jedná o model clusteringu, výsledky hodnocení jsou jiné než v porovnání s výsledky ze dvou regresních modelů nebo porovnáním dvou modelů klasifikace. Ale celková prezentace je stejná. 
 
-## <a name="metrics"></a>Metriky
+## <a name="metrics"></a>Průzkumník
 
 Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou podporované pro použití s **vyhodnocením modelu**:
 
