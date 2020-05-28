@@ -63,7 +63,7 @@ Informace o tom, jak používat Application Insights, najdete v [dokumentaci k A
 
 Následující oblasti Application Insights mohou být užitečné při vyhodnocování chování, výkonu a chyb ve vašich funkcích:
 
-| Prověřování | Popis |
+| Prověřování | Description |
 | ---- | ----------- |
 | **[Selhání](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvářejte grafy a výstrahy na základě selhání funkcí a výjimek serveru. **Název operace** je název funkce. Pokud neimplementujete vlastní telemetrie pro závislosti, neobjeví se chyby v závislostech. |
 | **[Výkon](../azure-monitor/app/performance-counters.md)** | Analyzujte problémy s výkonem zobrazením využití prostředků a propustnosti na **instance rolí cloudu**. Tato data můžou být užitečná pro scénáře ladění, kde funkce bogging své základní prostředky. |
@@ -117,7 +117,7 @@ Application Insights můžete použít bez vlastní konfigurace. Výchozí konfi
 
 Protokolovací nástroj Azure Functions zahrnuje *kategorii* pro každý protokol. Kategorie označuje, která část běhového kódu nebo kód vaší funkce zapsaly protokol. Následující graf popisuje hlavní kategorie protokolů, které modul runtime vytvoří. 
 
-| Kategorie | Popis |
+| Kategorie | Description |
 | ----- | ----- | 
 | Host.Results | Tyto protokoly se zobrazují jako **požadavky** v Application Insights. Označují úspěch nebo neúspěch funkce. Všechny tyto protokoly jsou zapisovány na `Information` úrovni. Pokud filtrujete `Warning` nad nebo výše, nezobrazí se žádná z těchto dat. |
 | Host. agregátor | Tyto protokoly poskytují počty a průměry volání funkcí v [konfigurovatelném](#configure-the-aggregator) časovém intervalu. Výchozí doba je 30 sekund nebo 1 000 výsledků, podle toho, co nastane dřív. Protokoly jsou k dispozici v tabulce **customMetrics** v Application Insights. Jedná se o počet spuštění, úspěšnost a dobu trvání. Všechny tyto protokoly jsou zapisovány na `Information` úrovni. Pokud filtrujete `Warning` nad nebo výše, nezobrazí se žádná z těchto dat. |
@@ -137,7 +137,7 @@ Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každ�
 |LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladit       | 1 |
+|Ladění       | 1 |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |

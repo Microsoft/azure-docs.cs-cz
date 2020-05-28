@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 83f80f893620a225c928be2ad7ad1679b3a9c465
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 104a583122fa08cf145191b8bcee49ce5f042599
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652234"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021394"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurace převodu modelů
 
@@ -74,7 +74,7 @@ Konečný faktor škálování se aplikuje na vrcholy geometrie a místní trans
 Centrování je důležité, pokud je zdrojový model umístěn daleko od počátku, protože v takovém případě problémy s přesností plovoucí desetinné čárky mohou způsobit vykreslování artefaktů.
 
 * `opaqueMaterialDefaultSidedness`-Modul vykreslování předpokládá, že neprůhledné materiály jsou oboustranné.
-Pokud to není zamýšlené chování, tento parametr by měl být nastaven na "SingleSided". Další informace najdete v tématu [vykreslování s jednou stranou](../../overview/features/single-sided-rendering.md).
+Pokud to není zamýšlené chování, tento parametr by měl být nastaven na "SingleSided". Další informace najdete v tématu [ :::no-loc text="single sided"::: vykreslování](../../overview/features/single-sided-rendering.md).
 
 ### <a name="material-overrides"></a>Přepsání materiálu
 
@@ -90,7 +90,7 @@ Vykreslovací modul očekává, že hodnoty barev budou v lineárním prostoru.
 Pokud je model definován pomocí prostoru hodnot gamma, pak tyto možnosti by měly být nastaveny na hodnotu true.
 
 * `gammaToLinearMaterial`-Převést barvy materiálu z prostoru gamma na lineární místo
-* `gammaToLinearVertex`-Převést barvy vrcholů z prostoru gamma na lineární místo
+* `gammaToLinearVertex`-Převést :::no-loc text="vertex"::: barvy z hodnoty gamma na lineární místo
 
 > [!NOTE]
 > Pro soubory FBX jsou tato nastavení standardně nastavená na `true` . U všech ostatních typů souborů je výchozí hodnota `false` .
@@ -127,12 +127,12 @@ V `none` režimu je minimální režie za běhu a také mírně lepší doba na�
 
 * `axis`– Pro přepsání souřadnic systémových jednotek-vektory. Výchozí hodnoty jsou `["+x", "+y", "+z"]` . Teoreticky má formát FBX hlavičku, kde jsou tyto vektory definovány, a převod používá tyto informace k transformaci scény. Formát glTF definuje také pevný systém souřadnic. V praxi některé prostředky mají buď nesprávné informace v hlavičce nebo byly uloženy s jinou konvencí souřadnicového systému. Tato možnost umožňuje přepsat souřadnicový systém pro kompenzaci. Například: `"axis" : ["+x", "+z", "-y"]` vyměňuje osu Z a osu Y a zachová změnu hodnoty pera systému tím, že se obrátí směr osy Y.
 
-### <a name="vertex-format"></a>Formát vrcholu
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::formátovat
 
-Je možné upravit formát vrcholu pro síť a opravit tak úspory paměti. Dolní nároky na paměť umožňují načíst větší modely nebo dosáhnout vyššího výkonu. V závislosti na vašich datech ale může špatný formát významně ovlivnit kvalitu vykreslování.
+Je možné upravit :::no-loc text="vertex"::: Formát sítě a opravit tak úspory paměti v obchodě. Dolní nároky na paměť umožňují načíst větší modely nebo dosáhnout vyššího výkonu. V závislosti na vašich datech ale může špatný formát významně ovlivnit kvalitu vykreslování.
 
 > [!CAUTION]
-> Změna formátu vrcholu by měla být poslední možnost, pokud se už modely nevejdou do paměti, nebo když se optimalizuje kvůli nejlepšímu možnému výkonu. Změny můžou snadno zavést artefakty pro vykreslování, Jak zjevná, tak i drobné. Pokud si nejste jisti, co se má vyhodnotit, neměli byste výchozí nastavení měnit.
+> Změna :::no-loc text="vertex"::: formátu by měla být poslední možnost, když se modely do paměti již nevejdou, nebo když se optimalizuje z hlediska nejlepšího možného výkonu. Změny můžou snadno zavést artefakty pro vykreslování, Jak zjevná, tak i drobné. Pokud si nejste jisti, co se má vyhodnotit, neměli byste výchozí nastavení měnit.
 
 Tyto úpravy jsou možné:
 
@@ -159,11 +159,11 @@ Následující `vertex` oddíl v `.json` souboru je nepovinný. Pro každou čá
 
 Vynucením komponenty na `NONE` je zaručeno, že výstupní síť nemá příslušný datový proud.
 
-#### <a name="component-formats-per-vertex-stream"></a>Formáty komponent na datový proud vrcholu
+#### <a name="component-formats-per-no-loc-textvertex-stream"></a>Formáty komponent na :::no-loc text="vertex"::: datový proud
 
 Tyto formáty jsou povolené pro příslušné součásti:
 
-| Součást vrcholu | Podporované formáty (tučné = výchozí) |
+| :::no-loc text="Vertex"::: (komponenta) | Podporované formáty (tučné = výchozí) |
 |:-----------------|:------------------|
 |position| **32_32_32_FLOAT**16_16_16_16_FLOAT |
 |color0| **8_8_8_8_UNSIGNED_NORMALIZED**, žádný |
@@ -178,7 +178,7 @@ Tyto formáty jsou povolené pro příslušné součásti:
 
 Paměťové nároky na formáty jsou následující:
 
-| Formát | Popis | Počet bajtů na vrchol |
+| Formát | Description | Počet bajtů za sekundu:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|Úplná přesnost plovoucí desetinné čárky se dvěma komponentami|8
 |16_16_FLOAT|poloviční přesnost s plovoucí desetinnou čárkou pro dvě komponenty|4
@@ -197,11 +197,11 @@ Paměťové nároky na formáty jsou následující:
 
 #### <a name="example"></a>Příklad
 
-Předpokládejme, že máte model Photogrammetry, který má vloženými osvětlení do textur. Vše potřebné k vykreslení modelu je pozice vrcholu a souřadnice textury.
+Předpokládejme, že máte model Photogrammetry, který má vloženými osvětlení do textur. Vše, co je potřeba k vykreslení modelu, jsou :::no-loc text="vertex"::: pozice a souřadnice textury.
 
-Ve výchozím nastavení má převaděč předpokládat, že v modelu můžete chtít používat i materiály PBR, takže vygeneruje `normal` `tangent` data, a `binormal` za vás. V důsledku toho je využití paměti na vrcholu `position` (12 bajtů) + `texcoord0` (8 bajtů) + `normal` (4 bajty) + `tangent` (4 bajty) + `binormal` (4 bajt) = 32 bajtů. Větší modely tohoto typu můžou snadno mít spoustu milionů vrcholů v důsledku modelů, které můžou zabírat více GB paměti. Takové velké objemy dat budou mít vliv na výkon a dokonce i nedostatek paměti.
+Ve výchozím nastavení má převaděč předpokládat, že v modelu můžete chtít používat i materiály PBR, takže vygeneruje `normal` `tangent` data, a `binormal` za vás. V důsledku toho je využití paměti na vrcholu `position` (12 bajtů) + `texcoord0` (8 bajtů) + `normal` (4 bajty) + `tangent` (4 bajty) + `binormal` (4 bajt) = 32 bajtů. Větší modely tohoto typu můžou snadno mít spoustu milionů :::no-loc text="vertices"::: výsledků v modelech, které můžou zabírat více GB paměti. Takové velké objemy dat budou mít vliv na výkon a dokonce i nedostatek paměti.
 
-S vědomím, že v modelu nikdy nepotřebujete dynamické osvětlení a že všechny souřadnice textury jsou v `[0; 1]` rozsahu, můžete nastavit `normal` , `tangent` , a `binormal` na `NONE` a `texcoord0` na poloviční přesnost ( `16_16_FLOAT` ), výsledkem je pouze 16 bajtů na vrchol. Rozřezání dat sítě na polovinu umožňuje načíst větší modely a potenciálně zvyšuje výkon.
+S vědomím, že pro model nikdy nepotřebujete dynamické osvětlení a že všechny souřadnice textury jsou v `[0; 1]` rozsahu, můžete nastavit `normal` , `tangent` , a `binormal` na `NONE` a `texcoord0` na polovinu přesnosti ( `16_16_FLOAT` ), což má za následek jenom 16 bajtů :::no-loc text="vertex"::: . Rozřezání dat sítě na polovinu umožňuje načíst větší modely a potenciálně zvyšuje výkon.
 
 ## <a name="typical-use-cases"></a>Typické případy použití
 
@@ -215,7 +215,7 @@ Existují určité třídy případů použití, které mají nárok na konkrét
 
 * Když potřebujete přesunout části kolem, obvykle to znamená, že potřebujete podporu pro raycasts nebo jiné [prostorové dotazy](../../overview/features/spatial-queries.md), abyste je mohli vybrat na prvním místě. Na druhé straně platí, že pokud nechcete něco přesunout, je pravděpodobné, že nepotřebujete, aby se účastnil prostorových dotazů, a proto může `generateCollisionMesh` příznak vypnout. Tento přepínač má výrazný dopad na časy převodu, časy načítání a také náklady na aktualizaci za běhu za sekundu.
 
-* Pokud aplikace nepoužívá [vyjmuté plochy](../../overview/features/cut-planes.md), `opaqueMaterialDefaultSidedness` příznak by měl být vypnutý. Nárůst výkonu je obvykle 20% až 30%. Vyjmuté roviny je stále možné používat, ale při hledání vnitřních částí objektů nebudou fungovat žádné pozadí, což vypadá s čítačem. Další informace najdete v tématu [vykreslování s jednou stranou](../../overview/features/single-sided-rendering.md).
+* Pokud aplikace nepoužívá [vyjmuté plochy](../../overview/features/cut-planes.md), `opaqueMaterialDefaultSidedness` příznak by měl být vypnutý. Nárůst výkonu je obvykle 20% až 30%. Vyjmuté roviny je stále možné používat, ale při hledání vnitřních částí objektů nebudou fungovat žádné pozadí, což vypadá s čítačem. Další informace najdete v tématu [ :::no-loc text="single sided"::: vykreslování](../../overview/features/single-sided-rendering.md).
 
 ### <a name="use-case-photogrammetry-models"></a>Případ použití: Photogrammetry modely
 

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: b2d2d14f89fa25bba1a19538c758aa0c930b3964
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837307"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018527"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
 
@@ -28,7 +28,7 @@ Vlastní metriky je možné odesílat Azure Monitor prostřednictvím několika 
 - Instrumentujte svoji aplikaci pomocí sady Azure Application Insights SDK a odešlete vlastní telemetrii do Azure Monitor. 
 - Nainstalujte rozšíření Windows Azure Diagnostics (WAD) na virtuální počítač [Azure](collect-custom-metrics-guestos-resource-manager-vm.md), [sadu škálování virtuálního počítače](collect-custom-metrics-guestos-resource-manager-vmss.md), [klasický virtuální](collect-custom-metrics-guestos-vm-classic.md)počítač nebo [klasický Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) a odešlete čítače výkonu do Azure monitor. 
 - Nainstalujte na virtuální počítač Azure Linux [agenta InfluxData telegraf](collect-custom-metrics-linux-telegraf.md) a odešlete metriky pomocí modulu plug-in Azure monitor Output.
-- Odešlete vlastní metriky [přímo do Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+- Odešlete vlastní metriky [přímo do Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
 
 ## <a name="pricing-model-and-rentention"></a>Cenový model a uchovávání
 
@@ -51,7 +51,7 @@ Aby bylo možné odesílat vlastní metriky Azure Monitor, entita, která odesí
 K ověření žádosti Azure Monitor ověří token aplikace pomocí veřejných klíčů Azure AD. Existující role **vydavatele metrik monitorování** již má toto oprávnění. Je k dispozici v Azure Portal. Instanční objekt v závislosti na tom, k jakým prostředkům vysílat vlastní metriky, je možné v požadovaném oboru udělit roli **vydavatele metrik monitorování** . Příkladem může být předplatné, skupina prostředků nebo konkrétní prostředek.
 
 > [!TIP]  
-> Když požádáte o token Azure AD, aby vygeneroval vlastní metriky, ujistěte se, že cílová skupina nebo prostředek, `https://monitoring.azure.com/`pro který je požadován token, jsou. Nezapomeňte zahrnout koncové lomítko (/).
+> Když požádáte o token Azure AD, aby vygeneroval vlastní metriky, ujistěte se, že cílová skupina nebo prostředek, pro který je požadován token, jsou `https://monitoring.azure.com/` . Nezapomeňte zahrnout koncové lomítko (/).
 
 ### <a name="subject"></a>Subjekt
 Tato vlastnost zachycuje ID prostředku Azure, pro který je nahlášená vlastní metrika. Tyto informace se zakódují v adrese URL vytvořeného volání rozhraní API. Každé rozhraní API může odesílat jenom hodnoty metrik pro jeden prostředek Azure.
@@ -189,31 +189,31 @@ Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouz
 |Oblast Azure |Předpona regionálního koncového bodu|
 |---|---|
 | **USA a Kanada** | |
-|USA – středozápad | https:\//westcentralus.Monitoring.Azure.com/ |
-|USA – západ 2       | https:\//westus2.Monitoring.Azure.com/ |
-|USA – středosever | https:\//northcentralus.Monitoring.Azure.com
-|USA – středojih| https:\//southcentralus.Monitoring.Azure.com/ |
-|USA – střed      | https:\//centralus.Monitoring.Azure.com |
-|Střední Kanada | https:\//canadacentral.Monitoring.Azure.comc
-|USA – východ| https:\//eastus.Monitoring.Azure.com/ |
+|USA – středozápad | https: \/ /westcentralus.Monitoring.Azure.com/ |
+|USA – západ 2       | https: \/ /westus2.Monitoring.Azure.com/ |
+|USA – středosever | https: \/ /northcentralus.Monitoring.Azure.com
+|USA – středojih| https: \/ /southcentralus.Monitoring.Azure.com/ |
+|USA – střed      | https: \/ /centralus.Monitoring.Azure.com |
+|Střední Kanada | https: \/ /canadacentral.Monitoring.Azure.comc
+|USA – východ| https: \/ /eastus.Monitoring.Azure.com/ |
 | **Evropa** | |
-|Severní Evropa    | https:\//northeurope.Monitoring.Azure.com/ |
-|Západní Evropa     | https:\//westeurope.Monitoring.Azure.com/ |
-|Spojené království – jih | https:\//uksouth.Monitoring.Azure.com
-|Francie – střed | https:\//francecentral.Monitoring.Azure.com |
+|Severní Evropa    | https: \/ /northeurope.Monitoring.Azure.com/ |
+|Západní Evropa     | https: \/ /westeurope.Monitoring.Azure.com/ |
+|Spojené království – jih | https: \/ /uksouth.Monitoring.Azure.com
+|Francie – střed | https: \/ /francecentral.Monitoring.Azure.com |
 | **Afrika** | |
-|Jižní Afrika – sever | https:\//southafricanorth.Monitoring.Azure.com
+|Jižní Afrika – sever | https: \/ /southafricanorth.Monitoring.Azure.com
 | **Asie** | |
-|Indie – střed | https:\//centralindia.Monitoring.Azure.com
-|Austrálie – východ | https:\//australiaeast.Monitoring.Azure.com
-|Japonsko – východ | https:\//japaneast.Monitoring.Azure.com
-|Jihovýchodní Asie  | https:\//southeastasia.Monitoring.Azure.com |
-|Východní Asie | https:\//eastasia.Monitoring.Azure.com
-|Jižní Korea – střed   | https:\//koreacentral.Monitoring.Azure.com
+|Indie – střed | https: \/ /centralindia.Monitoring.Azure.com
+|Austrálie – východ | https: \/ /australiaeast.Monitoring.Azure.com
+|Japonsko – východ | https: \/ /japaneast.Monitoring.Azure.com
+|Jihovýchodní Asie  | https: \/ /southeastasia.Monitoring.Azure.com |
+|Východní Asie | https: \/ /eastasia.Monitoring.Azure.com
+|Jižní Korea – střed   | https: \/ /koreacentral.Monitoring.Azure.com
 
 ## <a name="latency-and-storage-retention"></a>Latence a uchování úložiště
 
-Přidání značky nová metrika nebo přidání nové dimenze do metriky může trvat až 2 až 3 minuty, než se objeví. V systému by se měla data apear za méně než 30 sekund 99% času. 
+Přidání značky nová metrika nebo přidání nové dimenze do metriky může trvat až 2 až 3 minuty, než se objeví. V systému by se měla data zobrazit během méně než 30 sekund 99% času. 
 
 Pokud odstraníte metriku nebo odeberete dimenzi, změna může trvat týden až měsíčně, než se odstraní ze systému.
 
@@ -230,7 +230,7 @@ Aktivní časová řada je definovaná jako jakákoli jedinečná kombinace metr
 
 ## <a name="next-steps"></a>Další kroky
 Použijte vlastní metriky z různých služeb: 
- - [Virtuální počítače](collect-custom-metrics-guestos-resource-manager-vm.md)
+ - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Škálovací sada virtuálních počítačů](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Virtual Machines Azure (Classic)](collect-custom-metrics-guestos-vm-classic.md)
  - [Virtuální počítač se systémem Linux pomocí agenta telegraf](collect-custom-metrics-linux-telegraf.md)

@@ -1,28 +1,29 @@
 ---
-title: 'Kurz: aplikace v ASP.NET s SQL Database'
-description: Zjistěte, jak nasadit aplikaci C# ASP.NET s databází SQL Serveru do Azure.
+title: 'Kurz: aplikace v ASP.NET s Azure SQL Database'
+description: Naučte se, jak nasadit aplikaci v C# ASP.NET do Azure a Azure SQL Database
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: a9acb55f0a03a6ec1ba0bb6bb38c665b059b672b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f6c8b388a9d1261e08314b8f8c607e5ee16362ae
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80047028"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013784"
 ---
-# <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Kurz: Vytvoření aplikace ASP.NET se službou SQL Database v Azure
+# <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Kurz: nasazení aplikace v ASP.NET do Azure pomocí Azure SQL Database
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak nasadit datově řízenou aplikaci ASP.NET v App Service a připojit ji k [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Až budete hotovi, budete mít aplikaci ASP.NET běžící v Azure a připojenou k SQL Database.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak nasadit datově řízenou aplikaci ASP.NET v App Service a připojit ji k [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md). Až budete hotovi, budete mít aplikaci ASP.NET běžící v Azure a připojenou k SQL Database.
 
 ![Publikovaná aplikace ASP.NET v Azure App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit databázi SQL v Azure
+>
+> * Vytvoření databáze v Azure SQL Database
 > * Připojit aplikaci ASP.NET ke službě SQL Database
 > * Nasadit aplikaci do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
@@ -37,28 +38,28 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Nainstalujte <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> s úlohou **vývoje ASP.NET a webu** .
 
-Pokud jste již nainstalovali aplikaci Visual Studio, přidejte úlohy v aplikaci Visual Studio kliknutím na tlačítko **nástroje** > **získat nástroje a funkce**.
+Pokud jste již nainstalovali aplikaci Visual Studio, přidejte úlohy v aplikaci Visual Studio kliknutím na tlačítko **nástroje**  >  **získat nástroje a funkce**.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
-- [Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
-- Extrahuje (rozbalí) soubor *soubor dotnet-SQLDB-tutorial-Master. zip* .
+* [Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
+* Extrahuje (rozbalí) soubor *soubor dotnet-SQLDB-tutorial-Master. zip* .
 
 Ukázkový projekt obsahuje základní aplikaci CRUD (vytváření-čtení-aktualizace-odstraňování) v [ASP.NET MVC](https://www.asp.net/mvc) používající [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
 ### <a name="run-the-app"></a>Spuštění aplikace
 
-Otevřete soubor *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* v sadě Visual Studio. 
+Otevřete soubor *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* v sadě Visual Studio.
 
-Zadáním `Ctrl+F5` spusťte aplikaci bez zapnutého ladění. Aplikace se zobrazí ve vašem výchozím prohlížeči. Vyberte odkaz **Vytvořit nový** a vytvořte několik položek *úkolů*. 
+Zadáním `Ctrl+F5` spusťte aplikaci bez zapnutého ladění. Aplikace se zobrazí ve vašem výchozím prohlížeči. Vyberte odkaz **Vytvořit nový** a vytvořte několik položek *úkolů*.
 
 ![Dialogové okno Nový projekt ASP.NET](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
 Otestujte odkazy **Upravit**, **Podrobnosti** a **Odstranit**.
 
-Aplikace pro připojení k databázi používá kontext databáze. V této ukázce kontext databáze používá připojovací řetězec `MyDbConnection`. Připojovací řetězec je nastavený v souboru *Web.config* a odkazuje se na něj v souboru *Models/MyDatabaseContext.cs*. Název připojovacího řetězce se používá později v tomto kurzu k připojení aplikace Azure k Azure SQL Database. 
+Aplikace pro připojení k databázi používá kontext databáze. V této ukázce kontext databáze používá připojovací řetězec `MyDbConnection`. Připojovací řetězec je nastavený v souboru *Web.config* a odkazuje se na něj v souboru *Models/MyDatabaseContext.cs*. Název připojovacího řetězce se používá později v tomto kurzu k připojení aplikace Azure k Azure SQL Database.
 
-## <a name="publish-to-azure-with-sql-database"></a>Publikování do Azure pomocí služby SQL Database
+## <a name="publish-aspnet-application-to-azure"></a>Publikování aplikace ASP.NET do Azure
 
 V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt **DotNetAppSqlDb** a vyberte **Publikovat**.
 
@@ -72,18 +73,16 @@ Publikování otevře dialog **vytvořit App Service** , který vám pomůže vy
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-V dialogovém okně **Vytvoření služby App Service** klikněte na **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud jste již přihlášení k účtu Microsoft, ujistěte se, že odpovídá vašemu předplatnému Azure. Pokud jste přihlášeni k účtu Microsoft, který nemá přiřazené předplatné Azure, kliknutím na něj přidejte správný účet. 
+V dialogovém okně **Vytvoření služby App Service** klikněte na **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud jste již přihlášení k účtu Microsoft, ujistěte se, že odpovídá vašemu předplatnému Azure. Pokud jste přihlášeni k účtu Microsoft, který nemá přiřazené předplatné Azure, kliknutím na něj přidejte správný účet.
 
 > [!NOTE]
 > Pokud už jste přihlášení, nevybírejte zatím možnost **Vytvořit**.
->
->
-   
+
 ![Přihlášení k Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 ### <a name="configure-the-web-app-name"></a>Konfigurace názvu webové aplikace
 
-Můžete ponechat vygenerovaný název webové aplikace nebo ho můžete změnit na jiný jedinečný název (platné znaky jsou `a-z`, `0-9` a `-`). Název webové aplikace se používá jako součást výchozí adresy URL vaší aplikace (`<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší webové aplikace). Název webové aplikace musí být jedinečný mezi všemi aplikacemi v Azure. 
+Můžete ponechat vygenerovaný název webové aplikace nebo ho můžete změnit na jiný jedinečný název (platné znaky jsou `a-z`, `0-9` a `-`). Název webové aplikace se používá jako součást výchozí adresy URL vaší aplikace (`<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší webové aplikace). Název webové aplikace musí být jedinečný mezi všemi aplikacemi v Azure.
 
 ![Dialogové okno Vytvoření služby App Service](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
@@ -91,76 +90,76 @@ Můžete ponechat vygenerovaný název webové aplikace nebo ho můžete změnit
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-Vedle pole **Skupina prostředků** klikněte na tlačítko **Nová**.
+1. Vedle pole **Skupina prostředků** klikněte na tlačítko **Nová**.
 
-![Vedle pole Skupina prostředků klikněte na Nová.](media/app-service-web-tutorial-dotnet-sqldatabase/new_rg2.png)
+   ![Vedle pole Skupina prostředků klikněte na Nová.](media/app-service-web-tutorial-dotnet-sqldatabase/new_rg2.png)
 
-Pojmenujte skupinu prostředků **myResourceGroup**.
+2. Pojmenujte skupinu prostředků **myResourceGroup**.
 
 ### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-Vedle pole **Plán služby App Service** klikněte na **Nový**. 
+1. Vedle pole **Plán služby App Service** klikněte na **Nový**.
 
-V dialogovém okně **Konfigurace plánu služby App Service** nastavte nový plán takto:
+2. V dialogovém okně **Konfigurace plánu služby App Service** nastavte nový plán takto:
 
-![Vytvoření plánu služby App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
+   ![Vytvoření plánu služby App Service](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
 
-| Nastavení  | Navrhovaná hodnota | Další informace |
-| ----------------- | ------------ | ----|
-|**Plán App Service**| myAppServicePlan | [Plány služby App Service](../app-service/overview-hosting-plans.md) |
-|**Umístění**| Západní Evropa | [Oblasti Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
-|**Velikost**| Free | [Cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
+   | Nastavení  | Navrhovaná hodnota | Další informace |
+   | ----------------- | ------------ | ----|
+   |**Plán App Service**| myAppServicePlan | [Plány služby App Service](../app-service/overview-hosting-plans.md) |
+   |**Umístění**| Západní Evropa | [Oblast Azure](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
+   |**Velikost**| Free | [Cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
-### <a name="create-a-sql-server-instance"></a>Vytvoření instance SQL Serveru
+### <a name="create-a-server"></a>Vytvoření serveru
 
-Před vytvořením databáze potřebujete [logický server Azure SQL Database](../sql-database/sql-database-features.md). Logický server obsahuje soubor databází spravovaných jako skupina.
+Před vytvořením databáze budete potřebovat [logický SQL Server](../azure-sql/database/logical-servers.md). Logický SQL Server je logická konstrukce, která obsahuje skupinu databází spravovaných jako skupina.
 
-Klikněte na **Vytvořit službu SQL Database**.
+1. Klikněte na **Vytvořit službu SQL Database**.
 
-![Vytvoření databáze SQL](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
+   ![Vytvoření databáze SQL](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
-V dialogovém okně **Konfigurace služby SQL Database** klikněte na **Nový** vedle **SQL Server**. 
+2. V dialogovém okně **Konfigurace služby SQL Database** klikněte na **Nový** vedle **SQL Server**.
 
-Vygeneruje se jedinečný název serveru. Tento název se použije jako součást výchozí adresy URL vašeho logického serveru – `<server_name>.database.windows.net`. Musí být jedinečný mezi všemi instancemi logických serverů v Azure. Název serveru můžete změnit, ale pro účely tohoto kurzu ponechte vygenerovanou hodnotu.
+   Vygeneruje se jedinečný název serveru. Tento název se používá jako součást výchozí adresy URL pro váš server `<server_name>.database.windows.net` . Musí být jedinečný napříč všemi servery v Azure SQL. Název serveru můžete změnit, ale pro účely tohoto kurzu ponechte vygenerovanou hodnotu.
 
-Přidejte uživatelské jméno a heslo správce. Požadavky na složitost hesla najdete v tématu [Zásady hesel](/sql/relational-databases/security/password-policy).
+3. Přidejte uživatelské jméno a heslo správce. Požadavky na složitost hesla najdete v tématu [Zásady hesel](/sql/relational-databases/security/password-policy).
 
-Toto uživatelské jméno a heslo si zapamatujte. Později je budete potřebovat ke správě instance logického serveru.
+   Toto uživatelské jméno a heslo si zapamatujte. Později je budete potřebovat ke správě serveru.
 
-> [!IMPORTANT]
-> Přestože je vaše heslo v připojovacích řetězcích maskované (v sadě Visual Studio i ve službě App Service), skutečnost, že se někde uchovává, rozšiřuje prostor pro útok na vaši aplikace. App Service může toto riziko odstranit pomocí [identit spravovaných služeb](overview-managed-identity.md), které úplně odstraňují potřebu uchovávat tajné klíče v kódu nebo konfiguraci aplikace. Další informace najdete v části [Další kroky](#next-steps).
+   > [!IMPORTANT]
+   > Přestože je vaše heslo v připojovacích řetězcích maskované (v sadě Visual Studio i ve službě App Service), skutečnost, že se někde uchovává, rozšiřuje prostor pro útok na vaši aplikace. App Service může toto riziko odstranit pomocí [identit spravovaných služeb](overview-managed-identity.md), které úplně odstraňují potřebu uchovávat tajné klíče v kódu nebo konfiguraci aplikace. Další informace najdete v části [Další kroky](#next-steps).
 
-![Vytvoření instance SQL Serveru](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
+   ![Vytvořit server](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
-Klikněte na tlačítko **OK**. Dialogové okno **Konfigurace služby SQL Database** ještě nezavírejte.
+4. Klikněte na tlačítko **OK**. Dialogové okno **Konfigurace služby SQL Database** ještě nezavírejte.
 
-### <a name="create-a-sql-database"></a>Vytvoření databáze SQL
+### <a name="create-a-database-in-azure-sql-database"></a>Vytvoření databáze v Azure SQL Database
 
-V dialogovém okně **Konfigurace služby SQL Database**: 
+1. V dialogovém okně **Konfigurace služby SQL Database**:
 
-* Ponechte výchozí vygenerovaný **Název databáze**.
-* Do pole **Název připojovacího řetězce** zadejte *MyDbConnection*. Tento název se musí shodovat s připojovacím řetězcem, na který se odkazuje v souboru *Models/MyDatabaseContext.cs*.
-* Vyberte **OK**.
+   * Ponechte výchozí vygenerovaný **Název databáze**.
+   * Do pole **Název připojovacího řetězce** zadejte *MyDbConnection*. Tento název se musí shodovat s připojovacím řetězcem, na který se odkazuje v souboru *Models/MyDatabaseContext.cs*.
+   * Vyberte **OK**.
 
-![Konfigurace služby SQL Database](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
+    ![Konfigurace databáze](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-V dialogovém okně **Vytvoření služby App Service** se zobrazí prostředky, které jste nakonfigurovali. Klikněte na **Vytvořit**. 
+2. V dialogovém okně **Vytvoření služby App Service** se zobrazí prostředky, které jste nakonfigurovali. Klikněte na **Vytvořit**.
 
-![prostředky, které jste vytvořili](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+   ![prostředky, které jste vytvořili](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
-Jakmile průvodce dokončí vytváření prostředků Azure, publikuje vaši aplikaci ASP.NET do Azure. Spustí se váš výchozí prohlížeč na adrese URL nasazené aplikace. 
+Jakmile průvodce dokončí vytváření prostředků Azure, publikuje vaši aplikaci ASP.NET do Azure. Spustí se váš výchozí prohlížeč na adrese URL nasazené aplikace.
 
 Přidejte několik položek úkolů.
 
 ![Publikovaná aplikace ASP.NET v Azure App](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-Blahopřejeme! Vaše aplikace ASP.NET řízená daty je spuštěná ve službě Azure App Service.
+Gratulujeme! Vaše aplikace ASP.NET řízená daty je spuštěná ve službě Azure App Service.
 
-## <a name="access-the-sql-database-locally"></a>Místní přístup ke službě SQL Database
+## <a name="access-the-database-locally"></a>Místní přístup k databázi
 
-Sada Visual Studio umožňuje snadno zkoumat a spravovat vaši novou službu SQL Database v **Průzkumníku objektů systému SQL Server**.
+Visual Studio umožňuje snadno prozkoumat a spravovat vaši novou databázi v **Průzkumník objektů systému SQL Server**.
 
 ### <a name="create-a-database-connection"></a>Vytvoření připojení k databázi
 
@@ -172,7 +171,7 @@ V horní části **Průzkumníka objektů systému SQL Server** klikněte na tla
 
 V dialogovém okně **Připojení** rozbalte uzel **Azure**. Tady jsou uvedené všechny vaše instance služby SQL Database v Azure.
 
-Vyberte službu SQL Database, kterou jste vytvořili dříve. V dolní části se automaticky vyplní připojení, které jste vytvořili.
+Vyberte databázi, kterou jste vytvořili dříve. V dolní části se automaticky vyplní připojení, které jste vytvořili.
 
 Zadejte heslo správce databáze, které jste vytvořili dříve, a klikněte na **Připojit**.
 
@@ -180,19 +179,19 @@ Zadejte heslo správce databáze, které jste vytvořili dříve, a klikněte na
 
 ### <a name="allow-client-connection-from-your-computer"></a>Povolení klientských připojení z vašeho počítače
 
-Otevře se dialogové okno **Vytvoření nového pravidla brány firewall**. Ve výchozím nastavení vaše instance SQL Database umožňuje připojení ze služeb Azure, jako je například vaše aplikace Azure. Abyste se mohli připojit k databázi, vytvořte v instanci služby SQL Database pravidlo brány firewall. Toto pravidlo brány firewall povolí veřejnou IP adresu vašeho místního počítače.
+Otevře se dialogové okno **Vytvoření nového pravidla brány firewall**. Ve výchozím nastavení server umožňuje připojení k databázím pouze ze služeb Azure, jako je například vaše aplikace Azure. Pokud se chcete připojit k databázi mimo Azure, vytvořte pravidlo brány firewall na úrovni serveru. Toto pravidlo brány firewall povolí veřejnou IP adresu vašeho místního počítače.
 
 V dialogovém okně je veřejná IP adresa vašeho počítače již vyplněná.
 
-Ujistěte se, že je vybraná možnost **Přidat IP adresu mého klienta**, a klikněte na **OK**. 
+Ujistěte se, že je vybraná možnost **Přidat IP adresu mého klienta**, a klikněte na **OK**.
 
-![Nastavení brány firewall pro instanci služby SQL Database](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
+![Vytvoření pravidla brány firewall](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
 
 Jakmile sada Visual Studio dokončí vytváření nastavení brány firewall pro vaši instanci SQL Serveru, vaše připojení se zobrazí v **Průzkumníku objektů systému SQL Server**.
 
-Tady můžete provádět nejběžnější databázové operace, jako je spouštění dotazů, vytváření zobrazení a uložených procedur a další. 
+Tady můžete provádět nejběžnější databázové operace, jako je spouštění dotazů, vytváření zobrazení a uložených procedur a další.
 
-Rozbalením připojení > **databází** > **&lt;>**  >  **tabulek**databáze. Klikněte pravým tlačítkem na tabulku `Todoes` a vyberte **Zobrazit data**. 
+Rozbalením připojení > **databází**  >  ** &lt;>**  >  **tabulek**databáze. Klikněte pravým tlačítkem na tabulku `Todoes` a vyberte **Zobrazit data**.
 
 ![Zkoumání objektů služby SQL Database](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
@@ -212,7 +211,7 @@ public bool Done { get; set; }
 
 ### <a name="run-code-first-migrations-locally"></a>Místní spuštění migrace Code First
 
-Spuštěním několika příkazů aktualizujte místní databázi. 
+Spuštěním několika příkazů aktualizujte místní databázi.
 
 V nabídce **Nástroje** klikněte na **Správce balíčků NuGet** > **Konzola správce balíčků**.
 
@@ -236,7 +235,7 @@ Update-Database
 
 Zadáním `Ctrl+F5` spusťte aplikaci. Otestujte odkazy Upravit, Podrobnosti a Vytvořit.
 
-Pokud se aplikace načte bez chyb, migrace Code First proběhla úspěšně. Vaše stránka však vypadá stále stejně, protože logika vaší aplikace tuto novou vlastnost ještě nepoužívá. 
+Pokud se aplikace načte bez chyb, migrace Code First proběhla úspěšně. Vaše stránka však vypadá stále stejně, protože logika vaší aplikace tuto novou vlastnost ještě nepoužívá.
 
 ### <a name="use-the-new-property"></a>Použití nové vlastnosti
 
@@ -284,7 +283,7 @@ Vyhledejte prvek `<td>`, který obsahuje pomocné metody `Html.ActionLink()`. _N
 </td>
 ```
 
-To je všechno, co potřebujete, aby se v zobrazení `Index` a `Create` projevily změny. 
+To je všechno, co potřebujete, aby se v zobrazení `Index` a `Create` projevily změny.
 
 Zadáním `Ctrl+F5` spusťte aplikaci.
 
@@ -302,7 +301,7 @@ Kliknutím na **Konfigurovat** otevřete nastavení publikování.
 
 V průvodci klikněte na **Další**.
 
-Ujistěte se, že v části **MyDatabaseContext (MyDbConnection)** je vyplněný připojovací řetězec pro vaši službu SQL Database. Možná budete muset vybrat databázi **myToDoAppDb** z rozevíracího seznamu. 
+Ujistěte se, že v části **MyDatabaseContext (MyDbConnection)** je vyplněný připojovací řetězec pro vaši službu SQL Database. Možná budete muset vybrat databázi **myToDoAppDb** z rozevíracího seznamu.
 
 Vyberte **Spustit migraci Code First (spustí se při spuštění aplikace)** a pak klikněte na **Uložit**.
 
@@ -320,7 +319,6 @@ Zkuste znovu přidat položky úkolů a vyberte **Done** (Hotovo). Měly by se z
 
 Všechny vaše existující položky úkolů jsou nadále zobrazené. Při opětovném publikování aplikace ASP.NET nedojde ke ztrátě existujících dat ve službě SQL Database. Migrace Code First také změní pouze schéma dat, ale existující data ponechá beze změny.
 
-
 ## <a name="stream-application-logs"></a>Streamování protokolů aplikací
 
 Zprávy trasování můžete streamovat přímo z vaší aplikace Azure do sady Visual Studio.
@@ -331,7 +329,7 @@ Každá akce začíná metodou `Trace.WriteLine()`. Tento kód se přidá, abyst
 
 ### <a name="open-server-explorer"></a>Otevření Průzkumníka serveru
 
-V nabídce **Zobrazení** vyberte **Průzkumník serveru**. Protokolování pro aplikaci Azure můžete nakonfigurovat v **Průzkumník serveru**. 
+V nabídce **Zobrazení** vyberte **Průzkumník serveru**. Protokolování pro aplikaci Azure můžete nakonfigurovat v **Průzkumník serveru**.
 
 ### <a name="enable-log-streaming"></a>Povolení streamování protokolů
 
@@ -343,11 +341,11 @@ Klikněte pravým tlačítkem na aplikaci Azure a vyberte **Zobrazit protokoly s
 
 ![Povolení streamování protokolů](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
 
-Protokoly se teď streamují do okna **Výstup**. 
+Protokoly se teď streamují do okna **Výstup**.
 
 ![Streamování protokolů v okně Výstup](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
 
-Zatím se však nezobrazují žádné zprávy trasování. To znamená, že když poprvé vyberete **Zobrazit protokoly streamování**, vaše aplikace Azure nastaví úroveň trasování na `Error`, což zaznamená pouze události chyb (s `Trace.TraceError()` metodou).
+Zatím se však nezobrazují žádné zprávy trasování. To znamená, že když poprvé vyberete **Zobrazit protokoly streamování**, vaše aplikace Azure nastaví úroveň trasování na `Error` , což zaznamená pouze události chyb (s `Trace.TraceError()` metodou).
 
 ### <a name="change-trace-levels"></a>Změna úrovní trasování
 
@@ -360,11 +358,9 @@ V rozevíracím seznamu **Protokolování aplikace (Systém souborů)** vyberte 
 ![Změna úrovně trasování na Podrobné](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 
 > [!TIP]
-> Můžete experimentovat s různými úrovněmi trasování, abyste viděli, jaké typy zpráv se zobrazí pro jednotlivé úrovně. Například úroveň **informací** zahrnuje všechny protokoly vytvořené `Trace.TraceInformation()`pomocí `Trace.TraceWarning()`, a `Trace.TraceError()`, ale nikoli protokoly vytvořené nástrojem. `Trace.WriteLine()`
->
->
+> Můžete experimentovat s různými úrovněmi trasování, abyste viděli, jaké typy zpráv se zobrazí pro jednotlivé úrovně. Například úroveň **informací** zahrnuje všechny protokoly vytvořené pomocí `Trace.TraceInformation()` , `Trace.TraceWarning()` a, `Trace.TraceError()` ale nikoli protokoly vytvořené nástrojem `Trace.WriteLine()` .
 
-V prohlížeči znovu přejděte do aplikace *http://&lt;název vaší aplikace>. azurewebsites.NET*a zkuste kliknout na seznam úkolů aplikace v Azure. Zprávy trasování se teď streamují do okna **Výstup** v sadě Visual Studio.
+V prohlížeči znovu přejděte do aplikace *http:// &lt; název vaší aplikace>. azurewebsites.NET*a zkuste kliknout na seznam úkolů aplikace v Azure. Zprávy trasování se teď streamují do okna **Výstup** v sadě Visual Studio.
 
 ```console
 Application: 2017-04-06T23:30:41  PID[8132] Verbose     GET /Todos/Index
@@ -372,8 +368,6 @@ Application: 2017-04-06T23:30:43  PID[8132] Verbose     GET /Todos/Create
 Application: 2017-04-06T23:30:53  PID[8132] Verbose     POST /Todos/Create
 Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 ```
-
-
 
 ### <a name="stop-log-streaming"></a>Zastavení streamování protokolů
 
@@ -383,7 +377,7 @@ Pokud chcete zastavit službu streamování protokolů, klikněte na tlačítko 
 
 ## <a name="manage-your-azure-app"></a>Správa aplikace Azure
 
-Pokud chcete webovou aplikaci spravovat, přejděte na web [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **App Services**. 
+Pokud chcete webovou aplikaci spravovat, přejděte na web [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **App Services**.
 
 ![Hledání Azure App Services](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-portal-navigate-app-services.png)
 
@@ -391,9 +385,9 @@ Vyberte název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png)
 
-Vyložili jste stránku vaší aplikace. 
+Vyložili jste stránku vaší aplikace.
 
-Ve výchozím nastavení se na portálu zobrazí stránka **Přehled**. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít. 
+Ve výchozím nastavení se na portálu zobrazí stránka **Přehled**. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
 
 ![Stránka služby App Service na webu Azure Portal](./media/app-service-web-tutorial-dotnet-sqldatabase/web-app-blade.png)
 
@@ -404,7 +398,8 @@ Ve výchozím nastavení se na portálu zobrazí stránka **Přehled**. Tato str
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvořit databázi SQL v Azure
+>
+> * Vytvoření databáze v Azure SQL Database
 > * Připojit aplikaci ASP.NET ke službě SQL Database
 > * Nasadit aplikaci do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci

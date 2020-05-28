@@ -21,9 +21,9 @@ Pro spouštění příkazů rozhraní příkazového řádku se doporučuje pou�
 
 Rozhraní příkazového řádku můžete také nainstalovat místně. Pokyny pro vaši platformu najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-### <a name="sign-in"></a>Přihlášení
+### <a name="sign-in"></a>Přihlásit se
 
-Použití místní instalace rozhraní příkazového řádku vyžaduje přihlášení k Azure. Tento krok není vyžadován pro Azure Cloud Shell. Přihlaste se `az login` pomocí příkazu.
+Použití místní instalace rozhraní příkazového řádku vyžaduje přihlášení k Azure. Tento krok není vyžadován pro Azure Cloud Shell. Přihlaste se pomocí `az login` příkazu.
 
 Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít stránku prohlížeče a podle pokynů v příkazovém řádku zadat autorizační kód po přechodu do https://aka.ms/devicelogin prohlížeče.
 
@@ -45,6 +45,6 @@ Absolutní cesta k souboru na platformě Linux/Mac a v operačním systému Wind
 * `@ "/usr/home/mytestfile.json"`
 *    `@"c:\tmp\user\mytestfile.json"`
 
-Použijte `{file}` , pokud příkaz žádá o cestu k souboru. Například, `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`. <br/> Použijte `@{file}` , pokud příkaz nahraje zadaný soubor. Například, `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`.
+Použijte, `{file}` Pokud příkaz žádá o cestu k souboru. Například, `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`. <br/> Použijte, `@{file}` Pokud příkaz nahraje zadaný soubor. Například, `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`.
 
 [Nahrání souborů]: ./media/media-services-cli/upload-download-files.png

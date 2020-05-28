@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: f4de4c25cea251ea0db72bcb435ceb63eb308ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22fa0e1cc6bdad109c5dcb82cc08b81d91674f9a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409231"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022450"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí PowerShellu
 
@@ -63,7 +63,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
+* **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md), kde najdete kroky pro její vytvoření.
 * **Azure Storage**. Úložiště objektů blob použijete jako úložiště dat jímky. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem adftutorial. 
 * **Azure PowerShell**. Postupujte podle pokynů v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-Az-ps).
 
@@ -199,7 +199,7 @@ Je třeba počítat s následujícím:
 V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro účet úložiště a databázi SQL.
 
 ### <a name="create-a-storage-linked-service"></a>Vytvoření propojené služby Storage
-1. Ve složce C:\ADF vytvořte soubor JSON s názvem AzureStorageLinkedService.json s následujícím kódem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Před `<accountName>` uložením souboru nahraďte a `<accountKey>` názvem a klíčem účtu úložiště.
+1. Ve složce C:\ADF vytvořte soubor JSON s názvem AzureStorageLinkedService.json s následujícím kódem. (Pokud ještě neexistuje, vytvořte si ADF složky.) `<accountName>` `<accountKey>` Před uložením souboru nahraďte a názvem a klíčem účtu úložiště.
 
     ```json
     {
@@ -230,7 +230,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>Vytvoření propojené služby databáze SQL
-1. Ve složce C:\ADF vytvořte soubor JSON s názvem AzureSQLDatabaseLinkedService.json s následujícím kódem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Před &lt;uložením souboru&gt;nahraďte server&gt;&gt;, &lt;databázi &lt;,&gt; &lt;ID uživatele a heslo názvem vašeho serveru, databáze, ID uživatele a heslem.
+1. Ve složce C:\ADF vytvořte soubor JSON s názvem AzureSQLDatabaseLinkedService.json s následujícím kódem. (Pokud ještě neexistuje, vytvořte si ADF složky.) &lt; &gt; &lt; Před uložením souboru nahraďte Server, databázi &gt; , &lt; ID uživatele &gt; a &lt; heslo &gt; názvem vašeho serveru, databáze, ID uživatele a heslem.
 
     ```json
     {

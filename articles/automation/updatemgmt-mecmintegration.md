@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 183189253d11638751e1f8283b202f122131b005
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836307"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013193"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Integrace Update Management s koncovým bodem Windows Configuration Manager
 
@@ -38,7 +38,7 @@ Pokud budete pokračovat v správě nasazení aktualizací z Configuration Manag
 1. V Azure Automation vyberte **Update Management**. Pomocí kroků popsaných v [tématu Vytvoření nasazení aktualizace](automation-tutorial-update-management.md#schedule-an-update-deployment) vytvořte nové nasazení a vyberte **importované skupiny** v rozevíracím seznamu **typ** a vyberte příslušnou kolekci Configuration Managerho koncového bodu Windows. Pamatujte na následující důležité body: a. Pokud je ve vybrané kolekci zařízení Configuration Manager Windows Endpoint definovaný časový interval pro správu a údržbu, místo nastavení **Trvání** definovaného v naplánovaném nasazení se budou členy kolekce akceptovat.
     b. Členové cílové kolekce musí mít připojení k Internetu (buď přímo prostřednictvím proxy server, nebo prostřednictvím brány Log Analytics).
 
-Po dokončení nasazení aktualizace prostřednictvím Azure Automation budou cílové počítače, které jsou členy vybrané skupiny počítačů, instalovat aktualizace v naplánovaném čase z místní mezipaměti klienta. Můžete si [zobrazit stav nasazení aktualizací](automation-tutorial-update-management.md#view-results-of-an-update-deployment) a monitorovat výsledky nasazení.
+Po dokončení nasazení aktualizace prostřednictvím Azure Automation budou cílové počítače, které jsou členy vybrané skupiny počítačů, instalovat aktualizace v naplánovaném čase z místní mezipaměti klienta. Můžete si [zobrazit stav nasazení aktualizací](automation-tutorial-update-management.md#check-deployment-status) a monitorovat výsledky nasazení.
 
 ## <a name="manage-software-updates-from-azure-automation"></a>Správa aktualizací softwaru z Azure Automation
 

@@ -52,8 +52,12 @@
       href: container-instances-region-availability.md
     - name: Vztah k orchestrátorům
       href: container-instances-orchestrator-relationship.md
-    - name: Aspekty zabezpečení
-      href: container-instances-image-security.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
+        - name: Aspekty zabezpečení
+          href: container-instances-image-security.md
     - name: Virtuální síť
       href: container-instances-virtual-network-concepts.md
 - name: Návody

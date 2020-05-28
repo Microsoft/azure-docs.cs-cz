@@ -3,12 +3,12 @@ title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 9bb8d91d141997a7dd466d247ddcb0bd364e1c80
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 95846a74f9556fcccb3f583f365679c8ebadecee
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559854"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020145"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -52,12 +52,12 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. Cognitiveservices Account | [Cognitive Services](/azure/cognitive-services/) |
 | Microsoft. Commerce | core |
 | Microsoft.Compute | [Virtual Machines](/azure/virtual-machines/)<br />[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) |
-| Microsoft. spotřeba | [Cost Management](/azure/cost-management/) |
+| Microsoft. spotřeba | [Správa nákladů](/azure/cost-management/) |
 | Microsoft. ContainerInstance | [Container Instances](/azure/container-instances/) |
 | Microsoft. ContainerRegistry | [Container Registry](/azure/container-registry/) |
 | Microsoft. ContainerService | [Azure Kubernetes Service (AKS)](/azure/aks/) |
-| Microsoft. CostManagement | [Cost Management](/azure/cost-management/) |
-| Microsoft. CostManagementExports | [Cost Management](/azure/cost-management/) |
+| Microsoft. CostManagement | [Správa nákladů](/azure/cost-management/) |
+| Microsoft. CostManagementExports | [Správa nákladů](/azure/cost-management/) |
 | Microsoft. CustomerLockbox | Customer Lockbox pro Microsoft Azure |
 | Microsoft. CustomProviders | [Vlastní poskytovatelé Azure](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](/azure/databox-family/) |
@@ -115,12 +115,12 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. migruje | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft. MixedReality | [Azure Spatial Anchors](/azure/spatial-anchors/) |
 | Microsoft. NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](/azure/bastion/)<br />[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Brána Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Virtual Network](../../virtual-network/index.yml)<br />[Virtuální síť WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
+| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](/azure/bastion/)<br />[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Virtual Network](../../virtual-network/index.yml)<br />[Virtual WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
 | Microsoft. NotificationHubs | [Notification Hubs](../../notification-hubs/index.yml) |
 | Microsoft. OffAzure | [Azure Migrate](../../migrate/migrate-overview.md) |
 | Microsoft. OperationalInsights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
-| Microsoft. peering | [Služba partnerských vztahů Azure](../../peering-service/index.yml) |
+| Microsoft. peering | [Azure Peering Service](../../peering-service/index.yml) |
 | Microsoft.PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
 | Microsoft. Portal | [portál Azure](/azure/azure-portal/) |
 | Microsoft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
@@ -143,8 +143,8 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. SignalRService | [Služba Azure SignalR](../../azure-signalr/index.yml) |
 | Microsoft. SoftwarePlan | Licence |
 | Microsoft. Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
-| Microsoft.Sql | [Azure SQL Database](../../sql-database/index.yml)<br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Microsoft. SqlVirtualMachine | [SQL Server na Azure Virtual Machines](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) |
+| Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Spravovaná instance Azure SQL](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
+| Microsoft. SqlVirtualMachine | [SQL Server na Azure Virtual Machines](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
 | Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Microsoft. StorageCache | [Azure HPC Cache](/azure/hpc-cache/) |
 | Microsoft. StorageSync | [Storage](../../storage/index.yml) |

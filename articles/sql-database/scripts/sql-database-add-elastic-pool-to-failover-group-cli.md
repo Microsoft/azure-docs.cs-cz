@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 2d6f18e373327b758e766dffba341c080622301f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42cc10398fce831b6343f69df03104d428700ac3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061940"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022773"
 ---
 # <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání pomocí rozhraní příkazového řádku
 
@@ -61,4 +61,4 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure/overview).
 
-Další SQL Database ukázkových skriptech rozhraní příkazového řádku Azure CLI najdete v [Azure SQL Database skriptech](../sql-database-cli-samples.md)rozhraní příkazového řádku Azure.
+Další SQL Database ukázkových skriptech rozhraní příkazového řádku Azure CLI najdete v [Azure SQL Database skriptech](../../azure-sql/database/az-cli-script-samples-content-guide.md)rozhraní příkazového řádku Azure.

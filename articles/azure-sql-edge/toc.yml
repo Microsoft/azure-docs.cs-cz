@@ -29,7 +29,7 @@
           href: tutorial-run-ml-model-on-sql-edge.md
 - name: Postup
   items:
-    - name: Balíčky aplikace DAC a úlohy Stream Analytics
+    - name: Nasazování úloh Stream Analytics
       href: stream-analytics.md
     - name: Konfigurace replikace
       href: configure-replication.md

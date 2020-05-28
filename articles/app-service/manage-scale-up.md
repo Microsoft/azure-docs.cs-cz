@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: dfd9297e80836978b8a185df3fc4659676383802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8545c4f8c0dc86d83e0711147a1bda608c2897f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75659895"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020162"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Horizontální navýšení kapacity aplikace v Azure App Service
 
@@ -62,7 +62,7 @@ Pokud vaše aplikace závisí na dalších službách, jako je Azure SQL Databas
    
     ![Přechod na stránku skupiny prostředků pro horizontální navýšení kapacity aplikace Azure](./media/web-sites-scale/ResourceGroup.png)
 
-    Postup horizontálního navýšení kapacity souvisejícího prostředku najdete v dokumentaci pro konkrétní typ prostředku. Například pro horizontální navýšení kapacity jednoho SQL Database najdete informace v tématu věnovaném [škálování prostředků jedné databáze v Azure SQL Database](../sql-database/sql-database-single-database-scale.md). Postup horizontálního navýšení kapacity Azure Database for MySQL prostředků najdete v tématu věnovaném [škálování prostředků MySQL](../mysql/concepts-pricing-tiers.md#scale-resources).
+    Postup horizontálního navýšení kapacity souvisejícího prostředku najdete v dokumentaci pro konkrétní typ prostředku. Například pro horizontální navýšení kapacity jednoho SQL Database najdete informace v tématu věnovaném [škálování prostředků jedné databáze v Azure SQL Database](../azure-sql/database/single-database-scale.md). Postup horizontálního navýšení kapacity Azure Database for MySQL prostředků najdete v tématu věnovaném [škálování prostředků MySQL](../mysql/concepts-pricing-tiers.md#scale-resources).
 
 <a name="OtherFeatures"></a>
 <a name="devfeatures"></a>

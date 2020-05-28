@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "77474186"
 ---
-Dotazy na kontejner se účtují v cenové úrovni prostředku Azure, který se používá pro `ApiKey`.
+Dotazy na kontejner se účtují v cenové úrovni prostředku Azure, který se používá pro `ApiKey` .
 
 U kontejnerů Azure Cognitive Services není licencováno běžet bez připojení ke koncovému bodu měření/fakturace. Kontejnerům musíte povolit, aby informace o fakturaci komunikovaly s koncovým bodem fakturace. Kontejnery Cognitive Services neodesílají zákaznická data, jako je například analyzovaný obrázek nebo text, do společnosti Microsoft.
 
@@ -21,10 +21,10 @@ Kontejner potřebuje ke spuštění hodnoty argumentu fakturace. Tyto hodnoty um
 
 ### <a name="billing-arguments"></a>Argumenty fakturace
 
-<a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank"> `docker run` Příkaz spustí kontejner, pokud jsou k dispozici všechny tři z následujících možností s platnými <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hodnotami:
+Příkaz spustí kontejner, pokud jsou k dispozici všechny tři z následujících možností s platnými hodnotami: <a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank"> `docker run` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 
-| Možnost | Popis |
+| Možnost | Description |
 |--------|-------------|
-| `ApiKey` | Klíč rozhraní API prostředku Cognitive Services, který se používá ke sledování fakturačních informací.<br/>Hodnota této možnosti musí být nastavená na klíč rozhraní API pro zřízený prostředek, který je zadaný v `Billing`. |
+| `ApiKey` | Klíč rozhraní API prostředku Cognitive Services, který se používá ke sledování fakturačních informací.<br/>Hodnota této možnosti musí být nastavená na klíč rozhraní API pro zřízený prostředek, který je zadaný v `Billing` . |
 | `Billing` | Koncový bod prostředku Cognitive Services, který se používá ke sledování fakturačních informací.<br/>Hodnota této možnosti musí být nastavená na identifikátor URI koncového bodu zřízeného prostředku Azure.|
 | `Eula` | Označuje, že jste přijali licenci pro kontejner.<br/>Hodnota této možnosti musí být nastavena na hodnotu **přijmout**. |

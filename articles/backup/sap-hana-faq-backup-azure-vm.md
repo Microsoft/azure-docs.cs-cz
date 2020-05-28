@@ -22,7 +22,7 @@ Podporujeme jenom jednu úplnou zálohu za den. Nemůžete mít ke stejnému dni
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>Vytvářejí úspěšné úlohy zálohování upozornění?
 
-Ne. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor). Pokud ale máte zájem o výstrahy i pro úspěšné úlohy, můžete použít [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+No. Úspěšné úlohy zálohování negenerují výstrahy. Výstrahy se odesílají jenom pro úlohy zálohování, které selžou. Podrobné chování výstrah na portálu [najdete tady](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor). Pokud ale máte zájem o výstrahy i pro úspěšné úlohy, můžete použít [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Můžu v nabídce úlohy zálohování Zobrazit naplánované úlohy zálohování?
 

@@ -89,7 +89,7 @@ Mám aplikaci, ve které používám [TrackMetric ()](../../azure-monitor/app/ap
 Stejné pravidlo lze použít pro metriku nahlášenou pomocí [parametru měření](../../azure-monitor/app/api-custom-events-metrics.md#properties) jiného sledovacího volání, jako je například TrackEvent nebo trackPageView.
 
 ## <a name="metric-names"></a>Názvy metrik
-| Název metriky | Název obrazovky | Popis |
+| Název metriky | Název obrazovky | Description |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Výjimky prohlížečů |Počet nezachycených výjimek vyvolaných v prohlížeči |
 | `basicExceptionServer.count` |Výjimky serveru |Počet neošetřených výjimek vyvolaných aplikací |

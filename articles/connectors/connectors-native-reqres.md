@@ -64,7 +64,7 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
    | **ADRESA URL PRO POST HTTP** | nTato | Ano | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
-   | **Schéma JSON pro tělo požadavku** | `schema` | No | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
+   | **Schéma JSON pro tělo požadavku** | `schema` | Ne | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
    |||||
 
 1. V poli **schématu JSON textu žádosti** můžete volitelně zadat schéma JSON, které popisuje tělo v příchozím požadavku, například:
@@ -162,8 +162,8 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
-   | **Metoda** | `method` | No | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
-   | **Relativní cesta** | `relativePath` | No | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
+   | **Metoda** | `method` | Ne | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
+   | **Relativní cesta** | `relativePath` | Ne | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
    |||||
 
    Tento příklad přidá vlastnost **metody** :
@@ -196,7 +196,7 @@ Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto 
 
 Zde jsou další informace o výstupech z triggeru požadavku:
 
-| Název vlastnosti JSON | Datový typ | Popis |
+| Název vlastnosti JSON | Datový typ | Description |
 |--------------------|-----------|-------------|
 | `headers` | Objekt | Objekt JSON, který popisuje hlavičky z požadavku |
 | `body` | Objekt | Objekt JSON, který popisuje obsah těla žádosti |
@@ -254,8 +254,8 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
    | **Stavový kód** | `statusCode` | Ano | Stavový kód, který se má vrátit v odpovědi |
-   | **Hlavičky** | `headers` | No | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
-   | **Text** | `body` | No | Tělo odpovědi |
+   | **Hlavičky** | `headers` | Ne | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
+   | **Text** | `body` | Ne | Tělo odpovědi |
    |||||
 
 1. Chcete-li zadat další vlastnosti, jako je například schéma JSON pro tělo odpovědi, otevřete seznam **Přidat nový parametr** a vyberte parametry, které chcete přidat.

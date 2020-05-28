@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
-ms.openlocfilehash: be9395b908461b54b607fff32747ca0d9f20f45c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0ed57657a461e4af8e58931b133437e5897796a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418656"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022057"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů BLOB v Azure do SQL Database pomocí nástroje Kopírování dat
 
@@ -42,7 +42,7 @@ V tomto kurzu budete provádět následující kroky:
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet Azure Storage**: jako _zdrojové_ úložiště dat použijte úložiště objektů BLOB. Pokud nemáte účet Azure Storage, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
-* **Azure SQL Database**: jako úložiště dat _jímky_ použijte SQL Database. Pokud nemáte SQL Database, přečtěte si pokyny v tématu [vytvoření SQL Database](../sql-database/sql-database-get-started-portal.md).
+* **Azure SQL Database**: jako úložiště dat _jímky_ použijte SQL Database. Pokud nemáte SQL Database, přečtěte si pokyny v tématu [vytvoření SQL Database](../azure-sql/database/single-database-create-quickstart.md).
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Vytvoření objektu blob a tabulky SQL
 
@@ -76,11 +76,11 @@ Provedením těchto kroků Připravte úložiště objektů BLOB a SQL Database 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Povolte službám Azure přístup k SQL Serveru. Ověřte, že nastavení **Povolit službám a prostředkům Azure pro přístup k tomuto serveru** je povolené pro váš server, na kterém běží SQL Database. Toto nastavení umožní službě Data Factory zapisovat data do vaší instance databáze. Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > zabezpečení > brány firewall a virtuální sítě > nastavte možnost **Povolit službám a prostředkům Azure přístup k tomuto serveru** na **zapnuto**.
+2. Povolte službám Azure přístup k SQL Serveru. Ověřte, že nastavení **Povolit službám a prostředkům Azure pro přístup k tomuto serveru** je povolené pro váš server, na kterém běží SQL Database. Toto nastavení umožní službě Data Factory zapisovat data do vaší instance databáze. Pokud chcete toto nastavení ověřit a zapnout, přejděte na logické SQL Server > zabezpečení > brány firewall a virtuální sítě > nastavte možnost **Povolit službám a prostředkům Azure přístup k tomuto serveru** na **zapnuto**.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit** > **Analytics** > **Data Factory**analýzy prostředků:
+1. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků:
 
     ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**.

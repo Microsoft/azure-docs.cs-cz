@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680255"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021309"
 ---
 # <a name="pbr-materials"></a>Materiály PBR
 
@@ -26,7 +26,7 @@ Materiály PBR nejsou univerzálním řešením, i když. V závislosti na úhlu
 
 Tyto vlastnosti jsou společné pro všechny materiály:
 
-* **albedoColor:** Tato barva se vynásobí ostatními barvami, jako jsou *albedoMap* nebo *vrcholy*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, `1` že je plně neprůhledný a `0` má velmi transparentní význam. Výchozí hodnota je bílá.
+* **albedoColor:** Tato barva se vynásobí jinými barvami, jako je například *albedoMap* nebo * :::no-loc text="vertex "::: Colors*. Pokud je pro materiál povolená *průhlednost* , alfa kanál se použije k úpravě krytí, což znamená, že je `1` plně neprůhledný a má velmi `0` transparentní význam. Výchozí hodnota je bílá.
 
   > [!NOTE]
   > Když je materiál PBR plně transparentní, jako dokonale čistá část skla, stále odráží prostředí. Jasné skvrny, jako je slunce, jsou pořád viditelné v reflexi. To se pro [barevné materiály](color-materials.md)liší.
@@ -37,9 +37,9 @@ Tyto vlastnosti jsou společné pro všechny materiály:
 
 * **textureCoordinateScale** a **textureCoordinateOffset:** stupnice se vynásobí souřadnicemi textury UV, do které se přidá posun. Dá se použít k roztažení a posunutí textur. Výchozí měřítko je (1, 1) a posun je (0, 0).
 
-* **useVertexColor:** Pokud mřížka obsahuje barvy vrcholu a tato možnost je povolená, vynásobí se barvy vrcholů mřížek na *albedoColor* a *albedoMap*. Ve výchozím nastavení jsou barvy vrcholu zakázané.
+* **useVertexColor:** Pokud mřížka obsahuje :::no-loc text="vertex"::: barvy a tato možnost je povolená, :::no-loc text="vertex"::: vynásobí se barva ok v *albedoColor* a *albedoMap*. Ve výchozím nastavení je *useVertexColor* zakázaný.
 
-* **isDoubleSided:** Pokud je vlastnost sidedness nastavená na hodnotu true, budou se tyto trojúhelníky s tímto materiálem vykreslovat i v případě, že fotoaparát hledá své zadní plošky. Pro zadní plošky se také vypočítává osvětlení materiálů PBR. Ve výchozím nastavení je tato možnost zakázána. Viz také [vykreslování na jednom straně](single-sided-rendering.md).
+* **isDoubleSided:** Pokud je vlastnost sidedness nastavená na hodnotu true, budou se tyto trojúhelníky s tímto materiálem vykreslovat i v případě, že fotoaparát hledá své zadní plošky. Pro zadní plošky se také vypočítává osvětlení materiálů PBR. Ve výchozím nastavení je tato možnost zakázána. Viz také [ :::no-loc text="Single-sided"::: vykreslování](single-sided-rendering.md).
 
 ## <a name="pbr-material-properties"></a>Vlastnosti materiálu PBR
 
@@ -47,11 +47,11 @@ Základní nápad, který je fyzicky založený na *vykreslování, je*použití
 
 * **baseColor:** V materiálech PBR se *Barva albedo* označuje jako *základní barva*. Ve vzdáleném vykreslování Azure je vlastnost *albedo Color* již přítomna prostřednictvím vlastností společných materiálů, takže neexistuje žádná další základní vlastnost Color.
 
-* **hrubá** a **roughnessMapost:** hrubá rovina definuje, jak je povrch hrubá nebo hladec. Hrubá rovina rozrážejí světlo ve více směrech než hladké povrchy, což rozostří fuzzy, nikoli ostré. Rozsah hodnoty je od `0.0` do. `1.0` Pokud `roughness` se rovná `0.0`, odrazy budou ostré. Při `roughness` rovnosti `0.5`se odrazy stanou neostrými.
+* **hrubá** a **roughnessMapost:** hrubá rovina definuje, jak je povrch hrubá nebo hladec. Hrubá rovina rozrážejí světlo ve více směrech než hladké povrchy, což rozostří fuzzy, nikoli ostré. Rozsah hodnoty je od `0.0` do `1.0` . Pokud `roughness` se rovná `0.0` , odrazy budou ostré. Při `roughness` rovnosti se `0.5` odrazy stanou neostrými.
 
   Pokud je zadána hodnota hrubosti i mapa hrubosti, bude konečná hodnota součinem těchto dvou.
 
-* **kov** a **metalnessMap:** v fyzikě Tato vlastnost odpovídá tomu, zda je povrch v činnosti nebo dielectric. Tyto materiály mají různé reflektované vlastnosti a jsou obvykle odrážetelné bez albedo barvy. V materiálech PBR Tato vlastnost ovlivňuje, jak velký povrch odráží okolní prostředí. Rozsah hodnot od `0.0` do `1.0`. Když je `0.0`kov, barva albedo je plně viditelná a materiál vypadá jako plasty nebo keramické. V případě, že `0.5`je kov, vypadá to, že se jedná o namalované kovové. Když je `1.0`kov, povrch téměř zcela ztratí svoji albedo barvu a odráží jenom okolí. Například pokud `metalness` je `1.0` a `roughness` , `0.0` pak povrch vypadá jako skutečný zrcadlový svazek.
+* **kov** a **metalnessMap:** v fyzikě Tato vlastnost odpovídá tomu, zda je povrch v činnosti nebo dielectric. Tyto materiály mají různé reflektované vlastnosti a jsou obvykle odrážetelné bez albedo barvy. V materiálech PBR Tato vlastnost ovlivňuje, jak velký povrch odráží okolní prostředí. Rozsah hodnot od `0.0` do `1.0` . Když je kov `0.0` , barva albedo je plně viditelná a materiál vypadá jako plasty nebo keramické. `0.5`V případě, že je kov, vypadá to, že se jedná o namalované kovové. Když je kov `1.0` , povrch téměř zcela ztratí svoji albedo barvu a odráží jenom okolí. Například pokud `metalness` je a, `1.0` `roughness` `0.0` pak povrch vypadá jako skutečný zrcadlový svazek.
 
   Pokud jsou dodána hodnota kovového a mapa kovu, bude konečná hodnota součinem těchto dvou.
 
@@ -61,7 +61,7 @@ Základní nápad, který je fyzicky založený na *vykreslování, je*použití
 
 * **normalMap:** Pro simulaci jemně odstupňované podrobností lze zadat [normální mapu](https://en.wikipedia.org/wiki/Normal_mapping) .
 
-* **occlusionMap** a **aoScale:** [ambientní překrytí](https://en.wikipedia.org/wiki/Ambient_occlusion) zpřístupňuje objekty s crevicesmi mnohem realisticky přidáním stínů do zastíněna oblastí. Překrytí rozsah hodnot od `0.0` do `1.0`, kde `0.0` znamená tmavost (zastíněna) `1.0` a znamená, že Occlusions. Pokud je 2D textura k dispozici jako mapa překrytí, je efekt povolen a *aoScale* funguje jako násobitel.
+* **occlusionMap** a **aoScale:** [ambientní překrytí](https://en.wikipedia.org/wiki/Ambient_occlusion) zpřístupňuje objekty s crevicesmi mnohem realisticky přidáním stínů do zastíněna oblastí. Překrytí rozsah hodnot od `0.0` do `1.0` , kde `0.0` znamená tmavost (zastíněna) a znamená, že `1.0` Occlusions. Pokud je 2D textura k dispozici jako mapa překrytí, je efekt povolen a *aoScale* funguje jako násobitel.
 
   ![Mapa překrytí](./media/boom-box-ao2.gif)
 
@@ -69,7 +69,7 @@ Základní nápad, který je fyzicky založený na *vykreslování, je*použití
 
   Transparentní geometrie je nákladné pro vykreslování. Pokud potřebujete pouze otvory na povrchu, například pro listy stromu, je vhodnější místo toho použít alfa ořez.
 
-  ![Oznámení](./media/transparency.png) o transparentnosti na obrázku výše, jak je koule úplně průhledná, ale odraz je stále viditelný.
+  ![Oznámení o transparentnosti na ](./media/transparency.png) obrázku výše, jak je koule úplně průhledná, ale odraz je stále viditelný.
 
   > [!IMPORTANT]
   > Pokud by měl být nějaký materiál přepnut z neprůhledných na transparentní za běhu, zobrazovací jednotka musí používat [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* . Toto omezení se nevztahuje na materiály, které jsou převáděny jako průhledné materiály na začátek.

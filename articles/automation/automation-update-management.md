@@ -165,7 +165,7 @@ Další informace o aktualizacích sad Management Pack najdete v tématu [připo
 
 Následující tabulka popisuje připojené zdroje, které Update Management podporuje:
 
-| Připojený zdroj | Podporuje se | Popis |
+| Připojený zdroj | Podporuje se | Description |
 | --- | --- | --- |
 | Agenti systému Windows |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a potom spustí instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Linux a potom spustí instalaci požadovaných aktualizací v podporovaných distribucích. |
@@ -206,7 +206,7 @@ Při konfiguraci počítačů, které nemají přístup k Internetu, postupujte 
 
 Následující tabulka definuje klasifikace, které Update Management podporuje pro aktualizace pro Windows. 
 
-|Classification  |Popis  |
+|Classification  |Description  |
 |---------|---------|
 |Důležité aktualizace     | Aktualizace pro určitý problém, která řeší kritickou chybu nesouvisející se zabezpečením.        |
 |Aktualizace zabezpečení     | Aktualizace pro problém související se zabezpečením určitého produktu.        |
@@ -219,7 +219,7 @@ Následující tabulka definuje klasifikace, které Update Management podporuje 
 
 Následující tabulka definuje podporované klasifikace aktualizací pro Linux.
 
-|Classification  |Popis  |
+|Classification  |Description  |
 |---------|---------|
 |Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro konkrétní problém nebo problém související se zabezpečením určitého produktu.         |
 |Další aktualizace     | Všechny ostatní aktualizace, které nejsou v podstatě důležité nebo které nejsou aktualizacemi zabezpečení.        |

@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680983"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022176"
 ---
 # <a name="late-stage-reprojection"></a>Reprojekce pozdní fáze
 
@@ -24,7 +24,7 @@ Oba režimy LSR zlepšují stabilitu hologramů, i když mají odlišná omezen�
 
 ## <a name="choose-lsr-mode-in-unity"></a>Výběr režimu LSR v Unity
 
-V editoru Unity přejít na *soubor > nastavení sestavení*. V levém dolním rohu vyberte *nastavení přehrávače* a potom zaškrtněte v části *Player > XR Settings > Virtual Reality SDK > Windows Mixed reality* , jestli je zaškrtnuté políčko **Povolit sdílení vyrovnávací paměti pro hloubku** .
+V editoru Unity pokračujte na *:::no-loc text="File > Build Settings":::* . *:::no-loc text="Player Settings":::* V levém dolním rohu vyberte, *:::no-loc text="Player > XR Settings > Virtual Reality SDKs > Windows Mixed Reality":::* jestli **:::no-loc text="Enable Depth Buffer Sharing":::** je zaškrtnuté políčko:
 
 ![Příznak povoleného sdílení vyrovnávací paměti hloubky](./media/unity-depth-buffer-sharing-enabled.png)
 
@@ -44,7 +44,7 @@ Planární LSR reprojektuje tyto objekty nejlépe, které leží blízko dodané
 
 ### <a name="configure-planar-lsr-in-unity"></a>Konfigurace planární LSR v Unity
 
-Parametry roviny jsou odvozeny od třídy, která se označuje jako vstupní *bod*, který je nutné zadat `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`každý rámec. Podrobnosti najdete v tématu [rozhraní API pro zaměření služby Unity](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) . Pokud nenastavíte fokus, bude pro vás zvolena možnost záložního bodu. Automatické nouzové řešení často vede k neoptimálním výsledkům.
+Parametry roviny jsou odvozeny od třídy, která se označuje jako vstupní *bod*, který je nutné zadat každý rámec `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . Podrobnosti najdete v tématu [rozhraní API pro zaměření služby Unity](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) . Pokud nenastavíte fokus, bude pro vás zvolena možnost záložního bodu. Automatické nouzové řešení často vede k neoptimálním výsledkům.
 
 Fokus můžete vypočítat sami, ale může to mít smysl na základu vypočítaného hostitelem vzdáleného vykreslování. Zavolejte `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` k získání. Zobrazí se výzva k zadání souřadnicového rámce, ve kterém se bude soustředit pozice kurzoru. Ve většině případů budete chtít jenom zadat výsledek z `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` tohoto místa.
 

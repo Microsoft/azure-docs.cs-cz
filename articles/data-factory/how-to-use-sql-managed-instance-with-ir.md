@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 74cad0ab9ffc3eb05219cb9e2c2585e73498c9bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cd07bf86852d608a6d872f4c6b973b0a81b2a1c3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664855"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015280"
 ---
 # <a name="use-azure-sql-database-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Použití spravované instance Azure SQL Database s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
 
@@ -24,17 +24,17 @@ ms.locfileid: "83664855"
 
 Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services) (SSIS), balíčky a úlohy do cloudu Azure. Nasaďte, spouštějte a spravujte projekty a balíčky SSIS na Azure SQL Database nebo SQL Database spravované instance pomocí známých nástrojů, jako je například SQL Server Management Studio (SSMS). Tento článek popisuje následující konkrétní oblasti při použití Azure SQL Database spravované instance s prostředím Azure-SSIS Integration runtime (IR):
 
-- [Zřízení Azure-SSIS IR pomocí katalogu SSIS (SSISDB) hostovaného službou Azure SQL Database Managed instance](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance)
+- [Zřízení Azure-SSIS IR pomocí katalogu SSIS (SSISDB) hostovaného službou Azure SQL Database Managed instance](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [Spouštění balíčků SSIS pomocí úlohy agenta Managed instance Azure SQL](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [Vyčistit protokoly SSISDB pomocí úlohy agenta spravované instance Azure SQL](#clean-up-ssisdb-logs)
 - [Azure-SSIS IR převzetí služeb při selhání pomocí spravované instance Azure SQL Database](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-database-managed-instance)
-- [Migrace místních úloh SSIS do SSIS v ADF pomocí Azure SQL Database spravované instance jako cíle úloh databáze](scenario-ssis-migration-overview.md#azure-sql-database-managed-instance-as-database-workload-destination)
+- [Migrace místních úloh SSIS do SSIS v ADF pomocí Azure SQL Database spravované instance jako cíle úloh databáze](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
-## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-database-managed-instance"></a>Zřízení Azure-SSIS IR s SSISDB hostovaným Azure SQL Database Managed instance
+## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Zřízení Azure-SSIS IR s SSISDB hostovaným pomocí spravované instance Azure SQL
 
 ### <a name="prerequisites"></a>Požadavky
 
-1. Pokud zvolíte Azure Active Directory ověřování, [Povolte v Azure SQL Database spravované instanci Azure Active Directory (Azure AD)](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance).
+1. Pokud zvolíte Azure Active Directory ověřování, [Povolte v Azure SQL Database spravované instanci Azure Active Directory (Azure AD)](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
 1. Vyberte, jak se má připojit spravovaná instance SQL, přes soukromý koncový bod nebo přes Veřejný koncový bod:
 
@@ -90,8 +90,8 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
     1. Ujistěte se, že skupina prostředků virtuální sítě může vytvářet a odstraňovat určité síťové prostředky Azure.
 
         Azure-SSIS IR musí vytvořit určité síťové prostředky ve stejné skupině prostředků jako virtuální síť. Mezi tyto prostředky patří:
-        - Nástroj pro vyrovnávání zatížení Azure s názvem * \< GUID>-azurebatch-cloudserviceloadbalancer*
-        - Skupina zabezpečení sítě s názvem * \< Guid>-azurebatch-cloudservicenetworksecuritygroup
+        - Nástroj pro vyrovnávání zatížení Azure s názvem * \<Guid> -azurebatch-cloudserviceloadbalancer*
+        - Skupina zabezpečení sítě s názvem * \<Guid> -azurebatch-cloudservicenetworksecuritygroup
         - Veřejná IP adresa Azure s názvem-azurebatch-cloudservicepublicip
 
         Tyto prostředky budou vytvořeny při spuštění Azure-SSIS IR. Po zastavení Azure-SSIS IR se odstraní. Chcete-li zabránit zablokování Azure-SSIS IR zastavovat, nepoužívejte tyto síťové prostředky v jiných prostředcích.
@@ -147,7 +147,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
     ![Katalog – veřejný koncový bod](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
 
-    Další informace o tom, jak povolit ověřování Azure AD, najdete v tématu [Povolení služby Azure AD v Azure SQL Database Managed instance](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-database-managed-instance).
+    Další informace o tom, jak povolit ověřování Azure AD, najdete v tématu [Povolení služby Azure AD v Azure SQL Database Managed instance](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
 1. Když se použije, připojte se k virtuální síti Azure-SSIS IR.
 

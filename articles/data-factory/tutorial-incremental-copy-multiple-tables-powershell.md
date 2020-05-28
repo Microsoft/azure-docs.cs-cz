@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
-ms.openlocfilehash: aa4dbfbaff620c25042d2603dab543661ec2cd14
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 84df242cdbfedd0cd1442ac4c4da7f4b6139d244
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81410009"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020740"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Server do Azure SQL Database
 
@@ -70,7 +70,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 ## <a name="prerequisites"></a>Požadavky
 
 * **SQL Server**. V tomto kurzu použijete místní databázi SQL Serveru jako zdrojové úložiště dat. 
-* **Azure SQL Database**. Použijete databázi SQL jako úložiště dat jímky. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření. 
+* **Azure SQL Database**. Použijete databázi SQL jako úložiště dat jímky. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md), kde najdete kroky pro její vytvoření. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Vytvoření zdrojových tabulek v databázi SQL Serveru
 
@@ -374,7 +374,7 @@ V tomto kroku s datovou továrnou propojíte místní databázi SQL Serveru.
 
 ### <a name="create-the-sql-database-linked-service"></a>Vytvoření propojené služby databáze SQL
 
-1. Ve složce ve c:\adftutorials\inccopymultitabletutorial vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService. JSON** s následujícím obsahem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Než &lt;soubor uložíte&gt;, &lt;nahraďte&gt;název &lt;serveru,&gt;název databáze &lt;,&gt; uživatelské jméno a heslo názvem vaší databáze SQL Server, názvem databáze, uživatelským jménem a heslem. 
+1. Ve složce ve c:\adftutorials\inccopymultitabletutorial vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService. JSON** s následujícím obsahem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Než soubor uložíte, nahraďte název &lt; serveru &gt; , název &lt; databáze &gt; , &lt; uživatelské jméno &gt; a &lt; heslo &gt; názvem vaší databáze SQL Server, názvem databáze, uživatelským jménem a heslem. 
 
     ```json
     {  
@@ -812,7 +812,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Všechny služby**, spusťte hledání pomocí klíčového slova *Datové továrny* a vyberte **Datové továrny**. 
 

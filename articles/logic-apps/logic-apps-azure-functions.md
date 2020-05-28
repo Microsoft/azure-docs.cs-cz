@@ -127,7 +127,7 @@ Než ale budete moct vytvořit libovolnou funkci Azure Functions, musíte už m�
 
    1. V poli **kód** přidejte svůj kód do šablony funkce, včetně odpovědi a datové části, kterou chcete vrátit do vaší aplikace logiky poté, co byla funkce dokončena. Až to budete mít, vyberte **Vytvořit**.
 
-   Například:
+   Příklad:
 
    ![Definovat funkci](./media/logic-apps-azure-functions/add-code-function-definition.png)
 

@@ -22,7 +22,7 @@ Vlastnosti obrysu jsou globální nastavení. Všechny objekty, které používa
 
 Třída `OutlineSettings` obsahuje nastavení týkající se globálních vlastností osnovy. Zpřístupňuje následující členy:
 
-| Parametr      | Typ    | Popis                                             |
+| Parametr      | Typ    | Description                                             |
 |----------------|---------|---------------------------------------------------------|
 | `Color`          | Color4Ub | Barva, která se používá k vykreslování obrysu. Část alfa je ignorována.         |
 | `PulseRateHz`    | float   | Míra kolísání obrysu za sekundu|

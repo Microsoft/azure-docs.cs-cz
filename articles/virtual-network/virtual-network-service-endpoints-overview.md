@@ -13,24 +13,24 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: ae9d219c376aa704be34088a4f7c48c35baa9669
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 4a2a7af23005e3c033d455d52f61cef2b7564b7f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509495"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018748"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby pro virtuální síť
 
 Koncové body služby Virtual Network (VNet) přesahují privátní adresní prostor virtuální sítě. Koncové body také šíří identitu vaší virtuální sítě do služeb Azure přes přímé připojení. Koncové body umožňují svázat vaše důležité prostředky služeb Azure pouze s vašimi virtuálními sítěmi. Provoz z vaší virtuální sítě do služby Azure vždy zůstává v páteřní síti Microsoft Azure.
 
-Tato funkce je k dispozici pro následující služby a oblasti Azure. *Microsoft.\* * Resource je v závorkách. Povolit tento prostředek ze strany podsítě při konfiguraci koncových bodů služby pro vaši službu:
+Tato funkce je k dispozici pro následující služby a oblasti Azure. *Microsoft. \* * Resource je v závorkách. Povolit tento prostředek ze strany podsítě při konfiguraci koncových bodů služby pro vaši službu:
 
 **Obecná dostupnost**
 
 - **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (*Microsoft. Storage*): všeobecně dostupné ve všech oblastech Azure.
-- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): všeobecně dostupné ve všech oblastech Azure.
-- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): všeobecně dostupné ve všech oblastech Azure.
+- **[Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): všeobecně dostupné ve všech oblastech Azure.
+- **[Azure SQL Data Warehouse](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): všeobecně dostupné ve všech oblastech Azure.
 - **[Azure Database for PostgreSQL Server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): všeobecně dostupné v oblastech Azure, kde je databázová služba k dispozici.
 - **[Azure Database for MySQL server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): všeobecně dostupné v oblastech Azure, kde je databázová služba k dispozici.
 - **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft. SQL*): všeobecně dostupné v oblastech Azure, kde je databázová služba k dispozici.
@@ -147,9 +147,9 @@ Nejčastější dotazy najdete v tématu [Virtual Network časté otázky týkaj
 
 - [Konfigurace koncových bodů služby pro virtuální síť](tutorial-restrict-network-access-to-resources.md)
 - [Zabezpečení účtu Azure Storage k virtuální síti](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Zabezpečení Azure SQL Database k virtuální síti](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Zabezpečení Azure SQL Data Warehouse k virtuální síti](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
+- [Zabezpečení Azure SQL Database k virtuální síti](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Zabezpečení Azure SQL Data Warehouse k virtuální síti](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Integrace služeb Azure ve virtuálních sítích](virtual-network-for-azure-services.md)
 - [Virtual Network zásady koncového bodu služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
-- [Šablona Azure Resource Manager](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Šablona Azure Resource Manageru](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 40857e83457222365e61a224ead19bd1d1d31ae7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5ef5af77831c01ae484398c1f2d8905e5e2bc11e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758975"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021326"
 ---
 # <a name="hierarchical-state-override"></a>Přepsání hierarchického stavu
 
@@ -27,23 +27,23 @@ Můžete například zvážit model automobilu a chcete přepnout celý automobi
 
 Pevná sada stavů, které lze přepsat, jsou následující:
 
-* **Skryté**: odpovídající sítě v grafu scény jsou skryté nebo zobrazené.
-* Barevný **nádech**: vykreslený objekt může mít barevný nádech s jeho individuální barvou a váhou odstínu. Následující obrázek ukazuje barevný nádech okraje kolečka.
+* **`Hidden`**: Odpovídající sítě v grafu scény jsou skryté nebo zobrazené.
+* **`Tint color`**: Vykreslený objekt může mít barevný nádech s jeho individuálním barevným nádechem a váhou odstínu. Následující obrázek ukazuje barevný nádech okraje kolečka.
   
   ![Barevný nádech](./media/color-tint.png)
 
-* **Přečtěte si téma**: geometrie se vykresluje jako příklad, například k odhalení vnitřních částí objektu. Následující obrázek ukazuje, že se celý automobil vykresluje v režimu zobrazení, s výjimkou červené brzdy Caliper:
+* **`See-through`**: Geometrie se vykresluje s poloviční transparentní, například k zobrazení vnitřních částí objektu. Následující obrázek ukazuje, že se celý automobil vykresluje v režimu zobrazení, s výjimkou červené brzdy Caliper:
 
   ![Viz-through](./media/see-through.png)
 
   > [!IMPORTANT]
   > Efekt převádění funguje pouze v případě, že je použit [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* .
 
-* **Vybráno**: geometrie je vykreslena s [obrysem výběru](outlines.md).
+* **`Selected`**: Geometrie je vykreslena s [obrysem výběru](outlines.md).
 
   ![Obrys výběru](./media/selection-outline.png)
 
-* **DisableCollision**: geometrie je vyjmuta z [prostorových dotazů](spatial-queries.md). **Skrytý** příznak nevypne kolize, takže tyto dva příznaky jsou často nastaveny dohromady.
+* **`DisableCollision`**: Geometrie je vyjmuta z [prostorových dotazů](spatial-queries.md). **`Hidden`** Příznak nemá vliv na příznak stavu kolizí, takže tyto dva příznaky jsou často nastaveny dohromady.
 
 ## <a name="hierarchical-overrides"></a>Hierarchická přepsání
 
@@ -87,7 +87,7 @@ component->SetState(
 
 ### <a name="tint-color"></a>Barevný nádech
 
-Přepsání barvy odstínu je mírně zvláštní v tom, že existuje stav zapnuto/vypnuto/zděděno a barevný nádech. Část alfa barvy odstínu definuje váhu efektu odstínování: Pokud je nastavená na 0,0, není viditelná žádná barva nádechu a pokud je nastavená na 1,0, objekt se vykreslí pomocí čisté barvy nádechu. U hodnot mezi hodnotami se výsledná barva smíchá s barvou odstínu. Barvu barevného nádechu lze změnit podle jednotlivých snímků, aby bylo možné dosáhnout barevné animace.
+`tint color`Přepsání je mírně zvláštní v tom, že je stav zapnuto/vypnuto/zděděno a vlastnost barva nádechu. Část alfa barvy odstínu definuje váhu efektu odstínování: Pokud je nastavená na 0,0, není viditelná žádná barva nádechu a pokud je nastavená na 1,0, objekt se vykreslí pomocí čisté barvy nádechu. U hodnot mezi hodnotami se výsledná barva smíchá s barvou odstínu. Barvu barevného nádechu lze změnit podle jednotlivých snímků, aby bylo možné dosáhnout barevné animace.
 
 ## <a name="performance-considerations"></a>Otázky výkonu
 

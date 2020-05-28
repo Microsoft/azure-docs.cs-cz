@@ -4,12 +4,12 @@ description: Odkazy na příklady scénářů migrace společnosti Contoso, migr
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: raynew
-ms.openlocfilehash: c57a9f85e8b12bd4e1e66a4fcd5d08ab5f7b9118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e19bcbd041232504a81ac0799e71cae2f459428
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676331"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016912"
 ---
 # <a name="contoso-migration-series"></a>Seriál o migraci Contoso
 
@@ -26,7 +26,7 @@ Máme řadu článků, které ukazují, jak fiktivní organizace contoso migruje
 - Pro každý scénář nasazení poskytujeme informace o obchodních ovladačích a cílech, navržené architektuře, krocích k provedení migrace a doporučeních pro vyčištění a další kroky po dokončení migrace.
 
 
-**Předmětu** | **Zobrazí** 
+**Článek** | **Podrobnosti** 
 --- | --- 
 [Článek 1: Přehled](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview) | Přehled série článků, strategie migrace společnosti Contoso a ukázkových aplikací, které se používají v řadě. 
 [Článek 2: nasazení infrastruktury Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-infrastructure) | Společnost Contoso připraví svoji místní infrastrukturu a infrastrukturu Azure pro migraci. Stejná infrastruktura se používá pro všechny články v řadě. 
@@ -36,7 +36,7 @@ Máme řadu článků, které ukazují, jak fiktivní organizace contoso migruje
 [Článek 6: opětovné hostování aplikace na virtuálních počítačích Azure a ve skupině dostupnosti služby SQL Server AlwaysOn](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-vm-sql-ag) | Společnost Contoso migruje aplikaci SmartHotel360. Společnost Contoso používá Azure Migrate k migraci virtuálních počítačů aplikace. Používá Database Migration Service k migraci databáze aplikace do clusteru SQL Server, který je chráněn skupinou dostupnosti AlwaysOn. 
 [Článek 7: opětovné hostování aplikace pro Linux na virtuálních počítačích Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-linux-vm) | Společnost Contoso dokončí migraci své aplikace osTicket pro Linux do virtuálních počítačů Azure pomocí Azure Migrate.
 [Článek 8: opětovné hostování aplikace pro Linux na virtuálních počítačích Azure a Azure Database for MySQL](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-linux-vm-mysql) | Společnost Contoso migruje svou aplikaci pro Linux osTicket do virtuálních počítačů Azure pomocí Azure Migrate. Migruje databázi aplikace do služby Azure Database for MySQ pomocí Azure Database Migration Service (zahrnuje alternativní možnost použití aplikace MySQL Workbench).
-[Článek 9: refaktorování aplikace ve webové aplikaci Azure a Azure SQL Database](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-web-app-sql) | Společnost Contoso migruje svou aplikaci v SmartHotel360 do webové aplikace Azure a migruje databázi aplikace do instance Azure SQL Server pomocí Azure Database Migration Service.
+[Článek 9: refaktorování aplikace ve webové aplikaci Azure a Azure SQL Database](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-web-app-sql) | Společnost Contoso migruje svou aplikaci v SmartHotel360 do webové aplikace Azure a migruje databázi aplikace do Azure SQL Database pomocí Azure Database Migration Service.
 [Článek 10: refaktorování aplikace pro Windows pomocí Azure App Services a spravované instance SQL](https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-refactor-web-app-sql-managed-instance) | Společnost Contoso migruje místní aplikaci pro Windows do webové aplikace Azure a migruje databázi aplikace do spravované instance Azure SQL pomocí Azure Database Migration Service.
 [Článek 11: refaktorování aplikace pro Linux ve webové aplikaci Azure a Azure Database for MySQL](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-linux-app-service-mysql) | Společnost Contoso migruje svou aplikaci pro Linux osTicket do webové aplikace Azure ve více oblastech Azure pomocí Azure Traffic Manager integrovaných s GitHubem pro průběžné doručování. Společnost Contoso migruje databázi aplikace do instance Azure Database for MySQL. 
 [Článek 12: refaktoring Team Foundation Server v Azure DevOps Services](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-tfs-vsts) | Společnost Contoso migruje své místní nasazení Team Foundation Server do Azure DevOps Services v Azure.

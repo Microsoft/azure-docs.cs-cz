@@ -5,16 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 69774c0014aac26c7266620bbe7d06ba37d6023b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f4c49be5f5a0f2c89831891dc2640b64fee9fc44
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758805"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022414"
 ---
 # <a name="z-fighting-mitigation"></a>Zmírnění Z-fightingu
 
-Pokud se dva povrchy překrývají, není jasné, které z nich by měly být vykresleny nad druhou. Výsledek se dokonce liší v pixelech, což vede k artefaktům závislým na zobrazení. V důsledku toho se při každém přesunu kamery nebo sítě tyto vzory blikání pozorují. Tento artefakt se nazývá *z-boje*. U aplikací AR a VR je problém posílený, protože zařízení připojená k hlavním místům jsou přirozeně vždycky přesunuta. K tomu, aby se zabránilo prohlížeči v boji proti zmírnění, je k dispozici ve vzdáleném vykreslování Azure.
+Pokud se dva povrchy překrývají, není jasné, které z nich by měly být vykresleny nad druhou. Výsledek se dokonce liší podle pixelu, což vede k artefaktům závislým na zobrazení kamery. V důsledku toho se při každém přesunu kamery nebo sítě tyto vzory blikání pozorují. Tento artefakt se nazývá *z-boje*. U aplikací AR a VR je problém posílený, protože zařízení připojená k hlavním místům jsou přirozeně vždycky přesunuta. K tomu, aby se zabránilo prohlížeči v boji proti zmírnění, je k dispozici ve vzdáleném vykreslování Azure.
 
 ## <a name="z-fighting-mitigation-modes"></a>Režimy Z-boj proti zmírnění
 

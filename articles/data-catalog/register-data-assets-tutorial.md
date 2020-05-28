@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68950237"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021598"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Kurz: registrace datových assetů v Azure Data Catalog
 
@@ -39,7 +39,7 @@ Pokud chcete nastavit Data Catalog, musíte být vlastníkem nebo spoluvlastník
 
 ### <a name="register-a-data-source"></a>Registrace zdroje dat
 
-Pomocí [ukázky Azure SQL Database](../sql-database/sql-database-single-database-get-started.md)zaregistrujete datové assety (tabulky), ale můžete použít libovolný podporovaný zdroj dat, pokud dáváte přednost práci s daty, která jsou známá a jsou relevantní pro vaši roli. Seznam podporovaných zdrojů dat naleznete v tématu [Podporované zdroje dat](data-catalog-dsr.md).
+Pomocí [ukázky Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)zaregistrujete datové assety (tabulky), ale můžete použít libovolný podporovaný zdroj dat, pokud dáváte přednost práci s daty, která jsou známá a jsou relevantní pro vaši roli. Seznam podporovaných zdrojů dat naleznete v tématu [Podporované zdroje dat](data-catalog-dsr.md).
 
 Název Azure SQL Database, který používáme v tomto kurzu, je *RLSTest*.
 
@@ -71,7 +71,7 @@ Datové assety z ukázky Azure SQL Database teď můžete registrovat pomocí Az
 
     2. Pomocí kombinace kláves CTRL + SELECT vyberte **Product**, **ProductCategory**, **ProductDescription**a **ProductModel** .
 
-    3. Vyberte **šipku vybrané pro přesun** (**>**). Tím se přesunou všechny vybrané objekty do seznamu **Objekty k registraci**.
+    3. Vyberte **šipku vybrané pro přesun** ( **>** ). Tím se přesunou všechny vybrané objekty do seznamu **Objekty k registraci**.
 
           ![Kurz Azure Data Catalog – procházení a výběr objektů](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
 
@@ -168,7 +168,7 @@ Závorky lze použít k seskupení částí dotazu za účelem logické izolace,
 
     ![Azure Data Catalog – vyhledávání seskupení](media/register-data-assets-tutorial/data-catalog-grouping-search.png)
 
-### <a name="comparison-operators"></a>Operátory porovnání
+### <a name="comparison-operators"></a>Operátory porovnávání
 
 S pomocí operátorů porovnání lze použít porovnávání jiné než rovnost pro vlastnosti, které mají typ dat číslo nebo datum.
 
@@ -190,7 +190,7 @@ V tomto cvičení použijete portál Azure Data Catalog k přidávání poznáme
 
 V tomto cvičení přidáte poznámky k jednomu datovému assetu (ProductPhoto). Doplníte k datovému assetu ProductPhoto popisný název a popis.  
 
-1. Přejít na [domovskou stránku Azure Data Catalog](https://www.azuredatacatalog.com) a `tags:product` vyhledat datové assety, které jste zaregistrovali.
+1. Přejít na [domovskou stránku Azure Data Catalog](https://www.azuredatacatalog.com) a vyhledat `tags:product` datové assety, které jste zaregistrovali.
 
 2. ve výsledcích hledání vyberte **ProductModel** .  
 

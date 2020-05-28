@@ -3,12 +3,12 @@ title: Podmíněné nasazení se šablonami
 description: Popisuje postup podmíněného nasazení prostředku v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: f170710118c0e3de6f3643b6216ed55b83b5c7df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 001a1a7d6d15fe29b0f3184b75892f4ec75cef27
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153416"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017490"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>Podmíněné nasazení v šablonách ARM
 
