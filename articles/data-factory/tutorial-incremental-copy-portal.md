@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 78cb58bca9b06b6dcf8549eefa5ebf0eb2b4b01c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b1660c3a6d3bfe262493722c5aad0a08778b1964
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409321"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119145"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí Azure Portal
 
@@ -65,7 +65,7 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-* **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
+* **Azure SQL Database**. Tuto databázi použijete jako zdrojové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md), kde najdete kroky pro její vytvoření.
 * **Azure Storage**. Úložiště objektů blob použijete jako úložiště dat jímky. Pokud nemáte účet úložiště, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření. Vytvořte kontejner s názvem adftutorial. 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Vytvoření tabulky zdroje dat v databázi SQL
@@ -152,7 +152,7 @@ END
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte **vytvořit** > **Analytics** > **Data Factory**analýzy prostředků:
+2. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků:
 
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -196,9 +196,9 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 8. V poli **propojená služba**vyberte **Nový**a pak proveďte následující kroky:
 
     1. Jako **Název** zadejte **AzureSqlDatabaseLinkedService**.
-    2. Jako **název serveru**vyberte svůj server SQL Azure.
+    2. Jako **název serveru**vyberte svůj server.
     3. Z rozevíracího seznamu vyberte **název vaší databáze** .
-    4. Zadejte**heslo**k **uživatelskému jménu** & .
+    4. Zadejte heslo k **uživatelskému jménu**  &  **Password**.
     5. Pokud chcete otestovat připojení k databázi Azure SQL, klikněte na **Test připojení**.
     6. Klikněte na **Finish** (Dokončit).
     7. Potvrďte, že je pro **propojenou službu**vybraná možnost **AzureSqlDatabaseLinkedService** .
@@ -258,7 +258,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 27. V okně **nastavit vlastnosti** potvrďte, že je pro **propojenou službu**vybraná možnost **AzureStorageLinkedService** . Pak vyberte **Dokončit**.
 28. Přejít na kartu **připojení** SinkDataset a proveďte následující kroky:
     1. Do pole **cesta k souboru** zadejte **adftutorial/incrementalcopy**. **adftutorial** je název kontejneru objektů blob a **incrementalcopy** je název složky. Tento fragment kódu předpokládá, že ve svém úložišti objektů blob máte kontejner objektů blob s názvem adftutorial. Pokud tento kontejner neexistuje, vytvořte ho nebo použijte název existujícího kontejneru. Azure Data Factory automaticky vytvoří výstupní složku **incrementalcopy**, pokud neexistuje. Můžete také použít tlačítko **Procházet** u možnosti **Cesta k souboru** a přejít ke složce v kontejneru objektů blob.
-    2. V části **soubor** **cesta k souboru** vyberte **Přidat dynamický obsah [ALT + P]** a potom v otevřeném okně zadejte `@CONCAT('Incremental-', pipeline().RunId, '.txt')`. Pak vyberte **Dokončit**. Název souboru se vygeneruje dynamicky pomocí tohoto výrazu. Každé spuštění kanálu má jedinečné ID. Aktivita kopírování používá ID spuštění k vygenerování názvu souboru.
+    2. V části **soubor** **cesta k souboru** vyberte **Přidat dynamický obsah [ALT + P]** a potom `@CONCAT('Incremental-', pipeline().RunId, '.txt')` v otevřeném okně zadejte. Pak vyberte **Dokončit**. Název souboru se vygeneruje dynamicky pomocí tohoto výrazu. Každé spuštění kanálu má jedinečné ID. Aktivita kopírování používá ID spuštění k vygenerování názvu souboru.
 
 28. Přepněte na editor **kanálu** kliknutím na kartu kanálu v horní části nebo kliknutím na název kanálu ve stromovém zobrazení vlevo.
 29. V sadě nástrojů **Aktivity** rozbalte **Obecné** a přetáhněte aktivitu **Uložená procedura** ze sady nástrojů **Aktivity** na plochu návrháře kanálu. **Připojte** zelený výstup (Úspěch) aktivity **Kopírování** k aktivitě **Uložená procedura**.
@@ -272,9 +272,9 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     1. Jako **název uložené procedury**vyberte **usp_write_watermark**.
     2. Pokud chcete zadat hodnoty parametrů uložené procedury, klikněte na **Importovat parametr** a zadejte následující hodnoty parametrů:
 
-        | Název | Typ | Hodnota |
+        | Name | Typ | Hodnota |
         | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | LastModifiedtime | Datum a čas | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Řetězec | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)

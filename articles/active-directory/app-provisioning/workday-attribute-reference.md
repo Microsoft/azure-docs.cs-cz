@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/21/2020
+ms.date: 05/25/2020
 ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: 1ac45d88c0af33114106f36798fd56473d18ea28
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d1e432ef99a3c83fe06c00b15acbb00c630e1be1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798056"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014385"
 ---
 # <a name="workday-attribute-reference"></a>Referenční informace k atributu Workday
 
@@ -30,7 +30,7 @@ Následující tabulka zachycuje seznam atributů Workday a odpovídající výr
 :::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-no-version-info.png" alt-text="Pracovní den – žádné informace o verzi":::
 
 
-| \# | Name                                  | Výraz rozhraní API pro Workday                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | Název atributu Workday                                  | Výraz rozhraní XPATH pro cestu pracovního dne                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Aktivní                                | nečinnost: pracovní proces/přenos dat pracovního procesu/meziprocesu: data o zaměstnání/přenosová data/ \_ \_ meziprocesy \_ \_ : aktivní/text\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | oboustranný: pracovní proces/přenos dat pracovního procesu/podprocesu: data o zaměstnání/přenosová data: umístění dat/přenos: data z \_ \_ \_ souhrnu firemních dat/přenosová data/přenosová data \_ \_ \_ \_ : \_ řádek adresy \_ \[ @wd:Type = ' \_ řádek adresy \_ 2 ' \] /text\(\)                                                                                                                                                                                                                             |
@@ -52,7 +52,7 @@ Následující tabulka zachycuje seznam atributů Workday a odpovídající výr
 | 18 | CountryRegionReference                | nečinnost: pracovní proces/přenos dat pracovního procesu/meziprocesu: data o zaměstnání/přenosová data: umístění dat/přenos dat \_ \_ \_ podnikového webu/meziprocesový \_ \_ \_ : data adres/meziproces \_ : \_ oblast země\_Reference/@wd:Descriptor                                                                                                                                                                                                                                               |
 | 19 | EmailAddress                          | nefunkční: pracovní proces/přenos dat pracovního procesu/nečinnosti: osobní data/podprocesy: \_ \_ kontaktní \_ data/přenos: e-mailová \_ adresa \_ \[ přeložit \( řetězec \( : data o využití \_ /přenos: typ \_ data/přenos: typ \_ Reference/@wd:Descriptor \) , ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ', ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ' \) = ' work ' \] /WD: e-mailová \_ Adresa/text\(\)                                                                                                                                    |
 | 20 | EmployeeID                            | meziprocesový: Work/Form: Worker reference/forming: \_ ID \[ @wd:type = ' Employee \_ ID ' \] /text\(\)                                                                                                                                                                                                                                                                                                                                     |
-| 21 | FacilityLocation                      | nečinnost: pracovní proces/přenos dat pracovních procesů: pracovní data/podprocesy: data \_ \_ organizace pracovního procesu \_ \_ přeložit řetězec na více \[ \( řetězců \( : \_ data organizace/mezispolečnost: \_ odkaz na typ organizace/přenos \_ : ID \[ @wd:type = ' \_ ID typu organizace \_ ' \] \) , ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ', ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ' \) = ' zařízení ' \] /přenos: organizace\_Reference/@wd:Descriptor                                                                                     |
+| 21 | FacilityLocation                      | nespravované: pracovní proces/nečinnost: pracovní data/podprocesy: firemní data/mezispolečnost: data \_ \_ organizace pracovního procesu \_ \_ \[ přeložit řetězec do podložení \( \( : \_ data organizace/mezispolečnost: odkaz na typ organizace/přeložení \_ \_ : ID \[ @wd:type = ' \_ ID typu organizace \_ ' \] \) , ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ', ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ' \) = ' zařízení ' \] /WD: organizace\_Reference/@wd:Descriptor                                                                                     |
 | 22 | Fax                                   | nefunkční: Work/FORMED: Worker data/nefunkční: \_ osobní data/podprocesy \_ : kontaktní data/nepřenosový \_ řetězec: \_ \[ podložení: \( \( \_ typ telefonního zařízení \_ \_ Reference/@wd:Descriptor \) , ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ', ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ' \) = ' Fax ' a překládání \( řetězců \( : data o využití \_ /přenos: typ \_ dat/přenos: typ \_ Reference/@wd:Descriptor \) , ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ', ' ABCDEFGHIJKLMNOPQRSTUVWXYZ ' \) = ' pracovní ' \] /@wd:Formatted \_ telefon       |
 | 23 | FirstName                             | nečinnost: pracovní proces/přenos dat pracovního procesu/podprocesu: \_ osobní data/podprocesy \_ : pojmenovat data/přenosová data \_ : právní \_ název \_ /přenos: název \_ Podrobnosti \_ /přenos: jméno \_ a text\(\)                                                                                                                                                                                                                                                                                 |
 | 24 | JobClassificationID                   | nečinnost: pracovní proces/přenos dat pracovního procesu/podprocesu: data o zaměstnání/nepřenosová data: \_ \_ umístění dat/nečinnosti: \_ \_ souhrnnými daty klasifikace úlohy/podprocesy \_ \_ : Referenční dokumentace \_ klasifikace úlohy/přenos \_ : ID \[ @wd:type = ' \_ \_ referenční ID klasifikace úlohy \_ ' \]\(\)                                                                                                                                                                                                      |
@@ -125,7 +125,7 @@ Pokud v adrese URL připojení používáte rozhraní WWS API v 30.0 nebo vyšš
 Pokud chcete nakonfigurovat další XPATH, přečtěte si část [kurz: Správa konfigurace](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration). 
 
 
-| \# | Name                                  | Výraz rozhraní XPATH pro cestu pracovního dne                                                                                                                                                                                                                                                                                                                                                |
+| \# | Název atributu Workday                                  | Výraz rozhraní XPATH pro cestu pracovního dne                                                                                                                                                                                                                                                                                                                                                |
 |----|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Aktivní                                | nečinnost: pracovní proces/přenos dat pracovního procesu/meziprocesu: data o zaměstnání/přenosová data/ \_ \_ meziprocesy \_ \_ : aktivní/text\(\)                                                                                                                                                                                                                                                                                               |
 | 2  | AddressLine2Data                      | oboustranný: Work//WD: Work \_ data/přenosová data/ \_ přenosová data/ \_ mezifunkce: data úlohy pracovního procesu \_ \[ @wd:Primary_Job = 1]: data pozice/přenosová data: data o souhrnu firemních dat/přenosová data/přenosová data \_ \_ \_ \_ \_ : \_ řádek adresy \_ \[ @wd:Type = ' \_ řádek \_ 2 ' \] /text\(\)                                                                                                                                                            |
@@ -208,4 +208,44 @@ Pokud chcete nakonfigurovat další XPATH, přečtěte si část [kurz: Správa 
 | 79 | WorkerType                            | nečinnost: pracovní proces/přenos dat pracovního procesu/podprocesu: data o \_ zaměstnání/mezivyužití \_ : data úlohy pracovního procesu \_ \_ \[ @wd:Primary_Job = 1]/WD: \_ data pozice/přenos: \_ referenční informace o typu pracovního procesu/přenos \_ : ID \[ @wd:type = " \_ ID typu zaměstnance \_ " \] /text\(\)                                                                                                                                                                                                 |
 | 80 | WorkSpaceReference                    | nefunkční: pracovní proces/přenos dat pracovního procesu/vzdušného: data o zaměstnání/mezipaměť: \_ \_ \_ data úlohy pracovního procesu \_ \[ @wd:Primary_Job = 1]/WD: \_ data pozice/ \_ mezipaměť: pracovní prostor\_\_Reference/@wd:Descriptor                                                                                                                                                                                                                                  |
 
+## <a name="custom-xpath-values"></a>Vlastní hodnoty XPATH
+V následující tabulce najdete seznam dalších běžně používaných výrazů rozhraní API XPATH při zřizování pracovníků z Workday do služby Active Directory nebo Azure AD. Otestujte prosím v rámci vaší verze pracovního dne výrazy rozhraní API XPATH, které odkazují na pokyny zaznamenané v části [kurz: Správa konfigurace](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration).
+
+Pokud chcete do tabulky XPATH přidat další atributy pro výhody pro zákazníky, kteří implementují tuto integraci, ponechte prosím níže uvedený komentář nebo přímo [přispívat](https://docs.microsoft.com/contribute) k článku. 
+
+> [!div class="mx-tdBreakAll"]
+> | \# | Název atributu Workday  | Verze rozhraní API Workday | Výraz rozhraní XPATH pro cestu pracovního dne   |
+> |----|-------------------------|---------------------|--------------------------------|
+> | 1  | Univerzální ID  | v 30.0 +   | /WD: Work/Form: Worker_Data: Universal_ID/text ()      |
+> | 2  | Uživatelské jméno     | v 30.0 +   | meziprocesový: Work/Form: Worker_Data/WD: User_Account_Data/WD: User_Name/text () |
+> | 3  | ID úrovně správy  | v 30.0 +  | /WD: Work/FORMED: Worker_Data: Employment_Data/WD: Worker_Job_Data [ @wd:Primary_Job = 1]/WD: Position_Data/WD: Job_Profile_Summary_Data/WD: Management_Level_Reference/WD: ID [ @wd:type = "Management_Level_ID"]/text ()  |
+> | 4 | Přijetí se zrušilo. | v 30.0 + | /WD: Work/FORMED: Worker_Data: Employment_Data/WD: Worker_Status_Data/WD: Hire_Rescinded/text () |
+> | 5 | Přiřazená skupina zřizování | v 21.1 + | /WD: Work/FORMED: Worker_Data: Account_Provisioning_Data/WD: Provisioning_Group_Assignment_Data [dodaný: status = ' přiřazeno ']/WD: Provisioning_Group/text () | 
+
+
+## <a name="supported-xpath-functions"></a>Podporované funkce XPATH
+Níže je uveden seznam funkcí XPATH podporovaných [knihovnou XPath Microsoft .NET](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) , které můžete použít při vytváření výrazu rozhraní API XPath. 
+
+* name
+* poslední
+* position
+* řetězec
+* podřetězec
+* concat
+* dílčí řetězec – za
+* začíná na
+* Délka řetězce
+* obsahuje
+* translate
+* normalizovat místo
+* dílčí řetězec – před
+* Boolean
+* true
+* not
+* false (nepravda)
+* číslo
+* maximální
+* Součet
+* round
+* řízení
 

@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6534e7d3a05434855503a9cbf1e675aa11799984
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: aab64e173b02ae991f7071da785434fa742de7de
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857788"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994693"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště
 
@@ -26,8 +26,6 @@ Azure Storage podporuje převzetí služeb při selhání účtu v geograficky r
 Převzetí služeb při selhání účtu je k dispozici pro obecné účely V1, Obecné-účel v2 a účty BLOB Storage s nasazeními Azure Resource Manager. Převzetí služeb při selhání účtu je podporované pro všechny veřejné oblasti, ale v současnosti není dostupné v svrchovaných nebo národních cloudech.
 
 Tento článek popisuje koncepty a procesy spojené s převzetím služeb při selhání a popisuje, jak připravit účet úložiště k obnovení s minimálním dopadem na zákazníky. Informace o tom, jak iniciovat převzetí služeb při selhání účtu v Azure Portal nebo PowerShellu, najdete v tématu [spuštění převzetí služeb při selhání](storage-initiate-account-failover.md).
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

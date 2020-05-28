@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: b7b8606f7f15f8d6fdd66681a1c7ade60ff506f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9bdf1cd8832d311a71276fa18d407a5b4dd98d24
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217785"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115494"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Použití ukázkových datových sad v Azure Machine Learning Studio (klasický)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [top]: #machine-learning-sample-datasets
 
@@ -46,7 +44,7 @@ Podmnožina 1994ch databází, která používá pracovní dospělí za stáří
 <p></p>
 <b>Použití:</b> Klasifikujte lidi pomocí demografických údajů, abyste předpovídat, jestli osoba za 50 tis za rok.
 <p></p>
-<b>Související výzkum:</b> Kohavi, R., Becker, B., (1996). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
+<b>Související výzkum:</b> Kohavi, R., Becker, B., (1996). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
@@ -67,7 +65,7 @@ K automatické ceně je zpočátku přidruženo skóre rizika. Pak se upraví na
 <p></p>
 <b>Použití:</b> Předpověď rizikového skóre podle funkcí pomocí regrese nebo klasifikace lineární 
 <p></p>
-<b>Související výzkum:</b> Schlimmer, J.C. (1987). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
+<b>Související výzkum:</b> Schlimmer, J.C. (1987). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
@@ -98,7 +96,7 @@ Data dárce zahrnují měsíce od posledního darování) a četnost nebo celkov
 <p></p>
 <b>Použití:</b> Cílem je předpovědět přes klasifikaci, ať už v březnu 2007, kde 1 označuje dárce během cílového období, a 0 nedárce. 
 <p></p>
-<b>Související výzkum:</b> Já, I.C., (2008). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní školy a počítačové vědy
+<b>Související výzkum:</b> Já, I.C., (2008). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní školy a počítačové vědy
 <p></p>
 Já, I-Cheng, Yang, King-Jang a nocení, značku-Mingu, "zjišťování znalostí na NEPŘEJDE modelu pomocí Bernoulliho sekvence," expert Systems s aplikacemi, 2008,<a href="https://dx.doi.org/10.1016/j.eswa.2008.07.018">https://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
@@ -111,7 +109,7 @@ Jedna ze tří datových sad souvisejících s rakovinu, kterou poskytuje Oncolo
 <p></p>
 <b>Použití:</b> Klasifikace typu rakoviny na základě 9 atributů, z nichž některé jsou lineární a některé jsou kategorií. 
 <p></p>
-<b>Související výzkum:</b> Wohlberg, W.H., Street, W.N., & Mangasarian, O.L. (1995). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
+<b>Související výzkum:</b> Wohlberg, W.H., Street, W.N., & Mangasarian, O.L. (1995). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
@@ -164,7 +162,7 @@ Kolekce simulovaných energetických profilů na základě 12 různých stavebn�
 <p></p>
 <b>Použití:</b> Pomocí regrese nebo klasifikace předpovědět hodnocení energetické účinnosti na základě jedné ze dvou odpovědí s skutečnou hodnotou. U klasifikace s více třídami zaokrouhlí proměnnou odpovědi na nejbližší celé číslo. 
 <p></p>
-<b>Související výzkum:</b> Xifara, A. & Tsanas, A. (2012). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
+<b>Související výzkum:</b> Xifara, A. & Tsanas, A. (2012). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
@@ -189,7 +187,7 @@ Záznamy o příjezdu a odchodech letů v letadle v rámci USA od října 2011.
 <p></p>
 <b>Použití:</b> Předpovědět zpoždění letů. 
 <p></p>
-<b>Související výzkum:</b> Od oddělení USA. přepravuje <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>se.
+<b>Související výzkum:</b> Od oddělení USA. přepravuje se <a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a> .
   </td>
 </tr>
 
@@ -200,9 +198,9 @@ Obsahuje data o počasí, jako je teplota a indexy vlhkosti a rychlost větru. D
 <p></p>
 <b>Použití:</b> Jedná se o obtížný regresní úkol, ve kterém se zaměřuje na předpověď vypálené oblasti v doménové struktuře, která se aktivuje. 
 <p></p>
-<b>Související výzkum:</b> Cortez, P., & Morais, A. (2008). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní školy a počítačové vědy
+<b>Související výzkum:</b> Cortez, P., & Morais, A. (2008). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní školy a počítačové vědy
 <p></p>
-[Cortez a Morais, 2007] P. Cortez a. Morais. Přístup k dolování dat pro předpověď doménové struktury se aktivují pomocí meteorologických dat. V J. Neves, M. F. Santos a J. Machado EDS. nové trendy v umělých inteligentních Intelligencech, jednání nějak změnily 13ho EPIA 2007-portugalské konference o uměle Intelligence, prosinec, Guimarães, Portugalsku, PP. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. K dispozici <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>na adrese:.
+[Cortez a Morais, 2007] P. Cortez a. Morais. Přístup k dolování dat pro předpověď doménové struktury se aktivují pomocí meteorologických dat. V J. Neves, M. F. Santos a J. Machado EDS. nové trendy v umělých inteligentních Intelligencech, jednání nějak změnily 13ho EPIA 2007-portugalské konference o uměle Intelligence, prosinec, Guimarães, Portugalsku, PP. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. K dispozici na adrese: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a> .
   </td>
 </tr>
 
@@ -229,7 +227,7 @@ To je pravděpodobně nejlepší známá databáze, která se nachází v dokume
 <p></p>
 <b>Použití:</b> Předpovědět typ Iris z měření.  
 <p></p>
-<b>Související výzkum:</b> Fisher, R.A. (1988). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
+<b>Související výzkum:</b> Fisher, R.A. (1988). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
@@ -248,7 +246,7 @@ Tato data vypisuje spotřebu paliva pro různé automobilní zařízení v míl�
 <p></p>
 <b>Použití:</b> Předpovídání úspor paliva na základě tří diskrétních atributů s více hodnotami a pěti souvislých atributů. 
 <p></p>
-<b>Související výzkum:</b> StatLib, Carnegie Mellon University, (1993). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
+<b>Související výzkum:</b> StatLib, Carnegie Mellon University, (1993). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
@@ -258,7 +256,7 @@ Podmnožina dat z Národního institutu databáze nemocí diabetes a trávící 
 <p></p>
 <b>Použití:</b> Předpovědět, zda má předmět diabetes (binární klasifikace). 
 <p></p>
-<b>Související výzkum:</b> Sigillito, V. (1990). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml"</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
+<b>Související výzkum:</b> Sigillito, V. (1990). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml "</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
@@ -268,7 +266,7 @@ Sada metadat o zákaznících, včetně demografických údajů a předvoleb.
 <p></p>
 <b>Použití:</b> Tuto datovou sadu použijte v kombinaci s dalšími dvěma datovými sadami restaurace, ke školení a testování doporučení systému. 
 <p></p>
-<b>Související výzkum:</b> Bache, K. a Lichman, M. (2013). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní informace a počítačové vědy.
+<b>Související výzkum:</b> Bache, K. a Lichman, M. (2013). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní informace a počítačové vědy.
   </td>
 </tr>
 
@@ -279,7 +277,7 @@ Sada metadat o restauracích a jejich funkcích, jako je například typ potravi
 <p></p>
 <b>Použití:</b> Tuto datovou sadu použijte v kombinaci s dalšími dvěma datovými sadami restaurace, ke školení a testování doporučení systému. 
 <p></p>
-<b>Související výzkum:</b> Bache, K. a Lichman, M. (2013). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní informace a počítačové vědy.
+<b>Související výzkum:</b> Bache, K. a Lichman, M. (2013). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní informace a počítačové vědy.
   </td>
 </tr>
 
@@ -290,7 +288,7 @@ Obsahuje hodnocení vydaná uživateli do restaurací na škále od 0 do 2.
 <p></p>
 <b>Použití:</b> Tuto datovou sadu použijte v kombinaci s dalšími dvěma datovými sadami restaurace, ke školení a testování doporučení systému. 
 <p></p>
-<b>Související výzkum:</b> Bache, K. a Lichman, M. (2013). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní informace a počítačové vědy.
+<b>Související výzkum:</b> Bache, K. a Lichman, M. (2013). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní informace a počítačové vědy.
   </td>
 </tr>
 
@@ -303,7 +301,7 @@ Tato datová sada obsahuje řadu záznamů z žíháních testů z oceli. Obsahu
 <p></p>
 Třídy oceli se řídí standardním standardem, který definuje SAE a jiné organizace. Hledáte konkrétní "třídu" (proměnnou třídy) a chcete pochopit potřebné hodnoty. 
 <p></p>
-<b>Související výzkum:</b> Sterling, D. & Buntine, W. (NA). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of California, školní školy a počítačové vědy
+<b>Související výzkum:</b> Sterling, D. & Buntine, W. (NA). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, školní školy a počítačové vědy
 <p></p>
 Užitečnou příručku ke jakostním odvětvím najdete tady:<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
@@ -324,7 +322,7 @@ Data byla předem zpracována za účelem vytvoření clusteru s prodlouženou o
 <p></p>
 Všimněte si také, že počet událostí na pozadí (h, pro hadronic sprchy) je pododhadovaná. Ve skutečných měřeních představuje třída h nebo Noise většinu událostí. 
 <p></p>
-<b>Související výzkum:</b> Bock, R.K. (1995). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>. Irvine, CA: University of Kalifornie, School of Information </td>
+<b>Související výzkum:</b> Bock, R.K. (1995). UCI Machine Learning úložiště <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of Kalifornie, School of Information </td>
 </tr>
 
 <tr>
@@ -345,7 +343,7 @@ Hodinově založené počasí z NOAA (<a href="https://az754797.vo.msecnd.net/da
 <tr>
   <td>Wikipedii sada dat SP 500</td>
   <td>
-Data jsou odvozena z Wikipedii<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>() na základě článků z každé z&společnosti P 500, uložená jako data XML.
+Data jsou odvozena z Wikipedii ( <a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a> ) na základě článků z každé z&společnosti P 500, uložená jako data XML.
 <p></p>
 Před nahráním do Azure Machine Learning Studio (Classic) byla datová sada zpracována následujícím způsobem:
 <ul>
@@ -393,7 +391,7 @@ Datová sada byla stažena a uložena v úložišti objektů BLOB v Azure (<a hr
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. témats. qrels. csv</a></td>
   <td>
-Přiřazení témat pro články s příspěvky v datové sadě RCV1-v2 pro zprávy Reuters Článek s příspěvky lze přiřadit několika tématům. Formát každého řádku je&lt;"název&gt; &lt;tématu dokumentu ID&gt; 1". Datová sada obsahuje 2,6 M přiřazení tématu. Datová sada byla zpřístupněna prostřednictvím David. D. Lewis.
+Přiřazení témat pro články s příspěvky v datové sadě RCV1-v2 pro zprávy Reuters Článek s příspěvky lze přiřadit několika tématům. Formát každého řádku je " &lt; název tématu &gt; &lt; dokumentu ID &gt; 1". Datová sada obsahuje 2,6 M přiřazení tématu. Datová sada byla zpřístupněna prostřednictvím David. D. Lewis.
   </td>
 </tr>
 

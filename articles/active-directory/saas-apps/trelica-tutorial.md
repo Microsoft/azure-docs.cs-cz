@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c68a95530f345d1ec0ed077681ec4cd6eb3775
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 733e7529af5de453462efb1a13c21203681e442c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402446"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994234"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Trelica
 
@@ -90,9 +90,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     1. Do pole **Adresa URL odpovědi** zadejte adresu URL, která má vzor `https://app.trelica.com/Id/Saml2/<CUSTOM_IDENTIFIER>/Acs` .
 
     > [!NOTE]
-    > Hodnota **adresy URL odpovědi** není skutečná. Aktualizujte tuto hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory klienta Trelica](mailto:support@trelica.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota adresy URL odpovědi není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné adresy URL odpovědi (označované také jako služba ACS).
+    > Můžete to zjistit tak, že se přihlásíte k Trelica a na [stránce Konfigurace zprostředkovatelů identity SAML](https://app.trelica.com/Admin/Profile/SAML) (účet správce > > SAML). Klikněte na tlačítko Kopírovat vedle **adresy URL služby assertion Consumer Service (ACS)** , která bude vložena do schránky, připravena pro vložení do textového pole **odpovědi URL** ve službě Azure AD.
+    > Pokud máte nějaké dotazy, přečtěte si [dokumentaci k nápovědě pro Trelica](https://docs.trelica.com/admin/saml/azure-ad) nebo se obraťte na [tým podpory Trelica klientů](mailto:support@trelica.com) .
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** přejít do části **podpisový certifikát SAML** . Napravo od **adresy URL federačních metadat aplikace**můžete kliknutím na tlačítko Kopírovat zkopírovat adresu URL. Uložte adresu URL do vašeho počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
     ![Část podpisového certifikátu SAML s vybraným tlačítkem pro kopírování v poli Adresa URL federačních metadat aplikace](common/copy-metadataurl.png)
 
@@ -128,11 +130,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-trelica-sso"></a>Konfigurace jednotného přihlašování Trelica
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **Trelica** , odešlete do [týmu podpory Trelica](mailto:support@trelica.com)zkopírované hodnoty **URL federačních metadat aplikace** . Nakonfigurují toto nastavení tak, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **Trelica** , použijte [stránku konfigurace zprostředkovatelů identity SAML](https://app.trelica.com/Admin/Profile/SAML) (účet správce > > SAML). Klikněte na tlačítko **Nový** . Jako název zadejte **Azure AD** a jako typ metadat vyberte **metadata z adresy URL** . Do pole **Adresa URL metadat** v Trelica vložte **adresu URL federačních metadat aplikace** , kterou jste přijali ze služby Azure AD.
+
+Pokud máte nějaké dotazy, přečtěte si [dokumentaci k nápovědě pro Trelica](https://docs.trelica.com/admin/saml/azure-ad) nebo se obraťte na [tým podpory Trelica klientů](mailto:support@trelica.com) .
 
 ### <a name="create-a-trelica-test-user"></a>Vytvořit testovacího uživatele v Trelica
-
-V této části vytvoříte uživatele s názvem B. Simon v Trelica.
 
 Trelica podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části nemusíte nic dělat. Pokud uživatel ještě v Trelica neexistuje, vytvoří se po ověření nový.
 

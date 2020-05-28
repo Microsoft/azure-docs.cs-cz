@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/01/2020
+ms.date: 05/27/2020
 ms.author: memildin
-ms.openlocfilehash: 9d3fa1e0b62ea6f4762c3df6ac7da310d5703807
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22f66a7be27f42bfd0305ad1eaf297ca8c8029fa
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245236"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996750"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
@@ -97,7 +97,7 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 |------|------|-----|-----|
 | Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
 | Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
-| Trend Micro – všechny verze * | Řada Windows Serverů  | Ne | Ano |
+| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | Ne | Ano |
 | Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
 | McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
 | McAfee v10+ | Řada Linux serverů  | Ne | Ano**\*** |
@@ -106,15 +106,11 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
  **\*** Stav pokrytí a podpůrná data jsou v tuto chvíli k dispozici pouze v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným. Neprojeví se na portálu Azure Security Center.
 
 > [!NOTE]
-> - Detekce služby System Center Endpoint Protection (SCEP) na virtuálním počítači s Windows Serverem 2008 R2 vyžaduje, aby se protokol SCEP nainstaloval po PowerShellu 3,0 (nebo v horní verzi).
-> - Detekce funkce Trend Micro Protection je podporovaná pro obsáhlé agenty zabezpečení.  OfficeScan agenti nejsou podporováni.
+> Detekce služby System Center Endpoint Protection (SCEP) na virtuálním počítači s Windows Serverem 2008 R2 vyžaduje, aby se protokol SCEP nainstaloval po PowerShellu 3,0 (nebo v horní verzi).
 
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si, jak [Security Center shromažďuje data a agenta Log Analytics](security-center-enable-data-collection.md).
 - Přečtěte si [, jak Security Center spravuje a chrání data](security-center-data-security.md).
-- Naučte se [plánovat a porozumět hlediskům návrhu, které je potřeba přijmout Azure Security Center](security-center-planning-and-operations-guide.md).
 - Přečtěte si [platformy, které podporují Security Center](security-center-os-coverage.md).
-- Přečtěte si další informace o [ochraně před hrozbami pro počítače se systémem Windows a Linux v Azure Security Center](threat-protection.md#windows-machines).
-- Přečtěte si [Nejčastější dotazy týkající se Azure Security Center](faq-general.md).

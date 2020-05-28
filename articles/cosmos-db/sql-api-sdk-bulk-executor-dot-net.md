@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 05/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 23ba8b12651c4de05fd8fb0b2721839beb36a7a6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 398f1495fdfc9da7273ff372fbb57a6ba304c490
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660452"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117706"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna hromadného prováděcího modulu .NET: informace o stažení 
 
@@ -21,7 +21,7 @@ ms.locfileid: "83660452"
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.js](sql-api-sdk-node.md)
+> * [Node. js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
@@ -73,6 +73,10 @@ ms.locfileid: "83660452"
 ### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0 – Preview
 
 * Přidání .NET Standard 2,0 jako jedné z podporovaných cílových rozhraní umožňuje, aby knihovna hromadného prováděcího modulu fungovala s aplikacemi .NET Core.
+
+### <a name="189"></a><a name="1.8.9"/>1.8.9
+
+* Opravili jsme problém s BulkDeleteAsync, když byly hodnoty s řídicími uvozovkami předány jako vstupní parametry.
 
 ### <a name="188"></a><a name="1.8.8"/>1.8.8
 

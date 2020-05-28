@@ -3,12 +3,12 @@ title: Co je služba QnA Maker?
 description: QnA Maker je cloudová služba NLP, která v rámci vašich dat snadno vytvoří přirozenou konverzační vrstvu. Dá se použít k vyhledání nejvhodnější odpovědi pro všechny vstupy v přirozeném jazyce, od vlastní znalostní báze (KB) informací.
 ms.topic: overview
 ms.date: 05/26/2020
-ms.openlocfilehash: 5962ab2294a19c600beb00816394d96059bd4108
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: d2ff2d789f2ea1ae6018d95ef1d880da87b4ff74
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873728"
+ms.locfileid: "83994863"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Co je služba QnA Maker?
 
@@ -40,9 +40,9 @@ Po publikování QnA Maker znalostní báze pošle klientská aplikace dotaz do 
 
 ## <a name="what-is-a-knowledge-base"></a>Co je znalostní báze?
 
-QnA Maker [importuje obsah](../concepts/knowledge-base.md) do znalostní báze sad otázek a odpovědí. Proces importu extrahuje informace o vztahu mezi částmi strukturovaného a částečně strukturovaného obsahu, aby vyznamenal vztahy mezi otázkami a sadami odpovědí. Tyto otázky a sady odpovědí můžete upravit nebo přidat nové sady.
+QnA Maker [importuje obsah](../concepts/knowledge-base.md) do dvojice otázek a odpovědí ve znalostní bázi. Proces importu extrahuje informace o vztahu mezi částmi strukturovaného a částečně strukturovaného obsahu, aby vyznamenal vztahy mezi páry otázka a odpověď. Tyto páry otázek a odpovědí můžete upravit nebo přidat nové páry.
 
-Obsah otázky a sady odpovědí zahrnuje:
+Obsah dvojice otázek a odpovědí zahrnuje:
 * Všechny alternativní formy otázky
 * Značky metadat použité k filtrování voleb odpovědí během hledání
 * Další výzvy pro pokračování v vylepšení hledání
@@ -53,7 +53,7 @@ Po publikování znalostní báze pošle klientská aplikace do vašeho koncové
 
 ## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Vytváření, Správa a publikování na robotu bez kódu
 
-Portál QnA Maker poskytuje kompletní prostředí pro vytváření znalostí znalostní báze. Do své znalostní báze můžete importovat dokumenty v jejich aktuálním formuláři. Tyto dokumenty (například časté otázky, ruční zadání produktu, tabulka nebo webová stránka) se převedou na sady otázek a odpovědí. Každá sada je analyzována pro následné výzvy a připojená k jiným sadám. Konečný formát _Markdownu_ podporuje bohatou prezentaci, včetně obrázků a odkazů.
+Portál QnA Maker poskytuje kompletní prostředí pro vytváření znalostí znalostní báze. Do své znalostní báze můžete importovat dokumenty v jejich aktuálním formuláři. Tyto dokumenty (například časté otázky, ruční zadání produktu, tabulka nebo webová stránka) se převádějí na páry otázek a odpovědí. Každý pár se analyzuje pro následné výzvy a připojuje se k ostatním párů. Konečný formát _Markdownu_ podporuje bohatou prezentaci, včetně obrázků a odkazů.
 
 Po úpravě znalostní báze publikujte znalostní bázi do funkčního [robota webové aplikace Azure](https://azure.microsoft.com/services/bot-service/) bez psaní kódu. Vyzkoušejte si robota v [Azure Portal](https://portal.azure.com) nebo si stáhněte a pokračujte v vývoji.
 
@@ -63,7 +63,7 @@ Systém QnA Maker je přístup k vrstveným seřazením. Data se ukládají do s
 
 ## <a name="qna-maker-improves-the-conversation-process"></a>QnA Maker vylepšuje proces konverzace.
 
-QnA Maker poskytuje vícenásobné výzvy a aktivní učení, které vám pomůžou vylepšit základní otázky a sady odpovědí.
+QnA Maker poskytuje vícenásobné výzvy a aktivní učení, které vám pomůžou vylepšit základní páry otázek a odpovědí.
 
 Funkce **vícenásobného zapnutí** vám umožní propojit páry otázek a odpovědí. Toto připojení umožňuje klientské aplikaci poskytovat nejlepší odpověď a poskytuje další otázky pro upřesnění hledání konečné odpovědi.
 

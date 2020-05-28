@@ -198,7 +198,7 @@
     - name: GitHub – úložiště zásad komunity
       href: 'https://github.com/Azure/Community-Policy'
     - name: Microsoft Q&A pro Azure Policy
-      href: /answers/topics/azure-policy.html
+      href: /answers/topics/azure-policy.html.html
     - name: Kanál YouTube pro zásady správného řízení
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Videa konfigurace hosta

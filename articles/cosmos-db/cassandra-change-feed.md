@@ -4,15 +4,15 @@ description: Naučte se, jak pomocí služby Change feed v rozhraní Azure Cosmo
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 43743f62b08bb00403f5dac88682d06daab757a4
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 3707ee81c0e50ae028ad7e0bf8178e2f3eff2c64
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872563"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115224"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Změna kanálu v rozhraní Azure Cosmos DB API pro Cassandra
 
@@ -22,7 +22,7 @@ Následující příklad ukazuje, jak získat kanál změn na všech řádcích 
 
 V každé iteraci pokračuje dotaz u poslední změny bodu pomocí stavu stránkování. Průběžný Stream pro nové změny v tabulce se zobrazí v prostoru. Uvidíme změny v řádcích, které jsou vložené nebo aktualizované. Sledování operací odstranění pomocí kanálu změn v rozhraní API Cassandra aktuálně není podporováno.
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```C#
     //set initial start time for pulling the change feed
@@ -113,7 +113,7 @@ V každé iteraci pokračuje dotaz u poslední změny bodu pomocí stavu stránk
 
 Chcete-li získat změny v jednom řádku podle primárního klíče, můžete v dotazu přidat primární klíč. Následující příklad ukazuje, jak sledovat změny řádku, kde "user_id = 1"
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```C#
     //Return the latest change for all row in 'user' table where user_id = 1

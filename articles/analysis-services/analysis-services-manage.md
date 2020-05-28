@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572799"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015498"
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
 Po vytvoření Analysis Servicesho serveru v Azure můžou nastat některé úlohy správy a správy, které potřebujete udělat hned nebo po dobu provozu. Například spusťte zpracování na data aktualizace, řízení, kdo má přístup k modelům na vašem serveru, nebo můžete monitorovat stav svého serveru. Některé úlohy správy lze provádět pouze v Azure Portal, dalších v SQL Server Management Studio (SSMS) a některé úlohy lze provádět v obou.
@@ -51,7 +51,7 @@ Pokud chcete získat nejnovější funkce a využít nejplynulejší prostředí
 
     **Ověřování hesla služby Active Directory** pro použití účtu organizace. Například při připojování z počítače, který není připojený k doméně.
 
-    **Active Directory – univerzální s podporou vícefaktorového** ověřování, aby se používaly [neinteraktivní nebo Multi-Factor Authentication](../sql-database/sql-database-ssms-mfa-authentication.md). 
+    **Active Directory – univerzální s podporou vícefaktorového** ověřování, aby se používaly [neinteraktivní nebo Multi-Factor Authentication](../azure-sql/database/authentication-mfa-ssms-overview.md). 
    
     ![Připojení v SQL Server Management Studiu](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

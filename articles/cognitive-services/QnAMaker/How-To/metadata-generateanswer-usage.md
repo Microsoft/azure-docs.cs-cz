@@ -1,7 +1,7 @@
 ---
 title: Metadata s GenerateAnswer API – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker umožňuje přidat metadata ve formě párů klíč/hodnota k sadám dotazů a odpovědí. Výsledky můžete filtrovat podle uživatelských dotazů a ukládat Další informace, které se dají použít v následných konverzacích.
+description: QnA Maker umožňuje přidat metadata ve formě párů klíč/hodnota k vašim dvojicím dotazů a odpovědí. Výsledky můžete filtrovat podle uživatelských dotazů a ukládat Další informace, které se dají použít v následných konverzacích.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659565"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993503"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získat odpověď s GenerateAnswer API a metadaty
 
 Pokud chcete získat předpokládanou odpověď na otázku uživatele, použijte rozhraní GenerateAnswer API. Když publikujete znalostní bázi, uvidíte informace o tom, jak toto rozhraní API používat na stránce **publikovat** . Můžete také nakonfigurovat rozhraní API pro filtrování odpovědí na základě značek metadat a otestovat znalostní bázi z koncového bodu s parametrem řetězce dotazu test.
 
-QnA Maker umožňuje přidat metadata ve formě párů klíč-hodnota do sady otázek a odpovědí. Tyto informace pak můžete použít k filtrování výsledků do uživatelských dotazů a k ukládání dalších informací, které je možné použít v následných konverzacích. Další informace najdete v tématu [znalostní báze](../Concepts/knowledge-base.md).
+QnA Maker umožňuje přidávat metadata ve formě párů klíč-hodnota na vaše páry otázek a odpovědí. Tyto informace pak můžete použít k filtrování výsledků do uživatelských dotazů a k ukládání dalších informací, které je možné použít v následných konverzacích. Další informace najdete v tématu [znalostní báze](../Concepts/knowledge-base.md).
 
 <a name="qna-entity"></a>
 
@@ -37,7 +37,7 @@ Každá entita QnA má jedinečné a trvalé ID. Pomocí ID můžete provádět 
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>Získání odpovědi předpovědi pomocí rozhraní GenerateAnswer API
 
-[Rozhraní GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) ve své robotě nebo aplikaci můžete použít k dotazování znalostní báze s uživatelskou otázkou, abyste získali nejlepší shodu od sad otázek a odpovědí.
+[Rozhraní GenerateAnswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) ve své robotě nebo aplikaci můžete použít k dotazování znalostní báze s uživatelskou otázkou, abyste získali nejlepší shodu s páry otázka a odpověď.
 
 <a name="generateanswer-endpoint"></a>
 
@@ -196,7 +196,7 @@ Vzhledem k tomu, že se výsledky vyžadují jenom pro restaurace "Paradise", m�
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Použití výsledků otázek a odpovědí k zachování kontextu konverzace
 
-Odpověď na GenerateAnswer obsahuje odpovídající informace metadat pro sadu odpovědí a otázku, které odpovídají. Tyto informace můžete v klientské aplikaci použít k uložení kontextu předchozí konverzace pro použití v pozdějších konverzacích.
+Odpověď na GenerateAnswer obsahuje odpovídající informace o metadatech spárované dvojice otázek a odpovědí. Tyto informace můžete v klientské aplikaci použít k uložení kontextu předchozí konverzace pro použití v pozdějších konverzacích.
 
 ```json
 {

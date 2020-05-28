@@ -5,18 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 26a38c0851643fbd6446acddd99a05abf8d5b26c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9bb9ee93be4e045b52355255ecb86e54e48e5c5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836647"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117418"
 ---
 # <a name="remove-vms-from-update-management"></a>Odebrání virtuálních počítačů z Update Managementu
-
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-
-Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 Až skončíte s nasazováním aktualizací do virtuálních počítačů ve vašem prostředí, můžete je odebrat z funkce [Update Management](automation-update-management.md) .
 
@@ -28,7 +24,7 @@ Až skončíte s nasazováním aktualizací do virtuálních počítačů ve va�
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. V pracovním prostoru Log Analytics v části **Obecné**Získejte přístup k uloženým hledáním.
+3. V pracovním prostoru Log Analytics v části **Obecné**Získejte přístup k uloženým hledáním pro konfiguraci oboru `MicrosoftDefaultScopeConfig-Updates` .
 
 4. V případě uloženého hledání `MicrosoftDefaultComputerGroup` klikněte na tlačítko se třemi tečkami vpravo a vyberte **Upravit**. 
 

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886921"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014532"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Vytvoření zásad firewallu webových aplikací pro Application Gateway
 
@@ -63,13 +63,13 @@ Když vytvoříte zásadu WAF, ve výchozím nastavení je v režimu *detekce* .
 
 Pravidla OWASP spravovaná v Azure jsou ve výchozím nastavení povolená. Pokud chcete v rámci skupiny pravidel zakázat jednotlivá pravidla, rozbalte pravidla v této skupině pravidel, zaškrtněte políčko před číslem pravidla a na kartě výše vyberte **Zakázat** .
 
-[![Spravovaná pravidla](../media/create-waf-policy-ag/managed-rules.png)](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
+[![Spravovaná pravidla ](../media/create-waf-policy-ag/managed-rules.png)](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
 
 ## <a name="custom-rules"></a>Vlastní pravidla
 
 Pokud chcete vytvořit vlastní pravidlo, vyberte na kartě **vlastní pravidla** možnost **Přidat vlastní pravidlo** . Otevře se stránka Konfigurace vlastního pravidla. Následující snímek obrazovky ukazuje příklad vlastního pravidla, které je nakonfigurováno pro blokování požadavku, pokud řetězec dotazu obsahuje text *blockme*.
 
-[![Upravit vlastní pravidlo](../media/create-waf-policy-ag/edit-custom-rule.png)](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
+[![Upravit vlastní pravidlo ](../media/create-waf-policy-ag/edit-custom-rule.png)](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
 ## <a name="migrate-your-waf-config-to-a-waf-policy"></a><a name="migrate"></a>Migrace konfigurace WAF do zásad WAF
 
@@ -81,7 +81,7 @@ Pokud máte existující WAF, možná jste si všimli nějaké změny na portál
 
 Můžete určit, ve kterém stavu WAF je, na portálu. Pokud jsou nastavení WAF viditelná a je možné je změnit v zobrazení Application Gateway, vaše WAF je ve stavu 1.
 
-[![Konfigurace](../media/create-waf-policy-ag/waf-configure.png) WAF](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
+[![Konfigurace ](../media/create-waf-policy-ag/waf-configure.png) WAF](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
 
 Pokud vyberete možnost **Firewall webových aplikací** a zobrazí se vám související zásady, WAF je ve stavu 2 nebo 3. Když přejdete na zásadu, pokud se zobrazí **jenom** vlastní pravidla a přidružené aplikační brány, bude se jednat o vlastní pravidla jenom v zásadě.
 
@@ -97,9 +97,20 @@ Pokud máte vlastní pravidla jenom WAF zásady, můžete chtít přejít na nov
 
 Úpravy pouze zásad WAF jsou zakázané jenom pro vlastní pravidlo. Pokud chcete upravit nastavení WAF, jako je zakázání pravidel, přidání vyloučení atd., musíte migrovat na nový prostředek zásad brány firewall na nejvyšší úrovni.
 
-Provedete to tak, že vytvoříte *zásadu brány firewall webových aplikací* a přidružíte ji k vašim Application Gatewayům a naslouchací proces (y). Tato nová zásada **musí** být přesně stejná jako aktuální konfigurace WAF, což znamená, že každé vlastní pravidlo, vyloučení, zakázané pravidlo atd. musí být zkopírováno do nové zásady, kterou vytváříte. Jakmile máte k dispozici zásadu přidruženou k vašemu Application Gateway, můžete pokračovat v provádění změn pravidel a nastavení WAF. Můžete to provést také pomocí Azure PowerShell. Další informace najdete v tématu [přidružení zásady WAF k existujícímu Application Gateway](associate-waf-policy-existing-gateway.md).
+Provedete to tak, že vytvoříte *zásadu brány firewall webových aplikací* a přidružíte ji k vašim Application Gatewayům a naslouchací proces (y). Tato nová zásada musí být přesně stejná jako aktuální konfigurace WAF, což znamená, že každé vlastní pravidlo, vyloučení, zakázané pravidlo atd. musí být zkopírováno do nové zásady, kterou vytváříte. Jakmile máte k dispozici zásadu přidruženou k vašemu Application Gateway, můžete pokračovat v provádění změn pravidel a nastavení WAF. Můžete to provést také pomocí Azure PowerShell. Další informace najdete v tématu [přidružení zásady WAF k existujícímu Application Gateway](associate-waf-policy-existing-gateway.md).
 
 Volitelně můžete k migraci na zásadu WAF použít migrační skript. Další informace najdete v tématu [migrace zásad firewallu webových aplikací pomocí Azure PowerShell](migrate-policy.md).
+
+## <a name="force-mode"></a>Režim vynucení
+
+Pokud nechcete kopírovat vše do zásad, které jsou přesně stejné jako aktuální konfigurace, můžete nastavit režim WAF na "vynutit". Spusťte následující kód Azure PowerShell a vaše WAF bude v režimu vynucení. Pak můžete k WAF přidružit jakékoli zásady WAF, i když nemá stejné nastavení jako vaše konfigurace. 
+
+```azurepowershell-interactive
+$appgw = Get-AzApplicationGateway -Name <your Application Gateway name> -ResourceGroupName <your Resource Group name>
+$appgw.ForceFirewallPolicyAssociation = $true
+```
+
+Pak ProCeeS kroky k přidružení zásady WAF k aplikační bráně. Další informace najdete v tématu [přidružení zásady WAF k existujícímu Application Gateway.](associate-waf-policy-existing-gateway.md)
 
 ## <a name="next-steps"></a>Další kroky
 

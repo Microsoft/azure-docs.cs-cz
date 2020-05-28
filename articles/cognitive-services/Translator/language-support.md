@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592725"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996070"
 ---
 # <a name="language-and-region-support-for-translator"></a>Podpora jazyků a oblastí pro překladatele
 
@@ -40,80 +40,80 @@ Překladatel podporuje následující jazyky pro převod textu na text. Neuronov
 > [!NOTE]
 > V současné době je k dispozici podmnožina jazyků neuronové ve vlastním překladateli a postupně přidáváme další. [Zobrazit jazyky, které jsou aktuálně k dispozici ve vlastním překladateli](#customization).
 
-|Jazyk|  Kód jazyka|  ROZHRANÍ V3 API|
+|Jazyk|    Kód jazyka|    ROZHRANÍ V3 API|
 |:-----|:-----:|:-----|
-|Afrikánština| `af`|   Neuronové|
-|Arabština|    `ar`    |   Neuronové|
-|Bengálština|    `bn`    |   Neuronové|
-|Bosenština (latinka)|   `bs`    |   Neuronové|
-|Bulharština| `bg`    |   Neuronové|
-|Kantonština (tradiční)|   `yue`|  Ložený|
-|Katalánština|   `ca`    |   Ložený|
+|Afrikánština|    `af`|    Neuronové|
+|Arabština|    `ar`    |    Neuronové|
+|Bengálština|    `bn`    |    Neuronové|
+|Bosenština (latinka)|    `bs`    |    Neuronové|
+|Bulharština|    `bg`    |    Neuronové|
+|Kantonština (tradiční)|    `yue`|    Ložený|
+|Katalánština|    `ca`    |    Ložený|
 |Čínština (zjednodušená)|    `zh-Hans`|Neuronové|
-|Čínština (tradiční)|   `zh-Hant`       |Neuronové|
-|Chorvatština|  `hr`    |Neuronové|
-|Čeština| `cs`    |   Neuronové|
+|Čínština (tradiční)|    `zh-Hant`        |Neuronové|
+|Chorvatština|    `hr`    |Neuronové|
+|Čeština|    `cs`    |    Neuronové|
 |Dánština|    `da`        |Neuronové|
-|Nizozemština| `nl`|   Neuronové|
-|Angličtina|   `en`    |   Neuronové|
-|Estonština|  `et`    |   Neuronové|
-|Fijian|    `fj`    |   Ložený|
-|Filipino|  `fil`   |   Ložený|
-|Finština|   `fi`    |   Neuronové|
-|Francouzština|    `fr`    |   Neuronové|
-|Němčina|    `de`    |   Neuronové|
-|Řečtina| `el`    |   Neuronové|
-|Gudžarátština|  `gu`    |   Neuronové|
+|Nizozemština|    `nl`|    Neuronové|
+|Angličtina|    `en`    |    Neuronové|
+|Estonština|    `et`    |    Neuronové|
+|Fijian|    `fj`    |    Ložený|
+|Filipino|    `fil`    |    Ložený|
+|Finština|    `fi`    |    Neuronové|
+|Francouzština|    `fr`    |    Neuronové|
+|Němčina|    `de`    |    Neuronové|
+|Řečtina|    `el`    |    Neuronové|
+|Gudžarátština|    `gu`    |    Neuronové|
 |Haitská kreolština|    `ht`        |Ložený|
-|Hebrejština |`he`   |Neuronové
-|Hindština| `hi`    |   Neuronové|
-|Hmong Macek| `mww`   |   Ložený|
-|Maďarština| `hu`    |   Neuronové|
-|Islandština| `is`    |   Neuronové|
-|Indonéština|    `id`    |   Ložený|
+|Hebrejština    |`he`    |Neuronové
+|Hindština|    `hi`    |    Neuronové|
+|Hmong Macek|    `mww`    |    Ložený|
+|Maďarština|    `hu`    |    Neuronové|
+|Islandština|    `is`    |    Neuronové|
+|Indonéština|    `id`    |    Ložený|
 |Irština | `ga`| Neuronové
-|Italština|   `it`    |   Neuronové|
-|Japonština|  `ja`    |   Neuronové|
+|Italština|    `it`    |    Neuronové|
+|Japonština|    `ja`    |    Neuronové|
 |Kannadština|`kn`| Neuronové
-|Svahilština| `sw`    |   Ložený|
-|Klingon|   `tlh`   |   Ložený|
-|Klingon (plqaD)|   `tlh-Qaak`  |   Ložený|
-|Korejština |`ko`   |   Neuronové|
-|Lotyština|   `lv`    |   Neuronové|
-|Litevština|    `lt`    |   Neuronové|
-|Malgašština|  `mg`    |   Ložený|
-|Malajština| `ms`        |Ložený|
+|Svahilština|    `sw`    |    Ložený|
+|Klingon|    `tlh`    |    Ložený|
+|Klingon (plqaD)|    `tlh-Qaak`    |    Ložený|
+|Korejština    |`ko`    |    Neuronové|
+|Lotyština|    `lv`    |    Neuronové|
+|Litevština|    `lt`    |    Neuronové|
+|Malgašština|    `mg`    |    Ložený|
+|Malajština|    `ms`        |Ložený|
 |Malajalámština| `ml` | Neuronové
-|Maltština|   `mt`    |   Ložený|
+|Maltština|    `mt`    |    Ložený|
 |Maorština| `mi`  | Neuronové|
 |Maráthština| `mr`  | Neuronové|
-|Norština| `nb`    |   Neuronové|
-|Perština|   `fa`    |   Neuronové|
-|Polština|    `pl`    |   Neuronové|
-|Portugalština (Brazílie)|   `pt-br` |   Neuronové|
+|Norština|    `nb`    |    Neuronové|
+|Perština|    `fa`    |    Neuronové|
+|Polština|    `pl`    |    Neuronové|
+|Portugalština (Brazílie)|    `pt-br`    |    Neuronové|
 |portugalština (Portugalsko)| `pt-pt` | Neuronové
 |Paňdžábština|`pa`|Neuronové
-|Queretaro Otomi|   `otq`   |   Ložený|
-|Rumunština|  `ro`    |   Neuronové|
-|Ruština|   `ru`    |   Neuronové|
-|Samoan|    `sm`    |   Ložený|
-|Srbština (cyrilice)|    `sr-Cyrl`|  Ložený|
-|Srbština (latinka)|   `sr-Latn`       |Ložený|
-|Slovenština|    `sk`    |   Neuronové|
-|Slovinština| `sl`    |   Neuronové|
-|Španělština|   `es`    |   Neuronové|
-|Švédština|   `sv`    |Neuronové|
-|Tahitian|  `ty`    |Ložený|
-|Tamilština| `ta`    |   Neuronové|
-|Telugština|    `te`    |   Neuronové|
-|Thajština|  `th`    |   Neuronové|
-|Tongánština|    `to`    |   Ložený|
-|Turečtina|   `tr`        |Neuronové|
-|Ukrajinština| `uk`    |   Neuronové|
-|Urdština|  `ur`    |   Ložený|
-|Vietnamština|    `vi`    |   Neuronové|
-|Velština| `cy`    |   Neuronové|
-|Yucatec Maya|  `yua`   |   Ložený|
+|Queretaro Otomi|    `otq`    |    Ložený|
+|Rumunština|    `ro`    |    Neuronové|
+|Ruština|    `ru`    |    Neuronové|
+|Samoan|    `sm`    |    Ložený|
+|Srbština (cyrilice)|    `sr-Cyrl`|    Ložený|
+|Srbština (latinka)|    `sr-Latn`        |Ložený|
+|Slovenština|    `sk`    |    Neuronové|
+|Slovinština|    `sl`    |    Neuronové|
+|Španělština|    `es`    |    Neuronové|
+|Švédština|    `sv`    |Neuronové|
+|Tahitian|    `ty`    |Ložený|
+|Tamilština|    `ta`    |    Neuronové|
+|Telugština|    `te`    |    Neuronové|
+|Thajština|    `th`    |    Neuronové|
+|Tongánština|    `to`    |    Ložený|
+|Turečtina|    `tr`        |Neuronové|
+|Ukrajinština|    `uk`    |    Neuronové|
+|Urdština|    `ur`    |    Ložený|
+|Vietnamština|    `vi`    |    Neuronové|
+|Velština|    `cy`    |    Neuronové|
+|Yucatec Maya|    `yua`    |    Ložený|
 
 > [!NOTE]
 > Kód jazyka `pt` bude výchozí `pt-br` , portugalština (Brazílie).
@@ -224,7 +224,7 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Bosenština (latinka)      | `bs`          |
 | Bulharština      | `bg`          |
 | Čínština (zjednodušená)      | `zh-Hans`          |
-|Čínština (tradiční)|   `zh-Hant`   |
+|Čínština (tradiční)|    `zh-Hant`    |
 | Chorvatština      | `hr`          |
 | Čeština      | `cs`          |
 | Dánština      | `da`          |
@@ -239,15 +239,15 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Hindština      | `hi`          |
 | Maďarština      | `hu`          |
 | Islandština | `is` |
-| Indonéština|   `id`    |
-| Irština | `ga`  |
+| Indonéština|    `id`    |
+| Irština | `ga`    |
 | Italština      | `it`          |
 | Japonština      | `ja`          |
 | Svahilština|    `sw`    |
 | Korejština      | `ko`          |
 | Lotyština      | `lv`          |
 | Litevština      | `lt`          |
-| Malgašština| `mg`    |
+| Malgašština|    `mg`    |
 | Maorština| `mi`  |
 | Norština      | `nb`          |
 | Perština      | `fa`          |
@@ -255,7 +255,7 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Portugalština (Brazílie) | `pt-br` |
 | Rumunština      | `ro`          |
 | Ruština      | `ru`          |
-| Samoan|   `sm`    |
+| Samoan|    `sm`    |
 | Srbština (latinka)      | `sr-Latn`          |
 | Slovenština     | `sk`          |
 | Slovinština      | `sl`          |

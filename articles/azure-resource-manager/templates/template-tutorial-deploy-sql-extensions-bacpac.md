@@ -5,22 +5,23 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69e2b25a16a984445a32f884fab5caec6651df32
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80754326"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018374"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Kurz: Import souborů SQL BACPAC pomocí šablon ARM
 
 Naučte se používat rozšíření Azure SQL Database k importu souboru BACPAC pomocí šablon Azure Resource Manager (ARM). Artefakty nasazení jsou kromě hlavních souborů šablon, které jsou potřeba k dokončení nasazení, také všechny soubory. Soubor BACPAC je artefaktem.
 
-V tomto kurzu vytvoříte šablonu pro nasazení Azure SQL serveru a SQL Database a naimportujete soubor BACPAC. Informace o tom, jak nasadit rozšíření virtuálních počítačů Azure pomocí šablon ARM, najdete v tématu [kurz: nasazení rozšíření virtuálních počítačů pomocí šablon ARM](./template-tutorial-deploy-vm-extensions.md).
+V tomto kurzu vytvoříte šablonu pro nasazení [logického SQL serveru](../../azure-sql/database/logical-servers.md) a jediné databáze a naimportujete soubor BacPac. Informace o tom, jak nasadit rozšíření virtuálních počítačů Azure pomocí šablon ARM, najdete v tématu [kurz: nasazení rozšíření virtuálních počítačů pomocí šablon ARM](./template-tutorial-deploy-vm-extensions.md).
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
+>
 > * Připravte soubor BACPAC.
 > * Otevřete šablonu pro rychlý Start.
 > * Upravte šablonu.
@@ -34,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 K dokončení tohoto článku potřebujete:
 
 * Visual Studio Code s rozšířením Nástroje Resource Manageru [Vytvoření šablon ARM](./use-vs-code-to-create-template.md)najdete v tématu použití Visual Studio Code.
-* Pokud chcete zvýšit zabezpečení, použijte vygenerované heslo pro účet správce Azure SQL Server. Tady je ukázka, kterou můžete použít k vygenerování hesla:
+* Chcete-li zvýšit zabezpečení, použijte vygenerované heslo pro účet správce serveru. Tady je ukázka, kterou můžete použít k vygenerování hesla:
 
     ```console
     openssl rand -base64 32
@@ -44,7 +45,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="prepare-a-bacpac-file"></a>Příprava souboru BACPAC
 
-Soubor BACPAC se sdílí na [GitHubu](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Pokud chcete vytvořit vlastní, přečtěte si téma [Export databáze Azure SQL do souboru BACPAC](../../sql-database/sql-database-export.md). Pokud se rozhodnete soubor publikovat do vlastního umístění, v pozdější části kurzu budete muset šablonu aktualizovat.
+Soubor BACPAC se sdílí na [GitHubu](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Pokud chcete vytvořit vlastní, přečtěte si téma [Export databáze Azure SQL do souboru BACPAC](../../azure-sql/database/database-export.md). Pokud se rozhodnete soubor publikovat do vlastního umístění, v pozdější části kurzu budete muset šablonu aktualizovat.
 
 Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importovat pomocí šablony ARM. Následující skript prostředí PowerShell připraví soubor BACPAC pomocí těchto kroků:
 
@@ -100,7 +101,7 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
 
 Šablona použitá v tomto kurzu je uložená na [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
 
-1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor**  >  **otevřít soubor**.
 1. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -115,7 +116,7 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
    * `Microsoft.SQL.servers/databases`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
 
         Před přizpůsobením šablony je užitečné získat základní informace o této šabloně.
-1. Vyberte **soubor** > **Uložit jako** a uložte kopii souboru do místního počítače s názvem *azuredeploy. JSON*.
+1. Vyberte **soubor**  >  **Uložit jako** a uložte kopii souboru do místního počítače s názvem *azuredeploy. JSON*.
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
@@ -142,7 +143,7 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
 
 1. Přidejte do šablony dva další prostředky.
 
-    * Aby rozšíření SQL Database mohlo importovat soubory BACPAC, je potřeba, abyste povolili provoz ze služeb Azure. Do definice SQL serveru přidejte následující definici pravidla brány firewall:
+    * Aby rozšíření SQL Database mohlo importovat soubory BACPAC, je potřeba, abyste povolili provoz ze služeb Azure. Do definice serveru přidejte následující definici pravidla brány firewall:
 
         ```json
         "resources": [
@@ -197,7 +198,7 @@ Soubor BACPAC musí být uložený v účtu Azure Storage, aby se mohl importova
 
         * **dependsOn:** Prostředek rozšíření se musí vytvořit po vytvoření databáze SQL.
         * **storageKeyType**: zadejte typ klíče úložiště, který se má použít. Hodnota může být `StorageAccessKey` nebo `SharedAccessKey`. Použijte `StorageAccessKey` v tomto kurzu.
-        * **storageKey**: Zadejte klíč pro účet úložiště, ve kterém je uložený soubor BacPac. Pokud je `SharedAccessKey`typ klíče úložiště, musí předcházet "?".
+        * **storageKey**: Zadejte klíč pro účet úložiště, ve kterém je uložený soubor BacPac. Pokud je typ klíče úložiště `SharedAccessKey` , musí předcházet "?".
         * **storageUri**: zadejte adresu URL souboru BacPac uloženého v účtu úložiště.
         * **administratorLoginPassword:** Heslo správce SQL. Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
 
@@ -238,7 +239,7 @@ Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-Chcete-li získat přístup k SQL serveru z klientského počítače, je nutné přidat další pravidlo brány firewall. Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](../../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules).
+Chcete-li získat přístup k serveru z klientského počítače, je nutné přidat další pravidlo brány firewall. Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules).
 
 V Azure Portal vyberte databázi SQL z nově nasazené skupiny prostředků. Vyberte **Editor dotazů (Preview)** a zadejte přihlašovací údaje správce. Uvidíte, že se do databáze naimportovaly dvě tabulky.
 
@@ -255,7 +256,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nasadili SQL Server a databázi SQL a importovali soubor BACPAC. Další informace o řešení potíží s nasazením šablony najdete v těchto tématech:
+V tomto kurzu jste nasadili server a databázi a naimportovali BACPAC soubor. Další informace o řešení potíží s nasazením šablony najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
 > [Řešení potíží s nasazeními šablon ARM](./template-tutorial-troubleshoot.md)

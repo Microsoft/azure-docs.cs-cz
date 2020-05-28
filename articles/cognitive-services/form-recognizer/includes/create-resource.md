@@ -5,14 +5,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 33624ab800bd1155b52efbc05f317122a99bb479
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cedd302453e75c037f17cc47d8e00a06d3f3a8cd
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78205813"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996787"
 ---
-Přejít <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="na Azure Portal a vytvořit nový prostředek" target="_blank">pro rozpoznávání formulářů vytvořit nový prostředek <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>pro rozpoznávání formulářů. V podokně **vytvořit** zadejte následující informace:
+Přejít na Azure Portal a <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" vytvořit nový prostředek pro rozpoznávání formulářů " target="_blank"> vytvořit nový prostředek pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> . V podokně **vytvořit** zadejte následující informace:
 
 |    |    |
 |--|--|
@@ -22,7 +22,7 @@ Přejít <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveService
 | **Cenová úroveň** | Náklady na váš prostředek závisí na cenové úrovni, kterou si zvolíte, a na způsobu využití. Další informace najdete v [podrobnostech o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/)rozhraní API.
 | **Skupina prostředků** | [Skupina prostředků Azure](https://docs.microsoft.com/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group) , která bude obsahovat váš prostředek. Můžete vytvořit novou skupinu nebo ji přidat do již existující skupiny. |
 
-> [!IMPORTANT]
+> [!NOTE]
 > Když v Azure Portal vytvoříte prostředek služby pro rozpoznávání, máte možnost vytvořit klíč předplatného s více službami (používá se u více služeb rozpoznávání) nebo klíč předplatného s jednou službou (používá se jenom pro konkrétní službu rozpoznávání). Vzhledem k tomu, že nástroj pro rozpoznávání formulářů je verze Preview, není zahrnutý v předplatném s více službami a předplatné s jednou službou nemůžete vytvořit, pokud nepoužijete odkaz v uvítacím e-mailu.
 
-Když se dokončí nasazení prostředku pro rozpoznávání formulářů, vyhledejte ho a vyberte ze seznamu **všechny prostředky** na portálu. Pak vyberte kartu **rychlý Start** , abyste zobrazili data vašeho předplatného. Uloží hodnoty **klíč1** a **Endpoint** do dočasného umístění. Budete je používat v následujících krocích.
+Když se dokončí nasazení prostředku pro rozpoznávání formulářů, vyhledejte ho a vyberte ze seznamu **všechny prostředky** na portálu. Klíč a koncový bod se umístí na stránku klíč a koncový bod prostředku v části Správa prostředků. Před tím, než budete pokračovat, uložte oba tyto složky do dočasného umístění.

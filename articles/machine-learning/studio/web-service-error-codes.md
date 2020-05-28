@@ -12,17 +12,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: a47550771180411277d21f7acf47ad0a28b6fb9e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8030e44e85958495714f441303461722b6b96bf4
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209515"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115440"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Kódy chyb REST API Azure Machine Learning Studio (Classic)
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
- 
 Následující chybové kódy by mohly být vráceny operací na webové službě Azure Machine Learning Studio (Classic).
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument (kód stavu HTTP 400)
@@ -35,30 +33,30 @@ Tato třída chyb znamená, že argument zadaný někde je neplatný. Může se 
 | ---------- |--------------|
 | BadParameterValue | Zadaná hodnota parametru nesplňuje pravidlo parametru pro parametr. |
 | BadSubscriptionId | ID předplatného, které se používá k vyhodnocení, není ten přítomný v prostředku. |
-| BadVersionCall | Během volání rozhraní API byl předán neplatný parametr verze: {0}. Na stránce s nápovědu k rozhraní API vyhledejte správnou verzi a zkuste to znovu. |
-| BatchJobInputsNotSpecified | Následující požadované vstupy nebyly pro požadavek zadány: {0}. Ujistěte se prosím, že jsou zadaná všechna vstupní data, a zkuste to znovu. |
-| BatchJobInputsTooManySpecified | Požadavek zadal více vstupů, než je definováno ve službě. Seznam přijatého vstupu (ů): {0}. Ujistěte se prosím, že jsou správně zadaná všechna vstupní data, a zkuste to znovu. |
-| BlobNameTooLong | Cesta k úložišti objektů BLOB v Azure, která se poskytuje pro {0}výstup diagnostiky, je moc dlouhá:. Zkraťte cestu a zkuste to znovu. |
-| BlobNotFound | Nejde získat přístup k poskytnutému objektu BLOB {0}Azure –.  Chybová zpráva Azure: {1}. |
+| BadVersionCall | Během volání rozhraní API byl předán neplatný parametr verze: {0} . Na stránce s nápovědu k rozhraní API vyhledejte správnou verzi a zkuste to znovu. |
+| BatchJobInputsNotSpecified | Následující požadované vstupy nebyly pro požadavek zadány: {0} . Ujistěte se prosím, že jsou zadaná všechna vstupní data, a zkuste to znovu. |
+| BatchJobInputsTooManySpecified | Požadavek zadal více vstupů, než je definováno ve službě. Seznam přijatého vstupu (ů): {0} . Ujistěte se prosím, že jsou správně zadaná všechna vstupní data, a zkuste to znovu. |
+| BlobNameTooLong | Cesta k úložišti objektů BLOB v Azure, která se poskytuje pro výstup diagnostiky, je moc dlouhá: {0} . Zkraťte cestu a zkuste to znovu. |
+| BlobNotFound | Nejde získat přístup k poskytnutému objektu blob Azure – {0} .  Chybová zpráva Azure: {1} . |
 | ContainerIsEmpty | Nezadal se žádný název kontejneru úložiště Azure. Zadejte platný název kontejneru a akci opakujte. |
 | ContainerSegmentInvalid | Neplatný název kontejneru Zadejte platný název kontejneru a akci opakujte. |
-| ContainerValidationFailed | Ověření kontejneru objektů BLOB se nezdařilo s {0}touto chybou:. |
+| ContainerValidationFailed | Ověření kontejneru objektů BLOB se nezdařilo s touto chybou: {0} . |
 | DataTypeNotSupported | Byl zadán nepodporovaný datový typ. Zadejte platné datové typy a akci opakujte. |
 | DuplicateInputInBatchCall | Požadavek dávky je neplatný. Současně nelze současně zadat současně jeden i více vstupu. Odeberte jednu z těchto položek z požadavku a zkuste to znovu. |
-| ExpiryTimeInThePast | Čas vypršení platnosti je uvedený v minulosti: {0}. Zadejte čas vypršení platnosti ve standardu UTC a zkuste to znovu. Aby nikdy nevypršela platnost, nastavte čas vypršení platnosti na NULL. |
+| ExpiryTimeInThePast | Čas vypršení platnosti je uvedený v minulosti: {0} . Zadejte čas vypršení platnosti ve standardu UTC a zkuste to znovu. Aby nikdy nevypršela platnost, nastavte čas vypršení platnosti na NULL. |
 | IncompleteSettings | Nastavení diagnostiky jsou neúplná. |
 | InputBlobRelativeLocationInvalid | Nezadal se žádný název objektu BLOB služby Azure Storage. Zadejte platný název objektu BLOB a zkuste to znovu. |
-| InvalidBlob | Neplatná specifikace objektu BLOB pro objekt {0}BLOB:. Ověřte, zda je připojovací řetězec/relativní cesta nebo specifikace tokenu SAS správné, a akci opakujte. |
-| InvalidBlobConnectionString | Připojovací řetězec zadaný pro jeden z vstupních/výstupních objektů BLOB není platný: {0}. Opravte prosím tento problém a zkuste to znovu. |
-| InvalidBlobExtension | Odkaz na objekt BLOB {0} : má neplatnou nebo chybějící příponu souboru. Podporované přípony souborů pro tento typ výstupu jsou: "{1}". |
-| InvalidInputNames | V požadavku byly zadány neplatné názvy vstupu služby: {0}. Namapujte prosím vstupní data na správné vstupy služby a zkuste to znovu. |
-| InvalidOutputOverrideName | Neplatný název přepisu výstupu {0}:. Služba nemá výstupní uzel s tímto názvem. Předejte prosím správný název výstupního uzlu, který se má přepsat (platí pro rozlišování velkých a malých písmen). |
-| InvalidQueryParameter | Neplatný parametr{0}dotazu. {1} |
+| InvalidBlob | Neplatná specifikace objektu BLOB pro objekt BLOB: {0} . Ověřte, zda je připojovací řetězec/relativní cesta nebo specifikace tokenu SAS správné, a akci opakujte. |
+| InvalidBlobConnectionString | Připojovací řetězec zadaný pro jeden z vstupních/výstupních objektů BLOB není platný: {0} . Opravte prosím tento problém a zkuste to znovu. |
+| InvalidBlobExtension | Odkaz na objekt BLOB: {0} má neplatnou nebo chybějící příponu souboru. Podporované přípony souborů pro tento typ výstupu jsou: " {1} ". |
+| InvalidInputNames | V požadavku byly zadány neplatné názvy vstupu služby: {0} . Namapujte prosím vstupní data na správné vstupy služby a zkuste to znovu. |
+| InvalidOutputOverrideName | Neplatný název přepisu výstupu: {0} . Služba nemá výstupní uzel s tímto názvem. Předejte prosím správný název výstupního uzlu, který se má přepsat (platí pro rozlišování velkých a malých písmen). |
+| InvalidQueryParameter | Neplatný parametr dotazu {0} . {1} |
 | MissingInputBlobInformation | Chybí informace o objektu BLOB služby Azure Storage. Zadejte platný připojovací řetězec a relativní cestu nebo identifikátor URI a zkuste to znovu. |
 | MissingJobId | Nebylo zadáno ID úlohy. ID úlohy se vrátí při prvním odeslání úlohy. Ověřte správnost ID úlohy a zkuste to znovu. |
 | MissingKeys | Nejsou zadané žádné klíče ani jeden z primárních nebo sekundárních klíčů. |
 | MissingModelPackage | Nezadal se žádný identifikátor balíčku modelu nebo balíček modelu. Zadejte platný identifikátor balíčku modelu nebo balíček modelu a zkuste to znovu. |
-| MissingOutputOverrideSpecification | V požadavku chybí specifikace objektu BLOB pro přepsání {0}výstupu. Zadejte prosím platné umístění objektu BLOB s požadavkem, nebo odeberte specifikaci výstupu, pokud není potřeba žádné přepsání umístění. |
+| MissingOutputOverrideSpecification | V požadavku chybí specifikace objektu BLOB pro přepsání výstupu {0} . Zadejte prosím platné umístění objektu BLOB s požadavkem, nebo odeberte specifikaci výstupu, pokud není potřeba žádné přepsání umístění. |
 | MissingRequestInput | Webová služba očekává vstup, ale nebyl zadán žádný vstup. Zajistěte, aby byly na základě publikovaných vstupních portů v modelu zajištěny platné vstupy, a zkuste to znovu. |
 | MissingRequiredGlobalParameters | Nebyly zadány všechny požadované parametry webové služby. Ověřte, jestli jsou parametry očekávané pro tyto moduly správné, a zkuste to znovu. |
 | MissingRequiredOutputOverrides | Při volání šifrovaného koncového bodu služby je povinné předat přepsání výstupu pro všechny výstupy služby. V tuto chvíli pro tyto výstupy chybí přepsání:{0} |
@@ -73,10 +71,10 @@ Tato třída chyb znamená, že argument zadaný někde je neplatný. Může se 
 | UnexpectedParameter | Byly zadány neočekávané parametry. Ověřte, že všechny názvy parametrů jsou zadány správně, jsou předány pouze očekávané parametry a akci opakujte. |
 | UnknownError | Neznámou chybu. |
 | UserParameterInvalid | {0} |
-| WebServiceConcurrentRequestRequirementInvalid | U {0} webové služby nelze změnit požadavky souběžných požadavků. |
+| WebServiceConcurrentRequestRequirementInvalid | U webové služby nelze změnit požadavky souběžných požadavků {0} . |
 | WebServiceIdInvalid | Bylo zadáno neplatné ID webové služby. ID webové služby by mělo být platný identifikátor GUID. |
-| WebServiceTooManyConcurrentRequestRequirement | U souběžných požadavků na požadavek nelze nastavit {0}více než. |
-| WebServiceTypeInvalid | Poskytnutý typ webové služby je neplatný. Ověřte správnost platného typu webové služby a zkuste to znovu. Platné typy webových služeb: {0}. |
+| WebServiceTooManyConcurrentRequestRequirement | U souběžných požadavků na požadavek nelze nastavit více než {0} . |
+| WebServiceTypeInvalid | Poskytnutý typ webové služby je neplatný. Ověřte správnost platného typu webové služby a zkuste to znovu. Platné typy webových služeb: {0} . |
  
 ## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (kód stavu HTTP 400)
  
@@ -85,7 +83,7 @@ Byl zadán neplatný argument uživatele.
 | Kód chyby | Zpráva uživatele |
 | ---------- |--------------|
 | InputMismatchError | Vstupní data neodpovídají schématu vstupního portu. |
-| InputParseError | Nepovedlo se analyzovat vstupní vektor.  Ověřte, že vstupní vektor má správný počet sloupců a datových typů.  Další podrobnosti: {0}. |
+| InputParseError | Nepovedlo se analyzovat vstupní vektor.  Ověřte, že vstupní vektor má správný počet sloupců a datových typů.  Další podrobnosti: {0} . |
 | MissingRequiredGlobalParameters | Chybí parametry, které webová služba očekává. Ověřte správnost všech požadovaných parametrů, které očekává webová služba, a zkuste to znovu. |
 | UnexpectedParameter | Ověřte, zda jsou předány pouze požadované parametry očekávané webovou službou, a akci opakujte. |
 | UserParameterInvalid | {0} |
@@ -178,7 +176,7 @@ Při provádění došlo k vnitřní chybě.
 | ClusterConfigBlobMisconfigured |  |
 | ContainerProcessTerminatedWithSystemError | V procesu kontejneru došlo k chybě. Chyba systému |
 | ContainerProcessTerminatedWithUnknownError | V procesu kontejneru došlo k chybě s neznámou chybou. |
-| ContainerValidationFailed | Ověření kontejneru objektů BLOB se nezdařilo s {0}touto chybou:. |
+| ContainerValidationFailed | Ověření kontejneru objektů BLOB se nezdařilo s touto chybou: {0} . |
 | DeleteWebServiceResourceFailed |  |
 | ExceptionDeserializationError |  |
 | FailedGettingApiDocument |  |
@@ -193,7 +191,7 @@ Při provádění došlo k vnitřní chybě.
 | ModuleLoadFailed |  |
 | ModuleObjectCloneFailed |  |
 | OutputConversionFailed |  |
-| PortDataTypeNotSupported | Port ID ={0} má nepodporovaný datový typ {1}:. |
+| PortDataTypeNotSupported | Port ID = {0} má nepodporovaný datový typ: {1} . |
 | ResourceDownload |  |
 | ResourceLoadFailed |  |
 | ServiceUrisNotFound |  |
@@ -201,7 +199,7 @@ Při provádění došlo k vnitřní chybě.
 | UnexpectedScoreStatus |  |
 | UnknownBackendErrorResponse |  |
 | UnknownError |  |
-| UnknownJobStatusCode | Neznámý kód {0}stavu úlohy. |
+| UnknownJobStatusCode | Neznámý kód stavu úlohy {0} . |
 | UnknownModuleError |  |
 | UpdateWebServiceResourceFailed |  |
 | WebServiceGroupNotFound |  |
@@ -239,7 +237,7 @@ Služba je dočasně nedostupná.
 | Kód chyby | Zpráva uživatele |
 | ---------- |--------------|
 | NoMoreResources | Pro požadavek nejsou k dispozici žádné prostředky. |
-| RequestThrottled | Požadavek byl pro {0} koncový bod omezen. Maximální souběžnost pro koncový bod je {1}. |
+| RequestThrottled | Požadavek byl pro {0} koncový bod omezen. Maximální souběžnost pro koncový bod je {1} . |
 | TooManyConcurrentRequests | Bylo odesláno příliš mnoho souběžných požadavků. |
 | TooManyHostsBeingInitialized | Současně je inicializováno příliš mnoho hostitelů. Zvažte omezení/opakování pokusu. |
 | TooManyHostsBeingInitializedPerModel | Současně je inicializováno příliš mnoho hostitelů. Zvažte omezení/opakování pokusu. |

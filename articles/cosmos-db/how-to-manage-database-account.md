@@ -3,15 +3,15 @@ title: Informace o správě účtů databáze ve službě Azure Cosmos DB
 description: Naučte se spravovat Azure Cosmos DB prostředky pomocí šablon Azure Portal, PowerShellu, CLI a Azure Resource Manager.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 76e8167a5d0dc83a5cc1b238d3015594278e344d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82745033"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116698"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu služby Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Přečtěte si prosím téma [Vytvoření účtu Azure Cosmos DB pomocí Azure C
 
 Další informace najdete v tématu [Vytvoření účtu Azure Cosmos DB pomocí PowerShellu](manage-with-powershell.md#create-account) .
 
-### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Šablona Azure Resource Manager
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Šablona Azure Resource Manageru
 
 Další informace najdete v tématu [Vytvoření účtu Azure Cosmos DB s využitím šablon Azure Resource Manager](manage-sql-with-resource-manager.md)
 
@@ -45,7 +45,7 @@ Další informace najdete v tématu [Vytvoření účtu Azure Cosmos DB s využi
 
 1. Chcete-li přidat oblasti, vyberte šestiúhelníky na mapě pomocí **+** popisku, který odpovídá vašim požadovaným oblastem (y). Pokud chcete přidat oblast, vyberte možnost **+ Přidat oblast** a v rozevírací nabídce vyberte oblast.
 
-1. Chcete-li odebrat oblasti, zrušte zaškrtnutí jedné nebo více oblastí z mapy tak, že vyberete modré šestiúhelníky se značkami zaškrtnutí. Nebo vyberte ikonu "wastebasket" (🗑) vedle oblasti na pravé straně.
+1. Chcete-li odebrat oblasti, zrušte zaškrtnutí jedné nebo více oblastí z mapy tak, že vyberete modré šestiúhelníky se značkami zaškrtnutí. Nebo vyberte ikonu "wastebasket" ( 🗑 ) vedle oblasti na pravé straně.
 
 1. Pokud chcete změny uložit, vyberte **OK**.
 
@@ -81,7 +81,7 @@ Viz téma [Povolení oblastí s několika zápisy pomocí prostředí PowerShell
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Šablona Resource Manageru
 
-Účet lze migrovat z jednoho hlavního serveru do více hlavních serverů nasazením šablony Správce prostředků používané k vytvoření účtu a nastavení `enableMultipleWriteLocations: true`. Následující šablona Azure Resource Manager je minimální šablona, která nasadí účet Azure Cosmos pro rozhraní SQL API se dvěma oblastmi a více umístěními pro zápis povolených.
+Účet lze migrovat z jednoho hlavního serveru do více hlavních serverů nasazením šablony Správce prostředků používané k vytvoření účtu a nastavení `enableMultipleWriteLocations: true` . Následující šablona Azure Resource Manager je minimální šablona, která nasadí účet Azure Cosmos pro rozhraní SQL API se dvěma oblastmi a více umístěními pro zápis povolených.
 
 ```json
 {

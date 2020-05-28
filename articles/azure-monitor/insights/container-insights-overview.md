@@ -3,12 +3,12 @@ title: Přehled Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje Azure Monitor pro kontejnery, které monitorují řešení AKS Container Insights a hodnotu, kterou zajišťuje, pomocí monitorování stavu clusterů AKS a Container Instances v Azure.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5bd951f7dcb2def62893df48709f1e57bd340bb2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275227"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118076"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Přehled služby Azure Monitor pro kontejnery
 
@@ -48,7 +48,7 @@ Azure Monitor for Containers poskytuje komplexní monitorování s využitím r�
 
 Mezi hlavní rozdíly v monitorování clusteru Windows serveru v porovnání s clusterem Linux patří následující:
 
-- Metrika RSS paměti není k dispozici pro uzly a kontejnery Windows.
+- Windows nemá metriku paměti RSS, takže není k dispozici pro uzly a kontejnery Windows. Pracovní sada je k dispozici. Přečtěte si další informace o [správě paměti ve Windows](https://docs.microsoft.com/windows/win32/memory/working-set).
 - Informace o kapacitě diskového úložiště nejsou k dispozici pro uzly Windows.
 - Protokoly kontejneru nejsou k dispozici pro kontejnery běžící v uzlech systému Windows.
 - Podpora funkcí živého data (Preview) je dostupná s výjimkou protokolů kontejnerů Windows.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 864f6a6d92306c40713f66b526c8a8df1683d3c4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7ebfe766e6362a3f62e70db8bf2dcae370aceee3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586792"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996155"
 ---
 # <a name="add-profanity-filtering-with-the-translator"></a>Přidání filtrování vulgárních výrazů pomocí překladatele
 
@@ -29,7 +29,7 @@ Metoda přeložit () přebírá parametr options, který obsahuje nový prvek "P
 |Hodnota ProfanityAction | Akce | Příklad: zdroj – japonština | Příklad: cíl – angličtina|
 | :---|:---|:---|:---|
 | Akce | Default (Výchozí). Stejné jako nastavení možnosti. Vulgární výrazy se předává ze zdroje do cíle. | 彼は変態です Marketplace. | Je Jerk. |
-| Vyznačen | Slova v vulgárních výrazech jsou obklopená \< vulgárními značkami XML>... \< /Profanity>. | 彼は変態です Marketplace. | Je to \< vulgární>Jerk \< /Profanity>. |
+| Vyznačen | Slova v vulgárních výrazech jsou obklopena značkami XML \<profanity> ... \</profanity> . | 彼は変態です Marketplace. | Je \<profanity> Jerk \</profanity> . |
 | Odstraněné | Slova v vulgárních textech se z výstupu odeberou bez náhrady. | 彼は Marketplace. | Je. |
 
 ## <a name="next-steps"></a>Další kroky

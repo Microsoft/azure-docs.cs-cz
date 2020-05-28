@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 34aab24bf39e387715cfa5783b801d45ed488750
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732728"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996635"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Vytvoření a publikování funkce v Azure pomocí Java a Gradle
 
@@ -60,7 +60,7 @@ azurefunctions {
 Otevřete nový soubor Function. Java z cesty *Src/Main/Java* v textovém editoru a zkontrolujte generovaný kód. Tento kód je funkce [aktivovaná protokolem HTTP](functions-bindings-http-webhook.md) , která vypisuje tělo žádosti. 
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
@@ -93,14 +93,16 @@ curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 Očekávaný výstup je následující:
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
-[Klíč funkce](functions-bindings-http-webhook-trigger.md#authorization-keys) není vyžadován při místním spuštění.  
+> [!NOTE]
+> Pokud nastavíte authLevel na `FUNCTION` nebo `ADMIN` , [klíč funkce](functions-bindings-http-webhook-trigger.md#authorization-keys) se při místním spuštění nepožaduje.  
+
 Pomocí klávesové zkratky `Ctrl+C` v terminálu zastavte kód aplikace.
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=local-run)
 
 ## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 
@@ -128,10 +130,10 @@ Tím se v Azure vytvoří následující prostředky na základě hodnot v soubo
 
 Nasazení také zabalí soubory projektu a nasadí je do nové aplikace Function App pomocí [nasazení zip](functions-deployment-technologies.md#zip-deploy)s povoleným režimem spuštění z balíčku.
 
-Protože Trigger HTTP, který jsme publikovali, používá `authLevel = AuthorizationLevel.FUNCTION`, je potřeba získat klíč funkce pro volání koncového bodu funkce přes HTTP. Nejjednodušší způsob, jak získat klíč funkce, je z [Azure Portal].
+AuthLevel pro Trigger HTTP v ukázkovém projektu je `ANONYMOUS` , který přeskočí ověřování. Pokud však použijete jiné authLevel jako `FUNCTION` nebo `ADMIN` , musíte získat klíč funkce pro volání koncového bodu funkce přes protokol HTTP. Nejjednodušší způsob, jak získat klíč funkce, je z [Azure Portal].
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>Získat adresu URL triggeru HTTP
 
@@ -139,9 +141,9 @@ Můžete získat adresu URL potřebnou k aktivaci vaší funkce s klíčem funkc
 
 1. Přejděte na [Azure Portal], přihlaste se **, do horní** části stránky zadejte _AppName_ vaší aplikace Function App a stiskněte klávesu ENTER.
  
-1. V aplikaci Function App rozbalte **funkce (jen pro čtení)**, zvolte požadovanou funkci a potom vyberte **</> získat adresu URL funkce** v pravém horním rohu. 
+1. Ve vaší aplikaci Function App vyberte **funkce**, zvolte funkci a pak klikněte na **</> získat adresu URL funkce** v pravém horním rohu. 
 
-    ![Kopírování adresy URL funkce z webu Azure Portal](./media/functions-create-java-maven/get-function-url-portal.png)
+    :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="Kopírování adresy URL funkce z webu Azure Portal":::
 
 1. Zvolte **výchozí (klíč funkce)** a vyberte **Kopírovat**. 
 
@@ -149,20 +151,20 @@ Pro přístup k funkci teď můžete použít zkopírovanou adresu URL.
 
 ## <a name="verify-the-function-in-azure"></a>Ověření funkce v Azure
 
-Pokud chcete ověřit aplikaci Function App běžící v Azure `cURL`pomocí, nahraďte adresu URL z níže uvedené ukázky adresou URL, kterou jste zkopírovali z portálu.
+Pokud chcete ověřit aplikaci Function App běžící v Azure pomocí `cURL` , nahraďte adresu URL z níže uvedené ukázky adresou URL, kterou jste zkopírovali z portálu.
 
 ```console
-curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
+curl -w "\n" http://azure-functions-sample-demo.azurewebsites.net/api/HttpExample --data AzureFunctions
 ```
 
-Tím se `AzureFunctions` ODEŠLE požadavek post koncovému bodu funkce v těle žádosti. Zobrazí se následující odpověď.
+Tím se odešle požadavek POST koncovému bodu funkce `AzureFunctions` v těle žádosti. Zobrazí se následující odpověď.
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
+> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=verify-deployment)
 
 ## <a name="next-steps"></a>Další kroky
 

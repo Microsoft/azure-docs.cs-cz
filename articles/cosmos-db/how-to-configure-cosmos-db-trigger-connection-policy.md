@@ -3,15 +3,15 @@ title: Azure Functions Trigger pro zásady připojení Cosmos DB
 description: Zjistěte, jak nakonfigurovat zásady připojení používané Azure Functions triggerem pro Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 953121a9a15d4fef56d381e3aab85329fadacce2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df30a0ddca58e6d7bd74184fa7287df6818cfc37
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77604963"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117146"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Postup konfigurace zásad připojení používaných Azure Functions triggerem pro Cosmos DB
 
@@ -36,7 +36,7 @@ Ke konfiguraci zásad připojení klienta – **režimu připojení** a **protok
 
 Kde `connectionMode` musí být požadovaný režim připojení (Direct nebo Gateway) a `protocol` požadovaný protokol připojení (TCP nebo https). 
 
-Pokud váš Azure Functions projekt pracuje s modulem runtime Azure Functions V1, má konfigurace mírné rozdíly v nesprávném názvu, `documentDB` měli byste `cosmosDB`použít místo:
+Pokud váš Azure Functions projekt pracuje s modulem runtime Azure Functions V1, má konfigurace mírné rozdíly v nesprávném názvu, měli byste použít `documentDB` místo `cosmosDB` :
 
 ```js
 {
