@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ce69e3c783ad8d2fb42be4c358cd1c292bbe026
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75386727"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015365"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
@@ -152,7 +152,7 @@ Když aplikace běží v cloudu, používá cloudovou databázi.
 8. Zkontrolujte možnost **Povolit službám Azure přístup k serveru**.
 9. Klikněte na možnost **Vybrat** u nového serveru.
 
-    ![Nový server služby SQL Database](./media/cloud-services-dotnet-get-started/newdbserver.png)
+    ![Nový server](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. Klikněte na **Vytvořit**.
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
@@ -331,7 +331,7 @@ Po vytvoření řešení zkontrolujete kód, který je pro projekty cloudových 
     ![Nový projekt cloudové služby](./media/cloud-services-dotnet-get-started/newcsproj.png)
 5. Po zobrazení dialogového okna **Nový projekt ASP.NET** pro webovou roli vyberte šablonu MVC a potom klikněte na **Změnit ověřování**.
 
-    ![Změna ověřování](./media/cloud-services-dotnet-get-started/chgauth.png)
+    ![Změnit ověřování](./media/cloud-services-dotnet-get-started/chgauth.png)
 6. V dialogovém okně **Změna ověřování** vyberte **Bez ověřování** a potom klikněte na tlačítko **OK**.
 
     ![Bez ověřování](./media/cloud-services-dotnet-get-started/noauth.png)
@@ -353,7 +353,7 @@ Po vytvoření řešení zkontrolujete kód, který je pro projekty cloudových 
 6. Najděte balíček NuGet *Microsoft.WindowsAzure.ConfigurationManager* a nainstalujte ho do projektu role pracovního procesu.
 
 ### <a name="set-project-references"></a>Nastavení odkazů na projekty
-1. V projektu ContosoAdsWeb nastavte odkaz na projekt ContosoAdsCommon. Klikněte pravým tlačítkem na projekt ContosoAdsWeb a potom klikněte na **odkazy** - **Přidat odkazy**. V dialogovém okně **Správce odkazů** vyberte v levém podokně **Řešení – projekty**, vyberte **ContosoAdsCommon** a potom klikněte na tlačítko **OK**.
+1. V projektu ContosoAdsWeb nastavte odkaz na projekt ContosoAdsCommon. Klikněte pravým tlačítkem na projekt ContosoAdsWeb a potom klikněte na **odkazy**  -  **Přidat odkazy**. V dialogovém okně **Správce odkazů** vyberte v levém podokně **Řešení – projekty**, vyberte **ContosoAdsCommon** a potom klikněte na tlačítko **OK**.
 2. V projektu ContosoAdsWorker nastavte odkaz na projekt ContosoAdsCommon.
 
     ContosoAdsCommon bude obsahovat datový model a třídu kontextu Entity Framework, které použije front-end i back-end.
@@ -398,7 +398,7 @@ V této části budete konfigurovat službu Azure Storage a připojovací řet�
 ### <a name="add-code-files"></a>Přidání souborů s kódy
 V této části zkopírujete soubory s kódy ze staženého řešení do nového řešení. Následující části vám ukáží a vysvětlí klíčová místa tohoto kódu.
 
-Chcete-li přidat soubory do projektu nebo složky, klikněte pravým tlačítkem myši na projekt nebo složku a klikněte na položku **Přidat** - **existující položku**. Vyberte požadované soubory a potom klikněte na tlačítko **Přidat**. Pokud se zobrazí dotaz, jestli chcete nahradit existující soubory, klikněte na **Ano**.
+Chcete-li přidat soubory do projektu nebo složky, klikněte pravým tlačítkem myši na projekt nebo složku a klikněte na položku **Přidat**  -  **existující položku**. Vyberte požadované soubory a potom klikněte na tlačítko **Přidat**. Pokud se zobrazí dotaz, jestli chcete nahradit existující soubory, klikněte na **Ano**.
 
 1. V projektu ContosoAdsCommon odstraňte soubor *Class1.cs* a na jeho místo přidejte soubory *Ad.cs* a *ContosoAdscontext.cs* ze staženého projektu.
 2. Do projektu ContosoAdsWeb přidejte následující soubory ze staženého projektu.

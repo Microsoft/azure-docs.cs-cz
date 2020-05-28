@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 622a527d8aae7991edd7cae7da953ec7dd8afa4e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d583c25afc5c328ef64a8c931e4209f0d88a14a9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696453"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84124542"
 ---
 | Kategorie | Úložiště dat |
 |:--- |:--- |
@@ -27,7 +27,7 @@ ms.locfileid: "83696453"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Soubory Azure](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
-| &nbsp; |[Azure SQL Database Managed Instance](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
+| &nbsp; |[Spravovaná instance Azure SQL](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |
 | &nbsp; |[Azure Synapse Analytics (dříve SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Úložiště tabulek v Azure](../articles/data-factory/connector-azure-table-storage.md) |
 | **Databáze** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
@@ -90,7 +90,7 @@ ms.locfileid: "83696453"
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |
 | &nbsp; |[ServiceNow](../articles/data-factory/connector-servicenow.md) |
 | &nbsp; |[Shopify (Preview)](../articles/data-factory/connector-shopify.md) |
-| &nbsp; |[Seznam SharePointu Online](../articles/data-factory/connector-sharepoint-online-list.md) |
+| &nbsp; |[Seznam služby SharePoint Online](../articles/data-factory/connector-sharepoint-online-list.md) |
 | &nbsp; |[Square (Preview)](../articles/data-factory/connector-square.md) |
 | &nbsp; |[Webová tabulka (tabulka HTML)](../articles/data-factory/connector-web-table.md) 
 | &nbsp; |[Xero](../articles/data-factory/connector-xero.md) |

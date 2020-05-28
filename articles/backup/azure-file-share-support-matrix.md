@@ -3,26 +3,26 @@ title: Matice podpory pro zálohování sdílených složek Azure
 description: Obsahuje souhrn nastavení podpory a omezení při zálohování sdílených složek Azure.
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 42578cc83ef193801fa700ec7d136385411e5f79
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 09ca5264280c990db8f57400aef1a876f842a210
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684621"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117688"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Matice podpory pro zálohování sdílených složek Azure
 
 [Službu Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) můžete použít k zálohování sdílených složek Azure. Tento článek shrnuje nastavení podpory při zálohování sdílených složek Azure pomocí Azure Backup.
 
-## <a name="supported-geos"></a>Podporované zeměpisných oblastech
+## <a name="supported-regions"></a>Podporované oblasti
 
-Zálohování sdílených složek Azure je dostupné v následujících zeměpisných oblastech:
+### <a name="ga-regions-for-azure-file-shares-backup"></a>Oblasti GA pro zálohování sdílených složek Azure
 
-**Oblasti GA**:<br>
-Austrálie – jihovýchod (pomocného), Kanada – střed (CNC), Středozápadní USA (WCUS), Střed USA – jih (SCUS), Západní USA 2 (WUS 2), Indie – jih (INS), Střed USA – sever (NCUS), Japonsko – východ (JPE), Brazílie – jih (BRS), Jižní Východní Asie (moře), Švýcarsko – západ (SZW), Spojené arabské emiráty Central (řízení uživatelských účtů), Norsko – východ (nDoporučujeme), Indie – západ (INW), Austrálie – střed (ACL), Jižní Afrika (SAN); Severní Korea , Velká Británie – jih (UKS), Velká Británie – západ (UKW), Korea – jih (KRS), Severní Evropa (NE), Německo – sever (GN), Norsko – západ (NWW), Jižní Afrika – západ (nevidělo), Švýcarsko – sever (SZN), Německo – středozápad (GWC), Spojené arabské emiráty sever (MOČOVINa, Francie – střed), Indie – střed (INC), Kanada – východ (FRC), Východní Asie (EA), Austrálie – východ (AE), Střed USA (CNE), Západní USA (kapacitní jednotky), US gov – Arizona (WUS) US gov – Texas , US Gov – Virginie (UGV), US DoD – střed (UDC), US DoD – východ (OUČIT)
+Zálohování sdílených složek Azure je k dispozici ve všech oblastech **s výjimkou** : Německo – střed (svrchovan), Německo – Severovýchod (svrchovan), Čína – východ Čína – východ 2 Čína – sever Čína – sever 2 US gov – Iowa
 
-**Podporované oblasti (jako součást verze Preview), ale zatím ne GA**:<br>
-Východní USA (EUS), Východní USA 2 (EUS2), Západní Evropa (My)
+### <a name="supported-regions-for-accidental-delete-protection"></a>Podporované oblasti pro náhodné odstranění ochrany
+
+USA – středozápad
 
 ## <a name="supported-storage-accounts"></a>Podporované účty úložiště
 

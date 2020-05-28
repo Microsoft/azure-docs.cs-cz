@@ -15,17 +15,17 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: efc6d0c25c5186b391deb08ee0e41dcb8ae6edf0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b977c0900178d64f202d4faa122f5d0ef90187c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978081"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014651"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatizované opravy pro SQL Server v Azure Virtual Machines (Classic)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-automated-patching.md)
-> * [Classic](../classic/sql-automated-patching.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/automated-patching.md)
+> * [Klasický](../classic/sql-automated-patching.md)
 > 
 > 
 
@@ -37,7 +37,7 @@ Automatizované opravy vytvoří pro virtuální počítač Azure s SQL Serverem
 Automatizované opravy závisí na [rozšíření agenta SQL Server IaaS](../classic/sql-server-agent-extension.md).
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud si chcete zobrazit Správce prostředků verzi tohoto článku, přečtěte si téma [automatizované opravy pro SQL Server v Azure Virtual Machines správce prostředků](../sql/virtual-machines-windows-sql-automated-patching.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud si chcete zobrazit Správce prostředků verzi tohoto článku, přečtěte si téma [automatizované opravy pro SQL Server v Azure Virtual Machines správce prostředků](../../../azure-sql/virtual-machines/windows/automated-patching.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete používat automatizované opravy, vezměte v úvahu následující požadavky:
@@ -65,7 +65,7 @@ Pokud chcete používat automatizované opravy, vezměte v úvahu následující
 ## <a name="settings"></a>Nastavení
 Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro automatizované opravy. U klasických virtuálních počítačů musíte ke konfiguraci těchto nastavení použít PowerShell.
 
-| Nastavení | Možné hodnoty | Popis |
+| Nastavení | Možné hodnoty | Description |
 | --- | --- | --- |
 | **Automatizované opravy** |Povolit/zakázat (zakázáno) |Povolí nebo zakáže automatizované opravy pro virtuální počítač Azure. |
 | **Plán údržby** |Každodenní, pondělí, úterý, středa, čtvrtek, pátek, sobota, neděle |Plán pro stažení a instalaci aktualizací Windows, SQL Server a Microsoft pro váš virtuální počítač. |
@@ -96,5 +96,5 @@ Chcete-li zakázat automatizované opravy, spusťte stejný skript bez parametru
 ## <a name="next-steps"></a>Další kroky
 Informace o dalších dostupných úlohách automatizace najdete v tématu [SQL Server rozšíření agenta IaaS](../classic/sql-server-agent-extension.md).
 
-Další informace o spuštění SQL Server na virtuálních počítačích Azure najdete v tématu [SQL Server na azure Virtual Machines přehled](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Další informace o spuštění SQL Server na virtuálních počítačích Azure najdete v tématu [SQL Server na azure Virtual Machines přehled](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 

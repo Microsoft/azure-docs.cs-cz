@@ -15,12 +15,12 @@ ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5bfdcfab37091a5f581ce147c0a6af5ccd8147a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6de80278aa6919fecf67c28356c0917bd6b159d3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77914785"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014872"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Zřízení virtuálního počítače s SQL Serverem přes Azure PowerShell (Classic)
 
@@ -31,7 +31,7 @@ Tento článek popisuje kroky, jak vytvořit virtuální počítač s SQL Server
 > [!NOTE] 
 > Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
-Správce prostředků verzi tohoto tématu najdete v tématu [zřízení virtuálního počítače s SQL Server pomocí Azure PowerShell správce prostředků](../sql/virtual-machines-windows-ps-sql-create.md).
+Správce prostředků verzi tohoto tématu najdete v tématu [zřízení virtuálního počítače s SQL Server pomocí Azure PowerShell správce prostředků](../../../azure-sql/virtual-machines/windows/create-sql-vm-powershell.md).
 
 ### <a name="install-and-configure-powershell"></a>Instalace a konfigurace PowerShellu:
 1. Pokud účet Azure nemáte, můžete začít používat [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -203,8 +203,8 @@ Po přihlášení k počítači pomocí vzdálené plochy nakonfigurujte SQL Ser
 
 Další pokyny k zřizování virtuálních počítačů pomocí PowerShellu najdete v [dokumentaci k virtuálním počítačům](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-V mnoha případech je dalším krokem migrace vašich databází na tento nový SQL Server virtuální počítač. Pokyny k migraci databáze najdete v tématu [migrace databáze do SQL Server na virtuálním počítači Azure](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+V mnoha případech je dalším krokem migrace vašich databází na tento nový SQL Server virtuální počítač. Pokyny k migraci databáze najdete v tématu [migrace databáze do SQL Server na virtuálním počítači Azure](../../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
-Pokud vás zajímá také použití Azure Portal k vytvoření Virtual Machines SQL, přečtěte si téma [zřízení SQL Serverho virtuálního počítače v Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md). Všimněte si, že kurz, který vás provede na portálu, vytvoří virtuální počítače pomocí doporučeného modelu Správce prostředků místo modelu Classic používaného v tomto tématu prostředí PowerShell.
+Pokud vás zajímá také použití Azure Portal k vytvoření Virtual Machines SQL, přečtěte si téma [zřízení SQL Serverho virtuálního počítače v Azure](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md). Všimněte si, že kurz, který vás provede na portálu, vytvoří virtuální počítače pomocí doporučeného modelu Správce prostředků místo modelu Classic používaného v tomto tématu prostředí PowerShell.
 
-Kromě těchto prostředků doporučujeme zkontrolovat [Další témata související se spouštěním SQL Server ve službě Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Kromě těchto prostředků doporučujeme zkontrolovat [Další témata související se spouštěním SQL Server ve službě Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).

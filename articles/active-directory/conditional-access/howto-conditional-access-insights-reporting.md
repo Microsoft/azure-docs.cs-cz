@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2a2b4864232892f1940de5c8fe46fa23879c92f3
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641592"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112779"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Přehledy podmíněného přístupu a vytváření sestav
 
@@ -98,6 +98,23 @@ Zobrazení rozpisu uživatelů nebo přihlášení ke každé z těchto podmíne
 Přihlášení konkrétního uživatele můžete prozkoumat také tak, že v dolní části řídicího panelu vyhledáte přihlášení. Dotaz na levé straně zobrazuje nejčastěji uživatele. Když se uživatel vybere, bude dotaz filtrovat vpravo.  
 
 ## <a name="troubleshooting"></a>Řešení potíží
+
+### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>Proč se dotazy nedaří kvůli chybě oprávnění?
+
+Aby bylo možné získat přístup k sešitu, potřebujete správná oprávnění služby Azure AD a také Log Analytics oprávnění k pracovnímu prostoru. Pokud chcete otestovat, jestli máte správná oprávnění k pracovnímu prostoru, spusťte ukázkový dotaz Log Analytics:
+
+1. Přihlaste se k **portálu Azure Portal**.
+1. Přejděte na **Azure Active Directory**  >  **protokoly**.
+1. `SigninLogs`Do pole dotaz zadejte a vyberte **Spustit**.
+1. Pokud dotaz nevrátí žádné výsledky, váš pracovní prostor možná není správně nakonfigurovaný. 
+
+![Řešení neúspěšných dotazů](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
+
+Další informace o tom, jak streamovat protokoly přihlášení do služby Azure AD do pracovního prostoru Log Analytics, najdete v článku [integrace protokolů služby Azure AD pomocí protokolů Azure monitor](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
+
+### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>Proč je parametr zásad podmíněného přístupu prázdný?
+
+Seznam zásad se vygeneruje na základě zásad vyhodnocených pro poslední událost přihlášení. Pokud ve vašem tenantovi neexistují žádná nedávná přihlášení, možná budete muset několik minut počkat, než sešit načte seznam zásad podmíněného přístupu. K tomu může dojít hned po konfiguraci Log Analytics nebo může trvat delší dobu, pokud tenant nemá poslední přihlašovací aktivitu.
 
 ### <a name="why-is-the-workbook-taking-a-long-time-to-load"></a>Proč je sešit trvá dlouhou dobu, než se načte?  
 

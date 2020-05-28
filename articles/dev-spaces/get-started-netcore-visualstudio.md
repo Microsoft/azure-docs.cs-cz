@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: a807af3ffe14da943786051a3ece03b777a0edf5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873614"
+ms.locfileid: "83995900"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Vytvořte Kubernetes vývojového prostoru: Visual Studio a .NET Core s Azure Dev Spaces
 
@@ -26,28 +26,59 @@ V tomto průvodci se naučíte:
 > [!Note]
 > **Pokud se vám pozastavila** kdykoli, přečtěte si část [Poradce při potížích](troubleshooting.md) .
 
+## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
+Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostoru se ukládá do cloudu, aby ji šlo sdílet s ostatními uživateli. Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+### <a name="sign-in-to-azure-cli"></a>Přihlášení k Azure CLI
+Přihlaste se k Azure. V okně terminálu zadejte následující příkaz:
+
+```azurecli
+az login
+```
+
+> [!Note]
+> Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
+
+#### <a name="if-you-have-multiple-azure-subscriptions"></a>Pokud máte více předplatných Azure...
+Svoje předplatná můžete zobrazit spuštěním tohoto příkazu: 
+
+```azurecli
+az account list --output table
+```
+
+Vyhledejte předplatné, které má *hodnotu true* pro *výchozí nastavení*.
+Pokud se nejedná o předplatné, které chcete použít, můžete výchozí předplatné změnit:
+
+```azurecli
+az account set --subscription <subscription ID>
+```
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Vytvoření clusteru Kubernetes s podporou Azure Dev Spaces
 
-1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
-1. Zvolte **Vytvořit prostředek**, vyhledejte **Kubernetes** a vyberte **Služba Kubernetes** > **Vytvořit**.
+V příkazovém řádku vytvořte skupinu prostředků v [oblasti, která podporuje Azure dev Spaces][supported-regions].
 
-   V každém z nadpisu formuláře *vytvořit cluster Kubernetes* proveďte následující kroky a ověřte, jestli vybraná [oblast podporuje Azure dev Spaces][supported-regions].
+```azurecli
+az group create --name MyResourceGroup --location <region>
+```
 
-   - **Podrobnosti o projektu**: vyberte předplatné Azure a novou nebo existující skupinu prostředků Azure.
-   - **PODROBNOSTI O CLUSTERU:** Zadejte název, oblast, verzi a předponu názvu DNS pro cluster AKS.
-   - **ŠKÁLOVÁNÍ:** Vyberte velikost virtuálního počítače pro uzly agentů AKS a počet uzlů. Pokud s Azure Dev Spaces začínáte, na prozkoumání všech funkcí vám stačí jeden uzel. Počet uzlů můžete po nasazení clusteru kdykoli snadno upravit. Mějte na paměti, že velikost virtuálního počítače není možné po vytvoření clusteru AKS změnit. Pokud však potřebujete vertikálně navýšit kapacitu, po nasazení clusteru AKS můžete snadno vytvořit nový cluster AKS s většími virtuálními počítači a pomocí Dev Spaces provést opětovné nasazení do tohoto většího clusteru.
+Pomocí následujícího příkazu vytvořte cluster Kubernetes:
 
-   ![Nastavení konfigurace Kubernetes](media/common/Kubernetes-Create-Cluster-2.PNG)
+```azurecli
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
+```
 
+Vytvoření clusteru bude trvat několik minut.
 
-   Po dokončení vyberte **Další: Ověřování**.
+### <a name="configure-your-aks-cluster-to-use-azure-dev-spaces"></a>Konfigurace clusteru AKS, aby používal Azure Dev Spaces
 
-1. Vyberte požadované nastavení pro řízení přístupu na základě role (RBAC). Služba Azure Dev Spaces podporuje clustery s vypnutým i zapnutým řízením přístupu na základě role.
+Zadejte následující příkaz Azure CLI se skupinou prostředků, která obsahuje váš cluster AKS, a názvem clusteru AKS. Příkaz nakonfiguruje cluster, aby podporoval Azure Dev Spaces.
 
-    ![Nastavení řízení přístupu na základě role](media/common/k8s-RBAC.PNG)
-
-1. Vyberte **Zkontrolovat a vytvořit** a po dokončení vyberte **Vytvořit**.
+   ```azurecli
+   az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+   ```
+   
+> [!IMPORTANT]
+> Proces konfigurace Azure Dev Spaces odstraní `azds` obor názvů v clusteru, pokud existuje.
 
 ## <a name="get-the-visual-studio-tools"></a>Získání nástrojů sady Visual Studio
 Nainstalujte si nejnovější verzi sady [Visual Studio 2019](https://www.visualstudio.com/vs/) ve Windows s úlohou vývoj pro Azure.

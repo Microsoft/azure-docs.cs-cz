@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 470cc8cc16c8bdb32bac32a7227690899abb9c51
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 291e81261f8841b3d4629b077f0a244f10aa1fd8
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644673"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118578"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Co je Apache Spark ve službě Azure synapse Analytics
 
@@ -32,7 +32,7 @@ Apache Spark poskytuje primitivní prvky pro výpočetní clustery v paměti. Ú
 
 Fondy Spark v Azure synapse nabízejí plně spravovanou službu Spark. Tady jsou uvedené výhody vytvoření fondu Spark v synapse Analytics.
 
-| Příznak | Popis |
+| Funkce | Description |
 | --- | --- |
 | Rychlost a efektivita |Instance Spark začínají přibližně 2 minuty pro méně než 60 uzlů a přibližně 5 minut pro více než 60 uzlů. Instance se ukončí, ve výchozím nastavení 5 minut po poslední provedené úloze, pokud není udržována připojením poznámkového bloku. |
 | Snadné vytvoření |Během několika minut můžete vytvořit nový fond Spark v Azure synapse pomocí Azure Portal, Azure PowerShell nebo sady synapse Analytics .NET SDK. Přečtěte si téma Začínáme [se fondy Spark v synapse Analytics](../quickstart-create-apache-spark-pool-studio.md). |
@@ -41,7 +41,7 @@ Fondy Spark v Azure synapse nabízejí plně spravovanou službu Spark. Tady jso
 | Podpora pro Azure Data Lake Storage generace 2| Fondy Spark ve službě Azure synapse můžou používat Azure Data Lake Storage generace 2 i úložiště objektů BLOB. Další informace o Data Lake Storage najdete v tématu [přehled Azure Data Lake Storage](../../data-lake-store/data-lake-store-overview.md). |
 | Integrace v prostředí IDE třetích stran | Azure synapse poskytuje modul plug-in IDE pro [INTELLIJ nápad JetBrains](https://www.jetbrains.com/idea/) , který je užitečný pro vytváření a odesílání aplikací do fondu Spark. |
 | Předem zavedené knihovny Anaconda |Fondy Spark ve službě Azure synapse se dodávají s předinstalovanými knihovnami Anaconda. [Anaconda](https://docs.continuum.io/anaconda/) poskytuje téměř 200 knihoven pro machine learning, analýzy dat, vizualizace atd. |
-| Škálovatelnost | Apache Spark ve fondech Azure synapse můžou mít povolené automatické škálování, takže fondy se podle potřeby škálují nahoru a dolů. Fondy Spark se taky dají vypnout bez ztráty dat, protože všechna data jsou uložená v Azure Storage nebo Data Lake Storage. |
+| Škálovatelnost | Apache Spark ve fondech Azure synapse můžou mít povolené automatické škálování, takže fondy se podle potřeby přidávají nebo odstraňují podle potřeby uzlů. Fondy Spark se taky dají vypnout bez ztráty dat, protože všechna data jsou uložená v Azure Storage nebo Data Lake Storage. |
 
 Fondy Spark v Azure synapse obsahují následující komponenty, které jsou ve výchozím nastavení k dispozici ve fondech.
 

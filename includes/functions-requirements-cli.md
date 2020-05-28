@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 3929ffa81a8b558d8cb0dbd74135acc9cf1ea47b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: dfacbfbc57ec536eb983394c28920da719af4b1d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82876024"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996515"
 ---
 ## <a name="configure-your-local-environment"></a>Konfigurace místního prostředí
 
@@ -21,7 +21,13 @@ Než začnete, musíte mít následující:
 + Verze [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) 2.7.1846 nebo novější verze 2. x.
 ::: zone-end  
 ::: zone pivot="programming-language-python"
-+ Python 3,6 a 3,7 vyžadují verzi [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) 2.7.1846 nebo novější verzi 2. x. Python 3,8 vyžaduje [verzi 3. x](../articles/azure-functions/functions-run-local.md#v2) základních nástrojů.
++ Verze Azure Functions Core Tools, která odpovídá nainstalované verzi Pythonu:
+
+   | Verze Pythonu | Verze základních nástrojů |
+   | -------------- | ------------------ |
+   | Python 3,8     | [verze 3. x](../articles/azure-functions/functions-run-local.md#v2) |
+   | Python 3,6<br/>Python 3.7 | [Verze 2.7.1846 nebo novější 2. x](../articles/azure-functions/functions-run-local.md#v2) |
+  
 ::: zone-end
 
 + [Azure CLI](/cli/azure/install-azure-cli) verze 2,4 nebo novější. 

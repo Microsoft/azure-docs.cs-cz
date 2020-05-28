@@ -5,12 +5,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Přečtěte si, jak Visual Studio Code a Azure Dev Spaces vám pomůžou ladit aplikace Kubernetes a rychle je iterovat.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 91440e59fdb8c21579ef1f04e78e66f933221ba0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2f6f2ef072748bddee5b3004dc69f3a9c03be16
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240443"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996223"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Jak Visual Studio Code pracuje s Azure Dev Spaces
 
@@ -26,16 +26,16 @@ Visual Studio Code a rozšíření Azure Dev Spaces vygeneruje následující pr
 
 * Fázemi pro aplikace v jazyce Java využívající Maven, aplikace Node. js a aplikace .NET Core
 * Helm grafy pro skoro libovolný jazyk s souboru Dockerfile
-* `azds.yaml` Soubor, což je [konfigurační soubor Azure dev Spaces][azds-yaml] pro váš projekt
-* `.vscode` Složka, ve které je Visual Studio Code spustit konfiguraci projektu pro aplikace Java pomocí Maven, aplikací v Node. js a aplikací .NET Core
+* `azds.yaml`Soubor, což je [konfigurační soubor Azure dev Spaces][azds-yaml] pro váš projekt
+* Složka, ve `.vscode` které je Visual Studio Code spustit konfiguraci projektu pro aplikace Java pomocí Maven, aplikací v Node. js a aplikací .NET Core
 
-Souboru Dockerfile, Helm graf a `azds.yaml` soubory jsou stejné prostředky vygenerované při spuštění. `azds prep` Tyto soubory lze také použít mimo Visual Studio Code ke spuštění projektu v AKS, jako je například spuštění `azds up`. Tuto `.vscode` složku používá pouze Visual Studio Code ke spuštění projektu v AKS z Visual Studio Code.
+Souboru Dockerfile, Helm graf a `azds.yaml` soubory jsou stejné prostředky vygenerované při spuštění `azds prep` . Tyto soubory lze také použít mimo Visual Studio Code ke spuštění projektu v AKS, jako je například spuštění `azds up` . Tuto `.vscode` složku používá pouze Visual Studio Code ke spuštění projektu v AKS z Visual Studio Code.
 
 ## <a name="run-your-service-in-aks"></a>Spuštění služby v AKS
 
 Po vygenerování assetů pro projekt můžete spustit služby Java, Node. js a .NET Core v existujícím prostoru pro vývoj z Visual Studio Code. Na stránce *ladění* Visual Studio Code můžete vyvolat konfiguraci spuštění z `.vscode` adresáře ke spuštění projektu.
 
-Musíte vytvořit cluster AKS a povolit Azure Dev Spaces v clusteru mimo Visual Studio Code. K tomuto nastavení můžete použít například Azure CLI nebo Azure Portal. Můžete znovu použít stávající fázemi, Helm grafy a `azds.yaml` soubory vytvořené mimo Visual Studio Code, jako jsou například prostředky vygenerované spuštěním. `azds prep` Pokud znovu použijete prostředky vygenerované mimo Visual Studio Code, stále potřebujete mít `.vscode` adresář. Tento `.vscode` adresář je možné znovu vygenerovat pomocí Visual Studio Code a rozšíření Azure dev Spaces a nepřepíše stávající prostředky.
+Musíte vytvořit cluster AKS a povolit Azure Dev Spaces v clusteru mimo Visual Studio Code. Můžete znovu použít stávající fázemi, Helm grafy a `azds.yaml` soubory vytvořené mimo Visual Studio Code, jako jsou například prostředky vygenerované spuštěním `azds prep` . Pokud znovu použijete prostředky vygenerované mimo Visual Studio Code, stále potřebujete mít `.vscode` adresář. Tento `.vscode` adresář je možné znovu vygenerovat pomocí Visual Studio Code a rozšíření Azure dev Spaces a nepřepíše stávající prostředky.
 
 Pro projekty .NET Core musíte mít nainstalované [rozšíření C#][csharp-extension] pro spuštění služby .net z Visual Studio Code. V případě projektů Java, které používají Maven, musíte mít nainstalované [rozšíření Java debugger pro Azure dev Spaces][java-extension] a [Maven nainstalované a nakonfigurované][maven] tak, aby spouštělo službu Java od Visual Studio Code.
 

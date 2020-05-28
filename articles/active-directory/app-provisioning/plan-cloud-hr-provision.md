@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 66a5bceb5b59c0e1b14577176cfed933e4503f31
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593297"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014430"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Plánování aplikace cloudového HR pro Azure Active Directory zřizování uživatelů
 
@@ -81,15 +81,16 @@ Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a j
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Přístup globálního správce služby Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
+- [Správce hybridní identity](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
+- Role [Správce aplikací](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) Azure AD pro konfiguraci zřizování aplikace v Azure Portal
 - Instance testu a výroby aplikace cloudového HR.
 - Oprávnění správce v aplikaci cloudového HR k vytvoření uživatele Integration System a provedení změn v datech testování zaměstnanců pro účely testování.
-- V případě zřizování uživatelů do služby Active Directory je pro hostování [Azure AD Connect agenta](https://go.microsoft.com/fwlink/?linkid=847801)vyžadován server se systémem Windows Server 2012 nebo vyšší s modulem runtime .NET 4.7.1 +.
+- V případě zřizování uživatelů pro službu Active Directory se pro hostování agenta Azure AD Connectho zřizování vyžaduje server se systémem Windows Server 2012 nebo vyšší s modulem runtime .NET 4.7.1 +.
 - [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) pro synchronizaci uživatelů mezi službou Active Directory a službou Azure AD.
 
 ### <a name="training-resources"></a>Školicí materiály
 
-| **Materiály** | **Odkaz a popis** |
+| **Prostředky** | **Odkaz a popis** |
 |:-|:-|
 | Videa | [Co je zřizování uživatelů v aktivním adresáři Azure?](https://youtu.be/_ZjARPpI6NI) |
 | | [Postup nasazení zřizování uživatelů v aktivním adresáři Azure](https://youtu.be/pKzyts6kfrw) |
@@ -248,7 +249,7 @@ Ve výchozím nastavení se atribut v aplikaci cloudového HR, který představu
 
 Můžete nastavit více vyhovujících atributů a přiřadit prioritu porovnání. Jsou vyhodnocovány v porovnání s prioritou. Jakmile se najde shoda, nevyhodnocují se žádné další odpovídající atributy.
 
-Můžete také [přizpůsobit výchozí mapování atributů](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types), jako je například změna nebo odstranění mapování stávajících atributů. Můžete také vytvořit nová mapování atributů podle vašich obchodních potřeb. Další informace najdete v tématu kurz aplikace cloudového HR (například [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) pro seznam vlastních atributů k mapování.
+Můžete také [přizpůsobit výchozí mapování atributů](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types), jako je například změna nebo odstranění mapování stávajících atributů. Můžete také vytvořit nová mapování atributů podle vašich obchodních potřeb. Další informace najdete v tématu kurz aplikace cloudového HR (například [Workday](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)) pro seznam vlastních atributů k mapování.
 
 ### <a name="determine-user-account-status"></a>Určení stavu uživatelského účtu
 
@@ -285,7 +286,7 @@ Když zahájíte proces připojení – stěhovací společnosti – Leavers, sh
 | | Jaká data jsou zvažována pro zpracování ukončení uživatele? |
 | | Jak ovlivňují převody zaměstnanců a podprocesů na stávající účty služby Active Directory? |
 
-V závislosti na vašich požadavcích můžete mapování upravit tak, aby splňovalo vaše cíle integrace. Další informace najdete v kurzu konkrétní aplikace cloudového HR (například [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) pro seznam vlastních atributů k mapování.
+V závislosti na vašich požadavcích můžete mapování upravit tak, aby splňovalo vaše cíle integrace. Další informace najdete v kurzu konkrétní aplikace cloudového HR (například [Workday](../saas-apps/workday-inbound-tutorial.md#part-4-configure-attribute-mappings)) pro seznam vlastních atributů k mapování.
 
 ### <a name="generate-a-unique-attribute-value"></a>Vygenerovat jedinečnou hodnotu atributu
 
@@ -365,7 +366,9 @@ Implementace uživatelského zřizování pro cloudový personál může v produ
 
 Vyberte aplikaci cloudového HR, která se zarovnává s požadavky na vaše řešení.
 
-**Workday**: Pokud chcete importovat pracovní profily z Workday do služby Active Directory a Azure AD, přečtěte si [kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). Volitelně můžete napsat zpět e-mailovou adresu a uživatelské jméno do Workday.
+**Workday**: Pokud chcete importovat pracovní profily z Workday do služby Active Directory a Azure AD, přečtěte si [kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). Volitelně můžete napsat e-mailovou adresu, uživatelské jméno a telefonní číslo do Workday.
+
+**SAP SuccessFactors**: Pokud chcete importovat profily pracovních procesů z SuccessFactors do služby Active Directory a Azure AD, přečtěte si téma [kurz: konfigurace SAP SuccessFactors pro Automatické zřizování uživatelů](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md). Volitelně můžete napsat e-mailovou adresu a uživatelské jméno pro SuccessFactors.
 
 ## <a name="manage-your-configuration"></a>Správa konfigurace
 

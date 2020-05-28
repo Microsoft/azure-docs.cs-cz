@@ -11,16 +11,14 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.openlocfilehash: dc4a2f83f59ab94d1bff8a005b37124f2822c72b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 45acac646fece808065d12081bdc28eff92a1b79
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209413"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119333"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Povolit protokolování pro webové služby Azure Machine Learning Studio (Classic)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Tento dokument poskytuje informace o schopnostech protokolování webových služeb Machine Learning Studio (Classic). Protokolování poskytuje další informace, mimo jiné číslo chyby a zprávu, která vám může pomoct řešit vaše volání rozhraní API pro Machine Learning Studio (Classic).  
 
@@ -28,7 +26,7 @@ Tento dokument poskytuje informace o schopnostech protokolování webových slu�
 
 Protokolování se povoluje na portálu [Web Services pro Azure Machine Learning Studio (Classic)](https://services.azureml.net) . 
 
-1. Přihlaste se k portálu Web Services Azure Machine Learning Studio (Classic) [https://services.azureml.net](https://services.azureml.net)na adrese. U klasických webových služeb se můžete na portál dostat taky tak, že kliknete na **nové prostředí webové služby** na stránce Machine Learning Studio (klasické) webové služby v nástroji Studio (Classic).
+1. Přihlaste se k portálu Web Services Azure Machine Learning Studio (Classic) na adrese [https://services.azureml.net](https://services.azureml.net) . U klasických webových služeb se můžete na portál dostat taky tak, že kliknete na **nové prostředí webové služby** na stránce Machine Learning Studio (klasické) webové služby v nástroji Studio (Classic).
 
    ![Odkaz na nový Web Services – odkaz](./media/web-services-logging/new-web-services-experience-link.png)
 

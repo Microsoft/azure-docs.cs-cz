@@ -1,26 +1,25 @@
 ---
 title: Podporované jazyky v Azure Functions
-description: Zjistěte, které jazyky jsou podporované (GA) a které jsou experimentální nebo ve verzi Preview.
+description: Seznamte se s podporovanými jazyky (GA), které jsou ve verzi Preview, a způsoby rozšiřování vývoje funkcí do jiných jazyků.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91a6ea886c3828678771b24d69bb7987af1fb105
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74942252"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994897"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Podporované jazyky v Azure Functions
 
-Tento článek vysvětluje úrovně podpory poskytované pro jazyky, které můžete používat s Azure Functions.
+Tento článek vysvětluje úrovně podpory poskytované pro jazyky, které můžete používat s Azure Functions. Popisuje také strategie pro vytváření funkcí pomocí jazyků, které nejsou nativně podporované.
 
 ## <a name="levels-of-support"></a>Úrovně podpory
 
-Existují tři úrovně podpory:
+Existují dvě úrovně podpory:
 
 * **Všeobecně dostupná (GA)** – plně podporované a schválené pro použití v produkčním prostředí.
 * **Verze Preview** – zatím není podporovaná, ale očekává se, že bude v budoucnu dostupný stav GA.
-* **Experimentální** – nepodporované a můžou být v budoucnu opuštěné; bez záruky na konečný stav Preview nebo GA.
 
 ## <a name="languages-by-runtime-version"></a>Jazyky podle verze modulu runtime 
 
@@ -28,15 +27,11 @@ K dispozici jsou [tři verze modulu runtime Azure Functions](functions-versions.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-### <a name="experimental-languages"></a>Experimentální jazyky
+## <a name="custom-handlers-preview"></a>Vlastní obslužné rutiny (Preview) 
 
-Experimentální jazyky verze 1. x se neškálují správně a nepodporují všechny vazby.
+Vlastní obslužné rutiny jsou jednoduché webové servery, které přijímají události od hostitele Azure Functions. Libovolný jazyk, který podporuje primitivní prvky HTTP, může implementovat vlastní obslužnou rutinu. To znamená, že vlastní obslužné rutiny lze použít k vytvoření funkcí v jazycích, které nejsou oficiálně podporovány. Další informace najdete v tématu [Azure Functions vlastní obslužné rutiny (Preview)](functions-custom-handlers.md).
 
-Nepoužívejte experimentální funkce pro cokoli, co jste se spoléhali, protože pro ně není oficiální podpora k dispozici. Pro problémy s experimentálními jazyky by se neměly otevírat případy podpory. 
-
-Novější verze modulu runtime nepodporují experimentální jazyky. Podpora pro nové jazyky se přidá jenom v případě, že je možné jazyk v produkčním prostředí podporovat. 
-
-### <a name="language-extensibility"></a>Jazyková rozšíření
+## <a name="language-extensibility"></a>Jazyková rozšíření
 
 Počínaje verzí 2. x je modul runtime navržený tak, aby nabízel [jazykové rozšíření](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility). Jazyky JavaScript a Java v modulu runtime 2. x jsou sestaveny s tímto rozšířením.
 

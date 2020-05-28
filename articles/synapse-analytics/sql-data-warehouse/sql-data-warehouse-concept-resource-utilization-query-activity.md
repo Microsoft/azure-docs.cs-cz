@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7c09e9d9f93ead6f894c954f647ebe33918cf41d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e80ff74ad1dec25c815a9dd28a04133502b82085
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653014"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012904"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure synapse Analytics
 
@@ -26,7 +26,7 @@ Azure synapse Analytics poskytuje bohatě monitorovaný přehled v rámci Azure 
 
 V Azure Portal pro synapse SQL jsou k dispozici následující metriky. Tyto metriky se procházejí [Azure monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
 
-| Název metriky             | Popis                                                  | Typ agregace |
+| Název metriky             | Description                                                  | Typ agregace |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | Procento CPU          | Využití CPU ve všech uzlech pro datový sklad      | AVG, min, Max    |
 | Procento datových V/V      | Využití v/v na všech uzlech pro datový sklad       | AVG, min, Max    |
@@ -49,7 +49,7 @@ V Azure Portal pro synapse SQL jsou k dispozici následující metriky. Tyto met
 Co je potřeba vzít v úvahu při prohlížení metrik a nastavení výstrah:
 
 - DWU používá **reprezentaci pouze vysoké úrovně využití** napříč fondem SQL a není určena k komplexnímu indikátoru využití. Pokud chcete určit, jestli se má horizontální navýšení nebo snížení kapacity škálovat, vezměte v úvahu všechny faktory, které můžou být ovlivněné DWU, jako je Concurrency, Memory, tempdb a adaptivní kapacita mezipaměti. Doporučujeme [spouštět vaše úlohy v různých nastaveních DWU](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) a určit, co nejlépe vyhovuje vašim obchodním cílům.
-- Neúspěšná a úspěšná připojení se nahlásí pro konkrétní datový sklad – ne pro logický Server.
+- Neúspěšná a úspěšná připojení se nahlásí pro konkrétní datový sklad – ne pro samotný server.
 - Procento paměti odráží využití i v případě, že je datový sklad v nečinném stavu. neodráží spotřebu paměti aktivní úlohy. Tuto metriku můžete použít a sledovat společně s ostatními (tempdb, Gen2 cache) a vytvořit si holistický rozhodnutí o tom, jestli škálování pro další kapacitu mezipaměti zvýší výkon úlohy, aby splňovala vaše požadavky.
 
 ## <a name="query-activity"></a>Aktivita dotazu

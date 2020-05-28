@@ -10,12 +10,12 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4f869c8b4ae6e90cfe64a2bf3d13839d72727be
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77157502"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015295"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Co dělat v případě přerušení služby Azure, které ovlivní Azure Cloud Services
 V Microsoftu pracujeme na tom, abychom zajistili, že naše služby jsou vždycky k dispozici, až je budete potřebovat. Síly nad rámec našeho ovládacího prvku někdy ovlivňují způsob, jakým způsobují neplánované výpadky služeb.
@@ -47,7 +47,7 @@ Další informace o tom, jak vytvořit a nasadit aplikaci cloudové služby, naj
 V závislosti na zdrojích dat aplikací může být nutné ověřit postupy obnovení pro zdroj dat aplikace.
 
 * U Azure Storage zdrojů dat si Projděte [Azure Storage redundance](../storage/common/storage-redundancy.md) a zkontrolujte, jaké možnosti jsou k dispozici na základě zvoleného modelu redundance pro vaši aplikaci.
-* Informace o SQL Databasech zdrojích najdete v tématu [Přehled: cloudová Kontinuita podnikových prostředí a zotavení po havárii databáze pomocí SQL Database](../sql-database/sql-database-business-continuity.md) ke kontrole dostupných možností na základě zvoleného modelu replikace pro vaši aplikaci.
+* Informace o SQL Databasech zdrojích najdete v tématu [Přehled: cloudová Kontinuita podnikových prostředí a zotavení po havárii databáze pomocí SQL Database](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md) ke kontrole dostupných možností na základě zvoleného modelu replikace pro vaši aplikaci.
 
 
 ## <a name="option-3-wait-for-recovery"></a>Možnost 3: čekání na obnovení

@@ -4,19 +4,19 @@ description: Tento článek ukazuje, jak migrovat klasické zásady, které vyž
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 12/04/2019
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d637ac464b689a25ce5d5a79cf47da0c85d38d0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1dc7b7227dbaee488726a75fe7120bd26614dbf
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74846014"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993724"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Migrace klasických zásad v Azure Portal
 
@@ -32,7 +32,7 @@ Proces migrace se skládá z následujících kroků:
 
 ## <a name="open-a-classic-policy"></a>Otevření klasických zásad
 
-1. V [Azure Portal](https://portal.azure.com)přejděte na **Azure Active Directory** > **Security** > **podmíněný přístup**zabezpečení.
+1. V [Azure Portal](https://portal.azure.com)přejděte na **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
 1. Vyberte **klasické zásady**.
 
    ![Zobrazení klasických zásad](./media/policy-migration-mfa/12.png)
@@ -41,7 +41,7 @@ Proces migrace se skládá z následujících kroků:
 
 ## <a name="create-a-new-conditional-access-policy"></a>Vytvořit nové zásady podmíněného přístupu
 
-1. V [Azure Portal](https://portal.azure.com)přejděte na **Azure Active Directory** > **Security** > **podmíněný přístup**zabezpečení.
+1. V [Azure Portal](https://portal.azure.com)přejděte na **Azure Active Directory**  >  **Security**  >  **podmíněný přístup**zabezpečení.
 1. Nové zásady podmíněného přístupu vytvoříte tak, že vyberete **nové zásady**.
 1. Na **nové** stránce zadejte do textového pole **název** název zásady.
 1. V části **přiřazení** klikněte na **Uživatelé a skupiny**.

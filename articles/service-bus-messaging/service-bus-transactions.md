@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f79d0e917ba741e72e2bbecd4a1f94a4c99e5393
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260901"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996053"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Přehled zpracování Service Bus transakcí
 
@@ -36,8 +36,8 @@ Service Bus podporuje operace seskupení u jedné entity zasílání zpráv (fro
 
 Operace, které lze provést v rámci oboru transakce, jsou následující:
 
-* ** [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: send, SendAsync, SendBatch, SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: Complete, CompleteAsync, Abandon, AbandonAsync, nedoručené, DeadletterAsync, pozdržet, DeferAsync, RenewLock, RenewLockAsync 
+* ** [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: `Send` , `SendAsync` , `SendBatch` ,`SendBatchAsync`
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: `Complete` , `CompleteAsync` , `Abandon` , `AbandonAsync` , `Deadletter` , `DeadletterAsync` , `Defer` , `DeferAsync` , `RenewLock` ,`RenewLockAsync` 
 
 Operace Receive nejsou zahrnuty, protože se předpokládá, že aplikace získává zprávy pomocí režimu [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) , uvnitř některé z cyklů příjmu nebo pomocí zpětného volání [při chybě,](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) a poté otevře obor transakce pro zpracování zprávy.
 
@@ -45,7 +45,7 @@ Dispozice zprávy (dokončeno, opustit, nedoručená zpráva) pak probíhá v r�
 
 ## <a name="transfers-and-send-via"></a>Přenosy a "odeslání přes"
 
-Pokud chcete povolit transakční předají dat z fronty na procesor a následně do jiné fronty, Service Bus podporuje *přenosy*. Odesílatel v operaci přenosu nejprve pošle zprávu do *fronty přenosu*a fronta přenosu okamžitě přesune zprávu do zamýšlené cílové fronty pomocí stejné implementace robustního přenosu, na které se funkce automatického předávání spoléhá. Zpráva se nikdy nezavazuje do protokolu fronty přenosu tak, že se bude zobrazovat pro příjemce ve frontě přenosu.
+Pokud chcete povolit transakční předají dat z fronty na procesor a následně do jiné fronty, Service Bus podporuje *přenosy*. Odesílatel v operaci přenosu nejprve pošle zprávu do *fronty přenosů*a fronta přenosu okamžitě přesune zprávu do zamýšlené cílové fronty pomocí stejné implementace robustního přenosu, na které se spoléhá funkce dopřed. Zpráva se nikdy nezavazuje do protokolu fronty přenosu tak, že se bude zobrazovat pro příjemce ve frontě přenosu.
 
 Výkon této transakční funkce se bude poznat, když je samotná fronta přenosu zdrojem vstupních zpráv odesílatele. Jinými slovy Service Bus může přenést zprávu do cílové fronty "prostřednictvím fronty přenosu, při provádění úplné operace (nebo odložení nebo nedoručené zprávy) na vstupní zprávě, a to vše v jedné atomické operaci. 
 
@@ -97,13 +97,16 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 }
 ```
 
+## <a name="timeout"></a>Časový limit
+Časový limit transakce vypršel po 2 minutách. Časovač transakce začíná při zahájení první operace v transakci. 
+
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o frontách Service Bus najdete v následujících článcích:
 
 * [Jak používat fronty Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Zřetězení Service Bus entit s automatickým přeposíláním](service-bus-auto-forwarding.md)
-* [Ukázka automatického přeposílání](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
+* [Zřetězení Service Bus entit pomocí procesu autopřesměrovávání](service-bus-auto-forwarding.md)
+* [Ukázka dopředné](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
 * [Atomické transakce s Service Bus ukázka](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
 * [Ve srovnání s frontami Azure a frontami Service Bus](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 

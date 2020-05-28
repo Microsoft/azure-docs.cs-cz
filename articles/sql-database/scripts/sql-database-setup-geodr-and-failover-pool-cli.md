@@ -1,22 +1,22 @@
 ---
-title: Příklad rozhraní příkazového řádku – aktivní geografická replikace databáze SQL Azure ve fondu
+title: 'AZ CLI: konfigurace aktivní geografické replikace pro elastický fond'
 description: Ukázkový skript Azure CLI pro nastavení aktivní geografické replikace pro databázi ve fondu ve Azure SQL Database a převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: ''
+ms.custom: sqldbrb=1
 ms.devlang: azurecli
 ms.topic: sample
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 2646ed98f4a73c69d339df0134e8a565c958c514
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a272564684671e38100e5390e95129121fcbd0f8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067360"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019379"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Konfigurace aktivní geografické replikace pro databázi ve fondu v Azure SQL Database pomocí rozhraní příkazového řádku
 
@@ -62,4 +62,4 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další ukázkové skripty rozhraní příkazového řádku pro službu SQL Database najdete v [dokumentaci ke službě Azure SQL Database](../sql-database-cli-samples.md).
+Další ukázkové skripty rozhraní příkazového řádku pro službu SQL Database najdete v [dokumentaci ke službě Azure SQL Database](../../azure-sql/database/az-cli-script-samples-content-guide.md).

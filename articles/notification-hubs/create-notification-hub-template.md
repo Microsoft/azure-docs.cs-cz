@@ -10,20 +10,20 @@ ms.author: sethm
 ms.date: 05/15/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: aefccb831fe35898962893a173c5bd1125877def
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ede6b8ae22fb51a9586c6c4465d2cf9ac79f88df
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743534"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996665"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření centra oznámení pomocí šablony Azure Resource Manager
 
 Azure Notification Hubs poskytuje snadno použitelný a Škálovatelný modul nabízených oznámení, který umožňuje odesílat oznámení na libovolnou platformu (iOS, Android, Windows, Kindle atd.) z libovolného back-endu (Cloud nebo místní). Další informace o této službě najdete v tématu [co je Azure Notification Hubs](notification-hubs-push-notification-overview.md).
 
-Tento rychlý Start používá šablonu Azure Resource Manager k vytvoření oboru názvů Azure Notification Hubs a centra oznámení s názvem "MyHub" v rámci tohoto oboru názvů.
-
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+V tomto rychlém startu se používá šablona Azure Resource Manager k vytvoření oboru názvů Azure Notification Hubs a centrum oznámení s názvem **MyHub** v rámci tohoto oboru názvů.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
@@ -32,8 +32,6 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 Žádné
 
 ## <a name="create-a-notification-hubs-namespace-and-hub"></a>Vytvoření Notification Hubsového oboru názvů a centra
-
-<!-- The second H2 must start with "Create a". For example,  'Create a Key Vault', 'Create a virtual machine', etc. -->
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
@@ -48,7 +46,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona přebírá název oboru názvů Notification Hubs jako parametr. Šablona poté vytvoří obor názvů s tímto názvem a centrem oznámení s názvem **MyHub** v rámci tohoto oboru názvů.
 
-[![Nasazení do Azure](./media/create-notification-hub-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 

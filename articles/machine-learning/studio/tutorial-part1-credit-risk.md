@@ -10,16 +10,14 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09026d7f2aeb25f9a7c4a3c31c4f8d0b4cdb223a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79204252"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117820"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Kurz 1: předpověď úvěrového rizika – Azure Machine Learning Studio (Classic)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -58,7 +56,7 @@ Pokud chcete použít Machine Learning Studio (Classic), musíte mít pracovní 
 
 Pokud chcete vytvořit pracovní prostor, přečtěte si téma [Vytvoření a sdílení pracovního prostoru Azure Machine Learning Studio (Classic)](create-workspace.md).
 
-Po vytvoření pracovního prostoru otevřete Machine Learning Studio (Classic) ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Pokud máte více než jeden pracovní prostor, můžete pracovní prostor vybrat na panelu nástrojů v pravém horním rohu okna.
+Po vytvoření pracovního prostoru otevřete Machine Learning Studio (Classic) ( [https://studio.azureml.net/Home](https://studio.azureml.net/Home) ). Pokud máte více než jeden pracovní prostor, můžete pracovní prostor vybrat na panelu nástrojů v pravém horním rohu okna.
 
 ![Výběr pracovního prostoru v nástroji Studio (klasický)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
@@ -113,9 +111,9 @@ V obou případech jste vytvořili verzi dat oddělených čárkami v souboru s 
 
 Jakmile budou data převedena do formátu CSV, je nutné ji odeslat do Machine Learning Studio (Classic). 
 
-1. Otevřete domovskou stránku Machine Learning Studio (Classic) ([https://studio.azureml.net](https://studio.azureml.net)). 
+1. Otevřete domovskou stránku Machine Learning Studio (Classic) ( [https://studio.azureml.net](https://studio.azureml.net) ). 
 
-2. V levém horním](./media/tutorial-part1-credit-risk/menu.png) rohu okna klikněte na nabídku nabídky ![, klikněte na **Azure Machine Learning**, vyberte **Studio**a přihlaste se.
+2. ![ ](./media/tutorial-part1-credit-risk/menu.png) V levém horním rohu okna klikněte na nabídku nabídky, klikněte na **Azure Machine Learning**, vyberte **Studio**a přihlaste se.
 
 3. V dolní části okna klikněte na **+ Nový** .
 

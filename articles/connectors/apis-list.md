@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: f2a2ee7a2806a753ffd159c91ed782634e74c704
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: ede385670dec6629cc3e75a9d09c0ceb14362bdc
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838645"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119389"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Konektory pro Azure Logic Apps
 
@@ -94,10 +94,10 @@ Logic Apps poskytuje integrované triggery a akce, takže můžete vytvářet pr
 
 |   |   |   |   |
 |---|---|---|---|
-| [![Ikona][schedule-icon]<br>rozhraní API –**plán**][schedule-doc] | -Spustit aplikaci logiky v zadaném opakování, od základů po pokročilé plány s [triggerem **opakování** ][schedule-recurrence-doc]. <p>– Spusťte aplikaci logiky, která potřebuje zpracovávat data v souvislých blocích pomocí [ **posuvné** aktivační události okna][schedule-sliding-window-doc]. <p>– Pozastaví vaši aplikaci logiky o zadanou dobu s [akcí **zpoždění** ][schedule-delay-doc]. <p>– Pozastavit aplikaci logiky do zadaného data a času s [ **prodlevou, dokud** ][schedule-delay-until-doc]neproběhne akce. | [![Ikona][batch-icon]<br>rozhraní API**Batch**][batch-doc] | – Zpracování zpráv v dávkách pomocí triggeru **zprávy Batch** . <p>– Volejte aplikace logiky, které mají existující triggery Batch, pomocí akce **Odeslat zprávy do dávky** . |
-| [![Ikona][http-icon]<br>rozhraní API**http**][http-doc] | Volání koncových bodů HTTP nebo HTTPS s triggery a akcemi pro HTTP. Další integrované aktivační události HTTP a akce zahrnují [http + Swagger][http-swagger-doc] a [http + Webhook][http-webhook-doc]. | [![Ikona][http-request-icon]<br>rozhraní API –**požadavek**][http-request-doc] | – Aplikaci logiky můžete volat z jiných aplikací nebo služeb, aktivovat Event Grid události prostředků nebo aktivovat odpovědi na Azure Security Center výstrahy s triggerem **požadavku** . <p>– Odešlete odpovědi na aplikaci nebo službu s akcí **Response** . |
-| [![Ikona][azure-api-management-icon]<br>rozhraní API**Azure <br>API Management**][azure-api-management-doc] | Volání triggerů a akcí definovaných vašimi rozhraními API, která spravujete a publikujete pomocí Azure API Management. | [![Ikona][azure-app-services-icon]<br>rozhraní API**Azure <br>App Services**][azure-app-services-doc] | Zavolejte Azure API Apps nebo Web Apps hostovaný na Azure App Service. Aktivační události a akce, které tyto aplikace definují, se zobrazí stejně jako jakékoli jiné aktivační události první třídy a akce, když je součástí Swagger.|
-| [![Ikona][azure-logic-apps-icon]<br>rozhraní API**Azure <br>Logic Apps**][nested-logic-app-doc] | Volejte jiné aplikace logiky, které začínají triggerem **žádosti** . |
+| [![Ikona rozhraní API – ][schedule-icon]<br> **plán**][schedule-doc] | -Spustit aplikaci logiky v zadaném opakování, od základů po pokročilé plány s [triggerem **opakování** ][schedule-recurrence-doc]. <p>– Spusťte aplikaci logiky, která potřebuje zpracovávat data v souvislých blocích pomocí [ **posuvné** aktivační události okna][schedule-sliding-window-doc]. <p>– Pozastaví vaši aplikaci logiky o zadanou dobu s [akcí **zpoždění** ][schedule-delay-doc]. <p>– Pozastavit aplikaci logiky do zadaného data a času s [ **prodlevou, dokud** ][schedule-delay-until-doc]neproběhne akce. | [![Ikona rozhraní API ][batch-icon]<br> **Batch**][batch-doc] | – Zpracování zpráv v dávkách pomocí triggeru **zprávy Batch** . <p>– Volejte aplikace logiky, které mají existující triggery Batch, pomocí akce **Odeslat zprávy do dávky** . |
+| [![Ikona rozhraní API ][http-icon]<br> **http**][http-doc] | Volání koncových bodů HTTP nebo HTTPS s triggery a akcemi pro HTTP. Další integrované aktivační události HTTP a akce zahrnují [http + Swagger][http-swagger-doc] a [http + Webhook][http-webhook-doc]. | [![Ikona rozhraní API – ][http-request-icon]<br> **požadavek**][http-request-doc] | – Aplikaci logiky můžete volat z jiných aplikací nebo služeb, aktivovat Event Grid události prostředků nebo aktivovat odpovědi na Azure Security Center výstrahy s triggerem **požadavku** . <p>– Odešlete odpovědi na aplikaci nebo službu s akcí **Response** . |
+| [![Ikona rozhraní API ][azure-api-management-icon]<br> **Azure API <br> Management**][azure-api-management-doc] | Volání triggerů a akcí definovaných vašimi rozhraními API, která spravujete a publikujete pomocí Azure API Management. | [![Ikona rozhraní API ][azure-app-services-icon]<br> **Azure App <br> Services**][azure-app-services-doc] | Zavolejte Azure API Apps nebo Web Apps hostovaný na Azure App Service. Aktivační události a akce, které tyto aplikace definují, se zobrazí stejně jako jakékoli jiné aktivační události první třídy a akce, když je součástí Swagger.|
+| [![Ikona rozhraní API ][azure-logic-apps-icon]<br> **Azure Logic <br> Apps**][nested-logic-app-doc] | Volejte jiné aplikace logiky, které začínají triggerem **žádosti** . |
 |||||
 
 ### <a name="run-code-from-logic-apps"></a>Spuštění kódu z Logic Apps
@@ -106,7 +106,7 @@ Logic Apps poskytuje integrované akce pro spuštění vlastního kódu v pracov
 
 |   |   |   |   |
 |---|---|---|---|
-| [![Ikona][azure-functions-icon]<br>rozhraní API**Azure Functions**][azure-functions-doc] | Volejte Azure Functions, které spouštějí vlastní fragmenty kódu (C# nebo Node. js) z vašich aplikací logiky. | [![Ikona][inline-code-icon]<br>rozhraní API –**vložený kód**][azure-functions-doc] | Přidejte a spusťte fragmenty kódu JavaScriptu z vašich aplikací logiky. |
+| [![Ikona rozhraní API ][azure-functions-icon]<br> **Azure Functions**][azure-functions-doc] | Volejte Azure Functions, které spouštějí vlastní fragmenty kódu (C# nebo Node. js) z vašich aplikací logiky. | [![Ikona rozhraní API – ][inline-code-icon]<br> **vložený kód**][inline-code-doc] | Přidejte a spusťte fragmenty kódu JavaScriptu z vašich aplikací logiky. |
 |||||
 
 ### <a name="control-workflow"></a>Pracovní postup ovládacího prvku
@@ -115,9 +115,9 @@ Logic Apps poskytuje předdefinované akce pro strukturování a řízení akcí
 
 |   |   |   |   |
 |---|---|---|---|
-| [![Integrovaná][condition-icon]<br>**Podmínka** ikony][condition-doc] | Vyhodnoťte podmínku a spusťte různé akce na základě toho, zda je podmínka pravdivá, nebo false. | [![Integrovaná ikona][for-each-icon]<br>**pro každý**][for-each-doc] | Proveďte stejné akce u každé položky v poli. |
+| [![Integrovaná ][condition-icon]<br> **Podmínka** ikony][condition-doc] | Vyhodnoťte podmínku a spusťte různé akce na základě toho, zda je podmínka pravdivá, nebo false. | [![Integrovaná ikona ][for-each-icon]<br> **pro každý**][for-each-doc] | Proveďte stejné akce u každé položky v poli. |
 | [![][scope-icon]<br>**Rozsah** vestavěné ikony][scope-doc] | Seskupí akce do *oborů*, které po dokončení akcí v oboru dostanou svůj vlastní stav. | [![][switch-icon]<br>**Přepínač** vestavěné ikony][switch-doc] | Akce skupiny do *případů*, kterým jsou přiřazeny jedinečné hodnoty s výjimkou výchozího případu. Spustí pouze tento případ, jehož přiřazená hodnota odpovídá výsledku z výrazu, objektu nebo tokenu. Pokud žádné shody neexistují, spusťte výchozí případ. |
-| [![Integrovaná ikona][terminate-icon]<br>byla**ukončena** .][terminate-doc] | Zastaví aktivně běžící pracovní postup aplikace logiky. | [![Integrovaná ikona][until-icon]<br>,**dokud**][until-doc] | Akce opakujte, dokud není zadaná podmínka pravdivá nebo se změnil stav. |
+| [![Integrovaná ikona byla ][terminate-icon]<br> **ukončena** .][terminate-doc] | Zastaví aktivně běžící pracovní postup aplikace logiky. | [![Integrovaná ikona, ][until-icon]<br> **dokud**][until-doc] | Akce opakujte, dokud není zadaná podmínka pravdivá nebo se změnil stav. |
 |||||
 
 ### <a name="manage-or-manipulate-data"></a>Správa dat nebo manipulace s nimi
@@ -126,9 +126,9 @@ Logic Apps poskytuje předdefinované akce pro práci s datovými výstupy a jej
 
 |   |   |
 |---|---|
-| [![Integrované][data-operations-icon]<br>**operace s daty** ikony][data-operations-doc] | Provádět operace s daty: <p>- **Sestavit**: vytvořte jeden výstup z více vstupů s různými typy. <br>- **Vytvoření tabulky CSV**: z pole s objekty JSON vytvořte tabulku s hodnotami oddělenými čárkou (CSV). <br>- **Vytvořit tabulku HTML**: vytvoří tabulku HTML z pole s objekty JSON. <br>- **Filter Array**: vytvořte pole z položek v jiném poli, které splňuje vaše kritéria. <br>- **Join**: vytvoří řetězec ze všech položek v poli a oddělí tyto položky se zadaným oddělovačem. <br>- **Analyzovat JSON**: umožňuje vytvořit uživatelsky přívětivé tokeny z vlastností a jejich hodnot v obsahu JSON, abyste je mohli ve svém pracovním postupu použít. <br>- **Vyberte**: vytvořte pole s objekty JSON transformující položky nebo hodnoty v jiném poli a namapováním těchto položek na zadané vlastnosti. |
+| [![Integrované ][data-operations-icon]<br> **operace s daty** ikony][data-operations-doc] | Provádět operace s daty: <p>- **Sestavit**: vytvořte jeden výstup z více vstupů s různými typy. <br>- **Vytvoření tabulky CSV**: z pole s objekty JSON vytvořte tabulku s hodnotami oddělenými čárkou (CSV). <br>- **Vytvořit tabulku HTML**: vytvoří tabulku HTML z pole s objekty JSON. <br>- **Filter Array**: vytvořte pole z položek v jiném poli, které splňuje vaše kritéria. <br>- **Join**: vytvoří řetězec ze všech položek v poli a oddělí tyto položky se zadaným oddělovačem. <br>- **Analyzovat JSON**: umožňuje vytvořit uživatelsky přívětivé tokeny z vlastností a jejich hodnot v obsahu JSON, abyste je mohli ve svém pracovním postupu použít. <br>- **Vyberte**: vytvořte pole s objekty JSON transformující položky nebo hodnoty v jiném poli a namapováním těchto položek na zadané vlastnosti. |
 | ![Integrovaná ikona][date-time-icon]<br>**Datum a čas** | Provádět operace s časovými razítky: <p>- **Přidat do času**: do časového razítka přidejte zadaný počet jednotek. <br>- **Převést časové pásmo**: převede časové razítko ze zdrojového časového pásma na cílové časové pásmo. <br>- **Aktuální čas**: vrátí aktuální časové razítko jako řetězec. <br>- **Získat budoucí čas**: vrátí aktuální časové razítko plus zadané časové jednotky. <br>- **Získat čas v minulosti**: vrátí aktuální časové razítko minus zadané časové jednotky. <br>- **Odečíst od času**: odečte počet časových jednotek od časového razítka. |
-| [![Předdefinované][variables-icon]<br>**proměnné** ikon][variables-doc] | Provádět operace s proměnnými: <p>- **Připojit k proměnné pole**: vloží hodnotu jako poslední položku v poli uloženém proměnnou. <br>- **Připojit k proměnné řetězce**: vloží hodnotu jako poslední znak v řetězci uloženém proměnnou. <br>- **Odsnižovat proměnnou**: Zmenšete proměnnou konstantní hodnotou. <br>- **Přírůstek proměnné**: Zvyšte proměnnou na konstantní hodnotu. <br>- **Inicializovat proměnnou**: vytvoří proměnnou a deklaruje její datový typ a počáteční hodnotu. <br>- **Nastavení proměnné**: přiřaďte existující proměnné jinou hodnotu. |
+| [![Předdefinované ][variables-icon]<br> **proměnné** ikon][variables-doc] | Provádět operace s proměnnými: <p>- **Připojit k proměnné pole**: vloží hodnotu jako poslední položku v poli uloženém proměnnou. <br>- **Připojit k proměnné řetězce**: vloží hodnotu jako poslední znak v řetězci uloženém proměnnou. <br>- **Odsnižovat proměnnou**: Zmenšete proměnnou konstantní hodnotou. <br>- **Přírůstek proměnné**: Zvyšte proměnnou na konstantní hodnotu. <br>- **Inicializovat proměnnou**: vytvoří proměnnou a deklaruje její datový typ a počáteční hodnotu. <br>- **Nastavení proměnné**: přiřaďte existující proměnné jinou hodnotu. |
 |  |  |
 
 <a name="managed-api-connectors"></a>
@@ -139,13 +139,13 @@ Logic Apps poskytuje tyto oblíbené standardní konektory pro automatizaci úlo
 
 |   |   |   |   |
 |---|---|---|---|
-| [![Ikona][azure-service-bus-icon]<br>rozhraní API**Azure Service Bus**][azure-service-bus-doc] | Spravujte asynchronní zprávy, relace a odběry témat pomocí nejčastěji používaného konektoru v Logic Apps. | [![Ikona][sql-server-icon]<br>rozhraní API**SQL Server**][sql-server-doc] | Připojte se k vašemu SQL Server místně nebo Azure SQL Database v cloudu, abyste mohli spravovat záznamy, spouštět uložené procedury nebo provádět dotazy. |
-| [![Ikona][azure-blob-storage-icon]<br>rozhraní API**Azure<br>BLOB Storage**][azure-blob-storage-doc] | Připojte se k účtu úložiště, abyste mohli vytvářet a spravovat obsah objektů BLOB. | [![Ikona][office-365-outlook-icon]<br>rozhraní API**Office<br>365 Outlook**][office-365-outlook-doc] | Připojte se k e-mailovému účtu Office 365, abyste mohli vytvářet a spravovat e-maily, úkoly, události kalendáře a schůzky, kontakty, žádosti a další. |
-| [![Ikona][sftp-ssh-icon]<br>rozhraní API**SFTP – SSH**][sftp-ssh-doc] | Připojte se k serverům SFTP, ke kterým máte přístup z Internetu pomocí SSH, abyste mohli pracovat se soubory a složkami. | [![Ikona][sharepoint-online-icon]<br>rozhraní API**SharePointu<br>online**][sharepoint-online-doc] | Připojte se k SharePointu Online, abyste mohli spravovat soubory, přílohy, složky a další. | 
-| [![Ikona][dynamics-365-icon]<br>rozhraní API**Dynamics<br> 365**][dynamics-365-doc] | Připojte se k účtu Dynamics 365, abyste mohli vytvářet a spravovat záznamy, položky a další. | [![Ikona][azure-queues-icon]<br>rozhraní API**fronty Azure <br>**][azure-queues-doc] | Připojte se k účtu Azure Storage, abyste mohli vytvářet a spravovat fronty a zprávy. |
-| [![Ikona][ftp-icon]<br>rozhraní API**FTP**][ftp-doc] | Připojte se k serverům FTP, ke kterým máte přístup z Internetu, abyste mohli pracovat se soubory a složkami. | [![Ikona][file-system-icon]<br>rozhraní API**systému souborů <br>**][file-system-doc] | Připojte se k místní sdílené složce, abyste mohli vytvářet a spravovat soubory. |
-| [![Ikona][azure-event-hubs-icon]<br>rozhraní API**Azure Event Hubs**][azure-event-hubs-doc] | Využití a publikování událostí prostřednictvím centra událostí. Můžete například získat výstup z aplikace logiky pomocí Event Hubs a potom tento výstup poslat poskytovateli analýz v reálném čase. | [![Ikona][azure-event-grid-icon]<br>rozhraní API**Azure Event**<br>**gridu**][azure-event-grid-doc] | Monitorujte události publikované Event Grid například při změně prostředků Azure nebo prostředků třetích stran. |
-| [![Ikona][salesforce-icon]<br>rozhraní API**Salesforce**][salesforce-doc] | Připojte se k účtu Salesforce, abyste mohli vytvářet a spravovat položky, jako jsou záznamy, úlohy, objekty a další. | [![Ikona][twitter-icon]<br>rozhraní API**Twitter**][twitter-doc] | Připojte se k účtu Twitter, abyste mohli spravovat tweety, sledující, časovou osu a další funkce. Uložte si tweety do SQL, Excelu nebo SharePointu. |
+| [![Ikona rozhraní API ][azure-service-bus-icon]<br> **Azure Service Bus**][azure-service-bus-doc] | Spravujte asynchronní zprávy, relace a odběry témat pomocí nejčastěji používaného konektoru v Logic Apps. | [![Ikona rozhraní API ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Připojte se k vašemu SQL Server místně nebo Azure SQL Database v cloudu, abyste mohli spravovat záznamy, spouštět uložené procedury nebo provádět dotazy. |
+| [![Ikona rozhraní API ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc] | Připojte se k účtu úložiště, abyste mohli vytvářet a spravovat obsah objektů BLOB. | [![Ikona rozhraní API ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | Připojte se k e-mailovému účtu Office 365, abyste mohli vytvářet a spravovat e-maily, úkoly, události kalendáře a schůzky, kontakty, žádosti a další. |
+| [![Ikona rozhraní API ][sftp-ssh-icon]<br> **SFTP – SSH**][sftp-ssh-doc] | Připojte se k serverům SFTP, ke kterým máte přístup z Internetu pomocí SSH, abyste mohli pracovat se soubory a složkami. | [![Ikona rozhraní API ][sharepoint-online-icon]<br> **SharePointu <br> online**][sharepoint-online-doc] | Připojte se k SharePointu Online, abyste mohli spravovat soubory, přílohy, složky a další. | 
+| [![Ikona rozhraní API ][dynamics-365-icon]<br> **Dynamics <br> 365**][dynamics-365-doc] | Připojte se k účtu Dynamics 365, abyste mohli vytvářet a spravovat záznamy, položky a další. | [![Ikona rozhraní API ][azure-queues-icon]<br> ** <br> fronty Azure**][azure-queues-doc] | Připojte se k účtu Azure Storage, abyste mohli vytvářet a spravovat fronty a zprávy. |
+| [![Ikona rozhraní API ][ftp-icon]<br> **FTP**][ftp-doc] | Připojte se k serverům FTP, ke kterým máte přístup z Internetu, abyste mohli pracovat se soubory a složkami. | [![Ikona rozhraní API ][file-system-icon]<br> ** <br> systému souborů**][file-system-doc] | Připojte se k místní sdílené složce, abyste mohli vytvářet a spravovat soubory. |
+| [![Ikona rozhraní API ][azure-event-hubs-icon]<br> **Azure Event Hubs**][azure-event-hubs-doc] | Využití a publikování událostí prostřednictvím centra událostí. Můžete například získat výstup z aplikace logiky pomocí Event Hubs a potom tento výstup poslat poskytovateli analýz v reálném čase. | [![Ikona rozhraní API ][azure-event-grid-icon]<br> **Azure Event** <br> **gridu**][azure-event-grid-doc] | Monitorujte události publikované Event Grid například při změně prostředků Azure nebo prostředků třetích stran. |
+| [![Ikona rozhraní API ][salesforce-icon]<br> **Salesforce**][salesforce-doc] | Připojte se k účtu Salesforce, abyste mohli vytvářet a spravovat položky, jako jsou záznamy, úlohy, objekty a další. | [![Ikona rozhraní API ][twitter-icon]<br> **Twitter**][twitter-doc] | Připojte se k účtu Twitter, abyste mohli spravovat tweety, sledující, časovou osu a další funkce. Uložte si tweety do SQL, Excelu nebo SharePointu. |
 |||||
 
 <a name="on-premises-connectors"></a>
@@ -156,8 +156,8 @@ Tady jsou některé běžně používané standardní konektory, které Logic Ap
 
 |   |   |   |   |   |
 |---|---|---|---|---|
-| [![Ikona][biztalk-server-icon]<br>rozhraní API**BizTalk** <br> **serveru**][biztalk-server-doc] | [![Ikona][file-system-icon]<br>rozhraní API**systému souborů <br>**][file-system-doc] | [![Ikona][ibm-db2-icon]<br>rozhraní API**IBM DB2**][ibm-db2-doc] | [![Ikona][ibm-informix-icon]<br>rozhraní API**IBM** <br> **Informix**][ibm-informix-doc] | [![Ikona][mysql-icon]<br>rozhraní API**MySQL**][mysql-doc] |
-| [![Ikona][oracle-db-icon]<br>rozhraní API**Oracle DB**][oracle-db-doc] | [![Ikona][postgre-sql-icon]<br>rozhraní API**PostgreSQL**][postgre-sql-doc] | [![Ikona][sharepoint-server-icon]<br>rozhraní API**SharePoint <br>serveru**][sharepoint-server-doc] | [![Ikona][sql-server-icon]<br>rozhraní API**SQL <br>Server**][sql-server-doc] | [![Ikona][teradata-icon]<br>rozhraní API**Teradata**][teradata-doc] |
+| [![Ikona rozhraní API ][biztalk-server-icon]<br> **BizTalk** <br> **serveru**][biztalk-server-doc] | [![Ikona rozhraní API ][file-system-icon]<br> ** <br> systému souborů**][file-system-doc] | [![Ikona rozhraní API ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![Ikona rozhraní API ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc] | [![Ikona rozhraní API ][mysql-icon]<br> **MySQL**][mysql-doc] |
+| [![Ikona rozhraní API ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc] | [![Ikona rozhraní API ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc] | [![Ikona rozhraní API ][sharepoint-server-icon]<br> **SharePoint <br> serveru**][sharepoint-server-doc] | [![Ikona rozhraní API ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![Ikona rozhraní API ][teradata-icon]<br> **Teradata**][teradata-doc] |
 |||||
 
 <a name="integration-account-connectors"></a>
@@ -168,9 +168,9 @@ Logic Apps poskytuje standardní konektory pro vytváření řešení B2B (Busin
 
 |   |   |   |   |
 |---|---|---|---|
-| [![Ikona][as2-icon]<br>rozhraní API**dekódování AS2 <br>**][as2-doc] | [![Ikona][as2-icon]<br>rozhraní API**kódování AS2 <br>**][as2-doc] | [![Ikona][edifact-icon]<br>rozhraní API**dekódování EDIFACT <br>**][edifact-decode-doc] | [![Ikona][edifact-icon]<br>rozhraní API**kódování EDIFACT <br>**][edifact-encode-doc] |
-| [![Ikona][flat-file-decode-icon]<br>rozhraní API –**dekódování plochého souboru <br>**][flat-file-decode-doc] | [![Ikona][flat-file-encode-icon]<br>rozhraní API –**kódování plochého souboru <br>**][flat-file-encode-doc] | [![Ikona][integration-account-icon]<br>rozhraní API**účet pro integraci <br>**][integration-account-doc] | [![Ikona][liquid-icon]<br>rozhraní API –**kapalinové** <br> **transformace**][json-liquid-transform-doc] |
-| [![Ikona][x12-icon]<br>rozhraní API**dekódování X12 <br>**][x12-decode-doc] | [![Ikona][x12-icon]<br>rozhraní API**kódování X12 <br>**][x12-encode-doc] | [![Ikona][xml-transform-icon]<br>rozhraní API **transformace** **XML** <br>][xml-transform-doc] | [![Ikona][xml-validate-icon]<br>rozhraní API**ověřování XML <br>**][xml-validate-doc] |  
+| [![Ikona rozhraní API ][as2-icon]<br> ** <br> dekódování AS2**][as2-doc] | [![Ikona rozhraní API ][as2-icon]<br> ** <br> kódování AS2**][as2-doc] | [![Ikona rozhraní API ][edifact-icon]<br> ** <br> dekódování EDIFACT**][edifact-decode-doc] | [![Ikona rozhraní API ][edifact-icon]<br> ** <br> kódování EDIFACT**][edifact-encode-doc] |
+| [![Ikona rozhraní API – ][flat-file-decode-icon]<br> ** <br> dekódování plochého souboru**][flat-file-decode-doc] | [![Ikona rozhraní API – ][flat-file-encode-icon]<br> ** <br> kódování plochého souboru**][flat-file-encode-doc] | [![Ikona rozhraní API ][integration-account-icon]<br> ** <br> účet pro integraci**][integration-account-doc] | [![Ikona rozhraní API – ][liquid-icon]<br> **kapalinové** <br> **transformace**][json-liquid-transform-doc] |
+| [![Ikona rozhraní API ][x12-icon]<br> ** <br> dekódování X12**][x12-decode-doc] | [![Ikona rozhraní API ][x12-icon]<br> ** <br> kódování X12**][x12-encode-doc] | [![Ikona rozhraní API ][xml-transform-icon]<br> **XML** <br> **transformace** XML][xml-transform-doc] | [![Ikona rozhraní API ][xml-validate-icon]<br> ** <br> ověřování XML**][xml-validate-doc] |  
 |||||
 
 <a name="enterprise-connectors"></a>
@@ -181,7 +181,7 @@ Logic Apps poskytuje těmto podnikovým konektorům přístup k podnikovým syst
 
 |   |   |   |
 |---|---|---|
-| [![Ikona][ibm-3270-icon]<br>rozhraní API**IBM 3270**][ibm-3270-doc] | [![Ikona][ibm-mq-icon]<br>rozhraní API**IBM MQ**][ibm-mq-doc] | [![Ikona][sap-icon]<br>rozhraní API**SAP**][sap-connector-doc] |
+| [![Ikona rozhraní API ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![Ikona rozhraní API ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![Ikona rozhraní API ][sap-icon]<br> **SAP**][sap-connector-doc] |
 ||||
 
 <a name="ise-connectors"></a>
@@ -192,11 +192,11 @@ Pro Logic Apps, které vytváříte a spouštíte [prostředí izolovaných inte
 
 |   |   |   |   |   |
 |---|---|---|---|---|
-[![Ikona][as2-icon]<br>rozhraní API**AS2**][as2-doc] | [![Ikona][azure-automation-icon]<br>rozhraní API**Azure <br>Automation**][azure-automation-doc] | [![Ikona][azure-blob-storage-icon]<br>rozhraní API**Azure<br>BLOB Storage**][azure-blob-storage-doc] | [![Ikona][azure-cosmos-db-icon]<br>rozhraní API služby**Azure Cosmos <br> DB**][azure-cosmos-db-doc] | [![Ikona][azure-event-hubs-icon]<br>rozhraní API**centra <br>událostí Azure**][azure-event-hubs-doc] |
-[![Ikona][azure-event-grid-icon]<br>rozhraní API**Azure <br>Event gridu**][azure-event-grid-doc] | [![Ikona][azure-file-storage-icon]<br>rozhraní API služby**Azure File<br>Storage**][azure-file-storage-doc] | [![Ikona][azure-key-vault-icon]<br>rozhraní API**trezoru klíčů <br>Azure**][azure-key-vault-doc] | [![Ikona][azure-monitor-logs-icon]<br>rozhraní API**Azure monitor <br>protokoly**][azure-monitor-logs-doc] | [![Ikona][azure-service-bus-icon]<br>rozhraní API**Azure <br>Service Bus**][azure-service-bus-doc] |
-| [![Ikona][azure-sql-data-warehouse-icon]<br>rozhraní API**Azure SQL <br>Data Warehouse**][azure-sql-data-warehouse-doc] | [![Ikona][azure-table-storage-icon]<br>rozhraní API pro**Azure Table <br>Storage**][azure-table-storage-doc] | [![Ikona][azure-queues-icon]<br>rozhraní API**fronty Azure <br>**][azure-queues-doc] | [![Ikona][edifact-icon]<br>rozhraní API**EDIFACT**][edifact-doc] | [![Ikona][file-system-icon]<br>rozhraní API**systému souborů <br>**][file-system-doc] |
-| [![Ikona][ftp-icon]<br>rozhraní API**FTP**][ftp-doc] | [![Ikona][ibm-3270-icon]<br>rozhraní API**IBM 3270**][ibm-3270-doc] | [![Ikona][ibm-db2-icon]<br>rozhraní API**IBM DB2**][ibm-db2-doc] | [![Ikona][ibm-mq-icon]<br>rozhraní API**IBM MQ**][ibm-mq-doc] | [![Ikona][sap-icon]<br>rozhraní API**SAP**][sap-connector-doc] |
-| [![Ikona][sftp-ssh-icon]<br>rozhraní API**SFTP – SSH**][sftp-ssh-doc] | [![Ikona][smtp-icon]<br>rozhraní API**SMTP**][smtp-doc] | [![Ikona][sql-server-icon]<br>rozhraní API**SQL <br>Server**][sql-server-doc] | [![Ikona][x12-icon]<br>rozhraní API**X12**][x12-doc] |
+[![Ikona rozhraní API ][as2-icon]<br> **AS2**][as2-doc] | [![Ikona rozhraní API ][azure-automation-icon]<br> **Azure <br> Automation**][azure-automation-doc] | [![Ikona rozhraní API ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc] | [![Ikona rozhraní API služby ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc] | [![Ikona rozhraní API ][azure-event-hubs-icon]<br> ** <br> centra událostí Azure**][azure-event-hubs-doc] |
+[![Ikona rozhraní API ][azure-event-grid-icon]<br> **Azure Event <br> gridu**][azure-event-grid-doc] | [![Ikona rozhraní API služby ][azure-file-storage-icon]<br> **Azure File <br> Storage**][azure-file-storage-doc] | [![Ikona rozhraní API ][azure-key-vault-icon]<br> ** <br> trezoru klíčů Azure**][azure-key-vault-doc] | [![Ikona rozhraní API ][azure-monitor-logs-icon]<br> **Azure monitor <br> protokoly**][azure-monitor-logs-doc] | [![Ikona rozhraní API ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc] |
+| [![Ikona rozhraní API ][azure-sql-data-warehouse-icon]<br> **Azure SQL data <br> Warehouse**][azure-sql-data-warehouse-doc] | [![Ikona rozhraní API pro ][azure-table-storage-icon]<br> **Azure Table <br> Storage**][azure-table-storage-doc] | [![Ikona rozhraní API ][azure-queues-icon]<br> ** <br> fronty Azure**][azure-queues-doc] | [![Ikona rozhraní API ][edifact-icon]<br> **EDIFACT**][edifact-doc] | [![Ikona rozhraní API ][file-system-icon]<br> ** <br> systému souborů**][file-system-doc] |
+| [![Ikona rozhraní API ][ftp-icon]<br> **FTP**][ftp-doc] | [![Ikona rozhraní API ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![Ikona rozhraní API ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![Ikona rozhraní API ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![Ikona rozhraní API ][sap-icon]<br> **SAP**][sap-connector-doc] |
+| [![Ikona rozhraní API ][sftp-ssh-icon]<br> **SFTP – SSH**][sftp-ssh-doc] | [![Ikona rozhraní API ][smtp-icon]<br> **SMTP**][smtp-doc] | [![Ikona rozhraní API ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![Ikona rozhraní API ][x12-icon]<br> **X12**][x12-doc] |
 ||||||
 
 Další informace najdete v těchto tématech:
@@ -388,6 +388,7 @@ Chcete-li volat rozhraní API, která spouští vlastní kód nebo nejsou k disp
 [http-response-doc]: ./connectors-native-reqres.md "Reakce na požadavky HTTP z Logic Apps"
 [http-swagger-doc]: ./connectors-native-http-swagger.md "Volání koncových bodů REST z vašich aplikací logiky"
 [http-webhook-doc]: ./connectors-native-webhook.md "Čekání na konkrétní události ze koncových bodů HTTP nebo HTTPS"
+[inline-code-doc]: ../logic-apps/logic-apps-add-run-inline-code.md "Přidávání a spouštění fragmentů kódu JavaScriptu z aplikací logiky"
 [nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "Integrace aplikací logiky s vnořenými pracovními postupy"
 [query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "Výběr a filtrování polí pomocí akce dotazu"
 [schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "Spuštění Logic Apps podle plánu"

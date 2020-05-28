@@ -4,18 +4,18 @@ description: Správa výkonu aplikací a monitorování využití živých webov
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 6630de971dd9cc7ece2e0f87821db5fd62c39af0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c25929100fdfa6f4652e99c0d2563d9e56cfb62b
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828725"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996087"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights, funkce [Azure monitor](../overview.md), je rozšiřitelná služba pro správu výkonu aplikací (APM) pro vývojáře a odborníky v oblasti DevOps. Použijte ho k monitorování svých živých aplikací. Automaticky detekuje anomálie výkonu a obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací skutečně dělají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node. js, Java a Python hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
 
 ## <a name="how-does-application-insights-work"></a>Jak Application Insights funguje?
-Nainstalujete do své aplikace malý balíček instrumentace (SDK) nebo povolíte Application Insights codelessly, pokud se [podporuje](../../azure-monitor/app/platforms.md). Instrumentace monitoruje vaši aplikaci a směruje data telemetrie do prostředku Azure Application Insights pomocí jedinečného identifikátoru GUID, který označujeme jako klíč instrumentace.
+Nainstalujete do své aplikace malý balíček instrumentace (SDK) nebo povolíte Application Insights pomocí agenta Application Insights, pokud se [podporuje](../../azure-monitor/app/platforms.md). Instrumentace monitoruje vaši aplikaci a směruje data telemetrie do prostředku Azure Application Insights pomocí jedinečného identifikátoru GUID, který označujeme jako klíč instrumentace.
 
 Instrumentovat můžete nejenom aplikaci webové služby, ale také libovolné komponenty na pozadí a JavaScript na samotných webových stránkách. Aplikace a její součásti můžou běžet kdekoli – nemusí být hostované v Azure.
 
@@ -26,7 +26,7 @@ Kromě toho můžete využít telemetrii z hostitelských prostředí, jako jsou
 Všechny tyto streamy telemetrie jsou integrované do Azure Monitor. V Azure Portal můžete použít výkonné analytické a vyhledávací nástroje na nezpracovaná data.
 
 ### <a name="whats-the-overhead"></a>Jaká je s tím spojená režie?
-Dopad na výkon vaší aplikace je velmi malý. Sledovací volání neblokují, spojují se do dávek a odesílají v samostatném vlákně.
+Dopad na výkon vaší aplikace je malý. Sledovací volání neblokují, spojují se do dávek a odesílají v samostatném vlákně.
 
 ## <a name="what-does-application-insights-monitor"></a>Co Application Insights monitoruje?
 
@@ -101,7 +101,7 @@ Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vy
   * [ASP.NET Core aplikací](../../azure-monitor/app/asp-net-core.md)
   * [Konzolové aplikace .NET](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
-  * [Node.js](../../azure-monitor/app/nodejs.md)
+  * [Node. js](../../azure-monitor/app/nodejs.md)
   * [Python](../../azure-monitor/app/opencensus-python.md)
   * [Jiné platformy](../../azure-monitor/app/platforms.md)
 * **[Instrumentujte webové stránky](../../azure-monitor/app/javascript.md)** pro zobrazení stránky, AJAX a další telemetrie na straně klienta.
@@ -120,7 +120,7 @@ Začínáme při vývoji:
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [Node.js](../../azure-monitor/app/nodejs.md)
+* [Node. js](../../azure-monitor/app/nodejs.md)
 * [Python](../../azure-monitor/app/opencensus-python.md)
 
 
